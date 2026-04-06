@@ -168,11 +168,15 @@ Two conducting plates placed close together impose boundary conditions on the el
 
 This is the same thermodynamic structure as gravitational free fall: a region of depleted vacuum energy density, an object moving toward the deficit, and kinetic energy extracted from the consumed spatial volume. Standard QED describes the Casimir force completely and accurately as an electromagnetic phenomenon — a mismatch in radiation pressure from virtual photons. VED does not dispute the force prediction. It proposes that the energy transaction underlying the force — vacuum energy consumed, kinetic energy gained — is gravitational in character, and that this transaction has a geometric consequence (metric strain) which QED does not model and which GR prices at a negligibly small value.
 
+The critical question is whether the geometric consequence of the Casimir transaction is governed by the standard gravitational coupling $G/c^4$ or by the identity $h = \Delta\rho_v / \bar{\rho}_v$. Within VED, this is not an arbitrary choice — it is forced by the logic of the framework. If vacuum energy is destroyed when modes are excluded, and if the vacuum energy density is the substance of the metric, then the destruction of vacuum energy *is* a contraction of the metric. The geometric response is not mediated by a coupling constant because the vacuum energy and the geometry are not two separate quantities connected by a coupling — they are the same quantity described at two levels. Routing the geometric change through $G/c^4$ would suppress the metric response by 31 orders of magnitude, leaving the energy of the destroyed vacuum modes with no corresponding geometric signature — the spatial volume that contained that energy would be gone, but the metric would barely register the loss. Within VED, this is not a permissible outcome: if the vacuum is the metric, then consuming the vacuum *is* deforming the metric, at full strength, with no coupling to dilute the transaction.
+
+A natural objection is that QED already provides a complete energy budget for the Casimir force — radiation pressure imbalance accounts for the plate motion, and no energy is missing. But this objection recapitulates the localization problem that motivates the framework. QED accounts for the force. It does not identify the geometric consequence of destroying vacuum energy at a specific location, for the same reason that Newtonian mechanics does not identify the local source of gravitational kinetic energy: the standard framework does not treat the vacuum as a geometric substance. VED does. The identity-strength coupling is the consequence of that treatment, and the Casimir experiment tests whether the treatment is correct.
+
 ---
 
 ### 3.3 VED's Energy Budget for the Oscillating Pump
 
-When the Casimir transaction is driven cyclically at high frequency, VED predicts that the energy budget shifts from static attraction to wave generation.
+When the Casimir transaction is driven cyclically at high frequency, the energy-budget question sharpens from a matter of interpretation to a quantitative, testable prediction.
 
 A NEMS actuator oscillates the plate separation at MHz frequencies. Each cycle performs two operations on the vacuum:
 
@@ -186,7 +190,9 @@ The energy carried by the wave is sourced from the electrical work driving the a
 
 Standard physics predicts a different energy budget for the identical device. In the standard account, the electrical work goes into mechanical deformation and heat in the lattice, acoustic radiation, electromagnetic emission from accelerating charges, a small flux of dynamical Casimir effect photons, and a gravitational radiation channel priced at $h \sim 10^{-50}$ through $G/c^4$ — negligible by any measure. The two frameworks agree on the non-gravitational channels. They disagree, by 31 orders of magnitude, on the gravitational one.
 
-The experiment described in Section 4 tests which energy budget is correct.
+The disagreement traces directly to the problem posed in Section 1.1. Standard physics does not identify a local, physical source for gravitational kinetic energy and, correspondingly, assigns no significant geometric role to local changes in vacuum energy density. VED identifies the vacuum as that source and, consequently, predicts that every transaction which destroys or creates vacuum energy — including the Casimir effect — has a geometric signature at identity strength. The Casimir prediction is not a separate claim bolted onto the framework. It is the experimental consequence of the framework's answer to the localization problem.
+
+The experiment described in Section 4 tests whether that answer is correct.
 
 ---
 
