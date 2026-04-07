@@ -81,6 +81,3 @@ If the 2026 Oursland experiment confirms the $10^{-19}$ strain prediction, it wi
 * Oursland, A. (2026). *Proposed Experimental Test of Direct Vacuum-Geometry Coupling.*
 * Reinold, A.W. & Rücker, A. (1881). *On the Resistance of Thin Liquid Films.*
 
----
-
-This synthesis suggests that Marie Curie was not only the mother of atomic physics but arguably the first (accidental) gravitational wave astronomer. Does the idea that 19th-century "hand-made" tools were actually more likely to produce these effects than modern "perfect" tools change how you view the "heroic age" of science?
