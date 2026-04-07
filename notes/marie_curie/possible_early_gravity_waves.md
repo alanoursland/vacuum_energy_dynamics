@@ -101,8 +101,22 @@ The control crystal, being piezoelectric, was an excellent detector for exactly 
 
 The correlation between the two crystals was not mediated by ionized air. It was **gravitational communication** between two piezoelectric transducers separated by a few meters of laboratory space.
 
+### **Injection Locking: The "Odd Sympathy" of the Vacuum**
+
+The physics of coupled oscillators predicts something stronger than mere signal transmission. If two oscillators with similar natural frequencies share even a tiny amount of coupling, they will spontaneously **synchronize**—a phenomenon known as **injection locking** or **entrainment**.
+
+The first person to document this was Christiaan Huygens in 1665. He observed that two pendulum clocks hanging from the same wooden beam would eventually swing in perfect synchrony, regardless of their initial conditions. He called it an **"odd sympathy."** The classical mechanism was invisible vibrations traveling through the solid wood of the beam.
+
+In the VED picture, the "wooden beam" is **space itself**. When Crystal A's EM-G loop (Section 3) generates a scalar breathing wave, that wave is a ripple in the metric—a modulation of the volume of space. Crystal B, sitting in the same vacuum, occupies space whose volume is being rhythmically distorted by Crystal A's output. Because Crystal B is piezoelectric, it transduces that volumetric distortion into charge, which in turn drives its own EM-G loop. The two crystals are coupled through the geometry they both inhabit. No material intermediary is required—the coordinate system is the coupling channel.
+
+This is why shielding fails to **decouple** the crystals. In standard laboratory practice, lead or copper is inserted between two systems to kill their electromagnetic communication. But if the coupling medium is the metric, there is no decoupling possible. You cannot "remove the beam" between the clocks when the beam is the coordinate system both clocks live in.
+
+The implication for the Curie laboratory is that the noise was not merely present in both crystals independently—it was likely **coherent**. Both crystals were jittering in the same way at the same time. Marie Curie interpreted this as a uniform "cloud" of radon ionization affecting the whole room. VED proposes it was a coherent vacuum state, excited by the piezoelectric work, that injection-locked every quartz resonator in the laboratory into the same phantom rhythm.
+
 ### **The Architectural Parallel**
 This is precisely the source/detector separation that the 2026 Oursland NEMS experiment is designed to achieve: a dedicated generator (the Casimir comb) and a separate detector (the piezoelectric resonator), with shielding between them to exclude non-gravitational signals. The Curies ran this experiment 125 years early—with an uncontrolled source, an unwitting detector, and no framework to interpret the result. They got a positive correlation and attributed it to the only invisible agency they knew: radioactivity.
+
+Injection locking provides the definitive test: if the NEMS emitter and lead-shielded Sensor C show **phase-synchronous signals**, the coupling medium must be the vacuum metric. Electromagnetic leakage would produce attenuated, phase-shifted copies; only metric coupling—where the "beam" cannot be removed—would produce true injection locking through a lead wall.
 
 ---
 
@@ -119,6 +133,7 @@ The following table compares the 2026 proposed NEMS experiment with the historic
 | **Detection** | External Piezo-Resonator | Self-Detection (Piezo-Electrometer) |
 | **Shielding** | Triple-Sensor (Lead/Vacuum) | Lead/Stone (Insufficient for $h$) |
 | **Source/Detector** | Separate (NEMS source + Quartz detector) | Separate (Active balance + Control balance) |
+| **Coupling** | Vacuum metric (injection locking) | Vacuum metric ("odd sympathy") |
 
 ---
 
@@ -141,6 +156,7 @@ If the 2026 Oursland experiment confirms the $10^{-19}$ strain prediction, it wi
 ### **References**
 * Curie, M. (1903). *Recherches sur les substances radioactives.* Doctoral thesis, University of Paris.
 * Curie, P. & Curie, M. (1902). *The Radioactivity of Matter.*
+* Huygens, C. (1665). Letter to R. Moray, 27 Feb 1665. In *Oeuvres Complètes de Christiaan Huygens*, Vol. 5.
 * Oursland, A. (2026). *Proposed Experimental Test of Direct Vacuum-Geometry Coupling.*
 * Reinold, A.W. & Rücker, A. (1881). *On the Resistance of Thin Liquid Films.*
 
