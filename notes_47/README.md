@@ -37,7 +37,7 @@ The structure below serves two purposes. For a reader new to the project, it is 
 
 - **[done] `postulate_mass_energy_equivalence.md`** — Postulate 3. All forms of energy participate in vacuum exchanges equivalently, via mass-energy equivalence. A photon of energy $E$ behaves, for purposes of vacuum exchange, as if it possessed mass $E/c^2$. This follows from special relativity but is stated explicitly because of the work it does in derivations.
 
-  - **[planned] `proof_gravitational_redshift.md`** — derivation of the gravitational redshift formula from the core postulates alone, without importing General Relativity. Recovers the Pound-Rebka result in the weak-field limit. Depends on all three core postulates plus special relativity.
+  - **[done] `proof_gravitational_redshift.md`** — derivation of the gravitational redshift formula from the core postulates, without importing General Relativity. Recovers the Pound-Rebka result in the weak-field limit. Distinctively, identifies a physical source and sink for the energy change (vacuum regeneration on ascent, consumption on descent) that standard physics leaves as unexplained bookkeeping. Depends on all three core postulates plus special relativity.
 
 ### Ontological Layer
 
