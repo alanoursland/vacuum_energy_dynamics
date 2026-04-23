@@ -35,7 +35,7 @@ The structure below serves two purposes. For a reader new to the project, it is 
 
 - **[done] `consequence_curvature_as_spatial_differential.md`** — works out what the existing postulates commit us to about curvature. Under Postulate 1 (constant density) and the identity postulate (vacuum is spacetime), the only way spacetime can vary geometrically is through variation in the amount of vacuum per span of space. Curvature is the spatial-volume differential between neighboring spans. Consumption increases local curvature; regeneration decreases it.
 
-- **[planned] `postulate_mass_energy_equivalence.md`** — Postulate 3. All forms of energy participate in vacuum exchanges equivalently, via mass-energy equivalence. A photon of energy $E$ behaves, for purposes of vacuum exchange, as if it possessed mass $E/c^2$. This follows from special relativity but is stated explicitly because of the work it does in derivations.
+- **[done] `postulate_mass_energy_equivalence.md`** — Postulate 3. All forms of energy participate in vacuum exchanges equivalently, via mass-energy equivalence. A photon of energy $E$ behaves, for purposes of vacuum exchange, as if it possessed mass $E/c^2$. This follows from special relativity but is stated explicitly because of the work it does in derivations.
 
   - **[planned] `proof_gravitational_redshift.md`** — derivation of the gravitational redshift formula from the core postulates alone, without importing General Relativity. Recovers the Pound-Rebka result in the weak-field limit. Depends on all three core postulates plus special relativity.
 
