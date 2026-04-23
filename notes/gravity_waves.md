@@ -72,11 +72,15 @@ The scalar vs. tensor distinction provides a clean, experimentally testable set 
 
 -----
 
-## 5\. Energy Transport
+## 5. Energy Transport
 
 Both modes transport energy away from the source. In GR, this is defined by the Isaacson stress-energy tensor. In VED, energy transport is a **nonequilibrium thermodynamic flux**: each cycle of expansion and contraction carries the energy injected by the source (e.g., the NEMS pump) outward through the vacuum medium.
 
-The wave does not permanently displace space (it is **mean zero**); it transfers the energy of each oscillation to adjacent vacuum regions, propagating the disturbance as a localized pressure gradient.
+While the wave does not permanently displace space (it has a **mean-zero** strain amplitude), it carries strictly positive energy. The energy flux is proportional to the square of the strain's time derivative. For a spherical scalar wave propagating through a background vacuum density $\rho_{\text{bg}}$, the total radiated power $P$ is formally defined as:
+
+$$P = 4\pi r^2 \rho_{\text{bg}} c \, \langle \dot{h}^2 \rangle$$
+
+This demonstrates that the "breathing" of the metric transfers the real, positive energy of each oscillation to adjacent vacuum regions, propagating the disturbance as a localized pressure gradient. (For the full derivation of the scalar wave equation and energy flux, see `scalar_wave_equation.md`).
 
 -----
 

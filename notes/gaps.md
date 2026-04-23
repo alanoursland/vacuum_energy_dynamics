@@ -66,6 +66,44 @@ These differ by 29 orders of magnitude. The predicted strain depends entirely on
 
 -----
 
+## 4a. The Test Mass Should Not Appear in the Local Vacuum Density
+
+**The problem:** The derivation in the "Gravitational Energy Transfer" document (Section 4) and in Section 2.3 of the main paper sets the kinetic energy gained by a test mass $m$ falling to radius $r$ equal to the energy content of the spatial volume contracted at $r$, then solves for $\rho_v$:
+
+$$\rho_v = \frac{\Delta K}{\Delta V} = \frac{GMm/r}{V \cdot GM/rc^2} = \frac{mc^2}{V}$$
+
+The intermediate expression contains $m$, the mass of the test particle. The final expression $mc^2/V$ also contains $m$, and the framework then identifies this with the local matter-energy density $\rho_m c^2$ by treating $m/V$ as a generic mass-to-volume ratio. But the substitution glosses over a category mismatch: the $m$ that entered the derivation was the mass of a *test particle* — an object passing through a region — while the $\rho_m$ that exits the derivation is the mass density of *the source* establishing the local vacuum envelope (the silicon substrate, in the experimental case). These are not the same quantity, and the equation as written doesn't justify treating them as the same quantity.
+
+The deeper issue is that the local vacuum energy density at a point in space must be an *intensive* property of the field at that point. It cannot depend on what test object happens to be falling through it. If a feather and a cannonball fall through the same point, the vacuum energy density they encounter has to be the same number — otherwise $\rho_v$ is not a field, it is a relation between the field and whatever happens to be probing it. A derivation that produces $\rho_v$ as a function of the probe's mass has not produced a field quantity; it has produced something else, and that something else needs a different name.
+
+A second symptom is the presence of the unspecified volume $V$ in the result. Volume of what? The shell at radius $r$? A unit cell containing the test mass? The Schwarzschild contraction volume? The derivation doesn't say, and different choices give different numerical answers. A field density should not have a free volume parameter sitting in its definition.
+
+**Why it matters:** The Casimir strain prediction $h \sim 10^{-19}$ uses $\rho_v = \rho_m c^2 \approx 10^{20}$ J/m³ as the local baseline that the cavity modulates. That number is the *only* thing standing between the framework's headline prediction and either (a) the cosmological-baseline calculation, which gives $h \sim 10^{12}$ and is absurd on its face, or (b) some other choice of denominator with no derivation behind it. The substitution from "test mass $m$" to "source matter density $\rho_m$" is the load-bearing step in fixing that number, and it is the step the algebra does not earn.
+
+This is not the same complaint as Gap 4. Gap 4 says "even if the algebra worked, a self-consistency derivation cannot confirm the framework." This gap says "the algebra does not work as a derivation in the first place; the equation contains a quantity that intensive field properties are forbidden to contain." Both gaps point at the same line of the paper, but they are independent objections, and fixing one does not fix the other.
+
+**What the documents currently say:** The "Gravitational Energy Transfer" document presents the derivation as a clean cancellation in which $G$, $M$, and $r$ drop out and the result follows. It does not flag the appearance of $m$ in the intermediate expression as a problem, and it does not justify the silent substitution from test mass to source density. The main paper's Section 2.3 inherits the same derivation and the same gap. The "Status" note at the end of Section 2.3 acknowledges that the derivation is a consistency condition rather than independent evidence, which addresses Gap 4 but not this one.
+
+**What is needed:** One of the following.
+
+*Option A — Restate as a postulate.* Drop the derivation framing entirely. Introduce $\rho_v(\mathbf{x}) = \rho_m(\mathbf{x}) c^2$ as a *second postulate* of the framework, parallel to the identity principle, and label it explicitly: "the local vacuum energy density at a point equals the local matter-energy density at that point." State that this is not derived; it is a structural choice that, together with the identity principle, generates the experimental prediction. The framework would then have two postulates instead of one, and the experiment would test them jointly. This is the most honest move and the one that requires the least new work.
+
+*Option B — Rederive without a test mass.* Find a derivation that arrives at $\rho_v = \rho_m c^2$ using only field quantities — perhaps by considering the energy required to assemble a configuration of matter from infinity, or by computing the vacuum energy deficit produced by a static mass distribution and setting it equal to the gravitational binding energy of that distribution. The derivation would need to produce an answer that depends only on the source $\rho_m$ and not on any probe. This is harder but would actually constitute a derivation rather than a relabeling.
+
+*Option C — Demote the equation to a heuristic.* Acknowledge that $\rho_v = \rho_m c^2$ is a guess motivated by dimensional analysis and the rough idea that the vacuum near matter should carry energy comparable to the matter itself, and that the test-mass derivation should be removed from the paper because it does not actually establish the relationship it appears to establish. The Casimir prediction would then rest on a dimensional-analysis estimate, which is a weaker but more honest position than a flawed derivation.
+
+**Implications for the experimental prediction:** Under any of the three options, the strain prediction $h \sim 10^{-19}$ becomes a *conditional* prediction — conditional on the postulate (Option A), the new derivation (Option B), or the dimensional estimate (Option C). It does not become wrong. It becomes appropriately labeled. The experiment is still worth running; the framework should be honest that the experiment is testing the postulate jointly with the identity principle, not deriving a consequence of the identity principle alone.
+
+**Implications for the framework's broader structure:** If Option A is taken, the framework's postulate count rises from one (the identity) to two (identity plus local density). This is a real cost — every additional postulate weakens the framework's claim to parsimony — but it is offset by the fact that the new postulate replaces a derivation that did not work. Trading a broken derivation for an honest postulate is a gain in clarity even if it is a loss in apparent depth.
+
+Note that the scalar wave equation (`scalar_wave_equation.md`) introduces a *third* free parameter, $\rho_{\text{bg}}$ in the propagator, which can be either the local or cosmological density. If Option A is taken here and the wave equation document is also formalized, the framework would have three postulates: the identity, the local density, and the propagator stiffness. The experiment would test all three jointly. This is a much weaker pitch than "VED predicts $h \sim 10^{-19}$ from a single axiom," but it is the actual epistemic situation, and presenting it accurately is more durable than presenting it strongly.
+
+**Related gaps:** Gap 3 ($\bar{\rho}_v$ baseline inconsistency — same denominator, different framing), Gap 4 ($\rho_v = mc^2/V$ as consistency rather than evidence — same equation, different objection), Gap 14 (no defined transition scale — same family of unfixed reference-density problems).
+
+**Status:** Unresolved. **High priority** — this is the algebraic spine of the headline prediction, and the equation as currently written does not establish what the paper claims it establishes. Should be promoted to its own numbered gap and the summary table updated on the next pass.
+
+-----
+
 ## 5. Scalar Waves vs. Tensor Waves: The Mode Separation Problem
 
 **The problem:** VED predicts scalar (breathing mode) gravitational waves from vacuum energy modulation, but standard GR predicts only tensor (plus and cross) modes. LIGO observations are consistent with tensor-only polarizations from astrophysical sources. If VED predicts scalar modes, it must explain why:
@@ -78,6 +116,41 @@ These differ by 29 orders of magnitude. The predicted strain depends entirely on
 **What is needed:** A physical mechanism that enforces this separation. Why would the vacuum "know" whether its energy density is changing because of mass motion (tensor) versus Casimir plate oscillation (scalar)? The current answer — "these are different source types" — is descriptive, not explanatory. A more rigorous treatment would derive the wave polarization from the source symmetry within VED's modified field equations, showing that a monopole source (isotropic density change) naturally radiates scalar modes while a quadrupole source (anisotropic mass distribution) naturally radiates tensor modes.
 
 **Status:** Partially addressed. The description is correct but the mechanism is not derived.
+
+-----
+
+
+## 5a. The Scalar Wave Equation Introduces a Free Propagator Parameter
+
+**The problem:** The scalar wave equation document (`scalar_wave_equation.md`) was written to close the power problem identified in `power_problem.md` — namely, that VED specifies a strain amplitude but not the energy flux carrying that strain, and therefore cannot calculate detector response. The wave equation document closes this gap by postulating a d'Alembertian wave equation for $h$ with a source term proportional to $\partial J_v / \partial t$, and deriving an energy flux $|\mathbf{S}| = \rho_{\text{bg}} c \, \dot{h}^2$ and a total radiated power $P = 4\pi r^2 \rho_{\text{bg}} c \langle \dot{h}^2 \rangle$.
+
+The derivation is internally clean. But the resulting power formula contains $\rho_{\text{bg}}$ — the background vacuum density through which the wave propagates — as a free parameter that the framework does not constrain. The document acknowledges this explicitly in Section 5.3, framing it as "empirical calibration of the transition scale": if the wave propagates through the local matter envelope ($\rho_m c^2 \approx 10^{20}$ J/m³), the predicted power is on the order of watts and would stall the device; if it propagates through the cosmological background ($\bar\rho_v \approx 10^{-10}$ J/m³), the power drops to $\sim 10^{-25}$ W and disappears under the noise floor.
+
+These two values span 30 orders of magnitude. Any experimental result — large damping, small damping, no damping at all — can be accommodated by selecting an appropriate $\rho_{\text{bg}}$. The framework now has a knob that can be tuned to fit any outcome.
+
+**Why it matters:** This is the inverse of what closing a gap is supposed to do. The power problem was a case where the framework couldn't make a quantitative prediction because a relation was missing. The wave equation document supplies the missing relation, but the relation it supplies has a free parameter inside it that wasn't there before. The net effect is that the framework went from "can't predict detector response" to "can predict any detector response, depending on a parameter we don't constrain." Both are unfalsifiable, but the second is unfalsifiable in a more dangerous way because it looks like a prediction.
+
+This also affects the framework's relationship to Gap 14 (no defined transition scale). Before the wave equation document, the transition scale was an acknowledged theoretical gap — VED couldn't say where the identity regime ended and the $G/c^4$ regime began. The wave equation document repackages this gap as a *parameter* of the propagator and labels it "empirical calibration," which makes it sound resolved when it has actually been moved from one part of the framework to another. The transition scale is the same problem under a new name.
+
+A cleaner way to see this: the wave equation closes the power problem only if you already know $\rho_{\text{bg}}$. The wave equation does not tell you what $\rho_{\text{bg}}$ is. So the wave equation reduces "two unknowns (strain coupling, power flux) and one equation" to "two unknowns (propagator stiffness, power flux) and two equations" — which is the same number of free parameters with a different label on one of them. No information has been added to the framework. The math is more complete; the physics is not more constrained.
+
+**What the documents currently say:** `scalar_wave_equation.md` derives the power formula and presents the choice of $\rho_{\text{bg}}$ as a feature, not a bug — Section 5.3 explicitly says the experiment will "empirically measure $\rho_{\text{bg}}$, providing the first quantitative data point for how the vacuum density transitions from local matter envelopes to the cosmological background." `power_problem.md`'s closing section (added after the wave equation was drafted) describes the wave equation as a resolution of the power problem. Neither document acknowledges that introducing $\rho_{\text{bg}}$ as a free parameter trades one unfalsifiability for another.
+
+**What is needed:** One of the following.
+
+*Option A — Constrain $\rho_{\text{bg}}$ from within the framework.* Derive $\rho_{\text{bg}}$ from the same physical reasoning that produced $\rho_v = \rho_m c^2$ in Section 2.3 of the main paper, or from a coarse-graining argument that specifies which density applies in which regime. This would give the wave equation predictive content. It would also link this gap to Gap 4a (the test-mass derivation) and to Gap 14 (the transition scale) — all three are facets of the same unanswered question, namely what density the framework uses where, and why.
+
+*Option B — Acknowledge $\rho_{\text{bg}}$ as a fitted parameter.* Restate the wave equation as a phenomenological model with a free coupling that the experiment will determine, and stop describing it as a closure of the power problem. The wave equation would then be a *framework for interpreting experimental results* rather than a *prediction of what those results will be.* This is parallel to Option A in Gap 4a — trading apparent depth for honest framing.
+
+*Option C — Drop the wave equation document until $\rho_{\text{bg}}$ can be constrained.* If neither Option A nor Option B is taken, the wave equation document arguably does more harm than good in its current form, because it gives the appearance of having solved a problem it has actually relabeled. The power problem document on its own — which honestly identifies the gap and proposes that the experiment would supply the missing constant if it succeeded — is a stronger position than the power problem document plus a wave equation that pretends to close it.
+
+**Implications for the experimental prediction:** Under any of the three options, the detector response calculation cannot proceed cleanly from theory alone. If a signal is detected at the predicted strain, $\rho_{\text{bg}}$ becomes empirically pinned and the framework gains a parameter. If no signal is detected, the result is ambiguous in the way `power_problem.md` already identifies: the identity could be wrong, *or* $\rho_{\text{bg}}$ could be at the cosmological end and the wave is real but undetectable. The experiment cannot distinguish these two failure modes, and the wave equation document does not fix this — it formalizes the ambiguity rather than resolving it.
+
+**Implications for the framework's growth pattern:** This gap is an instance of a broader pattern worth flagging in the document somewhere (perhaps in a meta-section): the framework has been responding to objections by *adding structure* rather than *constraining structure*. Each new document closes a gap by introducing a postulate or parameter that has its own free dimension. The cumulative effect is that the framework becomes more flexible — and therefore less falsifiable — with each round of refinement. Good speculative physics tends to mature in the opposite direction: new requirements pin down previously free parameters and the theory becomes more constrained as more evidence comes in. VED has been moving the wrong way on this axis, and the wave equation document is the clearest case of it. Whether this is recoverable depends on whether a future derivation can pin $\rho_{\text{bg}}$, $\rho_v$, and the transition scale from a smaller set of inputs than the framework currently uses to define them.
+
+**Related gaps:** Gap 4a (test-mass derivation — same family of unfixed reference-density problems), Gap 5 (scalar vs. tensor mode separation — the wave equation document was written to address this and partially does, but introduces this new gap in the process), Gap 14 (no defined transition scale — this gap is the transition scale problem in propagator clothing).
+
+**Status:** Unresolved. **High priority** — this gap was created by the most recent attempt to close an earlier gap, and the framework's apparent progress on the power problem depends on whether this is acknowledged as the relabeling it currently is.
 
 -----
 
@@ -219,7 +292,7 @@ Without this, VED has two regimes and no bridge between them.
 | 2 | Identity principle asserted, not derived | **High** | Acknowledged; axiom approach documented |
 | 3 | $\bar{\rho}_v$ baseline inconsistency | **High** | Partially resolved; needs propagation |
 | 4 | $\rho_v = mc^2/V$ is consistency, not evidence | **Medium** | Resolved in current docs |
-| 5 | Scalar vs. tensor mode separation | **Medium** | Described, not derived |
+| 5 | Scalar vs. tensor mode separation | **Medium** | Scalar wave equation proposed (see `scalar_wave_equation.md`) |
 | 6 | Residual $L/r$ in derivation of G | **Medium** | Unresolved |
 | 7 | Per-particle vs. continuous field | **Medium** | Open question |
 | 8 | Information paradox resolution speculative | **Low** | Acknowledged |

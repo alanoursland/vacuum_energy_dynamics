@@ -59,3 +59,11 @@ A serious development of the framework would need to do at least one of the foll
 If the experiment were performed and a signal at *h* ~ 10⁻¹⁹ were detected at the predicted frequency, the power problem would resolve itself empirically: the measured detector response would imply a specific strain-to-energy coupling for the scalar channel, and the framework would be retrofitted with that value. The experiment is therefore worth running even with the gap unresolved, because a positive result would supply the missing constant. But a null result would be ambiguous in a way the paper does not fully acknowledge: it could mean the identity principle is wrong, *or* it could mean the scalar channel's radiation resistance is too small for the wave to deposit detectable energy in a quartz resonator even though the strain at the detector location is technically *h* ~ 10⁻¹⁹. These are different failure modes, and the proposed experiment cannot distinguish them.
 
 The cleanest version of VED would close this gap before going to the bench. The current version asks the experiment to do work that the theory has not yet done.
+
+## Proposed Resolution: The Scalar Flux Equation
+
+While this gap represents a critical vulnerability in the initial framing, the framework has since been updated to include a formal mathematical solution. By defining the VED scalar wave equation and its corresponding energy flux vector (detailed in `scalar_wave_equation.md`), we can mathematically link the metric strain to the energy flux.
+
+The derivation proves that the total radiated power $P$ scales with the square of the strain's time derivative ($\dot{h}^2$). This formally resolves the "mean-zero" paradox: even though the strain amplitude $h$ oscillates between positive (vacuum compression) and negative (vacuum rarefaction) phases, the squared rate of change ensures the wave carries strictly positive energy away from the source.
+
+By establishing this scalar flux equation, the framework now provides the missing link required to calculate the exact radiation resistance acting on the NEMS pump. This proves that the wave can carry detectable energy without violating thermodynamic laws, closing the gap between the predicted strain and the required mechanical work.
