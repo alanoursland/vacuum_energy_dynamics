@@ -16,13 +16,29 @@ The postulate makes three claims that work together.
 
 The first is about force. In a region where curvature varies — where there is a gradient in curvature across nearby locations — any energy in the region experiences a force along the gradient. The direction of the force is toward greater curvature.
 
-The second claim is about universality. The force acts on every quantum of energy individually. Not on masses as bulk objects, not on photons as waves, but on each quantum of energy that exists in the region. A mass falls because every proton, electron, and quark inside it is being pushed identically. A photon bends and shifts frequency because its energy is being pushed the same way. The equivalence principle — that gravity acts on all forms of energy equivalently — follows from this universality directly.
+The second claim is about universality. The force acts on every quantum of energy individually. Not on masses as bulk objects, not on photons as waves, but on each quantum of energy that exists in the region. A mass falls because every proton, electron, and quark inside it is being pushed identically. A photon bends and shifts frequency because its energy is being pushed the same way. 
 
 The third claim is about what happens to the vacuum as energy moves. When energy moves along the gradient toward greater curvature (descent), vacuum is consumed in the region traversed. When energy moves against the gradient (ascent), vacuum is regenerated. Energy exchange and vacuum change are coordinated: the consumption or regeneration of vacuum is what produces the corresponding shift in the moving energy's momentum along the gradient.
 
 A fourth claim, made explicit by what the postulate does not say, is that we do not have a mechanism for the force. We describe what happens — force directed along the gradient, acting on every quantum of energy, with coordinated vacuum exchange during descent and ascent. We do not explain what causes the force at a microscopic level.
 
 The postulate also does not take a position on how vacuum consumption and regeneration affect the surrounding geometry. That these exchanges must affect the geometry follows from the identity postulate (vacuum is spacetime). The specific nature of the effect — whether consumption increases local curvature, how regeneration relaxes it, and under what conditions — is addressed in a separate consequence document rather than being committed to here.
+
+---
+
+## The Universality Claim Is the Equivalence Principle
+
+The postulate's universality claim — that force acts uniformly per unit energy on every quantum — is effectively a restatement of the equivalence principle, which in its standard form says that gravitational mass and inertial mass are equal for every object.
+
+The connection is direct. Under Postulate 2, the total gravitational force on an object is the sum of the forces on each quantum of energy within it. Since the force per quantum is proportional to the quantum's energy, the total force is proportional to the object's total energy. By Postulate 3 (mass-energy equivalence) and special relativity, an object's total rest energy divided by $c^2$ is both its rest mass (by the SR relation $E = mc^2$) and its inertial mass (the quantity that resists acceleration in Newton's second law). So gravitational force on an object is proportional to its inertial mass, which is the equivalence principle.
+
+Written as a brief derivation: for an object of total rest energy $E = Mc^2$, the gravitational force in a gradient of strength $g$ is $F = (g/c^2) \cdot E = Mg$, where the factor $g/c^2$ is force per unit energy from the postulate and $c^2$ converts gradient units to force-per-energy units. The acceleration from Newton's second law is $a = F/M = g$, independent of $M$. All objects fall at the same rate.
+
+This means our framework does not treat the equivalence principle as an independent postulate, as general relativity does. The equivalence principle is built into Postulate 2's universality claim. A reader asking "why do all objects fall at the same rate in a gravitational field" can be answered directly from the postulate: because gravity acts per unit energy, and inertial mass is proportional to energy, so acceleration is independent of the total energy of the falling object.
+
+Whether this is a genuine reduction in the framework's independent assumptions depends on how one counts. The universality claim and the equivalence principle are essentially the same observational content expressed in different language. Our framework phrases it in terms of energy; the standard formulation phrases it in terms of mass. The two formulations are equivalent through mass-energy equivalence, so we have not replaced the equivalence principle with something more fundamental — we have restated it in energy terms and made it an aspect of a broader postulate rather than a standalone principle.
+
+The value in this framing is that it connects the equivalence principle to the framework's treatment of energy as the primary gravitating quantity. Under our framework, the equivalence principle is not a separate empirical fact; it is a direct consequence of gravity acting on energy uniformly. This connects naturally to how the framework handles photons — which have energy but no rest mass — by treating them on the same footing as massive objects for purposes of gravitational interaction.
 
 ---
 

@@ -31,7 +31,7 @@ The structure below serves two purposes. For a reader new to the project, it is 
 
 - **[done] `postulate_vacuum_energy_density.md`** — Postulate 1. The vacuum possesses a finite energy density $\rho_v$ that is locally constant: every observer, in their own frame, measures the same finite value at every location. This is the foundational claim that everything else builds on. Rules out accounts of gravity or cosmology based on spatial or temporal variation in vacuum density, and commits the framework to locating geometric variation in the amount of vacuum present rather than in its density.
 
-- **[done] `postulate_vacuum_exchange_in_gradients.md`** — Postulate 2. Any energy in a region of curvature gradient experiences a force directed along the gradient, applied uniformly to every quantum of energy. When energy moves along the gradient toward greater curvature, its momentum along the gradient increases and vacuum is consumed; when it moves against the gradient, momentum along the gradient decreases and vacuum is regenerated. Combines what were originally separate postulates for descent and ascent. Explicitly does not propose a mechanism for the force — this is a real gap the framework has not yet filled.
+- **[done] `postulate_vacuum_exchange_in_gradients.md`** — Postulate 2. Any energy in a region of curvature gradient experiences a force directed along the gradient, applied uniformly to every quantum of energy. When energy moves along the gradient toward greater curvature, its momentum along the gradient increases and vacuum is consumed; when it moves against the gradient, momentum along the gradient decreases and vacuum is regenerated. Combines what were originally separate postulates for descent and ascent. The uniformity claim is effectively a restatement of the equivalence principle; the document shows how the standard gravitational/inertial mass equivalence follows directly from it. Explicitly does not propose a mechanism for the force — this is a real gap the framework has not yet filled.
 
 - **[done] `consequence_curvature_as_spatial_differential.md`** — works out what the existing postulates commit us to about curvature. Under Postulate 1 (constant density) and the identity postulate (vacuum is spacetime), the only way spacetime can vary geometrically is through variation in the amount of vacuum per span of space. Curvature is the spatial-volume differential between neighboring spans. Consumption increases local curvature; regeneration decreases it.
 
@@ -45,9 +45,17 @@ The structure below serves two purposes. For a reader new to the project, it is 
 
   - **[done] `consequence_cosmic_expansion.md`** — works out what the identity postulate forces us to say about the observed expansion of the universe. If space is vacuum is energy, then expansion creates energy. Notes the alignment with dark energy's observed constant density and flags the connection to Noether's theorem and the known failure of global energy conservation in expanding spacetimes.
 
-  The following candidates are discussions or partial derivations that become possible once the vacuum-spacetime identity is adopted. Each is an independent line of inquiry; they do not depend on one another, only on the parent postulate.
+  - **[done] `postulate_curvature_contains_energy.md`** — Postulate 4. The configuration of the vacuum carries energy, measured from a baseline of flat vacuum at zero configuration energy. Any departure from flat has positive configuration energy. Infinite curvature (singularities) and discontinuous curvature (sharp edges) require infinite configuration energy and are not physically realizable. Separate contribution from the energy density of Postulate 1. Compatible with the positive energy theorem in general relativity; establishes that gravity wells and gravitational waves are energetic configurations and that physical configurations must be smooth.
 
-  - **[planned] `candidate_equivalence_principle.md`** — argument that the equivalence of gravitational and inertial mass follows from the framework rather than being an independent postulate. Both quantities reduce to vacuum consumed in forming a given body. This is the candidate most likely to yield a real reduction in independent assumptions.
+  - **[done] `consequence_no_singularities.md`** — works out what Postulate 4's no-infinities clause commits us to about gravitational collapse and black hole structure. Classical singularities cannot form (they would require infinite configuration energy). Gravitational collapse must halt at some finite configuration with finite curvature. A black hole's total energy is distributed between matter rest mass-energy and configuration energy of the surrounding curved vacuum. Some amount of vacuum must remain inside any region, no matter how strongly curved. Aligns our framework with the broad physical intuition that classical singularities are pathological, while reaching that conclusion through a different route than loop quantum gravity, string theory, or asymptotic safety.
+
+  - **[done] `postulate_minimum_energy_configuration.md`** — Postulate 5. Given a set of constraints, the vacuum assumes the configuration that minimizes total configuration energy. Disturbances from minimum are not stable; they relax toward minimum. Because no transition can be instantaneous across all of space, changes in the minimum propagate from where they originate outward. Rapid changes produce propagating disturbances we observe as gravitational waves. Gravity wells are minimum-energy configurations given locally reduced vacuum. Combined with Postulate 4, provides a variational principle for vacuum dynamics.
+
+  - **[done] `consequence_gravitational_waves.md`** — works out that gravitational waves exist and carry energy as a combined consequence of Postulates 4 and 5. Propagating changes in the vacuum's minimum-energy configuration carry configuration energy outward from their source. Qualitative agreement with GR and with LIGO observations. Quantitative predictions (wave equation, polarization structure, quadrupole formula, exact propagation speed) remain open pending the mathematical structure of the vacuum.
+
+  - **[done] `consequence_wave_matter_interaction.md`** — works out how gravitational waves interact with matter in their path. Under Postulate 2, a passing wave's time-varying curvature acts on matter in the same way as any gradient — force is applied per unit energy, vacuum is exchanged, matter is displaced. After the wave passes, the released energy partially returns to vacuum and partially re-radiates as new waves, providing a framework-native account of wave attenuation. Wave-wave interaction and matter-induced refraction are flagged as possibilities without quantitative commitment. Connects directly to LIGO's operation.
+
+  The following candidates are discussions or partial derivations that become possible once the vacuum-spacetime identity is adopted. Each is an independent line of inquiry; they do not depend on one another, only on the parent postulate.
 
   - **[planned] `candidate_black_hole_entropy.md`** — discussion of whether the area-scaling of black hole entropy admits a natural interpretation in the framework, where the horizon is the boundary across which the information-propagation substrate transitions from normal to depleted.
 
@@ -55,7 +63,7 @@ The structure below serves two purposes. For a reader new to the project, it is 
 
   - **[planned] `candidate_universal_speed_limit.md`** — discussion of why $c$ appears universally across special relativity, electromagnetism, and gravity. Under the framework, $c$ is the natural speed of the substrate, and its universal appearance reflects that all these phenomena involve the same substrate.
 
-  - **[planned] `candidate_finite_speed_propagation.md`** — the claim that disturbances in the vacuum propagate at exactly $c$. Previously treated as a consequence of the identity postulate, but flagged as using ingredients (what counts as a propagating substrate change, what detectability means) that have not been rigorously defined within the framework. Candidate theorem pending those definitions.
+  - **[planned] `candidate_finite_speed_propagation.md`** — the claim that disturbances in the vacuum propagate at exactly $c$. Postulate 5 commits to disturbances propagating as waves but leaves the propagation speed to be derived. The speed claim uses ingredients (what counts as a propagating substrate change, what detectability means) that have not been rigorously defined within the framework. Candidate theorem pending those definitions.
 
 ### Open Work
 
@@ -71,7 +79,7 @@ The following are questions the framework needs to address but which do not yet 
 
 - **[open]** Equation of motion for a test body in a vacuum-density gradient. Currently the framework asserts that masses fall but does not derive the trajectory they follow.
 
-- **[open]** Mode structure of gravitational radiation in the framework. Does it predict pure transverse modes (matching GR), pure breathing modes (likely ruled out by Hulse-Taylor), or a mixture? This is where the framework is most likely to make a falsifiable prediction distinct from GR.
+- **[open]** Mode structure of gravitational radiation in the framework. Postulate 5 commits to waves being produced when dynamic configurations relax toward minimum energy, but does not specify their polarization structure. Does the framework predict pure transverse modes (matching GR), pure breathing modes (likely ruled out by Hulse-Taylor), or a mixture? This is where the framework is most likely to make a falsifiable prediction distinct from GR, and will likely require pinning down the mathematical structure of the vacuum first.
 
 - **[open]** Connection between the framework and existing scalar-tensor gravity theories. If the framework turns out to be isomorphic to Brans-Dicke or a similar theory once its mathematical structure is pinned down, that is useful to know explicitly.
 
@@ -115,8 +123,14 @@ For someone encountering this project for the first time, the correct reading or
 5. `postulate_vacuum_spacetime_identity.md`, for the ontological postulate.
 6. `consequence_curvature_as_spatial_differential.md`, for what curvature is under the existing postulates.
 7. `consequence_cosmic_expansion.md`, for what the identity forces us to say about expansion.
-8. `postulate_mass_energy_equivalence.md`, for Postulate 3.
-9. `proof_gravitational_redshift.md`, for the first derivation from the core postulates.
-10. Any of the candidate documents, in any order, according to interest.
+8. `postulate_curvature_contains_energy.md`, for Postulate 4 (curvature is energetic).
+9. `consequence_no_singularities.md`, for what Postulate 4 commits us to about black holes.
+10. `postulate_minimum_energy_configuration.md`, for Postulate 5 (minimum-energy dynamics and waves).
+11. `consequence_gravitational_waves.md`, for what Postulates 4 and 5 together commit us to about waves.
+12. `postulate_mass_energy_equivalence.md`, for Postulate 3.
+13. `proof_gravitational_redshift.md`, for the first derivation from the core postulates.
+14. Any of the candidate documents, in any order, according to interest.
+
+Postulate numbers reflect the order in which the postulates were introduced during the framework's development, not the reading order. The reading order here follows dependencies: each document can be read using only what has come before it. Postulate 3 (mass-energy equivalence) appears late because it is used primarily for the redshift derivation that immediately follows it.
 
 Documents marked `[planned]` do not yet exist. Readers encountering a gap in the sequence have reached the current frontier of the work.
