@@ -104,6 +104,16 @@ Several existing research programs have some relationship to the mechanism propo
 
 **Le Sage gravity** is a historical proposal in which gravity arises from particles streaming through space from all directions, with masses shadowing each other to produce apparent attraction. We mention this because a superficial reading of our framework might suggest a similar picture — "vacuum pressure differential" could evoke a pressure-from-particles image. The intended meaning is different: our framework does not posit a material medium of particles streaming through space. The vacuum in our framework is spacetime itself, and the "pressure differential" is intuitive language for whatever makes energy move along gradients. Le Sage's proposal had well-known problems (drag on moving bodies, thermodynamic heating, incompatibility with SR) that our framework does not inherit, because we do not commit to a material streaming mechanism.
 
+**Sakharov-Puthoff ZPF-induced gravity** [Sakharov, 1967; Puthoff, 1989]. Sakharov proposed that gravity is not a fundamental force but a residuum effect arising from zero-point fluctuations of the vacuum — in the same family as van der Waals and Casimir forces. Puthoff developed this into a specific mechanism: gravitational mass is the kinetic energy of charged particles undergoing ZPF-induced Zitterbewegung motion, and the gravitational force between two masses is a long-range retarded van-der-Waals coupling between the electromagnetic fields that Zitterbewegung generates. Setting the ZPF cutoff at the Planck frequency, Puthoff derives Newton's $1/R^2$ force with the correct magnitude and no free parameters, and argues that the equivalence principle falls out because what constitutes mass is the same ZPF-driven motion that participates in the gravitational coupling.
+
+Our framework shares the broad intuition with Sakharov-Puthoff that gravity is derived rather than fundamental, and that the vacuum is the seat of gravitational physics. There are two significant differences worth noting.
+
+First, the ontological status of the vacuum differs. Puthoff treats the vacuum as the zero-point field of the electromagnetic field, a field defined on a separate spacetime manifold — Option 1 in our identity document's four-option taxonomy. Our framework takes the vacuum to *be* spacetime (Option 3), which is a different ontological commitment.
+
+Second, Puthoff's mechanism addresses the force half of our Postulate 2 — the claim that masses experience a force along gradients — but does not address the exchange half. In Puthoff's picture, the ZPF is homogeneous, isotropic, and Lorentz-invariant everywhere; nothing about it changes as masses move through gradients. The kinetic energy a falling mass gains is handled through standard potential-energy bookkeeping, not through any physical substrate being consumed or regenerated. Our framework's distinctive claim — that gravitational energy flow has a physical source and sink in the vacuum itself — is not something Puthoff's mechanism supplies.
+
+A Puthoff-style Zitterbewegung mechanism could in principle be grafted onto our framework as a microscopic account of the force, while leaving the vacuum-exchange content of Postulate 2 as an additional commitment about energy flow. Whether the two programs can be consistently combined — whether ZPF-induced force and vacuum-exchange energy flow can cohabit in a single theory — is an open question we do not settle here.
+
 ---
 
 ## References
@@ -111,3 +121,7 @@ Several existing research programs have some relationship to the mechanism propo
 Jacobson, T. (1995). Thermodynamics of spacetime: The Einstein equation of state. *Physical Review Letters*, 75(7), 1260–1263.
 
 Verlinde, E. (2011). On the origin of gravity and the laws of Newton. *Journal of High Energy Physics*, 2011(4), 29.
+
+Puthoff, H. E. (1989). Gravity as a zero-point-fluctuation force. *Physical Review A*, 39(5), 2333–2342.
+
+Sakharov, A. D. (1968). Vacuum quantum fluctuations in curved space and the theory of gravitation. *Soviet Physics Doklady*, 12, 1040–1041.

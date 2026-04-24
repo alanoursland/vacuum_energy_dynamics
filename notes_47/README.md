@@ -39,6 +39,8 @@ The structure below serves two purposes. For a reader new to the project, it is 
 
   - **[done] `proof_gravitational_redshift.md`** — derivation of the gravitational redshift formula from the core postulates, without importing General Relativity. Recovers the Pound-Rebka result in the weak-field limit. Distinctively, identifies a physical source and sink for the energy change (vacuum regeneration on ascent, consumption on descent) that standard physics leaves as unexplained bookkeeping. Depends on all three core postulates plus special relativity.
 
+  - **[done] `proof_gravitational_time_dilation.md`** — derivation of gravitational time dilation from the redshift proof, using the observation that clocks emit photons at their local rate and that an observer's measurement of a distant clock's rate is the rate at which the distant clock's photons arrive. Reproduces the weak-field factor $1 + gh/c^2$, matching GR and all precision clock experiments. Contributes a framework-native physical account: clocks in wells run slow because they are embedded in vacuum whose extent per coordinate span is reduced, slowing the information propagation that all clock processes depend on. Depends on Postulates 1, 2, and 3 plus special relativity (for the formal derivation) and additionally on the identity postulate and the curvature-as-spatial-volume-differential consequence (for the physical interpretation). Does not invoke Postulates 4 or 5, so the result is insulated from future revisions to configuration-energy and wave-dynamics machinery.
+
 ### Ontological Layer
 
 - **[done] `postulate_vacuum_spacetime_identity.md`** — the postulate that the vacuum is identical to spacetime (the structure that constrains information propagation), from which it follows that spacetime is energy. Lays out four options for how vacuum and spacetime could be related and argues for identity as the choice that fits the framework's prior commitments while removing free parameters. Depends on the core postulates.
@@ -58,8 +60,6 @@ The structure below serves two purposes. For a reader new to the project, it is 
   The following candidates are discussions or partial derivations that become possible once the vacuum-spacetime identity is adopted. Each is an independent line of inquiry; they do not depend on one another, only on the parent postulate.
 
   - **[planned] `candidate_black_hole_entropy.md`** — discussion of whether the area-scaling of black hole entropy admits a natural interpretation in the framework, where the horizon is the boundary across which the information-propagation substrate transitions from normal to depleted.
-
-  - **[planned] `candidate_time_dilation_mechanism.md`** — derivation path for gravitational time dilation as a direct mechanistic consequence of vacuum depletion slowing local signal propagation. Aims to check whether the framework's prediction matches GR's $\sqrt{1 - 2GM/rc^2}$ factor or diverges.
 
   - **[planned] `candidate_universal_speed_limit.md`** — discussion of why $c$ appears universally across special relativity, electromagnetism, and gravity. Under the framework, $c$ is the natural speed of the substrate, and its universal appearance reflects that all these phenomena involve the same substrate.
 
@@ -129,7 +129,8 @@ For someone encountering this project for the first time, the correct reading or
 11. `consequence_gravitational_waves.md`, for what Postulates 4 and 5 together commit us to about waves.
 12. `postulate_mass_energy_equivalence.md`, for Postulate 3.
 13. `proof_gravitational_redshift.md`, for the first derivation from the core postulates.
-14. Any of the candidate documents, in any order, according to interest.
+14. `proof_gravitational_time_dilation.md`, for the second derivation, building on the redshift proof.
+15. Any of the candidate documents, in any order, according to interest.
 
 Postulate numbers reflect the order in which the postulates were introduced during the framework's development, not the reading order. The reading order here follows dependencies: each document can be read using only what has come before it. Postulate 3 (mass-energy equivalence) appears late because it is used primarily for the redshift derivation that immediately follows it.
 
