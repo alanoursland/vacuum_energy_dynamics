@@ -185,7 +185,7 @@ Either outcome would reshape the framework. A derivation of unity — particular
 
 The unity assumption depends directly on the weak-field metric proof (which it closes), on the identity postulate (which grounds the "vacuum as unified substance" intuition), and on the curvature-as-spatial-volume-differential consequence (which introduces "amount of vacuum per coordinate span" as the extensive quantity in which curvature lives).
 
-Through the weak-field metric proof, the candidate inherits dependencies on Postulates 1, 2, and 3, the redshift proof, the time dilation proof, and special relativity. The candidate does not invoke these directly but they are in the chain.
+Through the weak-field metric proof, the candidate inherits dependencies on Postulates 1 and 2, mass-energy equivalence, the redshift proof, the time dilation proof, and special relativity. The candidate does not invoke these directly but they are in the chain.
 
 The candidate does not depend on Postulates 4 or 5. Configuration energy and minimum-energy dynamics play no role in the assumption or its consequences.
 

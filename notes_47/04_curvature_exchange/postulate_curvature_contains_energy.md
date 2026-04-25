@@ -50,7 +50,7 @@ General relativity recognizes that gravitational fields carry energy, though the
 
 Our postulate adopts a simpler version of this result as a commitment appropriate to the framework's current state. Flat vacuum has zero configuration energy. All other configurations have positive configuration energy. We are not deriving the positive energy theorem from deeper principles — we are taking something like its content as an axiom for our framework.
 
-This is analogous to how we adopted mass-energy equivalence as a postulate even though it follows from special relativity. Having the claim explicit in our own terms lets derivations reference it directly without needing to prove results from GR along the way.
+This is analogous to how we state mass-energy equivalence explicitly (see `sr_mass_energy_equivalence.md`) even though it follows from special relativity. Having the claim explicit in our own terms lets derivations reference it directly without needing to prove results from GR along the way.
 
 Where our framework and GR differ in philosophy: GR treats the metric as the primary geometric object and gravitational energy as a property of the metric (or of metric differences from a background). Our framework treats vacuum as the primary substance and configuration as a geometric property of the vacuum that happens to carry energy. These are compatible framings at the level of observable predictions but locate the energy differently.
 

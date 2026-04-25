@@ -22,7 +22,7 @@ Postulate 1 establishes that the vacuum has finite locally constant energy densi
 
 Postulate 2 establishes that energy in a gradient experiences force along the gradient and that motion along the gradient is coordinated with vacuum exchange. A photon moving upward against the gradient has its momentum along the gradient reduced, and this reduction is coordinated with vacuum regeneration in the region traversed. A photon moving downward has its momentum along the gradient increased, coordinated with vacuum consumption.
 
-Postulate 3 establishes that the photon, though it has zero rest mass, participates in vacuum exchanges as if it possessed mass $E/c^2$. This lets us apply the force-per-unit-energy structure of Postulate 2 to the photon through its total energy.
+Mass-energy equivalence (see `sr_mass_energy_equivalence.md`) establishes that the photon, though it has zero rest mass, participates in vacuum exchanges as if it possessed mass $E/c^2$. This lets us apply the force-per-unit-energy structure of Postulate 2 to the photon through its total energy.
 
 Special relativity provides the relationship $p = E/c$ for photons, linking momentum to energy.
 
@@ -32,7 +32,7 @@ Special relativity provides the relationship $p = E/c$ for photons, linking mome
 
 Let the photon be at height $h$ moving upward. Over an infinitesimal height $dh$, the photon moves against the gradient, and we want to determine the change in its energy $dE$.
 
-By Postulate 2, the force on the photon is directed along the gradient, opposing its motion. The force per unit energy is proportional to the gradient strength — specifically, to $g/c^2$, where the factor of $c^2$ comes from converting the gradient (an acceleration) into a force-per-unit-energy via Postulate 3's mass-energy equivalence. A photon of energy $E$ experiences a force of magnitude $(E/c^2) \cdot g$ directed downward.
+By Postulate 2, the force on the photon is directed along the gradient, opposing its motion. The force per unit energy is proportional to the gradient strength — specifically, to $g/c^2$, where the factor of $c^2$ comes from converting the gradient (an acceleration) into a force-per-unit-energy via mass-energy equivalence. A photon of energy $E$ experiences a force of magnitude $(E/c^2) \cdot g$ directed downward.
 
 As the photon moves upward by $dh$, the force does negative work on the photon. The work done on the photon equals the force times the displacement along the force direction:
 
