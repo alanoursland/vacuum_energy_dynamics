@@ -156,7 +156,7 @@ The derivation depends on both unity and the $\beta = 1$ identification from the
 
 ## Dependency Structure
 
-This proof inherits the dependencies of the weak-field equations-of-motion proof: Postulates 2 and 3, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, the weak-field metric proof, and special relativity. It additionally uses two provisional candidates: `candidate_vacuum_variation_unity.md` (closing $\gamma_v = 1$) and `candidate_second_order_time_metric_from_redshift.md` (closing $\beta = 1$ via the redshift exponential extended to spherically symmetric potentials).
+This proof inherits the dependencies of the weak-field equations-of-motion proof: Postulates 1, 2, and 3, mass-energy equivalence, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, the weak-field metric proof, and special relativity. It additionally uses two provisional candidates: `candidate_vacuum_variation_unity.md` (closing $\gamma_v = 1$) and `candidate_second_order_time_metric_from_redshift.md` (closing $\beta = 1$ via the redshift exponential extended to spherically symmetric potentials).
 
 The derivation does not invoke Postulates 4 or 5 directly, continuing the pattern established by the other proofs in this subframework: the framework's quantitative weak-field content is insulated from the configuration-energy and minimum-energy-dynamics machinery.
 

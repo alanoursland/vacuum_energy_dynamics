@@ -120,7 +120,7 @@ The derivation also assumes the signal's path is well-approximated by a straight
 
 ## Dependency Structure
 
-This proof inherits the dependencies of the weak-field metric proof: Postulates 2 and 3, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, and special relativity. It additionally depends on the unity assumption from `candidate_vacuum_variation_unity.md`, which closes the metric at $\gamma_v = 1$.
+This proof inherits the dependencies of the weak-field metric proof: Postulates 1, 2, and 3, mass-energy equivalence, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, and special relativity. It additionally depends on the unity assumption from `candidate_vacuum_variation_unity.md`, which closes the metric at $\gamma_v = 1$.
 
 The derivation does not invoke Postulates 4 or 5. Like the other proofs in this subframework, it is insulated from the framework's configuration-energy and minimum-energy-dynamics machinery.
 

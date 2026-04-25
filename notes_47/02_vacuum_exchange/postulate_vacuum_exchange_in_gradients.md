@@ -22,7 +22,7 @@ The third claim is about what happens to the vacuum as energy moves. When energy
 
 A fourth claim, made explicit by what the postulate does not say, is that we do not have a mechanism for the force. We describe what happens — force directed along the gradient, acting on every quantum of energy, with coordinated vacuum exchange during descent and ascent. We do not explain what causes the force at a microscopic level.
 
-The postulate also does not take a position on how vacuum consumption and regeneration affect the surrounding geometry. That these exchanges must affect the geometry follows from the identity postulate (vacuum is spacetime). The specific nature of the effect — whether consumption increases local curvature, how regeneration relaxes it, and under what conditions — is addressed in a separate consequence document rather than being committed to here.
+The postulate also does not take a position on how vacuum consumption and regeneration affect the surrounding geometry. That these exchanges must affect the geometry follows from Postulate 1 (vacuum is spacetime). The specific nature of the effect — whether consumption increases local curvature, how regeneration relaxes it, and under what conditions — is addressed in a separate consequence document rather than being committed to here.
 
 ---
 
@@ -58,7 +58,7 @@ This is also more honest about what the framework commits to. We are not claimin
 
 ## A Note on "Region" and "Amount of Vacuum"
 
-The postulate speaks of curvature gradients and of vacuum being consumed or regenerated. Behind this language is a claim that is awkward to state in ordinary English: neighboring spans of space can contain different amounts of themselves, and curvature is the differential between them. The language strains because ordinary usage treats a region as a pre-existing container that things fill. Under the identity postulate, vacuum is not filling a region; the vacuum is the region. What varies is not how densely the container is filled (Postulate 2 forbids that) but how much space the span contains as a property of its own extent.
+The postulate speaks of curvature gradients and of vacuum being consumed or regenerated. Behind this language is a claim that is awkward to state in ordinary English: neighboring spans of space can contain different amounts of themselves, and curvature is the differential between them. The language strains because ordinary usage treats a region as a pre-existing container that things fill. Under Postulate 1, vacuum is not filling a region; the vacuum is the region. What varies is not how densely the container is filled (Postulate 2 forbids that) but how much space the span contains as a property of its own extent.
 
 We flag this strain because it is the kind of conceptual limit that can quietly pollute reasoning. When we write "amount of vacuum in a region" or "curvature gradient across nearby regions," the words invite a container-and-contents picture that the framework rejects. The referent we are pointing at — spans of space containing different amounts of themselves — has no ready name in ordinary language, and ordinary intuition is not built to represent it cleanly.
 
@@ -108,7 +108,7 @@ Several existing research programs have some relationship to the mechanism propo
 
 Our framework shares the broad intuition with Sakharov-Puthoff that gravity is derived rather than fundamental, and that the vacuum is the seat of gravitational physics. There are two significant differences worth noting.
 
-First, the ontological status of the vacuum differs. Puthoff treats the vacuum as the zero-point field of the electromagnetic field, a field defined on a separate spacetime manifold — Option 1 in our identity document's four-option taxonomy. Our framework takes the vacuum to *be* spacetime (Option 3), which is a different ontological commitment.
+First, the ontological status of the vacuum differs. Puthoff treats the vacuum as the zero-point field of the electromagnetic field, a field defined on a separate spacetime manifold — Option 1 in our Postulate 1 document's four-option taxonomy. Our framework takes the vacuum to *be* spacetime (Option 3), which is a different ontological commitment.
 
 Second, Puthoff's mechanism addresses the force half of our Postulate 3 — the claim that masses experience a force along gradients — but does not address the exchange half. In Puthoff's picture, the ZPF is homogeneous, isotropic, and Lorentz-invariant everywhere; nothing about it changes as masses move through gradients. The kinetic energy a falling mass gains is handled through standard potential-energy bookkeeping, not through any physical substrate being consumed or regenerated. Our framework's distinctive claim — that gravitational energy flow has a physical source and sink in the vacuum itself — is not something Puthoff's mechanism supplies.
 

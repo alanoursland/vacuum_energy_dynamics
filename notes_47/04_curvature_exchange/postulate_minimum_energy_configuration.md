@@ -76,7 +76,7 @@ This is consistent with what general relativity predicts and what gravitational-
 
 **It does not give a formula for configuration energy.** Like Postulate 4, it commits to the existence and structure of configuration energy without specifying how to calculate it for a given configuration.
 
-**It does not specify the propagation speed.** The postulate commits to changes propagating, because no transition can be instantaneous. It does not commit to a specific speed of propagation. The expected speed ($c$) follows from the identity postulate's implications about information propagation in the vacuum, but deriving this formally requires a rigorous account of what counts as a propagating substrate change — a question the framework has not yet resolved.
+**It does not specify the propagation speed.** The postulate commits to changes propagating, because no transition can be instantaneous. It does not commit to a specific speed of propagation. The expected speed ($c$) follows from Postulate 1's implications about information propagation in the vacuum, but deriving this formally requires a rigorous account of what counts as a propagating substrate change — a question the framework has not yet resolved.
 
 **It does not specify wave polarization or mode structure.** Gravitational waves in general relativity have specific polarization characteristics (plus and cross modes, both transverse). Whether our framework produces the same polarization structure depends on the mathematical structure of the vacuum, which remains open.
 

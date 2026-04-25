@@ -6,7 +6,7 @@
 
 ## What This Document Is
 
-This is a consequence document — it traces out what the framework says about a specific observed phenomenon, rather than introducing a new postulate or deriving a new theorem. The phenomenon is the observed expansion of the universe. The consequence is what that expansion means under the vacuum-spacetime identity postulate.
+This is a consequence document — it traces out what the framework says about a specific observed phenomenon, rather than introducing a new postulate or deriving a new theorem. The phenomenon is the observed expansion of the universe. The consequence is what that expansion means under Postulate 1.
 
 The observation itself is well-established and not in dispute. What this document adds is the reinterpretation the framework forces us into: if space is vacuum is energy, then the expansion of space is the creation of energy.
 
@@ -26,11 +26,11 @@ None of this is controversial. Our framework does not dispute the observation or
 
 ## The Chain of Implications
 
-Under our identity postulate, space is identical to the vacuum. Under the core postulates, the vacuum is an energetic substance — not merely a thing with energy density, but a form of energy in the same literal sense that mass is a form of energy.
+Under Postulate 1, space is identical to the vacuum. Under the core postulates, the vacuum is an energetic substance — not merely a thing with energy density, but a form of energy in the same literal sense that mass is a form of energy.
 
 These commitments, taken together, force a specific reading of cosmic expansion.
 
-If space is expanding, more space exists now than existed before. Under the identity, more space means more vacuum. Under the core postulates, more vacuum means more energy. Therefore, the expansion of the universe is the creation of energy.
+If space is expanding, more space exists now than existed before. Under Postulate 1, more space means more vacuum. Under the core postulates, more vacuum means more energy. Therefore, the expansion of the universe is the creation of energy.
 
 Each step in this chain follows from a commitment we have already made. The chain does not require any new postulate. It is what happens when the framework we have built is applied to an observed phenomenon.
 

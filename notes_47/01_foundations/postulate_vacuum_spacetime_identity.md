@@ -1,4 +1,4 @@
-# Postulate: Vacuum-Spacetime Identity
+# Postulate 1: Vacuum-Spacetime Identity
 
 ---
 
@@ -74,7 +74,7 @@ This generosity is real but limited. It is not an invitation to reintroduce Opti
 
 On the basis of the above, we adopt the following.
 
-**Postulate (Vacuum-Spacetime Identity).** The vacuum, as characterized by its energy density and its capacity for energy exchange, is identical to spacetime, which is the structure that constrains how information can propagate. A change in vacuum energy at a location is a change in the information-propagation structure at that location, described from a different angle. The two are not two events in a dynamical relationship. They are one event.
+**Postulate 1 (Vacuum-Spacetime Identity).** The vacuum, as characterized by its energy density and its capacity for energy exchange, is identical to spacetime, which is the structure that constrains how information can propagate. A change in vacuum energy at a location is a change in the information-propagation structure at that location, described from a different angle. The two are not two events in a dynamical relationship. They are one event.
 
 A corollary worth stating directly and without softening: since the core postulates commit to the vacuum being energy, and the identity makes the vacuum equal to spacetime, the postulate commits us to the view that **spacetime is energy**.
 

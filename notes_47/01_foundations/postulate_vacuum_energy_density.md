@@ -76,7 +76,7 @@ The postulate is deliberately minimal. Several things are left open that future 
 
 **Mathematical structure beyond scalar density.** The postulate commits to $\rho_v$ being a well-defined scalar quantity (energy per unit volume). It does not commit to whether the vacuum has additional mathematical structure — whether it is fundamentally a scalar field, a tensor field, or something richer that includes a scalar density as one component. The "mathematical structure of the vacuum" is flagged in the project's open work and is not resolved by this postulate.
 
-**Relationship to other physical quantities.** The postulate does not say how $\rho_v$ relates to matter, to gravitational fields, or to any other physical quantity. Such relationships are the subject of other postulates (including those still to be written) and of the identity postulate already adopted.
+**Relationship to other physical quantities.** The postulate does not say how $\rho_v$ relates to matter, to gravitational fields, or to any other physical quantity. Such relationships are the subject of other postulates (including those still to be written) and of Postulate 1 already adopted.
 
 **Dynamics.** The postulate is a statement about what the vacuum energy density *is* — finite, locally constant, universal. It is not a statement about how the vacuum evolves, what drives changes, or what mechanisms transfer energy between the vacuum and other systems. Those dynamical questions are for later postulates.
 
@@ -98,7 +98,7 @@ This is the move that makes the framework's later commitments internally consist
 
 The term "density" carries an implicit picture of stuff distributed within a pre-existing container. Mass density is mass per unit of the container-volume. Charge density is charge per unit of the container-volume. Energy density, in ordinary usage, is energy per unit of the container-volume. The word presupposes that there is a space, and that things are distributed within it.
 
-Under our identity postulate, the vacuum *is* the space. There is no container with vacuum-stuff inside. The container and the contents are the same thing. So the ordinary picture that the word "density" invokes does not apply to our framework. A reader who imagines vacuum-energy-stuff distributed throughout space has imagined a structure the framework rejects.
+Under Postulate 1, the vacuum *is* the space. There is no container with vacuum-stuff inside. The container and the contents are the same thing. So the ordinary picture that the word "density" invokes does not apply to our framework. A reader who imagines vacuum-energy-stuff distributed throughout space has imagined a structure the framework rejects.
 
 We continue to use the word "density" anyway, because its mathematical formulation — energy per unit volume, measured locally — gives a well-defined quantity that the postulate can commit to. The quantity is physical; the formulation as a density is a borrowed tool. What is real is that every local observer, sampling the vacuum in their own frame, finds the same finite value for this tool's output. What is not real is the container-and-contents picture the word ordinarily suggests.
 

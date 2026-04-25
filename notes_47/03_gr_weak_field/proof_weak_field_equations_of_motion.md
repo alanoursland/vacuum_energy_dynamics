@@ -151,9 +151,9 @@ The Newtonian limit recovered by both routes is foundationally robust within the
 
 ## Dependency Structure
 
-The Postulate-3 route depends on Postulates 2 and 3, mass-energy equivalence, and special relativity, treating the gradient strength $g$ as a given observable. It does not require the identity postulate, the curvature consequence, the weak-field metric, or unity once $g$ is treated as given. The Newtonian limit derived through this route is the most foundationally robust quantitative prediction in the framework.
+The Postulate-3 route depends on Postulates 2 and 3, mass-energy equivalence, and special relativity, treating the gradient strength $g$ as a given observable. It does not require Postulate 1, the curvature consequence, the weak-field metric, or unity once $g$ is treated as given. The Newtonian limit derived through this route is the most foundationally robust quantitative prediction in the framework.
 
-The geodesic route depends additionally on the identity postulate, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, the weak-field metric proof, and the unity assumption. The same chain of dependencies as the light deflection and Shapiro delay proofs.
+The geodesic route depends additionally on Postulate 1, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, the weak-field metric proof, and the unity assumption. The same chain of dependencies as the light deflection and Shapiro delay proofs.
 
 Neither route invokes Postulates 4 or 5 directly. Both are insulated from the framework's configuration-energy and minimum-energy-dynamics machinery, in the sense that the equations of motion can be derived without those postulates. (Postulate 5 contributes to the framework-native interpretation — explaining why geodesic motion is the natural trajectory through the smooth-tracking-of-constraint argument — but the formal derivation does not require it.)
 

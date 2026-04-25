@@ -18,7 +18,7 @@ Before the reconstruction, a methodological commitment.
 
 In general relativity, the metric $g_{\mu\nu}$ is the primary geometric object. Matter tells the metric how to curve (through the Einstein field equations), and the metric tells matter how to move (through the geodesic equation). The metric is treated as a field with its own dynamics, and gravitational phenomena are features of the metric's variation.
 
-The framework does not adopt this picture. Under the vacuum-spacetime identity postulate, the vacuum is spacetime; there is no metric field separate from the vacuum that could have independent dynamics. What we call a metric is a mathematical descriptor of how the vacuum's configuration produces relational interval structure — how clocks at different locations map onto each other, how proper lengths map onto coordinate lengths, how light cones open, which events can causally influence which others. The metric is bookkeeping for these relations.
+The framework does not adopt this picture. Under Postulate 1, the vacuum is spacetime; there is no metric field separate from the vacuum that could have independent dynamics. What we call a metric is a mathematical descriptor of how the vacuum's configuration produces relational interval structure — how clocks at different locations map onto each other, how proper lengths map onto coordinate lengths, how light cones open, which events can causally influence which others. The metric is bookkeeping for these relations.
 
 The ontological chain is:
 
@@ -36,7 +36,7 @@ This rule is the operational content of keeping the framework's ledger visible w
 
 The framework's content about weak-field geometry, stripped to its essentials, is that vacuum-per-coordinate-span varies between locations in a gradient. This single physical fact produces two observationally distinguishable consequences.
 
-The first is the time-mapping. Signals traverse the vacuum at local speed $c$ everywhere (the identity postulate plus the propagation argument from the gravitational-waves consequence), but the amount of vacuum in a given coordinate span differs between locations. When an observer at one potential receives signals from a clock at another, the received signal rate differs from the local rate by a factor determined by the vacuum traversed between them. This is what the time dilation proof derived: Clock B assigns Clock A a tick interval longer than Clock A's local tick interval by a factor of $\exp(gh/c^2)$ in a static gradient, approximating $(1 + gh/c^2)$ in the weak-field limit.
+The first is the time-mapping. Signals traverse the vacuum at local speed $c$ everywhere (Postulate 1 plus the propagation argument from the gravitational-waves consequence), but the amount of vacuum in a given coordinate span differs between locations. When an observer at one potential receives signals from a clock at another, the received signal rate differs from the local rate by a factor determined by the vacuum traversed between them. This is what the time dilation proof derived: Clock B assigns Clock A a tick interval longer than Clock A's local tick interval by a factor of $\exp(gh/c^2)$ in a static gradient, approximating $(1 + gh/c^2)$ in the weak-field limit.
 
 The second is the spatial-mapping. The same vacuum-per-coordinate-span variation that produces the time-mapping also produces a difference between proper lengths and coordinate lengths. A radial span through a well contains more proper length per unit of external coordinate than the same coordinate span in flat space, because the well's vacuum-per-coordinate-span is reduced. This is the framework's gravitational analogue of special relativity's length contraction, as committed to in the time dilation proof's Spatial Companion Effect section.
 
@@ -64,7 +64,7 @@ This matches the weak-field limit of GR's Schwarzschild metric at leading order 
 
 ## The Spatial Components
 
-The framework's identity postulate, combined with the curvature-as-spatial-volume-differential consequence, commits to vacuum variation affecting spatial intervals as well as temporal ones. A coordinate span in a gravity well corresponds to more proper length than the same coordinate span in flat space, because the well's vacuum-per-coordinate-span is reduced — this is the radial-stretching side of the spatial-volume differential. The precise relation between radial stretching and angular compression is part of the unresolved spatial-structure problem and is not pinned down by the current postulates. The spatial components of the metric record whatever mapping results.
+The framework's Postulate 1, combined with the curvature-as-spatial-volume-differential consequence, commits to vacuum variation affecting spatial intervals as well as temporal ones. A coordinate span in a gravity well corresponds to more proper length than the same coordinate span in flat space, because the well's vacuum-per-coordinate-span is reduced — this is the radial-stretching side of the spatial-volume differential. The precise relation between radial stretching and angular compression is part of the unresolved spatial-structure problem and is not pinned down by the current postulates. The spatial components of the metric record whatever mapping results.
 
 The qualitative claim is unambiguous. The quantitative coefficient is not.
 
@@ -160,9 +160,9 @@ Next task: derive $\gamma_v = 1$ from the framework's postulates, or identify th
 
 ## Dependency Structure
 
-The derivation depends on Postulates 2 and 3, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the gravitational redshift proof, the gravitational time dilation proof, and special relativity. It does not invoke Postulates 4 or 5.
+The derivation depends on Postulates 1, 2, and 3, mass-energy equivalence, the curvature-as-spatial-volume-differential consequence, the gravitational redshift proof, the gravitational time dilation proof, and special relativity. It does not invoke Postulates 4 or 5.
 
-The document uses "configuration" language that overlaps with Postulate 4's terminology but does not rely on Postulate 4's content. "Configuration" in this document means how the vacuum is arranged — the distribution of vacuum-per-coordinate-span across locations — and is inherited from the identity postulate and the curvature-as-spatial-volume-differential consequence. Postulate 4's claim that configurations carry energy is a separate commitment, not used here. If later work assigns configuration energy to the arrangements described in this document, Postulate 4 will become relevant; the formal reconstruction itself does not require it.
+The document uses "configuration" language that overlaps with Postulate 4's terminology but does not rely on Postulate 4's content. "Configuration" in this document means how the vacuum is arranged — the distribution of vacuum-per-coordinate-span across locations — and is inherited from Postulate 1 and the curvature-as-spatial-volume-differential consequence. Postulate 4's claim that configurations carry energy is a separate commitment, not used here. If later work assigns configuration energy to the arrangements described in this document, Postulate 4 will become relevant; the formal reconstruction itself does not require it.
 
 This narrow dependency joins the redshift and time dilation proofs in a tight subframework insulated from the framework's configuration-energy and minimum-energy-dynamics machinery. If future work leads to revisions of Postulates 4 or 5, this proof and its companions are unaffected.
 

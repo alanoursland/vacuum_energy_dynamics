@@ -70,7 +70,7 @@ The derivation above produces the redshift formula. What the derivation also tel
 
 By Postulate 3, the coordinated counterpart to the photon's energy loss is vacuum regeneration in the region traversed. The energy the photon loses over the height $dh$ is not destroyed and not passed into any geometric bookkeeping quantity without physical location. It is converted into vacuum energy, which restores vacuum in the region the photon has just climbed through.
 
-Concretely: over the photon's full ascent from $h = 0$ to height $h$, the total energy the photon loses is $E_0 - E(h) = E_0 (1 - \exp(-gh/c^2))$. This energy has become vacuum in the region between the emission point and the reception point. The region now contains slightly more vacuum than it did before the photon passed through, and under the identity postulate, slightly more spacetime, meaning the region has slightly relaxed its curvature.
+Concretely: over the photon's full ascent from $h = 0$ to height $h$, the total energy the photon loses is $E_0 - E(h) = E_0 (1 - \exp(-gh/c^2))$. This energy has become vacuum in the region between the emission point and the reception point. The region now contains slightly more vacuum than it did before the photon passed through, and under Postulate 1, slightly more spacetime, meaning the region has slightly relaxed its curvature.
 
 The reverse holds for descent. A photon falling from height $h$ to height $0$ arrives with more energy than it started with, by the inverse of the ascent factor. The additional energy has come from vacuum in the region of descent, which has been consumed. The region now contains slightly less vacuum than before, with correspondingly increased curvature.
 

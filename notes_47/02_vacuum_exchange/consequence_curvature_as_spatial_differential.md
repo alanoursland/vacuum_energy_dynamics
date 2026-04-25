@@ -4,9 +4,9 @@
 
 ## What This Document Is
 
-This is a consequence document. It traces out what the framework's existing postulates commit us to say about the geometric nature of curvature, without introducing new postulates. The postulates involved are Postulate 2 (vacuum has locally constant finite energy density) and the vacuum-spacetime identity postulate (vacuum is the substrate that constrains information propagation; vacuum is spacetime).
+This is a consequence document. It traces out what the framework's existing postulates commit us to say about the geometric nature of curvature, without introducing new postulates. The postulates involved are Postulate 2 (vacuum has locally constant finite energy density) and Postulate 1 (vacuum is the substrate that constrains information propagation; vacuum is spacetime).
 
-The conclusion is that, under these postulates, spacetime curvature can only be a differential in the amount of vacuum contained in neighboring spans of space. It cannot be variation in density (Postulate 2 forbids this). It cannot be variation in some property separate from vacuum (the identity postulate rules out such separation). The only remaining possibility is that curvature *is* the spatial-volume differential between neighboring spans.
+The conclusion is that, under these postulates, spacetime curvature can only be a differential in the amount of vacuum contained in neighboring spans of space. It cannot be variation in density (Postulate 2 forbids this). It cannot be variation in some property separate from vacuum (Postulate 1 rules out such separation). The only remaining possibility is that curvature *is* the spatial-volume differential between neighboring spans.
 
 This is a structural consequence, not a new commitment. It follows from what the framework has already said. We write it out explicitly because the consequence is significant enough to deserve its own treatment, and because it was previously bundled into Postulate 3 in a way that made the postulate's scope unclear.
 
@@ -24,7 +24,7 @@ This option is ruled out by Postulate 2. The vacuum has locally constant energy 
 
 Option B: Variation in a property separate from the vacuum. Some other physical quantity — a field, a tensor, a geometric structure distinct from the vacuum itself — varies, and that variation is what curvature is.
 
-This option is ruled out by the identity postulate. Vacuum is spacetime. Under the identity, spacetime does not have properties separate from the vacuum; its properties are the vacuum's properties. There is no "separate geometric structure" that could vary independently of the vacuum.
+This option is ruled out by Postulate 1. Vacuum is spacetime. Under Postulate 1, spacetime does not have properties separate from the vacuum; its properties are the vacuum's properties. There is no "separate geometric structure" that could vary independently of the vacuum.
 
 Option C: Variation in the amount of vacuum per span. Neighboring spans of space contain different amounts of vacuum, even though each span's local density is the same. The differential between spans is what we observe as curvature.
 
@@ -44,7 +44,7 @@ The disanalogy, important to name, is that a rubber sheet is stretched within a 
 
 ## Consequences for Vacuum Exchange
 
-Postulate 3 commits to vacuum being consumed during energy descent through a gradient and regenerated during energy ascent. Under the identity postulate, these exchanges are spacetime changes. Combined with the reasoning above, this produces specific consequences for curvature.
+Postulate 3 commits to vacuum being consumed during energy descent through a gradient and regenerated during energy ascent. Under Postulate 1, these exchanges are spacetime changes. Combined with the reasoning above, this produces specific consequences for curvature.
 
 **Consumption increases local curvature.** When a mass descends through a gradient and consumes some vacuum, the consumed vacuum is removed from the region of descent. The span the mass occupied contains less vacuum than it did before the descent. Under the reasoning of this document, less vacuum per span corresponds to greater curvature. So consumption steepens the curvature locally.
 

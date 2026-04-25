@@ -48,11 +48,11 @@ $$g_{00} \approx -\left(1 + \frac{2\Phi}{c^2}\right), \quad g_{ij} \approx \left
 
 ## Why the Assumption Is Plausible
 
-The identity postulate treats the vacuum as a single unified substance — spacetime itself, not a field residing on spacetime. The curvature-as-spatial-volume-differential consequence introduces "amount of vacuum per coordinate span" as the quantity in which curvature lives. Under static spherical symmetry, this variation can be represented by a single radial function: at each radius, the configuration has one symmetry-invariant degree of freedom relevant to the weak-field mapping. This does not mean the full vacuum structure is scalar; it means the symmetry-reduced response is summarizable by one function of radius.
+Postulate 1 treats the vacuum as a single unified substance — spacetime itself, not a field residing on spacetime. The curvature-as-spatial-volume-differential consequence introduces "amount of vacuum per coordinate span" as the quantity in which curvature lives. Under static spherical symmetry, this variation can be represented by a single radial function: at each radius, the configuration has one symmetry-invariant degree of freedom relevant to the weak-field mapping. This does not mean the full vacuum structure is scalar; it means the symmetry-reduced response is summarizable by one function of radius.
 
 If the symmetry-reduced variation is one function of radius, it is natural to posit that its effects on the metric are also characterized by a single response relationship — that the time-mapping and the spatial-mapping are governed by the same coupling to this one function, rather than by independent couplings that happen to coincide.
 
-Under this reading, the unity assumption is the most natural extension of the identity postulate to the quantitative question of how vacuum variation produces metric variation. Vacuum is one substance; under spherical symmetry its variation reduces to one function; and the natural commitment is that one function produces one coupled response, not two independent ones.
+Under this reading, the unity assumption is the most natural extension of Postulate 1 to the quantitative question of how vacuum variation produces metric variation. Vacuum is one substance; under spherical symmetry its variation reduces to one function; and the natural commitment is that one function produces one coupled response, not two independent ones.
 
 Nothing in the existing postulates suggests that the time response and the spatial response should be governed by independent coefficients. The postulates commit to both mappings existing; they do not commit to the mappings being independent.
 
@@ -134,7 +134,7 @@ The unity assumption, combined with the framework's other commitments, places sp
 
 2. **At least tensor polarization in the dynamic case**, so that gravitational radiation includes the plus-and-cross transverse modes consistent with LIGO observations and Hulse-Taylor's orbital decay. Pure scalar or pure vector wave structures are excluded observationally. Tensor-plus-scalar or richer structures are permitted provided the scalar (or other) component is suppressed enough to respect binary-pulsar and LIGO constraints.
 
-3. **Propagation at $c$**, following from the identity postulate and the fact that curvature carries energy (Postulate 4) and the vacuum defines how energy propagates.
+3. **Propagation at $c$**, following from Postulate 1 and the fact that curvature carries energy (Postulate 4) and the vacuum defines how energy propagates.
 
 A tensor field of the right kind can satisfy all three simultaneously. The metric perturbation $h_{\mu\nu}$ in linearized general relativity is an example: it is tensor-valued, produces scalar-character response for a static spherically-symmetric source (the Schwarzschild solution), has transverse polarization modes for dynamic perturbations, and propagates at $c$.
 
@@ -183,13 +183,13 @@ Either outcome would reshape the framework. A derivation of unity — particular
 
 ## Dependency Structure
 
-The unity assumption depends directly on the weak-field metric proof (which it closes), on the identity postulate (which grounds the "vacuum as unified substance" intuition), and on the curvature-as-spatial-volume-differential consequence (which introduces "amount of vacuum per coordinate span" as the extensive quantity in which curvature lives).
+The unity assumption depends directly on the weak-field metric proof (which it closes), on Postulate 1 (which grounds the "vacuum as unified substance" intuition), and on the curvature-as-spatial-volume-differential consequence (which introduces "amount of vacuum per coordinate span" as the extensive quantity in which curvature lives).
 
 Through the weak-field metric proof, the candidate inherits dependencies on Postulates 2 and 3, mass-energy equivalence, the redshift proof, the time dilation proof, and special relativity. The candidate does not invoke these directly but they are in the chain.
 
 The candidate does not depend on Postulates 4 or 5. Configuration energy and minimum-energy dynamics play no role in the assumption or its consequences.
 
-This dependency structure is worth tracking because anything that depends on the closed weak-field metric (light bending, Shapiro delay, full geodesic motion) depends transitively on the unity assumption. If unity is refuted, those derivations become invalid. If any of its direct dependencies (the identity postulate, the curvature consequence) is revised, the argument for unity's plausibility may need reworking even if the assumption itself remains consistent with observation.
+This dependency structure is worth tracking because anything that depends on the closed weak-field metric (light bending, Shapiro delay, full geodesic motion) depends transitively on the unity assumption. If unity is refuted, those derivations become invalid. If any of its direct dependencies (Postulate 1, the curvature consequence) is revised, the argument for unity's plausibility may need reworking even if the assumption itself remains consistent with observation.
 
 ---
 
@@ -197,7 +197,7 @@ This dependency structure is worth tracking because anything that depends on the
 
 **Claim:** The Unity Assumption has two components. (1) Static Single-Function: the vacuum's static spherically-symmetric response to a mass is characterized by a single radial function. (2) Equal-Response: both the time-mapping and the spatial-mapping depend on this function through the same coupling coefficient.
 
-**Status:** Provisional. The Single-Function component may be approachable through symmetry plus existing postulates, but spherical symmetry alone does not guarantee a single function — it only reduces independent degrees of freedom to functions of radius. Deriving the single-function form requires additional argument beyond pure symmetry. The Equal-Response component is the stronger claim and the one that actually sets $\gamma_v = 1$; it is natural given the identity postulate but is not derived.
+**Status:** Provisional. The Single-Function component may be approachable through symmetry plus existing postulates, but spherical symmetry alone does not guarantee a single function — it only reduces independent degrees of freedom to functions of radius. Deriving the single-function form requires additional argument beyond pure symmetry. The Equal-Response component is the stronger claim and the one that actually sets $\gamma_v = 1$; it is natural given Postulate 1 but is not derived.
 
 **Consequences if adopted:** $\gamma_v = 1$, weak-field metric closes to linearized Schwarzschild, light bending and Shapiro delay match GR.
 

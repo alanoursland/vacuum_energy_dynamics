@@ -54,7 +54,7 @@ Our framework predicts the qualitative result — energy loss by the source equa
 
 Several quantitative aspects of gravitational waves are standard predictions of GR that our framework cannot yet reproduce or check.
 
-**The wave equation.** GR's linearized field equations give a specific wave equation for metric perturbations, with propagation at speed $c$. Our framework commits to waves existing and propagating at some speed constrained by $c$ (through the identity postulate's implications about information propagation), but does not derive a specific wave equation. Doing so would require the vacuum's mathematical structure.
+**The wave equation.** GR's linearized field equations give a specific wave equation for metric perturbations, with propagation at speed $c$. Our framework commits to waves existing and propagating at some speed constrained by $c$ (through Postulate 1's implications about information propagation), but does not derive a specific wave equation. Doing so would require the vacuum's mathematical structure.
 
 **Polarization structure.** GR predicts gravitational waves have two polarization modes, typically called "plus" and "cross," both transverse to the direction of propagation. Our framework does not yet predict wave polarization. This is particularly interesting because the polarization structure is a strong discriminator between gravitational theories — any framework that predicts different polarizations (additional "breathing" modes, for instance) would conflict with observations. Whether our framework predicts the GR polarizations, or something different, is among the most important open quantitative questions.
 
