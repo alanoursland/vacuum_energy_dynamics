@@ -16,7 +16,7 @@ The addition our framework provides is a physical source and sink for the energy
 
 Consider a photon of energy $E$ traveling vertically through a region with a local gravitational acceleration $g$. Here, $g$ is the magnitude of the curvature gradient, observable as the acceleration a test mass would experience at that location. We treat $g$ as a given quantity of the region, without deriving its value from an underlying mass distribution — the framework does not yet have a mechanism for how mass produces gradients (see the force-mechanism open question). What the framework can derive is what happens to a photon traversing a region of gradient strength $g$, which is sufficient to reach the redshift formula.
 
-Three postulates are invoked.
+Two postulates are invoked.
 
 Postulate 2 establishes that the vacuum has finite locally constant energy density, so the vacuum is a physically real quantity in the region.
 
