@@ -151,7 +151,7 @@ The Newtonian limit recovered by both routes is foundationally robust within the
 
 ## Dependency Structure
 
-The Postulate-3 route depends on Postulates 1 and 3, mass-energy equivalence, and special relativity, treating the gradient strength $g$ as a given observable. It does not require the identity postulate, the curvature consequence, the weak-field metric, or unity once $g$ is treated as given. The Newtonian limit derived through this route is the most foundationally robust quantitative prediction in the framework.
+The Postulate-3 route depends on Postulates 2 and 3, mass-energy equivalence, and special relativity, treating the gradient strength $g$ as a given observable. It does not require the identity postulate, the curvature consequence, the weak-field metric, or unity once $g$ is treated as given. The Newtonian limit derived through this route is the most foundationally robust quantitative prediction in the framework.
 
 The geodesic route depends additionally on the identity postulate, the curvature-as-spatial-volume-differential consequence, the redshift proof, the time dilation proof, the weak-field metric proof, and the unity assumption. The same chain of dependencies as the light deflection and Shapiro delay proofs.
 
@@ -163,7 +163,7 @@ This split dependency structure has a useful property: the leading-order Newtoni
 
 ## What This Proof Accomplishes
 
-As a derivation, the proof recovers Newton's law of gravitation through two routes that depend on different parts of the framework. The first route depends only on Postulates 1 and 3, mass-energy equivalence, and SR; the second depends on the full weak-field metric machinery plus unity. Both produce $\vec{a} = -\nabla\Phi$ as the leading-order equation of motion.
+As a derivation, the proof recovers Newton's law of gravitation through two routes that depend on different parts of the framework. The first route depends only on Postulates 2 and 3, mass-energy equivalence, and SR; the second depends on the full weak-field metric machinery plus unity. Both produce $\vec{a} = -\nabla\Phi$ as the leading-order equation of motion.
 
 As a closure of an open question, the proof addresses the weak-field version of one of the framework's stated open-work items: equations of motion for test bodies in a curvature gradient. The framework now has a derived equation of motion in the weak-field regime, which removes a load-bearing gap in the framework's coverage of bound-system dynamics. The deeper open question of deriving the source gradient $\Phi = -GM/r$ from the vacuum's structure remains separate.
 

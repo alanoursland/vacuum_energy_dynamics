@@ -160,7 +160,7 @@ Next task: derive $\gamma_v = 1$ from the framework's postulates, or identify th
 
 ## Dependency Structure
 
-The derivation depends on Postulates 1 and 3, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the gravitational redshift proof, the gravitational time dilation proof, and special relativity. It does not invoke Postulates 4 or 5.
+The derivation depends on Postulates 2 and 3, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the gravitational redshift proof, the gravitational time dilation proof, and special relativity. It does not invoke Postulates 4 or 5.
 
 The document uses "configuration" language that overlaps with Postulate 4's terminology but does not rely on Postulate 4's content. "Configuration" in this document means how the vacuum is arranged — the distribution of vacuum-per-coordinate-span across locations — and is inherited from the identity postulate and the curvature-as-spatial-volume-differential consequence. Postulate 4's claim that configurations carry energy is a separate commitment, not used here. If later work assigns configuration energy to the arrangements described in this document, Postulate 4 will become relevant; the formal reconstruction itself does not require it.
 

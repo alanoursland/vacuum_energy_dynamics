@@ -1,10 +1,10 @@
-# Postulate 1: Vacuum Energy Density
+# Postulate 2: Vacuum Energy Density
 
 ---
 
 ## Statement
 
-**Postulate 1 (Vacuum Energy Density).** The vacuum possesses a finite energy density $\rho_v$ that is locally constant: every observer, in their own frame, measures the same finite value at every location.
+**Postulate 2 (Vacuum Energy Density).** The vacuum possesses a finite energy density $\rho_v$ that is locally constant: every observer, in their own frame, measures the same finite value at every location.
 
 ---
 
@@ -72,7 +72,7 @@ The postulate is deliberately minimal. Several things are left open that future 
 
 **The value of $\rho_v$.** The postulate says the density is finite and constant. It does not specify what the value is. Whether the value is determined by deeper physics, is a free parameter of the framework, or is to be measured empirically is not settled here.
 
-**Positivity.** The postulate allows $\rho_v$ to be any finite real number, including zero or negative values. In practice, the framework will typically work with positive $\rho_v$, and the cosmological constant is observed to correspond to positive vacuum energy. But Postulate 1 alone does not forbid negative values, and the framework may eventually have reason to consider them.
+**Positivity.** The postulate allows $\rho_v$ to be any finite real number, including zero or negative values. In practice, the framework will typically work with positive $\rho_v$, and the cosmological constant is observed to correspond to positive vacuum energy. But Postulate 2 alone does not forbid negative values, and the framework may eventually have reason to consider them.
 
 **Mathematical structure beyond scalar density.** The postulate commits to $\rho_v$ being a well-defined scalar quantity (energy per unit volume). It does not commit to whether the vacuum has additional mathematical structure — whether it is fundamentally a scalar field, a tensor field, or something richer that includes a scalar density as one component. The "mathematical structure of the vacuum" is flagged in the project's open work and is not resolved by this postulate.
 
@@ -112,13 +112,13 @@ We name this once, here, rather than repeating the caveat in every document. Rea
 
 ## What the Postulate Prepares For
 
-Postulate 1 alone does not deliver much interesting physics. It establishes a setting — a universe filled with vacuum at universal constant density — without specifying what happens in that setting.
+Postulate 2 alone does not deliver much interesting physics. It establishes a setting — a universe filled with vacuum at universal constant density — without specifying what happens in that setting.
 
 What the postulate prepares for is the introduction of exchange dynamics. Once we commit to vacuum as a universal constant-density substance, the question becomes: under what circumstances and by what mechanisms does vacuum exchange energy with matter? The answer is the subject of further postulates not yet written.
 
 When those postulates are introduced, the local constancy established here will be essential. Exchange will have to be understood as a geometric operation — matter removes or adds vacuum to a region while the density of that vacuum stays constant. Curvature emerges as the geometric consequence of this removal or addition. Gravitational phenomena emerge from the dynamics of vacuum exchange in gradient regions.
 
-Postulate 1 is the foundation on which all of that is built. It is minimal by design, committing only to what must be committed to for the rest of the framework to operate. The more interesting moves come later.
+Postulate 2 is the foundation on which all of that is built. It is minimal by design, committing only to what must be committed to for the rest of the framework to operate. The more interesting moves come later.
 
 ---
 

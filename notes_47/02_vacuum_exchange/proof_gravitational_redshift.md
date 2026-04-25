@@ -18,7 +18,7 @@ Consider a photon of energy $E$ traveling vertically through a region with a loc
 
 Three postulates are invoked.
 
-Postulate 1 establishes that the vacuum has finite locally constant energy density, so the vacuum is a physically real quantity in the region.
+Postulate 2 establishes that the vacuum has finite locally constant energy density, so the vacuum is a physically real quantity in the region.
 
 Postulate 3 establishes that energy in a gradient experiences force along the gradient and that motion along the gradient is coordinated with vacuum exchange. A photon moving upward against the gradient has its momentum along the gradient reduced, and this reduction is coordinated with vacuum regeneration in the region traversed. A photon moving downward has its momentum along the gradient increased, coordinated with vacuum consumption.
 

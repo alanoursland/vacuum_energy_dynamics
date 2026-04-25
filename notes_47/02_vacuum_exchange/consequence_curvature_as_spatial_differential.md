@@ -4,9 +4,9 @@
 
 ## What This Document Is
 
-This is a consequence document. It traces out what the framework's existing postulates commit us to say about the geometric nature of curvature, without introducing new postulates. The postulates involved are Postulate 1 (vacuum has locally constant finite energy density) and the vacuum-spacetime identity postulate (vacuum is the substrate that constrains information propagation; vacuum is spacetime).
+This is a consequence document. It traces out what the framework's existing postulates commit us to say about the geometric nature of curvature, without introducing new postulates. The postulates involved are Postulate 2 (vacuum has locally constant finite energy density) and the vacuum-spacetime identity postulate (vacuum is the substrate that constrains information propagation; vacuum is spacetime).
 
-The conclusion is that, under these postulates, spacetime curvature can only be a differential in the amount of vacuum contained in neighboring spans of space. It cannot be variation in density (Postulate 1 forbids this). It cannot be variation in some property separate from vacuum (the identity postulate rules out such separation). The only remaining possibility is that curvature *is* the spatial-volume differential between neighboring spans.
+The conclusion is that, under these postulates, spacetime curvature can only be a differential in the amount of vacuum contained in neighboring spans of space. It cannot be variation in density (Postulate 2 forbids this). It cannot be variation in some property separate from vacuum (the identity postulate rules out such separation). The only remaining possibility is that curvature *is* the spatial-volume differential between neighboring spans.
 
 This is a structural consequence, not a new commitment. It follows from what the framework has already said. We write it out explicitly because the consequence is significant enough to deserve its own treatment, and because it was previously bundled into Postulate 3 in a way that made the postulate's scope unclear.
 
@@ -20,7 +20,7 @@ Our framework must account for this curvature using the substance it has already
 
 Option A: Variation in density. In a region with higher curvature, the vacuum has higher or lower energy density than in flatter regions. This would make curvature a density phenomenon.
 
-This option is ruled out by Postulate 1. The vacuum has locally constant energy density. Every observer at every location measures the same finite value. There is no variation in density to correspond to curvature.
+This option is ruled out by Postulate 2. The vacuum has locally constant energy density. Every observer at every location measures the same finite value. There is no variation in density to correspond to curvature.
 
 Option B: Variation in a property separate from the vacuum. Some other physical quantity — a field, a tensor, a geometric structure distinct from the vacuum itself — varies, and that variation is what curvature is.
 

@@ -4,13 +4,13 @@
 
 ## Statement
 
-**Postulate 4 (Curvature Contains Energy).** The configuration of the vacuum carries energy, measured from a baseline of flat vacuum at zero configuration energy. Any departure from flat — any curvature, any deformation — has positive configuration energy. Infinite curvature, whether as an infinite curvature value or as a discontinuous change in curvature, requires infinite configuration energy and is therefore not physically realizable. Configuration energy is a separate contribution from the energy density of the vacuum (Postulate 1) and counts toward the total energy of a region.
+**Postulate 4 (Curvature Contains Energy).** The configuration of the vacuum carries energy, measured from a baseline of flat vacuum at zero configuration energy. Any departure from flat — any curvature, any deformation — has positive configuration energy. Infinite curvature, whether as an infinite curvature value or as a discontinuous change in curvature, requires infinite configuration energy and is therefore not physically realizable. Configuration energy is a separate contribution from the energy density of the vacuum (Postulate 2) and counts toward the total energy of a region.
 
 ---
 
 ## What the Postulate Says
 
-The postulate commits to curvature being energetic. A curved region of vacuum has more energy in it than a flat region would, not because its density is higher (Postulate 1 forbids density variation) but because its configuration carries energy on top of whatever the vacuum would contribute at its flat baseline.
+The postulate commits to curvature being energetic. A curved region of vacuum has more energy in it than a flat region would, not because its density is higher (Postulate 2 forbids density variation) but because its configuration carries energy on top of whatever the vacuum would contribute at its flat baseline.
 
 Flat vacuum is the reference point. A region of flat vacuum has energy content determined only by its total amount of vacuum times the energy density. Call this the baseline energy. A region with the same amount of vacuum but arranged in a curved configuration has the baseline energy plus an additional positive contribution from the configuration itself.
 

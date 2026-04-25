@@ -18,9 +18,9 @@ Two clocks are placed at different heights in a static gravitational gradient of
 
 The derivation invokes the following.
 
-Postulate 1 establishes that the vacuum has finite locally constant energy density. Postulate 3 establishes that energy in a gradient experiences force along the gradient, with vacuum exchange coordinated to the motion. Mass-energy equivalence (from SR; see `sr_mass_energy_equivalence.md`) establishes that all forms of energy participate in vacuum exchanges per unit energy. Special relativity provides the relation $p = E/c$ for photons, through which Postulate 3's force-per-unit-energy structure applies to photons.
+Postulate 2 establishes that the vacuum has finite locally constant energy density. Postulate 3 establishes that energy in a gradient experiences force along the gradient, with vacuum exchange coordinated to the motion. Mass-energy equivalence (from SR; see `sr_mass_energy_equivalence.md`) establishes that all forms of energy participate in vacuum exchanges per unit energy. Special relativity provides the relation $p = E/c$ for photons, through which Postulate 3's force-per-unit-energy structure applies to photons.
 
-The derivation also uses the result of the gravitational redshift proof: a photon emitted at height $0$ with frequency $\nu_0$ and received at height $h$ has frequency $\nu(h) = \nu_0 \exp(-gh/c^2)$, which reduces to $\nu(h) \approx \nu_0 (1 - gh/c^2)$ in the weak-field limit. This result itself depends on Postulates 1 and 3, mass-energy equivalence, and special relativity, so the time dilation derivation inherits exactly those dependencies and adds nothing formal beyond the observation that clocks emit photons at their local rate.
+The derivation also uses the result of the gravitational redshift proof: a photon emitted at height $0$ with frequency $\nu_0$ and received at height $h$ has frequency $\nu(h) = \nu_0 \exp(-gh/c^2)$, which reduces to $\nu(h) \approx \nu_0 (1 - gh/c^2)$ in the weak-field limit. This result itself depends on Postulates 2 and 3, mass-energy equivalence, and special relativity, so the time dilation derivation inherits exactly those dependencies and adds nothing formal beyond the observation that clocks emit photons at their local rate.
 
 The physical interpretation in the later section additionally invokes the identity postulate and the curvature-as-spatial-volume-differential consequence. These are used to explain *why* the mapping between clocks at different potentials takes the form it does, not to derive the mapping itself. Readers who accept the formal derivation but are uncommitted on the identity postulate can accept the quantitative result while reserving judgment on the interpretation.
 
@@ -109,11 +109,11 @@ For strong fields, the derivation inherits the limitations of the redshift proof
 
 ## Dependency Structure
 
-The derivation depends only on Postulates 1 and 3, mass-energy equivalence, the identity postulate (for interpretation), the curvature-as-spatial-volume-differential consequence (for interpretation), and special relativity. It does not invoke Postulates 4 or 5, which handle configuration energy and minimum-energy dynamics.
+The derivation depends only on Postulates 2 and 3, mass-energy equivalence, the identity postulate (for interpretation), the curvature-as-spatial-volume-differential consequence (for interpretation), and special relativity. It does not invoke Postulates 4 or 5, which handle configuration energy and minimum-energy dynamics.
 
 This narrow dependency is a feature worth noting. Time dilation is insulated from any future revisions to the framework's treatment of configuration energy or wave dynamics. The prediction stands on a tighter base than the framework as a whole. If Postulates 4 or 5 need revision in light of work on field equations, wave modes, or cosmological dynamics, the time-dilation and redshift results do not need to be redone.
 
-The narrow dependency also means that the pair of results (redshift and time dilation) together form a tight subframework: Postulates 1 and 3, mass-energy equivalence, the identity postulate, and special relativity together yield both results, and together they reproduce two independent precision tests of gravitational physics. Any alternative framework that denies these postulates must find another way to account for both observations; any framework that accepts them inherits both predictions.
+The narrow dependency also means that the pair of results (redshift and time dilation) together form a tight subframework: Postulates 2 and 3, mass-energy equivalence, the identity postulate, and special relativity together yield both results, and together they reproduce two independent precision tests of gravitational physics. Any alternative framework that denies these postulates must find another way to account for both observations; any framework that accepts them inherits both predictions.
 
 ---
 
