@@ -14,19 +14,17 @@ This is a `summary_` document — a new prefix in the framework's taxonomy. Unli
 
 ## What the Framework Recovers
 
-The framework currently reproduces six results that match general relativity in the weak-field regime, organized below by their dependency status.
+The framework currently reproduces six weak-field results that match general relativity, organized below by their dependency status.
 
-**Foundationally robust** (depend only on the core postulates and SR):
+**Foundationally robust** (depend only on Postulates 2 and 3, mass-energy equivalence, and SR):
 
-The Newtonian limit of equations of motion, derived directly from Postulate 3 plus mass-energy equivalence: a body in a gradient experiences force $F = (E_{\text{total}}/c^2) \cdot g$, reducing to $F = mg$ and $\vec{a} = -\nabla\Phi$ in the non-relativistic limit. This depends on Postulates 2 and 3, mass-energy equivalence, and SR; no metric, no unity, no second-order time-metric needed. See `proof_weak_field_equations_of_motion.md`.
+The Newtonian limit of equations of motion, derived directly from Postulate 3 plus mass-energy equivalence: a body in a gradient experiences force $F = (E_{\text{total}}/c^2) \cdot g$, reducing to $F = mg$ and $\vec{a} = -\nabla\Phi$ in the non-relativistic limit. No metric, no unity, no second-order time-metric needed. See `proof_weak_field_equations_of_motion.md`.
 
-**Derived from foundations through the redshift-time-dilation chain** (depend on the core postulates plus the redshift exponential at first order):
+Gravitational redshift: photons climbing a gradient lose energy through active vacuum exchange, giving $E(h) = E_0 \exp(-gh/c^2)$, whose weak-field limit matches the Pound-Rebka result. See `proof_gravitational_redshift.md`.
 
-Gravitational redshift: photons climbing a gradient lose energy through active vacuum exchange, giving $E(h) = E_0 \exp(-gh/c^2)$, which matches the Pound-Rebka result. See `proof_gravitational_redshift.md`.
+Gravitational time dilation: clocks in gravitational wells run slower than clocks at higher potential, with the weak-field factor $1 + gh/c^2$ inherited from the redshift formula. Matches GPS timing, Hafele-Keating, and optical-clock comparisons. See `proof_gravitational_time_dilation.md`.
 
-Gravitational time dilation: clocks in gravitational wells run slower than clocks at higher potential, by a factor inherited from the redshift formula. Matches GPS timing, Hafele-Keating, and optical-clock comparisons. See `proof_gravitational_time_dilation.md`.
-
-Weak-field $g_{00}$ at first order: $g_{00} \approx -(1 + 2\Phi/c^2)$, derived cleanly from the time dilation result in metric notation. See `proof_weak_field_metric.md`.
+These three results all derive from the same compact postulate base, with no metric machinery required and no provisional candidates inherited. They are the framework's strongest derivations in terms of dependency parsimony. Translated into metric notation, the time dilation result gives weak-field $g_{00} \approx -(1 + 2\Phi/c^2)$ at first order — the transitional bridge into the GR-recovery program (see `proof_weak_field_metric.md`), where the framework adopts metric-language machinery for derivations that follow.
 
 **Derived conditionally on unity** (depend additionally on $\gamma_v = 1$ from `candidate_vacuum_variation_unity.md`):
 
@@ -74,19 +72,19 @@ $\gamma$ (spatial-curvature parameter): Identified with the framework's $\gamma_
 
 $\beta$ (nonlinearity parameter): Provisionally fixed at $\beta = 1$ via the second-order time-metric candidate. Tested by perihelion precession and the Nordtvedt effect.
 
-**Parameters that should follow from existing framework commitments but have not been formally argued:**
+**Parameters that are natural targets for derivation from existing framework commitments but have not been formally argued:**
 
-$\alpha_3$ (preferred-frame plus conservation): The framework's commitment to local Lorentz invariance and to energy conservation through vacuum exchange should give $\alpha_3 = 0$ (the GR value). Formal derivation from the framework's postulates has not been written.
+$\alpha_3$ (preferred-frame plus conservation): The framework's commitment to local Lorentz invariance and to energy conservation through vacuum exchange may be expected to give $\alpha_3 = 0$ (the GR value), but the formal derivation from the framework's postulates has not been written. The framework has not yet defined enough full dynamics to make the commitment automatic.
 
-$\zeta_1, \zeta_2, \zeta_3, \zeta_4$ (conservation-law violations): The framework's energy bookkeeping (vacuum exchange conserving total energy plus mass-energy in interactions) should give these all equal to 0 (the GR values). Formal derivation has not been written.
+$\zeta_1, \zeta_2, \zeta_3, \zeta_4$ (conservation-law violations): The framework's energy bookkeeping (vacuum exchange conserving total energy plus mass-energy in interactions) may be expected to give these all equal to 0 (the GR values), but formal derivation has not been written.
 
 **Parameters not addressed:**
 
 $\xi$ (preferred-location effects): The framework's static spherically-symmetric content doesn't directly engage with whether the laws of gravity vary with location in the universe. A formal commitment requires more structural work than the framework currently has.
 
-$\alpha_1, \alpha_2$ (preferred-frame anisotropy effects): Similar to $\alpha_3$, these should follow from local Lorentz invariance, but the formal argument hasn't been made. Solar-system tests constrain them tightly.
+$\alpha_1, \alpha_2$ (preferred-frame anisotropy effects): Similar to $\alpha_3$, these are natural targets for derivation from local Lorentz invariance, but the formal argument hasn't been made. Solar-system tests constrain them tightly.
 
-If all the parameters that "should follow from existing commitments" were formally derived, and the two provisional candidates were promoted to derivations, the framework would have $\gamma = \beta = 1$ derived, $\alpha_3 = \zeta_i = 0$ derived, and $\xi, \alpha_1, \alpha_2$ remaining as items needing additional structural commitments. This is a substantial future research program but a tractable one.
+If the parameters that are natural targets for derivation were formally derived, and the two provisional candidates were promoted to derivations, the framework would have $\gamma = \beta = 1$ derived, $\alpha_3 = \zeta_i = 0$ derived, and $\xi, \alpha_1, \alpha_2$ remaining as items needing additional structural commitments. This is a substantial future research program but a tractable one.
 
 ---
 
@@ -102,11 +100,11 @@ Derive the rigorous extension of the redshift exponential to spherically symmetr
 
 **Extensions of existing machinery** (concrete next steps within the weak-field program):
 
-Frame dragging and the $g_{0i}$ sector for rotating sources. Required for geodetic precession and Lense-Thirring frame-dragging measurements (both confirmed by Gravity Probe B). The framework's static-spherically-symmetric machinery would need extension to rotating sources.
+Geodetic precession of orbiting gyroscopes. Standard application of the geodesic equation to spinning test bodies in the existing static weak-field metric. Arises from spacetime curvature even around a non-rotating mass and does not require new metric content beyond what the framework already has.
 
 Nordtvedt effect / Strong Equivalence Principle behavior. Tests whether gravitational binding energy contributes to a body's gravitational mass. Constrains $\beta$ in the PPN framework and provides another test of the second-order time-metric candidate.
 
-Geodetic precession of orbiting gyroscopes. Standard application of the geodesic equation to spinning test bodies in the weak-field metric.
+Frame dragging and the $g_{0i}$ sector for rotating sources. Required for Lense-Thirring effects, which were measured by Gravity Probe B alongside geodetic precession. The framework's static-spherically-symmetric machinery would need extension to rotating sources, introducing $g_{0i}$ components that the framework does not currently have.
 
 Higher-order post-Newtonian content for binary systems. Required to compute orbital decay rates of binary pulsars and compare with Hulse-Taylor's precision constraints.
 
@@ -147,11 +145,11 @@ These are the highest-priority because they remove provisional status from exist
 
 **Tier 2 — Extend existing machinery to additional weak-field tests.**
 
-3. Frame dragging and $g_{0i}$ sector. Brings the framework into contact with Gravity Probe B and pulsar timing.
-4. Geodetic precession. Standard application of existing geodesic machinery.
-5. Nordtvedt / SEP. Tests $\beta$ through a new observational channel.
+3. Geodetic precession. Standard application of existing geodesic machinery to spinning test bodies in the static weak-field metric. Accessible from machinery the framework already has.
+4. Nordtvedt / SEP. Tests $\beta$ through a new observational channel; uses commitments adjacent to the second-order time-metric candidate.
+5. Frame dragging and $g_{0i}$ sector. Requires extending the framework to rotating sources, a bigger structural step than the previous two. Brings the framework into contact with the Lense-Thirring portion of Gravity Probe B and pulsar timing.
 
-These are concrete next applications of the framework's machinery that don't require new structural commitments.
+These are concrete next applications of the framework's machinery, ordered by how much new structural work each requires.
 
 **Tier 3 — Develop foundational structure.**
 
@@ -175,12 +173,13 @@ These are downstream of the foundational work. Pursuing them now without the fou
 
 ## Summary
 
-**Six precision-test results reproduced**, drawn from the framework's postulate base plus two provisional candidate commitments:
+**Six weak-field results reproduced**, drawn from the framework's postulate base plus two provisional candidate commitments:
 
 | Result | Foundationally robust | Conditional on unity | Conditional on second-order time-metric |
 |--------|-----------------------|----------------------|------------------------------------------|
 | Newtonian motion | ✓ | | |
-| Redshift / time dilation | ✓ | | |
+| Gravitational redshift | ✓ | | |
+| Gravitational time dilation | ✓ | | |
 | Light deflection | | ✓ | |
 | Shapiro delay | | ✓ | |
 | Perihelion precession | | ✓ | ✓ |
