@@ -24,7 +24,7 @@ Third, changes in the configuration propagate. When the minimum changes at some 
 
 ## Gravity Wells as Minimum-Energy Configurations
 
-A static mass sits in a region of vacuum. Its presence is a constraint on the vacuum — some amount of vacuum has been locally reduced. The framework does not yet explain why mass reduces vacuum in the first place; this is the same open question as the force mechanism from Postulate 2. What the framework does commit to is that once a mass exists, its presence acts as a constraint on the surrounding vacuum configuration.
+A static mass sits in a region of vacuum. Its presence is a constraint on the vacuum — some amount of vacuum has been locally reduced. The framework does not yet explain why mass reduces vacuum in the first place; this is the same open question as the force mechanism from Postulate 3. What the framework does commit to is that once a mass exists, its presence acts as a constraint on the surrounding vacuum configuration.
 
 Under Postulate 5, the vacuum settles into whichever configuration minimizes total configuration energy given that constraint. That configuration is the gravity well shape. The well is not a rigid accessory dragged around by the mass — it is the answer to an optimization problem, continuously re-solved as the constraint's location (the mass's position) changes.
 
@@ -58,9 +58,9 @@ The match with GR is qualitative here. Whether our framework produces the correc
 
 ## The Energy Accounting
 
-Combined with Postulate 2 (vacuum exchange during gradient traversal), this postulate gives the framework an account of energy flow in gravitational processes.
+Combined with Postulate 3 (vacuum exchange during gradient traversal), this postulate gives the framework an account of energy flow in gravitational processes.
 
-When a mass moves through a gradient, vacuum is consumed (Postulate 2). The consumed vacuum's energy has potential destinations: kinetic energy of the moving mass, or configuration energy stored in disturbances to the surrounding vacuum that will eventually relax. When the configuration later relaxes from its disturbed state toward minimum, the released configuration energy has two further destinations — it can convert back to vacuum energy as the region returns to the minimum-energy configuration, or it can radiate outward as curvature waves.
+When a mass moves through a gradient, vacuum is consumed (Postulate 3). The consumed vacuum's energy has potential destinations: kinetic energy of the moving mass, or configuration energy stored in disturbances to the surrounding vacuum that will eventually relax. When the configuration later relaxes from its disturbed state toward minimum, the released configuration energy has two further destinations — it can convert back to vacuum energy as the region returns to the minimum-energy configuration, or it can radiate outward as curvature waves.
 
 For a mass in free-fall — the natural motion in a gradient, with the vacuum smoothly accommodating the mass's trajectory — essentially all the consumption goes to kinetic energy. Any disturbances to the configuration as the mass moves relax smoothly and return their energy to the vacuum. No waves are produced.
 

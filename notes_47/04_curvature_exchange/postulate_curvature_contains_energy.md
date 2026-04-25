@@ -30,7 +30,7 @@ Fourth, configuration energy is distinct from the density-times-amount contribut
 
 Several things now become coherent that were fuzzy before.
 
-Gravity wells contain energy. A static gravitational well around a mass is not just a geometric feature of spacetime — it is a region of stored energy. The energy is stored in the configuration of the surrounding vacuum. This explains how a well can transfer energy to falling objects: the well releases some of its stored configuration energy as the object descends, alongside the vacuum consumption that Postulate 2 describes.
+Gravity wells contain energy. A static gravitational well around a mass is not just a geometric feature of spacetime — it is a region of stored energy. The energy is stored in the configuration of the surrounding vacuum. This explains how a well can transfer energy to falling objects: the well releases some of its stored configuration energy as the object descends, alongside the vacuum consumption that Postulate 3 describes.
 
 Gravitational waves can carry energy. A propagating deformation in the vacuum is a changing configuration, and under this postulate, configurations have energy. A wave moving outward from a disturbed region carries configuration energy away from that region.
 

@@ -1,10 +1,10 @@
-# Postulate 2: Vacuum Exchange in Gradients
+# Postulate 3: Vacuum Exchange in Gradients
 
 ---
 
 ## Statement
 
-**Postulate 2 (Vacuum Exchange in Gradients).** Any energy in a region of curvature gradient experiences a force directed along the gradient. This force applies uniformly to every quantum of energy — every proton, electron, photon, field configuration, or other form of energy receives the same force per unit of its own energy, regardless of kind. The mechanism underlying this force is not proposed here; it is associated intuitively with a vacuum pressure differential, but the exact mechanism remains an open question.
+**Postulate 3 (Vacuum Exchange in Gradients).** Any energy in a region of curvature gradient experiences a force directed along the gradient. This force applies uniformly to every quantum of energy — every proton, electron, photon, field configuration, or other form of energy receives the same force per unit of its own energy, regardless of kind. The mechanism underlying this force is not proposed here; it is associated intuitively with a vacuum pressure differential, but the exact mechanism remains an open question.
 
 When energy moves along a gradient toward greater curvature, its momentum along the gradient increases and vacuum is consumed in the region traversed. When energy moves against the gradient toward lesser curvature, its momentum along the gradient decreases and vacuum is regenerated.
 
@@ -30,11 +30,11 @@ The postulate also does not take a position on how vacuum consumption and regene
 
 The postulate's universality claim — that force acts uniformly per unit energy on every quantum — is effectively a restatement of the equivalence principle, which in its standard form says that gravitational mass and inertial mass are equal for every object.
 
-The connection is direct. Under Postulate 2, the total gravitational force on an object is the sum of the forces on each quantum of energy within it. Since the force per quantum is proportional to the quantum's energy, the total force is proportional to the object's total energy. By mass-energy equivalence (from SR) and special relativity, an object's total rest energy divided by $c^2$ is both its rest mass (by the SR relation $E = mc^2$) and its inertial mass (the quantity that resists acceleration in Newton's second law). So gravitational force on an object is proportional to its inertial mass, which is the equivalence principle.
+The connection is direct. Under Postulate 3, the total gravitational force on an object is the sum of the forces on each quantum of energy within it. Since the force per quantum is proportional to the quantum's energy, the total force is proportional to the object's total energy. By mass-energy equivalence (from SR) and special relativity, an object's total rest energy divided by $c^2$ is both its rest mass (by the SR relation $E = mc^2$) and its inertial mass (the quantity that resists acceleration in Newton's second law). So gravitational force on an object is proportional to its inertial mass, which is the equivalence principle.
 
 Written as a brief derivation: for an object of total rest energy $E = Mc^2$, the gravitational force in a gradient of strength $g$ is $F = (g/c^2) \cdot E = Mg$, where the factor $g/c^2$ is force per unit energy from the postulate and $c^2$ converts gradient units to force-per-energy units. The acceleration from Newton's second law is $a = F/M = g$, independent of $M$. All objects fall at the same rate.
 
-This means our framework does not treat the equivalence principle as an independent postulate, as general relativity does. The equivalence principle is built into Postulate 2's universality claim. A reader asking "why do all objects fall at the same rate in a gravitational field" can be answered directly from the postulate: because gravity acts per unit energy, and inertial mass is proportional to energy, so acceleration is independent of the total energy of the falling object.
+This means our framework does not treat the equivalence principle as an independent postulate, as general relativity does. The equivalence principle is built into Postulate 3's universality claim. A reader asking "why do all objects fall at the same rate in a gravitational field" can be answered directly from the postulate: because gravity acts per unit energy, and inertial mass is proportional to energy, so acceleration is independent of the total energy of the falling object.
 
 Whether this is a genuine reduction in the framework's independent assumptions depends on how one counts. The universality claim and the equivalence principle are essentially the same observational content expressed in different language. Our framework phrases it in terms of energy; the standard formulation phrases it in terms of mass. The two formulations are equivalent through mass-energy equivalence, so we have not replaced the equivalence principle with something more fundamental — we have restated it in energy terms and made it an aspect of a broader postulate rather than a standalone principle.
 
@@ -110,9 +110,9 @@ Our framework shares the broad intuition with Sakharov-Puthoff that gravity is d
 
 First, the ontological status of the vacuum differs. Puthoff treats the vacuum as the zero-point field of the electromagnetic field, a field defined on a separate spacetime manifold — Option 1 in our identity document's four-option taxonomy. Our framework takes the vacuum to *be* spacetime (Option 3), which is a different ontological commitment.
 
-Second, Puthoff's mechanism addresses the force half of our Postulate 2 — the claim that masses experience a force along gradients — but does not address the exchange half. In Puthoff's picture, the ZPF is homogeneous, isotropic, and Lorentz-invariant everywhere; nothing about it changes as masses move through gradients. The kinetic energy a falling mass gains is handled through standard potential-energy bookkeeping, not through any physical substrate being consumed or regenerated. Our framework's distinctive claim — that gravitational energy flow has a physical source and sink in the vacuum itself — is not something Puthoff's mechanism supplies.
+Second, Puthoff's mechanism addresses the force half of our Postulate 3 — the claim that masses experience a force along gradients — but does not address the exchange half. In Puthoff's picture, the ZPF is homogeneous, isotropic, and Lorentz-invariant everywhere; nothing about it changes as masses move through gradients. The kinetic energy a falling mass gains is handled through standard potential-energy bookkeeping, not through any physical substrate being consumed or regenerated. Our framework's distinctive claim — that gravitational energy flow has a physical source and sink in the vacuum itself — is not something Puthoff's mechanism supplies.
 
-A Puthoff-style Zitterbewegung mechanism could in principle be grafted onto our framework as a microscopic account of the force, while leaving the vacuum-exchange content of Postulate 2 as an additional commitment about energy flow. Whether the two programs can be consistently combined — whether ZPF-induced force and vacuum-exchange energy flow can cohabit in a single theory — is an open question we do not settle here.
+A Puthoff-style Zitterbewegung mechanism could in principle be grafted onto our framework as a microscopic account of the force, while leaving the vacuum-exchange content of Postulate 3 as an additional commitment about energy flow. Whether the two programs can be consistently combined — whether ZPF-induced force and vacuum-exchange energy flow can cohabit in a single theory — is an open question we do not settle here.
 
 ---
 

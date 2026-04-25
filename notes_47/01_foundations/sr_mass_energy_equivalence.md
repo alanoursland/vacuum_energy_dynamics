@@ -12,9 +12,9 @@ This is not a framework postulate. It follows from special relativity, which the
 
 ## What This Does
 
-Postulate 2 commits to the gravitational force acting uniformly on every quantum of energy, with equal force per unit energy regardless of the kind. Mass-energy equivalence specifies what counts as a quantum of energy for that purpose: every form of energy identified by special relativity as mass-equivalent, including rest mass-energy, kinetic energy, and all other forms. Photons with zero rest mass are full participants through their total energy $E$, which enters vacuum exchanges as $E/c^2$ of effective mass.
+Postulate 3 commits to the gravitational force acting uniformly on every quantum of energy, with equal force per unit energy regardless of the kind. Mass-energy equivalence specifies what counts as a quantum of energy for that purpose: every form of energy identified by special relativity as mass-equivalent, including rest mass-energy, kinetic energy, and all other forms. Photons with zero rest mass are full participants through their total energy $E$, which enters vacuum exchanges as $E/c^2$ of effective mass.
 
-Together, Postulate 2 and mass-energy equivalence give the framework the equivalence principle: gravity acts on all energy equally, and all forms of energy count. This is what makes the framework's treatment of mass and light uniform, and what allows derivations of gravitational effects on photons (such as gravitational redshift) to proceed from the same foundation as derivations about massive particles.
+Together, Postulate 3 and mass-energy equivalence give the framework the equivalence principle: gravity acts on all energy equally, and all forms of energy count. This is what makes the framework's treatment of mass and light uniform, and what allows derivations of gravitational effects on photons (such as gravitational redshift) to proceed from the same foundation as derivations about massive particles.
 
 ---
 

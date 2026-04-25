@@ -18,7 +18,7 @@ The framework currently reproduces six results that match general relativity in 
 
 **Foundationally robust** (depend only on the core postulates and SR):
 
-The Newtonian limit of equations of motion, derived directly from Postulate 2 plus mass-energy equivalence: a body in a gradient experiences force $F = (E_{\text{total}}/c^2) \cdot g$, reducing to $F = mg$ and $\vec{a} = -\nabla\Phi$ in the non-relativistic limit. This depends on Postulates 1 and 2, mass-energy equivalence, and SR; no metric, no unity, no second-order time-metric needed. See `proof_weak_field_equations_of_motion.md`.
+The Newtonian limit of equations of motion, derived directly from Postulate 3 plus mass-energy equivalence: a body in a gradient experiences force $F = (E_{\text{total}}/c^2) \cdot g$, reducing to $F = mg$ and $\vec{a} = -\nabla\Phi$ in the non-relativistic limit. This depends on Postulates 1 and 3, mass-energy equivalence, and SR; no metric, no unity, no second-order time-metric needed. See `proof_weak_field_equations_of_motion.md`.
 
 **Derived from foundations through the redshift-time-dilation chain** (depend on the core postulates plus the redshift exponential at first order):
 

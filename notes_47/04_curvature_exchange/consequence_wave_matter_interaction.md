@@ -8,7 +8,7 @@ This is a consequence document. It traces what the framework's postulates commit
 
 The phenomenon is empirically established: gravitational waves affect matter. LIGO's detectors work by measuring the tiny displacements induced in test masses as waves pass through. The framework must be consistent with this observation and should have something to say about the underlying mechanism.
 
-Our framework provides a specific account of the interaction. A passing gravitational wave is a propagating curvature change. By Postulate 2, matter in a curvature gradient experiences force and vacuum is exchanged. The wave therefore drives vacuum exchange in matter it traverses, and this exchange has energy consequences for both the wave and the matter. The framework's postulates, taken together, describe how the interaction works and where the energy goes.
+Our framework provides a specific account of the interaction. A passing gravitational wave is a propagating curvature change. By Postulate 3, matter in a curvature gradient experiences force and vacuum is exchanged. The wave therefore drives vacuum exchange in matter it traverses, and this exchange has energy consequences for both the wave and the matter. The framework's postulates, taken together, describe how the interaction works and where the energy goes.
 
 The account is qualitative. We can describe the mechanism but cannot predict attenuation rates, scattering patterns, or other quantitative aspects. These depend on the mathematical structure of the vacuum, which remains an open question.
 
@@ -18,9 +18,9 @@ The account is qualitative. We can describe the mechanism but cannot predict att
 
 A gravitational wave propagating through a region of space is a sequence of changing curvature configurations passing through that region. At any instant, the region through which the wave is currently passing has some non-zero curvature that it would not have in the wave's absence.
 
-When matter is present in such a region, Postulate 2 applies. Any energy in a region of curvature gradient experiences force along the gradient, applied uniformly per unit energy. Each bit of matter in the region responds to the wave's instantaneous curvature as it would to any gradient. The matter experiences force, moves slightly, and vacuum is consumed or regenerated in coordination with its motion.
+When matter is present in such a region, Postulate 3 applies. Any energy in a region of curvature gradient experiences force along the gradient, applied uniformly per unit energy. Each bit of matter in the region responds to the wave's instantaneous curvature as it would to any gradient. The matter experiences force, moves slightly, and vacuum is consumed or regenerated in coordination with its motion.
 
-This is the mechanism that LIGO exploits. The interferometer's mirrors are at opposite ends of long arms, and passing waves cause them to shift slightly relative to each other as the local curvature oscillates through the plus-and-cross patterns that characterize gravitational wave polarization. The shifts are tiny — typically less than $10^{-18}$ meters for the waves LIGO has detected — but they are real displacements produced by the wave's action on the mirrors through Postulate 2's force-on-energy mechanism.
+This is the mechanism that LIGO exploits. The interferometer's mirrors are at opposite ends of long arms, and passing waves cause them to shift slightly relative to each other as the local curvature oscillates through the plus-and-cross patterns that characterize gravitational wave polarization. The shifts are tiny — typically less than $10^{-18}$ meters for the waves LIGO has detected — but they are real displacements produced by the wave's action on the mirrors through Postulate 3's force-on-energy mechanism.
 
 Crucially, the framework makes the same prediction for any energy in the wave's path, not just bulk matter. A photon traversing a region where a gravitational wave is passing experiences the wave's curvature as a gradient, and its momentum along the gradient shifts accordingly. This is consistent with standard physics — gravitational waves should affect light propagation in principle, though the effect is typically too small to detect directly.
 
@@ -28,7 +28,7 @@ Crucially, the framework makes the same prediction for any energy in the wave's 
 
 ## The Energy Consequences
 
-The interaction involves energy exchange. When matter in the wave's path is displaced, vacuum is consumed or regenerated (Postulate 2). The matter now sits in a region of slightly altered vacuum configuration, and that configuration has some associated configuration energy (Postulate 4) relative to what it would have without the wave's influence.
+The interaction involves energy exchange. When matter in the wave's path is displaced, vacuum is consumed or regenerated (Postulate 3). The matter now sits in a region of slightly altered vacuum configuration, and that configuration has some associated configuration energy (Postulate 4) relative to what it would have without the wave's influence.
 
 Where does this energy come from and where does it go?
 
@@ -68,7 +68,7 @@ Whether our framework predicts any wave-matter refraction effects beyond standar
 
 A related question is whether gravitational waves interact with each other. Two waves passing through the same region produce a combined curvature that is the sum (in some sense) of the individual waves' curvatures. The combined curvature acts on any energy in the region, including the energy of the waves themselves.
 
-Under the framework's postulates, wave energy is configuration energy (Postulate 4). Configuration energy counts toward the total energy of a region. By Postulate 2, this energy should experience force in a curvature gradient — including the curvature gradient produced by other waves.
+Under the framework's postulates, wave energy is configuration energy (Postulate 4). Configuration energy counts toward the total energy of a region. By Postulate 3, this energy should experience force in a curvature gradient — including the curvature gradient produced by other waves.
 
 So wave-wave interaction should occur under the framework. Whether it is significant, and what form it takes, is less clear.
 
@@ -84,9 +84,9 @@ We call this out explicitly: the framework predicts wave-wave interaction exists
 
 LIGO's operation provides a concrete test case for the framework's account of wave-matter interaction. The detector works by bouncing laser light between mirrors at the ends of long, perpendicular arms (four kilometers each at LIGO Hanford and Livingston). Passing gravitational waves cause the arm lengths to oscillate, changing the interference pattern of the returning light beams. The signal is the time-varying interference pattern, which encodes the passing wave's amplitude and polarization.
 
-Under our framework, this works as follows. A passing wave produces time-varying curvature in the region of the detector. The mirrors, being energy configurations (matter with rest mass-energy), experience force in this time-varying gradient per Postulate 2. They shift slightly in response, in patterns corresponding to the wave's plus-and-cross polarizations as predicted by general relativity. The light propagating in the arms also experiences the wave's curvature — photons too are energy, and their propagation is affected by the gradient.
+Under our framework, this works as follows. A passing wave produces time-varying curvature in the region of the detector. The mirrors, being energy configurations (matter with rest mass-energy), experience force in this time-varying gradient per Postulate 3. They shift slightly in response, in patterns corresponding to the wave's plus-and-cross polarizations as predicted by general relativity. The light propagating in the arms also experiences the wave's curvature — photons too are energy, and their propagation is affected by the gradient.
 
-Both mirror displacement and photon propagation effects contribute to the observed interference pattern change. Our framework handles both through the same universal claim in Postulate 2 — force per unit energy is uniform for every quantum, whether the quantum is rest mass-energy in a mirror or photon energy traveling between mirrors.
+Both mirror displacement and photon propagation effects contribute to the observed interference pattern change. Our framework handles both through the same universal claim in Postulate 3 — force per unit energy is uniform for every quantum, whether the quantum is rest mass-energy in a mirror or photon energy traveling between mirrors.
 
 The agreement between LIGO observations and general relativity's predictions [Abbott et al., 2016, 2017 and subsequent detections] is also agreement between LIGO observations and our framework's qualitative predictions. Both frameworks predict the same basic phenomenon: mirrors move, interference patterns change, signals correlate with specific wave polarization patterns. Where our framework diverges from GR would be in quantitative details that LIGO has not yet had precision to distinguish.
 
@@ -96,13 +96,13 @@ The agreement between LIGO observations and general relativity's predictions [Ab
 
 This consequence commits the framework to the following:
 
-Waves interact with matter through Postulate 2's force-on-energy mechanism. The same mechanism that produces gravitational attraction produces wave-matter interaction. There is no separate machinery for how waves affect matter; it is the same postulate applied to a time-varying curvature.
+Waves interact with matter through Postulate 3's force-on-energy mechanism. The same mechanism that produces gravitational attraction produces wave-matter interaction. There is no separate machinery for how waves affect matter; it is the same postulate applied to a time-varying curvature.
 
 The interaction involves energy exchange. Waves transfer some of their configuration energy into matter motion and local vacuum configuration changes as they pass. After the wave has passed, the released energy partially returns to vacuum and partially re-radiates as new waves.
 
 Waves attenuate when they traverse matter. The mechanism is dissipation into vacuum plus scattering into new waves. The quantitative rate depends on machinery the framework doesn't yet have.
 
-Wave-wave interaction occurs in principle. Any energy experiences force in any curvature gradient under Postulate 2, including wave energy in wave gradients. Quantitative predictions await further development.
+Wave-wave interaction occurs in principle. Any energy experiences force in any curvature gradient under Postulate 3, including wave energy in wave gradients. Quantitative predictions await further development.
 
 Wave refraction by matter may occur beyond standard gravitational lensing. The framework's commitments are suggestive but not decisive; this is flagged as a possibility rather than a committed prediction.
 

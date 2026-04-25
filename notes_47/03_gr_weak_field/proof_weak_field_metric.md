@@ -68,7 +68,7 @@ The framework's identity postulate, combined with the curvature-as-spatial-volum
 
 The qualitative claim is unambiguous. The quantitative coefficient is not.
 
-The time-mapping coefficient was pinned down by the redshift proof's derivation, which used Postulate 2's force-per-unit-energy structure to compute how photon energy changes during vertical traversal. The coefficient of the time-mapping effect — the $2\Phi/c^2$ factor in the weak-field limit — falls out of that calculation directly.
+The time-mapping coefficient was pinned down by the redshift proof's derivation, which used Postulate 3's force-per-unit-energy structure to compute how photon energy changes during vertical traversal. The coefficient of the time-mapping effect — the $2\Phi/c^2$ factor in the weak-field limit — falls out of that calculation directly.
 
 No analogous calculation is available for the spatial-mapping. The framework commits to the spatial-mapping existing as a consequence of vacuum-extent variation, but the current postulates do not determine how strongly the spatial interval responds to a given amount of vacuum depletion. Three different assumptions about the mathematical structure of the vacuum could each be consistent with the postulates we have:
 
@@ -160,7 +160,7 @@ Next task: derive $\gamma_v = 1$ from the framework's postulates, or identify th
 
 ## Dependency Structure
 
-The derivation depends on Postulates 1 and 2, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the gravitational redshift proof, the gravitational time dilation proof, and special relativity. It does not invoke Postulates 4 or 5.
+The derivation depends on Postulates 1 and 3, mass-energy equivalence, the identity postulate, the curvature-as-spatial-volume-differential consequence, the gravitational redshift proof, the gravitational time dilation proof, and special relativity. It does not invoke Postulates 4 or 5.
 
 The document uses "configuration" language that overlaps with Postulate 4's terminology but does not rely on Postulate 4's content. "Configuration" in this document means how the vacuum is arranged — the distribution of vacuum-per-coordinate-span across locations — and is inherited from the identity postulate and the curvature-as-spatial-volume-differential consequence. Postulate 4's claim that configurations carry energy is a separate commitment, not used here. If later work assigns configuration energy to the arrangements described in this document, Postulate 4 will become relevant; the formal reconstruction itself does not require it.
 
