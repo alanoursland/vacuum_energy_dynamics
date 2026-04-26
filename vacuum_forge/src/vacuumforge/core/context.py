@@ -36,6 +36,7 @@ from vacuumforge.modes.transforms import TransformEngine
 from vacuumforge.reports.markdown import ReportManager
 from vacuumforge.requirements.targets import TargetLibrary, build_standard_targets
 from vacuumforge.requirements.validators import RequirementManager
+from vacuumforge.structure_search.search import StructureSearchEngine
 from vacuumforge.theorems.candidates import TheoremRegistry
 
 
@@ -196,6 +197,7 @@ class TheoryContext:
         self.dimensions = DimensionChecker()
         self.scope = ScopeManager()
         self.theorems = TheoremRegistry()
+        self.structure_search = StructureSearchEngine()
 
         # Notation profile
         self._notation: NotationProfile = FRAMEWORK_PROFILE
