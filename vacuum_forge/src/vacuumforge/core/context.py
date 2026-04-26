@@ -13,11 +13,14 @@ import sympy
 
 from vacuumforge.core.assumptions import AssumptionManager
 from vacuumforge.core.dependency import DependencyGraph, DerivationRecord
-from vacuumforge.energy.functional import EnergyManager
-from vacuumforge.energy.positivity import check_quadratic_positivity
+from vacuumforge.core.dimensions import DimensionChecker
 from vacuumforge.core.expressions import ExpressionStore
 from vacuumforge.core.ledger import TheoryLedger
+from vacuumforge.core.notation import FRAMEWORK_PROFILE, NotationProfile
+from vacuumforge.core.scope import ScopeLevel, ScopeManager
 from vacuumforge.core.symbols import SymbolRegistry
+from vacuumforge.energy.functional import EnergyManager
+from vacuumforge.energy.positivity import check_quadratic_positivity
 from vacuumforge.metric.expansion import ExpansionEngine
 from vacuumforge.metric.ppn import PPNResult, extract_all, extract_beta, extract_gamma
 from vacuumforge.metric.reciprocal import (
@@ -30,8 +33,10 @@ from vacuumforge.metric.weak_field import WeakFieldMetric
 from vacuumforge.modes.sources import SourceManager
 from vacuumforge.modes.standard import AlgebraicModeSymbols, create_algebraic_symbols
 from vacuumforge.modes.transforms import TransformEngine
+from vacuumforge.reports.markdown import ReportManager
 from vacuumforge.requirements.targets import TargetLibrary, build_standard_targets
 from vacuumforge.requirements.validators import RequirementManager
+from vacuumforge.theorems.candidates import TheoremRegistry
 
 
 class _ModeProxy:
@@ -187,6 +192,13 @@ class TheoryContext:
         self.sources = SourceManager()
         self.energy = EnergyManager()
         self.requirements = RequirementManager()
+        self.reports = ReportManager(self)
+        self.dimensions = DimensionChecker()
+        self.scope = ScopeManager()
+        self.theorems = TheoremRegistry()
+
+        # Notation profile
+        self._notation: NotationProfile = FRAMEWORK_PROFILE
 
         # Subsystem proxies
         self.modes = _ModeProxy(self)
@@ -195,9 +207,28 @@ class TheoryContext:
         self.ppn = _PPNProxy(self)
         self.checks = _ChecksProxy(self)
 
+        # Display proxy (lazy import to avoid circular)
+        self._display = None
+
         # Internal state
         self._mode_symbols: AlgebraicModeSymbols | None = None
         self._targets: TargetLibrary | None = None
+
+    @property
+    def display(self):
+        """Lazy-loaded display proxy for notebook/terminal output."""
+        if self._display is None:
+            from vacuumforge.display import DisplayProxy
+            self._display = DisplayProxy(self)
+        return self._display
+
+    @property
+    def notation(self) -> NotationProfile:
+        return self._notation
+
+    @notation.setter
+    def notation(self, profile: NotationProfile) -> None:
+        self._notation = profile
 
     def define_equal_response_algebraic_symbols(self) -> AlgebraicModeSymbols:
         """Define the standard algebraic symbol set for equal-response analysis.
@@ -299,6 +330,17 @@ class TheoryContext:
         import copy
         return copy.deepcopy(self)
 
+    def save(self, path: str) -> None:
+        """Save this context to a YAML session file."""
+        from vacuumforge.persistence.session import save_session
+        save_session(self, path)
+
+    @classmethod
+    def load(cls, path: str) -> TheoryContext:
+        """Load a context from a YAML session file."""
+        from vacuumforge.persistence.session import load_session
+        return load_session(path)
+
     def summary(self) -> str:
         parts = [
             f"TheoryContext: {self.name}",
@@ -309,5 +351,8 @@ class TheoryContext:
             self.sources.summary(),
             self.ledger.summary(),
             self.dependencies.summary(),
+            self.scope.summary(),
         ]
+        if self.theorems.list():
+            parts.append(self.theorems.summary())
         return "\n\n".join(parts)
