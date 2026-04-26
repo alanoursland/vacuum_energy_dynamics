@@ -71,6 +71,8 @@ This folder contains the framework's program of reproducing the classical weak-f
 
 - **[done] `proof_perihelion_precession.md`** — derives the anomalous perihelion precession of bound orbits, recovering the GR result $\Delta\varpi = 6\pi GM/[a(1-e^2)c^2]$ per orbit and Mercury's observed 43 arcseconds per century. First bound-orbit test in the framework, distinct from the photon-propagation and clock-comparison tests of earlier proofs. Uses the geodesic machinery from the equations-of-motion proof at next-to-leading order in $v/c$ and $\Phi/c^2$. Depends on two provisional candidates: `candidate_vacuum_variation_unity.md` for the spatial-mapping content ($\gamma_v = 1$) and `candidate_second_order_time_metric_from_redshift.md` for the second-order time-mapping content ($\beta = 1$). Both contributions are needed; PPN expression is $\Delta\varpi \propto (2 + 2\gamma_v - \beta)/3$, with $\gamma_v = \beta = 1$ giving the GR value. Framework-native interpretation: Newtonian closed orbits are special — they exist only because the $1/r$ potential and flat Euclidean geometry are precisely tuned. The framework's vacuum geometry near a mass deviates from flat at both spatial and temporal levels, breaking Newtonian closure and producing the precession.
 
+- **[done] `candidate_paths_to_equal_response.md`** — analyzes what would be required to derive the Equal-Response component of the unity assumption (the claim that $\gamma_v = 1$). Different in kind from other candidate documents: does not adopt a provisional commitment but classifies derivation paths for an existing one. Identifies five paths — local Lorentz invariance, null propagation consistency, vacuum-as-one-substance, PPN reverse-engineering as constraint, and variational principle / energy minimization. Works through what each forces and what it leaves open. Concludes that Equal-Response is not derivable from spherical symmetry alone, and identifies two plausible derivation routes: a structural route through the vacuum's mathematical structure (likely tensor-like) and a dynamical route through Postulate 5's energy minimization. Provides concrete next targets including formalizing the strongest Lorentz-invariance argument, defining a vacuum perturbation object whose static spherical solution gives $\gamma_v = 1$, and developing the variational principle path into its own candidate document. Connects Equal-Response derivation to the framework's open question about the vacuum's mathematical structure: the structural route would resolve both questions simultaneously, while the dynamical route would derive Equal-Response without specifying tensorial structure.
+
 ### 04_curvature_exchange
 
 - **[done] `postulate_curvature_contains_energy.md`** — Postulate 4. The configuration of the vacuum carries energy, measured from a baseline of flat vacuum at zero configuration energy. Any departure from flat has positive configuration energy. Infinite curvature (singularities) and discontinuous curvature (sharp edges) require infinite configuration energy and are not physically realizable. Separate contribution from the energy density of Postulate 2. Compatible with the positive energy theorem in general relativity; establishes that gravity wells and gravitational waves are energetic configurations and that physical configurations must be smooth.
@@ -185,19 +187,20 @@ For someone encountering this project for the first time, the documents should b
 16. `candidate_second_order_time_metric_from_redshift.md`, for the provisional closure of $g_{00}$ at second order at $\beta = 1$ via the redshift exponential extended to spherically symmetric potentials.
 17. `proof_perihelion_precession.md`, for the seventh derivation, which uses the geodesic machinery at next-to-leading order to recover Mercury's perihelion precession, depending on both unity and the $\beta = 1$ candidate.
 18. `summary_weak_field_gr_recovery.md`, for a consolidation view of the framework's current state — what's recovered, what's provisional, what remains, and what to work on next. Most useful as a synthesis read after the foregoing proofs.
+19. `candidate_paths_to_equal_response.md`, for the analysis of what would be required to derive the Equal-Response component of unity (closing $\gamma_v = 1$). Identifies the most likely route — through resolving the vacuum's mathematical structure — and provides concrete next targets for foundational work.
 
 **Curvature exchange.**
 
-19. `postulate_curvature_contains_energy.md`, for Postulate 4 (curvature is energetic).
-20. `consequence_no_singularities.md`, for what Postulate 4 commits us to about black holes.
-21. `postulate_minimum_energy_configuration.md`, for Postulate 5 (minimum-energy dynamics and waves).
-22. `consequence_gravitational_waves.md`, for what Postulates 4 and 5 together commit us to about waves.
-23. `consequence_wave_matter_interaction.md`, for how gravitational waves interact with matter in their path.
-24. `consequence_cosmic_structure_formation.md`, for what Postulate 5's mass-as-constraint reading combined with the cosmic expansion consequence and Postulate 2 imply about large-scale vacuum redistribution and the cosmic web. More speculative than the weak-field proofs and flagged as such.
+20. `postulate_curvature_contains_energy.md`, for Postulate 4 (curvature is energetic).
+21. `consequence_no_singularities.md`, for what Postulate 4 commits us to about black holes.
+22. `postulate_minimum_energy_configuration.md`, for Postulate 5 (minimum-energy dynamics and waves).
+23. `consequence_gravitational_waves.md`, for what Postulates 4 and 5 together commit us to about waves.
+24. `consequence_wave_matter_interaction.md`, for how gravitational waves interact with matter in their path.
+25. `consequence_cosmic_structure_formation.md`, for what Postulate 5's mass-as-constraint reading combined with the cosmic expansion consequence and Postulate 2 imply about large-scale vacuum redistribution and the cosmic web. More speculative than the weak-field proofs and flagged as such.
 
 **Open candidates.**
 
-25. Any of the planned candidate documents, in any order, according to interest.
+26. Any of the planned candidate documents, in any order, according to interest.
 
 Postulate numbers reflect their intellectual position in the framework: Postulate 1 establishes the ontology, Postulates 2 and 3 develop the basic vacuum mechanism, Postulates 4 and 5 add the curvature-energy machinery. The reading order follows dependencies among documents, including consequences and proofs that build on the postulates. Mass-energy equivalence (`sr_mass_energy_equivalence.md`) appears among the foundations because it is imported background that derivations invoke from the vacuum exchange section onward.
 
