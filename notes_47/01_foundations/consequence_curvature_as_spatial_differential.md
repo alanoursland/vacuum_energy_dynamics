@@ -66,6 +66,14 @@ Both aspects — angular compression and radial stretching — are consequences 
 
 ---
 
+## A Note on Parallel vs Reciprocal Scaling
+
+This consequence is sometimes misread as "vacuum reduction at radius $r$ produces parallel reduction of both temporal and spatial proper intervals." That reading is mathematically incorrect. Under parallel scaling — where $d\tau/dt$ and $dL/dx$ both scale with the same factor in the same direction — the asymptotic-frame coordinate speed of light $dx/dt = c \cdot (d\tau/dt)/(dL/dx)$ remains exactly $c$ everywhere. This produces no Shapiro delay and no spatial contribution to light deflection, contradicting both observation and the framework's own targets.
+
+The empirically correct weak-field reading is *reciprocal* scaling: temporal scale decreases ($d\tau/dt < 1$ in a well, clocks slow) while spatial scale increases ($dL/dx > 1$ in a well, rulers stretch), with equal magnitude of effect. The "amount of vacuum per coordinate span" framing should not be taken to imply uniform parallel reduction; the analysis of how this consequence interacts with the metric is developed in `process/candidate_reciprocal_scale_equal_response.md`.
+
+---
+
 ## What This Consequence Does Not Do
 
 It does not derive quantitative curvature from quantitative vacuum consumption. The relationship between "how much vacuum is consumed" and "how curved the resulting region is" depends on the mathematical structure of the vacuum, which remains an open question of the framework. Whether the relationship is linear, nonlinear, or involves additional structure we have not committed to, cannot be determined here.
