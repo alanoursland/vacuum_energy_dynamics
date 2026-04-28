@@ -1,0 +1,267 @@
+# T4: Second-Order Temporal Self-Coupling
+
+## What This Theorem Establishes
+
+In a static, source-free exterior weak field, the framework's temporal mapping has the second-order self-coupling required by the PPN value
+$$\beta = 1.$$
+
+Writing the temporal scale factor as
+$$\alpha(r)=\sqrt{-g_{tt}(r)},$$
+and writing the positive Newtonian potential magnitude as
+$$U(r)=\frac{GM}{r}$$
+in the exterior point-mass limit, the theorem establishes that
+$$-g_{tt} = 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}).$$
+
+Comparing with the standard PPN temporal expansion,
+$$-g_{tt} = 1-\frac{2U}{c^2}+2\beta\frac{U^2}{c^4}+O(c^{-6}),$$
+we get
+$$\beta=1.$$
+
+This closes the framework's second-order temporal weak-field recovery condition, conditional on P8.
+
+T3 closes the first-order spatial-response condition, giving the framework's analogue of $\gamma=1$. T4 closes the second-order temporal-response condition, giving the framework's analogue of $\beta=1$. Together, T3 and T4 supply the two PPN recovery conditions needed for the framework's static exterior weak-field agreement with general relativity at one-post-Newtonian order.
+
+---
+
+## The Setup
+
+Consider a static, source-free exterior vacuum configuration around a localized mass constraint.
+
+The assumptions are:
+* **Staticity:** the exterior configuration is unchanging in time.
+* **Exterior region:** the theorem applies outside the matter source or localized constraint.
+* **Source-free vacuum:** the exterior region contains no matter source of its own.
+* **Weak-field regime:** the potential satisfies $U/c^2 \ll 1$.
+* **Asymptotic flatness:** far from the source, the temporal scale factor approaches unity.
+* **P8 temporal self-coupling:** temporal mappings between neighboring exterior shells compose multiplicatively through the order needed for one-post-Newtonian recovery.
+
+The theorem uses the temporal scale factor
+$$\alpha(r)=\sqrt{-g_{tt}(r)}.$$
+
+This avoids a common notational ambiguity. In T3, $A(r)$ and $B(r)$ are used in the metric-coefficient sense:
+$$ds^2=-A(r)c^2dt^2+B(r)dr^2+r^2d\Omega^2.$$
+
+In that convention,
+$$A(r)=-g_{tt}(r),$$
+whereas in this theorem
+$$\alpha(r)=\sqrt{A(r)}=\sqrt{-g_{tt}(r)}.$$
+
+T4 is about the second-order behavior of the temporal metric coefficient $-g_{tt}$, but the cleanest derivation works through the scale factor $\alpha$.
+
+---
+
+## The Postulate Used
+
+This theorem depends on P8: Static Exterior Temporal Self-Coupling.
+
+P8 states that in a static, source-free exterior weak field, temporal distortion is part of the vacuum configuration and therefore composes multiplicatively between neighboring exterior shells. In scale-factor form, P8 gives
+$$d\ln\alpha=-\frac{dU}{c^2}+O(c^{-6}),$$
+where $U(r)$ is the positive Newtonian potential magnitude.
+
+The $O(c^{-6})$ notation is important. It says that through the order relevant for one-post-Newtonian temporal recovery, $\ln\alpha$ has no independent quadratic term proportional to $U^2/c^4$. The second-order term in $-g_{tt}$ comes from multiplicative composition of the first-order temporal distortion, not from a separate scalar-metric ansatz.
+
+---
+
+## The Derivation
+
+By P8,
+$$d\ln\alpha=-\frac{dU}{c^2}+O(c^{-6}).$$
+
+Integrating from spatial infinity to radius $r$ gives
+$$\ln\alpha(r)-\ln\alpha(\infty) = -\frac{U(r)-U(\infty)}{c^2}+O(c^{-6}).$$
+
+By asymptotic flatness,
+$$\alpha(\infty)=1,$$
+so
+$$\ln\alpha(\infty)=0.$$
+
+Also,
+$$U(\infty)=0.$$
+
+Therefore,
+$$\ln\alpha(r)=-\frac{U(r)}{c^2}+O(c^{-6}).$$
+
+Exponentiating through second order gives
+$$\alpha(r) = \exp\left(-\frac{U}{c^2}+O(c^{-6})\right).$$
+
+Since $U/c^2\ll1$, expand:
+$$\alpha(r) = 1-\frac{U}{c^2}+\frac{1}{2}\frac{U^2}{c^4}+O(c^{-6}).$$
+
+The temporal metric coefficient is the square of the temporal scale factor:
+$$-g_{tt}=\alpha^2.$$
+
+Thus,
+$$-g_{tt} = \left(1-\frac{U}{c^2}+\frac{1}{2}\frac{U^2}{c^4}+O(c^{-6})\right)^2.$$
+
+Keeping terms through $O(c^{-4})$:
+$$-g_{tt} = 1-\frac{2U}{c^2}+\frac{U^2}{c^4}+\frac{U^2}{c^4}+O(c^{-6}).$$
+
+Therefore,
+$$-g_{tt} = 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}).$$
+
+This is the desired second-order temporal coefficient.
+
+---
+
+## Identification with the PPN Parameter $\beta$
+
+The standard PPN temporal expansion for a static weak field is
+$$-g_{tt} = 1-\frac{2U}{c^2}+2\beta\frac{U^2}{c^4}+O(c^{-6}),$$
+where $U$ is the positive Newtonian potential magnitude.
+
+T4 gives
+$$-g_{tt} = 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}).$$
+
+Comparing coefficients of $U^2/c^4$ gives
+$$2\beta=2,$$
+so
+$$\beta=1.$$
+
+This is the value predicted by general relativity in the standard PPN formalism.
+
+---
+
+## Why the Result Is Not a Scalar Metric Ansatz
+
+The proof passes through an exponential expression for the temporal scale factor:
+$$\alpha(r)=\exp(-U/c^2)$$
+through the order needed for this theorem. This should not be misread as a universal scalar metric law.
+
+T4 does not claim that the full metric is generated by one scalar potential. It does not claim that
+$$g_{ij}=e^{2U/c^2}\delta_{ij}$$
+or that all spatial, temporal, rotating, radiating, nonspherical, or strong-field configurations are determined by a single scalar function.
+
+The theorem uses only the temporal composition rule from P8. It derives the second-order temporal coefficient from multiplicative composition of local temporal mappings in a restricted static source-free exterior weak-field regime.
+
+The spatial response remains governed separately by P7 and T3 in the static spherical exterior case. More general spatial and directional structure remains future field-equation work. This distinction matters because the framework's ontology requires curvature and configuration energy to have directional structure. A universal scalar metric would erase that structure and repeat one of the failure modes of the previous version.
+
+So the role of the exponential here is limited:
+$$\ln\alpha=-\frac{U}{c^2}+O(c^{-6})$$
+is a local temporal composition result through the order needed to extract $\beta$. It is not a full all-orders metric ansatz.
+
+---
+
+## Relationship to T1 and T2
+
+T1 derives gravitational redshift in the weak-field limit. T2 derives gravitational time dilation from T1. Together, they establish the first-order temporal mapping:
+$$\alpha(r)=1-\frac{U}{c^2}+O(c^{-4}).$$
+
+T4 does not redo those derivations. Instead, it uses P8 to specify how the first-order temporal mapping composes at the next order in a static source-free exterior.
+
+The distinction is important.
+
+T1 and T2 establish the leading temporal effect. P8 supplies the structural rule that neighboring temporal mappings compose multiplicatively. T4 then derives the second-order temporal coefficient. Without P8, the first-order result alone would not fix the coefficient of $U^2/c^4$ in $-g_{tt}$.
+
+Thus T4 is not a consequence of T1 and T2 alone. It is a consequence of P8, with T1 and T2 providing the first-order temporal limit that P8 preserves.
+
+---
+
+## Relationship to T3 and $\gamma=1$
+
+T3 establishes reciprocal exterior scaling in a static, spherically symmetric, source-free exterior configuration:
+$$A(r)B(r)=1$$
+in metric-coefficient convention.
+
+In weak-field PPN language, this gives the framework's analogue of
+$$\gamma=1.$$
+
+T4 establishes a different result:
+$$\beta=1.$$
+
+The two results are complementary but logically distinct.
+
+T3 concerns the relationship between temporal and radial spatial metric coefficients in the static source-free exterior. It supplies the radial-spatial response needed for light deflection and Shapiro delay.
+
+T4 concerns the nonlinear temporal coefficient. It supplies the second-order temporal self-coupling needed for one-post-Newtonian recovery, especially in orbital dynamics such as perihelion precession.
+
+It would be a mistake to collapse both results into a single scalar metric ansatz. The framework instead keeps the recovery structure factored:
+
+* P7/T3: exterior compensation gives $\gamma=1$.
+* P8/T4: temporal self-coupling gives $\beta=1$.
+
+This factoring keeps the epistemic structure honest. Each recovery condition has its own localized postulate and its own theorem.
+
+---
+
+## What This Theorem Does Not Establish
+
+T4 does not derive P8. It depends on P8.
+
+T4 does not derive the full Schwarzschild solution. It fixes the second-order temporal coefficient in the static source-free exterior weak-field expansion. It does not derive the exact strong-field form of $g_{tt}$.
+
+T4 does not derive the source law. The theorem uses $U(r)$ as the positive Newtonian potential magnitude in the exterior weak-field limit. It does not derive $U=GM/r$ from the framework's mass-as-constraint dynamics.
+
+T4 does not determine the spatial metric. The spatial response is handled by P7/T3 in the static spherical exterior and remains open in more general settings.
+
+T4 does not apply to cosmology. Cosmic expansion is not a static source-free exterior configuration.
+
+T4 does not apply inside matter. Inside sources, the source-free exterior assumptions fail.
+
+T4 does not apply automatically to rotating, radiating, time-dependent, or nonspherical configurations. Those regimes require the future field equation or additional structural commitments.
+
+T4 does not make the framework scalar. The theorem uses a temporal exponential only as a second-order consequence of temporal composition in a restricted regime.
+
+---
+
+## Status of the Result
+
+T4 is a theorem conditional on P8.
+
+Given:
+* a static source-free exterior weak field,
+* asymptotic flatness,
+* the temporal scale factor $\alpha=\sqrt{-g_{tt}}$,
+* the positive Newtonian potential magnitude $U$,
+* and P8's temporal self-coupling rule,
+
+then
+$$-g_{tt} = 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}),$$
+and therefore
+$$\beta=1.$$
+
+This result closes the second-order temporal gap in the framework's weak-field recovery program, but only relative to P8. If P8 is later derived from a deeper configuration-energy functional or field equation, T4 becomes downstream of that deeper structure. Until then, T4's status is exactly analogous to T3's status relative to P7: a clean theorem from a localized exterior structural postulate.
+
+---
+
+## Imports and Dependencies
+
+This theorem invokes:
+* SR3: Spacetime Interval and Minkowski Structure, for the interpretation of the temporal metric coefficient and the asymptotically flat limit.
+* SR9: Local Validity of SR in Inertial Frames, for the interpretation of local clock rates and temporal scale factors.
+
+It depends on:
+* P1: Vacuum-Energy Equivalence, as part of the ontology under which temporal distortion is physical vacuum configuration.
+* P2: Vacuum-Spacetime Identity, as part of the ontology under which temporal mapping is a property of spacetime/vacuum itself.
+* P3a: Spatial Differential is Curvature, as part of the exterior curvature framework.
+* P4: Curvature Contains Energy, because temporal distortion is treated as configuration content capable of nonlinear contribution.
+* P5: Vacuum Seeks Minimum Energy Configuration, because static exterior configurations are understood as constrained minimum-energy configurations.
+* P8: Static Exterior Temporal Self-Coupling, the direct postulate used in the proof.
+
+Related framework results:
+* T1: Gravitational Redshift, which establishes the first-order redshift relation that P8 preserves.
+* T2: Gravitational Time Dilation, which establishes the first-order temporal mapping that P8 extends.
+* T3: Reciprocal Exterior Scaling, which establishes the companion $\gamma=1$ spatial-response result.
+
+The direct proof depends on P8. T1, T2, and T3 situate the theorem within the weak-field recovery program but are not the source of the second-order temporal coefficient.
+
+---
+
+## Summary
+
+T4 derives the framework's weak-field value of the PPN temporal nonlinearity parameter.
+
+By P8, temporal mappings in a static source-free exterior weak field compose multiplicatively:
+$$d\ln\alpha=-\frac{dU}{c^2}+O(c^{-6}).$$
+
+With asymptotic flatness, this gives
+$$\ln\alpha=-\frac{U}{c^2}+O(c^{-6}).$$
+
+Expanding through second order and squaring,
+$$-g_{tt}=\alpha^2 = 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}).$$
+
+Comparing with the PPN expansion,
+$$-g_{tt}=1-\frac{2U}{c^2}+2\beta\frac{U^2}{c^4}+O(c^{-6}),$$
+gives
+$$\beta=1.$$
+
+T4 is the temporal nonlinear companion to T3. T3 gives $\gamma=1$ from exterior compensation. T4 gives $\beta=1$ from exterior temporal self-coupling. Together they make the framework's static exterior weak-field recovery explicit while avoiding the scalar-metric shortcut that failed in the previous version.
