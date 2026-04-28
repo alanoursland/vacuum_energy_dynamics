@@ -321,7 +321,7 @@ It does not establish strong-field agreement with GR. It establishes weak-field 
 
 ## Status of the Result
 
-T5 is a theorem conditional on P7 and P8 through T3 and T4.
+T5 is a theorem of the current framework. It uses P7 through T3 and P8 through T4.
 
 Given:
 
