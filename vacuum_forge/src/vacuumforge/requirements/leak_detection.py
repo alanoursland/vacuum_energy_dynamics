@@ -39,6 +39,10 @@ def detect_leaks(
     leaked_via = []
 
     for record in assumptions.active():
+        # Records marked as derived were produced by upstream logic,
+        # not smuggled in as premises.  Skip them.
+        if record.status == "derived":
+            continue
         expr = record.expression
         for form in all_forms:
             if _assumption_contains_target(expr, form):
