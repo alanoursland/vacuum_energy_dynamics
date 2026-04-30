@@ -164,7 +164,8 @@ def case_1_radial_laplace_solution():
 def case_2_flux_fixes_coefficient():
     header("Case 2: Mass/interface flux fixes coefficient")
 
-    r, G, M, c, C = sp.symbols("r G M c C", positive=True, real=True)
+    r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
+    C = sp.symbols("C", real=True)
 
     s_expr = C / r
     ds_dr = sp.diff(s_expr, r)
