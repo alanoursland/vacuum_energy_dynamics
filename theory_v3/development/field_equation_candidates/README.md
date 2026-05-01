@@ -8,3 +8,5 @@
 - [candidate_reduced_exterior_action.md](candidate_reduced_exterior_action.md)
 - [candidate_regime_map_observations.md](candidate_regime_map_observations.md)
 - [log_scale_modes_candidate.md](log_scale_modes_candidate.md)
+- [candidate_orbit_space_modes.md](candidate_orbit_space_modes.md)
+- [candidate_static_spherical_exact_recovery.md](candidate_static_spherical_exact_recovery.md)
