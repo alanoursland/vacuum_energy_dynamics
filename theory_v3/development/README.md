@@ -1,0 +1,8 @@
+# Development
+
+- [development_plan.md](development_plan.md)
+- [background_geometry/](background_geometry/README.md)
+- [field_equation_candidates/](field_equation_candidates/README.md)
+- [intuition_models/](intuition_models/README.md)
+- [lab_reports/](lab_reports/README.md)
+- [ontology_and_mechanism/](ontology_and_mechanism/README.md)
