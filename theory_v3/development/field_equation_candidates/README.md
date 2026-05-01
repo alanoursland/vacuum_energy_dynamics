@@ -10,3 +10,5 @@
 - [log_scale_modes_candidate.md](log_scale_modes_candidate.md)
 - [candidate_orbit_space_modes.md](candidate_orbit_space_modes.md)
 - [candidate_static_spherical_exact_recovery.md](candidate_static_spherical_exact_recovery.md)
+- [candidate_orbit_space_action.md](candidate_orbit_space_action.md)
+- [candidate_exact_source_law_geometry_check.md](candidate_exact_source_law_geometry_check.md)
