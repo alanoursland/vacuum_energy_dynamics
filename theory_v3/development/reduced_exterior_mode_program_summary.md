@@ -493,8 +493,7 @@ The next development target should be a candidate reduced exterior action or ene
 
 A schematic candidate is:
 
-$$E_{\rm red}[\kappa,s]
-=
+$$E_{\rm red}[\kappa,s] =
 \int d^3x
 \left[
 K_\kappa|\nabla\kappa|^2

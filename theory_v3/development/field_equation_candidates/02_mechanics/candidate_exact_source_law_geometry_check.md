@@ -110,8 +110,7 @@ Schwarzschild areal exterior has AB=1.
 
 The flat areal radial Laplacian is:
 
-$$\Delta_{\rm flat}A
-=
+$$\Delta_{\rm flat}A =
 \frac1{r^2}\frac{d}{dr}\left(r^2A'\right).$$
 
 For:
@@ -162,8 +161,7 @@ $$dl^2=B(r)dr^2+r^2d\Omega^2.$$
 
 For a radial scalar \(A(r)\), the scalar Laplacian on this curved spatial metric is:
 
-$$\Delta_{\rm spatial}A
-=
+$$\Delta_{\rm spatial}A =
 \frac{1}{r^2\sqrt{B}}
 \frac{d}{dr}
 \left(
@@ -177,8 +175,7 @@ $$B=\frac1A,$$
 
 the script found:
 
-$$\Delta_{\rm spatial}A
-=
+$$\Delta_{\rm spatial}A =
 \frac{r_s^2}{2r^4}.
 $$
 
@@ -200,8 +197,7 @@ $$h_{AB}dx^A dx^B=-A(r)c^2dt^2+B(r)dr^2.$$
 
 For a static radial scalar, the corresponding orbit-space scalar operator is:
 
-$$\Box_h A
-=
+$$\Box_h A =
 \frac1{\sqrt{|h|}}
 \frac{d}{dr}
 \left(
@@ -239,8 +235,7 @@ $$A=1-\frac{r_s}{r},$$
 
 the script found:
 
-$$\Box_h A
-=
+$$\Box_h A =
 \frac{r_s(-2r+3r_s)}{r^4}.
 $$
 
@@ -352,8 +347,7 @@ The current exact recovery is not based on curved-spatial harmonicity of \(A\).
 
 The operator that works is:
 
-$$\Delta_{\rm areal}A
-=
+$$\Delta_{\rm areal}A =
 \frac1{r^2}\frac{d}{dr}(r^2A').$$
 
 This is equivalent to conserved flux through areal spheres:

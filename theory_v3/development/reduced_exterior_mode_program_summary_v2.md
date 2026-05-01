@@ -156,8 +156,7 @@ $$R=S(X).$$
 
 The areal-gauge imbalance mode is:
 
-$$\kappa_{\rm areal}
-=
+$$\kappa_{\rm areal} =
 \frac12\ln\left(\frac{T(X)Q(X)}{[S'(X)]^2}\right).$$
 
 Thus:
@@ -184,14 +183,12 @@ $$|\nabla R|^2=\frac{[S'(X)]^2}{Q(X)}.$$
 
 Then:
 
-$$\kappa
-=
+$$\kappa =
 \frac12\ln\left(\frac{A}{|\nabla R|^2}\right),$$
 
 and:
 
-$$s
-=
+$$s =
 \frac12\ln\left(A|\nabla R|^2\right).$$
 
 The compensation condition becomes:
@@ -350,8 +347,7 @@ $$\nabla^2s+|\nabla s|^2=0.$$
 
 The exact Schwarzschild shear is:
 
-$$s_{\rm exact}
-=
+$$s_{\rm exact} =
 \ln\left(1-\frac{2GM}{rc^2}\right).$$
 
 It is not harmonic:
@@ -418,8 +414,7 @@ This is stronger than weak-field recovery.
 
 The earlier reduced exterior action was:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2

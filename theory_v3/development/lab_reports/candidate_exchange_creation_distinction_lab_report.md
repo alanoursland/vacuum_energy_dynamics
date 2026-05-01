@@ -83,8 +83,7 @@ $$\kappa=0 \quad \Longleftrightarrow \quad AB=1.$$
 
 The reduced equilibrium toy used:
 
-$$E(\kappa,s)
-=
+$$E(\kappa,s) =
 C_\kappa\kappa^2
 +
 C_s s^2
@@ -385,8 +384,7 @@ $$\frac{ds}{d\tau}=-2C_s s.$$
 
 The energy decreases as:
 
-$$\frac{dE}{d\tau}
-=
+$$\frac{dE}{d\tau} =
 -4C_\kappa^2\kappa^2
 -
 4C_s^2s^2.$$

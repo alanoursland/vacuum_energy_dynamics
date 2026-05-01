@@ -104,8 +104,7 @@ $$v=\kappa\begin{pmatrix}1\\1\end{pmatrix}+s\begin{pmatrix}1\\-1\end{pmatrix}.$$
 
 That is:
 
-$$\begin{pmatrix}a\\b\end{pmatrix}
-=
+$$\begin{pmatrix}a\\b\end{pmatrix} =
 \kappa
 \begin{pmatrix}1\\1\end{pmatrix}
 +
@@ -362,8 +361,7 @@ while allowing trace-free compensated shear.
 
 The candidate reduced exterior action used:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2

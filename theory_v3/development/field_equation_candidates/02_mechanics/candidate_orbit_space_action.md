@@ -249,8 +249,7 @@ $$|A'|^2=e^{2s}|s'|^2.$$
 
 Substituting into the \(A\)-action gives:
 
-$$E_s^{\rm exact}
-=
+$$E_s^{\rm exact} =
 \int\left[K_Ae^{2s}|\nabla s|^2+\beta\rho e^s\right]d^3x.$$
 
 This is the exact nonlinear \(s\)-action induced by the linear \(A\)-action.
@@ -315,8 +314,7 @@ $$r^2dr.$$
 
 Ignoring the constant \(4\pi\), the radial density is:
 
-$$L_{\rm radial}
-=
+$$L_{\rm radial} =
 r^2\left[K_A(A')^2+\beta\rho A\right].$$
 
 The Euler-Lagrange equation is:
@@ -325,8 +323,7 @@ $$r^2\beta\rho-2K_A(r^2A')'=0.$$
 
 Rearranging:
 
-$$\frac1{r^2}(r^2A')'
-=
+$$\frac1{r^2}(r^2A')' =
 \frac{\beta}{2K_A}\rho.$$
 
 Thus:
@@ -492,8 +489,7 @@ $$A=e^s,$$
 
 this becomes the nonlinear \(s\)-action:
 
-$$E_s^{\rm exact}
-=
+$$E_s^{\rm exact} =
 \int
 \left[
 K_Ae^{2s}|\nabla s|^2

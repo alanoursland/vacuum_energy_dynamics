@@ -423,8 +423,8 @@ The compensated mode $\eta$ would remain available to encode the actual exterior
 
 One can imagine a reduced static spherical exterior energy of the schematic form
 
-$$E_{\text{ext}}[\sigma,\eta]
-=
+$$E_{\text{ext}}[\sigma,\eta] =
+
 \int dr\,w(r)
 \left[
 K_\sigma(\sigma')^2

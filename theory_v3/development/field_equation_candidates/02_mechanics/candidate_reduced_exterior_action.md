@@ -118,8 +118,7 @@ This note records a reduced action that produces both pieces in one toy variatio
 
 The candidate reduced exterior energy/action density is:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2
@@ -316,8 +315,7 @@ The forge script also tested the failure mode where \(\kappa\) is directly sourc
 
 Consider:
 
-$$L_\kappa
-=
+$$L_\kappa =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2
@@ -550,8 +548,7 @@ This may be useful later for novel predictions.
 
 The candidate reduced exterior action is:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2

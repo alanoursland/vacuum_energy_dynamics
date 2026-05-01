@@ -112,8 +112,7 @@ $$\Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho,$$
 
 where:
 
-$$\Delta_{\rm areal}A
-=
+$$\Delta_{\rm areal}A =
 \frac1{r^2}\frac{d}{dr}(r^2A').$$
 
 The geometry check then showed that this operator should not be confused with the ordinary curved spatial Laplacian.
@@ -134,8 +133,7 @@ $$\Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho.$$
 
 Substitute the radial operator:
 
-$$\frac1{r^2}\frac{d}{dr}(r^2A')
-=
+$$\frac1{r^2}\frac{d}{dr}(r^2A') =
 \frac{8\pi G}{c^2}\rho.$$
 
 Multiply by:
@@ -144,8 +142,7 @@ $$4\pi r^2.$$
 
 Then:
 
-$$4\pi\frac{d}{dr}(r^2A')
-=
+$$4\pi\frac{d}{dr}(r^2A') =
 4\pi r^2\frac{8\pi G}{c^2}\rho.$$
 
 Since:
@@ -154,8 +151,7 @@ $$F_A=4\pi r^2A',$$
 
 we get:
 
-$$F_A'(r)
-=
+$$F_A'(r) =
 \frac{32\pi^2G}{c^2}r^2\rho(r).$$
 
 Now define the enclosed mass:
@@ -164,14 +160,12 @@ $$M_{\rm enc}'(r)=4\pi r^2\rho(r).$$
 
 Then:
 
-$$F_A'(r)
-=
+$$F_A'(r) =
 \frac{8\pi G}{c^2}M_{\rm enc}'(r).$$
 
 Integrating:
 
-$$F_A(r)
-=
+$$F_A(r) =
 \frac{8\pi G}{c^2}M_{\rm enc}(r)+C.$$
 
 For regular interior conditions with zero flux at zero enclosed mass, set:
@@ -276,14 +270,12 @@ $$M_{\rm shell},$$
 
 the flux jump is:
 
-$$F_A({\rm outside})-F_A({\rm inside})
-=
+$$F_A({\rm outside})-F_A({\rm inside}) =
 \frac{8\pi G}{c^2}M_{\rm shell}.$$
 
 If the inside flux is zero, then:
 
-$$F_A({\rm outside})
-=
+$$F_A({\rm outside}) =
 \frac{8\pi G}{c^2}M_{\rm shell}.$$
 
 This emphasizes the boundary interpretation:
@@ -304,8 +296,7 @@ $$r_1<r<r_2,$$
 
 the integrated source law is:
 
-$$F_A(r_2)-F_A(r_1)
-=
+$$F_A(r_2)-F_A(r_1) =
 \frac{8\pi G}{c^2}M_{\rm between}.$$
 
 where:
@@ -350,8 +341,7 @@ $$F_A=\text{constant}.$$
 
 The areal Laplacian relation is:
 
-$$\Delta_{\rm areal}A
-=
+$$\Delta_{\rm areal}A =
 e^s\left(\Delta_{\rm areal}s+|\nabla s|^2\right).$$
 
 Thus source-free exterior gives:

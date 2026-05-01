@@ -72,8 +72,7 @@ $$\kappa=0,\qquad s\neq0.$$
 
 The reduced action toy expressed this as:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2

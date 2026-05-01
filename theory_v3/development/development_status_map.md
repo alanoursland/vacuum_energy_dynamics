@@ -374,8 +374,7 @@ strongest reduced action candidate
 
 Candidate density:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2
@@ -424,8 +423,7 @@ $$r_{\rm areal}=S(R).$$
 
 Then:
 
-$$\kappa_{\rm areal}
-=
+$$\kappa_{\rm areal} =
 \frac12\ln\left(\frac{T(R)Q(R)}{[S'(R)]^2}\right).$$
 
 The compensation condition is:

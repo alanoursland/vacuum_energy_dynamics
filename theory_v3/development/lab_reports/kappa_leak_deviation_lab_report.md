@@ -227,14 +227,12 @@ $$2\gamma_{\rm eff}\epsilon_N=(\lambda_k+2)\epsilon.$$
 
 Substitute \(\epsilon_N\):
 
-$$2\gamma_{\rm eff}\left(\frac{2-\lambda_k}{2}\epsilon\right)
-=
+$$2\gamma_{\rm eff}\left(\frac{2-\lambda_k}{2}\epsilon\right) =
 (\lambda_k+2)\epsilon.$$
 
 Therefore:
 
-$$\gamma_{\rm eff}
-=
+$$\gamma_{\rm eff} =
 \frac{2+\lambda_k}{2-\lambda_k}.$$
 
 The script output the equivalent symbolic form:
@@ -247,14 +245,12 @@ $$\gamma_{\rm eff}=\frac{2+\lambda_k}{2-\lambda_k}.$$
 
 The deviation is:
 
-$$\gamma_{\rm eff}-1
-=
+$$\gamma_{\rm eff}-1 =
 \frac{2\lambda_k}{2-\lambda_k}.$$
 
 For small \(\lambda_k\):
 
-$$\gamma_{\rm eff}
-=
+$$\gamma_{\rm eff} =
 1+\lambda_k+\frac{\lambda_k^2}{2}+\cdots.$$
 
 So:
@@ -462,8 +458,7 @@ The experiment established \(\kappa\)-leak as the first clean reduced deviation 
 
 The key relation is:
 
-$$\gamma_{\rm eff}
-=
+$$\gamma_{\rm eff} =
 \frac{2+\lambda_k}{2-\lambda_k}.$$
 
 For small leak:
@@ -691,8 +686,7 @@ $$B\approx1+(\lambda_k+2)\epsilon.$$
 
 The gamma-like proxy is:
 
-$$\gamma_{\rm eff}
-=
+$$\gamma_{\rm eff} =
 \frac{2+\lambda_k}{2-\lambda_k}.$$
 
 For small leak:

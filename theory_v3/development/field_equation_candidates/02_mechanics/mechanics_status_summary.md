@@ -75,8 +75,7 @@ $$\Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho,$$
 
 where the areal radial operator is:
 
-$$\Delta_{\rm areal}A
-=
+$$\Delta_{\rm areal}A =
 \frac1{r^2}\frac{d}{dr}\left(r^2A'\right).$$
 
 In source-free exterior:
@@ -285,8 +284,7 @@ $$A=e^s,$$
 
 this becomes the nonlinear \(s\)-action:
 
-$$E_s^{\rm exact}
-=
+$$E_s^{\rm exact} =
 \int
 \left[
 K_Ae^{2s}|\nabla s|^2
@@ -332,8 +330,7 @@ $$A=1-\frac{r_s}{r}$$
 
 is harmonic under the flat areal radial operator:
 
-$$\Delta_{\rm areal}A
-=
+$$\Delta_{\rm areal}A =
 \frac1{r^2}(r^2A')'.$$
 
 It has conserved areal flux:
@@ -380,8 +377,7 @@ $$B=e^{-s}=\frac1A,$$
 
 $$\Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho,$$
 
-$$\Delta_{\rm areal}A
-=
+$$\Delta_{\rm areal}A =
 \frac1{r^2}\frac{d}{dr}(r^2A').$$
 
 For source-free exterior:
@@ -410,8 +406,7 @@ They do not yet define a full field equation.
 
 The exact source operator is currently:
 
-$$\Delta_{\rm areal}
-=
+$$\Delta_{\rm areal} =
 \frac1{r^2}\frac{d}{dr}(r^2\frac{d}{dr}).$$
 
 This is not yet derived from a covariant geometric operator.

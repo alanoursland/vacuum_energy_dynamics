@@ -7,3 +7,4 @@
 - [candidate_exact_source_law_geometry_check.md](candidate_exact_source_law_geometry_check.md)
 - [mechanics_status_summary.md](mechanics_status_summary.md)
 - [candidate_areal_flux_principle.md](candidate_areal_flux_principle.md)
+- [candidate_interior_A_source_model.md](candidate_interior_A_source_model.md)

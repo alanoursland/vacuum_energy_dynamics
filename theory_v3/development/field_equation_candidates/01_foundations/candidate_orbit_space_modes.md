@@ -25,14 +25,12 @@ The reduced variables can be rewritten using the two-dimensional orbit-space met
 
 The key result is:
 
-$$\kappa
-=
+$$\kappa =
 \frac12\ln\left(\frac{A}{|\nabla R|^2}\right),$$
 
 and:
 
-$$s
-=
+$$s =
 \frac12\ln\left(A|\nabla R|^2\right).$$
 
 The compensation condition:
@@ -176,18 +174,14 @@ $$A_{\rm areal}=T(X).$$
 
 Therefore:
 
-$$\kappa_{\rm areal}
-=
-\frac12\ln(A_{\rm areal}B_{\rm areal})
-=
+$$\kappa_{\rm areal} =
+\frac12\ln(A_{\rm areal}B_{\rm areal}) =
 \frac12\ln\left(\frac{T(X)Q(X)}{[S'(X)]^2}\right).$$
 
 Similarly:
 
-$$s_{\rm areal}
-=
-\frac12\ln\left(\frac{A_{\rm areal}}{B_{\rm areal}}\right)
-=
+$$s_{\rm areal} =
+\frac12\ln\left(\frac{A_{\rm areal}}{B_{\rm areal}}\right) =
 \frac12\ln\left(\frac{T(X)[S'(X)]^2}{Q(X)}\right).$$
 
 This recovers the earlier areal-gauge result, but now framed through the orbit-space metric and areal-radius scalar.
@@ -202,26 +196,22 @@ $$\det(h)=-c^2T(X)Q(X).$$
 
 After transforming to areal radius \(R=S(X)\), the orbit-space determinant becomes:
 
-$$\det(h_{\rm areal})
-=
+$$\det(h_{\rm areal}) =
 -\frac{c^2T(X)Q(X)}{[S'(X)]^2}.$$
 
 Its magnitude is:
 
-$$|\det(h_{\rm areal})|
-=
+$$|\det(h_{\rm areal})| =
 \frac{c^2T(X)Q(X)}{[S'(X)]^2}.$$
 
 Removing the constant factor \(c^2\), we get:
 
-$$\frac{|\det(h_{\rm areal})|}{c^2}
-=
+$$\frac{|\det(h_{\rm areal})|}{c^2} =
 \frac{T(X)Q(X)}{[S'(X)]^2}.$$
 
 Therefore:
 
-$$\kappa_{\rm areal}
-=
+$$\kappa_{\rm areal} =
 \frac12\ln\left(\frac{|\det(h_{\rm areal})|}{c^2}\right).$$
 
 This means that in static spherical areal gauge, \(\kappa\) is the half-log orbit-space determinant factor.
@@ -240,8 +230,7 @@ This is not a four-dimensional scalar field. It is a spherical-reduction quantit
 
 The orbit-space norm of the areal-radius gradient is:
 
-$$|\nabla R|^2
-=
+$$|\nabla R|^2 =
 h^{AB}\partial_A R\partial_B R.$$
 
 In the static diagonal metric:
@@ -276,18 +265,14 @@ $$A_{\rm areal}=T(X),$$
 
 we have:
 
-$$\kappa
-=
-\frac12\ln(A_{\rm areal}B_{\rm areal})
-=
+$$\kappa =
+\frac12\ln(A_{\rm areal}B_{\rm areal}) =
 \frac12\ln\left(\frac{A}{|\nabla R|^2}\right).$$
 
 Also:
 
-$$s
-=
-\frac12\ln\left(\frac{A_{\rm areal}}{B_{\rm areal}}\right)
-=
+$$s =
+\frac12\ln\left(\frac{A_{\rm areal}}{B_{\rm areal}}\right) =
 \frac12\ln\left(A|\nabla R|^2\right).$$
 
 These are the key orbit-space expressions.
@@ -302,8 +287,7 @@ $$\kappa=0.$$
 
 Using:
 
-$$\kappa
-=
+$$\kappa =
 \frac12\ln\left(\frac{A}{|\nabla R|^2}\right),$$
 
 we get:
@@ -408,8 +392,7 @@ $$S(X)=f(X).$$
 
 The naive product is:
 
-$$T(X)Q(X)
-=
+$$T(X)Q(X) =
 A(f(X))B(f(X))[f'(X)]^2.$$
 
 Since:
@@ -432,8 +415,7 @@ $$S'(X)=f'(X).$$
 
 The corrected expression is:
 
-$$\frac{T(X)Q(X)}{[S'(X)]^2}
-=
+$$\frac{T(X)Q(X)}{[S'(X)]^2} =
 A(f(X))B(f(X)).
 $$
 
@@ -530,8 +512,7 @@ A full theory may still need tensorial or covariant parent modes.
 
 The reduced exterior action used:
 
-$$L
-=
+$$L =
 K_\kappa|\nabla\kappa|^2
 +
 M_\kappa^2\kappa^2
@@ -560,8 +541,7 @@ The gauge-dependence notes showed that naive \(\kappa\) and \(s\) shift under ra
 
 The areal-gauge condition note showed that:
 
-$$\kappa_{\rm areal}
-=
+$$\kappa_{\rm areal} =
 \frac12\ln(TQ/[S']^2).$$
 
 This orbit-space note explains why:

@@ -204,8 +204,7 @@ $$A_{\rm weak}=e^{-r_s/r}.$$
 
 The large-radius expansion is:
 
-$$A_{\rm weak}
-=
+$$A_{\rm weak} =
 1-\frac{r_s}{r}
 +
 \frac{r_s^2}{2r^2}
@@ -225,8 +224,7 @@ $$s_{\rm exact}=\ln\left(1-\frac{r_s}{r}\right).$$
 
 Its large-radius expansion is:
 
-$$s_{\rm exact}
-=
+$$s_{\rm exact} =
 -\frac{r_s}{r}
 -
 \frac{r_s^2}{2r^2}
@@ -246,8 +244,7 @@ The weak shear profile is therefore the first-order approximation to the exact s
 
 The script tested the flat radial Laplacian for spherical functions:
 
-$$\nabla^2 f
-=
+$$\nabla^2 f =
 \frac1{r^2}\frac{d}{dr}\left(r^2\frac{df}{dr}\right).$$
 
 For:
@@ -266,8 +263,7 @@ $$s_{\rm exact}=\ln\left(1-\frac{r_s}{r}\right),$$
 
 the script found:
 
-$$\nabla^2s_{\rm exact}
-=
+$$\nabla^2s_{\rm exact} =
 -\frac{r_s^2}{r^2(r-r_s)^2}.$$
 
 Thus:
@@ -298,8 +294,7 @@ $$A=e^s,$$
 
 we can compute:
 
-$$\nabla^2e^s
-=
+$$\nabla^2e^s =
 e^s\left(\nabla^2s+|\nabla s|^2\right).$$
 
 Therefore, if:
@@ -320,14 +315,12 @@ $$s_{\rm exact}=\ln\left(1-\frac{r_s}{r}\right).$$
 
 It found:
 
-$$\nabla^2s
-=
+$$\nabla^2s =
 -\frac{r_s^2}{r^2(r-r_s)^2},$$
 
 and:
 
-$$|\nabla s|^2
-=
+$$|\nabla s|^2 =
 \frac{r_s^2}{r^2(r-r_s)^2}.$$
 
 Thus:
@@ -348,8 +341,7 @@ where \(\epsilon\) is a small bookkeeping parameter.
 
 Then:
 
-$$\nabla^2s+|\nabla s|^2
-=
+$$\nabla^2s+|\nabla s|^2 =
 \epsilon\nabla^2u+\epsilon^2|\nabla u|^2.$$
 
 To first order:
