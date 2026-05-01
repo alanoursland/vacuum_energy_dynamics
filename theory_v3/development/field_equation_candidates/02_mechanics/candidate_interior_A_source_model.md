@@ -438,8 +438,7 @@ This study established:
    $$C=1-\frac{4\pi G\rho_0R^2}{c^2}.$$
 
 5. The matched interior solution is:
-   $$A_{\rm in}(r)
-   =
+   $$A_{\rm in}(r) =
    1-\frac{4\pi G\rho_0R^2}{c^2}
    +
    \frac{4\pi G\rho_0r^2}{3c^2}.
