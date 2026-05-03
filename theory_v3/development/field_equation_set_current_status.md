@@ -10,10 +10,13 @@ Status labels:
 
 ```text
 DERIVED_REDUCED
-CONSTRAINED
 STRUCTURAL
-UNKNOWN
+CONSTRAINED
+MATCHED
+REJECTED
+MISSING
 UNFINISHED
+RISK
 PHENOMENOLOGICAL_IF_USED
 ```
 
@@ -289,52 +292,48 @@ with wave condition:
 
 This would be a scalar breathing-type gravitational radiation channel.
 
-Current policy:
+Current rule:
 
 \[
-A_{\rm rad}
-\quad
-\text{is absent, constrained, damped, relaxed, massive, or otherwise suppressed.}
+{\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0.
 \]
 
-Candidate relaxation law:
+Also rejected as an ordinary massless scalar radiation equation:
 
 \[
-\frac{dA_{\rm rad}}{d\tau} =
--\Gamma\mu^2 A_{\rm rad}.
+\Box\kappa=\alpha S.
 \]
 
-Solution:
+Interpretation:
 
-\[
-A_{\rm rad}(\tau) =
-A_{\rm rad}(0)e^{-\Gamma\mu^2\tau}.
-\]
+```text
+ordinary long-range gravitational radiation is TT-only.
+```
+
+The static scalar \(A\)-sector survives as a constraint / mass-response field. The scalar-radiative residue does not become an ordinary active long-range wave channel.
 
 Status:
 
 ```text
-CONSTRAINED / UNFINISHED
+REJECTED / CONSTRAINED
 ```
-
-Required condition:
-
-\[
-A_{\rm constraint}
-\text{ survives as static long-range field, while }
-A_{\rm rad}
-\text{ does not become an unsuppressed scalar wave.}
-\]
 
 Unknown:
 
 ```text
-Mechanism separating static scalar constraint from scalar radiation.
+Parent mechanism proving static scalar constraint cannot become ordinary scalar radiation.
 ```
 
----
+Failure if violated:
 
-# 5. Vacuum-Substance Balance Identity
+```text
+breathing radiation,
+scalar double-counting,
+or an exterior scalar channel not supported by the current theory.
+```
+
+
+# 5. Vacuum-Substance Balance / Parent Closure Target
 
 Candidate ontology-native balance law:
 
@@ -377,10 +376,39 @@ nonconservative creation/destruction term.
 
 relaxation toward vacuum minimum.
 
+Group 11 closure target:
+
+\[
+{\rm Div}\,
+E_{\rm parent}[A,W,h_{TT},\kappa]
+=
+B_{\rm closed}[T]
++
+B_{\rm relax}[\Gamma_{\rm relax}].
+\]
+
+In the ordinary closed gravity regime:
+
+\[
+\Sigma_{\rm creation}=0.
+\]
+
+This parent target must eventually explain:
+
+```text
+A constraint propagation,
+W_i transverse sourcing,
+h_TT tensor radiation,
+kappa trace relaxation without scalar radiation,
+mass preservation,
+ordinary exclusion of Sigma_creation,
+recombination without scalar double-counting.
+```
+
 Status:
 
 ```text
-STRUCTURAL / UNFINISHED
+MISSING / UNFINISHED
 ```
 
 Known projection hints:
@@ -406,7 +434,7 @@ W_i.
 \rightarrow
 \Sigma_{\rm exchange}^{\rm trace}
 \rightarrow
-\kappa.
+\kappa_{\min}.
 \]
 
 \[
@@ -421,12 +449,15 @@ Unknown:
 
 ```text
 Definition of q_v.
+Definition of E_parent.
+Definition of B_closed.
+Definition of B_relax.
 Closure identity.
 Relation to stress-energy conservation.
 Bianchi-like parent identity.
+Covariant recombination map.
 ```
 
----
 
 # 6. Vector Current / Frame-Dragging Sector
 
@@ -1171,7 +1202,7 @@ K_T from vacuum action/stiffness.
 
 ---
 
-# 9. Source Coupling Summary
+# 9. Source Coupling and No-Double-Counting Summary
 
 Current source assignments:
 
@@ -1181,10 +1212,63 @@ Current source assignments:
 | \(W_i\) | \(j_T=P_T(\rho v)\) | STRUCTURAL / CONSTRAINED |
 | \(\kappa\) | pressure / stress trace shifts \(\kappa_{\min}\); constrained trace / volume relaxation | STRUCTURAL / UNFINISHED |
 | \(h_{ij}^{TT}\) | trace-free quadrupole / \(T_{ij}^{TT}\) | STRUCTURAL / COEFFICIENT MATCHED |
-| \(A_{\rm rad}\) | scalar radiative deviation | SUPPRESSED / UNFINISHED |
-| \(\Sigma_{\rm creation}\) | nonconservative creation regime | SPECIAL / RISK |
+| \(A_{\rm rad}\) | ordinary long-range scalar radiative deviation | REJECTED / CONSTRAINED |
+| \(\Sigma_{\rm creation}\) | nonconservative creation regime | SPECIAL / RISK; excluded from ordinary closed gravity |
 
----
+No-double-counting rules:
+
+\[
+S_\kappa[\rho]=0
+\]
+
+as an independent long-range scalar source.
+
+\[
+Q_\kappa=\int S_\kappa\,d^3x=0
+\]
+
+for exterior scalar/kappa charge.
+
+\[
+{\rm source}(W_i)=P_Tj.
+\]
+
+\[
+P_Lj
+\rightarrow
+\text{scalar continuity / density redistribution}.
+\]
+
+\[
+{\rm source}(h_{TT})=P_{TT}S_{ij}.
+\]
+
+\[
+{\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0.
+\]
+
+\[
+\Gamma_{\rm relax}[A_{\rm mass\ flux}]=0.
+\]
+
+\[
+\delta M_{\rm ext}\big|_{\kappa\ {\rm boundary\ smoothing}}=0.
+\]
+
+Main rule:
+
+```text
+one source may participate in total stress-energy,
+but it must not become multiple independent gravity sources unless a parent
+identity forces the split.
+```
+
+Status:
+
+```text
+CONSTRAINED / NOT YET PARENT-DERIVED
+```
+
 
 # 10. Constraint / Evolution Split
 
@@ -1192,17 +1276,53 @@ Current best split:
 
 | Variable | Equation Type | Status |
 |---|---|---|
-| \(A\) | elliptic / constraint | DERIVED_REDUCED |
-| \(A_{\rm rad}\) | absent, damped, or constrained | UNFINISHED |
+| \(A\) | elliptic / scalar constraint | DERIVED_REDUCED |
+| \(B\) | reduced gauge-conditioned companion to \(A\) | DERIVED_REDUCED / UNFINISHED COVARIANTLY |
+| \(A_{\rm rad}\) | ordinary scalar radiation rejected | REJECTED / CONSTRAINED |
 | \(\kappa\) | first-order non-inertial trace relaxation / constrained variable | STRUCTURAL / UNFINISHED |
-| \(W_i\) | elliptic transverse vector response, at least stationary | STRUCTURAL |
+| \(W_i\) | transverse vector response; stationary constraint-like sector, possible retarded response dynamically | STRUCTURAL |
 | \(h_{ij}^{TT}\) | hyperbolic tensor evolution | STRUCTURAL |
 | gauge modes | projected / fixed | UNFINISHED |
-| source identities | continuity / Bianchi-like closure | UNKNOWN |
+| source identities | continuity / Bianchi-like closure | MISSING |
 
----
+Radiation rule:
 
-# 11. Current Candidate Field System
+```text
+ordinary long-range gravitational radiation is TT-only.
+```
+
+Allowed:
+
+```text
+h_ij^TT propagates.
+```
+
+Constrained or rejected:
+
+```text
+A_rad ordinary scalar radiation is rejected.
+kappa breathing radiation is rejected.
+W_i free vector radiation is not currently derived.
+```
+
+Status:
+
+```text
+CONSTRAINED / STRUCTURAL
+```
+
+Parent identity still required:
+
+```text
+how constraints propagate consistently,
+why TT modes alone carry ordinary radiation,
+why scalar trace relaxes but does not radiate,
+why vector current response is transverse,
+how energy/source conservation is maintained.
+```
+
+
+# 11. Current Minimal Candidate Field System
 
 A compact presentation of the current system is:
 
@@ -1210,6 +1330,18 @@ A compact presentation of the current system is:
 \boxed{
 \Delta_{\rm areal}A =
 \frac{8\pi G}{c^2}\rho
+}
+\]
+
+Status:
+
+```text
+DERIVED_REDUCED
+```
+
+\[
+\boxed{
+A_{\rm ext}(r)=1-\frac{2GM}{c^2r}
 }
 \]
 
@@ -1239,11 +1371,37 @@ Exterior condition:
 }
 \]
 
+therefore:
+
+\[
+\boxed{
+B=\frac{1}{A}
+}
+\]
+
 Status:
 
 ```text
 DERIVED_REDUCED in static spherical exterior
 ```
+
+Weak scalar limit:
+
+\[
+\boxed{
+A\simeq1+\frac{2\Phi}{c^2},
+\qquad
+\nabla^2\Phi=4\pi G\rho
+}
+\]
+
+Status:
+
+```text
+DERIVED_REDUCED / WEAK-FIELD
+```
+
+Vector response:
 
 \[
 \boxed{
@@ -1287,6 +1445,8 @@ Status:
 STRUCTURAL / COEFFICIENT UNKNOWN
 ```
 
+Kappa trace relaxation:
+
 \[
 \boxed{
 \dot{\kappa}
@@ -1300,10 +1460,10 @@ with:
 \[
 \kappa_{\min}
 =
-\chi_\kappa S_{\rm trace,effective}
+\chi_\kappa S_{\rm trace,effective}.
 \]
 
-and exterior/boundary conditions:
+Exterior/boundary conditions:
 
 \[
 \kappa\to0,
@@ -1327,6 +1487,8 @@ Rejected:
 
 as an ordinary massless scalar breathing-wave equation.
 
+Tensor radiation:
+
 \[
 \boxed{
 \Box h_{ij}^{TT} =
@@ -1340,28 +1502,81 @@ Status:
 STRUCTURAL / SOURCE AND COEFFICIENT UNFINISHED
 ```
 
+Tensor energy flux scaling:
+
 \[
 \boxed{
-\partial_t q_v+\nabla\cdot J_v =
-\Sigma_{\rm exchange}
-+
-\Sigma_{\rm creation}
--
-\Gamma_{\rm relax}
+F_T
+\sim
+K_T
+\left\langle
+\dot h_{ij}^{TT}
+\dot h_{ij}^{TT}
+\right\rangle
 }
 \]
 
 Status:
 
 ```text
-ONTOLOGY-NATIVE / UNFINISHED
+MATCHED / COEFFICIENT UNFINISHED
 ```
 
----
+Scalar-radiation rejection:
 
-# 12. What Is Genuinely Reconstructed
+\[
+\boxed{
+{\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0
+}
+\]
 
-## Static Spherical Exterior
+Status:
+
+```text
+REJECTED / CONSTRAINED
+```
+
+Ordinary closed regime:
+
+\[
+\boxed{
+\Sigma_{\rm creation}=0
+}
+\]
+
+Status:
+
+```text
+CONSTRAINED
+```
+
+Parent closure target:
+
+\[
+\boxed{
+{\rm Div}\,
+E_{\rm parent}[A,W,h_{TT},\kappa]
+=
+B_{\rm closed}[T]
++
+B_{\rm relax}[\Gamma_{\rm relax}]
+}
+\]
+
+Status:
+
+```text
+MISSING / TEMPLATE ONLY
+```
+
+This is not closure.
+
+
+# 12. What Is Genuinely Reconstructed / GR Recovery Audit
+
+## Real Reduced Reconstruction
+
+### Static Spherical Exterior
 
 \[
 A=1-\frac{2GM}{c^2r},
@@ -1374,10 +1589,16 @@ B=\frac{1}{A}.
 Status:
 
 ```text
-RECONSTRUCTED
+RECONSTRUCTED / DERIVED_REDUCED
 ```
 
-## Weak Scalar Multipole Shape
+This is the strongest current result.
+
+---
+
+## Strong Reduced / Structural Support
+
+### Weak Scalar Multipole Shape
 
 \[
 A\simeq 1+\frac{2\Phi}{c^2}.
@@ -1389,7 +1610,23 @@ Status:
 RECONSTRUCTED AT WEAK ORDER
 ```
 
-## Vector Current Structure
+Limit:
+
+```text
+not a full nonlinear nonspherical theory.
+```
+
+### Reduced \(\gamma=1\)
+
+The exterior weak reciprocal relation supports the GR-like \(\gamma=1\) structure in the reduced weak exterior.
+
+Status:
+
+```text
+DERIVED_REDUCED / NOT FULL PPN AUDIT
+```
+
+### Vector Current Shape
 
 \[
 j_i=\rho v_i,
@@ -1418,7 +1655,7 @@ STRUCTURE RECONSTRUCTED
 NORMALIZATION NOT RECONSTRUCTED
 ```
 
-## Tensor TT Shape
+### Tensor TT Shape
 
 \[
 h_{ij}^{TT}
@@ -1434,6 +1671,57 @@ COUPLING NOT RECONSTRUCTED
 ```
 
 ---
+
+## Matched or Missing
+
+Matched / not yet derived:
+
+```text
+vector normalization,
+tensor coupling,
+tensor radiation flux coefficient.
+```
+
+Missing:
+
+```text
+Bianchi-like parent closure,
+covariant recombination,
+full nonlinear nonspherical scalar equation,
+full PPN audit,
+kappa covariant source law,
+boundary mass theorem.
+```
+
+Constrained:
+
+```text
+no scalar radiation,
+no kappa breathing mode,
+no independent long-range kappa scalar,
+no Sigma_creation in ordinary closed gravity.
+```
+
+---
+
+## Recovery Scorecard
+
+| Result | Status |
+|---|---|
+| static spherical exterior \(A\) | DERIVED_REDUCED |
+| exterior \(B=1/A\) once \(\kappa=0\) | DERIVED_REDUCED |
+| weak scalar / Newtonian limit | DERIVED_REDUCED |
+| reduced weak \(\gamma=1\) | DERIVED_REDUCED / not full PPN |
+| frame-dragging shape \(\sim J/r^3\) | DERIVED_REDUCED shape |
+| frame-dragging normalization | MATCHED / UNKNOWN |
+| tensor wave TT structure | STRUCTURAL |
+| tensor coupling | MATCHED / UNKNOWN |
+| tensor flux coefficient | MATCHED / UNKNOWN |
+| no scalar breathing radiation | CONSTRAINED |
+| \(\kappa\) non-radiative trace behavior | STRUCTURAL / UNFINISHED |
+| parent conservation / Bianchi compatibility | MISSING |
+| covariant metric recombination | UNFINISHED |
+
 
 # 13. Major Unknowns
 
@@ -1532,11 +1820,126 @@ Tensor sector:
   TT structure identified,
   coupling and source identity missing.
 
+Scalar radiation:
+  ordinary long-range scalar radiation rejected / constrained,
+  parent mechanism still missing.
+
 Parent conservation:
   ontology-native balance proposed,
-  closure missing.
+  parent closure identity missing.
+
+Metric recombination:
+  reduced bookkeeping map stated,
+  covariant parent recombination missing.
 ```
 
 The candidate system is therefore not yet a finished covariant theory.
 
 It is a partially reconstructed field-equation architecture with one fully successful reduced exterior sector.
+
+---
+
+# 15. Closure Failure Modes
+
+Fatal closure failures:
+
+```text
+decorative parent identity,
+scalar double-counting,
+hidden breathing wave,
+boundary smoothing tunes measured mass,
+sector ledger mistaken for closure.
+```
+
+Major closure risks:
+
+```text
+silent GR metric import,
+kappa repair knob,
+tensor coupling matched but claimed derived,
+vector normalization matched but claimed derived,
+active-regime leakage,
+relaxation as energy loss,
+near-boundary deviation overclaim.
+```
+
+Current controls:
+
+```text
+scalar double-counting constrained,
+hidden breathing wave constrained,
+active-regime leakage constrained,
+near-boundary prediction overclaim controlled by diagnostic-before-prediction rule.
+```
+
+Still unresolved:
+
+```text
+parent identity derivation,
+tensor coupling,
+vector normalization,
+covariant recombination,
+boundary mass theorem,
+relaxation energy accounting.
+```
+
+---
+
+# 16. Current Best Summary
+
+The current reduced field-equation system is coherent enough to present.
+
+It is not closed.
+
+Strongest result:
+
+```text
+Schwarzschild exterior from the A-sector.
+```
+
+Strongest structural result:
+
+```text
+a controlled sector split:
+  scalar constraint,
+  vector current response,
+  TT tensor radiation,
+  non-radiative kappa trace relaxation.
+```
+
+Main missing result:
+
+```text
+parent conservation / recombination identity.
+```
+
+---
+
+# 17. Recommended Next Group
+
+Recommended next group:
+
+```text
+12_parent_identity_and_recombination
+```
+
+Purpose:
+
+```text
+Try to derive or constrain the parent identity and recombination map that would
+turn the group-11 reduced sector ledger into a closed field-equation system.
+```
+
+First possible script:
+
+```text
+candidate_parent_identity_reduced_implications.py
+```
+
+Purpose:
+
+```text
+Test what the parent identity must imply in each reduced sector before trying
+to write a full covariant identity.
+```
+
