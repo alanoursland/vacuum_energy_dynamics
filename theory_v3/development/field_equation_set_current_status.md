@@ -699,15 +699,33 @@ NORMALIZATION UNKNOWN
 
 # 7. Kappa Trace / Interior Sector
 
+## 7.1 Current Role
+
 Current intended role:
 
 \[
 \kappa
 \]
 
-trace / volume / interior response field.
+is no longer best treated as an ordinary scalar field.
 
-Areal-gauge relation:
+Current best interpretation:
+
+```text
+kappa = constrained non-inertial trace / volume relaxation response.
+```
+
+It describes local vacuum-curvature equilibration:
+
+```text
+matter trace or pressure shifts a local vacuum-curvature minimum;
+kappa relaxes toward that minimum;
+the relaxation has no independent momentum channel;
+therefore kappa does not overshoot, slosh, or propagate as an ordinary
+breathing wave.
+```
+
+Areal-gauge diagnostic relation:
 
 \[
 AB=e^{2\kappa}.
@@ -725,41 +743,313 @@ Exterior Schwarzschild sector:
 \kappa=0.
 \]
 
-Interior / matter candidate role:
+Status:
+
+```text
+CONSTRAINED / STRUCTURAL
+```
+
+The areal-gauge diagnostic relation is reduced-derived, but the covariant physical status of \(\kappa\) remains unfinished.
+
+---
+
+## 7.2 Rejected Kappa Interpretations
+
+Raw density \(\rho\) as the primary \(\kappa\) source is rejected.
+
+Reason:
+
+```text
+rho already sources the A-sector mass / monopole response.
+```
+
+A raw pressure trace Poisson source:
 
 \[
-\kappa
-\sim
-\text{response to pressure, stress trace, volume exchange, or trace-sector vacuum imbalance}.
+S_{\rm trace}=3p
 \]
 
-Possible schematic source equation:
+is also rejected as a final unscreened source, because for ordinary positive pressure:
 
 \[
-\mathcal{L}_\kappa \kappa =
-S_\kappa[T,\rho,p,\text{trace/volume exchange}],
+Q_\kappa=\int 3p\,d^3x\neq0,
 \]
 
-where \(\mathcal{L}_\kappa\) may be elliptic, relaxation-type, or mixed.
+which would produce a massless exterior tail:
+
+\[
+\kappa_{\rm ext}\sim\frac{1}{r}.
+\]
+
+An ordinary massless wave equation:
+
+\[
+\Box\kappa=\alpha S
+\]
+
+is rejected because it introduces a scalar breathing-radiation channel.
 
 Status:
 
 ```text
-UNKNOWN / UNFINISHED
+REJECTED as ordinary propagating scalar gravity.
 ```
-
-Hard requirements:
-
-```text
-derive source law,
-separate physical trace response from gauge volume artifact,
-explain exterior suppression,
-avoid scalar-radiation conflict.
-```
-
-No final equation yet.
 
 ---
+
+## 7.3 Non-Inertial Relaxation Candidate
+
+The preferred candidate is first-order local relaxation toward a shifted minimum:
+
+\[
+\dot{\kappa}
+=
+-\mu_\kappa K_\kappa
+(\kappa-\kappa_{\min}).
+\]
+
+For fixed \(\kappa_{\min}\):
+
+\[
+\kappa(t)-\kappa_{\min}
+=
+[\kappa(0)-\kappa_{\min}]
+e^{-\mu_\kappa K_\kappa t}.
+\]
+
+This gives:
+
+```text
+no oscillation,
+no overshoot,
+no slosh,
+no independent kappa momentum channel,
+no ordinary breathing radiation.
+```
+
+Candidate minimum shift:
+
+\[
+\kappa_{\min}
+=
+\chi_\kappa S_{\rm trace,effective}.
+\]
+
+Interpretation:
+
+```text
+trace / pressure shifts the local equilibrium configuration;
+kappa relaxes toward it;
+trace is not treated as a radiative scalar charge.
+```
+
+Status:
+
+```text
+STRUCTURAL / UNFINISHED
+```
+
+Unknown:
+
+```text
+K_kappa,
+mu_kappa,
+chi_kappa,
+S_trace_effective,
+covariant origin.
+```
+
+---
+
+## 7.4 Exterior Suppression and Boundary Flux
+
+Exterior vacuum target:
+
+\[
+S_{\rm trace}=0,
+\]
+
+\[
+\kappa_{\min}=0,
+\]
+
+\[
+\kappa\to0.
+\]
+
+Boundary flux diagnostic:
+
+\[
+F_\kappa(R)=4\pi R^2\kappa'(R).
+\]
+
+Exterior safety requires:
+
+\[
+F_\kappa(R+)=0.
+\]
+
+Compact interior profiles can satisfy:
+
+\[
+\kappa(R)=0,
+\]
+
+\[
+\kappa'(R)=0,
+\]
+
+and therefore:
+
+\[
+F_\kappa(R)=0.
+\]
+
+A smoother C2 compact profile:
+
+\[
+\kappa(r)=
+\kappa_0
+\left(
+1-\frac{r^2}{R^2}
+\right)^3
+\]
+
+also satisfies:
+
+\[
+\kappa''(R)=0,
+\]
+
+removing the toy hidden second-derivative shell-stress trap.
+
+Status:
+
+```text
+DERIVED_REDUCED toy boundary control
+```
+
+Unknown:
+
+```text
+physical interface law,
+source compatibility,
+required smoothness from true action.
+```
+
+---
+
+## 7.5 Compensated / Projected Trace Logic
+
+A compensated source:
+
+\[
+P_0S=S-\langle S\rangle
+\]
+
+satisfies:
+
+\[
+\int P_0S\,d^3x=0.
+\]
+
+This removes massless exterior monopole \(\kappa\)-charge.
+
+Status:
+
+```text
+CONSTRAINED
+```
+
+Caveat:
+
+```text
+P_0 is nonlocal over the support region.
+It is acceptable only as a constraint/projection identity or boundary balance,
+not as an ordinary local scalar source.
+```
+
+---
+
+## 7.6 Near-Boundary Joint Minimum
+
+Group 10 suggests that the interior profile may not be exactly the naive Newtonian/parabolic curve near a material boundary.
+
+A mass source can create an interior quadratic tendency:
+
+\[
+f_{\rm int}=a_0+a_2r^2,
+\]
+
+while the exterior vacuum favors a reciprocal tendency:
+
+\[
+f_{\rm ext}=1-\frac{M}{r}.
+\]
+
+A toy joint-minimum energy is:
+
+\[
+E[f]
+=
+\int
+\left[
+W_{\rm int}(r)(f-f_{\rm int})^2
++
+W_{\rm ext}(r)(f-f_{\rm ext})^2
++
+\lambda_1(f')^2
++
+\lambda_2(f'')^2
+\right]dr.
+\]
+
+For constant weights, the schematic minimizer is:
+
+\[
+\lambda_2 f''''
+-
+\lambda_1 f''
++
+(W_i+W_e)f
+=
+W_if_{\rm int}
++
+W_ef_{\rm ext}.
+\]
+
+This may imply a near-boundary deviation from naive GR/Newtonian interior matching.
+
+Deviation diagnostics:
+
+\[
+\delta_f=f_{\rm joint}-f_{\rm GR,ref},
+\]
+
+\[
+\delta_g=-\frac{d\delta_f}{dr},
+\]
+
+\[
+\delta_{\rm curv}=\frac{d^2\delta_f}{dr^2}.
+\]
+
+Status:
+
+```text
+PLAUSIBLE / DIAGNOSTIC ONLY
+```
+
+No magnitude or measurement claim is justified until:
+
+```text
+weights are derived,
+transition width is derived,
+recombination map is fixed,
+observable is selected.
+```
+
+
 
 # 8. Tensor Radiation Sector
 
@@ -889,7 +1179,7 @@ Current source assignments:
 |---|---|---|
 | \(A\) | \(\rho\), \(M_{\rm enc}\) | DERIVED_REDUCED |
 | \(W_i\) | \(j_T=P_T(\rho v)\) | STRUCTURAL / CONSTRAINED |
-| \(\kappa\) | pressure / stress trace / volume exchange | UNKNOWN |
+| \(\kappa\) | pressure / stress trace shifts \(\kappa_{\min}\); constrained trace / volume relaxation | STRUCTURAL / UNFINISHED |
 | \(h_{ij}^{TT}\) | trace-free quadrupole / \(T_{ij}^{TT}\) | STRUCTURAL / COEFFICIENT MATCHED |
 | \(A_{\rm rad}\) | scalar radiative deviation | SUPPRESSED / UNFINISHED |
 | \(\Sigma_{\rm creation}\) | nonconservative creation regime | SPECIAL / RISK |
@@ -904,7 +1194,7 @@ Current best split:
 |---|---|---|
 | \(A\) | elliptic / constraint | DERIVED_REDUCED |
 | \(A_{\rm rad}\) | absent, damped, or constrained | UNFINISHED |
-| \(\kappa\) | trace response / relaxation / unknown | UNKNOWN |
+| \(\kappa\) | first-order non-inertial trace relaxation / constrained variable | STRUCTURAL / UNFINISHED |
 | \(W_i\) | elliptic transverse vector response, at least stationary | STRUCTURAL |
 | \(h_{ij}^{TT}\) | hyperbolic tensor evolution | STRUCTURAL |
 | gauge modes | projected / fixed | UNFINISHED |
@@ -999,16 +1289,43 @@ STRUCTURAL / COEFFICIENT UNKNOWN
 
 \[
 \boxed{
-\mathcal{L}_\kappa\kappa =
-S_\kappa
+\dot{\kappa}
+=
+-\mu_\kappa K_\kappa(\kappa-\kappa_{\min})
 }
+\]
+
+with:
+
+\[
+\kappa_{\min}
+=
+\chi_\kappa S_{\rm trace,effective}
+\]
+
+and exterior/boundary conditions:
+
+\[
+\kappa\to0,
+\qquad
+\kappa_{\min}\to0,
+\qquad
+F_\kappa(R+)=0.
 \]
 
 Status:
 
 ```text
-UNKNOWN
+STRUCTURAL / UNFINISHED
 ```
+
+Rejected:
+
+\[
+\Box\kappa=\alpha S
+\]
+
+as an ordinary massless scalar breathing-wave equation.
 
 \[
 \boxed{
@@ -1139,16 +1456,28 @@ C_{\rm shape}
 vector source convention factor.
 
 \[
-\mathcal{L}_\kappa
+K_\kappa,\;\mu_\kappa,\;\chi_\kappa
 \]
 
-kappa operator.
+kappa stiffness, mobility, and trace-minimum coupling.
 
 \[
-S_\kappa
+S_{\rm trace,effective}
 \]
 
-kappa source.
+effective trace / pressure / volume source shifting \(\kappa_{\min}\).
+
+\[
+\sigma
+\]
+
+near-boundary joint-minimum transition width, if used.
+
+\[
+W_{\rm int},\;W_{\rm ext},\;\lambda_1,\;\lambda_2
+\]
+
+joint-minimum energy weights / smoothing coefficients, if used.
 
 \[
 \mathcal{C}_T
@@ -1195,8 +1524,9 @@ Vector sector:
   normalization missing.
 
 Kappa sector:
-  role identified,
-  equation missing.
+  role identified as constrained non-inertial trace / volume relaxation,
+  first-order structural candidate written,
+  coefficients, source law, boundary physics, and covariant origin missing.
 
 Tensor sector:
   TT structure identified,
