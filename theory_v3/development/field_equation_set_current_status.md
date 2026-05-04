@@ -33,10 +33,16 @@ A
 scalar lapse / static mass-response field.
 
 \[
+\zeta=\ln\sqrt{\gamma}
+\]
+
+candidate vacuum-spacetime volume configuration variable.
+
+\[
 \kappa
 \]
 
-trace / volume / interior relaxation candidate.
+trace / volume / interior relaxation candidate; currently kept separate from \(\zeta\)-volume configuration until the \(\kappa\)-\(\zeta\) map is derived.
 
 \[
 W_i
@@ -58,14 +64,52 @@ A_{\rm rad}
 
 scalar breathing/radiative hazard; rejected as an ordinary active long-range degree of freedom.
 
-Vacuum-substance accounting variables, currently structural:
+Vacuum-substance / vacuum-spacetime accounting variables:
 
 \[
+\epsilon_{\rm vac,config},
+\qquad
 E_{\rm vac,config},
 \qquad
 q_v,
 \qquad
 J_v.
+\]
+
+Current best interpretation from group 13:
+
+```text
+epsilon_vac_config is geometric, not a generic reservoir.
+It is provisionally a zeta-volume configuration density.
+q_v/J_v are optional bookkeeping variables, only allowed if tied to geometry.
+```
+
+Current provisional vacuum-volume functional:
+
+\[
+\epsilon_{\rm vac,config}
+=
+\frac12K_\zeta(\zeta-\zeta_{\min})^2
++
+\frac12L_\zeta|\nabla\zeta|^2.
+\]
+
+Separate \(\kappa\)-relaxation energy:
+
+\[
+e_\kappa
+=
+\frac12K_\kappa(\kappa-\kappa_{\min})^2.
+\]
+
+Provisional exchange accounting:
+
+\[
+\frac{de_\kappa}{d\tau}
++
+\frac{d\epsilon_{\rm vac,config}}{d\tau}
+=
+0.
 \]
 
 Current reduced recombination map:
@@ -91,12 +135,15 @@ No-double-counting requirements:
 
 ```text
 rho -> A only,
-trace / pressure -> kappa_min only,
+trace / pressure -> kappa_min or zeta-volume sector only through projectors,
 kappa_ext = 0,
+zeta_ext = 0,
 h_ij^TT trace-free,
 W_i transverse,
 source(A_rad ordinary massless)=0,
-delta M_ext|kappa relaxation=0.
+delta M_ext|kappa/zeta relaxation=0,
+epsilon_vac_config excludes A_flux and M_ext,
+e_kappa is kept outside epsilon_vac_config until the kappa-zeta map is derived.
 ```
 
 Status:
@@ -107,11 +154,11 @@ STRUCTURAL / UNFINISHED
 
 The recombination map is reduced bookkeeping, not a covariant parent derivation.
 
-Group 12 result:
+Group 13 result:
 
 ```text
-recombination is constrained enough to state,
-but P_recombination is still unresolved.
+vacuum-substance accounting is now geometric enough to state provisionally,
+but the kappa-zeta map and projectors remain unresolved.
 ```
 
 
@@ -331,13 +378,61 @@ Current rule:
 {\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0.
 \]
 
-Also rejected as an ordinary massless scalar radiation equation:
+Also rejected as ordinary massless scalar radiation equations:
 
 \[
-\Box\kappa=\alpha S.
+\Box\kappa=\alpha S,
 \]
 
+\[
+\Box\zeta=\alpha S.
+\]
+
+Group 13 interpretation:
+
+```text
+scalar / trace disturbances are conversion-limited,
+not friction-damped waves.
+```
+
+They are not currently modeled as:
+
+\[
+\phi_{tt}+\gamma\phi_t+\omega^2\phi=0.
+\]
+
+Reason:
+
+```text
+no scalar inertia / momentum channel has been derived.
+```
+
+Current scalar / trace conversion skeleton:
+
+\[
+P_{\rm trace}[\text{source/geometry}]
+\rightarrow
+\delta\zeta.
+\]
+
+\[
+\zeta=\ln\sqrt{\gamma}.
+\]
+
+\[
+\kappa\sim\zeta-\zeta_{\min}
+\]
+
+as a constraint target only, not yet a derived identity.
+
 Interpretation:
+
+```text
+trace / scalar disturbance changes the spacetime-volume configuration.
+It does not become an ordinary far-zone scalar wave.
+```
+
+Ordinary radiation rule:
 
 ```text
 ordinary long-range gravitational radiation is TT-only.
@@ -355,6 +450,9 @@ Unknown:
 
 ```text
 Parent mechanism proving static scalar constraint cannot become ordinary scalar radiation.
+Trace/volume conversion operator P_trace.
+Binary scalar-conversion safety theorem.
+Nonlinear/covariant volume-form theorem.
 ```
 
 Failure if violated:
@@ -362,54 +460,139 @@ Failure if violated:
 ```text
 breathing radiation,
 scalar double-counting,
+far-zone scalar flux,
+secular orbital damping,
 or an exterior scalar channel not supported by the current theory.
 ```
 
 
-# 5. Vacuum-Substance Balance / Parent Closure Target
+# 5. Vacuum-Substance / Vacuum-Spacetime Balance Target
 
-Candidate ontology-native balance law:
+Corrected ontology carried into group 13:
+
+```text
+vacuum is spacetime.
+creating vacuum creates spacetime.
+changing local spacetime creates curvature.
+```
+
+Therefore:
+
+```text
+vacuum accounting is geometric accounting,
+not generic reservoir bookkeeping.
+```
+
+Candidate volume-form variable:
 
 \[
-\partial_t q_v+\nabla\cdot J_v =
-\Sigma_{\rm exchange} +
-\Sigma_{\rm creation} -
-\Gamma_{\rm relax}.
+\zeta=\ln\sqrt{\gamma}.
+\]
+
+Physical volume element:
+
+\[
+dV_{\rm phys}=\sqrt{\gamma}\,d^3x.
+\]
+
+Linear variation:
+
+\[
+\delta\zeta
+=
+\frac12\gamma^{ij}\delta\gamma_{ij}.
+\]
+
+For TT perturbations:
+
+\[
+\gamma^{ij}h_{ij}^{TT}=0,
+\]
+
+so:
+
+\[
+\delta\zeta|_{TT}=0.
 \]
 
 Interpretation:
 
-\[
-q_v
-\]
+```text
+trace / volume modes change vacuum-spacetime amount,
+TT modes are volume-preserving shear.
+```
 
-vacuum charge / density proxy.
-
-\[
-J_v
-\]
-
-vacuum transport current proxy.
+Candidate vacuum-accounting balance skeleton:
 
 \[
+u^\mu\nabla_\mu\epsilon_{\rm vac,config}
++
+\nabla_\mu J_v^\mu
+=
 \Sigma_{\rm exchange}
+-
+\Gamma_{\rm relax}.
 \]
 
-matter / vacuum exchange source.
+Ordinary closed conditions:
 
 \[
-\Sigma_{\rm creation}
+\Sigma_{\rm creation}=0,
 \]
-
-nonconservative creation / destruction term.
 
 \[
-\Gamma_{\rm relax}
+\oint J_v\cdot dS=0,
 \]
 
-internal relaxation / restoration exchange term.
+\[
+Q_{\rm volume}=0,
+\]
 
-Group 12 parent template v2:
+\[
+\delta M_{\rm ext}=0,
+\]
+
+\[
+F_{\rm scalar,far}=0.
+\]
+
+Provisional \(\epsilon_{\rm vac,config}\) functional:
+
+\[
+\epsilon_{\rm vac,config}
+=
+\frac12K_\zeta(\zeta-\zeta_{\min})^2
++
+\frac12L_\zeta|\nabla\zeta|^2.
+\]
+
+Separate \(\kappa\)-relaxation energy:
+
+\[
+e_\kappa
+=
+\frac12K_\kappa(\kappa-\kappa_{\min})^2.
+\]
+
+Provisional exchange accounting:
+
+\[
+\frac{de_\kappa}{d\tau}
++
+\frac{d\epsilon_{\rm vac,config}}{d\tau}
+=
+0.
+\]
+
+No \(K_{\rm lock}\) energy is currently counted.
+
+Constraint target only:
+
+\[
+\kappa\sim\zeta-\zeta_{\min}.
+\]
+
+Group 12 parent template v2 remains:
 
 \[
 {\rm Div}\,
@@ -417,34 +600,12 @@ E_{\rm parent}
 [
 A,W,h_{TT},\kappa;
 P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]=
+]
+=
 B_{\rm closed}[T]
 +
 B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}].
 \]
-
-Ordinary closed regime:
-
-\[
-\Sigma_{\rm creation}=0.
-\]
-
-Relaxation exchange:
-
-\[
-\frac{dE_\kappa}{d\tau}
-+
-\frac{dE_{\rm vac,config}}{d\tau}=
-0.
-\]
-
-Interpretation:
-
-```text
-curvature excess deposits into vacuum-substance configuration,
-curvature deficit pulls from vacuum-substance configuration,
-ordinary closed-regime total accounting remains conserved.
-```
 
 Status:
 
@@ -452,62 +613,26 @@ Status:
 CANDIDATE / SCAFFOLD ONLY
 ```
 
-This is more constrained than the group-11 template, but still not closure.
+The group-13 balance is more concrete than the group-12 balance language, but it is still not closure.
 
-The parent target must eventually explain:
+Allowed \(J_v\) classes:
 
 ```text
-A constraint propagation,
-W_i transverse sourcing,
-h_TT tensor radiation,
-kappa trace relaxation without scalar radiation,
-mass preservation,
-ordinary exclusion of Sigma_creation,
-recombination without scalar double-counting,
-relaxation exchange with vacuum substance.
+J_v = 0 / local exchange,
+compact-support J_v,
+constraint redistribution J_v with zero exterior flux,
+causal transport J_v only if separately derived.
 ```
 
-Known projection hints:
+Forbidden \(J_v\) classes:
 
-\[
-\rho
-\rightarrow
-P_{\rm scalar}
-\rightarrow
-A.
-\]
-
-\[
-j_i=\rho v_i
-\rightarrow
-P_T
-\rightarrow
-W_i.
-\]
-
-\[
-\text{trace/stress}
-\rightarrow
-P_{\rm trace}
-\rightarrow
-\kappa_{\min}.
-\]
-
-\[
-\text{trace-free quadrupole/shear}
-\rightarrow
-P_{TT}
-\rightarrow
-h_{ij}^{TT}.
-\]
-
-\[
-\kappa-\kappa_{\min}
-\rightarrow
-P_{\rm relax}
-\rightarrow
-E_{\rm vac,config}.
-\]
+```text
+acausal repair current,
+far-zone scalar-energy current,
+coefficient tuning current,
+exterior mass-changing current,
+unlabeled nonlocal transport.
+```
 
 Unknown:
 
@@ -515,14 +640,19 @@ Unknown:
 Definition of E_parent.
 Definition of B_closed.
 Definition of B_relax.
-Definition of E_vac_config.
-Definition of q_v and J_v.
+Definition of epsilon_vac_config from a parent action.
+Definition of zeta_min.
+Definition of q_v and J_v, if needed.
+Definition of Sigma_exchange.
+Definition of Gamma_relax sign convention.
+Definition of u^mu / frame / foliation.
 Closure identity.
 Relation to stress-energy conservation.
 Bianchi-like parent identity.
 Covariant recombination map.
 Scalar constraint propagation.
 Coefficient action / stiffness principle.
+Kappa-zeta map.
 ```
 
 
@@ -841,13 +971,25 @@ Exterior Schwarzschild sector:
 \kappa=0.
 \]
 
+Group 13 added the volume-form variable:
+
+\[
+\zeta=\ln\sqrt{\gamma}.
+\]
+
+Current constraint target:
+
+\[
+\kappa\sim\zeta-\zeta_{\min}.
+\]
+
 Status:
 
 ```text
 CONSTRAINED / STRUCTURAL
 ```
 
-The areal-gauge diagnostic relation is reduced-derived, but the covariant physical status of \(\kappa\) remains unfinished.
+The areal-gauge diagnostic relation is reduced-derived, but the covariant physical relation between \(\kappa\) and \(\zeta\) remains unfinished.
 
 ---
 
@@ -879,13 +1021,17 @@ which would produce a massless exterior tail:
 \kappa_{\rm ext}\sim\frac{1}{r}.
 \]
 
-An ordinary massless wave equation:
+Ordinary massless wave equations:
 
 \[
-\Box\kappa=\alpha S
+\Box\kappa=\alpha S,
 \]
 
-is rejected because it introduces a scalar breathing-radiation channel.
+\[
+\Box\zeta=\alpha S
+\]
+
+are rejected because they introduce scalar breathing-radiation channels.
 
 Status:
 
@@ -900,7 +1046,8 @@ REJECTED as ordinary propagating scalar gravity.
 The reduced candidate is first-order local relaxation toward a shifted minimum:
 
 \[
-\dot{\kappa}=
+\dot{\kappa}
+=
 -\mu_\kappa K_\kappa
 (\kappa-\kappa_{\min}).
 \]
@@ -908,7 +1055,8 @@ The reduced candidate is first-order local relaxation toward a shifted minimum:
 Group 12 frame-compatible candidate:
 
 \[
-u^\mu\nabla_\mu\kappa=
+u^\mu\nabla_\mu\kappa
+=
 -\lambda_\kappa(\kappa-\kappa_{\min}).
 \]
 
@@ -921,14 +1069,16 @@ where:
 Candidate minimum shift:
 
 \[
-\kappa_{\min}=
+\kappa_{\min}
+=
 \chi_\kappa S_{\rm trace,effective}.
 \]
 
 For fixed \(\kappa_{\min}\):
 
 \[
-\kappa(t)-\kappa_{\min}=
+\kappa(t)-\kappa_{\min}
+=
 [\kappa(0)-\kappa_{\min}]
 e^{-\mu_\kappa K_\kappa t}.
 \]
@@ -958,66 +1108,76 @@ mu_kappa,
 lambda_kappa,
 chi_kappa,
 S_trace_effective,
-covariant origin.
+covariant origin,
+kappa-zeta map.
 ```
 
 ---
 
-## 7.4 Kappa Relaxation Energy Accounting
+## 7.4 Kappa / Zeta Energy Accounting
 
-Candidate local free-energy form:
+Group 13 provisional convention:
 
 \[
-E_\kappa=
+\epsilon_{\rm vac,config}
+=
+\frac12K_\zeta(\zeta-\zeta_{\min})^2
++
+\frac12L_\zeta|\nabla\zeta|^2.
+\]
+
+Separate kappa relaxation energy:
+
+\[
+e_\kappa
+=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2.
 \]
 
-Candidate relaxation:
+Provisional exchange accounting:
 
 \[
-u^\mu\nabla_\mu\kappa=
--\mu_\kappa
-\frac{\partial E_\kappa}{\partial\kappa}.
-\]
-
-Local monotonicity:
-
-\[
-\frac{dE_\kappa}{d\tau}
-\le0.
-\]
-
-But the local relaxation energy is not destroyed.
-
-Required exchange:
-
-\[
-\frac{dE_\kappa}{d\tau}
+\frac{de_\kappa}{d\tau}
 +
-\frac{dE_{\rm vac,config}}{d\tau}=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}
+=
 0.
 \]
 
-Interpretation:
+Constraint target:
+
+\[
+\kappa\sim\zeta-\zeta_{\min}.
+\]
+
+but:
 
 ```text
-curvature excess deposits into vacuum-substance configuration;
-curvature deficit pulls from vacuum-substance configuration;
-both move toward the local minimum without sloshing.
+no K_lock energy is counted until derived.
+```
+
+Reason:
+
+```text
+the kappa-zeta map is not derived,
+so combining kappa mismatch energy into epsilon_vac_config risks double-counting.
 ```
 
 Status:
 
 ```text
-CANDIDATE / NOT DERIVED
+CANDIDATE / PROVISIONAL
 ```
 
 Unknown:
 
 ```text
-E_vac_config,
-q_v,
-J_v,
+zeta_min,
+kappa-zeta map,
+whether e_kappa is truly separate or later absorbed,
+K_zeta,
+L_zeta,
+K_kappa,
 volume measure,
 total balance law.
 ```
@@ -1037,47 +1197,67 @@ S_{\rm trace}=0,
 \]
 
 \[
-\kappa\to0.
+\zeta_{\min}=0,
 \]
 
-Boundary flux diagnostic:
+\[
+\kappa\to0,
+\]
 
 \[
-F_\kappa(R)=4\pi R^2\kappa'(R).
+\zeta\to0.
+\]
+
+Boundary flux diagnostics:
+
+\[
+F_\kappa(R)=4\pi R^2\kappa'(R),
+\]
+
+\[
+F_\zeta(R)=4\pi R^2\zeta'(R).
 \]
 
 Exterior safety requires:
 
 \[
-F_\kappa(R+)=0.
+F_\kappa(R+)=0,
 \]
 
-Exterior kappa charge condition:
+\[
+F_\zeta(R+)=0.
+\]
+
+Exterior charge conditions:
 
 \[
-Q_\kappa=0.
+Q_\kappa=0,
+\]
+
+\[
+Q_{\rm volume}=0.
 \]
 
 Boundary mass preservation requires:
 
 \[
-\delta M_{\rm ext}\big|_{\kappa{\rm\ relaxation}}=0.
+\delta M_{\rm ext}\big|_{\kappa/\zeta{\rm\ reconfiguration}}=0.
 \]
 
 Compact interior profiles can satisfy:
 
 \[
 \kappa(R)=0,
-\]
-
-\[
+\qquad
 \kappa'(R)=0,
 \]
 
-and therefore:
+and similarly:
 
 \[
-F_\kappa(R)=0.
+\zeta(R)=0,
+\qquad
+\zeta'(R)=0.
 \]
 
 A smoother C2 compact profile:
@@ -1093,10 +1273,10 @@ A smoother C2 compact profile:
 also satisfies:
 
 \[
-\kappa''(R)=0,
+\kappa''(R)=0.
 \]
 
-removing the toy hidden second-derivative shell-stress trap.
+Analogous compact \(\zeta\) profiles may be used only as toy boundary diagnostics.
 
 Status:
 
@@ -1110,12 +1290,13 @@ Unknown:
 physical interface law,
 source compatibility,
 required smoothness from true action,
-boundary mass preservation theorem.
+boundary mass preservation theorem,
+P_boundary P_trace origin.
 ```
 
 ---
 
-## 7.6 Compensated / Projected Trace Logic
+## 7.6 Compensated / Projected Trace and Volume Logic
 
 A compensated source:
 
@@ -1129,7 +1310,7 @@ satisfies:
 \int P_0S\,d^3x=0.
 \]
 
-This removes massless exterior monopole \(\kappa\)-charge.
+This removes massless exterior monopole \(\kappa\)- or \(\zeta\)-charge.
 
 Status:
 
@@ -1166,7 +1347,8 @@ f_{\rm ext}=1-\frac{M}{r}.
 A toy joint-minimum energy is:
 
 \[
-E[f]=
+E[f]
+=
 \int
 \left[
 W_{\rm int}(r)(f-f_{\rm int})^2
@@ -1186,7 +1368,8 @@ For constant weights, the schematic minimizer is:
 -
 \lambda_1 f''
 +
-(W_i+W_e)f=
+(W_i+W_e)f
+=
 W_if_{\rm int}
 +
 W_ef_{\rm ext}.
@@ -1221,7 +1404,8 @@ weights are derived,
 transition width is derived,
 recombination map is fixed,
 observable is selected,
-boundary mass preservation theorem is established.
+boundary mass preservation theorem is established,
+kappa-zeta map is derived.
 ```
 
 
@@ -1353,13 +1537,16 @@ Current source assignments:
 |---|---|---|
 | \(A\) | \(\rho\), \(M_{\rm enc}\), \(P_{\rm scalar}T\) | DERIVED_REDUCED / STRUCTURAL PROJECTOR |
 | \(W_i\) | \(j_T=P_T(\rho v)\) | STRUCTURAL / CONSTRAINED |
+| \(\zeta\) | trace / volume configuration through \(P_{\rm trace}\) | CANDIDATE / UNFINISHED |
 | \(\kappa\) | pressure / stress trace shifts \(\kappa_{\min}\); constrained trace / volume relaxation | STRUCTURAL / UNFINISHED |
 | \(h_{ij}^{TT}\) | trace-free quadrupole / \(P_{TT}T_{ij}\) | STRUCTURAL / COEFFICIENT MATCHED |
 | \(A_{\rm rad}\) | ordinary long-range scalar radiative deviation | REJECTED / CONSTRAINED |
-| \(E_{\rm vac,config}\) | vacuum-substance configuration energy exchange with \(E_\kappa\) | CANDIDATE / UNFINISHED |
+| \(\epsilon_{\rm vac,config}\) | \(\zeta\)-volume configuration density | CANDIDATE / PROVISIONAL |
+| \(e_\kappa\) | separate \(\kappa\)-relaxation energy | CANDIDATE / PROVISIONAL |
+| \(J_v\) | optional local / compact / constrained vacuum configuration current | STRUCTURAL / OPTIONAL |
 | \(\Sigma_{\rm creation}\) | nonconservative creation regime | SPECIAL / RISK; excluded from ordinary closed gravity |
 
-Projector routing required by group 12:
+Projector routing required by groups 12–13:
 
 ```text
 rho / scalar charge
@@ -1378,17 +1565,17 @@ TT stress
   -> P_TT
   -> h_ij^TT
 
-trace / pressure
+trace / pressure / volume source
   -> P_trace
-  -> kappa_min
+  -> zeta, zeta_min, kappa_min
 
 kappa imbalance
   -> P_relax
-  -> first-order relaxation and E_vac_config exchange
+  -> first-order relaxation and exchange with epsilon_vac_config
 
 boundary data
   -> P_boundary
-  -> M_ext preservation and kappa exterior safety
+  -> M_ext preservation and kappa/zeta exterior safety
 
 active-regime terms
   -> P_closed
@@ -1408,10 +1595,18 @@ S_\kappa[\rho]=0
 as an independent long-range scalar source.
 
 \[
-Q_\kappa=\int S_\kappa\,d^3x=0
+S_\zeta[\rho]=0
 \]
 
-for exterior scalar/kappa charge.
+as an independent exterior scalar charge.
+
+\[
+Q_\kappa=\int S_\kappa\,d^3x=0.
+\]
+
+\[
+Q_{\rm volume}=0.
+\]
 
 \[
 {\rm source}(W_i)=P_Tj.
@@ -1432,26 +1627,44 @@ P_Lj
 \]
 
 \[
+{\rm source}(\Box\zeta)=0
+\]
+
+in ordinary gravity.
+
+\[
+{\rm source}(\Box\kappa)=0
+\]
+
+in ordinary gravity.
+
+\[
 \Gamma_{\rm relax}[A_{\rm mass\ flux}]=0.
 \]
 
 \[
-\delta M_{\rm ext}\big|_{\kappa\ {\rm boundary\ smoothing}}=0.
+\delta M_{\rm ext}\big|_{\kappa/\zeta\ {\rm boundary\ smoothing}}=0.
 \]
 
 \[
-E_{\rm vac,config}
+\epsilon_{\rm vac,config}
 \not\rightarrow
 A\text{-sector exterior mass charge}.
 \]
 
 \[
-E_{\rm vac,config}
+\epsilon_{\rm vac,config}
 \not\rightarrow
 \Sigma_{\rm creation}
 \]
 
 in ordinary closed gravity.
+
+\[
+e_\kappa
+\]
+
+is counted separately from \(\epsilon_{\rm vac,config}\) until the \(\kappa\)-\(\zeta\) map is derived.
 
 Main rule:
 
@@ -1477,9 +1690,11 @@ Current best split:
 | \(A\) | elliptic / scalar constraint | DERIVED_REDUCED |
 | \(B\) | reduced gauge-conditioned companion to \(A\) | DERIVED_REDUCED / UNFINISHED COVARIANTLY |
 | \(A_{\rm rad}\) | ordinary scalar radiation rejected | REJECTED / CONSTRAINED |
+| \(\zeta\) | volume-form configuration variable; no scalar wave equation | CANDIDATE / FRAME-DEPENDENT |
+| \(\epsilon_{\rm vac,config}\) | \(\zeta\)-volume configuration density | CANDIDATE / PROVISIONAL |
 | \(\kappa\) | first-order non-inertial trace relaxation / constrained variable | STRUCTURAL / UNFINISHED |
-| \(E_{\rm vac,config}\) | vacuum-substance configuration energy exchange variable | CANDIDATE / UNFINISHED |
-| \(q_v,J_v\) | optional vacuum-substance density/current bookkeeping | STRUCTURAL / UNFINISHED |
+| \(e_\kappa\) | separate kappa relaxation energy | CANDIDATE / PROVISIONAL |
+| \(q_v,J_v\) | optional vacuum-substance density/current bookkeeping | STRUCTURAL / OPTIONAL |
 | \(W_i\) | transverse vector response; stationary constraint-like sector, possible retarded response dynamically | STRUCTURAL |
 | \(h_{ij}^{TT}\) | hyperbolic tensor evolution | STRUCTURAL |
 | gauge modes | projected / fixed | UNFINISHED |
@@ -1502,7 +1717,15 @@ Constrained or rejected:
 ```text
 A_rad ordinary scalar radiation is rejected.
 kappa breathing radiation is rejected.
+zeta scalar radiation is rejected.
 W_i free vector radiation is not currently derived.
+```
+
+Scalar / trace conversion rule:
+
+```text
+scalar / trace disturbances are conversion-limited,
+not friction-damped waves.
 ```
 
 Relaxation rule:
@@ -1511,13 +1734,48 @@ Relaxation rule:
 Gamma_relax is exchange / restoration, not energy destruction.
 ```
 
-Required exchange:
+Provisional exchange:
 
 \[
-\frac{dE_\kappa}{d\tau}
+\frac{de_\kappa}{d\tau}
 +
-\frac{dE_{\rm vac,config}}{d\tau}=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}
+=
 0.
+\]
+
+Vacuum-accounting balance skeleton:
+
+\[
+u^\mu\nabla_\mu\epsilon_{\rm vac,config}
++
+\nabla_\mu J_v^\mu
+=
+\Sigma_{\rm exchange}
+-
+\Gamma_{\rm relax}.
+\]
+
+Ordinary constraints:
+
+\[
+\Sigma_{\rm creation}=0,
+\]
+
+\[
+\oint J_v\cdot dS=0,
+\]
+
+\[
+Q_{\rm volume}=0,
+\]
+
+\[
+\delta M_{\rm ext}=0,
+\]
+
+\[
+F_{\rm scalar,far}=0.
 \]
 
 Status:
@@ -1531,10 +1789,11 @@ Parent identity still required:
 ```text
 how constraints propagate consistently,
 why TT modes alone carry ordinary radiation,
-why scalar trace relaxes but does not radiate,
+why scalar trace converts but does not radiate,
 why vector current response is transverse,
 how energy/source conservation is maintained,
-how E_vac_config is defined,
+how epsilon_vac_config is derived,
+how e_kappa and epsilon_vac_config avoid double-counting,
 how recombination avoids double-counting.
 ```
 
@@ -1618,6 +1877,38 @@ Status:
 DERIVED_REDUCED / WEAK-FIELD
 ```
 
+Volume-form candidate:
+
+\[
+\boxed{
+\zeta=\ln\sqrt{\gamma}
+}
+\]
+
+with:
+
+\[
+\boxed{
+\delta\zeta
+=
+\frac12\gamma^{ij}\delta\gamma_{ij}
+}
+\]
+
+and for TT perturbations:
+
+\[
+\boxed{
+\delta\zeta|_{TT}=0.
+}
+\]
+
+Status:
+
+```text
+CANDIDATE / LINEAR STRUCTURAL
+```
+
 Vector response:
 
 \[
@@ -1666,7 +1957,8 @@ Kappa trace relaxation:
 
 \[
 \boxed{
-u^\mu\nabla_\mu\kappa=
+u^\mu\nabla_\mu\kappa
+=
 -\lambda_\kappa(\kappa-\kappa_{\min})
 }
 \]
@@ -1674,14 +1966,16 @@ u^\mu\nabla_\mu\kappa=
 with:
 
 \[
-\kappa_{\min}=
+\kappa_{\min}
+=
 \chi_\kappa S_{\rm trace,effective}.
 \]
 
 Reduced form:
 
 \[
-\dot{\kappa}=
+\dot{\kappa}
+=
 -\mu_\kappa K_\kappa(\kappa-\kappa_{\min}).
 \]
 
@@ -1690,13 +1984,27 @@ Exterior/boundary conditions:
 \[
 \kappa\to0,
 \qquad
+\zeta\to0,
+\qquad
 \kappa_{\min}\to0,
 \qquad
+\zeta_{\min}\to0,
+\]
+
+\[
 Q_\kappa=0,
 \qquad
+Q_{\rm volume}=0,
+\]
+
+\[
 F_\kappa(R+)=0,
 \qquad
-\delta M_{\rm ext}\big|_{\kappa{\rm\ relaxation}}=0.
+F_\zeta(R+)=0,
+\]
+
+\[
+\delta M_{\rm ext}\big|_{\kappa/\zeta{\rm\ reconfiguration}}=0.
 \]
 
 Status:
@@ -1705,20 +2013,48 @@ Status:
 STRUCTURAL / UNFINISHED
 ```
 
-Kappa relaxation energy exchange:
+Vacuum-volume configuration density:
 
 \[
 \boxed{
-E_\kappa=
+\epsilon_{\rm vac,config}
+=
+\frac12K_\zeta(\zeta-\zeta_{\min})^2
++
+\frac12L_\zeta|\nabla\zeta|^2
+}
+\]
+
+Status:
+
+```text
+CANDIDATE / PROVISIONAL
+```
+
+Separate kappa relaxation energy:
+
+\[
+\boxed{
+e_\kappa
+=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2
 }
 \]
 
+Status:
+
+```text
+CANDIDATE / PROVISIONAL
+```
+
+Provisional exchange:
+
 \[
 \boxed{
-\frac{dE_\kappa}{d\tau}
+\frac{de_\kappa}{d\tau}
 +
-\frac{dE_{\rm vac,config}}{d\tau}=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}
+=
 0
 }
 \]
@@ -1726,16 +2062,56 @@ E_\kappa=
 Status:
 
 ```text
-CANDIDATE / UNFINISHED
+CANDIDATE / PROVISIONAL
+```
+
+Vacuum-accounting balance skeleton:
+
+\[
+\boxed{
+u^\mu\nabla_\mu\epsilon_{\rm vac,config}
++
+\nabla_\mu J_v^\mu
+=
+\Sigma_{\rm exchange}
+-
+\Gamma_{\rm relax}
+}
+\]
+
+with ordinary constraints:
+
+\[
+\boxed{
+\Sigma_{\rm creation}=0,
+\qquad
+\oint J_v\cdot dS=0,
+\qquad
+Q_{\rm volume}=0,
+\qquad
+\delta M_{\rm ext}=0,
+\qquad
+F_{\rm scalar,far}=0.
+}
+\]
+
+Status:
+
+```text
+CANDIDATE / SCAFFOLD ONLY
 ```
 
 Rejected:
 
 \[
-\Box\kappa=\alpha S
+\Box\kappa=\alpha S,
 \]
 
-as an ordinary massless scalar breathing-wave equation.
+\[
+\Box\zeta=\alpha S,
+\]
+
+as ordinary massless scalar breathing-wave equations.
 
 Tensor radiation:
 
@@ -1786,20 +2162,6 @@ Status:
 REJECTED / CONSTRAINED
 ```
 
-Ordinary closed regime:
-
-\[
-\boxed{
-\Sigma_{\rm creation}=0
-}
-\]
-
-Status:
-
-```text
-CONSTRAINED
-```
-
 Parent closure target v2:
 
 \[
@@ -1809,7 +2171,8 @@ E_{\rm parent}
 [
 A,W,h_{TT},\kappa;
 P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]=
+]
+=
 B_{\rm closed}[T]
 +
 B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}]
@@ -2003,28 +2366,58 @@ K_\kappa,\;\mu_\kappa,\;\lambda_\kappa,\;\chi_\kappa
 kappa stiffness, mobility, relaxation rate, and trace-minimum coupling.
 
 \[
+K_\zeta,\;L_\zeta
+\]
+
+volume-configuration displacement and gradient/interface stiffness.
+
+\[
 u^\mu
 \]
 
-frame / flow field defining covariant kappa relaxation.
+frame / flow field defining covariant kappa relaxation and vacuum-accounting derivative.
+
+\[
+\zeta_{\min}
+\]
+
+local vacuum-volume equilibrium configuration.
 
 \[
 S_{\rm trace,effective}
 \]
 
-effective trace / pressure / volume source shifting \(\kappa_{\min}\).
+effective trace / pressure / volume source shifting \(\kappa_{\min}\) and/or \(\zeta_{\min}\).
+
+\[
+\epsilon_{\rm vac,config}
+\]
+
+vacuum-spacetime configuration density; provisionally a \(\zeta\)-volume functional.
 
 \[
 E_{\rm vac,config}
 \]
 
-vacuum-substance configuration energy density / reservoir variable.
+integrated vacuum-spacetime configuration functional.
 
 \[
 q_v,\;J_v
 \]
 
 optional vacuum-substance density/current bookkeeping variables.
+
+\[
+\Sigma_{\rm exchange},\;\Sigma_{\rm creation},\;\Gamma_{\rm relax}
+\]
+
+vacuum-accounting source / active-regime / relaxation terms.
+
+\[
+Q_{\rm volume},\;S_{\rm volume}
+\]
+
+volume charge and volume source variables needed for exterior neutrality.
 
 \[
 \sigma
@@ -2068,11 +2461,31 @@ P_{\rm recombination},
 P_{\rm coeff}.
 \]
 
-Parent ontology variables and balance terms:
+Kappa-zeta relation:
 
 \[
-\Sigma_{\rm exchange},\;\Sigma_{\rm creation},\;\Gamma_{\rm relax}.
+\kappa\stackrel{?}{=}\zeta-\zeta_{\min}.
 \]
+
+or:
+
+\[
+\kappa=P_{\rm trace}[\zeta-\zeta_{\min}].
+\]
+
+or:
+
+\[
+\kappa=\frac12\ln(AB)
+\]
+
+as only a reduced areal-gauge diagnostic.
+
+Status:
+
+```text
+UNRESOLVED
+```
 
 Bianchi-like closure identity:
 
@@ -2110,6 +2523,18 @@ Covariant recombination map:
 \text{UNFINISHED}.
 \]
 
+Nonlinear / covariant volume-form theorem:
+
+\[
+\text{MISSING}.
+\]
+
+Binary scalar-conversion safety theorem:
+
+\[
+\text{MISSING}.
+\]
+
 
 # 14. Minimal Honest Claim
 
@@ -2123,11 +2548,6 @@ Vector sector:
   source/projection/action/shape reconstructed,
   normalization missing.
 
-Kappa sector:
-  role identified as constrained non-inertial trace / volume relaxation,
-  first-order structural candidate written,
-  frame field, coefficients, source law, boundary theorem, and covariant origin missing.
-
 Tensor sector:
   TT structure identified,
   coupling and source identity missing.
@@ -2136,10 +2556,22 @@ Scalar radiation:
   ordinary long-range scalar radiation rejected / constrained,
   parent mechanism still missing.
 
+Zeta / vacuum-volume sector:
+  zeta = ln sqrt(gamma) identified as leading geometric volume-form candidate,
+  epsilon_vac_config provisionally written as zeta-volume displacement plus gradient/interface energy,
+  frame, measure, stiffnesses, and parent origin missing.
+
+Kappa sector:
+  role identified as constrained non-inertial trace / volume relaxation,
+  first-order structural candidate written,
+  e_kappa kept separate from epsilon_vac_config to avoid double-counting,
+  kappa-zeta map, frame field, coefficients, source law, boundary theorem, and covariant origin missing.
+
 Vacuum-substance accounting:
-  E_vac_config identified as required local configuration-energy variable,
+  balance skeleton written,
+  J_v constrained to absent/local/compact/constraint/causal-if-derived classes,
   q_v/J_v optional bookkeeping,
-  definitions missing.
+  Sigma_creation excluded from ordinary regime.
 
 Parent conservation:
   parent template v2 proposed,
@@ -2153,7 +2585,7 @@ Metric recombination:
 
 The candidate system is therefore not yet a finished covariant theory.
 
-It is a partially reconstructed field-equation architecture with one fully successful reduced exterior sector and a much more constrained parent-identity candidate space.
+It is a partially reconstructed field-equation architecture with one fully successful reduced exterior sector and a much more constrained scalar/vector/tensor/vacuum accounting structure.
 
 ---
 
@@ -2166,7 +2598,9 @@ decorative parent identity,
 scalar double-counting,
 hidden breathing wave,
 boundary smoothing tunes measured mass,
-sector ledger mistaken for closure.
+sector ledger mistaken for closure,
+epsilon_vac_config becomes a repair reservoir,
+kappa/zeta energy counted twice.
 ```
 
 Major closure risks:
@@ -2174,13 +2608,15 @@ Major closure risks:
 ```text
 silent GR metric import,
 kappa repair knob,
+zeta exterior scalar charge,
 tensor coupling matched but claimed derived,
 vector normalization matched but claimed derived,
 active-regime leakage,
 relaxation as energy loss,
 near-boundary deviation overclaim,
-E_vac_config as repair reservoir,
-coefficient tuning through vacuum reservoir.
+coefficient tuning through vacuum reservoir,
+J_v as acausal repair current,
+scalar conversion becoming orbital damping.
 ```
 
 Current controls:
@@ -2190,8 +2626,10 @@ scalar double-counting constrained,
 hidden breathing wave constrained,
 active-regime leakage constrained,
 near-boundary prediction overclaim controlled by diagnostic-before-prediction rule,
-relaxation energy interpreted as vacuum-substance exchange,
-E_vac_config excluded from A-sector mass and Sigma_creation.
+relaxation energy interpreted as vacuum-spacetime configuration exchange,
+epsilon_vac_config excluded from A-sector mass and Sigma_creation,
+J_v forbidden as far-zone scalar current or coefficient tuning knob,
+e_kappa kept separate from epsilon_vac_config until kappa-zeta map is derived.
 ```
 
 Still unresolved:
@@ -2203,8 +2641,10 @@ tensor coupling,
 vector normalization,
 covariant recombination,
 boundary mass theorem,
-relaxation energy variable definition,
+epsilon_vac_config parent derivation,
 q_v/J_v meaning,
+kappa-zeta map,
+P_trace / P_boundary / P_recombination,
 coefficient action/stiffness principle.
 ```
 
@@ -2230,6 +2670,18 @@ GR coefficients inserted as derivation,
 metric recombination copied from GR.
 ```
 
+Group 13 extends the exclusions to:
+
+```text
+Box zeta,
+far-zone scalar zeta flux,
+zeta exterior scalar charge,
+epsilon_vac_config as repair reservoir,
+J_v as acausal transport,
+J_v as coefficient tuning current,
+e_kappa double-counting inside epsilon_vac_config.
+```
+
 Any surviving parent identity must be:
 
 ```text
@@ -2237,7 +2689,8 @@ projector-routed,
 scalar-safe,
 TT-radiative,
 kappa-first-order,
-vacuum-substance-exchange-accounted,
+zeta-volume-geometric,
+vacuum-spacetime-exchange-accounted,
 boundary-mass-preserving,
 recombination-safe,
 coefficient-honest.
@@ -2251,7 +2704,8 @@ E_{\rm parent}
 [
 A,W,h_{TT},\kappa;
 P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]=
+]
+=
 B_{\rm closed}[T]
 +
 B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}].
@@ -2271,7 +2725,10 @@ Best current interpretation:
 
 ```text
 epsilon_vac_config:
-  local vacuum-substance configuration energy density
+  local vacuum-spacetime volume-configuration density
+
+zeta:
+  zeta = ln sqrt(gamma)
 
 q_v, J_v:
   optional ontology-native density / current bookkeeping variables
@@ -2280,37 +2737,76 @@ E_boundary_config:
   possible interface contribution, diagnostic only
 ```
 
-Excluded from \(E_{\rm vac,config}\):
+Excluded from \(\epsilon_{\rm vac,config}\):
 
 ```text
 A-sector exterior mass charge,
 Sigma_creation in ordinary regime,
-coefficient tuning reservoir.
+coefficient tuning reservoir,
+scalar kinetic wave term,
+kappa mismatch energy until the kappa-zeta map is derived.
 ```
 
-It must support:
-
-```text
-curvature excess depositing into vacuum substance,
-curvature deficit pulling from vacuum substance,
-ordinary closed-regime accounting,
-exterior mass preservation.
-```
-
-Minimal candidate accounting:
+Provisional \(\epsilon_{\rm vac,config}\):
 
 \[
-e_\kappa=
+\epsilon_{\rm vac,config}
+=
+\frac12K_\zeta(\zeta-\zeta_{\min})^2
++
+\frac12L_\zeta|\nabla\zeta|^2.
+\]
+
+Separate \(\kappa\)-relaxation energy:
+
+\[
+e_\kappa
+=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2.
 \]
 
+Provisional exchange:
+
 \[
-u^\mu\nabla_\mu e_\kappa\le0.
+\frac{de_\kappa}{d\tau}
++
+\frac{d\epsilon_{\rm vac,config}}{d\tau}
+=
+0.
+\]
+
+Vacuum-accounting balance skeleton:
+
+\[
+u^\mu\nabla_\mu\epsilon_{\rm vac,config}
++
+\nabla_\mu J_v^\mu
+=
+\Sigma_{\rm exchange}
+-
+\Gamma_{\rm relax}.
+\]
+
+Ordinary constraints:
+
+\[
+\Sigma_{\rm creation}=0,
 \]
 
 \[
-u^\mu\nabla_\mu\epsilon_{\rm vac,config}=
--u^\mu\nabla_\mu e_\kappa.
+\oint J_v\cdot dS=0,
+\]
+
+\[
+Q_{\rm volume}=0,
+\]
+
+\[
+\delta M_{\rm ext}=0,
+\]
+
+\[
+F_{\rm scalar,far}=0.
 \]
 
 Status:
@@ -2321,7 +2817,48 @@ CANDIDATE / NOT DERIVED
 
 ---
 
-# 18. Current Best Summary
+# 18. Group 13 Vacuum-Substance Accounting Results
+
+Group 13 established:
+
+1. \(E_{\rm vac,config}\) should be geometric, not a generic reservoir.
+2. \(\zeta=\ln\sqrt{\gamma}\) is the leading geometric candidate.
+3. Trace modes change \(\zeta\); TT modes preserve \(\zeta\) at linear order.
+4. Scalar / trace behavior should be treated as conversion, not ordinary damping.
+5. Raw reduced coupling terms are dangerous until proven conservative.
+6. Binary safety requires no far-zone scalar flux or secular scalar damping.
+7. Local volume reconfiguration must have zero exterior charge.
+8. \(J_v\) is optional and tightly constrained.
+9. The first vacuum-accounting balance skeleton is now explicit.
+10. \(\epsilon_{\rm vac,config}\) has a provisional \(\zeta\)-volume functional form.
+11. \(e_\kappa\) remains separate for now to avoid double-counting.
+
+Group 13 did not derive:
+
+```text
+u^mu,
+zeta_min,
+K_zeta,
+L_zeta,
+K_kappa,
+Sigma_exchange,
+Gamma_relax sign convention,
+P_trace,
+P_boundary,
+P_recombination,
+P_TT,
+J_v transport law,
+Q_volume,
+S_volume,
+boundary mass theorem,
+binary scalar-safety theorem,
+parent identity embedding,
+kappa-zeta map.
+```
+
+---
+
+# 19. Current Best Summary
 
 The current reduced field-equation system is coherent enough to present.
 
@@ -2340,8 +2877,9 @@ a controlled sector split:
   scalar constraint,
   vector current response,
   TT tensor radiation,
+  zeta volume-form configuration,
   non-radiative kappa trace relaxation,
-  vacuum-substance exchange accounting.
+  vacuum-spacetime exchange accounting.
 ```
 
 Main missing result:
@@ -2350,61 +2888,78 @@ Main missing result:
 parent conservation / recombination identity.
 ```
 
-Most important new missing variable:
+Most important new missing relation:
 
 ```text
-E_vac_config.
+kappa-zeta map.
 ```
 
-Group 12 result:
+Group 13 result:
 
 ```text
-It did not produce the parent identity.
-It made the parent identity much harder to fake.
+It made vacuum-substance accounting geometric enough to stop being a bucket.
+It did not close the theory.
+It revealed the next central problem: what exactly is kappa relative to zeta?
 ```
 
 ---
 
-# 19. Recommended Next Group
+# 20. Recommended Next Group
 
 Recommended next group:
 
 ```text
-13_vacuum_substance_accounting
+14_kappa_zeta_map_and_projectors
 ```
 
 Purpose:
 
 ```text
-Define or constrain the vacuum-substance accounting variables needed by the
-parent identity:
-  E_vac_config,
-  q_v,
-  J_v,
-  relaxation exchange,
-  active-regime separation,
-  and ordinary closed-regime conservation.
+Determine whether kappa is an independent relaxation variable,
+a diagnostic projection of zeta,
+or a constrained mismatch variable.
 ```
 
-Alternative names:
+Core questions:
 
 ```text
-13_vacuum_configuration_accounting
-13_vacuum_exchange_accounting
-13_vacuum_substance_energy
-13_relaxation_exchange_closure
+Is kappa = zeta - zeta_min?
+Is kappa only the reduced areal-gauge diagnostic 1/2 ln(AB)?
+Does kappa have independent relaxation energy?
+What is P_trace?
+What is P_boundary?
+What is P_recombination?
+How does the kappa-zeta map preserve exterior neutrality and avoid double-counting?
+```
+
+Alternative group names:
+
+```text
+14_kappa_zeta_relation
+14_trace_volume_projectors
+14_kappa_volume_map
+14_trace_volume_recombination
+```
+
+Recommended:
+
+```text
+14_kappa_zeta_map_and_projectors
 ```
 
 First possible script:
 
 ```text
-candidate_vacuum_substance_accounting_inventory.py
+candidate_kappa_zeta_map_inventory.py
 ```
 
 Purpose:
 
 ```text
-Inventory all variables and balances needed to make E_vac_config / q_v / J_v
-more than a repair reservoir.
+Inventory possible kappa-zeta relations and decide which are safe:
+  kappa = zeta-zeta_min,
+  kappa as projection of zeta mismatch,
+  kappa as independent relaxation variable,
+  kappa as areal-gauge diagnostic only.
 ```
 
