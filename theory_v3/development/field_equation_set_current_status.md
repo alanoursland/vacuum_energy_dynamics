@@ -87,8 +87,7 @@ q_v/J_v are optional bookkeeping variables, only allowed if tied to geometry.
 Current provisional vacuum-volume functional:
 
 \[
-\epsilon_{\rm vac,config}
-=
+\epsilon_{\rm vac,config}=
 \frac12K_\zeta(\zeta-\zeta_{\min})^2
 +
 \frac12L_\zeta|\nabla\zeta|^2.
@@ -97,8 +96,7 @@ Current provisional vacuum-volume functional:
 Separate \(\kappa\)-relaxation energy:
 
 \[
-e_\kappa
-=
+e_\kappa=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2.
 \]
 
@@ -107,8 +105,7 @@ Provisional exchange accounting:
 \[
 \frac{de_\kappa}{d\tau}
 +
-\frac{d\epsilon_{\rm vac,config}}{d\tau}
-=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}=
 0.
 \]
 
@@ -498,8 +495,7 @@ dV_{\rm phys}=\sqrt{\gamma}\,d^3x.
 Linear variation:
 
 \[
-\delta\zeta
-=
+\delta\zeta=
 \frac12\gamma^{ij}\delta\gamma_{ij}.
 \]
 
@@ -527,8 +523,7 @@ Candidate vacuum-accounting balance skeleton:
 \[
 u^\mu\nabla_\mu\epsilon_{\rm vac,config}
 +
-\nabla_\mu J_v^\mu
-=
+\nabla_\mu J_v^\mu=
 \Sigma_{\rm exchange}
 -
 \Gamma_{\rm relax}.
@@ -559,8 +554,7 @@ F_{\rm scalar,far}=0.
 Provisional \(\epsilon_{\rm vac,config}\) functional:
 
 \[
-\epsilon_{\rm vac,config}
-=
+\epsilon_{\rm vac,config}=
 \frac12K_\zeta(\zeta-\zeta_{\min})^2
 +
 \frac12L_\zeta|\nabla\zeta|^2.
@@ -569,8 +563,7 @@ Provisional \(\epsilon_{\rm vac,config}\) functional:
 Separate \(\kappa\)-relaxation energy:
 
 \[
-e_\kappa
-=
+e_\kappa=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2.
 \]
 
@@ -579,8 +572,7 @@ Provisional exchange accounting:
 \[
 \frac{de_\kappa}{d\tau}
 +
-\frac{d\epsilon_{\rm vac,config}}{d\tau}
-=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}=
 0.
 \]
 
@@ -600,8 +592,7 @@ E_{\rm parent}
 [
 A,W,h_{TT},\kappa;
 P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]
-=
+]=
 B_{\rm closed}[T]
 +
 B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}].
@@ -1046,8 +1037,7 @@ REJECTED as ordinary propagating scalar gravity.
 The reduced candidate is first-order local relaxation toward a shifted minimum:
 
 \[
-\dot{\kappa}
-=
+\dot{\kappa}=
 -\mu_\kappa K_\kappa
 (\kappa-\kappa_{\min}).
 \]
@@ -1055,8 +1045,7 @@ The reduced candidate is first-order local relaxation toward a shifted minimum:
 Group 12 frame-compatible candidate:
 
 \[
-u^\mu\nabla_\mu\kappa
-=
+u^\mu\nabla_\mu\kappa=
 -\lambda_\kappa(\kappa-\kappa_{\min}).
 \]
 
@@ -1069,16 +1058,14 @@ where:
 Candidate minimum shift:
 
 \[
-\kappa_{\min}
-=
+\kappa_{\min}=
 \chi_\kappa S_{\rm trace,effective}.
 \]
 
 For fixed \(\kappa_{\min}\):
 
 \[
-\kappa(t)-\kappa_{\min}
-=
+\kappa(t)-\kappa_{\min}=
 [\kappa(0)-\kappa_{\min}]
 e^{-\mu_\kappa K_\kappa t}.
 \]
@@ -1119,8 +1106,7 @@ kappa-zeta map.
 Group 13 provisional convention:
 
 \[
-\epsilon_{\rm vac,config}
-=
+\epsilon_{\rm vac,config}=
 \frac12K_\zeta(\zeta-\zeta_{\min})^2
 +
 \frac12L_\zeta|\nabla\zeta|^2.
@@ -1129,8 +1115,7 @@ Group 13 provisional convention:
 Separate kappa relaxation energy:
 
 \[
-e_\kappa
-=
+e_\kappa=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2.
 \]
 
@@ -1139,8 +1124,7 @@ Provisional exchange accounting:
 \[
 \frac{de_\kappa}{d\tau}
 +
-\frac{d\epsilon_{\rm vac,config}}{d\tau}
-=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}=
 0.
 \]
 
@@ -1347,8 +1331,7 @@ f_{\rm ext}=1-\frac{M}{r}.
 A toy joint-minimum energy is:
 
 \[
-E[f]
-=
+E[f]=
 \int
 \left[
 W_{\rm int}(r)(f-f_{\rm int})^2
@@ -1368,8 +1351,7 @@ For constant weights, the schematic minimizer is:
 -
 \lambda_1 f''
 +
-(W_i+W_e)f
-=
+(W_i+W_e)f=
 W_if_{\rm int}
 +
 W_ef_{\rm ext}.
@@ -1739,8 +1721,7 @@ Provisional exchange:
 \[
 \frac{de_\kappa}{d\tau}
 +
-\frac{d\epsilon_{\rm vac,config}}{d\tau}
-=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}=
 0.
 \]
 
@@ -1749,8 +1730,7 @@ Vacuum-accounting balance skeleton:
 \[
 u^\mu\nabla_\mu\epsilon_{\rm vac,config}
 +
-\nabla_\mu J_v^\mu
-=
+\nabla_\mu J_v^\mu=
 \Sigma_{\rm exchange}
 -
 \Gamma_{\rm relax}.
@@ -1889,8 +1869,7 @@ with:
 
 \[
 \boxed{
-\delta\zeta
-=
+\delta\zeta=
 \frac12\gamma^{ij}\delta\gamma_{ij}
 }
 \]
@@ -1957,8 +1936,7 @@ Kappa trace relaxation:
 
 \[
 \boxed{
-u^\mu\nabla_\mu\kappa
-=
+u^\mu\nabla_\mu\kappa=
 -\lambda_\kappa(\kappa-\kappa_{\min})
 }
 \]
@@ -1966,16 +1944,14 @@ u^\mu\nabla_\mu\kappa
 with:
 
 \[
-\kappa_{\min}
-=
+\kappa_{\min}=
 \chi_\kappa S_{\rm trace,effective}.
 \]
 
 Reduced form:
 
 \[
-\dot{\kappa}
-=
+\dot{\kappa}=
 -\mu_\kappa K_\kappa(\kappa-\kappa_{\min}).
 \]
 
@@ -2017,8 +1993,7 @@ Vacuum-volume configuration density:
 
 \[
 \boxed{
-\epsilon_{\rm vac,config}
-=
+\epsilon_{\rm vac,config}=
 \frac12K_\zeta(\zeta-\zeta_{\min})^2
 +
 \frac12L_\zeta|\nabla\zeta|^2
@@ -2035,8 +2010,7 @@ Separate kappa relaxation energy:
 
 \[
 \boxed{
-e_\kappa
-=
+e_\kappa=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2
 }
 \]
@@ -2053,8 +2027,7 @@ Provisional exchange:
 \boxed{
 \frac{de_\kappa}{d\tau}
 +
-\frac{d\epsilon_{\rm vac,config}}{d\tau}
-=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}=
 0
 }
 \]
@@ -2071,8 +2044,7 @@ Vacuum-accounting balance skeleton:
 \boxed{
 u^\mu\nabla_\mu\epsilon_{\rm vac,config}
 +
-\nabla_\mu J_v^\mu
-=
+\nabla_\mu J_v^\mu=
 \Sigma_{\rm exchange}
 -
 \Gamma_{\rm relax}
@@ -2171,8 +2143,7 @@ E_{\rm parent}
 [
 A,W,h_{TT},\kappa;
 P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]
-=
+]=
 B_{\rm closed}[T]
 +
 B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}]
@@ -2704,8 +2675,7 @@ E_{\rm parent}
 [
 A,W,h_{TT},\kappa;
 P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]
-=
+]=
 B_{\rm closed}[T]
 +
 B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}].
@@ -2750,8 +2720,7 @@ kappa mismatch energy until the kappa-zeta map is derived.
 Provisional \(\epsilon_{\rm vac,config}\):
 
 \[
-\epsilon_{\rm vac,config}
-=
+\epsilon_{\rm vac,config}=
 \frac12K_\zeta(\zeta-\zeta_{\min})^2
 +
 \frac12L_\zeta|\nabla\zeta|^2.
@@ -2760,8 +2729,7 @@ Provisional \(\epsilon_{\rm vac,config}\):
 Separate \(\kappa\)-relaxation energy:
 
 \[
-e_\kappa
-=
+e_\kappa=
 \frac12K_\kappa(\kappa-\kappa_{\min})^2.
 \]
 
@@ -2770,21 +2738,16 @@ Provisional exchange:
 \[
 \frac{de_\kappa}{d\tau}
 +
-\frac{d\epsilon_{\rm vac,config}}{d\tau}
-=
+\frac{d\epsilon_{\rm vac,config}}{d\tau}=
 0.
 \]
 
 Vacuum-accounting balance skeleton:
 
 \[
-u^\mu\nabla_\mu\epsilon_{\rm vac,config}
-+
-\nabla_\mu J_v^\mu
-=
-\Sigma_{\rm exchange}
--
-\Gamma_{\rm relax}.
+u^\mu\nabla_\mu\epsilon_{\rm vac,config} +
+\nabla_\mu J_v^\mu =
+\Sigma_{\rm exchange} - \Gamma_{\rm relax}.
 \]
 
 Ordinary constraints:
