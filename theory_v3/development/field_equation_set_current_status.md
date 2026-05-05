@@ -2821,7 +2821,7 @@ kappa-zeta map.
 
 ---
 
-# 19. Current Best Summary
+# 19. Current Best Summary After Group 14
 
 The current reduced field-equation system is coherent enough to present.
 
@@ -2845,18 +2845,6 @@ a controlled sector split:
   vacuum-spacetime exchange accounting.
 ```
 
-Main missing result:
-
-```text
-parent conservation / recombination identity.
-```
-
-Most important new missing relation:
-
-```text
-kappa-zeta map.
-```
-
 Group 13 result:
 
 ```text
@@ -2865,64 +2853,467 @@ It did not close the theory.
 It revealed the next central problem: what exactly is kappa relative to zeta?
 ```
 
+Group 14 result:
+
+```text
+Group 14 is closed.
+
+It did not derive A_spatial.
+
+It reduced the spatial-trace origin problem to J_V/u_vac.
+
+Final bottleneck:
+  define a real vacuum-volume current J_V^mu,
+  or keep acceleration-gradient volume creation as a theorem target only.
+```
+
+Most important current missing relation is no longer only:
+
+```text
+kappa-zeta map.
+```
+
+The sharper current bottleneck is now:
+
+```text
+J_V / u_vac definition for vacuum-volume exchange.
+```
+
+Interpretation:
+
+```text
+A_spatial remains a recovery theorem target unless
+a real vacuum-volume exchange current J_V can be defined.
+```
+
+Group 14 also established a useful negative result:
+
+```text
+do not continue ratio/frame relocation loops inside the kappa-zeta group.
+```
+
+The attempted chain was:
+
+```text
+A_spatial from local closure
+  -> q
+
+q from coupled stiffness
+  -> c_x/c_s
+
+q from conservation current
+  -> a/b
+
+q from parent balance
+  -> E_parent ratio
+
+volume exchange
+  -> zeta status
+
+zeta companion
+  -> F_zeta
+
+F_zeta
+  -> Sigma_V
+
+Sigma_V
+  -> frame field u^mu
+
+vacuum frame
+  -> J_V
+
+J_V
+  -> not yet defined
+```
+
+This means Group 14 did not fail by wandering. It exposed the repeated hidden move:
+
+```text
+candidate mechanisms kept relocating the missing coefficient or clock.
+```
+
+The surviving non-decorative next problem is therefore:
+
+```text
+Can a real exchange continuity law define J_V?
+```
+
 ---
 
-# 20. Recommended Next Group
+# 20. Group 14 Closure Results
+
+Group 14 closed the following questions.
+
+## 20.1 What Group 14 Was Trying To Determine
+
+Original purpose:
+
+```text
+map kappa/zeta/projector responsibilities and prevent scalar double-counting.
+```
+
+Sharpened purpose:
+
+```text
+determine whether A_spatial / spatial trace can be derived without:
+  GR smuggling,
+  gamma tuning,
+  scalar double-counting,
+  exterior scalar charge,
+  or hidden scalar radiation.
+```
+
+Status:
+
+```text
+CLOSED AS SEARCH GROUP
+```
+
+It did not produce a final field equation for \(A_{\rm spatial}\).
+
+It did produce a much narrower bottleneck.
+
+---
+
+## 20.2 Group 14 Closure Ledger
+
+| Entry | Finding | Status | Consequence |
+|---|---|---|---|
+| G14-1: original group purpose | map kappa/zeta/projector responsibilities and prevent scalar double-counting | STRUCTURAL | projector accounting was sharpened into spatial-trace origin search |
+| G14-2: \(A_{\rm spatial}\) origin target | derive \(A_{\rm spatial}\) / spatial trace without GR smuggling or gamma tuning | THEOREM_TARGET | became the central field-equation narrowing problem of the group |
+| G14-3: local differential closure | local closure produces \(q\) but does not derive \(q\) | DEFER | coefficient origin became the bottleneck |
+| G14-4: coupled stiffness route | coupled stiffness yields \(q=-c_x/c_s\) | DEFER | moved coefficient problem to stiffness ratio |
+| G14-5: conservation-current route | minimal gradient current yields \(q=-a/b\) | DEFER | moved coefficient problem to current ratio |
+| G14-6: parent balance route | parent balance requires explicit \(E_{\rm parent}\) and otherwise relocates ratio | DEFER | decorative balance and GR rewrite were rejected |
+| G14-7: volume-exchange route | volume exchange is ontology-native but requires explicit \(V[A,B_s,\zeta]\) | CANDIDATE | forced zeta companion-versus-residual decision |
+| G14-8: zeta status | \(\zeta\) cannot be both \(B_s\) companion and independent residual trace | REQUIRED | companion branch requires residual \(\zeta\) trace killed or non-metric |
+| G14-9: \(F_\zeta\) map | algebraic \(F_\zeta\) maps are high-risk; source-driven maps need \(\Sigma_V[A,T]\) | DEFER | moved live branch to source-driven volume creation |
+| G14-10: source-driven volume creation | best candidate is \(\Sigma_V\sim\chi\rho a^\mu\nabla_\mu A\) | CANDIDATE | requires frame/projection, \(\chi\)-origin, neutrality, and no-overlap |
+| G14-11: frame field | matter frame is concrete but risky; vacuum frame is ontology-native but undefined | DEFER | moved live branch to \(u_{\rm vac}\) definition |
+| G14-12: vacuum current | \(u_{\rm vac}\) best candidate is normalized \(J_V\), but \(J_V\) is not defined | UNRESOLVED | final surviving bottleneck is \(J_V/u_{\rm vac}\) |
+| G14-13: closure decision | Group 14 should stop rather than continue ratio/frame relocation loops | CLOSED | promote \(J_V/u_{\rm vac}\) and exchange continuity to next group |
+
+---
+
+## 20.3 Branches Killed Or Rejected By Group 14
+
+Rejected under the current ordinary-regime target constraints:
+
+```text
+free q chosen from gamma_like or AB
+
+copy GR spatial metric or impose B=1/A by decree
+
+raw kappa / Box kappa / Box zeta scalar radiation branches
+
+zeta as both B_s companion and residual metric trace
+
+coordinate velocity rho v dot grad A as parent source law
+
+arbitrary preferred vacuum frame
+
+decorative J_V or decorative Div E_parent
+
+J_V = n_V u_vac used to define u_vac circularly
+```
+
+Interpretation:
+
+```text
+these are not metaphysical impossibilities;
+they are forbidden under the current no-smuggling and ordinary-sector safety discipline.
+```
+
+---
+
+## 20.4 Provisional Conventions Carried Forward
+
+Group 14 carries forward these conventions:
+
+```text
+A_spatial remains a recovery theorem target, not a derived equation.
+
+zeta may become B_s companion only if residual zeta trace is killed or non-metric.
+
+if zeta remains residual, it does not solve A_spatial/q-origin.
+
+kappa remains diagnostic/non-metric unless later branch proves otherwise.
+
+gamma_like and AB are recovery checks, not construction tools.
+
+boundary neutrality and no-overlap remain mandatory.
+
+J_V/u_vac is the next-group bottleneck.
+```
+
+---
+
+## 20.5 Final Bottleneck From Group 14
+
+The surviving bottleneck is:
+
+\[
+J_V^\mu.
+\]
+
+Needed for:
+
+\[
+u_{\rm vac}^\mu
+=
+\frac{J_V^\mu}{\sqrt{-J_V^2}}.
+\]
+
+Strongest possible structure:
+
+\[
+\nabla_\mu J_V^\mu
+=
+\Sigma_V
+-
+R_V.
+\]
+
+Still missing:
+
+```text
+Sigma_V complete source law
+R_V relaxation / exchange term
+flux / transport direction
+timelike / nonzero domain
+boundary neutrality
+no-overlap / residual-kill theorem
+sign / orientation
+chi-origin
+```
+
+Status:
+
+```text
+UNRESOLVED / NEXT-GROUP BOTTLENECK
+```
+
+---
+
+# 21. Recommended Next Group
 
 Recommended next group:
 
 ```text
-14_kappa_zeta_map_and_projectors
+15_vacuum_current_and_exchange_continuity
+```
+
+Locked door:
+
+```text
+Can a real exchange continuity law define J_V?
+```
+
+First script:
+
+```text
+candidate_exchange_continuity_law_for_volume.py
 ```
 
 Purpose:
 
 ```text
-Determine whether kappa is an independent relaxation variable,
-a diagnostic projection of zeta,
-or a constrained mismatch variable.
+test whether the strongest surviving structure from Group 14 can become a real law:
+  nabla_mu J_V^mu = Sigma_V - R_V.
 ```
 
-Core questions:
+The continuity equation is not enough by itself.
+
+A real exchange-continuity law must provide:
 
 ```text
-Is kappa = zeta - zeta_min?
-Is kappa only the reduced areal-gauge diagnostic 1/2 ln(AB)?
-Does kappa have independent relaxation energy?
-What is P_trace?
-What is P_boundary?
-What is P_recombination?
-How does the kappa-zeta map preserve exterior neutrality and avoid double-counting?
+J_V flux direction / transport law
+
+Sigma_V source creation law
+
+R_V relaxation / exchange law
+
+timelike / nonzero domain for J_V
+
+static-source neutrality
+
+boundary neutrality
+
+no-overlap / residual-kill theorem
+
+sign / orientation convention
+
+recovery checks downstream
 ```
 
-Alternative group names:
+Current Group 15 starter result:
 
 ```text
-14_kappa_zeta_relation
-14_trace_volume_projectors
-14_kappa_volume_map
-14_trace_volume_recombination
+exchange continuity is the right next locked door,
+but it is not yet a law.
+
+J_V needs a flux direction,
+not only a divergence equation.
+
+Sigma_V and R_V must be defined separately.
+
+static neutrality,
+boundary neutrality,
+and no-overlap remain mandatory.
 ```
 
-Recommended:
+Recommended next Group 15 script:
 
 ```text
-14_kappa_zeta_map_and_projectors
-```
-
-First possible script:
-
-```text
-candidate_kappa_zeta_map_inventory.py
+candidate_sigma_R_split_for_volume_exchange.py
 ```
 
 Purpose:
 
 ```text
-Inventory possible kappa-zeta relations and decide which are safe:
-  kappa = zeta-zeta_min,
-  kappa as projection of zeta mismatch,
-  kappa as independent relaxation variable,
-  kappa as areal-gauge diagnostic only.
+split Sigma_V and R_V roles before claiming exchange continuity.
 ```
 
+Reason:
+
+```text
+the continuity equation cannot define J_V until the source and relaxation/exchange terms are split and named.
+```
+
+---
+
+# 22. Updated Minimal Honest Claim
+
+The current field-equation status is:
+
+```text
+A-sector:
+  real reduced reconstruction.
+
+Vector sector:
+  source/projection/action/shape reconstructed,
+  normalization missing.
+
+Tensor sector:
+  TT structure identified,
+  coupling and source identity missing.
+
+Scalar radiation:
+  ordinary long-range scalar radiation rejected / constrained,
+  parent mechanism still missing.
+
+Zeta / vacuum-volume sector:
+  zeta = ln sqrt(gamma) identified as leading geometric volume-form candidate,
+  epsilon_vac_config provisionally written as zeta-volume displacement plus gradient/interface energy,
+  frame, measure, stiffnesses, and parent origin missing.
+
+Kappa sector:
+  role identified as constrained non-inertial trace / volume relaxation,
+  e_kappa kept separate from epsilon_vac_config to avoid double-counting,
+  kappa-zeta map remains unresolved but no longer the only central bottleneck.
+
+A_spatial / spatial-trace origin:
+  not derived.
+  reduced to the J_V/u_vac bottleneck through Group 14.
+
+Vacuum-current / exchange-continuity sector:
+  J_V is the best current route to u_vac,
+  but J_V is not defined.
+  strongest candidate structure is nabla_mu J_V^mu = Sigma_V - R_V,
+  with Sigma_V, R_V, and flux direction still missing.
+
+Parent conservation:
+  parent template v2 proposed,
+  parent closure identity still missing.
+
+Metric recombination:
+  reduced bookkeeping map stated,
+  scalar double-counting constraints added,
+  covariant parent recombination missing.
+```
+
+The candidate system is therefore not yet a finished covariant theory.
+
+It is a partially reconstructed field-equation architecture with:
+
+```text
+one fully successful reduced exterior sector,
+
+a controlled scalar/vector/tensor/vacuum accounting structure,
+
+and a newly identified next bottleneck:
+  exchange continuity for J_V/u_vac.
+```
+
+---
+
+# 23. Updated Closure Failure Modes
+
+Fatal closure failures:
+
+```text
+decorative parent identity,
+decorative exchange continuity,
+decorative J_V,
+scalar double-counting,
+hidden breathing wave,
+boundary smoothing tunes measured mass,
+sector ledger mistaken for closure,
+epsilon_vac_config becomes a repair reservoir,
+kappa/zeta energy counted twice,
+u_vac introduced as arbitrary preferred frame,
+J_V defined circularly from u_vac.
+```
+
+Major closure risks:
+
+```text
+silent GR metric import,
+kappa repair knob,
+zeta exterior scalar charge,
+tensor coupling matched but claimed derived,
+vector normalization matched but claimed derived,
+active-regime leakage,
+relaxation as energy loss,
+near-boundary deviation overclaim,
+coefficient tuning through vacuum reservoir,
+J_V as acausal repair current,
+J_V as decorative flux,
+scalar conversion becoming orbital damping,
+exchange continuity written before Sigma_V/R_V are defined.
+```
+
+Current controls:
+
+```text
+scalar double-counting constrained,
+hidden breathing wave constrained,
+active-regime leakage constrained,
+near-boundary prediction overclaim controlled by diagnostic-before-prediction rule,
+relaxation energy interpreted as vacuum-spacetime configuration exchange,
+epsilon_vac_config excluded from A-sector mass and Sigma_creation,
+J_V/J_v forbidden as far-zone scalar current or coefficient tuning knob,
+e_kappa kept separate from epsilon_vac_config until kappa-zeta map is derived,
+u_vac not promoted without a non-circular J_V definition,
+Group 14 closed to prevent further ratio/frame relocation loops.
+```
+
+Still unresolved:
+
+```text
+parent identity derivation,
+scalar constraint propagation,
+tensor coupling,
+vector normalization,
+covariant recombination,
+boundary mass theorem,
+epsilon_vac_config parent derivation,
+q_v/J_v/J_V meaning,
+vacuum-current flux law,
+Sigma_V source law,
+R_V relaxation/exchange law,
+u_vac definition,
+kappa-zeta map,
+P_trace / P_boundary / P_recombination,
+coefficient action/stiffness principle.
+```
