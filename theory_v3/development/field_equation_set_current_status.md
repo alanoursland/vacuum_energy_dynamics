@@ -33,9 +33,9 @@ RISK
 
 ## 1.1 Primary Fields
 
-$$
+\[
 A
-$$
+\]
 
 Scalar lapse / static mass-response field.
 
@@ -46,9 +46,9 @@ DERIVED_REDUCED in static spherical sector
 STRUCTURAL beyond reduced sector
 ```
 
-$$
+\[
 B_s \quad \text{or} \quad A_{\rm spatial}
-$$
+\]
 
 Scalar spatial response / spatial trace companion to the mass-response sector.
 
@@ -59,11 +59,11 @@ RECOVERY_TARGET / THEOREM_TARGET
 NOT DERIVED
 ```
 
-It must be recovered by an acceptable parent equation, not copied from the GR metric form or imposed by $\gamma_{\rm like}=1$ tuning.
+It must be recovered by an acceptable parent equation, not copied from the GR metric form or imposed by (\gamma_{\rm like}=1) tuning.
 
-$$
+\[
 \zeta=\ln\sqrt{\gamma}
-$$
+\]
 
 Candidate vacuum-spacetime volume configuration variable.
 
@@ -73,15 +73,15 @@ Status:
 CANDIDATE / GEOMETRICALLY MOTIVATED / FRAME-DEPENDENT
 ```
 
-$$
+\[
 \kappa
-$$
+\]
 
 Reduced trace / volume / interior relaxation diagnostic. The areal relation
 
-$$
+\[
 \kappa_{\rm areal}=\frac12\ln(AB)
-$$
+\]
 
 is a reduced areal-gauge diagnostic, not a covariant physical scalar unless later derived.
 
@@ -91,9 +91,9 @@ Status:
 DIAGNOSTIC / NON-METRIC / SEPARATELY NEUTRAL UNLESS DERIVED
 ```
 
-$$
+\[
 W_i
-$$
+\]
 
 Transverse vector current / frame-dragging candidate.
 
@@ -103,9 +103,9 @@ Status:
 STRUCTURAL / NORMALIZATION UNKNOWN
 ```
 
-$$
+\[
 h_{ij}^{TT}
-$$
+\]
 
 Transverse-traceless tensor radiation field.
 
@@ -115,9 +115,9 @@ Status:
 STRUCTURAL / ORDINARY RADIATIVE SECTOR
 ```
 
-$$
+\[
 A_{\rm rad}
-$$
+\]
 
 Scalar breathing/radiative hazard.
 
@@ -131,9 +131,9 @@ REJECTED as ordinary active long-range degree of freedom
 
 ## 1.2 Vacuum-Volume / Exchange Variables
 
-$$
+\[
 J_V^\mu
-$$
+\]
 
 Candidate vacuum-volume flux / transport current needed to define a vacuum frame.
 
@@ -145,17 +145,17 @@ UNRESOLVED
 
 It is not defined by naming it and is not defined by the divergence equation alone.
 
-$$
+\[
 u_{\rm vac}^\mu = \frac{J_V^\mu}{\sqrt{-J_V^2}}
-$$
+\]
 
-Candidate vacuum rest frame, valid only where $J_V$ is timelike and nonzero.
+Candidate vacuum rest frame, valid only where (J_V) is timelike and nonzero.
 
 Domain condition:
 
-$$
-D_V=\{J_V^2<0,\;J_V\neq0\}.
-$$
+\[
+D_V={J_V^2<0,;J_V\neq0}.
+\]
 
 Status:
 
@@ -163,9 +163,9 @@ Status:
 THEOREM_TARGET / DOMAIN-LIMITED / UNRESOLVED
 ```
 
-$$
+\[
 \Sigma_V
-$$
+\]
 
 Vacuum-volume source / creation / destruction side of exchange accounting.
 
@@ -175,9 +175,9 @@ Status:
 ROLE-LEVEL ONLY / OPERATOR NOT DERIVED
 ```
 
-$$
+\[
 R_V
-$$
+\]
 
 Vacuum-volume relaxation / reconfiguration / return side of exchange accounting.
 
@@ -187,9 +187,9 @@ Status:
 ROLE-LEVEL ONLY / OPERATOR NOT DERIVED
 ```
 
-$$
+\[
 O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]
-$$
+\]
 
 No-overlap operator target for count-once recombination.
 
@@ -270,40 +270,40 @@ real J_V flux law changes recombination structure.
 
 Primary reduced scalar equation:
 
-$$
+\[
 \Delta_{\rm areal}A =
 \frac{8\pi G}{c^2}\rho.
-$$
+\]
 
 where:
 
-$$
+\[
 \Delta_{\rm areal}A =
 \frac{1}{r^2}\frac{d}{dr}
 \left(r^2\frac{dA}{dr}\right).
-$$
+\]
 
 Equivalent flux form:
 
-$$
+\[
 F_A(r)=4\pi r^2 A'(r),
-$$
+\]
 
-$$
+\[
 \frac{dF_A}{dr}=4\pi r^2\frac{8\pi G}{c^2}\rho(r).
-$$
+\]
 
 With:
 
-$$
+\[
 M_{\rm enc}'(r)=4\pi r^2\rho(r),
-$$
+\]
 
 this gives:
 
-$$
+\[
 F_A(r)=\frac{8\pi G}{c^2}M_{\rm enc}(r).
-$$
+\]
 
 Status:
 
@@ -317,35 +317,35 @@ This is the strongest reconstructed sector.
 
 ## 3.2 Exterior Vacuum Scalar Equation
 
-For $\rho=0$,
+For (\rho=0),
 
-$$
+\[
 \Delta_{\rm areal}A=0.
-$$
+\]
 
 Thus:
 
-$$
+\[
 \frac{d}{dr}\left(r^2A'\right)=0,
-$$
+\]
 
 and:
 
-$$
+\[
 A(r)=C_0+\frac{C_1}{r}.
-$$
+\]
 
 Asymptotic flatness sets:
 
-$$
+\[
 C_0=1.
-$$
+\]
 
-Flux normalization by total mass $M$ gives:
+Flux normalization by total mass (M) gives:
 
-$$
+\[
 A(r)=1-\frac{2GM}{c^2r}.
-$$
+\]
 
 Status:
 
@@ -359,33 +359,33 @@ DERIVED_REDUCED
 
 In the static spherical exterior, the reduced areal diagnostic condition is:
 
-$$
+\[
 \kappa_{\rm areal}=0.
-$$
+\]
 
 With:
 
-$$
+\[
 AB=e^{2\kappa_{\rm areal}},
-$$
+\]
 
 this gives:
 
-$$
+\[
 AB=1,
-$$
+\]
 
 so:
 
-$$
+\[
 B=\frac{1}{A}.
-$$
+\]
 
 Therefore:
 
-$$
+\[
 B(r)=\left(1-\frac{2GM}{c^2r}\right)^{-1}.
-$$
+\]
 
 Status:
 
@@ -406,30 +406,30 @@ It is a recovered static spherical exterior relation.
 
 For weak fields:
 
-$$
+\[
 A\simeq1+\frac{2\Phi}{c^2}.
-$$
+\]
 
 The scalar field recovers the Newtonian potential structure:
 
-$$
+\[
 \nabla^2\Phi=4\pi G\rho.
-$$
+\]
 
 Exterior weak multipole expansion:
 
-$$
+\[
 \Phi(\mathbf{x})=
--G\int\frac{\rho(\mathbf{x}')}{|\mathbf{x}-\mathbf{x}'|}\,d^3x'.
-$$
+-G\int\frac{\rho(\mathbf{x}')}{|\mathbf{x}-\mathbf{x}'|},d^3x'.
+\]
 
 Thus:
 
-$$
+\[
 A(\mathbf{x})\simeq1+\frac{2\Phi(\mathbf{x})}{c^2}.
-$$
+\]
 
-The spatial response must recover GR-compatible weak-field scalar spatial curvature, but the mechanism producing $B_s/A_{\rm spatial}$ is not derived.
+The spatial response must recover GR-compatible weak-field scalar spatial curvature, but the mechanism producing (B_s/A_{\rm spatial}) is not derived.
 
 Status:
 
@@ -451,33 +451,33 @@ Not yet full PPN audit.
 
 An unconstrained scalar radiative perturbation would have the form:
 
-$$
+\[
 A_{\rm rad}=a_0\cos(kx-\omega t),
-$$
+\]
 
 with wave condition:
 
-$$
+\[
 \omega^2=c^2k^2.
-$$
+\]
 
 This would be a scalar breathing-type gravitational radiation channel.
 
 Current rule:
 
-$$
+\[
 {\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0.
-$$
+\]
 
 Rejected as ordinary scalar-radiation equations:
 
-$$
+\[
 \Box\kappa=\alpha S,
-$$
+\]
 
-$$
+\[
 \Box\zeta=\alpha S.
-$$
+\]
 
 Interpretation:
 
@@ -531,33 +531,33 @@ not generic reservoir bookkeeping.
 
 Candidate volume-form variable:
 
-$$
+\[
 \zeta=\ln\sqrt{\gamma}.
-$$
+\]
 
 Physical volume element:
 
-$$
-dV_{\rm phys}=\sqrt{\gamma}\,d^3x.
-$$
+\[
+dV_{\rm phys}=\sqrt{\gamma},d^3x.
+\]
 
 Linear variation:
 
-$$
+\[
 \delta\zeta=\frac12\gamma^{ij}\delta\gamma_{ij}.
-$$
+\]
 
 For TT perturbations:
 
-$$
+\[
 \gamma^{ij}h_{ij}^{TT}=0,
-$$
+\]
 
 so:
 
-$$
+\[
 \delta\zeta|_{TT}=0.
-$$
+\]
 
 Interpretation:
 
@@ -572,9 +572,9 @@ TT modes are volume-preserving shear.
 
 Current exchange-continuity theorem target:
 
-$$
+\[
 \nabla_\mu J_V^\mu=\Sigma_V-R_V.
-$$
+\]
 
 Status:
 
@@ -704,15 +704,15 @@ ordinary scalar radiation.
 
 Candidate vacuum-frame definition:
 
-$$
+\[
 u_{\rm vac}^\mu=\frac{J_V^\mu}{\sqrt{-J_V^2}}.
-$$
+\]
 
 This only makes sense on:
 
-$$
-D_V=\{J_V^2<0,\;J_V\neq0\}.
-$$
+\[
+D_V={J_V^2<0,;J_V\neq0}.
+\]
 
 Status:
 
@@ -814,15 +814,15 @@ kappa = reduced diagnostic / non-metric residual / separately neutral trace vari
 
 Areal-gauge diagnostic relation:
 
-$$
+\[
 \kappa_{\rm areal}=\frac12\ln(AB).
-$$
+\]
 
 Exterior Schwarzschild sector:
 
-$$
+\[
 \kappa_{\rm areal}=0.
-$$
+\]
 
 Status:
 
@@ -849,9 +849,9 @@ e_kappa as physical source reservoir before derivation.
 
 ## 7.2 Current Role of Zeta
 
-$$
+\[
 \zeta=\ln\sqrt{\gamma}
-$$
+\]
 
 is the leading volume-form candidate.
 
@@ -927,13 +927,13 @@ RISK / THEOREM-HEAVY
 
 Rejected as ordinary propagating scalar gravity:
 
-$$
+\[
 \Box\kappa=\alpha S,
-$$
+\]
 
-$$
+\[
 \Box\zeta=\alpha S.
-$$
+\]
 
 Rejected as ordinary exterior scalar channels:
 
@@ -951,17 +951,17 @@ kappa restoring killed residual metric trace.
 
 Provisional vacuum-volume functional:
 
-$$
+\[
 \epsilon_{\rm vac,config}=
 \frac12K_\zeta(\zeta-\zeta_{\min})^2+
 \frac12L_\zeta|\nabla\zeta|^2.
-$$
+\]
 
 Separate kappa relaxation energy:
 
-$$
+\[
 e_\kappa=\frac12K_\kappa(\kappa-\kappa_{\min})^2.
-$$
+\]
 
 Guardrail:
 
@@ -998,65 +998,65 @@ CANDIDATE / PROVISIONAL / NOT DERIVED
 
 Matter continuity:
 
-$$
+\[
 \partial_t\rho+\nabla\cdot j=0,
-$$
+\]
 
 with:
 
-$$
+\[
 j_i=\rho v_i.
-$$
+\]
 
 Decompose:
 
-$$
+\[
 j=j_T+j_L,
-$$
+\]
 
 with:
 
-$$
+\[
 \nabla\cdot j_T=0,
-$$
+\]
 
-$$
+\[
 \nabla\times j_L=0.
-$$
+\]
 
 Fourier-space projector:
 
-$$
+\[
 P_T(k)=I-\frac{kk^T}{k^2}.
-$$
+\]
 
 Sector allocation:
 
-$$
+\[
 j_T\rightarrow W_i,
-$$
+\]
 
-$$
+\[
 j_L\rightarrow A\text{ / scalar continuity}.
-$$
+\]
 
 Candidate vector energy:
 
-$$
+\[
 E_W=\int\left[K_c|\nabla\times W|^2+\alpha_W j_T\cdot W\right]d^3x.
-$$
+\]
 
 Variation gives:
 
-$$
+\[
 \nabla\times(\nabla\times W)=-\frac{\alpha_W}{2K_c}j_T.
-$$
+\]
 
-Under $\nabla\cdot W=0$:
+Under (\nabla\cdot W=0):
 
-$$
+\[
 \Delta W=\frac{\alpha_W}{2K_c}j_T.
-$$
+\]
 
 Status:
 
@@ -1067,13 +1067,13 @@ NORMALIZATION UNKNOWN
 
 Observable candidate:
 
-$$
+\[
 B_W=\nabla\times W,
-$$
+\]
 
-$$
+\[
 \Omega_{\rm drag}=\beta_W B_W.
-$$
+\]
 
 Unknowns:
 
@@ -1090,31 +1090,31 @@ gauge-invariant observable extraction.
 
 Tensor radiation variable:
 
-$$
+\[
 h_{ij}^{TT}.
-$$
+\]
 
 Conditions:
 
-$$
+\[
 \partial_i h_{ij}^{TT}=0,
-$$
+\]
 
-$$
+\[
 \delta^{ij}h_{ij}^{TT}=0.
-$$
+\]
 
 Candidate tensor equation:
 
-$$
-\Box h_{ij}^{TT}=-\mathcal{C}_T S_{ij}^{TT}.
-$$
+\[
+\Box h_{ij}^{TT}=-\mathcal{C}*T S*{ij}^{TT}.
+\]
 
 GR target form:
 
-$$
+\[
 \Box h_{ij}^{TT}=-\frac{16\pi G}{c^4}T_{ij}^{TT}.
-$$
+\]
 
 Current status:
 
@@ -1127,15 +1127,15 @@ source identity: UNFINISHED
 
 Tensor energy flux scaling:
 
-$$
+\[
 F_T\sim K_T\langle\dot h_{ij}^{TT}\dot h_{ij}^{TT}\rangle.
-$$
+\]
 
 GR target:
 
-$$
+\[
 F_{\rm GR}=\frac{c^3}{32\pi G}\langle\dot h_{ij}^{TT}\dot h_{ij}^{TT}\rangle.
-$$
+\]
 
 Status:
 
@@ -1152,17 +1152,17 @@ Current source assignments:
 
 | Sector                | Source                                          | Status                           |
 | --------------------- | ----------------------------------------------- | -------------------------------- |
-| $A$                   | $\rho$, $M_{\rm enc}$, scalar mass response     | DERIVED_REDUCED / STRUCTURAL     |
-| $B_s/A_{\rm spatial}$ | scalar spatial response companion               | RECOVERY_TARGET / THEOREM_TARGET |
-| $W_i$                 | $j_T=P_T(\rho v)$                               | STRUCTURAL / CONSTRAINED         |
-| $\zeta$               | volume configuration / possible $B_s$ companion | CANDIDATE / UNFINISHED           |
-| $\kappa$              | diagnostic / non-metric residual unless derived | CONSTRAINED                      |
-| $h_{ij}^{TT}$         | trace-free quadrupole / $P_{TT}T_{ij}$          | STRUCTURAL / COEFFICIENT MATCHED |
-| $A_{\rm rad}$         | ordinary long-range scalar radiation            | REJECTED / CONSTRAINED           |
-| $J_V$                 | vacuum-volume current                           | UNRESOLVED                       |
-| $\Sigma_V$            | volume source / creation side                   | ROLE-LEVEL ONLY                  |
-| $R_V$                 | relaxation / return side                        | ROLE-LEVEL ONLY                  |
-| $O$                   | no-overlap operator                             | UNRESOLVED                       |
+| (A)                   | (\rho), (M_{\rm enc}), scalar mass response     | DERIVED_REDUCED / STRUCTURAL     |
+| (B_s/A_{\rm spatial}) | scalar spatial response companion               | RECOVERY_TARGET / THEOREM_TARGET |
+| (W_i)                 | (j_T=P_T(\rho v))                               | STRUCTURAL / CONSTRAINED         |
+| (\zeta)               | volume configuration / possible (B_s) companion | CANDIDATE / UNFINISHED           |
+| (\kappa)              | diagnostic / non-metric residual unless derived | CONSTRAINED                      |
+| (h_{ij}^{TT})         | trace-free quadrupole / (P_{TT}T_{ij})          | STRUCTURAL / COEFFICIENT MATCHED |
+| (A_{\rm rad})         | ordinary long-range scalar radiation            | REJECTED / CONSTRAINED           |
+| (J_V)                 | vacuum-volume current                           | UNRESOLVED                       |
+| (\Sigma_V)            | volume source / creation side                   | ROLE-LEVEL ONLY                  |
+| (R_V)                 | relaxation / return side                        | ROLE-LEVEL ONLY                  |
+| (O)                   | no-overlap operator                             | UNRESOLVED                       |
 
 Required routing constraints:
 
@@ -1212,17 +1212,17 @@ Current best split:
 
 | Variable              | Equation Type                                   | Status                        |
 | --------------------- | ----------------------------------------------- | ----------------------------- |
-| $A$                   | elliptic / scalar constraint                    | DERIVED_REDUCED               |
-| $B_s/A_{\rm spatial}$ | scalar spatial response                         | RECOVERY_TARGET / NOT DERIVED |
-| $A_{\rm rad}$         | ordinary scalar radiation                       | REJECTED / CONSTRAINED        |
-| $\zeta$               | volume configuration / possible $B_s$ companion | CANDIDATE / FRAME-DEPENDENT   |
-| $\kappa$              | diagnostic / non-metric residual unless derived | CONSTRAINED                   |
-| $J_V$                 | vacuum-volume flux / transport current          | UNRESOLVED                    |
-| $u_{\rm vac}$         | vacuum rest frame from $J_V$, if domain exists  | UNRESOLVED / DOMAIN-LIMITED   |
-| $\Sigma_V$            | volume source role                              | ROLE-LEVEL ONLY               |
-| $R_V$                 | relaxation / return role                        | ROLE-LEVEL ONLY               |
-| $W_i$                 | transverse vector response                      | STRUCTURAL                    |
-| $h_{ij}^{TT}$         | hyperbolic tensor evolution                     | STRUCTURAL                    |
+| (A)                   | elliptic / scalar constraint                    | DERIVED_REDUCED               |
+| (B_s/A_{\rm spatial}) | scalar spatial response                         | RECOVERY_TARGET / NOT DERIVED |
+| (A_{\rm rad})         | ordinary scalar radiation                       | REJECTED / CONSTRAINED        |
+| (\zeta)               | volume configuration / possible (B_s) companion | CANDIDATE / FRAME-DEPENDENT   |
+| (\kappa)              | diagnostic / non-metric residual unless derived | CONSTRAINED                   |
+| (J_V)                 | vacuum-volume flux / transport current          | UNRESOLVED                    |
+| (u_{\rm vac})         | vacuum rest frame from (J_V), if domain exists  | UNRESOLVED / DOMAIN-LIMITED   |
+| (\Sigma_V)            | volume source role                              | ROLE-LEVEL ONLY               |
+| (R_V)                 | relaxation / return role                        | ROLE-LEVEL ONLY               |
+| (W_i)                 | transverse vector response                      | STRUCTURAL                    |
+| (h_{ij}^{TT})         | hyperbolic tensor evolution                     | STRUCTURAL                    |
 | source identities     | continuity / Bianchi-like closure               | MISSING                       |
 | recombination         | count-once metric map                           | UNFINISHED                    |
 
@@ -1247,9 +1247,9 @@ free vector radiation not currently derived.
 
 A compact presentation of the current system is:
 
-$$
+\[
 \boxed{\Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho}
-$$
+\]
 
 Status:
 
@@ -1257,9 +1257,9 @@ Status:
 DERIVED_REDUCED
 ```
 
-$$
+\[
 \boxed{A_{\rm ext}(r)=1-\frac{2GM}{c^2r}}
-$$
+\]
 
 Status:
 
@@ -1267,9 +1267,9 @@ Status:
 DERIVED_REDUCED
 ```
 
-$$
+\[
 \boxed{AB=e^{2\kappa_{\rm areal}}}
-$$
+\]
 
 Status:
 
@@ -1279,15 +1279,15 @@ DEFINITION / REDUCED AREAL-GAUGE DIAGNOSTIC
 
 Exterior diagnostic condition:
 
-$$
+\[
 \boxed{\kappa_{\rm areal}=0}
-$$
+\]
 
 therefore:
 
-$$
+\[
 \boxed{B=\frac{1}{A}}
-$$
+\]
 
 Status:
 
@@ -1298,9 +1298,9 @@ NOT GENERAL PARENT CONSTRUCTION
 
 Weak scalar limit:
 
-$$
+\[
 \boxed{A\simeq1+\frac{2\Phi}{c^2},\qquad \nabla^2\Phi=4\pi G\rho}
-$$
+\]
 
 Status:
 
@@ -1310,21 +1310,21 @@ DERIVED_REDUCED / WEAK-FIELD
 
 Volume-form candidate:
 
-$$
+\[
 \boxed{\zeta=\ln\sqrt{\gamma}}
-$$
+\]
 
 with:
 
-$$
+\[
 \boxed{\delta\zeta=\frac12\gamma^{ij}\delta\gamma_{ij}},
-$$
+\]
 
 and:
 
-$$
+\[
 \boxed{\delta\zeta|_{TT}=0.}
-$$
+\]
 
 Status:
 
@@ -1334,15 +1334,15 @@ CANDIDATE / LINEAR STRUCTURAL
 
 Vector response:
 
-$$
+\[
 \boxed{\nabla\times(\nabla\times W)=-\frac{\alpha_W}{2K_c}j_T}
-$$
+\]
 
 with:
 
-$$
+\[
 j_T=P_Tj.
-$$
+\]
 
 Status:
 
@@ -1352,9 +1352,9 @@ STRUCTURAL / COEFFICIENT UNKNOWN
 
 Vacuum exchange theorem target:
 
-$$
+\[
 \boxed{\nabla_\mu J_V^\mu=\Sigma_V-R_V}
-$$
+\]
 
 Status:
 
@@ -1364,15 +1364,15 @@ THEOREM_TARGET / NOT A LAW
 
 Vacuum-frame candidate:
 
-$$
+\[
 \boxed{u_{\rm vac}^\mu=\frac{J_V^\mu}{\sqrt{-J_V^2}}}
-$$
+\]
 
 only on:
 
-$$
-\boxed{D_V=\{J_V^2<0,\;J_V\neq0\}.}
-$$
+\[
+\boxed{D_V={J_V^2<0,;J_V\neq0}.}
+\]
 
 Status:
 
@@ -1382,9 +1382,9 @@ THEOREM_TARGET / DOMAIN-LIMITED / UNRESOLVED
 
 No-overlap theorem target:
 
-$$
+\[
 \boxed{O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]=0}
-$$
+\]
 
 Status:
 
@@ -1394,13 +1394,13 @@ UNRESOLVED
 
 Residual-kill convention:
 
-$$
+\[
 \boxed{J_V\text{-driven }\zeta\rightarrow B_s
 \quad\Rightarrow\quad
 \zeta_{\rm residual,metric}=0,
 \quad
 \kappa_{\rm residual,metric}=0\text{ or non-metric}}
-$$
+\]
 
 Status:
 
@@ -1410,9 +1410,9 @@ SAFE_IF / PROVISIONAL / NOT DERIVED
 
 Tensor radiation:
 
-$$
-\boxed{\Box h_{ij}^{TT}=-\mathcal{C}_T S_{ij}^{TT}}
-$$
+\[
+\boxed{\Box h_{ij}^{TT}=-\mathcal{C}*T S*{ij}^{TT}}
+\]
 
 Status:
 
@@ -1422,13 +1422,13 @@ STRUCTURAL / SOURCE AND COEFFICIENT UNFINISHED
 
 Rejected scalar-radiation equations:
 
-$$
+\[
 \boxed{\Box\kappa=\alpha S}
-$$
+\]
 
-$$
+\[
 \boxed{\Box\zeta=\alpha S}
-$$
+\]
 
 Status:
 
@@ -1438,9 +1438,9 @@ REJECTED as ordinary scalar gravity
 
 Parent closure target:
 
-$$
-\boxed{\text{Div}\,E_{\rm parent}[\cdots]=B_{\rm closed}[T]+B_{\rm relax}[\cdots]}
-$$
+\[
+\boxed{\text{Div},E_{\rm parent}[\cdots]=B_{\rm closed}[T]+B_{\rm relax}[\cdots]}
+\]
 
 Status:
 
@@ -1458,13 +1458,13 @@ This is not closure.
 
 Static spherical exterior:
 
-$$
+\[
 A=1-\frac{2GM}{c^2r},
-$$
+\]
 
-$$
+\[
 B=\frac{1}{A}.
-$$
+\]
 
 Status:
 
@@ -1480,9 +1480,9 @@ This is the strongest current result.
 
 Weak scalar multipole shape:
 
-$$
+\[
 A\simeq1+\frac{2\Phi}{c^2}.
-$$
+\]
 
 Status:
 
@@ -1490,7 +1490,7 @@ Status:
 RECONSTRUCTED AT WEAK ORDER
 ```
 
-Reduced weak $\gamma=1$ behavior:
+Reduced weak (\gamma=1) behavior:
 
 ```text
 RECOVERY_TARGET / REDUCED SUPPORT
@@ -1533,20 +1533,20 @@ COUPLING NOT RECONSTRUCTED
 
 | Result                                       | Status                              |
 | -------------------------------------------- | ----------------------------------- |
-| static spherical exterior $A$                | DERIVED_REDUCED                     |
-| exterior $B=1/A$ once $\kappa_{\rm areal}=0$ | DERIVED_REDUCED / GAUGE-CONDITIONED |
+| static spherical exterior (A)                | DERIVED_REDUCED                     |
+| exterior (B=1/A) once (\kappa_{\rm areal}=0) | DERIVED_REDUCED / GAUGE-CONDITIONED |
 | weak scalar / Newtonian limit                | DERIVED_REDUCED                     |
 | weak spatial scalar response                 | RECOVERY_TARGET / NOT DERIVED       |
 | full PPN audit                               | MISSING                             |
-| frame-dragging shape $\sim J/r^3$            | DERIVED_REDUCED shape               |
+| frame-dragging shape (\sim J/r^3)            | DERIVED_REDUCED shape               |
 | frame-dragging normalization                 | MATCHED / UNKNOWN                   |
 | tensor wave TT structure                     | STRUCTURAL                          |
 | tensor coupling                              | MATCHED / UNKNOWN                   |
 | tensor flux coefficient                      | MATCHED / UNKNOWN                   |
 | no scalar breathing radiation                | CONSTRAINED                         |
-| $\kappa$ non-radiative status                | CONSTRAINED / UNFINISHED            |
-| $J_V/u_{\rm vac}$                            | UNRESOLVED                          |
-| no-overlap $O$                               | UNRESOLVED                          |
+| (\kappa) non-radiative status                | CONSTRAINED / UNFINISHED            |
+| (J_V/u_{\rm vac})                            | UNRESOLVED                          |
+| no-overlap (O)                               | UNRESOLVED                          |
 | residual-kill                                | SAFE_IF / PROVISIONAL               |
 | parent conservation / Bianchi compatibility  | MISSING                             |
 | covariant metric recombination               | UNFINISHED                          |
@@ -1557,63 +1557,63 @@ COUPLING NOT RECONSTRUCTED
 
 Core missing objects:
 
-$$
+\[
 J_V^\mu
-$$
+\]
 
 physical vacuum-volume flux / transport current.
 
-$$
+\[
 \Sigma_V
-$$
+\]
 
 volume source operator.
 
-$$
+\[
 R_V
-$$
+\]
 
 relaxation / return operator.
 
-$$
+\[
 u_{\rm vac}^\mu
-$$
+\]
 
-vacuum frame, definable from $J_V$ only on a timelike / nonzero domain if $J_V$ exists.
+vacuum frame, definable from (J_V) only on a timelike / nonzero domain if (J_V) exists.
 
-$$
+\[
 O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]
-$$
+\]
 
 no-overlap operator.
 
-$$
+\[
 B_s/F_\zeta
-$$
+\]
 
 metric insertion law connecting volume response to scalar spatial trace.
 
-$$
-\frac{\alpha_W}{K_c},\;\beta_W,\;C_{\rm shape}
-$$
+\[
+\frac{\alpha_W}{K_c},;\beta_W,;C_{\rm shape}
+\]
 
 vector normalization and observable coupling.
 
-$$
-\mathcal{C}_T,\;K_T
-$$
+\[
+\mathcal{C}_T,;K_T
+\]
 
 tensor coupling and radiation-energy coefficient.
 
-$$
-K_\zeta,\;L_\zeta,\;\zeta_{\min}
-$$
+\[
+K_\zeta,;L_\zeta,;\zeta_{\min}
+\]
 
 volume-configuration stiffnesses and equilibrium configuration.
 
-$$
-K_\kappa,\;\mu_\kappa,\;\lambda_\kappa,\;\chi_\kappa
-$$
+\[
+K_\kappa,;\mu_\kappa,;\lambda_\kappa,;\chi_\kappa
+\]
 
 kappa relaxation parameters if a non-metric / relaxation branch survives.
 
@@ -1788,40 +1788,301 @@ O marked unresolved.
 
 ---
 
-# 17. Recommended Next Technical Target
+# 17. Metric Insertion and No-Overlap Status
+
+This section records the current status of the metric-insertion / no-overlap problem as a snapshot, not as a development log.
+
+## 17.1 Conformal-Volume Split
+
+The structural split is:
+
+```text
+gamma_ij = exp(2 zeta / 3) * bar_gamma_ij
+det(bar_gamma) = 1
+```
+
+This is consistent with:
+
+```text
+zeta = ln sqrt(gamma)
+```
+
+In three spatial dimensions:
+
+```text
+det(gamma) = exp(2 zeta) det(bar_gamma) = exp(2 zeta)
+```
+
+Status:
+
+```text
+STRUCTURAL
+NOT A FIELD LAW
+```
+
+Meaning:
+
+```text
+The split supports zeta as the spatial volume scalar.
+It separates volume from unimodular shape/shear.
+It does not derive B_s/F_zeta insertion.
+It does not derive boundary safety.
+It does not derive no-overlap O.
+It does not derive residual-kill.
+It does not derive recovery coefficients.
+```
+
+## 17.2 B_s/F_zeta Insertion
+
+Current target:
+
+```text
+B_s = F_zeta[A, zeta, J_V, Sigma_V, R_V]
+```
+
+Status:
+
+```text
+THEOREM_TARGET
+NOT DERIVED
+```
+
+Current safe convention:
+
+```text
+J_V-driven zeta may enter ordinary metric scalar trace only through B_s,
+with residual zeta/kappa metric trace killed or made non-metric,
+unless a real no-overlap operator O is later derived.
+```
+
+Rejected constructions:
+
+```text
+B_s copied from Schwarzschild / GR spatial metric,
+B_s fixed by B=1/A as a general law,
+B_s coefficient chosen to make gamma_like = 1,
+areal kappa promoted to physical scalar,
+zeta inserted into both B_s and residual metric trace.
+```
+
+## 17.3 Count-Once Rule
+
+Current count-once rule:
+
+```text
+Trace[g_ij^scalar] receives J_V-driven zeta only through B_s.
+```
+
+Required consequences:
+
+```text
+zeta_residual_metric = 0,
+
+kappa_residual_metric = 0
+  or kappa remains diagnostic / non-metric / separately neutral,
+
+epsilon_vac_config does not become an extra metric source,
+
+e_kappa does not become an extra metric source,
+
+P_relax does not become metric trace or ordinary scalar radiation.
+```
+
+Status:
+
+```text
+SAFE_IF / PROVISIONAL
+NOT DERIVED
+```
+
+## 17.4 Residual Non-Metric Roles
+
+Residual zeta/kappa variables may survive only if their role is explicitly non-metric.
+
+Allowed residual roles:
+
+```text
+diagnostic mismatch / reduced-gauge audit,
+configuration bookkeeping,
+first-order non-radiative relaxation,
+energy/accounting diagnostic,
+parent-identity theorem target.
+```
+
+Forbidden residual roles:
+
+```text
+direct metric scalar trace,
+hidden metric source,
+exterior scalar charge,
+M_ext shift,
+Box zeta / Box kappa,
+coefficient reservoir.
+```
+
+Status:
+
+```text
+CANDIDATE / CONSTRAINED
+```
+
+Non-metric bookkeeping is a useful fence. It is not the no-overlap operator.
+
+## 17.5 No-Overlap Operator
+
+Current no-overlap target:
+
+```text
+O[B_s, zeta_residual/kappa_residual, J_V] = 0
+```
+
+Status:
+
+```text
+UNRESOLVED
+```
+
+Candidate minimal forms have been identified but not derived:
+
+```text
+orthogonality pairing,
+projector split,
+metric insertion exclusivity,
+residual-kill convention,
+energy/accounting exclusion,
+boundary-supported no-overlap,
+diagnostic elliptic overlap audit.
+```
+
+Current interpretation:
+
+```text
+orthogonality is only a candidate if the pairing is real,
+projector split is only a candidate if the projectors are real,
+residual-kill / insertion exclusivity is the safest convention but not a derived O,
+non-metric bookkeeping is useful but not O,
+diagnostic overlap audits are not ontology.
+```
+
+## 17.6 Boundary Safety
+
+B_s insertion under the residual-kill / non-metric convention remains viable only if it is boundary-safe.
+
+Required boundary conditions:
+
+```text
+no exterior zeta/kappa charge,
+no far-zone scalar flux,
+no M_ext shift,
+no boundary shell source,
+no boundary repair.
+```
+
+Status:
+
+```text
+THEOREM_TARGET
+NOT DERIVED
+```
+
+Candidate safety routes:
+
+```text
+compact-support insertion,
+smooth transition insertion,
+structural zero-flux boundary,
+residual-kill with proven no exterior consequence,
+diagnostic elliptic leakage audit.
+```
+
+Rejected boundary mechanisms:
+
+```text
+boundary counterterm,
+R_V cancellation of leakage,
+recovery-tuned smoothing,
+source-gradient shell source,
+zeta-gradient exterior tail without zero-charge theorem.
+```
+
+## 17.7 Recovery Audit
+
+Recovery remains downstream.
+
+Allowed recovery tests:
+
+```text
+gamma_like weak-field behavior,
+AB exterior diagnostic,
+areal kappa mismatch diagnostic,
+Schwarzschild / GR-compatible exterior spatial behavior,
+weak-field spatial curvature.
+```
+
+Rejected as construction:
+
+```text
+gamma_like coefficient fit,
+B=1/A construction,
+GR spatial metric copy,
+areal kappa physical promotion,
+recovery-tuned support / smoothing,
+recovery-selected residual-kill,
+J_V as recovery repair current.
+```
+
+Status:
+
+```text
+RECOVERY_TARGET / ANTI-SMUGGLING GUARD
+```
+
+Meaning:
+
+```text
+Recovery may test the branch.
+Recovery may not build the branch.
+```
+
+---
+
+# 18. Recommended Next Technical Target
 
 Do not immediately write a parent field equation.
 
 The next technical target should be framed as a known unknown, not a completed equation:
 
 ```text
-Can J_V-driven zeta enter B_s through a concrete metric insertion law
-while residual zeta/kappa metric trace is killed or non-metric?
+Can a parent identity derive B_s/F_zeta insertion together with
+residual-kill or no-overlap,
+without GR metric copying, gamma_like tuning, B=1/A construction,
+areal-kappa promotion, or recovery-tuned boundary behavior?
 ```
 
 Equivalent bottleneck:
 
 ```text
-derive B_s/F_zeta insertion,
-or derive a parent identity for no-overlap / residual-kill,
+derive B_s/F_zeta insertion plus no-overlap / residual-kill,
 or keep J_V-driven zeta out of the ordinary metric scalar sector.
 ```
 
 Candidate next artifact title, if needed:
 
 ```text
-candidate_B_s_F_zeta_insertion_law.py
+candidate_parent_identity_for_B_s_insertion_and_residual_kill.py
 ```
 
-or:
+Alternative status-only target:
 
 ```text
-candidate_parent_identity_for_residual_kill.py
+field_equation_status_after_metric_insertion.md
 ```
+
+if the current snapshot needs a smaller update before parent-identity construction.
 
 ---
 
-# 18. Final Current Summary
+# 19. Final Current Summary
 
 After the current update, the field-equation status is:
 
@@ -1829,6 +2090,14 @@ After the current update, the field-equation status is:
 A-sector remains the strongest reduced branch.
 
 A_spatial / B_s remains a recovery theorem target.
+
+The conformal-volume split
+  gamma_ij = exp(2 zeta/3) bar_gamma_ij,
+  det bar_gamma = 1,
+is structural and supports zeta as spatial volume scalar,
+but it is not B_s dynamics.
+
+B_s/F_zeta insertion remains a theorem target.
 
 J_V / u_vac remains unresolved.
 
@@ -1842,7 +2111,28 @@ No-overlap O remains unresolved.
 
 Residual-kill / non-metric residual is the safest provisional convention.
 
+Boundary safety is required and not derived:
+  no exterior zeta/kappa charge,
+  no far-zone scalar flux,
+  no M_ext shift,
+  no shell source,
+  no boundary repair.
+
+Recovery remains downstream:
+  gamma_like, AB, areal kappa, and Schwarzschild-compatible exterior behavior
+  may test the branch but may not construct it.
+
 Kappa remains diagnostic / non-metric unless derived.
 
 The theory should not yet write a final parent equation.
+```
+
+Tiny goblin version:
+
+```text
+The conformal split shows where the volume goblin sits.
+It does not give the goblin a field equation.
+The residual gets no second spoon.
+The metric door opens only through B_s,
+unless O earns a real key.
 ```
