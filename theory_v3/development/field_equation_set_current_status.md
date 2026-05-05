@@ -2,207 +2,308 @@
 
 ## Scope
 
-This document presents the current field-equation architecture as if it were a candidate finished system, while explicitly marking incomplete or unknown pieces.
+This document is a snapshot of the current field-equation architecture. It records what is reconstructed, what is only structural, what is constrained, what is rejected, and what remains unknown.
+
+It is not a development log and not a proof of a completed covariant theory.
 
 Audience: GR / relativistic field theory readers.
 
-Status labels:
+Status labels used below:
 
 ```text
 DERIVED_REDUCED
 STRUCTURAL
 CONSTRAINED
 MATCHED
+RECOVERY_TARGET
+THEOREM_TARGET
+SAFE_IF
+CANDIDATE
+PROVISIONAL
 REJECTED
 MISSING
 UNFINISHED
+UNRESOLVED
 RISK
-PHENOMENOLOGICAL_IF_USED
 ```
 
 ---
 
-# 1. Variables and Sector Split
+# 1. Current Variables and Sector Split
 
-Current field variables:
+## 1.1 Primary Fields
 
-\[
+$$
 A
-\]
+$$
 
-scalar lapse / static mass-response field.
+Scalar lapse / static mass-response field.
 
-\[
-\zeta=\ln\sqrt{\gamma}
-\]
-
-candidate vacuum-spacetime volume configuration variable.
-
-\[
-\kappa
-\]
-
-trace / volume / interior relaxation candidate; currently kept separate from \(\zeta\)-volume configuration until the \(\kappa\)-\(\zeta\) map is derived.
-
-\[
-W_i
-\]
-
-transverse vector current / frame-dragging candidate.
-
-\[
-h_{ij}^{TT}
-\]
-
-transverse-traceless tensor radiation field.
-
-Auxiliary or controlled scalar-radiative variable:
-
-\[
-A_{\rm rad}
-\]
-
-scalar breathing/radiative hazard; rejected as an ordinary active long-range degree of freedom.
-
-Vacuum-substance / vacuum-spacetime accounting variables:
-
-\[
-\epsilon_{\rm vac,config},
-\qquad
-E_{\rm vac,config},
-\qquad
-q_v,
-\qquad
-J_v.
-\]
-
-Current best interpretation from group 13:
+Status:
 
 ```text
-epsilon_vac_config is geometric, not a generic reservoir.
-It is provisionally a zeta-volume configuration density.
-q_v/J_v are optional bookkeeping variables, only allowed if tied to geometry.
+DERIVED_REDUCED in static spherical sector
+STRUCTURAL beyond reduced sector
 ```
 
-Current provisional vacuum-volume functional:
+$$
+B_s \quad \text{or} \quad A_{\rm spatial}
+$$
 
-\[
-\epsilon_{\rm vac,config}=
-\frac12K_\zeta(\zeta-\zeta_{\min})^2
-+
-\frac12L_\zeta|\nabla\zeta|^2.
-\]
+Scalar spatial response / spatial trace companion to the mass-response sector.
 
-Separate \(\kappa\)-relaxation energy:
-
-\[
-e_\kappa=
-\frac12K_\kappa(\kappa-\kappa_{\min})^2.
-\]
-
-Provisional exchange accounting:
-
-\[
-\frac{de_\kappa}{d\tau}
-+
-\frac{d\epsilon_{\rm vac,config}}{d\tau}=
-0.
-\]
-
-Current reduced recombination map:
-
-\[
-g_{tt}\leftarrow A,
-\]
-
-\[
-g_{0i}\leftarrow W_i,
-\]
-
-\[
-g_{ij}\leftarrow
-\text{scalar spatial response}(A)
-+
-\kappa_{\rm trace}
-+
-h_{ij}^{TT}.
-\]
-
-No-double-counting requirements:
+Status:
 
 ```text
-rho -> A only,
-trace / pressure -> kappa_min or zeta-volume sector only through projectors,
-kappa_ext = 0,
-zeta_ext = 0,
-h_ij^TT trace-free,
-W_i transverse,
-source(A_rad ordinary massless)=0,
-delta M_ext|kappa/zeta relaxation=0,
-epsilon_vac_config excludes A_flux and M_ext,
-e_kappa is kept outside epsilon_vac_config until the kappa-zeta map is derived.
+RECOVERY_TARGET / THEOREM_TARGET
+NOT DERIVED
+```
+
+It must be recovered by an acceptable parent equation, not copied from the GR metric form or imposed by $\gamma_{\rm like}=1$ tuning.
+
+$$
+\zeta=\ln\sqrt{\gamma}
+$$
+
+Candidate vacuum-spacetime volume configuration variable.
+
+Status:
+
+```text
+CANDIDATE / GEOMETRICALLY MOTIVATED / FRAME-DEPENDENT
+```
+
+$$
+\kappa
+$$
+
+Reduced trace / volume / interior relaxation diagnostic. The areal relation
+
+$$
+\kappa_{\rm areal}=\frac12\ln(AB)
+$$
+
+is a reduced areal-gauge diagnostic, not a covariant physical scalar unless later derived.
+
+Status:
+
+```text
+DIAGNOSTIC / NON-METRIC / SEPARATELY NEUTRAL UNLESS DERIVED
+```
+
+$$
+W_i
+$$
+
+Transverse vector current / frame-dragging candidate.
+
+Status:
+
+```text
+STRUCTURAL / NORMALIZATION UNKNOWN
+```
+
+$$
+h_{ij}^{TT}
+$$
+
+Transverse-traceless tensor radiation field.
+
+Status:
+
+```text
+STRUCTURAL / ORDINARY RADIATIVE SECTOR
+```
+
+$$
+A_{\rm rad}
+$$
+
+Scalar breathing/radiative hazard.
+
+Status:
+
+```text
+REJECTED as ordinary active long-range degree of freedom
+```
+
+---
+
+## 1.2 Vacuum-Volume / Exchange Variables
+
+$$
+J_V^\mu
+$$
+
+Candidate vacuum-volume flux / transport current needed to define a vacuum frame.
+
+Status:
+
+```text
+UNRESOLVED
+```
+
+It is not defined by naming it and is not defined by the divergence equation alone.
+
+$$
+u_{\rm vac}^\mu = \frac{J_V^\mu}{\sqrt{-J_V^2}}
+$$
+
+Candidate vacuum rest frame, valid only where $J_V$ is timelike and nonzero.
+
+Domain condition:
+
+$$
+D_V=\{J_V^2<0,\;J_V\neq0\}.
+$$
+
+Status:
+
+```text
+THEOREM_TARGET / DOMAIN-LIMITED / UNRESOLVED
+```
+
+$$
+\Sigma_V
+$$
+
+Vacuum-volume source / creation / destruction side of exchange accounting.
+
+Status:
+
+```text
+ROLE-LEVEL ONLY / OPERATOR NOT DERIVED
+```
+
+$$
+R_V
+$$
+
+Vacuum-volume relaxation / reconfiguration / return side of exchange accounting.
+
+Status:
+
+```text
+ROLE-LEVEL ONLY / OPERATOR NOT DERIVED
+```
+
+$$
+O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]
+$$
+
+No-overlap operator target for count-once recombination.
+
+Status:
+
+```text
+UNRESOLVED CENTRAL BOTTLENECK
+```
+
+---
+
+# 2. Current Recombination Constraint
+
+The recombination map is reduced bookkeeping, not a covariant parent derivation.
+
+Current safe recombination statement:
+
+```text
+g_tt <- A
+
+g_0i <- W_i
+
+g_ij <- B_s / A_spatial scalar response
+        + h_TT
+        + killed, non-metric, or separately neutral residual bookkeeping
+```
+
+Unsafe loose form:
+
+```text
+g_ij <- A_spatial + zeta_residual + kappa_residual + h_TT
+```
+
+Reason:
+
+```text
+This risks double-counting the scalar spatial trace.
+```
+
+Current count-once rule:
+
+```text
+J_V-driven zeta may enter ordinary metric scalar trace only through B_s,
+with residual zeta/kappa metric trace killed or made non-metric,
+unless a real no-overlap operator O is later derived.
+```
+
+Residual-kill convention:
+
+```text
+If J_V-driven zeta enters B_s,
+then residual zeta/kappa metric trace is killed or made non-metric.
 ```
 
 Status:
 
 ```text
-STRUCTURAL / UNFINISHED
+SAFE_IF / PROVISIONAL
+NOT DERIVED
 ```
 
-The recombination map is reduced bookkeeping, not a covariant parent derivation.
-
-Group 13 result:
+Revisit triggers:
 
 ```text
-vacuum-substance accounting is now geometric enough to state provisionally,
-but the kappa-zeta map and projectors remain unresolved.
+explicit no-overlap operator O is derived,
+neutral residual branch becomes structurally safe,
+B_s/F_zeta insertion law changes,
+kappa obtains separately derived no-overlap status,
+parent identity derives residual-kill or residual survival,
+real J_V flux law changes recombination structure.
 ```
 
+---
 
-# 2. Scalar Static / Monopole Sector
+# 3. Scalar Static / Monopole Sector
 
-## 2.1 Areal-Flux Law
+## 3.1 Areal-Flux Law
 
 Primary reduced scalar equation:
 
-\[
+$$
 \Delta_{\rm areal}A =
 \frac{8\pi G}{c^2}\rho.
-\]
+$$
 
 where:
 
-\[
+$$
 \Delta_{\rm areal}A =
 \frac{1}{r^2}\frac{d}{dr}
-\left(
-r^2\frac{dA}{dr}
-\right).
-\]
+\left(r^2\frac{dA}{dr}\right).
+$$
 
 Equivalent flux form:
 
-\[
+$$
 F_A(r)=4\pi r^2 A'(r),
-\]
+$$
 
-\[
-\frac{dF_A}{dr} =
-4\pi r^2
-\frac{8\pi G}{c^2}\rho(r).
-\]
+$$
+\frac{dF_A}{dr}=4\pi r^2\frac{8\pi G}{c^2}\rho(r).
+$$
 
 With:
 
-\[
+$$
 M_{\rm enc}'(r)=4\pi r^2\rho(r),
-\]
+$$
 
 this gives:
 
-\[
+$$
 F_A(r)=\frac{8\pi G}{c^2}M_{\rm enc}(r).
-\]
+$$
 
 Status:
 
@@ -214,47 +315,37 @@ This is the strongest reconstructed sector.
 
 ---
 
-## 2.2 Exterior Vacuum Scalar Equation
+## 3.2 Exterior Vacuum Scalar Equation
 
-For:
+For $\rho=0$,
 
-\[
-\rho=0,
-\]
-
-\[
+$$
 \Delta_{\rm areal}A=0.
-\]
+$$
 
 Thus:
 
-\[
+$$
 \frac{d}{dr}\left(r^2A'\right)=0,
-\]
+$$
 
 and:
 
-\[
+$$
 A(r)=C_0+\frac{C_1}{r}.
-\]
+$$
 
-Asymptotic flatness:
+Asymptotic flatness sets:
 
-\[
+$$
 C_0=1.
-\]
+$$
 
-Flux normalization by total mass \(M\):
+Flux normalization by total mass $M$ gives:
 
-\[
-4\pi r^2A'=\frac{8\pi GM}{c^2}.
-\]
-
-Therefore:
-
-\[
+$$
 A(r)=1-\frac{2GM}{c^2r}.
-\]
+$$
 
 Status:
 
@@ -264,169 +355,135 @@ DERIVED_REDUCED
 
 ---
 
-## 2.3 Reciprocal Exterior Radial Factor
+## 3.3 Exterior Radial Factor
 
-In the static spherical exterior, impose:
+In the static spherical exterior, the reduced areal diagnostic condition is:
 
-\[
-\kappa=0.
-\]
+$$
+\kappa_{\rm areal}=0.
+$$
 
-With the areal-gauge relation:
+With:
 
-\[
-AB=e^{2\kappa},
-\]
+$$
+AB=e^{2\kappa_{\rm areal}},
+$$
 
 this gives:
 
-\[
+$$
 AB=1,
-\]
+$$
 
 so:
 
-\[
+$$
 B=\frac{1}{A}.
-\]
+$$
 
 Therefore:
 
-\[
+$$
 B(r)=\left(1-\frac{2GM}{c^2r}\right)^{-1}.
-\]
+$$
 
 Status:
 
 ```text
-DERIVED_REDUCED / GAUGE-CONDITIONED
+DERIVED_REDUCED / GAUGE-CONDITIONED / RECOVERY CHECK
 ```
 
-This recovers the Schwarzschild exterior metric factors in the static spherical sector.
+Important boundary:
+
+```text
+B=1/A is not a general construction rule for the parent theory.
+It is a recovered static spherical exterior relation.
+```
 
 ---
 
-# 3. Weak Multipole Scalar Extension
+# 4. Weak Multipole Scalar Extension
 
 For weak fields:
 
-\[
-A\simeq 1+\frac{2\Phi}{c^2}.
-\]
+$$
+A\simeq1+\frac{2\Phi}{c^2}.
+$$
 
 The scalar field recovers the Newtonian potential structure:
 
-\[
+$$
 \nabla^2\Phi=4\pi G\rho.
-\]
+$$
 
 Exterior weak multipole expansion:
 
-\[
-\Phi(\mathbf{x}) =
--G\int
-\frac{\rho(\mathbf{x}')}{|\mathbf{x}-\mathbf{x}'|}
-\,d^3x'.
-\]
+$$
+\Phi(\mathbf{x})=
+-G\int\frac{\rho(\mathbf{x}')}{|\mathbf{x}-\mathbf{x}'|}\,d^3x'.
+$$
 
 Thus:
 
-\[
-A(\mathbf{x})
-\simeq
-1+\frac{2\Phi(\mathbf{x})}{c^2}.
-\]
+$$
+A(\mathbf{x})\simeq1+\frac{2\Phi(\mathbf{x})}{c^2}.
+$$
 
-Spatial reconstruction at weak order gives the GR-like \(\gamma=1\) structure when the scalar spatial response is tied to the same potential.
+The spatial response must recover GR-compatible weak-field scalar spatial curvature, but the mechanism producing $B_s/A_{\rm spatial}$ is not derived.
 
 Status:
 
 ```text
-DERIVED_REDUCED / WEAK-FIELD
+A weak scalar shape: DERIVED_REDUCED / WEAK-FIELD
+B_s / gamma-like response: RECOVERY_TARGET / NOT DERIVED
 ```
 
 Limit:
 
 ```text
 Not yet full nonlinear nonspherical field equation.
+Not yet full PPN audit.
 ```
 
 ---
 
-# 4. Scalar Radiative Sector
+# 5. Scalar Radiative Sector
 
 An unconstrained scalar radiative perturbation would have the form:
 
-\[
+$$
 A_{\rm rad}=a_0\cos(kx-\omega t),
-\]
+$$
 
 with wave condition:
 
-\[
+$$
 \omega^2=c^2k^2.
-\]
+$$
 
 This would be a scalar breathing-type gravitational radiation channel.
 
 Current rule:
 
-\[
+$$
 {\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0.
-\]
+$$
 
-Also rejected as ordinary massless scalar radiation equations:
+Rejected as ordinary scalar-radiation equations:
 
-\[
+$$
 \Box\kappa=\alpha S,
-\]
+$$
 
-\[
+$$
 \Box\zeta=\alpha S.
-\]
-
-Group 13 interpretation:
-
-```text
-scalar / trace disturbances are conversion-limited,
-not friction-damped waves.
-```
-
-They are not currently modeled as:
-
-\[
-\phi_{tt}+\gamma\phi_t+\omega^2\phi=0.
-\]
-
-Reason:
-
-```text
-no scalar inertia / momentum channel has been derived.
-```
-
-Current scalar / trace conversion skeleton:
-
-\[
-P_{\rm trace}[\text{source/geometry}]
-\rightarrow
-\delta\zeta.
-\]
-
-\[
-\zeta=\ln\sqrt{\gamma}.
-\]
-
-\[
-\kappa\sim\zeta-\zeta_{\min}
-\]
-
-as a constraint target only, not yet a derived identity.
+$$
 
 Interpretation:
 
 ```text
-trace / scalar disturbance changes the spacetime-volume configuration.
-It does not become an ordinary far-zone scalar wave.
+Scalar / trace disturbances are conversion-limited,
+not ordinary far-zone scalar waves.
 ```
 
 Ordinary radiation rule:
@@ -435,21 +492,10 @@ Ordinary radiation rule:
 ordinary long-range gravitational radiation is TT-only.
 ```
 
-The static scalar \(A\)-sector survives as a constraint / mass-response field. The scalar-radiative residue does not become an ordinary active long-range wave channel.
-
 Status:
 
 ```text
 REJECTED / CONSTRAINED
-```
-
-Unknown:
-
-```text
-Parent mechanism proving static scalar constraint cannot become ordinary scalar radiation.
-Trace/volume conversion operator P_trace.
-Binary scalar-conversion safety theorem.
-Nonlinear/covariant volume-form theorem.
 ```
 
 Failure if violated:
@@ -462,10 +508,13 @@ secular orbital damping,
 or an exterior scalar channel not supported by the current theory.
 ```
 
+---
 
-# 5. Vacuum-Substance / Vacuum-Spacetime Balance Target
+# 6. Vacuum-Volume / Exchange-Continuity Sector
 
-Corrected ontology carried into group 13:
+## 6.1 Ontology
+
+Current ontology:
 
 ```text
 vacuum is spacetime.
@@ -482,34 +531,33 @@ not generic reservoir bookkeeping.
 
 Candidate volume-form variable:
 
-\[
+$$
 \zeta=\ln\sqrt{\gamma}.
-\]
+$$
 
 Physical volume element:
 
-\[
+$$
 dV_{\rm phys}=\sqrt{\gamma}\,d^3x.
-\]
+$$
 
 Linear variation:
 
-\[
-\delta\zeta=
-\frac12\gamma^{ij}\delta\gamma_{ij}.
-\]
+$$
+\delta\zeta=\frac12\gamma^{ij}\delta\gamma_{ij}.
+$$
 
 For TT perturbations:
 
-\[
+$$
 \gamma^{ij}h_{ij}^{TT}=0,
-\]
+$$
 
 so:
 
-\[
+$$
 \delta\zeta|_{TT}=0.
-\]
+$$
 
 Interpretation:
 
@@ -518,1142 +566,636 @@ trace / volume modes change vacuum-spacetime amount,
 TT modes are volume-preserving shear.
 ```
 
-Candidate vacuum-accounting balance skeleton:
+---
 
-\[
-u^\mu\nabla_\mu\epsilon_{\rm vac,config}
-+
-\nabla_\mu J_v^\mu=
-\Sigma_{\rm exchange}
--
-\Gamma_{\rm relax}.
-\]
+## 6.2 Exchange Continuity Target
 
-Ordinary closed conditions:
+Current exchange-continuity theorem target:
 
-\[
-\Sigma_{\rm creation}=0,
-\]
-
-\[
-\oint J_v\cdot dS=0,
-\]
-
-\[
-Q_{\rm volume}=0,
-\]
-
-\[
-\delta M_{\rm ext}=0,
-\]
-
-\[
-F_{\rm scalar,far}=0.
-\]
-
-Provisional \(\epsilon_{\rm vac,config}\) functional:
-
-\[
-\epsilon_{\rm vac,config}=
-\frac12K_\zeta(\zeta-\zeta_{\min})^2
-+
-\frac12L_\zeta|\nabla\zeta|^2.
-\]
-
-Separate \(\kappa\)-relaxation energy:
-
-\[
-e_\kappa=
-\frac12K_\kappa(\kappa-\kappa_{\min})^2.
-\]
-
-Provisional exchange accounting:
-
-\[
-\frac{de_\kappa}{d\tau}
-+
-\frac{d\epsilon_{\rm vac,config}}{d\tau}=
-0.
-\]
-
-No \(K_{\rm lock}\) energy is currently counted.
-
-Constraint target only:
-
-\[
-\kappa\sim\zeta-\zeta_{\min}.
-\]
-
-Group 12 parent template v2 remains:
-
-\[
-{\rm Div}\,
-E_{\rm parent}
-[
-A,W,h_{TT},\kappa;
-P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]=
-B_{\rm closed}[T]
-+
-B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}].
-\]
+$$
+\nabla_\mu J_V^\mu=\Sigma_V-R_V.
+$$
 
 Status:
 
 ```text
-CANDIDATE / SCAFFOLD ONLY
+THEOREM_TARGET
+NOT A LAW
 ```
 
-The group-13 balance is more concrete than the group-12 balance language, but it is still not closure.
-
-Allowed \(J_v\) classes:
+Reason:
 
 ```text
-J_v = 0 / local exchange,
-compact-support J_v,
-constraint redistribution J_v with zero exterior flux,
-causal transport J_v only if separately derived.
+A divergence equation constrains a current.
+It does not define the current.
 ```
 
-Forbidden \(J_v\) classes:
+A real exchange-continuity law still requires:
 
 ```text
-acausal repair current,
-far-zone scalar-energy current,
-coefficient tuning current,
-exterior mass-changing current,
-unlabeled nonlocal transport.
-```
-
-Unknown:
-
-```text
-Definition of E_parent.
-Definition of B_closed.
-Definition of B_relax.
-Definition of epsilon_vac_config from a parent action.
-Definition of zeta_min.
-Definition of q_v and J_v, if needed.
-Definition of Sigma_exchange.
-Definition of Gamma_relax sign convention.
-Definition of u^mu / frame / foliation.
-Closure identity.
-Relation to stress-energy conservation.
-Bianchi-like parent identity.
-Covariant recombination map.
-Scalar constraint propagation.
-Coefficient action / stiffness principle.
-Kappa-zeta map.
-```
-
-
-# 6. Vector Current / Frame-Dragging Sector
-
-## 6.1 Source From Continuity
-
-Matter continuity:
-
-\[
-\partial_t\rho+\nabla\cdot j=0.
-\]
-
-With:
-
-\[
-j_i=\rho v_i.
-\]
-
-If \(\rho\) sources scalar exchange, then \(j_i\) is the natural vector/current source.
-
-Status:
-
-```text
-CONSTRAINED
+J_V physical flux / transport law,
+Sigma_V source operator,
+R_V relaxation / return operator,
+flux direction,
+timelike / nonzero domain,
+static-source neutrality,
+boundary neutrality,
+no-overlap or residual-kill theorem,
+sign / orientation convention,
+recovery checks downstream.
 ```
 
 ---
 
-## 6.2 Transverse Current Projection
+## 6.3 Sigma/R Split
 
-Decompose:
+Current split:
 
-\[
-j=j_T+j_L.
-\]
+```text
+Sigma_V:
+  source / creation / destruction side
 
-with:
-
-\[
-\nabla\cdot j_T=0,
-\]
-
-\[
-\nabla\times j_L=0.
-\]
-
-Fourier-space projector:
-
-\[
-P_T(k)=I-\frac{kk^T}{k^2}.
-\]
-
-\[
-P_L(k)=\frac{kk^T}{k^2}.
-\]
-
-Thus:
-
-\[
-j_T=P_Tj,
-\]
-
-\[
-j_L=P_Lj.
-\]
-
-Sector allocation:
-
-\[
-j_T\rightarrow W_i,
-\]
-
-\[
-j_L\rightarrow A\text{ / scalar continuity}.
-\]
+R_V:
+  relaxation / reconfiguration / return side
+```
 
 Status:
 
 ```text
-DERIVED_REDUCED for k^2 != 0
+STRUCTURAL / ROLE-LEVEL ONLY
+NOT OPERATOR-LEVEL
 ```
 
-Caveat:
+Guardrail:
 
 ```text
-k=0/global rotation requires boundary treatment.
+Sigma_V and R_V must not become two names for one hidden tuning mechanism.
+```
+
+Rejected:
+
+```text
+R_V tuned to erase exterior scalar charge,
+Sigma_V chosen from gamma_like or AB recovery,
+Sigma_V and R_V double-counting the same volume change,
+Sigma/R balancing by definition with no mechanism.
 ```
 
 ---
 
-## 6.3 Curl-Energy Vector Action
+## 6.4 Flux Direction
 
-Candidate vector energy:
+Key result:
 
-\[
-E_W =
-\int
-\left[
-K_c|\nabla\times W|^2+\alpha_W j_T\cdot W
-\right]d^3x.
-\]
-
-Variation gives:
-
-\[
-2K_c\nabla\times(\nabla\times W)+\alpha_W j_T=0.
-\]
-
-Therefore:
-
-\[
-\nabla\times(\nabla\times W) =
--\frac{\alpha_W}{2K_c}j_T.
-\]
-
-Using:
-
-\[
-\nabla\times(\nabla\times W) =
-\nabla(\nabla\cdot W)-\Delta W,
-\]
-
-and imposing:
-
-\[
-\nabla\cdot W=0,
-\]
-
-gives:
-
-\[
-\Delta W =
-\frac{\alpha_W}{2K_c}j_T.
-\]
+```text
+Sigma_V - R_V supplies divergence strength,
+not vector direction.
+```
 
 Status:
 
 ```text
-STRUCTURAL / DERIVED_REDUCED
+REQUIRED GUARDRAIL
 ```
 
-Unknown coefficient:
-
-\[
-\frac{\alpha_W}{2K_c}.
-\]
-
-Status of coefficient:
+Distinctions:
 
 ```text
-UNKNOWN
+physical flux law:
+  derived direction / transport mechanism
+
+diagnostic elliptic completion:
+  solve div J_V = Sigma_V - R_V after the fact as an audit
+
+forbidden repair current:
+  choose J_V nonlocally to cancel exterior scalar charge
+```
+
+Only the first can become ontology.
+
+The second may be useful diagnostically.
+
+The third is rejected.
+
+Candidate direction families remain:
+
+```text
+exchange-potential flux,
+causal first-order transport current,
+compact-support redistribution,
+zeta-gradient flux,
+source-gradient flux,
+relaxation-gradient flux.
+```
+
+None is derived.
+
+Causal transport remains dangerous unless it avoids:
+
+```text
+Box zeta,
+Box kappa,
+ordinary scalar radiation.
 ```
 
 ---
 
-## 6.4 Vector Observable Candidate
+## 6.5 Timelike / Nonzero Domain
 
-Raw \(W_i\) is gauge-sensitive.
+Candidate vacuum-frame definition:
 
-Define:
+$$
+u_{\rm vac}^\mu=\frac{J_V^\mu}{\sqrt{-J_V^2}}.
+$$
 
-\[
-B_W=\nabla\times W.
-\]
+This only makes sense on:
 
-A symbolic precession/frame-dragging relation is:
-
-\[
-\Omega_{\rm drag} =
-\beta_W B_W.
-\]
+$$
+D_V=\{J_V^2<0,\;J_V\neq0\}.
+$$
 
 Status:
 
 ```text
-STRUCTURAL / UNFINISHED
+THEOREM_TARGET / DOMAIN-LIMITED
 ```
 
-Unknown:
-
-\[
-\beta_W.
-\]
-
----
-
-## 6.5 Global Rotation Boundary Data
-
-Angular momentum:
-
-\[
-J=\int r\times j\,d^3x.
-\]
-
-For a uniformly rotating solid sphere:
-
-\[
-M=\frac{4\pi R^3\rho}{3},
-\]
-
-\[
-J=\frac{2}{5}MR^2\Omega.
-\]
-
-Exterior symbolic axial vector ansatz:
-
-\[
-W_\phi(r,\theta) =
-\frac{C_JJ\sin\theta}{r^2}.
-\]
-
-Curl components:
-
-\[
-(\nabla\times W)_r =
-\frac{2C_JJ\cos\theta}{r^3},
-\]
-
-\[
-(\nabla\times W)_\theta =
-\frac{C_JJ\sin\theta}{r^3}.
-\]
-
-Thus:
-
-\[
-B_W\sim\frac{J}{r^3}.
-\]
-
-Status:
+Implications:
 
 ```text
-DERIVED_REDUCED shape
-```
+No global u_vac follows from a domain-limited current.
 
-Normalization chain:
+Zero-current static equilibrium may protect neutrality,
+but it cannot define u_vac from J_V.
 
-\[
-C_J
-\sim
-C_{\rm shape}
-\frac{\alpha_W}{8\pi K_c}.
-\]
+Spacelike redistribution currents may be spatial fluxes,
+but not vacuum clocks.
 
-Observable:
-
-\[
-\Omega_{\rm drag}
-\sim
-\beta_W
-C_{\rm shape}
-\frac{\alpha_W}{8\pi K_c}
-\frac{J}{r^3}.
-\]
-
-Unknowns:
-
-```text
-alpha_W/K_c
-C_shape
-beta_W
-```
-
-Status:
-
-```text
-NORMALIZATION UNKNOWN
+Equilibrium-frame fallback is deferred unless static regions require a frame.
 ```
 
 ---
 
-# 7. Kappa Trace / Interior Sector
+## 6.6 Static-Source Neutrality
 
-## 7.1 Current Role
+Ordinary static sources must not create independent exterior scalar volume charge.
 
-Current intended role:
+Allowed safety routes, all still conditional:
 
-\[
-\kappa
-\]
+```text
+static zero-current equilibrium,
+pointwise Sigma_V = R_V balance,
+compact-support J_V with zero boundary flux.
+```
 
-is no longer best treated as an ordinary scalar field.
+Forbidden:
+
+```text
+ordinary static mass creates exterior zeta/kappa/J_V scalar charge,
+R_V is tuned to cancel that charge,
+source-gradient creates shell scalar charge,
+zeta-gradient current produces far-zone scalar tail,
+acceleration-gradient source treats static support as scalar source without neutrality theorem,
+J_V shifts M_ext independently of A-sector.
+```
+
+Status:
+
+```text
+REQUIRED / NOT DERIVED
+```
+
+Failure condition:
+
+```text
+static scalar charge kills the current family for ordinary gravity.
+```
+
+---
+
+## 6.7 Boundary Neutrality
+
+Surviving current families must satisfy:
+
+```text
+zero exterior J_V flux,
+zero exterior zeta/kappa charge,
+no far-zone scalar flux,
+no M_ext shift.
+```
+
+Status:
+
+```text
+REQUIRED / NOT DERIVED
+```
+
+Forbidden boundary moves:
+
+```text
+nonlocal boundary repair current,
+R_V boundary counterterm tuned to cancel leakage,
+surface term hiding residual trace overlap,
+shell-source created by sharp support,
+recovery checks choosing boundary conditions.
+```
+
+---
+
+# 7. Kappa / Zeta / Residual Sector
+
+## 7.1 Current Role of Kappa
 
 Current best interpretation:
 
 ```text
-kappa = constrained non-inertial trace / volume relaxation response.
-```
-
-It describes local vacuum-curvature equilibration:
-
-```text
-matter trace or pressure shifts a local vacuum-curvature minimum;
-kappa relaxes toward that minimum;
-the relaxation has no independent momentum channel;
-therefore kappa does not overshoot, slosh, or propagate as an ordinary
-breathing wave.
+kappa = reduced diagnostic / non-metric residual / separately neutral trace variable unless derived.
 ```
 
 Areal-gauge diagnostic relation:
 
-\[
-AB=e^{2\kappa}.
-\]
-
-Thus:
-
-\[
-\kappa=\frac12\ln(AB).
-\]
+$$
+\kappa_{\rm areal}=\frac12\ln(AB).
+$$
 
 Exterior Schwarzschild sector:
 
-\[
-\kappa=0.
-\]
-
-Group 13 added the volume-form variable:
-
-\[
-\zeta=\ln\sqrt{\gamma}.
-\]
-
-Current constraint target:
-
-\[
-\kappa\sim\zeta-\zeta_{\min}.
-\]
+$$
+\kappa_{\rm areal}=0.
+$$
 
 Status:
 
 ```text
-CONSTRAINED / STRUCTURAL
+STRUCTURAL / DIAGNOSTIC
 ```
 
-The areal-gauge diagnostic relation is reduced-derived, but the covariant physical relation between \(\kappa\) and \(\zeta\) remains unfinished.
+Guardrail:
+
+```text
+kappa must not restore killed zeta residual trace.
+```
+
+Forbidden:
+
+```text
+kappa as substitute scalar metric trace,
+kappa as independent scalar gravity,
+kappa as hidden residual-restoration path,
+e_kappa as physical source reservoir before derivation.
+```
 
 ---
 
-## 7.2 Rejected Kappa Interpretations
+## 7.2 Current Role of Zeta
 
-Raw density \(\rho\) as the primary \(\kappa\) source is rejected.
+$$
+\zeta=\ln\sqrt{\gamma}
+$$
 
-Reason:
+is the leading volume-form candidate.
+
+Current role:
 
 ```text
-rho already sources the A-sector mass / monopole response.
+geometric vacuum-volume candidate,
+possible B_s companion only under residual-kill or no-overlap.
 ```
 
-A raw pressure trace Poisson source:
+Forbidden:
 
-\[
-S_{\rm trace}=3p
-\]
+```text
+zeta changes B_s and also remains independent residual metric trace.
+```
 
-is also rejected as a final unscreened source, because for ordinary positive pressure:
+---
 
-\[
-Q_\kappa=\int 3p\,d^3x\neq0,
-\]
+## 7.3 Residual-Kill Convention
 
-which would produce a massless exterior tail:
+Current provisional convention:
 
-\[
-\kappa_{\rm ext}\sim\frac{1}{r}.
-\]
+```text
+If J_V-driven zeta enters B_s,
+residual zeta/kappa metric trace is killed or made non-metric.
+```
 
-Ordinary massless wave equations:
+Meaning:
 
-\[
+```text
+zeta_residual_metric = 0 after B_s insertion,
+
+kappa_residual_metric = 0
+  or kappa remains diagnostic / non-metric / separately neutral,
+
+zeta/kappa residual may remain as bookkeeping,
+  but not as direct metric scalar trace,
+
+P_relax-only residual may survive only if first-order,
+  non-radiative,
+  boundary-neutral,
+  and not Box zeta / Box kappa.
+```
+
+Status:
+
+```text
+SAFE_IF / PROVISIONAL
+NOT DERIVED
+```
+
+---
+
+## 7.4 Neutral Residual Alternative
+
+The theorem-heavy alternative is:
+
+```text
+neutral residual metric trace,
+allowed only if O, boundary neutrality, no A-sector mass overlap,
+and no exterior scalar charge are all derived.
+```
+
+Status:
+
+```text
+RISK / THEOREM-HEAVY
+```
+
+---
+
+## 7.5 Rejected Kappa / Zeta Interpretations
+
+Rejected as ordinary propagating scalar gravity:
+
+$$
 \Box\kappa=\alpha S,
-\]
+$$
 
-\[
-\Box\zeta=\alpha S
-\]
+$$
+\Box\zeta=\alpha S.
+$$
 
-are rejected because they introduce scalar breathing-radiation channels.
-
-Status:
+Rejected as ordinary exterior scalar channels:
 
 ```text
-REJECTED as ordinary propagating scalar gravity.
+raw pressure trace Poisson kappa,
+zeta exterior scalar charge,
+kappa exterior scalar charge,
+zeta/kappa independent scalar gravities,
+kappa restoring killed residual metric trace.
 ```
 
 ---
 
-## 7.3 Non-Inertial Relaxation Candidate
+## 7.6 Energy / Accounting Guardrail
 
-The reduced candidate is first-order local relaxation toward a shifted minimum:
+Provisional vacuum-volume functional:
 
-\[
-\dot{\kappa}=
--\mu_\kappa K_\kappa
-(\kappa-\kappa_{\min}).
-\]
-
-Group 12 frame-compatible candidate:
-
-\[
-u^\mu\nabla_\mu\kappa=
--\lambda_\kappa(\kappa-\kappa_{\min}).
-\]
-
-where:
-
-\[
-\lambda_\kappa=\mu_\kappa K_\kappa.
-\]
-
-Candidate minimum shift:
-
-\[
-\kappa_{\min}=
-\chi_\kappa S_{\rm trace,effective}.
-\]
-
-For fixed \(\kappa_{\min}\):
-
-\[
-\kappa(t)-\kappa_{\min}=
-[\kappa(0)-\kappa_{\min}]
-e^{-\mu_\kappa K_\kappa t}.
-\]
-
-This gives:
-
-```text
-no oscillation,
-no overshoot,
-no slosh,
-no independent kappa momentum channel,
-no ordinary breathing radiation.
-```
-
-Status:
-
-```text
-STRUCTURAL / UNFINISHED
-```
-
-Unknown:
-
-```text
-u^mu,
-K_kappa,
-mu_kappa,
-lambda_kappa,
-chi_kappa,
-S_trace_effective,
-covariant origin,
-kappa-zeta map.
-```
-
----
-
-## 7.4 Kappa / Zeta Energy Accounting
-
-Group 13 provisional convention:
-
-\[
+$$
 \epsilon_{\rm vac,config}=
-\frac12K_\zeta(\zeta-\zeta_{\min})^2
-+
+\frac12K_\zeta(\zeta-\zeta_{\min})^2+
 \frac12L_\zeta|\nabla\zeta|^2.
-\]
+$$
 
 Separate kappa relaxation energy:
 
-\[
-e_\kappa=
-\frac12K_\kappa(\kappa-\kappa_{\min})^2.
-\]
+$$
+e_\kappa=\frac12K_\kappa(\kappa-\kappa_{\min})^2.
+$$
 
-Provisional exchange accounting:
-
-\[
-\frac{de_\kappa}{d\tau}
-+
-\frac{d\epsilon_{\rm vac,config}}{d\tau}=
-0.
-\]
-
-Constraint target:
-
-\[
-\kappa\sim\zeta-\zeta_{\min}.
-\]
-
-but:
+Guardrail:
 
 ```text
-no K_lock energy is counted until derived.
+epsilon_vac_config / e_kappa cannot count killed residual as extra source energy.
 ```
 
-Reason:
+Allowed:
 
 ```text
-the kappa-zeta map is not derived,
-so combining kappa mismatch energy into epsilon_vac_config risks double-counting.
+diagnostic bookkeeping,
+configuration accounting,
+count-once recombination if a mechanism is derived.
+```
+
+Forbidden:
+
+```text
+killed residual reappears as physical energy source,
+energy term becomes coefficient reservoir,
+vacuum accounting shifts M_ext independently,
+e_kappa restores scalar trace through the back door.
 ```
 
 Status:
 
 ```text
-CANDIDATE / PROVISIONAL
-```
-
-Unknown:
-
-```text
-zeta_min,
-kappa-zeta map,
-whether e_kappa is truly separate or later absorbed,
-K_zeta,
-L_zeta,
-K_kappa,
-volume measure,
-total balance law.
+CANDIDATE / PROVISIONAL / NOT DERIVED
 ```
 
 ---
 
-## 7.5 Exterior Suppression and Boundary Flux
+# 8. Vector Current / Frame-Dragging Sector
 
-Exterior vacuum target:
+Matter continuity:
 
-\[
-S_{\rm trace}=0,
-\]
+$$
+\partial_t\rho+\nabla\cdot j=0,
+$$
 
-\[
-\kappa_{\min}=0,
-\]
+with:
 
-\[
-\zeta_{\min}=0,
-\]
+$$
+j_i=\rho v_i.
+$$
 
-\[
-\kappa\to0,
-\]
+Decompose:
 
-\[
-\zeta\to0.
-\]
+$$
+j=j_T+j_L,
+$$
 
-Boundary flux diagnostics:
+with:
 
-\[
-F_\kappa(R)=4\pi R^2\kappa'(R),
-\]
+$$
+\nabla\cdot j_T=0,
+$$
 
-\[
-F_\zeta(R)=4\pi R^2\zeta'(R).
-\]
+$$
+\nabla\times j_L=0.
+$$
 
-Exterior safety requires:
+Fourier-space projector:
 
-\[
-F_\kappa(R+)=0,
-\]
+$$
+P_T(k)=I-\frac{kk^T}{k^2}.
+$$
 
-\[
-F_\zeta(R+)=0.
-\]
+Sector allocation:
 
-Exterior charge conditions:
+$$
+j_T\rightarrow W_i,
+$$
 
-\[
-Q_\kappa=0,
-\]
+$$
+j_L\rightarrow A\text{ / scalar continuity}.
+$$
 
-\[
-Q_{\rm volume}=0.
-\]
+Candidate vector energy:
 
-Boundary mass preservation requires:
+$$
+E_W=\int\left[K_c|\nabla\times W|^2+\alpha_W j_T\cdot W\right]d^3x.
+$$
 
-\[
-\delta M_{\rm ext}\big|_{\kappa/\zeta{\rm\ reconfiguration}}=0.
-\]
+Variation gives:
 
-Compact interior profiles can satisfy:
+$$
+\nabla\times(\nabla\times W)=-\frac{\alpha_W}{2K_c}j_T.
+$$
 
-\[
-\kappa(R)=0,
-\qquad
-\kappa'(R)=0,
-\]
+Under $\nabla\cdot W=0$:
 
-and similarly:
-
-\[
-\zeta(R)=0,
-\qquad
-\zeta'(R)=0.
-\]
-
-A smoother C2 compact profile:
-
-\[
-\kappa(r)=
-\kappa_0
-\left(
-1-\frac{r^2}{R^2}
-\right)^3
-\]
-
-also satisfies:
-
-\[
-\kappa''(R)=0.
-\]
-
-Analogous compact \(\zeta\) profiles may be used only as toy boundary diagnostics.
+$$
+\Delta W=\frac{\alpha_W}{2K_c}j_T.
+$$
 
 Status:
 
 ```text
-DERIVED_REDUCED toy boundary control / CONSTRAINED
+STRUCTURAL / DERIVED_REDUCED SHAPE
+NORMALIZATION UNKNOWN
 ```
 
-Unknown:
+Observable candidate:
+
+$$
+B_W=\nabla\times W,
+$$
+
+$$
+\Omega_{\rm drag}=\beta_W B_W.
+$$
+
+Unknowns:
 
 ```text
-physical interface law,
-source compatibility,
-required smoothness from true action,
-boundary mass preservation theorem,
-P_boundary P_trace origin.
+alpha_W/K_c,
+beta_W,
+source convention factors,
+gauge-invariant observable extraction.
 ```
 
 ---
 
-## 7.6 Compensated / Projected Trace and Volume Logic
-
-A compensated source:
-
-\[
-P_0S=S-\langle S\rangle
-\]
-
-satisfies:
-
-\[
-\int P_0S\,d^3x=0.
-\]
-
-This removes massless exterior monopole \(\kappa\)- or \(\zeta\)-charge.
-
-Status:
-
-```text
-CONSTRAINED
-```
-
-Caveat:
-
-```text
-P_0 is nonlocal over the support region.
-It is acceptable only as a constraint/projection identity or boundary balance,
-not as an ordinary local scalar source.
-```
-
----
-
-## 7.7 Near-Boundary Joint Minimum
-
-Group 10 suggests that the interior profile may not be exactly the naive Newtonian/parabolic curve near a material boundary.
-
-A mass source can create an interior quadratic tendency:
-
-\[
-f_{\rm int}=a_0+a_2r^2,
-\]
-
-while the exterior vacuum favors a reciprocal tendency:
-
-\[
-f_{\rm ext}=1-\frac{M}{r}.
-\]
-
-A toy joint-minimum energy is:
-
-\[
-E[f]=
-\int
-\left[
-W_{\rm int}(r)(f-f_{\rm int})^2
-+
-W_{\rm ext}(r)(f-f_{\rm ext})^2
-+
-\lambda_1(f')^2
-+
-\lambda_2(f'')^2
-\right]dr.
-\]
-
-For constant weights, the schematic minimizer is:
-
-\[
-\lambda_2 f''''
--
-\lambda_1 f''
-+
-(W_i+W_e)f=
-W_if_{\rm int}
-+
-W_ef_{\rm ext}.
-\]
-
-This may imply a near-boundary deviation from naive GR/Newtonian interior matching.
-
-Deviation diagnostics:
-
-\[
-\delta_f=f_{\rm joint}-f_{\rm GR,ref},
-\]
-
-\[
-\delta_g=-\frac{d\delta_f}{dr},
-\]
-
-\[
-\delta_{\rm curv}=\frac{d^2\delta_f}{dr^2}.
-\]
-
-Status:
-
-```text
-PLAUSIBLE / DIAGNOSTIC ONLY
-```
-
-No magnitude or measurement claim is justified until:
-
-```text
-weights are derived,
-transition width is derived,
-recombination map is fixed,
-observable is selected,
-boundary mass preservation theorem is established,
-kappa-zeta map is derived.
-```
-
-
-# 8. Tensor Radiation Sector
-
-## 8.1 TT Field
+# 9. Tensor Radiation Sector
 
 Tensor radiation variable:
 
-\[
+$$
 h_{ij}^{TT}.
-\]
+$$
 
 Conditions:
 
-\[
+$$
 \partial_i h_{ij}^{TT}=0,
-\]
+$$
 
-\[
+$$
 \delta^{ij}h_{ij}^{TT}=0.
-\]
-
-For propagation along \(z\):
-
-\[
-h_{ij}^{TT} =
-\begin{pmatrix}
-h_+ & h_\times & 0\\
-h_\times & -h_+ & 0\\
-0&0&0
-\end{pmatrix}.
-\]
-
-Status:
-
-```text
-DERIVED_REDUCED / STRUCTURAL
-```
-
----
-
-## 8.2 Tensor Wave Equation
+$$
 
 Candidate tensor equation:
 
-\[
-\Box h_{ij}^{TT} =
--\mathcal{C}_T S_{ij}^{TT}.
-\]
+$$
+\Box h_{ij}^{TT}=-\mathcal{C}_T S_{ij}^{TT}.
+$$
 
-GR target would be:
+GR target form:
 
-\[
-\Box h_{ij}^{TT} =
--\frac{16\pi G}{c^4}T_{ij}^{TT}
-\]
+$$
+\Box h_{ij}^{TT}=-\frac{16\pi G}{c^4}T_{ij}^{TT}.
+$$
 
-or in far-zone quadrupole form:
-
-\[
-h_{ij}^{TT}
-\sim
-\frac{2G}{c^4R}
-\frac{d^2Q_{ij}^{TT}}{dt^2}.
-\]
-
-Current reconstruction status:
+Current status:
 
 ```text
-TT structure: DERIVED_REDUCED / STRUCTURAL
+TT structure: STRUCTURAL / RECOVERED SHAPE
 wave equation form: STRUCTURAL
 coefficient: MATCHED / UNKNOWN
 source identity: UNFINISHED
 ```
 
-Unknown:
+Tensor energy flux scaling:
 
-\[
-\mathcal{C}_T.
-\]
+$$
+F_T\sim K_T\langle\dot h_{ij}^{TT}\dot h_{ij}^{TT}\rangle.
+$$
 
-The coefficient \(2G/c^4\) has not been derived from the vacuum ontology.
+GR target:
 
----
+$$
+F_{\rm GR}=\frac{c^3}{32\pi G}\langle\dot h_{ij}^{TT}\dot h_{ij}^{TT}\rangle.
+$$
 
-## 8.3 Tensor Radiation Energy Flux
-
-Candidate energy-flux scaling:
-
-\[
-F_T
-\sim
-K_T
-\left\langle
-\dot{h}_{ij}^{TT}\dot{h}_{ij}^{TT}
-\right\rangle.
-\]
-
-GR target form:
-
-\[
-F_{\rm GR} =
-\frac{c^3}{32\pi G}
-\left\langle
-\dot{h}_{ij}^{TT}\dot{h}_{ij}^{TT}
-\right\rangle.
-\]
-
-Current status:
+Status:
 
 ```text
 STRUCTURAL / MATCHED
-```
-
-Unknown:
-
-```text
-K_T from vacuum action/stiffness.
+COEFFICIENT NOT DERIVED
 ```
 
 ---
 
-# 9. Source Coupling, Projectors, and No-Double-Counting Summary
+# 10. Source Coupling, Projectors, and No-Double-Counting
 
 Current source assignments:
 
-| Sector | Source | Status |
-|---|---|---|
-| \(A\) | \(\rho\), \(M_{\rm enc}\), \(P_{\rm scalar}T\) | DERIVED_REDUCED / STRUCTURAL PROJECTOR |
-| \(W_i\) | \(j_T=P_T(\rho v)\) | STRUCTURAL / CONSTRAINED |
-| \(\zeta\) | trace / volume configuration through \(P_{\rm trace}\) | CANDIDATE / UNFINISHED |
-| \(\kappa\) | pressure / stress trace shifts \(\kappa_{\min}\); constrained trace / volume relaxation | STRUCTURAL / UNFINISHED |
-| \(h_{ij}^{TT}\) | trace-free quadrupole / \(P_{TT}T_{ij}\) | STRUCTURAL / COEFFICIENT MATCHED |
-| \(A_{\rm rad}\) | ordinary long-range scalar radiative deviation | REJECTED / CONSTRAINED |
-| \(\epsilon_{\rm vac,config}\) | \(\zeta\)-volume configuration density | CANDIDATE / PROVISIONAL |
-| \(e_\kappa\) | separate \(\kappa\)-relaxation energy | CANDIDATE / PROVISIONAL |
-| \(J_v\) | optional local / compact / constrained vacuum configuration current | STRUCTURAL / OPTIONAL |
-| \(\Sigma_{\rm creation}\) | nonconservative creation regime | SPECIAL / RISK; excluded from ordinary closed gravity |
+| Sector                | Source                                          | Status                           |
+| --------------------- | ----------------------------------------------- | -------------------------------- |
+| $A$                   | $\rho$, $M_{\rm enc}$, scalar mass response     | DERIVED_REDUCED / STRUCTURAL     |
+| $B_s/A_{\rm spatial}$ | scalar spatial response companion               | RECOVERY_TARGET / THEOREM_TARGET |
+| $W_i$                 | $j_T=P_T(\rho v)$                               | STRUCTURAL / CONSTRAINED         |
+| $\zeta$               | volume configuration / possible $B_s$ companion | CANDIDATE / UNFINISHED           |
+| $\kappa$              | diagnostic / non-metric residual unless derived | CONSTRAINED                      |
+| $h_{ij}^{TT}$         | trace-free quadrupole / $P_{TT}T_{ij}$          | STRUCTURAL / COEFFICIENT MATCHED |
+| $A_{\rm rad}$         | ordinary long-range scalar radiation            | REJECTED / CONSTRAINED           |
+| $J_V$                 | vacuum-volume current                           | UNRESOLVED                       |
+| $\Sigma_V$            | volume source / creation side                   | ROLE-LEVEL ONLY                  |
+| $R_V$                 | relaxation / return side                        | ROLE-LEVEL ONLY                  |
+| $O$                   | no-overlap operator                             | UNRESOLVED                       |
 
-Projector routing required by groups 12–13:
+Required routing constraints:
 
 ```text
-rho / scalar charge
-  -> P_scalar
-  -> A
+rho / scalar charge -> A only,
 
-longitudinal current
-  -> P_L
-  -> scalar continuity
+longitudinal current -> scalar continuity / density redistribution,
 
-transverse current
-  -> P_T
-  -> W_i
+transverse current -> W_i,
 
-TT stress
-  -> P_TT
-  -> h_ij^TT
+TT stress -> h_ij^TT,
 
-trace / pressure / volume source
-  -> P_trace
-  -> zeta, zeta_min, kappa_min
+J_V-driven zeta -> B_s only if residual zeta/kappa metric trace is killed or non-metric,
 
-kappa imbalance
-  -> P_relax
-  -> first-order relaxation and exchange with epsilon_vac_config
+residual zeta/kappa -> non-metric bookkeeping, diagnostic, or separately neutral unless O is derived,
 
-boundary data
-  -> P_boundary
-  -> M_ext preservation and kappa/zeta exterior safety
-
-active-regime terms
-  -> P_closed
-  -> Sigma_creation=0 in ordinary regime
-
-sector fields
-  -> P_recombination
-  -> geometry without double-counting
+ordinary scalar radiation -> rejected.
 ```
 
 No-double-counting rules:
 
-\[
-S_\kappa[\rho]=0
-\]
-
-as an independent long-range scalar source.
-
-\[
-S_\zeta[\rho]=0
-\]
-
-as an independent exterior scalar charge.
-
-\[
-Q_\kappa=\int S_\kappa\,d^3x=0.
-\]
-
-\[
-Q_{\rm volume}=0.
-\]
-
-\[
-{\rm source}(W_i)=P_Tj.
-\]
-
-\[
-P_Lj
-\rightarrow
-\text{scalar continuity / density redistribution}.
-\]
-
-\[
-{\rm source}(h_{TT})=P_{TT}S_{ij}.
-\]
-
-\[
-{\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0.
-\]
-
-\[
-{\rm source}(\Box\zeta)=0
-\]
-
-in ordinary gravity.
-
-\[
-{\rm source}(\Box\kappa)=0
-\]
-
-in ordinary gravity.
-
-\[
-\Gamma_{\rm relax}[A_{\rm mass\ flux}]=0.
-\]
-
-\[
-\delta M_{\rm ext}\big|_{\kappa/\zeta\ {\rm boundary\ smoothing}}=0.
-\]
-
-\[
-\epsilon_{\rm vac,config}
-\not\rightarrow
-A\text{-sector exterior mass charge}.
-\]
-
-\[
-\epsilon_{\rm vac,config}
-\not\rightarrow
-\Sigma_{\rm creation}
-\]
-
-in ordinary closed gravity.
-
-\[
-e_\kappa
-\]
-
-is counted separately from \(\epsilon_{\rm vac,config}\) until the \(\kappa\)-\(\zeta\) map is derived.
-
-Main rule:
-
 ```text
-one source may participate in total stress-energy,
-but it must not become multiple independent gravity sources unless a parent
-identity forces the split.
+zeta cannot enter both B_s and residual metric trace,
+
+kappa cannot restore killed zeta residual trace,
+
+epsilon_vac_config and e_kappa cannot count killed residual as extra source energy,
+
+J_V cannot shift M_ext independently of A-sector,
+
+Sigma_V and R_V cannot be two names for one hidden tuning mechanism,
+
+recovery checks cannot choose coefficients, boundary behavior, residual status, or overlap split.
 ```
 
 Status:
@@ -1662,25 +1204,27 @@ Status:
 CONSTRAINED / NOT YET PARENT-DERIVED
 ```
 
+---
 
-# 10. Constraint / Evolution Split
+# 11. Constraint / Evolution Split
 
 Current best split:
 
-| Variable | Equation Type | Status |
-|---|---|---|
-| \(A\) | elliptic / scalar constraint | DERIVED_REDUCED |
-| \(B\) | reduced gauge-conditioned companion to \(A\) | DERIVED_REDUCED / UNFINISHED COVARIANTLY |
-| \(A_{\rm rad}\) | ordinary scalar radiation rejected | REJECTED / CONSTRAINED |
-| \(\zeta\) | volume-form configuration variable; no scalar wave equation | CANDIDATE / FRAME-DEPENDENT |
-| \(\epsilon_{\rm vac,config}\) | \(\zeta\)-volume configuration density | CANDIDATE / PROVISIONAL |
-| \(\kappa\) | first-order non-inertial trace relaxation / constrained variable | STRUCTURAL / UNFINISHED |
-| \(e_\kappa\) | separate kappa relaxation energy | CANDIDATE / PROVISIONAL |
-| \(q_v,J_v\) | optional vacuum-substance density/current bookkeeping | STRUCTURAL / OPTIONAL |
-| \(W_i\) | transverse vector response; stationary constraint-like sector, possible retarded response dynamically | STRUCTURAL |
-| \(h_{ij}^{TT}\) | hyperbolic tensor evolution | STRUCTURAL |
-| gauge modes | projected / fixed | UNFINISHED |
-| source identities | continuity / Bianchi-like closure | MISSING |
+| Variable              | Equation Type                                   | Status                        |
+| --------------------- | ----------------------------------------------- | ----------------------------- |
+| $A$                   | elliptic / scalar constraint                    | DERIVED_REDUCED               |
+| $B_s/A_{\rm spatial}$ | scalar spatial response                         | RECOVERY_TARGET / NOT DERIVED |
+| $A_{\rm rad}$         | ordinary scalar radiation                       | REJECTED / CONSTRAINED        |
+| $\zeta$               | volume configuration / possible $B_s$ companion | CANDIDATE / FRAME-DEPENDENT   |
+| $\kappa$              | diagnostic / non-metric residual unless derived | CONSTRAINED                   |
+| $J_V$                 | vacuum-volume flux / transport current          | UNRESOLVED                    |
+| $u_{\rm vac}$         | vacuum rest frame from $J_V$, if domain exists  | UNRESOLVED / DOMAIN-LIMITED   |
+| $\Sigma_V$            | volume source role                              | ROLE-LEVEL ONLY               |
+| $R_V$                 | relaxation / return role                        | ROLE-LEVEL ONLY               |
+| $W_i$                 | transverse vector response                      | STRUCTURAL                    |
+| $h_{ij}^{TT}$         | hyperbolic tensor evolution                     | STRUCTURAL                    |
+| source identities     | continuity / Bianchi-like closure               | MISSING                       |
+| recombination         | count-once metric map                           | UNFINISHED                    |
 
 Radiation rule:
 
@@ -1688,106 +1232,24 @@ Radiation rule:
 ordinary long-range gravitational radiation is TT-only.
 ```
 
-Allowed:
-
-```text
-h_ij^TT propagates.
-```
-
 Constrained or rejected:
 
 ```text
-A_rad ordinary scalar radiation is rejected.
-kappa breathing radiation is rejected.
-zeta scalar radiation is rejected.
-W_i free vector radiation is not currently derived.
+A_rad ordinary scalar radiation,
+kappa breathing radiation,
+zeta scalar radiation,
+free vector radiation not currently derived.
 ```
 
-Scalar / trace conversion rule:
+---
 
-```text
-scalar / trace disturbances are conversion-limited,
-not friction-damped waves.
-```
-
-Relaxation rule:
-
-```text
-Gamma_relax is exchange / restoration, not energy destruction.
-```
-
-Provisional exchange:
-
-\[
-\frac{de_\kappa}{d\tau}
-+
-\frac{d\epsilon_{\rm vac,config}}{d\tau}=
-0.
-\]
-
-Vacuum-accounting balance skeleton:
-
-\[
-u^\mu\nabla_\mu\epsilon_{\rm vac,config}
-+
-\nabla_\mu J_v^\mu=
-\Sigma_{\rm exchange}
--
-\Gamma_{\rm relax}.
-\]
-
-Ordinary constraints:
-
-\[
-\Sigma_{\rm creation}=0,
-\]
-
-\[
-\oint J_v\cdot dS=0,
-\]
-
-\[
-Q_{\rm volume}=0,
-\]
-
-\[
-\delta M_{\rm ext}=0,
-\]
-
-\[
-F_{\rm scalar,far}=0.
-\]
-
-Status:
-
-```text
-CONSTRAINED / STRUCTURAL
-```
-
-Parent identity still required:
-
-```text
-how constraints propagate consistently,
-why TT modes alone carry ordinary radiation,
-why scalar trace converts but does not radiate,
-why vector current response is transverse,
-how energy/source conservation is maintained,
-how epsilon_vac_config is derived,
-how e_kappa and epsilon_vac_config avoid double-counting,
-how recombination avoids double-counting.
-```
-
-
-# 11. Current Minimal Candidate Field System
+# 12. Current Minimal Candidate Field System
 
 A compact presentation of the current system is:
 
-\[
-\boxed{
-\Delta_{\rm areal}A =
-\frac{8\pi G}{c^2}\rho
-}
-\]
+$$
+\boxed{\Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho}
+$$
 
 Status:
 
@@ -1795,11 +1257,9 @@ Status:
 DERIVED_REDUCED
 ```
 
-\[
-\boxed{
-A_{\rm ext}(r)=1-\frac{2GM}{c^2r}
-}
-\]
+$$
+\boxed{A_{\rm ext}(r)=1-\frac{2GM}{c^2r}}
+$$
 
 Status:
 
@@ -1807,49 +1267,40 @@ Status:
 DERIVED_REDUCED
 ```
 
-\[
-\boxed{
-AB=e^{2\kappa}
-}
-\]
+$$
+\boxed{AB=e^{2\kappa_{\rm areal}}}
+$$
 
 Status:
 
 ```text
-DEFINITION / GAUGE-CONDITIONED
+DEFINITION / REDUCED AREAL-GAUGE DIAGNOSTIC
 ```
 
-Exterior condition:
+Exterior diagnostic condition:
 
-\[
-\boxed{
-\kappa=0
-}
-\]
+$$
+\boxed{\kappa_{\rm areal}=0}
+$$
 
 therefore:
 
-\[
-\boxed{
-B=\frac{1}{A}
-}
-\]
+$$
+\boxed{B=\frac{1}{A}}
+$$
 
 Status:
 
 ```text
 DERIVED_REDUCED in static spherical exterior
+NOT GENERAL PARENT CONSTRUCTION
 ```
 
 Weak scalar limit:
 
-\[
-\boxed{
-A\simeq1+\frac{2\Phi}{c^2},
-\qquad
-\nabla^2\Phi=4\pi G\rho
-}
-\]
+$$
+\boxed{A\simeq1+\frac{2\Phi}{c^2},\qquad \nabla^2\Phi=4\pi G\rho}
+$$
 
 Status:
 
@@ -1859,28 +1310,21 @@ DERIVED_REDUCED / WEAK-FIELD
 
 Volume-form candidate:
 
-\[
-\boxed{
-\zeta=\ln\sqrt{\gamma}
-}
-\]
+$$
+\boxed{\zeta=\ln\sqrt{\gamma}}
+$$
 
 with:
 
-\[
-\boxed{
-\delta\zeta=
-\frac12\gamma^{ij}\delta\gamma_{ij}
-}
-\]
+$$
+\boxed{\delta\zeta=\frac12\gamma^{ij}\delta\gamma_{ij}},
+$$
 
-and for TT perturbations:
+and:
 
-\[
-\boxed{
-\delta\zeta|_{TT}=0.
-}
-\]
+$$
+\boxed{\delta\zeta|_{TT}=0.}
+$$
 
 Status:
 
@@ -1890,22 +1334,15 @@ CANDIDATE / LINEAR STRUCTURAL
 
 Vector response:
 
-\[
-\boxed{
-\nabla\times(\nabla\times W) =
--\frac{\alpha_W}{2K_c}j_T
-}
-\]
+$$
+\boxed{\nabla\times(\nabla\times W)=-\frac{\alpha_W}{2K_c}j_T}
+$$
 
 with:
 
-\[
-j_T=P_Tj,
-\]
-
-\[
-P_T=I-\frac{kk^T}{k^2}.
-\]
+$$
+j_T=P_Tj.
+$$
 
 Status:
 
@@ -1913,186 +1350,69 @@ Status:
 STRUCTURAL / COEFFICIENT UNKNOWN
 ```
 
-Under:
+Vacuum exchange theorem target:
 
-\[
-\nabla\cdot W=0,
-\]
-
-\[
-\boxed{
-\Delta W =
-\frac{\alpha_W}{2K_c}j_T
-}
-\]
+$$
+\boxed{\nabla_\mu J_V^\mu=\Sigma_V-R_V}
+$$
 
 Status:
 
 ```text
-STRUCTURAL / COEFFICIENT UNKNOWN
+THEOREM_TARGET / NOT A LAW
 ```
 
-Kappa trace relaxation:
+Vacuum-frame candidate:
 
-\[
-\boxed{
-u^\mu\nabla_\mu\kappa=
--\lambda_\kappa(\kappa-\kappa_{\min})
-}
-\]
+$$
+\boxed{u_{\rm vac}^\mu=\frac{J_V^\mu}{\sqrt{-J_V^2}}}
+$$
 
-with:
+only on:
 
-\[
-\kappa_{\min}=
-\chi_\kappa S_{\rm trace,effective}.
-\]
-
-Reduced form:
-
-\[
-\dot{\kappa}=
--\mu_\kappa K_\kappa(\kappa-\kappa_{\min}).
-\]
-
-Exterior/boundary conditions:
-
-\[
-\kappa\to0,
-\qquad
-\zeta\to0,
-\qquad
-\kappa_{\min}\to0,
-\qquad
-\zeta_{\min}\to0,
-\]
-
-\[
-Q_\kappa=0,
-\qquad
-Q_{\rm volume}=0,
-\]
-
-\[
-F_\kappa(R+)=0,
-\qquad
-F_\zeta(R+)=0,
-\]
-
-\[
-\delta M_{\rm ext}\big|_{\kappa/\zeta{\rm\ reconfiguration}}=0.
-\]
+$$
+\boxed{D_V=\{J_V^2<0,\;J_V\neq0\}.}
+$$
 
 Status:
 
 ```text
-STRUCTURAL / UNFINISHED
+THEOREM_TARGET / DOMAIN-LIMITED / UNRESOLVED
 ```
 
-Vacuum-volume configuration density:
+No-overlap theorem target:
 
-\[
-\boxed{
-\epsilon_{\rm vac,config}=
-\frac12K_\zeta(\zeta-\zeta_{\min})^2
-+
-\frac12L_\zeta|\nabla\zeta|^2
-}
-\]
+$$
+\boxed{O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]=0}
+$$
 
 Status:
 
 ```text
-CANDIDATE / PROVISIONAL
+UNRESOLVED
 ```
 
-Separate kappa relaxation energy:
+Residual-kill convention:
 
-\[
-\boxed{
-e_\kappa=
-\frac12K_\kappa(\kappa-\kappa_{\min})^2
-}
-\]
+$$
+\boxed{J_V\text{-driven }\zeta\rightarrow B_s
+\quad\Rightarrow\quad
+\zeta_{\rm residual,metric}=0,
+\quad
+\kappa_{\rm residual,metric}=0\text{ or non-metric}}
+$$
 
 Status:
 
 ```text
-CANDIDATE / PROVISIONAL
+SAFE_IF / PROVISIONAL / NOT DERIVED
 ```
-
-Provisional exchange:
-
-\[
-\boxed{
-\frac{de_\kappa}{d\tau}
-+
-\frac{d\epsilon_{\rm vac,config}}{d\tau}=
-0
-}
-\]
-
-Status:
-
-```text
-CANDIDATE / PROVISIONAL
-```
-
-Vacuum-accounting balance skeleton:
-
-\[
-\boxed{
-u^\mu\nabla_\mu\epsilon_{\rm vac,config}
-+
-\nabla_\mu J_v^\mu=
-\Sigma_{\rm exchange}
--
-\Gamma_{\rm relax}
-}
-\]
-
-with ordinary constraints:
-
-\[
-\boxed{
-\Sigma_{\rm creation}=0,
-\qquad
-\oint J_v\cdot dS=0,
-\qquad
-Q_{\rm volume}=0,
-\qquad
-\delta M_{\rm ext}=0,
-\qquad
-F_{\rm scalar,far}=0.
-}
-\]
-
-Status:
-
-```text
-CANDIDATE / SCAFFOLD ONLY
-```
-
-Rejected:
-
-\[
-\Box\kappa=\alpha S,
-\]
-
-\[
-\Box\zeta=\alpha S,
-\]
-
-as ordinary massless scalar breathing-wave equations.
 
 Tensor radiation:
 
-\[
-\boxed{
-\Box h_{ij}^{TT} =
--\mathcal{C}_T S_{ij}^{TT}
-}
-\]
+$$
+\boxed{\Box h_{ij}^{TT}=-\mathcal{C}_T S_{ij}^{TT}}
+$$
 
 Status:
 
@@ -2100,55 +1420,27 @@ Status:
 STRUCTURAL / SOURCE AND COEFFICIENT UNFINISHED
 ```
 
-Tensor energy flux scaling:
+Rejected scalar-radiation equations:
 
-\[
-\boxed{
-F_T
-\sim
-K_T
-\left\langle
-\dot h_{ij}^{TT}
-\dot h_{ij}^{TT}
-\right\rangle
-}
-\]
+$$
+\boxed{\Box\kappa=\alpha S}
+$$
+
+$$
+\boxed{\Box\zeta=\alpha S}
+$$
 
 Status:
 
 ```text
-MATCHED / COEFFICIENT UNFINISHED
+REJECTED as ordinary scalar gravity
 ```
 
-Scalar-radiation rejection:
+Parent closure target:
 
-\[
-\boxed{
-{\rm source}(A_{\rm rad}\ {\rm ordinary\ massless})=0
-}
-\]
-
-Status:
-
-```text
-REJECTED / CONSTRAINED
-```
-
-Parent closure target v2:
-
-\[
-\boxed{
-{\rm Div}\,
-E_{\rm parent}
-[
-A,W,h_{TT},\kappa;
-P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]=
-B_{\rm closed}[T]
-+
-B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}]
-}
-\]
+$$
+\boxed{\text{Div}\,E_{\rm parent}[\cdots]=B_{\rm closed}[T]+B_{\rm relax}[\cdots]}
+$$
 
 Status:
 
@@ -2158,20 +1450,21 @@ MISSING / TEMPLATE ONLY
 
 This is not closure.
 
+---
 
-# 12. What Is Genuinely Reconstructed / GR Recovery Audit
+# 13. GR Recovery Audit
 
 ## Real Reduced Reconstruction
 
-### Static Spherical Exterior
+Static spherical exterior:
 
-\[
+$$
 A=1-\frac{2GM}{c^2r},
-\]
+$$
 
-\[
+$$
 B=\frac{1}{A}.
-\]
+$$
 
 Status:
 
@@ -2185,11 +1478,11 @@ This is the strongest current result.
 
 ## Strong Reduced / Structural Support
 
-### Weak Scalar Multipole Shape
+Weak scalar multipole shape:
 
-\[
-A\simeq 1+\frac{2\Phi}{c^2}.
-\]
+$$
+A\simeq1+\frac{2\Phi}{c^2}.
+$$
 
 Status:
 
@@ -2197,43 +1490,22 @@ Status:
 RECONSTRUCTED AT WEAK ORDER
 ```
 
-Limit:
+Reduced weak $\gamma=1$ behavior:
 
 ```text
-not a full nonlinear nonspherical theory.
+RECOVERY_TARGET / REDUCED SUPPORT
+NOT FULL PPN AUDIT
+NOT A CONSTRUCTION RULE
 ```
 
-### Reduced \(\gamma=1\)
-
-The exterior weak reciprocal relation supports the GR-like \(\gamma=1\) structure in the reduced weak exterior.
-
-Status:
+Vector current shape:
 
 ```text
-DERIVED_REDUCED / NOT FULL PPN AUDIT
+j_i = rho v_i,
+j_T = P_T j,
+B_W = curl W,
+B_W ~ J/r^3.
 ```
-
-### Vector Current Shape
-
-\[
-j_i=\rho v_i,
-\]
-
-\[
-j_T=P_Tj,
-\]
-
-\[
-\nabla\times\nabla\times W\sim j_T,
-\]
-
-\[
-B_W=\nabla\times W,
-\]
-
-\[
-B_W\sim\frac{J}{r^3}.
-\]
 
 Status:
 
@@ -2242,13 +1514,11 @@ STRUCTURE RECONSTRUCTED
 NORMALIZATION NOT RECONSTRUCTED
 ```
 
-### Tensor TT Shape
+Tensor TT structure:
 
-\[
-h_{ij}^{TT}
-\]
-
-with plus/cross polarizations and quadrupole source form.
+```text
+plus/cross TT modes and quadrupole source form.
+```
 
 Status:
 
@@ -2259,351 +1529,108 @@ COUPLING NOT RECONSTRUCTED
 
 ---
 
-## Matched or Missing
-
-Matched / not yet derived:
-
-```text
-vector normalization,
-tensor coupling,
-tensor radiation flux coefficient.
-```
-
-Missing:
-
-```text
-Bianchi-like parent closure,
-covariant recombination,
-full nonlinear nonspherical scalar equation,
-full PPN audit,
-kappa covariant source law,
-boundary mass theorem.
-```
-
-Constrained:
-
-```text
-no scalar radiation,
-no kappa breathing mode,
-no independent long-range kappa scalar,
-no Sigma_creation in ordinary closed gravity.
-```
-
----
-
 ## Recovery Scorecard
 
-| Result | Status |
-|---|---|
-| static spherical exterior \(A\) | DERIVED_REDUCED |
-| exterior \(B=1/A\) once \(\kappa=0\) | DERIVED_REDUCED |
-| weak scalar / Newtonian limit | DERIVED_REDUCED |
-| reduced weak \(\gamma=1\) | DERIVED_REDUCED / not full PPN |
-| frame-dragging shape \(\sim J/r^3\) | DERIVED_REDUCED shape |
-| frame-dragging normalization | MATCHED / UNKNOWN |
-| tensor wave TT structure | STRUCTURAL |
-| tensor coupling | MATCHED / UNKNOWN |
-| tensor flux coefficient | MATCHED / UNKNOWN |
-| no scalar breathing radiation | CONSTRAINED |
-| \(\kappa\) non-radiative trace behavior | STRUCTURAL / UNFINISHED |
-| parent conservation / Bianchi compatibility | MISSING |
-| covariant metric recombination | UNFINISHED |
-
-
-# 13. Major Unknowns
-
-\[
-\frac{\alpha_W}{K_c}
-\]
-
-vector source/stiffness ratio.
-
-\[
-\beta_W
-\]
-
-precession / observable coupling.
-
-\[
-C_{\rm shape}
-\]
-
-vector source convention factor.
-
-\[
-K_\kappa,\;\mu_\kappa,\;\lambda_\kappa,\;\chi_\kappa
-\]
-
-kappa stiffness, mobility, relaxation rate, and trace-minimum coupling.
-
-\[
-K_\zeta,\;L_\zeta
-\]
-
-volume-configuration displacement and gradient/interface stiffness.
-
-\[
-u^\mu
-\]
-
-frame / flow field defining covariant kappa relaxation and vacuum-accounting derivative.
-
-\[
-\zeta_{\min}
-\]
-
-local vacuum-volume equilibrium configuration.
-
-\[
-S_{\rm trace,effective}
-\]
-
-effective trace / pressure / volume source shifting \(\kappa_{\min}\) and/or \(\zeta_{\min}\).
-
-\[
-\epsilon_{\rm vac,config}
-\]
-
-vacuum-spacetime configuration density; provisionally a \(\zeta\)-volume functional.
-
-\[
-E_{\rm vac,config}
-\]
-
-integrated vacuum-spacetime configuration functional.
-
-\[
-q_v,\;J_v
-\]
-
-optional vacuum-substance density/current bookkeeping variables.
-
-\[
-\Sigma_{\rm exchange},\;\Sigma_{\rm creation},\;\Gamma_{\rm relax}
-\]
-
-vacuum-accounting source / active-regime / relaxation terms.
-
-\[
-Q_{\rm volume},\;S_{\rm volume}
-\]
-
-volume charge and volume source variables needed for exterior neutrality.
-
-\[
-\sigma
-\]
-
-near-boundary joint-minimum transition width, if used.
-
-\[
-W_{\rm int},\;W_{\rm ext},\;\lambda_1,\;\lambda_2
-\]
-
-joint-minimum energy weights / smoothing coefficients, if used.
-
-\[
-\mathcal{C}_T
-\]
-
-tensor coupling coefficient.
-
-\[
-K_T
-\]
-
-tensor action stiffness / radiation energy coefficient.
-
-Projectors:
-
-\[
-P_{\rm scalar},
-\quad
-P_{TT},
-\quad
-P_{\rm trace},
-\quad
-P_{\rm relax},
-\quad
-P_{\rm boundary},
-\quad
-P_{\rm recombination},
-\quad
-P_{\rm coeff}.
-\]
-
-Kappa-zeta relation:
-
-\[
-\kappa\stackrel{?}{=}\zeta-\zeta_{\min}.
-\]
-
-or:
-
-\[
-\kappa=P_{\rm trace}[\zeta-\zeta_{\min}].
-\]
-
-or:
-
-\[
-\kappa=\frac12\ln(AB)
-\]
-
-as only a reduced areal-gauge diagnostic.
-
-Status:
-
-```text
-UNRESOLVED
-```
-
-Bianchi-like closure identity:
-
-\[
-\text{UNKNOWN}.
-\]
-
-Gauge-invariant observable set:
-
-\[
-\text{UNFINISHED}.
-\]
-
-Coefficient action / stiffness principle:
-
-\[
-\text{MISSING}.
-\]
-
-Boundary mass preservation theorem:
-
-\[
-\text{MISSING}.
-\]
-
-Scalar constraint propagation identity:
-
-\[
-\text{MISSING}.
-\]
-
-Covariant recombination map:
-
-\[
-\text{UNFINISHED}.
-\]
-
-Nonlinear / covariant volume-form theorem:
-
-\[
-\text{MISSING}.
-\]
-
-Binary scalar-conversion safety theorem:
-
-\[
-\text{MISSING}.
-\]
-
-
-# 14. Minimal Honest Claim
-
-The current field-equation status is:
-
-```text
-A-sector:
-  real reduced reconstruction.
-
-Vector sector:
-  source/projection/action/shape reconstructed,
-  normalization missing.
-
-Tensor sector:
-  TT structure identified,
-  coupling and source identity missing.
-
-Scalar radiation:
-  ordinary long-range scalar radiation rejected / constrained,
-  parent mechanism still missing.
-
-Zeta / vacuum-volume sector:
-  zeta = ln sqrt(gamma) identified as leading geometric volume-form candidate,
-  epsilon_vac_config provisionally written as zeta-volume displacement plus gradient/interface energy,
-  frame, measure, stiffnesses, and parent origin missing.
-
-Kappa sector:
-  role identified as constrained non-inertial trace / volume relaxation,
-  first-order structural candidate written,
-  e_kappa kept separate from epsilon_vac_config to avoid double-counting,
-  kappa-zeta map, frame field, coefficients, source law, boundary theorem, and covariant origin missing.
-
-Vacuum-substance accounting:
-  balance skeleton written,
-  J_v constrained to absent/local/compact/constraint/causal-if-derived classes,
-  q_v/J_v optional bookkeeping,
-  Sigma_creation excluded from ordinary regime.
-
-Parent conservation:
-  parent template v2 proposed,
-  parent closure identity still missing.
-
-Metric recombination:
-  reduced bookkeeping map stated,
-  scalar double-counting constraints added,
-  covariant parent recombination missing.
-```
-
-The candidate system is therefore not yet a finished covariant theory.
-
-It is a partially reconstructed field-equation architecture with one fully successful reduced exterior sector and a much more constrained scalar/vector/tensor/vacuum accounting structure.
+| Result                                       | Status                              |
+| -------------------------------------------- | ----------------------------------- |
+| static spherical exterior $A$                | DERIVED_REDUCED                     |
+| exterior $B=1/A$ once $\kappa_{\rm areal}=0$ | DERIVED_REDUCED / GAUGE-CONDITIONED |
+| weak scalar / Newtonian limit                | DERIVED_REDUCED                     |
+| weak spatial scalar response                 | RECOVERY_TARGET / NOT DERIVED       |
+| full PPN audit                               | MISSING                             |
+| frame-dragging shape $\sim J/r^3$            | DERIVED_REDUCED shape               |
+| frame-dragging normalization                 | MATCHED / UNKNOWN                   |
+| tensor wave TT structure                     | STRUCTURAL                          |
+| tensor coupling                              | MATCHED / UNKNOWN                   |
+| tensor flux coefficient                      | MATCHED / UNKNOWN                   |
+| no scalar breathing radiation                | CONSTRAINED                         |
+| $\kappa$ non-radiative status                | CONSTRAINED / UNFINISHED            |
+| $J_V/u_{\rm vac}$                            | UNRESOLVED                          |
+| no-overlap $O$                               | UNRESOLVED                          |
+| residual-kill                                | SAFE_IF / PROVISIONAL               |
+| parent conservation / Bianchi compatibility  | MISSING                             |
+| covariant metric recombination               | UNFINISHED                          |
 
 ---
 
-# 15. Closure Failure Modes
+# 14. Major Unknowns
 
-Fatal closure failures:
+Core missing objects:
+
+$$
+J_V^\mu
+$$
+
+physical vacuum-volume flux / transport current.
+
+$$
+\Sigma_V
+$$
+
+volume source operator.
+
+$$
+R_V
+$$
+
+relaxation / return operator.
+
+$$
+u_{\rm vac}^\mu
+$$
+
+vacuum frame, definable from $J_V$ only on a timelike / nonzero domain if $J_V$ exists.
+
+$$
+O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]
+$$
+
+no-overlap operator.
+
+$$
+B_s/F_\zeta
+$$
+
+metric insertion law connecting volume response to scalar spatial trace.
+
+$$
+\frac{\alpha_W}{K_c},\;\beta_W,\;C_{\rm shape}
+$$
+
+vector normalization and observable coupling.
+
+$$
+\mathcal{C}_T,\;K_T
+$$
+
+tensor coupling and radiation-energy coefficient.
+
+$$
+K_\zeta,\;L_\zeta,\;\zeta_{\min}
+$$
+
+volume-configuration stiffnesses and equilibrium configuration.
+
+$$
+K_\kappa,\;\mu_\kappa,\;\lambda_\kappa,\;\chi_\kappa
+$$
+
+kappa relaxation parameters if a non-metric / relaxation branch survives.
+
+Projectors / operators still missing or unresolved:
 
 ```text
-decorative parent identity,
-scalar double-counting,
-hidden breathing wave,
-boundary smoothing tunes measured mass,
-sector ledger mistaken for closure,
-epsilon_vac_config becomes a repair reservoir,
-kappa/zeta energy counted twice.
+P_scalar,
+P_TT,
+P_trace,
+P_relax,
+P_boundary,
+P_recombination,
+P_coeff,
+O no-overlap operator.
 ```
 
-Major closure risks:
-
-```text
-silent GR metric import,
-kappa repair knob,
-zeta exterior scalar charge,
-tensor coupling matched but claimed derived,
-vector normalization matched but claimed derived,
-active-regime leakage,
-relaxation as energy loss,
-near-boundary deviation overclaim,
-coefficient tuning through vacuum reservoir,
-J_v as acausal repair current,
-scalar conversion becoming orbital damping.
-```
-
-Current controls:
-
-```text
-scalar double-counting constrained,
-hidden breathing wave constrained,
-active-regime leakage constrained,
-near-boundary prediction overclaim controlled by diagnostic-before-prediction rule,
-relaxation energy interpreted as vacuum-spacetime configuration exchange,
-epsilon_vac_config excluded from A-sector mass and Sigma_creation,
-J_v forbidden as far-zone scalar current or coefficient tuning knob,
-e_kappa kept separate from epsilon_vac_config until kappa-zeta map is derived.
-```
-
-Still unresolved:
+Structural unknowns:
 
 ```text
 parent identity derivation,
@@ -2613,576 +1640,25 @@ vector normalization,
 covariant recombination,
 boundary mass theorem,
 epsilon_vac_config parent derivation,
-q_v/J_v meaning,
-kappa-zeta map,
-P_trace / P_boundary / P_recombination,
+q_v/J_v/J_V meaning,
+vacuum-current flux law,
+Sigma_V source law,
+R_V relaxation/exchange law,
+u_vac definition,
+timelike/nonzero active domain,
+equilibrium-frame fallback,
+static-source neutrality theorem,
+boundary neutrality theorem,
+no-overlap operator O,
+residual-kill derivation or parent identity,
+kappa cleanup,
+B_s/F_zeta insertion law,
 coefficient action/stiffness principle.
 ```
 
 ---
 
-# 16. Group 12 Parent-Identity Constraints
-
-Group 12 excluded false parent identities.
-
-The parent identity cannot be:
-
-```text
-a decorative Bianchi restatement,
-an ordinary scalar A wave,
-Box kappa,
-rho double-sourced into kappa,
-nonzero exterior kappa charge,
-trace contamination of TT,
-longitudinal current sourcing W_i,
-boundary smoothing changing exterior mass,
-Sigma_creation in ordinary closure,
-GR coefficients inserted as derivation,
-metric recombination copied from GR.
-```
-
-Group 13 extends the exclusions to:
-
-```text
-Box zeta,
-far-zone scalar zeta flux,
-zeta exterior scalar charge,
-epsilon_vac_config as repair reservoir,
-J_v as acausal transport,
-J_v as coefficient tuning current,
-e_kappa double-counting inside epsilon_vac_config.
-```
-
-Any surviving parent identity must be:
-
-```text
-projector-routed,
-scalar-safe,
-TT-radiative,
-kappa-first-order,
-zeta-volume-geometric,
-vacuum-spacetime-exchange-accounted,
-boundary-mass-preserving,
-recombination-safe,
-coefficient-honest.
-```
-
-Template v2:
-
-\[
-{\rm Div}\,
-E_{\rm parent}
-[
-A,W,h_{TT},\kappa;
-P_{\rm scalar},P_T,P_{TT},P_{\rm trace},P_{\rm boundary}
-]=
-B_{\rm closed}[T]
-+
-B_{\rm relax}[\Gamma_{\rm relax},E_{\rm vac,config}].
-\]
-
-Status:
-
-```text
-CANDIDATE / SCAFFOLD ONLY
-```
-
----
-
-# 17. Vacuum-Substance Accounting Status
-
-Best current interpretation:
-
-```text
-epsilon_vac_config:
-  local vacuum-spacetime volume-configuration density
-
-zeta:
-  zeta = ln sqrt(gamma)
-
-q_v, J_v:
-  optional ontology-native density / current bookkeeping variables
-
-E_boundary_config:
-  possible interface contribution, diagnostic only
-```
-
-Excluded from \(\epsilon_{\rm vac,config}\):
-
-```text
-A-sector exterior mass charge,
-Sigma_creation in ordinary regime,
-coefficient tuning reservoir,
-scalar kinetic wave term,
-kappa mismatch energy until the kappa-zeta map is derived.
-```
-
-Provisional \(\epsilon_{\rm vac,config}\):
-
-\[
-\epsilon_{\rm vac,config}=
-\frac12K_\zeta(\zeta-\zeta_{\min})^2
-+
-\frac12L_\zeta|\nabla\zeta|^2.
-\]
-
-Separate \(\kappa\)-relaxation energy:
-
-\[
-e_\kappa=
-\frac12K_\kappa(\kappa-\kappa_{\min})^2.
-\]
-
-Provisional exchange:
-
-\[
-\frac{de_\kappa}{d\tau}
-+
-\frac{d\epsilon_{\rm vac,config}}{d\tau}=
-0.
-\]
-
-Vacuum-accounting balance skeleton:
-
-\[
-u^\mu\nabla_\mu\epsilon_{\rm vac,config} +
-\nabla_\mu J_v^\mu =
-\Sigma_{\rm exchange} - \Gamma_{\rm relax}.
-\]
-
-Ordinary constraints:
-
-\[
-\Sigma_{\rm creation}=0,
-\]
-
-\[
-\oint J_v\cdot dS=0,
-\]
-
-\[
-Q_{\rm volume}=0,
-\]
-
-\[
-\delta M_{\rm ext}=0,
-\]
-
-\[
-F_{\rm scalar,far}=0.
-\]
-
-Status:
-
-```text
-CANDIDATE / NOT DERIVED
-```
-
----
-
-# 18. Group 13 Vacuum-Substance Accounting Results
-
-Group 13 established:
-
-1. \(E_{\rm vac,config}\) should be geometric, not a generic reservoir.
-2. \(\zeta=\ln\sqrt{\gamma}\) is the leading geometric candidate.
-3. Trace modes change \(\zeta\); TT modes preserve \(\zeta\) at linear order.
-4. Scalar / trace behavior should be treated as conversion, not ordinary damping.
-5. Raw reduced coupling terms are dangerous until proven conservative.
-6. Binary safety requires no far-zone scalar flux or secular scalar damping.
-7. Local volume reconfiguration must have zero exterior charge.
-8. \(J_v\) is optional and tightly constrained.
-9. The first vacuum-accounting balance skeleton is now explicit.
-10. \(\epsilon_{\rm vac,config}\) has a provisional \(\zeta\)-volume functional form.
-11. \(e_\kappa\) remains separate for now to avoid double-counting.
-
-Group 13 did not derive:
-
-```text
-u^mu,
-zeta_min,
-K_zeta,
-L_zeta,
-K_kappa,
-Sigma_exchange,
-Gamma_relax sign convention,
-P_trace,
-P_boundary,
-P_recombination,
-P_TT,
-J_v transport law,
-Q_volume,
-S_volume,
-boundary mass theorem,
-binary scalar-safety theorem,
-parent identity embedding,
-kappa-zeta map.
-```
-
----
-
-# 19. Current Best Summary After Group 14
-
-The current reduced field-equation system is coherent enough to present.
-
-It is not closed.
-
-Strongest result:
-
-```text
-Schwarzschild exterior from the A-sector.
-```
-
-Strongest structural result:
-
-```text
-a controlled sector split:
-  scalar constraint,
-  vector current response,
-  TT tensor radiation,
-  zeta volume-form configuration,
-  non-radiative kappa trace relaxation,
-  vacuum-spacetime exchange accounting.
-```
-
-Group 13 result:
-
-```text
-It made vacuum-substance accounting geometric enough to stop being a bucket.
-It did not close the theory.
-It revealed the next central problem: what exactly is kappa relative to zeta?
-```
-
-Group 14 result:
-
-```text
-Group 14 is closed.
-
-It did not derive A_spatial.
-
-It reduced the spatial-trace origin problem to J_V/u_vac.
-
-Final bottleneck:
-  define a real vacuum-volume current J_V^mu,
-  or keep acceleration-gradient volume creation as a theorem target only.
-```
-
-Most important current missing relation is no longer only:
-
-```text
-kappa-zeta map.
-```
-
-The sharper current bottleneck is now:
-
-```text
-J_V / u_vac definition for vacuum-volume exchange.
-```
-
-Interpretation:
-
-```text
-A_spatial remains a recovery theorem target unless
-a real vacuum-volume exchange current J_V can be defined.
-```
-
-Group 14 also established a useful negative result:
-
-```text
-do not continue ratio/frame relocation loops inside the kappa-zeta group.
-```
-
-The attempted chain was:
-
-```text
-A_spatial from local closure
-  -> q
-
-q from coupled stiffness
-  -> c_x/c_s
-
-q from conservation current
-  -> a/b
-
-q from parent balance
-  -> E_parent ratio
-
-volume exchange
-  -> zeta status
-
-zeta companion
-  -> F_zeta
-
-F_zeta
-  -> Sigma_V
-
-Sigma_V
-  -> frame field u^mu
-
-vacuum frame
-  -> J_V
-
-J_V
-  -> not yet defined
-```
-
-This means Group 14 did not fail by wandering. It exposed the repeated hidden move:
-
-```text
-candidate mechanisms kept relocating the missing coefficient or clock.
-```
-
-The surviving non-decorative next problem is therefore:
-
-```text
-Can a real exchange continuity law define J_V?
-```
-
----
-
-# 20. Group 14 Closure Results
-
-Group 14 closed the following questions.
-
-## 20.1 What Group 14 Was Trying To Determine
-
-Original purpose:
-
-```text
-map kappa/zeta/projector responsibilities and prevent scalar double-counting.
-```
-
-Sharpened purpose:
-
-```text
-determine whether A_spatial / spatial trace can be derived without:
-  GR smuggling,
-  gamma tuning,
-  scalar double-counting,
-  exterior scalar charge,
-  or hidden scalar radiation.
-```
-
-Status:
-
-```text
-CLOSED AS SEARCH GROUP
-```
-
-It did not produce a final field equation for \(A_{\rm spatial}\).
-
-It did produce a much narrower bottleneck.
-
----
-
-## 20.2 Group 14 Closure Ledger
-
-| Entry | Finding | Status | Consequence |
-|---|---|---|---|
-| G14-1: original group purpose | map kappa/zeta/projector responsibilities and prevent scalar double-counting | STRUCTURAL | projector accounting was sharpened into spatial-trace origin search |
-| G14-2: \(A_{\rm spatial}\) origin target | derive \(A_{\rm spatial}\) / spatial trace without GR smuggling or gamma tuning | THEOREM_TARGET | became the central field-equation narrowing problem of the group |
-| G14-3: local differential closure | local closure produces \(q\) but does not derive \(q\) | DEFER | coefficient origin became the bottleneck |
-| G14-4: coupled stiffness route | coupled stiffness yields \(q=-c_x/c_s\) | DEFER | moved coefficient problem to stiffness ratio |
-| G14-5: conservation-current route | minimal gradient current yields \(q=-a/b\) | DEFER | moved coefficient problem to current ratio |
-| G14-6: parent balance route | parent balance requires explicit \(E_{\rm parent}\) and otherwise relocates ratio | DEFER | decorative balance and GR rewrite were rejected |
-| G14-7: volume-exchange route | volume exchange is ontology-native but requires explicit \(V[A,B_s,\zeta]\) | CANDIDATE | forced zeta companion-versus-residual decision |
-| G14-8: zeta status | \(\zeta\) cannot be both \(B_s\) companion and independent residual trace | REQUIRED | companion branch requires residual \(\zeta\) trace killed or non-metric |
-| G14-9: \(F_\zeta\) map | algebraic \(F_\zeta\) maps are high-risk; source-driven maps need \(\Sigma_V[A,T]\) | DEFER | moved live branch to source-driven volume creation |
-| G14-10: source-driven volume creation | best candidate is \(\Sigma_V\sim\chi\rho a^\mu\nabla_\mu A\) | CANDIDATE | requires frame/projection, \(\chi\)-origin, neutrality, and no-overlap |
-| G14-11: frame field | matter frame is concrete but risky; vacuum frame is ontology-native but undefined | DEFER | moved live branch to \(u_{\rm vac}\) definition |
-| G14-12: vacuum current | \(u_{\rm vac}\) best candidate is normalized \(J_V\), but \(J_V\) is not defined | UNRESOLVED | final surviving bottleneck is \(J_V/u_{\rm vac}\) |
-| G14-13: closure decision | Group 14 should stop rather than continue ratio/frame relocation loops | CLOSED | promote \(J_V/u_{\rm vac}\) and exchange continuity to next group |
-
----
-
-## 20.3 Branches Killed Or Rejected By Group 14
-
-Rejected under the current ordinary-regime target constraints:
-
-```text
-free q chosen from gamma_like or AB
-
-copy GR spatial metric or impose B=1/A by decree
-
-raw kappa / Box kappa / Box zeta scalar radiation branches
-
-zeta as both B_s companion and residual metric trace
-
-coordinate velocity rho v dot grad A as parent source law
-
-arbitrary preferred vacuum frame
-
-decorative J_V or decorative Div E_parent
-
-J_V = n_V u_vac used to define u_vac circularly
-```
-
-Interpretation:
-
-```text
-these are not metaphysical impossibilities;
-they are forbidden under the current no-smuggling and ordinary-sector safety discipline.
-```
-
----
-
-## 20.4 Provisional Conventions Carried Forward
-
-Group 14 carries forward these conventions:
-
-```text
-A_spatial remains a recovery theorem target, not a derived equation.
-
-zeta may become B_s companion only if residual zeta trace is killed or non-metric.
-
-if zeta remains residual, it does not solve A_spatial/q-origin.
-
-kappa remains diagnostic/non-metric unless later branch proves otherwise.
-
-gamma_like and AB are recovery checks, not construction tools.
-
-boundary neutrality and no-overlap remain mandatory.
-
-J_V/u_vac is the next-group bottleneck.
-```
-
----
-
-## 20.5 Final Bottleneck From Group 14
-
-The surviving bottleneck is:
-
-\[
-J_V^\mu.
-\]
-
-Needed for:
-
-\[
-u_{\rm vac}^\mu
-=
-\frac{J_V^\mu}{\sqrt{-J_V^2}}.
-\]
-
-Strongest possible structure:
-
-\[
-\nabla_\mu J_V^\mu
-=
-\Sigma_V
--
-R_V.
-\]
-
-Still missing:
-
-```text
-Sigma_V complete source law
-R_V relaxation / exchange term
-flux / transport direction
-timelike / nonzero domain
-boundary neutrality
-no-overlap / residual-kill theorem
-sign / orientation
-chi-origin
-```
-
-Status:
-
-```text
-UNRESOLVED / NEXT-GROUP BOTTLENECK
-```
-
----
-
-# 21. Recommended Next Group
-
-Recommended next group:
-
-```text
-15_vacuum_current_and_exchange_continuity
-```
-
-Locked door:
-
-```text
-Can a real exchange continuity law define J_V?
-```
-
-First script:
-
-```text
-candidate_exchange_continuity_law_for_volume.py
-```
-
-Purpose:
-
-```text
-test whether the strongest surviving structure from Group 14 can become a real law:
-  nabla_mu J_V^mu = Sigma_V - R_V.
-```
-
-The continuity equation is not enough by itself.
-
-A real exchange-continuity law must provide:
-
-```text
-J_V flux direction / transport law
-
-Sigma_V source creation law
-
-R_V relaxation / exchange law
-
-timelike / nonzero domain for J_V
-
-static-source neutrality
-
-boundary neutrality
-
-no-overlap / residual-kill theorem
-
-sign / orientation convention
-
-recovery checks downstream
-```
-
-Current Group 15 starter result:
-
-```text
-exchange continuity is the right next locked door,
-but it is not yet a law.
-
-J_V needs a flux direction,
-not only a divergence equation.
-
-Sigma_V and R_V must be defined separately.
-
-static neutrality,
-boundary neutrality,
-and no-overlap remain mandatory.
-```
-
-Recommended next Group 15 script:
-
-```text
-candidate_sigma_R_split_for_volume_exchange.py
-```
-
-Purpose:
-
-```text
-split Sigma_V and R_V roles before claiming exchange continuity.
-```
-
-Reason:
-
-```text
-the continuity equation cannot define J_V until the source and relaxation/exchange terms are split and named.
-```
-
----
-
-# 22. Updated Minimal Honest Claim
+# 15. Minimal Honest Claim
 
 The current field-equation status is:
 
@@ -3208,28 +1684,35 @@ Zeta / vacuum-volume sector:
   frame, measure, stiffnesses, and parent origin missing.
 
 Kappa sector:
-  role identified as constrained non-inertial trace / volume relaxation,
+  role identified as diagnostic / non-metric / constrained trace residual unless derived,
   e_kappa kept separate from epsilon_vac_config to avoid double-counting,
-  kappa-zeta map remains unresolved but no longer the only central bottleneck.
+  kappa-zeta map remains unresolved,
+  kappa must not restore killed zeta residual trace.
 
-A_spatial / spatial-trace origin:
-  not derived.
-  reduced to the J_V/u_vac bottleneck through Group 14.
+A_spatial / B_s spatial-trace origin:
+  not derived,
+  remains a recovery theorem target,
+  J_V-driven zeta may enter ordinary metric trace only through B_s,
+  with residual zeta/kappa metric trace killed or non-metric,
+  unless a real no-overlap operator O is later derived.
 
 Vacuum-current / exchange-continuity sector:
-  J_V is the best current route to u_vac,
-  but J_V is not defined.
+  J_V remains undefined,
+  u_vac remains unresolved / domain-limited,
   strongest candidate structure is nabla_mu J_V^mu = Sigma_V - R_V,
-  with Sigma_V, R_V, and flux direction still missing.
+  but this is a theorem target, not a law,
+  Sigma_V and R_V are split only at role level,
+  flux direction is missing.
 
 Parent conservation:
-  parent template v2 proposed,
+  parent template proposed,
   parent closure identity still missing.
 
 Metric recombination:
   reduced bookkeeping map stated,
-  scalar double-counting constraints added,
-  covariant parent recombination missing.
+  scalar double-counting constraints sharpened,
+  no-overlap O unresolved,
+  residual-kill / non-metric residual is the safest provisional convention.
 ```
 
 The candidate system is therefore not yet a finished covariant theory.
@@ -3241,13 +1724,13 @@ one fully successful reduced exterior sector,
 
 a controlled scalar/vector/tensor/vacuum accounting structure,
 
-and a newly identified next bottleneck:
-  exchange continuity for J_V/u_vac.
+and a sharpened current bottleneck:
+  real J_V + no-overlap / residual-kill mechanism.
 ```
 
 ---
 
-# 23. Updated Closure Failure Modes
+# 16. Closure Failure Modes
 
 Fatal closure failures:
 
@@ -3262,7 +1745,9 @@ sector ledger mistaken for closure,
 epsilon_vac_config becomes a repair reservoir,
 kappa/zeta energy counted twice,
 u_vac introduced as arbitrary preferred frame,
-J_V defined circularly from u_vac.
+J_V defined circularly from u_vac,
+residual-kill treated as derived,
+zeta enters both B_s and residual metric trace.
 ```
 
 Major closure risks:
@@ -3280,7 +1765,9 @@ coefficient tuning through vacuum reservoir,
 J_V as acausal repair current,
 J_V as decorative flux,
 scalar conversion becoming orbital damping,
-exchange continuity written before Sigma_V/R_V are defined.
+exchange continuity written before Sigma_V/R_V are defined,
+neutral residual assumed without O,
+P_relax becoming Box zeta / Box kappa.
 ```
 
 Current controls:
@@ -3295,25 +1782,67 @@ epsilon_vac_config excluded from A-sector mass and Sigma_creation,
 J_V/J_v forbidden as far-zone scalar current or coefficient tuning knob,
 e_kappa kept separate from epsilon_vac_config until kappa-zeta map is derived,
 u_vac not promoted without a non-circular J_V definition,
-Group 14 closed to prevent further ratio/frame relocation loops.
+residual-kill marked provisional,
+O marked unresolved.
 ```
 
-Still unresolved:
+---
+
+# 17. Recommended Next Technical Target
+
+Do not immediately write a parent field equation.
+
+The next technical target should be framed as a known unknown, not a completed equation:
 
 ```text
-parent identity derivation,
-scalar constraint propagation,
-tensor coupling,
-vector normalization,
-covariant recombination,
-boundary mass theorem,
-epsilon_vac_config parent derivation,
-q_v/J_v/J_V meaning,
-vacuum-current flux law,
-Sigma_V source law,
-R_V relaxation/exchange law,
-u_vac definition,
-kappa-zeta map,
-P_trace / P_boundary / P_recombination,
-coefficient action/stiffness principle.
+Can J_V-driven zeta enter B_s through a concrete metric insertion law
+while residual zeta/kappa metric trace is killed or non-metric?
+```
+
+Equivalent bottleneck:
+
+```text
+derive B_s/F_zeta insertion,
+or derive a parent identity for no-overlap / residual-kill,
+or keep J_V-driven zeta out of the ordinary metric scalar sector.
+```
+
+Candidate next artifact title, if needed:
+
+```text
+candidate_B_s_F_zeta_insertion_law.py
+```
+
+or:
+
+```text
+candidate_parent_identity_for_residual_kill.py
+```
+
+---
+
+# 18. Final Current Summary
+
+After the current update, the field-equation status is:
+
+```text
+A-sector remains the strongest reduced branch.
+
+A_spatial / B_s remains a recovery theorem target.
+
+J_V / u_vac remains unresolved.
+
+Exchange continuity remains a theorem target, not a law.
+
+Sigma/R split is role-level only.
+
+Flux direction is missing.
+
+No-overlap O remains unresolved.
+
+Residual-kill / non-metric residual is the safest provisional convention.
+
+Kappa remains diagnostic / non-metric unless derived.
+
+The theory should not yet write a final parent equation.
 ```
