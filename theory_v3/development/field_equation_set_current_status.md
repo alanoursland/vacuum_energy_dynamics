@@ -220,6 +220,114 @@ Status:
 ROLE-LEVEL ONLY / OPERATOR NOT DERIVED
 ```
 
+### Vacuum-current split status
+
+\[
+J_V=J_{\rm sub}+J_{\rm exch}
+\]
+
+Status:
+
+```text
+ROLE-LEVEL BOOKKEEPING ONLY
+NOT AN OPERATOR-LEVEL DECOMPOSITION
+NOT A FIELD LAW
+```
+
+Current safe notation:
+
+```text
+J_V = J_sub + J_exch
+
+allowed only as role-level bookkeeping.
+
+J_sub:
+  neutral substrate / pure-wind theorem target only.
+
+J_exch:
+  active-exchange theorem target only.
+
+Current rule:
+  pure wind is not ordinary gravity.
+  exchange is not repair.
+```
+
+\[
+J_{\rm sub}^\mu
+\]
+
+Candidate neutral substrate / pure vacuum transport current.
+
+Status:
+
+```text
+THEOREM_TARGET
+NOT DEFINED
+```
+
+Requires:
+
+```text
+pure wind neutrality,
+domain,
+frame or frame-free law,
+measure,
+direction/orientation,
+boundary behavior,
+ordinary matter decoupling,
+mass neutrality,
+scalar-trace neutrality.
+```
+
+Forbidden:
+
+```text
+arbitrary preferred-frame wind,
+circular definition from u_vac,
+remainder-current definition,
+pure wind gravitating by existence,
+dark-sector convenience.
+```
+
+\[
+J_{\rm exch}^\mu
+\]
+
+Candidate active exchange current.
+
+Status:
+
+```text
+THEOREM_TARGET
+NOT DEFINED
+```
+
+Requires:
+
+```text
+source side,
+relaxation side,
+Sigma/R distinction,
+divergence/balance role,
+domain,
+direction/orientation,
+boundary behavior,
+ordinary matter decoupling,
+mass neutrality,
+scalar-trace guard.
+```
+
+Forbidden:
+
+```text
+repair current,
+boundary repair,
+recovery repair,
+matter repair,
+e_curv source reservoir,
+H_exch shortcut.
+```
+
 \[
 O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]
 \]
@@ -670,6 +778,19 @@ sign / orientation convention,
 recovery checks downstream.
 ```
 
+Vacuum-current split refinement:
+
+```text
+Even if J_V is role-split into J_sub and J_exch,
+the exchange-continuity equation remains theorem-target only.
+
+Do not write:
+  nabla_mu J_exch^mu = Sigma_exch - R_exch
+
+as a law unless J_exch, Sigma_exch, R_exch,
+domain, direction, measure, and boundary behavior are independently defined.
+```
+
 ---
 
 ## 6.2a Curvature Balance Target
@@ -797,6 +918,59 @@ ordinary scalar radiation.
 
 ---
 
+## 6.4a Vacuum-Current Split
+
+Current split:
+
+\[
+J_V=J_{\rm sub}+J_{\rm exch}
+\]
+
+Status:
+
+```text
+SAFE_IF / ROLE-LEVEL ONLY
+NOT OPERATOR-LEVEL
+NOT A LAW
+```
+
+Interpretation:
+
+```text
+J_sub names the pure substrate / pure-wind role.
+J_exch names the active exchange role.
+
+This split is useful for bookkeeping,
+but it does not define J_V,
+J_sub,
+J_exch,
+u_vac,
+Sigma_V,
+R_V,
+Sigma_exch,
+or R_exch.
+```
+
+Ordinary-sector safest branches:
+
+```text
+zero-net exchange:
+  Sigma_exch - R_exch = 0
+
+zero creation:
+  Sigma_exch = R_exch = 0
+
+curvature-from-warping:
+  curvature changes arise from constrained time/space warping,
+  not net vacuum creation/destruction
+
+latent exchange:
+  Sigma/R exist as ontology/accounting,
+  but vanish or balance in ordinary sector.
+```
+
+---
+
 ## 6.5 Timelike / Nonzero Domain
 
 Candidate vacuum-frame definition:
@@ -866,6 +1040,40 @@ Failure condition:
 
 ```text
 static scalar charge kills the current family for ordinary gravity.
+```
+
+Pure wind neutrality:
+
+Status:
+
+```text
+REQUIRED
+NOT DERIVED
+```
+
+Rule:
+
+```text
+pure substrate flow does not gravitate merely because it flows.
+```
+
+Required:
+
+```text
+no M_ext shift,
+no scalar trace,
+no ordinary matter coupling,
+no boundary repair,
+no preferred-frame force,
+no recovery role.
+```
+
+Failure:
+
+```text
+if J_sub shifts mass, sources scalar trace, pushes matter,
+or repairs boundary behavior,
+J_sub cannot be an ordinary-sector pure-wind current.
 ```
 
 ---
@@ -1320,6 +1528,10 @@ Current source assignments:
 | (\Sigma_V)            | volume source / creation side                   | ROLE-LEVEL ONLY                  |
 | (R_V)                 | relaxation / return side                        | ROLE-LEVEL ONLY                  |
 | (O)                   | no-overlap operator                             | UNRESOLVED                       |
+| (J_{\rm sub})         | neutral substrate / pure-wind role              | THEOREM_TARGET / NOT DEFINED     |
+| (J_{\rm exch})        | active exchange role                            | THEOREM_TARGET / NOT DEFINED     |
+| (\Sigma_{\rm exch}/R_{\rm exch}) | exchange source / relaxation sides   | ROLE-LEVEL ONLY / NOT OPERATOR-LEVEL |
+| dark-sector coupling  | optional future coupling                        | NOT REQUIRED / DEFERRED          |
 
 Required routing constraints:
 
@@ -1336,7 +1548,16 @@ J_V-driven zeta -> B_s only if residual zeta/kappa metric trace is killed or non
 
 residual zeta/kappa -> non-metric bookkeeping, diagnostic, or separately neutral unless O is derived,
 
-ordinary scalar radiation -> rejected.
+ordinary scalar radiation -> rejected,
+
+J_sub -> must not push ordinary matter, must not source scalar trace, must not shift M_ext,
+
+J_exch -> must not reroute ordinary matter,
+  must not define Sigma_exch from ordinary T_mu_nu by convenience,
+  must not become boundary or curvature repair,
+
+ordinary matter -> rho / scalar charge remains routed to A-sector
+  unless a separate source theorem derives otherwise.
 ```
 
 No-double-counting rules:
@@ -1352,7 +1573,15 @@ J_V cannot shift M_ext independently of A-sector,
 
 Sigma_V and R_V cannot be two names for one hidden tuning mechanism,
 
-recovery checks cannot choose coefficients, boundary behavior, residual status, or overlap split.
+recovery checks cannot choose coefficients, boundary behavior, residual status, or overlap split,
+
+ordinary T_mu_nu cannot be counted again in J_sub, J_exch, Sigma_exch, or R_exch,
+
+Sigma_exch and R_exch cannot be two names for one hidden tuning mechanism,
+
+J_sub cannot be defined as J_V - J_exch without a split criterion,
+
+dark-sector coupling cannot relabel ordinary matter failure.
 ```
 
 Status:
@@ -1382,6 +1611,11 @@ Current best split:
 | (h_{ij}^{TT})         | hyperbolic tensor evolution                     | STRUCTURAL                    |
 | source identities     | continuity / Bianchi-like closure               | MISSING                       |
 | recombination         | count-once metric map                           | UNFINISHED                    |
+| (J_{\rm sub})         | neutral substrate / pure-wind theorem target    | NOT DEFINED / THEOREM_TARGET  |
+| (J_{\rm exch})        | active exchange theorem target                  | NOT DEFINED / THEOREM_TARGET  |
+| (\Sigma_{\rm exch})   | exchange source side                            | ROLE-LEVEL ONLY               |
+| (R_{\rm exch})        | exchange relaxation side                        | ROLE-LEVEL ONLY               |
+| dark-sector coupling  | optional separated coupling                     | DEFERRED / NOT REQUIRED       |
 
 Radiation rule:
 
@@ -1517,6 +1751,60 @@ Status:
 
 ```text
 THEOREM_TARGET / NOT A LAW
+```
+
+Vacuum-current role split:
+
+\[
+\boxed{J_V=J_{\rm sub}+J_{\rm exch}}
+\]
+
+Status:
+
+```text
+ROLE-LEVEL BOOKKEEPING ONLY
+NOT A FIELD LAW
+NOT AN OPERATOR DECOMPOSITION
+```
+
+Pure-wind neutrality target:
+
+\[
+\boxed{\delta M_{\rm ext}|_{J_{\rm sub}}=0}
+\]
+
+\[
+\boxed{J_{\rm sub}\text{ does not source }B_s/\zeta/\kappa\text{ scalar trace}}
+\]
+
+\[
+\boxed{J_{\rm sub}\text{ does not couple to ordinary }T_{\mu\nu}}
+\]
+
+Status:
+
+```text
+THEOREM_TARGET / NOT DERIVED
+```
+
+Exchange-current source target:
+
+\[
+\boxed{\nabla_\mu J_{\rm exch}^\mu=\Sigma_{\rm exch}-R_{\rm exch}}
+\]
+
+Status:
+
+```text
+THEOREM_TARGET ONLY
+NOT A LAW
+```
+
+Reason:
+
+```text
+J_exch, Sigma_exch, R_exch, domain, direction, measure,
+and boundary behavior are not defined.
 ```
 
 Vacuum-frame candidate:
@@ -1823,7 +2111,24 @@ no exterior scalar charge theorem,
 ordinary matter decoupling theorem,
 relation to zeta/volume without reopening B_s/F_zeta or O,
 future H_curv divergence-safe source structure,
-explicit solutions before bounce or regular-core claims.
+explicit solutions before bounce or regular-core claims,
+J_sub definition,
+J_sub domain/frame/measure/direction law,
+pure wind neutrality theorem,
+J_exch definition,
+J_exch source side,
+J_exch relaxation side,
+Sigma_exch / R_exch distinction and strength laws,
+ordinary matter decoupling theorem for vacuum currents,
+vacuum-current mass neutrality theorem,
+vacuum-current scalar trace neutrality theorem,
+vacuum-current boundary neutrality theorem,
+zero-net exchange ordinary-sector condition,
+zero-creation ordinary-sector condition,
+curvature-from-warping parent relation,
+latent vs active exchange regime condition,
+dark-sector source separation if reopened,
+H_exch divergence-safe audit.
 ```
 
 ---
@@ -1873,6 +2178,19 @@ Vacuum-current / exchange-continuity sector:
   but this is a theorem target, not a law,
   Sigma_V and R_V are split only at role level,
   flux direction is missing.
+
+Vacuum-current split sector:
+  J_V remains unresolved;
+  J_sub/J_exch split is role-level bookkeeping only;
+  J_sub is a neutral pure-wind theorem target only;
+  J_exch is an active-exchange theorem target only;
+  pure wind neutrality is required but not derived;
+  ordinary matter decoupling is required but not derived;
+  no active ordinary-sector source side for J_exch is derived;
+  zero-net exchange, zero creation, curvature-from-warping,
+  and latent exchange remain the safest ordinary-sector branches;
+  no dark-sector coupling is required;
+  H_exch/H_curv remain deferred.
 
 Parent conservation:
   parent template proposed,
@@ -1933,7 +2251,26 @@ curvature object shifts M_ext independently of A,
 ordinary matter coupling rerouted,
 zeta/volume coupling reopens B_s/F_zeta or O,
 H_curv introduced as patch,
-recovery-tuned anti-singularity mechanism.
+recovery-tuned anti-singularity mechanism,
+J_V assumed defined,
+J_sub as arbitrary preferred-frame wind,
+J_sub gravitating by existence,
+J_sub pushing ordinary matter,
+J_sub shifting M_ext,
+J_sub sourcing scalar trace,
+J_sub as remainder current,
+J_exch as repair current,
+Sigma_exch/R_exch as tuning knobs,
+decorative exchange continuity law,
+ordinary T_mu_nu as Sigma_exch by fiat,
+matter-induced exchange by convenience,
+boundary exchange as repair,
+curvature admissibility as active repair source,
+dark sector patching ordinary failure,
+dark sector shifting ordinary M_ext,
+dark scalar charge leak,
+H_exch/H_curv shortcut,
+recovery-tuned current/source/coupling.
 ```
 
 Major closure risks:
@@ -2257,35 +2594,45 @@ Recovery may not build the branch.
 
 Do not immediately write a parent field equation.
 
-The next technical target should be framed as a known unknown, not a completed equation:
+The next technical target should be the parent correction tensor audit:
+
+```text
+What would H_curv and H_exch need to be
+to be divergence-safe without being decorative?
+```
+
+This audit must not assume:
+
+```text
+J_V is defined,
+J_sub is physical,
+J_exch is physical,
+Sigma/R are operators,
+ordinary matter decoupling is proved,
+dark-sector coupling is active,
+H_exch/H_curv can close divergence by name.
+```
+
+Candidate next artifact title:
+
+```text
+candidate_parent_correction_tensor_role_inventory.py
+```
+
+Known unresolved dependency (retained from prior status):
 
 ```text
 Can a parent identity derive B_s/F_zeta insertion together with
 residual-kill or no-overlap,
 without GR metric copying, gamma_like tuning, B=1/A construction,
 areal-kappa promotion, or recovery-tuned boundary behavior?
-```
 
 Equivalent bottleneck:
-
-```text
 derive B_s/F_zeta insertion plus no-overlap / residual-kill,
 or keep J_V-driven zeta out of the ordinary metric scalar sector.
 ```
 
-Candidate next artifact title, if needed:
-
-```text
-candidate_parent_identity_for_B_s_insertion_and_residual_kill.py
-```
-
-Alternative status-only target:
-
-```text
-field_equation_status_after_metric_insertion.md
-```
-
-if the current snapshot needs a smaller update before parent-identity construction.
+This remains an unresolved bottleneck but is no longer the sole next target.
 
 ---
 
@@ -2339,6 +2686,19 @@ Curvature energy / finite admissibility status:
   boundary/mass neutrality is required but not derived;
   anti-singularity remains theorem target, not derived prediction.
 
+Vacuum current split status:
+  J_V remains unresolved;
+  J_sub/J_exch split is role-level only;
+  J_sub is pure-wind theorem target only;
+  J_exch is active-exchange theorem target only;
+  pure wind neutrality is required but not derived;
+  ordinary matter decoupling is required but not derived;
+  no ordinary-sector source side for J_exch is derived;
+  zero-net exchange, zero creation, curvature-from-warping,
+  and latent exchange remain safest ordinary-sector branches;
+  no dark-sector coupling is required;
+  H_exch/H_curv remain deferred.
+
 The theory should not yet write a final parent equation.
 ```
 
@@ -2350,4 +2710,7 @@ It does not give the goblin a field equation.
 The residual gets no second spoon.
 The metric door opens only through B_s,
 unless O earns a real key.
+The wind bucket is not gravity.
+The exchange bucket is not repair.
+The shadow bucket stays outside unless it earns a door.
 ```
