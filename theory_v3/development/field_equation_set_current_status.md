@@ -127,6 +127,39 @@ Status:
 REJECTED as ordinary active long-range degree of freedom
 ```
 
+\[
+A_{\rm curv}
+\]
+
+Curvature admissibility / finite-admissibility diagnostic.
+
+Status:
+
+```text
+DIAGNOSTIC / BRANCH-FILTER THEOREM TARGET
+NOT DYNAMICS
+NOT A FIELD EQUATION
+```
+
+Current role:
+
+```text
+may flag or filter high-curvature / singular candidate branches,
+if a finite-admissibility functional, domain, measure, and branch-kill rule are defined.
+```
+
+Not licensed:
+
+```text
+dynamical singularity avoidance,
+bounce,
+regular core,
+current-based avoidance,
+energy-based avoidance,
+boundary-based avoidance,
+H_curv correction avoidance.
+```
+
 ---
 
 ## 1.2 Vacuum-Volume / Exchange Variables
@@ -197,6 +230,38 @@ Status:
 
 ```text
 UNRESOLVED CENTRAL BOTTLENECK
+```
+
+\[
+J_{\rm curv}^\mu
+\]
+
+Candidate curvature current.
+
+Status:
+
+```text
+UNRESOLVED
+NOT DEFINED
+```
+
+A real (J_{\rm curv}) would require:
+
+```text
+domain,
+orientation / direction law,
+measure,
+covariance status,
+admissibility relation,
+boundary behavior,
+matter separation,
+mass neutrality.
+```
+
+Current consequence:
+
+```text
+current-based anti-singularity claims are deferred.
 ```
 
 ---
@@ -607,6 +672,38 @@ recovery checks downstream.
 
 ---
 
+## 6.2a Curvature Balance Target
+
+Candidate form:
+
+\[
+\nabla_\mu J_{\rm curv}^\mu=\Sigma_{\rm curv}-R_{\rm curv}.
+\]
+
+Status:
+
+```text
+THEOREM TARGET ONLY
+NOT A LAW
+```
+
+Reason:
+
+```text
+J_curv, Sigma_curv, R_curv, domain, and measure are not defined.
+```
+
+Forbidden:
+
+```text
+decorative curvature continuity law,
+repair balance,
+recovery-tuned balance,
+balance law used to claim bounce or regular core.
+```
+
+---
+
 ## 6.3 Sigma/R Split
 
 Current split:
@@ -802,6 +899,35 @@ recovery checks choosing boundary conditions.
 
 ---
 
+## 6.8 Curvature Boundary / Mass Neutrality
+
+Status:
+
+```text
+REQUIRED
+NOT DERIVED
+```
+
+Required:
+
+```text
+no M_ext shift independent of A-sector,
+no boundary repair current,
+no exterior scalar charge,
+no far-zone hidden curvature/scalar flux,
+no ordinary matter rerouting,
+no recovery-tuned smoothing,
+no boundary counterterm singularity avoidance.
+```
+
+Current safe fallback:
+
+```text
+curvature admissibility remains interior diagnostic / branch-filter only.
+```
+
+---
+
 # 7. Kappa / Zeta / Residual Sector
 
 ## 7.1 Current Role of Kappa
@@ -990,6 +1116,37 @@ Status:
 
 ```text
 CANDIDATE / PROVISIONAL / NOT DERIVED
+```
+
+\[
+e_{\rm curv}
+\]
+
+Curvature energy diagnostic / accounting variable.
+
+Status:
+
+```text
+DIAGNOSTIC / ACCOUNTING ONLY
+NOT A SOURCE
+```
+
+Current role:
+
+```text
+may measure curvature intensity,
+may serve as finite-admissibility accounting,
+may later seed H_curv only if a divergence-safe source structure is derived.
+```
+
+Forbidden:
+
+```text
+e_curv as source reservoir,
+e_curv as bounce energy,
+e_curv as regular-core tuning,
+e_curv shifting M_ext independently of A,
+e_curv defining J_curv by fiat.
 ```
 
 ---
@@ -1653,7 +1810,20 @@ no-overlap operator O,
 residual-kill derivation or parent identity,
 kappa cleanup,
 B_s/F_zeta insertion law,
-coefficient action/stiffness principle.
+coefficient action/stiffness principle,
+formal A_curv finite-admissibility functional,
+curvature invariant set / diagnostic scalar selection,
+domain and physical measure,
+branch-kill theorem,
+e_curv diagnostic/accounting definition,
+J_curv domain/orientation/measure/covariance status,
+Sigma_curv and R_curv if curvature balance is reopened,
+curvature boundary and mass neutrality theorem,
+no exterior scalar charge theorem,
+ordinary matter decoupling theorem,
+relation to zeta/volume without reopening B_s/F_zeta or O,
+future H_curv divergence-safe source structure,
+explicit solutions before bounce or regular-core claims.
 ```
 
 ---
@@ -1747,7 +1917,23 @@ kappa/zeta energy counted twice,
 u_vac introduced as arbitrary preferred frame,
 J_V defined circularly from u_vac,
 residual-kill treated as derived,
-zeta enters both B_s and residual metric trace.
+zeta enters both B_s and residual metric trace,
+anti-singularity by declaration,
+diagnostic called dynamics,
+branch-kill called bounce,
+bounded invariant called regular core,
+e_curv as source reservoir,
+e_curv as bounce money,
+regular-core tuning by e_curv coefficient or cutoff,
+J_curv as repair current,
+J_curv as gradient-by-fiat,
+decorative curvature balance law,
+boundary counterterm singularity avoidance,
+curvature object shifts M_ext independently of A,
+ordinary matter coupling rerouted,
+zeta/volume coupling reopens B_s/F_zeta or O,
+H_curv introduced as patch,
+recovery-tuned anti-singularity mechanism.
 ```
 
 Major closure risks:
@@ -1784,6 +1970,27 @@ e_kappa kept separate from epsilon_vac_config until kappa-zeta map is derived,
 u_vac not promoted without a non-circular J_V definition,
 residual-kill marked provisional,
 O marked unresolved.
+```
+
+Anti-singularity claim ladder:
+
+Currently licensed:
+
+```text
+diagnostic claim,
+branch-filter / theorem-target claim.
+```
+
+Not currently licensed:
+
+```text
+dynamical singularity avoidance,
+bounce,
+regular core,
+current-based avoidance,
+energy-based avoidance,
+boundary-based avoidance,
+H_curv correction avoidance.
 ```
 
 ---
@@ -2123,6 +2330,14 @@ Recovery remains downstream:
   may test the branch but may not construct it.
 
 Kappa remains diagnostic / non-metric unless derived.
+
+Curvature energy / finite admissibility status:
+  curvature admissibility can diagnose or filter;
+  e_curv can account but not source;
+  J_curv is not defined;
+  curvature balance law is theorem target only;
+  boundary/mass neutrality is required but not derived;
+  anti-singularity remains theorem target, not derived prediction.
 
 The theory should not yet write a final parent equation.
 ```
