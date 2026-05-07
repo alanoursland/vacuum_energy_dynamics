@@ -372,6 +372,78 @@ Current consequence:
 current-based anti-singularity claims are deferred.
 ```
 
+### Parent correction tensor status
+
+\[
+H_{\rm curv}
+\]
+
+Candidate curvature correction tensor.
+
+Status:
+
+```text
+NOT DEFINED
+NOT INSERTABLE
+THEOREM_TARGET / DIAGNOSTIC-ONLY AUDIT LABEL ONLY
+```
+
+Current role:
+
+```text
+may remain a curvature-correction theorem target or diagnostic-only audit label.
+```
+
+Forbidden:
+
+```text
+H_curv as anti-singularity patch,
+H_curv as finite-curvature insertion,
+H_curv as regular-core tuning,
+H_curv as e_curv source reservoir,
+H_curv as boundary counterterm,
+insertion into a parent equation without independent definition.
+```
+
+\[
+H_{\rm exch}
+\]
+
+Candidate exchange correction tensor.
+
+Status:
+
+```text
+NOT DEFINED
+NOT INSERTABLE
+THEOREM_TARGET / DIAGNOSTIC-ONLY AUDIT LABEL ONLY
+```
+
+Current role:
+
+```text
+may remain an exchange-correction theorem target or diagnostic-only audit label.
+```
+
+Forbidden:
+
+```text
+H_exch as exchange-continuity paint,
+H_exch as Sigma/R tuning tensor,
+H_exch as ordinary matter rerouting tensor,
+H_exch as dark-sector patch,
+insertion into a parent equation without independent definition.
+```
+
+Current rule:
+
+```text
+H_curv is not a curvature rescue cloak.
+H_exch is not exchange-continuity paint.
+Bianchi-like language is not divergence safety.
+Diagnostic-only means not inserted.
+```
+
 ---
 
 # 2. Current Recombination Constraint
@@ -1136,6 +1208,30 @@ curvature admissibility remains interior diagnostic / branch-filter only.
 
 ---
 
+## 6.9 Correction Tensor Boundary / Mass Neutrality
+
+Status:
+
+```text
+REQUIRED
+NOT DERIVED
+```
+
+(H_{\rm curv}) / (H_{\rm exch}) must not:
+
+```text
+shift M_ext,
+act as boundary counterterms,
+generate exterior scalar charge,
+hide far-zone flux,
+create shell sources,
+smooth boundaries for recovery,
+use dark-sector boundary patches,
+claim anti-singularity by boundary behavior.
+```
+
+---
+
 # 7. Kappa / Zeta / Residual Sector
 
 ## 7.1 Current Role of Kappa
@@ -1590,6 +1686,37 @@ Status:
 CONSTRAINED / NOT YET PARENT-DERIVED
 ```
 
+Correction tensor source separation:
+
+Status:
+
+```text
+REQUIRED
+NOT DERIVED
+```
+
+Correction tensors must not double-count:
+
+```text
+ordinary matter,
+A-sector mass source,
+e_curv accounting,
+A_curv diagnostic status,
+undefined J_curv,
+Sigma/R role labels,
+J_V / J_exch role labels,
+dark-sector labels,
+residual trace,
+boundary failure.
+```
+
+Current safe route:
+
+```text
+diagnostic-only H-like audit objects,
+not inserted into field equations.
+```
+
 ---
 
 # 11. Constraint / Evolution Split
@@ -1881,19 +2008,60 @@ Status:
 REJECTED as ordinary scalar gravity
 ```
 
-Parent closure target:
+Parent equation theorem target:
 
 \[
-\boxed{\text{Div},E_{\rm parent}[\cdots]=B_{\rm closed}[T]+B_{\rm relax}[\cdots]}
+\boxed{E_{\rm parent}+H_{\rm curv}+H_{\rm exch}=\text{source side}}
 \]
 
 Status:
 
 ```text
-MISSING / TEMPLATE ONLY
+THEOREM_TARGET ONLY
+NOT A CURRENT FIELD EQUATION
+NOT INSERTABLE
 ```
 
-This is not closure.
+Reason:
+
+```text
+H_curv and H_exch are not defined;
+divergence safety is not derived;
+source separation is not derived;
+boundary/mass neutrality is not derived.
+```
+
+No correction tensor is insertable into a parent equation yet.
+Diagnostic-only H-like audit objects are the only safe current route.
+
+Correction tensor divergence safety:
+
+Status:
+
+```text
+REQUIRED
+NOT DERIVED
+```
+
+Allowed future routes:
+
+```text
+constructed divergence identity,
+independently defined source-balance partner,
+defined projection / constraint-propagation theorem,
+diagnostic-only non-insertion.
+```
+
+Rejected:
+
+```text
+Bianchi-like language by itself,
+decorative tensor closure,
+source-by-divergence,
+leakage-canceling divergence,
+recovery-chosen divergence,
+dark-patch divergence.
+```
 
 ---
 
@@ -2128,7 +2296,22 @@ zero-creation ordinary-sector condition,
 curvature-from-warping parent relation,
 latent vs active exchange regime condition,
 dark-sector source separation if reopened,
-H_exch divergence-safe audit.
+H_exch divergence-safe audit,
+H_curv tensor definition,
+H_exch tensor definition,
+correction tensor source origin,
+projection class / sector split,
+divergence identity or independent source-balance partner,
+constraint propagation theorem if used,
+ordinary matter separation theorem for correction tensors,
+A-sector mass neutrality theorem for correction tensors,
+scalar trace / no-overlap theorem for correction tensors,
+boundary neutrality theorem for correction tensors,
+far-zone flux neutrality for correction tensors,
+shell-source absence for correction tensors,
+coefficient origin for correction tensors,
+recovery-independent construction of correction tensors,
+parent divergence identity.
 ```
 
 ---
@@ -2192,9 +2375,20 @@ Vacuum-current split sector:
   no dark-sector coupling is required;
   H_exch/H_curv remain deferred.
 
+Parent correction tensor sector:
+  H_curv is not defined and not insertable;
+  H_exch is not defined and not insertable;
+  divergence safety is required but not derived;
+  source separation is required but not derived;
+  boundary/mass neutrality is required but not derived;
+  diagnostic-only H-like audit objects are the only safe current route;
+  parent equation forms are theorem targets only, not laws;
+  the final parent field equation is not ready.
+
 Parent conservation:
   parent template proposed,
-  parent closure identity still missing.
+  parent closure identity still missing,
+  no correction tensor is insertable into the parent equation yet.
 
 Metric recombination:
   reduced bookkeeping map stated,
@@ -2270,7 +2464,27 @@ dark sector patching ordinary failure,
 dark sector shifting ordinary M_ext,
 dark scalar charge leak,
 H_exch/H_curv shortcut,
-recovery-tuned current/source/coupling.
+recovery-tuned current/source/coupling,
+H_curv as anti-singularity patch,
+H_curv as finite-curvature insertion,
+H_curv as regular-core tuning,
+H_curv as e_curv source reservoir,
+H_curv as boundary counterterm,
+H_exch as exchange-continuity paint,
+H_exch as Sigma/R tuning tensor,
+H_exch as ordinary matter rerouting tensor,
+H_exch as dark-sector patch,
+H inserted by Bianchi-like language,
+H and source defining each other,
+source-by-divergence,
+boundary leakage motivating insertion,
+M_ext correction tensor,
+scalar tail cancellation tensor,
+shell-source hiding tensor,
+recovery-fit correction,
+undefined current/source insertion,
+diagnostic-only object inserted into field equation,
+theorem-target parent form treated as current law.
 ```
 
 Major closure risks:
@@ -2594,45 +2808,48 @@ Recovery may not build the branch.
 
 Do not immediately write a parent field equation.
 
-The next technical target should be the parent correction tensor audit:
+Completed audit (retained as record):
 
 ```text
-What would H_curv and H_exch need to be
-to be divergence-safe without being decorative?
+Parent correction tensor role inventory (Group 19):
+  H_curv and H_exch audited for divergence safety, source separation,
+  boundary/mass neutrality, and insertability.
+
+Result:
+  neither H_curv nor H_exch is insertable;
+  divergence safety, source separation, and boundary/mass neutrality
+  are all required but not derived;
+  diagnostic-only H-like audit objects are the only safe current route;
+  parent equation forms remain theorem targets only.
 ```
 
-This audit must not assume:
+The next technical target should be framed as:
 
 ```text
-J_V is defined,
-J_sub is physical,
-J_exch is physical,
-Sigma/R are operators,
-ordinary matter decoupling is proved,
-dark-sector coupling is active,
-H_exch/H_curv can close divergence by name.
+What structural conditions would allow any correction tensor
+to become insertable?
+
+Required before insertion:
+  independent tensor definition (not from naming or from the source it corrects),
+  divergence identity or independently defined source-balance partner,
+  source separation from ordinary matter,
+  A-sector mass neutrality,
+  scalar-trace / no-overlap safety,
+  boundary and far-zone neutrality,
+  recovery-independent construction.
 ```
 
-Candidate next artifact title:
+Known unresolved dependencies (retained from prior status):
 
 ```text
-candidate_parent_correction_tensor_role_inventory.py
-```
-
-Known unresolved dependency (retained from prior status):
-
-```text
-Can a parent identity derive B_s/F_zeta insertion together with
-residual-kill or no-overlap,
+B_s/F_zeta insertion together with residual-kill or no-overlap,
 without GR metric copying, gamma_like tuning, B=1/A construction,
-areal-kappa promotion, or recovery-tuned boundary behavior?
+areal-kappa promotion, or recovery-tuned boundary behavior.
 
-Equivalent bottleneck:
-derive B_s/F_zeta insertion plus no-overlap / residual-kill,
-or keep J_V-driven zeta out of the ordinary metric scalar sector.
+J_V / J_sub / J_exch definition and ordinary matter decoupling.
 ```
 
-This remains an unresolved bottleneck but is no longer the sole next target.
+These remain unresolved bottlenecks upstream of any parent equation.
 
 ---
 
@@ -2699,18 +2916,24 @@ Vacuum current split status:
   no dark-sector coupling is required;
   H_exch/H_curv remain deferred.
 
+Parent correction tensor status:
+  H_curv is not defined;
+  H_exch is not defined;
+  neither correction tensor is insertable;
+  divergence safety is required but not derived;
+  source separation is required but not derived;
+  boundary/mass neutrality is required but not derived;
+  diagnostic-only H-like audit objects are the only safe current route;
+  parent equation forms are theorem targets only;
+  the final parent field equation is not ready.
+
 The theory should not yet write a final parent equation.
 ```
 
-Tiny goblin version:
+Compact version:
 
 ```text
-The conformal split shows where the volume goblin sits.
-It does not give the goblin a field equation.
-The residual gets no second spoon.
-The metric door opens only through B_s,
-unless O earns a real key.
-The wind bucket is not gravity.
-The exchange bucket is not repair.
-The shadow bucket stays outside unless it earns a door.
+No correction tensor is earned.
+No Bianchi-like language substitutes for divergence safety.
+No parent equation gate opens without defined, separated, boundary-neutral tensors.
 ```
