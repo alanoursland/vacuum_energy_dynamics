@@ -1,0 +1,7 @@
+candidate_sector_bundle_inventory.py
+candidate_covariant_parent_requirements.py
+candidate_constraint_vs_evolution_split.py
+candidate_gauge_structure_requirements.py
+candidate_metric_geometric_recombination.py
+candidate_gauge_invariant_diagnostics.py
+candidate_conservation_identity_requirements.py

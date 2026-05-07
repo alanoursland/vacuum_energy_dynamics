@@ -1,0 +1,6 @@
+candidate_log_scale_modes_test.py
+candidate_log_scale_modes_test_v2.py
+candidate_covariant_parent_modes.py
+candidate_gauge_dependence_modes.py
+candidate_areal_gauge_kappa_condition.py
+candidate_orbit_space_modes.py

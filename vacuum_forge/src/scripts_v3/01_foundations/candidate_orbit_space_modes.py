@@ -55,10 +55,20 @@
 # This does not produce a full covariant field equation.
 # It tests a gauge-aware spherical reduction.
 #
+# Case 7 integrates with VacuumForge's requirement validators and leak
+# detector to classify the Schwarzschild check as "confirmed by construction"
+# vs. "derived from source structure." The leak detector is expected to flag
+# the Schwarzschild assumptions (B=1/A) as encoding the reciprocal_scaling
+# target directly, distinguishing this consistency check from the structural
+# derivations in the earlier log-scale-modes scripts.
+#
 # Suggested location:
 #   scripts_v3/candidate_orbit_space_modes.py
 
 import sympy as sp
+
+from vacuumforge.core.context import TheoryContext
+from vacuumforge.requirements.leak_detection import detect_leaks
 
 
 # =============================================================================
@@ -396,6 +406,54 @@ def case_7_schwarzschild_check():
     print("  This is an exact Schwarzschild exterior check in areal coordinates,")
     print("  not merely weak-field. The reduced toy's AB=1 condition matches")
     print("  the Schwarzschild areal-gauge reciprocal relation.")
+
+    # --- VacuumForge classification: confirmed by construction vs. derived ---
+    subheader("Case 7b: Leak-detection classification")
+
+    ctx = TheoryContext("schwarzschild_areal_exterior")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+
+    # Register the Schwarzschild ansatz as assumptions.
+    # B = 1/A directly encodes AB=1, so the leak detector should flag this.
+    A_schw = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    ctx.assumptions.add(
+        "schwarzschild_A",
+        sp.Eq(ms.A, A_schw),
+        description="Schwarzschild temporal coefficient: A = 1 - 2GM/rc².",
+    )
+    ctx.assumptions.add(
+        "schwarzschild_B_reciprocal",
+        sp.Eq(ms.B, 1 / A_schw),
+        description="Schwarzschild radial coefficient: B = 1/A.",
+    )
+
+    # Run requirement validation.
+    print()
+    print("Requirement validation:")
+    results = ctx.requirements.validate_all(ctx)
+    print(ctx.requirements.summary(results))
+
+    # Run leak detection.
+    print()
+    print("Leak detection (expected: reciprocal_scaling LEAKED):")
+    if hasattr(ctx, "_targets") and ctx._targets is not None:
+        for target_id in ["reciprocal_scaling", "kappa_zero", "gamma_v_one"]:
+            if ctx._targets.has(target_id):
+                leak = detect_leaks(target_id, ctx.assumptions, ctx._targets)
+                label = "LEAKED" if leak.leaked else "clean"
+                print(f"  {target_id}: {label}")
+                if leak.leaked:
+                    print(f"    via: {leak.leaked_via}")
+    else:
+        print("  No target library available.")
+
+    print()
+    print("Classification:")
+    print("  The Schwarzschild check is 'confirmed by construction' —")
+    print("  the assumptions (B=1/A) directly encode the reciprocal_scaling target.")
+    print("  This is a consistency check of the orbit-space formulation against a")
+    print("  known solution, not a derivation from independent source-law principles.")
 
 
 # =============================================================================

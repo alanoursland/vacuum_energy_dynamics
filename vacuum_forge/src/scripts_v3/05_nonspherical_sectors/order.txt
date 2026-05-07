@@ -1,0 +1,5 @@
+candidate_multipole_areal_flux_extension.py
+candidate_weak_multipole_metric_reconstruction.py
+candidate_nonspherical_degree_inventory.py
+candidate_vector_sector_frame_dragging.py
+candidate_wave_sector_linearized_modes.py

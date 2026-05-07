@@ -38,10 +38,24 @@
 # This is exploratory. It does not identify the final covariant parent.
 # It only tests candidate reductions and normalization conventions.
 #
+# Case 2 now exercises StructureSearch to ground the claim that kappa is a
+# trace-like parent mode via structural derivation (the exchange lies in
+# the projection's trace kernel), not merely via a hand-substitution that
+# happens to vanish. Case 2b extends this with an anisotropic perturbation
+# that could fail, providing a test whose outcome is not guaranteed by
+# construction.
+#
 # Suggested location:
 #   scripts_v3/candidate_covariant_parent_modes.py
 
 import sympy as sp
+
+from vacuumforge.structure_search import (
+    VacuumStructure,
+    ProjectionMap,
+    SourceOperator,
+    StructureAnalyzer,
+)
 
 
 # =============================================================================
@@ -136,56 +150,236 @@ def case_1_two_sector_trace_shear():
 
 
 # =============================================================================
-# Case 2: 3+1 isotropic spatial reduction
+# Case 2: 3+1 isotropic spatial reduction — structural derivation
 # =============================================================================
 
 def case_2_physical_3plus1_trace_split():
-    header("Case 2: 3+1 isotropic spatial trace split")
+    header("Case 2: 3+1 isotropic spatial trace split (structural)")
 
     q_t, q_x, q_y, q_z = sp.symbols("q_t q_x q_y q_z", real=True)
-
-    # Candidate pre-mode log scales:
-    #   q_t = temporal log scale
-    #   q_i = spatial directional log scales
-    #
-    # Isotropic spatial reduction:
-    #   b = average spatial log scale
-    a = q_t
-    b = sp.simplify((q_x + q_y + q_z) / 3)
-
-    kappa = sp.simplify((a + b) / 2)
-    s = sp.simplify((a - b) / 2)
-
-    print(f"a = q_t = {a}")
-    print(f"b = spatial average = {b}")
-    print(f"kappa = {kappa}")
-    print(f"s = {s}")
-
-    # Trace-kernel condition from earlier:
-    #   delta q_t + (delta q_x+delta q_y+delta q_z)/3 = 0
     S = sp.symbols("S", real=True)
-    dq = {
-        q_t: -S,
-        q_x: S,
-        q_y: S,
-        q_z: S,
-    }
+    C = sp.symbols("C", real=True)
 
-    delta_a = sp.simplify(a.subs(dq) - a.subs({q_t: 0, q_x: 0, q_y: 0, q_z: 0}))
-    delta_b = sp.simplify(b.subs(dq) - b.subs({q_t: 0, q_x: 0, q_y: 0, q_z: 0}))
+    # --- Primary check: StructureAnalyzer derivation ---
+    #
+    # The claim "kappa is the trace-like parent mode" depends on the exchange
+    # lying in the trace kernel of the projection *structurally*, not merely on
+    # a substitution that happens to zero out delta_kappa. The StructureAnalyzer
+    # distinguishes these two readings.
+
+    projection = ProjectionMap(
+        id="physical_3plus1_log_projection",
+        variables=[q_t, q_x, q_y, q_z],
+        a_expr=q_t,
+        b_expr=(q_x + q_y + q_z) / 3,
+        description="a = q_t, b = average spatial log scale.",
+    )
+
+    exchange = SourceOperator(
+        id="isotropic_time_vs_space_exchange",
+        kind="exchange",
+        deltas={q_t: -S, q_x: S, q_y: S, q_z: S},
+        source_symbols=[S],
+        description="Isotropic time-vs-space: -1 + (1+1+1)/3 = 0.",
+    )
+
+    creation = SourceOperator(
+        id="symmetric_creation_31",
+        kind="creation",
+        deltas={q_t: C, q_x: C, q_y: C, q_z: C},
+        source_symbols=[C],
+        description="Symmetric creation sources the trace.",
+    )
+
+    structure = VacuumStructure(
+        id="case_2_physical_31_trace_kernel",
+        variables=[q_t, q_x, q_y, q_z],
+        projection=projection,
+        exchange_operators=[exchange],
+        creation_operators=[creation],
+        description="3+1 projection with isotropic exchange in trace kernel.",
+    )
+
+    analyzer = StructureAnalyzer()
+    result = analyzer.analyze(structure)
+
+    print(result.summary())
+
+    ex = result.exchange_results[0]
+    print()
+    print(f"J_kappa        = {ex.J_kappa}")
+    print(f"J_sigma        = {ex.J_sigma}")
+    print(f"Status         = {ex.status}")
+    print(f"Classification = {ex.classification}")
+    print(f"Summary status = {result.summary_status.value}")
+
+    case_2_derived = result.summary_status.value == "derived"
+    status_line(
+        "trace-kernel exchange is structurally derived (not tautological)",
+        case_2_derived,
+        detail=result.summary_status.value,
+    )
+
+    # --- Secondary check: direct sympy substitution ---
+    #
+    # This should agree with the analyzer. If it disagrees, that's a bug in
+    # either the analyzer or the hand calculation.
+
+    print()
+    print("Secondary check (direct sympy substitution):")
+
+    a_expr = q_t
+    b_expr = (q_x + q_y + q_z) / 3
+
+    dq = {q_t: -S, q_x: S, q_y: S, q_z: S}
+    zero = {q_t: 0, q_x: 0, q_y: 0, q_z: 0}
+
+    delta_a = sp.simplify(a_expr.subs(dq) - a_expr.subs(zero))
+    delta_b = sp.simplify(b_expr.subs(dq) - b_expr.subs(zero))
     delta_kappa = sp.simplify((delta_a + delta_b) / 2)
     delta_s = sp.simplify((delta_a - delta_b) / 2)
 
-    print()
-    print("Isotropic time-vs-space exchange:")
-    print("  delta(q_t,q_x,q_y,q_z) = (-S,S,S,S)")
-    print(f"  delta a = {delta_a}")
-    print(f"  delta b = {delta_b}")
+    print(f"  delta a     = {delta_a}")
+    print(f"  delta b     = {delta_b}")
     print(f"  delta kappa = {delta_kappa}")
-    print(f"  delta s = {delta_s}")
+    print(f"  delta s     = {delta_s}")
 
-    status_line("exchange lies in kappa-kernel", is_zero(delta_kappa))
-    status_line("exchange excites shear s", not is_zero(delta_s))
+    hand_kappa_zero = is_zero(delta_kappa)
+    hand_s_nonzero = not is_zero(delta_s)
+    status_line("hand calc: exchange lies in kappa-kernel", hand_kappa_zero)
+    status_line("hand calc: exchange excites shear s", hand_s_nonzero)
+
+    # Cross-check: both methods should agree.
+    if case_2_derived and hand_kappa_zero:
+        print()
+        print("  Analyzer and hand calculation agree: J_kappa = 0 structurally.")
+    elif not case_2_derived and hand_kappa_zero:
+        print()
+        print("  DISAGREEMENT: hand calc shows delta_kappa=0 but analyzer did not")
+        print("  classify as derived. Inspect analyzer behavior.")
+    elif case_2_derived and not hand_kappa_zero:
+        print()
+        print("  DISAGREEMENT: analyzer says derived but hand calc gives delta_kappa != 0.")
+        print("  This is a bug — investigate.")
+
+    return case_2_derived
+
+
+# =============================================================================
+# Case 2b: Anisotropic perturbation — extension test that could fail
+# =============================================================================
+
+def case_2b_anisotropic_perturbation():
+    header("Case 2b: Anisotropic spatial exchange — extension test")
+
+    # This tests whether the trace-kernel structure depends on spatial isotropy
+    # or only on the trace condition itself.
+    #
+    # Anisotropic exchange: (-S, 2S, S/2, S/2)
+    # Trace-kernel sum: -1 + (2 + 1/2 + 1/2)/3 = -1 + 1 = 0
+    #
+    # If the analyzer classifies this as "derived" with J_kappa = 0, the
+    # trace-kernel interpretation is robust against isotropy breaking.
+    # If it classifies differently, the original Case 2's vanishing was partly
+    # an artifact of the isotropic substitution.
+
+    q_t, q_x, q_y, q_z = sp.symbols("q_t q_x q_y q_z", real=True)
+    S = sp.symbols("S", real=True)
+    C = sp.symbols("C", real=True)
+
+    projection = ProjectionMap(
+        id="physical_3plus1_log_projection_aniso",
+        variables=[q_t, q_x, q_y, q_z],
+        a_expr=q_t,
+        b_expr=(q_x + q_y + q_z) / 3,
+        description="a = q_t, b = average spatial log scale.",
+    )
+
+    exchange = SourceOperator(
+        id="anisotropic_time_vs_space_exchange",
+        kind="exchange",
+        deltas={q_t: -S, q_x: 2*S, q_y: S/2, q_z: S/2},
+        source_symbols=[S],
+        description="Anisotropic: -1 + (2 + 1/2 + 1/2)/3 = 0.",
+    )
+
+    creation = SourceOperator(
+        id="symmetric_creation_31_aniso",
+        kind="creation",
+        deltas={q_t: C, q_x: C, q_y: C, q_z: C},
+        source_symbols=[C],
+        description="Symmetric creation sources the trace.",
+    )
+
+    structure = VacuumStructure(
+        id="case_2b_anisotropic_trace_kernel",
+        variables=[q_t, q_x, q_y, q_z],
+        projection=projection,
+        exchange_operators=[exchange],
+        creation_operators=[creation],
+        description="3+1 projection with anisotropic exchange in trace kernel.",
+    )
+
+    analyzer = StructureAnalyzer()
+    result = analyzer.analyze(structure)
+
+    print(result.summary())
+
+    ex = result.exchange_results[0]
+    print()
+    print(f"J_kappa        = {ex.J_kappa}")
+    print(f"J_sigma        = {ex.J_sigma}")
+    print(f"Status         = {ex.status}")
+    print(f"Classification = {ex.classification}")
+    print(f"Summary status = {result.summary_status.value}")
+
+    case_2b_derived = result.summary_status.value == "derived"
+
+    if case_2b_derived:
+        status_line(
+            "anisotropic exchange also structurally derived",
+            True,
+            detail="trace-kernel interpretation does not depend on isotropy",
+        )
+    else:
+        status_line(
+            "anisotropic exchange NOT classified as derived",
+            False,
+            detail=(
+                f"got '{result.summary_status.value}'; "
+                "original Case 2 vanishing may depend on isotropy"
+            ),
+        )
+
+    # Secondary hand-calc cross-check.
+    print()
+    print("Secondary check (direct sympy substitution):")
+
+    a_expr = q_t
+    b_expr = (q_x + q_y + q_z) / 3
+
+    dq = {q_t: -S, q_x: 2*S, q_y: S/2, q_z: S/2}
+    zero = {q_t: 0, q_x: 0, q_y: 0, q_z: 0}
+
+    delta_a = sp.simplify(a_expr.subs(dq) - a_expr.subs(zero))
+    delta_b = sp.simplify(b_expr.subs(dq) - b_expr.subs(zero))
+    delta_kappa = sp.simplify((delta_a + delta_b) / 2)
+    delta_s = sp.simplify((delta_a - delta_b) / 2)
+
+    print(f"  delta a     = {delta_a}")
+    print(f"  delta b     = {delta_b}")
+    print(f"  delta kappa = {delta_kappa}")
+    print(f"  delta s     = {delta_s}")
+
+    hand_kappa_zero = is_zero(delta_kappa)
+    status_line("hand calc: anisotropic exchange in kappa-kernel", hand_kappa_zero)
+
+    if case_2b_derived and not hand_kappa_zero:
+        print("  DISAGREEMENT: analyzer says derived but hand calc gives delta_kappa != 0.")
+    elif not case_2b_derived and hand_kappa_zero:
+        print("  DISAGREEMENT: hand calc shows delta_kappa=0 but analyzer did not derive.")
+
+    return case_2b_derived
 
 
 # =============================================================================
@@ -350,7 +544,7 @@ def case_6_candidate_parent_classification():
 # Final interpretation
 # =============================================================================
 
-def final_interpretation():
+def final_interpretation(case_2_ok: bool, case_2b_ok: bool):
     header("Final interpretation")
 
     print("This exploratory script supports the following working hypothesis:")
@@ -365,7 +559,30 @@ def final_interpretation():
     print("  kappa = 0 -> AB = 1")
     print("  s != 0 carries compensated exterior distortion")
     print()
-    print("But this script also emphasizes the caveat:")
+
+    if case_2_ok and case_2b_ok:
+        print("Structural grounding (Cases 2 and 2b both derived):")
+        print("  The trace-like classification of kappa is grounded structurally")
+        print("  in the projection kernel via StructureAnalyzer derivation, not")
+        print("  merely in a substitution that happens to vanish.")
+        print("  The anisotropic perturbation (Case 2b) confirms the trace-kernel")
+        print("  structure does not depend on spatial isotropy.")
+    elif case_2_ok and not case_2b_ok:
+        print("Partial structural grounding (Case 2 derived, Case 2b did not):")
+        print("  The isotropic exchange is structurally derived, but the anisotropic")
+        print("  perturbation was not classified as derived. This means the")
+        print("  trace-kernel interpretation may depend on isotropy or the analyzer")
+        print("  handles anisotropic operators differently. This discrepancy must")
+        print("  be resolved before the strengthened claim can be made.")
+    else:
+        print("Structural grounding NOT confirmed:")
+        print("  The StructureAnalyzer did not classify the isotropic exchange as")
+        print("  structurally derived. The trace-like interpretation of kappa rests")
+        print("  only on the algebraic substitution, not on structural derivation.")
+        print("  Investigate why the analyzer disagrees before proceeding.")
+
+    print()
+    print("Caveat (unchanged):")
     print("  kappa and s are not yet covariant objects.")
     print("  They are reduced variables extracted in a static spherical setting.")
     print()
@@ -385,12 +602,13 @@ def main():
     header("Candidate Covariant Parent Modes")
     case_0_reduced_log_scale_recap()
     case_1_two_sector_trace_shear()
-    case_2_physical_3plus1_trace_split()
+    case_2_ok = case_2_physical_3plus1_trace_split()
+    case_2b_ok = case_2b_anisotropic_perturbation()
     case_3_linearized_trace_comparison()
     case_4_trace_free_shear_linearized()
     case_5_determinant_volume_caution()
     case_6_candidate_parent_classification()
-    final_interpretation()
+    final_interpretation(case_2_ok, case_2b_ok)
 
 
 if __name__ == "__main__":
