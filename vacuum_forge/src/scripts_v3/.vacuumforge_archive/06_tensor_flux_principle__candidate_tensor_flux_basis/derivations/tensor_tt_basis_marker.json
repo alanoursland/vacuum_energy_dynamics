@@ -1,0 +1,13 @@
+{
+  "derivation_id": "tensor_tt_basis_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('tt_basis_established')",
+    "latex": "tt_{basis established}"
+  },
+  "method": "tensor_tt_basis_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T17:43:48.271030+00:00",
+  "vacuumforge_version": "0.1.0"
+}

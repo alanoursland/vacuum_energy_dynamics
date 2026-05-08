@@ -1,0 +1,13 @@
+{
+  "derivation_id": "tensor_wave_equation_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('tensor_wave_equation_passes_linear_checks')",
+    "latex": "tensor_{wave equation passes linear checks}"
+  },
+  "method": "tensor_wave_equation_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T17:43:50.555038+00:00",
+  "vacuumforge_version": "0.1.0"
+}

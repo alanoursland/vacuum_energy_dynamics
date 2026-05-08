@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Scalar-Flux No-Wave Failure Control
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_sector_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Problem statement

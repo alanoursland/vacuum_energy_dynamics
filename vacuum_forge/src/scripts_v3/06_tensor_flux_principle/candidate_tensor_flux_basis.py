@@ -25,7 +25,15 @@
 #   or:
 #   scripts_v3/candidate_tensor_flux_basis.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -52,6 +60,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="scalar_flux_not_tt_guardrail",
+        upstream_script_id="06_tensor_flux_principle__candidate_scalar_flux_no_wave_failure_control",
+        upstream_derivation_id="scalar_flux_not_tt_guardrail",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def matrix_is_zero(M) -> bool:
@@ -332,6 +364,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Tensor Flux Basis")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     e_plus, e_cross = case_1_define_basis()
     case_2_trace_free(e_plus, e_cross)
@@ -342,6 +376,14 @@ def main():
     case_7_tt_projection_z()
     case_8_tensor_flux_interpretation()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="tensor_tt_basis_marker",
+        inputs=[],
+        output=sp.Symbol("tt_basis_established"),
+        method="tensor_tt_basis_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

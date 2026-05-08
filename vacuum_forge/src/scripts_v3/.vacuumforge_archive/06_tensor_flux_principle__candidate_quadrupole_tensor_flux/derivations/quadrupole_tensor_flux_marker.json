@@ -1,0 +1,13 @@
+{
+  "derivation_id": "quadrupole_tensor_flux_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('quadrupole_tensor_flux_channel')",
+    "latex": "quadrupole_{tensor flux channel}"
+  },
+  "method": "quadrupole_tensor_flux_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T17:43:52.248052+00:00",
+  "vacuumforge_version": "0.1.0"
+}

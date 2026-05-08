@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Tensor Flux Basis
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - scalar_flux_not_tt_guardrail: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Tensor basis problem statement

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Quadrupole Tensor Flux
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - tensor_wave_equation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Quadrupole tensor-flux problem statement

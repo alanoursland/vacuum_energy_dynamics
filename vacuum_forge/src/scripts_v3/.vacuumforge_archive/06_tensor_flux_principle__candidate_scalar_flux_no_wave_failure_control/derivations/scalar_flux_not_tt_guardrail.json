@@ -1,0 +1,13 @@
+{
+  "derivation_id": "scalar_flux_not_tt_guardrail",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('scalar_flux_not_tt')",
+    "latex": "scalar_{flux not tt}"
+  },
+  "method": "scalar_flux_failure_control",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T17:43:46.639018+00:00",
+  "vacuumforge_version": "0.1.0"
+}

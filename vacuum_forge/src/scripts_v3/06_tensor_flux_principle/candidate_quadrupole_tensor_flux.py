@@ -31,7 +31,15 @@
 #   or:
 #   scripts_v3/candidate_quadrupole_tensor_flux.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -62,6 +70,30 @@ def is_zero(expr) -> bool:
 
 def inner(A, B):
     return sp.simplify(sum(A[i, j] * B[i, j] for i in range(3) for j in range(3)))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="tensor_wave_equation_marker",
+        upstream_script_id="06_tensor_flux_principle__candidate_tensor_wave_equation",
+        upstream_derivation_id="tensor_wave_equation_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -312,6 +344,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Quadrupole Tensor Flux")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     Q_TF = case_1_define_quadrupole_tf()
     case_2_monopole_dipole_not_tt()
@@ -321,6 +355,14 @@ def main():
     case_6_tensor_flux_analogy()
     case_7_classification()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="quadrupole_tensor_flux_marker",
+        inputs=[],
+        output=sp.Symbol("quadrupole_tensor_flux_channel"),
+        method="quadrupole_tensor_flux_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":
