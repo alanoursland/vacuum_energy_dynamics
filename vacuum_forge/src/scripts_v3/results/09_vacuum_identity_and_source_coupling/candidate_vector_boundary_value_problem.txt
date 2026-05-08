@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Boundary Value Problem
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_global_rotation_mode_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector boundary value problem

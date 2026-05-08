@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_transverse_current_projection_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_transverse_current_projection_policy')",
+    "latex": "vector_{transverse current projection policy}"
+  },
+  "method": "vector_transverse_current_projection_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:56.011400+00:00",
+  "vacuumforge_version": "0.1.0"
+}

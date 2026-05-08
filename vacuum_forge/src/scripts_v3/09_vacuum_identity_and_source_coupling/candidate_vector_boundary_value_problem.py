@@ -16,7 +16,15 @@
 # It keeps all coefficients symbolic.
 # It does NOT insert the Lense-Thirring coefficient.
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -39,6 +47,30 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="vector_global_rotation_mode_marker",
+        upstream_script_id="09_vacuum_identity_and_source_coupling__candidate_vector_global_rotation_mode",
+        upstream_derivation_id="vector_global_rotation_mode_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_problem_statement():
@@ -267,6 +299,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Vector Boundary Value Problem")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_boundary_data()
     r, theta, J, Cj, W_phi = case_2_exterior_ansatz()
@@ -277,6 +311,14 @@ def main():
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="vector_boundary_value_problem_marker",
+        inputs=[],
+        output=sp.Symbol("vector_boundary_value_problem_stated"),
+        method="vector_boundary_value_problem_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

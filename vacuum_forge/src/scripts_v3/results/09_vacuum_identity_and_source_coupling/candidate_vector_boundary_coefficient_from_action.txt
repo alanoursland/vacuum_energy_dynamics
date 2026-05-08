@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Boundary Coefficient From Action
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_boundary_value_problem_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector boundary coefficient from action problem

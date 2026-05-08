@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Current Projection Operator
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_transverse_current_projection_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector current projection operator problem

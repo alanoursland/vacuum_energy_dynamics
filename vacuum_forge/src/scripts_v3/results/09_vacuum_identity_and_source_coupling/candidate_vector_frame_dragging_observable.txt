@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Frame-Dragging Observable
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_current_from_continuity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector frame-dragging observable problem

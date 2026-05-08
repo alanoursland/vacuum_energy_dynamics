@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_frame_dragging_observable_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_frame_dragging_observable_inventory')",
+    "latex": "vector_{frame dragging observable inventory}"
+  },
+  "method": "vector_frame_dragging_observable_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:49.665107+00:00",
+  "vacuumforge_version": "0.1.0"
+}

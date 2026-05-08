@@ -1,0 +1,13 @@
+{
+  "derivation_id": "covariant_parent_requirements_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('covariant_parent_requirements_classified')",
+    "latex": "covariant_{parent requirements classified}"
+  },
+  "method": "covariant_parent_requirement_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:35:41.944990+00:00",
+  "vacuumforge_version": "0.1.0"
+}

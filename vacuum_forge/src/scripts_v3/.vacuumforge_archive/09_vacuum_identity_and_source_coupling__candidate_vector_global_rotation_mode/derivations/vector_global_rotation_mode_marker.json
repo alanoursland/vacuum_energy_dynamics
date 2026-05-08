@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_global_rotation_mode_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_global_rotation_mode_classified')",
+    "latex": "vector_{global rotation mode classified}"
+  },
+  "method": "vector_global_rotation_mode_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:59.774247+00:00",
+  "vacuumforge_version": "0.1.0"
+}

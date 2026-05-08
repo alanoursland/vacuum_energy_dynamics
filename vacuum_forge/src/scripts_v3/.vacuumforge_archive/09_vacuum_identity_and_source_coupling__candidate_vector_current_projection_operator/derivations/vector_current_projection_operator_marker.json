@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_current_projection_operator_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_current_projection_operator_stated')",
+    "latex": "vector_{current projection operator stated}"
+  },
+  "method": "vector_current_projection_operator_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:58.139536+00:00",
+  "vacuumforge_version": "0.1.0"
+}

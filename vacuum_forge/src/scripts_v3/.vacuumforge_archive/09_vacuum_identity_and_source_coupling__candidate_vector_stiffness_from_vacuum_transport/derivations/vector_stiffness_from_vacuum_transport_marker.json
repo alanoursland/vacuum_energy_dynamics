@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_stiffness_from_vacuum_transport_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_transport_stiffness_options_classified')",
+    "latex": "vector_{transport stiffness options classified}"
+  },
+  "method": "vector_stiffness_from_vacuum_transport_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:52.605103+00:00",
+  "vacuumforge_version": "0.1.0"
+}

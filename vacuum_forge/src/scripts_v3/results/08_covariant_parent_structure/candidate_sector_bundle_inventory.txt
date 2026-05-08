@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Sector Bundle Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - no_extra_polarization_policy_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Sector bundle inventory problem

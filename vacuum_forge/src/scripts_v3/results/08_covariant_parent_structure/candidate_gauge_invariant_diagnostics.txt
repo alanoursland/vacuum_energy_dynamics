@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Gauge-Invariant Diagnostics
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - metric_recombination_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Gauge-invariant diagnostics problem

@@ -34,7 +34,15 @@
 #   or:
 #   scripts_v3/candidate_vector_stiffness_from_vacuum_transport.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -65,6 +73,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="vector_coefficient_normalization_marker",
+        upstream_script_id="09_vacuum_identity_and_source_coupling__candidate_vector_coefficient_normalization",
+        upstream_derivation_id="vector_coefficient_normalization_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_problem_statement():
@@ -308,6 +340,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Vector Stiffness From Vacuum Transport")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_scalar_energy_reference()
     case_2_vector_transport_energy()
@@ -319,6 +353,14 @@ def main():
     case_8_classification()
     case_9_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="vector_stiffness_from_vacuum_transport_marker",
+        inputs=[],
+        output=sp.Symbol("vector_transport_stiffness_options_classified"),
+        method="vector_stiffness_from_vacuum_transport_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

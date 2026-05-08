@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Covariant Parent Requirements
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - sector_bundle_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Covariant parent requirements problem

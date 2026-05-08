@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Source Shape Factor
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_boundary_coefficient_from_action_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector source shape factor problem

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_boundary_coefficient_from_action_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_boundary_coefficient_from_action_stated')",
+    "latex": "vector_{boundary coefficient from action stated}"
+  },
+  "method": "vector_boundary_coefficient_from_action_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:57:03.123951+00:00",
+  "vacuumforge_version": "0.1.0"
+}

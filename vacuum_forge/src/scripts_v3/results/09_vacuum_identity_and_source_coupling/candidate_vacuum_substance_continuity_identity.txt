@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum-Substance Continuity Identity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - conservation_identity_requirements_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vacuum-substance continuity problem

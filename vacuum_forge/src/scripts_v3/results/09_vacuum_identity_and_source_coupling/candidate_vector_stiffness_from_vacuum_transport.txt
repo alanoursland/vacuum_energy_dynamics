@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Stiffness From Vacuum Transport
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_coefficient_normalization_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector stiffness from vacuum transport problem

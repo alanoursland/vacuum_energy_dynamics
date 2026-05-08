@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_boundary_value_problem_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_boundary_value_problem_stated')",
+    "latex": "vector_{boundary value problem stated}"
+  },
+  "method": "vector_boundary_value_problem_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:57:01.502250+00:00",
+  "vacuumforge_version": "0.1.0"
+}

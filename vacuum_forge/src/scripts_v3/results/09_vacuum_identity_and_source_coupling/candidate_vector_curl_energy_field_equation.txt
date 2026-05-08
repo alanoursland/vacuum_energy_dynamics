@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Curl-Energy Field Equation
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_stiffness_from_vacuum_transport_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector curl-energy field equation problem

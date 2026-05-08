@@ -1,0 +1,13 @@
+{
+  "derivation_id": "gauge_structure_requirements_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('gauge_structure_blockers_identified')",
+    "latex": "gauge_{structure blockers identified}"
+  },
+  "method": "gauge_structure_requirement_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:35:44.566204+00:00",
+  "vacuumforge_version": "0.1.0"
+}

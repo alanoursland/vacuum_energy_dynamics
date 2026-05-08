@@ -29,7 +29,15 @@
 #   or:
 #   scripts_v3/candidate_vacuum_substance_continuity_identity.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -58,6 +66,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="conservation_identity_requirements_marker",
+        upstream_script_id="08_covariant_parent_structure__candidate_conservation_identity_requirements",
+        upstream_derivation_id="conservation_identity_requirements_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_problem_statement():
@@ -322,6 +354,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Vacuum-Substance Continuity Identity")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_pure_conservation_identity()
     case_2_exchange_creation_relaxation()
@@ -333,6 +367,14 @@ def main():
     case_8_sector_source_classification()
     case_9_failure_controls()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="vacuum_substance_continuity_identity_marker",
+        inputs=[],
+        output=sp.Symbol("vacuum_substance_continuity_identity_stated"),
+        method="vacuum_substance_continuity_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

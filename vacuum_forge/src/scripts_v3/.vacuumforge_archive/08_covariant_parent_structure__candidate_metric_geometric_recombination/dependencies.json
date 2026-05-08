@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "gauge_structure_requirements_marker",
+    "upstream_script_id": "08_covariant_parent_structure__candidate_gauge_structure_requirements",
+    "upstream_derivation_id": "gauge_structure_requirements_marker",
+    "declared_at": "2026-05-08T18:35:45.370092+00:00"
+  }
+]

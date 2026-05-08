@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Global Rotation Mode
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_current_projection_operator_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Global rotation mode problem

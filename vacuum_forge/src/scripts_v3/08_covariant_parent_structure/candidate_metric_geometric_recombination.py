@@ -31,7 +31,16 @@
 #   scripts_v3/candidate_metric_geometric_recombination.py
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -66,6 +75,30 @@ class RecombinationItem:
     status: str
     current_map: str
     unresolved_issue: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="gauge_structure_requirements_marker",
+        upstream_script_id="08_covariant_parent_structure__candidate_gauge_structure_requirements",
+        upstream_derivation_id="gauge_structure_requirements_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def print_item(item: RecombinationItem) -> None:
@@ -323,6 +356,8 @@ def final_interpretation(items: List[RecombinationItem]):
 
 def main():
     header("Candidate Metric Geometric Recombination")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_metric_ansatz()
     items = build_items()
@@ -333,6 +368,14 @@ def main():
     case_7_status_counts(items)
     case_8_next_study()
     final_interpretation(items)
+    ns.record_derivation(
+        derivation_id="metric_recombination_marker",
+        inputs=[],
+        output=sp.Symbol("metric_recombination_map_stated"),
+        method="metric_geometric_recombination_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

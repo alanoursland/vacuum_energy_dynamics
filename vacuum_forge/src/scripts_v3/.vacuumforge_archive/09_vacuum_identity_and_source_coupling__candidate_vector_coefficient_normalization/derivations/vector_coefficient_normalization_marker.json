@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_coefficient_normalization_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_coefficient_normalization_audit')",
+    "latex": "vector_{coefficient normalization audit}"
+  },
+  "method": "vector_coefficient_normalization_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:51.142110+00:00",
+  "vacuumforge_version": "0.1.0"
+}

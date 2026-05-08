@@ -34,7 +34,16 @@
 #   scripts_v3/candidate_constraint_vs_evolution_split.py
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -70,6 +79,30 @@ class SectorSplit:
     status: str
     reason: str
     parent_requirement: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="covariant_parent_requirements_marker",
+        upstream_script_id="08_covariant_parent_structure__candidate_covariant_parent_requirements",
+        upstream_derivation_id="covariant_parent_requirements_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def print_split(split: SectorSplit) -> None:
@@ -356,6 +389,8 @@ def final_interpretation(splits: List[SectorSplit]):
 
 def main():
     header("Candidate Constraint vs Evolution Split")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     splits = build_splits()
     case_2_print_splits(splits)
@@ -365,6 +400,14 @@ def main():
     case_6_parent_target_split()
     case_7_next_study()
     final_interpretation(splits)
+    ns.record_derivation(
+        derivation_id="constraint_evolution_split_marker",
+        inputs=[],
+        output=sp.Symbol("constraint_evolution_map_established"),
+        method="constraint_evolution_split_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

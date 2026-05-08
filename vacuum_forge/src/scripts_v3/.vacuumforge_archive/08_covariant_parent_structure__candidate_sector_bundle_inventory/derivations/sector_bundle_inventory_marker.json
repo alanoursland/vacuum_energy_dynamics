@@ -1,0 +1,13 @@
+{
+  "derivation_id": "sector_bundle_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('sector_bundle_parent_requirements_open')",
+    "latex": "sector_{bundle parent requirements open}"
+  },
+  "method": "sector_bundle_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:35:40.619053+00:00",
+  "vacuumforge_version": "0.1.0"
+}

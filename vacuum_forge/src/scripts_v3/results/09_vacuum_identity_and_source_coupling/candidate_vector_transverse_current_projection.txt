@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Transverse Current Projection
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_curl_energy_field_equation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Transverse current projection problem

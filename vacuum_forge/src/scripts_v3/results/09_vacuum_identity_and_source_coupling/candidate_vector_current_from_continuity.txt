@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vector Current From Continuity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - source_coupling_from_vacuum_exchange_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vector current from continuity problem

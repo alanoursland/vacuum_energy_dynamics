@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vector_curl_energy_field_equation_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vector_curl_energy_field_equation_stated')",
+    "latex": "vector_{curl energy field equation stated}"
+  },
+  "method": "vector_curl_energy_field_equation_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:56:54.339378+00:00",
+  "vacuumforge_version": "0.1.0"
+}

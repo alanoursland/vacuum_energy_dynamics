@@ -1,0 +1,13 @@
+{
+  "derivation_id": "metric_recombination_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('metric_recombination_map_stated')",
+    "latex": "metric_{recombination map stated}"
+  },
+  "method": "metric_geometric_recombination_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:35:45.866092+00:00",
+  "vacuumforge_version": "0.1.0"
+}

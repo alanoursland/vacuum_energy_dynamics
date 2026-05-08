@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "source_coupling_from_vacuum_exchange_marker",
+    "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_source_coupling_from_vacuum_exchange",
+    "upstream_derivation_id": "source_coupling_from_vacuum_exchange_marker",
+    "declared_at": "2026-05-08T18:56:47.280105+00:00"
+  }
+]
