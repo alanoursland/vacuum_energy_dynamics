@@ -75,6 +75,10 @@ class DependencyGraph:
     def get_derivation(self, id: str) -> DerivationRecord | None:
         return self._derivations.get(id)
 
+    def get(self, id: str) -> DerivationRecord | None:
+        """Compatibility alias for fetching a recorded derivation."""
+        return self.get_derivation(id)
+
     def node_data(self, id: str) -> dict[str, Any]:
         if id not in self._graph:
             return {}

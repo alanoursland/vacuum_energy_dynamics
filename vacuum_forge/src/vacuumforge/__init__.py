@@ -2,6 +2,7 @@
 
 from vacuumforge.core.context import TheoryContext
 from vacuumforge.core.status import Exactness, SourceClass, Status
+from vacuumforge.archive import ProjectArchive
 
 __version__ = "0.1.0"
-__all__ = ["TheoryContext", "Status", "Exactness", "SourceClass"]
+__all__ = ["TheoryContext", "Status", "Exactness", "SourceClass", "ProjectArchive"]

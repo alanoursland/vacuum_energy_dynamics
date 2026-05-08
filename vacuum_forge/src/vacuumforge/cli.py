@@ -78,6 +78,13 @@ def cmd_summary(args: argparse.Namespace) -> None:
     print(ctx.summary())
 
 
+def cmd_archive(args: argparse.Namespace) -> None:
+    """Inspect or maintain a ProjectArchive."""
+    from vacuumforge.archive.cli import cmd_archive as _archive_dispatch
+
+    _archive_dispatch(args)
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="vacuumforge",
@@ -108,6 +115,18 @@ def build_parser() -> argparse.ArgumentParser:
     p_sum = sub.add_parser("summary", help="Print model summary")
     p_sum.add_argument("session", help="Path to session YAML")
 
+    # archive
+    p_archive = sub.add_parser("archive", help="Inspect a ProjectArchive")
+    p_archive.add_argument("--root", default=".vacuumforge_archive", help="Archive root directory")
+    archive_sub = p_archive.add_subparsers(dest="archive_command")
+    p_archive_list = archive_sub.add_parser("list", help="List derivations and dependencies")
+    p_archive_list.add_argument("script_id")
+    p_archive_verify = archive_sub.add_parser("verify", help="Verify dependencies")
+    p_archive_verify.add_argument("script_id")
+    p_archive_invalidate = archive_sub.add_parser("invalidate", help="Clear derivations")
+    p_archive_invalidate.add_argument("script_id")
+    archive_sub.add_parser("doctor", help="Scan archive JSON files")
+
     return parser
 
 
@@ -121,6 +140,7 @@ def main(argv: list[str] | None = None) -> None:
         "report": cmd_report,
         "compare": cmd_compare,
         "summary": cmd_summary,
+        "archive": cmd_archive,
     }
 
     if args.command in commands:
