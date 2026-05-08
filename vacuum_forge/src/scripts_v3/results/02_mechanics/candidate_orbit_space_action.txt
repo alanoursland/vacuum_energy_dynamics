@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Orbit-Space Action
 ============================================================================================================
+[INFO] Archive dependency check:
+  - exact_metric_recovery: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Recap exact source variable

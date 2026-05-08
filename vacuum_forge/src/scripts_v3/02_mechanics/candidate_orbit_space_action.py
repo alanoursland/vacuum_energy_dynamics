@@ -60,7 +60,15 @@
 # Suggested location:
 #   scripts_v3/candidate_orbit_space_action.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -97,6 +105,30 @@ def radial_laplacian(expr, r):
 
 def radial_grad_sq(expr, r):
     return sp.simplify(sp.diff(expr, r)**2)
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="exact_metric_recovery",
+        upstream_script_id="02_mechanics__candidate_static_spherical_exact_recovery",
+        upstream_derivation_id="exact_schwarzschild_concrete_metric_check",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_recap_exact_source_variable():
@@ -392,6 +424,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Orbit-Space Action")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_recap_exact_source_variable()
     case_1_weak_field_s_action()
     case_2_exact_A_action()
@@ -403,6 +437,7 @@ def main():
     case_8_orbit_space_compensation()
     case_9_summary_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

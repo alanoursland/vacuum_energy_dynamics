@@ -1,0 +1,20 @@
+{
+  "derivation_id": "areal_flux_exact_metric_check",
+  "inputs": [
+    {
+      "srepr": "Add(Mul(Integer(-1), Integer(2), Symbol('G', positive=True, real=True), Symbol('M', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Pow(Symbol('r', positive=True, real=True), Integer(-1))), Integer(1))",
+      "latex": "- \\frac{2 G M}{c^{2} r} + 1"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('satisfied_by_construction')",
+    "latex": "satisfied_{by construction}"
+  },
+  "method": "concrete_metric_check",
+  "status": "derived",
+  "metadata": {
+    "message": "reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition."
+  },
+  "recorded_at": "2026-05-08T08:52:36.764095+00:00",
+  "vacuumforge_version": "0.1.0"
+}

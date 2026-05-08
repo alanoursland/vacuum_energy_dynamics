@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Exact Source-Law Geometry Check
 ============================================================================================================
+[INFO] Archive dependency check:
+  - orbit_space_action_exact_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Exact Schwarzschild exterior setup

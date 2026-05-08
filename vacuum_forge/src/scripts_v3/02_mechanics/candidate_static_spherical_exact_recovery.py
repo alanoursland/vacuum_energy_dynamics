@@ -66,7 +66,17 @@
 # Suggested location:
 #   scripts_v3/candidate_static_spherical_exact_recovery.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -118,6 +128,30 @@ def series_at_infinity(expr, r, order=4):
     expr_x = sp.simplify(expr.subs(r, 1/x))
     ser_x = sp.series(expr_x, x, 0, order).removeO()
     return sp.simplify(ser_x.subs(x, 1/r))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="kappa_leak_mixed_source",
+        upstream_script_id="02_mechanics__candidate_kappa_leak_deviation",
+        upstream_derivation_id="vf_mixed_source_kappa_leak",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -348,7 +382,7 @@ def case_6_poisson_form_for_A():
 # Case 7: Exact metric recovery
 # =============================================================================
 
-def case_7_exact_metric_recovery():
+def case_7_exact_metric_recovery(ns=None):
     header("Case 7: Exact metric recovery")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -372,6 +406,28 @@ def case_7_exact_metric_recovery():
     print("Result:")
     print("  kappa=0 and s=ln(1-r_s/r) recover exact Schwarzschild")
     print("  areal-gauge exterior metric factors.")
+
+    ctx = TheoryContext("candidate_static_spherical_exact_recovery")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    A_value = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    B_value = sp.simplify(1 / A_value)
+    concrete = check_concrete_metric(ctx, A_value=A_value, B_value=B_value, requirement_ids=["reciprocal_scaling"])
+    if concrete:
+        status_line(
+            "VacuumForge classifies exact Schwarzschild reciprocal scaling as by-construction",
+            concrete[0].status == "satisfied_by_construction",
+            concrete[0].message,
+        )
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="exact_schwarzschild_concrete_metric_check",
+                inputs=[A_value],
+                output=sp.Symbol(concrete[0].status),
+                method="concrete_metric_check",
+                status=Status.DERIVED,
+                metadata={"message": concrete[0].message},
+            )
 
 
 # =============================================================================
@@ -482,6 +538,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Static Spherical Exact Recovery")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_exact_schwarzschild_compensated()
     case_1_weak_vs_exact_shear()
     case_2_harmonic_tests()
@@ -489,10 +547,11 @@ def main():
     case_4_linearization()
     case_5_flux_normalization_for_A()
     case_6_poisson_form_for_A()
-    case_7_exact_metric_recovery()
+    case_7_exact_metric_recovery(ns)
     case_8_compare_source_law_candidates()
     case_9_summary_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

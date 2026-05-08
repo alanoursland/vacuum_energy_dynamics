@@ -1,0 +1,24 @@
+{
+  "derivation_id": "vf_reduced_action_stationary_solution",
+  "inputs": [
+    {
+      "srepr": "Symbol('J_k', real=True)",
+      "latex": "J_{k}"
+    },
+    {
+      "srepr": "Symbol('J_s', real=True)",
+      "latex": "J_{s}"
+    }
+  ],
+  "output": {
+    "srepr": "Equality(Symbol('kappa', real=True), Mul(Rational(1, 2), Pow(Symbol('C_kappa', positive=True), Integer(-1)), Symbol('J_k', real=True)))",
+    "latex": "\\kappa = \\frac{J_{k}}{2 C_{\\kappa}}"
+  },
+  "method": "vacuumforge_source_coupled_energy",
+  "status": "derived",
+  "metadata": {
+    "sigma_solution": "Eq(sigma, J_s/(2*C_sigma))"
+  },
+  "recorded_at": "2026-05-08T08:52:22.890713+00:00",
+  "vacuumforge_version": "0.1.0"
+}

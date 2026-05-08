@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Areal-Flux Principle
 ============================================================================================================
+[INFO] Archive dependency check:
+  - exact_source_law_geometry_check: dependency_missing (Upstream derivation 'exact_schwarzschild_concrete_metric_check' not found in archive for script '02_mechanics__candidate_exact_source_law_geometry_check'.)
 
 ============================================================================================================
 Case 0: Define areal-flux law
@@ -97,6 +99,7 @@ Delta_areal A = 0
 F_A = 8*pi*G*M/c**2
 [PASS] A solves source-free areal equation outside source
 [PASS] kappa=0 gives AB=1
+[PASS] VacuumForge classifies flux-recovered metric as by-construction reciprocal: reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
 
 ============================================================================================================
 Case 6: Boundary / Gauss-law form

@@ -28,7 +28,17 @@
 # Suggested location:
 #   scripts_v3/candidate_areal_flux_principle.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -63,6 +73,30 @@ def areal_flux(f, r):
 
 def curved_spatial_laplacian(f, B, r):
     return sp.simplify((1/(r**2 * sp.sqrt(B))) * sp.diff((r**2/sp.sqrt(B)) * sp.diff(f, r), r))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="exact_source_law_geometry_check",
+        upstream_script_id="02_mechanics__candidate_exact_source_law_geometry_check",
+        upstream_derivation_id="exact_schwarzschild_concrete_metric_check",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_define_areal_flux_law():
@@ -182,7 +216,7 @@ def case_4_thin_shell_jump_condition():
     status_line("thin shell gives flux jump proportional to mass", True)
 
 
-def case_5_metric_recovery_from_flux():
+def case_5_metric_recovery_from_flux(ns=None):
     header("Case 5: Exterior metric recovery from flux principle")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -204,6 +238,28 @@ def case_5_metric_recovery_from_flux():
 
     status_line("A solves source-free areal equation outside source", is_zero(delta_areal(A, r)))
     status_line("kappa=0 gives AB=1", is_zero(AB - 1))
+
+    ctx = TheoryContext("candidate_areal_flux_principle")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    A_value = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    B_value = sp.simplify(1 / A_value)
+    concrete = check_concrete_metric(ctx, A_value=A_value, B_value=B_value, requirement_ids=["reciprocal_scaling"])
+    if concrete:
+        status_line(
+            "VacuumForge classifies flux-recovered metric as by-construction reciprocal",
+            concrete[0].status == "satisfied_by_construction",
+            concrete[0].message,
+        )
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="areal_flux_exact_metric_check",
+                inputs=[A_value],
+                output=sp.Symbol(concrete[0].status),
+                method="concrete_metric_check",
+                status=Status.DERIVED,
+                metadata={"message": concrete[0].message},
+            )
 
 
 def case_6_boundary_form():
@@ -342,17 +398,20 @@ def final_interpretation():
 
 def main():
     header("Candidate Areal-Flux Principle")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_define_areal_flux_law()
     case_1_source_free_flux_conservation()
     case_2_mass_flux_normalization()
     case_3_enclosed_mass_form()
     case_4_thin_shell_jump_condition()
-    case_5_metric_recovery_from_flux()
+    case_5_metric_recovery_from_flux(ns)
     case_6_boundary_form()
     case_7_compare_curved_spatial_laplacian()
     case_8_relation_to_s_equation()
     case_9_summary()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Static Spherical Exact Recovery
 ============================================================================================================
+[INFO] Archive dependency check:
+  - kappa_leak_mixed_source: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Exact Schwarzschild compensated exterior
@@ -132,6 +134,7 @@ AB = 1
 Result:
   kappa=0 and s=ln(1-r_s/r) recover exact Schwarzschild
   areal-gauge exterior metric factors.
+[PASS] VacuumForge classifies exact Schwarzschild reciprocal scaling as by-construction: reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
 
 ============================================================================================================
 Case 8: Compare source-law candidates

@@ -1,0 +1,24 @@
+{
+  "derivation_id": "vf_mixed_source_kappa_leak",
+  "inputs": [
+    {
+      "srepr": "Symbol('C', positive=True, real=True)",
+      "latex": "C"
+    },
+    {
+      "srepr": "Symbol('S', positive=True, real=True)",
+      "latex": "S"
+    }
+  ],
+  "output": {
+    "srepr": "Equality(Symbol('kappa', real=True), Mul(Rational(1, 2), Symbol('C', positive=True, real=True), Pow(Symbol('C_kappa', positive=True), Integer(-1))))",
+    "latex": "\\kappa = \\frac{C}{2 C_{\\kappa}}"
+  },
+  "method": "vacuumforge_source_coupled_energy",
+  "status": "derived",
+  "metadata": {
+    "sigma_solution": "Eq(sigma, S/(2*C_sigma))"
+  },
+  "recorded_at": "2026-05-08T08:52:24.988712+00:00",
+  "vacuumforge_version": "0.1.0"
+}

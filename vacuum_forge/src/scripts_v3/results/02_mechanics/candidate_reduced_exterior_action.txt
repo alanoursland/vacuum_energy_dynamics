@@ -2,6 +2,8 @@
 ================================================================================================
 Candidate Reduced Exterior Action
 ================================================================================================
+[INFO] Archive dependency check:
+  - shear_profile_metric_recovery: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ================================================================================================
 Case 0: Log-scale algebra
@@ -85,6 +87,16 @@ kappa_eq = J_k/(2*M_k**2)
 AB = exp(J_k/M_k**2)
 [PASS] kappa source makes kappa nonzero generically
 [PASS] reciprocal scaling fails generically
+
+================================================================================================
+Case 5b: VacuumForge energy cross-check
+================================================================================================
+Stationary equations: [Eq(2*C_kappa*kappa - J_k, 0), Eq(2*C_sigma*sigma - J_s, 0)]
+Solutions: [{kappa: J_k/(2*C_kappa), sigma: J_s/(2*C_sigma)}]
+kappa_eq = J_k/(2*C_kappa)
+s_eq = J_s/(2*C_sigma)
+[PASS] VacuumForge gives kappa_eq = J_k/(2 C_kappa)
+[PASS] VacuumForge gives sigma_eq = J_s/(2 C_sigma)
 
 ================================================================================================
 Case 6: Failure control — wrong shear coefficient

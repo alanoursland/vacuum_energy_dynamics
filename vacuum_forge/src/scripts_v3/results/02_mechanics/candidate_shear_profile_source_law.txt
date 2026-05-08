@@ -2,6 +2,7 @@
 ============================================================================================
 Candidate Shear Profile Source Law
 ============================================================================================
+[INFO] Archive dependencies: none declared.
 
 ============================================================================================
 Case 0: Convention check
@@ -67,6 +68,7 @@ AB series = 1
 First-order targets:
   A = 1 - 2*eps + O(eps^2)
   B = 2*eps + 1 + O(eps^2)
+[PASS] VacuumForge reciprocal_scaling validator passes
 
 ============================================================================================
 Case 4: Poisson source form and sign check

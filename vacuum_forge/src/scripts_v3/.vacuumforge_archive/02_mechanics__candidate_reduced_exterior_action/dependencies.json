@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "shear_profile_metric_recovery",
+    "upstream_script_id": "02_mechanics__candidate_shear_profile_source_law",
+    "upstream_derivation_id": "weak_shear_metric_recovery",
+    "declared_at": "2026-05-08T08:52:21.957711+00:00"
+  }
+]

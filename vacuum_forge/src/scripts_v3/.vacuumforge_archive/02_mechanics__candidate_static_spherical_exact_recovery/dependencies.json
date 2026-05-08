@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "kappa_leak_mixed_source",
+    "upstream_script_id": "02_mechanics__candidate_kappa_leak_deviation",
+    "upstream_derivation_id": "vf_mixed_source_kappa_leak",
+    "declared_at": "2026-05-08T08:52:25.945713+00:00"
+  }
+]

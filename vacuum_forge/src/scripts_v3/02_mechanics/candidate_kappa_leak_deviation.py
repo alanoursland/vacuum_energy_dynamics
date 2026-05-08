@@ -84,7 +84,16 @@
 # Suggested location:
 #   scripts_v3/candidate_kappa_leak_deviation.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -122,6 +131,30 @@ def is_zero(expr) -> bool:
 
 def series(expr, var, order=3):
     return sp.series(expr, var, 0, order).removeO()
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="reduced_action_stationary_solution",
+        upstream_script_id="02_mechanics__candidate_reduced_exterior_action",
+        upstream_derivation_id="vf_reduced_action_stationary_solution",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -351,7 +384,7 @@ def case_5_power_law_kappa_leak_profile():
 # Case 6: Mixed exchange + creation source as kappa leak origin
 # =============================================================================
 
-def case_6_mixed_source_origin():
+def case_6_mixed_source_origin(ns=None):
     header("Case 6: Mixed exchange + creation source as kappa leak origin")
 
     S, C, C_k, C_s = sp.symbols("S C C_k C_s", positive=True, real=True)
@@ -388,6 +421,33 @@ def case_6_mixed_source_origin():
     print("Interpretation:")
     print("  A small traceful creation/destruction component mixed into exchange")
     print("  is a natural reduced source for kappa leak.")
+
+    ctx = TheoryContext("candidate_kappa_leak_deviation")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    ctx.energy.source_coupled(
+        C_kappa=ms.C_kappa,
+        C_sigma=ms.C_sigma,
+        J_kappa=C,
+        J_sigma=S,
+        kappa=ms.kappa,
+        sigma=ms.sigma,
+    )
+    sol_vf = ctx.energy.solve_stationary("source_coupled_energy")
+    if sol_vf.solutions:
+        k_vf = sp.simplify(sol_vf.solutions[0][ms.kappa])
+        s_vf = sp.simplify(sol_vf.solutions[0][ms.sigma])
+        status_line("VacuumForge reproduces kappa leak equilibrium", is_zero(k_vf - C / (2 * ms.C_kappa)))
+        status_line("VacuumForge reproduces shear equilibrium", is_zero(s_vf - S / (2 * ms.C_sigma)))
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="vf_mixed_source_kappa_leak",
+                inputs=[C, S],
+                output=sp.Eq(ms.kappa, C / (2 * ms.C_kappa)),
+                method="vacuumforge_source_coupled_energy",
+                status=Status.DERIVED,
+                metadata={"sigma_solution": str(sp.Eq(ms.sigma, S / (2 * ms.C_sigma)))},
+            )
 
 
 # =============================================================================
@@ -457,15 +517,18 @@ def final_interpretation():
 
 def main():
     header("Candidate Kappa-Leak Deviation")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_baseline_compensated_exterior()
     case_1_constant_fractional_kappa_leak()
     case_2_gamma_like_proxy()
     case_3_newtonian_normalization_pressure()
     case_4_decaying_kappa_leak_profile()
     case_5_power_law_kappa_leak_profile()
-    case_6_mixed_source_origin()
+    case_6_mixed_source_origin(ns)
     case_7_observational_pressure_summary()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

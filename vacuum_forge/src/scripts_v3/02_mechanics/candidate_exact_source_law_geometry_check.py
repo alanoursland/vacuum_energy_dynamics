@@ -68,7 +68,15 @@
 # Suggested location:
 #   scripts_v3/candidate_exact_source_law_geometry_check.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -122,6 +130,30 @@ def orbit_space_static_operator(f, A, B, r):
 
 def areal_flux(f, r):
     return sp.simplify(4 * sp.pi * r**2 * sp.diff(f, r))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="orbit_space_action_exact_metric",
+        upstream_script_id="02_mechanics__candidate_static_spherical_exact_recovery",
+        upstream_derivation_id="exact_schwarzschild_concrete_metric_check",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -407,6 +439,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Exact Source-Law Geometry Check")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     r, r_s, A, B = case_0_setup()
     case_1_flat_laplacian(r, r_s, A, B)
     case_2_curved_spatial_laplacian(r, r_s, A, B)
@@ -417,6 +451,7 @@ def main():
     case_7_interpretation()
     case_8_action_implications()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

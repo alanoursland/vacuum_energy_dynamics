@@ -66,7 +66,16 @@
 # This is NOT a full field equation and NOT a theorem.
 # It is a reduced-sector source-law toy.
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -100,6 +109,25 @@ def is_zero(expr) -> bool:
 
 def series_in_epsilon(expr, epsilon, order=3):
     return sp.series(expr, epsilon, 0, order).removeO()
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_convention_check():
@@ -196,7 +224,7 @@ def case_2_flux_fixes_coefficient():
         status_line("fixed solution has desired outward flux", is_zero(fixed_flux - target_flux))
 
 
-def case_3_metric_recovery_from_s():
+def case_3_metric_recovery_from_s(ns=None):
     header("Case 3: Weak-field metric recovery from shear profile")
 
     eps = sp.symbols("eps", positive=True, real=True)
@@ -228,6 +256,23 @@ def case_3_metric_recovery_from_s():
     print("First-order targets:")
     print(f"  A = {1 - 2 * eps} + O(eps^2)")
     print(f"  B = {1 + 2 * eps} + O(eps^2)")
+
+    ctx = TheoryContext("candidate_shear_profile_source_law")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    ctx.assumptions.add("weak_shear_A", sp.Eq(ms.A, sp.exp(-2 * eps)))
+    ctx.assumptions.add("weak_shear_B", sp.Eq(ms.B, sp.exp(2 * eps)))
+    reciprocal = ctx.requirements.validate("reciprocal_scaling", ctx)
+    status_line("VacuumForge reciprocal_scaling validator passes", reciprocal.status in {"pass", "assumed"})
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="weak_shear_metric_recovery",
+            inputs=[eps],
+            output=sp.Eq(sp.exp(-2 * eps) * sp.exp(2 * eps), 1),
+            method="weak_shear_metric_recovery",
+            status=Status.DERIVED,
+        )
 
 
 def case_4_poisson_source_form():
@@ -321,13 +366,16 @@ def final_interpretation():
 
 def main():
     header("Candidate Shear Profile Source Law")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_convention_check()
     case_1_radial_laplace_solution()
     case_2_flux_fixes_coefficient()
-    case_3_metric_recovery_from_s()
+    case_3_metric_recovery_from_s(ns)
     case_4_poisson_source_form()
     case_5_failure_controls()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

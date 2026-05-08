@@ -43,7 +43,16 @@
 # Suggested location:
 #   scripts_v3/candidate_reduced_exterior_action.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -80,6 +89,30 @@ def radial_laplacian(expr, r):
 
 def series_in_epsilon(expr, epsilon, order=3):
     return sp.series(expr, epsilon, 0, order).removeO()
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="shear_profile_metric_recovery",
+        upstream_script_id="02_mechanics__candidate_shear_profile_source_law",
+        upstream_derivation_id="weak_shear_metric_recovery",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_log_scale_algebra():
@@ -253,6 +286,45 @@ def case_5_kappa_source_failure_control():
         status_line("reciprocal scaling fails generically", not is_zero(AB - 1))
 
 
+def case_5b_vacuumforge_energy_crosscheck(ns=None):
+    header("Case 5b: VacuumForge energy cross-check")
+
+    ctx = TheoryContext("candidate_reduced_exterior_action")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    Jk, Js = sp.symbols("J_k J_s", real=True)
+
+    ctx.energy.source_coupled(
+        C_kappa=ms.C_kappa,
+        C_sigma=ms.C_sigma,
+        J_kappa=Jk,
+        J_sigma=Js,
+        kappa=ms.kappa,
+        sigma=ms.sigma,
+    )
+    sol = ctx.energy.solve_stationary("source_coupled_energy")
+    print(f"Stationary equations: {sol.equations}")
+    print(f"Solutions: {sol.solutions}")
+
+    if sol.solutions:
+        k_eq = sp.simplify(sol.solutions[0][ms.kappa])
+        s_eq = sp.simplify(sol.solutions[0][ms.sigma])
+        print(f"kappa_eq = {k_eq}")
+        print(f"s_eq = {s_eq}")
+        status_line("VacuumForge gives kappa_eq = J_k/(2 C_kappa)", is_zero(k_eq - Jk / (2 * ms.C_kappa)))
+        status_line("VacuumForge gives sigma_eq = J_s/(2 C_sigma)", is_zero(s_eq - Js / (2 * ms.C_sigma)))
+
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="vf_reduced_action_stationary_solution",
+                inputs=[Jk, Js],
+                output=sp.Eq(ms.kappa, Jk / (2 * ms.C_kappa)),
+                method="vacuumforge_source_coupled_energy",
+                status=Status.DERIVED,
+                metadata={"sigma_solution": str(sp.Eq(ms.sigma, Js / (2 * ms.C_sigma)))},
+            )
+
+
 def case_6_wrong_shear_coefficient_control():
     header("Case 6: Failure control — wrong shear coefficient")
 
@@ -306,14 +378,18 @@ def final_interpretation():
 
 def main():
     header("Candidate Reduced Exterior Action")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_log_scale_algebra()
     case_1_reduced_el_equations_1d()
     case_2_3d_variation_target()
     case_3_exterior_spherical_solution()
     case_4_metric_recovery()
     case_5_kappa_source_failure_control()
+    case_5b_vacuumforge_energy_crosscheck(ns)
     case_6_wrong_shear_coefficient_control()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

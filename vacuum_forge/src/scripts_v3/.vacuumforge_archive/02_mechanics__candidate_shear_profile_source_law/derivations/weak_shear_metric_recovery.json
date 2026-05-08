@@ -1,0 +1,18 @@
+{
+  "derivation_id": "weak_shear_metric_recovery",
+  "inputs": [
+    {
+      "srepr": "Symbol('eps', positive=True, real=True)",
+      "latex": "eps"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "weak_shear_metric_recovery",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T08:52:21.058709+00:00",
+  "vacuumforge_version": "0.1.0"
+}
