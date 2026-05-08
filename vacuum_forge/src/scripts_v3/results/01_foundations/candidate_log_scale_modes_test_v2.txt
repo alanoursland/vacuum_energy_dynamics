@@ -1,0 +1,211 @@
+
+========================================================================================
+Candidate Log-Scale Exterior Modes v2 — Derive, Record, Validate
+========================================================================================
+
+========================================================================================
+Section 1: Algebraic spine
+========================================================================================
+A(kappa,s)  = exp(kappa + s)
+B(kappa,s)  = exp(kappa - s)
+AB          = exp(2*kappa)
+AB|kappa=0  = 1
+[PASS] kappa = 0 -> AB = 1
+
+A_gamma     = exp(Phi/c**2)
+B_gamma     = exp(-Phi*gamma_v/c**2)
+AB_gamma    = exp(Phi*(1 - gamma_v)/c**2)
+log(AB)     = Phi*(1 - gamma_v)/c**2
+gamma_v sol = [1]
+[PASS] AB = 1 -> gamma_v = 1 under weak-field ansatz
+
+========================================================================================
+Case A: Direct mode assumption / tautology control
+========================================================================================
+Structure: case_a_direct_mode_assumption
+  Status: tautological
+  Trace-free exchange derived: False
+  Traceful creation derived: True
+  Leak warning: LEAK WARNING: Exchange operator explicitly zeroes all trace-contributing variables. Trace-free exchange is assumed via the operator definition, not derived from deeper structure.
+
+Exchange operators:
+Operator: direct_delta_kappa_zero (exchange)
+  J_a = S
+  J_b = -S
+  J_kappa = 0
+  J_sigma = 2*S
+  Classification: trace_free
+  Status: tautological
+  Note: J_kappa = 0 follows structurally from the projection and operator.
+  Note: LEAK WARNING: Exchange operator explicitly zeroes all trace-contributing variables. Trace-free exchange is assumed via the operator definition, not derived from deeper structure.
+
+Creation operators:
+Operator: direct_creation_kappa (creation)
+  J_a = C
+  J_b = C
+  J_kappa = 2*C
+  J_sigma = 0
+  Classification: pure_trace
+  Status: derived
+  Note: Creation source is pure trace (traceful).
+
+J_kappa = 0
+J_s     = 2*S
+Status  = tautological
+[PASS] direct delta_kappa=0 classified as tautological
+
+========================================================================================
+Case B: Structural trace-kernel exterior
+========================================================================================
+
+----------------------------------------------------------------------------------------
+B1: pre-mode trace-kernel analyzer check
+----------------------------------------------------------------------------------------
+Structure: case_b_physical_31_trace_kernel
+  Status: derived
+  Trace-free exchange derived: True
+  Traceful creation derived: True
+
+Exchange operators:
+Operator: isotropic_time_vs_space_exchange (exchange)
+  J_a = -S
+  J_b = S
+  J_kappa = 0
+  J_sigma = -2*S
+  Classification: trace_free
+  Status: derived
+  Note: J_kappa = 0 follows structurally from the projection and operator.
+
+Creation operators:
+Operator: symmetric_creation_31 (creation)
+  J_a = C
+  J_b = C
+  J_kappa = 2*C
+  J_sigma = 0
+  Classification: pure_trace
+  Status: derived
+  Note: Creation source is pure trace (traceful).
+Exchange J_kappa = 0
+Exchange J_s     = -2*S
+[PASS] pre-mode exchange derives J_kappa = 0
+
+----------------------------------------------------------------------------------------
+B2: energy equilibrium and recorded reciprocal chain
+----------------------------------------------------------------------------------------
+Stationary equations: [Eq(2*C_kappa*kappa, 0), Eq(2*C_sigma*sigma - J_s, 0)]
+Solutions: [{kappa: 0, sigma: J_s/(2*C_sigma)}]
+kappa_eq = 0
+s_eq     = J_s/(2*C_sigma)
+[WARN] recorded kappa=0 -> AB=1 -> gamma_v=1
+
+----------------------------------------------------------------------------------------
+Case B: requirement validation
+----------------------------------------------------------------------------------------
+Validation Results:
+  [+] reciprocal_scaling: A*B = 1 holds exactly.
+  [+] gamma_v_one: gamma_v = 1 = 1
+  [+] beta_one: beta = 1 = 1
+  [+] positive_energy: Energy functional is positive definite.
+  [~] trace_free_exchange: Exchange is trace-free by direct assumption.
+
+----------------------------------------------------------------------------------------
+Case B: leak detection audit
+----------------------------------------------------------------------------------------
+  reciprocal_scaling: clean
+  kappa_zero: clean
+  gamma_v_one: clean
+  trace_free_exchange: clean
+
+========================================================================================
+Case C: Generic kappa-sourced exchange
+========================================================================================
+Stationary equations: [Eq(2*C_kappa*kappa - J_k, 0), Eq(2*C_sigma*sigma - J_s, 0)]
+Solutions: [{kappa: J_k/(2*C_kappa), sigma: J_s/(2*C_sigma)}]
+kappa_eq = J_k/(2*C_kappa)
+s_eq     = J_s/(2*C_sigma)
+AB = exp(2*kappa_eq) = exp(J_k/C_kappa)
+[PASS] generic kappa sourcing prevents AB=1
+
+----------------------------------------------------------------------------------------
+Case C: requirement validation
+----------------------------------------------------------------------------------------
+Validation Results:
+  [X] reciprocal_scaling: A*B - 1 = exp(-Phi*gamma_v/c**2 + Phi/c**2) - 1 (nonzero).
+  [X] gamma_v_one: gamma_v = gamma_v != 1
+  [+] beta_one: beta = 1 = 1
+  [+] positive_energy: Energy functional is positive definite.
+  [X] trace_free_exchange: Exchange source has nonzero J_kappa.
+
+----------------------------------------------------------------------------------------
+Case C: leak detection audit
+----------------------------------------------------------------------------------------
+  reciprocal_scaling: clean
+  kappa_zero: clean
+  gamma_v_one: clean
+  trace_free_exchange: clean
+
+========================================================================================
+Case D: Interface/source-to-exterior separation toy
+========================================================================================
+Interpretation:
+  Source/interface may set a boundary shear amplitude.
+  The exterior region itself is source-free with J_kappa_ext = 0.
+  This tests whether exterior kappa suppression can coexist with s != 0.
+
+Stationary equations: [Eq(2*C_kappa*kappa, 0), Eq(2*C_sigma*sigma - S_boundary, 0)]
+Solutions: [{kappa: 0, sigma: S_boundary/(2*C_sigma)}]
+kappa_eq = 0
+s_eq     = S_boundary/(2*C_sigma)
+[WARN] exterior kappa suppression records AB=1 and gamma_v=1
+[PASS] compensated/shear exterior mode remains active: s_eq = S_boundary/(2*C_sigma)
+
+----------------------------------------------------------------------------------------
+Case D: requirement validation
+----------------------------------------------------------------------------------------
+Validation Results:
+  [+] reciprocal_scaling: A*B = 1 holds exactly.
+  [+] gamma_v_one: gamma_v = 1 = 1
+  [+] beta_one: beta = 1 = 1
+  [+] positive_energy: Energy functional is positive definite.
+  [~] trace_free_exchange: Exchange is trace-free by direct assumption.
+
+----------------------------------------------------------------------------------------
+Case D: leak detection audit
+----------------------------------------------------------------------------------------
+  reciprocal_scaling: clean
+  kappa_zero: clean
+  gamma_v_one: clean
+  trace_free_exchange: clean
+
+========================================================================================
+Final v2 interpretation
+========================================================================================
+The v2 experiment distinguishes four concepts:
+
+A. Direct mode assumption:
+   Setting delta_kappa = 0 directly is tautological and should not be
+   counted as a derivation.
+
+B. Structural trace-kernel exterior:
+   A pre-mode exchange direction can derive J_kappa = 0 non-tautologically.
+   With the toy energy equilibrium, this gives kappa = 0, AB = 1,
+   and gamma_v = 1 after derived consequences are recorded.
+
+C. Generic kappa-sourced exchange:
+   If J_kappa is nonzero, kappa_eq = J_k/(2*C_kappa), so
+   AB = exp(J_k/C_kappa) and reciprocal scaling is not generic.
+
+D. Interface/source-to-exterior separation:
+   The current framework can allow source/interface physics to seed
+   exterior shear while the source-free exterior suppresses kappa.
+   This is the reduced-sector analogue of P7-style exterior compensation.
+
+Main research target sharpened by the forge:
+
+   Find a covariant source law, boundary/interface rule, or
+   configuration-energy functional that suppresses kappa in the
+   static source-free exterior while allowing compensated shear s.
+
+This script still does not derive that deeper rule. It only verifies
+the reduced algebraic and energy-equilibrium consequences once such
+a rule is supplied.
