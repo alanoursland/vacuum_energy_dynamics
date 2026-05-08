@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Compare GR Interior Schwarzschild
 ============================================================================================================
+[INFO] Archive dependency check:
+  - interior_A_boundary_matching: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Define reduced and GR interior models

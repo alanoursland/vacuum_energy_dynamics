@@ -8,7 +8,16 @@
 # Suggested location:
 #   scripts_v3/candidate_interior_kappa_response.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -31,6 +40,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="gr_interior_first_order_match",
+        upstream_script_id="04_source_law_interior__candidate_compare_gr_interior_schwarzschild",
+        upstream_derivation_id="gr_interior_first_order_match",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_recap():
@@ -125,7 +158,7 @@ def case_3_smooth_boundary_kappa_profile():
     status_line("kappa regular at origin", is_zero(dkappa_0))
 
 
-def case_4_energy_penalty_model():
+def case_4_energy_penalty_model(ns=None):
     header("Case 4: Interior kappa energy penalty model")
 
     kappa, C_k, J_k = sp.symbols("kappa C_k J_k", positive=True, real=True)
@@ -142,6 +175,30 @@ def case_4_energy_penalty_model():
     print("If J_k=0 outside, kappa relaxes to zero.")
 
     status_line("traceful source produces interior kappa response", bool(sol))
+
+    ctx = TheoryContext("candidate_interior_kappa_response")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    ctx.energy.source_coupled(
+        C_kappa=ms.C_kappa,
+        C_sigma=ms.C_sigma,
+        J_kappa=J_k,
+        J_sigma=sp.Integer(0),
+        kappa=ms.kappa,
+        sigma=ms.sigma,
+    )
+    vf_sol = ctx.energy.solve_stationary("source_coupled_energy")
+    if vf_sol.solutions:
+        k_eq = sp.simplify(vf_sol.solutions[0][ms.kappa])
+        status_line("VacuumForge reproduces interior kappa response", is_zero(k_eq - J_k / (2 * ms.C_kappa)))
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="interior_kappa_energy_response",
+                inputs=[J_k],
+                output=sp.Eq(ms.kappa, J_k / (2 * ms.C_kappa)),
+                method="vacuumforge_source_coupled_energy",
+                status=Status.DERIVED,
+            )
 
 
 def case_5_exterior_matching_classification():
@@ -216,14 +273,17 @@ def final_interpretation():
 
 def main():
     header("Candidate Interior Kappa Response")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_recap()
     case_1_forced_interior_compensation()
     case_2_generic_traceful_kappa_source()
     case_3_smooth_boundary_kappa_profile()
-    case_4_energy_penalty_model()
+    case_4_energy_penalty_model(ns)
     case_5_exterior_matching_classification()
     case_6_observable_exterior_pressure()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

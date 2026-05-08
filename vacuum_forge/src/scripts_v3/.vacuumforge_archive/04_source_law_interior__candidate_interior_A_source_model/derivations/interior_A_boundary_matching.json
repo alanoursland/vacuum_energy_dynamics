@@ -1,0 +1,22 @@
+{
+  "derivation_id": "interior_A_boundary_matching",
+  "inputs": [
+    {
+      "srepr": "Symbol('R', positive=True, real=True)",
+      "latex": "R"
+    },
+    {
+      "srepr": "Symbol('rho0', positive=True, real=True)",
+      "latex": "\\rho_{0}"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "interior_A_match_to_exterior",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T17:25:45.666397+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -29,7 +29,15 @@
 # Suggested location:
 #   scripts_v3/candidate_compare_gr_interior_schwarzschild.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -56,6 +64,30 @@ def is_zero(expr) -> bool:
 
 def series(expr, var, order=3):
     return sp.series(expr, var, 0, order).removeO()
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="interior_A_boundary_matching",
+        upstream_script_id="04_source_law_interior__candidate_interior_A_source_model",
+        upstream_derivation_id="interior_A_boundary_matching",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_define_models():
@@ -102,7 +134,7 @@ def case_1_boundary_derivatives(x, u, A_red, A_gr):
     status_line("boundary derivatives match", is_zero(d_red_1 - d_gr_1))
 
 
-def case_2_weak_field_series(x, u, A_red, A_gr):
+def case_2_weak_field_series(x, u, A_red, A_gr, ns=None):
     header("Case 2: Weak-field compactness series")
 
     A_gr_series = sp.simplify(series(A_gr, u, 3))
@@ -118,6 +150,16 @@ def case_2_weak_field_series(x, u, A_red, A_gr):
 
     status_line("models agree through first order in compactness", is_zero(first_order_diff))
     status_line("models differ at second order", not is_zero(second_order_diff))
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="gr_interior_first_order_match",
+            inputs=[x, u],
+            output=first_order_diff,
+            method="gr_vs_reduced_interior_series",
+            status=Status.DERIVED,
+            metadata={"second_order_difference": str(second_order_diff)},
+        )
 
 
 def case_3_residual_shape(x, u, A_red, A_gr):
@@ -232,14 +274,17 @@ def final_interpretation():
 
 def main():
     header("Candidate Compare GR Interior Schwarzschild")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     x, u, A_red, A_gr = case_0_define_models()
     case_1_boundary_derivatives(x, u, A_red, A_gr)
-    case_2_weak_field_series(x, u, A_red, A_gr)
+    case_2_weak_field_series(x, u, A_red, A_gr, ns)
     case_3_residual_shape(x, u, A_red, A_gr)
     case_4_center_values(x, u, A_red, A_gr)
     case_5_B_comparison()
     case_6_kappa_gr_inside()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

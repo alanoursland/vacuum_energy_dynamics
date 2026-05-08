@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Interior A Source Model
 ============================================================================================================
+[INFO] Archive dependency check:
+  - mechanics_areal_flux_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Areal-flux source law recap
@@ -62,6 +64,7 @@ A_in matched = (-4*pi*G*R**2*rho0 + 4*pi*G*r**2*rho0/3 + c**2)/c**2
 A_in'(R) = 8*pi*G*R*rho0/(3*c**2)
 A_out'(R) = 8*pi*G*R*rho0/(3*c**2)
 [PASS] A' matches at boundary
+[PASS] VacuumForge context reproduces exterior flux normalization
 
 ============================================================================================================
 Case 4: Flux continuity at source boundary

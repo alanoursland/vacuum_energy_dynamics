@@ -50,7 +50,16 @@
 # Suggested location:
 #   scripts_v3/candidate_interior_A_source_model.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -85,6 +94,30 @@ def delta_areal(f, r):
 
 def areal_flux(f, r):
     return sp.simplify(4 * sp.pi * r**2 * sp.diff(f, r))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="mechanics_areal_flux_metric",
+        upstream_script_id="02_mechanics__candidate_areal_flux_principle",
+        upstream_derivation_id="areal_flux_exact_metric_check",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -168,7 +201,7 @@ def case_2_interior_A_solution():
 # Case 3: Match to exterior at r=R
 # =============================================================================
 
-def case_3_match_to_exterior():
+def case_3_match_to_exterior(ns=None):
     header("Case 3: Match interior to exterior at r=R")
 
     r, R, G, c, rho0, C = sp.symbols("r R G c rho0 C", positive=True, real=True)
@@ -206,6 +239,22 @@ def case_3_match_to_exterior():
     print(f"A_out'(R) = {dA_out_R}")
 
     status_line("A' matches at boundary", is_zero(dA_in_R - dA_out_R))
+
+    ctx = TheoryContext("candidate_interior_A_source_model")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    flux_expr = sp.simplify(4 * sp.pi * ms.r**2 * sp.diff(1 - 2 * ms.G * ms.M / (ms.c**2 * ms.r), ms.r))
+    status_line("VacuumForge context reproduces exterior flux normalization",
+                is_zero(flux_expr - 8 * sp.pi * ms.G * ms.M / ms.c**2))
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="interior_A_boundary_matching",
+            inputs=[R, rho0],
+            output=sp.Eq(dA_in_R, dA_out_R),
+            method="interior_A_match_to_exterior",
+            status=Status.DERIVED,
+        )
 
     return A_in_matched, A_out, M
 
@@ -405,10 +454,12 @@ def final_interpretation():
 
 def main():
     header("Candidate Interior A Source Model")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_recap()
     case_1_constant_density_enclosed_mass()
     case_2_interior_A_solution()
-    case_3_match_to_exterior()
+    case_3_match_to_exterior(ns)
     case_4_flux_continuity()
     case_5_origin_regularity()
     case_6_interior_B_from_kappa_zero()
@@ -416,6 +467,7 @@ def main():
     case_8_not_gr_interior_schwarzschild()
     case_9_summary()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

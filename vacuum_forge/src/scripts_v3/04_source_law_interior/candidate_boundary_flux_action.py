@@ -36,7 +36,17 @@
 # Suggested location:
 #   scripts_v3/candidate_boundary_flux_action.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -65,6 +75,30 @@ def euler_lagrange_1d(L, field, x):
     f = field
     fp = sp.diff(f, x)
     return sp.simplify(sp.diff(L, f) - sp.diff(sp.diff(L, fp), x))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="interior_A_boundary_matching",
+        upstream_script_id="04_source_law_interior__candidate_interior_A_source_model",
+        upstream_derivation_id="interior_A_boundary_matching",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_radial_bulk_action():
@@ -194,7 +228,7 @@ def case_5_boundary_vs_bulk_source():
     status_line("boundary and bulk views agree for exterior flux", True)
 
 
-def case_6_kappa_compensation_coupling():
+def case_6_kappa_compensation_coupling(ns=None):
     header("Case 6: Coupling to kappa compensation")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -210,6 +244,28 @@ def case_6_kappa_compensation_coupling():
     print(f"AB = {AB}")
 
     status_line("boundary flux plus kappa=0 recovers reciprocal exterior", is_zero(AB - 1))
+
+    ctx = TheoryContext("candidate_boundary_flux_action")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    A_value = 1 - 2 * ms.G * ms.M / (ms.c**2 * ms.r)
+    B_value = sp.simplify(1 / A_value)
+    concrete = check_concrete_metric(ctx, A_value=A_value, B_value=B_value, requirement_ids=["reciprocal_scaling"])
+    if concrete:
+        status_line(
+            "VacuumForge classifies boundary-flux exterior metric as by-construction reciprocal",
+            concrete[0].status == "satisfied_by_construction",
+            concrete[0].message,
+        )
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="boundary_flux_exact_metric_check",
+                inputs=[A_value],
+                output=sp.Symbol(concrete[0].status),
+                method="concrete_metric_check",
+                status=Status.DERIVED,
+                metadata={"message": concrete[0].message},
+            )
 
 
 def final_interpretation():
@@ -239,14 +295,17 @@ def final_interpretation():
 
 def main():
     header("Candidate Boundary Flux Action")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_radial_bulk_action()
     case_1_boundary_variation_term()
     case_2_source_boundary_coupling()
     case_3_mass_normalization()
     case_4_exterior_solution_from_boundary()
     case_5_boundary_vs_bulk_source()
-    case_6_kappa_compensation_coupling()
+    case_6_kappa_compensation_coupling(ns)
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

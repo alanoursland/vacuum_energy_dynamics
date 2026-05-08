@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "mechanics_areal_flux_metric",
+    "upstream_script_id": "02_mechanics__candidate_areal_flux_principle",
+    "upstream_derivation_id": "areal_flux_exact_metric_check",
+    "declared_at": "2026-05-08T17:25:44.847856+00:00"
+  }
+]

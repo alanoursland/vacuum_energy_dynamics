@@ -1,0 +1,24 @@
+{
+  "derivation_id": "gr_interior_first_order_match",
+  "inputs": [
+    {
+      "srepr": "Symbol('x', real=True)",
+      "latex": "x"
+    },
+    {
+      "srepr": "Symbol('u', real=True)",
+      "latex": "u"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "gr_vs_reduced_interior_series",
+  "status": "derived",
+  "metadata": {
+    "second_order_difference": "3*u**2*(x**4 - 2*x**2 + 1)/16"
+  },
+  "recorded_at": "2026-05-08T17:25:51.287942+00:00",
+  "vacuumforge_version": "0.1.0"
+}

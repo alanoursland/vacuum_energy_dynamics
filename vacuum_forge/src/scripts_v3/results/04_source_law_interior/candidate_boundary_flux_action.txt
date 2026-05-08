@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Boundary Flux Action
 ============================================================================================================
+[INFO] Archive dependency check:
+  - interior_A_boundary_matching: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Radial bulk action
@@ -82,6 +84,7 @@ kappa = 0
 B = exp(2kappa)/A = c**2*r/(-2*G*M + c**2*r)
 AB = 1
 [PASS] boundary flux plus kappa=0 recovers reciprocal exterior
+[PASS] VacuumForge classifies boundary-flux exterior metric as by-construction reciprocal: reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
 
 ============================================================================================================
 Final interpretation

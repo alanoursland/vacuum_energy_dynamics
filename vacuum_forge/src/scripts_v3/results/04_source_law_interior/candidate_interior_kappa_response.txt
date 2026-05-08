@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Interior Kappa Response
 ============================================================================================================
+[INFO] Archive dependency check:
+  - gr_interior_first_order_match: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Reduced mode recap
@@ -71,6 +73,7 @@ kappa solution = [J_k/(2*C_k)]
 If J_k is nonzero inside matter, kappa responds.
 If J_k=0 outside, kappa relaxes to zero.
 [PASS] traceful source produces interior kappa response
+[PASS] VacuumForge reproduces interior kappa response
 
 ============================================================================================================
 Case 5: Exterior matching classification
