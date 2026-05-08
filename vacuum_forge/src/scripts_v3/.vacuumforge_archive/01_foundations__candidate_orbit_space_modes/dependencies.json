@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "areal_kappa_coordinate_fixing",
+    "upstream_script_id": "01_foundations__candidate_areal_gauge_kappa_condition",
+    "upstream_derivation_id": "areal_kappa_coordinate_fixed",
+    "declared_at": "2026-05-08T01:44:18.872787+00:00"
+  }
+]

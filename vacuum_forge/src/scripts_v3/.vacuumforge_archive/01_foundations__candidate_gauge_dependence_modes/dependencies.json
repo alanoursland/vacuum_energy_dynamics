@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "covariant_parent_trace_kernel",
+    "upstream_script_id": "01_foundations__candidate_covariant_parent_modes",
+    "upstream_derivation_id": "kappa_trace_kernel_exchange",
+    "declared_at": "2026-05-08T01:44:15.455173+00:00"
+  }
+]

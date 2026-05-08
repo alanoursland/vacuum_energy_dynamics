@@ -65,10 +65,17 @@
 # Suggested location:
 #   scripts_v3/candidate_orbit_space_modes.py
 
+from pathlib import Path
+
 import sympy as sp
 
+from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
-from vacuumforge.requirements.leak_detection import detect_leaks
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -102,6 +109,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="areal_kappa_coordinate_fixing",
+        upstream_script_id="01_foundations__candidate_areal_gauge_kappa_condition",
+        upstream_derivation_id="areal_kappa_coordinate_fixed",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -374,7 +405,7 @@ def case_6_compensation_condition_gradient_form():
 # Case 7: Schwarzschild check
 # =============================================================================
 
-def case_7_schwarzschild_check():
+def case_7_schwarzschild_check(ns=None):
     header("Case 7: Schwarzschild exterior check")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -428,32 +459,41 @@ def case_7_schwarzschild_check():
         description="Schwarzschild radial coefficient: B = 1/A.",
     )
 
-    # Run requirement validation.
     print()
-    print("Requirement validation:")
-    results = ctx.requirements.validate_all(ctx)
-    print(ctx.requirements.summary(results))
-
-    # Run leak detection.
-    print()
-    print("Leak detection (expected: reciprocal_scaling LEAKED):")
-    if hasattr(ctx, "_targets") and ctx._targets is not None:
-        for target_id in ["reciprocal_scaling", "kappa_zero", "gamma_v_one"]:
-            if ctx._targets.has(target_id):
-                leak = detect_leaks(target_id, ctx.assumptions, ctx._targets)
-                label = "LEAKED" if leak.leaked else "clean"
-                print(f"  {target_id}: {label}")
-                if leak.leaked:
-                    print(f"    via: {leak.leaked_via}")
-    else:
-        print("  No target library available.")
+    print("Concrete metric classification:")
+    concrete_results = check_concrete_metric(
+        ctx,
+        A_value=A_schw,
+        B_value=sp.simplify(1 / A_schw),
+        requirement_ids=["reciprocal_scaling", "gamma_v_one"],
+    )
+    for result in concrete_results:
+        print(f"  {result.requirement_id}: {result.status}")
+        print(f"    {result.message}")
+        if result.leak_report is not None and result.leak_report.leaked:
+            print(f"    leak via: {result.leak_report.leaked_via}")
 
     print()
     print("Classification:")
-    print("  The Schwarzschild check is 'confirmed by construction' —")
-    print("  the assumptions (B=1/A) directly encode the reciprocal_scaling target.")
-    print("  This is a consistency check of the orbit-space formulation against a")
-    print("  known solution, not a derivation from independent source-law principles.")
+    print("  The Schwarzschild check is 'satisfied_by_construction' when the")
+    print("  reciprocal form is encoded directly in the concrete metric.")
+    print("  That keeps the result in the right bucket: a consistency check")
+    print("  against a known solution, not a source-law derivation.")
+
+    if ns is not None:
+        reciprocal_result = next(
+            (result for result in concrete_results if result.requirement_id == "reciprocal_scaling"),
+            None,
+        )
+        if reciprocal_result is not None:
+            ns.record_derivation(
+                derivation_id="schwarzschild_concrete_metric_check",
+                inputs=[A_schw],
+                output=sp.Symbol(reciprocal_result.status),
+                method="concrete_metric_check",
+                status=Status.DERIVED,
+                metadata={"message": reciprocal_result.message},
+            )
 
 
 # =============================================================================
@@ -574,6 +614,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Orbit-Space Modes")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_orbit_space_decomposition()
     case_1_static_diagonal_arbitrary_coordinate()
     case_2_areal_gauge_reconstruction()
@@ -581,10 +623,11 @@ def main():
     case_4_areal_radius_gradient_norm()
     case_5_shear_like_mode_from_gradient()
     case_6_compensation_condition_gradient_form()
-    case_7_schwarzschild_check()
+    case_7_schwarzschild_check(ns)
     case_8_failure_control_ignore_areal_scalar()
     case_9_summary_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

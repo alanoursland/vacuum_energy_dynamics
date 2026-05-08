@@ -2,6 +2,8 @@
 ========================================================================================================
 Candidate Areal-Gauge Kappa Condition
 ========================================================================================================
+[INFO] Archive dependency check:
+  - gauge_dependence_shift: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================
 Case 0: General spherical metric in arbitrary radial coordinate

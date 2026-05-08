@@ -48,14 +48,21 @@
 # Suggested location:
 #   scripts_v3/candidate_covariant_parent_modes.py
 
+from pathlib import Path
+
 import sympy as sp
 
+from vacuumforge import ProjectArchive, Status
 from vacuumforge.structure_search import (
     VacuumStructure,
     ProjectionMap,
     SourceOperator,
     StructureAnalyzer,
 )
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -86,6 +93,25 @@ def is_zero(expr) -> bool:
 
 def mat_trace(M):
     return sp.simplify(sum(M[i, i] for i in range(M.shape[0])))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -153,7 +179,7 @@ def case_1_two_sector_trace_shear():
 # Case 2: 3+1 isotropic spatial reduction — structural derivation
 # =============================================================================
 
-def case_2_physical_3plus1_trace_split():
+def case_2_physical_3plus1_trace_split(ns=None):
     header("Case 2: 3+1 isotropic spatial trace split (structural)")
 
     q_t, q_x, q_y, q_z = sp.symbols("q_t q_x q_y q_z", real=True)
@@ -262,6 +288,19 @@ def case_2_physical_3plus1_trace_split():
         print("  DISAGREEMENT: analyzer says derived but hand calc gives delta_kappa != 0.")
         print("  This is a bug — investigate.")
 
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="kappa_trace_kernel_exchange",
+            inputs=[q_t, q_x, q_y, q_z, S],
+            output=sp.Eq(ex.J_kappa, 0),
+            method="structure_search_trace_kernel",
+            status=Status.DERIVED if case_2_derived else Status.CANDIDATE,
+            metadata={
+                "classification": ex.classification,
+                "summary_status": result.summary_status.value,
+            },
+        )
+
     return case_2_derived
 
 
@@ -269,7 +308,7 @@ def case_2_physical_3plus1_trace_split():
 # Case 2b: Anisotropic perturbation — extension test that could fail
 # =============================================================================
 
-def case_2b_anisotropic_perturbation():
+def case_2b_anisotropic_perturbation(ns=None):
     header("Case 2b: Anisotropic spatial exchange — extension test")
 
     # This tests whether the trace-kernel structure depends on spatial isotropy
@@ -378,6 +417,19 @@ def case_2b_anisotropic_perturbation():
         print("  DISAGREEMENT: analyzer says derived but hand calc gives delta_kappa != 0.")
     elif not case_2b_derived and hand_kappa_zero:
         print("  DISAGREEMENT: hand calc shows delta_kappa=0 but analyzer did not derive.")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="anisotropic_kappa_trace_kernel_exchange",
+            inputs=[q_t, q_x, q_y, q_z, S],
+            output=sp.Eq(ex.J_kappa, 0),
+            method="structure_search_trace_kernel",
+            status=Status.DERIVED if case_2b_derived else Status.CANDIDATE,
+            metadata={
+                "classification": ex.classification,
+                "summary_status": result.summary_status.value,
+            },
+        )
 
     return case_2b_derived
 
@@ -600,15 +652,18 @@ def final_interpretation(case_2_ok: bool, case_2b_ok: bool):
 
 def main():
     header("Candidate Covariant Parent Modes")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_reduced_log_scale_recap()
     case_1_two_sector_trace_shear()
-    case_2_ok = case_2_physical_3plus1_trace_split()
-    case_2b_ok = case_2b_anisotropic_perturbation()
+    case_2_ok = case_2_physical_3plus1_trace_split(ns)
+    case_2b_ok = case_2b_anisotropic_perturbation(ns)
     case_3_linearized_trace_comparison()
     case_4_trace_free_shear_linearized()
     case_5_determinant_volume_caution()
     case_6_candidate_parent_classification()
     final_interpretation(case_2_ok, case_2b_ok)
+    ns.write_run_metadata(case_2_ok=case_2_ok, case_2b_ok=case_2b_ok)
 
 
 if __name__ == "__main__":

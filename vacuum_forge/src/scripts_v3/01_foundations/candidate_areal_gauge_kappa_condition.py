@@ -52,7 +52,16 @@
 # Suggested location:
 #   scripts_v3/candidate_areal_gauge_kappa_condition.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.coordinates import CoordinateChange
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -86,6 +95,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="gauge_dependence_shift",
+        upstream_script_id="01_foundations__candidate_gauge_dependence_modes",
+        upstream_derivation_id="reduced_mode_coordinate_shift",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -143,7 +176,7 @@ def case_1_areal_radius_from_area():
 # Case 2: Transform arbitrary R to areal radius r=S(R)
 # =============================================================================
 
-def case_2_transform_to_areal_radius():
+def case_2_transform_to_areal_radius(ns=None):
     header("Case 2: Transform arbitrary R to areal radius r=S(R)")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -162,7 +195,8 @@ def case_2_transform_to_areal_radius():
     #
     # and:
     #   A_areal(r) = T(R)
-    Sprime = sp.diff(S, R)
+    change = CoordinateChange(old_coord=sp.Symbol("r", positive=True, real=True), new_coord=R, transform=S)
+    Sprime = change.jacobian()
 
     A_areal_at_R = T(R)
     B_areal_at_R = sp.simplify(Q(R) / Sprime**2)
@@ -178,6 +212,15 @@ def case_2_transform_to_areal_radius():
     print("  angular sector = r²dΩ²")
     print()
     status_line("areal radial coefficient includes inverse sphere-radius Jacobian", True)
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="areal_radius_reconstruction",
+            inputs=[T(R), Q(R), S],
+            output=sp.Eq(T(R) * Q(R), Sprime**2 * A_areal_at_R * B_areal_at_R),
+            method="areal_radius_coordinate_fixing",
+            status=Status.DERIVED,
+        )
 
 
 # =============================================================================
@@ -224,7 +267,7 @@ def case_3_kappa_areal_from_arbitrary_metric():
 # Case 4: Recover previous radial reparameterization result
 # =============================================================================
 
-def case_4_recover_reparameterization_result():
+def case_4_recover_reparameterization_result(ns=None):
     header("Case 4: Recover previous radial reparameterization result")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -237,8 +280,9 @@ def case_4_recover_reparameterization_result():
     #   T(R)=A(f(R))
     #   Q(R)=B(f(R))*f'(R)^2
     #   S(R)=f(R)
-    T = A(f)
-    Q = B(f) * sp.diff(f, R)**2
+    change = CoordinateChange(old_coord=sp.Symbol("r", positive=True, real=True), new_coord=R, transform=f)
+    T = change.transform_scale_factor(A(change.old_coord), "temporal")
+    Q = change.transform_scale_factor(B(change.old_coord), "radial")
     S = f
     Sprime = sp.diff(S, R)
 
@@ -260,6 +304,15 @@ def case_4_recover_reparameterization_result():
 
     print()
     print("Naive kappa_R includes the radial Jacobian, while kappa_areal removes it.")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="areal_kappa_coordinate_fixed",
+            inputs=[T, Q, S],
+            output=sp.Eq(kappa_areal, kappa_old_at_f),
+            method="coordinate_change_areal_reconstruction",
+            status=Status.DERIVED,
+        )
 
 
 # =============================================================================
@@ -406,16 +459,19 @@ def final_interpretation():
 
 def main():
     header("Candidate Areal-Gauge Kappa Condition")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_general_spherical_metric()
     case_1_areal_radius_from_area()
-    case_2_transform_to_areal_radius()
+    case_2_transform_to_areal_radius(ns)
     case_3_kappa_areal_from_arbitrary_metric()
-    case_4_recover_reparameterization_result()
+    case_4_recover_reparameterization_result(ns)
     case_5_gauge_fixed_condition_statement()
     case_6_arbitrary_coordinate_expression()
     case_7_failure_control_ignore_angular_sector()
     case_8_summary_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

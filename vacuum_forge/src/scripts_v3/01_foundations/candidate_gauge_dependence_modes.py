@@ -57,7 +57,17 @@
 # It is a warning tool: reduced kappa and s are gauge-sensitive unless
 # the gauge and angular sector are specified.
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.coordinates import CoordinateChange, validate_coordinate_invariance
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -93,6 +103,30 @@ def is_zero(expr) -> bool:
         return False
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="covariant_parent_trace_kernel",
+        upstream_script_id="01_foundations__candidate_covariant_parent_modes",
+        upstream_derivation_id="kappa_trace_kernel_exchange",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 # =============================================================================
 # Case 0: areal-gauge recap
 # =============================================================================
@@ -125,7 +159,7 @@ def case_0_areal_gauge_recap():
 # Case 1: general radial reparameterization
 # =============================================================================
 
-def case_1_general_radial_reparameterization():
+def case_1_general_radial_reparameterization(ns=None):
     header("Case 1: General radial reparameterization r=f(R)")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -134,14 +168,10 @@ def case_1_general_radial_reparameterization():
     a = sp.Function("a")
     b = sp.Function("b")
 
-    # Original areal-gauge coefficients:
-    #   A(r)=exp(a(r)), B(r)=exp(b(r))
-    #
-    # Under r=f(R):
-    #   A_new(R)=A(f(R))
-    #   B_new(R)=B(f(R)) * (dr/dR)^2
-    a_new = a(f)
-    b_new = b(f) + 2 * sp.log(sp.diff(f, R))
+    change = CoordinateChange(old_coord=sp.Symbol("r", positive=True, real=True), new_coord=R, transform=f)
+    a_old = a(change.old_coord)
+    b_old = b(change.old_coord)
+    a_new, b_new = change.transform_log_modes(a_old, b_old)
 
     kappa_new = sp.simplify((a_new + b_new) / 2)
     s_new = sp.simplify((a_new - b_new) / 2)
@@ -172,6 +202,30 @@ def case_1_general_radial_reparameterization():
 
     status_line("kappa shifts by log(f')", is_zero(delta_kappa - expected_delta_k))
     status_line("s shifts by -log(f')", is_zero(delta_s - expected_delta_s))
+
+    ctx = TheoryContext("candidate_gauge_dependence_modes")
+    change.register(ctx, "general_radial_reparameterization")
+    invariance = validate_coordinate_invariance(
+        ctx,
+        "reduced_kappa_coordinate_invariance",
+        sp.Rational(1, 2) * (a(change.old_coord) + b(change.old_coord)),
+        change,
+    )
+    status_line(
+        "coordinate-invariance validator marks reduced kappa as non-invariant",
+        invariance.status == "fail",
+        invariance.message,
+    )
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="reduced_mode_coordinate_shift",
+            inputs=[a_old, b_old, f],
+            output=sp.Eq(delta_kappa, sp.log(sp.diff(f, R))),
+            method="coordinate_change_log_modes",
+            status=Status.DERIVED,
+            metadata={"delta_s": str(sp.Eq(delta_s, -sp.log(sp.diff(f, R))))},
+        )
 
     print()
     print("Interpretation:")
@@ -254,7 +308,7 @@ def case_3_infinitesimal_radial_shift():
 # Case 4: AB=1 in areal gauge does not remain naive AB=1 after reparameterization
 # =============================================================================
 
-def case_4_reciprocal_scaling_gauge_warning():
+def case_4_reciprocal_scaling_gauge_warning(ns=None):
     header("Case 4: Reciprocal scaling gauge warning")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -263,12 +317,11 @@ def case_4_reciprocal_scaling_gauge_warning():
 
     # Areal gauge compensated solution:
     #   A(r)=exp(s(r)), B(r)=exp(-s(r)), AB=1.
-    A_old = sp.exp(s(f))
-    B_old = sp.exp(-s(f))
-
-    # Reparameterized radial coefficient:
-    B_new = B_old * sp.diff(f, R)**2
-    A_new = A_old
+    change = CoordinateChange(old_coord=sp.Symbol("r", positive=True, real=True), new_coord=R, transform=f)
+    A_old = sp.exp(s(change.old_coord))
+    B_old = sp.exp(-s(change.old_coord))
+    A_new = change.transform_scale_factor(A_old, "temporal")
+    B_new = change.transform_scale_factor(B_old, "radial")
     AB_new_naive = sp.simplify(A_new * B_new)
 
     print("Original areal-gauge compensated sector:")
@@ -286,6 +339,15 @@ def case_4_reciprocal_scaling_gauge_warning():
     print("  AB=1 is an areal-gauge statement in this reduced formulation.")
     print("  After radial reparameterization, naive A_new B_new != 1 unless f'=1.")
     print("  The geometry has not changed; the reduced gauge representation changed.")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="naive_reciprocal_scaling_shift",
+            inputs=[A_old, B_old, f],
+            output=sp.Eq(AB_new_naive, sp.diff(f, R) ** 2),
+            method="coordinate_change_scale_factors",
+            status=Status.DERIVED,
+        )
 
 
 # =============================================================================
@@ -420,15 +482,18 @@ def final_interpretation():
 
 def main():
     header("Candidate Gauge-Dependence Modes")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_areal_gauge_recap()
-    case_1_general_radial_reparameterization()
+    case_1_general_radial_reparameterization(ns)
     case_2_scaling_reparameterization()
     case_3_infinitesimal_radial_shift()
-    case_4_reciprocal_scaling_gauge_warning()
+    case_4_reciprocal_scaling_gauge_warning(ns)
     case_5_full_determinant_behavior()
     case_6_restoring_areal_gauge()
     case_7_summary_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

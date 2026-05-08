@@ -1,0 +1,26 @@
+{
+  "derivation_id": "naive_reciprocal_scaling_shift",
+  "inputs": [
+    {
+      "srepr": "exp(Function('s')(Symbol('r', positive=True, real=True)))",
+      "latex": "e^{s{\\left(r \\right)}}"
+    },
+    {
+      "srepr": "exp(Mul(Integer(-1), Function('s')(Symbol('r', positive=True, real=True))))",
+      "latex": "e^{- s{\\left(r \\right)}}"
+    },
+    {
+      "srepr": "Function('f')(Symbol('R', positive=True, real=True))",
+      "latex": "f{\\left(R \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "coordinate_change_scale_factors",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T01:44:16.304006+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,28 @@
+{
+  "derivation_id": "reduced_mode_coordinate_shift",
+  "inputs": [
+    {
+      "srepr": "Function('a')(Symbol('r', positive=True, real=True))",
+      "latex": "a{\\left(r \\right)}"
+    },
+    {
+      "srepr": "Function('b')(Symbol('r', positive=True, real=True))",
+      "latex": "b{\\left(r \\right)}"
+    },
+    {
+      "srepr": "Function('f')(Symbol('R', positive=True, real=True))",
+      "latex": "f{\\left(R \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "coordinate_change_log_modes",
+  "status": "derived",
+  "metadata": {
+    "delta_s": "True"
+  },
+  "recorded_at": "2026-05-08T01:44:16.229402+00:00",
+  "vacuumforge_version": "0.1.0"
+}

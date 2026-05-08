@@ -1,0 +1,37 @@
+{
+  "derivation_id": "kappa_trace_kernel_exchange",
+  "inputs": [
+    {
+      "srepr": "Symbol('q_t', real=True)",
+      "latex": "q_{t}"
+    },
+    {
+      "srepr": "Symbol('q_x', real=True)",
+      "latex": "q_{x}"
+    },
+    {
+      "srepr": "Symbol('q_y', real=True)",
+      "latex": "q_{y}"
+    },
+    {
+      "srepr": "Symbol('q_z', real=True)",
+      "latex": "q_{z}"
+    },
+    {
+      "srepr": "Symbol('S', real=True)",
+      "latex": "S"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "structure_search_trace_kernel",
+  "status": "derived",
+  "metadata": {
+    "classification": "trace_free",
+    "summary_status": "derived"
+  },
+  "recorded_at": "2026-05-08T01:44:14.399472+00:00",
+  "vacuumforge_version": "0.1.0"
+}

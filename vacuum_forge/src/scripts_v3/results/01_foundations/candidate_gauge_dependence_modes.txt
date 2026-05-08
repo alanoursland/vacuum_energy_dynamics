@@ -2,6 +2,8 @@
 ====================================================================================================
 Candidate Gauge-Dependence Modes
 ====================================================================================================
+[INFO] Archive dependency check:
+  - covariant_parent_trace_kernel: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ====================================================================================================
 Case 0: Areal-gauge recap
@@ -36,6 +38,7 @@ delta_kappa = log(Derivative(f(R), R))
 delta_s = -log(Derivative(f(R), R))
 [PASS] kappa shifts by log(f')
 [PASS] s shifts by -log(f')
+[PASS] coordinate-invariance validator marks reduced kappa as non-invariant: a(r)/2 + b(r)/2 shifts by a(r)/2 - a(f(R))/2 + b(r)/2 - b(f(R))/2 under coordinate change.
 
 Interpretation:
   Naive temporal-radial kappa and s are not invariant under radial

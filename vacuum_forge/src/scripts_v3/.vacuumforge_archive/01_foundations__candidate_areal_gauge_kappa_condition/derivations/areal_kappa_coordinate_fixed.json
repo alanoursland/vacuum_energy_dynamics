@@ -1,0 +1,26 @@
+{
+  "derivation_id": "areal_kappa_coordinate_fixed",
+  "inputs": [
+    {
+      "srepr": "Function('A')(Function('f')(Symbol('R', positive=True, real=True)))",
+      "latex": "A{\\left(f{\\left(R \\right)} \\right)}"
+    },
+    {
+      "srepr": "Mul(Function('B')(Function('f')(Symbol('R', positive=True, real=True))), Pow(Derivative(Function('f')(Symbol('R', positive=True, real=True)), Tuple(Symbol('R', positive=True, real=True), Integer(1))), Integer(2)))",
+      "latex": "B{\\left(f{\\left(R \\right)} \\right)} \\left(\\frac{d}{d R} f{\\left(R \\right)}\\right)^{2}"
+    },
+    {
+      "srepr": "Function('f')(Symbol('R', positive=True, real=True))",
+      "latex": "f{\\left(R \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "coordinate_change_areal_reconstruction",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T01:44:17.992570+00:00",
+  "vacuumforge_version": "0.1.0"
+}

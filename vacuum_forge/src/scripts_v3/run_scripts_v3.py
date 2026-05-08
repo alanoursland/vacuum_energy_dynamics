@@ -96,6 +96,9 @@ def run_script(script_path: Path) -> int:
     print(f"[RUN ] {script_path.relative_to(SCRIPT_ROOT)}")
     env = os.environ.copy()
     env["PYTHONIOENCODING"] = "utf-8"
+    existing_pythonpath = env.get("PYTHONPATH", "")
+    src_root = str(SCRIPT_ROOT.parent)
+    env["PYTHONPATH"] = src_root if not existing_pythonpath else os.pathsep.join([src_root, existing_pythonpath])
 
     completed = subprocess.run(
         [sys.executable, str(script_path)],

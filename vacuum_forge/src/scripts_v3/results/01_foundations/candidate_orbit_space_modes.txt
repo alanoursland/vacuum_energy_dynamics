@@ -2,6 +2,8 @@
 ============================================================================================================
 Candidate Orbit-Space Modes
 ============================================================================================================
+[INFO] Archive dependency check:
+  - areal_kappa_coordinate_fixing: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Spherical orbit-space decomposition
@@ -158,24 +160,18 @@ Note:
 Case 7b: Leak-detection classification
 ------------------------------------------------------------------------------------------------------------
 
-Requirement validation:
-Validation Results:
-  [+] reciprocal_scaling: A*B = 1 holds exactly.
-  [X] gamma_v_one: gamma_v = 0 != 1
-  [X] beta_one: beta = 0 != 1
-  [?] positive_energy: No energy functional defined.
-  [?] trace_free_exchange: No exchange source defined.
-
-Leak detection (expected: reciprocal_scaling LEAKED):
-  reciprocal_scaling: clean
-  kappa_zero: clean
-  gamma_v_one: clean
+Concrete metric classification:
+  reciprocal_scaling: satisfied_by_construction
+    reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
+    leak via: ['concrete_metric_A', 'concrete_metric_B']
+  gamma_v_one: failed
+    gamma_v = 0 != 1
 
 Classification:
-  The Schwarzschild check is 'confirmed by construction' —
-  the assumptions (B=1/A) directly encode the reciprocal_scaling target.
-  This is a consistency check of the orbit-space formulation against a
-  known solution, not a derivation from independent source-law principles.
+  The Schwarzschild check is 'satisfied_by_construction' when the
+  reciprocal form is encoded directly in the concrete metric.
+  That keeps the result in the right bucket: a consistency check
+  against a known solution, not a source-law derivation.
 
 ============================================================================================================
 Case 8: Failure control — ignoring areal scalar
