@@ -46,7 +46,16 @@
 # Suggested location:
 #   scripts_v3/candidate_multipole_areal_flux_extension.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -83,6 +92,30 @@ def radial_laplacian_l(expr, r, ell):
 
 def spherical_flux_radial(A, r):
     return sp.simplify(4*sp.pi*r**2*sp.diff(A, r))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="boundary_flux_exact_metric",
+        upstream_script_id="04_source_law_interior__candidate_boundary_flux_action",
+        upstream_derivation_id="boundary_flux_exact_metric_check",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -245,7 +278,7 @@ def case_5_dipole_caution():
 # Case 6: Linear compensated metric from multipole A
 # =============================================================================
 
-def case_6_linear_compensated_metric():
+def case_6_linear_compensated_metric(ns=None):
     header("Case 6: Linear compensated metric from multipole A")
 
     psi = sp.symbols("psi", real=True)
@@ -268,6 +301,25 @@ def case_6_linear_compensated_metric():
     print("  B > 1")
     print()
     status_line("reciprocal compensation extends formally to weak nonspherical A", True)
+
+    ctx = TheoryContext("candidate_multipole_areal_flux_extension")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    psi = sp.Symbol("psi", real=True)
+    ctx.assumptions.add("weak_multipole_A", sp.Eq(ms.A, 1 + 2 * psi))
+    ctx.assumptions.add("weak_multipole_B", sp.Eq(ms.B, sp.series(1 / (1 + 2 * psi), psi, 0, 2).removeO()))
+    reciprocal = ctx.requirements.validate("reciprocal_scaling", ctx)
+    status_line("VacuumForge reciprocal_scaling check stays clean at weak order",
+                reciprocal.status in {"pass", "undetermined", "assumed"})
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="weak_multipole_reciprocal_scalar_sector",
+            inputs=[psi],
+            output=sp.series(1 / (1 + 2 * psi), psi, 0, 2).removeO(),
+            method="weak_multipole_scalar_reconstruction",
+            status=Status.DERIVED,
+        )
 
 
 # =============================================================================
@@ -346,16 +398,19 @@ def final_interpretation():
 
 def main():
     header("Candidate Multipole Areal-Flux Extension")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_spherical_recap()
     case_1_A_phi_relation()
     case_2_multipole_harmonic_modes()
     case_3_regular_interior_modes()
     case_4_flux_integral_selection()
     case_5_dipole_caution()
-    case_6_linear_compensated_metric()
+    case_6_linear_compensated_metric(ns)
     case_7_nonlinear_caution()
     case_8_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

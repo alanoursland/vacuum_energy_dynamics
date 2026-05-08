@@ -2,6 +2,8 @@
 ====================================================================================================================
 Candidate Vector Sector Frame Dragging
 ====================================================================================================================
+[INFO] Archive dependency check:
+  - trace_free_spatial_shear_inventory: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ====================================================================================================================
 Case 0: Why vector sector is needed

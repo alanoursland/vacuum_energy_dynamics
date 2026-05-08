@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "trace_free_spatial_shear_inventory",
+    "upstream_script_id": "05_nonspherical_sectors__candidate_nonspherical_degree_inventory",
+    "upstream_derivation_id": "trace_free_spatial_shear_inventory",
+    "declared_at": "2026-05-08T17:33:11.141939+00:00"
+  }
+]

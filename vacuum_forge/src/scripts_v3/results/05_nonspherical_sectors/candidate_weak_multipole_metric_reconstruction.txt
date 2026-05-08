@@ -2,6 +2,8 @@
 ====================================================================================================================
 Candidate Weak Multipole Metric Reconstruction
 ====================================================================================================================
+[INFO] Archive dependency check:
+  - weak_multipole_scalar_sector: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ====================================================================================================================
 Case 0: Weak metric target
@@ -27,6 +29,7 @@ B_recip series = -8*psi**3 + 4*psi**2 - 2*psi + 1
 To first order:
   B_recip ≈ 1 - 2 psi
 [PASS] reciprocal compensation matches scalar spatial factor at first order
+[WARN] VacuumForge reciprocal_scaling check supports weak scalar sector
 
 ====================================================================================================================
 Case 2: Gamma proxy

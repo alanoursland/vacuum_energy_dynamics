@@ -40,7 +40,16 @@
 # Suggested location:
 #   scripts_v3/candidate_weak_multipole_metric_reconstruction.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -80,6 +89,30 @@ def series(expr, var, order):
     return sp.series(expr, var, 0, order).removeO()
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="weak_multipole_scalar_sector",
+        upstream_script_id="05_nonspherical_sectors__candidate_multipole_areal_flux_extension",
+        upstream_derivation_id="weak_multipole_reciprocal_scalar_sector",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 # =============================================================================
 # Case 0: Weak metric target
 # =============================================================================
@@ -109,7 +142,7 @@ def case_0_weak_metric_target():
 # Case 1: Reciprocal compensation at weak order
 # =============================================================================
 
-def case_1_reciprocal_compensation():
+def case_1_reciprocal_compensation(ns=None):
     header("Case 1: Reciprocal compensation at weak order")
 
     psi = sp.symbols("psi", real=True)
@@ -127,6 +160,24 @@ def case_1_reciprocal_compensation():
 
     status_line("reciprocal compensation matches scalar spatial factor at first order",
                 is_zero(series(B_recip - (1 - 2*psi), psi, 2)))
+
+    ctx = TheoryContext("candidate_weak_multipole_metric_reconstruction")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    ctx.assumptions.add("weak_scalar_A", sp.Eq(ms.A, 1 + 2 * psi))
+    ctx.assumptions.add("weak_scalar_B", sp.Eq(ms.B, B_series))
+    reciprocal = ctx.requirements.validate("reciprocal_scaling", ctx)
+    status_line("VacuumForge reciprocal_scaling check supports weak scalar sector",
+                reciprocal.status in {"pass", "undetermined", "assumed"})
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="weak_scalar_gamma_one_sector",
+            inputs=[psi],
+            output=sp.series(B_recip, psi, 0, 2).removeO(),
+            method="weak_scalar_reciprocal_compensation",
+            status=Status.DERIVED,
+        )
 
 
 # =============================================================================
@@ -372,8 +423,10 @@ def final_interpretation():
 
 def main():
     header("Candidate Weak Multipole Metric Reconstruction")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_weak_metric_target()
-    case_1_reciprocal_compensation()
+    case_1_reciprocal_compensation(ns)
     case_2_gamma_proxy()
     case_3_multipole_scalar_reconstruction()
     case_4_harmonic_modes()
@@ -383,6 +436,7 @@ def main():
     case_8_nonlinear_closure()
     case_9_classification()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

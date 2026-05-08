@@ -2,6 +2,8 @@
 ====================================================================================================================
 Candidate Nonspherical Degree Inventory
 ====================================================================================================================
+[INFO] Archive dependency check:
+  - weak_scalar_gamma_one_sector: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ====================================================================================================================
 Case 0: Inventory problem statement

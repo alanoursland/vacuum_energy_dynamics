@@ -2,6 +2,8 @@
 ================================================================================================================
 Candidate Multipole Areal-Flux Extension
 ================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_flux_exact_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ================================================================================================================
 Case 0: Spherical areal-flux recap
@@ -122,6 +124,7 @@ For attractive gravity Phi<0:
   B > 1
 
 [PASS] reciprocal compensation extends formally to weak nonspherical A
+[WARN] VacuumForge reciprocal_scaling check stays clean at weak order
 
 ================================================================================================================
 Case 7: Nonlinear caution

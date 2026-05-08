@@ -1,0 +1,18 @@
+{
+  "derivation_id": "weak_multipole_reciprocal_scalar_sector",
+  "inputs": [
+    {
+      "srepr": "Symbol('psi', real=True)",
+      "latex": "\\psi"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Integer(1), Mul(Integer(-1), Integer(2), Symbol('psi', real=True)))",
+    "latex": "1 - 2 \\psi"
+  },
+  "method": "weak_multipole_scalar_reconstruction",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T17:33:06.784940+00:00",
+  "vacuumforge_version": "0.1.0"
+}
