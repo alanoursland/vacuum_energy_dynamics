@@ -1,0 +1,24 @@
+{
+  "derivation_id": "vf_exchange_creation_source_classification",
+  "inputs": [
+    {
+      "srepr": "Symbol('S_vf', positive=True, real=True)",
+      "latex": "S_{vf}"
+    },
+    {
+      "srepr": "Symbol('C_vf', positive=True, real=True)",
+      "latex": "C_{vf}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('trace_free')",
+    "latex": "trace_{free}"
+  },
+  "method": "vacuumforge_source_classification",
+  "status": "derived",
+  "metadata": {
+    "creation_classification": "pure_trace"
+  },
+  "recorded_at": "2026-05-08T09:02:36.838046+00:00",
+  "vacuumforge_version": "0.1.0"
+}

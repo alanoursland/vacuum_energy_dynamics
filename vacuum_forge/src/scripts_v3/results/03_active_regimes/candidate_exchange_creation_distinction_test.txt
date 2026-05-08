@@ -2,6 +2,8 @@
 ========================================================================================================
 Candidate Exchange / Creation Distinction Test
 ========================================================================================================
+[INFO] Archive dependency check:
+  - reduced_action_stationary_solution: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================
 Case 0: P1 + P3 bookkeeping identity
@@ -77,6 +79,15 @@ Operator: mixed_exchange_plus_creation (mixed)
 [PASS] mixed operator has shear
 [PASS] mixed operator has traceful creation
 
+--------------------------------------------------------------------------------------------------------
+vacuumforge_source_classification
+--------------------------------------------------------------------------------------------------------
+exchange classification = trace_free
+exchange assumed_trace_free = True
+creation classification = pure_trace
+[PASS] VacuumForge exchange source is classified trace_free
+[PASS] VacuumForge creation source is not classified trace_free
+
 ========================================================================================================
 Case 2: Equilibrium consequences
 ========================================================================================================
@@ -137,6 +148,13 @@ s_eq     = S/(2*C_s)
 AB       = exp(C/C_k)
 [PASS] mixed equilibrium sources kappa generically
 [PASS] mixed breaks AB=1 generically
+
+--------------------------------------------------------------------------------------------------------
+vacuumforge_equilibrium_crosscheck
+--------------------------------------------------------------------------------------------------------
+[PASS] VacuumForge exchange equilibrium suppresses kappa
+[PASS] VacuumForge exchange equilibrium allows shear
+[PASS] VacuumForge creation equilibrium gives nonzero kappa
 
 ========================================================================================================
 Case 3: Relaxation operator as energy descent

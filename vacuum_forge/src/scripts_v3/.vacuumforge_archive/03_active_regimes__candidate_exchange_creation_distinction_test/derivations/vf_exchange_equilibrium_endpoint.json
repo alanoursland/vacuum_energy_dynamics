@@ -1,0 +1,20 @@
+{
+  "derivation_id": "vf_exchange_equilibrium_endpoint",
+  "inputs": [
+    {
+      "srepr": "Symbol('S_vf', positive=True, real=True)",
+      "latex": "S_{vf}"
+    }
+  ],
+  "output": {
+    "srepr": "Equality(Symbol('kappa', real=True), Integer(0))",
+    "latex": "\\kappa = 0"
+  },
+  "method": "vacuumforge_source_coupled_energy",
+  "status": "derived",
+  "metadata": {
+    "sigma_solution": "Eq(sigma, S_vf/(2*C_sigma))"
+  },
+  "recorded_at": "2026-05-08T09:02:37.024048+00:00",
+  "vacuumforge_version": "0.1.0"
+}

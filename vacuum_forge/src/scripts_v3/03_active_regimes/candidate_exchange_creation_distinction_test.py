@@ -66,8 +66,17 @@
 # Suggested location:
 #   scripts_v3/candidate_exchange_creation_distinction_test.py
 
-import sympy as sp
 from dataclasses import dataclass
+from pathlib import Path
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.core.context import TheoryContext
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -112,6 +121,30 @@ def sign_label(expr):
     if expr.is_negative:
         return "negative"
     return "symbolic/undetermined"
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="reduced_action_stationary_solution",
+        upstream_script_id="02_mechanics__candidate_reduced_exterior_action",
+        upstream_derivation_id="vf_reduced_action_stationary_solution",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 @dataclass
@@ -178,7 +211,7 @@ def case_0_p1_p3_bookkeeping():
 # Case 1: Reduced operator classification
 # =============================================================================
 
-def case_1_operator_classification():
+def case_1_operator_classification(ns=None):
     header("Case 1: Reduced operator classification")
 
     S, C = sp.symbols("S C", positive=True, real=True)
@@ -232,12 +265,49 @@ def case_1_operator_classification():
             status_line("mixed operator has shear", not is_zero(op.J_s))
             status_line("mixed operator has traceful creation", not is_zero(op.J_kappa))
 
+    subheader("vacuumforge_source_classification")
+    ctx = TheoryContext("candidate_exchange_creation_distinction_test")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    S_vf, C_vf = sp.symbols("S_vf C_vf", positive=True, real=True)
+
+    exchange_src = ctx.sources.exchange_trace_free(
+        S_vf,
+        description="Conservative exchange test operator.",
+    )
+    creation_src = ctx.sources.add_modes(
+        "creation_test",
+        J_kappa=C_vf,
+        J_sigma=sp.Integer(0),
+        source_type="creation",
+        description="Traceful creation test operator.",
+    )
+
+    print(f"exchange classification = {exchange_src.classification.value}")
+    print(f"exchange assumed_trace_free = {exchange_src.assumed_trace_free}")
+    print(f"creation classification = {creation_src.classification.value}")
+
+    status_line("VacuumForge exchange source is classified trace_free",
+                exchange_src.classification.value == "trace_free")
+    status_line("VacuumForge creation source is not classified trace_free",
+                creation_src.classification.value != "trace_free")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="vf_exchange_creation_source_classification",
+            inputs=[S_vf, C_vf],
+            output=sp.Symbol(exchange_src.classification.value),
+            method="vacuumforge_source_classification",
+            status=Status.DERIVED,
+            metadata={"creation_classification": creation_src.classification.value},
+        )
+
 
 # =============================================================================
 # Case 2: Equilibrium consequences for each operator
 # =============================================================================
 
-def case_2_equilibrium_consequences():
+def case_2_equilibrium_consequences(ns=None):
     header("Case 2: Equilibrium consequences")
 
     S, C, C_k, C_s = sp.symbols("S C C_k C_s", positive=True, real=True)
@@ -279,6 +349,52 @@ def case_2_equilibrium_consequences():
             elif op.kind in ("creation", "destruction", "mixed"):
                 status_line(f"{op.kind} equilibrium sources kappa generically", not is_zero(k_eq))
                 status_line(f"{op.kind} breaks AB=1 generically", not is_zero(AB - 1))
+
+    subheader("vacuumforge_equilibrium_crosscheck")
+    ctx = TheoryContext("candidate_exchange_creation_equilibrium")
+    ctx.define_equal_response_algebraic_symbols()
+    ms = ctx._mode_symbols
+    S_vf, C_vf = sp.symbols("S_vf C_vf", positive=True, real=True)
+    ctx.energy.source_coupled(
+        C_kappa=ms.C_kappa,
+        C_sigma=ms.C_sigma,
+        J_kappa=sp.Integer(0),
+        J_sigma=S_vf,
+        kappa=ms.kappa,
+        sigma=ms.sigma,
+    )
+    exchange_sol = ctx.energy.solve_stationary("source_coupled_energy")
+    if exchange_sol.solutions:
+        k_eq = sp.simplify(exchange_sol.solutions[0][ms.kappa])
+        s_eq = sp.simplify(exchange_sol.solutions[0][ms.sigma])
+        status_line("VacuumForge exchange equilibrium suppresses kappa", is_zero(k_eq))
+        status_line("VacuumForge exchange equilibrium allows shear", is_zero(s_eq - S_vf / (2 * ms.C_sigma)))
+
+    ctx_creation = TheoryContext("candidate_creation_equilibrium")
+    ctx_creation.define_equal_response_algebraic_symbols()
+    ms_c = ctx_creation._mode_symbols
+    ctx_creation.energy.source_coupled(
+        C_kappa=ms_c.C_kappa,
+        C_sigma=ms_c.C_sigma,
+        J_kappa=C_vf,
+        J_sigma=sp.Integer(0),
+        kappa=ms_c.kappa,
+        sigma=ms_c.sigma,
+    )
+    creation_sol = ctx_creation.energy.solve_stationary("source_coupled_energy")
+    if creation_sol.solutions:
+        k_eq_c = sp.simplify(creation_sol.solutions[0][ms_c.kappa])
+        status_line("VacuumForge creation equilibrium gives nonzero kappa", not is_zero(k_eq_c))
+
+    if ns is not None and exchange_sol.solutions:
+        ns.record_derivation(
+            derivation_id="vf_exchange_equilibrium_endpoint",
+            inputs=[S_vf],
+            output=sp.Eq(ms.kappa, 0),
+            method="vacuumforge_source_coupled_energy",
+            status=Status.DERIVED,
+            metadata={"sigma_solution": str(sp.Eq(ms.sigma, S_vf / (2 * ms.C_sigma)))},
+        )
 
 
 # =============================================================================
@@ -453,14 +569,17 @@ def final_interpretation():
 
 def main():
     header("Candidate Exchange / Creation Distinction Test")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_p1_p3_bookkeeping()
-    case_1_operator_classification()
-    case_2_equilibrium_consequences()
+    case_1_operator_classification(ns)
+    case_2_equilibrium_consequences(ns)
     case_3_relaxation_energy_descent()
     case_4_relaxation_with_boundary_shear()
     case_5_classification_consistency_matrix()
     case_6_p3_impact()
     final_interpretation()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":
