@@ -1,0 +1,13 @@
+{
+  "derivation_id": "scalar_constraint_architecture_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('A_constraint_preferred')",
+    "latex": "A_{constraint preferred}"
+  },
+  "method": "scalar_constraint_architecture_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:28:14.670148+00:00",
+  "vacuumforge_version": "0.1.0"
+}

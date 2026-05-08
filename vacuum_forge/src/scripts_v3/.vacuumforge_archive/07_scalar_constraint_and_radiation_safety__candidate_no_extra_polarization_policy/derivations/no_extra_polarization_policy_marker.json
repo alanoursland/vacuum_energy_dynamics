@@ -1,0 +1,13 @@
+{
+  "derivation_id": "no_extra_polarization_policy_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('ordinary_radiation_tt_only')",
+    "latex": "ordinary_{radiation tt only}"
+  },
+  "method": "no_extra_polarization_policy_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:28:21.343169+00:00",
+  "vacuumforge_version": "0.1.0"
+}

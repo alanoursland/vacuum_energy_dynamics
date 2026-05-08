@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Binary Scalar Radiation Guardrail
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - scalar_breathing_suppression_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Binary scalar-radiation guardrail problem

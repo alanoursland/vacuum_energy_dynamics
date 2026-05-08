@@ -31,7 +31,15 @@
 #   or:
 #   scripts_v3/candidate_scalar_breathing_mode_suppression.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -58,6 +66,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="scalar_constraint_architecture_marker",
+        upstream_script_id="07_scalar_constraint_and_radiation_safety__candidate_scalar_constraint_mechanism",
+        upstream_derivation_id="scalar_constraint_architecture_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -300,6 +332,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Scalar Breathing Mode Suppression")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_constraint_projection()
     case_2_massive_suppression()
@@ -310,6 +344,14 @@ def main():
     case_7_classification_table()
     case_8_results()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="scalar_breathing_suppression_marker",
+        inputs=[],
+        output=sp.Symbol("scalar_breathing_control_required"),
+        method="scalar_breathing_suppression_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

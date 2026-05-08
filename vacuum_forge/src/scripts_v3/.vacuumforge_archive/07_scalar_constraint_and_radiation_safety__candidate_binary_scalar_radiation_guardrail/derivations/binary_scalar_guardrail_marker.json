@@ -1,0 +1,13 @@
+{
+  "derivation_id": "binary_scalar_guardrail_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('binary_scalar_quadrupole_must_be_controlled')",
+    "latex": "binary_{scalar quadrupole must be controlled}"
+  },
+  "method": "binary_scalar_radiation_guardrail_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:28:18.168158+00:00",
+  "vacuumforge_version": "0.1.0"
+}

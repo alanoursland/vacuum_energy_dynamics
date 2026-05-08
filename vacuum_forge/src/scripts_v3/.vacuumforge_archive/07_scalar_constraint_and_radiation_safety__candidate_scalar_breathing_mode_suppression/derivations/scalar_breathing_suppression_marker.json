@@ -1,0 +1,13 @@
+{
+  "derivation_id": "scalar_breathing_suppression_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('scalar_breathing_control_required')",
+    "latex": "scalar_{breathing control required}"
+  },
+  "method": "scalar_breathing_suppression_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:28:16.145152+00:00",
+  "vacuumforge_version": "0.1.0"
+}

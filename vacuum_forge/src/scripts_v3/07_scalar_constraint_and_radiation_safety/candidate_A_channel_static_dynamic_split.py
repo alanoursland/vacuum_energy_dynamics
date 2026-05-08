@@ -28,7 +28,15 @@
 #   or:
 #   scripts_v3/candidate_A_channel_static_dynamic_split.py
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -55,6 +63,30 @@ def is_zero(expr) -> bool:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="binary_scalar_guardrail_marker",
+        upstream_script_id="07_scalar_constraint_and_radiation_safety__candidate_binary_scalar_radiation_guardrail",
+        upstream_derivation_id="binary_scalar_guardrail_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def laplacian_radial(expr, r):
@@ -303,6 +335,8 @@ def final_interpretation():
 
 def main():
     header("Candidate A-Channel Static/Dynamic Split")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_define_split()
     case_2_static_exterior_survives()
@@ -314,6 +348,14 @@ def main():
     case_8_safe_architecture_matrix()
     case_9_classification()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="A_channel_split_policy_marker",
+        inputs=[],
+        output=sp.Symbol("A_rad_requires_safety_flag"),
+        method="A_channel_split_policy_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

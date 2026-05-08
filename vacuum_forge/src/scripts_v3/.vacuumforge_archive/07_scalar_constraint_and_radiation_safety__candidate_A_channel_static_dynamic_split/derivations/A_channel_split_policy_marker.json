@@ -1,0 +1,13 @@
+{
+  "derivation_id": "A_channel_split_policy_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('A_rad_requires_safety_flag')",
+    "latex": "A_{rad requires safety flag}"
+  },
+  "method": "A_channel_split_policy_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T18:28:19.815163+00:00",
+  "vacuumforge_version": "0.1.0"
+}
