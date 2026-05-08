@@ -1,0 +1,390 @@
+
+========================================================================================================================
+Candidate Residual Non-Metric Bookkeeping Rule
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Residual non-metric bookkeeping problem
+========================================================================================================================
+Question:
+
+  Can residual zeta/kappa remain useful as diagnostic bookkeeping or
+  first-order relaxation without becoming metric scalar trace,
+  shifting M_ext, or creating exterior scalar charge?
+
+Goal:
+
+  preserve useful residual variables while blocking second-spoon metric entry
+
+Discipline:
+
+  non-metric means no direct metric trace
+  bookkeeping means no hidden source reservoir
+  relaxation means not Box zeta/kappa
+  diagnostic means not field source
+  no M_ext shift
+  no exterior scalar charge
+  recovery downstream
+[WARN] residual non-metric bookkeeping problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Residual non-metric bookkeeping inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+NM1: non-metric residual target
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual zeta/kappa may remain useful only as non-metric bookkeeping, diagnostic, or safe relaxation
+Role: core residual-after-kill target
+Allowed if: residual cannot source metric trace, M_ext shift, or exterior scalar charge
+Forbidden if: residual becomes hidden metric source or scalar gravity
+[WARN] NM1: non-metric residual target: THEOREM_TARGET
+Missing: non-metric residual rule
+Consequence: decides whether residual variables survive after B_s-only insertion
+
+------------------------------------------------------------------------------------------------------------------------
+NM2: diagnostic residual
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual zeta/kappa records mismatch, gauge/reduction status, or internal audit only
+Role: safe diagnostic branch
+Allowed if: diagnostic has no source term in metric equations
+Forbidden if: diagnostic is promoted to field source
+[WARN] NM2: diagnostic residual: SAFE_IF
+Missing: diagnostic scope statement
+Consequence: keeps residual useful without physics overclaim
+
+------------------------------------------------------------------------------------------------------------------------
+NM3: configuration bookkeeping
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual tracks vacuum-volume configuration history without direct metric insertion
+Role: non-metric bookkeeping branch
+Allowed if: bookkeeping cannot shift M_ext or exterior charge
+Forbidden if: bookkeeping becomes hidden source reservoir
+[WARN] NM3: configuration bookkeeping: CANDIDATE
+Missing: bookkeeping/accounting law
+Consequence: preserves ontology while blocking second trace
+
+------------------------------------------------------------------------------------------------------------------------
+NM4: P_relax-only residual
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual participates only in first-order non-radiative relaxation
+Role: possible safe dynamic branch
+Allowed if: first-order, boundary-neutral, compact/support-safe, not metric trace
+Forbidden if: P_relax becomes Box zeta, Box kappa, or ordinary scalar radiation
+[WARN] NM4: P_relax-only residual: CANDIDATE
+Missing: P_relax operator and non-wave theorem
+Consequence: allows residual dynamics without far-zone scalar wave
+
+------------------------------------------------------------------------------------------------------------------------
+NM5: energy/accounting diagnostic only
+------------------------------------------------------------------------------------------------------------------------
+Rule: epsilon_vac_config and e_kappa may audit configuration cost but not source extra metric trace
+Role: energy/accounting fence
+Allowed if: energy terms are diagnostic or recombined once through B_s only
+Forbidden if: energy terms become source reservoir or coefficient tuning knob
+[WARN] NM5: energy/accounting diagnostic only: REQUIRED
+Missing: energy/accounting recombination rule
+Consequence: prevents killed residual from returning through energy
+
+------------------------------------------------------------------------------------------------------------------------
+NM6: no M_ext shift
+------------------------------------------------------------------------------------------------------------------------
+Rule: non-metric residual cannot change exterior A-sector mass
+Role: mass-protection requirement
+Allowed if: residual bookkeeping is mass-neutral
+Forbidden if: residual alters measured exterior mass
+[WARN] NM6: no M_ext shift: REQUIRED
+Missing: mass-neutrality theorem
+Consequence: protects strongest reduced A-sector result
+
+------------------------------------------------------------------------------------------------------------------------
+NM7: no exterior scalar charge
+------------------------------------------------------------------------------------------------------------------------
+Rule: non-metric residual creates no exterior zeta/kappa charge and no far-zone scalar flux
+Role: ordinary exterior safety requirement
+Allowed if: residual support/relaxation is boundary-neutral
+Forbidden if: residual leaks scalar tail
+[WARN] NM7: no exterior scalar charge: REQUIRED
+Missing: boundary neutrality theorem
+Consequence: prevents residual from becoming scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+NM8: kappa diagnostic fence
+------------------------------------------------------------------------------------------------------------------------
+Rule: kappa remains reduced diagnostic / non-metric residual / separately neutral unless derived
+Role: standing kappa safety rule
+Allowed if: kappa does not enter metric scalar trace
+Forbidden if: kappa restores killed zeta residual trace
+[WARN] NM8: kappa diagnostic fence: REQUIRED
+Missing: kappa cleanup theorem
+Consequence: prevents kappa backdoor
+
+------------------------------------------------------------------------------------------------------------------------
+NM9: non-metric residual cannot define O
+------------------------------------------------------------------------------------------------------------------------
+Rule: bookkeeping status does not itself prove no-overlap operator O
+Role: anti-hardening guard
+Allowed if: O remains theorem target unless explicitly defined
+Forbidden if: non-metric label is used as fake O
+[WARN] NM9: non-metric residual cannot define O: REQUIRED
+Missing: O operator
+Consequence: keeps no-overlap unresolved rather than renamed
+
+------------------------------------------------------------------------------------------------------------------------
+NM10: forbidden hidden metric source
+------------------------------------------------------------------------------------------------------------------------
+Rule: non-metric residual later appears in metric equation source term
+Role: rejected regression
+Allowed if: never unless recast through explicit B_s insertion and count-once
+Forbidden if: accepted as hidden source
+[WARN] NM10: forbidden hidden metric source: REJECTED
+Missing: not pursued
+Consequence: blocks source-reservoir behavior
+
+------------------------------------------------------------------------------------------------------------------------
+NM11: forbidden Box residual
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual evolves by Box zeta or Box kappa in ordinary sector
+Role: rejected scalar-radiation branch
+Allowed if: never in ordinary branch
+Forbidden if: accepted as relaxation
+[WARN] NM11: forbidden Box residual: REJECTED
+Missing: not pursued
+Consequence: prevents ordinary scalar radiation
+
+------------------------------------------------------------------------------------------------------------------------
+NM12: forbidden coefficient reservoir
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual bookkeeping adjusts coefficients to recover gamma_like or AB
+Role: rejected tuning branch
+Allowed if: never as mechanism
+Forbidden if: used to pass recovery
+[WARN] NM12: forbidden coefficient reservoir: REJECTED
+Missing: not pursued
+Consequence: prevents recovery smuggling through bookkeeping
+
+------------------------------------------------------------------------------------------------------------------------
+NM13: neutral metric residual alternative
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual metric trace survives only if O and boundary/mass neutrality are derived
+Role: theorem-heavy alternative
+Allowed if: real O exists and residual is structurally neutral
+Forbidden if: used because non-metric bookkeeping feels too restrictive
+[WARN] NM13: neutral metric residual alternative: RISK
+Missing: O, boundary theorem, no mass overlap
+Consequence: keeps alternative alive but out of current convention
+
+------------------------------------------------------------------------------------------------------------------------
+NM14: recovery downstream
+------------------------------------------------------------------------------------------------------------------------
+Rule: gamma_like and AB are tested only after residual role is fenced
+Role: anti-smuggling guard
+Allowed if: recovery remains check only
+Forbidden if: recovery chooses diagnostic/bookkeeping/relaxation role
+[WARN] NM14: recovery downstream: RECOVERY_TARGET
+Missing: solutions after residual rule
+Consequence: keeps residual status from being selected by GR target
+
+------------------------------------------------------------------------------------------------------------------------
+NM15: parent derivation route
+------------------------------------------------------------------------------------------------------------------------
+Rule: parent identity derives whether residual is killed, non-metric, or neutral
+Role: future derivation route
+Allowed if: identity is explicit and not GR rewrite
+Forbidden if: identity is decorative
+[WARN] NM15: parent derivation route: THEOREM_TARGET
+Missing: parent residual identity
+Consequence: future route for replacing convention with theorem
+
+------------------------------------------------------------------------------------------------------------------------
+NM16: residual bookkeeping failure
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual cannot be kept non-metric and cannot be made neutral through O
+Role: branch failure condition
+Allowed if: used to block residual variables from ordinary sector
+Forbidden if: patched by relabeling residual as bookkeeping
+[FAIL] NM16: residual bookkeeping failure: BRANCH_KILLED
+Missing: applies if demonstrated
+Consequence: residual variables must remain outside ordinary metric/vacuum-current sector
+
+------------------------------------------------------------------------------------------------------------------------
+NM17: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Rule: if non-metric roles survive, test minimal O forms or boundary safety next
+Role: next local bottleneck
+Allowed if: residual bookkeeping is fenced but O remains unresolved
+Forbidden if: jumping to parent equation before O/minimal forms are audited
+[PASS] NM17: recommended next move: RECOMMENDED
+Missing: minimal no-overlap operator audit
+Consequence: next script should be candidate_no_overlap_operator_minimal_forms.py
+
+========================================================================================================================
+Case 2: Compact residual non-metric ledger
+========================================================================================================================
+| Entry | Rule | Status | Consequence |
+|---|---|---|---|
+| NM1: non-metric residual target | residual zeta/kappa may remain useful only as non-metric bookkeeping, diagnostic, or safe relaxation | THEOREM_TARGET | decides whether residual variables survive after B_s-only insertion |
+| NM2: diagnostic residual | residual zeta/kappa records mismatch, gauge/reduction status, or internal audit only | SAFE_IF | keeps residual useful without physics overclaim |
+| NM3: configuration bookkeeping | residual tracks vacuum-volume configuration history without direct metric insertion | CANDIDATE | preserves ontology while blocking second trace |
+| NM4: P_relax-only residual | residual participates only in first-order non-radiative relaxation | CANDIDATE | allows residual dynamics without far-zone scalar wave |
+| NM5: energy/accounting diagnostic only | epsilon_vac_config and e_kappa may audit configuration cost but not source extra metric trace | REQUIRED | prevents killed residual from returning through energy |
+| NM6: no M_ext shift | non-metric residual cannot change exterior A-sector mass | REQUIRED | protects strongest reduced A-sector result |
+| NM7: no exterior scalar charge | non-metric residual creates no exterior zeta/kappa charge and no far-zone scalar flux | REQUIRED | prevents residual from becoming scalar gravity |
+| NM8: kappa diagnostic fence | kappa remains reduced diagnostic / non-metric residual / separately neutral unless derived | REQUIRED | prevents kappa backdoor |
+| NM9: non-metric residual cannot define O | bookkeeping status does not itself prove no-overlap operator O | REQUIRED | keeps no-overlap unresolved rather than renamed |
+| NM10: forbidden hidden metric source | non-metric residual later appears in metric equation source term | REJECTED | blocks source-reservoir behavior |
+| NM11: forbidden Box residual | residual evolves by Box zeta or Box kappa in ordinary sector | REJECTED | prevents ordinary scalar radiation |
+| NM12: forbidden coefficient reservoir | residual bookkeeping adjusts coefficients to recover gamma_like or AB | REJECTED | prevents recovery smuggling through bookkeeping |
+| NM13: neutral metric residual alternative | residual metric trace survives only if O and boundary/mass neutrality are derived | RISK | keeps alternative alive but out of current convention |
+| NM14: recovery downstream | gamma_like and AB are tested only after residual role is fenced | RECOVERY_TARGET | keeps residual status from being selected by GR target |
+| NM15: parent derivation route | parent identity derives whether residual is killed, non-metric, or neutral | THEOREM_TARGET | future route for replacing convention with theorem |
+| NM16: residual bookkeeping failure | residual cannot be kept non-metric and cannot be made neutral through O | BRANCH_KILLED | residual variables must remain outside ordinary metric/vacuum-current sector |
+| NM17: recommended next move | if non-metric roles survive, test minimal O forms or boundary safety next | RECOMMENDED | next script should be candidate_no_overlap_operator_minimal_forms.py |
+[WARN] compact non-metric residual ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 2
+RECOMMENDED: 1
+RECOVERY_TARGET: 1
+REJECTED: 3
+REQUIRED: 5
+RISK: 1
+SAFE_IF: 1
+THEOREM_TARGET: 2
+
+Interpretation:
+  Residual variables can remain useful only if their non-metric role is explicit.
+  Diagnostic and bookkeeping roles are safest.
+  P_relax-only residual is possible but needs a non-wave theorem.
+  Energy/accounting is dangerous unless diagnostic or recombined once.
+  O remains unresolved; non-metric bookkeeping does not define it.
+  Next gate is minimal no-overlap operator forms.
+[WARN] residual non-metric bookkeeping status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Allowed residual roles
+========================================================================================================================
+Allowed residual roles if fenced:
+
+1. diagnostic mismatch / reduced-gauge audit
+2. configuration bookkeeping
+3. first-order non-radiative relaxation
+4. energy/accounting diagnostic
+5. parent-identity theorem target
+
+Not allowed:
+
+1. direct metric scalar trace
+2. hidden metric source
+3. exterior scalar charge
+4. M_ext shift
+5. Box zeta / Box kappa
+6. coefficient reservoir
+[PASS] allowed residual roles listed: RECOMMENDED
+
+========================================================================================================================
+Case 5: Non-metric residual decision tree
+========================================================================================================================
+Decision tree:
+
+1. Diagnostic-only residual:
+   safest if never promoted to field source.
+
+2. Configuration bookkeeping:
+   allowed if no M_ext shift and no scalar charge.
+
+3. P_relax-only residual:
+   possible if first-order, non-radiative, boundary-neutral, non-metric.
+
+4. Energy/accounting diagnostic:
+   allowed only if not source reservoir.
+
+5. Neutral metric residual:
+   reserved for real O, not current convention.
+
+6. Hidden metric source or scalar wave:
+   rejected.
+[PASS] non-metric residual decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 6: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  residual variables cannot be kept from becoming source reservoirs,
+  metric trace, exterior charge, or scalar waves.
+
+Consequence:
+
+  residual variables must remain outside ordinary metric/vacuum-current sector,
+  or the insertion branch is killed.
+
+Bad failure:
+
+  call residual non-metric, then let it source metric equations indirectly.
+[WARN] residual non-metric bookkeeping good failure stated: DEFER
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+Residual non-metric bookkeeping fails if:
+
+1. diagnostic residual becomes field source
+2. bookkeeping shifts M_ext
+3. bookkeeping creates exterior scalar charge
+4. energy/accounting becomes coefficient reservoir
+5. P_relax becomes Box zeta / Box kappa
+6. non-metric label is used as fake O
+7. kappa restores killed trace
+8. recovery checks choose residual role
+[WARN] residual non-metric bookkeeping failure controls stated: RISK
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_residual_nonmetric_bookkeeping_rule.md
+   Artifact for this script.
+
+2. candidate_no_overlap_operator_minimal_forms.py
+   Test whether a minimal O is more than a label.
+
+3. candidate_metric_insertion_early_failure_summary.py
+   Use if residual roles cannot be fenced.
+
+Recommended next script:
+
+  candidate_no_overlap_operator_minimal_forms.py
+
+Reason:
+  Non-metric bookkeeping can fence residual roles provisionally,
+  but O remains the missing theorem for any neutral residual alternative.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Residual zeta/kappa may remain useful only if their role is explicitly non-metric.
+
+Safest surviving roles:
+
+  diagnostic
+  configuration bookkeeping
+  first-order non-radiative P_relax-only residual
+  energy/accounting diagnostic only
+
+Still not derived:
+
+  O
+  residual-kill theorem
+  P_relax mechanism
+  parent residual identity
+
+Best next script:
+
+  candidate_no_overlap_operator_minimal_forms.py
+[PASS] residual non-metric bookkeeping audit complete: CLOSED

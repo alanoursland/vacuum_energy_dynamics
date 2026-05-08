@@ -1,0 +1,312 @@
+
+========================================================================================================================
+Candidate GR Limit Recovery Audit
+========================================================================================================================
+
+========================================================================================================================
+Case 0: GR limit recovery audit problem
+========================================================================================================================
+Question:
+
+  Which GR-facing results are actually derived, reduced-derived, structural, matched,
+  constrained, missing, or risky?
+
+Goal:
+
+  prevent the theory from claiming closure by inheriting GR targets
+
+Discipline:
+
+  targets are not derivations
+  structural agreement is not coefficient derivation
+  reduced reconstruction is real but limited
+[WARN] GR recovery audit problem posed: CONSTRAINED
+
+========================================================================================================================
+Case 1: GR limit audit inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Static spherical exterior A
+------------------------------------------------------------------------------------------------------------------------
+GR target: Schwarzschild A = 1 - 2GM/(c^2 r)
+Current basis: areal flux law / scalar monopole exterior integration
+[PASS] Static spherical exterior A: DERIVED_REDUCED
+What is real: The exterior scalar factor is genuinely reconstructed in the reduced static spherical case.
+What is not yet real: Full covariant derivation and nonspherical nonlinear extension.
+Risk: Overclaiming beyond reduced symmetry.
+Next needed: parent scalar constraint identity.
+
+------------------------------------------------------------------------------------------------------------------------
+Exterior B = 1/A
+------------------------------------------------------------------------------------------------------------------------
+GR target: Schwarzschild radial factor
+Current basis: AB = exp(2 kappa), exterior kappa=0
+[PASS] Exterior B = 1/A: DERIVED_REDUCED
+What is real: Reduced exterior reciprocal relation follows once exterior kappa is zero.
+What is not yet real: Covariant gauge/physical meaning of kappa and B.
+Risk: Treating areal-gauge relation as full geometry.
+Next needed: metric recombination / gauge identity.
+
+------------------------------------------------------------------------------------------------------------------------
+Weak scalar multipoles
+------------------------------------------------------------------------------------------------------------------------
+GR target: Newtonian potential / weak GR scalar limit
+Current basis: A approx 1 + 2 Phi/c^2, nabla^2 Phi = 4*pi*G rho
+[PASS] Weak scalar multipoles: DERIVED_REDUCED
+What is real: Weak scalar/multipole structure follows from scalar constraint analogy.
+What is not yet real: Full nonlinear nonspherical equation and conservation closure.
+Risk: Assuming weak multipole success proves complete nonspherical GR.
+Next needed: nonspherical parent constraint.
+
+------------------------------------------------------------------------------------------------------------------------
+PPN gamma = 1 / spatial scalar response
+------------------------------------------------------------------------------------------------------------------------
+GR target: equal weak spatial/lapse scalar response
+Current basis: A/B exterior reciprocal relation and weak expansion
+[PASS] PPN gamma = 1 / spatial scalar response: DERIVED_REDUCED
+What is real: Weak exterior reciprocal relation supports gamma=1 in the reduced regime.
+What is not yet real: General PPN derivation with all parameters and gauges.
+Risk: Claiming full PPN success from gamma only.
+Next needed: full weak-field PPN audit.
+
+------------------------------------------------------------------------------------------------------------------------
+Frame-dragging shape
+------------------------------------------------------------------------------------------------------------------------
+GR target: far-field gravitomagnetic dipole proportional to angular momentum J
+Current basis: transverse vector W_i sourced by j_T; rotating source reduces to J
+[PASS] Frame-dragging shape: DERIVED_REDUCED
+What is real: The expected far-field vector shape and angular-momentum dependence are supported.
+What is not yet real: Absolute normalization and observable coupling beta_W.
+Risk: Shape success hiding coefficient matching.
+Next needed: derive alpha_W/K_c and beta_W.
+
+------------------------------------------------------------------------------------------------------------------------
+Frame-dragging normalization
+------------------------------------------------------------------------------------------------------------------------
+GR target: Lense-Thirring coefficient
+Current basis: not yet derived; target known from GR
+[WARN] Frame-dragging normalization: MATCHED
+What is real: Target normalization is known.
+What is not yet real: Ontology-derived coefficient.
+Risk: Importing GR shift-vector coefficient.
+Next needed: vacuum vector stiffness / source coupling derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+Tensor wave existence
+------------------------------------------------------------------------------------------------------------------------
+GR target: two transverse-traceless gravitational wave polarizations
+Current basis: TT sector selected as only ordinary long-range radiation
+[WARN] Tensor wave existence: STRUCTURAL
+What is real: TT-only radiation is structurally consistent and scalar/vector radiation hazards are constrained.
+What is not yet real: Action-derived tensor wave equation and coupling.
+Risk: Assuming GR tensor dynamics because TT is selected.
+Next needed: tensor action stiffness and source identity.
+
+------------------------------------------------------------------------------------------------------------------------
+Tensor wave coupling
+------------------------------------------------------------------------------------------------------------------------
+GR target: linearized GR coupling to TT stress / quadrupole
+Current basis: Box h_TT = -C_T S_TT
+[WARN] Tensor wave coupling: MATCHED
+What is real: Correct target structure is identified.
+What is not yet real: C_T from vacuum ontology.
+Risk: C_T imported as 16*pi*G/c^4 or equivalent.
+Next needed: derive C_T from tensor flux/stiffness.
+
+------------------------------------------------------------------------------------------------------------------------
+Quadrupole radiation power
+------------------------------------------------------------------------------------------------------------------------
+GR target: GR quadrupole luminosity
+Current basis: tensor flux proportional to <dot h_TT^2>
+[WARN] Quadrupole radiation power: MATCHED
+What is real: Energy-flux form is structurally aligned with TT radiation.
+What is not yet real: Absolute flux coefficient and quadrupole power coefficient.
+Risk: Copying GR radiation formula.
+Next needed: vacuum tensor energy flux derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+No scalar breathing radiation
+------------------------------------------------------------------------------------------------------------------------
+GR target: GR has no scalar breathing mode
+Current basis: A_rad rejected; kappa non-inertial trace relaxation
+[WARN] No scalar breathing radiation: CONSTRAINED
+What is real: Scalar radiation hazards are explicitly controlled by current rules.
+What is not yet real: Parent identity proving absence rather than imposing it.
+Risk: Suppression by rule rather than derivation.
+Next needed: scalar constraint/radiation split identity.
+
+------------------------------------------------------------------------------------------------------------------------
+Kappa interior/trace behavior
+------------------------------------------------------------------------------------------------------------------------
+GR target: GR interior pressure/stress effects without exterior scalar radiation
+Current basis: kappa_min shift and non-inertial relaxation
+[WARN] Kappa interior/trace behavior: STRUCTURAL
+What is real: Coherent control model prevents kappa from becoming scalar gravity.
+What is not yet real: Source law, coefficients, covariant origin, boundary theorem.
+Risk: Repair knob if not parent-derived.
+Next needed: kappa non-radiative trace identity.
+
+------------------------------------------------------------------------------------------------------------------------
+Near-boundary deviation
+------------------------------------------------------------------------------------------------------------------------
+GR target: possible deviation from naive GR interior/exterior matching
+Current basis: joint minimum spline/energy diagnostic
+[WARN] Near-boundary deviation: RISK
+What is real: Deviation diagnostics are defined.
+What is not yet real: Magnitude, observable, weights, transition width, compatibility with tests.
+Risk: Overclaiming unmeasured prediction.
+Next needed: only after closure: numerical model and observability scan.
+
+------------------------------------------------------------------------------------------------------------------------
+Conservation / Bianchi compatibility
+------------------------------------------------------------------------------------------------------------------------
+GR target: nabla_mu G^mu_nu = 0 and nabla_mu T^mu_nu = 0 compatibility
+Current basis: requirements ledger only
+[FAIL] Conservation / Bianchi compatibility: MISSING
+What is real: The required identity is now named.
+What is not yet real: The identity itself.
+Risk: Theory remains sector ledger, not closed field equations.
+Next needed: candidate parent identity template.
+
+------------------------------------------------------------------------------------------------------------------------
+Metric recombination
+------------------------------------------------------------------------------------------------------------------------
+GR target: one coherent metric field
+Current basis: reduced bookkeeping ansatz
+[FAIL] Metric recombination: UNFINISHED
+What is real: Sector map is explicit and no-double-counting rules are known.
+What is not yet real: Covariant recombination map.
+Risk: Silent GR import.
+Next needed: parent metric/recombination identity.
+
+========================================================================================================================
+Case 2: Compact GR recovery ledger
+========================================================================================================================
+| Result | GR target | Status | Real | Not yet real |
+|---|---|---|---|---|
+| Static spherical exterior A | Schwarzschild A = 1 - 2GM/(c^2 r) | DERIVED_REDUCED | The exterior scalar factor is genuinely reconstructed in the reduced static spherical case. | Full covariant derivation and nonspherical nonlinear extension. |
+| Exterior B = 1/A | Schwarzschild radial factor | DERIVED_REDUCED | Reduced exterior reciprocal relation follows once exterior kappa is zero. | Covariant gauge/physical meaning of kappa and B. |
+| Weak scalar multipoles | Newtonian potential / weak GR scalar limit | DERIVED_REDUCED | Weak scalar/multipole structure follows from scalar constraint analogy. | Full nonlinear nonspherical equation and conservation closure. |
+| PPN gamma = 1 / spatial scalar response | equal weak spatial/lapse scalar response | DERIVED_REDUCED | Weak exterior reciprocal relation supports gamma=1 in the reduced regime. | General PPN derivation with all parameters and gauges. |
+| Frame-dragging shape | far-field gravitomagnetic dipole proportional to angular momentum J | DERIVED_REDUCED | The expected far-field vector shape and angular-momentum dependence are supported. | Absolute normalization and observable coupling beta_W. |
+| Frame-dragging normalization | Lense-Thirring coefficient | MATCHED | Target normalization is known. | Ontology-derived coefficient. |
+| Tensor wave existence | two transverse-traceless gravitational wave polarizations | STRUCTURAL | TT-only radiation is structurally consistent and scalar/vector radiation hazards are constrained. | Action-derived tensor wave equation and coupling. |
+| Tensor wave coupling | linearized GR coupling to TT stress / quadrupole | MATCHED | Correct target structure is identified. | C_T from vacuum ontology. |
+| Quadrupole radiation power | GR quadrupole luminosity | MATCHED | Energy-flux form is structurally aligned with TT radiation. | Absolute flux coefficient and quadrupole power coefficient. |
+| No scalar breathing radiation | GR has no scalar breathing mode | CONSTRAINED | Scalar radiation hazards are explicitly controlled by current rules. | Parent identity proving absence rather than imposing it. |
+| Kappa interior/trace behavior | GR interior pressure/stress effects without exterior scalar radiation | STRUCTURAL | Coherent control model prevents kappa from becoming scalar gravity. | Source law, coefficients, covariant origin, boundary theorem. |
+| Near-boundary deviation | possible deviation from naive GR interior/exterior matching | RISK | Deviation diagnostics are defined. | Magnitude, observable, weights, transition width, compatibility with tests. |
+| Conservation / Bianchi compatibility | nabla_mu G^mu_nu = 0 and nabla_mu T^mu_nu = 0 compatibility | MISSING | The required identity is now named. | The identity itself. |
+| Metric recombination | one coherent metric field | UNFINISHED | Sector map is explicit and no-double-counting rules are known. | Covariant recombination map. |
+[WARN] compact GR recovery ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CONSTRAINED: 1
+DERIVED_REDUCED: 5
+MATCHED: 3
+MISSING: 1
+RISK: 1
+STRUCTURAL: 2
+UNFINISHED: 1
+
+Interpretation:
+  The strongest results are reduced scalar/exterior results.
+  Vector shape is reduced-derived but normalization is matched/missing.
+  Tensor radiation is structurally correct but coupling and flux are matched.
+  Conservation/Bianchi closure is missing.
+[WARN] GR audit status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Strongest results
+========================================================================================================================
+Strongest current GR-facing recoveries:
+
+1. Static spherical exterior A.
+2. Exterior B=1/A once kappa=0.
+3. Weak scalar multipole / Newtonian limit.
+4. Gamma=1 in the reduced exterior weak limit.
+5. Frame-dragging far-field shape proportional to J.
+
+These are real reduced/structural wins, but limited.
+[PASS] strongest GR-facing results identified: DERIVED_REDUCED
+
+========================================================================================================================
+Case 5: Weakest results
+========================================================================================================================
+Weakest or most matched GR-facing pieces:
+
+1. Frame-dragging normalization.
+2. Tensor coupling C_T.
+3. Tensor radiation energy flux coefficient.
+4. Bianchi/conservation closure.
+5. Covariant metric recombination.
+
+These must not be advertised as derived.
+[WARN] weakest GR-facing pieces identified: RISK
+
+========================================================================================================================
+Case 6: Reconstruction scorecard
+========================================================================================================================
+Reconstruction scorecard:
+
+  Reduced scalar exterior:
+    real reconstruction
+
+  Weak scalar/multipole:
+    reduced/structural success
+
+  Vector sector:
+    shape success, normalization missing
+
+  Tensor radiation:
+    structural TT success, coupling/flux matched
+
+  Kappa:
+    safety/control success, not covariant derivation
+
+  Conservation/closure:
+    missing
+[WARN] reconstruction scorecard produced: CONSTRAINED
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_gr_limit_recovery_audit.md
+   Artifact for this script.
+
+2. candidate_parent_identity_template.py
+   Try to write an explicit candidate parent identity.
+
+3. candidate_field_equation_closure_failure_modes.py
+   List ways full closure can fail.
+
+Recommended next script:
+
+  candidate_parent_identity_template.py
+
+Reason:
+  The GR audit has separated real wins from matched gaps; now try the parent identity.
+[WARN] next test selected: CONSTRAINED
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Honest GR recovery status:
+
+  real reduced reconstruction: static spherical exterior
+  strong reduced/structural support: weak scalar limit, gamma=1, vector shape
+  structural but not coefficient-derived: tensor waves
+  matched: tensor coupling/flux and vector normalization
+  constrained: no scalar radiation and kappa safety
+  missing: Bianchi-like parent closure and covariant recombination
+
+Possible next artifact:
+  candidate_gr_limit_recovery_audit.md
+
+Possible next script:
+  candidate_parent_identity_template.py

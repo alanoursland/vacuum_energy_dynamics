@@ -1,0 +1,289 @@
+
+========================================================================================================================
+Candidate Epsilon Vac Config Functional
+========================================================================================================================
+
+========================================================================================================================
+Case 0: epsilon_vac_config functional problem
+========================================================================================================================
+Question:
+
+  What functional form could epsilon_vac_config have?
+
+Goal:
+
+  test candidate local, gradient, kappa-locking, and boundary terms
+
+Discipline:
+
+  geometric functional, not reservoir
+  no A-sector mass term
+  no coefficient tuning
+  no scalar kinetic wave term
+  no exterior scalar charge
+  no claim of derivation
+[WARN] epsilon_vac_config functional problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Functional term inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+F1: volume displacement energy
+------------------------------------------------------------------------------------------------------------------------
+Term: 1/2 K_zeta (zeta - zeta_min)^2
+Role: local cost of volume-form displacement from equilibrium
+Allowed if: zeta is the geometric volume variable and does not carry A-sector mass
+Forbidden if: used as independent exterior scalar charge
+[WARN] F1: volume displacement energy: CANDIDATE
+Missing: K_zeta, zeta_min, frame/measure
+
+------------------------------------------------------------------------------------------------------------------------
+F2: gradient/interface stiffness
+------------------------------------------------------------------------------------------------------------------------
+Term: 1/2 L_zeta gamma^ij partial_i zeta partial_j zeta
+Role: penalizes sharp volume-form interfaces and shell artifacts
+Allowed if: compact/support boundary behavior remains zero-flux
+Forbidden if: creates propagating scalar wave or exterior tail
+[WARN] F2: gradient/interface stiffness: CANDIDATE
+Missing: L_zeta and whether gradient term is spatial/constraint-only
+
+------------------------------------------------------------------------------------------------------------------------
+F3: kappa mismatch energy
+------------------------------------------------------------------------------------------------------------------------
+Term: 1/2 K_kappa (kappa - kappa_min)^2
+Role: existing trace/volume relaxation energy candidate
+Allowed if: kappa is tied to zeta mismatch and first-order relaxation
+Forbidden if: adds independent kappa scalar momentum/radiation
+[WARN] F3: kappa mismatch energy: STRUCTURAL
+Missing: precise kappa-zeta map
+
+------------------------------------------------------------------------------------------------------------------------
+F4: kappa-zeta locking term
+------------------------------------------------------------------------------------------------------------------------
+Term: 1/2 K_lock (kappa - (zeta - zeta_min))^2
+Role: prevents kappa and zeta from becoming independent scalar charges
+Allowed if: used as constraint/diagnostic relation
+Forbidden if: introduces extra scalar degree of freedom
+[WARN] F4: kappa-zeta locking term: CANDIDATE
+Missing: whether kappa equals, approximates, or projects zeta mismatch
+
+------------------------------------------------------------------------------------------------------------------------
+F5: compact-support boundary term
+------------------------------------------------------------------------------------------------------------------------
+Term: B_boundary[zeta] enforcing zeta(R)=0 and flux zero
+Role: protects exterior neutrality and no shell artifacts
+Allowed if: derived from interface law or projector
+Forbidden if: boundary condition imposed by hand for each case
+[WARN] F5: compact-support boundary term: CANDIDATE
+Missing: P_boundary origin and interface law
+
+------------------------------------------------------------------------------------------------------------------------
+F6: compensated-source constraint
+------------------------------------------------------------------------------------------------------------------------
+Term: lambda_Q (integral S_volume d^3x)
+Role: enforces Q_volume=0 when compensation is required
+Allowed if: constraint origin is parent-derived
+Forbidden if: used as arbitrary projection repair
+[WARN] F6: compensated-source constraint: RISK
+Missing: S_volume definition and parent projector
+
+------------------------------------------------------------------------------------------------------------------------
+F7: forbidden A-mass term
+------------------------------------------------------------------------------------------------------------------------
+Term: M_ext or A_flux included in epsilon_vac_config
+Role: none
+Allowed if: never
+Forbidden if: epsilon_vac_config changes exterior mass
+[PASS] F7: forbidden A-mass term: FORBIDDEN
+Missing: not pursued
+
+------------------------------------------------------------------------------------------------------------------------
+F8: forbidden coefficient tuning term
+------------------------------------------------------------------------------------------------------------------------
+Term: terms adjusted to fit alpha_W/K_c, beta_W, C_T, K_T
+Role: none
+Allowed if: never
+Forbidden if: functional becomes coefficient repair knob
+[PASS] F8: forbidden coefficient tuning term: FORBIDDEN
+Missing: not pursued
+
+------------------------------------------------------------------------------------------------------------------------
+F9: optional nonlinear volume strain
+------------------------------------------------------------------------------------------------------------------------
+Term: U(exp(zeta)) or U(sqrt(gamma)/sqrt(gamma_ref))
+Role: nonlinear extension beyond quadratic displacement
+Allowed if: reduces to quadratic form at small strain and preserves neutrality
+Forbidden if: nonlinear term creates exterior volume charge
+[FAIL] F9: optional nonlinear volume strain: UNRESOLVED
+Missing: nonlinear determinant/volume theorem
+
+------------------------------------------------------------------------------------------------------------------------
+F10: minimal candidate functional
+------------------------------------------------------------------------------------------------------------------------
+Term: epsilon_vac_config = 1/2 K_zeta (zeta-zeta_min)^2 + 1/2 L_zeta |grad zeta|^2 + 1/2 K_lock (kappa-(zeta-zeta_min))^2
+Role: first combined candidate functional
+Allowed if: treated as scaffold with unknown coefficients and no scalar radiation
+Forbidden if: advertised as derived or covariant
+[WARN] F10: minimal candidate functional: CANDIDATE
+Missing: coefficients, measure, frame, boundary law, parent derivation
+
+------------------------------------------------------------------------------------------------------------------------
+F11: measure factor
+------------------------------------------------------------------------------------------------------------------------
+Term: epsilon_vac_config sqrt(gamma) d^3x
+Role: integrates local density over physical volume
+Allowed if: slice/frame is specified
+Forbidden if: treated as covariant action without 4D formulation
+[WARN] F11: measure factor: REQUIRED
+Missing: measure convention and covariant extension
+
+------------------------------------------------------------------------------------------------------------------------
+F12: no kinetic scalar term
+------------------------------------------------------------------------------------------------------------------------
+Term: no 1/2 (u^mu nabla_mu zeta)^2 unless derived
+Role: prevents second-order scalar wave
+Allowed if: scalar/trace channel remains conversion/constraint/relaxation-mediated
+Forbidden if: creates Box zeta ordinary radiation
+[WARN] F12: no kinetic scalar term: CONSTRAINED
+Missing: parent reason for no scalar inertia
+
+========================================================================================================================
+Case 2: Compact functional ledger
+========================================================================================================================
+| Entry | Term | Status | Forbidden if | Missing |
+|---|---|---|---|---|
+| F1: volume displacement energy | 1/2 K_zeta (zeta - zeta_min)^2 | CANDIDATE | used as independent exterior scalar charge | K_zeta, zeta_min, frame/measure |
+| F2: gradient/interface stiffness | 1/2 L_zeta gamma^ij partial_i zeta partial_j zeta | CANDIDATE | creates propagating scalar wave or exterior tail | L_zeta and whether gradient term is spatial/constraint-only |
+| F3: kappa mismatch energy | 1/2 K_kappa (kappa - kappa_min)^2 | STRUCTURAL | adds independent kappa scalar momentum/radiation | precise kappa-zeta map |
+| F4: kappa-zeta locking term | 1/2 K_lock (kappa - (zeta - zeta_min))^2 | CANDIDATE | introduces extra scalar degree of freedom | whether kappa equals, approximates, or projects zeta mismatch |
+| F5: compact-support boundary term | B_boundary[zeta] enforcing zeta(R)=0 and flux zero | CANDIDATE | boundary condition imposed by hand for each case | P_boundary origin and interface law |
+| F6: compensated-source constraint | lambda_Q (integral S_volume d^3x) | RISK | used as arbitrary projection repair | S_volume definition and parent projector |
+| F7: forbidden A-mass term | M_ext or A_flux included in epsilon_vac_config | FORBIDDEN | epsilon_vac_config changes exterior mass | not pursued |
+| F8: forbidden coefficient tuning term | terms adjusted to fit alpha_W/K_c, beta_W, C_T, K_T | FORBIDDEN | functional becomes coefficient repair knob | not pursued |
+| F9: optional nonlinear volume strain | U(exp(zeta)) or U(sqrt(gamma)/sqrt(gamma_ref)) | UNRESOLVED | nonlinear term creates exterior volume charge | nonlinear determinant/volume theorem |
+| F10: minimal candidate functional | epsilon_vac_config = 1/2 K_zeta (zeta-zeta_min)^2 + 1/2 L_zeta /grad zeta/^2 + 1/2 K_lock (kappa-(zeta-zeta_min))^2 | CANDIDATE | advertised as derived or covariant | coefficients, measure, frame, boundary law, parent derivation |
+| F11: measure factor | epsilon_vac_config sqrt(gamma) d^3x | REQUIRED | treated as covariant action without 4D formulation | measure convention and covariant extension |
+| F12: no kinetic scalar term | no 1/2 (u^mu nabla_mu zeta)^2 unless derived | CONSTRAINED | creates Box zeta ordinary radiation | parent reason for no scalar inertia |
+[WARN] compact functional ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 5
+CONSTRAINED: 1
+FORBIDDEN: 2
+REQUIRED: 1
+RISK: 1
+STRUCTURAL: 1
+UNRESOLVED: 1
+
+Interpretation:
+  A minimal functional can be written, but it is not derived.
+  A-sector mass and coefficient tuning are explicitly forbidden.
+  The scalar kinetic term remains excluded unless separately derived.
+[WARN] functional status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Minimal candidate functional
+========================================================================================================================
+Minimal candidate:
+
+  epsilon_vac_config =
+    1/2 K_zeta (zeta-zeta_min)^2
+    + 1/2 L_zeta |grad zeta|^2
+    + 1/2 K_lock (kappa-(zeta-zeta_min))^2
+
+with:
+
+  zeta = ln sqrt(gamma)
+
+and no:
+
+  A_flux term
+  M_ext term
+  coefficient tuning term
+  scalar kinetic wave term
+
+This is a scaffold functional, not a derived action.
+[WARN] minimal candidate functional stated: CANDIDATE
+
+========================================================================================================================
+Case 5: Exchange with relaxation
+========================================================================================================================
+Existing relaxation energy:
+
+  e_kappa = 1/2 K_kappa (kappa-kappa_min)^2
+
+Possible accounting relation:
+
+  d e_kappa/dtau + d epsilon_vac_config/dtau = 0
+
+But if epsilon_vac_config already contains the kappa mismatch term,
+avoid double-counting e_kappa.
+
+Two allowed options:
+
+1. e_kappa is a sector piece outside epsilon_vac_config.
+2. e_kappa is included inside epsilon_vac_config and not counted again.
+
+This must be fixed by recombination/accounting.
+[WARN] relaxation exchange accounting stated: RISK
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The epsilon_vac_config functional fails if:
+
+1. It includes A_flux or M_ext.
+2. It tunes vector/tensor coefficients.
+3. It adds scalar kinetic energy and Box zeta by accident.
+4. It creates exterior zeta/kappa charge.
+5. It double-counts e_kappa.
+6. It imposes compensation by hand without parent origin.
+7. It is claimed covariant without frame/measure.
+8. It becomes a repair reservoir.
+[WARN] functional failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_epsilon_vac_config_functional.md
+   Artifact for this script.
+
+2. candidate_epsilon_kappa_double_counting_check.py
+   Decide whether e_kappa is inside or outside epsilon_vac_config.
+
+3. vacuum_substance_accounting_summary.md
+   Summarize group 13 after the functional audit.
+
+Recommended next script:
+
+  candidate_epsilon_kappa_double_counting_check.py
+
+Reason:
+  The functional risks double-counting e_kappa; fix that accounting before summary.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The minimal candidate functional is:
+
+  epsilon_vac_config =
+    1/2 K_zeta (zeta-zeta_min)^2
+    + 1/2 L_zeta |grad zeta|^2
+    + 1/2 K_lock (kappa-(zeta-zeta_min))^2
+
+This is only a scaffold.
+
+It must not include:
+  A_flux, M_ext, coefficient tuning, scalar kinetic wave terms.
+
+Possible next artifact:
+  candidate_epsilon_vac_config_functional.md
+
+Possible next script:
+  candidate_epsilon_kappa_double_counting_check.py

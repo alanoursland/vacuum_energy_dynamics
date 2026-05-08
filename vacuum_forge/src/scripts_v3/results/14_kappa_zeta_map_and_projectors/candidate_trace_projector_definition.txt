@@ -1,0 +1,266 @@
+
+========================================================================================================================
+Candidate Trace Projector Definition
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Trace projector definition problem
+========================================================================================================================
+Question:
+
+  What must P_trace do for projected kappa to be safe?
+
+Goal:
+
+  define P_trace requirements without pretending the parent projector is derived
+
+Discipline:
+
+  P_trace is not raw trace source
+  P_trace is not Box kappa or Box zeta
+  P_trace must annihilate TT
+  P_trace must exclude A-sector mass
+  P_trace must support exterior neutrality
+  P_trace must not create energy double-counting
+[WARN] trace projector problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: P_trace requirement inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+T1: linear metric trace extraction
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace h_ij = (1/3) gamma_ij gamma^ab h_ab
+Role: extracts spatial trace / volume perturbation at linear reduced level
+Allowed if: used as local linear diagnostic only
+Forbidden if: mistaken for full covariant source projector
+[WARN] T1: linear metric trace extraction: STRUCTURAL
+Missing: nonlinear/covariant extension
+
+------------------------------------------------------------------------------------------------------------------------
+T2: zeta variation relation
+------------------------------------------------------------------------------------------------------------------------
+Requirement: delta zeta = 1/2 gamma^ij delta gamma_ij
+Role: ties trace projection to volume-form variation
+Allowed if: frame/foliation is specified
+Forbidden if: treated as gauge-invariant without u^mu or slicing
+[WARN] T2: zeta variation relation: STRUCTURAL
+Missing: frame or covariant volume variable
+
+------------------------------------------------------------------------------------------------------------------------
+T3: TT annihilation
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace h_TT = 0 and P_TT P_trace = 0
+Role: prevents trace/volume sector from contaminating TT radiation
+Allowed if: orthogonality holds at least in reduced/linear sector
+Forbidden if: trace source leaks into h_TT or TT changes zeta
+[WARN] T3: TT annihilation: REQUIRED
+Missing: nonlinear/covariant projector proof
+
+------------------------------------------------------------------------------------------------------------------------
+T4: A-sector mass exclusion
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace excludes A_flux / rho exterior mass charge
+Role: prevents zeta/kappa from duplicating scalar mass response
+Allowed if: rho routes to A-sector and trace/volume routes only to residual/equilibrium response
+Forbidden if: rho becomes A mass plus kappa/zeta exterior charge
+[WARN] T4: A-sector mass exclusion: REQUIRED
+Missing: scalar constraint propagation and source routing identity
+
+------------------------------------------------------------------------------------------------------------------------
+T5: compensation / zero monopole
+------------------------------------------------------------------------------------------------------------------------
+Requirement: integral P_trace S_volume d^3x = 0 or Q_kappa=Q_volume=0
+Role: prevents exterior scalar monopole
+Allowed if: compensation follows from parent projector, boundary law, or constraint
+Forbidden if: projection requires hand-tuned subtraction per source
+[WARN] T5: compensation / zero monopole: REQUIRED
+Missing: parent origin of compensation
+
+------------------------------------------------------------------------------------------------------------------------
+T6: boundary cooperation
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_boundary P_trace enforces F_zeta(R+)=F_kappa(R+)=0
+Role: prevents boundary leakage into exterior scalar tail
+Allowed if: P_trace and P_boundary are explicitly separated or jointly defined
+Forbidden if: P_trace alone hides boundary conditions
+[WARN] T6: boundary cooperation: REQUIRED
+Missing: P_boundary definition
+
+------------------------------------------------------------------------------------------------------------------------
+T7: no wave operator
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace is not Box, not hyperbolic propagation
+Role: keeps scalar/trace conversion non-radiative
+Allowed if: projection is algebraic/elliptic/constraint-like
+Forbidden if: P_trace creates Box kappa or Box zeta
+[PASS] T7: no wave operator: FORBIDDEN
+Missing: parent proof of no scalar inertia
+
+------------------------------------------------------------------------------------------------------------------------
+T8: relaxation compatibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_relax P_trace may feed first-order kappa relaxation
+Role: allows kappa to track projected residual without scalar sloshing
+Allowed if: P_relax is first-order/non-inertial
+Forbidden if: P_relax becomes second-order oscillator
+[WARN] T8: relaxation compatibility: CANDIDATE
+Missing: P_relax and Gamma_relax relation
+
+------------------------------------------------------------------------------------------------------------------------
+T9: diagnostic versus energetic status
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace output must be labeled diagnostic, constraint, or energetic
+Role: prevents same projection from being counted twice
+Allowed if: energy convention is explicit
+Forbidden if: P_trace output is both kappa identity and physical energy term
+[FAIL] T9: diagnostic versus energetic status: UNRESOLVED
+Missing: degree-of-freedom and energy-accounting rule
+
+------------------------------------------------------------------------------------------------------------------------
+T10: recombination compatibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_recombination counts A/zeta/kappa trace response once
+Role: prevents spatial metric trace double/triple-counting
+Allowed if: P_trace output is inserted into geometry through a single channel
+Forbidden if: g_ij independently adds scalar_spatial_response(A), zeta, and kappa trace
+[WARN] T10: recombination compatibility: REQUIRED
+Missing: P_recombination definition
+
+------------------------------------------------------------------------------------------------------------------------
+T11: raw pressure/trace source rejection
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace[T] is not raw T, raw p, or Delta kappa = alpha T
+Role: prevents exterior charge and scalar double-counting
+Allowed if: raw trace is compensated/projected and boundary-neutral
+Forbidden if: ordinary positive pressure produces kappa_ext ~ 1/r
+[WARN] T11: raw pressure/trace source rejection: REJECTED
+Missing: not pursued as raw source
+
+------------------------------------------------------------------------------------------------------------------------
+T12: recommended provisional P_trace definition
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_trace = trace extraction + A-sector exclusion + compensation + TT annihilation, with boundary cooperation
+Role: best current operational definition
+Allowed if: declared as requirement bundle, not a derived operator
+Forbidden if: treated as finished parent projector
+[PASS] T12: recommended provisional P_trace definition: RECOMMENDED
+Missing: actual parent-derived mathematical operator
+
+========================================================================================================================
+Case 2: Compact P_trace ledger
+========================================================================================================================
+| Entry | Requirement | Status | Missing |
+|---|---|---|---|
+| T1: linear metric trace extraction | P_trace h_ij = (1/3) gamma_ij gamma^ab h_ab | STRUCTURAL | nonlinear/covariant extension |
+| T2: zeta variation relation | delta zeta = 1/2 gamma^ij delta gamma_ij | STRUCTURAL | frame or covariant volume variable |
+| T3: TT annihilation | P_trace h_TT = 0 and P_TT P_trace = 0 | REQUIRED | nonlinear/covariant projector proof |
+| T4: A-sector mass exclusion | P_trace excludes A_flux / rho exterior mass charge | REQUIRED | scalar constraint propagation and source routing identity |
+| T5: compensation / zero monopole | integral P_trace S_volume d^3x = 0 or Q_kappa=Q_volume=0 | REQUIRED | parent origin of compensation |
+| T6: boundary cooperation | P_boundary P_trace enforces F_zeta(R+)=F_kappa(R+)=0 | REQUIRED | P_boundary definition |
+| T7: no wave operator | P_trace is not Box, not hyperbolic propagation | FORBIDDEN | parent proof of no scalar inertia |
+| T8: relaxation compatibility | P_relax P_trace may feed first-order kappa relaxation | CANDIDATE | P_relax and Gamma_relax relation |
+| T9: diagnostic versus energetic status | P_trace output must be labeled diagnostic, constraint, or energetic | UNRESOLVED | degree-of-freedom and energy-accounting rule |
+| T10: recombination compatibility | P_recombination counts A/zeta/kappa trace response once | REQUIRED | P_recombination definition |
+| T11: raw pressure/trace source rejection | P_trace[T] is not raw T, raw p, or Delta kappa = alpha T | REJECTED | not pursued as raw source |
+| T12: recommended provisional P_trace definition | P_trace = trace extraction + A-sector exclusion + compensation + TT annihilation, with boundary cooperation | RECOMMENDED | actual parent-derived mathematical operator |
+[WARN] compact P_trace ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 1
+FORBIDDEN: 1
+RECOMMENDED: 1
+REJECTED: 1
+REQUIRED: 5
+STRUCTURAL: 2
+UNRESOLVED: 1
+
+Interpretation:
+  P_trace is not a single simple operation yet.
+  It is currently a requirement bundle:
+    trace extraction, A-exclusion, compensation, TT annihilation, and boundary cooperation.
+  The next likely split is P_trace versus P_boundary versus P_recombination.
+[WARN] P_trace status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Minimal P_trace requirement bundle
+========================================================================================================================
+Current operational bundle:
+
+  P_trace =
+    trace extraction
+    + A-sector mass exclusion
+    + compensation / zero monopole
+    + TT annihilation
+    + boundary cooperation
+
+Not yet decided:
+
+  which pieces belong to P_trace itself
+  which belong to P_boundary
+  which belong to P_recombination
+  which belong to P_relax
+
+Therefore:
+
+  P_trace is a requirement bundle, not a derived operator.
+[PASS] minimal P_trace bundle stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+P_trace fails if:
+
+1. it is raw pressure/trace source
+2. it duplicates A-sector mass
+3. it allows kappa/zeta exterior 1/r charge
+4. it contaminates TT radiation
+5. it becomes Box kappa or Box zeta
+6. it hides boundary conditions
+7. it creates e_kappa / epsilon_zeta double-counting
+8. it is treated as parent-derived before derivation
+[WARN] P_trace failure controls stated: RISK
+
+========================================================================================================================
+Case 6: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_trace_projector_definition.md
+   Artifact for this script.
+
+2. candidate_boundary_projector_for_volume_neutrality.py
+   Split off boundary/exterior neutrality duties.
+
+3. candidate_recombination_projector_for_trace_volume.py
+   Split off metric assembly / no-double-counting duties.
+
+Recommended next script:
+
+  candidate_boundary_projector_for_volume_neutrality.py
+
+Reason:
+  P_trace currently carries boundary neutrality duties. Split P_boundary next.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+P_trace is currently best understood as a requirement bundle:
+
+  trace extraction
+  A-sector exclusion
+  compensation / zero monopole
+  TT annihilation
+  boundary cooperation
+
+It is not yet a derived operator.
+
+Possible next artifact:
+  candidate_trace_projector_definition.md
+
+Possible next script:
+  candidate_boundary_projector_for_volume_neutrality.py

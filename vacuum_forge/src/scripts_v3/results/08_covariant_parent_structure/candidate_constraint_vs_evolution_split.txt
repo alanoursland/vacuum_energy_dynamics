@@ -1,0 +1,174 @@
+
+========================================================================================================================
+Candidate Constraint vs Evolution Split
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Constraint/evolution split problem
+========================================================================================================================
+A covariant parent must know which reduced sectors are:
+
+  constraints
+  dynamical evolution fields
+  relaxation/response modes
+  controlled hazards
+  unknown
+
+This script classifies the current sector bundle.
+[PASS] constraint/evolution split problem posed: SATISFIED_REDUCED
+
+========================================================================================================================
+Case 2: Sector split inventory
+========================================================================================================================
+
+----------------------------------------------------------------------------------------------------
+Scalar static sector: A_constraint
+----------------------------------------------------------------------------------------------------
+[PASS] Scalar static sector: SATISFIED_REDUCED
+Preferred equation type: CONSTRAINT / ELLIPTIC
+Reason: Poisson-like A supports static exterior gravity and does not produce scalar wave dispersion.
+Parent requirement: Derive why the lapse/scalar mass response is constrained rather than an independent long-range radiative scalar.
+
+----------------------------------------------------------------------------------------------------
+Scalar radiative hazard: A_rad
+----------------------------------------------------------------------------------------------------
+[WARN] Scalar radiative hazard: PARTIAL
+Preferred equation type: ABSENT OR CONTROLLED
+Reason: A_rad is identified as dangerous if unsuppressed; mechanisms include projection, damping, absorption, mass gap, relaxation, or weak coupling.
+Parent requirement: Supply the actual mechanism that removes or suppresses A_rad.
+
+----------------------------------------------------------------------------------------------------
+Trace/interior response: kappa
+----------------------------------------------------------------------------------------------------
+[WARN] Trace/interior response: PARTIAL
+Preferred equation type: RELAXATION / SOURCED RESPONSE
+Reason: Kappa has been modeled as interior trace/volume response with exterior suppression, but the source law is not derived.
+Parent requirement: Derive stress/pressure/trace source coupling and exterior relaxation or constraint.
+
+----------------------------------------------------------------------------------------------------
+Vector current sector: W_i
+----------------------------------------------------------------------------------------------------
+[WARN] Vector current sector: PARTIAL
+Preferred equation type: CONSTRAINT OR SLOW VECTOR RESPONSE TBD
+Reason: W_i is needed for frame dragging and current response, but its equation type is not yet known.
+Parent requirement: Derive whether W_i is constraint-like, hyperbolic, or mixed, and determine vector radiation safety.
+
+----------------------------------------------------------------------------------------------------
+Tensor radiation sector: h_ij^TT
+----------------------------------------------------------------------------------------------------
+[PASS] Tensor radiation sector: SATISFIED_REDUCED
+Preferred equation type: EVOLUTION / HYPERBOLIC
+Reason: TT basis, wave equation, quadrupole source projection, and action-stiffness toy support a reduced dynamical wave sector.
+Parent requirement: Derive the TT evolution equation, gauge restrictions, coupling, and energy flux from parent structure.
+
+----------------------------------------------------------------------------------------------------
+Gauge sector: coordinate/gauge modes
+----------------------------------------------------------------------------------------------------
+[FAIL] Gauge sector: MISSING
+Preferred equation type: GAUGE / NONPHYSICAL
+Reason: Reduced scripts use gauge choices but do not derive full gauge freedoms or gauge-invariant combinations.
+Parent requirement: Identify gauge variables, gauge transformations, and physical gauge-invariant diagnostics.
+
+----------------------------------------------------------------------------------------------------
+Conservation/identity sector: source identities
+----------------------------------------------------------------------------------------------------
+[FAIL] Conservation/identity sector: MISSING
+Preferred equation type: CONSTRAINT IDENTITY
+Reason: Conservation is used in reduced arguments but not derived as a parent identity.
+Parent requirement: Supply Bianchi-like or continuity identities linking source conservation to field equations.
+
+========================================================================================================================
+Case 3: Constraint/evolution table
+========================================================================================================================
+| Sector | Variable | Preferred type | Status |
+|---|---|---|---|
+| Scalar static sector | A_constraint | CONSTRAINT / ELLIPTIC | SATISFIED_REDUCED |
+| Scalar radiative hazard | A_rad | ABSENT OR CONTROLLED | PARTIAL |
+| Trace/interior response | kappa | RELAXATION / SOURCED RESPONSE | PARTIAL |
+| Vector current sector | W_i | CONSTRAINT OR SLOW VECTOR RESPONSE TBD | PARTIAL |
+| Tensor radiation sector | h_ij^TT | EVOLUTION / HYPERBOLIC | SATISFIED_REDUCED |
+| Gauge sector | coordinate/gauge modes | GAUGE / NONPHYSICAL | MISSING |
+| Conservation/identity sector | source identities | CONSTRAINT IDENTITY | MISSING |
+[PASS] constraint/evolution table produced: SATISFIED_REDUCED
+
+========================================================================================================================
+Case 4: Status counts
+========================================================================================================================
+SATISFIED_REDUCED: 2
+PARTIAL: 3
+MISSING: 2
+RISK: 0
+[FAIL] constraint/evolution split incomplete: MISSING — gauge and conservation identities are missing
+
+========================================================================================================================
+Case 5: Consistency risks
+========================================================================================================================
+Key risks:
+
+1. If A_rad is hyperbolic and unsuppressed, extra scalar radiation appears.
+2. If W_i is hyperbolic and unsuppressed, extra vector radiation may appear.
+3. If kappa is not suppressed exterior, weak-field constraints may fail.
+4. If gauge modes are mistaken for physical modes, the sector count is wrong.
+5. If conservation identities are missing, source coupling may be inconsistent.
+
+[WARN] consistency risks identified: RISK — these risks must be handled by parent structure
+
+========================================================================================================================
+Case 6: Parent target split
+========================================================================================================================
+Desired parent split:
+
+Constraints:
+  A_constraint
+  source/conservation identities
+  some gauge restrictions
+
+Controlled response:
+  A_rad absent/suppressed
+  kappa sourced/relaxed
+  W_i frame-dragging response TBD
+
+Evolution:
+  h_ij^TT tensor waves
+
+Gauge:
+  coordinate artifacts projected out
+
+[WARN] parent target split stated: PARTIAL — still needs derivation
+
+========================================================================================================================
+Case 7: Next study recommendation
+========================================================================================================================
+Recommended next script:
+
+  candidate_gauge_structure_requirements.py
+
+Reason:
+  The split exposes gauge structure as a missing blocking requirement.
+  The next step is to identify which variables are physical and which are
+  gauge shadows.
+
+Alternative:
+  candidate_metric_geometric_recombination.py
+[WARN] next study selected: PARTIAL — gauge structure is the next blocker
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The constraint/evolution split is now clearer:
+
+  A_constraint -> constraint / elliptic
+  A_rad        -> absent or controlled
+  kappa        -> relaxation / interior response
+  W_i          -> vector response, equation type TBD
+  h_ij^TT      -> evolution / hyperbolic
+  gauge modes  -> nonphysical / to be projected
+
+Strong reduced support exists for A_constraint and h_ij^TT.
+The missing blockers are gauge structure and conservation identities.
+
+Possible next artifact:
+  candidate_constraint_vs_evolution_split.md
+
+Possible next script:
+  candidate_gauge_structure_requirements.py

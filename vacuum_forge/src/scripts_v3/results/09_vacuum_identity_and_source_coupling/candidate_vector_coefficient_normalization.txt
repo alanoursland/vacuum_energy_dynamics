@@ -1,0 +1,177 @@
+
+========================================================================================================================
+Candidate Vector Coefficient Normalization
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Vector coefficient normalization problem
+========================================================================================================================
+Problem:
+
+  The vector source type is constrained: j_i = rho v_i.
+  The vector observable candidate is B_W = curl W.
+  But the coefficient is missing.
+
+Do not insert the Lense-Thirring coefficient by hand.
+
+Question:
+
+  Can the W_i coefficient be related to scalar A-flux normalization,
+  or does it require an independent vector stiffness?
+[WARN] vector coefficient problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Scalar A-flux normalization reference
+========================================================================================================================
+Scalar source normalization:
+
+  Delta A = beta_A rho / (2 K_A)
+  target reduced law: Delta A = 8*pi*G*rho/c^2
+
+therefore Eq(beta_A/(2*K_A), 8*pi*G/c**2)
+
+This scalar normalization is reduced-derived from A-flux.
+Question: does W_i inherit this normalization or require its own stiffness?
+[PASS] scalar normalization reference stated: DERIVED_REDUCED
+
+========================================================================================================================
+Case 2: Vector action coefficient ratio
+========================================================================================================================
+Candidate vector equation:
+
+  Delta W_i = - (alpha_W / K_W) j_i
+
+vector ratio = alpha_W/K_W
+
+Current status:
+  source j_i is constrained by continuity
+  ratio alpha_W/K_W is not derived
+[FAIL] vector coefficient ratio identified: MISSING — alpha_W/K_W has no derivation yet
+
+========================================================================================================================
+Case 3: Shared stiffness hypothesis
+========================================================================================================================
+Hypothesis:
+
+  vector ratio = lambda_W * scalar A ratio
+
+vector_ratio = 8*pi*G*lambda_W/c**2
+
+Interpretation:
+  lambda_W encodes whether vector transport uses the same vacuum stiffness
+  as scalar exchange.
+
+If lambda_W is derived, this becomes ontology work.
+If lambda_W is chosen to match observations, it is hand matching.
+[WARN] shared stiffness hypothesis formulated: CONSTRAINED_BY_IDENTITY — lambda_W remains missing
+
+========================================================================================================================
+Case 4: Independent vector stiffness option
+========================================================================================================================
+Independent stiffness option:
+
+scalar ratio = alpha_A/K_A
+vector ratio = alpha_W/K_W
+
+Interpretation:
+  vector response may have its own stiffness K_W.
+  This is allowed only if the ontology explains why vector transport
+  differs from scalar exchange.
+
+Risk:
+  too many independent stiffnesses can make the theory a fit machine.
+[WARN] independent vector stiffness option stated: INDEPENDENT_STIFFNESS — allowed but must be justified
+
+========================================================================================================================
+Case 5: Hand matching forbidden
+========================================================================================================================
+Forbidden move at this stage:
+
+  choose alpha_W/K_W only so that Omega_drag matches Lense-Thirring
+
+Why forbidden:
+
+  That would reproduce GR by coefficient fitting, not by ontology.
+
+Allowed future moves:
+
+  derive alpha_W/K_W from shared vacuum stiffness
+  derive independent K_W from vector transport energy
+  explicitly declare coefficient as phenomenological and fit it later
+
+[WARN] hand matching forbidden: RISK — prevents fake reconstruction
+
+========================================================================================================================
+Case 6: Symbolic frame-dragging coefficient chain
+========================================================================================================================
+Symbolic chain:
+
+  B_W = C_W J / r^3
+  Omega_drag = beta_W B_W
+
+Omega_drag = C_W*J*beta_W/r**3
+
+Combined missing coefficient:
+
+  C_total = beta_W * C_W
+
+Do not set C_total by GR matching yet.
+[FAIL] symbolic coefficient chain stated: MISSING — C_W and beta_W both missing
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Possibility | Status |
+|---|---|
+| source object j_i = rho v_i | CONSTRAINED_BY_IDENTITY |
+| scalar A coefficient | DERIVED_REDUCED |
+| W_i coefficient from scalar stiffness | CONSTRAINED_BY_IDENTITY, lambda_W missing |
+| independent vector stiffness K_W | INDEPENDENT_STIFFNESS, needs ontology |
+| Lense-Thirring coefficient inserted directly | HAND_ASSIGNED / RISK |
+| current best vector coefficient | MISSING |
+
+[FAIL] vector coefficient classification produced: MISSING — normalization not reconstructed
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Next useful scripts:
+
+1. candidate_vector_stiffness_from_vacuum_transport.py
+   Try to derive K_W from a vector-flow energy.
+
+2. candidate_kappa_source_law_from_trace_exchange.py
+   Work the other missing source sector.
+
+3. candidate_tensor_source_from_exchange_identity.py
+   Ask if tensor coupling can be derived from exchange/shear.
+
+Recommended next script:
+
+  candidate_vector_stiffness_from_vacuum_transport.py
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — vector coefficient needs a stiffness origin
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The vector source object is constrained by continuity:
+
+  j_i = rho v_i
+
+But the vector coefficient is not reconstructed.
+
+Possible paths:
+
+  shared scalar/vector stiffness with lambda_W derived
+  independent vector stiffness K_W derived from vacuum transport
+  phenomenological coefficient declared honestly
+
+Bad path:
+
+  choose the coefficient only to match Lense-Thirring
+
+Possible next artifact:
+  candidate_vector_coefficient_normalization.md
+
+Possible next script:
+  candidate_vector_stiffness_from_vacuum_transport.py

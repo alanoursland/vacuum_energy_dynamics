@@ -1,0 +1,178 @@
+
+========================================================================================================================
+Candidate Covariant Parent Requirements
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Covariant parent requirements problem
+========================================================================================================================
+Group 08 asks:
+
+  Can the reduced sector bundle come from one deeper geometric/covariant
+  parent structure?
+
+This script does not try to pass everything.
+It classifies what is satisfied, partial, missing, or risky.
+[PASS] requirements framework posed: SATISFIED_REDUCED
+
+========================================================================================================================
+Case 2: Requirement inventory
+========================================================================================================================
+
+----------------------------------------------------------------------------------------------------
+R1: Static scalar mass response
+----------------------------------------------------------------------------------------------------
+[PASS] R1: Static scalar mass response: SATISFIED_REDUCED
+Current support: A_constraint = 1 - 2GM/(c^2 r) solves source-free exterior Poisson/Laplace equation and recovers the static scalar channel.
+Parent must supply: A geometric reason why the scalar mass response appears as a constraint-like lapse/scalar sector.
+
+----------------------------------------------------------------------------------------------------
+R2: No unsuppressed scalar radiation
+----------------------------------------------------------------------------------------------------
+[WARN] R2: No unsuppressed scalar radiation: PARTIAL
+Current support: A_rad is explicitly classified as absent or controlled. Several suppression mechanisms are listed.
+Parent must supply: A real mechanism: projection, constraint, damping/absorption, mass gap, relaxation, or observationally acceptable weak coupling.
+
+----------------------------------------------------------------------------------------------------
+R3: Moving wells without scalar breathing waves
+----------------------------------------------------------------------------------------------------
+[WARN] R3: Moving wells without scalar breathing waves: PARTIAL
+Current support: Inventory distinguishes translated scalar wells from free scalar waves.
+Parent must supply: A retarded/constraint solution concept showing how moving sources carry moving scalar configurations without producing forbidden long-range scalar breathing radiation.
+
+----------------------------------------------------------------------------------------------------
+R4: Kappa interior/trace response
+----------------------------------------------------------------------------------------------------
+[WARN] R4: Kappa interior/trace response: PARTIAL
+Current support: Kappa is modeled as trace/interior response with exterior suppression/relaxation.
+Parent must supply: Source law for kappa from stress/pressure/trace matter content and a derivation of exterior suppression.
+
+----------------------------------------------------------------------------------------------------
+R5: Vector current/frame-dragging sector
+----------------------------------------------------------------------------------------------------
+[WARN] R5: Vector current/frame-dragging sector: PARTIAL
+Current support: W_i is identified as the shift/current sector needed for frame dragging.
+Parent must supply: Field equation, source coupling to mass current/angular momentum, and constraints on vector radiation.
+
+----------------------------------------------------------------------------------------------------
+R6: Tensor TT radiation sector
+----------------------------------------------------------------------------------------------------
+[PASS] R6: Tensor TT radiation sector: SATISFIED_REDUCED
+Current support: h_ij^TT basis, wave equation, quadrupole source projection, amplitude scaling, and action-stiffness toy have been checked at reduced level.
+Parent must supply: Covariant derivation of TT sector, gauge conditions, coupling, energy flux, and radiation reaction.
+
+----------------------------------------------------------------------------------------------------
+R7: Source coupling consistency
+----------------------------------------------------------------------------------------------------
+[WARN] R7: Source coupling consistency: PARTIAL
+Current support: Scalar mass, vector current, tensor quadrupole, and possible kappa trace sources have been assigned.
+Parent must supply: One stress-energy/vacuum coupling rule that yields all sector sources in the correct limits.
+
+----------------------------------------------------------------------------------------------------
+R8: Gauge structure
+----------------------------------------------------------------------------------------------------
+[FAIL] R8: Gauge structure: MISSING
+Current support: Reduced scripts use gauges such as areal/static/TT but do not derive full gauge transformations.
+Parent must supply: Gauge freedoms, gauge-invariant diagnostics, and mapping between coordinate choices.
+
+----------------------------------------------------------------------------------------------------
+R9: Constraint/evolution split
+----------------------------------------------------------------------------------------------------
+[WARN] R9: Constraint/evolution split: PARTIAL
+Current support: A_constraint is classified as elliptic, h_ij^TT as hyperbolic, and other sectors as TBD.
+Parent must supply: A principled decomposition into constraints and evolution equations.
+
+----------------------------------------------------------------------------------------------------
+R10: Metric/geometric recombination
+----------------------------------------------------------------------------------------------------
+[FAIL] R10: Metric/geometric recombination: MISSING
+Current support: Sectors are mapped informally to g_tt, g_ti, trace, and TT spatial parts.
+Parent must supply: A single metric/vacuum structure from which A, kappa, W_i, and h_ij^TT arise as projections or gauge-fixed components.
+
+----------------------------------------------------------------------------------------------------
+R11: Conservation identities
+----------------------------------------------------------------------------------------------------
+[FAIL] R11: Conservation identities: MISSING
+Current support: Reduced scripts use conservation ideas for monopole/dipole and quadrupole radiation but do not derive parent identities.
+Parent must supply: Bianchi-like or continuity identities ensuring compatible source conservation across sectors.
+
+----------------------------------------------------------------------------------------------------
+R12: Avoid overclaiming GR equivalence
+----------------------------------------------------------------------------------------------------
+[WARN] R12: Avoid overclaiming GR equivalence: RISK
+Current support: The program recovers several GR-like reduced structures but has not derived Einstein equations.
+Parent must supply: Clear statement of what is recovered, what is matched, and what is not yet derived.
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+SATISFIED_REDUCED: 2
+PARTIAL: 6
+MISSING: 3
+RISK: 1
+
+Interpretation:
+  SATISFIED_REDUCED means the reduced program has a working toy/result.
+  PARTIAL means there is support but no parent derivation.
+  MISSING means the parent structure has not been supplied.
+  RISK means overclaim or contradiction danger.
+[FAIL] parent theory still incomplete: MISSING — some required structures are not yet supplied
+
+========================================================================================================================
+Case 4: Blocking requirements
+========================================================================================================================
+Blocking or high-risk requirements:
+  - R8: Gauge structure: MISSING
+  - R10: Metric/geometric recombination: MISSING
+  - R11: Conservation identities: MISSING
+  - R12: Avoid overclaiming GR equivalence: RISK
+
+These should be handled before claiming a full covariant parent.
+[WARN] blocking requirements identified: RISK — do not claim full theory yet
+
+========================================================================================================================
+Case 5: Next study recommendation
+========================================================================================================================
+Most important missing piece:
+
+  gauge structure and metric/geometric recombination
+
+Recommended next script:
+
+  candidate_constraint_vs_evolution_split.py
+
+Reason:
+  Before gauge/recombination can be solved, we need a clean split between
+  constraint sectors and evolution sectors.
+
+Alternative:
+  candidate_gauge_structure_requirements.py
+[WARN] next study selected: PARTIAL — constraint/evolution split is the next organizing layer
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The reduced sector program is coherent but not yet a covariant parent.
+
+Strong reduced support exists for:
+  A_constraint static scalar response
+  h_ij^TT tensor radiation
+
+Partial support exists for:
+  - R2: No unsuppressed scalar radiation
+  - R3: Moving wells without scalar breathing waves
+  - R4: Kappa interior/trace response
+  - R5: Vector current/frame-dragging sector
+  - R7: Source coupling consistency
+  - R9: Constraint/evolution split
+
+Missing parent structures include:
+  - R8: Gauge structure
+  - R10: Metric/geometric recombination
+  - R11: Conservation identities
+
+Possible next artifact:
+  candidate_covariant_parent_requirements.md
+
+Possible next script:
+  candidate_constraint_vs_evolution_split.py

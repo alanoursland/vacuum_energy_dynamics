@@ -1,0 +1,288 @@
+
+========================================================================================================================
+Candidate Stiffness Ratio Origin Inventory
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Stiffness ratio origin inventory problem
+========================================================================================================================
+Question:
+
+  Who fixed c_x/c_s before gamma looked at it?
+
+Goal:
+
+  inventory possible pre-recovery origins of the stiffness ratio
+
+Discipline:
+
+  do not choose c_x/c_s from gamma_like
+  do not choose c_x/c_s from AB=1
+  do not invent symmetry after recovery
+  do not hide tuning in normalization or source coupling
+  do not let zeta fix ratio while remaining independent residual
+  move to conservation-current route if action/stiffness ratio remains free
+[WARN] stiffness ratio origin problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Stiffness ratio origin inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+SR1: stiffness ratio target
+------------------------------------------------------------------------------------------------------------------------
+Origin: r_s = c_x/c_s, q_action = -r_s
+Role: core coefficient-ratio bottleneck exposed by coupled variation
+Allowed if: r_s is fixed before gamma/AB recovery checks
+Forbidden if: r_s is selected to pass recovery targets
+[WARN] SR1: stiffness ratio target: STRUCTURAL
+Missing: pre-recovery origin of r_s
+Consequence: coupled stiffness lives or defers on r_s
+
+------------------------------------------------------------------------------------------------------------------------
+SR2: free stiffness ratio
+------------------------------------------------------------------------------------------------------------------------
+Origin: choose c_x/c_s freely
+Role: repair knob
+Allowed if: never as derivation
+Forbidden if: used to save coupled stiffness branch
+[WARN] SR2: free stiffness ratio: REJECTED
+Missing: not pursued
+Consequence: turns action/stiffness into coefficient tuning
+
+------------------------------------------------------------------------------------------------------------------------
+SR3: symmetry origin
+------------------------------------------------------------------------------------------------------------------------
+Origin: c_x/c_s fixed by field-space symmetry or diagonalization constraint
+Role: candidate legitimate ratio origin
+Allowed if: symmetry is specified before recovery checks
+Forbidden if: symmetry is invented to force q
+[WARN] SR3: symmetry origin: CANDIDATE
+Missing: actual symmetry / field-space metric
+Consequence: could keep action/stiffness branch alive if concrete
+
+------------------------------------------------------------------------------------------------------------------------
+SR4: normalization origin
+------------------------------------------------------------------------------------------------------------------------
+Origin: c_s and c_x fixed by canonical normalization of coupled modes
+Role: possible mathematical coefficient origin
+Allowed if: normalization follows from kinetic/stiffness metric, not recovery
+Forbidden if: normalization chosen after gamma_like check
+[WARN] SR4: normalization origin: CANDIDATE
+Missing: canonical variable choice and stiffness metric
+Consequence: may reduce ratio freedom but risks gauge/convention dependence
+
+------------------------------------------------------------------------------------------------------------------------
+SR5: conservation-current origin
+------------------------------------------------------------------------------------------------------------------------
+Origin: c_x/c_s fixed by div J_A = 0 or parent source-balance identity
+Role: candidate conservation route
+Allowed if: current and balance law are explicit
+Forbidden if: conservation language is decorative
+[WARN] SR5: conservation-current origin: CANDIDATE
+Missing: J_A and balance operator
+Consequence: may move next branch to conservation-current coefficient origin
+
+------------------------------------------------------------------------------------------------------------------------
+SR6: source-coupling origin
+------------------------------------------------------------------------------------------------------------------------
+Origin: source interaction fixes c_x/c_s through matter/vacuum coupling
+Role: possible ontology/source-routing origin
+Allowed if: coupling rule is specified before recovery checks
+Forbidden if: source coupling is added to repair gamma_like
+[WARN] SR6: source-coupling origin: RISK
+Missing: matter/vacuum coupling rule
+Consequence: could rescue ratio, but high risk of hidden tuning
+
+------------------------------------------------------------------------------------------------------------------------
+SR7: volume/zeta exchange origin
+------------------------------------------------------------------------------------------------------------------------
+Origin: c_x/c_s fixed by vacuum-volume / curvature-exchange identity
+Role: ontology-native but branch-shifting ratio origin
+Allowed if: zeta is companion or residual by no-overlap identity
+Forbidden if: zeta fixes ratio while remaining independent residual trace
+[WARN] SR7: volume/zeta exchange origin: RISK
+Missing: zeta exchange identity and no-overlap theorem
+Consequence: likely leaves pure A-local stiffness branch for volume-exchange branch
+
+------------------------------------------------------------------------------------------------------------------------
+SR8: constrained-variation origin
+------------------------------------------------------------------------------------------------------------------------
+Origin: Lagrange constraint C[A,B_s,S_A]=0 fixes effective c_x/c_s
+Role: candidate route connecting closure shell to action
+Allowed if: constraint is structural and not B=1/A/gamma_like
+Forbidden if: constraint is recovery target in disguise
+[WARN] SR8: constrained-variation origin: CANDIDATE
+Missing: constraint origin and multiplier status
+Consequence: may rescue ratio only if constraint itself is derived
+
+------------------------------------------------------------------------------------------------------------------------
+SR9: gamma-like recovery check
+------------------------------------------------------------------------------------------------------------------------
+Origin: weak-field output after r_s fixed gives gamma_like=1
+Role: downstream recovery target
+Allowed if: checked after r_s is fixed
+Forbidden if: used to choose r_s
+[WARN] SR9: gamma-like recovery check: RECOVERY_TARGET
+Missing: weak-field mapping from r_s to gamma_like
+Consequence: tests but does not determine stiffness ratio
+
+------------------------------------------------------------------------------------------------------------------------
+SR10: AB exterior diagnostic check
+------------------------------------------------------------------------------------------------------------------------
+Origin: exterior solution after r_s fixed gives kappa_areal -> 0 / AB -> 1
+Role: downstream exterior diagnostic
+Allowed if: checked after solving varied equations
+Forbidden if: used as boundary/action constraint
+[WARN] SR10: AB exterior diagnostic check: RECOVERY_TARGET
+Missing: exterior solution with fixed r_s
+Consequence: keeps AB diagnostic-only
+
+------------------------------------------------------------------------------------------------------------------------
+SR11: no-overlap compatibility
+------------------------------------------------------------------------------------------------------------------------
+Origin: r_s must not produce overlapping B_s and zeta/kappa residual trace
+Role: protects count-once theorem
+Allowed if: overlap operator or residual status theorem is available
+Forbidden if: derived ratio still double-counts trace
+[WARN] SR11: no-overlap compatibility: THEOREM_TARGET
+Missing: overlap operator / residual theorem
+Consequence: ratio origin still fails if trace accounting fails
+
+------------------------------------------------------------------------------------------------------------------------
+SR12: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Origin: if no symmetry/normalization origin is concrete, move to conservation-current origin
+Role: best current branch decision
+Allowed if: free ratio and recovery-tuned ratio are rejected
+Forbidden if: pretending action/stiffness has derived r_s without origin
+[PASS] SR12: recommended next move: RECOMMENDED
+Missing: symmetry/normalization/conservation comparison
+Consequence: next script should compare symmetry/normalization against conservation-current route
+
+========================================================================================================================
+Case 2: Compact stiffness-ratio ledger
+========================================================================================================================
+| Entry | Origin | Status | Consequence |
+|---|---|---|---|
+| SR1: stiffness ratio target | r_s = c_x/c_s, q_action = -r_s | STRUCTURAL | coupled stiffness lives or defers on r_s |
+| SR2: free stiffness ratio | choose c_x/c_s freely | REJECTED | turns action/stiffness into coefficient tuning |
+| SR3: symmetry origin | c_x/c_s fixed by field-space symmetry or diagonalization constraint | CANDIDATE | could keep action/stiffness branch alive if concrete |
+| SR4: normalization origin | c_s and c_x fixed by canonical normalization of coupled modes | CANDIDATE | may reduce ratio freedom but risks gauge/convention dependence |
+| SR5: conservation-current origin | c_x/c_s fixed by div J_A = 0 or parent source-balance identity | CANDIDATE | may move next branch to conservation-current coefficient origin |
+| SR6: source-coupling origin | source interaction fixes c_x/c_s through matter/vacuum coupling | RISK | could rescue ratio, but high risk of hidden tuning |
+| SR7: volume/zeta exchange origin | c_x/c_s fixed by vacuum-volume / curvature-exchange identity | RISK | likely leaves pure A-local stiffness branch for volume-exchange branch |
+| SR8: constrained-variation origin | Lagrange constraint C[A,B_s,S_A]=0 fixes effective c_x/c_s | CANDIDATE | may rescue ratio only if constraint itself is derived |
+| SR9: gamma-like recovery check | weak-field output after r_s fixed gives gamma_like=1 | RECOVERY_TARGET | tests but does not determine stiffness ratio |
+| SR10: AB exterior diagnostic check | exterior solution after r_s fixed gives kappa_areal -> 0 / AB -> 1 | RECOVERY_TARGET | keeps AB diagnostic-only |
+| SR11: no-overlap compatibility | r_s must not produce overlapping B_s and zeta/kappa residual trace | THEOREM_TARGET | ratio origin still fails if trace accounting fails |
+| SR12: recommended next move | if no symmetry/normalization origin is concrete, move to conservation-current origin | RECOMMENDED | next script should compare symmetry/normalization against conservation-current route |
+[WARN] compact stiffness-ratio ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 4
+RECOMMENDED: 1
+RECOVERY_TARGET: 2
+REJECTED: 1
+RISK: 2
+STRUCTURAL: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  Free stiffness ratio is rejected.
+  Symmetry and normalization are possible but must be specified concretely.
+  Conservation-current origin is the strongest next alternative if stiffness ratio remains free.
+  Zeta/volume exchange is plausible but likely leaves the pure A-local stiffness branch.
+  Recovery checks remain downstream.
+[WARN] stiffness-ratio status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Ratio-origin decision tree
+========================================================================================================================
+Decision tree:
+
+1. Is there a real field-space symmetry fixing c_x/c_s?
+   If yes: test recovery downstream.
+
+2. Is there a canonical normalization that fixes c_x/c_s before recovery?
+   If yes: check whether it is physical or convention-only.
+
+3. Does a conservation-current identity fix c_x/c_s?
+   If yes: move to current/balance derivation.
+
+4. Does zeta/volume exchange fix c_x/c_s?
+   If yes: leave pure A-local branch and revisit zeta role.
+
+5. If none:
+   action/stiffness does not derive q; defer to conservation-current or volume-exchange branch.
+[PASS] stiffness-ratio decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / defer outcome
+========================================================================================================================
+Good failure:
+
+  no symmetry, normalization, source-routing, or ontology rule fixes c_x/c_s before recovery.
+
+Consequence:
+
+  action/stiffness has exposed but not solved q-origin.
+  Move to conservation-current coefficient origin or volume-exchange identity.
+
+Bad failure:
+  choose c_x/c_s from gamma_like=1 and call it symmetry or normalization.
+[WARN] stiffness ratio good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Stiffness-ratio origin test fails if:
+
+1. ratio is chosen from gamma_like=1
+2. ratio is chosen from AB=1 or Schwarzschild expansion
+3. symmetry is invented after recovery
+4. normalization is convention-only but treated as physical
+5. conservation is invoked without a current
+6. source coupling hides a fit
+7. zeta fixes ratio while remaining independent residual
+8. no-overlap theorem is ignored after ratio selection
+[WARN] stiffness-ratio failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_stiffness_ratio_origin_inventory.md
+   Artifact for this script.
+
+2. candidate_conservation_current_coefficient_origin.py
+   Test whether a conserved current/balance law fixes c_x/c_s.
+
+3. candidate_volume_exchange_stiffness_ratio_origin.py
+   Test whether zeta/vacuum-volume exchange fixes c_x/c_s.
+
+Recommended next script:
+
+  candidate_conservation_current_coefficient_origin.py
+
+Reason:
+  Symmetry/normalization are currently unspecified. Conservation-current origin is the strongest next non-tuning route.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Coupled stiffness reduced q-origin to:
+
+  c_x/c_s origin
+
+No free ratio is allowed.
+
+If symmetry/normalization are not concrete, the next real route is:
+  conservation-current coefficient origin.
+
+Best next test:
+  candidate_conservation_current_coefficient_origin.py

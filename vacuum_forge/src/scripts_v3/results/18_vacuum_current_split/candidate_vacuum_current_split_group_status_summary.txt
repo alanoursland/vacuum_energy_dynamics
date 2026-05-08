@@ -1,0 +1,302 @@
+
+========================================================================================================================
+Candidate Vacuum Current Split Group Status Summary
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Group 18 status problem
+========================================================================================================================
+Question:
+
+  What is the current status of the vacuum-current split after Group 18 audits?
+
+Goal:
+
+  close the group without promoting role-level current language to operator-level law
+
+Discipline:
+
+  no J_V as defined current
+  no J_sub physical wind without neutrality
+  no J_exch source law without source sides
+  no ordinary matter rerouting
+  no M_ext shift
+  no hidden scalar charge
+  no dark-sector patch
+  no H_exch/H_curv shortcut
+  preserve zero-net / zero-creation branches
+[WARN] Group 18 status problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Group 18 status ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+G18-1: J_V
+------------------------------------------------------------------------------------------------------------------------
+Result: J_V remains unresolved umbrella notation
+[FAIL] G18-1: J_V: UNRESOLVED
+Consequence: u_vac remains unresolved because no real vacuum current has been defined
+Handoff: do not assume J_V is physical current in Group 19
+
+------------------------------------------------------------------------------------------------------------------------
+G18-2: J_sub/J_exch split
+------------------------------------------------------------------------------------------------------------------------
+Result: J_sub/J_exch split is useful as role-level bookkeeping only
+[WARN] G18-2: J_sub/J_exch split: SAFE_IF
+Consequence: split is not operator-level decomposition
+Handoff: do not use J_V = J_sub + J_exch as field law
+
+------------------------------------------------------------------------------------------------------------------------
+G18-3: J_sub
+------------------------------------------------------------------------------------------------------------------------
+Result: J_sub survives only as neutral substrate-current theorem target
+[WARN] G18-3: J_sub: THEOREM_TARGET
+Consequence: requires pure wind neutrality, domain, frame/frame-free law, measure, boundary behavior, matter decoupling, mass neutrality, scalar-trace neutrality
+Handoff: pure wind is not ordinary gravity
+
+------------------------------------------------------------------------------------------------------------------------
+G18-4: pure wind neutrality
+------------------------------------------------------------------------------------------------------------------------
+Result: pure wind neutrality is required but not derived
+[WARN] G18-4: pure wind neutrality: THEOREM_TARGET
+Consequence: J_sub cannot shift M_ext, source scalar trace, push matter, repair boundary, or tune recovery
+Handoff: preserve pure wind neutrality as required future theorem
+
+------------------------------------------------------------------------------------------------------------------------
+G18-5: J_exch
+------------------------------------------------------------------------------------------------------------------------
+Result: J_exch survives only as active-exchange theorem target
+[WARN] G18-5: J_exch: THEOREM_TARGET
+Consequence: requires source side, relaxation side, Sigma/R distinction, balance role, domain, direction, boundary behavior, matter decoupling, mass neutrality, scalar trace guard
+Handoff: exchange is not repair
+
+------------------------------------------------------------------------------------------------------------------------
+G18-6: Sigma/R
+------------------------------------------------------------------------------------------------------------------------
+Result: Sigma/R remain role-level unless distinct operators and strength laws are found
+[FAIL] G18-6: Sigma/R: UNRESOLVED
+Consequence: no exchange continuity law is derived
+Handoff: do not write decorative nabla_mu J_exch^mu = Sigma_exch - R_exch
+
+------------------------------------------------------------------------------------------------------------------------
+G18-7: ordinary matter decoupling
+------------------------------------------------------------------------------------------------------------------------
+Result: ordinary matter decoupling is required but not derived
+[WARN] G18-7: ordinary matter decoupling: THEOREM_TARGET
+Consequence: rho/scalar charge remains routed to A-sector; no T_mu_nu double-count; no fifth force; no hidden scalar charge; no M_ext shift independent of A
+Handoff: ordinary matter must stay in A-sector unless theorem derives otherwise
+
+------------------------------------------------------------------------------------------------------------------------
+G18-8: J_exch source side
+------------------------------------------------------------------------------------------------------------------------
+Result: no active ordinary-sector source side for J_exch is derived
+[FAIL] G18-8: J_exch source side: UNRESOLVED
+Consequence: curvature admissibility, volume response, matter-induced exchange, and boundary exchange are high risk
+Handoff: ordinary-sector J_exch should stay inactive/role-level unless source side is derived
+
+------------------------------------------------------------------------------------------------------------------------
+G18-9: safest ordinary-sector branches
+------------------------------------------------------------------------------------------------------------------------
+Result: zero-net exchange, zero creation, curvature-from-warping, and latent exchange survive
+[WARN] G18-9: safest ordinary-sector branches: CANDIDATE
+Consequence: ordinary curvature need not imply net vacuum creation/destruction
+Handoff: preserve zero-net / zero-creation branches in field-equation snapshot
+
+------------------------------------------------------------------------------------------------------------------------
+G18-10: dark-sector coupling
+------------------------------------------------------------------------------------------------------------------------
+Result: no dark-sector coupling is required
+[WARN] G18-10: dark-sector coupling: SAFE_IF
+Consequence: safest default is no dark-sector coupling in Group 18
+Handoff: dark coupling to J_exch only may remain future candidate if ordinary separation and source law exist
+
+------------------------------------------------------------------------------------------------------------------------
+G18-11: forbidden dark uses
+------------------------------------------------------------------------------------------------------------------------
+Result: dark patch for ordinary failure, M_ext shift, scalar leak, boundary repair, recovery repair, and H_exch shortcut are rejected
+[WARN] G18-11: forbidden dark uses: REJECTED
+Consequence: dark sector cannot rescue failed ordinary source/current branches
+Handoff: carry no-dark-patch rule into Group 19
+
+------------------------------------------------------------------------------------------------------------------------
+G18-12: H_exch/H_curv
+------------------------------------------------------------------------------------------------------------------------
+Result: H_exch/H_curv remain deferred
+[WARN] G18-12: H_exch/H_curv: DEFER
+Consequence: parent correction tensors cannot be justified by role-level currents or dark labels
+Handoff: Group 19 may audit correction tensors only as divergence-safe non-decorative targets
+
+------------------------------------------------------------------------------------------------------------------------
+G18-13: final Group 18 closure
+------------------------------------------------------------------------------------------------------------------------
+Result: Group 18 closes at role-level split / theorem-target strength
+[PASS] G18-13: final Group 18 closure: CLOSED
+Consequence: vacuum-current split is disciplined but not operator-level
+Handoff: update field-equation snapshot before opening Group 19 if needed
+
+========================================================================================================================
+Case 2: Compact Group 18 status table
+========================================================================================================================
+| Entry | Result | Status | Handoff |
+|---|---|---|---|
+| G18-1: J_V | J_V remains unresolved umbrella notation | UNRESOLVED | do not assume J_V is physical current in Group 19 |
+| G18-2: J_sub/J_exch split | J_sub/J_exch split is useful as role-level bookkeeping only | SAFE_IF | do not use J_V = J_sub + J_exch as field law |
+| G18-3: J_sub | J_sub survives only as neutral substrate-current theorem target | THEOREM_TARGET | pure wind is not ordinary gravity |
+| G18-4: pure wind neutrality | pure wind neutrality is required but not derived | THEOREM_TARGET | preserve pure wind neutrality as required future theorem |
+| G18-5: J_exch | J_exch survives only as active-exchange theorem target | THEOREM_TARGET | exchange is not repair |
+| G18-6: Sigma/R | Sigma/R remain role-level unless distinct operators and strength laws are found | UNRESOLVED | do not write decorative nabla_mu J_exch^mu = Sigma_exch - R_exch |
+| G18-7: ordinary matter decoupling | ordinary matter decoupling is required but not derived | THEOREM_TARGET | ordinary matter must stay in A-sector unless theorem derives otherwise |
+| G18-8: J_exch source side | no active ordinary-sector source side for J_exch is derived | UNRESOLVED | ordinary-sector J_exch should stay inactive/role-level unless source side is derived |
+| G18-9: safest ordinary-sector branches | zero-net exchange, zero creation, curvature-from-warping, and latent exchange survive | CANDIDATE | preserve zero-net / zero-creation branches in field-equation snapshot |
+| G18-10: dark-sector coupling | no dark-sector coupling is required | SAFE_IF | dark coupling to J_exch only may remain future candidate if ordinary separation and source law exist |
+| G18-11: forbidden dark uses | dark patch for ordinary failure, M_ext shift, scalar leak, boundary repair, recovery repair, and H_exch shortcut are rejected | REJECTED | carry no-dark-patch rule into Group 19 |
+| G18-12: H_exch/H_curv | H_exch/H_curv remain deferred | DEFER | Group 19 may audit correction tensors only as divergence-safe non-decorative targets |
+| G18-13: final Group 18 closure | Group 18 closes at role-level split / theorem-target strength | CLOSED | update field-equation snapshot before opening Group 19 if needed |
+[WARN] compact Group 18 status table produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 1
+CLOSED: 1
+DEFER: 1
+REJECTED: 1
+SAFE_IF: 2
+THEOREM_TARGET: 4
+UNRESOLVED: 3
+
+Interpretation:
+  Group 18 disciplined vacuum-current language but did not derive operators.
+  J_V, Sigma/R, and ordinary-sector J_exch source side remain unresolved.
+  J_sub and J_exch survive as theorem targets only.
+  Pure wind neutrality and ordinary matter decoupling are required but not derived.
+  Zero-net exchange, zero creation, curvature-from-warping, and latent exchange remain safest ordinary-sector branches.
+  No dark-sector coupling is required.
+  H_exch/H_curv remain deferred.
+[WARN] Group 18 status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Current working rule
+========================================================================================================================
+Current working rule:
+
+  Vacuum-current split is role-level only.
+  Pure wind is not gravity.
+  Exchange is not repair.
+  Matter stays in A's lane.
+  Dark sector does not patch ordinary failure.
+
+Currently licensed:
+
+  role-level J_sub/J_exch bookkeeping
+  zero-net exchange branch
+  zero-creation branch
+  curvature-from-warping branch
+  latent exchange accounting branch
+
+Not currently licensed:
+
+  physical J_V current
+  physical J_sub substrate current
+  physical J_exch active current
+  ordinary-sector exchange source
+  dark-sector coupling
+  H_exch/H_curv correction closure
+[WARN] Group 18 working rule recorded: SAFE_IF
+
+========================================================================================================================
+Case 5: Surviving bottlenecks
+========================================================================================================================
+1. J_V definition
+2. u_vac definition
+3. J_sub domain/frame/measure/direction law
+4. pure wind neutrality theorem
+5. J_exch source side
+6. J_exch relaxation side
+7. Sigma/R distinction and strength laws
+8. ordinary matter decoupling theorem
+9. mass neutrality theorem
+10. scalar trace neutrality theorem
+11. boundary neutrality theorem
+12. zero-net exchange ordinary-sector condition
+13. zero-creation ordinary-sector condition
+14. curvature-from-warping parent relation
+15. latent vs active exchange regime condition
+16. dark-sector source separation if reopened
+17. H_exch/H_curv divergence-safe audit in Group 19
+
+Central bottleneck:
+
+  define a real vacuum current/source structure,
+  or keep the split role-level and ordinary-sector neutral.
+[FAIL] surviving bottlenecks recorded: UNRESOLVED
+
+========================================================================================================================
+Case 6: Rejected regressions to preserve
+========================================================================================================================
+1. J_V assumed defined
+2. J_sub as arbitrary preferred-frame wind
+3. J_sub gravitating by existence
+4. J_sub pushing ordinary matter
+5. J_sub shifting M_ext
+6. J_sub sourcing scalar trace
+7. J_sub as remainder current
+8. J_exch as repair current
+9. Sigma/R as tuning knobs
+10. decorative exchange continuity law
+11. ordinary T as Sigma_exch by fiat
+12. matter-induced exchange by convenience
+13. boundary exchange as repair
+14. curvature admissibility as active repair source
+15. e_curv as source reservoir
+16. dark sector patching ordinary failure
+17. dark sector shifting ordinary M_ext
+18. dark scalar charge leak
+19. H_exch/H_curv shortcut
+20. recovery-tuned current/source/coupling
+[WARN] rejected regressions preserved: REJECTED
+
+========================================================================================================================
+Case 7: Next options
+========================================================================================================================
+Possible next documents/scripts:
+
+1. candidate_vacuum_current_split_group_status_summary.md
+   Artifact for this script.
+
+2. field_equation_status_after_group_18.md
+   Update current field-equation snapshot after Group 18.
+
+3. Group 19 first script:
+   candidate_parent_correction_tensor_role_inventory.py
+
+Recommended next document:
+
+  field_equation_status_after_group_18.md
+
+Reason:
+  Group 18 is a status closure. The field-equation snapshot should be updated
+  before opening the parent correction tensor audit.
+[WARN] next document selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Group 18 did not derive J_V, J_sub, J_exch, u_vac, Sigma/R operators, ordinary matter decoupling, pure wind neutrality, dark-sector coupling, or H_exch/H_curv.
+
+It produced a sharper vacuum-current boundary:
+
+  vacuum-current split is role-level only;
+  J_sub is pure-wind theorem target only;
+  J_exch is active-exchange theorem target only;
+  ordinary matter decoupling is required;
+  no ordinary-sector source side for J_exch is derived;
+  zero-net / zero-creation / curvature-from-warping / latent exchange remain safest;
+  no dark-sector coupling is required;
+  H_exch/H_curv remain deferred.
+
+Best next document:
+
+  field_equation_status_after_group_18.md
+[PASS] Group 18 vacuum current split status complete: CLOSED

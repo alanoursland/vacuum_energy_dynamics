@@ -1,0 +1,164 @@
+
+========================================================================================================================
+Candidate Scalar-Flux No-Wave Failure Control
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Problem statement
+========================================================================================================================
+Scalar branch:
+
+  A = 1 + 2 Phi/c^2
+  h_ij^scalar = -2 psi delta_ij
+
+Wave target:
+
+  h_ij^TT
+  trace-free
+  transverse
+  two polarizations: h_plus and h_cross
+
+Question:
+  Can scalar A-flux be the gravitational-wave sector?
+
+Expected answer:
+  No. Scalar A-flux is the monopole/scalar channel, not the TT wave channel.
+[PASS] scalar no-wave failure control posed
+
+========================================================================================================================
+Case 1: Scalar spatial perturbation is not trace-free
+========================================================================================================================
+Scalar spatial perturbation:
+
+  h_ij^scalar = -2 psi delta_ij
+
+Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
+
+trace = -6*psi
+[PASS] scalar perturbation has nonzero trace unless psi=0
+
+Interpretation:
+  A TT gravitational wave must be trace-free.
+  The scalar conformal perturbation is pure trace, not TT.
+
+========================================================================================================================
+Case 2: Trace-free projection of scalar spatial perturbation
+========================================================================================================================
+Scalar perturbation:
+Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
+
+Trace-free projection:
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+[PASS] trace-free projection of pure scalar conformal mode vanishes
+
+Interpretation:
+  The scalar spatial mode has no TT content after removing the trace.
+
+========================================================================================================================
+Case 3: Scalar breathing mode versus TT plus/cross
+========================================================================================================================
+Scalar breathing-like transverse mode:
+Matrix([[psi, 0, 0], [0, psi, 0], [0, 0, 0]])
+trace = 2*psi
+
+Tensor TT plus/cross mode:
+Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
+trace = 0
+[PASS] breathing mode is not trace-free unless trivial
+[PASS] TT plus/cross mode is trace-free
+
+Interpretation:
+  A scalar wave would be a breathing-type mode, not the two GR TT modes.
+
+========================================================================================================================
+Case 4: No scalar psi reproduces nontrivial TT modes
+========================================================================================================================
+Solve H_scalar = H_TT for psi, h_plus, h_cross:
+solutions = [{h_cross: 0, h_plus: 0, psi: 0}]
+[PASS] only trivial scalar=TT solution exists
+
+Interpretation:
+  A scalar conformal perturbation cannot generate nonzero plus/cross modes.
+
+========================================================================================================================
+Case 5: Transversality alone is not enough
+========================================================================================================================
+Breathing-like scalar transverse mode:
+Matrix([[psi, 0, 0], [0, psi, 0], [0, 0, 0]])
+
+k^i h_ij = Matrix([[0, 0, 0]])
+trace = 2*psi
+[PASS] breathing mode can be transverse
+[PASS] but breathing mode is not traceless
+
+Interpretation:
+  Even a transverse scalar breathing mode is not a GR TT wave.
+
+========================================================================================================================
+Case 6: Scalar wave equation would be scalar radiation
+========================================================================================================================
+Suppose scalar psi obeys a wave equation:
+
+  Box psi = 0
+
+psi = H*cos(k*z - omega*t)
+Box psi = H*(c**2*k**2 - omega**2)*cos(k*z - omega*t)/c**2
+
+This gives scalar propagation when omega^2 = c^2 k^2.
+But it would be scalar radiation, not tensor TT radiation.
+[PASS] scalar wave equation is not a tensor wave equation
+
+========================================================================================================================
+Case 7: Required TT tensor sector
+========================================================================================================================
+Required tensor wave sector for propagation along z:
+
+Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
+
+trace = 0
+
+Independent polarizations:
+  h_plus
+  h_cross
+[PASS] TT sector has the two needed tensor polarizations
+
+========================================================================================================================
+Case 8: Classification
+========================================================================================================================
+Results:
+
+1. Scalar spatial perturbation is pure trace/conformal.
+2. Its trace-free projection is zero.
+3. Scalar breathing modes are not TT modes.
+4. No nonzero scalar psi reproduces h_plus/h_cross.
+5. A scalar wave equation would produce scalar radiation, not GR tensor waves.
+6. Gravitational waves require an independent h_ij^TT sector.
+
+[PASS] scalar flux law cannot be the gravitational-wave sector
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+This failure control proves the scalar A-flux law is not secretly a
+gravitational-wave theory.
+
+A-flux remains valuable as:
+
+  monopole / scalar / Newtonian mass response
+
+But gravitational radiation requires:
+
+  h_ij^TT
+  two tensor polarizations
+  trace-free transverse spatial structure
+
+Therefore the next stage should build a tensor-flux principle:
+
+  A-flux = monopole scalar channel
+  tensor flux = quadrupole TT radiative channel
+
+Possible next artifact:
+  candidate_scalar_flux_no_wave_failure_control.md
+
+Possible next script:
+  candidate_tensor_flux_basis.py

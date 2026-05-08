@@ -1,0 +1,145 @@
+
+============================================================================================
+Candidate Shear Profile Source Law
+============================================================================================
+
+============================================================================================
+Case 0: Convention check
+============================================================================================
+a = kappa + s
+b = kappa - s
+A = exp(kappa + s)
+B = exp(kappa - s)
+AB = exp(2*kappa)
+
+With kappa = 0:
+A = exp(s)
+B = exp(-s)
+AB = 1
+[PASS] kappa=0 gives A=exp(s)
+[PASS] kappa=0 gives B=exp(-s)
+[PASS] kappa=0 gives AB=1
+
+============================================================================================
+Case 1: Source-free radial Laplace equation
+============================================================================================
+Radial source-free equation:
+  Eq((r**2*Derivative(s(r), (r, 2)) + 2*r*Derivative(s(r), r))/r**2, 0)
+
+General solution:
+  Eq(s(r), C1 + C2/r)
+
+Candidate s(r) = C1 + C2/r
+∇²s = 0
+[PASS] C1 + C2/r solves source-free radial Laplace equation
+
+============================================================================================
+Case 2: Mass/interface flux fixes coefficient
+============================================================================================
+s(r) = C/r
+s'(r) = -C/r**2
+4π r² s'(r) = -4*pi*C
+
+Target flux = 8*pi*G*M/c**2
+C solution = [-2*G*M/c**2]
+C = -2*G*M/c**2
+s_fixed(r) = -2*G*M/(c**2*r)
+[PASS] flux condition fixes s(r) = -2GM/(r c^2)
+fixed flux = 8*pi*G*M/c**2
+[PASS] fixed solution has desired outward flux
+
+============================================================================================
+Case 3: Weak-field metric recovery from shear profile
+============================================================================================
+s = -2*eps
+A = exp(s) = exp(-2*eps)
+B = exp(-s) = exp(2*eps)
+AB = 1
+
+A series = 2*eps**2 - 2*eps + 1
+B series = 2*eps**2 + 2*eps + 1
+AB series = 1
+
+[PASS] A recovers temporal series through O(eps^2)
+[PASS] B recovers reciprocal spatial series through O(eps^2)
+[PASS] AB is exactly 1
+
+First-order targets:
+  A = 1 - 2*eps + O(eps^2)
+  B = 2*eps + 1 + O(eps^2)
+
+============================================================================================
+Case 4: Poisson source form and sign check
+============================================================================================
+Distributional sign check:
+  ∇²(1/r) = -4π δ³(r)
+  s = -2GM/(c² r)
+  ∇²s = (+8πGM/c²) δ³(r)
+
+Candidate reduced Poisson equation:
+  ∇²s = 8πG rho / c²
+
+Outside the source:
+  rho = 0
+  ∇²s = 0
+
+Exterior s(r) = -2*G*M/(c**2*r)
+Ordinary radial ∇²s for r>0 = 0
+[PASS] exterior solution is harmonic away from source
+
+============================================================================================
+Case 5: Failure controls
+============================================================================================
+
+--------------------------------------------------------------------------------------------
+Failure control A: nonzero asymptotic constant
+--------------------------------------------------------------------------------------------
+s(r) = C0 + C1/r
+If C0 != 0, then s(infinity) != 0.
+This violates asymptotic flatness unless C0 = 0.
+[PASS] asymptotic flatness requires C0=0
+
+--------------------------------------------------------------------------------------------
+Failure control B: wrong coefficient
+--------------------------------------------------------------------------------------------
+s = -eps*lambda
+A series = -eps*lambda + 1
+Weak-field temporal target requires coefficient lambda = 2.
+lambda solution = [2]
+[PASS] weak-field temporal coefficient fixes lambda=2
+
+============================================================================================
+Final interpretation
+============================================================================================
+This source-law toy establishes the reduced exterior chain:
+
+  kappa = 0
+    -> A = exp(s), B = exp(-s), AB = 1
+
+  source-free exterior shear equation:
+    ∇²s = 0
+
+  spherical solution plus asymptotic flatness:
+    s(r) = C/r
+
+  mass/interface flux condition:
+    4πr²s'(r) = 8πGM/c²
+
+  coefficient:
+    C = -2GM/c²
+
+  result:
+    s(r) = -2GM/(r c²)
+
+  metric:
+    A = exp(s) ≈ 1 - 2GM/(r c²)
+    B = exp(-s) ≈ 1 + 2GM/(r c²)
+    AB = 1 exactly
+
+This does NOT yet derive the field equation or the mass/interface flux law.
+It shows that if the shear mode obeys a Laplace/Poisson source law with
+the stated normalization, then the weak-field exterior profile follows.
+
+Next theoretical target:
+  Explain why the vacuum configuration functional gives this shear equation
+  and why the source/interface flux is fixed by M as 8πGM/c².

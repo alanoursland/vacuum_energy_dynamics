@@ -1,0 +1,127 @@
+
+================================================================================================
+Candidate Reduced Exterior Action
+================================================================================================
+
+================================================================================================
+Case 0: Log-scale algebra
+================================================================================================
+A  = exp(kappa + s)
+B  = exp(kappa - s)
+AB = exp(2*kappa)
+[PASS] AB = exp(2*kappa)
+[PASS] kappa=0 gives AB=1
+
+================================================================================================
+Case 1: Reduced Euler-Lagrange equations in one coordinate
+================================================================================================
+L = K_k*Derivative(kappa(x), x)**2 + K_s*Derivative(s(x), x)**2 + M_k**2*kappa(x)**2 + alpha*rho(x)*s(x)
+
+Euler-Lagrange equations:
+  EL_kappa = -2*K_k*Derivative(kappa(x), (x, 2)) + 2*M_k**2*kappa(x) = 0
+  EL_s     = -2*K_s*Derivative(s(x), (x, 2)) + alpha*rho(x) = 0
+
+EL_kappa | kappa=0 = 0
+[PASS] kappa=0 solves source-free kappa equation
+
+Shear equation rearranged:
+  alpha*rho - 2*K_s*s'' = 0
+  s'' = alpha*rho/(2*K_s)
+
+To match the reduced Poisson normalization in Cartesian form, choose:
+  alpha/(2*K_s) = 8πG/c²
+
+================================================================================================
+Case 2: 3D reduced variation target and normalization
+================================================================================================
+Variation of:
+  E_s = ∫ [K_s |∇s|² + alpha rho s] d³x
+gives:
+  ∇²s = alpha rho/(2K_s)
+
+Desired:
+  ∇²s = 8πG rho/c²
+
+alpha solution = [16*pi*G*K_s/c**2]
+[PASS] normalization alpha = 16πG K_s/c²
+
+================================================================================================
+Case 3: Exterior spherical solution from reduced source law
+================================================================================================
+s(r) = C/r
+∇²s for r>0 = 0
+[PASS] C/r is harmonic outside source
+
+4πr²s'(r) = -4*pi*C
+target flux = 8*pi*G*M/c**2
+C solution = [-2*G*M/c**2]
+s_fixed(r) = -2*G*M/(c**2*r)
+[PASS] source flux fixes s=-2GM/(rc²)
+
+================================================================================================
+Case 4: Metric recovery
+================================================================================================
+kappa = 0
+s = -2*eps
+A = exp(-2*eps)
+B = exp(2*eps)
+AB = 1
+
+A series = 2*eps**2 - 2*eps + 1
+B series = 2*eps**2 + 2*eps + 1
+[PASS] A = 1 - 2eps + 2eps² + ...
+[PASS] B = 1 + 2eps + 2eps² + ...
+[PASS] AB = 1 exactly
+
+================================================================================================
+Case 5: Failure control — direct kappa source
+================================================================================================
+L_k = -J_k*kappa(x) + K_k*Derivative(kappa(x), x)**2 + M_k**2*kappa(x)**2
+EL_kappa = -J_k - 2*K_k*Derivative(kappa(x), (x, 2)) + 2*M_k**2*kappa(x) = 0
+
+constant equilibrium equation = -J_k + 2*M_k**2*k0 = 0
+kappa constant solutions = [J_k/(2*M_k**2)]
+kappa_eq = J_k/(2*M_k**2)
+AB = exp(J_k/M_k**2)
+[PASS] kappa source makes kappa nonzero generically
+[PASS] reciprocal scaling fails generically
+
+================================================================================================
+Case 6: Failure control — wrong shear coefficient
+================================================================================================
+s = -eps*lambda
+A series = -eps*lambda + 1
+lambda solution = [2]
+[PASS] weak-field temporal coefficient fixes lambda=2
+
+================================================================================================
+Final interpretation
+================================================================================================
+This reduced action toy unifies the previous two mechanisms:
+
+1. Kappa suppression:
+   K_k |∇kappa|² + M_k² kappa²
+   gives kappa=0 as the relaxed source-free exterior solution.
+
+2. Shear source law:
+   K_s |∇s|² + alpha rho s
+   gives ∇²s = alpha rho/(2K_s).
+
+Choosing:
+   alpha = 16πG K_s/c²
+gives:
+   ∇²s = 8πG rho/c².
+
+For a spherical mass M:
+   s(r) = -2GM/(r c²).
+
+With kappa=0:
+   A = exp(s), B = exp(-s), AB = 1.
+
+Weak field:
+   A ≈ 1 - 2GM/(r c²)
+   B ≈ 1 + 2GM/(r c²)
+
+This is still only a reduced-sector variational toy.
+The next theoretical step is to find the covariant parent of this action
+and explain the origin of the kappa suppression and shear-source coupling.

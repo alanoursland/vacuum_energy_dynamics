@@ -1,0 +1,265 @@
+
+========================================================================================================================
+Candidate Scalar Conversion Not Damping
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Scalar conversion-not-damping problem
+========================================================================================================================
+Question:
+
+  What does it mean for scalar/trace disturbances to convert into vacuum-spacetime configuration,
+  rather than propagate as damped scalar waves?
+
+Goal:
+
+  distinguish damping, relaxation, and conversion
+
+Discipline:
+
+  do not assume a second-order scalar oscillator
+  do not model conversion as energy loss to an unrelated reservoir
+  do not let scalar conversion leak into far-zone radiation
+  do not duplicate A-sector exterior mass
+[WARN] scalar conversion-not-damping problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Conversion inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: ordinary damping rejected as primary model
+------------------------------------------------------------------------------------------------------------------------
+Concept: damped scalar wave
+Candidate form: phi_tt + gamma phi_t + omega^2 phi = 0
+Allowed interpretation: toy/foil only if a second-order scalar mode is derived
+Forbidden interpretation: default model for scalar conversion
+[WARN] C1: ordinary damping rejected as primary model: REJECTED
+Missing: no derived scalar inertia/momentum channel
+
+------------------------------------------------------------------------------------------------------------------------
+C2: first-order relaxation allowed
+------------------------------------------------------------------------------------------------------------------------
+Concept: non-inertial relaxation
+Candidate form: u^mu nabla_mu kappa = -lambda_kappa (kappa-kappa_min)
+Allowed interpretation: local trace/volume mismatch moves toward equilibrium
+Forbidden interpretation: hidden Box kappa or oscillator/sloshing mode
+[WARN] C2: first-order relaxation allowed: CONSTRAINED
+Missing: u^mu, lambda_kappa, kappa_min source law
+
+------------------------------------------------------------------------------------------------------------------------
+C3: conversion into volume form
+------------------------------------------------------------------------------------------------------------------------
+Concept: scalar/trace conversion
+Candidate form: trace disturbance -> delta zeta, with zeta=ln sqrt(gamma)
+Allowed interpretation: would-be scalar propagation changes vacuum-spacetime configuration
+Forbidden interpretation: scalar wave loses energy to unrelated reservoir
+[WARN] C3: conversion into volume form: CANDIDATE
+Missing: conversion operator P_trace and zeta-kappa map
+
+------------------------------------------------------------------------------------------------------------------------
+C4: no independent scalar momentum channel
+------------------------------------------------------------------------------------------------------------------------
+Concept: no scalar sloshing
+Candidate form: no term like 1/2 (u^mu nabla_mu zeta)^2 unless separately derived
+Allowed interpretation: scalar/trace channel is constraint/relaxation/conversion-mediated
+Forbidden interpretation: second-order scalar radiation channel by default
+[WARN] C4: no independent scalar momentum channel: CONSTRAINED
+Missing: parent reason for absence of scalar inertia
+
+------------------------------------------------------------------------------------------------------------------------
+C5: energy accounting is geometric
+------------------------------------------------------------------------------------------------------------------------
+Concept: vacuum-spacetime configuration exchange
+Candidate form: d e_kappa/dtau + d epsilon_vac_config/dtau = 0
+Allowed interpretation: curvature excess deposits into vacuum configuration; deficit pulls from it
+Forbidden interpretation: energy destruction or one-way thermodynamic mouth
+[WARN] C5: energy accounting is geometric: CANDIDATE
+Missing: epsilon_vac_config functional and measure
+
+------------------------------------------------------------------------------------------------------------------------
+C6: scalar far-zone radiation forbidden
+------------------------------------------------------------------------------------------------------------------------
+Concept: radiation safety
+Candidate form: source(A_rad ordinary massless)=0; Box kappa rejected
+Allowed interpretation: ordinary far-zone radiation is TT-only
+Forbidden interpretation: trace/volume conversion leaks into far-zone scalar flux
+[WARN] C6: scalar far-zone radiation forbidden: CONSTRAINED
+Missing: binary-radiation scalar conversion safety proof
+
+------------------------------------------------------------------------------------------------------------------------
+C7: trace/TT split as conversion gate
+------------------------------------------------------------------------------------------------------------------------
+Concept: geometric projector split
+Candidate form: trace changes zeta; TT preserves zeta at linear order
+Allowed interpretation: trace converts, TT propagates
+Forbidden interpretation: trace and TT not separated by projectors
+[WARN] C7: trace/TT split as conversion gate: STRUCTURAL
+Missing: nonlinear/covariant extension and P_trace/P_TT derivation
+
+------------------------------------------------------------------------------------------------------------------------
+C8: A-sector mass remains separate
+------------------------------------------------------------------------------------------------------------------------
+Concept: mass scalar constraint
+Candidate form: rho -> A_flux; not rho -> zeta exterior charge
+Allowed interpretation: A carries exterior mass; zeta/kappa carries local trace-volume reconfiguration
+Forbidden interpretation: rho double-sourced into volume-form scalar charge
+[WARN] C8: A-sector mass remains separate: CONSTRAINED
+Missing: scalar constraint propagation and boundary theorem
+
+------------------------------------------------------------------------------------------------------------------------
+C9: conversion may be local or constrained
+------------------------------------------------------------------------------------------------------------------------
+Concept: support/locality status
+Candidate form: conversion support compact or compensated; exterior zeta/kappa -> 0
+Allowed interpretation: scalar conversion changes local geometry without far-zone scalar tail
+Forbidden interpretation: acausal nonlocal repair unless declared constraint
+[FAIL] C9: conversion may be local or constrained: UNRESOLVED
+Missing: local versus constrained conversion law
+
+------------------------------------------------------------------------------------------------------------------------
+C10: 1D toy as foil
+------------------------------------------------------------------------------------------------------------------------
+Concept: dissipative curvature-metric flow
+Candidate form: ds=e^phi dx, phi analogous to zeta_1D
+Allowed interpretation: use phi as volume-form analogy
+Forbidden interpretation: import R reservoir or Lambda sink as final theory
+[WARN] C10: 1D toy as foil: STRUCTURAL
+Missing: conservative/geometric replacement for toy reservoir
+
+========================================================================================================================
+Case 2: Compact conversion ledger
+========================================================================================================================
+| Entry | Concept | Candidate form | Status | Missing |
+|---|---|---|---|---|
+| C1: ordinary damping rejected as primary model | damped scalar wave | phi_tt + gamma phi_t + omega^2 phi = 0 | REJECTED | no derived scalar inertia/momentum channel |
+| C2: first-order relaxation allowed | non-inertial relaxation | u^mu nabla_mu kappa = -lambda_kappa (kappa-kappa_min) | CONSTRAINED | u^mu, lambda_kappa, kappa_min source law |
+| C3: conversion into volume form | scalar/trace conversion | trace disturbance -> delta zeta, with zeta=ln sqrt(gamma) | CANDIDATE | conversion operator P_trace and zeta-kappa map |
+| C4: no independent scalar momentum channel | no scalar sloshing | no term like 1/2 (u^mu nabla_mu zeta)^2 unless separately derived | CONSTRAINED | parent reason for absence of scalar inertia |
+| C5: energy accounting is geometric | vacuum-spacetime configuration exchange | d e_kappa/dtau + d epsilon_vac_config/dtau = 0 | CANDIDATE | epsilon_vac_config functional and measure |
+| C6: scalar far-zone radiation forbidden | radiation safety | source(A_rad ordinary massless)=0; Box kappa rejected | CONSTRAINED | binary-radiation scalar conversion safety proof |
+| C7: trace/TT split as conversion gate | geometric projector split | trace changes zeta; TT preserves zeta at linear order | STRUCTURAL | nonlinear/covariant extension and P_trace/P_TT derivation |
+| C8: A-sector mass remains separate | mass scalar constraint | rho -> A_flux; not rho -> zeta exterior charge | CONSTRAINED | scalar constraint propagation and boundary theorem |
+| C9: conversion may be local or constrained | support/locality status | conversion support compact or compensated; exterior zeta/kappa -> 0 | UNRESOLVED | local versus constrained conversion law |
+| C10: 1D toy as foil | dissipative curvature-metric flow | ds=e^phi dx, phi analogous to zeta_1D | STRUCTURAL | conservative/geometric replacement for toy reservoir |
+[WARN] compact conversion ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+CONSTRAINED: 4
+REJECTED: 1
+STRUCTURAL: 2
+UNRESOLVED: 1
+
+Interpretation:
+  Damped scalar waves are rejected as the default model.
+  First-order relaxation and geometric conversion remain viable.
+  The central missing object is the conversion operator / parent projector.
+[WARN] conversion status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Damping versus relaxation versus conversion
+========================================================================================================================
+Damping:
+
+  an existing wave degree loses energy to another channel
+  usually assumes scalar inertia/momentum
+
+Relaxation:
+
+  a non-inertial variable moves first-order toward a local minimum
+  no overshoot or slosh unless inertia is added
+
+Conversion:
+
+  the would-be scalar disturbance changes the geometry/volume-form variable itself
+  the scalar wave does not remain the same propagating degree of freedom
+
+Current preferred language:
+
+  scalar/trace disturbances are conversion-limited, not friction-damped waves.
+[WARN] damping/relaxation/conversion distinction stated: CONSTRAINED
+
+========================================================================================================================
+Case 5: Candidate conversion shape
+========================================================================================================================
+Candidate conversion skeleton:
+
+  P_trace[source/geometry] -> delta zeta
+
+  zeta = ln sqrt(gamma)
+
+  kappa ~ zeta - zeta_min
+
+  u^mu nabla_mu kappa = -lambda_kappa (kappa-kappa_min)
+
+  d e_kappa/dtau + d epsilon_vac_config/dtau = 0
+
+Forbidden:
+
+  Box A
+  A_rad ordinary massless source
+  Box kappa
+  exterior zeta/kappa 1/r tail
+
+This is a skeleton, not a derivation.
+[WARN] candidate conversion skeleton stated: CANDIDATE
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Scalar conversion fails if:
+
+1. A second-order scalar wave is inserted without derivation.
+2. Conversion becomes ordinary damping into a thermodynamic sink.
+3. A_rad or Box kappa appears.
+4. zeta/kappa creates an exterior scalar charge.
+5. rho is duplicated into A and volume-form charge.
+6. TT modes lose volume-preserving status.
+7. Binary systems acquire extra far-zone scalar energy loss.
+8. Conversion operator remains arbitrary.
+[WARN] scalar conversion failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_scalar_conversion_not_damping.md
+   Artifact for this script.
+
+2. candidate_mass_acceleration_gradient_coupling.py
+   Find covariant/reduced expression for mass accelerating across a gradient.
+
+3. candidate_binary_radiation_scalar_conversion_safety.py
+   Check scalar conversion does not add orbital-energy-loss channel.
+
+Recommended next script:
+
+  candidate_mass_acceleration_gradient_coupling.py
+
+Reason:
+  Conversion needs a source/coupling expression; mass accelerating across a gradient is the ontology-to-equation bridge.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Scalar conversion should currently be treated as:
+
+  not a damped scalar wave
+  not a second-order oscillator
+  not energy loss to a thermodynamic mouth
+
+but rather:
+
+  conversion of scalar/trace disturbance into vacuum-spacetime configuration
+  with zeta = ln sqrt(gamma) as the leading geometric candidate
+
+Possible next artifact:
+  candidate_scalar_conversion_not_damping.md
+
+Possible next script:
+  candidate_mass_acceleration_gradient_coupling.py

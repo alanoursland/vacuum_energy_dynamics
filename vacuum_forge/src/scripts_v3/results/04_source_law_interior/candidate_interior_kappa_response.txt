@@ -1,0 +1,127 @@
+
+============================================================================================================
+Candidate Interior Kappa Response
+============================================================================================================
+
+============================================================================================================
+Case 0: Reduced mode recap
+============================================================================================================
+A = exp(kappa+s)
+B = exp(kappa-s)
+AB = exp(2*kappa)
+
+Exterior compensation:
+  kappa = 0
+  AB = 1
+  B = 1/A
+
+Interior question:
+  Should kappa=0 hold inside matter?
+  Or can matter source kappa inside while exterior kappa relaxes to zero?
+[PASS] interior kappa question isolated
+
+============================================================================================================
+Case 1: Forced interior compensation
+============================================================================================================
+A_in = -4*pi*G*R**2*rho0/c**2 + 4*pi*G*r**2*rho0/(3*c**2) + 1
+kappa_in = 0
+B_in = exp(2*kappa)/A = 3*c**2/(-12*pi*G*R**2*rho0 + 4*pi*G*r**2*rho0 + 3*c**2)
+A_in B_in = 1
+[PASS] forced kappa=0 gives reciprocal interior
+
+Caution:
+  This is the simplest interior extension, but it may be too strong.
+  It excludes traceful matter response in kappa.
+
+============================================================================================================
+Case 2: Generic traceful kappa source inside matter
+============================================================================================================
+A_in = -4*pi*G*R**2*rho0/c**2 + 4*pi*G*r**2*rho0/(3*c**2) + 1
+kappa_in = G*eta*rho0*(R**2 - r**2)/c**2
+B_in = exp(2*kappa)/A = 3*c**2*exp(2*G*eta*rho0*(R**2 - r**2)/c**2)/(-12*pi*G*R**2*rho0 + 4*pi*G*r**2*rho0 + 3*c**2)
+A_in B_in = exp(2*G*eta*rho0*(R**2 - r**2)/c**2)
+
+kappa_in(R) = 0
+kappa_in'(R) = -2*G*R*eta*rho0/c**2
+kappa_in(0) = G*R**2*eta*rho0/c**2
+kappa_in'(0) = 0
+[PASS] interior kappa can vanish at boundary
+[PASS] interior kappa is regular at origin
+[PASS] nonzero interior kappa breaks reciprocal interior generically
+[PASS] boundary derivative may jump unless exterior layer handles it
+
+============================================================================================================
+Case 3: Smooth boundary kappa profile
+============================================================================================================
+kappa_in = G*eta*rho0*(R**2 - r**2)**2/(R**2*c**2)
+kappa_in(R) = 0
+kappa_in'(R) = 0
+kappa_in'(0) = 0
+[PASS] kappa vanishes at boundary
+[PASS] kappa derivative vanishes at boundary
+[PASS] kappa regular at origin
+
+============================================================================================================
+Case 4: Interior kappa energy penalty model
+============================================================================================================
+E = C_k*kappa**2 - J_k*kappa
+Stationary equation: Eq(2*C_k*kappa - J_k, 0)
+kappa solution = [J_k/(2*C_k)]
+
+If J_k is nonzero inside matter, kappa responds.
+If J_k=0 outside, kappa relaxes to zero.
+[PASS] traceful source produces interior kappa response
+
+============================================================================================================
+Case 5: Exterior matching classification
+============================================================================================================
+Interior/exterior possibilities:
+
+A. kappa=0 everywhere
+   - simplest
+   - reciprocal interior
+   - not GR interior
+
+B. kappa sourced inside, kappa(R)=0
+   - exterior remains compensated
+   - interior can carry traceful matter response
+   - boundary derivative may need interface physics
+
+C. kappa sourced inside, kappa(R)=kappa_R != 0
+   - exterior begins with nonzero kappa
+   - reciprocal exterior may fail unless relaxation layer suppresses it
+
+D. smooth interior kappa with kappa(R)=kappa'(R)=0
+   - cleanest coexistence of interior trace response and exterior compensation
+[PASS] classification separates interior matter response from exterior compensation
+
+============================================================================================================
+Case 6: Exterior pressure from kappa leakage
+============================================================================================================
+If interior kappa leaks into exterior as kappa=lambda_k eps:
+A ≈ eps*(lambda_k - 2) + 1
+B ≈ eps*(lambda_k + 2) + 1
+AB ≈ 2*eps*lambda_k + 1
+
+Exterior kappa leak is observationally dangerous.
+[PASS] exterior kappa must be suppressed or tightly bounded
+
+============================================================================================================
+Final interpretation
+============================================================================================================
+This script supports a refined interior/exterior picture:
+
+  Exterior source-free region:
+    kappa should relax to zero.
+
+  Interior matter region:
+    kappa may be forced to zero as a simple model,
+    or may respond to traceful matter sources.
+
+A nonzero interior kappa is not automatically fatal if:
+  kappa -> 0 at the surface or through a boundary layer,
+  exterior kappa remains suppressed,
+  and no kappa leak persists into weak-field exterior observations.
+
+Possible next artifact:
+  candidate_interior_kappa_response.md

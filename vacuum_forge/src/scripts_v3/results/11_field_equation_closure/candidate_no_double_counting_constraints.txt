@@ -1,0 +1,213 @@
+
+========================================================================================================================
+Candidate No-Double-Counting Constraints
+========================================================================================================================
+
+========================================================================================================================
+Case 0: No-double-counting constraint problem
+========================================================================================================================
+Question:
+
+  Which overlaps between sources and sectors are forbidden or constrained?
+
+Goal:
+
+  turn the source ledger into explicit constraints
+
+Discipline:
+
+  one source may contribute to total stress-energy
+  but it must not become multiple independent gravity sources
+  unless a parent identity forces the split
+[WARN] no-double-counting problem posed: CONSTRAINED
+
+========================================================================================================================
+Case 1: Constraint inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: rho not double-sourced into kappa
+------------------------------------------------------------------------------------------------------------------------
+Expression: S_kappa[rho] = 0 as independent long-range scalar source
+Meaning: rho sources A; kappa may not carry a second rho-sourced 1/r field.
+[WARN] C1: rho not double-sourced into kappa: CONSTRAINED
+Risk if violated: Double-counted scalar gravity and exterior kappa tail.
+Missing: Parent source decomposition proving rho role.
+
+------------------------------------------------------------------------------------------------------------------------
+C2: exterior kappa charge vanishes
+------------------------------------------------------------------------------------------------------------------------
+Expression: Q_kappa = integral S_kappa d^3x = 0
+Meaning: No massless exterior kappa monopole.
+[WARN] C2: exterior kappa charge vanishes: CONSTRAINED
+Risk if violated: kappa_ext ~ 1/r scalar gravity.
+Missing: Projection/boundary identity deriving Q_kappa=0.
+
+------------------------------------------------------------------------------------------------------------------------
+C3: pressure/trace shifts minimum, not wave source
+------------------------------------------------------------------------------------------------------------------------
+Expression: trace,p -> kappa_min; not Box kappa = alpha trace
+Meaning: Trace response is non-inertial local relaxation, not scalar radiation.
+[WARN] C3: pressure/trace shifts minimum, not wave source: CONSTRAINED
+Risk if violated: Breathing radiation or massless scalar tail.
+Missing: S_trace_effective and chi_kappa derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+C4: transverse current only sources W_i
+------------------------------------------------------------------------------------------------------------------------
+Expression: source(W_i) = P_T j; P_L j excluded
+Meaning: Frame-dragging/vector response is sourced only by transverse current.
+[WARN] C4: transverse current only sources W_i: STRUCTURAL
+Risk if violated: Longitudinal/gauge current contaminates vector sector.
+Missing: Covariant current decomposition.
+
+------------------------------------------------------------------------------------------------------------------------
+C5: longitudinal current belongs to scalar continuity
+------------------------------------------------------------------------------------------------------------------------
+Expression: P_L j -> continuity/dot rho, not curl W
+Meaning: Longitudinal current updates density distribution rather than vector curl field.
+[PASS] C5: longitudinal current belongs to scalar continuity: DERIVED_REDUCED
+Risk if violated: Scalar/vector source mixing.
+Missing: Full dynamic source continuity closure.
+
+------------------------------------------------------------------------------------------------------------------------
+C6: TT stress remains trace-free tensor source
+------------------------------------------------------------------------------------------------------------------------
+Expression: source(h_TT) = P_TT S_ij; trace(S) excluded
+Meaning: Tensor radiation uses TT projection, not scalar trace.
+[WARN] C6: TT stress remains trace-free tensor source: STRUCTURAL
+Risk if violated: Trace stress double-counted as tensor radiation.
+Missing: TT source identity and coupling derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+C7: scalar radiation source rejected
+------------------------------------------------------------------------------------------------------------------------
+Expression: source(A_rad ordinary massless) = 0
+Meaning: No ordinary long-range scalar radiation sector.
+[WARN] C7: scalar radiation source rejected: REJECTED
+Risk if violated: Observable breathing mode / scalar radiation.
+Missing: Parent mechanism proving rejection.
+
+------------------------------------------------------------------------------------------------------------------------
+C8: kappa relaxation cannot erase A
+------------------------------------------------------------------------------------------------------------------------
+Expression: Gamma_relax[A_mass_flux] = 0
+Meaning: Relaxation may restore trace imbalance but must not damp the A-sector mass field.
+[WARN] C8: kappa relaxation cannot erase A: CONSTRAINED
+Risk if violated: Gravity mass flux disappears or is tuned by relaxation.
+Missing: Energy/vacuum balance identity.
+
+------------------------------------------------------------------------------------------------------------------------
+C9: boundary smoothing preserves exterior mass
+------------------------------------------------------------------------------------------------------------------------
+Expression: delta M_ext from kappa boundary smoothing = 0
+Meaning: Near-boundary kappa smoothing may not change total exterior A flux by hand.
+[WARN] C9: boundary smoothing preserves exterior mass: CONSTRAINED
+Risk if violated: Surface smoothing changes measured mass.
+Missing: Interface law and matching theorem.
+
+------------------------------------------------------------------------------------------------------------------------
+C10: creation term excluded from ordinary closure
+------------------------------------------------------------------------------------------------------------------------
+Expression: Sigma_creation = 0 in ordinary closed gravity regime
+Meaning: Creation/exchange active-regime terms must not enter ordinary field equations by default.
+[WARN] C10: creation term excluded from ordinary closure: CONSTRAINED
+Risk if violated: Nonconservative source breaks closure.
+Missing: Active-regime trigger conditions.
+
+========================================================================================================================
+Case 2: Compact constraint ledger
+========================================================================================================================
+| Constraint | Expression | Status | Risk if violated |
+|---|---|---|---|
+| C1: rho not double-sourced into kappa | S_kappa[rho] = 0 as independent long-range scalar source | CONSTRAINED | Double-counted scalar gravity and exterior kappa tail. |
+| C2: exterior kappa charge vanishes | Q_kappa = integral S_kappa d^3x = 0 | CONSTRAINED | kappa_ext ~ 1/r scalar gravity. |
+| C3: pressure/trace shifts minimum, not wave source | trace,p -> kappa_min; not Box kappa = alpha trace | CONSTRAINED | Breathing radiation or massless scalar tail. |
+| C4: transverse current only sources W_i | source(W_i) = P_T j; P_L j excluded | STRUCTURAL | Longitudinal/gauge current contaminates vector sector. |
+| C5: longitudinal current belongs to scalar continuity | P_L j -> continuity/dot rho, not curl W | DERIVED_REDUCED | Scalar/vector source mixing. |
+| C6: TT stress remains trace-free tensor source | source(h_TT) = P_TT S_ij; trace(S) excluded | STRUCTURAL | Trace stress double-counted as tensor radiation. |
+| C7: scalar radiation source rejected | source(A_rad ordinary massless) = 0 | REJECTED | Observable breathing mode / scalar radiation. |
+| C8: kappa relaxation cannot erase A | Gamma_relax[A_mass_flux] = 0 | CONSTRAINED | Gravity mass flux disappears or is tuned by relaxation. |
+| C9: boundary smoothing preserves exterior mass | delta M_ext from kappa boundary smoothing = 0 | CONSTRAINED | Surface smoothing changes measured mass. |
+| C10: creation term excluded from ordinary closure | Sigma_creation = 0 in ordinary closed gravity regime | CONSTRAINED | Nonconservative source breaks closure. |
+[WARN] compact no-double-counting ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CONSTRAINED: 6
+DERIVED_REDUCED: 1
+REJECTED: 1
+STRUCTURAL: 2
+[WARN] constraint status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Most dangerous violations
+========================================================================================================================
+Most dangerous violations:
+
+1. rho also sources long-range kappa.
+2. pressure trace creates Box kappa scalar waves.
+3. kappa smoothing changes exterior mass flux.
+4. TT coupling is matched but claimed derived.
+5. Sigma_creation enters ordinary closure.
+6. recombination duplicates scalar spatial response.
+
+These are the goblin traps.
+[WARN] dangerous violations identified: RISK
+
+========================================================================================================================
+Case 5: Parent identity requirements
+========================================================================================================================
+The constraints require a parent identity that can explain:
+
+  why rho sources A and not long-range kappa
+  why trace shifts kappa_min but does not radiate
+  why TT stress sources only TT radiation
+  why transverse and longitudinal currents split cleanly
+  why boundary smoothing preserves exterior mass
+  why ordinary closed gravity has Sigma_creation = 0
+
+Without that parent identity, these are safety constraints, not derivations.
+[FAIL] parent identity requirements stated: UNFINISHED
+
+========================================================================================================================
+Case 6: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_no_double_counting_constraints.md
+   Artifact for this script.
+
+2. candidate_constraint_vs_evolution_split.py
+   Separate constraint fields from propagating fields.
+
+3. candidate_conservation_identity_requirements.py
+   List the parent identities required to justify these constraints.
+
+Recommended next script:
+
+  candidate_constraint_vs_evolution_split.py
+
+Reason:
+  Source double-counting is controlled; next we must separate constraints from evolution.
+[WARN] next test selected: CONSTRAINED
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The current no-double-counting rule is:
+
+  rho -> A, not long-range kappa
+  trace -> kappa_min, not scalar wave
+  j_T -> W_i, not scalar continuity
+  TT stress -> h_ij^TT, not scalar trace
+  relaxation -> vacuum restoration, not A damping
+
+These are currently constraints, not full derivations.
+
+Possible next artifact:
+  candidate_no_double_counting_constraints.md
+
+Possible next script:
+  candidate_constraint_vs_evolution_split.py

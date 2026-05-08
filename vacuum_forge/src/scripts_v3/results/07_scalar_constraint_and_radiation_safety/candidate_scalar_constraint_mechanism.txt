@@ -1,0 +1,172 @@
+
+========================================================================================================================
+Candidate Scalar Constraint Mechanism
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Scalar constraint mechanism problem
+========================================================================================================================
+Current preferred architecture:
+
+  A        -> scalar monopole/Newtonian/static response
+  h_ij^TT -> tensor quadrupole/radiative response
+
+Danger:
+  If A obeys an ordinary wave equation, it may radiate scalar breathing modes.
+
+Candidate safety mechanism:
+  A is constraint-like / elliptic in ordinary exterior gravity:
+
+    Delta A = 8*pi*G*rho/c^2
+
+  rather than an independent radiative scalar:
+
+    Box A = 8*pi*G*rho/c^2
+[PASS] scalar constraint mechanism problem posed
+
+========================================================================================================================
+Case 1: Poisson/constraint branch supports static exterior A
+========================================================================================================================
+A_static = -2*G*M/(c**2*r) + 1
+Delta A = 0
+
+For r>0, source-free exterior satisfies:
+  Delta A = 0
+[PASS] static exterior A solves source-free Poisson branch
+
+========================================================================================================================
+Case 2: Poisson branch has no independent time-wave dispersion
+========================================================================================================================
+Try a time-dependent plane wave in a source-free Poisson equation:
+
+A_wave = H*cos(k*z - omega*t)
+-d²A/dz² = H*k**2*cos(k*z - omega*t)
+
+Source-free Poisson requires spatial Laplacian = 0.
+For k != 0, this is not a propagating dispersion relation.
+It forces the spatial harmonic condition, not omega^2=c^2k^2.
+[PASS] Poisson branch does not produce scalar wave dispersion
+
+========================================================================================================================
+Case 3: Hyperbolic scalar branch would radiate
+========================================================================================================================
+If A obeys Box A = 0:
+
+A_rad = H*cos(k*z - omega*t)
+Box A = H*(c**2*k**2 - omega**2)*cos(k*z - omega*t)/c**2
+Box A / A = k**2 - omega**2/c**2
+
+This admits scalar waves when:
+  omega^2 = c^2 k^2
+[PASS] hyperbolic A branch admits scalar radiation
+
+========================================================================================================================
+Case 4: Static source prefers constraint branch
+========================================================================================================================
+For ordinary static mass response:
+
+  rho = rho(x)
+  A = A(x)
+
+Poisson branch:
+  Delta A = 8*pi*G*rho/c^2
+
+Wave branch:
+  Box A = 8*pi*G*rho/c^2
+  reduces to Poisson only after imposing time independence.
+
+Interpretation:
+  Static Newtonian gravity naturally belongs to the constraint branch.
+  Treating A as fundamentally wave-like adds a dangerous extra scalar sector.
+[PASS] static mass response favors constraint interpretation
+
+========================================================================================================================
+Case 5: Conserved monopole and dipole controls
+========================================================================================================================
+M(t) = M0
+Mdot = 0
+
+D(t) = D0 + V*t
+Dddot = 0
+
+Conservation suppresses ordinary scalar monopole/dipole radiation proxies.
+[PASS] conserved mass kills scalar monopole radiation proxy
+[PASS] center-of-mass inertial motion kills scalar dipole radiation proxy
+
+========================================================================================================================
+Case 6: Scalar breathing remains dangerous if A propagates
+========================================================================================================================
+Scalar breathing mode:
+Matrix([[b, 0, 0], [0, b, 0], [0, 0, 0]])
+trace = 2*b
+
+TT tensor mode:
+Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
+trace = 0
+
+If A propagates with a breathing mode, it adds a non-TT polarization.
+[PASS] scalar breathing mode is non-TT
+[PASS] TT tensor mode remains trace-free
+
+========================================================================================================================
+Case 7: Static/dynamic split for A
+========================================================================================================================
+Useful decomposition:
+
+  A = A_constraint + A_rad?
+
+Preferred ordinary-gravity setting:
+
+  A_rad = 0
+
+or:
+
+  A_rad is massive / short-ranged / weakly coupled / constrained
+
+Radiation channel:
+
+  h_ij^TT carries plus/cross tensor waves
+
+This keeps:
+  A        -> static scalar mass response
+  h_ij^TT -> radiative tensor response
+[PASS] A static/dynamic split formulated
+
+========================================================================================================================
+Case 8: Classification
+========================================================================================================================
+Results:
+
+1. Poisson A supports static exterior scalar gravity.
+2. Poisson A does not provide scalar wave dispersion.
+3. Hyperbolic A would provide scalar radiation.
+4. Conserved monopole and inertial dipole controls suppress low-order
+   scalar radiation proxies.
+5. Scalar breathing remains dangerous if A has a radiative quadrupole mode.
+6. Preferred architecture: A is constraint-like; h_ij^TT radiates.
+
+[PASS] scalar constraint mechanism passes as architecture guardrail
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The scalar A channel should be treated as constraint-like in ordinary
+exterior gravity unless a tightly controlled scalar-radiation sector is
+deliberately introduced.
+
+Safe architecture:
+
+  Delta A = 8*pi*G*rho/c^2
+  A handles scalar mass response
+  h_ij^TT handles gravitational radiation
+
+Dangerous architecture:
+
+  Box A = source
+  A becomes an independent scalar radiation field
+
+Possible next artifact:
+  candidate_scalar_constraint_mechanism.md
+
+Possible next script:
+  candidate_scalar_breathing_mode_suppression.py

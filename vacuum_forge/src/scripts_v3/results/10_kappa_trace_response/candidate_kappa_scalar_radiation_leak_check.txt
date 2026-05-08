@@ -1,0 +1,231 @@
+
+========================================================================================================================
+Candidate Kappa Scalar Radiation Leak Check
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Kappa scalar-radiation leak problem
+========================================================================================================================
+Question:
+
+  Does kappa create a scalar radiation channel even if its static
+  exterior monopole charge is projected away?
+
+Required:
+
+  interior trace response allowed
+  exterior kappa = 0
+  no ordinary long-range scalar radiation
+
+Danger:
+
+  a hyperbolic kappa equation would introduce breathing/trace waves.
+[WARN] scalar radiation leak problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Kappa dynamics options
+========================================================================================================================
+
+----------------------------------------------------------------------------------------------------
+D1: Elliptic constrained kappa
+----------------------------------------------------------------------------------------------------
+[WARN] D1: Elliptic constrained kappa: CONSTRAINED_BY_IDENTITY
+Equation type: L_kappa kappa = alpha P_0 S_trace with no independent time evolution
+Radiation behavior: No independent propagating scalar wave by construction.
+Risk: Requires parent constraint identity and consistent time-dependent support/projection.
+
+----------------------------------------------------------------------------------------------------
+D2: Hyperbolic massless kappa
+----------------------------------------------------------------------------------------------------
+[WARN] D2: Hyperbolic massless kappa: REJECTED
+Equation type: Box kappa = alpha P_0 S_trace
+Radiation behavior: Allows massless scalar radiation even when monopole charge is zero.
+Risk: Introduces breathing/trace gravitational wave channel.
+
+----------------------------------------------------------------------------------------------------
+D3: Massive/restoring kappa
+----------------------------------------------------------------------------------------------------
+[WARN] D3: Massive/restoring kappa: PLAUSIBLE
+Equation type: (Box - m_k^2) kappa = alpha P_0 S_trace or (-Delta + m_k^2) kappa = source
+Radiation behavior: Suppresses long-range radiation if massive or non-propagating in relevant regime.
+Risk: Introduces scale m_k and possible massive scalar mode.
+
+----------------------------------------------------------------------------------------------------
+D4: Relaxational kappa
+----------------------------------------------------------------------------------------------------
+[WARN] D4: Relaxational kappa: PLAUSIBLE
+Equation type: dot kappa = -Gamma_k kappa + source/projection
+Radiation behavior: Non-wave relaxation can absorb trace perturbations back to vacuum minimum.
+Risk: Needs energy accounting and must not erase static A_constraint.
+
+========================================================================================================================
+Case 2: Massless hyperbolic wave hazard
+========================================================================================================================
+For a massless scalar wave equation:
+
+  Box kappa = 0
+
+plane-wave modes obey:
+
+Eq(omega**2, c**2*k**2)
+
+Even if the monopole source is projected out, time-dependent trace
+structure can excite propagating scalar modes.
+
+This is not acceptable as an ordinary long-range gravity wave channel.
+[WARN] massless hyperbolic kappa allows scalar radiation: REJECTED — would create breathing/trace mode
+
+========================================================================================================================
+Case 3: Elliptic constraint safety
+========================================================================================================================
+If kappa is elliptic/constrained:
+
+  L_kappa kappa = alpha_k P_0 S_trace
+
+with no independent second time derivative:
+
+  no Box kappa term
+
+then kappa is determined instantaneously/constraint-wise by source and
+boundary/projection data.
+
+This avoids an independent scalar radiation channel.
+
+But it requires a parent constraint identity to be legitimate.
+[WARN] elliptic constrained kappa is radiation-safe structurally: CONSTRAINED_BY_IDENTITY — parent identity missing
+
+========================================================================================================================
+Case 4: Massive/restoring dispersion
+========================================================================================================================
+A massive/restoring scalar mode would have schematic dispersion:
+
+Eq(omega**2, c**2*k**2 + m**2)
+
+This suppresses long-range low-frequency propagation if m is large enough
+or if kappa is not freely radiative.
+
+But it still introduces a scalar mode unless the dynamics are constrained
+or strongly damped.
+[WARN] massive/restoring kappa may suppress but not eliminate scalar mode: PLAUSIBLE — m_k and dynamics not derived
+
+========================================================================================================================
+Case 5: Relaxation safety
+========================================================================================================================
+Relaxational trace deviation:
+
+  dot kappa = -Gamma kappa
+
+solution:
+
+kappa(t) = kappa_0*exp(-Gamma*t)
+
+This absorbs scalar trace perturbations rather than propagating them.
+
+But relaxation requires energy accounting and a source/restoring basis.
+[WARN] relaxation can absorb kappa perturbations: PLAUSIBLE — energy accounting missing
+
+========================================================================================================================
+Case 6: Time-dependent projection warning
+========================================================================================================================
+Projection:
+
+  P_0 S = S - <S>_support
+
+For time-dependent sources:
+
+  support V(t)
+  average <S(t)>
+  moving boundary terms
+
+can introduce extra terms.
+
+Therefore scalar-radiation safety requires more than static zero charge.
+
+Need:
+
+  time-dependent constraint propagation
+  boundary flux cancellation
+  or relaxation law with energy accounting
+[WARN] time-dependent projection may create extra terms: RISK — dynamic support/projection not solved
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Dynamics option | Status |
+|---|---|
+| D1: Elliptic constrained kappa | CONSTRAINED_BY_IDENTITY |
+| D2: Hyperbolic massless kappa | REJECTED |
+| D3: Massive/restoring kappa | PLAUSIBLE |
+| D4: Relaxational kappa | PLAUSIBLE |
+
+Current best dynamical policy:
+
+  kappa should be elliptic/constrained or relaxational, not massless hyperbolic.
+
+Rejected:
+
+  ordinary massless scalar wave kappa.
+
+Open:
+
+  parent constraint propagation
+  relaxation energy accounting
+  massive scalar scale if used
+[WARN] scalar radiation leak classification produced: CONSTRAINED_BY_IDENTITY — safe path is constrained/non-wave kappa
+
+========================================================================================================================
+Case 8: Failure controls
+========================================================================================================================
+Kappa scalar-radiation safety fails if:
+
+1. Box kappa appears as an ordinary massless wave equation.
+2. time-dependent projected sources radiate trace waves.
+3. relaxation violates energy/source accounting.
+4. massive kappa introduces an observable fifth/scalar mode unintentionally.
+5. projection is static only and does not propagate consistently.
+6. kappa suppression erases the static A constraint.
+[WARN] scalar-radiation failure controls stated: RISK — dynamic safety not yet proven
+
+========================================================================================================================
+Case 9: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_boundary_flux_cancellation.py
+   Test exterior flux cancellation at the moving/static boundary.
+
+2. candidate_kappa_projection_parent_balance.py
+   Connect P_0 to vacuum-substance continuity balance.
+
+3. candidate_kappa_relaxation_energy_accounting.py
+   Test whether relaxation can be energy-consistent.
+
+Recommended next script:
+
+  candidate_kappa_boundary_flux_cancellation.py
+
+Reason:
+  Static projection removes monopole charge; next check is boundary flux.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary flux cancellation is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Projection removes static monopole leakage, but not automatically scalar
+radiation.
+
+Safe kappa policies:
+
+  elliptic/constrained
+  relaxational/non-wave
+  massive/restoring only if derived and controlled
+
+Rejected:
+
+  ordinary massless hyperbolic kappa
+
+Possible next artifact:
+  candidate_kappa_scalar_radiation_leak_check.md
+
+Possible next script:
+  candidate_kappa_boundary_flux_cancellation.py

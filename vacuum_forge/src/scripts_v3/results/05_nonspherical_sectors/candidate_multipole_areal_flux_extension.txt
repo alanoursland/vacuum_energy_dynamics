@@ -1,0 +1,183 @@
+
+================================================================================================================
+Candidate Multipole Areal-Flux Extension
+================================================================================================================
+
+================================================================================================================
+Case 0: Spherical areal-flux recap
+================================================================================================================
+A_spherical = -2*G*M/(c**2*r) + 1
+F_A = 4*pi*r^2*A' = 8*pi*G*M/c**2
+target = 8*pi*G*M/c**2
+[PASS] spherical flux gives Schwarzschild coefficient
+
+================================================================================================================
+Case 1: Weak-field A as Newtonian potential variable
+================================================================================================================
+Weak-field identification:
+
+  A = 1 + 2 Phi/c^2
+
+A = 2*Phi/c**2 + 1
+
+Then:
+  Delta A = 2 Delta Phi / c^2
+
+If Delta Phi = 4*pi*G*rho, then:
+  Delta A = 8*pi*G*rho/c^2
+
+[PASS] areal A-source law matches Newtonian Poisson in weak field
+
+================================================================================================================
+Case 2: Vacuum harmonic multipole radial modes
+================================================================================================================
+ell = 0
+  exterior radial mode f(r)=1/r^1
+  mode Laplacian = 0
+[PASS] ell=0 exterior multipole is harmonic
+ell = 1
+  exterior radial mode f(r)=1/r^2
+  mode Laplacian = 0
+[PASS] ell=1 exterior multipole is harmonic
+ell = 2
+  exterior radial mode f(r)=1/r^3
+  mode Laplacian = 0
+[PASS] ell=2 exterior multipole is harmonic
+ell = 3
+  exterior radial mode f(r)=1/r^4
+  mode Laplacian = 0
+[PASS] ell=3 exterior multipole is harmonic
+ell = 4
+  exterior radial mode f(r)=1/r^5
+  mode Laplacian = 0
+[PASS] ell=4 exterior multipole is harmonic
+
+Interpretation:
+  The weak exterior A field can carry ordinary harmonic multipoles.
+
+================================================================================================================
+Case 3: Regular interior harmonic modes
+================================================================================================================
+ell = 0
+  regular radial mode f(r)=r^0
+  mode Laplacian = 0
+[PASS] ell=0 regular interior harmonic mode
+ell = 1
+  regular radial mode f(r)=r^1
+  mode Laplacian = 0
+[PASS] ell=1 regular interior harmonic mode
+ell = 2
+  regular radial mode f(r)=r^2
+  mode Laplacian = 0
+[PASS] ell=2 regular interior harmonic mode
+ell = 3
+  regular radial mode f(r)=r^3
+  mode Laplacian = 0
+[PASS] ell=3 regular interior harmonic mode
+ell = 4
+  regular radial mode f(r)=r^4
+  mode Laplacian = 0
+[PASS] ell=4 regular interior harmonic mode
+
+Interpretation:
+  Standard regular/harmonic mode structure is available in the weak limit.
+
+================================================================================================================
+Case 4: Surface flux selects monopole
+================================================================================================================
+A = -2*G*M/(c**2*r) + Q*(3*mu**2/2 - 1/2)/r**3 + 1
+r^2 A_r = r**2*(2*G*M/(c**2*r**2) - 3*Q*(3*mu**2/2 - 1/2)/r**4)
+surface flux integral = 8*pi*G*M/c**2
+target monopole flux = 8*pi*G*M/c**2
+[PASS] higher quadrupole integrates to zero net flux
+
+Interpretation:
+  Total A-flux through a large sphere measures only the monopole mass.
+  Higher multipoles affect angular distribution but not net flux.
+
+================================================================================================================
+Case 5: Dipole mode and origin/center-of-mass caution
+================================================================================================================
+A_dipole = D*mu/r**2
+surface flux integral = 0
+[PASS] pure dipole has zero net flux
+
+Caution:
+  Dipole terms depend on origin choice and center-of-mass frame.
+  A multipole extension must handle coordinates/gauge carefully.
+
+================================================================================================================
+Case 6: Linear compensated metric from multipole A
+================================================================================================================
+Let psi = Phi/c^2.
+A = 2*psi + 1
+B = 1/A ≈ 4*psi**2 - 2*psi + 1
+
+To first order:
+  A ≈ 1 + 2psi
+  B ≈ 1 - 2psi
+
+For attractive gravity Phi<0:
+  A < 1
+  B > 1
+
+[PASS] reciprocal compensation extends formally to weak nonspherical A
+
+================================================================================================================
+Case 7: Nonlinear caution
+================================================================================================================
+The weak multipole extension is natural:
+
+  A = 1 + 2Phi/c²
+  Delta A = 8*pi*G*rho/c²
+  exterior Delta A = 0
+
+But the exact nonlinear spherical branch uses:
+
+  B = 1/A
+  kappa = 0
+
+For general nonspherical fields, a single scalar A is not enough to
+define the full spatial metric. There are tensor/shear degrees of freedom.
+
+Therefore:
+  This script supports weak multipoles.
+  It does not produce a full nonlinear nonspherical gravity theory.
+[PASS] nonlinear nonspherical extension remains open
+
+================================================================================================================
+Case 8: Classification
+================================================================================================================
+Results:
+
+1. The spherical law is the monopole part of a weak Poisson law for A.
+2. A = 1 + 2Phi/c² turns Newtonian Poisson into Delta A = 8πGρ/c².
+3. Exterior vacuum supports harmonic multipoles 1/r^(ell+1).
+4. Net surface flux selects only the monopole mass.
+5. Higher multipoles redistribute angular flux but do not change total flux.
+6. Dipole terms require origin/center-of-mass care.
+7. Exact nonlinear nonspherical completion remains unsolved.
+
+[PASS] multipole extension is viable as weak-field diagnostic
+
+================================================================================================================
+Final interpretation
+================================================================================================================
+The areal-flux law has a natural weak multipole extension:
+
+  A = 1 + 2Phi/c²
+  Delta A = 8*pi*G*rho/c²
+
+In vacuum, A is harmonic and carries ordinary multipoles.
+The total surface flux measures only the monopole mass, while higher
+multipoles shape the angular field.
+
+This keeps the reduced exterior program compatible with weak
+nonspherical Newtonian gravity.
+
+However, it does not solve the full nonlinear nonspherical problem.
+That will require additional spatial/tensor degrees of freedom beyond
+the spherical A/B reciprocal pair.
+
+Possible next artifact:
+  candidate_multipole_areal_flux_extension.md

@@ -1,0 +1,181 @@
+
+====================================================================================================================
+Candidate Weak Multipole Metric Reconstruction
+====================================================================================================================
+
+====================================================================================================================
+Case 0: Weak metric target
+====================================================================================================================
+Let:
+  psi = Phi/c^2
+
+Standard weak scalar metric target:
+  g_tt factor A = 1 + 2 psi
+  spatial conformal factor = 1 - 2 psi
+
+A_target = 2*psi + 1
+spatial_factor_target = 1 - 2*psi
+[PASS] weak scalar target stated
+
+====================================================================================================================
+Case 1: Reciprocal compensation at weak order
+====================================================================================================================
+A = 2*psi + 1
+B_recip = 1/A = 1/(2*psi + 1)
+B_recip series = -8*psi**3 + 4*psi**2 - 2*psi + 1
+
+To first order:
+  B_recip ≈ 1 - 2 psi
+[PASS] reciprocal compensation matches scalar spatial factor at first order
+
+====================================================================================================================
+Case 2: Gamma proxy
+====================================================================================================================
+PPN-like scalar spatial factor:
+  spatial = 1 - 2 gamma psi
+
+Reciprocal compensation gives:
+  spatial = 1 - 2 psi
+
+gamma solution = [1]
+[PASS] reciprocal scalar sector gives gamma=1
+
+====================================================================================================================
+Case 3: Multipole scalar potential reconstruction
+====================================================================================================================
+psi = -Mbar/r + Q*(3*mu**2/2 - 1/2)/r**3
+A = 1 + 2psi = -2*Mbar/r + 2*Q*(3*mu**2/2 - 1/2)/r**3 + 1
+spatial scalar factor = 1 - 2psi = 2*Mbar/r - 2*Q*(3*mu**2/2 - 1/2)/r**3 + 1
+
+Interpretation:
+  The same weak multipole psi controls temporal and scalar spatial
+  metric factors with gamma=1.
+[PASS] weak multipole scalar metric reconstructed
+
+====================================================================================================================
+Case 4: Vacuum harmonic modes remain valid
+====================================================================================================================
+ell=0: f=1/r^1, mode Laplacian=0
+[PASS] ell=0 scalar multipole harmonic
+ell=1: f=1/r^2, mode Laplacian=0
+[PASS] ell=1 scalar multipole harmonic
+ell=2: f=1/r^3, mode Laplacian=0
+[PASS] ell=2 scalar multipole harmonic
+ell=3: f=1/r^4, mode Laplacian=0
+[PASS] ell=3 scalar multipole harmonic
+ell=4: f=1/r^5, mode Laplacian=0
+[PASS] ell=4 scalar multipole harmonic
+
+These are scalar A/psi multipoles, not the full tensor metric content.
+
+====================================================================================================================
+Case 5: Anisotropic spatial shear is missing
+====================================================================================================================
+Scalar conformal spatial perturbation:
+Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
+trace = -6*psi
+
+General diagonal spatial perturbation:
+Matrix([[h_xx, 0, 0], [0, h_yy, 0], [0, 0, h_zz]])
+trace = h_xx + h_yy + h_zz
+
+Trace-free diagonal shear part:
+Matrix([[2*h_xx/3 - h_yy/3 - h_zz/3, 0, 0], [0, -h_xx/3 + 2*h_yy/3 - h_zz/3, 0], [0, 0, -h_xx/3 - h_yy/3 + 2*h_zz/3]])
+
+A single scalar psi fixes only the conformal/trace spatial piece.
+It cannot represent arbitrary trace-free spatial shear.
+[PASS] anisotropic spatial shear requires extra degrees of freedom
+
+====================================================================================================================
+Case 6: Vector/frame-dragging sector is missing
+====================================================================================================================
+Weak stationary rotating sources introduce off-diagonal components:
+
+  g_ti != 0
+
+These are vector/gravitomagnetic/frame-dragging degrees of freedom.
+
+The scalar A field and reciprocal scalar spatial factor do not produce
+off-diagonal g_ti components.
+
+[PASS] frame-dragging requires vector sector beyond scalar A
+
+====================================================================================================================
+Case 7: Tensor wave sector is missing
+====================================================================================================================
+Linearized gravitational waves require transverse-traceless spatial
+metric perturbations:
+
+  h_ij^TT
+
+These are not captured by a scalar A=1+2psi alone.
+
+Therefore the scalar multipole extension is not a wave-sector theory.
+
+[PASS] tensor waves require additional tensor sector
+
+====================================================================================================================
+Case 8: Nonlinear nonspherical closure
+====================================================================================================================
+Spherical exact branch:
+  A = 1 - 2GM/(rc^2)
+  kappa = 0
+  B = 1/A
+
+Weak nonspherical scalar branch:
+  A = 1 + 2Phi/c^2
+  spatial conformal factor ≈ 1 - 2Phi/c^2
+
+Open nonlinear problem:
+  How should full spatial geometry be reconstructed when Phi is
+  nonspherical and nonlinear effects matter?
+
+Likely needed sectors:
+  scalar A / Newtonian potential
+  kappa / trace response
+  spatial shear
+  vector frame-dragging
+  tensor waves
+[PASS] nonlinear nonspherical closure remains open
+
+====================================================================================================================
+Case 9: Classification
+====================================================================================================================
+Results:
+
+1. A=1+2Phi/c^2 reconstructs the weak temporal scalar metric.
+2. Reciprocal compensation gives spatial factor 1-2Phi/c^2 to first order.
+3. This corresponds to gamma=1 in the scalar weak-field sector.
+4. Scalar A multipoles are compatible with Newtonian weak multipoles.
+5. A single scalar cannot represent anisotropic spatial shear.
+6. A single scalar cannot represent frame dragging.
+7. A single scalar cannot represent tensor gravitational waves.
+8. The nonlinear nonspherical closure remains an open problem.
+
+[PASS] weak scalar sector passes; full nonspherical theory remains incomplete
+
+====================================================================================================================
+Final interpretation
+====================================================================================================================
+The weak A multipole sector can reconstruct the standard weak scalar
+metric form:
+
+  g_tt factor: A = 1 + 2Phi/c^2
+  spatial scalar factor: 1 - 2Phi/c^2
+
+This means reciprocal compensation reproduces the gamma=1 scalar
+weak-field structure at first order.
+
+But this is not a full gravity theory.
+A full nonspherical extension needs additional sectors:
+
+  spatial shear
+  vector/frame-dragging modes
+  tensor/wave modes
+  nonlinear closure rules
+
+Possible next artifact:
+  candidate_weak_multipole_metric_reconstruction.md
+
+Possible next script:
+  candidate_nonspherical_degree_inventory.py

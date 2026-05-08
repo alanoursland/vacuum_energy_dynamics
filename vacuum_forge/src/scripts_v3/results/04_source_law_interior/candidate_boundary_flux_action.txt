@@ -1,0 +1,108 @@
+
+============================================================================================================
+Candidate Boundary Flux Action
+============================================================================================================
+
+============================================================================================================
+Case 0: Radial bulk action
+============================================================================================================
+L_bulk = K_A*r**2*Derivative(A(r), r)**2
+Euler-Lagrange = 2*K_A*r*(-r*Derivative(A(r), (r, 2)) - 2*Derivative(A(r), r)) = 0
+
+Equivalent:
+  d/dr(r^2 A') = 0
+  source-free areal flux is conserved
+[PASS] bulk action gives conserved areal flux
+
+============================================================================================================
+Case 1: Boundary variation term
+============================================================================================================
+Variation of bulk action gives boundary term:
+
+  [2 K_A r² A' deltaA] at boundary
+
+At r=R: 2*A_prime_R*K_A*R**2*deltaA_R
+[PASS] bulk variation exposes areal flux as boundary momentum
+
+============================================================================================================
+Case 2: Source boundary coupling
+============================================================================================================
+Boundary source coupling:
+  E_boundary = -q A(R)
+
+Boundary stationarity:
+  2 K_A R² A'(R) - q = 0
+
+A'(R) = q/(2*K_A*R**2)
+F_A(R)=4πR²A'(R) = 2*pi*q/K_A
+[PASS] boundary source fixes areal flux
+
+============================================================================================================
+Case 3: Mass normalization of boundary charge
+============================================================================================================
+q_M = 4*G*K_A*M/c**2
+A'(R) = 2*G*M/(R**2*c**2)
+F_A = 8*pi*G*M/c**2
+target = 8*pi*G*M/c**2
+[PASS] mass-normalized boundary charge gives desired flux
+
+============================================================================================================
+Case 4: Exterior solution from boundary condition
+============================================================================================================
+A_general = C0 + C1/r
+F_A = -4*pi*C1
+C1 from flux = -2*G*M/c**2
+A with asymptotic flatness = -2*G*M/(c**2*r) + 1
+[PASS] boundary flux gives Schwarzschild A coefficient
+
+============================================================================================================
+Case 5: Boundary source versus bulk source
+============================================================================================================
+Two equivalent reduced descriptions:
+
+1. Bulk density source:
+   d/dr(4πr²A') = 4πr² * 8πGρ/c²
+
+2. Boundary/source interface:
+   4πR²A'(R) = 8πGM/c²
+
+For exterior r>R, both give:
+   A = 1 - 2GM/(rc²)
+
+Interpretation:
+   The areal-flux law can be viewed as a Gauss law: the bulk source
+   determines the boundary flux seen by the exterior.
+[PASS] boundary and bulk views agree for exterior flux
+
+============================================================================================================
+Case 6: Coupling to kappa compensation
+============================================================================================================
+A = -2*G*M/(c**2*r) + 1
+kappa = 0
+B = exp(2kappa)/A = c**2*r/(-2*G*M + c**2*r)
+AB = 1
+[PASS] boundary flux plus kappa=0 recovers reciprocal exterior
+
+============================================================================================================
+Final interpretation
+============================================================================================================
+The reduced radial A-action exposes areal flux as the boundary
+momentum conjugate to A:
+
+  boundary momentum ∝ r² A'
+
+A source/interface coupling -q A(R) fixes that boundary momentum.
+With q proportional to M, the boundary condition becomes:
+
+  4πR²A'(R) = 8πGM/c²
+
+The exterior bulk equation then gives:
+
+  A = 1 - 2GM/(rc²)
+
+Combined with kappa=0:
+
+  B = 1/A
+
+Possible next artifact:
+  candidate_boundary_flux_action.md

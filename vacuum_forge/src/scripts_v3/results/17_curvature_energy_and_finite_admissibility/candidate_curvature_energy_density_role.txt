@@ -1,0 +1,403 @@
+
+========================================================================================================================
+Candidate Curvature Energy Density Role
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Curvature energy density role problem
+========================================================================================================================
+Question:
+
+  Can curvature energy be defined as diagnostic/accounting
+  without becoming a hidden source reservoir?
+
+Goal:
+
+  fence e_curv before any source, current, or correction-tensor role
+
+Discipline:
+
+  diagnostic/accounting only
+  no field-equation source role
+  no M_ext shift
+  no ordinary matter double-count
+  no boundary repair
+  no recovery tuning
+  no bounce or regular-core claim
+  no J_curv by renaming e_curv
+[WARN] curvature energy density role problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Curvature energy density role inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+CE1: curvature energy role target
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv is diagnostic/accounting only unless a recombination/source law is derived
+Role: core curvature-energy fence
+Allowed if: e_curv has domain, measure, invariant content, and no source behavior
+Forbidden if: e_curv is used as free source reservoir or repair energy
+[WARN] CE1: curvature energy role target: THEOREM_TARGET
+Missing: definition of e_curv and accounting rule
+Consequence: decides whether curvature energy language can be kept safe
+
+------------------------------------------------------------------------------------------------------------------------
+CE2: e_curv diagnostic only
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv flags curvature intensity / admissibility cost but does not source equations
+Role: safest curvature-energy role
+Allowed if: diagnostic output is not inserted into metric/source equations
+Forbidden if: diagnostic becomes hidden force/source
+[WARN] CE2: e_curv diagnostic only: SAFE_IF
+Missing: diagnostic definition and invariant choice
+Consequence: allows curvature energy language without dynamics claim
+
+------------------------------------------------------------------------------------------------------------------------
+CE3: e_curv finite-admissibility measure
+------------------------------------------------------------------------------------------------------------------------
+Role rule: Integral_D e_curv dV_phys finite as branch-filter condition
+Role: finite-admissibility accounting candidate
+Allowed if: domain/measure are fixed and e_curv is not a source
+Forbidden if: finite bound is used as bounce energy or cutoff repair
+[WARN] CE3: e_curv finite-admissibility measure: CANDIDATE
+Missing: e_curv functional, D, dV_phys, threshold
+Consequence: supports diagnostic/branch-filter anti-singularity language only
+
+------------------------------------------------------------------------------------------------------------------------
+CE4: e_curv configuration accounting
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv records curvature configuration cost without independent exterior mass contribution
+Role: accounting candidate
+Allowed if: does not shift M_ext and does not double-count matter/vacuum energy
+Forbidden if: configuration accounting becomes source reservoir
+[WARN] CE4: e_curv configuration accounting: CANDIDATE
+Missing: accounting ledger and recombination rule
+Consequence: could support finite-admissibility bookkeeping if fenced
+
+------------------------------------------------------------------------------------------------------------------------
+CE5: e_curv as H_curv seed
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv may seed future H_curv only after divergence-safe source structure is defined
+Role: future parent-correction handoff
+Allowed if: deferred until H_curv audit and source/divergence safety exist
+Forbidden if: H_curv introduced now to make e_curv source-like
+[WARN] CE5: e_curv as H_curv seed: DEFER
+Missing: H_curv divergence-safe source structure
+Consequence: prevents premature parent correction tensor
+
+------------------------------------------------------------------------------------------------------------------------
+CE6: e_curv source term deferred
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv does not enter field equations as source in current group
+Role: source-role quarantine
+Allowed if: source role waits for recombination/source law
+Forbidden if: e_curv is inserted into A, B_s, H_curv, or J_curv equations now
+[WARN] CE6: e_curv source term deferred: REQUIRED
+Missing: source/recombination theorem
+Consequence: blocks curvature energy from becoming repair mechanism
+
+------------------------------------------------------------------------------------------------------------------------
+CE7: no M_ext shift
+------------------------------------------------------------------------------------------------------------------------
+Role rule: delta M_ext|e_curv = 0 unless derived through A-sector source law
+Role: mass neutrality guard
+Allowed if: curvature energy remains diagnostic/accounting
+Forbidden if: e_curv changes measured exterior mass independently
+[WARN] CE7: no M_ext shift: REQUIRED
+Missing: mass neutrality theorem
+Consequence: protects strongest reduced A-sector result
+
+------------------------------------------------------------------------------------------------------------------------
+CE8: no ordinary matter double-count
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv does not double-count T_mu_nu or reroute ordinary matter coupling
+Role: source separation guard
+Allowed if: ordinary matter remains in its own source channel
+Forbidden if: curvature energy modifies ordinary matter coupling
+[WARN] CE8: no ordinary matter double-count: REQUIRED
+Missing: matter/source separation theorem
+Consequence: prevents matter-sector repair behavior
+
+------------------------------------------------------------------------------------------------------------------------
+CE9: no boundary repair energy
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv cannot hide blowup, leakage, or mass shift in boundary contribution
+Role: boundary safety guard
+Allowed if: boundary energy is diagnostic or structurally neutral
+Forbidden if: boundary term cancels singularity or exterior leakage
+[WARN] CE9: no boundary repair energy: REQUIRED
+Missing: boundary neutrality theorem
+Consequence: prevents curvature energy from patching boundary failure
+
+------------------------------------------------------------------------------------------------------------------------
+CE10: no recovery tuning
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv cannot tune gamma_like, AB, boundary smoothing, or B_s/F_zeta behavior
+Role: anti-smuggling guard
+Allowed if: recovery remains downstream
+Forbidden if: curvature energy chosen to pass recovery target
+[WARN] CE10: no recovery tuning: REQUIRED
+Missing: not a mechanism
+Consequence: prevents curvature energy from becoming coefficient knob
+
+------------------------------------------------------------------------------------------------------------------------
+CE11: source-reservoir rejection
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv inserted as free positive/negative source to force finite behavior
+Role: forbidden reservoir branch
+Allowed if: never in current status
+Forbidden if: used to tune bounce, mass, boundary, or recovery
+[WARN] CE11: source-reservoir rejection: REJECTED
+Missing: not pursued
+Consequence: prevents repair-money behavior
+
+------------------------------------------------------------------------------------------------------------------------
+CE12: bounce-energy rejection
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv becomes repulsive/negative/positive energy chosen to produce bounce
+Role: forbidden anti-singularity shortcut
+Allowed if: never without derived dynamics
+Forbidden if: bounce claimed from e_curv diagnostic/accounting alone
+[WARN] CE12: bounce-energy rejection: REJECTED
+Missing: not pursued
+Consequence: prevents dynamical overclaim
+
+------------------------------------------------------------------------------------------------------------------------
+CE13: regular-core tuning rejection
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv coefficient or cutoff chosen to make regular core finite
+Role: forbidden solution-after-the-fact tuning
+Allowed if: never as mechanism
+Forbidden if: chosen after target solution
+[WARN] CE13: regular-core tuning rejection: REJECTED
+Missing: not pursued
+Consequence: prevents regular core by diagnostic cherry-pick
+
+------------------------------------------------------------------------------------------------------------------------
+CE14: relation to zeta / volume
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv may couple to volume response only if count-once and metric insertion issues remain closed
+Role: curvature-volume bridge risk
+Allowed if: does not reopen B_s insertion, residual trace, or O problems
+Forbidden if: zeta becomes hidden scalar source or metric trace again
+[WARN] CE14: relation to zeta / volume: RISK
+Missing: zeta coupling rule and no-overlap theorem
+Consequence: promising but dangerous until Group 16 bottlenecks are solved
+
+------------------------------------------------------------------------------------------------------------------------
+CE15: relation to J_curv
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv does not define J_curv by itself
+Role: current-definition guard
+Allowed if: J_curv waits for domain, orientation, balance, and boundary law
+Forbidden if: J_curv is declared as gradient/flux of e_curv without transport law
+[WARN] CE15: relation to J_curv: REQUIRED
+Missing: J_curv definition requirements
+Consequence: prevents scalar diagnostic from being renamed current
+
+------------------------------------------------------------------------------------------------------------------------
+CE16: admissibility claim level
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv diagnostic licenses diagnostic/branch-filter claim only
+Role: anti-overclaim guard
+Allowed if: claim strength matches diagnostic/accounting role
+Forbidden if: dynamical avoidance, bounce, or regular core claimed from e_curv alone
+[WARN] CE16: admissibility claim level: REQUIRED
+Missing: claim audit
+Consequence: keeps anti-singularity claims honest
+
+------------------------------------------------------------------------------------------------------------------------
+CE17: curvature energy failure
+------------------------------------------------------------------------------------------------------------------------
+Role rule: e_curv cannot be fenced from source-reservoir, mass-shift, or repair behavior
+Role: branch failure condition
+Allowed if: used to demote e_curv to forbidden/local diagnostic only
+Forbidden if: patched with labels
+[FAIL] CE17: curvature energy failure: BRANCH_KILLED
+Missing: applies if failure demonstrated
+Consequence: curvature energy cannot be used in future current/correction work
+
+------------------------------------------------------------------------------------------------------------------------
+CE18: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Role rule: after e_curv is fenced, define J_curv requirements before any current is proposed
+Role: next local bottleneck
+Allowed if: e_curv remains diagnostic/accounting only
+Forbidden if: jumping to curvature balance law before J_curv requirements
+[PASS] CE18: recommended next move: RECOMMENDED
+Missing: J_curv definition requirements
+Consequence: next script should be candidate_J_curv_definition_requirements.py
+
+========================================================================================================================
+Case 2: Compact curvature energy role ledger
+========================================================================================================================
+| Entry | Role rule | Status | Consequence |
+|---|---|---|---|
+| CE1: curvature energy role target | e_curv is diagnostic/accounting only unless a recombination/source law is derived | THEOREM_TARGET | decides whether curvature energy language can be kept safe |
+| CE2: e_curv diagnostic only | e_curv flags curvature intensity / admissibility cost but does not source equations | SAFE_IF | allows curvature energy language without dynamics claim |
+| CE3: e_curv finite-admissibility measure | Integral_D e_curv dV_phys finite as branch-filter condition | CANDIDATE | supports diagnostic/branch-filter anti-singularity language only |
+| CE4: e_curv configuration accounting | e_curv records curvature configuration cost without independent exterior mass contribution | CANDIDATE | could support finite-admissibility bookkeeping if fenced |
+| CE5: e_curv as H_curv seed | e_curv may seed future H_curv only after divergence-safe source structure is defined | DEFER | prevents premature parent correction tensor |
+| CE6: e_curv source term deferred | e_curv does not enter field equations as source in current group | REQUIRED | blocks curvature energy from becoming repair mechanism |
+| CE7: no M_ext shift | delta M_ext/e_curv = 0 unless derived through A-sector source law | REQUIRED | protects strongest reduced A-sector result |
+| CE8: no ordinary matter double-count | e_curv does not double-count T_mu_nu or reroute ordinary matter coupling | REQUIRED | prevents matter-sector repair behavior |
+| CE9: no boundary repair energy | e_curv cannot hide blowup, leakage, or mass shift in boundary contribution | REQUIRED | prevents curvature energy from patching boundary failure |
+| CE10: no recovery tuning | e_curv cannot tune gamma_like, AB, boundary smoothing, or B_s/F_zeta behavior | REQUIRED | prevents curvature energy from becoming coefficient knob |
+| CE11: source-reservoir rejection | e_curv inserted as free positive/negative source to force finite behavior | REJECTED | prevents repair-money behavior |
+| CE12: bounce-energy rejection | e_curv becomes repulsive/negative/positive energy chosen to produce bounce | REJECTED | prevents dynamical overclaim |
+| CE13: regular-core tuning rejection | e_curv coefficient or cutoff chosen to make regular core finite | REJECTED | prevents regular core by diagnostic cherry-pick |
+| CE14: relation to zeta / volume | e_curv may couple to volume response only if count-once and metric insertion issues remain closed | RISK | promising but dangerous until Group 16 bottlenecks are solved |
+| CE15: relation to J_curv | e_curv does not define J_curv by itself | REQUIRED | prevents scalar diagnostic from being renamed current |
+| CE16: admissibility claim level | e_curv diagnostic licenses diagnostic/branch-filter claim only | REQUIRED | keeps anti-singularity claims honest |
+| CE17: curvature energy failure | e_curv cannot be fenced from source-reservoir, mass-shift, or repair behavior | BRANCH_KILLED | curvature energy cannot be used in future current/correction work |
+| CE18: recommended next move | after e_curv is fenced, define J_curv requirements before any current is proposed | RECOMMENDED | next script should be candidate_J_curv_definition_requirements.py |
+[WARN] compact curvature energy role ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 2
+DEFER: 1
+RECOMMENDED: 1
+REJECTED: 3
+REQUIRED: 7
+RISK: 1
+SAFE_IF: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  e_curv can survive only as diagnostic/accounting or finite-admissibility measure.
+  Source, bounce, regular-core, mass-shift, boundary-repair, and recovery-tuning roles are rejected.
+  e_curv may seed future H_curv only after divergence-safe source structure is known.
+  e_curv does not define J_curv by itself.
+  Next gate is J_curv definition requirements.
+[WARN] curvature energy role status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Allowed e_curv roles
+========================================================================================================================
+Allowed e_curv roles if fenced:
+
+1. diagnostic curvature intensity
+2. finite-admissibility measure
+3. configuration accounting
+4. deferred H_curv seed
+
+Not allowed:
+
+1. source term
+2. bounce energy
+3. regular-core tuning coefficient
+4. M_ext shift
+5. boundary repair
+6. recovery tuning
+7. J_curv definition by fiat
+[PASS] allowed e_curv roles listed: RECOMMENDED
+
+========================================================================================================================
+Case 5: Curvature energy decision tree
+========================================================================================================================
+Decision tree:
+
+1. e_curv diagnostic:
+   safest.
+
+2. e_curv finite-admissibility measure:
+   candidate if domain/measure are fixed.
+
+3. e_curv configuration accounting:
+   candidate if no M_ext shift or matter double-count.
+
+4. e_curv as source:
+   deferred until recombination/source law exists.
+
+5. e_curv as bounce / regular core mechanism:
+   rejected.
+
+6. e_curv to J_curv:
+   requires separate current-definition requirements.
+[PASS] curvature energy decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 6: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  curvature energy cannot be kept from becoming source reservoir,
+  mass shift, boundary repair, or bounce-tuning device.
+
+Consequence:
+
+  e_curv remains diagnostic-only or is removed from future current/correction work.
+
+Bad failure:
+
+  call e_curv diagnostic, then let it source equations or tune a regular core.
+[WARN] curvature energy good failure stated: DEFER
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+Curvature energy role fails if:
+
+1. e_curv enters field equations as source
+2. e_curv shifts M_ext independently of A
+3. e_curv double-counts ordinary matter
+4. e_curv hides boundary repair
+5. e_curv tunes gamma_like / AB / recovery
+6. e_curv is used as bounce energy
+7. e_curv is used to tune a regular core
+8. J_curv is declared as flux/gradient of e_curv without transport law
+[WARN] curvature energy role failure controls stated: RISK
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_curvature_energy_density_role.md
+   Artifact for this script.
+
+2. candidate_J_curv_definition_requirements.py
+   Define the minimum requirements for J_curv to be more than a name.
+
+3. candidate_curvature_energy_early_failure_summary.py
+   Use if e_curv cannot be fenced from source-reservoir behavior.
+
+Recommended next script:
+
+  candidate_J_curv_definition_requirements.py
+
+Reason:
+  e_curv does not define J_curv by itself.
+  Before a curvature balance law, J_curv needs domain, direction, balance, measure, and boundary requirements.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Curvature energy can survive only as diagnostic/accounting for now.
+
+Allowed:
+
+  diagnostic curvature intensity
+  finite-admissibility measure
+  configuration accounting
+  deferred H_curv seed
+
+Rejected:
+
+  source reservoir
+  bounce energy
+  regular-core tuning
+  M_ext shift
+  boundary repair
+  recovery tuning
+  J_curv by fiat
+
+Best next script:
+
+  candidate_J_curv_definition_requirements.py
+[PASS] curvature energy density role audit complete: CLOSED

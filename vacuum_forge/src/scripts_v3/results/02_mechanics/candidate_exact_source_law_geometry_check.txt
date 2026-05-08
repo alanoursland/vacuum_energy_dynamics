@@ -1,0 +1,183 @@
+
+============================================================================================================
+Candidate Exact Source-Law Geometry Check
+============================================================================================================
+
+============================================================================================================
+Case 0: Exact Schwarzschild exterior setup
+============================================================================================================
+A = 1 - r_s/r
+B = r/(r - r_s)
+AB = 1
+A' = r_s/r**2
+[PASS] Schwarzschild areal exterior has AB=1
+
+============================================================================================================
+Case 1: Flat areal radial Laplacian
+============================================================================================================
+Operator:
+  Δ_flat A = (1/r²)(r² A')'
+
+Δ_flat A = 0
+4πr² A' = 4*pi*r_s
+[PASS] A=1-r_s/r is flat-harmonic for r>0
+[PASS] areal flux is constant
+
+Interpretation:
+  The exact source law used so far is equivalent to conserved
+  areal flux of A through coordinate spheres.
+
+============================================================================================================
+Case 2: Curved spatial Laplacian on t=constant slice
+============================================================================================================
+Spatial metric:
+  dl² = B(r) dr² + r² dΩ²
+
+Operator:
+  Δ_spatial A = 1/(r²√B) d/dr [ r²/√B A' ]
+
+Δ_spatial A = r_s**2/(2*r**4)
+[PASS] A is NOT generally harmonic under curved spatial Laplacian
+
+Interpretation:
+  The exact source law is not the ordinary scalar Laplacian built
+  from the curved spatial metric dl²=Bdr²+r²dΩ².
+  That means the A-action is not simply a standard curved-space
+  scalar energy on the t=constant spatial slice.
+
+============================================================================================================
+Case 3: Orbit-space static scalar operator
+============================================================================================================
+Orbit-space metric:
+  h_AB dx^A dx^B = -A c²dt² + B dr²
+
+Static scalar operator:
+  □_h A = 1/√|h| d/dr [ √|h| h^rr A' ]
+
+With AB=1:
+  √|h| is constant
+  h^rr = 1/B = A
+  □_h A = d/dr(A A')
+
+□_h A = r_s*(-2*r + 3*r_s)/r**4
+[PASS] A is NOT generally harmonic under orbit-space scalar operator
+
+Interpretation:
+  The exact source law is also not simply the scalar wave/Laplace
+  operator of the 2D orbit-space metric h_AB.
+
+============================================================================================================
+Case 4: Operator comparison
+============================================================================================================
+Δ_flat A      = 0
+Δ_spatial A   = r_s**2/(2*r**4)
+□_orbit A     = r_s*(-2*r + 3*r_s)/r**4
+4πr²A'        = 4*pi*r_s
+d/dr(4πr²A')  = 0
+
+Classification:
+  flat areal radial operator: passes
+  conserved areal flux: passes
+  curved spatial Laplacian: fails
+  2D orbit-space scalar operator: fails
+
+[PASS] exact law is specifically areal-flux / flat-radial in current form
+
+============================================================================================================
+Case 5: General solution of conserved areal flux
+============================================================================================================
+Conserved areal flux condition:
+  d/dr(r² A') = 0
+
+Equation: Eq(r**2*Derivative(A(r), (r, 2)) + 2*r*Derivative(A(r), r), 0)
+General solution: Eq(A(r), C1 + C2/r)
+
+So:
+  A(r) = C0 + C1/r
+
+Asymptotic flatness sets C0=1.
+Mass flux sets C1=-r_s.
+[PASS] conserved areal flux gives 1/r exterior form
+
+============================================================================================================
+Case 6: Curved-spatial harmonic solution check
+============================================================================================================
+If one instead imposed curved-spatial harmonicity with B=1/A:
+  Δ_spatial A = 0
+
+Equation expression = (r*Derivative(A(r), r)**2/2 + (r*Derivative(A(r), (r, 2)) + 2*Derivative(A(r), r))*A(r))/r
+
+This is nonlinear and not solved by A=1-r_s/r in general.
+Therefore the current exact recovery is not based on spatial
+harmonicity of A.
+[PASS] curved-spatial harmonicity is a different theory branch
+
+============================================================================================================
+Case 7: Interpretation of the flat/areal operator
+============================================================================================================
+The operator that works is:
+
+  Δ_areal A = (1/r²)(r² A')'
+
+This can be interpreted as conserved flux through areal spheres:
+
+  F_A = 4πr² A'
+
+It is not the ordinary scalar Laplacian of the curved spatial slice,
+and not the ordinary scalar operator of the 2D orbit-space metric.
+
+Possible interpretations:
+
+  1. The reduced exact law is an areal-flux law.
+  2. The action uses an auxiliary Euclidean radial measure.
+  3. The true covariant parent is not a standard scalar-field action.
+  4. A deeper variational principle may reduce to areal-flux conservation.
+
+This is now a central open problem.
+
+============================================================================================================
+Case 8: Implications for the A-action
+============================================================================================================
+The current exact reduced action:
+
+  E_A = ∫ [K_A |∇A|² + beta rho A] d³x
+
+should be read carefully.
+
+The ∇ and d³x in this expression currently behave like flat
+areal-coordinate operators, not curved spatial metric operators.
+
+Therefore:
+
+  This action is a successful reduced static spherical action toy,
+  but not yet a geometric/covariant action.
+
+The next theory task is to explain why the areal-flux operator, rather
+than the curved spatial scalar Laplacian, is the right reduced operator.
+
+============================================================================================================
+Final interpretation
+============================================================================================================
+This geometry check sharpens the exact source-law result.
+
+A=1-r_s/r is harmonic under:
+
+  Δ_flat A = (1/r²)(r²A')'
+
+and has conserved areal flux:
+
+  4πr²A' = constant
+
+But A is not harmonic under:
+
+  the curved spatial Laplacian of dl²=Bdr²+r²dΩ²,
+  nor the scalar operator of the 2D orbit-space metric h_AB.
+
+Therefore the exact source law is best described, for now, as an
+areal-flux / flat-radial reduced law.
+
+This is not fatal. It is a precision gain.
+It tells us exactly what the future covariant/geometric parent must explain.
+
+Possible next artifact:
+  candidate_exact_source_law_geometry_check.md

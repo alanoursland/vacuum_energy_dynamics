@@ -1,0 +1,289 @@
+
+========================================================================================================================
+Candidate Source-Driven Volume Creation Law
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Source-driven volume creation law problem
+========================================================================================================================
+Question:
+
+  Can Sigma_V[A,T] be written without becoming a repair spell?
+
+Goal:
+
+  inventory source-driven volume creation expressions before using them in F_zeta
+
+Discipline:
+
+  do not choose Sigma_V from gamma_like or AB
+  do not accept noncovariant velocity toy as parent law
+  define frame/current/acceleration if used
+  preserve residual-kill/no-overlap
+  preserve boundary neutrality
+  keep recovery checks downstream
+[WARN] source-driven volume creation problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Source-driven volume creation inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+SV1: source-driven volume creation target
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V[A,T] drives zeta before F_zeta maps zeta to B_s
+Role: core missing mechanism for source-driven companion branch
+Allowed if: Sigma_V is expressed before recovery checks
+Forbidden if: Sigma_V is chosen to repair A_spatial/gamma
+[WARN] SV1: source-driven volume creation target: THEOREM_TARGET
+Missing: explicit Sigma_V[A,T]
+Consequence: decides whether source-driven zeta companion branch is real
+
+------------------------------------------------------------------------------------------------------------------------
+SV2: rho acceleration-gradient candidate
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V ~ chi rho a^mu nabla_mu A
+Role: closest expression to mass accelerating across a gradient
+Allowed if: a^mu and frame/projection are defined covariantly
+Forbidden if: chi is tuned to gamma_like
+[WARN] SV2: rho acceleration-gradient candidate: CANDIDATE
+Missing: definition of a^mu, frame field, and chi origin
+Consequence: postulate-facing but needs covariant structure
+
+------------------------------------------------------------------------------------------------------------------------
+SV3: stress-energy Hessian candidate
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V ~ chi T^{mu nu} nabla_mu nabla_nu A
+Role: covariant-looking source/field curvature coupling
+Allowed if: does not import GR equations or higher-derivative scalar radiation
+Forbidden if: chosen only because it is covariant-looking
+[WARN] SV3: stress-energy Hessian candidate: RISK
+Missing: operator origin and radiation safety
+Consequence: may create unwanted scalar dynamics if not constrained
+
+------------------------------------------------------------------------------------------------------------------------
+SV4: flux-gradient candidate
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V ~ chi J_m^mu nabla_mu A
+Role: matter-flow version of source-driven volume creation
+Allowed if: J_m is conserved/defined and frame-safe
+Forbidden if: uses coordinate velocity without covariant meaning
+[WARN] SV4: flux-gradient candidate: CANDIDATE
+Missing: matter current and frame projection
+Consequence: could express motion across gradient without raw coordinate velocity
+
+------------------------------------------------------------------------------------------------------------------------
+SV5: rho v dot grad A toy form
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V ~ chi rho v^i partial_i A
+Role: noncovariant diagnostic toy
+Allowed if: used only as reduced toy / diagnostic
+Forbidden if: accepted as parent law
+[WARN] SV5: rho v dot grad A toy form: CONSTRAINED
+Missing: covariant lift
+Consequence: useful intuition but not acceptable parent expression
+
+------------------------------------------------------------------------------------------------------------------------
+SV6: pure density source
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V ~ chi rho or chi T
+Role: simple source-volume coupling
+Allowed if: it does not create static scalar charge and has boundary neutrality proof
+Forbidden if: creates volume for static density without gradient/coupling trigger
+[WARN] SV6: pure density source: RISK
+Missing: neutrality theorem and trigger principle
+Consequence: likely creates forbidden scalar exterior charge if used directly
+
+------------------------------------------------------------------------------------------------------------------------
+SV7: coefficient-origin requirement
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: chi fixed by postulate/ontology before gamma/AB checks
+Role: prevents source-driven creation from becoming tuning
+Allowed if: chi has prior normalization or exchange-law origin
+Forbidden if: chi chosen to recover gamma_like or q
+[WARN] SV7: coefficient-origin requirement: REQUIRED
+Missing: chi origin
+Consequence: Sigma_V fails as derivation if chi remains free fit
+
+------------------------------------------------------------------------------------------------------------------------
+SV8: zeta residual-kill/no-overlap
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: source-driven zeta enters metric only through B_s, or residual trace killed
+Role: keeps companion branch from double-counting
+Allowed if: residual kill/non-metric theorem is attached
+Forbidden if: source-driven zeta also remains residual metric scalar
+[WARN] SV8: zeta residual-kill/no-overlap: REQUIRED
+Missing: residual-kill and overlap theorem
+Consequence: mandatory if Sigma_V is used for companion branch
+
+------------------------------------------------------------------------------------------------------------------------
+SV9: boundary neutrality
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Q_ext[Sigma_V independent zeta] = 0 or contribution absorbed into B_s
+Role: protects no exterior scalar charge
+Allowed if: neutrality theorem is explicit
+Forbidden if: Sigma_V creates independent exterior scalar charge
+[WARN] SV9: boundary neutrality: REQUIRED
+Missing: boundary neutrality proof
+Consequence: prevents source-driven volume from becoming scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+SV10: recovery checks downstream
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: after Sigma_V and F_zeta fixed, test gamma_like=1 and AB->1
+Role: ordinary-regime recovery target
+Allowed if: checked after source law is fixed
+Forbidden if: used to choose Sigma_V or chi
+[WARN] SV10: recovery checks downstream: RECOVERY_TARGET
+Missing: solutions after Sigma_V/F_zeta
+Consequence: tests but does not define source law
+
+------------------------------------------------------------------------------------------------------------------------
+SV11: source-patch failure
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: Sigma_V inserted only to fix q, gamma, or AB
+Role: rejected shortcut
+Allowed if: used only as no-go diagnosis
+Forbidden if: accepted as derivation
+[WARN] SV11: source-patch failure: REJECTED
+Missing: not pursued
+Consequence: kills source-driven branch if no independent Sigma_V exists
+
+------------------------------------------------------------------------------------------------------------------------
+SV12: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Sigma form: test rho a·grad A candidate first, with covariant/frame and chi-origin requirements
+Role: best current concrete candidate
+Allowed if: treated as candidate, not final law
+Forbidden if: using noncovariant toy as parent equation
+[PASS] SV12: recommended next move: RECOMMENDED
+Missing: covariant acceleration-gradient inventory
+Consequence: next script should test acceleration-gradient source law and frame requirements
+
+========================================================================================================================
+Case 2: Compact source-driven creation ledger
+========================================================================================================================
+| Entry | Sigma form | Status | Consequence |
+|---|---|---|---|
+| SV1: source-driven volume creation target | Sigma_V[A,T] drives zeta before F_zeta maps zeta to B_s | THEOREM_TARGET | decides whether source-driven zeta companion branch is real |
+| SV2: rho acceleration-gradient candidate | Sigma_V ~ chi rho a^mu nabla_mu A | CANDIDATE | postulate-facing but needs covariant structure |
+| SV3: stress-energy Hessian candidate | Sigma_V ~ chi T^{mu nu} nabla_mu nabla_nu A | RISK | may create unwanted scalar dynamics if not constrained |
+| SV4: flux-gradient candidate | Sigma_V ~ chi J_m^mu nabla_mu A | CANDIDATE | could express motion across gradient without raw coordinate velocity |
+| SV5: rho v dot grad A toy form | Sigma_V ~ chi rho v^i partial_i A | CONSTRAINED | useful intuition but not acceptable parent expression |
+| SV6: pure density source | Sigma_V ~ chi rho or chi T | RISK | likely creates forbidden scalar exterior charge if used directly |
+| SV7: coefficient-origin requirement | chi fixed by postulate/ontology before gamma/AB checks | REQUIRED | Sigma_V fails as derivation if chi remains free fit |
+| SV8: zeta residual-kill/no-overlap | source-driven zeta enters metric only through B_s, or residual trace killed | REQUIRED | mandatory if Sigma_V is used for companion branch |
+| SV9: boundary neutrality | Q_ext[Sigma_V independent zeta] = 0 or contribution absorbed into B_s | REQUIRED | prevents source-driven volume from becoming scalar gravity |
+| SV10: recovery checks downstream | after Sigma_V and F_zeta fixed, test gamma_like=1 and AB->1 | RECOVERY_TARGET | tests but does not define source law |
+| SV11: source-patch failure | Sigma_V inserted only to fix q, gamma, or AB | REJECTED | kills source-driven branch if no independent Sigma_V exists |
+| SV12: recommended next move | test rho a·grad A candidate first, with covariant/frame and chi-origin requirements | RECOMMENDED | next script should test acceleration-gradient source law and frame requirements |
+[WARN] compact source-driven creation ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+CONSTRAINED: 1
+RECOMMENDED: 1
+RECOVERY_TARGET: 1
+REJECTED: 1
+REQUIRED: 3
+RISK: 2
+THEOREM_TARGET: 1
+
+Interpretation:
+  The acceleration-gradient candidate is the closest postulate-facing form.
+  Flux-gradient forms may be acceptable if the current and frame are defined.
+  Pure density source is dangerous because it likely creates static scalar charge.
+  rho v dot grad A remains a toy until covariantly lifted.
+  Chi origin, residual-kill, and boundary neutrality are mandatory.
+[WARN] source-driven creation status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Source law decision tree
+========================================================================================================================
+Decision tree:
+
+1. rho a·grad A?
+   Best postulate-facing candidate; needs covariant acceleration and frame.
+
+2. T^{mu nu} nabla_mu nabla_nu A?
+   Covariant-looking but high risk of unwanted scalar dynamics.
+
+3. J_m·grad A?
+   Candidate if matter current and projection are defined.
+
+4. rho v·grad A?
+   Toy only until covariantly lifted.
+
+5. pure rho/T?
+   Dangerous; likely scalar charge unless neutralized.
+[PASS] source-law decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  no Sigma_V[A,T] expression can be written that is covariant/frame-safe,
+  coefficient-fixed, boundary-neutral, and no-overlap compatible.
+
+Consequence:
+
+  source-driven zeta companion branch fails for now.
+  A_spatial remains recovery theorem target,
+  and zeta may remain residual only under P_relax if neutral/non-radiative.
+
+Bad failure:
+  use rho v·grad A as parent law because it has the right intuition.
+[WARN] source-driven creation good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Source-driven volume creation fails if:
+
+1. Sigma_V is chosen from gamma_like
+2. Sigma_V is chosen from AB
+3. coordinate velocity is used as parent law
+4. acceleration/frame field is undefined
+5. chi remains free recovery fit
+6. pure density source creates exterior scalar charge
+7. source-driven zeta remains independent residual trace
+8. boundary neutrality is absent
+9. no-overlap theorem is absent
+[WARN] source-driven creation failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_source_driven_volume_creation_law.md
+   Artifact for this script.
+
+2. candidate_acceleration_gradient_volume_creation.py
+   Test Sigma_V ~ rho a^mu nabla_mu A and frame/covariance requirements.
+
+3. candidate_kappa_diagnostic_or_residual_after_zeta.py
+   Clean up kappa after zeta companion decision if this branch survives.
+
+Recommended next script:
+
+  candidate_acceleration_gradient_volume_creation.py
+
+Reason:
+  The acceleration-gradient candidate is closest to the postulate. Test it explicitly before trying broader tensor expressions.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Source-driven volume creation has one best candidate:
+
+  Sigma_V ~ chi rho a^mu nabla_mu A
+
+But it is only viable if acceleration, frame/projection, chi-origin, boundary neutrality, and no-overlap are all defined.
+
+Best next test:
+  candidate_acceleration_gradient_volume_creation.py

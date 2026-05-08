@@ -1,0 +1,155 @@
+
+========================================================================================
+Candidate Kappa-Suppression Functionals
+========================================================================================
+
+========================================================================================
+Case 0: Algebraic spine
+========================================================================================
+A  = exp(kappa + s)
+B  = exp(kappa - s)
+AB = exp(2*kappa)
+[PASS] AB = exp(2*kappa)
+[PASS] kappa=0 implies AB=1
+
+========================================================================================
+Case 1: Local potential suppresses kappa, allows shear
+========================================================================================
+Case 1 energy:
+  E = M_k**2*kappa**2 + M_s**2*(S_b - s)**2
+Stationary equations:
+  Eq(2*M_k**2*kappa, 0)
+  Eq(M_s**2*(-2*S_b + 2*s), 0)
+Solutions:
+  {kappa: 0, s: S_b}
+
+kappa_eq = 0
+s_eq     = S_b
+AB       = 1
+[PASS] kappa suppressed
+[PASS] shear remains available
+[PASS] reciprocal scaling follows
+
+========================================================================================
+Case 2: Kappa-sourced control
+========================================================================================
+Case 2 energy:
+  E = -J_k*kappa + M_k**2*kappa**2 + M_s**2*(S_b - s)**2
+Stationary equations:
+  Eq(-J_k + 2*M_k**2*kappa, 0)
+  Eq(M_s**2*(-2*S_b + 2*s), 0)
+Solutions:
+  {kappa: J_k/(2*M_k**2), s: S_b}
+
+kappa_eq = J_k/(2*M_k**2)
+s_eq     = S_b
+AB       = exp(J_k/M_k**2)
+[PASS] kappa is nonzero generically
+[PASS] shear remains available
+[PASS] reciprocal scaling fails generically
+
+========================================================================================
+Case 3: Two-shell exterior relaxation
+========================================================================================
+Case 3 energy:
+  E = K_k*(kappa_1 - kappa_2)**2 + K_s*(s_1 - s_2)**2 + M_k**2*(kappa_1**2 + kappa_2**2) + M_s**2*(s_2**2 + (S_b - s_1)**2)
+Stationary equations:
+  Eq(K_k*(2*kappa_1 - 2*kappa_2) + 2*M_k**2*kappa_1, 0)
+  Eq(K_k*(-2*kappa_1 + 2*kappa_2) + 2*M_k**2*kappa_2, 0)
+  Eq(K_s*(2*s_1 - 2*s_2) + M_s**2*(-2*S_b + 2*s_1), 0)
+  Eq(K_s*(-2*s_1 + 2*s_2) + 2*M_s**2*s_2, 0)
+Solutions:
+  {kappa_1: 0, kappa_2: 0, s_1: S_b*(K_s + M_s**2)/(2*K_s + M_s**2), s_2: K_s*S_b/(2*K_s + M_s**2)}
+
+kappa_1_eq = 0
+kappa_2_eq = 0
+s_1_eq     = S_b*(K_s + M_s**2)/(2*K_s + M_s**2)
+s_2_eq     = K_s*S_b/(2*K_s + M_s**2)
+AB_1       = 1
+AB_2       = 1
+[PASS] inner exterior kappa suppressed
+[PASS] outer exterior kappa suppressed
+[PASS] inner reciprocal scaling follows
+[PASS] outer reciprocal scaling follows
+[PASS] shear is active at inner shell
+[PASS] shear can propagate to outer shell
+
+========================================================================================
+Case 4: Two-shell kappa boundary-source control
+========================================================================================
+Case 4 energy:
+  E = K_k*(kappa_1 - kappa_2)**2 + K_s*(s_1 - s_2)**2 + M_k**2*(kappa_2**2 + (K_b - kappa_1)**2) + M_s**2*(s_2**2 + (S_b - s_1)**2)
+Stationary equations:
+  Eq(K_k*(2*kappa_1 - 2*kappa_2) + M_k**2*(-2*K_b + 2*kappa_1), 0)
+  Eq(K_k*(-2*kappa_1 + 2*kappa_2) + 2*M_k**2*kappa_2, 0)
+  Eq(K_s*(2*s_1 - 2*s_2) + M_s**2*(-2*S_b + 2*s_1), 0)
+  Eq(K_s*(-2*s_1 + 2*s_2) + 2*M_s**2*s_2, 0)
+Solutions:
+  {kappa_1: K_b*(K_k + M_k**2)/(2*K_k + M_k**2), kappa_2: K_b*K_k/(2*K_k + M_k**2), s_1: S_b*(K_s + M_s**2)/(2*K_s + M_s**2), s_2: K_s*S_b/(2*K_s + M_s**2)}
+
+kappa_1_eq = K_b*(K_k + M_k**2)/(2*K_k + M_k**2)
+kappa_2_eq = K_b*K_k/(2*K_k + M_k**2)
+s_1_eq     = S_b*(K_s + M_s**2)/(2*K_s + M_s**2)
+s_2_eq     = K_s*S_b/(2*K_s + M_s**2)
+AB_1       = exp(2*K_b*(K_k + M_k**2)/(2*K_k + M_k**2))
+AB_2       = exp(2*K_b*K_k/(2*K_k + M_k**2))
+[PASS] inner kappa becomes nonzero generically
+[PASS] outer kappa becomes nonzero generically
+[PASS] inner reciprocal scaling fails generically
+[PASS] outer reciprocal scaling fails generically
+
+Interpretation:
+  If the source/interface directly seeds kappa into the exterior toy,
+  reciprocal scaling is lost unless a further exterior constraint or
+  boundary condition removes that kappa source.
+
+========================================================================================
+Case 5: Interface shear source with exterior kappa source absent
+========================================================================================
+Case 5 energy:
+  E = K_k*(kappa_1 - kappa_2)**2 + K_s*(s_2**2 + (S_b - s_1)**2 + (s_1 - s_2)**2) + M_k**2*(kappa_1**2 + kappa_2**2)
+Stationary equations:
+  Eq(K_k*(2*kappa_1 - 2*kappa_2) + 2*M_k**2*kappa_1, 0)
+  Eq(K_k*(-2*kappa_1 + 2*kappa_2) + 2*M_k**2*kappa_2, 0)
+  Eq(K_s*(-2*S_b + 4*s_1 - 2*s_2), 0)
+  Eq(K_s*(-2*s_1 + 4*s_2), 0)
+Solutions:
+  {kappa_1: 0, kappa_2: 0, s_1: 2*S_b/3, s_2: S_b/3}
+
+kappa_1_eq = 0
+kappa_2_eq = 0
+s_1_eq     = 2*S_b/3
+s_2_eq     = S_b/3
+AB_1       = 1
+AB_2       = 1
+[PASS] inner exterior kappa suppressed
+[PASS] outer exterior kappa suppressed
+[PASS] inner reciprocal scaling follows
+[PASS] outer reciprocal scaling follows
+[PASS] interface shear remains active
+[PASS] shear reaches outer shell
+
+========================================================================================
+Final interpretation
+========================================================================================
+This toy suite supports the following reduced-sector conclusions:
+
+1. Kappa is the reciprocal-scaling control mode:
+      AB = exp(2*kappa).
+
+2. A source-free exterior functional can suppress kappa while allowing
+   the shear/compensated mode s to remain active.
+
+3. If kappa is directly sourced, reciprocal scaling fails generically.
+
+4. The best P7-style toy is not 'all exchange is trace-free everywhere'.
+   It is:
+      source/interface physics may seed shear or boundary conditions,
+      while the source-free exterior has no kappa source and relaxes
+      kappa to zero.
+
+5. This script still does not provide a covariant field equation.
+   It only sharpens what such an equation must accomplish:
+
+      derive exterior kappa suppression without imposing AB=1 directly,
+      while allowing compensated shear to encode the exterior field.

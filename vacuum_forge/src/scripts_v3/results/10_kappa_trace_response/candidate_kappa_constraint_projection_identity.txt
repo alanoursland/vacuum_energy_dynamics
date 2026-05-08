@@ -1,0 +1,221 @@
+
+========================================================================================================================
+Candidate Kappa Constraint Projection Identity
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Kappa constraint projection identity problem
+========================================================================================================================
+Question:
+
+  Can the compensated kappa source be written as a projection identity
+  rather than an arbitrary subtraction?
+
+Candidate projection:
+
+  P_0 S = S - <S>_support
+
+Required identity:
+
+  integral_support P_0 S d^3x = 0
+[WARN] constraint projection identity problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Define zero-charge projection operator
+========================================================================================================================
+For a compact support region V:
+
+  <S>_V = (1/V) integral_V S d^3x
+
+Define:
+
+  P_0 S = S - <S>_V
+
+Then:
+
+  integral_V P_0 S d^3x = 0
+
+This removes monopole kappa charge over the support.
+[WARN] zero-charge projection operator defined: CONSTRAINED_BY_IDENTITY — support/boundary definition required
+
+========================================================================================================================
+Case 2: Toy pressure profile projection
+========================================================================================================================
+Raw source:
+
+S = 3*p0*(1 - r**2/R**2)
+
+Average over support:
+
+<S> = 6*p0/5
+
+Projected source:
+
+P_0 S = 9*p0/5 - 3*p0*r**2/R**2
+
+Projected charge:
+
+integral P_0 S d^3x = 0
+[PASS] toy projection has zero charge: DERIVED_REDUCED
+
+========================================================================================================================
+Case 3: Projection idempotence
+========================================================================================================================
+A true projection should satisfy:
+
+  P_0(P_0 S) = P_0 S
+
+Reason:
+  once the support-average is removed, applying the same operation again
+  changes nothing.
+
+For compact support with fixed V:
+
+  <P_0 S> = 0
+  P_0(P_0 S) = P_0 S - <P_0 S> = P_0 S
+
+Thus P_0 is idempotent if the support region is fixed.
+[PASS] zero-charge operator is idempotent for fixed support: DERIVED_REDUCED — moving/dynamical support still unresolved
+
+========================================================================================================================
+Case 4: Exterior tail control
+========================================================================================================================
+Massless exterior monopole tail:
+
+  kappa_ext ~ alpha_k Q_projected/(4*pi K_k r)
+
+kappa_ext = Q_projected*alpha_k/(4*pi*K_k*r)
+
+If the projection identity enforces:
+
+  Q_projected = 0
+
+then the exterior monopole tail is removed.
+[WARN] projection removes exterior monopole tail: CONSTRAINED_BY_IDENTITY — higher multipoles/boundary layers not solved
+
+========================================================================================================================
+Case 5: Constraint, not ordinary local law
+========================================================================================================================
+The projection:
+
+  P_0 S = S - <S>_V
+
+is nonlocal over V.
+
+Therefore it should be interpreted as:
+
+  a constraint projection
+  or a boundary/matching identity
+  or a consequence of a parent conservation law
+
+not as:
+
+  an ordinary local scalar source
+
+This supports kappa as constrained/non-propagating trace response.
+[WARN] projection is nonlocal and constraint-like: CONSTRAINED_BY_IDENTITY — parent derivation missing
+
+========================================================================================================================
+Case 6: Possible parent identity forms
+========================================================================================================================
+Possible parent forms to investigate:
+
+1. Zero exterior kappa charge:
+   Q_kappa = integral_V S_kappa d^3x = 0
+
+2. Trace balance constraint:
+   accumulation of trace exchange is locally redistributed so net exterior
+   scalar charge vanishes.
+
+3. Boundary flux cancellation:
+   F_kappa(R+) = 4*pi R^2 kappa'(R+) = 0
+
+4. Projected source equation:
+   L_kappa kappa = alpha_k P_0 S_trace
+
+5. Gauge/constraint split:
+   kappa = kappa_phys_constrained + kappa_gauge
+
+None is derived yet.
+[FAIL] candidate parent identity forms listed: MISSING — must be derived or demoted to formal constraint
+
+========================================================================================================================
+Case 7: Schematic projected kappa equation
+========================================================================================================================
+Candidate constrained equation:
+
+  -K_k Delta kappa = alpha_k P_0 S_trace
+
+with:
+
+  integral P_0 S_trace d^3x = 0
+
+Exterior condition:
+
+  kappa_ext monopole = 0
+
+If additionally boundary/higher multipoles vanish or are confined:
+
+  kappa_ext = 0
+
+Status:
+  structural candidate only
+[WARN] schematic projected kappa equation stated: CONSTRAINED_BY_IDENTITY — not a final law
+
+========================================================================================================================
+Case 8: Failure controls
+========================================================================================================================
+The projection identity fails if:
+
+1. support V is arbitrary or observer-dependent.
+2. subtraction is inserted only to kill an unwanted tail.
+3. higher multipoles leak into exterior.
+4. projection violates local energy/source accounting.
+5. no parent identity enforces Q_kappa = 0.
+6. kappa remains gauge-only but is treated as physical.
+[WARN] projection identity failure controls stated: RISK — parent derivation required
+
+========================================================================================================================
+Case 9: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_scalar_radiation_leak_check.py
+   Check whether projected kappa remains non-radiative dynamically.
+
+2. candidate_kappa_boundary_flux_cancellation.py
+   Test exterior flux cancellation at the matter boundary.
+
+3. candidate_kappa_projection_parent_balance.py
+   Try to connect P_0 to vacuum-substance continuity balance.
+
+Recommended next script:
+
+  candidate_kappa_scalar_radiation_leak_check.py
+
+Reason:
+  Projection removes monopole leakage, but scalar radiation safety is still
+  the next hard dynamical check.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — scalar-radiation leak check is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The zero-charge projection:
+
+  P_0 S = S - <S>
+
+works algebraically:
+
+  integral P_0 S d^3x = 0
+
+and removes the massless exterior monopole tail.
+
+But it is nonlocal over the support and must be interpreted as a
+constraint/projection identity, not an ordinary local source law.
+
+Possible next artifact:
+  candidate_kappa_constraint_projection_identity.md
+
+Possible next script:
+  candidate_kappa_scalar_radiation_leak_check.py

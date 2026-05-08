@@ -1,0 +1,183 @@
+
+========================================================================================================================
+Candidate Vector Curl-Energy Field Equation
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Vector curl-energy field equation problem
+========================================================================================================================
+Candidate vector energy:
+
+  E_W = integral [ K_c |curl W|^2 + alpha_W j.W ] d^3x
+
+Question:
+
+  What field equation follows from curl-energy?
+
+Expected structure:
+
+  curl curl W = source
+
+Under div W = 0:
+
+  -Delta W = source
+
+Coefficient remains symbolic.
+[WARN] curl-energy field-equation problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Vector identity curl curl W
+========================================================================================================================
+Identity:
+
+  curl curl W = grad(div W) - Delta W
+
+Check curlcurl - [grad div W - Delta W] =
+Matrix([[0], [0], [0]])
+[PASS] curl-curl identity verified: DERIVED_REDUCED
+
+========================================================================================================================
+Case 2: Transverse reduction
+========================================================================================================================
+If the vector sector is placed in transverse gauge:
+
+  div W = 0
+
+then:
+
+  curl curl W = -Delta W
+
+This recovers a Poisson-like vector equation from curl-energy:
+
+  Delta W_i ~ source_i
+
+Interpretation:
+  curl-energy naturally favors transverse/vector content.
+[WARN] transverse reduction gives vector Poisson form: CONSTRAINED_BY_IDENTITY — requires gauge condition div W=0
+
+========================================================================================================================
+Case 3: Variational field-equation structure
+========================================================================================================================
+Energy:
+
+  E = integral [ K_c |curl W|^2 + alpha_W j.W ] d^3x
+
+Variation gives boundary + bulk terms.
+After integrating by parts, the schematic bulk equation is:
+
+  2 K_c curl curl W + alpha_W j = 0
+
+Therefore:
+
+  curl curl W = - alpha_W j / (2 K_c)
+
+Under div W = 0:
+
+  Delta W = alpha_W j / (2 K_c)
+
+Coefficient target:
+
+  alpha_W / (2 K_c)
+[WARN] curl-energy variation gives source equation: CONSTRAINED_BY_IDENTITY — coefficient remains symbolic
+
+========================================================================================================================
+Case 4: Pure-gradient null mode
+========================================================================================================================
+For W = grad phi:
+
+curl W =
+Matrix([[0], [0], [0]])
+
+Thus |curl W|^2 does not penalize pure-gradient pieces.
+This is gauge-like behavior and requires gauge fixing or boundary conditions.
+[WARN] curl-energy has pure-gradient null mode: CONSTRAINED_BY_IDENTITY — gauge fixing required
+
+========================================================================================================================
+Case 5: Current transversality condition
+========================================================================================================================
+Curl-energy with transverse W naturally couples most cleanly to
+transverse current:
+
+  div j = 0
+
+For stationary incompressible currents, this is compatible with
+mass continuity:
+
+  partial_t rho = 0
+  div j = 0
+
+For time-dependent sources, longitudinal/current-continuity pieces
+must be handled by scalar constraint or gauge structure.
+[WARN] stationary transverse current compatibility stated: CONSTRAINED_BY_IDENTITY — time-dependent split still missing
+
+========================================================================================================================
+Case 6: Coefficient status
+========================================================================================================================
+The curl-energy field equation identifies the coefficient ratio:
+
+alpha_W/(2 K_c) = alpha_W/(2*K_c)
+
+But this script does not derive alpha_W or K_c.
+
+Current status:
+
+  equation structure: derived from candidate curl-energy
+  coefficient: missing
+  GR normalization: not inserted
+[FAIL] coefficient ratio identified but not derived: MISSING — normalization still absent
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| curl curl W identity | DERIVED_REDUCED |
+| transverse reduction to Delta W | CONSTRAINED_BY_IDENTITY |
+| curl-energy field equation | CONSTRAINED_BY_IDENTITY |
+| pure-gradient null mode | CONSTRAINED_BY_IDENTITY / gauge issue |
+| coefficient alpha_W/(2K_c) | MISSING |
+| full time-dependent current split | MISSING |
+| GR frame-dragging normalization | HAND_ASSIGNED if inserted now |
+[WARN] curl-energy classification produced: CONSTRAINED_BY_IDENTITY — structure derived, coefficient missing
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_vector_transverse_current_projection.py
+   Split current into transverse and longitudinal parts.
+
+2. candidate_kappa_source_law_from_trace_exchange.py
+   Work the missing kappa trace/interior source.
+
+3. candidate_tensor_source_from_exchange_identity.py
+   Work the hand-assigned tensor coupling.
+
+Recommended next script:
+
+  candidate_vector_transverse_current_projection.py
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — curl-energy needs transverse current projection
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Curl-energy gives a real structural vector equation:
+
+  curl curl W = - alpha_W j / (2 K_c)
+
+Under div W = 0:
+
+  Delta W = alpha_W j / (2 K_c)
+
+This supports the vector-current sector structurally.
+
+But the coefficient remains missing:
+
+  alpha_W/(2K_c)
+
+Possible next artifact:
+  candidate_vector_curl_energy_field_equation.md
+
+Possible next script:
+  candidate_vector_transverse_current_projection.py

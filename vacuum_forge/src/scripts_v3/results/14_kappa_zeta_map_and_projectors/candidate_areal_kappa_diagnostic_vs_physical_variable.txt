@@ -1,0 +1,299 @@
+
+========================================================================================================================
+Candidate Areal Kappa Diagnostic Versus Physical Variable
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Areal kappa diagnostic versus physical variable problem
+========================================================================================================================
+Question:
+
+  How do we keep kappa = 1/2 ln(A B) useful without letting it become a smuggled physical scalar?
+
+Goal:
+
+  separate reduced areal diagnostic kappa from any physical/residual kappa
+
+Discipline:
+
+  use areal kappa as test instrument, not building block
+  do not import GR spatial structure through AB=1
+  do not assign physical e_kappa to a pure diagnostic
+  do not insert areal kappa as independent spatial trace
+  preserve count-once recombination theorem target
+[WARN] areal kappa diagnostic problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Areal kappa branch inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+K1: areal kappa as reduced diagnostic only
+------------------------------------------------------------------------------------------------------------------------
+Branch: kappa_areal = 1/2 ln(A B)
+Role: diagnoses A/B mismatch in static spherical areal reduction
+Allowed if: kept explicitly reduced, gauge-conditioned, and diagnostic
+Forbidden if: treated as covariant physical scalar field
+[PASS] K1: areal kappa as reduced diagnostic only: RECOMMENDED
+Missing: covariant physical kappa, if any
+Consequence: safe to use as test instrument, not as field-equation building block
+
+------------------------------------------------------------------------------------------------------------------------
+K2: exterior recovery diagnostic
+------------------------------------------------------------------------------------------------------------------------
+Branch: kappa_areal -> 0 corresponds to A B -> 1 in recovered exterior
+Role: checks Schwarzschild-like exterior recovery
+Allowed if: used as recovery check, not construction principle
+Forbidden if: AB=1 is imposed as unexplained metric law
+[WARN] K2: exterior recovery diagnostic: SAFE_IF
+Missing: parent derivation of exterior recovery
+Consequence: AB=1 remains target/diagnostic, not derivation
+
+------------------------------------------------------------------------------------------------------------------------
+K3: areal kappa as physical trace variable
+------------------------------------------------------------------------------------------------------------------------
+Branch: kappa_phys := 1/2 ln(A B)
+Role: promotes reduced diagnostic to physical trace/volume scalar
+Allowed if: a covariant map to zeta/projected trace is derived
+Forbidden if: promotion happens by notation or convenience
+[WARN] K3: areal kappa as physical trace variable: RISK
+Missing: covariant map, frame/slicing rule, projector identity
+Consequence: unsafe until derived; risks GR smuggling and scalar double-counting
+
+------------------------------------------------------------------------------------------------------------------------
+K4: areal kappa as proxy for zeta-zeta_min
+------------------------------------------------------------------------------------------------------------------------
+Branch: kappa_areal ~ zeta - zeta_min in spherical reduction
+Role: possible reduced comparison between AB mismatch and volume-form strain
+Allowed if: treated as reduced diagnostic relation only
+Forbidden if: used as general kappa-zeta identity
+[WARN] K4: areal kappa as proxy for zeta-zeta_min: CANDIDATE
+Missing: explicit calculation of zeta in the same reduction/gauge
+Consequence: may guide kappa-zeta map but cannot define it yet
+
+------------------------------------------------------------------------------------------------------------------------
+K5: residual/relaxation kappa distinct from areal diagnostic
+------------------------------------------------------------------------------------------------------------------------
+Branch: kappa_residual != kappa_areal unless mapped
+Role: keeps physical/residual kappa separate from reduced AB diagnostic
+Allowed if: residual kappa remains first-order, projected, boundary-neutral
+Forbidden if: residual kappa inherits AB diagnostic status automatically
+[WARN] K5: residual/relaxation kappa distinct from areal diagnostic: CANDIDATE
+Missing: residual map P_relax P_trace(zeta-zeta_min)
+Consequence: allows e_kappa to remain provisional if residual variable survives
+
+------------------------------------------------------------------------------------------------------------------------
+K6: silent covariant promotion
+------------------------------------------------------------------------------------------------------------------------
+Branch: use kappa=1/2 ln(AB) as general scalar in parent equation
+Role: none
+Allowed if: never in current branch
+Forbidden if: used to define parent kappa without derivation
+[PASS] K6: silent covariant promotion: FORBIDDEN
+Missing: not pursued
+Consequence: would smuggle reduced spherical metric structure into the parent theory
+
+------------------------------------------------------------------------------------------------------------------------
+K7: e_kappa if kappa is diagnostic only
+------------------------------------------------------------------------------------------------------------------------
+Branch: e_kappa = 1/2 K_kappa(kappa-kappa_min)^2 with diagnostic kappa
+Role: potentially invalid physical energy for a diagnostic variable
+Allowed if: e_kappa is reinterpreted as diagnostic cost or residual variable is separately defined
+Forbidden if: physical energy is assigned to pure gauge/reduced diagnostic
+[FAIL] K7: e_kappa if kappa is diagnostic only: UNRESOLVED
+Missing: decision whether physical residual kappa survives
+Consequence: e_kappa may need retirement, reinterpretation, or residual-variable relabeling
+
+------------------------------------------------------------------------------------------------------------------------
+K8: recombination use of areal kappa
+------------------------------------------------------------------------------------------------------------------------
+Branch: kappa_areal used in recombination diagnostics
+Role: checks whether reduced A/B recombination is consistent
+Allowed if: diagnostic only and not inserted as independent trace
+Forbidden if: g_ij receives an independent kappa_areal trace contribution
+[WARN] K8: recombination use of areal kappa: CONSTRAINED
+Missing: P_recombination relation to reduced areal variables
+Consequence: areal kappa can test recombination but not define physical trace insertion
+
+------------------------------------------------------------------------------------------------------------------------
+K9: A_spatial recovery dependency
+------------------------------------------------------------------------------------------------------------------------
+Branch: A_spatial recovery uses kappa_areal to diagnose AB mismatch
+Role: helps test exterior/interior A-B consistency
+Allowed if: used after explicit diagnostic labeling
+Forbidden if: A_spatial theorem assumes kappa_areal is physical
+[WARN] K9: A_spatial recovery dependency: SAFE_IF
+Missing: A_spatial recovery theorem
+Consequence: fencing areal kappa now makes A_spatial recovery safer next
+
+------------------------------------------------------------------------------------------------------------------------
+K10: count-once theorem preservation
+------------------------------------------------------------------------------------------------------------------------
+Branch: Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral with no overlap
+Role: global recombination constraint that areal kappa must not violate
+Allowed if: areal kappa remains diagnostic or maps to only one trace channel
+Forbidden if: areal kappa adds third scalar trace
+[WARN] K10: count-once theorem preservation: REQUIRED
+Missing: parent recombination identity
+Consequence: preserves previous trace-counting theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+K11: diagnostic failure outcome
+------------------------------------------------------------------------------------------------------------------------
+Branch: no clean map from kappa_areal to zeta without gauge/slicing assumptions
+Role: good failure mode
+Allowed if: failure is used to keep areal kappa diagnostic-only
+Forbidden if: map failure is ignored and kappa is promoted anyway
+[WARN] K11: diagnostic failure outcome: SAFE_IF
+Missing: explicit zeta comparison test
+Consequence: forces physical kappa, if any, to be separately defined
+
+------------------------------------------------------------------------------------------------------------------------
+K12: recommended convention
+------------------------------------------------------------------------------------------------------------------------
+Branch: areal kappa is reduced diagnostic; physical/residual kappa remains unresolved
+Role: best current convention for avoiding GR smuggling
+Allowed if: declared provisional and revisited after A_spatial recovery
+Forbidden if: hardened into parent field variable without derivation
+[PASS] K12: recommended convention: RECOMMENDED
+Missing: future physical kappa decision
+Consequence: use kappa_areal as test instrument, not building block
+
+========================================================================================================================
+Case 2: Compact areal-kappa ledger
+========================================================================================================================
+| Entry | Branch | Status | Consequence |
+|---|---|---|---|
+| K1: areal kappa as reduced diagnostic only | kappa_areal = 1/2 ln(A B) | RECOMMENDED | safe to use as test instrument, not as field-equation building block |
+| K2: exterior recovery diagnostic | kappa_areal -> 0 corresponds to A B -> 1 in recovered exterior | SAFE_IF | AB=1 remains target/diagnostic, not derivation |
+| K3: areal kappa as physical trace variable | kappa_phys := 1/2 ln(A B) | RISK | unsafe until derived; risks GR smuggling and scalar double-counting |
+| K4: areal kappa as proxy for zeta-zeta_min | kappa_areal ~ zeta - zeta_min in spherical reduction | CANDIDATE | may guide kappa-zeta map but cannot define it yet |
+| K5: residual/relaxation kappa distinct from areal diagnostic | kappa_residual != kappa_areal unless mapped | CANDIDATE | allows e_kappa to remain provisional if residual variable survives |
+| K6: silent covariant promotion | use kappa=1/2 ln(AB) as general scalar in parent equation | FORBIDDEN | would smuggle reduced spherical metric structure into the parent theory |
+| K7: e_kappa if kappa is diagnostic only | e_kappa = 1/2 K_kappa(kappa-kappa_min)^2 with diagnostic kappa | UNRESOLVED | e_kappa may need retirement, reinterpretation, or residual-variable relabeling |
+| K8: recombination use of areal kappa | kappa_areal used in recombination diagnostics | CONSTRAINED | areal kappa can test recombination but not define physical trace insertion |
+| K9: A_spatial recovery dependency | A_spatial recovery uses kappa_areal to diagnose AB mismatch | SAFE_IF | fencing areal kappa now makes A_spatial recovery safer next |
+| K10: count-once theorem preservation | Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral with no overlap | REQUIRED | preserves previous trace-counting theorem target |
+| K11: diagnostic failure outcome | no clean map from kappa_areal to zeta without gauge/slicing assumptions | SAFE_IF | forces physical kappa, if any, to be separately defined |
+| K12: recommended convention | areal kappa is reduced diagnostic; physical/residual kappa remains unresolved | RECOMMENDED | use kappa_areal as test instrument, not building block |
+[WARN] compact areal-kappa ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+CONSTRAINED: 1
+FORBIDDEN: 1
+RECOMMENDED: 2
+REQUIRED: 1
+RISK: 1
+SAFE_IF: 3
+UNRESOLVED: 1
+
+Interpretation:
+  Areal kappa is valuable as a reduced diagnostic.
+  Silent promotion to a physical/covariant scalar is forbidden.
+  Physical or residual kappa remains unresolved and must be separately defined.
+  e_kappa remains provisional until residual kappa survives as more than a diagnostic.
+[WARN] areal-kappa status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Recommended convention
+========================================================================================================================
+Recommended for now:
+
+  kappa_areal = 1/2 ln(A B)
+
+is:
+
+  a reduced spherical areal-gauge diagnostic
+  an exterior recovery check
+  a test instrument for A/B mismatch
+
+It is not:
+
+  a covariant physical scalar
+  an independent spatial trace insertion
+  a sufficient basis for physical e_kappa
+  a parent field-equation building block
+
+Physical/residual kappa remains unresolved.
+[PASS] recommended areal-kappa convention stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: AB=1 recovery, not construction
+========================================================================================================================
+Safe phrasing:
+
+  In the recovered static spherical exterior, kappa_areal -> 0 corresponds to A B -> 1.
+  This is a diagnostic of exterior recovery.
+  It is not a derivation of the parent metric structure.
+
+Unsafe phrasing:
+
+  Set kappa = 0, therefore A B = 1, therefore the exterior metric is fixed.
+
+Rule:
+
+  AB=1 is a recovery target/check, not a construction principle.
+[WARN] AB=1 recovery language stated: CONSTRAINED
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The areal-kappa branch fails if:
+
+1. kappa = 1/2 ln(A B) is used as a covariant scalar without derivation
+2. AB=1 is used as construction rather than recovery check
+3. e_kappa is physical energy of a pure diagnostic variable
+4. areal kappa is inserted as independent g_ij trace
+5. areal kappa and zeta/kappa residual both count the same trace
+6. failure to map areal kappa to zeta is ignored
+7. A_spatial recovery assumes physical kappa before kappa is fenced
+[WARN] areal-kappa failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_areal_kappa_diagnostic_vs_physical_variable.md
+   Artifact for this script.
+
+2. candidate_A_spatial_recovery_constraint.py
+   Identify what A_spatial is required to recover without importing GR.
+
+3. candidate_kappa_diagnostic_or_residual_after_A_spatial.py
+   Decide whether kappa remains diagnostic or residual after A_spatial is constrained.
+
+Recommended next script:
+
+  candidate_A_spatial_recovery_constraint.py
+
+Reason:
+  Areal kappa is now fenced as diagnostic. Next identify A_spatial recovery requirements without using kappa as hidden physical scalar.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Areal kappa is useful but dangerous:
+
+  kappa_areal = 1/2 ln(A B)
+
+Use it as:
+  reduced diagnostic
+  exterior recovery check
+  A/B mismatch test instrument
+
+Do not use it as:
+  covariant physical scalar
+  independent trace insertion
+  physical e_kappa basis
+  parent field-equation building block
+
+Possible next artifact:
+  candidate_areal_kappa_diagnostic_vs_physical_variable.md
+
+Possible next script:
+  candidate_A_spatial_recovery_constraint.py

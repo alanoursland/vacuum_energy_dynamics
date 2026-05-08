@@ -1,0 +1,135 @@
+
+====================================================================================================================
+Candidate Wave Sector Linearized Modes
+====================================================================================================================
+
+====================================================================================================================
+Case 0: Why wave sector is needed
+====================================================================================================================
+Current sectors:
+  scalar A -> Newtonian potential / mass flux
+  kappa -> trace/interior response candidate
+  vector W_i -> frame-dragging candidate
+
+Missing:
+  tensor transverse-traceless wave sector h_ij^TT
+
+A full relativistic gravity theory must address propagating waves.
+[PASS] wave-sector problem isolated
+
+====================================================================================================================
+Case 1: Scalar spatial mode is not transverse-traceless
+====================================================================================================================
+Scalar spatial perturbation:
+Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
+trace = -6*psi
+
+A TT tensor must be trace-free.
+The scalar conformal perturbation has nonzero trace unless psi=0.
+[PASS] scalar mode is not TT
+
+====================================================================================================================
+Case 2: Vector mode is not a TT spatial tensor
+====================================================================================================================
+Vector sector:
+W_i = Matrix([[W_x, W_y, W_z]])
+
+This lives in g_ti-like components, not in the symmetric spatial
+tensor h_ij^TT.
+
+[PASS] vector sector is distinct from tensor wave sector
+
+====================================================================================================================
+Case 3: TT tensor polarizations
+====================================================================================================================
+TT spatial perturbation for wave along z:
+Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
+trace = 0
+
+Independent polarizations:
+  h_plus
+  h_cross
+[PASS] TT tensor has two polarizations
+
+====================================================================================================================
+Case 4: Transversality check
+====================================================================================================================
+k vector = Matrix([[0], [0], [k]])
+k^i h_ij =
+Matrix([[0, 0, 0]])
+[PASS] TT mode is transverse for propagation along z
+
+====================================================================================================================
+Case 5: Candidate wave equation placeholder
+====================================================================================================================
+A tensor wave sector would need a field equation of the schematic form:
+
+  □ h_ij^TT = source_ij^TT
+
+In vacuum:
+
+  □ h_ij^TT = 0
+
+This is not supplied by scalar A or vector W_i.
+
+Therefore the theory needs an independent tensor sector or a mechanism
+that produces one from deeper variables.
+[PASS] tensor wave equation class identified as missing
+
+====================================================================================================================
+Case 6: Scalar-vector-tensor sector separation
+====================================================================================================================
+Linearized sector map:
+
+| Sector | Candidate variable | Source | Status |
+|---|---|---|---|
+| scalar | A / Phi | density / mass | present weakly |
+| trace | kappa | pressure / trace candidate | reduced candidate |
+| vector | W_i | mass current / angular momentum | needed, not derived |
+| tensor | h_ij^TT | quadrupole radiation / TT stress | missing |
+
+[PASS] wave sector separated from scalar/vector sectors
+
+====================================================================================================================
+Case 7: Wave-sector success criteria
+====================================================================================================================
+A viable wave-sector development should eventually show:
+
+1. existence of two transverse-traceless propagating polarizations,
+2. propagation at the observed wave speed,
+3. coupling to changing quadrupole-like sources,
+4. compatibility with scalar A and vector W_i sectors,
+5. no extra unwanted scalar radiation in regimes where constrained,
+6. energy flux / radiation reaction accounting.
+
+[PASS] wave-sector success criteria listed
+
+====================================================================================================================
+Case 8: Classification
+====================================================================================================================
+Results:
+
+1. Scalar A is not a TT tensor mode.
+2. Vector W_i is not a TT tensor mode.
+3. TT waves require a symmetric trace-free transverse spatial tensor.
+4. A z-propagating TT mode has plus and cross polarizations.
+5. A wave equation for h_ij^TT is currently missing.
+6. A full gravity theory needs this sector.
+
+[PASS] tensor wave sector is necessary and currently absent
+
+====================================================================================================================
+Final interpretation
+====================================================================================================================
+The current reduced program does not yet contain gravitational waves.
+
+Scalar A handles Newtonian/mass-flux physics.
+Vector W_i is the natural home for frame dragging.
+But radiative gravity needs a separate tensor TT sector h_ij^TT.
+
+This is not a failure of the scalar branch; it is a degree inventory.
+The next task is to decide whether the tensor sector is fundamental,
+emergent from deeper vacuum variables, or absent and therefore fatal.
+
+Possible next artifact:
+  candidate_wave_sector_linearized_modes.md

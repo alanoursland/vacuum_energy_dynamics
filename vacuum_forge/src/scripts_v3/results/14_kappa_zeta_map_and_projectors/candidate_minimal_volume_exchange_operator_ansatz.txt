@@ -1,0 +1,289 @@
+
+========================================================================================================================
+Candidate Minimal Volume-Exchange Operator Ansatz
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Minimal volume-exchange operator ansatz problem
+========================================================================================================================
+Question:
+
+  Can V[A,B_s,zeta] be written, or is volume exchange just a shiny missing equation?
+
+Goal:
+
+  attempt explicit volume-exchange operator shells
+
+Discipline:
+
+  do not leave V unnamed
+  do not choose exchange coefficients from gamma_like or AB
+  do not let zeta be both B_s companion and residual
+  preserve boundary neutrality
+  preserve no-overlap trace theorem
+  allow branch-defer if V only relocates coefficients
+[WARN] minimal volume-exchange operator problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Minimal volume-exchange operator inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+VO1: minimal exchange target
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: V[A,B_s,zeta] enters A/B_s balance and fixes r_V before recovery checks
+Role: core explicit volume-exchange goal
+Allowed if: operator is written and coefficient-fixed internally
+Forbidden if: V is named but not specified
+[WARN] VO1: minimal exchange target: THEOREM_TARGET
+Missing: explicit V operator
+Consequence: decides whether volume exchange can end ratio relocation
+
+------------------------------------------------------------------------------------------------------------------------
+VO2: algebraic companion ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: B_s = F_V[zeta,A] or B_s - lambda zeta = G[A]
+Role: direct zeta-to-spatial companion shell
+Allowed if: lambda or F_V is derived before recovery checks
+Forbidden if: lambda is chosen to fit gamma_like or AB
+[WARN] VO2: algebraic companion ansatz: RISK
+Missing: derivation of F_V/lambda and gauge status
+Consequence: likely makes zeta an A_spatial companion, not residual
+
+------------------------------------------------------------------------------------------------------------------------
+VO3: derivative exchange ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: V ~ eta1 grad B_s·grad zeta + eta2 grad A·grad zeta + eta3 grad A·grad B_s
+Role: coupled stiffness extension with volume variable
+Allowed if: eta ratios have ontology origin
+Forbidden if: eta ratios are chosen to repair q
+[WARN] VO3: derivative exchange ansatz: CANDIDATE
+Missing: eta-ratio origin
+Consequence: may still relocate coefficient problem unless exchange fixes eta ratios
+
+------------------------------------------------------------------------------------------------------------------------
+VO4: volume-current ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: J_V^i = u grad^i zeta + v grad^i B_s + w grad^i A
+Role: current-route volume exchange candidate
+Allowed if: u:v:w fixed by volume flux law
+Forbidden if: current coefficients chosen from recovery checks
+[WARN] VO4: volume-current ansatz: CANDIDATE
+Missing: volume flux law
+Consequence: could fix current ratio if vacuum-volume flux is real
+
+------------------------------------------------------------------------------------------------------------------------
+VO5: source-coupled volume creation ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: Sigma_V = chi S_A or Sigma_V = chi rho a·grad A
+Role: routes source/mass response into volume creation
+Allowed if: chi and source form follow from postulates before recovery checks
+Forbidden if: Sigma_V is added to force gamma_like
+[WARN] VO5: source-coupled volume creation ansatz: CANDIDATE
+Missing: covariant source-driven volume creation law
+Consequence: connects to mass accelerating across gradient coupling
+
+------------------------------------------------------------------------------------------------------------------------
+VO6: relaxation-to-volume ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: R_V = -lambda_relax (zeta - zeta_min) coupled to B_s
+Role: possible first-order residual/relaxation channel
+Allowed if: relaxation is boundary-neutral and not coefficient patching
+Forbidden if: relaxation term repairs missing q-origin
+[WARN] VO6: relaxation-to-volume ansatz: RISK
+Missing: relaxation frame and boundary theorem
+Consequence: may belong to P_relax rather than A_spatial q-origin
+
+------------------------------------------------------------------------------------------------------------------------
+VO7: zeta companion status
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: zeta becomes B_s companion if V fixes B_s ratio
+Role: status consequence, not optional decoration
+Allowed if: residual zeta trace is killed or made non-metric
+Forbidden if: zeta remains independent residual trace
+[WARN] VO7: zeta companion status: REQUIRED
+Missing: zeta companion-vs-residual decision
+Consequence: forces revisit of zeta primary/residual convention
+
+------------------------------------------------------------------------------------------------------------------------
+VO8: zeta residual-only status
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: zeta remains residual; V does not fix B_s ratio
+Role: safe accounting branch but no q-origin
+Allowed if: separate q-origin exists or A_spatial remains theorem target
+Forbidden if: zeta residual is also used to fix B_s
+[WARN] VO8: zeta residual-only status: SAFE_IF
+Missing: separate q-origin
+Consequence: preserves residual convention but does not solve A_spatial
+
+------------------------------------------------------------------------------------------------------------------------
+VO9: boundary neutrality requirement
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: Q_ext[V] = 0 unless V is absorbed into A_spatial companion
+Role: protects no exterior scalar charge
+Allowed if: boundary neutrality theorem is stated or residual is non-metric
+Forbidden if: V creates exterior zeta/kappa charge
+[WARN] VO9: boundary neutrality requirement: REQUIRED
+Missing: boundary neutrality theorem
+Consequence: prevents volume exchange from becoming scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+VO10: no-overlap operator
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: O[B_s,zeta_residual/kappa_residual] = 0
+Role: protects count-once recombination
+Allowed if: O is explicit or residual killed
+Forbidden if: B_s and residual trace overlap
+[WARN] VO10: no-overlap operator: THEOREM_TARGET
+Missing: overlap operator / residual kill theorem
+Consequence: volume exchange fails if it double-counts trace
+
+------------------------------------------------------------------------------------------------------------------------
+VO11: recovery checks downstream
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: after V fixes ratio, test gamma_like=1 and AB->1
+Role: ordinary-regime recovery targets
+Allowed if: checked after V is fixed
+Forbidden if: used to choose V coefficients
+[WARN] VO11: recovery checks downstream: RECOVERY_TARGET
+Missing: solutions from exchange operator
+Consequence: tests but does not define V
+
+------------------------------------------------------------------------------------------------------------------------
+VO12: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: test derivative/current/source-coupled V shells; then decide zeta companion vs residual
+Role: best current concrete path
+Allowed if: each shell has branch-kill criteria
+Forbidden if: leaving V as unnamed ontology
+[PASS] VO12: recommended next move: RECOMMENDED
+Missing: operator test / zeta status script
+Consequence: next script should decide whether zeta can be companion or residual after V shells
+
+========================================================================================================================
+Case 2: Compact volume-operator ledger
+========================================================================================================================
+| Entry | Ansatz | Status | Consequence |
+|---|---|---|---|
+| VO1: minimal exchange target | V[A,B_s,zeta] enters A/B_s balance and fixes r_V before recovery checks | THEOREM_TARGET | decides whether volume exchange can end ratio relocation |
+| VO2: algebraic companion ansatz | B_s = F_V[zeta,A] or B_s - lambda zeta = G[A] | RISK | likely makes zeta an A_spatial companion, not residual |
+| VO3: derivative exchange ansatz | V ~ eta1 grad B_s·grad zeta + eta2 grad A·grad zeta + eta3 grad A·grad B_s | CANDIDATE | may still relocate coefficient problem unless exchange fixes eta ratios |
+| VO4: volume-current ansatz | J_V^i = u grad^i zeta + v grad^i B_s + w grad^i A | CANDIDATE | could fix current ratio if vacuum-volume flux is real |
+| VO5: source-coupled volume creation ansatz | Sigma_V = chi S_A or Sigma_V = chi rho a·grad A | CANDIDATE | connects to mass accelerating across gradient coupling |
+| VO6: relaxation-to-volume ansatz | R_V = -lambda_relax (zeta - zeta_min) coupled to B_s | RISK | may belong to P_relax rather than A_spatial q-origin |
+| VO7: zeta companion status | zeta becomes B_s companion if V fixes B_s ratio | REQUIRED | forces revisit of zeta primary/residual convention |
+| VO8: zeta residual-only status | zeta remains residual; V does not fix B_s ratio | SAFE_IF | preserves residual convention but does not solve A_spatial |
+| VO9: boundary neutrality requirement | Q_ext[V] = 0 unless V is absorbed into A_spatial companion | REQUIRED | prevents volume exchange from becoming scalar gravity |
+| VO10: no-overlap operator | O[B_s,zeta_residual/kappa_residual] = 0 | THEOREM_TARGET | volume exchange fails if it double-counts trace |
+| VO11: recovery checks downstream | after V fixes ratio, test gamma_like=1 and AB->1 | RECOVERY_TARGET | tests but does not define V |
+| VO12: recommended next move | test derivative/current/source-coupled V shells; then decide zeta companion vs residual | RECOMMENDED | next script should decide whether zeta can be companion or residual after V shells |
+[WARN] compact volume-operator ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+RECOMMENDED: 1
+RECOVERY_TARGET: 1
+REQUIRED: 2
+RISK: 2
+SAFE_IF: 1
+THEOREM_TARGET: 2
+
+Interpretation:
+  Explicit V shells can be named, but coefficient origin remains unresolved unless a volume law fixes the ratios.
+  If zeta fixes B_s, zeta cannot remain independent residual trace.
+  Boundary neutrality and no-overlap are mandatory.
+  The next decision is zeta companion versus residual after the V-shell inventory.
+[WARN] volume-operator status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Operator shells to test
+========================================================================================================================
+Minimal shells:
+
+1. Algebraic companion:
+   B_s = F_V[zeta,A]
+
+2. Derivative exchange:
+   V ~ eta1 grad B_s·grad zeta + eta2 grad A·grad zeta + eta3 grad A·grad B_s
+
+3. Volume current:
+   J_V^i = u grad^i zeta + v grad^i B_s + w grad^i A
+
+4. Source-coupled volume creation:
+   Sigma_V = chi S_A
+   or Sigma_V = chi rho a·grad A
+
+5. Relaxation-to-volume:
+   R_V = -lambda_relax (zeta - zeta_min)
+
+Each must fix ratios before recovery checks or be treated as decorative.
+[WARN] volume-exchange operator shells stated: CANDIDATE
+
+========================================================================================================================
+Case 5: Good failure / decision
+========================================================================================================================
+Good failure:
+
+  all explicit V shells either leave free coefficients or make zeta double-count residual trace.
+
+Consequence:
+
+  volume exchange does not yet derive q.
+  Next work must decide zeta companion versus residual, or return A_spatial to recovery theorem target status.
+
+Bad failure:
+  keep saying vacuum volume fixes q while V is still unnamed.
+[WARN] volume-operator good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Minimal volume-exchange operator test fails if:
+
+1. V remains unnamed
+2. exchange coefficients are chosen from gamma_like
+3. AB diagnostic fixes exchange coefficients
+4. zeta fixes B_s and remains independent residual
+5. boundary neutrality is not enforced
+6. no-overlap theorem is absent
+7. source-driven volume creation has no covariant/source expression
+8. V only relocates coefficient freedom
+[WARN] volume-operator failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_minimal_volume_exchange_operator_ansatz.md
+   Artifact for this script.
+
+2. candidate_zeta_companion_vs_residual_decision.py
+   Decide whether zeta can be B_s companion or residual, but not both.
+
+3. candidate_source_driven_volume_creation_law.py
+   Test source-coupled vacuum creation expression.
+
+Recommended next script:
+
+  candidate_zeta_companion_vs_residual_decision.py
+
+Reason:
+  Every useful V shell forces zeta status. Decide companion versus residual before adding more exchange structure.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Minimal V shells can be written, but the decisive issue is zeta status.
+
+If zeta fixes B_s:
+  it cannot remain independent residual trace.
+
+If zeta remains residual:
+  it probably does not fix q.
+
+Best next test:
+  candidate_zeta_companion_vs_residual_decision.py

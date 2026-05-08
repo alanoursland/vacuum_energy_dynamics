@@ -1,0 +1,211 @@
+
+============================================================================================================
+Candidate Areal-Flux Principle
+============================================================================================================
+
+============================================================================================================
+Case 0: Define areal-flux law
+============================================================================================================
+Candidate exact reduced source law:
+
+  Delta_areal A = 8*pi*G*rho / c^2
+
+where:
+
+  Delta_areal A = (1/r^2)(r^2 A')'
+
+Equivalently:
+
+  d/dr(4*pi*r^2 A') = 4*pi*r^2 * 8*pi*G*rho/c^2
+
+Define areal flux:
+
+  F_A(r) = 4*pi*r^2 A'
+
+Then:
+
+  F_A'(r) = 32*pi^2*G*r^2*rho/c^2
+
+[PASS] areal source law can be written as Gauss-flux law
+
+============================================================================================================
+Case 1: Source-free flux conservation
+============================================================================================================
+Source-free exterior:
+  rho = 0
+  Delta_areal A = 0
+  d/dr(r^2 A') = 0
+
+Equation: Eq(r**2*Derivative(A(r), (r, 2)) + 2*r*Derivative(A(r), r), 0)
+General solution: Eq(A(r), C1 + C2/r)
+
+So:
+  A(r)=C1+C2/r
+
+[PASS] source-free areal flux gives 1/r exterior
+
+============================================================================================================
+Case 2: Mass flux normalization
+============================================================================================================
+A = 1 - r_s/r
+A' = r_s/r**2
+F_A = 4*pi*r^2*A' = 4*pi*r_s
+target flux = 8*pi*G*M/c**2
+r_s solution = [2*G*M/c**2]
+[PASS] mass flux fixes r_s=2GM/c^2
+
+============================================================================================================
+Case 3: Enclosed mass form
+============================================================================================================
+Define enclosed mass:
+
+  M_enc'(r) = 4*pi*r^2*rho(r)
+
+Candidate flux law:
+
+  F_A(r) = 8*pi*G*M_enc(r)/c^2
+
+F_A'(r) = 32*pi**2*G*r**2*rho(r)/c**2
+4*pi*r^2 * 8*pi*G*rho/c^2 = 32*pi**2*G*r**2*rho(r)/c**2
+[PASS] enclosed-mass flux law differentiates to source equation
+
+============================================================================================================
+Case 4: Thin shell jump condition
+============================================================================================================
+For a thin shell source with mass M_shell:
+
+  F_A(outside) - F_A(inside) = 8*pi*G*M_shell/c^2
+
+Jump equation: Eq(-F_inside + F_outside, 8*pi*G*M_shell/c**2)
+
+If inside flux is zero:
+
+  F_A(outside) = 8*pi*G*M_shell/c**2
+
+[PASS] thin shell gives flux jump proportional to mass
+
+============================================================================================================
+Case 5: Exterior metric recovery from flux principle
+============================================================================================================
+r_s = 2*G*M/c**2
+A = -2*G*M/(c**2*r) + 1
+kappa = 0
+B = c**2*r/(-2*G*M + c**2*r)
+AB = 1
+
+Delta_areal A = 0
+F_A = 8*pi*G*M/c**2
+[PASS] A solves source-free areal equation outside source
+[PASS] kappa=0 gives AB=1
+
+============================================================================================================
+Case 6: Boundary / Gauss-law form
+============================================================================================================
+Integrated source law over shell r1 < r < r2:
+
+  integral Delta_areal A dV = surface flux difference
+
+Reduced spherical form:
+
+  F_A(r2) - F_A(r1) = 8*pi*G*M_between / c^2
+
+where:
+
+  F_A(r) = 4*pi*r^2*A'
+
+This is the cleanest current interpretation:
+
+  mass controls the jump / value of areal A-flux.
+
+[PASS] source law has Gauss-law form over areal spheres
+
+============================================================================================================
+Case 7: Comparison to curved spatial Laplacian
+============================================================================================================
+A = 1 - r_s/r
+B = 1/(1 - r_s/r)
+
+Delta_areal A = 0
+Delta_spatial A = r_s**2/(2*r**4)
+
+[PASS] areal operator passes
+[PASS] curved spatial operator fails
+
+Interpretation:
+  The flux principle must not be described as ordinary scalar
+  harmonicity on the curved spatial slice.
+
+============================================================================================================
+Case 8: Relation to nonlinear s equation
+============================================================================================================
+A = 1 - r_s/r
+s = ln(A) = log(1 - r_s/r)
+
+Since A=e^s:
+  Delta_areal A = e^s(Delta_areal s + |grad s|^2)
+
+Delta_areal s + |grad s|^2 = 0
+[PASS] areal flux law for A gives nonlinear s equation
+
+============================================================================================================
+Case 9: Summary classification
+============================================================================================================
+Results:
+
+1. The exact source law can be stated as areal flux:
+     F_A = 4*pi*r^2*A'
+
+2. Source-free exterior gives:
+     F_A = constant
+
+3. This implies:
+     A = C0 + C1/r
+
+4. Asymptotic flatness gives:
+     C0 = 1
+
+5. Mass flux gives:
+     C1 = -2GM/c^2
+
+6. Therefore:
+     A = 1 - 2GM/(r*c^2)
+
+7. With kappa=0:
+     B = 1/A
+
+8. This recovers exact Schwarzschild exterior metric factors.
+
+9. The operator is areal-flux / flat-radial, not curved-spatial.
+
+Open problem:
+  derive the areal-flux principle from deeper geometry or ontology.
+
+============================================================================================================
+Final interpretation
+============================================================================================================
+This script reframes the exact source law as a Gauss-law-like
+areal-flux principle:
+
+  F_A(r) = 4*pi*r^2 A'
+
+with:
+
+  F_A = 8*pi*G*M_enc(r)/c^2
+
+Outside the source, M_enc is constant, so F_A is constant and:
+
+  A = 1 - 2GM/(r*c^2)
+
+Combined with kappa=0:
+
+  B = 1/A
+
+This recovers the exact Schwarzschild exterior metric factors.
+
+The result does not yet derive the law from covariant geometry.
+It sharpens the target:
+
+  explain why mass sources areal flux of A=e^s.
+
+Possible next artifact:
+  candidate_areal_flux_principle.md

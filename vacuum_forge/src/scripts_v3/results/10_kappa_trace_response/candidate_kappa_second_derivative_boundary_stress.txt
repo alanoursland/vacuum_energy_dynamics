@@ -1,0 +1,203 @@
+
+========================================================================================================================
+Candidate Kappa Second Derivative Boundary Stress
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Kappa second-derivative boundary stress problem
+========================================================================================================================
+Question:
+
+  Does a compact interior kappa profile create hidden boundary stress
+  through second-derivative or effective-source jumps?
+
+Known from previous model:
+
+  kappa(R)=0
+  kappa'(R)=0
+  exterior kappa=0
+
+Need now:
+
+  check kappa''(R)
+  check Delta kappa(R)
+  decide whether smoother compact profile is required
+[WARN] second derivative boundary stress problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: C1 compact profile second derivatives
+========================================================================================================================
+Profile:
+
+  kappa = k0 (1 - r^2/R^2)^2
+
+kappa = kappa_0*(1 - r**2/R**2)**2
+
+Boundary values:
+
+kappa(R) = 0
+kappa'(R) = 0
+kappa''(R-) = 8*kappa_0/R**2
+Delta kappa(R-) = 8*kappa_0/R**2
+
+Exterior kappa=0 has:
+
+  kappa''(R+) = 0
+  Delta kappa(R+) = 0
+
+Thus the second derivative/effective source jumps at R.
+[WARN] C1 profile has second-derivative/effective-source jump: RISK — may imply boundary layer or hidden interface stress
+
+========================================================================================================================
+Case 2: C2 smoother compact profile candidate
+========================================================================================================================
+Smoother profile:
+
+  kappa = k0 (1 - r^2/R^2)^3
+
+kappa = kappa_0*(1 - r**2/R**2)**3
+
+Boundary values:
+
+kappa(R) = 0
+kappa'(R) = 0
+kappa''(R-) = 0
+Delta kappa(R-) = 0
+
+This profile matches exterior zero through second derivative/effective source.
+[PASS] C2 profile removes second-derivative/effective-source jump: DERIVED_REDUCED
+
+========================================================================================================================
+Case 3: Flux and charge for C2 profile
+========================================================================================================================
+Flux:
+
+F_kappa(r) = -24*pi*kappa_0*r**3*(R**2 - r**2)**2/R**6
+F_kappa(R) = 0
+
+Integrated effective source:
+
+integral Delta kappa d^3x = 0
+
+C2 profile keeps zero flux and zero net source.
+[PASS] C2 profile has zero flux and zero net effective source: DERIVED_REDUCED
+
+========================================================================================================================
+Case 4: Regular center check
+========================================================================================================================
+Center values for C2 profile:
+
+kappa(0) = kappa_0
+kappa'(0) = 0
+kappa''(0) = -6*kappa_0/R**2
+Delta kappa(0) = -18*kappa_0/R**2
+
+The profile is regular at the center.
+[PASS] C2 profile is center-regular: DERIVED_REDUCED — source sign/compatibility still needs checking
+
+========================================================================================================================
+Case 5: Effective source shape for C2 profile
+========================================================================================================================
+Effective source shape:
+
+  S_eff ~ Delta kappa
+
+S_eff = -6*kappa_0*(-R + r)*(R + r)*(-3*R**2 + 7*r**2)/R**6
+
+This source shape has positive and negative regions so that net charge
+vanishes.
+
+It resembles a compensated trace source rather than raw positive pressure.
+[WARN] C2 effective source is compensated-like: CONSTRAINED_BY_IDENTITY — must be derived from trace/minimum law
+
+========================================================================================================================
+Case 6: Interface interpretation
+========================================================================================================================
+The C1 profile:
+
+  matches value and first derivative
+  but jumps in second derivative/effective source
+
+The C2 profile:
+
+  matches value, first derivative, and second derivative
+  has zero boundary flux
+  has zero net effective source
+
+Interpretation:
+  if hidden shell stress is forbidden, use at least C2 compact profile
+  or derive an allowed boundary layer/interface stress explicitly
+[WARN] C2 smoothness preferred if no shell stress is allowed: CONSTRAINED_BY_IDENTITY — physical interface derivation missing
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+Boundary stress control fails if:
+
+1. kappa'' jumps and no interface stress accounts for it.
+2. Delta kappa jumps and implies an unmodeled shell source.
+3. smoother profile cannot be sourced by matter trace/minimum shift.
+4. compensated effective source is inserted by hand.
+5. higher derivative terms in the true action require even higher smoothness.
+6. boundary smoothness hides rather than explains scalar confinement.
+[WARN] boundary stress failure controls stated: RISK — true action determines required smoothness
+
+========================================================================================================================
+Case 8: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| C1 profile value/first derivative match | DERIVED_REDUCED |
+| C1 profile second derivative jump | RISK |
+| C2 profile value/first/second derivative match | DERIVED_REDUCED |
+| C2 boundary flux zero | DERIVED_REDUCED |
+| C2 net effective source zero | DERIVED_REDUCED |
+| C2 source shape derived from matter trace | MISSING |
+| physical interface law | MISSING |
+| required smoothness from true action | MISSING |
+[WARN] second-derivative boundary stress classification produced: CONSTRAINED_BY_IDENTITY — C2 solves toy stress jump, derivation missing
+
+========================================================================================================================
+Case 9: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_boundary_layer_source_compatibility.py
+   Check whether plausible pressure/trace/minimum shift can produce C2 source.
+
+2. candidate_kappa_trace_response_status_summary.md
+   Summarize group 10.
+
+3. candidate_kappa_action_smoothness_requirement.py
+   Determine smoothness required by candidate kappa action.
+
+Recommended next script:
+
+  candidate_kappa_boundary_layer_source_compatibility.py
+
+Reason:
+  C2 compactness works mathematically; now source compatibility is the issue.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — source compatibility is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The previous C1 compact profile avoids exterior flux but has a second
+derivative/effective-source jump at the boundary.
+
+A smoother C2 profile:
+
+  kappa = k0 (1 - r^2/R^2)^3
+
+matches exterior zero through second derivative, keeps boundary flux zero,
+and has zero net effective source.
+
+This removes the hidden shell-stress trap at toy level.
+
+But source compatibility remains missing.
+
+Possible next artifact:
+  candidate_kappa_second_derivative_boundary_stress.md
+
+Possible next script:
+  candidate_kappa_boundary_layer_source_compatibility.py

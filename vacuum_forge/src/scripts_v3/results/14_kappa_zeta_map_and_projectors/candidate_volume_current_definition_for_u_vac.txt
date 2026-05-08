@@ -1,0 +1,290 @@
+
+========================================================================================================================
+Candidate Volume Current Definition For u_vac
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Volume current definition for u_vac problem
+========================================================================================================================
+Question:
+
+  Can J_V be written, or do we close the cave?
+
+Goal:
+
+  test whether a real vacuum-volume current can define u_vac
+
+Discipline:
+
+  do not declare J_V without a flux/balance law
+  do not define J_V using u_vac circularly
+  require timelike/nonzero domain
+  protect static-source neutrality
+  preserve boundary neutrality and no-overlap
+  close Group 14 if J_V remains unnamed
+[WARN] volume current definition problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Volume current definition inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+JV1: volume-current theorem target
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V^mu is a real vacuum-volume flux current; u_vac^mu = J_V^mu / sqrt(-J_V^2)
+Role: core definition target for vacuum rest frame
+Allowed if: J_V is defined before recovery checks and is timelike where used
+Forbidden if: J_V is named only to create u_vac
+[WARN] JV1: volume-current theorem target: THEOREM_TARGET
+Missing: explicit J_V^mu
+Consequence: decides whether u_vac can be defined
+
+------------------------------------------------------------------------------------------------------------------------
+JV2: zeta-gradient current
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V^mu = beta_z nabla^mu zeta
+Role: simplest scalar-derived current candidate
+Allowed if: nabla zeta is timelike and beta_z has prior origin
+Forbidden if: used in static/equilibrium regions where gradient is not a time-flow
+[WARN] JV2: zeta-gradient current: RISK
+Missing: causal character of nabla zeta and beta_z origin
+Consequence: likely insufficient as general vacuum rest frame
+
+------------------------------------------------------------------------------------------------------------------------
+JV3: exchange continuity current
+------------------------------------------------------------------------------------------------------------------------
+Current: nabla_mu J_V^mu = Sigma_V - R_V
+Role: volume-balance candidate current
+Allowed if: Sigma_V and R_V are defined independently
+Forbidden if: continuity equation is written with unnamed terms
+[WARN] JV3: exchange continuity current: CANDIDATE
+Missing: Sigma_V, R_V, and boundary conditions
+Consequence: strongest route if volume exchange supplies conservation/balance law
+
+------------------------------------------------------------------------------------------------------------------------
+JV4: source-driven current
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V^mu sourced by Sigma_V ~ chi rho a^nu nabla_nu A
+Role: ties volume current to acceleration-gradient source law
+Allowed if: source creates divergence of J_V, not arbitrary direction
+Forbidden if: J_V direction is chosen after defining source scalar
+[WARN] JV4: source-driven current: CANDIDATE
+Missing: flux direction law and chi origin
+Consequence: needs more than scalar source; requires transport/flux law
+
+------------------------------------------------------------------------------------------------------------------------
+JV5: equilibrium zero-flux current
+------------------------------------------------------------------------------------------------------------------------
+Current: u_vac is rest frame where spatial J_V vanishes locally
+Role: defines vacuum rest frame once J_V exists
+Allowed if: J_V exists and is timelike/nonzero
+Forbidden if: zero-flux frame is coordinate rest frame without current
+[WARN] JV5: equilibrium zero-flux current: SAFE_IF
+Missing: J_V itself
+Consequence: useful rest-frame definition but not a current origin
+
+------------------------------------------------------------------------------------------------------------------------
+JV6: density-times-frame circularity
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V^mu = n_V u_vac^mu
+Role: circular definition warning
+Allowed if: u_vac already defined elsewhere
+Forbidden if: used to define u_vac
+[WARN] JV6: density-times-frame circularity: REJECTED
+Missing: not pursued as definition
+Consequence: cannot define the clock using the clock
+
+------------------------------------------------------------------------------------------------------------------------
+JV7: decorative current failure
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V is declared as vacuum volume current without flux law
+Role: rejected shortcut
+Allowed if: never as derivation
+Forbidden if: used to keep u_vac branch alive
+[WARN] JV7: decorative current failure: REJECTED
+Missing: not pursued
+Consequence: triggers Group 14 closure if no current is written
+
+------------------------------------------------------------------------------------------------------------------------
+JV8: timelike/nonzero requirement
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V^2 < 0 and J_V != 0 in regimes where u_vac is used
+Role: mathematical viability condition for normalized u_vac
+Allowed if: proved or domain-limited
+Forbidden if: normalization used where J_V is null/spacelike/zero
+[WARN] JV8: timelike/nonzero requirement: REQUIRED
+Missing: domain theorem for J_V
+Consequence: prevents invalid frame definition
+
+------------------------------------------------------------------------------------------------------------------------
+JV9: static-source neutrality
+------------------------------------------------------------------------------------------------------------------------
+Current: static equilibrium sources do not produce independent exterior J_V/zeta charge
+Role: ordinary-sector safety condition
+Allowed if: static flux is zero or boundary-neutral
+Forbidden if: static mass creates scalar volume flux/charge
+[WARN] JV9: static-source neutrality: REQUIRED
+Missing: static neutrality theorem
+Consequence: kills current definitions that create scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+JV10: sign/orientation rule
+------------------------------------------------------------------------------------------------------------------------
+Current: orientation of J_V fixes creation/destruction sign
+Role: resolves volume-source sign ambiguity
+Allowed if: orientation follows from exchange law
+Forbidden if: sign is chosen from gamma/AB recovery
+[FAIL] JV10: sign/orientation rule: UNRESOLVED
+Missing: orientation convention
+Consequence: needed before numerical or recovery claims
+
+------------------------------------------------------------------------------------------------------------------------
+JV11: boundary/no-overlap requirements
+------------------------------------------------------------------------------------------------------------------------
+Current: J_V-driven zeta is boundary-neutral and metric insertion occurs only through B_s
+Role: protects exterior neutrality and count-once recombination
+Allowed if: boundary/no-overlap theorems are attached
+Forbidden if: J_V creates independent residual metric trace
+[WARN] JV11: boundary/no-overlap requirements: REQUIRED
+Missing: boundary neutrality and no-overlap proof
+Consequence: even a real current fails if accounting fails
+
+------------------------------------------------------------------------------------------------------------------------
+JV12: recommended closure move
+------------------------------------------------------------------------------------------------------------------------
+Current: if exchange continuity current cannot be specified, close Group 14
+Role: best current governance decision
+Allowed if: J_V remains undefined after this test
+Forbidden if: continuing ratio/frame relocation loops
+[PASS] JV12: recommended closure move: RECOMMENDED
+Missing: closure summary if J_V remains undefined
+Consequence: next artifact should be Group 14 closure unless J_V becomes explicit
+
+========================================================================================================================
+Case 2: Compact volume-current ledger
+========================================================================================================================
+| Entry | Current | Status | Consequence |
+|---|---|---|---|
+| JV1: volume-current theorem target | J_V^mu is a real vacuum-volume flux current; u_vac^mu = J_V^mu / sqrt(-J_V^2) | THEOREM_TARGET | decides whether u_vac can be defined |
+| JV2: zeta-gradient current | J_V^mu = beta_z nabla^mu zeta | RISK | likely insufficient as general vacuum rest frame |
+| JV3: exchange continuity current | nabla_mu J_V^mu = Sigma_V - R_V | CANDIDATE | strongest route if volume exchange supplies conservation/balance law |
+| JV4: source-driven current | J_V^mu sourced by Sigma_V ~ chi rho a^nu nabla_nu A | CANDIDATE | needs more than scalar source; requires transport/flux law |
+| JV5: equilibrium zero-flux current | u_vac is rest frame where spatial J_V vanishes locally | SAFE_IF | useful rest-frame definition but not a current origin |
+| JV6: density-times-frame circularity | J_V^mu = n_V u_vac^mu | REJECTED | cannot define the clock using the clock |
+| JV7: decorative current failure | J_V is declared as vacuum volume current without flux law | REJECTED | triggers Group 14 closure if no current is written |
+| JV8: timelike/nonzero requirement | J_V^2 < 0 and J_V != 0 in regimes where u_vac is used | REQUIRED | prevents invalid frame definition |
+| JV9: static-source neutrality | static equilibrium sources do not produce independent exterior J_V/zeta charge | REQUIRED | kills current definitions that create scalar gravity |
+| JV10: sign/orientation rule | orientation of J_V fixes creation/destruction sign | UNRESOLVED | needed before numerical or recovery claims |
+| JV11: boundary/no-overlap requirements | J_V-driven zeta is boundary-neutral and metric insertion occurs only through B_s | REQUIRED | even a real current fails if accounting fails |
+| JV12: recommended closure move | if exchange continuity current cannot be specified, close Group 14 | RECOMMENDED | next artifact should be Group 14 closure unless J_V becomes explicit |
+[WARN] compact volume-current ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+RECOMMENDED: 1
+REJECTED: 2
+REQUIRED: 3
+RISK: 1
+SAFE_IF: 1
+THEOREM_TARGET: 1
+UNRESOLVED: 1
+
+Interpretation:
+  J_V is not defined by naming it.
+  zeta-gradient current is risky and probably not general.
+  exchange continuity current is the strongest candidate but needs Sigma_V and R_V.
+  source-driven scalar Sigma_V alone does not determine flux direction.
+  if no exchange/transport law is supplied, Group 14 should close.
+[WARN] volume-current status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Volume-current decision tree
+========================================================================================================================
+Decision tree:
+
+1. Can J_V be defined by exchange continuity?
+   Need: nabla_mu J_V^mu = Sigma_V - R_V with Sigma_V/R_V defined.
+
+2. Can J_V be defined by zeta gradient?
+   Only if grad zeta is timelike/nonzero in target regimes.
+
+3. Can scalar Sigma_V define J_V direction?
+   No, not by itself; a transport/flux law is needed.
+
+4. Can J_V = n_V u_vac define u_vac?
+   No, circular.
+
+5. If no real J_V:
+   close Group 14 with u_vac/J_V as bottleneck.
+[PASS] volume-current decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / closure trigger
+========================================================================================================================
+Good failure:
+
+  no non-circular, timelike, boundary-neutral J_V can be defined from current ingredients.
+
+Consequence:
+
+  u_vac cannot currently be defined.
+  Acceleration-gradient volume creation remains a theorem target, not a source law.
+  Group 14 should close with J_V/u_vac as the surviving bottleneck.
+
+Bad failure:
+  declare J_V and keep going because the next equation needs a clock.
+[WARN] volume-current good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Volume-current definition fails if:
+
+1. J_V is named but not defined
+2. J_V is defined using u_vac circularly
+3. zeta-gradient is used where it is not timelike/nonzero
+4. scalar Sigma_V is treated as flux direction
+5. Sigma_V/R_V are unnamed in continuity equation
+6. static sources create independent exterior zeta charge
+7. J_V creates residual metric trace outside B_s
+8. sign/orientation is chosen from recovery
+9. group continues without defining J_V
+[WARN] volume-current failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_volume_current_definition_for_u_vac.md
+   Artifact for this script.
+
+2. candidate_group_14_closure_summary.py
+   Close Group 14 with J_V/u_vac as surviving bottleneck.
+
+3. candidate_exchange_continuity_law_for_volume.py
+   Only if the project wants one final attempt to define Sigma_V/R_V continuity.
+
+Recommended next script:
+
+  candidate_group_14_closure_summary.py
+
+Reason:
+  J_V remains dependent on an exchange continuity law not yet available. Close Group 14 and promote J_V/u_vac to next-group bottleneck.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+J_V is the best candidate for defining u_vac, but it is not yet defined.
+
+The strongest possible form is an exchange continuity law:
+
+  nabla_mu J_V^mu = Sigma_V - R_V
+
+But Sigma_V/R_V and flux direction are not yet available.
+
+Best next script:
+  candidate_group_14_closure_summary.py

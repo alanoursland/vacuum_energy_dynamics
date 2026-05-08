@@ -1,0 +1,171 @@
+
+========================================================================================================================
+Candidate Vector Boundary Value Problem
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Vector boundary value problem
+========================================================================================================================
+Question:
+
+  Can boundary angular momentum J produce an exterior vector field
+  with curl diagnostic B_W ~ J/r^3?
+
+Rules:
+
+  keep all coefficients symbolic
+  do not insert Lense-Thirring normalization
+  solve only the structural exterior shape
+[WARN] vector boundary-value problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Boundary angular momentum data
+========================================================================================================================
+Compact rotating source:
+
+  radius: R
+  angular momentum: J
+
+Symbolic boundary amplitude:
+
+  W_phi(R, pi/2) = C_b J/R^2
+
+boundary_data = C_b*J/R**2
+
+C_b is not derived.
+[WARN] boundary data stated symbolically: CONSTRAINED_BY_IDENTITY — boundary coefficient missing
+
+========================================================================================================================
+Case 2: Exterior dipole-like vector ansatz
+========================================================================================================================
+Exterior ansatz:
+
+  W_phi(r, theta) = C_J J sin(theta)/r^2
+
+W_phi = C_J*J*sin(theta)/r**2
+
+Interpretation:
+  This is the axial/vector dipole-like exterior shape.
+  C_J is symbolic and not derived.
+[WARN] exterior vector ansatz stated: CONSTRAINED_BY_IDENTITY — coefficient missing
+
+========================================================================================================================
+Case 3: Curl diagnostic scaling
+========================================================================================================================
+For W = W_phi e_phi:
+
+B_r = (curl W)_r =
+2*C_J*J*cos(theta)/r**3
+
+B_theta = (curl W)_theta =
+C_J*J*sin(theta)/r**3
+
+Both scale as J/r^3.
+[PASS] curl diagnostic has J/r^3 scaling: DERIVED_REDUCED
+
+========================================================================================================================
+Case 4: Boundary matching relation
+========================================================================================================================
+At equator theta = pi/2:
+
+  ansatz gives W_phi(R) = C_J J/R^2
+  boundary target is W_phi(R) = C_b J/R^2
+
+C_J solution = [C_b]
+
+Thus C_J is fixed by boundary coefficient C_b.
+But C_b is still missing.
+[WARN] boundary matching fixes exterior coefficient from boundary coefficient: CONSTRAINED_BY_IDENTITY — boundary coefficient still missing
+
+========================================================================================================================
+Case 5: Precession chain remains symbolic
+========================================================================================================================
+Curl diagnostic:
+
+B_W = C_W*J/r**3
+
+Symbolic precession relation:
+
+Omega_drag = C_W*J*beta_W/r**3
+
+Combined coefficient:
+
+  C_total = beta_W C_W
+
+C_total is not derived.
+[FAIL] precession chain symbolic: MISSING — observable coefficient not derived
+
+========================================================================================================================
+Case 6: No GR matching discipline
+========================================================================================================================
+Forbidden:
+
+  choose C_b, C_J, C_W, beta_W, or C_total to match Lense-Thirring
+
+Allowed:
+
+  derive boundary coefficient from vector action/source model
+  derive beta_W from observable/precession coupling
+  declare coefficient phenomenological
+
+Current status:
+
+  shape: derived/reduced
+  normalization: missing
+[WARN] GR matching forbidden: RISK — normalization must not be inserted
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| boundary angular momentum J | CONSTRAINED_BY_IDENTITY |
+| W_phi ~ J sin(theta)/r^2 ansatz | CONSTRAINED_BY_IDENTITY |
+| curl B_W ~ J/r^3 scaling | DERIVED_REDUCED |
+| C_J from boundary C_b | CONSTRAINED_BY_IDENTITY |
+| boundary coefficient C_b | MISSING |
+| precession coefficient beta_W | MISSING |
+| Lense-Thirring normalization | HAND_ASSIGNED if inserted now |
+[WARN] boundary-value classification produced: CONSTRAINED_BY_IDENTITY — shape derived, normalization missing
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_vector_boundary_coefficient_from_action.py
+   Try to relate C_b to alpha_W/(2K_c) and source angular momentum.
+
+2. candidate_kappa_source_law_from_trace_exchange.py
+   Work missing kappa source law.
+
+3. candidate_tensor_source_from_exchange_identity.py
+   Work hand-assigned tensor coupling.
+
+Recommended next script:
+
+  candidate_vector_boundary_coefficient_from_action.py
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary coefficient is the remaining vector gap
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+A symbolic exterior vector boundary-value model gives:
+
+  W_phi ~ J sin(theta)/r^2
+
+and therefore:
+
+  B_W = curl W ~ J/r^3
+
+This recovers the expected angular-momentum far-field shape.
+
+But the normalization is still missing:
+
+  C_b, C_J, C_W, beta_W
+
+Possible next artifact:
+  candidate_vector_boundary_value_problem.md
+
+Possible next script:
+  candidate_vector_boundary_coefficient_from_action.py

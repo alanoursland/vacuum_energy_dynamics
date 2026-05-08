@@ -1,0 +1,400 @@
+
+========================================================================================================================
+Candidate Finite Admissibility Condition
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Finite-admissibility condition problem
+========================================================================================================================
+Question:
+
+  What does finite admissibility mean as a condition,
+  without merely declaring singularities inadmissible?
+
+Goal:
+
+  turn anti-singularity language into a branch condition / theorem target
+
+Discipline:
+
+  condition before solution selection
+  no boundary hiding
+  no M_ext shift
+  no matter rerouting
+  no curvature energy reservoir
+  no bounce or regular-core claim from diagnostic only
+[WARN] finite-admissibility condition problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Finite-admissibility condition inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+FA1: finite-admissibility target
+------------------------------------------------------------------------------------------------------------------------
+Condition: A_curv[g, matter, vacuum] < infinity or <= A_max on defined domain
+Role: core finite-admissibility theorem target
+Allowed if: condition is stated before solutions and has domain, measure, and branch-kill rule
+Forbidden if: condition is introduced only to reject singular solutions after the fact
+[WARN] FA1: finite-admissibility target: THEOREM_TARGET
+Missing: definition of A_curv, domain, measure, threshold
+Consequence: turns anti-singularity language into a testable branch condition
+
+------------------------------------------------------------------------------------------------------------------------
+FA2: bounded scalar invariant
+------------------------------------------------------------------------------------------------------------------------
+Condition: I_curv(x) finite everywhere in admissible domain
+Role: local diagnostic condition
+Allowed if: I_curv is specified and not chosen only because a target solution passes
+Forbidden if: scalar is selected after solution to avoid a blowup
+[WARN] FA2: bounded scalar invariant: CANDIDATE
+Missing: choice of invariant and admissible domain
+Consequence: supports diagnostic or branch-filter claim, not dynamics alone
+
+------------------------------------------------------------------------------------------------------------------------
+FA3: bounded invariant set
+------------------------------------------------------------------------------------------------------------------------
+Condition: {K, R, R_mu_nu R^mu_nu, Weyl^2, ...} finite or controlled
+Role: multi-scalar diagnostic condition
+Allowed if: set is defined structurally and coordinate/gauge safe
+Forbidden if: set omits known divergent invariant to pass target solution
+[WARN] FA3: bounded invariant set: CANDIDATE
+Missing: minimal invariant set
+Consequence: stronger diagnostic than single scalar but still not dynamics
+
+------------------------------------------------------------------------------------------------------------------------
+FA4: integrable curvature
+------------------------------------------------------------------------------------------------------------------------
+Condition: Integral_D I_curv dV_phys < infinity
+Role: finite total curvature/admissibility measure
+Allowed if: D and dV_phys are structural and cutoff-free
+Forbidden if: domain cutoff hides singularity or boundary divergence
+[WARN] FA4: integrable curvature: CANDIDATE
+Missing: I_curv, D, measure, cutoff-free criterion
+Consequence: may allow localized high curvature if total admissibility remains finite
+
+------------------------------------------------------------------------------------------------------------------------
+FA5: bounded curvature energy diagnostic
+------------------------------------------------------------------------------------------------------------------------
+Condition: Integral_D e_curv dV_phys finite, with e_curv diagnostic/accounting only
+Role: curvature energy admissibility candidate
+Allowed if: e_curv is not a source reservoir and does not shift M_ext
+Forbidden if: e_curv is used as bounce energy or tuning source
+[WARN] FA5: bounded curvature energy diagnostic: RISK
+Missing: e_curv definition and accounting fence
+Consequence: useful only if fenced before source role
+
+------------------------------------------------------------------------------------------------------------------------
+FA6: finite curvature flux
+------------------------------------------------------------------------------------------------------------------------
+Condition: Integral_boundary J_curv . dSigma finite or zero under defined orientation
+Role: current/boundary admissibility candidate
+Allowed if: J_curv is defined independently with orientation and boundary law
+Forbidden if: flux is chosen to cancel blowup or boundary leakage
+[WARN] FA6: finite curvature flux: THEOREM_TARGET
+Missing: J_curv, orientation, boundary law
+Consequence: needed before current-based anti-singularity claims
+
+------------------------------------------------------------------------------------------------------------------------
+FA7: finite volume response
+------------------------------------------------------------------------------------------------------------------------
+Condition: zeta / volume response remains finite and count-once
+Role: curvature-volume bridge candidate
+Allowed if: does not reopen B_s insertion, residual trace, or no-overlap issues
+Forbidden if: zeta becomes hidden scalar source or repair channel
+[WARN] FA7: finite volume response: RISK
+Missing: relation to zeta, B_s, O, and boundary neutrality
+Consequence: promising but dangerous because metric insertion remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+FA8: finite parent correction target
+------------------------------------------------------------------------------------------------------------------------
+Condition: future H_curv finite and divergence-safe if introduced
+Role: future parent-correction constraint
+Allowed if: kept deferred until admissibility/J_curv source structure exists
+Forbidden if: H_curv introduced to enforce finite admissibility now
+[WARN] FA8: finite parent correction target: DEFER
+Missing: H_curv source/divergence structure
+Consequence: sets future Group 19 burden without introducing H_curv early
+
+------------------------------------------------------------------------------------------------------------------------
+FA9: geodesic completeness proxy
+------------------------------------------------------------------------------------------------------------------------
+Condition: diagnostic proxy flags incomplete curves or trapped finite-admissibility failure
+Role: claim classifier
+Allowed if: kept diagnostic unless linked to equations
+Forbidden if: used to claim dynamical singularity avoidance
+[WARN] FA9: geodesic completeness proxy: SAFE_IF
+Missing: link to equations / evolution theorem
+Consequence: useful for claim audit, not current dynamics
+
+------------------------------------------------------------------------------------------------------------------------
+FA10: branch-kill rule
+------------------------------------------------------------------------------------------------------------------------
+Condition: if finite-admissibility condition fails, branch is excluded from candidate solution class
+Role: honest consequence rule
+Allowed if: condition is stated before branch is tested
+Forbidden if: branch-kill applied selectively to unwanted solutions
+[WARN] FA10: branch-kill rule: REQUIRED
+Missing: formal branch-kill criterion
+Consequence: makes finite admissibility operational
+
+------------------------------------------------------------------------------------------------------------------------
+FA11: no boundary hiding
+------------------------------------------------------------------------------------------------------------------------
+Condition: finite admissibility cannot be restored by boundary counterterm, cutoff, or surface repair
+Role: boundary safety guard
+Allowed if: boundary terms are diagnostic or structurally neutral
+Forbidden if: boundary term hides divergence or mass shift
+[WARN] FA11: no boundary hiding: REQUIRED
+Missing: boundary neutrality theorem
+Consequence: prevents finite condition from becoming boundary patch
+
+------------------------------------------------------------------------------------------------------------------------
+FA12: no exterior mass shift
+------------------------------------------------------------------------------------------------------------------------
+Condition: finite-admissibility object does not alter M_ext independently of A-sector
+Role: mass neutrality guard
+Allowed if: curvature admissibility remains diagnostic or coupled through derived source law
+Forbidden if: admissibility changes measured exterior mass as repair
+[WARN] FA12: no exterior mass shift: REQUIRED
+Missing: mass neutrality theorem
+Consequence: protects strongest reduced A-sector result
+
+------------------------------------------------------------------------------------------------------------------------
+FA13: no ordinary matter rerouting
+------------------------------------------------------------------------------------------------------------------------
+Condition: finite-admissibility condition does not change ordinary matter coupling without source theorem
+Role: ordinary matter decoupling guard
+Allowed if: T_mu_nu is not double-counted or modified
+Forbidden if: matter coupling is altered to avoid singular behavior
+[WARN] FA13: no ordinary matter rerouting: REQUIRED
+Missing: source separation theorem
+Consequence: prevents finite admissibility from becoming matter repair
+
+------------------------------------------------------------------------------------------------------------------------
+FA14: no anti-singularity by declaration
+------------------------------------------------------------------------------------------------------------------------
+Condition: singularities are not simply declared inadmissible without object/condition
+Role: overclaim rejection
+Allowed if: claim follows object support level
+Forbidden if: condition is slogan rather than functional/inequality
+[WARN] FA14: no anti-singularity by declaration: REJECTED
+Missing: not pursued
+Consequence: prevents magic anti-singularity claim
+
+------------------------------------------------------------------------------------------------------------------------
+FA15: no solution-after-the-fact selection
+------------------------------------------------------------------------------------------------------------------------
+Condition: admissibility functional is not chosen after seeing target solution behavior
+Role: selection-bias guard
+Allowed if: functional precedes solution test
+Forbidden if: functional is tailored to pass/fail preferred solutions
+[WARN] FA15: no solution-after-the-fact selection: REJECTED
+Missing: not pursued
+Consequence: prevents diagnostic cherry-picking
+
+------------------------------------------------------------------------------------------------------------------------
+FA16: no curvature energy reservoir
+------------------------------------------------------------------------------------------------------------------------
+Condition: finite energy bound does not provide free positive/negative source
+Role: source-reservoir rejection
+Allowed if: energy remains diagnostic/accounting only
+Forbidden if: used to tune bounce, mass, boundary, or recovery
+[WARN] FA16: no curvature energy reservoir: REJECTED
+Missing: not pursued
+Consequence: prevents curvature energy from becoming repair money
+
+------------------------------------------------------------------------------------------------------------------------
+FA17: admissibility claim level
+------------------------------------------------------------------------------------------------------------------------
+Condition: diagnostic condition licenses diagnostic/branch-filter claim only; dynamics require evolution law
+Role: anti-overclaim guard
+Allowed if: claim strength matches object strength
+Forbidden if: bounce/regular core claimed from diagnostic condition
+[WARN] FA17: admissibility claim level: REQUIRED
+Missing: claim audit
+Consequence: keeps anti-singularity claims honest
+
+------------------------------------------------------------------------------------------------------------------------
+FA18: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Condition: test curvature energy density role only after finite-admissibility condition is fenced
+Role: next local bottleneck
+Allowed if: finite condition remains diagnostic/branch-filter
+Forbidden if: jumping directly to J_curv or H_curv
+[PASS] FA18: recommended next move: RECOMMENDED
+Missing: curvature energy role audit
+Consequence: next script should be candidate_curvature_energy_density_role.py
+
+========================================================================================================================
+Case 2: Compact finite-admissibility ledger
+========================================================================================================================
+| Entry | Condition | Status | Consequence |
+|---|---|---|---|
+| FA1: finite-admissibility target | A_curv[g, matter, vacuum] < infinity or <= A_max on defined domain | THEOREM_TARGET | turns anti-singularity language into a testable branch condition |
+| FA2: bounded scalar invariant | I_curv(x) finite everywhere in admissible domain | CANDIDATE | supports diagnostic or branch-filter claim, not dynamics alone |
+| FA3: bounded invariant set | {K, R, R_mu_nu R^mu_nu, Weyl^2, ...} finite or controlled | CANDIDATE | stronger diagnostic than single scalar but still not dynamics |
+| FA4: integrable curvature | Integral_D I_curv dV_phys < infinity | CANDIDATE | may allow localized high curvature if total admissibility remains finite |
+| FA5: bounded curvature energy diagnostic | Integral_D e_curv dV_phys finite, with e_curv diagnostic/accounting only | RISK | useful only if fenced before source role |
+| FA6: finite curvature flux | Integral_boundary J_curv . dSigma finite or zero under defined orientation | THEOREM_TARGET | needed before current-based anti-singularity claims |
+| FA7: finite volume response | zeta / volume response remains finite and count-once | RISK | promising but dangerous because metric insertion remains theorem target |
+| FA8: finite parent correction target | future H_curv finite and divergence-safe if introduced | DEFER | sets future Group 19 burden without introducing H_curv early |
+| FA9: geodesic completeness proxy | diagnostic proxy flags incomplete curves or trapped finite-admissibility failure | SAFE_IF | useful for claim audit, not current dynamics |
+| FA10: branch-kill rule | if finite-admissibility condition fails, branch is excluded from candidate solution class | REQUIRED | makes finite admissibility operational |
+| FA11: no boundary hiding | finite admissibility cannot be restored by boundary counterterm, cutoff, or surface repair | REQUIRED | prevents finite condition from becoming boundary patch |
+| FA12: no exterior mass shift | finite-admissibility object does not alter M_ext independently of A-sector | REQUIRED | protects strongest reduced A-sector result |
+| FA13: no ordinary matter rerouting | finite-admissibility condition does not change ordinary matter coupling without source theorem | REQUIRED | prevents finite admissibility from becoming matter repair |
+| FA14: no anti-singularity by declaration | singularities are not simply declared inadmissible without object/condition | REJECTED | prevents magic anti-singularity claim |
+| FA15: no solution-after-the-fact selection | admissibility functional is not chosen after seeing target solution behavior | REJECTED | prevents diagnostic cherry-picking |
+| FA16: no curvature energy reservoir | finite energy bound does not provide free positive/negative source | REJECTED | prevents curvature energy from becoming repair money |
+| FA17: admissibility claim level | diagnostic condition licenses diagnostic/branch-filter claim only; dynamics require evolution law | REQUIRED | keeps anti-singularity claims honest |
+| FA18: recommended next move | test curvature energy density role only after finite-admissibility condition is fenced | RECOMMENDED | next script should be candidate_curvature_energy_density_role.py |
+[WARN] compact finite-admissibility ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+DEFER: 1
+RECOMMENDED: 1
+REJECTED: 3
+REQUIRED: 5
+RISK: 2
+SAFE_IF: 1
+THEOREM_TARGET: 2
+
+Interpretation:
+  Finite admissibility can be stated as a theorem target or branch filter.
+  Bounded scalar and integrable curvature are the safest candidate conditions.
+  Curvature energy and volume response remain risky until fenced.
+  J_curv flux and H_curv remain deferred/theorem-targeted.
+  Anti-singularity remains diagnostic/branch-filter only unless dynamics are later derived.
+  Next gate is curvature energy role, fenced as diagnostic/accounting.
+[WARN] finite-admissibility condition status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Finite-admissibility condition classes
+========================================================================================================================
+Candidate condition classes:
+
+1. bounded local curvature scalar
+2. bounded invariant set
+3. integrable curvature measure
+4. bounded curvature energy diagnostic
+5. finite curvature flux
+6. finite volume response
+7. finite parent correction target
+8. geodesic completeness proxy
+
+Safe starting point:
+
+  bounded diagnostic or integrable measure
+
+Dangerous starting point:
+
+  curvature energy as source or current as repair
+[PASS] finite-admissibility condition classes listed: RECOMMENDED
+
+========================================================================================================================
+Case 5: Finite-admissibility decision tree
+========================================================================================================================
+Decision tree:
+
+1. Bounded scalar / invariant set:
+   safest diagnostic condition.
+
+2. Integrable curvature:
+   promising if domain/measure are fixed and cutoff-free.
+
+3. Curvature energy:
+   only diagnostic/accounting for now.
+
+4. J_curv flux:
+   theorem target until J_curv exists.
+
+5. H_curv finite:
+   deferred until parent correction audit.
+
+6. Anti-singularity claim:
+   cannot exceed diagnostic/branch-filter level yet.
+[PASS] finite-admissibility decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 6: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  finite admissibility can only be stated as diagnostic / branch-filter.
+
+Consequence:
+
+  no dynamical avoidance, bounce, or regular core claim is licensed.
+  J_curv and e_curv remain future theorem targets.
+
+Bad failure:
+
+  declare singularities inadmissible without a functional, measure, or branch-kill rule.
+[WARN] finite-admissibility good failure stated: DEFER
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+Finite-admissibility condition fails if:
+
+1. condition is chosen after solution behavior
+2. divergent region is removed by cutoff
+3. boundary term hides blowup
+4. M_ext shifts independently of A
+5. ordinary matter coupling is modified
+6. e_curv becomes source reservoir
+7. J_curv flux is invoked before J_curv exists
+8. bounce or regular core is claimed from diagnostic condition only
+[WARN] finite-admissibility failure controls stated: RISK
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_finite_admissibility_condition.md
+   Artifact for this script.
+
+2. candidate_curvature_energy_density_role.py
+   Fence curvature energy as diagnostic/accounting before any current/source role.
+
+3. candidate_curvature_admissibility_early_status_summary.py
+   Use if finite admissibility cannot be stated non-decoratively.
+
+Recommended next script:
+
+  candidate_curvature_energy_density_role.py
+
+Reason:
+  Once finite admissibility is fenced as a condition, the next risk is
+  curvature energy becoming a hidden source reservoir.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Finite admissibility can currently be stated only as a theorem target / branch filter.
+
+Safest candidate forms:
+
+  bounded scalar diagnostic
+  bounded invariant set
+  integrable curvature measure
+
+Still not licensed:
+
+  dynamical singularity avoidance
+  bounce
+  regular core
+  curvature current
+  curvature source energy
+
+Best next script:
+
+  candidate_curvature_energy_density_role.py
+[PASS] finite-admissibility condition audit complete: CLOSED

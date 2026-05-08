@@ -1,0 +1,157 @@
+
+========================================================================================================================
+Candidate Gauge Structure Requirements
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Gauge structure requirements problem
+========================================================================================================================
+Gauge structure is a missing blocker.
+
+The parent theory must identify:
+
+  physical variables
+  coordinate artifacts
+  allowed gauge choices
+  gauge-invariant diagnostics
+  how reduced gauges map into one parent structure
+[PASS] gauge requirements problem posed: SATISFIED_REDUCED
+
+========================================================================================================================
+Case 2: Gauge requirement inventory
+========================================================================================================================
+
+----------------------------------------------------------------------------------------------------
+G1: Areal-radius gauge behavior
+----------------------------------------------------------------------------------------------------
+[WARN] G1: Areal-radius gauge behavior: PARTIAL
+Current support: Orbit-space studies identified the areal radius R and showed that kappa in areal gauge depends on A and |grad R|.
+Parent must supply: Transformation law under radial coordinate changes and a clear statement of which areal-gauge quantities are invariant diagnostics.
+Risk if missing: Radial coordinate artifacts may be mistaken for physical kappa or B behavior.
+
+----------------------------------------------------------------------------------------------------
+G2: Static slicing / lapse behavior
+----------------------------------------------------------------------------------------------------
+[WARN] G2: Static slicing / lapse behavior: PARTIAL
+Current support: A is used as a static lapse/scalar potential in reduced exterior studies.
+Parent must supply: How A transforms under time reparameterization and slicing changes, and how to normalize A asymptotically.
+Risk if missing: The scalar A channel may include gauge normalization artifacts.
+
+----------------------------------------------------------------------------------------------------
+G3: Kappa physical versus gauge component
+----------------------------------------------------------------------------------------------------
+[WARN] G3: Kappa physical versus gauge component: PARTIAL
+Current support: Kappa is interpreted as trace/volume imbalance, especially in areal/static settings.
+Parent must supply: Gauge-invariant or gauge-fixed meaning of kappa and its source law.
+Risk if missing: Kappa deviations may be coordinate volume effects rather than physical response.
+
+----------------------------------------------------------------------------------------------------
+G4: Vector W_i gauge behavior
+----------------------------------------------------------------------------------------------------
+[FAIL] G4: Vector W_i gauge behavior: MISSING
+Current support: W_i is identified as a shift/current/frame-dragging candidate.
+Parent must supply: Transformation of W_i under spatial diffeomorphisms and time slicing, plus gauge-invariant frame-dragging observables.
+Risk if missing: Vector sector may double-count gauge shift or miss physical frame dragging.
+
+----------------------------------------------------------------------------------------------------
+G5: TT gauge and tensor physical modes
+----------------------------------------------------------------------------------------------------
+[PASS] G5: TT gauge and tensor physical modes: SATISFIED_REDUCED
+Current support: h_ij^TT plus/cross basis is trace-free and transverse in reduced wave studies.
+Parent must supply: Parent derivation of TT projection, gauge conditions, and physical mode count.
+Risk if missing: The TT sector may remain a reduced gauge choice rather than a derived physical sector.
+
+----------------------------------------------------------------------------------------------------
+G6: Scalar A_rad versus gauge artifact
+----------------------------------------------------------------------------------------------------
+[WARN] G6: Scalar A_rad versus gauge artifact: PARTIAL
+Current support: A_rad is classified as absent/controlled and distinct from moving constraint wells.
+Parent must supply: Determine whether A_rad is physical, gauge, constrained, damped, or projected out.
+Risk if missing: A_rad could be overcounted as physical radiation or undercounted if real.
+
+----------------------------------------------------------------------------------------------------
+G7: Gauge-invariant observable set
+----------------------------------------------------------------------------------------------------
+[FAIL] G7: Gauge-invariant observable set: MISSING
+Current support: Reduced scripts use diagnostics like AB, TT traces, fluxes, and projections.
+Parent must supply: A list of observables or invariant diagnostics: redshift/lapse normalization, areal radius, frame dragging, TT strain, curvature-like quantities.
+Risk if missing: The theory may compare gauge-dependent variables to observations.
+
+----------------------------------------------------------------------------------------------------
+G8: Coordinate recombination map
+----------------------------------------------------------------------------------------------------
+[FAIL] G8: Coordinate recombination map: MISSING
+Current support: Sectors are informally mapped to g_tt, g_ti, trace, and TT spatial parts.
+Parent must supply: A metric/geometric reconstruction rule and gauge conditions for combining sectors.
+Risk if missing: The reduced sectors may not assemble into one consistent geometry.
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+SATISFIED_REDUCED: 1
+PARTIAL: 4
+MISSING: 3
+RISK: 0
+[FAIL] gauge structure incomplete: MISSING — several gauge requirements are not yet supplied
+
+========================================================================================================================
+Case 4: Physical versus gauge classification table
+========================================================================================================================
+| Object | Current classification | Gauge concern |
+|---|---|---|
+| A_constraint | physical after boundary normalization | time slicing/lapse normalization |
+| A_rad | controlled hazard | may be physical, gauge, or constrained |
+| kappa | trace/interior diagnostic | may include coordinate-volume artifact |
+| W_i | vector/current response | may mix with shift gauge |
+| h_ij^TT | physical tensor radiation in TT gauge | parent TT projection needed |
+| areal radius R | geometric scalar in spherical reduction | must anchor radial gauge |
+| AB / kappa_areal | useful diagnostic | gauge-aware, not automatic scalar invariant |
+[WARN] physical/gauge classification table stated: PARTIAL — classification needs parent derivation
+
+========================================================================================================================
+Case 5: Blocking gauge gaps
+========================================================================================================================
+Blocking missing gauge structures:
+  - G4: Vector W_i gauge behavior
+  - G7: Gauge-invariant observable set
+  - G8: Coordinate recombination map
+
+These should be addressed before claiming a covariant parent.
+[FAIL] blocking gauge gaps identified: MISSING — gauge structure remains a parent-theory blocker
+
+========================================================================================================================
+Case 6: Next study recommendation
+========================================================================================================================
+Recommended next script:
+
+  candidate_metric_geometric_recombination.py
+
+Reason:
+  Gauge requirements point directly at the recombination problem:
+  how A, kappa, W_i, and h_ij^TT assemble into one metric/geometric object.
+
+Alternative:
+  candidate_gauge_invariant_diagnostics.py
+[WARN] next study selected: PARTIAL — metric/geometric recombination is the next blocker
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Gauge structure is not solved yet.
+
+Reduced support exists for:
+  areal-radius awareness
+  static lapse normalization
+  TT plus/cross basis
+
+Missing or partial structures remain for:
+  W_i gauge behavior
+  gauge-invariant observable set
+  coordinate recombination map
+  physical versus gauge status of kappa and A_rad
+
+Possible next artifact:
+  candidate_gauge_structure_requirements.md
+
+Possible next script:
+  candidate_metric_geometric_recombination.py

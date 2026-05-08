@@ -1,0 +1,189 @@
+
+========================================================================================================================
+Candidate Vector Current Projection Operator
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Vector current projection operator problem
+========================================================================================================================
+Need formal projection:
+
+  j_T = P_T j
+  j_L = P_L j
+
+Fourier-space transverse projector:
+
+  P_T,ij(k) = delta_ij - k_i k_j/k^2
+
+Goal:
+  ensure W_i only sees transverse current j_T.
+[WARN] projection operator problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Define transverse and longitudinal projectors
+========================================================================================================================
+k =
+Matrix([[k_x], [k_y], [k_z]])
+
+P_L = k_i k_j/k^2 =
+Matrix([[k_x**2/(k_x**2 + k_y**2 + k_z**2), k_x*k_y/(k_x**2 + k_y**2 + k_z**2), k_x*k_z/(k_x**2 + k_y**2 + k_z**2)], [k_x*k_y/(k_x**2 + k_y**2 + k_z**2), k_y**2/(k_x**2 + k_y**2 + k_z**2), k_y*k_z/(k_x**2 + k_y**2 + k_z**2)], [k_x*k_z/(k_x**2 + k_y**2 + k_z**2), k_y*k_z/(k_x**2 + k_y**2 + k_z**2), k_z**2/(k_x**2 + k_y**2 + k_z**2)]])
+
+P_T = I - P_L =
+Matrix([[(k_y**2 + k_z**2)/(k_x**2 + k_y**2 + k_z**2), -k_x*k_y/(k_x**2 + k_y**2 + k_z**2), -k_x*k_z/(k_x**2 + k_y**2 + k_z**2)], [-k_x*k_y/(k_x**2 + k_y**2 + k_z**2), (k_x**2 + k_z**2)/(k_x**2 + k_y**2 + k_z**2), -k_y*k_z/(k_x**2 + k_y**2 + k_z**2)], [-k_x*k_z/(k_x**2 + k_y**2 + k_z**2), -k_y*k_z/(k_x**2 + k_y**2 + k_z**2), (k_x**2 + k_y**2)/(k_x**2 + k_y**2 + k_z**2)]])
+[WARN] projectors defined: CONSTRAINED_BY_IDENTITY — valid for k^2 != 0
+
+========================================================================================================================
+Case 2: Projector identities
+========================================================================================================================
+P_T^2 - P_T =
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+P_L^2 - P_L =
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+P_T P_L =
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+P_T + P_L - I =
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+[PASS] projector identities verified: DERIVED_REDUCED
+
+========================================================================================================================
+Case 3: k-aligned test currents
+========================================================================================================================
+For k along z:
+
+P_T =
+Matrix([[1, 0, 0], [0, 1, 0], [0, 0, 0]])
+
+longitudinal j =
+Matrix([[0], [0], [J]])
+P_T j_long =
+Matrix([[0], [0], [0]])
+P_L j_long =
+Matrix([[0], [0], [J]])
+
+transverse j =
+Matrix([[J], [0], [0]])
+P_T j_trans =
+Matrix([[J], [0], [0]])
+P_L j_trans =
+Matrix([[0], [0], [0]])
+[PASS] projector kills longitudinal and preserves transverse current: DERIVED_REDUCED
+
+========================================================================================================================
+Case 4: Projected vector field equation
+========================================================================================================================
+Projected current:
+
+  j_T = P_T j
+
+Curl-energy equation:
+
+  curl curl W = - alpha_W j_T/(2K_c)
+
+Under div W = 0:
+
+  Delta W = alpha_W j_T/(2K_c)
+
+Coefficient still missing:
+
+  alpha_W/(2K_c) = alpha_W/(2*K_c)
+[WARN] projected vector equation formalized: CONSTRAINED_BY_IDENTITY — coefficient remains missing
+
+========================================================================================================================
+Case 5: Scalar/vector allocation
+========================================================================================================================
+Projection policy:
+
+  j_T = P_T j -> W_i vector/curl sector
+  j_L = P_L j -> scalar continuity / A_constraint
+
+Continuity:
+
+  partial_t rho + div j = 0
+
+In Fourier form, longitudinal current controls k.j and therefore
+density accumulation:
+
+  partial_t rho_k + i k.j_L = 0
+
+Transverse current satisfies:
+
+  k.j_T = 0
+
+so it does not directly change density.
+[WARN] scalar/vector allocation formalized: CONSTRAINED_BY_IDENTITY — time-domain/boundary implementation still needed
+
+========================================================================================================================
+Case 6: k=0 zero-mode warning
+========================================================================================================================
+The Fourier projector uses:
+
+  1/k^2
+
+Therefore k=0 requires separate treatment.
+
+Interpretation:
+  total conserved momentum / global current / boundary rotation modes
+  may not be captured by the local projector alone.
+
+This is a boundary/global mode issue, not a local algebra failure.
+[WARN] zero-mode warning stated: RISK — boundary conditions required
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| P_T definition | CONSTRAINED_BY_IDENTITY |
+| P_T idempotence | DERIVED_REDUCED |
+| P_T kills longitudinal current | DERIVED_REDUCED |
+| P_T preserves transverse current | DERIVED_REDUCED |
+| projected vector equation | CONSTRAINED_BY_IDENTITY |
+| coefficient alpha_W/(2K_c) | MISSING |
+| k=0/global modes | RISK / boundary issue |
+
+[WARN] projection operator classification produced: CONSTRAINED_BY_IDENTITY — operator works locally, coefficient missing
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_vector_global_rotation_mode.py
+   Study k=0/global angular momentum and boundary conditions.
+
+2. candidate_kappa_source_law_from_trace_exchange.py
+   Work missing kappa source law.
+
+3. candidate_tensor_source_from_exchange_identity.py
+   Work hand-assigned tensor coupling.
+
+Recommended next script:
+
+  candidate_vector_global_rotation_mode.py
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — projection reveals global rotation/boundary issue
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The formal transverse projector works:
+
+  P_T = I - k k^T/k^2
+
+It kills longitudinal current and preserves transverse current.
+
+Projected policy:
+
+  j_T = P_T j -> W_i
+  j_L = P_L j -> scalar continuity
+
+The vector coefficient remains missing.
+The k=0/global rotation mode requires boundary treatment.
+
+Possible next artifact:
+  candidate_vector_current_projection_operator.md
+
+Possible next script:
+  candidate_vector_global_rotation_mode.py

@@ -1,0 +1,469 @@
+
+========================================================================================================================
+Candidate Exchange Current Source-Side Inventory
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Exchange current source-side problem
+========================================================================================================================
+Question:
+
+  If J_exch exists, what source side could make it real?
+
+Goal:
+
+  inventory possible source sides without ordinary-sector repair
+
+Discipline:
+
+  no ordinary T as Sigma_exch by fiat
+  no boundary repair source
+  no curvature repair source
+  no e_curv source reservoir
+  no recovery-shaped source
+  no H_exch shortcut
+  preserve zero-net / zero-creation ordinary branches
+  keep dark-sector branch optional
+[WARN] exchange current source-side problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Exchange current source-side inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+ES1: exchange source-side target
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: J_exch requires a source side that is not ordinary-sector repair
+Role: core source-side theorem target
+Allowed if: source is explicit, non-decorative, and decoupled from ordinary matter repair
+Forbidden if: source side is named to keep J_exch alive
+[WARN] ES1: exchange source-side target: THEOREM_TARGET
+Missing: actual exchange source operator
+Consequence: decides whether active exchange can become technical
+
+------------------------------------------------------------------------------------------------------------------------
+ES2: Sigma_V / R_V role-level split
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_V and R_V as role-level source/relaxation placeholders
+Role: current known accounting branch
+Allowed if: explicitly marked role-level only
+Forbidden if: treated as derived operators or tuned against each other
+[WARN] ES2: Sigma_V / R_V role-level split: SAFE_IF
+Missing: Sigma_V and R_V operators
+Consequence: preserves source/relaxation vocabulary without fake law
+
+------------------------------------------------------------------------------------------------------------------------
+ES3: Sigma/R double-counting guard
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_exch and R_exch must be distinct, not one hidden tuning knob
+Role: source accounting guard
+Allowed if: source and relaxation have independent definitions
+Forbidden if: Sigma/R are adjusted to pass recovery, boundary, or neutrality checks
+[WARN] ES3: Sigma/R double-counting guard: REQUIRED
+Missing: Sigma/R separation theorem
+Consequence: prevents exchange balance from becoming tuning mechanism
+
+------------------------------------------------------------------------------------------------------------------------
+ES4: curvature admissibility failure
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: finite-admissibility failure triggers or labels exchange
+Role: diagnostic/theorem-target candidate
+Allowed if: A_curv remains diagnostic/branch-filter unless dynamics are derived
+Forbidden if: curvature admissibility becomes active repair source
+[WARN] ES4: curvature admissibility failure: RISK
+Missing: A_curv dynamics and J_curv absent
+Consequence: dangerous until Group 17 theorem targets are solved
+
+------------------------------------------------------------------------------------------------------------------------
+ES5: finite volume response
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: zeta / volume response sources or gates exchange
+Role: curvature-volume bridge candidate
+Allowed if: B_s/F_zeta insertion, residual-kill, and no-overlap are solved
+Forbidden if: zeta becomes hidden scalar source or residual trace
+[WARN] ES5: finite volume response: RISK
+Missing: B_s/F_zeta insertion and no-overlap theorem
+Consequence: promising but unsafe until Group 16 bottlenecks are solved
+
+------------------------------------------------------------------------------------------------------------------------
+ES6: matter-induced exchange
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: ordinary matter directly sources J_exch
+Role: high-risk ordinary-sector branch
+Allowed if: explicit theorem derives coupling without double-counting or matter repair
+Forbidden if: ordinary T or rho is used as Sigma_exch by convenience
+[WARN] ES6: matter-induced exchange: RISK
+Missing: matter-to-exchange source theorem
+Consequence: unsafe under current decoupling status
+
+------------------------------------------------------------------------------------------------------------------------
+ES7: boundary exchange
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: exchange sourced at boundary, endpoint, shell, or admissibility edge
+Role: high-risk boundary branch
+Allowed if: boundary support is structural and not repair
+Forbidden if: boundary exchange cancels leakage, scalar tail, or singularity
+[WARN] ES7: boundary exchange: RISK
+Missing: boundary support theorem
+Consequence: dangerous because boundary repair is forbidden
+
+------------------------------------------------------------------------------------------------------------------------
+ES8: dark-sector exchange
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: dark-sector source couples to J_exch
+Role: optional deferred branch
+Allowed if: ordinary matter decoupling and exterior neutrality are preserved
+Forbidden if: dark sector patches ordinary-sector failure
+[WARN] ES8: dark-sector exchange: DEFER
+Missing: dark-sector coupling rule
+Consequence: keeps speculative coupling downstream
+
+------------------------------------------------------------------------------------------------------------------------
+ES9: zero-net exchange
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_exch - R_exch = 0 in ordinary sector
+Role: ordinary-sector neutral branch
+Allowed if: ordinary curvature arises from warping/constraint or balanced exchange
+Forbidden if: zero-net branch still claims active net source
+[WARN] ES9: zero-net exchange: CANDIDATE
+Missing: ordinary-sector zero-net theorem
+Consequence: safest branch if exchange vocabulary is kept
+
+------------------------------------------------------------------------------------------------------------------------
+ES10: zero-creation branch
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_exch = R_exch = 0 in ordinary sector
+Role: strong ordinary-sector neutral branch
+Allowed if: J_exch inactive for ordinary matter and ordinary curvature arises otherwise
+Forbidden if: creation/destruction is still invoked as active ordinary source
+[WARN] ES10: zero-creation branch: CANDIDATE
+Missing: ordinary-sector zero-creation theorem
+Consequence: cleanest ordinary-sector no-exchange branch
+
+------------------------------------------------------------------------------------------------------------------------
+ES11: curvature-from-warping branch
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: curvature changes arise from constrained time/space warping, not net vacuum creation/destruction
+Role: non-exchange curvature branch
+Allowed if: warping relation is derived without GR rewrite or recovery tuning
+Forbidden if: used to avoid defining exchange while still claiming exchange dynamics
+[WARN] ES11: curvature-from-warping branch: CANDIDATE
+Missing: warping constraint / parent relation
+Consequence: important alternative to active source-side exchange
+
+------------------------------------------------------------------------------------------------------------------------
+ES12: latent-exchange branch
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma/R exist as ontology/accounting but vanish or balance in ordinary sector
+Role: ontology/accounting candidate
+Allowed if: latent exchange has no ordinary metric/matter source role
+Forbidden if: latent exchange becomes hidden source reservoir
+[WARN] ES12: latent-exchange branch: CANDIDATE
+Missing: regime condition for latent vs active exchange
+Consequence: preserves substance language without forcing ordinary creation/destruction
+
+------------------------------------------------------------------------------------------------------------------------
+ES13: source support law
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: J_exch active only where explicit exchange source is nonzero
+Role: candidate active-domain rule
+Allowed if: source support is derived independently
+Forbidden if: support chosen to hide boundary/exterior effects
+[WARN] ES13: source support law: CANDIDATE
+Missing: source support theorem
+Consequence: possible route to separating J_exch from J_sub
+
+------------------------------------------------------------------------------------------------------------------------
+ES14: relaxation mechanism
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: R_exch as real relaxation/return/sink mechanism
+Role: required if balance is used
+Allowed if: relaxation is distinct from source and cannot be tuned
+Forbidden if: R_exch cancels Sigma_exch by construction
+[WARN] ES14: relaxation mechanism: REQUIRED
+Missing: R_exch mechanism
+Consequence: prevents cancellation knob
+
+------------------------------------------------------------------------------------------------------------------------
+ES15: source sign/strength law
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_exch has sign, magnitude, and domain rule
+Role: required source specificity
+Allowed if: source strength follows from ontology-native operator
+Forbidden if: source strength is chosen to pass recovery/boundary constraints
+[WARN] ES15: source sign/strength law: REQUIRED
+Missing: source strength law
+Consequence: prevents source coefficient tuning
+
+------------------------------------------------------------------------------------------------------------------------
+ES16: ordinary T as source by fiat rejection
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_exch = function(T_mu_nu) by convenience
+Role: forbidden matter double-count branch
+Allowed if: never without source theorem
+Forbidden if: accepted as exchange source
+[WARN] ES16: ordinary T as source by fiat rejection: REJECTED
+Missing: not pursued
+Consequence: preserves ordinary matter decoupling
+
+------------------------------------------------------------------------------------------------------------------------
+ES17: boundary repair source rejection
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: boundary leakage / shell / scalar tail defines Sigma_exch
+Role: forbidden boundary repair branch
+Allowed if: never as source definition
+Forbidden if: accepted as exchange source
+[WARN] ES17: boundary repair source rejection: REJECTED
+Missing: not pursued
+Consequence: prevents boundary patch current
+
+------------------------------------------------------------------------------------------------------------------------
+ES18: curvature repair source rejection
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: curvature blowup or finite-admissibility failure directly defines Sigma_exch as repair
+Role: forbidden anti-singularity shortcut
+Allowed if: never without dynamics
+Forbidden if: accepted as exchange source
+[WARN] ES18: curvature repair source rejection: REJECTED
+Missing: not pursued
+Consequence: prevents curvature-admissibility overclaim
+
+------------------------------------------------------------------------------------------------------------------------
+ES19: e_curv reservoir rejection
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: e_curv supplies source strength for J_exch
+Role: forbidden source reservoir branch
+Allowed if: never under Group 17 closure
+Forbidden if: accepted as exchange source
+[WARN] ES19: e_curv reservoir rejection: REJECTED
+Missing: not pursued
+Consequence: preserves e_curv diagnostic/accounting-only status
+
+------------------------------------------------------------------------------------------------------------------------
+ES20: recovery source rejection
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: Sigma_exch/R_exch chosen to pass gamma_like, AB, or exterior matching
+Role: forbidden recovery-smuggling branch
+Allowed if: never as source definition
+Forbidden if: accepted as exchange source
+[WARN] ES20: recovery source rejection: REJECTED
+Missing: not pursued
+Consequence: keeps recovery downstream
+
+------------------------------------------------------------------------------------------------------------------------
+ES21: H_exch source shortcut rejection
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: exchange source is defined only to justify future H_exch
+Role: forbidden parent-correction shortcut
+Allowed if: deferred to Group 19
+Forbidden if: accepted as source-side origin
+[WARN] ES21: H_exch source shortcut rejection: REJECTED
+Missing: not pursued
+Consequence: prevents decorative correction tensor
+
+------------------------------------------------------------------------------------------------------------------------
+ES22: source-side failure
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: no source side can be defined without repair, matter double-count, or boundary patch
+Role: branch failure condition
+Allowed if: used to keep J_exch role-level or inactive in ordinary sector
+Forbidden if: patched by source labels
+[FAIL] ES22: source-side failure: BRANCH_KILLED
+Missing: applies if failure demonstrated
+Consequence: J_exch cannot be active ordinary-sector current
+
+------------------------------------------------------------------------------------------------------------------------
+ES23: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Source candidate: after source-side inventory, audit optional dark-sector coupling
+Role: next local bottleneck
+Allowed if: ordinary source sides remain unsafe or theorem-targeted
+Forbidden if: dark sector used to patch ordinary source failure
+[PASS] ES23: recommended next move: RECOMMENDED
+Missing: dark-sector optional branch audit
+Consequence: next script should be candidate_dark_sector_coupling_optional_branch.py
+
+========================================================================================================================
+Case 2: Compact exchange source-side ledger
+========================================================================================================================
+| Entry | Source candidate | Status | Consequence |
+|---|---|---|---|
+| ES1: exchange source-side target | J_exch requires a source side that is not ordinary-sector repair | THEOREM_TARGET | decides whether active exchange can become technical |
+| ES2: Sigma_V / R_V role-level split | Sigma_V and R_V as role-level source/relaxation placeholders | SAFE_IF | preserves source/relaxation vocabulary without fake law |
+| ES3: Sigma/R double-counting guard | Sigma_exch and R_exch must be distinct, not one hidden tuning knob | REQUIRED | prevents exchange balance from becoming tuning mechanism |
+| ES4: curvature admissibility failure | finite-admissibility failure triggers or labels exchange | RISK | dangerous until Group 17 theorem targets are solved |
+| ES5: finite volume response | zeta / volume response sources or gates exchange | RISK | promising but unsafe until Group 16 bottlenecks are solved |
+| ES6: matter-induced exchange | ordinary matter directly sources J_exch | RISK | unsafe under current decoupling status |
+| ES7: boundary exchange | exchange sourced at boundary, endpoint, shell, or admissibility edge | RISK | dangerous because boundary repair is forbidden |
+| ES8: dark-sector exchange | dark-sector source couples to J_exch | DEFER | keeps speculative coupling downstream |
+| ES9: zero-net exchange | Sigma_exch - R_exch = 0 in ordinary sector | CANDIDATE | safest branch if exchange vocabulary is kept |
+| ES10: zero-creation branch | Sigma_exch = R_exch = 0 in ordinary sector | CANDIDATE | cleanest ordinary-sector no-exchange branch |
+| ES11: curvature-from-warping branch | curvature changes arise from constrained time/space warping, not net vacuum creation/destruction | CANDIDATE | important alternative to active source-side exchange |
+| ES12: latent-exchange branch | Sigma/R exist as ontology/accounting but vanish or balance in ordinary sector | CANDIDATE | preserves substance language without forcing ordinary creation/destruction |
+| ES13: source support law | J_exch active only where explicit exchange source is nonzero | CANDIDATE | possible route to separating J_exch from J_sub |
+| ES14: relaxation mechanism | R_exch as real relaxation/return/sink mechanism | REQUIRED | prevents cancellation knob |
+| ES15: source sign/strength law | Sigma_exch has sign, magnitude, and domain rule | REQUIRED | prevents source coefficient tuning |
+| ES16: ordinary T as source by fiat rejection | Sigma_exch = function(T_mu_nu) by convenience | REJECTED | preserves ordinary matter decoupling |
+| ES17: boundary repair source rejection | boundary leakage / shell / scalar tail defines Sigma_exch | REJECTED | prevents boundary patch current |
+| ES18: curvature repair source rejection | curvature blowup or finite-admissibility failure directly defines Sigma_exch as repair | REJECTED | prevents curvature-admissibility overclaim |
+| ES19: e_curv reservoir rejection | e_curv supplies source strength for J_exch | REJECTED | preserves e_curv diagnostic/accounting-only status |
+| ES20: recovery source rejection | Sigma_exch/R_exch chosen to pass gamma_like, AB, or exterior matching | REJECTED | keeps recovery downstream |
+| ES21: H_exch source shortcut rejection | exchange source is defined only to justify future H_exch | REJECTED | prevents decorative correction tensor |
+| ES22: source-side failure | no source side can be defined without repair, matter double-count, or boundary patch | BRANCH_KILLED | J_exch cannot be active ordinary-sector current |
+| ES23: recommended next move | after source-side inventory, audit optional dark-sector coupling | RECOMMENDED | next script should be candidate_dark_sector_coupling_optional_branch.py |
+[WARN] compact exchange source-side ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 5
+DEFER: 1
+RECOMMENDED: 1
+REJECTED: 6
+REQUIRED: 3
+RISK: 4
+SAFE_IF: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  No active ordinary-sector source side for J_exch is derived.
+  Sigma/R remain role-level unless distinct operators and strength laws are found.
+  Curvature admissibility, volume response, matter-induced exchange, and boundary exchange are high risk.
+  Zero-net exchange, zero creation, curvature-from-warping, and latent exchange remain the safest ordinary-sector branches.
+  Dark-sector exchange remains deferred and optional.
+  Next gate is dark-sector coupling optionality.
+[WARN] exchange source-side status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Source-side classes
+========================================================================================================================
+Source-side classes:
+
+1. role-level Sigma_V / R_V
+2. curvature admissibility failure
+3. finite volume response
+4. matter-induced exchange
+5. boundary exchange
+6. dark-sector exchange
+7. zero-net exchange
+8. zero-creation branch
+9. curvature-from-warping
+10. latent-exchange accounting
+
+Safest ordinary-sector branches:
+
+  zero-net exchange
+  zero creation
+  curvature-from-warping
+  latent exchange as accounting only
+[PASS] exchange source-side classes listed: RECOMMENDED
+
+========================================================================================================================
+Case 5: Exchange source-side decision tree
+========================================================================================================================
+Decision tree:
+
+1. Source/relaxation operators exist:
+   J_exch source-side theorem target survives.
+
+2. Sigma/R are role-level only:
+   J_exch remains role-level.
+
+3. Source is ordinary matter by convenience:
+   rejected.
+
+4. Source is boundary/curvature repair:
+   rejected.
+
+5. Source is e_curv reservoir:
+   rejected.
+
+6. Ordinary sector has zero-net or zero creation:
+   safest branch.
+
+7. Dark sector appears:
+   defer to optional branch audit.
+[PASS] exchange source-side decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 6: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  no source side can make J_exch active in the ordinary sector
+  without repair, matter double-count, boundary patch, or source reservoir.
+
+Consequence:
+
+  keep J_exch role-level or inactive in ordinary sector.
+  preserve zero-net/zero-creation and curvature-from-warping branches.
+
+Bad failure:
+
+  define Sigma_exch as the thing that makes the exchange current work.
+[WARN] exchange source-side good failure stated: DEFER
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+Exchange source-side fails if:
+
+1. Sigma/R are undefined but used as operators
+2. Sigma/R are tuning knobs
+3. ordinary T defines Sigma_exch by convenience
+4. boundary leakage defines source
+5. curvature failure defines repair source
+6. e_curv becomes reservoir
+7. recovery chooses source strength
+8. H_exch is smuggled in
+9. dark sector patches ordinary failure
+10. zero-net branch still claims net exchange
+[WARN] exchange source-side failure controls stated: RISK
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_exchange_current_source_side_inventory.md
+   Artifact for this script.
+
+2. candidate_dark_sector_coupling_optional_branch.py
+   Audit whether dark-sector coupling can remain optional and separated.
+
+3. candidate_exchange_source_side_failure_summary.py
+   Use if all source-side candidates collapse into repair.
+
+Recommended next script:
+
+  candidate_dark_sector_coupling_optional_branch.py
+
+Reason:
+  Ordinary source sides are not derived and are high risk.
+  The remaining optional branch is dark-sector coupling, but it must not patch ordinary failure.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+No active ordinary-sector source side for J_exch is derived.
+
+High-risk source candidates:
+
+  curvature admissibility failure
+  finite volume response
+  matter-induced exchange
+  boundary exchange
+
+Safest ordinary-sector branches:
+
+  zero-net exchange
+  zero creation
+  curvature-from-warping
+  latent exchange as accounting
+
+Best next script:
+
+  candidate_dark_sector_coupling_optional_branch.py
+[PASS] exchange current source-side inventory complete: CLOSED

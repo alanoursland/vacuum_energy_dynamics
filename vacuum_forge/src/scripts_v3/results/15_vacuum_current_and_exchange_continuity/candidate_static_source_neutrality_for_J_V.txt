@@ -1,0 +1,328 @@
+
+========================================================================================================================
+Candidate Static-Source Neutrality For J_V
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Static-source neutrality problem
+========================================================================================================================
+Question:
+
+  Does the proposed J_V / Sigma_V / R_V structure create exterior scalar charge around static sources?
+
+Goal:
+
+  protect ordinary static gravity from scalar volume charge
+
+Discipline:
+
+  do not allow static mass to create independent zeta/kappa exterior charge
+  do not use R_V as scalar-charge cancellation patch
+  do not let J_V alter M_ext independently of A-sector
+  preserve no far-zone scalar flux
+  preserve no-overlap / residual-kill
+  keep gamma/AB recovery downstream
+[WARN] static-source neutrality problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Static-source neutrality inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+SN1: static-source neutrality target
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: ordinary static sources create no independent exterior J_V/zeta/kappa scalar charge
+Role: core ordinary-sector safety condition for exchange continuity
+Allowed if: static equilibrium has zero net volume charge, zero far-zone scalar flux, and no M_ext shift
+Forbidden if: static mass creates exterior scalar volume tail
+[WARN] SN1: static-source neutrality target: THEOREM_TARGET
+Missing: static neutrality theorem
+Consequence: decides whether J_V/Sigma/R can survive ordinary static gravity
+
+------------------------------------------------------------------------------------------------------------------------
+SN2: static zero-current equilibrium
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: J_V = 0 in static equilibrium with no exterior flux
+Role: strongest neutral static branch
+Allowed if: u_vac is not required from J_V in the static region or has separate equilibrium fallback
+Forbidden if: J_V=0 is normalized to define u_vac
+[WARN] SN2: static zero-current equilibrium: SAFE_IF
+Missing: equilibrium-frame fallback if frame is needed
+Consequence: protects neutrality but does not define current-based u_vac
+
+------------------------------------------------------------------------------------------------------------------------
+SN3: pointwise Sigma/R balance
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: Sigma_V = R_V pointwise in static equilibrium
+Role: local no-net-source branch
+Allowed if: balance follows from equilibrium law, not tuning
+Forbidden if: R_V is chosen to cancel Sigma_V by hand
+[WARN] SN3: pointwise Sigma/R balance: CANDIDATE
+Missing: equilibrium balance law and sign convention
+Consequence: can prevent static volume charge if not decorative
+
+------------------------------------------------------------------------------------------------------------------------
+SN4: compact-support current
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: J_V nonzero only inside source/interior, with zero boundary flux
+Role: interior redistribution branch
+Allowed if: support theorem and boundary flux cancellation are explicit
+Forbidden if: compactness is imposed after seeing exterior charge
+[WARN] SN4: compact-support current: CANDIDATE
+Missing: support law and interior flux direction
+Consequence: may allow internal exchange without exterior scalar charge
+
+------------------------------------------------------------------------------------------------------------------------
+SN5: zeta-gradient static risk
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: J_V ~ -D_z grad zeta around static source
+Role: danger check for zeta-gradient flux
+Allowed if: grad zeta has compact support or no exterior scalar tail
+Forbidden if: static zeta gradient produces 1/r-like exterior charge
+[WARN] SN5: zeta-gradient static risk: RISK
+Missing: zeta boundary theorem
+Consequence: likely rejects unrestricted zeta-gradient current in ordinary static gravity
+
+------------------------------------------------------------------------------------------------------------------------
+SN6: source-gradient static risk
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: J_V follows source/support gradient near static matter boundary
+Role: danger check for source-gradient flux
+Allowed if: boundary smoothing creates no M_ext shift and no scalar tail
+Forbidden if: source boundary becomes scalar shell charge
+[WARN] SN6: source-gradient static risk: RISK
+Missing: shell-source avoidance theorem
+Consequence: can become boundary repair or shell source if uncontrolled
+
+------------------------------------------------------------------------------------------------------------------------
+SN7: acceleration-gradient static safety
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: Sigma_V ~ chi rho a^mu nabla_mu A is zero or neutral for static equilibrium
+Role: static safety test for inherited source candidate
+Allowed if: supported/static acceleration does not create independent scalar volume charge
+Forbidden if: static support acceleration sources exterior zeta/kappa field
+[WARN] SN7: acceleration-gradient static safety: RISK
+Missing: static support / acceleration interpretation
+Consequence: may kill acceleration-gradient source in ordinary static branch if unsafe
+
+------------------------------------------------------------------------------------------------------------------------
+SN8: exterior scalar charge rejection
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: Q_V = integral_static (Sigma_V - R_V) with boundary terms gives no exterior scalar charge
+Role: forbidden outcome guard
+Allowed if: Q_V = 0 by structure, not tuning
+Forbidden if: Q_V != 0 or is canceled by fitted R_V
+[WARN] SN8: exterior scalar charge rejection: REQUIRED
+Missing: definition of Q_V and proof of zero charge
+Consequence: kills any static law that makes independent scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+SN9: no far-zone scalar flux
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: F_scalar_far[J_V,zeta,kappa] = 0 for ordinary static sources
+Role: ordinary-sector radiation/exterior guard
+Allowed if: far-zone scalar flux vanishes structurally
+Forbidden if: static source leaks scalar volume flux
+[WARN] SN9: no far-zone scalar flux: REQUIRED
+Missing: far-zone flux theorem
+Consequence: prevents J_V from becoming observable scalar field
+
+------------------------------------------------------------------------------------------------------------------------
+SN10: no exterior mass shift
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: delta M_ext|volume = 0 for static volume exchange
+Role: A-sector mass protection
+Allowed if: volume exchange recombines without changing A-sector exterior mass
+Forbidden if: J_V/Sigma/R changes measured exterior mass independently
+[WARN] SN10: no exterior mass shift: REQUIRED
+Missing: mass-accounting theorem
+Consequence: kills current laws that alter A-sector mass
+
+------------------------------------------------------------------------------------------------------------------------
+SN11: no-overlap / residual-kill
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: static J_V-driven zeta enters metric only through B_s, or residual trace killed/non-metric
+Role: count-once recombination guard
+Allowed if: static no-overlap theorem is explicit
+Forbidden if: static volume exchange creates independent residual metric trace
+[WARN] SN11: no-overlap / residual-kill: REQUIRED
+Missing: static no-overlap theorem
+Consequence: prevents static current from reviving zeta/kappa scalar duplicate
+
+------------------------------------------------------------------------------------------------------------------------
+SN12: R_V cancellation patch rejection
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: R_V tuned to cancel static exterior charge
+Role: rejected shortcut
+Allowed if: only as no-go diagnostic
+Forbidden if: accepted as neutrality mechanism
+[WARN] SN12: R_V cancellation patch rejection: REJECTED
+Missing: not pursued
+Consequence: prevents relaxation from becoming scalar-charge eraser
+
+------------------------------------------------------------------------------------------------------------------------
+SN13: recovery downstream
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: gamma_like and AB checked only after static neutrality is structural
+Role: ordinary-regime recovery target
+Allowed if: checked after neutrality is established
+Forbidden if: used to tune static balance
+[WARN] SN13: recovery downstream: RECOVERY_TARGET
+Missing: solutions after static-neutral law
+Consequence: keeps recovery from selecting neutrality mechanism
+
+------------------------------------------------------------------------------------------------------------------------
+SN14: static neutrality failure
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: candidate J_V/Sigma/R produces exterior scalar charge around static sources
+Role: branch-kill condition
+Allowed if: used to reject unsafe current family
+Forbidden if: patched by R_V tuning or boundary repair
+[FAIL] SN14: static neutrality failure: BRANCH_KILLED
+Missing: only applies if charge is demonstrated
+Consequence: unsafe current family cannot support ordinary gravity
+
+------------------------------------------------------------------------------------------------------------------------
+SN15: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Neutrality test: if static neutrality survives, test boundary/no-overlap for volume current
+Role: best next bottleneck
+Allowed if: neutrality is structural or reduced to clear theorem target
+Forbidden if: jumping to boundary/no-overlap while scalar charge remains unresolved
+[PASS] SN15: recommended next move: RECOMMENDED
+Missing: boundary/no-overlap current test
+Consequence: next script should test whether the current double-counts B_s/residual trace or leaks through boundary
+
+========================================================================================================================
+Case 2: Compact static-neutrality ledger
+========================================================================================================================
+| Entry | Neutrality test | Status | Consequence |
+|---|---|---|---|
+| SN1: static-source neutrality target | ordinary static sources create no independent exterior J_V/zeta/kappa scalar charge | THEOREM_TARGET | decides whether J_V/Sigma/R can survive ordinary static gravity |
+| SN2: static zero-current equilibrium | J_V = 0 in static equilibrium with no exterior flux | SAFE_IF | protects neutrality but does not define current-based u_vac |
+| SN3: pointwise Sigma/R balance | Sigma_V = R_V pointwise in static equilibrium | CANDIDATE | can prevent static volume charge if not decorative |
+| SN4: compact-support current | J_V nonzero only inside source/interior, with zero boundary flux | CANDIDATE | may allow internal exchange without exterior scalar charge |
+| SN5: zeta-gradient static risk | J_V ~ -D_z grad zeta around static source | RISK | likely rejects unrestricted zeta-gradient current in ordinary static gravity |
+| SN6: source-gradient static risk | J_V follows source/support gradient near static matter boundary | RISK | can become boundary repair or shell source if uncontrolled |
+| SN7: acceleration-gradient static safety | Sigma_V ~ chi rho a^mu nabla_mu A is zero or neutral for static equilibrium | RISK | may kill acceleration-gradient source in ordinary static branch if unsafe |
+| SN8: exterior scalar charge rejection | Q_V = integral_static (Sigma_V - R_V) with boundary terms gives no exterior scalar charge | REQUIRED | kills any static law that makes independent scalar gravity |
+| SN9: no far-zone scalar flux | F_scalar_far[J_V,zeta,kappa] = 0 for ordinary static sources | REQUIRED | prevents J_V from becoming observable scalar field |
+| SN10: no exterior mass shift | delta M_ext/volume = 0 for static volume exchange | REQUIRED | kills current laws that alter A-sector mass |
+| SN11: no-overlap / residual-kill | static J_V-driven zeta enters metric only through B_s, or residual trace killed/non-metric | REQUIRED | prevents static current from reviving zeta/kappa scalar duplicate |
+| SN12: R_V cancellation patch rejection | R_V tuned to cancel static exterior charge | REJECTED | prevents relaxation from becoming scalar-charge eraser |
+| SN13: recovery downstream | gamma_like and AB checked only after static neutrality is structural | RECOVERY_TARGET | keeps recovery from selecting neutrality mechanism |
+| SN14: static neutrality failure | candidate J_V/Sigma/R produces exterior scalar charge around static sources | BRANCH_KILLED | unsafe current family cannot support ordinary gravity |
+| SN15: recommended next move | if static neutrality survives, test boundary/no-overlap for volume current | RECOMMENDED | next script should test whether the current double-counts B_s/residual trace or leaks through boundary |
+[WARN] compact static-neutrality ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 2
+RECOMMENDED: 1
+RECOVERY_TARGET: 1
+REJECTED: 1
+REQUIRED: 4
+RISK: 3
+SAFE_IF: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  Static zero-current equilibrium is safe if u_vac is not required from J_V there.
+  Pointwise Sigma/R balance and compact-support current are candidate safety routes.
+  Zeta-gradient, source-gradient, and acceleration-gradient branches are risky in static ordinary gravity.
+  No exterior scalar charge, no far-zone scalar flux, no M_ext shift, and no-overlap are mandatory.
+  If static neutrality survives, boundary/no-overlap becomes the next gate.
+[WARN] static-neutrality status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Static-neutrality decision tree
+========================================================================================================================
+Decision tree:
+
+1. Static zero-current equilibrium:
+   safest for exterior neutrality, but cannot define u_vac from J_V.
+
+2. Pointwise Sigma/R balance:
+   candidate if balance follows from equilibrium law, not tuning.
+
+3. Compact-support current:
+   candidate if boundary flux is structurally zero.
+
+4. Gradient currents around static sources:
+   risky because exterior gradients can create scalar tails.
+
+5. R_V cancellation:
+   rejected if used to erase scalar charge after the fact.
+
+6. If exterior scalar charge appears:
+   branch killed for ordinary static gravity.
+[PASS] static-neutrality decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  a candidate J_V / Sigma_V / R_V family produces exterior scalar charge
+  around ordinary static sources.
+
+Consequence:
+
+  reject that current family for ordinary gravity.
+  Do not patch with R_V tuning or boundary repair.
+
+Bad failure:
+  allow static scalar charge and hope recovery checks hide it.
+[WARN] static-neutrality good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Static-source neutrality fails if:
+
+1. static mass creates independent zeta/kappa exterior charge
+2. R_V is tuned to cancel that charge
+3. source-gradient creates shell scalar charge at boundary
+4. zeta-gradient current produces far-zone scalar tail
+5. acceleration-gradient source treats static support as scalar source without neutrality theorem
+6. J_V changes M_ext independently of A-sector
+7. static current creates residual metric trace outside B_s
+8. gamma_like or AB is used to select neutrality mechanism
+[WARN] static-neutrality failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_static_source_neutrality_for_J_V.md
+   Artifact for this script.
+
+2. candidate_boundary_no_overlap_for_volume_current.py
+   Test boundary neutrality and no-overlap for surviving current families.
+
+3. candidate_static_neutrality_failure_summary.py
+   Use if static scalar charge kills current families.
+
+Recommended next script:
+
+  candidate_boundary_no_overlap_for_volume_current.py
+
+Reason:
+  If ordinary static neutrality survives, the next gate is whether J_V-driven zeta leaks through the boundary or double-counts B_s/residual trace.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Static-source neutrality is mandatory for ordinary gravity.
+
+Best current interpretation:
+
+  static zero-current or compact/balanced exchange may be safe,
+  but any exterior scalar charge kills the current family.
+
+Best next test:
+  candidate_boundary_no_overlap_for_volume_current.py

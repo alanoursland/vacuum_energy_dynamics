@@ -1,0 +1,199 @@
+
+========================================================================================================================
+Candidate Vacuum-Substance Continuity Identity
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Vacuum-substance continuity problem
+========================================================================================================================
+Question:
+
+  If the vacuum is a substance-like ontology, what balance law does it demand?
+
+Do not start from GR.
+Start from vacuum bookkeeping:
+
+  accumulation + outflow = exchange + creation - relaxation
+
+Candidate identity:
+
+  partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax
+
+Goal:
+  see whether sector source assignments begin to follow from this identity.
+[PASS] vacuum continuity problem posed: PASS
+
+========================================================================================================================
+Case 1: Pure vacuum-substance conservation identity
+========================================================================================================================
+Pure conservation branch:
+
+  partial_t q_v + div J_v = 0
+
+1D expression = Derivative(J_v(t, x), x) + Derivative(q_v(t, x), t)
+
+Interpretation:
+  q_v is not yet mass density.
+  It is a vacuum bookkeeping charge/density proxy.
+  The parent theory must define what q_v physically is.
+[WARN] pure continuity identity formulated: PARTIAL — q_v still needs physical definition
+
+========================================================================================================================
+Case 2: Exchange / creation / relaxation balance
+========================================================================================================================
+General ontology-native balance:
+
+  partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax
+
+1D balance = Eq(Derivative(J_v(t, x), x) + Derivative(q_v(t, x), t), -Gamma_relax(t, x) + Sigma_creation(t, x) + Sigma_exchange(t, x))
+
+Interpretation:
+  exchange: matter/vacuum transfer or coupling
+  creation: nonconservative vacuum amount change
+  relaxation: return toward vacuum minimum
+[WARN] exchange/creation/relaxation balance formulated: PARTIAL — terms need sector-specific definitions
+
+========================================================================================================================
+Case 3: Static exterior consistency
+========================================================================================================================
+Exterior A_constraint:
+A = -2*G*M/(c**2*r) + 1
+F_A = 4*pi*r^2 A' = 8*pi*G*M/c**2
+dF_A/dr = 0
+
+Vacuum exterior policy:
+  Sigma_exchange = 0 outside matter
+  Sigma_creation = 0 in ordinary exterior
+  Gamma_relax = 0 for settled static constraint configuration
+
+Then exterior flux is conserved.
+[PASS] static exterior compatible with zero local source: PASS
+
+========================================================================================================================
+Case 4: Matter exchange as A_constraint source
+========================================================================================================================
+Reduced A source law:
+
+  Delta_areal A = 8*pi*G*rho/c^2
+
+Areal flux derivative:
+
+  dF_A/dr = 4*pi*r^2 * 8*pi*G*rho/c^2
+
+dF_A/dr = 32*pi**2*G*r**2*rho(r)/c**2
+
+Ontology interpretation:
+  matter density acts as an exchange term for scalar vacuum flux.
+
+Candidate identification:
+  Sigma_exchange,A ~ 8*pi*G*rho/c^2
+[WARN] matter exchange can source A_constraint flux: PARTIAL — normalization inherited from reduced A-flux; parent derivation still needed
+
+========================================================================================================================
+Case 5: Vacuum current and W_i source hint
+========================================================================================================================
+Matter current proxy:
+j_i = rho v_i = Matrix([[rho*v_x], [rho*v_y], [rho*v_z]])
+
+Ontology hint:
+  If scalar exchange uses density rho, vector response should use
+  transport/current j_i.
+
+Candidate direction:
+  W_i source should be tied to vacuum/matter current continuity,
+  not assigned only by analogy to frame dragging.
+
+But no W_i field equation is derived here.
+[WARN] W_i source hint follows from continuity bookkeeping: PARTIAL — equation and coefficient missing
+
+========================================================================================================================
+Case 6: Relaxation term and A_rad suppression
+========================================================================================================================
+Relaxation law for scalar radiative perturbation:
+
+  dA_rad/dtau = -Gamma mu^2 A_rad
+
+A_rad(tau) = a0*exp(-Gamma*mu**2*tau)
+
+Ontology interpretation:
+  scalar perturbations can relax back toward the vacuum minimum.
+
+Important caveat:
+  This must suppress A_rad without erasing A_constraint.
+[WARN] relaxation can represent vacuum absorption of A_rad: PARTIAL — must be separated from static constraint field
+
+========================================================================================================================
+Case 7: Creation regime is explicitly nonconservative
+========================================================================================================================
+If Sigma_creation != 0, then vacuum-substance bookkeeping is not
+locally conservative.
+
+That may be allowed only in special regimes:
+  cosmological creation
+  strong-field vacuum restructuring
+  phase/defect transitions
+
+But ordinary exterior gravity should usually set:
+  Sigma_creation = 0
+
+Otherwise source closure becomes too flexible.
+[WARN] creation regime flagged as nonconservative special case: RISK — must not be used as free knob
+
+========================================================================================================================
+Case 8: Sector source classification from continuity attempt
+========================================================================================================================
+| Sector | Source from continuity picture | Status |
+|---|---|---|
+| A_constraint | scalar exchange with density rho | PARTIAL |
+| W_i | current/transport j_i = rho v_i | PARTIAL |
+| kappa | stress/trace/volume exchange | MISSING |
+| h_ij^TT | quadrupole time-varying conserved source | PARTIAL |
+| A_rad | relaxation/absorption-controlled perturbation | PARTIAL |
+| creation regime | explicit nonconservative source | RISK |
+
+Interpretation:
+  The continuity picture begins to constrain A and W_i source types.
+  It does not yet derive kappa, tensor normalization, or closure identities.
+[WARN] sector source classification produced: PARTIAL — continuity picture is useful but incomplete
+
+========================================================================================================================
+Case 9: Failure controls
+========================================================================================================================
+This ontology-native identity attempt fails if:
+
+1. q_v remains undefined forever.
+2. Sigma_exchange is chosen separately for every sector.
+3. Sigma_creation becomes a free knob for any mismatch.
+4. Gamma_relax suppresses unwanted modes but also destroys static gravity.
+5. W_i current coupling is set only by GR matching.
+6. No Bianchi-like closure emerges from the balance law.
+
+[WARN] failure controls stated: RISK — these tests should guide group 09
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The vacuum-substance ontology suggests a real balance identity:
+
+  partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax
+
+This is not yet a covariant conservation law.
+But it is ontology-native and begins to constrain source assignments:
+
+  density -> scalar exchange / A_constraint
+  current -> vector response / W_i
+  relaxation -> suppression of A_rad
+  creation -> special nonconservative regime, not a free knob
+
+Main missing pieces:
+  define q_v
+  derive coefficients
+  derive kappa source
+  derive tensor source from identity
+  derive closure / Bianchi-like compatibility
+
+Possible next artifact:
+  candidate_vacuum_substance_continuity_identity.md
+
+Possible next script:
+  candidate_source_coupling_from_vacuum_exchange.py

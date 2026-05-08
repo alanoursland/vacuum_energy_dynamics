@@ -1,0 +1,263 @@
+
+========================================================================================================================
+Candidate Boundary Projector For Volume Neutrality
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Boundary projector for volume neutrality problem
+========================================================================================================================
+Question:
+
+  What exactly belongs to P_boundary for zeta/kappa exterior neutrality?
+
+Goal:
+
+  split boundary/exterior-neutrality duties away from P_trace
+
+Discipline:
+
+  no exterior zeta charge
+  no exterior kappa charge
+  no boundary flux leakage
+  no A-sector mass change
+  no hidden shell source
+  no scalar radiation at boundary
+[WARN] boundary projector problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: P_boundary requirement inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: exterior zeta neutrality
+------------------------------------------------------------------------------------------------------------------------
+Requirement: zeta_ext -> 0
+Role: prevents vacuum-volume configuration from becoming an exterior scalar field
+Allowed if: ordinary exterior vacuum is fixed point of volume sector
+Forbidden if: zeta_ext ~ 1/r or persistent exterior volume pressure
+[WARN] B1: exterior zeta neutrality: REQUIRED
+Missing: exterior stability theorem
+
+------------------------------------------------------------------------------------------------------------------------
+B2: exterior kappa neutrality
+------------------------------------------------------------------------------------------------------------------------
+Requirement: kappa_ext -> 0
+Role: prevents kappa from becoming a second scalar gravity
+Allowed if: kappa is residual/projected/boundary-neutral
+Forbidden if: kappa_ext ~ 1/r
+[WARN] B2: exterior kappa neutrality: REQUIRED
+Missing: kappa-zeta boundary relation
+
+------------------------------------------------------------------------------------------------------------------------
+B3: zero zeta boundary flux
+------------------------------------------------------------------------------------------------------------------------
+Requirement: F_zeta(R+) = 0
+Role: prevents exterior zeta tail from boundary leakage
+Allowed if: P_boundary enforces zero flux or compact support
+Forbidden if: nonzero F_zeta seeds exterior charge
+[WARN] B3: zero zeta boundary flux: REQUIRED
+Missing: interface law
+
+------------------------------------------------------------------------------------------------------------------------
+B4: zero kappa boundary flux
+------------------------------------------------------------------------------------------------------------------------
+Requirement: F_kappa(R+) = 0
+Role: prevents exterior kappa tail from boundary leakage
+Allowed if: P_boundary enforces zero flux or compact support
+Forbidden if: nonzero F_kappa seeds exterior charge
+[WARN] B4: zero kappa boundary flux: REQUIRED
+Missing: interface law
+
+------------------------------------------------------------------------------------------------------------------------
+B5: zero volume charge
+------------------------------------------------------------------------------------------------------------------------
+Requirement: Q_volume = 0
+Role: removes exterior volume monopole
+Allowed if: compact support, compensation, or parent constraint enforces it
+Forbidden if: Q_volume nonzero sources exterior scalar
+[WARN] B5: zero volume charge: REQUIRED
+Missing: S_volume definition and compensation origin
+
+------------------------------------------------------------------------------------------------------------------------
+B6: zero kappa charge
+------------------------------------------------------------------------------------------------------------------------
+Requirement: Q_kappa = 0
+Role: removes exterior kappa monopole
+Allowed if: kappa is projected residual with compensation
+Forbidden if: Q_kappa nonzero creates kappa_ext ~ 1/r
+[WARN] B6: zero kappa charge: REQUIRED
+Missing: Q_kappa definition and relation to Q_volume
+
+------------------------------------------------------------------------------------------------------------------------
+B7: A-sector mass protection
+------------------------------------------------------------------------------------------------------------------------
+Requirement: delta M_ext|boundary zeta/kappa = 0
+Role: keeps boundary smoothing from tuning measured mass
+Allowed if: P_boundary preserves A_flux
+Forbidden if: boundary volume mode changes A-sector 1/r coefficient
+[WARN] B7: A-sector mass protection: REQUIRED
+Missing: boundary mass preservation theorem
+
+------------------------------------------------------------------------------------------------------------------------
+B8: compact-support profile compatibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: zeta(R)=zeta'(R)=0 and/or kappa(R)=kappa'(R)=0
+Role: toy diagnostic for no boundary flux and no shell source
+Allowed if: used as profile test, not physical derivation
+Forbidden if: toy compact profile is mistaken for parent law
+[WARN] B8: compact-support profile compatibility: STRUCTURAL
+Missing: physical interface law
+
+------------------------------------------------------------------------------------------------------------------------
+B9: shell-source avoidance
+------------------------------------------------------------------------------------------------------------------------
+Requirement: sufficient smoothness at boundary, possibly C2 or distribution-safe matching
+Role: prevents hidden delta-function source at interface
+Allowed if: smoothness is derived or explicitly diagnostic
+Forbidden if: zero field but nonzero distributional curvature sneaks in
+[WARN] B9: shell-source avoidance: CANDIDATE
+Missing: required differentiability from action/field equations
+
+------------------------------------------------------------------------------------------------------------------------
+B10: cooperation with P_trace
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_boundary P_trace maps trace/volume residual to exterior-neutral support
+Role: splits trace extraction from boundary neutrality
+Allowed if: P_trace and P_boundary are separate but compatible
+Forbidden if: P_trace hides boundary conditions internally
+[PASS] B10: cooperation with P_trace: RECOMMENDED
+Missing: composition law P_boundary P_trace
+
+------------------------------------------------------------------------------------------------------------------------
+B11: cooperation with P_recombination
+------------------------------------------------------------------------------------------------------------------------
+Requirement: boundary-neutral zeta/kappa inserted into g_ij once
+Role: prevents boundary correction from duplicating recombination trace response
+Allowed if: P_recombination receives already-neutral trace/volume contribution
+Forbidden if: boundary projector and recombination each add separate trace corrections
+[WARN] B11: cooperation with P_recombination: REQUIRED
+Missing: P_recombination definition
+
+------------------------------------------------------------------------------------------------------------------------
+B12: no scalar radiation at boundary
+------------------------------------------------------------------------------------------------------------------------
+Requirement: boundary projector is not a radiative outgoing condition for scalar mode
+Role: keeps boundary neutralization from becoming scalar wave leakage
+Allowed if: boundary condition is constraint/interface, not radiation channel
+Forbidden if: boundary emits zeta/kappa scalar waves
+[PASS] B12: no scalar radiation at boundary: FORBIDDEN
+Missing: parent scalar-radiation exclusion
+
+========================================================================================================================
+Case 2: Compact P_boundary ledger
+========================================================================================================================
+| Entry | Requirement | Status | Missing |
+|---|---|---|---|
+| B1: exterior zeta neutrality | zeta_ext -> 0 | REQUIRED | exterior stability theorem |
+| B2: exterior kappa neutrality | kappa_ext -> 0 | REQUIRED | kappa-zeta boundary relation |
+| B3: zero zeta boundary flux | F_zeta(R+) = 0 | REQUIRED | interface law |
+| B4: zero kappa boundary flux | F_kappa(R+) = 0 | REQUIRED | interface law |
+| B5: zero volume charge | Q_volume = 0 | REQUIRED | S_volume definition and compensation origin |
+| B6: zero kappa charge | Q_kappa = 0 | REQUIRED | Q_kappa definition and relation to Q_volume |
+| B7: A-sector mass protection | delta M_ext/boundary zeta/kappa = 0 | REQUIRED | boundary mass preservation theorem |
+| B8: compact-support profile compatibility | zeta(R)=zeta'(R)=0 and/or kappa(R)=kappa'(R)=0 | STRUCTURAL | physical interface law |
+| B9: shell-source avoidance | sufficient smoothness at boundary, possibly C2 or distribution-safe matching | CANDIDATE | required differentiability from action/field equations |
+| B10: cooperation with P_trace | P_boundary P_trace maps trace/volume residual to exterior-neutral support | RECOMMENDED | composition law P_boundary P_trace |
+| B11: cooperation with P_recombination | boundary-neutral zeta/kappa inserted into g_ij once | REQUIRED | P_recombination definition |
+| B12: no scalar radiation at boundary | boundary projector is not a radiative outgoing condition for scalar mode | FORBIDDEN | parent scalar-radiation exclusion |
+[WARN] compact P_boundary ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 1
+FORBIDDEN: 1
+RECOMMENDED: 1
+REQUIRED: 8
+STRUCTURAL: 1
+
+Interpretation:
+  P_boundary has a clearer job than P_trace:
+    enforce exterior neutrality, zero flux, zero charge, and mass preservation.
+  Compact profiles are useful diagnostics but not derivations.
+  P_boundary must cooperate with P_trace and P_recombination.
+[WARN] P_boundary status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Minimal P_boundary requirement bundle
+========================================================================================================================
+Current operational bundle:
+
+  P_boundary =
+    exterior zeta/kappa neutrality
+    + zero boundary flux
+    + zero volume/kappa charge
+    + A-sector mass protection
+    + shell-source avoidance
+
+Composition target:
+
+  P_boundary P_trace
+
+Meaning:
+  trace/volume residual is projected into a boundary-neutral sector.
+[PASS] minimal P_boundary bundle stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+P_boundary fails if:
+
+1. zeta_ext has a 1/r tail
+2. kappa_ext has a 1/r tail
+3. F_zeta(R+) or F_kappa(R+) is nonzero
+4. Q_volume or Q_kappa is nonzero
+5. delta M_ext changes
+6. a hidden shell source appears
+7. compact profile tests are mistaken for derivation
+8. boundary neutralization becomes scalar radiation
+9. P_boundary and P_recombination both add trace corrections
+[WARN] P_boundary failure controls stated: RISK
+
+========================================================================================================================
+Case 6: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_boundary_projector_for_volume_neutrality.md
+   Artifact for this script.
+
+2. candidate_recombination_projector_for_trace_volume.py
+   Define how A, zeta, and kappa assemble without double-counting.
+
+3. candidate_boundary_mass_preservation_theorem.py
+   Focus specifically on delta M_ext = 0 under boundary-neutral volume modes.
+
+Recommended next script:
+
+  candidate_recombination_projector_for_trace_volume.py
+
+Reason:
+  P_boundary is now separated. The next risk is recombination double-counting of A, zeta, and kappa.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+P_boundary is responsible for:
+
+  exterior zeta/kappa neutrality
+  zero boundary flux
+  zero volume/kappa charge
+  A-sector mass protection
+  shell-source avoidance
+
+It should compose with P_trace:
+
+  P_boundary P_trace
+
+Possible next artifact:
+  candidate_boundary_projector_for_volume_neutrality.md
+
+Possible next script:
+  candidate_recombination_projector_for_trace_volume.py

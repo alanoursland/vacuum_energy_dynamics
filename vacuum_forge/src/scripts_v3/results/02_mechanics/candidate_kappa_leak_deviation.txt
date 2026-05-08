@@ -1,0 +1,175 @@
+
+========================================================================================================
+Candidate Kappa-Leak Deviation
+========================================================================================================
+
+========================================================================================================
+Case 0: Baseline compensated exterior
+========================================================================================================
+kappa = 0
+s = -2*eps
+A = exp(-2*eps)
+B = exp(2*eps)
+AB = 1
+
+A series = 2*eps**2 - 2*eps + 1
+B series = 2*eps**2 + 2*eps + 1
+AB series = 1
+[PASS] baseline A first order is 1 - 2 eps
+[PASS] baseline B first order is 1 + 2 eps
+[PASS] baseline AB = 1 exactly
+
+========================================================================================================
+Case 1: Constant fractional kappa leak
+========================================================================================================
+kappa = eps*lambda_k
+s = -2*eps
+A = exp(eps*lambda_k - 2*eps)
+B = exp(eps*lambda_k + 2*eps)
+AB = exp(2*eps*lambda_k)
+
+A series = eps**2*(lambda_k**2/2 - 2*lambda_k + 2) + eps*(lambda_k - 2) + 1
+B series = eps**2*(lambda_k**2/2 + 2*lambda_k + 2) + eps*(lambda_k + 2) + 1
+AB series = 2*eps**2*lambda_k**2 + 2*eps*lambda_k + 1
+[PASS] A first-order coefficient is lambda_k - 2
+[PASS] B first-order coefficient is lambda_k + 2
+[PASS] AB first-order coefficient is 2 lambda_k
+
+========================================================================================================
+Case 2: Gamma-like proxy from temporal normalization
+========================================================================================================
+Temporal normalization:
+  A ≈ 1 + (lambda_k - 2) eps
+  Set A ≈ 1 - 2 eps_N
+  eps_N = (2 - lambda_k) eps / 2
+
+Spatial coefficient:
+  B ≈ 1 + (lambda_k + 2) eps
+  B ≈ 1 + 2 gamma_eff eps_N
+
+gamma_eff = (-lambda_k - 2)/(lambda_k - 2)
+gamma_eff - 1 = -2*lambda_k/(lambda_k - 2)
+small lambda series gamma_eff = lambda_k**2/2 + lambda_k + 1
+[PASS] gamma_eff - 1 = 2 lambda_k/(2-lambda_k)
+
+Interpretation:
+  For small lambda_k, gamma_eff - 1 ≈ lambda_k.
+  Thus weak-field gamma constraints would strongly bound ordinary static kappa leak.
+
+========================================================================================================
+Case 3: Newtonian temporal normalization pressure
+========================================================================================================
+If eps = GM/(r c²) is fixed by observed Newtonian acceleration,
+then A must have first-order coefficient -2.
+
+A first-order coefficient = lambda_k - 2
+solve lambda_k - 2 = -2 -> [0]
+[PASS] Newtonian normalization forces lambda_k=0 in this simple leak model
+
+Interpretation:
+  A constant kappa leak changes both temporal and radial first-order coefficients.
+  If the temporal coefficient is already fixed by Newtonian observations,
+  a constant proportional leak is not freely allowed.
+
+========================================================================================================
+Case 4: Decaying kappa leak profile
+========================================================================================================
+eps(r) = G*M/(c**2*r)
+kappa(r) = G*M*eta*exp(-r/L)/(c**2*r)
+s(r) = -2*G*M/(c**2*r)
+A = exp(kappa+s) = exp(G*M*eta*exp(-r/L)/(c**2*r) - 2*G*M/(c**2*r))
+B = exp(kappa-s) = exp(G*M*eta*exp(-r/L)/(c**2*r) + 2*G*M/(c**2*r))
+AB = exp(2*G*M*eta*exp(-r/L)/(c**2*r))
+
+Large-radius behavior:
+  kappa/eps = eta exp(-r/L)
+  so gamma-like deviation proxy ≈ eta exp(-r/L) for small leak.
+
+[PASS] decaying leak vanishes asymptotically
+
+========================================================================================================
+Case 5: Power-law kappa leak profile
+========================================================================================================
+eps(r) = G*M/(c**2*r)
+kappa(r) = G*M*eta*(R0/r)**n/(c**2*r)
+s(r) = -2*G*M/(c**2*r)
+A = exp(G*M*eta*(R0/r)**n/(c**2*r) - 2*G*M/(c**2*r))
+B = exp(G*M*eta*(R0/r)**n/(c**2*r) + 2*G*M/(c**2*r))
+AB = exp(2*G*M*R0**n*eta*r**(-n - 1)/c**2)
+
+Leak ratio:
+  kappa/eps = eta*(R0/r)**n
+
+For n>0, the leak becomes smaller at large radius.
+For n=0, this reduces to the constant fractional leak case.
+[PASS] power-law leak is a tunable deviation profile
+
+========================================================================================================
+Case 6: Mixed exchange + creation source as kappa leak origin
+========================================================================================================
+E = -C*kappa + C_k*kappa**2 + C_s*s**2 - S*s
+Stationary equations:
+  Eq(-C + 2*C_k*kappa, 0)
+  Eq(2*C_s*s - S, 0)
+Solutions: [{kappa: C/(2*C_k), s: S/(2*C_s)}]
+kappa_eq = C/(2*C_k)
+s_eq = S/(2*C_s)
+AB = exp(C/C_k)
+[PASS] mixed source produces nonzero kappa leak
+[PASS] mixed source preserves shear channel
+[PASS] mixed source breaks reciprocal scaling generically
+
+Interpretation:
+  A small traceful creation/destruction component mixed into exchange
+  is a natural reduced source for kappa leak.
+
+========================================================================================================
+Case 7: Observational pressure summary
+========================================================================================================
+Kappa leak affects weak-field observables because:
+
+  AB = exp(2 kappa)
+
+For kappa = lambda_k eps and s = -2 eps:
+
+  A ≈ 1 + (lambda_k - 2) eps
+  B ≈ 1 + (lambda_k + 2) eps
+  gamma_eff = (2 + lambda_k)/(2 - lambda_k)
+  gamma_eff - 1 ≈ lambda_k for small lambda_k
+
+Therefore:
+  ordinary static exterior kappa leak should be very small,
+  or hidden in regimes where weak-field constraints do not apply.
+
+This script does not apply real observational bounds.
+It identifies the first reduced deviation proxy.
+
+========================================================================================================
+Final interpretation
+========================================================================================================
+This kappa-leak toy shows:
+
+1. Baseline compensated exterior:
+     kappa = 0, s = -2 eps
+     A ≈ 1 - 2 eps
+     B ≈ 1 + 2 eps
+     AB = 1
+
+2. Constant fractional kappa leak:
+     kappa = lambda_k eps
+     A ≈ 1 + (lambda_k - 2) eps
+     B ≈ 1 + (lambda_k + 2) eps
+     AB ≈ 1 + 2 lambda_k eps
+
+3. Gamma-like proxy:
+     gamma_eff = (2 + lambda_k)/(2 - lambda_k)
+     gamma_eff - 1 ≈ lambda_k
+
+4. Mixed exchange+creation sources naturally produce kappa leak.
+
+Conclusion:
+  Kappa leak is the first clean reduced deviation channel.
+  It should be tightly constrained in ordinary weak-field static exteriors.
+
+Possible next artifact:
+  kappa_leak_deviation_lab_report.md

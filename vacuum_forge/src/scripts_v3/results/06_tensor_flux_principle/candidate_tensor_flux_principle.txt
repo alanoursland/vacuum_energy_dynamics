@@ -1,0 +1,143 @@
+
+========================================================================================================================
+Candidate Tensor Flux Principle
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Tensor-flux principle statement
+========================================================================================================================
+Working principle:
+
+  A-flux is the scalar monopole vacuum-response channel.
+  h_ij^TT is the tensor quadrupole radiative channel.
+
+Do not force waves into A.
+Do not treat scalar flux as a complete gravity theory.
+
+Instead:
+  build a multi-sector vacuum-response theory.
+[PASS] tensor-flux principle posed
+
+========================================================================================================================
+Case 1: Scalar monopole channel
+========================================================================================================================
+Scalar A-flux channel:
+
+  M -> F_A
+
+F_A = 8*pi*G*M/c**2
+
+Interpretation:
+  monopole mass controls scalar A-flux.
+[PASS] monopole scalar channel stated
+
+========================================================================================================================
+Case 2: Scalar no-wave guardrail
+========================================================================================================================
+Scalar spatial perturbation:
+Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
+
+trace = -6*psi
+trace-free projection:
+Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+[PASS] scalar mode is pure trace
+[PASS] scalar mode has zero trace-free tensor content
+
+========================================================================================================================
+Case 3: Tensor TT channel
+========================================================================================================================
+e_plus =
+Matrix([[1, 0, 0], [0, -1, 0], [0, 0, 0]])
+
+e_cross =
+Matrix([[0, 1, 0], [1, 0, 0], [0, 0, 0]])
+
+H_TT =
+Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
+
+trace(H_TT) = 0
+[PASS] TT tensor channel has two polarizations
+
+========================================================================================================================
+Case 4: Tensor wave propagation
+========================================================================================================================
+h = H*cos(k*z - omega*t)
+Box h = H*(c**2*k**2 - omega**2)*cos(k*z - omega*t)/c**2
+Box h / h = k**2 - omega**2/c**2
+
+Wave condition:
+  omega^2 = c^2 k^2
+[PASS] TT amplitude supports wave dispersion relation
+
+========================================================================================================================
+Case 5: Quadrupole source projection
+========================================================================================================================
+Q_TF =
+Matrix([[2*Q_xx/3 - Q_yy/3 - Q_zz/3, Q_xy, Q_xz], [Q_xy, -Q_xx/3 + 2*Q_yy/3 - Q_zz/3, Q_yz], [Q_xz, Q_yz, -Q_xx/3 - Q_yy/3 + 2*Q_zz/3]])
+
+Q_plus = Q_xx/2 - Q_yy/2
+Q_cross = Q_xy
+[PASS] quadrupole projects into plus channel
+[PASS] quadrupole projects into cross channel
+
+========================================================================================================================
+Case 6: Time-derivative distinction
+========================================================================================================================
+Q_plus = Q0*cos(2*Omega*t)
+Q_cross = Q0*sin(2*Omega*t)
+
+second-derivative amplitude proxy = 16*Omega**4*Q0**2
+third-derivative power proxy = 64*Omega**6*Q0**2
+[PASS] amplitude proxy uses second derivatives
+[PASS] power proxy uses third derivatives
+
+========================================================================================================================
+Case 7: Multi-channel vacuum-response map
+========================================================================================================================
+| Channel | Variable | Source object | Role |
+|---|---|---|---|
+| scalar monopole | A | M / rho | Newtonian potential, static flux |
+| trace interior | kappa | pressure / trace candidate | matter response |
+| vector current | W_i | mass current / angular momentum | frame dragging |
+| tensor quadrupole | h_ij^TT | Q_ij^TF derivatives | radiation |
+
+[PASS] multi-channel map stated
+
+========================================================================================================================
+Case 8: Classification
+========================================================================================================================
+Results:
+
+1. Scalar A-flux is the monopole channel.
+2. Scalar A has no TT wave content.
+3. TT tensor basis supplies plus/cross polarizations.
+4. TT amplitudes support wave propagation.
+5. Trace-free quadrupole projects onto plus/cross channels.
+6. Changing quadrupole structure is the source-side tensor object.
+7. Tensor-flux principle should be a multi-sector principle, not scalar-only.
+
+[PASS] tensor-flux principle passes structural checks
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The tensor-flux principle is now structurally defined:
+
+  A-flux = scalar monopole vacuum-response channel
+  h_ij^TT = tensor quadrupole radiative channel
+
+This does not yet derive GR.
+It organizes the theory so that scalar success and tensor radiation
+belong to different but compatible sectors.
+
+Next steps:
+  normalize tensor coupling
+  derive/source far-zone amplitude
+  define tensor radiation energy flux
+  ensure no unwanted scalar radiation
+
+Possible next artifact:
+  candidate_tensor_flux_principle.md
+
+Possible next script:
+  candidate_quadrupole_coupling_normalization.py

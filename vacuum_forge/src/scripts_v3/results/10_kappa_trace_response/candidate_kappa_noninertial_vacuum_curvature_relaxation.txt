@@ -1,0 +1,272 @@
+
+========================================================================================================================
+Candidate Kappa Non-Inertial Vacuum-Curvature Relaxation
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Non-inertial kappa relaxation problem
+========================================================================================================================
+Question:
+
+  Can kappa represent local vacuum-curvature equilibration without
+  becoming a propagating breathing-wave degree of freedom?
+
+Working idea:
+
+  each region has a local minimum configuration
+  trace/volume imbalance displaces kappa from that minimum
+  vacuum and curvature exchange configuration energy toward the minimum
+  the exchange has no independent momentum channel
+
+Goal:
+
+  allow local trace relaxation
+  forbid ordinary long-range breathing radiation
+[WARN] non-inertial kappa relaxation problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Bad second-order/inertial model
+========================================================================================================================
+A second-order scalar model has the form:
+
+  kappa_ddot + Gamma kappa_dot + omega0^2 kappa = source
+
+This gives kappa a momentum-like channel:
+
+  pi_kappa ~ kappa_dot
+
+Consequences:
+
+  overshoot possible
+  oscillation possible
+  propagating scalar/breathing wave possible
+
+This is not the preferred kappa interpretation.
+[WARN] second-order inertial kappa is dangerous: RISK — can create breathing radiation
+
+========================================================================================================================
+Case 2: Local vacuum-curvature minimum energy
+========================================================================================================================
+Local minimum energy:
+
+  E = 1/2 K_k (kappa - kappa_min)^2
+
+E = K_k*(kappa - kappa_min)**2/2
+
+Variational slope:
+
+dE/dkappa = K_k*(2*kappa - 2*kappa_min)/2
+
+Interpretation:
+  kappa_min is the local vacuum-curvature equilibrium value.
+  matter trace/pressure may shift kappa_min inside matter.
+  exterior vacuum should have kappa_min = 0.
+[WARN] local quadratic minimum stated: PLAUSIBLE — K_k and kappa_min source law not derived
+
+========================================================================================================================
+Case 3: First-order gradient-flow relaxation
+========================================================================================================================
+Candidate non-inertial relaxation law:
+
+  kappa_dot = -mu_k dE/dkappa
+
+For quadratic minimum:
+
+kappa_dot = K_k*mu_k*(-kappa + kappa_min)
+
+This has no kappa_ddot term.
+Therefore it has no independent kappa momentum channel.
+[WARN] first-order kappa relaxation law stated: PLAUSIBLE — mobility mu_k not derived
+
+========================================================================================================================
+Case 4: Solution has no overshoot
+========================================================================================================================
+For constant kappa_min:
+
+  kappa_dot = -mu_k K_k (kappa - kappa_min)
+
+Solution:
+
+kappa(t) = (kappa_0 + kappa_min*exp(K_k*mu_k*t) - kappa_min)*exp(-K_k*mu_k*t)
+
+The displacement from minimum decays monotonically:
+
+  kappa(t) - kappa_min = [kappa0 - kappa_min] exp(-mu_k K_k t)
+
+No oscillation.
+No overshoot.
+No slosh.
+[PASS] first-order relaxation is monotonic: DERIVED_REDUCED — for fixed local minimum
+
+========================================================================================================================
+Case 5: Energy transfer accounting
+========================================================================================================================
+Energy:
+
+E = K_k*(kappa - kappa_min)**2/2
+
+Gradient-flow law:
+
+kappa_dot = -K_k*mu_k*(2*kappa - 2*kappa_min)/2
+
+Energy derivative:
+
+dE/dt = -K_k**2*mu_k*(kappa - kappa_min)**2
+
+Absorbed/configuration power:
+
+P_absorb = K_k**2*mu_k*(kappa - kappa_min)**2
+
+For mu_k > 0 and K_k > 0:
+  dE/dt <= 0
+  P_absorb >= 0
+
+Interpretation:
+  energy is not destroyed
+  explicit imbalance energy is converted into vacuum configuration/restoration
+[PASS] gradient flow has positive absorption accounting: DERIVED_REDUCED — destination variable E_vac still needs parent ontology
+
+========================================================================================================================
+Case 6: No momentum channel
+========================================================================================================================
+In a wave/oscillator theory:
+
+  L ~ 1/2 kappa_dot^2 - V(kappa)
+  pi_kappa = kappa_dot
+
+This gives kappa independent momentum.
+
+In the proposed non-inertial relaxation law:
+
+  no 1/2 kappa_dot^2 kinetic storage is introduced
+  no independent pi_kappa is promoted
+  kappa moves by mobility down the vacuum-curvature energy gradient
+
+This is why it does not slosh.
+[WARN] non-inertial kappa has no independent momentum channel: CONSTRAINED_BY_IDENTITY — must be implemented without hidden second-order dynamics
+
+========================================================================================================================
+Case 7: Static A-constraint guard
+========================================================================================================================
+The relaxation law must act on:
+
+  kappa - kappa_min
+
+not on:
+
+  A_constraint
+
+The exterior A-sector remains:
+
+  A = 1 - 2GM/(c^2 r)
+
+Forbidden:
+
+  relaxing away the areal mass flux
+  damping the Newtonian/Schwarzschild monopole
+
+Allowed:
+
+  restoring trace/volume imbalance toward local minimum
+  keeping exterior kappa_min = 0
+[WARN] relaxation preserves A-sector if sector split holds: CONSTRAINED_BY_IDENTITY — sector split still must be derived
+
+========================================================================================================================
+Case 8: Source-shifted local minimum
+========================================================================================================================
+Possible source relation:
+
+  kappa_min = chi_k S_trace
+
+kappa_min = S_trace*chi_k
+
+Interpretation:
+  matter trace/pressure does not act as an ordinary wave source.
+  it shifts the local equilibrium configuration.
+  kappa then relaxes toward that equilibrium.
+
+This avoids treating trace source as a radiative scalar charge.
+[WARN] trace source as shifted minimum is plausible: PLAUSIBLE — chi_k and S_trace definition not derived
+
+========================================================================================================================
+Case 9: Exterior condition
+========================================================================================================================
+Exterior vacuum target:
+
+  S_trace = 0
+  kappa_min = 0
+
+Relaxation law:
+
+  kappa_dot = -mu_k K_k kappa
+
+Exterior solution decays toward:
+
+  kappa = 0
+
+If boundary flux is also zero:
+
+  no long-range exterior kappa tail
+  no free breathing wave
+[WARN] exterior vacuum relaxes toward kappa=0: CONSTRAINED_BY_IDENTITY — boundary flux and parent constraint still needed
+
+========================================================================================================================
+Case 10: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| second-order inertial kappa | RISK / disfavored |
+| quadratic local minimum | PLAUSIBLE |
+| first-order gradient-flow law | PLAUSIBLE |
+| monotonic no-overshoot solution | DERIVED_REDUCED |
+| positive absorption accounting | DERIVED_REDUCED |
+| no independent momentum channel | CONSTRAINED_BY_IDENTITY |
+| source as shifted local minimum | PLAUSIBLE |
+| K_k, mu_k, chi_k derivation | MISSING |
+| parent covariant identity | MISSING |
+[WARN] non-inertial relaxation classification produced: CONSTRAINED_BY_IDENTITY — promising control model, not final derivation
+
+========================================================================================================================
+Case 11: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_noninertial_relaxation.md
+   Artifact for this script.
+
+2. candidate_kappa_boundary_layer_model.py
+   Model interior kappa with exterior kappa=0 and no flux.
+
+3. candidate_kappa_trace_response_status_summary.md
+   Summarize group 10 if near stopping point.
+
+Recommended next artifact:
+
+  candidate_kappa_noninertial_vacuum_curvature_relaxation.md
+
+Recommended next script:
+  candidate_kappa_boundary_layer_model.py
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary layer model is next concrete check
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Best refined kappa picture:
+
+  kappa is not a wave.
+  kappa is a non-inertial trace/volume relaxation coordinate.
+  matter trace shifts the local vacuum-curvature minimum.
+  vacuum and curvature exchange configuration energy toward that minimum.
+  there is no independent kappa momentum channel.
+
+Therefore:
+
+  no overshoot
+  no slosh
+  no ordinary breathing radiation
+
+Possible next artifact:
+  candidate_kappa_noninertial_vacuum_curvature_relaxation.md
+
+Possible next script:
+  candidate_kappa_boundary_layer_model.py

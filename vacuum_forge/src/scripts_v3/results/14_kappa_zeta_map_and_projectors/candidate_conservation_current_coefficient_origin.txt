@@ -1,0 +1,297 @@
+
+========================================================================================================================
+Candidate Conservation-Current Coefficient Origin
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Conservation-current coefficient-origin problem
+========================================================================================================================
+Question:
+
+  Can a real conserved current fix c_x/c_s before recovery checks?
+
+Goal:
+
+  test whether conservation-current origin is more than decorative balance language
+
+Discipline:
+
+  define J_A before using it
+  do not choose current coefficients from gamma_like
+  do not use AB=1 as current constraint
+  do not invent source balance to patch recovery
+  do not ignore no-overlap trace theorem
+  defer if conservation only relocates the ratio problem
+[WARN] conservation-current coefficient-origin problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Conservation-current origin inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+CC1: conservation-current target
+------------------------------------------------------------------------------------------------------------------------
+Current: div J_A[A,B_s,T] = 0 fixes r_s = c_x/c_s
+Role: candidate non-tuning origin for stiffness ratio
+Allowed if: J_A is explicitly defined before recovery checks
+Forbidden if: current is decorative or retrofitted to gamma_like
+[WARN] CC1: conservation-current target: CANDIDATE
+Missing: explicit J_A and balance law
+Consequence: could rescue stiffness-ratio origin if non-decorative
+
+------------------------------------------------------------------------------------------------------------------------
+CC2: gradient current
+------------------------------------------------------------------------------------------------------------------------
+Current: J_A^i = a grad^i A + b grad^i B_s
+Role: minimal local current tying A and B_s gradients
+Allowed if: a:b is fixed by source routing or identity before recovery
+Forbidden if: a:b is chosen to force r_s
+[WARN] CC2: gradient current: CANDIDATE
+Missing: origin of a:b
+Consequence: risks moving ratio problem from c_x/c_s to a:b
+
+------------------------------------------------------------------------------------------------------------------------
+CC3: source-balance current
+------------------------------------------------------------------------------------------------------------------------
+Current: div J_A = S_A - S_spatial or equivalent balance equation
+Role: routes source response between A and B_s
+Allowed if: both source terms are defined from same matter/vacuum coupling
+Forbidden if: S_spatial is invented to repair gamma_like
+[WARN] CC3: source-balance current: RISK
+Missing: definition of S_spatial and coupling rule
+Consequence: may derive ratio if source balance is real, but high tuning risk
+
+------------------------------------------------------------------------------------------------------------------------
+CC4: parent balance identity
+------------------------------------------------------------------------------------------------------------------------
+Current: Div E_parent = B_closed[T] + B_relax
+Role: broader conservation/Bianchi-like route
+Allowed if: E_parent, B_closed, and B_relax are defined
+Forbidden if: Bianchi-like words replace an actual operator
+[WARN] CC4: parent balance identity: CANDIDATE
+Missing: parent operator and balance terms
+Consequence: likely necessary if local current is insufficient
+
+------------------------------------------------------------------------------------------------------------------------
+CC5: stiffness-current equivalence
+------------------------------------------------------------------------------------------------------------------------
+Current: J_A derived from variation of coupled stiffness functional
+Role: checks whether current adds new information or restates action
+Allowed if: current imposes an additional identity beyond Euler-Lagrange equations
+Forbidden if: current merely restates q = -c_x/c_s
+[WARN] CC5: stiffness-current equivalence: CONSTRAINED
+Missing: Noether/source-balance relation
+Consequence: prevents conservation route from duplicating stiffness ratio problem
+
+------------------------------------------------------------------------------------------------------------------------
+CC6: current fixes ratio theorem target
+------------------------------------------------------------------------------------------------------------------------
+Current: r_s = r_J[J_A] before gamma/AB checks
+Role: core theorem target for conservation-current branch
+Allowed if: ratio follows from current/balance identity
+Forbidden if: ratio is selected after recovery checks
+[WARN] CC6: current fixes ratio theorem target: THEOREM_TARGET
+Missing: derivation of r_J
+Consequence: decides whether conservation route rescues q-origin
+
+------------------------------------------------------------------------------------------------------------------------
+CC7: decorative conservation failure
+------------------------------------------------------------------------------------------------------------------------
+Current: declare div J_A=0 without defining J_A
+Role: rejected shortcut
+Allowed if: never as derivation
+Forbidden if: used to save coefficient origin
+[WARN] CC7: decorative conservation failure: REJECTED
+Missing: not pursued
+Consequence: kills conservation-current route if no current can be written
+
+------------------------------------------------------------------------------------------------------------------------
+CC8: gamma-like recovery check
+------------------------------------------------------------------------------------------------------------------------
+Current: weak-field output after r_s fixed gives gamma_like=1
+Role: downstream recovery target
+Allowed if: checked after current fixes r_s
+Forbidden if: used to define J_A or r_s
+[WARN] CC8: gamma-like recovery check: RECOVERY_TARGET
+Missing: weak-field map from current-fixed ratio
+Consequence: tests but does not determine the current
+
+------------------------------------------------------------------------------------------------------------------------
+CC9: AB exterior diagnostic check
+------------------------------------------------------------------------------------------------------------------------
+Current: exterior solution after current-fixed r_s gives AB -> 1 diagnostic
+Role: downstream exterior recovery test
+Allowed if: checked after solving equations
+Forbidden if: used as current constraint
+[WARN] CC9: AB exterior diagnostic check: RECOVERY_TARGET
+Missing: exterior solution with current-fixed ratio
+Consequence: keeps AB diagnostic-only
+
+------------------------------------------------------------------------------------------------------------------------
+CC10: no-overlap compatibility
+------------------------------------------------------------------------------------------------------------------------
+Current: current-fixed B_s must not overlap zeta/kappa residual trace
+Role: protects count-once theorem
+Allowed if: overlap operator or residual status theorem is present
+Forbidden if: current fixes ratio but creates trace double-counting
+[WARN] CC10: no-overlap compatibility: THEOREM_TARGET
+Missing: overlap operator or residual theorem
+Consequence: conservation-derived ratio still fails if trace accounting fails
+
+------------------------------------------------------------------------------------------------------------------------
+CC11: conservation route failure
+------------------------------------------------------------------------------------------------------------------------
+Current: no explicit current/balance law fixes r_s before recovery
+Role: good failure / branch defer
+Allowed if: used to move search to volume-exchange or parent identity
+Forbidden if: patched by fitted current
+[WARN] CC11: conservation route failure: DEFER
+Missing: explicit current/balance law
+Consequence: action/stiffness plus conservation cannot derive q locally
+
+------------------------------------------------------------------------------------------------------------------------
+CC12: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Current: attempt minimal gradient-current ledger before volume-exchange branch
+Role: best current concrete conservation test
+Allowed if: a:b origin and shortcut checks are explicit
+Forbidden if: current is only symbolic decoration
+[PASS] CC12: recommended next move: RECOMMENDED
+Missing: minimal current ansatz script
+Consequence: next script should test gradient-current ansatz and whether it merely relocates the ratio
+
+========================================================================================================================
+Case 2: Compact conservation-current ledger
+========================================================================================================================
+| Entry | Current | Status | Consequence |
+|---|---|---|---|
+| CC1: conservation-current target | div J_A[A,B_s,T] = 0 fixes r_s = c_x/c_s | CANDIDATE | could rescue stiffness-ratio origin if non-decorative |
+| CC2: gradient current | J_A^i = a grad^i A + b grad^i B_s | CANDIDATE | risks moving ratio problem from c_x/c_s to a:b |
+| CC3: source-balance current | div J_A = S_A - S_spatial or equivalent balance equation | RISK | may derive ratio if source balance is real, but high tuning risk |
+| CC4: parent balance identity | Div E_parent = B_closed[T] + B_relax | CANDIDATE | likely necessary if local current is insufficient |
+| CC5: stiffness-current equivalence | J_A derived from variation of coupled stiffness functional | CONSTRAINED | prevents conservation route from duplicating stiffness ratio problem |
+| CC6: current fixes ratio theorem target | r_s = r_J[J_A] before gamma/AB checks | THEOREM_TARGET | decides whether conservation route rescues q-origin |
+| CC7: decorative conservation failure | declare div J_A=0 without defining J_A | REJECTED | kills conservation-current route if no current can be written |
+| CC8: gamma-like recovery check | weak-field output after r_s fixed gives gamma_like=1 | RECOVERY_TARGET | tests but does not determine the current |
+| CC9: AB exterior diagnostic check | exterior solution after current-fixed r_s gives AB -> 1 diagnostic | RECOVERY_TARGET | keeps AB diagnostic-only |
+| CC10: no-overlap compatibility | current-fixed B_s must not overlap zeta/kappa residual trace | THEOREM_TARGET | conservation-derived ratio still fails if trace accounting fails |
+| CC11: conservation route failure | no explicit current/balance law fixes r_s before recovery | DEFER | action/stiffness plus conservation cannot derive q locally |
+| CC12: recommended next move | attempt minimal gradient-current ledger before volume-exchange branch | RECOMMENDED | next script should test gradient-current ansatz and whether it merely relocates the ratio |
+[WARN] compact conservation-current ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+CONSTRAINED: 1
+DEFER: 1
+RECOMMENDED: 1
+RECOVERY_TARGET: 2
+REJECTED: 1
+RISK: 1
+THEOREM_TARGET: 2
+
+Interpretation:
+  Conservation-current origin is viable only if J_A is explicit.
+  Minimal gradient currents risk moving the ratio from c_x/c_s to a:b.
+  A parent balance identity may be needed if local current is insufficient.
+  Decorative conservation is rejected.
+[WARN] conservation-current status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Minimal current shape
+========================================================================================================================
+Minimal local current ansatz:
+
+  J_A^i = a grad^i A + b grad^i B_s
+
+Then:
+
+  div J_A = a Delta A + b Delta B_s
+
+Using:
+
+  Delta A = S_A
+  Delta B_s = q S_A
+
+gives:
+
+  div J_A = (a + b q) S_A
+
+For div J_A = 0 with nonzero S_A:
+
+  q = -a/b
+
+Interpretation:
+  conservation fixes q only if a/b is itself derived.
+  Otherwise the ratio problem has merely moved from c_x/c_s to a/b.
+[WARN] minimal current shape stated: THEOREM_TARGET
+
+========================================================================================================================
+Case 5: Good failure / defer outcome
+========================================================================================================================
+Good failure:
+
+  minimal current gives q = -a/b, but no pre-recovery principle fixes a/b.
+
+Consequence:
+
+  local conservation current does not solve q-origin.
+  Move to broader parent balance or volume-exchange identity.
+
+Bad failure:
+  choose a/b from gamma_like=1 and call it conservation.
+[WARN] conservation-current good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Conservation-current origin fails if:
+
+1. J_A is not defined
+2. current coefficients are chosen from gamma_like
+3. current coefficients are chosen from AB=1
+4. source-balance term is invented to repair recovery
+5. current merely restates stiffness ratio
+6. a/b remains free but q is claimed derived
+7. no-overlap theorem is ignored after current fixes q
+8. parent balance terms are named but not defined
+[WARN] conservation-current failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_conservation_current_coefficient_origin.md
+   Artifact for this script.
+
+2. candidate_minimal_gradient_current_ratio_test.py
+   Test whether J_A^i = a grad A + b grad B_s genuinely fixes q or moves the ratio.
+
+3. candidate_volume_exchange_stiffness_ratio_origin.py
+   Move to zeta/vacuum-volume exchange if current route remains free.
+
+Recommended next script:
+
+  candidate_minimal_gradient_current_ratio_test.py
+
+Reason:
+  The conservation route must now test the minimal current shape explicitly before claiming q-origin.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Conservation current can fix q only if the current coefficient ratio is derived.
+
+Minimal current:
+  J_A^i = a grad^i A + b grad^i B_s
+
+gives:
+  q = -a/b
+
+This is useful only if a/b is fixed before recovery checks.
+
+Best next test:
+  candidate_minimal_gradient_current_ratio_test.py

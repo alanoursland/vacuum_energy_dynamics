@@ -1,0 +1,343 @@
+
+========================================================================================================================
+Candidate Volume Flux Direction Law
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Volume flux direction problem
+========================================================================================================================
+Question:
+
+  How does a scalar creation / relaxation balance become a vector current?
+
+Goal:
+
+  inventory possible direction laws for J_V
+
+Discipline:
+
+  do not treat scalar Sigma_V - R_V as a flux direction
+  do not choose flux direction from recovery targets
+  do not use acausal repair currents
+  preserve boundary neutrality
+  preserve no-overlap / residual-kill
+  keep timelike-domain test downstream
+[WARN] volume flux direction problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Volume flux direction inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+FD1: flux-direction target
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V must have a direction / transport law in addition to div J_V = Sigma_V - R_V
+Role: core missing object for defining J_V
+Allowed if: direction follows from exchange ontology before recovery checks
+Forbidden if: direction is chosen to cancel exterior charge or fit gamma/AB
+[WARN] FD1: flux-direction target: THEOREM_TARGET
+Missing: flux direction law
+Consequence: decides whether J_V can become more than a divergence placeholder
+
+------------------------------------------------------------------------------------------------------------------------
+FD2: scalar source insufficiency
+------------------------------------------------------------------------------------------------------------------------
+Direction law: Sigma_V - R_V supplies divergence strength, not vector direction
+Role: negative structural result
+Allowed if: used as constraint on candidate laws
+Forbidden if: scalar source is treated as current direction
+[WARN] FD2: scalar source insufficiency: REQUIRED
+Missing: not a missing law; a guardrail
+Consequence: prevents scalar source from masquerading as J_V
+
+------------------------------------------------------------------------------------------------------------------------
+FD3: zeta-gradient flux
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V^mu ~ -D_z nabla^mu zeta
+Role: minimal constitutive volume-flow candidate
+Allowed if: grad zeta is physically meaningful, domain-limited, and non-radiative
+Forbidden if: used where grad zeta is spacelike/null/zero or creates exterior scalar flux
+[WARN] FD3: zeta-gradient flux: RISK
+Missing: domain, sign, D_z origin, no-scalar-flux theorem
+Consequence: tempting but likely not a general u_vac-defining current
+
+------------------------------------------------------------------------------------------------------------------------
+FD4: exchange-potential flux
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V^mu ~ -D_V nabla^mu Phi_V where Phi_V is volume-exchange potential
+Role: potential-driven flux candidate
+Allowed if: Phi_V is defined independently of recovery targets
+Forbidden if: Phi_V is invented as a name for whatever direction is needed
+[WARN] FD4: exchange-potential flux: CANDIDATE
+Missing: definition of Phi_V and D_V origin
+Consequence: could define direction if exchange potential becomes real
+
+------------------------------------------------------------------------------------------------------------------------
+FD5: source-gradient flux
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V^mu follows gradient of Sigma_V or source density/support profile
+Role: source-local flux candidate
+Allowed if: gradient law is compact and boundary-neutral
+Forbidden if: source-gradient creates exterior scalar tail or acausal repair
+[WARN] FD5: source-gradient flux: RISK
+Missing: support law and causality/locality rule
+Consequence: may localize redistribution but can become repair current
+
+------------------------------------------------------------------------------------------------------------------------
+FD6: relaxation-gradient flux
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V^mu follows gradient of relaxation target, e.g. nabla(zeta-zeta_min)
+Role: return-flow / restoration flux candidate
+Allowed if: zeta_min and relaxation target are independently defined
+Forbidden if: zeta_min chosen to cancel exterior charge
+[WARN] FD6: relaxation-gradient flux: RISK
+Missing: zeta_min, target origin, boundary theorem
+Consequence: could align flux with R_V but risks coefficient/boundary patching
+
+------------------------------------------------------------------------------------------------------------------------
+FD7: causal transport current
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V obeys first-order transport with finite characteristic speed
+Role: dynamic current candidate
+Allowed if: transport law is derived and does not become Box zeta
+Forbidden if: creates ordinary scalar radiation or acausal repair
+[WARN] FD7: causal transport current: CANDIDATE
+Missing: transport equation, characteristic structure, source coupling
+Consequence: stronger than elliptic repair but requires new dynamics
+
+------------------------------------------------------------------------------------------------------------------------
+FD8: zero-flux local exchange
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V = 0 locally while Sigma_V and R_V balance pointwise
+Role: local exchange / no-transport branch
+Allowed if: Sigma_V = R_V pointwise or by local constraint
+Forbidden if: used where nonzero transport is needed for u_vac
+[WARN] FD8: zero-flux local exchange: SAFE_IF
+Missing: pointwise balance law and implication for u_vac
+Consequence: protects exterior neutrality but cannot define u_vac from J_V
+
+------------------------------------------------------------------------------------------------------------------------
+FD9: compact-support redistribution
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V nonzero only inside compact support with zero boundary flux
+Role: ordinary-sector safety branch
+Allowed if: support and zero-flux theorem are explicit
+Forbidden if: used as nonlocal/acausal repair current
+[WARN] FD9: compact-support redistribution: CANDIDATE
+Missing: support law, flux direction inside support
+Consequence: can preserve exterior neutrality but still needs internal direction law
+
+------------------------------------------------------------------------------------------------------------------------
+FD10: elliptic repair current
+------------------------------------------------------------------------------------------------------------------------
+Direction law: choose J_V by solving div J_V = Sigma_V - R_V with boundary conditions after the fact
+Role: dangerous mathematical completion
+Allowed if: only as diagnostic constraint solution, not physical current
+Forbidden if: used as transport law or ontology
+[WARN] FD10: elliptic repair current: RISK
+Missing: physical direction / causality
+Consequence: may be useful diagnostic but does not define real flux
+
+------------------------------------------------------------------------------------------------------------------------
+FD11: acausal repair current
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V chosen nonlocally to cancel scalar charge or enforce exterior neutrality
+Role: forbidden shortcut
+Allowed if: never in ordinary branch
+Forbidden if: accepted as exchange current
+[WARN] FD11: acausal repair current: REJECTED
+Missing: not pursued
+Consequence: would make exchange continuity a boundary-tuning device
+
+------------------------------------------------------------------------------------------------------------------------
+FD12: boundary neutrality requirement
+------------------------------------------------------------------------------------------------------------------------
+Direction law: any flux law must have zero exterior scalar charge / zero forbidden far-zone flux
+Role: ordinary-sector safety guard
+Allowed if: boundary theorem is attached to flux law
+Forbidden if: J_V leaks scalar flux or changes M_ext
+[WARN] FD12: boundary neutrality requirement: REQUIRED
+Missing: boundary theorem for candidate flux law
+Consequence: kills flux laws that become scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+FD13: no-overlap requirement
+------------------------------------------------------------------------------------------------------------------------
+Direction law: J_V-driven zeta enters metric only through B_s, or residual trace killed/non-metric
+Role: count-once recombination guard
+Allowed if: overlap theorem or residual-kill theorem is explicit
+Forbidden if: flux law creates independent residual metric trace
+[WARN] FD13: no-overlap requirement: REQUIRED
+Missing: no-overlap theorem tied to flux
+Consequence: prevents current from reintroducing zeta/kappa scalar duplicate
+
+------------------------------------------------------------------------------------------------------------------------
+FD14: timelike-domain dependency
+------------------------------------------------------------------------------------------------------------------------
+Direction law: after a flux law survives, test whether J_V^2 < 0 and J_V != 0 where u_vac is used
+Role: next viability gate
+Allowed if: tested after candidate direction exists
+Forbidden if: normalizing J_V before domain is known
+[WARN] FD14: timelike-domain dependency: REQUIRED
+Missing: timelike/nonzero domain theorem
+Consequence: sets next script if a direction candidate survives
+
+------------------------------------------------------------------------------------------------------------------------
+FD15: recovery downstream
+------------------------------------------------------------------------------------------------------------------------
+Direction law: gamma_like and AB checked only after flux, Sigma/R, and domain are defined
+Role: ordinary-regime recovery target
+Allowed if: kept downstream
+Forbidden if: used to choose D_z, Phi_V, support, or transport speed
+[WARN] FD15: recovery downstream: RECOVERY_TARGET
+Missing: solutions after current law
+Consequence: keeps recovery from becoming construction
+
+------------------------------------------------------------------------------------------------------------------------
+FD16: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Direction law: if a direction candidate survives, test timelike/nonzero domain for J_V
+Role: best next bottleneck
+Allowed if: flux direction inventory leaves at least one candidate alive
+Forbidden if: jumping to domain without a direction candidate
+[PASS] FD16: recommended next move: RECOMMENDED
+Missing: timelike domain test
+Consequence: next script should test whether surviving J_V candidates can define u_vac
+
+========================================================================================================================
+Case 2: Compact flux-direction ledger
+========================================================================================================================
+| Entry | Direction law | Status | Consequence |
+|---|---|---|---|
+| FD1: flux-direction target | J_V must have a direction / transport law in addition to div J_V = Sigma_V - R_V | THEOREM_TARGET | decides whether J_V can become more than a divergence placeholder |
+| FD2: scalar source insufficiency | Sigma_V - R_V supplies divergence strength, not vector direction | REQUIRED | prevents scalar source from masquerading as J_V |
+| FD3: zeta-gradient flux | J_V^mu ~ -D_z nabla^mu zeta | RISK | tempting but likely not a general u_vac-defining current |
+| FD4: exchange-potential flux | J_V^mu ~ -D_V nabla^mu Phi_V where Phi_V is volume-exchange potential | CANDIDATE | could define direction if exchange potential becomes real |
+| FD5: source-gradient flux | J_V^mu follows gradient of Sigma_V or source density/support profile | RISK | may localize redistribution but can become repair current |
+| FD6: relaxation-gradient flux | J_V^mu follows gradient of relaxation target, e.g. nabla(zeta-zeta_min) | RISK | could align flux with R_V but risks coefficient/boundary patching |
+| FD7: causal transport current | J_V obeys first-order transport with finite characteristic speed | CANDIDATE | stronger than elliptic repair but requires new dynamics |
+| FD8: zero-flux local exchange | J_V = 0 locally while Sigma_V and R_V balance pointwise | SAFE_IF | protects exterior neutrality but cannot define u_vac from J_V |
+| FD9: compact-support redistribution | J_V nonzero only inside compact support with zero boundary flux | CANDIDATE | can preserve exterior neutrality but still needs internal direction law |
+| FD10: elliptic repair current | choose J_V by solving div J_V = Sigma_V - R_V with boundary conditions after the fact | RISK | may be useful diagnostic but does not define real flux |
+| FD11: acausal repair current | J_V chosen nonlocally to cancel scalar charge or enforce exterior neutrality | REJECTED | would make exchange continuity a boundary-tuning device |
+| FD12: boundary neutrality requirement | any flux law must have zero exterior scalar charge / zero forbidden far-zone flux | REQUIRED | kills flux laws that become scalar gravity |
+| FD13: no-overlap requirement | J_V-driven zeta enters metric only through B_s, or residual trace killed/non-metric | REQUIRED | prevents current from reintroducing zeta/kappa scalar duplicate |
+| FD14: timelike-domain dependency | after a flux law survives, test whether J_V^2 < 0 and J_V != 0 where u_vac is used | REQUIRED | sets next script if a direction candidate survives |
+| FD15: recovery downstream | gamma_like and AB checked only after flux, Sigma/R, and domain are defined | RECOVERY_TARGET | keeps recovery from becoming construction |
+| FD16: recommended next move | if a direction candidate survives, test timelike/nonzero domain for J_V | RECOMMENDED | next script should test whether surviving J_V candidates can define u_vac |
+[WARN] compact flux-direction ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+RECOMMENDED: 1
+RECOVERY_TARGET: 1
+REJECTED: 1
+REQUIRED: 4
+RISK: 4
+SAFE_IF: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  Scalar Sigma_V - R_V does not determine J_V direction.
+  Zeta-gradient, source-gradient, and relaxation-gradient fluxes are risky.
+  Exchange-potential and causal-transport currents are candidates if their mechanisms are defined.
+  Zero-flux local exchange is safe for neutrality but cannot define u_vac from J_V.
+  If a current survives, the next bottleneck is timelike/nonzero domain.
+[WARN] flux-direction status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Direction decision tree
+========================================================================================================================
+Decision tree:
+
+1. Zeta-gradient flux:
+   tempting minimal law, but likely domain-limited and scalar-flux risky.
+
+2. Exchange-potential flux:
+   candidate only if Phi_V is independently defined.
+
+3. Source-gradient / relaxation-gradient flux:
+   may localize flow, but risks patching boundary behavior.
+
+4. Causal transport:
+   strongest physical current if derived, but introduces new dynamics.
+
+5. Zero-flux local exchange:
+   safe but cannot define u_vac by normalized J_V.
+
+6. Acausal repair current:
+   rejected.
+[PASS] flux-direction decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  no flux direction can be specified without acausal repair,
+  recovery tuning, exterior scalar charge, or residual trace overlap.
+
+Consequence:
+
+  J_V remains a theorem target.
+  Exchange continuity cannot yet define u_vac.
+
+Bad failure:
+  solve div J_V = Sigma_V - R_V after the fact and call that the current law.
+[WARN] flux-direction good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Flux-direction law fails if:
+
+1. scalar Sigma_V - R_V is treated as vector direction
+2. direction is chosen from gamma_like or AB
+3. direction is chosen to cancel exterior scalar charge
+4. zeta-gradient flux creates far-zone scalar flux
+5. elliptic repair is promoted to physical transport
+6. causal transport becomes Box zeta or scalar radiation
+7. J_V creates residual metric trace outside B_s
+8. boundary neutrality is absent
+9. timelike/nonzero domain is skipped
+[WARN] flux-direction failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_volume_flux_direction_law.md
+   Artifact for this script.
+
+2. candidate_timelike_domain_for_volume_current.py
+   Test J_V^2 < 0 and J_V != 0 for surviving current candidates.
+
+3. candidate_exchange_continuity_early_failure_summary.py
+   Use if all flux-direction routes fail or are decorative.
+
+Recommended next script:
+
+  candidate_timelike_domain_for_volume_current.py
+
+Reason:
+  If the flux-direction inventory leaves candidate currents alive, the next gate is whether any can define u_vac through a timelike/nonzero domain.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The source side gives divergence, not direction.
+
+Best current interpretation:
+
+  J_V needs an independent flux / transport law.
+
+If a direction candidate survives, the next missing object is:
+
+  timelike / nonzero domain
+
+Best next test:
+  candidate_timelike_domain_for_volume_current.py

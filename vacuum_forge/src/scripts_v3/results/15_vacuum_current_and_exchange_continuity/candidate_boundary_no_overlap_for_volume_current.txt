@@ -1,0 +1,342 @@
+
+========================================================================================================================
+Candidate Boundary/No-Overlap For Volume Current
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Boundary/no-overlap problem
+========================================================================================================================
+Question:
+
+  Does surviving J_V-driven volume exchange leak through the boundary
+  or double-count B_s / residual trace?
+
+Goal:
+
+  audit boundary neutrality and count-once recombination for volume current
+
+Discipline:
+
+  do not tune boundary terms to hide leakage
+  do not let J_V shift M_ext
+  do not let zeta/kappa residual duplicate B_s trace
+  distinguish diagnostic elliptic completion from physical flux law
+  preserve no far-zone scalar flux
+  keep gamma/AB recovery downstream
+[WARN] boundary/no-overlap problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Boundary/no-overlap inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+BO1: boundary/no-overlap target
+------------------------------------------------------------------------------------------------------------------------
+Test: J_V-driven zeta has zero exterior leakage and no overlap with B_s/residual trace
+Role: core safety condition for surviving volume-current families
+Allowed if: boundary neutrality and no-overlap are structural, not tuned
+Forbidden if: boundary terms or residual trace are adjusted to hide leakage
+[WARN] BO1: boundary/no-overlap target: THEOREM_TARGET
+Missing: boundary theorem and no-overlap operator
+Consequence: decides whether volume current can survive ordinary recombination
+
+------------------------------------------------------------------------------------------------------------------------
+BO2: zero exterior J_V flux
+------------------------------------------------------------------------------------------------------------------------
+Test: n_mu J_V^mu | boundary = 0 or exterior flux integrates to zero structurally
+Role: boundary flux neutrality condition
+Allowed if: zero flux follows from support, symmetry, or exchange law
+Forbidden if: boundary flux is canceled by fitted counterterm
+[WARN] BO2: zero exterior J_V flux: REQUIRED
+Missing: boundary flux theorem
+Consequence: kills current laws that leak scalar volume flux
+
+------------------------------------------------------------------------------------------------------------------------
+BO3: zero exterior zeta/kappa charge
+------------------------------------------------------------------------------------------------------------------------
+Test: Q_ext[zeta,kappa,J_V] = 0 for ordinary static exterior
+Role: exterior scalar-charge guard
+Allowed if: charge vanishes by projection/boundary mechanism
+Forbidden if: exterior scalar charge is canceled by R_V tuning
+[WARN] BO3: zero exterior zeta/kappa charge: REQUIRED
+Missing: charge definition and zero-charge theorem
+Consequence: prevents volume current from becoming scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+BO4: no far-zone scalar flux
+------------------------------------------------------------------------------------------------------------------------
+Test: F_scalar_far[J_V,zeta,kappa] = 0
+Role: ordinary radiation/exterior guard
+Allowed if: far-zone scalar flux is structurally absent
+Forbidden if: J_V sources ordinary scalar radiation or tail
+[WARN] BO4: no far-zone scalar flux: REQUIRED
+Missing: far-zone flux theorem
+Consequence: protects TT-only ordinary radiation target
+
+------------------------------------------------------------------------------------------------------------------------
+BO5: no exterior mass shift
+------------------------------------------------------------------------------------------------------------------------
+Test: delta M_ext|volume = 0
+Role: A-sector mass protection
+Allowed if: volume exchange recombines without changing exterior A mass
+Forbidden if: J_V/Sigma/R shifts M_ext independently
+[WARN] BO5: no exterior mass shift: REQUIRED
+Missing: mass-accounting theorem
+Consequence: kills volume-current families that alter A-sector mass
+
+------------------------------------------------------------------------------------------------------------------------
+BO6: B_s-only metric insertion
+------------------------------------------------------------------------------------------------------------------------
+Test: J_V-driven zeta affects metric scalar trace only through B_s / A_spatial companion channel
+Role: safe companion accounting branch
+Allowed if: residual zeta trace is killed or non-metric
+Forbidden if: zeta also appears as independent residual metric trace
+[WARN] BO6: B_s-only metric insertion: CANDIDATE
+Missing: F_zeta/B_s insertion rule
+Consequence: may preserve volume-current branch without scalar duplicate
+
+------------------------------------------------------------------------------------------------------------------------
+BO7: residual zeta/kappa killed or non-metric
+------------------------------------------------------------------------------------------------------------------------
+Test: zeta_residual_metric = 0 or non-metric; kappa remains diagnostic/non-metric/separately neutral
+Role: residual-kill condition
+Allowed if: residual status is explicit
+Forbidden if: residual sector restores the same scalar trace
+[WARN] BO7: residual zeta/kappa killed or non-metric: REQUIRED
+Missing: residual-kill theorem and kappa cleanup
+Consequence: prevents trace double-counting
+
+------------------------------------------------------------------------------------------------------------------------
+BO8: no-overlap operator theorem
+------------------------------------------------------------------------------------------------------------------------
+Test: O[B_s, zeta_residual/kappa_residual, J_V] = 0
+Role: count-once theorem target
+Allowed if: overlap operator is defined or residuals are killed
+Forbidden if: overlap is asserted without mechanism
+[WARN] BO8: no-overlap operator theorem: THEOREM_TARGET
+Missing: overlap operator definition
+Consequence: central missing theorem for recombination safety
+
+------------------------------------------------------------------------------------------------------------------------
+BO9: compact-support current
+------------------------------------------------------------------------------------------------------------------------
+Test: J_V support compact inside source/interior with smooth zero boundary flux
+Role: candidate boundary-safe current family
+Allowed if: support and smoothness follow from exchange law
+Forbidden if: compact support is imposed to hide scalar charge
+[WARN] BO9: compact-support current: CANDIDATE
+Missing: support law and smooth matching theorem
+Consequence: may satisfy boundary neutrality but still needs no-overlap
+
+------------------------------------------------------------------------------------------------------------------------
+BO10: boundary shell-source risk
+------------------------------------------------------------------------------------------------------------------------
+Test: sharp support or source-gradient boundary creates shell-like scalar source
+Role: boundary failure mode
+Allowed if: only as diagnostic risk
+Forbidden if: accepted without shell-avoidance theorem
+[WARN] BO10: boundary shell-source risk: RISK
+Missing: shell-source avoidance theorem
+Consequence: can kill compact/source-gradient current families
+
+------------------------------------------------------------------------------------------------------------------------
+BO11: elliptic boundary completion diagnostic
+------------------------------------------------------------------------------------------------------------------------
+Test: solve boundary-value problem for J_V diagnostically, not ontologically
+Role: diagnostic elliptic completion
+Allowed if: clearly marked diagnostic and not physical flux law
+Forbidden if: promoted to exchange ontology
+[WARN] BO11: elliptic boundary completion diagnostic: SAFE_IF
+Missing: separate physical flux law
+Consequence: may help audit boundary leakage but cannot define J_V
+
+------------------------------------------------------------------------------------------------------------------------
+BO12: forbidden boundary repair
+------------------------------------------------------------------------------------------------------------------------
+Test: choose boundary counterterm / R_V / J_V nonlocally to cancel leakage
+Role: forbidden shortcut
+Allowed if: never as ordinary branch
+Forbidden if: used as boundary neutrality mechanism
+[WARN] BO12: forbidden boundary repair: REJECTED
+Missing: not pursued
+Consequence: prevents boundary tuning from replacing field equation
+
+------------------------------------------------------------------------------------------------------------------------
+BO13: static zero-current branch
+------------------------------------------------------------------------------------------------------------------------
+Test: J_V=0 exterior/static equilibrium, with no residual metric insertion
+Role: safe exterior branch
+Allowed if: frame not required from J_V there or equilibrium fallback exists
+Forbidden if: J_V=0 is normalized or residual trace remains active
+[WARN] BO13: static zero-current branch: SAFE_IF
+Missing: equilibrium-frame fallback if needed
+Consequence: protects exterior but may not define u_vac globally
+
+------------------------------------------------------------------------------------------------------------------------
+BO14: recovery downstream
+------------------------------------------------------------------------------------------------------------------------
+Test: gamma_like and AB tested only after boundary/no-overlap structure is fixed
+Role: ordinary-regime recovery target
+Allowed if: kept downstream
+Forbidden if: used to choose boundary cancellation or overlap split
+[WARN] BO14: recovery downstream: RECOVERY_TARGET
+Missing: solutions after safe recombination
+Consequence: keeps recovery from choosing boundary/no-overlap mechanism
+
+------------------------------------------------------------------------------------------------------------------------
+BO15: branch kill on leakage or overlap
+------------------------------------------------------------------------------------------------------------------------
+Test: boundary leakage, exterior charge, M_ext shift, or trace overlap appears
+Role: branch-kill condition
+Allowed if: used to reject unsafe current family
+Forbidden if: patched by boundary repair or residual relabeling
+[FAIL] BO15: branch kill on leakage or overlap: BRANCH_KILLED
+Missing: applies when failure demonstrated
+Consequence: unsafe current family cannot support ordinary sector
+
+------------------------------------------------------------------------------------------------------------------------
+BO16: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Test: if boundary/no-overlap survives only as theorem target, summarize Group 15 current status
+Role: best next bottleneck
+Allowed if: boundary/no-overlap remains unresolved after audit
+Forbidden if: continuing into field equations with unresolved overlap
+[PASS] BO16: recommended next move: RECOMMENDED
+Missing: Group 15 status summary or no-overlap operator script
+Consequence: next script should either define no-overlap operator or close current subchain with bottleneck
+
+========================================================================================================================
+Case 2: Compact boundary/no-overlap ledger
+========================================================================================================================
+| Entry | Test | Status | Consequence |
+|---|---|---|---|
+| BO1: boundary/no-overlap target | J_V-driven zeta has zero exterior leakage and no overlap with B_s/residual trace | THEOREM_TARGET | decides whether volume current can survive ordinary recombination |
+| BO2: zero exterior J_V flux | n_mu J_V^mu / boundary = 0 or exterior flux integrates to zero structurally | REQUIRED | kills current laws that leak scalar volume flux |
+| BO3: zero exterior zeta/kappa charge | Q_ext[zeta,kappa,J_V] = 0 for ordinary static exterior | REQUIRED | prevents volume current from becoming scalar gravity |
+| BO4: no far-zone scalar flux | F_scalar_far[J_V,zeta,kappa] = 0 | REQUIRED | protects TT-only ordinary radiation target |
+| BO5: no exterior mass shift | delta M_ext/volume = 0 | REQUIRED | kills volume-current families that alter A-sector mass |
+| BO6: B_s-only metric insertion | J_V-driven zeta affects metric scalar trace only through B_s / A_spatial companion channel | CANDIDATE | may preserve volume-current branch without scalar duplicate |
+| BO7: residual zeta/kappa killed or non-metric | zeta_residual_metric = 0 or non-metric; kappa remains diagnostic/non-metric/separately neutral | REQUIRED | prevents trace double-counting |
+| BO8: no-overlap operator theorem | O[B_s, zeta_residual/kappa_residual, J_V] = 0 | THEOREM_TARGET | central missing theorem for recombination safety |
+| BO9: compact-support current | J_V support compact inside source/interior with smooth zero boundary flux | CANDIDATE | may satisfy boundary neutrality but still needs no-overlap |
+| BO10: boundary shell-source risk | sharp support or source-gradient boundary creates shell-like scalar source | RISK | can kill compact/source-gradient current families |
+| BO11: elliptic boundary completion diagnostic | solve boundary-value problem for J_V diagnostically, not ontologically | SAFE_IF | may help audit boundary leakage but cannot define J_V |
+| BO12: forbidden boundary repair | choose boundary counterterm / R_V / J_V nonlocally to cancel leakage | REJECTED | prevents boundary tuning from replacing field equation |
+| BO13: static zero-current branch | J_V=0 exterior/static equilibrium, with no residual metric insertion | SAFE_IF | protects exterior but may not define u_vac globally |
+| BO14: recovery downstream | gamma_like and AB tested only after boundary/no-overlap structure is fixed | RECOVERY_TARGET | keeps recovery from choosing boundary/no-overlap mechanism |
+| BO15: branch kill on leakage or overlap | boundary leakage, exterior charge, M_ext shift, or trace overlap appears | BRANCH_KILLED | unsafe current family cannot support ordinary sector |
+| BO16: recommended next move | if boundary/no-overlap survives only as theorem target, summarize Group 15 current status | RECOMMENDED | next script should either define no-overlap operator or close current subchain with bottleneck |
+[WARN] compact boundary/no-overlap ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 2
+RECOMMENDED: 1
+RECOVERY_TARGET: 1
+REJECTED: 1
+REQUIRED: 5
+RISK: 1
+SAFE_IF: 2
+THEOREM_TARGET: 2
+
+Interpretation:
+  Boundary neutrality requires zero exterior flux, zero scalar charge, no far-zone scalar flux, and no M_ext shift.
+  No-overlap requires B_s-only insertion or killed/non-metric residual zeta/kappa trace.
+  Compact support and static zero-current branches are conditionally safe.
+  Boundary shell sources and nonlocal boundary repair are dangerous.
+  The no-overlap operator remains the central missing theorem if no failure is demonstrated.
+[WARN] boundary/no-overlap status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Boundary/no-overlap decision tree
+========================================================================================================================
+Decision tree:
+
+1. Zero exterior flux / zero exterior charge:
+   mandatory for ordinary sector.
+
+2. B_s-only metric insertion:
+   allowed if residual zeta/kappa metric trace is killed or non-metric.
+
+3. Compact-support current:
+   candidate if smooth boundary flux vanishes structurally.
+
+4. Elliptic boundary completion:
+   diagnostic only, not physical flux ontology.
+
+5. Boundary repair / R_V cancellation:
+   rejected if used to hide leakage.
+
+6. If leakage or overlap appears:
+   current family is killed for ordinary sector.
+[PASS] boundary/no-overlap decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  a candidate current leaks scalar flux through the boundary,
+  shifts M_ext, or double-counts B_s/residual trace.
+
+Consequence:
+
+  reject that current family for ordinary sector.
+  Do not patch with boundary repair or residual relabeling.
+
+Bad failure:
+  call an elliptic boundary solution a physical current law.
+[WARN] boundary/no-overlap good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Boundary/no-overlap test fails if:
+
+1. exterior J_V flux is nonzero
+2. exterior zeta/kappa scalar charge appears
+3. far-zone scalar flux appears
+4. volume exchange shifts M_ext independently of A
+5. zeta enters metric through both B_s and residual trace
+6. kappa restores killed residual trace
+7. boundary shell source appears
+8. elliptic completion is promoted to physical current
+9. recovery checks choose boundary/no-overlap mechanism
+[WARN] boundary/no-overlap failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_boundary_no_overlap_for_volume_current.md
+   Artifact for this script.
+
+2. candidate_no_overlap_operator_for_volume_current.py
+   Try to define O[B_s, zeta_residual/kappa_residual, J_V] = 0.
+
+3. candidate_group_15_intermediate_status_summary.py
+   Use if no-overlap remains a theorem target and current families remain conditional.
+
+Recommended next script:
+
+  candidate_no_overlap_operator_for_volume_current.py
+
+Reason:
+  Boundary neutrality reduces the next missing mechanism to the no-overlap operator for B_s versus residual trace.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Boundary neutrality and no-overlap are now the surviving safety gate.
+
+Best current interpretation:
+
+  J_V-driven zeta is allowed only if it has no exterior leakage
+  and does not double-count B_s / residual trace.
+
+Best next test:
+  candidate_no_overlap_operator_for_volume_current.py

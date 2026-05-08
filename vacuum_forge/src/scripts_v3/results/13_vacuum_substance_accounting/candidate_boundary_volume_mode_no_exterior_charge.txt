@@ -1,0 +1,284 @@
+
+========================================================================================================================
+Candidate Boundary Volume Mode No Exterior Charge
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Boundary volume mode no exterior charge problem
+========================================================================================================================
+Question:
+
+  Can local trace/volume reconfiguration have zero exterior scalar charge?
+
+Goal:
+
+  test compact support, compensation, zero flux, and mass-preservation requirements
+
+Discipline:
+
+  no exterior zeta 1/r tail
+  no exterior kappa 1/r tail
+  no change to M_ext
+  no far-zone scalar flux
+  no boundary mass tuning
+  do not overclaim linear/toy profiles as parent theorem
+[WARN] boundary volume no-charge problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Boundary volume/no-charge inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+VQ1: compact support volume reconfiguration
+------------------------------------------------------------------------------------------------------------------------
+Condition: zeta(r)=0 for r>=R or zeta has compact support
+Allowed meaning: local vacuum-spacetime volume reconfiguration remains interior/local
+Forbidden failure: zeta_ext has long-range 1/r scalar tail
+[WARN] VQ1: compact support volume reconfiguration: SAFE_IF
+Missing: physical reason for compact support from parent projector
+
+------------------------------------------------------------------------------------------------------------------------
+VQ2: zero exterior volume charge
+------------------------------------------------------------------------------------------------------------------------
+Condition: Q_volume = integral S_volume d^3x = 0
+Allowed meaning: volume/trace source is compensated and produces no exterior monopole
+Forbidden failure: Q_volume != 0 produces exterior scalar charge
+[WARN] VQ2: zero exterior volume charge: THEOREM_TARGET
+Missing: definition of S_volume and compensation law
+
+------------------------------------------------------------------------------------------------------------------------
+VQ3: zero boundary flux
+------------------------------------------------------------------------------------------------------------------------
+Condition: F_zeta(R+) = 4*pi*R^2*zeta_prime(R+) = 0
+Allowed meaning: no scalar volume flux enters exterior vacuum
+Forbidden failure: nonzero exterior flux seeds zeta_ext ~ 1/r
+[WARN] VQ3: zero boundary flux: REQUIRED
+Missing: boundary/interface law
+
+------------------------------------------------------------------------------------------------------------------------
+VQ4: kappa exterior neutrality
+------------------------------------------------------------------------------------------------------------------------
+Condition: kappa_ext -> 0 and F_kappa(R+) = 0
+Allowed meaning: kappa remains trace/volume matching variable, not exterior scalar field
+Forbidden failure: kappa_ext ~ 1/r or nonzero exterior attractor
+[WARN] VQ4: kappa exterior neutrality: CONSTRAINED
+Missing: kappa-zeta relation and boundary projector
+
+------------------------------------------------------------------------------------------------------------------------
+VQ5: A-sector exterior mass protected
+------------------------------------------------------------------------------------------------------------------------
+Condition: delta M_ext|volume/kappa reconfiguration = 0
+Allowed meaning: A_flux carries exterior mass; volume mode does not tune measured gravity
+Forbidden failure: boundary volume smoothing changes exterior A 1/r coefficient
+[WARN] VQ5: A-sector exterior mass protected: REQUIRED
+Missing: boundary mass preservation theorem
+
+------------------------------------------------------------------------------------------------------------------------
+VQ6: compensated source projection
+------------------------------------------------------------------------------------------------------------------------
+Condition: P_0 S = S - <S> over support, so integral P_0 S d^3x = 0
+Allowed meaning: nonlocal constraint projection removes exterior scalar monopole
+Forbidden failure: uncompensated trace/volume source
+[WARN] VQ6: compensated source projection: CANDIDATE
+Missing: whether projection is parent-derived or merely imposed
+
+------------------------------------------------------------------------------------------------------------------------
+VQ7: smooth compact profile
+------------------------------------------------------------------------------------------------------------------------
+Condition: zeta(R)=0, zeta_prime(R)=0, possibly zeta_double_prime(R)=0
+Allowed meaning: toy boundary profile avoids flux/shell artifacts
+Forbidden failure: hidden shell source at boundary
+[WARN] VQ7: smooth compact profile: STRUCTURAL
+Missing: required smoothness from action/interface law
+
+------------------------------------------------------------------------------------------------------------------------
+VQ8: divergence/boundary identity
+------------------------------------------------------------------------------------------------------------------------
+Condition: integral div J_volume d^3x = surface J_volume dot dS = 0
+Allowed meaning: conversion can be local or constrained with no exterior leakage
+Forbidden failure: J_volume carries scalar flux to infinity
+[WARN] VQ8: divergence/boundary identity: CANDIDATE
+Missing: definition of J_volume / J_v and support
+
+------------------------------------------------------------------------------------------------------------------------
+VQ9: exterior vacuum fixed point
+------------------------------------------------------------------------------------------------------------------------
+Condition: S_trace_effective=0 -> zeta_min=0, kappa_min=0, zeta,kappa -> 0
+Allowed meaning: ordinary exterior vacuum has no volume-mode scalar field
+Forbidden failure: nonzero exterior volume-form attractor
+[WARN] VQ9: exterior vacuum fixed point: CONSTRAINED
+Missing: relaxation law and exterior stability proof
+
+------------------------------------------------------------------------------------------------------------------------
+VQ10: no binary scalar flux
+------------------------------------------------------------------------------------------------------------------------
+Condition: dE_scalar_far/dt = 0 for volume/kappa mode
+Allowed meaning: binary scalar conversion remains local/conservative/compensated
+Forbidden failure: far-zone scalar energy flux or secular orbital damping
+[WARN] VQ10: no binary scalar flux: REQUIRED
+Missing: radiation safety proof after coupling is selected
+
+------------------------------------------------------------------------------------------------------------------------
+VQ11: nonlinear determinant caveat
+------------------------------------------------------------------------------------------------------------------------
+Condition: linear zeta control extended or replaced by nonlinear volume condition
+Allowed meaning: trace/volume neutrality survives beyond linear perturbation
+Forbidden failure: linear volume neutrality overclaimed
+[WARN] VQ11: nonlinear determinant caveat: RISK
+Missing: nonlinear determinant / covariant volume-form theorem
+
+------------------------------------------------------------------------------------------------------------------------
+VQ12: parent projector origin
+------------------------------------------------------------------------------------------------------------------------
+Condition: P_boundary P_trace enforces exterior neutrality
+Allowed meaning: zero exterior charge follows from parent structure
+Forbidden failure: boundary neutrality imposed by hand at each case
+[FAIL] VQ12: parent projector origin: MISSING
+Missing: parent identity / projector derivation
+
+========================================================================================================================
+Case 2: Compact boundary volume ledger
+========================================================================================================================
+| Entry | Condition | Status | Forbidden failure | Missing |
+|---|---|---|---|---|
+| VQ1: compact support volume reconfiguration | zeta(r)=0 for r>=R or zeta has compact support | SAFE_IF | zeta_ext has long-range 1/r scalar tail | physical reason for compact support from parent projector |
+| VQ2: zero exterior volume charge | Q_volume = integral S_volume d^3x = 0 | THEOREM_TARGET | Q_volume != 0 produces exterior scalar charge | definition of S_volume and compensation law |
+| VQ3: zero boundary flux | F_zeta(R+) = 4*pi*R^2*zeta_prime(R+) = 0 | REQUIRED | nonzero exterior flux seeds zeta_ext ~ 1/r | boundary/interface law |
+| VQ4: kappa exterior neutrality | kappa_ext -> 0 and F_kappa(R+) = 0 | CONSTRAINED | kappa_ext ~ 1/r or nonzero exterior attractor | kappa-zeta relation and boundary projector |
+| VQ5: A-sector exterior mass protected | delta M_ext/volume/kappa reconfiguration = 0 | REQUIRED | boundary volume smoothing changes exterior A 1/r coefficient | boundary mass preservation theorem |
+| VQ6: compensated source projection | P_0 S = S - <S> over support, so integral P_0 S d^3x = 0 | CANDIDATE | uncompensated trace/volume source | whether projection is parent-derived or merely imposed |
+| VQ7: smooth compact profile | zeta(R)=0, zeta_prime(R)=0, possibly zeta_double_prime(R)=0 | STRUCTURAL | hidden shell source at boundary | required smoothness from action/interface law |
+| VQ8: divergence/boundary identity | integral div J_volume d^3x = surface J_volume dot dS = 0 | CANDIDATE | J_volume carries scalar flux to infinity | definition of J_volume / J_v and support |
+| VQ9: exterior vacuum fixed point | S_trace_effective=0 -> zeta_min=0, kappa_min=0, zeta,kappa -> 0 | CONSTRAINED | nonzero exterior volume-form attractor | relaxation law and exterior stability proof |
+| VQ10: no binary scalar flux | dE_scalar_far/dt = 0 for volume/kappa mode | REQUIRED | far-zone scalar energy flux or secular orbital damping | radiation safety proof after coupling is selected |
+| VQ11: nonlinear determinant caveat | linear zeta control extended or replaced by nonlinear volume condition | RISK | linear volume neutrality overclaimed | nonlinear determinant / covariant volume-form theorem |
+| VQ12: parent projector origin | P_boundary P_trace enforces exterior neutrality | MISSING | boundary neutrality imposed by hand at each case | parent identity / projector derivation |
+[WARN] compact boundary volume ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+CONSTRAINED: 2
+MISSING: 1
+REQUIRED: 3
+RISK: 1
+SAFE_IF: 1
+STRUCTURAL: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  The boundary/no-charge theorem has clear necessary conditions.
+  Compact support, zero flux, compensation, and A-flux protection are the core.
+  Parent projector origin remains missing.
+[WARN] boundary volume status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Candidate theorem statement
+========================================================================================================================
+Candidate theorem:
+
+  If the trace/volume mode zeta is compactly supported or compensated,
+  and the boundary flux vanishes,
+  then the exterior volume scalar charge vanishes.
+
+Reduced conditions:
+
+  Q_volume = 0
+  F_zeta(R+) = 0
+  zeta_ext -> 0
+  kappa_ext -> 0
+  delta M_ext|volume/kappa = 0
+
+Interpretation:
+
+  local vacuum-volume reconfiguration changes interior spacetime configuration
+  without adding a second exterior scalar field.
+
+Current status:
+  theorem target, not theorem.
+[WARN] candidate no-exterior-charge theorem stated: THEOREM_TARGET
+
+========================================================================================================================
+Case 5: Toy profile tests
+========================================================================================================================
+Example compact profile:
+
+  zeta(r) = zeta0 * (1 - r^2/R^2)^n for r <= R
+  zeta(r) = 0 for r > R
+
+For n >= 2:
+
+  zeta(R) = 0
+  zeta_prime(R) = 0
+
+For n >= 3:
+
+  zeta_double_prime(R) = 0
+
+Use:
+
+  toy check for boundary flux and shell artifacts
+
+Do not use as:
+
+  parent-derived physical profile
+[WARN] toy compact profile tests stated: STRUCTURAL
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The boundary volume theorem fails if:
+
+1. zeta_ext has a 1/r tail.
+2. kappa_ext has a 1/r tail.
+3. Q_volume != 0.
+4. F_zeta(R+) or F_kappa(R+) is nonzero.
+5. delta M_ext changes under volume/kappa reconfiguration.
+6. compensation is imposed by hand without parent origin.
+7. hidden shell sources appear at the boundary.
+8. binary scalar flux becomes nonzero.
+9. linear determinant logic is overclaimed as nonlinear theorem.
+[WARN] boundary volume failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_boundary_volume_mode_no_exterior_charge.md
+   Artifact for this script.
+
+2. candidate_vacuum_transport_current_constraints.py
+   Constrain J_v if transport/redistribution is needed.
+
+3. candidate_vacuum_accounting_parent_balance.py
+   Write a more concrete vacuum-substance accounting balance.
+
+Recommended next script:
+
+  candidate_vacuum_transport_current_constraints.py
+
+Reason:
+  If volume conversion is compact/compensated, we need to know whether J_v is local, constrained, or transport.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Boundary volume-mode safety requires:
+
+  zeta_ext -> 0
+  kappa_ext -> 0
+  Q_volume = 0
+  F_zeta(R+) = 0
+  F_kappa(R+) = 0
+  delta M_ext|volume/kappa = 0
+
+This is the central theorem target for scalar-conversion safety.
+
+Possible next artifact:
+  candidate_boundary_volume_mode_no_exterior_charge.md
+
+Possible next script:
+  candidate_vacuum_transport_current_constraints.py

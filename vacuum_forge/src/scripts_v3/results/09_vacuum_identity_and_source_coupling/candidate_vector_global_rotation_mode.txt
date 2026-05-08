@@ -1,0 +1,181 @@
+
+========================================================================================================================
+Candidate Vector Global Rotation Mode
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Global rotation mode problem
+========================================================================================================================
+The transverse projector uses 1/k^2 and works for local k != 0 modes.
+
+But global rotation / total angular momentum is a boundary/global issue.
+
+Question:
+
+  How should a compact rotating source set exterior vector boundary data?
+
+Rules:
+
+  keep coefficients symbolic
+  do not insert Lense-Thirring normalization
+  treat global angular momentum as boundary/source data
+[WARN] global rotation mode problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Angular momentum from current
+========================================================================================================================
+Current:
+j = Matrix([[rho*v_x], [rho*v_y], [rho*v_z]])
+
+Angular momentum density:
+ell = r x j =
+Matrix([[rho*(-v_y*z + v_z*y)], [rho*(v_x*z - v_z*x)], [rho*(-v_x*y + v_y*x)]])
+
+Global angular momentum:
+
+  J = integral r x j d^3x
+
+Interpretation:
+  A rotating source supplies global vector boundary data through J.
+[WARN] angular momentum follows from current: CONSTRAINED_BY_IDENTITY — global integral requires source model
+
+========================================================================================================================
+Case 2: Uniform rotation current
+========================================================================================================================
+Rigid rotation about z:
+v = Omega x r =
+Matrix([[-Omega*y], [Omega*x], [0]])
+
+j = rho v =
+Matrix([[-Omega*rho*y], [Omega*rho*x], [0]])
+
+div j = 0
+
+For constant rho and Omega, the current is divergence-free.
+[PASS] uniform rotational current is transverse in bulk: DERIVED_REDUCED
+
+========================================================================================================================
+Case 3: Boundary source view
+========================================================================================================================
+For a compact rotating source of radius R:
+
+  interior current determines total angular momentum J
+  exterior vector solution should be fixed by boundary data at R
+
+Symbolic boundary condition:
+
+  vector boundary circulation/flux ~ C_b J
+
+boundary data = C_b*J
+
+C_b is not derived.
+[WARN] global rotation treated as boundary data: CONSTRAINED_BY_IDENTITY — boundary coefficient missing
+
+========================================================================================================================
+Case 4: Far-field angular-momentum shape
+========================================================================================================================
+Symbolic far-field curl diagnostic:
+
+  B_W ~ C_W J/r^3
+
+B_W = C_W*J/r**3
+
+Interpretation:
+  J is the only available axial vector for a stationary rotating source.
+  1/r^3 is the expected dipole-like curl falloff.
+
+But C_W is missing.
+[WARN] far-field angular-momentum shape stated: CONSTRAINED_BY_IDENTITY — coefficient missing
+
+========================================================================================================================
+Case 5: k=0 / boundary warning
+========================================================================================================================
+The local projector cannot decide global rotation by itself because:
+
+  P_T(k) uses 1/k^2
+  k=0 mode is singular
+  total angular momentum depends on boundary/source integrals
+
+Therefore:
+
+  local transverse projection handles local current modes
+  global angular momentum must be supplied by boundary/source data
+
+This is not failure; it is a boundary problem.
+[WARN] zero-mode requires boundary treatment: RISK — not solved by local projector
+
+========================================================================================================================
+Case 6: No GR matching
+========================================================================================================================
+Forbidden at this stage:
+
+  set C_W or beta_W to reproduce Lense-Thirring
+
+Allowed:
+
+  keep C_W symbolic
+  derive C_W from vector action + boundary conditions
+  or declare C_W phenomenological
+
+Current status:
+
+  source object J: constrained by current
+  far-field shape: constrained
+  coefficient: missing
+[WARN] GR matching forbidden: RISK — coefficient must not be inserted
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| angular momentum J = integral r x j d^3x | CONSTRAINED_BY_IDENTITY |
+| uniform rotation current div j = 0 | DERIVED_REDUCED |
+| global rotation as boundary data | CONSTRAINED_BY_IDENTITY |
+| far-field B_W ~ J/r^3 shape | CONSTRAINED_BY_IDENTITY |
+| boundary coefficient C_b | MISSING |
+| far-field coefficient C_W | MISSING |
+| Lense-Thirring normalization | HAND_ASSIGNED if inserted now |
+[WARN] global rotation classification produced: CONSTRAINED_BY_IDENTITY — shape/source constrained, coefficient missing
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_vector_boundary_value_problem.py
+   Solve symbolic exterior vector equation with boundary data.
+
+2. candidate_kappa_source_law_from_trace_exchange.py
+   Work missing kappa source law.
+
+3. candidate_tensor_source_from_exchange_identity.py
+   Work hand-assigned tensor coupling.
+
+Recommended next script:
+
+  candidate_vector_boundary_value_problem.py
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary value problem is next vector step
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The local projection operator handles k != 0 current splitting.
+
+Global rotation is different:
+
+  J = integral r x j d^3x
+
+A compact rotating source should set exterior vector boundary data.
+
+The expected symbolic far-field shape is:
+
+  B_W ~ C_W J/r^3
+
+But C_W is missing.
+
+Possible next artifact:
+  candidate_vector_global_rotation_mode.md
+
+Possible next script:
+  candidate_vector_boundary_value_problem.py

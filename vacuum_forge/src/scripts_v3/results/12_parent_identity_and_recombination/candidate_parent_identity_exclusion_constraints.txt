@@ -1,0 +1,300 @@
+
+========================================================================================================================
+Candidate Parent Identity Exclusion Constraints
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Parent identity exclusion problem
+========================================================================================================================
+Question:
+
+  What can the parent identity not be?
+
+Goal:
+
+  rule out false parent identities before attempting a positive parent identity
+
+Discipline:
+
+  do not crown the first shiny equation
+  do not restate GR as if it were derived
+  do not let scalar radiation or double-counting reappear
+  do not use kappa as a repair knob
+[WARN] parent identity exclusion problem posed: CONSTRAINED
+
+========================================================================================================================
+Case 1: Exclusion inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+X1: Decorative Bianchi restatement
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Div E_parent = 0 because GR has nabla_mu G^mu_nu = 0
+Why forbidden: It merely renames the target identity without deriving it from vacuum-curvature exchange.
+Violated result: Group 11: parent closure target is MISSING / TEMPLATE ONLY.
+Failure mode: Decorative parent identity; sector ledger mistaken for closure.
+[PASS] X1: Decorative Bianchi restatement: EXCLUDED
+Surviving requirement: Define E_parent and show its reduced projections force the known sectors.
+
+------------------------------------------------------------------------------------------------------------------------
+X2: Ordinary scalar A wave
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Box A = scalar source as an ordinary long-range gravitational radiation equation
+Why forbidden: A is currently a scalar constraint / mass-flux response, not an ordinary radiative scalar.
+Violated result: Constraint/evolution split: A is constraint; A_rad ordinary massless source = 0.
+Failure mode: Hidden scalar radiation / breathing mode.
+[PASS] X2: Ordinary scalar A wave: FORBIDDEN
+Surviving requirement: Parent identity must propagate the A constraint through source continuity, not Box A radiation.
+
+------------------------------------------------------------------------------------------------------------------------
+X3: Ordinary Box kappa trace wave
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Box kappa = alpha * trace_or_pressure
+Why forbidden: Kappa is non-inertial trace / volume relaxation with no independent momentum channel.
+Violated result: Group 10/11: kappa relaxation is first-order; breathing radiation rejected.
+Failure mode: Hidden breathing wave; kappa repair knob.
+[PASS] X3: Ordinary Box kappa trace wave: FORBIDDEN
+Surviving requirement: Trace/pressure may shift kappa_min, followed by first-order relaxation only.
+
+------------------------------------------------------------------------------------------------------------------------
+X4: Rho double-sourced into kappa
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: rho sources both A and an independent long-range kappa scalar
+Why forbidden: rho already sources A; independent kappa response would double-count scalar mass gravity.
+Violated result: No-double-counting: S_kappa[rho] = 0 as independent long-range scalar source.
+Failure mode: Scalar double-counting; exterior kappa 1/r tail.
+[PASS] X4: Rho double-sourced into kappa: FORBIDDEN
+Surviving requirement: Parent identity must route rho to A and prevent rho-sourced kappa charge.
+
+------------------------------------------------------------------------------------------------------------------------
+X5: Nonzero exterior kappa charge
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Integral S_kappa d^3x != 0 for ordinary closed matter
+Why forbidden: A nonzero massless kappa charge would create exterior kappa ~ 1/r.
+Violated result: Exterior kappa safety: Q_kappa = 0, kappa -> 0, F_kappa(R+) = 0.
+Failure mode: Second scalar exterior field; scalar double-counting.
+[PASS] X5: Nonzero exterior kappa charge: FORBIDDEN
+Surviving requirement: Parent identity must enforce kappa charge neutrality/projection or boundary cancellation.
+
+------------------------------------------------------------------------------------------------------------------------
+X6: Trace contamination of TT radiation
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: trace or pressure source directly feeds h_ij^TT
+Why forbidden: TT radiation must be trace-free; trace/pressure belongs to kappa_min or scalar constraints.
+Violated result: Source ledger: source(h_TT)=P_TT S_ij, trace excluded.
+Failure mode: Tensor/scalar double-counting; imported TT source identity.
+[PASS] X6: Trace contamination of TT radiation: FORBIDDEN
+Surviving requirement: Parent identity must separate P_TT stress from trace stress.
+
+------------------------------------------------------------------------------------------------------------------------
+X7: Longitudinal current sources W_i
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: P_L j sources transverse vector W_i / frame dragging
+Why forbidden: W_i is a transverse vector response; longitudinal current belongs to scalar continuity.
+Violated result: Source ledger: source(W_i)=P_T j; P_L j -> continuity.
+Failure mode: Scalar/vector source mixing.
+[PASS] X7: Longitudinal current sources W_i: FORBIDDEN
+Surviving requirement: Parent identity must preserve current decomposition j = P_T j + P_L j.
+
+------------------------------------------------------------------------------------------------------------------------
+X8: Free vector radiation imported by analogy
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: W_i becomes a free propagating vector wave without derivation
+Why forbidden: W_i is currently source-tied vector response, not an established radiative sector.
+Violated result: Constraint/evolution split: W_i free vector radiation is not derived.
+Failure mode: Electromagnetic analogy imported as gravity sector.
+[PASS] X8: Free vector radiation imported by analogy: EXCLUDED
+Surviving requirement: Any retarded W_i dynamics must be derived and must not add forbidden radiation modes.
+
+------------------------------------------------------------------------------------------------------------------------
+X9: Boundary relaxation changes exterior mass
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: kappa / joint-minimum boundary smoothing changes M_ext or the exterior 1/r coefficient
+Why forbidden: Exterior mass flux is the A-sector charge and cannot be tuned by boundary smoothing.
+Violated result: No-double-counting: delta M_ext under kappa boundary smoothing = 0.
+Failure mode: Boundary smoothing tunes measured mass.
+[PASS] X9: Boundary relaxation changes exterior mass: FORBIDDEN
+Surviving requirement: Parent identity must preserve exterior A flux under kappa relaxation.
+
+------------------------------------------------------------------------------------------------------------------------
+X10: Sigma_creation in ordinary closure
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Sigma_creation != 0 in ordinary closed gravity
+Why forbidden: Creation/exchange regimes are special active regimes, not default ordinary gravity.
+Violated result: Ordinary closed regime: Sigma_creation = 0.
+Failure mode: Active-regime leakage; nonconservative field equations.
+[PASS] X10: Sigma_creation in ordinary closure: FORBIDDEN
+Surviving requirement: Parent identity must separate ordinary closed regime from active creation regimes.
+
+------------------------------------------------------------------------------------------------------------------------
+X11: Relaxation as energy loss
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Gamma_relax removes energy without a destination variable
+Why forbidden: Relaxation must represent exchange/restoration into vacuum configuration, not disappearance.
+Violated result: Kappa relaxation: energy imbalance must be accounted as vacuum configuration restoration.
+Failure mode: Cosmetic damping; energy nonconservation.
+[PASS] X11: Relaxation as energy loss: EXCLUDED
+Surviving requirement: Parent identity must include or imply vacuum configuration energy accounting.
+
+------------------------------------------------------------------------------------------------------------------------
+X12: GR coefficient insertion as derivation
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: Insert Lense-Thirring normalization, C_T, or tensor flux coefficient because GR has them
+Why forbidden: Matched coefficients are not ontology-derived coefficients.
+Violated result: GR audit: vector normalization and tensor coupling/flux remain MATCHED / UNKNOWN.
+Failure mode: Silent GR import; matched coefficients claimed derived.
+[PASS] X12: GR coefficient insertion as derivation: EXCLUDED
+Surviving requirement: Parent identity may target GR coefficients, but must not claim them without derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+X13: Metric recombination copies GR by form
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: g_tt, g_0i, g_ij assigned full GR weak-field form before parent recombination is derived
+Why forbidden: Metric recombination is currently a reduced bookkeeping ansatz, not a covariant derivation.
+Violated result: Metric recombination status: UNFINISHED.
+Failure mode: Silent GR metric import.
+[PASS] X13: Metric recombination copies GR by form: EXCLUDED
+Surviving requirement: Parent identity must produce a recombination map preserving source splits and constraints.
+
+------------------------------------------------------------------------------------------------------------------------
+X14: Near-boundary deviation promoted before closure
+------------------------------------------------------------------------------------------------------------------------
+Forbidden form: claim measured/predicted near-boundary GR deviation from joint-minimum diagnostic alone
+Why forbidden: Deviation diagnostics exist, but weights, sigma, observable map, and closure are missing.
+Violated result: Near-boundary result: PLAUSIBLE / DIAGNOSTIC ONLY.
+Failure mode: Near-boundary deviation overclaim.
+[PASS] X14: Near-boundary deviation promoted before closure: EXCLUDED
+Surviving requirement: Keep diagnostic before prediction until recombination and magnitude are derived.
+
+========================================================================================================================
+Case 2: Compact exclusion ledger
+========================================================================================================================
+| Exclusion | Forbidden form | Status | Surviving requirement |
+|---|---|---|---|
+| X1: Decorative Bianchi restatement | Div E_parent = 0 because GR has nabla_mu G^mu_nu = 0 | EXCLUDED | Define E_parent and show its reduced projections force the known sectors. |
+| X2: Ordinary scalar A wave | Box A = scalar source as an ordinary long-range gravitational radiation equation | FORBIDDEN | Parent identity must propagate the A constraint through source continuity, not Box A radiation. |
+| X3: Ordinary Box kappa trace wave | Box kappa = alpha * trace_or_pressure | FORBIDDEN | Trace/pressure may shift kappa_min, followed by first-order relaxation only. |
+| X4: Rho double-sourced into kappa | rho sources both A and an independent long-range kappa scalar | FORBIDDEN | Parent identity must route rho to A and prevent rho-sourced kappa charge. |
+| X5: Nonzero exterior kappa charge | Integral S_kappa d^3x != 0 for ordinary closed matter | FORBIDDEN | Parent identity must enforce kappa charge neutrality/projection or boundary cancellation. |
+| X6: Trace contamination of TT radiation | trace or pressure source directly feeds h_ij^TT | FORBIDDEN | Parent identity must separate P_TT stress from trace stress. |
+| X7: Longitudinal current sources W_i | P_L j sources transverse vector W_i / frame dragging | FORBIDDEN | Parent identity must preserve current decomposition j = P_T j + P_L j. |
+| X8: Free vector radiation imported by analogy | W_i becomes a free propagating vector wave without derivation | EXCLUDED | Any retarded W_i dynamics must be derived and must not add forbidden radiation modes. |
+| X9: Boundary relaxation changes exterior mass | kappa / joint-minimum boundary smoothing changes M_ext or the exterior 1/r coefficient | FORBIDDEN | Parent identity must preserve exterior A flux under kappa relaxation. |
+| X10: Sigma_creation in ordinary closure | Sigma_creation != 0 in ordinary closed gravity | FORBIDDEN | Parent identity must separate ordinary closed regime from active creation regimes. |
+| X11: Relaxation as energy loss | Gamma_relax removes energy without a destination variable | EXCLUDED | Parent identity must include or imply vacuum configuration energy accounting. |
+| X12: GR coefficient insertion as derivation | Insert Lense-Thirring normalization, C_T, or tensor flux coefficient because GR has them | EXCLUDED | Parent identity may target GR coefficients, but must not claim them without derivation. |
+| X13: Metric recombination copies GR by form | g_tt, g_0i, g_ij assigned full GR weak-field form before parent recombination is derived | EXCLUDED | Parent identity must produce a recombination map preserving source splits and constraints. |
+| X14: Near-boundary deviation promoted before closure | claim measured/predicted near-boundary GR deviation from joint-minimum diagnostic alone | EXCLUDED | Keep diagnostic before prediction until recombination and magnitude are derived. |
+[WARN] compact exclusion ledger produced: CONSTRAINED
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+EXCLUDED: 6
+FORBIDDEN: 8
+
+Interpretation:
+  The candidate parent space is already strongly constrained.
+  Most false parents are forbidden because they reintroduce scalar radiation,
+  double-count sources, tune mass, or import GR by hand.
+[WARN] exclusion count produced: CONSTRAINED
+
+========================================================================================================================
+Case 4: Surviving parent requirements
+========================================================================================================================
+Any surviving parent identity must:
+
+1. Define E_parent and B_source rather than restating Bianchi compatibility.
+2. Keep A as a scalar constraint, not ordinary scalar radiation.
+3. Keep kappa first-order/non-inertial, not Box kappa.
+4. Route rho to A without independent long-range kappa charge.
+5. Preserve exterior A mass flux under boundary/kappa relaxation.
+6. Split j into transverse vector source and longitudinal continuity.
+7. Split TT stress from trace stress.
+8. Exclude Sigma_creation in ordinary closed gravity.
+9. Account for Gamma_relax as vacuum configuration exchange.
+10. Derive or honestly label vector/tensor coefficients.
+11. Produce recombination without scalar double-counting.
+12. Keep near-boundary deviation diagnostic-only until magnitude is derived.
+[WARN] surviving parent requirements stated: CONSTRAINED
+
+========================================================================================================================
+Case 5: Hardest exclusions
+========================================================================================================================
+Hardest exclusions to make constructive:
+
+1. Decorative Bianchi restatement.
+   Need: actual definitions and reduced implications.
+
+2. Scalar A not radiation.
+   Need: constraint propagation from continuity.
+
+3. Kappa not Box kappa.
+   Need: trace-minimum relaxation identity.
+
+4. Boundary relaxation preserves M_ext.
+   Need: boundary mass theorem.
+
+5. Metric recombination not GR import.
+   Need: recombination map from sector identity.
+[WARN] hardest exclusions identified: WATCH
+
+========================================================================================================================
+Case 6: What remains possible
+========================================================================================================================
+Still possible parent identity classes:
+
+  A divergence/balance identity with explicit sector projectors.
+  A constrained scalar sector plus TT radiative sector.
+  A transverse current/vector response sector that is source-tied.
+  A trace/minimum relaxation channel for kappa.
+  A boundary/interface identity preserving exterior mass.
+  A recombination map generated after source/projector splitting.
+
+But none of these are derived yet.
+[FAIL] surviving parent space described: UNRESOLVED
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_parent_identity_exclusion_constraints.md
+   Artifact for this script.
+
+2. candidate_parent_identity_reduced_implications.py
+   State what the parent identity must imply in each reduced sector.
+
+3. candidate_projector_structure_for_parent_identity.py
+   Work out scalar/vector/TT/trace projectors.
+
+Recommended next script:
+
+  candidate_parent_identity_reduced_implications.py
+
+Reason:
+  After ruling out false parents, define the reduced-sector tests for any surviving parent.
+[WARN] next test selected: CONSTRAINED
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The parent identity cannot be:
+
+  a decorative Bianchi restatement
+  an ordinary scalar A wave
+  Box kappa
+  rho double-sourced into kappa
+  nonzero exterior kappa charge
+  trace contamination of TT
+  longitudinal current sourcing W_i
+  boundary smoothing changing exterior mass
+  Sigma_creation in ordinary closure
+  GR coefficients inserted as derivation
+  metric recombination copied from GR
+
+Possible next artifact:
+  candidate_parent_identity_exclusion_constraints.md
+
+Possible next script:
+  candidate_parent_identity_reduced_implications.py

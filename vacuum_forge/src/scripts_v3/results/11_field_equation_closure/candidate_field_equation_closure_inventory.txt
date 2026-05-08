@@ -1,0 +1,260 @@
+
+========================================================================================================================
+Candidate Field Equation Closure Inventory
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Field equation closure inventory problem
+========================================================================================================================
+Question:
+
+  What is the current field-equation system, sector by sector?
+
+Goal:
+
+  make a ledger of equations, source roles, status labels, missing pieces, and risks
+
+Discipline:
+
+  do not add new mechanisms
+  do not hide matched coefficients
+  do not let kappa become a repair field
+  mark unfinished closure explicitly
+[WARN] closure inventory problem posed: CONSTRAINED
+
+========================================================================================================================
+Case 1: Field equation inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Scalar monopole / areal flux
+------------------------------------------------------------------------------------------------------------------------
+Field: A
+Equation / rule: Delta_areal A = 8*pi*G*rho/c^2
+Source: rho, M_enc
+[PASS] Scalar monopole / areal flux: DERIVED_REDUCED
+Missing: Full nonlinear nonspherical parent equation.
+Risk: Overextending spherical reduced derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Exterior reciprocal radial factor
+------------------------------------------------------------------------------------------------------------------------
+Field: B with kappa diagnostic
+Equation / rule: AB = exp(2*kappa); exterior kappa=0 -> B=1/A
+Source: Exterior vacuum / areal gauge condition
+[PASS] Exterior reciprocal radial factor: DERIVED_REDUCED
+Missing: Covariant/gauge-invariant parent interpretation of kappa.
+Risk: Treating gauge-conditioned relation as full physical derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Weak scalar multipoles
+------------------------------------------------------------------------------------------------------------------------
+Field: A ~ 1 + 2 Phi/c^2
+Equation / rule: nabla^2 Phi = 4*pi*G*rho
+Source: rho
+[PASS] Weak scalar multipoles: DERIVED_REDUCED
+Missing: Full nonlinear nonspherical closure.
+Risk: Assuming weak multipole success implies complete scalar sector.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Scalar radiation hazard
+------------------------------------------------------------------------------------------------------------------------
+Field: A_rad
+Equation / rule: ordinary massless scalar wave rejected / projected / suppressed
+Source: Forbidden scalar radiative deviation
+[WARN] Scalar radiation hazard: CONSTRAINED
+Missing: Parent mechanism separating static scalar constraint from scalar radiation.
+Risk: Unwanted breathing radiation.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Vector current / frame dragging
+------------------------------------------------------------------------------------------------------------------------
+Field: W_i
+Equation / rule: curl curl W = -(alpha_W/(2K_c)) j_T; div W=0 -> Delta W = (alpha_W/(2K_c)) j_T
+Source: j_T = P_T(rho v)
+[WARN] Vector current / frame dragging: STRUCTURAL
+Missing: alpha_W/K_c, observable coupling beta_W, global boundary normalization.
+Risk: Frame-dragging normalization remains matched or arbitrary.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Vector observable
+------------------------------------------------------------------------------------------------------------------------
+Field: B_W = curl W
+Equation / rule: Omega_drag = beta_W B_W; far-field B_W ~ J/r^3
+Source: Angular momentum J = integral r x j d^3x
+[PASS] Vector observable: DERIVED_REDUCED
+Missing: beta_W and absolute normalization.
+Risk: Shape success without coefficient derivation.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Tensor radiation
+------------------------------------------------------------------------------------------------------------------------
+Field: h_ij^TT
+Equation / rule: Box h_ij^TT = -C_T S_ij^TT
+Source: TT stress / quadrupole source
+[WARN] Tensor radiation: STRUCTURAL
+Missing: C_T, source identity, vacuum tensor stiffness.
+Risk: Importing 2G/c^4 or 16*pi*G/c^4 by matching.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Tensor radiation energy
+------------------------------------------------------------------------------------------------------------------------
+Field: h_ij^TT energy flux
+Equation / rule: F_T ~ K_T <dot h_ij^TT dot h_ij^TT>
+Source: TT wave strain
+[WARN] Tensor radiation energy: MATCHED
+Missing: K_T from vacuum action/stiffness.
+Risk: Energy flux copied from GR rather than derived.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Kappa trace / volume relaxation
+------------------------------------------------------------------------------------------------------------------------
+Field: kappa
+Equation / rule: dot kappa = -mu_kappa K_kappa (kappa-kappa_min)
+Source: kappa_min = chi_kappa S_trace_effective
+[WARN] Kappa trace / volume relaxation: STRUCTURAL
+Missing: K_kappa, mu_kappa, chi_kappa, S_trace_effective, covariant origin.
+Risk: Becoming a repair knob or hidden scalar wave.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Kappa exterior suppression
+------------------------------------------------------------------------------------------------------------------------
+Field: kappa boundary/exterior
+Equation / rule: kappa -> 0, kappa_min -> 0, F_kappa(R+) = 0
+Source: Vacuum minimum / boundary projection
+[WARN] Kappa exterior suppression: CONSTRAINED
+Missing: Physical interface law and parent projection identity.
+Risk: Hand-imposed exterior suppression.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Kappa near-boundary joint minimum
+------------------------------------------------------------------------------------------------------------------------
+Field: f_joint or kappa_min profile
+Equation / rule: lambda_2 fourth_derivative(f) - lambda_1 second_derivative(f) + (W_i+W_e)f = W_i f_int + W_e f_ext
+Source: Interior quadratic tendency + exterior reciprocal tendency + smoothness energy
+[WARN] Kappa near-boundary joint minimum: STRUCTURAL
+Missing: Weights, transition width sigma, variable identification, observable map.
+Risk: Curve-fitting or unquantified near-boundary deviation.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Vacuum-substance balance
+------------------------------------------------------------------------------------------------------------------------
+Field: q_v, J_v
+Equation / rule: partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax
+Source: Ontology-native vacuum exchange / creation / relaxation
+[FAIL] Vacuum-substance balance: UNFINISHED
+Missing: Definitions, conservation identity, Bianchi-compatible closure.
+Risk: Decorative ontology if it does not force equations.
+
+------------------------------------------------------------------------------------------------------------------------
+Sector: Metric recombination
+------------------------------------------------------------------------------------------------------------------------
+Field: g_tt, g_ti, g_ij
+Equation / rule: g_tt ~ -A c^2; g_ti ~ W_i; g_ij ~ scalar/kappa + h_ij^TT
+Source: Sector recombination
+[FAIL] Metric recombination: UNFINISHED
+Missing: Covariant parent map and no-double-counting rules.
+Risk: Silently importing GR metric form.
+
+========================================================================================================================
+Case 2: Compact markdown ledger
+========================================================================================================================
+| Sector | Field | Equation / rule | Source | Status | Missing |
+|---|---|---|---|---|---|
+| Scalar monopole / areal flux | A | Delta_areal A = 8*pi*G*rho/c^2 | rho, M_enc | DERIVED_REDUCED | Full nonlinear nonspherical parent equation. |
+| Exterior reciprocal radial factor | B with kappa diagnostic | AB = exp(2*kappa); exterior kappa=0 -> B=1/A | Exterior vacuum / areal gauge condition | DERIVED_REDUCED | Covariant/gauge-invariant parent interpretation of kappa. |
+| Weak scalar multipoles | A ~ 1 + 2 Phi/c^2 | nabla^2 Phi = 4*pi*G*rho | rho | DERIVED_REDUCED | Full nonlinear nonspherical closure. |
+| Scalar radiation hazard | A_rad | ordinary massless scalar wave rejected / projected / suppressed | Forbidden scalar radiative deviation | CONSTRAINED | Parent mechanism separating static scalar constraint from scalar radiation. |
+| Vector current / frame dragging | W_i | curl curl W = -(alpha_W/(2K_c)) j_T; div W=0 -> Delta W = (alpha_W/(2K_c)) j_T | j_T = P_T(rho v) | STRUCTURAL | alpha_W/K_c, observable coupling beta_W, global boundary normalization. |
+| Vector observable | B_W = curl W | Omega_drag = beta_W B_W; far-field B_W ~ J/r^3 | Angular momentum J = integral r x j d^3x | DERIVED_REDUCED | beta_W and absolute normalization. |
+| Tensor radiation | h_ij^TT | Box h_ij^TT = -C_T S_ij^TT | TT stress / quadrupole source | STRUCTURAL | C_T, source identity, vacuum tensor stiffness. |
+| Tensor radiation energy | h_ij^TT energy flux | F_T ~ K_T <dot h_ij^TT dot h_ij^TT> | TT wave strain | MATCHED | K_T from vacuum action/stiffness. |
+| Kappa trace / volume relaxation | kappa | dot kappa = -mu_kappa K_kappa (kappa-kappa_min) | kappa_min = chi_kappa S_trace_effective | STRUCTURAL | K_kappa, mu_kappa, chi_kappa, S_trace_effective, covariant origin. |
+| Kappa exterior suppression | kappa boundary/exterior | kappa -> 0, kappa_min -> 0, F_kappa(R+) = 0 | Vacuum minimum / boundary projection | CONSTRAINED | Physical interface law and parent projection identity. |
+| Kappa near-boundary joint minimum | f_joint or kappa_min profile | lambda_2 fourth_derivative(f) - lambda_1 second_derivative(f) + (W_i+W_e)f = W_i f_int + W_e f_ext | Interior quadratic tendency + exterior reciprocal tendency + smoothness energy | STRUCTURAL | Weights, transition width sigma, variable identification, observable map. |
+| Vacuum-substance balance | q_v, J_v | partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax | Ontology-native vacuum exchange / creation / relaxation | UNFINISHED | Definitions, conservation identity, Bianchi-compatible closure. |
+| Metric recombination | g_tt, g_ti, g_ij | g_tt ~ -A c^2; g_ti ~ W_i; g_ij ~ scalar/kappa + h_ij^TT | Sector recombination | UNFINISHED | Covariant parent map and no-double-counting rules. |
+[WARN] compact ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CONSTRAINED: 2
+DERIVED_REDUCED: 4
+MATCHED: 1
+STRUCTURAL: 4
+UNFINISHED: 2
+
+Interpretation:
+  The system has strong reduced scalar results, structural vector/tensor/kappa sectors,
+  and unfinished covariant closure.
+[WARN] status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Strongest and weakest sectors
+========================================================================================================================
+Strongest sector:
+
+  A-sector static spherical exterior.
+  It reconstructs A=1-2GM/(c^2 r) and B=1/A in the reduced exterior.
+
+Most dangerous unfinished sectors:
+
+  tensor coupling normalization
+  vector observable normalization
+  kappa covariant/source identity
+  metric recombination map
+  parent conservation/Bianchi-like closure
+[WARN] strong/weak sector audit stated: CONSTRAINED
+
+========================================================================================================================
+Case 5: Initial no-double-counting rules
+========================================================================================================================
+Initial rules:
+
+1. rho sources A, not an independent long-range kappa scalar.
+2. pressure/trace may shift kappa_min, but must not create scalar radiation.
+3. j_T sources W_i; longitudinal current belongs to scalar continuity.
+4. TT stress/quadrupole sources h_ij^TT.
+5. kappa boundary smoothing must not alter A-sector mass flux by hand.
+6. recombination must not count the same trace response in both kappa and h_ij^TT.
+[WARN] initial no-double-counting rules stated: CONSTRAINED
+
+========================================================================================================================
+Case 6: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_field_equation_closure_inventory.md
+   Artifact for this script.
+
+2. candidate_metric_recombination_map.py
+   State how A, W_i, h_ij^TT, and kappa recombine into a metric-like object.
+
+3. candidate_source_decomposition_ledger.py
+   Separate rho, j_T, trace, and TT stress source roles.
+
+Recommended next script:
+
+  candidate_metric_recombination_map.py
+
+Reason:
+  Once the inventory is explicit, recombination is the next place errors can hide.
+[WARN] next test selected: CONSTRAINED
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Current field-equation closure status:
+
+  A-sector is genuinely reconstructed in the reduced exterior.
+  W_i sector has structural source/projection/shape but missing normalization.
+  h_ij^TT sector has correct structural radiation role but missing coupling derivation.
+  kappa is now constrained as non-inertial trace relaxation, not scalar radiation.
+  parent conservation/covariant closure remains missing.
+
+Possible next artifact:
+  candidate_field_equation_closure_inventory.md
+
+Possible next script:
+  candidate_metric_recombination_map.py

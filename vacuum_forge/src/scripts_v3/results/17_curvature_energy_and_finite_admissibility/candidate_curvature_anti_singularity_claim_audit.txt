@@ -1,0 +1,408 @@
+
+========================================================================================================================
+Candidate Curvature Anti-Singularity Claim Audit
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Curvature anti-singularity claim problem
+========================================================================================================================
+Question:
+
+  What anti-singularity claim, if any, is currently licensed?
+
+Goal:
+
+  prevent overclaim after object, condition, energy, current, balance, and neutrality audits
+
+Discipline:
+
+  diagnostic claim is not dynamics
+  branch-kill claim is not bounce
+  bounded invariant is not regular core
+  no e_curv bounce money
+  no J_curv repair courier
+  no boundary counterterm escape
+  no H_curv patch
+  no volume-response shortcut
+  no recovery-tuned anti-singularity
+[WARN] curvature anti-singularity claim problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Curvature anti-singularity claim inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+AS1: anti-singularity claim target
+------------------------------------------------------------------------------------------------------------------------
+Claim: claim level must not exceed the derived admissibility object, dynamics, and solution support
+Role: core overclaim guard
+Allowed if: claim strength is matched to what has been derived
+Forbidden if: diagnostic condition is advertised as dynamical singularity resolution
+[WARN] AS1: anti-singularity claim target: REQUIRED
+Missing: claim classification
+Consequence: prevents anti-singularity overclaim
+
+------------------------------------------------------------------------------------------------------------------------
+AS2: diagnostic claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: finite-admissibility diagnostic flags singular or high-curvature configurations
+Role: currently safest licensed claim
+Allowed if: diagnostic object/condition is stated before branch test
+Forbidden if: flagging is called physical avoidance
+[WARN] AS2: diagnostic claim: SAFE_IF
+Missing: specific diagnostic functional still needed
+Consequence: allowed as current modest claim
+
+------------------------------------------------------------------------------------------------------------------------
+AS3: branch-kill claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: branches violating finite admissibility are outside the candidate solution class
+Role: safe theorem-target claim
+Allowed if: finite-admissibility condition and branch-kill rule are stated beforehand
+Forbidden if: used selectively after a branch looks bad
+[WARN] AS3: branch-kill claim: CANDIDATE
+Missing: formal A_curv condition and branch-kill theorem
+Consequence: stronger than diagnostic but still not dynamics
+
+------------------------------------------------------------------------------------------------------------------------
+AS4: bounded-invariant claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: chosen curvature invariant or invariant set remains finite on admissible branches
+Role: diagnostic/branch-filter theorem target
+Allowed if: invariant set and domain are specified before solution
+Forbidden if: invariant set is tailored to avoid divergence
+[WARN] AS4: bounded-invariant claim: CANDIDATE
+Missing: invariant set, domain, solutions
+Consequence: can support finite-admissibility branch tests
+
+------------------------------------------------------------------------------------------------------------------------
+AS5: integrable-curvature claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: integral curvature measure remains finite over defined domain
+Role: diagnostic/branch-filter theorem target
+Allowed if: domain and measure are structural and cutoff-free
+Forbidden if: cutoff removes singular region
+[WARN] AS5: integrable-curvature claim: CANDIDATE
+Missing: I_curv, D_curv, dV_phys
+Consequence: can support finite total admissibility without local dynamics
+
+------------------------------------------------------------------------------------------------------------------------
+AS6: dynamical avoidance claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: equations force evolution away from singularity
+Role: strong dynamical claim
+Allowed if: field equations, evolution law, and proof are derived
+Forbidden if: claimed from diagnostic, e_curv, or balance target alone
+[WARN] AS6: dynamical avoidance claim: REJECTED
+Missing: dynamics/evolution theorem
+Consequence: not currently licensed
+
+------------------------------------------------------------------------------------------------------------------------
+AS7: bounce claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: collapse reverses, saturates, or bounces because of curvature admissibility
+Role: strong solution/evolution claim
+Allowed if: dynamical equations and explicit solution/proof show bounce
+Forbidden if: claimed from e_curv, boundary condition, or finite-admissibility slogan
+[WARN] AS7: bounce claim: REJECTED
+Missing: dynamics and solution
+Consequence: not currently licensed
+
+------------------------------------------------------------------------------------------------------------------------
+AS8: regular-core claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: interior solution remains finite / regular core replaces singularity
+Role: strong solution claim
+Allowed if: explicit interior solution satisfies admissibility, boundary, and mass neutrality
+Forbidden if: claimed without solution or by boundary/core tuning
+[WARN] AS8: regular-core claim: REJECTED
+Missing: regular solution and matching theorem
+Consequence: not currently licensed
+
+------------------------------------------------------------------------------------------------------------------------
+AS9: current-based anti-singularity claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: J_curv transports/redistributes curvature to prevent singular behavior
+Role: future current claim
+Allowed if: J_curv, direction, balance, neutrality, and dynamics are derived
+Forbidden if: claimed from current name or decorative balance
+[WARN] AS9: current-based anti-singularity claim: DEFER
+Missing: J_curv definition and balance law
+Consequence: deferred until current exists
+
+------------------------------------------------------------------------------------------------------------------------
+AS10: energy-based anti-singularity claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: e_curv supplies energy/pressure/negative contribution that prevents singularity
+Role: forbidden source-reservoir claim under current status
+Allowed if: only after source law and dynamics are derived, not now
+Forbidden if: claimed from diagnostic/accounting e_curv
+[WARN] AS10: energy-based anti-singularity claim: REJECTED
+Missing: source law and dynamics
+Consequence: prevents curvature energy bounce money
+
+------------------------------------------------------------------------------------------------------------------------
+AS11: boundary-based anti-singularity claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: boundary flux/counterterm/support condition prevents singularity
+Role: high-risk boundary claim
+Allowed if: boundary behavior is structural, neutral, and not repair
+Forbidden if: boundary term cancels singularity or hides mass shift
+[WARN] AS11: boundary-based anti-singularity claim: REJECTED
+Missing: boundary theorem and neutrality
+Consequence: not currently licensed
+
+------------------------------------------------------------------------------------------------------------------------
+AS12: volume-response anti-singularity claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: zeta/volume response prevents curvature blowup
+Role: curvature-volume bridge claim
+Allowed if: B_s/F_zeta insertion, count-once, no-overlap, and boundary safety are derived
+Forbidden if: zeta becomes hidden scalar source or residual trace
+[WARN] AS12: volume-response anti-singularity claim: DEFER
+Missing: Group 16 bottlenecks and dynamics
+Consequence: deferred until metric insertion/no-overlap is solved
+
+------------------------------------------------------------------------------------------------------------------------
+AS13: H_curv anti-singularity claim
+------------------------------------------------------------------------------------------------------------------------
+Claim: parent correction tensor H_curv enforces finite admissibility
+Role: future Group 19 claim
+Allowed if: H_curv is divergence-safe and sourced by defined curvature object/current
+Forbidden if: H_curv introduced as repair tensor
+[WARN] AS13: H_curv anti-singularity claim: DEFER
+Missing: H_curv divergence-safe audit
+Consequence: deferred until parent correction tensor audit
+
+------------------------------------------------------------------------------------------------------------------------
+AS14: ordinary-sector neutrality requirement
+------------------------------------------------------------------------------------------------------------------------
+Claim: any anti-singularity claim preserves no M_ext shift, no scalar leakage, no matter rerouting
+Role: ordinary exterior guard
+Allowed if: neutrality is derived or claim remains interior diagnostic
+Forbidden if: claim relies on exterior mass/charge/flux changes
+[WARN] AS14: ordinary-sector neutrality requirement: REQUIRED
+Missing: neutrality theorem if stronger than diagnostic
+Consequence: keeps ordinary sector safe
+
+------------------------------------------------------------------------------------------------------------------------
+AS15: no repair mechanism requirement
+------------------------------------------------------------------------------------------------------------------------
+Claim: anti-singularity cannot be obtained by boundary repair, e_curv reservoir, J_curv repair, or H_curv patch
+Role: anti-repair guard
+Allowed if: mechanism is derived before claim
+Forbidden if: repair terms are renamed as avoidance
+[WARN] AS15: no repair mechanism requirement: REQUIRED
+Missing: mechanism if any
+Consequence: prevents painted singularity escape
+
+------------------------------------------------------------------------------------------------------------------------
+AS16: no recovery construction requirement
+------------------------------------------------------------------------------------------------------------------------
+Claim: anti-singularity claim cannot be chosen to preserve gamma_like, AB, or exterior matching
+Role: anti-smuggling guard
+Allowed if: recovery remains downstream
+Forbidden if: anti-singularity mechanism is recovery-tuned
+[WARN] AS16: no recovery construction requirement: REQUIRED
+Missing: not a mechanism
+Consequence: keeps recovery downstream
+
+------------------------------------------------------------------------------------------------------------------------
+AS17: claim failure
+------------------------------------------------------------------------------------------------------------------------
+Claim: no anti-singularity claim beyond diagnostic/branch-filter is currently licensed
+Role: safe closure condition
+Allowed if: used to close Group 17 honestly
+Forbidden if: patched by stronger wording
+[WARN] AS17: claim failure: SAFE_IF
+Missing: dynamics/current/solution for stronger claims
+Consequence: keeps theory honest
+
+------------------------------------------------------------------------------------------------------------------------
+AS18: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Claim: close Group 17 with status summary if no stronger claim is licensed
+Role: next local bottleneck
+Allowed if: claim audit licenses diagnostic/branch-filter only
+Forbidden if: jumping to Group 18 before summarizing handoff
+[PASS] AS18: recommended next move: RECOMMENDED
+Missing: Group 17 status summary
+Consequence: next script should be candidate_curvature_energy_group_status_summary.py
+
+========================================================================================================================
+Case 2: Compact anti-singularity claim ledger
+========================================================================================================================
+| Entry | Claim | Status | Consequence |
+|---|---|---|---|
+| AS1: anti-singularity claim target | claim level must not exceed the derived admissibility object, dynamics, and solution support | REQUIRED | prevents anti-singularity overclaim |
+| AS2: diagnostic claim | finite-admissibility diagnostic flags singular or high-curvature configurations | SAFE_IF | allowed as current modest claim |
+| AS3: branch-kill claim | branches violating finite admissibility are outside the candidate solution class | CANDIDATE | stronger than diagnostic but still not dynamics |
+| AS4: bounded-invariant claim | chosen curvature invariant or invariant set remains finite on admissible branches | CANDIDATE | can support finite-admissibility branch tests |
+| AS5: integrable-curvature claim | integral curvature measure remains finite over defined domain | CANDIDATE | can support finite total admissibility without local dynamics |
+| AS6: dynamical avoidance claim | equations force evolution away from singularity | REJECTED | not currently licensed |
+| AS7: bounce claim | collapse reverses, saturates, or bounces because of curvature admissibility | REJECTED | not currently licensed |
+| AS8: regular-core claim | interior solution remains finite / regular core replaces singularity | REJECTED | not currently licensed |
+| AS9: current-based anti-singularity claim | J_curv transports/redistributes curvature to prevent singular behavior | DEFER | deferred until current exists |
+| AS10: energy-based anti-singularity claim | e_curv supplies energy/pressure/negative contribution that prevents singularity | REJECTED | prevents curvature energy bounce money |
+| AS11: boundary-based anti-singularity claim | boundary flux/counterterm/support condition prevents singularity | REJECTED | not currently licensed |
+| AS12: volume-response anti-singularity claim | zeta/volume response prevents curvature blowup | DEFER | deferred until metric insertion/no-overlap is solved |
+| AS13: H_curv anti-singularity claim | parent correction tensor H_curv enforces finite admissibility | DEFER | deferred until parent correction tensor audit |
+| AS14: ordinary-sector neutrality requirement | any anti-singularity claim preserves no M_ext shift, no scalar leakage, no matter rerouting | REQUIRED | keeps ordinary sector safe |
+| AS15: no repair mechanism requirement | anti-singularity cannot be obtained by boundary repair, e_curv reservoir, J_curv repair, or H_curv patch | REQUIRED | prevents painted singularity escape |
+| AS16: no recovery construction requirement | anti-singularity claim cannot be chosen to preserve gamma_like, AB, or exterior matching | REQUIRED | keeps recovery downstream |
+| AS17: claim failure | no anti-singularity claim beyond diagnostic/branch-filter is currently licensed | SAFE_IF | keeps theory honest |
+| AS18: recommended next move | close Group 17 with status summary if no stronger claim is licensed | RECOMMENDED | next script should be candidate_curvature_energy_group_status_summary.py |
+[WARN] compact anti-singularity claim ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+DEFER: 3
+RECOMMENDED: 1
+REJECTED: 5
+REQUIRED: 4
+SAFE_IF: 2
+
+Interpretation:
+  Diagnostic claim is currently licensed if the diagnostic is stated beforehand.
+  Branch-kill, bounded-invariant, and integrable-curvature claims remain candidates/theorem targets.
+  Dynamical avoidance, bounce, regular core, energy-based, and boundary-based claims are rejected under current status.
+  J_curv, volume-response, and H_curv claims are deferred.
+  Group 17 should close with status summary rather than strengthen the claim.
+[WARN] anti-singularity claim status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Claim ladder
+========================================================================================================================
+Claim ladder:
+
+1. diagnostic flag:
+   currently allowed if diagnostic is defined.
+
+2. branch-kill theorem target:
+   candidate if finite-admissibility condition is formalized.
+
+3. bounded invariant / integrable curvature theorem target:
+   candidate if domain/measure/invariants are fixed.
+
+4. dynamical avoidance:
+   rejected for now; requires equations.
+
+5. bounce:
+   rejected for now; requires dynamics and solution.
+
+6. regular core:
+   rejected for now; requires explicit interior solution and matching.
+
+7. H_curv correction:
+   deferred to parent correction tensor audit.
+[PASS] anti-singularity claim ladder listed: RECOMMENDED
+
+========================================================================================================================
+Case 5: Anti-singularity claim decision tree
+========================================================================================================================
+Decision tree:
+
+1. Diagnostic object only:
+   diagnostic claim only.
+
+2. Finite-admissibility condition with branch-kill rule:
+   branch-filter claim candidate.
+
+3. Current/balance undefined:
+   no dynamical avoidance claim.
+
+4. No explicit solution:
+   no bounce or regular-core claim.
+
+5. Boundary/mass neutrality not derived:
+   no exterior-safe strong claim.
+
+6. H_curv not audited:
+   no parent-correction anti-singularity claim.
+
+7. Stronger wording appears:
+   reject as overclaim.
+[PASS] anti-singularity claim decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 6: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  no anti-singularity claim beyond diagnostic / branch-filter is licensed.
+
+Consequence:
+
+  close Group 17 honestly.
+  carry anti-singularity as theorem target into future current/correction work.
+
+Bad failure:
+
+  use words like bounce, regular core, or singularity avoidance because the diagnostics look promising.
+[WARN] anti-singularity claim good failure stated: DEFER
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+Anti-singularity claim audit fails if:
+
+1. diagnostic flag is called dynamics
+2. branch-kill is called bounce
+3. bounded invariant is called regular core
+4. e_curv is used as source/bounce money
+5. J_curv is used before definition
+6. balance law is used decoratively
+7. boundary counterterm is used as avoidance
+8. zeta/volume response reopens metric insertion
+9. H_curv is introduced as patch
+10. recovery targets shape the anti-singularity mechanism
+11. ordinary exterior neutrality is ignored
+[WARN] anti-singularity claim failure controls stated: RISK
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_curvature_anti_singularity_claim_audit.md
+   Artifact for this script.
+
+2. candidate_curvature_energy_group_status_summary.py
+   Close Group 17 with status summary and handoff.
+
+3. candidate_curvature_claim_overreach_failure_summary.py
+   Use if a stronger claim is attempted but unsupported.
+
+Recommended next script:
+
+  candidate_curvature_energy_group_status_summary.py
+
+Reason:
+  The group has audited object, condition, energy, current, balance, neutrality, and claim level.
+  No dynamical anti-singularity claim is licensed, so the group should close.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Currently licensed:
+
+  diagnostic claim
+  branch-filter / theorem-target claim
+
+Not currently licensed:
+
+  dynamical singularity avoidance
+  bounce
+  regular core
+  current-based avoidance
+  energy-based avoidance
+  boundary-based avoidance
+  H_curv correction avoidance
+
+Best next script:
+
+  candidate_curvature_energy_group_status_summary.py
+[PASS] curvature anti-singularity claim audit complete: CLOSED

@@ -1,0 +1,137 @@
+
+================================================================================================================
+Candidate Pressure/Stress Source Extension
+================================================================================================================
+
+================================================================================================================
+Case 0: Problem statement
+================================================================================================================
+Current reduced source law:
+
+  F_A(r) = 4*pi*r^2*A'(r)
+  F_A(r) = 8*pi*G*M_enc(r)/c^2
+
+This captures exterior Schwarzschild and weak-field interior potential.
+
+But GR interior comparison shows missing second-order structure.
+Candidate missing channels:
+  pressure/stress source for A-flux
+  pressure/stress source for interior kappa
+  nonlinear interior self-field correction
+
+[PASS] pressure/stress source question isolated
+
+================================================================================================================
+Case 1: GR constant-density pressure profile expansion
+================================================================================================================
+Dimensionless pressure profile for GR constant-density interior:
+  p/(rho c^2) = [sqrt(1-u x²)-sqrt(1-u)] /
+                 [3sqrt(1-u)-sqrt(1-u x²)]
+
+p/(rho c^2) series through u² = u*(-u*x**2 + u - x**2 + 1)/4
+leading pressure ratio = u*(1 - x**2)/4
+[PASS] pressure begins at order u
+[PASS] pressure vanishes at surface x=1
+
+================================================================================================================
+Case 2: A residual versus pressure-like shape
+================================================================================================================
+A_GR - A_red leading = 3*u**2*(x**4 - 2*x**2 + 1)/16
+leading pressure shape = u*(1 - x**2)/4
+3 * pressure_shape^2 = 3*u**2*(x**2 - 1)**2/16
+difference = 0
+[PASS] A residual has pressure-squared-like boundary shape
+
+Interpretation:
+  The A residual begins at order u^2 and has shape (1-x^2)^2.
+  This resembles a second-order pressure/self-field correction.
+
+================================================================================================================
+Case 3: Pressure as direct A-flux source hypothesis
+================================================================================================================
+Hypothesis H1:
+
+  Delta_areal A = 8*pi*G/c^2 * (rho + chi p/c^2)
+
+source = 8*pi*G*(rho + chi*p/c**2)/c**2
+
+Consequences:
+  pressure changes A-flux directly.
+  if pressure vanishes at boundary, exterior flux can still be set by
+  integrated effective source.
+
+[PASS] direct pressure A-source hypothesis formulated
+
+================================================================================================================
+Case 4: Pressure/stress as kappa-source hypothesis
+================================================================================================================
+Hypothesis H2:
+
+  pressure/stress sources interior kappa
+
+J_k = a*c**2*rho + b*p
+E = C_k*kappa**2 - kappa*(a*c**2*rho + b*p)
+stationary equation = Eq(2*C_k*kappa - a*c**2*rho - b*p, 0)
+kappa_eq = [(a*c**2*rho + b*p)/(2*C_k)]
+
+If J_k vanishes in exterior, kappa relaxes to zero outside.
+[PASS] pressure/stress kappa-source hypothesis formulated
+
+================================================================================================================
+Case 5: Boundary preservation conditions
+================================================================================================================
+pressure leading shape ~ u*(1 - x**2)/4
+kappa leading GR diagnostic shape ~ -3*u*(1 - x**2)/4
+A residual leading shape ~ 3*u**2*(1 - x**2)**2/16
+
+pressure at boundary = 0
+kappa at boundary = 0
+A residual at boundary = 0
+A residual derivative at boundary = 0
+[PASS] pressure-like corrections vanish at boundary
+[PASS] kappa-like corrections vanish at boundary
+[PASS] A residual is boundary-smooth
+
+Interpretation:
+  Interior pressure/stress corrections can be boundary-contained.
+  This lets exterior A-flux and kappa=0 remain intact.
+
+================================================================================================================
+Case 6: Source-channel classification
+================================================================================================================
+Candidate source channels:
+
+1. Density -> A-flux
+   F_A = 8*pi*G*M_enc/c^2
+   controls exterior mass field
+
+2. Pressure/stress -> interior kappa
+   traceful matter response
+   should vanish or relax at boundary
+
+3. Pressure/self-field -> second-order A residual
+   interior-supported correction
+   boundary-smooth so exterior Schwarzschild remains
+
+4. Exterior source-free vacuum
+   kappa -> 0
+   A-flux conserved
+   B = 1/A
+
+[PASS] source-channel map separated
+
+================================================================================================================
+Final interpretation
+================================================================================================================
+Pressure/stress likely belongs to the interior problem, not the
+ordinary exterior mass-flux law.
+
+The cleanest current hypothesis is:
+
+  density / total mass fixes exterior A-flux,
+  pressure and stress source interior kappa and/or boundary-smooth
+  second-order A corrections,
+  source-free exterior suppresses kappa and conserves A-flux.
+
+Possible next artifact:
+  candidate_pressure_stress_source_extension.md

@@ -1,0 +1,290 @@
+
+========================================================================================================================
+Candidate Volume-Exchange Stiffness Ratio Origin
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Volume-exchange stiffness ratio origin problem
+========================================================================================================================
+Question:
+
+  Does vacuum-volume exchange actually fix the ratio, or is zeta just another costume for the same missing coefficient?
+
+Goal:
+
+  test whether ontology-native volume exchange can end the ratio-relocation loop
+
+Discipline:
+
+  write V[A,B_s,zeta] before using it
+  do not use zeta as gamma_like patch
+  do not let zeta be both B_s companion and independent residual
+  preserve boundary neutrality
+  keep gamma/AB recovery downstream
+  reject unnamed ontology as coefficient origin
+[WARN] volume-exchange stiffness ratio problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Volume-exchange ratio inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+VX1: volume-exchange target
+------------------------------------------------------------------------------------------------------------------------
+Exchange: V[A,B_s,zeta] fixes q or stiffness/current ratio before recovery checks
+Role: ontology-native coefficient-origin candidate
+Allowed if: exchange operator is explicit and not recovery-tuned
+Forbidden if: zeta is inserted only to patch gamma_like or AB
+[WARN] VX1: volume-exchange target: CANDIDATE
+Missing: explicit V[A,B_s,zeta]
+Consequence: could end the ratio-relocation loop if real
+
+------------------------------------------------------------------------------------------------------------------------
+VX2: zeta as A_spatial companion
+------------------------------------------------------------------------------------------------------------------------
+Exchange: zeta supplies the spatial volume response associated with A
+Role: possible direct route from vacuum volume to B_s
+Allowed if: zeta is not also independent residual trace
+Forbidden if: zeta supplies B_s and remains separate metric residual
+[WARN] VX2: zeta as A_spatial companion: RISK
+Missing: zeta-B_s identity and no-overlap proof
+Consequence: may collapse zeta residual role into A_spatial bookkeeping
+
+------------------------------------------------------------------------------------------------------------------------
+VX3: zeta as residual only
+------------------------------------------------------------------------------------------------------------------------
+Exchange: A/B_s ratio is fixed elsewhere; zeta remains boundary-neutral residual
+Role: protects previous residual convention
+Allowed if: volume exchange does not control q
+Forbidden if: zeta is invoked to fix ratio and then kept as residual
+[WARN] VX3: zeta as residual only: SAFE_IF
+Missing: separate q-origin or proof zeta not involved
+Consequence: does not solve ratio origin but preserves accounting
+
+------------------------------------------------------------------------------------------------------------------------
+VX4: exchange stiffness ratio
+------------------------------------------------------------------------------------------------------------------------
+Exchange: c_x/c_s = r_V from volume/curvature exchange law
+Role: core theorem target for volume-exchange branch
+Allowed if: r_V follows from exchange structure before recovery checks
+Forbidden if: r_V is chosen from gamma_like or AB
+[WARN] VX4: exchange stiffness ratio: THEOREM_TARGET
+Missing: exchange law deriving r_V
+Consequence: decides whether volume exchange fixes q-origin
+
+------------------------------------------------------------------------------------------------------------------------
+VX5: exchange current ratio
+------------------------------------------------------------------------------------------------------------------------
+Exchange: a/b = r_V from vacuum-volume current or balance law
+Role: current-route version of volume-exchange origin
+Allowed if: volume current is explicit
+Forbidden if: volume current only renames gradient-current ratio
+[WARN] VX5: exchange current ratio: CANDIDATE
+Missing: volume current / flux law
+Consequence: could fix current ratio if vacuum-volume flux is real
+
+------------------------------------------------------------------------------------------------------------------------
+VX6: source-coupled volume creation
+------------------------------------------------------------------------------------------------------------------------
+Exchange: mass/source response creates or destroys vacuum volume, coupling A to B_s
+Role: ontology-native source-routing candidate
+Allowed if: source coupling is postulate-derived and coefficient-fixed
+Forbidden if: source-volume coupling is added to repair gamma_like
+[WARN] VX6: source-coupled volume creation: CANDIDATE
+Missing: covariant expression for source-driven volume creation
+Consequence: may connect to mass accelerating across gradient coupling
+
+------------------------------------------------------------------------------------------------------------------------
+VX7: no-overlap trace theorem
+------------------------------------------------------------------------------------------------------------------------
+Exchange: O[B_s,zeta_residual/kappa_residual] = 0 or residual killed/non-metric
+Role: prevents zeta from both fixing ratio and adding independent trace
+Allowed if: overlap operator or residual status theorem is explicit
+Forbidden if: volume exchange double-counts scalar trace
+[WARN] VX7: no-overlap trace theorem: THEOREM_TARGET
+Missing: overlap operator / residual status theorem
+Consequence: volume exchange fails if it violates count-once recombination
+
+------------------------------------------------------------------------------------------------------------------------
+VX8: boundary neutrality
+------------------------------------------------------------------------------------------------------------------------
+Exchange: volume-exchange contribution has no exterior scalar charge unless part of A_spatial
+Role: protects exterior mass and no-scalar-charge results
+Allowed if: exchange is either A_spatial companion or boundary-neutral residual
+Forbidden if: exchange creates exterior zeta/kappa charge
+[WARN] VX8: boundary neutrality: REQUIRED
+Missing: boundary neutrality theorem for V
+Consequence: prevents volume exchange from becoming scalar gravity
+
+------------------------------------------------------------------------------------------------------------------------
+VX9: gamma-like recovery check
+------------------------------------------------------------------------------------------------------------------------
+Exchange: after r_V fixed, weak-field output gives gamma_like=1
+Role: downstream recovery target
+Allowed if: checked after exchange law fixes ratio
+Forbidden if: used to choose r_V
+[WARN] VX9: gamma-like recovery check: RECOVERY_TARGET
+Missing: weak-field map from exchange-fixed ratio
+Consequence: tests but does not determine volume exchange
+
+------------------------------------------------------------------------------------------------------------------------
+VX10: AB exterior diagnostic check
+------------------------------------------------------------------------------------------------------------------------
+Exchange: after exchange-fixed ratio, exterior solution gives AB -> 1 diagnostic
+Role: downstream exterior check
+Allowed if: checked after solving exchange equations
+Forbidden if: used as exchange law or boundary condition
+[WARN] VX10: AB exterior diagnostic check: RECOVERY_TARGET
+Missing: exterior solution
+Consequence: keeps AB diagnostic-only
+
+------------------------------------------------------------------------------------------------------------------------
+VX11: zeta coefficient patch failure
+------------------------------------------------------------------------------------------------------------------------
+Exchange: zeta inserted only to choose ratio or pass recovery checks
+Role: rejected shortcut
+Allowed if: used only as no-go diagnosis
+Forbidden if: accepted as ontology
+[WARN] VX11: zeta coefficient patch failure: REJECTED
+Missing: not pursued
+Consequence: kills volume-exchange route if no independent exchange law exists
+
+------------------------------------------------------------------------------------------------------------------------
+VX12: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Exchange: write minimal volume-exchange operator V[A,B_s,zeta] or defer branch
+Role: best current concrete test
+Allowed if: exchange operator has explicit variables and no-overlap status
+Forbidden if: continuing with unnamed ontology
+[PASS] VX12: recommended next move: RECOMMENDED
+Missing: minimal exchange operator ansatz
+Consequence: next script should attempt explicit V operator and branch-kill criteria
+
+========================================================================================================================
+Case 2: Compact volume-exchange ledger
+========================================================================================================================
+| Entry | Exchange | Status | Consequence |
+|---|---|---|---|
+| VX1: volume-exchange target | V[A,B_s,zeta] fixes q or stiffness/current ratio before recovery checks | CANDIDATE | could end the ratio-relocation loop if real |
+| VX2: zeta as A_spatial companion | zeta supplies the spatial volume response associated with A | RISK | may collapse zeta residual role into A_spatial bookkeeping |
+| VX3: zeta as residual only | A/B_s ratio is fixed elsewhere; zeta remains boundary-neutral residual | SAFE_IF | does not solve ratio origin but preserves accounting |
+| VX4: exchange stiffness ratio | c_x/c_s = r_V from volume/curvature exchange law | THEOREM_TARGET | decides whether volume exchange fixes q-origin |
+| VX5: exchange current ratio | a/b = r_V from vacuum-volume current or balance law | CANDIDATE | could fix current ratio if vacuum-volume flux is real |
+| VX6: source-coupled volume creation | mass/source response creates or destroys vacuum volume, coupling A to B_s | CANDIDATE | may connect to mass accelerating across gradient coupling |
+| VX7: no-overlap trace theorem | O[B_s,zeta_residual/kappa_residual] = 0 or residual killed/non-metric | THEOREM_TARGET | volume exchange fails if it violates count-once recombination |
+| VX8: boundary neutrality | volume-exchange contribution has no exterior scalar charge unless part of A_spatial | REQUIRED | prevents volume exchange from becoming scalar gravity |
+| VX9: gamma-like recovery check | after r_V fixed, weak-field output gives gamma_like=1 | RECOVERY_TARGET | tests but does not determine volume exchange |
+| VX10: AB exterior diagnostic check | after exchange-fixed ratio, exterior solution gives AB -> 1 diagnostic | RECOVERY_TARGET | keeps AB diagnostic-only |
+| VX11: zeta coefficient patch failure | zeta inserted only to choose ratio or pass recovery checks | REJECTED | kills volume-exchange route if no independent exchange law exists |
+| VX12: recommended next move | write minimal volume-exchange operator V[A,B_s,zeta] or defer branch | RECOMMENDED | next script should attempt explicit V operator and branch-kill criteria |
+[WARN] compact volume-exchange ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+RECOMMENDED: 1
+RECOVERY_TARGET: 2
+REJECTED: 1
+REQUIRED: 1
+RISK: 1
+SAFE_IF: 1
+THEOREM_TARGET: 2
+
+Interpretation:
+  Volume exchange is the first ontology-native candidate after ratio relocation loops.
+  It can only fix q if V[A,B_s,zeta] is explicit.
+  Zeta cannot be both A_spatial companion and independent residual trace.
+  Boundary neutrality and no-overlap are mandatory.
+  Recovery checks remain downstream.
+[WARN] volume-exchange status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Volume-exchange decision
+========================================================================================================================
+Decision tree:
+
+1. Can V[A,B_s,zeta] be written explicitly?
+   If no: volume exchange is decorative.
+
+2. Does V fix c_x/c_s or a/b before recovery checks?
+   If no: ratio relocation continues.
+
+3. Does zeta become B_s companion?
+   If yes: zeta cannot also remain independent residual trace.
+
+4. Does zeta remain residual only?
+   If yes: volume exchange probably does not fix q.
+
+5. Does V preserve exterior neutrality?
+   If no: reject ordinary-sector branch.
+[PASS] volume-exchange decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  no explicit volume-exchange law fixes the ratio without zeta double-counting.
+
+Consequence:
+
+  volume exchange cannot currently rescue q-origin.
+  The A_spatial branch must either:
+    remain a recovery theorem target,
+    move to a deeper ontology/postulate derivation,
+    or accept that zeta becomes the spatial companion and loses residual independence.
+
+Bad failure:
+  say vacuum volume fixes the ratio without writing the exchange operator.
+[WARN] volume-exchange good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Volume-exchange ratio origin fails if:
+
+1. V[A,B_s,zeta] is not written
+2. zeta is inserted to fit gamma_like
+3. r_V is chosen from AB=1
+4. zeta fixes B_s while remaining independent residual
+5. boundary neutrality is not proven
+6. no-overlap theorem is ignored
+7. source-driven volume creation is named but not expressed
+8. volume exchange only relocates the coefficient to another free parameter
+[WARN] volume-exchange failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_volume_exchange_stiffness_ratio_origin.md
+   Artifact for this script.
+
+2. candidate_minimal_volume_exchange_operator_ansatz.py
+   Attempt explicit V[A,B_s,zeta] operator forms.
+
+3. candidate_zeta_companion_vs_residual_decision.py
+   Decide whether zeta can be B_s companion or residual, but not both.
+
+Recommended next script:
+
+  candidate_minimal_volume_exchange_operator_ansatz.py
+
+Reason:
+  The branch now depends on writing V[A,B_s,zeta]. Test minimal exchange operator forms directly.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Volume exchange is the next ontology-native candidate.
+
+It only helps if:
+  V[A,B_s,zeta] is explicit,
+  it fixes the ratio before recovery checks,
+  and zeta does not double-count residual trace.
+
+Best next test:
+  candidate_minimal_volume_exchange_operator_ansatz.py

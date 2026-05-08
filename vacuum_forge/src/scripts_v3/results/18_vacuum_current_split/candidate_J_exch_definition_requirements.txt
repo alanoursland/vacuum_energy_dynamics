@@ -1,0 +1,498 @@
+
+========================================================================================================================
+Candidate J_exch Definition Requirements
+========================================================================================================================
+
+========================================================================================================================
+Case 0: J_exch definition requirements problem
+========================================================================================================================
+Question:
+
+  What must J_exch be to be more than repair current?
+
+Goal:
+
+  state minimum active-exchange burden after J_sub has been fenced
+
+Discipline:
+
+  no undefined Sigma/R
+  no decorative balance law
+  no boundary repair
+  no recovery repair
+  no matter repair
+  no e_curv source reservoir
+  no H_exch patch
+  no hidden scalar trace
+  preserve zero-net / zero-creation ordinary branches
+[WARN] J_exch definition requirements problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: J_exch definition requirements inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+JE1: J_exch definition target
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch has source side, relaxation side, divergence/balance role, domain, direction, boundary behavior, matter decoupling, and mass neutrality
+Role: core active-exchange theorem target
+Allowed if: all requirements are explicit before J_exch is used
+Forbidden if: J_exch is named active exchange without source/relaxation structure
+[WARN] JE1: J_exch definition target: THEOREM_TARGET
+Missing: actual J_exch definition
+Consequence: decides whether active exchange language can become technical
+
+------------------------------------------------------------------------------------------------------------------------
+JE2: source side requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: Sigma_exch or equivalent source side is defined
+Role: source prerequisite
+Allowed if: source has domain, sign/strength rule, and physical meaning
+Forbidden if: source is whatever creates desired curvature or fixes leakage
+[WARN] JE2: source side requirement: REQUIRED
+Missing: Sigma_exch operator
+Consequence: prevents source side from becoming repair label
+
+------------------------------------------------------------------------------------------------------------------------
+JE3: relaxation side requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: R_exch or equivalent relaxation/sink side is defined
+Role: relaxation prerequisite
+Allowed if: relaxation mechanism is distinct from source and not tuned
+Forbidden if: R_exch is chosen to cancel source, divergence, boundary leakage, or recovery mismatch
+[WARN] JE3: relaxation side requirement: REQUIRED
+Missing: R_exch operator
+Consequence: prevents relaxation from becoming cancellation knob
+
+------------------------------------------------------------------------------------------------------------------------
+JE4: Sigma/R distinction requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: Sigma_exch and R_exch are not two names for one hidden tuning mechanism
+Role: double-counting guard
+Allowed if: source and relaxation have independent definitions
+Forbidden if: Sigma/R are adjusted against each other to pass checks
+[WARN] JE4: Sigma/R distinction requirement: REQUIRED
+Missing: Sigma/R separation theorem
+Consequence: preserves exchange accounting honesty
+
+------------------------------------------------------------------------------------------------------------------------
+JE5: divergence / balance role requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: possible balance form is stated only after current/source sides are defined
+Role: balance guard
+Allowed if: nabla_mu J_exch^mu = Sigma_exch - R_exch is theorem target only
+Forbidden if: balance law defines all symbols decoratively
+[WARN] JE5: divergence / balance role requirement: REQUIRED
+Missing: J_exch, Sigma_exch, R_exch definitions
+Consequence: prevents decorative exchange continuity
+
+------------------------------------------------------------------------------------------------------------------------
+JE6: domain requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: domain D_exch where exchange is active is specified
+Role: definition prerequisite
+Allowed if: domain follows from source/admissibility/support law
+Forbidden if: domain is chosen to hide leakage or boundary failure
+[WARN] JE6: domain requirement: REQUIRED
+Missing: D_exch
+Consequence: prevents convenient active region
+
+------------------------------------------------------------------------------------------------------------------------
+JE7: direction / orientation requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch direction follows from source gradient, transport law, support, or admissibility structure
+Role: orientation prerequisite
+Allowed if: direction is defined before recovery/boundary checks
+Forbidden if: direction is chosen to cancel leakage or singular behavior
+[WARN] JE7: direction / orientation requirement: REQUIRED
+Missing: direction law
+Consequence: prevents repair-current behavior
+
+------------------------------------------------------------------------------------------------------------------------
+JE8: boundary behavior requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch has no boundary repair flux, hidden exterior charge, or mass-shift leakage
+Role: boundary safety guard
+Allowed if: boundary behavior follows from exchange law
+Forbidden if: J_exch is chosen to repair boundary failure
+[WARN] JE8: boundary behavior requirement: REQUIRED
+Missing: boundary neutrality theorem
+Consequence: protects exterior sector
+
+------------------------------------------------------------------------------------------------------------------------
+JE9: ordinary matter decoupling requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch does not reroute ordinary matter or double-count T_mu_nu
+Role: matter-sector guard
+Allowed if: ordinary matter coupling remains independently routed
+Forbidden if: J_exch fixes curvature/boundary behavior by changing matter coupling
+[WARN] JE9: ordinary matter decoupling requirement: REQUIRED
+Missing: ordinary matter decoupling theorem
+Consequence: prevents exchange from becoming matter repair
+
+------------------------------------------------------------------------------------------------------------------------
+JE10: mass neutrality requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: delta M_ext|J_exch = 0 unless derived through A-sector source law
+Role: mass protection guard
+Allowed if: exchange is exterior-neutral or source-coupled only by theorem
+Forbidden if: J_exch changes measured exterior mass
+[WARN] JE10: mass neutrality requirement: REQUIRED
+Missing: mass neutrality theorem
+Consequence: protects strongest A-sector result
+
+------------------------------------------------------------------------------------------------------------------------
+JE11: scalar trace neutrality requirement
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch does not reopen B_s/F_zeta, residual trace, kappa, or ordinary scalar charge unless derived
+Role: metric-insertion guard
+Allowed if: exchange stays outside ordinary scalar trace or has explicit insertion theorem
+Forbidden if: J_exch becomes hidden B_s/zeta source
+[WARN] JE11: scalar trace neutrality requirement: REQUIRED
+Missing: scalar trace / insertion theorem
+Consequence: preserves Group 16 guardrails
+
+------------------------------------------------------------------------------------------------------------------------
+JE12: relation to curvature admissibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch may couple to curvature admissibility only as theorem target, not dynamics
+Role: Group 17 preservation guard
+Allowed if: A_curv remains diagnostic/branch-filter unless dynamics are derived
+Forbidden if: J_exch turns curvature admissibility into active repair
+[WARN] JE12: relation to curvature admissibility: RISK
+Missing: A_curv dynamics / J_curv absent
+Consequence: prevents curvature-admissibility overclaim
+
+------------------------------------------------------------------------------------------------------------------------
+JE13: relation to e_curv
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch is not e_curv source reservoir or bounce money
+Role: curvature-energy guard
+Allowed if: e_curv remains diagnostic/accounting
+Forbidden if: J_exch transports free curvature energy to force finite behavior
+[WARN] JE13: relation to e_curv: REJECTED
+Missing: not pursued
+Consequence: preserves Group 17 e_curv fence
+
+------------------------------------------------------------------------------------------------------------------------
+JE14: relation to J_sub
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch is distinguished from J_sub by source/support/divergence/coupling criterion
+Role: split criterion guard
+Allowed if: criterion distinguishes active exchange from pure substrate wind
+Forbidden if: J_exch is whatever is not J_sub
+[WARN] JE14: relation to J_sub: REQUIRED
+Missing: J_sub/J_exch split criterion
+Consequence: prevents role complement from becoming operator definition
+
+------------------------------------------------------------------------------------------------------------------------
+JE15: zero-net exchange branch
+------------------------------------------------------------------------------------------------------------------------
+Requirement: ordinary sector may have Sigma_exch - R_exch = 0
+Role: ordinary-sector neutrality candidate
+Allowed if: ordinary curvature comes from warping/constraint or balanced exchange
+Forbidden if: zero-net branch still claims active net exchange source
+[WARN] JE15: zero-net exchange branch: CANDIDATE
+Missing: ordinary-sector zero-net theorem
+Consequence: keeps zero-net ordinary branch live
+
+------------------------------------------------------------------------------------------------------------------------
+JE16: zero-creation branch
+------------------------------------------------------------------------------------------------------------------------
+Requirement: ordinary sector may have Sigma_exch = R_exch = 0
+Role: strong ordinary-sector neutrality candidate
+Allowed if: J_exch inactive in ordinary sector and curvature arises otherwise
+Forbidden if: creation/destruction is still used as ordinary active source
+[WARN] JE16: zero-creation branch: CANDIDATE
+Missing: ordinary-sector zero-creation theorem
+Consequence: keeps no-exchange ordinary branch live
+
+------------------------------------------------------------------------------------------------------------------------
+JE17: active-only domain candidate
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch active only where explicit exchange source is nonzero
+Role: candidate exchange-support rule
+Allowed if: source side is independently defined
+Forbidden if: support is chosen to hide boundary/exterior effects
+[WARN] JE17: active-only domain candidate: CANDIDATE
+Missing: source support law
+Consequence: possible route to separating exchange from substrate
+
+------------------------------------------------------------------------------------------------------------------------
+JE18: endpoint/admissibility-domain candidate
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch active only at endpoints / boundaries of admissibility domain
+Role: high-risk candidate
+Allowed if: endpoints are structural and not boundary repair
+Forbidden if: endpoints repair singularity or leakage
+[WARN] JE18: endpoint/admissibility-domain candidate: RISK
+Missing: endpoint/admissibility domain theorem
+Consequence: possible but dangerous exchange localization route
+
+------------------------------------------------------------------------------------------------------------------------
+JE19: boundary repair rejection
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch chosen to cancel boundary leakage, shell source, scalar tail, or mass shift
+Role: forbidden repair-current branch
+Allowed if: never as mechanism
+Forbidden if: accepted as exchange current
+[WARN] JE19: boundary repair rejection: REJECTED
+Missing: not pursued
+Consequence: prevents painted exchange pipe
+
+------------------------------------------------------------------------------------------------------------------------
+JE20: recovery repair rejection
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch chosen to pass gamma_like, AB, exterior matching, or boundary recovery
+Role: forbidden recovery-smuggling branch
+Allowed if: never as mechanism
+Forbidden if: accepted as exchange law
+[WARN] JE20: recovery repair rejection: REJECTED
+Missing: not pursued
+Consequence: keeps recovery downstream
+
+------------------------------------------------------------------------------------------------------------------------
+JE21: matter repair rejection
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch reroutes ordinary matter to fix curvature or boundary problems
+Role: forbidden matter repair branch
+Allowed if: never without source theorem
+Forbidden if: accepted as exchange coupling
+[WARN] JE21: matter repair rejection: REJECTED
+Missing: not pursued
+Consequence: preserves ordinary matter decoupling
+
+------------------------------------------------------------------------------------------------------------------------
+JE22: H_exch premature use rejection
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch immediately justifies H_exch or parent correction tensor
+Role: forbidden parent-correction shortcut
+Allowed if: deferred to Group 19
+Forbidden if: accepted as divergence closure
+[WARN] JE22: H_exch premature use rejection: REJECTED
+Missing: not pursued
+Consequence: prevents decorative correction tensor
+
+------------------------------------------------------------------------------------------------------------------------
+JE23: dark-sector deferral
+------------------------------------------------------------------------------------------------------------------------
+Requirement: dark-sector coupling to J_exch remains optional and separated
+Role: future optional branch
+Allowed if: ordinary matter decoupling and neutrality are preserved
+Forbidden if: dark sector patches ordinary failure
+[WARN] JE23: dark-sector deferral: DEFER
+Missing: dark-sector coupling rule
+Consequence: keeps speculative coupling downstream
+
+------------------------------------------------------------------------------------------------------------------------
+JE24: J_exch failure
+------------------------------------------------------------------------------------------------------------------------
+Requirement: J_exch cannot meet source, relaxation, boundary, matter, mass, and split requirements
+Role: branch failure condition
+Allowed if: used to keep exchange current role-level only
+Forbidden if: patched with decorative continuity or repair current
+[FAIL] JE24: J_exch failure: BRANCH_KILLED
+Missing: applies if failure demonstrated
+Consequence: active exchange current cannot be used
+
+------------------------------------------------------------------------------------------------------------------------
+JE25: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Requirement: after J_sub/J_exch burdens are stated, audit ordinary matter decoupling for vacuum currents
+Role: next local bottleneck
+Allowed if: both current branches remain theorem targets
+Forbidden if: proceeding to source inventory before matter decoupling guard
+[PASS] JE25: recommended next move: RECOMMENDED
+Missing: ordinary matter decoupling audit
+Consequence: next script should be candidate_ordinary_matter_decoupling_for_vacuum_currents.py
+
+========================================================================================================================
+Case 2: Compact J_exch requirements ledger
+========================================================================================================================
+| Entry | Requirement | Status | Consequence |
+|---|---|---|---|
+| JE1: J_exch definition target | J_exch has source side, relaxation side, divergence/balance role, domain, direction, boundary behavior, matter decoupling, and mass neutrality | THEOREM_TARGET | decides whether active exchange language can become technical |
+| JE2: source side requirement | Sigma_exch or equivalent source side is defined | REQUIRED | prevents source side from becoming repair label |
+| JE3: relaxation side requirement | R_exch or equivalent relaxation/sink side is defined | REQUIRED | prevents relaxation from becoming cancellation knob |
+| JE4: Sigma/R distinction requirement | Sigma_exch and R_exch are not two names for one hidden tuning mechanism | REQUIRED | preserves exchange accounting honesty |
+| JE5: divergence / balance role requirement | possible balance form is stated only after current/source sides are defined | REQUIRED | prevents decorative exchange continuity |
+| JE6: domain requirement | domain D_exch where exchange is active is specified | REQUIRED | prevents convenient active region |
+| JE7: direction / orientation requirement | J_exch direction follows from source gradient, transport law, support, or admissibility structure | REQUIRED | prevents repair-current behavior |
+| JE8: boundary behavior requirement | J_exch has no boundary repair flux, hidden exterior charge, or mass-shift leakage | REQUIRED | protects exterior sector |
+| JE9: ordinary matter decoupling requirement | J_exch does not reroute ordinary matter or double-count T_mu_nu | REQUIRED | prevents exchange from becoming matter repair |
+| JE10: mass neutrality requirement | delta M_ext/J_exch = 0 unless derived through A-sector source law | REQUIRED | protects strongest A-sector result |
+| JE11: scalar trace neutrality requirement | J_exch does not reopen B_s/F_zeta, residual trace, kappa, or ordinary scalar charge unless derived | REQUIRED | preserves Group 16 guardrails |
+| JE12: relation to curvature admissibility | J_exch may couple to curvature admissibility only as theorem target, not dynamics | RISK | prevents curvature-admissibility overclaim |
+| JE13: relation to e_curv | J_exch is not e_curv source reservoir or bounce money | REJECTED | preserves Group 17 e_curv fence |
+| JE14: relation to J_sub | J_exch is distinguished from J_sub by source/support/divergence/coupling criterion | REQUIRED | prevents role complement from becoming operator definition |
+| JE15: zero-net exchange branch | ordinary sector may have Sigma_exch - R_exch = 0 | CANDIDATE | keeps zero-net ordinary branch live |
+| JE16: zero-creation branch | ordinary sector may have Sigma_exch = R_exch = 0 | CANDIDATE | keeps no-exchange ordinary branch live |
+| JE17: active-only domain candidate | J_exch active only where explicit exchange source is nonzero | CANDIDATE | possible route to separating exchange from substrate |
+| JE18: endpoint/admissibility-domain candidate | J_exch active only at endpoints / boundaries of admissibility domain | RISK | possible but dangerous exchange localization route |
+| JE19: boundary repair rejection | J_exch chosen to cancel boundary leakage, shell source, scalar tail, or mass shift | REJECTED | prevents painted exchange pipe |
+| JE20: recovery repair rejection | J_exch chosen to pass gamma_like, AB, exterior matching, or boundary recovery | REJECTED | keeps recovery downstream |
+| JE21: matter repair rejection | J_exch reroutes ordinary matter to fix curvature or boundary problems | REJECTED | preserves ordinary matter decoupling |
+| JE22: H_exch premature use rejection | J_exch immediately justifies H_exch or parent correction tensor | REJECTED | prevents decorative correction tensor |
+| JE23: dark-sector deferral | dark-sector coupling to J_exch remains optional and separated | DEFER | keeps speculative coupling downstream |
+| JE24: J_exch failure | J_exch cannot meet source, relaxation, boundary, matter, mass, and split requirements | BRANCH_KILLED | active exchange current cannot be used |
+| JE25: recommended next move | after J_sub/J_exch burdens are stated, audit ordinary matter decoupling for vacuum currents | RECOMMENDED | next script should be candidate_ordinary_matter_decoupling_for_vacuum_currents.py |
+[WARN] compact J_exch requirements ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 3
+DEFER: 1
+RECOMMENDED: 1
+REJECTED: 5
+REQUIRED: 11
+RISK: 2
+THEOREM_TARGET: 1
+
+Interpretation:
+  J_exch is not defined yet.
+  A real J_exch requires source side, relaxation side, balance role, domain, direction, boundary behavior, matter decoupling, mass neutrality, scalar-trace guard, and split criterion.
+  Sigma/R double-counting remains the central danger.
+  Curvature admissibility and e_curv cannot be used as repair reservoirs.
+  Zero-net and zero-creation ordinary-sector branches remain live.
+  Next gate is ordinary matter decoupling for both J_sub and J_exch.
+[WARN] J_exch requirements status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Required J_exch fields
+========================================================================================================================
+Required J_exch fields:
+
+1. source side
+2. relaxation side
+3. Sigma/R distinction
+4. divergence / balance role
+5. domain
+6. direction / orientation
+7. boundary behavior
+8. ordinary matter decoupling
+9. mass neutrality
+10. scalar trace guard
+11. relation to curvature admissibility
+12. relation to e_curv
+13. relation to J_sub
+14. zero-net / zero-creation ordinary-sector condition
+[PASS] required J_exch fields listed: RECOMMENDED
+
+========================================================================================================================
+Case 5: J_exch definition decision tree
+========================================================================================================================
+Decision tree:
+
+1. J_exch has source/relaxation sides:
+   exchange-current theorem target survives.
+
+2. Sigma/R are undefined:
+   J_exch remains role-level only.
+
+3. J_exch repairs boundary/recovery/matter:
+   rejected.
+
+4. J_exch uses e_curv as reservoir:
+   rejected.
+
+5. J_exch is inactive in ordinary sector:
+   zero-net or zero-creation branch stays live.
+
+6. J_exch cannot meet requirements:
+   active exchange branch killed or remains bookkeeping.
+[PASS] J_exch definition decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 6: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  J_exch cannot be defined without undefined Sigma/R,
+  repair behavior, matter rerouting, source reservoir, or boundary patch.
+
+Consequence:
+
+  do not use J_exch as current.
+  preserve zero-net/zero-creation ordinary-sector branches.
+
+Bad failure:
+
+  write nabla_mu J_exch^mu = Sigma_exch - R_exch
+  while all three objects are labels.
+[WARN] J_exch definition good failure stated: DEFER
+
+========================================================================================================================
+Case 7: Failure controls
+========================================================================================================================
+J_exch definition fails if:
+
+1. Sigma_exch is undefined
+2. R_exch is undefined
+3. Sigma/R are tuning knobs
+4. balance law defines symbols decoratively
+5. domain hides leakage/failure
+6. direction cancels leakage or singularity
+7. boundary behavior repairs failure
+8. matter coupling is rerouted
+9. M_ext shifts
+10. scalar trace reopens
+11. e_curv becomes source reservoir
+12. H_exch is introduced early
+13. dark sector patches ordinary failure
+[WARN] J_exch definition failure controls stated: RISK
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_J_exch_definition_requirements.md
+   Artifact for this script.
+
+2. candidate_ordinary_matter_decoupling_for_vacuum_currents.py
+   Audit whether J_sub/J_exch avoid changing ordinary matter coupling.
+
+3. candidate_J_exch_failure_summary.py
+   Use if J_exch cannot meet exchange-current requirements.
+
+Recommended next script:
+
+  candidate_ordinary_matter_decoupling_for_vacuum_currents.py
+
+Reason:
+  Both J_sub and J_exch are now constrained theorem targets.
+  The next shared safety gate is ordinary matter decoupling.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+J_exch is not defined yet.
+
+It survives only as a theorem target requiring:
+
+  source side
+  relaxation side
+  Sigma/R distinction
+  divergence/balance role
+  domain
+  direction
+  boundary behavior
+  ordinary matter decoupling
+  mass neutrality
+  scalar trace guard
+
+Rejected:
+
+  boundary repair
+  recovery repair
+  matter repair
+  e_curv source reservoir
+  H_exch shortcut
+
+Best next script:
+
+  candidate_ordinary_matter_decoupling_for_vacuum_currents.py
+[PASS] J_exch definition requirements audit complete: CLOSED

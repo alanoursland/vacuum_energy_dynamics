@@ -1,0 +1,176 @@
+
+========================================================================================================================
+Candidate Kappa Compensated Trace Constraint
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Kappa compensated trace constraint problem
+========================================================================================================================
+Problem:
+
+  Raw pressure trace source has nonzero integrated kappa charge.
+
+Candidate fix:
+
+  S_comp = S_trace - <S_trace>_support
+
+Goal:
+
+  remove exterior monopole leakage while retaining interior trace response.
+[WARN] compensated trace problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Define raw and compensated source
+========================================================================================================================
+Raw source:
+
+S_raw = 3*p0*(1 - r**2/R**2)
+
+Support average:
+
+<S_raw> = 6*p0/5
+
+Compensated source:
+
+S_comp = 9*p0/5 - 3*p0*r**2/R**2
+[WARN] compensated source defined: CONSTRAINED_BY_IDENTITY — subtraction needs parent identity
+
+========================================================================================================================
+Case 2: Zero-charge check
+========================================================================================================================
+Raw charge:
+
+Q_raw = 8*pi*R**3*p0/5
+
+Compensated charge:
+
+Q_comp = 0
+
+Therefore the compensated source removes monopole kappa charge.
+[PASS] compensated source has zero integrated charge: DERIVED_REDUCED
+
+========================================================================================================================
+Case 3: Interior source remains nontrivial
+========================================================================================================================
+Compensated source values:
+
+S_comp(0) = 9*p0/5
+S_comp(R) = -6*p0/5
+
+Zero crossing(s):
+[sqrt(15)*R/5]
+
+Interpretation:
+  compensation does not erase kappa interior structure.
+  it creates positive and negative regions with zero net charge.
+[WARN] compensated source retains interior structure: CONSTRAINED_BY_IDENTITY — physical meaning of negative compensation must be derived
+
+========================================================================================================================
+Case 4: Massless exterior consequence
+========================================================================================================================
+For massless kappa:
+
+  kappa_ext ~ alpha_k Q_comp/(4*pi K_k r)
+
+kappa_ext = Q_comp*alpha_k/(4*pi*K_k*r)
+
+If Q_comp = 0, the monopole 1/r tail vanishes.
+
+Higher multipoles or boundary-layer effects may remain, depending on source shape.
+[WARN] zero compensated charge removes monopole tail: CONSTRAINED_BY_IDENTITY — higher multipoles/boundary behavior not solved
+
+========================================================================================================================
+Case 5: Parent identity requirement
+========================================================================================================================
+Compensation is mathematically useful but physically dangerous.
+
+It is acceptable only if a parent identity demands something like:
+
+  integral S_kappa d^3x = 0
+
+or:
+
+  kappa responds only to deviations from mean trace inside a constrained support
+
+or:
+
+  exterior kappa charge is projected out by a constraint equation
+
+Otherwise the subtraction is just a hand-tuned fix.
+[FAIL] parent identity required for compensation: MISSING — zero-charge rule not derived
+
+========================================================================================================================
+Case 6: Locality warning
+========================================================================================================================
+The subtraction:
+
+  S_comp = S_trace - <S_trace>_support
+
+is nonlocal over the support region.
+
+That may be acceptable for a constraint projection, but not for a local
+dynamical source law unless derived from a constrained variable.
+
+Thus compensation points toward kappa as a constrained/non-propagating
+trace response, not an ordinary local scalar field.
+[WARN] compensation is nonlocal over support: RISK — suggests constraint projection rather than local scalar dynamics
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Item | Status |
+|---|---|
+| raw pressure trace source | PLAUSIBLE interior source |
+| raw integrated charge | RISK / nonzero |
+| compensated source | CONSTRAINED_BY_IDENTITY |
+| zero integrated charge | DERIVED_REDUCED |
+| interior structure retained | CONSTRAINED_BY_IDENTITY |
+| parent identity for compensation | MISSING |
+| locality of support-average subtraction | RISK |
+| final kappa source law | UNFINISHED |
+[WARN] compensated trace classification produced: CONSTRAINED_BY_IDENTITY — works algebraically, needs parent identity
+
+========================================================================================================================
+Case 8: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_gauge_vs_physical_trace.py
+   Separate gauge-volume artifact from physical trace response.
+
+2. candidate_kappa_scalar_radiation_leak_check.py
+   Check whether compensated trace response leaks scalar radiation dynamically.
+
+3. candidate_kappa_constraint_projection_identity.py
+   Try to formalize the zero-charge projection as a parent identity.
+
+Recommended next script:
+
+  candidate_kappa_gauge_vs_physical_trace.py
+
+Reason:
+  Compensation looks nonlocal/constraint-like; before promoting it, separate
+  physical trace from gauge-volume artifact.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — gauge-vs-physical trace is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Compensated trace source:
+
+  S_comp = S_trace - <S_trace>
+
+does remove the monopole kappa charge:
+
+  integral S_comp d^3x = 0
+
+and therefore removes the massless exterior 1/r monopole leak.
+
+But the subtraction is nonlocal over the source support and must be
+derived from a parent constraint/projection identity.
+
+Possible next artifact:
+  candidate_kappa_compensated_trace_constraint.md
+
+Possible next script:
+  candidate_kappa_gauge_vs_physical_trace.py

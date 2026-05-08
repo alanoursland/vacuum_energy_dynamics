@@ -1,0 +1,268 @@
+
+========================================================================================================================
+Candidate Vacuum Transport Current Constraints
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Vacuum transport current constraints problem
+========================================================================================================================
+Question:
+
+  If J_v exists, is it local, constrained, or transport?
+
+Goal:
+
+  constrain J_v so it does not become an acausal repair current or hidden scalar-radiation channel
+
+Discipline:
+
+  no exterior J_v flux
+  no far-zone scalar energy flux
+  no change to M_ext
+  no Sigma_creation leakage
+  no coefficient tuning
+  nonlocality must be declared as constraint, not physical transport
+[WARN] vacuum transport current problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: J_v option inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+J1: no transport current
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v = 0 in ordinary local relaxation
+Allowed if: conversion is purely local exchange between e_kappa and epsilon_vac_config
+Forbidden if: used where compensation requires redistribution between regions
+[WARN] J1: no transport current: SAFE_IF
+Missing: proof that local exchange alone enforces Q_volume=0
+
+------------------------------------------------------------------------------------------------------------------------
+J2: compact-support current
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v nonzero only inside/near matter support
+Allowed if: surface flux at exterior boundary vanishes
+Forbidden if: J_v reaches infinity or sources far-zone scalar flux
+[WARN] J2: compact-support current: SAFE_IF
+Missing: support law and interface condition
+
+------------------------------------------------------------------------------------------------------------------------
+J3: constrained redistribution current
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v enforces integral compensation with zero exterior flux
+Allowed if: nonlocality is declared as constraint bookkeeping, not propagation
+Forbidden if: presented as physical superluminal transport
+[WARN] J3: constrained redistribution current: CANDIDATE
+Missing: constraint origin and parent projector
+
+------------------------------------------------------------------------------------------------------------------------
+J4: causal transport current
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v obeys a causal evolution/transport law
+Allowed if: finite speed and stress-energy accounting are specified
+Forbidden if: it becomes an extra propagating scalar radiation channel
+[FAIL] J4: causal transport current: UNRESOLVED
+Missing: transport law, speed, characteristic structure
+
+------------------------------------------------------------------------------------------------------------------------
+J5: boundary flux condition
+------------------------------------------------------------------------------------------------------------------------
+Option: surface integral J_v dot dS at R+ = 0
+Allowed if: no vacuum-configuration current leaks into exterior as scalar charge
+Forbidden if: nonzero exterior boundary flux creates zeta/kappa 1/r tail
+[WARN] J5: boundary flux condition: REQUIRED
+Missing: boundary/interface law
+
+------------------------------------------------------------------------------------------------------------------------
+J6: volume charge conservation
+------------------------------------------------------------------------------------------------------------------------
+Option: dQ_volume/dtau + surface flux = source compensation
+Allowed if: Q_volume remains zero in ordinary isolated systems
+Forbidden if: ordinary evolution generates nonzero Q_volume
+[WARN] J6: volume charge conservation: REQUIRED
+Missing: definition of Q_volume and S_volume
+
+------------------------------------------------------------------------------------------------------------------------
+J7: exterior vacuum fixed point
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v_ext=0, zeta_ext=0, kappa_ext=0
+Allowed if: ordinary exterior vacuum contains no transport current or volume mode
+Forbidden if: exterior vacuum carries persistent J_v or volume pressure
+[WARN] J7: exterior vacuum fixed point: CONSTRAINED
+Missing: exterior stability proof
+
+------------------------------------------------------------------------------------------------------------------------
+J8: no far-zone scalar energy flux
+------------------------------------------------------------------------------------------------------------------------
+Option: F_scalar_far[J_v,zeta,kappa] = 0
+Allowed if: J_v is local/constrained and not radiative
+Forbidden if: J_v transports scalar energy to infinity
+[WARN] J8: no far-zone scalar energy flux: REQUIRED
+Missing: radiation/energy flux definition
+
+------------------------------------------------------------------------------------------------------------------------
+J9: relation to Sigma_exchange
+------------------------------------------------------------------------------------------------------------------------
+Option: nabla_mu J_v^mu = Sigma_exchange - Gamma_relax
+Allowed if: terms are geometric and ordinary Sigma_creation remains zero
+Forbidden if: Sigma_exchange becomes a free source knob
+[WARN] J9: relation to Sigma_exchange: CANDIDATE
+Missing: sign conventions, variables, and parent balance
+
+------------------------------------------------------------------------------------------------------------------------
+J10: relation to A-sector mass
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v does not alter A_flux or M_ext
+Allowed if: vacuum transport is trace/volume bookkeeping only
+Forbidden if: J_v changes exterior mass coefficient
+[WARN] J10: relation to A-sector mass: CONSTRAINED
+Missing: boundary mass preservation theorem
+
+------------------------------------------------------------------------------------------------------------------------
+J11: acausal repair current
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v instantaneously fixes any mismatch
+Allowed if: never, unless explicitly derived as a constraint with fixed rule
+Forbidden if: used as arbitrary repair reservoir/current
+[PASS] J11: acausal repair current: FORBIDDEN
+Missing: not pursued
+
+------------------------------------------------------------------------------------------------------------------------
+J12: coefficient tuning current
+------------------------------------------------------------------------------------------------------------------------
+Option: J_v adjusts alpha_W/K_c, beta_W, C_T, K_T
+Allowed if: never
+Forbidden if: used to tune observable coefficients
+[PASS] J12: coefficient tuning current: FORBIDDEN
+Missing: not pursued
+
+========================================================================================================================
+Case 2: Compact J_v ledger
+========================================================================================================================
+| Entry | Option | Status | Forbidden if | Missing |
+|---|---|---|---|---|
+| J1: no transport current | J_v = 0 in ordinary local relaxation | SAFE_IF | used where compensation requires redistribution between regions | proof that local exchange alone enforces Q_volume=0 |
+| J2: compact-support current | J_v nonzero only inside/near matter support | SAFE_IF | J_v reaches infinity or sources far-zone scalar flux | support law and interface condition |
+| J3: constrained redistribution current | J_v enforces integral compensation with zero exterior flux | CANDIDATE | presented as physical superluminal transport | constraint origin and parent projector |
+| J4: causal transport current | J_v obeys a causal evolution/transport law | UNRESOLVED | it becomes an extra propagating scalar radiation channel | transport law, speed, characteristic structure |
+| J5: boundary flux condition | surface integral J_v dot dS at R+ = 0 | REQUIRED | nonzero exterior boundary flux creates zeta/kappa 1/r tail | boundary/interface law |
+| J6: volume charge conservation | dQ_volume/dtau + surface flux = source compensation | REQUIRED | ordinary evolution generates nonzero Q_volume | definition of Q_volume and S_volume |
+| J7: exterior vacuum fixed point | J_v_ext=0, zeta_ext=0, kappa_ext=0 | CONSTRAINED | exterior vacuum carries persistent J_v or volume pressure | exterior stability proof |
+| J8: no far-zone scalar energy flux | F_scalar_far[J_v,zeta,kappa] = 0 | REQUIRED | J_v transports scalar energy to infinity | radiation/energy flux definition |
+| J9: relation to Sigma_exchange | nabla_mu J_v^mu = Sigma_exchange - Gamma_relax | CANDIDATE | Sigma_exchange becomes a free source knob | sign conventions, variables, and parent balance |
+| J10: relation to A-sector mass | J_v does not alter A_flux or M_ext | CONSTRAINED | J_v changes exterior mass coefficient | boundary mass preservation theorem |
+| J11: acausal repair current | J_v instantaneously fixes any mismatch | FORBIDDEN | used as arbitrary repair reservoir/current | not pursued |
+| J12: coefficient tuning current | J_v adjusts alpha_W/K_c, beta_W, C_T, K_T | FORBIDDEN | used to tune observable coefficients | not pursued |
+[WARN] compact J_v ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+CONSTRAINED: 2
+FORBIDDEN: 2
+REQUIRED: 3
+SAFE_IF: 2
+UNRESOLVED: 1
+
+Interpretation:
+  J_v is safest if absent, compact, or constrained.
+  A causal transport version is possible but unresolved.
+  Acausal repair and coefficient tuning currents are forbidden.
+[WARN] J_v status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Allowed J_v classes
+========================================================================================================================
+Allowed or potentially allowed classes:
+
+1. J_v = 0:
+   local exchange only.
+
+2. Compact J_v:
+   nonzero only inside/near matter support, zero exterior flux.
+
+3. Constraint J_v:
+   enforces compensation with no physical propagation claim.
+
+4. Causal transport J_v:
+   only if an evolution law and finite speed are derived.
+[WARN] allowed J_v classes stated: CONSTRAINED
+
+========================================================================================================================
+Case 5: Forbidden J_v classes
+========================================================================================================================
+Forbidden classes:
+
+1. Acausal repair current.
+2. Far-zone scalar-energy current.
+3. Exterior persistent vacuum pressure/current.
+4. Current that changes M_ext.
+5. Current that acts as Sigma_creation in ordinary gravity.
+6. Current that tunes observable coefficients.
+7. Unlabeled nonlocal transport.
+[PASS] forbidden J_v classes stated: FORBIDDEN
+
+========================================================================================================================
+Case 6: Candidate balance shape
+========================================================================================================================
+Candidate local/constrained balance skeleton:
+
+  u^mu nabla_mu epsilon_vac_config + nabla_mu J_v^mu
+    = Sigma_exchange - Gamma_relax
+
+Ordinary closed conditions:
+
+  Sigma_creation = 0
+  surface J_v dot dS at exterior = 0
+  Q_volume = 0
+  delta M_ext = 0
+  F_scalar_far = 0
+
+This is a balance skeleton, not a derived equation.
+[WARN] candidate J_v balance skeleton stated: CANDIDATE
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_vacuum_transport_current_constraints.md
+   Artifact for this script.
+
+2. candidate_vacuum_accounting_parent_balance.py
+   Write a more concrete vacuum-substance accounting balance.
+
+3. candidate_boundary_volume_mode_no_exterior_charge_refinement.py
+   Refine theorem using J_v classes.
+
+Recommended next script:
+
+  candidate_vacuum_accounting_parent_balance.py
+
+Reason:
+  J_v classes are now constrained enough to write the first concrete accounting balance skeleton.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+J_v is allowed only as:
+
+  absent/local exchange
+  compact support current
+  constraint redistribution with zero exterior flux
+  causal transport if separately derived
+
+J_v is forbidden as:
+
+  acausal repair current
+  far-zone scalar radiation current
+  coefficient tuning knob
+  exterior mass-changing current
+
+Possible next artifact:
+  candidate_vacuum_transport_current_constraints.md
+
+Possible next script:
+  candidate_vacuum_accounting_parent_balance.py

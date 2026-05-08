@@ -1,0 +1,282 @@
+
+========================================================================================================================
+Candidate Matter Versus Vacuum Frame Branch Test
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Matter versus vacuum frame branch problem
+========================================================================================================================
+Question:
+
+  Does matter carry the clock, or does vacuum?
+
+Goal:
+
+  compare u_matter and u_vac frame branches before hybrid projection
+
+Discipline:
+
+  do not pick frame from recovery
+  do not use coordinate velocity
+  do not invent u_vac as convenient preferred frame
+  do not use hybrid projection before both frames are defined
+  protect static-source neutrality
+  keep chi-origin, boundary neutrality, and no-overlap attached
+[WARN] matter/vacuum frame branch problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Matter versus vacuum frame branch inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+MV1: branch comparison target
+------------------------------------------------------------------------------------------------------------------------
+Branch: choose whether Sigma_V uses matter frame u_m or vacuum frame u_vac
+Role: core frame decision for acceleration-gradient source law
+Allowed if: choice is physically/ontologically defined before recovery checks
+Forbidden if: choice is made to fit gamma_like, AB, or static safety
+[WARN] MV1: branch comparison target: THEOREM_TARGET
+Missing: physical frame criterion
+Consequence: decides whether acceleration-gradient branch can proceed
+
+------------------------------------------------------------------------------------------------------------------------
+MV2: matter congruence branch
+------------------------------------------------------------------------------------------------------------------------
+Branch: Sigma_V = chi rho a_m^mu nabla_mu A, a_m^mu = u_m^nu nabla_nu u_m^mu
+Role: source-local acceleration across A-gradient
+Allowed if: u_m is defined by matter current/fluid flow and not coordinate velocity
+Forbidden if: static equilibrium acceleration is coordinate/gauge artifact
+[WARN] MV2: matter congruence branch: CANDIDATE
+Missing: matter model and static equilibrium handling
+Consequence: physically local but source-model dependent
+
+------------------------------------------------------------------------------------------------------------------------
+MV3: vacuum rest-frame branch
+------------------------------------------------------------------------------------------------------------------------
+Branch: Sigma_V = chi rho a_vac^mu nabla_mu A, a_vac^mu = u_vac^nu nabla_nu u_vac^mu
+Role: ontology-native vacuum-substance acceleration branch
+Allowed if: u_vac is derived from zeta/vacuum configuration or exchange law
+Forbidden if: u_vac is invented to control Sigma_V
+[WARN] MV3: vacuum rest-frame branch: CANDIDATE
+Missing: definition of u_vac^mu
+Consequence: best ontology match but currently missing its core object
+
+------------------------------------------------------------------------------------------------------------------------
+MV4: hybrid projection deferred
+------------------------------------------------------------------------------------------------------------------------
+Branch: Sigma_V = chi rho (P_vac a_m)^mu (P_vac nabla A)_mu
+Role: possible later synthesis of matter acceleration relative to vacuum
+Allowed if: u_m and u_vac are both independently defined first
+Forbidden if: used now to patch failures of either branch
+[WARN] MV4: hybrid projection deferred: DEFER
+Missing: independent matter and vacuum frame definitions
+Consequence: hybrid projection waits; goblin not allowed to glue clocks together yet
+
+------------------------------------------------------------------------------------------------------------------------
+MV5: static-source safety for matter frame
+------------------------------------------------------------------------------------------------------------------------
+Branch: matter-frame Sigma_V vanishes or is boundary-neutral for static equilibrium sources
+Role: tests whether matter acceleration creates forbidden scalar charge
+Allowed if: static matter has no independent zeta exterior charge
+Forbidden if: support/pressure acceleration generates exterior scalar gravity
+[WARN] MV5: static-source safety for matter frame: REQUIRED
+Missing: static-source neutrality proof
+Consequence: major risk for matter congruence branch
+
+------------------------------------------------------------------------------------------------------------------------
+MV6: static-source safety for vacuum frame
+------------------------------------------------------------------------------------------------------------------------
+Branch: vacuum-frame Sigma_V is neutral for static vacuum/source equilibrium
+Role: tests whether vacuum frame prevents scalar charge
+Allowed if: u_vac equilibrium makes source-driven zeta boundary-neutral
+Forbidden if: vacuum acceleration around static source generates independent charge
+[WARN] MV6: static-source safety for vacuum frame: REQUIRED
+Missing: vacuum equilibrium / neutrality theorem
+Consequence: major risk for vacuum rest-frame branch
+
+------------------------------------------------------------------------------------------------------------------------
+MV7: source-model dependence
+------------------------------------------------------------------------------------------------------------------------
+Branch: matter branch depends on dust/fluid/stress model
+Role: tracks whether Sigma_V becomes matter-model-specific
+Allowed if: source law is valid for intended matter class or generalized cleanly
+Forbidden if: different source models require fitted source terms
+[WARN] MV7: source-model dependence: RISK
+Missing: matter class scope
+Consequence: may make matter branch too narrow for parent law
+
+------------------------------------------------------------------------------------------------------------------------
+MV8: ontology-native vacuum frame requirement
+------------------------------------------------------------------------------------------------------------------------
+Branch: u_vac must arise from vacuum substance, zeta flow, or volume configuration
+Role: prevents arbitrary preferred frame
+Allowed if: u_vac is derived before source law uses it
+Forbidden if: u_vac is a gauge/slicing choice
+[WARN] MV8: ontology-native vacuum frame requirement: REQUIRED
+Missing: u_vac derivation
+Consequence: vacuum branch cannot proceed without defining vacuum rest frame
+
+------------------------------------------------------------------------------------------------------------------------
+MV9: sign/orientation rule
+------------------------------------------------------------------------------------------------------------------------
+Branch: branch choice fixes creation/destruction sign of a·grad A
+Role: resolves orientation ambiguity
+Allowed if: sign follows from branch ontology before recovery
+Forbidden if: sign chosen to fit gamma/AB
+[FAIL] MV9: sign/orientation rule: UNRESOLVED
+Missing: sign convention from postulate/exchange law
+Consequence: required before numerical or recovery claims
+
+------------------------------------------------------------------------------------------------------------------------
+MV10: chi-origin dependency
+------------------------------------------------------------------------------------------------------------------------
+Branch: neither matter nor vacuum frame may hide chi tuning
+Role: prevents coefficient fitting through frame choice
+Allowed if: chi origin remains separately specified
+Forbidden if: frame/projection absorbs coefficient choice
+[WARN] MV10: chi-origin dependency: REQUIRED
+Missing: chi origin
+Consequence: frame branch decision does not complete Sigma_V derivation alone
+
+------------------------------------------------------------------------------------------------------------------------
+MV11: boundary/no-overlap requirements
+------------------------------------------------------------------------------------------------------------------------
+Branch: source-driven zeta is boundary-neutral and metric insertion occurs only through B_s
+Role: protects exterior neutrality and count-once recombination
+Allowed if: boundary neutrality and residual-kill/no-overlap theorems are attached
+Forbidden if: either frame creates independent exterior zeta charge or residual overlap
+[WARN] MV11: boundary/no-overlap requirements: REQUIRED
+Missing: boundary/no-overlap proof
+Consequence: even a physical frame fails if accounting fails
+
+------------------------------------------------------------------------------------------------------------------------
+MV12: recommended next move
+------------------------------------------------------------------------------------------------------------------------
+Branch: try defining u_vac from zeta/vacuum substance before adopting matter-frame branch
+Role: best current branch decision
+Allowed if: vacuum ontology is upstream of source coupling
+Forbidden if: choosing matter frame only because u_vac is hard
+[PASS] MV12: recommended next move: RECOMMENDED
+Missing: vacuum rest-frame definition script
+Consequence: next script should attempt u_vac definition directly
+
+========================================================================================================================
+Case 2: Compact matter-vacuum frame ledger
+========================================================================================================================
+| Entry | Branch | Status | Consequence |
+|---|---|---|---|
+| MV1: branch comparison target | choose whether Sigma_V uses matter frame u_m or vacuum frame u_vac | THEOREM_TARGET | decides whether acceleration-gradient branch can proceed |
+| MV2: matter congruence branch | Sigma_V = chi rho a_m^mu nabla_mu A, a_m^mu = u_m^nu nabla_nu u_m^mu | CANDIDATE | physically local but source-model dependent |
+| MV3: vacuum rest-frame branch | Sigma_V = chi rho a_vac^mu nabla_mu A, a_vac^mu = u_vac^nu nabla_nu u_vac^mu | CANDIDATE | best ontology match but currently missing its core object |
+| MV4: hybrid projection deferred | Sigma_V = chi rho (P_vac a_m)^mu (P_vac nabla A)_mu | DEFER | hybrid projection waits; goblin not allowed to glue clocks together yet |
+| MV5: static-source safety for matter frame | matter-frame Sigma_V vanishes or is boundary-neutral for static equilibrium sources | REQUIRED | major risk for matter congruence branch |
+| MV6: static-source safety for vacuum frame | vacuum-frame Sigma_V is neutral for static vacuum/source equilibrium | REQUIRED | major risk for vacuum rest-frame branch |
+| MV7: source-model dependence | matter branch depends on dust/fluid/stress model | RISK | may make matter branch too narrow for parent law |
+| MV8: ontology-native vacuum frame requirement | u_vac must arise from vacuum substance, zeta flow, or volume configuration | REQUIRED | vacuum branch cannot proceed without defining vacuum rest frame |
+| MV9: sign/orientation rule | branch choice fixes creation/destruction sign of a·grad A | UNRESOLVED | required before numerical or recovery claims |
+| MV10: chi-origin dependency | neither matter nor vacuum frame may hide chi tuning | REQUIRED | frame branch decision does not complete Sigma_V derivation alone |
+| MV11: boundary/no-overlap requirements | source-driven zeta is boundary-neutral and metric insertion occurs only through B_s | REQUIRED | even a physical frame fails if accounting fails |
+| MV12: recommended next move | try defining u_vac from zeta/vacuum substance before adopting matter-frame branch | RECOMMENDED | next script should attempt u_vac definition directly |
+[WARN] compact matter-vacuum frame ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+DEFER: 1
+RECOMMENDED: 1
+REQUIRED: 5
+RISK: 1
+THEOREM_TARGET: 1
+UNRESOLVED: 1
+
+Interpretation:
+  Matter frame is concrete but source-model dependent and static-source risky.
+  Vacuum frame is ontologically preferred but missing its definition.
+  Hybrid projection remains deferred.
+  The next constructive step is to attempt u_vac definition from zeta/vacuum substance.
+[WARN] matter-vacuum frame status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Branch decision
+========================================================================================================================
+Matter frame:
+  Pros: concrete for fluids/dust; source-local.
+  Risks: source-model dependence; static pressure/support artifacts.
+
+Vacuum frame:
+  Pros: ontology-native; natural for vacuum substance and zeta.
+  Risks: currently undefined; can become arbitrary preferred frame.
+
+Hybrid projection:
+  Pros: may express matter acceleration relative to vacuum.
+  Risks: only valid after both frames are independently defined.
+
+Decision:
+  Try to define u_vac before adopting matter frame as parent law.
+[PASS] matter-vacuum branch decision stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Good failure / branch decision
+========================================================================================================================
+Good failure:
+
+  u_vac cannot be defined from vacuum substance/zeta,
+  and matter frame is too source-model-dependent or static-source unsafe.
+
+Consequence:
+
+  acceleration-gradient source law fails for now.
+  Return Sigma_V to theorem target status or test broader tensor candidate.
+
+Bad failure:
+  choose matter frame because it is easy, or invent vacuum frame because it is needed.
+[WARN] matter-vacuum frame good failure stated: DEFER
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Matter/vacuum frame branch test fails if:
+
+1. frame is selected from gamma_like or AB
+2. coordinate velocity enters parent law
+3. u_vac is arbitrary gauge/slicing
+4. hybrid projection is used before both frames are defined
+5. matter-frame branch creates static scalar charge
+6. vacuum-frame branch invents preferred frame
+7. chi-origin is hidden in frame choice
+8. boundary neutrality or no-overlap is dropped
+[WARN] matter-vacuum frame failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_matter_vs_vacuum_frame_branch_test.md
+   Artifact for this script.
+
+2. candidate_vacuum_rest_frame_definition.py
+   Try to define u_vac from zeta/vacuum substance ontology.
+
+3. candidate_matter_frame_static_safety.py
+   Test static-source safety for the matter-frame branch.
+
+Recommended next script:
+
+  candidate_vacuum_rest_frame_definition.py
+
+Reason:
+  Vacuum frame is ontologically preferred and currently missing. Define or kill it before falling back to matter-frame source law.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The branch comparison does not choose matter frame by convenience.
+
+Best next test:
+  candidate_vacuum_rest_frame_definition.py
+
+Reason:
+  u_vac is the ontology-native frame, but it must be defined or killed.

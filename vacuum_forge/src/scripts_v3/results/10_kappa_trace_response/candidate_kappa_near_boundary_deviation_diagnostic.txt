@@ -1,0 +1,225 @@
+
+========================================================================================================================
+Candidate Kappa Near-Boundary Deviation Diagnostic
+========================================================================================================================
+
+========================================================================================================================
+Case 1: Reference and joint profiles
+========================================================================================================================
+Reference profile:
+
+  f_GR_ref(r)
+
+Joint-minimum profile:
+
+  f_joint(r)
+
+Profile deviation:
+
+  delta_f = f_joint - f_GR_ref
+
+delta_f = -f_GR_ref(r) + f_joint(r)
+[WARN] profile deviation diagnostic defined: CONSTRAINED_BY_IDENTITY — reference profile must be specified
+
+========================================================================================================================
+Case 0: Near-boundary deviation diagnostic problem
+========================================================================================================================
+Question:
+
+  If the joint-minimum model deviates from GR near a material boundary,
+  what exactly would deviate?
+
+Discipline:
+
+  define diagnostics before estimating magnitude
+  do not claim measurement/observability yet
+
+Likely region:
+
+  near surface / matter-vacuum interface
+[WARN] near-boundary deviation diagnostic problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 2: Acceleration diagnostic
+========================================================================================================================
+If f behaves like a potential/lapse-like scalar, local radial
+acceleration deviation is proportional to:
+
+  delta_g = -d(delta_f)/dr
+
+delta_g = Derivative(f_GR_ref(r), r) - Derivative(f_joint(r), r)
+
+This would likely peak where the transition layer bends fastest.
+[WARN] acceleration deviation diagnostic defined: CONSTRAINED_BY_IDENTITY — normalization/recombination missing
+
+========================================================================================================================
+Case 3: Curvature diagnostic
+========================================================================================================================
+Second-derivative curvature-like deviation:
+
+  delta_curv = d2(delta_f)/dr2
+
+delta_curv = -Derivative(f_GR_ref(r), (r, 2)) + Derivative(f_joint(r), (r, 2))
+
+Areal Laplacian-like deviation:
+
+  delta_lap = delta_f'' + 2 delta_f'/r
+
+delta_lap = (r*(-Derivative(f_GR_ref(r), (r, 2)) + Derivative(f_joint(r), (r, 2))) - 2*Derivative(f_GR_ref(r), r) + 2*Derivative(f_joint(r), r))/r
+[WARN] curvature deviation diagnostics defined: CONSTRAINED_BY_IDENTITY — metric mapping still needed
+
+========================================================================================================================
+Case 4: Redshift/lapse diagnostic
+========================================================================================================================
+If the deviation enters a lapse-like factor A:
+
+  A_joint = A_ref + delta_A
+
+Fractional clock/redshift deviation:
+
+  sqrt(A_joint/A_ref) - 1
+
+exact = -1 + sqrt(A_ref + delta_A)/sqrt(A_ref)
+
+Linearized for small delta_A:
+
+approx = delta_A/(2*A_ref)
+[WARN] redshift/lapse diagnostic defined: CONSTRAINED_BY_IDENTITY — requires recombination map
+
+========================================================================================================================
+Case 5: Transition width scaling
+========================================================================================================================
+Let epsilon be a characteristic profile deviation amplitude and sigma
+the transition width.
+
+Scaling estimates:
+
+  delta_f ~ epsilon
+  delta_g ~ epsilon / sigma
+  delta_curv ~ epsilon / sigma^2
+
+Thus curvature-like deviations are most sensitive to narrow transition
+layers.
+
+But sigma is not derived, so this is only scaling discipline.
+[WARN] transition-width scaling stated: PLAUSIBLE — epsilon and sigma not derived
+
+========================================================================================================================
+Case 6: Region hierarchy
+========================================================================================================================
+| Region | Diagnostic expectation |
+|---|---|
+| deep interior | delta may be small if quadratic tendency dominates |
+| inner transition side | delta_g and delta_curv may grow |
+| material boundary | likely largest curvature-like diagnostic |
+| near exterior | possible small relaxation back to 1/r |
+| far exterior | delta should decay / vanish |
+
+This keeps the expected deviation localized.
+[WARN] near-boundary region hierarchy stated: PLAUSIBLE — magnitude unknown
+
+========================================================================================================================
+Case 7: Possible observable channels
+========================================================================================================================
+Candidate observable channels:
+
+1. local acceleration near a dense body's surface
+2. clock/redshift gradient near a surface
+3. pressure/interior-equilibrium inference in compact objects
+4. thin-shell laboratory density-interface tests
+5. astrophysical surface matching effects
+
+Caution:
+  no channel is claimed viable yet.
+  these are diagnostic buckets only.
+[WARN] observable channel inventory stated: PLAUSIBLE — no viability assessment
+
+========================================================================================================================
+Case 8: Measurement caution
+========================================================================================================================
+Why this may be unmeasured or hard to measure:
+
+  interior curvature is not directly accessible in ordinary bodies
+  near-surface Newtonian backgrounds dominate
+  material systematics may swamp tiny deviations
+  exterior far field must agree with GR
+  compact-object interiors are model-dependent
+
+Therefore:
+
+  possible deviation != practical test yet
+[WARN] measurement caution retained: CONSTRAINED_BY_IDENTITY — avoid overclaim
+
+========================================================================================================================
+Case 9: Failure controls
+========================================================================================================================
+Deviation diagnostic program fails if:
+
+1. f_joint and f_ref are not mapped to observables.
+2. delta is nonzero only by arbitrary spline choice.
+3. far exterior delta does not vanish.
+4. predicted acceleration/redshift deviation is already excluded.
+5. kappa-sector deviation is confused with A-sector mass flux.
+6. magnitude is claimed before sigma/weights are derived.
+[WARN] deviation diagnostic failure controls stated: RISK — diagnostic before prediction
+
+========================================================================================================================
+Case 10: Classification
+========================================================================================================================
+| Diagnostic | Status |
+|---|---|
+| profile deviation delta_f | CONSTRAINED_BY_IDENTITY |
+| acceleration deviation delta_g | CONSTRAINED_BY_IDENTITY |
+| curvature deviation delta_curv | CONSTRAINED_BY_IDENTITY |
+| redshift/lapse deviation | CONSTRAINED_BY_IDENTITY |
+| transition width scaling | PLAUSIBLE |
+| observable channels | PLAUSIBLE inventory only |
+| magnitude prediction | MISSING |
+| measurement claim | NOT MADE |
+[WARN] near-boundary diagnostic classification produced: CONSTRAINED_BY_IDENTITY — no prediction yet
+
+========================================================================================================================
+Case 11: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_joint_minimum_numerical_toy.py
+   Solve a simple weighted variational problem numerically.
+
+2. candidate_kappa_trace_response_status_summary.md
+   Summarize group 10.
+
+3. candidate_kappa_deviation_observability_scan.py
+   Later: rough observability categories.
+
+Recommended next script:
+
+  candidate_kappa_trace_response_status_summary.md
+
+Reason:
+  Group 10 has reached a natural boundary: kappa status is now clear enough
+  to summarize before pushing numerical/observational speculation.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — summary is recommended
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Near-boundary deviation should be discussed only through diagnostics:
+
+  delta_f
+  delta_g
+  delta_curv
+  delta_redshift
+
+No magnitude claim is justified until:
+
+  weights are derived
+  transition width is derived
+  recombination map is fixed
+  observable is selected
+
+Possible next artifact:
+  candidate_kappa_near_boundary_deviation_diagnostic.md
+
+Recommended next:
+  candidate_kappa_trace_response_status_summary.md

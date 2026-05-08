@@ -1,0 +1,262 @@
+
+========================================================================================================================
+Candidate Recombination Projector For Trace Volume
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Recombination projector for trace/volume problem
+========================================================================================================================
+Question:
+
+  How do A, zeta, and kappa assemble into the metric once, and only once?
+
+Goal:
+
+  define P_recombination requirements for count-once trace/volume assembly
+
+Discipline:
+
+  A carries exterior mass
+  zeta carries volume configuration
+  kappa is residual/diagnostic/relaxation, not second scalar gravity
+  h_TT remains trace-free
+  W_i remains transverse
+  no scalar breathing mode is inserted
+  metric assembly must match energy accounting
+[WARN] recombination projector problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: P_recombination requirement inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: A-sector time response
+------------------------------------------------------------------------------------------------------------------------
+Requirement: g_tt <- A
+Role: places scalar mass response in time/lapse sector
+Allowed if: A carries exterior mass / monopole response
+Forbidden if: A response is duplicated as zeta/kappa exterior charge
+[WARN] R1: A-sector time response: STRUCTURAL
+Missing: covariant recombination map
+
+------------------------------------------------------------------------------------------------------------------------
+R2: A-sector spatial companion
+------------------------------------------------------------------------------------------------------------------------
+Requirement: g_ij may include scalar spatial response required by A-sector geometry
+Role: accounts for spatial curvature associated with mass response
+Allowed if: counted once and separated from zeta/kappa residual volume response
+Forbidden if: scalar_spatial_response(A), zeta, and kappa all add the same trace volume
+[FAIL] R2: A-sector spatial companion: UNRESOLVED
+Missing: which spatial trace belongs to A versus zeta/kappa
+
+------------------------------------------------------------------------------------------------------------------------
+R3: zeta volume response
+------------------------------------------------------------------------------------------------------------------------
+Requirement: zeta enters as volume-form configuration only once
+Role: represents vacuum-spacetime volume configuration
+Allowed if: boundary-neutral and not counted again through kappa
+Forbidden if: zeta adds exterior scalar charge or duplicates A spatial trace
+[WARN] R3: zeta volume response: REQUIRED
+Missing: metric insertion rule for zeta
+
+------------------------------------------------------------------------------------------------------------------------
+R4: kappa residual/diagnostic response
+------------------------------------------------------------------------------------------------------------------------
+Requirement: kappa enters as projected residual, diagnostic, or relaxation coordinate
+Role: tracks trace/volume mismatch without becoming second scalar gravity
+Allowed if: role is explicitly diagnostic, residual, or energetic
+Forbidden if: kappa adds independent spatial trace on top of zeta
+[WARN] R4: kappa residual/diagnostic response: REQUIRED
+Missing: kappa-zeta map and energy convention
+
+------------------------------------------------------------------------------------------------------------------------
+R5: count-once trace/volume rule
+------------------------------------------------------------------------------------------------------------------------
+Requirement: Trace[g_ij scalar sector] = one assembled trace/volume response
+Role: core no-double-counting condition
+Allowed if: P_recombination chooses a single scalar trace channel
+Forbidden if: A spatial response + zeta + kappa are summed as independent trace sources
+[WARN] R5: count-once trace/volume rule: REQUIRED
+Missing: explicit projection formula
+
+------------------------------------------------------------------------------------------------------------------------
+R6: boundary-neutral input
+------------------------------------------------------------------------------------------------------------------------
+Requirement: P_recombination receives P_boundary P_trace output
+Role: ensures recombined trace/volume piece is exterior-neutral
+Allowed if: boundary projection happens before or inside recombination
+Forbidden if: recombination reintroduces exterior zeta/kappa tail
+[WARN] R6: boundary-neutral input: REQUIRED
+Missing: composition order
+
+------------------------------------------------------------------------------------------------------------------------
+R7: TT trace-free insertion
+------------------------------------------------------------------------------------------------------------------------
+Requirement: g_ij <- ... + h_ij^TT with gamma^ij h_ij^TT = 0
+Role: adds tensor radiation without changing zeta at linear order
+Allowed if: TT remains trace-free and orthogonal to scalar trace sector
+Forbidden if: TT contributes volume trace or scalar radiation
+[WARN] R7: TT trace-free insertion: STRUCTURAL
+Missing: nonlinear/covariant TT recombination
+
+------------------------------------------------------------------------------------------------------------------------
+R8: vector insertion
+------------------------------------------------------------------------------------------------------------------------
+Requirement: g_0i <- W_i
+Role: places transverse current/frame response in shift/vector sector
+Allowed if: W_i sourced by P_T j and remains transverse
+Forbidden if: longitudinal current or scalar trace enters W_i
+[WARN] R8: vector insertion: STRUCTURAL
+Missing: covariant vector recombination and normalization
+
+------------------------------------------------------------------------------------------------------------------------
+R9: no scalar wave insertion
+------------------------------------------------------------------------------------------------------------------------
+Requirement: no A_rad, no Box kappa, no Box zeta contribution inserted into metric
+Role: preserves TT-only ordinary radiation rule
+Allowed if: scalar/trace response remains constraint/relaxation/volume configuration
+Forbidden if: recombination adds breathing scalar mode
+[PASS] R9: no scalar wave insertion: FORBIDDEN
+Missing: parent scalar-radiation exclusion
+
+------------------------------------------------------------------------------------------------------------------------
+R10: epsilon/e_kappa accounting compatibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: metric assembly must match energy accounting convention
+Role: prevents geometric count-once rule from conflicting with epsilon/e_kappa separation
+Allowed if: zeta energy and kappa residual energy are not the same contribution
+Forbidden if: metric count-once but energy double-counts, or vice versa
+[WARN] R10: epsilon/e_kappa accounting compatibility: REQUIRED
+Missing: degree-of-freedom accounting
+
+------------------------------------------------------------------------------------------------------------------------
+R11: areal diagnostic compatibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: kappa = 1/2 ln(AB) remains reduced diagnostic unless promoted
+Role: prevents areal-gauge relation from silently becoming covariant physical scalar
+Allowed if: diagnostic status is explicit
+Forbidden if: AB diagnostic and zeta/kappa physical insertion are both counted
+[WARN] R11: areal diagnostic compatibility: CONSTRAINED
+Missing: areal diagnostic versus physical variable split
+
+------------------------------------------------------------------------------------------------------------------------
+R12: recommended provisional recombination rule
+------------------------------------------------------------------------------------------------------------------------
+Requirement: g_tt<-A, g_0i<-W_i, g_ij<-A_spatial_once + boundary-neutral trace/volume residual once + h_TT
+Role: best current operational recombination bundle
+Allowed if: declared provisional and count-once
+Forbidden if: treated as covariant derived metric law
+[PASS] R12: recommended provisional recombination rule: RECOMMENDED
+Missing: explicit covariant parent recombination
+
+========================================================================================================================
+Case 2: Compact P_recombination ledger
+========================================================================================================================
+| Entry | Requirement | Status | Missing |
+|---|---|---|---|
+| R1: A-sector time response | g_tt <- A | STRUCTURAL | covariant recombination map |
+| R2: A-sector spatial companion | g_ij may include scalar spatial response required by A-sector geometry | UNRESOLVED | which spatial trace belongs to A versus zeta/kappa |
+| R3: zeta volume response | zeta enters as volume-form configuration only once | REQUIRED | metric insertion rule for zeta |
+| R4: kappa residual/diagnostic response | kappa enters as projected residual, diagnostic, or relaxation coordinate | REQUIRED | kappa-zeta map and energy convention |
+| R5: count-once trace/volume rule | Trace[g_ij scalar sector] = one assembled trace/volume response | REQUIRED | explicit projection formula |
+| R6: boundary-neutral input | P_recombination receives P_boundary P_trace output | REQUIRED | composition order |
+| R7: TT trace-free insertion | g_ij <- ... + h_ij^TT with gamma^ij h_ij^TT = 0 | STRUCTURAL | nonlinear/covariant TT recombination |
+| R8: vector insertion | g_0i <- W_i | STRUCTURAL | covariant vector recombination and normalization |
+| R9: no scalar wave insertion | no A_rad, no Box kappa, no Box zeta contribution inserted into metric | FORBIDDEN | parent scalar-radiation exclusion |
+| R10: epsilon/e_kappa accounting compatibility | metric assembly must match energy accounting convention | REQUIRED | degree-of-freedom accounting |
+| R11: areal diagnostic compatibility | kappa = 1/2 ln(AB) remains reduced diagnostic unless promoted | CONSTRAINED | areal diagnostic versus physical variable split |
+| R12: recommended provisional recombination rule | g_tt<-A, g_0i<-W_i, g_ij<-A_spatial_once + boundary-neutral trace/volume residual once + h_TT | RECOMMENDED | explicit covariant parent recombination |
+[WARN] compact P_recombination ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CONSTRAINED: 1
+FORBIDDEN: 1
+RECOMMENDED: 1
+REQUIRED: 5
+STRUCTURAL: 3
+UNRESOLVED: 1
+
+Interpretation:
+  P_recombination is the count-once gate.
+  The major unresolved issue is A_spatial versus zeta/kappa trace volume response.
+  Recombination must match energy accounting or the theory double-counts even if projectors look clean.
+[WARN] P_recombination status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Minimal P_recombination requirement bundle
+========================================================================================================================
+Current provisional bundle:
+
+  g_tt <- A
+  g_0i <- W_i
+  g_ij <- A_spatial_once + trace_volume_residual_once + h_TT
+
+where:
+
+  trace_volume_residual_once <- P_boundary P_trace or P_boundary P_relax P_trace
+
+and:
+
+  h_TT is trace-free
+  W_i is transverse
+  no A_rad / Box kappa / Box zeta is inserted
+[PASS] minimal P_recombination bundle stated: RECOMMENDED
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+P_recombination fails if:
+
+1. A spatial response, zeta, and kappa all add the same trace
+2. kappa becomes an independent exterior scalar gravity
+3. zeta creates exterior scalar charge
+4. h_TT contributes trace volume
+5. W_i receives longitudinal/scalar current
+6. scalar breathing mode is inserted
+7. boundary-neutrality is undone during metric assembly
+8. metric count-once rule conflicts with epsilon/e_kappa energy accounting
+9. reduced areal kappa diagnostic is treated as covariant physical scalar without derivation
+[WARN] P_recombination failure controls stated: RISK
+
+========================================================================================================================
+Case 6: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_recombination_projector_for_trace_volume.md
+   Artifact for this script.
+
+2. candidate_areal_kappa_diagnostic_vs_physical_variable.py
+   Separate kappa=1/2 ln(AB) diagnostic from physical kappa/zeta response.
+
+3. candidate_A_spatial_vs_zeta_trace_counting.py
+   Focus on whether A spatial curvature and zeta volume configuration overlap.
+
+Recommended next script:
+
+  candidate_A_spatial_vs_zeta_trace_counting.py
+
+Reason:
+  The unresolved recombination bottleneck is whether A_spatial and zeta/kappa trace-volume response overlap.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+P_recombination is the count-once gate:
+
+  g_tt <- A
+  g_0i <- W_i
+  g_ij <- A_spatial_once + trace_volume_residual_once + h_TT
+
+Main unresolved issue:
+
+  What spatial trace belongs to A, and what remains for zeta/kappa?
+
+Possible next artifact:
+  candidate_recombination_projector_for_trace_volume.md
+
+Possible next script:
+  candidate_A_spatial_vs_zeta_trace_counting.py

@@ -1,0 +1,246 @@
+
+========================================================================================================
+Candidate Exchange / Creation Distinction Test
+========================================================================================================
+
+========================================================================================================
+Case 0: P1 + P3 bookkeeping identity
+========================================================================================================
+P1 + P3 bookkeeping:
+  E_vac = rho_v V_vac
+  rho_v = constant
+
+delta E_vac = dV*rho_v
+
+Therefore:
+  delta E_vac = 0  <=>  delta V_vac = 0
+when rho_v is nonzero and constant.
+
+[PASS] energy preservation and volume preservation are equivalent under P1+P3
+But this does not decide whether a process is exchange or creation.
+That classification must be supplied or derived separately.
+
+========================================================================================================
+Case 1: Reduced operator classification
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+exchange_compensated_shear
+--------------------------------------------------------------------------------------------------------
+Operator: exchange_compensated_shear (exchange)
+  J_a = S
+  J_b = -S
+  J_kappa = 0
+  J_s = S
+  delta_volume_reduced ∝ J_a+J_b = 0
+  Note: Conservative compensated transfer; trace-kernel in reduced two-sector.
+[PASS] exchange has J_kappa=0
+[PASS] exchange changes shear
+[PASS] exchange preserves reduced volume
+
+--------------------------------------------------------------------------------------------------------
+creation_traceful
+--------------------------------------------------------------------------------------------------------
+Operator: creation_traceful (creation)
+  J_a = C
+  J_b = C
+  J_kappa = C
+  J_s = 0
+  delta_volume_reduced ∝ J_a+J_b = 2*C
+  Note: Net positive trace/volume content.
+[PASS] creation has positive trace source
+[PASS] creation is not volume-preserving
+
+--------------------------------------------------------------------------------------------------------
+destruction_traceful
+--------------------------------------------------------------------------------------------------------
+Operator: destruction_traceful (destruction)
+  J_a = -C
+  J_b = -C
+  J_kappa = -C
+  J_s = 0
+  delta_volume_reduced ∝ J_a+J_b = -2*C
+  Note: Net negative trace/volume content.
+[PASS] destruction has negative trace source
+[PASS] destruction is not volume-preserving
+
+--------------------------------------------------------------------------------------------------------
+mixed_exchange_plus_creation
+--------------------------------------------------------------------------------------------------------
+Operator: mixed_exchange_plus_creation (mixed)
+  J_a = C + S
+  J_b = C - S
+  J_kappa = C
+  J_s = S
+  delta_volume_reduced ∝ J_a+J_b = 2*C
+  Note: Compensated shear plus net traceful creation.
+[PASS] mixed operator has shear
+[PASS] mixed operator has traceful creation
+
+========================================================================================================
+Case 2: Equilibrium consequences
+========================================================================================================
+
+--------------------------------------------------------------------------------------------------------
+exchange_compensated_shear
+--------------------------------------------------------------------------------------------------------
+E = C_k*kappa**2 + C_s*s**2 - S*s
+Stationary equations:
+  Eq(2*C_k*kappa, 0)
+  Eq(2*C_s*s - S, 0)
+Solutions: [{kappa: 0, s: S/(2*C_s)}]
+kappa_eq = 0
+s_eq     = S/(2*C_s)
+AB       = 1
+[PASS] exchange equilibrium suppresses kappa
+[PASS] exchange equilibrium allows shear
+[PASS] exchange endpoint has AB=1
+
+--------------------------------------------------------------------------------------------------------
+creation_traceful
+--------------------------------------------------------------------------------------------------------
+E = -C*kappa + C_k*kappa**2 + C_s*s**2
+Stationary equations:
+  Eq(-C + 2*C_k*kappa, 0)
+  Eq(2*C_s*s, 0)
+Solutions: [{kappa: C/(2*C_k), s: 0}]
+kappa_eq = C/(2*C_k)
+s_eq     = 0
+AB       = exp(C/C_k)
+[PASS] creation equilibrium sources kappa generically
+[PASS] creation breaks AB=1 generically
+
+--------------------------------------------------------------------------------------------------------
+destruction_traceful
+--------------------------------------------------------------------------------------------------------
+E = C*kappa + C_k*kappa**2 + C_s*s**2
+Stationary equations:
+  Eq(C + 2*C_k*kappa, 0)
+  Eq(2*C_s*s, 0)
+Solutions: [{kappa: -C/(2*C_k), s: 0}]
+kappa_eq = -C/(2*C_k)
+s_eq     = 0
+AB       = exp(-C/C_k)
+[PASS] destruction equilibrium sources kappa generically
+[PASS] destruction breaks AB=1 generically
+
+--------------------------------------------------------------------------------------------------------
+mixed_exchange_plus_creation
+--------------------------------------------------------------------------------------------------------
+E = -C*kappa + C_k*kappa**2 + C_s*s**2 - S*s
+Stationary equations:
+  Eq(-C + 2*C_k*kappa, 0)
+  Eq(2*C_s*s - S, 0)
+Solutions: [{kappa: C/(2*C_k), s: S/(2*C_s)}]
+kappa_eq = C/(2*C_k)
+s_eq     = S/(2*C_s)
+AB       = exp(C/C_k)
+[PASS] mixed equilibrium sources kappa generically
+[PASS] mixed breaks AB=1 generically
+
+========================================================================================================
+Case 3: Relaxation operator as energy descent
+========================================================================================================
+E = C_k*kappa**2 + C_s*s**2
+grad_kappa = 2*C_k*kappa
+grad_s = 2*C_s*s
+d kappa/dtau = -2*C_k*kappa
+d s/dtau = -2*C_s*s
+dE/dtau = -4*C_k**2*kappa**2 - 4*C_s**2*s**2
+[PASS] relaxation decreases energy away from equilibrium
+
+Equilibrium of unsourced relaxation:
+  grad_kappa = 0 -> kappa=0
+  grad_s = 0 -> s=0
+
+For exterior gravity, s remains nonzero only if boundary/source data
+or a shear source law maintains it. Kappa can still relax to zero.
+[PASS] unsourced relaxation drives kappa toward zero
+
+========================================================================================================
+Case 4: Relaxation with boundary-maintained shear
+========================================================================================================
+E = C_k*kappa**2 + C_s*(-S_b + s)**2
+Stationary equations:
+  Eq(2*C_k*kappa, 0)
+  Eq(C_s*(-2*S_b + 2*s), 0)
+Solutions: [{kappa: 0, s: S_b}]
+kappa_eq = 0
+s_eq     = S_b
+AB       = 1
+[PASS] boundary-maintained shear allows s != 0
+[PASS] kappa remains suppressed
+[PASS] reciprocal scaling holds
+
+========================================================================================================
+Case 5: Classification consistency matrix
+========================================================================================================
+Expected reduced behavior:
+
+| Regime | delta E/V | J_kappa | kappa_eq | AB | Interpretation |
+|---|---:|---:|---:|---:|---|
+| exchange | 0 | 0 | 0 | 1 | conservative shear redistribution |
+| creation | >0 | >0 | >0 | !=1 | traceful vacuum amount increase |
+| destruction | <0 | <0 | <0 | !=1 | traceful vacuum amount decrease |
+| mixed | !=0 | !=0 | !=0 | !=1 | shear plus creation/destruction |
+| relaxation endpoint | response | ->0 if unsourced | 0 | 1 | balanced static exterior |
+
+[PASS] classification separates exchange from creation/destruction
+
+========================================================================================================
+Case 6: Impact on P3 volume-preservation question
+========================================================================================================
+The earlier P3 volume-preservation question was:
+
+  Does P3 force exchange to preserve volume?
+
+The reformulated answer is:
+
+  P1+P3 make energy preservation equivalent to volume preservation.
+  But P1+P3 do not decide whether a process is exchange or creation.
+
+This script therefore treats exchange/creation/destruction as operator
+classes and checks their reduced consequences.
+
+Result:
+  If exchange is defined as conservative redistribution, then it is
+  trace-kernel and gives J_kappa=0 in the reduced model.
+
+  Creation/destruction are traceful and may source kappa.
+
+Open question:
+  Can the exchange/creation distinction be derived from the postulates,
+  or must it be added as a structural principle?
+[PASS] P3 alone does not classify process regime
+
+========================================================================================================
+Final interpretation
+========================================================================================================
+This reduced operator test supports the regime classification:
+
+  exchange:
+    conservative redistribution
+    delta E = delta V = 0 under P1+P3
+    J_kappa = 0
+    kappa_eq = 0
+    AB = 1
+
+  creation/destruction:
+    net vacuum amount change
+    J_kappa != 0 generically
+    kappa_eq != 0 generically
+    AB != 1 generically
+
+  relaxation:
+    energy descent / fill-in response
+    can drive kappa toward zero
+    can coexist with boundary-maintained shear
+
+This does not prove which regimes nature uses.
+It only confirms that the proposed classification is algebraically
+consistent with the reduced kappa/s exterior program.
+
+Next useful artifact:
+  candidate_exchange_creation_distinction_lab_report.md
+or:
+  candidate_regime_map_observations.md

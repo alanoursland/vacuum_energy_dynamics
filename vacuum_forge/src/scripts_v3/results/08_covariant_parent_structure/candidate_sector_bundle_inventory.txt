@@ -1,0 +1,196 @@
+
+========================================================================================================================
+Candidate Sector Bundle Inventory
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Sector bundle inventory problem
+========================================================================================================================
+Group 08 question:
+
+  Can the reduced sectors be organized as the shadow of one deeper
+  geometric/covariant parent structure?
+
+Current sectors:
+
+  A_constraint -> scalar/static mass response
+  A_rad        -> controlled/absent scalar radiative component
+  kappa        -> trace/interior response
+  W_i          -> vector/current response
+  h_ij^TT      -> tensor/radiative response
+
+This script inventories the bundle and records open requirements.
+[PASS] sector bundle inventory problem posed
+
+========================================================================================================================
+Case 1: Current sector table
+========================================================================================================================
+| Sector | Variable | Source | Equation type | Metric location | Radiation status |
+|---|---|---|---|---|---|
+| scalar constraint | A_constraint | mass density rho / M | elliptic Poisson | g_tt / scalar potential | nonradiative/static |
+| scalar radiative hazard | A_rad | scalar breathing source? | controlled or absent | scalar spatial trace | dangerous unless suppressed |
+| trace/interior | kappa | pressure/stress/trace candidate | response/relaxation | volume/trace imbalance | suppressed exterior |
+| vector current | W_i | mass current / angular momentum | vector constraint/evolution TBD | g_ti / shift | frame dragging, not ordinary wave yet |
+| tensor radiation | h_ij^TT | trace-free quadrupole derivatives | hyperbolic wave | spatial TT metric | active radiation |
+
+[PASS] sector table stated
+
+========================================================================================================================
+Case 2: A_constraint static scalar sector
+========================================================================================================================
+A_constraint exterior:
+A = -2*G*M/(c**2*r) + 1
+Delta A = 0
+
+Role:
+  static scalar mass response
+  Newtonian potential channel
+  monopole A-flux
+
+Parent requirement:
+  explain why A_constraint is elliptic/constraint-like, not an
+  unsuppressed long-range scalar radiation mode.
+[PASS] A_constraint supports static exterior gravity
+
+========================================================================================================================
+Case 3: A_rad controlled scalar radiative hazard
+========================================================================================================================
+If A_rad is an unsuppressed scalar wave:
+A_rad = H*cos(k*x - omega*t)
+Box A_rad / A_rad = k**2 - omega**2/c**2
+
+This propagates when omega^2 = c^2 k^2.
+
+Safety requirement:
+  A_rad must be absent, projected out, damped/absorbed, massive,
+  relaxed to minimum, weakly coupled, or observationally constrained.
+[PASS] A_rad is dangerous if unsuppressed
+
+========================================================================================================================
+Case 4: Moving gravity well versus scalar gravity wave
+========================================================================================================================
+Translated scalar well:
+  A_well(x,t) = f(x - X(t)) with X(t)=v t
+  example A_well = exp(-(-t*v + x)**2/sigma**2)
+
+Box A_well =
+2*(c**2*(sigma**2 - 2*(t*v - x)**2) + v**2*(-sigma**2 + 2*(t*v - x)**2))*exp(-(t*v - x)**2/sigma**2)/(c**2*sigma**4)
+
+Scalar plane wave:
+  A_wave = H*cos(k*x - omega*t)
+  Box A_wave / A_wave = k**2 - omega**2/c**2
+
+Interpretation:
+  A moving mass can carry a moving scalar constraint configuration.
+  That is a translated/retarded near-zone field, not automatically
+  an independent scalar breathing wave.
+
+  A scalar wave has a dispersion relation and can carry a breathing
+  polarization. That remains controlled/unsafe unless suppressed.
+[PASS] moving well distinguished from free scalar wave
+
+========================================================================================================================
+Case 5: kappa trace/interior response sector
+========================================================================================================================
+kappa candidate role:
+  trace/interior matter response
+  volume/metric determinant imbalance
+  suppressed in ordinary exterior
+
+E_kappa = kappa**2*m_k**2/2
+dE/dkappa = kappa*m_k**2
+
+Parent requirement:
+  explain source of kappa inside matter and suppression/relaxation outside.
+[PASS] kappa sector classified as trace/interior response
+
+========================================================================================================================
+Case 6: W_i vector/current sector
+========================================================================================================================
+W_i candidate role:
+W_i = Matrix([[V_x], [V_y], [V_z]])
+
+Source:
+  mass current
+  angular momentum
+
+Metric location:
+  g_ti / shift-like sector
+
+Parent requirement:
+  derive frame dragging and decide whether vector radiation exists or is constrained.
+[PASS] vector sector classified as current/frame-dragging response
+
+========================================================================================================================
+Case 7: h_ij^TT tensor/radiation sector
+========================================================================================================================
+h_ij^TT =
+Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
+trace = 0
+k^i h_ij =
+Matrix([[0, 0, 0]])
+
+Role:
+  ordinary long-range gravitational radiation
+  plus/cross polarizations
+  quadrupole tensor flux
+
+Parent requirement:
+  derive TT wave equation, coupling, flux, and gauge constraints from parent structure.
+[PASS] tensor sector remains TT radiation channel
+
+========================================================================================================================
+Case 8: Constraint/evolution split
+========================================================================================================================
+| Variable | Preferred equation character | Reason |
+|---|---|---|
+| A_constraint | constraint / elliptic | static scalar gravity, no scalar waves |
+| A_rad | absent or controlled | avoid scalar breathing radiation |
+| kappa | response / relaxation / sourced interior | exterior suppression |
+| W_i | constraint or slow vector response TBD | frame dragging |
+| h_ij^TT | evolution / hyperbolic | gravitational waves |
+
+[PASS] constraint/evolution split stated
+
+========================================================================================================================
+Case 9: Covariant/geometric parent requirements
+========================================================================================================================
+A successful parent structure must explain:
+
+1. Why A_constraint is long-ranged and Poisson-like.
+2. Why A_rad is absent/suppressed/absorbed/controlled.
+3. Why kappa is suppressed in exterior but may respond inside matter.
+4. How W_i arises from mass current/angular momentum.
+5. How h_ij^TT propagates with plus/cross modes.
+6. How sources couple to each sector.
+7. What the gauge freedoms are.
+8. Which variables are physical versus coordinate shadows.
+9. How the reduced sectors recombine into metric/geometric structure.
+
+[PASS] parent requirements enumerated
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The sector bundle is coherent as a reduced architecture:
+
+  A_constraint -> static scalar mass response
+  A_rad        -> controlled scalar radiation hazard
+  kappa        -> trace/interior response
+  W_i          -> vector/current response
+  h_ij^TT      -> tensor radiation
+
+Important distinction:
+
+  A moving gravity well is not automatically a scalar gravity wave.
+  It can be a moving/retarded scalar constraint configuration tied to
+  the source.
+
+  A free scalar breathing wave would be a separate A_rad mode and remains
+  controlled/unsafe unless suppressed.
+
+Possible next artifact:
+  candidate_sector_bundle_inventory.md
+
+Possible next script:
+  candidate_covariant_parent_requirements.py

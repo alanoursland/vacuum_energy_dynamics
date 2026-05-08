@@ -1,0 +1,289 @@
+
+========================================================================================================================
+Candidate Minimal A-Constraint Closure Ansatz
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Minimal A-constraint closure ansatz problem
+========================================================================================================================
+Question:
+
+  Can explicit symbolic closure ansatz families be written without collapsing to GR shortcuts?
+
+Goal:
+
+  expose closure forms C, J_A, L_spatial, and zeta-assisted closure
+  enough to choose the next concrete test or kill the branch
+
+Discipline:
+
+  do not hide missing equations behind symbols
+  do not tune coefficients to gamma=1
+  do not use AB=1 as closure
+  do not impose GR boundary data
+  do not let zeta be both companion and residual
+  require branch-kill criteria
+[WARN] minimal A-constraint closure ansatz problem posed: REQUIRED
+
+========================================================================================================================
+Case 1: Minimal closure ansatz inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+CA1: starting A constraint
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: Delta_A A = S_A[rho]
+Role: reduced scalar mass-response constraint
+Allowed if: treated as starting constraint only
+Forbidden if: claimed to derive A_spatial alone
+[WARN] CA1: starting A constraint: STRUCTURAL
+Missing: parent embedding and companion closure
+Consequence: A remains strong but incomplete
+
+------------------------------------------------------------------------------------------------------------------------
+CA2: algebraic closure ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: A_spatial = F(A)
+Role: minimal closure shell
+Allowed if: F is derived later from a parent principle
+Forbidden if: F is chosen as GR spatial metric, B=1/A, or gamma tuning
+[WARN] CA2: algebraic closure ansatz: RISK
+Missing: non-GR derivation of F
+Consequence: as-is, algebraic closure is too easy to smuggle GR
+
+------------------------------------------------------------------------------------------------------------------------
+CA3: differential compatibility ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: C[A,A_spatial,S_A] = alpha1 L1[A_spatial] + alpha2 L2[A] + alpha3 S_A = 0
+Role: explicit local compatibility family
+Allowed if: operators L1/L2 are defined independently of GR metric copying
+Forbidden if: coefficients are selected to force gamma=1
+[WARN] CA3: differential compatibility ansatz: CANDIDATE
+Missing: operator definitions and coefficient principle
+Consequence: best local closure family if coefficients/operators can be justified
+
+------------------------------------------------------------------------------------------------------------------------
+CA4: conservation-current ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: div J_A = 0, J_A = J_A[A,A_spatial,T]
+Role: closure via source/current consistency
+Allowed if: J_A is specified and links A to spatial companion
+Forbidden if: div J_A=0 is decorative with no current
+[WARN] CA4: conservation-current ansatz: CANDIDATE
+Missing: current definition and conservation law
+Consequence: bridges toward conservation/Bianchi-like parent identity
+
+------------------------------------------------------------------------------------------------------------------------
+CA5: elliptic compatibility ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: L_spatial[A_spatial] = H[A,S_A]
+Role: non-radiative boundary-value closure
+Allowed if: L_spatial and H are specified and boundary data do not impose GR
+Forbidden if: boundary data are Schwarzschild/AB=1 in disguise
+[WARN] CA5: elliptic compatibility ansatz: CANDIDATE
+Missing: elliptic operator, source functional, admissible boundary data
+Consequence: could derive static spatial companion without scalar wave channel
+
+------------------------------------------------------------------------------------------------------------------------
+CA6: zeta-assisted closure ansatz
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: C[A,A_spatial,zeta] = 0 with overlap(A_spatial,zeta_residual)=0
+Role: ontology-native closure using vacuum-volume configuration
+Allowed if: zeta is either A_spatial companion or residual, not both
+Forbidden if: zeta patches A_spatial while remaining independent residual trace
+[WARN] CA6: zeta-assisted closure ansatz: RISK
+Missing: zeta-A_spatial map and accounting revision
+Consequence: may force zeta convention revision or kill residual trace
+
+------------------------------------------------------------------------------------------------------------------------
+CA7: no-overlap operator requirement
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: O[A_spatial, zeta/kappa_residual] = 0
+Role: prevents closure from double-counting scalar trace
+Allowed if: O is defined or residual is proven zero/non-metric
+Forbidden if: overlap condition is asserted without operator
+[WARN] CA7: no-overlap operator requirement: THEOREM_TARGET
+Missing: overlap operator O
+Consequence: decides whether zeta/kappa survive as metric residuals
+
+------------------------------------------------------------------------------------------------------------------------
+CA8: gamma-like recovery test
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: weak-field output satisfies gamma_like = 1
+Role: recovery check
+Allowed if: emerges from closure ansatz
+Forbidden if: used to choose alpha coefficients
+[WARN] CA8: gamma-like recovery test: RECOVERY_TARGET
+Missing: weak-field expansion
+Consequence: tests but does not construct the ansatz
+
+------------------------------------------------------------------------------------------------------------------------
+CA9: AB diagnostic test
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: exterior output satisfies kappa_areal -> 0, AB -> 1
+Role: reduced exterior recovery check
+Allowed if: emerges from exterior solution
+Forbidden if: used as closure equation
+[WARN] CA9: AB diagnostic test: RECOVERY_TARGET
+Missing: exterior solution from ansatz
+Consequence: keeps AB as diagnostic only
+
+------------------------------------------------------------------------------------------------------------------------
+CA10: shortcut collapse
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: ansatz reduces to B=1/A, GR metric, Einstein constraint, or tuned gamma
+Role: branch-kill detector
+Allowed if: used only as no-go diagnosis
+Forbidden if: accepted as closure
+[WARN] CA10: shortcut collapse: REJECTED
+Missing: not pursued
+Consequence: if all ansatz families collapse here, local branch is killed
+
+------------------------------------------------------------------------------------------------------------------------
+CA11: local branch killed
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: no explicit C, J_A, L_spatial, or zeta-assisted ansatz survives shortcut tests
+Role: good failure outcome
+Allowed if: moves search to action/stiffness or broader parent identity
+Forbidden if: patched with GR import
+[FAIL] CA11: local branch killed: BRANCH_KILLED
+Missing: ansatz test result
+Consequence: kills A-sector-local closure route if confirmed
+
+------------------------------------------------------------------------------------------------------------------------
+CA12: recommended next test
+------------------------------------------------------------------------------------------------------------------------
+Ansatz: test differential compatibility family C first
+Role: most local explicit closure attempt
+Allowed if: operators/coefficient roles are exposed
+Forbidden if: C only renames A_spatial equation
+[PASS] CA12: recommended next test: RECOMMENDED
+Missing: minimal differential operator inventory
+Consequence: next script should inventory allowed L1/L2 operators and coefficient constraints
+
+========================================================================================================================
+Case 2: Compact closure-ansatz ledger
+========================================================================================================================
+| Entry | Ansatz | Status | Consequence |
+|---|---|---|---|
+| CA1: starting A constraint | Delta_A A = S_A[rho] | STRUCTURAL | A remains strong but incomplete |
+| CA2: algebraic closure ansatz | A_spatial = F(A) | RISK | as-is, algebraic closure is too easy to smuggle GR |
+| CA3: differential compatibility ansatz | C[A,A_spatial,S_A] = alpha1 L1[A_spatial] + alpha2 L2[A] + alpha3 S_A = 0 | CANDIDATE | best local closure family if coefficients/operators can be justified |
+| CA4: conservation-current ansatz | div J_A = 0, J_A = J_A[A,A_spatial,T] | CANDIDATE | bridges toward conservation/Bianchi-like parent identity |
+| CA5: elliptic compatibility ansatz | L_spatial[A_spatial] = H[A,S_A] | CANDIDATE | could derive static spatial companion without scalar wave channel |
+| CA6: zeta-assisted closure ansatz | C[A,A_spatial,zeta] = 0 with overlap(A_spatial,zeta_residual)=0 | RISK | may force zeta convention revision or kill residual trace |
+| CA7: no-overlap operator requirement | O[A_spatial, zeta/kappa_residual] = 0 | THEOREM_TARGET | decides whether zeta/kappa survive as metric residuals |
+| CA8: gamma-like recovery test | weak-field output satisfies gamma_like = 1 | RECOVERY_TARGET | tests but does not construct the ansatz |
+| CA9: AB diagnostic test | exterior output satisfies kappa_areal -> 0, AB -> 1 | RECOVERY_TARGET | keeps AB as diagnostic only |
+| CA10: shortcut collapse | ansatz reduces to B=1/A, GR metric, Einstein constraint, or tuned gamma | REJECTED | if all ansatz families collapse here, local branch is killed |
+| CA11: local branch killed | no explicit C, J_A, L_spatial, or zeta-assisted ansatz survives shortcut tests | BRANCH_KILLED | kills A-sector-local closure route if confirmed |
+| CA12: recommended next test | test differential compatibility family C first | RECOMMENDED | next script should inventory allowed L1/L2 operators and coefficient constraints |
+[WARN] compact closure-ansatz ledger produced: STRUCTURAL
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+BRANCH_KILLED: 1
+CANDIDATE: 3
+RECOMMENDED: 1
+RECOVERY_TARGET: 2
+REJECTED: 1
+RISK: 2
+STRUCTURAL: 1
+THEOREM_TARGET: 1
+
+Interpretation:
+  Explicit ansatz families can be written, but none is derived yet.
+  Differential compatibility is the most local next test.
+  Conservation-current closure may be broader than the A-local branch.
+  Zeta-assisted closure is risky because it may erase independent residual status.
+  If all explicit ansatz families require shortcuts, kill the local branch.
+[WARN] closure-ansatz status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 4: Ansatz family shapes
+========================================================================================================================
+Surviving symbolic families:
+
+1. Differential compatibility:
+   alpha1 L1[A_spatial] + alpha2 L2[A] + alpha3 S_A = 0
+
+2. Conservation-current:
+   div J_A[A,A_spatial,T] = 0
+
+3. Elliptic compatibility:
+   L_spatial[A_spatial] = H[A,S_A]
+
+4. Zeta-assisted:
+   C[A,A_spatial,zeta] = 0
+   overlap(A_spatial,zeta_residual) = 0
+
+All are provisional ansatz shells, not derived equations.
+[WARN] ansatz family shapes stated: CANDIDATE
+
+========================================================================================================================
+Case 5: Differential compatibility next requirements
+========================================================================================================================
+To test the differential compatibility family next, define:
+
+1. allowed operators L1 on A_spatial
+2. allowed operators L2 on A
+3. source placement S_A
+4. coefficient origin / stiffness relation
+5. weak-field output gamma_like
+6. exterior AB diagnostic
+7. no-overlap with residual trace
+8. branch-kill shortcut checks
+
+If L1/L2/coefficient choices only reproduce GR by hand, kill or defer to action/stiffness route.
+[WARN] differential compatibility next requirements stated: REQUIRED
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+Closure ansatz test fails if:
+
+1. C, J_A, or L_spatial are just names for missing equations
+2. F[A] is secretly B=1/A
+3. coefficients are selected to force gamma=1
+4. elliptic boundary data impose Schwarzschild
+5. current conservation has no current
+6. zeta supplies A_spatial and remains independent residual
+7. overlap operator is absent
+8. no branch-kill outcome is allowed
+[WARN] closure-ansatz failure controls stated: RISK
+
+========================================================================================================================
+Case 7: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_minimal_A_constraint_closure_ansatz.md
+   Artifact for this script.
+
+2. candidate_differential_A_spatial_closure_operator_inventory.py
+   Inventory allowed L1/L2 operators for differential compatibility.
+
+3. candidate_parent_action_stiffness_identity.py
+   Move to action/stiffness if operator inventory collapses to coefficient tuning.
+
+Recommended next script:
+
+  candidate_differential_A_spatial_closure_operator_inventory.py
+
+Reason:
+  Differential compatibility is the most local explicit ansatz. Test its operator content next.
+[WARN] next test selected: STRUCTURAL
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Explicit closure ansatz shells can be written.
+
+The most local survivor is:
+  C[A,A_spatial,S_A] = alpha1 L1[A_spatial] + alpha2 L2[A] + alpha3 S_A = 0
+
+But it is not yet a derivation.
+
+Best next test:
+  candidate_differential_A_spatial_closure_operator_inventory.py

@@ -1,0 +1,259 @@
+
+========================================================================================================================
+Candidate Kappa Gauge Versus Physical Trace
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Kappa gauge-vs-physical trace problem
+========================================================================================================================
+Question:
+
+  Is kappa a physical trace response, a gauge-volume artifact,
+  a constrained projection variable, or a dangerous scalar mode?
+
+Known relation:
+
+  AB = exp(2 kappa)
+
+Known requirement:
+
+  kappa_ext = 0
+
+Known risk:
+
+  ordinary scalar kappa dynamics can leak exterior 1/r tails or scalar radiation.
+[WARN] gauge-vs-physical problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Reduced diagnostic relation
+========================================================================================================================
+Reduced relation:
+
+Eq(A*B, exp(2*kappa))
+
+Equivalent diagnostic:
+
+Eq(kappa, log(A*B)/2)
+
+This measures departure from reciprocal AB=1 structure.
+
+It does not, by itself, decide whether kappa is physical or gauge.
+[PASS] kappa diagnostic relation stated: DERIVED_REDUCED
+
+========================================================================================================================
+Case 2: Interpretation inventory
+========================================================================================================================
+
+----------------------------------------------------------------------------------------------------
+I1: Pure gauge / coordinate-volume artifact
+----------------------------------------------------------------------------------------------------
+[WARN] I1: Pure gauge / coordinate-volume artifact: PLAUSIBLE
+Meaning: kappa measures coordinate or slicing/radial-volume choice rather than physical stress response
+Compatible with: exterior kappa=0 by gauge fixing; avoids scalar radiation if no physical dynamics
+Risk: undermines using kappa as an interior physical response; may demote prior kappa interpretations
+
+----------------------------------------------------------------------------------------------------
+I2: Physical local trace field
+----------------------------------------------------------------------------------------------------
+[WARN] I2: Physical local trace field: RISK
+Meaning: kappa is an ordinary scalar field sourced locally by trace/pressure
+Compatible with: interior trace response
+Risk: generically produces exterior charge/tails or scalar radiation unless screened
+
+----------------------------------------------------------------------------------------------------
+I3: Constrained non-propagating trace response
+----------------------------------------------------------------------------------------------------
+[WARN] I3: Constrained non-propagating trace response: CONSTRAINED_BY_IDENTITY
+Meaning: kappa is physical in matter but constrained/projected so it has no independent exterior charge
+Compatible with: interior response, exterior kappa=0, compensated trace, scalar-radiation safety
+Risk: requires parent constraint identity; otherwise compensation/projection is imposed by hand
+
+----------------------------------------------------------------------------------------------------
+I4: Relaxational trace deviation
+----------------------------------------------------------------------------------------------------
+[WARN] I4: Relaxational trace deviation: PLAUSIBLE
+Meaning: kappa is a deviation from vacuum minimum that relaxes back to zero outside sources
+Compatible with: exterior suppression and vacuum absorption intuition
+Risk: needs dynamics that do not create observable scalar radiation or erase static A
+
+----------------------------------------------------------------------------------------------------
+I5: Dangerous propagating scalar mode
+----------------------------------------------------------------------------------------------------
+[WARN] I5: Dangerous propagating scalar mode: REJECTED
+Meaning: kappa is an independent scalar wave/field with trace source
+Compatible with: none of the current exterior/radiation safety requirements without extra suppression
+Risk: would introduce scalar gravity radiation and exterior tails
+
+========================================================================================================================
+Case 3: Gauge-artifact test
+========================================================================================================================
+If kappa is pure gauge:
+
+  exterior kappa=0 can be imposed by coordinate/gauge choice.
+  no scalar radiation is introduced.
+  AB=exp(2kappa) remains a diagnostic, not a physical field equation.
+
+But then:
+
+  interior kappa cannot be credited as a physical pressure/trace response
+  unless gauge-invariant content is identified.
+
+Conclusion:
+  pure-gauge kappa is safe but weak.
+[WARN] pure gauge interpretation is exterior-safe but physically weak: PLAUSIBLE — needs gauge-invariant interior content
+
+========================================================================================================================
+Case 4: Physical local scalar test
+========================================================================================================================
+If kappa is an ordinary local scalar with source:
+
+  -K_k Delta kappa = alpha_k S_trace
+
+and:
+
+  integral S_trace d^3x != 0
+
+then exterior kappa generically has:
+
+  kappa_ext ~ 1/r
+
+This violates exterior kappa=0 unless screened/projected.
+
+Conclusion:
+  ordinary local scalar kappa is dangerous.
+[WARN] local physical scalar kappa leaks without suppression: RISK — not acceptable as final unscreened interpretation
+
+========================================================================================================================
+Case 5: Constrained trace-response test
+========================================================================================================================
+If kappa is a constrained trace response:
+
+  it can respond inside matter
+  it can use compensated or projected source
+  it can have zero exterior charge/flux
+  it need not propagate as an exterior scalar wave
+
+This best matches current requirements:
+
+  interior role
+  exterior kappa=0
+  no duplicate density scalar
+  no scalar radiation leak
+
+But a parent identity is required.
+[WARN] constrained trace response is current best interpretation: CONSTRAINED_BY_IDENTITY — parent identity missing
+
+========================================================================================================================
+Case 6: Relaxational trace-deviation test
+========================================================================================================================
+If kappa is relaxational:
+
+  dot kappa = -Gamma_kappa kappa + source
+
+or:
+
+  (-Delta + m_k^2) kappa = source
+
+then exterior deviations can decay.
+
+This fits the vacuum-minimum intuition.
+
+But it introduces:
+
+  new scale/rate
+  possible scalar mode
+  need for energy accounting
+
+Conclusion:
+  plausible as suppression mechanism, not source identity by itself.
+[WARN] relaxational kappa is plausible but incomplete: PLAUSIBLE — dynamics and energy accounting missing
+
+========================================================================================================================
+Case 7: Status table
+========================================================================================================================
+| Interpretation | Status |
+|---|---|
+| I1: Pure gauge / coordinate-volume artifact | PLAUSIBLE |
+| I2: Physical local trace field | RISK |
+| I3: Constrained non-propagating trace response | CONSTRAINED_BY_IDENTITY |
+| I4: Relaxational trace deviation | PLAUSIBLE |
+| I5: Dangerous propagating scalar mode | REJECTED |
+
+Current best interpretation:
+
+  kappa is a constrained non-propagating trace response.
+
+Secondary possibility:
+
+  some part of kappa is gauge-volume diagnostic.
+
+Rejected as final:
+
+  ordinary unscreened propagating scalar kappa.
+[WARN] kappa interpretation classification produced: CONSTRAINED_BY_IDENTITY — parent constraint still missing
+
+========================================================================================================================
+Case 8: Failure controls
+========================================================================================================================
+The kappa interpretation fails if:
+
+1. a gauge artifact is treated as physical without invariant content.
+2. physical kappa creates a 1/r exterior tail.
+3. physical kappa creates scalar radiation.
+4. compensation is inserted without parent constraint.
+5. relaxation hides the problem without energy/source accounting.
+6. kappa duplicates the A-sector density response.
+[WARN] gauge-vs-physical failure controls stated: RISK — must protect exterior and scalar-radiation safety
+
+========================================================================================================================
+Case 9: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_constraint_projection_identity.py
+   Try to formalize zero-charge projection as a parent constraint.
+
+2. candidate_kappa_scalar_radiation_leak_check.py
+   Check whether trace response leaks scalar radiation dynamically.
+
+3. candidate_kappa_relaxation_energy_accounting.py
+   Test whether relaxation can be energy-consistent.
+
+Recommended next script:
+
+  candidate_kappa_constraint_projection_identity.py
+
+Reason:
+  Current best interpretation is constrained trace response; the missing
+  piece is the parent projection identity.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — constraint projection identity is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Current best kappa interpretation:
+
+  constrained non-propagating trace response
+
+not:
+
+  ordinary local scalar field
+
+and not merely:
+
+  arbitrary gauge artifact
+
+This interpretation can reconcile:
+
+  interior trace response
+  exterior kappa=0
+  compensated zero-charge source
+  scalar-radiation safety
+
+But the parent projection identity is missing.
+
+Possible next artifact:
+  candidate_kappa_gauge_vs_physical_trace.md
+
+Possible next script:
+  candidate_kappa_constraint_projection_identity.py

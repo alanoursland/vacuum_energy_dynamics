@@ -1,0 +1,203 @@
+
+========================================================================================================================
+Candidate Kappa Boundary Flux Cancellation
+========================================================================================================================
+
+========================================================================================================================
+Case 0: Kappa boundary flux cancellation problem
+========================================================================================================================
+Question:
+
+  Does kappa leak through the matter/vacuum boundary?
+
+Boundary diagnostic:
+
+  F_kappa(R,t) = 4*pi R^2 partial_r kappa(R,t)
+
+Required for exterior safety:
+
+  no long-range undamped kappa flux to infinity
+
+Allowed possibility:
+
+  short-lived breathing response if damped/absorbed before becoming
+  ordinary long-range scalar radiation
+[WARN] boundary flux problem posed: CONSTRAINED_BY_IDENTITY
+
+========================================================================================================================
+Case 1: Static massless exterior tail flux
+========================================================================================================================
+Massless exterior tail:
+
+kappa = C1/r
+
+Boundary/exterior flux:
+
+F_kappa = -4*pi*C1
+
+If C1 != 0, exterior flux is nonzero.
+Thus kappa_ext = C1/r is forbidden unless C1 = 0.
+[WARN] massless 1/r tail has nonzero flux: RISK — must cancel C1
+
+========================================================================================================================
+Case 2: Projected zero-charge flux
+========================================================================================================================
+For schematic massless Poisson kappa:
+
+  -K_k Delta kappa = alpha_k P_0 S_trace
+
+Exterior flux is proportional to projected charge:
+
+F_kappa ~ -Q_proj*alpha_k/K_k
+
+If:
+
+  Q_proj = integral P_0 S_trace d^3x = 0
+
+then:
+
+  F_kappa = 0
+[WARN] projected zero charge cancels monopole flux: CONSTRAINED_BY_IDENTITY — static/fixed support only
+
+========================================================================================================================
+Case 3: Boundary matching condition
+========================================================================================================================
+Exterior-safe static matching requires:
+
+  kappa(R+) = 0
+  partial_r kappa(R+) = 0
+
+or equivalently:
+
+  F_kappa(R+) = 0
+
+Interior kappa may be nonzero if it is confined, projected, or matched
+through a boundary layer with no exterior flux.
+
+This is analogous to permitting interior trace response without exterior
+scalar charge.
+[WARN] static boundary flux condition stated: CONSTRAINED_BY_IDENTITY — boundary-layer mechanism missing
+
+========================================================================================================================
+Case 4: Yukawa-suppressed exterior flux
+========================================================================================================================
+Yukawa exterior:
+
+kappa = C*exp(-m*r)/r
+
+Flux:
+
+F_kappa = -4*pi*C*(m*r + 1)*exp(-m*r)
+
+This does not make flux identically zero, but it suppresses it with distance.
+Useful only if m is derived/constrained and the mode is not observable long-range.
+[WARN] Yukawa suppression reduces long-range flux: PLAUSIBLE — m_k scale missing
+
+========================================================================================================================
+Case 5: Damped breathing boundary response
+========================================================================================================================
+Representative damped trace/breathing response:
+
+  kappa_boundary(t) = A0 exp(-Gamma t) cos(omega0 t)
+
+kappa_boundary(t) = A_0*exp(-Gamma*t)*cos(omega_0*t)
+
+If Gamma is large enough, boundary trace perturbations are absorbed before
+becoming long-range scalar radiation.
+
+Critical damping condition for oscillator model:
+
+  Gamma^2 = 4 omega0^2
+
+Allowed only if damping/energy accounting is derived.
+[WARN] damped breathing response is possible failure-softening path: PLAUSIBLE — Gamma and energy accounting missing
+
+========================================================================================================================
+Case 6: Dynamic boundary warning
+========================================================================================================================
+For moving or time-dependent support:
+
+  R = R(t)
+  S_trace = S_trace(r,t)
+  <S_trace>_V = <S_trace>_V(t)
+
+Projection can create boundary terms:
+
+  d/dt integral_V(t) P_0 S d^3x
+
+Even if the instantaneous charge is zero, boundary motion may create
+effective flux terms unless the constraint propagates consistently.
+
+This is currently unresolved.
+[WARN] dynamic boundary projection unresolved: RISK — constraint propagation needed
+
+========================================================================================================================
+Case 7: Classification
+========================================================================================================================
+| Boundary behavior | Status |
+|---|---|
+| massless 1/r tail | REJECTED / RISK |
+| projected zero-charge static flux | CONSTRAINED_BY_IDENTITY |
+| kappa(R+)=0 and kappa'(R+)=0 | CONSTRAINED_BY_IDENTITY |
+| Yukawa suppressed exterior | PLAUSIBLE if m_k derived |
+| damped/critically damped breathing | PLAUSIBLE if Gamma and energy accounting derived |
+| moving support projection | RISK / unresolved |
+[WARN] boundary flux classification produced: CONSTRAINED_BY_IDENTITY — static control plausible, dynamic control missing
+
+========================================================================================================================
+Case 8: Failure controls
+========================================================================================================================
+Boundary flux cancellation fails if:
+
+1. F_kappa(R+) != 0 in a massless exterior.
+2. kappa has a persistent 1/r tail.
+3. damped breathing response carries energy to infinity before absorption.
+4. Gamma is inserted by hand only to hide scalar radiation.
+5. Yukawa scale m_k is inserted by hand only to hide scalar radiation.
+6. moving support creates uncancelled flux terms.
+7. suppression interferes with static A-sector gravity.
+[WARN] boundary flux failure controls stated: RISK — dynamic safety not proven
+
+========================================================================================================================
+Case 9: Next tests
+========================================================================================================================
+Possible next scripts:
+
+1. candidate_kappa_projection_parent_balance.py
+   Connect P_0 and F_kappa=0 to vacuum-substance balance.
+
+2. candidate_kappa_relaxation_energy_accounting.py
+   Test whether damping/absorption can conserve or dissipate energy consistently.
+
+3. candidate_kappa_boundary_layer_model.py
+   Model confined interior kappa with boundary layer and zero exterior flux.
+
+Recommended next script:
+
+  candidate_kappa_relaxation_energy_accounting.py
+
+Reason:
+  User-raised possibility: breathing response may be absorbed by vacuum.
+  That requires energy/damping accounting.
+[WARN] next test selected: CONSTRAINED_BY_IDENTITY — relaxation energy accounting is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Static exterior safety requires:
+
+  F_kappa(R+) = 0
+
+Massless 1/r tails are rejected.
+
+But a breathing response is not automatically fatal if:
+
+  it is damped, absorbed, massive, constrained, or boundary-confined
+
+and does not become ordinary long-range scalar radiation.
+
+Possible next artifact:
+  candidate_kappa_boundary_flux_cancellation.md
+
+Possible next script:
+  candidate_kappa_relaxation_energy_accounting.py

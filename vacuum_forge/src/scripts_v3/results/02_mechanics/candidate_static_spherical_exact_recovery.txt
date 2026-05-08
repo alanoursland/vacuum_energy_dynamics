@@ -1,0 +1,221 @@
+
+============================================================================================================
+Candidate Static Spherical Exact Recovery
+============================================================================================================
+
+============================================================================================================
+Case 0: Exact Schwarzschild compensated exterior
+============================================================================================================
+A_exact = 1 - r_s/r
+B_exact = r/(r - r_s)
+A B = 1
+kappa = 0
+s from 1/2 ln(A/B) = -log(r) + log((r - r_s)**2)/2
+s_exact = ln(A) = log(1 - r_s/r)
+
+For r > r_s, 1/2 ln(A/B) = ln(A).
+[PASS] exact Schwarzschild has AB=1
+[PASS] exact Schwarzschild has kappa=0
+[PASS] s=ln(A) reconstructs B=1/A
+
+============================================================================================================
+Case 1: Weak shear versus exact shear
+============================================================================================================
+s_weak = -r_s/r
+A_from_s_weak = exp(s_weak) = exp(-r_s/r)
+A_exact = 1 - r_s/r
+s_exact = ln(A_exact) = log(1 - r_s/r)
+
+Large-r expansions:
+A_from_s_weak = 1 - r_s/r + r_s**2/(2*r**2) - r_s**3/(6*r**3)
+A_exact       = (r - r_s)/r
+s_exact       = -r_s/r - r_s**2/(2*r**2) - r_s**3/(3*r**3)
+s_weak        = -r_s/r
+
+A_weak_exp - A_exact through order 1/r² = r_s**2/(2*r**2)
+[PASS] weak exponential A matches exact A at first order
+[PASS] weak exponential differs at second order
+
+============================================================================================================
+Case 2: Harmonic tests for weak and exact shear
+============================================================================================================
+∇² s_weak = 0
+∇² s_exact = -r_s**2/(r**2*(r - r_s)**2)
+∇² A_exact = 0
+[PASS] s_weak is harmonic for r>0
+[PASS] s_exact is not harmonic under flat radial Laplacian
+[PASS] A_exact is harmonic for r>0
+
+Interpretation:
+  The weak-field source law ∇²s=0 is linearized.
+  Exact Schwarzschild suggests the source-free harmonic variable is A=e^s,
+  not s itself.
+
+============================================================================================================
+Case 3: Nonlinear s equation from harmonic A=e^s
+============================================================================================================
+s_exact = log(1 - r_s/r)
+∇²s = -r_s**2/(r**2*(r - r_s)**2)
+|∇s|² = r_s**2/(r**2*(r - r_s)**2)
+∇²s + |∇s|² = 0
+[PASS] s_exact satisfies nonlinear source-free equation
+
+Equation:
+  ∇²s + |∇s|² = 0
+
+Equivalent:
+  ∇² exp(s) = 0
+
+============================================================================================================
+Case 4: Linearization of nonlinear s equation
+============================================================================================================
+s = eps*u(r)
+∇²s + |∇s|² = eps**2*Derivative(u(r), r)**2 + eps*Derivative(u(r), (r, 2)) + 2*eps*Derivative(u(r), r)/r
+first order in eps = eps*(Derivative(u(r), (r, 2)) + 2*Derivative(u(r), r)/r)
+through second order in eps = eps**2*Derivative(u(r), r)**2 + eps*(Derivative(u(r), (r, 2)) + 2*Derivative(u(r), r)/r)
+[PASS] linearized nonlinear equation is ∇²u=0
+
+Interpretation:
+  The earlier shear Laplace law is the first-order approximation
+  to the nonlinear exact candidate equation.
+
+============================================================================================================
+Case 5: Flux normalization for A
+============================================================================================================
+A = 1 - r_s/r
+A' = r_s/r**2
+4πr² A' = 4*pi*r_s
+target flux = 8*pi*G*M/c**2
+r_s solution = [2*G*M/c**2]
+[PASS] A-flux normalization gives r_s=2GM/c²
+
+Note:
+  This parallels the earlier s-flux normalization in weak field,
+  but the exact harmonic variable is A rather than s.
+
+============================================================================================================
+Case 6: Poisson form for A and nonlinear form for s
+============================================================================================================
+Candidate exact reduced source law:
+
+  ∇²A = 8πG rho / c²
+
+with:
+
+  A = exp(s)
+
+In source-free exterior:
+
+  ∇²A = 0
+
+Equivalent s equation:
+
+  ∇²s + |∇s|² = 0
+
+In weak field, |∇s|² is second order, so:
+
+  ∇²s ≈ 0
+
+[PASS] candidate exact law reduces to weak shear Laplace law
+
+============================================================================================================
+Case 7: Exact metric recovery
+============================================================================================================
+A = 1 - r_s/r
+s = ln(A) = log(1 - r_s/r)
+kappa = 0
+B = exp(-s) = 1/(1 - r_s/r)
+AB = 1
+[PASS] B equals 1/A
+[PASS] AB=1 exactly
+
+Result:
+  kappa=0 and s=ln(1-r_s/r) recover exact Schwarzschild
+  areal-gauge exterior metric factors.
+
+============================================================================================================
+Case 8: Compare source-law candidates
+============================================================================================================
+Weak-field candidate:
+  ∇²s = 0 outside source
+  s = -r_s/r
+  A = exp(s) = exp(-r_s/r)
+  matches Schwarzschild only at first order
+
+Exact candidate:
+  ∇²A = 0 outside source
+  A = 1 - r_s/r
+  s = ln(A)
+  equivalently ∇²s + |∇s|² = 0
+  recovers exact Schwarzschild exterior factors under kappa=0
+
+Interpretation:
+  The earlier shear Poisson law may be the linearized form of a
+  nonlinear exact law for A=e^s.
+
+============================================================================================================
+Case 9: Summary classification
+============================================================================================================
+Results:
+
+1. Exact Schwarzschild in areal gauge has:
+     A = 1 - r_s/r
+     B = 1/A
+     AB = 1
+     kappa = 0
+
+2. Therefore exact shear is:
+     s_exact = ln(1 - r_s/r)
+
+3. The weak shear:
+     s_weak = -r_s/r
+   matches only to first order.
+
+4. s_exact is not harmonic:
+     ∇²s_exact != 0
+
+5. A_exact is harmonic:
+     ∇²A_exact = 0
+
+6. Therefore s_exact satisfies:
+     ∇²s + |∇s|² = 0
+
+7. The nonlinear s equation linearizes to:
+     ∇²s = 0
+
+8. The A-flux normalization gives:
+     r_s = 2GM/c²
+
+============================================================================================================
+Final interpretation
+============================================================================================================
+This exact-recovery toy suggests a refinement:
+
+  The weak-field shear source law ∇²s = 0 is probably linearized.
+
+For exact static spherical recovery, the better source-free variable may be:
+
+  A = exp(s)
+
+with exact exterior equation:
+
+  ∇²A = 0
+
+or equivalently:
+
+  ∇²s + |∇s|² = 0
+
+Then:
+
+  A = 1 - r_s/r
+  s = ln(1 - r_s/r)
+  B = 1/A
+  kappa = 0
+
+This recovers exact Schwarzschild exterior metric factors in areal gauge.
+
+This is still not a derivation of Einstein's equations.
+It is a reduced exact static spherical candidate.
+
+Possible next artifact:
+  candidate_static_spherical_exact_recovery.md
