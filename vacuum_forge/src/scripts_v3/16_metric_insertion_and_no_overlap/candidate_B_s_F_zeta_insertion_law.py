@@ -36,7 +36,16 @@
 # This script is a sieve, not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -48,6 +57,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -83,6 +93,30 @@ class InsertionEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="group_15_status_after_residual_kill_marker",
+        upstream_script_id="15_vacuum_current_and_exchange_continuity__candidate_group_15_status_after_residual_kill",
+        upstream_derivation_id="group_15_status_after_residual_kill_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[InsertionEntry]:
@@ -417,6 +451,42 @@ def case_4_conformal_split_check():
     status_line("conformal-volume split checked", "STRUCTURAL")
 
 
+def case_4b_symbolic_conformal_split(ns):
+    header("Case 4b: Symbolic conformal-volume check")
+
+    zeta = sp.symbols("zeta", real=True)
+    delta_zeta = sp.symbols("delta_zeta", real=True)
+    determinant = sp.exp(2 * zeta)
+    sqrt_determinant = sp.sqrt(determinant)
+    volume_scalar = sp.simplify(sp.log(sqrt_determinant).subs(sqrt_determinant, sp.exp(zeta)))
+    isotropic_fraction = sp.simplify(
+        sp.diff(sp.exp(sp.Rational(2, 3) * zeta), zeta) / sp.exp(sp.Rational(2, 3) * zeta) * delta_zeta
+    )
+
+    print("Principal-branch determinant relation:")
+    print(f"  det(gamma_ij) = {determinant}")
+    print(f"  sqrt(gamma) = exp(zeta)")
+    print(f"  ln sqrt(gamma) = {volume_scalar}")
+    print(f"  delta gamma_ij / gamma_ij = {isotropic_fraction}")
+
+    if volume_scalar == zeta and isotropic_fraction == sp.Rational(2, 3) * delta_zeta:
+        status_line(
+            "symbolic conformal-volume relation",
+            "DERIVED_REDUCED",
+            f"ln sqrt(gamma) = {volume_scalar}, delta gamma_ij / gamma_ij = {isotropic_fraction}",
+        )
+    else:
+        status_line("symbolic conformal-volume relation", "RISK", "unexpected symbolic mismatch")
+
+    ns.record_derivation(
+        derivation_id="conformal_volume_split_symbolic_relation",
+        inputs=[determinant, delta_zeta],
+        output=sp.Tuple(volume_scalar, isotropic_fraction),
+        method="symbolic conformal-volume split check",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Insertion decision tree")
 
@@ -541,17 +611,29 @@ def final_interpretation():
 
 def main():
     header("Candidate B_s / F_zeta Insertion Law")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_conformal_split_check()
+    case_4b_symbolic_conformal_split(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="B_s_F_zeta_insertion_law_marker",
+        inputs=[],
+        output=sp.Symbol("B_s_F_zeta_insertion_law_audited"),
+        method="B_s_F_zeta_insertion_law_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

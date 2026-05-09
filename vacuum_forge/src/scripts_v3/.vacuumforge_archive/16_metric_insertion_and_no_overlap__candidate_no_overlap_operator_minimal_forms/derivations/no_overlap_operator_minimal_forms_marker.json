@@ -1,0 +1,13 @@
+{
+  "derivation_id": "no_overlap_operator_minimal_forms_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('no_overlap_operator_minimal_forms_audited')",
+    "latex": "no_{overlap operator minimal forms audited}"
+  },
+  "method": "no_overlap_operator_minimal_forms_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:34.569934+00:00",
+  "vacuumforge_version": "0.1.0"
+}

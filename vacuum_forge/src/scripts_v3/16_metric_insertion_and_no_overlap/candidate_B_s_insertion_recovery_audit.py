@@ -33,7 +33,17 @@
 # This is an anti-smuggling audit, not a recovery derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status, TheoryContext
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -45,6 +55,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -80,6 +91,30 @@ class RecoveryAuditEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="B_s_insertion_boundary_safety_marker",
+        upstream_script_id="16_metric_insertion_and_no_overlap__candidate_B_s_insertion_boundary_safety",
+        upstream_derivation_id="B_s_insertion_boundary_safety_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[RecoveryAuditEntry]:
@@ -366,6 +401,43 @@ def case_4_recovery_tests():
     status_line("allowed recovery tests listed", "RECOMMENDED")
 
 
+def case_4b_concrete_recovery_check(ns):
+    header("Case 4b: Concrete recovery check stays downstream")
+
+    ctx = TheoryContext("group_16_recovery_audit")
+    ms = ctx.define_equal_response_algebraic_symbols()
+    A_value = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    B_value = 1 / A_value
+    product = sp.simplify(A_value * B_value)
+    result = check_concrete_metric(ctx, A_value, B_value, ["reciprocal_scaling"])[0]
+
+    print(f"A(r) = {A_value}")
+    print(f"B(r) = {B_value}")
+    print(f"A(r) * B(r) = {product}")
+    print(f"ConcreteMetricCheck status = {result.status}")
+
+    if result.status == "satisfied_by_construction":
+        status_line(
+            "downstream reciprocal recovery audit",
+            "DERIVED_REDUCED",
+            f"A*B = {product}; ConcreteMetricCheck = {result.status}",
+        )
+    else:
+        status_line(
+            "downstream reciprocal recovery audit",
+            "RISK",
+            f"expected satisfied_by_construction, got {result.status}",
+        )
+
+    ns.record_derivation(
+        derivation_id="B_s_insertion_recovery_reciprocal_check",
+        inputs=[A_value, B_value],
+        output=product,
+        method="ConcreteMetricCheck reciprocal_scaling",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Recovery-audit decision tree")
 
@@ -487,17 +559,29 @@ def final_interpretation():
 
 def main():
     header("Candidate B_s Insertion Recovery Audit")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_recovery_tests()
+    case_4b_concrete_recovery_check(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="B_s_insertion_recovery_audit_marker",
+        inputs=[],
+        output=sp.Symbol("B_s_insertion_recovery_audit_complete"),
+        method="B_s_insertion_recovery_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "B_s_insertion_recovery_audit_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('B_s_insertion_recovery_audit_complete')",
+    "latex": "B_{s insertion recovery audit complete}"
+  },
+  "method": "B_s_insertion_recovery_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:39.754264+00:00",
+  "vacuumforge_version": "0.1.0"
+}

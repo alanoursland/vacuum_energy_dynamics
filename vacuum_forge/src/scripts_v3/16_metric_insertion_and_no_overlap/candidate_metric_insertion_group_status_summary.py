@@ -21,7 +21,16 @@
 # It is not a parent field equation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -65,6 +74,30 @@ class Group16StatusEntry:
     status: str
     consequence: str
     handoff: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="B_s_insertion_recovery_audit_marker",
+        upstream_script_id="16_metric_insertion_and_no_overlap__candidate_B_s_insertion_recovery_audit",
+        upstream_derivation_id="B_s_insertion_recovery_audit_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[Group16StatusEntry]:
@@ -382,6 +415,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Metric Insertion Group Status Summary")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_status_ledger(entries)
@@ -392,6 +427,15 @@ def main():
     case_6_rejected_regressions()
     case_7_next_options()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="metric_insertion_group_status_summary_marker",
+        inputs=[],
+        output=sp.Symbol("metric_insertion_group_status_summary_written"),
+        method="metric_insertion_group_status_summary",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

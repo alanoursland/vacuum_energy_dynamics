@@ -28,7 +28,16 @@
 # It is a count-once safety audit.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -40,6 +49,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -75,6 +85,30 @@ class CountOnceEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="B_s_F_zeta_insertion_law_marker",
+        upstream_script_id="16_metric_insertion_and_no_overlap__candidate_B_s_F_zeta_insertion_law",
+        upstream_derivation_id="B_s_F_zeta_insertion_law_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[CountOnceEntry]:
@@ -376,6 +410,36 @@ def case_4_second_spoon_routes():
     status_line("second-spoon routes listed", "REQUIRED")
 
 
+def case_4b_symbolic_count_once(ns):
+    header("Case 4b: Symbolic count-once check")
+
+    delta_zeta = sp.symbols("delta_zeta", real=True)
+    spatial_dim = sp.Integer(3)
+    fractional_entry = sp.Rational(2, spatial_dim) * delta_zeta
+    scalar_trace = sp.simplify(spatial_dim * fractional_entry)
+
+    print("For gamma_ij = exp(2 zeta / 3) bar_gamma_ij in 3 spatial dimensions:")
+    print(f"  fractional scalar entry = {fractional_entry}")
+    print(f"  total scalar trace contribution = {scalar_trace}")
+
+    if scalar_trace == 2 * delta_zeta:
+        status_line(
+            "symbolic count-once scalar trace",
+            "DERIVED_REDUCED",
+            f"delta gamma_ij / gamma_ij = {fractional_entry}, trace contribution = {scalar_trace}",
+        )
+    else:
+        status_line("symbolic count-once scalar trace", "RISK", "unexpected scalar trace factor")
+
+    ns.record_derivation(
+        derivation_id="B_s_only_scalar_trace_factor",
+        inputs=[delta_zeta],
+        output=sp.Tuple(fractional_entry, scalar_trace),
+        method="symbolic count-once trace factor",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Count-once decision tree")
 
@@ -493,17 +557,29 @@ def final_interpretation():
 
 def main():
     header("Candidate B_s-Only Insertion Count-Once")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_second_spoon_routes()
+    case_4b_symbolic_count_once(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="B_s_only_insertion_count_once_marker",
+        inputs=[],
+        output=sp.Symbol("B_s_only_insertion_count_once_audited"),
+        method="B_s_only_insertion_count_once_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

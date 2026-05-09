@@ -1,0 +1,18 @@
+{
+  "derivation_id": "B_s_insertion_compact_boundary_profile",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('epsilon', positive=True), Pow(Add(Integer(1), Mul(Integer(-1), Pow(Symbol('R', positive=True), Integer(-2)), Pow(Symbol('r', positive=True), Integer(2)))), Integer(2)))",
+      "latex": "\\epsilon \\left(1 - \\frac{r^{2}}{R^{2}}\\right)^{2}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0), Mul(Integer(8), Pow(Symbol('R', positive=True), Integer(-2)), Symbol('epsilon', positive=True)))",
+    "latex": "\\left( 0, \\  0, \\  \\frac{8 \\epsilon}{R^{2}}\\right)"
+  },
+  "method": "symbolic compact-support boundary check",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:36.177727+00:00",
+  "vacuumforge_version": "0.1.0"
+}

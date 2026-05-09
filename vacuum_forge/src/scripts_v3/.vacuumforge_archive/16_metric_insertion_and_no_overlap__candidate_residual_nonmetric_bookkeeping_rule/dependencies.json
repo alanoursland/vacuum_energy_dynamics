@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "B_s_only_insertion_count_once_marker",
+    "upstream_script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_only_insertion_count_once",
+    "upstream_derivation_id": "B_s_only_insertion_count_once_marker",
+    "declared_at": "2026-05-09T14:57:32.562995+00:00"
+  }
+]

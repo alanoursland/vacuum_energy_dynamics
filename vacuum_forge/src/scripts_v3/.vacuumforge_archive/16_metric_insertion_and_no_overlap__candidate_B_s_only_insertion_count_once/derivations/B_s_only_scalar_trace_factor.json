@@ -1,0 +1,18 @@
+{
+  "derivation_id": "B_s_only_scalar_trace_factor",
+  "inputs": [
+    {
+      "srepr": "Symbol('delta_zeta', real=True)",
+      "latex": "\\delta_{\\zeta}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Mul(Rational(2, 3), Symbol('delta_zeta', real=True)), Mul(Integer(2), Symbol('delta_zeta', real=True)))",
+    "latex": "\\left( \\frac{2 \\delta_{\\zeta}}{3}, \\  2 \\delta_{\\zeta}\\right)"
+  },
+  "method": "symbolic count-once trace factor",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:31.609118+00:00",
+  "vacuumforge_version": "0.1.0"
+}

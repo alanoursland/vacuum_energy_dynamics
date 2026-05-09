@@ -1,0 +1,13 @@
+{
+  "derivation_id": "metric_insertion_group_status_summary_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('metric_insertion_group_status_summary_written')",
+    "latex": "metric_{insertion group status summary written}"
+  },
+  "method": "metric_insertion_group_status_summary",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:41.303787+00:00",
+  "vacuumforge_version": "0.1.0"
+}

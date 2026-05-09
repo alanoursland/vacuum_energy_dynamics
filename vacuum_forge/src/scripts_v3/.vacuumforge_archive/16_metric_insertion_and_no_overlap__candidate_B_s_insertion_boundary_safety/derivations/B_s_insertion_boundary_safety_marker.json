@@ -1,0 +1,13 @@
+{
+  "derivation_id": "B_s_insertion_boundary_safety_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('B_s_insertion_boundary_safety_audited')",
+    "latex": "B_{s insertion boundary safety audited}"
+  },
+  "method": "B_s_insertion_boundary_safety_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:36.179727+00:00",
+  "vacuumforge_version": "0.1.0"
+}

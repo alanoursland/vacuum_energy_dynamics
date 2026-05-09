@@ -2,6 +2,9 @@
 ========================================================================================================================
 Candidate B_s Insertion Recovery Audit
 ========================================================================================================================
+[INFO] Archive invalidated due to source change.
+[INFO] Archive dependency check:
+  - B_s_insertion_boundary_safety_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: B_s insertion recovery-audit problem
@@ -279,6 +282,15 @@ Not allowed:
 5. recovery-tuned support/smoothing
 6. recovery-selected residual-kill
 [PASS] allowed recovery tests listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Concrete recovery check stays downstream
+========================================================================================================================
+A(r) = -2*G*M/(c**2*r) + 1
+B(r) = 1/(-2*G*M/(c**2*r) + 1)
+A(r) * B(r) = 1
+ConcreteMetricCheck status = satisfied_by_construction
+[PASS] downstream reciprocal recovery audit: DERIVED_REDUCED — A*B = 1; ConcreteMetricCheck = satisfied_by_construction
 
 ========================================================================================================================
 Case 5: Recovery-audit decision tree

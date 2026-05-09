@@ -2,6 +2,9 @@
 ========================================================================================================================
 Candidate B_s / F_zeta Insertion Law
 ========================================================================================================================
+[INFO] Archive invalidated due to source change.
+[INFO] Archive dependency check:
+  - group_15_status_after_residual_kill_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: B_s / F_zeta insertion problem
@@ -335,6 +338,16 @@ But it does not derive:
   recovery coefficients
   parent equation
 [WARN] conformal-volume split checked: STRUCTURAL
+
+========================================================================================================================
+Case 4b: Symbolic conformal-volume check
+========================================================================================================================
+Principal-branch determinant relation:
+  det(gamma_ij) = exp(2*zeta)
+  sqrt(gamma) = exp(zeta)
+  ln sqrt(gamma) = zeta
+  delta gamma_ij / gamma_ij = 2*delta_zeta/3
+[PASS] symbolic conformal-volume relation: DERIVED_REDUCED — ln sqrt(gamma) = zeta, delta gamma_ij / gamma_ij = 2*delta_zeta/3
 
 ========================================================================================================================
 Case 5: Insertion decision tree

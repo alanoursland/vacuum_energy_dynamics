@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate No-Overlap Operator Minimal Forms
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - residual_nonmetric_bookkeeping_rule_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal no-overlap operator problem

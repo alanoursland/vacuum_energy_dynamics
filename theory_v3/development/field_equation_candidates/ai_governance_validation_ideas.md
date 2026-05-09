@@ -282,6 +282,126 @@ Every strong conclusion should be tied to one of:
 
 Without that, the script is a memo, not a validated artifact.
 
+## Process Improvements Exposed By Group 16
+
+Group 16 made another failure mode obvious: even when the scripts are
+trying to be careful, the process still leans too heavily on
+hand-written governance tables and hand-written summaries.
+
+This is a separate problem from algebra correctness. It is a process
+problem in how AI generates, formats, and closes scripts.
+
+### 1. Summary scripts should consume archive state, not restate it from memory
+
+`candidate_metric_insertion_group_status_summary.py` is a good example
+of a script that currently retypes the group's status in prose/data form.
+That is useful editorially, but it is also a drift surface:
+
+- the summary can silently diverge from the upstream scripts
+- statuses can be upgraded or softened by narration
+- downstream readers may trust the summary more than the derivations
+
+Better pattern:
+
+- summary scripts should query archive derivations and dependency status
+- they may add interpretation, but the core status table should be built
+  from upstream records
+- if a summary wants to escalate a claim, it should add a new evidence
+  object rather than just stronger wording
+
+### 2. Governance tables need explicit provenance columns
+
+Group 16 uses dataclass tables like:
+
+- `InsertionEntry`
+- `CountOnceEntry`
+- `BoundarySafetyEntry`
+- `RecoveryAuditEntry`
+
+These are readable, but they still let AI assign `status="REJECTED"` or
+`status="THEOREM_TARGET"` directly by hand.
+
+Minimal improvement:
+
+- add `evidence_script`
+- add `evidence_derivation`
+- add `claim_tier`
+- add `claim_kind` (`derived`, `heuristic`, `policy`, `target`, `failure_mode`)
+
+If those fields are missing, the status should not be interpreted as
+machine-backed.
+
+### 3. Separate script output into three blocks
+
+A better default script structure would be:
+
+1. `derived_results`
+2. `governance_assessments`
+3. `unresolved_obligations`
+
+Right now these are often interleaved, which makes it too easy for a
+reader to confuse:
+
+- "we computed this"
+- "we prefer this"
+- "this is still missing"
+
+The archive should mirror this split.
+
+### 4. Common helpers should replace hand-rolled status vocabularies
+
+Each script currently hand-defines `status_line(...)` with a local map.
+That is a direct AI drift surface:
+
+- inconsistent tags (`INFO` vs `PASS`)
+- silent vocabulary changes
+- accidental promotion/demotion of claim severity
+
+VacuumForge should provide a shared helper for:
+
+- allowed statuses
+- allowed claim tiers
+- whether evidence is required
+- how unsupported strong claims are downgraded
+
+This is not just cleanup. It reduces the number of places where the AI
+can improvise governance semantics.
+
+### 5. Every branch-kill or rejection should have a first-class reason code
+
+Group 16 contains many useful rejections:
+
+- `GR spatial copy rejection`
+- `gamma coefficient fit rejection`
+- `boundary repair rejection`
+
+These should be emitted with standardized reason codes rather than only
+English prose, for example:
+
+- `reason_code="recovery_selected_parameter"`
+- `reason_code="gr_copy_construction"`
+- `reason_code="boundary_repair_after_failure"`
+- `reason_code="double_counting_without_overlap_witness"`
+
+That would let linting and summaries detect unsupported exclusions
+automatically.
+
+### 6. Scripts need a "memo mode" when no derivation exists
+
+Some Group 16 scripts are genuinely exploratory sieves. That is fine.
+The problem is that a sieve can still print strong-looking output.
+
+Process improvement:
+
+- scripts with no derivation records beyond inventory markers should be
+  explicitly labeled `MEMO` or `SIEVE`
+- their statuses should default to governance/heuristic tiers
+- they should not be allowed to emit `DERIVED`, `FORBIDDEN`, or
+  `BRANCH_KILLED` unless they attach evidence
+
+This would make it obvious when a script is organizing thought rather
+than proving something.
+
 ## Practical Rule For Next Pass
 
 For the next script pass:

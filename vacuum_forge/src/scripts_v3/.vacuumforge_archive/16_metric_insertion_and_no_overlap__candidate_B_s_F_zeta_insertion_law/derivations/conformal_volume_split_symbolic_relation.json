@@ -1,0 +1,22 @@
+{
+  "derivation_id": "conformal_volume_split_symbolic_relation",
+  "inputs": [
+    {
+      "srepr": "exp(Mul(Integer(2), Symbol('zeta', real=True)))",
+      "latex": "e^{2 \\zeta}"
+    },
+    {
+      "srepr": "Symbol('delta_zeta', real=True)",
+      "latex": "\\delta_{\\zeta}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Symbol('zeta', real=True), Mul(Rational(2, 3), Symbol('delta_zeta', real=True)))",
+    "latex": "\\left( \\zeta, \\  \\frac{2 \\delta_{\\zeta}}{3}\\right)"
+  },
+  "method": "symbolic conformal-volume split check",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:30.013325+00:00",
+  "vacuumforge_version": "0.1.0"
+}

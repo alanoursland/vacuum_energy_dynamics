@@ -2,6 +2,9 @@
 ========================================================================================================================
 Candidate B_s-Only Insertion Count-Once
 ========================================================================================================================
+[INFO] Archive invalidated due to source change.
+[INFO] Archive dependency check:
+  - B_s_F_zeta_insertion_law_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: B_s-only count-once problem
@@ -299,6 +302,14 @@ Second-spoon routes:
 
 All must be blocked unless a real O / parent identity permits a neutral residual.
 [WARN] second-spoon routes listed: REQUIRED
+
+========================================================================================================================
+Case 4b: Symbolic count-once check
+========================================================================================================================
+For gamma_ij = exp(2 zeta / 3) bar_gamma_ij in 3 spatial dimensions:
+  fractional scalar entry = 2*delta_zeta/3
+  total scalar trace contribution = 2*delta_zeta
+[PASS] symbolic count-once scalar trace: DERIVED_REDUCED — delta gamma_ij / gamma_ij = 2*delta_zeta/3, trace contribution = 2*delta_zeta
 
 ========================================================================================================================
 Case 5: Count-once decision tree

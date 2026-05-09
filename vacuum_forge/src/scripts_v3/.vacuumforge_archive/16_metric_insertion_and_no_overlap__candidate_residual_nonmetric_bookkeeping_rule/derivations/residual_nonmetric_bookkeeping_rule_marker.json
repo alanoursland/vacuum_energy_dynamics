@@ -1,0 +1,13 @@
+{
+  "derivation_id": "residual_nonmetric_bookkeeping_rule_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('residual_nonmetric_bookkeeping_rule_audited')",
+    "latex": "residual_{nonmetric bookkeeping rule audited}"
+  },
+  "method": "residual_nonmetric_bookkeeping_rule_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:33.142920+00:00",
+  "vacuumforge_version": "0.1.0"
+}

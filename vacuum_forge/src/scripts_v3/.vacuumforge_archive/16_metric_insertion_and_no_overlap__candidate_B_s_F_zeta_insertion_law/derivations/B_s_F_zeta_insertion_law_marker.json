@@ -1,0 +1,13 @@
+{
+  "derivation_id": "B_s_F_zeta_insertion_law_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('B_s_F_zeta_insertion_law_audited')",
+    "latex": "B_{s F \\zeta insertion law audited}"
+  },
+  "method": "B_s_F_zeta_insertion_law_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:57:30.014326+00:00",
+  "vacuumforge_version": "0.1.0"
+}

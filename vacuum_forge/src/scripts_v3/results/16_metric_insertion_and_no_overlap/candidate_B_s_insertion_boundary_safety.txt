@@ -2,6 +2,9 @@
 ========================================================================================================================
 Candidate B_s Insertion Boundary Safety
 ========================================================================================================================
+[INFO] Archive invalidated due to source change.
+[INFO] Archive dependency check:
+  - no_overlap_operator_minimal_forms_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: B_s insertion boundary-safety problem
@@ -282,6 +285,15 @@ Danger routes:
 4. R_V cancellation
 5. recovery-tuned smoothing
 [PASS] boundary-safety routes listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Symbolic compact-support boundary sample
+========================================================================================================================
+zeta_interior(r) = epsilon*(1 - r**2/R**2)**2
+zeta(R) = 0
+zeta'(R) = 0
+zeta''(R) = 8*epsilon/R**2
+[PASS] compact-support boundary sample: DERIVED_REDUCED — zeta(R) = 0, zeta'(R) = 0
 
 ========================================================================================================================
 Case 5: Boundary-safety decision tree
