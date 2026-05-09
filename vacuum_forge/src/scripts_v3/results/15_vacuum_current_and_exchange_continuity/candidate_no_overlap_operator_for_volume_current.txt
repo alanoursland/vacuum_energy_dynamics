@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate No-Overlap Operator For Volume Current
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_no_overlap_for_volume_current_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: No-overlap operator problem

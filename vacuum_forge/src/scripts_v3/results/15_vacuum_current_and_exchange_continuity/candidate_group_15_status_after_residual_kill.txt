@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Group 15 Status After Residual-Kill
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - residual_kill_rule_for_volume_current_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Group 15 status-after-residual-kill problem

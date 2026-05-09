@@ -1,0 +1,22 @@
+{
+  "derivation_id": "sigma_R_zero_current_balance",
+  "inputs": [
+    {
+      "srepr": "Symbol('Sigma_V')",
+      "latex": "\\Sigma_{V}"
+    },
+    {
+      "srepr": "Symbol('R_V')",
+      "latex": "R_{V}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('R_V')",
+    "latex": "R_{V}"
+  },
+  "method": "local zero-current continuity balance",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:41.662978+00:00",
+  "vacuumforge_version": "0.1.0"
+}

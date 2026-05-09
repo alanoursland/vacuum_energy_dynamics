@@ -19,7 +19,17 @@
 # It is not a derivation of the boundary projector or overlap operator.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -31,6 +41,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -233,6 +244,30 @@ def build_entries() -> List[BoundaryOverlapEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="static_source_neutrality_for_J_V_marker",
+        upstream_script_id="15_vacuum_current_and_exchange_continuity__candidate_static_source_neutrality_for_J_V",
+        upstream_derivation_id="static_source_neutrality_for_J_V_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: BoundaryOverlapEntry) -> None:
     print()
     print("-" * 120)
@@ -345,6 +380,35 @@ def case_4_decision_tree():
     status_line("boundary/no-overlap decision tree stated", "RECOMMENDED")
 
 
+def case_4b_symbolic_boundary_flux(ns) -> None:
+    header("Case 4b: Symbolic compact-support boundary check")
+
+    r, R, zeta0 = sp.symbols("r R zeta0", positive=True)
+    profile = sp.simplify(zeta0 * (1 - r**2 / R**2) ** 2)
+    boundary_value = sp.simplify(profile.subs(r, R))
+    boundary_derivative = sp.simplify(sp.diff(profile, r).subs(r, R))
+    boundary_flux = sp.simplify(4 * sp.pi * R**2 * boundary_derivative)
+
+    print("Compact-support sample:")
+    print()
+    print(f"  zeta(r) = {profile}")
+    print(f"  zeta(R) = {boundary_value}")
+    print(f"  zeta'(R) = {boundary_derivative}")
+    print(f"  F_boundary = {boundary_flux}")
+    print()
+    print("Interpretation:")
+    print("  the standard compact profile satisfies the zero-flux boundary requirement symbolically.")
+
+    status_line("compact-support boundary neutrality", "DERIVED_REDUCED", f"F_boundary = {boundary_flux}")
+    ns.record_derivation(
+        derivation_id="boundary_no_overlap_zero_flux_sample",
+        inputs=[profile],
+        output=sp.Tuple(boundary_value, boundary_derivative, boundary_flux),
+        method="compact-support boundary/no-overlap sample",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_good_failure():
     header("Case 5: Good failure / branch decision")
 
@@ -422,16 +486,28 @@ def final_interpretation():
 
 def main():
     header("Candidate Boundary/No-Overlap For Volume Current")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_decision_tree()
+    case_4b_symbolic_boundary_flux(ns)
     case_5_good_failure()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="boundary_no_overlap_for_volume_current_marker",
+        inputs=[],
+        output=sp.Symbol("boundary_no_overlap_for_volume_current_audited"),
+        method="boundary_no_overlap_for_volume_current_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

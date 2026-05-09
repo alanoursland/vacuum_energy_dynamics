@@ -1,0 +1,13 @@
+{
+  "derivation_id": "no_overlap_operator_for_volume_current_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('no_overlap_operator_for_volume_current_audited')",
+    "latex": "no_{overlap operator for volume current audited}"
+  },
+  "method": "no_overlap_operator_for_volume_current_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:49.625977+00:00",
+  "vacuumforge_version": "0.1.0"
+}

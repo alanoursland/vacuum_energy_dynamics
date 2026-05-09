@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Residual-Kill Rule For Volume Current
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - group_15_current_subchain_status_summary_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Residual-kill rule problem

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Group 15 Current Subchain Status Summary
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - no_overlap_operator_for_volume_current_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Current-subchain status problem

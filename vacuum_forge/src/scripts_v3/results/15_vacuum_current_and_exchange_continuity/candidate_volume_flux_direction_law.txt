@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Volume Flux Direction Law
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - sigma_R_split_for_volume_exchange_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Volume flux direction problem

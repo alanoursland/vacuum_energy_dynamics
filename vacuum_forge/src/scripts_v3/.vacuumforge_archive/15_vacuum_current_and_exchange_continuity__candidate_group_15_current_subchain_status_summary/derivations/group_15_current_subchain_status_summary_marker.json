@@ -1,0 +1,13 @@
+{
+  "derivation_id": "group_15_current_subchain_status_summary_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('group_15_current_subchain_status_summary_audited')",
+    "latex": "group_{15 current subchain status summary audited}"
+  },
+  "method": "group_15_current_subchain_status_summary_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:51.064978+00:00",
+  "vacuumforge_version": "0.1.0"
+}

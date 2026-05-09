@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Timelike Domain For Volume Current
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - volume_flux_direction_law_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Timelike domain problem
@@ -259,6 +261,18 @@ Decision tree:
 6. Equilibrium-frame fallback:
    deferred unless static regions require a frame.
 [PASS] timelike-domain decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Symbolic timelike condition
+========================================================================================================================
+Minkowski-signature sample:
+
+  J_V^2 = -J0**2 + J1**2 + J2**2 + J3**2
+  timelike iff J1**2 + J2**2 + J3**2 < J0**2
+
+Interpretation:
+  a current can define u_vac only where its temporal magnitude dominates its spatial flux.
+[PASS] symbolic timelike-domain condition: DERIVED_REDUCED — J_V^2 = -J0**2 + J1**2 + J2**2 + J3**2
 
 ========================================================================================================================
 Case 5: Good failure / branch decision

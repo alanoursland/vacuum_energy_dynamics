@@ -1,0 +1,13 @@
+{
+  "derivation_id": "residual_kill_rule_for_volume_current_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('residual_kill_rule_for_volume_current_audited')",
+    "latex": "residual_{kill rule for volume current audited}"
+  },
+  "method": "residual_kill_rule_for_volume_current_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:52.528980+00:00",
+  "vacuumforge_version": "0.1.0"
+}

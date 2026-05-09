@@ -20,7 +20,17 @@
 # It is not a derivation of J_V.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -32,6 +42,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -224,6 +235,30 @@ def build_entries() -> List[TimelikeDomainEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="volume_flux_direction_law_marker",
+        upstream_script_id="15_vacuum_current_and_exchange_continuity__candidate_volume_flux_direction_law",
+        upstream_derivation_id="volume_flux_direction_law_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: TimelikeDomainEntry) -> None:
     print()
     print("-" * 120)
@@ -335,6 +370,31 @@ def case_4_domain_decision_tree():
     status_line("timelike-domain decision tree stated", "RECOMMENDED")
 
 
+def case_4b_symbolic_timelike_condition(ns) -> None:
+    header("Case 4b: Symbolic timelike condition")
+
+    J0, J1, J2, J3 = sp.symbols("J0 J1 J2 J3", real=True)
+    current_norm = sp.simplify(-J0**2 + J1**2 + J2**2 + J3**2)
+    timelike_condition = sp.StrictLessThan(J1**2 + J2**2 + J3**2, J0**2)
+
+    print("Minkowski-signature sample:")
+    print()
+    print(f"  J_V^2 = {current_norm}")
+    print(f"  timelike iff {timelike_condition}")
+    print()
+    print("Interpretation:")
+    print("  a current can define u_vac only where its temporal magnitude dominates its spatial flux.")
+
+    status_line("symbolic timelike-domain condition", "DERIVED_REDUCED", f"J_V^2 = {current_norm}")
+    ns.record_derivation(
+        derivation_id="timelike_domain_minkowski_condition",
+        inputs=[J0, J1, J2, J3],
+        output=sp.Tuple(current_norm, timelike_condition),
+        method="symbolic timelike current norm condition",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_good_failure():
     header("Case 5: Good failure / branch decision")
 
@@ -410,16 +470,28 @@ def final_interpretation():
 
 def main():
     header("Candidate Timelike Domain For Volume Current")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_domain_decision_tree()
+    case_4b_symbolic_timelike_condition(ns)
     case_5_good_failure()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="timelike_domain_for_volume_current_marker",
+        inputs=[],
+        output=sp.Symbol("timelike_domain_for_volume_current_audited"),
+        method="timelike_domain_for_volume_current_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

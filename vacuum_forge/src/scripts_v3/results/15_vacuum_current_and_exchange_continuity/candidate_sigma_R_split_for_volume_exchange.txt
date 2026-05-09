@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Sigma/R Split For Volume Exchange
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - exchange_continuity_law_for_volume_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Sigma/R split problem
@@ -259,6 +261,19 @@ Decision tree:
 6. If Sigma/R remain decorative:
    exchange continuity branch fails or defers.
 [PASS] Sigma/R split decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Zero-current local balance
+========================================================================================================================
+If J_V = 0 locally, then:
+
+  nabla_mu J_V^mu = 0
+  so Sigma_V - R_V = 0
+  hence Sigma_V = R_V
+
+Interpretation:
+  the zero-current branch forces pointwise source/relaxation balance.
+[PASS] zero-current Sigma/R balance: DERIVED_REDUCED — Sigma_V = R_V
 
 ========================================================================================================================
 Case 5: Good failure / branch decision

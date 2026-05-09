@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Boundary/No-Overlap For Volume Current
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - static_source_neutrality_for_J_V_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Boundary/no-overlap problem
@@ -272,6 +274,20 @@ Decision tree:
 6. If leakage or overlap appears:
    current family is killed for ordinary sector.
 [PASS] boundary/no-overlap decision tree stated: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Symbolic compact-support boundary check
+========================================================================================================================
+Compact-support sample:
+
+  zeta(r) = zeta0*(R**2 - r**2)**2/R**4
+  zeta(R) = 0
+  zeta'(R) = 0
+  F_boundary = 0
+
+Interpretation:
+  the standard compact profile satisfies the zero-flux boundary requirement symbolically.
+[PASS] compact-support boundary neutrality: DERIVED_REDUCED — F_boundary = 0
 
 ========================================================================================================================
 Case 5: Good failure / branch decision

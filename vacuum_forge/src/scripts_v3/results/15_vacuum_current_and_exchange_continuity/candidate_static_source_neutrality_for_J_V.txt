@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Static-Source Neutrality For J_V
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - timelike_domain_for_volume_current_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Static-source neutrality problem

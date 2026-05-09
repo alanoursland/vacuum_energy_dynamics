@@ -1,0 +1,13 @@
+{
+  "derivation_id": "timelike_domain_for_volume_current_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('timelike_domain_for_volume_current_audited')",
+    "latex": "timelike_{domain for volume current audited}"
+  },
+  "method": "timelike_domain_for_volume_current_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:44.961978+00:00",
+  "vacuumforge_version": "0.1.0"
+}

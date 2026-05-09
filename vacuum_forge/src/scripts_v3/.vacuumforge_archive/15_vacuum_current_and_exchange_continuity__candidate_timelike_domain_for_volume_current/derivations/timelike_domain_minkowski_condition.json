@@ -1,0 +1,30 @@
+{
+  "derivation_id": "timelike_domain_minkowski_condition",
+  "inputs": [
+    {
+      "srepr": "Symbol('J0', real=True)",
+      "latex": "J_{0}"
+    },
+    {
+      "srepr": "Symbol('J1', real=True)",
+      "latex": "J_{1}"
+    },
+    {
+      "srepr": "Symbol('J2', real=True)",
+      "latex": "J_{2}"
+    },
+    {
+      "srepr": "Symbol('J3', real=True)",
+      "latex": "J_{3}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Add(Mul(Integer(-1), Pow(Symbol('J0', real=True), Integer(2))), Pow(Symbol('J1', real=True), Integer(2)), Pow(Symbol('J2', real=True), Integer(2)), Pow(Symbol('J3', real=True), Integer(2))), StrictLessThan(Add(Pow(Symbol('J1', real=True), Integer(2)), Pow(Symbol('J2', real=True), Integer(2)), Pow(Symbol('J3', real=True), Integer(2))), Pow(Symbol('J0', real=True), Integer(2))))",
+    "latex": "\\left( - J_{0}^{2} + J_{1}^{2} + J_{2}^{2} + J_{3}^{2}, \\  J_{1}^{2} + J_{2}^{2} + J_{3}^{2} < J_{0}^{2}\\right)"
+  },
+  "method": "symbolic timelike current norm condition",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:44.959978+00:00",
+  "vacuumforge_version": "0.1.0"
+}

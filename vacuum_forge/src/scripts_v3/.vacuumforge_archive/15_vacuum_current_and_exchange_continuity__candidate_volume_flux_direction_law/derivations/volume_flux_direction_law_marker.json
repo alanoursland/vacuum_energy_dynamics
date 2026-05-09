@@ -1,0 +1,13 @@
+{
+  "derivation_id": "volume_flux_direction_law_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('volume_flux_direction_law_audited')",
+    "latex": "volume_{flux direction law audited}"
+  },
+  "method": "volume_flux_direction_law_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T14:31:43.250979+00:00",
+  "vacuumforge_version": "0.1.0"
+}
