@@ -1,0 +1,13 @@
+{
+  "derivation_id": "parent_identity_reduced_implications_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('parent_identity_reduced_implications_built')",
+    "latex": "parent_{identity reduced implications built}"
+  },
+  "method": "parent_identity_reduced_implications_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T02:26:47.626776+00:00",
+  "vacuumforge_version": "0.1.0"
+}

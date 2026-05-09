@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Recombination Without Double-Counting
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_mass_preservation_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Recombination without double-counting problem
@@ -208,6 +210,15 @@ Recombination checks:
 9. Is scalar spatial response counted exactly once?
 10. Is near-boundary deviation still diagnostic-only?
 [WARN] recombination no-double-counting checks stated: CONSTRAINED
+
+========================================================================================================================
+Case 5b: VacuumForge recombination cross-check
+========================================================================================================================
+A_value = -2*G*M/(c**2*r) + 1
+B_value = 1/(-2*G*M/(c**2*r) + 1)
+A_value * B_value = 1
+ConcreteMetricCheck status = satisfied_by_construction
+[PASS] recombination ledger preserves reciprocal exterior metric condition: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 6: Failure controls

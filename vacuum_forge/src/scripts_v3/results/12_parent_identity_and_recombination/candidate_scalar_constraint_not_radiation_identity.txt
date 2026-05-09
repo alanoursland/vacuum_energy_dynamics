@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Scalar Constraint Not Radiation Identity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - projector_structure_for_parent_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Scalar constraint-not-radiation problem

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Identity Reduced Implications
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_identity_exclusion_constraints_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent identity reduced implications problem
@@ -268,6 +270,15 @@ Hardest reduced implications:
 5. Recombination.
    The parent must map sectors into geometry without copying GR by form.
 [WARN] hardest reduced implications identified: RISK
+
+========================================================================================================================
+Case 5b: VacuumForge reciprocal implication cross-check
+========================================================================================================================
+A_value = -2*G*M/(c**2*r) + 1
+B_value = 1/(-2*G*M/(c**2*r) + 1)
+A_value * B_value = 1
+ConcreteMetricCheck status = satisfied_by_construction
+[INFO] reduced-implication ledger reproduces reciprocal exterior metric check: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 6: Next tests

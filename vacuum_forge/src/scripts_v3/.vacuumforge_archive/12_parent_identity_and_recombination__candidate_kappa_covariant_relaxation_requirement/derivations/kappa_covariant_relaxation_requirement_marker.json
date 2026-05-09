@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_covariant_relaxation_requirement_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_covariant_relaxation_requirement_built')",
+    "latex": "\\kappa_{covariant relaxation requirement built}"
+  },
+  "method": "kappa_covariant_relaxation_requirement_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T02:26:52.028334+00:00",
+  "vacuumforge_version": "0.1.0"
+}

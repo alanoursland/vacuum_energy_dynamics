@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Covariant Relaxation Requirement
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - scalar_constraint_not_radiation_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa covariant relaxation requirement problem

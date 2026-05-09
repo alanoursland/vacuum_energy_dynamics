@@ -25,7 +25,16 @@
 # It is a requirement audit.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -62,6 +71,30 @@ class KappaRequirement:
     status: str
     risk: str
     missing: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="scalar_constraint_not_radiation_identity_marker",
+        upstream_script_id="12_parent_identity_and_recombination__candidate_scalar_constraint_not_radiation_identity",
+        upstream_derivation_id="scalar_constraint_not_radiation_identity_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_requirements() -> List[KappaRequirement]:
@@ -355,6 +388,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Kappa Covariant Relaxation Requirement")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_requirements()
     case_1_requirement_inventory(entries)
@@ -365,6 +400,14 @@ def main():
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="kappa_covariant_relaxation_requirement_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_covariant_relaxation_requirement_built"),
+        method="kappa_covariant_relaxation_requirement_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

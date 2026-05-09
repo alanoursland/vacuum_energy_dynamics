@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "boundary_mass_preservation_identity_marker",
+    "upstream_script_id": "12_parent_identity_and_recombination__candidate_boundary_mass_preservation_identity",
+    "upstream_derivation_id": "boundary_mass_preservation_identity_marker",
+    "declared_at": "2026-05-09T02:26:54.334421+00:00"
+  }
+]

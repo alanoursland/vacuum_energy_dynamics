@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Projector Structure for Parent Identity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_identity_reduced_implications_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Projector structure problem

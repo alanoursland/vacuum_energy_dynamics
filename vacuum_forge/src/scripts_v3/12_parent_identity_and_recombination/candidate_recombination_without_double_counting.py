@@ -21,7 +21,17 @@
 # It is not a covariant recombination derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status, TheoryContext
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -60,6 +70,30 @@ class RecombinationEntry:
     status: str
     risk: str
     missing: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="boundary_mass_preservation_identity_marker",
+        upstream_script_id="12_parent_identity_and_recombination__candidate_boundary_mass_preservation_identity",
+        upstream_derivation_id="boundary_mass_preservation_identity_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[RecombinationEntry]:
@@ -295,6 +329,36 @@ def case_5_no_double_counting_checks():
     status_line("recombination no-double-counting checks stated", "CONSTRAINED")
 
 
+def case_5b_vf_recombination_crosscheck(ns):
+    header("Case 5b: VacuumForge recombination cross-check")
+
+    ctx = TheoryContext("candidate_recombination_without_double_counting")
+    ms = ctx.define_equal_response_algebraic_symbols()
+    A_value = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    B_value = 1 / A_value
+    result = check_concrete_metric(ctx, A_value, B_value, ["reciprocal_scaling"])[0]
+    product = sp.simplify(A_value * B_value)
+
+    print(f"A_value = {A_value}")
+    print(f"B_value = {B_value}")
+    print(f"A_value * B_value = {product}")
+    print(f"ConcreteMetricCheck status = {result.status}")
+
+    ok = result.status == "satisfied_by_construction" and product == 1
+    status_line(
+        "recombination ledger preserves reciprocal exterior metric condition",
+        "DERIVED_REDUCED" if ok else "RISK",
+    )
+
+    ns.record_derivation(
+        derivation_id="recombination_reciprocal_metric_crosscheck",
+        inputs=[A_value, B_value],
+        output=product,
+        method="ConcreteMetricCheck reciprocal_scaling",
+        status=Status.DERIVED,
+    )
+
+
 def case_6_failure_controls():
     header("Case 6: Failure controls")
 
@@ -360,6 +424,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Recombination Without Double-Counting")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_recombination_inventory(entries)
@@ -367,9 +433,18 @@ def main():
     case_3_status_counts(entries)
     case_4_candidate_reduced_map()
     case_5_no_double_counting_checks()
+    case_5b_vf_recombination_crosscheck(ns)
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="recombination_without_double_counting_marker",
+        inputs=[],
+        output=sp.Symbol("recombination_without_double_counting_built"),
+        method="recombination_without_double_counting_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "parent_identity_exclusion_constraints_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('parent_identity_exclusion_constraints_built')",
+    "latex": "parent_{identity exclusion constraints built}"
+  },
+  "method": "parent_identity_exclusion_constraints_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T02:26:44.082775+00:00",
+  "vacuumforge_version": "0.1.0"
+}

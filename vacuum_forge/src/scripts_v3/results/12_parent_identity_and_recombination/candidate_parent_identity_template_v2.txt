@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Identity Template V2
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - relaxation_energy_accounting_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent identity template v2 problem

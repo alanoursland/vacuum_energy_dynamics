@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Identity Exclusion Constraints
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - closure_minimal_equation_set_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent identity exclusion problem

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "relaxation_energy_accounting_identity_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('relaxation_energy_accounting_identity_built')",
+    "latex": "relaxation_{energy accounting identity built}"
+  },
+  "method": "relaxation_energy_accounting_identity_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T02:26:58.528418+00:00",
+  "vacuumforge_version": "0.1.0"
+}

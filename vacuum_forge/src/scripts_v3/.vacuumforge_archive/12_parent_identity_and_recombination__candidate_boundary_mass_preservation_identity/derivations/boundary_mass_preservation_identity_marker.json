@@ -1,0 +1,13 @@
+{
+  "derivation_id": "boundary_mass_preservation_identity_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('boundary_mass_preservation_identity_built')",
+    "latex": "boundary_{mass preservation identity built}"
+  },
+  "method": "boundary_mass_preservation_identity_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T02:26:53.455299+00:00",
+  "vacuumforge_version": "0.1.0"
+}

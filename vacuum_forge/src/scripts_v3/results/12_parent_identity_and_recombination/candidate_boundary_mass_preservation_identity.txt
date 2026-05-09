@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Boundary Mass Preservation Identity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_covariant_relaxation_requirement_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Boundary mass preservation problem

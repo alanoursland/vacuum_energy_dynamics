@@ -1,0 +1,13 @@
+{
+  "derivation_id": "scalar_constraint_not_radiation_identity_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('scalar_constraint_not_radiation_identity_built')",
+    "latex": "scalar_{constraint not radiation identity built}"
+  },
+  "method": "scalar_constraint_not_radiation_identity_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T02:26:50.525774+00:00",
+  "vacuumforge_version": "0.1.0"
+}
