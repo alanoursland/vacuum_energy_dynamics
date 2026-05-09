@@ -35,7 +35,16 @@
 
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -47,6 +56,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -82,6 +92,30 @@ class SourceSeparationEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="correction_tensor_divergence_safety_marker",
+        upstream_script_id="19_parent_correction_tensor_audit__candidate_correction_tensor_divergence_safety",
+        upstream_derivation_id="correction_tensor_divergence_safety_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[SourceSeparationEntry]:
@@ -448,6 +482,48 @@ def case_4_source_separation_classes():
     status_line("source-separation classes listed", "RECOMMENDED")
 
 
+def case_4b_projector_sample(ns):
+    header("Case 4b: Sample projector-based source separation")
+
+    p_ordinary = sp.diag(1, 0, 0)
+    p_correction = sp.diag(0, 1, 1)
+    identity = sp.eye(3)
+    overlap = sp.simplify(p_ordinary * p_correction)
+    completeness = sp.simplify(p_ordinary + p_correction - identity)
+
+    print("Sample projectors:")
+    print(f"  P_ordinary = {p_ordinary}")
+    print(f"  P_correction = {p_correction}")
+    print()
+    print(f"P_ordinary * P_correction = {overlap}")
+    print(f"P_ordinary + P_correction - I = {completeness}")
+    print()
+    print("Interpretation:")
+    print("  this is a compatibility example of exact sector separation by projectors.")
+    print("  It does not prove the real sectors admit such projectors.")
+
+    if overlap == sp.zeros(3) and completeness == sp.zeros(3):
+        status_line(
+            "sample projector separation witness",
+            "DERIVED_REDUCED",
+            "projectors are orthogonal and complete in the toy source space",
+        )
+    else:
+        status_line(
+            "sample projector separation witness",
+            "UNRESOLVED",
+            "toy projectors failed orthogonality/completeness",
+        )
+
+    ns.record_derivation(
+        derivation_id="projector_source_separation_sample",
+        inputs=[p_ordinary, p_correction],
+        output=sp.Tuple(overlap, completeness),
+        method="toy_projector_separation_compatibility",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Source-separation decision tree")
 
@@ -575,17 +651,29 @@ def final_interpretation():
 
 def main():
     header("Candidate Correction Tensor Source Separation")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_source_separation_classes()
+    case_4b_projector_sample(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="correction_tensor_source_separation_marker",
+        inputs=[],
+        output=sp.Symbol("correction_tensor_source_separation_complete"),
+        method="correction_tensor_source_separation",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

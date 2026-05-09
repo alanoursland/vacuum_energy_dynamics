@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Correction Tensor Source Separation
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - correction_tensor_divergence_safety_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Correction tensor source-separation problem
@@ -373,6 +375,21 @@ Candidate safe routes:
 1. real projectors
 2. diagnostic-only H-like objects
 [PASS] source-separation classes listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Sample projector-based source separation
+========================================================================================================================
+Sample projectors:
+  P_ordinary = Matrix([[1, 0, 0], [0, 0, 0], [0, 0, 0]])
+  P_correction = Matrix([[0, 0, 0], [0, 1, 0], [0, 0, 1]])
+
+P_ordinary * P_correction = Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+P_ordinary + P_correction - I = Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+Interpretation:
+  this is a compatibility example of exact sector separation by projectors.
+  It does not prove the real sectors admit such projectors.
+[PASS] sample projector separation witness: DERIVED_REDUCED — projectors are orthogonal and complete in the toy source space
 
 ========================================================================================================================
 Case 5: Source-separation decision tree

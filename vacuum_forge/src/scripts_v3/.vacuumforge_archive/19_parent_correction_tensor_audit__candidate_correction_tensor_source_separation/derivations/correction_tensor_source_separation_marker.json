@@ -1,0 +1,13 @@
+{
+  "derivation_id": "correction_tensor_source_separation_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('correction_tensor_source_separation_complete')",
+    "latex": "correction_{tensor source separation complete}"
+  },
+  "method": "correction_tensor_source_separation",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T16:05:59.352823+00:00",
+  "vacuumforge_version": "0.1.0"
+}

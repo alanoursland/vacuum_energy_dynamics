@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate H_exch Definition Requirements
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - H_curv_definition_requirements_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: H_exch definition requirements problem

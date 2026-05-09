@@ -531,6 +531,54 @@ mechanism claim. This is the same principle as distinguishing
 scripts that test whether a claimed neutrality or safety condition is
 even coherent.
 
+### 14. "Not insertable yet" is weaker than "branch killed"
+
+Later summary scripts can drift into using `BRANCH_KILLED` when the
+actual result is only:
+
+- prerequisites are still missing
+- no current witness exists
+- the mechanism is not insertable yet
+
+Those are not the same as a contradiction or a failed theorem.
+
+This matters because `BRANCH_KILLED` reads like a proved exclusion. In an
+AI-authored repo, that can silently turn "not ready" into "ruled out."
+
+The status system should distinguish at least:
+
+- `NOT_INSERTABLE_YET`
+- `DEFERRED_PENDING_PREREQUISITES`
+- `FAILED_BY_WITNESS`
+- `KILLED_BY_CONTRADICTION`
+
+and should reserve strong exclusion statuses for cases with explicit
+counterexamples, overlap witnesses, leakage witnesses, or contradiction
+records.
+
+### 15. Named safe routes should carry a minimal witness
+
+Scripts often list candidate safe routes such as:
+
+- projected separation
+- divergence-free tensor class
+- compact-support zero-flux route
+
+That is useful, but a named route is too easy for later scripts to treat
+as if it were already real.
+
+Better discipline:
+
+- if a route is named as a serious candidate, record at least one minimal
+  witness example or algebraic compatibility check
+- if no witness exists, keep it clearly at `candidate_route` / memo level
+
+This does not prove the full mechanism, but it forces the repo to
+distinguish:
+
+- "we have a mathematically coherent class of this type"
+- "we are only naming a possible direction"
+
 ## Practical Rule For Next Pass
 
 For the next script pass:

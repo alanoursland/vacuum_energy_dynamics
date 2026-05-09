@@ -25,7 +25,16 @@
 
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -37,6 +46,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -72,6 +82,30 @@ class DivergenceSafetyEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="H_exch_definition_requirements_marker",
+        upstream_script_id="19_parent_correction_tensor_audit__candidate_H_exch_definition_requirements",
+        upstream_derivation_id="H_exch_definition_requirements_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[DivergenceSafetyEntry]:
@@ -417,6 +451,50 @@ def case_4_divergence_classes():
     status_line("divergence-safety classes listed", "RECOMMENDED")
 
 
+def case_4b_airy_tensor_sample(ns):
+    header("Case 4b: Sample identically divergence-free tensor class")
+
+    x, y = sp.symbols("x y")
+    phi = sp.Function("phi")(x, y)
+    h_xx = sp.diff(phi, y, 2)
+    h_xy = -sp.diff(phi, x, y)
+    h_yy = sp.diff(phi, x, 2)
+    div_x = sp.simplify(sp.diff(h_xx, x) + sp.diff(h_xy, y))
+    div_y = sp.simplify(sp.diff(h_xy, x) + sp.diff(h_yy, y))
+
+    print("Airy-style sample tensor:")
+    print(f"  H = [[{h_xx}, {h_xy}], [{h_xy}, {h_yy}]]")
+    print()
+    print(f"div_x(H) = {div_x}")
+    print(f"div_y(H) = {div_y}")
+    print()
+    print("Interpretation:")
+    print("  this is a compatibility example of a constructed identity class.")
+    print("  It does not define H_curv or H_exch, but it shows what a real")
+    print("  divergence-free tensor witness would look like.")
+
+    if div_x == 0 and div_y == 0:
+        status_line(
+            "sample divergence-free tensor witness",
+            "DERIVED_REDUCED",
+            "constructed Airy-style tensor has identically vanishing divergence",
+        )
+    else:
+        status_line(
+            "sample divergence-free tensor witness",
+            "UNRESOLVED",
+            "sample tensor did not produce a divergence-free identity",
+        )
+
+    ns.record_derivation(
+        derivation_id="airy_divergence_free_tensor_sample",
+        inputs=[phi],
+        output=sp.Tuple(div_x, div_y),
+        method="airy_style_identity_compatibility",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Divergence-safety decision tree")
 
@@ -539,17 +617,29 @@ def final_interpretation():
 
 def main():
     header("Candidate Correction Tensor Divergence Safety")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_divergence_classes()
+    case_4b_airy_tensor_sample(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="correction_tensor_divergence_safety_marker",
+        inputs=[],
+        output=sp.Symbol("correction_tensor_divergence_safety_complete"),
+        method="correction_tensor_divergence_safety",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Correction Tensor Divergence Safety
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - H_exch_definition_requirements_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Correction tensor divergence-safety problem
@@ -349,6 +351,21 @@ Rejected:
 5. source-by-divergence
 6. dark-patch divergence
 [PASS] divergence-safety classes listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Sample identically divergence-free tensor class
+========================================================================================================================
+Airy-style sample tensor:
+  H = [[Derivative(phi(x, y), (y, 2)), -Derivative(phi(x, y), x, y)], [-Derivative(phi(x, y), x, y), Derivative(phi(x, y), (x, 2))]]
+
+div_x(H) = 0
+div_y(H) = 0
+
+Interpretation:
+  this is a compatibility example of a constructed identity class.
+  It does not define H_curv or H_exch, but it shows what a real
+  divergence-free tensor witness would look like.
+[PASS] sample divergence-free tensor witness: DERIVED_REDUCED — constructed Airy-style tensor has identically vanishing divergence
 
 ========================================================================================================================
 Case 5: Divergence-safety decision tree

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "H_exch_definition_requirements_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('H_exch_definition_requirements_complete')",
+    "latex": "H_{exch definition requirements complete}"
+  },
+  "method": "H_exch_definition_requirements",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T16:05:56.338923+00:00",
+  "vacuumforge_version": "0.1.0"
+}

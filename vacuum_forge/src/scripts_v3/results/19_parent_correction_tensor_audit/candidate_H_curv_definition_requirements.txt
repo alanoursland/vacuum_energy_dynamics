@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate H_curv Definition Requirements
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_correction_tensor_role_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: H_curv definition requirements problem

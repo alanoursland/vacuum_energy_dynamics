@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Correction Tensor Boundary And Mass Neutrality
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - correction_tensor_source_separation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Correction tensor boundary/mass neutrality problem
@@ -358,6 +360,21 @@ Rejected:
 4. shell-source hiding tensor
 5. recovery boundary fit
 [PASS] boundary/mass safe routes listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Sample compact-support neutral-boundary profile
+========================================================================================================================
+Sample profile:
+  h(r) = a*(1 - r/R)**4
+
+h(R) = 0
+h'(R) = 0
+
+Interpretation:
+  this is a compatibility example for a smooth compact-support profile
+  with zero boundary value and zero first derivative at the support edge.
+  It is not a real correction-tensor boundary theorem.
+[PASS] sample neutral-boundary support witness: DERIVED_REDUCED — compact-support sample has h(R)=0 and h'(R)=0
 
 ========================================================================================================================
 Case 5: Boundary/mass neutrality decision tree

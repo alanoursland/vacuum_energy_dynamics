@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Correction Tensor Role Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_current_split_group_status_summary_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent correction tensor role inventory problem

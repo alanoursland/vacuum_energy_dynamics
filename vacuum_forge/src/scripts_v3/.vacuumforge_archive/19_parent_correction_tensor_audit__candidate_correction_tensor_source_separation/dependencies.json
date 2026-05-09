@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "correction_tensor_divergence_safety_marker",
+    "upstream_script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_divergence_safety",
+    "upstream_derivation_id": "correction_tensor_divergence_safety_marker",
+    "declared_at": "2026-05-09T16:05:58.761842+00:00"
+  }
+]

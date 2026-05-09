@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Equation Insertability Audit
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - correction_tensor_boundary_and_mass_neutrality_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent equation insertability problem

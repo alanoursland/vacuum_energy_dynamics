@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Correction Tensor Group Status Summary
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_equation_insertability_audit_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Group 19 status problem

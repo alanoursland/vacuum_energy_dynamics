@@ -1,0 +1,22 @@
+{
+  "derivation_id": "projector_source_separation_sample",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Integer(1), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}1 & 0 & 0\\\\0 & 0 & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(1), Integer(0)], [Integer(0), Integer(0), Integer(1)]])",
+      "latex": "\\left[\\begin{matrix}0 & 0 & 0\\\\0 & 1 & 0\\\\0 & 0 & 1\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]), ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]]))",
+    "latex": "\\left( \\left[\\begin{matrix}0 & 0 & 0\\\\0 & 0 & 0\\\\0 & 0 & 0\\end{matrix}\\right], \\  \\left[\\begin{matrix}0 & 0 & 0\\\\0 & 0 & 0\\\\0 & 0 & 0\\end{matrix}\\right]\\right)"
+  },
+  "method": "toy_projector_separation_compatibility",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T16:05:59.351822+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "correction_tensor_boundary_and_mass_neutrality_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('correction_tensor_boundary_and_mass_neutrality_complete')",
+    "latex": "correction_{tensor boundary and mass neutrality complete}"
+  },
+  "method": "correction_tensor_boundary_and_mass_neutrality",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T16:06:00.939767+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,18 @@
+{
+  "derivation_id": "compact_support_neutral_boundary_sample",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('a', positive=True), Pow(Add(Integer(1), Mul(Integer(-1), Pow(Symbol('R', positive=True), Integer(-1)), Symbol('r', positive=True))), Integer(4)))",
+      "latex": "a \\left(1 - \\frac{r}{R}\\right)^{4}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0))",
+    "latex": "\\left( 0, \\  0\\right)"
+  },
+  "method": "toy_compact_support_boundary_compatibility",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T16:06:00.938767+00:00",
+  "vacuumforge_version": "0.1.0"
+}

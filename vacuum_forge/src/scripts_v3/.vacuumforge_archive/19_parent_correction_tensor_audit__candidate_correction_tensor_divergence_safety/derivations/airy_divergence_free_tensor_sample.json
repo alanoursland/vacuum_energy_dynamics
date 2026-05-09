@@ -1,0 +1,18 @@
+{
+  "derivation_id": "airy_divergence_free_tensor_sample",
+  "inputs": [
+    {
+      "srepr": "Function('phi')(Symbol('x'), Symbol('y'))",
+      "latex": "\\phi{\\left(x,y \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0))",
+    "latex": "\\left( 0, \\  0\\right)"
+  },
+  "method": "airy_style_identity_compatibility",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T16:05:57.909871+00:00",
+  "vacuumforge_version": "0.1.0"
+}
