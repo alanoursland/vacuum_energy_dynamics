@@ -1,0 +1,412 @@
+# AI Governance Validation Ideas
+
+## Motivation
+
+These field-equation candidate scripts are being written by AI.
+
+VacuumForge exists partly to prevent predictable AI failure modes:
+
+- drift toward a cleaner story instead of a justified one
+- lazy substitution of prose for derivation
+- unsupported branch steering
+- hidden coefficient fitting
+- repeated output of result-like statements without machine-checkable backing
+
+This concern is not abstract. The scripts visibly drifted toward just printing results. That is effectively the AI writing conclusions while the repository carries too little guarantee that those conclusions are backed by real algebra, real counterexamples, or real tracked proof obligations.
+
+The danger is strongest in later groups, where the scripts increasingly say things like:
+
+- "this branch is too risky unless X is derived"
+- "do not use recovery targets to choose coefficients"
+- "if overlap persists, kill the branch"
+
+Those statements may be reasonable research instincts, but in an AI-authored repo they are dangerous unless they are formalized. Otherwise the model is just steering the search by preference and tone.
+
+## Core Problem
+
+Right now the repo has a better discipline for symbolic algebra than for branch governance.
+
+VacuumForge can already help with:
+
+- explicit derivation records
+- dependency tracking
+- leak detection
+- concrete metric checks
+- coordinate-change tracking
+
+But it does not yet strongly distinguish:
+
+- computed result
+- mechanized exclusion
+- policy warning
+- heuristic preference
+- unresolved proof obligation
+
+That allows later scripts to print branch-kill or branch-defer language in a form that looks more final than the evidence warrants.
+
+## Working Rule
+
+These statements should not count as results unless they are backed by a machine-checkable artifact:
+
+- "too risky unless X is derived"
+- "do not use recovery targets to choose coefficients"
+- "if overlap persists, kill the branch"
+
+At minimum, they should be backed by one of:
+
+1. a formal counterexample
+2. a mechanized dependency leak
+3. a duplicate-degree-of-freedom / overlap witness
+4. a failed boundary-neutrality or conserved-quantity check
+5. an explicit unresolved proof obligation tracked in the archive
+
+If none of those exists, the script should not present the statement as an exclusion or kill condition.
+
+## Better Status Discipline
+
+Add statuses that separate non-derived governance from actual derivation:
+
+- `HEURISTIC`
+- `OPEN_RISK`
+- `POLICY_RULE`
+- `UNPROVEN_EXCLUSION`
+- `UNRESOLVED_PROOF_OBLIGATION`
+
+These should not be allowed to masquerade as:
+
+- `DERIVED`
+- `DERIVED_REDUCED`
+- `BRANCH_KILLED`
+- `FORBIDDEN`
+
+unless evidence is attached.
+
+## Proposed Evidence Model For Branch Claims
+
+Branch-governance claims should require structured evidence objects.
+
+Examples:
+
+- `counterexample`
+- `dependency_leak`
+- `boundary_violation`
+- `exterior_scalar_charge_witness`
+- `target_selected_parameter`
+- `overlap_witness`
+- `recovery_precedes_origin`
+
+If a script says a branch is killed, it should record at least one such witness.
+
+If it does not, the strongest allowed output should be something like:
+
+- `OPEN_RISK`
+- `UNPROVEN_EXCLUSION`
+- `DEFER`
+
+## Specific Formal Checks Worth Adding
+
+### 1. Recovery-Target Leakage Check
+
+Represent rules like:
+
+- coefficient origin must precede recovery checks
+- `gamma_like = 1` cannot be used to choose a coefficient
+- `AB -> 1` cannot be used to define an operator
+
+Possible archive object:
+
+- `forbid_target_selected(parameter="q", target="gamma_like=1")`
+
+Possible failure artifact:
+
+- `target_selected_parameter`
+
+### 2. Overlap / Double-Carrier Check
+
+Represent claims like:
+
+- `B_s` and residual `zeta` cannot both carry the same scalar trace role
+- `kappa` cannot reintroduce killed residual trace
+- source routing cannot feed the same physical role twice
+
+Possible archive object:
+
+- `forbid_overlap(role="scalar_trace", carriers=[...])`
+
+Possible failure artifact:
+
+- `overlap_witness`
+
+### 3. Branch-Kill Preconditions
+
+Make `BRANCH_KILLED` require at least one structured reason:
+
+- exterior scalar charge appears
+- no-overlap cannot be satisfied
+- coefficient remains free but is claimed derived
+- only GR-copy / recovery-tuned routes survive
+
+Possible archive object:
+
+- `kill_if(exterior_scalar_charge)`
+- `kill_if(unresolved_overlap)`
+- `kill_if(recovery_precedes_origin)`
+
+### 4. Proof Obligation Tracking
+
+When a script says "unless X is derived", that should become a first-class tracked obligation.
+
+Possible archive object:
+
+- `requires_derivation("P_trace")`
+- `requires_derivation("boundary neutrality theorem")`
+- `requires_derivation("q-origin before recovery")`
+
+Then downstream scripts can depend on the obligation status instead of prose.
+
+## Hardcoded Dataclass Assessments
+
+Group 08 scripts (and some in later groups) encode governance claims in
+structured data rather than prose. For example:
+
+    @dataclass
+    class RequirementEntry:
+        name: str
+        status: str    # "SATISFIED_REDUCED", "PARTIAL", "MISSING"
+        ...
+
+    RequirementEntry(
+        name="R1: Static scalar mass response",
+        status="SATISFIED_REDUCED",
+        ...
+    )
+
+The `status` field is hand-assigned, not computed. But because it lives
+in a dataclass rather than a print statement, it looks like data -- a
+downstream script iterating over a list of `RequirementEntry` objects
+sees `status="SATISFIED_REDUCED"` with no way to distinguish it from
+a machine-checked classification.
+
+This is arguably more dangerous than prose governance because:
+
+- it is structured and iterable, so automated tools will treat it as fact
+- it does not carry any provenance (no link to the derivation that
+  established the claim)
+- it survives refactoring that might catch and question prose assertions
+
+### Fix
+
+Dataclass status fields that make derivation claims should either:
+
+1. be populated by querying the archive (check whether the upstream
+   derivation record exists and what its status is), or
+2. carry explicit provenance linking to the derivation that backs them:
+
+        RequirementEntry(
+            name="R1: Static scalar mass response",
+            status="SATISFIED_REDUCED",
+            evidence_script="02_mechanics__candidate_static_spherical_exact_recovery",
+            evidence_derivation="exact_schwarzschild_concrete_metric_check",
+        )
+
+3. use a governance-specific status (`ASSERTED_SATISFIED`, `UNVERIFIED`)
+   when no archive link exists.
+
+`vf-lint` could flag dataclass fields named `status` that contain
+derivation-level values (`SATISFIED`, `DERIVED`, `FORBIDDEN`) without
+a corresponding `evidence_script` or `evidence_derivation` field.
+
+## Claim Severity Levels
+
+Not all governance claims need the same evidence threshold.
+
+"Next test selected: CONSTRAINED_BY_IDENTITY" is workflow direction --
+it prioritizes but does not eliminate. "Branch killed: no viable route"
+permanently removes a candidate from the search tree. These require
+different levels of backing.
+
+### Proposed severity tiers
+
+**Tier 1 -- Informational (no evidence required):**
+- workflow suggestions ("next test should be X")
+- status summaries ("3 of 7 requirements satisfied")
+- open questions ("does P_trace exist?")
+
+**Tier 2 -- Constrained (rationale required):**
+- risk flags ("this branch has unresolved overlap")
+- priority ordering ("prefer route A over route B because...")
+- deferred decisions ("postpone until X is derived")
+
+Minimum backing: a named reason and a reference to the relevant script
+or derivation. No formal witness needed.
+
+**Tier 3 -- Exclusion (evidence required):**
+- branch kills ("this route is eliminated")
+- forbidden parameter values ("q cannot equal 1")
+- coefficient rejections ("this coefficient is recovery-selected")
+
+Minimum backing: at least one structured evidence object
+(counterexample, overlap_witness, target_selected_parameter, etc.)
+
+### Why this matters
+
+Without severity levels, enforcing evidence on all governance claims
+would generate noise on harmless tier-1 statements that buries the
+cases where evidence actually matters. The enforcement should be
+strict at tier 3, light at tier 2, and absent at tier 1.
+
+## Better Linting For Governance Scripts
+
+`vf-lint` currently targets validation-theater patterns in PASS-style scripts.
+
+A second layer should look for governance-theater patterns, such as:
+
+- branch-kill language without evidence object
+- exclusion language without witness
+- coefficient rejection language without dependency-direction check
+- recovery-target language upstream of coefficient choice
+- unsupported "forbidden", "rejected", or "killed" claims
+
+This would be a direct response to AI drift, not a cosmetic style rule.
+
+## Output Discipline For Future Script Pass
+
+When a script only prints judgments, that should not be treated as a strong result.
+
+Every strong conclusion should be tied to one of:
+
+- explicit inputs
+- explicit derived outputs
+- explicit failed checks
+- explicit unresolved obligations
+
+Without that, the script is a memo, not a validated artifact.
+
+## Practical Rule For Next Pass
+
+For the next script pass:
+
+- if the branch is killed by computation, record the computation
+- if the branch is killed by contradiction, record the contradiction
+- if the branch is only being deprioritized, say so plainly
+- do not let branch preference print as theorem language
+
+## Real Derivations Recorded As Markers
+
+Many scripts perform genuine symbolic computation -- verifying identities,
+solving equations, checking boundary conditions -- but record only generic
+archive markers with empty inputs and placeholder symbol outputs.
+
+The archive call typically looks like:
+
+    ns.record_derivation(
+        derivation_id="some_script_marker",
+        inputs=[],
+        output=sp.Symbol("some_script_stated"),
+        method="some_script_inventory",
+        status=Status.DERIVED,
+    )
+
+This records that the script ran, not what it proved. A downstream script
+or audit tool can check that the marker exists, but cannot verify that the
+mathematical result is unchanged.
+
+This is the inverse of the governance problem above. The governance problem
+is conclusions presented without computation. The marker problem is
+computation performed without recording its content.
+
+### Where This Appears
+
+Identified during the v2 archive retrofit review of groups 08-15. Examples:
+
+**Group 09** (vector sector):
+- `vector_current_projection_operator`: verifies P_T^2 = P_T,
+  P_T + P_L = I, P_T * P_L = 0 -- records empty marker
+- `vector_curl_energy_field_equation`: verifies curl-curl identity --
+  records empty marker
+- `vector_transverse_current_projection`: verifies curl(grad) = 0,
+  div(curl) = 0 -- records empty marker
+- `vector_source_shape_factor`: computes M = 4*pi*rho*R^3/3,
+  J = 2*M*R^2*Omega/5, verifies div(j) = 0 -- records empty marker
+
+**Group 10** (kappa trace response):
+- `kappa_exterior_suppression_condition`: verifies kappa=0 gives AB=1
+  (the same reciprocal_scaling that ConcreteMetricCheck classifies) --
+  records empty marker
+- `kappa_constraint_projection_identity`: verifies projection
+  idempotence -- records empty marker
+- `kappa_boundary_layer_model`: verifies zero boundary flux and zero net
+  charge -- records empty marker
+- `kappa_joint_minimum_energy_functional`: computes Euler-Lagrange
+  equation -- records empty marker
+
+Groups 01-07 were reviewed before this pattern was identified and have not
+been audited.
+
+### What A Fix Looks Like
+
+The infrastructure already supports richer records. Some later scripts
+(groups 11-15) demonstrate the corrected pattern:
+
+    ns.record_derivation(
+        derivation_id="trace_tt_linear_volume_split",
+        inputs=[pure_trace_metric, h_tt],
+        output=delta_zeta,
+        method="symbolic_perturbation",
+        status=Status.DERIVED,
+    )
+
+The fix is mechanical: replace `inputs=[]` and `output=sp.Symbol("..._stated")`
+with the actual symbolic expressions the script computed.
+
+### What This Enables
+
+Recording actual inputs and outputs lets the archive:
+
+1. detect when a script's mathematical result changes (the output expression
+   differs from the previous run)
+2. let downstream scripts declare expected outputs and verify them
+   (closing the `expected_output=None` gap in dependency checks)
+3. distinguish scripts that verify identities from scripts that only
+   classify inventory items
+4. support a future audit mode that re-derives results from recorded
+   inputs and compares against recorded outputs
+
+### Proposed Upgrade Path
+
+1. Audit groups 01-07 for the same pattern (not yet done).
+2. For each script with real symbolic checks, replace the empty marker
+   with the actual computed expressions.
+3. Add `expected_output` to dependency declarations where the downstream
+   script depends on a specific mathematical result, not just the
+   existence of a marker.
+4. Extend vf-lint to flag `record_derivation` calls with `inputs=[]`
+   in scripts that contain `is_zero`, `sp.simplify`, or `sp.solve`
+   calls -- these are likely computing something worth recording.
+
+### Relationship To Governance Problem
+
+The governance problem and the marker problem are two faces of the same gap:
+
+- Governance problem: the script claims something it did not compute.
+  Fix: require evidence objects for strong claims.
+- Marker problem: the script computes something it did not claim.
+  Fix: record the computation in the derivation.
+
+Both problems weaken the archive's value as a machine-checkable proof
+record. Fixing both would make the archive carry the full content of
+what was derived and the full basis of what was decided.
+
+## Immediate Development Direction
+
+VacuumForge should grow beyond algebra validation into governance validation.
+
+The next layer of support should cover:
+
+- proof obligations
+- forbidden dependency directions
+- overlap witnesses
+- branch-kill evidence
+- stronger distinctions between derivation and policy
+
+That is the missing safeguard for an AI-authored field-equation search tree.
