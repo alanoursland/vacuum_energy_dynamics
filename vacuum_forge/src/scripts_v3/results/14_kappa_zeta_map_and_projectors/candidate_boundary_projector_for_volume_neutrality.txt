@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Boundary Projector For Volume Neutrality
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - trace_projector_definition_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Boundary projector for volume neutrality problem
@@ -202,6 +204,17 @@ Composition target:
 Meaning:
   trace/volume residual is projected into a boundary-neutral sector.
 [PASS] minimal P_boundary bundle stated: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Symbolic boundary-flux check
+========================================================================================================================
+Compact profile sample:
+
+  zeta(r) = zeta0*(R**2 - r**2)**2/R**4
+  zeta(R) = 0
+  zeta'(R) = 0
+  F_zeta(R+) = 0
+[PASS] boundary-flux neutrality sample: DERIVED_REDUCED — F_zeta(R+) = 0
 
 ========================================================================================================================
 Case 5: Failure controls

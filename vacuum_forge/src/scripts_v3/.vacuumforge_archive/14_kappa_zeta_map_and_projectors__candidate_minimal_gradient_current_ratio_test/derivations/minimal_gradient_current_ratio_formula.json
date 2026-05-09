@@ -1,0 +1,26 @@
+{
+  "derivation_id": "minimal_gradient_current_ratio_formula",
+  "inputs": [
+    {
+      "srepr": "Symbol('a', nonzero=True)",
+      "latex": "a"
+    },
+    {
+      "srepr": "Symbol('b', nonzero=True)",
+      "latex": "b"
+    },
+    {
+      "srepr": "Symbol('S_A', nonzero=True)",
+      "latex": "S_{A}"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Integer(-1), Symbol('a', nonzero=True), Pow(Symbol('b', nonzero=True), Integer(-1)))",
+    "latex": "- \\frac{a}{b}"
+  },
+  "method": "solve divergence-free current ratio relation",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:41.451605+00:00",
+  "vacuumforge_version": "0.1.0"
+}

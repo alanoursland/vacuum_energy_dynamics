@@ -1,0 +1,13 @@
+{
+  "derivation_id": "minimal_A_constraint_closure_no_go_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('minimal_A_constraint_closure_no_go_audited')",
+    "latex": "minimal_{A constraint closure no go audited}"
+  },
+  "method": "minimal_A_constraint_closure_no_go_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:29.463172+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_as_projected_zeta_mismatch_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_as_projected_zeta_mismatch_audited')",
+    "latex": "\\kappa_{as projected \\zeta mismatch audited}"
+  },
+  "method": "kappa_as_projected_zeta_mismatch_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:16.184485+00:00",
+  "vacuumforge_version": "0.1.0"
+}

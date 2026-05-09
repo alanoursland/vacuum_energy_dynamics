@@ -1,0 +1,13 @@
+{
+  "derivation_id": "minimal_A_constraint_closure_ansatz_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('minimal_A_constraint_closure_ansatz_audited')",
+    "latex": "minimal_{A constraint closure ansatz audited}"
+  },
+  "method": "minimal_A_constraint_closure_ansatz_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:30.925167+00:00",
+  "vacuumforge_version": "0.1.0"
+}

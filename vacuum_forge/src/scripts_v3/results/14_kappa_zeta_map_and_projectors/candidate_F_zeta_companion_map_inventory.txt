@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate F_zeta Companion Map Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - zeta_companion_branch_test_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: F_zeta companion map inventory problem

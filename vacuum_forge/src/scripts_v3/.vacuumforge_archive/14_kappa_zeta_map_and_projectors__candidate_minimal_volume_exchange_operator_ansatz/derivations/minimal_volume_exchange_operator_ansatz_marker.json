@@ -1,0 +1,13 @@
+{
+  "derivation_id": "minimal_volume_exchange_operator_ansatz_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('minimal_volume_exchange_operator_ansatz_audited')",
+    "latex": "minimal_{volume exchange operator ansatz audited}"
+  },
+  "method": "minimal_volume_exchange_operator_ansatz_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:47.286571+00:00",
+  "vacuumforge_version": "0.1.0"
+}

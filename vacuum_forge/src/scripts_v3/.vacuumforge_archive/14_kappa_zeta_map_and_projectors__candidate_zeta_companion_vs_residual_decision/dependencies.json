@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "minimal_volume_exchange_operator_ansatz_marker",
+    "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_minimal_volume_exchange_operator_ansatz",
+    "upstream_derivation_id": "minimal_volume_exchange_operator_ansatz_marker",
+    "declared_at": "2026-05-09T07:43:48.139580+00:00"
+  }
+]

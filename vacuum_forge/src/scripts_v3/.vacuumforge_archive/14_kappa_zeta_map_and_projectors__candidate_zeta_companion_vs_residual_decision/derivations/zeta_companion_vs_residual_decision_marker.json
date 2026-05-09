@@ -1,0 +1,13 @@
+{
+  "derivation_id": "zeta_companion_vs_residual_decision_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('zeta_companion_vs_residual_decision_audited')",
+    "latex": "\\zeta_{companion vs residual decision audited}"
+  },
+  "method": "zeta_companion_vs_residual_decision_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:48.769579+00:00",
+  "vacuumforge_version": "0.1.0"
+}

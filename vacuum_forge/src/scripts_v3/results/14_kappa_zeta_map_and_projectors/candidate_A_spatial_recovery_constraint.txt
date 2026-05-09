@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate A_spatial Recovery Constraint
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - areal_kappa_diagnostic_vs_physical_variable_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: A_spatial recovery constraint problem

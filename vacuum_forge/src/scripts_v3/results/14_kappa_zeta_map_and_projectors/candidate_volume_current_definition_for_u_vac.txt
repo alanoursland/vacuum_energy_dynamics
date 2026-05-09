@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Volume Current Definition For u_vac
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_rest_frame_definition_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Volume current definition for u_vac problem

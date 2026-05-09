@@ -1,0 +1,13 @@
+{
+  "derivation_id": "A_spatial_vs_zeta_trace_counting_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('A_spatial_vs_zeta_trace_counting_audited')",
+    "latex": "A_{spatial vs \\zeta trace counting audited}"
+  },
+  "method": "A_spatial_vs_zeta_trace_counting_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:22.172417+00:00",
+  "vacuumforge_version": "0.1.0"
+}

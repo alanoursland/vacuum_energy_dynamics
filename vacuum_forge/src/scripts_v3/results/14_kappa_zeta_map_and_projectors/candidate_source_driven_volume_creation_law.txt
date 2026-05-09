@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Source-Driven Volume Creation Law
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - F_zeta_companion_map_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Source-driven volume creation law problem

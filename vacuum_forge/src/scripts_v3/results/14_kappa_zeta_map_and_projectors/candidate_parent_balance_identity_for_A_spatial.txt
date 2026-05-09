@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Balance Identity For A_spatial
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - minimal_gradient_current_ratio_test_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent balance identity for A_spatial problem

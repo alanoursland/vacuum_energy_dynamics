@@ -1,0 +1,13 @@
+{
+  "derivation_id": "parent_balance_identity_for_A_spatial_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('parent_balance_identity_for_A_spatial_audited')",
+    "latex": "parent_{balance identity for A spatial audited}"
+  },
+  "method": "parent_balance_identity_for_A_spatial_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:42.923351+00:00",
+  "vacuumforge_version": "0.1.0"
+}

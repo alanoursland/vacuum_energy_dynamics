@@ -1,0 +1,13 @@
+{
+  "derivation_id": "recombination_projector_for_trace_volume_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('recombination_projector_for_trace_volume_audited')",
+    "latex": "recombination_{projector for trace volume audited}"
+  },
+  "method": "recombination_projector_for_trace_volume_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:20.723796+00:00",
+  "vacuumforge_version": "0.1.0"
+}

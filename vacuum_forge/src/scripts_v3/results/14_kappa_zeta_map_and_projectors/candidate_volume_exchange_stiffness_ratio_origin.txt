@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Volume-Exchange Stiffness Ratio Origin
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_balance_operator_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Volume-exchange stiffness ratio origin problem

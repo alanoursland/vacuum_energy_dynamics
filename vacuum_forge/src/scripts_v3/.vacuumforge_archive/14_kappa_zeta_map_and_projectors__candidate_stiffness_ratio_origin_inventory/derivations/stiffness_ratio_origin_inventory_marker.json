@@ -1,0 +1,13 @@
+{
+  "derivation_id": "stiffness_ratio_origin_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('stiffness_ratio_origin_inventory_audited')",
+    "latex": "stiffness_{ratio origin inventory audited}"
+  },
+  "method": "stiffness_ratio_origin_inventory_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:38.309186+00:00",
+  "vacuumforge_version": "0.1.0"
+}

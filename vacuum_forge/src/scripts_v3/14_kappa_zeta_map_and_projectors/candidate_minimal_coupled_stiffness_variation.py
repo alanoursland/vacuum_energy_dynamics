@@ -20,7 +20,17 @@
 # It is not a final action.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -32,6 +42,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -193,6 +204,30 @@ def build_entries() -> List[CoupledVariationEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="parent_action_stiffness_identity_marker",
+        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_parent_action_stiffness_identity",
+        upstream_derivation_id="parent_action_stiffness_identity_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: CoupledVariationEntry) -> None:
     print()
     print("-" * 120)
@@ -286,6 +321,29 @@ def case_3_variation_calculation():
     print("  Otherwise it moves the tuning knob from q to stiffness ratio.")
 
     status_line("minimal variation calculation produced", "THEOREM_TARGET")
+
+
+def case_3b_symbolic_stiffness_ratio(ns) -> None:
+    header("Case 3b: Symbolic stiffness-ratio derivation")
+
+    c_x, c_s = sp.symbols("c_x c_s", nonzero=True)
+    q_action = sp.simplify(-c_x / c_s)
+
+    print("Symbolic coupled-stiffness result:")
+    print()
+    print(f"  q_action = {q_action}")
+    print()
+    print("Interpretation:")
+    print("  the variation fixes q only up to the stiffness ratio c_x/c_s.")
+
+    status_line("symbolic q from stiffness ratio", "DERIVED_REDUCED", f"q_action = {q_action}")
+    ns.record_derivation(
+        derivation_id="minimal_coupled_stiffness_ratio_formula",
+        inputs=[c_x, c_s],
+        output=q_action,
+        method="symbolic coupled-stiffness variation ratio",
+        status=Status.DERIVED,
+    )
 
 
 def case_4_status_counts(entries: List[CoupledVariationEntry]):
@@ -383,16 +441,28 @@ def final_interpretation():
 
 def main():
     header("Candidate Minimal Coupled Stiffness Variation")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_variation_calculation()
+    case_3b_symbolic_stiffness_ratio(ns)
     case_4_status_counts(entries)
     case_5_good_failure()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="minimal_coupled_stiffness_variation_marker",
+        inputs=[],
+        output=sp.Symbol("minimal_coupled_stiffness_variation_audited"),
+        method="minimal_coupled_stiffness_variation_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

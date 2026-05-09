@@ -1,0 +1,18 @@
+{
+  "derivation_id": "boundary_projector_zero_flux_sample",
+  "inputs": [
+    {
+      "srepr": "Mul(Pow(Symbol('R', positive=True), Integer(-4)), Symbol('zeta0', positive=True), Pow(Add(Pow(Symbol('R', positive=True), Integer(2)), Mul(Integer(-1), Pow(Symbol('r', positive=True), Integer(2)))), Integer(2)))",
+      "latex": "\\frac{\\zeta_{0} \\left(R^{2} - r^{2}\\right)^{2}}{R^{4}}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0), Integer(0))",
+    "latex": "\\left( 0, \\  0, \\  0\\right)"
+  },
+  "method": "compact-profile boundary neutrality sample",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:19.269494+00:00",
+  "vacuumforge_version": "0.1.0"
+}

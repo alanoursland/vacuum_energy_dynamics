@@ -1,0 +1,13 @@
+{
+  "derivation_id": "A_sector_parent_identity_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('A_sector_parent_identity_inventory_audited')",
+    "latex": "A_{sector parent identity inventory audited}"
+  },
+  "method": "A_sector_parent_identity_inventory_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:26.536157+00:00",
+  "vacuumforge_version": "0.1.0"
+}

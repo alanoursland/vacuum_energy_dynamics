@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Zeta Companion Branch Test
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - zeta_companion_vs_residual_decision_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Zeta companion branch test problem

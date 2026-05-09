@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Linear A_spatial Closure Coefficient Origin
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - differential_A_spatial_closure_operator_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Linear A_spatial closure coefficient-origin problem

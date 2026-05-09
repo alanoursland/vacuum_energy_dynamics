@@ -1,0 +1,22 @@
+{
+  "derivation_id": "minimal_coupled_stiffness_ratio_formula",
+  "inputs": [
+    {
+      "srepr": "Symbol('c_x', nonzero=True)",
+      "latex": "c_{x}"
+    },
+    {
+      "srepr": "Symbol('c_s', nonzero=True)",
+      "latex": "c_{s}"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Integer(-1), Pow(Symbol('c_s', nonzero=True), Integer(-1)), Symbol('c_x', nonzero=True))",
+    "latex": "- \\frac{c_{x}}{c_{s}}"
+  },
+  "method": "symbolic coupled-stiffness variation ratio",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:36.842115+00:00",
+  "vacuumforge_version": "0.1.0"
+}

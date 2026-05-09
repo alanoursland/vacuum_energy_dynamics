@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Minimal Volume-Exchange Operator Ansatz
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - volume_exchange_stiffness_ratio_origin_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal volume-exchange operator ansatz problem

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "linear_A_spatial_closure_coefficient_origin_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('linear_A_spatial_closure_coefficient_origin_audited')",
+    "latex": "linear_{A spatial closure coefficient origin audited}"
+  },
+  "method": "linear_A_spatial_closure_coefficient_origin_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:33.817092+00:00",
+  "vacuumforge_version": "0.1.0"
+}

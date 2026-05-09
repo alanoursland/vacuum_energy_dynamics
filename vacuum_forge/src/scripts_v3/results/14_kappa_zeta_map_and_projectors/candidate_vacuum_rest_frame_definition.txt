@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum Rest Frame Definition
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - matter_vs_vacuum_frame_branch_test_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vacuum rest frame definition problem

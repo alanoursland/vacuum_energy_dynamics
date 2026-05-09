@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Conservation-Current Coefficient Origin
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - stiffness_ratio_origin_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Conservation-current coefficient-origin problem

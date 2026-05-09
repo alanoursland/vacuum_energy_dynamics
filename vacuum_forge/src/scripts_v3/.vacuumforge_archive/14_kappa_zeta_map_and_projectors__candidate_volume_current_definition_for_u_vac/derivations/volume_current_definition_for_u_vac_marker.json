@@ -1,0 +1,13 @@
+{
+  "derivation_id": "volume_current_definition_for_u_vac_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('volume_current_definition_for_u_vac_audited')",
+    "latex": "volume_{current definition for u vac audited}"
+  },
+  "method": "volume_current_definition_for_u_vac_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:44:00.471146+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Minimal Gradient-Current Ratio Test
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - conservation_current_coefficient_origin_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal gradient-current ratio test problem
@@ -206,6 +208,15 @@ If div J_A = 0 and S_A != 0:
 Interpretation:
   This fixes q only if a/b is fixed independently.
 [WARN] minimal gradient-current calculation produced: THEOREM_TARGET
+
+========================================================================================================================
+Case 3b: Symbolic current-ratio derivation
+========================================================================================================================
+Symbolic reduced relation:
+
+  div J_A = S_A*a + S_A*b*q
+  solving a + b q = 0 gives q = -a/b
+[PASS] symbolic q from current ratio: DERIVED_REDUCED — q = -a/b
 
 ========================================================================================================================
 Case 4: Status counts

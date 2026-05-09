@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Recombination Projector For Trace Volume
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_projector_for_volume_neutrality_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Recombination projector for trace/volume problem

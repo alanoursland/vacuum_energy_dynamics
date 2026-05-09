@@ -1,0 +1,13 @@
+{
+  "derivation_id": "matter_vs_vacuum_frame_branch_test_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('matter_vs_vacuum_frame_branch_test_audited')",
+    "latex": "matter_{vs vacuum frame branch test audited}"
+  },
+  "method": "matter_vs_vacuum_frame_branch_test_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:57.509733+00:00",
+  "vacuumforge_version": "0.1.0"
+}

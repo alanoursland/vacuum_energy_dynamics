@@ -21,7 +21,17 @@
 # It is not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -33,6 +43,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -178,6 +189,30 @@ def build_entries() -> List[BoundaryProjectorEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="trace_projector_definition_marker",
+        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_trace_projector_definition",
+        upstream_derivation_id="trace_projector_definition_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: BoundaryProjectorEntry) -> None:
     print()
     print("-" * 120)
@@ -283,6 +318,32 @@ def case_4_minimal_boundary_bundle():
     status_line("minimal P_boundary bundle stated", "RECOMMENDED")
 
 
+def case_4b_symbolic_boundary_flux(ns) -> None:
+    header("Case 4b: Symbolic boundary-flux check")
+
+    r, R, zeta0 = sp.symbols("r R zeta0", positive=True)
+    profile = sp.simplify(zeta0 * (1 - r**2 / R**2) ** 2)
+    value_at_boundary = sp.simplify(profile.subs(r, R))
+    derivative_at_boundary = sp.simplify(sp.diff(profile, r).subs(r, R))
+    flux_at_boundary = sp.simplify(4 * sp.pi * R**2 * derivative_at_boundary)
+
+    print("Compact profile sample:")
+    print()
+    print(f"  zeta(r) = {profile}")
+    print(f"  zeta(R) = {value_at_boundary}")
+    print(f"  zeta'(R) = {derivative_at_boundary}")
+    print(f"  F_zeta(R+) = {flux_at_boundary}")
+
+    status_line("boundary-flux neutrality sample", "DERIVED_REDUCED", f"F_zeta(R+) = {flux_at_boundary}")
+    ns.record_derivation(
+        derivation_id="boundary_projector_zero_flux_sample",
+        inputs=[profile],
+        output=sp.Tuple(value_at_boundary, derivative_at_boundary, flux_at_boundary),
+        method="compact-profile boundary neutrality sample",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_failure_controls():
     header("Case 5: Failure controls")
 
@@ -349,15 +410,27 @@ def final_interpretation():
 
 def main():
     header("Candidate Boundary Projector For Volume Neutrality")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_minimal_boundary_bundle()
+    case_4b_symbolic_boundary_flux(ns)
     case_5_failure_controls()
     case_6_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="boundary_projector_for_volume_neutrality_marker",
+        inputs=[],
+        output=sp.Symbol("boundary_projector_for_volume_neutrality_audited"),
+        method="boundary_projector_for_volume_neutrality_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Areal Kappa Diagnostic Versus Physical Variable
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - A_spatial_vs_zeta_trace_counting_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Areal kappa diagnostic versus physical variable problem

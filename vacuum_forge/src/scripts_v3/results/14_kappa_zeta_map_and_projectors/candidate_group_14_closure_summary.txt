@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Group 14 Closure Summary
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - volume_current_definition_for_u_vac_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Group 14 closure problem

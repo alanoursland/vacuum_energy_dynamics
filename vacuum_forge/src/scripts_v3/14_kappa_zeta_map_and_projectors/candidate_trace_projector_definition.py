@@ -24,7 +24,17 @@
 # It is not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -36,6 +46,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -181,6 +192,30 @@ def build_entries() -> List[TraceProjectorEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="kappa_as_projected_zeta_mismatch_marker",
+        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_kappa_as_projected_zeta_mismatch",
+        upstream_derivation_id="kappa_as_projected_zeta_mismatch_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: TraceProjectorEntry) -> None:
     print()
     print("-" * 120)
@@ -290,6 +325,33 @@ def case_4_minimal_projector_bundle():
     status_line("minimal P_trace bundle stated", "RECOMMENDED")
 
 
+def case_4b_symbolic_tt_annihilation(ns) -> None:
+    header("Case 4b: Symbolic TT annihilation check")
+
+    hxx, hxy = sp.symbols("hxx hxy")
+    h_tt = sp.Matrix([[hxx, hxy, 0], [hxy, -hxx, 0], [0, 0, 0]])
+    trace_h_tt = sp.simplify(h_tt.trace())
+    projected_trace_piece = sp.simplify(sp.eye(3) * trace_h_tt / 3)
+
+    print("Sample TT tensor:")
+    print()
+    print(f"  h_TT = {h_tt}")
+    print(f"  trace(h_TT) = {trace_h_tt}")
+    print(f"  projected trace piece = {projected_trace_piece}")
+    print()
+    print("Interpretation:")
+    print("  the linear trace projector annihilates this TT sample.")
+
+    status_line("TT annihilation sample", "DERIVED_REDUCED", f"trace(h_TT) = {trace_h_tt}")
+    ns.record_derivation(
+        derivation_id="trace_projector_tt_annihilation_sample",
+        inputs=[h_tt],
+        output=projected_trace_piece,
+        method="linear TT trace-projector annihilation sample",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_failure_controls():
     header("Case 5: Failure controls")
 
@@ -353,15 +415,27 @@ def final_interpretation():
 
 def main():
     header("Candidate Trace Projector Definition")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_minimal_projector_bundle()
+    case_4b_symbolic_tt_annihilation(ns)
     case_5_failure_controls()
     case_6_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="trace_projector_definition_marker",
+        inputs=[],
+        output=sp.Symbol("trace_projector_definition_audited"),
+        method="trace_projector_definition_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

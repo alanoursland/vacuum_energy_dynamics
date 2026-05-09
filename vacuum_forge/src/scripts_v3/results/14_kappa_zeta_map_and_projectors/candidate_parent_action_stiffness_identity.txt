@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Action Stiffness Identity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - linear_A_spatial_closure_coefficient_origin_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent action/stiffness identity problem

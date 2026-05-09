@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Minimal Coupled Stiffness Variation
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_action_stiffness_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal coupled stiffness variation problem
@@ -207,6 +209,17 @@ Interpretation:
   Variation derives q only if c_x/c_s is itself derived.
   Otherwise it moves the tuning knob from q to stiffness ratio.
 [WARN] minimal variation calculation produced: THEOREM_TARGET
+
+========================================================================================================================
+Case 3b: Symbolic stiffness-ratio derivation
+========================================================================================================================
+Symbolic coupled-stiffness result:
+
+  q_action = -c_x/c_s
+
+Interpretation:
+  the variation fixes q only up to the stiffness ratio c_x/c_s.
+[PASS] symbolic q from stiffness ratio: DERIVED_REDUCED — q_action = -c_x/c_s
 
 ========================================================================================================================
 Case 4: Status counts

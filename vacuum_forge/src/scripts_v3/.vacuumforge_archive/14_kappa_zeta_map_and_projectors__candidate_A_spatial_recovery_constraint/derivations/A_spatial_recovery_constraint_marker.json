@@ -1,0 +1,13 @@
+{
+  "derivation_id": "A_spatial_recovery_constraint_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('A_spatial_recovery_constraint_audited')",
+    "latex": "A_{spatial recovery constraint audited}"
+  },
+  "method": "A_spatial_recovery_constraint_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:25.074472+00:00",
+  "vacuumforge_version": "0.1.0"
+}

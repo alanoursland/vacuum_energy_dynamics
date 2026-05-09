@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Zeta Companion Versus Residual Decision
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - minimal_volume_exchange_operator_ansatz_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Zeta companion versus residual decision problem

@@ -18,7 +18,17 @@
 # It is not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -30,6 +40,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -191,6 +202,30 @@ def build_entries() -> List[GradientCurrentEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="conservation_current_coefficient_origin_marker",
+        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_conservation_current_coefficient_origin",
+        upstream_derivation_id="conservation_current_coefficient_origin_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: GradientCurrentEntry) -> None:
     print()
     print("-" * 120)
@@ -283,6 +318,28 @@ def case_3_minimal_calculation():
     print("  This fixes q only if a/b is fixed independently.")
 
     status_line("minimal gradient-current calculation produced", "THEOREM_TARGET")
+
+
+def case_3b_symbolic_ratio_derivation(ns) -> None:
+    header("Case 3b: Symbolic current-ratio derivation")
+
+    a, b, q, S_A = sp.symbols("a b q S_A", nonzero=True)
+    divergence = sp.expand((a + b * q) * S_A)
+    solved_q = sp.solve(sp.Eq(a + b * q, 0), q)[0]
+
+    print("Symbolic reduced relation:")
+    print()
+    print(f"  div J_A = {divergence}")
+    print(f"  solving a + b q = 0 gives q = {solved_q}")
+
+    status_line("symbolic q from current ratio", "DERIVED_REDUCED", f"q = {solved_q}")
+    ns.record_derivation(
+        derivation_id="minimal_gradient_current_ratio_formula",
+        inputs=[a, b, S_A],
+        output=solved_q,
+        method="solve divergence-free current ratio relation",
+        status=Status.DERIVED,
+    )
 
 
 def case_4_status_counts(entries: List[GradientCurrentEntry]):
@@ -379,16 +436,28 @@ def final_interpretation():
 
 def main():
     header("Candidate Minimal Gradient-Current Ratio Test")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_minimal_calculation()
+    case_3b_symbolic_ratio_derivation(ns)
     case_4_status_counts(entries)
     case_5_good_failure()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="minimal_gradient_current_ratio_test_marker",
+        inputs=[],
+        output=sp.Symbol("minimal_gradient_current_ratio_test_audited"),
+        method="minimal_gradient_current_ratio_test_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

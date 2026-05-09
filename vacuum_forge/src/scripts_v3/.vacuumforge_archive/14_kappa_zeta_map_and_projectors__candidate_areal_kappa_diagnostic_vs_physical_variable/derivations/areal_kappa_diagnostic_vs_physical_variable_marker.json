@@ -1,0 +1,13 @@
+{
+  "derivation_id": "areal_kappa_diagnostic_vs_physical_variable_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('areal_kappa_diagnostic_vs_physical_variable_audited')",
+    "latex": "areal_{\\kappa diagnostic vs \\mathcal{physi} variable audited}"
+  },
+  "method": "areal_kappa_diagnostic_vs_physical_variable_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:23.636874+00:00",
+  "vacuumforge_version": "0.1.0"
+}

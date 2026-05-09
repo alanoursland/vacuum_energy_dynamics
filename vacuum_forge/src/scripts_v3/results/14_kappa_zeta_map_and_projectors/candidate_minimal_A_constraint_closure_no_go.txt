@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Minimal A-Constraint Closure No-Go
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_constraint_propagation_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal A-constraint closure/no-go problem

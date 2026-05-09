@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa-Zeta Map Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - epsilon_kappa_double_counting_check_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa-zeta map inventory problem

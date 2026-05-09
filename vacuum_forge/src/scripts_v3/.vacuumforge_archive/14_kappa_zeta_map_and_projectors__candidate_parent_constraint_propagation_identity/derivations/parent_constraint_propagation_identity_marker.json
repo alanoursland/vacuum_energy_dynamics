@@ -1,0 +1,13 @@
+{
+  "derivation_id": "parent_constraint_propagation_identity_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('parent_constraint_propagation_identity_audited')",
+    "latex": "parent_{constraint propagation identity audited}"
+  },
+  "method": "parent_constraint_propagation_identity_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:27.966382+00:00",
+  "vacuumforge_version": "0.1.0"
+}

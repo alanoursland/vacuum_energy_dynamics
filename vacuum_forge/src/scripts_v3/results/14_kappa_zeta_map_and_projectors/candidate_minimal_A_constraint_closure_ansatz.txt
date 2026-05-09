@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Minimal A-Constraint Closure Ansatz
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - minimal_A_constraint_closure_no_go_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal A-constraint closure ansatz problem

@@ -20,7 +20,17 @@
 # It is not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
 
 
 def header(title: str) -> None:
@@ -175,6 +185,30 @@ def build_entries() -> List[ProjectedMapEntry]:
             missing="definitions of P_trace, P_relax, P_boundary",
         ),
     ]
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="kappa_zeta_map_inventory_marker",
+        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_kappa_zeta_map_inventory",
+        upstream_derivation_id="kappa_zeta_map_inventory_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def print_entry(e: ProjectedMapEntry) -> None:
@@ -375,6 +409,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Kappa As Projected Zeta Mismatch")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
@@ -385,6 +421,15 @@ def main():
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="kappa_as_projected_zeta_mismatch_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_as_projected_zeta_mismatch_audited"),
+        method="kappa_as_projected_zeta_mismatch_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

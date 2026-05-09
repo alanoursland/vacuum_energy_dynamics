@@ -1,0 +1,18 @@
+{
+  "derivation_id": "trace_projector_tt_annihilation_sample",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('hxx'), Symbol('hxy'), Integer(0)], [Symbol('hxy'), Mul(Integer(-1), Symbol('hxx')), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}hxx & hxy & 0\\\\hxy & - hxx & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "ImmutableDenseMatrix([[Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+    "latex": "\\left[\\begin{matrix}0 & 0 & 0\\\\0 & 0 & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+  },
+  "method": "linear TT trace-projector annihilation sample",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:17.662926+00:00",
+  "vacuumforge_version": "0.1.0"
+}

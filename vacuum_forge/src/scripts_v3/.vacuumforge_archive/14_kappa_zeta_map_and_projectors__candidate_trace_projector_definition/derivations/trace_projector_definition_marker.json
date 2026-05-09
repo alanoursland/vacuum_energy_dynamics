@@ -1,0 +1,13 @@
+{
+  "derivation_id": "trace_projector_definition_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('trace_projector_definition_audited')",
+    "latex": "trace_{projector definition audited}"
+  },
+  "method": "trace_projector_definition_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:17.664927+00:00",
+  "vacuumforge_version": "0.1.0"
+}

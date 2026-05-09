@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate A_spatial Versus Zeta Trace Counting
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - recombination_projector_for_trace_volume_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: A_spatial versus zeta trace counting problem

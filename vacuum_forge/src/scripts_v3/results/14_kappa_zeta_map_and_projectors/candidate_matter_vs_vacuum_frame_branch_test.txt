@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Matter Versus Vacuum Frame Branch Test
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - volume_creation_frame_field_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Matter versus vacuum frame branch problem

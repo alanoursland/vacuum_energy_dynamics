@@ -1,0 +1,13 @@
+{
+  "derivation_id": "F_zeta_companion_map_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('F_zeta_companion_map_inventory_audited')",
+    "latex": "F_{\\zeta companion map inventory audited}"
+  },
+  "method": "F_zeta_companion_map_inventory_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:51.720589+00:00",
+  "vacuumforge_version": "0.1.0"
+}

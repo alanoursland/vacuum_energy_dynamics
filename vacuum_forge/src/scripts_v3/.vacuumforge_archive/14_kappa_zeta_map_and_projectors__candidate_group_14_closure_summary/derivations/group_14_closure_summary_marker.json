@@ -1,0 +1,13 @@
+{
+  "derivation_id": "group_14_closure_summary_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('group_14_closure_summary_audited')",
+    "latex": "group_{14 closure summary audited}"
+  },
+  "method": "group_14_closure_summary_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:44:01.915969+00:00",
+  "vacuumforge_version": "0.1.0"
+}

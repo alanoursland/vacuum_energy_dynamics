@@ -1,0 +1,13 @@
+{
+  "derivation_id": "boundary_projector_for_volume_neutrality_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('boundary_projector_for_volume_neutrality_audited')",
+    "latex": "boundary_{projector for volume neutrality audited}"
+  },
+  "method": "boundary_projector_for_volume_neutrality_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:19.270494+00:00",
+  "vacuumforge_version": "0.1.0"
+}

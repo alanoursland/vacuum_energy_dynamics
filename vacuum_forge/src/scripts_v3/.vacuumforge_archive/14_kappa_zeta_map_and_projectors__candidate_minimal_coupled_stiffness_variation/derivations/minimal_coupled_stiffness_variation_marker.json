@@ -1,0 +1,13 @@
+{
+  "derivation_id": "minimal_coupled_stiffness_variation_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('minimal_coupled_stiffness_variation_audited')",
+    "latex": "minimal_{coupled stiffness variation audited}"
+  },
+  "method": "minimal_coupled_stiffness_variation_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:36.843118+00:00",
+  "vacuumforge_version": "0.1.0"
+}

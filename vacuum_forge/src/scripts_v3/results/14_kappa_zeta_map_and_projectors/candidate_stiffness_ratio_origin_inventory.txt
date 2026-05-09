@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Stiffness Ratio Origin Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - minimal_coupled_stiffness_variation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Stiffness ratio origin inventory problem

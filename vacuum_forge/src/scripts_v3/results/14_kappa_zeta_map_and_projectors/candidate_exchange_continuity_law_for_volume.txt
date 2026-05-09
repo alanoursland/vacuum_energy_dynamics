@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Exchange Continuity Law For Volume
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - group_14_closure_summary_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Exchange continuity law problem

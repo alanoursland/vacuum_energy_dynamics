@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate A-Sector Parent Identity Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - A_spatial_recovery_constraint_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: A-sector parent identity inventory problem

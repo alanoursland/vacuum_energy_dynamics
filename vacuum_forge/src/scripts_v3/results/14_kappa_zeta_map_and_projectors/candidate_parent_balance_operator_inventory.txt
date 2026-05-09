@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Balance Operator Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_balance_identity_for_A_spatial_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent balance operator inventory problem

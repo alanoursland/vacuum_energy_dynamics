@@ -1,0 +1,13 @@
+{
+  "derivation_id": "volume_exchange_stiffness_ratio_origin_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('volume_exchange_stiffness_ratio_origin_audited')",
+    "latex": "volume_{exchange stiffness ratio origin audited}"
+  },
+  "method": "volume_exchange_stiffness_ratio_origin_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:45.823066+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vacuum_rest_frame_definition_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vacuum_rest_frame_definition_audited')",
+    "latex": "vacuum_{rest frame definition audited}"
+  },
+  "method": "vacuum_rest_frame_definition_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:43:58.985476+00:00",
+  "vacuumforge_version": "0.1.0"
+}

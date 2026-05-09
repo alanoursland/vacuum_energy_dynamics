@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Trace Projector Definition
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_as_projected_zeta_mismatch_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Trace projector definition problem
@@ -208,6 +210,19 @@ Therefore:
 
   P_trace is a requirement bundle, not a derived operator.
 [PASS] minimal P_trace bundle stated: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Symbolic TT annihilation check
+========================================================================================================================
+Sample TT tensor:
+
+  h_TT = Matrix([[hxx, hxy, 0], [hxy, -hxx, 0], [0, 0, 0]])
+  trace(h_TT) = 0
+  projected trace piece = Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
+
+Interpretation:
+  the linear trace projector annihilates this TT sample.
+[PASS] TT annihilation sample: DERIVED_REDUCED — trace(h_TT) = 0
 
 ========================================================================================================================
 Case 5: Failure controls

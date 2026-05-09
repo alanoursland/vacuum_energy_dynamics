@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Differential A_spatial Closure Operator Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - minimal_A_constraint_closure_ansatz_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Differential A_spatial closure operator inventory problem

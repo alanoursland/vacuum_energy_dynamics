@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa As Projected Zeta Mismatch
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_zeta_map_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa as projected zeta mismatch problem

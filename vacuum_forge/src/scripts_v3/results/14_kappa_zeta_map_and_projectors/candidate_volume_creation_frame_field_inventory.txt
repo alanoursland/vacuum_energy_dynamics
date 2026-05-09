@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Volume Creation Frame Field Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - acceleration_gradient_volume_creation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Volume creation frame-field inventory problem

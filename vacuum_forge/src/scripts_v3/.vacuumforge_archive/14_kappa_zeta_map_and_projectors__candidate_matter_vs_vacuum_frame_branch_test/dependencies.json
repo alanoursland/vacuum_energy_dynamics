@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "volume_creation_frame_field_inventory_marker",
+    "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_volume_creation_frame_field_inventory",
+    "upstream_derivation_id": "volume_creation_frame_field_inventory_marker",
+    "declared_at": "2026-05-09T07:43:56.912250+00:00"
+  }
+]
