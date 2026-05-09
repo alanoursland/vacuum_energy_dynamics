@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "kappa_near_boundary_deviation_diagnostic_marker",
+    "upstream_script_id": "10_kappa_trace_response__candidate_kappa_near_boundary_deviation_diagnostic",
+    "upstream_derivation_id": "kappa_near_boundary_deviation_diagnostic_marker",
+    "declared_at": "2026-05-09T01:18:18.389753+00:00"
+  }
+]

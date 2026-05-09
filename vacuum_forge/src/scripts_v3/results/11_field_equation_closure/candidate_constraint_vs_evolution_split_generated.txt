@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Constraint Versus Evolution Split
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - no_double_counting_constraints_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Constraint versus evolution split problem

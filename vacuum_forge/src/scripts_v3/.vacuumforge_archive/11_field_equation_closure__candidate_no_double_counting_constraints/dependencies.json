@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "source_decomposition_ledger_marker",
+    "upstream_script_id": "11_field_equation_closure__candidate_source_decomposition_ledger",
+    "upstream_derivation_id": "source_decomposition_ledger_marker",
+    "declared_at": "2026-05-09T01:18:22.355999+00:00"
+  }
+]

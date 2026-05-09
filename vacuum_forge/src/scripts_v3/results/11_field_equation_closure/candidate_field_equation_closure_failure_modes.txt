@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Field Equation Closure Failure Modes
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - parent_identity_template_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Field equation closure failure modes problem

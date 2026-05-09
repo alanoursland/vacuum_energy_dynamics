@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Closure Minimal Equation Set
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - field_equation_closure_failure_modes_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Minimal closure equation set problem
@@ -220,6 +222,15 @@ Matched or missing:
   parent conservation identity
   covariant recombination
 [WARN] GR recovery status restated: CONSTRAINED
+
+========================================================================================================================
+Case 5b: VacuumForge minimal metric cross-check
+========================================================================================================================
+A_value = -2*G*M/(c**2*r) + 1
+B_value = 1/(-2*G*M/(c**2*r) + 1)
+A_value * B_value = 1
+ConcreteMetricCheck status = satisfied_by_construction
+[PASS] minimal equation set reproduces reciprocal concrete metric classification: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 6: Failure controls

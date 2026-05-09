@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate GR Limit Recovery Audit
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - conservation_identity_requirements_generated_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: GR limit recovery audit problem
@@ -270,6 +272,16 @@ Reconstruction scorecard:
   Conservation/closure:
     missing
 [WARN] reconstruction scorecard produced: CONSTRAINED
+
+========================================================================================================================
+Case 6b: VacuumForge reciprocal metric cross-check
+========================================================================================================================
+A_value = -2*G*M/(c**2*r) + 1
+B_value = 1/(-2*G*M/(c**2*r) + 1)
+A_value * B_value = 1
+ConcreteMetricCheck status = satisfied_by_construction
+Message = reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
+[PASS] VacuumForge classifies reciprocal Schwarzschild metric as by-construction: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 7: Next tests

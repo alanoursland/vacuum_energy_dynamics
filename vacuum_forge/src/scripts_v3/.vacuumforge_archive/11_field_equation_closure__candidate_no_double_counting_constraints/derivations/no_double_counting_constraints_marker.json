@@ -1,0 +1,13 @@
+{
+  "derivation_id": "no_double_counting_constraints_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('no_double_counting_constraints_built')",
+    "latex": "no_{double counting constraints built}"
+  },
+  "method": "no_double_counting_constraints_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T01:18:22.857999+00:00",
+  "vacuumforge_version": "0.1.0"
+}

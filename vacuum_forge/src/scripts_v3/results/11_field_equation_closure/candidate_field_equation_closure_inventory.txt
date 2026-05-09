@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Field Equation Closure Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_near_boundary_deviation_diagnostic_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Field equation closure inventory problem

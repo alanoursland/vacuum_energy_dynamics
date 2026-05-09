@@ -1,0 +1,13 @@
+{
+  "derivation_id": "constraint_vs_evolution_split_generated_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('constraint_vs_evolution_split_generated')",
+    "latex": "constraint_{vs evolution split generated}"
+  },
+  "method": "constraint_vs_evolution_split_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T01:18:24.196611+00:00",
+  "vacuumforge_version": "0.1.0"
+}

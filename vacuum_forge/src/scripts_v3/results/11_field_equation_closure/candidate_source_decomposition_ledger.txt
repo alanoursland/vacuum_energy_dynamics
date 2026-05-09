@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Source Decomposition Ledger
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - metric_recombination_map_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Source decomposition ledger problem

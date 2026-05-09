@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Metric Recombination Map
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - field_equation_closure_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Metric recombination map problem

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Conservation Identity Requirements
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - constraint_vs_evolution_split_generated_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Conservation identity requirements problem

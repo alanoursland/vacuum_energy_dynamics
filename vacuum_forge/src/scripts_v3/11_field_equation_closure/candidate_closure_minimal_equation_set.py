@@ -25,7 +25,17 @@
 # It is a current-status equation set.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status, TheoryContext
+from vacuumforge.metric.concrete_check import check_concrete_metric
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -63,6 +73,30 @@ class EquationEntry:
     status: str
     missing: str
     caveat: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="field_equation_closure_failure_modes_marker",
+        upstream_script_id="11_field_equation_closure__candidate_field_equation_closure_failure_modes",
+        upstream_derivation_id="field_equation_closure_failure_modes_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_equations() -> List[EquationEntry]:
@@ -302,6 +336,36 @@ def case_5_gr_recovery_status():
     status_line("GR recovery status restated", "CONSTRAINED")
 
 
+def case_5b_vf_minimal_metric_crosscheck(ns):
+    header("Case 5b: VacuumForge minimal metric cross-check")
+
+    ctx = TheoryContext("candidate_closure_minimal_equation_set")
+    ms = ctx.define_equal_response_algebraic_symbols()
+    A_value = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    B_value = 1 / A_value
+    result = check_concrete_metric(ctx, A_value, B_value, ["reciprocal_scaling"])[0]
+    product = sp.simplify(A_value * B_value)
+
+    print(f"A_value = {A_value}")
+    print(f"B_value = {B_value}")
+    print(f"A_value * B_value = {product}")
+    print(f"ConcreteMetricCheck status = {result.status}")
+
+    ok = result.status == "satisfied_by_construction" and product == 1
+    status_line(
+        "minimal equation set reproduces reciprocal concrete metric classification",
+        "DERIVED_REDUCED" if ok else "RISK",
+    )
+
+    ns.record_derivation(
+        derivation_id="closure_minimal_reciprocal_metric_crosscheck",
+        inputs=[A_value, B_value],
+        output=product,
+        method="ConcreteMetricCheck reciprocal_scaling",
+        status=Status.DERIVED,
+    )
+
+
 def case_6_failure_controls():
     header("Case 6: Failure controls")
 
@@ -365,6 +429,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Closure Minimal Equation Set")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_equations()
     case_1_equation_inventory(entries)
@@ -372,9 +438,18 @@ def main():
     case_3_status_counts(entries)
     case_4_minimal_reduced_system()
     case_5_gr_recovery_status()
+    case_5b_vf_minimal_metric_crosscheck(ns)
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="closure_minimal_equation_set_marker",
+        inputs=[],
+        output=sp.Symbol("closure_minimal_equation_set_stated"),
+        method="closure_minimal_equation_set_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

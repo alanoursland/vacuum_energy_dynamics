@@ -1,0 +1,13 @@
+{
+  "derivation_id": "parent_identity_template_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('parent_identity_template_stated')",
+    "latex": "parent_{identity template stated}"
+  },
+  "method": "parent_identity_template_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T01:18:30.141682+00:00",
+  "vacuumforge_version": "0.1.0"
+}

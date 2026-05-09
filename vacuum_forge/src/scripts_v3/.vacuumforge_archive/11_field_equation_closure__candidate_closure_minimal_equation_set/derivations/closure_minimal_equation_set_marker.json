@@ -1,0 +1,13 @@
+{
+  "derivation_id": "closure_minimal_equation_set_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('closure_minimal_equation_set_stated')",
+    "latex": "closure_{minimal equation set stated}"
+  },
+  "method": "closure_minimal_equation_set_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T01:18:34.743988+00:00",
+  "vacuumforge_version": "0.1.0"
+}

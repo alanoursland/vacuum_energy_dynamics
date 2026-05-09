@@ -1,0 +1,22 @@
+{
+  "derivation_id": "closure_minimal_reciprocal_metric_crosscheck",
+  "inputs": [
+    {
+      "srepr": "Add(Mul(Integer(-1), Integer(2), Symbol('G', positive=True), Symbol('M', positive=True), Pow(Symbol('c', positive=True), Integer(-2)), Pow(Symbol('r', positive=True), Integer(-1))), Integer(1))",
+      "latex": "- \\frac{2 G M}{c^{2} r} + 1"
+    },
+    {
+      "srepr": "Pow(Add(Mul(Integer(-1), Integer(2), Symbol('G', positive=True), Symbol('M', positive=True), Pow(Symbol('c', positive=True), Integer(-2)), Pow(Symbol('r', positive=True), Integer(-1))), Integer(1)), Integer(-1))",
+      "latex": "\\frac{1}{- \\frac{2 G M}{c^{2} r} + 1}"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(1)",
+    "latex": "1"
+  },
+  "method": "ConcreteMetricCheck reciprocal_scaling",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T01:18:34.741986+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate No-Double-Counting Constraints
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - source_decomposition_ledger_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: No-double-counting constraint problem

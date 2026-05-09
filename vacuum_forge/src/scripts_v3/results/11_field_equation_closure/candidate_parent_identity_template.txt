@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Parent Identity Template
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - gr_limit_recovery_audit_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Parent identity template problem

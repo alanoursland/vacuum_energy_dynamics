@@ -1,0 +1,13 @@
+{
+  "derivation_id": "source_decomposition_ledger_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('source_decomposition_ledger_built')",
+    "latex": "source_{decomposition ledger built}"
+  },
+  "method": "source_decomposition_ledger_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T01:18:21.546999+00:00",
+  "vacuumforge_version": "0.1.0"
+}
