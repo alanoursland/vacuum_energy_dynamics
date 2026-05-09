@@ -29,7 +29,16 @@
 
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -41,6 +50,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -76,6 +86,30 @@ class CurvatureNeutralityEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="curvature_balance_law_marker",
+        upstream_script_id="17_curvature_energy_and_finite_admissibility__candidate_curvature_balance_law",
+        upstream_derivation_id="curvature_balance_law_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[CurvatureNeutralityEntry]:
@@ -395,6 +429,36 @@ def case_4_neutrality_routes():
     status_line("curvature neutrality routes listed", "RECOMMENDED")
 
 
+def case_4b_sample_boundary_neutrality(ns):
+    header("Case 4b: Sample compact-support neutrality profile")
+
+    r, R, alpha = sp.symbols("r R alpha", positive=True)
+    profile = alpha * (1 - (r / R) ** 2) ** 2
+    boundary_value = sp.simplify(profile.subs(r, R))
+    boundary_flux = sp.simplify(sp.diff(profile, r).subs(r, R))
+
+    print(f"Sample interior curvature profile = {profile}")
+    print(f"profile(R) = {boundary_value}")
+    print(f"profile'(R) = {boundary_flux}")
+
+    if boundary_value == 0 and boundary_flux == 0:
+        status_line(
+            "sample compact-support neutrality profile",
+            "DERIVED_REDUCED",
+            f"profile(R) = {boundary_value}, profile'(R) = {boundary_flux}",
+        )
+    else:
+        status_line("sample compact-support neutrality profile", "RISK", "boundary sample leaves shell/leakage risk")
+
+    ns.record_derivation(
+        derivation_id="curvature_boundary_sample_compact_support",
+        inputs=[profile],
+        output=sp.Tuple(boundary_value, boundary_flux),
+        method="symbolic compact-support neutrality sample",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Boundary/mass neutrality decision tree")
 
@@ -517,17 +581,29 @@ def final_interpretation():
 
 def main():
     header("Candidate Curvature Boundary And Mass Neutrality")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_neutrality_routes()
+    case_4b_sample_boundary_neutrality(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="curvature_boundary_and_mass_neutrality_marker",
+        inputs=[],
+        output=sp.Symbol("curvature_boundary_and_mass_neutrality_complete"),
+        method="curvature_boundary_and_mass_neutrality",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,0 +1,18 @@
+{
+  "derivation_id": "curvature_boundary_sample_compact_support",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('alpha', positive=True), Pow(Add(Integer(1), Mul(Integer(-1), Pow(Symbol('R', positive=True), Integer(-2)), Pow(Symbol('r', positive=True), Integer(2)))), Integer(2)))",
+      "latex": "\\alpha \\left(1 - \\frac{r^{2}}{R^{2}}\\right)^{2}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0))",
+    "latex": "\\left( 0, \\  0\\right)"
+  },
+  "method": "symbolic compact-support neutrality sample",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:52.244900+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "finite_admissibility_condition_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('finite_admissibility_condition_complete')",
+    "latex": "finite_{admissibility condition complete}"
+  },
+  "method": "finite_admissibility_condition",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:46.109781+00:00",
+  "vacuumforge_version": "0.1.0"
+}

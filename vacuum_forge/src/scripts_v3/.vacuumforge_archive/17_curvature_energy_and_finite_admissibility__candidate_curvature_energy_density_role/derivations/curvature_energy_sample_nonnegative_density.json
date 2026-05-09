@@ -1,0 +1,18 @@
+{
+  "derivation_id": "curvature_energy_sample_nonnegative_density",
+  "inputs": [
+    {
+      "srepr": "Symbol('I_curv', real=True)",
+      "latex": "I_{curv}"
+    }
+  ],
+  "output": {
+    "srepr": "Pow(Symbol('I_curv', real=True), Integer(2))",
+    "latex": "I_{curv}^{2}"
+  },
+  "method": "symbolic sample diagnostic density",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:47.742306+00:00",
+  "vacuumforge_version": "0.1.0"
+}

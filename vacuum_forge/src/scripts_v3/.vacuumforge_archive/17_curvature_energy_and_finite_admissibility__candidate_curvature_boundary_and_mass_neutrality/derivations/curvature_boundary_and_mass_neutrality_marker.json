@@ -1,0 +1,13 @@
+{
+  "derivation_id": "curvature_boundary_and_mass_neutrality_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('curvature_boundary_and_mass_neutrality_complete')",
+    "latex": "curvature_{boundary and mass neutrality complete}"
+  },
+  "method": "curvature_boundary_and_mass_neutrality",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:52.246902+00:00",
+  "vacuumforge_version": "0.1.0"
+}

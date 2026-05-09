@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Curvature Energy Group Status Summary
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - curvature_anti_singularity_claim_audit_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Group 17 status problem

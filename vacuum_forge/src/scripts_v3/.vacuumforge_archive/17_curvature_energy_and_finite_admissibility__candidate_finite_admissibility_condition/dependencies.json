@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "curvature_admissibility_object_inventory_marker",
+    "upstream_script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_admissibility_object_inventory",
+    "upstream_derivation_id": "curvature_admissibility_object_inventory_marker",
+    "declared_at": "2026-05-09T15:06:45.208864+00:00"
+  }
+]

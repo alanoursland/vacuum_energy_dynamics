@@ -282,22 +282,18 @@ Every strong conclusion should be tied to one of:
 
 Without that, the script is a memo, not a validated artifact.
 
-## Process Improvements Exposed By Group 16
+## Process Improvements
 
-Group 16 made another failure mode obvious: even when the scripts are
-trying to be careful, the process still leans too heavily on
-hand-written governance tables and hand-written summaries.
-
-This is a separate problem from algebra correctness. It is a process
-problem in how AI generates, formats, and closes scripts.
+These are not tied to one specific directory. They are recurring process
+gaps in how the script tree is being generated, summarized, and handed
+forward.
 
 ### 1. Summary scripts should consume archive state, not restate it from memory
 
-`candidate_metric_insertion_group_status_summary.py` is a good example
-of a script that currently retypes the group's status in prose/data form.
-That is useful editorially, but it is also a drift surface:
+Status-summary scripts are useful editorially, but they are also a major
+drift surface:
 
-- the summary can silently diverge from the upstream scripts
+- the summary can silently diverge from upstream scripts
 - statuses can be upgraded or softened by narration
 - downstream readers may trust the summary more than the derivations
 
@@ -311,14 +307,8 @@ Better pattern:
 
 ### 2. Governance tables need explicit provenance columns
 
-Group 16 uses dataclass tables like:
-
-- `InsertionEntry`
-- `CountOnceEntry`
-- `BoundarySafetyEntry`
-- `RecoveryAuditEntry`
-
-These are readable, but they still let AI assign `status="REJECTED"` or
+Many scripts encode governance claims in dataclass tables. That is
+readable, but it still lets AI assign `status="REJECTED"` or
 `status="THEOREM_TARGET"` directly by hand.
 
 Minimal improvement:
@@ -369,14 +359,8 @@ can improvise governance semantics.
 
 ### 5. Every branch-kill or rejection should have a first-class reason code
 
-Group 16 contains many useful rejections:
-
-- `GR spatial copy rejection`
-- `gamma coefficient fit rejection`
-- `boundary repair rejection`
-
-These should be emitted with standardized reason codes rather than only
-English prose, for example:
+Useful rejections should be emitted with standardized reason codes rather
+than only English prose, for example:
 
 - `reason_code="recovery_selected_parameter"`
 - `reason_code="gr_copy_construction"`
@@ -388,7 +372,7 @@ automatically.
 
 ### 6. Scripts need a "memo mode" when no derivation exists
 
-Some Group 16 scripts are genuinely exploratory sieves. That is fine.
+Some scripts are genuinely exploratory sieves. That is fine.
 The problem is that a sieve can still print strong-looking output.
 
 Process improvement:
@@ -401,6 +385,82 @@ Process improvement:
 
 This would make it obvious when a script is organizing thought rather
 than proving something.
+
+### 7. Validate `order.txt` coverage automatically
+
+At this point each group depends heavily on execution order and on the
+assumption that `order.txt` lists the real chain.
+
+This should be checked automatically:
+
+- every `.py` script in a group appears in `order.txt` exactly once
+- no `order.txt` entry points to a missing file
+- dependency declarations are consistent with the previous script in order
+- status-summary scripts are last unless explicitly marked otherwise
+
+This would catch orphan scripts, stale filenames, and accidental chain
+breaks before a narrative summary starts depending on the wrong artifact.
+
+### 8. Make sample derivations explicitly typed as samples
+
+Later groups benefit from toy symbolic checks:
+
+- compact-support boundary profiles
+- finite integrability samples
+- nonnegative diagnostic-density samples
+
+These are useful, but they are not theorem support for the real physics
+branch by themselves.
+
+The archive and output should distinguish:
+
+- `DERIVATION`
+- `SAMPLE_DERIVATION`
+- `COUNTEREXAMPLE`
+- `DIAGNOSTIC_EXAMPLE`
+
+Without that distinction, a clean toy profile can be mistaken for
+evidence that the actual mechanism has been derived.
+
+### 9. Handoff summaries should be generated from structured upstream claims
+
+Many groups end with status-summary scripts that re-state:
+
+- what is unresolved
+- what is rejected
+- what the next group may assume
+
+Those handoffs should be built from structured upstream claims instead
+of freehand re-summarization. In particular:
+
+- unresolved obligations should be queried from the archive
+- rejected mechanisms should carry machine-readable reason codes
+- handoff assumptions should be listed explicitly as imports for the next group
+
+That would reduce the risk that a later group silently upgrades a
+theorem target into a working assumption.
+
+### 10. Distinguish "candidate route" from "licensed route"
+
+Scripts repeatedly use language like:
+
+- candidate safe route
+- safest fallback
+- theorem target
+
+Those are not the same.
+
+The process should explicitly track at least:
+
+- `candidate_route`
+- `provisional_convention`
+- `licensed_claim`
+- `deferred_route`
+- `rejected_route`
+
+Right now the scripts rely on prose to convey this difference. A later AI
+can easily collapse "candidate" into "working mechanism" if the status
+system does not make the distinction first-class.
 
 ## Practical Rule For Next Pass
 

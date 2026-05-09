@@ -1,0 +1,13 @@
+{
+  "derivation_id": "curvature_energy_density_role_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('curvature_energy_density_role_complete')",
+    "latex": "curvature_{energy density role complete}"
+  },
+  "method": "curvature_energy_density_role",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:47.743307+00:00",
+  "vacuumforge_version": "0.1.0"
+}

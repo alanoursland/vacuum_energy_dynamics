@@ -1,0 +1,13 @@
+{
+  "derivation_id": "curvature_admissibility_object_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('curvature_admissibility_object_inventory_complete')",
+    "latex": "curvature_{admissibility object inventory complete}"
+  },
+  "method": "curvature_admissibility_object_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:44.289199+00:00",
+  "vacuumforge_version": "0.1.0"
+}

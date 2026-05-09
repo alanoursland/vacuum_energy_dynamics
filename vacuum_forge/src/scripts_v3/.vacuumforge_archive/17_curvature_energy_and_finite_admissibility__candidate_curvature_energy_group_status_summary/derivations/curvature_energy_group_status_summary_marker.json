@@ -1,0 +1,13 @@
+{
+  "derivation_id": "curvature_energy_group_status_summary_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('curvature_energy_group_status_summary_complete')",
+    "latex": "curvature_{energy group status summary complete}"
+  },
+  "method": "curvature_energy_group_status_summary",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:55.117586+00:00",
+  "vacuumforge_version": "0.1.0"
+}

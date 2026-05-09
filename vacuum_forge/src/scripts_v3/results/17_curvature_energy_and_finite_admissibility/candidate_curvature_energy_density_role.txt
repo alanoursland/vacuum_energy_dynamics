@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Curvature Energy Density Role
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - finite_admissibility_condition_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Curvature energy density role problem
@@ -295,6 +297,13 @@ Not allowed:
 6. recovery tuning
 7. J_curv definition by fiat
 [PASS] allowed e_curv roles listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Sample diagnostic curvature density
+========================================================================================================================
+Sample diagnostic choice: e_curv = I_curv**2
+For real I_curv, e_curv is manifestly nonnegative.
+[PASS] sample diagnostic e_curv density: DERIVED_REDUCED — e_curv = I_curv**2 >= 0 for real I_curv
 
 ========================================================================================================================
 Case 5: Curvature energy decision tree

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "J_curv_definition_requirements_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('J_curv_definition_requirements_complete')",
+    "latex": "J_{curv definition requirements complete}"
+  },
+  "method": "J_curv_definition_requirements",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:49.262302+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "curvature_balance_law_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('curvature_balance_law_complete')",
+    "latex": "curvature_{balance law complete}"
+  },
+  "method": "curvature_balance_law",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:06:50.779198+00:00",
+  "vacuumforge_version": "0.1.0"
+}

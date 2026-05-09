@@ -23,7 +23,16 @@
 
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -35,6 +44,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -70,6 +80,30 @@ class FiniteAdmissibilityEntry:
     status: str
     missing: str
     consequence: str
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="curvature_admissibility_object_inventory_marker",
+        upstream_script_id="17_curvature_energy_and_finite_admissibility__candidate_curvature_admissibility_object_inventory",
+        upstream_derivation_id="curvature_admissibility_object_inventory_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def build_entries() -> List[FiniteAdmissibilityEntry]:
@@ -369,6 +403,35 @@ def case_4_condition_classes():
     status_line("finite-admissibility condition classes listed", "RECOMMENDED")
 
 
+def case_4b_sample_integrable_measure(ns):
+    header("Case 4b: Sample integrable curvature measure")
+
+    r, alpha = sp.symbols("r alpha", positive=True)
+    integrand = 4 * sp.pi * r**2 * alpha / (1 + r**2) ** 3
+    total_measure = sp.simplify(sp.integrate(integrand, (r, 0, sp.oo)))
+
+    print(f"Sample radial density = alpha / (1 + r^2)^3")
+    print(f"3D measure integrand = {integrand}")
+    print(f"Integral_0^inf 4*pi*r^2*alpha/(1+r^2)^3 dr = {total_measure}")
+
+    if total_measure == sp.pi**2 * alpha / 4:
+        status_line(
+            "sample integrable curvature measure",
+            "DERIVED_REDUCED",
+            f"Integral_D I_curv dV_phys = {total_measure}",
+        )
+    else:
+        status_line("sample integrable curvature measure", "RISK", "unexpected sample integral result")
+
+    ns.record_derivation(
+        derivation_id="finite_admissibility_sample_integrable_measure",
+        inputs=[integrand],
+        output=total_measure,
+        method="symbolic sample integrability check",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_decision_tree():
     header("Case 5: Finite-admissibility decision tree")
 
@@ -484,17 +547,29 @@ def final_interpretation():
 
 def main():
     header("Candidate Finite Admissibility Condition")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_condition_classes()
+    case_4b_sample_integrable_measure(ns)
     case_5_decision_tree()
     case_6_good_failure()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
+
+    ns.record_derivation(
+        derivation_id="finite_admissibility_condition_marker",
+        inputs=[],
+        output=sp.Symbol("finite_admissibility_condition_complete"),
+        method="finite_admissibility_condition",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

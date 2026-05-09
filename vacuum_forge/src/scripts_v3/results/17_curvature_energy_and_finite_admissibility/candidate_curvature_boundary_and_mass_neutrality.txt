@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Curvature Boundary And Mass Neutrality
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - curvature_balance_law_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Curvature boundary and mass neutrality problem
@@ -320,6 +322,14 @@ Rejected routes:
 4. recovery-tuned smoothing
 5. hidden ordinary matter rerouting
 [PASS] curvature neutrality routes listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Sample compact-support neutrality profile
+========================================================================================================================
+Sample interior curvature profile = alpha*(1 - r**2/R**2)**2
+profile(R) = 0
+profile'(R) = 0
+[PASS] sample compact-support neutrality profile: DERIVED_REDUCED — profile(R) = 0, profile'(R) = 0
 
 ========================================================================================================================
 Case 5: Boundary/mass neutrality decision tree

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate J_curv Definition Requirements
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - curvature_energy_density_role_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: J_curv definition requirements problem

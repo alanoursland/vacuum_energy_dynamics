@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "metric_insertion_group_status_summary_marker",
+    "upstream_script_id": "16_metric_insertion_and_no_overlap__candidate_metric_insertion_group_status_summary",
+    "upstream_derivation_id": "metric_insertion_group_status_summary_marker",
+    "declared_at": "2026-05-09T15:06:43.702256+00:00"
+  }
+]
