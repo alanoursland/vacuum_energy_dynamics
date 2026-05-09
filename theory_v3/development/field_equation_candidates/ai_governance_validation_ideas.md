@@ -579,6 +579,214 @@ distinguish:
 - "we have a mathematically coherent class of this type"
 - "we are only naming a possible direction"
 
+### 16. Boolean `status_line` silences computed failures
+
+Scripts in groups 00-08 define:
+
+    def status_line(label: str, ok: bool, detail: str = "") -> None:
+        mark = "PASS" if ok else "WARN"
+        ...
+
+This interface can only emit `[PASS]` or `[WARN]`. A computed failure — a
+symbolic simplification that returns nonzero, a boundary condition that is
+not satisfied, an identity that fails — prints as `[WARN]`, not `[FAIL]`.
+
+This is a systematic understatement of failures across roughly 20 early
+scripts. A reader or a downstream AI scanning the results for `[FAIL]` will
+not find these failures. They look like cautions rather than detected errors.
+
+The string-based interface introduced in group 09+ allows `[FAIL]` through
+the marks dictionary. But the boolean-interface scripts were never upgraded.
+Until they are, their detected failures are structurally indistinguishable
+from design cautions.
+
+Fix: add `[FAIL]` as a reachable output for any check that is definitively
+wrong, not merely uncertain. The boolean interface should be replaced with
+at least a three-value interface: `pass`, `warn`, `fail`.
+
+### 17. Stale self-location comments accumulate as false metadata
+
+Scripts in groups 00-11 carry header comments like:
+
+    # Suggested location:
+    #   scripts_v3/candidate_foo.py
+    # or:
+    #   theory_v3/development/field_equation_candidates/NN_group/
+
+These were written during development to suggest where the file should be
+placed. Now that the scripts are in their directories, the comments describe
+what already exists but read as if placement is still open or uncertain.
+
+Across approximately 68 scripts, this pattern:
+
+- reads as if the script is a draft or incorrectly placed
+- can cause a later AI to re-suggest the same (or a different) location
+- gets copied into new scripts as boilerplate, propagating the stale pattern
+
+Better practice: replace `# Suggested location:` with a fixed `# Group:`
+metadata field (e.g., `# Group: 07_scalar_constraint_and_radiation_safety`)
+that describes the script's actual category. This is stable and correct
+rather than aspirational.
+
+### 18. Versioned and generated file pairs without canonical status
+
+Several groups include multiple versions of the same script:
+
+- `candidate_log_scale_modes_test.py` and `..._v2.py` (group 01)
+- `candidate_kappa_suppression_functionals.py` and `..._v2.py` (group 00)
+- `candidate_conservation_identity_requirements.py` (group 08)
+  and `...requirements_generated.py` (group 11)
+- `candidate_parent_identity_template.py` (group 11)
+  and `..._v2.py` (group 12)
+
+Both versions appear in `order.txt` and both run. Each records its own
+archive marker under a different `SCRIPT_ID`. There is no machine-readable
+signal for which version is canonical or authoritative.
+
+Consequences:
+
+- a downstream script that depends on the result must pick one version;
+  if it picks the superseded one, it is depending on stale output
+- a future AI reading the tree cannot determine which version to trust
+  without inspecting archive timestamps
+- both versions can diverge silently: if v2 is changed, v1 still runs
+  and its marker still exists
+
+Fix: superseded scripts should be explicitly marked as superseded —
+either removed from `order.txt`, or given a `# SUPERSEDED_BY: ...` header
+comment, or recorded with `status=Status.SUPERSEDED` in their archive
+call. Without such a marker, the pair has no canonical direction.
+
+### 19. Archive-less early groups create a blind start in the dependency chain
+
+Scripts in groups 00-06 do not call `prepare_archive()`, do not call
+`record_derivation()`, and declare no dependencies. These scripts compute
+symbolic results — Euler-Lagrange equations, algebraic identities, toy
+energy minimizations — but produce zero archive entries.
+
+The archive dependency chain effectively starts at group 07. But the
+knowledge the chain depends on was established (and may be incomplete or
+wrong) in groups 00-06. A downstream script in group 10 that depends on
+a result established in group 01 has no way to declare that dependency:
+group 01 left no marker.
+
+This creates an invisible assumption gap:
+
+- the dependency graph appears to start at group 07
+- but the actual epistemic foundation is in groups 00-06
+- no machine check verifies that groups 00-06 results are unchanged,
+  consistent, or even runnable
+
+The fix is not necessarily to retrofit archive integration into every
+early script. It is to acknowledge the gap:
+
+- group 07's cross-group bridge should note that it depends on
+  pre-archive results that are not machine-verified
+- groups 00-06 results should be explicitly tagged as `UNARCHIVED_FOUNDATION`
+  or similar, so the dependency graph shows the gap rather than hiding it
+
+### 20. Explicit scope disclaimers drop out in mid-period scripts
+
+Scripts in groups 00-02 carry explicit disclaimers:
+
+    # This is NOT a field equation and NOT a theorem.
+    # It is a reduced-sector sanity test.
+
+or:
+
+    # This is an audit script, not a derivation.
+    # This is a requirements script, not a derivation.
+
+These make the script's epistemic status human-readable and explicit.
+
+In groups 07-13, these disclaimers largely disappear. Scripts that are
+purely inventory or audit still record `status=Status.DERIVED` for their
+markers, and their docstrings say things like "This script inventories..."
+without an explicit "not a derivation" statement.
+
+In groups 14-19, the structured status fields (THEOREM_TARGET, UNRESOLVED,
+DEFER) partially restore the machine-readable version of this distinction.
+
+The gap is groups 07-13: scripts there often have neither the explicit
+human-readable disclaimer nor the structured machine-readable status fields.
+A summary script or a later AI reading those scripts has no explicit label
+to confirm whether a `Status.DERIVED` marker means "we proved something" or
+"the script ran and classified inventory."
+
+Fix: scripts that are inventory, audit, or requirements should carry a
+consistent header tag:
+
+    # Script type: INVENTORY
+    # Script type: AUDIT
+    # Script type: REQUIREMENTS
+
+or use a first-class archive status type like `Status.INVENTORY_MARKER`
+rather than `Status.DERIVED` for their markers.
+
+### 21. Audit scripts lack a machine-readable "controlled failure" block
+
+Scripts in groups 14-19 that audit failure modes include a structured
+`case_6_good_failure()` section. This section explicitly states:
+
+- what a properly-detected failure looks like
+- why that failure is expected or controlled
+- what the dangerous version of the same failure would look like
+
+Earlier audit scripts in groups 07-13 — including
+`candidate_field_equation_closure_failure_modes.py`,
+`candidate_gr_limit_recovery_audit.py`, and similar — document failure modes
+in prose but do not have a structured "controlled failure" block.
+
+Without this structure, an audit script that finds a controlled failure
+looks identical to one that silently passed. Both produce `[PASS]` or
+`[WARN]` lines without a machine-readable signal that says "this failure was
+expected and its presence confirms the audit is working."
+
+This matters because:
+
+- a downstream AI reviewing the results cannot distinguish "audited and
+  found controlled failure" from "audited and found nothing"
+- a later summary script iterating the results has no way to confirm that
+  the audit ran against a real test case, not a trivial or empty one
+- the absence of a good-failure witness is itself a validation gap
+
+Fix: audit scripts should include at minimum one case that demonstrates a
+detectable bad outcome for a known bad input. The archive record should
+note whether a good-failure case was verified or only assumed.
+
+### 22. Script failures appear as result files, masking the absence of archive markers
+
+`run_scripts_v3.py` captures both stdout and stderr for every script and
+writes the combined output to a result file. If a script fails at import
+(e.g., `ImportError`, `ModuleNotFoundError`) or raises an exception, the
+result file still exists and contains the traceback under a `[stderr]` section.
+
+This means:
+
+- a script that failed to run looks like it produced output
+- the archive markers for that script are absent (since `record_derivation()`
+  was never reached), but this is only visible from the archive, not from
+  the results directory
+- a reviewer scanning the results directory sees a file for every script
+  and may assume all scripts ran successfully
+
+The governance concern: if a script in group 05 has a stale import and
+fails silently, its archive marker is absent. A later script in group 07
+that depends on that marker will correctly report `dependency_missing`. But
+if the group 07 script was written before the group 05 script was added to
+the chain (or if the dependency was never declared), the failure is invisible.
+
+Better practice:
+
+- the runner should report a distinct status (e.g., `[FAIL]`) for scripts
+  that exit nonzero, making it visible in the console even if the result
+  file still contains the stderr
+- result files for failed scripts should start with a `[SCRIPT_FAILED]`
+  sentinel line so that automated readers can distinguish them from clean
+  output
+- vf-lint could flag result files that contain `[stderr]` sections paired
+  with absent archive markers as likely broken scripts
+
 ## Practical Rule For Next Pass
 
 For the next script pass:
