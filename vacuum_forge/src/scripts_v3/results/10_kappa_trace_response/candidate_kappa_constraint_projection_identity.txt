@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Constraint Projection Identity
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_gauge_vs_physical_trace_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa constraint projection identity problem

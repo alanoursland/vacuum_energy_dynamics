@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "kappa_boundary_layer_model_marker",
+    "upstream_script_id": "10_kappa_trace_response__candidate_kappa_boundary_layer_model",
+    "upstream_derivation_id": "kappa_boundary_layer_model_marker",
+    "declared_at": "2026-05-08T19:05:58.392766+00:00"
+  }
+]

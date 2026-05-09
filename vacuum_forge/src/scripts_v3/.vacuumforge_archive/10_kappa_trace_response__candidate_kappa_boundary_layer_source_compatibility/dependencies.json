@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "kappa_second_derivative_boundary_stress_marker",
+    "upstream_script_id": "10_kappa_trace_response__candidate_kappa_second_derivative_boundary_stress",
+    "upstream_derivation_id": "kappa_second_derivative_boundary_stress_marker",
+    "declared_at": "2026-05-08T19:06:00.435767+00:00"
+  }
+]

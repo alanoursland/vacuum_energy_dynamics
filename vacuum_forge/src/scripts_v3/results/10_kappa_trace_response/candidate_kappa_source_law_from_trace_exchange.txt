@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Source Law From Trace Exchange
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vector_source_shape_factor_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa source-law problem

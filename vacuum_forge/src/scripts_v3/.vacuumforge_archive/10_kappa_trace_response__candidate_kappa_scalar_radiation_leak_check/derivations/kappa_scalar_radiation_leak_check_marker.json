@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_scalar_radiation_leak_check_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_scalar_radiation_leak_options_classified')",
+    "latex": "\\kappa_{scalar radiation leak options classified}"
+  },
+  "method": "kappa_scalar_radiation_leak_check_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:50.460153+00:00",
+  "vacuumforge_version": "0.1.0"
+}

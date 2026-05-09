@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Scalar Radiation Leak Check
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_constraint_projection_identity_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa scalar-radiation leak problem

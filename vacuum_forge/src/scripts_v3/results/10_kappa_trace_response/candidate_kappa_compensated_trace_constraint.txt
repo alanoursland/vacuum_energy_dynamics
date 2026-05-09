@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Compensated Trace Constraint
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_pressure_trace_model_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa compensated trace constraint problem

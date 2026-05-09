@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_source_law_from_trace_exchange_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_trace_source_family_narrowed')",
+    "latex": "\\kappa_{trace source family narrowed}"
+  },
+  "method": "kappa_source_law_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:40.447138+00:00",
+  "vacuumforge_version": "0.1.0"
+}

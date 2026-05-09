@@ -19,7 +19,15 @@
 #
 # This is a toy model, not a GR interior solution.
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -43,6 +51,30 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="kappa_exterior_suppression_condition_marker",
+        upstream_script_id="10_kappa_trace_response__candidate_kappa_exterior_suppression_condition",
+        upstream_derivation_id="kappa_exterior_suppression_condition_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_problem_statement():
@@ -293,6 +325,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Kappa Pressure Trace Model")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     r, R, p0, p, S_trace = case_1_pressure_profile()
     case_2_integrated_trace_charge(r, R, p0, S_trace)
@@ -303,6 +337,14 @@ def main():
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="kappa_pressure_trace_model_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_pressure_trace_model_classified"),
+        method="kappa_pressure_trace_model_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

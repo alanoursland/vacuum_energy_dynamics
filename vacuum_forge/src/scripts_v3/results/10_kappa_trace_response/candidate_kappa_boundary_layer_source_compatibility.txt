@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Boundary Layer Source Compatibility
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_second_derivative_boundary_stress_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa boundary-layer source compatibility problem

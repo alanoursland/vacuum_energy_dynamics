@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_compensated_trace_constraint_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_compensated_trace_constraint_stated')",
+    "latex": "\\kappa_{compensated trace constraint stated}"
+  },
+  "method": "kappa_compensated_trace_constraint_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:45.538145+00:00",
+  "vacuumforge_version": "0.1.0"
+}

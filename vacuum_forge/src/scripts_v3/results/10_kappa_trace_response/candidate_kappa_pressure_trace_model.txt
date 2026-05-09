@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Pressure Trace Model
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_exterior_suppression_condition_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa pressure/trace model problem

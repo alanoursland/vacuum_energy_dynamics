@@ -35,7 +35,15 @@
 # This is not a final physical derivation or observational claim.
 # It is a variational toy model and prediction-discipline check.
 
+from pathlib import Path
+
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -59,6 +67,30 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="kappa_joint_minimum_spline_model_marker",
+        upstream_script_id="10_kappa_trace_response__candidate_kappa_joint_minimum_spline_model",
+        upstream_derivation_id="kappa_joint_minimum_spline_model_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def case_0_problem_statement():
@@ -397,6 +429,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Kappa Joint Minimum Energy Functional")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     r, f, W_int, W_ext, f_int, f_ext, lam1, lam2, L = case_1_define_energy_density()
     case_2_euler_lagrange_fourth_order(r, f, L)
@@ -410,6 +444,14 @@ def main():
     case_10_classification()
     case_11_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="kappa_joint_minimum_energy_functional_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_joint_minimum_energy_functional_stated"),
+        method="kappa_joint_minimum_energy_functional_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

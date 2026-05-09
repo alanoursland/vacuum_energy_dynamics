@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_pressure_trace_model_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_pressure_trace_model_classified')",
+    "latex": "\\kappa_{pressure trace model classified}"
+  },
+  "method": "kappa_pressure_trace_model_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:43.767142+00:00",
+  "vacuumforge_version": "0.1.0"
+}

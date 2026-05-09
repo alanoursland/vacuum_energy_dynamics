@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_gauge_vs_physical_trace_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_gauge_vs_physical_trace_classified')",
+    "latex": "\\kappa_{gauge vs \\mathcal{physi} trace classified}"
+  },
+  "method": "kappa_gauge_vs_physical_trace_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:47.149151+00:00",
+  "vacuumforge_version": "0.1.0"
+}

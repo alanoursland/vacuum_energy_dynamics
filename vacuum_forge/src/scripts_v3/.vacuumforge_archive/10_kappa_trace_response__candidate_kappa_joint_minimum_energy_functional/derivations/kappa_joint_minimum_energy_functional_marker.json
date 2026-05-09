@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_joint_minimum_energy_functional_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_joint_minimum_energy_functional_stated')",
+    "latex": "\\kappa_{joint minimum energy functional stated}"
+  },
+  "method": "kappa_joint_minimum_energy_functional_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:06:05.349777+00:00",
+  "vacuumforge_version": "0.1.0"
+}

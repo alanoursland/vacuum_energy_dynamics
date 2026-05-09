@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Boundary Layer Model
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_noninertial_vacuum_curvature_relaxation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa boundary-layer problem

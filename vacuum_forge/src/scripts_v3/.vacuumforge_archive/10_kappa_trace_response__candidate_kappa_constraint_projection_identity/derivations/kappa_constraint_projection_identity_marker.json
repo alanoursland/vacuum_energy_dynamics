@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_constraint_projection_identity_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_constraint_projection_identity_stated')",
+    "latex": "\\kappa_{constraint projection identity stated}"
+  },
+  "method": "kappa_constraint_projection_identity_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:48.899149+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Exterior Suppression Condition
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_source_law_from_trace_exchange_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa exterior suppression problem

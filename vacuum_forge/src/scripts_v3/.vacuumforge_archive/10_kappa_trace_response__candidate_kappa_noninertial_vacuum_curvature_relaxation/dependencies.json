@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "kappa_relaxation_energy_accounting_marker",
+    "upstream_script_id": "10_kappa_trace_response__candidate_kappa_relaxation_energy_accounting",
+    "upstream_derivation_id": "kappa_relaxation_energy_accounting_marker",
+    "declared_at": "2026-05-08T19:05:54.903760+00:00"
+  }
+]

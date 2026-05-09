@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Near-Boundary Deviation Diagnostic
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_joint_minimum_energy_functional_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 1: Reference and joint profiles

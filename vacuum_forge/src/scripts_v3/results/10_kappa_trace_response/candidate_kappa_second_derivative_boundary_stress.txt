@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Second Derivative Boundary Stress
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_boundary_layer_model_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa second-derivative boundary stress problem

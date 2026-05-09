@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_joint_minimum_spline_model_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_joint_minimum_spline_model_stated')",
+    "latex": "\\kappa_{joint minimum spline model stated}"
+  },
+  "method": "kappa_joint_minimum_spline_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:06:03.540771+00:00",
+  "vacuumforge_version": "0.1.0"
+}

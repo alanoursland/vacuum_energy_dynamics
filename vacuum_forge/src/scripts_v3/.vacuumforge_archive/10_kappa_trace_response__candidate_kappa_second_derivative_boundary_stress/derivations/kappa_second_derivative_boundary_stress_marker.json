@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_second_derivative_boundary_stress_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_second_derivative_boundary_stress_classified')",
+    "latex": "\\kappa_{second derivative boundary stress classified}"
+  },
+  "method": "kappa_second_derivative_boundary_stress_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:59.438765+00:00",
+  "vacuumforge_version": "0.1.0"
+}

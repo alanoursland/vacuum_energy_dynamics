@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Relaxation Energy Accounting
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_boundary_flux_cancellation_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa relaxation energy-accounting problem

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Gauge Versus Physical Trace
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_compensated_trace_constraint_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa gauge-vs-physical trace problem

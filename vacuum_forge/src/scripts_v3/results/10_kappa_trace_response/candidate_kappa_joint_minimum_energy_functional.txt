@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Joint Minimum Energy Functional
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_joint_minimum_spline_model_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Joint minimum energy-functional problem

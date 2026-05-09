@@ -1,0 +1,13 @@
+{
+  "derivation_id": "kappa_boundary_flux_cancellation_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('kappa_boundary_flux_cancellation_classified')",
+    "latex": "\\kappa_{boundary flux cancellation classified}"
+  },
+  "method": "kappa_boundary_flux_cancellation_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-08T19:05:52.146204+00:00",
+  "vacuumforge_version": "0.1.0"
+}

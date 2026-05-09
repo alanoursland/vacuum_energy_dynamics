@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Boundary Flux Cancellation
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_scalar_radiation_leak_check_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Kappa boundary flux cancellation problem

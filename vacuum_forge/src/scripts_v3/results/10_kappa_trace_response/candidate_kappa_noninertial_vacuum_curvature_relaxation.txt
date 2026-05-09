@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Kappa Non-Inertial Vacuum-Curvature Relaxation
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - kappa_relaxation_energy_accounting_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Non-inertial kappa relaxation problem
