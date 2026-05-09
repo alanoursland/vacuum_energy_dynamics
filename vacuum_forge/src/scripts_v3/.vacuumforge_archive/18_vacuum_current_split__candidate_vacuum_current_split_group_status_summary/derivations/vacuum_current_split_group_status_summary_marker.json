@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vacuum_current_split_group_status_summary_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vacuum_current_split_group_status_summary_complete')",
+    "latex": "vacuum_{current split group status summary complete}"
+  },
+  "method": "vacuum_current_split_group_status_summary",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:24:46.290812+00:00",
+  "vacuumforge_version": "0.1.0"
+}

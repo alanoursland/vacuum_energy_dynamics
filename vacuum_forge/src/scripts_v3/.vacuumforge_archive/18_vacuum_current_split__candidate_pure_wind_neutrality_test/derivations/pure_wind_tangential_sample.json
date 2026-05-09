@@ -1,0 +1,18 @@
+{
+  "derivation_id": "pure_wind_tangential_sample",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Mul(Integer(-1), Symbol('y', positive=True))], [Symbol('x', positive=True)]])",
+      "latex": "\\left[\\begin{matrix}- y\\\\x\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0))",
+    "latex": "\\left( 0, \\  0\\right)"
+  },
+  "method": "sample_tangential_flow_compatibility",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:24:37.432050+00:00",
+  "vacuumforge_version": "0.1.0"
+}

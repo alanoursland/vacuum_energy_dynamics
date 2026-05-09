@@ -1,0 +1,13 @@
+{
+  "derivation_id": "dark_sector_coupling_optional_branch_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('dark_sector_coupling_optional_branch_complete')",
+    "latex": "dark_{sector coupling optional branch complete}"
+  },
+  "method": "dark_sector_coupling_optional_branch",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:24:44.886140+00:00",
+  "vacuumforge_version": "0.1.0"
+}

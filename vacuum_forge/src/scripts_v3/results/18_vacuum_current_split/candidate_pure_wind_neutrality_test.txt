@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Pure Wind Neutrality Test
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_current_split_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Pure wind neutrality problem
@@ -341,6 +343,21 @@ Candidate neutrality conditions:
 9. no boundary repair
 10. no arbitrary preferred frame
 [PASS] pure wind neutrality conditions listed: RECOMMENDED
+
+========================================================================================================================
+Case 4b: Sample divergence-free tangential pure wind
+========================================================================================================================
+Sample field:
+  J_sub(x, y) = Matrix([[-y], [x]])
+
+div J_sub = 0
+radial boundary flux on r=R = 0
+
+Interpretation:
+  this sample shows a divergence-free tangential flow can satisfy
+  no local source/sink and zero boundary-normal flux simultaneously.
+  It is a compatibility example, not a J_sub theorem.
+[PASS] sample pure-wind compatibility check: DERIVED_REDUCED — div J_sub = 0 and n·J_sub = 0 for the tangential sample field
 
 ========================================================================================================================
 Case 5: Pure wind neutrality decision tree

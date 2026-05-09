@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "exchange_current_source_side_inventory_marker",
+    "upstream_script_id": "18_vacuum_current_split__candidate_exchange_current_source_side_inventory",
+    "upstream_derivation_id": "exchange_current_source_side_inventory_marker",
+    "declared_at": "2026-05-09T15:24:44.305960+00:00"
+  }
+]

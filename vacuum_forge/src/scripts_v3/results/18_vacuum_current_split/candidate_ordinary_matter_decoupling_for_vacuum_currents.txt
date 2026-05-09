@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Ordinary Matter Decoupling For Vacuum Currents
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - J_exch_definition_requirements_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Ordinary matter decoupling problem

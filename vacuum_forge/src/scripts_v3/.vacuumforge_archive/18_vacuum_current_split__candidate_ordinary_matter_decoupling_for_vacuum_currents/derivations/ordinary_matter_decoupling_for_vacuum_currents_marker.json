@@ -1,0 +1,13 @@
+{
+  "derivation_id": "ordinary_matter_decoupling_for_vacuum_currents_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('ordinary_matter_decoupling_for_vacuum_currents_complete')",
+    "latex": "ordinary_{matter decoupling for vacuum currents complete}"
+  },
+  "method": "ordinary_matter_decoupling_for_vacuum_currents",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:24:41.863154+00:00",
+  "vacuumforge_version": "0.1.0"
+}

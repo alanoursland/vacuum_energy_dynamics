@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum Current Split Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - curvature_energy_group_status_summary_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vacuum current split inventory problem

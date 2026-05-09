@@ -1,0 +1,13 @@
+{
+  "derivation_id": "exchange_current_source_side_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('exchange_current_source_side_inventory_complete')",
+    "latex": "exchange_{current source side inventory complete}"
+  },
+  "method": "exchange_current_source_side_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:24:43.346659+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -462,6 +462,75 @@ Right now the scripts rely on prose to convey this difference. A later AI
 can easily collapse "candidate" into "working mechanism" if the status
 system does not make the distinction first-class.
 
+### 11. Summary scripts should check for claim-strength upgrades
+
+Group-ending summary scripts are one of the easiest places for AI drift
+to hide. A summary can take upstream results like:
+
+- `THEOREM_TARGET`
+- `UNRESOLVED`
+- `CANDIDATE`
+
+and silently restate them as if they were stronger:
+
+- "licensed"
+- "required mechanism"
+- "best explanation"
+
+without any new derivation appearing in the archive.
+
+The summary layer should therefore compare its outgoing claims against
+the strongest status actually supported upstream. A summary should not be
+allowed to upgrade:
+
+- `UNRESOLVED -> CANDIDATE`
+- `CANDIDATE -> LICENSED`
+- `THEOREM_TARGET -> DERIVED`
+
+unless it attaches a new evidence object or derivation.
+
+### 12. Optional branches should default to absent, not latent
+
+When a script explores an optional branch such as a dark-sector coupling,
+the safest default is absence, not a vaguely "waiting in the wings"
+latent mechanism.
+
+Otherwise AI-written scripts start to speak as if the branch is already
+part of the theory and only needs activation later.
+
+A better rule:
+
+- optional branch absent by default
+- optional branch may become `candidate_route` only with explicit
+  activation conditions
+- optional branch may become `licensed_claim` only with evidence
+
+This is especially important for speculative couplings that can easily be
+used as repair patches.
+
+### 13. Compatibility examples need explicit scope tags
+
+Some scripts benefit from a toy symbolic check showing that a condition is
+compatible in principle:
+
+- divergence-free tangential flow
+- compact-support boundary neutrality
+- finite integrability sample
+
+These are useful, but they are not the same as deriving the real branch.
+
+The output and archive should make the scope explicit:
+
+- `compatibility_example`
+- `sample_profile`
+- `toy_support_construction`
+
+and should not let those records promote a theorem target into a
+mechanism claim. This is the same principle as distinguishing
+`SAMPLE_DERIVATION` from `DERIVATION`, but applied specifically to
+scripts that test whether a claimed neutrality or safety condition is
+even coherent.
+
 ## Practical Rule For Next Pass
 
 For the next script pass:

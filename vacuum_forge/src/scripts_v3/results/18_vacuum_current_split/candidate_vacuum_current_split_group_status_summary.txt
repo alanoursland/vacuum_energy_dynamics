@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum Current Split Group Status Summary
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - dark_sector_coupling_optional_branch_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Group 18 status problem

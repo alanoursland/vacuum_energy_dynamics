@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate J_sub Definition Requirements
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - pure_wind_neutrality_test_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: J_sub definition requirements problem

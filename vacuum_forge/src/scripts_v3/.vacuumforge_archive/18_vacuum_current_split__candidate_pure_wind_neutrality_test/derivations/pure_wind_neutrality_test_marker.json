@@ -1,0 +1,13 @@
+{
+  "derivation_id": "pure_wind_neutrality_test_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('pure_wind_neutrality_test_complete')",
+    "latex": "pure_{wind neutrality test complete}"
+  },
+  "method": "pure_wind_neutrality_test",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T15:24:37.433055+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Dark-Sector Coupling Optional Branch
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - exchange_current_source_side_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Dark-sector optional coupling problem
