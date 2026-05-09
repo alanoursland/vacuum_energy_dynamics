@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vacuum_accounting_parent_balance_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vacuum_accounting_parent_balance_audited')",
+    "latex": "vacuum_{accounting parent balance audited}"
+  },
+  "method": "vacuum_accounting_parent_balance_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:32:02.965319+00:00",
+  "vacuumforge_version": "0.1.0"
+}

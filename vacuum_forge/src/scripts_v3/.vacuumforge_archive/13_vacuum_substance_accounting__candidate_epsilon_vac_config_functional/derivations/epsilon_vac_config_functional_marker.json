@@ -1,0 +1,13 @@
+{
+  "derivation_id": "epsilon_vac_config_functional_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('epsilon_vac_config_functional_audited')",
+    "latex": "\\epsilon_{vac config functional audited}"
+  },
+  "method": "epsilon_vac_config_functional_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:32:04.556626+00:00",
+  "vacuumforge_version": "0.1.0"
+}

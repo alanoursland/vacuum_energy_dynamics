@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Binary Radiation Scalar Conversion Safety
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - mass_acceleration_gradient_coupling_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Binary-radiation scalar-conversion safety problem

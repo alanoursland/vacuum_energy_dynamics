@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Epsilon Kappa Double Counting Check
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - epsilon_vac_config_functional_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: epsilon-kappa double-counting problem
@@ -214,6 +216,19 @@ Constraint target:
 
 but no K_lock energy counted until derived.
 [WARN] updated provisional functional stated: CANDIDATE
+
+========================================================================================================================
+Case 6b: Symbolic provisional accounting split
+========================================================================================================================
+Provisional symbolic split:
+
+  epsilon_vac_config = K_zeta*(zeta - zeta_min)**2/2 + L_zeta*grad_zeta_sq/2
+  e_kappa = K_kappa*(kappa - kappa_min)**2/2
+  E_total = K_kappa*(kappa - kappa_min)**2/2 + K_zeta*(zeta - zeta_min)**2/2 + L_zeta*grad_zeta_sq/2
+
+Interpretation:
+  the provisional convention counts zeta-geometry and kappa-relaxation once each, separately.
+[PASS] symbolic provisional energy split: RECOMMENDED — epsilon and e_kappa kept separate
 
 ========================================================================================================================
 Case 7: Next tests

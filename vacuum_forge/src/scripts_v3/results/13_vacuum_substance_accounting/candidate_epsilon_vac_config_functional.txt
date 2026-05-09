@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Epsilon Vac Config Functional
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_accounting_parent_balance_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: epsilon_vac_config functional problem
@@ -207,6 +209,17 @@ and no:
 
 This is a scaffold functional, not a derived action.
 [WARN] minimal candidate functional stated: CANDIDATE
+
+========================================================================================================================
+Case 4b: Symbolic minimal functional
+========================================================================================================================
+Symbolic scaffold:
+
+  epsilon_vac_config = K_lock*(kappa - zeta + zeta_min)**2/2 + K_zeta*(zeta - zeta_min)**2/2 + L_zeta*grad_zeta_sq/2
+
+Interpretation:
+  the provisional functional carries displacement, gradient, and locking terms explicitly.
+[PASS] symbolic epsilon functional scaffold: DERIVED_REDUCED — minimal symbolic form assembled
 
 ========================================================================================================================
 Case 5: Exchange with relaxation

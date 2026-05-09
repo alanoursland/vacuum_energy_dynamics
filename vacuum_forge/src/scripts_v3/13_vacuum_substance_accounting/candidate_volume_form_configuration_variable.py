@@ -28,7 +28,16 @@
 # It is a candidate-variable audit.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -175,6 +184,30 @@ def build_candidates() -> List[VolumeCandidate]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="vacuum_substance_accounting_inventory_marker",
+        upstream_script_id="13_vacuum_substance_accounting__candidate_vacuum_substance_accounting_inventory",
+        upstream_derivation_id="vacuum_substance_accounting_inventory_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_candidate(v: VolumeCandidate) -> None:
     print()
     print("-" * 120)
@@ -257,6 +290,33 @@ def case_3_status_counts(entries: List[VolumeCandidate]):
     print("  The key risk is duplicating A-sector scalar mass response.")
 
     status_line("volume-form status count produced", "STRUCTURAL")
+
+
+def case_3b_linear_volume_relation(ns) -> None:
+    header("Case 3b: Linear volume-form relation")
+
+    h = sp.symbols("h")
+    scale = 1 + h / 3
+    zeta = sp.simplify(sp.Rational(3, 2) * sp.log(scale))
+    linear_delta = sp.simplify(sp.diff(zeta, h).subs(h, 0) * h)
+
+    print("Pure trace perturbation model:")
+    print()
+    print("  gamma_ij = (1 + h/3) delta_ij")
+    print(f"  zeta(h) = {zeta}")
+    print(f"  linear delta zeta = {linear_delta}")
+    print()
+    print("Interpretation:")
+    print("  the isotropic trace perturbation gives delta zeta = h/2 at linear order.")
+
+    status_line("linear trace-volume relation", "DERIVED_REDUCED", f"delta zeta = {linear_delta}")
+    ns.record_derivation(
+        derivation_id="volume_form_linear_trace_relation",
+        inputs=[scale],
+        output=linear_delta,
+        method="linearized volume-form perturbation",
+        status=Status.DERIVED,
+    )
 
 
 def case_4_minimal_candidate_definition():
@@ -385,16 +445,27 @@ def final_interpretation():
 
 def main():
     header("Candidate Volume Form Configuration Variable")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_candidates()
     case_1_candidate_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
+    case_3b_linear_volume_relation(ns)
     case_4_minimal_candidate_definition()
     case_5_relation_to_1d_toy()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="volume_form_configuration_variable_marker",
+        inputs=[],
+        output=sp.Symbol("volume_form_configuration_variable_audited"),
+        method="volume_form_configuration_variable_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

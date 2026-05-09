@@ -1,0 +1,8 @@
+[
+  {
+    "dependency_id": "vacuum_substance_accounting_inventory_marker",
+    "upstream_script_id": "13_vacuum_substance_accounting__candidate_vacuum_substance_accounting_inventory",
+    "upstream_derivation_id": "vacuum_substance_accounting_inventory_marker",
+    "declared_at": "2026-05-09T07:31:51.646062+00:00"
+  }
+]

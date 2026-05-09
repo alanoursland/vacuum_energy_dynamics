@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Scalar Conversion Not Damping
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - trace_vs_tt_geometric_split_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Scalar conversion-not-damping problem

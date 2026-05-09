@@ -25,7 +25,16 @@
 # It is not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -161,6 +170,30 @@ def build_entries() -> List[DoubleCountingEntry]:
             missing="parent projector / recombination derivation",
         ),
     ]
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="epsilon_vac_config_functional_marker",
+        upstream_script_id="13_vacuum_substance_accounting__candidate_epsilon_vac_config_functional",
+        upstream_derivation_id="epsilon_vac_config_functional_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 def print_entry(e: DoubleCountingEntry) -> None:
@@ -307,6 +340,39 @@ def case_6_updated_functional():
     status_line("updated provisional functional stated", "CANDIDATE")
 
 
+def case_6b_symbolic_accounting_split(ns) -> None:
+    header("Case 6b: Symbolic provisional accounting split")
+
+    K_zeta, L_zeta, K_kappa = sp.symbols("K_zeta L_zeta K_kappa")
+    zeta, zeta_min, kappa, kappa_min, grad_zeta_sq = sp.symbols(
+        "zeta zeta_min kappa kappa_min grad_zeta_sq"
+    )
+    epsilon = sp.simplify(
+        sp.Rational(1, 2) * K_zeta * (zeta - zeta_min) ** 2
+        + sp.Rational(1, 2) * L_zeta * grad_zeta_sq
+    )
+    e_kappa = sp.simplify(sp.Rational(1, 2) * K_kappa * (kappa - kappa_min) ** 2)
+    total = sp.simplify(epsilon + e_kappa)
+
+    print("Provisional symbolic split:")
+    print()
+    print(f"  epsilon_vac_config = {epsilon}")
+    print(f"  e_kappa = {e_kappa}")
+    print(f"  E_total = {total}")
+    print()
+    print("Interpretation:")
+    print("  the provisional convention counts zeta-geometry and kappa-relaxation once each, separately.")
+
+    status_line("symbolic provisional energy split", "RECOMMENDED", "epsilon and e_kappa kept separate")
+    ns.record_derivation(
+        derivation_id="epsilon_kappa_provisional_split",
+        inputs=[zeta, zeta_min, kappa, kappa_min, grad_zeta_sq],
+        output=sp.Tuple(epsilon, e_kappa, total),
+        method="symbolic provisional epsilon/e_kappa split",
+        status=Status.DERIVED,
+    )
+
+
 def case_7_next_tests():
     header("Case 7: Next tests")
 
@@ -350,6 +416,8 @@ def final_interpretation():
 
 def main():
     header("Candidate Epsilon Kappa Double Counting Check")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
@@ -358,8 +426,17 @@ def main():
     case_4_recommended_convention()
     case_5_forbidden_patterns()
     case_6_updated_functional()
+    case_6b_symbolic_accounting_split(ns)
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="epsilon_kappa_double_counting_check_marker",
+        inputs=[],
+        output=sp.Symbol("epsilon_kappa_double_counting_check_audited"),
+        method="epsilon_kappa_double_counting_check_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum Substance Accounting Inventory
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_configuration_energy_variable_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vacuum substance accounting inventory problem

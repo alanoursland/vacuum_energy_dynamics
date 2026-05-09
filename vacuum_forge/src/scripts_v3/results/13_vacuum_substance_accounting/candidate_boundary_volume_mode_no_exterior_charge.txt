@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Boundary Volume Mode No Exterior Charge
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - binary_radiation_scalar_conversion_safety_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Boundary volume mode no exterior charge problem
@@ -224,6 +226,21 @@ Do not use as:
 
   parent-derived physical profile
 [WARN] toy compact profile tests stated: STRUCTURAL
+
+========================================================================================================================
+Case 5b: Symbolic compact-profile boundary check
+========================================================================================================================
+Compact profile example:
+
+  zeta_n=2(r) = zeta0*(R**2 - r**2)**2/R**4
+  zeta(R) = 0
+  zeta'(R) = 0
+  F_zeta(R+) = 0
+
+Higher smoothness sample:
+
+  zeta_n=3''(R) = 0
+[PASS] compact profile boundary flux check: DERIVED_REDUCED — F_zeta(R+) = 0
 
 ========================================================================================================================
 Case 6: Failure controls

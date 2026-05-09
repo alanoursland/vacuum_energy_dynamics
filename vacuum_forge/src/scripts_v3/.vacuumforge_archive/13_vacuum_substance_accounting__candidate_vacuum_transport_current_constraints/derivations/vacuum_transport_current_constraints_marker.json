@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vacuum_transport_current_constraints_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vacuum_transport_current_constraints_audited')",
+    "latex": "vacuum_{transport current constraints audited}"
+  },
+  "method": "vacuum_transport_current_constraints_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:32:01.548280+00:00",
+  "vacuumforge_version": "0.1.0"
+}

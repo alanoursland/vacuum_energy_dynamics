@@ -1,0 +1,18 @@
+{
+  "derivation_id": "volume_form_linear_trace_relation",
+  "inputs": [
+    {
+      "srepr": "Add(Mul(Rational(1, 3), Symbol('h')), Integer(1))",
+      "latex": "\\frac{h}{3} + 1"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Rational(1, 2), Symbol('h'))",
+    "latex": "\\frac{h}{2}"
+  },
+  "method": "linearized volume-form perturbation",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:31:52.379066+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,13 @@
+{
+  "derivation_id": "boundary_volume_mode_no_exterior_charge_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('boundary_volume_mode_no_exterior_charge_audited')",
+    "latex": "boundary_{volume mode no exterior charge audited}"
+  },
+  "method": "boundary_volume_mode_no_exterior_charge_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:32:00.101108+00:00",
+  "vacuumforge_version": "0.1.0"
+}

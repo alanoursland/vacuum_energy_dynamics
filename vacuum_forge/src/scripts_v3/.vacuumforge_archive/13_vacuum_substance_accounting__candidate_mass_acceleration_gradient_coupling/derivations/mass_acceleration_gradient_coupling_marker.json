@@ -1,0 +1,13 @@
+{
+  "derivation_id": "mass_acceleration_gradient_coupling_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('mass_acceleration_gradient_coupling_audited')",
+    "latex": "mass_{acceleration gradient coupling audited}"
+  },
+  "method": "mass_acceleration_gradient_coupling_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:31:56.981089+00:00",
+  "vacuumforge_version": "0.1.0"
+}

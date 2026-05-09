@@ -1,0 +1,22 @@
+{
+  "derivation_id": "trace_tt_linear_volume_split",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Add(Mul(Rational(1, 3), Symbol('h')), Integer(1)), Integer(0), Integer(0)], [Integer(0), Add(Mul(Rational(1, 3), Symbol('h')), Integer(1)), Integer(0)], [Integer(0), Integer(0), Add(Mul(Rational(1, 3), Symbol('h')), Integer(1))]])",
+      "latex": "\\left[\\begin{matrix}\\frac{h}{3} + 1 & 0 & 0\\\\0 & \\frac{h}{3} + 1 & 0\\\\0 & 0 & \\frac{h}{3} + 1\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('hxx'), Symbol('hxy'), Integer(0)], [Symbol('hxy'), Mul(Integer(-1), Symbol('hxx')), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}hxx & hxy & 0\\\\hxy & - hxx & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Mul(Rational(1, 2), Symbol('h')), Integer(0))",
+    "latex": "\\left( \\frac{h}{2}, \\  0\\right)"
+  },
+  "method": "symbolic trace versus TT volume split",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:31:54.053075+00:00",
+  "vacuumforge_version": "0.1.0"
+}

@@ -1,0 +1,22 @@
+{
+  "derivation_id": "boundary_compact_profile_zero_flux",
+  "inputs": [
+    {
+      "srepr": "Mul(Pow(Symbol('R', positive=True), Integer(-4)), Symbol('zeta0', positive=True), Pow(Add(Pow(Symbol('R', positive=True), Integer(2)), Mul(Integer(-1), Pow(Symbol('r', positive=True), Integer(2)))), Integer(2)))",
+      "latex": "\\frac{\\zeta_{0} \\left(R^{2} - r^{2}\\right)^{2}}{R^{4}}"
+    },
+    {
+      "srepr": "Mul(Pow(Symbol('R', positive=True), Integer(-6)), Symbol('zeta0', positive=True), Pow(Add(Pow(Symbol('R', positive=True), Integer(2)), Mul(Integer(-1), Pow(Symbol('r', positive=True), Integer(2)))), Integer(3)))",
+      "latex": "\\frac{\\zeta_{0} \\left(R^{2} - r^{2}\\right)^{3}}{R^{6}}"
+    }
+  ],
+  "output": {
+    "srepr": "Tuple(Integer(0), Integer(0), Integer(0), Integer(0))",
+    "latex": "\\left( 0, \\  0, \\  0, \\  0\\right)"
+  },
+  "method": "symbolic compact-profile boundary evaluation",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:32:00.099107+00:00",
+  "vacuumforge_version": "0.1.0"
+}

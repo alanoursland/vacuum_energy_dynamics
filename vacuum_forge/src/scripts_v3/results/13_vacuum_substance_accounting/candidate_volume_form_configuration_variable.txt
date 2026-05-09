@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Volume Form Configuration Variable
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_substance_accounting_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Volume-form configuration variable problem
@@ -167,6 +169,19 @@ Interpretation:
   The key structural fact is that TT perturbations are trace-free, hence volume-preserving at linear order.
   The key risk is duplicating A-sector scalar mass response.
 [WARN] volume-form status count produced: STRUCTURAL
+
+========================================================================================================================
+Case 3b: Linear volume-form relation
+========================================================================================================================
+Pure trace perturbation model:
+
+  gamma_ij = (1 + h/3) delta_ij
+  zeta(h) = 3*log(h/3 + 1)/2
+  linear delta zeta = h/2
+
+Interpretation:
+  the isotropic trace perturbation gives delta zeta = h/2 at linear order.
+[PASS] linear trace-volume relation: DERIVED_REDUCED — delta zeta = h/2
 
 ========================================================================================================================
 Case 4: Minimal candidate definition

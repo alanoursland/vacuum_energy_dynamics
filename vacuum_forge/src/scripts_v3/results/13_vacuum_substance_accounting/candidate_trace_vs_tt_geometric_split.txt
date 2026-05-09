@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Trace Versus TT Geometric Split
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - volume_form_configuration_variable_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Trace versus TT geometric split problem
@@ -184,6 +186,21 @@ Interpretation:
   trace changes vacuum-spacetime amount
   TT shear preserves vacuum-spacetime amount at linear order
 [WARN] minimal trace/TT split stated: CANDIDATE
+
+========================================================================================================================
+Case 4b: Symbolic trace and TT split
+========================================================================================================================
+Pure trace sector:
+
+  zeta(h) = log(h**3/27 + h**2/3 + h + 1)/2
+  linear delta zeta = h/2
+
+TT sector sample:
+
+  trace(h_TT) = 0
+  linear delta zeta|TT = 0
+[PASS] trace mode changes zeta: DERIVED_REDUCED — delta zeta = h/2
+[PASS] TT mode preserves zeta linearly: DERIVED_REDUCED — delta zeta = 0
 
 ========================================================================================================================
 Case 5: TT-only radiation theorem target

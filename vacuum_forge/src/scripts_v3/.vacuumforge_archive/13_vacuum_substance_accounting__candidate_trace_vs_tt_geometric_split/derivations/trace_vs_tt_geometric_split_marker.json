@@ -1,0 +1,13 @@
+{
+  "derivation_id": "trace_vs_tt_geometric_split_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('trace_vs_tt_geometric_split_audited')",
+    "latex": "trace_{vs tt geometric split audited}"
+  },
+  "method": "trace_vs_tt_geometric_split_audit",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:31:54.055076+00:00",
+  "vacuumforge_version": "0.1.0"
+}

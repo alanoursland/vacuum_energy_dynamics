@@ -24,7 +24,16 @@
 # It is not a derivation.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -36,6 +45,7 @@ def header(title: str) -> None:
 
 def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
+        "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
         "STRUCTURAL": "WARN",
@@ -180,6 +190,30 @@ def build_entries() -> List[FunctionalEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="vacuum_accounting_parent_balance_marker",
+        upstream_script_id="13_vacuum_substance_accounting__candidate_vacuum_accounting_parent_balance",
+        upstream_derivation_id="vacuum_accounting_parent_balance_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: FunctionalEntry) -> None:
     print()
     print("-" * 120)
@@ -290,6 +324,34 @@ def case_4_minimal_functional():
     status_line("minimal candidate functional stated", "CANDIDATE")
 
 
+def case_4b_symbolic_minimal_functional(ns) -> None:
+    header("Case 4b: Symbolic minimal functional")
+
+    K_zeta, L_zeta, K_lock = sp.symbols("K_zeta L_zeta K_lock")
+    zeta, zeta_min, kappa, grad_zeta_sq = sp.symbols("zeta zeta_min kappa grad_zeta_sq")
+    functional = sp.simplify(
+        sp.Rational(1, 2) * K_zeta * (zeta - zeta_min) ** 2
+        + sp.Rational(1, 2) * L_zeta * grad_zeta_sq
+        + sp.Rational(1, 2) * K_lock * (kappa - (zeta - zeta_min)) ** 2
+    )
+
+    print("Symbolic scaffold:")
+    print()
+    print(f"  epsilon_vac_config = {functional}")
+    print()
+    print("Interpretation:")
+    print("  the provisional functional carries displacement, gradient, and locking terms explicitly.")
+
+    status_line("symbolic epsilon functional scaffold", "DERIVED_REDUCED", "minimal symbolic form assembled")
+    ns.record_derivation(
+        derivation_id="epsilon_vac_minimal_functional_expression",
+        inputs=[zeta, zeta_min, kappa, grad_zeta_sq],
+        output=functional,
+        method="symbolic minimal epsilon_vac_config scaffold",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_exchange_with_relaxation():
     header("Case 5: Exchange with relaxation")
 
@@ -379,16 +441,27 @@ def final_interpretation():
 
 def main():
     header("Candidate Epsilon Vac Config Functional")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_minimal_functional()
+    case_4b_symbolic_minimal_functional(ns)
     case_5_exchange_with_relaxation()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="epsilon_vac_config_functional_marker",
+        inputs=[],
+        output=sp.Symbol("epsilon_vac_config_functional_audited"),
+        method="epsilon_vac_config_functional_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

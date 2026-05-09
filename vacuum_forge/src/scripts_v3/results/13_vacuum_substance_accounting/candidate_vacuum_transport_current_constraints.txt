@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum Transport Current Constraints
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_volume_mode_no_exterior_charge_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vacuum transport current constraints problem

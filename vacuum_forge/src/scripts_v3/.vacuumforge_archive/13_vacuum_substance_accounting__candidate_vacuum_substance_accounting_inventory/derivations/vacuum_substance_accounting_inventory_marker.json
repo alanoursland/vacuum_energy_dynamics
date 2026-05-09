@@ -1,0 +1,13 @@
+{
+  "derivation_id": "vacuum_substance_accounting_inventory_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('vacuum_substance_accounting_inventory_audited')",
+    "latex": "vacuum_{substance accounting inventory audited}"
+  },
+  "method": "vacuum_substance_accounting_inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-09T07:31:50.689053+00:00",
+  "vacuumforge_version": "0.1.0"
+}

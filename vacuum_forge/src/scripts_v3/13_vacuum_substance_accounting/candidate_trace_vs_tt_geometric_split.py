@@ -29,7 +29,16 @@
 # It is a theorem-target audit.
 
 from dataclasses import dataclass
+from pathlib import Path
 from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 def header(title: str) -> None:
@@ -165,6 +174,30 @@ def build_entries() -> List[SplitEntry]:
     ]
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="volume_form_configuration_variable_marker",
+        upstream_script_id="13_vacuum_substance_accounting__candidate_volume_form_configuration_variable",
+        upstream_derivation_id="volume_form_configuration_variable_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
 def print_entry(e: SplitEntry) -> None:
     print()
     print("-" * 120)
@@ -277,6 +310,40 @@ def case_4_minimal_geometric_split():
     status_line("minimal trace/TT split stated", "CANDIDATE")
 
 
+def case_4b_symbolic_trace_tt_split(ns) -> None:
+    header("Case 4b: Symbolic trace and TT split")
+
+    h = sp.symbols("h")
+    pure_trace_metric = sp.eye(3) * (1 + h / 3)
+    pure_trace_zeta = sp.simplify(sp.Rational(1, 2) * sp.log(pure_trace_metric.det()))
+    pure_trace_linear = sp.simplify(sp.diff(pure_trace_zeta, h).subs(h, 0) * h)
+
+    hxx, hxy = sp.symbols("hxx hxy")
+    h_tt = sp.Matrix([[hxx, hxy, 0], [hxy, -hxx, 0], [0, 0, 0]])
+    tt_trace = sp.simplify(h_tt.trace())
+    tt_linear_delta = sp.simplify(sp.Rational(1, 2) * tt_trace)
+
+    print("Pure trace sector:")
+    print()
+    print(f"  zeta(h) = {pure_trace_zeta}")
+    print(f"  linear delta zeta = {pure_trace_linear}")
+    print()
+    print("TT sector sample:")
+    print()
+    print(f"  trace(h_TT) = {tt_trace}")
+    print(f"  linear delta zeta|TT = {tt_linear_delta}")
+
+    status_line("trace mode changes zeta", "DERIVED_REDUCED", f"delta zeta = {pure_trace_linear}")
+    status_line("TT mode preserves zeta linearly", "DERIVED_REDUCED", f"delta zeta = {tt_linear_delta}")
+    ns.record_derivation(
+        derivation_id="trace_tt_linear_volume_split",
+        inputs=[pure_trace_metric, h_tt],
+        output=sp.Tuple(pure_trace_linear, tt_linear_delta),
+        method="symbolic trace versus TT volume split",
+        status=Status.DERIVED,
+    )
+
+
 def case_5_theorem_target():
     header("Case 5: TT-only radiation theorem target")
 
@@ -362,16 +429,27 @@ def final_interpretation():
 
 def main():
     header("Candidate Trace Versus TT Geometric Split")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
     entries = build_entries()
     case_1_split_inventory(entries)
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_minimal_geometric_split()
+    case_4b_symbolic_trace_tt_split(ns)
     case_5_theorem_target()
     case_6_failure_controls()
     case_7_next_tests()
     final_interpretation()
+    ns.record_derivation(
+        derivation_id="trace_vs_tt_geometric_split_marker",
+        inputs=[],
+        output=sp.Symbol("trace_vs_tt_geometric_split_audited"),
+        method="trace_vs_tt_geometric_split_audit",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

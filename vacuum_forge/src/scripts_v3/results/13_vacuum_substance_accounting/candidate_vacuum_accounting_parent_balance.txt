@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Vacuum Accounting Parent Balance
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - vacuum_transport_current_constraints_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Vacuum accounting parent balance problem
