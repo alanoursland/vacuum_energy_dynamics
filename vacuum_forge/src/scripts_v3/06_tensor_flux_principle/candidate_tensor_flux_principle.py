@@ -112,7 +112,6 @@ def case_0_principle_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor-flux principle posed", StatusMark.PASS, "multi-sector architecture stated")
-    out.print()
 
 
 # =============================================================================
@@ -138,7 +137,6 @@ def case_1_scalar_monopole_channel(ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("monopole scalar channel stated", StatusMark.PASS, f"F_A = {F_A}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="scalar_monopole_channel_flux",
@@ -181,7 +179,6 @@ def case_2_scalar_no_wave_guardrail(ns):
         out.line("scalar mode has zero trace-free tensor content",
                  StatusMark.PASS if all(is_zero(entry) for entry in list(H_tf)) else StatusMark.FAIL,
                  "H_tf = 0")
-    out.print()
 
     ns.record_derivation(
         derivation_id="scalar_no_wave_guardrail_tf_zero",
@@ -233,7 +230,6 @@ def case_3_tensor_tt_channel(ns):
         out.line("TT tensor channel has two polarizations",
                  StatusMark.PASS if is_zero(trace_tt) else StatusMark.FAIL,
                  f"trace = {trace_tt}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_tensor_channel_two_polarizations_summary",
@@ -275,7 +271,6 @@ def case_4_tensor_wave_propagation(ns):
         out.line("TT amplitude supports wave dispersion relation",
                  StatusMark.PASS if is_zero(residual) else StatusMark.FAIL,
                  f"residual = {residual}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_wave_dispersion_summary",
@@ -338,7 +333,6 @@ def case_5_quadrupole_source_projection(ns):
         out.line("quadrupole projects into cross channel",
                  StatusMark.PASS if is_zero(residual_cross) else StatusMark.FAIL,
                  f"Q_cross = Q_xy; residual = {residual_cross}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="quadrupole_projection_summary",
@@ -385,7 +379,6 @@ def case_6_time_derivative_distinction(ns):
         out.line("power proxy uses third derivatives",
                  StatusMark.PASS if is_zero(residual_pow) else StatusMark.FAIL,
                  f"proxy = {power_proxy}; residual = {residual_pow}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="rotating_quadrupole_amplitude_power_summary",
@@ -416,7 +409,6 @@ def case_7_multichannel_map():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("multi-channel map stated", StatusMark.PASS, "four channels: scalar, trace, vector, tensor")
-    out.print()
 
 
 # =============================================================================
@@ -440,7 +432,6 @@ def case_8_classification():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor-flux principle passes structural checks", StatusMark.PASS, "all upstream results confirmed")
-    out.print()
 
 
 # =============================================================================

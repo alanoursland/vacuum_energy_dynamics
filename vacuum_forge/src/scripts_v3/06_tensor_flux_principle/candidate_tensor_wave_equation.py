@@ -129,7 +129,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor wave equation problem posed", StatusMark.PASS, "checking Box h_ij^TT = 0")
-    out.print()
 
 
 # =============================================================================
@@ -160,7 +159,6 @@ def case_1_define_wave():
     out = ScriptOutput()
     with out.derived_results():
         out.line("plus/cross plane-wave tensor defined", StatusMark.PASS, "H_TT = h_plus e_plus + h_cross e_cross")
-    out.print()
 
     return t, z, k, omega, c, Hp, Hx, H_TT
 
@@ -203,7 +201,6 @@ def case_2_polarization_wave_operator(t, z, k, omega, c, Hp, Hx, ns):
         out.line("cross mode has wave dispersion coefficient",
                  StatusMark.PASS if is_zero(residual_cross) else StatusMark.FAIL,
                  f"residual = {residual_cross}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_wave_dispersion_coefficient_plus",
@@ -252,7 +249,6 @@ def case_3_tensor_wave_operator(t, z, k, omega, c, H_TT, ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("full tensor wave vanishes on dispersion relation", StatusMark.PASS, "Box H_TT proportional to (c²k²-ω²)")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_full_tensor_wave_operator_residual",
@@ -289,7 +285,6 @@ def case_4_tt_conditions_preserved(t, z, k, omega, c, H_TT, ns):
         out.line("transversality remains zero for all t,z",
                  StatusMark.PASS if matrix_is_zero(trans) else StatusMark.FAIL,
                  f"k^i H_ij = {trans}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_conditions_preserved_trace",
@@ -338,7 +333,6 @@ def case_5_energy_proxy(t, z, k, omega, c, Hp, Hx, ns):
     out = ScriptOutput()
     with out.sample_results():
         out.line("energy proxy is quadratic in both tensor polarizations", StatusMark.PASS, "E_proxy > 0 for nonzero amplitudes")
-    out.print()
 
     print()
     print("Caution:")
@@ -380,7 +374,6 @@ def case_6_scalar_separation():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("scalar and tensor channels remain distinct", StatusMark.PASS, "Box h_TT separate from scalar A equation")
-    out.print()
 
 
 # =============================================================================
@@ -403,7 +396,6 @@ def case_7_classification():
     out = ScriptOutput()
     with out.derived_results():
         out.line("minimal TT wave equation passes linear checks", StatusMark.PASS, "dispersion, TT preservation, quadratic energy all verified")
-    out.print()
 
 
 # =============================================================================

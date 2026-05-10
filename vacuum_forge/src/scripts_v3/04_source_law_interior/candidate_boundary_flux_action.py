@@ -397,8 +397,6 @@ def main():
     case_6_kappa_compensation_coupling(out, ns)
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_K_A_from_microphysics",
         script_id=SCRIPT_ID,

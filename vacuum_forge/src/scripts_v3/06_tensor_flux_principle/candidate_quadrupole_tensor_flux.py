@@ -120,7 +120,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("quadrupole tensor-flux problem posed", StatusMark.PASS, "second vs third derivative distinction explicit")
-    out.print()
 
 
 # =============================================================================
@@ -157,7 +156,6 @@ def case_1_define_quadrupole_tf(ns):
         out.line("Q_TF is trace-free",
                  StatusMark.PASS if is_zero(trace_tf) else StatusMark.FAIL,
                  f"Tr(Q_TF) = {trace_tf}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="quadrupole_tf_trace_zero",
@@ -197,7 +195,6 @@ def case_2_monopole_dipole_not_tt():
     with out.governance_assessments():
         out.line("monopole belongs to scalar channel", StatusMark.PASS, "M sources A-flux not TT radiation")
         out.line("dipole is not the leading isolated tensor radiation channel", StatusMark.PASS, "dipole removed by COM conservation")
-    out.print()
 
 
 # =============================================================================
@@ -242,7 +239,6 @@ def case_3_project_to_plus_cross(Q_TF, ns):
         out.line("quadrupole projects onto plus/cross channels",
                  StatusMark.PASS if is_zero(residual_plus) and is_zero(residual_cross) else StatusMark.FAIL,
                  f"Q_plus residual={residual_plus}, Q_cross residual={residual_cross}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="quadrupole_projection_plus_channel",
@@ -304,7 +300,6 @@ def case_4_time_dependent_source_proxy(ns):
     with out.sample_results():
         out.line("quadrupole amplitude proxy uses second derivatives", StatusMark.PASS, f"Qddot² proxy = {amplitude_proxy}")
         out.line("quadrupole power proxy uses third derivatives", StatusMark.PASS, f"Qdddot² proxy = {power_proxy}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="rotating_quadrupole_amplitude_proxy",
@@ -351,7 +346,6 @@ def case_5_static_quadrupole_no_radiation(ns):
         out.line("static quadrupole has no radiation-power proxy",
                  StatusMark.PASS if is_zero(Q_dddot) else StatusMark.FAIL,
                  f"Q_dddot = {Q_dddot}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="static_quadrupole_no_radiation_residual",
@@ -390,7 +384,6 @@ def case_6_tensor_flux_analogy():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor-flux analogy stated", StatusMark.PASS, "M -> A-flux; Q_TF -> h_ij^TT radiation")
-    out.print()
 
 
 # =============================================================================
@@ -414,7 +407,6 @@ def case_7_classification():
     out = ScriptOutput()
     with out.derived_results():
         out.line("quadrupole tensor-flux source structure passes first checks", StatusMark.PASS, "TF quadrupole projected; derivative distinction explicit")
-    out.print()
 
 
 # =============================================================================

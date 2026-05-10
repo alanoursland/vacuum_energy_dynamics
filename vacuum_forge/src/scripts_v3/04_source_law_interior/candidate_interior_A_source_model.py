@@ -580,8 +580,6 @@ def main():
     case_9_summary()
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_interior_pressure_stress_A_source",
         script_id=SCRIPT_ID,

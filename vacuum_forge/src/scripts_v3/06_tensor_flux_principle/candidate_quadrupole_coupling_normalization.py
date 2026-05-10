@@ -118,7 +118,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("quadrupole coupling normalization problem posed", StatusMark.OBLIGATION, "C_Q = 2G/(c^4 R) is a target, not yet derived")
-    out.print()
 
 
 # =============================================================================
@@ -143,7 +142,6 @@ def case_1_far_zone_amplitude_law(ns):
     out = ScriptOutput()
     with out.sample_results():
         out.line("far-zone amplitude normalization stated", StatusMark.PASS, f"h ~ C_Q Qdd; C_Q = {C_Q}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="far_zone_amplitude_coupling_law",
@@ -198,7 +196,6 @@ def case_2_rotating_quadrupole_scaling(ns):
         out.line("amplitude scales as G Omega² Q0/(c⁴ R)",
                  StatusMark.PASS if is_zero(residual) else StatusMark.FAIL,
                  f"amp_sq residual = {residual}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="rotating_quadrupole_amplitude_scaling",
@@ -233,7 +230,6 @@ def case_3_dimensional_scaling():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("quadrupole amplitude coefficient is dimensionally consistent", StatusMark.PASS, "G Qdd/(c^4 R) is dimensionless")
-    out.print()
 
 
 # =============================================================================
@@ -267,7 +263,6 @@ def case_4_amplitude_vs_power(ns):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("amplitude and power normalizations kept distinct", StatusMark.PASS, "amplitude G/c^4; power G/c^5")
-    out.print()
 
     ns.record_derivation(
         derivation_id="amplitude_vs_power_normalization_proxy",
@@ -309,7 +304,6 @@ def case_5_scalar_tensor_normalization_comparison(ns):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("scalar and tensor coupling normalizations are distinct", StatusMark.PASS, "scalar G/c^2; tensor G/c^4")
-    out.print()
 
     ns.record_derivation(
         derivation_id="scalar_vs_tensor_coupling_comparison",
@@ -341,7 +335,6 @@ def case_6_classification():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("quadrupole coupling normalization target established", StatusMark.OBLIGATION, "C_Q = 2G/(c^4 R) is target; derivation from action remains open")
-    out.print()
 
 
 # =============================================================================

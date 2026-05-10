@@ -116,7 +116,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("scalar no-wave failure control posed", StatusMark.PASS, "failure control setup complete")
-    out.print()
 
 
 def case_1_scalar_not_trace_free(ns):
@@ -141,7 +140,6 @@ def case_1_scalar_not_trace_free(ns):
         out.line("scalar perturbation has nonzero trace unless psi=0",
                  StatusMark.PASS if trace_nonzero else StatusMark.FAIL,
                  f"trace = {trace}")
-    out.print()
 
     print()
     print("Interpretation:")
@@ -177,7 +175,6 @@ def case_2_scalar_trace_free_projection(ns):
         out.line("trace-free projection of pure scalar conformal mode vanishes",
                  StatusMark.PASS if matrix_is_zero(H_tf) else StatusMark.FAIL,
                  "H_tf = 0")
-    out.print()
 
     print()
     print("Interpretation:")
@@ -230,7 +227,6 @@ def case_3_breathing_vs_tt(ns):
         out.line("TT plus/cross mode is trace-free",
                  StatusMark.PASS if is_zero(trace_tt) else StatusMark.FAIL,
                  f"trace_tt = {trace_tt}")
-    out.print()
 
     print()
     print("Interpretation:")
@@ -276,7 +272,6 @@ def case_4_no_scalar_reproduces_tt(ns):
         out.line("only trivial scalar=TT solution exists",
                  StatusMark.PASS if only_trivial else StatusMark.FAIL,
                  f"solution = {sol}")
-    out.print()
 
     print()
     print("Interpretation:")
@@ -322,7 +317,6 @@ def case_5_transversality_not_enough(ns):
         out.line("but breathing mode is not traceless",
                  StatusMark.PASS if not is_zero(trace) else StatusMark.FAIL,
                  f"trace = {trace}")
-    out.print()
 
     print()
     print("Interpretation:")
@@ -361,7 +355,6 @@ def case_6_scalar_wave_is_scalar_radiation(ns):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("scalar wave equation is not a tensor wave equation", StatusMark.PASS, "scalar radiation distinct from TT tensor radiation")
-    out.print()
 
     ns.record_derivation(
         derivation_id="scalar_wave_dispersion_coefficient",
@@ -401,7 +394,6 @@ def case_7_tt_sector_requirement(ns):
         out.line("TT sector has the two needed tensor polarizations",
                  StatusMark.PASS if is_zero(trace) else StatusMark.FAIL,
                  f"trace = {trace}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_sector_two_polarizations_trace_zero",
@@ -429,7 +421,6 @@ def case_8_classification():
     out = ScriptOutput()
     with out.counterexamples():
         out.line("scalar flux law cannot be the gravitational-wave sector", StatusMark.PASS, "all checks confirm scalar is not TT")
-    out.print()
 
 
 def final_interpretation():

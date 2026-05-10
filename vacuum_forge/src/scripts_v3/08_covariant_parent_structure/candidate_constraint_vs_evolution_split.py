@@ -548,8 +548,6 @@ def main():
         out.line("derive conservation identity for split", StatusMark.OBLIGATION,
                  "open proof obligation recorded")
 
-    out.print_summary()
-
 
 if __name__ == "__main__":
     main()

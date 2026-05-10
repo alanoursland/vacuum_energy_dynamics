@@ -457,7 +457,6 @@ def main():
     )
     ns.write_run_metadata()
 
-    out.print()
 
 
 if __name__ == "__main__":

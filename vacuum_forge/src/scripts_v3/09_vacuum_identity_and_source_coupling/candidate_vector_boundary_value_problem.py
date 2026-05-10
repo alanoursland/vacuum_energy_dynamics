@@ -333,7 +333,6 @@ def main():
             "open proof obligation recorded",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Contentful derivation: J/r^3 curl scaling from W_phi ansatz

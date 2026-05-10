@@ -290,7 +290,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("volume flux direction problem posed", StatusMark.OBLIGATION, "requires independent direction law")
-    out.print()
 
 
 def case_1_inventory(entries: List[FluxDirectionEntry]):
@@ -320,7 +319,6 @@ def case_2_compact_table(entries: List[FluxDirectionEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact flux-direction ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[FluxDirectionEntry]):
@@ -344,7 +342,6 @@ def case_3_status_counts(entries: List[FluxDirectionEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("flux-direction status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_direction_decision_tree():
@@ -373,7 +370,6 @@ def case_4_direction_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("flux-direction decision tree stated", StatusMark.INFO, "decision tree recorded")
-    out.print()
 
 
 def case_5_good_failure():
@@ -395,7 +391,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("flux-direction good failure stated", StatusMark.DEFER, "deferred pending physical flux direction law")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -416,7 +411,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("flux-direction failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -443,7 +437,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_timelike_domain_for_volume_current.py")
-    out.print()
 
 
 def final_interpretation():

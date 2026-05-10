@@ -612,8 +612,6 @@ def main():
                 out.line(f"satisfy {req.name}", StatusMark.OBLIGATION,
                          "open proof obligation recorded")
 
-    out.print_summary()
-
 
 if __name__ == "__main__":
     main()

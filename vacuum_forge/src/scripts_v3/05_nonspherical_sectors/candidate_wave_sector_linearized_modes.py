@@ -107,7 +107,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("wave-sector problem isolated", StatusMark.OBLIGATION, "h_ij^TT sector not yet present")
-    out.print()
 
 
 # =============================================================================
@@ -134,7 +133,6 @@ def case_1_scalar_not_tt(ns):
         out.line("scalar mode is not TT",
                  StatusMark.PASS if not is_zero(trace) else StatusMark.FAIL,
                  f"trace = {trace}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="scalar_mode_trace_nonzero",
@@ -167,7 +165,6 @@ def case_2_vector_not_tt():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vector sector is distinct from tensor wave sector", StatusMark.PASS, "W_i lives in g_ti, not h_ij^TT")
-    out.print()
 
 
 # =============================================================================
@@ -201,7 +198,6 @@ def case_3_tt_polarizations(ns):
         out.line("TT tensor has two polarizations",
                  StatusMark.PASS if is_zero(trace) else StatusMark.FAIL,
                  f"trace = {trace}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_tensor_trace_zero_polarizations",
@@ -243,7 +239,6 @@ def case_4_transversality(ns):
         out.line("TT mode is transverse for propagation along z",
                  StatusMark.PASS if all_zero else StatusMark.FAIL,
                  f"k^i h_ij = {trans}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_mode_transversality_residual",
@@ -279,7 +274,6 @@ def case_5_wave_equation_placeholder():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("tensor wave equation class identified as missing", StatusMark.OBLIGATION, "Box h_ij^TT = 0 not yet supplied")
-    out.print()
 
 
 # =============================================================================
@@ -302,7 +296,6 @@ def case_6_sector_separation():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("wave sector separated from scalar/vector sectors", StatusMark.PASS, "SVT map complete; tensor sector flagged missing")
-    out.print()
 
 
 # =============================================================================
@@ -325,7 +318,6 @@ def case_7_success_criteria():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("wave-sector success criteria listed", StatusMark.OBLIGATION, "criteria stated; none yet satisfied")
-    out.print()
 
 
 # =============================================================================
@@ -348,7 +340,6 @@ def case_8_classification():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor wave sector is necessary and currently absent", StatusMark.DEFER, "required but not yet derived")
-    out.print()
 
 
 # =============================================================================

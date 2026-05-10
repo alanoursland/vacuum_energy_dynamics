@@ -286,7 +286,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Sigma/R split problem posed", StatusMark.OBLIGATION, "requires distinct mechanism definitions")
-    out.print()
 
 
 def case_1_inventory(entries: List[SigmaRSplitEntry]):
@@ -316,7 +315,6 @@ def case_2_compact_table(entries: List[SigmaRSplitEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact Sigma/R ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[SigmaRSplitEntry]):
@@ -340,7 +338,6 @@ def case_3_status_counts(entries: List[SigmaRSplitEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Sigma/R status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_split_decision_tree():
@@ -369,7 +366,6 @@ def case_4_split_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Sigma/R split decision tree stated", StatusMark.INFO, "decision tree recorded")
-    out.print()
 
 
 def case_4b_zero_current_balance(ns) -> None:
@@ -391,7 +387,6 @@ def case_4b_zero_current_balance(ns) -> None:
     out = ScriptOutput()
     with out.derived_results():
         out.line("zero-current Sigma/R balance", StatusMark.PASS, f"Sigma_V = {local_solution}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="sigma_R_zero_current_balance",
@@ -423,7 +418,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Sigma/R split good failure stated", StatusMark.DEFER, "deferred pending independent Sigma/R operators")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -443,7 +437,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Sigma/R split failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -470,7 +463,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_volume_flux_direction_law.py")
-    out.print()
 
 
 def final_interpretation():

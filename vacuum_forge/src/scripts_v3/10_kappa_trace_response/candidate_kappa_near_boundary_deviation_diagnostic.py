@@ -439,7 +439,7 @@ def main():
         ),
     ))
 
-    with out.diagnostic_results():
+    with out.derived_results():
         out.line("delta_f = f_joint - f_GR_ref defined symbolically", StatusMark.PASS, "diagnostic definition")
         out.line("delta_g = -d(delta_f)/dr defined symbolically", StatusMark.PASS, "diagnostic definition")
         out.line("delta_curv = d^2(delta_f)/dr^2 defined symbolically", StatusMark.PASS, "diagnostic definition")

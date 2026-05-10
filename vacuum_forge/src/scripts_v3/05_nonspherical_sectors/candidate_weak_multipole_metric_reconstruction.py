@@ -143,7 +143,6 @@ def case_0_weak_metric_target():
     out = ScriptOutput()
     with out.derived_results():
         out.line("weak scalar target stated", StatusMark.PASS, "A = 1 + 2psi, spatial = 1 - 2psi")
-    out.print()
 
 
 # =============================================================================
@@ -174,7 +173,6 @@ def case_1_reciprocal_compensation(ns=None):
         out.line("reciprocal compensation matches scalar spatial factor at first order",
                  StatusMark.PASS if is_zero(residual_first) else StatusMark.FAIL,
                  f"residual = {residual_first}")
-    out.print()
 
     ctx = TheoryContext("candidate_weak_multipole_metric_reconstruction")
     ctx.define_equal_response_algebraic_symbols()
@@ -234,7 +232,6 @@ def case_2_gamma_proxy(ns):
         out.line("reciprocal scalar sector gives gamma=1",
                  StatusMark.PASS if (bool(gamma_solution) and gamma_solution[0] == 1) else StatusMark.FAIL,
                  f"gamma = {gamma_val}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="ppn_gamma_proxy_residual",
@@ -276,7 +273,6 @@ def case_3_multipole_scalar_reconstruction():
     out = ScriptOutput()
     with out.derived_results():
         out.line("weak multipole scalar metric reconstructed", StatusMark.PASS, "A and spatial factor share same psi")
-    out.print()
 
 
 # =============================================================================
@@ -306,7 +302,6 @@ def case_4_harmonic_modes(ns):
                 record_kind=RecordKind.DERIVATION,
                 result_type="identity_residual",
             )
-    out.print()
 
     print()
     print("These are scalar A/psi multipoles, not the full tensor metric content.")
@@ -360,7 +355,6 @@ def case_5_anisotropic_spatial_shear_missing(ns):
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("anisotropic spatial shear requires extra degrees of freedom", StatusMark.OBLIGATION, "scalar sector covers trace only")
-    out.print()
 
     ns.record_derivation(
         derivation_id="spatial_shear_trace_free_residual",
@@ -392,7 +386,6 @@ def case_6_vector_sector_missing():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("frame-dragging requires vector sector beyond scalar A", StatusMark.OBLIGATION, "g_ti not produced by scalar A")
-    out.print()
 
 
 # =============================================================================
@@ -415,7 +408,6 @@ def case_7_tensor_sector_missing():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("tensor waves require additional tensor sector", StatusMark.OBLIGATION, "h_ij^TT not captured by scalar A")
-    out.print()
 
 
 # =============================================================================
@@ -448,7 +440,6 @@ def case_8_nonlinear_closure():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("nonlinear nonspherical closure remains open", StatusMark.OBLIGATION, "full spatial geometry reconstruction not derived")
-    out.print()
 
 
 # =============================================================================
@@ -473,7 +464,6 @@ def case_9_classification():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("weak scalar sector passes; full nonspherical theory remains incomplete", StatusMark.PASS, "gamma=1 scalar sector confirmed; tensor/vector/shear sectors open")
-    out.print()
 
 
 # =============================================================================

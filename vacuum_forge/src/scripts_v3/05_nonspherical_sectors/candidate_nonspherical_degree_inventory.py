@@ -127,7 +127,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("degree inventory needed beyond scalar A", StatusMark.PASS, "SVT decomposition required")
-    out.print()
 
 
 # =============================================================================
@@ -153,7 +152,6 @@ def case_1_metric_component_count():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("single scalar A cannot represent full metric perturbation", StatusMark.PASS, "10 components vs 1 scalar")
-    out.print()
 
 
 # =============================================================================
@@ -179,7 +177,6 @@ def case_2_scalar_A_sector(ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("scalar A sector is present", StatusMark.PASS, "A = 1 + 2psi confirmed from upstream")
-    out.print()
 
     ns.record_derivation(
         derivation_id="scalar_A_sector_inventory",
@@ -223,7 +220,6 @@ def case_3_kappa_trace_sector():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("kappa sector exists in reduced theory but needs nonspherical parent", StatusMark.OBLIGATION, "covariant nonspherical kappa not yet derived")
-    out.print()
 
 
 # =============================================================================
@@ -254,7 +250,6 @@ def case_4_spatial_conformal_scalar(ns):
         out.line("spatial scalar sector is pure trace/conformal",
                  StatusMark.PASS if is_zero(trace_tf) else StatusMark.FAIL,
                  f"trace-free part vanishes: {is_zero(trace_tf)}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="spatial_conformal_trace_free_vanishes",
@@ -301,7 +296,6 @@ def case_5_trace_free_spatial_shear(ns=None):
         out.line("trace-free spatial shear has 5 independent components",
                  StatusMark.PASS if is_zero(trace_tf) else StatusMark.FAIL,
                  f"trace of shear part = {trace_tf}")
-    out.print()
 
     if ns is not None:
         ns.record_derivation(
@@ -343,7 +337,6 @@ def case_6_vector_sector():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("vector/frame-dragging sector is missing from scalar branch", StatusMark.OBLIGATION, "g_ti not produced by scalar A")
-    out.print()
 
 
 # =============================================================================
@@ -381,7 +374,6 @@ def case_7_tensor_wave_sector(ns):
         out.line("tensor/wave sector is independent of scalar A",
                  StatusMark.PASS if is_zero(trace) else StatusMark.FAIL,
                  f"TT trace = {trace}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tensor_wave_sector_trace_zero",
@@ -416,7 +408,6 @@ def case_8_svt_map():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("SVT inventory separated", StatusMark.PASS, "scalar present; shear/vector/tensor missing")
-    out.print()
 
 
 # =============================================================================
@@ -445,7 +436,6 @@ def case_9_claim_boundaries():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("claim boundaries made explicit", StatusMark.PASS, "scalar sector present; SVT sectors open")
-    out.print()
 
 
 # =============================================================================

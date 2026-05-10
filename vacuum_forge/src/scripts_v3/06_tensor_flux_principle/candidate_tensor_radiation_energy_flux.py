@@ -123,7 +123,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("tensor radiation energy-flux problem posed", StatusMark.OBLIGATION, "target scalings stated; derivation from action remains open")
-    out.print()
 
 
 # =============================================================================
@@ -157,7 +156,6 @@ def case_1_wave_flux_proxy(ns):
     out = ScriptOutput()
     with out.sample_results():
         out.line("plus/cross flux proxy is quadratic in amplitudes", StatusMark.PASS, f"F = {F}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_flux_proxy_quadratic_amplitudes",
@@ -205,7 +203,6 @@ def case_2_substitute_quadrupole_amplitude(ns):
         out.line("flux scales as G Omega^6 Q0^2/(R^2 c^5)",
                  StatusMark.PASS if is_zero(residual) else StatusMark.FAIL,
                  f"residual = {residual}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_flux_quadrupole_amplitude_substitution",
@@ -242,7 +239,6 @@ def case_3_total_power_scaling(ns):
                  StatusMark.PASS if is_zero(dP_dR) else StatusMark.FAIL,
                  f"dP/dR = {dP_dR}")
         out.line("power scales as G Omega^6 Q0²/c^5", StatusMark.PASS, f"P = {P}")
-    out.print()
 
     print()
     print("Caution:")
@@ -278,7 +274,6 @@ def case_4_compare_qddd_proxy(ns):
     out = ScriptOutput()
     with out.sample_results():
         out.line("quadrupole power proxy uses G Qdddot²/c^5", StatusMark.PASS, f"P_GR_like = {P_GR_like}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="qddd_power_proxy_gr_like",
@@ -317,7 +312,6 @@ def case_5_no_radiation_controls(ns):
         out.line("linearly changing quadrupole has no third-derivative power proxy",
                  StatusMark.PASS if is_zero(linear_qddd) else StatusMark.FAIL,
                  f"linear Qdddot = {linear_qddd}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="no_radiation_control_static_linear",
@@ -352,7 +346,6 @@ def case_6_scalar_tensor_distinction():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("scalar and tensor radiation channels remain distinct", StatusMark.PASS, "A = static; h_TT = radiative")
-    out.print()
 
 
 # =============================================================================
@@ -377,7 +370,6 @@ def case_7_classification():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("tensor radiation energy-flux scaling passes first checks", StatusMark.OBLIGATION, "scaling confirmed; coefficient derivation from action remains open")
-    out.print()
 
 
 # =============================================================================

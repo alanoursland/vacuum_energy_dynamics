@@ -253,7 +253,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("source-driven volume creation problem posed", StatusMark.OBLIGATION, "requires explicit Sigma_V[A,T]")
-    out.print()
 
 
 def case_1_inventory(entries: List[SigmaVolumeEntry]):
@@ -283,7 +282,6 @@ def case_2_compact_table(entries: List[SigmaVolumeEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact source-driven creation ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[SigmaVolumeEntry]):
@@ -307,7 +305,6 @@ def case_3_status_counts(entries: List[SigmaVolumeEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("source-driven creation status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_candidate_decision_tree():
@@ -333,7 +330,6 @@ def case_4_candidate_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("source-law decision tree stated", StatusMark.INFO, "candidates ranked")
-    out.print()
 
 
 def case_5_good_failure():
@@ -356,7 +352,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("source-driven creation good failure stated", StatusMark.DEFER, "deferred pending Sigma_V[A,T]")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -377,7 +372,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("source-driven creation failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -404,7 +398,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_acceleration_gradient_volume_creation.py")
-    out.print()
 
 
 def final_interpretation():

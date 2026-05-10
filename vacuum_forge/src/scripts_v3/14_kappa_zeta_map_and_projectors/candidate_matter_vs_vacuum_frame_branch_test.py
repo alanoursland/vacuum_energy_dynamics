@@ -255,7 +255,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("matter/vacuum frame branch problem posed", StatusMark.OBLIGATION, "requires physical frame criterion before recovery")
-    out.print()
 
 
 def case_1_inventory(entries: List[FrameBranchEntry]):
@@ -285,7 +284,6 @@ def case_2_compact_table(entries: List[FrameBranchEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact matter-vacuum frame ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[FrameBranchEntry]):
@@ -308,7 +306,6 @@ def case_3_status_counts(entries: List[FrameBranchEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("matter-vacuum frame status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_branch_decision():
@@ -332,7 +329,6 @@ def case_4_branch_decision():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("matter-vacuum branch decision stated", StatusMark.INFO, "try u_vac before matter frame")
-    out.print()
 
 
 def case_5_good_failure():
@@ -354,7 +350,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("matter-vacuum frame good failure stated", StatusMark.DEFER, "deferred pending u_vac or matter model definition")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -374,7 +369,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("matter-vacuum frame failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -401,7 +395,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_vacuum_rest_frame_definition.py")
-    out.print()
 
 
 def final_interpretation():

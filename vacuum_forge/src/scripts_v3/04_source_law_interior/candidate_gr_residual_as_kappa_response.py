@@ -359,8 +359,6 @@ def main():
     case_5_effective_kappa_profile_fit(out, x, u, kappa_gr, ns)
     case_6_interpretation_summary(out)
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_gr_interior_kappa_from_matter_coupling",
         script_id=SCRIPT_ID,

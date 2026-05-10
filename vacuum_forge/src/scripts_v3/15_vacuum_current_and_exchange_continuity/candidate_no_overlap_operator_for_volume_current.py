@@ -282,7 +282,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("no-overlap operator problem posed", StatusMark.OBLIGATION, "requires O derivation or residual-kill")
-    out.print()
 
 
 def case_1_inventory(entries: List[NoOverlapEntry]):
@@ -312,7 +311,6 @@ def case_2_compact_table(entries: List[NoOverlapEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact no-overlap ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[NoOverlapEntry]):
@@ -336,7 +334,6 @@ def case_3_status_counts(entries: List[NoOverlapEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("no-overlap status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_decision_tree():
@@ -365,7 +362,6 @@ def case_4_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("no-overlap decision tree stated", StatusMark.INFO, "decision tree recorded")
-    out.print()
 
 
 def case_5_good_failure():
@@ -387,7 +383,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("no-overlap good failure stated", StatusMark.DEFER, "deferred pending O derivation or residual-kill theorem")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -407,7 +402,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("no-overlap failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -434,7 +428,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_group_15_current_subchain_status_summary.py")
-    out.print()
 
 
 def final_interpretation():

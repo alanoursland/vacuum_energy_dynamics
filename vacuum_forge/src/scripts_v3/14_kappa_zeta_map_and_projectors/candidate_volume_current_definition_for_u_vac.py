@@ -255,7 +255,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("volume current definition problem posed", StatusMark.OBLIGATION, "requires real J_V flux law, not decoration")
-    out.print()
 
 
 def case_1_inventory(entries: List[VolumeCurrentEntry]):
@@ -285,7 +284,6 @@ def case_2_compact_table(entries: List[VolumeCurrentEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact volume-current ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[VolumeCurrentEntry]):
@@ -309,7 +307,6 @@ def case_3_status_counts(entries: List[VolumeCurrentEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("volume-current status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_current_decision_tree():
@@ -335,7 +332,6 @@ def case_4_current_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("volume-current decision tree stated", StatusMark.INFO, "candidates ranked")
-    out.print()
 
 
 def case_5_good_failure():
@@ -357,7 +353,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("volume-current good failure stated", StatusMark.DEFER, "deferred: J_V/u_vac is surviving Group 14 bottleneck")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -378,7 +373,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("volume-current failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -405,7 +399,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_group_14_closure_summary.py")
-    out.print()
 
 
 def final_interpretation():

@@ -234,7 +234,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("current-subchain status problem posed", StatusMark.OBLIGATION, "requires honest closure of J_V subchain")
-    out.print()
 
 
 def case_1_status_ledger(entries: List[SubchainStatusEntry]):
@@ -264,7 +263,6 @@ def case_2_compact_table(entries: List[SubchainStatusEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact current-subchain table produced", StatusMark.INFO, "summary only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[SubchainStatusEntry]):
@@ -288,7 +286,6 @@ def case_3_status_counts(entries: List[SubchainStatusEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("current-subchain status count produced", StatusMark.INFO, "summary only")
-    out.print()
 
 
 def case_4_surviving_bottlenecks():
@@ -317,7 +314,6 @@ def case_4_surviving_bottlenecks():
         out.line("J_V physical flux law unresolved", StatusMark.OBLIGATION, "open proof obligation")
         out.line("Sigma_V operator unresolved", StatusMark.OBLIGATION, "open proof obligation")
         out.line("R_V operator unresolved", StatusMark.OBLIGATION, "open proof obligation")
-    out.print()
 
 
 def case_5_rejected_regressions():
@@ -344,7 +340,6 @@ def case_5_rejected_regressions():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("rejected regressions preserved", StatusMark.INFO, "policy rules recorded")
-    out.print()
 
 
 def case_6_next_options():
@@ -371,7 +366,6 @@ def case_6_next_options():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next option selected", StatusMark.INFO, "candidate_residual_kill_rule_for_volume_current.py")
-    out.print()
 
 
 def final_interpretation():
@@ -395,7 +389,6 @@ def final_interpretation():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("current-subchain status summary complete", StatusMark.INFO, "closed with unresolved bottleneck recorded")
-    out.print()
 
 
 def main():

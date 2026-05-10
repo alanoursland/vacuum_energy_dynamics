@@ -120,7 +120,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor flux basis problem posed", StatusMark.PASS, "TT basis construction starting")
-    out.print()
 
 
 # =============================================================================
@@ -151,7 +150,6 @@ def case_1_define_basis():
     out = ScriptOutput()
     with out.derived_results():
         out.line("plus and cross basis tensors defined", StatusMark.PASS, "e_plus = diag(1,-1,0); e_cross = sym off-diag xy")
-    out.print()
 
     return e_plus, e_cross
 
@@ -177,7 +175,6 @@ def case_2_trace_free(e_plus, e_cross, ns):
         out.line("cross basis is trace-free",
                  StatusMark.PASS if is_zero(tr_cross) else StatusMark.FAIL,
                  f"Tr(e_cross) = {tr_cross}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_basis_trace_free_plus",
@@ -228,7 +225,6 @@ def case_3_transverse(e_plus, e_cross, ns):
         out.line("cross basis is transverse",
                  StatusMark.PASS if matrix_is_zero(trans_cross) else StatusMark.FAIL,
                  f"k^i e_cross = {trans_cross}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_basis_transversality_plus",
@@ -273,7 +269,6 @@ def case_4_inner_products(e_plus, e_cross, ns):
         out.line("plus and cross are orthogonal",
                  StatusMark.PASS if is_zero(pc) else StatusMark.FAIL,
                  f"<+,x>={pc}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_basis_orthogonality_residual",
@@ -309,7 +304,6 @@ def case_5_general_tt_wave(e_plus, e_cross, ns):
                  StatusMark.PASS if is_zero(trace_tt) else StatusMark.FAIL,
                  f"trace = {trace_tt}")
         out.line("general basis combination has two amplitudes", StatusMark.PASS, "h_plus and h_cross are free parameters")
-    out.print()
 
     ns.record_derivation(
         derivation_id="general_tt_wave_trace_zero",
@@ -356,7 +350,6 @@ def case_6_breathing_distinct(e_plus, e_cross, ns):
         out.line("breathing mode is distinct from TT basis",
                  StatusMark.PASS if is_zero(ip_plus) and is_zero(ip_cross) else StatusMark.FAIL,
                  f"<b,+>={ip_plus}, <b,x>={ip_cross}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="breathing_orthogonal_to_tt_basis",
@@ -427,7 +420,6 @@ def case_7_tt_projection_z(ns):
         out.line("z-TT projection is transverse",
                  StatusMark.PASS if matrix_is_zero(trans) else StatusMark.FAIL,
                  f"k^i H_TT = {trans}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tt_projection_z_trace_free_transverse",
@@ -463,7 +455,6 @@ def case_8_tensor_flux_interpretation():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor flux channel basis established", StatusMark.PASS, "TT basis: trace-free, transverse, two polarizations")
-    out.print()
 
 
 # =============================================================================

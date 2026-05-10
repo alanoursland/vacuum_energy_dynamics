@@ -443,7 +443,6 @@ def main():
     case_6_failure_controls(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_summary()
 
     with archive.with_project_namespace(SCRIPT_ID) as ns:
 

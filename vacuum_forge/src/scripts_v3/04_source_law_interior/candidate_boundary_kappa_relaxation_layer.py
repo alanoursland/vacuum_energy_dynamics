@@ -338,8 +338,6 @@ def main():
     case_6_exterior_observable_constraint(out, ns)
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_kappa_relaxation_mechanism",
         script_id=SCRIPT_ID,

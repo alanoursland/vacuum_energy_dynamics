@@ -285,7 +285,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("timelike domain problem posed", StatusMark.OBLIGATION, "requires domain theorem for candidate J_V")
-    out.print()
 
 
 def case_1_inventory(entries: List[TimelikeDomainEntry]):
@@ -315,7 +314,6 @@ def case_2_compact_table(entries: List[TimelikeDomainEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact timelike-domain ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[TimelikeDomainEntry]):
@@ -339,7 +337,6 @@ def case_3_status_counts(entries: List[TimelikeDomainEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("timelike-domain status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_domain_decision_tree():
@@ -368,7 +365,6 @@ def case_4_domain_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("timelike-domain decision tree stated", StatusMark.INFO, "decision tree recorded")
-    out.print()
 
 
 def case_4b_symbolic_timelike_condition(ns) -> None:
@@ -389,7 +385,6 @@ def case_4b_symbolic_timelike_condition(ns) -> None:
     out = ScriptOutput()
     with out.derived_results():
         out.line("symbolic timelike-domain condition", StatusMark.PASS, f"J_V^2 = {current_norm}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="timelike_domain_minkowski_condition",
@@ -421,7 +416,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("timelike-domain good failure stated", StatusMark.DEFER, "deferred pending domain theorem")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -441,7 +435,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("timelike-domain failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -468,7 +461,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_static_source_neutrality_for_J_V.py")
-    out.print()
 
 
 def final_interpretation():

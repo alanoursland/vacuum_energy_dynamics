@@ -363,7 +363,7 @@ def print_entry(e: CorrectionTensorRoleEntry) -> None:
     out = ScriptOutput()
     with out.governance_assessments():
         out.line(e.name, StatusMark.from_string(e.status), e.status)
-    out.print()
+
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -607,7 +607,6 @@ def final_interpretation(out: ScriptOutput):
     with out.governance_assessments():
         out.line("parent correction tensor role inventory complete", StatusMark.PASS, "CLOSED")
 
-    out.print()
 
 
 def record_governance(ns) -> None:

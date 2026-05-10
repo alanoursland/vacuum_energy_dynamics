@@ -431,7 +431,6 @@ def main():
             "open proof obligation — kappa sector source still missing",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Contentful derivation: uniform sphere mass

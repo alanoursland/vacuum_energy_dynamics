@@ -424,7 +424,6 @@ def main():
             "open proof obligation recorded",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Contentful derivation: the 1D continuity expression is computed from SymPy

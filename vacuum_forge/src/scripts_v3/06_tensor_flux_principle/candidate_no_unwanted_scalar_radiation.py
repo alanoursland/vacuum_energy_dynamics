@@ -114,7 +114,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("unwanted scalar radiation guardrail posed", StatusMark.PASS, "failure control for scalar radiation setup")
-    out.print()
 
 
 # =============================================================================
@@ -139,7 +138,6 @@ def case_1_monopole_control(ns):
         out.line("conserved total mass gives no scalar monopole radiation",
                  StatusMark.PASS if is_zero(Mdot) and is_zero(Mddot) else StatusMark.FAIL,
                  f"Mdot = {Mdot}, Mddot = {Mddot}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="conserved_mass_no_monopole_radiation",
@@ -174,7 +172,6 @@ def case_2_dipole_control(ns):
         out.line("constant-velocity center-of-mass dipole gives no dipole radiation proxy",
                  StatusMark.PASS if is_zero(Dddot) else StatusMark.FAIL,
                  f"Dddot = {Dddot}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="constant_velocity_dipole_no_radiation",
@@ -213,7 +210,6 @@ def case_3_breathing_not_tt(ns):
         out.line("breathing mode is scalar trace mode, not TT",
                  StatusMark.PASS if not is_zero(trace) else StatusMark.FAIL,
                  f"trace = {trace}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="breathing_mode_trace_nonzero_guardrail",
@@ -246,7 +242,6 @@ def case_4_breathing_energy_danger(ns):
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("scalar breathing radiation must be absent or suppressed", StatusMark.OBLIGATION, "B must be absent, constrained, or suppressed")
-    out.print()
 
     ns.record_derivation(
         derivation_id="breathing_vs_tt_flux_proxy_comparison",
@@ -283,7 +278,6 @@ def case_5_suppression_options():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("suppression architecture options listed", StatusMark.OBLIGATION, "suppression mechanism not yet decided or derived")
-    out.print()
 
 
 # =============================================================================
@@ -310,7 +304,6 @@ def case_6_tensor_channel_intended(ns):
     out = ScriptOutput()
     with out.sample_results():
         out.line("time-varying quadrupole supports tensor radiation proxy", StatusMark.PASS, f"Qdddot² proxy = {tensor_power_proxy}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="rotating_quadrupole_tensor_power_proxy_guardrail",
@@ -344,7 +337,6 @@ def case_7_classification():
     out = ScriptOutput()
     with out.counterexamples():
         out.line("no-unwanted-scalar-radiation guardrail established", StatusMark.PASS, "monopole and dipole radiation absent; breathing mode is extra if unsuppressed")
-    out.print()
 
 
 # =============================================================================

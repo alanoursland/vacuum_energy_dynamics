@@ -123,7 +123,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("frame dragging requires additional vector sector", StatusMark.OBLIGATION, "g_ti not produced by scalar A")
-    out.print()
 
 
 # =============================================================================
@@ -147,7 +146,6 @@ def case_1_scalar_metric_no_vector():
     out = ScriptOutput()
     with out.derived_results():
         out.line("scalar sector has zero vector components", StatusMark.PASS, "h_ti = 0 for scalar A")
-    out.print()
 
 
 # =============================================================================
@@ -173,7 +171,6 @@ def case_2_introduce_vector_potential():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vector potential sector introduced", StatusMark.PASS, "W_i distinct from scalar A")
-    out.print()
 
 
 # =============================================================================
@@ -200,7 +197,6 @@ def case_3_angular_momentum_source():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("source channel separation formulated", StatusMark.PASS, "M -> scalar A; J -> vector W_i")
-    out.print()
 
 
 # =============================================================================
@@ -239,7 +235,6 @@ def case_4_dipole_vector_potential(ns):
         out.line("dipole-like vector potential has nonzero curl",
                  StatusMark.PASS if curl_nonzero else StatusMark.FAIL,
                  f"curl W = {curlW}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="dipole_vector_potential_curl",
@@ -276,7 +271,6 @@ def case_5_no_scalar_flux_confusion():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("scalar and vector flux/source channels separated", StatusMark.PASS, "M -> A-flux; J -> W_i")
-    out.print()
 
 
 # =============================================================================
@@ -303,7 +297,6 @@ def case_6_candidate_vector_equation():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("candidate vector equation class identified", StatusMark.OBLIGATION, "normalization and covariance remain open")
-    out.print()
 
 
 # =============================================================================
@@ -326,7 +319,6 @@ def case_7_targets():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("vector-sector target list established", StatusMark.OBLIGATION, "normalization, gauge structure, and covariant parent remain open")
-    out.print()
 
 
 # =============================================================================
@@ -350,7 +342,6 @@ def case_8_classification():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vector sector is necessary but not yet derived", StatusMark.DEFER, "required but normalization/covariance open")
-    out.print()
 
 
 # =============================================================================

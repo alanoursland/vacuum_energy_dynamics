@@ -295,7 +295,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("boundary/no-overlap problem posed", StatusMark.OBLIGATION, "requires boundary theorem and no-overlap operator")
-    out.print()
 
 
 def case_1_inventory(entries: List[BoundaryOverlapEntry]):
@@ -325,7 +324,6 @@ def case_2_compact_table(entries: List[BoundaryOverlapEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact boundary/no-overlap ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[BoundaryOverlapEntry]):
@@ -349,7 +347,6 @@ def case_3_status_counts(entries: List[BoundaryOverlapEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("boundary/no-overlap status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_decision_tree():
@@ -378,7 +375,6 @@ def case_4_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("boundary/no-overlap decision tree stated", StatusMark.INFO, "decision tree recorded")
-    out.print()
 
 
 def case_4b_symbolic_boundary_flux(ns) -> None:
@@ -403,7 +399,6 @@ def case_4b_symbolic_boundary_flux(ns) -> None:
     out = ScriptOutput()
     with out.sample_results():
         out.line("compact-support boundary neutrality", StatusMark.PASS, f"F_boundary = {boundary_flux}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="boundary_no_overlap_zero_flux_sample",
@@ -435,7 +430,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("boundary/no-overlap good failure stated", StatusMark.DEFER, "deferred pending boundary theorem and no-overlap operator")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -456,7 +450,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("boundary/no-overlap failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -483,7 +476,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_no_overlap_operator_for_volume_current.py")
-    out.print()
 
 
 def final_interpretation():

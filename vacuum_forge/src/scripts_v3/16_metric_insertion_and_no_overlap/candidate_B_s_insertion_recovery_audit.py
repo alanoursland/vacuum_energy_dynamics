@@ -695,7 +695,6 @@ def main():
             is_placeholder=True,
         )
 
-    out.print_summary()
     ns.write_run_metadata()
 
 

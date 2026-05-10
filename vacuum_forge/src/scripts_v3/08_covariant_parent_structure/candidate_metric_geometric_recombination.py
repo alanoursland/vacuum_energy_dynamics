@@ -576,8 +576,6 @@ def main():
         out.line("derive TT projection for recombination", StatusMark.OBLIGATION,
                  "open proof obligation recorded")
 
-    out.print_summary()
-
 
 if __name__ == "__main__":
     main()

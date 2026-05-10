@@ -360,7 +360,6 @@ def main():
             "open proof obligation recorded",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Contentful derivation: Green-function amplitude

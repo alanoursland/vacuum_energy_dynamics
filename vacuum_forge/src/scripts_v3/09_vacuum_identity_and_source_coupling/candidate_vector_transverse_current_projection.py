@@ -349,7 +349,6 @@ def main():
             "open proof obligation recorded",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Contentful derivation: curl(grad chi) = 0

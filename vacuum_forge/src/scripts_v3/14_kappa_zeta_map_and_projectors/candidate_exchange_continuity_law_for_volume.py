@@ -259,7 +259,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("exchange continuity law problem posed", StatusMark.OBLIGATION, "requires independent J_V, Sigma_V, R_V operators")
-    out.print()
 
 
 def case_1_inventory(entries: List[ExchangeContinuityEntry]):
@@ -289,7 +288,6 @@ def case_2_compact_table(entries: List[ExchangeContinuityEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact exchange-continuity ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[ExchangeContinuityEntry]):
@@ -312,7 +310,6 @@ def case_3_status_counts(entries: List[ExchangeContinuityEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("exchange-continuity status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_minimal_law_requirements():
@@ -341,7 +338,6 @@ def case_4_minimal_law_requirements():
         out.line("derive static-source neutrality", StatusMark.OBLIGATION, "open proof obligation")
         out.line("derive boundary neutrality", StatusMark.OBLIGATION, "open proof obligation")
         out.line("derive no-overlap/residual-kill theorem", StatusMark.OBLIGATION, "open proof obligation")
-    out.print()
 
 
 def case_5_good_failure():
@@ -362,7 +358,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("exchange-continuity good failure stated", StatusMark.DEFER, "deferred pending J_V flux direction and Sigma/R operators")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -382,7 +377,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("exchange-continuity failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -409,7 +403,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_sigma_R_split_for_volume_exchange.py")
-    out.print()
 
 
 def final_interpretation():

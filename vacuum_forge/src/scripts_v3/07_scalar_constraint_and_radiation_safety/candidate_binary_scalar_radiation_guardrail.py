@@ -466,8 +466,6 @@ def main():
         out.line("derive binary scalar quadrupole suppression", StatusMark.OBLIGATION,
                  "open proof obligation recorded")
 
-    out.print_summary()
-
 
 if __name__ == "__main__":
     main()

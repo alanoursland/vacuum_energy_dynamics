@@ -209,7 +209,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("Group 14 closure problem posed", StatusMark.OBLIGATION, "J_V/u_vac surviving bottleneck must be named")
-    out.print()
 
 
 def case_1_closure_inventory(entries: List[ClosureEntry]):
@@ -239,7 +238,6 @@ def case_2_compact_table(entries: List[ClosureEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact closure ledger produced", StatusMark.INFO, "summary inventory")
-    out.print()
 
 
 def case_3_killed_branches():
@@ -262,7 +260,6 @@ def case_3_killed_branches():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("rejected branch list stated", StatusMark.INFO, "branches rejected or deferred")
-    out.print()
 
 
 def case_4_surviving_bottleneck():
@@ -294,7 +291,6 @@ def case_4_surviving_bottleneck():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("surviving bottleneck named", StatusMark.OPEN, "J_V/u_vac definition unresolved")
-    out.print()
 
 
 def case_5_provisional_conventions():
@@ -316,7 +312,6 @@ def case_5_provisional_conventions():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("provisional conventions stated", StatusMark.INFO, "carried forward as provisional")
-    out.print()
 
 
 def case_6_next_group():
@@ -342,7 +337,6 @@ def case_6_next_group():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next group selected", StatusMark.INFO, "15_vacuum_current_and_exchange_continuity")
-    out.print()
 
 
 def final_interpretation():

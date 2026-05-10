@@ -387,7 +387,6 @@ def main():
             "open proof obligation recorded",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Proof obligation: kappa source

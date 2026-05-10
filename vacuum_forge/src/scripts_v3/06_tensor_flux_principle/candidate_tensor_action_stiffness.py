@@ -126,7 +126,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("tensor action/stiffness problem posed", StatusMark.PASS, "minimal quadratic action being tested")
-    out.print()
 
 
 # =============================================================================
@@ -160,7 +159,6 @@ def case_1_free_plus_action(ns):
         out.line("free action gives wave equation",
                  StatusMark.PASS if wave_eq_confirmed else StatusMark.FAIL,
                  f"EL/K_T = {wave_expr}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="free_tensor_action_wave_equation",
@@ -201,7 +199,6 @@ def case_2_plus_cross_action(t, z, c, K_T, ns):
     with out.derived_results():
         out.line("plus mode has independent wave equation", StatusMark.PASS, f"EL_plus = {ELp}")
         out.line("cross mode has independent wave equation", StatusMark.PASS, f"EL_cross = {ELx}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="decoupled_plus_cross_euler_lagrange",
@@ -241,7 +238,6 @@ def case_3_source_coupling(t, z, c, K_T, ns):
         out.line("source coupling drives tensor wave equation",
                  StatusMark.PASS if bool(driven) else StatusMark.FAIL,
                  f"driven wave equation obtained: {bool(driven)}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="source_coupled_tensor_wave_equation",
@@ -278,7 +274,6 @@ def case_4_stiffness_ratio(ns):
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("target tensor coupling/stiffness ratio identified", StatusMark.OBLIGATION, f"g_T/K_T = 2G/c^4 required; derivation of K_T, g_T from deeper principles open")
-    out.print()
 
     ns.record_derivation(
         derivation_id="stiffness_coupling_ratio_target",
@@ -313,7 +308,6 @@ def case_5_green_scaling(ns):
         out.line("Green scaling recovers target ratio",
                  StatusMark.PASS if bool(ratio_needed) else StatusMark.FAIL,
                  f"g_T/K_T = {ratio_needed}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="green_scaling_recovers_target_ratio",
@@ -350,7 +344,6 @@ def case_6_energy_proxy(ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("quadratic action gives positive energy proxy for K_T>0", StatusMark.PASS, f"E = {E_proxy}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="tensor_action_positive_energy_proxy",
@@ -383,7 +376,6 @@ def case_7_classification():
     out = ScriptOutput()
     with out.derived_results():
         out.line("tensor action/stiffness toy passes structural checks", StatusMark.PASS, "wave equation, decoupling, source coupling, energy proxy all confirmed")
-    out.print()
 
 
 # =============================================================================

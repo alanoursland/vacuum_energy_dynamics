@@ -640,8 +640,6 @@ def main():
         out.line("derive conservation identities from parent", StatusMark.OBLIGATION,
                  "open proof obligation recorded")
 
-    out.print_summary()
-
 
 if __name__ == "__main__":
     main()

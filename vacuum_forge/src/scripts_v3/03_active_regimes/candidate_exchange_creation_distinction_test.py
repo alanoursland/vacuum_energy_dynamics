@@ -663,8 +663,6 @@ def main():
     case_6_p3_impact(out)
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_exchange_creation_from_postulates",
         script_id=SCRIPT_ID,

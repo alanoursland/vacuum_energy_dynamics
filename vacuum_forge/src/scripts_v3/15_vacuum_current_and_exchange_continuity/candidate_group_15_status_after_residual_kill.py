@@ -228,7 +228,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Group 15 status-after-residual-kill problem posed", StatusMark.OBLIGATION, "requires honest Group 15 closure")
-    out.print()
 
 
 def case_1_status_ledger(entries: List[Group15StatusEntry]):
@@ -258,7 +257,6 @@ def case_2_compact_table(entries: List[Group15StatusEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact Group 15 status table produced", StatusMark.INFO, "summary only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[Group15StatusEntry]):
@@ -282,7 +280,6 @@ def case_3_status_counts(entries: List[Group15StatusEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Group 15 status count produced", StatusMark.INFO, "summary only")
-    out.print()
 
 
 def case_4_surviving_bottlenecks():
@@ -313,7 +310,6 @@ def case_4_surviving_bottlenecks():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("real J_V + no-overlap/residual-kill mechanism", StatusMark.OBLIGATION, "central surviving bottleneck after Group 15")
-    out.print()
 
 
 def case_5_current_convention():
@@ -342,7 +338,6 @@ def case_5_current_convention():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("working convention recorded", StatusMark.WARN, "provisional only; not derived")
-    out.print()
 
 
 def case_6_rejected_regressions():
@@ -368,7 +363,6 @@ def case_6_rejected_regressions():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("rejected regressions preserved", StatusMark.INFO, "policy rules recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -395,7 +389,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next document selected", StatusMark.INFO, "field_equation_status_after_group_15.md")
-    out.print()
 
 
 def final_interpretation():
@@ -416,7 +409,6 @@ def final_interpretation():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("Group 15 status after residual-kill complete", StatusMark.PASS, "closed")
-    out.print()
 
 
 def main():

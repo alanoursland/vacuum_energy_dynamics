@@ -349,8 +349,6 @@ def main():
     case_6_what_is_not_derived(out)
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_K_A_from_vacuum_microphysics",
         script_id=SCRIPT_ID,

@@ -506,8 +506,6 @@ def main():
         out.line("derive TT projection from parent gauge structure", StatusMark.OBLIGATION,
                  "open proof obligation recorded")
 
-    out.print_summary()
-
 
 if __name__ == "__main__":
     main()

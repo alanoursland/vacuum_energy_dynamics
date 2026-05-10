@@ -256,7 +256,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("acceleration-gradient volume creation problem posed", StatusMark.OBLIGATION, "requires covariant frame, chi-origin, neutrality, no-overlap")
-    out.print()
 
 
 def case_1_inventory(entries: List[AccelGradientEntry]):
@@ -286,7 +285,6 @@ def case_2_compact_table(entries: List[AccelGradientEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact acceleration-gradient ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[AccelGradientEntry]):
@@ -309,7 +307,6 @@ def case_3_status_counts(entries: List[AccelGradientEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("acceleration-gradient status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_minimal_form():
@@ -334,7 +331,6 @@ def case_4_minimal_form():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("minimal acceleration-gradient form stated", StatusMark.INFO, "candidate route recorded")
-    out.print()
 
 
 def case_5_good_failure():
@@ -356,7 +352,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("acceleration-gradient good failure stated", StatusMark.DEFER, "deferred pending frame and chi")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -377,7 +372,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("acceleration-gradient failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -404,7 +398,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_volume_creation_frame_field_inventory.py")
-    out.print()
 
 
 def final_interpretation():

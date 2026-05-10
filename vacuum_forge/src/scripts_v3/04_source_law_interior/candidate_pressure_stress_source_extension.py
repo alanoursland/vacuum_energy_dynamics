@@ -397,8 +397,6 @@ def main():
     case_6_channel_classification(out)
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_pressure_A_flux_coupling",
         script_id=SCRIPT_ID,

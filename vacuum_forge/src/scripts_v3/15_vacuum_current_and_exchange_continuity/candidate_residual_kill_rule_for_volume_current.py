@@ -282,7 +282,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("residual-kill rule problem posed", StatusMark.OBLIGATION, "requires residual-kill theorem or parent identity")
-    out.print()
 
 
 def case_1_inventory(entries: List[ResidualKillEntry]):
@@ -312,7 +311,6 @@ def case_2_compact_table(entries: List[ResidualKillEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact residual-kill ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[ResidualKillEntry]):
@@ -336,7 +334,6 @@ def case_3_status_counts(entries: List[ResidualKillEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("residual-kill status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_decision_tree():
@@ -365,7 +362,6 @@ def case_4_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("residual-kill decision tree stated", StatusMark.INFO, "decision tree recorded")
-    out.print()
 
 
 def case_5_good_failure():
@@ -386,7 +382,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("residual-kill good failure stated", StatusMark.DEFER, "deferred pending residual-kill theorem or O")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -406,7 +401,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("residual-kill failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -433,7 +427,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_group_15_status_after_residual_kill.py")
-    out.print()
 
 
 def final_interpretation():

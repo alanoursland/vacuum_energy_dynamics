@@ -250,7 +250,6 @@ def case_0_problem_statement():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("vacuum rest frame definition problem posed", StatusMark.OBLIGATION, "requires ontology-derived u_vac^mu")
-    out.print()
 
 
 def case_1_inventory(entries: List[VacuumFrameEntry]):
@@ -280,7 +279,6 @@ def case_2_compact_table(entries: List[VacuumFrameEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("compact vacuum-frame ledger produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_3_status_counts(entries: List[VacuumFrameEntry]):
@@ -304,7 +302,6 @@ def case_3_status_counts(entries: List[VacuumFrameEntry]):
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vacuum-frame status count produced", StatusMark.INFO, "inventory only")
-    out.print()
 
 
 def case_4_definition_decision_tree():
@@ -330,7 +327,6 @@ def case_4_definition_decision_tree():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vacuum-frame definition decision tree stated", StatusMark.INFO, "candidates ranked")
-    out.print()
 
 
 def case_5_good_failure():
@@ -351,7 +347,6 @@ def case_5_good_failure():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vacuum-frame good failure stated", StatusMark.DEFER, "deferred pending J_V or equilibrium criterion")
-    out.print()
 
 
 def case_6_failure_controls():
@@ -372,7 +367,6 @@ def case_6_failure_controls():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("vacuum-frame failure controls stated", StatusMark.INFO, "guardrails recorded")
-    out.print()
 
 
 def case_7_next_tests():
@@ -399,7 +393,6 @@ def case_7_next_tests():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("next test selected", StatusMark.INFO, "candidate_volume_current_definition_for_u_vac.py")
-    out.print()
 
 
 def final_interpretation():

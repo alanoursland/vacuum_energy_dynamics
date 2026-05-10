@@ -194,7 +194,7 @@ def print_entry(e: Group19StatusEntry) -> None:
     out = ScriptOutput()
     with out.governance_assessments():
         out.line(e.name, StatusMark.from_string(e.status), e.status)
-    out.print()
+
     print(f"Consequence: {e.consequence}")
     print(f"Handoff: {e.handoff}")
 
@@ -433,7 +433,6 @@ def final_interpretation(out: ScriptOutput):
     with out.governance_assessments():
         out.line("Group 19 parent correction tensor status complete", StatusMark.PASS, "CLOSED")
 
-    out.print()
 
 
 def record_governance(ns) -> None:

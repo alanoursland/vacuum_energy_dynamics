@@ -378,8 +378,6 @@ def main():
     case_6_observable_exterior_pressure(out, ns)
     final_interpretation()
 
-    out.print_summary()
-
     ns.record_obligation(ProofObligationRecord(
         obligation_id="derive_interior_exterior_kappa_option",
         script_id=SCRIPT_ID,

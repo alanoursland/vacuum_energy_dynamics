@@ -146,7 +146,6 @@ def case_0_spherical_recap(ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("spherical flux gives Schwarzschild coefficient", StatusMark.PASS, f"residual = {residual}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="spherical_areal_flux_residual",
@@ -186,7 +185,6 @@ def case_1_A_phi_relation():
     out = ScriptOutput()
     with out.derived_results():
         out.line("areal A-source law matches Newtonian Poisson in weak field", StatusMark.PASS, "A = 1 + 2 Phi/c^2 implies Delta A = 8pi G rho/c^2")
-    out.print()
 
 
 # =============================================================================
@@ -218,7 +216,6 @@ def case_2_multipole_harmonic_modes(ns):
                 record_kind=RecordKind.DERIVATION,
                 result_type="identity_residual",
             )
-    out.print()
 
     print()
     print("Interpretation:")
@@ -254,7 +251,6 @@ def case_3_regular_interior_modes(ns):
                 record_kind=RecordKind.DERIVATION,
                 result_type="identity_residual",
             )
-    out.print()
 
     print()
     print("Interpretation:")
@@ -296,7 +292,6 @@ def case_4_flux_integral_selection(ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("higher quadrupole integrates to zero net flux", StatusMark.PASS if is_zero(residual) else StatusMark.FAIL, f"residual = {residual}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="multipole_flux_monopole_selection_residual",
@@ -335,7 +330,6 @@ def case_5_dipole_caution(ns):
     out = ScriptOutput()
     with out.derived_results():
         out.line("pure dipole has zero net flux", StatusMark.PASS if is_zero(total_flux) else StatusMark.FAIL, f"flux = {total_flux}")
-    out.print()
 
     ns.record_derivation(
         derivation_id="dipole_flux_zero_residual",
@@ -383,7 +377,6 @@ def case_6_linear_compensated_metric(ns=None):
     out = ScriptOutput()
     with out.derived_results():
         out.line("reciprocal compensation extends formally to weak nonspherical A", StatusMark.PASS, "B = 1/A = 1 - 2psi + O(psi^2)")
-    out.print()
 
     ctx = TheoryContext("candidate_multipole_areal_flux_extension")
     ctx.define_equal_response_algebraic_symbols()
@@ -441,7 +434,6 @@ def case_7_nonlinear_caution():
     out = ScriptOutput()
     with out.unresolved_obligations():
         out.line("nonlinear nonspherical extension remains open", StatusMark.OBLIGATION, "full nonspherical closure not derived")
-    out.print()
 
 
 # =============================================================================
@@ -465,7 +457,6 @@ def case_8_classification():
     out = ScriptOutput()
     with out.governance_assessments():
         out.line("multipole extension is viable as weak-field diagnostic", StatusMark.PASS, "scalar harmonic multipoles confirmed")
-    out.print()
 
 
 # =============================================================================

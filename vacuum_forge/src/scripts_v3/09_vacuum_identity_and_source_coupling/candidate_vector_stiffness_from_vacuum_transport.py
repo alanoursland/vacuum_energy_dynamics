@@ -356,7 +356,6 @@ def main():
             "open proof obligation recorded",
         )
 
-    out.print()
 
     with archive.open() as ns2:
         # Proof obligation: vector coefficient (alpha_W/K_c is the ratio after curl-energy)
