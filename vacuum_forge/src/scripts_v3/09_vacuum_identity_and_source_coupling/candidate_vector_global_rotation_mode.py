@@ -1,5 +1,11 @@
 # Candidate vector global rotation mode
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The vector projection-operator study showed that the local Fourier projector
@@ -26,6 +32,17 @@ from pathlib import Path
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -37,21 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "HAND_ASSIGNED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -102,8 +104,6 @@ def case_0_problem_statement():
     print("  do not insert Lense-Thirring normalization")
     print("  treat global angular momentum as boundary/source data")
 
-    status_line("global rotation mode problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_angular_momentum_from_current():
     header("Case 1: Angular momentum from current")
@@ -128,8 +128,7 @@ def case_1_angular_momentum_from_current():
     print("Interpretation:")
     print("  A rotating source supplies global vector boundary data through J.")
 
-    status_line("angular momentum follows from current", "CONSTRAINED_BY_IDENTITY",
-                "global integral requires source model")
+    return ell
 
 
 def case_2_uniform_rotation_current():
@@ -152,8 +151,7 @@ def case_2_uniform_rotation_current():
     print()
     print("For constant rho and Omega, the current is divergence-free.")
 
-    status_line("uniform rotational current is transverse in bulk",
-                "DERIVED_REDUCED" if is_zero(div_j) else "RISK")
+    return j, div_j
 
 
 def case_3_boundary_source_view():
@@ -176,8 +174,7 @@ def case_3_boundary_source_view():
     print()
     print("C_b is not derived.")
 
-    status_line("global rotation treated as boundary data", "CONSTRAINED_BY_IDENTITY",
-                "boundary coefficient missing")
+    return boundary_flux
 
 
 def case_4_far_field_shape():
@@ -199,8 +196,7 @@ def case_4_far_field_shape():
     print()
     print("But C_W is missing.")
 
-    status_line("far-field angular-momentum shape stated", "CONSTRAINED_BY_IDENTITY",
-                "coefficient missing")
+    return BW
 
 
 def case_5_zero_mode_boundary_warning():
@@ -218,9 +214,6 @@ def case_5_zero_mode_boundary_warning():
     print("  global angular momentum must be supplied by boundary/source data")
     print()
     print("This is not failure; it is a boundary problem.")
-
-    status_line("zero-mode requires boundary treatment", "RISK",
-                "not solved by local projector")
 
 
 def case_6_no_gr_matching():
@@ -242,9 +235,6 @@ def case_6_no_gr_matching():
     print("  far-field shape: constrained")
     print("  coefficient: missing")
 
-    status_line("GR matching forbidden", "RISK",
-                "coefficient must not be inserted")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -258,9 +248,6 @@ def case_7_classification():
     print("| boundary coefficient C_b | MISSING |")
     print("| far-field coefficient C_W | MISSING |")
     print("| Lense-Thirring normalization | HAND_ASSIGNED if inserted now |")
-
-    status_line("global rotation classification produced", "CONSTRAINED_BY_IDENTITY",
-                "shape/source constrained, coefficient missing")
 
 
 def case_8_next_tests():
@@ -280,9 +267,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_boundary_value_problem.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "boundary value problem is next vector step")
 
 
 def final_interpretation():
@@ -314,23 +298,134 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_angular_momentum_from_current()
-    case_2_uniform_rotation_current()
-    case_3_boundary_source_view()
-    case_4_far_field_shape()
+    ell = case_1_angular_momentum_from_current()
+    j_rot, div_jrot = case_2_uniform_rotation_current()
+    boundary_flux = case_3_boundary_source_view()
+    BW = case_4_far_field_shape()
     case_5_zero_mode_boundary_warning()
     case_6_no_gr_matching()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_global_rotation_mode_marker",
-        inputs=[],
-        output=sp.Symbol("vector_global_rotation_mode_classified"),
-        method="vector_global_rotation_mode_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    rot_div_zero = is_zero(div_jrot)
+
+    with out.derived_results():
+        out.line(
+            "uniform rotation current is divergence-free",
+            StatusMark.PASS if rot_div_zero else StatusMark.FAIL,
+            f"div j = {div_jrot} for rigid rotation j = rho*Omega*(-y, x, 0)",
+        )
+        out.line(
+            "angular momentum density ell = r x j computed",
+            StatusMark.PASS,
+            "symbolic angular momentum density from current",
+        )
+        out.line(
+            "far-field B_W ~ C_W J/r^3 shape stated",
+            StatusMark.PASS,
+            "constrained by dimensionality and symmetry; coefficient symbolic",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "boundary coefficient C_b",
+            StatusMark.FAIL,
+            "missing; k=0 global mode not resolved by local projector",
+        )
+        out.line(
+            "GR matching forbidden",
+            StatusMark.DEFER,
+            "C_W and beta_W must not be set to reproduce Lense-Thirring",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: uniform rotation current divergence-free
+        x, y, z, rho, Omega = sp.symbols("x y z rho Omega", real=True)
+        j_sample = rho * sp.Matrix([-Omega*y, Omega*x, sp.Integer(0)])
+        div_sample = sp.simplify(
+            sp.diff(j_sample[0], x) + sp.diff(j_sample[1], y) + sp.diff(j_sample[2], z)
+        )
+
+        ns2.record_derivation(
+            derivation_id="uniform_rotation_current_divergence_free",
+            inputs=[j_sample],
+            output=div_sample,
+            method="div(rho*Omega*(-y, x, 0)) for constant rho, Omega",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            result_type="identity_residual",
+            scope="uniform rotation current sample",
+        )
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The global rotation mode requires boundary data C_b that connects "
+                "interior angular momentum J to the exterior vector field amplitude. "
+                "C_b and C_W are both missing and cannot be set by GR matching."
+            ),
+        ))
+
+        # Proof obligation: vector coefficient alpha_W/K_c
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The far-field coefficient C_W is ultimately controlled by alpha_W/K_c "
+                "and source geometry. alpha_W/K_c remains missing from the vacuum transport action."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for C_W
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_C_W",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "C_W and C_b must not be chosen to reproduce Lense-Thirring frame "
+                "dragging. Matching to GR is a downstream test, not a construction rule "
+                "for the global rotation boundary problem."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_global_rotation_mode_marker",
+            inputs=[],
+            output=sp.Symbol("vector_global_rotation_mode_classified"),
+            method="vector_global_rotation_mode_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

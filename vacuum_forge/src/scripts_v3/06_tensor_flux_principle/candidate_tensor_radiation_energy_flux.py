@@ -1,3 +1,9 @@
+# Group:
+#   06_tensor_flux_principle
+#
+# Script type:
+#   DIAGNOSTIC
+
 # Candidate tensor radiation energy flux
 #
 # Purpose
@@ -27,13 +33,25 @@
 #     P ~ G/(5 c^5) < Qdddot_ij Qdddot_ij >
 #
 # This script uses those as target scalings, not derived facts.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/06_tensor_flux_principle/
-#   or:
-#   scripts_v3/candidate_tensor_radiation_energy_flux.py
+
+from pathlib import Path
 
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -47,14 +65,6 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
-
-
 def is_zero(expr) -> bool:
     try:
         return bool(sp.simplify(expr) == 0)
@@ -66,6 +76,30 @@ def time_average_sin2(expr):
     # Replace sin(...)^2 with 1/2 in the simple expressions used here.
     # This is intentionally narrow and transparent.
     return sp.simplify(expr.subs(sp.sin(sp.Symbol("phase"))**2, sp.Rational(1, 2)))
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="quadrupole_tensor_flux_marker",
+        upstream_script_id="06_tensor_flux_principle__candidate_quadrupole_tensor_flux",
+        upstream_derivation_id="quadrupole_tensor_flux_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -86,14 +120,17 @@ def case_0_problem_statement():
     print()
     print("This script checks scaling consistency, not a derivation.")
 
-    status_line("tensor radiation energy-flux problem posed", True)
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("tensor radiation energy-flux problem posed", StatusMark.OBLIGATION, "target scalings stated; derivation from action remains open")
+    out.print()
 
 
 # =============================================================================
 # Case 1: Plus/cross wave flux proxy
 # =============================================================================
 
-def case_1_wave_flux_proxy():
+def case_1_wave_flux_proxy(ns):
     header("Case 1: Plus/cross wave flux proxy")
 
     t, omega, Hp, Hx, G, c = sp.symbols("t omega H_plus H_cross G c", positive=True, real=True)
@@ -117,7 +154,20 @@ def case_1_wave_flux_proxy():
     print()
     print(f"F = {F}")
 
-    status_line("plus/cross flux proxy is quadratic in amplitudes", True)
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("plus/cross flux proxy is quadratic in amplitudes", StatusMark.PASS, f"F = {F}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_flux_proxy_quadratic_amplitudes",
+        inputs=[Hp, Hx, omega, G, c],
+        output=F,
+        method="GR_like_TT_flux_proxy",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="GR-like target flux proxy; not derived from action",
+    )
 
     return F
 
@@ -126,7 +176,7 @@ def case_1_wave_flux_proxy():
 # Case 2: Substitute quadrupole amplitude normalization
 # =============================================================================
 
-def case_2_substitute_quadrupole_amplitude():
+def case_2_substitute_quadrupole_amplitude(ns):
     header("Case 2: Substitute quadrupole amplitude normalization")
 
     G, c, R, Q0, Omega = sp.symbols("G c R Q0 Omega", positive=True, real=True)
@@ -142,13 +192,30 @@ def case_2_substitute_quadrupole_amplitude():
 
     F = sp.simplify(c**3/(32*sp.pi*G) * (sp.Rational(1, 2)*H**2*omega**2 + sp.Rational(1, 2)*H**2*omega**2))
 
+    expected = sp.simplify(4*G*Omega**6*Q0**2/(sp.pi*R**2*c**5))
+    residual = sp.simplify(F - expected)
+
     print(f"H_plus amplitude = H_cross amplitude = {H}")
     print(f"wave omega = {omega}")
     print()
     print(f"F_TT proxy = {F}")
 
-    expected = sp.simplify(4*G*Omega**6*Q0**2/(sp.pi*R**2*c**5))
-    status_line("flux scales as G Omega^6 Q0^2/(R^2 c^5)", is_zero(F - expected))
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("flux scales as G Omega^6 Q0^2/(R^2 c^5)",
+                 StatusMark.PASS if is_zero(residual) else StatusMark.FAIL,
+                 f"residual = {residual}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_flux_quadrupole_amplitude_substitution",
+        inputs=[H, omega, G, c, R, Q0, Omega],
+        output=F,
+        method="substitute_rotating_quadrupole_h_into_flux_proxy",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="rotating quadrupole toy model; GR-like target",
+    )
 
     return F
 
@@ -157,31 +224,47 @@ def case_2_substitute_quadrupole_amplitude():
 # Case 3: Convert flux at radius R to total power scaling
 # =============================================================================
 
-def case_3_total_power_scaling():
+def case_3_total_power_scaling(ns):
     header("Case 3: Total power scaling from flux")
 
     G, c, R, Q0, Omega = sp.symbols("G c R Q0 Omega", positive=True, real=True)
 
     F = 4*G*Omega**6*Q0**2/(sp.pi*R**2*c**5)
     P = sp.simplify(4*sp.pi*R**2 * F)
+    dP_dR = sp.diff(P, R)
 
     print(f"F proxy = {F}")
     print(f"P = 4*pi*R² F = {P}")
 
-    status_line("total power scaling cancels observer radius R", is_zero(sp.diff(P, R)))
-    status_line("power scales as G Omega^6 Q0²/c^5", True)
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("total power scaling cancels observer radius R",
+                 StatusMark.PASS if is_zero(dP_dR) else StatusMark.FAIL,
+                 f"dP/dR = {dP_dR}")
+        out.line("power scales as G Omega^6 Q0²/c^5", StatusMark.PASS, f"P = {P}")
+    out.print()
 
     print()
     print("Caution:")
     print("  Numerical coefficient depends on angular pattern and full TT projection.")
     print("  This test is scaling-level only.")
 
+    ns.record_derivation(
+        derivation_id="tt_total_power_scaling_from_flux",
+        inputs=[F, R],
+        output=P,
+        method="spherical_area_times_flux",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="scaling level; numerical coefficient not derived",
+    )
+
 
 # =============================================================================
 # Case 4: Compare to quadrupole third-derivative proxy
 # =============================================================================
 
-def case_4_compare_qddd_proxy():
+def case_4_compare_qddd_proxy(ns):
     header("Case 4: Compare to Qdddot proxy")
 
     G, c, Q0, Omega = sp.symbols("G c Q0 Omega", positive=True, real=True)
@@ -192,14 +275,27 @@ def case_4_compare_qddd_proxy():
     print(f"Qdddot² proxy = {Qddd_proxy}")
     print(f"G/(5c^5) * Qdddot² proxy = {P_GR_like}")
 
-    status_line("quadrupole power proxy uses G Qdddot²/c^5", True)
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("quadrupole power proxy uses G Qdddot²/c^5", StatusMark.PASS, f"P_GR_like = {P_GR_like}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="qddd_power_proxy_gr_like",
+        inputs=[Q0, Omega, G, c],
+        output=P_GR_like,
+        method="GR_like_power_proxy_from_Qdddot_squared",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="GR-like target; not derived from action",
+    )
 
 
 # =============================================================================
 # Case 5: Static and constant-velocity controls
 # =============================================================================
 
-def case_5_no_radiation_controls():
+def case_5_no_radiation_controls(ns):
     header("Case 5: No-radiation controls")
 
     t, Q0, V = sp.symbols("t Q0 V", real=True)
@@ -213,8 +309,25 @@ def case_5_no_radiation_controls():
     print(f"static Qdddot = {static_qddd}")
     print(f"linear Qdddot = {linear_qddd}")
 
-    status_line("static quadrupole has no power proxy", is_zero(static_qddd))
-    status_line("linearly changing quadrupole has no third-derivative power proxy", is_zero(linear_qddd))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("static quadrupole has no power proxy",
+                 StatusMark.PASS if is_zero(static_qddd) else StatusMark.FAIL,
+                 f"static Qdddot = {static_qddd}")
+        out.line("linearly changing quadrupole has no third-derivative power proxy",
+                 StatusMark.PASS if is_zero(linear_qddd) else StatusMark.FAIL,
+                 f"linear Qdddot = {linear_qddd}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="no_radiation_control_static_linear",
+        inputs=[Q_static, Q_linear],
+        output=sp.Matrix([static_qddd, linear_qddd]),
+        method="time_derivative_no_radiation_controls",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
@@ -235,7 +348,11 @@ def case_6_scalar_tensor_distinction():
     print()
     print("A viable theory must avoid large unwanted scalar radiation.")
     print()
-    status_line("scalar and tensor radiation channels remain distinct", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("scalar and tensor radiation channels remain distinct", StatusMark.PASS, "A = static; h_TT = radiative")
+    out.print()
 
 
 # =============================================================================
@@ -256,7 +373,11 @@ def case_7_classification():
     print("5. Numerical coefficients are not derived here.")
     print("6. Scalar A remains separate from tensor radiation.")
     print()
-    status_line("tensor radiation energy-flux scaling passes first checks", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("tensor radiation energy-flux scaling passes first checks", StatusMark.OBLIGATION, "scaling confirmed; coefficient derivation from action remains open")
+    out.print()
 
 
 # =============================================================================
@@ -294,15 +415,57 @@ def final_interpretation():
 
 def main():
     header("Candidate Tensor Radiation Energy Flux")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_wave_flux_proxy()
-    case_2_substitute_quadrupole_amplitude()
-    case_3_total_power_scaling()
-    case_4_compare_qddd_proxy()
-    case_5_no_radiation_controls()
+    case_1_wave_flux_proxy(ns)
+    case_2_substitute_quadrupole_amplitude(ns)
+    case_3_total_power_scaling(ns)
+    case_4_compare_qddd_proxy(ns)
+    case_5_no_radiation_controls(ns)
     case_6_scalar_tensor_distinction()
     case_7_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_flux_coefficient_from_action",
+        script_id=SCRIPT_ID,
+        title="Derive flux coefficient from tensor action/stiffness",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The flux coefficient c^3/(32*pi*G) and quadrupole power coefficient G/(5c^5) "
+            "are GR targets. They must be derived from the tensor-flux action or stiffness "
+            "picture, not assumed."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="compare_angular_pattern_coefficients",
+        script_id=SCRIPT_ID,
+        title="Compare angular pattern coefficients for tensor radiation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The current proxy uses spherical shell area 4*pi*R^2. "
+            "An angular pattern integral over the TT projection is required to "
+            "confirm the numerical coefficient."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="tensor_radiation_flux_scaling_diagnostic",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The TT flux proxy F ~ c^3/(32*pi*G) <hdot²> and substituting h ~ 2G Qdd/(c^4 R) "
+            "gives scaling P ~ G Qdddot²/c^5. This is a scaling diagnostic, not a derivation. "
+            "Numerical coefficients require action/angular-pattern derivation."
+        ),
+        obligation_ids=["derive_flux_coefficient_from_action", "compare_angular_pattern_coefficients"],
+    ))
+
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

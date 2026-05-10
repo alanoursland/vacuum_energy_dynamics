@@ -1,5 +1,11 @@
 # Candidate vector current from continuity
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The source-coupling audit found:
@@ -21,25 +27,23 @@
 #   4. curl W gives a gauge-safer frame-dragging diagnostic,
 #   5. coefficient remains underived,
 #   6. matching Lense-Thirring would be a later test, not an input.
-#
-# Status categories:
-#
-#   DERIVED_REDUCED
-#   CONSTRAINED_BY_IDENTITY
-#   HAND_ASSIGNED
-#   MISSING
-#   RISK
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_current_from_continuity.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -55,21 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "HAND_ASSIGNED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -123,8 +112,6 @@ def case_0_problem_statement():
     print()
     print("  W_i should be sourced by current j_i, not assigned only by analogy.")
 
-    status_line("vector current problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 # =============================================================================
 # Case 1: Mass continuity identity
@@ -148,8 +135,7 @@ def case_1_mass_continuity():
     print("Interpretation:")
     print("  If density sources scalar exchange, current should source vector transport.")
 
-    status_line("current follows from density continuity", "CONSTRAINED_BY_IDENTITY",
-                "identity form is standard but parent derivation still needed")
+    return continuity
 
 
 # =============================================================================
@@ -175,8 +161,7 @@ def case_2_candidate_W_source_equation():
     print("  source object j_i is identity-constrained")
     print("  coefficient alpha_W/K_W is not derived")
 
-    status_line("W_i source form proposed from current", "CONSTRAINED_BY_IDENTITY",
-                "coefficient and gauge behavior missing")
+    return equation
 
 
 # =============================================================================
@@ -203,7 +188,7 @@ def case_3_stationary_incompressible_current():
     print("Interpretation:")
     print("  Stationary rotational current naturally belongs to a transverse/vector sector.")
 
-    status_line("stationary circular current is divergence-free", "DERIVED_REDUCED" if is_zero(div_j) else "RISK")
+    return div_j
 
 
 # =============================================================================
@@ -235,10 +220,8 @@ def case_4_curl_W_diagnostic():
     print("  raw W_i may be gauge-sensitive.")
     print("  curl-like diagnostics are better candidates for physical frame dragging.")
 
-    nonzero = not (is_zero(curl_x) and is_zero(curl_y) and is_zero(curl_z))
-    status_line("curl W gives frame-dragging diagnostic candidate",
-                "CONSTRAINED_BY_IDENTITY" if nonzero else "RISK",
-                "observable normalization still missing")
+    curl_W = sp.Matrix([curl_x, curl_y, curl_z])
+    return curl_W
 
 
 # =============================================================================
@@ -261,9 +244,6 @@ def case_5_coefficient_discipline():
     print()
     print("  derive coefficient from same vacuum exchange normalization that produced A_flux")
     print("  or show exactly where a new independent stiffness enters")
-
-    status_line("coefficient matching forbidden at this stage", "RISK",
-                "prevents fake derivation")
 
 
 # =============================================================================
@@ -289,8 +269,7 @@ def case_6_angular_momentum_relation():
     print("  If W_i couples to current j_i, frame dragging should be tied to angular")
     print("  momentum through r x j.")
 
-    status_line("angular momentum source follows from current", "CONSTRAINED_BY_IDENTITY",
-                "global integral and coefficient missing")
+    return L_density
 
 
 # =============================================================================
@@ -309,9 +288,6 @@ def case_7_classification():
     print("| W_i coefficient | MISSING |")
     print("| full gauge behavior | MISSING |")
     print("| Lense-Thirring normalization | HAND_ASSIGNED if inserted now |")
-    print()
-    status_line("vector current classification produced", "CONSTRAINED_BY_IDENTITY",
-                "source type is constrained, coefficient missing")
 
 
 # =============================================================================
@@ -328,9 +304,6 @@ def case_8_failure_controls():
     print("3. curl W does not connect to frame-dragging measurement.")
     print("4. vector radiation appears unsuppressed without evidence.")
     print("5. current continuity does not connect to the scalar density source.")
-    print()
-    status_line("vector-current failure controls stated", "RISK",
-                "next scripts must avoid coefficient matching")
 
 
 # =============================================================================
@@ -368,23 +341,165 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_mass_continuity()
-    case_2_candidate_W_source_equation()
-    case_3_stationary_incompressible_current()
-    case_4_curl_W_diagnostic()
+    continuity = case_1_mass_continuity()
+    equation = case_2_candidate_W_source_equation()
+    div_j = case_3_stationary_incompressible_current()
+    curl_W = case_4_curl_W_diagnostic()
     case_5_coefficient_discipline()
-    case_6_angular_momentum_relation()
+    L_density = case_6_angular_momentum_relation()
     case_7_classification()
     case_8_failure_controls()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_current_from_continuity_marker",
-        inputs=[],
-        output=sp.Symbol("vector_current_continuity_source_identified"),
-        method="vector_current_from_continuity_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    circular_transverse = is_zero(div_j)
+    curl_nonzero = not all(is_zero(e) for e in curl_W)
+
+    with out.derived_results():
+        out.line(
+            "1D mass continuity expression",
+            StatusMark.PASS,
+            "partial_t rho + partial_x j computed symbolically",
+        )
+        out.line(
+            "stationary circular current is divergence-free",
+            StatusMark.PASS if circular_transverse else StatusMark.FAIL,
+            f"div j = {div_j}",
+        )
+        out.line(
+            "rotational W gives nonzero curl diagnostic",
+            StatusMark.PASS if curl_nonzero else StatusMark.FAIL,
+            "curl W is nonzero for rotational vector potential",
+        )
+        out.line(
+            "angular momentum density l = r x j computed",
+            StatusMark.PASS,
+            "symbolic l = r x j for frame-dragging link",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "W_i coefficient matching forbidden",
+            StatusMark.DEFER,
+            "alpha_W/K_W must not be set to match Lense-Thirring",
+        )
+        out.line(
+            "raw W_i is gauge-sensitive",
+            StatusMark.DEFER,
+            "only curl W is a safe observable candidate at this stage",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive full gauge behavior of W_i",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector source identity",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: 1D continuity expression
+        t, x = sp.symbols("t x", real=True)
+        rho_fn = sp.Function("rho")(t, x)
+        j_fn = sp.Function("j")(t, x)
+        continuity_expr = sp.diff(rho_fn, t) + sp.diff(j_fn, x)
+
+        ns2.record_derivation(
+            derivation_id="mass_continuity_1d_expression",
+            inputs=[rho_fn, j_fn],
+            output=continuity_expr,
+            method="symbolic partial_t rho + partial_x j",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="continuity_expression",
+        )
+
+        # Contentful derivation: circular current divergence-free check
+        x_s, y_s, z_s = sp.symbols("x y z", real=True)
+        J0 = sp.symbols("J0", real=True)
+        jx_circ = -J0*y_s
+        jy_circ = J0*x_s
+        jz_circ = sp.Integer(0)
+        div_circ = sp.simplify(
+            sp.diff(jx_circ, x_s) + sp.diff(jy_circ, y_s) + sp.diff(jz_circ, z_s)
+        )
+
+        ns2.record_derivation(
+            derivation_id="circular_current_divergence_free",
+            inputs=[sp.Matrix([jx_circ, jy_circ, jz_circ])],
+            output=div_circ,
+            method="div(j_circular) where j = J0(-y, x, 0)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            result_type="identity_residual",
+            scope="circular rotation current sample",
+        )
+
+        # Proof obligation: vector coefficient
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The W_i source equation Delta W_i ~ (alpha_W/K_W) j_i requires "
+                "the ratio alpha_W/K_W to be derived from the vacuum exchange ontology. "
+                "Setting it to match Lense-Thirring is forbidden at this stage."
+            ),
+        ))
+
+        # Proof obligation: vector source identity
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_source_identity",
+            script_id=SCRIPT_ID,
+            title="Derive vector source identity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The identification j_i = rho v_i as the W_i source is motivated by "
+                "continuity bookkeeping but the full field equation, gauge structure, and "
+                "normalization are not derived."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for W_i coefficient
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_Wi_coefficient",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "The W_i coefficient alpha_W/K_W must not be chosen to reproduce "
+                "the Lense-Thirring frame-dragging result. Recovery of GR precession "
+                "is a downstream test, not a construction rule."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_current_from_continuity_marker",
+            inputs=[],
+            output=sp.Symbol("vector_current_continuity_source_identified"),
+            method="vector_current_from_continuity_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

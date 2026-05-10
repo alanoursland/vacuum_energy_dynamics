@@ -1,5 +1,11 @@
 # Candidate covariant parent requirements
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The sector bundle inventory organized the reduced theory into:
@@ -15,13 +21,6 @@
 #   PARTIAL            -> partially supported but not derived
 #   MISSING            -> required but not yet supplied
 #   RISK               -> possible contradiction or danger
-#
-# The goal is to avoid confusing internal consistency with proof.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_covariant_parent_requirements.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,6 +29,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -314,6 +325,8 @@ def case_3_status_counts(requirements: List[Requirement]):
     else:
         status_line("parent theory requirements all supplied", "SATISFIED_REDUCED")
 
+    return counts
+
 
 # =============================================================================
 # Case 4: Blocking requirements
@@ -401,21 +414,205 @@ def main():
     header("Candidate Covariant Parent Requirements")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     requirements = build_requirements()
     case_2_print_requirements(requirements)
-    case_3_status_counts(requirements)
+    counts = case_3_status_counts(requirements)
     case_4_blocking_requirements(requirements)
     case_5_next_study()
     final_interpretation(requirements)
+
+    # --- Record one ProofObligationRecord per MISSING or PARTIAL requirement ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R2_no_unsuppressed_scalar_radiation",
+        script_id=SCRIPT_ID,
+        title="R2: Derive scalar radiation suppression mechanism (parent level)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent structure must supply a real suppression mechanism for A_rad: "
+            "projection, constraint, damping/absorption, mass gap, relaxation, or "
+            "observationally acceptable weak coupling."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R3_moving_wells_no_breathing_waves",
+        script_id=SCRIPT_ID,
+        title="R3: Derive retarded/constraint concept for moving wells without scalar breathing",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent must show how moving sources carry moving scalar constraint "
+            "configurations without producing forbidden long-range scalar breathing radiation."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R4_kappa_source_law",
+        script_id=SCRIPT_ID,
+        title="R4: Derive kappa source law from parent structure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a derivation of the kappa source from stress/pressure/trace matter "
+            "content and a derivation of exterior suppression."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R5_vector_field_equation",
+        script_id=SCRIPT_ID,
+        title="R5: Derive W_i field equation and vector radiation constraints",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply the W_i field equation from mass current/angular momentum coupling "
+            "and determine vector radiation safety."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R7_source_coupling_consistency",
+        script_id=SCRIPT_ID,
+        title="R7: Derive one unified source coupling rule for all sectors",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent must supply one stress-energy/vacuum coupling rule that yields "
+            "all sector sources in the correct limits."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R8_gauge_structure",
+        script_id=SCRIPT_ID,
+        title="R8: Derive gauge structure from parent theory",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent must supply gauge freedoms, gauge-invariant diagnostics, and "
+            "the mapping between coordinate choices."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R9_constraint_evolution_split",
+        script_id=SCRIPT_ID,
+        title="R9: Derive principled constraint/evolution split from parent",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent must supply a principled decomposition into constraints and "
+            "evolution equations for all sectors."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R10_metric_recombination",
+        script_id=SCRIPT_ID,
+        title="R10: Derive metric/geometric recombination from parent structure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A single metric/vacuum structure from which A, kappa, W_i, and h_ij^TT "
+            "arise as projections or gauge-fixed components must be derived."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_R11_conservation_identities",
+        script_id=SCRIPT_ID,
+        title="R11: Derive Bianchi-like or continuity conservation identities",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent must supply conservation identities ensuring compatible source "
+            "conservation across all sectors."
+        ),
+    ))
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="covariant_parent_not_yet_established",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The reduced sector program is coherent as an architecture but does not "
+            "yet constitute a covariant parent theory. R8 (gauge), R10 (recombination), "
+            "and R11 (conservation identities) are missing. Do not claim covariant "
+            "closure until these are supplied."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="no_gr_equivalence_claim",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "R12 risk: The program recovers GR-like reduced structures but has not "
+            "derived Einstein equations. Claims of GR equivalence must not be made "
+            "until a clear statement of what is recovered, matched, and unresolved is supplied."
+        ),
+    ))
+
+    # --- Branch decision ---
+
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_full_covariant_parent_claim",
+        script_id=SCRIPT_ID,
+        branch_id="full_covariant_parent_theory",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "satisfy_R8_gauge_structure",
+            "satisfy_R10_metric_recombination",
+            "satisfy_R11_conservation_identities",
+        ],
+        description=(
+            "The full covariant parent theory claim is deferred. R8, R10, and R11 "
+            "are missing. The reduced program may proceed but must not claim covariant "
+            "closure yet."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="covariant_parent_requirements_marker",
         inputs=[],
         output=sp.Symbol("covariant_parent_requirements_classified"),
         method="covariant_parent_requirement_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    n_missing = counts.get("MISSING", 0)
+    n_risk = counts.get("RISK", 0)
+    n_partial = counts.get("PARTIAL", 0)
+    n_satisfied = counts.get("SATISFIED_REDUCED", 0)
+
+    with out.governance_assessments():
+        out.line(f"satisfied reduced: {n_satisfied}", StatusMark.PASS,
+                 "strong reduced support for R1, R6")
+        out.line(f"partial: {n_partial}", StatusMark.DEFER,
+                 "R2, R3, R4, R5, R7, R9 have support but no parent derivation")
+        out.line(f"missing: {n_missing}", StatusMark.FAIL,
+                 "R8 gauge, R10 recombination, R11 conservation identities")
+        out.line(f"risk: {n_risk}", StatusMark.FAIL,
+                 "R12 GR overclaim risk")
+        out.line("covariant parent not yet established", StatusMark.DEFER,
+                 "deferred pending R8, R10, R11")
+
+    with out.unresolved_obligations():
+        for req in build_requirements():
+            if req.status in ("MISSING", "PARTIAL"):
+                out.line(f"satisfy {req.name}", StatusMark.OBLIGATION,
+                         "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

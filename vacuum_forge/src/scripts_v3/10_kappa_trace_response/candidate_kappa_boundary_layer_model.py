@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa boundary layer model
 #
 # Purpose
@@ -29,17 +35,22 @@
 #
 # This is not a derived matter/vacuum interface theory.
 # It is a boundary-control model.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_boundary_layer_model.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,22 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -111,8 +106,6 @@ def case_0_problem_statement():
     print("  forbid exterior kappa tail")
     print("  forbid propagating breathing leakage")
 
-    status_line("boundary-layer problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_simple_profile():
     header("Case 1: Smooth compact interior profile")
@@ -147,8 +140,8 @@ def case_1_simple_profile():
 
     ok = sp.simplify(kappa_R) == 0 and sp.simplify(dk_R) == 0
 
-    status_line("smooth compact profile has zero value and flux at boundary",
-                "DERIVED_REDUCED" if ok else "RISK")
+    StatusMark_val = StatusMark.PASS if ok else StatusMark.FAIL
+    print(f"[{StatusMark_val}] smooth compact profile has zero value and flux at boundary")
 
     return r, R, k0, kappa, dk
 
@@ -169,8 +162,11 @@ def case_2_boundary_flux(r, R, kappa, dk):
     print()
     print(f"F_kappa(R) = {flux_R}")
 
-    status_line("boundary flux vanishes",
-                "DERIVED_REDUCED" if sp.simplify(flux_R) == 0 else "RISK")
+    ok = sp.simplify(flux_R) == 0
+    StatusMark_val = StatusMark.PASS if ok else StatusMark.FAIL
+    print(f"[{StatusMark_val}] boundary flux vanishes")
+
+    return flux, flux_R
 
 
 def case_3_no_exterior_tail():
@@ -194,10 +190,6 @@ def case_3_no_exterior_tail():
     print()
     print("Thus no exterior 1/r tail is required by matching.")
 
-    status_line("zero exterior kappa extension is smooth to first derivative",
-                "CONSTRAINED_BY_IDENTITY",
-                "second derivative / stress layer not yet checked")
-
 
 def case_4_effective_source_from_profile(r, R, k0, kappa):
     header("Case 4: Effective source implied by profile")
@@ -216,9 +208,7 @@ def case_4_effective_source_from_profile(r, R, k0, kappa):
     print()
     print("It is not derived from matter trace yet.")
 
-    status_line("effective source shape computed",
-                "DERIVED_REDUCED",
-                "source law not derived")
+    return lap
 
 
 def case_5_source_integral_check(r, R, kappa):
@@ -238,8 +228,11 @@ def case_5_source_integral_check(r, R, kappa):
     print()
     print("This matches the zero-charge projection idea.")
 
-    status_line("effective source has zero net charge",
-                "DERIVED_REDUCED" if sp.simplify(integral) == 0 else "RISK")
+    ok = sp.simplify(integral) == 0
+    StatusMark_val = StatusMark.PASS if ok else StatusMark.FAIL
+    print(f"[{StatusMark_val}] effective source has zero net charge")
+
+    return integral
 
 
 def case_6_boundary_layer_interpretation():
@@ -260,10 +253,6 @@ def case_6_boundary_layer_interpretation():
     print("But:")
     print("  the profile is chosen, not derived.")
 
-    status_line("boundary-confined kappa is structurally possible",
-                "CONSTRAINED_BY_IDENTITY",
-                "interface physics missing")
-
 
 def case_7_noninertial_compatibility():
     header("Case 7: Compatibility with non-inertial relaxation")
@@ -283,10 +272,6 @@ def case_7_noninertial_compatibility():
     print("  local trace relaxation")
     print("  no propagating breathing wave")
 
-    status_line("boundary profile fits non-inertial relaxation picture",
-                "PLAUSIBLE",
-                "kappa_min source law missing")
-
 
 def case_8_failure_controls():
     header("Case 8: Failure controls")
@@ -299,10 +284,6 @@ def case_8_failure_controls():
     print("4. chosen profile cannot be produced by trace/pressure source.")
     print("5. boundary confinement is inserted only to hide scalar radiation.")
     print("6. non-inertial relaxation secretly includes a second-order wave channel.")
-
-    status_line("boundary-layer failure controls stated",
-                "RISK",
-                "interface/source derivation needed")
 
 
 def case_9_classification():
@@ -318,10 +299,6 @@ def case_9_classification():
     print("| effective source integral zero | DERIVED_REDUCED |")
     print("| source/interface derivation | MISSING |")
     print("| hidden boundary stress check | MISSING |")
-
-    status_line("boundary-layer classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "toy confinement works, derivation missing")
 
 
 def case_10_next_tests():
@@ -344,10 +321,6 @@ def case_10_next_tests():
     print()
     print("Reason:")
     print("  Value and flux match, but second derivative/interface stress is the next trap.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "hidden boundary stress check is next")
 
 
 def final_interpretation():
@@ -375,26 +348,94 @@ def main():
     header("Candidate Kappa Boundary Layer Model")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     r, R, k0, kappa, dk = case_1_simple_profile()
-    case_2_boundary_flux(r, R, kappa, dk)
+    flux, flux_R = case_2_boundary_flux(r, R, kappa, dk)
     case_3_no_exterior_tail()
-    case_4_effective_source_from_profile(r, R, k0, kappa)
-    case_5_source_integral_check(r, R, kappa)
+    lap = case_4_effective_source_from_profile(r, R, k0, kappa)
+    integral = case_5_source_integral_check(r, R, kappa)
     case_6_boundary_layer_interpretation()
     case_7_noninertial_compatibility()
     case_8_failure_controls()
     case_9_classification()
     case_10_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_boundary_layer_model_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_boundary_layer_model_classified"),
-        method="kappa_boundary_layer_model_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        ns.record_derivation(
+            derivation_id="compact_kappa_profile_boundary_conditions_sample",
+            inputs=[kappa],
+            output=flux_R,
+            method="compute kappa(R), kappa'(R), F_kappa(R) for kappa=kappa_0*(1-r^2/R^2)^2",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="toy parabolic-square profile; not derived from trace or relaxation law",
+        )
+
+        ns.record_derivation(
+            derivation_id="compact_kappa_profile_zero_net_source_sample",
+            inputs=[kappa, lap],
+            output=integral,
+            method="integrate 4*pi*r^2*Delta_kappa from 0 to R; verify = 0",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="toy profile; divergence theorem argument",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_boundary_layer_model_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_boundary_layer_model_classified"),
+            method="kappa_boundary_layer_model_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_boundary_interface_source_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the boundary interface source law that produces the compact kappa profile",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The toy compact profile kappa=kappa_0*(1-r^2/R^2)^2 satisfies boundary "
+                "conditions by construction. A physical derivation of the interface source "
+                "or kappa_min(r) that produces this profile from matter trace is required."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="compact_kappa_profile_is_boundary_safe_toy",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The compact profile kappa=kappa_0*(1-r^2/R^2)^2 satisfies kappa(R)=0, "
+                "kappa'(R)=0, F_kappa(R)=0, and zero net effective source charge. "
+                "This is a toy demonstration that interior-confined kappa is structurally "
+                "possible. Source/interface derivation remains missing."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("kappa(R)=0, kappa'(R)=0, F_kappa(R)=0 for compact profile", StatusMark.PASS, "sample - toy profile")
+            out.line("integrated effective source = 0", StatusMark.PASS, "sample - divergence theorem")
+
+        with out.governance_assessments():
+            out.line("boundary-confined kappa structurally possible", StatusMark.PASS, "toy model confirmed")
+            out.line("interface source derivation", StatusMark.OBLIGATION, "missing")
+            out.line("hidden boundary stress check", StatusMark.OBLIGATION, "not yet done")
+
+        with out.unresolved_obligations():
+            out.line("derive boundary interface source law", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

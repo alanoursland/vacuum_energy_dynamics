@@ -1,5 +1,11 @@
 # Candidate projector structure for parent identity
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The reduced-implication test suite showed that any parent identity must imply:
@@ -27,6 +33,7 @@
 #
 # It does not derive the projectors covariantly.
 # It builds a projector requirement ledger.
+# P_L and P_T are verified symbolically in the flat background.
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -35,6 +42,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -46,23 +64,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "FORMAL": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -206,6 +207,95 @@ def build_projectors() -> List[ProjectorEntry]:
     ]
 
 
+def compute_projector_identities(ns, out: ScriptOutput):
+    """Verify P_T and P_L idempotence and complementarity in flat Fourier space."""
+    header("Symbolic projector verification: P_T and P_L")
+
+    # 3D flat Fourier space projectors
+    # P_T_ij = delta_ij - k_i k_j / k^2
+    # P_L_ij = k_i k_j / k^2
+    # Verify: P_T^2 = P_T, P_L^2 = P_L, P_T + P_L = I (trace: 3, 1, 3 for 3D space ... wait, trace)
+    # Work in 2D symbolic block for conciseness: use k = (k1, k2) in 2D
+
+    k1, k2 = sp.symbols("k1 k2", real=True)
+    k_sq = k1**2 + k2**2
+
+    # Build 2D projectors
+    I2 = sp.eye(2)
+    k_vec = sp.Matrix([k1, k2])
+    P_L_mat = k_vec * k_vec.T / k_sq
+    P_T_mat = I2 - P_L_mat
+
+    # Verify idempotence
+    P_T_sq_residual = sp.simplify(P_T_mat * P_T_mat - P_T_mat)
+    P_L_sq_residual = sp.simplify(P_L_mat * P_L_mat - P_L_mat)
+    # Verify complementarity
+    complement_residual = sp.simplify(P_T_mat + P_L_mat - I2)
+    # Verify orthogonality
+    cross_residual = sp.simplify(P_T_mat * P_L_mat)
+
+    print(f"P_T^2 - P_T residual: {P_T_sq_residual}")
+    print(f"P_L^2 - P_L residual: {P_L_sq_residual}")
+    print(f"P_T + P_L - I residual: {complement_residual}")
+    print(f"P_T * P_L residual: {cross_residual}")
+
+    all_zero = (
+        P_T_sq_residual == sp.zeros(2, 2)
+        and P_L_sq_residual == sp.zeros(2, 2)
+        and complement_residual == sp.zeros(2, 2)
+        and cross_residual == sp.zeros(2, 2)
+    )
+
+    with out.derived_results():
+        out.line("P_T idempotence residual", StatusMark.PASS if P_T_sq_residual == sp.zeros(2, 2) else StatusMark.FAIL,
+                 f"{P_T_sq_residual}")
+        out.line("P_L idempotence residual", StatusMark.PASS if P_L_sq_residual == sp.zeros(2, 2) else StatusMark.FAIL,
+                 f"{P_L_sq_residual}")
+        out.line("P_T + P_L = I residual", StatusMark.PASS if complement_residual == sp.zeros(2, 2) else StatusMark.FAIL,
+                 f"{complement_residual}")
+        out.line("P_T * P_L orthogonality residual", StatusMark.PASS if cross_residual == sp.zeros(2, 2) else StatusMark.FAIL,
+                 f"{cross_residual}")
+
+    ns.record_derivation(
+        derivation_id="transverse_projector_P_T_idempotence_residual",
+        inputs=[P_T_mat],
+        output=P_T_sq_residual,
+        method="simplify(P_T*P_T - P_T) in flat 2D Fourier space",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="longitudinal_projector_P_L_idempotence_residual",
+        inputs=[P_L_mat],
+        output=P_L_sq_residual,
+        method="simplify(P_L*P_L - P_L) in flat 2D Fourier space",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="projector_complementarity_residual",
+        inputs=[P_T_mat, P_L_mat],
+        output=complement_residual,
+        method="simplify(P_T + P_L - I) in flat 2D Fourier space",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="projector_orthogonality_residual",
+        inputs=[P_T_mat, P_L_mat],
+        output=cross_residual,
+        method="simplify(P_T * P_L) in flat 2D Fourier space",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+
+    return all_zero
+
+
 def print_projector(p: ProjectorEntry) -> None:
     print()
     print("-" * 120)
@@ -215,12 +305,12 @@ def print_projector(p: ProjectorEntry) -> None:
     print(f"Feeds: {p.feeds}")
     print(f"Excludes: {p.excludes}")
     print(f"Schematic form: {p.schematic_form}")
-    status_line(p.name, p.status)
+    print(f"[INFO] {p.name}: {p.status}")
     print(f"Risk: {p.risk}")
     print(f"Missing: {p.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Projector structure problem")
 
     print("Question:")
@@ -237,7 +327,8 @@ def case_0_problem_statement():
     print("  projectors must prevent forbidden overlaps")
     print("  recombination must come after source splitting")
 
-    status_line("projector structure problem posed", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("projector structure problem posed", StatusMark.DEFER, "projector inventory in progress")
 
 
 def case_1_projector_inventory(entries: List[ProjectorEntry]):
@@ -246,7 +337,7 @@ def case_1_projector_inventory(entries: List[ProjectorEntry]):
         print_projector(entry)
 
 
-def case_2_compact_table(entries: List[ProjectorEntry]):
+def case_2_compact_table(entries: List[ProjectorEntry], out: ScriptOutput):
     header("Case 2: Compact projector ledger")
 
     print("| Projector | Feeds | Excludes | Status | Missing |")
@@ -266,10 +357,11 @@ def case_2_compact_table(entries: List[ProjectorEntry]):
             + " |"
         )
 
-    status_line("compact projector ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact projector ledger produced", StatusMark.INFO, "10 projectors audited")
 
 
-def case_3_status_counts(entries: List[ProjectorEntry]):
+def case_3_status_counts(entries: List[ProjectorEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -285,10 +377,11 @@ def case_3_status_counts(entries: List[ProjectorEntry]):
     print("  Scalar, TT, trace, and relaxation projectors are structural.")
     print("  Recombination and coefficient projectors remain unresolved/missing.")
 
-    status_line("projector status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("projector status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_required_decomposition():
+def case_4_required_decomposition(out: ScriptOutput):
     header("Case 4: Required source decomposition")
 
     print("Parent source decomposition must route:")
@@ -303,10 +396,11 @@ def case_4_required_decomposition():
     print("  active-regime terms -> P_closed -> Sigma_creation=0 in ordinary regime")
     print("  sector fields -> P_recombination -> geometry without double-counting")
 
-    status_line("required source decomposition stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("required source decomposition stated", StatusMark.DEFER, "decomposition is a requirement, not yet derived")
 
 
-def case_5_projector_consistency_tests():
+def case_5_projector_consistency_tests(out: ScriptOutput):
     header("Case 5: Projector consistency tests")
 
     print("Projector tests:")
@@ -322,10 +416,11 @@ def case_5_projector_consistency_tests():
     print("9. P_closed must set Sigma_creation=0 in ordinary gravity.")
     print("10. P_recombination must count scalar response exactly once.")
 
-    status_line("projector consistency tests stated", "CONSTRAINED")
+    with out.unresolved_obligations():
+        out.line("projector consistency tests stated", StatusMark.OBLIGATION, "10 consistency tests required")
 
 
-def case_6_hardest_projectors():
+def case_6_hardest_projectors(out: ScriptOutput):
     header("Case 6: Hardest projectors")
 
     print("Hardest projectors:")
@@ -345,10 +440,11 @@ def case_6_hardest_projectors():
     print("5. P_coeff:")
     print("   must derive vector/tensor coefficients rather than matching them.")
 
-    status_line("hardest projectors identified", "RISK")
+    with out.unresolved_obligations():
+        out.line("hardest projectors identified", StatusMark.OBLIGATION, "5 hardest projectors need derivation")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -369,7 +465,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  P_scalar is the hardest immediate gate: the parent must explain scalar constraint, not scalar radiation.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "scalar constraint script is the next gate")
 
 
 def final_interpretation():
@@ -403,22 +500,114 @@ def main():
     header("Candidate Projector Structure for Parent Identity")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_projectors()
     case_1_projector_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_required_decomposition()
-    case_5_projector_consistency_tests()
-    case_6_hardest_projectors()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+
+    all_projector_identities_pass = compute_projector_identities(ns, out)
+
+    case_4_required_decomposition(out)
+    case_5_projector_consistency_tests(out)
+    case_6_hardest_projectors(out)
+    case_7_next_tests(out)
     final_interpretation()
+
+    # Proof obligations for unresolved/missing projectors
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_scalar_parent_definition",
+        script_id=SCRIPT_ID,
+        title="Define P_scalar from parent identity to route rho to A",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the parent identity contains a scalar projector P_scalar "
+            "routing rho_eff to the A-sector constraint C_A[A,rho]=0, "
+            "excluding A_rad and long-range kappa."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_TT_parent_source_identity",
+        script_id=SCRIPT_ID,
+        title="Derive parent TT source identity and tensor coupling C_T",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the parent identity contains P_TT projecting S_ij to S_ij^TT "
+            "feeding h_ij^TT, and derive tensor coupling C_T from action/stiffness."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_parent_identity",
+        script_id=SCRIPT_ID,
+        title="Derive P_recombination: covariant or reduced parent recombination identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that sector fields A, W_i, h_TT, kappa recombine into a geometry-like object "
+            "without scalar double-counting or silent GR import."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_coeff_action_stiffness",
+        script_id=SCRIPT_ID,
+        title="Derive P_coeff from parent action/stiffness principle",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that alpha_W/K_c, beta_W, C_T, K_T follow from a parent action or "
+            "stiffness principle rather than being matched to GR."
+        ),
+    ))
+
+    # Policy claim: P_L and P_T are structurally sound in flat Fourier space
+    ns.record_claim(ClaimRecord(
+        claim_id="P_L_P_T_flat_projector_identities_derived",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "P_L = k k^T / k^2 and P_T = I - k k^T / k^2 satisfy idempotence, "
+            "complementarity, and orthogonality in flat 2D Fourier space. "
+            "Curved-background generalization remains an open obligation."
+        ),
+        derivation_ids=[
+            "transverse_projector_P_T_idempotence_residual",
+            "longitudinal_projector_P_L_idempotence_residual",
+            "projector_complementarity_residual",
+            "projector_orthogonality_residual",
+        ],
+    ))
+
+    # Branch decision: full parent identity projector structure deferred
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_projector_structure_derivation",
+        script_id=SCRIPT_ID,
+        branch_id="parent_projector_structure_derivation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_P_scalar_parent_definition",
+            "derive_P_TT_parent_source_identity",
+            "derive_P_recombination_parent_identity",
+            "derive_P_coeff_action_stiffness",
+        ],
+        description=(
+            "The full projector structure for the parent identity cannot be derived until "
+            "scalar projector, TT projector, recombination projector, and coefficient projector "
+            "derivations are available."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="projector_structure_for_parent_identity_marker",
         inputs=[],
         output=sp.Symbol("projector_structure_for_parent_identity_built"),
         method="projector_structure_for_parent_identity_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

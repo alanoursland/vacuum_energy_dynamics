@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa second derivative boundary stress
 #
 # Purpose
@@ -24,17 +30,22 @@
 # boundary, and compares the simple C1 profile to a smoother C2 compact profile.
 #
 # This is a boundary regularity test, not a final interface derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_second_derivative_boundary_stress.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -46,22 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -112,9 +107,6 @@ def case_0_problem_statement():
     print("  check Delta kappa(R)")
     print("  decide whether smoother compact profile is required")
 
-    status_line("second derivative boundary stress problem posed",
-                "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_C1_profile_second_derivatives():
     header("Case 1: C1 compact profile second derivatives")
@@ -150,11 +142,10 @@ def case_1_C1_profile_second_derivatives():
     jump_d2 = sp.simplify(d2k.subs(r, R))
     jump_lap = sp.simplify(lap.subs(r, R))
 
-    status_line("C1 profile has second-derivative/effective-source jump",
-                "RISK" if jump_d2 != 0 or jump_lap != 0 else "DERIVED_REDUCED",
-                "may imply boundary layer or hidden interface stress")
+    status = StatusMark.FAIL if (jump_d2 != 0 or jump_lap != 0) else StatusMark.PASS
+    print(f"[{status}] C1 profile has second-derivative/effective-source jump")
 
-    return r, R, k0
+    return r, R, k0, kappa, d2k, jump_d2, jump_lap
 
 
 def case_2_C2_profile_candidate(r, R, k0):
@@ -191,8 +182,8 @@ def case_2_C2_profile_candidate(r, R, k0):
         and sp.simplify(lap.subs(r, R)) == 0
     )
 
-    status_line("C2 profile removes second-derivative/effective-source jump",
-                "DERIVED_REDUCED" if ok else "RISK")
+    status = StatusMark.PASS if ok else StatusMark.FAIL
+    print(f"[{status}] C2 profile removes second-derivative/effective-source jump")
 
     return kappa, lap
 
@@ -218,9 +209,10 @@ def case_3_flux_and_charge_for_C2(r, R, kappa):
     print("C2 profile keeps zero flux and zero net source.")
 
     ok = sp.simplify(flux_R) == 0 and sp.simplify(source_integral) == 0
+    status = StatusMark.PASS if ok else StatusMark.FAIL
+    print(f"[{status}] C2 profile has zero flux and zero net effective source")
 
-    status_line("C2 profile has zero flux and zero net effective source",
-                "DERIVED_REDUCED" if ok else "RISK")
+    return flux_R, source_integral
 
 
 def case_4_regular_center_check(r, R, k0, kappa):
@@ -239,10 +231,6 @@ def case_4_regular_center_check(r, R, k0, kappa):
     print()
     print("The profile is regular at the center.")
 
-    status_line("C2 profile is center-regular",
-                "DERIVED_REDUCED",
-                "source sign/compatibility still needs checking")
-
 
 def case_5_effective_source_shape(r, R, kappa):
     header("Case 5: Effective source shape for C2 profile")
@@ -259,10 +247,6 @@ def case_5_effective_source_shape(r, R, kappa):
     print("vanishes.")
     print()
     print("It resembles a compensated trace source rather than raw positive pressure.")
-
-    status_line("C2 effective source is compensated-like",
-                "CONSTRAINED_BY_IDENTITY",
-                "must be derived from trace/minimum law")
 
 
 def case_6_interface_interpretation():
@@ -283,10 +267,6 @@ def case_6_interface_interpretation():
     print("  if hidden shell stress is forbidden, use at least C2 compact profile")
     print("  or derive an allowed boundary layer/interface stress explicitly")
 
-    status_line("C2 smoothness preferred if no shell stress is allowed",
-                "CONSTRAINED_BY_IDENTITY",
-                "physical interface derivation missing")
-
 
 def case_7_failure_controls():
     header("Case 7: Failure controls")
@@ -299,10 +279,6 @@ def case_7_failure_controls():
     print("4. compensated effective source is inserted by hand.")
     print("5. higher derivative terms in the true action require even higher smoothness.")
     print("6. boundary smoothness hides rather than explains scalar confinement.")
-
-    status_line("boundary stress failure controls stated",
-                "RISK",
-                "true action determines required smoothness")
 
 
 def case_8_classification():
@@ -318,10 +294,6 @@ def case_8_classification():
     print("| C2 source shape derived from matter trace | MISSING |")
     print("| physical interface law | MISSING |")
     print("| required smoothness from true action | MISSING |")
-
-    status_line("second-derivative boundary stress classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "C2 solves toy stress jump, derivation missing")
 
 
 def case_9_next_tests():
@@ -344,10 +316,6 @@ def case_9_next_tests():
     print()
     print("Reason:")
     print("  C2 compactness works mathematically; now source compatibility is the issue.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "source compatibility is next")
 
 
 def final_interpretation():
@@ -378,10 +346,13 @@ def main():
     header("Candidate Kappa Second Derivative Boundary Stress")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    r, R, k0 = case_1_C1_profile_second_derivatives()
+    r, R, k0, kappa_c1, d2k_c1, jump_d2, jump_lap = case_1_C1_profile_second_derivatives()
     kappa_c2, lap_c2 = case_2_C2_profile_candidate(r, R, k0)
-    case_3_flux_and_charge_for_C2(r, R, kappa_c2)
+    flux_R_c2, source_integral_c2 = case_3_flux_and_charge_for_C2(r, R, kappa_c2)
     case_4_regular_center_check(r, R, k0, kappa_c2)
     case_5_effective_source_shape(r, R, kappa_c2)
     case_6_interface_interpretation()
@@ -389,14 +360,81 @@ def main():
     case_8_classification()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_second_derivative_boundary_stress_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_second_derivative_boundary_stress_classified"),
-        method="kappa_second_derivative_boundary_stress_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        ns.record_derivation(
+            derivation_id="C1_kappa_second_derivative_jump_sample",
+            inputs=[kappa_c1],
+            output=jump_d2,
+            method="evaluate kappa''(R-) for kappa=k0*(1-r^2/R^2)^2",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="C1 toy profile only; value nonzero confirms jump risk",
+        )
+
+        ns.record_derivation(
+            derivation_id="C2_kappa_profile_boundary_regularity_sample",
+            inputs=[kappa_c2],
+            output=flux_R_c2,
+            method=(
+                "verify kappa(R)=0, kappa'(R)=0, kappa''(R)=0, Delta_kappa(R)=0, "
+                "F_kappa(R)=0 for kappa=k0*(1-r^2/R^2)^3"
+            ),
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="C2 toy profile; higher-order matching; source compatibility not proven",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_second_derivative_boundary_stress_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_second_derivative_boundary_stress_classified"),
+            method="kappa_second_derivative_boundary_stress_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_required_kappa_profile_smoothness_from_action_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the minimum required smoothness of the kappa profile from the candidate action",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The C1 profile has a hidden kappa'' jump (shell stress). C2 resolves it. "
+                "Whether C2 is sufficient or higher smoothness is required depends on "
+                "derivative terms in the true kappa action. This derivation is missing."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="C2_kappa_profile_removes_hidden_shell_stress",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The C2 compact profile kappa=k0*(1-r^2/R^2)^3 removes the hidden kappa'' "
+                "jump present in the C1 profile, while preserving zero boundary flux and zero "
+                "net effective source. This is the preferred toy boundary profile pending "
+                "source compatibility and action smoothness derivation."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("C1 kappa''(R-) is nonzero - second derivative jump confirmed", StatusMark.FAIL, "C1 has hidden shell stress risk")
+            out.line("C2 boundary conditions: kappa=0, kappa'=0, kappa''=0, F=0", StatusMark.PASS, "C2 preferred toy profile")
+
+        with out.governance_assessments():
+            out.line("C2 profile source compatibility", StatusMark.OBLIGATION, "missing")
+            out.line("required smoothness from true action", StatusMark.OBLIGATION, "missing")
+
+        with out.unresolved_obligations():
+            out.line("derive required kappa smoothness from action", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

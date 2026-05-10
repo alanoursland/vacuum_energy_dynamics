@@ -1,5 +1,11 @@
 # Candidate recombination without double-counting
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The boundary mass preservation audit found:
@@ -28,6 +34,18 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status, TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -39,25 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "CANDIDATE": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -210,12 +209,12 @@ def print_entry(e: RecombinationEntry) -> None:
     print(f"Allowed source: {e.allowed_source}")
     print(f"Forbidden source: {e.forbidden_source}")
     print(f"Candidate form: {e.candidate_form}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Risk: {e.risk}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Recombination without double-counting problem")
 
     print("Question:")
@@ -235,7 +234,8 @@ def case_0_problem_statement():
     print("  exterior Schwarzschild must be preserved when kappa=0")
     print("  do not import GR coefficients as derivation")
 
-    status_line("recombination problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("recombination problem posed", StatusMark.OBLIGATION, "P_recombination not yet derived")
 
 
 def case_1_recombination_inventory(entries: List[RecombinationEntry]):
@@ -244,7 +244,7 @@ def case_1_recombination_inventory(entries: List[RecombinationEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[RecombinationEntry]):
+def case_2_compact_table(entries: List[RecombinationEntry], out: ScriptOutput):
     header("Case 2: Compact recombination ledger")
 
     print("| Recombination piece | Component | Candidate form | Status | Missing |")
@@ -264,10 +264,11 @@ def case_2_compact_table(entries: List[RecombinationEntry]):
             + " |"
         )
 
-    status_line("compact recombination ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact recombination ledger produced", StatusMark.INFO, "10 recombination pieces recorded")
 
 
-def case_3_status_counts(entries: List[RecombinationEntry]):
+def case_3_status_counts(entries: List[RecombinationEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -283,10 +284,11 @@ def case_3_status_counts(entries: List[RecombinationEntry]):
     print("  Vector/tensor/kappa recombination is structural or constrained.")
     print("  Coefficient mapping remains missing.")
 
-    status_line("recombination status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("recombination status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_reduced_map():
+def case_4_candidate_reduced_map(out: ScriptOutput):
     header("Case 4: Candidate reduced recombination map")
 
     print("Candidate reduced map:")
@@ -307,10 +309,11 @@ def case_4_candidate_reduced_map():
     print()
     print("This is a reduced map, not a covariant derivation.")
 
-    status_line("candidate reduced recombination map stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate reduced recombination map stated", StatusMark.DEFER, "covariant derivation remains open")
 
 
-def case_5_no_double_counting_checks():
+def case_5_no_double_counting_checks(out: ScriptOutput):
     header("Case 5: No-double-counting checks")
 
     print("Recombination checks:")
@@ -326,10 +329,11 @@ def case_5_no_double_counting_checks():
     print("9. Is scalar spatial response counted exactly once?")
     print("10. Is near-boundary deviation still diagnostic-only?")
 
-    status_line("recombination no-double-counting checks stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("recombination no-double-counting checks stated", StatusMark.DEFER, "all 10 checks are requirements")
 
 
-def case_5b_vf_recombination_crosscheck(ns):
+def case_5b_vf_recombination_crosscheck(ns, out: ScriptOutput):
     header("Case 5b: VacuumForge recombination cross-check")
 
     ctx = TheoryContext("candidate_recombination_without_double_counting")
@@ -345,10 +349,13 @@ def case_5b_vf_recombination_crosscheck(ns):
     print(f"ConcreteMetricCheck status = {result.status}")
 
     ok = result.status == "satisfied_by_construction" and product == 1
-    status_line(
-        "recombination ledger preserves reciprocal exterior metric condition",
-        "DERIVED_REDUCED" if ok else "RISK",
-    )
+
+    with out.derived_results():
+        out.line(
+            "recombination ledger preserves reciprocal exterior metric condition",
+            StatusMark.PASS if ok else StatusMark.FAIL,
+            f"A*B = {product}; check = {result.status}",
+        )
 
     ns.record_derivation(
         derivation_id="recombination_reciprocal_metric_crosscheck",
@@ -356,10 +363,11 @@ def case_5b_vf_recombination_crosscheck(ns):
         output=product,
         method="ConcreteMetricCheck reciprocal_scaling",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
     )
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Recombination fails if:")
@@ -373,10 +381,11 @@ def case_6_failure_controls():
     print("7. Scalar radiation appears as A_rad or Box kappa.")
     print("8. Coefficients are matched but claimed derived.")
 
-    status_line("recombination failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("recombination failure controls stated", StatusMark.DEFER, "failure controls policy-guarded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -397,7 +406,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Recombination can be constrained, but relaxation energy remains explicitly missing.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "relaxation energy accounting script is the next gate")
 
 
 def final_interpretation():
@@ -426,23 +436,125 @@ def main():
     header("Candidate Recombination Without Double-Counting")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_recombination_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_reduced_map()
-    case_5_no_double_counting_checks()
-    case_5b_vf_recombination_crosscheck(ns)
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_reduced_map(out)
+    case_5_no_double_counting_checks(out)
+    case_5b_vf_recombination_crosscheck(ns, out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+
+    # Proof obligations for missing recombination pieces
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_scalar_counted_once_R6",
+        script_id=SCRIPT_ID,
+        title="Derive explicit scalar accounting rule in recombination map (R6)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that rho routes to A only and that trace routes to kappa_min only, "
+            "with no duplication of rho scalar mass response in both A and kappa sectors."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_exterior_Schwarzschild_R7",
+        script_id=SCRIPT_ID,
+        title="Derive P_recombination proof for exterior Schwarzschild preservation (R7)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that metric recombination gives exterior Schwarzschild reduced form "
+            "A=1-2GM/(c^2*r), B=1/A when kappa_ext=0. P_recombination proof required."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_coeff_action_stiffness_recombination_R10",
+        script_id=SCRIPT_ID,
+        title="Derive P_coeff / action stiffness principle for observable coefficients (R10)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "alpha_W/K_c, beta_W, C_T, K_T must be derived from parent action/stiffness, "
+            "not matched to GR. They remain UNKNOWN/MATCHED until this derivation is completed."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_recombination_lapse_shift_R1_R3",
+        script_id=SCRIPT_ID,
+        title="Derive covariant parent lapse/recombination and shift map (R1, R3)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The reduced map g_tt <- A and g_0i <- W_i must be elevated to a covariant "
+            "parent recombination derivation. beta_W normalization must be derived."
+        ),
+    ))
+
+    # Policy claim: GR metric copying forbidden in recombination
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_metric_copying_in_recombination_forbidden",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Recombination of A, W_i, h_TT, kappa into a geometry-like object must not "
+            "copy GR metric components by form. g_tt, g_0i, g_ij cannot be assigned the "
+            "full GR weak-field form before parent recombination is derived."
+        ),
+    ))
+
+    # Candidate route: reduced recombination map
+    ns.record_route(RouteRecord(
+        route_id="reduced_recombination_map_candidate",
+        script_id=SCRIPT_ID,
+        name="Candidate reduced recombination map: g_tt<-A, g_0i<-W_i, g_ij<-scalar+kappa+h_TT",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_P_recombination_scalar_counted_once_R6",
+            "derive_P_recombination_exterior_Schwarzschild_R7",
+            "derive_covariant_recombination_lapse_shift_R1_R3",
+        ],
+        activation_conditions=[
+            "rho routes to A only",
+            "trace routes to kappa_min only",
+            "kappa_ext = 0 gives B = 1/A",
+            "h_ij^TT trace-free and A*B reciprocal crosscheck passes",
+            "no GR coefficients inserted as derivation",
+        ],
+    ))
+
+    # Branch decision: covariant recombination derivation deferred
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_covariant_recombination_derivation",
+        script_id=SCRIPT_ID,
+        branch_id="covariant_recombination_derivation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_P_recombination_scalar_counted_once_R6",
+            "derive_P_recombination_exterior_Schwarzschild_R7",
+            "derive_P_coeff_action_stiffness_recombination_R10",
+            "derive_covariant_recombination_lapse_shift_R1_R3",
+        ],
+        description=(
+            "Covariant recombination cannot be derived until scalar accounting, "
+            "exterior Schwarzschild preservation, and coefficient derivation gates are met."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="recombination_without_double_counting_marker",
         inputs=[],
         output=sp.Symbol("recombination_without_double_counting_built"),
         method="recombination_without_double_counting_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

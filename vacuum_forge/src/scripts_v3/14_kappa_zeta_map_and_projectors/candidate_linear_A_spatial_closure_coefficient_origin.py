@@ -1,5 +1,11 @@
 # Candidate linear A_spatial closure coefficient origin
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The differential A_spatial closure operator inventory found that the least
@@ -28,11 +34,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -40,32 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -238,12 +227,12 @@ def print_entry(e: CoefficientOriginEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Linear A_spatial closure coefficient-origin problem")
 
     print("Question:")
@@ -262,7 +251,8 @@ def case_0_problem_statement():
     print("  do not let zeta fix q while remaining independent residual")
     print("  if q has no local origin, defer to parent identity")
 
-    status_line("linear coefficient-origin problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("linear coefficient-origin problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[CoefficientOriginEntry]):
@@ -271,7 +261,7 @@ def case_1_inventory(entries: List[CoefficientOriginEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[CoefficientOriginEntry]):
+def case_2_compact_table(entries: List[CoefficientOriginEntry], out: ScriptOutput):
     header("Case 2: Compact coefficient-origin ledger")
 
     print("| Entry | Origin | Status | Consequence |")
@@ -289,10 +279,11 @@ def case_2_compact_table(entries: List[CoefficientOriginEntry]):
             + " |"
         )
 
-    status_line("compact coefficient-origin ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact coefficient-origin ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_status_counts(entries: List[CoefficientOriginEntry]):
+def case_3_status_counts(entries: List[CoefficientOriginEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -309,10 +300,11 @@ def case_3_status_counts(entries: List[CoefficientOriginEntry]):
     print("  If none is explicit, the linear closure branch must defer to a parent coefficient-origin identity.")
     print("  This is a useful narrowing result, not a failure of the whole theory.")
 
-    status_line("coefficient-origin status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("coefficient-origin status count produced", StatusMark.WARN, "structural")
 
 
-def case_4_linear_ratio_statement():
+def case_4_linear_ratio_statement(out: ScriptOutput):
     header("Case 4: Linear ratio statement")
 
     print("Minimal linear closure:")
@@ -337,10 +329,11 @@ def case_4_linear_ratio_statement():
     print("Forbidden:")
     print("  choose q from gamma_like=1, AB=1, or Schwarzschild matching.")
 
-    status_line("linear q statement produced", "REQUIRED")
+    with out.governance_assessments():
+        out.line("linear q statement produced", StatusMark.WARN, "coefficient origin missing")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / defer outcome")
 
     print("Good failure:")
@@ -358,10 +351,11 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose q by matching gamma_like=1 and call it closure.")
 
-    status_line("linear coefficient-origin good failure stated", "DEFER")
+    with out.unresolved_obligations():
+        out.line("linear coefficient q origin is missing", StatusMark.OBLIGATION, "open proof obligation recorded")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Coefficient-origin test fails if:")
@@ -375,10 +369,11 @@ def case_6_failure_controls():
     print("7. zeta fixes q while also remaining independent residual")
     print("8. no-overlap theorem is ignored after q is chosen")
 
-    status_line("coefficient-origin failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("coefficient-origin failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -399,7 +394,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The local branch reduced to coefficient origin. The cleanest next source of coefficient ratios is an action/stiffness identity.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -419,25 +415,60 @@ def main():
     header("Candidate Linear A_spatial Closure Coefficient Origin")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_linear_ratio_statement()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_linear_ratio_statement(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="linear_A_spatial_closure_coefficient_origin_marker",
-        inputs=[],
-        output=sp.Symbol("linear_A_spatial_closure_coefficient_origin_audited"),
-        method="linear_A_spatial_closure_coefficient_origin_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_linear_closure_coefficient_ratio_q_origin_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive linear closure coefficient ratio q origin",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The linear differential closure Delta A_spatial = q S_A requires q = -(alpha2+alpha3)/alpha1 "
+                "to be derived from a pre-recovery principle. No local principle fixes q without choosing "
+                "it from gamma_like=1, AB=1, or Schwarzschild matching. Coefficient origin is missing. "
+                "Candidate sources: action/stiffness functional variation, conserved current balance law, "
+                "or source routing identity. The branch must defer until one is made explicit."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="linear_closure_coefficient_origin_missing_provisional",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The linear differential closure branch cannot stand locally without a pre-recovery "
+                "coefficient origin for q = -(alpha2+alpha3)/alpha1. This is a good failure: "
+                "the branch defers to action/stiffness identity or conservation-current origin. "
+                "This is provisional until a parent coefficient-origin identity is tested."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="linear_A_spatial_closure_coefficient_origin_marker",
+            inputs=[],
+            output=sp.Symbol("linear_A_spatial_closure_coefficient_origin_audited"),
+            method="linear_A_spatial_closure_coefficient_origin_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # Candidate log-scale exterior modes: VacuumForge test script
 #
+# Group:
+#   01_foundations
+#
+# Script type:
+#   SAMPLE
+#
 # Purpose
 # -------
 # This script tests the algebraic core of candidate_log_scale_exterior_modes.md.
@@ -42,12 +48,23 @@
 #   The log-scale candidate is algebraically clean, but the crucial physics
 #   remains the source/energy reason why the static source-free exterior has
 #   J_kappa = 0 or otherwise suppresses kappa.
-#
-# Suggested location:
-#   scripts/dev/candidate_log_scale_modes_test.py
+
+from pathlib import Path
 
 import sympy as sp
 
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 from vacuumforge.core.context import TheoryContext
 from vacuumforge.structure_search import (
     VacuumStructure,
@@ -56,6 +73,10 @@ from vacuumforge.structure_search import (
     StructureAnalyzer,
 )
 from vacuumforge.requirements.leak_detection import detect_leaks
+
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # ---------------------------------------------------------------------------
@@ -88,7 +109,7 @@ def is_zero(expr) -> bool:
 # Section 1: Pure algebra of log-scale modes
 # ---------------------------------------------------------------------------
 
-def section_1_algebraic_identity() -> None:
+def section_1_algebraic_identity(out: ScriptOutput) -> None:
     header("Section 1: Algebraic identity")
 
     A, B, a, b, kappa, s = sp.symbols("A B a b kappa s", positive=True, real=True)
@@ -111,10 +132,7 @@ def section_1_algebraic_identity() -> None:
     print(f"AB = {AB_expr}")
     print(f"AB | kappa=0 = {sp.simplify(AB_expr.subs(kappa, 0))}")
 
-    if is_zero(sp.simplify(AB_expr.subs(kappa, 0) - 1)):
-        print("PASS: kappa = 0 implies AB = 1.")
-    else:
-        print("FAIL: kappa = 0 did not simplify to AB = 1.")
+    kappa_zero_ab_one = is_zero(sp.simplify(AB_expr.subs(kappa, 0) - 1))
 
     # Weak-field gamma_v extraction.
     Phi, c, gamma_v = sp.symbols("Phi c gamma_v", nonzero=True, real=True)
@@ -136,17 +154,28 @@ def section_1_algebraic_identity() -> None:
     print(f"  log(AB) = {log_AB}")
     print(f"  gamma_v solutions from AB=1: {gamma_solution}")
 
-    if gamma_solution and sp.simplify(gamma_solution[0] - 1) == 0:
-        print("PASS: AB = 1 implies gamma_v = 1 under the ansatz.")
-    else:
-        print("WARN: gamma_v was not solved cleanly. Check assumptions / SymPy simplification.")
+    gamma_v_one = bool(gamma_solution and sp.simplify(gamma_solution[0] - 1) == 0)
+
+    with out.derived_results():
+        out.line(
+            "kappa = 0 implies AB = 1",
+            StatusMark.PASS if kappa_zero_ab_one else StatusMark.FAIL,
+            f"AB|kappa=0 = {sp.simplify(AB_expr.subs(kappa, 0))}",
+        )
+        out.line(
+            "AB = 1 implies gamma_v = 1 under weak-field ansatz",
+            StatusMark.PASS if gamma_v_one else StatusMark.WARN,
+            f"gamma_v solutions: {gamma_solution}",
+        )
+
+    return AB_expr, gamma_solution
 
 
 # ---------------------------------------------------------------------------
 # Section 2: Leak control — direct mode basis is tautological
 # ---------------------------------------------------------------------------
 
-def section_2_leak_control() -> None:
+def section_2_leak_control(out: ScriptOutput) -> None:
     header("Section 2: Leak control — direct mode basis")
 
     analyzer = StructureAnalyzer()
@@ -209,17 +238,21 @@ def section_2_leak_control() -> None:
         for warning in result.leak_warnings:
             print(f"  - {warning}")
 
-    if result.summary_status.value == "tautological":
-        print("PASS: direct delta_kappa=0 was identified as tautological.")
-    else:
-        print("WARN: expected tautological classification. Inspect analyzer behavior.")
+    is_tautological = result.summary_status.value == "tautological"
+
+    with out.governance_assessments():
+        out.line(
+            "direct delta_kappa=0 classified as tautological",
+            StatusMark.PASS if is_tautological else StatusMark.WARN,
+            "direct mode assumption is leak-controlled, not a derivation",
+        )
 
 
 # ---------------------------------------------------------------------------
 # Section 3: Structural trace-kernel exchange in physical 3+1 projection
 # ---------------------------------------------------------------------------
 
-def section_3_trace_kernel_31() -> None:
+def section_3_trace_kernel_31(out: ScriptOutput) -> None:
     header("Section 3: Structural trace-kernel exchange in physical 3+1")
 
     analyzer = StructureAnalyzer()
@@ -305,12 +338,16 @@ def section_3_trace_kernel_31() -> None:
     print(f"  status  = {cr.status}")
     print(f"  classification = {cr.classification}")
 
-    if result.summary_status.value == "derived":
-        print()
-        print("PASS: trace-free exchange is structurally derived from the projection kernel.")
-    else:
-        print()
-        print("WARN: expected derived status. Inspect classification and leak warnings.")
+    is_derived = result.summary_status.value == "derived"
+
+    with out.derived_results():
+        out.line(
+            "trace-free exchange derived from 3+1 projection kernel",
+            StatusMark.PASS if is_derived else StatusMark.WARN,
+            f"summary_status={result.summary_status.value}",
+        )
+
+    return is_derived
 
 
 # ---------------------------------------------------------------------------
@@ -404,7 +441,7 @@ def build_energy_context_ks() -> TheoryContext:
     return ctx
 
 
-def section_4_energy_forks() -> None:
+def section_4_energy_forks(out: ScriptOutput) -> None:
     header("Section 4: Toy energy forks")
 
     ctx_tc = build_energy_context_tc()
@@ -420,6 +457,9 @@ def section_4_energy_forks() -> None:
     print(f"Stationary equations: {sol_tc.equations}")
     print(f"Solutions: {sol_tc.solutions}")
 
+    kappa_tc_zero = False
+    kappa_ks_nonzero = False
+
     if sol_tc.solutions:
         kappa_tc = sol_tc.solutions[0].get(ms_tc.kappa)
         sigma_tc = sol_tc.solutions[0].get(ms_tc.sigma)
@@ -427,10 +467,8 @@ def section_4_energy_forks() -> None:
         print(f"s_eq     = {sigma_tc}")
 
         if kappa_tc == 0:
-            print("PASS: kappa_eq = 0.")
+            kappa_tc_zero = True
             print("Consequence: kappa = 0 -> AB = 1 -> gamma_v = 1 under ansatz.")
-        else:
-            print("FAIL/WARN: expected kappa_eq = 0.")
 
     subheader("Fork KS: kappa-sourced exterior")
     print(f"Stationary equations: {sol_ks.equations}")
@@ -443,11 +481,10 @@ def section_4_energy_forks() -> None:
         print(f"s_eq     = {sigma_ks}")
 
         if kappa_ks != 0:
+            kappa_ks_nonzero = True
             AB_ks = sp.simplify(sp.exp(2 * kappa_ks))
             print(f"AB = exp(2*kappa_eq) = {AB_ks}")
             print("Consequence: AB != 1 generically; gamma_v is not fixed to 1.")
-        else:
-            print("WARN: kappa_eq simplified to 0; check source setup.")
 
     subheader("Requirement validation comparison")
 
@@ -480,12 +517,31 @@ def section_4_energy_forks() -> None:
         else:
             print("  No target library available.")
 
+    with out.sample_results():
+        out.line(
+            "Fork TC: kappa_eq = 0 under trace-free exchange",
+            StatusMark.PASS if kappa_tc_zero else StatusMark.WARN,
+            "toy sample only; J_kappa=0 assumed not derived from source law",
+        )
+        out.line(
+            "Fork KS: kappa_eq != 0 when exchange sources kappa",
+            StatusMark.PASS if kappa_ks_nonzero else StatusMark.WARN,
+            "toy sample showing AB != 1 when kappa is sourced",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive source law suppressing kappa in static source-free exterior",
+            StatusMark.OBLIGATION,
+            "toy energy fork confirms need; physical mechanism not yet derived",
+        )
+
 
 # ---------------------------------------------------------------------------
 # Section 5: Candidate verdict
 # ---------------------------------------------------------------------------
 
-def section_5_verdict() -> None:
+def section_5_verdict(out: ScriptOutput) -> None:
     header("Section 5: Candidate verdict")
 
     print("Expected interpretation:")
@@ -510,6 +566,18 @@ def section_5_verdict() -> None:
     print("      without assuming reciprocal scaling by hand.")
     print()
 
+    with out.governance_assessments():
+        out.line(
+            "log-scale mode basis algebraically clean for kappa/s decomposition",
+            StatusMark.PASS,
+            "kappa=0 exactly encodes AB=1; basis is structurally sound",
+        )
+        out.line(
+            "trace-kernel exchange route is candidate, not licensed",
+            StatusMark.DEFER,
+            "J_kappa=0 derivable from trace-kernel structure; physical source law open",
+        )
+
 
 # ---------------------------------------------------------------------------
 # Main
@@ -517,11 +585,94 @@ def section_5_verdict() -> None:
 
 def main() -> None:
     header("Candidate Log-Scale Exterior Modes — VacuumForge Test")
-    section_1_algebraic_identity()
-    section_2_leak_control()
-    section_3_trace_kernel_31()
-    section_4_energy_forks()
-    section_5_verdict()
+
+    out = ScriptOutput()
+
+    section_1_algebraic_identity(out)
+    section_2_leak_control(out)
+    section_3_trace_kernel_31(out)
+    section_4_energy_forks(out)
+    section_5_verdict(out)
+
+    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
+        ns = archive.script_namespace(SCRIPT_ID)
+        ns.prepare_archive()
+
+        kappa, s = sp.symbols("kappa s", real=True)
+        A_expr = sp.exp(kappa + s)
+        B_expr = sp.exp(kappa - s)
+        AB_expr = sp.simplify(A_expr * B_expr)
+        kappa_zero_residual = sp.simplify(AB_expr.subs(kappa, 0) - 1)
+
+        ns.record_derivation(
+            derivation_id="kappa_zero_implies_AB_one_residual",
+            inputs=[kappa, s],
+            output=sp.Eq(kappa_zero_residual, 0),
+            method="simplify(exp(2*kappa)|kappa=0 - 1)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        Phi, c, gamma_v = sp.symbols("Phi c gamma_v", nonzero=True, real=True)
+        A_ansatz = sp.exp(Phi / c**2)
+        B_ansatz = sp.exp(-gamma_v * Phi / c**2)
+        AB_ansatz = sp.simplify(A_ansatz * B_ansatz)
+        log_AB = sp.simplify(sp.log(AB_ansatz))
+
+        ns.record_derivation(
+            derivation_id="weak_field_gamma_v_from_reciprocal_scaling",
+            inputs=[A_ansatz, B_ansatz],
+            output=sp.Eq(log_AB, 0),
+            method="log(A_ansatz*B_ansatz) = 0 under AB=1",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="weak-field ansatz only; gamma_v not derived from source law",
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_suppression_source_law",
+            script_id=SCRIPT_ID,
+            title="Derive source law suppressing kappa in static source-free exterior",
+            status=ObligationStatus.OPEN,
+            required_by=["trace_kernel_kappa_suppression_route"],
+            description=(
+                "Find a covariant source law, boundary/interface rule, or "
+                "configuration-energy functional that suppresses kappa in the "
+                "static source-free exterior without assuming reciprocal scaling "
+                "by hand. Toy energy forks confirm the need but do not supply "
+                "the physical mechanism."
+            ),
+        ))
+
+        ns.record_route(RouteRecord(
+            route_id="trace_kernel_kappa_suppression_route",
+            script_id=SCRIPT_ID,
+            name="Trace-kernel exchange derives J_kappa = 0",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_kappa_suppression_source_law"],
+            description=(
+                "A pre-mode exchange direction lying in the trace kernel of the "
+                "3+1 projection derives J_kappa = 0 non-tautologically. "
+                "With a toy quadratic energy this gives kappa=0 and AB=1. "
+                "Physical source law remains open."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="direct_mode_assumption_is_tautological",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Setting delta_kappa = 0 directly in the log-mode basis is "
+                "tautological and does not count as a derivation of kappa suppression."
+            ),
+        ))
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

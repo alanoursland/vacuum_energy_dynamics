@@ -1,5 +1,11 @@
 # Candidate vector stiffness from vacuum transport
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The vector coefficient normalization study found:
@@ -19,26 +25,23 @@
 #   1. shared stiffness: K_W = K_A
 #   2. independent transport stiffness: K_W != K_A but ontology-justified
 #   3. missing/phenomenological stiffness
-#
-# Status categories:
-#
-#   DERIVED_REDUCED
-#   CONSTRAINED_BY_IDENTITY
-#   INDEPENDENT_STIFFNESS
-#   HAND_ASSIGNED
-#   MISSING
-#   RISK
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_stiffness_from_vacuum_transport.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -50,22 +53,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "INDEPENDENT_STIFFNESS": "WARN",
-        "HAND_ASSIGNED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -117,8 +104,6 @@ def case_0_problem_statement():
     print("  K_W independent but ontology-justified")
     print("  K_W missing / phenomenological")
 
-    status_line("vector stiffness problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_scalar_energy_reference():
     header("Case 1: Scalar exchange energy reference")
@@ -136,7 +121,7 @@ def case_1_scalar_energy_reference():
     print()
     print("K_A measures scalar exchange stiffness.")
 
-    status_line("scalar stiffness reference stated", "DERIVED_REDUCED")
+    return E_A_density
 
 
 def case_2_vector_transport_energy():
@@ -159,8 +144,7 @@ def case_2_vector_transport_energy():
     print()
     print("But K_W is not yet derived.")
 
-    status_line("vector transport energy form stated", "CONSTRAINED_BY_IDENTITY",
-                "K_W still missing")
+    return E_W_density
 
 
 def case_3_shared_stiffness_option():
@@ -182,8 +166,7 @@ def case_3_shared_stiffness_option():
     print("  scalar exchange and vector transport are two modes of the same vacuum")
     print("  stiffness only if lambda_K is derived or fixed by ontology.")
 
-    status_line("shared stiffness option formulated", "CONSTRAINED_BY_IDENTITY",
-                "lambda_K remains missing")
+    return relation
 
 
 def case_4_independent_transport_stiffness():
@@ -200,15 +183,9 @@ def case_4_independent_transport_stiffness():
     print()
     print("But if K_W is introduced only to fit frame dragging, that is hand matching.")
 
-    status_line("independent K_W option stated", "INDEPENDENT_STIFFNESS",
-                "needs ontology-native energy reason")
-
 
 def case_5_curl_energy_option():
     header("Case 5: Curl-energy option")
-
-    x, y, z, K_c = sp.symbols("x y z K_c", positive=True, real=True)
-    Wx, Wy, Wz = sp.symbols("W_x W_y W_z", cls=sp.Function)
 
     print("A more gauge-aware vector energy may use:")
     print()
@@ -224,9 +201,6 @@ def case_5_curl_energy_option():
     print("Open issue:")
     print("  variation of |curl W|^2 gives a transverse vector equation,")
     print("  but gauge fixing and boundary conditions are needed.")
-
-    status_line("curl-energy option identified", "CONSTRAINED_BY_IDENTITY",
-                "more gauge-aware, not fully derived")
 
 
 def case_6_source_coupling_energy():
@@ -248,8 +222,7 @@ def case_6_source_coupling_energy():
     print("Missing:")
     print("  alpha_W is no more derived than K_W.")
 
-    status_line("vector source coupling stated", "MISSING",
-                "alpha_W and K_W both need ontology")
+    return source_term
 
 
 def case_7_dimensionless_ratio():
@@ -271,8 +244,7 @@ def case_7_dimensionless_ratio():
     print("  alpha_W and K_W separately")
     print("  or their ratio directly")
 
-    status_line("vector ratio remains the target", "MISSING",
-                "stiffness alone does not fix coefficient")
+    return ratio
 
 
 def case_8_classification():
@@ -287,9 +259,6 @@ def case_8_classification():
     print("| source coupling alpha_W | MISSING |")
     print("| coefficient alpha_W/K_W | MISSING |")
     print("| GR normalization inserted directly | HAND_ASSIGNED / RISK |")
-    print()
-    status_line("vector stiffness classification produced", "MISSING",
-                "coefficient not reconstructed")
 
 
 def case_9_next_tests():
@@ -309,9 +278,6 @@ def case_9_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_curl_energy_field_equation.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "curl-energy is the most gauge-aware vector path")
 
 
 def final_interpretation():
@@ -343,24 +309,109 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_scalar_energy_reference()
-    case_2_vector_transport_energy()
-    case_3_shared_stiffness_option()
+    E_A = case_1_scalar_energy_reference()
+    E_W = case_2_vector_transport_energy()
+    shared_relation = case_3_shared_stiffness_option()
     case_4_independent_transport_stiffness()
     case_5_curl_energy_option()
-    case_6_source_coupling_energy()
-    case_7_dimensionless_ratio()
+    source_term = case_6_source_coupling_energy()
+    ratio = case_7_dimensionless_ratio()
     case_8_classification()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_stiffness_from_vacuum_transport_marker",
-        inputs=[],
-        output=sp.Symbol("vector_transport_stiffness_options_classified"),
-        method="vector_stiffness_from_vacuum_transport_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line(
+            "scalar stiffness K_A as reference",
+            StatusMark.PASS,
+            "E_A ~ K_A |grad A|^2 provides scalar reference",
+        )
+        out.line(
+            "vector stiffness K_W",
+            StatusMark.FAIL,
+            "K_W not derived; curl-energy K_c is better gauge-aware option",
+        )
+        out.line(
+            "source coupling alpha_W",
+            StatusMark.FAIL,
+            "alpha_W not derived; ratio alpha_W/K_W fully missing",
+        )
+        out.line(
+            "GR normalization matching",
+            StatusMark.DEFER,
+            "forbidden at this stage; must derive from vacuum transport action",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Proof obligation: vector coefficient (alpha_W/K_c is the ratio after curl-energy)
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The vector source equation Delta W_i ~ (alpha_W/K_c) j_i requires "
+                "the ratio alpha_W/K_c to be derived from the vacuum transport action. "
+                "Neither alpha_W nor K_c is currently derived."
+            ),
+        ))
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The boundary/far-field coefficient for the vector sector is controlled "
+                "by alpha_W/K_c plus source geometry. The absolute normalization is missing "
+                "until the action ratio is derived."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for K_W
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_K_W",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "K_W and alpha_W must not be chosen to reproduce the Lense-Thirring "
+                "frame-dragging coefficient. Deriving K_W from frame-dragging matching "
+                "is recovery smuggling, not ontology work."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_stiffness_from_vacuum_transport_marker",
+            inputs=[],
+            output=sp.Symbol("vector_transport_stiffness_options_classified"),
+            method="vector_stiffness_from_vacuum_transport_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

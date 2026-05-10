@@ -1,5 +1,11 @@
 # Candidate F_zeta companion map inventory
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The zeta companion branch test found:
@@ -24,6 +30,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -36,32 +52,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -234,12 +224,12 @@ def print_entry(e: FZetaMapEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: F_zeta companion map inventory problem")
 
     print("Question:")
@@ -259,7 +249,9 @@ def case_0_problem_statement():
     print("  expose kappa cleanup consequence")
     print("  prefer source-driven/differential maps over algebraic fitting")
 
-    status_line("F_zeta companion map problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("F_zeta companion map problem posed", "DEFER",
+                 "branch open pending source-driven volume creation law")
 
 
 def case_1_inventory(entries: List[FZetaMapEntry]):
@@ -268,7 +260,7 @@ def case_1_inventory(entries: List[FZetaMapEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[FZetaMapEntry]):
+def case_2_compact_table(entries: List[FZetaMapEntry], out: ScriptOutput):
     header("Case 2: Compact F_zeta map ledger")
 
     print("| Entry | Map form | Status | Consequence |")
@@ -286,10 +278,11 @@ def case_2_compact_table(entries: List[FZetaMapEntry]):
             + " |"
         )
 
-    status_line("compact F_zeta map ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact F_zeta map ledger produced", "INFO", "inventory table complete")
 
 
-def case_3_status_counts(entries: List[FZetaMapEntry]):
+def case_3_status_counts(entries: List[FZetaMapEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -306,10 +299,11 @@ def case_3_status_counts(entries: List[FZetaMapEntry]):
     print("  Residual-kill, no-overlap, and boundary neutrality are mandatory.")
     print("  Kappa cleanup is downstream, not optional.")
 
-    status_line("F_zeta map status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("F_zeta map status count produced", "INFO", "counts reviewed")
 
 
-def case_4_map_decision_tree():
+def case_4_map_decision_tree(out: ScriptOutput):
     header("Case 4: F_zeta map decision tree")
 
     print("Decision tree:")
@@ -329,10 +323,12 @@ def case_4_map_decision_tree():
     print("5. Non-metric bookkeeping?")
     print("   Safe only if metric insertion occurs solely through B_s.")
 
-    status_line("F_zeta map decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("F_zeta map decision tree stated", "DEFER",
+                 "source-driven map is preferred route pending Sigma_V")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / branch decision")
 
     print("Good failure:")
@@ -348,10 +344,12 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose lambda_z from gamma_like and declare zeta the companion.")
 
-    status_line("F_zeta map good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("F_zeta map good failure stated", "DEFER",
+                 "branch deferred pending source-driven volume creation law")
 
 
-def case_6_failure_controls():
+def case_6_good_failure_controlled(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("F_zeta map inventory fails if:")
@@ -365,10 +363,11 @@ def case_6_failure_controls():
     print("7. kappa restores killed residual trace")
     print("8. source-driven volume creation remains unnamed")
 
-    status_line("F_zeta map failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("F_zeta map failure controls stated", "INFO", "eight failure controls recorded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -389,7 +388,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The best non-fitting F_zeta route is source-driven volume creation. Express Sigma_V before adding more map structure.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", "INFO", "candidate_source_driven_volume_creation_law.py")
 
 
 def final_interpretation():
@@ -409,25 +409,69 @@ def main():
     header("Candidate F_zeta Companion Map Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_map_decision_tree()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_map_decision_tree(out)
+    case_5_good_failure(out)
+    case_6_good_failure_controlled(out)
+    case_7_next_tests(out)
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="F_zeta_companion_map_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("F_zeta_companion_map_inventory_audited"),
-        method="F_zeta_companion_map_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with ProjectArchive(ARCHIVE_ROOT) as pa:
+        ns2 = pa.script_namespace(SCRIPT_ID)
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_source_driven_F_zeta_map_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive source-driven F_zeta map via Sigma_V",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Express Sigma_V[A,T] before using it in F_zeta. Show that the source-driven "
+                "companion map derives its coefficient from postulates, not recovery checks, "
+                "and that residual-kill and no-overlap hold."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="F_zeta_companion_map_forms_inventoried",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Five F_zeta map forms are inventoried: pure algebraic (RISK), A-plus-zeta algebraic (RISK), "
+                "differential zeta (CANDIDATE), source-driven (CANDIDATE), and non-metric bookkeeping (CANDIDATE). "
+                "Algebraic maps are high-risk. Source-driven is the preferred route pending Sigma_V expression."
+            ),
+        ))
+
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_F_zeta_companion_map_branch",
+            script_id=SCRIPT_ID,
+            branch_id="F_zeta_companion_map",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_source_driven_F_zeta_map_in_14"],
+        ))
+
+        ns2.record_derivation(
+            derivation_id="F_zeta_companion_map_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("F_zeta_companion_map_inventory_audited"),
+            method="F_zeta_companion_map_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns2.write_run_metadata()
+
+    out.print()
 
 
 if __name__ == "__main__":

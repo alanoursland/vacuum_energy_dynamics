@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate volume flux direction law
 #
 # Purpose
@@ -21,11 +27,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -33,33 +50,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -272,7 +262,7 @@ def print_entry(e: FluxDirectionEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -297,7 +287,10 @@ def case_0_problem_statement():
     print("  preserve no-overlap / residual-kill")
     print("  keep timelike-domain test downstream")
 
-    status_line("volume flux direction problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("volume flux direction problem posed", StatusMark.OBLIGATION, "requires independent direction law")
+    out.print()
 
 
 def case_1_inventory(entries: List[FluxDirectionEntry]):
@@ -324,7 +317,10 @@ def case_2_compact_table(entries: List[FluxDirectionEntry]):
             + " |"
         )
 
-    status_line("compact flux-direction ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact flux-direction ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[FluxDirectionEntry]):
@@ -345,7 +341,10 @@ def case_3_status_counts(entries: List[FluxDirectionEntry]):
     print("  Zero-flux local exchange is safe for neutrality but cannot define u_vac from J_V.")
     print("  If a current survives, the next bottleneck is timelike/nonzero domain.")
 
-    status_line("flux-direction status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("flux-direction status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_direction_decision_tree():
@@ -371,7 +370,10 @@ def case_4_direction_decision_tree():
     print("6. Acausal repair current:")
     print("   rejected.")
 
-    status_line("flux-direction decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("flux-direction decision tree stated", StatusMark.INFO, "decision tree recorded")
+    out.print()
 
 
 def case_5_good_failure():
@@ -390,7 +392,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  solve div J_V = Sigma_V - R_V after the fact and call that the current law.")
 
-    status_line("flux-direction good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("flux-direction good failure stated", StatusMark.DEFER, "deferred pending physical flux direction law")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -408,7 +413,10 @@ def case_6_failure_controls():
     print("8. boundary neutrality is absent")
     print("9. timelike/nonzero domain is skipped")
 
-    status_line("flux-direction failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("flux-direction failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -432,7 +440,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  If the flux-direction inventory leaves candidate currents alive, the next gate is whether any can define u_vac through a timelike/nonzero domain.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_timelike_domain_for_volume_current.py")
+    out.print()
 
 
 def final_interpretation():
@@ -467,14 +478,88 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="volume_flux_direction_law_marker",
-        inputs=[],
-        output=sp.Symbol("volume_flux_direction_law_audited"),
-        method="volume_flux_direction_law_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_J_V_physical_flux_law_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive J_V physical flux / transport law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "J_V must have a physical flux or transport law independent of the divergence "
+                "equation div J_V = Sigma_V - R_V. Candidate laws include exchange-potential "
+                "flux and causal transport current."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="fd2_scalar_source_cannot_give_direction",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Sigma_V - R_V supplies divergence strength, not vector direction. "
+                "The scalar source cannot masquerade as the flux direction of J_V."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="fd11_acausal_repair_current_rejected",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Acausal repair currents chosen nonlocally to cancel scalar charge or "
+                "enforce exterior neutrality are rejected as exchange currents in the ordinary branch."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="fd4_exchange_potential_flux_candidate_route",
+            script_id=SCRIPT_ID,
+            name="Exchange-potential flux J_V^mu ~ -D_V nabla^mu Phi_V",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_J_V_physical_flux_law_in_15"],
+            activation_conditions=[
+                "Phi_V is defined independently of recovery targets",
+                "D_V origin is established",
+                "boundary neutrality theorem is attached",
+            ],
+        ))
+        ns.record_route(RouteRecord(
+            route_id="fd7_causal_transport_current_candidate_route",
+            script_id=SCRIPT_ID,
+            name="Causal transport current with finite characteristic speed",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_J_V_physical_flux_law_in_15"],
+            activation_conditions=[
+                "transport law is derived and does not become Box zeta",
+                "no ordinary scalar radiation is created",
+                "boundary neutrality theorem is attached",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_J_V_flux_direction_branch",
+            script_id=SCRIPT_ID,
+            branch_id="J_V_flux_direction_definition",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_J_V_physical_flux_law_in_15"],
+            description=(
+                "No flux direction for J_V has been derived. Exchange-potential and causal "
+                "transport are candidates, but neither is established. The branch is deferred."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="volume_flux_direction_law_marker",
+            inputs=[],
+            output=sp.Symbol("volume_flux_direction_law_audited"),
+            method="volume_flux_direction_law_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

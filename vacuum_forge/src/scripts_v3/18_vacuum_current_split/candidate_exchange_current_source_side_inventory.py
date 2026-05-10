@@ -3,6 +3,9 @@
 # Group:
 #   18_vacuum_current_split
 #
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The ordinary matter decoupling audit found:
@@ -31,6 +34,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -44,7 +58,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -69,6 +83,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -591,14 +606,62 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="exchange_current_source_side_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("exchange_current_source_side_inventory_complete"),
-        method="exchange_current_source_side_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_Sigma_R_separation_in_18_source_side_inventory",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Sigma_exch and R_exch must be proven distinct with independent definitions. They must not be two names for one hidden tuning mechanism.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_R_exch_relaxation_mechanism_in_18_source_side_inventory",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="R_exch as real relaxation/return/sink mechanism must be defined, distinct from Sigma_exch and not tunable against it.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_Sigma_exch_sign_strength_law_in_18_source_side_inventory",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Sigma_exch must have sign, magnitude, and domain rule from an ontology-native operator, not chosen to pass recovery/boundary constraints.",
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="no_active_ordinary_source_side_for_J_exch_in_18",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement="No active ordinary-sector source side for J_exch is derived. Sigma/R remain role-level. Zero-net exchange, zero creation, curvature-from-warping, and latent exchange remain the safest ordinary-sector branches.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_ordinary_T_source_in_18_source_side_inventory",
+            script_id=SCRIPT_ID,
+            branch_name="ordinary_T_as_Sigma_exch_source",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="Sigma_exch = function(T_mu_nu) by convenience is forbidden as ordinary matter double-counting.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_boundary_repair_source_in_18_source_side_inventory",
+            script_id=SCRIPT_ID,
+            branch_name="boundary_repair_as_source",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="Boundary leakage, shell, or scalar tail defining Sigma_exch is a forbidden boundary repair source.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_e_curv_reservoir_source_in_18_source_side_inventory",
+            script_id=SCRIPT_ID,
+            branch_name="e_curv_reservoir_as_source",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="e_curv supplying source strength for J_exch is forbidden under Group 17 closure. Preserves e_curv diagnostic/accounting-only status.",
+        ))
+        ns.record_derivation(
+            derivation_id="exchange_current_source_side_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("exchange_current_source_side_inventory_complete"),
+            method="exchange_current_source_side_inventory",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

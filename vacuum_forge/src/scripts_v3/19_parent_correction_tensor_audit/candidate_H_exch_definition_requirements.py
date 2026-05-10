@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The H_curv definition requirements audit found:
@@ -50,6 +53,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -61,33 +76,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -440,12 +428,15 @@ def print_entry(e: HExchRequirementEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: H_exch definition requirements problem")
 
     print("Question:")
@@ -469,7 +460,8 @@ def case_0_problem_statement():
     print("  no dark-sector patch")
     print("  no recovery-fit correction")
 
-    status_line("H_exch definition requirements problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("H_exch definition requirements problem posed", StatusMark.OBLIGATION, "requirements audit required before H_exch can be used")
 
 
 def case_1_inventory(entries: List[HExchRequirementEntry]):
@@ -478,7 +470,7 @@ def case_1_inventory(entries: List[HExchRequirementEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[HExchRequirementEntry]):
+def case_2_compact_table(entries: List[HExchRequirementEntry], out: ScriptOutput):
     header("Case 2: Compact H_exch requirements ledger")
 
     print("| Entry | Requirement | Status | Consequence |")
@@ -496,10 +488,11 @@ def case_2_compact_table(entries: List[HExchRequirementEntry]):
             + " |"
         )
 
-    status_line("compact H_exch requirements ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact H_exch requirements ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[HExchRequirementEntry]):
+def case_3_status_counts(entries: List[HExchRequirementEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -521,10 +514,11 @@ def case_3_status_counts(entries: List[HExchRequirementEntry]):
     print("  Exchange-continuity paint, Sigma/R tuning, boundary repair, matter rerouting, dark patch, and recovery-fit correction are rejected.")
     print("  Next gate is correction tensor divergence safety.")
 
-    status_line("H_exch requirements status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("H_exch requirements status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_required_fields():
+def case_4_required_fields(out: ScriptOutput):
     header("Case 4: Required H_exch fields")
 
     print("Required H_exch fields:")
@@ -546,10 +540,11 @@ def case_4_required_fields():
     print("15. zero-net / zero-creation preservation")
     print("16. dark-sector no-patch guard")
 
-    status_line("required H_exch fields listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("required H_exch fields listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: H_exch definition decision tree")
 
     print("Decision tree:")
@@ -575,10 +570,11 @@ def case_5_decision_tree():
     print("7. H_exch cannot meet requirements:")
     print("   keep deferred or diagnostic-only.")
 
-    status_line("H_exch definition decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("H_exch definition decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -595,10 +591,11 @@ def case_6_good_failure():
     print()
     print("  call H_exch an exchange correction because exchange continuity needs a tensor.")
 
-    status_line("H_exch definition good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("H_exch definition good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("H_exch definition fails if:")
@@ -619,10 +616,11 @@ def case_7_failure_controls():
     print("14. dark sector patches ordinary failure")
     print("15. coefficients tune recovery or exchange closure")
 
-    status_line("H_exch definition failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("H_exch definition failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -644,10 +642,11 @@ def case_8_next_tests():
     print("  H_curv and H_exch have now both been burdened.")
     print("  The next shared bottleneck is what divergence-safe actually means without decoration.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("H_exch is not defined yet.")
@@ -682,33 +681,179 @@ def final_interpretation():
     print()
     print("  candidate_correction_tensor_divergence_safety.py")
 
-    status_line("H_exch definition requirements audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("H_exch definition requirements audit complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    required_obligations = [
+        ("guard_J_V_absence_H_exch_19", "Guard J_V absence in H_exch",
+         "J_V remains unresolved and cannot be used as H_exch source/current (HE2)."),
+        ("guard_J_exch_theorem_target_H_exch_19", "Guard J_exch theorem-target status in H_exch",
+         "J_exch remains active-exchange theorem target only; H_exch must not promote it (HE3)."),
+        ("derive_Sigma_R_operators_H_exch_19", "Derive Sigma_exch and R_exch operators",
+         "Sigma_exch and R_exch must be defined as operators before H_exch uses them (HE4)."),
+        ("derive_Sigma_R_distinction_H_exch_19", "Derive Sigma/R source/relaxation distinction",
+         "Sigma_exch and R_exch must have distinct origins and strength laws, not be tuning knobs (HE5)."),
+        ("guard_ordinary_sector_source_side_H_exch_19", "Guard ordinary-sector source-side absence",
+         "No active ordinary-sector source side for J_exch is derived; H_exch must not invent one (HE6)."),
+        ("derive_H_exch_domain_19", "Define H_exch domain D_exch",
+         "Domain where H_exch acts must be specified and follow from source/current structure (HE7)."),
+        ("derive_H_exch_orientation_19", "Specify H_exch orientation/flux behavior",
+         "H_exch relation to exchange flux direction must be specified (HE8)."),
+        ("derive_H_exch_projection_class_19", "Specify H_exch projection class",
+         "Projection class must be explicit and source-compatible (HE9)."),
+        ("derive_H_exch_tensor_symmetry_19", "Specify H_exch tensor symmetry and rank",
+         "Tensor rank, symmetry, trace behavior, and index placement required (HE10)."),
+        ("derive_H_exch_divergence_behavior_19", "Derive H_exch divergence behavior",
+         "Divergence behavior must be specified without decorative continuity or Bianchi language (HE11)."),
+        ("derive_H_exch_boundary_neutrality_19", "Derive H_exch boundary neutrality theorem",
+         "H_exch must have no boundary repair flux, shell hiding, scalar tail cancellation, or M_ext shift (HE12)."),
+        ("derive_H_exch_matter_decoupling_19", "Derive H_exch ordinary matter decoupling",
+         "H_exch must not reroute ordinary T_mu_nu, ordinary rho, or scalar charge (HE13)."),
+        ("derive_H_exch_mass_neutrality_19", "Derive H_exch M_ext neutrality theorem",
+         "delta M_ext|H_exch = 0 unless derived through established A-sector source law (HE14)."),
+        ("derive_H_exch_scalar_neutrality_19", "Derive H_exch scalar trace neutrality",
+         "H_exch must not reopen B_s/F_zeta, residual trace, kappa, or exterior scalar charge (HE15)."),
+        ("derive_H_exch_coefficient_origin_19", "Derive H_exch coefficient origin",
+         "Coefficients must have ontology-native, action, stiffness, or exchange-source origin (HE16)."),
+        ("derive_H_exch_zero_net_preservation_19", "Derive H_exch zero-net/zero-creation preservation",
+         "H_exch must preserve ordinary-sector zero-net exchange and zero-creation branches (HE17)."),
+        ("guard_H_exch_no_dark_patch_19", "Guard H_exch dark-sector no-patch rule",
+         "H_exch must not use dark-sector coupling as ordinary-sector patch (HE18)."),
+    ]
+
+    for obligation_id, title, description in required_obligations:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=ObligationStatus.OPEN,
+            required_by=["H_exch_insertion_route"],
+            description=description,
+        ))
+
+    all_obligation_ids = [o[0] for o in required_obligations]
+
+    # Candidate routes
+    ns.record_route(RouteRecord(
+        route_id="H_exch_diagnostic_only_route_19",
+        script_id=SCRIPT_ID,
+        name="Diagnostic-only H_exch audit object",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[],
+        activation_conditions=[
+            "explicitly diagnostic-only",
+            "never inserted into field equation",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="H_exch_source_balanced_candidate_route_19",
+        script_id=SCRIPT_ID,
+        name="Source-balanced H_exch candidate",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "exchange source and relaxation sides exist before H_exch",
+            "Sigma/R are not defined by H_exch",
+        ],
+    ))
+
+    # Deferred branch for H_exch
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_exch_definition_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_exch_definition_and_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "H_exch is not defined yet. All seventeen definition requirements are open obligations. "
+            "Insertion is deferred until prerequisites are satisfied."
+        ),
+    ))
+
+    # HE29 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_exch_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_exch_definition_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "HE29 failure condition: if H_exch cannot meet requirements, it remains deferred or diagnostic-only. "
+            "Mapped to DEFERRED_PENDING_PREREQUISITES because no contradiction has been demonstrated — "
+            "the seventeen prerequisites are simply open."
+        ),
+    ))
+
+    # Rejected routes
+    for decision_id, branch_id, description in [
+        ("reject_H_exch_exchange_continuity_paint_19", "H_exch_exchange_continuity_paint", "HE23: exchange-continuity paint rejected by policy."),
+        ("reject_H_exch_sigma_r_tuning_19", "H_exch_sigma_r_tuning_tensor", "HE24: Sigma/R tuning tensor rejected by policy."),
+        ("reject_H_exch_boundary_repair_19", "H_exch_boundary_repair_tensor", "HE25: boundary repair tensor rejected by policy."),
+        ("reject_H_exch_ordinary_matter_rerouting_19", "H_exch_ordinary_matter_rerouting", "HE26: ordinary matter rerouting rejected by policy."),
+        ("reject_H_exch_dark_patch_19", "H_exch_dark_sector_patch", "HE27: dark-sector patch rejected by policy."),
+        ("reject_H_exch_recovery_fit_19", "H_exch_recovery_fit_correction", "HE28: recovery-fit correction rejected by policy."),
+    ]:
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id=decision_id,
+            script_id=SCRIPT_ID,
+            branch_id=branch_id,
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            description=description,
+        ))
+
+    # Summary claim
+    ns.record_claim(ClaimRecord(
+        claim_id="H_exch_not_defined_yet_19",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "H_exch is not defined yet and is not insertable. "
+            "It survives only as theorem target or diagnostic-only fallback."
+        ),
+        obligation_ids=all_obligation_ids,
+    ))
 
 
 def main():
     header("Candidate H_exch Definition Requirements")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_required_fields()
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_required_fields(out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="H_exch_definition_requirements_marker",
-        inputs=[],
-        output=sp.Symbol("H_exch_definition_requirements_complete"),
-        method="H_exch_definition_requirements",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="H_exch_definition_requirements_marker",
+            inputs=[],
+            output=sp.Symbol("H_exch_definition_requirements_complete"),
+            method="H_exch_definition_requirements",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

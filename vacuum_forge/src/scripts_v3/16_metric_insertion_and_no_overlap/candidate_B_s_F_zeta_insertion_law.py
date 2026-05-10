@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The current field-equation status says:
@@ -42,6 +45,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -53,34 +69,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -333,12 +321,12 @@ def print_entry(e: InsertionEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: B_s / F_zeta insertion problem")
 
     print("Question:")
@@ -366,7 +354,8 @@ def case_0_problem_statement():
     print("  do not reinsert killed residual through energy/accounting")
     print("  keep recovery downstream")
 
-    status_line("B_s/F_zeta insertion problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("B_s/F_zeta insertion problem posed", StatusMark.OBLIGATION, "required before insertion can proceed")
 
 
 def case_1_inventory(entries: List[InsertionEntry]):
@@ -375,7 +364,7 @@ def case_1_inventory(entries: List[InsertionEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[InsertionEntry]):
+def case_2_compact_table(entries: List[InsertionEntry], out: ScriptOutput):
     header("Case 2: Compact B_s / F_zeta insertion ledger")
 
     print("| Entry | Candidate rule | Status | Consequence |")
@@ -393,10 +382,11 @@ def case_2_compact_table(entries: List[InsertionEntry]):
             + " |"
         )
 
-    status_line("compact insertion ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact insertion ledger produced", StatusMark.INFO, "inventory of B_s/F_zeta candidate routes")
 
 
-def case_3_status_counts(entries: List[InsertionEntry]):
+def case_3_status_counts(entries: List[InsertionEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -415,10 +405,11 @@ def case_3_status_counts(entries: List[InsertionEntry]):
     print("  GR-copy, B=1/A construction, and zeta-both branches are rejected.")
     print("  Next gate is count-once: what exactly is forbidden from entering separately?")
 
-    status_line("B_s/F_zeta insertion status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("B_s/F_zeta insertion status count produced", StatusMark.INFO, "insertion inventory enumerated")
 
 
-def case_4_conformal_split_check():
+def case_4_conformal_split_check(out: ScriptOutput):
     header("Case 4: Conformal-volume split check")
 
     print("Given:")
@@ -448,10 +439,11 @@ def case_4_conformal_split_check():
     print("  recovery coefficients")
     print("  parent equation")
 
-    status_line("conformal-volume split checked", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("conformal-volume split checked", StatusMark.INFO, "structural consistency only, not dynamics")
 
 
-def case_4b_symbolic_conformal_split(ns):
+def case_4b_symbolic_conformal_split(ns, out: ScriptOutput):
     header("Case 4b: Symbolic conformal-volume check")
 
     zeta = sp.symbols("zeta", real=True)
@@ -470,13 +462,15 @@ def case_4b_symbolic_conformal_split(ns):
     print(f"  delta gamma_ij / gamma_ij = {isotropic_fraction}")
 
     if volume_scalar == zeta and isotropic_fraction == sp.Rational(2, 3) * delta_zeta:
-        status_line(
-            "symbolic conformal-volume relation",
-            "DERIVED_REDUCED",
-            f"ln sqrt(gamma) = {volume_scalar}, delta gamma_ij / gamma_ij = {isotropic_fraction}",
-        )
+        with out.derived_results():
+            out.line(
+                "symbolic conformal-volume relation",
+                StatusMark.PASS,
+                f"ln sqrt(gamma) = {volume_scalar}, delta gamma_ij / gamma_ij = {isotropic_fraction}",
+            )
     else:
-        status_line("symbolic conformal-volume relation", "RISK", "unexpected symbolic mismatch")
+        with out.derived_results():
+            out.line("symbolic conformal-volume relation", StatusMark.FAIL, "unexpected symbolic mismatch")
 
     ns.record_derivation(
         derivation_id="conformal_volume_split_symbolic_relation",
@@ -484,10 +478,12 @@ def case_4b_symbolic_conformal_split(ns):
         output=sp.Tuple(volume_scalar, isotropic_fraction),
         method="symbolic conformal-volume split check",
         status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        scope="principal branch, det(bar_gamma)=1 convention",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Insertion decision tree")
 
     print("Decision tree:")
@@ -516,10 +512,11 @@ def case_5_decision_tree():
     print("8. Zeta as both B_s and residual trace:")
     print("   rejected unless real O is later derived.")
 
-    status_line("insertion decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("insertion decision tree stated", StatusMark.INFO, "recommended next is count-once audit")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -537,10 +534,11 @@ def case_6_good_failure():
     print("  Declare gamma_ij = exp(2 zeta / 3) bar_gamma_ij to be the field equation")
     print("  and allow residual zeta/kappa metric trace to remain active.")
 
-    status_line("B_s/F_zeta insertion good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("B_s/F_zeta insertion good failure stated", StatusMark.DEFER, "deferred pending insertion law theorem")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("B_s/F_zeta insertion fails if:")
@@ -556,10 +554,11 @@ def case_7_failure_controls():
     print("9. J_V shifts M_ext independently of A")
     print("10. recovery checks choose insertion or residual-kill")
 
-    status_line("B_s/F_zeta insertion failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("B_s/F_zeta insertion failure controls stated", StatusMark.WARN, "open risks enumerated")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -581,10 +580,11 @@ def case_8_next_tests():
     print("  The conformal-volume split makes zeta-volume insertion structurally plausible,")
     print("  but the next gate is count-once recombination, not parent equation construction.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_B_s_only_insertion_count_once.py")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("The conformal-volume split is a useful structural handle:")
@@ -606,33 +606,120 @@ def final_interpretation():
     print()
     print("  candidate_B_s_only_insertion_count_once.py")
 
-    status_line("B_s/F_zeta insertion audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("B_s/F_zeta insertion audit complete", StatusMark.DEFER, "no insertion law derived; deferred")
 
 
 def main():
     header("Candidate B_s / F_zeta Insertion Law")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_conformal_split_check()
-    case_4b_symbolic_conformal_split(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_conformal_split_check(out)
+    case_4b_symbolic_conformal_split(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="B_s_F_zeta_insertion_law_marker",
-        inputs=[],
-        output=sp.Symbol("B_s_F_zeta_insertion_law_audited"),
-        method="B_s_F_zeta_insertion_law_audit",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Proof obligations for the missing insertion theorems
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_F_zeta_B_s_insertion_law",
+            script_id=SCRIPT_ID,
+            title="Derive explicit F_zeta / B_s insertion law",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_metric_insertion_route"],
+            description=(
+                "Derive a concrete insertion rule B_s = F_zeta[A, zeta, J_V, Sigma_V, R_V] "
+                "that does not rely on GR-copying, recovery tuning, or residual overlap."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_residual_kill_or_O_for_insertion",
+            script_id=SCRIPT_ID,
+            title="Derive residual-kill or no-overlap operator O for B_s insertion",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_metric_insertion_route"],
+            description=(
+                "Show that residual zeta/kappa metric trace is structurally killed or "
+                "a real no-overlap operator O is defined after B_s insertion."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_boundary_neutrality_for_B_s_insertion",
+            script_id=SCRIPT_ID,
+            title="Derive boundary neutrality theorem for B_s insertion",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_metric_insertion_route"],
+            description=(
+                "Show that B_s/F_zeta insertion creates no exterior scalar charge, "
+                "no far-zone scalar flux, no shell source, and no independent M_ext shift."
+            ),
+        ))
+
+        # Route for the B_s-only provisional convention
+        ns2.record_route(RouteRecord(
+            route_id="B_s_only_residual_kill_provisional_route",
+            script_id=SCRIPT_ID,
+            name="B_s-only insertion with provisional residual-kill",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_F_zeta_B_s_insertion_law",
+                "derive_residual_kill_or_O_for_insertion",
+                "derive_boundary_neutrality_for_B_s_insertion",
+            ],
+            activation_conditions=[
+                "F_zeta insertion law is explicit and not GR-copied",
+                "residual zeta/kappa metric trace is killed or non-metric",
+                "boundary neutrality holds structurally",
+                "recovery remains downstream",
+            ],
+        ))
+
+        # Branch decision: rejected routes
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_B_s_F_zeta_insertion_no_law",
+            script_id=SCRIPT_ID,
+            branch_id="B_s_F_zeta_metric_insertion",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=[
+                "derive_F_zeta_B_s_insertion_law",
+                "derive_residual_kill_or_O_for_insertion",
+                "derive_boundary_neutrality_for_B_s_insertion",
+            ],
+            description=(
+                "No concrete F_zeta insertion law was derived. The insertion branch "
+                "remains open but cannot be licensed without insertion law, residual-kill, "
+                "and boundary neutrality theorems."
+            ),
+        ))
+
+        # Inventory marker for the sieve audit
+        ns2.record_derivation(
+            derivation_id="B_s_F_zeta_insertion_law_marker",
+            inputs=[],
+            output=sp.Symbol("B_s_F_zeta_insertion_law_audited"),
+            method="B_s_F_zeta_insertion_law_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

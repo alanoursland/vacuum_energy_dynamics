@@ -1,5 +1,11 @@
 # Candidate kappa as projected zeta mismatch
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The kappa-zeta map inventory found that the strongest next target is:
@@ -26,11 +32,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -38,29 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -220,7 +214,7 @@ def print_entry(e: ProjectedMapEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
@@ -243,8 +237,6 @@ def case_0_problem_statement():
     print("  e_kappa and epsilon_zeta must not count the same mismatch twice")
     print("  K_lock remains diagnostic only")
     print("  recombination must count trace/volume response once")
-
-    status_line("projected kappa-zeta problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[ProjectedMapEntry]):
@@ -271,8 +263,6 @@ def case_2_compact_table(entries: List[ProjectedMapEntry]):
             + " |"
         )
 
-    status_line("compact projected-map ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[ProjectedMapEntry]):
     header("Case 3: Status counts")
@@ -289,8 +279,6 @@ def case_3_status_counts(entries: List[ProjectedMapEntry]):
     print("  Projected kappa is promising, but only if P_trace also supports compensation/exterior neutrality.")
     print("  The relaxed projected map is safer than raw equality.")
     print("  The main unresolved issue is whether the projection is diagnostic, energetic, or constraint-defining.")
-
-    status_line("projected-map status count produced", "STRUCTURAL")
 
 
 def case_4_minimal_projected_map():
@@ -320,8 +308,6 @@ def case_4_minimal_projected_map():
     print("  e_kappa counted separately only if kappa is a residual")
     print("  K_lock not counted as physical energy")
 
-    status_line("minimal projected map stated", "CANDIDATE")
-
 
 def case_5_projector_requirements():
     header("Case 5: P_trace requirements")
@@ -337,8 +323,6 @@ def case_5_projector_requirements():
     print("7. support first-order relaxation if P_relax is included")
     print("8. leave recombination with only one trace/volume contribution")
 
-    status_line("P_trace requirements stated", "REQUIRED")
-
 
 def case_6_failure_controls():
     header("Case 6: Failure controls")
@@ -353,8 +337,6 @@ def case_6_failure_controls():
     print("6. Box kappa or Box zeta reappears.")
     print("7. TT modes alter zeta through projector leakage.")
     print("8. recombination counts A spatial response, zeta, and kappa separately.")
-
-    status_line("projected-map failure controls stated", "RISK")
 
 
 def case_7_next_tests():
@@ -377,8 +359,6 @@ def case_7_next_tests():
     print()
     print("Reason:")
     print("  The projected map is only as good as P_trace. Define the projector next.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -422,14 +402,72 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="kappa_as_projected_zeta_mismatch_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_as_projected_zeta_mismatch_audited"),
-        method="kappa_as_projected_zeta_mismatch_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("projected kappa-zeta map audited", StatusMark.PASS, "12 projected-map entries classified")
+        out.line("P_trace requirements stated", StatusMark.DEFER, "P_trace not yet derived")
+
+    with out.unresolved_obligations():
+        out.line("derive P_trace for exterior neutrality", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive P_relax definition", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive exterior stability theorem", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_route(RouteRecord(
+            route_id="kappa_as_projected_zeta_mismatch_route",
+            script_id=SCRIPT_ID,
+            name="Kappa as projected zeta mismatch",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_P_trace_definition_in_14",
+                "derive_exterior_neutrality_theorem_in_14",
+            ],
+            activation_conditions=[
+                "P_trace removes exterior monopole",
+                "P_trace excludes A-sector mass",
+                "P_trace annihilates TT modes",
+                "P_relax remains first-order",
+            ],
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_exterior_neutrality_theorem_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive exterior stability and neutrality theorem for projected kappa",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that kappa_ext -> 0 and zeta_ext -> 0 under the projected map. "
+                "Requires Q_kappa=0, Q_volume=0, F_kappa(R+)=0, F_zeta(R+)=0, delta M_ext=0."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_relax_definition_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive P_relax definition",
+            status=ObligationStatus.OPEN,
+            description=(
+                "P_relax must preserve no-wave, no-overshoot kappa behavior and remain first-order. "
+                "Its relation to Gamma_relax is unspecified."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="kappa_as_projected_zeta_mismatch_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_as_projected_zeta_mismatch_audited"),
+            method="kappa_as_projected_zeta_mismatch_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

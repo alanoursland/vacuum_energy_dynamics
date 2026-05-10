@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The minimal no-overlap operator audit found:
@@ -30,6 +33,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -41,34 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -291,12 +279,12 @@ def print_entry(e: BoundarySafetyEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: B_s insertion boundary-safety problem")
 
     print("Question:")
@@ -318,7 +306,12 @@ def case_0_problem_statement():
     print("  diagnostic elliptic audit only")
     print("  recovery downstream")
 
-    status_line("B_s insertion boundary-safety problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion boundary-safety problem posed",
+            StatusMark.OBLIGATION,
+            "boundary safety required before insertion can be licensed",
+        )
 
 
 def case_1_inventory(entries: List[BoundarySafetyEntry]):
@@ -327,7 +320,7 @@ def case_1_inventory(entries: List[BoundarySafetyEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[BoundarySafetyEntry]):
+def case_2_compact_table(entries: List[BoundarySafetyEntry], out: ScriptOutput):
     header("Case 2: Compact B_s boundary-safety ledger")
 
     print("| Entry | Rule | Status | Consequence |")
@@ -345,10 +338,11 @@ def case_2_compact_table(entries: List[BoundarySafetyEntry]):
             + " |"
         )
 
-    status_line("compact boundary-safety ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact boundary-safety ledger produced", StatusMark.INFO, "boundary safety routes enumerated")
 
 
-def case_3_status_counts(entries: List[BoundarySafetyEntry]):
+def case_3_status_counts(entries: List[BoundarySafetyEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -367,10 +361,15 @@ def case_3_status_counts(entries: List[BoundarySafetyEntry]):
     print("  Zeta-gradient exterior tails and source-gradient shell sources remain major risks.")
     print("  If boundary safety survives, recovery must be audited without construction.")
 
-    status_line("B_s insertion boundary-safety status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion boundary-safety status count produced",
+            StatusMark.INFO,
+            "safety required but unproved",
+        )
 
 
-def case_4_boundary_safety_routes():
+def case_4_boundary_safety_routes(out: ScriptOutput):
     header("Case 4: Boundary-safety routes")
 
     print("Possible safe routes:")
@@ -389,10 +388,11 @@ def case_4_boundary_safety_routes():
     print("4. R_V cancellation")
     print("5. recovery-tuned smoothing")
 
-    status_line("boundary-safety routes listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("boundary-safety routes listed", StatusMark.INFO, "five candidate routes; five danger routes")
 
 
-def case_4b_symbolic_boundary_profile(ns):
+def case_4b_symbolic_boundary_profile(ns, out: ScriptOutput):
     header("Case 4b: Symbolic compact-support boundary sample")
 
     r, R, epsilon = sp.symbols("r R epsilon", positive=True)
@@ -407,13 +407,15 @@ def case_4b_symbolic_boundary_profile(ns):
     print(f"zeta''(R) = {second_derivative}")
 
     if boundary_value == 0 and boundary_flux == 0:
-        status_line(
-            "compact-support boundary sample",
-            "DERIVED_REDUCED",
-            f"zeta(R) = {boundary_value}, zeta'(R) = {boundary_flux}",
-        )
+        with out.sample_results():
+            out.line(
+                "compact-support boundary sample",
+                StatusMark.PASS,
+                f"zeta(R) = {boundary_value}, zeta'(R) = {boundary_flux}",
+            )
     else:
-        status_line("compact-support boundary sample", "RISK", "boundary profile leaves residual shell risk")
+        with out.sample_results():
+            out.line("compact-support boundary sample", StatusMark.WARN, "boundary profile leaves residual shell risk")
 
     ns.record_derivation(
         derivation_id="B_s_insertion_compact_boundary_profile",
@@ -421,10 +423,12 @@ def case_4b_symbolic_boundary_profile(ns):
         output=sp.Tuple(boundary_value, boundary_flux, second_derivative),
         method="symbolic compact-support boundary check",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy compact-support profile; illustrative only, not general boundary law",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Boundary-safety decision tree")
 
     print("Decision tree:")
@@ -450,10 +454,11 @@ def case_5_decision_tree():
     print("7. If scalar leakage or shell source appears:")
     print("   insertion branch killed for ordinary sector.")
 
-    status_line("boundary-safety decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("boundary-safety decision tree stated", StatusMark.INFO, "recommended next is recovery audit")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -470,10 +475,15 @@ def case_6_good_failure():
     print()
     print("  Hide leakage in boundary counterterms or call elliptic completion a mechanism.")
 
-    status_line("B_s insertion boundary-safety good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion boundary-safety good failure stated",
+            StatusMark.DEFER,
+            "deferred pending boundary safety theorem",
+        )
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("B_s insertion boundary safety fails if:")
@@ -489,10 +499,11 @@ def case_7_failure_controls():
     print("9. diagnostic elliptic audit becomes ontology")
     print("10. AB/gamma_like chooses boundary behavior")
 
-    status_line("B_s insertion boundary-safety failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("B_s insertion boundary-safety failure controls stated", StatusMark.WARN, "ten failure modes")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -514,10 +525,11 @@ def case_8_next_tests():
     print("  If boundary safety is not killed, the next danger is recovery smuggling:")
     print("  gamma_like, AB, Schwarzschild spatial metric, or areal kappa as construction.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_B_s_insertion_recovery_audit.py")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Boundary safety is required and not derived.")
@@ -534,33 +546,141 @@ def final_interpretation():
     print()
     print("  candidate_B_s_insertion_recovery_audit.py")
 
-    status_line("B_s insertion boundary-safety audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion boundary-safety audit complete",
+            StatusMark.DEFER,
+            "boundary safety not derived; deferred",
+        )
 
 
 def main():
     header("Candidate B_s Insertion Boundary Safety")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_boundary_safety_routes()
-    case_4b_symbolic_boundary_profile(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_boundary_safety_routes(out)
+    case_4b_symbolic_boundary_profile(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="B_s_insertion_boundary_safety_marker",
-        inputs=[],
-        output=sp.Symbol("B_s_insertion_boundary_safety_audited"),
-        method="B_s_insertion_boundary_safety_audit",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Proof obligations for boundary safety theorems
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_zero_exterior_scalar_charge_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive zero exterior scalar charge theorem for B_s insertion",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_insertion_boundary_safe_route"],
+            description=(
+                "Show that Q_ext[zeta, kappa] = 0 outside ordinary static source "
+                "follows structurally from B_s insertion under residual-kill convention, "
+                "without requiring boundary repair or R_V cancellation."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_no_far_zone_scalar_flux_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive no far-zone scalar flux theorem",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_insertion_boundary_safe_route"],
+            description=(
+                "Show that F_scalar_far[zeta, kappa, J_V] = 0 is structurally absent "
+                "after B_s insertion and residual-kill."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_shell_avoidance_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive shell-avoidance theorem for B_s insertion",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_insertion_boundary_safe_route"],
+            description=(
+                "Show that B_s/F_zeta support or transition creates no shell-like "
+                "scalar source at the boundary."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_residual_kill_boundary_consequence_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive boundary consequence of residual-kill",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_insertion_boundary_safe_route"],
+            description=(
+                "Show that the killed/non-metric residual produces no exterior charge, "
+                "no scalar flux, and no mass shift. Required to confirm residual-kill "
+                "is safe at the boundary."
+            ),
+        ))
+
+        # Route: compact support with structural zero-flux boundary
+        ns2.record_route(RouteRecord(
+            route_id="compact_support_zero_flux_boundary_route",
+            script_id=SCRIPT_ID,
+            name="Compact support with structural zero-flux boundary",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_zero_exterior_scalar_charge_theorem",
+                "derive_no_far_zone_scalar_flux_theorem",
+                "derive_shell_avoidance_theorem",
+                "derive_residual_kill_boundary_consequence_theorem",
+            ],
+            activation_conditions=[
+                "support is compact",
+                "boundary flux vanishes structurally",
+                "no exterior scalar charge appears",
+                "no shell source at boundary",
+                "compact support is derived, not imposed",
+            ],
+        ))
+
+        # Branch decision: boundary safety deferred
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_boundary_safety_no_theorems",
+            script_id=SCRIPT_ID,
+            branch_id="B_s_insertion_boundary_safe",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=[
+                "derive_zero_exterior_scalar_charge_theorem",
+                "derive_no_far_zone_scalar_flux_theorem",
+                "derive_shell_avoidance_theorem",
+                "derive_residual_kill_boundary_consequence_theorem",
+            ],
+            description=(
+                "Boundary safety cannot be licensed because zero-charge, zero-flux, "
+                "shell-avoidance, and residual-kill boundary consequence theorems are missing. "
+                "The insertion branch remains alive but unverified at the boundary."
+            ),
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="B_s_insertion_boundary_safety_marker",
+            inputs=[],
+            output=sp.Symbol("B_s_insertion_boundary_safety_audited"),
+            method="B_s_insertion_boundary_safety_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

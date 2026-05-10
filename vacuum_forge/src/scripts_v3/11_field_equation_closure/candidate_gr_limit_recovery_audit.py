@@ -1,5 +1,11 @@
 # Candidate GR limit recovery audit
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The conservation identity requirements study found:
@@ -21,6 +27,19 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status, TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -32,25 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -235,20 +235,32 @@ def build_audit() -> List[GRLimitEntry]:
 
 
 def print_entry(e: GRLimitEntry) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(e.status, "INFO")
     print()
     print("-" * 120)
     print(e.result)
     print("-" * 120)
     print(f"GR target: {e.gr_target}")
     print(f"Current basis: {e.current_basis}")
-    status_line(e.result, e.status)
+    print(f"[{mark}] {e.result}: {e.status}")
     print(f"What is real: {e.what_is_real}")
     print(f"What is not yet real: {e.what_is_not_yet_real}")
     print(f"Risk: {e.risk}")
     print(f"Next needed: {e.next_needed}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: GR limit recovery audit problem")
 
     print("Question:")
@@ -266,7 +278,8 @@ def case_0_problem_statement():
     print("  structural agreement is not coefficient derivation")
     print("  reduced reconstruction is real but limited")
 
-    status_line("GR recovery audit problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("GR recovery audit problem posed", StatusMark.DEFER, "structural constraint")
 
 
 def case_1_audit_inventory(entries: List[GRLimitEntry]):
@@ -275,7 +288,7 @@ def case_1_audit_inventory(entries: List[GRLimitEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[GRLimitEntry]):
+def case_2_compact_table(entries: List[GRLimitEntry], out: ScriptOutput):
     header("Case 2: Compact GR recovery ledger")
 
     print("| Result | GR target | Status | Real | Not yet real |")
@@ -295,10 +308,11 @@ def case_2_compact_table(entries: List[GRLimitEntry]):
             + " |"
         )
 
-    status_line("compact GR recovery ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact GR recovery ledger produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_status_counts(entries: List[GRLimitEntry]):
+def case_3_status_counts(entries: List[GRLimitEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -315,10 +329,11 @@ def case_3_status_counts(entries: List[GRLimitEntry]):
     print("  Tensor radiation is structurally correct but coupling and flux are matched.")
     print("  Conservation/Bianchi closure is missing.")
 
-    status_line("GR audit status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("GR audit status count produced", StatusMark.PASS, "inventory marker")
 
 
-def case_4_strongest_results():
+def case_4_strongest_results(out: ScriptOutput):
     header("Case 4: Strongest results")
 
     print("Strongest current GR-facing recoveries:")
@@ -331,10 +346,12 @@ def case_4_strongest_results():
     print()
     print("These are real reduced/structural wins, but limited.")
 
-    status_line("strongest GR-facing results identified", "DERIVED_REDUCED")
+    with out.governance_assessments():
+        out.line("strongest GR-facing results identified", StatusMark.PASS,
+                 "reduced derivations confirmed")
 
 
-def case_5_weakest_results():
+def case_5_weakest_results(out: ScriptOutput):
     header("Case 5: Weakest results")
 
     print("Weakest or most matched GR-facing pieces:")
@@ -347,10 +364,11 @@ def case_5_weakest_results():
     print()
     print("These must not be advertised as derived.")
 
-    status_line("weakest GR-facing pieces identified", "RISK")
+    with out.governance_assessments():
+        out.line("weakest GR-facing pieces identified", StatusMark.WARN, "open risk")
 
 
-def case_6_reconstruction_scorecard():
+def case_6_reconstruction_scorecard(out: ScriptOutput):
     header("Case 6: Reconstruction scorecard")
 
     print("Reconstruction scorecard:")
@@ -373,10 +391,11 @@ def case_6_reconstruction_scorecard():
     print("  Conservation/closure:")
     print("    missing")
 
-    status_line("reconstruction scorecard produced", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("reconstruction scorecard produced", StatusMark.DEFER, "structural assessment")
 
 
-def case_6b_vf_reciprocal_metric_crosscheck(ns):
+def case_6b_vf_reciprocal_metric_crosscheck(ns, out: ScriptOutput):
     header("Case 6b: VacuumForge reciprocal metric cross-check")
 
     ctx = TheoryContext("candidate_gr_limit_recovery_audit")
@@ -393,10 +412,13 @@ def case_6b_vf_reciprocal_metric_crosscheck(ns):
     print(f"Message = {result.message}")
 
     ok = result.status == "satisfied_by_construction" and product == 1
-    status_line(
-        "VacuumForge classifies reciprocal Schwarzschild metric as by-construction",
-        "DERIVED_REDUCED" if ok else "RISK",
-    )
+
+    with out.derived_results():
+        out.line(
+            "VacuumForge classifies reciprocal Schwarzschild metric as by-construction",
+            StatusMark.PASS if ok else StatusMark.FAIL,
+            f"A*B = {product}",
+        )
 
     ns.record_derivation(
         derivation_id="gr_limit_reciprocal_metric_crosscheck",
@@ -404,10 +426,46 @@ def case_6b_vf_reciprocal_metric_crosscheck(ns):
         output=product,
         method="ConcreteMetricCheck reciprocal_scaling",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
     )
 
 
-def case_7_next_tests():
+def case_6_good_failure(out: ScriptOutput):
+    header("Case 6c: Good failure demonstration")
+
+    print("Controlled failure: A*B product check with non-reciprocal B.")
+    print()
+    print("  If B is incorrectly set to 1 (flat) instead of 1/A,")
+    print("  then A*B != 1 and the reciprocal_scaling check must fail.")
+
+    ctx = TheoryContext("candidate_gr_limit_recovery_audit__failure")
+    ms = ctx.define_equal_response_algebraic_symbols()
+    A_value = 1 - 2 * ms.G * ms.M / (ms.r * ms.c**2)
+    B_wrong = sp.Integer(1)  # deliberately wrong: B should be 1/A
+    product_wrong = sp.simplify(A_value * B_wrong)
+
+    print(f"A_value = {A_value}")
+    print(f"B_wrong = {B_wrong}  (flat, not 1/A)")
+    print(f"A_value * B_wrong = {product_wrong}")
+
+    detected = product_wrong != 1
+    print(f"Nonzero deviation detected: {detected}")
+
+    with out.counterexamples():
+        out.line(
+            "non-reciprocal B gives A*B != 1",
+            StatusMark.FAIL if detected else StatusMark.WARN,
+            f"A*B = {product_wrong}; deviation = {sp.simplify(product_wrong - 1)}",
+        )
+
+    print()
+    if detected:
+        print("[PASS] Good failure: non-reciprocal B is correctly detected as failing reciprocal scaling.")
+    else:
+        print("[FAIL] Failure detection did not work as expected.")
+
+
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -428,7 +486,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The GR audit has separated real wins from matched gaps; now try the parent identity.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -450,29 +509,158 @@ def final_interpretation():
     print("  candidate_parent_identity_template.py")
 
 
-def main():
-    header("Candidate GR Limit Recovery Audit")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_audit()
-    case_1_audit_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_strongest_results()
-    case_5_weakest_results()
-    case_6_reconstruction_scorecard()
-    case_6b_vf_reciprocal_metric_crosscheck(ns)
-    case_7_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[GRLimitEntry]) -> None:
+    # DERIVED_REDUCED -> HEURISTIC claims
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_static_spherical_exterior_A",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "Static spherical exterior A = 1 - 2GM/(c^2 r) is genuinely reconstructed "
+            "in the reduced static spherical case via areal flux law."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_exterior_B_reciprocal",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "Exterior B = 1/A follows from AB = exp(2 kappa) once exterior kappa=0. "
+            "This is a reduced areal-gauge derivation, not full covariant geometry."
+        ),
+    ))
+
+    # MATCHED -> PROVISIONAL_CONVENTION + obligations for coefficient origin
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_frame_dragging_normalization_matched",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "Frame-dragging normalization (Lense-Thirring coefficient) is identified as a target. "
+            "Target normalization is known from GR. Ontology-derived coefficient is missing."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_alpha_W_K_c_and_beta_W",
+        script_id=SCRIPT_ID,
+        title="Derive alpha_W/K_c and beta_W (vector coupling coefficients)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The vector coupling coefficients alpha_W/K_c and observable coupling beta_W "
+            "must be derived from vacuum vector stiffness / source coupling. "
+            "GR Lense-Thirring coefficient must not be imported."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_tensor_coupling_matched",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "Tensor wave coupling Box h_TT = -C_T S_TT has correct target structure. "
+            "C_T from vacuum ontology is not yet derived. C_T must not be imported as "
+            "16*pi*G/c^4 or equivalent."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C_T_tensor_coupling_from_stiffness",
+        script_id=SCRIPT_ID,
+        title="Derive C_T tensor coupling from vacuum stiffness",
+        status=ObligationStatus.OPEN,
+        description=(
+            "C_T must be derived from tensor flux/stiffness in the vacuum ontology. "
+            "It must not be imported from GR radiation coupling constants."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_quadrupole_radiation_power_matched",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "Quadrupole radiation power F_T ~ K_T <dot h_TT^2> has correct structural form. "
+            "Absolute flux coefficient is not derived. GR radiation formula must not be copied."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_vacuum_tensor_energy_flux_coefficient",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum tensor energy flux coefficient",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The absolute tensor radiation energy flux coefficient must be derived from "
+            "vacuum tensor ontology. GR quadrupole luminosity formula must not be copied."
+        ),
+    ))
+
+    # MISSING -> OPEN obligation
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conservation_bianchi_parent_identity",
+        script_id=SCRIPT_ID,
+        title="Derive conservation/Bianchi-like parent identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A parent divergence identity compatible with nabla_mu G^mu_nu = 0 and "
+            "nabla_mu T^mu_nu = 0 must be derived. Without this the theory remains "
+            "a sector ledger, not a closed field equation system."
+        ),
+    ))
+
+    # OPEN_RISK
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_near_boundary_deviation_risk",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "A possible near-boundary deviation from GR interior/exterior matching is "
+            "indicated by joint-minimum spline diagnostics. Magnitude, observable, weights, "
+            "and transition width are not yet derived. This must not be overclaimed."
+        ),
+    ))
+
+    # Audit marker (placeholder, inventory-level)
     ns.record_derivation(
         derivation_id="gr_limit_recovery_audit_marker",
         inputs=[],
         output=sp.Symbol("gr_limit_recovery_audit_completed"),
         method="gr_limit_recovery_audit_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate GR Limit Recovery Audit")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_audit()
+    case_1_audit_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_strongest_results(out)
+    case_5_weakest_results(out)
+    case_6_reconstruction_scorecard(out)
+    case_6b_vf_reciprocal_metric_crosscheck(ns, out)
+    case_6_good_failure(out)
+    case_7_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

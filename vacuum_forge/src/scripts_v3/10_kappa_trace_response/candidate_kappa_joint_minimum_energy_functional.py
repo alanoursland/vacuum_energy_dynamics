@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa joint minimum energy functional
 #
 # Purpose
@@ -40,6 +46,16 @@ from pathlib import Path
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,22 +67,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -111,9 +111,6 @@ def case_0_problem_statement():
     print("  do not claim observability yet")
     print("  define a deviation diagnostic only")
 
-    status_line("joint minimum energy-functional problem posed",
-                "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_define_energy_density():
     header("Case 1: Define toy energy density")
@@ -147,10 +144,6 @@ def case_1_define_energy_density():
     print("  lambda_1 penalizes slope strain")
     print("  lambda_2 penalizes curvature jumps / sharp bending")
 
-    status_line("toy energy density defined",
-                "PLAUSIBLE",
-                "weights not derived")
-
     return r, f, W_int, W_ext, f_int, f_ext, lam1, lam2, L
 
 
@@ -176,9 +169,7 @@ def case_2_euler_lagrange_fourth_order(r, f, L):
     print()
     print("Boundary conditions must therefore be handled carefully.")
 
-    status_line("Euler-Lagrange equation computed",
-                "DERIVED_REDUCED",
-                "toy variational structure only")
+    return EL
 
 
 def case_3_simplified_constant_weights():
@@ -208,9 +199,7 @@ def case_3_simplified_constant_weights():
     print("This shows the minimizer is pulled toward both tendencies while")
     print("smoothness terms distribute the mismatch.")
 
-    status_line("constant-weight minimizer equation stated",
-                "DERIVED_REDUCED",
-                "still toy model")
+    return r, f, Wi, We, lam1, lam2, eq
 
 
 def case_4_tendencies_and_transition():
@@ -231,10 +220,6 @@ def case_4_tendencies_and_transition():
     print()
     print("In the energy model, these are not manually spliced.")
     print("They are competing attractors/minima with radial weights.")
-
-    status_line("interior/exterior attractors stated",
-                "PLAUSIBLE",
-                "physical identification still open")
 
     return r, R, M, a0, a2, f_int, f_ext
 
@@ -259,10 +244,6 @@ def case_5_weight_functions():
     print("This avoids a hard seam but introduces sigma.")
     print()
     print("sigma would control the near-boundary deviation width.")
-
-    status_line("smooth radial weights proposed",
-                "PLAUSIBLE",
-                "sigma/weights not derived")
 
 
 def case_6_deviation_diagnostic():
@@ -291,9 +272,7 @@ def case_6_deviation_diagnostic():
     print("Current status:")
     print("  diagnostic named, not predicted.")
 
-    status_line("near-boundary deviation diagnostic defined",
-                "CONSTRAINED_BY_IDENTITY",
-                "no magnitude prediction yet")
+    return r, f_joint, f_ref, delta
 
 
 def case_7_measurement_caution():
@@ -319,10 +298,6 @@ def case_7_measurement_caution():
     print()
     print("  theoretical effect first, possible niche experimental target later")
 
-    status_line("measurement caution stated",
-                "CONSTRAINED_BY_IDENTITY",
-                "do not overclaim")
-
 
 def case_8_gr_deviation_hierarchy():
     header("Case 8: GR-deviation hierarchy")
@@ -336,10 +311,6 @@ def case_8_gr_deviation_hierarchy():
     print("| radiation sector | no breathing wave from kappa |")
     print()
     print("This hierarchy keeps the model from claiming broad GR violation.")
-
-    status_line("GR-deviation hierarchy stated",
-                "PLAUSIBLE",
-                "requires quantitative model")
 
 
 def case_9_failure_controls():
@@ -355,10 +326,6 @@ def case_9_failure_controls():
     print("6. fourth-order smoothing introduces unphysical boundary modes.")
     print("7. near-boundary deviation is claimed without observable definition.")
 
-    status_line("energy-functional failure controls stated",
-                "RISK",
-                "quantitative discipline required")
-
 
 def case_10_classification():
     header("Case 10: Classification")
@@ -373,10 +340,6 @@ def case_10_classification():
     print("| near-boundary deviation diagnostic | CONSTRAINED_BY_IDENTITY |")
     print("| observability | UNKNOWN |")
     print("| final prediction | UNFINISHED |")
-
-    status_line("joint minimum energy-functional classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "variational toy model, not prediction")
 
 
 def case_11_next_tests():
@@ -400,10 +363,6 @@ def case_11_next_tests():
     print("Reason:")
     print("  If deviation from GR is possible, define what would deviate before")
     print("  claiming magnitude or measurability.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "diagnostic before prediction")
 
 
 def final_interpretation():
@@ -431,27 +390,123 @@ def main():
     header("Candidate Kappa Joint Minimum Energy Functional")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     r, f, W_int, W_ext, f_int, f_ext, lam1, lam2, L = case_1_define_energy_density()
-    case_2_euler_lagrange_fourth_order(r, f, L)
-    case_3_simplified_constant_weights()
+    EL = case_2_euler_lagrange_fourth_order(r, f, L)
+    r2, f2, Wi, We, lam12, lam22, eq_const = case_3_simplified_constant_weights()
     case_4_tendencies_and_transition()
     case_5_weight_functions()
-    case_6_deviation_diagnostic()
+    r3, f_joint, f_ref, delta = case_6_deviation_diagnostic()
     case_7_measurement_caution()
     case_8_gr_deviation_hierarchy()
     case_9_failure_controls()
     case_10_classification()
     case_11_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_joint_minimum_energy_functional_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_joint_minimum_energy_functional_stated"),
-        method="kappa_joint_minimum_energy_functional_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Euler-Lagrange structure is a real sample computation with toy assumptions
+        ns.record_derivation(
+            derivation_id="joint_minimum_euler_lagrange_fourth_order_sample",
+            inputs=[L],
+            output=EL,
+            method=(
+                "compute EL = dL/df - d/dr(dL/df') + d^2/dr^2(dL/df'') "
+                "for L = W_int*(f-f_int)^2 + W_ext*(f-f_ext)^2 + lam1*(f')^2 + lam2*(f'')^2"
+            ),
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope=(
+                "toy variational model with arbitrary weight functions W_int, W_ext; "
+                "lambda_1 and lambda_2 are free parameters not derived from action; "
+                "do not treat as physical prediction"
+            ),
+        )
+
+        # Constant-weight EL structure
+        ns.record_derivation(
+            derivation_id="joint_minimum_constant_weight_EL_sample",
+            inputs=[eq_const],
+            output=sp.Symbol("constant_weight_EL_structure_stated"),
+            method=(
+                "schematic EL for constant W_i, W_e: "
+                "lam2*f'''' - lam1*f'' + (W_i+W_e)*f = W_i*f_int + W_e*f_ext"
+            ),
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="constant weights only; radial weight dependence not handled",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_joint_minimum_energy_functional_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_joint_minimum_energy_functional_stated"),
+            method="kappa_joint_minimum_energy_functional_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_joint_minimum_observable_coupling_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the coupling between the joint minimum deviation and an observable quantity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The deviation delta = f_joint - f_ref is defined symbolically but not "
+                "connected to an observable. Before any measurement claim, the coupling "
+                "to acceleration, redshift, or metric component must be derived."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="joint_minimum_EL_is_fourth_order_toy_model",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The Euler-Lagrange equation for the joint minimum energy with lambda_2*(f'')^2 "
+                "is fourth-order in f, as expected for a curvature-smoothing functional. "
+                "This is a toy model: weights W_int, W_ext, lambda_1, lambda_2 are not derived "
+                "and the model must not be treated as a physical prediction."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="near_boundary_deviation_defined_not_predicted",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "The near-boundary deviation diagnostic delta = f_joint - f_ref is defined "
+                "but carries no magnitude prediction. Any claim of observability requires "
+                "derived weights, derived transition width, and an identified observable. "
+                "Premature observability claims are an open risk."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("Euler-Lagrange fourth-order structure computed (toy)", StatusMark.PASS, "sample - arbitrary weights")
+            out.line("constant-weight EL schematic stated", StatusMark.PASS, "sample - toy model")
+            out.line("deviation diagnostic delta defined symbolically", StatusMark.PASS, "no magnitude")
+
+        with out.governance_assessments():
+            out.line("observable coupling for deviation", StatusMark.OBLIGATION, "missing")
+            out.line("weights W_int, W_ext", StatusMark.OBLIGATION, "not derived")
+            out.line("transition width sigma", StatusMark.OBLIGATION, "not derived")
+            out.line("no observability claim made", StatusMark.PASS, "discipline maintained")
+
+        with out.unresolved_obligations():
+            out.line("derive observable coupling for joint minimum deviation", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

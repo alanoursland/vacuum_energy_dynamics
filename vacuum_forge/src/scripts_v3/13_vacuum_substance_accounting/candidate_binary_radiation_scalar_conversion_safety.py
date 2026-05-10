@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate binary radiation scalar conversion safety
 #
 # Purpose
@@ -30,6 +36,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -41,27 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -207,11 +204,11 @@ def print_entry(e: SafetyEntry) -> None:
     print(f"Scenario: {e.scenario}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Binary-radiation scalar-conversion safety problem")
 
     print("Question:")
@@ -231,7 +228,8 @@ def case_0_problem_statement():
     print("  no secular scalar orbital damping")
     print("  no exterior zeta/kappa charge")
 
-    status_line("binary-radiation safety problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("binary-radiation safety problem posed", StatusMark.OBLIGATION, "open: TT-only theorem and coupling safety required")
 
 
 def case_1_safety_inventory(entries: List[SafetyEntry]):
@@ -240,7 +238,7 @@ def case_1_safety_inventory(entries: List[SafetyEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[SafetyEntry]):
+def case_2_compact_table(entries: List[SafetyEntry], out: ScriptOutput):
     header("Case 2: Compact binary safety ledger")
 
     print("| Entry | Scenario | Status | Forbidden if | Missing |")
@@ -260,10 +258,11 @@ def case_2_compact_table(entries: List[SafetyEntry]):
             + " |"
         )
 
-    status_line("compact binary safety ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact binary safety ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[SafetyEntry]):
+def case_3_status_counts(entries: List[SafetyEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -280,10 +279,11 @@ def case_3_status_counts(entries: List[SafetyEntry]):
     print("  Raw reduced power-like couplings are dangerous until proven conservative.")
     print("  Boundary/exterior charge theorem is now central.")
 
-    status_line("binary safety status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("binary safety status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_safe_classes():
+def case_4_safe_classes(out: ScriptOutput):
     header("Case 4: Safe classes")
 
     print("Safe or potentially safe classes:")
@@ -303,10 +303,11 @@ def case_4_safe_classes():
     print("5. TT-only far-zone loss:")
     print("   radiated energy at infinity carried only by h_ij^TT.")
 
-    status_line("safe classes stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("safe classes stated", StatusMark.DEFER, "candidate route: five safe classes under test")
 
 
-def case_5_danger_classes():
+def case_5_danger_classes(out: ScriptOutput):
     header("Case 5: Danger classes")
 
     print("Danger classes:")
@@ -319,10 +320,11 @@ def case_5_danger_classes():
     print("6. cumulative local deposition that changes M_ext.")
     print("7. scalar conversion producing secular orbital damping.")
 
-    status_line("danger classes stated", "RISK")
+    with out.governance_assessments():
+        out.line("danger classes stated", StatusMark.DEFER, "open risk: danger classes not yet excluded")
 
 
-def case_6_required_next_theorem():
+def case_6_required_next_theorem(out: ScriptOutput):
     header("Case 6: Required next theorem")
 
     print("The next concrete theorem target is:")
@@ -341,10 +343,11 @@ def case_6_required_next_theorem():
     print()
     print("  Binary safety depends on scalar conversion not becoming far-zone scalar flux or extra exterior charge.")
 
-    status_line("boundary/no-exterior-charge theorem target selected", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("boundary/no-exterior-charge theorem target selected", StatusMark.OBLIGATION, "open: boundary no-exterior-charge theorem required")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -365,7 +368,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Binary safety reduces to the boundary/exterior charge problem for scalar/volume conversion.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "boundary volume mode no exterior charge")
 
 
 def final_interpretation():
@@ -390,22 +394,65 @@ def main():
     header("Candidate Binary Radiation Scalar Conversion Safety")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_safety_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_safe_classes()
-    case_5_danger_classes()
-    case_6_required_next_theorem()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_safe_classes(out)
+    case_5_danger_classes(out)
+    case_6_required_next_theorem(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="TT_only_far_zone_radiation_required",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Ordinary far-zone binary radiation must be TT-only. "
+            "Scalar/trace conversion must not produce an independent far-zone energy-loss channel. "
+            "Box zeta, Box kappa, and A_rad scalar radiation are forbidden in ordinary gravity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_TT_only_radiation_binary_safety",
+        script_id=SCRIPT_ID,
+        title="Derive TT-only radiation binary-safety proof",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that scalar/trace conversion couplings do not produce secular orbital damping "
+            "or far-zone scalar energy loss beyond the TT radiation channel."
+        ),
+    ))
+    # B4 demonstrates that raw rho*v dot grad A coupling is a BOUNDARY_VIOLATION risk:
+    # if this coupling were accepted, it would produce a secular orbital-damping channel
+    # violating the binary-radiation safety requirement.
+    ns.record_evidence(EvidenceRecord(
+        evidence_id="raw_reduced_coupling_boundary_violation_witness",
+        script_id=SCRIPT_ID,
+        evidence_type=EvidenceType.BOUNDARY_VIOLATION,
+        challenges=["TT_only_far_zone_radiation_required"],
+        description=(
+            "Entry B4 identifies rho*v dot grad A as a DANGER coupling: if used without proof "
+            "of conservative bookkeeping, it produces secular orbital damping, violating the "
+            "TT-only radiation safety requirement. This is an open risk, not a resolved failure."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="binary_radiation_scalar_conversion_safety_marker",
         inputs=[],
         output=sp.Symbol("binary_radiation_scalar_conversion_safety_audited"),
         method="binary_radiation_scalar_conversion_safety_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

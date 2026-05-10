@@ -1,5 +1,11 @@
 # Candidate scalar constraint not radiation identity
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The projector audit found that P_scalar is the hardest immediate gate.
@@ -18,6 +24,9 @@
 #
 # This is not a derivation.
 # It is an identity-requirement and failure audit.
+#
+# The central finding is a policy rule:
+#   "scalar constraint is not radiation identity"
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -26,6 +35,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -37,24 +58,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REJECTED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "REQUIRED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -186,12 +189,12 @@ def print_requirement(r: ScalarRequirement) -> None:
     print(f"Requirement: {r.requirement}")
     print(f"Target form: {r.target_form}")
     print(f"Forbidden form: {r.forbidden_form}")
-    status_line(r.name, r.status)
+    print(f"[INFO] {r.name}: {r.status}")
     print(f"Risk: {r.risk}")
     print(f"Missing: {r.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Scalar constraint-not-radiation problem")
 
     print("Question:")
@@ -209,7 +212,8 @@ def case_0_problem_statement():
     print("  do not allow rho-sourced kappa")
     print("  do not confuse static multipoles with scalar radiation")
 
-    status_line("scalar constraint-not-radiation problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("scalar constraint-not-radiation problem posed", StatusMark.OBLIGATION, "scalar sector requirements open")
 
 
 def case_1_requirement_inventory(entries: List[ScalarRequirement]):
@@ -218,7 +222,7 @@ def case_1_requirement_inventory(entries: List[ScalarRequirement]):
         print_requirement(entry)
 
 
-def case_2_compact_table(entries: List[ScalarRequirement]):
+def case_2_compact_table(entries: List[ScalarRequirement], out: ScriptOutput):
     header("Case 2: Compact scalar constraint ledger")
 
     print("| Requirement | Target form | Forbidden form | Status | Missing |")
@@ -238,10 +242,11 @@ def case_2_compact_table(entries: List[ScalarRequirement]):
             + " |"
         )
 
-    status_line("compact scalar ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact scalar ledger produced", StatusMark.INFO, "9 scalar sector requirements recorded")
 
 
-def case_3_status_counts(entries: List[ScalarRequirement]):
+def case_3_status_counts(entries: List[ScalarRequirement], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -257,10 +262,11 @@ def case_3_status_counts(entries: List[ScalarRequirement]):
     print("  The missing piece is scalar constraint propagation for time-dependent sources.")
     print("  Recombination remains unresolved.")
 
-    status_line("scalar status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("scalar status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_identity_shape():
+def case_4_candidate_identity_shape(out: ScriptOutput):
     header("Case 4: Candidate scalar identity shape")
 
     print("A useful scalar parent implication would have the shape:")
@@ -278,10 +284,11 @@ def case_4_candidate_identity_shape():
     print()
     print("This is currently a target, not a derivation.")
 
-    status_line("candidate scalar identity shape stated", "MISSING")
+    with out.unresolved_obligations():
+        out.line("candidate scalar identity shape stated", StatusMark.OBLIGATION, "scalar identity shape remains a theorem target")
 
 
-def case_5_failure_controls():
+def case_5_failure_controls(out: ScriptOutput):
     header("Case 5: Failure controls")
 
     print("The scalar sector fails if:")
@@ -294,10 +301,11 @@ def case_5_failure_controls():
     print("6. weak static multipoles are used to justify scalar waves.")
     print("7. recombination counts scalar response twice.")
 
-    status_line("scalar failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("scalar failure controls stated", StatusMark.DEFER, "failure controls policy-guarded")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -318,7 +326,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  Scalar A is protected by constraints; now kappa's first-order relaxation must be frame/covariance audited.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "kappa covariant relaxation script is the next gate")
 
 
 def final_interpretation():
@@ -348,21 +357,111 @@ def main():
     header("Candidate Scalar Constraint Not Radiation Identity")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_requirements()
     case_1_requirement_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_identity_shape()
-    case_5_failure_controls()
-    case_6_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_identity_shape(out)
+    case_5_failure_controls(out)
+    case_6_next_tests(out)
     final_interpretation()
+
+    # Central policy rule: scalar constraint is not radiation identity
+    ns.record_claim(ClaimRecord(
+        claim_id="scalar_constraint_is_not_radiation_identity",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The scalar field A is a mass-flux constraint, not an ordinary propagating scalar radiation field. "
+            "Box A = alpha*rho is forbidden. A_rad ordinary massless source must vanish. "
+            "Rho must route to the A-sector constraint and must not source independent long-range kappa charge. "
+            "This separation is a construction rule for the parent identity, not a downstream recovery target."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="scalar_radiation_channel_absent_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "source(A_rad ordinary massless) = 0 is a policy rule for this theory. "
+            "The ordinary scalar radiative channel does not exist in this construction."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="box_kappa_from_trace_forbidden_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Box kappa = alpha*trace is forbidden. Trace/pressure shifts kappa_min only; "
+            "kappa relaxes first-order. This policy prevents the trace from becoming a breathing mode."
+        ),
+    ))
+
+    # Proof obligations for missing scalar items
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_constraint_propagation_from_continuity_S6",
+        script_id=SCRIPT_ID,
+        title="Derive continuity-compatible scalar constraint propagation (S6)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that partial_t C_A[A,rho] follows from partial_t rho + div j_L = 0 "
+            "without introducing Box A scalar radiation. This is the key missing scalar piece."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_scalar_rho_eff_definition",
+        script_id=SCRIPT_ID,
+        title="Define rho_eff and P_scalar from parent identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent identity must define rho_eff and P_scalar such that "
+            "P_scalar routes scalar charge to the A-sector areal constraint."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_recombination_count_once_S9",
+        script_id=SCRIPT_ID,
+        title="Derive recombination projector preventing scalar double-counting (S9)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that A's scalar response is not duplicated in kappa or spatial metric trace "
+            "when P_recombination maps sectors to the geometry-like object."
+        ),
+    ))
+
+    # Branch decision: scalar radiation branch is deferred/excluded
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_scalar_radiation_A_rad_branch",
+        script_id=SCRIPT_ID,
+        branch_id="scalar_radiation_A_rad",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_scalar_constraint_propagation_from_continuity_S6"],
+        description=(
+            "The A_rad ordinary scalar radiation branch is not licensed. "
+            "The parent identity must derive constraint propagation before any scalar "
+            "radiation form can be considered."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="scalar_constraint_not_radiation_identity_marker",
         inputs=[],
         output=sp.Symbol("scalar_constraint_not_radiation_identity_built"),
         method="scalar_constraint_not_radiation_identity_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

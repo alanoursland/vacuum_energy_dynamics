@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate exchange continuity law for volume
 #
 # Purpose
@@ -28,11 +34,24 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -40,33 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -239,7 +231,7 @@ def print_entry(e: ExchangeContinuityEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -264,7 +256,10 @@ def case_0_problem_statement():
     print("  preserve boundary neutrality and no-overlap")
     print("  keep gamma/AB recovery downstream")
 
-    status_line("exchange continuity law problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("exchange continuity law problem posed", StatusMark.OBLIGATION, "requires independent J_V, Sigma_V, R_V operators")
+    out.print()
 
 
 def case_1_inventory(entries: List[ExchangeContinuityEntry]):
@@ -291,7 +286,10 @@ def case_2_compact_table(entries: List[ExchangeContinuityEntry]):
             + " |"
         )
 
-    status_line("compact exchange-continuity ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact exchange-continuity ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[ExchangeContinuityEntry]):
@@ -311,7 +309,10 @@ def case_3_status_counts(entries: List[ExchangeContinuityEntry]):
     print("  Sigma_V and R_V must be defined separately.")
     print("  Static neutrality, boundary neutrality, and no-overlap remain mandatory.")
 
-    status_line("exchange-continuity status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("exchange-continuity status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_minimal_law_requirements():
@@ -331,7 +332,16 @@ def case_4_minimal_law_requirements():
     print()
     print("Missing these turns continuity into decoration.")
 
-    status_line("minimal exchange-continuity requirements stated", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("derive J_V flux direction", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("derive Sigma_V source creation law", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("derive R_V relaxation/exchange law", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("derive timelike/nonzero domain theorem", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("derive static-source neutrality", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("derive boundary neutrality", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("derive no-overlap/residual-kill theorem", StatusMark.OBLIGATION, "open proof obligation")
+    out.print()
 
 
 def case_5_good_failure():
@@ -349,7 +359,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  write nabla_mu J_V^mu = Sigma_V - R_V and pretend the current has been defined.")
 
-    status_line("exchange-continuity good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("exchange-continuity good failure stated", StatusMark.DEFER, "deferred pending J_V flux direction and Sigma/R operators")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -366,7 +379,10 @@ def case_6_failure_controls():
     print("7. sign/orientation is chosen from gamma/AB")
     print("8. continuity is used as decorative conservation language")
 
-    status_line("exchange-continuity failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("exchange-continuity failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -390,7 +406,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  The continuity equation cannot define J_V until the source and relaxation/exchange terms are split and named.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_sigma_R_split_for_volume_exchange.py")
+    out.print()
 
 
 def final_interpretation():
@@ -421,14 +440,97 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="exchange_continuity_law_for_volume_marker",
-        inputs=[],
-        output=sp.Symbol("exchange_continuity_law_for_volume_audited"),
-        method="exchange_continuity_law_for_volume_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_J_V_flux_direction_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive J_V flux direction law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "J_V must have an independent physical flux or transport law before "
+                "nabla_mu J_V^mu = Sigma_V - R_V can define the vacuum-volume current."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_Sigma_V_source_law_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive Sigma_V source creation law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Sigma_V must be independently defined with a frame, projection, and "
+                "coefficient origin before exchange continuity becomes a real law."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_R_V_relaxation_law_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive R_V relaxation/exchange law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "R_V must be independently defined with an equilibrium target and operator "
+                "before it can be distinguished from a scalar-charge cancellation patch."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_exchange_continuity_law_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive exchange continuity law nabla_mu J_V^mu = Sigma_V - R_V",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The full exchange continuity law remains a theorem target until J_V flux "
+                "direction, Sigma_V, R_V, timelike domain, static neutrality, boundary "
+                "neutrality, and no-overlap are all established."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="ec10_decorative_continuity_rejected",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "nabla_mu J_V^mu = Sigma_V - R_V with unnamed J_V/Sigma_V/R_V is rejected "
+                "as decorative conservation language and does not constitute a current definition."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="ec11_recovery_downstream_in_15",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "gamma_like and AB recovery tests are downstream checks only; "
+                "they must not be used to choose continuity terms, Sigma_V, or R_V."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_exchange_continuity_law_branch",
+            script_id=SCRIPT_ID,
+            branch_id="exchange_continuity_law_J_V_definition",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_J_V_flux_direction_in_15",
+                "derive_Sigma_V_source_law_in_15",
+                "derive_R_V_relaxation_law_in_15",
+                "derive_exchange_continuity_law_in_15",
+            ],
+            description=(
+                "Exchange continuity as a definition of J_V is deferred pending independent "
+                "flux direction, Sigma_V, R_V operators, and all ordinary-sector safety theorems."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="exchange_continuity_law_for_volume_marker",
+            inputs=[],
+            output=sp.Symbol("exchange_continuity_law_for_volume_audited"),
+            method="exchange_continuity_law_for_volume_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

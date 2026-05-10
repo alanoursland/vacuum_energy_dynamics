@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The correction tensor source-separation audit found:
@@ -33,6 +36,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -44,34 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -354,12 +341,15 @@ def print_entry(e: BoundaryMassEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Correction tensor boundary/mass neutrality problem")
 
     print("Question:")
@@ -381,7 +371,8 @@ def case_0_problem_statement():
     print("  no dark boundary patch")
     print("  no anti-singularity by boundary tensor")
 
-    status_line("correction tensor boundary/mass neutrality problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("correction tensor boundary/mass neutrality problem posed", StatusMark.OBLIGATION, "boundary/mass neutrality audit required before any H insertion")
 
 
 def case_1_inventory(entries: List[BoundaryMassEntry]):
@@ -390,7 +381,7 @@ def case_1_inventory(entries: List[BoundaryMassEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[BoundaryMassEntry]):
+def case_2_compact_table(entries: List[BoundaryMassEntry], out: ScriptOutput):
     header("Case 2: Compact boundary/mass neutrality ledger")
 
     print("| Entry | Rule | Status | Consequence |")
@@ -408,10 +399,11 @@ def case_2_compact_table(entries: List[BoundaryMassEntry]):
             + " |"
         )
 
-    status_line("compact boundary/mass neutrality ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact boundary/mass neutrality ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[BoundaryMassEntry]):
+def case_3_status_counts(entries: List[BoundaryMassEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -431,10 +423,11 @@ def case_3_status_counts(entries: List[BoundaryMassEntry]):
     print("  Boundary repair tensor, M_ext correction tensor, scalar tail cancellation tensor, shell-source hiding tensor, and recovery boundary fit are rejected.")
     print("  Next gate is parent equation insertability.")
 
-    status_line("boundary/mass neutrality status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("boundary/mass neutrality status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_candidate_safe_routes():
+def case_4_candidate_safe_routes(out: ScriptOutput):
     header("Case 4: Candidate safe routes")
 
     print("Candidate safe routes:")
@@ -457,10 +450,11 @@ def case_4_candidate_safe_routes():
     print("4. shell-source hiding tensor")
     print("5. recovery boundary fit")
 
-    status_line("boundary/mass safe routes listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("boundary/mass safe routes listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_4b_compact_support_sample(ns):
+def case_4b_compact_support_sample(ns, out: ScriptOutput):
     header("Case 4b: Sample compact-support neutral-boundary profile")
 
     r, R, a = sp.symbols("r R a", positive=True)
@@ -480,17 +474,19 @@ def case_4b_compact_support_sample(ns):
     print("  It is not a real correction-tensor boundary theorem.")
 
     if profile_at_boundary == 0 and slope_at_boundary == 0:
-        status_line(
-            "sample neutral-boundary support witness",
-            "DERIVED_REDUCED",
-            "compact-support sample has h(R)=0 and h'(R)=0",
-        )
+        with out.sample_results():
+            out.line(
+                "sample neutral-boundary support witness",
+                StatusMark.PASS,
+                "compact-support sample has h(R)=0 and h'(R)=0",
+            )
     else:
-        status_line(
-            "sample neutral-boundary support witness",
-            "UNRESOLVED",
-            "compact-support sample failed boundary neutrality conditions",
-        )
+        with out.sample_results():
+            out.line(
+                "sample neutral-boundary support witness",
+                StatusMark.FAIL,
+                "compact-support sample failed boundary neutrality conditions",
+            )
 
     ns.record_derivation(
         derivation_id="compact_support_neutral_boundary_sample",
@@ -498,10 +494,12 @@ def case_4b_compact_support_sample(ns):
         output=sp.Tuple(profile_at_boundary, slope_at_boundary),
         method="toy_compact_support_boundary_compatibility",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
+        scope="toy 1D radial profile; not a real correction-tensor boundary theorem",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Boundary/mass neutrality decision tree")
 
     print("Decision tree:")
@@ -524,10 +522,11 @@ def case_5_decision_tree():
     print("6. Neutrality cannot be shown:")
     print("   keep correction tensors deferred.")
 
-    status_line("boundary/mass neutrality decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("boundary/mass neutrality decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -543,10 +542,11 @@ def case_6_good_failure():
     print()
     print("  hide boundary/mass failure inside support choices, counterterms, or dark labels.")
 
-    status_line("boundary/mass neutrality good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("boundary/mass neutrality good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Boundary/mass neutrality fails if:")
@@ -564,10 +564,11 @@ def case_7_failure_controls():
     print("11. boundary-supported tensor repairs leakage")
     print("12. diagnostic-only object is inserted")
 
-    status_line("boundary/mass neutrality failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("boundary/mass neutrality failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -589,10 +590,11 @@ def case_8_next_tests():
     print("  H_curv/H_exch have now been audited for role, definition requirements, divergence safety, source separation, and boundary/mass neutrality.")
     print("  The next gate is whether any correction tensor is insertable at all.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Boundary/mass neutrality is required but not derived.")
@@ -620,34 +622,167 @@ def final_interpretation():
     print()
     print("  candidate_parent_equation_insertability_audit.py")
 
-    status_line("correction tensor boundary/mass neutrality audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("correction tensor boundary/mass neutrality audit complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    required_obligations = [
+        ("derive_H_mass_neutrality_theorem_19",
+         "Derive correction tensor exterior mass neutrality theorem",
+         "delta M_ext|H_curv/H_exch = 0 unless derived through A-sector source law (BM2)."),
+        ("derive_H_no_boundary_counterterm_19",
+         "Derive that H_curv/H_exch is not a boundary counterterm",
+         "H_curv/H_exch must not be chosen to cancel boundary leakage or mismatch (BM3)."),
+        ("derive_H_no_exterior_scalar_charge_19",
+         "Derive no exterior scalar charge theorem for correction tensors",
+         "H_curv/H_exch must not generate exterior B_s/zeta/kappa scalar charge or tail (BM4)."),
+        ("derive_H_no_far_zone_flux_19",
+         "Derive no far-zone hidden flux theorem for correction tensors",
+         "H_curv/H_exch must not carry hidden far-zone flux of mass, scalar charge, curvature, or exchange (BM5)."),
+        ("derive_H_no_shell_source_19",
+         "Derive no shell source by support theorem",
+         "Compact/boundary support must not create an unaccounted shell source (BM6)."),
+        ("derive_H_boundary_coefficient_origin_19",
+         "Derive H boundary behavior coefficient origin",
+         "Boundary behavior must not be chosen to pass recovery targets (BM7)."),
+        ("guard_H_no_dark_boundary_patch_19",
+         "Guard no dark boundary patch in correction tensors",
+         "Dark-sector label must not be used to absorb boundary mismatch or exterior mass shift (BM8)."),
+        ("guard_H_no_antisingularity_boundary_claim_19",
+         "Guard no anti-singularity by boundary tensor claim",
+         "H_curv/H_exch must not claim bounce, regular core, or finite admissibility by boundary behavior (BM9)."),
+        ("derive_H_ordinary_matter_boundary_decoupling_19",
+         "Derive ordinary matter boundary decoupling for correction tensors",
+         "Boundary behavior must not reroute ordinary matter or modify ordinary source coupling (BM10)."),
+    ]
+
+    for obligation_id, title, description in required_obligations:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=ObligationStatus.OPEN,
+            required_by=["correction_tensor_insertability_route"],
+            description=description,
+        ))
+
+    all_obligation_ids = [o[0] for o in required_obligations]
+
+    # Candidate routes
+    ns.record_route(RouteRecord(
+        route_id="compact_support_zero_flux_candidate_route_19",
+        script_id=SCRIPT_ID,
+        name="Compact support with structural zero exterior flux",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "support is derived, smooth, and not solution-tailored",
+            "zero-flux follows from tensor/source law",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="divergence_free_interior_neutral_boundary_route_19",
+        script_id=SCRIPT_ID,
+        name="Identically divergence-free interior tensor with neutral boundary",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "identity and boundary neutrality both derived",
+            "not Bianchi smoke",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="diagnostic_only_boundary_safe_route_19",
+        script_id=SCRIPT_ID,
+        name="Diagnostic-only correction tensor (no boundary/mass effect)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[],
+        activation_conditions=["not inserted into field equation"],
+    ))
+
+    # BM22 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_boundary_mass_neutrality_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="correction_tensor_boundary_mass_neutrality_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "BM22 failure condition: if correction tensors cannot avoid boundary repair or exterior mass shift, "
+            "they remain deferred or diagnostic-only. Mapped to DEFERRED_PENDING_PREREQUISITES because "
+            "no contradiction has been demonstrated — boundary/mass neutrality prerequisites are simply absent."
+        ),
+    ))
+
+    # Rejected routes
+    for decision_id, branch_id, description in [
+        ("reject_H_boundary_repair_tensor_19", "H_boundary_repair_tensor", "BM17: boundary repair tensor rejected by policy."),
+        ("reject_H_M_ext_correction_19", "H_M_ext_correction_tensor", "BM18: M_ext correction tensor rejected by policy."),
+        ("reject_H_scalar_tail_cancellation_19", "H_scalar_tail_cancellation_tensor", "BM19: scalar tail cancellation tensor rejected by policy."),
+        ("reject_H_shell_source_hiding_19", "H_shell_source_hiding_tensor", "BM20: shell-source hiding tensor rejected by policy."),
+        ("reject_H_recovery_boundary_fit_19", "H_recovery_boundary_fit", "BM21: recovery boundary fit rejected by policy."),
+    ]:
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id=decision_id,
+            script_id=SCRIPT_ID,
+            branch_id=branch_id,
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            description=description,
+        ))
+
+    # Summary claim
+    ns.record_claim(ClaimRecord(
+        claim_id="boundary_mass_neutrality_not_derived_19",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "Boundary/mass neutrality for correction tensors is required but not derived. "
+            "All nine neutrality obligations remain open."
+        ),
+        obligation_ids=all_obligation_ids,
+    ))
 
 
 def main():
     header("Candidate Correction Tensor Boundary And Mass Neutrality")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_safe_routes()
-    case_4b_compact_support_sample(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_safe_routes(out)
+    case_4b_compact_support_sample(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="correction_tensor_boundary_and_mass_neutrality_marker",
-        inputs=[],
-        output=sp.Symbol("correction_tensor_boundary_and_mass_neutrality_complete"),
-        method="correction_tensor_boundary_and_mass_neutrality",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="correction_tensor_boundary_and_mass_neutrality_marker",
+            inputs=[],
+            output=sp.Symbol("correction_tensor_boundary_and_mass_neutrality_complete"),
+            method="correction_tensor_boundary_and_mass_neutrality",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

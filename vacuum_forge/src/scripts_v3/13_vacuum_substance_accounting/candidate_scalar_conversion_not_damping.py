@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate scalar conversion not damping
 #
 # Purpose
@@ -33,6 +39,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -44,26 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DERIVED_REDUCED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -205,11 +202,11 @@ def print_entry(e: ConversionEntry) -> None:
     print(f"Candidate form: {e.candidate_form}")
     print(f"Allowed interpretation: {e.allowed_interpretation}")
     print(f"Forbidden interpretation: {e.forbidden_interpretation}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Scalar conversion-not-damping problem")
 
     print("Question:")
@@ -228,7 +225,8 @@ def case_0_problem_statement():
     print("  do not let scalar conversion leak into far-zone radiation")
     print("  do not duplicate A-sector exterior mass")
 
-    status_line("scalar conversion-not-damping problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("scalar conversion-not-damping problem posed", StatusMark.OBLIGATION, "open: conversion operator and locality law required")
 
 
 def case_1_conversion_inventory(entries: List[ConversionEntry]):
@@ -237,7 +235,7 @@ def case_1_conversion_inventory(entries: List[ConversionEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[ConversionEntry]):
+def case_2_compact_table(entries: List[ConversionEntry], out: ScriptOutput):
     header("Case 2: Compact conversion ledger")
 
     print("| Entry | Concept | Candidate form | Status | Missing |")
@@ -257,10 +255,11 @@ def case_2_compact_table(entries: List[ConversionEntry]):
             + " |"
         )
 
-    status_line("compact conversion ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact conversion ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[ConversionEntry]):
+def case_3_status_counts(entries: List[ConversionEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -276,10 +275,11 @@ def case_3_status_counts(entries: List[ConversionEntry]):
     print("  First-order relaxation and geometric conversion remain viable.")
     print("  The central missing object is the conversion operator / parent projector.")
 
-    status_line("conversion status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("conversion status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_distinctions():
+def case_4_distinctions(out: ScriptOutput):
     header("Case 4: Damping versus relaxation versus conversion")
 
     print("Damping:")
@@ -301,10 +301,11 @@ def case_4_distinctions():
     print()
     print("  scalar/trace disturbances are conversion-limited, not friction-damped waves.")
 
-    status_line("damping/relaxation/conversion distinction stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("damping/relaxation/conversion distinction stated", StatusMark.PASS, "policy rule: conversion-limited language required")
 
 
-def case_5_candidate_conversion_shape():
+def case_5_candidate_conversion_shape(out: ScriptOutput):
     header("Case 5: Candidate conversion shape")
 
     print("Candidate conversion skeleton:")
@@ -328,10 +329,11 @@ def case_5_candidate_conversion_shape():
     print()
     print("This is a skeleton, not a derivation.")
 
-    status_line("candidate conversion skeleton stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate conversion skeleton stated", StatusMark.DEFER, "candidate route: skeleton only, not derived")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Scalar conversion fails if:")
@@ -345,10 +347,11 @@ def case_6_failure_controls():
     print("7. Binary systems acquire extra far-zone scalar energy loss.")
     print("8. Conversion operator remains arbitrary.")
 
-    status_line("scalar conversion failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("scalar conversion failure controls stated", StatusMark.DEFER, "open risk: failure conditions not yet excluded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -369,7 +372,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Conversion needs a source/coupling expression; mass accelerating across a gradient is the ontology-to-equation bridge.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "mass acceleration gradient coupling")
 
 
 def final_interpretation():
@@ -397,22 +401,73 @@ def main():
     header("Candidate Scalar Conversion Not Damping")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_conversion_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_distinctions()
-    case_5_candidate_conversion_shape()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_distinctions(out)
+    case_5_candidate_conversion_shape(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="scalar_conversion_not_damping_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Scalar/trace disturbances must be treated as conversion-limited, not friction-damped waves. "
+            "A second-order scalar oscillator model (phi_tt + gamma phi_t + omega^2 phi = 0) is rejected "
+            "as the default for scalar dynamics. First-order relaxation and geometric conversion remain viable. "
+            "This is a policy/governance statement, not a derivation."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="no_scalar_kinetic_channel_by_default",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "No scalar kinetic/momentum channel (Box zeta, Box kappa, A_rad) is admitted by default. "
+            "A second-order scalar radiation channel requires separate derivation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conversion_operator_P_trace",
+        script_id=SCRIPT_ID,
+        title="Derive conversion operator P_trace",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Provide a parent-derived conversion operator P_trace that routes scalar/trace disturbances "
+            "into changes of the volume-form variable zeta, preventing far-zone scalar radiation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_zeta_map",
+        script_id=SCRIPT_ID,
+        title="Derive kappa-zeta map",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show precisely how kappa relates to zeta - zeta_min, "
+            "and whether kappa is an independent variable or a diagnostic projection of zeta mismatch."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="scalar_conversion_not_damping_marker",
         inputs=[],
         output=sp.Symbol("scalar_conversion_not_damping_audited"),
         method="scalar_conversion_not_damping_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

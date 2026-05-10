@@ -1,5 +1,11 @@
 # Candidate kappa-zeta map inventory
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # Group 14 begins here.
@@ -38,11 +44,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -50,29 +67,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -287,7 +281,7 @@ def print_candidate(c: MapCandidate) -> None:
     print(f"Exterior neutrality: {c.exterior_neutrality}")
     print(f"Double-counting risk: {c.double_counting_risk}")
     print(f"Scalar-radiation risk: {c.scalar_radiation_risk}")
-    status_line(c.name, c.status)
+    print(f"Status: {c.status}")
     print(f"Missing: {c.missing}")
     print(f"Next test: {c.next_test}")
 
@@ -311,8 +305,6 @@ def case_0_problem_statement():
     print("  do not allow exterior kappa/zeta scalar charge")
     print("  do not allow Box kappa or Box zeta")
     print("  do not duplicate A-sector mass")
-
-    status_line("kappa-zeta inventory problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[MapCandidate]):
@@ -341,8 +333,6 @@ def case_2_compact_table(entries: List[MapCandidate]):
             + " |"
         )
 
-    status_line("compact kappa-zeta ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[MapCandidate]):
     header("Case 3: Status counts")
@@ -361,8 +351,6 @@ def case_3_status_counts(entries: List[MapCandidate]):
     print("  The recommended provisional convention remains hybrid:")
     print("    zeta primary, kappa separate first-order residual, K_lock diagnostic only.")
     print("  The strongest next test is projected zeta mismatch.")
-
-    status_line("kappa-zeta status count produced", "STRUCTURAL")
 
 
 def case_4_survivor_shortlist():
@@ -388,8 +376,6 @@ def case_4_survivor_shortlist():
     print("6. kappa as auxiliary constraint variable.")
     print("   Safe if no independent kinetic or energy term is attached.")
 
-    status_line("survivor shortlist stated", "CANDIDATE")
-
 
 def case_5_rejections():
     header("Case 5: Rejected or forbidden maps")
@@ -410,8 +396,6 @@ def case_5_rejections():
     print()
     print("5. kappa and zeta as independent exterior scalar charges")
     print("   risk: second scalar gravity")
-
-    status_line("rejected kappa-zeta maps stated", "REJECTED")
 
 
 def case_6_recommended_convention():
@@ -435,8 +419,6 @@ def case_6_recommended_convention():
     print()
     print("Next preferred map to test:")
     print("  kappa = P_trace(zeta-zeta_min)")
-
-    status_line("recommended provisional convention stated", "RECOMMENDED")
 
 
 def case_7_next_tests():
@@ -462,8 +444,6 @@ def case_7_next_tests():
     print()
     print("Reason:")
     print("  Projection is the best current chance to relate kappa to zeta while preserving exterior neutrality and avoiding double-counting.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -501,14 +481,82 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="kappa_zeta_map_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_zeta_map_inventory_audited"),
-        method="kappa_zeta_map_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("kappa-zeta inventory problem posed", StatusMark.PASS, "12 candidate maps classified")
+        out.line("rejected maps: M8 M9 M10", StatusMark.FAIL, "scalar radiation, double-counting, or GR smuggling")
+        out.line("provisional convention: hybrid zeta primary + kappa residual", StatusMark.PASS, "recommended pending derivation")
+
+    with out.unresolved_obligations():
+        out.line("derive kappa-zeta map", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive P_trace definition", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_claim(ClaimRecord(
+            claim_id="kappa_zeta_hybrid_provisional_convention",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The hybrid provisional convention keeps zeta as the primary volume-form configuration "
+                "variable, kappa as a separate first-order residual/relaxation coordinate, and K_lock "
+                "as diagnostic only. No K_lock energy is counted until the kappa-zeta map is derived."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_zeta_map_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive the kappa-zeta map",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Determine what kappa is relative to zeta = ln sqrt(gamma). "
+                "The candidate maps M1-M12 are inventoried here. No map is derived yet. "
+                "The strongest next target is kappa = P_trace(zeta-zeta_min)."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_trace_definition_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive the P_trace projector definition",
+            status=ObligationStatus.OPEN,
+            description=(
+                "P_trace must extract trace/volume mismatch, remove or compensate the exterior monopole, "
+                "exclude A-sector mass charge, annihilate TT modes, cooperate with P_boundary, and avoid "
+                "becoming a wave operator. No parent-derived mathematical operator exists yet."
+            ),
+        ))
+
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_kappa_as_scalar_wave",
+            script_id=SCRIPT_ID,
+            branch_id="kappa_or_zeta_scalar_wave",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_kappa_zeta_map_in_14"],
+            description=(
+                "Box kappa and Box zeta branches are not pursued. "
+                "They create scalar breathing radiation and fail exterior neutrality."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="kappa_zeta_map_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_zeta_map_inventory_audited"),
+            method="kappa_zeta_map_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

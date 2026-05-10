@@ -1,5 +1,11 @@
 # Candidate metric geometric recombination
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The gauge requirements study identified coordinate recombination as a missing
@@ -24,11 +30,6 @@
 #   PARTIAL
 #   MISSING
 #   RISK
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_metric_geometric_recombination.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -37,6 +38,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -258,9 +271,6 @@ def case_5_double_counting_risks():
     print("4. h_ij^TT is safer, but parent TT projection is still needed.")
     print("5. A_constraint and kappa may mix in non-static or non-areal gauges.")
     print("6. Source coupling may be inconsistent without conservation identities.")
-    print()
-    status_line("double-counting risks identified", "RISK",
-                "recombination needs gauge and conservation structure")
 
 
 # =============================================================================
@@ -302,6 +312,8 @@ def case_7_status_counts(items: List[RecombinationItem]):
                     "gauge and conservation structures are missing")
     else:
         status_line("metric recombination complete", "SATISFIED_REDUCED")
+
+    return counts
 
 
 # =============================================================================
@@ -358,6 +370,9 @@ def main():
     header("Candidate Metric Geometric Recombination")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     case_1_metric_ansatz()
     items = build_items()
@@ -365,17 +380,203 @@ def main():
     case_4_recombination_table(items)
     case_5_double_counting_risks()
     case_6_safe_policy()
-    case_7_status_counts(items)
+    counts = case_7_status_counts(items)
     case_8_next_study()
     final_interpretation(items)
+
+    # --- ProofObligationRecord per MISSING or PARTIAL item ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_A_rad_metric_status",
+        script_id=SCRIPT_ID,
+        title="Derive metric status of A_rad (gauge, constrained, damped, or physical)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Determine from the parent structure whether A_rad occupies a metric slot "
+            "(scalar lapse perturbation) or is absent, constrained, gauge, or damped."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_physical_metric_slot",
+        script_id=SCRIPT_ID,
+        title="Derive kappa physical metric slot and separate from coordinate artifact",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show which part of kappa is a genuine spatial-trace/volume-response "
+            "metric slot and which part is a coordinate-volume artifact."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_W_i_recombination_slot_and_gauge_safety",
+        script_id=SCRIPT_ID,
+        title="Derive W_i recombination slot and gauge safety",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that W_i genuinely occupies the g_ti/shift metric slot and is not "
+            "a pure gauge artifact, by deriving its source coupling and radiation safety."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_gauge_mode_projections_for_recombination",
+        script_id=SCRIPT_ID,
+        title="Derive gauge mode projections for metric recombination",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Identify which metric components are pure gauge and derive projections "
+            "that remove them, leaving only physical sector content."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conservation_identities_for_recombination",
+        script_id=SCRIPT_ID,
+        title="Derive conservation identities needed for metric recombination",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Bianchi-like or continuity identities must be derived to ensure that "
+            "the sector source assignments are consistent with the metric recombination."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_A_constraint_lapse_normalization",
+        script_id=SCRIPT_ID,
+        title="Derive A_constraint lapse normalization condition from parent",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply the parent-theory derivation of the asymptotic lapse normalization "
+            "A_constraint -> 1 at spatial infinity and its constraint nature."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tt_projection_for_recombination",
+        script_id=SCRIPT_ID,
+        title="Derive TT projection for h_ij^TT from parent gauge structure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply the parent-theory derivation of the TT projection conditions "
+            "that place h_ij^TT in the spatial tensor metric slot."
+        ),
+    ))
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="recombination_map_is_schematic_not_derivation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The schematic metric recombination map (A -> g_tt, kappa -> spatial trace, "
+            "W_i -> g_ti, h_ij^TT -> TT spatial) is a provisional assignment, not a "
+            "derivation. Gauge modes and conservation identities are missing. "
+            "The map must not be treated as covariant closure."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="safe_recombination_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Until parent derivations exist: treat A_constraint as physical only after "
+            "lapse normalization; treat A_rad as absent or controlled; treat kappa as "
+            "gauge-aware; treat W_i as provisional; treat h_ij^TT as safest physical sector. "
+            "Do not claim full metric recombination."
+        ),
+    ))
+
+    # --- Branch decision ---
+
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_covariant_metric_recombination_claim",
+        script_id=SCRIPT_ID,
+        branch_id="covariant_metric_recombination",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_gauge_mode_projections_for_recombination",
+            "derive_conservation_identities_for_recombination",
+        ],
+        description=(
+            "The covariant metric recombination claim is deferred. "
+            "Gauge mode projections and conservation identities are missing."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="metric_recombination_completion_route",
+        script_id=SCRIPT_ID,
+        name="Metric recombination completion route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_gauge_mode_projections_for_recombination",
+            "derive_conservation_identities_for_recombination",
+            "derive_W_i_recombination_slot_and_gauge_safety",
+        ],
+        activation_conditions=[
+            "gauge modes are projected",
+            "conservation identities are derived",
+            "all sector slots are genuinely assigned",
+        ],
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="metric_recombination_marker",
         inputs=[],
         output=sp.Symbol("metric_recombination_map_stated"),
         method="metric_geometric_recombination_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    n_missing = counts.get("MISSING", 0)
+    n_partial = counts.get("PARTIAL", 0)
+    n_satisfied = counts.get("SATISFIED_REDUCED", 0)
+
+    with out.governance_assessments():
+        out.line(f"satisfied reduced: {n_satisfied}", StatusMark.PASS,
+                 "A_constraint g_tt and h_ij^TT TT slot established at reduced level")
+        out.line(f"partial: {n_partial}", StatusMark.DEFER,
+                 "A_rad, kappa, W_i partial")
+        out.line(f"missing: {n_missing}", StatusMark.FAIL,
+                 "gauge modes and conservation identities missing")
+        out.line("recombination map is schematic not derivation (policy)", StatusMark.FAIL,
+                 "must not claim covariant closure")
+        out.line("covariant metric recombination deferred", StatusMark.DEFER,
+                 "deferred pending gauge projections and conservation identities")
+
+    with out.unresolved_obligations():
+        out.line("derive A_rad metric status", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive kappa physical metric slot", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive W_i recombination slot and gauge safety", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive gauge mode projections for recombination", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive conservation identities for recombination", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive A_constraint lapse normalization", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive TT projection for recombination", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

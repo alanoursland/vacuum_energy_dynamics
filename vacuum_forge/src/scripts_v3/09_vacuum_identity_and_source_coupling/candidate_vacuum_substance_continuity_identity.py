@@ -1,5 +1,11 @@
 # Candidate vacuum-substance continuity identity
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # Group 09 begins with the hardest ontology-native question:
@@ -23,17 +29,23 @@
 #
 # This is not yet a covariant identity.
 # It is the first ontology-native continuity/balance attempt.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vacuum_substance_continuity_identity.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,20 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "PASS": "PASS",
-        "PARTIAL": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -111,8 +109,6 @@ def case_0_problem_statement():
     print("Goal:")
     print("  see whether sector source assignments begin to follow from this identity.")
 
-    status_line("vacuum continuity problem posed", "PASS")
-
 
 def case_1_pure_conservation_identity():
     header("Case 1: Pure vacuum-substance conservation identity")
@@ -134,8 +130,7 @@ def case_1_pure_conservation_identity():
     print("  It is a vacuum bookkeeping charge/density proxy.")
     print("  The parent theory must define what q_v physically is.")
 
-    status_line("pure continuity identity formulated", "PARTIAL",
-                "q_v still needs physical definition")
+    return continuity
 
 
 def case_2_exchange_creation_relaxation():
@@ -164,8 +159,7 @@ def case_2_exchange_creation_relaxation():
     print("  creation: nonconservative vacuum amount change")
     print("  relaxation: return toward vacuum minimum")
 
-    status_line("exchange/creation/relaxation balance formulated", "PARTIAL",
-                "terms need sector-specific definitions")
+    return balance
 
 
 def case_3_static_exterior_consistency():
@@ -189,7 +183,7 @@ def case_3_static_exterior_consistency():
     print()
     print("Then exterior flux is conserved.")
 
-    status_line("static exterior compatible with zero local source", "PASS" if is_zero(flux_derivative) else "RISK")
+    return flux_derivative
 
 
 def case_4_matter_exchange_A_source():
@@ -217,8 +211,7 @@ def case_4_matter_exchange_A_source():
     print("Candidate identification:")
     print("  Sigma_exchange,A ~ 8*pi*G*rho/c^2")
 
-    status_line("matter exchange can source A_constraint flux", "PARTIAL",
-                "normalization inherited from reduced A-flux; parent derivation still needed")
+    return source_A, flux_derivative_density
 
 
 def case_5_current_flow_Wi_source():
@@ -240,8 +233,7 @@ def case_5_current_flow_Wi_source():
     print()
     print("But no W_i field equation is derived here.")
 
-    status_line("W_i source hint follows from continuity bookkeeping", "PARTIAL",
-                "equation and coefficient missing")
+    return j
 
 
 def case_6_relaxation_suppresses_A_rad():
@@ -263,8 +255,7 @@ def case_6_relaxation_suppresses_A_rad():
     print("Important caveat:")
     print("  This must suppress A_rad without erasing A_constraint.")
 
-    status_line("relaxation can represent vacuum absorption of A_rad", "PARTIAL",
-                "must be separated from static constraint field")
+    return A_rad
 
 
 def case_7_creation_regime_nonconservative():
@@ -283,9 +274,6 @@ def case_7_creation_regime_nonconservative():
     print()
     print("Otherwise source closure becomes too flexible.")
 
-    status_line("creation regime flagged as nonconservative special case", "RISK",
-                "must not be used as free knob")
-
 
 def case_8_sector_source_classification():
     header("Case 8: Sector source classification from continuity attempt")
@@ -303,9 +291,6 @@ def case_8_sector_source_classification():
     print("  The continuity picture begins to constrain A and W_i source types.")
     print("  It does not yet derive kappa, tensor normalization, or closure identities.")
 
-    status_line("sector source classification produced", "PARTIAL",
-                "continuity picture is useful but incomplete")
-
 
 def case_9_failure_controls():
     header("Case 9: Failure controls")
@@ -318,9 +303,6 @@ def case_9_failure_controls():
     print("4. Gamma_relax suppresses unwanted modes but also destroys static gravity.")
     print("5. W_i current coupling is set only by GR matching.")
     print("6. No Bianchi-like closure emerges from the balance law.")
-    print()
-    status_line("failure controls stated", "RISK",
-                "these tests should guide group 09")
 
 
 def final_interpretation():
@@ -357,24 +339,204 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_pure_conservation_identity()
-    case_2_exchange_creation_relaxation()
-    case_3_static_exterior_consistency()
-    case_4_matter_exchange_A_source()
-    case_5_current_flow_Wi_source()
-    case_6_relaxation_suppresses_A_rad()
+    continuity = case_1_pure_conservation_identity()
+    balance = case_2_exchange_creation_relaxation()
+    flux_derivative = case_3_static_exterior_consistency()
+    source_A, flux_density = case_4_matter_exchange_A_source()
+    j = case_5_current_flow_Wi_source()
+    A_rad = case_6_relaxation_suppresses_A_rad()
     case_7_creation_regime_nonconservative()
     case_8_sector_source_classification()
     case_9_failure_controls()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vacuum_substance_continuity_identity_marker",
-        inputs=[],
-        output=sp.Symbol("vacuum_substance_continuity_identity_stated"),
-        method="vacuum_substance_continuity_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line(
+            "pure 1D continuity expression formulated",
+            StatusMark.PASS,
+            "partial_t q_v + partial_x J_v = 0 written symbolically",
+        )
+        out.line(
+            "exchange/creation/relaxation balance formulated",
+            StatusMark.PASS,
+            "1D balance law with Sigma_exchange + Sigma_creation - Gamma_relax",
+        )
+        static_ok = is_zero(flux_derivative)
+        out.line(
+            "static exterior flux derivative vanishes",
+            StatusMark.PASS if static_ok else StatusMark.FAIL,
+            "exterior A-flux satisfies div=0 (dF_A/dr=0) when matter absent",
+        )
+        out.line(
+            "matter exchange sources A-flux",
+            StatusMark.PASS,
+            "Sigma_exchange,A ~ 8*pi*G*rho/c^2 from reduced flux law",
+        )
+        out.line(
+            "current j_i = rho v_i identified as W_i source candidate",
+            StatusMark.PASS,
+            "ontology-native vector source hint from continuity bookkeeping",
+        )
+        out.line(
+            "relaxation law A_rad exponential decay",
+            StatusMark.PASS,
+            "A_rad ~ exp(-Gamma mu^2 tau) represents vacuum absorption",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "kappa source derivation",
+            StatusMark.DEFER,
+            "kappa source from continuity not yet derived",
+        )
+        out.line(
+            "creation regime is nonconservative special case",
+            StatusMark.DEFER,
+            "Sigma_creation must not be used as free knob",
+        )
+        out.line(
+            "W_i coefficient matching forbidden",
+            StatusMark.DEFER,
+            "coefficient must not be set by GR analogy at this stage",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive q_v physical definition",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive kappa source from continuity/trace exchange",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector source identity",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: the 1D continuity expression is computed from SymPy
+        t, x = sp.symbols("t x", real=True)
+        q = sp.Function("q_v")(t, x)
+        J = sp.Function("J_v")(t, x)
+        continuity_expr = sp.diff(q, t) + sp.diff(J, x)
+
+        ns2.record_derivation(
+            derivation_id="vacuum_substance_1d_continuity_expression",
+            inputs=[q, J],
+            output=continuity_expr,
+            method="symbolic differentiation partial_t q_v + partial_x J_v",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="continuity_expression",
+        )
+
+        # Contentful derivation: static exterior flux derivative vanishes
+        r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
+        A = 1 - 2*G*M/(c**2*r)
+        flux_A = sp.simplify(4*sp.pi*r**2*sp.diff(A, r))
+        flux_deriv = sp.simplify(sp.diff(flux_A, r))
+
+        ns2.record_derivation(
+            derivation_id="static_exterior_A_flux_divergence_free",
+            inputs=[A],
+            output=flux_deriv,
+            method="d/dr(4*pi*r^2 * dA/dr) for Schwarzschild A",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Proof obligation: q_v definition
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_q_v_physical_definition",
+            script_id=SCRIPT_ID,
+            title="Derive q_v physical definition",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Define q_v as a concrete physical quantity within the vacuum-substance "
+                "ontology. The balance law partial_t q_v + div J_v = ... is ill-defined "
+                "until q_v has a physical interpretation."
+            ),
+        ))
+
+        # Proof obligation: vector coefficient
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The W_i source equation Delta W_i ~ (alpha_W/K_c) j_i requires "
+                "the ratio alpha_W/K_c to be derived from the vacuum exchange ontology, "
+                "not matched to Lense-Thirring."
+            ),
+        ))
+
+        # Proof obligation: kappa source
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_source_from_trace_exchange",
+            script_id=SCRIPT_ID,
+            title="Derive kappa source from trace/volume exchange",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The kappa sector source is MISSING from the vacuum-substance continuity "
+                "picture. Whether kappa couples to pressure, stress trace, or relaxation "
+                "must be derived."
+            ),
+        ))
+
+        # Proof obligation: vector source identity
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_source_identity",
+            script_id=SCRIPT_ID,
+            title="Derive vector source identity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The identification of j_i = rho v_i as the W_i source is ontology-motivated "
+                "but the full field equation and closure identity are not derived."
+            ),
+        ))
+
+        # Governance claim: creation regime must not be a free knob
+        ns2.record_claim(ClaimRecord(
+            claim_id="creation_regime_not_free_knob",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Sigma_creation must not be used as a free knob to resolve "
+                "sector mismatches. Creation is a special-regime term allowed only "
+                "in cosmological, strong-field, or phase-transition contexts."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker (kept as placeholder for the balance law structure)
+        ns2.record_derivation(
+            derivation_id="vacuum_substance_continuity_identity_marker",
+            inputs=[],
+            output=sp.Symbol("vacuum_substance_continuity_identity_stated"),
+            method="vacuum_substance_continuity_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

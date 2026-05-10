@@ -3,6 +3,9 @@
 # Group:
 #   18_vacuum_current_split
 #
+# Script type:
+#   SUMMARY
+#
 # Purpose
 # -------
 # Group 18 audited:
@@ -32,6 +35,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,7 +59,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -70,6 +84,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -154,7 +169,7 @@ def build_entries() -> List[Group18StatusEntry]:
             result="ordinary matter decoupling is required but not derived",
             status="THEOREM_TARGET",
             consequence="rho/scalar charge remains routed to A-sector; no T_mu_nu double-count; no fifth force; no hidden scalar charge; no M_ext shift independent of A",
-            handoff="ordinary matter must stay in A-sector unless theorem derives otherwise",
+            handoff="ordinary matter must stay in A's lane unless theorem derives otherwise",
         ),
         Group18StatusEntry(
             name="G18-8: J_exch source side",
@@ -449,14 +464,35 @@ def main():
     case_7_next_options()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="vacuum_current_split_group_status_summary_marker",
-        inputs=[],
-        output=sp.Symbol("vacuum_current_split_group_status_summary_complete"),
-        method="vacuum_current_split_group_status_summary",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_handoff_import(HandoffImportRecord(
+            handoff_id="group_19_handoff",
+            script_id=SCRIPT_ID,
+            imported_as=RecordKind.SUMMARY_CLAIM,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            imported_record_refs=[
+                "obligation:prove_pure_wind_neutrality_in_18_inventory",
+                "obligation:prove_ordinary_matter_decoupling_in_18_inventory",
+                "obligation:prove_exterior_mass_neutrality_in_18_inventory",
+                "obligation:prove_pure_wind_mass_neutrality_in_18_pure_wind",
+                "obligation:define_J_sub_domain_in_18_J_sub_requirements",
+                "obligation:define_Sigma_exch_in_18_J_exch_requirements",
+                "obligation:define_R_exch_in_18_J_exch_requirements",
+                "claim:vacuum_current_split_role_level_only_in_18",
+                "claim:pure_wind_neutrality_theorem_target_in_18",
+                "claim:no_active_ordinary_source_side_for_J_exch_in_18",
+                "claim:dark_sector_no_coupling_default_in_18",
+            ],
+            description="Group 19 may import: J_V unresolved, J_sub/J_exch role-level only, pure wind neutrality required but not derived, no ordinary-sector J_exch source side, ordinary matter decoupling required, no dark-sector coupling, H_exch/H_curv remain deferred. Group 19 should audit correction tensors only as divergence-safe non-decorative targets after source/current objects are real.",
+        ))
+        ns.record_derivation(
+            derivation_id="vacuum_current_split_group_status_summary_marker",
+            inputs=[],
+            output=sp.Symbol("vacuum_current_split_group_status_summary_complete"),
+            method="vacuum_current_split_group_status_summary",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

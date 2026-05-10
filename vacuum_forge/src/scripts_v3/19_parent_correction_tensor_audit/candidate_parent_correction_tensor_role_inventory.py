@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # Group 19 starts from the deferred parent-correction tensor bottleneck:
@@ -42,6 +45,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -53,33 +68,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -372,12 +360,15 @@ def print_entry(e: CorrectionTensorRoleEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent correction tensor role inventory problem")
 
     print("Question:")
@@ -400,7 +391,8 @@ def case_0_problem_statement():
     print("  no Bianchi-like decoration")
     print("  no recovery tuning")
 
-    status_line("parent correction tensor role inventory problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("parent correction tensor role inventory problem posed", StatusMark.OBLIGATION, "role inventory required before any correction tensor is used")
 
 
 def case_1_inventory(entries: List[CorrectionTensorRoleEntry]):
@@ -409,7 +401,7 @@ def case_1_inventory(entries: List[CorrectionTensorRoleEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[CorrectionTensorRoleEntry]):
+def case_2_compact_table(entries: List[CorrectionTensorRoleEntry], out: ScriptOutput):
     header("Case 2: Compact correction tensor role ledger")
 
     print("| Entry | Role candidate | Status | Consequence |")
@@ -427,10 +419,11 @@ def case_2_compact_table(entries: List[CorrectionTensorRoleEntry]):
             + " |"
         )
 
-    status_line("compact correction tensor role ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact correction tensor role ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[CorrectionTensorRoleEntry]):
+def case_3_status_counts(entries: List[CorrectionTensorRoleEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -451,10 +444,11 @@ def case_3_status_counts(entries: List[CorrectionTensorRoleEntry]):
     print("  Repair, recovery, Bianchi-decoration, anti-singularity patch, exchange-continuity patch, and premature parent insertion are rejected.")
     print("  Next gate is H_curv definition requirements.")
 
-    status_line("correction tensor role status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("correction tensor role status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_role_classes():
+def case_4_role_classes(out: ScriptOutput):
     header("Case 4: Correction tensor role classes")
 
     print("Candidate / theorem-target role classes:")
@@ -479,10 +473,11 @@ def case_4_role_classes():
     print("5. exchange-continuity patch tensor")
     print("6. premature parent-equation insertion")
 
-    status_line("correction tensor role classes listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("correction tensor role classes listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Correction tensor role decision tree")
 
     print("Decision tree:")
@@ -508,10 +503,11 @@ def case_5_decision_tree():
     print("7. Parent equation insertion appears:")
     print("   rejected as premature.")
 
-    status_line("correction tensor role decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("correction tensor role decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -528,10 +524,11 @@ def case_6_good_failure():
     print()
     print("  insert H_curv/H_exch because parent closure needs them.")
 
-    status_line("correction tensor role good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("correction tensor role good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Correction tensor role inventory fails if:")
@@ -549,10 +546,11 @@ def case_7_failure_controls():
     print("11. H is called divergence-safe by Bianchi-like language")
     print("12. parent equation is written prematurely")
 
-    status_line("correction tensor role failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("correction tensor role failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -574,10 +572,11 @@ def case_8_next_tests():
     print("  H_curv is the first correction tensor to fence because curvature/admissibility language")
     print("  is especially prone to anti-singularity overclaim.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("H_curv and H_exch remain theorem targets only.")
@@ -605,33 +604,251 @@ def final_interpretation():
     print()
     print("  candidate_H_curv_definition_requirements.py")
 
-    status_line("parent correction tensor role inventory complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("parent correction tensor role inventory complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    # Obligations for each REQUIRED entry
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_source_separation_theorem_19_roles",
+        script_id=SCRIPT_ID,
+        title="Derive ordinary matter source separation theorem",
+        status=ObligationStatus.OPEN,
+        required_by=["parent_correction_tensor_insertion_route"],
+        description=(
+            "Show that H_curv and H_exch do not reroute ordinary T_mu_nu "
+            "or double-count matter sources. CT13 requirement."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_mass_neutrality_theorem_19_roles",
+        script_id=SCRIPT_ID,
+        title="Derive exterior mass neutrality theorem for correction tensors",
+        status=ObligationStatus.OPEN,
+        required_by=["parent_correction_tensor_insertion_route"],
+        description=(
+            "Show that delta M_ext|H_curv/H_exch = 0 unless derived through "
+            "established A-sector source law. CT14 requirement."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_trace_neutrality_theorem_19_roles",
+        script_id=SCRIPT_ID,
+        title="Derive scalar trace neutrality theorem for correction tensors",
+        status=ObligationStatus.OPEN,
+        required_by=["parent_correction_tensor_insertion_route"],
+        description=(
+            "Show that H_curv/H_exch does not leak B_s/zeta/kappa scalar charge. CT15 requirement."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_coefficient_origin_19_roles",
+        script_id=SCRIPT_ID,
+        title="Derive correction tensor coefficient origins",
+        status=ObligationStatus.OPEN,
+        required_by=["parent_correction_tensor_insertion_route"],
+        description=(
+            "Show that correction tensor coefficients have ontology-native or action/stiffness origin, "
+            "not recovery-tuned values. CT16 requirement."
+        ),
+    ))
+
+    # Route records for candidate tensor classes
+    ns.record_route(RouteRecord(
+        route_id="diagnostic_only_correction_tensor_route",
+        script_id=SCRIPT_ID,
+        name="Diagnostic-only H-like audit object",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[],
+        activation_conditions=[
+            "explicitly marked diagnostic-only",
+            "never inserted into field equation",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="identically_divergence_free_correction_route",
+        script_id=SCRIPT_ID,
+        name="Identically divergence-free correction tensor class",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_source_separation_theorem_19_roles", "derive_mass_neutrality_theorem_19_roles"],
+        activation_conditions=[
+            "actual tensor identity is constructed",
+            "source origin is not repair",
+        ],
+    ))
+
+    # Branch decisions for deferred entries
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_curv_insertion_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_curv_correction_tensor_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_source_separation_theorem_19_roles",
+            "derive_mass_neutrality_theorem_19_roles",
+            "derive_scalar_trace_neutrality_theorem_19_roles",
+            "derive_coefficient_origin_19_roles",
+        ],
+        description=(
+            "H_curv remains deferred: A_curv dynamics, J_curv, source side, "
+            "and divergence behavior are missing. Prerequisites not satisfied."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_exch_insertion_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_exch_correction_tensor_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_source_separation_theorem_19_roles",
+            "derive_mass_neutrality_theorem_19_roles",
+            "derive_scalar_trace_neutrality_theorem_19_roles",
+            "derive_coefficient_origin_19_roles",
+        ],
+        description=(
+            "H_exch remains deferred: J_V/J_exch, Sigma/R, source side, "
+            "and divergence behavior are missing. Prerequisites not satisfied."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_dark_insertion_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_dark_correction_tensor_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_source_separation_theorem_19_roles"],
+        description="H_dark remains deferred: dark-sector source/coupling theorem missing.",
+    ))
+
+    # Rejected branch decisions (with policy reason, not contradiction)
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_H_repair_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_repair_correction_tensor",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="Repair tensor (CT17) rejected by policy: no tensor that cancels singularity, boundary leakage, mass shift, or scalar charge may be accepted as a correction tensor.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_H_recovery_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_recovery_correction_tensor",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="Recovery-smuggling tensor (CT18) rejected by policy: recovery must remain downstream.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_H_Bianchi_decorative_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_Bianchi_decorative_tensor",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="Bianchi-decorative tensor (CT19) rejected by policy: naming is not proof.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_H_curv_antisingularity_patch_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_curv_antisingularity_patch",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="H_curv anti-singularity patch (CT20) rejected by policy: preserves Group 17 claim limits.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_H_exch_exchange_continuity_patch_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_exch_exchange_continuity_patch",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="H_exch exchange-continuity patch (CT21) rejected by policy: preserves Group 18 current/source limits.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_premature_parent_equation_19",
+        script_id=SCRIPT_ID,
+        branch_id="premature_parent_equation_insertion",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="Premature parent equation insertion (CT22) rejected by policy: no correction tensors defined.",
+    ))
+
+    # CT23 BRANCH_KILLED maps to DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    # (without evidence of demonstrated failure it is NOT KILLED_BY_CONTRADICTION)
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_correction_tensor_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="correction_tensor_insertion_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_source_separation_theorem_19_roles",
+            "derive_mass_neutrality_theorem_19_roles",
+            "derive_scalar_trace_neutrality_theorem_19_roles",
+            "derive_coefficient_origin_19_roles",
+        ],
+        description=(
+            "CT23 failure condition: if H_curv/H_exch cannot be made source-separated, "
+            "divergence-safe, and boundary-neutral, correction tensors remain deferred. "
+            "Branch is deferred, not killed, because no contradiction has been demonstrated — "
+            "prerequisites are simply absent."
+        ),
+    ))
+
+    # Summary claim for the role inventory
+    ns.record_claim(ClaimRecord(
+        claim_id="correction_tensor_role_inventory_informational",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.INFORMATIONAL,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "H_curv and H_exch are correction tensor theorem targets whose roles are inventoried "
+            "but whose definitions, source/divergence/boundary structures, and insertability "
+            "remain open obligations."
+        ),
+        obligation_ids=[
+            "derive_source_separation_theorem_19_roles",
+            "derive_mass_neutrality_theorem_19_roles",
+            "derive_scalar_trace_neutrality_theorem_19_roles",
+            "derive_coefficient_origin_19_roles",
+        ],
+    ))
 
 
 def main():
     header("Candidate Parent Correction Tensor Role Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_role_classes()
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_role_classes(out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="parent_correction_tensor_role_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("parent_correction_tensor_role_inventory_complete"),
-        method="parent_correction_tensor_role_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="parent_correction_tensor_role_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("parent_correction_tensor_role_inventory_complete"),
+            method="parent_correction_tensor_role_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

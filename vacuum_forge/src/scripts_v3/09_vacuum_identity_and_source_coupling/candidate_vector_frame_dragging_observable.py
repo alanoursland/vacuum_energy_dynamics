@@ -1,5 +1,11 @@
 # Candidate vector frame-dragging observable
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The vector-current continuity study found:
@@ -14,17 +20,23 @@
 #
 # It does NOT insert the GR Lense-Thirring coefficient.
 # It does NOT claim the observable is derived.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_frame_dragging_observable.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -36,21 +48,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "HAND_ASSIGNED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -114,8 +111,6 @@ def case_0_problem_statement():
     print()
     print("  B_W = curl W")
 
-    status_line("frame-dragging observable problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_curl_kills_gradient():
     header("Case 1: Curl kills pure-gradient gauge-like piece")
@@ -135,8 +130,7 @@ def case_1_curl_kills_gradient():
     print("Interpretation:")
     print("  If gauge shifts add gradient-like pieces, curl W removes them.")
 
-    ok = all(is_zero(e) for e in curl_grad)
-    status_line("curl removes pure-gradient pieces", "DERIVED_REDUCED" if ok else "RISK")
+    return curl_grad
 
 
 def case_2_rotational_W():
@@ -158,9 +152,7 @@ def case_2_rotational_W():
     print("Interpretation:")
     print("  Rotational vector structure gives a nonzero curl diagnostic.")
 
-    ok = not all(is_zero(e) for e in BW)
-    status_line("rotational W produces nonzero B_W", "CONSTRAINED_BY_IDENTITY" if ok else "RISK",
-                "normalization remains symbolic")
+    return W, BW
 
 
 def case_3_current_loop_angular_momentum():
@@ -183,8 +175,7 @@ def case_3_current_loop_angular_momentum():
     print("  A frame-dragging diagnostic sourced by current should reduce globally")
     print("  to an angular-momentum-like source for rotating bodies.")
 
-    status_line("angular momentum structure follows from current", "CONSTRAINED_BY_IDENTITY",
-                "global integral and coefficient missing")
+    return ell
 
 
 def case_4_symbolic_precession_relation():
@@ -207,8 +198,7 @@ def case_4_symbolic_precession_relation():
     print("  beta_W is not derived")
     print("  do not set beta_W from GR yet")
 
-    status_line("precession relation stated symbolically", "CONSTRAINED_BY_IDENTITY",
-                "beta_W missing")
+    return BW, Omega
 
 
 def case_5_dipole_shape():
@@ -229,8 +219,7 @@ def case_5_dipole_shape():
     print("  A dipole-like vector field suggests 1/r^3 curl falloff.")
     print("  Coefficient C_W remains symbolic.")
 
-    status_line("dipole-like far-field shape stated", "CONSTRAINED_BY_IDENTITY",
-                "coefficient and derivation missing")
+    return BW_far
 
 
 def case_6_observable_safety():
@@ -243,9 +232,6 @@ def case_6_observable_safety():
     print("| curl W | CONSTRAINED_BY_IDENTITY diagnostic candidate |")
     print("| Omega_drag = beta_W curl W | CONSTRAINED_BY_IDENTITY, beta_W missing |")
     print("| Lense-Thirring coefficient | HAND_ASSIGNED if inserted now |")
-    print()
-    status_line("observable safety classification produced", "CONSTRAINED_BY_IDENTITY",
-                "raw W_i remains unsafe")
 
 
 def case_7_failure_controls():
@@ -258,9 +244,6 @@ def case_7_failure_controls():
     print("3. curl W does not connect to a physical precession observable.")
     print("4. the current source j_i is disconnected from continuity.")
     print("5. vector radiation is accidentally introduced without suppression or evidence.")
-    print()
-    status_line("frame-dragging failure controls stated", "RISK",
-                "next stage must derive beta_W or mark it independent")
 
 
 def final_interpretation():
@@ -290,22 +273,148 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_curl_kills_gradient()
-    case_2_rotational_W()
-    case_3_current_loop_angular_momentum()
-    case_4_symbolic_precession_relation()
-    case_5_dipole_shape()
+    curl_grad = case_1_curl_kills_gradient()
+    W_rot, BW_rot = case_2_rotational_W()
+    ell = case_3_current_loop_angular_momentum()
+    BW_sym, Omega_sym = case_4_symbolic_precession_relation()
+    BW_far = case_5_dipole_shape()
     case_6_observable_safety()
     case_7_failure_controls()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_frame_dragging_observable_marker",
-        inputs=[],
-        output=sp.Symbol("vector_frame_dragging_observable_inventory"),
-        method="vector_frame_dragging_observable_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    curl_grad_zero = all(is_zero(e) for e in curl_grad)
+    curl_rot_nonzero = not all(is_zero(e) for e in BW_rot)
+
+    with out.derived_results():
+        out.line(
+            "curl(grad phi) = 0 identity verified",
+            StatusMark.PASS if curl_grad_zero else StatusMark.FAIL,
+            "curl removes pure-gradient gauge pieces",
+        )
+        out.line(
+            "rotational W gives nonzero curl diagnostic",
+            StatusMark.PASS if curl_rot_nonzero else StatusMark.FAIL,
+            "B_W = curl W is nonzero for rotational W = a(-y, x, 0)",
+        )
+        out.line(
+            "angular momentum density l = r x j computed",
+            StatusMark.PASS,
+            "symbolic angular momentum density from current",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "beta_W observable coupling",
+            StatusMark.DEFER,
+            "beta_W not derived; Lense-Thirring matching forbidden",
+        )
+        out.line(
+            "raw W_i is gauge-sensitive",
+            StatusMark.DEFER,
+            "only B_W = curl W is a safe observable candidate",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive beta_W observable coupling",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: curl(grad phi) = 0
+        x, y, z = sp.symbols("x y z", real=True)
+        phi = sp.Function("phi")(x, y, z)
+        grad_phi = sp.Matrix([sp.diff(phi, x), sp.diff(phi, y), sp.diff(phi, z)])
+        curl_grad_expr = sp.simplify(curl_vec(grad_phi, (x, y, z)))
+
+        ns2.record_derivation(
+            derivation_id="curl_grad_phi_zero_identity",
+            inputs=[grad_phi],
+            output=curl_grad_expr,
+            method="curl(grad phi) computed symbolically",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Sample derivation: rotational W curl
+        a = sp.symbols("a", real=True)
+        W_sample = sp.Matrix([-a*y, a*x, sp.Integer(0)])
+        BW_sample = sp.simplify(curl_vec(W_sample, (x, y, z)))
+
+        ns2.record_derivation(
+            derivation_id="rotational_W_curl_sample",
+            inputs=[W_sample],
+            output=BW_sample,
+            method="curl W for W = a(-y, x, 0)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            result_type="diagnostic_quantity",
+            scope="rotational W sample",
+        )
+
+        # Proof obligation: beta_W observable coupling
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_beta_W_coupling",
+            script_id=SCRIPT_ID,
+            title="Derive beta_W observable coupling",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The precession relation Omega_drag = beta_W B_W requires beta_W to be "
+                "derived from observable/precession coupling, not matched to Lense-Thirring. "
+                "beta_W remains missing."
+            ),
+        ))
+
+        # Proof obligation: vector coefficient alpha_W/K_c
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The far-field coefficient C_W and the vector action ratio alpha_W/K_c "
+                "are both missing. They must be derived from the vacuum transport action."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for beta_W
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_beta_W",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "beta_W must not be chosen to reproduce the Lense-Thirring precession "
+                "rate. GR precession recovery is a downstream test, not a construction "
+                "rule for the vector observable coupling."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_frame_dragging_observable_marker",
+            inputs=[],
+            output=sp.Symbol("vector_frame_dragging_observable_inventory"),
+            method="vector_frame_dragging_observable_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

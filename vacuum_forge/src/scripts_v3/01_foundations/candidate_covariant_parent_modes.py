@@ -1,5 +1,11 @@
 # Candidate covariant parent modes
 #
+# Group:
+#   01_foundations
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # This script starts the transition from reduced exterior variables
@@ -44,15 +50,22 @@
 # happens to vanish. Case 2b extends this with an anisotropic perturbation
 # that could fail, providing a test whose outcome is not guaranteed by
 # construction.
-#
-# Suggested location:
-#   scripts_v3/candidate_covariant_parent_modes.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 from vacuumforge.structure_search import (
     VacuumStructure,
     ProjectionMap,
@@ -74,14 +87,6 @@ def header(title: str) -> None:
     print("=" * 96)
     print(title)
     print("=" * 96)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -118,7 +123,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Reduced log-scale algebra recap
 # =============================================================================
 
-def case_0_reduced_log_scale_recap():
+def case_0_reduced_log_scale_recap(out: ScriptOutput) -> None:
     header("Case 0: Reduced log-scale algebra recap")
 
     kappa, s = sp.symbols("kappa s", real=True)
@@ -136,15 +141,29 @@ def case_0_reduced_log_scale_recap():
     print(f"B = {B}")
     print(f"AB = {AB}")
 
-    status_line("AB = exp(2*kappa)", is_zero(AB - sp.exp(2*kappa)))
-    status_line("kappa=0 gives reciprocal scaling", is_zero(AB.subs(kappa, 0) - 1))
+    ab_exp_2kappa = is_zero(AB - sp.exp(2*kappa))
+    kappa_zero_reciprocal = is_zero(AB.subs(kappa, 0) - 1)
+
+    with out.derived_results():
+        out.line(
+            "AB = exp(2*kappa)",
+            StatusMark.PASS if ab_exp_2kappa else StatusMark.FAIL,
+            f"residual: {sp.simplify(AB - sp.exp(2*kappa))}",
+        )
+        out.line(
+            "kappa=0 gives reciprocal scaling",
+            StatusMark.PASS if kappa_zero_reciprocal else StatusMark.FAIL,
+            f"AB|kappa=0 = {sp.simplify(AB.subs(kappa, 0))}",
+        )
+
+    return AB, kappa, s
 
 
 # =============================================================================
 # Case 1: 2-sector trace and shear decomposition
 # =============================================================================
 
-def case_1_two_sector_trace_shear():
+def case_1_two_sector_trace_shear(out: ScriptOutput) -> None:
     header("Case 1: 2-sector trace/shear decomposition")
 
     a, b = sp.symbols("a b", real=True)
@@ -167,19 +186,31 @@ def case_1_two_sector_trace_shear():
     print(f"s = (a-b)/2 = {s}")
     print(f"kappa*[1,1] + s*[1,-1] = {v_reconstructed.T}")
 
-    status_line("2-sector decomposition reconstructs [a,b]", v_reconstructed == v)
+    recon_ok = v_reconstructed == v
 
     # Dot products in Euclidean mode space, only as an algebraic toy.
     dot_trace_shear = sp.simplify(trace_basis.dot(shear_basis))
     print(f"[1,1]·[1,-1] = {dot_trace_shear}")
-    status_line("trace and shear basis are orthogonal in toy mode space", is_zero(dot_trace_shear))
+    ortho_ok = is_zero(dot_trace_shear)
+
+    with out.derived_results():
+        out.line(
+            "2-sector decomposition reconstructs [a,b]",
+            StatusMark.PASS if recon_ok else StatusMark.FAIL,
+            "kappa*[1,1] + s*[1,-1] = [a,b]",
+        )
+        out.line(
+            "trace and shear basis are orthogonal in toy mode space",
+            StatusMark.PASS if ortho_ok else StatusMark.WARN,
+            f"[1,1]·[1,-1] = {dot_trace_shear}",
+        )
 
 
 # =============================================================================
 # Case 2: 3+1 isotropic spatial reduction — structural derivation
 # =============================================================================
 
-def case_2_physical_3plus1_trace_split(ns=None):
+def case_2_physical_3plus1_trace_split(out: ScriptOutput, ns=None):
     header("Case 2: 3+1 isotropic spatial trace split (structural)")
 
     q_t, q_x, q_y, q_z = sp.symbols("q_t q_x q_y q_z", real=True)
@@ -240,11 +271,6 @@ def case_2_physical_3plus1_trace_split(ns=None):
     print(f"Summary status = {result.summary_status.value}")
 
     case_2_derived = result.summary_status.value == "derived"
-    status_line(
-        "trace-kernel exchange is structurally derived (not tautological)",
-        case_2_derived,
-        detail=result.summary_status.value,
-    )
 
     # --- Secondary check: direct sympy substitution ---
     #
@@ -272,8 +298,6 @@ def case_2_physical_3plus1_trace_split(ns=None):
 
     hand_kappa_zero = is_zero(delta_kappa)
     hand_s_nonzero = not is_zero(delta_s)
-    status_line("hand calc: exchange lies in kappa-kernel", hand_kappa_zero)
-    status_line("hand calc: exchange excites shear s", hand_s_nonzero)
 
     # Cross-check: both methods should agree.
     if case_2_derived and hand_kappa_zero:
@@ -288,6 +312,23 @@ def case_2_physical_3plus1_trace_split(ns=None):
         print("  DISAGREEMENT: analyzer says derived but hand calc gives delta_kappa != 0.")
         print("  This is a bug — investigate.")
 
+    with out.derived_results():
+        out.line(
+            "trace-kernel exchange is structurally derived (not tautological)",
+            StatusMark.PASS if case_2_derived else StatusMark.WARN,
+            f"analyzer summary_status={result.summary_status.value}",
+        )
+        out.line(
+            "hand calc: exchange lies in kappa-kernel",
+            StatusMark.PASS if hand_kappa_zero else StatusMark.WARN,
+            f"delta_kappa = {delta_kappa}",
+        )
+        out.line(
+            "hand calc: exchange excites shear s",
+            StatusMark.PASS if hand_s_nonzero else StatusMark.WARN,
+            f"delta_s = {delta_s}",
+        )
+
     if ns is not None:
         ns.record_derivation(
             derivation_id="kappa_trace_kernel_exchange",
@@ -295,6 +336,7 @@ def case_2_physical_3plus1_trace_split(ns=None):
             output=sp.Eq(ex.J_kappa, 0),
             method="structure_search_trace_kernel",
             status=Status.DERIVED if case_2_derived else Status.CANDIDATE,
+            record_kind=RecordKind.DERIVATION,
             metadata={
                 "classification": ex.classification,
                 "summary_status": result.summary_status.value,
@@ -308,7 +350,7 @@ def case_2_physical_3plus1_trace_split(ns=None):
 # Case 2b: Anisotropic perturbation — extension test that could fail
 # =============================================================================
 
-def case_2b_anisotropic_perturbation(ns=None):
+def case_2b_anisotropic_perturbation(out: ScriptOutput, ns=None):
     header("Case 2b: Anisotropic spatial exchange — extension test")
 
     # This tests whether the trace-kernel structure depends on spatial isotropy
@@ -374,22 +416,6 @@ def case_2b_anisotropic_perturbation(ns=None):
 
     case_2b_derived = result.summary_status.value == "derived"
 
-    if case_2b_derived:
-        status_line(
-            "anisotropic exchange also structurally derived",
-            True,
-            detail="trace-kernel interpretation does not depend on isotropy",
-        )
-    else:
-        status_line(
-            "anisotropic exchange NOT classified as derived",
-            False,
-            detail=(
-                f"got '{result.summary_status.value}'; "
-                "original Case 2 vanishing may depend on isotropy"
-            ),
-        )
-
     # Secondary hand-calc cross-check.
     print()
     print("Secondary check (direct sympy substitution):")
@@ -411,12 +437,27 @@ def case_2b_anisotropic_perturbation(ns=None):
     print(f"  delta s     = {delta_s}")
 
     hand_kappa_zero = is_zero(delta_kappa)
-    status_line("hand calc: anisotropic exchange in kappa-kernel", hand_kappa_zero)
 
     if case_2b_derived and not hand_kappa_zero:
         print("  DISAGREEMENT: analyzer says derived but hand calc gives delta_kappa != 0.")
     elif not case_2b_derived and hand_kappa_zero:
         print("  DISAGREEMENT: hand calc shows delta_kappa=0 but analyzer did not derive.")
+
+    with out.derived_results():
+        out.line(
+            "anisotropic exchange classification",
+            StatusMark.PASS if case_2b_derived else StatusMark.WARN,
+            (
+                "trace-kernel interpretation does not depend on isotropy"
+                if case_2b_derived
+                else f"got '{result.summary_status.value}'; original Case 2 vanishing may depend on isotropy"
+            ),
+        )
+        out.line(
+            "hand calc: anisotropic exchange in kappa-kernel",
+            StatusMark.PASS if hand_kappa_zero else StatusMark.WARN,
+            f"delta_kappa = {delta_kappa}",
+        )
 
     if ns is not None:
         ns.record_derivation(
@@ -425,9 +466,11 @@ def case_2b_anisotropic_perturbation(ns=None):
             output=sp.Eq(ex.J_kappa, 0),
             method="structure_search_trace_kernel",
             status=Status.DERIVED if case_2b_derived else Status.CANDIDATE,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
             metadata={
                 "classification": ex.classification,
                 "summary_status": result.summary_status.value,
+                "scope": "anisotropic perturbation test; not a general derivation",
             },
         )
 
@@ -438,7 +481,7 @@ def case_2b_anisotropic_perturbation(ns=None):
 # Case 3: Linearized metric perturbation trace comparison
 # =============================================================================
 
-def case_3_linearized_trace_comparison():
+def case_3_linearized_trace_comparison(out: ScriptOutput) -> None:
     header("Case 3: Linearized metric perturbation trace comparison")
 
     # This case compares the reduced log modes with a simple linearized metric
@@ -486,7 +529,7 @@ def case_3_linearized_trace_comparison():
     print(f"s linear = {s_linear}")
 
     # trace_2 = eps*(a1+b1) = 2*kappa_linear
-    status_line("linearized 2-sector trace is 2*kappa", is_zero(trace_2 - 2*kappa_linear))
+    trace_matches = is_zero(trace_2 - 2*kappa_linear)
 
     print()
     print("Interpretation:")
@@ -495,12 +538,19 @@ def case_3_linearized_trace_comparison():
     print("  This supports kappa as a trace/conformal-like parent candidate,")
     print("  but it is not yet a covariant definition.")
 
+    with out.sample_results():
+        out.line(
+            "linearized 2-sector trace is 2*kappa",
+            StatusMark.PASS if trace_matches else StatusMark.WARN,
+            "sample: weak-field linearized sector only; not a covariant definition",
+        )
+
 
 # =============================================================================
 # Case 4: Trace-free shear in the reduced 2-sector
 # =============================================================================
 
-def case_4_trace_free_shear_linearized():
+def case_4_trace_free_shear_linearized(out: ScriptOutput) -> None:
     header("Case 4: Trace-free shear in reduced linearized sector")
 
     eps, s = sp.symbols("eps s", real=True)
@@ -528,14 +578,21 @@ def case_4_trace_free_shear_linearized():
     print(f"  h_rr first order = {h_rr}")
     print(f"  reduced trace contribution = {trace_2}")
 
-    status_line("pure reduced shear is trace-free to first order", is_zero(trace_2))
+    trace_free = is_zero(trace_2)
+
+    with out.sample_results():
+        out.line(
+            "pure reduced shear is trace-free to first order",
+            StatusMark.PASS if trace_free else StatusMark.WARN,
+            "sample: linearized sector; not general",
+        )
 
 
 # =============================================================================
 # Case 5: Determinant / volume caution
 # =============================================================================
 
-def case_5_determinant_volume_caution():
+def case_5_determinant_volume_caution(out: ScriptOutput) -> None:
     header("Case 5: Determinant / volume caution")
 
     a, b, r, theta = sp.symbols("a b r theta", real=True, positive=True)
@@ -556,7 +613,7 @@ def case_5_determinant_volume_caution():
     print(f"  sqrt(|g|) = {sqrt_abs_g}")
     print(f"  exp(kappa) r² sin(theta) = {sqrt_abs_g_k}")
 
-    status_line("sqrt(|g|) temporal-radial factor is exp(kappa)", is_zero(sqrt_abs_g - sqrt_abs_g_k))
+    det_matches = is_zero(sqrt_abs_g - sqrt_abs_g_k)
 
     print()
     print("Caution:")
@@ -565,12 +622,19 @@ def case_5_determinant_volume_caution():
     print("  not a fully coordinate-independent volume mode by itself.")
     print("  A covariant parent must handle gauge/coordinate dependence carefully.")
 
+    with out.derived_results():
+        out.line(
+            "sqrt(|g|) temporal-radial factor is exp(kappa)",
+            StatusMark.PASS if det_matches else StatusMark.WARN,
+            "areal gauge only; coordinate-independence not established",
+        )
+
 
 # =============================================================================
 # Case 6: Candidate parent classification
 # =============================================================================
 
-def case_6_candidate_parent_classification():
+def case_6_candidate_parent_classification(out: ScriptOutput) -> None:
     header("Case 6: Candidate parent classification")
 
     print("Candidate parent interpretation:")
@@ -591,12 +655,26 @@ def case_6_candidate_parent_classification():
     print("  They are not yet covariant fields.")
     print("  A full theory must identify gauge-aware or covariant parent structures.")
 
+    with out.governance_assessments():
+        out.line(
+            "kappa as reduced trace/conformal/determinant-like parent candidate",
+            StatusMark.DEFER,
+            "exploratory candidate; full covariant parent not yet identified",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive gauge-aware or covariant parent structures for kappa and s",
+            StatusMark.OBLIGATION,
+            "kappa/s are not yet covariant fields; static spherical sector only",
+        )
+
 
 # =============================================================================
 # Final interpretation
 # =============================================================================
 
-def final_interpretation(case_2_ok: bool, case_2b_ok: bool):
+def final_interpretation(out: ScriptOutput, case_2_ok: bool, case_2b_ok: bool):
     header("Final interpretation")
 
     print("This exploratory script supports the following working hypothesis:")
@@ -645,6 +723,13 @@ def final_interpretation(case_2_ok: bool, case_2b_ok: bool):
     print("Possible next artifact:")
     print("  candidate_covariant_parent_modes.md")
 
+    with out.governance_assessments():
+        out.line(
+            "trace-kernel classification of kappa grounded structurally",
+            StatusMark.PASS if case_2_ok else StatusMark.WARN,
+            "case_2_ok={}, case_2b_ok={}".format(case_2_ok, case_2b_ok),
+        )
+
 
 # =============================================================================
 # Main
@@ -654,15 +739,48 @@ def main():
     header("Candidate Covariant Parent Modes")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_reduced_log_scale_recap()
-    case_1_two_sector_trace_shear()
-    case_2_ok = case_2_physical_3plus1_trace_split(ns)
-    case_2b_ok = case_2b_anisotropic_perturbation(ns)
-    case_3_linearized_trace_comparison()
-    case_4_trace_free_shear_linearized()
-    case_5_determinant_volume_caution()
-    case_6_candidate_parent_classification()
-    final_interpretation(case_2_ok, case_2b_ok)
+
+    out = ScriptOutput()
+
+    case_0_reduced_log_scale_recap(out)
+    case_1_two_sector_trace_shear(out)
+    case_2_ok = case_2_physical_3plus1_trace_split(out, ns)
+    case_2b_ok = case_2b_anisotropic_perturbation(out, ns)
+    case_3_linearized_trace_comparison(out)
+    case_4_trace_free_shear_linearized(out)
+    case_5_determinant_volume_caution(out)
+    case_6_candidate_parent_classification(out)
+    final_interpretation(out, case_2_ok, case_2b_ok)
+
+    # Governance records inside the archive block.
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_parent_for_kappa_s",
+        script_id=SCRIPT_ID,
+        title="Derive gauge-aware or covariant parent structures for kappa and s",
+        status=ObligationStatus.OPEN,
+        required_by=["kappa_trace_kernel_exchange"],
+        description=(
+            "kappa and s are reduced static spherical sector variables. "
+            "A gauge-aware or fully covariant decomposition of metric variations "
+            "whose static spherical reduction gives kappa and s has not yet been "
+            "identified. This is the next theoretical target after the gauge "
+            "dependence and areal-gauge studies."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_reduced_trace_conformal_candidate",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "kappa is a candidate reduced trace/conformal/determinant-like mode "
+            "of the temporal-radial exterior sector, grounded structurally in the "
+            "projection trace kernel (Cases 2 and 2b). It is not yet a covariant field."
+        ),
+    ))
+
     ns.write_run_metadata(case_2_ok=case_2_ok, case_2b_ok=case_2b_ok)
 
 

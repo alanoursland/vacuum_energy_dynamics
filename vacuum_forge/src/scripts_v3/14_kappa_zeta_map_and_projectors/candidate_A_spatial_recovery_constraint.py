@@ -1,5 +1,11 @@
 # Candidate A_spatial recovery constraint
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The areal-kappa diagnostic audit fenced:
@@ -36,11 +42,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -48,30 +63,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -244,7 +235,7 @@ def print_entry(e: ASpatialEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -269,8 +260,6 @@ def case_0_problem_statement():
     print("  do not use zeta/kappa as patch without count-once rule")
     print("  do not promote kappa_areal to physical scalar")
     print("  keep recovery targets separate from construction rules")
-
-    status_line("A_spatial recovery problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[ASpatialEntry]):
@@ -297,8 +286,6 @@ def case_2_compact_table(entries: List[ASpatialEntry]):
             + " |"
         )
 
-    status_line("compact A_spatial recovery ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[ASpatialEntry]):
     header("Case 3: Status counts")
@@ -316,8 +303,6 @@ def case_3_status_counts(entries: List[ASpatialEntry]):
     print("  The best branch is joint derivation of A and A_spatial from a parent scalar/spatial identity.")
     print("  GR metric copying, B=1/A by decree, and gamma=1 tuning are rejected.")
     print("  Zeta can only help if it does not become both A_spatial patch and independent residual.")
-
-    status_line("A_spatial recovery status count produced", "STRUCTURAL")
 
 
 def case_4_recovery_targets_not_construction():
@@ -340,8 +325,6 @@ def case_4_recovery_targets_not_construction():
     print()
     print("  Recovery targets constrain the search; they do not construct the equation.")
 
-    status_line("A_spatial recovery language stated", "CONSTRAINED")
-
 
 def case_5_count_once_constraint():
     header("Case 5: Count-once constraint carried forward")
@@ -359,8 +342,6 @@ def case_5_count_once_constraint():
     print("  What is Trace_A_mass required to be?")
     print("  Can it be derived with A rather than imported?")
     print("  What residual trace, if any, remains?")
-
-    status_line("count-once A_spatial theorem target stated", "THEOREM_TARGET")
 
 
 def case_6_good_failure():
@@ -381,8 +362,6 @@ def case_6_good_failure():
     print()
     print("  copy GR spatial response and move on.")
 
-    status_line("A_spatial good failure stated", "SAFE_IF")
-
 
 def case_7_failure_controls():
     header("Case 7: Failure controls")
@@ -398,8 +377,6 @@ def case_7_failure_controls():
     print("7. spatial response is derived from coordinate gauge only")
     print("8. A_spatial changes M_ext independently of A_flux")
     print("9. recovery bookkeeping is called parent identity")
-
-    status_line("A_spatial failure controls stated", "RISK")
 
 
 def case_8_next_tests():
@@ -422,8 +399,6 @@ def case_8_next_tests():
     print()
     print("Reason:")
     print("  A_spatial appears to require joint derivation with A from a parent scalar/spatial identity. That is now the field-equation bottleneck.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -468,14 +443,58 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="A_spatial_recovery_constraint_marker",
-        inputs=[],
-        output=sp.Symbol("A_spatial_recovery_constraint_audited"),
-        method="A_spatial_recovery_constraint_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("A_spatial recovery branches classified", StatusMark.PASS, "12 branches inventoried")
+        out.line("A_spatial as derived companion", StatusMark.DEFER, "theorem target, not yet derived")
+        out.line("AS3/AS4/AS5/AS10 rejected", StatusMark.FAIL, "GR smuggling, B=1/A decree, gamma tuning, gauge-only rejected")
+
+    with out.unresolved_obligations():
+        out.line("derive A and A_spatial together from parent identity", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_A_and_A_spatial_from_parent_identity_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive A and A_spatial together from a parent scalar/spatial identity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "A_spatial is a recovery theorem target. The best branch is joint derivation of A and "
+                "A_spatial from a parent identity. GR metric copying, B=1/A decree, gamma=1 tuning, and "
+                "gauge-only derivation are rejected. Recovery targets include Schwarzschild-like exterior, "
+                "AB diagnostic, and gamma=1-like weak-field behavior."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="A_spatial_is_recovery_theorem_target",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "A_spatial is a recovery theorem target, not a derived metric component. "
+                "The best candidate branch is joint derivation of A and A_spatial from a parent "
+                "scalar/spatial identity. Recovery targets (Schwarzschild-like exterior, AB diagnostic, "
+                "gamma=1-like behavior) are tests on acceptable equations, not construction rules."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="A_spatial_recovery_constraint_marker",
+            inputs=[],
+            output=sp.Symbol("A_spatial_recovery_constraint_audited"),
+            method="A_spatial_recovery_constraint_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

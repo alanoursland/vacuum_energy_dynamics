@@ -1,5 +1,11 @@
 # Candidate kappa-leak deviation
 #
+# Group:
+#   02_mechanics
+#
+# Script type:
+#   SAMPLE
+#
 # Purpose
 # -------
 # This script studies the first quantitative deviation channel identified by
@@ -80,9 +86,6 @@
 # IMPORTANT:
 # This is a reduced, areal-gauge, weak-field deviation toy.
 # It is not a full PPN calculation and not a covariant prediction.
-#
-# Suggested location:
-#   scripts_v3/candidate_kappa_leak_deviation.py
 
 from pathlib import Path
 
@@ -90,6 +93,16 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -112,14 +125,6 @@ def subheader(title: str) -> None:
     print("-" * 104)
     print(title)
     print("-" * 104)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -161,7 +166,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Baseline compensated exterior
 # =============================================================================
 
-def case_0_baseline_compensated_exterior():
+def case_0_baseline_compensated_exterior(out: ScriptOutput):
     header("Case 0: Baseline compensated exterior")
 
     eps = sp.symbols("eps", positive=True, real=True)
@@ -187,16 +192,27 @@ def case_0_baseline_compensated_exterior():
     print(f"B series = {B_series}")
     print(f"AB series = {AB_series}")
 
-    status_line("baseline A first order is 1 - 2 eps", is_zero(sp.expand(series(A, eps, 2) - (1 - 2*eps))))
-    status_line("baseline B first order is 1 + 2 eps", is_zero(sp.expand(series(B, eps, 2) - (1 + 2*eps))))
-    status_line("baseline AB = 1 exactly", is_zero(AB - 1))
+    residual_A = sp.expand(series(A, eps, 2) - (1 - 2*eps))
+    residual_B = sp.expand(series(B, eps, 2) - (1 + 2*eps))
+    residual_AB = sp.simplify(AB - 1)
+
+    with out.sample_results():
+        out.line("baseline A first order is 1 - 2 eps",
+                 StatusMark.PASS if is_zero(residual_A) else StatusMark.FAIL,
+                 f"residual={residual_A}")
+        out.line("baseline B first order is 1 + 2 eps",
+                 StatusMark.PASS if is_zero(residual_B) else StatusMark.FAIL,
+                 f"residual={residual_B}")
+        out.line("baseline AB = 1 exactly",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
 
 
 # =============================================================================
 # Case 1: Constant fractional kappa leak
 # =============================================================================
 
-def case_1_constant_fractional_kappa_leak():
+def case_1_constant_fractional_kappa_leak(out: ScriptOutput):
     header("Case 1: Constant fractional kappa leak")
 
     eps, lam = sp.symbols("eps lambda_k", real=True)
@@ -226,19 +242,27 @@ def case_1_constant_fractional_kappa_leak():
     expected_B_1 = 1 + (lam + 2) * eps
     expected_AB_1 = 1 + 2 * lam * eps
 
-    status_line("A first-order coefficient is lambda_k - 2",
-                is_zero(series(A, eps, 2) - expected_A_1))
-    status_line("B first-order coefficient is lambda_k + 2",
-                is_zero(series(B, eps, 2) - expected_B_1))
-    status_line("AB first-order coefficient is 2 lambda_k",
-                is_zero(series(AB, eps, 2) - expected_AB_1))
+    residual_A = sp.simplify(series(A, eps, 2) - expected_A_1)
+    residual_B = sp.simplify(series(B, eps, 2) - expected_B_1)
+    residual_AB = sp.simplify(series(AB, eps, 2) - expected_AB_1)
+
+    with out.sample_results():
+        out.line("A first-order coefficient is lambda_k - 2",
+                 StatusMark.PASS if is_zero(residual_A) else StatusMark.FAIL,
+                 f"residual={residual_A}")
+        out.line("B first-order coefficient is lambda_k + 2",
+                 StatusMark.PASS if is_zero(residual_B) else StatusMark.FAIL,
+                 f"residual={residual_B}")
+        out.line("AB first-order coefficient is 2 lambda_k",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
 
 
 # =============================================================================
 # Case 2: Gamma-like proxy from temporal normalization
 # =============================================================================
 
-def case_2_gamma_like_proxy():
+def case_2_gamma_like_proxy(out: ScriptOutput):
     header("Case 2: Gamma-like proxy from temporal normalization")
 
     lam = sp.symbols("lambda_k", real=True)
@@ -268,7 +292,12 @@ def case_2_gamma_like_proxy():
     print(f"small lambda series gamma_eff = {small_lam_series}")
 
     expected = sp.simplify(2 * lam / (2 - lam))
-    status_line("gamma_eff - 1 = 2 lambda_k/(2-lambda_k)", is_zero(gamma_minus_one - expected))
+    residual = sp.simplify(gamma_minus_one - expected)
+
+    with out.sample_results():
+        out.line("gamma_eff - 1 = 2 lambda_k/(2-lambda_k)",
+                 StatusMark.PASS if is_zero(residual) else StatusMark.FAIL,
+                 f"residual={residual}")
 
     print()
     print("Interpretation:")
@@ -280,7 +309,7 @@ def case_2_gamma_like_proxy():
 # Case 3: If Newtonian normalization is forced, kappa leak must vanish
 # =============================================================================
 
-def case_3_newtonian_normalization_pressure():
+def case_3_newtonian_normalization_pressure(out: ScriptOutput):
     header("Case 3: Newtonian temporal normalization pressure")
 
     lam = sp.symbols("lambda_k", real=True)
@@ -296,7 +325,10 @@ def case_3_newtonian_normalization_pressure():
     print(f"A first-order coefficient = {A_coeff}")
     print(f"solve lambda_k - 2 = -2 -> {sol}")
 
-    status_line("Newtonian normalization forces lambda_k=0 in this simple leak model", sol == [0])
+    with out.sample_results():
+        out.line("Newtonian normalization forces lambda_k=0 in this simple leak model",
+                 StatusMark.PASS if sol == [0] else StatusMark.FAIL,
+                 f"solution={sol}")
 
     print()
     print("Interpretation:")
@@ -309,7 +341,7 @@ def case_3_newtonian_normalization_pressure():
 # Case 4: Decaying kappa leak profile
 # =============================================================================
 
-def case_4_decaying_kappa_leak_profile():
+def case_4_decaying_kappa_leak_profile(out: ScriptOutput):
     header("Case 4: Decaying kappa leak profile")
 
     r, G, M, c, L, eta = sp.symbols("r G M c L eta", positive=True, real=True)
@@ -340,14 +372,17 @@ def case_4_decaying_kappa_leak_profile():
     print("  kappa/eps = eta exp(-r/L)")
     print("  so gamma-like deviation proxy ≈ eta exp(-r/L) for small leak.")
     print()
-    status_line("decaying leak vanishes asymptotically", True)
+
+    with out.sample_results():
+        out.line("decaying leak vanishes asymptotically", StatusMark.PASS,
+                 "kappa/eps=eta*exp(-r/L) -> 0 as r->infinity")
 
 
 # =============================================================================
 # Case 5: Power-law kappa leak profile
 # =============================================================================
 
-def case_5_power_law_kappa_leak_profile():
+def case_5_power_law_kappa_leak_profile(out: ScriptOutput):
     header("Case 5: Power-law kappa leak profile")
 
     r, G, M, c, eta, R0, n = sp.symbols("r G M c eta R0 n", positive=True, real=True)
@@ -377,14 +412,17 @@ def case_5_power_law_kappa_leak_profile():
     print()
     print("For n>0, the leak becomes smaller at large radius.")
     print("For n=0, this reduces to the constant fractional leak case.")
-    status_line("power-law leak is a tunable deviation profile", True)
+
+    with out.sample_results():
+        out.line("power-law leak is a tunable deviation profile", StatusMark.PASS,
+                 "kappa/eps=(R0/r)^n, decays for n>0")
 
 
 # =============================================================================
 # Case 6: Mixed exchange + creation source as kappa leak origin
 # =============================================================================
 
-def case_6_mixed_source_origin(ns=None):
+def case_6_mixed_source_origin(out: ScriptOutput, ns=None):
     header("Case 6: Mixed exchange + creation source as kappa leak origin")
 
     S, C, C_k, C_s = sp.symbols("S C C_k C_s", positive=True, real=True)
@@ -413,9 +451,16 @@ def case_6_mixed_source_origin(ns=None):
         print(f"s_eq = {s_eq}")
         print(f"AB = {AB}")
 
-        status_line("mixed source produces nonzero kappa leak", not is_zero(k_eq))
-        status_line("mixed source preserves shear channel", not is_zero(s_eq))
-        status_line("mixed source breaks reciprocal scaling generically", not is_zero(AB - 1))
+        with out.sample_results():
+            out.line("mixed source produces nonzero kappa leak",
+                     StatusMark.PASS if not is_zero(k_eq) else StatusMark.FAIL,
+                     f"kappa_eq={k_eq}")
+            out.line("mixed source preserves shear channel",
+                     StatusMark.PASS if not is_zero(s_eq) else StatusMark.FAIL,
+                     f"s_eq={s_eq}")
+            out.line("mixed source breaks reciprocal scaling generically",
+                     StatusMark.PASS if not is_zero(AB - 1) else StatusMark.FAIL,
+                     f"AB={AB}")
 
     print()
     print("Interpretation:")
@@ -437,15 +482,24 @@ def case_6_mixed_source_origin(ns=None):
     if sol_vf.solutions:
         k_vf = sp.simplify(sol_vf.solutions[0][ms.kappa])
         s_vf = sp.simplify(sol_vf.solutions[0][ms.sigma])
-        status_line("VacuumForge reproduces kappa leak equilibrium", is_zero(k_vf - C / (2 * ms.C_kappa)))
-        status_line("VacuumForge reproduces shear equilibrium", is_zero(s_vf - S / (2 * ms.C_sigma)))
+        residual_k_vf = sp.simplify(k_vf - C / (2 * ms.C_kappa))
+        residual_s_vf = sp.simplify(s_vf - S / (2 * ms.C_sigma))
+        with out.sample_results():
+            out.line("VacuumForge reproduces kappa leak equilibrium",
+                     StatusMark.PASS if is_zero(residual_k_vf) else StatusMark.FAIL,
+                     f"residual={residual_k_vf}")
+            out.line("VacuumForge reproduces shear equilibrium",
+                     StatusMark.PASS if is_zero(residual_s_vf) else StatusMark.FAIL,
+                     f"residual={residual_s_vf}")
         if ns is not None:
             ns.record_derivation(
                 derivation_id="vf_mixed_source_kappa_leak",
                 inputs=[C, S],
                 output=sp.Eq(ms.kappa, C / (2 * ms.C_kappa)),
-                method="vacuumforge_source_coupled_energy",
+                method="vacuumforge_source_coupled_energy: mixed exchange+creation source",
                 status=Status.DERIVED,
+                record_kind=RecordKind.SAMPLE_DERIVATION,
+                scope="algebraic source-coupled energy toy with mixed J_kappa=C, J_sigma=S",
                 metadata={"sigma_solution": str(sp.Eq(ms.sigma, S / (2 * ms.C_sigma)))},
             )
 
@@ -454,7 +508,7 @@ def case_6_mixed_source_origin(ns=None):
 # Case 7: Summary of observational pressure
 # =============================================================================
 
-def case_7_observational_pressure_summary():
+def case_7_observational_pressure_summary(out: ScriptOutput):
     header("Case 7: Observational pressure summary")
 
     print("Kappa leak affects weak-field observables because:")
@@ -474,6 +528,10 @@ def case_7_observational_pressure_summary():
     print()
     print("This script does not apply real observational bounds.")
     print("It identifies the first reduced deviation proxy.")
+
+    with out.unresolved_obligations():
+        out.line("apply real observational bounds to kappa leak", StatusMark.OBLIGATION,
+                 "no actual PPN or solar system bounds applied; open proof obligation recorded")
 
 
 # =============================================================================
@@ -519,15 +577,53 @@ def main():
     header("Candidate Kappa-Leak Deviation")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_baseline_compensated_exterior()
-    case_1_constant_fractional_kappa_leak()
-    case_2_gamma_like_proxy()
-    case_3_newtonian_normalization_pressure()
-    case_4_decaying_kappa_leak_profile()
-    case_5_power_law_kappa_leak_profile()
-    case_6_mixed_source_origin(ns)
-    case_7_observational_pressure_summary()
+
+    out = ScriptOutput()
+
+    case_0_baseline_compensated_exterior(out)
+    case_1_constant_fractional_kappa_leak(out)
+    case_2_gamma_like_proxy(out)
+    case_3_newtonian_normalization_pressure(out)
+    case_4_decaying_kappa_leak_profile(out)
+    case_5_power_law_kappa_leak_profile(out)
+    case_6_mixed_source_origin(out, ns)
+    case_7_observational_pressure_summary(out)
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_observational_bounds_on_kappa_leak",
+        script_id=SCRIPT_ID,
+        title="Derive or import observational bounds on kappa leak coefficient lambda_k",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Apply PPN constraints or solar-system weak-field bounds to bound lambda_k. "
+            "Currently only the deviation proxy formula is derived; no real bounds are applied."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_mechanism_for_kappa_leak",
+        script_id=SCRIPT_ID,
+        title="Derive covariant mechanism producing kappa leak",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The mixed exchange+creation source is a toy model for kappa leak. "
+            "A covariant mechanism from the full theory is not yet derived."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="gamma_eff_proxy_is_toy_only",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_eff=(2+lambda_k)/(2-lambda_k) is a reduced areal-gauge weak-field "
+            "deviation proxy, not a full PPN calculation and not a covariant prediction."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

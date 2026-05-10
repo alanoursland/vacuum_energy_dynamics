@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa non-inertial vacuum-curvature relaxation
 #
 # Purpose
@@ -39,17 +45,22 @@
 #
 # This is not a final derivation.
 # It is a control model for "trace relaxation without breathing radiation."
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_noninertial_vacuum_curvature_relaxation.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -61,22 +72,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -123,8 +118,6 @@ def case_0_problem_statement():
     print("  allow local trace relaxation")
     print("  forbid ordinary long-range breathing radiation")
 
-    status_line("non-inertial kappa relaxation problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_bad_second_order_model():
     header("Case 1: Bad second-order/inertial model")
@@ -144,9 +137,6 @@ def case_1_bad_second_order_model():
     print("  propagating scalar/breathing wave possible")
     print()
     print("This is not the preferred kappa interpretation.")
-
-    status_line("second-order inertial kappa is dangerous", "RISK",
-                "can create breathing radiation")
 
 
 def case_2_quadratic_minimum_energy():
@@ -172,9 +162,6 @@ def case_2_quadratic_minimum_energy():
     print("  matter trace/pressure may shift kappa_min inside matter.")
     print("  exterior vacuum should have kappa_min = 0.")
 
-    status_line("local quadratic minimum stated", "PLAUSIBLE",
-                "K_k and kappa_min source law not derived")
-
     return kappa, kappa_min, Kk, E, dE_dk
 
 
@@ -195,9 +182,6 @@ def case_3_first_order_gradient_flow(kappa, kappa_min, Kk, E, dE_dk):
     print()
     print("This has no kappa_ddot term.")
     print("Therefore it has no independent kappa momentum channel.")
-
-    status_line("first-order kappa relaxation law stated", "PLAUSIBLE",
-                "mobility mu_k not derived")
 
     return mu, rhs
 
@@ -229,8 +213,7 @@ def case_4_solution_no_overshoot():
     print("No overshoot.")
     print("No slosh.")
 
-    status_line("first-order relaxation is monotonic", "DERIVED_REDUCED",
-                "for fixed local minimum")
+    return t, mu, Kk, kappa0, kappa_min, solution
 
 
 def case_5_energy_transfer_accounting():
@@ -272,9 +255,7 @@ def case_5_energy_transfer_accounting():
     print("  energy is not destroyed")
     print("  explicit imbalance energy is converted into vacuum configuration/restoration")
 
-    status_line("gradient flow has positive absorption accounting",
-                "DERIVED_REDUCED",
-                "destination variable E_vac still needs parent ontology")
+    return kappa, kappa_min, Kk, mu, E, dE_dk, kappa_dot, dE_dt, P_absorb
 
 
 def case_6_no_momentum_channel():
@@ -294,10 +275,6 @@ def case_6_no_momentum_channel():
     print("  kappa moves by mobility down the vacuum-curvature energy gradient")
     print()
     print("This is why it does not slosh.")
-
-    status_line("non-inertial kappa has no independent momentum channel",
-                "CONSTRAINED_BY_IDENTITY",
-                "must be implemented without hidden second-order dynamics")
 
 
 def case_7_static_A_constraint_guard():
@@ -325,10 +302,6 @@ def case_7_static_A_constraint_guard():
     print("  restoring trace/volume imbalance toward local minimum")
     print("  keeping exterior kappa_min = 0")
 
-    status_line("relaxation preserves A-sector if sector split holds",
-                "CONSTRAINED_BY_IDENTITY",
-                "sector split still must be derived")
-
 
 def case_8_source_shifted_minimum():
     header("Case 8: Source-shifted local minimum")
@@ -350,9 +323,7 @@ def case_8_source_shifted_minimum():
     print()
     print("This avoids treating trace source as a radiative scalar charge.")
 
-    status_line("trace source as shifted minimum is plausible",
-                "PLAUSIBLE",
-                "chi_k and S_trace definition not derived")
+    return S, chi, kappa_min
 
 
 def case_9_exterior_condition():
@@ -376,10 +347,6 @@ def case_9_exterior_condition():
     print("  no long-range exterior kappa tail")
     print("  no free breathing wave")
 
-    status_line("exterior vacuum relaxes toward kappa=0",
-                "CONSTRAINED_BY_IDENTITY",
-                "boundary flux and parent constraint still needed")
-
 
 def case_10_classification():
     header("Case 10: Classification")
@@ -395,10 +362,6 @@ def case_10_classification():
     print("| source as shifted local minimum | PLAUSIBLE |")
     print("| K_k, mu_k, chi_k derivation | MISSING |")
     print("| parent covariant identity | MISSING |")
-
-    status_line("non-inertial relaxation classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "promising control model, not final derivation")
 
 
 def case_11_next_tests():
@@ -421,10 +384,6 @@ def case_11_next_tests():
     print()
     print("Recommended next script:")
     print("  candidate_kappa_boundary_layer_model.py")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "boundary layer model is next concrete check")
 
 
 def final_interpretation():
@@ -455,27 +414,114 @@ def main():
     header("Candidate Kappa Non-Inertial Vacuum-Curvature Relaxation")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     case_1_bad_second_order_model()
     kappa, kappa_min, Kk, E, dE_dk = case_2_quadratic_minimum_energy()
-    case_3_first_order_gradient_flow(kappa, kappa_min, Kk, E, dE_dk)
-    case_4_solution_no_overshoot()
-    case_5_energy_transfer_accounting()
+    mu, rhs = case_3_first_order_gradient_flow(kappa, kappa_min, Kk, E, dE_dk)
+    t, mu2, Kk2, kappa0, kappa_min2, solution = case_4_solution_no_overshoot()
+    kappa, kappa_min3, Kk3, mu3, E2, dE_dk2, kappa_dot, dE_dt, P_absorb = case_5_energy_transfer_accounting()
     case_6_no_momentum_channel()
     case_7_static_A_constraint_guard()
-    case_8_source_shifted_minimum()
+    S, chi, kappa_min_source = case_8_source_shifted_minimum()
     case_9_exterior_condition()
     case_10_classification()
     case_11_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_noninertial_vacuum_curvature_relaxation_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_noninertial_relaxation_model_classified"),
-        method="kappa_noninertial_relaxation_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Real sample computations
+        ns.record_derivation(
+            derivation_id="gradient_flow_kappa_relaxation_solution_sample",
+            inputs=[E, rhs],
+            output=solution,
+            method=(
+                "solve kappa_dot = -mu_k*K_k*(kappa-kappa_min) for constant kappa_min; "
+                "gives exponential decay"
+            ),
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="quadratic local minimum and constant kappa_min; K_k and mu_k not derived",
+        )
+
+        ns.record_derivation(
+            derivation_id="gradient_flow_kappa_energy_derivative_sample",
+            inputs=[E2, kappa_dot],
+            output=dE_dt,
+            method="compute dE/dt = (dE/dkappa)(kappa_dot) for gradient-flow law",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="quadratic minimum; mu_k and K_k are toy parameters not derived from action",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_noninertial_vacuum_curvature_relaxation_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_noninertial_relaxation_model_classified"),
+            method="kappa_noninertial_relaxation_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_mobility_mu_k_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the kappa mobility coefficient mu_k from first principles",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The gradient-flow law kappa_dot = -mu_k K_k (kappa - kappa_min) uses "
+                "mobility mu_k and stiffness K_k that are not derived. Both must come from "
+                "the action or a parent covariant identity."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_min_source_coupling_chi_k_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the shifted-minimum coupling chi_k (kappa_min = chi_k S_trace)",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The source relation kappa_min = chi_k S_trace is proposed as the way "
+                "trace enters kappa without acting as a radiative scalar charge. "
+                "chi_k must be derived from the parent Lagrangian."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="gradient_flow_kappa_has_no_breathing_radiation",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "A first-order gradient-flow kappa law kappa_dot = -mu_k dE/dkappa for "
+                "quadratic local minimum gives monotonic no-overshoot decay with positive "
+                "energy absorption accounting and no independent momentum channel. "
+                "This is a viable control model for trace relaxation without breathing radiation, "
+                "but mu_k, K_k, and chi_k must be derived."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("gradient-flow solution kappa(t) = kappa_min + (kappa0-kappa_min)*exp(-mu*K*t)", StatusMark.PASS, "sample - constant kappa_min only")
+            out.line("gradient-flow dE/dt = -mu_k*K_k*(kappa-kappa_min)^2 <= 0", StatusMark.PASS, "sample - quadratic minimum only")
+
+        with out.governance_assessments():
+            out.line("gradient-flow kappa has no momentum channel", StatusMark.PASS, "no kappa_ddot term")
+            out.line("energy absorbed positively by vacuum configuration", StatusMark.PASS, "P_absorb = mu_k*(dE/dkappa)^2 >= 0")
+            out.line("K_k, mu_k, chi_k derivation", StatusMark.OBLIGATION, "missing")
+            out.line("parent covariant identity", StatusMark.OBLIGATION, "missing")
+
+        with out.unresolved_obligations():
+            out.line("derive mu_k from first principles", StatusMark.OBLIGATION, "open")
+            out.line("derive chi_k coupling", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

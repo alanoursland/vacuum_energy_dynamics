@@ -3,6 +3,9 @@
 # Group:
 #   17_curvature_energy_and_finite_admissibility
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The finite-admissibility condition audit found:
@@ -38,6 +41,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,7 +64,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "DERIVED_REDUCED": "PASS",
         "SAFE_IF": "WARN",
@@ -77,6 +90,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -568,14 +582,61 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="curvature_energy_density_role_marker",
-        inputs=[],
-        output=sp.Symbol("curvature_energy_density_role_complete"),
-        method="curvature_energy_density_role",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_e_curv_source_quarantine_in_17_curvature_energy",
+            script_id=SCRIPT_ID,
+            title="Prove e_curv source quarantine",
+            status=ObligationStatus.OPEN,
+            description="e_curv must be shown to be diagnostic/accounting only, not a field-equation source, until a recombination/source law is derived.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_e_curv_mass_neutrality_in_17_curvature_energy",
+            script_id=SCRIPT_ID,
+            title="Prove e_curv exterior mass neutrality",
+            status=ObligationStatus.OPEN,
+            description="delta M_ext|e_curv = 0 must be derived to protect the A-sector result.",
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="e_curv_diagnostic_accounting_only_in_17",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement="e_curv can function as diagnostic curvature intensity or finite-admissibility accounting measure only, with no source, bounce, or regular-core role in the current group.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_e_curv_source_reservoir_in_17_curvature_energy",
+            script_id=SCRIPT_ID,
+            branch_id="curvature_energy_source_reservoir",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_e_curv_bounce_energy_in_17_curvature_energy",
+            script_id=SCRIPT_ID,
+            branch_id="curvature_energy_bounce_energy",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_e_curv_H_curv_seed_in_17_curvature_energy",
+            script_id=SCRIPT_ID,
+            branch_id="e_curv_as_H_curv_seed",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["prove_e_curv_source_quarantine_in_17_curvature_energy"],
+        ))
+        ns.record_derivation(
+            derivation_id="curvature_energy_density_role_marker",
+            inputs=[],
+            output=sp.Symbol("curvature_energy_density_role_complete"),
+            method="curvature_energy_density_role",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

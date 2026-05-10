@@ -1,3 +1,9 @@
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate volume creation frame field inventory
 #
 # Purpose
@@ -23,6 +29,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -35,32 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -233,7 +226,7 @@ def print_entry(e: FrameFieldEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -258,7 +251,10 @@ def case_0_problem_statement():
     print("  keep chi-origin separate")
     print("  preserve boundary neutrality and no-overlap")
 
-    status_line("volume creation frame-field problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("volume creation frame-field problem posed", StatusMark.OBLIGATION, "requires physical u^mu/u_vac^mu definition")
+    out.print()
 
 
 def case_1_inventory(entries: List[FrameFieldEntry]):
@@ -285,7 +281,10 @@ def case_2_compact_table(entries: List[FrameFieldEntry]):
             + " |"
         )
 
-    status_line("compact frame-field ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact frame-field ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[FrameFieldEntry]):
@@ -306,7 +305,10 @@ def case_3_status_counts(entries: List[FrameFieldEntry]):
     print("  Coordinate velocity is rejected as parent frame.")
     print("  Static neutrality, chi-origin, boundary neutrality, and no-overlap remain mandatory.")
 
-    status_line("frame-field status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("frame-field status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_frame_decision_tree():
@@ -329,7 +331,10 @@ def case_4_frame_decision_tree():
     print("5. Coordinate velocity?")
     print("   Rejected as parent law.")
 
-    status_line("frame decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("frame decision tree stated", StatusMark.INFO, "candidates ranked")
+    out.print()
 
 
 def case_5_good_failure():
@@ -348,7 +353,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose a convenient frame and proceed as if it were physical.")
 
-    status_line("frame-field good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("frame-field good failure stated", StatusMark.DEFER, "deferred pending physical frame definition")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -365,7 +373,10 @@ def case_6_failure_controls():
     print("7. boundary neutrality is absent")
     print("8. no-overlap theorem is absent")
 
-    status_line("frame-field failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("frame-field failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -389,7 +400,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  The next bottleneck is choosing between matter-flow and vacuum-flow frames before adding hybrid projections.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_matter_vs_vacuum_frame_branch_test.py")
+    out.print()
 
 
 def final_interpretation():
@@ -421,14 +435,81 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="volume_creation_frame_field_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("volume_creation_frame_field_inventory_audited"),
-        method="volume_creation_frame_field_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_physical_frame_for_accel_gradient",
+            script_id=SCRIPT_ID,
+            title="Derive physical frame field u^mu/u_vac^mu for acceleration-gradient source law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "A physical frame (matter congruence u_m or vacuum rest frame u_vac) must be "
+                "defined before Sigma_V = chi rho a^mu nabla_mu A can be made covariant and frame-safe."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="matter_congruence_frame_route",
+            script_id=SCRIPT_ID,
+            name="Matter congruence frame u_m^mu for acceleration-gradient source law",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_physical_frame_for_accel_gradient",
+                "derive_static_source_neutrality_for_accel_gradient",
+            ],
+            activation_conditions=[
+                "matter current/congruence is well-defined and not coordinate velocity",
+                "static matter does not create independent exterior zeta charge",
+            ],
+        ))
+        ns.record_route(RouteRecord(
+            route_id="vacuum_rest_frame_route",
+            script_id=SCRIPT_ID,
+            name="Vacuum rest frame u_vac^mu for acceleration-gradient source law",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_physical_frame_for_accel_gradient",
+                "derive_static_source_neutrality_for_accel_gradient",
+            ],
+            activation_conditions=[
+                "u_vac follows from vacuum volume configuration or exchange law",
+                "not invented to make Sigma_V nonzero/zero as convenient",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_coordinate_velocity_frame",
+            script_id=SCRIPT_ID,
+            branch_id="coordinate_velocity_frame",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            description=(
+                "Coordinate velocity frame u^mu from v^i is rejected as parent frame; "
+                "it is diagnostic only and prevents rho v dot grad A from becoming a field equation."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_hybrid_projection_frame",
+            script_id=SCRIPT_ID,
+            branch_id="hybrid_projection_frame",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_physical_frame_for_accel_gradient"],
+            description=(
+                "Hybrid projection (P_vac a_m) is deferred until both u_m and u_vac are "
+                "independently defined. It must not be used to patch failures of either branch."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="volume_creation_frame_field_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("volume_creation_frame_field_inventory_audited"),
+            method="volume_creation_frame_field_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # Candidate A-sector parent identity inventory
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The A_spatial recovery audit found:
@@ -30,11 +36,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -42,30 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -238,7 +229,7 @@ def print_entry(e: ParentIdentityEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -263,8 +254,6 @@ def case_0_problem_statement():
     print("  do not use exterior matching alone as local equation")
     print("  do not call bookkeeping a parent identity")
     print("  preserve count-once trace theorem")
-
-    status_line("A-sector parent identity problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[ParentIdentityEntry]):
@@ -291,8 +280,6 @@ def case_2_compact_table(entries: List[ParentIdentityEntry]):
             + " |"
         )
 
-    status_line("compact parent-identity ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[ParentIdentityEntry]):
     header("Case 3: Status counts")
@@ -310,8 +297,6 @@ def case_3_status_counts(entries: List[ParentIdentityEntry]):
     print("  Surviving identity classes are action/stiffness, constraint propagation, conservation/Bianchi-like, volume-exchange, and recombination identity.")
     print("  GR rewrite, B=1/A identity, and coefficient-fit identity are rejected.")
     print("  The next step should test one surviving identity class concretely.")
-
-    status_line("parent-identity status count produced", "STRUCTURAL")
 
 
 def case_4_legitimate_identity_test():
@@ -332,8 +317,6 @@ def case_4_legitimate_identity_test():
     print("Rule:")
     print()
     print("  An identity must carry a mechanism, a closure condition, or a no-go consequence.")
-
-    status_line("legitimate identity test stated", "REQUIRED")
 
 
 def case_5_count_once_theorem_target():
@@ -357,8 +340,6 @@ def case_5_count_once_theorem_target():
     print()
     print("  overlapping A_spatial and zeta/kappa trace")
 
-    status_line("count-once theorem target preserved", "THEOREM_TARGET")
-
 
 def case_6_revisit_triggers():
     header("Case 6: Revisit triggers")
@@ -377,8 +358,6 @@ def case_6_revisit_triggers():
     print("4. A_spatial recovery theorem target")
     print("   Revisit if parent identity derives it or kills independent A_spatial.")
 
-    status_line("revisit triggers stated", "STRUCTURAL")
-
 
 def case_7_failure_controls():
     header("Case 7: Failure controls")
@@ -395,8 +374,6 @@ def case_7_failure_controls():
     print("8. exterior matching alone determines local field equations")
     print("9. vacuum minimization uses tunable weights as black box")
     print("10. epsilon_vac_config or Sigma_creation patches ordinary recovery")
-
-    status_line("parent-identity failure controls stated", "RISK")
 
 
 def case_8_next_tests():
@@ -422,8 +399,6 @@ def case_8_next_tests():
     print()
     print("Reason:")
     print("  The closest surviving route from the existing A-sector success is constraint propagation: can the A constraint force a compatible spatial companion without GR import?")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -466,14 +441,61 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="A_sector_parent_identity_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("A_sector_parent_identity_inventory_audited"),
-        method="A_sector_parent_identity_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("A-sector parent identity classes inventoried", StatusMark.PASS, "12 identity classes classified")
+        out.line("PI8/PI9/PI10 rejected", StatusMark.FAIL, "GR rewrite, B=1/A, coefficient tuning rejected")
+        out.line("surviving identity classes", StatusMark.DEFER, "action/stiffness, constraint propagation, conservation, volume-exchange remain")
+
+    with out.unresolved_obligations():
+        out.line("derive specific parent identity for A and A_spatial", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_specific_A_sector_parent_identity_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive a specific parent identity for A and A_spatial",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Surviving identity classes: action/stiffness, constraint propagation, "
+                "conservation/Bianchi-like, volume-exchange, recombination/no-overlap. "
+                "The next step is to test one class concretely. A decorative identity that only "
+                "renames the missing equation is not acceptable."
+            ),
+        ))
+
+        for claim_id, identity_name, tier in [
+            ("A_sector_identity_action_stiffness_candidate", "PI1: action/stiffness identity", ClaimTier.CONSTRAINED),
+            ("A_sector_identity_constraint_propagation_candidate", "PI2: constraint propagation identity", ClaimTier.CONSTRAINED),
+            ("A_sector_identity_conservation_candidate", "PI3: conservation/Bianchi-like identity", ClaimTier.CONSTRAINED),
+        ]:
+            ns.record_claim(ClaimRecord(
+                claim_id=claim_id,
+                script_id=SCRIPT_ID,
+                claim_kind=RecordKind.GOVERNANCE_CLAIM,
+                tier=tier,
+                status=GovernanceStatus.CANDIDATE_ROUTE,
+                statement=(
+                    f"{identity_name} is a surviving candidate class for deriving A and A_spatial together "
+                    f"without GR smuggling. No specific instance is derived yet."
+                ),
+            ))
+
+        ns.record_derivation(
+            derivation_id="A_sector_parent_identity_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("A_sector_parent_identity_inventory_audited"),
+            method="A_sector_parent_identity_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

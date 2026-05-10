@@ -1,3 +1,9 @@
+# Group:
+#   04_source_law_interior
+#
+# Script type:
+#   DERIVATION
+#
 # Candidate interior A source model
 #
 # Purpose
@@ -46,9 +52,6 @@
 #
 # This is NOT the full GR interior Schwarzschild solution.
 # It is the interior solution of the reduced areal-flux law.
-#
-# Suggested location:
-#   scripts_v3/candidate_interior_A_source_model.py
 
 from pathlib import Path
 
@@ -56,6 +59,16 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -71,14 +84,6 @@ def header(title: str) -> None:
     print("=" * 108)
     print(title)
     print("=" * 108)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -124,7 +129,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Areal-flux source law recap
 # =============================================================================
 
-def case_0_recap():
+def case_0_recap(out: ScriptOutput):
     header("Case 0: Areal-flux source law recap")
 
     print("Exact reduced source law:")
@@ -144,14 +149,17 @@ def case_0_recap():
     print()
     print("  M_enc(r) varies with r inside the source.")
     print("  Check whether A, A', and flux match smoothly to exterior.")
-    status_line("areal-flux law has interior enclosed-mass form", True)
+
+    with out.derived_results():
+        out.line("areal-flux law has interior enclosed-mass form",
+                 StatusMark.PASS, "F_A = 8*pi*G*M_enc/c^2 holds for varying M_enc(r)")
 
 
 # =============================================================================
 # Case 1: Constant-density enclosed mass
 # =============================================================================
 
-def case_1_constant_density_enclosed_mass():
+def case_1_constant_density_enclosed_mass(out: ScriptOutput, ns=None):
     header("Case 1: Constant-density enclosed mass")
 
     r, rho0 = sp.symbols("r rho0", positive=True, real=True)
@@ -165,14 +173,31 @@ def case_1_constant_density_enclosed_mass():
     print(f"M_enc'(r) = {M_enc_prime}")
     print(f"4*pi*r^2*rho0 = {expected}")
 
-    status_line("M_enc derivative matches density volume element", is_zero(M_enc_prime - expected))
+    residual = sp.simplify(M_enc_prime - expected)
+    ok = is_zero(residual)
+
+    with out.derived_results():
+        out.line("M_enc derivative matches density volume element",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"residual = {residual}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="constant_density_enclosed_mass_derivative",
+            inputs=[M_enc, r],
+            output=residual,
+            method="diff(M_enc, r) - 4*pi*r^2*rho0",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
 
 
 # =============================================================================
 # Case 2: Interior A solution from flux law
 # =============================================================================
 
-def case_2_interior_A_solution():
+def case_2_interior_A_solution(out: ScriptOutput, ns=None):
     header("Case 2: Interior A solution from flux law")
 
     r, G, c, rho0, C = sp.symbols("r G c rho0 C", positive=True, real=True)
@@ -192,7 +217,24 @@ def case_2_interior_A_solution():
     print(f"Delta_areal A_in = {lhs}")
     print(f"8*pi*G*rho0/c^2 = {rhs}")
 
-    status_line("interior A solves areal source equation", is_zero(lhs - rhs))
+    residual = sp.simplify(lhs - rhs)
+    ok = is_zero(residual)
+
+    with out.derived_results():
+        out.line("interior A solves areal source equation",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"Delta_areal A_in - 8piGrho/c^2 = {residual}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="interior_A_areal_source_residual",
+            inputs=[A_in, r, rho0],
+            output=residual,
+            method="delta_areal(A_in) - 8*pi*G*rho0/c^2",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
 
     return A_in
 
@@ -201,7 +243,7 @@ def case_2_interior_A_solution():
 # Case 3: Match to exterior at r=R
 # =============================================================================
 
-def case_3_match_to_exterior(ns=None):
+def case_3_match_to_exterior(out: ScriptOutput, ns=None):
     header("Case 3: Match interior to exterior at r=R")
 
     r, R, G, c, rho0, C = sp.symbols("r R G c rho0 C", positive=True, real=True)
@@ -229,7 +271,10 @@ def case_3_match_to_exterior(ns=None):
     print(f"C solution = {C_solution}")
     print(f"A_in matched = {A_in_matched}")
 
-    status_line("A continuity fixes interior constant", bool(C_solution))
+    with out.derived_results():
+        out.line("A continuity fixes interior constant",
+                 StatusMark.PASS if bool(C_solution) else StatusMark.FAIL,
+                 f"C = {C_match}")
 
     dA_in_R = sp.simplify(sp.diff(A_in_matched, r).subs(r, R))
     dA_out_R = sp.simplify(sp.diff(A_out, r).subs(r, R))
@@ -238,14 +283,23 @@ def case_3_match_to_exterior(ns=None):
     print(f"A_in'(R) = {dA_in_R}")
     print(f"A_out'(R) = {dA_out_R}")
 
-    status_line("A' matches at boundary", is_zero(dA_in_R - dA_out_R))
+    derivative_residual = sp.simplify(dA_in_R - dA_out_R)
+    deriv_ok = is_zero(derivative_residual)
+
+    with out.derived_results():
+        out.line("A' matches at boundary",
+                 StatusMark.PASS if deriv_ok else StatusMark.FAIL,
+                 f"A_in'(R) - A_out'(R) = {derivative_residual}")
 
     ctx = TheoryContext("candidate_interior_A_source_model")
     ctx.define_equal_response_algebraic_symbols()
     ms = ctx._mode_symbols
     flux_expr = sp.simplify(4 * sp.pi * ms.r**2 * sp.diff(1 - 2 * ms.G * ms.M / (ms.c**2 * ms.r), ms.r))
-    status_line("VacuumForge context reproduces exterior flux normalization",
-                is_zero(flux_expr - 8 * sp.pi * ms.G * ms.M / ms.c**2))
+    flux_ok = is_zero(flux_expr - 8 * sp.pi * ms.G * ms.M / ms.c**2)
+
+    with out.derived_results():
+        out.line("VacuumForge context reproduces exterior flux normalization",
+                 StatusMark.PASS if flux_ok else StatusMark.FAIL)
 
     if ns is not None:
         ns.record_derivation(
@@ -254,6 +308,8 @@ def case_3_match_to_exterior(ns=None):
             output=sp.Eq(dA_in_R, dA_out_R),
             method="interior_A_match_to_exterior",
             status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="boundary_matching",
         )
 
     return A_in_matched, A_out, M
@@ -263,7 +319,7 @@ def case_3_match_to_exterior(ns=None):
 # Case 4: Flux continuity at boundary
 # =============================================================================
 
-def case_4_flux_continuity():
+def case_4_flux_continuity(out: ScriptOutput, ns=None):
     header("Case 4: Flux continuity at source boundary")
 
     r, R, G, c, rho0 = sp.symbols("r R G c rho0", positive=True, real=True)
@@ -280,15 +336,34 @@ def case_4_flux_continuity():
     print(f"F_out(R) = {F_out_R}")
     print(f"target  = {target}")
 
-    status_line("interior flux at boundary equals exterior flux", is_zero(F_in_R - F_out_R))
-    status_line("boundary flux equals mass normalization", is_zero(F_out_R - target))
+    flux_match = is_zero(F_in_R - F_out_R)
+    mass_norm = is_zero(F_out_R - target)
+
+    with out.derived_results():
+        out.line("interior flux at boundary equals exterior flux",
+                 StatusMark.PASS if flux_match else StatusMark.FAIL,
+                 f"F_in(R) - F_out(R) = {sp.simplify(F_in_R - F_out_R)}")
+        out.line("boundary flux equals mass normalization",
+                 StatusMark.PASS if mass_norm else StatusMark.FAIL,
+                 f"F_out(R) - target = {sp.simplify(F_out_R - target)}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="interior_flux_continuity_at_boundary",
+            inputs=[F_in_R, F_out_R],
+            output=sp.simplify(F_in_R - F_out_R),
+            method="areal_flux_continuity_check",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
 
 
 # =============================================================================
 # Case 5: Regularity at origin
 # =============================================================================
 
-def case_5_origin_regularity():
+def case_5_origin_regularity(out: ScriptOutput):
     header("Case 5: Regularity at origin")
 
     r, R, G, c, rho0 = sp.symbols("r R G c rho0", positive=True, real=True)
@@ -304,16 +379,19 @@ def case_5_origin_regularity():
     print(f"A_in'(0) = {dA0}")
     print(f"F_A(0) = {F0}")
 
-    status_line("A is finite at origin", True)
-    status_line("A' vanishes at origin", is_zero(dA0))
-    status_line("flux vanishes at origin", is_zero(F0))
+    with out.derived_results():
+        out.line("A is finite at origin", StatusMark.PASS, f"A(0) = {A0}")
+        out.line("A' vanishes at origin",
+                 StatusMark.PASS if is_zero(dA0) else StatusMark.FAIL, f"A'(0) = {dA0}")
+        out.line("flux vanishes at origin",
+                 StatusMark.PASS if is_zero(F0) else StatusMark.FAIL, f"F(0) = {F0}")
 
 
 # =============================================================================
 # Case 6: Interior B from kappa=0
 # =============================================================================
 
-def case_6_interior_B_from_kappa_zero():
+def case_6_interior_B_from_kappa_zero(out: ScriptOutput):
     header("Case 6: Interior B from kappa=0")
 
     r, R, G, c, rho0 = sp.symbols("r R G c rho0", positive=True, real=True)
@@ -328,7 +406,10 @@ def case_6_interior_B_from_kappa_zero():
     print(f"B_in = 1/A_in = {B_in}")
     print(f"A_in B_in = {AB}")
 
-    status_line("kappa=0 gives reciprocal interior B", is_zero(AB - 1))
+    with out.sample_results():
+        out.line("kappa=0 gives reciprocal interior B",
+                 StatusMark.PASS if is_zero(AB - 1) else StatusMark.FAIL,
+                 "by-construction: B=1/A when kappa=0")
 
     print()
     print("Caution:")
@@ -340,7 +421,7 @@ def case_6_interior_B_from_kappa_zero():
 # Case 7: Compare with weak-field Newtonian potential form
 # =============================================================================
 
-def case_7_compare_newtonian_interior_potential():
+def case_7_compare_newtonian_interior_potential(out: ScriptOutput, ns=None):
     header("Case 7: Weak-field comparison to constant-density Newtonian potential")
 
     r, R, G, c, rho0 = sp.symbols("r R G c rho0", positive=True, real=True)
@@ -361,15 +442,31 @@ def case_7_compare_newtonian_interior_potential():
 
     print(f"Phi_expected = {Phi_expected}")
 
-    status_line("A interior matches weak-field Newtonian potential normalization",
-                is_zero(Phi_from_A - Phi_expected))
+    residual = sp.simplify(Phi_from_A - Phi_expected)
+    ok = is_zero(residual)
+
+    with out.derived_results():
+        out.line("A interior matches weak-field Newtonian potential normalization",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"Phi_from_A - Phi_expected = {residual}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="interior_A_newtonian_weak_field_match",
+            inputs=[A_in, r, R, rho0],
+            output=residual,
+            method="Phi = c^2/2*(A-1) vs Newtonian_uniform_sphere",
+            status=Status.DERIVED,
+            record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
+            scope="weak-field limit, constant density",
+        )
 
 
 # =============================================================================
 # Case 8: Difference from GR interior Schwarzschild
 # =============================================================================
 
-def case_8_not_gr_interior_schwarzschild():
+def case_8_not_gr_interior_schwarzschild(out: ScriptOutput):
     header("Case 8: Not the full GR interior Schwarzschild solution")
 
     print("Important caution:")
@@ -388,7 +485,19 @@ def case_8_not_gr_interior_schwarzschild():
     print("  - the GR interior solution has a different exact lapse structure,")
     print("  - the current model enforces kappa=0 / B=1/A even inside.")
     print()
-    status_line("interior model is reduced-source toy, not full GR interior", True)
+
+    with out.governance_assessments():
+        out.line("interior model is reduced-source toy, not full GR interior",
+                 StatusMark.PASS,
+                 "pressure and stress not yet included; kappa=0 enforced by construction")
+
+    with out.unresolved_obligations():
+        out.line("derive pressure and stress contribution to interior A-source",
+                 StatusMark.OBLIGATION,
+                 "GR interior Schwarzschild differs at second order; pressure missing")
+        out.line("determine whether kappa=0 holds inside matter or only exterior",
+                 StatusMark.OBLIGATION,
+                 "GR interior has AB!=1 inside matter; kappa=0 may be exterior-only")
 
 
 # =============================================================================
@@ -456,17 +565,70 @@ def main():
     header("Candidate Interior A Source Model")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_recap()
-    case_1_constant_density_enclosed_mass()
-    case_2_interior_A_solution()
-    case_3_match_to_exterior(ns)
-    case_4_flux_continuity()
-    case_5_origin_regularity()
-    case_6_interior_B_from_kappa_zero()
-    case_7_compare_newtonian_interior_potential()
-    case_8_not_gr_interior_schwarzschild()
+
+    out = ScriptOutput()
+
+    case_0_recap(out)
+    case_1_constant_density_enclosed_mass(out, ns)
+    case_2_interior_A_solution(out, ns)
+    case_3_match_to_exterior(out, ns)
+    case_4_flux_continuity(out, ns)
+    case_5_origin_regularity(out)
+    case_6_interior_B_from_kappa_zero(out)
+    case_7_compare_newtonian_interior_potential(out, ns)
+    case_8_not_gr_interior_schwarzschild(out)
     case_9_summary()
     final_interpretation()
+
+    out.print_summary()
+
+    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
+        ns2 = archive2.script_namespace(SCRIPT_ID)
+        ns2.prepare_archive()
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_interior_pressure_stress_A_source",
+            script_id=SCRIPT_ID,
+            title="Derive pressure and stress contribution to interior A-source",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The current reduced interior A model does not include pressure or "
+                "stress-energy. GR interior Schwarzschild comparison shows missing "
+                "second-order structure. Pressure/stress coupling to the A-flux source "
+                "or to interior kappa remains underived."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_interior_kappa_condition",
+            script_id=SCRIPT_ID,
+            title="Determine whether kappa=0 holds inside matter or only in exterior",
+            status=ObligationStatus.OPEN,
+            description=(
+                "kappa=0 is enforced by construction in the reduced model interior. "
+                "GR interior Schwarzschild has AB!=1 inside matter, so kappa=0 may be "
+                "an exterior/source-free condition rather than a universal interior law."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="interior_A_areal_flux_reduced_toy",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.HEURISTIC,
+            statement=(
+                "The constant-density interior A(r) derived from the areal-flux law "
+                "is a reduced toy model. It matches the weak-field Newtonian potential "
+                "and has smooth matching at the source boundary, but is not the full "
+                "GR interior Schwarzschild solution."
+            ),
+            obligation_ids=["derive_interior_pressure_stress_A_source",
+                            "derive_interior_kappa_condition"],
+        ))
+
+        ns2.write_run_metadata()
+
     ns.write_run_metadata()
 
 

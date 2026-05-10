@@ -1,5 +1,11 @@
 # Candidate field equation closure inventory
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # Group 11 begins field-equation closure.
@@ -24,6 +30,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -35,25 +52,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -214,6 +212,18 @@ def build_inventory() -> List[SectorEntry]:
 
 
 def print_entry(e: SectorEntry) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(e.status, "INFO")
     print()
     print("-" * 120)
     print(f"Sector: {e.sector}")
@@ -221,12 +231,12 @@ def print_entry(e: SectorEntry) -> None:
     print(f"Field: {e.field}")
     print(f"Equation / rule: {e.equation_or_rule}")
     print(f"Source: {e.source}")
-    status_line(e.sector, e.status)
+    print(f"[{mark}] {e.sector}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Risk: {e.risk}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Field equation closure inventory problem")
 
     print("Question:")
@@ -244,7 +254,8 @@ def case_0_problem_statement():
     print("  do not let kappa become a repair field")
     print("  mark unfinished closure explicitly")
 
-    status_line("closure inventory problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("closure inventory problem posed", StatusMark.DEFER, "structural constraint on inventory scope")
 
 
 def case_1_inventory(entries: List[SectorEntry]):
@@ -253,7 +264,7 @@ def case_1_inventory(entries: List[SectorEntry]):
         print_entry(entry)
 
 
-def case_2_markdown_table(entries: List[SectorEntry]):
+def case_2_markdown_table(entries: List[SectorEntry], out: ScriptOutput):
     header("Case 2: Compact markdown ledger")
 
     print("| Sector | Field | Equation / rule | Source | Status | Missing |")
@@ -275,10 +286,11 @@ def case_2_markdown_table(entries: List[SectorEntry]):
             + " |"
         )
 
-    status_line("compact ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact ledger produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_status_counts(entries: List[SectorEntry]):
+def case_3_status_counts(entries: List[SectorEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -293,10 +305,11 @@ def case_3_status_counts(entries: List[SectorEntry]):
     print("  The system has strong reduced scalar results, structural vector/tensor/kappa sectors,")
     print("  and unfinished covariant closure.")
 
-    status_line("status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("status count produced", StatusMark.PASS, "inventory marker")
 
 
-def case_4_strongest_and_weakest(entries: List[SectorEntry]):
+def case_4_strongest_and_weakest(out: ScriptOutput):
     header("Case 4: Strongest and weakest sectors")
 
     print("Strongest sector:")
@@ -312,10 +325,11 @@ def case_4_strongest_and_weakest(entries: List[SectorEntry]):
     print("  metric recombination map")
     print("  parent conservation/Bianchi-like closure")
 
-    status_line("strong/weak sector audit stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("strong/weak sector audit stated", StatusMark.DEFER, "structural assessment")
 
 
-def case_5_no_double_counting_first_rules():
+def case_5_no_double_counting_first_rules(out: ScriptOutput):
     header("Case 5: Initial no-double-counting rules")
 
     print("Initial rules:")
@@ -327,10 +341,11 @@ def case_5_no_double_counting_first_rules():
     print("5. kappa boundary smoothing must not alter A-sector mass flux by hand.")
     print("6. recombination must not count the same trace response in both kappa and h_ij^TT.")
 
-    status_line("initial no-double-counting rules stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("initial no-double-counting rules stated", StatusMark.DEFER, "structural constraint")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -351,7 +366,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  Once the inventory is explicit, recombination is the next place errors can hide.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -372,27 +388,170 @@ def final_interpretation():
     print("  candidate_metric_recombination_map.py")
 
 
-def main():
-    header("Candidate Field Equation Closure Inventory")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_inventory()
-    case_1_inventory(entries)
-    case_2_markdown_table(entries)
-    case_3_status_counts(entries)
-    case_4_strongest_and_weakest(entries)
-    case_5_no_double_counting_first_rules()
-    case_6_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[SectorEntry]) -> None:
+    # DERIVED_REDUCED entries -> ClaimRecord HEURISTIC (inventory claim, not a theorem)
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_a_sector_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The A-sector scalar monopole equation Delta_areal A = 8*pi*G*rho/c^2 "
+            "is derived in the reduced static spherical exterior."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_b_kappa_exterior_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The exterior relation AB = exp(2*kappa) with kappa=0 giving B=1/A "
+            "is derived in the reduced areal-gauge exterior."
+        ),
+    ))
+
+    # STRUCTURAL entries -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_vector_sector_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The vector current sector curl curl W = -(alpha_W/(2K_c)) j_T has structural "
+            "source/projection/shape support but normalization is not derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_tensor_radiation_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The tensor radiation sector Box h_ij^TT = -C_T S_ij^TT has correct structural "
+            "TT radiation role but coupling coefficient C_T is not derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_kappa_relaxation_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Kappa is treated as a non-inertial trace relaxation variable "
+            "dot(kappa) = -mu_kappa K_kappa (kappa-kappa_min). "
+            "Source coefficients and covariant origin are not yet derived."
+        ),
+    ))
+
+    # MATCHED entry -> ClaimRecord PROVISIONAL_CONVENTION + obligation for coefficient origin
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_tensor_energy_flux_matched",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "Tensor radiation energy flux F_T ~ K_T <dot h_ij^TT dot h_ij^TT> "
+            "has the correct structural form. K_T is matched to GR, not yet derived."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_K_T_tensor_energy_flux_coefficient",
+        script_id=SCRIPT_ID,
+        title="Derive tensor energy flux coefficient K_T",
+        status=ObligationStatus.OPEN,
+        description=(
+            "K_T must be derived from vacuum action stiffness or tensor ontology. "
+            "It must not be imported from GR radiation formula."
+        ),
+    ))
+
+    # MISSING / UNFINISHED entries -> ProofObligationRecord
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_vacuum_substance_balance_closure",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum-substance balance closure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The vacuum balance partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax "
+            "requires definitions, a conservation identity, and Bianchi-compatible closure."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_metric_recombination_covariant_map",
+        script_id=SCRIPT_ID,
+        title="Derive covariant metric recombination map",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The metric recombination g_tt ~ -A c^2, g_ti ~ W_i, g_ij ~ scalar/kappa + h_ij^TT "
+            "is currently a bookkeeping ansatz. A covariant parent map with no-double-counting "
+            "rules must be derived."
+        ),
+    ))
+
+    # CONSTRAINED entries -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_scalar_radiation_constrained",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Ordinary massless scalar wave radiation is rejected/projected/suppressed "
+            "as a structural constraint. Parent mechanism separating static scalar "
+            "constraint from scalar radiation is missing."
+        ),
+    ))
+
+    # RISK entries -> ClaimRecord OPEN_RISK
+    ns.record_claim(ClaimRecord(
+        claim_id="inv_alpha_W_normalization_risk",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "Frame-dragging normalization alpha_W/K_c, observable coupling beta_W, "
+            "and global boundary normalization remain matched or arbitrary."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="field_equation_closure_inventory_marker",
         inputs=[],
         output=sp.Symbol("field_equation_closure_inventory_built"),
         method="field_equation_closure_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Field Equation Closure Inventory")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_inventory()
+    case_1_inventory(entries)
+    case_2_markdown_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_strongest_and_weakest(out)
+    case_5_no_double_counting_first_rules(out)
+    case_6_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

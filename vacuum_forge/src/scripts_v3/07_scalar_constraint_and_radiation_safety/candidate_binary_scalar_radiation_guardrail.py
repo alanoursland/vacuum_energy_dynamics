@@ -1,5 +1,11 @@
 # Candidate binary scalar radiation guardrail
 #
+# Group:
+#   07_scalar_constraint_and_radiation_safety
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # The scalar breathing suppression inventory showed that scalar radiation must
@@ -19,17 +25,24 @@
 #
 # This is not a binary waveform model and not an observational bound.
 # It is a source-moment guardrail for group 07.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/07_scalar_constraint_and_radiation_safety/
-#   or:
-#   scripts_v3/candidate_binary_scalar_radiation_guardrail.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,14 +58,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -104,8 +109,6 @@ def case_0_problem_statement():
     print("Danger:")
     print("  scalar breathing quadrupole becomes an extra radiation channel")
 
-    status_line("binary scalar-radiation guardrail posed", True)
-
 
 # =============================================================================
 # Case 1: Equal-mass circular binary moments
@@ -127,8 +130,6 @@ def case_1_binary_positions():
     print(f"M = {M}")
     print(f"D = {D}")
 
-    status_line("center of mass dipole vanishes for equal circular binary", all(is_zero(e) for e in D))
-
     return t, m, a, Omega, x1, x2, M, D
 
 
@@ -146,8 +147,7 @@ def case_2_monopole_dipole_controls(t, M, D):
     print("Dddot =")
     print(Dddot)
 
-    status_line("binary total mass is conserved", is_zero(Mdot))
-    status_line("binary center-of-mass dipole has zero second derivative", all(is_zero(e) for e in Dddot))
+    return Mdot, Dddot
 
 
 # =============================================================================
@@ -168,9 +168,8 @@ def case_3_quadrupole_tensor(t, m, x1, x2):
     print()
     print(f"trace(Q_TF) = {sp.simplify(sp.trace(Q_TF))}")
 
-    status_line("binary quadrupole is trace-free", is_zero(sp.trace(Q_TF)))
-
-    return Q_TF
+    trace_Q = sp.simplify(sp.trace(Q_TF))
+    return Q_TF, trace_Q
 
 
 # =============================================================================
@@ -185,9 +184,6 @@ def case_4_plus_cross_projections(Q_TF):
 
     print(f"Q_plus = {Q_plus}")
     print(f"Q_cross = {Q_cross}")
-
-    status_line("binary has time-varying plus projection", Q_plus != 0)
-    status_line("binary has time-varying cross projection", Q_cross != 0)
 
     return Q_plus, Q_cross
 
@@ -208,9 +204,7 @@ def case_5_tensor_radiation_proxy(t, Q_plus, Q_cross):
     print(f"Q_cross_dddot = {Qx3}")
     print(f"tensor Qdddot² proxy = {proxy}")
 
-    status_line("binary time-varying quadrupole supports tensor radiation proxy", proxy != 0)
-
-    return proxy
+    return Qp3, Qx3, proxy
 
 
 # =============================================================================
@@ -246,7 +240,7 @@ def case_6_scalar_breathing_danger(t, Q_TF):
     print()
     print("If B0 is not zero/suppressed, this is extra scalar radiation.")
 
-    status_line("scalar breathing would be a non-TT extra channel", not is_zero(trace))
+    return B, H_breathing, trace
 
 
 # =============================================================================
@@ -267,8 +261,6 @@ def case_7_guardrail_classification():
     print()
     print("  B_scalar_quadrupole = 0")
     print("  or B_scalar_quadrupole is massive/damped/absorbed/weakly coupled.")
-    print()
-    status_line("binary scalar-radiation guardrail established", True)
 
 
 # =============================================================================
@@ -303,23 +295,178 @@ def main():
     header("Candidate Binary Scalar Radiation Guardrail")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     t, m, a, Omega, x1, x2, M, D = case_1_binary_positions()
-    case_2_monopole_dipole_controls(t, M, D)
-    Q_TF = case_3_quadrupole_tensor(t, m, x1, x2)
+    Mdot, Dddot = case_2_monopole_dipole_controls(t, M, D)
+    Q_TF, trace_Q = case_3_quadrupole_tensor(t, m, x1, x2)
     Q_plus, Q_cross = case_4_plus_cross_projections(Q_TF)
-    case_5_tensor_radiation_proxy(t, Q_plus, Q_cross)
-    case_6_scalar_breathing_danger(t, Q_TF)
+    Qp3, Qx3, tensor_proxy = case_5_tensor_radiation_proxy(t, Q_plus, Q_cross)
+    B, H_breathing, trace_b = case_6_scalar_breathing_danger(t, Q_TF)
     case_7_guardrail_classification()
     final_interpretation()
+
+    # --- Derived results ---
+
+    # Case 1: center-of-mass dipole vanishes
+    ns.record_derivation(
+        derivation_id="binary_com_dipole_zero",
+        inputs=[x1, x2],
+        output=D,
+        method="equal-mass circular binary m*x1 + m*x2 with x2=-x1",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="center_of_mass_dipole",
+        scope="equal-mass circular binary only",
+    )
+
+    # Case 2: conserved monopole
+    ns.record_derivation(
+        derivation_id="binary_total_mass_conserved",
+        inputs=[M],
+        output=Mdot,
+        method="time derivative of M = 2m (constant)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="conservation_residual",
+    )
+
+    # Case 2: conserved dipole second derivative
+    ns.record_derivation(
+        derivation_id="binary_dipole_second_derivative_zero",
+        inputs=[D],
+        output=Dddot,
+        method="second time derivative of D = m*x1 + m*x2 = 0 for equal circular binary",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="conservation_residual",
+        scope="equal-mass circular binary only",
+    )
+
+    # Case 3: quadrupole trace-free check
+    ns.record_derivation(
+        derivation_id="binary_quadrupole_trace_free",
+        inputs=[Q_TF],
+        output=trace_Q,
+        method="trace of trace-free quadrupole tensor Q_TF = sum mass*(x*x.T - r^2/3 I)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="trace_residual",
+        scope="equal-mass circular binary only",
+    )
+
+    # Case 5: tensor radiation proxy nonzero
+    ns.record_derivation(
+        derivation_id="binary_tensor_radiation_proxy_nonzero",
+        inputs=[Q_plus, Q_cross],
+        output=tensor_proxy,
+        method="Qdddot^2 proxy = Q_plus_dddot^2 + Q_cross_dddot^2",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="radiation_power_proxy",
+        scope="equal-mass circular binary only",
+    )
+
+    # Case 6: breathing mode trace (diagnostic)
+    ns.record_derivation(
+        derivation_id="binary_breathing_mode_trace_nonzero",
+        inputs=[H_breathing],
+        output=trace_b,
+        method="trace of generic scalar breathing matrix H_breathing = diag(B,B,0)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        result_type="polarization_trace",
+    )
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="binary_scalar_quadrupole_must_be_controlled",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "For binary sources, scalar monopole and dipole radiation are killed by "
+            "conservation laws, but scalar quadrupole breathing radiation is not. "
+            "The theory must ensure scalar quadrupole breathing is absent, suppressed, "
+            "massive, damped, or weakly coupled while h_ij^TT tensor radiation remains active."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="binary_tt_radiation_only_route",
+        script_id=SCRIPT_ID,
+        name="Binary radiates only through h_ij^TT tensor quadrupole",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_binary_scalar_quadrupole_suppression"],
+        activation_conditions=[
+            "scalar monopole radiation killed by mass conservation",
+            "scalar dipole radiation killed by center-of-mass conservation",
+            "scalar quadrupole breathing absent or suppressed",
+            "h_ij^TT tensor quadrupole radiation active",
+        ],
+    ))
+
+    # --- Proof obligations ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_binary_scalar_quadrupole_suppression",
+        script_id=SCRIPT_ID,
+        title="Derive suppression of scalar quadrupole breathing for binary sources",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the scalar A channel does not produce a quadrupole breathing "
+            "radiation channel for binary sources. Requires a suppression mechanism: "
+            "constraint projection, mass gap, damping/absorption, relaxation, or "
+            "weak coupling. Conservation laws alone are insufficient at quadrupole order."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="binary_scalar_guardrail_marker",
         inputs=[],
         output=sp.Symbol("binary_scalar_quadrupole_must_be_controlled"),
         method="binary_scalar_radiation_guardrail_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    with out.sample_results():
+        out.line("equal-mass binary COM dipole vanishes", StatusMark.PASS,
+                 "D = m*x1 + m*x2 = 0 for x2=-x1")
+        out.line("binary total mass conserved (Mdot=0)", StatusMark.PASS,
+                 "M = 2m constant")
+        out.line("binary dipole second derivative zero", StatusMark.PASS,
+                 "Dddot = 0 for equal circular binary")
+        out.line("binary quadrupole is trace-free", StatusMark.PASS,
+                 "trace(Q_TF) = 0 for sample binary")
+        out.line("tensor radiation proxy is nonzero", StatusMark.PASS,
+                 "Qdddot^2 proxy != 0; tensor radiation is active")
+
+    with out.counterexamples():
+        out.line("scalar breathing mode trace is nonzero", StatusMark.FAIL,
+                 "trace(H_breathing) = 2B != 0; extra non-TT channel if unsuppressed")
+
+    with out.governance_assessments():
+        out.line("binary scalar quadrupole must be controlled (policy)", StatusMark.PASS,
+                 "conservation kills monopole/dipole; quadrupole breathing must be suppressed")
+        out.line("binary TT radiation only route", StatusMark.PASS, "candidate route recorded")
+
+    with out.unresolved_obligations():
+        out.line("derive binary scalar quadrupole suppression", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

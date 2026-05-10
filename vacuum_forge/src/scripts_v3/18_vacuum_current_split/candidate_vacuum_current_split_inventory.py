@@ -3,6 +3,9 @@
 # Group:
 #   18_vacuum_current_split
 #
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # Group 18 starts from the unresolved vacuum current bottleneck:
@@ -40,6 +43,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -53,7 +67,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -78,6 +92,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -576,14 +591,62 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="vacuum_current_split_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("vacuum_current_split_inventory_complete"),
-        method="vacuum_current_split_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_pure_wind_neutrality_in_18_inventory",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Pure wind neutrality theorem: J_sub must have no M_ext shift, no scalar trace, no ordinary matter coupling, no boundary leakage.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_ordinary_matter_decoupling_in_18_inventory",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Ordinary matter decoupling theorem: J_sub/J_exch must not alter ordinary matter routing unless a theorem derives it.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_exterior_mass_neutrality_in_18_inventory",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Exterior mass neutrality theorem: J_sub/J_exch must not shift M_ext independently of A-sector.",
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="vacuum_current_split_role_level_only_in_18",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement="J_V = J_sub + J_exch is role-level bookkeeping only. No operator-level split criterion is derived. J_sub/J_exch are useful labels for role distinctions pending real definitions.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_preferred_frame_wind_in_18_inventory",
+            script_id=SCRIPT_ID,
+            branch_name="preferred_frame_wind",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_sub as arbitrary preferred-frame wind is forbidden. Frame must follow from vacuum ontology or substrate law.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_repair_current_in_18_inventory",
+            script_id=SCRIPT_ID,
+            branch_name="repair_current",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_exch or J_V chosen to cancel boundary leakage, singularity behavior, or recovery mismatch is forbidden.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_premature_H_exch_in_18_inventory",
+            script_id=SCRIPT_ID,
+            branch_name="premature_H_exch_H_curv",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_sub/J_exch must not be used to justify H_exch or H_curv before source/current objects are real. Deferred to Group 19.",
+        ))
+        ns.record_derivation(
+            derivation_id="vacuum_current_split_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("vacuum_current_split_inventory_complete"),
+            method="vacuum_current_split_inventory",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

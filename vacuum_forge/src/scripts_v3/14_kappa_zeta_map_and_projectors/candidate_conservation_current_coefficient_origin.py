@@ -1,5 +1,11 @@
 # Candidate conservation-current coefficient origin
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The stiffness-ratio origin inventory found:
@@ -23,6 +29,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -35,32 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -224,7 +214,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
         print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
-def print_entry(e: ConservationOriginEntry) -> None:
+def print_entry(e: ConservationOriginEntry, out: ScriptOutput) -> None:
     print()
     print("-" * 120)
     print(e.name)
@@ -233,12 +223,12 @@ def print_entry(e: ConservationOriginEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Conservation-current coefficient-origin problem")
 
     print("Question:")
@@ -258,16 +248,18 @@ def case_0_problem_statement():
     print("  do not ignore no-overlap trace theorem")
     print("  defer if conservation only relocates the ratio problem")
 
-    status_line("conservation-current coefficient-origin problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("conservation-current coefficient-origin problem posed", "DEFER",
+                 "problem statement recorded; branch open pending explicit J_A")
 
 
-def case_1_inventory(entries: List[ConservationOriginEntry]):
+def case_1_inventory(entries: List[ConservationOriginEntry], out: ScriptOutput):
     header("Case 1: Conservation-current origin inventory")
     for entry in entries:
-        print_entry(entry)
+        print_entry(entry, out)
 
 
-def case_2_compact_table(entries: List[ConservationOriginEntry]):
+def case_2_compact_table(entries: List[ConservationOriginEntry], out: ScriptOutput):
     header("Case 2: Compact conservation-current ledger")
 
     print("| Entry | Current | Status | Consequence |")
@@ -285,10 +277,11 @@ def case_2_compact_table(entries: List[ConservationOriginEntry]):
             + " |"
         )
 
-    status_line("compact conservation-current ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact conservation-current ledger produced", "INFO", "inventory table complete")
 
 
-def case_3_status_counts(entries: List[ConservationOriginEntry]):
+def case_3_status_counts(entries: List[ConservationOriginEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -305,10 +298,11 @@ def case_3_status_counts(entries: List[ConservationOriginEntry]):
     print("  A parent balance identity may be needed if local current is insufficient.")
     print("  Decorative conservation is rejected.")
 
-    status_line("conservation-current status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("conservation-current status count produced", "INFO", "counts reviewed")
 
 
-def case_4_minimal_current_shape():
+def case_4_minimal_current_shape(out: ScriptOutput):
     header("Case 4: Minimal current shape")
 
     print("Minimal local current ansatz:")
@@ -336,10 +330,12 @@ def case_4_minimal_current_shape():
     print("  conservation fixes q only if a/b is itself derived.")
     print("  Otherwise the ratio problem has merely moved from c_x/c_s to a/b.")
 
-    status_line("minimal current shape stated", "THEOREM_TARGET")
+    with out.unresolved_obligations():
+        out.line("derive current coefficient ratio a/b before recovery checks", "OBLIGATION",
+                 "open proof obligation recorded")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / defer outcome")
 
     print("Good failure:")
@@ -354,10 +350,12 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose a/b from gamma_like=1 and call it conservation.")
 
-    status_line("conservation-current good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("conservation-current good failure stated", "DEFER",
+                 "branch deferred pending pre-recovery a/b origin")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Conservation-current origin fails if:")
@@ -371,10 +369,11 @@ def case_6_failure_controls():
     print("7. no-overlap theorem is ignored after current fixes q")
     print("8. parent balance terms are named but not defined")
 
-    status_line("conservation-current failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("conservation-current failure controls stated", "INFO", "eight failure controls recorded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -395,7 +394,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The conservation route must now test the minimal current shape explicitly before claiming q-origin.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", "INFO", "candidate_minimal_gradient_current_ratio_test.py")
 
 
 def final_interpretation():
@@ -419,25 +419,95 @@ def main():
     header("Candidate Conservation-Current Coefficient Origin")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
-    case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_current_shape()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_1_inventory(entries, out)
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_current_shape(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="conservation_current_coefficient_origin_marker",
-        inputs=[],
-        output=sp.Symbol("conservation_current_coefficient_origin_audited"),
-        method="conservation_current_coefficient_origin_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with ProjectArchive(ARCHIVE_ROOT) as pa:
+        ns2 = pa.script_namespace(SCRIPT_ID)
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_conservation_current_coefficient_ratio_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive conservation current coefficient ratio a/b",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that the coefficient ratio a/b in J_A^i = a grad^i A + b grad^i B_s "
+                "can be fixed by a pre-recovery principle, so that q = -a/b is genuinely derived "
+                "and not merely a relocation of the stiffness ratio problem."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_explicit_J_A_balance_law_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive explicit J_A and balance law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Define J_A[A,B_s,T] explicitly and provide the balance/conservation law "
+                "div J_A = 0 before any recovery checks. Decorative J_A is rejected."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_no_overlap_for_conservation_current_in_14",
+            script_id=SCRIPT_ID,
+            title="Verify no-overlap for conservation-current fixed B_s",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that after J_A fixes q, the resulting B_s does not overlap the "
+                "zeta/kappa residual scalar trace. The count-once recombination theorem must hold."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="conservation_current_coefficient_origin_candidate_route",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "A real conserved current J_A can fix c_x/c_s only if J_A is defined before "
+                "recovery checks and the coefficient ratio a/b has a pre-recovery origin. "
+                "Decorative conservation and recovery-tuned currents are rejected."
+            ),
+        ))
+
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_conservation_current_coefficient_origin_branch",
+            script_id=SCRIPT_ID,
+            branch_id="conservation_current_coefficient_origin",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_explicit_J_A_balance_law_in_14",
+                "derive_conservation_current_coefficient_ratio_in_14",
+                "derive_no_overlap_for_conservation_current_in_14",
+            ],
+        ))
+
+        ns2.record_derivation(
+            derivation_id="conservation_current_coefficient_origin_marker",
+            inputs=[],
+            output=sp.Symbol("conservation_current_coefficient_origin_audited"),
+            method="conservation_current_coefficient_origin_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns2.write_run_metadata()
+
+    out.print()
 
 
 if __name__ == "__main__":

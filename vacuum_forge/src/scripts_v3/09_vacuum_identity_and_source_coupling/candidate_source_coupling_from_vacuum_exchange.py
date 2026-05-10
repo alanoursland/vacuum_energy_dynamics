@@ -1,5 +1,11 @@
 # Candidate source coupling from vacuum exchange
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The vacuum-substance continuity identity proposed:
@@ -26,11 +32,6 @@
 #
 # This is not a covariant source law. It is a source-coupling audit from the
 # vacuum-exchange ontology.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_source_coupling_from_vacuum_exchange.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -39,6 +40,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -54,21 +66,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "HAND_ASSIGNED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -110,7 +107,7 @@ def print_coupling(c: SourceCoupling) -> None:
     print("-" * 100)
     print(c.sector)
     print("-" * 100)
-    status_line(c.sector, c.status)
+    print(f"Status: {c.status}")
     print(f"Source object: {c.source_object}")
     print(f"Exchange projection: {c.exchange_projection}")
     print(f"Current support: {c.current_support}")
@@ -136,8 +133,6 @@ def case_0_problem_statement():
     print("Goal:")
     print()
     print("  reduce hand-assigned couplings and identify what remains missing.")
-
-    status_line("source coupling audit posed", "CONSTRAINED_BY_IDENTITY")
 
 
 # =============================================================================
@@ -249,9 +244,6 @@ def case_3_coupling_table(couplings: List[SourceCoupling]):
     for c in couplings:
         print(f"| {c.sector} | {c.source_object} | {c.status} |")
 
-    status_line("coupling table produced", "CONSTRAINED_BY_IDENTITY",
-                "several couplings remain missing or hand-assigned")
-
 
 # =============================================================================
 # Case 4: Status counts
@@ -267,11 +259,7 @@ def case_4_status_counts(couplings: List[SourceCoupling]):
     for status in ["DERIVED_REDUCED", "CONSTRAINED_BY_IDENTITY", "HAND_ASSIGNED", "MISSING", "RISK"]:
         print(f"{status}: {counts.get(status, 0)}")
 
-    if counts.get("MISSING", 0) or counts.get("HAND_ASSIGNED", 0) or counts.get("RISK", 0):
-        status_line("source coupling incomplete", "MISSING",
-                    "some sector sources are not derived from ontology")
-    else:
-        status_line("source coupling complete", "DERIVED_REDUCED")
+    return counts
 
 
 # =============================================================================
@@ -293,9 +281,6 @@ def case_5_ontology_vs_matching():
     print("  W_i coefficient is chosen to match frame dragging")
     print("  kappa source is left as pressure/stress/trace placeholder")
     print("  creation is invoked to solve mismatches")
-    print()
-    status_line("ontology-vs-matching boundary stated", "RISK",
-                "future scripts should reduce matching by deriving couplings")
 
 
 # =============================================================================
@@ -322,9 +307,6 @@ def case_6_next_tests():
     print()
     print("Reason:")
     print("  W_i is the nearest sector where continuity gives a concrete new source object: j_i.")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "vector current is the most direct identity-derived next step")
 
 
 # =============================================================================
@@ -362,18 +344,117 @@ def main():
     couplings = build_couplings()
     case_2_print_couplings(couplings)
     case_3_coupling_table(couplings)
-    case_4_status_counts(couplings)
+    counts = case_4_status_counts(couplings)
     case_5_ontology_vs_matching()
     case_6_next_tests()
     final_interpretation(couplings)
-    ns.record_derivation(
-        derivation_id="source_coupling_from_vacuum_exchange_marker",
-        inputs=[],
-        output=sp.Symbol("source_coupling_audit_classified"),
-        method="source_coupling_from_vacuum_exchange_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    incomplete = counts.get("MISSING", 0) or counts.get("HAND_ASSIGNED", 0) or counts.get("RISK", 0)
+
+    with out.governance_assessments():
+        out.line(
+            "source coupling audit",
+            StatusMark.FAIL if incomplete else StatusMark.PASS,
+            (
+                f"MISSING={counts.get('MISSING',0)} HAND_ASSIGNED={counts.get('HAND_ASSIGNED',0)} "
+                f"RISK={counts.get('RISK',0)} — several couplings not derived from ontology"
+                if incomplete
+                else "all couplings accounted for"
+            ),
+        )
+        out.line(
+            "ontology-vs-matching boundary",
+            StatusMark.DEFER,
+            "future scripts should reduce matching by deriving couplings",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive kappa source from trace/volume exchange",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive tensor source coupling 2G/c^4 from exchange identity",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive W_i field equation and coefficient",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Proof obligation: kappa source
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_source_from_vacuum_exchange",
+            script_id=SCRIPT_ID,
+            title="Derive kappa source from vacuum exchange",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The kappa trace/interior source has no derivation from the vacuum-exchange "
+                "balance law. Whether kappa couples to pressure, stress trace, density "
+                "gradients, relaxation, or creation must be derived."
+            ),
+        ))
+
+        # Proof obligation: tensor coupling
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_tensor_source_2G_c4_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive tensor source 2G/c^4 normalization from exchange identity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The h_ij^TT tensor coupling coefficient 2G/c^4 is hand-assigned. "
+                "It should be derived from the vacuum exchange identity or a parent action, "
+                "not matched to GR output."
+            ),
+        ))
+
+        # Proof obligation: vector source identity
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_source_identity_from_exchange",
+            script_id=SCRIPT_ID,
+            title="Derive vector source identity from vacuum exchange",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The W_i sector source j_i = rho v_i is constrained by continuity but "
+                "the full field equation and coefficient are not derived from the exchange ontology."
+            ),
+        ))
+
+        # Governance claim: recovery target is downstream only
+        ns2.record_claim(ClaimRecord(
+            claim_id="source_coupling_recovery_targets_downstream_only",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Lense-Thirring recovery, GR frame-dragging matching, and tensor "
+                "normalization recovery are downstream tests, not construction rules "
+                "for sector source coupling in the vacuum-exchange ontology."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="source_coupling_from_vacuum_exchange_marker",
+            inputs=[],
+            output=sp.Symbol("source_coupling_audit_classified"),
+            method="source_coupling_from_vacuum_exchange_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

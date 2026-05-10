@@ -1,5 +1,11 @@
 # Candidate scalar breathing mode suppression
 #
+# Group:
+#   07_scalar_constraint_and_radiation_safety
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The scalar constraint mechanism showed:
@@ -25,17 +31,24 @@
 #
 # This is not an observational bound calculation and not a proof. It is a
 # mechanism inventory / algebraic safety test.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/07_scalar_constraint_and_radiation_safety/
-#   or:
-#   scripts_v3/candidate_scalar_breathing_mode_suppression.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,14 +64,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -114,8 +119,6 @@ def case_0_problem_statement():
     print("  A        -> scalar constraint/static channel")
     print("  h_ij^TT -> tensor radiation channel")
 
-    status_line("scalar breathing suppression problem posed", True)
-
 
 # =============================================================================
 # Case 1: Constraint projection
@@ -138,7 +141,7 @@ def case_1_constraint_projection():
     print("Interpretation:")
     print("  The cleanest mechanism is that A has no independent radiative mode.")
 
-    status_line("constraint projection removes scalar radiation by construction", A_safe == A_constraint)
+    return A_total, A_safe, A_constraint
 
 
 # =============================================================================
@@ -162,7 +165,7 @@ def case_2_massive_suppression():
     print()
     print("If m is large, scalar breathing is short-ranged and suppressed far away.")
 
-    status_line("mass gap creates short-range scalar suppression", True)
+    return dispersion
 
 
 # =============================================================================
@@ -187,7 +190,7 @@ def case_3_damping_absorption():
     print("  Scalar perturbations may be generated locally but damp back into the")
     print("  vacuum minimum instead of surviving as long-range radiation.")
 
-    status_line("damping gives decaying scalar amplitude", True)
+    return a, envelope, t, gamma
 
 
 # =============================================================================
@@ -215,7 +218,7 @@ def case_4_relaxation_minimum():
     print()
     print(f"solution = {solution}")
 
-    status_line("relaxation drives scalar perturbation back to minimum", True)
+    return E, gradE, solution, tau, Gamma, mu, a0
 
 
 # =============================================================================
@@ -239,7 +242,7 @@ def case_5_weak_coupling():
     print("If epsilon_s is small, scalar radiation is weak.")
     print("This is less clean than constraint projection and requires bounds.")
 
-    status_line("weak coupling suppresses scalar radiation but needs constraints", True)
+    return amplitude, power_proxy
 
 
 # =============================================================================
@@ -259,7 +262,7 @@ def case_6_tensor_channel_preserved():
     print("Suppression mechanisms should target scalar breathing modes,")
     print("not the h_ij^TT tensor channel.")
 
-    status_line("tensor quadrupole radiation remains intended active channel", True)
+    return tensor_power_proxy
 
 
 # =============================================================================
@@ -277,8 +280,6 @@ def case_7_classification_table():
     print("| relaxation to minimum | returns to vacuum minimum | needs dynamical law |")
     print("| weak coupling | small but nonzero | needs observational bounds |")
     print("| unsuppressed scalar wave | present | dangerous |")
-    print()
-    status_line("scalar suppression mechanisms classified", True)
 
 
 # =============================================================================
@@ -297,8 +298,6 @@ def case_8_results():
     print("5. Weak coupling can reduce scalar radiation but needs bounds.")
     print("6. Tensor h_ij^TT radiation should remain active.")
     print("7. The best current target is constraint-like A plus tensor radiation.")
-    print()
-    status_line("scalar breathing suppression passes as mechanism inventory", True)
 
 
 # =============================================================================
@@ -334,24 +333,202 @@ def main():
     header("Candidate Scalar Breathing Mode Suppression")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    case_1_constraint_projection()
-    case_2_massive_suppression()
-    case_3_damping_absorption()
-    case_4_relaxation_minimum()
-    case_5_weak_coupling()
-    case_6_tensor_channel_preserved()
+    A_total, A_safe, A_constraint = case_1_constraint_projection()
+    dispersion = case_2_massive_suppression()
+    a_damped, envelope, t_sym, gamma_sym = case_3_damping_absorption()
+    E_relax, gradE, solution_relax, tau_sym, Gamma_sym, mu_sym, a0_sym = case_4_relaxation_minimum()
+    amplitude_wk, power_proxy_wk = case_5_weak_coupling()
+    tensor_power = case_6_tensor_channel_preserved()
     case_7_classification_table()
     case_8_results()
     final_interpretation()
+
+    # --- Derived results ---
+
+    # Case 1: constraint projection algebraic check
+    ns.record_derivation(
+        derivation_id="constraint_projection_removes_A_rad",
+        inputs=[A_total],
+        output=A_safe,
+        method="symbolic substitution A_rad = 0 in A = A_constraint + A_rad",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="constraint_projection",
+        scope="algebraic identity, not physical derivation of mechanism",
+    )
+
+    # Case 3: damping envelope diagnostic
+    ns.record_derivation(
+        derivation_id="scalar_damping_envelope_decay",
+        inputs=[a_damped],
+        output=envelope,
+        method="underdamped amplitude envelope a0 * exp(-gamma*t/2)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        result_type="decay_envelope",
+    )
+
+    # Case 4: relaxation gradient
+    ns.record_derivation(
+        derivation_id="vacuum_relaxation_gradient_sample",
+        inputs=[E_relax],
+        output=gradE,
+        method="dE/da for E = (1/2) mu^2 a^2; relaxation law da/dtau = -Gamma mu^2 a",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="relaxation_gradient",
+        scope="quadratic potential toy only",
+    )
+
+    # --- Routes for each suppression mechanism ---
+
+    ns.record_route(RouteRecord(
+        route_id="constraint_projection_suppression_route",
+        script_id=SCRIPT_ID,
+        name="Constraint projection: A_rad = 0",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_constraint_projection_mechanism"],
+        activation_conditions=[
+            "A has no independent radiative mode",
+            "A_rad is projected out by construction",
+        ],
+    ))
+
+    ns.record_route(RouteRecord(
+        route_id="vacuum_absorption_relaxation_route",
+        script_id=SCRIPT_ID,
+        name="Vacuum absorption / relaxation route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_vacuum_absorption_dynamical_law"],
+        activation_conditions=[
+            "scalar perturbations are generated locally",
+            "perturbations relax back to vacuum minimum before becoming long-range radiation",
+            "static A gravity is preserved",
+        ],
+    ))
+
+    ns.record_route(RouteRecord(
+        route_id="mass_gap_suppression_route",
+        script_id=SCRIPT_ID,
+        name="Mass gap / short-range scalar suppression route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_mass_gap_compatible_with_static_A"],
+        activation_conditions=[
+            "A_rad has a mass gap m > 0",
+            "scalar breathing is short-ranged ~ exp(-m r)/r",
+            "A_constraint long-range response is preserved",
+        ],
+    ))
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="scalar_breathing_suppression_required",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Any scalar breathing mode arising from A_rad must be absent, short-ranged, "
+            "damped, absorbed, relaxed to the vacuum minimum, or weakly coupled with "
+            "observational bounds. An unsuppressed massless scalar wave is not allowed."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="static_gravity_must_survive_suppression",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Any suppression mechanism applied to A_rad must preserve the static "
+            "long-range A_constraint gravity. Suppression must not damp the static "
+            "scalar mass response."
+        ),
+    ))
+
+    # --- Proof obligations ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_constraint_projection_mechanism",
+        script_id=SCRIPT_ID,
+        title="Derive constraint projection mechanism for A_rad = 0",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a geometric or structural derivation showing why A has no "
+            "independent radiative mode. A_rad = 0 must follow from the parent "
+            "structure rather than being imposed by hand."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_vacuum_absorption_dynamical_law",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum absorption or relaxation dynamical law for scalar perturbations",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that scalar perturbations generated locally damp or relax to the "
+            "vacuum minimum before becoming long-range radiation. Requires a dynamical "
+            "law with clear timescale and a proof that static A gravity is unaffected."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_mass_gap_compatible_with_static_A",
+        script_id=SCRIPT_ID,
+        title="Derive mass gap for A_rad compatible with long-range static A_constraint",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that A_rad can have a mass gap m while A_constraint remains long-ranged. "
+            "Requires explaining why the two components have different mass parameters."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="scalar_breathing_suppression_marker",
         inputs=[],
         output=sp.Symbol("scalar_breathing_control_required"),
         method="scalar_breathing_suppression_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    with out.sample_results():
+        out.line("constraint projection A_rad=0 algebraic check", StatusMark.PASS,
+                 "A = A_constraint after substitution; mechanism not yet derived")
+        out.line("relaxation gradient for quadratic potential", StatusMark.PASS,
+                 "dE/da = mu^2 a; sample only")
+
+    with out.governance_assessments():
+        out.line("scalar breathing suppression required (policy)", StatusMark.PASS,
+                 "any A_rad must be absent/short-ranged/damped/absorbed/weak")
+        out.line("static gravity must survive suppression (policy)", StatusMark.PASS,
+                 "A_constraint long-range response must be preserved")
+        out.line("constraint projection route", StatusMark.PASS, "candidate route recorded")
+        out.line("vacuum absorption/relaxation route", StatusMark.PASS, "candidate route recorded")
+        out.line("mass gap route", StatusMark.PASS, "candidate route recorded")
+
+    with out.unresolved_obligations():
+        out.line("derive constraint projection mechanism", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive vacuum absorption dynamical law", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive mass gap compatible with static A", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

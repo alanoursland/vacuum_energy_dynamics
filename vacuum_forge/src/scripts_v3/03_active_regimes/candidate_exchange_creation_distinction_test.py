@@ -1,3 +1,9 @@
+# Group:
+#   03_active_regimes
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Candidate exchange / creation distinction test
 #
 # Purpose
@@ -62,9 +68,6 @@
 #   3. relaxation with positive kappa penalty drives kappa -> 0 when unsourced;
 #   4. source-free exterior exchange/relaxation endpoint gives AB=1;
 #   5. traceful creation/destruction breaks reciprocal scaling generically.
-#
-# Suggested location:
-#   scripts_v3/candidate_exchange_creation_distinction_test.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -73,6 +76,17 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -95,14 +109,6 @@ def subheader(title: str) -> None:
     print("-" * 104)
     print(title)
     print("-" * 104)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -175,7 +181,7 @@ class Operator:
         print(f"  J_b = {self.J_b}")
         print(f"  J_kappa = {self.J_kappa}")
         print(f"  J_s = {self.J_s}")
-        print(f"  delta_volume_reduced ∝ J_a+J_b = {self.delta_volume_reduced}")
+        print(f"  delta_volume_reduced prop J_a+J_b = {self.delta_volume_reduced}")
         if self.note:
             print(f"  Note: {self.note}")
 
@@ -184,7 +190,7 @@ class Operator:
 # Case 0: P1 + P3 bookkeeping identity
 # =============================================================================
 
-def case_0_p1_p3_bookkeeping():
+def case_0_p1_p3_bookkeeping(out: ScriptOutput):
     header("Case 0: P1 + P3 bookkeeping identity")
 
     rho_v, dV = sp.symbols("rho_v dV", positive=True, real=True)
@@ -201,7 +207,10 @@ def case_0_p1_p3_bookkeeping():
     print("  delta E_vac = 0  <=>  delta V_vac = 0")
     print("when rho_v is nonzero and constant.")
     print()
-    status_line("energy preservation and volume preservation are equivalent under P1+P3", True)
+
+    with out.derived_results():
+        out.line("energy preservation and volume preservation are equivalent under P1+P3",
+                 StatusMark.PASS, "delta E_vac = rho_v delta V_vac; vanish together")
 
     print("But this does not decide whether a process is exchange or creation.")
     print("That classification must be supplied or derived separately.")
@@ -211,7 +220,7 @@ def case_0_p1_p3_bookkeeping():
 # Case 1: Reduced operator classification
 # =============================================================================
 
-def case_1_operator_classification(ns=None):
+def case_1_operator_classification(out: ScriptOutput, ns=None):
     header("Case 1: Reduced operator classification")
 
     S, C = sp.symbols("S C", positive=True, real=True)
@@ -252,18 +261,18 @@ def case_1_operator_classification(ns=None):
         op.print_summary()
 
         if op.kind == "exchange":
-            status_line("exchange has J_kappa=0", is_zero(op.J_kappa))
-            status_line("exchange changes shear", not is_zero(op.J_s))
-            status_line("exchange preserves reduced volume", is_zero(op.delta_volume_reduced))
+            print(f"exchange J_kappa=0: {is_zero(op.J_kappa)}")
+            print(f"exchange changes shear: {not is_zero(op.J_s)}")
+            print(f"exchange preserves reduced volume: {is_zero(op.delta_volume_reduced)}")
         elif op.kind == "creation":
-            status_line("creation has positive trace source", op.J_kappa.is_positive)
-            status_line("creation is not volume-preserving", not is_zero(op.delta_volume_reduced))
+            print(f"creation positive trace source: {op.J_kappa.is_positive}")
+            print(f"creation not volume-preserving: {not is_zero(op.delta_volume_reduced)}")
         elif op.kind == "destruction":
-            status_line("destruction has negative trace source", op.J_kappa.is_negative)
-            status_line("destruction is not volume-preserving", not is_zero(op.delta_volume_reduced))
+            print(f"destruction negative trace source: {op.J_kappa.is_negative}")
+            print(f"destruction not volume-preserving: {not is_zero(op.delta_volume_reduced)}")
         elif op.kind == "mixed":
-            status_line("mixed operator has shear", not is_zero(op.J_s))
-            status_line("mixed operator has traceful creation", not is_zero(op.J_kappa))
+            print(f"mixed has shear: {not is_zero(op.J_s)}")
+            print(f"mixed has traceful creation: {not is_zero(op.J_kappa)}")
 
     subheader("vacuumforge_source_classification")
     ctx = TheoryContext("candidate_exchange_creation_distinction_test")
@@ -287,10 +296,16 @@ def case_1_operator_classification(ns=None):
     print(f"exchange assumed_trace_free = {exchange_src.assumed_trace_free}")
     print(f"creation classification = {creation_src.classification.value}")
 
-    status_line("VacuumForge exchange source is classified trace_free",
-                exchange_src.classification.value == "trace_free")
-    status_line("VacuumForge creation source is not classified trace_free",
-                creation_src.classification.value != "trace_free")
+    exchange_is_trace_free = exchange_src.classification.value == "trace_free"
+    creation_not_trace_free = creation_src.classification.value != "trace_free"
+
+    with out.derived_results():
+        out.line("VacuumForge exchange source is classified trace_free",
+                 StatusMark.PASS if exchange_is_trace_free else StatusMark.FAIL,
+                 exchange_src.classification.value)
+        out.line("VacuumForge creation source is not classified trace_free",
+                 StatusMark.PASS if creation_not_trace_free else StatusMark.FAIL,
+                 creation_src.classification.value)
 
     if ns is not None:
         ns.record_derivation(
@@ -299,6 +314,7 @@ def case_1_operator_classification(ns=None):
             output=sp.Symbol(exchange_src.classification.value),
             method="vacuumforge_source_classification",
             status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
             metadata={"creation_classification": creation_src.classification.value},
         )
 
@@ -307,7 +323,7 @@ def case_1_operator_classification(ns=None):
 # Case 2: Equilibrium consequences for each operator
 # =============================================================================
 
-def case_2_equilibrium_consequences(ns=None):
+def case_2_equilibrium_consequences(out: ScriptOutput, ns=None):
     header("Case 2: Equilibrium consequences")
 
     S, C, C_k, C_s = sp.symbols("S C C_k C_s", positive=True, real=True)
@@ -343,12 +359,12 @@ def case_2_equilibrium_consequences(ns=None):
             print(f"AB       = {AB}")
 
             if op.kind == "exchange":
-                status_line("exchange equilibrium suppresses kappa", is_zero(k_eq))
-                status_line("exchange equilibrium allows shear", not is_zero(s_eq))
-                status_line("exchange endpoint has AB=1", is_zero(AB - 1))
+                print(f"exchange equilibrium suppresses kappa: {is_zero(k_eq)}")
+                print(f"exchange equilibrium allows shear: {not is_zero(s_eq)}")
+                print(f"exchange endpoint has AB=1: {is_zero(AB - 1)}")
             elif op.kind in ("creation", "destruction", "mixed"):
-                status_line(f"{op.kind} equilibrium sources kappa generically", not is_zero(k_eq))
-                status_line(f"{op.kind} breaks AB=1 generically", not is_zero(AB - 1))
+                print(f"{op.kind} equilibrium sources kappa generically: {not is_zero(k_eq)}")
+                print(f"{op.kind} breaks AB=1 generically: {not is_zero(AB - 1)}")
 
     subheader("vacuumforge_equilibrium_crosscheck")
     ctx = TheoryContext("candidate_exchange_creation_equilibrium")
@@ -367,8 +383,14 @@ def case_2_equilibrium_consequences(ns=None):
     if exchange_sol.solutions:
         k_eq = sp.simplify(exchange_sol.solutions[0][ms.kappa])
         s_eq = sp.simplify(exchange_sol.solutions[0][ms.sigma])
-        status_line("VacuumForge exchange equilibrium suppresses kappa", is_zero(k_eq))
-        status_line("VacuumForge exchange equilibrium allows shear", is_zero(s_eq - S_vf / (2 * ms.C_sigma)))
+        kappa_suppressed = is_zero(k_eq)
+        shear_correct = is_zero(s_eq - S_vf / (2 * ms.C_sigma))
+
+        with out.derived_results():
+            out.line("VacuumForge exchange equilibrium suppresses kappa",
+                     StatusMark.PASS if kappa_suppressed else StatusMark.FAIL)
+            out.line("VacuumForge exchange equilibrium allows shear",
+                     StatusMark.PASS if shear_correct else StatusMark.FAIL)
 
     ctx_creation = TheoryContext("candidate_creation_equilibrium")
     ctx_creation.define_equal_response_algebraic_symbols()
@@ -384,15 +406,20 @@ def case_2_equilibrium_consequences(ns=None):
     creation_sol = ctx_creation.energy.solve_stationary("source_coupled_energy")
     if creation_sol.solutions:
         k_eq_c = sp.simplify(creation_sol.solutions[0][ms_c.kappa])
-        status_line("VacuumForge creation equilibrium gives nonzero kappa", not is_zero(k_eq_c))
+        with out.derived_results():
+            out.line("VacuumForge creation equilibrium gives nonzero kappa",
+                     StatusMark.PASS if not is_zero(k_eq_c) else StatusMark.FAIL)
 
     if ns is not None and exchange_sol.solutions:
+        k_eq = sp.simplify(exchange_sol.solutions[0][ms.kappa])
         ns.record_derivation(
             derivation_id="vf_exchange_equilibrium_endpoint",
             inputs=[S_vf],
             output=sp.Eq(ms.kappa, 0),
             method="vacuumforge_source_coupled_energy",
             status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="exchange-only source in two-sector toy energy",
             metadata={"sigma_solution": str(sp.Eq(ms.sigma, S_vf / (2 * ms.C_sigma)))},
         )
 
@@ -401,7 +428,7 @@ def case_2_equilibrium_consequences(ns=None):
 # Case 3: Relaxation operator as energy descent
 # =============================================================================
 
-def case_3_relaxation_energy_descent():
+def case_3_relaxation_energy_descent(out: ScriptOutput, ns=None):
     header("Case 3: Relaxation operator as energy descent")
 
     kappa, s, C_k, C_s = sp.symbols("kappa s C_k C_s", positive=True, real=True)
@@ -426,7 +453,10 @@ def case_3_relaxation_energy_descent():
     print(f"d s/dtau = {ds_dtau}")
     print(f"dE/dtau = {dE_dtau}")
 
-    status_line("relaxation decreases energy away from equilibrium", dE_dtau.is_negative)
+    with out.derived_results():
+        out.line("relaxation decreases energy away from equilibrium",
+                 StatusMark.PASS if dE_dtau.is_negative else StatusMark.FAIL,
+                 f"dE/dtau = {dE_dtau}")
 
     print()
     print("Equilibrium of unsourced relaxation:")
@@ -435,14 +465,28 @@ def case_3_relaxation_energy_descent():
     print()
     print("For exterior gravity, s remains nonzero only if boundary/source data")
     print("or a shear source law maintains it. Kappa can still relax to zero.")
-    status_line("unsourced relaxation drives kappa toward zero", True)
+
+    with out.derived_results():
+        out.line("unsourced relaxation drives kappa toward zero",
+                 StatusMark.PASS, "gradient descent on quadratic E gives kappa=0 equilibrium")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="relaxation_energy_descent_rate",
+            inputs=[E, kappa, s],
+            output=dE_dtau,
+            method="gradient_descent_dE_dtau",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="energy_descent_rate",
+        )
 
 
 # =============================================================================
 # Case 4: Relaxation with boundary-maintained shear
 # =============================================================================
 
-def case_4_relaxation_with_boundary_shear():
+def case_4_relaxation_with_boundary_shear(out: ScriptOutput, ns=None):
     header("Case 4: Relaxation with boundary-maintained shear")
 
     kappa, s = sp.symbols("kappa s", real=True)
@@ -470,16 +514,39 @@ def case_4_relaxation_with_boundary_shear():
         print(f"s_eq     = {s_eq}")
         print(f"AB       = {AB}")
 
-        status_line("boundary-maintained shear allows s != 0", is_zero(s_eq - S_b))
-        status_line("kappa remains suppressed", is_zero(k_eq))
-        status_line("reciprocal scaling holds", is_zero(AB - 1))
+        shear_ok = is_zero(s_eq - S_b)
+        kappa_ok = is_zero(k_eq)
+        ab_ok = is_zero(AB - 1)
+
+        with out.derived_results():
+            out.line("boundary-maintained shear allows s != 0",
+                     StatusMark.PASS if shear_ok else StatusMark.FAIL,
+                     f"s_eq = {s_eq}")
+            out.line("kappa remains suppressed",
+                     StatusMark.PASS if kappa_ok else StatusMark.FAIL,
+                     f"kappa_eq = {k_eq}")
+            out.line("reciprocal scaling holds",
+                     StatusMark.PASS if ab_ok else StatusMark.FAIL,
+                     f"AB = {AB}")
+
+        if ns is not None:
+            ns.record_derivation(
+                derivation_id="boundary_shear_relaxation_endpoint",
+                inputs=[S_b],
+                output=sp.Eq(kappa, 0),
+                method="boundary_shear_toy_energy_stationary",
+                status=Status.DERIVED,
+                record_kind=RecordKind.SAMPLE_DERIVATION,
+                scope="constant boundary shear S_b toy",
+                metadata={"s_eq": str(s_eq), "AB": str(AB)},
+            )
 
 
 # =============================================================================
 # Case 5: Classification consistency matrix
 # =============================================================================
 
-def case_5_classification_consistency_matrix():
+def case_5_classification_consistency_matrix(out: ScriptOutput):
     header("Case 5: Classification consistency matrix")
 
     print("Expected reduced behavior:")
@@ -492,14 +559,18 @@ def case_5_classification_consistency_matrix():
     print("| mixed | !=0 | !=0 | !=0 | !=1 | shear plus creation/destruction |")
     print("| relaxation endpoint | response | ->0 if unsourced | 0 | 1 | balanced static exterior |")
     print()
-    status_line("classification separates exchange from creation/destruction", True)
+
+    with out.governance_assessments():
+        out.line("classification separates exchange from creation/destruction",
+                 StatusMark.PASS,
+                 "exchange has J_kappa=0; creation/destruction have J_kappa nonzero")
 
 
 # =============================================================================
 # Case 6: Impact on P3 volume-preservation question
 # =============================================================================
 
-def case_6_p3_impact():
+def case_6_p3_impact(out: ScriptOutput):
     header("Case 6: Impact on P3 volume-preservation question")
 
     print("The earlier P3 volume-preservation question was:")
@@ -523,7 +594,16 @@ def case_6_p3_impact():
     print("Open question:")
     print("  Can the exchange/creation distinction be derived from the postulates,")
     print("  or must it be added as a structural principle?")
-    status_line("P3 alone does not classify process regime", True)
+
+    with out.governance_assessments():
+        out.line("P3 alone does not classify process regime",
+                 StatusMark.PASS,
+                 "P1+P3 tie energy to volume but do not determine operator class")
+
+    with out.unresolved_obligations():
+        out.line("derive exchange/creation classification from postulates",
+                 StatusMark.OBLIGATION,
+                 "currently added as a structural principle; derivation remains open")
 
 
 # =============================================================================
@@ -571,14 +651,74 @@ def main():
     header("Candidate Exchange / Creation Distinction Test")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_p1_p3_bookkeeping()
-    case_1_operator_classification(ns)
-    case_2_equilibrium_consequences(ns)
-    case_3_relaxation_energy_descent()
-    case_4_relaxation_with_boundary_shear()
-    case_5_classification_consistency_matrix()
-    case_6_p3_impact()
+
+    out = ScriptOutput()
+
+    case_0_p1_p3_bookkeeping(out)
+    case_1_operator_classification(out, ns)
+    case_2_equilibrium_consequences(out, ns)
+    case_3_relaxation_energy_descent(out, ns)
+    case_4_relaxation_with_boundary_shear(out, ns)
+    case_5_classification_consistency_matrix(out)
+    case_6_p3_impact(out)
     final_interpretation()
+
+    out.print_summary()
+
+    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
+        ns2 = archive2.script_namespace(SCRIPT_ID)
+        ns2.prepare_archive()
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_exchange_creation_from_postulates",
+            script_id=SCRIPT_ID,
+            title="Derive exchange/creation classification from postulates",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The exchange/creation/destruction classification is currently added "
+                "as a structural principle. It remains an open obligation to show "
+                "whether this distinction follows from the postulates P1-P3 or must "
+                "be introduced independently."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="exchange_trace_kernel_in_reduced_model",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "In the reduced two-sector kappa/s model, exchange operators are "
+                "trace-kernel (J_kappa=0) and yield kappa_eq=0 and AB=1 at equilibrium. "
+                "This is a consistency check, not a derivation from first principles."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="p3_does_not_classify_regime",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "P1+P3 make energy preservation equivalent to volume preservation "
+                "but do not decide whether a process is exchange or creation. "
+                "The regime classification must be supplied or derived separately."
+            ),
+        ))
+
+        ns2.record_route(RouteRecord(
+            route_id="exchange_trace_kernel_exterior_compensation_route",
+            script_id=SCRIPT_ID,
+            name="Exchange as trace-kernel / exterior compensation route",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_exchange_creation_from_postulates"],
+        ))
+
+        ns2.write_run_metadata()
+
     ns.write_run_metadata()
 
 

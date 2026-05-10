@@ -1,5 +1,11 @@
 # Candidate static spherical exact recovery
 #
+# Group:
+#   02_mechanics
+#
+# Script type:
+#   SAMPLE
+#
 # Purpose
 # -------
 # This script tests whether the reduced static spherical exterior program can
@@ -62,9 +68,6 @@
 # IMPORTANT:
 # This is still a reduced areal-gauge static spherical toy.
 # It is not a derivation of Einstein's equations.
-#
-# Suggested location:
-#   scripts_v3/candidate_static_spherical_exact_recovery.py
 
 from pathlib import Path
 
@@ -73,6 +76,16 @@ import sympy as sp
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -95,14 +108,6 @@ def subheader(title: str) -> None:
     print("-" * 108)
     print(title)
     print("-" * 108)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -158,7 +163,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Exact Schwarzschild compensated exterior
 # =============================================================================
 
-def case_0_exact_schwarzschild_compensated():
+def case_0_exact_schwarzschild_compensated(out: ScriptOutput):
     header("Case 0: Exact Schwarzschild compensated exterior")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -178,16 +183,26 @@ def case_0_exact_schwarzschild_compensated():
     print()
     print("For r > r_s, 1/2 ln(A/B) = ln(A).")
 
-    status_line("exact Schwarzschild has AB=1", is_zero(A * B - 1))
-    status_line("exact Schwarzschild has kappa=0", is_zero(A * B - 1))
-    status_line("s=ln(A) reconstructs B=1/A", is_zero(sp.exp(-s_exact) - B))
+    residual_AB = sp.simplify(A * B - 1)
+    residual_B_from_s = sp.simplify(sp.exp(-s_exact) - B)
+
+    with out.derived_results():
+        out.line("exact Schwarzschild has AB=1",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
+        out.line("exact Schwarzschild has kappa=0",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 "AB=1 implies kappa=0")
+        out.line("s=ln(A) reconstructs B=1/A",
+                 StatusMark.PASS if is_zero(residual_B_from_s) else StatusMark.FAIL,
+                 f"residual={residual_B_from_s}")
 
 
 # =============================================================================
 # Case 1: Weak shear versus exact shear
 # =============================================================================
 
-def case_1_weak_vs_exact_shear():
+def case_1_weak_vs_exact_shear(out: ScriptOutput):
     header("Case 1: Weak shear versus exact shear")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -214,17 +229,23 @@ def case_1_weak_vs_exact_shear():
     print()
     print(f"A_weak_exp - A_exact through order 1/r² = {first_order_match}")
 
-    status_line("weak exponential A matches exact A at first order",
-                is_zero(sp.expand(series_at_infinity(A_weak_exp - A_exact, r, 2))))
-    status_line("weak exponential differs at second order",
-                not is_zero(sp.expand(series_at_infinity(A_weak_exp - A_exact, r, 3))))
+    residual_first = sp.expand(series_at_infinity(A_weak_exp - A_exact, r, 2))
+    residual_second = sp.expand(series_at_infinity(A_weak_exp - A_exact, r, 3))
+
+    with out.sample_results():
+        out.line("weak exponential A matches exact A at first order",
+                 StatusMark.PASS if is_zero(residual_first) else StatusMark.FAIL,
+                 f"residual={residual_first}")
+        out.line("weak exponential differs at second order",
+                 StatusMark.PASS if not is_zero(residual_second) else StatusMark.FAIL,
+                 f"residual={residual_second}")
 
 
 # =============================================================================
 # Case 2: Harmonic tests for weak and exact shear
 # =============================================================================
 
-def case_2_harmonic_tests():
+def case_2_harmonic_tests(out: ScriptOutput):
     header("Case 2: Harmonic tests for weak and exact shear")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -241,9 +262,16 @@ def case_2_harmonic_tests():
     print(f"∇² s_exact = {lap_s_exact}")
     print(f"∇² A_exact = {lap_A_exact}")
 
-    status_line("s_weak is harmonic for r>0", is_zero(lap_s_weak))
-    status_line("s_exact is not harmonic under flat radial Laplacian", not is_zero(lap_s_exact))
-    status_line("A_exact is harmonic for r>0", is_zero(lap_A_exact))
+    with out.derived_results():
+        out.line("s_weak is harmonic for r>0",
+                 StatusMark.PASS if is_zero(lap_s_weak) else StatusMark.FAIL,
+                 f"residual={lap_s_weak}")
+        out.line("s_exact is not harmonic under flat radial Laplacian",
+                 StatusMark.PASS if not is_zero(lap_s_exact) else StatusMark.FAIL,
+                 f"lap_s_exact={lap_s_exact}")
+        out.line("A_exact is harmonic for r>0",
+                 StatusMark.PASS if is_zero(lap_A_exact) else StatusMark.FAIL,
+                 f"residual={lap_A_exact}")
 
     print()
     print("Interpretation:")
@@ -256,7 +284,7 @@ def case_2_harmonic_tests():
 # Case 3: Nonlinear s equation
 # =============================================================================
 
-def case_3_nonlinear_s_equation():
+def case_3_nonlinear_s_equation(out: ScriptOutput, ns=None):
     header("Case 3: Nonlinear s equation from harmonic A=e^s")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -274,7 +302,10 @@ def case_3_nonlinear_s_equation():
     print(f"|∇s|² = {grad_s_sq}")
     print(f"∇²s + |∇s|² = {nonlinear}")
 
-    status_line("s_exact satisfies nonlinear source-free equation", is_zero(nonlinear))
+    with out.derived_results():
+        out.line("s_exact satisfies nonlinear source-free equation",
+                 StatusMark.PASS if is_zero(nonlinear) else StatusMark.FAIL,
+                 f"residual={nonlinear}")
 
     print()
     print("Equation:")
@@ -283,12 +314,23 @@ def case_3_nonlinear_s_equation():
     print("Equivalent:")
     print("  ∇² exp(s) = 0")
 
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="nonlinear_s_equation_from_exact_schwarzschild",
+            inputs=[s_exact, r_s],
+            output=nonlinear,
+            method="compute ∇²s + |∇s|² for s=ln(1-r_s/r) via flat radial Laplacian",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
 
 # =============================================================================
 # Case 4: Linearization of nonlinear s equation
 # =============================================================================
 
-def case_4_linearization():
+def case_4_linearization(out: ScriptOutput, ns=None):
     header("Case 4: Linearization of nonlinear s equation")
 
     r, eps = sp.symbols("r eps", positive=True, real=True)
@@ -308,20 +350,36 @@ def case_4_linearization():
     print(f"first order in eps = {first_order}")
     print(f"through second order in eps = {second_order}")
 
-    status_line("linearized nonlinear equation is ∇²u=0",
-                is_zero(first_order - eps * radial_laplacian(u, r)))
+    expected_first = eps * radial_laplacian(u, r)
+    residual = sp.simplify(first_order - expected_first)
+
+    with out.derived_results():
+        out.line("linearized nonlinear equation is ∇²u=0",
+                 StatusMark.PASS if is_zero(residual) else StatusMark.FAIL,
+                 f"residual={residual}")
 
     print()
     print("Interpretation:")
     print("  The earlier shear Laplace law is the first-order approximation")
     print("  to the nonlinear exact candidate equation.")
 
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="nonlinear_s_equation_linearization",
+            inputs=[s, eps],
+            output=first_order,
+            method="series expansion of ∇²s+|∇s|² in eps to first order",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="linearization_residual",
+        )
+
 
 # =============================================================================
 # Case 5: Flux normalization for A
 # =============================================================================
 
-def case_5_flux_normalization_for_A():
+def case_5_flux_normalization_for_A(out: ScriptOutput, ns=None):
     header("Case 5: Flux normalization for A")
 
     r, r_s, G, M, c = sp.symbols("r r_s G M c", positive=True, real=True)
@@ -339,20 +397,35 @@ def case_5_flux_normalization_for_A():
     print(f"target flux = {target_flux}")
     print(f"r_s solution = {sol_rs}")
 
-    status_line("A-flux normalization gives r_s=2GM/c²",
-                bool(sol_rs) and is_zero(sol_rs[0] - 2 * G * M / c**2))
+    passes = bool(sol_rs) and is_zero(sol_rs[0] - 2 * G * M / c**2)
+
+    with out.sample_results():
+        out.line("A-flux normalization gives r_s=2GM/c²",
+                 StatusMark.PASS if passes else StatusMark.FAIL,
+                 f"solution={sol_rs}")
 
     print()
     print("Note:")
     print("  This parallels the earlier s-flux normalization in weak field,")
     print("  but the exact harmonic variable is A rather than s.")
 
+    if ns is not None and passes:
+        ns.record_derivation(
+            derivation_id="a_flux_normalization_gives_schwarzschild_radius",
+            inputs=[flux_A, target_flux],
+            output=sp.Eq(r_s, 2 * G * M / c**2),
+            method="solve 4πr²A'=8πGM/c² for r_s with A=1-r_s/r",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="areal-gauge static spherical toy; flux normalization assumption",
+        )
+
 
 # =============================================================================
 # Case 6: Poisson form for A and nonlinear form for s
 # =============================================================================
 
-def case_6_poisson_form_for_A():
+def case_6_poisson_form_for_A(out: ScriptOutput):
     header("Case 6: Poisson form for A and nonlinear form for s")
 
     print("Candidate exact reduced source law:")
@@ -375,14 +448,17 @@ def case_6_poisson_form_for_A():
     print()
     print("  ∇²s ≈ 0")
     print()
-    status_line("candidate exact law reduces to weak shear Laplace law", True)
+
+    with out.governance_assessments():
+        out.line("candidate exact law reduces to weak shear Laplace law", StatusMark.PASS,
+                 "linearization shows ∇²s+|∇s|²=0 reduces to ∇²s=0 at first order in s")
 
 
 # =============================================================================
 # Case 7: Exact metric recovery
 # =============================================================================
 
-def case_7_exact_metric_recovery(ns=None):
+def case_7_exact_metric_recovery(out: ScriptOutput, ns=None):
     header("Case 7: Exact metric recovery")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -399,8 +475,16 @@ def case_7_exact_metric_recovery(ns=None):
     print(f"B = exp(-s) = {B}")
     print(f"AB = {AB}")
 
-    status_line("B equals 1/A", is_zero(B - 1/A))
-    status_line("AB=1 exactly", is_zero(AB - 1))
+    residual_B = sp.simplify(B - 1/A)
+    residual_AB = sp.simplify(AB - 1)
+
+    with out.derived_results():
+        out.line("B equals 1/A",
+                 StatusMark.PASS if is_zero(residual_B) else StatusMark.FAIL,
+                 f"residual={residual_B}")
+        out.line("AB=1 exactly",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
 
     print()
     print("Result:")
@@ -414,18 +498,21 @@ def case_7_exact_metric_recovery(ns=None):
     B_value = sp.simplify(1 / A_value)
     concrete = check_concrete_metric(ctx, A_value=A_value, B_value=B_value, requirement_ids=["reciprocal_scaling"])
     if concrete:
-        status_line(
-            "VacuumForge classifies exact Schwarzschild reciprocal scaling as by-construction",
-            concrete[0].status == "satisfied_by_construction",
-            concrete[0].message,
-        )
+        with out.governance_assessments():
+            out.line(
+                "VacuumForge classifies exact Schwarzschild reciprocal scaling as by-construction",
+                StatusMark.PASS if concrete[0].status == "satisfied_by_construction" else StatusMark.DEFER,
+                concrete[0].message,
+            )
         if ns is not None:
             ns.record_derivation(
                 derivation_id="exact_schwarzschild_concrete_metric_check",
                 inputs=[A_value],
                 output=sp.Symbol(concrete[0].status),
-                method="concrete_metric_check",
+                method="concrete_metric_check: reciprocal_scaling requirement",
                 status=Status.DERIVED,
+                record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
+                result_type="compatibility_check",
                 metadata={"message": concrete[0].message},
             )
 
@@ -434,7 +521,7 @@ def case_7_exact_metric_recovery(ns=None):
 # Case 8: Comparison of source-law candidates
 # =============================================================================
 
-def case_8_compare_source_law_candidates():
+def case_8_compare_source_law_candidates(out: ScriptOutput):
     header("Case 8: Compare source-law candidates")
 
     print("Weak-field candidate:")
@@ -453,6 +540,11 @@ def case_8_compare_source_law_candidates():
     print("Interpretation:")
     print("  The earlier shear Poisson law may be the linearized form of a")
     print("  nonlinear exact law for A=e^s.")
+
+    with out.governance_assessments():
+        out.line("exact candidate A-harmonic law subsumes weak-field shear Laplace law",
+                 StatusMark.PASS,
+                 "nonlinear ∇²A=0 linearizes to ∇²s=0 at first order")
 
 
 # =============================================================================
@@ -540,17 +632,56 @@ def main():
     header("Candidate Static Spherical Exact Recovery")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_exact_schwarzschild_compensated()
-    case_1_weak_vs_exact_shear()
-    case_2_harmonic_tests()
-    case_3_nonlinear_s_equation()
-    case_4_linearization()
-    case_5_flux_normalization_for_A()
-    case_6_poisson_form_for_A()
-    case_7_exact_metric_recovery(ns)
-    case_8_compare_source_law_candidates()
+
+    out = ScriptOutput()
+
+    case_0_exact_schwarzschild_compensated(out)
+    case_1_weak_vs_exact_shear(out)
+    case_2_harmonic_tests(out)
+    case_3_nonlinear_s_equation(out, ns)
+    case_4_linearization(out, ns)
+    case_5_flux_normalization_for_A(out, ns)
+    case_6_poisson_form_for_A(out)
+    case_7_exact_metric_recovery(out, ns)
+    case_8_compare_source_law_candidates(out)
     case_9_summary_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_field_equation_for_exact_recovery",
+        script_id=SCRIPT_ID,
+        title="Derive covariant field equation producing ∇²A=0 in exterior",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The exact exterior equation ∇²A=0 (equivalently ∇²s+|∇s|²=0) is found "
+            "by checking Schwarzschild, but the covariant field equation from which it "
+            "follows has not been derived. This is not a derivation of Einstein's equations."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_areal_flux_normalization_mechanism",
+        script_id=SCRIPT_ID,
+        title="Derive mechanism that fixes A-flux normalization to 8πGM/c²",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The flux normalization 4πr²A'=8πGM/c² is imposed by matching to the "
+            "Schwarzschild radius. Its origin from a source/interface law is not derived."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="exact_static_spherical_recovery_is_toy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The exact Schwarzschild exterior recovery via kappa=0 and ∇²A=0 is a reduced "
+            "areal-gauge static spherical toy. It is not a derivation of Einstein's equations."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

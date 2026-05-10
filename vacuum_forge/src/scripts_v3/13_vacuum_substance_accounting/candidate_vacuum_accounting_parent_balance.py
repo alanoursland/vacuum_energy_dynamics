@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate vacuum accounting parent balance
 #
 # Purpose
@@ -40,6 +46,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,28 +67,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -232,11 +226,11 @@ def print_entry(e: BalanceEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Required condition: {e.required_condition}")
     print(f"Forbidden failure: {e.forbidden_failure}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Vacuum accounting parent balance problem")
 
     print("Question:")
@@ -264,7 +258,8 @@ def case_0_problem_statement():
     print("  no exterior mass change")
     print("  no decorative parent balance")
 
-    status_line("vacuum accounting parent balance problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("vacuum accounting parent balance problem posed", StatusMark.OBLIGATION, "open: balance skeleton requires parent embedding")
 
 
 def case_1_inventory(entries: List[BalanceEntry]):
@@ -273,7 +268,7 @@ def case_1_inventory(entries: List[BalanceEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[BalanceEntry]):
+def case_2_compact_table(entries: List[BalanceEntry], out: ScriptOutput):
     header("Case 2: Compact parent balance ledger")
 
     print("| Entry | Term | Status | Required condition | Missing |")
@@ -293,10 +288,11 @@ def case_2_compact_table(entries: List[BalanceEntry]):
             + " |"
         )
 
-    status_line("compact parent balance ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact parent balance ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[BalanceEntry]):
+def case_3_status_counts(entries: List[BalanceEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -312,10 +308,11 @@ def case_3_status_counts(entries: List[BalanceEntry]):
     print("  Most boundary/safety conditions are required.")
     print("  The central missing definitions are epsilon_vac_config, Sigma_exchange, u^mu, and parent embedding.")
 
-    status_line("parent balance status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("parent balance status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_balance_skeleton():
+def case_4_balance_skeleton(out: ScriptOutput):
     header("Case 4: Candidate balance skeleton")
 
     print("Candidate local/constrained balance:")
@@ -341,10 +338,11 @@ def case_4_balance_skeleton():
     print("  delta M_ext = 0")
     print("  F_scalar_far = 0")
 
-    status_line("candidate balance skeleton stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate balance skeleton stated", StatusMark.DEFER, "candidate route: skeleton awaits parent embedding")
 
 
-def case_5_sign_interpretation():
+def case_5_sign_interpretation(out: ScriptOutput):
     header("Case 5: Sign interpretation")
 
     print("One possible sign convention:")
@@ -363,10 +361,11 @@ def case_5_sign_interpretation():
     print("  not energy deletion")
     print("  not active creation in ordinary gravity")
 
-    status_line("sign interpretation stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("sign interpretation stated", StatusMark.DEFER, "candidate route: signs not yet fixed")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("The parent balance skeleton fails if:")
@@ -383,10 +382,11 @@ def case_6_failure_controls():
     print("10. scalar far-zone flux appears.")
     print("11. parent embedding remains decorative.")
 
-    status_line("parent balance failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("parent balance failure controls stated", StatusMark.DEFER, "open risk: eleven failure conditions listed")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -407,7 +407,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The balance skeleton now depends explicitly on epsilon_vac_config; define the functional next.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "epsilon_vac_config functional")
 
 
 def final_interpretation():
@@ -440,22 +441,67 @@ def main():
     header("Candidate Vacuum Accounting Parent Balance")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_balance_skeleton()
-    case_5_sign_interpretation()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_balance_skeleton(out)
+    case_5_sign_interpretation(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    # The candidate balance skeleton is a symbolic balance target, not a derivation.
+    # Per Rule 10: symbolic balance equation -> ProofObligationRecord (theorem target).
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_vacuum_accounting_parent_balance",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum accounting parent balance from parent identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive the vacuum-substance accounting balance: "
+            "u^mu nabla_mu epsilon_vac_config + nabla_mu J_v^mu = Sigma_exchange - Gamma_relax "
+            "from a parent identity (Div E_parent = B_closed + B_relax), not as an appended postulate. "
+            "Requires epsilon_vac_config functional, Sigma_exchange coupling, J_v class, and u^mu."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_embedding_of_balance",
+        script_id=SCRIPT_ID,
+        title="Derive parent identity embedding of vacuum accounting balance",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the accounting balance skeleton is a consequence of a parent field-equation identity "
+            "rather than a decorative postulate appended to the theory."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="vacuum_accounting_balance_skeleton_candidate",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The candidate balance skeleton "
+            "u^mu nabla_mu epsilon_vac_config + nabla_mu J_v^mu = Sigma_exchange - Gamma_relax "
+            "with Sigma_creation=0, zero J_v exterior flux, Q_volume=0, delta M_ext=0, F_scalar_far=0 "
+            "is the first concrete vacuum-accounting candidate. "
+            "It is not derived; all terms require definitions."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="vacuum_accounting_parent_balance_marker",
         inputs=[],
         output=sp.Symbol("vacuum_accounting_parent_balance_audited"),
         method="vacuum_accounting_parent_balance_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

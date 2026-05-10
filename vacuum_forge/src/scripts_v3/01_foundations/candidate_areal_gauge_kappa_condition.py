@@ -1,5 +1,11 @@
 # Candidate areal-gauge kappa condition
 #
+# Group:
+#   01_foundations
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # This script studies the question:
@@ -48,15 +54,22 @@
 # This does NOT prove that kappa itself is an invariant scalar.
 # It tests whether kappa=0 can be phrased as a condition after a geometric
 # gauge fixing by the areal radius.
-#
-# Suggested location:
-#   scripts_v3/candidate_areal_gauge_kappa_condition.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 from vacuumforge.coordinates import CoordinateChange
 
 
@@ -80,14 +93,6 @@ def subheader(title: str) -> None:
     print("-" * 104)
     print(title)
     print("-" * 104)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -125,7 +130,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: General spherical metric in arbitrary radial coordinate
 # =============================================================================
 
-def case_0_general_spherical_metric():
+def case_0_general_spherical_metric(out: ScriptOutput) -> None:
     header("Case 0: General spherical metric in arbitrary radial coordinate")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -147,14 +152,20 @@ def case_0_general_spherical_metric():
     print("Areal radius:")
     print("  r_areal = sqrt(Area/4π) = S(R)")
     print()
-    status_line("arbitrary radial coordinate includes angular-radius function S(R)", True)
+
+    with out.governance_assessments():
+        out.line(
+            "arbitrary radial coordinate includes angular-radius function S(R)",
+            StatusMark.PASS,
+            "correct general setup; areal radius = S(R)",
+        )
 
 
 # =============================================================================
 # Case 1: Areal radius from sphere area
 # =============================================================================
 
-def case_1_areal_radius_from_area():
+def case_1_areal_radius_from_area(out: ScriptOutput) -> None:
     header("Case 1: Areal radius from sphere area")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -169,14 +180,20 @@ def case_1_areal_radius_from_area():
     print()
     print("Assuming positive sphere-radius function S(R)>0:")
     print("  r_areal = S(R)")
-    status_line("areal radius is geometrically fixed by sphere area", True)
+
+    with out.derived_results():
+        out.line(
+            "areal radius is geometrically fixed by sphere area",
+            StatusMark.PASS,
+            "r_areal = S(R) by construction from sphere area formula",
+        )
 
 
 # =============================================================================
 # Case 2: Transform arbitrary R to areal radius r=S(R)
 # =============================================================================
 
-def case_2_transform_to_areal_radius(ns=None):
+def case_2_transform_to_areal_radius(out: ScriptOutput, ns=None):
     header("Case 2: Transform arbitrary R to areal radius r=S(R)")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -211,7 +228,13 @@ def case_2_transform_to_areal_radius(ns=None):
     print(f"  B_areal = {B_areal_at_R}")
     print("  angular sector = r²dΩ²")
     print()
-    status_line("areal radial coefficient includes inverse sphere-radius Jacobian", True)
+
+    with out.derived_results():
+        out.line(
+            "areal radial coefficient includes inverse sphere-radius Jacobian",
+            StatusMark.PASS,
+            f"B_areal = Q(R)/S'(R)^2 = {B_areal_at_R}",
+        )
 
     if ns is not None:
         ns.record_derivation(
@@ -220,6 +243,7 @@ def case_2_transform_to_areal_radius(ns=None):
             output=sp.Eq(T(R) * Q(R), Sprime**2 * A_areal_at_R * B_areal_at_R),
             method="areal_radius_coordinate_fixing",
             status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
         )
 
 
@@ -227,7 +251,7 @@ def case_2_transform_to_areal_radius(ns=None):
 # Case 3: Areal-gauge kappa from arbitrary-coordinate metric
 # =============================================================================
 
-def case_3_kappa_areal_from_arbitrary_metric():
+def case_3_kappa_areal_from_arbitrary_metric(out: ScriptOutput) -> None:
     header("Case 3: Areal-gauge kappa from arbitrary-coordinate metric")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -253,8 +277,6 @@ def case_3_kappa_areal_from_arbitrary_metric():
     print("If S'(R)>0, then:")
     print("  kappa_naive_R = kappa_areal + ln S'(R)")
     print()
-    status_line("difference is radial gauge Jacobian", True)
-
     print("Areal-gauge compensation condition:")
     print("  kappa_areal = 0")
     print("equivalent to:")
@@ -262,12 +284,19 @@ def case_3_kappa_areal_from_arbitrary_metric():
     print("or:")
     print("  T(R) Q(R) = S'(R)^2")
 
+    with out.derived_results():
+        out.line(
+            "difference between naive and areal kappa is radial gauge Jacobian",
+            StatusMark.PASS,
+            f"kappa_naive - kappa_areal = log(S') = {delta}",
+        )
+
 
 # =============================================================================
 # Case 4: Recover previous radial reparameterization result
 # =============================================================================
 
-def case_4_recover_reparameterization_result(ns=None):
+def case_4_recover_reparameterization_result(out: ScriptOutput, ns=None):
     header("Case 4: Recover previous radial reparameterization result")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -300,10 +329,17 @@ def case_4_recover_reparameterization_result(ns=None):
     print(f"kappa_old_at_f = {kappa_old_at_f}")
     print(f"kappa_naive_R = {kappa_naive_R}")
 
-    status_line("areal reconstruction recovers original kappa", is_zero(kappa_areal - kappa_old_at_f))
+    recovers_original = is_zero(kappa_areal - kappa_old_at_f)
 
     print()
     print("Naive kappa_R includes the radial Jacobian, while kappa_areal removes it.")
+
+    with out.derived_results():
+        out.line(
+            "areal reconstruction recovers original kappa",
+            StatusMark.PASS if recovers_original else StatusMark.WARN,
+            f"kappa_areal - kappa_old_at_f = {sp.simplify(kappa_areal - kappa_old_at_f)}",
+        )
 
     if ns is not None:
         ns.record_derivation(
@@ -312,6 +348,7 @@ def case_4_recover_reparameterization_result(ns=None):
             output=sp.Eq(kappa_areal, kappa_old_at_f),
             method="coordinate_change_areal_reconstruction",
             status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
         )
 
 
@@ -319,7 +356,7 @@ def case_4_recover_reparameterization_result(ns=None):
 # Case 5: Gauge-fixed condition as geometric construction
 # =============================================================================
 
-def case_5_gauge_fixed_condition_statement():
+def case_5_gauge_fixed_condition_statement(out: ScriptOutput) -> None:
     header("Case 5: Gauge-fixed condition as geometric construction")
 
     print("The result can be stated without pretending kappa is invariant:")
@@ -336,17 +373,22 @@ def case_5_gauge_fixed_condition_statement():
     print("   equivalently:")
     print("     A B = 1")
     print()
-    status_line("kappa=0 can be phrased as a gauge-fixed geometric condition", True)
-
     print("This is not a coordinate-invariant scalar equation.")
     print("It is a condition after geometric gauge fixing by sphere area.")
+
+    with out.governance_assessments():
+        out.line(
+            "kappa=0 can be phrased as a gauge-fixed geometric condition",
+            StatusMark.PASS,
+            "areal gauge fixing makes kappa_areal=0 well-defined; not invariant scalar",
+        )
 
 
 # =============================================================================
 # Case 6: Express condition in arbitrary radial coordinate
 # =============================================================================
 
-def case_6_arbitrary_coordinate_expression():
+def case_6_arbitrary_coordinate_expression(out: ScriptOutput) -> None:
     header("Case 6: Arbitrary-coordinate expression of areal compensation")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -369,14 +411,20 @@ def case_6_arbitrary_coordinate_expression():
     print("This expression includes the angular-radius function S(R).")
     print("It is the arbitrary-coordinate version of areal-gauge AB=1.")
     print()
-    status_line("arbitrary-coordinate expression includes sphere-area geometry", True)
+
+    with out.derived_results():
+        out.line(
+            "arbitrary-coordinate expression includes sphere-area geometry",
+            StatusMark.PASS,
+            f"areal condition: {condition}",
+        )
 
 
 # =============================================================================
 # Case 7: Failure control: ignoring angular sector
 # =============================================================================
 
-def case_7_failure_control_ignore_angular_sector():
+def case_7_failure_control_ignore_angular_sector(out: ScriptOutput) -> None:
     header("Case 7: Failure control — ignoring angular sector")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -392,14 +440,20 @@ def case_7_failure_control_ignore_angular_sector():
     print("But the angular sector is f(R)²dΩ², so the areal radius is f(R).")
     print("Restoring areal gauge removes the f'(R)² factor.")
     print()
-    status_line("ignoring angular sector produces false gauge artifact", True)
+
+    with out.governance_assessments():
+        out.line(
+            "ignoring angular sector produces false gauge artifact",
+            StatusMark.PASS,
+            "failure-control case: correct analysis requires S(R) in the condition",
+        )
 
 
 # =============================================================================
 # Case 8: Summary classification
 # =============================================================================
 
-def case_8_summary_classification():
+def case_8_summary_classification(out: ScriptOutput) -> None:
     header("Case 8: Summary classification")
 
     print("Results:")
@@ -418,12 +472,19 @@ def case_8_summary_classification():
     print("  kappa=0 can be safely phrased as an areal-gauge condition derived")
     print("  from sphere-area radial foliation geometry.")
 
+    with out.governance_assessments():
+        out.line(
+            "areal-gauge kappa=0 is geometric and gauge-fixed, not an invariant scalar",
+            StatusMark.PASS,
+            "T(R)Q(R)=S'(R)^2 is the arbitrary-coordinate form",
+        )
+
 
 # =============================================================================
 # Final interpretation
 # =============================================================================
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput) -> None:
     header("Final interpretation")
 
     print("This script answers the question in a qualified way:")
@@ -452,6 +513,20 @@ def final_interpretation():
     print("Possible next artifact:")
     print("  candidate_areal_gauge_kappa_condition.md")
 
+    with out.governance_assessments():
+        out.line(
+            "kappa=0 qualified as gauge-fixed geometric condition from sphere area",
+            StatusMark.PASS,
+            "areal-gauge construction; not a full covariant invariant",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive full covariant parent or 4D invariant for kappa=0 condition",
+            StatusMark.OBLIGATION,
+            "areal-gauge condition established; full covariant generalization open",
+        )
+
 
 # =============================================================================
 # Main
@@ -461,16 +536,50 @@ def main():
     header("Candidate Areal-Gauge Kappa Condition")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_general_spherical_metric()
-    case_1_areal_radius_from_area()
-    case_2_transform_to_areal_radius(ns)
-    case_3_kappa_areal_from_arbitrary_metric()
-    case_4_recover_reparameterization_result(ns)
-    case_5_gauge_fixed_condition_statement()
-    case_6_arbitrary_coordinate_expression()
-    case_7_failure_control_ignore_angular_sector()
-    case_8_summary_classification()
-    final_interpretation()
+
+    out = ScriptOutput()
+
+    case_0_general_spherical_metric(out)
+    case_1_areal_radius_from_area(out)
+    case_2_transform_to_areal_radius(out, ns)
+    case_3_kappa_areal_from_arbitrary_metric(out)
+    case_4_recover_reparameterization_result(out, ns)
+    case_5_gauge_fixed_condition_statement(out)
+    case_6_arbitrary_coordinate_expression(out)
+    case_7_failure_control_ignore_angular_sector(out)
+    case_8_summary_classification(out)
+    final_interpretation(out)
+
+    # Governance records inside the archive block.
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_zero_areal_gauge_geometric_condition",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "The condition kappa=0 (AB=1 in areal gauge) can be given a "
+            "gauge-fixed geometric meaning by defining the areal radius from "
+            "sphere area and expressing the metric in areal-radius form. "
+            "In arbitrary radial coordinate, this becomes T(R)Q(R) = S'(R)^2. "
+            "This is a provisional convention pending a full covariant formulation."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_kappa_zero_condition",
+        script_id=SCRIPT_ID,
+        title="Derive full covariant or 4D invariant for kappa=0 condition",
+        status=ObligationStatus.OPEN,
+        required_by=["kappa_zero_areal_gauge_geometric_condition"],
+        description=(
+            "The areal-gauge geometric construction of kappa=0 is well-defined in "
+            "spherical symmetry, but it is not a full 4D covariant condition. "
+            "A covariant generalization is needed before kappa=0 can be used outside "
+            "the static spherical areal-gauge setting."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

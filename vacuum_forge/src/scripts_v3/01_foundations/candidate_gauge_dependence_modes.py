@@ -1,5 +1,11 @@
 # Candidate gauge-dependence modes
 #
+# Group:
+#   01_foundations
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # This script tests how the reduced log-scale modes
@@ -62,6 +68,16 @@ from pathlib import Path
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 from vacuumforge.coordinates import CoordinateChange, validate_coordinate_invariance
 from vacuumforge.core.context import TheoryContext
 
@@ -86,14 +102,6 @@ def subheader(title: str) -> None:
     print("-" * 100)
     print(title)
     print("-" * 100)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -131,7 +139,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: areal-gauge recap
 # =============================================================================
 
-def case_0_areal_gauge_recap():
+def case_0_areal_gauge_recap(out: ScriptOutput) -> None:
     header("Case 0: Areal-gauge recap")
 
     a, b = sp.symbols("a b", real=True)
@@ -151,15 +159,27 @@ def case_0_areal_gauge_recap():
     print(f"s = {s}")
     print(f"AB = {AB}")
 
-    status_line("AB = exp(2*kappa)", is_zero(AB - sp.exp(2*kappa)))
-    status_line("kappa=0 gives AB=1", is_zero(AB.subs({b: -a}) - 1))
+    ab_exp_2kappa = is_zero(AB - sp.exp(2*kappa))
+    kappa_zero_ab_one = is_zero(AB.subs({b: -a}) - 1)
+
+    with out.derived_results():
+        out.line(
+            "AB = exp(2*kappa)",
+            StatusMark.PASS if ab_exp_2kappa else StatusMark.FAIL,
+            "areal-gauge algebra recap",
+        )
+        out.line(
+            "kappa=0 gives AB=1",
+            StatusMark.PASS if kappa_zero_ab_one else StatusMark.FAIL,
+            "b=-a implies AB=1",
+        )
 
 
 # =============================================================================
 # Case 1: general radial reparameterization
 # =============================================================================
 
-def case_1_general_radial_reparameterization(ns=None):
+def case_1_general_radial_reparameterization(out: ScriptOutput, ns=None):
     header("Case 1: General radial reparameterization r=f(R)")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -200,8 +220,8 @@ def case_1_general_radial_reparameterization(ns=None):
     expected_delta_k = sp.log(sp.diff(f, R))
     expected_delta_s = -sp.log(sp.diff(f, R))
 
-    status_line("kappa shifts by log(f')", is_zero(delta_kappa - expected_delta_k))
-    status_line("s shifts by -log(f')", is_zero(delta_s - expected_delta_s))
+    kappa_shifts = is_zero(delta_kappa - expected_delta_k)
+    s_shifts = is_zero(delta_s - expected_delta_s)
 
     ctx = TheoryContext("candidate_gauge_dependence_modes")
     change.register(ctx, "general_radial_reparameterization")
@@ -211,11 +231,30 @@ def case_1_general_radial_reparameterization(ns=None):
         sp.Rational(1, 2) * (a(change.old_coord) + b(change.old_coord)),
         change,
     )
-    status_line(
-        "coordinate-invariance validator marks reduced kappa as non-invariant",
-        invariance.status == "fail",
-        invariance.message,
-    )
+    invariance_fail = invariance.status == "fail"
+
+    print()
+    print("Interpretation:")
+    print("  Naive temporal-radial kappa and s are not invariant under radial")
+    print("  reparameterization if one leaves areal gauge.")
+    print("  The radial Jacobian moves information into B_new.")
+
+    with out.derived_results():
+        out.line(
+            "kappa shifts by log(f') under r=f(R)",
+            StatusMark.PASS if kappa_shifts else StatusMark.WARN,
+            f"delta_kappa = {delta_kappa}",
+        )
+        out.line(
+            "s shifts by -log(f') under r=f(R)",
+            StatusMark.PASS if s_shifts else StatusMark.WARN,
+            f"delta_s = {delta_s}",
+        )
+        out.line(
+            "coordinate-invariance validator marks reduced kappa as non-invariant",
+            StatusMark.PASS if invariance_fail else StatusMark.WARN,
+            invariance.message,
+        )
 
     if ns is not None:
         ns.record_derivation(
@@ -224,21 +263,16 @@ def case_1_general_radial_reparameterization(ns=None):
             output=sp.Eq(delta_kappa, sp.log(sp.diff(f, R))),
             method="coordinate_change_log_modes",
             status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
             metadata={"delta_s": str(sp.Eq(delta_s, -sp.log(sp.diff(f, R))))},
         )
-
-    print()
-    print("Interpretation:")
-    print("  Naive temporal-radial kappa and s are not invariant under radial")
-    print("  reparameterization if one leaves areal gauge.")
-    print("  The radial Jacobian moves information into B_new.")
 
 
 # =============================================================================
 # Case 2: simple scaling r=lambda R
 # =============================================================================
 
-def case_2_scaling_reparameterization():
+def case_2_scaling_reparameterization(out: ScriptOutput) -> None:
     header("Case 2: Scaling reparameterization r = lambda R")
 
     R, lam = sp.symbols("R lambda", positive=True, real=True)
@@ -263,15 +297,27 @@ def case_2_scaling_reparameterization():
     print(f"delta kappa = {sp.simplify(kappa_new-kappa_old)}")
     print(f"delta s = {sp.simplify(s_new-s_old)}")
 
-    status_line("kappa shifts by log(lambda)", is_zero((kappa_new-kappa_old) - sp.log(lam)))
-    status_line("s shifts by -log(lambda)", is_zero((s_new-s_old) + sp.log(lam)))
+    kappa_shifts_log_lam = is_zero((kappa_new-kappa_old) - sp.log(lam))
+    s_shifts_neg_log_lam = is_zero((s_new-s_old) + sp.log(lam))
+
+    with out.derived_results():
+        out.line(
+            "kappa shifts by log(lambda)",
+            StatusMark.PASS if kappa_shifts_log_lam else StatusMark.WARN,
+            f"delta_kappa = {sp.simplify(kappa_new-kappa_old)}",
+        )
+        out.line(
+            "s shifts by -log(lambda)",
+            StatusMark.PASS if s_shifts_neg_log_lam else StatusMark.WARN,
+            f"delta_s = {sp.simplify(s_new-s_old)}",
+        )
 
 
 # =============================================================================
 # Case 3: infinitesimal radial shift r=R+epsilon xi(R)
 # =============================================================================
 
-def case_3_infinitesimal_radial_shift():
+def case_3_infinitesimal_radial_shift(out: ScriptOutput) -> None:
     header("Case 3: Infinitesimal radial shift r = R + eps xi(R)")
 
     R, eps = sp.symbols("R eps", real=True)
@@ -294,8 +340,8 @@ def case_3_infinitesimal_radial_shift():
 
     expected = eps * sp.diff(xi, R)
 
-    status_line("delta kappa = eps xi'(R)", is_zero(delta_kappa - expected))
-    status_line("delta s = -eps xi'(R)", is_zero(delta_s + expected))
+    kappa_eps_xi = is_zero(delta_kappa - expected)
+    s_neg_eps_xi = is_zero(delta_s + expected)
 
     print()
     print("Interpretation:")
@@ -303,12 +349,24 @@ def case_3_infinitesimal_radial_shift():
     print("  reduced kappa and s by opposite amounts.")
     print("  This is a gauge artifact unless the areal gauge has been fixed.")
 
+    with out.derived_results():
+        out.line(
+            "delta kappa = eps xi'(R)",
+            StatusMark.PASS if kappa_eps_xi else StatusMark.WARN,
+            f"first-order shift = {delta_kappa}",
+        )
+        out.line(
+            "delta s = -eps xi'(R)",
+            StatusMark.PASS if s_neg_eps_xi else StatusMark.WARN,
+            f"first-order shift = {delta_s}",
+        )
+
 
 # =============================================================================
 # Case 4: AB=1 in areal gauge does not remain naive AB=1 after reparameterization
 # =============================================================================
 
-def case_4_reciprocal_scaling_gauge_warning(ns=None):
+def case_4_reciprocal_scaling_gauge_warning(out: ScriptOutput, ns=None):
     header("Case 4: Reciprocal scaling gauge warning")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -332,13 +390,20 @@ def case_4_reciprocal_scaling_gauge_warning(ns=None):
     print(f"  B_new = {B_new}")
     print(f"  naive A_new B_new = {AB_new_naive}")
 
-    status_line("naive AB_new equals f'(R)^2", is_zero(AB_new_naive - sp.diff(f, R)**2))
+    naive_ab_fprime_sq = is_zero(AB_new_naive - sp.diff(f, R)**2)
 
     print()
     print("Interpretation:")
     print("  AB=1 is an areal-gauge statement in this reduced formulation.")
     print("  After radial reparameterization, naive A_new B_new != 1 unless f'=1.")
     print("  The geometry has not changed; the reduced gauge representation changed.")
+
+    with out.derived_results():
+        out.line(
+            "naive AB_new equals f'(R)^2 after reparameterization",
+            StatusMark.PASS if naive_ab_fprime_sq else StatusMark.WARN,
+            "AB=1 is areal-gauge specific; f'!=1 gives apparent violation",
+        )
 
     if ns is not None:
         ns.record_derivation(
@@ -347,6 +412,7 @@ def case_4_reciprocal_scaling_gauge_warning(ns=None):
             output=sp.Eq(AB_new_naive, sp.diff(f, R) ** 2),
             method="coordinate_change_scale_factors",
             status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
         )
 
 
@@ -354,7 +420,7 @@ def case_4_reciprocal_scaling_gauge_warning(ns=None):
 # Case 5: determinant including angular sector
 # =============================================================================
 
-def case_5_full_determinant_behavior():
+def case_5_full_determinant_behavior(out: ScriptOutput) -> None:
     header("Case 5: Determinant including angular sector")
 
     R, theta = sp.symbols("R theta", positive=True, real=True)
@@ -383,7 +449,7 @@ def case_5_full_determinant_behavior():
     print(f"sqrt|g_new| = {sqrt_g_new}")
     print(f"expected Jacobian volume factor = {expected}")
 
-    status_line("full determinant transforms with radial Jacobian", is_zero(sqrt_g_new - expected))
+    det_transforms = is_zero(sqrt_g_new - expected)
 
     print()
     print("Interpretation:")
@@ -391,12 +457,19 @@ def case_5_full_determinant_behavior():
     print("  The apparent shift in kappa is a reduced temporal-radial-sector effect")
     print("  caused by leaving areal gauge, not a physical change in the metric.")
 
+    with out.derived_results():
+        out.line(
+            "full determinant transforms with radial Jacobian",
+            StatusMark.PASS if det_transforms else StatusMark.WARN,
+            "volume element is coordinate-invariant; kappa shift is a gauge artifact",
+        )
+
 
 # =============================================================================
 # Case 6: restoring areal gauge
 # =============================================================================
 
-def case_6_restoring_areal_gauge():
+def case_6_restoring_areal_gauge(out: ScriptOutput) -> None:
     header("Case 6: Restoring areal gauge")
 
     print("Areal radius is defined geometrically by sphere area:")
@@ -414,14 +487,20 @@ def case_6_restoring_areal_gauge():
     print()
     print("and the original reduced kappa and s are recovered.")
     print()
-    status_line("kappa/s are meaningful only after reduced gauge is specified", True)
+
+    with out.governance_assessments():
+        out.line(
+            "kappa/s are meaningful only after reduced gauge is specified",
+            StatusMark.PASS,
+            "restoring areal gauge recovers original kappa and s",
+        )
 
 
 # =============================================================================
 # Case 7: summary classification
 # =============================================================================
 
-def case_7_summary_classification():
+def case_7_summary_classification(out: ScriptOutput) -> None:
     header("Case 7: Summary classification")
 
     print("Results:")
@@ -446,12 +525,26 @@ def case_7_summary_classification():
     print("  Do not treat kappa or s as invariant fields yet.")
     print("  Treat them as reduced variables extracted after symmetry and gauge choice.")
 
+    with out.governance_assessments():
+        out.line(
+            "kappa and s are gauge-sensitive reduced variables",
+            StatusMark.PASS,
+            "areal-gauge condition; covariant parent remains open obligation",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive covariant or gauge-aware parent for kappa and s",
+            StatusMark.OBLIGATION,
+            "gauge dependence study confirms obligation from covariant parent script",
+        )
+
 
 # =============================================================================
 # Final interpretation
 # =============================================================================
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput) -> None:
     header("Final interpretation")
 
     print("This script confirms the main danger:")
@@ -475,6 +568,13 @@ def final_interpretation():
     print("Possible next artifact:")
     print("  candidate_gauge_dependence_modes.md")
 
+    with out.governance_assessments():
+        out.line(
+            "reduced kappa/s are areal-gauge statements, not invariant scalars",
+            StatusMark.PASS,
+            "confirmed by coordinate shift analysis; covariant parent obligation open",
+        )
+
 
 # =============================================================================
 # Main
@@ -484,15 +584,48 @@ def main():
     header("Candidate Gauge-Dependence Modes")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_areal_gauge_recap()
-    case_1_general_radial_reparameterization(ns)
-    case_2_scaling_reparameterization()
-    case_3_infinitesimal_radial_shift()
-    case_4_reciprocal_scaling_gauge_warning(ns)
-    case_5_full_determinant_behavior()
-    case_6_restoring_areal_gauge()
-    case_7_summary_classification()
-    final_interpretation()
+
+    out = ScriptOutput()
+
+    case_0_areal_gauge_recap(out)
+    case_1_general_radial_reparameterization(out, ns)
+    case_2_scaling_reparameterization(out)
+    case_3_infinitesimal_radial_shift(out)
+    case_4_reciprocal_scaling_gauge_warning(out, ns)
+    case_5_full_determinant_behavior(out)
+    case_6_restoring_areal_gauge(out)
+    case_7_summary_classification(out)
+    final_interpretation(out)
+
+    # Governance records inside the archive block.
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_gauge_aware_parent_for_kappa_s",
+        script_id=SCRIPT_ID,
+        title="Derive covariant or gauge-aware parent structure for kappa and s",
+        status=ObligationStatus.OPEN,
+        required_by=["reduced_mode_coordinate_shift"],
+        description=(
+            "Reduced kappa and s shift by log(f') under radial reparameterization. "
+            "They are areal-gauge variables, not coordinate-invariant scalars. "
+            "A covariant or gauge-aware parent structure must be identified "
+            "whose static spherical areal-gauge reduction gives kappa and s."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_s_areal_gauge_not_invariant",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The reduced log-scale modes kappa and s are not coordinate-invariant "
+            "scalar fields. They are areal-gauge reduced variables. The condition "
+            "kappa=0 (equivalently AB=1) is an areal-gauge geometric statement, "
+            "not a raw scalar equation."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

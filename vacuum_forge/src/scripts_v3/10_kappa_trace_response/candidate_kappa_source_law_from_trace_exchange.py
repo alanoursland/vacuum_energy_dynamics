@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate kappa source law from trace exchange
 #
 # Purpose
@@ -21,6 +27,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -32,22 +48,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED_AS_PRIMARY": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -88,7 +88,7 @@ def print_candidate(c: KappaSourceCandidate) -> None:
     print("-" * 100)
     print(c.name)
     print("-" * 100)
-    status_line(c.name, c.status)
+    print(f"Status: {c.status}")
     print(f"Candidate source: {c.candidate_source}")
     print(f"Reason: {c.reason}")
     print(f"Risk: {c.risk}")
@@ -113,8 +113,6 @@ def case_0_problem_statement():
     print("  exterior suppression condition")
     print("  gauge-vs-physical distinction")
     print("  scalar-radiation safety")
-
-    status_line("kappa source-law problem posed", "CONSTRAINED_BY_IDENTITY")
 
 
 def case_1_prior_kappa_relation():
@@ -142,8 +140,6 @@ def case_1_prior_kappa_relation():
     print()
     print("This defines a useful reduced diagnostic.")
     print("It does not yet derive a source law.")
-
-    status_line("kappa reduced diagnostic relation stated", "DERIVED_REDUCED")
 
 
 def build_candidates() -> List[KappaSourceCandidate]:
@@ -275,9 +271,6 @@ def case_4_schematic_equation():
     print("Important:")
     print("  This is a candidate template, not a derived law.")
 
-    status_line("schematic kappa trace equation proposed", "PLAUSIBLE",
-                "operator and source not derived")
-
 
 def case_5_exterior_suppression():
     header("Case 5: Exterior suppression condition")
@@ -301,9 +294,6 @@ def case_5_exterior_suppression():
     print("4. Gauge fixing: exterior areal/static gauge sets kappa = 0")
     print()
     print("Need to distinguish physical suppression from gauge choice.")
-
-    status_line("exterior suppression requirement stated", "CONSTRAINED_BY_IDENTITY",
-                "mechanism not selected")
 
 
 def case_6_perfect_fluid_trace_candidates():
@@ -333,9 +323,6 @@ def case_6_perfect_fluid_trace_candidates():
     print("  Direct T coupling reintroduces density as a large source.")
     print("  Spatial trace / pressure-like coupling better isolates interior stress response.")
 
-    status_line("perfect-fluid trace options identified", "CONSTRAINED_BY_IDENTITY",
-                "source choice not derived")
-
 
 def case_7_density_double_counting_guard():
     header("Case 7: Density double-counting guard")
@@ -357,9 +344,6 @@ def case_7_density_double_counting_guard():
     print("Disallowed without derivation:")
     print()
     print("  Delta kappa ~ rho as a second independent mass potential")
-
-    status_line("density double-counting guard stated", "RISK",
-                "prevents kappa from becoming duplicate A")
 
 
 def case_8_classification(candidates: List[KappaSourceCandidate]):
@@ -383,9 +367,6 @@ def case_8_classification(candidates: List[KappaSourceCandidate]):
     print()
     print("  raw rho")
 
-    status_line("kappa source classification produced", "CONSTRAINED_BY_IDENTITY",
-                "source narrowed but not derived")
-
 
 def case_9_failure_controls():
     header("Case 9: Failure controls")
@@ -398,9 +379,6 @@ def case_9_failure_controls():
     print("4. kappa is treated as physical before gauge artifacts are separated.")
     print("5. exterior kappa=0 is imposed by hand with no suppression/constraint reason.")
     print("6. pressure/stress trace source is chosen only because GR has pressure terms.")
-
-    status_line("kappa failure controls stated", "RISK",
-                "source law must do ontology work")
 
 
 def case_10_next_tests():
@@ -423,9 +401,6 @@ def case_10_next_tests():
     print()
     print("Reason:")
     print("  Exterior kappa=0 is required by the strongest reconstructed sector.")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "exterior suppression is the next hard requirement")
 
 
 def final_interpretation():
@@ -464,6 +439,9 @@ def main():
     header("Candidate Kappa Source Law From Trace Exchange")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     case_1_prior_kappa_relation()
     candidates = build_candidates()
@@ -476,14 +454,68 @@ def main():
     case_9_failure_controls()
     case_10_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_source_law_from_trace_exchange_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_trace_source_family_narrowed"),
-        method="kappa_source_law_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        ns.record_derivation(
+            derivation_id="kappa_source_law_from_trace_exchange_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_trace_source_family_narrowed"),
+            method="kappa_source_law_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_primary_source_law_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive primary kappa source law from first principles",
+            status=ObligationStatus.OPEN,
+            description=(
+                "S_trace, K_k, alpha_k, and m_k are all unresolved. "
+                "The source family is narrowed to pressure/stress trace but not derived."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_gauge_vs_physical_split_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive gauge-vs-physical split for kappa",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Whether kappa is physical or a coordinate-volume artifact in the "
+                "areal/static reduction must be established before treating kappa as "
+                "a physical trace-response field."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="kappa_must_not_duplicate_A_sector_density_response",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "Kappa must not be primarily sourced by raw density rho, "
+                "as rho already sources A_constraint. Using rho as the primary "
+                "kappa source risks double-counting the scalar mass response."
+            ),
+        ))
+
+        with out.governance_assessments():
+            out.line("kappa source family narrowed to pressure/stress trace", StatusMark.PASS, "raw rho rejected as primary")
+            out.line("K_k coefficient", StatusMark.OBLIGATION, "not derived")
+            out.line("alpha_k coupling", StatusMark.OBLIGATION, "not derived")
+            out.line("m_k scale", StatusMark.OBLIGATION, "not derived")
+            out.line("gauge-vs-physical status", StatusMark.OBLIGATION, "unresolved")
+
+        with out.unresolved_obligations():
+            out.line("derive primary kappa source law", StatusMark.OBLIGATION, "open")
+            out.line("derive gauge-vs-physical split", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

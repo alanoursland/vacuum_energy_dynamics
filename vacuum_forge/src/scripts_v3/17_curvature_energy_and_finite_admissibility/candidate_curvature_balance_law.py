@@ -3,6 +3,9 @@
 # Group:
 #   17_curvature_energy_and_finite_admissibility
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The J_curv definition requirements audit found:
@@ -35,6 +38,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -48,7 +61,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -73,6 +86,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -557,14 +571,54 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="curvature_balance_law_marker",
-        inputs=[],
-        output=sp.Symbol("curvature_balance_law_complete"),
-        method="curvature_balance_law",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_curvature_balance_source_sides_in_17_balance_law",
+            script_id=SCRIPT_ID,
+            title="Derive Sigma_curv and R_curv for curvature balance",
+            status=ObligationStatus.OPEN,
+            description="Sigma_curv and R_curv must be defined independently before any curvature balance law can be non-decorative.",
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="curvature_balance_diagnostic_fallback_in_17",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement="Curvature admissibility currently survives only as a diagnostic/branch-filter; no non-decorative balance law can be written until J_curv and source sides are defined.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_decorative_continuity_in_17_balance_law",
+            script_id=SCRIPT_ID,
+            branch_id="decorative_curvature_continuity_law",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_repair_balance_in_17_balance_law",
+            script_id=SCRIPT_ID,
+            branch_id="curvature_repair_balance",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_H_curv_as_balance_closure_in_17_balance_law",
+            script_id=SCRIPT_ID,
+            branch_id="H_curv_as_balance_closure",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["prove_curvature_balance_source_sides_in_17_balance_law"],
+        ))
+        ns.record_derivation(
+            derivation_id="curvature_balance_law_marker",
+            inputs=[],
+            output=sp.Symbol("curvature_balance_law_complete"),
+            method="curvature_balance_law",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

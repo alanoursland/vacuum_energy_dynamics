@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate static-source neutrality for J_V
 #
 # Purpose
@@ -30,11 +36,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -42,33 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -271,7 +261,7 @@ def print_entry(e: StaticNeutralityEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -296,7 +286,10 @@ def case_0_problem_statement():
     print("  preserve no-overlap / residual-kill")
     print("  keep gamma/AB recovery downstream")
 
-    status_line("static-source neutrality problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("static-source neutrality problem posed", StatusMark.OBLIGATION, "requires static neutrality theorem")
+    out.print()
 
 
 def case_1_inventory(entries: List[StaticNeutralityEntry]):
@@ -323,7 +316,10 @@ def case_2_compact_table(entries: List[StaticNeutralityEntry]):
             + " |"
         )
 
-    status_line("compact static-neutrality ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact static-neutrality ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[StaticNeutralityEntry]):
@@ -344,7 +340,10 @@ def case_3_status_counts(entries: List[StaticNeutralityEntry]):
     print("  No exterior scalar charge, no far-zone scalar flux, no M_ext shift, and no-overlap are mandatory.")
     print("  If static neutrality survives, boundary/no-overlap becomes the next gate.")
 
-    status_line("static-neutrality status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("static-neutrality status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_static_decision_tree():
@@ -370,7 +369,10 @@ def case_4_static_decision_tree():
     print("6. If exterior scalar charge appears:")
     print("   branch killed for ordinary static gravity.")
 
-    status_line("static-neutrality decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("static-neutrality decision tree stated", StatusMark.INFO, "decision tree recorded")
+    out.print()
 
 
 def case_5_good_failure():
@@ -389,7 +391,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  allow static scalar charge and hope recovery checks hide it.")
 
-    status_line("static-neutrality good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("static-neutrality good failure stated", StatusMark.DEFER, "deferred pending static neutrality theorem")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -406,7 +411,10 @@ def case_6_failure_controls():
     print("7. static current creates residual metric trace outside B_s")
     print("8. gamma_like or AB is used to select neutrality mechanism")
 
-    status_line("static-neutrality failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("static-neutrality failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -430,7 +438,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  If ordinary static neutrality survives, the next gate is whether J_V-driven zeta leaks through the boundary or double-counts B_s/residual trace.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_boundary_no_overlap_for_volume_current.py")
+    out.print()
 
 
 def final_interpretation():
@@ -462,14 +473,90 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="static_source_neutrality_for_J_V_marker",
-        inputs=[],
-        output=sp.Symbol("static_source_neutrality_for_J_V_audited"),
-        method="static_source_neutrality_for_J_V_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_static_source_neutrality_theorem_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive static-source neutrality theorem for J_V/Sigma/R",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that the candidate J_V/Sigma_V/R_V structure creates no exterior scalar "
+                "volume charge, no far-zone scalar flux, and no M_ext shift for ordinary static "
+                "sources. Q_V = 0 must hold by structure, not by R_V tuning."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="sn8_exterior_scalar_charge_mandatory_zero",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Q_V (net volume charge around static source) must be zero by structure. "
+                "Any static law that makes independent exterior scalar gravity is rejected."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="sn12_R_V_cancellation_patch_rejected",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "R_V tuned to cancel static exterior scalar charge is rejected as a neutrality "
+                "mechanism. Relaxation cannot serve as a scalar-charge eraser."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="sn13_recovery_downstream_static_neutrality",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "gamma_like and AB recovery tests must be performed only after static neutrality "
+                "is structural; they must not be used to tune the static balance."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="sn2_static_zero_current_safe_route",
+            script_id=SCRIPT_ID,
+            name="Static zero-current equilibrium (J_V = 0 in static region)",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_static_source_neutrality_theorem_in_15"],
+            activation_conditions=[
+                "J_V = 0 in static equilibrium with no exterior flux",
+                "u_vac is not required from J_V in the static region",
+                "separate equilibrium-frame fallback exists if frame is needed",
+            ],
+        ))
+        # SN14 is a BRANCH_KILLED entry but only "applies if charge is demonstrated".
+        # No exterior scalar charge has been demonstrated yet, so this is recorded
+        # as a conditional deferred branch, not a kill.
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_static_neutrality_unsafe_current_branch",
+            script_id=SCRIPT_ID,
+            branch_id="J_V_Sigma_R_static_neutrality_check",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_static_source_neutrality_theorem_in_15"],
+            description=(
+                "Static neutrality has not been demonstrated. Current families that produce "
+                "exterior scalar charge around ordinary static sources will be killed. "
+                "The branch is deferred pending the static neutrality theorem."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="static_source_neutrality_for_J_V_marker",
+            inputs=[],
+            output=sp.Symbol("static_source_neutrality_for_J_V_audited"),
+            method="static_source_neutrality_for_J_V_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

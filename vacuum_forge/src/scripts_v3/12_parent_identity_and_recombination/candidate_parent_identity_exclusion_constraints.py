@@ -1,5 +1,11 @@
 # Candidate parent identity exclusion constraints
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # Group 12 begins here.
@@ -19,10 +25,6 @@
 #
 # The purpose is to rule out decorative, unsafe, or GR-importing parent identity
 # forms before trying to construct a positive parent.
-#
-# Canonical location:
-#   theory_v3/development/field_equation_candidates/12_parent_identity_and_recombination/
-#   scripts_v3/12_parent_identity_and_recombination/candidate_parent_identity_exclusion_constraints.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -31,6 +33,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,24 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "EXCLUDED": "PASS",
-        "FORBIDDEN": "PASS",
-        "CONSTRAINED": "WARN",
-        "RISK": "WARN",
-        "UNRESOLVED": "FAIL",
-        "FATAL": "FAIL",
-        "WATCH": "WARN",
-        "TEMPLATE": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -237,11 +232,11 @@ def print_exclusion(x: Exclusion) -> None:
     print(f"Why forbidden: {x.why_forbidden}")
     print(f"Violated result: {x.violated_result}")
     print(f"Failure mode: {x.failure_mode}")
-    status_line(x.name, x.status)
+    print(f"[INFO] {x.name}: {x.status}")
     print(f"Surviving requirement: {x.surviving_requirement}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent identity exclusion problem")
 
     print("Question:")
@@ -259,7 +254,8 @@ def case_0_problem_statement():
     print("  do not let scalar radiation or double-counting reappear")
     print("  do not use kappa as a repair knob")
 
-    status_line("parent identity exclusion problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("parent identity exclusion problem posed", StatusMark.DEFER, "exclusion inventory open")
 
 
 def case_1_exclusion_inventory(entries: List[Exclusion]):
@@ -268,7 +264,7 @@ def case_1_exclusion_inventory(entries: List[Exclusion]):
         print_exclusion(entry)
 
 
-def case_2_compact_table(entries: List[Exclusion]):
+def case_2_compact_table(entries: List[Exclusion], out: ScriptOutput):
     header("Case 2: Compact exclusion ledger")
 
     print("| Exclusion | Forbidden form | Status | Surviving requirement |")
@@ -286,10 +282,11 @@ def case_2_compact_table(entries: List[Exclusion]):
             + " |"
         )
 
-    status_line("compact exclusion ledger produced", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("compact exclusion ledger produced", StatusMark.INFO, "14 exclusions recorded")
 
 
-def case_3_status_counts(entries: List[Exclusion]):
+def case_3_status_counts(entries: List[Exclusion], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -305,10 +302,11 @@ def case_3_status_counts(entries: List[Exclusion]):
     print("  Most false parents are forbidden because they reintroduce scalar radiation,")
     print("  double-count sources, tune mass, or import GR by hand.")
 
-    status_line("exclusion count produced", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("exclusion count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_surviving_parent_requirements(entries: List[Exclusion]):
+def case_4_surviving_parent_requirements(out: ScriptOutput):
     header("Case 4: Surviving parent requirements")
 
     print("Any surviving parent identity must:")
@@ -326,10 +324,11 @@ def case_4_surviving_parent_requirements(entries: List[Exclusion]):
     print("11. Produce recombination without scalar double-counting.")
     print("12. Keep near-boundary deviation diagnostic-only until magnitude is derived.")
 
-    status_line("surviving parent requirements stated", "CONSTRAINED")
+    with out.unresolved_obligations():
+        out.line("surviving parent requirements stated", StatusMark.OBLIGATION, "12 open requirements for parent identity")
 
 
-def case_5_hardest_exclusions():
+def case_5_hardest_exclusions(out: ScriptOutput):
     header("Case 5: Hardest exclusions")
 
     print("Hardest exclusions to make constructive:")
@@ -349,10 +348,11 @@ def case_5_hardest_exclusions():
     print("5. Metric recombination not GR import.")
     print("   Need: recombination map from sector identity.")
 
-    status_line("hardest exclusions identified", "WATCH")
+    with out.unresolved_obligations():
+        out.line("hardest exclusions identified", StatusMark.OBLIGATION, "5 hardest exclusions need constructive follow-up")
 
 
-def case_6_possible_parent_space():
+def case_6_possible_parent_space(out: ScriptOutput):
     header("Case 6: What remains possible")
 
     print("Still possible parent identity classes:")
@@ -366,10 +366,11 @@ def case_6_possible_parent_space():
     print()
     print("But none of these are derived yet.")
 
-    status_line("surviving parent space described", "UNRESOLVED")
+    with out.unresolved_obligations():
+        out.line("surviving parent space described", StatusMark.OBLIGATION, "none of the surviving classes are derived")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -390,7 +391,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  After ruling out false parents, define the reduced-sector tests for any surviving parent.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "reduced implications script is the next gate")
 
 
 def final_interpretation():
@@ -421,22 +423,131 @@ def main():
     header("Candidate Parent Identity Exclusion Constraints")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_exclusions()
     case_1_exclusion_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_surviving_parent_requirements(entries)
-    case_5_hardest_exclusions()
-    case_6_possible_parent_space()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_surviving_parent_requirements(out)
+    case_5_hardest_exclusions(out)
+    case_6_possible_parent_space(out)
+    case_7_next_tests(out)
     final_interpretation()
+
+    # Exclusion policy rules: FORBIDDEN and EXCLUDED forms
+    for claim_id, statement in [
+        ("scalar_a_radiation_forbidden",
+         "Box A = scalar source is forbidden as a parent identity form. A is a constraint, not ordinary radiation."),
+        ("box_kappa_forbidden",
+         "Box kappa = alpha*trace is forbidden. Kappa is first-order non-inertial relaxation."),
+        ("rho_double_sourced_kappa_forbidden",
+         "rho must not source both A and an independent long-range kappa scalar."),
+        ("nonzero_exterior_kappa_charge_forbidden",
+         "Nonzero exterior kappa charge is forbidden. Q_kappa = 0, F_kappa(R+) = 0."),
+        ("trace_contamination_tt_forbidden",
+         "Trace or pressure must not directly source h_ij^TT."),
+        ("longitudinal_current_W_forbidden",
+         "P_L j must not source transverse vector W_i. Current decomposition must be preserved."),
+        ("boundary_relaxation_changes_M_ext_forbidden",
+         "Kappa/boundary smoothing must not change M_ext or the exterior 1/r coefficient."),
+        ("sigma_creation_ordinary_closure_forbidden",
+         "Sigma_creation != 0 is forbidden in ordinary closed gravity."),
+        ("gr_coefficient_insertion_as_derivation_forbidden",
+         "GR coefficients (Lense-Thirring normalization, C_T, tensor flux) must not be inserted as derived."),
+    ]:
+        ns.record_claim(ClaimRecord(
+            claim_id=claim_id,
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=statement,
+        ))
+
+    # Proof obligations from surviving requirements
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_identity_E_parent_definition",
+        script_id=SCRIPT_ID,
+        title="Define E_parent and derive its reduced sector projections",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent identity must define E_parent and show its reduced projections "
+            "force the known sectors: A constraint, W_i sourcing, h_TT radiation, "
+            "kappa relaxation. A decorative Bianchi restatement is forbidden."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_constraint_propagation_from_continuity",
+        script_id=SCRIPT_ID,
+        title="Derive continuity-compatible scalar constraint propagation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the A constraint propagates consistently with source continuity "
+            "(partial_t rho + div j_L = 0) without introducing Box A radiation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_mass_preservation_theorem_12",
+        script_id=SCRIPT_ID,
+        title="Derive boundary mass preservation theorem",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that kappa/boundary relaxation cannot change the exterior A-sector mass flux. "
+            "delta M_ext|kappa_relaxation = 0 must be established as a theorem, not an assumption."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_vacuum_config_energy_accounting_12",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum configuration energy accounting for Gamma_relax",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Gamma_relax must represent exchange/restoration into a named vacuum configuration "
+            "variable, not energy disappearance. The destination variable must be defined."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_recombination_map_without_double_counting_12",
+        script_id=SCRIPT_ID,
+        title="Derive parent recombination map without scalar double-counting",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent identity must produce a recombination map for A, W_i, h_TT, kappa "
+            "that counts scalar response exactly once and does not copy GR metric form."
+        ),
+    ))
+
+    # Branch decision: positive parent identity deferred pending prerequisites
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_identity_positive_construction",
+        script_id=SCRIPT_ID,
+        branch_id="parent_identity_positive_construction",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_parent_identity_E_parent_definition",
+            "derive_scalar_constraint_propagation_from_continuity",
+            "derive_boundary_mass_preservation_theorem_12",
+            "derive_vacuum_config_energy_accounting_12",
+            "derive_recombination_map_without_double_counting_12",
+        ],
+        description=(
+            "No positive parent identity can be constructed until the exclusion obligations are satisfied. "
+            "This branch is deferred pending reduced implications, projector structure, and derivation gates."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="parent_identity_exclusion_constraints_marker",
         inputs=[],
         output=sp.Symbol("parent_identity_exclusion_constraints_built"),
         method="parent_identity_exclusion_constraints_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

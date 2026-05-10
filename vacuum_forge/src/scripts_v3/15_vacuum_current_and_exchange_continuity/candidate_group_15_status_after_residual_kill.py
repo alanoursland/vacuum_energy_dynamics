@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   SUMMARY
+#
 # Candidate Group 15 status after residual-kill
 #
 # Purpose
@@ -20,11 +26,23 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -32,33 +50,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -210,7 +201,7 @@ def print_entry(e: Group15StatusEntry) -> None:
     print(e.name)
     print("-" * 120)
     print(f"Result: {e.result}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Consequence: {e.consequence}")
     print(f"Handoff: {e.handoff}")
 
@@ -234,7 +225,10 @@ def case_0_problem_statement():
     print("  preserve recovery downstream")
     print("  prepare field-equation status update")
 
-    status_line("Group 15 status-after-residual-kill problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Group 15 status-after-residual-kill problem posed", StatusMark.OBLIGATION, "requires honest Group 15 closure")
+    out.print()
 
 
 def case_1_status_ledger(entries: List[Group15StatusEntry]):
@@ -261,7 +255,10 @@ def case_2_compact_table(entries: List[Group15StatusEntry]):
             + " |"
         )
 
-    status_line("compact Group 15 status table produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact Group 15 status table produced", StatusMark.INFO, "summary only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[Group15StatusEntry]):
@@ -282,7 +279,10 @@ def case_3_status_counts(entries: List[Group15StatusEntry]):
     print("  Group 15 narrowed the field-equation search but did not derive a field equation.")
     print("  Next step should update field-equation status after Group 15.")
 
-    status_line("Group 15 status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Group 15 status count produced", StatusMark.INFO, "summary only")
+    out.print()
 
 
 def case_4_surviving_bottlenecks():
@@ -310,7 +310,10 @@ def case_4_surviving_bottlenecks():
     print()
     print("  real J_V + no-overlap/residual-kill mechanism")
 
-    status_line("surviving bottlenecks recorded", "UNRESOLVED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("real J_V + no-overlap/residual-kill mechanism", StatusMark.OBLIGATION, "central surviving bottleneck after Group 15")
+    out.print()
 
 
 def case_5_current_convention():
@@ -336,7 +339,10 @@ def case_5_current_convention():
     print("4. kappa obtains separately derived non-overlap status")
     print("5. parent identity derives residual-kill or residual survival")
 
-    status_line("working convention recorded", "SAFE_IF")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("working convention recorded", StatusMark.WARN, "provisional only; not derived")
+    out.print()
 
 
 def case_6_rejected_regressions():
@@ -359,7 +365,10 @@ def case_6_rejected_regressions():
     for idx, item in enumerate(regressions, 1):
         print(f"{idx}. {item}")
 
-    status_line("rejected regressions preserved", "REJECTED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("rejected regressions preserved", StatusMark.INFO, "policy rules recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -383,7 +392,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  Group 15 has produced a durable status update. The larger field-equation status should now be revised before opening another mechanism search.")
 
-    status_line("next document selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next document selected", StatusMark.INFO, "field_equation_status_after_group_15.md")
+    out.print()
 
 
 def final_interpretation():
@@ -401,7 +413,10 @@ def final_interpretation():
     print()
     print("  field_equation_status_after_group_15.md")
 
-    status_line("Group 15 status after residual-kill complete", "CLOSED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Group 15 status after residual-kill complete", StatusMark.PASS, "closed")
+    out.print()
 
 
 def main():
@@ -419,14 +434,108 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="group_15_status_after_residual_kill_marker",
-        inputs=[],
-        output=sp.Symbol("group_15_status_after_residual_kill_audited"),
-        method="group_15_status_after_residual_kill_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        # Final group-level summary claims
+        ns.record_claim(ClaimRecord(
+            claim_id="g15_J_V_unresolved_final",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SUMMARY_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            statement=(
+                "Group 15 did not derive a field equation. J_V as a physical flux/transport "
+                "current remains undefined. Exchange continuity nabla_mu J_V^mu = Sigma_V - R_V "
+                "remains a theorem target."
+            ),
+            obligation_ids=[
+                "derive_J_V_physical_flux_law_in_15",
+                "derive_Sigma_V_operator_in_15",
+                "derive_R_V_operator_in_15",
+                "derive_exchange_continuity_law_in_15",
+            ],
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="g15_residual_kill_working_boundary",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SUMMARY_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Group 15 established the working boundary: J_V-driven zeta may enter ordinary "
+                "metric trace only through B_s, with residual zeta/kappa metric trace killed or "
+                "non-metric, unless O is later derived. This is provisional."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="g15_no_overlap_O_unresolved_final",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SUMMARY_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            statement=(
+                "O[B_s, zeta_residual/kappa_residual, J_V] = 0 remains unresolved. "
+                "Count-once recombination is the central missing theorem carried out of Group 15."
+            ),
+            obligation_ids=[
+                "derive_no_overlap_operator_or_residual_kill_in_15",
+                "derive_residual_kill_theorem_or_parent_identity_in_15",
+            ],
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="g15_policy_no_regression_list",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Group 15 rejected regressions must be preserved in all downstream groups: "
+                "no treating residual-kill as derived; no J_V without flux law; no continuity "
+                "as current definition; no zeta in both B_s and residual trace; no kappa "
+                "restoring killed trace; no recovery checks choosing residual status."
+            ),
+        ))
+        # HandoffImportRecord for Group 16 - the final group handoff
+        ns.record_handoff_import(HandoffImportRecord(
+            handoff_id="group_16_handoff_from_15",
+            script_id=SCRIPT_ID,
+            imported_as=RecordKind.SUMMARY_CLAIM,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            imported_record_refs=[
+                "claim:g15_J_V_unresolved_final",
+                "claim:g15_residual_kill_working_boundary",
+                "claim:g15_no_overlap_O_unresolved_final",
+                "claim:g15_policy_no_regression_list",
+                "obligation:derive_J_V_physical_flux_law_in_15",
+                "obligation:derive_exchange_continuity_law_in_15",
+                "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
+                "obligation:derive_boundary_neutrality_theorem_in_15",
+                "obligation:derive_static_source_neutrality_theorem_in_15",
+                "obligation:derive_J_V_timelike_domain_theorem_in_15",
+                "obligation:derive_residual_kill_theorem_or_parent_identity_in_15",
+                "obligation:derive_Sigma_V_operator_in_15",
+                "obligation:derive_R_V_operator_in_15",
+                "route:g15c_residual_kill_provisional_convention",
+                "route:no4_residual_kill_safe_route",
+                "route:bo6_B_s_only_metric_insertion_candidate_route",
+            ],
+            description=(
+                "What Group 16 may import from Group 15: the J_V/exchange-continuity unresolved "
+                "status, the residual-kill provisional convention as the working boundary for "
+                "ordinary metric entry, the no-overlap bottleneck, all Group 15 open proof "
+                "obligations, and the Group 15 rejection list. Group 16 must not treat any of "
+                "these as resolved without new derivation."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="group_15_status_after_residual_kill_marker",
+            inputs=[],
+            output=sp.Symbol("group_15_status_after_residual_kill_audited"),
+            method="group_15_status_after_residual_kill_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

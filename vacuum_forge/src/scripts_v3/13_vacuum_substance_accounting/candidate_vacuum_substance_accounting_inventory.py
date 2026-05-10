@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   INVENTORY
+
 # Candidate vacuum substance accounting inventory
 #
 # Purpose
@@ -39,6 +45,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -50,26 +66,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DERIVED_REDUCED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -302,12 +298,12 @@ def print_variable(v: AccountingVariable) -> None:
     print(f"Candidate meaning: {v.candidate_meaning}")
     print(f"Allowed exchange: {v.allowed_exchange}")
     print(f"Forbidden role: {v.forbidden_role}")
-    status_line(v.name, v.status)
+    print(f"Status: {v.status}")
     print(f"Missing: {v.missing}")
     print(f"Next test: {v.next_test}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Vacuum substance accounting inventory problem")
 
     print("Question:")
@@ -334,7 +330,8 @@ def case_0_problem_statement():
     print("  no hidden Sigma_creation")
     print("  no coefficient tuning reservoir")
 
-    status_line("vacuum accounting inventory problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("vacuum accounting inventory problem posed", StatusMark.OBLIGATION, "open: all accounting variables require geometric definitions")
 
 
 def case_1_inventory(entries: List[AccountingVariable]):
@@ -343,7 +340,7 @@ def case_1_inventory(entries: List[AccountingVariable]):
         print_variable(entry)
 
 
-def case_2_compact_table(entries: List[AccountingVariable]):
+def case_2_compact_table(entries: List[AccountingVariable], out: ScriptOutput):
     header("Case 2: Compact accounting ledger")
 
     print("| Variable | Kind | Status | Forbidden role | Missing | Next test |")
@@ -365,10 +362,11 @@ def case_2_compact_table(entries: List[AccountingVariable]):
             + " |"
         )
 
-    status_line("compact accounting ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact accounting ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[AccountingVariable]):
+def case_3_status_counts(entries: List[AccountingVariable], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -384,10 +382,11 @@ def case_3_status_counts(entries: List[AccountingVariable]):
     print("  The only reduced-derived pieces are the A-sector exterior mass/flux quantities.")
     print("  The central missing definition is the geometric meaning of epsilon_vac_config.")
 
-    status_line("accounting status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("accounting status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_geometric_vs_bookkeeping():
+def case_4_geometric_vs_bookkeeping(out: ScriptOutput):
     header("Case 4: Geometric versus bookkeeping variables")
 
     print("Geometric candidates:")
@@ -416,10 +415,11 @@ def case_4_geometric_vs_bookkeeping():
     print("  The next group should prefer geometric definitions first.")
     print("  Bookkeeping variables are allowed only if tied to geometry or explicitly constrained.")
 
-    status_line("geometric/bookkeeping split stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("geometric/bookkeeping split stated", StatusMark.PASS, "policy constraint on variable classification")
 
 
-def case_5_no_repair_reservoir_tests():
+def case_5_no_repair_reservoir_tests(out: ScriptOutput):
     header("Case 5: No-repair-reservoir tests")
 
     print("A vacuum-substance accounting variable fails if:")
@@ -433,10 +433,11 @@ def case_5_no_repair_reservoir_tests():
     print("7. It converts scalar waves into far-zone scalar radiation.")
     print("8. It makes near-boundary predictions before observables are derived.")
 
-    status_line("no-repair-reservoir tests stated", "RISK")
+    with out.governance_assessments():
+        out.line("no-repair-reservoir tests stated", StatusMark.DEFER, "open risk: tests pending geometric definitions")
 
 
-def case_6_conversion_picture():
+def case_6_conversion_picture(out: ScriptOutput):
     header("Case 6: Scalar/trace conversion picture")
 
     print("Working picture:")
@@ -457,10 +458,11 @@ def case_6_conversion_picture():
     print()
     print("This is a target, not a derivation.")
 
-    status_line("conversion picture stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("conversion picture stated", StatusMark.DEFER, "candidate route: geometric variable identification pending")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -481,7 +483,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The inventory shows the central missing definition is geometric: what is epsilon_vac_config?")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "volume form configuration variable")
 
 
 def final_interpretation():
@@ -507,22 +510,105 @@ def main():
     header("Candidate Vacuum Substance Accounting Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_inventory()
+
+    case_0_problem_statement(out)
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_geometric_vs_bookkeeping()
-    case_5_no_repair_reservoir_tests()
-    case_6_conversion_picture()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_geometric_vs_bookkeeping(out)
+    case_5_no_repair_reservoir_tests(out)
+    case_6_conversion_picture(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="epsilon_vac_config_candidate_geometric",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "epsilon_vac_config is a candidate geometric/spacetime-configuration variable "
+            "that exchanges with e_kappa during curvature excess/deficit restoration. "
+            "It must not act as a bottomless energy reservoir or coefficient tuning knob."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="M_ext_A_flux_protected_from_vacuum_accounting",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "M_ext and A_flux are A-sector exterior quantities fixed by the scalar constraint. "
+            "They must not be changed by kappa relaxation, boundary smoothing, or E_vac_config exchange."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="Sigma_creation_excluded_ordinary_gravity",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Sigma_creation is an active-regime source. "
+            "It must remain zero in ordinary closed-regime gravity."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="geometric_variables_preferred_over_bookkeeping",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Accounting variables must be geometric or explicitly bookkeeping-constrained. "
+            "Bookkeeping variables q_v, J_v are allowed only if tied to geometry. "
+            "Geometric candidates sqrt_gamma and ln_sqrt_gamma take priority."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_epsilon_vac_config_geometric_definition",
+        script_id=SCRIPT_ID,
+        title="Derive geometric definition of epsilon_vac_config",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Provide a geometric definition of epsilon_vac_config in terms of sqrt(gamma) or kappa, "
+            "including units, measure, and relation to volume form."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_Sigma_exchange_covariant_expression",
+        script_id=SCRIPT_ID,
+        title="Derive covariant expression for Sigma_exchange",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Provide a covariant tensor expression for the matter/vacuum-spacetime configuration coupling "
+            "Sigma_exchange that does not duplicate A-sector mass sources."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_identity",
+        script_id=SCRIPT_ID,
+        title="Derive P_recombination projector identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive the recombination projector assembling A, W_i, h_TT, and kappa "
+            "into geometry without double-counting scalar/trace response."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="vacuum_substance_accounting_inventory_marker",
         inputs=[],
         output=sp.Symbol("vacuum_substance_accounting_inventory_audited"),
         method="vacuum_substance_accounting_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

@@ -1,5 +1,11 @@
 # Candidate kappa covariant relaxation requirement
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The scalar constraint-not-radiation audit found:
@@ -31,6 +37,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,24 +60,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REJECTED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "REQUIRED": "WARN",
-        "CANDIDATE": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -200,12 +200,12 @@ def print_requirement(k: KappaRequirement) -> None:
     print(f"Requirement: {k.requirement}")
     print(f"Candidate form: {k.candidate_form}")
     print(f"Forbidden form: {k.forbidden_form}")
-    status_line(k.name, k.status)
+    print(f"[INFO] {k.name}: {k.status}")
     print(f"Risk: {k.risk}")
     print(f"Missing: {k.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Kappa covariant relaxation requirement problem")
 
     print("Question:")
@@ -223,7 +223,8 @@ def case_0_problem_statement():
     print("  do not let kappa carry rho")
     print("  do not let relaxation destroy energy")
 
-    status_line("kappa covariant relaxation problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("kappa covariant relaxation problem posed", StatusMark.OBLIGATION, "kappa frame and energy requirements open")
 
 
 def case_1_requirement_inventory(entries: List[KappaRequirement]):
@@ -232,7 +233,7 @@ def case_1_requirement_inventory(entries: List[KappaRequirement]):
         print_requirement(entry)
 
 
-def case_2_compact_table(entries: List[KappaRequirement]):
+def case_2_compact_table(entries: List[KappaRequirement], out: ScriptOutput):
     header("Case 2: Compact kappa relaxation ledger")
 
     print("| Requirement | Candidate form | Forbidden form | Status | Missing |")
@@ -252,10 +253,11 @@ def case_2_compact_table(entries: List[KappaRequirement]):
             + " |"
         )
 
-    status_line("compact kappa ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact kappa ledger produced", StatusMark.INFO, "10 kappa relaxation requirements recorded")
 
 
-def case_3_status_counts(entries: List[KappaRequirement]):
+def case_3_status_counts(entries: List[KappaRequirement], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -271,10 +273,11 @@ def case_3_status_counts(entries: List[KappaRequirement]):
     print("  The major unresolved issue is the frame field or derivative direction.")
     print("  Energy accounting remains missing.")
 
-    status_line("kappa status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("kappa status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_covariantized_form():
+def case_4_candidate_covariantized_form(out: ScriptOutput):
     header("Case 4: Candidate covariantized form")
 
     print("Candidate frame-compatible relaxation form:")
@@ -295,10 +298,11 @@ def case_4_candidate_covariantized_form():
     print("This is not yet derived.")
     print("It is a requirement-shaped candidate.")
 
-    status_line("candidate covariantized kappa form stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate covariantized kappa form stated", StatusMark.DEFER, "candidate form not yet derived")
 
 
-def case_5_frame_options():
+def case_5_frame_options(out: ScriptOutput):
     header("Case 5: Possible frame choices")
 
     print("Possible choices for u^mu:")
@@ -321,10 +325,11 @@ def case_5_frame_options():
     print()
     print("No choice is final.")
 
-    status_line("kappa frame options listed", "UNRESOLVED")
+    with out.unresolved_obligations():
+        out.line("kappa frame options listed", StatusMark.OBLIGATION, "frame choice for u^mu remains open")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Kappa covariant relaxation fails if:")
@@ -338,10 +343,11 @@ def case_6_failure_controls():
     print("7. rho sources kappa as a second mass field.")
     print("8. recombination uses kappa as duplicate scalar response.")
 
-    status_line("kappa failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("kappa failure controls stated", StatusMark.DEFER, "failure controls policy-guarded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -362,7 +368,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Kappa relaxation is only safe if boundary/exterior mass preservation is enforced.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "boundary mass preservation script is the next gate")
 
 
 def final_interpretation():
@@ -390,22 +397,142 @@ def main():
     header("Candidate Kappa Covariant Relaxation Requirement")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_requirements()
     case_1_requirement_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_covariantized_form()
-    case_5_frame_options()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_covariantized_form(out)
+    case_5_frame_options(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+
+    # Proof obligations for missing kappa requirements
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_frame_field_u_mu",
+        script_id=SCRIPT_ID,
+        title="Define and justify the frame field u^mu for kappa relaxation (K1, K4)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The kappa relaxation equation u^mu nabla_mu kappa = -lambda_kappa*(kappa-kappa_min) "
+            "requires a specific choice and justification for u^mu. "
+            "Options include matter-comoving, vacuum-substance flow, or constraint-normal frames."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_energy_accounting_K7",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum configuration energy accounting for kappa relaxation (K7)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Gamma_relax must transfer imbalance into a named vacuum configuration energy variable. "
+            "The destination E_vac_config must be defined, not unnamed."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_S_trace_effective_and_chi_kappa",
+        script_id=SCRIPT_ID,
+        title="Define S_trace_effective and chi_kappa for kappa_min (K3)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "kappa_min = chi_kappa * S_trace_effective requires definitions of both "
+            "S_trace_effective and chi_kappa that are scalar/frame-compatible."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_min_causality_locality",
+        script_id=SCRIPT_ID,
+        title="Clarify local vs constrained/nonlocal status of kappa_min projection (K10)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The kappa_min projection must be declared as either local (causal) or "
+            "a constraint (nonlocal with stated support). Acausal hidden repair is forbidden."
+        ),
+    ))
+
+    # Policy claims: Box kappa forbidden, rho-sourced kappa forbidden
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_first_order_non_inertial_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Kappa must remain first-order non-inertial relaxation. "
+            "Box kappa = alpha*S_trace is forbidden. "
+            "Kappa must not acquire an independent momentum channel or breathing radiation mode."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_rho_source_forbidden_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "S_kappa[rho] = 0 is a policy rule. "
+            "rho must not contribute to kappa_min as an independent mass scalar charge. "
+            "Trace/pressure shifts kappa_min; rho routes to A only."
+        ),
+    ))
+
+    # Candidate route: covariantized kappa relaxation form
+    ns.record_route(RouteRecord(
+        route_id="kappa_covariantized_relaxation_candidate",
+        script_id=SCRIPT_ID,
+        name="Covariantized kappa relaxation: u^mu nabla_mu kappa = -lambda_kappa*(kappa-kappa_min)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_kappa_frame_field_u_mu",
+            "derive_kappa_energy_accounting_K7",
+            "derive_S_trace_effective_and_chi_kappa",
+            "derive_kappa_min_causality_locality",
+        ],
+        activation_conditions=[
+            "frame field u^mu is defined and justified",
+            "lambda_kappa = mu_kappa K_kappa is derived from parent identity",
+            "S_trace_effective is scalar/frame-compatible",
+            "exterior kappa_min = 0 enforced structurally",
+            "energy accounting closes: dE_kappa/dtau + dE_vac_config/dtau = 0",
+        ],
+        description=(
+            "The candidate covariantized kappa relaxation form is structurally plausible "
+            "but is not yet licensed. All activation conditions must be satisfied."
+        ),
+    ))
+
+    # Branch decision: kappa covariant derivation deferred
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_kappa_covariant_relaxation_derivation",
+        script_id=SCRIPT_ID,
+        branch_id="kappa_covariant_relaxation_derivation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_kappa_frame_field_u_mu",
+            "derive_kappa_energy_accounting_K7",
+            "derive_S_trace_effective_and_chi_kappa",
+            "derive_kappa_min_causality_locality",
+        ],
+        description=(
+            "Covariant kappa relaxation cannot be derived or licensed until "
+            "frame field, energy accounting, S_trace_effective, and causality status are established."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="kappa_covariant_relaxation_requirement_marker",
         inputs=[],
         output=sp.Symbol("kappa_covariant_relaxation_requirement_built"),
         method="kappa_covariant_relaxation_requirement_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

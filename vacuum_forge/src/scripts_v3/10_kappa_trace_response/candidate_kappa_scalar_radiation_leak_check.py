@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate kappa scalar radiation leak check
 #
 # Purpose
@@ -27,11 +33,6 @@
 #   without introducing a long-range scalar gravitational wave.
 #
 # This is a classification/control script, not a final dynamical derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_scalar_radiation_leak_check.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -39,6 +40,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ReasonCode,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -50,22 +63,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -106,7 +103,7 @@ def print_option(o: KappaDynamicsOption) -> None:
     print("-" * 100)
     print(o.name)
     print("-" * 100)
-    status_line(o.name, o.status)
+    print(f"Status: {o.status}")
     print(f"Equation type: {o.equation_type}")
     print(f"Radiation behavior: {o.radiation_behavior}")
     print(f"Risk: {o.risk}")
@@ -129,8 +126,6 @@ def case_0_problem_statement():
     print("Danger:")
     print()
     print("  a hyperbolic kappa equation would introduce breathing/trace waves.")
-
-    status_line("scalar radiation leak problem posed", "CONSTRAINED_BY_IDENTITY")
 
 
 def build_options() -> List[KappaDynamicsOption]:
@@ -192,8 +187,7 @@ def case_2_massless_wave_hazard():
     print()
     print("This is not acceptable as an ordinary long-range gravity wave channel.")
 
-    status_line("massless hyperbolic kappa allows scalar radiation", "REJECTED",
-                "would create breathing/trace mode")
+    return dispersion
 
 
 def case_3_elliptic_constraint_safety():
@@ -214,10 +208,6 @@ def case_3_elliptic_constraint_safety():
     print()
     print("But it requires a parent constraint identity to be legitimate.")
 
-    status_line("elliptic constrained kappa is radiation-safe structurally",
-                "CONSTRAINED_BY_IDENTITY",
-                "parent identity missing")
-
 
 def case_4_massive_dispersion():
     header("Case 4: Massive/restoring dispersion")
@@ -236,9 +226,7 @@ def case_4_massive_dispersion():
     print("But it still introduces a scalar mode unless the dynamics are constrained")
     print("or strongly damped.")
 
-    status_line("massive/restoring kappa may suppress but not eliminate scalar mode",
-                "PLAUSIBLE",
-                "m_k and dynamics not derived")
+    return dispersion
 
 
 def case_5_relaxation_safety():
@@ -260,8 +248,7 @@ def case_5_relaxation_safety():
     print()
     print("But relaxation requires energy accounting and a source/restoring basis.")
 
-    status_line("relaxation can absorb kappa perturbations", "PLAUSIBLE",
-                "energy accounting missing")
+    return kappa_t
 
 
 def case_6_projected_time_dependent_source_warning():
@@ -287,9 +274,6 @@ def case_6_projected_time_dependent_source_warning():
     print("  boundary flux cancellation")
     print("  or relaxation law with energy accounting")
 
-    status_line("time-dependent projection may create extra terms", "RISK",
-                "dynamic support/projection not solved")
-
 
 def case_7_classification(options: List[KappaDynamicsOption]):
     header("Case 7: Classification")
@@ -314,10 +298,6 @@ def case_7_classification(options: List[KappaDynamicsOption]):
     print("  relaxation energy accounting")
     print("  massive scalar scale if used")
 
-    status_line("scalar radiation leak classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "safe path is constrained/non-wave kappa")
-
 
 def case_8_failure_controls():
     header("Case 8: Failure controls")
@@ -330,9 +310,6 @@ def case_8_failure_controls():
     print("4. massive kappa introduces an observable fifth/scalar mode unintentionally.")
     print("5. projection is static only and does not propagate consistently.")
     print("6. kappa suppression erases the static A constraint.")
-
-    status_line("scalar-radiation failure controls stated", "RISK",
-                "dynamic safety not yet proven")
 
 
 def case_9_next_tests():
@@ -355,9 +332,6 @@ def case_9_next_tests():
     print()
     print("Reason:")
     print("  Static projection removes monopole charge; next check is boundary flux.")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "boundary flux cancellation is next")
 
 
 def final_interpretation():
@@ -387,26 +361,86 @@ def main():
     header("Candidate Kappa Scalar Radiation Leak Check")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     options = build_options()
     case_1_option_inventory(options)
-    case_2_massless_wave_hazard()
+    dispersion_massless = case_2_massless_wave_hazard()
     case_3_elliptic_constraint_safety()
-    case_4_massive_dispersion()
-    case_5_relaxation_safety()
+    dispersion_massive = case_4_massive_dispersion()
+    kappa_t = case_5_relaxation_safety()
     case_6_projected_time_dependent_source_warning()
     case_7_classification(options)
     case_8_failure_controls()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_scalar_radiation_leak_check_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_scalar_radiation_leak_options_classified"),
-        method="kappa_scalar_radiation_leak_check_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        ns.record_derivation(
+            derivation_id="kappa_scalar_radiation_leak_check_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_scalar_radiation_leak_options_classified"),
+            method="kappa_scalar_radiation_leak_check_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_hyperbolic_massless_kappa_wave_branch",
+            script_id=SCRIPT_ID,
+            branch_id="hyperbolic_massless_kappa_wave",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=["derive_kappa_parent_constraint_projection_in_10_kappa_trace"],
+            description=(
+                "A massless hyperbolic kappa (Box kappa = source) allows scalar radiation "
+                "even with zero monopole charge. This branch is deferred: it is not accepted "
+                "as a safe kappa dynamics option pending derivation of a suppression mechanism."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_dynamic_scalar_radiation_safety_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive dynamical scalar radiation safety for kappa",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Static zero-monopole charge is not sufficient. A time-dependent kappa "
+                "equation must be shown to be non-radiative dynamically. This requires "
+                "either elliptic/constrained dynamics, a relaxation law with energy accounting, "
+                "or a massive suppression with derived scale m_k."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="kappa_safe_dynamics_must_be_non_wave",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Safe kappa dynamics must be elliptic/constrained, relaxational/non-wave, "
+                "or massive/restoring with derived scale. Ordinary massless hyperbolic kappa "
+                "introduces a scalar breathing wave channel incompatible with current requirements."
+            ),
+        ))
+
+        with out.governance_assessments():
+            out.line("massless hyperbolic kappa", StatusMark.FAIL, "deferred - creates breathing wave channel")
+            out.line("elliptic constrained kappa", StatusMark.DEFER, "safe structurally, parent identity missing")
+            out.line("relaxational kappa", StatusMark.DEFER, "plausible, energy accounting missing")
+            out.line("dynamic scalar radiation safety", StatusMark.OBLIGATION, "not yet proven")
+
+        with out.unresolved_obligations():
+            out.line("derive dynamical scalar radiation safety", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate kappa gauge versus physical trace
 #
 # Purpose
@@ -26,11 +32,6 @@
 #   no arbitrary nonlocal subtraction unless parent-constrained.
 #
 # This is a classification/control script, not a final derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_gauge_vs_physical_trace.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -38,6 +39,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ReasonCode,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -49,22 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -105,7 +102,7 @@ def print_interpretation(i: KappaInterpretation) -> None:
     print("-" * 100)
     print(i.name)
     print("-" * 100)
-    status_line(i.name, i.status)
+    print(f"Status: {i.status}")
     print(f"Meaning: {i.meaning}")
     print(f"Compatible with: {i.compatible_with}")
     print(f"Risk: {i.risk}")
@@ -131,8 +128,6 @@ def case_0_problem_statement():
     print()
     print("  ordinary scalar kappa dynamics can leak exterior 1/r tails or scalar radiation.")
 
-    status_line("gauge-vs-physical problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_reduced_diagnostic():
     header("Case 1: Reduced diagnostic relation")
@@ -154,7 +149,7 @@ def case_1_reduced_diagnostic():
     print()
     print("It does not, by itself, decide whether kappa is physical or gauge.")
 
-    status_line("kappa diagnostic relation stated", "DERIVED_REDUCED")
+    return A, B, kappa, relation, kappa_expr
 
 
 def build_interpretations() -> List[KappaInterpretation]:
@@ -240,10 +235,6 @@ def case_3_gauge_artifact_test():
     print("Conclusion:")
     print("  pure-gauge kappa is safe but weak.")
 
-    status_line("pure gauge interpretation is exterior-safe but physically weak",
-                "PLAUSIBLE",
-                "needs gauge-invariant interior content")
-
 
 def case_4_physical_local_scalar_test():
     header("Case 4: Physical local scalar test")
@@ -265,9 +256,6 @@ def case_4_physical_local_scalar_test():
     print("Conclusion:")
     print("  ordinary local scalar kappa is dangerous.")
 
-    status_line("local physical scalar kappa leaks without suppression", "RISK",
-                "not acceptable as final unscreened interpretation")
-
 
 def case_5_constrained_trace_test():
     header("Case 5: Constrained trace-response test")
@@ -287,10 +275,6 @@ def case_5_constrained_trace_test():
     print("  no scalar radiation leak")
     print()
     print("But a parent identity is required.")
-
-    status_line("constrained trace response is current best interpretation",
-                "CONSTRAINED_BY_IDENTITY",
-                "parent identity missing")
 
 
 def case_6_relaxational_test():
@@ -317,10 +301,6 @@ def case_6_relaxational_test():
     print("Conclusion:")
     print("  plausible as suppression mechanism, not source identity by itself.")
 
-    status_line("relaxational kappa is plausible but incomplete",
-                "PLAUSIBLE",
-                "dynamics and energy accounting missing")
-
 
 def case_7_status_table(items: List[KappaInterpretation]):
     header("Case 7: Status table")
@@ -343,10 +323,6 @@ def case_7_status_table(items: List[KappaInterpretation]):
     print()
     print("  ordinary unscreened propagating scalar kappa.")
 
-    status_line("kappa interpretation classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "parent constraint still missing")
-
 
 def case_8_failure_controls():
     header("Case 8: Failure controls")
@@ -359,10 +335,6 @@ def case_8_failure_controls():
     print("4. compensation is inserted without parent constraint.")
     print("5. relaxation hides the problem without energy/source accounting.")
     print("6. kappa duplicates the A-sector density response.")
-
-    status_line("gauge-vs-physical failure controls stated",
-                "RISK",
-                "must protect exterior and scalar-radiation safety")
 
 
 def case_9_next_tests():
@@ -386,10 +358,6 @@ def case_9_next_tests():
     print("Reason:")
     print("  Current best interpretation is constrained trace response; the missing")
     print("  piece is the parent projection identity.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "constraint projection identity is next")
 
 
 def final_interpretation():
@@ -427,8 +395,11 @@ def main():
     header("Candidate Kappa Gauge Versus Physical Trace")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    case_1_reduced_diagnostic()
+    A, B, kappa, relation, kappa_expr = case_1_reduced_diagnostic()
     items = build_interpretations()
     case_2_interpretation_inventory(items)
     case_3_gauge_artifact_test()
@@ -439,14 +410,69 @@ def main():
     case_8_failure_controls()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_gauge_vs_physical_trace_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_gauge_vs_physical_trace_classified"),
-        method="kappa_gauge_vs_physical_trace_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        ns.record_derivation(
+            derivation_id="kappa_gauge_vs_physical_trace_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_gauge_vs_physical_trace_classified"),
+            method="kappa_gauge_vs_physical_trace_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_parent_constraint_projection_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the parent constraint identity for kappa as a constrained trace response",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The current best interpretation (I3: constrained non-propagating trace response) "
+                "requires a parent constraint identity that projects out exterior kappa charge. "
+                "Without this, compensation and projection are imposed by hand."
+            ),
+        ))
+
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_ordinary_propagating_scalar_kappa_branch",
+            script_id=SCRIPT_ID,
+            branch_id="ordinary_local_propagating_scalar_kappa",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=["derive_kappa_parent_constraint_projection_in_10_kappa_trace"],
+            description=(
+                "An ordinary local propagating scalar kappa is generically exterior-unsafe. "
+                "This branch is deferred pending derivation of a suppression mechanism or "
+                "constraint projection identity."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="kappa_best_interpretation_constrained_trace_response",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Kappa is best interpreted as a constrained non-propagating trace response: "
+                "physical inside matter, projected out in the exterior, with no independent "
+                "scalar radiation channel. This interpretation requires a parent constraint identity."
+            ),
+        ))
+
+        with out.governance_assessments():
+            out.line("kappa as constrained non-propagating trace response", StatusMark.PASS, "current best interpretation")
+            out.line("ordinary propagating scalar kappa", StatusMark.DEFER, "deferred pending constraint derivation")
+            out.line("parent constraint identity", StatusMark.OBLIGATION, "missing")
+
+        with out.unresolved_obligations():
+            out.line("derive parent constraint projection identity", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

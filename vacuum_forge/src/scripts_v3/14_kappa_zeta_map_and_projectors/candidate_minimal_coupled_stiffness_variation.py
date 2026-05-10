@@ -1,5 +1,11 @@
 # Candidate minimal coupled stiffness variation
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The parent action/stiffness identity audit found:
@@ -26,11 +32,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -38,33 +53,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -83,7 +71,7 @@ def build_entries() -> List[CoupledVariationEntry]:
     return [
         CoupledVariationEntry(
             name="CV1: minimal coupled functional",
-            statement="S = ∫ [1/2 c_A |grad A|^2 + 1/2 c_s |grad B_s|^2 + c_x grad A·grad B_s + c_m A S_A] dV",
+            statement="S = integral [1/2 c_A |grad A|^2 + 1/2 c_s |grad B_s|^2 + c_x grad A · grad B_s + c_m A S_A] dV",
             role="concrete action/stiffness test; B_s denotes A_spatial variable",
             allowed_if="coefficients have pre-recovery origin",
             forbidden_if="coefficients are selected to pass gamma_like recovery",
@@ -93,17 +81,17 @@ def build_entries() -> List[CoupledVariationEntry]:
         ),
         CoupledVariationEntry(
             name="CV2: variation with respect to B_s",
-            statement="δS/δB_s -> -c_s ΔB_s - c_x ΔA = 0",
+            statement="delta S / delta B_s -> -c_s Delta B_s - c_x Delta A = 0",
             role="spatial companion equation from coupled stiffness",
             allowed_if="sign conventions and boundary terms are fixed",
             forbidden_if="interpreted before coefficient origin is known",
             status="CANDIDATE",
             missing="boundary conditions and normalization",
-            consequence="gives ΔB_s = -(c_x/c_s) ΔA",
+            consequence="gives Delta B_s = -(c_x/c_s) Delta A",
         ),
         CoupledVariationEntry(
             name="CV3: using A constraint",
-            statement="with ΔA = S_A, variation gives ΔB_s = q_action S_A where q_action = -(c_x/c_s)",
+            statement="with Delta A = S_A, variation gives Delta B_s = q_action S_A where q_action = -(c_x/c_s)",
             role="candidate derivation of q from stiffness ratio",
             allowed_if="c_x/c_s is derived before recovery checks",
             forbidden_if="c_x/c_s is chosen to make gamma_like=1",
@@ -113,9 +101,9 @@ def build_entries() -> List[CoupledVariationEntry]:
         ),
         CoupledVariationEntry(
             name="CV4: variation with respect to A",
-            statement="δS/δA -> -c_A ΔA - c_x ΔB_s + c_m S_A = 0",
+            statement="delta S / delta A -> -c_A Delta A - c_x Delta B_s + c_m S_A = 0",
             role="checks consistency with pre-existing A constraint",
-            allowed_if="recovers or renormalizes ΔA=S_A without tuning",
+            allowed_if="recovers or renormalizes Delta A = S_A without tuning",
             forbidden_if="A equation is overwritten to force recovery",
             status="RISK",
             missing="compatibility with existing A-sector normalization",
@@ -123,7 +111,7 @@ def build_entries() -> List[CoupledVariationEntry]:
         ),
         CoupledVariationEntry(
             name="CV5: independent stiffness failure",
-            statement="if c_x=0 then B_s has no sourced spatial companion equation",
+            statement="if c_x = 0 then B_s has no sourced spatial companion equation",
             role="no-go for independent stiffness as q-origin",
             allowed_if="used as branch-kill result",
             forbidden_if="source coupling to B_s is added solely to repair q",
@@ -237,12 +225,12 @@ def print_entry(e: CoupledVariationEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal coupled stiffness variation problem")
 
     print("Question:")
@@ -263,7 +251,8 @@ def case_0_problem_statement():
     print("  do not double-count zeta/kappa residual trace")
     print("  admit defer outcome if stiffness ratio remains free")
 
-    status_line("minimal coupled stiffness variation problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("minimal coupled stiffness variation problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[CoupledVariationEntry]):
@@ -272,7 +261,7 @@ def case_1_inventory(entries: List[CoupledVariationEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[CoupledVariationEntry]):
+def case_2_compact_table(entries: List[CoupledVariationEntry], out: ScriptOutput):
     header("Case 2: Compact coupled-variation ledger")
 
     print("| Entry | Statement | Status | Consequence |")
@@ -290,27 +279,28 @@ def case_2_compact_table(entries: List[CoupledVariationEntry]):
             + " |"
         )
 
-    status_line("compact coupled-variation ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact coupled-variation ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_variation_calculation():
+def case_3_variation_calculation(out: ScriptOutput):
     header("Case 3: Minimal variation calculation")
 
     print("Functional:")
     print()
-    print("  S = ∫ [1/2 c_A |grad A|^2 + 1/2 c_s |grad B_s|^2 + c_x grad A·grad B_s + c_m A S_A] dV")
+    print("  S = integral [1/2 c_A |grad A|^2 + 1/2 c_s |grad B_s|^2 + c_x grad A · grad B_s + c_m A S_A] dV")
     print()
     print("Variation with respect to B_s:")
     print()
-    print("  -c_s ΔB_s - c_x ΔA = 0")
+    print("  -c_s Delta B_s - c_x Delta A = 0")
     print()
     print("Therefore:")
     print()
-    print("  ΔB_s = -(c_x/c_s) ΔA")
+    print("  Delta B_s = -(c_x/c_s) Delta A")
     print()
-    print("Using ΔA = S_A:")
+    print("Using Delta A = S_A:")
     print()
-    print("  ΔB_s = q_action S_A")
+    print("  Delta B_s = q_action S_A")
     print()
     print("where:")
     print()
@@ -320,10 +310,11 @@ def case_3_variation_calculation():
     print("  Variation derives q only if c_x/c_s is itself derived.")
     print("  Otherwise it moves the tuning knob from q to stiffness ratio.")
 
-    status_line("minimal variation calculation produced", "THEOREM_TARGET")
+    with out.governance_assessments():
+        out.line("minimal variation calculation produced", StatusMark.WARN, "theorem target")
 
 
-def case_3b_symbolic_stiffness_ratio(ns) -> None:
+def case_3b_symbolic_stiffness_ratio(ns, out: ScriptOutput) -> None:
     header("Case 3b: Symbolic stiffness-ratio derivation")
 
     c_x, c_s = sp.symbols("c_x c_s", nonzero=True)
@@ -336,17 +327,25 @@ def case_3b_symbolic_stiffness_ratio(ns) -> None:
     print("Interpretation:")
     print("  the variation fixes q only up to the stiffness ratio c_x/c_s.")
 
-    status_line("symbolic q from stiffness ratio", "DERIVED_REDUCED", f"q_action = {q_action}")
+    with out.derived_results():
+        out.line(
+            "symbolic q from stiffness ratio",
+            StatusMark.PASS,
+            f"q_action = {q_action}; reduced to stiffness ratio, not fully derived",
+        )
+
     ns.record_derivation(
         derivation_id="minimal_coupled_stiffness_ratio_formula",
         inputs=[c_x, c_s],
         output=q_action,
         method="symbolic coupled-stiffness variation ratio",
         status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        scope="coupled stiffness variation sample; q is reduced to c_x/c_s ratio, origin of ratio is still missing",
     )
 
 
-def case_4_status_counts(entries: List[CoupledVariationEntry]):
+def case_4_status_counts(entries: List[CoupledVariationEntry], out: ScriptOutput):
     header("Case 4: Status counts")
 
     counts = {}
@@ -363,10 +362,11 @@ def case_4_status_counts(entries: List[CoupledVariationEntry]):
     print("  Independent stiffness alone is killed as a q-origin.")
     print("  The branch must now find a ratio origin or defer to conservation/current identity.")
 
-    status_line("coupled-variation status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("coupled-variation status count produced", StatusMark.WARN, "structural")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / defer outcome")
 
     print("Good failure:")
@@ -382,10 +382,11 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose c_x/c_s to make gamma_like=1 and call the action derived.")
 
-    status_line("coupled stiffness good failure stated", "DEFER")
+    with out.unresolved_obligations():
+        out.line("stiffness ratio c_x/c_s origin is missing", StatusMark.OBLIGATION, "open proof obligation recorded")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Coupled stiffness variation fails if:")
@@ -398,10 +399,11 @@ def case_6_failure_controls():
     print("6. zeta/kappa residual trace overlaps with B_s")
     print("7. variation result is claimed to derive q while c_x/c_s remains free")
 
-    status_line("coupled stiffness failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("coupled stiffness failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -422,7 +424,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Coupled variation produces q_action = -c_x/c_s. The next bottleneck is whether c_x/c_s has a pre-recovery origin.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -430,7 +433,7 @@ def final_interpretation():
 
     print("Coupled stiffness variation produces the right form:")
     print()
-    print("  ΔB_s = q_action S_A")
+    print("  Delta B_s = q_action S_A")
     print("  q_action = -(c_x/c_s)")
     print()
     print("But it does not fully derive q unless c_x/c_s is derived.")
@@ -443,26 +446,62 @@ def main():
     header("Candidate Minimal Coupled Stiffness Variation")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_variation_calculation()
-    case_3b_symbolic_stiffness_ratio(ns)
-    case_4_status_counts(entries)
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_variation_calculation(out)
+    case_3b_symbolic_stiffness_ratio(ns, out)
+    case_4_status_counts(entries, out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="minimal_coupled_stiffness_variation_marker",
-        inputs=[],
-        output=sp.Symbol("minimal_coupled_stiffness_variation_audited"),
-        method="minimal_coupled_stiffness_variation_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_stiffness_ratio_c_x_over_c_s_origin_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive stiffness ratio c_x/c_s origin",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Coupled stiffness variation yields q_action = -(c_x/c_s). The ratio c_x/c_s "
+                "must be derived from a pre-recovery principle: field-space symmetry, canonical "
+                "normalization, conservation-current identity, or volume-exchange identity. "
+                "If c_x/c_s remains free, the action/stiffness route does not derive q and "
+                "must defer to conservation-current or volume-exchange identity."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="coupled_stiffness_variation_reduced_derivation",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The coupled stiffness variation S ~ c_x grad A · grad B_s yields q_action = -(c_x/c_s) "
+                "as a reduced symbolic result. The variation is a real SymPy computation. "
+                "It derives the form of q but not the ratio c_x/c_s itself. "
+                "The ratio origin is the next open bottleneck. This is provisional until "
+                "a symmetry/normalization/conservation origin for c_x/c_s is established."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="minimal_coupled_stiffness_variation_marker",
+            inputs=[],
+            output=sp.Symbol("minimal_coupled_stiffness_variation_audited"),
+            method="minimal_coupled_stiffness_variation_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

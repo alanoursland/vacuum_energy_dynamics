@@ -1,5 +1,11 @@
 # Candidate minimal gradient-current ratio test
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The conservation-current coefficient-origin audit found:
@@ -24,6 +30,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -36,33 +53,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -235,12 +225,12 @@ def print_entry(e: GradientCurrentEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal gradient-current ratio test problem")
 
     print("Question:")
@@ -260,7 +250,9 @@ def case_0_problem_statement():
     print("  preserve no-overlap trace condition")
     print("  move to parent balance or volume-exchange if local current ratio remains free")
 
-    status_line("minimal gradient-current ratio problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("minimal gradient-current ratio problem posed", "DEFER",
+                 "branch open pending derivation of a/b")
 
 
 def case_1_inventory(entries: List[GradientCurrentEntry]):
@@ -269,7 +261,7 @@ def case_1_inventory(entries: List[GradientCurrentEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[GradientCurrentEntry]):
+def case_2_compact_table(entries: List[GradientCurrentEntry], out: ScriptOutput):
     header("Case 2: Compact gradient-current ledger")
 
     print("| Entry | Statement | Status | Consequence |")
@@ -287,10 +279,11 @@ def case_2_compact_table(entries: List[GradientCurrentEntry]):
             + " |"
         )
 
-    status_line("compact gradient-current ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact gradient-current ledger produced", "INFO", "inventory table complete")
 
 
-def case_3_minimal_calculation():
+def case_3_minimal_calculation(out: ScriptOutput):
     header("Case 3: Minimal gradient-current calculation")
 
     print("Current:")
@@ -317,10 +310,12 @@ def case_3_minimal_calculation():
     print("Interpretation:")
     print("  This fixes q only if a/b is fixed independently.")
 
-    status_line("minimal gradient-current calculation produced", "THEOREM_TARGET")
+    with out.unresolved_obligations():
+        out.line("derive pre-recovery origin of a/b", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
 
 
-def case_3b_symbolic_ratio_derivation(ns) -> None:
+def case_3b_symbolic_ratio_derivation(ns, out: ScriptOutput) -> None:
     header("Case 3b: Symbolic current-ratio derivation")
 
     a, b, q, S_A = sp.symbols("a b q S_A", nonzero=True)
@@ -332,17 +327,21 @@ def case_3b_symbolic_ratio_derivation(ns) -> None:
     print(f"  div J_A = {divergence}")
     print(f"  solving a + b q = 0 gives q = {solved_q}")
 
-    status_line("symbolic q from current ratio", "DERIVED_REDUCED", f"q = {solved_q}")
+    with out.derived_results():
+        out.line("symbolic q from current ratio", StatusMark.PASS, f"q = {solved_q}")
+
     ns.record_derivation(
         derivation_id="minimal_gradient_current_ratio_formula",
         inputs=[a, b, S_A],
         output=solved_q,
         method="solve divergence-free current ratio relation",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="assumes a/b free; shows form of q but does not derive a/b origin",
     )
 
 
-def case_4_status_counts(entries: List[GradientCurrentEntry]):
+def case_4_status_counts(entries: List[GradientCurrentEntry], out: ScriptOutput):
     header("Case 4: Status counts")
 
     counts = {}
@@ -359,10 +358,11 @@ def case_4_status_counts(entries: List[GradientCurrentEntry]):
     print("  Field-space metric and parent balance are the main surviving origins.")
     print("  Local conservation likely defers to parent balance or volume-exchange identity.")
 
-    status_line("gradient-current status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("gradient-current status count produced", "INFO", "counts reviewed")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / defer outcome")
 
     print("Good failure:")
@@ -377,10 +377,12 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose a/b from gamma_like=1 and call it a conservation law.")
 
-    status_line("gradient-current good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("gradient-current good failure stated", "DEFER",
+                 "branch deferred; a/b free without ontology origin")
 
 
-def case_6_failure_controls():
+def case_6_good_failure_controlled(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Gradient-current ratio test fails if:")
@@ -394,10 +396,11 @@ def case_6_failure_controls():
     print("7. no-overlap trace theorem is ignored")
     print("8. q is claimed derived while a/b remains free")
 
-    status_line("gradient-current failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("gradient-current failure controls stated", "INFO", "eight failure controls recorded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -418,7 +421,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Local gradient current relocates q to a/b. A parent balance identity is the next non-decorative route for fixing a/b.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", "INFO", "candidate_parent_balance_identity_for_A_spatial.py")
 
 
 def final_interpretation():
@@ -438,26 +442,57 @@ def main():
     header("Candidate Minimal Gradient-Current Ratio Test")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_minimal_calculation()
-    case_3b_symbolic_ratio_derivation(ns)
-    case_4_status_counts(entries)
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_minimal_calculation(out)
+    case_3b_symbolic_ratio_derivation(ns, out)
+    case_4_status_counts(entries, out)
+    case_5_good_failure(out)
+    case_6_good_failure_controlled(out)
+    case_7_next_tests(out)
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="minimal_gradient_current_ratio_test_marker",
-        inputs=[],
-        output=sp.Symbol("minimal_gradient_current_ratio_test_audited"),
-        method="minimal_gradient_current_ratio_test_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with ProjectArchive(ARCHIVE_ROOT) as pa:
+        ns2 = pa.script_namespace(SCRIPT_ID)
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_gradient_current_ab_ratio_origin_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive pre-recovery origin of current coefficient ratio a/b",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that the ratio a/b in J_A^i = a grad^i A + b grad^i B_s is fixed by "
+                "a field-space metric, source-routing identity, or parent balance, "
+                "not by gamma_like or AB recovery checks."
+            ),
+        ))
+
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_minimal_gradient_current_ratio_branch",
+            script_id=SCRIPT_ID,
+            branch_id="minimal_gradient_current_ratio",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_gradient_current_ab_ratio_origin_in_14"],
+        ))
+
+        ns2.record_derivation(
+            derivation_id="minimal_gradient_current_ratio_test_marker",
+            inputs=[],
+            output=sp.Symbol("minimal_gradient_current_ratio_test_audited"),
+            method="minimal_gradient_current_ratio_test_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns2.write_run_metadata()
+
+    out.print()
 
 
 if __name__ == "__main__":

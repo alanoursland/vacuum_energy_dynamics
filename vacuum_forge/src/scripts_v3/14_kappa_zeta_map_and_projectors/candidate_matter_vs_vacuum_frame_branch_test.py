@@ -1,3 +1,9 @@
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Candidate matter versus vacuum frame branch test
 #
 # Purpose
@@ -24,6 +30,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -36,32 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -234,7 +227,7 @@ def print_entry(e: FrameBranchEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -259,7 +252,10 @@ def case_0_problem_statement():
     print("  protect static-source neutrality")
     print("  keep chi-origin, boundary neutrality, and no-overlap attached")
 
-    status_line("matter/vacuum frame branch problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("matter/vacuum frame branch problem posed", StatusMark.OBLIGATION, "requires physical frame criterion before recovery")
+    out.print()
 
 
 def case_1_inventory(entries: List[FrameBranchEntry]):
@@ -286,7 +282,10 @@ def case_2_compact_table(entries: List[FrameBranchEntry]):
             + " |"
         )
 
-    status_line("compact matter-vacuum frame ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact matter-vacuum frame ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[FrameBranchEntry]):
@@ -306,7 +305,10 @@ def case_3_status_counts(entries: List[FrameBranchEntry]):
     print("  Hybrid projection remains deferred.")
     print("  The next constructive step is to attempt u_vac definition from zeta/vacuum substance.")
 
-    status_line("matter-vacuum frame status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("matter-vacuum frame status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_branch_decision():
@@ -327,7 +329,10 @@ def case_4_branch_decision():
     print("Decision:")
     print("  Try to define u_vac before adopting matter frame as parent law.")
 
-    status_line("matter-vacuum branch decision stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("matter-vacuum branch decision stated", StatusMark.INFO, "try u_vac before matter frame")
+    out.print()
 
 
 def case_5_good_failure():
@@ -346,7 +351,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose matter frame because it is easy, or invent vacuum frame because it is needed.")
 
-    status_line("matter-vacuum frame good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("matter-vacuum frame good failure stated", StatusMark.DEFER, "deferred pending u_vac or matter model definition")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -363,7 +371,10 @@ def case_6_failure_controls():
     print("7. chi-origin is hidden in frame choice")
     print("8. boundary neutrality or no-overlap is dropped")
 
-    status_line("matter-vacuum frame failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("matter-vacuum frame failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -387,7 +398,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  Vacuum frame is ontologically preferred and currently missing. Define or kill it before falling back to matter-frame source law.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_vacuum_rest_frame_definition.py")
+    out.print()
 
 
 def final_interpretation():
@@ -417,14 +431,99 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="matter_vs_vacuum_frame_branch_test_marker",
-        inputs=[],
-        output=sp.Symbol("matter_vs_vacuum_frame_branch_test_audited"),
-        method="matter_vs_vacuum_frame_branch_test_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_u_vac_from_vacuum_ontology",
+            script_id=SCRIPT_ID,
+            title="Derive u_vac^mu from vacuum substance or zeta/volume configuration",
+            status=ObligationStatus.OPEN,
+            description=(
+                "u_vac must arise from vacuum substance, zeta flow, or volume configuration "
+                "before the vacuum rest-frame branch of the acceleration-gradient source law can proceed. "
+                "An arbitrary preferred frame or gauge slicing does not qualify."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_matter_frame_static_safety",
+            script_id=SCRIPT_ID,
+            title="Derive static-source safety for matter-frame branch",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Matter-frame Sigma_V must vanish or be boundary-neutral for static equilibrium sources. "
+                "Support/pressure acceleration must not generate exterior scalar gravity."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="vacuum_rest_frame_branch_route",
+            script_id=SCRIPT_ID,
+            name="Vacuum rest frame u_vac^mu acceleration-gradient branch",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_u_vac_from_vacuum_ontology",
+                "derive_static_source_neutrality_for_accel_gradient",
+            ],
+            activation_conditions=[
+                "u_vac is derived from zeta/vacuum configuration or exchange law",
+                "static equilibrium sources produce no independent exterior zeta charge",
+            ],
+        ))
+        ns.record_route(RouteRecord(
+            route_id="matter_congruence_branch_route",
+            script_id=SCRIPT_ID,
+            name="Matter congruence u_m^mu acceleration-gradient branch",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_matter_frame_static_safety",
+                "derive_physical_frame_for_accel_gradient",
+            ],
+            activation_conditions=[
+                "u_m is defined by matter current/fluid flow and not coordinate velocity",
+                "static equilibrium acceleration is not a coordinate/gauge artifact",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_hybrid_projection_branch",
+            script_id=SCRIPT_ID,
+            branch_id="hybrid_projection_matter_vacuum",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_u_vac_from_vacuum_ontology",
+                "derive_physical_frame_for_accel_gradient",
+            ],
+            description=(
+                "Hybrid projection (P_vac a_m) is deferred until both u_m and u_vac are "
+                "independently defined. It must not be used to patch failures of either branch."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_matter_vacuum_frame_branch",
+            script_id=SCRIPT_ID,
+            branch_id="matter_vs_vacuum_frame_branch",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_u_vac_from_vacuum_ontology",
+                "derive_matter_frame_static_safety",
+            ],
+            description=(
+                "Both matter-frame and vacuum-frame branches are deferred pending their respective "
+                "definitions and static-source neutrality proofs. The next step is to attempt "
+                "u_vac definition from vacuum ontology."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="matter_vs_vacuum_frame_branch_test_marker",
+            inputs=[],
+            output=sp.Symbol("matter_vs_vacuum_frame_branch_test_audited"),
+            method="matter_vs_vacuum_frame_branch_test_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

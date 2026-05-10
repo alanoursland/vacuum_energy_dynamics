@@ -1,3 +1,9 @@
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Candidate acceleration-gradient volume creation
 #
 # Purpose
@@ -24,6 +30,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -36,32 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -234,7 +227,7 @@ def print_entry(e: AccelGradientEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -260,7 +253,10 @@ def case_0_problem_statement():
     print("  preserve boundary neutrality")
     print("  keep recovery checks downstream")
 
-    status_line("acceleration-gradient volume creation problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("acceleration-gradient volume creation problem posed", StatusMark.OBLIGATION, "requires covariant frame, chi-origin, neutrality, no-overlap")
+    out.print()
 
 
 def case_1_inventory(entries: List[AccelGradientEntry]):
@@ -287,7 +283,10 @@ def case_2_compact_table(entries: List[AccelGradientEntry]):
             + " |"
         )
 
-    status_line("compact acceleration-gradient ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact acceleration-gradient ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[AccelGradientEntry]):
@@ -307,7 +306,10 @@ def case_3_status_counts(entries: List[AccelGradientEntry]):
     print("  Static-source safety, chi-origin, no-overlap, and boundary neutrality are mandatory.")
     print("  Coordinate velocity remains rejected as a parent law.")
 
-    status_line("acceleration-gradient status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("acceleration-gradient status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_minimal_form():
@@ -329,7 +331,10 @@ def case_4_minimal_form():
     print("4. What makes static sources neutral?")
     print("5. How does zeta enter B_s without residual trace overlap?")
 
-    status_line("minimal acceleration-gradient form stated", "CANDIDATE")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("minimal acceleration-gradient form stated", StatusMark.INFO, "candidate route recorded")
+    out.print()
 
 
 def case_5_good_failure():
@@ -348,7 +353,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  keep using acceleration-gradient language while u^mu and chi remain undefined.")
 
-    status_line("acceleration-gradient good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("acceleration-gradient good failure stated", StatusMark.DEFER, "deferred pending frame and chi")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -366,7 +374,10 @@ def case_6_failure_controls():
     print("8. boundary neutrality is absent")
     print("9. no-overlap theorem is absent")
 
-    status_line("acceleration-gradient failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("acceleration-gradient failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -390,7 +401,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  The acceleration-gradient branch cannot proceed until u^mu/u_vac^mu and projection are defined.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_volume_creation_frame_field_inventory.py")
+    out.print()
 
 
 def final_interpretation():
@@ -421,14 +435,86 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="acceleration_gradient_volume_creation_marker",
-        inputs=[],
-        output=sp.Symbol("acceleration_gradient_volume_creation_audited"),
-        method="acceleration_gradient_volume_creation_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_covariant_acceleration_for_Sigma_V",
+            script_id=SCRIPT_ID,
+            title="Derive covariant acceleration a^mu for Sigma_V source law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "u^mu must be a physically defined matter or vacuum flow field, not an arbitrary gauge choice, "
+                "before a^mu = u^nu nabla_nu u^mu can serve in Sigma_V = chi rho a^mu nabla_mu A."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_static_source_neutrality_for_accel_gradient",
+            script_id=SCRIPT_ID,
+            title="Derive static-source neutrality for acceleration-gradient branch",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Static equilibrium sources must produce no independent exterior zeta charge "
+                "under Sigma_V = chi rho a^mu nabla_mu A, or the ordinary-sector safety is violated."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="accel_gradient_Sigma_V_candidate_route",
+            script_id=SCRIPT_ID,
+            name="Sigma_V = chi rho a^mu nabla_mu A acceleration-gradient route",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_covariant_acceleration_for_Sigma_V",
+                "derive_static_source_neutrality_for_accel_gradient",
+                "derive_chi_origin_for_Sigma_V",
+                "derive_residual_kill_no_overlap_for_Sigma_V",
+                "derive_boundary_neutrality_for_Sigma_V",
+            ],
+            activation_conditions=[
+                "u^mu is physically defined before recovery checks",
+                "chi has prior normalization or exchange-law origin",
+                "static sources are neutral",
+                "boundary neutrality theorem is explicit",
+                "no-overlap/residual-kill theorem is attached",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_coordinate_velocity_accel_gradient",
+            script_id=SCRIPT_ID,
+            branch_id="coordinate_velocity_accel_gradient",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            description=(
+                "rho v^i partial_i A is rejected as a parent law; it is a diagnostic toy only "
+                "and forces a covariant/frame-safe expression."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_accel_gradient_branch",
+            script_id=SCRIPT_ID,
+            branch_id="acceleration_gradient_volume_creation",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_covariant_acceleration_for_Sigma_V",
+                "derive_static_source_neutrality_for_accel_gradient",
+                "derive_chi_origin_for_Sigma_V",
+            ],
+            description=(
+                "The acceleration-gradient branch is deferred pending definition of u^mu/u_vac^mu, "
+                "chi-origin, static-source neutrality, and no-overlap."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="acceleration_gradient_volume_creation_marker",
+            inputs=[],
+            output=sp.Symbol("acceleration_gradient_volume_creation_audited"),
+            method="acceleration_gradient_volume_creation_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,3 +1,9 @@
+# Group:
+#   06_tensor_flux_principle
+#
+# Script type:
+#   DIAGNOSTIC
+
 # Candidate quadrupole tensor flux
 #
 # Purpose
@@ -25,17 +31,22 @@
 #   In GR, far-zone wave amplitude is related to the second time derivative
 #   of the quadrupole moment, while radiated power is related to third time
 #   derivatives. This script keeps that distinction explicit.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/06_tensor_flux_principle/
-#   or:
-#   scripts_v3/candidate_quadrupole_tensor_flux.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,14 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -113,14 +116,18 @@ def case_0_problem_statement():
     print("  wave amplitude source ~ second time derivative of quadrupole")
     print("  radiated power proxy ~ third time derivative squared")
     print()
-    status_line("quadrupole tensor-flux problem posed", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("quadrupole tensor-flux problem posed", StatusMark.PASS, "second vs third derivative distinction explicit")
+    out.print()
 
 
 # =============================================================================
 # Case 1: Define trace-free quadrupole tensor
 # =============================================================================
 
-def case_1_define_quadrupole_tf():
+def case_1_define_quadrupole_tf(ns):
     header("Case 1: Define trace-free quadrupole tensor")
 
     Qxx, Qyy, Qzz, Qxy, Qxz, Qyz = sp.symbols("Q_xx Q_yy Q_zz Q_xy Q_xz Q_yz", real=True)
@@ -133,6 +140,7 @@ def case_1_define_quadrupole_tf():
 
     trQ = sp.trace(Q)
     Q_TF = sp.simplify(Q - trQ * sp.eye(3) / 3)
+    trace_tf = sp.simplify(sp.trace(Q_TF))
 
     print("General symmetric quadrupole tensor Q:")
     print(Q)
@@ -142,9 +150,24 @@ def case_1_define_quadrupole_tf():
     print("Trace-free quadrupole Q_TF = Q - Tr(Q) I/3:")
     print(Q_TF)
     print()
-    print(f"Tr(Q_TF) = {sp.simplify(sp.trace(Q_TF))}")
+    print(f"Tr(Q_TF) = {trace_tf}")
 
-    status_line("Q_TF is trace-free", is_zero(sp.trace(Q_TF)))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("Q_TF is trace-free",
+                 StatusMark.PASS if is_zero(trace_tf) else StatusMark.FAIL,
+                 f"Tr(Q_TF) = {trace_tf}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="quadrupole_tf_trace_zero",
+        inputs=[Q],
+        output=trace_tf,
+        method="trace_free_decomposition_quadrupole",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
     return Q_TF
 
@@ -169,16 +192,22 @@ def case_2_monopole_dipole_not_tt():
     print()
     print("Tensor radiation starts at trace-free quadrupole order.")
     print()
-    status_line("monopole belongs to scalar channel", True)
-    status_line("dipole is not the leading isolated tensor radiation channel", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("monopole belongs to scalar channel", StatusMark.PASS, "M sources A-flux not TT radiation")
+        out.line("dipole is not the leading isolated tensor radiation channel", StatusMark.PASS, "dipole removed by COM conservation")
+    out.print()
 
 
 # =============================================================================
 # Case 3: Project quadrupole onto plus/cross for z propagation
 # =============================================================================
 
-def case_3_project_to_plus_cross(Q_TF):
+def case_3_project_to_plus_cross(Q_TF, ns):
     header("Case 3: Project Q_TF onto plus/cross basis")
+
+    Qxx, Qyy, Qzz, Qxy, Qxz, Qyz = sp.symbols("Q_xx Q_yy Q_zz Q_xy Q_xz Q_yz", real=True)
 
     e_plus = sp.Matrix([
         [1, 0, 0],
@@ -196,6 +225,11 @@ def case_3_project_to_plus_cross(Q_TF):
     Q_plus = sp.simplify(inner(Q_TF, e_plus) / 2)
     Q_cross = sp.simplify(inner(Q_TF, e_cross) / 2)
 
+    expected_plus = (Qxx - Qyy) / 2
+    expected_cross = Qxy
+    residual_plus = sp.simplify(Q_plus - expected_plus)
+    residual_cross = sp.simplify(Q_cross - expected_cross)
+
     print(f"Q_plus projection = {Q_plus}")
     print(f"Q_cross projection = {Q_cross}")
     print()
@@ -203,7 +237,31 @@ def case_3_project_to_plus_cross(Q_TF):
     print("  plus source sees (Q_xx - Q_yy)/2")
     print("  cross source sees Q_xy")
 
-    status_line("quadrupole projects onto plus/cross channels", True)
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("quadrupole projects onto plus/cross channels",
+                 StatusMark.PASS if is_zero(residual_plus) and is_zero(residual_cross) else StatusMark.FAIL,
+                 f"Q_plus residual={residual_plus}, Q_cross residual={residual_cross}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="quadrupole_projection_plus_channel",
+        inputs=[Q_TF, e_plus],
+        output=Q_plus,
+        method="frobenius_inner_product_Q_TF_e_plus_half",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="quadrupole_projection_cross_channel",
+        inputs=[Q_TF, e_cross],
+        output=Q_cross,
+        method="frobenius_inner_product_Q_TF_e_cross_half",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
     return Q_plus, Q_cross
 
@@ -212,7 +270,7 @@ def case_3_project_to_plus_cross(Q_TF):
 # Case 4: Time-dependent quadrupole source proxy
 # =============================================================================
 
-def case_4_time_dependent_source_proxy():
+def case_4_time_dependent_source_proxy(ns):
     header("Case 4: Time-dependent quadrupole source proxy")
 
     t, Omega, Q0 = sp.symbols("t Omega Q0", positive=True, real=True)
@@ -227,6 +285,9 @@ def case_4_time_dependent_source_proxy():
     Qp_dddot = sp.diff(Q_plus, t, 3)
     Qx_dddot = sp.diff(Q_cross, t, 3)
 
+    amplitude_proxy = sp.simplify(Qp_ddot**2 + Qx_ddot**2)
+    power_proxy = sp.simplify(Qp_dddot**2 + Qx_dddot**2)
+
     print(f"Q_plus(t) = {Q_plus}")
     print(f"Q_cross(t) = {Q_cross}")
     print()
@@ -235,23 +296,41 @@ def case_4_time_dependent_source_proxy():
     print()
     print(f"Q_plus_dddot = {Qp_dddot}")
     print(f"Q_cross_dddot = {Qx_dddot}")
-
-    amplitude_proxy = sp.simplify(Qp_ddot**2 + Qx_ddot**2)
-    power_proxy = sp.simplify(Qp_dddot**2 + Qx_dddot**2)
-
     print()
     print(f"amplitude-source proxy Q_ddot² sum = {amplitude_proxy}")
     print(f"power proxy Q_dddot² sum = {power_proxy}")
 
-    status_line("quadrupole amplitude proxy uses second derivatives", True)
-    status_line("quadrupole power proxy uses third derivatives", True)
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("quadrupole amplitude proxy uses second derivatives", StatusMark.PASS, f"Qddot² proxy = {amplitude_proxy}")
+        out.line("quadrupole power proxy uses third derivatives", StatusMark.PASS, f"Qdddot² proxy = {power_proxy}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="rotating_quadrupole_amplitude_proxy",
+        inputs=[Q_plus, Q_cross],
+        output=amplitude_proxy,
+        method="second_derivative_amplitude_proxy_rotating_quadrupole",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="rotating quadrupole toy model only",
+    )
+    ns.record_derivation(
+        derivation_id="rotating_quadrupole_power_proxy",
+        inputs=[Q_plus, Q_cross],
+        output=power_proxy,
+        method="third_derivative_power_proxy_rotating_quadrupole",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="rotating quadrupole toy model only",
+    )
 
 
 # =============================================================================
 # Case 5: Static quadrupole does not radiate
 # =============================================================================
 
-def case_5_static_quadrupole_no_radiation():
+def case_5_static_quadrupole_no_radiation(ns):
     header("Case 5: Static quadrupole does not radiate")
 
     t, Q0 = sp.symbols("t Q0", real=True)
@@ -264,8 +343,25 @@ def case_5_static_quadrupole_no_radiation():
     print(f"Q_ddot = {Q_ddot}")
     print(f"Q_dddot = {Q_dddot}")
 
-    status_line("static quadrupole has no wave-amplitude source", is_zero(Q_ddot))
-    status_line("static quadrupole has no radiation-power proxy", is_zero(Q_dddot))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("static quadrupole has no wave-amplitude source",
+                 StatusMark.PASS if is_zero(Q_ddot) else StatusMark.FAIL,
+                 f"Q_ddot = {Q_ddot}")
+        out.line("static quadrupole has no radiation-power proxy",
+                 StatusMark.PASS if is_zero(Q_dddot) else StatusMark.FAIL,
+                 f"Q_dddot = {Q_dddot}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="static_quadrupole_no_radiation_residual",
+        inputs=[Q_static],
+        output=sp.Matrix([Q_ddot, Q_dddot]),
+        method="time_derivatives_static_quadrupole",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
@@ -290,7 +386,11 @@ def case_6_tensor_flux_analogy():
     print("  A-flux is monopole scalar vacuum flow.")
     print("  Tensor flux is quadrupole TT radiative vacuum flow.")
     print()
-    status_line("tensor-flux analogy stated", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("tensor-flux analogy stated", StatusMark.PASS, "M -> A-flux; Q_TF -> h_ij^TT radiation")
+    out.print()
 
 
 # =============================================================================
@@ -310,7 +410,11 @@ def case_7_classification():
     print("6. Radiated-power proxy is associated with third derivatives squared.")
     print("7. Static quadrupole does not radiate.")
     print()
-    status_line("quadrupole tensor-flux source structure passes first checks", True)
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("quadrupole tensor-flux source structure passes first checks", StatusMark.PASS, "TF quadrupole projected; derivative distinction explicit")
+    out.print()
 
 
 # =============================================================================
@@ -347,20 +451,48 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    Q_TF = case_1_define_quadrupole_tf()
+    Q_TF = case_1_define_quadrupole_tf(ns)
     case_2_monopole_dipole_not_tt()
-    case_3_project_to_plus_cross(Q_TF)
-    case_4_time_dependent_source_proxy()
-    case_5_static_quadrupole_no_radiation()
+    case_3_project_to_plus_cross(Q_TF, ns)
+    case_4_time_dependent_source_proxy(ns)
+    case_5_static_quadrupole_no_radiation(ns)
     case_6_tensor_flux_analogy()
     case_7_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_quadrupole_coupling_normalization",
+        script_id=SCRIPT_ID,
+        title="Derive quadrupole coupling normalization",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The projection of Q_TF onto plus/cross channels is derived. The coupling "
+            "coefficient connecting Qdd to far-zone h_ij^TT must be derived or matched."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="quadrupole_source_structure_claim",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The trace-free quadrupole Q_ij^TF projects onto plus/cross TT channels. "
+            "Amplitude proxy uses second time derivatives; power proxy uses third. "
+            "Static quadrupoles do not radiate. Coupling normalization is open."
+        ),
+        obligation_ids=["derive_quadrupole_coupling_normalization"],
+    ))
+
     ns.record_derivation(
         derivation_id="quadrupole_tensor_flux_marker",
         inputs=[],
         output=sp.Symbol("quadrupole_tensor_flux_channel"),
         method="quadrupole_tensor_flux_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

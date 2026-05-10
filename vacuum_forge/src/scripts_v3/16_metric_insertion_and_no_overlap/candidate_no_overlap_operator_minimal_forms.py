@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The residual non-metric bookkeeping audit found:
@@ -34,6 +37,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,33 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -294,12 +283,12 @@ def print_entry(e: NoOverlapMinimalEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal no-overlap operator problem")
 
     print("Question:")
@@ -325,7 +314,12 @@ def case_0_problem_statement():
     print("  do not hide overlap in boundary terms")
     print("  keep recovery downstream")
 
-    status_line("minimal no-overlap operator problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line(
+            "minimal no-overlap operator problem posed",
+            StatusMark.OBLIGATION,
+            "required before neutral residual can be permitted",
+        )
 
 
 def case_1_inventory(entries: List[NoOverlapMinimalEntry]):
@@ -334,7 +328,7 @@ def case_1_inventory(entries: List[NoOverlapMinimalEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[NoOverlapMinimalEntry]):
+def case_2_compact_table(entries: List[NoOverlapMinimalEntry], out: ScriptOutput):
     header("Case 2: Compact minimal O ledger")
 
     print("| Entry | Form | Status | Consequence |")
@@ -352,10 +346,11 @@ def case_2_compact_table(entries: List[NoOverlapMinimalEntry]):
             + " |"
         )
 
-    status_line("compact minimal O ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact minimal O ledger produced", StatusMark.INFO, "candidate O forms enumerated")
 
 
-def case_3_status_counts(entries: List[NoOverlapMinimalEntry]):
+def case_3_status_counts(entries: List[NoOverlapMinimalEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -373,10 +368,11 @@ def case_3_status_counts(entries: List[NoOverlapMinimalEntry]):
     print("  Non-metric bookkeeping is not O.")
     print("  If O remains unresolved, boundary safety should be tested under residual-kill convention.")
 
-    status_line("minimal O status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("minimal O status count produced", StatusMark.INFO, "O unresolved; candidate forms only")
 
 
-def case_4_candidate_forms():
+def case_4_candidate_forms(out: ScriptOutput):
     header("Case 4: Candidate O forms")
 
     print("Candidate O forms:")
@@ -396,10 +392,11 @@ def case_4_candidate_forms():
     print("  Diagnostic audits test overlap.")
     print("  None of these is automatically a derived O.")
 
-    status_line("candidate O forms listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("candidate O forms listed", StatusMark.INFO, "seven forms listed; none derived")
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Minimal O decision tree")
 
     print("Decision tree:")
@@ -422,10 +419,11 @@ def case_5_decision_tree():
     print("6. Fake O:")
     print("   rejected if it only renames desired outcome.")
 
-    status_line("minimal O decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("minimal O decision tree stated", StatusMark.INFO, "recommended next is boundary safety")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -443,10 +441,15 @@ def case_6_good_failure():
     print()
     print("  Call residual-kill, non-metric bookkeeping, or diagnostic projection a derived O.")
 
-    status_line("minimal O good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line(
+            "minimal O good failure stated",
+            StatusMark.DEFER,
+            "deferred; O unresolved, continue under residual-kill convention",
+        )
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Minimal O fails if:")
@@ -460,10 +463,11 @@ def case_7_failure_controls():
     print("7. recovery checks choose O")
     print("8. neutral residual is allowed without O")
 
-    status_line("minimal O failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("minimal O failure controls stated", StatusMark.WARN, "eight failure modes")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -485,10 +489,11 @@ def case_8_next_tests():
     print("  O remains unresolved, so the safe convention must now survive boundary safety:")
     print("  no exterior charge, no far-zone scalar flux, no M_ext shift, no shell source.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_B_s_insertion_boundary_safety.py")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Minimal O remains unresolved.")
@@ -505,32 +510,120 @@ def final_interpretation():
     print()
     print("  candidate_B_s_insertion_boundary_safety.py")
 
-    status_line("minimal no-overlap operator audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line(
+            "minimal no-overlap operator audit complete",
+            StatusMark.DEFER,
+            "O unresolved; convention-limited",
+        )
 
 
 def main():
     header("Candidate No-Overlap Operator Minimal Forms")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_forms()
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_forms(out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="no_overlap_operator_minimal_forms_marker",
-        inputs=[],
-        output=sp.Symbol("no_overlap_operator_minimal_forms_audited"),
-        method="no_overlap_operator_minimal_forms_audit",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Proof obligations for O theorem and derived forms
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_no_overlap_operator_O",
+            script_id=SCRIPT_ID,
+            title="Derive no-overlap operator O",
+            status=ObligationStatus.OPEN,
+            required_by=["neutral_residual_metric_trace_route"],
+            description=(
+                "Derive a concrete no-overlap operator O[B_s, zeta_residual/kappa_residual, J_V] = 0 "
+                "with explicit domain, pairing or projector construction, and boundary safety. "
+                "Residual-kill and non-metric bookkeeping are not sufficient."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_orthogonality_pairing_for_O",
+            script_id=SCRIPT_ID,
+            title="Derive orthogonality pairing for O",
+            status=ObligationStatus.OPEN,
+            required_by=["neutral_residual_metric_trace_route"],
+            description=(
+                "Define the pairing <Trace_B_s, Trace_residual>_O from metric/source/accounting structure, "
+                "not chosen ad hoc."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_projector_split_for_O",
+            script_id=SCRIPT_ID,
+            title="Derive projector split P_B, P_R for O",
+            status=ObligationStatus.OPEN,
+            required_by=["neutral_residual_metric_trace_route"],
+            description=(
+                "Construct actual projectors P_B and P_R satisfying P_B * P_R = 0 "
+                "with explicit source/domain definitions."
+            ),
+        ))
+
+        # Route: residual-kill as safe convention (not derived O)
+        ns2.record_route(RouteRecord(
+            route_id="residual_kill_nonmetric_convention_route",
+            script_id=SCRIPT_ID,
+            name="Residual kill / non-metric residual convention",
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_no_overlap_operator_O"],
+            activation_conditions=[
+                "residual zeta/kappa metric trace is killed or non-metric",
+                "no O derived yet",
+                "energy/accounting is not a source reservoir",
+                "boundary safety holds structurally",
+            ],
+        ))
+
+        # Branch decision: O deferred
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_O_no_pairing_or_projector",
+            script_id=SCRIPT_ID,
+            branch_id="no_overlap_operator_O",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=[
+                "derive_no_overlap_operator_O",
+                "derive_orthogonality_pairing_for_O",
+                "derive_projector_split_for_O",
+            ],
+            description=(
+                "O cannot be licensed because no pairing or projector construction exists. "
+                "Residual-kill / non-metric convention is the only safe working branch. "
+                "Boundary safety must now be tested under that convention."
+            ),
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="no_overlap_operator_minimal_forms_marker",
+            inputs=[],
+            output=sp.Symbol("no_overlap_operator_minimal_forms_audited"),
+            method="no_overlap_operator_minimal_forms_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate kappa boundary layer source compatibility
 #
 # Purpose
@@ -28,17 +34,22 @@
 #   5. hand-chosen smoothing.
 #
 # This is a compatibility audit, not a final source derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_boundary_layer_source_compatibility.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -50,22 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def areal_laplacian(expr, r):
@@ -117,9 +112,6 @@ def case_0_problem_statement():
     print()
     print("Now test source compatibility.")
 
-    status_line("boundary-layer source compatibility problem posed",
-                "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_effective_source_for_C2():
     header("Case 1: C2 effective source")
@@ -147,11 +139,7 @@ def case_1_effective_source_for_C2():
     print()
     print(f"Q_eff = {Q_eff}")
 
-    status_line("C2 effective source computed",
-                "DERIVED_REDUCED",
-                "source interpretation pending")
-
-    return r, R, k0, kappa, S_eff
+    return r, R, k0, kappa, S_eff, Q_eff
 
 
 def case_2_sign_structure(r, R, S_eff):
@@ -170,10 +158,6 @@ def case_2_sign_structure(r, R, S_eff):
     print("Interpretation:")
     print("  S_eff changes sign inside the matter support.")
     print("  Therefore it is not a raw positive pressure source.")
-
-    status_line("C2 effective source changes sign",
-                "CONSTRAINED_BY_IDENTITY",
-                "raw pressure trace cannot directly produce it")
 
 
 def case_3_compare_raw_pressure():
@@ -196,10 +180,6 @@ def case_3_compare_raw_pressure():
     print()
     print("Conclusion:")
     print("  raw pressure trace alone is incompatible with the C2 effective source.")
-
-    status_line("raw pressure trace incompatible as sole source",
-                "REJECTED",
-                "unless projected/combined with compensation")
 
 
 def case_4_compensated_trace_comparison(r, R, S_eff):
@@ -224,9 +204,7 @@ def case_4_compensated_trace_comparison(r, R, S_eff):
     print("Both have zero net integral and sign-changing structure.")
     print("They are not identical shapes, but they are in the same compensated-source family.")
 
-    status_line("C2 source resembles compensated trace family",
-                "PLAUSIBLE",
-                "exact source law not derived")
+    return S_comp
 
 
 def case_5_shifted_minimum_interpretation(r, R, k0, kappa):
@@ -258,9 +236,7 @@ def case_5_shifted_minimum_interpretation(r, R, k0, kappa):
     print("  in the non-inertial model, trace shifts the minimum rather than acting")
     print("  as a Poisson charge.")
 
-    status_line("shifted-minimum interpretation can produce compact kappa directly",
-                "PLAUSIBLE",
-                "chi_k and source law not derived")
+    return kappa_min, S_trace_required
 
 
 def case_6_operator_dependence_warning():
@@ -280,10 +256,6 @@ def case_6_operator_dependence_warning():
     print()
     print("Therefore the non-inertial model is more compatible with ordinary")
     print("interior trace response than a Poisson-source kappa model.")
-
-    status_line("source compatibility depends on kappa dynamics",
-                "CONSTRAINED_BY_IDENTITY",
-                "supports non-inertial minimum-shift picture")
 
 
 def case_7_boundary_interface_source():
@@ -310,10 +282,6 @@ def case_7_boundary_interface_source():
     print()
     print("This is plausible but not derived.")
 
-    status_line("boundary cutoff/minimum-shift interpretation is plausible",
-                "PLAUSIBLE",
-                "interface law missing")
-
 
 def case_8_classification():
     header("Case 8: Classification")
@@ -328,10 +296,6 @@ def case_8_classification():
     print("| hand-chosen smoothing | RISK |")
     print("| final source compatibility | UNFINISHED |")
 
-    status_line("source compatibility classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "non-inertial shifted-minimum picture preferred")
-
 
 def case_9_failure_controls():
     header("Case 9: Failure controls")
@@ -344,10 +308,6 @@ def case_9_failure_controls():
     print("4. shifted-minimum source is not connected to trace/volume physics.")
     print("5. interface restoration conflicts with A-sector mass flux.")
     print("6. kappa dynamics are mixed inconsistently between Poisson and relaxation pictures.")
-
-    status_line("source compatibility failure controls stated",
-                "RISK",
-                "avoid mixing incompatible source interpretations")
 
 
 def case_10_next_tests():
@@ -370,10 +330,6 @@ def case_10_next_tests():
     print()
     print("Reason:")
     print("  Source compatibility favors non-inertial minimum-shift over Poisson source.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "minimum-shift source model is next")
 
 
 def final_interpretation():
@@ -405,26 +361,83 @@ def main():
     header("Candidate Kappa Boundary Layer Source Compatibility")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    r, R, k0, kappa, S_eff = case_1_effective_source_for_C2()
+    r, R, k0, kappa, S_eff, Q_eff = case_1_effective_source_for_C2()
     case_2_sign_structure(r, R, S_eff)
     case_3_compare_raw_pressure()
-    case_4_compensated_trace_comparison(r, R, S_eff)
-    case_5_shifted_minimum_interpretation(r, R, k0, kappa)
+    S_comp = case_4_compensated_trace_comparison(r, R, S_eff)
+    kappa_min, S_trace_required = case_5_shifted_minimum_interpretation(r, R, k0, kappa)
     case_6_operator_dependence_warning()
     case_7_boundary_interface_source()
     case_8_classification()
     case_9_failure_controls()
     case_10_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_boundary_layer_source_compatibility_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_boundary_layer_source_compatibility_classified"),
-        method="kappa_boundary_layer_source_compatibility_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Auditing computed shape of C2 effective source
+        ns.record_derivation(
+            derivation_id="C2_kappa_effective_source_sign_change_audit",
+            inputs=[kappa],
+            output=S_eff,
+            method="compute Delta_areal(kappa) = kappa'' + 2*kappa'/r for C2 profile",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_boundary_layer_source_compatibility_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_boundary_layer_source_compatibility_classified"),
+            method="kappa_boundary_layer_source_compatibility_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_min_boundary_cutoff_source_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the boundary-cutoff modified shifted minimum kappa_min(r) from trace/volume physics",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The non-inertial model favors kappa_min = chi_k * S_trace_effective with "
+                "a boundary cutoff that enforces kappa_min(R)=0, kappa_min'(R)=0. "
+                "The cutoff must be derived from interface/matching physics, not chosen "
+                "to produce a smooth compact profile by construction."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="noninertial_kappa_source_preferred_over_poisson",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The non-inertial minimum-shift model (kappa_min = chi_k S_trace_effective) "
+                "is more compatible with smooth compact kappa profiles than a Poisson "
+                "source kappa model, because it does not require the trace to produce "
+                "a sign-changing Delta-kappa source."
+            ),
+        ))
+
+        with out.governance_assessments():
+            out.line("raw pressure as elliptic Poisson source", StatusMark.FAIL, "rejected - produces sign-changing Delta-kappa")
+            out.line("compensated trace as elliptic source", StatusMark.DEFER, "plausible but parent identity missing")
+            out.line("non-inertial minimum-shift preferred", StatusMark.PASS, "current best interpretation")
+            out.line("boundary cutoff derivation", StatusMark.OBLIGATION, "missing")
+
+        with out.unresolved_obligations():
+            out.line("derive boundary-cutoff kappa_min from interface physics", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

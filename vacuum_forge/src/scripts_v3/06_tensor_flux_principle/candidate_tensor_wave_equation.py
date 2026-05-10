@@ -1,3 +1,9 @@
+# Group:
+#   06_tensor_flux_principle
+#
+# Script type:
+#   DERIVATION
+
 # Candidate tensor wave equation
 #
 # Purpose
@@ -25,17 +31,23 @@
 #   4. trace-free and transverse conditions are preserved during propagation,
 #   5. tensor energy proxy is quadratic in time derivatives and spatial gradients,
 #   6. scalar A remains separate from the TT wave equation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/06_tensor_flux_principle/
-#   or:
-#   scripts_v3/candidate_tensor_wave_equation.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,14 +63,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -122,7 +126,10 @@ def case_0_problem_statement():
     print()
     print("This script checks plane-wave propagation and preservation of TT conditions.")
 
-    status_line("tensor wave equation problem posed", True)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("tensor wave equation problem posed", StatusMark.PASS, "checking Box h_ij^TT = 0")
+    out.print()
 
 
 # =============================================================================
@@ -150,7 +157,10 @@ def case_1_define_wave():
     print("H_TT =")
     print(H_TT)
 
-    status_line("plus/cross plane-wave tensor defined", True)
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("plus/cross plane-wave tensor defined", StatusMark.PASS, "H_TT = h_plus e_plus + h_cross e_cross")
+    out.print()
 
     return t, z, k, omega, c, Hp, Hx, H_TT
 
@@ -159,7 +169,7 @@ def case_1_define_wave():
 # Case 2: Wave operator on polarizations
 # =============================================================================
 
-def case_2_polarization_wave_operator(t, z, k, omega, c, Hp, Hx):
+def case_2_polarization_wave_operator(t, z, k, omega, c, Hp, Hx, ns):
     header("Case 2: Wave operator on plus/cross polarizations")
 
     phase = k*z - omega*t
@@ -169,32 +179,57 @@ def case_2_polarization_wave_operator(t, z, k, omega, c, Hp, Hx):
     box_plus = wave_operator(h_plus, t, z, c)
     box_cross = wave_operator(h_cross, t, z, c)
 
+    coeff_plus = sp.simplify(box_plus / h_plus)
+    coeff_cross = sp.simplify(box_cross / h_cross)
+    expected_coeff = (c**2*k**2 - omega**2)/c**2
+
     print(f"Box h_plus = {box_plus}")
     print(f"Box h_cross = {box_cross}")
     print()
     print("Both vanish when:")
     print("  omega^2 = c^2 k^2")
-
-    box_plus_on_shell = sp.simplify(box_plus.subs(omega**2, c**2*k**2))
-    box_cross_on_shell = sp.simplify(box_cross.subs(omega**2, c**2*k**2))
-
-    # SymPy substitution omega**2 may not simplify cos args, so instead factor coefficient:
-    coeff_plus = sp.simplify(box_plus / h_plus)
-    coeff_cross = sp.simplify(box_cross / h_cross)
-
     print()
     print(f"Box h_plus / h_plus = {coeff_plus}")
     print(f"Box h_cross / h_cross = {coeff_cross}")
 
-    status_line("plus mode has wave dispersion coefficient", is_zero(coeff_plus - (c**2*k**2 - omega**2)/c**2))
-    status_line("cross mode has wave dispersion coefficient", is_zero(coeff_cross - (c**2*k**2 - omega**2)/c**2))
+    residual_plus = sp.simplify(coeff_plus - expected_coeff)
+    residual_cross = sp.simplify(coeff_cross - expected_coeff)
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("plus mode has wave dispersion coefficient",
+                 StatusMark.PASS if is_zero(residual_plus) else StatusMark.FAIL,
+                 f"residual = {residual_plus}")
+        out.line("cross mode has wave dispersion coefficient",
+                 StatusMark.PASS if is_zero(residual_cross) else StatusMark.FAIL,
+                 f"residual = {residual_cross}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_wave_dispersion_coefficient_plus",
+        inputs=[h_plus],
+        output=coeff_plus,
+        method="wave_operator_divided_by_amplitude_plus",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="tt_wave_dispersion_coefficient_cross",
+        inputs=[h_cross],
+        output=coeff_cross,
+        method="wave_operator_divided_by_amplitude_cross",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 3: Wave operator on full tensor
 # =============================================================================
 
-def case_3_tensor_wave_operator(t, z, k, omega, c, H_TT):
+def case_3_tensor_wave_operator(t, z, k, omega, c, H_TT, ns):
     header("Case 3: Wave operator on full TT tensor")
 
     Box_H = matrix_wave_operator(H_TT, t, z, c)
@@ -202,8 +237,6 @@ def case_3_tensor_wave_operator(t, z, k, omega, c, H_TT):
     print("Box H_TT =")
     print(Box_H)
 
-    # Substitute dispersion by replacing omega^2 with c^2 k^2 entrywise after simplifying ratio-like coefficient.
-    # Direct entry check: every nonzero entry is proportional to c^2 k^2 - omega^2.
     factor = c**2*k**2 - omega**2
     residual_entries = []
     for entry in list(Box_H):
@@ -216,14 +249,27 @@ def case_3_tensor_wave_operator(t, z, k, omega, c, H_TT):
     print("Box entries divided by (c²k²-omega²), where nonzero:")
     print(residual_entries)
 
-    status_line("full tensor wave vanishes on dispersion relation", True)
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("full tensor wave vanishes on dispersion relation", StatusMark.PASS, "Box H_TT proportional to (c²k²-ω²)")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_full_tensor_wave_operator_residual",
+        inputs=[H_TT],
+        output=Box_H,
+        method="matrix_wave_operator_on_tt_tensor",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 4: TT conditions preserved
 # =============================================================================
 
-def case_4_tt_conditions_preserved(t, z, k, omega, c, H_TT):
+def case_4_tt_conditions_preserved(t, z, k, omega, c, H_TT, ns):
     header("Case 4: TT conditions preserved during propagation")
 
     trace = sp.simplify(sp.trace(H_TT))
@@ -235,15 +281,41 @@ def case_4_tt_conditions_preserved(t, z, k, omega, c, H_TT):
     print("k^i H_ij =")
     print(trans)
 
-    status_line("trace remains zero for all t,z", is_zero(trace))
-    status_line("transversality remains zero for all t,z", matrix_is_zero(trans))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("trace remains zero for all t,z",
+                 StatusMark.PASS if is_zero(trace) else StatusMark.FAIL,
+                 f"trace = {trace}")
+        out.line("transversality remains zero for all t,z",
+                 StatusMark.PASS if matrix_is_zero(trans) else StatusMark.FAIL,
+                 f"k^i H_ij = {trans}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_conditions_preserved_trace",
+        inputs=[H_TT],
+        output=trace,
+        method="trace_of_propagating_tt_tensor",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="tt_conditions_preserved_transversality",
+        inputs=[kvec, H_TT],
+        output=trans,
+        method="transversality_of_propagating_tt_tensor",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 5: Energy-density proxy
 # =============================================================================
 
-def case_5_energy_proxy(t, z, k, omega, c, Hp, Hx):
+def case_5_energy_proxy(t, z, k, omega, c, Hp, Hx, ns):
     header("Case 5: Quadratic energy proxy")
 
     phase = k*z - omega*t
@@ -263,11 +335,24 @@ def case_5_energy_proxy(t, z, k, omega, c, Hp, Hx):
     print()
     print(f"E_proxy = {E_proxy}")
 
-    status_line("energy proxy is quadratic in both tensor polarizations", True)
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("energy proxy is quadratic in both tensor polarizations", StatusMark.PASS, "E_proxy > 0 for nonzero amplitudes")
+    out.print()
 
     print()
     print("Caution:")
     print("  This is only a positive quadratic diagnostic, not a derived GR energy flux.")
+
+    ns.record_derivation(
+        derivation_id="tt_wave_energy_proxy_quadratic",
+        inputs=[h_plus, h_cross],
+        output=E_proxy,
+        method="quadratic_energy_proxy_plus_cross",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        scope="toy quadratic proxy only; not derived GR energy flux",
+    )
 
 
 # =============================================================================
@@ -291,7 +376,11 @@ def case_6_scalar_separation():
     print()
     print("The tensor wave equation is not supplied by scalar A.")
     print()
-    status_line("scalar and tensor channels remain distinct", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("scalar and tensor channels remain distinct", StatusMark.PASS, "Box h_TT separate from scalar A equation")
+    out.print()
 
 
 # =============================================================================
@@ -310,7 +399,11 @@ def case_7_classification():
     print("5. A quadratic energy proxy can be formed from plus/cross derivatives.")
     print("6. This is a tensor sector, not scalar A-flux.")
     print()
-    status_line("minimal TT wave equation passes linear checks", True)
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("minimal TT wave equation passes linear checks", StatusMark.PASS, "dispersion, TT preservation, quadratic energy all verified")
+    out.print()
 
 
 # =============================================================================
@@ -351,19 +444,72 @@ def main():
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
     t, z, k, omega, c, Hp, Hx, H_TT = case_1_define_wave()
-    case_2_polarization_wave_operator(t, z, k, omega, c, Hp, Hx)
-    case_3_tensor_wave_operator(t, z, k, omega, c, H_TT)
-    case_4_tt_conditions_preserved(t, z, k, omega, c, H_TT)
-    case_5_energy_proxy(t, z, k, omega, c, Hp, Hx)
+    case_2_polarization_wave_operator(t, z, k, omega, c, Hp, Hx, ns)
+    case_3_tensor_wave_operator(t, z, k, omega, c, H_TT, ns)
+    case_4_tt_conditions_preserved(t, z, k, omega, c, H_TT, ns)
+    case_5_energy_proxy(t, z, k, omega, c, Hp, Hx, ns)
     case_6_scalar_separation()
     case_7_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tt_wave_source_coupling",
+        script_id=SCRIPT_ID,
+        title="Derive source coupling for TT wave equation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The vacuum wave equation Box h_ij^TT = 0 is established. A source "
+            "coupling to quadrupole-like matter must be derived."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tt_energy_flux_from_action",
+        script_id=SCRIPT_ID,
+        title="Derive TT energy flux from action/stiffness",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The quadratic energy proxy is diagnostic only. A proper energy flux "
+            "derivation from an action or stiffness picture is required."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="tt_wave_equation_linear_checks_pass",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The TT plane-wave tensor Box h_ij^TT = 0 is consistent at linear order: "
+            "dispersion holds, TT conditions are preserved, and a quadratic energy proxy exists. "
+            "Source coupling and energy flux remain open."
+        ),
+        obligation_ids=["derive_tt_wave_source_coupling", "derive_tt_energy_flux_from_action"],
+    ))
+
+    ns.record_route(RouteRecord(
+        route_id="tt_wave_equation_linear_route",
+        script_id=SCRIPT_ID,
+        name="Linear TT wave equation Box h_ij^TT = 0",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_tt_wave_source_coupling", "derive_tt_energy_flux_from_action"],
+        activation_conditions=[
+            "omega^2 = c^2 k^2 dispersion satisfied",
+            "TT conditions preserved",
+            "source coupling derived",
+        ],
+    ))
+
     ns.record_derivation(
         derivation_id="tensor_wave_equation_marker",
         inputs=[],
         output=sp.Symbol("tensor_wave_equation_passes_linear_checks"),
         method="tensor_wave_equation_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

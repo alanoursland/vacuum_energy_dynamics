@@ -1,5 +1,11 @@
 # Candidate parent balance identity for A_spatial
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The minimal gradient-current ratio test found:
@@ -22,6 +28,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -34,32 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -232,12 +223,12 @@ def print_entry(e: ParentBalanceEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent balance identity for A_spatial problem")
 
     print("Question:")
@@ -257,7 +248,9 @@ def case_0_problem_statement():
     print("  preserve no-overlap trace theorem")
     print("  move to volume-exchange if balance remains unnamed")
 
-    status_line("parent balance identity problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("parent balance identity problem posed", "DEFER",
+                 "branch open pending explicit E_parent operator")
 
 
 def case_1_inventory(entries: List[ParentBalanceEntry]):
@@ -266,7 +259,7 @@ def case_1_inventory(entries: List[ParentBalanceEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[ParentBalanceEntry]):
+def case_2_compact_table(entries: List[ParentBalanceEntry], out: ScriptOutput):
     header("Case 2: Compact parent-balance ledger")
 
     print("| Entry | Balance | Status | Consequence |")
@@ -284,10 +277,11 @@ def case_2_compact_table(entries: List[ParentBalanceEntry]):
             + " |"
         )
 
-    status_line("compact parent-balance ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact parent-balance ledger produced", "INFO", "inventory table complete")
 
 
-def case_3_status_counts(entries: List[ParentBalanceEntry]):
+def case_3_status_counts(entries: List[ParentBalanceEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -304,10 +298,11 @@ def case_3_status_counts(entries: List[ParentBalanceEntry]):
     print("  GR rewrite and decorative Bianchi-like balance are rejected.")
     print("  Volume-exchange may be the next concrete route if abstract balance cannot be written.")
 
-    status_line("parent-balance status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("parent-balance status count produced", "INFO", "counts reviewed")
 
 
-def case_4_balance_requirements():
+def case_4_balance_requirements(out: ScriptOutput):
     header("Case 4: Minimal parent-balance requirements")
 
     print("A legitimate parent balance identity must provide:")
@@ -322,10 +317,12 @@ def case_4_balance_requirements():
     print()
     print("Missing any of these makes parent balance decorative.")
 
-    status_line("minimal parent-balance requirements stated", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("derive explicit E_parent with B_closed and B_relax", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / branch move")
 
     print("Good failure:")
@@ -340,10 +337,12 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  call the balance Bianchi-like and keep going without an operator.")
 
-    status_line("parent-balance good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("parent-balance good failure stated", "DEFER",
+                 "branch deferred; no explicit E_parent available")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Parent balance identity fails if:")
@@ -357,10 +356,11 @@ def case_6_failure_controls():
     print("7. zeta/kappa residual double-counts B_s")
     print("8. balance remains abstract after this script")
 
-    status_line("parent-balance failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("parent-balance failure controls stated", "INFO", "eight failure controls recorded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -381,7 +381,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Parent balance remains viable only if E_parent can be made explicit. Test operator classes before jumping to volume-exchange.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", "INFO", "candidate_parent_balance_operator_inventory.py")
 
 
 def final_interpretation():
@@ -400,25 +401,70 @@ def main():
     header("Candidate Parent Balance Identity For A_spatial")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_balance_requirements()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_balance_requirements(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="parent_balance_identity_for_A_spatial_marker",
-        inputs=[],
-        output=sp.Symbol("parent_balance_identity_for_A_spatial_audited"),
-        method="parent_balance_identity_for_A_spatial_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with ProjectArchive(ARCHIVE_ROOT) as pa:
+        ns2 = pa.script_namespace(SCRIPT_ID)
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_E_parent_operator_for_A_spatial_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive explicit E_parent operator for A_spatial balance",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Write E_parent[A,B_s,zeta,...] explicitly. The operator must not be the Einstein "
+                "tensor or a decorative Bianchi-like identity. B_closed[T] and B_relax must also be "
+                "defined before recovery checks."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_ab_ratio_from_parent_balance_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive a/b ratio from parent balance structure",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that a/b = r_balance[E_parent, B_closed, B_relax] follows from the balance "
+                "structure without choosing balance terms from gamma_like or AB recovery checks."
+            ),
+        ))
+
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_parent_balance_identity_for_A_spatial_branch",
+            script_id=SCRIPT_ID,
+            branch_id="parent_balance_identity_for_A_spatial",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_E_parent_operator_for_A_spatial_in_14",
+                "derive_ab_ratio_from_parent_balance_in_14",
+            ],
+        ))
+
+        ns2.record_derivation(
+            derivation_id="parent_balance_identity_for_A_spatial_marker",
+            inputs=[],
+            output=sp.Symbol("parent_balance_identity_for_A_spatial_audited"),
+            method="parent_balance_identity_for_A_spatial_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns2.write_run_metadata()
+
+    out.print()
 
 
 if __name__ == "__main__":

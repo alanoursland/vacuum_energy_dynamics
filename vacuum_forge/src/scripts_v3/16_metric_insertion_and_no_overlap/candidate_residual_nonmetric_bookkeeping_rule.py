@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The B_s-only insertion count-once audit found:
@@ -29,6 +32,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -40,33 +56,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -289,12 +278,12 @@ def print_entry(e: NonMetricResidualEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Residual non-metric bookkeeping problem")
 
     print("Question:")
@@ -317,7 +306,12 @@ def case_0_problem_statement():
     print("  no exterior scalar charge")
     print("  recovery downstream")
 
-    status_line("residual non-metric bookkeeping problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line(
+            "residual non-metric bookkeeping problem posed",
+            StatusMark.OBLIGATION,
+            "required before residual roles can be licensed",
+        )
 
 
 def case_1_inventory(entries: List[NonMetricResidualEntry]):
@@ -326,7 +320,7 @@ def case_1_inventory(entries: List[NonMetricResidualEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[NonMetricResidualEntry]):
+def case_2_compact_table(entries: List[NonMetricResidualEntry], out: ScriptOutput):
     header("Case 2: Compact residual non-metric ledger")
 
     print("| Entry | Rule | Status | Consequence |")
@@ -344,10 +338,11 @@ def case_2_compact_table(entries: List[NonMetricResidualEntry]):
             + " |"
         )
 
-    status_line("compact non-metric residual ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact non-metric residual ledger produced", StatusMark.INFO, "residual roles enumerated")
 
 
-def case_3_status_counts(entries: List[NonMetricResidualEntry]):
+def case_3_status_counts(entries: List[NonMetricResidualEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -366,10 +361,11 @@ def case_3_status_counts(entries: List[NonMetricResidualEntry]):
     print("  O remains unresolved; non-metric bookkeeping does not define it.")
     print("  Next gate is minimal no-overlap operator forms.")
 
-    status_line("residual non-metric bookkeeping status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("residual non-metric bookkeeping status count produced", StatusMark.INFO, "roles enumerated")
 
 
-def case_4_allowed_roles():
+def case_4_allowed_roles(out: ScriptOutput):
     header("Case 4: Allowed residual roles")
 
     print("Allowed residual roles if fenced:")
@@ -389,10 +385,11 @@ def case_4_allowed_roles():
     print("5. Box zeta / Box kappa")
     print("6. coefficient reservoir")
 
-    status_line("allowed residual roles listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("allowed residual roles listed", StatusMark.INFO, "five safe roles; six forbidden roles")
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Non-metric residual decision tree")
 
     print("Decision tree:")
@@ -415,10 +412,11 @@ def case_5_decision_tree():
     print("6. Hidden metric source or scalar wave:")
     print("   rejected.")
 
-    status_line("non-metric residual decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("non-metric residual decision tree stated", StatusMark.INFO, "recommended next is minimal O audit")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -435,10 +433,15 @@ def case_6_good_failure():
     print()
     print("  call residual non-metric, then let it source metric equations indirectly.")
 
-    status_line("residual non-metric bookkeeping good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line(
+            "residual non-metric bookkeeping good failure stated",
+            StatusMark.DEFER,
+            "deferred pending non-metric role theorems",
+        )
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Residual non-metric bookkeeping fails if:")
@@ -452,10 +455,11 @@ def case_7_failure_controls():
     print("7. kappa restores killed trace")
     print("8. recovery checks choose residual role")
 
-    status_line("residual non-metric bookkeeping failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("residual non-metric bookkeeping failure controls stated", StatusMark.WARN, "eight failure modes")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -477,10 +481,11 @@ def case_8_next_tests():
     print("  Non-metric bookkeeping can fence residual roles provisionally,")
     print("  but O remains the missing theorem for any neutral residual alternative.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_no_overlap_operator_minimal_forms.py")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Residual zeta/kappa may remain useful only if their role is explicitly non-metric.")
@@ -503,32 +508,125 @@ def final_interpretation():
     print()
     print("  candidate_no_overlap_operator_minimal_forms.py")
 
-    status_line("residual non-metric bookkeeping audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line(
+            "residual non-metric bookkeeping audit complete",
+            StatusMark.DEFER,
+            "no residual-kill theorem derived; deferred",
+        )
 
 
 def main():
     header("Candidate Residual Non-Metric Bookkeeping Rule")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_allowed_roles()
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_allowed_roles(out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="residual_nonmetric_bookkeeping_rule_marker",
-        inputs=[],
-        output=sp.Symbol("residual_nonmetric_bookkeeping_rule_audited"),
-        method="residual_nonmetric_bookkeeping_rule_audit",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Proof obligations for residual non-metric theorems
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_nonmetric_residual_role_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive non-metric residual role theorem",
+            status=ObligationStatus.OPEN,
+            required_by=["nonmetric_residual_bookkeeping_route"],
+            description=(
+                "Show that residual zeta/kappa may remain as diagnostic, "
+                "configuration bookkeeping, or first-order non-radiative relaxation "
+                "without becoming metric scalar trace, M_ext shift, or exterior scalar charge."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_relax_non_wave_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive P_relax non-wave theorem",
+            status=ObligationStatus.OPEN,
+            required_by=["nonmetric_residual_bookkeeping_route"],
+            description=(
+                "Show that P_relax residual is first-order, non-radiative, "
+                "boundary-neutral, and does not become Box zeta or Box kappa."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_cleanup_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive kappa cleanup theorem",
+            status=ObligationStatus.OPEN,
+            required_by=["nonmetric_residual_bookkeeping_route"],
+            description=(
+                "Derive that kappa remains diagnostic/non-metric/separately neutral "
+                "and cannot restore killed zeta residual metric trace."
+            ),
+        ))
+
+        # Route: non-metric residual bookkeeping
+        ns2.record_route(RouteRecord(
+            route_id="nonmetric_residual_bookkeeping_provisional_route",
+            script_id=SCRIPT_ID,
+            name="Non-metric residual bookkeeping (diagnostic / configuration / P_relax)",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_nonmetric_residual_role_theorem",
+                "derive_P_relax_non_wave_theorem",
+                "derive_kappa_cleanup_theorem",
+            ],
+            activation_conditions=[
+                "residual is explicitly non-metric",
+                "no M_ext shift from residual",
+                "no exterior scalar charge from residual",
+                "bookkeeping cannot source metric equations",
+                "P_relax is non-radiative and first-order only",
+            ],
+        ))
+
+        # Branch decision: deferred
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_nonmetric_residual_no_theorems",
+            script_id=SCRIPT_ID,
+            branch_id="nonmetric_residual_bookkeeping",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=[
+                "derive_nonmetric_residual_role_theorem",
+                "derive_P_relax_non_wave_theorem",
+                "derive_kappa_cleanup_theorem",
+            ],
+            description=(
+                "Non-metric residual bookkeeping cannot be licensed because the "
+                "non-metric role theorem, P_relax non-wave theorem, and kappa cleanup "
+                "theorem are missing. Diagnostic/bookkeeping roles survive provisionally."
+            ),
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="residual_nonmetric_bookkeeping_rule_marker",
+            inputs=[],
+            output=sp.Symbol("residual_nonmetric_bookkeeping_rule_audited"),
+            method="residual_nonmetric_bookkeeping_rule_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

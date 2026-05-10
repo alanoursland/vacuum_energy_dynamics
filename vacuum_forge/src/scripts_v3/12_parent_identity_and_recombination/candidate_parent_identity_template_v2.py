@@ -1,5 +1,11 @@
 # Candidate parent identity template v2
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   REQUIREMENTS
+
 # Purpose
 # -------
 # Group 12 has now built several constraints around the parent identity:
@@ -36,6 +42,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -47,25 +64,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "DERIVED_REDUCED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -219,11 +217,11 @@ def print_clause(c: ParentClause) -> None:
     print(f"Clause: {c.clause}")
     print(f"Required reduction: {c.required_reduction}")
     print(f"Forbidden failure: {c.forbidden_failure}")
-    status_line(c.name, c.status)
+    print(f"[INFO] {c.name}: {c.status}")
     print(f"Missing: {c.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent identity template v2 problem")
 
     print("Question:")
@@ -243,7 +241,8 @@ def case_0_problem_statement():
     print("  no energy destruction")
     print("  no metric copying as derivation")
 
-    status_line("parent template v2 problem posed", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("parent template v2 problem posed", StatusMark.DEFER, "scaffold only; not a derivation")
 
 
 def case_1_clause_inventory(entries: List[ParentClause]):
@@ -252,7 +251,7 @@ def case_1_clause_inventory(entries: List[ParentClause]):
         print_clause(entry)
 
 
-def case_2_compact_table(entries: List[ParentClause]):
+def case_2_compact_table(entries: List[ParentClause], out: ScriptOutput):
     header("Case 2: Compact parent v2 ledger")
 
     print("| Clause | Required reduction | Status | Missing |")
@@ -270,10 +269,11 @@ def case_2_compact_table(entries: List[ParentClause]):
             + " |"
         )
 
-    status_line("compact parent v2 ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact parent v2 ledger produced", StatusMark.INFO, "13 parent v2 clauses recorded")
 
 
-def case_3_status_counts(entries: List[ParentClause]):
+def case_3_status_counts(entries: List[ParentClause], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -290,10 +290,11 @@ def case_3_status_counts(entries: List[ParentClause]):
     print("  recombination, and relaxation energy exchange.")
     print("  It is still not closure.")
 
-    status_line("parent v2 status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("parent v2 status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_symbolic_parent():
+def case_4_candidate_symbolic_parent(out: ScriptOutput):
     header("Case 4: Candidate symbolic parent v2")
 
     print("Candidate scaffold:")
@@ -321,10 +322,11 @@ def case_4_candidate_symbolic_parent():
     print()
     print("This is still a scaffold.")
 
-    status_line("candidate symbolic parent v2 stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate symbolic parent v2 stated", StatusMark.DEFER, "scaffold only; E_parent undefined")
 
 
-def case_5_pass_fail_tests():
+def case_5_pass_fail_tests(out: ScriptOutput):
     header("Case 5: Parent v2 pass/fail tests")
 
     print("Template v2 fails if:")
@@ -341,10 +343,11 @@ def case_5_pass_fail_tests():
     print("10. recombination counts scalar response twice.")
     print("11. coefficients are copied from GR.")
 
-    status_line("parent v2 pass/fail tests stated", "RISK")
+    with out.unresolved_obligations():
+        out.line("parent v2 pass/fail tests stated", StatusMark.OBLIGATION, "11 tests required before v2 scaffold is licensed")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -365,7 +368,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  Template v2 now depends explicitly on E_vac_config; the vacuum-substance variable must be examined.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "vacuum configuration energy variable script is the next gate")
 
 
 def final_interpretation():
@@ -396,21 +400,150 @@ def main():
     header("Candidate Parent Identity Template V2")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_clauses()
     case_1_clause_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_symbolic_parent()
-    case_5_pass_fail_tests()
-    case_6_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_symbolic_parent(out)
+    case_5_pass_fail_tests(out)
+    case_6_next_tests(out)
     final_interpretation()
+
+    # Proof obligations: each missing clause becomes a proof obligation
+    # Template v2 requirements as obligations
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_parent_definition_and_sector_projections_P2_1",
+        script_id=SCRIPT_ID,
+        title="Define E_parent and derive its sector projector reductions (P2.1)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Div E_parent must be defined and its reduced projections must force the known sectors: "
+            "A constraint (P_scalar), W_i (P_T), h_TT (P_TT), kappa_min (P_trace). "
+            "A decorative Bianchi restatement is forbidden."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_constraint_propagation_P2_4",
+        script_id=SCRIPT_ID,
+        title="Derive continuity-compatible scalar constraint propagation (P2.4)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "partial_tau C_A[A,rho] must follow from continuity(rho,j_L) without Box A. "
+            "This is the hardest and most critical missing clause in template v2."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_alpha_W_K_c_parent_normalization_P2_5",
+        script_id=SCRIPT_ID,
+        title="Derive parent projection and alpha_W/K_c normalization (P2.5)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The vector projector P_T must feed curl curl W = -(alpha_W/(2K_c))*j_T. "
+            "alpha_W/K_c must be derived from parent action/stiffness, not matched."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tensor_stiffness_C_T_TT_source_P2_6",
+        script_id=SCRIPT_ID,
+        title="Derive tensor action stiffness C_T and TT source identity (P2.6)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "P_TT must project to S_ij^TT feeding Box h_ij^TT = -C_T*S_ij^TT. "
+            "C_T must be derived from action/stiffness."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_u_mu_lambda_kappa_frame_P2_8",
+        script_id=SCRIPT_ID,
+        title="Define u^mu and derive lambda_kappa for kappa relaxation (P2.8)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The frame field u^mu and lambda_kappa = mu_kappa*K_kappa must be defined "
+            "to license the first-order kappa relaxation u^mu nabla_mu kappa = -lambda_kappa*(kappa-kappa_min)."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_vac_config_relaxation_exchange_P2_9",
+        script_id=SCRIPT_ID,
+        title="Define E_vac_config and derive relaxation/vacuum-substance exchange (P2.9)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "dE_kappa/dtau + dE_vac_config/dtau = 0 for internal relaxation must be derived. "
+            "E_vac_config or q_v/J_v balance must be defined."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_scalar_once_P2_12",
+        script_id=SCRIPT_ID,
+        title="Derive P_recombination counting scalar response once (P2.12)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "R[A,W,h_TT,kappa] must count scalar response once. "
+            "P_recombination identity must be derived, not copied from GR."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_coeff_action_stiffness_principle_P2_13",
+        script_id=SCRIPT_ID,
+        title="Derive P_coeff / action stiffness principle for observable coefficients (P2.13)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "alpha_W/K_c, beta_W, C_T, K_T must be derived from a parent action or "
+            "stiffness principle. GR coefficient insertion is forbidden."
+        ),
+    ))
+
+    # Policy claim: template v2 is a scaffold, not closure
+    ns.record_claim(ClaimRecord(
+        claim_id="parent_identity_template_v2_is_scaffold_not_closure",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Parent identity template v2 is a requirements scaffold, not a closure theorem. "
+            "It defines the structure and gates that a positive parent identity must satisfy, "
+            "but it does not constitute a derived parent identity. "
+            "No reduced-sector implication can be claimed as derived from template v2 alone."
+        ),
+    ))
+
+    # Branch decision: positive parent identity v2 derivation deferred
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_identity_v2_positive_derivation",
+        script_id=SCRIPT_ID,
+        branch_id="parent_identity_v2_positive_derivation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_E_parent_definition_and_sector_projections_P2_1",
+            "derive_scalar_constraint_propagation_P2_4",
+            "derive_alpha_W_K_c_parent_normalization_P2_5",
+            "derive_tensor_stiffness_C_T_TT_source_P2_6",
+            "derive_u_mu_lambda_kappa_frame_P2_8",
+            "derive_E_vac_config_relaxation_exchange_P2_9",
+            "derive_P_recombination_scalar_once_P2_12",
+            "derive_P_coeff_action_stiffness_principle_P2_13",
+        ],
+        description=(
+            "No positive parent identity v2 can be derived until all 8 core obligations are satisfied. "
+            "Template v2 is a scaffold; the branch to a positive parent identity is deferred pending "
+            "projector derivations, scalar constraint propagation, and E_vac_config definition."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="parent_identity_template_v2_marker",
         inputs=[],
         output=sp.Symbol("parent_identity_template_v2_built"),
         method="parent_identity_template_v2_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

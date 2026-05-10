@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   INVENTORY
+
 # Candidate trace versus TT geometric split
 #
 # Purpose
@@ -35,6 +41,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -46,26 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DERIVED_REDUCED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -207,11 +203,11 @@ def print_entry(e: SplitEntry) -> None:
     print(f"Geometric effect: {e.geometric_effect}")
     print(f"Candidate rule: {e.candidate_rule}")
     print(f"Forbidden interpretation: {e.forbidden_interpretation}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Trace versus TT geometric split problem")
 
     print("Question:")
@@ -229,7 +225,8 @@ def case_0_problem_statement():
     print("  do not let scalar conversion become far-zone scalar radiation")
     print("  keep A-sector mass separate from volume-form charge")
 
-    status_line("trace versus TT split problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("trace versus TT split problem posed", StatusMark.OBLIGATION, "open: nonlinear/covariant theorem target")
 
 
 def case_1_split_inventory(entries: List[SplitEntry]):
@@ -238,7 +235,7 @@ def case_1_split_inventory(entries: List[SplitEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[SplitEntry]):
+def case_2_compact_table(entries: List[SplitEntry], out: ScriptOutput):
     header("Case 2: Compact trace/TT ledger")
 
     print("| Entry | Mode | Candidate rule | Status | Missing |")
@@ -258,10 +255,11 @@ def case_2_compact_table(entries: List[SplitEntry]):
             + " |"
         )
 
-    status_line("compact trace/TT ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact trace/TT ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[SplitEntry]):
+def case_3_status_counts(entries: List[SplitEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -277,10 +275,11 @@ def case_3_status_counts(entries: List[SplitEntry]):
     print("  The linear TT volume-preservation result is strong but not a full theorem.")
     print("  The next danger is scalar conversion leaking into far-zone radiation.")
 
-    status_line("trace/TT status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("trace/TT status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_minimal_geometric_split():
+def case_4_minimal_geometric_split(out: ScriptOutput):
     header("Case 4: Minimal geometric split")
 
     print("Let:")
@@ -307,10 +306,11 @@ def case_4_minimal_geometric_split():
     print("  trace changes vacuum-spacetime amount")
     print("  TT shear preserves vacuum-spacetime amount at linear order")
 
-    status_line("minimal trace/TT split stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("minimal trace/TT split stated", StatusMark.DEFER, "candidate route: linear observation, not full theorem")
 
 
-def case_4b_symbolic_trace_tt_split(ns) -> None:
+def case_4b_symbolic_trace_tt_split(ns, out: ScriptOutput) -> None:
     header("Case 4b: Symbolic trace and TT split")
 
     h = sp.symbols("h")
@@ -333,18 +333,22 @@ def case_4b_symbolic_trace_tt_split(ns) -> None:
     print(f"  trace(h_TT) = {tt_trace}")
     print(f"  linear delta zeta|TT = {tt_linear_delta}")
 
-    status_line("trace mode changes zeta", "DERIVED_REDUCED", f"delta zeta = {pure_trace_linear}")
-    status_line("TT mode preserves zeta linearly", "DERIVED_REDUCED", f"delta zeta = {tt_linear_delta}")
+    with out.sample_results():
+        out.line("trace mode changes zeta", StatusMark.PASS, f"delta zeta = {pure_trace_linear}")
+        out.line("TT mode preserves zeta linearly", StatusMark.PASS, f"delta zeta = {tt_linear_delta}")
+
     ns.record_derivation(
         derivation_id="trace_tt_linear_volume_split",
         inputs=[pure_trace_metric, h_tt],
         output=sp.Tuple(pure_trace_linear, tt_linear_delta),
         method="symbolic trace versus TT volume split",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="linear perturbation, specific isotropic trace and 2D TT sample",
     )
 
 
-def case_5_theorem_target():
+def case_5_theorem_target(out: ScriptOutput):
     header("Case 5: TT-only radiation theorem target")
 
     print("Possible theorem target:")
@@ -365,10 +369,11 @@ def case_5_theorem_target():
     print("Current status:")
     print("  theorem target, not theorem.")
 
-    status_line("TT-only theorem target stated", "CANDIDATE")
+    with out.unresolved_obligations():
+        out.line("TT-only theorem target stated", StatusMark.OBLIGATION, "open: all six required pieces remain unresolved")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("The trace/TT split fails if:")
@@ -381,10 +386,11 @@ def case_6_failure_controls():
     print("6. Binary systems acquire extra scalar energy loss.")
     print("7. P_trace and P_TT are not actually independent projectors.")
 
-    status_line("trace/TT failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("trace/TT failure controls stated", StatusMark.DEFER, "open risk: failure conditions not yet excluded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -405,7 +411,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The trace/TT split suggests scalar modes convert; now define conversion versus damping.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "scalar conversion not damping")
 
 
 def final_interpretation():
@@ -431,23 +438,74 @@ def main():
     header("Candidate Trace Versus TT Geometric Split")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_split_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_geometric_split()
-    case_4b_symbolic_trace_tt_split(ns)
-    case_5_theorem_target()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_geometric_split(out)
+    case_4b_symbolic_trace_tt_split(ns, out)
+    case_5_theorem_target(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="tt_modes_volume_preserving_linear",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "TT perturbations are trace-free (gamma^ij h_ij^TT = 0), hence delta zeta|TT = 0 "
+            "at linear order. This is a candidate basis for TT-only far-zone radiation. "
+            "The nonlinear/covariant extension remains an open theorem target."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="trace_modes_conversion_not_radiation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Trace/scalar perturbations change zeta = ln sqrt(gamma) and are conversion-limited. "
+            "They must not propagate as ordinary far-zone scalar radiation (Box A, Box kappa)."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tt_only_radiation_theorem",
+        script_id=SCRIPT_ID,
+        title="Derive TT-only radiation theorem",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that ordinary far-zone radiation is TT-only because trace/scalar modes convert "
+            "into vacuum-spacetime configuration. Requires zeta variable, P_trace conversion law, "
+            "P_TT propagation law, scalar conversion safety, and nonlinear/covariant extension."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_trace_and_P_TT_projectors",
+        script_id=SCRIPT_ID,
+        title="Derive P_trace and P_TT projector definitions",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Provide parent projector definitions for P_trace (routes trace/volume imbalance "
+            "to volume conversion) and P_TT (routes TT shear to propagation)."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="trace_vs_tt_geometric_split_marker",
         inputs=[],
         output=sp.Symbol("trace_vs_tt_geometric_split_audited"),
         method="trace_vs_tt_geometric_split_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

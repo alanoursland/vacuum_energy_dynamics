@@ -1,5 +1,11 @@
 # Candidate gauge structure requirements
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The constraint/evolution split identified gauge structure as a missing blocker.
@@ -19,11 +25,6 @@
 #   PARTIAL
 #   MISSING
 #   RISK
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_gauge_structure_requirements.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -32,6 +33,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -276,6 +289,8 @@ def case_3_status_counts(reqs: List[GaugeRequirement]):
     else:
         status_line("gauge structure complete", "SATISFIED_REDUCED")
 
+    return counts
+
 
 # =============================================================================
 # Case 4: Physical/gauge classification table
@@ -371,22 +386,201 @@ def main():
     header("Candidate Gauge Structure Requirements")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     reqs = build_requirements()
     case_2_print_requirements(reqs)
-    case_3_status_counts(reqs)
+    counts = case_3_status_counts(reqs)
     case_4_classification_table()
     case_5_blocking_gaps(reqs)
     case_6_next_study()
     final_interpretation(reqs)
+
+    # --- ProofObligationRecord for each MISSING or PARTIAL requirement ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G1_areal_gauge_transformation_law",
+        script_id=SCRIPT_ID,
+        title="G1: Derive areal-radius gauge transformation law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply the transformation law of kappa and other sector variables under "
+            "radial coordinate changes, and identify which areal-gauge quantities are "
+            "genuine invariants."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G2_lapse_time_reparameterization_law",
+        script_id=SCRIPT_ID,
+        title="G2: Derive lapse/A transformation under time reparameterization",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show how A transforms under time-slicing changes and derive the asymptotic "
+            "normalization condition A -> 1 at infinity."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G3_kappa_gauge_invariant_meaning",
+        script_id=SCRIPT_ID,
+        title="G3: Derive gauge-invariant or gauge-fixed meaning of kappa",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Separate physical trace response from coordinate-volume artifact in kappa, "
+            "and supply its source law."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G4_W_i_gauge_transformation",
+        script_id=SCRIPT_ID,
+        title="G4: Derive W_i gauge transformation and gauge-invariant frame-dragging observable",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply the transformation of W_i under spatial diffeomorphisms and time "
+            "slicing, and construct a gauge-invariant frame-dragging observable."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G5_tt_projection_from_parent_gauge",
+        script_id=SCRIPT_ID,
+        title="G5: Derive TT projection and physical mode count from parent gauge",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive the TT projection from parent gauge conditions and establish the "
+            "physical mode count for h_ij^TT."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G6_A_rad_physical_or_gauge_status",
+        script_id=SCRIPT_ID,
+        title="G6: Determine physical vs gauge status of A_rad",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Establish whether A_rad is a physical field, a gauge artifact, a constrained "
+            "mode, a damped mode, or projected out in the parent theory."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G7_gauge_invariant_observable_set",
+        script_id=SCRIPT_ID,
+        title="G7: Derive gauge-invariant observable set",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Construct a list of observables or invariant diagnostics: redshift/lapse "
+            "normalization, areal radius, frame dragging, TT strain, curvature-like quantities."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_G8_coordinate_recombination_map",
+        script_id=SCRIPT_ID,
+        title="G8: Derive coordinate recombination map",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a metric/geometric reconstruction rule and gauge conditions for "
+            "combining A, kappa, W_i, and h_ij^TT into one consistent geometry."
+        ),
+    ))
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="gauge_structure_is_parent_blocker",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Gauge structure is a missing blocker for the covariant parent. "
+            "G4 (W_i gauge), G7 (observable set), and G8 (recombination map) are missing. "
+            "The theory must not compare gauge-dependent sector variables to observations "
+            "until these are resolved."
+        ),
+    ))
+
+    # --- Branch decision ---
+
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_full_gauge_derived_parent",
+        script_id=SCRIPT_ID,
+        branch_id="gauge_derived_covariant_parent",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_G4_W_i_gauge_transformation",
+            "derive_G7_gauge_invariant_observable_set",
+            "derive_G8_coordinate_recombination_map",
+        ],
+        description=(
+            "The claim to a fully gauge-derived covariant parent is deferred. "
+            "G4, G7, and G8 are missing. The reduced program may proceed within "
+            "reduced gauge choices but must not claim a covariant gauge derivation."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="gauge_structure_completion_route",
+        script_id=SCRIPT_ID,
+        name="Gauge structure completion route for covariant parent",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_G4_W_i_gauge_transformation",
+            "derive_G7_gauge_invariant_observable_set",
+            "derive_G8_coordinate_recombination_map",
+        ],
+        activation_conditions=[
+            "W_i gauge transformation is derived",
+            "gauge-invariant observable set is established",
+            "coordinate recombination map is derived",
+        ],
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="gauge_structure_requirements_marker",
         inputs=[],
         output=sp.Symbol("gauge_structure_blockers_identified"),
         method="gauge_structure_requirement_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    n_missing = counts.get("MISSING", 0)
+    n_partial = counts.get("PARTIAL", 0)
+    n_satisfied = counts.get("SATISFIED_REDUCED", 0)
+
+    with out.governance_assessments():
+        out.line(f"satisfied reduced: {n_satisfied}", StatusMark.PASS,
+                 "G5 TT plus/cross basis established in reduced")
+        out.line(f"partial: {n_partial}", StatusMark.DEFER,
+                 "G1 areal, G2 lapse, G3 kappa, G6 A_rad partial")
+        out.line(f"missing: {n_missing}", StatusMark.FAIL,
+                 "G4 W_i gauge, G7 observable set, G8 recombination map missing")
+        out.line("gauge structure is parent blocker (policy)", StatusMark.FAIL,
+                 "must not compare gauge-dependent variables to observations")
+        out.line("gauge-derived parent deferred", StatusMark.DEFER,
+                 "deferred pending G4, G7, G8")
+
+    with out.unresolved_obligations():
+        for req in build_requirements():
+            if req.status in ("MISSING", "PARTIAL"):
+                out.line(f"derive {req.name}", StatusMark.OBLIGATION,
+                         "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

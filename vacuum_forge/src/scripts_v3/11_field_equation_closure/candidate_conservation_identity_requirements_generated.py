@@ -1,5 +1,11 @@
 # Candidate conservation identity requirements
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The constraint-versus-evolution split established:
@@ -32,6 +38,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -43,25 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -184,18 +181,30 @@ def build_requirements() -> List[IdentityRequirement]:
 
 
 def print_requirement(req: IdentityRequirement) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(req.current_status, "INFO")
     print()
     print("-" * 120)
     print(req.name)
     print("-" * 120)
     print(f"Required identity: {req.required_identity}")
     print(f"Enforces: {req.what_it_enforces}")
-    status_line(req.name, req.current_status)
+    print(f"[{mark}] {req.name}: {req.current_status}")
     print(f"Failure if missing: {req.failure_if_missing}")
     print(f"Next needed: {req.next_needed}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Conservation identity requirements problem")
 
     print("Question:")
@@ -211,7 +220,9 @@ def case_0_problem_statement():
     print("  do not claim closure just because the sector split is organized")
     print("  identify what must be derived before the system is closed")
 
-    status_line("conservation identity requirements problem posed", "UNFINISHED")
+    with out.unresolved_obligations():
+        out.line("conservation identity requirements", StatusMark.OBLIGATION,
+                 "system not closed; parent identities required")
 
 
 def case_1_requirement_inventory(entries: List[IdentityRequirement]):
@@ -220,7 +231,7 @@ def case_1_requirement_inventory(entries: List[IdentityRequirement]):
         print_requirement(entry)
 
 
-def case_2_compact_table(entries: List[IdentityRequirement]):
+def case_2_compact_table(entries: List[IdentityRequirement], out: ScriptOutput):
     header("Case 2: Compact identity ledger")
 
     print("| Identity | Enforces | Status | Failure if missing |")
@@ -238,10 +249,11 @@ def case_2_compact_table(entries: List[IdentityRequirement]):
             + " |"
         )
 
-    status_line("compact identity ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact identity ledger produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_status_counts(entries: List[IdentityRequirement]):
+def case_3_status_counts(entries: List[IdentityRequirement], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -256,10 +268,11 @@ def case_3_status_counts(entries: List[IdentityRequirement]):
     print("  Most identities are constrained or structural requirements.")
     print("  The Bianchi-like closure identity remains missing.")
 
-    status_line("identity status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("identity status count produced", StatusMark.PASS, "inventory marker")
 
 
-def case_4_minimal_parent_identity_template():
+def case_4_minimal_parent_identity_template(out: ScriptOutput):
     header("Case 4: Minimal parent identity template")
 
     print("A minimal parent identity must look something like:")
@@ -277,10 +290,12 @@ def case_4_minimal_parent_identity_template():
     print()
     print("This is a requirement template, not a derivation.")
 
-    status_line("minimal parent identity template stated", "UNFINISHED")
+    with out.unresolved_obligations():
+        out.line("minimal parent identity template", StatusMark.OBLIGATION,
+                 "template only; parent identity not derived")
 
 
-def case_5_hardest_requirements():
+def case_5_hardest_requirements(out: ScriptOutput):
     header("Case 5: Hardest requirements")
 
     print("Hardest requirements:")
@@ -293,10 +308,11 @@ def case_5_hardest_requirements():
     print()
     print("These are where the reconstruction can still fail.")
 
-    status_line("hardest requirements identified", "RISK")
+    with out.governance_assessments():
+        out.line("hardest requirements identified", StatusMark.WARN, "open risk")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -317,7 +333,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  Before inventing the parent identity, audit which GR limits are actually derived.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -340,27 +357,107 @@ def final_interpretation():
     print("  candidate_gr_limit_recovery_audit.py")
 
 
-def main():
-    header("Candidate Conservation Identity Requirements")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_requirements()
-    case_1_requirement_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_parent_identity_template()
-    case_5_hardest_requirements()
-    case_6_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[IdentityRequirement]) -> None:
+    # UNFINISHED -> OPEN obligation
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_I1_scalar_constraint_propagation",
+        script_id=SCRIPT_ID,
+        title="Derive scalar constraint propagation identity (I1)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Time evolution of the A constraint must be shown compatible with continuity of rho. "
+            "Without this A may need a wave equation or violate source conservation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_I9_metric_recombination_compatibility",
+        script_id=SCRIPT_ID,
+        title="Derive metric recombination compatibility identity (I9)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Sector recombination must be shown to preserve source split and avoid duplicate "
+            "scalar response. Without this GR metric is imported by hand or scalar trace is duplicated."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_I10_bianchi_like_closure",
+        script_id=SCRIPT_ID,
+        title="Derive Bianchi-like closure identity (I10)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A parent divergence identity must be derived that implies source conservation "
+            "and sector constraints. Without this the theory remains a sector ledger, "
+            "not a closed field equation system."
+        ),
+    ))
+
+    # CONSTRAINED -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="req_I2_mass_flux_preservation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "I2: exterior A flux / M_ext must be invariant under kappa boundary relaxation. "
+            "Boundary/interface mass theorem is not yet derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="req_I5_kappa_non_radiative",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "I5: trace/pressure shifts kappa_min but does not source Box kappa. "
+            "kappa must relax locally and not radiate breathing modes."
+        ),
+    ))
+
+    # STRUCTURAL -> CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="req_I3_current_decomposition",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "I3: j = P_T j + P_L j with W_i sourced only by P_T j. "
+            "A covariant current split or gauge-fixed reduced proof is missing."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="conservation_identity_requirements_generated_marker",
         inputs=[],
         output=sp.Symbol("conservation_identity_requirements_generated"),
         method="conservation_identity_requirements_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Conservation Identity Requirements")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_requirements()
+    case_1_requirement_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_parent_identity_template(out)
+    case_5_hardest_requirements(out)
+    case_6_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

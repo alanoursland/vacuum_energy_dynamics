@@ -1,5 +1,11 @@
 # Candidate boundary projector for volume neutrality
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The trace projector definition audit found:
@@ -27,11 +33,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -39,30 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -222,7 +213,7 @@ def print_entry(e: BoundaryProjectorEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
@@ -245,8 +236,6 @@ def case_0_problem_statement():
     print("  no A-sector mass change")
     print("  no hidden shell source")
     print("  no scalar radiation at boundary")
-
-    status_line("boundary projector problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[BoundaryProjectorEntry]):
@@ -273,8 +262,6 @@ def case_2_compact_table(entries: List[BoundaryProjectorEntry]):
             + " |"
         )
 
-    status_line("compact P_boundary ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[BoundaryProjectorEntry]):
     header("Case 3: Status counts")
@@ -292,8 +279,6 @@ def case_3_status_counts(entries: List[BoundaryProjectorEntry]):
     print("    enforce exterior neutrality, zero flux, zero charge, and mass preservation.")
     print("  Compact profiles are useful diagnostics but not derivations.")
     print("  P_boundary must cooperate with P_trace and P_recombination.")
-
-    status_line("P_boundary status count produced", "STRUCTURAL")
 
 
 def case_4_minimal_boundary_bundle():
@@ -315,8 +300,6 @@ def case_4_minimal_boundary_bundle():
     print("Meaning:")
     print("  trace/volume residual is projected into a boundary-neutral sector.")
 
-    status_line("minimal P_boundary bundle stated", "RECOMMENDED")
-
 
 def case_4b_symbolic_boundary_flux(ns) -> None:
     header("Case 4b: Symbolic boundary-flux check")
@@ -333,14 +316,19 @@ def case_4b_symbolic_boundary_flux(ns) -> None:
     print(f"  zeta(R) = {value_at_boundary}")
     print(f"  zeta'(R) = {derivative_at_boundary}")
     print(f"  F_zeta(R+) = {flux_at_boundary}")
+    print()
+    print("Interpretation:")
+    print("  compact support profile zeta0*(1-r^2/R^2)^2 satisfies zeta(R)=0 and zeta'(R)=0,")
+    print("  yielding zero boundary flux F_zeta(R+)=0.")
 
-    status_line("boundary-flux neutrality sample", "DERIVED_REDUCED", f"F_zeta(R+) = {flux_at_boundary}")
     ns.record_derivation(
         derivation_id="boundary_projector_zero_flux_sample",
         inputs=[profile],
         output=sp.Tuple(value_at_boundary, derivative_at_boundary, flux_at_boundary),
         method="compact-profile boundary neutrality sample",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="compact profile diagnostic only, not a physical derivation",
     )
 
 
@@ -358,8 +346,6 @@ def case_5_failure_controls():
     print("7. compact profile tests are mistaken for derivation")
     print("8. boundary neutralization becomes scalar radiation")
     print("9. P_boundary and P_recombination both add trace corrections")
-
-    status_line("P_boundary failure controls stated", "RISK")
 
 
 def case_6_next_tests():
@@ -382,8 +368,6 @@ def case_6_next_tests():
     print()
     print("Reason:")
     print("  P_boundary is now separated. The next risk is recombination double-counting of A, zeta, and kappa.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -423,14 +407,71 @@ def main():
     case_6_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="boundary_projector_for_volume_neutrality_marker",
-        inputs=[],
-        output=sp.Symbol("boundary_projector_for_volume_neutrality_audited"),
-        method="boundary_projector_for_volume_neutrality_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line("compact boundary flux sample", StatusMark.PASS, "zeta0*(1-r^2/R^2)^2 gives F_zeta(R+)=0")
+
+    with out.governance_assessments():
+        out.line("P_boundary requirement bundle stated", StatusMark.PASS, "12 requirements inventoried")
+        out.line("P_boundary as derived projector", StatusMark.DEFER, "requirement bundle, not yet a derived operator")
+
+    with out.unresolved_obligations():
+        out.line("derive P_boundary composition law", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive exterior stability theorem", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive P_recombination definition", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_boundary_composition_law_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive P_boundary composition law P_boundary P_trace",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The composition P_boundary P_trace maps trace/volume residual into an exterior-neutral "
+                "sector. The composition law is not derived. Requires: interface law, mass preservation, "
+                "shell-source avoidance, scalar-radiation exclusion."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_recombination_definition_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive P_recombination definition for count-once metric assembly",
+            status=ObligationStatus.OPEN,
+            description=(
+                "P_recombination must assemble A, zeta, kappa, h_TT, and W_i into the metric once "
+                "and only once. A_spatial versus zeta/kappa trace volume is unresolved."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="boundary_flux_sample_C2_profile",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SAMPLE_DERIVATION,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.HEURISTIC,
+            statement=(
+                "The compact profile zeta(r)=zeta0*(1-r^2/R^2)^2 is a diagnostic sample showing "
+                "that zeta(R)=0, zeta'(R)=0, and F_zeta(R+)=0. This is a diagnostic only, not a "
+                "physical boundary law derivation."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="boundary_projector_for_volume_neutrality_marker",
+            inputs=[],
+            output=sp.Symbol("boundary_projector_for_volume_neutrality_audited"),
+            method="boundary_projector_for_volume_neutrality_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

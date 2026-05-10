@@ -1,5 +1,11 @@
 # Candidate minimal A-constraint closure no-go
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The parent constraint-propagation audit found:
@@ -28,11 +34,23 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -40,31 +58,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -237,12 +230,12 @@ def print_entry(e: MinimalClosureEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal A-constraint closure/no-go problem")
 
     print("Question:")
@@ -262,7 +255,8 @@ def case_0_problem_statement():
     print("  do not use zeta as patch without no-overlap identity")
     print("  if no explicit closure class survives, kill the branch")
 
-    status_line("minimal A-constraint closure/no-go problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("minimal A-constraint closure/no-go problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[MinimalClosureEntry]):
@@ -271,7 +265,7 @@ def case_1_inventory(entries: List[MinimalClosureEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[MinimalClosureEntry]):
+def case_2_compact_table(entries: List[MinimalClosureEntry], out: ScriptOutput):
     header("Case 2: Compact minimal-closure ledger")
 
     print("| Entry | Closure class | Status | Consequence |")
@@ -289,10 +283,11 @@ def case_2_compact_table(entries: List[MinimalClosureEntry]):
             + " |"
         )
 
-    status_line("compact minimal-closure ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact minimal-closure ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_status_counts(entries: List[MinimalClosureEntry]):
+def case_3_status_counts(entries: List[MinimalClosureEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -309,10 +304,11 @@ def case_3_status_counts(entries: List[MinimalClosureEntry]):
     print("  GR shortcut closure is rejected.")
     print("  If explicit non-GR closure cannot be stated, the A-sector-local propagation branch is killed.")
 
-    status_line("minimal-closure status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("minimal-closure status count produced", StatusMark.WARN, "structural")
 
 
-def case_4_minimal_symbolic_forms():
+def case_4_minimal_symbolic_forms(out: ScriptOutput):
     header("Case 4: Minimal symbolic closure forms to try")
 
     print("The next concrete closure attempts should have forms like:")
@@ -335,10 +331,11 @@ def case_4_minimal_symbolic_forms():
     print("   no-overlap trace theorem")
     print("   no GR shortcut")
 
-    status_line("minimal symbolic forms stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("minimal symbolic forms stated", StatusMark.WARN, "candidate families")
 
 
-def case_5_branch_kill_criterion():
+def case_5_branch_kill_criterion(out: ScriptOutput):
     header("Case 5: Branch-kill criterion")
 
     print("Kill the A-sector-local propagation branch if:")
@@ -356,28 +353,52 @@ def case_5_branch_kill_criterion():
     print("  conservation/Bianchi-like identity,")
     print("  or volume-exchange identity.")
 
-    status_line("A-sector-local branch-kill criterion stated", "BRANCH_KILLED")
+    with out.governance_assessments():
+        out.line("A-sector-local branch-kill criterion stated", StatusMark.FAIL, "branch kill if no explicit closure")
 
 
-def case_6_failure_controls():
-    header("Case 6: Failure controls")
+def case_6_good_failure(out: ScriptOutput) -> None:
+    header("Case 6: Good failure / no-go demonstration")
 
-    print("Minimal closure test fails if:")
+    print("Good failure: the A-sector-local closure branch cannot be stated explicitly without GR shortcuts.")
     print()
-    print("1. closure symbols only rename missing equations")
-    print("2. closure uses B=1/A")
-    print("3. closure copies GR spatial metric")
-    print("4. closure tunes gamma=1")
-    print("5. closure rewrites Einstein constraints")
-    print("6. closure uses exterior matching as local equation")
-    print("7. zeta/kappa patch closure while remaining independent residual")
-    print("8. count-once trace theorem is ignored")
-    print("9. branch cannot be killed despite no explicit closure")
+    print("Symbolic no-go evidence:")
+    print()
+    print("  The minimal closure family C[A, A_spatial, S_A] = 0 reduces to:")
+    print("    alpha1 Delta A_spatial + alpha2 Delta A + alpha3 S_A = 0")
+    print()
+    print("  Using the A constraint (Delta A = S_A):")
+    print("    Delta A_spatial = q S_A,  q = -(alpha2 + alpha3)/alpha1")
+    print()
+    print("  But q cannot be derived without: action/stiffness, conservation identity, or volume-exchange.")
+    print()
+    print("  Without a pre-recovery origin for q, choosing q to match gamma_like=1 is GR shortcut tuning.")
+    print()
+    print("This is the good failure: the branch is not killed by contradiction,")
+    print("but it cannot stand locally without coefficient origin.")
+    print()
 
-    status_line("minimal closure failure controls stated", "RISK")
+    # Minimal symbolic demonstration
+    alpha1, alpha2, alpha3 = sp.symbols("alpha1 alpha2 alpha3", nonzero=True)
+    q_formula = sp.simplify(-(alpha2 + alpha3) / alpha1)
+
+    print(f"  Symbolic result: q = {q_formula}")
+    print()
+    print("  q depends on free coefficients. No local principle fixes them.")
+    print("  This is the no-go: local closure reduces to coefficient tuning.")
+
+    with out.counterexamples():
+        out.line(
+            "local A-sector closure reduces to free coefficient ratio",
+            StatusMark.FAIL,
+            f"q = {q_formula}; no pre-recovery principle fixes alpha ratios",
+        )
+
+    print()
+    print("[PASS] Good failure: no-go correctly identified. Branch must defer to action/stiffness or conservation route.")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -398,7 +419,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The no-go ledger has narrowed the branch to explicit closure ansatz forms. Try those forms next; kill the branch if they collapse to shortcuts.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -423,25 +445,60 @@ def main():
     header("Candidate Minimal A-Constraint Closure No-Go")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_symbolic_forms()
-    case_5_branch_kill_criterion()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_symbolic_forms(out)
+    case_5_branch_kill_criterion(out)
+    case_6_good_failure(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="minimal_A_constraint_closure_no_go_marker",
-        inputs=[],
-        output=sp.Symbol("minimal_A_constraint_closure_no_go_audited"),
-        method="minimal_A_constraint_closure_no_go_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_explicit_non_GR_A_sector_local_closure_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive explicit non-GR A-sector-local closure law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The A constraint alone does not determine A_spatial. A closure law "
+                "C[A, A_spatial, S_A] = 0, div J_A = 0, or L_spatial[A_spatial] = H[A, S_A] "
+                "must be derived without using B=1/A, GR spatial metric import, gamma coefficient "
+                "tuning, or exterior matching as local closure. If no explicit non-GR form survives, "
+                "the A-sector-local propagation branch is killed."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="minimal_A_closure_no_go_provisional",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The minimal local closure for Delta A = S_A reduces to Delta A_spatial = q S_A "
+                "where q = -(alpha2 + alpha3)/alpha1. No local pre-recovery principle derives q. "
+                "This is a good no-go: the branch defers to action/stiffness or conservation identity "
+                "for coefficient origin. This is provisional until the closure ansatz family is tested."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="minimal_A_constraint_closure_no_go_marker",
+            inputs=[],
+            output=sp.Symbol("minimal_A_constraint_closure_no_go_audited"),
+            method="minimal_A_constraint_closure_no_go_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -3,6 +3,9 @@
 # Group:
 #   18_vacuum_current_split
 #
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The J_sub definition requirements audit found:
@@ -45,6 +48,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -58,7 +72,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -83,6 +97,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -631,14 +646,67 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="J_exch_definition_requirements_marker",
-        inputs=[],
-        output=sp.Symbol("J_exch_definition_requirements_complete"),
-        method="J_exch_definition_requirements",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_Sigma_exch_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Sigma_exch or equivalent source side must be defined with domain, sign/strength rule, and physical meaning before J_exch is used.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_R_exch_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="R_exch or equivalent relaxation/sink side must be defined, distinct from source, and not chosen to cancel divergence or leakage.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_Sigma_R_distinction_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Sigma_exch and R_exch must have independent definitions. They must not be two names for one hidden tuning mechanism.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_J_exch_boundary_neutrality_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="J_exch must have no boundary repair flux, hidden exterior charge, or mass-shift leakage. Boundary behavior must follow from exchange law.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_J_exch_boundary_repair_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="J_exch_boundary_repair",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_exch chosen to cancel boundary leakage, shell source, scalar tail, or mass shift is forbidden as repair-current behavior.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_J_exch_recovery_repair_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="J_exch_recovery_repair",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_exch chosen to pass gamma_like, AB, or exterior matching is forbidden recovery-smuggling.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_J_exch_e_curv_reservoir_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="J_exch_e_curv_reservoir",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_exch transporting free curvature energy (e_curv) as source reservoir is forbidden. Preserves Group 17 e_curv fence.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_J_exch_dark_sector_in_18_J_exch_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="J_exch_dark_sector_coupling",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            rationale="Dark-sector coupling to J_exch remains optional and separated. Must not patch ordinary failure. Deferred pending dark-sector coupling rule.",
+        ))
+        ns.record_derivation(
+            derivation_id="J_exch_definition_requirements_marker",
+            inputs=[],
+            output=sp.Symbol("J_exch_definition_requirements_complete"),
+            method="J_exch_definition_requirements",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

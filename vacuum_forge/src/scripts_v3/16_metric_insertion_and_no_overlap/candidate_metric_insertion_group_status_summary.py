@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   SUMMARY
+#
 # Purpose
 # -------
 # Group 16 audited:
@@ -27,6 +30,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -38,33 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -209,12 +199,12 @@ def print_entry(e: Group16StatusEntry) -> None:
     print(e.name)
     print("-" * 120)
     print(f"Result: {e.result}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Consequence: {e.consequence}")
     print(f"Handoff: {e.handoff}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Group 16 status problem")
 
     print("Question:")
@@ -234,7 +224,8 @@ def case_0_problem_statement():
     print("  do not use recovery as construction")
     print("  do not write parent equation before status closure")
 
-    status_line("Group 16 status problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("Group 16 status problem posed", StatusMark.OBLIGATION, "required for honest group closure")
 
 
 def case_1_status_ledger(entries: List[Group16StatusEntry]):
@@ -243,7 +234,7 @@ def case_1_status_ledger(entries: List[Group16StatusEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[Group16StatusEntry]):
+def case_2_compact_table(entries: List[Group16StatusEntry], out: ScriptOutput):
     header("Case 2: Compact Group 16 status table")
 
     print("| Entry | Result | Status | Handoff |")
@@ -261,10 +252,11 @@ def case_2_compact_table(entries: List[Group16StatusEntry]):
             + " |"
         )
 
-    status_line("compact Group 16 status table produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact Group 16 status table produced", StatusMark.INFO, "fourteen status rows")
 
 
-def case_3_status_counts(entries: List[Group16StatusEntry]):
+def case_3_status_counts(entries: List[Group16StatusEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -282,10 +274,11 @@ def case_3_status_counts(entries: List[Group16StatusEntry]):
     print("  Boundary safety and recovery are theorem/target checks, not mechanisms.")
     print("  Next work should be parent-identity-level or status update, not more local relabeling.")
 
-    status_line("Group 16 status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("Group 16 status count produced", StatusMark.INFO, "group did not derive insertion law or O")
 
 
-def case_4_current_working_rule():
+def case_4_current_working_rule(out: ScriptOutput):
     header("Case 4: Current working rule")
 
     print("Current working rule:")
@@ -310,10 +303,15 @@ def case_4_current_working_rule():
     print("  Box zeta / Box kappa")
     print("  coefficient reservoir")
 
-    status_line("working rule recorded", "SAFE_IF")
+    with out.governance_assessments():
+        out.line(
+            "working rule recorded",
+            StatusMark.WARN,
+            "provisional convention only; not derived",
+        )
 
 
-def case_5_surviving_bottlenecks():
+def case_5_surviving_bottlenecks(out: ScriptOutput):
     header("Case 5: Surviving bottlenecks")
 
     bottlenecks = [
@@ -338,10 +336,11 @@ def case_5_surviving_bottlenecks():
     print()
     print("  parent identity for B_s insertion + residual-kill/no-overlap")
 
-    status_line("surviving bottlenecks recorded", "UNRESOLVED")
+    with out.unresolved_obligations():
+        out.line("surviving bottlenecks recorded", StatusMark.OBLIGATION, "eleven open bottlenecks")
 
 
-def case_6_rejected_regressions():
+def case_6_rejected_regressions(out: ScriptOutput):
     header("Case 6: Rejected regressions to preserve")
 
     regressions = [
@@ -365,10 +364,11 @@ def case_6_rejected_regressions():
     for idx, item in enumerate(regressions, 1):
         print(f"{idx}. {item}")
 
-    status_line("rejected regressions preserved", "REJECTED")
+    with out.governance_assessments():
+        out.line("rejected regressions preserved", StatusMark.FAIL, "fifteen rejected branches preserved")
 
 
-def case_7_next_options():
+def case_7_next_options(out: ScriptOutput):
     header("Case 7: Next options")
 
     print("Possible next documents/scripts:")
@@ -390,10 +390,11 @@ def case_7_next_options():
     print("  Group 16 is a status closure. The field-equation snapshot should be updated")
     print("  before attempting parent-identity construction.")
 
-    status_line("next document selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next document selected", StatusMark.INFO, "field_equation_status_after_group_16.md")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Group 16 did not derive B_s/F_zeta or O.")
@@ -410,31 +411,173 @@ def final_interpretation():
     print()
     print("  field_equation_status_after_group_16.md")
 
-    status_line("Group 16 metric insertion status complete", "CLOSED")
+    with out.governance_assessments():
+        out.line(
+            "Group 16 metric insertion status complete",
+            StatusMark.DEFER,
+            "group closed without insertion law or O; deferred to Group 17+",
+        )
 
 
 def main():
     header("Candidate Metric Insertion Group Status Summary")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_status_ledger(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_current_working_rule()
-    case_5_surviving_bottlenecks()
-    case_6_rejected_regressions()
-    case_7_next_options()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_current_working_rule(out)
+    case_5_surviving_bottlenecks(out)
+    case_6_rejected_regressions(out)
+    case_7_next_options(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="metric_insertion_group_status_summary_marker",
-        inputs=[],
-        output=sp.Symbol("metric_insertion_group_status_summary_written"),
-        method="metric_insertion_group_status_summary",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Summary claim: Group 16 does not license B_s/F_zeta insertion
+        ns2.record_claim(ClaimRecord(
+            claim_id="group_16_insertion_not_licensed",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SUMMARY_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.NOT_INSERTABLE_YET,
+            statement=(
+                "Group 16 does not license B_s/F_zeta insertion into the metric sector. "
+                "The conformal-volume split is structural. B_s-only insertion with "
+                "residual-kill is provisional convention only. O is unresolved. "
+                "Boundary safety and recovery are required but not derived."
+            ),
+            obligation_ids=[
+                "derive_F_zeta_B_s_insertion_law",
+                "derive_residual_kill_or_O_for_insertion",
+                "derive_boundary_neutrality_for_B_s_insertion",
+                "derive_no_overlap_operator_O",
+                "derive_zero_exterior_scalar_charge_theorem",
+                "derive_no_far_zone_scalar_flux_theorem",
+                "derive_shell_avoidance_theorem",
+            ],
+            source_claim_ids=["recovery_targets_downstream_only"],
+        ))
+
+        # Summary claim: provisional convention status
+        ns2.record_claim(ClaimRecord(
+            claim_id="group_16_B_s_only_provisional_convention",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SUMMARY_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "B_s-only insertion with residual-kill/non-metric residual is the safest "
+                "provisional convention from Group 16. It is not derived. It may be used "
+                "as an explicit convention while the residual-kill, O, and boundary safety "
+                "theorems remain open."
+            ),
+            obligation_ids=[
+                "derive_residual_kill_theorem_count_once",
+                "derive_no_overlap_operator_O",
+                "derive_boundary_neutrality_for_B_s_insertion",
+            ],
+        ))
+
+        # HandoffImportRecord for Group 17 (and Group 19 curvature/energy work)
+        ns2.record_handoff_import(HandoffImportRecord(
+            handoff_id="group_16_metric_insertion_handoff",
+            script_id=SCRIPT_ID,
+            imported_as=RecordKind.SUMMARY_CLAIM,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            imported_record_refs=[
+                # Derived results (symbolic only)
+                "derivation:conformal_volume_split_symbolic_relation",
+                "derivation:B_s_only_scalar_trace_factor",
+                "derivation:B_s_insertion_compact_boundary_profile",
+                "derivation:B_s_insertion_recovery_reciprocal_check",
+                # Provisional convention
+                "claim:group_16_B_s_only_provisional_convention",
+                # Summary claim (not licensed)
+                "claim:group_16_insertion_not_licensed",
+                # Policy rule from recovery audit
+                "claim:recovery_targets_downstream_only",
+                # Open obligations that Group 17 must not assume satisfied
+                "obligation:derive_F_zeta_B_s_insertion_law",
+                "obligation:derive_residual_kill_or_O_for_insertion",
+                "obligation:derive_boundary_neutrality_for_B_s_insertion",
+                "obligation:derive_residual_kill_theorem_count_once",
+                "obligation:derive_energy_accounting_recombination_rule",
+                "obligation:derive_mass_accounting_theorem_count_once",
+                "obligation:derive_nonmetric_residual_role_theorem",
+                "obligation:derive_P_relax_non_wave_theorem",
+                "obligation:derive_kappa_cleanup_theorem",
+                "obligation:derive_no_overlap_operator_O",
+                "obligation:derive_orthogonality_pairing_for_O",
+                "obligation:derive_projector_split_for_O",
+                "obligation:derive_zero_exterior_scalar_charge_theorem",
+                "obligation:derive_no_far_zone_scalar_flux_theorem",
+                "obligation:derive_shell_avoidance_theorem",
+                "obligation:derive_residual_kill_boundary_consequence_theorem",
+                "obligation:derive_post_insertion_solutions_for_recovery",
+                # Provisional routes
+                "route:B_s_only_residual_kill_provisional_route",
+                "route:residual_kill_nonmetric_convention_route",
+                "route:compact_support_zero_flux_boundary_route",
+                "route:recovery_downstream_only_route",
+                # Killed branch (evidence-backed)
+                "branch:kill_recovery_tuned_B_s_branch",
+                # Deferred branches
+                "branch:defer_B_s_F_zeta_insertion_no_law",
+                "branch:defer_count_once_no_residual_kill_theorem",
+                "branch:defer_nonmetric_residual_no_theorems",
+                "branch:defer_O_no_pairing_or_projector",
+                "branch:defer_boundary_safety_no_theorems",
+                # Evidence
+                "evidence:recovery_precedes_origin_check",
+            ],
+            description=(
+                "What Group 17 (curvature energy and finite admissibility) and "
+                "Group 19 (parent correction tensor) may import from Group 16. "
+                "\n\n"
+                "DERIVED: conformal-volume symbolic relation, B_s scalar trace factor, "
+                "compact-support boundary sample (SAMPLE_DERIVATION), "
+                "reciprocal recovery compatibility check (COMPATIBILITY_EXAMPLE). "
+                "\n\n"
+                "PROVISIONAL CONVENTION (not derived): B_s-only insertion with "
+                "residual-kill/non-metric residual. May be used as an explicit convention "
+                "while obligations remain open. "
+                "\n\n"
+                "POLICY RULE: Recovery targets (gamma_like, AB, Schwarzschild, areal kappa) "
+                "are downstream tests only. Any route that selects B_s coefficients, "
+                "boundary behavior, or residual status from recovery is killed. "
+                "\n\n"
+                "OPEN OBLIGATIONS (must not be assumed satisfied by Group 17+): "
+                "insertion law, residual-kill, O, boundary neutrality, zero-charge, "
+                "zero-flux, shell-avoidance, kappa cleanup, energy recombination, "
+                "mass accounting, P_relax non-wave, projector split, pairing, "
+                "post-insertion solutions. "
+                "\n\n"
+                "REJECTED: GR-copy insertion, B=1/A construction, gamma_like coefficient fit, "
+                "areal kappa physical promotion, recovery-tuned smoothing, zeta-both branch, "
+                "non-metric bookkeeping as O, diagnostic projection as O, boundary repair. "
+                "\n\n"
+                "NOT LICENSED: B_s/F_zeta insertion into the metric sector. "
+                "Group 17 must not assume this is licensed."
+            ),
+        ))
+
+        # Inventory marker for the summary
+        ns2.record_derivation(
+            derivation_id="metric_insertion_group_status_summary_marker",
+            inputs=[],
+            output=sp.Symbol("metric_insertion_group_status_summary_written"),
+            method="metric_insertion_group_status_summary",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

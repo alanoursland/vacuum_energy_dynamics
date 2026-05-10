@@ -1,5 +1,11 @@
 # Candidate no-double-counting constraints
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The source decomposition ledger identified source-sector roles:
@@ -27,6 +33,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -38,25 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -179,18 +176,30 @@ def build_constraints() -> List[ConstraintEntry]:
 
 
 def print_constraint(c: ConstraintEntry) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(c.status, "INFO")
     print()
     print("-" * 120)
     print(c.name)
     print("-" * 120)
     print(f"Expression: {c.expression}")
     print(f"Meaning: {c.meaning}")
-    status_line(c.name, c.status)
+    print(f"[{mark}] {c.name}: {c.status}")
     print(f"Risk if violated: {c.risk_if_violated}")
     print(f"Missing: {c.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: No-double-counting constraint problem")
 
     print("Question:")
@@ -207,7 +216,8 @@ def case_0_problem_statement():
     print("  but it must not become multiple independent gravity sources")
     print("  unless a parent identity forces the split")
 
-    status_line("no-double-counting problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("no-double-counting problem posed", StatusMark.DEFER, "structural constraint")
 
 
 def case_1_constraint_inventory(entries: List[ConstraintEntry]):
@@ -216,7 +226,7 @@ def case_1_constraint_inventory(entries: List[ConstraintEntry]):
         print_constraint(entry)
 
 
-def case_2_compact_table(entries: List[ConstraintEntry]):
+def case_2_compact_table(entries: List[ConstraintEntry], out: ScriptOutput):
     header("Case 2: Compact constraint ledger")
 
     print("| Constraint | Expression | Status | Risk if violated |")
@@ -234,10 +244,11 @@ def case_2_compact_table(entries: List[ConstraintEntry]):
             + " |"
         )
 
-    status_line("compact no-double-counting ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact no-double-counting ledger produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_status_counts(entries: List[ConstraintEntry]):
+def case_3_status_counts(entries: List[ConstraintEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -247,10 +258,11 @@ def case_3_status_counts(entries: List[ConstraintEntry]):
     for status in sorted(counts):
         print(f"{status}: {counts[status]}")
 
-    status_line("constraint status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("constraint status count produced", StatusMark.PASS, "inventory marker")
 
 
-def case_4_most_dangerous_violations():
+def case_4_most_dangerous_violations(out: ScriptOutput):
     header("Case 4: Most dangerous violations")
 
     print("Most dangerous violations:")
@@ -264,10 +276,11 @@ def case_4_most_dangerous_violations():
     print()
     print("These are the goblin traps.")
 
-    status_line("dangerous violations identified", "RISK")
+    with out.governance_assessments():
+        out.line("dangerous violations identified", StatusMark.WARN, "open risk")
 
 
-def case_5_parent_identity_requirements():
+def case_5_parent_identity_requirements(out: ScriptOutput):
     header("Case 5: Parent identity requirements")
 
     print("The constraints require a parent identity that can explain:")
@@ -281,10 +294,12 @@ def case_5_parent_identity_requirements():
     print()
     print("Without that parent identity, these are safety constraints, not derivations.")
 
-    status_line("parent identity requirements stated", "UNFINISHED")
+    with out.unresolved_obligations():
+        out.line("parent identity for no-double-counting rules", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -305,7 +320,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  Source double-counting is controlled; next we must separate constraints from evolution.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -328,27 +344,135 @@ def final_interpretation():
     print("  candidate_constraint_vs_evolution_split.py")
 
 
-def main():
-    header("Candidate No-Double-Counting Constraints")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_constraints()
-    case_1_constraint_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_most_dangerous_violations()
-    case_5_parent_identity_requirements()
-    case_6_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[ConstraintEntry]) -> None:
+    # CONSTRAINED entries -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="ndc_rho_not_double_sourced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "C1: S_kappa[rho] = 0 as independent long-range scalar source. "
+            "rho sources A; kappa may not carry a second rho-sourced 1/r field."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="ndc_exterior_kappa_charge_zero",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "C2: Q_kappa = integral S_kappa d^3x = 0. "
+            "No massless exterior kappa monopole. Projection/boundary identity is missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="ndc_pressure_trace_shifts_minimum",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "C3: trace/pressure shifts kappa_min only; it must not source Box kappa = alpha trace. "
+            "Trace response is non-inertial local relaxation, not scalar radiation."
+        ),
+    ))
+
+    # STRUCTURAL -> CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="ndc_transverse_current_sources_W",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "C4: source(W_i) = P_T j; P_L j excluded. "
+            "Frame-dragging/vector response is sourced only by transverse current. "
+            "Covariant current decomposition is missing."
+        ),
+    ))
+
+    # DERIVED_REDUCED -> HEURISTIC
+    ns.record_claim(ClaimRecord(
+        claim_id="ndc_longitudinal_current_scalar_continuity",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "C5: P_L j -> continuity/dot rho, not curl W. "
+            "Longitudinal current updates density distribution, not vector curl field."
+        ),
+    ))
+
+    # Missing parent identity for all constraints -> ProofObligationRecord
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_identity_for_no_double_counting",
+        script_id=SCRIPT_ID,
+        title="Derive parent identity enforcing no-double-counting rules",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The no-double-counting constraints C1-C10 require a parent identity explaining "
+            "why rho sources only A, why trace shifts kappa_min without radiating, "
+            "why TT stress sources only TT radiation, why currents split cleanly, "
+            "why boundary smoothing preserves exterior mass, and why Sigma_creation=0 in "
+            "ordinary closed gravity. Without this, they are safety constraints, not derivations."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_Q_kappa_zero_boundary_identity",
+        script_id=SCRIPT_ID,
+        title="Derive Q_kappa=0 boundary identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A projection/boundary identity proving Q_kappa = integral S_kappa d^3x = 0 "
+            "is required to prevent exterior kappa ~ 1/r scalar gravity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_active_regime_trigger_conditions",
+        script_id=SCRIPT_ID,
+        title="Derive active-regime trigger conditions for Sigma_creation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Active-regime conditions that gate Sigma_creation must be derived. "
+            "In ordinary closed gravity Sigma_creation = 0 must follow from the trigger, "
+            "not be assumed."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="no_double_counting_constraints_marker",
         inputs=[],
         output=sp.Symbol("no_double_counting_constraints_built"),
         method="no_double_counting_constraints_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate No-Double-Counting Constraints")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_constraints()
+    case_1_constraint_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_most_dangerous_violations(out)
+    case_5_parent_identity_requirements(out)
+    case_6_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

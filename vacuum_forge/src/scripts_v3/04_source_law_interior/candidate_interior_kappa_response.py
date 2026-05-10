@@ -1,12 +1,15 @@
+# Group:
+#   04_source_law_interior
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Candidate interior kappa response
 #
 # Purpose
 # -------
 # Compare whether kappa should be forced to zero inside matter or allowed to
 # respond to traceful matter sources while still relaxing to zero outside.
-#
-# Suggested location:
-#   scripts_v3/candidate_interior_kappa_response.py
 
 from pathlib import Path
 
@@ -14,6 +17,17 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -25,14 +39,6 @@ def header(title: str) -> None:
     print("=" * 108)
     print(title)
     print("=" * 108)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -66,7 +72,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
         print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
-def case_0_recap():
+def case_0_recap(out: ScriptOutput):
     header("Case 0: Reduced mode recap")
     print("A = exp(kappa+s)")
     print("B = exp(kappa-s)")
@@ -80,10 +86,19 @@ def case_0_recap():
     print("Interior question:")
     print("  Should kappa=0 hold inside matter?")
     print("  Or can matter source kappa inside while exterior kappa relaxes to zero?")
-    status_line("interior kappa question isolated", True)
+
+    with out.governance_assessments():
+        out.line("interior kappa question isolated",
+                 StatusMark.PASS,
+                 "kappa=0 is established exterior/source-free condition; interior remains open")
+
+    with out.unresolved_obligations():
+        out.line("derive interior kappa condition from matter coupling",
+                 StatusMark.OBLIGATION,
+                 "no first-principles derivation of whether kappa=0 holds inside matter")
 
 
-def case_1_forced_interior_compensation():
+def case_1_forced_interior_compensation(out: ScriptOutput):
     header("Case 1: Forced interior compensation")
 
     r, R, G, c, rho0 = sp.symbols("r R G c rho0", positive=True, real=True)
@@ -98,7 +113,10 @@ def case_1_forced_interior_compensation():
     print(f"B_in = exp(2*kappa)/A = {B_in}")
     print(f"A_in B_in = {AB}")
 
-    status_line("forced kappa=0 gives reciprocal interior", is_zero(AB - 1))
+    with out.sample_results():
+        out.line("forced kappa=0 gives reciprocal interior",
+                 StatusMark.PASS if is_zero(AB - 1) else StatusMark.FAIL,
+                 "by-construction when kappa=0 is imposed")
 
     print()
     print("Caution:")
@@ -106,7 +124,7 @@ def case_1_forced_interior_compensation():
     print("  It excludes traceful matter response in kappa.")
 
 
-def case_2_generic_traceful_kappa_source():
+def case_2_generic_traceful_kappa_source(out: ScriptOutput, ns=None):
     header("Case 2: Generic traceful kappa source inside matter")
 
     r, R, G, c, rho0, eta = sp.symbols("r R G c rho0 eta", positive=True, real=True)
@@ -132,13 +150,32 @@ def case_2_generic_traceful_kappa_source():
     print(f"kappa_in(0) = {kappa_0}")
     print(f"kappa_in'(0) = {dkappa_0}")
 
-    status_line("interior kappa can vanish at boundary", is_zero(kappa_R))
-    status_line("interior kappa is regular at origin", is_zero(dkappa_0))
-    status_line("nonzero interior kappa breaks reciprocal interior generically", not is_zero(AB - 1))
-    status_line("boundary derivative may jump unless exterior layer handles it", not is_zero(dkappa_R))
+    with out.sample_results():
+        out.line("interior kappa can vanish at boundary",
+                 StatusMark.PASS if is_zero(kappa_R) else StatusMark.FAIL,
+                 f"kappa_in(R) = {kappa_R}")
+        out.line("interior kappa is regular at origin",
+                 StatusMark.PASS if is_zero(dkappa_0) else StatusMark.FAIL,
+                 f"kappa_in'(0) = {dkappa_0}")
+        out.line("nonzero interior kappa breaks reciprocal interior generically",
+                 StatusMark.PASS if not is_zero(AB - 1) else StatusMark.FAIL)
+        out.line("boundary derivative may jump unless exterior layer handles it",
+                 StatusMark.PASS if not is_zero(dkappa_R) else StatusMark.FAIL,
+                 f"kappa_in'(R) = {dkappa_R}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="generic_traceful_kappa_boundary_check",
+            inputs=[kappa_in, r, R],
+            output=kappa_R,
+            method="kappa_in(R) = eta*G*rho0*(R^2-R^2)/c^2",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="toy traceful kappa profile, constant density, linear ansatz",
+        )
 
 
-def case_3_smooth_boundary_kappa_profile():
+def case_3_smooth_boundary_kappa_profile(out: ScriptOutput, ns=None):
     header("Case 3: Smooth boundary kappa profile")
 
     r, R, G, c, rho0, eta = sp.symbols("r R G c rho0 eta", positive=True, real=True)
@@ -153,12 +190,30 @@ def case_3_smooth_boundary_kappa_profile():
     print(f"kappa_in'(R) = {dkappa_R}")
     print(f"kappa_in'(0) = {dkappa_0}")
 
-    status_line("kappa vanishes at boundary", is_zero(kappa_R))
-    status_line("kappa derivative vanishes at boundary", is_zero(dkappa_R))
-    status_line("kappa regular at origin", is_zero(dkappa_0))
+    with out.sample_results():
+        out.line("kappa vanishes at boundary",
+                 StatusMark.PASS if is_zero(kappa_R) else StatusMark.FAIL,
+                 f"kappa(R) = {kappa_R}")
+        out.line("kappa derivative vanishes at boundary",
+                 StatusMark.PASS if is_zero(dkappa_R) else StatusMark.FAIL,
+                 f"kappa'(R) = {dkappa_R}")
+        out.line("kappa regular at origin",
+                 StatusMark.PASS if is_zero(dkappa_0) else StatusMark.FAIL,
+                 f"kappa'(0) = {dkappa_0}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="smooth_boundary_kappa_profile_check",
+            inputs=[kappa_in, r, R],
+            output=sp.Matrix([kappa_R, dkappa_R, dkappa_0]),
+            method="kappa = eta*G*rho0*(R^2-r^2)^2/(c^2*R^2) profile check",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="quartic smooth kappa profile",
+        )
 
 
-def case_4_energy_penalty_model(ns=None):
+def case_4_energy_penalty_model(out: ScriptOutput, ns=None):
     header("Case 4: Interior kappa energy penalty model")
 
     kappa, C_k, J_k = sp.symbols("kappa C_k J_k", positive=True, real=True)
@@ -174,7 +229,10 @@ def case_4_energy_penalty_model(ns=None):
     print("If J_k is nonzero inside matter, kappa responds.")
     print("If J_k=0 outside, kappa relaxes to zero.")
 
-    status_line("traceful source produces interior kappa response", bool(sol))
+    with out.derived_results():
+        out.line("traceful source produces interior kappa response",
+                 StatusMark.PASS if bool(sol) else StatusMark.FAIL,
+                 f"kappa_eq = {sol}")
 
     ctx = TheoryContext("candidate_interior_kappa_response")
     ctx.define_equal_response_algebraic_symbols()
@@ -190,7 +248,14 @@ def case_4_energy_penalty_model(ns=None):
     vf_sol = ctx.energy.solve_stationary("source_coupled_energy")
     if vf_sol.solutions:
         k_eq = sp.simplify(vf_sol.solutions[0][ms.kappa])
-        status_line("VacuumForge reproduces interior kappa response", is_zero(k_eq - J_k / (2 * ms.C_kappa)))
+        expected = J_k / (2 * ms.C_kappa)
+        vf_ok = is_zero(k_eq - expected)
+
+        with out.derived_results():
+            out.line("VacuumForge reproduces interior kappa response",
+                     StatusMark.PASS if vf_ok else StatusMark.FAIL,
+                     f"kappa_eq = {k_eq}")
+
         if ns is not None:
             ns.record_derivation(
                 derivation_id="interior_kappa_energy_response",
@@ -198,10 +263,12 @@ def case_4_energy_penalty_model(ns=None):
                 output=sp.Eq(ms.kappa, J_k / (2 * ms.C_kappa)),
                 method="vacuumforge_source_coupled_energy",
                 status=Status.DERIVED,
+                record_kind=RecordKind.SAMPLE_DERIVATION,
+                scope="quadratic kappa energy with traceful source J_k",
             )
 
 
-def case_5_exterior_matching_classification():
+def case_5_exterior_matching_classification(out: ScriptOutput):
     header("Case 5: Exterior matching classification")
 
     print("Interior/exterior possibilities:")
@@ -222,10 +289,19 @@ def case_5_exterior_matching_classification():
     print()
     print("D. smooth interior kappa with kappa(R)=kappa'(R)=0")
     print("   - cleanest coexistence of interior trace response and exterior compensation")
-    status_line("classification separates interior matter response from exterior compensation", True)
+
+    with out.governance_assessments():
+        out.line("classification separates interior matter response from exterior compensation",
+                 StatusMark.PASS,
+                 "options A-D represent distinct physical routes")
+
+    with out.unresolved_obligations():
+        out.line("derive which interior/exterior kappa option applies",
+                 StatusMark.OBLIGATION,
+                 "no first-principles derivation selects option A, B, C, or D")
 
 
-def case_6_observable_exterior_pressure():
+def case_6_observable_exterior_pressure(out: ScriptOutput, ns=None):
     header("Case 6: Exterior pressure from kappa leakage")
 
     eps, lam = sp.symbols("eps lambda_k", real=True)
@@ -242,12 +318,27 @@ def case_6_observable_exterior_pressure():
     AB_first = sp.series(AB, eps, 0, 2).removeO()
 
     print("If interior kappa leaks into exterior as kappa=lambda_k eps:")
-    print(f"A ≈ {A_first}")
-    print(f"B ≈ {B_first}")
-    print(f"AB ≈ {AB_first}")
+    print(f"A approx {A_first}")
+    print(f"B approx {B_first}")
+    print(f"AB approx {AB_first}")
     print()
     print("Exterior kappa leak is observationally dangerous.")
-    status_line("exterior kappa must be suppressed or tightly bounded", True)
+
+    with out.governance_assessments():
+        out.line("exterior kappa must be suppressed or tightly bounded",
+                 StatusMark.PASS,
+                 "nonzero exterior kappa shifts weak-field coefficients")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="exterior_kappa_leak_weak_field_shift",
+            inputs=[kappa_ext, s_ext, eps],
+            output=AB_first,
+            method="series expansion of A*B to first order in eps",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+            scope="first-order weak-field kappa leak diagnostic",
+        )
 
 
 def final_interpretation():
@@ -275,14 +366,74 @@ def main():
     header("Candidate Interior Kappa Response")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_recap()
-    case_1_forced_interior_compensation()
-    case_2_generic_traceful_kappa_source()
-    case_3_smooth_boundary_kappa_profile()
-    case_4_energy_penalty_model(ns)
-    case_5_exterior_matching_classification()
-    case_6_observable_exterior_pressure()
+
+    out = ScriptOutput()
+
+    case_0_recap(out)
+    case_1_forced_interior_compensation(out)
+    case_2_generic_traceful_kappa_source(out, ns)
+    case_3_smooth_boundary_kappa_profile(out, ns)
+    case_4_energy_penalty_model(out, ns)
+    case_5_exterior_matching_classification(out)
+    case_6_observable_exterior_pressure(out, ns)
     final_interpretation()
+
+    out.print_summary()
+
+    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
+        ns2 = archive2.script_namespace(SCRIPT_ID)
+        ns2.prepare_archive()
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_interior_exterior_kappa_option",
+            script_id=SCRIPT_ID,
+            title="Derive which interior/exterior kappa option applies from first principles",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Four options are identified: kappa=0 everywhere, interior kappa with "
+                "kappa(R)=0, interior kappa with kappa(R)!=0, or smooth interior kappa "
+                "with kappa(R)=kappa'(R)=0. No first-principles derivation has selected "
+                "among these options."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_interior_kappa_source_law",
+            script_id=SCRIPT_ID,
+            title="Derive interior kappa source law from matter coupling",
+            status=ObligationStatus.OPEN,
+            description=(
+                "If kappa is sourced inside matter, the source law J_k must be derived "
+                "from a matter coupling. The toy energy model only establishes the "
+                "response structure; the source origin is missing."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="exterior_kappa_must_be_suppressed",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Any persistent exterior kappa shifts weak-field coefficients and creates "
+                "an observational deviation channel. The exterior kappa must be suppressed "
+                "or tightly bounded regardless of the interior kappa option."
+            ),
+        ))
+
+        ns2.record_route(RouteRecord(
+            route_id="smooth_interior_kappa_vanishing_at_surface_route",
+            script_id=SCRIPT_ID,
+            name="Smooth interior kappa vanishing at surface (option D)",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_interior_exterior_kappa_option",
+                                  "derive_interior_kappa_source_law"],
+        ))
+
+        ns2.write_run_metadata()
+
     ns.write_run_metadata()
 
 

@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate timelike domain for volume current
 #
 # Purpose
@@ -26,11 +32,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -38,34 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -268,7 +257,7 @@ def print_entry(e: TimelikeDomainEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -293,7 +282,10 @@ def case_0_problem_statement():
     print("  preserve no-overlap / residual-kill")
     print("  keep recovery checks downstream")
 
-    status_line("timelike domain problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("timelike domain problem posed", StatusMark.OBLIGATION, "requires domain theorem for candidate J_V")
+    out.print()
 
 
 def case_1_inventory(entries: List[TimelikeDomainEntry]):
@@ -320,7 +312,10 @@ def case_2_compact_table(entries: List[TimelikeDomainEntry]):
             + " |"
         )
 
-    status_line("compact timelike-domain ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact timelike-domain ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[TimelikeDomainEntry]):
@@ -341,7 +336,10 @@ def case_3_status_counts(entries: List[TimelikeDomainEntry]):
     print("  Zero-flux equilibrium protects neutrality but cannot define u_vac from J_V.")
     print("  If a domain survives, static-source neutrality is the next bottleneck.")
 
-    status_line("timelike-domain status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("timelike-domain status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_domain_decision_tree():
@@ -367,7 +365,10 @@ def case_4_domain_decision_tree():
     print("6. Equilibrium-frame fallback:")
     print("   deferred unless static regions require a frame.")
 
-    status_line("timelike-domain decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("timelike-domain decision tree stated", StatusMark.INFO, "decision tree recorded")
+    out.print()
 
 
 def case_4b_symbolic_timelike_condition(ns) -> None:
@@ -385,13 +386,19 @@ def case_4b_symbolic_timelike_condition(ns) -> None:
     print("Interpretation:")
     print("  a current can define u_vac only where its temporal magnitude dominates its spatial flux.")
 
-    status_line("symbolic timelike-domain condition", "DERIVED_REDUCED", f"J_V^2 = {current_norm}")
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("symbolic timelike-domain condition", StatusMark.PASS, f"J_V^2 = {current_norm}")
+    out.print()
+
     ns.record_derivation(
         derivation_id="timelike_domain_minkowski_condition",
         inputs=[J0, J1, J2, J3],
         output=sp.Tuple(current_norm, timelike_condition),
         method="symbolic timelike current norm condition",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="Minkowski-signature flat-space sample; not a general curved-space domain theorem",
     )
 
 
@@ -411,7 +418,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  normalize J_V anyway and pretend the vacuum clock exists globally.")
 
-    status_line("timelike-domain good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("timelike-domain good failure stated", StatusMark.DEFER, "deferred pending domain theorem")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -428,7 +438,10 @@ def case_6_failure_controls():
     print("7. no-overlap is absent")
     print("8. recovery checks choose the current domain")
 
-    status_line("timelike-domain failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("timelike-domain failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -452,7 +465,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  If a timelike/nonzero domain can be stated, the next ordinary-sector gate is static-source neutrality.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_static_source_neutrality_for_J_V.py")
+    out.print()
 
 
 def final_interpretation():
@@ -484,14 +500,64 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="timelike_domain_for_volume_current_marker",
-        inputs=[],
-        output=sp.Symbol("timelike_domain_for_volume_current_audited"),
-        method="timelike_domain_for_volume_current_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_J_V_timelike_domain_theorem_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive timelike/nonzero domain theorem for J_V",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Prove that a candidate J_V satisfies J_V^2 < 0 and J_V != 0 on the domain "
+                "where u_vac = J_V / sqrt(-J_V^2) is used. Without this, u_vac is not well-defined."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="td9_no_global_u_vac_from_J_V",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "u_vac from J_V exists only on D_V = {J_V^2 < 0, J_V != 0}. "
+                "No global vacuum clock may be claimed from a domain-limited or zero current."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="td5_compact_support_safe_domain_route",
+            script_id=SCRIPT_ID,
+            name="Compact-support redistribution domain (local u_vac only)",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_J_V_timelike_domain_theorem_in_15"],
+            activation_conditions=[
+                "J_V is timelike/nonzero only inside compact active region",
+                "zero boundary flux is structural",
+                "no exterior scalar charge is created",
+                "u_vac is not claimed outside the support",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_J_V_timelike_domain_branch",
+            script_id=SCRIPT_ID,
+            branch_id="J_V_timelike_domain_u_vac_definition",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_J_V_timelike_domain_theorem_in_15"],
+            description=(
+                "The timelike/nonzero domain theorem for J_V has not been derived. "
+                "u_vac cannot yet be defined from J_V. The branch is deferred."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="timelike_domain_for_volume_current_marker",
+            inputs=[],
+            output=sp.Symbol("timelike_domain_for_volume_current_audited"),
+            method="timelike_domain_for_volume_current_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

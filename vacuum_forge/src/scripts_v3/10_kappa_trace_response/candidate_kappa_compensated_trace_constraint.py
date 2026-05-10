@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa compensated trace constraint
 #
 # Purpose
@@ -21,17 +27,22 @@
 #
 # This is not yet a derived parent constraint.
 # It is a zero-charge control test.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_compensated_trace_constraint.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -43,22 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -100,8 +95,6 @@ def case_0_problem_statement():
     print()
     print("  remove exterior monopole leakage while retaining interior trace response.")
 
-    status_line("compensated trace problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_define_raw_and_compensated_source():
     header("Case 1: Define raw and compensated source")
@@ -128,9 +121,6 @@ def case_1_define_raw_and_compensated_source():
     print()
     print(f"S_comp = {S_comp}")
 
-    status_line("compensated source defined", "CONSTRAINED_BY_IDENTITY",
-                "subtraction needs parent identity")
-
     return r, R, p0, S_raw, S_comp, Q_raw
 
 
@@ -148,9 +138,6 @@ def case_2_zero_charge_check(r, R, S_raw, S_comp, Q_raw):
     print(f"Q_comp = {Q_comp}")
     print()
     print("Therefore the compensated source removes monopole kappa charge.")
-
-    status_line("compensated source has zero integrated charge",
-                "DERIVED_REDUCED" if sp.simplify(Q_comp) == 0 else "RISK")
 
     return Q_comp
 
@@ -174,9 +161,6 @@ def case_3_interior_source_not_zero(r, R, p0, S_comp):
     print("  compensation does not erase kappa interior structure.")
     print("  it creates positive and negative regions with zero net charge.")
 
-    status_line("compensated source retains interior structure", "CONSTRAINED_BY_IDENTITY",
-                "physical meaning of negative compensation must be derived")
-
 
 def case_4_massless_exterior_consequence():
     header("Case 4: Massless exterior consequence")
@@ -194,9 +178,6 @@ def case_4_massless_exterior_consequence():
     print("If Q_comp = 0, the monopole 1/r tail vanishes.")
     print()
     print("Higher multipoles or boundary-layer effects may remain, depending on source shape.")
-
-    status_line("zero compensated charge removes monopole tail", "CONSTRAINED_BY_IDENTITY",
-                "higher multipoles/boundary behavior not solved")
 
 
 def case_5_parent_identity_requirement():
@@ -218,9 +199,6 @@ def case_5_parent_identity_requirement():
     print()
     print("Otherwise the subtraction is just a hand-tuned fix.")
 
-    status_line("parent identity required for compensation", "MISSING",
-                "zero-charge rule not derived")
-
 
 def case_6_locality_warning():
     header("Case 6: Locality warning")
@@ -237,9 +215,6 @@ def case_6_locality_warning():
     print("Thus compensation points toward kappa as a constrained/non-propagating")
     print("trace response, not an ordinary local scalar field.")
 
-    status_line("compensation is nonlocal over support", "RISK",
-                "suggests constraint projection rather than local scalar dynamics")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -254,9 +229,6 @@ def case_7_classification():
     print("| parent identity for compensation | MISSING |")
     print("| locality of support-average subtraction | RISK |")
     print("| final kappa source law | UNFINISHED |")
-
-    status_line("compensated trace classification produced", "CONSTRAINED_BY_IDENTITY",
-                "works algebraically, needs parent identity")
 
 
 def case_8_next_tests():
@@ -280,9 +252,6 @@ def case_8_next_tests():
     print("Reason:")
     print("  Compensation looks nonlocal/constraint-like; before promoting it, separate")
     print("  physical trace from gauge-volume artifact.")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "gauge-vs-physical trace is next")
 
 
 def final_interpretation():
@@ -312,9 +281,12 @@ def main():
     header("Candidate Kappa Compensated Trace Constraint")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     r, R, p0, S_raw, S_comp, Q_raw = case_1_define_raw_and_compensated_source()
-    case_2_zero_charge_check(r, R, S_raw, S_comp, Q_raw)
+    Q_comp = case_2_zero_charge_check(r, R, S_raw, S_comp, Q_raw)
     case_3_interior_source_not_zero(r, R, p0, S_comp)
     case_4_massless_exterior_consequence()
     case_5_parent_identity_requirement()
@@ -322,14 +294,69 @@ def main():
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_compensated_trace_constraint_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_compensated_trace_constraint_stated"),
-        method="kappa_compensated_trace_constraint_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # The compensated charge = 0 is a real sample computation
+        ns.record_derivation(
+            derivation_id="compensated_trace_zero_charge_sample",
+            inputs=[S_comp],
+            output=Q_comp,
+            method="integrate 4*pi*r^2*S_comp over [0,R] for S_comp = S_raw - <S_raw>",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="parabolic pressure profile only; parent identity for compensation not derived",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_compensated_trace_constraint_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_compensated_trace_constraint_stated"),
+            method="kappa_compensated_trace_constraint_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_parent_identity_for_compensated_kappa_source_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive parent identity that enforces compensated kappa source (Q_kappa=0)",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The compensated source S_comp = S_trace - <S_trace> removes monopole "
+                "kappa charge algebraically, but the subtraction is nonlocal over the support "
+                "and not derived from a parent law. A constraint/projection identity must be "
+                "derived before this is accepted as a physical source law."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="compensated_kappa_source_nonlocal_risk",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "The support-average subtraction S_comp = S_trace - <S_trace> is nonlocal "
+                "over the matter support region. It cannot be treated as an ordinary local "
+                "dynamical source law unless derived from a constrained or projected variable."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("compensated source zero charge Q_comp=0", StatusMark.PASS, "parabolic profile sample only")
+
+        with out.governance_assessments():
+            out.line("compensation removes monopole leakage", StatusMark.PASS, "algebraically valid")
+            out.line("parent identity for compensation", StatusMark.FAIL, "missing - not derived")
+            out.line("nonlocality risk", StatusMark.FAIL, "open risk")
+
+        with out.unresolved_obligations():
+            out.line("derive parent identity for Q_kappa=0", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

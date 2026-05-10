@@ -1,5 +1,11 @@
 # Candidate parent identity template
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   MEMO
+#
 # Purpose
 # -------
 # The GR limit recovery audit found:
@@ -43,6 +49,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -54,26 +70,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-        "TEMPLATE": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -196,18 +192,31 @@ def build_clauses() -> List[IdentityClause]:
 
 
 def print_clause(c: IdentityClause) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+        "TEMPLATE": "WARN",
+    }
+    mark = marks.get(c.status, "INFO")
     print()
     print("-" * 120)
     print(c.clause)
     print("-" * 120)
     print(f"Template statement: {c.template_statement}")
     print(f"Required reduced implication: {c.required_reduced_implication}")
-    status_line(c.clause, c.status)
+    print(f"[{mark}] {c.clause}: {c.status}")
     print(f"Risk: {c.risk}")
     print(f"Missing: {c.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent identity template problem")
 
     print("Question:")
@@ -225,7 +234,9 @@ def case_0_problem_statement():
     print("  parent identity must explain constraints, not merely restate them")
     print("  avoid copying GR Bianchi identity with new words")
 
-    status_line("parent identity template problem posed", "TEMPLATE")
+    with out.governance_assessments():
+        out.line("parent identity template problem posed", StatusMark.DEFER,
+                 "template only; not derivation")
 
 
 def case_1_clause_inventory(entries: List[IdentityClause]):
@@ -234,7 +245,7 @@ def case_1_clause_inventory(entries: List[IdentityClause]):
         print_clause(entry)
 
 
-def case_2_compact_table(entries: List[IdentityClause]):
+def case_2_compact_table(entries: List[IdentityClause], out: ScriptOutput):
     header("Case 2: Compact parent identity template")
 
     print("| Clause | Template statement | Status | Missing |")
@@ -252,10 +263,12 @@ def case_2_compact_table(entries: List[IdentityClause]):
             + " |"
         )
 
-    status_line("compact parent identity template produced", "TEMPLATE")
+    with out.governance_assessments():
+        out.line("compact parent identity template produced", StatusMark.DEFER,
+                 "template only")
 
 
-def case_3_candidate_symbolic_template():
+def case_3_candidate_symbolic_template(out: ScriptOutput):
     header("Case 3: Candidate symbolic template")
 
     print("Candidate symbolic template:")
@@ -277,11 +290,12 @@ def case_3_candidate_symbolic_template():
     print()
     print("This is only a scaffold.")
 
-    status_line("candidate symbolic parent template stated", "TEMPLATE",
-                "not a derivation")
+    with out.governance_assessments():
+        out.line("candidate symbolic parent template stated", StatusMark.DEFER,
+                 "not a derivation")
 
 
-def case_4_template_pass_fail_tests():
+def case_4_template_pass_fail_tests(out: ScriptOutput):
     header("Case 4: Template pass/fail tests")
 
     print("The parent template must pass these tests:")
@@ -298,10 +312,12 @@ def case_4_template_pass_fail_tests():
     print()
     print("If it cannot pass these, it is decorative.")
 
-    status_line("parent template tests stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("parent template tests stated", StatusMark.DEFER,
+                 "structural test criteria")
 
 
-def case_5_honest_status():
+def case_5_honest_status(out: ScriptOutput):
     header("Case 5: Honest status")
 
     print("What this template accomplishes:")
@@ -318,10 +334,12 @@ def case_5_honest_status():
     print("  does not prove Bianchi compatibility")
     print("  does not prove metric recombination")
 
-    status_line("honest parent template status stated", "UNFINISHED")
+    with out.unresolved_obligations():
+        out.line("parent identity template remains template", StatusMark.OBLIGATION,
+                 "E_parent, B_source, coefficients, Bianchi compatibility all unresolved")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -342,7 +360,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  The parent template is only a scaffold; now list the ways closure can fail.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -366,27 +385,117 @@ def final_interpretation():
     print("  candidate_field_equation_closure_failure_modes.py")
 
 
-def main():
-    header("Candidate Parent Identity Template")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_clauses()
-    case_1_clause_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_candidate_symbolic_template()
-    case_4_template_pass_fail_tests()
-    case_5_honest_status()
-    case_6_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[IdentityClause]) -> None:
+    # TEMPLATE clauses -> OPEN obligations (they name what must be derived)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_parent_and_B_source_definitions",
+        script_id=SCRIPT_ID,
+        title="Derive E_parent and B_source definitions (P1)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "P1 requires definitions of E_parent[vacuum geometry] and B_source[T, vacuum exchange]. "
+            "The template Div(E_parent) = B_source must not merely rename the GR Bianchi identity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_constraint_propagation_C_A",
+        script_id=SCRIPT_ID,
+        title="Derive scalar constraint propagation C_A (P3)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "P3 requires an explicit C_A[A,rho] and a continuity-compatible update law "
+            "showing that A remains a constraint and does not require scalar radiation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_recombination_map_P10",
+        script_id=SCRIPT_ID,
+        title="Derive covariant recombination map R[A,W,h_TT,kappa] (P10)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "P10 requires a covariant metric recombination map preserving source split "
+            "and avoiding scalar double-counting or silent GR import."
+        ),
+    ))
+
+    # CONSTRAINED clauses -> CANDIDATE_ROUTE claims
+    ns.record_claim(ClaimRecord(
+        claim_id="tmpl_P2_ordinary_closure_conservation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "P2: B_source = 0 in ordinary closed gravity; Sigma_creation = 0 and "
+            "ordinary source conservation holds. Active-regime trigger is missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="tmpl_P6_kappa_trace_minimum_channel",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "P6: trace/pressure shifts kappa_min; kappa relaxes first-order toward kappa_min. "
+            "K_kappa, mu_kappa, chi_kappa, and S_trace_effective are missing."
+        ),
+    ))
+
+    # STRUCTURAL -> CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="tmpl_P4_transverse_vector_projection",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "P4: P_T j sources W_i; P_L j appears only in scalar continuity. "
+            "Covariant projection or gauge-fixed proof is missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="tmpl_P5_TT_tensor_projection",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "P5: P_TT stress sources h_ij^TT; trace part excluded from TT radiation. "
+            "Vacuum shear/tensor source identity and coupling C_T are missing."
+        ),
+    ))
+
+    # Inventory marker (MEMO/template script)
     ns.record_derivation(
         derivation_id="parent_identity_template_marker",
         inputs=[],
         output=sp.Symbol("parent_identity_template_stated"),
         method="parent_identity_template_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Parent Identity Template")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_clauses()
+    case_1_clause_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_candidate_symbolic_template(out)
+    case_4_template_pass_fail_tests(out)
+    case_5_honest_status(out)
+    case_6_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

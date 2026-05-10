@@ -1,5 +1,11 @@
 # Candidate source-driven volume creation law
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The F_zeta companion map inventory found:
@@ -22,6 +28,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -34,32 +53,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -232,7 +225,7 @@ def print_entry(e: SigmaVolumeEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -257,7 +250,10 @@ def case_0_problem_statement():
     print("  preserve boundary neutrality")
     print("  keep recovery checks downstream")
 
-    status_line("source-driven volume creation problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("source-driven volume creation problem posed", StatusMark.OBLIGATION, "requires explicit Sigma_V[A,T]")
+    out.print()
 
 
 def case_1_inventory(entries: List[SigmaVolumeEntry]):
@@ -284,7 +280,10 @@ def case_2_compact_table(entries: List[SigmaVolumeEntry]):
             + " |"
         )
 
-    status_line("compact source-driven creation ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact source-driven creation ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[SigmaVolumeEntry]):
@@ -305,7 +304,10 @@ def case_3_status_counts(entries: List[SigmaVolumeEntry]):
     print("  rho v dot grad A remains a toy until covariantly lifted.")
     print("  Chi origin, residual-kill, and boundary neutrality are mandatory.")
 
-    status_line("source-driven creation status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("source-driven creation status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_candidate_decision_tree():
@@ -328,7 +330,10 @@ def case_4_candidate_decision_tree():
     print("5. pure rho/T?")
     print("   Dangerous; likely scalar charge unless neutralized.")
 
-    status_line("source-law decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("source-law decision tree stated", StatusMark.INFO, "candidates ranked")
+    out.print()
 
 
 def case_5_good_failure():
@@ -348,7 +353,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  use rho v·grad A as parent law because it has the right intuition.")
 
-    status_line("source-driven creation good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("source-driven creation good failure stated", StatusMark.DEFER, "deferred pending Sigma_V[A,T]")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -366,7 +374,10 @@ def case_6_failure_controls():
     print("8. boundary neutrality is absent")
     print("9. no-overlap theorem is absent")
 
-    status_line("source-driven creation failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("source-driven creation failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -390,7 +401,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  The acceleration-gradient candidate is closest to the postulate. Test it explicitly before trying broader tensor expressions.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_acceleration_gradient_volume_creation.py")
+    out.print()
 
 
 def final_interpretation():
@@ -421,14 +435,106 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="source_driven_volume_creation_law_marker",
-        inputs=[],
-        output=sp.Symbol("source_driven_volume_creation_law_audited"),
-        method="source_driven_volume_creation_law_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_Sigma_V_source_law",
+            script_id=SCRIPT_ID,
+            title="Derive explicit Sigma_V[A,T] source-driven volume creation law",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Sigma_V[A,T] must be written as a covariant, frame-safe, coefficient-fixed, "
+                "boundary-neutral, and no-overlap-compatible expression before the source-driven "
+                "zeta companion branch can be licensed."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_chi_origin_for_Sigma_V",
+            script_id=SCRIPT_ID,
+            title="Derive chi coefficient origin for Sigma_V",
+            status=ObligationStatus.OPEN,
+            description=(
+                "chi must be fixed by postulate or exchange-law origin before gamma/AB checks. "
+                "If chi is chosen from recovery, Sigma_V fails as a derivation."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_residual_kill_no_overlap_for_Sigma_V",
+            script_id=SCRIPT_ID,
+            title="Derive residual-kill/no-overlap theorem for source-driven zeta",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Source-driven zeta must enter the metric only through B_s, or the residual "
+                "zeta trace must be killed or proven non-metric, to prevent double-counting."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_boundary_neutrality_for_Sigma_V",
+            script_id=SCRIPT_ID,
+            title="Derive boundary neutrality for source-driven volume creation",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Q_ext[Sigma_V independent zeta] must equal 0 or the contribution must be "
+                "absorbed into B_s. Without this, source-driven volume creation becomes scalar gravity."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="acceleration_gradient_Sigma_V_route",
+            script_id=SCRIPT_ID,
+            name="Acceleration-gradient source-driven volume creation: Sigma_V ~ chi rho a^mu nabla_mu A",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_Sigma_V_source_law",
+                "derive_chi_origin_for_Sigma_V",
+                "derive_residual_kill_no_overlap_for_Sigma_V",
+                "derive_boundary_neutrality_for_Sigma_V",
+            ],
+            activation_conditions=[
+                "a^mu and frame/projection are defined covariantly",
+                "chi has prior normalization or exchange-law origin",
+                "boundary neutrality theorem is explicit",
+                "no-overlap/residual-kill theorem is attached",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_source_patch_Sigma_V_branch",
+            script_id=SCRIPT_ID,
+            branch_id="Sigma_V_source_patch",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            description=(
+                "Sigma_V inserted only to fix q, gamma, or AB is rejected as a source-patch shortcut. "
+                "If no independent Sigma_V exists, the source-driven branch fails."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_source_driven_companion_branch",
+            script_id=SCRIPT_ID,
+            branch_id="source_driven_zeta_companion",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_Sigma_V_source_law",
+                "derive_chi_origin_for_Sigma_V",
+                "derive_residual_kill_no_overlap_for_Sigma_V",
+                "derive_boundary_neutrality_for_Sigma_V",
+            ],
+            description=(
+                "The source-driven zeta companion branch is deferred pending an explicit, "
+                "covariant, coefficient-fixed, boundary-neutral Sigma_V[A,T]."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="source_driven_volume_creation_law_marker",
+            inputs=[],
+            output=sp.Symbol("source_driven_volume_creation_law_audited"),
+            method="source_driven_volume_creation_law_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

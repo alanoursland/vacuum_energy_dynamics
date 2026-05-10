@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa pressure trace model
 #
 # Purpose
@@ -24,6 +30,16 @@ from pathlib import Path
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -35,22 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -94,8 +94,6 @@ def case_0_problem_statement():
     print("  determine whether pressure trace requires projection/screening to avoid")
     print("  an exterior 1/r kappa tail.")
 
-    status_line("pressure trace model problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_pressure_profile():
     header("Case 1: Simple pressure profile")
@@ -119,9 +117,6 @@ def case_1_pressure_profile():
     print()
     print("This is a toy interior source, not a GR pressure profile.")
 
-    status_line("toy pressure trace source defined", "PLAUSIBLE",
-                "not derived from hydrostatic equilibrium")
-
     return r, R, p0, p, S_trace
 
 
@@ -139,9 +134,6 @@ def case_2_integrated_trace_charge(r, R, p0, S_trace):
     print("For p0 > 0, Q_kappa is nonzero.")
     print()
     print("If massless kappa uses this as ordinary charge, exterior kappa gets a 1/r tail.")
-
-    status_line("pressure trace has nonzero integrated charge", "RISK",
-                "massless kappa would leak outside")
 
     return Q
 
@@ -169,8 +161,7 @@ def case_3_massless_flux_consequence():
     print()
     print("Thus a positive pressure trace source generically creates exterior leakage.")
 
-    status_line("massless pressure-sourced kappa leaks outside", "RISK",
-                "requires projection, screening, or zero-charge construction")
+    return kappa_tail
 
 
 def case_4_zero_charge_requirement():
@@ -191,9 +182,6 @@ def case_4_zero_charge_requirement():
     print("  constraint projection that removes monopole kappa charge")
     print("  or restoring/massive suppression")
     print("  or source defined as compensated trace exchange with zero net charge")
-
-    status_line("zero-charge condition conflicts with raw positive pressure", "RISK",
-                "raw S_trace=3p not enough")
 
 
 def case_5_compensated_trace_source():
@@ -225,8 +213,7 @@ def case_5_compensated_trace_source():
     print("This removes monopole kappa charge by construction.")
     print("But it must be derived from a parent constraint, not inserted arbitrarily.")
 
-    status_line("compensated trace source can enforce zero charge", "CONSTRAINED_BY_IDENTITY",
-                "needs parent identity")
+    return S_comp, Q_comp
 
 
 def case_6_massive_trace_response_option():
@@ -248,9 +235,6 @@ def case_6_massive_trace_response_option():
     print()
     print("However m_k must be derived or constrained.")
 
-    status_line("massive trace response can suppress leakage", "PLAUSIBLE",
-                "new scale m_k missing")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -263,9 +247,6 @@ def case_7_classification():
     print("| compensated trace source | CONSTRAINED_BY_IDENTITY if parent-derived |")
     print("| massive/restoring kappa | PLAUSIBLE if m_k derived |")
     print("| raw pressure Poisson law as final equation | REJECTED unless screened/projected |")
-
-    status_line("pressure trace classification produced", "RISK",
-                "raw pressure source leaks unless constrained")
 
 
 def case_8_next_tests():
@@ -289,9 +270,6 @@ def case_8_next_tests():
     print("Reason:")
     print("  Raw pressure source creates nonzero kappa charge; compensation/projection is the")
     print("  immediate issue.")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "compensated trace constraint is next")
 
 
 def final_interpretation():
@@ -327,24 +305,92 @@ def main():
     header("Candidate Kappa Pressure Trace Model")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     r, R, p0, p, S_trace = case_1_pressure_profile()
-    case_2_integrated_trace_charge(r, R, p0, S_trace)
+    Q = case_2_integrated_trace_charge(r, R, p0, S_trace)
     case_3_massless_flux_consequence()
     case_4_zero_charge_requirement()
-    case_5_compensated_trace_source()
+    S_comp, Q_comp = case_5_compensated_trace_source()
     case_6_massive_trace_response_option()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_pressure_trace_model_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_pressure_trace_model_classified"),
-        method="kappa_pressure_trace_model_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Toy integrated trace charge computation - sample result
+        ns.record_derivation(
+            derivation_id="toy_pressure_trace_integrated_charge_sample",
+            inputs=[S_trace],
+            output=Q,
+            method="integrate 4*pi*r^2*S_trace from 0 to R for parabolic pressure profile",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="parabolic pressure profile p=p0(1-r^2/R^2), not derived from hydrostatic equilibrium",
+        )
+
+        # Compensated source zero-charge result - sample
+        ns.record_derivation(
+            derivation_id="compensated_pressure_trace_zero_charge_sample",
+            inputs=[S_comp],
+            output=Q_comp,
+            method="integrate 4*pi*r^2*S_comp = 4*pi*r^2*(S_raw - <S_raw>) from 0 to R",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="parabolic pressure profile only; parent constraint for compensation not derived",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_pressure_trace_model_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_pressure_trace_model_classified"),
+            method="kappa_pressure_trace_model_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_zero_kappa_charge_condition_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive why the integrated kappa source charge vanishes for physical configurations",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Raw positive pressure gives Q_kappa > 0, which leaks a 1/r exterior tail. "
+                "A parent identity or constraint must be derived to enforce Q_kappa = 0 "
+                "rather than subtracting the mean by hand."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="raw_pressure_poisson_kappa_not_exterior_safe",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "A raw pressure/spatial-trace Poisson law for kappa is not exterior-safe "
+                "because the integrated charge Q_kappa = integral 3p d^3x is generically "
+                "nonzero for positive pressure, producing a 1/r exterior kappa tail."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("toy parabolic pressure integrated trace charge Q", StatusMark.PASS, "sample only - parabolic profile")
+            out.line("compensated source zero charge Q_comp=0", StatusMark.PASS, "sample only - parent constraint missing")
+
+        with out.governance_assessments():
+            out.line("raw pressure Poisson kappa", StatusMark.FAIL, "leaks exterior charge")
+            out.line("compensated trace source", StatusMark.DEFER, "needs parent identity")
+
+        with out.unresolved_obligations():
+            out.line("derive zero kappa charge condition", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

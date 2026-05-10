@@ -1,5 +1,11 @@
 # Candidate vector transverse current projection
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The vector curl-energy field equation gave:
@@ -27,17 +33,23 @@
 #   j_L is handled by scalar constraint / continuity structure.
 #
 # This is structural. It does not set the vector coefficient.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_transverse_current_projection.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -49,21 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "HAND_ASSIGNED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -130,8 +127,6 @@ def case_0_problem_statement():
     print("  j_T sources W_i")
     print("  j_L belongs to scalar continuity/constraint handling")
 
-    status_line("transverse current projection problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_helmholtz_split_statement():
     header("Case 1: Helmholtz-style split statement")
@@ -146,9 +141,6 @@ def case_1_helmholtz_split_statement():
     print("  curl grad chi = 0")
     print()
     print("This is the natural split for vector curl-energy.")
-
-    status_line("current split stated", "CONSTRAINED_BY_IDENTITY",
-                "requires boundary conditions")
 
 
 def case_2_gradient_current_is_longitudinal():
@@ -167,8 +159,7 @@ def case_2_gradient_current_is_longitudinal():
     print("curl j_L =")
     print(curl_jL)
 
-    ok = all(is_zero(e) for e in curl_jL)
-    status_line("gradient current has zero curl", "DERIVED_REDUCED" if ok else "RISK")
+    return j_L, curl_jL
 
 
 def case_3_rotational_current_is_transverse():
@@ -188,7 +179,7 @@ def case_3_rotational_current_is_transverse():
     print("curl j_T =")
     print(curl_jT)
 
-    status_line("rotational current is divergence-free", "DERIVED_REDUCED" if is_zero(div_jT) else "RISK")
+    return j_T, div_jT, curl_jT
 
 
 def case_4_continuity_allocation():
@@ -208,9 +199,6 @@ def case_4_continuity_allocation():
     print("  j_L carries compression/accumulation and belongs with scalar constraint.")
     print()
     print("This prevents the vector sector from swallowing scalar continuity.")
-
-    status_line("continuity allocates longitudinal current to scalar sector", "CONSTRAINED_BY_IDENTITY",
-                "formal projection/boundary conditions still needed")
 
 
 def case_5_vector_field_equation_with_projection():
@@ -234,8 +222,7 @@ def case_5_vector_field_equation_with_projection():
     print()
     print(f"  alpha_W/(2 K_c) = {alpha_W/(2*K_c)}")
 
-    status_line("projected vector equation stated", "CONSTRAINED_BY_IDENTITY",
-                "coefficient and projection operator missing")
+    return alpha_W/(2*K_c)
 
 
 def case_6_projection_safety_table():
@@ -249,9 +236,6 @@ def case_6_projection_safety_table():
     print("| time-dependent split | needs projection operator | MISSING |")
     print("| coefficient alpha_W/(2K_c) | normalization | MISSING |")
 
-    status_line("projection safety table produced", "CONSTRAINED_BY_IDENTITY",
-                "projection structure helps sector allocation")
-
 
 def case_7_failure_controls():
     header("Case 7: Failure controls")
@@ -263,9 +247,6 @@ def case_7_failure_controls():
     print("3. projection depends on arbitrary gauge choices without boundary rules.")
     print("4. coefficient is inserted from GR matching.")
     print("5. time-dependent longitudinal pieces violate scalar constraint propagation.")
-    print()
-    status_line("projection failure controls stated", "RISK",
-                "requires boundary/gauge discipline")
 
 
 def case_8_next_tests():
@@ -285,9 +266,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_current_projection_operator.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "formal projector is the next vector cleanup")
 
 
 def final_interpretation():
@@ -321,22 +299,144 @@ def main():
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_helmholtz_split_statement()
-    case_2_gradient_current_is_longitudinal()
-    case_3_rotational_current_is_transverse()
+    j_L, curl_jL = case_2_gradient_current_is_longitudinal()
+    j_T, div_jT, curl_jT = case_3_rotational_current_is_transverse()
     case_4_continuity_allocation()
-    case_5_vector_field_equation_with_projection()
+    ratio = case_5_vector_field_equation_with_projection()
     case_6_projection_safety_table()
     case_7_failure_controls()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_transverse_current_projection_marker",
-        inputs=[],
-        output=sp.Symbol("vector_transverse_current_projection_policy"),
-        method="vector_transverse_current_projection_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    grad_curl_zero = all(is_zero(e) for e in curl_jL)
+    rot_div_zero = is_zero(div_jT)
+
+    with out.derived_results():
+        out.line(
+            "curl(grad chi) = 0 longitudinal current identity",
+            StatusMark.PASS if grad_curl_zero else StatusMark.FAIL,
+            "gradient current has zero curl; confirmed longitudinal",
+        )
+        out.line(
+            "rotational current div j_T = 0",
+            StatusMark.PASS if rot_div_zero else StatusMark.FAIL,
+            "circular j = J0(-y, x, 0) is divergence-free; confirmed transverse",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "j_L must not source W_i",
+            StatusMark.DEFER,
+            "policy: longitudinal current belongs to scalar constraint sector",
+        )
+        out.line(
+            "coefficient alpha_W/(2K_c)",
+            StatusMark.FAIL,
+            "not derived; projection structure is structural only",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: curl(grad chi) = 0
+        x, y, z = sp.symbols("x y z", real=True)
+        coords = (x, y, z)
+        chi = sp.Function("chi")(x, y, z)
+        j_L_expr = grad(chi, coords)
+        curl_jL_expr = sp.simplify(curl(j_L_expr, coords))
+
+        ns2.record_derivation(
+            derivation_id="gradient_current_zero_curl",
+            inputs=[j_L_expr],
+            output=curl_jL_expr,
+            method="curl(grad chi) — gradient current is longitudinal",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Sample derivation: rotational current is divergence-free
+        J0 = sp.symbols("J0", real=True)
+        j_T_expr = sp.Matrix([-J0*y, J0*x, sp.Integer(0)])
+        div_jT_expr = div(j_T_expr, coords)
+
+        ns2.record_derivation(
+            derivation_id="rotational_current_divergence_free",
+            inputs=[j_T_expr],
+            output=div_jT_expr,
+            method="div(J0(-y, x, 0)) — rotational current is transverse",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            result_type="identity_residual",
+            scope="circular rotation current sample",
+        )
+
+        # Proof obligation: vector coefficient
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The projected vector equation Delta W = alpha_W j_T/(2K_c) "
+                "identifies the coefficient target. alpha_W/(2K_c) is not derived."
+            ),
+        ))
+
+        # Proof obligation: time-dependent current split
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_time_dependent_transverse_longitudinal_split",
+            script_id=SCRIPT_ID,
+            title="Derive time-dependent transverse/longitudinal current split",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The Helmholtz split j = j_T + j_L is stated for stationary sources. "
+                "For time-dependent sources, the split must be supported by a formal "
+                "projection operator and compatible boundary conditions."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling — j_L sector allocation
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_jL_sector",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "The longitudinal current j_L must not source W_i. "
+                "Allowing j_L to feed the vector sector would mix scalar "
+                "and vector sources in a way that is not ontology-native."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_transverse_current_projection_marker",
+            inputs=[],
+            output=sp.Symbol("vector_transverse_current_projection_policy"),
+            method="vector_transverse_current_projection_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

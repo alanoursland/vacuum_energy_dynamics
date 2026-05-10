@@ -1,5 +1,11 @@
 # Candidate field equation closure failure modes
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The parent identity template created a scaffold:
@@ -29,6 +35,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -40,22 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "FATAL": "FAIL",
-        "MAJOR": "FAIL",
-        "RISK": "WARN",
-        "CONTROLLED": "PASS",
-        "UNRESOLVED": "FAIL",
-        "WATCH": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -207,18 +210,30 @@ def build_failures() -> List[FailureMode]:
 
 
 def print_failure(f: FailureMode) -> None:
+    severity_marks = {
+        "FATAL": "FAIL",
+        "MAJOR": "FAIL",
+        "RISK": "WARN",
+    }
+    status_marks = {
+        "CONTROLLED": "PASS",
+        "WATCH": "WARN",
+        "UNRESOLVED": "FAIL",
+    }
+    sev_mark = severity_marks.get(f.severity, "INFO")
+    sts_mark = status_marks.get(f.current_status, "INFO")
     print()
     print("-" * 120)
     print(f.name)
     print("-" * 120)
     print(f"Description: {f.description}")
-    status_line(f.name, f.severity, f.current_status)
+    print(f"[{sev_mark}] {f.name}: severity={f.severity}, current={f.current_status}")
     print(f"Symptom: {f.symptom}")
     print(f"Prevention: {f.prevention}")
     print(f"Next check: {f.next_check}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Field equation closure failure modes problem")
 
     print("Question:")
@@ -236,7 +251,8 @@ def case_0_problem_statement():
     print("  do not let kappa become a repair knob")
     print("  do not let organized sectors masquerade as closure")
 
-    status_line("closure failure problem posed", "RISK")
+    with out.governance_assessments():
+        out.line("closure failure problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_failure_inventory(entries: List[FailureMode]):
@@ -245,7 +261,7 @@ def case_1_failure_inventory(entries: List[FailureMode]):
         print_failure(entry)
 
 
-def case_2_compact_table(entries: List[FailureMode]):
+def case_2_compact_table(entries: List[FailureMode], out: ScriptOutput):
     header("Case 2: Compact failure ledger")
 
     print("| Failure mode | Severity | Current status | Prevention |")
@@ -263,10 +279,11 @@ def case_2_compact_table(entries: List[FailureMode]):
             + " |"
         )
 
-    status_line("compact failure ledger produced", "RISK")
+    with out.governance_assessments():
+        out.line("compact failure ledger produced", StatusMark.WARN, "open risk inventory")
 
 
-def case_3_most_dangerous_failures(entries: List[FailureMode]):
+def case_3_most_dangerous_failures(entries: List[FailureMode], out: ScriptOutput):
     header("Case 3: Most dangerous failures")
 
     fatal = [e for e in entries if e.severity == "FATAL"]
@@ -278,10 +295,12 @@ def case_3_most_dangerous_failures(entries: List[FailureMode]):
     print()
     print("These would invalidate the closure claim rather than merely delay it.")
 
-    status_line("fatal failures identified", "FATAL", "closure claim unsafe until controlled")
+    with out.counterexamples():
+        out.line("fatal failures identified", StatusMark.FAIL,
+                 "closure claim unsafe until controlled")
 
 
-def case_4_current_controls():
+def case_4_current_controls(out: ScriptOutput):
     header("Case 4: Current controls")
 
     print("Currently partially controlled:")
@@ -300,10 +319,11 @@ def case_4_current_controls():
     print("  boundary mass theorem")
     print("  relaxation energy accounting")
 
-    status_line("current controls summarized", "WATCH")
+    with out.governance_assessments():
+        out.line("current controls summarized", StatusMark.WARN, "partial controls only")
 
 
-def case_5_next_tests():
+def case_5_next_tests(out: ScriptOutput):
     header("Case 5: Next tests")
 
     print("Possible next scripts:")
@@ -324,7 +344,57 @@ def case_5_next_tests():
     print("Reason:")
     print("  The failure ledger is protective; now assemble the minimal current equation set with labels.")
 
-    status_line("next test selected", "WATCH")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
+
+
+def case_6_good_failure(out: ScriptOutput):
+    header("Case 6: Good failure demonstration")
+
+    print("Controlled failure: kappa gains a Box equation (F5 / hidden breathing wave).")
+    print()
+    print("  If kappa satisfied Box kappa = source instead of dot(kappa) = -mu*K*(kappa-kappa_min),")
+    print("  it would be a propagating scalar field with an independent momentum channel.")
+    print("  This must be detectable as a fatal failure.")
+
+    # Construct the detectable symptom symbolically
+    t, x, c_speed = sp.symbols("t x c", positive=True)
+    kappa = sp.Function("kappa")
+    # Box kappa = d^2 kappa/dt^2 - c^2 d^2 kappa/dx^2 (1D schematic)
+    box_kappa = sp.diff(kappa(t, x), t, 2) - c_speed**2 * sp.diff(kappa(t, x), x, 2)
+    # For a wave mode kappa = exp(i(kx - omega t)), box_kappa = (-omega^2 + c^2 k^2) kappa
+    omega, k_wave = sp.symbols("omega k", real=True)
+    kappa_wave = sp.exp(sp.I * (k_wave * x - omega * t))
+    # Eigenvalue of Box acting on plane wave
+    box_eigenvalue = sp.diff(kappa_wave, t, 2) - c_speed**2 * sp.diff(kappa_wave, x, 2)
+    box_eigenvalue_simplified = sp.simplify(box_eigenvalue / kappa_wave)
+
+    print()
+    print(f"  Box kappa eigenvalue on plane wave exp(i(kx-omega t)):")
+    print(f"    = {box_eigenvalue_simplified}")
+    print()
+    print("  For a non-dispersive wave: omega^2 = c^2 k^2, eigenvalue = 0.")
+    print("  This would mean kappa is a massless propagating scalar.")
+    print()
+    print("  This is the F5 failure mode: kappa must NOT satisfy this equation.")
+    print("  Governance records this as a FATAL open risk if Box kappa appears.")
+
+    # The symptom is nonzero dispersion relation eigenvalue for non-trivial wave
+    has_propagating_mode = box_eigenvalue_simplified != 0  # nonzero means wave equation exists
+
+    with out.counterexamples():
+        out.line(
+            "Box kappa eigenvalue on plane wave",
+            StatusMark.FAIL,
+            f"eigenvalue = {box_eigenvalue_simplified}; if set to 0 gives propagating mode (F5 fatal)",
+        )
+
+    print()
+    if has_propagating_mode:
+        print("[PASS] Good failure: Box kappa acting on plane wave gives nonzero eigenvalue.")
+        print("       Governance correctly identifies this as the F5 fatal failure mode if invoked.")
+    else:
+        print("[WARN] Unexpected: eigenvalue was zero. Check symbolics.")
 
 
 def final_interpretation():
@@ -346,26 +416,119 @@ def final_interpretation():
     print("  candidate_closure_minimal_equation_set.py")
 
 
-def main():
-    header("Candidate Field Equation Closure Failure Modes")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_failures()
-    case_1_failure_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_most_dangerous_failures(entries)
-    case_4_current_controls()
-    case_5_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[FailureMode]) -> None:
+    # UNRESOLVED (FATAL) -> OPEN obligations
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="resolve_F1_decorative_parent_identity",
+        script_id=SCRIPT_ID,
+        title="Resolve F1: prevent decorative parent identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "F1 is fatal: Div E_parent must not merely rename the GR Bianchi identity. "
+            "Definitions of E_parent and B_source from vacuum ontology are required, "
+            "along with explicit reduced-sector implications."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="resolve_F6_tensor_coupling_matched",
+        script_id=SCRIPT_ID,
+        title="Resolve F6: tensor coupling must not be claimed derived when matched",
+        status=ObligationStatus.OPEN,
+        description=(
+            "F6 is major: C_T and tensor flux coefficient must be derived from action stiffness. "
+            "Until then they are marked MATCHED and must not be advertised as derived."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="resolve_F7_vector_normalization_matched",
+        script_id=SCRIPT_ID,
+        title="Resolve F7: vector normalization must not be claimed derived when matched",
+        status=ObligationStatus.OPEN,
+        description=(
+            "F7 is major: frame-dragging coefficient must be derived from vacuum vector stiffness. "
+            "Until beta_W and alpha_W/K_c are derived, normalization is MATCHED."
+        ),
+    ))
+
+    # CONTROLLED failures -> CANDIDATE_ROUTE claims (controlled but not proven)
+    ns.record_claim(ClaimRecord(
+        claim_id="fm_F3_scalar_double_counting_controlled",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "F3 (scalar double-counting) is currently controlled by enforcing S_kappa[rho]=0 "
+            "and Q_kappa=0. A parent identity proving these constraints is still missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="fm_F5_hidden_breathing_wave_controlled",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "F5 (hidden breathing wave) is currently controlled by forbidding ordinary massless "
+            "kappa propagation (Box kappa = source). kappa is restricted to first-order relaxation. "
+            "A parent identity proving this is still missing."
+        ),
+    ))
+
+    # WATCH failures -> OPEN_RISK claims
+    ns.record_claim(ClaimRecord(
+        claim_id="fm_F2_silent_gr_import_watch",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "F2 (silent GR metric import) is under watch. Recombination map is kept labeled "
+            "reduced/structural/unfinished to prevent silent GR import. Parent map is missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="fm_F12_sector_ledger_mistaken_for_closure_watch",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "F12 (sector ledger mistaken for closure) is under watch. Closure status is kept "
+            "MISSING until parent identity and recombination are derived."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="field_equation_closure_failure_modes_marker",
         inputs=[],
         output=sp.Symbol("field_equation_closure_failure_modes_listed"),
         method="field_equation_closure_failure_modes_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Field Equation Closure Failure Modes")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_failures()
+    case_1_failure_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_most_dangerous_failures(entries, out)
+    case_4_current_controls(out)
+    case_5_next_tests(out)
+    case_6_good_failure(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

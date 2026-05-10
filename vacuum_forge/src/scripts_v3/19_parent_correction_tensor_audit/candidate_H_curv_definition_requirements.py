@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The parent correction tensor role inventory found:
@@ -43,6 +46,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -54,33 +69,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -423,12 +411,15 @@ def print_entry(e: HCurvRequirementEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: H_curv definition requirements problem")
 
     print("Question:")
@@ -452,7 +443,8 @@ def case_0_problem_statement():
     print("  no scalar trace leak")
     print("  no recovery-fit correction")
 
-    status_line("H_curv definition requirements problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("H_curv definition requirements problem posed", StatusMark.OBLIGATION, "requirements audit required before H_curv can be used")
 
 
 def case_1_inventory(entries: List[HCurvRequirementEntry]):
@@ -461,7 +453,7 @@ def case_1_inventory(entries: List[HCurvRequirementEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[HCurvRequirementEntry]):
+def case_2_compact_table(entries: List[HCurvRequirementEntry], out: ScriptOutput):
     header("Case 2: Compact H_curv requirements ledger")
 
     print("| Entry | Requirement | Status | Consequence |")
@@ -479,10 +471,11 @@ def case_2_compact_table(entries: List[HCurvRequirementEntry]):
             + " |"
         )
 
-    status_line("compact H_curv requirements ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact H_curv requirements ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[HCurvRequirementEntry]):
+def case_3_status_counts(entries: List[HCurvRequirementEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -503,10 +496,11 @@ def case_3_status_counts(entries: List[HCurvRequirementEntry]):
     print("  Anti-singularity patch, e_curv reservoir, regular-core tuning, boundary counterterm, Bianchi decoration, and recovery-fit correction are rejected.")
     print("  Next gate is H_exch definition requirements.")
 
-    status_line("H_curv requirements status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("H_curv requirements status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_required_fields():
+def case_4_required_fields(out: ScriptOutput):
     header("Case 4: Required H_curv fields")
 
     print("Required H_curv fields:")
@@ -525,10 +519,11 @@ def case_4_required_fields():
     print("12. coefficient origin")
     print("13. claim-level limit")
 
-    status_line("required H_curv fields listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("required H_curv fields listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: H_curv definition decision tree")
 
     print("Decision tree:")
@@ -554,10 +549,11 @@ def case_5_decision_tree():
     print("7. H_curv cannot meet requirements:")
     print("   keep deferred or diagnostic-only.")
 
-    status_line("H_curv definition decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("H_curv definition decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -574,10 +570,11 @@ def case_6_good_failure():
     print()
     print("  call H_curv a curvature correction because the theory wants finite curvature.")
 
-    status_line("H_curv definition good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("H_curv definition good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("H_curv definition fails if:")
@@ -597,10 +594,11 @@ def case_7_failure_controls():
     print("13. coefficients tune recovery or regular core")
     print("14. bounce/regular core is claimed")
 
-    status_line("H_curv definition failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("H_curv definition failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -622,10 +620,11 @@ def case_8_next_tests():
     print("  H_curv has now been fenced against anti-singularity and e_curv-reservoir overclaim.")
     print("  H_exch must next be fenced against exchange-continuity and Sigma/R paint.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("H_curv is not defined yet.")
@@ -659,33 +658,172 @@ def final_interpretation():
     print()
     print("  candidate_H_exch_definition_requirements.py")
 
-    status_line("H_curv definition requirements audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("H_curv definition requirements audit complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    # One ProofObligationRecord per REQUIRED entry
+    required_obligations = [
+        ("derive_A_curv_formal_definition_19", "Formally define A_curv curvature admissibility object",
+         "A_curv or equivalent finite-admissibility object must be formally defined before H_curv can use it (HC2)."),
+        ("derive_H_curv_domain_19", "Define H_curv domain D_curv",
+         "Domain where H_curv acts must be specified, structural, not solution-tailored (HC4)."),
+        ("derive_H_curv_measure_19", "Specify curvature/admissibility measure for H_curv",
+         "Measure used by H_curv must be defined independently of desired finite result (HC5)."),
+        ("derive_H_curv_source_current_relation_19", "Derive H_curv source/current relation",
+         "H_curv relation to A_curv, e_curv, or J_curv must be explicit and non-circular (HC6)."),
+        ("guard_J_curv_absence_19", "Guard J_curv absence in H_curv",
+         "J_curv is not defined and cannot be used as H_curv source/current (HC7)."),
+        ("derive_H_curv_projection_class_19", "Specify H_curv projection class",
+         "Projection class must be explicit and source-compatible, not hiding overlap (HC9)."),
+        ("derive_H_curv_tensor_symmetry_19", "Specify H_curv tensor symmetry and rank",
+         "Tensor rank, symmetry, trace behavior, and index placement required (HC10)."),
+        ("derive_H_curv_divergence_behavior_19", "Derive H_curv divergence behavior",
+         "Divergence behavior must be specified without decorative Bianchi language (HC11)."),
+        ("derive_H_curv_boundary_neutrality_19", "Derive H_curv boundary neutrality theorem",
+         "H_curv must have no boundary repair flux, shell hiding, scalar tail cancellation, or M_ext shift (HC12)."),
+        ("derive_H_curv_matter_separation_19", "Derive H_curv ordinary matter separation",
+         "H_curv must not reroute ordinary T_mu_nu or double-count matter (HC13)."),
+        ("derive_H_curv_mass_neutrality_19", "Derive H_curv M_ext neutrality theorem",
+         "delta M_ext|H_curv = 0 unless derived through established A-sector source law (HC14)."),
+        ("derive_H_curv_scalar_neutrality_19", "Derive H_curv scalar trace neutrality",
+         "H_curv must not reopen B_s/F_zeta, residual trace, kappa, or exterior scalar charge (HC15)."),
+        ("derive_H_curv_coefficient_origin_19", "Derive H_curv coefficient origin",
+         "Coefficients must have ontology-native, action, stiffness, or admissibility origin (HC16)."),
+    ]
+
+    for obligation_id, title, description in required_obligations:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=ObligationStatus.OPEN,
+            required_by=["H_curv_insertion_route"],
+            description=description,
+        ))
+
+    all_obligation_ids = [o[0] for o in required_obligations]
+
+    # Candidate routes
+    ns.record_route(RouteRecord(
+        route_id="H_curv_diagnostic_only_route_19",
+        script_id=SCRIPT_ID,
+        name="Diagnostic-only H_curv audit object",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[],
+        activation_conditions=[
+            "explicitly diagnostic-only",
+            "never inserted into field equation",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="H_curv_divergence_free_candidate_route_19",
+        script_id=SCRIPT_ID,
+        name="Identically divergence-free H_curv candidate",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "actual tensor identity constructed",
+            "not asserted by Bianchi-like language",
+        ],
+    ))
+
+    # Deferred branch for H_curv insertion
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_curv_definition_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_curv_definition_and_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "H_curv is not defined yet. All thirteen definition requirements are open obligations. "
+            "Insertion is deferred until prerequisites are satisfied."
+        ),
+    ))
+
+    # HC28 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_curv_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_curv_definition_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "HC28 failure condition: if H_curv cannot meet requirements, it remains deferred or diagnostic-only. "
+            "Mapped to DEFERRED_PENDING_PREREQUISITES because no contradiction has been demonstrated — "
+            "the thirteen prerequisites are simply open."
+        ),
+    ))
+
+    # Rejected routes
+    for decision_id, branch_id, description in [
+        ("reject_H_curv_finite_curvature_19", "H_curv_arbitrary_finite_curvature", "HC22: any tensor that makes curvature finite is rejected by policy."),
+        ("reject_H_curv_ecurv_reservoir_19", "H_curv_ecurv_source_reservoir", "HC23: e_curv as source reservoir rejected by policy."),
+        ("reject_H_curv_regular_core_tuning_19", "H_curv_regular_core_tuning", "HC24: regular-core tuning rejected by policy."),
+        ("reject_H_curv_boundary_counterterm_19", "H_curv_boundary_counterterm", "HC25: boundary counterterm rejected by policy."),
+        ("reject_H_curv_Bianchi_decorative_19", "H_curv_Bianchi_decorative", "HC26: Bianchi-like language is not proof."),
+        ("reject_H_curv_recovery_fit_19", "H_curv_recovery_fit_correction", "HC27: recovery-fit correction rejected by policy."),
+    ]:
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id=decision_id,
+            script_id=SCRIPT_ID,
+            branch_id=branch_id,
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            description=description,
+        ))
+
+    # Summary claim
+    ns.record_claim(ClaimRecord(
+        claim_id="H_curv_not_defined_yet_19",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "H_curv is not defined yet and is not insertable. "
+            "It survives only as theorem target or diagnostic-only fallback."
+        ),
+        obligation_ids=all_obligation_ids,
+    ))
 
 
 def main():
     header("Candidate H_curv Definition Requirements")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_required_fields()
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_required_fields(out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="H_curv_definition_requirements_marker",
-        inputs=[],
-        output=sp.Symbol("H_curv_definition_requirements_complete"),
-        method="H_curv_definition_requirements",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="H_curv_definition_requirements_marker",
+            inputs=[],
+            output=sp.Symbol("H_curv_definition_requirements_complete"),
+            method="H_curv_definition_requirements",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

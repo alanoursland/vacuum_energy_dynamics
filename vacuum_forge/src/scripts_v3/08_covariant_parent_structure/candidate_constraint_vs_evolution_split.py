@@ -1,5 +1,11 @@
 # Candidate constraint vs evolution split
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The covariant parent requirements study identified the next organizing layer:
@@ -27,11 +33,6 @@
 # Goal:
 #   Produce a constraint/evolution map that future gauge and covariant-parent
 #   studies can use.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_constraint_vs_evolution_split.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -40,6 +41,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -289,6 +301,8 @@ def case_4_status_counts(splits: List[SectorSplit]):
     else:
         status_line("constraint/evolution split complete", "SATISFIED_REDUCED")
 
+    return counts
+
 
 # =============================================================================
 # Case 5: Consistency risks
@@ -304,9 +318,6 @@ def case_5_consistency_risks():
     print("3. If kappa is not suppressed exterior, weak-field constraints may fail.")
     print("4. If gauge modes are mistaken for physical modes, the sector count is wrong.")
     print("5. If conservation identities are missing, source coupling may be inconsistent.")
-    print()
-    status_line("consistency risks identified", "RISK",
-                "these risks must be handled by parent structure")
 
 
 # =============================================================================
@@ -391,23 +402,153 @@ def main():
     header("Candidate Constraint vs Evolution Split")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     splits = build_splits()
     case_2_print_splits(splits)
     case_3_table(splits)
-    case_4_status_counts(splits)
+    counts = case_4_status_counts(splits)
     case_5_consistency_risks()
     case_6_parent_target_split()
     case_7_next_study()
     final_interpretation(splits)
+
+    # --- ProofObligationRecord for each MISSING or PARTIAL sector ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_A_rad_suppression_mechanism_for_split",
+        script_id=SCRIPT_ID,
+        title="Derive A_rad suppression mechanism (constraint/evolution split level)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show from parent structure why A_rad is absent or suppressed, establishing "
+            "its sector type (absent, projected, damped, massive, or relaxed)."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_source_and_exterior_suppression",
+        script_id=SCRIPT_ID,
+        title="Derive kappa source law and exterior suppression for split",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply stress/pressure/trace source coupling for kappa and derive "
+            "why kappa is suppressed in exterior vacuum."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_W_i_equation_type",
+        script_id=SCRIPT_ID,
+        title="Derive W_i equation type (constraint or hyperbolic)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Determine whether W_i obeys a constraint equation, a hyperbolic "
+            "evolution equation, or a mixed system, and check vector radiation safety."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_gauge_sector_variables_and_transformations",
+        script_id=SCRIPT_ID,
+        title="Derive gauge sector variables and transformation laws",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Identify which degrees of freedom are gauge artifacts, derive their "
+            "transformation laws, and construct physical gauge-invariant combinations."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conservation_identity_for_split",
+        script_id=SCRIPT_ID,
+        title="Derive conservation identity for sector split",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply Bianchi-like or continuity identities linking source conservation "
+            "to the constraint and evolution equations."
+        ),
+    ))
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="sector_split_map_partial",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The current constraint/evolution split is: A_constraint (constraint), "
+            "A_rad (absent or controlled), kappa (relaxation/response), W_i (TBD), "
+            "h_ij^TT (hyperbolic evolution), gauge modes (nonphysical). "
+            "This map is provisional and incomplete pending gauge and conservation derivations."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="complete_constraint_evolution_split_route",
+        script_id=SCRIPT_ID,
+        name="Complete constraint/evolution split with gauge and conservation",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_gauge_sector_variables_and_transformations",
+            "derive_conservation_identity_for_split",
+            "derive_W_i_equation_type",
+        ],
+        activation_conditions=[
+            "gauge sector is identified and projected",
+            "conservation identities are derived",
+            "W_i equation type is known",
+            "all sector types are classified",
+        ],
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="constraint_evolution_split_marker",
         inputs=[],
         output=sp.Symbol("constraint_evolution_map_established"),
         method="constraint_evolution_split_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    n_missing = counts.get("MISSING", 0)
+    n_partial = counts.get("PARTIAL", 0)
+    n_satisfied = counts.get("SATISFIED_REDUCED", 0)
+
+    with out.governance_assessments():
+        out.line(f"satisfied reduced: {n_satisfied}", StatusMark.PASS,
+                 "A_constraint and h_ij^TT have strong reduced support")
+        out.line(f"partial: {n_partial}", StatusMark.DEFER,
+                 "A_rad, kappa, W_i partial only")
+        out.line(f"missing: {n_missing}", StatusMark.FAIL,
+                 "gauge sector and conservation identities missing")
+        out.line("sector split map provisional", StatusMark.DEFER,
+                 "pending gauge and conservation derivations")
+
+    with out.unresolved_obligations():
+        out.line("derive A_rad suppression mechanism for split", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive kappa source and exterior suppression", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive W_i equation type", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive gauge sector variables and transformations", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive conservation identity for split", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

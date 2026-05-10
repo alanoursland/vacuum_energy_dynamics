@@ -1,5 +1,11 @@
 # Candidate reduced exterior action
 #
+# Group:
+#   02_mechanics
+#
+# Script type:
+#   SAMPLE
+#
 # Purpose
 # -------
 # This script tests whether one reduced variational toy can unify the two
@@ -39,9 +45,6 @@
 # IMPORTANT:
 # This is NOT the full theory, not a covariant action, and not a theorem.
 # It is a reduced-sector variational toy.
-#
-# Suggested location:
-#   scripts_v3/candidate_reduced_exterior_action.py
 
 from pathlib import Path
 
@@ -49,6 +52,17 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -60,14 +74,6 @@ def header(title: str) -> None:
     print("=" * 96)
     print(title)
     print("=" * 96)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -115,7 +121,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
         print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
-def case_0_log_scale_algebra():
+def case_0_log_scale_algebra(out: ScriptOutput):
     header("Case 0: Log-scale algebra")
 
     kappa, s = sp.symbols("kappa s", real=True)
@@ -128,11 +134,19 @@ def case_0_log_scale_algebra():
     print(f"B  = {B}")
     print(f"AB = {AB}")
 
-    status_line("AB = exp(2*kappa)", is_zero(AB - sp.exp(2 * kappa)))
-    status_line("kappa=0 gives AB=1", is_zero(AB.subs(kappa, 0) - 1))
+    residual_AB = sp.simplify(AB - sp.exp(2 * kappa))
+    residual_AB_k0 = sp.simplify(AB.subs(kappa, 0) - 1)
+
+    with out.derived_results():
+        out.line("AB = exp(2*kappa)",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
+        out.line("kappa=0 gives AB=1",
+                 StatusMark.PASS if is_zero(residual_AB_k0) else StatusMark.FAIL,
+                 f"residual={residual_AB_k0}")
 
 
-def case_1_reduced_el_equations_1d():
+def case_1_reduced_el_equations_1d(out: ScriptOutput):
     header("Case 1: Reduced Euler-Lagrange equations in one coordinate")
 
     x = sp.symbols("x", real=True)
@@ -161,7 +175,11 @@ def case_1_reduced_el_equations_1d():
 
     print()
     print(f"EL_kappa | kappa=0 = {EL_k_ext}")
-    status_line("kappa=0 solves source-free kappa equation", is_zero(EL_k_ext))
+
+    with out.sample_results():
+        out.line("kappa=0 solves source-free kappa equation",
+                 StatusMark.PASS if is_zero(EL_k_ext) else StatusMark.FAIL,
+                 f"residual={EL_k_ext}")
 
     print()
     print("Shear equation rearranged:")
@@ -172,7 +190,7 @@ def case_1_reduced_el_equations_1d():
     print("  alpha/(2*K_s) = 8πG/c²")
 
 
-def case_2_3d_variation_target():
+def case_2_3d_variation_target(out: ScriptOutput):
     header("Case 2: 3D reduced variation target and normalization")
 
     G, c, Ks, alpha = sp.symbols("G c K_s alpha", positive=True, real=True)
@@ -190,10 +208,14 @@ def case_2_3d_variation_target():
     print(f"alpha solution = {alpha_solution}")
 
     ok = bool(alpha_solution) and is_zero(alpha_solution[0] - 16 * sp.pi * G * Ks / c**2)
-    status_line("normalization alpha = 16πG K_s/c²", ok)
+
+    with out.sample_results():
+        out.line("normalization alpha = 16πG K_s/c²",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"solution={alpha_solution}")
 
 
-def case_3_exterior_spherical_solution():
+def case_3_exterior_spherical_solution(out: ScriptOutput):
     header("Case 3: Exterior spherical solution from reduced source law")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -204,7 +226,6 @@ def case_3_exterior_spherical_solution():
 
     print(f"s(r) = {s_expr}")
     print(f"∇²s for r>0 = {lap}")
-    status_line("C/r is harmonic outside source", is_zero(lap))
 
     flux = sp.simplify(4 * sp.pi * r**2 * sp.diff(s_expr, r))
     target_flux = 8 * sp.pi * G * M / c**2
@@ -215,14 +236,23 @@ def case_3_exterior_spherical_solution():
     print(f"target flux = {target_flux}")
     print(f"C solution = {C_solution}")
 
+    with out.sample_results():
+        out.line("C/r is harmonic outside source",
+                 StatusMark.PASS if is_zero(lap) else StatusMark.FAIL,
+                 f"residual={lap}")
+
     if C_solution:
         C_val = sp.simplify(C_solution[0])
         s_fixed = sp.simplify(s_expr.subs(C, C_val))
         print(f"s_fixed(r) = {s_fixed}")
-        status_line("source flux fixes s=-2GM/(rc²)", is_zero(s_fixed + 2 * G * M / (r * c**2)))
+        residual_s = sp.simplify(s_fixed + 2 * G * M / (r * c**2))
+        with out.sample_results():
+            out.line("source flux fixes s=-2GM/(rc²)",
+                     StatusMark.PASS if is_zero(residual_s) else StatusMark.FAIL,
+                     f"residual={residual_s}")
 
 
-def case_4_metric_recovery():
+def case_4_metric_recovery(out: ScriptOutput):
     header("Case 4: Metric recovery")
 
     eps = sp.symbols("eps", positive=True, real=True)
@@ -246,12 +276,23 @@ def case_4_metric_recovery():
     print(f"A series = {A_series}")
     print(f"B series = {B_series}")
 
-    status_line("A = 1 - 2eps + 2eps² + ...", is_zero(A_series - (1 - 2 * eps + 2 * eps**2)))
-    status_line("B = 1 + 2eps + 2eps² + ...", is_zero(B_series - (1 + 2 * eps + 2 * eps**2)))
-    status_line("AB = 1 exactly", is_zero(AB - 1))
+    residual_A = sp.simplify(A_series - (1 - 2 * eps + 2 * eps**2))
+    residual_B = sp.simplify(B_series - (1 + 2 * eps + 2 * eps**2))
+    residual_AB = sp.simplify(AB - 1)
+
+    with out.sample_results():
+        out.line("A = 1 - 2eps + 2eps² + ...",
+                 StatusMark.PASS if is_zero(residual_A) else StatusMark.FAIL,
+                 f"residual={residual_A}")
+        out.line("B = 1 + 2eps + 2eps² + ...",
+                 StatusMark.PASS if is_zero(residual_B) else StatusMark.FAIL,
+                 f"residual={residual_B}")
+        out.line("AB = 1 exactly",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
 
 
-def case_5_kappa_source_failure_control():
+def case_5_kappa_source_failure_control(out: ScriptOutput):
     header("Case 5: Failure control — direct kappa source")
 
     x = sp.symbols("x", real=True)
@@ -282,11 +323,16 @@ def case_5_kappa_source_failure_control():
         AB = sp.simplify(sp.exp(2 * k_eq))
         print(f"kappa_eq = {k_eq}")
         print(f"AB = {AB}")
-        status_line("kappa source makes kappa nonzero generically", k_eq != 0)
-        status_line("reciprocal scaling fails generically", not is_zero(AB - 1))
+        with out.governance_assessments():
+            out.line("kappa source makes kappa nonzero generically",
+                     StatusMark.PASS if k_eq != 0 else StatusMark.FAIL,
+                     f"kappa_eq={k_eq}")
+            out.line("reciprocal scaling fails generically",
+                     StatusMark.PASS if not is_zero(AB - 1) else StatusMark.FAIL,
+                     f"AB={AB}")
 
 
-def case_5b_vacuumforge_energy_crosscheck(ns=None):
+def case_5b_vacuumforge_energy_crosscheck(out: ScriptOutput, ns=None):
     header("Case 5b: VacuumForge energy cross-check")
 
     ctx = TheoryContext("candidate_reduced_exterior_action")
@@ -311,21 +357,32 @@ def case_5b_vacuumforge_energy_crosscheck(ns=None):
         s_eq = sp.simplify(sol.solutions[0][ms.sigma])
         print(f"kappa_eq = {k_eq}")
         print(f"s_eq = {s_eq}")
-        status_line("VacuumForge gives kappa_eq = J_k/(2 C_kappa)", is_zero(k_eq - Jk / (2 * ms.C_kappa)))
-        status_line("VacuumForge gives sigma_eq = J_s/(2 C_sigma)", is_zero(s_eq - Js / (2 * ms.C_sigma)))
+
+        residual_k = sp.simplify(k_eq - Jk / (2 * ms.C_kappa))
+        residual_s = sp.simplify(s_eq - Js / (2 * ms.C_sigma))
+
+        with out.sample_results():
+            out.line("VacuumForge gives kappa_eq = J_k/(2 C_kappa)",
+                     StatusMark.PASS if is_zero(residual_k) else StatusMark.FAIL,
+                     f"residual={residual_k}")
+            out.line("VacuumForge gives sigma_eq = J_s/(2 C_sigma)",
+                     StatusMark.PASS if is_zero(residual_s) else StatusMark.FAIL,
+                     f"residual={residual_s}")
 
         if ns is not None:
             ns.record_derivation(
                 derivation_id="vf_reduced_action_stationary_solution",
                 inputs=[Jk, Js],
                 output=sp.Eq(ms.kappa, Jk / (2 * ms.C_kappa)),
-                method="vacuumforge_source_coupled_energy",
+                method="vacuumforge_source_coupled_energy stationary solution",
                 status=Status.DERIVED,
+                record_kind=RecordKind.SAMPLE_DERIVATION,
+                scope="algebraic source-coupled energy toy; not covariant field equation",
                 metadata={"sigma_solution": str(sp.Eq(ms.sigma, Js / (2 * ms.C_sigma)))},
             )
 
 
-def case_6_wrong_shear_coefficient_control():
+def case_6_wrong_shear_coefficient_control(out: ScriptOutput):
     header("Case 6: Failure control — wrong shear coefficient")
 
     eps, lam = sp.symbols("eps lambda", real=True)
@@ -340,7 +397,10 @@ def case_6_wrong_shear_coefficient_control():
     sol = sp.solve(sp.Eq(A_series, 1 - 2 * eps), lam)
     print(f"lambda solution = {sol}")
 
-    status_line("weak-field temporal coefficient fixes lambda=2", sol == [2])
+    with out.derived_results():
+        out.line("weak-field temporal coefficient fixes lambda=2",
+                 StatusMark.PASS if sol == [2] else StatusMark.FAIL,
+                 f"solution={sol}")
 
 
 def final_interpretation():
@@ -380,15 +440,82 @@ def main():
     header("Candidate Reduced Exterior Action")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_log_scale_algebra()
-    case_1_reduced_el_equations_1d()
-    case_2_3d_variation_target()
-    case_3_exterior_spherical_solution()
-    case_4_metric_recovery()
-    case_5_kappa_source_failure_control()
-    case_5b_vacuumforge_energy_crosscheck(ns)
-    case_6_wrong_shear_coefficient_control()
+
+    out = ScriptOutput()
+
+    case_0_log_scale_algebra(out)
+    case_1_reduced_el_equations_1d(out)
+    case_2_3d_variation_target(out)
+    case_3_exterior_spherical_solution(out)
+    case_4_metric_recovery(out)
+    case_5_kappa_source_failure_control(out)
+    case_5b_vacuumforge_energy_crosscheck(out, ns)
+    case_6_wrong_shear_coefficient_control(out)
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_parent_of_reduced_action",
+        script_id=SCRIPT_ID,
+        title="Derive covariant parent action for reduced kappa-s sector",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Find the full covariant action whose static spherical reduction gives "
+            "K_k|∇kappa|²+M_k²kappa²+K_s|∇s|²+alpha*rho*s. "
+            "Currently only the reduced-sector toy is available."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_suppression_mechanism",
+        script_id=SCRIPT_ID,
+        title="Derive origin of kappa suppression term M_k²kappa²",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Explain why the kappa mode has a mass-like suppression M_k²kappa² "
+            "in the reduced action. The coefficient M_k is not derived here."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_shear_source_coupling_coefficient_alpha",
+        script_id=SCRIPT_ID,
+        title="Derive shear-source coupling coefficient alpha",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The coefficient alpha=16πG K_s/c² is fixed by matching to the Poisson normalization. "
+            "Its origin from a deeper principle is not yet derived."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="reduced_exterior_action_is_toy_only",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The reduced exterior action L=K_k|∇kappa|²+M_k²kappa²+K_s|∇s|²+alpha*rho*s "
+            "is a reduced-sector variational toy, not a full covariant action and not a theorem."
+        ),
+    ))
+
+    ns.record_route(RouteRecord(
+        route_id="kappa_s_unified_reduced_action_route",
+        script_id=SCRIPT_ID,
+        name="Unified kappa-s reduced action candidate",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description=(
+            "The kappa-suppression plus shear-source reduced action candidate unifies "
+            "both exterior mechanisms in one toy functional. Requires a covariant parent derivation."
+        ),
+        required_obligations=[
+            "derive_covariant_parent_of_reduced_action",
+            "derive_kappa_suppression_mechanism",
+            "derive_shear_source_coupling_coefficient_alpha",
+        ],
+    ))
+
     ns.write_run_metadata()
 
 

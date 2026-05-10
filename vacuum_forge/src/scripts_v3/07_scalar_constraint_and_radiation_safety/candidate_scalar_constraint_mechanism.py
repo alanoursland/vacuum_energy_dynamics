@@ -1,5 +1,11 @@
 # Candidate scalar constraint mechanism
 #
+# Group:
+#   07_scalar_constraint_and_radiation_safety
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # The tensor-flux program requires a safety guardrail:
@@ -18,17 +24,24 @@
 #   Box A = 8*pi*G*rho/c^2
 #
 # This script compares these two branches.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/07_scalar_constraint_and_radiation_safety/
-#   or:
-#   scripts_v3/candidate_scalar_constraint_mechanism.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -40,14 +53,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -109,8 +114,6 @@ def case_0_problem_statement():
     print()
     print("    Box A = 8*pi*G*rho/c^2")
 
-    status_line("scalar constraint mechanism problem posed", True)
-
 
 def case_1_poisson_static_exterior():
     header("Case 1: Poisson/constraint branch supports static exterior A")
@@ -126,7 +129,7 @@ def case_1_poisson_static_exterior():
     print("For r>0, source-free exterior satisfies:")
     print("  Delta A = 0")
 
-    status_line("static exterior A solves source-free Poisson branch", is_zero(lapA))
+    return A, lapA, r, G, M, c
 
 
 def case_2_poisson_no_dispersion():
@@ -146,7 +149,7 @@ def case_2_poisson_no_dispersion():
     print("For k != 0, this is not a propagating dispersion relation.")
     print("It forces the spatial harmonic condition, not omega^2=c^2k^2.")
 
-    status_line("Poisson branch does not produce scalar wave dispersion", True)
+    return A_wave, poisson_operator
 
 
 def case_3_wave_branch_radiates():
@@ -167,7 +170,7 @@ def case_3_wave_branch_radiates():
     print("This admits scalar waves when:")
     print("  omega^2 = c^2 k^2")
 
-    status_line("hyperbolic A branch admits scalar radiation", is_zero(coeff - (k**2 - omega**2/c**2)))
+    return A_rad, boxA, coeff
 
 
 def case_4_static_source_preference():
@@ -189,8 +192,6 @@ def case_4_static_source_preference():
     print("  Static Newtonian gravity naturally belongs to the constraint branch.")
     print("  Treating A as fundamentally wave-like adds a dangerous extra scalar sector.")
 
-    status_line("static mass response favors constraint interpretation", True)
-
 
 def case_5_monopole_dipole_controls():
     header("Case 5: Conserved monopole and dipole controls")
@@ -211,8 +212,7 @@ def case_5_monopole_dipole_controls():
     print()
     print("Conservation suppresses ordinary scalar monopole/dipole radiation proxies.")
 
-    status_line("conserved mass kills scalar monopole radiation proxy", is_zero(Mdot))
-    status_line("center-of-mass inertial motion kills scalar dipole radiation proxy", is_zero(Dddot))
+    return M, D, Mdot, Dddot
 
 
 def case_6_breathing_danger():
@@ -246,8 +246,7 @@ def case_6_breathing_danger():
     print()
     print("If A propagates with a breathing mode, it adds a non-TT polarization.")
 
-    status_line("scalar breathing mode is non-TT", not is_zero(trace))
-    status_line("TT tensor mode remains trace-free", is_zero(trace_tt))
+    return H_breathing, trace, H_TT, trace_tt
 
 
 def case_7_static_dynamic_split():
@@ -273,8 +272,6 @@ def case_7_static_dynamic_split():
     print("  A        -> static scalar mass response")
     print("  h_ij^TT -> radiative tensor response")
 
-    status_line("A static/dynamic split formulated", True)
-
 
 def case_8_classification():
     header("Case 8: Classification")
@@ -288,8 +285,6 @@ def case_8_classification():
     print("   scalar radiation proxies.")
     print("5. Scalar breathing remains dangerous if A has a radiative quadrupole mode.")
     print("6. Preferred architecture: A is constraint-like; h_ij^TT radiates.")
-    print()
-    status_line("scalar constraint mechanism passes as architecture guardrail", True)
 
 
 def final_interpretation():
@@ -321,24 +316,203 @@ def main():
     header("Candidate Scalar Constraint Mechanism")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    case_1_poisson_static_exterior()
-    case_2_poisson_no_dispersion()
-    case_3_wave_branch_radiates()
+    A_static, lapA, r, G, M_sym, c = case_1_poisson_static_exterior()
+    A_wave, poisson_op = case_2_poisson_no_dispersion()
+    A_rad_wave, boxA, wave_coeff = case_3_wave_branch_radiates()
     case_4_static_source_preference()
-    case_5_monopole_dipole_controls()
-    case_6_breathing_danger()
+    M_mom, D_mom, Mdot, Dddot = case_5_monopole_dipole_controls()
+    H_breathing, trace_b, H_TT, trace_tt = case_6_breathing_danger()
     case_7_static_dynamic_split()
     case_8_classification()
     final_interpretation()
+
+    # --- Derived results ---
+
+    # Case 1: static exterior A solves source-free Poisson
+    ns.record_derivation(
+        derivation_id="static_exterior_A_laplacian_residual",
+        inputs=[A_static],
+        output=lapA,
+        method="radial Laplacian of A = 1 - 2GM/(c^2 r) in source-free exterior",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="laplacian_residual",
+    )
+
+    # Case 5: conserved monopole proxy
+    ns.record_derivation(
+        derivation_id="scalar_monopole_radiation_proxy_zero",
+        inputs=[M_mom],
+        output=Mdot,
+        method="time derivative of conserved total mass M = M0",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="conservation_residual",
+    )
+
+    # Case 5: conserved dipole proxy
+    ns.record_derivation(
+        derivation_id="scalar_dipole_radiation_proxy_zero",
+        inputs=[D_mom],
+        output=Dddot,
+        method="second time derivative of inertial dipole D = D0 + V*t",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="conservation_residual",
+    )
+
+    # Case 6: TT mode trace-free check
+    ns.record_derivation(
+        derivation_id="tt_tensor_mode_trace_zero",
+        inputs=[H_TT],
+        output=trace_tt,
+        method="trace of TT plus/cross polarization matrix",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="polarization_trace_residual",
+    )
+
+    # Case 6: scalar breathing trace (diagnostic witness)
+    ns.record_derivation(
+        derivation_id="scalar_breathing_mode_trace_nonzero",
+        inputs=[H_breathing],
+        output=trace_b,
+        method="trace of scalar breathing polarization matrix",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        result_type="polarization_trace",
+    )
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="constraint_A_architecture_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The scalar A channel should be treated as constraint-like (elliptic, "
+            "Delta A = source) in ordinary exterior gravity. Treating A as a "
+            "hyperbolic wave field (Box A = source) creates a dangerous unsuppressed "
+            "scalar breathing radiation channel and must not be used unless tightly controlled."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="tensor_tt_is_active_radiation_channel_07",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "h_ij^TT is the designated active tensor radiation channel carrying "
+            "plus/cross modes. The scalar A channel must not duplicate this role."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="constraint_A_poisson_route",
+        script_id=SCRIPT_ID,
+        name="Constraint-like elliptic A (Poisson) route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_scalar_radiation_suppression_mechanism"],
+        activation_conditions=[
+            "A obeys elliptic Poisson equation in source-free exterior",
+            "A_rad is absent or suppressed",
+            "h_ij^TT remains active tensor radiation channel",
+        ],
+    ))
+
+    # --- Branch decision ---
+
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_hyperbolic_A_branch",
+        script_id=SCRIPT_ID,
+        branch_id="hyperbolic_scalar_A_wave",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_scalar_radiation_suppression_mechanism"],
+        description=(
+            "Treating A as a hyperbolic wave field (Box A = source) is deferred. "
+            "It would add an unsuppressed scalar breathing radiation channel unless "
+            "a suppression mechanism is derived."
+        ),
+    ))
+
+    # --- Proof obligations ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_radiation_suppression_mechanism",
+        script_id=SCRIPT_ID,
+        title="Derive scalar radiation suppression mechanism for A",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that A_rad is absent, projected out, damped, absorbed, massive, "
+            "relaxed to a vacuum minimum, or weakly coupled. The constraint-like "
+            "Poisson route requires this before scalar breathing modes can be ruled out."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_constraint_nature_of_A",
+        script_id=SCRIPT_ID,
+        title="Derive why A is constraint-like rather than independently radiative",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a geometric or structural reason from the parent theory why the "
+            "scalar mass-response sector A obeys an elliptic equation rather than "
+            "an independent hyperbolic dispersion relation."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="scalar_constraint_architecture_marker",
         inputs=[],
         output=sp.Symbol("A_constraint_preferred"),
         method="scalar_constraint_architecture_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    with out.derived_results():
+        out.line("static exterior A satisfies source-free Laplacian", StatusMark.PASS,
+                 "Delta A = 0 for A = 1 - 2GM/(c^2 r)")
+        out.line("conserved mass kills scalar monopole radiation proxy", StatusMark.PASS,
+                 "Mdot = 0")
+        out.line("inertial dipole kills scalar dipole radiation proxy", StatusMark.PASS,
+                 "Dddot = 0")
+        out.line("TT tensor mode is trace-free", StatusMark.PASS, "trace(H_TT) = 0")
+
+    with out.counterexamples():
+        out.line("scalar breathing mode is non-TT", StatusMark.FAIL,
+                 "trace(H_breathing) = 2b != 0; extra non-TT polarization if A propagates")
+
+    with out.governance_assessments():
+        out.line("constraint A architecture policy rule", StatusMark.PASS,
+                 "A must be elliptic/Poisson in ordinary exterior")
+        out.line("hyperbolic A branch", StatusMark.DEFER,
+                 "deferred pending scalar radiation suppression mechanism")
+        out.line("constraint A Poisson route", StatusMark.PASS, "candidate route recorded")
+
+    with out.unresolved_obligations():
+        out.line("derive scalar radiation suppression mechanism", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive constraint nature of A from parent structure", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

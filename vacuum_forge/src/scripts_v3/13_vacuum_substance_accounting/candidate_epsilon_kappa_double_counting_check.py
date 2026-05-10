@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate epsilon-kappa double-counting check
 #
 # Purpose
@@ -31,6 +37,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,28 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -205,11 +202,11 @@ def print_entry(e: DoubleCountingEntry) -> None:
     print(f"Accounting rule: {e.accounting_rule}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: epsilon-kappa double-counting problem")
 
     print("Question:")
@@ -228,7 +225,8 @@ def case_0_problem_statement():
     print("  do not treat constraint penalties as physical energy unless derived")
     print("  keep provisional conventions explicit")
 
-    status_line("epsilon-kappa double-counting problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("epsilon-kappa double-counting problem posed", StatusMark.OBLIGATION, "open: kappa-zeta map required before final convention")
 
 
 def case_1_inventory(entries: List[DoubleCountingEntry]):
@@ -237,7 +235,7 @@ def case_1_inventory(entries: List[DoubleCountingEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[DoubleCountingEntry]):
+def case_2_compact_table(entries: List[DoubleCountingEntry], out: ScriptOutput):
     header("Case 2: Compact double-counting ledger")
 
     print("| Entry | Option | Status | Accounting rule | Missing |")
@@ -257,10 +255,11 @@ def case_2_compact_table(entries: List[DoubleCountingEntry]):
             + " |"
         )
 
-    status_line("compact double-counting ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact double-counting ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[DoubleCountingEntry]):
+def case_3_status_counts(entries: List[DoubleCountingEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -276,10 +275,11 @@ def case_3_status_counts(entries: List[DoubleCountingEntry]):
     print("  The safest provisional convention is to keep e_kappa outside epsilon_vac_config.")
     print("  K_lock should remain diagnostic/constraint-like until the kappa-zeta map is derived.")
 
-    status_line("double-counting status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("double-counting status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_recommended_convention():
+def case_4_recommended_convention(out: ScriptOutput):
     header("Case 4: Recommended provisional convention")
 
     print("Recommended for now:")
@@ -297,10 +297,11 @@ def case_4_recommended_convention():
     print("Reason:")
     print("  the kappa-zeta map is not derived, so combining them risks double-counting.")
 
-    status_line("recommended provisional convention stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("recommended provisional convention stated", StatusMark.PASS, "provisional convention explicit: e_kappa outside epsilon")
 
 
-def case_5_forbidden_patterns():
+def case_5_forbidden_patterns(out: ScriptOutput):
     header("Case 5: Forbidden patterns")
 
     print("Forbidden:")
@@ -311,10 +312,11 @@ def case_5_forbidden_patterns():
     print("4. Gamma_relax transfers energy between two terms that are already the same term.")
     print("5. Recombination counts zeta and kappa as independent scalar gravity sectors.")
 
-    status_line("forbidden double-counting patterns stated", "FORBIDDEN")
+    with out.governance_assessments():
+        out.line("forbidden double-counting patterns stated", StatusMark.PASS, "five forbidden patterns identified")
 
 
-def case_6_updated_functional():
+def case_6_updated_functional(out: ScriptOutput):
     header("Case 6: Updated provisional functional")
 
     print("Provisional epsilon_vac_config:")
@@ -337,10 +339,11 @@ def case_6_updated_functional():
     print()
     print("but no K_lock energy counted until derived.")
 
-    status_line("updated provisional functional stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("updated provisional functional stated", StatusMark.DEFER, "candidate route: provisional convention")
 
 
-def case_6b_symbolic_accounting_split(ns) -> None:
+def case_6b_symbolic_accounting_split(ns, out: ScriptOutput) -> None:
     header("Case 6b: Symbolic provisional accounting split")
 
     K_zeta, L_zeta, K_kappa = sp.symbols("K_zeta L_zeta K_kappa")
@@ -363,17 +366,21 @@ def case_6b_symbolic_accounting_split(ns) -> None:
     print("Interpretation:")
     print("  the provisional convention counts zeta-geometry and kappa-relaxation once each, separately.")
 
-    status_line("symbolic provisional energy split", "RECOMMENDED", "epsilon and e_kappa kept separate")
+    with out.sample_results():
+        out.line("symbolic provisional energy split", StatusMark.PASS, "epsilon and e_kappa kept separate")
+
     ns.record_derivation(
         derivation_id="epsilon_kappa_provisional_split",
         inputs=[zeta, zeta_min, kappa, kappa_min, grad_zeta_sq],
         output=sp.Tuple(epsilon, e_kappa, total),
         method="symbolic provisional epsilon/e_kappa split",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="provisional accounting convention; not derived from parent identity",
     )
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -394,7 +401,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Group 13 has reached a natural summary point with a provisional accounting convention.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "vacuum_substance_accounting_summary.md")
 
 
 def final_interpretation():
@@ -418,23 +426,100 @@ def main():
     header("Candidate Epsilon Kappa Double Counting Check")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_recommended_convention()
-    case_5_forbidden_patterns()
-    case_6_updated_functional()
-    case_6b_symbolic_accounting_split(ns)
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_recommended_convention(out)
+    case_5_forbidden_patterns(out)
+    case_6_updated_functional(out)
+    case_6b_symbolic_accounting_split(ns, out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="e_kappa_outside_epsilon_vac_config_provisional",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Provisional convention: e_kappa is kept outside epsilon_vac_config until the kappa-zeta map is derived. "
+            "epsilon_vac_config = 1/2 K_zeta (zeta-zeta_min)^2 + 1/2 L_zeta |grad zeta|^2. "
+            "K_lock is treated as a diagnostic/constraint target, not physical energy. "
+            "This convention must be revisited after the kappa-zeta map is derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="epsilon_kappa_double_counting_forbidden",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "E_total = epsilon_vac_config + e_kappa is forbidden when epsilon_vac_config already contains "
+            "the kappa mismatch energy (D7). The same trace/volume imbalance must not be counted twice. "
+            "Source response must be routed once by projectors (D8)."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_zeta_map_for_unified_convention",
+        script_id=SCRIPT_ID,
+        title="Derive kappa-zeta map to unify e_kappa and epsilon_vac_config",
+        status=ObligationStatus.OPEN,
+        description=(
+            "After the kappa-zeta map is derived, determine whether e_kappa should be absorbed into "
+            "epsilon_vac_config or remain separate. Until then, maintain provisional convention D9."
+        ),
+    ))
+    # D7 is the concrete double-counting witness: counting epsilon (which includes kappa mismatch)
+    # and e_kappa separately when they represent the same energy is the exact OVERLAP_WITNESS.
+    ns.record_evidence(EvidenceRecord(
+        evidence_id="epsilon_kappa_double_counting_overlap_witness",
+        script_id=SCRIPT_ID,
+        evidence_type=EvidenceType.OVERLAP_WITNESS,
+        challenges=["epsilon_kappa_double_counting_forbidden"],
+        description=(
+            "Entry D7 identifies the concrete double-counting witness: "
+            "E_total = epsilon_vac_config + e_kappa when epsilon already contains the K_lock kappa-mismatch "
+            "term counts the same trace/volume imbalance twice. "
+            "This is a real overlap witness that the governance rule epsilon_kappa_double_counting_forbidden "
+            "is designed to prevent. The provisional convention D9 is adopted to avoid this overlap."
+        ),
+    ))
+    # HandoffImportRecord: as the last script in group 13, declare the group 13 outputs
+    # available for downstream groups.
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_13_vacuum_substance_accounting_handoff",
+        script_id=SCRIPT_ID,
+        imported_from_group="13_vacuum_substance_accounting",
+        imported_script_id=SCRIPT_ID,
+        summary=(
+            "Group 13 outputs: "
+            "(1) zeta=ln sqrt(gamma) as leading geometric vacuum-configuration candidate; "
+            "(2) trace/TT geometric split with delta zeta|TT=0 at linear order; "
+            "(3) scalar conversion-not-damping policy; "
+            "(4) binary-radiation safety filter (TT-only, no Box zeta/kappa); "
+            "(5) boundary no-exterior-charge theorem target (Q_volume=0, F_zeta(R+)=0); "
+            "(6) J_v class constraints (absent, compact, constrained, or causal); "
+            "(7) parent balance skeleton u^mu nabla_mu epsilon + nabla_mu J_v = Sigma_exchange - Gamma_relax; "
+            "(8) minimal epsilon_vac_config scaffold (zeta displacement + gradient terms); "
+            "(9) provisional double-counting convention: e_kappa outside epsilon_vac_config."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="epsilon_kappa_double_counting_check_marker",
         inputs=[],
         output=sp.Symbol("epsilon_kappa_double_counting_check_audited"),
         method="epsilon_kappa_double_counting_check_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

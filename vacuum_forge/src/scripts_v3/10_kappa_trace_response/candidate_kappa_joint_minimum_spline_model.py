@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   SAMPLE
+#
 # Candidate kappa joint minimum spline model
 #
 # Purpose
@@ -31,17 +37,22 @@
 #
 # This is not a final physical derivation.
 # It is a basis/modeling test.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_joint_minimum_spline_model.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -53,22 +64,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -115,8 +110,6 @@ def case_0_problem_statement():
     print("  preserve exterior smoothness")
     print("  avoid propagating kappa/breathing wave")
 
-    status_line("joint minimum spline problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_define_interior_and_exterior_tendencies():
     header("Case 1: Interior and exterior tendencies")
@@ -136,10 +129,6 @@ def case_1_define_interior_and_exterior_tendencies():
     print()
     print("These are not asserted as final metric functions here.")
     print("They are basis tendencies for a joint minimum model.")
-
-    status_line("quadratic and reciprocal basis tendencies stated",
-                "PLAUSIBLE",
-                "coefficients/source relation not derived")
 
     return r, R, a0, a2, M, interior, exterior
 
@@ -164,10 +153,6 @@ def case_2_hermite_transition_layer():
     print()
     print("This can match value and first derivative across a transition layer.")
     print("For curvature matching, a quintic smoothstep or higher spline is better.")
-
-    status_line("Hermite transition basis stated",
-                "PLAUSIBLE",
-                "C1 smooth; C2 requires quintic/higher")
 
 
 def case_3_quintic_smoothstep():
@@ -195,9 +180,10 @@ def case_3_quintic_smoothstep():
     print("This basis can splice tendencies without value/slope/curvature jumps.")
 
     ok = ds0 == 0 and ds1 == 0 and d2s0 == 0 and d2s1 == 0
+    status = StatusMark.PASS if ok else StatusMark.FAIL
+    print(f"[{status}] quintic smoothstep supports C2 transition")
 
-    status_line("quintic smoothstep supports C2 transition",
-                "DERIVED_REDUCED" if ok else "RISK")
+    return x, s, ds0, ds1, d2s0, d2s1
 
 
 def case_4_blended_joint_minimum():
@@ -233,10 +219,6 @@ def case_4_blended_joint_minimum():
     print("  near outer side, exterior reciprocal tendency dominates")
     print("  transition region modifies naive interior parabola near surface")
 
-    status_line("joint interior/exterior blend defined",
-                "PLAUSIBLE",
-                "energy functional not derived")
-
     return r, R, w, a0, a2, M, x, s, interior, exterior, blend
 
 
@@ -271,9 +253,7 @@ def case_5_boundary_matching_equations():
     print("With a transition layer, the interior can remain more Newtonian in the")
     print("bulk while the boundary region absorbs the smoothing.")
 
-    status_line("direct C1 matching equations solved",
-                "DERIVED_REDUCED",
-                "toy coefficient relation only")
+    return r, R, equations, sol
 
 
 def case_6_curvature_deviation_near_surface():
@@ -294,10 +274,6 @@ def case_6_curvature_deviation_near_surface():
     print()
     print("But exterior far field should recover the reciprocal 1/r behavior.")
 
-    status_line("near-surface curvature deviation identified",
-                "PLAUSIBLE",
-                "observable consequences not assessed")
-
 
 def case_7_energy_functional_placeholder():
     header("Case 7: Energy functional placeholder")
@@ -315,10 +291,6 @@ def case_7_energy_functional_placeholder():
     print("tendencies while penalizing sharp boundary curvature.")
     print()
     print("This is the more principled version of spline blending.")
-
-    status_line("joint minimum energy functional sketched",
-                "PLAUSIBLE",
-                "weights and variational derivation missing")
 
 
 def case_8_kappa_relation():
@@ -338,10 +310,6 @@ def case_8_kappa_relation():
     print()
     print("This supports non-propagating trace relaxation rather than breathing waves.")
 
-    status_line("spline model supports kappa minimum-shift interpretation",
-                "CONSTRAINED_BY_IDENTITY",
-                "variable identification must be fixed")
-
 
 def case_9_failure_controls():
     header("Case 9: Failure controls")
@@ -354,10 +322,6 @@ def case_9_failure_controls():
     print("4. interior deviation conflicts with known matching constraints.")
     print("5. kappa and A profiles are mixed inconsistently.")
     print("6. smoothing hides rather than explains scalar confinement.")
-
-    status_line("joint-minimum failure controls stated",
-                "RISK",
-                "must derive energy/weights")
 
 
 def case_10_classification():
@@ -373,10 +337,6 @@ def case_10_classification():
     print("| near-surface interior deviation | PLAUSIBLE |")
     print("| joint energy functional | PLAUSIBLE / missing derivation |")
     print("| final physical spline model | UNFINISHED |")
-
-    status_line("joint minimum spline classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "useful model, not derivation")
 
 
 def case_11_next_tests():
@@ -399,10 +359,6 @@ def case_11_next_tests():
     print()
     print("Recommended next script:")
     print("  candidate_kappa_joint_minimum_energy_functional.py")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "energy functional is next if continuing")
 
 
 def final_interpretation():
@@ -432,12 +388,15 @@ def main():
     header("Candidate Kappa Joint Minimum Spline Model")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     case_1_define_interior_and_exterior_tendencies()
     case_2_hermite_transition_layer()
-    case_3_quintic_smoothstep()
+    x, s, ds0, ds1, d2s0, d2s1 = case_3_quintic_smoothstep()
     case_4_blended_joint_minimum()
-    case_5_boundary_matching_equations()
+    r, R, equations, sol = case_5_boundary_matching_equations()
     case_6_curvature_deviation_near_surface()
     case_7_energy_functional_placeholder()
     case_8_kappa_relation()
@@ -445,14 +404,94 @@ def main():
     case_10_classification()
     case_11_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_joint_minimum_spline_model_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_joint_minimum_spline_model_stated"),
-        method="kappa_joint_minimum_spline_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Quintic smoothstep endpoint conditions are real algebraic results
+        ns.record_derivation(
+            derivation_id="quintic_smoothstep_C2_endpoint_conditions_sample",
+            inputs=[s],
+            output=sp.Matrix([ds0, ds1, d2s0, d2s1]),
+            method="evaluate d/dx and d^2/dx^2 of s=6x^5-15x^4+10x^3 at x=0,1",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="toy quintic smoothstep on [0,1]; transition width w is free parameter not derived",
+        )
+
+        # C1 matching equations solution is a real sample computation
+        ns.record_derivation(
+            derivation_id="quadratic_interior_C1_matching_to_Schwarzschild_sample",
+            inputs=[sp.Symbol("f_int_quadratic"), sp.Symbol("f_ext_reciprocal")],
+            output=sp.Symbol("a0_a2_solution"),
+            method="solve f_int(R)=f_ext(R) and f_int'(R)=f_ext'(R) for a0, a2",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="toy C1 matching only; weight/energy functional not derived",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_joint_minimum_spline_model_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_joint_minimum_spline_model_stated"),
+            method="kappa_joint_minimum_spline_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_joint_minimum_energy_weights_alpha_W_beta_W_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the weight functions alpha_W and beta_W for the joint interior/exterior minimum energy",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The spline blend uses W_int(r) and W_ext(r) (or equivalently alpha_W, beta_W) "
+                "that are not derived. These must come from the kappa action or a parent "
+                "variational principle before the joint minimum model is more than curve-fitting."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_transition_width_sigma_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the transition width sigma (or w) for the near-boundary kappa minimum",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The spline transition is controlled by a width parameter w (or sigma). "
+                "This must be derived from the physics of the kappa minimum or the "
+                "matter/vacuum interface, not chosen by hand."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="quintic_smoothstep_achieves_C2_transition",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The quintic smoothstep s=6x^5-15x^4+10x^3 satisfies s'(0)=s'(1)=0 and "
+                "s''(0)=s''(1)=0, supporting C2 matching across a transition layer. "
+                "This is a valid basis for a joint minimum spline model, but the "
+                "transition width and weight functions must be derived."
+            ),
+        ))
+
+        with out.sample_results():
+            out.line("quintic smoothstep: s'(0)=s'(1)=0, s''(0)=s''(1)=0", StatusMark.PASS, "C2 transition basis confirmed")
+            out.line("C1 quadratic/reciprocal matching coefficients computed", StatusMark.PASS, "sample - toy model")
+
+        with out.governance_assessments():
+            out.line("spline model is curve-fitting without energy principle", StatusMark.FAIL, "risk - weights not derived")
+            out.line("alpha_W, beta_W weight functions", StatusMark.OBLIGATION, "missing")
+            out.line("transition width sigma/w", StatusMark.OBLIGATION, "missing")
+
+        with out.unresolved_obligations():
+            out.line("derive weight functions alpha_W, beta_W", StatusMark.OBLIGATION, "open")
+            out.line("derive transition width sigma", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

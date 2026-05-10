@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The B_s insertion boundary-safety audit found:
@@ -40,6 +43,21 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status, TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,34 +69,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -301,12 +291,12 @@ def print_entry(e: RecoveryAuditEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: B_s insertion recovery-audit problem")
 
     print("Question:")
@@ -328,7 +318,12 @@ def case_0_problem_statement():
     print("  boundary safety is not chosen by recovery")
     print("  J_V is not a recovery repair current")
 
-    status_line("B_s insertion recovery-audit problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion recovery-audit problem posed",
+            StatusMark.OBLIGATION,
+            "required before insertion branch can be summarized",
+        )
 
 
 def case_1_inventory(entries: List[RecoveryAuditEntry]):
@@ -337,7 +332,7 @@ def case_1_inventory(entries: List[RecoveryAuditEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[RecoveryAuditEntry]):
+def case_2_compact_table(entries: List[RecoveryAuditEntry], out: ScriptOutput):
     header("Case 2: Compact recovery-audit ledger")
 
     print("| Entry | Rule | Status | Consequence |")
@@ -355,10 +350,11 @@ def case_2_compact_table(entries: List[RecoveryAuditEntry]):
             + " |"
         )
 
-    status_line("compact recovery-audit ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact recovery-audit ledger produced", StatusMark.INFO, "recovery routes enumerated")
 
 
-def case_3_status_counts(entries: List[RecoveryAuditEntry]):
+def case_3_status_counts(entries: List[RecoveryAuditEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -375,10 +371,15 @@ def case_3_status_counts(entries: List[RecoveryAuditEntry]):
     print("  They may not construct B_s, choose coefficients, choose boundary behavior, or choose residual status.")
     print("  If no smuggling occurs, Group 16 should close with a status summary rather than jump to parent equations.")
 
-    status_line("B_s insertion recovery-audit status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion recovery-audit status count produced",
+            StatusMark.INFO,
+            "recovery anti-smuggling guards enumerated",
+        )
 
 
-def case_4_recovery_tests():
+def case_4_recovery_tests(out: ScriptOutput):
     header("Case 4: Allowed recovery tests")
 
     print("Allowed downstream tests:")
@@ -398,10 +399,11 @@ def case_4_recovery_tests():
     print("5. recovery-tuned support/smoothing")
     print("6. recovery-selected residual-kill")
 
-    status_line("allowed recovery tests listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("allowed recovery tests listed", StatusMark.INFO, "five allowed; six forbidden")
 
 
-def case_4b_concrete_recovery_check(ns):
+def case_4b_concrete_recovery_check(ns, out: ScriptOutput):
     header("Case 4b: Concrete recovery check stays downstream")
 
     ctx = TheoryContext("group_16_recovery_audit")
@@ -417,17 +419,19 @@ def case_4b_concrete_recovery_check(ns):
     print(f"ConcreteMetricCheck status = {result.status}")
 
     if result.status == "satisfied_by_construction":
-        status_line(
-            "downstream reciprocal recovery audit",
-            "DERIVED_REDUCED",
-            f"A*B = {product}; ConcreteMetricCheck = {result.status}",
-        )
+        with out.sample_results():
+            out.line(
+                "downstream reciprocal recovery audit",
+                StatusMark.PASS,
+                f"A*B = {product}; ConcreteMetricCheck = {result.status}",
+            )
     else:
-        status_line(
-            "downstream reciprocal recovery audit",
-            "RISK",
-            f"expected satisfied_by_construction, got {result.status}",
-        )
+        with out.sample_results():
+            out.line(
+                "downstream reciprocal recovery audit",
+                StatusMark.WARN,
+                f"expected satisfied_by_construction, got {result.status}",
+            )
 
     ns.record_derivation(
         derivation_id="B_s_insertion_recovery_reciprocal_check",
@@ -435,10 +439,12 @@ def case_4b_concrete_recovery_check(ns):
         output=product,
         method="ConcreteMetricCheck reciprocal_scaling",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
+        scope="static exterior Schwarzschild-like ansatz; confirms AB=1 structure is downstream check only",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Recovery-audit decision tree")
 
     print("Decision tree:")
@@ -464,10 +470,11 @@ def case_5_decision_tree():
     print("7. If audit passes only conventionally:")
     print("   close Group 16 with status summary.")
 
-    status_line("recovery-audit decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("recovery-audit decision tree stated", StatusMark.INFO, "recommended next is group status summary")
 
 
-def case_6_good_failure():
+def case_6_good_failure(ns, out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -483,11 +490,53 @@ def case_6_good_failure():
     print("Bad failure:")
     print()
     print("  Call a recovery target a theorem because it gets the right exterior answer.")
+    print()
+    print("Recovery-target selected-parameter finding:")
+    print()
+    print("  gamma_like, AB, Schwarzschild recovery, and areal kappa are downstream tests.")
+    print("  Gamma-like behavior, AB behavior, and Schwarzschild recovery are downstream tests,")
+    print("  not construction rules for B_s/F_zeta insertion.")
+    print("  Using them as construction inputs constitutes a RECOVERY_SELECTED_PARAMETER violation.")
 
-    status_line("B_s insertion recovery-audit good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion recovery-audit good failure stated",
+            StatusMark.DEFER,
+            "deferred; recovery-smuggling would kill branch",
+        )
+
+    # Evidence record: recovery targets are selected parameters, not construction rules
+    ns.record_evidence(EvidenceRecord(
+        evidence_id="recovery_precedes_origin_check",
+        script_id=SCRIPT_ID,
+        evidence_type=EvidenceType.TARGET_SELECTED_PARAMETER,
+        challenges=["gamma_like_coefficient_fit_route", "B_equals_1_over_A_construction_route"],
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "Gamma-like behavior, AB behavior, and Schwarzschild recovery are downstream tests, "
+            "not construction rules for B_s/F_zeta insertion. Any route that uses these targets "
+            "to select coefficients, boundary behavior, or residual status constitutes a "
+            "recovery-selected-parameter violation and must be rejected."
+        ),
+    ))
+
+    # Governance claim: recovery targets are policy rule, not construction
+    ns.record_claim(ClaimRecord(
+        claim_id="recovery_targets_downstream_only",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Gamma-like behavior, AB behavior, and Schwarzschild recovery are downstream tests, "
+            "not construction rules for B_s/F_zeta insertion."
+        ),
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        evidence_ids=["recovery_precedes_origin_check"],
+    ))
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Recovery audit fails if:")
@@ -501,10 +550,11 @@ def case_7_failure_controls():
     print("7. J_V is used as recovery repair current")
     print("8. recovery target is called parent identity")
 
-    status_line("B_s insertion recovery-audit failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("B_s insertion recovery-audit failure controls stated", StatusMark.WARN, "eight failure modes")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -527,10 +577,11 @@ def case_8_next_tests():
     print("  minimal O, boundary safety, and recovery smuggling.")
     print("  Unless a concrete insertion/O theorem has appeared, the group should close with status.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_metric_insertion_group_status_summary.py")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Recovery remains downstream.")
@@ -554,33 +605,97 @@ def final_interpretation():
     print()
     print("  candidate_metric_insertion_group_status_summary.py")
 
-    status_line("B_s insertion recovery-audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line(
+            "B_s insertion recovery-audit complete",
+            StatusMark.DEFER,
+            "recovery anti-smuggling guards in place; no theorem derived",
+        )
 
 
 def main():
     header("Candidate B_s Insertion Recovery Audit")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_recovery_tests()
-    case_4b_concrete_recovery_check(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_recovery_tests(out)
+    case_4b_concrete_recovery_check(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(ns, out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="B_s_insertion_recovery_audit_marker",
-        inputs=[],
-        output=sp.Symbol("B_s_insertion_recovery_audit_complete"),
-        method="B_s_insertion_recovery_audit",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Proof obligation: derive full solutions after insertion mechanism is fixed
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_post_insertion_solutions_for_recovery",
+            script_id=SCRIPT_ID,
+            title="Derive post-insertion solutions to enable recovery tests",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_insertion_recovery_audit_pass_condition"],
+            description=(
+                "Recovery tests (gamma_like, AB, Schwarzschild exterior) cannot be run "
+                "until a concrete B_s/F_zeta insertion mechanism is specified and "
+                "boundary safety is verified. Only then may recovery serve as a downstream check."
+            ),
+        ))
+
+        # Branch decision for any recovery-smuggled branch
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="kill_recovery_tuned_B_s_branch",
+            script_id=SCRIPT_ID,
+            branch_id="recovery_tuned_B_s",
+            status=GovernanceStatus.KILLED_BY_CONTRADICTION,
+            tier=ClaimTier.EXCLUSION,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            evidence_ids=["recovery_precedes_origin_check"],
+            description=(
+                "Any B_s insertion branch that selects its coefficient, support, "
+                "boundary behavior, or residual status by using gamma_like, AB, "
+                "Schwarzschild spatial metric, or areal kappa promotion is killed. "
+                "Recovery targets are downstream tests only."
+            ),
+        ))
+
+        # Route: recovery as downstream-only test (the allowed route)
+        ns2.record_route(RouteRecord(
+            route_id="recovery_downstream_only_route",
+            script_id=SCRIPT_ID,
+            name="Recovery as downstream test only (anti-smuggling)",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_post_insertion_solutions_for_recovery"],
+            activation_conditions=[
+                "insertion mechanism is fixed before recovery checks",
+                "no coefficient is chosen to match gamma_like",
+                "no B=1/A construction",
+                "no GR spatial metric copy",
+                "no areal kappa physical promotion",
+                "no recovery-tuned boundary smoothing",
+                "residual-kill not chosen by recovery",
+            ],
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="B_s_insertion_recovery_audit_marker",
+            inputs=[],
+            output=sp.Symbol("B_s_insertion_recovery_audit_complete"),
+            method="B_s_insertion_recovery_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

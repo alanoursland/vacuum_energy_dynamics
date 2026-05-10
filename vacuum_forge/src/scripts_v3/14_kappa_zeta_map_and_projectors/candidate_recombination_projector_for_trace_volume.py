@@ -1,5 +1,11 @@
 # Candidate recombination projector for trace volume
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The boundary projector audit separated P_boundary from P_trace.
@@ -32,11 +38,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -44,29 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -226,7 +218,7 @@ def print_entry(e: RecombinationEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
@@ -250,8 +242,6 @@ def case_0_problem_statement():
     print("  W_i remains transverse")
     print("  no scalar breathing mode is inserted")
     print("  metric assembly must match energy accounting")
-
-    status_line("recombination projector problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[RecombinationEntry]):
@@ -278,8 +268,6 @@ def case_2_compact_table(entries: List[RecombinationEntry]):
             + " |"
         )
 
-    status_line("compact P_recombination ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[RecombinationEntry]):
     header("Case 3: Status counts")
@@ -296,8 +284,6 @@ def case_3_status_counts(entries: List[RecombinationEntry]):
     print("  P_recombination is the count-once gate.")
     print("  The major unresolved issue is A_spatial versus zeta/kappa trace volume response.")
     print("  Recombination must match energy accounting or the theory double-counts even if projectors look clean.")
-
-    status_line("P_recombination status count produced", "STRUCTURAL")
 
 
 def case_4_minimal_recombination_bundle():
@@ -319,7 +305,47 @@ def case_4_minimal_recombination_bundle():
     print("  W_i is transverse")
     print("  no A_rad / Box kappa / Box zeta is inserted")
 
-    status_line("minimal P_recombination bundle stated", "RECOMMENDED")
+
+def case_4b_symbolic_trace_orthogonality(ns) -> None:
+    header("Case 4b: Symbolic TT trace-free and trace orthogonality sample")
+
+    # Linear trace projector in 3D
+    # P_trace h_ij = delta_ij * (1/3) * delta^{ab} h_ab
+    # TT tensor satisfies delta^{ab} h_ab^{TT} = 0
+    # -> P_trace h_TT = 0
+
+    hxx, hyy, hzz, hxy, hxz, hyz = sp.symbols("hxx hyy hzz hxy hxz hyz")
+    # General symmetric 3-tensor
+    h = sp.Matrix([[hxx, hxy, hxz], [hxy, hyy, hyz], [hxz, hyz, hzz]])
+    identity3 = sp.eye(3)
+    trace_h = sp.simplify(h.trace())
+    # Linear trace projection
+    P_trace_h = sp.simplify(identity3 * trace_h / 3)
+    # TT sample (traceless by construction)
+    # hzz = -(hxx + hyy), hxz=hyz=0
+    h_TT_subs = {hzz: -(hxx + hyy), hxz: 0, hyz: 0}
+    trace_h_TT = sp.simplify(h.subs(h_TT_subs).trace())
+    P_trace_h_TT = sp.simplify(identity3 * trace_h_TT / 3)
+
+    print("Linear trace projector applied to general h:")
+    print(f"  trace(h) = {trace_h}")
+    print(f"  P_trace h = (1/3)*I*trace(h)")
+    print()
+    print("TT sample (hzz = -(hxx+hyy), hxz=hyz=0):")
+    print(f"  trace(h_TT) = {trace_h_TT}")
+    print(f"  P_trace h_TT = {P_trace_h_TT}")
+    print()
+    print("Interpretation: P_trace h_TT = 0. The TT sector and the trace sector are orthogonal at linear order.")
+
+    ns.record_derivation(
+        derivation_id="recombination_projector_tt_trace_orthogonality_sample",
+        inputs=[h, identity3],
+        output=sp.Tuple(trace_h_TT, P_trace_h_TT),
+        method="linear TT / trace orthogonality projector sample",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="linear reduced 3D sample only",
+    )
 
 
 def case_5_failure_controls():
@@ -336,8 +362,6 @@ def case_5_failure_controls():
     print("7. boundary-neutrality is undone during metric assembly")
     print("8. metric count-once rule conflicts with epsilon/e_kappa energy accounting")
     print("9. reduced areal kappa diagnostic is treated as covariant physical scalar without derivation")
-
-    status_line("P_recombination failure controls stated", "RISK")
 
 
 def case_6_next_tests():
@@ -360,8 +384,6 @@ def case_6_next_tests():
     print()
     print("Reason:")
     print("  The unresolved recombination bottleneck is whether A_spatial and zeta/kappa trace-volume response overlap.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -394,18 +416,76 @@ def main():
     case_2_compact_table(entries)
     case_3_status_counts(entries)
     case_4_minimal_recombination_bundle()
+    case_4b_symbolic_trace_orthogonality(ns)
     case_5_failure_controls()
     case_6_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="recombination_projector_for_trace_volume_marker",
-        inputs=[],
-        output=sp.Symbol("recombination_projector_for_trace_volume_audited"),
-        method="recombination_projector_for_trace_volume_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line("TT/trace orthogonality sample", StatusMark.PASS, "P_trace h_TT = 0 at linear order in 3D sample")
+
+    with out.governance_assessments():
+        out.line("P_recombination requirement bundle stated", StatusMark.PASS, "12 requirements inventoried")
+        out.line("A_spatial versus zeta/kappa trace-volume split", StatusMark.FAIL, "unresolved — obligation recorded")
+
+    with out.unresolved_obligations():
+        out.line("derive P_recombination explicit formula", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("resolve A_spatial vs zeta/kappa trace-volume overlap", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_recombination_explicit_formula_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive the explicit P_recombination formula for count-once metric assembly",
+            status=ObligationStatus.OPEN,
+            description=(
+                "P_recombination must assemble g_tt <- A, g_0i <- W_i, "
+                "g_ij <- A_spatial_once + trace_volume_residual_once + h_TT. "
+                "The covariant parent recombination is not derived. "
+                "TT trace-orthogonality is verified at linear order only."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="resolve_A_spatial_vs_zeta_kappa_trace_volume_in_14",
+            script_id=SCRIPT_ID,
+            title="Resolve which spatial trace belongs to A versus zeta/kappa",
+            status=ObligationStatus.OPEN,
+            description=(
+                "R2 is unresolved: it is unclear whether A-sector spatial companion trace and zeta/kappa "
+                "volume residual trace overlap. This is the core double-counting risk in P_recombination."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="recombination_TT_trace_orthogonal_at_linear_order",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SAMPLE_DERIVATION,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.HEURISTIC,
+            statement=(
+                "At linear order in 3D, the TT sector (traceless by construction) is orthogonal to the "
+                "linear trace projector P_trace. P_trace h_TT = 0. This is a diagnostic sample; "
+                "the nonlinear/covariant statement is not yet derived."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="recombination_projector_for_trace_volume_marker",
+            inputs=[],
+            output=sp.Symbol("recombination_projector_for_trace_volume_audited"),
+            method="recombination_projector_for_trace_volume_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate residual-kill rule for volume current
 #
 # Purpose
@@ -22,11 +28,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -34,33 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -263,7 +253,7 @@ def print_entry(e: ResidualKillEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -289,7 +279,10 @@ def case_0_problem_statement():
     print("  preserve no M_ext shift")
     print("  keep recovery downstream")
 
-    status_line("residual-kill rule problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("residual-kill rule problem posed", StatusMark.OBLIGATION, "requires residual-kill theorem or parent identity")
+    out.print()
 
 
 def case_1_inventory(entries: List[ResidualKillEntry]):
@@ -316,7 +309,10 @@ def case_2_compact_table(entries: List[ResidualKillEntry]):
             + " |"
         )
 
-    status_line("compact residual-kill ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact residual-kill ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[ResidualKillEntry]):
@@ -337,7 +333,10 @@ def case_3_status_counts(entries: List[ResidualKillEntry]):
     print("  Neutral residual remains risky and theorem-heavy.")
     print("  If residual-kill cannot be kept provisional and safe, J_V-driven zeta cannot enter the ordinary metric sector.")
 
-    status_line("residual-kill status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("residual-kill status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_decision_tree():
@@ -363,7 +362,10 @@ def case_4_decision_tree():
     print("6. If residual metric trace persists without O:")
     print("   J_V-driven zeta cannot enter ordinary metric sector.")
 
-    status_line("residual-kill decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("residual-kill decision tree stated", StatusMark.INFO, "decision tree recorded")
+    out.print()
 
 
 def case_5_good_failure():
@@ -381,7 +383,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  kill residual by declaration and then use it as hidden source/accounting reservoir.")
 
-    status_line("residual-kill good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("residual-kill good failure stated", StatusMark.DEFER, "deferred pending residual-kill theorem or O")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -398,7 +403,10 @@ def case_6_failure_controls():
     print("7. neutral residual is assumed without O")
     print("8. recovery checks decide residual status")
 
-    status_line("residual-kill failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("residual-kill failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -422,7 +430,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  Residual-kill is a provisional safety convention, not a derivation. The next useful step is a status update before any field-equation attempt.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_group_15_status_after_residual_kill.py")
+    out.print()
 
 
 def final_interpretation():
@@ -455,14 +466,88 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="residual_kill_rule_for_volume_current_marker",
-        inputs=[],
-        output=sp.Symbol("residual_kill_rule_for_volume_current_audited"),
-        method="residual_kill_rule_for_volume_current_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_residual_kill_theorem_or_parent_identity_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive residual-kill theorem or parent identity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Residual-kill (zeta_residual_metric = 0 after B_s insertion) is currently a "
+                "provisional safety convention. It must either be derived from a no-overlap "
+                "operator O or from a parent identity that forces the residual to be non-metric."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="rk1_residual_kill_provisional_convention",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "If J_V-driven zeta enters B_s, residual zeta/kappa metric trace is killed or "
+                "made non-metric. This is the cleanest provisional count-once convention. "
+                "It is not derived and is revisitable if O is derived."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="rk9_residual_restoration_rejected",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "kappa or zeta residual restoring killed metric trace after B_s insertion is "
+                "rejected. Branches that undo residual-kill by relabeling are not pursued."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="rk13_residual_kill_not_derivation",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Residual-kill is provisional convention unless derived from O or parent identity. "
+                "It must not be treated as a postulate or field equation."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="rk4_non_metric_bookkeeping_residual_route",
+            script_id=SCRIPT_ID,
+            name="Non-metric bookkeeping residual (zeta/kappa as config bookkeeping only)",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_residual_kill_theorem_or_parent_identity_in_15"],
+            activation_conditions=[
+                "bookkeeping-to-metric insertion only through B_s or explicit map",
+                "bookkeeping terms do not become hidden source reservoir",
+                "no M_ext shift from bookkeeping",
+            ],
+        ))
+        # RK14 branch kill applies only when demonstrated; no demonstration here.
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_residual_kill_derivation_branch",
+            script_id=SCRIPT_ID,
+            branch_id="residual_kill_theorem_derivation",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_residual_kill_theorem_or_parent_identity_in_15"],
+            description=(
+                "Residual-kill has not been derived from O or a parent identity. "
+                "The convention is used provisionally. Derivation is deferred."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="residual_kill_rule_for_volume_current_marker",
+            inputs=[],
+            output=sp.Symbol("residual_kill_rule_for_volume_current_audited"),
+            method="residual_kill_rule_for_volume_current_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

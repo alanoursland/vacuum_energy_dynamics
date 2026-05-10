@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate Sigma/R split for volume exchange
 #
 # Purpose
@@ -26,11 +32,23 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -38,34 +56,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -268,7 +258,7 @@ def print_entry(e: SigmaRSplitEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -293,7 +283,10 @@ def case_0_problem_statement():
     print("  keep sign/orientation explicit")
     print("  keep gamma/AB recovery downstream")
 
-    status_line("Sigma/R split problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Sigma/R split problem posed", StatusMark.OBLIGATION, "requires distinct mechanism definitions")
+    out.print()
 
 
 def case_1_inventory(entries: List[SigmaRSplitEntry]):
@@ -320,7 +313,10 @@ def case_2_compact_table(entries: List[SigmaRSplitEntry]):
             + " |"
         )
 
-    status_line("compact Sigma/R ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact Sigma/R ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[SigmaRSplitEntry]):
@@ -341,7 +337,10 @@ def case_3_status_counts(entries: List[SigmaRSplitEntry]):
     print("  Trace-source and kappa-linked branches are risky because they can revive double-counting.")
     print("  Flux direction is still missing and should be tested next if this split survives.")
 
-    status_line("Sigma/R status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Sigma/R status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_split_decision_tree():
@@ -367,7 +366,10 @@ def case_4_split_decision_tree():
     print("6. If Sigma/R remain decorative:")
     print("   exchange continuity branch fails or defers.")
 
-    status_line("Sigma/R split decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Sigma/R split decision tree stated", StatusMark.INFO, "decision tree recorded")
+    out.print()
 
 
 def case_4b_zero_current_balance(ns) -> None:
@@ -386,13 +388,19 @@ def case_4b_zero_current_balance(ns) -> None:
     print("Interpretation:")
     print("  the zero-current branch forces pointwise source/relaxation balance.")
 
-    status_line("zero-current Sigma/R balance", "DERIVED_REDUCED", f"Sigma_V = {local_solution}")
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("zero-current Sigma/R balance", StatusMark.PASS, f"Sigma_V = {local_solution}")
+    out.print()
+
     ns.record_derivation(
         derivation_id="sigma_R_zero_current_balance",
         inputs=[Sigma_V, R_V],
         output=local_solution,
         method="local zero-current continuity balance",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="zero-current equilibrium branch only",
     )
 
 
@@ -412,7 +420,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  define Sigma_V and R_V as whatever makes nabla_mu J_V^mu balance.")
 
-    status_line("Sigma/R split good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Sigma/R split good failure stated", StatusMark.DEFER, "deferred pending independent Sigma/R operators")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -429,7 +440,10 @@ def case_6_failure_controls():
     print("7. ordinary closed regime gets net volume charge")
     print("8. J_V is promoted before flux direction exists")
 
-    status_line("Sigma/R split failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("Sigma/R split failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -453,7 +467,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  If Sigma/R are separated as source and relaxation roles, the next missing object is the flux direction of J_V.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_volume_flux_direction_law.py")
+    out.print()
 
 
 def final_interpretation():
@@ -490,14 +507,100 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="sigma_R_split_for_volume_exchange_marker",
-        inputs=[],
-        output=sp.Symbol("sigma_R_split_for_volume_exchange_audited"),
-        method="sigma_R_split_for_volume_exchange_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_Sigma_V_operator_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive Sigma_V source operator",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Sigma_V must have an explicit mechanism, frame/projection, and coefficient "
+                "origin independent of recovery targets."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_R_V_operator_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive R_V relaxation operator",
+            status=ObligationStatus.OPEN,
+            description=(
+                "R_V must have an independently defined equilibrium target and operator; "
+                "it must not be a scalar-charge cancellation patch."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_sigma_R_double_counting_guard_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive Sigma/R double-counting guard",
+            status=ObligationStatus.OPEN,
+            description=(
+                "SR10: Sigma_V and R_V must not be two names for the same volume change; "
+                "a source/relaxation accounting rule must be established."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="sr13_decorative_sigma_R_rejected",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Sigma_V and R_V named without mechanisms or operators are rejected as "
+                "decorative; they cannot be used to promote J_V."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="sr14_recovery_downstream_sigma_R",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "gamma_like and AB recovery tests must be performed only after Sigma/R split "
+                "and flux law exist; they must not choose Sigma/R signs or coefficients."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="sigma_V_acceleration_gradient_candidate_route",
+            script_id=SCRIPT_ID,
+            name="Acceleration-gradient Sigma_V ~ chi rho a^mu nabla_mu A",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_Sigma_V_operator_in_15",
+            ],
+            activation_conditions=[
+                "frame and projection are defined independently",
+                "chi-origin is not recovery-fitted",
+                "static-source safety is established",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_sigma_R_split_branch",
+            script_id=SCRIPT_ID,
+            branch_id="sigma_R_split_exchange_continuity",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_Sigma_V_operator_in_15",
+                "derive_R_V_operator_in_15",
+                "derive_sigma_R_double_counting_guard_in_15",
+            ],
+            description=(
+                "The Sigma/R split exists at role-level, but neither operator is derived. "
+                "Exchange continuity as a law is deferred pending both operators."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="sigma_R_split_for_volume_exchange_marker",
+            inputs=[],
+            output=sp.Symbol("sigma_R_split_for_volume_exchange_audited"),
+            method="sigma_R_split_for_volume_exchange_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

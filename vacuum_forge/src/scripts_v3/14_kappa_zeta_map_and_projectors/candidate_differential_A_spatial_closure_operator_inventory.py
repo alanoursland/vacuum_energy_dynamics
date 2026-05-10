@@ -1,5 +1,11 @@
 # Candidate differential A_spatial closure operator inventory
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The minimal A-constraint closure ansatz audit found the most local survivor:
@@ -22,11 +28,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -34,31 +49,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -231,12 +221,12 @@ def print_entry(e: OperatorEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Differential A_spatial closure operator inventory problem")
 
     print("Question:")
@@ -256,7 +246,8 @@ def case_0_problem_statement():
     print("  do not let zeta be both A_spatial companion and residual")
     print("  require branch-kill if all operators are shortcuts")
 
-    status_line("differential operator inventory problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("differential operator inventory problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[OperatorEntry]):
@@ -265,7 +256,7 @@ def case_1_inventory(entries: List[OperatorEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[OperatorEntry]):
+def case_2_compact_table(entries: List[OperatorEntry], out: ScriptOutput):
     header("Case 2: Compact differential-operator ledger")
 
     print("| Entry | Operator | Status | Consequence |")
@@ -283,10 +274,11 @@ def case_2_compact_table(entries: List[OperatorEntry]):
             + " |"
         )
 
-    status_line("compact differential-operator ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact differential-operator ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_status_counts(entries: List[OperatorEntry]):
+def case_3_status_counts(entries: List[OperatorEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -303,10 +295,11 @@ def case_3_status_counts(entries: List[OperatorEntry]):
     print("  L2[A] is the GR-smuggling danger junction.")
     print("  Zeta-dependent operators likely leave the A-local branch and move toward volume-exchange identity.")
 
-    status_line("differential-operator status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("differential-operator status count produced", StatusMark.WARN, "structural")
 
 
-def case_4_minimal_linear_operator_test():
+def case_4_minimal_linear_operator_test(out: ScriptOutput):
     header("Case 4: Minimal linear operator test")
 
     print("Least decorated test form:")
@@ -328,10 +321,11 @@ def case_4_minimal_linear_operator_test():
     print("Danger:")
     print("  choosing the ratio to recover gamma_like=1 is coefficient tuning unless alpha ratios are derived.")
 
-    status_line("minimal linear operator test stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("minimal linear operator test stated", StatusMark.WARN, "candidate closure form")
 
 
-def case_5_branch_kill_or_defer():
+def case_5_branch_kill_or_defer(out: ScriptOutput):
     header("Case 5: Branch-kill or defer criteria")
 
     print("Kill or defer the differential branch if:")
@@ -347,10 +341,11 @@ def case_5_branch_kill_or_defer():
     print("  conservation/Bianchi-like identity for closure origin,")
     print("  or volume-exchange identity for zeta participation.")
 
-    status_line("differential branch-kill/defer criteria stated", "BRANCH_KILLED")
+    with out.governance_assessments():
+        out.line("differential branch-kill/defer criteria stated", StatusMark.FAIL, "branch kill if operator choices all GR shortcuts")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Differential operator inventory fails if:")
@@ -364,10 +359,11 @@ def case_6_failure_controls():
     print("7. no-overlap theorem is not represented")
     print("8. branch cannot be killed or deferred despite coefficient-origin failure")
 
-    status_line("differential operator failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("differential operator failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -388,7 +384,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The minimal linear closure reduces to a coefficient-ratio problem. Test whether that ratio can be derived, not fit.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -412,25 +409,60 @@ def main():
     header("Candidate Differential A_spatial Closure Operator Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_linear_operator_test()
-    case_5_branch_kill_or_defer()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_linear_operator_test(out)
+    case_5_branch_kill_or_defer(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="differential_A_spatial_closure_operator_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("differential_A_spatial_closure_operator_inventory_audited"),
-        method="differential_A_spatial_closure_operator_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_L1_L2_operator_origin_for_differential_closure_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive L1/L2 operator origin for differential closure",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The differential compatibility family requires non-decorative operators L1[A_spatial] "
+                "and L2[A] with a coefficient ratio alpha1:alpha2:alpha3 that is derived before gamma "
+                "recovery checks. The minimal elliptic form (Laplacian L1, Laplacian L2) is a structural "
+                "candidate but its coefficient ratio remains free. L2[A] is a GR-smuggling danger junction "
+                "if it encodes B=1/A or Schwarzschild expansion."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="differential_closure_operator_inventory_provisional",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The differential closure branch survives only if L1, L2 operators and coefficient ratio "
+                "q = -(alpha2+alpha3)/alpha1 are derived without gamma/AB recovery targets. "
+                "The minimal Laplacian form is a provisional structural candidate. "
+                "The branch must defer to action/stiffness or conservation identity if q cannot be derived locally."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="differential_A_spatial_closure_operator_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("differential_A_spatial_closure_operator_inventory_audited"),
+            method="differential_A_spatial_closure_operator_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

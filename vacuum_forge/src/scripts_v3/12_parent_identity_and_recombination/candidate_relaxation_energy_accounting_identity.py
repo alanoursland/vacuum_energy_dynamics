@@ -1,5 +1,11 @@
 # Candidate relaxation energy accounting identity
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The recombination audit found:
@@ -31,6 +37,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,25 +60,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "CANDIDATE": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -201,12 +200,12 @@ def print_requirement(e: RelaxationEnergyRequirement) -> None:
     print(f"Requirement: {e.requirement}")
     print(f"Candidate form: {e.candidate_form}")
     print(f"Forbidden form: {e.forbidden_form}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Risk: {e.risk}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Relaxation energy accounting problem")
 
     print("Question:")
@@ -224,7 +223,8 @@ def case_0_problem_statement():
     print("  ordinary Sigma_creation remains zero")
     print("  no kappa momentum channel appears by accident")
 
-    status_line("relaxation energy accounting problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("relaxation energy accounting problem posed", StatusMark.OBLIGATION, "E_vac_config definition required")
 
 
 def case_1_requirement_inventory(entries: List[RelaxationEnergyRequirement]):
@@ -233,7 +233,7 @@ def case_1_requirement_inventory(entries: List[RelaxationEnergyRequirement]):
         print_requirement(entry)
 
 
-def case_2_compact_table(entries: List[RelaxationEnergyRequirement]):
+def case_2_compact_table(entries: List[RelaxationEnergyRequirement], out: ScriptOutput):
     header("Case 2: Compact relaxation energy ledger")
 
     print("| Requirement | Candidate form | Forbidden form | Status | Missing |")
@@ -253,10 +253,11 @@ def case_2_compact_table(entries: List[RelaxationEnergyRequirement]):
             + " |"
         )
 
-    status_line("compact relaxation energy ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact relaxation energy ledger produced", StatusMark.INFO, "10 energy accounting requirements recorded")
 
 
-def case_3_status_counts(entries: List[RelaxationEnergyRequirement]):
+def case_3_status_counts(entries: List[RelaxationEnergyRequirement], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -272,10 +273,11 @@ def case_3_status_counts(entries: List[RelaxationEnergyRequirement]):
     print("  The missing object is the vacuum configuration energy variable/reservoir.")
     print("  The accounting must preserve exterior mass and ordinary closed-regime conservation.")
 
-    status_line("relaxation energy status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("relaxation energy status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_energy_form():
+def case_4_candidate_energy_form(out: ScriptOutput):
     header("Case 4: Candidate relaxation energy form")
 
     print("Candidate local free-energy form:")
@@ -300,10 +302,11 @@ def case_4_candidate_energy_form():
     print()
     print("This is candidate accounting, not yet a parent identity.")
 
-    status_line("candidate kappa energy form stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate kappa energy form stated", StatusMark.DEFER, "candidate only; K_kappa and E_vac_config undefined")
 
 
-def case_5_required_total_balance():
+def case_5_required_total_balance(out: ScriptOutput):
     header("Case 5: Required total balance")
 
     print("Ordinary closed regime target:")
@@ -319,10 +322,11 @@ def case_5_required_total_balance():
     print()
     print("This is a requirement, not a derivation.")
 
-    status_line("required total balance stated", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("required total balance stated", StatusMark.OBLIGATION, "total balance identity not yet derived")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Relaxation energy accounting fails if:")
@@ -335,10 +339,11 @@ def case_6_failure_controls():
     print("6. Trace minimum energy is counted again as A-sector exterior mass.")
     print("7. Boundary smoothing energy is advertised as prediction before closure.")
 
-    status_line("relaxation energy failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("relaxation energy failure controls stated", StatusMark.DEFER, "failure controls policy-guarded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -359,7 +364,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The missing energy variable is named; now update the parent scaffold with all group-12 constraints.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "parent identity template v2 is the next gate")
 
 
 def final_interpretation():
@@ -387,22 +393,138 @@ def main():
     header("Candidate Relaxation Energy Accounting Identity")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_requirements()
     case_1_requirement_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_energy_form()
-    case_5_required_total_balance()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_energy_form(out)
+    case_5_required_total_balance(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+
+    # Proof obligations for missing energy accounting items
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_vac_config_definition_E8",
+        script_id=SCRIPT_ID,
+        title="Define vacuum configuration energy variable E_vac_config (E8)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The destination of relaxation energy must be a named variable or constrained functional. "
+            "E_vac_config[A,kappa,boundary,q_v] or q_v/J_v bookkeeping must be defined. "
+            "An unnamed repair reservoir is forbidden."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_K_kappa_and_E_kappa_functional_E2",
+        script_id=SCRIPT_ID,
+        title="Derive K_kappa and measure/volume element for E_kappa (E2)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The candidate E_kappa = 1/2*K_kappa*(kappa-kappa_min)^2 requires "
+            "K_kappa and a proper measure/volume element to be derived from the parent identity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_total_closed_regime_balance_E3",
+        script_id=SCRIPT_ID,
+        title="Derive total ordinary closed-regime energy balance (E3)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that d/dtau(E_matter + E_A + E_W + E_TT + E_kappa + E_vac_config) = 0 "
+            "with Sigma_creation=0 and delta M_ext|Gamma_relax=0 in ordinary closed gravity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_relaxation_source_decomposition_E9",
+        script_id=SCRIPT_ID,
+        title="Derive parent source decomposition for relaxation vs A-sector (E9)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that trace displacement energy routes to E_vac_config/kappa sector "
+            "and does not double-count with A-sector exterior mass response. "
+            "Parent source decomposition required."
+        ),
+    ))
+
+    # Policy claim: unnamed relaxation reservoir is forbidden
+    ns.record_claim(ClaimRecord(
+        claim_id="unnamed_relaxation_reservoir_forbidden_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Gamma_relax must not remove energy without a named destination variable. "
+            "An unnamed reservoir that absorbs any mismatch is a repair reservoir and is forbidden. "
+            "E_vac_config or an equivalent must be defined before relaxation energy accounting is licensed."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_momentum_channel_forbidden_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "First-order kappa relaxation must not carry an independent kinetic energy term "
+            "1/2*(u^mu nabla_mu kappa)^2. A second-order kappa oscillator/sloshing channel is forbidden "
+            "unless separately and explicitly derived."
+        ),
+    ))
+
+    # Candidate route: kappa free-energy exchange form
+    ns.record_route(RouteRecord(
+        route_id="kappa_free_energy_exchange_candidate",
+        script_id=SCRIPT_ID,
+        name="Candidate kappa free-energy: E_kappa = 1/2*K_kappa*(kappa-kappa_min)^2 with E_vac_config exchange",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_E_vac_config_definition_E8",
+            "derive_K_kappa_and_E_kappa_functional_E2",
+            "derive_total_closed_regime_balance_E3",
+        ],
+        activation_conditions=[
+            "K_kappa derived from parent vacuum minimum",
+            "E_vac_config named and defined",
+            "dE_kappa/dtau + dE_vac_config/dtau = 0 demonstrated",
+            "Sigma_creation = 0 enforced",
+            "delta M_ext|Gamma_relax = 0 enforced",
+        ],
+    ))
+
+    # Branch decision: relaxation energy accounting deferred
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_relaxation_energy_accounting_derivation",
+        script_id=SCRIPT_ID,
+        branch_id="relaxation_energy_accounting_derivation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_E_vac_config_definition_E8",
+            "derive_K_kappa_and_E_kappa_functional_E2",
+            "derive_total_closed_regime_balance_E3",
+            "derive_relaxation_source_decomposition_E9",
+        ],
+        description=(
+            "Relaxation energy accounting cannot be licensed until E_vac_config is defined, "
+            "K_kappa is derived, total balance is established, and source decomposition is verified."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="relaxation_energy_accounting_identity_marker",
         inputs=[],
         output=sp.Symbol("relaxation_energy_accounting_identity_built"),
         method="relaxation_energy_accounting_identity_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

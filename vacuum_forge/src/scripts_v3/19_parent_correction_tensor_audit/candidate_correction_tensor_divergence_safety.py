@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The H_curv and H_exch definition requirements audits found:
@@ -31,6 +34,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,34 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -342,12 +329,15 @@ def print_entry(e: DivergenceSafetyEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Correction tensor divergence-safety problem")
 
     print("Question:")
@@ -370,7 +360,8 @@ def case_0_problem_statement():
     print("  no dark-sector patch")
     print("  diagnostic-only remains allowed if not inserted")
 
-    status_line("correction tensor divergence-safety problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("correction tensor divergence-safety problem posed", StatusMark.OBLIGATION, "audit required to distinguish real from decorative divergence safety")
 
 
 def case_1_inventory(entries: List[DivergenceSafetyEntry]):
@@ -379,7 +370,7 @@ def case_1_inventory(entries: List[DivergenceSafetyEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[DivergenceSafetyEntry]):
+def case_2_compact_table(entries: List[DivergenceSafetyEntry], out: ScriptOutput):
     header("Case 2: Compact divergence-safety ledger")
 
     print("| Entry | Criterion | Status | Consequence |")
@@ -397,10 +388,11 @@ def case_2_compact_table(entries: List[DivergenceSafetyEntry]):
             + " |"
         )
 
-    status_line("compact divergence-safety ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact divergence-safety ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[DivergenceSafetyEntry]):
+def case_3_status_counts(entries: List[DivergenceSafetyEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -420,10 +412,11 @@ def case_3_status_counts(entries: List[DivergenceSafetyEntry]):
     print("  Bianchi-like language, decorative tensor closure, recovery-chosen divergence, leakage-canceling divergence, source relabeling, and dark-patch divergence are rejected.")
     print("  Next gate is source separation.")
 
-    status_line("correction tensor divergence-safety status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("correction tensor divergence-safety status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_divergence_classes():
+def case_4_divergence_classes(out: ScriptOutput):
     header("Case 4: Divergence-safety classes")
 
     print("Candidate divergence-safety classes:")
@@ -448,10 +441,11 @@ def case_4_divergence_classes():
     print("5. source-by-divergence")
     print("6. dark-patch divergence")
 
-    status_line("divergence-safety classes listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("divergence-safety classes listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_4b_airy_tensor_sample(ns):
+def case_4b_airy_tensor_sample(ns, out: ScriptOutput):
     header("Case 4b: Sample identically divergence-free tensor class")
 
     x, y = sp.symbols("x y")
@@ -474,17 +468,19 @@ def case_4b_airy_tensor_sample(ns):
     print("  divergence-free tensor witness would look like.")
 
     if div_x == 0 and div_y == 0:
-        status_line(
-            "sample divergence-free tensor witness",
-            "DERIVED_REDUCED",
-            "constructed Airy-style tensor has identically vanishing divergence",
-        )
+        with out.sample_results():
+            out.line(
+                "sample divergence-free tensor witness",
+                StatusMark.PASS,
+                "constructed Airy-style tensor has identically vanishing divergence",
+            )
     else:
-        status_line(
-            "sample divergence-free tensor witness",
-            "UNRESOLVED",
-            "sample tensor did not produce a divergence-free identity",
-        )
+        with out.sample_results():
+            out.line(
+                "sample divergence-free tensor witness",
+                StatusMark.FAIL,
+                "sample tensor did not produce a divergence-free identity",
+            )
 
     ns.record_derivation(
         derivation_id="airy_divergence_free_tensor_sample",
@@ -492,10 +488,12 @@ def case_4b_airy_tensor_sample(ns):
         output=sp.Tuple(div_x, div_y),
         method="airy_style_identity_compatibility",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
+        scope="2D Airy-style toy tensor; not H_curv or H_exch",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Divergence-safety decision tree")
 
     print("Decision tree:")
@@ -518,10 +516,11 @@ def case_5_decision_tree():
     print("6. No route exists:")
     print("   keep correction tensors deferred.")
 
-    status_line("divergence-safety decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("divergence-safety decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -538,10 +537,11 @@ def case_6_good_failure():
     print()
     print("  call a tensor divergence-safe because the parent equation needs it to be.")
 
-    status_line("divergence-safety good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("divergence-safety good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Divergence safety fails if:")
@@ -559,10 +559,11 @@ def case_7_failure_controls():
     print("11. boundary-supported tensor repairs boundary")
     print("12. diagnostic-only tensor is inserted into field equation")
 
-    status_line("divergence-safety failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("divergence-safety failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -584,10 +585,11 @@ def case_8_next_tests():
     print("  Divergence safety requires more than an identity or balance form.")
     print("  The next shared bottleneck is whether the correction tensor double-counts source sectors.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Divergence-safe requires one of:")
@@ -612,34 +614,164 @@ def final_interpretation():
     print()
     print("  candidate_correction_tensor_source_separation.py")
 
-    status_line("correction tensor divergence-safety audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("correction tensor divergence-safety audit complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    # Required obligations for the REQUIRED entries
+    required_obligations = [
+        ("derive_H_curv_divergence_safety_route_19",
+         "Derive H_curv divergence safety route",
+         "H_curv cannot be divergence-safe through undefined A_curv dynamics, J_curv, or e_curv reservoir (DSF9). A real route is needed."),
+        ("derive_H_exch_divergence_safety_route_19",
+         "Derive H_exch divergence safety route",
+         "H_exch cannot be divergence-safe through undefined J_V, J_exch, Sigma/R, or exchange continuity (DSF10). A real route is needed."),
+        ("derive_divergence_safe_matter_separation_19",
+         "Derive ordinary matter separation for divergence-safe correction tensor",
+         "Divergence safety must not reroute ordinary T_mu_nu or double-count matter (DSF11)."),
+        ("derive_divergence_safe_mass_neutrality_19",
+         "Derive M_ext neutrality for divergence-safe correction tensor",
+         "Divergence-safe tensor must not shift M_ext independently of A-sector (DSF12)."),
+        ("derive_divergence_safe_scalar_neutrality_19",
+         "Derive scalar trace neutrality for divergence-safe correction tensor",
+         "Divergence-safe tensor must not leak B_s/zeta/kappa scalar charge (DSF13)."),
+        ("derive_divergence_safe_coefficient_origin_19",
+         "Derive coefficient origin for divergence-safe construction",
+         "Divergence-safe construction must not rely on recovery-fit coefficients (DSF14)."),
+    ]
+
+    for obligation_id, title, description in required_obligations:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=ObligationStatus.OPEN,
+            required_by=["correction_tensor_insertability_route"],
+            description=description,
+        ))
+
+    all_obligation_ids = [o[0] for o in required_obligations]
+
+    # Candidate routes
+    ns.record_route(RouteRecord(
+        route_id="identically_divergence_free_candidate_route_19",
+        script_id=SCRIPT_ID,
+        name="Identically divergence-free correction tensor",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "nabla_mu H^{mu nu} = 0 by constructed mathematical identity",
+            "identity is real and not asserted by Bianchi analogy",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="source_balanced_divergence_candidate_route_19",
+        script_id=SCRIPT_ID,
+        name="Source-balanced divergence correction tensor",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "source side is defined before H and not by H",
+            "divergence of H balances independent source term",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="diagnostic_only_divergence_safe_route_19",
+        script_id=SCRIPT_ID,
+        name="Diagnostic-only correction tensor (no divergence burden)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[],
+        activation_conditions=[
+            "explicitly never contributes to parent equation",
+        ],
+    ))
+
+    # DSF21 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_divergence_safety_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="correction_tensor_divergence_safety_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "DSF21 failure condition: if no real identity, source partner, projection theorem, or "
+            "diagnostic-only status exists, correction tensors remain deferred. "
+            "Mapped to DEFERRED_PENDING_PREREQUISITES because no contradiction has been demonstrated — "
+            "prerequisites are simply absent."
+        ),
+    ))
+
+    # Rejected routes
+    for decision_id, branch_id, description in [
+        ("reject_Bianchi_divergence_safety_19", "Bianchi_like_divergence_safety", "DSF15: Bianchi-like language is not proof of divergence safety."),
+        ("reject_decorative_tensor_closure_19", "decorative_tensor_circular_closure", "DSF16: H, source, and divergence relation defining each other is forbidden."),
+        ("reject_recovery_chosen_divergence_19", "recovery_chosen_divergence", "DSF17: recovery-chosen divergence is forbidden."),
+        ("reject_leakage_canceling_divergence_19", "leakage_canceling_divergence", "DSF18: leakage-canceling divergence is forbidden."),
+        ("reject_source_by_divergence_19", "source_by_divergence_relabeling", "DSF19: defining source as whatever equals nabla_mu H is forbidden."),
+        ("reject_dark_patch_divergence_19", "dark_sector_divergence_patch", "DSF20: invoking dark sector to absorb correction tensor divergence is forbidden."),
+    ]:
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id=decision_id,
+            script_id=SCRIPT_ID,
+            branch_id=branch_id,
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            description=description,
+        ))
+
+    # Summary claim for this audit
+    ns.record_claim(ClaimRecord(
+        claim_id="divergence_safety_not_derived_19",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "Divergence safety for H_curv/H_exch is not derived. "
+            "Candidate routes exist (identity, source-balance, projection, diagnostic-only) "
+            "but all require open obligations to be satisfied first."
+        ),
+        obligation_ids=all_obligation_ids,
+    ))
 
 
 def main():
     header("Candidate Correction Tensor Divergence Safety")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_divergence_classes()
-    case_4b_airy_tensor_sample(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_divergence_classes(out)
+    case_4b_airy_tensor_sample(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="correction_tensor_divergence_safety_marker",
-        inputs=[],
-        output=sp.Symbol("correction_tensor_divergence_safety_complete"),
-        method="correction_tensor_divergence_safety",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="correction_tensor_divergence_safety_marker",
+            inputs=[],
+            output=sp.Symbol("correction_tensor_divergence_safety_complete"),
+            method="correction_tensor_divergence_safety",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

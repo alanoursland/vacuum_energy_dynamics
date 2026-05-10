@@ -1,5 +1,11 @@
 # Candidate constraint versus evolution split
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The no-double-counting constraints identified which sources must not be
@@ -28,6 +34,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -39,25 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -182,6 +179,18 @@ def build_entries() -> List[DynamicsEntry]:
 
 
 def print_entry(e: DynamicsEntry) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(e.status, "INFO")
     print()
     print("-" * 120)
     print(f"Field: {e.field}")
@@ -190,12 +199,12 @@ def print_entry(e: DynamicsEntry) -> None:
     print(f"Classification: {e.classification}")
     print(f"Schematic equation: {e.schematic_equation}")
     print(f"Propagates? {e.propagates}")
-    status_line(e.field, e.status)
+    print(f"[{mark}] {e.field}: {e.status}")
     print(f"Risk: {e.risk}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Constraint versus evolution split problem")
 
     print("Question:")
@@ -213,7 +222,9 @@ def case_0_problem_statement():
     print("  W_i is not automatically a free vector wave")
     print("  h_ij^TT is the true long-range radiation sector")
 
-    status_line("constraint/evolution split problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("constraint/evolution split problem posed", StatusMark.DEFER,
+                 "structural constraint")
 
 
 def case_1_dynamics_inventory(entries: List[DynamicsEntry]):
@@ -222,7 +233,7 @@ def case_1_dynamics_inventory(entries: List[DynamicsEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[DynamicsEntry]):
+def case_2_compact_table(entries: List[DynamicsEntry], out: ScriptOutput):
     header("Case 2: Compact dynamics ledger")
 
     print("| Field | Classification | Propagates? | Status |")
@@ -240,10 +251,11 @@ def case_2_compact_table(entries: List[DynamicsEntry]):
             + " |"
         )
 
-    status_line("compact dynamics ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact dynamics ledger produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_true_radiation_rule():
+def case_3_true_radiation_rule(out: ScriptOutput):
     header("Case 3: True radiation rule")
 
     print("Current radiation rule:")
@@ -260,10 +272,12 @@ def case_3_true_radiation_rule():
     print()
     print("This rule can be changed only by a separate derivation and observational control.")
 
-    status_line("TT-only ordinary radiation rule stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("TT-only ordinary radiation rule stated", StatusMark.DEFER,
+                 "structural constraint")
 
 
-def case_4_constraint_fields():
+def case_4_constraint_fields(out: ScriptOutput):
     header("Case 4: Constraint fields")
 
     print("Constraint-like fields:")
@@ -283,10 +297,11 @@ def case_4_constraint_fields():
     print("These may have time-dependent source response, but they are not currently")
     print("ordinary free radiative degrees of freedom.")
 
-    status_line("constraint-like fields listed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("constraint-like fields listed", StatusMark.DEFER, "structural constraint")
 
 
-def case_5_evolution_fields():
+def case_5_evolution_fields(out: ScriptOutput):
     header("Case 5: Evolution fields")
 
     print("Evolving/radiating fields:")
@@ -305,10 +320,11 @@ def case_5_evolution_fields():
     print("  A_rad")
     print("  kappa breathing wave")
 
-    status_line("evolution fields classified", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("evolution fields classified", StatusMark.DEFER, "structural")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Constraint/evolution split fails if:")
@@ -321,10 +337,12 @@ def case_6_failure_controls():
     print("6. Sigma_creation appears in ordinary closed gravity.")
     print("7. constraint propagation is not compatible with source conservation.")
 
-    status_line("constraint/evolution failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("constraint/evolution failure controls stated", StatusMark.WARN,
+                 "open risk")
 
 
-def case_7_parent_identity_requirements():
+def case_7_parent_identity_requirements(out: ScriptOutput):
     header("Case 7: Parent identity requirements")
 
     print("The parent identity must explain:")
@@ -337,10 +355,12 @@ def case_7_parent_identity_requirements():
     print()
     print("Without this, the split is disciplined but not derived.")
 
-    status_line("parent identity requirements stated", "UNFINISHED")
+    with out.unresolved_obligations():
+        out.line("parent identity for constraint/evolution split", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -361,7 +381,8 @@ def case_8_next_tests():
     print("Reason:")
     print("  The split is now clear; the next gap is the identity that enforces it.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -383,29 +404,118 @@ def final_interpretation():
     print("  candidate_conservation_identity_requirements.py")
 
 
-def main():
-    header("Candidate Constraint Versus Evolution Split")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_entries()
-    case_1_dynamics_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_true_radiation_rule()
-    case_4_constraint_fields()
-    case_5_evolution_fields()
-    case_6_failure_controls()
-    case_7_parent_identity_requirements()
-    case_8_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[DynamicsEntry]) -> None:
+    # DERIVED_REDUCED -> HEURISTIC
+    ns.record_claim(ClaimRecord(
+        claim_id="dyn_A_constraint_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "A is a scalar constraint/elliptic-like sector. "
+            "Delta_areal A = 8*pi*G*rho/c^2 is derived in the reduced static spherical case. "
+            "A is not a propagating scalar radiation field."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="dyn_B_gauge_conditioned_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "B is a gauge-conditioned companion to A in the reduced areal exterior. "
+            "AB = exp(2*kappa); exterior kappa=0 -> B=1/A. No independent propagation."
+        ),
+    ))
+
+    # STRUCTURAL -> CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="dyn_h_TT_true_propagating",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "h_ij^TT is the true propagating tensor radiation sector. "
+            "Box h_ij^TT = -C_T S_ij^TT. C_T and action stiffness are not yet derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="dyn_kappa_non_inertial_relaxation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "kappa is a non-inertial relaxation / constrained trace response. "
+            "dot kappa = -mu_kappa K_kappa (kappa-kappa_min). "
+            "No independent momentum channel. No ordinary breathing wave."
+        ),
+    ))
+
+    # TT-only radiation rule -> PROVISIONAL_CONVENTION (usable as explicit convention)
+    ns.record_claim(ClaimRecord(
+        claim_id="dyn_TT_only_radiation_rule",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "Ordinary long-range gravitational radiation is TT-only. "
+            "A_rad ordinary scalar radiation and kappa breathing radiation are rejected. "
+            "W_i free vector radiation is not currently derived. "
+            "This rule may be changed only by a separate derivation and observational control."
+        ),
+    ))
+
+    # Parent identity needed -> OPEN
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_identity_for_constraint_evolution_split",
+        script_id=SCRIPT_ID,
+        title="Derive parent identity enforcing constraint/evolution split",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A parent identity is required to explain how constraints propagate consistently, "
+            "why TT modes alone carry ordinary radiation, why scalar trace relaxes but does "
+            "not radiate, why vector current response is transverse, and how energy/source "
+            "conservation is maintained. Without this, the split is disciplined but not derived."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="constraint_vs_evolution_split_generated_marker",
         inputs=[],
         output=sp.Symbol("constraint_vs_evolution_split_generated"),
         method="constraint_vs_evolution_split_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Constraint Versus Evolution Split")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_entries()
+    case_1_dynamics_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_true_radiation_rule(out)
+    case_4_constraint_fields(out)
+    case_5_evolution_fields(out)
+    case_6_failure_controls(out)
+    case_7_parent_identity_requirements(out)
+    case_8_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

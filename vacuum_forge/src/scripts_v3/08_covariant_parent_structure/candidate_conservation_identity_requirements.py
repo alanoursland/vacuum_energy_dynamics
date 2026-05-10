@@ -1,5 +1,11 @@
 # Candidate conservation identity requirements
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The diagnostics study identified conservation/source compatibility as a
@@ -23,11 +29,6 @@
 #   PARTIAL
 #   MISSING
 #   RISK
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_conservation_identity_requirements.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -36,6 +37,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -310,6 +324,8 @@ def case_4_status_counts(reqs: List[ConservationRequirement]):
     else:
         status_line("conservation identities complete", "SATISFIED_REDUCED")
 
+    return counts
+
 
 # =============================================================================
 # Case 5: Blocking identities
@@ -409,23 +425,261 @@ def main():
     header("Candidate Conservation Identity Requirements")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     reqs = build_requirements()
     case_2_print_requirements(reqs)
     case_3_source_table()
-    case_4_status_counts(reqs)
+    counts = case_4_status_counts(reqs)
     case_5_blocking_identities(reqs)
     case_6_minimal_safe_policy()
     case_7_next_study()
     final_interpretation(reqs)
+
+    # --- ProofObligationRecord per MISSING or PARTIAL requirement ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C1_mass_continuity_equation",
+        script_id=SCRIPT_ID,
+        title="C1: Derive mass continuity equation for scalar sector source",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a continuity equation relating mass density and current "
+            "in the appropriate limit for A_constraint source coupling."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C2_current_conservation_for_W_i",
+        script_id=SCRIPT_ID,
+        title="C2: Derive current conservation identity for W_i source",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive the relation between W_i source, mass current, angular momentum, "
+            "and continuity identities so that the vector sector is compatible with "
+            "source conservation."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C3_stress_trace_identity_for_kappa",
+        script_id=SCRIPT_ID,
+        title="C3: Derive stress/trace conservation identity for kappa source",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a stress/trace identity showing when kappa is sourced and why it "
+            "vanishes in exterior vacuum."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C4_quadrupole_source_from_conserved_stress_energy",
+        script_id=SCRIPT_ID,
+        title="C4: Derive quadrupole source for h_ij^TT from conserved stress-energy",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive the h_ij^TT quadrupole radiation source from conserved stress-energy "
+            "or vacuum-source identities rather than matching."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C5_constraint_propagation",
+        script_id=SCRIPT_ID,
+        title="C5: Derive constraint propagation (constraints preserved by evolution)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that if the constraint equations hold on an initial slice, they "
+            "remain satisfied under the evolution equations."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C6_vacuum_identity_for_exterior",
+        script_id=SCRIPT_ID,
+        title="C6: Derive vacuum identity defining which sectors are active in exterior",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a unified vacuum identity stating which sectors may remain active "
+            "in source-free regions and which must vanish."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C7_bianchi_like_geometric_identity",
+        script_id=SCRIPT_ID,
+        title="C7: Derive Bianchi-like geometric identity for covariant parent",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a geometric identity analogous in role to Bianchi conservation, "
+            "ensuring that sector source-geometry coupling is consistent and that "
+            "the sector equations can close."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_C8_energy_flux_balance_law",
+        script_id=SCRIPT_ID,
+        title="C8: Derive energy flux balance law for radiation sector",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply an energy balance law connecting source energy loss to tensor "
+            "radiation flux and explicitly excluding uncontrolled scalar/vector energy losses."
+        ),
+    ))
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="source_couplings_are_reduced_assignments_not_final_laws",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Current source couplings (A_constraint <- rho, W_i <- mass current, "
+            "kappa <- stress/trace, h_ij^TT <- quadrupole) are reduced-sector assignments, "
+            "not final parent-theory laws. They must not be claimed as derived until "
+            "conservation identities C1-C8 are supplied."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="bianchi_identity_required_for_covariant_closure",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "C7 (Bianchi-like geometric identity) is a prerequisite for claiming "
+            "covariant closure of the parent field equations. Without it, sector "
+            "equations may not close consistently."
+        ),
+    ))
+
+    # --- Branch decision ---
+
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_covariant_closure_claim",
+        script_id=SCRIPT_ID,
+        branch_id="covariant_closure_of_parent_field_equations",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_C7_bianchi_like_geometric_identity",
+            "derive_C2_current_conservation_for_W_i",
+            "derive_C3_stress_trace_identity_for_kappa",
+            "derive_C5_constraint_propagation",
+        ],
+        description=(
+            "Covariant closure of the parent field equations is deferred. "
+            "C2 (W_i), C3 (kappa), C5 (constraint propagation), and C7 (Bianchi) "
+            "are missing. The reduced program may proceed but must not claim covariant closure."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="conservation_identity_completion_route",
+        script_id=SCRIPT_ID,
+        name="Conservation identity completion route for covariant parent",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_C7_bianchi_like_geometric_identity",
+            "derive_C2_current_conservation_for_W_i",
+            "derive_C3_stress_trace_identity_for_kappa",
+            "derive_C5_constraint_propagation",
+        ],
+        activation_conditions=[
+            "Bianchi-like geometric identity is derived",
+            "current/W_i continuity identity is derived",
+            "kappa stress/trace identity is derived",
+            "constraint propagation is verified",
+        ],
+    ))
+
+    # --- Group 08 handoff import ---
+    # This is the last script in group 08; record what downstream groups may import.
+
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_08_covariant_parent_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            "obligation:derive_C7_bianchi_like_geometric_identity",
+            "obligation:derive_C2_current_conservation_for_W_i",
+            "obligation:derive_C3_stress_trace_identity_for_kappa",
+            "obligation:derive_C5_constraint_propagation",
+            "obligation:derive_G4_W_i_gauge_transformation",
+            "obligation:derive_G7_gauge_invariant_observable_set",
+            "obligation:derive_G8_coordinate_recombination_map",
+            "obligation:satisfy_R8_gauge_structure",
+            "obligation:satisfy_R10_metric_recombination",
+            "obligation:satisfy_R11_conservation_identities",
+            "claim:covariant_parent_not_yet_established",
+            "claim:sector_split_map_partial",
+            "claim:recombination_map_is_schematic_not_derivation",
+            "claim:safe_diagnostic_policy",
+            "claim:source_couplings_are_reduced_assignments_not_final_laws",
+            "claim:bianchi_identity_required_for_covariant_closure",
+            "route:conservation_identity_completion_route",
+            "route:gauge_structure_completion_route",
+            "route:metric_recombination_completion_route",
+        ],
+        description=(
+            "Group 08 handoff to downstream groups. "
+            "The reduced sector program is coherent but not yet a covariant parent. "
+            "Key open obligations: gauge structure (G4, G7, G8), conservation identities (C2, C3, C5, C7), "
+            "and metric recombination. "
+            "Key provisional claims: sector split map is partial; recombination map is schematic. "
+            "Key routes: conservation identity completion, gauge structure completion, recombination completion. "
+            "Downstream groups must not assume covariant closure, GR equivalence, or licensed route status "
+            "for anything listed here as deferred or open."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="conservation_identity_requirements_marker",
         inputs=[],
         output=sp.Symbol("conservation_identity_blockers_identified"),
         method="conservation_identity_requirement_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    n_missing = counts.get("MISSING", 0)
+    n_partial = counts.get("PARTIAL", 0)
+
+    with out.governance_assessments():
+        out.line(f"partial: {n_partial}", StatusMark.DEFER,
+                 "C1 mass continuity, C4 quadrupole source, C6 vacuum identity, C8 energy flux")
+        out.line(f"missing: {n_missing}", StatusMark.FAIL,
+                 "C2 W_i current, C3 kappa stress/trace, C5 constraint propagation, C7 Bianchi")
+        out.line("source couplings are reduced assignments (policy)", StatusMark.FAIL,
+                 "must not claim derived until C1-C8 supplied")
+        out.line("Bianchi identity required for covariant closure (policy)", StatusMark.FAIL,
+                 "C7 is a prerequisite for covariant closure")
+        out.line("covariant closure deferred", StatusMark.DEFER,
+                 "deferred pending C2, C3, C5, C7")
+        out.line("group 08 handoff recorded", StatusMark.PASS,
+                 "handoff import record recorded for downstream groups")
+
+    with out.unresolved_obligations():
+        for req in build_requirements():
+            if req.status in ("MISSING", "PARTIAL"):
+                out.line(f"derive {req.name}", StatusMark.OBLIGATION,
+                         "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

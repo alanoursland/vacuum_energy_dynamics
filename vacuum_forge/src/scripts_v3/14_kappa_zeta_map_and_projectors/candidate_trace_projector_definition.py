@@ -1,5 +1,11 @@
 # Candidate trace projector definition
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The projected kappa-zeta map audit found:
@@ -20,8 +26,6 @@
 #   leave recombination with only one trace/volume contribution.
 #
 # This script defines the required roles of P_trace.
-#
-# It is not a derivation.
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,11 +34,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -42,30 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -225,7 +214,7 @@ def print_entry(e: TraceProjectorEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
@@ -248,8 +237,6 @@ def case_0_problem_statement():
     print("  P_trace must exclude A-sector mass")
     print("  P_trace must support exterior neutrality")
     print("  P_trace must not create energy double-counting")
-
-    status_line("trace projector problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[TraceProjectorEntry]):
@@ -276,8 +263,6 @@ def case_2_compact_table(entries: List[TraceProjectorEntry]):
             + " |"
         )
 
-    status_line("compact P_trace ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[TraceProjectorEntry]):
     header("Case 3: Status counts")
@@ -295,8 +280,6 @@ def case_3_status_counts(entries: List[TraceProjectorEntry]):
     print("  It is currently a requirement bundle:")
     print("    trace extraction, A-exclusion, compensation, TT annihilation, and boundary cooperation.")
     print("  The next likely split is P_trace versus P_boundary versus P_recombination.")
-
-    status_line("P_trace status count produced", "STRUCTURAL")
 
 
 def case_4_minimal_projector_bundle():
@@ -322,8 +305,6 @@ def case_4_minimal_projector_bundle():
     print()
     print("  P_trace is a requirement bundle, not a derived operator.")
 
-    status_line("minimal P_trace bundle stated", "RECOMMENDED")
-
 
 def case_4b_symbolic_tt_annihilation(ns) -> None:
     header("Case 4b: Symbolic TT annihilation check")
@@ -342,13 +323,14 @@ def case_4b_symbolic_tt_annihilation(ns) -> None:
     print("Interpretation:")
     print("  the linear trace projector annihilates this TT sample.")
 
-    status_line("TT annihilation sample", "DERIVED_REDUCED", f"trace(h_TT) = {trace_h_tt}")
     ns.record_derivation(
         derivation_id="trace_projector_tt_annihilation_sample",
         inputs=[h_tt],
         output=projected_trace_piece,
         method="linear TT trace-projector annihilation sample",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="linear reduced TT sample only",
     )
 
 
@@ -365,8 +347,6 @@ def case_5_failure_controls():
     print("6. it hides boundary conditions")
     print("7. it creates e_kappa / epsilon_zeta double-counting")
     print("8. it is treated as parent-derived before derivation")
-
-    status_line("P_trace failure controls stated", "RISK")
 
 
 def case_6_next_tests():
@@ -389,8 +369,6 @@ def case_6_next_tests():
     print()
     print("Reason:")
     print("  P_trace currently carries boundary neutrality duties. Split P_boundary next.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -428,14 +406,73 @@ def main():
     case_6_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="trace_projector_definition_marker",
-        inputs=[],
-        output=sp.Symbol("trace_projector_definition_audited"),
-        method="trace_projector_definition_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line("TT annihilation sample", StatusMark.PASS, "linear trace projector annihilates traceless-transverse sample")
+
+    with out.governance_assessments():
+        out.line("P_trace requirement bundle stated", StatusMark.PASS, "12 requirements inventoried")
+        out.line("P_trace as derived operator", StatusMark.DEFER, "P_trace is a requirement bundle, not yet a derived operator")
+
+    with out.unresolved_obligations():
+        out.line("derive parent P_trace operator", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive TT annihilation in covariant/nonlinear sector", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive P_boundary definition", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_parent_P_trace_operator_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive the parent P_trace mathematical operator",
+            status=ObligationStatus.OPEN,
+            description=(
+                "P_trace is currently a requirement bundle: trace extraction, A-sector mass exclusion, "
+                "compensation/zero monopole, TT annihilation, and boundary cooperation. "
+                "No parent-derived mathematical operator is available. "
+                "The TT annihilation is verified for a linear reduced sample only."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_P_boundary_definition_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive P_boundary definition",
+            status=ObligationStatus.OPEN,
+            description=(
+                "P_boundary must carry exterior zeta/kappa neutrality, zero boundary flux, "
+                "zero volume/kappa charge, A-sector mass protection, and shell-source avoidance. "
+                "Composition law P_boundary P_trace is missing."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="P_trace_is_requirement_bundle_not_derived_operator",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.HEURISTIC,
+            statement=(
+                "P_trace is currently a requirement bundle consisting of trace extraction, "
+                "A-sector mass exclusion, compensation/zero monopole, TT annihilation, and boundary "
+                "cooperation. It is not yet a derived parent projector."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="trace_projector_definition_marker",
+            inputs=[],
+            output=sp.Symbol("trace_projector_definition_audited"),
+            method="trace_projector_definition_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

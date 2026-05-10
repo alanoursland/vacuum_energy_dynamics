@@ -1,5 +1,11 @@
 # Candidate vector boundary value problem
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The vector global rotation mode study found:
@@ -21,6 +27,17 @@ from pathlib import Path
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -32,21 +49,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "HAND_ASSIGNED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -87,8 +89,6 @@ def case_0_problem_statement():
     print("  do not insert Lense-Thirring normalization")
     print("  solve only the structural exterior shape")
 
-    status_line("vector boundary-value problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_boundary_data():
     header("Case 1: Boundary angular momentum data")
@@ -110,8 +110,7 @@ def case_1_boundary_data():
     print()
     print("C_b is not derived.")
 
-    status_line("boundary data stated symbolically", "CONSTRAINED_BY_IDENTITY",
-                "boundary coefficient missing")
+    return boundary_data
 
 
 def case_2_exterior_ansatz():
@@ -130,9 +129,6 @@ def case_2_exterior_ansatz():
     print("Interpretation:")
     print("  This is the axial/vector dipole-like exterior shape.")
     print("  C_J is symbolic and not derived.")
-
-    status_line("exterior vector ansatz stated", "CONSTRAINED_BY_IDENTITY",
-                "coefficient missing")
 
     return r, theta, J, Cj, W_phi
 
@@ -157,8 +153,7 @@ def case_3_curl_scaling(r, theta, J, Cj, W_phi):
     scale_t = sp.simplify(B_theta * r**3 / J)
     ok = (not scale_r.has(r)) and (not scale_t.has(r))
 
-    status_line("curl diagnostic has J/r^3 scaling",
-                "DERIVED_REDUCED" if ok else "RISK")
+    return B_r, B_theta, scale_r, scale_t, ok
 
 
 def case_4_boundary_matching_relation():
@@ -181,9 +176,7 @@ def case_4_boundary_matching_relation():
     print("Thus C_J is fixed by boundary coefficient C_b.")
     print("But C_b is still missing.")
 
-    status_line("boundary matching fixes exterior coefficient from boundary coefficient",
-                "CONSTRAINED_BY_IDENTITY",
-                "boundary coefficient still missing")
+    return solution
 
 
 def case_5_precession_chain():
@@ -208,8 +201,7 @@ def case_5_precession_chain():
     print()
     print("C_total is not derived.")
 
-    status_line("precession chain symbolic", "MISSING",
-                "observable coefficient not derived")
+    return B_W, Omega_drag
 
 
 def case_6_no_gr_matching():
@@ -230,9 +222,6 @@ def case_6_no_gr_matching():
     print("  shape: derived/reduced")
     print("  normalization: missing")
 
-    status_line("GR matching forbidden", "RISK",
-                "normalization must not be inserted")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -246,9 +235,6 @@ def case_7_classification():
     print("| boundary coefficient C_b | MISSING |")
     print("| precession coefficient beta_W | MISSING |")
     print("| Lense-Thirring normalization | HAND_ASSIGNED if inserted now |")
-
-    status_line("boundary-value classification produced", "CONSTRAINED_BY_IDENTITY",
-                "shape derived, normalization missing")
 
 
 def case_8_next_tests():
@@ -268,9 +254,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_boundary_coefficient_from_action.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "boundary coefficient is the remaining vector gap")
 
 
 def final_interpretation():
@@ -302,23 +285,126 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_boundary_data()
+    boundary_data = case_1_boundary_data()
     r, theta, J, Cj, W_phi = case_2_exterior_ansatz()
-    case_3_curl_scaling(r, theta, J, Cj, W_phi)
-    case_4_boundary_matching_relation()
-    case_5_precession_chain()
+    B_r, B_theta, scale_r, scale_t, curl_ok = case_3_curl_scaling(r, theta, J, Cj, W_phi)
+    Cj_solution = case_4_boundary_matching_relation()
+    B_W, Omega_drag = case_5_precession_chain()
     case_6_no_gr_matching()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_boundary_value_problem_marker",
-        inputs=[],
-        output=sp.Symbol("vector_boundary_value_problem_stated"),
-        method="vector_boundary_value_problem_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line(
+            "curl W_phi ansatz has J/r^3 scaling",
+            StatusMark.PASS if curl_ok else StatusMark.FAIL,
+            "B_r and B_theta both scale ~ C_J J/r^3; shape confirmed",
+        )
+        out.line(
+            "boundary matching fixes C_J from C_b",
+            StatusMark.PASS,
+            f"C_J solution = {Cj_solution}; coefficient reduced to C_b",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "boundary coefficient C_b",
+            StatusMark.FAIL,
+            "missing; cannot derive from shape argument alone",
+        )
+        out.line(
+            "GR matching forbidden",
+            StatusMark.DEFER,
+            "C_total = beta_W * C_W must not be set to match Lense-Thirring",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector beta_W observable coupling",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: J/r^3 curl scaling from W_phi ansatz
+        r_s, theta_s, J_s, Cj_s = sp.symbols("r theta J C_J", positive=True, real=True)
+        W_phi_expr = Cj_s * J_s * sp.sin(theta_s) / r_s**2
+        B_r_expr = sp.simplify((1/(r_s*sp.sin(theta_s))) * sp.diff(sp.sin(theta_s)*W_phi_expr, theta_s))
+        B_theta_expr = sp.simplify(-(1/r_s) * sp.diff(r_s*W_phi_expr, r_s))
+
+        ns2.record_derivation(
+            derivation_id="dipole_ansatz_curl_J_over_r3_scaling",
+            inputs=[W_phi_expr],
+            output=sp.Matrix([B_r_expr, B_theta_expr]),
+            method="curl of W_phi = C_J J sin(theta)/r^2 in spherical coords",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            result_type="diagnostic_quantity",
+            scope="dipole vector ansatz with symbolic C_J",
+        )
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The exterior dipole ansatz W_phi ~ J sin(theta)/r^2 is shape-correct "
+                "but the normalization C_b (and therefore C_J, C_W) is missing. "
+                "C_b must be derived from the vector action and source model."
+            ),
+        ))
+
+        # Proof obligation: beta_W
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_beta_W_coupling",
+            script_id=SCRIPT_ID,
+            title="Derive beta_W observable coupling",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The precession coefficient beta_W in Omega_drag = beta_W B_W is missing. "
+                "It must be derived from the observable/precession theory, not matched to GR."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for boundary normalization
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_boundary_normalization",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "C_b, C_J, C_W, and C_total = beta_W * C_W must not be set to reproduce "
+                "the Lense-Thirring precession coefficient. The exterior shape is "
+                "structurally constrained; the normalization is downstream."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_boundary_value_problem_marker",
+            inputs=[],
+            output=sp.Symbol("vector_boundary_value_problem_stated"),
+            method="vector_boundary_value_problem_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

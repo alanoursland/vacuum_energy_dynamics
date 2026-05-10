@@ -1,5 +1,11 @@
 # Candidate areal kappa diagnostic versus physical variable
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The A_spatial versus zeta trace-counting audit found:
@@ -34,11 +40,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -46,29 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -241,7 +233,7 @@ def print_entry(e: ArealKappaEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -264,8 +256,6 @@ def case_0_problem_statement():
     print("  do not assign physical e_kappa to a pure diagnostic")
     print("  do not insert areal kappa as independent spatial trace")
     print("  preserve count-once recombination theorem target")
-
-    status_line("areal kappa diagnostic problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[ArealKappaEntry]):
@@ -292,8 +282,6 @@ def case_2_compact_table(entries: List[ArealKappaEntry]):
             + " |"
         )
 
-    status_line("compact areal-kappa ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[ArealKappaEntry]):
     header("Case 3: Status counts")
@@ -311,8 +299,6 @@ def case_3_status_counts(entries: List[ArealKappaEntry]):
     print("  Silent promotion to a physical/covariant scalar is forbidden.")
     print("  Physical or residual kappa remains unresolved and must be separately defined.")
     print("  e_kappa remains provisional until residual kappa survives as more than a diagnostic.")
-
-    status_line("areal-kappa status count produced", "STRUCTURAL")
 
 
 def case_4_recommended_convention():
@@ -337,8 +323,6 @@ def case_4_recommended_convention():
     print()
     print("Physical/residual kappa remains unresolved.")
 
-    status_line("recommended areal-kappa convention stated", "RECOMMENDED")
-
 
 def case_5_recovery_not_construction():
     header("Case 5: AB=1 recovery, not construction")
@@ -357,8 +341,6 @@ def case_5_recovery_not_construction():
     print()
     print("  AB=1 is a recovery target/check, not a construction principle.")
 
-    status_line("AB=1 recovery language stated", "CONSTRAINED")
-
 
 def case_6_failure_controls():
     header("Case 6: Failure controls")
@@ -372,8 +354,6 @@ def case_6_failure_controls():
     print("5. areal kappa and zeta/kappa residual both count the same trace")
     print("6. failure to map areal kappa to zeta is ignored")
     print("7. A_spatial recovery assumes physical kappa before kappa is fenced")
-
-    status_line("areal-kappa failure controls stated", "RISK")
 
 
 def case_7_next_tests():
@@ -396,8 +376,6 @@ def case_7_next_tests():
     print()
     print("Reason:")
     print("  Areal kappa is now fenced as diagnostic. Next identify A_spatial recovery requirements without using kappa as hidden physical scalar.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -440,14 +418,58 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="areal_kappa_diagnostic_vs_physical_variable_marker",
-        inputs=[],
-        output=sp.Symbol("areal_kappa_diagnostic_vs_physical_variable_audited"),
-        method="areal_kappa_diagnostic_vs_physical_variable_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("areal kappa fenced as reduced diagnostic", StatusMark.PASS, "12 branches inventoried")
+        out.line("K6 forbidden: silent covariant promotion", StatusMark.FAIL, "promotion without derivation is forbidden")
+        out.line("K7 e_kappa with diagnostic kappa", StatusMark.FAIL, "unresolved — obligation recorded")
+
+    with out.unresolved_obligations():
+        out.line("decide whether physical/residual kappa survives", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("decide fate of e_kappa", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="decide_physical_residual_kappa_fate_in_14",
+            script_id=SCRIPT_ID,
+            title="Decide whether physical or residual kappa survives beyond areal diagnostic",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Areal kappa = 1/2 ln(AB) is a reduced diagnostic only. Physical/residual kappa "
+                "is unresolved. e_kappa may need retirement, reinterpretation, or residual-variable "
+                "relabeling if kappa is purely diagnostic."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="areal_kappa_fenced_as_reduced_diagnostic",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "kappa_areal = 1/2 ln(AB) is a reduced spherical areal-gauge diagnostic. "
+                "It is a test instrument for A/B mismatch and an exterior recovery check. "
+                "It is not a covariant physical scalar, not an independent spatial trace insertion, "
+                "not a sufficient basis for physical e_kappa, and not a parent field-equation building block."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="areal_kappa_diagnostic_vs_physical_variable_marker",
+            inputs=[],
+            output=sp.Symbol("areal_kappa_diagnostic_vs_physical_variable_audited"),
+            method="areal_kappa_diagnostic_vs_physical_variable_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

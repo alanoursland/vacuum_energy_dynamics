@@ -1,5 +1,11 @@
 # Candidate vacuum configuration energy variable
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # Parent identity template v2 now depends explicitly on:
@@ -22,6 +28,9 @@
 #
 # It is not a definition yet.
 # It is a variable audit and no-repair-reservoir test.
+#
+# This script is also the final summary script for Group 12.
+# It records a HandoffImportRecord for what Group 13 may import.
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,6 +39,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -41,25 +63,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -212,12 +215,12 @@ def print_candidate(v: VacuumVariableCandidate) -> None:
     print(f"Role: {v.role}")
     print(f"Required exchange: {v.required_exchange}")
     print(f"Forbidden use: {v.forbidden_use}")
-    status_line(v.name, v.status)
+    print(f"[INFO] {v.name}: {v.status}")
     print(f"Risk: {v.risk}")
     print(f"Missing: {v.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Vacuum configuration energy variable problem")
 
     print("Question:")
@@ -235,7 +238,8 @@ def case_0_problem_statement():
     print("  E_vac_config must not hide arbitrary damping")
     print("  E_vac_config must not double-count scalar response")
 
-    status_line("vacuum configuration variable problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("vacuum configuration variable problem posed", StatusMark.OBLIGATION, "E_vac_config definition required")
 
 
 def case_1_candidate_inventory(entries: List[VacuumVariableCandidate]):
@@ -244,7 +248,7 @@ def case_1_candidate_inventory(entries: List[VacuumVariableCandidate]):
         print_candidate(entry)
 
 
-def case_2_compact_table(entries: List[VacuumVariableCandidate]):
+def case_2_compact_table(entries: List[VacuumVariableCandidate], out: ScriptOutput):
     header("Case 2: Compact vacuum variable ledger")
 
     print("| Candidate | Role | Status | Risk | Missing |")
@@ -264,10 +268,11 @@ def case_2_compact_table(entries: List[VacuumVariableCandidate]):
             + " |"
         )
 
-    status_line("compact vacuum variable ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact vacuum variable ledger produced", StatusMark.INFO, "10 E_vac_config candidates audited")
 
 
-def case_3_status_counts(entries: List[VacuumVariableCandidate]):
+def case_3_status_counts(entries: List[VacuumVariableCandidate], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -283,10 +288,11 @@ def case_3_status_counts(entries: List[VacuumVariableCandidate]):
     print("  The safest immediate interpretation is local vacuum configuration energy")
     print("  plus q_v/J_v bookkeeping, while excluding A-sector mass and Sigma_creation.")
 
-    status_line("vacuum variable status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("vacuum variable status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_minimal_accounting():
+def case_4_candidate_minimal_accounting(out: ScriptOutput):
     header("Case 4: Candidate minimal accounting")
 
     print("Minimal candidate accounting:")
@@ -312,10 +318,11 @@ def case_4_candidate_minimal_accounting():
     print()
     print("This is candidate bookkeeping, not a derivation.")
 
-    status_line("candidate minimal vacuum accounting stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate minimal vacuum accounting stated", StatusMark.DEFER, "candidate only; not derived")
 
 
-def case_5_repair_reservoir_tests():
+def case_5_repair_reservoir_tests(out: ScriptOutput):
     header("Case 5: No-repair-reservoir tests")
 
     print("E_vac_config fails if:")
@@ -329,10 +336,11 @@ def case_5_repair_reservoir_tests():
     print("7. It allows acausal nonlocal vacuum transport without being declared a constraint.")
     print("8. It makes near-boundary predictions before recombination/observables are derived.")
 
-    status_line("no-repair-reservoir tests stated", "RISK")
+    with out.governance_assessments():
+        out.line("no-repair-reservoir tests stated", StatusMark.DEFER, "8 repair-reservoir tests policy-guarded")
 
 
-def case_6_best_current_choice():
+def case_6_best_current_choice(out: ScriptOutput):
     header("Case 6: Best current choice")
 
     print("Best current minimal interpretation:")
@@ -354,10 +362,11 @@ def case_6_best_current_choice():
     print()
     print("This is still structural, not derived.")
 
-    status_line("best current vacuum variable choice stated", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("best current vacuum variable choice stated", StatusMark.DEFER, "structural only; not derived")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -378,7 +387,44 @@ def case_7_next_tests():
     print("Reason:")
     print("  Group 12 has reached a natural summary point after exclusions, implications, projectors, scalar/kappa/boundary/recombination/accounting, and E_vac_config.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "group 12 summary and group 13 handoff is the next step")
+
+
+def case_8_group12_summary_and_group13_handoff(out: ScriptOutput):
+    header("Case 8: Group 12 summary and Group 13 handoff")
+
+    print("Group 12 has established:")
+    print()
+    print("  14 parent identity exclusion constraints")
+    print("  15 reduced-sector implication tests")
+    print("  10 projector structure entries (P_L and P_T symbolically verified)")
+    print("  scalar constraint-not-radiation policy (3 policy rules)")
+    print("  10 kappa covariant relaxation requirements")
+    print("  10 boundary mass preservation requirements")
+    print("  10 recombination no-double-counting entries")
+    print("  10 relaxation energy accounting requirements")
+    print("  13 parent identity template v2 clauses")
+    print("  10 vacuum configuration energy variable candidates")
+    print()
+    print("What Group 13 may import from Group 12:")
+    print()
+    print("  policy rules: scalar constraint, box kappa, rho-kappa, GR coefficients")
+    print("  proof obligations: scalar propagation, P_scalar, P_recombination, E_vac_config")
+    print("  candidate route: kappa covariantized relaxation form")
+    print("  candidate route: reduced recombination map")
+    print("  candidate route: kappa free-energy exchange")
+    print("  branch decisions: deferred until prerequisites met")
+    print()
+    print("Group 13 (vacuum substance accounting) should:")
+    print()
+    print("  define q_v and J_v properly")
+    print("  derive or constrain E_vac_config from q_v/J_v ontology")
+    print("  close the ordinary closed-regime total energy balance")
+    print("  not reopen exclusions established in Group 12")
+
+    with out.governance_assessments():
+        out.line("group 12 summary stated; group 13 handoff prepared", StatusMark.INFO, "handoff recorded below")
 
 
 def final_interpretation():
@@ -407,22 +453,160 @@ def main():
     header("Candidate Vacuum Configuration Energy Variable")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_candidates()
     case_1_candidate_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_minimal_accounting()
-    case_5_repair_reservoir_tests()
-    case_6_best_current_choice()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_minimal_accounting(out)
+    case_5_repair_reservoir_tests(out)
+    case_6_best_current_choice(out)
+    case_7_next_tests(out)
+    case_8_group12_summary_and_group13_handoff(out)
     final_interpretation()
+
+    # Proof obligations for vacuum variable definition
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_epsilon_vac_config_definition_V1",
+        script_id=SCRIPT_ID,
+        title="Define local vacuum configuration energy density epsilon_vac_config (V1)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "epsilon_vac_config must be defined with units, measure, and coupling to kappa. "
+            "It must not become a repair reservoir. "
+            "Group 13 (vacuum substance accounting) is responsible for this derivation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_q_v_J_v_transport_law_V2_V3",
+        script_id=SCRIPT_ID,
+        title="Define q_v and J_v vacuum substance density and transport law (V2, V3)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "q_v and J_v must satisfy partial_t q_v + div J_v = Sigma_exchange - Gamma_relax in ordinary regime. "
+            "Transport law must be causal/local or declared as a constraint with stated support. "
+            "Group 13 is responsible for this derivation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_vac_config_not_A_sector_separation_V7",
+        script_id=SCRIPT_ID,
+        title="Derive parent separation of A-sector flux and vacuum configuration energy (V7)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "E_vac_config must be separated from the A-sector exterior mass charge. "
+            "rho routes to A; kappa exchange must not alter M_ext. "
+            "Parent separation identity required."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_accounting_variable_V9",
+        script_id=SCRIPT_ID,
+        title="Derive recombination accounting variable ensuring scalar counted once (V9)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A mass energy and kappa trace energy must remain distinct in recombination. "
+            "E_recombination_accounting must follow from P_recombination derivation."
+        ),
+    ))
+
+    # Policy claim: E_vac_config as repair reservoir is forbidden
+    ns.record_claim(ClaimRecord(
+        claim_id="E_vac_config_repair_reservoir_forbidden_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "E_vac_config must not function as an unnamed repair reservoir. "
+            "It must not change exterior M_ext, act as Sigma_creation, "
+            "duplicate A-sector mass energy, tune coefficients, or absorb arbitrary energy "
+            "without a defined state variable. An invocable-only-after-contradiction reservoir is forbidden."
+        ),
+    ))
+
+    # Candidate route: local epsilon_vac_config with q_v/J_v bookkeeping
+    ns.record_route(RouteRecord(
+        route_id="epsilon_vac_config_local_with_q_v_J_v_candidate",
+        script_id=SCRIPT_ID,
+        name="Candidate E_vac_config: local epsilon_vac_config with optional q_v/J_v bookkeeping",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_epsilon_vac_config_definition_V1",
+            "derive_q_v_J_v_transport_law_V2_V3",
+            "derive_E_vac_config_not_A_sector_separation_V7",
+        ],
+        activation_conditions=[
+            "epsilon_vac_config defined with units and measure",
+            "q_v/J_v transport law is causal or constraint-declared",
+            "A-sector flux separated from E_vac_config",
+            "Sigma_creation excluded from E_vac_config exchange",
+            "no coefficient tuning by E_vac_config",
+        ],
+    ))
+
+    # Branch decision: E_vac_config full definition deferred to Group 13
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_E_vac_config_full_definition_to_group13",
+        script_id=SCRIPT_ID,
+        branch_id="E_vac_config_full_definition",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_epsilon_vac_config_definition_V1",
+            "derive_q_v_J_v_transport_law_V2_V3",
+            "derive_E_vac_config_not_A_sector_separation_V7",
+            "derive_P_recombination_accounting_variable_V9",
+        ],
+        description=(
+            "Full definition of E_vac_config is deferred to Group 13 (vacuum substance accounting). "
+            "Group 12 has established the constraints and requirements that E_vac_config must satisfy, "
+            "but the derivation is a Group 13 responsibility."
+        ),
+    ))
+
+    # HandoffImportRecord: what Group 13 may import from Group 12
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group12_to_group13_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.INVENTORY_MARKER,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        source_record_ref="vacuum_configuration_energy_variable_marker",
+        imported_record_refs=[
+            "parent_identity_exclusion_constraints_marker",
+            "parent_identity_reduced_implications_marker",
+            "projector_structure_for_parent_identity_marker",
+            "scalar_constraint_not_radiation_identity_marker",
+            "kappa_covariant_relaxation_requirement_marker",
+            "boundary_mass_preservation_identity_marker",
+            "recombination_without_double_counting_marker",
+            "relaxation_energy_accounting_identity_marker",
+            "parent_identity_template_v2_marker",
+            "vacuum_configuration_energy_variable_marker",
+        ],
+        description=(
+            "Group 13 (vacuum substance accounting) may import from Group 12: "
+            "policy rules for scalar constraint, Box kappa, rho-kappa separation, GR coefficient insertion. "
+            "Open proof obligations: scalar constraint propagation, P_scalar, P_recombination, "
+            "E_vac_config definition, boundary mass preservation theorem. "
+            "Candidate routes: kappa covariantized relaxation, reduced recombination map, kappa free-energy exchange. "
+            "Branch decisions: all positive parent identity routes are deferred pending prerequisites. "
+            "Group 13 must not reopen exclusions established in Group 12."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="vacuum_configuration_energy_variable_marker",
         inputs=[],
         output=sp.Symbol("vacuum_configuration_energy_variable_audited"),
         method="vacuum_configuration_energy_variable_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

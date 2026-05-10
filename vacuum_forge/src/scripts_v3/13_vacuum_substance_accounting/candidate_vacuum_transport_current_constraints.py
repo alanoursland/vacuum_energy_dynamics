@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate vacuum transport current constraints
 #
 # Purpose
@@ -32,6 +38,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -43,28 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -210,11 +204,11 @@ def print_entry(e: TransportEntry) -> None:
     print(f"Option: {e.option}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Vacuum transport current constraints problem")
 
     print("Question:")
@@ -234,7 +228,8 @@ def case_0_problem_statement():
     print("  no coefficient tuning")
     print("  nonlocality must be declared as constraint, not physical transport")
 
-    status_line("vacuum transport current problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("vacuum transport current problem posed", StatusMark.OBLIGATION, "open: J_v class selection and support law required")
 
 
 def case_1_inventory(entries: List[TransportEntry]):
@@ -243,7 +238,7 @@ def case_1_inventory(entries: List[TransportEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[TransportEntry]):
+def case_2_compact_table(entries: List[TransportEntry], out: ScriptOutput):
     header("Case 2: Compact J_v ledger")
 
     print("| Entry | Option | Status | Forbidden if | Missing |")
@@ -263,10 +258,11 @@ def case_2_compact_table(entries: List[TransportEntry]):
             + " |"
         )
 
-    status_line("compact J_v ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact J_v ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[TransportEntry]):
+def case_3_status_counts(entries: List[TransportEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -282,10 +278,11 @@ def case_3_status_counts(entries: List[TransportEntry]):
     print("  A causal transport version is possible but unresolved.")
     print("  Acausal repair and coefficient tuning currents are forbidden.")
 
-    status_line("J_v status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("J_v status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_allowed_classes():
+def case_4_allowed_classes(out: ScriptOutput):
     header("Case 4: Allowed J_v classes")
 
     print("Allowed or potentially allowed classes:")
@@ -302,10 +299,11 @@ def case_4_allowed_classes():
     print("4. Causal transport J_v:")
     print("   only if an evolution law and finite speed are derived.")
 
-    status_line("allowed J_v classes stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("allowed J_v classes stated", StatusMark.DEFER, "candidate route: four allowed classes constrained")
 
 
-def case_5_forbidden_classes():
+def case_5_forbidden_classes(out: ScriptOutput):
     header("Case 5: Forbidden J_v classes")
 
     print("Forbidden classes:")
@@ -318,10 +316,11 @@ def case_5_forbidden_classes():
     print("6. Current that tunes observable coefficients.")
     print("7. Unlabeled nonlocal transport.")
 
-    status_line("forbidden J_v classes stated", "FORBIDDEN")
+    with out.governance_assessments():
+        out.line("forbidden J_v classes stated", StatusMark.PASS, "policy rule: seven forbidden classes")
 
 
-def case_6_candidate_balance_shape():
+def case_6_candidate_balance_shape(out: ScriptOutput):
     header("Case 6: Candidate balance shape")
 
     print("Candidate local/constrained balance skeleton:")
@@ -339,10 +338,11 @@ def case_6_candidate_balance_shape():
     print()
     print("This is a balance skeleton, not a derived equation.")
 
-    status_line("candidate J_v balance skeleton stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("candidate J_v balance skeleton stated", StatusMark.DEFER, "candidate route: skeleton only, not derived")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -363,7 +363,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  J_v classes are now constrained enough to write the first concrete accounting balance skeleton.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "vacuum accounting parent balance")
 
 
 def final_interpretation():
@@ -394,22 +395,63 @@ def main():
     header("Candidate Vacuum Transport Current Constraints")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_allowed_classes()
-    case_5_forbidden_classes()
-    case_6_candidate_balance_shape()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_allowed_classes(out)
+    case_5_forbidden_classes(out)
+    case_6_candidate_balance_shape(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="J_v_acausal_coefficient_tuning_forbidden",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "J_v as an acausal repair current (J11) or as a coefficient-tuning current (J12) "
+            "is forbidden. Nonlocality in J_v must be declared as constraint bookkeeping, not physical transport. "
+            "J_v must not alter A_flux, M_ext, or observable coefficients."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="J_v_allowed_classes_constrained",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "J_v is allowed as: absent/zero (J1), compact-support (J2), constrained redistribution (J3), "
+            "or causal transport if separately derived (J4). "
+            "All cases require zero exterior flux (J5) and zero far-zone scalar energy flux (J8)."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_v_class_and_support_law",
+        script_id=SCRIPT_ID,
+        title="Derive J_v class and support law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Select the J_v class (absent, compact, constrained, or causal) "
+            "and derive the support/interface law that enforces zero exterior flux and zero Q_volume."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="vacuum_transport_current_constraints_marker",
         inputs=[],
         output=sp.Symbol("vacuum_transport_current_constraints_audited"),
         method="vacuum_transport_current_constraints_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

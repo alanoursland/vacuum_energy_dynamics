@@ -3,6 +3,9 @@
 # Group:
 #   18_vacuum_current_split
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The exchange current source-side inventory found:
@@ -30,6 +33,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -43,7 +57,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -68,6 +82,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -527,14 +542,70 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="dark_sector_coupling_optional_branch_marker",
-        inputs=[],
-        output=sp.Symbol("dark_sector_coupling_optional_branch_complete"),
-        method="dark_sector_coupling_optional_branch",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_dark_ordinary_matter_separation_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Ordinary/dark separation theorem: dark coupling must not alter ordinary matter routing. Ordinary rho/T_mu_nu must remain routed through established sectors.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="prove_dark_exterior_mass_neutrality_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Ordinary exterior neutrality theorem: dark coupling must not shift M_ext for ordinary exterior sector.",
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="dark_sector_no_coupling_default_in_18",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement="No dark-sector coupling is required. Safest default is no dark-sector coupling in Group 18. Dark coupling to J_exch only is the least bad future candidate if ordinary separation and source law exist.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_dark_patch_for_ordinary_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            branch_name="dark_patch_for_ordinary_sector",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="Dark coupling introduced because ordinary J_sub/J_exch failed is forbidden speculative patching.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_dark_boundary_repair_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            branch_name="dark_boundary_repair",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="Dark sector canceling boundary leakage, shell source, scalar tail, or singularity behavior is a forbidden boundary repair branch.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_dark_H_exch_shortcut_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            branch_name="dark_H_exch_shortcut",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="Dark coupling introduced to justify H_exch/H_curv parent correction is a forbidden parent-correction shortcut. Deferred to Group 19.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_dark_coupling_to_J_exch_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            branch_name="dark_coupling_to_J_exch",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            rationale="Dark coupling to J_exch only is a candidate future branch pending: ordinary matter decoupling theorem, mass neutrality theorem, dark source separation theorem. Must not patch ordinary J_exch source failure.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="kill_dark_branch_if_inseparable_in_18_dark_sector",
+            script_id=SCRIPT_ID,
+            branch_name="dark_sector_inseparable_from_repair",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            rationale="If dark coupling cannot be separated from ordinary repair behavior (DS16), the dark-sector branch should remain absent. BRANCH_KILLED outcome applies if failure is demonstrated.",
+        ))
+        ns.record_derivation(
+            derivation_id="dark_sector_coupling_optional_branch_marker",
+            inputs=[],
+            output=sp.Symbol("dark_sector_coupling_optional_branch_complete"),
+            method="dark_sector_coupling_optional_branch",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

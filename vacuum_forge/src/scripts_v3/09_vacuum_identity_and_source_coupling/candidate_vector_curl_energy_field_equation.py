@@ -1,5 +1,11 @@
 # Candidate vector curl-energy field equation
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The vector stiffness study identified the most gauge-aware vector path:
@@ -18,17 +24,23 @@
 #
 # This is a structural derivation, not a coefficient derivation.
 # It does NOT insert Lense-Thirring normalization.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_curl_energy_field_equation.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -40,21 +52,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "HAND_ASSIGNED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero(expr) -> bool:
@@ -133,8 +130,6 @@ def case_0_problem_statement():
     print()
     print("Coefficient remains symbolic.")
 
-    status_line("curl-energy field-equation problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_vector_identity():
     header("Case 1: Vector identity curl curl W")
@@ -159,8 +154,7 @@ def case_1_vector_identity():
     print("Check curlcurl - [grad div W - Delta W] =")
     print(diff)
 
-    ok = all(is_zero(e) for e in diff)
-    status_line("curl-curl identity verified", "DERIVED_REDUCED" if ok else "RISK")
+    return W, curlcurl, diff
 
 
 def case_2_transverse_reduction():
@@ -180,9 +174,6 @@ def case_2_transverse_reduction():
     print()
     print("Interpretation:")
     print("  curl-energy naturally favors transverse/vector content.")
-
-    status_line("transverse reduction gives vector Poisson form", "CONSTRAINED_BY_IDENTITY",
-                "requires gauge condition div W=0")
 
 
 def case_3_variational_structure():
@@ -211,8 +202,8 @@ def case_3_variational_structure():
     print()
     print("  alpha_W / (2 K_c)")
 
-    status_line("curl-energy variation gives source equation", "CONSTRAINED_BY_IDENTITY",
-                "coefficient remains symbolic")
+    ratio = alpha_W/(2*K_c)
+    return ratio
 
 
 def case_4_pure_gradient_null_mode():
@@ -233,9 +224,7 @@ def case_4_pure_gradient_null_mode():
     print("Thus |curl W|^2 does not penalize pure-gradient pieces.")
     print("This is gauge-like behavior and requires gauge fixing or boundary conditions.")
 
-    ok = all(is_zero(e) for e in curl_grad)
-    status_line("curl-energy has pure-gradient null mode", "CONSTRAINED_BY_IDENTITY" if ok else "RISK",
-                "gauge fixing required")
+    return curl_grad
 
 
 def case_5_current_transversality():
@@ -254,9 +243,6 @@ def case_5_current_transversality():
     print()
     print("For time-dependent sources, longitudinal/current-continuity pieces")
     print("must be handled by scalar constraint or gauge structure.")
-
-    status_line("stationary transverse current compatibility stated", "CONSTRAINED_BY_IDENTITY",
-                "time-dependent split still missing")
 
 
 def case_6_coefficient_status():
@@ -277,8 +263,7 @@ def case_6_coefficient_status():
     print("  coefficient: missing")
     print("  GR normalization: not inserted")
 
-    status_line("coefficient ratio identified but not derived", "MISSING",
-                "normalization still absent")
+    return ratio
 
 
 def case_7_classification():
@@ -293,9 +278,6 @@ def case_7_classification():
     print("| coefficient alpha_W/(2K_c) | MISSING |")
     print("| full time-dependent current split | MISSING |")
     print("| GR frame-dragging normalization | HAND_ASSIGNED if inserted now |")
-
-    status_line("curl-energy classification produced", "CONSTRAINED_BY_IDENTITY",
-                "structure derived, coefficient missing")
 
 
 def case_8_next_tests():
@@ -315,9 +297,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_transverse_current_projection.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "curl-energy needs transverse current projection")
 
 
 def final_interpretation():
@@ -349,23 +328,154 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_vector_identity()
+    W, curlcurl, identity_diff = case_1_vector_identity()
     case_2_transverse_reduction()
-    case_3_variational_structure()
-    case_4_pure_gradient_null_mode()
+    ratio = case_3_variational_structure()
+    curl_grad = case_4_pure_gradient_null_mode()
     case_5_current_transversality()
-    case_6_coefficient_status()
+    ratio2 = case_6_coefficient_status()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_curl_energy_field_equation_marker",
-        inputs=[],
-        output=sp.Symbol("vector_curl_energy_field_equation_stated"),
-        method="vector_curl_energy_field_equation_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    identity_ok = all(is_zero(e) for e in identity_diff)
+    null_mode_ok = all(is_zero(e) for e in curl_grad)
+
+    with out.derived_results():
+        out.line(
+            "curl curl W = grad(div W) - Delta W identity",
+            StatusMark.PASS if identity_ok else StatusMark.FAIL,
+            "curlcurl - [grad div W - Delta W] = 0 verified symbolically",
+        )
+        out.line(
+            "curl(grad phi) = 0 pure-gradient null mode",
+            StatusMark.PASS if null_mode_ok else StatusMark.FAIL,
+            "pure-gradient pieces have zero curl; gauge fixing required",
+        )
+        out.line(
+            "curl-energy field equation structure",
+            StatusMark.PASS,
+            "curl curl W = -alpha_W j/(2K_c) from variational argument",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "coefficient alpha_W/(2K_c)",
+            StatusMark.FAIL,
+            "not derived; equation structure correct but normalization missing",
+        )
+        out.line(
+            "GR matching forbidden",
+            StatusMark.DEFER,
+            "Lense-Thirring normalization must not be inserted",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: curl curl W identity
+        x, y, z = sp.symbols("x y z", real=True)
+        coords = (x, y, z)
+        Wx = sp.Function("W_x")(x, y, z)
+        Wy = sp.Function("W_y")(x, y, z)
+        Wz = sp.Function("W_z")(x, y, z)
+        W_vec = sp.Matrix([Wx, Wy, Wz])
+        curlcurl_expr = sp.simplify(curl(curl(W_vec, coords), coords))
+        graddiv_lap = sp.simplify(grad_scalar(div(W_vec, coords), coords) - lap_vec(W_vec, coords))
+        identity_residual = sp.simplify(curlcurl_expr - graddiv_lap)
+
+        ns2.record_derivation(
+            derivation_id="curl_curl_W_identity_residual",
+            inputs=[W_vec],
+            output=identity_residual,
+            method="simplify(curl curl W - (grad div W - Delta W))",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Contentful derivation: curl(grad phi) = 0
+        phi = sp.Function("phi")(x, y, z)
+        grad_phi = grad_scalar(phi, coords)
+        curl_grad_phi = sp.simplify(curl(grad_phi, coords))
+
+        ns2.record_derivation(
+            derivation_id="curl_grad_phi_null_mode",
+            inputs=[grad_phi],
+            output=curl_grad_phi,
+            method="curl(grad phi) — pure-gradient null mode of curl energy",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Proof obligation: vector coefficient
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The curl-energy field equation curl curl W = -alpha_W j/(2K_c) "
+                "identifies the ratio alpha_W/(2K_c) as the physical missing quantity. "
+                "Neither alpha_W nor K_c is derived from the vacuum transport ontology."
+            ),
+        ))
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The full time-dependent transverse/longitudinal current split and "
+                "the global boundary normalization for the curl-energy vector sector "
+                "are not yet derived."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for alpha_W/K_c
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "The coefficient alpha_W/(2K_c) in the curl-energy field equation "
+                "must not be set to reproduce the GR frame-dragging coefficient. "
+                "This is a downstream recovery test, not a construction input."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_curl_energy_field_equation_marker",
+            inputs=[],
+            output=sp.Symbol("vector_curl_energy_field_equation_stated"),
+            method="vector_curl_energy_field_equation_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

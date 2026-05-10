@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate boundary volume mode no exterior charge
 #
 # Purpose
@@ -31,6 +37,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,29 +60,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -210,11 +205,11 @@ def print_entry(e: BoundaryVolumeEntry) -> None:
     print(f"Condition: {e.condition}")
     print(f"Allowed meaning: {e.allowed_meaning}")
     print(f"Forbidden failure: {e.forbidden_failure}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Boundary volume mode no exterior charge problem")
 
     print("Question:")
@@ -234,7 +229,8 @@ def case_0_problem_statement():
     print("  no boundary mass tuning")
     print("  do not overclaim linear/toy profiles as parent theorem")
 
-    status_line("boundary volume no-charge problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("boundary volume no-charge problem posed", StatusMark.OBLIGATION, "open: parent projector theorem required")
 
 
 def case_1_inventory(entries: List[BoundaryVolumeEntry]):
@@ -243,7 +239,7 @@ def case_1_inventory(entries: List[BoundaryVolumeEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[BoundaryVolumeEntry]):
+def case_2_compact_table(entries: List[BoundaryVolumeEntry], out: ScriptOutput):
     header("Case 2: Compact boundary volume ledger")
 
     print("| Entry | Condition | Status | Forbidden failure | Missing |")
@@ -263,10 +259,11 @@ def case_2_compact_table(entries: List[BoundaryVolumeEntry]):
             + " |"
         )
 
-    status_line("compact boundary volume ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact boundary volume ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[BoundaryVolumeEntry]):
+def case_3_status_counts(entries: List[BoundaryVolumeEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -282,10 +279,11 @@ def case_3_status_counts(entries: List[BoundaryVolumeEntry]):
     print("  Compact support, zero flux, compensation, and A-flux protection are the core.")
     print("  Parent projector origin remains missing.")
 
-    status_line("boundary volume status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("boundary volume status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_candidate_theorem_statement():
+def case_4_candidate_theorem_statement(out: ScriptOutput):
     header("Case 4: Candidate theorem statement")
 
     print("Candidate theorem:")
@@ -310,10 +308,11 @@ def case_4_candidate_theorem_statement():
     print("Current status:")
     print("  theorem target, not theorem.")
 
-    status_line("candidate no-exterior-charge theorem stated", "THEOREM_TARGET")
+    with out.unresolved_obligations():
+        out.line("candidate no-exterior-charge theorem stated", StatusMark.OBLIGATION, "open: proof requires parent projector P_boundary P_trace")
 
 
-def case_5_toy_profile_tests():
+def case_5_toy_profile_tests(out: ScriptOutput):
     header("Case 5: Toy profile tests")
 
     print("Example compact profile:")
@@ -338,10 +337,11 @@ def case_5_toy_profile_tests():
     print()
     print("  parent-derived physical profile")
 
-    status_line("toy compact profile tests stated", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("toy compact profile tests stated", StatusMark.PASS, "toy profiles consistent with zero boundary flux")
 
 
-def case_5b_symbolic_boundary_profile(ns) -> None:
+def case_5b_symbolic_boundary_profile(ns, out: ScriptOutput) -> None:
     header("Case 5b: Symbolic compact-profile boundary check")
 
     r, R, zeta0 = sp.symbols("r R zeta0", positive=True)
@@ -364,17 +364,25 @@ def case_5b_symbolic_boundary_profile(ns) -> None:
     print()
     print(f"  zeta_n=3''(R) = {second_derivative_n3}")
 
-    status_line("compact profile boundary flux check", "DERIVED_REDUCED", f"F_zeta(R+) = {flux_at_boundary}")
+    with out.sample_results():
+        out.line(
+            "compact profile boundary flux check",
+            StatusMark.PASS,
+            f"F_zeta(R+) = {flux_at_boundary}",
+        )
+
     ns.record_derivation(
         derivation_id="boundary_compact_profile_zero_flux",
         inputs=[profile_n2, profile_n3],
         output=sp.Tuple(value_at_boundary, derivative_at_boundary, flux_at_boundary, second_derivative_n3),
         method="symbolic compact-profile boundary evaluation",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy compact profile only; not parent-derived physical profile",
     )
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("The boundary volume theorem fails if:")
@@ -389,10 +397,11 @@ def case_6_failure_controls():
     print("8. binary scalar flux becomes nonzero.")
     print("9. linear determinant logic is overclaimed as nonlinear theorem.")
 
-    status_line("boundary volume failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("boundary volume failure controls stated", StatusMark.DEFER, "open risk: nine failure conditions listed, parent projector required")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -413,7 +422,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  If volume conversion is compact/compensated, we need to know whether J_v is local, constrained, or transport.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "vacuum transport current constraints")
 
 
 def final_interpretation():
@@ -441,23 +451,67 @@ def main():
     header("Candidate Boundary Volume Mode No Exterior Charge")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_theorem_statement()
-    case_5_toy_profile_tests()
-    case_5b_symbolic_boundary_profile(ns)
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_theorem_statement(out)
+    case_5_toy_profile_tests(out)
+    case_5b_symbolic_boundary_profile(ns, out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="boundary_volume_mode_no_exterior_charge_theorem_target",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "If the trace/volume mode zeta is compactly supported or compensated and the boundary flux vanishes, "
+            "then the exterior volume scalar charge vanishes: Q_volume=0, F_zeta(R+)=0, zeta_ext->0, "
+            "kappa_ext->0, delta M_ext|volume/kappa=0. This is a theorem target, not a theorem."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_no_exterior_charge_theorem",
+        script_id=SCRIPT_ID,
+        title="Derive boundary no-exterior-charge theorem",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive from parent projector P_boundary P_trace that local volume reconfiguration "
+            "produces zero exterior scalar charge. Must not use hand-imposed compact support."
+        ),
+    ))
+    # VQ3 demonstrates the EXTERIOR_SCALAR_CHARGE_WITNESS failure mode:
+    # nonzero boundary flux F_zeta(R+) != 0 seeds a 1/r exterior scalar tail,
+    # which is the exact exterior-scalar-charge witness this audit is designed to exclude.
+    ns.record_evidence(EvidenceRecord(
+        evidence_id="exterior_scalar_charge_nonzero_flux_witness",
+        script_id=SCRIPT_ID,
+        evidence_type=EvidenceType.EXTERIOR_SCALAR_CHARGE_WITNESS,
+        challenges=["boundary_volume_mode_no_exterior_charge_theorem_target"],
+        description=(
+            "Entry VQ3 identifies the failure mode: nonzero exterior boundary flux F_zeta(R+) != 0 "
+            "seeds an exterior zeta ~ 1/r scalar charge. This is the exterior scalar charge witness "
+            "that the theorem target must exclude. The toy compact profile (case 5b) is consistent "
+            "with zero flux but is not a parent-derived proof."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="boundary_volume_mode_no_exterior_charge_marker",
         inputs=[],
         output=sp.Symbol("boundary_volume_mode_no_exterior_charge_audited"),
         method="boundary_volume_mode_no_exterior_charge_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

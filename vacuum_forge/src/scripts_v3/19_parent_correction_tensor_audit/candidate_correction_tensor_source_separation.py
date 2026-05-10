@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The correction tensor divergence-safety audit found:
@@ -41,6 +44,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -52,34 +67,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -372,12 +359,15 @@ def print_entry(e: SourceSeparationEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Correction tensor source-separation problem")
 
     print("Question:")
@@ -400,7 +390,8 @@ def case_0_problem_statement():
     print("  residual killed/non-metric unless O derived")
     print("  boundary source not counted as tensor correction")
 
-    status_line("correction tensor source-separation problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("correction tensor source-separation problem posed", StatusMark.OBLIGATION, "source-separation audit required before any H insertion")
 
 
 def case_1_inventory(entries: List[SourceSeparationEntry]):
@@ -409,7 +400,7 @@ def case_1_inventory(entries: List[SourceSeparationEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[SourceSeparationEntry]):
+def case_2_compact_table(entries: List[SourceSeparationEntry], out: ScriptOutput):
     header("Case 2: Compact source-separation ledger")
 
     print("| Entry | Rule | Status | Consequence |")
@@ -427,10 +418,11 @@ def case_2_compact_table(entries: List[SourceSeparationEntry]):
             + " |"
         )
 
-    status_line("compact source-separation ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact source-separation ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[SourceSeparationEntry]):
+def case_3_status_counts(entries: List[SourceSeparationEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -454,10 +446,11 @@ def case_3_status_counts(entries: List[SourceSeparationEntry]):
     print("  Diagnostic-only remains the safest fallback.")
     print("  Next gate is boundary and mass neutrality.")
 
-    status_line("source-separation status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("source-separation status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_source_separation_classes():
+def case_4_source_separation_classes(out: ScriptOutput):
     header("Case 4: Source-separation classes")
 
     print("Required separations:")
@@ -479,10 +472,11 @@ def case_4_source_separation_classes():
     print("1. real projectors")
     print("2. diagnostic-only H-like objects")
 
-    status_line("source-separation classes listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("source-separation classes listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_4b_projector_sample(ns):
+def case_4b_projector_sample(ns, out: ScriptOutput):
     header("Case 4b: Sample projector-based source separation")
 
     p_ordinary = sp.diag(1, 0, 0)
@@ -503,17 +497,19 @@ def case_4b_projector_sample(ns):
     print("  It does not prove the real sectors admit such projectors.")
 
     if overlap == sp.zeros(3) and completeness == sp.zeros(3):
-        status_line(
-            "sample projector separation witness",
-            "DERIVED_REDUCED",
-            "projectors are orthogonal and complete in the toy source space",
-        )
+        with out.sample_results():
+            out.line(
+                "sample projector separation witness",
+                StatusMark.PASS,
+                "projectors are orthogonal and complete in the toy source space",
+            )
     else:
-        status_line(
-            "sample projector separation witness",
-            "UNRESOLVED",
-            "toy projectors failed orthogonality/completeness",
-        )
+        with out.sample_results():
+            out.line(
+                "sample projector separation witness",
+                StatusMark.FAIL,
+                "toy projectors failed orthogonality/completeness",
+            )
 
     ns.record_derivation(
         derivation_id="projector_source_separation_sample",
@@ -521,10 +517,12 @@ def case_4b_projector_sample(ns):
         output=sp.Tuple(overlap, completeness),
         method="toy_projector_separation_compatibility",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
+        scope="toy 3x3 diagonal projectors; not the real field-theory sector split",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Source-separation decision tree")
 
     print("Decision tree:")
@@ -547,10 +545,11 @@ def case_5_decision_tree():
     print("6. Source separation cannot be proven:")
     print("   keep correction tensors deferred.")
 
-    status_line("source-separation decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("source-separation decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -567,10 +566,11 @@ def case_6_good_failure():
     print()
     print("  hide source overlap inside H_curv/H_exch coefficients or projector labels.")
 
-    status_line("source-separation good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("source-separation good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Source separation fails if:")
@@ -590,10 +590,11 @@ def case_7_failure_controls():
     print("13. projectors are invented after overlap")
     print("14. coefficients absorb overlap")
 
-    status_line("source-separation failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("source-separation failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -615,10 +616,11 @@ def case_8_next_tests():
     print("  Source separation is not enough if the tensor repairs boundary behavior or shifts exterior mass.")
     print("  The next gate is boundary/mass neutrality.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Source separation is required but not derived.")
@@ -646,34 +648,168 @@ def final_interpretation():
     print()
     print("  candidate_correction_tensor_boundary_and_mass_neutrality.py")
 
-    status_line("correction tensor source-separation audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("correction tensor source-separation audit complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    required_obligations = [
+        ("derive_ordinary_matter_source_separation_19",
+         "Derive ordinary matter source separation theorem",
+         "Ordinary T_mu_nu must stay in ordinary source routing (SS2)."),
+        ("derive_A_sector_mass_protection_19",
+         "Derive A-sector mass protection from correction tensor sources",
+         "A-sector mass result must not be modified by correction tensor source accounting (SS3)."),
+        ("guard_ecurv_not_source_reservoir_19",
+         "Guard e_curv not-source-reservoir status",
+         "e_curv must remain diagnostic/accounting only, not H_curv source (SS4)."),
+        ("guard_A_curv_diagnostic_limit_19",
+         "Guard A_curv diagnostic limit in source separation",
+         "A_curv must remain diagnostic/branch-filter unless dynamics are derived (SS5)."),
+        ("guard_J_curv_absence_source_19",
+         "Guard J_curv absence as correction tensor source",
+         "J_curv is not defined and cannot be counted as H_curv source/current (SS6)."),
+        ("derive_Sigma_R_not_tuning_knobs_19",
+         "Derive Sigma/R separation from H_exch tuning role",
+         "Sigma/R must not be coefficients or cancellation knobs inside H_exch (SS7)."),
+        ("guard_J_V_J_exch_unresolved_19",
+         "Guard J_V/J_exch unresolved status in source separation",
+         "J_V and J_exch are not defined enough to source H_exch (SS8)."),
+        ("derive_J_sub_J_exch_not_matter_channels_19",
+         "Derive J_sub/J_exch ordinary-matter-channel exclusion",
+         "J_sub and J_exch must not become ordinary matter channels through correction tensors (SS9)."),
+        ("guard_dark_sector_not_ordinary_relabel_19",
+         "Guard dark sector not-ordinary-relabel status",
+         "Dark-sector source cannot relabel ordinary matter or ordinary exchange failure (SS10)."),
+        ("guard_zeta_Bs_insertion_not_reopened_19",
+         "Guard zeta/B_s insertion not-reopened by correction tensors",
+         "Correction tensors must not reopen B_s/F_zeta insertion or residual metric trace (SS11)."),
+        ("guard_residual_killed_non_metric_19",
+         "Guard residual killed/non-metric status",
+         "Residual zeta/kappa trace must remain killed or non-metric unless O no-overlap is derived (SS12)."),
+        ("derive_boundary_source_separation_19",
+         "Derive boundary source separation from tensor correction",
+         "Boundary leakage/shell/scalar tail cannot be reclassified as H source (SS13)."),
+        ("derive_coefficient_source_separation_19",
+         "Derive coefficient source separation",
+         "Correction tensor coefficients must not be fitted from overlapping source sectors (SS14)."),
+    ]
+
+    for obligation_id, title, description in required_obligations:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=ObligationStatus.OPEN,
+            required_by=["correction_tensor_insertability_route"],
+            description=description,
+        ))
+
+    all_obligation_ids = [o[0] for o in required_obligations]
+
+    # Candidate routes
+    ns.record_route(RouteRecord(
+        route_id="projected_source_separation_candidate_route_19",
+        script_id=SCRIPT_ID,
+        name="Projected source separation candidate",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=all_obligation_ids,
+        activation_conditions=[
+            "real projectors separate ordinary, curvature, exchange, residual, and dark sectors",
+            "projectors are not invented after source collision appears",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="diagnostic_only_source_separation_route_19",
+        script_id=SCRIPT_ID,
+        name="Diagnostic-only correction tensor (no source overlap)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[],
+        activation_conditions=["not inserted into field equation"],
+    ))
+
+    # SS23 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_source_separation_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="correction_tensor_source_separation_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "SS23 failure condition: if correction tensors cannot avoid ordinary/vacuum/source overlap, "
+            "they remain deferred or diagnostic-only. Mapped to DEFERRED_PENDING_PREREQUISITES because "
+            "no contradiction has been demonstrated — source-separation prerequisites are simply absent."
+        ),
+    ))
+
+    # Rejected routes
+    for decision_id, branch_id, description in [
+        ("reject_ordinary_T_inside_H_exch_19", "ordinary_T_inside_H_exch_fiat", "SS17: ordinary T inside H_exch by fiat rejected."),
+        ("reject_ecurv_H_curv_reservoir_19", "ecurv_H_curv_source_reservoir", "SS18: e_curv inside H_curv as source reservoir rejected."),
+        ("reject_sigma_r_H_exch_knobs_19", "sigma_r_H_exch_coefficient_knobs", "SS19: Sigma/R as H_exch coefficient knobs rejected."),
+        ("reject_residual_restored_tensor_19", "residual_restored_through_tensor", "SS20: restoring residual trace through tensor correction rejected."),
+        ("reject_dark_relabels_ordinary_19", "dark_sector_relabels_ordinary_matter", "SS21: dark sector relabeling ordinary matter rejected."),
+        ("reject_boundary_source_tensor_19", "boundary_source_counted_as_tensor", "SS22: boundary source counted as tensor correction rejected."),
+    ]:
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id=decision_id,
+            script_id=SCRIPT_ID,
+            branch_id=branch_id,
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            description=description,
+        ))
+
+    # Summary claim
+    ns.record_claim(ClaimRecord(
+        claim_id="source_separation_not_derived_19",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "Source separation for correction tensors is required but not derived. "
+            "All thirteen source-separation obligations remain open."
+        ),
+        obligation_ids=all_obligation_ids,
+    ))
 
 
 def main():
     header("Candidate Correction Tensor Source Separation")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_source_separation_classes()
-    case_4b_projector_sample(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_source_separation_classes(out)
+    case_4b_projector_sample(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="correction_tensor_source_separation_marker",
-        inputs=[],
-        output=sp.Symbol("correction_tensor_source_separation_complete"),
-        method="correction_tensor_source_separation",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="correction_tensor_source_separation_marker",
+            inputs=[],
+            output=sp.Symbol("correction_tensor_source_separation_complete"),
+            method="correction_tensor_source_separation",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

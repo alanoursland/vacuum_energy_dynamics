@@ -3,6 +3,9 @@
 # Group:
 #   16_metric_insertion_and_no_overlap
 #
+# Script type:
+#   SIEVE
+#
 # Purpose
 # -------
 # The B_s / F_zeta insertion audit found:
@@ -34,6 +37,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,34 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -305,12 +293,12 @@ def print_entry(e: CountOnceEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"[INFO] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: B_s-only count-once problem")
 
     print("Question:")
@@ -339,7 +327,8 @@ def case_0_problem_statement():
     print("  do not allow exterior scalar charge")
     print("  keep recovery downstream")
 
-    status_line("B_s-only count-once problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("B_s-only count-once problem posed", StatusMark.OBLIGATION, "required before insertion can proceed")
 
 
 def case_1_inventory(entries: List[CountOnceEntry]):
@@ -348,7 +337,7 @@ def case_1_inventory(entries: List[CountOnceEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[CountOnceEntry]):
+def case_2_compact_table(entries: List[CountOnceEntry], out: ScriptOutput):
     header("Case 2: Compact B_s-only count-once ledger")
 
     print("| Entry | Rule | Status | Consequence |")
@@ -366,10 +355,11 @@ def case_2_compact_table(entries: List[CountOnceEntry]):
             + " |"
         )
 
-    status_line("compact count-once ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact count-once ledger produced", StatusMark.INFO, "inventory of second-spoon routes")
 
 
-def case_3_status_counts(entries: List[CountOnceEntry]):
+def case_3_status_counts(entries: List[CountOnceEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -387,10 +377,11 @@ def case_3_status_counts(entries: List[CountOnceEntry]):
     print("  Neutral residual remains possible but theorem-heavy.")
     print("  Next gate is non-metric residual bookkeeping: what can residual variables still do safely?")
 
-    status_line("B_s-only count-once status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("B_s-only count-once status count produced", StatusMark.INFO, "second-spoon routes enumerated")
 
 
-def case_4_second_spoon_routes():
+def case_4_second_spoon_routes(out: ScriptOutput):
     header("Case 4: Second-spoon routes to block")
 
     print("Second-spoon routes:")
@@ -407,10 +398,11 @@ def case_4_second_spoon_routes():
     print()
     print("All must be blocked unless a real O / parent identity permits a neutral residual.")
 
-    status_line("second-spoon routes listed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("second-spoon routes listed", StatusMark.WARN, "nine routes require blocking")
 
 
-def case_4b_symbolic_count_once(ns):
+def case_4b_symbolic_count_once(ns, out: ScriptOutput):
     header("Case 4b: Symbolic count-once check")
 
     delta_zeta = sp.symbols("delta_zeta", real=True)
@@ -423,13 +415,15 @@ def case_4b_symbolic_count_once(ns):
     print(f"  total scalar trace contribution = {scalar_trace}")
 
     if scalar_trace == 2 * delta_zeta:
-        status_line(
-            "symbolic count-once scalar trace",
-            "DERIVED_REDUCED",
-            f"delta gamma_ij / gamma_ij = {fractional_entry}, trace contribution = {scalar_trace}",
-        )
+        with out.derived_results():
+            out.line(
+                "symbolic count-once scalar trace",
+                StatusMark.PASS,
+                f"delta gamma_ij / gamma_ij = {fractional_entry}, trace contribution = {scalar_trace}",
+            )
     else:
-        status_line("symbolic count-once scalar trace", "RISK", "unexpected scalar trace factor")
+        with out.derived_results():
+            out.line("symbolic count-once scalar trace", StatusMark.FAIL, "unexpected scalar trace factor")
 
     ns.record_derivation(
         derivation_id="B_s_only_scalar_trace_factor",
@@ -437,10 +431,12 @@ def case_4b_symbolic_count_once(ns):
         output=sp.Tuple(fractional_entry, scalar_trace),
         method="symbolic count-once trace factor",
         status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        scope="3 spatial dimensions, det(bar_gamma)=1 convention",
     )
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Count-once decision tree")
 
     print("Decision tree:")
@@ -463,10 +459,11 @@ def case_5_decision_tree():
     print("6. Parent trace identity:")
     print("   future route to derive count-once, not available here.")
 
-    status_line("count-once decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("count-once decision tree stated", StatusMark.INFO, "recommended next is non-metric bookkeeping audit")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -484,10 +481,15 @@ def case_6_good_failure():
     print("  Declare residual killed, then reinsert it through kappa, energy accounting,")
     print("  or P_relax scalar radiation.")
 
-    status_line("B_s-only count-once good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line(
+            "B_s-only count-once good failure stated",
+            StatusMark.DEFER,
+            "deferred pending residual-kill or O theorem",
+        )
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("B_s-only count-once fails if:")
@@ -503,10 +505,11 @@ def case_7_failure_controls():
     print("9. recovery checks choose counted sector")
     print("10. O is named but not defined")
 
-    status_line("B_s-only count-once failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("B_s-only count-once failure controls stated", StatusMark.WARN, "open second-spoon risks")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -528,10 +531,11 @@ def case_8_next_tests():
     print("  B_s-only count-once blocks metric residuals, but residual variables may still")
     print("  have safe non-metric bookkeeping or relaxation roles that need fencing.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_residual_nonmetric_bookkeeping_rule.py")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("B_s-only insertion remains the safest provisional count-once rule.")
@@ -552,33 +556,125 @@ def final_interpretation():
     print()
     print("  candidate_residual_nonmetric_bookkeeping_rule.py")
 
-    status_line("B_s-only count-once audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line(
+            "B_s-only count-once audit complete",
+            StatusMark.DEFER,
+            "no count-once theorem derived; deferred",
+        )
 
 
 def main():
     header("Candidate B_s-Only Insertion Count-Once")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_second_spoon_routes()
-    case_4b_symbolic_count_once(ns)
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_second_spoon_routes(out)
+    case_4b_symbolic_count_once(ns, out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="B_s_only_insertion_count_once_marker",
-        inputs=[],
-        output=sp.Symbol("B_s_only_insertion_count_once_audited"),
-        method="B_s_only_insertion_count_once_audit",
-        status=Status.DERIVED,
-    )
+    with archive.script_namespace(SCRIPT_ID) as ns2:
+        # Proof obligations for count-once theorems
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_residual_kill_theorem_count_once",
+            script_id=SCRIPT_ID,
+            title="Derive residual-kill theorem for B_s-only count-once",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_only_count_once_route"],
+            description=(
+                "Derive that zeta_residual_metric = 0 and kappa_residual_metric = 0 "
+                "or non-metric follow structurally from B_s insertion, not by convention."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_energy_accounting_recombination_rule",
+            script_id=SCRIPT_ID,
+            title="Derive energy/accounting recombination rule after B_s insertion",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_only_count_once_route"],
+            description=(
+                "Show that epsilon_vac_config and e_kappa cannot re-source killed residual "
+                "metric scalar trace after B_s-only insertion."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_mass_accounting_theorem_count_once",
+            script_id=SCRIPT_ID,
+            title="Derive mass-accounting theorem for B_s-only insertion",
+            status=ObligationStatus.OPEN,
+            required_by=["B_s_only_count_once_route"],
+            description=(
+                "Show that B_s-only insertion and killed/non-metric residual "
+                "do not alter A-sector exterior mass M_ext independently."
+            ),
+        ))
+
+        # Route: B_s-only count-once provisional convention
+        ns2.record_route(RouteRecord(
+            route_id="B_s_only_count_once_provisional_convention",
+            script_id=SCRIPT_ID,
+            name="B_s-only count-once with provisional residual-kill",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_residual_kill_theorem_count_once",
+                "derive_energy_accounting_recombination_rule",
+                "derive_mass_accounting_theorem_count_once",
+            ],
+            activation_conditions=[
+                "residual zeta/kappa metric trace is killed or non-metric",
+                "energy/accounting cannot source extra metric trace",
+                "no exterior scalar charge from residual",
+                "M_ext is not shifted independently",
+                "recovery remains downstream",
+            ],
+        ))
+
+        # Branch decision: deferred pending theorems
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_count_once_no_residual_kill_theorem",
+            script_id=SCRIPT_ID,
+            branch_id="B_s_only_count_once",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+            obligation_ids=[
+                "derive_residual_kill_theorem_count_once",
+                "derive_energy_accounting_recombination_rule",
+                "derive_mass_accounting_theorem_count_once",
+            ],
+            description=(
+                "B_s-only count-once cannot be licensed because residual-kill and "
+                "energy/accounting recombination theorems are missing. "
+                "Convention survives provisionally."
+            ),
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="B_s_only_insertion_count_once_marker",
+            inputs=[],
+            output=sp.Symbol("B_s_only_insertion_count_once_audited"),
+            method="B_s_only_insertion_count_once_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+    out.print_summary()
     ns.write_run_metadata()
 
 

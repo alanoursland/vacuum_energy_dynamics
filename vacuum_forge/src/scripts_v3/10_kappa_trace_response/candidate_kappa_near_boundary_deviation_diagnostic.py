@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Candidate kappa near-boundary deviation diagnostic
 #
 # Purpose
@@ -29,17 +35,22 @@
 #   width scaling  = dependence on transition width sigma
 #
 # This is a diagnostic inventory, not a prediction.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_near_boundary_deviation_diagnostic.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,22 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -110,9 +105,6 @@ def case_0_problem_statement():
     print()
     print("  near surface / matter-vacuum interface")
 
-    status_line("near-boundary deviation diagnostic problem posed",
-                "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_define_reference_and_joint_profiles():
     header("Case 1: Reference and joint profiles")
@@ -138,10 +130,6 @@ def case_1_define_reference_and_joint_profiles():
     print()
     print(f"delta_f = {delta_f}")
 
-    status_line("profile deviation diagnostic defined",
-                "CONSTRAINED_BY_IDENTITY",
-                "reference profile must be specified")
-
     return r, f_ref, f_joint, delta_f
 
 
@@ -158,10 +146,6 @@ def case_2_acceleration_diagnostic(r, delta_f):
     print(f"delta_g = {delta_g}")
     print()
     print("This would likely peak where the transition layer bends fastest.")
-
-    status_line("acceleration deviation diagnostic defined",
-                "CONSTRAINED_BY_IDENTITY",
-                "normalization/recombination missing")
 
     return delta_g
 
@@ -183,10 +167,6 @@ def case_3_curvature_diagnostic(r, delta_f):
     print("  delta_lap = delta_f'' + 2 delta_f'/r")
     print()
     print(f"delta_lap = {delta_lap}")
-
-    status_line("curvature deviation diagnostics defined",
-                "CONSTRAINED_BY_IDENTITY",
-                "metric mapping still needed")
 
     return delta_curv, delta_lap
 
@@ -214,9 +194,7 @@ def case_4_redshift_lapse_diagnostic():
     print()
     print(f"approx = {linear}")
 
-    status_line("redshift/lapse diagnostic defined",
-                "CONSTRAINED_BY_IDENTITY",
-                "requires recombination map")
+    return A_ref, delta_A, exact, linear
 
 
 def case_5_transition_width_scaling():
@@ -238,9 +216,7 @@ def case_5_transition_width_scaling():
     print()
     print("But sigma is not derived, so this is only scaling discipline.")
 
-    status_line("transition-width scaling stated",
-                "PLAUSIBLE",
-                "epsilon and sigma not derived")
+    return sigma, eps
 
 
 def case_6_regions_hierarchy():
@@ -255,10 +231,6 @@ def case_6_regions_hierarchy():
     print("| far exterior | delta should decay / vanish |")
     print()
     print("This keeps the expected deviation localized.")
-
-    status_line("near-boundary region hierarchy stated",
-                "PLAUSIBLE",
-                "magnitude unknown")
 
 
 def case_7_possible_observable_channels():
@@ -276,10 +248,6 @@ def case_7_possible_observable_channels():
     print("  no channel is claimed viable yet.")
     print("  these are diagnostic buckets only.")
 
-    status_line("observable channel inventory stated",
-                "PLAUSIBLE",
-                "no viability assessment")
-
 
 def case_8_measurement_caution():
     header("Case 8: Measurement caution")
@@ -296,10 +264,6 @@ def case_8_measurement_caution():
     print()
     print("  possible deviation != practical test yet")
 
-    status_line("measurement caution retained",
-                "CONSTRAINED_BY_IDENTITY",
-                "avoid overclaim")
-
 
 def case_9_failure_controls():
     header("Case 9: Failure controls")
@@ -312,10 +276,6 @@ def case_9_failure_controls():
     print("4. predicted acceleration/redshift deviation is already excluded.")
     print("5. kappa-sector deviation is confused with A-sector mass flux.")
     print("6. magnitude is claimed before sigma/weights are derived.")
-
-    status_line("deviation diagnostic failure controls stated",
-                "RISK",
-                "diagnostic before prediction")
 
 
 def case_10_classification():
@@ -331,10 +291,6 @@ def case_10_classification():
     print("| observable channels | PLAUSIBLE inventory only |")
     print("| magnitude prediction | MISSING |")
     print("| measurement claim | NOT MADE |")
-
-    status_line("near-boundary diagnostic classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "no prediction yet")
 
 
 def case_11_next_tests():
@@ -358,10 +314,6 @@ def case_11_next_tests():
     print("Reason:")
     print("  Group 10 has reached a natural boundary: kappa status is now clear enough")
     print("  to summarize before pushing numerical/observational speculation.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "summary is recommended")
 
 
 def final_interpretation():
@@ -392,11 +344,14 @@ def main():
     header("Candidate Kappa Near-Boundary Deviation Diagnostic")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     r, f_ref, f_joint, delta_f = case_1_define_reference_and_joint_profiles()
     case_0_problem_statement()
     delta_g = case_2_acceleration_diagnostic(r, delta_f)
-    case_3_curvature_diagnostic(r, delta_f)
-    case_4_redshift_lapse_diagnostic()
+    delta_curv, delta_lap = case_3_curvature_diagnostic(r, delta_f)
+    A_ref, delta_A, exact_redshift, linear_redshift = case_4_redshift_lapse_diagnostic()
     case_5_transition_width_scaling()
     case_6_regions_hierarchy()
     case_7_possible_observable_channels()
@@ -405,14 +360,104 @@ def main():
     case_10_classification()
     case_11_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_near_boundary_deviation_diagnostic_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_near_boundary_deviation_diagnostics_stated"),
-        method="kappa_near_boundary_deviation_diagnostic_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # All diagnostics are symbolic definitions (no concrete profiles); DIAGNOSTIC_EXAMPLE type
+        ns.record_derivation(
+            derivation_id="near_boundary_profile_deviation_diagnostic_definition",
+            inputs=[f_joint, f_ref],
+            output=delta_f,
+            method="define delta_f = f_joint - f_GR_ref as symbolic profile deviation",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+            scope="symbolic definition only; no specific f_joint profile assumed",
+        )
+
+        ns.record_derivation(
+            derivation_id="near_boundary_acceleration_diagnostic_definition",
+            inputs=[delta_f],
+            output=delta_g,
+            method="define delta_g = -d/dr(delta_f) as acceleration-like deviation",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+            scope="symbolic definition only; normalization/recombination missing",
+        )
+
+        ns.record_derivation(
+            derivation_id="near_boundary_curvature_diagnostic_definition",
+            inputs=[delta_f],
+            output=delta_curv,
+            method="define delta_curv = d^2/dr^2(delta_f) as curvature-like deviation",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+            scope="symbolic definition only; metric mapping missing",
+        )
+
+        ns.record_derivation(
+            derivation_id="near_boundary_redshift_diagnostic_linearized",
+            inputs=[delta_A, A_ref],
+            output=linear_redshift,
+            method="linearize sqrt((A_ref+delta_A)/A_ref)-1 for small delta_A",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+            scope="linearized in delta_A/A_ref; recombination map to lapse not derived",
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_near_boundary_deviation_diagnostic_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_near_boundary_deviation_diagnostics_stated"),
+            method="kappa_near_boundary_deviation_diagnostic_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_near_boundary_deviation_recombination_map_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the recombination map from kappa deviation to observable metric quantity",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The diagnostics delta_f, delta_g, delta_curv are defined symbolically. "
+                "Before any magnitude estimate or observability claim, a recombination map "
+                "connecting the kappa-sector deviation to an observable metric quantity "
+                "(acceleration, redshift, etc.) must be derived."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="near_boundary_deviation_diagnostic_not_prediction",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "The near-boundary deviation diagnostics (delta_f, delta_g, delta_curv, "
+                "delta_redshift) are symbolic definitions only. They carry no magnitude "
+                "prediction. Premature observability claims before deriving weights, sigma, "
+                "and a recombination map are an open risk and are explicitly prohibited."
+            ),
+        ))
+
+        with out.diagnostic_results():
+            out.line("delta_f = f_joint - f_GR_ref defined symbolically", StatusMark.PASS, "diagnostic definition")
+            out.line("delta_g = -d(delta_f)/dr defined symbolically", StatusMark.PASS, "diagnostic definition")
+            out.line("delta_curv = d^2(delta_f)/dr^2 defined symbolically", StatusMark.PASS, "diagnostic definition")
+            out.line("redshift linearization delta_A/(2*A_ref) stated", StatusMark.PASS, "diagnostic definition")
+
+        with out.governance_assessments():
+            out.line("no magnitude prediction made", StatusMark.PASS, "discipline maintained")
+            out.line("no observability claim made", StatusMark.PASS, "discipline maintained")
+            out.line("recombination map", StatusMark.OBLIGATION, "missing")
+            out.line("sigma and weights", StatusMark.OBLIGATION, "not derived")
+
+        with out.unresolved_obligations():
+            out.line("derive recombination map for kappa deviation to observable", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   INVENTORY
+
 # Candidate mass-acceleration-gradient coupling
 #
 # Purpose
@@ -32,6 +38,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -43,26 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DERIVED_REDUCED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -204,11 +200,11 @@ def print_candidate(c: CouplingCandidate) -> None:
     print(f"Interpretation: {c.interpretation}")
     print(f"Allowed role: {c.allowed_role}")
     print(f"Danger: {c.danger}")
-    status_line(c.name, c.status)
+    print(f"Status: {c.status}")
     print(f"Missing: {c.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Mass-acceleration-gradient coupling problem")
 
     print("Question:")
@@ -227,7 +223,8 @@ def case_0_problem_statement():
     print("  do not replace scalar conversion with Box scalar radiation")
     print("  distinguish geodesic bookkeeping from non-geodesic force")
 
-    status_line("mass-acceleration-gradient problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("mass-acceleration-gradient problem posed", StatusMark.OBLIGATION, "open: coupling expression and binary safety required")
 
 
 def case_1_candidate_inventory(entries: List[CouplingCandidate]):
@@ -236,7 +233,7 @@ def case_1_candidate_inventory(entries: List[CouplingCandidate]):
         print_candidate(entry)
 
 
-def case_2_compact_table(entries: List[CouplingCandidate]):
+def case_2_compact_table(entries: List[CouplingCandidate], out: ScriptOutput):
     header("Case 2: Compact coupling ledger")
 
     print("| Candidate | Expression | Status | Danger | Missing |")
@@ -256,10 +253,11 @@ def case_2_compact_table(entries: List[CouplingCandidate]):
             + " |"
         )
 
-    status_line("compact coupling ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact coupling ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[CouplingCandidate]):
+def case_3_status_counts(entries: List[CouplingCandidate], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -276,10 +274,11 @@ def case_3_status_counts(entries: List[CouplingCandidate]):
     print("  Trace-volume coupling best matches the zeta/TT split.")
     print("  Binary-radiation safety is the next hard filter.")
 
-    status_line("coupling status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("coupling status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_key_distinctions():
+def case_4_key_distinctions(out: ScriptOutput):
     header("Case 4: Key distinctions")
 
     print("Coordinate acceleration versus proper acceleration:")
@@ -301,10 +300,11 @@ def case_4_key_distinctions():
     print()
     print("  the coupling must not turn ordinary orbital motion into extra scalar damping.")
 
-    status_line("key coupling distinctions stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("key coupling distinctions stated", StatusMark.PASS, "distinctions explicit")
 
 
-def case_5_preferred_survivors():
+def case_5_preferred_survivors(out: ScriptOutput):
     header("Case 5: Preferred survivors")
 
     print("Most plausible survivors for next testing:")
@@ -329,10 +329,11 @@ def case_5_preferred_survivors():
     print("Reason:")
     print("  they may be useful reduced diagnostics, but risk frame dependence or extra orbital dissipation.")
 
-    status_line("preferred coupling survivors stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("preferred coupling survivors stated", StatusMark.DEFER, "candidate route: four survivors under test")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("The coupling fails if:")
@@ -346,10 +347,11 @@ def case_6_failure_controls():
     print("7. It turns zeta/kappa into exterior scalar charge.")
     print("8. It is just a decorative rewriting of GR geodesics.")
 
-    status_line("coupling failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("coupling failure controls stated", StatusMark.DEFER, "open risk: failure conditions not yet excluded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -370,7 +372,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Any coupling candidate must survive the binary-radiation safety filter.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "binary radiation scalar conversion safety")
 
 
 def final_interpretation():
@@ -402,22 +405,63 @@ def main():
     header("Candidate Mass Acceleration Gradient Coupling")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_candidates()
+
+    case_0_problem_statement(out)
     case_1_candidate_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_key_distinctions()
-    case_5_preferred_survivors()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_key_distinctions(out)
+    case_5_preferred_survivors(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="P_trace_T_coupling_preferred_survivor",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "P_trace[T] -> delta zeta is the preferred surviving coupling candidate because it "
+            "aligns with the trace/TT geometric split. It must not produce far-zone scalar radiation "
+            "or create extra orbital energy loss beyond TT radiation."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="box_zeta_box_kappa_rejected_coupling",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Box zeta = alpha * rho and Box kappa = alpha * T are rejected as coupling expressions "
+            "in ordinary gravity. They would produce far-zone scalar radiation and binary-energy-loss failures."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_Sigma_exchange_from_coupling_candidates",
+        script_id=SCRIPT_ID,
+        title="Derive Sigma_exchange from surviving coupling candidates",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Select and derive Sigma_exchange from the surviving coupling candidates "
+            "(P_trace[T], nabla_mu(T^munu nabla_nu A), T^munu nabla_mu nabla_nu A, geodesic identity). "
+            "The chosen expression must pass the binary-radiation safety filter."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="mass_acceleration_gradient_coupling_marker",
         inputs=[],
         output=sp.Symbol("mass_acceleration_gradient_coupling_audited"),
         method="mass_acceleration_gradient_coupling_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

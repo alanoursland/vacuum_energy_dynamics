@@ -1,5 +1,11 @@
 # Candidate minimal volume-exchange operator ansatz
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The volume-exchange stiffness-ratio origin audit found:
@@ -23,6 +29,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -35,32 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -233,12 +223,12 @@ def print_entry(e: VolumeOperatorEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal volume-exchange operator ansatz problem")
 
     print("Question:")
@@ -258,7 +248,9 @@ def case_0_problem_statement():
     print("  preserve no-overlap trace theorem")
     print("  allow branch-defer if V only relocates coefficients")
 
-    status_line("minimal volume-exchange operator problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("minimal volume-exchange operator problem posed", "DEFER",
+                 "branch open pending explicit V shell with fixed coefficients")
 
 
 def case_1_inventory(entries: List[VolumeOperatorEntry]):
@@ -267,7 +259,7 @@ def case_1_inventory(entries: List[VolumeOperatorEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[VolumeOperatorEntry]):
+def case_2_compact_table(entries: List[VolumeOperatorEntry], out: ScriptOutput):
     header("Case 2: Compact volume-operator ledger")
 
     print("| Entry | Ansatz | Status | Consequence |")
@@ -285,10 +277,11 @@ def case_2_compact_table(entries: List[VolumeOperatorEntry]):
             + " |"
         )
 
-    status_line("compact volume-operator ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact volume-operator ledger produced", "INFO", "inventory table complete")
 
 
-def case_3_status_counts(entries: List[VolumeOperatorEntry]):
+def case_3_status_counts(entries: List[VolumeOperatorEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -305,10 +298,11 @@ def case_3_status_counts(entries: List[VolumeOperatorEntry]):
     print("  Boundary neutrality and no-overlap are mandatory.")
     print("  The next decision is zeta companion versus residual after the V-shell inventory.")
 
-    status_line("volume-operator status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("volume-operator status count produced", "INFO", "counts reviewed")
 
 
-def case_4_operator_shells():
+def case_4_operator_shells(out: ScriptOutput):
     header("Case 4: Operator shells to test")
 
     print("Minimal shells:")
@@ -331,10 +325,12 @@ def case_4_operator_shells():
     print()
     print("Each must fix ratios before recovery checks or be treated as decorative.")
 
-    status_line("volume-exchange operator shells stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("volume-exchange operator shells stated", "CANDIDATE",
+                 "five shell classes identified; none yet has fixed coefficient origin")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / decision")
 
     print("Good failure:")
@@ -349,10 +345,12 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  keep saying vacuum volume fixes q while V is still unnamed.")
 
-    status_line("volume-operator good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("volume-operator good failure stated", "DEFER",
+                 "branch deferred; zeta companion vs residual decision is next")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Minimal volume-exchange operator test fails if:")
@@ -366,10 +364,11 @@ def case_6_failure_controls():
     print("7. source-driven volume creation has no covariant/source expression")
     print("8. V only relocates coefficient freedom")
 
-    status_line("volume-operator failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("volume-operator failure controls stated", "INFO", "eight failure controls recorded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -390,7 +389,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Every useful V shell forces zeta status. Decide companion versus residual before adding more exchange structure.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", "INFO", "candidate_zeta_companion_vs_residual_decision.py")
 
 
 def final_interpretation():
@@ -412,25 +412,69 @@ def main():
     header("Candidate Minimal Volume-Exchange Operator Ansatz")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_operator_shells()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_operator_shells(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="minimal_volume_exchange_operator_ansatz_marker",
-        inputs=[],
-        output=sp.Symbol("minimal_volume_exchange_operator_ansatz_audited"),
-        method="minimal_volume_exchange_operator_ansatz_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with ProjectArchive(ARCHIVE_ROOT) as pa:
+        ns2 = pa.script_namespace(SCRIPT_ID)
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_V_operator_shells_with_fixed_coefficients_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive V[A,B_s,zeta] shells with coefficient origin",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that at least one V shell (algebraic, derivative, current, or source-coupled) "
+                "fixes its coefficients before recovery checks and does not cause zeta to double-count "
+                "as both companion and independent residual trace."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="volume_exchange_operator_shells_identified",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Five explicit V[A,B_s,zeta] shell classes are identified: algebraic companion, "
+                "derivative exchange, volume current, source-coupled creation, and relaxation. "
+                "Each shell forces a zeta companion-vs-residual decision before it can fix q."
+            ),
+        ))
+
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_minimal_volume_exchange_operator_ansatz_branch",
+            script_id=SCRIPT_ID,
+            branch_id="minimal_volume_exchange_operator_ansatz",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_V_operator_shells_with_fixed_coefficients_in_14"],
+        ))
+
+        ns2.record_derivation(
+            derivation_id="minimal_volume_exchange_operator_ansatz_marker",
+            inputs=[],
+            output=sp.Symbol("minimal_volume_exchange_operator_ansatz_audited"),
+            method="minimal_volume_exchange_operator_ansatz_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns2.write_run_metadata()
+
+    out.print()
 
 
 if __name__ == "__main__":

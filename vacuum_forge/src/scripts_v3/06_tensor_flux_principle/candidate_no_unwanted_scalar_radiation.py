@@ -1,3 +1,9 @@
+# Group:
+#   06_tensor_flux_principle
+#
+# Script type:
+#   DIAGNOSTIC
+
 # Candidate no unwanted scalar radiation
 #
 # Purpose
@@ -21,13 +27,28 @@
 #
 # This is not an observational bounds calculation.
 # It is a theory-architecture failure control.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/06_tensor_flux_principle/
-#   or:
-#   scripts_v3/candidate_no_unwanted_scalar_radiation.py
+
+from pathlib import Path
 
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    EvidenceRecord,
+    EvidenceType,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ReasonCode,
+    ScriptOutput,
+    StatusMark,
+)
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -41,19 +62,35 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
-
-
 def is_zero(expr) -> bool:
     try:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    ns.declare_dependency(
+        dependency_id="quadrupole_tensor_flux_marker",
+        upstream_script_id="06_tensor_flux_principle__candidate_quadrupole_tensor_flux",
+        upstream_derivation_id="quadrupole_tensor_flux_marker",
+    )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -74,14 +111,17 @@ def case_0_problem_statement():
     print("Goal:")
     print("  Establish guardrails that keep radiation in the TT tensor channel.")
 
-    status_line("unwanted scalar radiation guardrail posed", True)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("unwanted scalar radiation guardrail posed", StatusMark.PASS, "failure control for scalar radiation setup")
+    out.print()
 
 
 # =============================================================================
 # Case 1: Monopole scalar radiation control
 # =============================================================================
 
-def case_1_monopole_control():
+def case_1_monopole_control(ns):
     header("Case 1: Monopole scalar radiation control")
 
     t, M0 = sp.symbols("t M0", real=True)
@@ -94,14 +134,29 @@ def case_1_monopole_control():
     print(f"Mdot = {Mdot}")
     print(f"Mddot = {Mddot}")
 
-    status_line("conserved total mass gives no scalar monopole radiation", is_zero(Mdot) and is_zero(Mddot))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("conserved total mass gives no scalar monopole radiation",
+                 StatusMark.PASS if is_zero(Mdot) and is_zero(Mddot) else StatusMark.FAIL,
+                 f"Mdot = {Mdot}, Mddot = {Mddot}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="conserved_mass_no_monopole_radiation",
+        inputs=[M],
+        output=sp.Matrix([Mdot, Mddot]),
+        method="time_derivatives_conserved_mass",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 2: Dipole scalar radiation control
 # =============================================================================
 
-def case_2_dipole_control():
+def case_2_dipole_control(ns):
     header("Case 2: Dipole scalar radiation control")
 
     t = sp.symbols("t", real=True)
@@ -114,14 +169,29 @@ def case_2_dipole_control():
     print(f"D(t) = {D}")
     print(f"Dddot = {Dddot}")
 
-    status_line("constant-velocity center-of-mass dipole gives no dipole radiation proxy", is_zero(Dddot))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("constant-velocity center-of-mass dipole gives no dipole radiation proxy",
+                 StatusMark.PASS if is_zero(Dddot) else StatusMark.FAIL,
+                 f"Dddot = {Dddot}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="constant_velocity_dipole_no_radiation",
+        inputs=[D],
+        output=Dddot,
+        method="time_derivative_linear_dipole",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 3: Scalar breathing quadrupole is not TT
 # =============================================================================
 
-def case_3_breathing_not_tt():
+def case_3_breathing_not_tt(ns):
     header("Case 3: Scalar breathing quadrupole is not TT")
 
     b = sp.symbols("b", real=True)
@@ -138,14 +208,28 @@ def case_3_breathing_not_tt():
     print(H_breathing)
     print(f"trace = {trace}")
 
-    status_line("breathing mode is scalar trace mode, not TT", not is_zero(trace))
+    out = ScriptOutput()
+    with out.counterexamples():
+        out.line("breathing mode is scalar trace mode, not TT",
+                 StatusMark.PASS if not is_zero(trace) else StatusMark.FAIL,
+                 f"trace = {trace}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="breathing_mode_trace_nonzero_guardrail",
+        inputs=[H_breathing],
+        output=trace,
+        method="trace_of_breathing_mode",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+    )
 
 
 # =============================================================================
 # Case 4: Compare scalar breathing to tensor plus/cross energy channels
 # =============================================================================
 
-def case_4_breathing_energy_danger():
+def case_4_breathing_energy_danger(ns):
     header("Case 4: Scalar breathing energy danger")
 
     t, omega, B, Hp, Hx = sp.symbols("t omega B H_plus H_cross", positive=True, real=True)
@@ -159,7 +243,19 @@ def case_4_breathing_energy_danger():
     print()
     print("If B is not suppressed, scalar radiation would add an extra channel.")
 
-    status_line("scalar breathing radiation must be absent or suppressed", True)
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("scalar breathing radiation must be absent or suppressed", StatusMark.OBLIGATION, "B must be absent, constrained, or suppressed")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="breathing_vs_tt_flux_proxy_comparison",
+        inputs=[B, Hp, Hx, omega],
+        output=sp.Matrix([scalar_breathing_flux_proxy, tensor_flux_proxy]),
+        method="quadratic_flux_proxy_breathing_vs_tt",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+    )
 
 
 # =============================================================================
@@ -183,14 +279,18 @@ def case_5_suppression_options():
     print("  A handles static/scalar mass response.")
     print("  h_ij^TT handles radiation.")
     print()
-    status_line("suppression architecture options listed", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("suppression architecture options listed", StatusMark.OBLIGATION, "suppression mechanism not yet decided or derived")
+    out.print()
 
 
 # =============================================================================
 # Case 6: Tensor quadrupole remains intended channel
 # =============================================================================
 
-def case_6_tensor_channel_intended():
+def case_6_tensor_channel_intended(ns):
     header("Case 6: Tensor quadrupole remains intended radiation channel")
 
     t, Q0, Omega = sp.symbols("t Q0 Omega", positive=True, real=True)
@@ -207,7 +307,20 @@ def case_6_tensor_channel_intended():
     print(f"Q_cross = {Qx}")
     print(f"Qdddot² proxy = {tensor_power_proxy}")
 
-    status_line("time-varying quadrupole supports tensor radiation proxy", True)
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("time-varying quadrupole supports tensor radiation proxy", StatusMark.PASS, f"Qdddot² proxy = {tensor_power_proxy}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="rotating_quadrupole_tensor_power_proxy_guardrail",
+        inputs=[Qp, Qx],
+        output=tensor_power_proxy,
+        method="third_derivative_rotating_quadrupole_power_proxy_guardrail",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="rotating quadrupole toy model",
+    )
 
 
 # =============================================================================
@@ -227,7 +340,11 @@ def case_7_classification():
     print("6. A should remain scalar/static/constraint-like unless scalar radiation")
     print("   is deliberately added and tightly constrained.")
     print()
-    status_line("no-unwanted-scalar-radiation guardrail established", True)
+
+    out = ScriptOutput()
+    with out.counterexamples():
+        out.line("no-unwanted-scalar-radiation guardrail established", StatusMark.PASS, "monopole and dipole radiation absent; breathing mode is extra if unsuppressed")
+    out.print()
 
 
 # =============================================================================
@@ -261,15 +378,77 @@ def final_interpretation():
 
 def main():
     header("Candidate No Unwanted Scalar Radiation")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_monopole_control()
-    case_2_dipole_control()
-    case_3_breathing_not_tt()
-    case_4_breathing_energy_danger()
+    case_1_monopole_control(ns)
+    case_2_dipole_control(ns)
+    case_3_breathing_not_tt(ns)
+    case_4_breathing_energy_danger(ns)
     case_5_suppression_options()
-    case_6_tensor_channel_intended()
+    case_6_tensor_channel_intended(ns)
     case_7_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="decide_scalar_A_constraint_vs_dynamical",
+        script_id=SCRIPT_ID,
+        title="Decide whether scalar A is constraint-like or dynamical",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The scalar A channel must be classified as either a constraint (no propagating "
+            "radiative mode) or a dynamical field (propagating scalar radiation). "
+            "The choice has direct consequences for binary energy loss rates."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_breathing_mode_suppression",
+        script_id=SCRIPT_ID,
+        title="Derive breathing mode suppression mechanism",
+        status=ObligationStatus.OPEN,
+        description=(
+            "If scalar A can radiate, the breathing amplitude B must be shown to be "
+            "absent, massive/short-ranged, or observationally constrained. "
+            "An architectural choice must be made and justified."
+        ),
+    ))
+
+    ns.record_evidence(EvidenceRecord(
+        evidence_id="breathing_mode_not_tt_evidence",
+        script_id=SCRIPT_ID,
+        evidence_type=EvidenceType.OVERLAP_WITNESS,
+        challenges=["scalar_A_as_radiative_channel"],
+        reason_code=ReasonCode.EXTERIOR_SCALAR_CHARGE,
+        expression=sp.Symbol("trace_breathing"),
+        expected=sp.Integer(0),
+        observed=sp.Symbol("2b"),
+        residual=sp.Symbol("2b"),
+        description=(
+            "The breathing mode H_breathing has nonzero trace 2b. It is therefore not "
+            "a TT mode. Any scalar breathing radiation would be an extra non-TT channel "
+            "not present in GR. This is a concrete algebraic witness against scalar A "
+            "being a radiative TT channel."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="no_unwanted_scalar_radiation_guardrail_claim",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Conserved mass/dipole scalar channels do not radiate for isolated binaries. "
+            "The scalar breathing mode is not TT radiation. If scalar A radiates, it adds "
+            "an extra unsuppressed channel. The theory architecture must ensure radiation "
+            "resides in h_ij^TT or explicitly constrain any scalar radiation."
+        ),
+        evidence_ids=["breathing_mode_not_tt_evidence"],
+        obligation_ids=["decide_scalar_A_constraint_vs_dynamical", "derive_breathing_mode_suppression"],
+    ))
+
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

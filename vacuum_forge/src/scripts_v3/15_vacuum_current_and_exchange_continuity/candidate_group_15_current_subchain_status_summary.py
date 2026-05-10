@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   SUMMARY
+#
 # Candidate Group 15 current subchain status summary
 #
 # Purpose
@@ -32,11 +38,23 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -44,33 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -215,7 +206,7 @@ def print_entry(e: SubchainStatusEntry) -> None:
     print(e.name)
     print("-" * 120)
     print(f"Result: {e.result}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Consequence: {e.consequence}")
     print(f"Handoff: {e.handoff}")
 
@@ -240,7 +231,10 @@ def case_0_problem_statement():
     print("  preserve recovery downstream")
     print("  name the surviving bottleneck clearly")
 
-    status_line("current-subchain status problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("current-subchain status problem posed", StatusMark.OBLIGATION, "requires honest closure of J_V subchain")
+    out.print()
 
 
 def case_1_status_ledger(entries: List[SubchainStatusEntry]):
@@ -267,7 +261,10 @@ def case_2_compact_table(entries: List[SubchainStatusEntry]):
             + " |"
         )
 
-    status_line("compact current-subchain table produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact current-subchain table produced", StatusMark.INFO, "summary only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[SubchainStatusEntry]):
@@ -288,7 +285,10 @@ def case_3_status_counts(entries: List[SubchainStatusEntry]):
     print("  The no-overlap operator remains unresolved.")
     print("  Residual-kill / non-metric residual is the safest provisional convention.")
 
-    status_line("current-subchain status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("current-subchain status count produced", StatusMark.INFO, "summary only")
+    out.print()
 
 
 def case_4_surviving_bottlenecks():
@@ -311,7 +311,13 @@ def case_4_surviving_bottlenecks():
     print()
     print("because without count-once recombination, J_V-driven zeta cannot safely enter the ordinary metric sector.")
 
-    status_line("surviving bottlenecks recorded", "UNRESOLVED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("no-overlap operator O unresolved", StatusMark.OBLIGATION, "central missing theorem for recombination safety")
+        out.line("J_V physical flux law unresolved", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("Sigma_V operator unresolved", StatusMark.OBLIGATION, "open proof obligation")
+        out.line("R_V operator unresolved", StatusMark.OBLIGATION, "open proof obligation")
+    out.print()
 
 
 def case_5_rejected_regressions():
@@ -335,7 +341,10 @@ def case_5_rejected_regressions():
     for idx, item in enumerate(regressions, 1):
         print(f"{idx}. {item}")
 
-    status_line("rejected regressions preserved", "REJECTED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("rejected regressions preserved", StatusMark.INFO, "policy rules recorded")
+    out.print()
 
 
 def case_6_next_options():
@@ -359,7 +368,10 @@ def case_6_next_options():
     print("Reason:")
     print("  The status summary has closed the audit. The next constructive narrow step, if continuing, is to test the cleanest safe convention: residual-kill / non-metric residual.")
 
-    status_line("next option selected", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next option selected", StatusMark.INFO, "candidate_residual_kill_rule_for_volume_current.py")
+    out.print()
 
 
 def final_interpretation():
@@ -380,7 +392,10 @@ def final_interpretation():
     print()
     print("  candidate_residual_kill_rule_for_volume_current.py")
 
-    status_line("current-subchain status summary complete", "CLOSED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("current-subchain status summary complete", StatusMark.INFO, "closed with unresolved bottleneck recorded")
+    out.print()
 
 
 def main():
@@ -397,14 +412,72 @@ def main():
     case_6_next_options()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="group_15_current_subchain_status_summary_marker",
-        inputs=[],
-        output=sp.Symbol("group_15_current_subchain_status_summary_audited"),
-        method="group_15_current_subchain_status_summary_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_claim(ClaimRecord(
+            claim_id="g15c_J_V_subchain_unresolved_bottleneck",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.SUMMARY_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            statement=(
+                "The J_V / exchange-continuity current subchain narrowed the problem to: "
+                "J_V physical flux law, Sigma_V/R_V operators, timelike domain, static "
+                "neutrality, boundary neutrality, and no-overlap operator O. None has been "
+                "derived. The central missing theorem is O[B_s, zeta_residual/kappa_residual, J_V] = 0."
+            ),
+            obligation_ids=[
+                "derive_J_V_physical_flux_law_in_15",
+                "derive_Sigma_V_operator_in_15",
+                "derive_R_V_operator_in_15",
+                "derive_J_V_timelike_domain_theorem_in_15",
+                "derive_static_source_neutrality_theorem_in_15",
+                "derive_boundary_neutrality_theorem_in_15",
+                "derive_no_overlap_operator_or_residual_kill_in_15",
+            ],
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="g15c_residual_kill_provisional_convention",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Residual-kill / non-metric residual is the safest provisional count-once "
+                "convention if J_V-driven zeta enters B_s. It is not derived. It is revisitable "
+                "if O is later derived or if neutral residual becomes structurally safe."
+            ),
+        ))
+        ns.record_handoff_import(HandoffImportRecord(
+            handoff_id="group_15_current_subchain_handoff",
+            script_id=SCRIPT_ID,
+            imported_as=RecordKind.SUMMARY_CLAIM,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            imported_record_refs=[
+                "claim:g15c_J_V_subchain_unresolved_bottleneck",
+                "claim:g15c_residual_kill_provisional_convention",
+                "obligation:derive_J_V_physical_flux_law_in_15",
+                "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
+                "obligation:derive_boundary_neutrality_theorem_in_15",
+                "obligation:derive_static_source_neutrality_theorem_in_15",
+                "obligation:derive_J_V_timelike_domain_theorem_in_15",
+                "route:no4_residual_kill_safe_route",
+            ],
+            description=(
+                "What the residual-kill and final Group 15 summary scripts may import from "
+                "the current subchain: the unresolved J_V/O bottleneck, the residual-kill "
+                "provisional convention, and all open proof obligations."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="group_15_current_subchain_status_summary_marker",
+            inputs=[],
+            output=sp.Symbol("group_15_current_subchain_status_summary_audited"),
+            method="group_15_current_subchain_status_summary_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

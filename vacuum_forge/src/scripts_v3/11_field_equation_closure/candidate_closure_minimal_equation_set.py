@@ -1,5 +1,11 @@
 # Candidate closure minimal equation set
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   SUMMARY
+#
 # Purpose
 # -------
 # The failure-mode audit identified how closure can fail.
@@ -32,6 +38,17 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status, TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -43,25 +60,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -213,6 +211,18 @@ def build_equations() -> List[EquationEntry]:
 
 
 def print_equation(e: EquationEntry) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+        "RISK": "WARN",
+    }
+    mark = marks.get(e.status, "INFO")
     print()
     print("-" * 120)
     print(e.name)
@@ -220,12 +230,12 @@ def print_equation(e: EquationEntry) -> None:
     print(f"Equation: {e.equation}")
     print(f"Role: {e.role}")
     print(f"Source: {e.source}")
-    status_line(e.name, e.status)
+    print(f"[{mark}] {e.name}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Caveat: {e.caveat}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal closure equation set problem")
 
     print("Question:")
@@ -243,7 +253,9 @@ def case_0_problem_statement():
     print("  keep kappa non-radiative")
     print("  keep parent identity marked missing")
 
-    status_line("minimal equation set problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("minimal equation set problem posed", StatusMark.DEFER,
+                 "structural constraint on scope")
 
 
 def case_1_equation_inventory(entries: List[EquationEntry]):
@@ -252,7 +264,7 @@ def case_1_equation_inventory(entries: List[EquationEntry]):
         print_equation(entry)
 
 
-def case_2_compact_table(entries: List[EquationEntry]):
+def case_2_compact_table(entries: List[EquationEntry], out: ScriptOutput):
     header("Case 2: Compact minimal equation table")
 
     print("| Equation | Role | Status | Missing |")
@@ -270,10 +282,11 @@ def case_2_compact_table(entries: List[EquationEntry]):
             + " |"
         )
 
-    status_line("compact minimal equation table produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact minimal equation table produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_status_counts(entries: List[EquationEntry]):
+def case_3_status_counts(entries: List[EquationEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -288,10 +301,11 @@ def case_3_status_counts(entries: List[EquationEntry]):
     print("  The minimal set has strong reduced scalar equations, structural vector/tensor/kappa rules,")
     print("  constrained scalar-radiation safety, one matched tensor energy coefficient, and missing parent closure.")
 
-    status_line("minimal equation status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("minimal equation status count produced", StatusMark.PASS, "inventory marker")
 
 
-def case_4_minimal_reduced_system():
+def case_4_minimal_reduced_system(out: ScriptOutput):
     header("Case 4: Minimal reduced system")
 
     print("Minimal current reduced system:")
@@ -310,10 +324,11 @@ def case_4_minimal_reduced_system():
     print()
     print("  Div E_parent = B_closed + B_relax")
 
-    status_line("minimal reduced system stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("minimal reduced system stated", StatusMark.DEFER, "structural constraint")
 
 
-def case_5_gr_recovery_status():
+def case_5_gr_recovery_status(out: ScriptOutput):
     header("Case 5: GR recovery status")
 
     print("Recovered strongly/reduced:")
@@ -333,10 +348,11 @@ def case_5_gr_recovery_status():
     print("  parent conservation identity")
     print("  covariant recombination")
 
-    status_line("GR recovery status restated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("GR recovery status restated", StatusMark.DEFER, "structural assessment")
 
 
-def case_5b_vf_minimal_metric_crosscheck(ns):
+def case_5b_vf_minimal_metric_crosscheck(ns, out: ScriptOutput):
     header("Case 5b: VacuumForge minimal metric cross-check")
 
     ctx = TheoryContext("candidate_closure_minimal_equation_set")
@@ -352,10 +368,13 @@ def case_5b_vf_minimal_metric_crosscheck(ns):
     print(f"ConcreteMetricCheck status = {result.status}")
 
     ok = result.status == "satisfied_by_construction" and product == 1
-    status_line(
-        "minimal equation set reproduces reciprocal concrete metric classification",
-        "DERIVED_REDUCED" if ok else "RISK",
-    )
+
+    with out.derived_results():
+        out.line(
+            "minimal equation set reproduces reciprocal concrete metric classification",
+            StatusMark.PASS if ok else StatusMark.FAIL,
+            f"A*B = {product}; ConcreteMetricCheck: {result.status}",
+        )
 
     ns.record_derivation(
         derivation_id="closure_minimal_reciprocal_metric_crosscheck",
@@ -363,10 +382,11 @@ def case_5b_vf_minimal_metric_crosscheck(ns):
         output=product,
         method="ConcreteMetricCheck reciprocal_scaling",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
     )
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("This minimal set fails if:")
@@ -379,10 +399,11 @@ def case_6_failure_controls():
     print("6. Sigma_creation enters ordinary closed regime.")
     print("7. Recombination silently copies GR.")
 
-    status_line("minimal set failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("minimal set failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -404,7 +425,8 @@ def case_7_next_tests():
     print("  Group 11 has reached a natural summary point after inventory, recombination, sources, constraints,")
     print("  evolution split, GR audit, parent scaffold, failure modes, and minimal equation set.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -427,29 +449,197 @@ def final_interpretation():
     print("  field_equation_closure_summary.md")
 
 
-def main():
-    header("Candidate Closure Minimal Equation Set")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_equations()
-    case_1_equation_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_reduced_system()
-    case_5_gr_recovery_status()
-    case_5b_vf_minimal_metric_crosscheck(ns)
-    case_6_failure_controls()
-    case_7_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[EquationEntry]) -> None:
+    # DERIVED_REDUCED equations -> HEURISTIC claims
+    ns.record_claim(ClaimRecord(
+        claim_id="min_E1_A_sector_scalar_constraint",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "E1: Delta_areal A = 8*pi*G*rho/c^2 is derived in the reduced static spherical "
+            "scalar sector. Full nonlinear nonspherical parent equation is missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="min_E2_exterior_A_solution",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "E2: A(r) = 1 - 2*G*M/(c^2*r) is the main real reconstruction result. "
+            "Valid in static spherical/reduced scalar sector only."
+        ),
+    ))
+
+    # STRUCTURAL equations -> CANDIDATE_ROUTE claims
+    ns.record_claim(ClaimRecord(
+        claim_id="min_E5_vector_current_response",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "E5: curl curl W = -(alpha_W/(2*K_c))*j_T has structural source/shape support. "
+            "alpha_W/K_c, beta_W, and normalization are not derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="min_E6_tensor_radiation_equation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "E6: Box h_ij^TT = -C_T*S_ij^TT has structural TT radiation support. "
+            "C_T, TT source identity, and tensor action stiffness are not derived."
+        ),
+    ))
+
+    # MATCHED equation -> PROVISIONAL_CONVENTION + obligation
+    ns.record_claim(ClaimRecord(
+        claim_id="min_E7_tensor_energy_flux_matched",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.PROVISIONAL_CONVENTION,
+        statement=(
+            "E7: F_T ~ K_T <dot h_ij^TT dot h_ij^TT> has correct structural form. "
+            "K_T is matched to GR; absolute flux coefficient is not derived."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_K_T_from_vacuum_action_stiffness",
+        script_id=SCRIPT_ID,
+        title="Derive K_T tensor energy flux coefficient from vacuum action stiffness",
+        status=ObligationStatus.OPEN,
+        description=(
+            "K_T in F_T ~ K_T <dot h_TT^2> must be derived from vacuum tensor ontology. "
+            "GR radiation formula must not be copied."
+        ),
+    ))
+
+    # MISSING equation -> OPEN obligation
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E12_parent_closure_identity",
+        script_id=SCRIPT_ID,
+        title="Derive E12: parent closure identity Div E_parent = B_closed + B_relax",
+        status=ObligationStatus.OPEN,
+        description=(
+            "E12 is the main missing result. E_parent, B_closed, and B_relax must be "
+            "defined and derived from vacuum ontology. This identity must imply A constraint "
+            "propagation, W_i sourcing, h_TT radiation, kappa trace relaxation, exterior mass "
+            "preservation, and ordinary Sigma_creation = 0."
+        ),
+    ))
+
+    # Summary claim for Group 11 closure status
+    ns.record_claim(ClaimRecord(
+        claim_id="group_11_closure_not_complete",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        statement=(
+            "Group 11 does not license closure of the field-equation system. "
+            "The minimal equation set is coherent and the A-sector is genuinely reduced-derived, "
+            "but the parent conservation/recombination identity (E12) remains missing. "
+            "Vector and tensor coefficients remain matched. Covariant recombination is unfinished."
+        ),
+        obligation_ids=[
+            "derive_E12_parent_closure_identity",
+            "derive_K_T_from_vacuum_action_stiffness",
+            "derive_alpha_W_K_c_and_beta_W",
+            "derive_C_T_tensor_coupling_from_stiffness",
+        ],
+        source_claim_ids=[
+            "min_E1_A_sector_scalar_constraint",
+            "min_E5_vector_current_response",
+            "min_E6_tensor_radiation_equation",
+            "min_E7_tensor_energy_flux_matched",
+        ],
+    ))
+
+    # HandoffImportRecord - what Group 12 may import from Group 11
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_11_field_equation_closure_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            # Derived results
+            "claim:inv_a_sector_derived_reduced",
+            "claim:gr_static_spherical_exterior_A",
+            "claim:gr_exterior_B_reciprocal",
+            "claim:min_E1_A_sector_scalar_constraint",
+            "claim:min_E2_exterior_A_solution",
+            # Provisional conventions (matched, not derived)
+            "claim:gr_frame_dragging_normalization_matched",
+            "claim:gr_tensor_coupling_matched",
+            "claim:gr_quadrupole_radiation_power_matched",
+            "claim:min_E7_tensor_energy_flux_matched",
+            # Structural candidate routes
+            "claim:dyn_h_TT_true_propagating",
+            "claim:dyn_kappa_non_inertial_relaxation",
+            "claim:dyn_TT_only_radiation_rule",
+            # Open obligations that must not be silently inherited as satisfied
+            "obligation:derive_E12_parent_closure_identity",
+            "obligation:derive_K_T_from_vacuum_action_stiffness",
+            "obligation:derive_alpha_W_K_c_and_beta_W",
+            "obligation:derive_C_T_tensor_coupling_from_stiffness",
+            "obligation:derive_I10_bianchi_like_closure",
+            "obligation:derive_covariant_metric_recombination_parent_map",
+            # Summary claim
+            "claim:group_11_closure_not_complete",
+        ],
+        description=(
+            "What Group 12 or downstream groups may import from Group 11. "
+            "Derived results: reduced A-sector exterior (A=1-2GM/c^2r, B=1/A, weak limit). "
+            "Provisional conventions (matched, not derived): vector normalization, tensor coupling, "
+            "tensor flux coefficient. "
+            "Structural candidate routes: TT radiation sector, kappa non-inertial relaxation, "
+            "TT-only radiation rule. "
+            "Open obligations (must not be treated as satisfied): parent closure identity (E12), "
+            "tensor flux coefficient K_T, vector coefficients alpha_W/K_c and beta_W, "
+            "tensor coupling C_T, Bianchi-like closure, covariant recombination map. "
+            "Group summary: field-equation closure is not yet licensed."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="closure_minimal_equation_set_marker",
         inputs=[],
         output=sp.Symbol("closure_minimal_equation_set_stated"),
         method="closure_minimal_equation_set_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Closure Minimal Equation Set")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_equations()
+    case_1_equation_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_reduced_system(out)
+    case_5_gr_recovery_status(out)
+    case_5b_vf_minimal_metric_crosscheck(ns, out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

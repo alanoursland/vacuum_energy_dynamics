@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   AUDIT
+
 # Candidate epsilon_vac_config functional
 #
 # Purpose
@@ -30,6 +36,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -41,29 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -223,11 +216,11 @@ def print_entry(e: FunctionalEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: epsilon_vac_config functional problem")
 
     print("Question:")
@@ -247,7 +240,8 @@ def case_0_problem_statement():
     print("  no exterior scalar charge")
     print("  no claim of derivation")
 
-    status_line("epsilon_vac_config functional problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("epsilon_vac_config functional problem posed", StatusMark.OBLIGATION, "open: functional form requires parent derivation")
 
 
 def case_1_inventory(entries: List[FunctionalEntry]):
@@ -256,7 +250,7 @@ def case_1_inventory(entries: List[FunctionalEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[FunctionalEntry]):
+def case_2_compact_table(entries: List[FunctionalEntry], out: ScriptOutput):
     header("Case 2: Compact functional ledger")
 
     print("| Entry | Term | Status | Forbidden if | Missing |")
@@ -276,10 +270,11 @@ def case_2_compact_table(entries: List[FunctionalEntry]):
             + " |"
         )
 
-    status_line("compact functional ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact functional ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[FunctionalEntry]):
+def case_3_status_counts(entries: List[FunctionalEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -295,10 +290,11 @@ def case_3_status_counts(entries: List[FunctionalEntry]):
     print("  A-sector mass and coefficient tuning are explicitly forbidden.")
     print("  The scalar kinetic term remains excluded unless separately derived.")
 
-    status_line("functional status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("functional status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_4_minimal_functional():
+def case_4_minimal_functional(out: ScriptOutput):
     header("Case 4: Minimal candidate functional")
 
     print("Minimal candidate:")
@@ -321,10 +317,11 @@ def case_4_minimal_functional():
     print()
     print("This is a scaffold functional, not a derived action.")
 
-    status_line("minimal candidate functional stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("minimal candidate functional stated", StatusMark.DEFER, "candidate route: scaffold not derived action")
 
 
-def case_4b_symbolic_minimal_functional(ns) -> None:
+def case_4b_symbolic_minimal_functional(ns, out: ScriptOutput) -> None:
     header("Case 4b: Symbolic minimal functional")
 
     K_zeta, L_zeta, K_lock = sp.symbols("K_zeta L_zeta K_lock")
@@ -342,17 +339,21 @@ def case_4b_symbolic_minimal_functional(ns) -> None:
     print("Interpretation:")
     print("  the provisional functional carries displacement, gradient, and locking terms explicitly.")
 
-    status_line("symbolic epsilon functional scaffold", "DERIVED_REDUCED", "minimal symbolic form assembled")
+    with out.sample_results():
+        out.line("symbolic epsilon functional scaffold", StatusMark.PASS, f"minimal symbolic form assembled: {functional}")
+
     ns.record_derivation(
         derivation_id="epsilon_vac_minimal_functional_expression",
         inputs=[zeta, zeta_min, kappa, grad_zeta_sq],
         output=functional,
         method="symbolic minimal epsilon_vac_config scaffold",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="scaffold with unknown coefficients; not a derived action or covariant result",
     )
 
 
-def case_5_exchange_with_relaxation():
+def case_5_exchange_with_relaxation(out: ScriptOutput):
     header("Case 5: Exchange with relaxation")
 
     print("Existing relaxation energy:")
@@ -373,10 +374,11 @@ def case_5_exchange_with_relaxation():
     print()
     print("This must be fixed by recombination/accounting.")
 
-    status_line("relaxation exchange accounting stated", "RISK")
+    with out.governance_assessments():
+        out.line("relaxation exchange accounting stated", StatusMark.DEFER, "open risk: double-counting requires explicit convention")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("The epsilon_vac_config functional fails if:")
@@ -390,10 +392,11 @@ def case_6_failure_controls():
     print("7. It is claimed covariant without frame/measure.")
     print("8. It becomes a repair reservoir.")
 
-    status_line("functional failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("functional failure controls stated", StatusMark.DEFER, "open risk: eight failure conditions listed")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -414,7 +417,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The functional risks double-counting e_kappa; fix that accounting before summary.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "epsilon-kappa double counting check")
 
 
 def final_interpretation():
@@ -443,23 +447,66 @@ def main():
     header("Candidate Epsilon Vac Config Functional")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_entries()
+
+    case_0_problem_statement(out)
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_functional()
-    case_4b_symbolic_minimal_functional(ns)
-    case_5_exchange_with_relaxation()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_functional(out)
+    case_4b_symbolic_minimal_functional(ns, out)
+    case_5_exchange_with_relaxation(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="epsilon_vac_config_minimal_functional_scaffold",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The minimal candidate functional "
+            "epsilon_vac_config = 1/2 K_zeta (zeta-zeta_min)^2 + 1/2 L_zeta |grad zeta|^2 "
+            "+ 1/2 K_lock (kappa-(zeta-zeta_min))^2 "
+            "is a scaffold with unknown coefficients. It is not a derived action. "
+            "It must not include A_flux, M_ext, or coefficient tuning terms."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="epsilon_vac_config_no_scalar_kinetic_term",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "epsilon_vac_config must not include a scalar kinetic term 1/2 (u^mu nabla_mu zeta)^2 "
+            "unless separately derived. The scalar/trace channel remains conversion/constraint/relaxation-mediated."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_epsilon_vac_config_from_parent",
+        script_id=SCRIPT_ID,
+        title="Derive epsilon_vac_config functional from parent identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive the functional form epsilon_vac_config = F(zeta, zeta_min, gradients, kappa) "
+            "from a parent field-equation identity, not as a postulated scaffold. "
+            "Must include coefficients, measure, frame/foliation, boundary law."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="epsilon_vac_config_functional_marker",
         inputs=[],
         output=sp.Symbol("epsilon_vac_config_functional_audited"),
         method="epsilon_vac_config_functional_audit",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

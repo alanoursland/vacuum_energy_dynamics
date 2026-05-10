@@ -3,6 +3,9 @@
 # Group:
 #   18_vacuum_current_split
 #
+# Script type:
+#   REQUIREMENTS
+#
 # Purpose
 # -------
 # The pure wind neutrality test found:
@@ -35,6 +38,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -48,7 +62,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -73,6 +87,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -597,14 +612,66 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="J_sub_definition_requirements_marker",
-        inputs=[],
-        output=sp.Symbol("J_sub_definition_requirements_complete"),
-        method="J_sub_definition_requirements",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_J_sub_domain_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="J_sub domain D_sub must be specified structurally before J_sub is used.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_J_sub_frame_or_frame_free_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="J_sub must have an ontology-derived frame or be defined frame-free. Arbitrary preferred frame is forbidden.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_J_sub_measure_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Substrate amount/current measure must be specified; must not shift M_ext.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_J_sub_divergence_status_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="Divergence-free, zero-creation, or other divergence status must be specified from substrate law, not imposed to hide exchange.",
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="define_J_sub_boundary_behavior_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            status=ObligationStatus.OPEN,
+            statement="J_sub boundary behavior (zero exterior flux, tangential flow, compact support) must follow structurally, not be repair or recovery-tuned.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_arbitrary_frame_J_sub_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="arbitrary_preferred_frame_J_sub",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_sub = arbitrary preferred-frame wind is forbidden. Frame must follow from vacuum ontology.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_circular_u_vac_J_sub_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="circular_u_vac_J_sub",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_sub = n_vac u_vac with u_vac undefined is a circular definition. Deferred until u_vac is resolved.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_remainder_current_J_sub_in_18_J_sub_requirements",
+            script_id=SCRIPT_ID,
+            branch_name="remainder_current_J_sub",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            rationale="J_sub = J_V - J_exch with no split criterion is forbidden. Residual bookkeeping cannot become current definition.",
+        ))
+        ns.record_derivation(
+            derivation_id="J_sub_definition_requirements_marker",
+            inputs=[],
+            output=sp.Symbol("J_sub_definition_requirements_complete"),
+            method="J_sub_definition_requirements",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

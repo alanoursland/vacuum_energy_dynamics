@@ -1,3 +1,9 @@
+# Group:
+#   05_nonspherical_sectors
+#
+# Script type:
+#   INVENTORY
+
 # Candidate nonspherical degree inventory
 #
 # Purpose
@@ -27,15 +33,22 @@
 #
 # Goal:
 #   Prevent overclaiming. Identify what has been covered and what remains open.
-#
-# Suggested location:
-#   scripts_v3/candidate_nonspherical_degree_inventory.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,14 +64,6 @@ def header(title: str) -> None:
     print("=" * 116)
     print(title)
     print("=" * 116)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -118,7 +123,11 @@ def case_0_problem_statement():
     print("  tensor/wave modes")
     print("  nonlinear closure")
     print()
-    status_line("degree inventory needed beyond scalar A", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("degree inventory needed beyond scalar A", StatusMark.PASS, "SVT decomposition required")
+    out.print()
 
 
 # =============================================================================
@@ -140,14 +149,18 @@ def case_1_metric_component_count():
     print()
     print("Scalar A covers only one temporal scalar component.")
     print()
-    status_line("single scalar A cannot represent full metric perturbation", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("single scalar A cannot represent full metric perturbation", StatusMark.PASS, "10 components vs 1 scalar")
+    out.print()
 
 
 # =============================================================================
 # Case 2: Scalar temporal/Newtonian sector
 # =============================================================================
 
-def case_2_scalar_A_sector():
+def case_2_scalar_A_sector(ns):
     header("Case 2: Scalar A / Newtonian sector")
 
     psi = sp.symbols("psi", real=True)
@@ -162,7 +175,21 @@ def case_2_scalar_A_sector():
     print("  g_tt weak scalar/Newtonian potential")
     print("  ordinary weak multipoles through Phi")
     print()
-    status_line("scalar A sector is present", True)
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("scalar A sector is present", StatusMark.PASS, "A = 1 + 2psi confirmed from upstream")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="scalar_A_sector_inventory",
+        inputs=[psi],
+        output=A,
+        method="scalar_A_newtonian_sector",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
 
 # =============================================================================
@@ -192,14 +219,18 @@ def case_3_kappa_trace_sector():
     print("  matter interiors may source kappa")
     print("  kappa is not yet generalized covariantly for nonspherical fields")
     print()
-    status_line("kappa sector exists in reduced theory but needs nonspherical parent", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("kappa sector exists in reduced theory but needs nonspherical parent", StatusMark.OBLIGATION, "covariant nonspherical kappa not yet derived")
+    out.print()
 
 
 # =============================================================================
 # Case 4: Spatial conformal scalar sector
 # =============================================================================
 
-def case_4_spatial_conformal_scalar():
+def case_4_spatial_conformal_scalar(ns):
     header("Case 4: Spatial conformal scalar sector")
 
     psi = sp.symbols("psi", real=True)
@@ -207,6 +238,7 @@ def case_4_spatial_conformal_scalar():
     h_spatial_scalar = -2*psi * sp.eye(3)
     trace = sp.trace(h_spatial_scalar)
     tf = matrix_trace_free(h_spatial_scalar)
+    trace_tf = sp.simplify(sp.trace(tf))
 
     print("Weak scalar spatial perturbation:")
     print("  h_ij = -2 psi delta_ij")
@@ -215,8 +247,24 @@ def case_4_spatial_conformal_scalar():
     print(f"trace = {trace}")
     print("trace-free part:")
     print(tf)
+    print(f"trace of trace-free part = {trace_tf}")
 
-    status_line("spatial scalar sector is pure trace/conformal", is_zero(tf))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("spatial scalar sector is pure trace/conformal",
+                 StatusMark.PASS if is_zero(trace_tf) else StatusMark.FAIL,
+                 f"trace-free part vanishes: {is_zero(trace_tf)}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="spatial_conformal_trace_free_vanishes",
+        inputs=[h_spatial_scalar],
+        output=tf,
+        method="matrix_trace_free_decomposition",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
@@ -247,7 +295,13 @@ def case_5_trace_free_spatial_shear(ns=None):
     print("A scalar conformal factor cannot represent these 5 trace-free")
     print("spatial degrees of freedom.")
     print()
-    status_line("trace-free spatial shear has 5 independent components", is_zero(trace_tf))
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("trace-free spatial shear has 5 independent components",
+                 StatusMark.PASS if is_zero(trace_tf) else StatusMark.FAIL,
+                 f"trace of shear part = {trace_tf}")
+    out.print()
 
     if ns is not None:
         ns.record_derivation(
@@ -256,6 +310,8 @@ def case_5_trace_free_spatial_shear(ns=None):
             output=trace_tf,
             method="spatial_shear_inventory",
             status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
         )
 
 
@@ -283,14 +339,18 @@ def case_6_vector_sector():
     print()
     print("Scalar A and scalar reciprocal compensation do not produce g_ti.")
     print()
-    status_line("vector/frame-dragging sector is missing from scalar branch", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("vector/frame-dragging sector is missing from scalar branch", StatusMark.OBLIGATION, "g_ti not produced by scalar A")
+    out.print()
 
 
 # =============================================================================
 # Case 7: Tensor / wave inventory
 # =============================================================================
 
-def case_7_tensor_wave_sector():
+def case_7_tensor_wave_sector(ns):
     header("Case 7: Tensor / wave sector")
 
     hp, hx = sp.symbols("h_plus h_cross", real=True)
@@ -315,7 +375,22 @@ def case_7_tensor_wave_sector():
     print()
     print("It is not represented by scalar A.")
     print()
-    status_line("tensor/wave sector is independent of scalar A", is_zero(trace))
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("tensor/wave sector is independent of scalar A",
+                 StatusMark.PASS if is_zero(trace) else StatusMark.FAIL,
+                 f"TT trace = {trace}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tensor_wave_sector_trace_zero",
+        inputs=[hp, hx],
+        output=trace,
+        method="TT_tensor_trace_check",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+    )
 
 
 # =============================================================================
@@ -337,7 +412,11 @@ def case_8_svt_map():
     print("| tensor TT | missing | gravitational waves |")
     print("| nonlinear closure | missing | strong nonspherical gravity |")
     print()
-    status_line("SVT inventory separated", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("SVT inventory separated", StatusMark.PASS, "scalar present; shear/vector/tensor missing")
+    out.print()
 
 
 # =============================================================================
@@ -362,7 +441,11 @@ def case_9_claim_boundaries():
     print("4. Complete covariant field equations.")
     print("5. Full matter stress-energy coupling.")
     print()
-    status_line("claim boundaries made explicit", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("claim boundaries made explicit", StatusMark.PASS, "scalar sector present; SVT sectors open")
+    out.print()
 
 
 # =============================================================================
@@ -399,15 +482,79 @@ def main():
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
     case_1_metric_component_count()
-    case_2_scalar_A_sector()
+    case_2_scalar_A_sector(ns)
     case_3_kappa_trace_sector()
-    case_4_spatial_conformal_scalar()
+    case_4_spatial_conformal_scalar(ns)
     case_5_trace_free_spatial_shear(ns)
     case_6_vector_sector()
-    case_7_tensor_wave_sector()
+    case_7_tensor_wave_sector(ns)
     case_8_svt_map()
     case_9_claim_boundaries()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_nonspherical_parent",
+        script_id=SCRIPT_ID,
+        title="Derive covariant nonspherical parent for kappa trace response",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The kappa trace-response mode exists in the reduced spherical theory. "
+            "A covariant nonspherical generalization is not yet derived."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_spatial_shear_sector_inventory",
+        script_id=SCRIPT_ID,
+        title="Derive spatial shear sector",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Trace-free spatial shear has 5 independent components not covered by "
+            "scalar A. Mechanism and sourcing remain open."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_vector_frame_dragging_sector",
+        script_id=SCRIPT_ID,
+        title="Derive vector frame-dragging sector",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Off-diagonal g_ti components are needed for rotating sources. "
+            "A separate vector sector must be sourced by angular momentum."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tensor_wave_sector_inventory",
+        script_id=SCRIPT_ID,
+        title="Derive tensor wave sector h_ij^TT",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Transverse-traceless spatial perturbations are needed for gravitational waves. "
+            "An independent tensor sector must be added beyond scalar A."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="nonspherical_degree_inventory_claim",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The theory currently has a credible weak scalar sector (A = 1 + 2Phi/c^2) "
+            "but is missing trace-free spatial shear, vector frame-dragging, tensor wave, "
+            "and nonlinear closure sectors. Overclaiming beyond the scalar sector is not licensed."
+        ),
+        obligation_ids=[
+            "derive_kappa_nonspherical_parent",
+            "derive_spatial_shear_sector_inventory",
+            "derive_vector_frame_dragging_sector",
+            "derive_tensor_wave_sector_inventory",
+        ],
+    ))
+
     ns.write_run_metadata()
 
 

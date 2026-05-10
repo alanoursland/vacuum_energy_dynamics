@@ -1,3 +1,9 @@
+# Group:
+#   05_nonspherical_sectors
+#
+# Script type:
+#   INVENTORY
+
 # Candidate wave sector linearized modes
 #
 # Purpose
@@ -23,11 +29,25 @@
 #
 # This does not derive gravitational waves. It inventories the linearized
 # wave-sector requirement.
-#
-# Suggested location:
-#   scripts_v3/candidate_wave_sector_linearized_modes.py
+
+from pathlib import Path
 
 import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 
 # =============================================================================
@@ -41,19 +61,30 @@ def header(title: str) -> None:
     print("=" * 116)
 
 
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
-
-
 def is_zero(expr) -> bool:
     try:
         return bool(sp.simplify(expr) == 0)
     except Exception:
         return False
+
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
 # =============================================================================
@@ -72,14 +103,18 @@ def case_0_problem_statement():
     print("  tensor transverse-traceless wave sector h_ij^TT")
     print()
     print("A full relativistic gravity theory must address propagating waves.")
-    status_line("wave-sector problem isolated", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("wave-sector problem isolated", StatusMark.OBLIGATION, "h_ij^TT sector not yet present")
+    out.print()
 
 
 # =============================================================================
 # Case 1: Scalar mode is not TT
 # =============================================================================
 
-def case_1_scalar_not_tt():
+def case_1_scalar_not_tt(ns):
     header("Case 1: Scalar spatial mode is not transverse-traceless")
 
     psi = sp.symbols("psi", real=True)
@@ -94,7 +129,21 @@ def case_1_scalar_not_tt():
     print("A TT tensor must be trace-free.")
     print("The scalar conformal perturbation has nonzero trace unless psi=0.")
 
-    status_line("scalar mode is not TT", not is_zero(trace))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("scalar mode is not TT",
+                 StatusMark.PASS if not is_zero(trace) else StatusMark.FAIL,
+                 f"trace = {trace}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="scalar_mode_trace_nonzero",
+        inputs=[H_scalar],
+        output=trace,
+        method="trace_of_scalar_conformal_perturbation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+    )
 
 
 # =============================================================================
@@ -114,14 +163,18 @@ def case_2_vector_not_tt():
     print("This lives in g_ti-like components, not in the symmetric spatial")
     print("tensor h_ij^TT.")
     print()
-    status_line("vector sector is distinct from tensor wave sector", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("vector sector is distinct from tensor wave sector", StatusMark.PASS, "W_i lives in g_ti, not h_ij^TT")
+    out.print()
 
 
 # =============================================================================
 # Case 3: TT tensor polarizations
 # =============================================================================
 
-def case_3_tt_polarizations():
+def case_3_tt_polarizations(ns):
     header("Case 3: TT tensor polarizations")
 
     hp, hx = sp.symbols("h_plus h_cross", real=True)
@@ -143,14 +196,28 @@ def case_3_tt_polarizations():
     print("  h_plus")
     print("  h_cross")
 
-    status_line("TT tensor has two polarizations", is_zero(trace))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("TT tensor has two polarizations",
+                 StatusMark.PASS if is_zero(trace) else StatusMark.FAIL,
+                 f"trace = {trace}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_tensor_trace_zero_polarizations",
+        inputs=[hp, hx],
+        output=trace,
+        method="TT_tensor_trace_check_z_propagation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+    )
 
 
 # =============================================================================
 # Case 4: Transversality check for z-propagating TT mode
 # =============================================================================
 
-def case_4_transversality():
+def case_4_transversality(ns):
     header("Case 4: Transversality check")
 
     hp, hx, k = sp.symbols("h_plus h_cross k", real=True)
@@ -170,8 +237,23 @@ def case_4_transversality():
     print("k^i h_ij =")
     print(trans)
 
-    status_line("TT mode is transverse for propagation along z",
-                all(is_zero(x) for x in list(trans)))
+    all_zero = all(is_zero(x) for x in list(trans))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("TT mode is transverse for propagation along z",
+                 StatusMark.PASS if all_zero else StatusMark.FAIL,
+                 f"k^i h_ij = {trans}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_mode_transversality_residual",
+        inputs=[kvec, H_TT],
+        output=trans,
+        method="transversality_check_z_propagation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
@@ -193,7 +275,11 @@ def case_5_wave_equation_placeholder():
     print()
     print("Therefore the theory needs an independent tensor sector or a mechanism")
     print("that produces one from deeper variables.")
-    status_line("tensor wave equation class identified as missing", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("tensor wave equation class identified as missing", StatusMark.OBLIGATION, "Box h_ij^TT = 0 not yet supplied")
+    out.print()
 
 
 # =============================================================================
@@ -212,7 +298,11 @@ def case_6_sector_separation():
     print("| vector | W_i | mass current / angular momentum | needed, not derived |")
     print("| tensor | h_ij^TT | quadrupole radiation / TT stress | missing |")
     print()
-    status_line("wave sector separated from scalar/vector sectors", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("wave sector separated from scalar/vector sectors", StatusMark.PASS, "SVT map complete; tensor sector flagged missing")
+    out.print()
 
 
 # =============================================================================
@@ -231,7 +321,11 @@ def case_7_success_criteria():
     print("5. no extra unwanted scalar radiation in regimes where constrained,")
     print("6. energy flux / radiation reaction accounting.")
     print()
-    status_line("wave-sector success criteria listed", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("wave-sector success criteria listed", StatusMark.OBLIGATION, "criteria stated; none yet satisfied")
+    out.print()
 
 
 # =============================================================================
@@ -250,7 +344,11 @@ def case_8_classification():
     print("5. A wave equation for h_ij^TT is currently missing.")
     print("6. A full gravity theory needs this sector.")
     print()
-    status_line("tensor wave sector is necessary and currently absent", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("tensor wave sector is necessary and currently absent", StatusMark.DEFER, "required but not yet derived")
+    out.print()
 
 
 # =============================================================================
@@ -276,16 +374,57 @@ def final_interpretation():
 
 def main():
     header("Candidate Wave Sector Linearized Modes")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_scalar_not_tt()
+    case_1_scalar_not_tt(ns)
     case_2_vector_not_tt()
-    case_3_tt_polarizations()
-    case_4_transversality()
+    case_3_tt_polarizations(ns)
+    case_4_transversality(ns)
     case_5_wave_equation_placeholder()
     case_6_sector_separation()
     case_7_success_criteria()
     case_8_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tensor_wave_equation",
+        script_id=SCRIPT_ID,
+        title="Derive tensor wave equation for h_ij^TT",
+        status=ObligationStatus.OPEN,
+        description=(
+            "An independent tensor wave equation Box h_ij^TT = source_TT must be "
+            "derived or otherwise supplied. It is not generated by scalar A or vector W_i."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="satisfy_wave_sector_success_criteria",
+        script_id=SCRIPT_ID,
+        title="Satisfy wave-sector success criteria",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A viable wave sector must show: two TT polarizations, correct propagation "
+            "speed, quadrupole source coupling, scalar/vector compatibility, no extra "
+            "scalar radiation, and energy flux accounting."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="tensor_wave_sector_absent_inventory",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The current theory is missing a tensor TT wave sector. Scalar A and vector W_i "
+            "sectors do not produce h_ij^TT. The wave-sector problem must be addressed "
+            "before claiming a complete gravity theory."
+        ),
+        obligation_ids=["derive_tensor_wave_equation", "satisfy_wave_sector_success_criteria"],
+    ))
+
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

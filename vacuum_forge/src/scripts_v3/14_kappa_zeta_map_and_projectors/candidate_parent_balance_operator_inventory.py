@@ -1,5 +1,11 @@
 # Candidate parent balance operator inventory
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The parent balance identity audit found:
@@ -23,6 +29,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -35,32 +52,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -233,12 +224,12 @@ def print_entry(e: BalanceOperatorEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent balance operator inventory problem")
 
     print("Question:")
@@ -258,7 +249,9 @@ def case_0_problem_statement():
     print("  preserve no-overlap trace theorem")
     print("  stop ratio-relocation loops if no operator fixes ratio")
 
-    status_line("parent balance operator inventory problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("parent balance operator inventory problem posed", "DEFER",
+                 "branch open pending explicit E_parent operator classes")
 
 
 def case_1_inventory(entries: List[BalanceOperatorEntry]):
@@ -267,7 +260,7 @@ def case_1_inventory(entries: List[BalanceOperatorEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[BalanceOperatorEntry]):
+def case_2_compact_table(entries: List[BalanceOperatorEntry], out: ScriptOutput):
     header("Case 2: Compact parent-balance-operator ledger")
 
     print("| Entry | Operator | Status | Consequence |")
@@ -285,10 +278,11 @@ def case_2_compact_table(entries: List[BalanceOperatorEntry]):
             + " |"
         )
 
-    status_line("compact parent-balance-operator ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact parent-balance-operator ledger produced", "INFO", "inventory table complete")
 
 
-def case_3_status_counts(entries: List[BalanceOperatorEntry]):
+def case_3_status_counts(entries: List[BalanceOperatorEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -305,10 +299,11 @@ def case_3_status_counts(entries: List[BalanceOperatorEntry]):
     print("  Source and relaxation terms are risky coefficient patches unless derived.")
     print("  Volume-exchange is now the most ontology-native route if ratio relocation persists.")
 
-    status_line("parent-balance-operator status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("parent-balance-operator status count produced", "INFO", "counts reviewed")
 
 
-def case_4_operator_decision():
+def case_4_operator_decision(out: ScriptOutput):
     header("Case 4: Operator decision")
 
     print("Decision:")
@@ -328,10 +323,12 @@ def case_4_operator_decision():
     print("5. Volume-exchange operator?")
     print("   Next ontology-native candidate if local operators only move ratios.")
 
-    status_line("parent-balance operator decision stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("parent-balance operator decision stated", "DEFER",
+                 "volume-exchange is next candidate after local operators relocate ratio")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / branch move")
 
     print("Good failure:")
@@ -347,10 +344,12 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  keep looping through stiffness/current operators that only relocate q.")
 
-    status_line("parent-balance-operator good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("parent-balance-operator good failure stated", "DEFER",
+                 "ratio relocation pattern identified; move to volume-exchange")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Parent balance operator inventory fails if:")
@@ -364,10 +363,11 @@ def case_6_failure_controls():
     print("7. zeta/kappa residual double-counts B_s")
     print("8. ratio relocation is mistaken for ratio derivation")
 
-    status_line("parent-balance-operator failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("parent-balance-operator failure controls stated", "INFO", "eight failure controls recorded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -388,7 +388,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Coupled/current balance shells mostly relocate the ratio. Volume-exchange is the next ontology-native candidate for fixing it.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", "INFO", "candidate_volume_exchange_stiffness_ratio_origin.py")
 
 
 def final_interpretation():
@@ -410,25 +411,69 @@ def main():
     header("Candidate Parent Balance Operator Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_operator_decision()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_operator_decision(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="parent_balance_operator_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("parent_balance_operator_inventory_audited"),
-        method="parent_balance_operator_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with ProjectArchive(ARCHIVE_ROOT) as pa:
+        ns2 = pa.script_namespace(SCRIPT_ID)
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_E_parent_operator_class_fixing_ratio_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive E_parent operator class that fixes coefficient ratio without relocation",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Write an explicit E_parent = E_A[A] + E_s[B_s] + E_x[A,B_s] (or volume-exchange "
+                "extension) that derives the coefficient ratio a/b or c_x/c_s without GR rewrite, "
+                "decorative balance, or recovery-tuned coefficients."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="parent_balance_ratio_relocation_pattern",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Coupled stiffness, gradient current, and abstract balance operators all exhibit "
+                "ratio relocation: each relocates the coefficient origin rather than deriving it. "
+                "An ontology-native volume-exchange operator is the next candidate to break this pattern."
+            ),
+        ))
+
+        ns2.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_parent_balance_operator_inventory_branch",
+            script_id=SCRIPT_ID,
+            branch_id="parent_balance_operator_inventory",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_E_parent_operator_class_fixing_ratio_in_14"],
+        ))
+
+        ns2.record_derivation(
+            derivation_id="parent_balance_operator_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("parent_balance_operator_inventory_audited"),
+            method="parent_balance_operator_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns2.write_run_metadata()
+
+    out.print()
 
 
 if __name__ == "__main__":

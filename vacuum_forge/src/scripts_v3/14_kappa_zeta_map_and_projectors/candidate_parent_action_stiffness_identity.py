@@ -1,5 +1,11 @@
 # Candidate parent action stiffness identity
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The linear A_spatial closure coefficient-origin audit found:
@@ -24,11 +30,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -36,32 +51,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -234,12 +223,12 @@ def print_entry(e: ActionStiffnessEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent action/stiffness identity problem")
 
     print("Question:")
@@ -259,7 +248,8 @@ def case_0_problem_statement():
     print("  derive q before recovery checks")
     print("  branch-kill if coefficients remain free repair knobs")
 
-    status_line("parent action/stiffness problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("parent action/stiffness problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[ActionStiffnessEntry]):
@@ -268,7 +258,7 @@ def case_1_inventory(entries: List[ActionStiffnessEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[ActionStiffnessEntry]):
+def case_2_compact_table(entries: List[ActionStiffnessEntry], out: ScriptOutput):
     header("Case 2: Compact action/stiffness ledger")
 
     print("| Entry | Identity | Status | Consequence |")
@@ -286,10 +276,11 @@ def case_2_compact_table(entries: List[ActionStiffnessEntry]):
             + " |"
         )
 
-    status_line("compact action/stiffness ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact action/stiffness ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_status_counts(entries: List[ActionStiffnessEntry]):
+def case_3_status_counts(entries: List[ActionStiffnessEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -307,10 +298,11 @@ def case_3_status_counts(entries: List[ActionStiffnessEntry]):
     print("  Zeta participation is possible but risks leaving the A-local branch.")
     print("  Recovery checks must remain downstream.")
 
-    status_line("action/stiffness status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("action/stiffness status count produced", StatusMark.WARN, "structural")
 
 
-def case_4_minimal_functional_targets():
+def case_4_minimal_functional_targets(out: ScriptOutput):
     header("Case 4: Minimal functional targets")
 
     print("Minimal functional families to test next:")
@@ -329,10 +321,11 @@ def case_4_minimal_functional_targets():
     print()
     print("Each must derive q before gamma_like or AB checks.")
 
-    status_line("minimal functional targets stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("minimal functional targets stated", StatusMark.WARN, "candidate families")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / branch defer")
 
     print("Good failure:")
@@ -348,10 +341,11 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose stiffness weights to fit gamma_like=1 and call it derivation.")
 
-    status_line("action/stiffness good failure stated", "DEFER")
+    with out.unresolved_obligations():
+        out.line("action/stiffness coefficient origin is missing", StatusMark.OBLIGATION, "open proof obligation recorded")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Action/stiffness identity fails if:")
@@ -365,10 +359,11 @@ def case_6_failure_controls():
     print("7. no-overlap theorem is ignored")
     print("8. functional is named but not written")
 
-    status_line("action/stiffness failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("action/stiffness failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -389,7 +384,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The action/stiffness branch only becomes meaningful when a concrete functional is varied. Test coupled stiffness first.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -408,25 +404,60 @@ def main():
     header("Candidate Parent Action Stiffness Identity")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_minimal_functional_targets()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_minimal_functional_targets(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="parent_action_stiffness_identity_marker",
-        inputs=[],
-        output=sp.Symbol("parent_action_stiffness_identity_audited"),
-        method="parent_action_stiffness_identity_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_action_stiffness_coefficient_origin_for_q_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive action/stiffness coefficient origin for q",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The parent action/stiffness functional S_parent[A, A_spatial, ...] must be written "
+                "and varied to derive the coefficient ratio q = q_action[c_i] before recovery targets "
+                "gamma_like=1 or AB=1 are checked. Independent stiffness alone cannot relate A and A_spatial. "
+                "Coupled stiffness c_x grad A · grad A_spatial is the minimal candidate. "
+                "The functional itself and all coefficient origins must be specified before closure is claimed."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="action_stiffness_coefficient_origin_candidate",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "Action/stiffness identity is a candidate route for deriving the coefficient ratio q "
+                "controlling Delta A_spatial = q S_A. Coupled stiffness S ~ c_x grad A · grad A_spatial "
+                "is the minimal functional that links A and A_spatial. This remains CANDIDATE until "
+                "the functional is written, varied, and the ratio c_x/c_s is derived from a non-recovery origin."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="parent_action_stiffness_identity_marker",
+            inputs=[],
+            output=sp.Symbol("parent_action_stiffness_identity_audited"),
+            method="parent_action_stiffness_identity_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

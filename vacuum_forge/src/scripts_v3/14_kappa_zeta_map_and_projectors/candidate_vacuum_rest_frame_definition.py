@@ -1,3 +1,9 @@
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate vacuum rest frame definition
 #
 # Purpose
@@ -19,6 +25,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -31,32 +50,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -229,7 +222,7 @@ def print_entry(e: VacuumFrameEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -254,7 +247,10 @@ def case_0_problem_statement():
     print("  preserve boundary neutrality and no-overlap")
     print("  close the group if u_vac cannot be defined")
 
-    status_line("vacuum rest frame definition problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("vacuum rest frame definition problem posed", StatusMark.OBLIGATION, "requires ontology-derived u_vac^mu")
+    out.print()
 
 
 def case_1_inventory(entries: List[VacuumFrameEntry]):
@@ -281,7 +277,10 @@ def case_2_compact_table(entries: List[VacuumFrameEntry]):
             + " |"
         )
 
-    status_line("compact vacuum-frame ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact vacuum-frame ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[VacuumFrameEntry]):
@@ -302,7 +301,10 @@ def case_3_status_counts(entries: List[VacuumFrameEntry]):
     print("  equilibrium-frame definition may work in static regions if defined invariantly.")
     print("  if neither J_V nor equilibrium frame can be defined, Group 14 should close with u_vac as the bottleneck.")
 
-    status_line("vacuum-frame status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("vacuum-frame status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_definition_decision_tree():
@@ -325,7 +327,10 @@ def case_4_definition_decision_tree():
     print("5. If u_vac cannot be defined:")
     print("   close Group 14 with u_vac as surviving bottleneck.")
 
-    status_line("vacuum-frame definition decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("vacuum-frame definition decision tree stated", StatusMark.INFO, "candidates ranked")
+    out.print()
 
 
 def case_5_good_failure():
@@ -343,7 +348,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose a convenient preferred frame and continue as if u_vac were derived.")
 
-    status_line("vacuum-frame good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("vacuum-frame good failure stated", StatusMark.DEFER, "deferred pending J_V or equilibrium criterion")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -361,7 +369,10 @@ def case_6_failure_controls():
     print("8. boundary neutrality or no-overlap is dropped")
     print("9. chi tuning is hidden in normalization")
 
-    status_line("vacuum-frame failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("vacuum-frame failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -385,7 +396,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  J_V is the strongest non-arbitrary u_vac candidate. Test it once, then close the group if it remains unnamed.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_volume_current_definition_for_u_vac.py")
+    out.print()
 
 
 def final_interpretation():
@@ -420,14 +434,80 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="vacuum_rest_frame_definition_marker",
-        inputs=[],
-        output=sp.Symbol("vacuum_rest_frame_definition_audited"),
-        method="vacuum_rest_frame_definition_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_J_V_for_u_vac",
+            script_id=SCRIPT_ID,
+            title="Derive J_V^mu vacuum-volume current to define u_vac",
+            status=ObligationStatus.OPEN,
+            description=(
+                "J_V must be a real vacuum-volume flux current defined by the volume exchange law "
+                "before u_vac^mu = J_V^mu / sqrt(-J_V^2) can be used as the vacuum rest frame."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_u_vac_static_neutrality",
+            script_id=SCRIPT_ID,
+            title="Derive static-source neutrality for u_vac definition",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The u_vac definition must yield Sigma_V static-neutral or boundary-neutral "
+                "around equilibrium sources; it must not create scalar charge around static mass."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="J_V_normalized_u_vac_route",
+            script_id=SCRIPT_ID,
+            name="u_vac^mu = J_V^mu / sqrt(-J_V^2) vacuum-current route",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_J_V_for_u_vac",
+                "derive_u_vac_static_neutrality",
+            ],
+            activation_conditions=[
+                "J_V is defined by volume exchange law before recovery checks",
+                "J_V^2 < 0 and J_V != 0 in target domain",
+                "static equilibrium sources produce no independent exterior zeta charge",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_arbitrary_preferred_frame",
+            script_id=SCRIPT_ID,
+            branch_id="arbitrary_preferred_vacuum_frame",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            description=(
+                "Choosing u_vac as a convenient background rest frame is rejected. "
+                "It would introduce an unsupported preferred frame."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_u_vac_definition_branch",
+            script_id=SCRIPT_ID,
+            branch_id="vacuum_rest_frame_definition",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_J_V_for_u_vac",
+                "derive_u_vac_static_neutrality",
+            ],
+            description=(
+                "The vacuum rest frame branch is deferred pending J_V definition and "
+                "static-source neutrality. Group 14 should close if J_V cannot be defined."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="vacuum_rest_frame_definition_marker",
+            inputs=[],
+            output=sp.Symbol("vacuum_rest_frame_definition_audited"),
+            method="vacuum_rest_frame_definition_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # Candidate boundary mass preservation identity
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The kappa covariant relaxation audit found:
@@ -31,6 +37,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,25 +60,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "CANDIDATE": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -201,12 +200,12 @@ def print_requirement(b: BoundaryRequirement) -> None:
     print(f"Requirement: {b.requirement}")
     print(f"Candidate form: {b.candidate_form}")
     print(f"Forbidden form: {b.forbidden_form}")
-    status_line(b.name, b.status)
+    print(f"[INFO] {b.name}: {b.status}")
     print(f"Risk: {b.risk}")
     print(f"Missing: {b.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Boundary mass preservation problem")
 
     print("Question:")
@@ -224,7 +223,8 @@ def case_0_problem_statement():
     print("  boundary smoothing cannot tune measured gravity")
     print("  near-boundary diagnostics are not predictions yet")
 
-    status_line("boundary mass preservation problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("boundary mass preservation problem posed", StatusMark.OBLIGATION, "boundary mass preservation theorem required")
 
 
 def case_1_requirement_inventory(entries: List[BoundaryRequirement]):
@@ -233,7 +233,7 @@ def case_1_requirement_inventory(entries: List[BoundaryRequirement]):
         print_requirement(entry)
 
 
-def case_2_compact_table(entries: List[BoundaryRequirement]):
+def case_2_compact_table(entries: List[BoundaryRequirement], out: ScriptOutput):
     header("Case 2: Compact boundary ledger")
 
     print("| Requirement | Candidate form | Forbidden form | Status | Missing |")
@@ -253,10 +253,11 @@ def case_2_compact_table(entries: List[BoundaryRequirement]):
             + " |"
         )
 
-    status_line("compact boundary ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact boundary ledger produced", StatusMark.INFO, "10 boundary requirements recorded")
 
 
-def case_3_status_counts(entries: List[BoundaryRequirement]):
+def case_3_status_counts(entries: List[BoundaryRequirement], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -272,10 +273,11 @@ def case_3_status_counts(entries: List[BoundaryRequirement]):
     print("  Boundary preservation is required but not proven.")
     print("  Relaxation energy accounting remains missing.")
 
-    status_line("boundary status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("boundary status count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_candidate_boundary_identity():
+def case_4_candidate_boundary_identity(out: ScriptOutput):
     header("Case 4: Candidate boundary identity")
 
     print("Candidate boundary preservation identity:")
@@ -296,10 +298,11 @@ def case_4_candidate_boundary_identity():
     print()
     print("This is currently a requirement, not a theorem.")
 
-    status_line("candidate boundary identity stated", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("candidate boundary identity stated", StatusMark.OBLIGATION, "boundary mass preservation theorem not yet proved")
 
 
-def case_5_failure_controls():
+def case_5_failure_controls(out: ScriptOutput):
     header("Case 5: Failure controls")
 
     print("Boundary mass preservation fails if:")
@@ -312,10 +315,11 @@ def case_5_failure_controls():
     print("6. Near-boundary diagnostics are advertised as measured predictions.")
     print("7. Relaxation energy disappears or changes exterior mass without accounting.")
 
-    status_line("boundary failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("boundary failure controls stated", StatusMark.DEFER, "failure controls policy-guarded")
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -336,7 +340,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  Boundary mass is protected by requirements; now recombination must avoid reintroducing scalar double-counting.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "recombination script is the next gate")
 
 
 def final_interpretation():
@@ -363,21 +368,136 @@ def main():
     header("Candidate Boundary Mass Preservation Identity")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_requirements()
     case_1_requirement_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_candidate_boundary_identity()
-    case_5_failure_controls()
-    case_6_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_candidate_boundary_identity(out)
+    case_5_failure_controls(out)
+    case_6_next_tests(out)
     final_interpretation()
+
+    # Proof obligations for boundary mass preservation
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_mass_preservation_theorem_B2",
+        script_id=SCRIPT_ID,
+        title="Derive boundary mass preservation theorem: delta M_ext|kappa_relaxation = 0 (B2)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that kappa relaxation can modify local trace/volume matching "
+            "without changing the exterior A-sector mass flux. "
+            "This is the key theorem required for kappa boundary safety."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_flux_neutrality_boundary_B4",
+        script_id=SCRIPT_ID,
+        title="Derive interface law enforcing F_kappa(R+) = 0 (B4)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that no kappa flux crosses into exterior vacuum as scalar charge. "
+            "F_kappa(R+) = 4*pi*R^2*kappa_prime(R+) = 0 must follow from the parent identity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_A_flux_kappa_flux_independence_B6",
+        script_id=SCRIPT_ID,
+        title="Derive parent separation of A flux and kappa boundary condition (B6)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that kappa interface conditions do not modify the A-sector Gauss/flux charge. "
+            "delta integral(grad A dot dS)|kappa = 0 must be established from the parent identity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_P_recombination_exterior_schwarzschild_B9",
+        script_id=SCRIPT_ID,
+        title="Derive P_recombination preserving exterior Schwarzschild when kappa=0 (B9)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Metric recombination must preserve exterior A/B result when kappa=0. "
+            "kappa_ext=0 must give the exterior Schwarzschild reduced form without "
+            "reintroducing scalar trace outside."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_relaxation_energy_vac_config_balance_B10",
+        script_id=SCRIPT_ID,
+        title="Derive vacuum configuration energy balance for Gamma_relax (B10)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Energy moved by Gamma_relax must be accounted as Delta E_vac_config "
+            "with total exterior charge preserved. This requires defining E_vac_config."
+        ),
+    ))
+
+    # Policy claim: near-boundary smoothing is diagnostic only
+    ns.record_claim(ClaimRecord(
+        claim_id="near_boundary_smoothing_diagnostic_only_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Near-boundary joint-minimum smoothing is diagnostic only. "
+            "It may not be used to claim mass change or measurable deviation "
+            "until weights, sigma, recombination, and observable map are derived."
+        ),
+    ))
+
+    # Candidate route: boundary mass preservation via compact support
+    ns.record_route(RouteRecord(
+        route_id="boundary_mass_preservation_compact_support_route",
+        script_id=SCRIPT_ID,
+        name="Boundary mass preservation via compact kappa support and zero flux condition",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_boundary_mass_preservation_theorem_B2",
+            "derive_kappa_flux_neutrality_boundary_B4",
+            "derive_A_flux_kappa_flux_independence_B6",
+        ],
+        activation_conditions=[
+            "support(S_kappa_eff) is compact or compensated",
+            "F_kappa(R+) = 0 follows from parent identity",
+            "delta(integral grad A dot dS)|kappa = 0 established",
+            "exterior kappa attractor is zero",
+        ],
+    ))
+
+    # Branch decision: boundary mass preservation theorem deferred
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_boundary_mass_preservation_theorem",
+        script_id=SCRIPT_ID,
+        branch_id="boundary_mass_preservation_theorem",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_boundary_mass_preservation_theorem_B2",
+            "derive_kappa_flux_neutrality_boundary_B4",
+            "derive_A_flux_kappa_flux_independence_B6",
+            "derive_P_recombination_exterior_schwarzschild_B9",
+            "derive_relaxation_energy_vac_config_balance_B10",
+        ],
+        description=(
+            "Boundary mass preservation cannot be established as a theorem yet. "
+            "The branch is deferred pending parent identity projection identities "
+            "and vacuum configuration energy accounting."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="boundary_mass_preservation_identity_marker",
         inputs=[],
         output=sp.Symbol("boundary_mass_preservation_identity_built"),
         method="boundary_mass_preservation_identity_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

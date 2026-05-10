@@ -1,5 +1,11 @@
 # Candidate exact source-law geometry check
 #
+# Group:
+#   02_mechanics
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # The exact static spherical recovery result used:
@@ -64,15 +70,22 @@
 #
 # IMPORTANT:
 # This is a reduced static spherical diagnostic, not a full covariant theory.
-#
-# Suggested location:
-#   scripts_v3/candidate_exact_source_law_geometry_check.py
 
 from pathlib import Path
 
 import sympy as sp
 
-from vacuumforge import ProjectArchive
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -88,14 +101,6 @@ def header(title: str) -> None:
     print("=" * 108)
     print(title)
     print("=" * 108)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -160,7 +165,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Exact Schwarzschild exterior setup
 # =============================================================================
 
-def case_0_setup():
+def case_0_setup(out: ScriptOutput):
     header("Case 0: Exact Schwarzschild exterior setup")
 
     r, r_s = sp.symbols("r r_s", positive=True, real=True)
@@ -173,7 +178,11 @@ def case_0_setup():
     print(f"AB = {sp.simplify(A*B)}")
     print(f"A' = {sp.diff(A, r)}")
 
-    status_line("Schwarzschild areal exterior has AB=1", is_zero(A*B - 1))
+    residual_AB = sp.simplify(A * B - 1)
+    with out.derived_results():
+        out.line("Schwarzschild areal exterior has AB=1",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
     return r, r_s, A, B
 
 
@@ -181,11 +190,12 @@ def case_0_setup():
 # Case 1: Flat areal radial Laplacian
 # =============================================================================
 
-def case_1_flat_laplacian(r, r_s, A, B):
+def case_1_flat_laplacian(out: ScriptOutput, ns, r, r_s, A, B):
     header("Case 1: Flat areal radial Laplacian")
 
     lap_flat = flat_radial_laplacian(A, r)
     flux = areal_flux(A, r)
+    flux_deriv = sp.simplify(sp.diff(flux, r))
 
     print("Operator:")
     print("  Δ_flat A = (1/r²)(r² A')'")
@@ -193,20 +203,35 @@ def case_1_flat_laplacian(r, r_s, A, B):
     print(f"Δ_flat A = {lap_flat}")
     print(f"4πr² A' = {flux}")
 
-    status_line("A=1-r_s/r is flat-harmonic for r>0", is_zero(lap_flat))
-    status_line("areal flux is constant", is_zero(sp.diff(flux, r)))
+    with out.derived_results():
+        out.line("A=1-r_s/r is flat-harmonic for r>0",
+                 StatusMark.PASS if is_zero(lap_flat) else StatusMark.FAIL,
+                 f"residual={lap_flat}")
+        out.line("areal flux is constant",
+                 StatusMark.PASS if is_zero(flux_deriv) else StatusMark.FAIL,
+                 f"d/dr(flux)={flux_deriv}")
 
     print()
     print("Interpretation:")
     print("  The exact source law used so far is equivalent to conserved")
     print("  areal flux of A through coordinate spheres.")
 
+    ns.record_derivation(
+        derivation_id="flat_laplacian_harmonic_check_schwarzschild_A",
+        inputs=[A, r],
+        output=lap_flat,
+        method="compute (1/r²)d/dr(r²A') for A=1-r_s/r",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        result_type="operator_check",
+    )
+
 
 # =============================================================================
 # Case 2: Curved spatial Laplacian
 # =============================================================================
 
-def case_2_curved_spatial_laplacian(r, r_s, A, B):
+def case_2_curved_spatial_laplacian(out: ScriptOutput, ns, r, r_s, A, B):
     header("Case 2: Curved spatial Laplacian on t=constant slice")
 
     lap_spatial = curved_spatial_radial_laplacian(A, B, r)
@@ -220,8 +245,10 @@ def case_2_curved_spatial_laplacian(r, r_s, A, B):
     print()
     print(f"Δ_spatial A = {lap_spatial_simplified}")
 
-    status_line("A is NOT generally harmonic under curved spatial Laplacian",
-                not is_zero(lap_spatial_simplified))
+    with out.derived_results():
+        out.line("A is NOT generally harmonic under curved spatial Laplacian",
+                 StatusMark.PASS if not is_zero(lap_spatial_simplified) else StatusMark.FAIL,
+                 f"lap_spatial_A={lap_spatial_simplified}")
 
     print()
     print("Interpretation:")
@@ -230,12 +257,22 @@ def case_2_curved_spatial_laplacian(r, r_s, A, B):
     print("  That means the A-action is not simply a standard curved-space")
     print("  scalar energy on the t=constant spatial slice.")
 
+    ns.record_derivation(
+        derivation_id="curved_spatial_laplacian_nonzero_check",
+        inputs=[A, B, r],
+        output=lap_spatial_simplified,
+        method="compute 1/(r²√B)d/dr[r²/√B A'] for A=1-r_s/r, B=1/A",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        result_type="operator_check",
+    )
+
 
 # =============================================================================
 # Case 3: Orbit-space static scalar operator
 # =============================================================================
 
-def case_3_orbit_space_operator(r, r_s, A, B):
+def case_3_orbit_space_operator(out: ScriptOutput, ns, r, r_s, A, B):
     header("Case 3: Orbit-space static scalar operator")
 
     op_h = orbit_space_static_operator(A, A, B, r)
@@ -254,20 +291,32 @@ def case_3_orbit_space_operator(r, r_s, A, B):
     print()
     print(f"□_h A = {op_h_simplified}")
 
-    status_line("A is NOT generally harmonic under orbit-space scalar operator",
-                not is_zero(op_h_simplified))
+    with out.derived_results():
+        out.line("A is NOT generally harmonic under orbit-space scalar operator",
+                 StatusMark.PASS if not is_zero(op_h_simplified) else StatusMark.FAIL,
+                 f"orbit_op_A={op_h_simplified}")
 
     print()
     print("Interpretation:")
     print("  The exact source law is also not simply the scalar wave/Laplace")
     print("  operator of the 2D orbit-space metric h_AB.")
 
+    ns.record_derivation(
+        derivation_id="orbit_space_operator_nonzero_check",
+        inputs=[A, B, r],
+        output=op_h_simplified,
+        method="compute 1/√(AB) d/dr[√(AB)*(1/B)*A'] for A=1-r_s/r, B=1/A",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        result_type="operator_check",
+    )
+
 
 # =============================================================================
 # Case 4: Compare all operators
 # =============================================================================
 
-def case_4_operator_comparison(r, r_s, A, B):
+def case_4_operator_comparison(out: ScriptOutput, r, r_s, A, B):
     header("Case 4: Operator comparison")
 
     lap_flat = flat_radial_laplacian(A, r)
@@ -288,14 +337,18 @@ def case_4_operator_comparison(r, r_s, A, B):
     print("  curved spatial Laplacian: fails")
     print("  2D orbit-space scalar operator: fails")
     print()
-    status_line("exact law is specifically areal-flux / flat-radial in current form", True)
+
+    with out.governance_assessments():
+        out.line("exact law is specifically areal-flux / flat-radial in current form",
+                 StatusMark.PASS,
+                 "flat Δ_flat passes; Δ_spatial and □_orbit both fail")
 
 
 # =============================================================================
 # Case 5: General condition for conserved areal flux
 # =============================================================================
 
-def case_5_general_areal_flux_solution():
+def case_5_general_areal_flux_solution(out: ScriptOutput):
     header("Case 5: General solution of conserved areal flux")
 
     r, C0, C1, F = sp.symbols("r C0 C1 F", positive=True, real=True)
@@ -315,14 +368,17 @@ def case_5_general_areal_flux_solution():
     print()
     print("Asymptotic flatness sets C0=1.")
     print("Mass flux sets C1=-r_s.")
-    status_line("conserved areal flux gives 1/r exterior form", True)
+
+    with out.derived_results():
+        out.line("conserved areal flux gives 1/r exterior form", StatusMark.PASS,
+                 "dsolve of d/dr(r²A')=0 gives A=C1+C2/r")
 
 
 # =============================================================================
 # Case 6: Can curved spatial harmonicity recover Schwarzschild?
 # =============================================================================
 
-def case_6_curved_spatial_harmonic_solution():
+def case_6_curved_spatial_harmonic_solution(out: ScriptOutput):
     header("Case 6: Curved-spatial harmonic solution check")
 
     r = sp.symbols("r", positive=True, real=True)
@@ -345,7 +401,11 @@ def case_6_curved_spatial_harmonic_solution():
     print("This is nonlinear and not solved by A=1-r_s/r in general.")
     print("Therefore the current exact recovery is not based on spatial")
     print("harmonicity of A.")
-    status_line("curved-spatial harmonicity is a different theory branch", True)
+
+    with out.governance_assessments():
+        out.line("curved-spatial harmonicity is a different theory branch",
+                 StatusMark.PASS,
+                 "curved Δ_spatial A=0 with B=1/A is nonlinear and not solved by A=1-r_s/r")
 
 
 # =============================================================================
@@ -441,16 +501,46 @@ def main():
     header("Candidate Exact Source-Law Geometry Check")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    r, r_s, A, B = case_0_setup()
-    case_1_flat_laplacian(r, r_s, A, B)
-    case_2_curved_spatial_laplacian(r, r_s, A, B)
-    case_3_orbit_space_operator(r, r_s, A, B)
-    case_4_operator_comparison(r, r_s, A, B)
-    case_5_general_areal_flux_solution()
-    case_6_curved_spatial_harmonic_solution()
+
+    out = ScriptOutput()
+
+    r, r_s, A, B = case_0_setup(out)
+    case_1_flat_laplacian(out, ns, r, r_s, A, B)
+    case_2_curved_spatial_laplacian(out, ns, r, r_s, A, B)
+    case_3_orbit_space_operator(out, ns, r, r_s, A, B)
+    case_4_operator_comparison(out, r, r_s, A, B)
+    case_5_general_areal_flux_solution(out)
+    case_6_curved_spatial_harmonic_solution(out)
     case_7_interpretation()
     case_8_action_implications()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_parent_of_areal_flux_operator",
+        script_id=SCRIPT_ID,
+        title="Derive covariant geometric parent that reduces to flat areal Laplacian",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The diagnostic shows the exact source law uses the flat areal Laplacian "
+            "Δ_areal=(1/r²)d/dr(r²A'), not the curved spatial Laplacian or orbit-space "
+            "operator. The covariant geometric principle explaining this is not yet derived."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="exact_source_law_is_areal_flux_flat_radial",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The exact reduced source law for A=1-r_s/r is specifically the flat areal "
+            "radial operator Δ_flat=(1/r²)(r²A')'. It is not the curved spatial Laplacian "
+            "of dl²=Bdr²+r²dΩ², nor the 2D orbit-space scalar operator. This is a precision "
+            "diagnostic result, not a theorem about the covariant parent."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

@@ -1,5 +1,11 @@
 # Candidate parent identity reduced implications
 #
+# Group:
+#   12_parent_identity_and_recombination
+#
+# Script type:
+#   INVENTORY
+
 # Purpose
 # -------
 # The parent identity exclusion constraints ruled out false parent identities:
@@ -31,6 +37,17 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status, TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -42,24 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "REQUIRED": "WARN",
-        "DERIVED_REDUCED_TARGET": "WARN",
-        "STRUCTURAL_TARGET": "WARN",
-        "CONSTRAINED_TARGET": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "PASS_IF_DERIVED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -263,11 +262,11 @@ def print_implication(r: ReducedImplication) -> None:
     print(f"Reduced target: {r.reduced_target}")
     print(f"Why required: {r.why_required}")
     print(f"Forbidden alternative: {r.forbidden_alternative}")
-    status_line(r.name, r.status)
+    print(f"[INFO] {r.name}: {r.status}")
     print(f"Missing derivation: {r.missing_derivation}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent identity reduced implications problem")
 
     print("Question:")
@@ -283,7 +282,8 @@ def case_0_problem_statement():
     print("  reduced targets are tests, not derivations")
     print("  a parent identity must force the sector ledger, not merely coexist with it")
 
-    status_line("reduced implication problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("reduced implication problem posed", StatusMark.OBLIGATION, "15 reduced sector tests required")
 
 
 def case_1_implication_inventory(entries: List[ReducedImplication]):
@@ -292,7 +292,7 @@ def case_1_implication_inventory(entries: List[ReducedImplication]):
         print_implication(entry)
 
 
-def case_2_compact_table(entries: List[ReducedImplication]):
+def case_2_compact_table(entries: List[ReducedImplication], out: ScriptOutput):
     header("Case 2: Compact reduced implication ledger")
 
     print("| Implication | Sector | Reduced target | Status | Missing derivation |")
@@ -312,10 +312,11 @@ def case_2_compact_table(entries: List[ReducedImplication]):
             + " |"
         )
 
-    status_line("compact reduced implication ledger produced", "REQUIRED")
+    with out.governance_assessments():
+        out.line("compact reduced implication ledger produced", StatusMark.INFO, "15 reduced sector tests recorded")
 
 
-def case_3_status_counts(entries: List[ReducedImplication]):
+def case_3_status_counts(entries: List[ReducedImplication], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -331,10 +332,11 @@ def case_3_status_counts(entries: List[ReducedImplication]):
     print("  Most are not derived from a parent identity yet.")
     print("  Scalar constraint propagation and recombination remain especially unresolved.")
 
-    status_line("reduced implication count produced", "REQUIRED")
+    with out.governance_assessments():
+        out.line("reduced implication count produced", StatusMark.INFO, str(counts))
 
 
-def case_4_parent_identity_test_suite():
+def case_4_parent_identity_test_suite(out: ScriptOutput):
     header("Case 4: Parent identity test suite")
 
     print("A candidate parent identity passes only if it implies:")
@@ -355,10 +357,11 @@ def case_4_parent_identity_test_suite():
     print("14. Relaxation energy accounting.")
     print("15. Recombination without scalar double-counting.")
 
-    status_line("parent identity test suite stated", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("parent identity test suite stated", StatusMark.OBLIGATION, "15 tests required before parent identity is licensed")
 
 
-def case_5_hardest_reduced_implications():
+def case_5_hardest_reduced_implications(out: ScriptOutput):
     header("Case 5: Hardest reduced implications")
 
     print("Hardest reduced implications:")
@@ -378,10 +381,11 @@ def case_5_hardest_reduced_implications():
     print("5. Recombination.")
     print("   The parent must map sectors into geometry without copying GR by form.")
 
-    status_line("hardest reduced implications identified", "RISK")
+    with out.unresolved_obligations():
+        out.line("hardest reduced implications identified", StatusMark.OBLIGATION, "5 hardest implications need derivation")
 
 
-def case_5b_vf_reciprocal_implication_crosscheck(ns):
+def case_5b_vf_reciprocal_implication_crosscheck(ns, out: ScriptOutput):
     header("Case 5b: VacuumForge reciprocal implication cross-check")
 
     ctx = TheoryContext("candidate_parent_identity_reduced_implications")
@@ -397,10 +401,13 @@ def case_5b_vf_reciprocal_implication_crosscheck(ns):
     print(f"ConcreteMetricCheck status = {result.status}")
 
     ok = result.status == "satisfied_by_construction" and product == 1
-    status_line(
-        "reduced-implication ledger reproduces reciprocal exterior metric check",
-        "DERIVED_REDUCED" if ok else "RISK",
-    )
+
+    with out.derived_results():
+        out.line(
+            "reduced-implication ledger reproduces reciprocal exterior metric check",
+            StatusMark.PASS if ok else StatusMark.FAIL,
+            f"A*B = {product}",
+        )
 
     ns.record_derivation(
         derivation_id="parent_identity_reciprocal_implication_crosscheck",
@@ -408,10 +415,11 @@ def case_5b_vf_reciprocal_implication_crosscheck(ns):
         output=product,
         method="ConcreteMetricCheck reciprocal_scaling",
         status=Status.DERIVED,
+        record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
     )
 
 
-def case_6_next_tests():
+def case_6_next_tests(out: ScriptOutput):
     header("Case 6: Next tests")
 
     print("Possible next scripts:")
@@ -432,7 +440,8 @@ def case_6_next_tests():
     print("Reason:")
     print("  The reduced implications require projectors. Projector structure is the next gate.")
 
-    status_line("next test selected", "REQUIRED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "projector structure script is the next gate")
 
 
 def final_interpretation():
@@ -463,22 +472,100 @@ def main():
     header("Candidate Parent Identity Reduced Implications")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
+
+    case_0_problem_statement(out)
     entries = build_implications()
     case_1_implication_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_parent_identity_test_suite()
-    case_5_hardest_reduced_implications()
-    case_5b_vf_reciprocal_implication_crosscheck(ns)
-    case_6_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_parent_identity_test_suite(out)
+    case_5_hardest_reduced_implications(out)
+    case_5b_vf_reciprocal_implication_crosscheck(ns, out)
+    case_6_next_tests(out)
     final_interpretation()
+
+    # Proof obligations for each missing reduced implication
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_scalar_constraint_propagation_reduced",
+        script_id=SCRIPT_ID,
+        title="Derive continuity-compatible scalar constraint propagation (R5)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that partial_t C_A[A,rho] follows from partial_t rho + div j_L = 0. "
+            "This is the most critical missing reduced implication for the parent identity."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_vector_normalization_alpha_W",
+        script_id=SCRIPT_ID,
+        title="Derive parent current projection and normalization alpha_W/K_c (R6)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the parent identity projects j onto j_T = P_T j feeding W_i, "
+            "and derive the normalization alpha_W/K_c from parent action or stiffness."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tensor_action_stiffness_C_T",
+        script_id=SCRIPT_ID,
+        title="Derive tensor action stiffness C_T and TT source identity (R8)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the parent identity gives Box h_ij^TT = -C_T*S_ij^TT "
+            "with C_T derived from action/stiffness rather than matched."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_relaxation_parent_K_kappa",
+        script_id=SCRIPT_ID,
+        title="Derive K_kappa, mu_kappa, chi_kappa, S_trace_effective from parent vacuum minimum (R10)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The parent identity must show that trace/pressure shifts kappa_min through "
+            "S_trace_effective and chi_kappa, with K_kappa from the vacuum minimum structure."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_recombination_map_R15",
+        script_id=SCRIPT_ID,
+        title="Derive covariant or reduced parent recombination map (R15)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that A, W_i, h_TT, kappa combine into a geometry-like object "
+            "without duplicating scalar response. This is the hardest gate for R15."
+        ),
+    ))
+
+    # Branch decision: parent identity test suite cannot be passed yet
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_identity_test_suite_passage",
+        script_id=SCRIPT_ID,
+        branch_id="parent_identity_test_suite_passage",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_scalar_constraint_propagation_reduced",
+            "derive_parent_vector_normalization_alpha_W",
+            "derive_tensor_action_stiffness_C_T",
+            "derive_kappa_relaxation_parent_K_kappa",
+            "derive_parent_recombination_map_R15",
+        ],
+        description=(
+            "No candidate parent identity can pass the full 15-test reduced-sector suite yet. "
+            "The branch is deferred pending projector derivations and constraint propagation."
+        ),
+    ))
+
     ns.record_derivation(
         derivation_id="parent_identity_reduced_implications_marker",
         inputs=[],
         output=sp.Symbol("parent_identity_reduced_implications_built"),
         method="parent_identity_reduced_implications_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

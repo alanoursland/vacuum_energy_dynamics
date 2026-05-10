@@ -1,3 +1,9 @@
+# Group:
+#   06_tensor_flux_principle
+#
+# Script type:
+#   DERIVATION
+
 # Candidate tensor flux basis
 #
 # Purpose
@@ -19,17 +25,23 @@
 #   4. a general TT wave has two polarizations,
 #   5. scalar breathing mode is orthogonal/distinct from TT basis,
 #   6. TT projection removes trace/longitudinal content for z-propagating waves.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/06_tensor_flux_principle/
-#   or:
-#   scripts_v3/candidate_tensor_flux_basis.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,14 +57,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -113,7 +117,10 @@ def case_0_problem_statement():
     print()
     print("This script defines the plus/cross TT basis for propagation along z.")
 
-    status_line("tensor flux basis problem posed", True)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("tensor flux basis problem posed", StatusMark.PASS, "TT basis construction starting")
+    out.print()
 
 
 # =============================================================================
@@ -141,7 +148,10 @@ def case_1_define_basis():
     print("e_cross =")
     print(e_cross)
 
-    status_line("plus and cross basis tensors defined", True)
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("plus and cross basis tensors defined", StatusMark.PASS, "e_plus = diag(1,-1,0); e_cross = sym off-diag xy")
+    out.print()
 
     return e_plus, e_cross
 
@@ -150,7 +160,7 @@ def case_1_define_basis():
 # Case 2: Trace-free checks
 # =============================================================================
 
-def case_2_trace_free(e_plus, e_cross):
+def case_2_trace_free(e_plus, e_cross, ns):
     header("Case 2: Trace-free checks")
 
     tr_plus = sp.trace(e_plus)
@@ -159,15 +169,41 @@ def case_2_trace_free(e_plus, e_cross):
     print(f"Tr(e_plus) = {tr_plus}")
     print(f"Tr(e_cross) = {tr_cross}")
 
-    status_line("plus basis is trace-free", is_zero(tr_plus))
-    status_line("cross basis is trace-free", is_zero(tr_cross))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("plus basis is trace-free",
+                 StatusMark.PASS if is_zero(tr_plus) else StatusMark.FAIL,
+                 f"Tr(e_plus) = {tr_plus}")
+        out.line("cross basis is trace-free",
+                 StatusMark.PASS if is_zero(tr_cross) else StatusMark.FAIL,
+                 f"Tr(e_cross) = {tr_cross}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_basis_trace_free_plus",
+        inputs=[e_plus],
+        output=tr_plus,
+        method="trace_of_e_plus",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="tt_basis_trace_free_cross",
+        inputs=[e_cross],
+        output=tr_cross,
+        method="trace_of_e_cross",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 3: Transversality checks
 # =============================================================================
 
-def case_3_transverse(e_plus, e_cross):
+def case_3_transverse(e_plus, e_cross, ns):
     header("Case 3: Transversality checks for propagation along z")
 
     k = sp.symbols("k", real=True)
@@ -184,15 +220,41 @@ def case_3_transverse(e_plus, e_cross):
     print("k^i e_cross_ij =")
     print(trans_cross)
 
-    status_line("plus basis is transverse", matrix_is_zero(trans_plus))
-    status_line("cross basis is transverse", matrix_is_zero(trans_cross))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("plus basis is transverse",
+                 StatusMark.PASS if matrix_is_zero(trans_plus) else StatusMark.FAIL,
+                 f"k^i e_plus = {trans_plus}")
+        out.line("cross basis is transverse",
+                 StatusMark.PASS if matrix_is_zero(trans_cross) else StatusMark.FAIL,
+                 f"k^i e_cross = {trans_cross}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_basis_transversality_plus",
+        inputs=[kvec, e_plus],
+        output=trans_plus,
+        method="transversality_check_e_plus",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
+    ns.record_derivation(
+        derivation_id="tt_basis_transversality_cross",
+        inputs=[kvec, e_cross],
+        output=trans_cross,
+        method="transversality_check_e_cross",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 4: Basis inner products
 # =============================================================================
 
-def case_4_inner_products(e_plus, e_cross):
+def case_4_inner_products(e_plus, e_cross, ns):
     header("Case 4: Basis inner products")
 
     pp = inner(e_plus, e_plus)
@@ -203,35 +265,68 @@ def case_4_inner_products(e_plus, e_cross):
     print(f"<cross, cross> = {cc}")
     print(f"<plus, cross> = {pc}")
 
-    status_line("plus and cross are nonzero", not is_zero(pp) and not is_zero(cc))
-    status_line("plus and cross are orthogonal", is_zero(pc))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("plus and cross are nonzero",
+                 StatusMark.PASS if not is_zero(pp) and not is_zero(cc) else StatusMark.FAIL,
+                 f"<+,+>={pp}, <x,x>={cc}")
+        out.line("plus and cross are orthogonal",
+                 StatusMark.PASS if is_zero(pc) else StatusMark.FAIL,
+                 f"<+,x>={pc}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_basis_orthogonality_residual",
+        inputs=[e_plus, e_cross],
+        output=pc,
+        method="frobenius_inner_product_plus_cross",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 5: General TT wave from basis
 # =============================================================================
 
-def case_5_general_tt_wave(e_plus, e_cross):
+def case_5_general_tt_wave(e_plus, e_cross, ns):
     header("Case 5: General TT wave from plus/cross basis")
 
     hp, hx = sp.symbols("h_plus h_cross", real=True)
 
     H_TT = sp.simplify(hp * e_plus + hx * e_cross)
+    trace_tt = sp.trace(H_TT)
 
     print("H_TT = h_plus e_plus + h_cross e_cross =")
     print(H_TT)
     print()
-    print(f"trace = {sp.trace(H_TT)}")
+    print(f"trace = {trace_tt}")
 
-    status_line("general basis combination is trace-free", is_zero(sp.trace(H_TT)))
-    status_line("general basis combination has two amplitudes", True)
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("general basis combination is trace-free",
+                 StatusMark.PASS if is_zero(trace_tt) else StatusMark.FAIL,
+                 f"trace = {trace_tt}")
+        out.line("general basis combination has two amplitudes", StatusMark.PASS, "h_plus and h_cross are free parameters")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="general_tt_wave_trace_zero",
+        inputs=[hp, hx, e_plus, e_cross],
+        output=trace_tt,
+        method="linear_combination_tt_basis_trace",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 6: Scalar breathing mode is distinct
 # =============================================================================
 
-def case_6_breathing_distinct(e_plus, e_cross):
+def case_6_breathing_distinct(e_plus, e_cross, ns):
     header("Case 6: Scalar breathing mode is distinct from TT basis")
 
     b = sp.symbols("b", real=True)
@@ -253,15 +348,32 @@ def case_6_breathing_distinct(e_plus, e_cross):
     print(f"<breathing, plus> = {ip_plus}")
     print(f"<breathing, cross> = {ip_cross}")
 
-    status_line("breathing mode is not traceless unless trivial", not is_zero(tr_b))
-    status_line("breathing mode is distinct from TT basis", is_zero(ip_plus) and is_zero(ip_cross))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("breathing mode is not traceless unless trivial",
+                 StatusMark.PASS if not is_zero(tr_b) else StatusMark.FAIL,
+                 f"trace = {tr_b}")
+        out.line("breathing mode is distinct from TT basis",
+                 StatusMark.PASS if is_zero(ip_plus) and is_zero(ip_cross) else StatusMark.FAIL,
+                 f"<b,+>={ip_plus}, <b,x>={ip_cross}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="breathing_orthogonal_to_tt_basis",
+        inputs=[H_breathing, e_plus, e_cross],
+        output=sp.Matrix([ip_plus, ip_cross]),
+        method="frobenius_inner_product_breathing_vs_tt",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
 # Case 7: TT projection for z propagation
 # =============================================================================
 
-def case_7_tt_projection_z():
+def case_7_tt_projection_z(ns):
     header("Case 7: TT projection for z-propagating spatial tensor")
 
     hxx, hyy, hzz, hxy, hxz, hyz = sp.symbols("h_xx h_yy h_zz h_xy h_xz h_yz", real=True)
@@ -287,6 +399,8 @@ def case_7_tt_projection_z():
         [0, 0, 0],
     ])
 
+    trace_tt_z = sp.simplify(sp.trace(H_TT_z))
+
     print("General symmetric spatial tensor:")
     print(H)
     print()
@@ -296,7 +410,7 @@ def case_7_tt_projection_z():
     print("TT projection for z propagation:")
     print(H_TT_z)
     print()
-    print(f"trace = {sp.simplify(sp.trace(H_TT_z))}")
+    print(f"trace = {trace_tt_z}")
 
     k = sp.symbols("k", real=True)
     kvec = sp.Matrix([0, 0, k])
@@ -305,8 +419,25 @@ def case_7_tt_projection_z():
     print("k^i H_TT_ij =")
     print(trans)
 
-    status_line("z-TT projection is trace-free", is_zero(sp.trace(H_TT_z)))
-    status_line("z-TT projection is transverse", matrix_is_zero(trans))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("z-TT projection is trace-free",
+                 StatusMark.PASS if is_zero(trace_tt_z) else StatusMark.FAIL,
+                 f"trace = {trace_tt_z}")
+        out.line("z-TT projection is transverse",
+                 StatusMark.PASS if matrix_is_zero(trans) else StatusMark.FAIL,
+                 f"k^i H_TT = {trans}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="tt_projection_z_trace_free_transverse",
+        inputs=[H],
+        output=sp.Matrix([trace_tt_z, trans]),
+        method="TT_projection_z_propagation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
@@ -329,7 +460,10 @@ def case_8_tensor_flux_interpretation():
     print("  add quadrupole source coupling")
     print("  define tensor-flux conservation/radiation law")
 
-    status_line("tensor flux channel basis established", True)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("tensor flux channel basis established", StatusMark.PASS, "TT basis: trace-free, transverse, two polarizations")
+    out.print()
 
 
 # =============================================================================
@@ -368,20 +502,62 @@ def main():
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
     e_plus, e_cross = case_1_define_basis()
-    case_2_trace_free(e_plus, e_cross)
-    case_3_transverse(e_plus, e_cross)
-    case_4_inner_products(e_plus, e_cross)
-    case_5_general_tt_wave(e_plus, e_cross)
-    case_6_breathing_distinct(e_plus, e_cross)
-    case_7_tt_projection_z()
+    case_2_trace_free(e_plus, e_cross, ns)
+    case_3_transverse(e_plus, e_cross, ns)
+    case_4_inner_products(e_plus, e_cross, ns)
+    case_5_general_tt_wave(e_plus, e_cross, ns)
+    case_6_breathing_distinct(e_plus, e_cross, ns)
+    case_7_tt_projection_z(ns)
     case_8_tensor_flux_interpretation()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_tensor_wave_equation_from_basis",
+        script_id=SCRIPT_ID,
+        title="Derive tensor wave equation from TT basis",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The TT basis is established. A field equation Box h_ij^TT = source must "
+            "be added to give the basis physical propagation."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="tt_basis_established_claim",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The plus/cross TT basis is trace-free, transverse, and orthogonal for "
+            "propagation along z. It supplies the two polarizations needed for a "
+            "tensor-flux gravitational-wave channel."
+        ),
+        obligation_ids=["derive_tensor_wave_equation_from_basis"],
+    ))
+
+    ns.record_route(RouteRecord(
+        route_id="tensor_tt_flux_basis_route",
+        script_id=SCRIPT_ID,
+        name="Tensor TT flux channel via plus/cross basis",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_tensor_wave_equation_from_basis"],
+        activation_conditions=[
+            "e_plus and e_cross are trace-free and transverse",
+            "basis is orthogonal",
+            "wave equation is added",
+        ],
+    ))
+
     ns.record_derivation(
         derivation_id="tensor_tt_basis_marker",
         inputs=[],
         output=sp.Symbol("tt_basis_established"),
         method="tensor_tt_basis_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

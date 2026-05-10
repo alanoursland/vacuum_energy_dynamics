@@ -1,3 +1,9 @@
+# Group:
+#   04_source_law_interior
+#
+# Script type:
+#   DERIVATION
+#
 # Candidate boundary flux action
 #
 # Purpose
@@ -32,9 +38,6 @@
 #
 # This script tests whether areal flux can be read as a boundary/interface
 # condition rather than an ordinary curved-space scalar equation.
-#
-# Suggested location:
-#   scripts_v3/candidate_boundary_flux_action.py
 
 from pathlib import Path
 
@@ -43,6 +46,17 @@ import sympy as sp
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -54,14 +68,6 @@ def header(title: str) -> None:
     print("=" * 108)
     print(title)
     print("=" * 108)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -101,7 +107,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
         print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
-def case_0_radial_bulk_action():
+def case_0_radial_bulk_action(out: ScriptOutput, ns=None):
     header("Case 0: Radial bulk action")
 
     r, K_A = sp.symbols("r K_A", positive=True, real=True)
@@ -118,10 +124,27 @@ def case_0_radial_bulk_action():
     print("  source-free areal flux is conserved")
 
     expected = -2*K_A*sp.diff(r**2 * sp.diff(A, r), r)
-    status_line("bulk action gives conserved areal flux", is_zero(EL - expected))
+    residual = sp.simplify(EL - expected)
+    ok = is_zero(residual)
+
+    with out.derived_results():
+        out.line("bulk action gives conserved areal flux",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"EL residual = {residual}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="bulk_radial_action_euler_lagrange",
+            inputs=[L],
+            output=EL,
+            method="euler_lagrange_1d",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="euler_lagrange_equation",
+        )
 
 
-def case_1_boundary_variation_term():
+def case_1_boundary_variation_term(out: ScriptOutput):
     header("Case 1: Boundary variation term")
 
     r, R, K_A = sp.symbols("r R K_A", positive=True, real=True)
@@ -131,14 +154,17 @@ def case_1_boundary_variation_term():
 
     print("Variation of bulk action gives boundary term:")
     print()
-    print("  [2 K_A r² A' deltaA] at boundary")
+    print("  [2 K_A r^2 A' deltaA] at boundary")
     print()
     print(f"At r=R: {boundary_term}")
 
-    status_line("bulk variation exposes areal flux as boundary momentum", True)
+    with out.derived_results():
+        out.line("bulk variation exposes areal flux as boundary momentum",
+                 StatusMark.PASS,
+                 "boundary term = 2 K_A R^2 A'(R) deltaA(R)")
 
 
-def case_2_source_boundary_coupling():
+def case_2_source_boundary_coupling(out: ScriptOutput, ns=None):
     header("Case 2: Source boundary coupling")
 
     R, K_A, q = sp.symbols("R K_A q", positive=True, real=True)
@@ -155,17 +181,31 @@ def case_2_source_boundary_coupling():
     print("  E_boundary = -q A(R)")
     print()
     print("Boundary stationarity:")
-    print("  2 K_A R² A'(R) - q = 0")
+    print("  2 K_A R^2 A'(R) - q = 0")
     print()
     print(f"A'(R) = {sol_Ap}")
 
     flux = sp.simplify(4*sp.pi*R**2*sol_Ap)
-    print(f"F_A(R)=4πR²A'(R) = {flux}")
+    print(f"F_A(R)=4piR^2*A'(R) = {flux}")
 
-    status_line("boundary source fixes areal flux", True)
+    with out.derived_results():
+        out.line("boundary source fixes areal flux",
+                 StatusMark.PASS,
+                 f"F_A(R) = {flux}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="boundary_source_coupling_flux_relation",
+            inputs=[boundary_eq],
+            output=sp.Eq(sp.Symbol("F_A"), flux),
+            method="boundary_stationarity",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="boundary_condition",
+        )
 
 
-def case_3_mass_normalization():
+def case_3_mass_normalization(out: ScriptOutput, ns=None):
     header("Case 3: Mass normalization of boundary charge")
 
     R, K_A, G, M, c = sp.symbols("R K_A G M c", positive=True, real=True)
@@ -180,10 +220,32 @@ def case_3_mass_normalization():
     print(f"F_A = {flux}")
     print(f"target = {target}")
 
-    status_line("mass-normalized boundary charge gives desired flux", is_zero(flux - target))
+    residual = sp.simplify(flux - target)
+    ok = is_zero(residual)
+
+    with out.derived_results():
+        out.line("mass-normalized boundary charge gives desired flux",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"F_A - target = {residual}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="mass_normalization_boundary_charge",
+            inputs=[q, R, K_A],
+            output=residual,
+            method="F_A = 4pi*R^2*q/(2*K_A*R^2) vs 8pi*G*M/c^2",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="normalization_residual",
+        )
+
+    with out.unresolved_obligations():
+        out.line("derive K_A from vacuum microphysics",
+                 StatusMark.OBLIGATION,
+                 "q_M = 4 K_A G M/c^2 fixes normalization only after Newtonian matching; K_A origin missing")
 
 
-def case_4_exterior_solution_from_boundary():
+def case_4_exterior_solution_from_boundary(out: ScriptOutput, ns=None):
     header("Case 4: Exterior solution from boundary condition")
 
     r, R, G, M, c = sp.symbols("r R G M c", positive=True, real=True)
@@ -204,31 +266,51 @@ def case_4_exterior_solution_from_boundary():
     print(f"C1 from flux = {sol_C1}")
     print(f"A with asymptotic flatness = {A_matched}")
 
-    status_line("boundary flux gives Schwarzschild A coefficient",
-                is_zero(A_matched - (1 - 2*G*M/(c**2*r))))
+    schwarzschild_residual = sp.simplify(A_matched - (1 - 2*G*M/(c**2*r)))
+    ok = is_zero(schwarzschild_residual)
+
+    with out.derived_results():
+        out.line("boundary flux gives Schwarzschild A coefficient",
+                 StatusMark.PASS if ok else StatusMark.FAIL,
+                 f"A_matched - A_Schwarzschild = {schwarzschild_residual}")
+
+    if ns is not None:
+        ns.record_derivation(
+            derivation_id="boundary_flux_exterior_schwarzschild",
+            inputs=[flux, target],
+            output=schwarzschild_residual,
+            method="solve C1 from flux=target, substitute into A_general",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
 
 
-def case_5_boundary_vs_bulk_source():
+def case_5_boundary_vs_bulk_source(out: ScriptOutput):
     header("Case 5: Boundary source versus bulk source")
 
     print("Two equivalent reduced descriptions:")
     print()
     print("1. Bulk density source:")
-    print("   d/dr(4πr²A') = 4πr² * 8πGρ/c²")
+    print("   d/dr(4pir^2*A') = 4pir^2 * 8piGrho/c^2")
     print()
     print("2. Boundary/source interface:")
-    print("   4πR²A'(R) = 8πGM/c²")
+    print("   4piR^2*A'(R) = 8piGM/c^2")
     print()
     print("For exterior r>R, both give:")
-    print("   A = 1 - 2GM/(rc²)")
+    print("   A = 1 - 2GM/(rc^2)")
     print()
     print("Interpretation:")
     print("   The areal-flux law can be viewed as a Gauss law: the bulk source")
     print("   determines the boundary flux seen by the exterior.")
-    status_line("boundary and bulk views agree for exterior flux", True)
+
+    with out.governance_assessments():
+        out.line("boundary and bulk views agree for exterior flux",
+                 StatusMark.PASS,
+                 "both recover A = 1 - 2GM/(rc^2) for r > R")
 
 
-def case_6_kappa_compensation_coupling(ns=None):
+def case_6_kappa_compensation_coupling(out: ScriptOutput, ns=None):
     header("Case 6: Coupling to kappa compensation")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -243,7 +325,10 @@ def case_6_kappa_compensation_coupling(ns=None):
     print(f"B = exp(2kappa)/A = {B}")
     print(f"AB = {AB}")
 
-    status_line("boundary flux plus kappa=0 recovers reciprocal exterior", is_zero(AB - 1))
+    with out.derived_results():
+        out.line("boundary flux plus kappa=0 recovers reciprocal exterior",
+                 StatusMark.PASS if is_zero(AB - 1) else StatusMark.FAIL,
+                 f"AB = {AB}")
 
     ctx = TheoryContext("candidate_boundary_flux_action")
     ctx.define_equal_response_algebraic_symbols()
@@ -252,11 +337,13 @@ def case_6_kappa_compensation_coupling(ns=None):
     B_value = sp.simplify(1 / A_value)
     concrete = check_concrete_metric(ctx, A_value=A_value, B_value=B_value, requirement_ids=["reciprocal_scaling"])
     if concrete:
-        status_line(
-            "VacuumForge classifies boundary-flux exterior metric as by-construction reciprocal",
-            concrete[0].status == "satisfied_by_construction",
-            concrete[0].message,
-        )
+        is_satisfied = concrete[0].status == "satisfied_by_construction"
+        with out.derived_results():
+            out.line(
+                "VacuumForge classifies boundary-flux exterior metric as by-construction reciprocal",
+                StatusMark.PASS if is_satisfied else StatusMark.FAIL,
+                concrete[0].message,
+            )
         if ns is not None:
             ns.record_derivation(
                 derivation_id="boundary_flux_exact_metric_check",
@@ -264,6 +351,7 @@ def case_6_kappa_compensation_coupling(ns=None):
                 output=sp.Symbol(concrete[0].status),
                 method="concrete_metric_check",
                 status=Status.DERIVED,
+                record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
                 metadata={"message": concrete[0].message},
             )
 
@@ -274,16 +362,16 @@ def final_interpretation():
     print("The reduced radial A-action exposes areal flux as the boundary")
     print("momentum conjugate to A:")
     print()
-    print("  boundary momentum ∝ r² A'")
+    print("  boundary momentum prop r^2 A'")
     print()
     print("A source/interface coupling -q A(R) fixes that boundary momentum.")
     print("With q proportional to M, the boundary condition becomes:")
     print()
-    print("  4πR²A'(R) = 8πGM/c²")
+    print("  4piR^2*A'(R) = 8piGM/c^2")
     print()
     print("The exterior bulk equation then gives:")
     print()
-    print("  A = 1 - 2GM/(rc²)")
+    print("  A = 1 - 2GM/(rc^2)")
     print()
     print("Combined with kappa=0:")
     print()
@@ -297,14 +385,74 @@ def main():
     header("Candidate Boundary Flux Action")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_radial_bulk_action()
-    case_1_boundary_variation_term()
-    case_2_source_boundary_coupling()
-    case_3_mass_normalization()
-    case_4_exterior_solution_from_boundary()
-    case_5_boundary_vs_bulk_source()
-    case_6_kappa_compensation_coupling(ns)
+
+    out = ScriptOutput()
+
+    case_0_radial_bulk_action(out, ns)
+    case_1_boundary_variation_term(out)
+    case_2_source_boundary_coupling(out, ns)
+    case_3_mass_normalization(out, ns)
+    case_4_exterior_solution_from_boundary(out, ns)
+    case_5_boundary_vs_bulk_source(out)
+    case_6_kappa_compensation_coupling(out, ns)
     final_interpretation()
+
+    out.print_summary()
+
+    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
+        ns2 = archive2.script_namespace(SCRIPT_ID)
+        ns2.prepare_archive()
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_K_A_from_microphysics",
+            script_id=SCRIPT_ID,
+            title="Derive K_A from vacuum microphysics",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The boundary action stiffness K_A appears in q_M = 4 K_A G M/c^2. "
+                "Its value is fixed by Newtonian/Schwarzschild matching but is not "
+                "derived from first principles. Origin of K_A remains open."
+            ),
+        ))
+
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_boundary_action_form",
+            script_id=SCRIPT_ID,
+            title="Derive why boundary action is -q A(R)",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The boundary coupling form E_boundary = -q A(R) is adopted as an "
+                "ansatz. A derivation of this coupling from covariant source action "
+                "or matter coupling has not yet been given."
+            ),
+        ))
+
+        ns2.record_claim(ClaimRecord(
+            claim_id="areal_flux_as_boundary_momentum",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The areal-flux law F_A = 8piGM/c^2 can be read as a boundary "
+                "condition from variation of the reduced radial A-action with "
+                "boundary coupling -q A(R). This is a candidate interpretation; "
+                "the coupling origin remains underived."
+            ),
+            obligation_ids=["derive_K_A_from_microphysics", "derive_boundary_action_form"],
+        ))
+
+        ns2.record_route(RouteRecord(
+            route_id="boundary_action_flux_normalization_route",
+            script_id=SCRIPT_ID,
+            name="Boundary action / flux normalization route",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=["derive_K_A_from_microphysics", "derive_boundary_action_form"],
+        ))
+
+        ns2.write_run_metadata()
+
     ns.write_run_metadata()
 
 

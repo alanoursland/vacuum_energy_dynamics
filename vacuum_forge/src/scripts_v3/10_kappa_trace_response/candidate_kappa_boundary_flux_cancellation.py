@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   DERIVATION
+#
 # Candidate kappa boundary flux cancellation
 #
 # Purpose
@@ -31,17 +37,22 @@
 #   5. remains missing.
 #
 # This is not a final dynamic derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_boundary_flux_cancellation.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -53,22 +64,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -115,8 +110,6 @@ def case_0_problem_statement():
     print("  short-lived breathing response if damped/absorbed before becoming")
     print("  ordinary long-range scalar radiation")
 
-    status_line("boundary flux problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_static_massless_tail_flux():
     header("Case 1: Static massless exterior tail flux")
@@ -137,8 +130,7 @@ def case_1_static_massless_tail_flux():
     print("If C1 != 0, exterior flux is nonzero.")
     print("Thus kappa_ext = C1/r is forbidden unless C1 = 0.")
 
-    status_line("massless 1/r tail has nonzero flux", "RISK",
-                "must cancel C1")
+    return r, kappa, flux
 
 
 def case_2_projected_zero_charge_flux():
@@ -164,9 +156,7 @@ def case_2_projected_zero_charge_flux():
     print()
     print("  F_kappa = 0")
 
-    status_line("projected zero charge cancels monopole flux",
-                "CONSTRAINED_BY_IDENTITY",
-                "static/fixed support only")
+    return F
 
 
 def case_3_boundary_matching_condition():
@@ -186,10 +176,6 @@ def case_3_boundary_matching_condition():
     print()
     print("This is analogous to permitting interior trace response without exterior")
     print("scalar charge.")
-
-    status_line("static boundary flux condition stated",
-                "CONSTRAINED_BY_IDENTITY",
-                "boundary-layer mechanism missing")
 
 
 def case_4_yukawa_suppressed_flux():
@@ -211,9 +197,7 @@ def case_4_yukawa_suppressed_flux():
     print("This does not make flux identically zero, but it suppresses it with distance.")
     print("Useful only if m is derived/constrained and the mode is not observable long-range.")
 
-    status_line("Yukawa suppression reduces long-range flux",
-                "PLAUSIBLE",
-                "m_k scale missing")
+    return r, kappa, flux
 
 
 def case_5_damped_breathing_boundary_response():
@@ -239,9 +223,7 @@ def case_5_damped_breathing_boundary_response():
     print()
     print("Allowed only if damping/energy accounting is derived.")
 
-    status_line("damped breathing response is possible failure-softening path",
-                "PLAUSIBLE",
-                "Gamma and energy accounting missing")
+    return kappa_t
 
 
 def case_6_dynamic_boundary_warning():
@@ -262,10 +244,6 @@ def case_6_dynamic_boundary_warning():
     print()
     print("This is currently unresolved.")
 
-    status_line("dynamic boundary projection unresolved",
-                "RISK",
-                "constraint propagation needed")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -278,10 +256,6 @@ def case_7_classification():
     print("| Yukawa suppressed exterior | PLAUSIBLE if m_k derived |")
     print("| damped/critically damped breathing | PLAUSIBLE if Gamma and energy accounting derived |")
     print("| moving support projection | RISK / unresolved |")
-
-    status_line("boundary flux classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "static control plausible, dynamic control missing")
 
 
 def case_8_failure_controls():
@@ -296,10 +270,6 @@ def case_8_failure_controls():
     print("5. Yukawa scale m_k is inserted by hand only to hide scalar radiation.")
     print("6. moving support creates uncancelled flux terms.")
     print("7. suppression interferes with static A-sector gravity.")
-
-    status_line("boundary flux failure controls stated",
-                "RISK",
-                "dynamic safety not proven")
 
 
 def case_9_next_tests():
@@ -323,10 +293,6 @@ def case_9_next_tests():
     print("Reason:")
     print("  User-raised possibility: breathing response may be absorbed by vacuum.")
     print("  That requires energy/damping accounting.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "relaxation energy accounting is next")
 
 
 def final_interpretation():
@@ -355,25 +321,91 @@ def main():
     header("Candidate Kappa Boundary Flux Cancellation")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    case_1_static_massless_tail_flux()
-    case_2_projected_zero_charge_flux()
+    r_tail, kappa_tail, flux_tail = case_1_static_massless_tail_flux()
+    F_zero = case_2_projected_zero_charge_flux()
     case_3_boundary_matching_condition()
-    case_4_yukawa_suppressed_flux()
-    case_5_damped_breathing_boundary_response()
+    r_yukawa, kappa_yukawa, flux_yukawa = case_4_yukawa_suppressed_flux()
+    kappa_t = case_5_damped_breathing_boundary_response()
     case_6_dynamic_boundary_warning()
     case_7_classification()
     case_8_failure_controls()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_boundary_flux_cancellation_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_boundary_flux_cancellation_classified"),
-        method="kappa_boundary_flux_cancellation_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Real algebraic computations
+        ns.record_derivation(
+            derivation_id="massless_1_over_r_kappa_flux_residual",
+            inputs=[kappa_tail],
+            output=flux_tail,
+            method="compute 4*pi*r^2 * d/dr(C1/r)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+        )
+
+        ns.record_derivation(
+            derivation_id="yukawa_kappa_exterior_flux",
+            inputs=[kappa_yukawa],
+            output=flux_yukawa,
+            method="compute 4*pi*r^2 * d/dr(C*exp(-m*r)/r)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_boundary_flux_cancellation_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_boundary_flux_cancellation_classified"),
+            method="kappa_boundary_flux_cancellation_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_boundary_flux_zero_condition_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the mechanism enforcing zero exterior boundary flux F_kappa(R+)=0",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Static exterior safety requires F_kappa(R+) = 0. The massless 1/r tail "
+                "gives nonzero flux (C1 * (-4*pi)). Dynamic boundary motion adds further "
+                "terms. A derivation of the mechanism ensuring zero exterior flux is required."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="massless_kappa_1_over_r_tail_flux_nonzero",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "The massless exterior tail kappa=C1/r has F_kappa = -4*pi*C1 (nonzero), "
+                "confirming that a 1/r exterior kappa tail violates the required boundary "
+                "flux cancellation condition F_kappa(R+)=0."
+            ),
+        ))
+
+        with out.derived_results():
+            out.line("massless 1/r tail exterior flux F_kappa = -4*pi*C1", StatusMark.PASS, "algebraic derivation")
+            out.line("Yukawa exterior flux expression", StatusMark.PASS, "algebraic derivation")
+
+        with out.governance_assessments():
+            out.line("massless 1/r tail", StatusMark.FAIL, "exterior flux nonzero - forbidden")
+            out.line("dynamic boundary projection", StatusMark.FAIL, "open risk - unresolved")
+            out.line("boundary flux zero condition", StatusMark.OBLIGATION, "mechanism missing")
+
+        with out.unresolved_obligations():
+            out.line("derive F_kappa(R+)=0 mechanism", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

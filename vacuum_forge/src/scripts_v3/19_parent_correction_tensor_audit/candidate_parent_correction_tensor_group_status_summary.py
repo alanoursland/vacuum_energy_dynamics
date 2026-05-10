@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   SUMMARY
+#
 # Purpose
 # -------
 # Group 19 audited:
@@ -35,6 +38,18 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -46,33 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -203,12 +191,15 @@ def print_entry(e: Group19StatusEntry) -> None:
     print(e.name)
     print("-" * 120)
     print(f"Result: {e.result}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Consequence: {e.consequence}")
     print(f"Handoff: {e.handoff}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Group 19 status problem")
 
     print("Question:")
@@ -233,7 +224,8 @@ def case_0_problem_statement():
     print("  no recovery-fit correction")
     print("  diagnostic-only means not inserted")
 
-    status_line("Group 19 status problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("Group 19 status problem posed", StatusMark.OBLIGATION, "closure summary required before next group")
 
 
 def case_1_status_ledger(entries: List[Group19StatusEntry]):
@@ -242,7 +234,7 @@ def case_1_status_ledger(entries: List[Group19StatusEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[Group19StatusEntry]):
+def case_2_compact_table(entries: List[Group19StatusEntry], out: ScriptOutput):
     header("Case 2: Compact Group 19 status table")
 
     print("| Entry | Result | Status | Handoff |")
@@ -260,10 +252,11 @@ def case_2_compact_table(entries: List[Group19StatusEntry]):
             + " |"
         )
 
-    status_line("compact Group 19 status table produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact Group 19 status table produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[Group19StatusEntry]):
+def case_3_status_counts(entries: List[Group19StatusEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -283,10 +276,11 @@ def case_3_status_counts(entries: List[Group19StatusEntry]):
     print("  H_curv and H_exch cannot be used as repair mechanisms.")
     print("  The final parent field equation is not ready.")
 
-    status_line("Group 19 status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("Group 19 status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_current_working_rule():
+def case_4_current_working_rule(out: ScriptOutput):
     header("Case 4: Current working rule")
 
     print("Current working rule:")
@@ -315,10 +309,11 @@ def case_4_current_working_rule():
     print("  Bianchi-like closure")
     print("  boundary/mass repair tensor")
 
-    status_line("Group 19 working rule recorded", "SAFE_IF")
+    with out.governance_assessments():
+        out.line("Group 19 working rule recorded", StatusMark.WARN, "SAFE_IF")
 
 
-def case_5_surviving_bottlenecks():
+def case_5_surviving_bottlenecks(out: ScriptOutput):
     header("Case 5: Surviving bottlenecks")
 
     bottlenecks = [
@@ -351,10 +346,11 @@ def case_5_surviving_bottlenecks():
     print("  no correction tensor can be inserted until it has")
     print("  definition, source, divergence, boundary, and bookkeeping.")
 
-    status_line("surviving bottlenecks recorded", "UNRESOLVED")
+    with out.governance_assessments():
+        out.line("surviving bottlenecks recorded", StatusMark.FAIL, "UNRESOLVED")
 
 
-def case_6_rejected_regressions():
+def case_6_rejected_regressions(out: ScriptOutput):
     header("Case 6: Rejected regressions to preserve")
 
     regressions = [
@@ -383,10 +379,11 @@ def case_6_rejected_regressions():
     for idx, item in enumerate(regressions, 1):
         print(f"{idx}. {item}")
 
-    status_line("rejected regressions preserved", "REJECTED")
+    with out.governance_assessments():
+        out.line("rejected regressions preserved", StatusMark.WARN, "REJECTED")
 
 
-def case_7_next_options():
+def case_7_next_options(out: ScriptOutput):
     header("Case 7: Next options")
 
     print("Possible next documents:")
@@ -408,10 +405,11 @@ def case_7_next_options():
     print("  Group 19 is a closure. The field-equation snapshot should record")
     print("  that no parent correction tensor is insertable and no parent equation is ready.")
 
-    status_line("next document selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next document selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("Group 19 did not derive H_curv or H_exch.")
@@ -432,32 +430,142 @@ def final_interpretation():
     print()
     print("  field_equation_status_after_group_19.md")
 
-    status_line("Group 19 parent correction tensor status complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("Group 19 parent correction tensor status complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    # Obligations referencing all upstream open requirements
+    # (this script imports the conclusion, not re-derives obligations)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="group_19_open_prerequisites_summary",
+        script_id=SCRIPT_ID,
+        title="All Group 19 correction tensor prerequisites remain open",
+        status=ObligationStatus.OPEN,
+        required_by=["any_future_correction_tensor_insertion"],
+        description=(
+            "Group 19 closes with 18 surviving bottlenecks. "
+            "No correction tensor insertion is licensed. "
+            "All upstream obligations from scripts 1-7 of Group 19 remain open."
+        ),
+    ))
+
+    # G19-7 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    # NEVER strengthen claims: "not insertable yet" != "branch killed"
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_equation_group_19_closure",
+        script_id=SCRIPT_ID,
+        branch_id="parent_correction_tensor_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["group_19_open_prerequisites_summary"],
+        description=(
+            "G19-7 insertability failure: no correction tensor satisfies all insertability requirements. "
+            "The branch is DEFERRED_PENDING_PREREQUISITES — not killed by contradiction. "
+            "Governance item 14 applies: 'not insertable yet' does not equal 'branch killed.' "
+            "All 18 prerequisites remain open; no formal contradiction has been proved."
+        ),
+    ))
+
+    # Rejected regression list as a single branch decision
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_all_repair_recovery_insertions_19",
+        script_id=SCRIPT_ID,
+        branch_id="all_rejected_correction_tensor_routes_group_19",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description=(
+            "All 20 rejected regressions from Group 19 are preserved: "
+            "H_curv anti-singularity patch, H_curv finite-curvature insertion, H_curv regular-core tuning, "
+            "H_curv e_curv reservoir, H_curv boundary counterterm, "
+            "H_exch exchange-continuity paint, H_exch Sigma/R tuning, "
+            "H_exch ordinary matter rerouting, H_exch dark-sector patch, "
+            "Bianchi-like insertion, H-and-source-defining-each-other, source-by-divergence, "
+            "boundary leakage motivating insertion, M_ext correction tensor, "
+            "scalar tail cancellation tensor, shell-source hiding tensor, "
+            "recovery-fit correction, undefined-current insertion, "
+            "diagnostic-only object inserted, theorem-target parent form as current law."
+        ),
+    ))
+
+    # The no-parent-equation-yet summary claim for the group
+    ns.record_claim(ClaimRecord(
+        claim_id="group_19_no_parent_equation_yet",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "Group 19 closes with no parent correction tensor satisfying all insertability requirements. "
+            "H_curv and H_exch remain deferred or diagnostic-only. "
+            "The final parent field equation is not ready. "
+            "All 18 surviving bottlenecks remain open."
+        ),
+        obligation_ids=["group_19_open_prerequisites_summary"],
+    ))
+
+    # Handoff import record: this is the final handoff from Group 19
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_19_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        imported_record_refs=[
+            "claim:group_19_no_parent_equation_yet",
+            "claim:no_parent_equation_yet_19",
+            "obligation:group_19_open_prerequisites_summary",
+            "branch:defer_parent_equation_group_19_closure",
+            "branch:defer_H_curv_parent_insertion_19",
+            "branch:defer_H_exch_parent_insertion_19",
+            "branch:defer_H_curv_insertion_19",
+            "branch:defer_H_exch_insertion_19",
+            "branch:defer_correction_tensor_failure_branch_19",
+            "branch:defer_divergence_safety_failure_branch_19",
+            "branch:defer_source_separation_failure_branch_19",
+            "branch:defer_boundary_mass_neutrality_failure_branch_19",
+            "branch:defer_parent_insertion_failure_branch_19",
+        ],
+        description=(
+            "Group 19 closes with no parent correction tensor insertable. "
+            "All prerequisites remain open. "
+            "Deferred branches: H_curv insertion, H_exch insertion, divergence safety, "
+            "source separation, boundary/mass neutrality, insertability. "
+            "Rejected branches: all repair/recovery/Bianchi insertion routes. "
+            "Conclusion: not insertable yet. Next: field_equation_status_after_group_19.md."
+        ),
+    ))
 
 
 def main():
     header("Candidate Parent Correction Tensor Group Status Summary")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_status_ledger(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_current_working_rule()
-    case_5_surviving_bottlenecks()
-    case_6_rejected_regressions()
-    case_7_next_options()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_current_working_rule(out)
+    case_5_surviving_bottlenecks(out)
+    case_6_rejected_regressions(out)
+    case_7_next_options(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="parent_correction_tensor_group_status_summary_marker",
-        inputs=[],
-        output=sp.Symbol("parent_correction_tensor_group_status_summary_complete"),
-        method="parent_correction_tensor_group_status_summary",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="parent_correction_tensor_group_status_summary_marker",
+            inputs=[],
+            output=sp.Symbol("parent_correction_tensor_group_status_summary_complete"),
+            method="parent_correction_tensor_group_status_summary",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

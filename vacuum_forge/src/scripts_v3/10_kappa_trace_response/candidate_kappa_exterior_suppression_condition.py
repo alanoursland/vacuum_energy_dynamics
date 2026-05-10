@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate kappa exterior suppression condition
 #
 # Purpose
@@ -28,11 +34,6 @@
 #   6. source support only inside matter.
 #
 # It does not derive the final kappa equation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_exterior_suppression_condition.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -40,6 +41,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -51,22 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -107,7 +102,7 @@ def print_mechanism(m: SuppressionMechanism) -> None:
     print("-" * 100)
     print(m.name)
     print("-" * 100)
-    status_line(m.name, m.status)
+    print(f"Status: {m.status}")
     print(f"Mechanism: {m.mechanism}")
     print(f"Reason: {m.reason}")
     print(f"Risk: {m.risk}")
@@ -127,8 +122,6 @@ def case_0_problem_statement():
     print("Question:")
     print()
     print("  What mechanism forces or permits kappa = 0 in exterior vacuum?")
-
-    status_line("exterior suppression problem posed", "CONSTRAINED_BY_IDENTITY")
 
 
 def case_1_exterior_relation():
@@ -154,7 +147,7 @@ def case_1_exterior_relation():
     print()
     print("This is required for the reconstructed static exterior.")
 
-    status_line("exterior kappa=0 recovers reciprocal metric factor", "DERIVED_REDUCED")
+    return A, B, kappa, relation
 
 
 def build_mechanisms() -> List[SuppressionMechanism]:
@@ -263,8 +256,7 @@ def case_3_massless_exterior_tail():
     print()
     print("Therefore boundary-only suppression requires no kappa flux at the surface.")
 
-    status_line("massless exterior permits 1/r tail", "RISK",
-                "must set exterior kappa charge/flux to zero")
+    return r, kappa_ext
 
 
 def case_4_massive_exterior_decay():
@@ -286,8 +278,7 @@ def case_4_massive_exterior_decay():
     print()
     print("But m_k is a new scale and must be derived or constrained.")
 
-    status_line("massive/restoring term suppresses exterior tail", "PLAUSIBLE",
-                "m_k not derived")
+    return r, kappa_yukawa
 
 
 def case_5_constraint_projection_policy():
@@ -306,9 +297,6 @@ def case_5_constraint_projection_policy():
     print("  kappa_ext = 0")
     print()
     print("This is clean only if a parent identity enforces it.")
-
-    status_line("constraint projection is exterior-safe", "CONSTRAINED_BY_IDENTITY",
-                "parent identity missing")
 
 
 def case_6_best_current_policy():
@@ -330,9 +318,6 @@ def case_6_best_current_policy():
     print()
     print("This prevents a long-range scalar trace field.")
 
-    status_line("best current suppression policy stated", "CONSTRAINED_BY_IDENTITY",
-                "mechanism not fully derived")
-
 
 def case_7_classification(mechanisms: List[SuppressionMechanism]):
     header("Case 7: Classification table")
@@ -351,9 +336,6 @@ def case_7_classification(mechanisms: List[SuppressionMechanism]):
     print()
     print("  massive/restoring suppression if derived")
 
-    status_line("suppression classification produced", "CONSTRAINED_BY_IDENTITY",
-                "exterior kappa=0 requires zero charge/flux or projection")
-
 
 def case_8_failure_controls():
     header("Case 8: Failure controls")
@@ -366,9 +348,6 @@ def case_8_failure_controls():
     print("4. gauge fixing is mistaken for physical suppression.")
     print("5. interior kappa matching creates nonzero exterior kappa flux.")
     print("6. parent identity does not explain why exterior kappa charge vanishes.")
-
-    status_line("suppression failure controls stated", "RISK",
-                "must preserve Schwarzschild exterior")
 
 
 def case_9_next_tests():
@@ -391,9 +370,6 @@ def case_9_next_tests():
     print()
     print("Reason:")
     print("  After exterior suppression, the next issue is the interior source.")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "interior pressure/trace model is next")
 
 
 def final_interpretation():
@@ -425,8 +401,11 @@ def main():
     header("Candidate Kappa Exterior Suppression Condition")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    case_1_exterior_relation()
+    A, B, kappa, relation = case_1_exterior_relation()
     mechanisms = build_mechanisms()
     case_2_print_mechanisms(mechanisms)
     case_3_massless_exterior_tail()
@@ -437,14 +416,79 @@ def main():
     case_8_failure_controls()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_exterior_suppression_condition_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_exterior_suppression_conditions_classified"),
-        method="kappa_exterior_suppression_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Real algebraic result: kappa=0 recovers AB=1
+        exterior_check = sp.simplify(relation.subs(kappa, 0).lhs - relation.subs(kappa, 0).rhs)
+        ns.record_derivation(
+            derivation_id="kappa_zero_recovers_reciprocal_metric",
+            inputs=[relation],
+            output=exterior_check,
+            method="substitute kappa=0 into AB=exp(2*kappa)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_exterior_suppression_condition_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_exterior_suppression_conditions_classified"),
+            method="kappa_exterior_suppression_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_exterior_kappa_suppression_mechanism_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the mechanism that forces exterior kappa to zero",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Multiple candidate mechanisms exist (constraint projection, restoring term, "
+                "gauge fixing, compact support). A parent identity or derivation must select "
+                "and validate one before the exterior kappa=0 condition is licensed."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_mass_scale_m_k_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the restoring/mass scale m_k for kappa if used",
+            status=ObligationStatus.OPEN,
+            description=(
+                "If Yukawa-like suppression is used, m_k must be derived or constrained "
+                "from the theory, not inserted to hide scalar radiation."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="massless_kappa_permits_1_over_r_exterior_tail",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "A massless exterior kappa equation allows kappa ~ C1/r unless exterior "
+                "kappa charge/flux is independently set to zero. This is an unresolved risk "
+                "for any source-law that does not enforce zero exterior monopole charge."
+            ),
+        ))
+
+        with out.derived_results():
+            out.line("kappa=0 recovers AB=1 exterior metric factor", StatusMark.PASS, "residual = 0")
+
+        with out.governance_assessments():
+            out.line("exterior suppression mechanism", StatusMark.DEFER, "not yet selected from candidates")
+            out.line("massless kappa 1/r tail risk", StatusMark.FAIL, "open risk if exterior charge not zero")
+
+        with out.unresolved_obligations():
+            out.line("derive exterior suppression mechanism", StatusMark.OBLIGATION, "open")
+            out.line("derive m_k if restoring term used", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

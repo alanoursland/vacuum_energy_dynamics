@@ -1,5 +1,11 @@
 # Candidate metric recombination map
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The field-equation closure inventory found that the next major trap is metric
@@ -24,11 +30,6 @@
 #   double-counting scalar trace response,
 #   letting kappa become a repair knob,
 #   mixing gauge diagnostics with physical fields.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/11_field_equation_closure/
-#   or:
-#   scripts_v3/candidate_metric_recombination_map.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -37,6 +38,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -48,25 +59,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -157,18 +149,30 @@ def build_pieces() -> List[MetricPiece]:
 
 
 def print_piece(p: MetricPiece) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(p.status, "INFO")
     print()
     print("-" * 120)
     print(f"Component: {p.component}")
     print("-" * 120)
     print(f"Schematic form: {p.schematic_form}")
     print(f"Sector source: {p.sector_source}")
-    status_line(p.component, p.status)
+    print(f"[{mark}] {p.component}: {p.status}")
     print(f"Risk: {p.risk}")
     print(f"Missing: {p.missing}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Metric recombination map problem")
 
     print("Question:")
@@ -187,10 +191,11 @@ def case_0_problem_statement():
     print("  prevent hidden breathing radiation")
     print("  do not silently import GR")
 
-    status_line("metric recombination problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("metric recombination problem posed", StatusMark.DEFER, "structural constraint on scope")
 
 
-def case_1_reduced_metric_ansatz():
+def case_1_reduced_metric_ansatz(out: ScriptOutput):
     header("Case 1: Reduced metric ansatz")
 
     print("Schematic weak/reduced recombination:")
@@ -205,8 +210,9 @@ def case_1_reduced_metric_ansatz():
     print()
     print("  This is a bookkeeping ansatz, not a covariant parent derivation.")
 
-    status_line("reduced metric ansatz stated", "STRUCTURAL",
-                "normalizations and signs not final")
+    with out.governance_assessments():
+        out.line("reduced metric ansatz stated", StatusMark.DEFER,
+                 "normalizations and signs not final")
 
 
 def case_2_metric_pieces(pieces: List[MetricPiece]):
@@ -215,7 +221,7 @@ def case_2_metric_pieces(pieces: List[MetricPiece]):
         print_piece(piece)
 
 
-def case_3_kappa_recombination_rule():
+def case_3_kappa_recombination_rule(out: ScriptOutput):
     header("Case 3: Kappa recombination rule")
 
     print("Kappa may enter recombination as:")
@@ -235,11 +241,12 @@ def case_3_kappa_recombination_rule():
     print("  kappa modifies trace/volume matching and interior/boundary relaxation")
     print("  while exterior kappa -> 0 and F_kappa(R+) = 0.")
 
-    status_line("kappa recombination constrained", "CONSTRAINED",
-                "parent/gauge split missing")
+    with out.governance_assessments():
+        out.line("kappa recombination constrained", StatusMark.DEFER,
+                 "parent/gauge split missing")
 
 
-def case_4_no_double_counting_rules():
+def case_4_no_double_counting_rules(out: ScriptOutput):
     header("Case 4: Recombination no-double-counting rules")
 
     print("Rules:")
@@ -252,10 +259,12 @@ def case_4_no_double_counting_rules():
     print("6. spatial scalar response tied to A must not be duplicated by kappa.")
     print("7. near-boundary kappa smoothing must not change total exterior mass flux by hand.")
 
-    status_line("recombination no-double-counting rules stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("recombination no-double-counting rules stated", StatusMark.DEFER,
+                 "structural constraint")
 
 
-def case_5_gr_import_risks():
+def case_5_gr_import_risks(out: ScriptOutput):
     header("Case 5: GR import risks")
 
     print("High-risk imports:")
@@ -268,11 +277,12 @@ def case_5_gr_import_risks():
     print()
     print("These may be targets, but should not be claimed as ontology-derived yet.")
 
-    status_line("GR import risks listed", "RISK",
-                "targets are not derivations")
+    with out.governance_assessments():
+        out.line("GR import risks listed", StatusMark.WARN,
+                 "targets are not derivations")
 
 
-def case_6_classification(pieces: List[MetricPiece]):
+def case_6_classification(pieces: List[MetricPiece], out: ScriptOutput):
     header("Case 6: Recombination classification")
 
     print("| Component | Status |")
@@ -288,10 +298,11 @@ def case_6_classification(pieces: List[MetricPiece]):
     print("  scalar double-counting controlled by rules")
     print("  parent map missing")
 
-    status_line("recombination classification produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("recombination classification produced", StatusMark.PASS, "inventory marker")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -312,7 +323,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Recombination depends on a clean source split; source roles are the next trap.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -337,28 +349,123 @@ def final_interpretation():
     print("  candidate_source_decomposition_ledger.py")
 
 
-def main():
-    header("Candidate Metric Recombination Map")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    case_1_reduced_metric_ansatz()
-    pieces = build_pieces()
-    case_2_metric_pieces(pieces)
-    case_3_kappa_recombination_rule()
-    case_4_no_double_counting_rules()
-    case_5_gr_import_risks()
-    case_6_classification(pieces)
-    case_7_next_tests()
-    final_interpretation()
+def record_governance(ns, pieces: List[MetricPiece]) -> None:
+    # DERIVED_REDUCED pieces -> ClaimRecord HEURISTIC
+    ns.record_claim(ClaimRecord(
+        claim_id="recomb_g_tt_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "g_tt = -A c^2 is supported by the A-sector scalar monopole derivation "
+            "in the reduced static spherical exterior."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="recomb_g_rr_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "g_rr = B = exp(2 kappa)/A is derived in the reduced areal-gauge exterior "
+            "once exterior kappa=0. It is a gauge-conditioned relation, not a full covariant derivation."
+        ),
+    ))
+
+    # STRUCTURAL pieces -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="recomb_g_0i_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "g_0i proportional to W_i has structural support from the transverse vector "
+            "current sector. Observable coupling and covariant shift-vector map are missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="recomb_g_ij_TT_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "g_ij TT piece = delta_ij + h_ij^TT in the weak radiation limit has "
+            "correct TT structural form. Coupling/source identity is not derived."
+        ),
+    ))
+
+    # CONSTRAINED pieces -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="recomb_g_ij_scalar_constrained",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The scalar trace part of g_ij is constrained so that A-sector spatial response "
+            "is not duplicated by the kappa trace role."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="recomb_scalar_radiation_constrained",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "No ordinary long-range A_rad or kappa breathing wave is present in "
+            "the recombination. Parent mechanism for this absence is missing."
+        ),
+    ))
+
+    # Missing parent map -> ProofObligationRecord
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_metric_recombination_parent_map",
+        script_id=SCRIPT_ID,
+        title="Derive covariant metric recombination parent map",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The reduced recombination ansatz ds^2 = -A c^2 dt^2 + 2 W_i c dt dx^i + "
+            "spatial_metric_ij dx^i dx^j must be derived from a covariant parent map "
+            "with no-double-counting rules. Currently it is a bookkeeping ansatz."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="metric_recombination_map_marker",
         inputs=[],
         output=sp.Symbol("metric_recombination_map_stated"),
         method="metric_recombination_map_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Metric Recombination Map")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    case_1_reduced_metric_ansatz(out)
+    pieces = build_pieces()
+    case_2_metric_pieces(pieces)
+    case_3_kappa_recombination_rule(out)
+    case_4_no_double_counting_rules(out)
+    case_5_gr_import_risks(out)
+    case_6_classification(pieces, out)
+    case_7_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, pieces)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # Candidate vector current projection operator
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The transverse-current projection study proposed:
@@ -27,17 +33,23 @@
 #   6. projected vector equation uses j_T only.
 #
 # This is structural. It does not set the vector coefficient.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_current_projection_operator.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -49,21 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "HAND_ASSIGNED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def is_zero_matrix(M) -> bool:
@@ -113,8 +110,6 @@ def case_0_problem_statement():
     print("Goal:")
     print("  ensure W_i only sees transverse current j_T.")
 
-    status_line("projection operator problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_define_projectors():
     header("Case 1: Define transverse and longitudinal projectors")
@@ -135,9 +130,6 @@ def case_1_define_projectors():
     print()
     print("P_T = I - P_L =")
     print(P_T)
-
-    status_line("projectors defined", "CONSTRAINED_BY_IDENTITY",
-                "valid for k^2 != 0")
 
     return k, k2, P_T, P_L
 
@@ -169,13 +161,12 @@ def case_2_projector_idempotence(P_T, P_L):
         and is_zero_matrix(sum_minus_I)
     )
 
-    status_line("projector identities verified", "DERIVED_REDUCED" if ok else "RISK")
+    return PT2_minus_PT, PL2_minus_PL, PTPL, sum_minus_I, ok
 
 
 def case_3_k_aligned_tests():
     header("Case 3: k-aligned test currents")
 
-    k = sp.symbols("k", positive=True, real=True)
     J = sp.symbols("J", real=True)
 
     # Choose k along z.
@@ -224,8 +215,7 @@ def case_3_k_aligned_tests():
         and is_zero_matrix(PL_trans)
     )
 
-    status_line("projector kills longitudinal and preserves transverse current",
-                "DERIVED_REDUCED" if ok else "RISK")
+    return P_T, P_L, j_long, j_trans, PT_long, PT_trans, PL_long, PL_trans, ok
 
 
 def case_4_projected_vector_equation():
@@ -248,9 +238,6 @@ def case_4_projected_vector_equation():
     print("Coefficient still missing:")
     print()
     print(f"  alpha_W/(2K_c) = {alpha_W/(2*K_c)}")
-
-    status_line("projected vector equation formalized", "CONSTRAINED_BY_IDENTITY",
-                "coefficient remains missing")
 
 
 def case_5_scalar_vector_allocation():
@@ -276,9 +263,6 @@ def case_5_scalar_vector_allocation():
     print()
     print("so it does not directly change density.")
 
-    status_line("scalar/vector allocation formalized", "CONSTRAINED_BY_IDENTITY",
-                "time-domain/boundary implementation still needed")
-
 
 def case_6_zero_mode_warning():
     header("Case 6: k=0 zero-mode warning")
@@ -295,9 +279,6 @@ def case_6_zero_mode_warning():
     print()
     print("This is a boundary/global mode issue, not a local algebra failure.")
 
-    status_line("zero-mode warning stated", "RISK",
-                "boundary conditions required")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -311,9 +292,6 @@ def case_7_classification():
     print("| projected vector equation | CONSTRAINED_BY_IDENTITY |")
     print("| coefficient alpha_W/(2K_c) | MISSING |")
     print("| k=0/global modes | RISK / boundary issue |")
-    print()
-    status_line("projection operator classification produced", "CONSTRAINED_BY_IDENTITY",
-                "operator works locally, coefficient missing")
 
 
 def case_8_next_tests():
@@ -333,9 +311,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_global_rotation_mode.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "projection reveals global rotation/boundary issue")
 
 
 def final_interpretation():
@@ -368,22 +343,164 @@ def main():
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
     k, k2, P_T, P_L = case_1_define_projectors()
-    case_2_projector_idempotence(P_T, P_L)
-    case_3_k_aligned_tests()
+    PT2_minus_PT, PL2_minus_PL, PTPL, sum_minus_I, idempotence_ok = case_2_projector_idempotence(P_T, P_L)
+    P_T_aligned, P_L_aligned, j_long, j_trans, PT_long, PT_trans, PL_long, PL_trans, kill_ok = case_3_k_aligned_tests()
     case_4_projected_vector_equation()
     case_5_scalar_vector_allocation()
     case_6_zero_mode_warning()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_current_projection_operator_marker",
-        inputs=[],
-        output=sp.Symbol("vector_current_projection_operator_stated"),
-        method="vector_current_projection_operator_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line(
+            "P_T idempotence: P_T^2 - P_T = 0",
+            StatusMark.PASS if idempotence_ok else StatusMark.FAIL,
+            "all four projector identities satisfied symbolically",
+        )
+        out.line(
+            "P_T kills longitudinal current, preserves transverse current",
+            StatusMark.PASS if kill_ok else StatusMark.FAIL,
+            "k-aligned test: P_T j_long=0, P_T j_trans=j_trans verified",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "coefficient alpha_W/(2K_c)",
+            StatusMark.FAIL,
+            "not derived; projector structure is structural only",
+        )
+        out.line(
+            "k=0 / global rotation mode",
+            StatusMark.DEFER,
+            "local projector cannot handle global modes; boundary treatment required",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: P_T idempotence
+        ns2.record_derivation(
+            derivation_id="transverse_projector_idempotence_residual",
+            inputs=[P_T],
+            output=PT2_minus_PT,
+            method="simplify(P_T*P_T - P_T)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Contentful derivation: P_L idempotence
+        ns2.record_derivation(
+            derivation_id="longitudinal_projector_idempotence_residual",
+            inputs=[P_L],
+            output=PL2_minus_PL,
+            method="simplify(P_L*P_L - P_L)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Contentful derivation: P_T P_L = 0
+        ns2.record_derivation(
+            derivation_id="projector_orthogonality_residual",
+            inputs=[P_T, P_L],
+            output=PTPL,
+            method="simplify(P_T * P_L)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Contentful derivation: P_T + P_L = I
+        ns2.record_derivation(
+            derivation_id="projector_completeness_residual",
+            inputs=[P_T, P_L],
+            output=sum_minus_I,
+            method="simplify(P_T + P_L - I)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="identity_residual",
+        )
+
+        # Sample derivation: k-aligned projector tests
+        ns2.record_derivation(
+            derivation_id="k_aligned_projector_sample",
+            inputs=[P_T_aligned, j_long, j_trans],
+            output=sp.Matrix([PT_long, PT_trans, PL_long, PL_trans]),
+            method="k-aligned P_T kills j_long, preserves j_trans",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            result_type="diagnostic_quantity",
+            scope="k aligned to z axis",
+        )
+
+        # Proof obligation: vector coefficient
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The projector identifies that j_T should source W_i via "
+                "Delta W = alpha_W j_T/(2K_c). The ratio alpha_W/(2K_c) remains missing."
+            ),
+        ))
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The local projector P_T uses 1/k^2 and fails at k=0. "
+                "Global angular momentum and boundary rotation modes require "
+                "a separate treatment with boundary conditions."
+            ),
+        ))
+
+        # Governance claim: P_T j_T only policy
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_projector_jT_only",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "The vector sector W_i must be sourced only by the transverse "
+                "projection j_T = P_T j. Allowing the full j or j_L to source W_i "
+                "would mix scalar and vector sectors."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_current_projection_operator_marker",
+            inputs=[],
+            output=sp.Symbol("vector_current_projection_operator_stated"),
+            method="vector_current_projection_operator_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

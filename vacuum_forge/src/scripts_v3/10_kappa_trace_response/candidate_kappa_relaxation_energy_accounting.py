@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   DERIVATION
+#
 # Candidate kappa relaxation energy accounting
 #
 # Purpose
@@ -23,17 +29,22 @@
 #   5. static A constraint must remain unaffected.
 #
 # This is a control script, not a final derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_relaxation_energy_accounting.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,22 +56,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -108,8 +103,6 @@ def case_0_problem_statement():
     print()
     print("  no ordinary breathing radiation")
 
-    status_line("relaxation energy-accounting problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_undamped_oscillator_energy():
     header("Case 1: Undamped trace oscillator energy")
@@ -130,9 +123,7 @@ def case_1_undamped_oscillator_energy():
     print("This energy is conserved in the toy oscillator.")
     print("If coupled to exterior wave modes, it can support breathing radiation.")
 
-    status_line("undamped trace oscillator can store/radiate energy",
-                "RISK",
-                "not acceptable as ordinary long-range scalar channel")
+    return kappa, v, omega0, E
 
 
 def case_2_damped_energy_derivative():
@@ -164,9 +155,7 @@ def case_2_damped_energy_derivative():
     print()
     print("The lost energy must be accounted for as vacuum absorption/dissipation.")
 
-    status_line("damped oscillator has definite energy loss",
-                "DERIVED_REDUCED",
-                "sink term still needs ontology")
+    return kappa, v, omega0, Gamma, E, dE_dt
 
 
 def case_3_critical_damping_condition():
@@ -194,9 +183,7 @@ def case_3_critical_damping_condition():
     print()
     print("  critical/overdamped, not underdamped propagating.")
 
-    status_line("critical damping condition identified",
-                "CONSTRAINED_BY_IDENTITY",
-                "Gamma and omega0 not derived")
+    return Gamma, omega0, critical
 
 
 def case_4_relaxation_sink_balance():
@@ -220,9 +207,7 @@ def case_4_relaxation_sink_balance():
     print()
     print("Without this, damping is just a hand-wave.")
 
-    status_line("relaxation requires positive sink term",
-                "CONSTRAINED_BY_IDENTITY",
-                "vacuum energy sink not derived")
+    return P_loss
 
 
 def case_5_static_A_constraint_guard():
@@ -249,10 +234,6 @@ def case_5_static_A_constraint_guard():
     print()
     print("  A_constraint")
 
-    status_line("relaxation must preserve A-sector constraint",
-                "CONSTRAINED_BY_IDENTITY",
-                "sector split must be explicit")
-
 
 def case_6_safe_vs_unsafe_breathing():
     header("Case 6: Safe versus unsafe breathing")
@@ -266,10 +247,6 @@ def case_6_safe_vs_unsafe_breathing():
     print("| underdamped but rapidly absorbed | risky, requires attenuation length |")
     print("| massless long-range breathing radiation | rejected |")
     print("| damping inserted only to hide scalar waves | rejected |")
-
-    status_line("safe/unsafe breathing hierarchy stated",
-                "CONSTRAINED_BY_IDENTITY",
-                "breathing is fallback, not goal")
 
 
 def case_7_attenuation_length():
@@ -293,9 +270,7 @@ def case_7_attenuation_length():
     print()
     print("This gives a future phenomenological bound if damping is used.")
 
-    status_line("attenuation length criterion stated",
-                "PLAUSIBLE",
-                "Gamma not derived")
+    return c, Gamma, L_att
 
 
 def case_8_classification():
@@ -310,10 +285,6 @@ def case_8_classification():
     print("| A-sector preservation guard | CONSTRAINED_BY_IDENTITY |")
     print("| attenuation length criterion | PLAUSIBLE |")
     print("| final relaxation law | MISSING |")
-
-    status_line("relaxation energy accounting classification produced",
-                "CONSTRAINED_BY_IDENTITY",
-                "damping possible but not derived")
 
 
 def case_9_next_tests():
@@ -336,10 +307,6 @@ def case_9_next_tests():
     print()
     print("Reason:")
     print("  relaxation and projection both need the parent balance identity.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "parent balance is the next hard target")
 
 
 def final_interpretation():
@@ -371,25 +338,98 @@ def main():
     header("Candidate Kappa Relaxation Energy Accounting")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
-    case_1_undamped_oscillator_energy()
-    case_2_damped_energy_derivative()
-    case_3_critical_damping_condition()
-    case_4_relaxation_sink_balance()
+    kappa, v, omega0, E = case_1_undamped_oscillator_energy()
+    kappa, v, omega0, Gamma, E_dmp, dE_dt = case_2_damped_energy_derivative()
+    Gamma, omega0, critical = case_3_critical_damping_condition()
+    P_loss = case_4_relaxation_sink_balance()
     case_5_static_A_constraint_guard()
     case_6_safe_vs_unsafe_breathing()
-    case_7_attenuation_length()
+    c, Gamma2, L_att = case_7_attenuation_length()
     case_8_classification()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_relaxation_energy_accounting_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_relaxation_energy_accounting_classified"),
-        method="kappa_relaxation_energy_accounting_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Real algebraic computation: dE/dt = -Gamma*v^2
+        ns.record_derivation(
+            derivation_id="damped_kappa_oscillator_energy_derivative",
+            inputs=[E_dmp],
+            output=dE_dt,
+            method=(
+                "compute d/dt[1/2 v^2 + 1/2 omega0^2 kappa^2] using "
+                "kappa_dot=v, v_dot=-Gamma*v-omega0^2*kappa"
+            ),
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_relaxation_energy_accounting_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_relaxation_energy_accounting_classified"),
+            method="kappa_relaxation_energy_accounting_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_relaxation_vacuum_sink_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the vacuum sink term that accounts for kappa relaxation energy",
+            status=ObligationStatus.OPEN,
+            description=(
+                "If kappa damping is used, dE/dt = -Gamma*v^2 shows energy is lost. "
+                "The destination of this energy (vacuum configuration sink) must be "
+                "derived rather than assumed to prevent hiding scalar radiation."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_kappa_damping_rate_Gamma_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive the kappa damping rate Gamma from first principles",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The attenuation length L_att ~ c/Gamma and critical damping condition "
+                "Gamma^2 = 4*omega0^2 are only meaningful if Gamma is derived. "
+                "Gamma must not be inserted by hand to hide scalar radiation."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="kappa_damping_requires_positive_vacuum_sink",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.OPEN_RISK,
+            statement=(
+                "If a kappa damping term Gamma is introduced, the energy loss rate "
+                "dE/dt = -Gamma*v^2 must be accounted for by a derived positive-definite "
+                "vacuum absorption/sink term. Inserting Gamma without this accounting "
+                "is rejected as a cosmetic fix for scalar radiation."
+            ),
+        ))
+
+        with out.derived_results():
+            out.line("damped oscillator dE/dt = -Gamma*kappa_dot^2", StatusMark.PASS, "algebraic derivation")
+
+        with out.governance_assessments():
+            out.line("undamped kappa oscillator", StatusMark.FAIL, "can radiate if coupled externally")
+            out.line("damped kappa with vacuum sink", StatusMark.DEFER, "plausible fallback; Gamma not derived")
+            out.line("A-sector preservation guard", StatusMark.PASS, "sector split required")
+
+        with out.unresolved_obligations():
+            out.line("derive vacuum sink for kappa relaxation energy", StatusMark.OBLIGATION, "open")
+            out.line("derive Gamma from first principles", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

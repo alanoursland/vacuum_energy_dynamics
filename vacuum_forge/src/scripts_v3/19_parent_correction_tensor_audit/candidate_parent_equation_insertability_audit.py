@@ -3,6 +3,9 @@
 # Group:
 #   19_parent_correction_tensor_audit
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The correction tensor boundary/mass neutrality audit found:
@@ -44,6 +47,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    HandoffImportRecord,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -55,33 +71,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -374,12 +363,15 @@ def print_entry(e: InsertabilityEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line(e.name, StatusMark.from_string(e.status), e.status)
+    out.print()
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Parent equation insertability problem")
 
     print("Question:")
@@ -403,7 +395,8 @@ def case_0_problem_statement():
     print("  no recovery insertion")
     print("  no undefined current/source insertion")
 
-    status_line("parent equation insertability problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("parent equation insertability problem posed", StatusMark.OBLIGATION, "insertability audit required before any parent equation is written")
 
 
 def case_1_inventory(entries: List[InsertabilityEntry]):
@@ -412,7 +405,7 @@ def case_1_inventory(entries: List[InsertabilityEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[InsertabilityEntry]):
+def case_2_compact_table(entries: List[InsertabilityEntry], out: ScriptOutput):
     header("Case 2: Compact parent insertability ledger")
 
     print("| Entry | Criterion | Status | Consequence |")
@@ -430,10 +423,11 @@ def case_2_compact_table(entries: List[InsertabilityEntry]):
             + " |"
         )
 
-    status_line("compact parent insertability ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact parent insertability ledger produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_3_status_counts(entries: List[InsertabilityEntry]):
+def case_3_status_counts(entries: List[InsertabilityEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -453,10 +447,11 @@ def case_3_status_counts(entries: List[InsertabilityEntry]):
     print("  H_curv finite-curvature insertion, H_exch exchange-continuity insertion, Bianchi-like insertion, recovery insertion, boundary leakage insertion, and undefined-current insertion are rejected.")
     print("  Next gate is Group 19 status summary.")
 
-    status_line("parent equation insertability status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("parent equation insertability status count produced", StatusMark.INFO, "STRUCTURAL")
 
 
-def case_4_insertability_requirements():
+def case_4_insertability_requirements(out: ScriptOutput):
     header("Case 4: Insertability requirements")
 
     print("Insertability requirements:")
@@ -476,10 +471,11 @@ def case_4_insertability_requirements():
     print()
     print("  no correction tensor satisfies all requirements")
 
-    status_line("parent insertability requirements listed", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("parent insertability requirements listed", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_5_decision_tree():
+def case_5_decision_tree(out: ScriptOutput):
     header("Case 5: Parent insertability decision tree")
 
     print("Decision tree:")
@@ -502,10 +498,11 @@ def case_5_decision_tree():
     print("6. No H satisfies requirements:")
     print("   parent correction tensors remain deferred.")
 
-    status_line("parent insertability decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("parent insertability decision tree stated", StatusMark.PASS, "RECOMMENDED")
 
 
-def case_6_good_failure():
+def case_6_good_failure(out: ScriptOutput):
     header("Case 6: Good failure / branch decision")
 
     print("Good failure:")
@@ -521,10 +518,11 @@ def case_6_good_failure():
     print()
     print("  write a theorem-target parent equation as if it were the current field system.")
 
-    status_line("parent insertability good failure stated", "DEFER")
+    with out.governance_assessments():
+        out.line("parent insertability good failure stated", StatusMark.DEFER, "DEFERRED_PENDING_PREREQUISITES")
 
 
-def case_7_failure_controls():
+def case_7_failure_controls(out: ScriptOutput):
     header("Case 7: Failure controls")
 
     print("Parent insertability fails if:")
@@ -545,10 +543,11 @@ def case_7_failure_controls():
     print("14. undefined current/source is used")
     print("15. diagnostic-only H is inserted")
 
-    status_line("parent insertability failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("parent insertability failure controls stated", StatusMark.WARN, "RISK")
 
 
-def case_8_next_tests():
+def case_8_next_tests(out: ScriptOutput):
     header("Case 8: Next tests")
 
     print("Possible next scripts:")
@@ -570,10 +569,11 @@ def case_8_next_tests():
     print("  Group 19 has audited correction tensors for roles, definition requirements, divergence safety, source separation, boundary/mass neutrality, and insertability.")
     print("  It should close with a summary ledger.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "STRUCTURAL")
 
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput):
     header("Final interpretation")
 
     print("No correction tensor is insertable into a parent equation yet.")
@@ -597,33 +597,195 @@ def final_interpretation():
     print()
     print("  candidate_parent_correction_tensor_group_status_summary.py")
 
-    status_line("parent equation insertability audit complete", "CLOSED")
+    with out.governance_assessments():
+        out.line("parent equation insertability audit complete", StatusMark.PASS, "CLOSED")
+
+    out.print()
+
+
+def record_governance(ns) -> None:
+    # One obligation per REQUIRED entry
+    required_obligations = [
+        ("derive_tensor_definition_for_insertability_19",
+         "Derive correction tensor definition for insertability",
+         "H_curv/H_exch tensor rank, symmetry, trace behavior, index placement, and domain must be defined (PI2)."),
+        ("derive_source_origin_for_insertability_19",
+         "Derive correction tensor source origin",
+         "Source origin must be independently defined before insertion (PI3)."),
+        ("derive_projection_class_for_insertability_19",
+         "Derive correction tensor projection class",
+         "Projection class/sector placement must be defined, not hiding overlap (PI4)."),
+        ("derive_divergence_relation_for_insertability_19",
+         "Derive correction tensor divergence relation",
+         "Divergence relation must be a constructed identity, source balance, or projection theorem — not Bianchi (PI5)."),
+        ("derive_boundary_neutrality_for_insertability_19",
+         "Derive correction tensor boundary neutrality",
+         "No boundary repair, hidden shell source, scalar tail, far-zone flux, or counterterm (PI6)."),
+        ("derive_ordinary_matter_separation_for_insertability_19",
+         "Derive ordinary matter separation for insertability",
+         "Ordinary T_mu_nu must stay in ordinary source routing (PI7)."),
+        ("derive_M_ext_neutrality_for_insertability_19",
+         "Derive M_ext neutrality for insertability",
+         "delta M_ext|H = 0 unless derived through A-sector source law (PI8)."),
+        ("derive_scalar_trace_neutrality_for_insertability_19",
+         "Derive scalar trace neutrality for insertability",
+         "H must not reopen B_s/F_zeta, residual trace, kappa, or exterior scalar charge (PI9)."),
+        ("derive_coefficient_origin_for_insertability_19",
+         "Derive coefficient origin for insertability",
+         "Coefficients must have ontology-native, action, stiffness, source, or identity origin (PI10)."),
+    ]
+
+    for obligation_id, title, description in required_obligations:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=ObligationStatus.OPEN,
+            required_by=["parent_correction_tensor_insertion"],
+            description=description,
+        ))
+
+    all_obligation_ids = [o[0] for o in required_obligations]
+
+    # Deferred branches for H_curv and H_exch
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_curv_parent_insertion_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_curv_parent_equation_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "H_curv is not insertable into a parent equation because A_curv dynamics, J_curv, source, "
+            "divergence, boundary, mass, and scalar structures are missing. Deferred pending prerequisites."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_H_exch_parent_insertion_19",
+        script_id=SCRIPT_ID,
+        branch_id="H_exch_parent_equation_insertion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "H_exch is not insertable into a parent equation because J_V, J_exch, Sigma/R, source, "
+            "divergence, boundary, mass, and scalar structures are missing. Deferred pending prerequisites."
+        ),
+    ))
+
+    # PI23 BRANCH_KILLED -> DEFERRED_PENDING_PREREQUISITES per governance rule 5
+    # "not insertable yet" != "branch killed" — this is the key governance item 14 point
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_insertion_failure_branch_19",
+        script_id=SCRIPT_ID,
+        branch_id="parent_correction_tensor_insertion_failure",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=all_obligation_ids,
+        description=(
+            "PI23 failure condition: no correction tensor satisfies all insertability requirements. "
+            "The branch is DEFERRED_PENDING_PREREQUISITES — not killed by contradiction. "
+            "Governance item 14: 'not insertable yet' does not equal 'branch killed.' "
+            "Prerequisites are simply absent; no formal contradiction has been proved."
+        ),
+    ))
+
+    # Rejected insertion routes
+    for decision_id, branch_id, description in [
+        ("reject_H_curv_finite_curvature_insertion_19", "H_curv_finite_curvature_parent_insertion",
+         "PI17: H_curv inserted to get finite curvature/regular core/bounce rejected by policy."),
+        ("reject_H_exch_exchange_continuity_insertion_19", "H_exch_exchange_continuity_parent_insertion",
+         "PI18: H_exch inserted to close exchange continuity while J/Sigma/R undefined, rejected by policy."),
+        ("reject_Bianchi_parent_insertion_19", "Bianchi_like_parent_insertion",
+         "PI19: Bianchi-like insertion rejected by policy."),
+        ("reject_recovery_parent_insertion_19", "recovery_motivated_parent_insertion",
+         "PI20: recovery insertion rejected by policy."),
+        ("reject_boundary_leakage_parent_insertion_19", "boundary_leakage_motivated_parent_insertion",
+         "PI21: boundary-leakage-motivated insertion rejected by policy."),
+        ("reject_undefined_current_parent_insertion_19", "undefined_current_source_parent_insertion",
+         "PI22: insertion using undefined J_curv/J_V/J_sub/J_exch/Sigma/R/dark rejected by policy."),
+    ]:
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id=decision_id,
+            script_id=SCRIPT_ID,
+            branch_id=branch_id,
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            description=description,
+        ))
+
+    # No parent equation yet claim
+    ns.record_claim(ClaimRecord(
+        claim_id="no_parent_equation_yet_19",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "No parent correction tensor satisfies all insertability requirements. "
+            "H_curv and H_exch remain deferred or diagnostic-only. "
+            "No parent field equation is ready."
+        ),
+        obligation_ids=all_obligation_ids,
+    ))
+
+    # Handoff import from this audit to the group summary
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="insertability_audit_to_group_summary_19",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        imported_record_refs=[
+            "claim:no_parent_equation_yet_19",
+            "obligation:derive_tensor_definition_for_insertability_19",
+            "obligation:derive_source_origin_for_insertability_19",
+            "obligation:derive_projection_class_for_insertability_19",
+            "obligation:derive_divergence_relation_for_insertability_19",
+            "obligation:derive_boundary_neutrality_for_insertability_19",
+            "obligation:derive_ordinary_matter_separation_for_insertability_19",
+            "obligation:derive_M_ext_neutrality_for_insertability_19",
+            "obligation:derive_scalar_trace_neutrality_for_insertability_19",
+            "obligation:derive_coefficient_origin_for_insertability_19",
+            "branch:defer_H_curv_parent_insertion_19",
+            "branch:defer_H_exch_parent_insertion_19",
+        ],
+        description=(
+            "Insertability audit handoff: no correction tensor is insertable yet. "
+            "All ten prerequisites remain open. Both H_curv and H_exch are deferred. "
+            "Group 19 group status summary should import this conclusion."
+        ),
+    ))
 
 
 def main():
     header("Candidate Parent Equation Insertability Audit")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_insertability_requirements()
-    case_5_decision_tree()
-    case_6_good_failure()
-    case_7_failure_controls()
-    case_8_next_tests()
-    final_interpretation()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_insertability_requirements(out)
+    case_5_decision_tree(out)
+    case_6_good_failure(out)
+    case_7_failure_controls(out)
+    case_8_next_tests(out)
+    final_interpretation(out)
 
-    ns.record_derivation(
-        derivation_id="parent_equation_insertability_audit_marker",
-        inputs=[],
-        output=sp.Symbol("parent_equation_insertability_audit_complete"),
-        method="parent_equation_insertability_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        record_governance(ns)
+        ns.record_derivation(
+            derivation_id="parent_equation_insertability_audit_marker",
+            inputs=[],
+            output=sp.Symbol("parent_equation_insertability_audit_complete"),
+            method="parent_equation_insertability_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

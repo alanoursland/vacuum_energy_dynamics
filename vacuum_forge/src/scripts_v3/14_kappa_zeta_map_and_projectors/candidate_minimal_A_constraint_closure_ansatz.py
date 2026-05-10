@@ -1,5 +1,11 @@
 # Candidate minimal A-constraint closure ansatz
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   SAMPLE
+#
 # Purpose
 # -------
 # The minimal A-constraint closure/no-go audit found:
@@ -28,11 +34,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -40,31 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -237,12 +227,12 @@ def print_entry(e: ClosureAnsatzEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Minimal A-constraint closure ansatz problem")
 
     print("Question:")
@@ -263,7 +253,8 @@ def case_0_problem_statement():
     print("  do not let zeta be both companion and residual")
     print("  require branch-kill criteria")
 
-    status_line("minimal A-constraint closure ansatz problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("minimal A-constraint closure ansatz problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[ClosureAnsatzEntry]):
@@ -272,7 +263,7 @@ def case_1_inventory(entries: List[ClosureAnsatzEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[ClosureAnsatzEntry]):
+def case_2_compact_table(entries: List[ClosureAnsatzEntry], out: ScriptOutput):
     header("Case 2: Compact closure-ansatz ledger")
 
     print("| Entry | Ansatz | Status | Consequence |")
@@ -290,10 +281,11 @@ def case_2_compact_table(entries: List[ClosureAnsatzEntry]):
             + " |"
         )
 
-    status_line("compact closure-ansatz ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact closure-ansatz ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_status_counts(entries: List[ClosureAnsatzEntry]):
+def case_3_status_counts(entries: List[ClosureAnsatzEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -311,11 +303,12 @@ def case_3_status_counts(entries: List[ClosureAnsatzEntry]):
     print("  Zeta-assisted closure is risky because it may erase independent residual status.")
     print("  If all explicit ansatz families require shortcuts, kill the local branch.")
 
-    status_line("closure-ansatz status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("closure-ansatz status count produced", StatusMark.WARN, "structural")
 
 
-def case_4_ansatz_family_shapes():
-    header("Case 4: Ansatz family shapes")
+def case_4_ansatz_sample(ns) -> None:
+    header("Case 4: Ansatz family shapes (sample derivation)")
 
     print("Surviving symbolic families:")
     print()
@@ -333,11 +326,32 @@ def case_4_ansatz_family_shapes():
     print("   overlap(A_spatial,zeta_residual) = 0")
     print()
     print("All are provisional ansatz shells, not derived equations.")
+    print()
+    print("Minimal differential compatibility collapse (sample):")
 
-    status_line("ansatz family shapes stated", "CANDIDATE")
+    alpha1, alpha2, alpha3 = sp.symbols("alpha1 alpha2 alpha3", nonzero=True)
+    S_A = sp.Symbol("S_A")
+    # With Delta A = S_A the differential family collapses to:
+    # alpha1 Delta A_spatial + (alpha2 + alpha3) S_A = 0
+    # => Delta A_spatial = q S_A
+    q_ansatz = sp.simplify(-(alpha2 + alpha3) / alpha1)
+
+    print(f"  With Delta A = S_A: Delta A_spatial = q S_A,  q = {q_ansatz}")
+    print()
+    print("  This is an ansatz form for the coefficient ratio, not a derivation.")
+
+    ns.record_derivation(
+        derivation_id="minimal_A_closure_ansatz_differential_family_sample",
+        inputs=[alpha1, alpha2, alpha3, S_A],
+        output=q_ansatz,
+        method="differential compatibility ansatz collapse to coefficient ratio",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="ansatz sample only, not a derived closure law",
+    )
 
 
-def case_5_differential_next_requirements():
+def case_5_differential_next_requirements(out: ScriptOutput):
     header("Case 5: Differential compatibility next requirements")
 
     print("To test the differential compatibility family next, define:")
@@ -353,10 +367,11 @@ def case_5_differential_next_requirements():
     print()
     print("If L1/L2/coefficient choices only reproduce GR by hand, kill or defer to action/stiffness route.")
 
-    status_line("differential compatibility next requirements stated", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("derive differential closure operators L1/L2 and coefficient origin", StatusMark.OBLIGATION, "open proof obligation recorded")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Closure ansatz test fails if:")
@@ -370,10 +385,11 @@ def case_6_failure_controls():
     print("7. overlap operator is absent")
     print("8. no branch-kill outcome is allowed")
 
-    status_line("closure-ansatz failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("closure-ansatz failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -394,7 +410,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Differential compatibility is the most local explicit ansatz. Test its operator content next.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -415,25 +432,59 @@ def main():
     header("Candidate Minimal A-Constraint Closure Ansatz")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_ansatz_family_shapes()
-    case_5_differential_next_requirements()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_ansatz_sample(ns)
+    case_5_differential_next_requirements(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="minimal_A_constraint_closure_ansatz_marker",
-        inputs=[],
-        output=sp.Symbol("minimal_A_constraint_closure_ansatz_audited"),
-        method="minimal_A_constraint_closure_ansatz_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_differential_closure_operators_and_coefficient_origin_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive differential closure operators L1/L2 and coefficient origin",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The differential compatibility ansatz C[A,A_spatial,S_A] = alpha1 L1[A_spatial] "
+                "+ alpha2 L2[A] + alpha3 S_A = 0 collapses to Delta A_spatial = q S_A. "
+                "The operators L1, L2 and the coefficient ratio q = -(alpha2+alpha3)/alpha1 must be "
+                "derived before gamma recovery checks. No local pre-recovery principle for q is known."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="minimal_closure_ansatz_families_provisional",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "Four closure ansatz families survive GR-shortcut rejection: differential compatibility, "
+                "conservation-current, elliptic compatibility, and zeta-assisted closure. "
+                "All are provisional ansatz shells. None is derived. The most local next test is "
+                "differential compatibility with explicit L1/L2 operator inventory."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="minimal_A_constraint_closure_ansatz_marker",
+            inputs=[],
+            output=sp.Symbol("minimal_A_constraint_closure_ansatz_audited"),
+            method="minimal_A_constraint_closure_ansatz_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

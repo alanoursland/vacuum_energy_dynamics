@@ -1,5 +1,11 @@
 # Candidate orbit-space modes
 #
+# Group:
+#   01_foundations
+#
+# Script type:
+#   DIAGNOSTIC
+#
 # Purpose
 # -------
 # This script begins the next step after the gauge-dependence and areal-gauge
@@ -61,15 +67,22 @@
 # the Schwarzschild assumptions (B=1/A) as encoding the reciprocal_scaling
 # target directly, distinguishing this consistency check from the structural
 # derivations in the earlier log-scale-modes scripts.
-#
-# Suggested location:
-#   scripts_v3/candidate_orbit_space_modes.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 from vacuumforge.core.context import TheoryContext
 from vacuumforge.metric.concrete_check import check_concrete_metric
 
@@ -94,14 +107,6 @@ def subheader(title: str) -> None:
     print("-" * 108)
     print(title)
     print("-" * 108)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -139,7 +144,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Spherical orbit-space decomposition
 # =============================================================================
 
-def case_0_orbit_space_decomposition():
+def case_0_orbit_space_decomposition(out: ScriptOutput) -> None:
     header("Case 0: Spherical orbit-space decomposition")
 
     print("General spherically symmetric geometry:")
@@ -154,14 +159,20 @@ def case_0_orbit_space_decomposition():
     print("This is more geometric than choosing an arbitrary radial coordinate.")
     print("The reduced kappa/s variables should be shadows of structures in h_AB")
     print("together with the scalar R(x).")
-    status_line("orbit-space split separates 2D geometry from sphere area", True)
+
+    with out.governance_assessments():
+        out.line(
+            "orbit-space split separates 2D geometry from sphere area",
+            StatusMark.PASS,
+            "geometric setup; kappa/s are 2D orbit-space diagnostics",
+        )
 
 
 # =============================================================================
 # Case 1: Static diagonal arbitrary radial coordinate
 # =============================================================================
 
-def case_1_static_diagonal_arbitrary_coordinate():
+def case_1_static_diagonal_arbitrary_coordinate(out: ScriptOutput) -> None:
     header("Case 1: Static diagonal arbitrary radial coordinate")
 
     X = sp.symbols("X", positive=True, real=True)
@@ -181,14 +192,20 @@ def case_1_static_diagonal_arbitrary_coordinate():
     print("  R(X) = S(X)")
     print()
     print("Areal gauge is obtained by using R=S(X) as radial coordinate.")
-    status_line("static diagonal metric is a special orbit-space representation", True)
+
+    with out.governance_assessments():
+        out.line(
+            "static diagonal metric is a special orbit-space representation",
+            StatusMark.PASS,
+            "h_tt=-Tc^2, h_XX=Q; areal radius R=S(X)",
+        )
 
 
 # =============================================================================
 # Case 2: Areal-gauge reconstruction from orbit-space data
 # =============================================================================
 
-def case_2_areal_gauge_reconstruction():
+def case_2_areal_gauge_reconstruction(out: ScriptOutput) -> None:
     header("Case 2: Areal-gauge reconstruction from orbit-space data")
 
     X = sp.symbols("X", positive=True, real=True)
@@ -217,15 +234,20 @@ def case_2_areal_gauge_reconstruction():
     print("  kappa_areal = 0  <=>  T(X) Q(X) = S'(X)²")
 
     condition_expr = sp.simplify(T(X) * Q(X) / Sp**2)
-    status_line("kappa_areal built from T, Q, and sphere-area scalar S", True)
-    print(f"  exp(2*kappa_areal) = {condition_expr}")
+
+    with out.derived_results():
+        out.line(
+            "kappa_areal built from T, Q, and sphere-area scalar S",
+            StatusMark.PASS,
+            f"exp(2*kappa_areal) = {condition_expr}",
+        )
 
 
 # =============================================================================
 # Case 3: Orbit-space determinant diagnostic
 # =============================================================================
 
-def case_3_orbit_space_determinant_diagnostic():
+def case_3_orbit_space_determinant_diagnostic(out: ScriptOutput) -> None:
     header("Case 3: Orbit-space determinant diagnostic")
 
     X, c = sp.symbols("X c", positive=True, real=True)
@@ -259,8 +281,7 @@ def case_3_orbit_space_determinant_diagnostic():
     print(f"  kappa_from_det = 1/2 ln(|det(h_areal)|/c²) = {kappa_from_det}")
     print(f"  kappa_areal = {kappa_areal}")
 
-    status_line("kappa_areal is half log orbit-space determinant factor in areal gauge",
-                is_zero(kappa_from_det - kappa_areal))
+    det_matches = is_zero(kappa_from_det - kappa_areal)
 
     print()
     print("Interpretation:")
@@ -268,12 +289,19 @@ def case_3_orbit_space_determinant_diagnostic():
     print("  In static spherical areal gauge, it is the log-volume factor of the")
     print("  2D temporal-radial orbit-space metric, after removing c².")
 
+    with out.derived_results():
+        out.line(
+            "kappa_areal is half log orbit-space determinant factor in areal gauge",
+            StatusMark.PASS if det_matches else StatusMark.WARN,
+            "kappa = 1/2 ln(|det(h_areal)|/c^2)",
+        )
+
 
 # =============================================================================
 # Case 4: Norm of areal-radius gradient
 # =============================================================================
 
-def case_4_areal_radius_gradient_norm():
+def case_4_areal_radius_gradient_norm(out: ScriptOutput) -> None:
     header("Case 4: Norm of areal-radius gradient")
 
     X = sp.symbols("X", positive=True, real=True)
@@ -299,7 +327,7 @@ def case_4_areal_radius_gradient_norm():
     print(f"B_areal = {B_areal}")
     print(f"1/B_areal = {sp.simplify(1/B_areal)}")
 
-    status_line("|grad R|² = 1/B_areal", is_zero(gradR2 - 1/B_areal))
+    grad_is_inv_B = is_zero(gradR2 - 1/B_areal)
 
     print()
     print("Using A_areal=T and B_areal=1/|grad R|²:")
@@ -310,15 +338,27 @@ def case_4_areal_radius_gradient_norm():
     kappa_areal = sp.simplify(sp.Rational(1, 2) * sp.log(T(X) * B_areal))
     print(f"kappa from gradR = {kappa_grad}")
     print(f"kappa_areal      = {kappa_areal}")
-    status_line("kappa can be expressed using A and areal-radius gradient norm",
-                is_zero(kappa_grad - kappa_areal))
+
+    kappa_via_grad = is_zero(kappa_grad - kappa_areal)
+
+    with out.derived_results():
+        out.line(
+            "|grad R|² = 1/B_areal",
+            StatusMark.PASS if grad_is_inv_B else StatusMark.WARN,
+            f"|∇R|² = {gradR2}",
+        )
+        out.line(
+            "kappa can be expressed using A and areal-radius gradient norm",
+            StatusMark.PASS if kappa_via_grad else StatusMark.WARN,
+            "kappa = 1/2 ln(A / |∇R|²)",
+        )
 
 
 # =============================================================================
 # Case 5: Shear-like mode from temporal coefficient and areal gradient
 # =============================================================================
 
-def case_5_shear_like_mode_from_gradient():
+def case_5_shear_like_mode_from_gradient(out: ScriptOutput) -> None:
     header("Case 5: Shear-like mode from temporal coefficient and areal gradient")
 
     X = sp.symbols("X", positive=True, real=True)
@@ -340,8 +380,7 @@ def case_5_shear_like_mode_from_gradient():
     print(f"s_areal = 1/2 ln(A/B) = {s_areal}")
     print(f"s from gradR = 1/2 ln(A |∇R|²) = {s_grad}")
 
-    status_line("s_areal can be expressed using A and areal-radius gradient norm",
-                is_zero(s_areal - s_grad))
+    s_via_grad = is_zero(s_areal - s_grad)
 
     print()
     print("Interpretation:")
@@ -355,12 +394,19 @@ def case_5_shear_like_mode_from_gradient():
     print("This is more geometric than raw coordinate B, but still assumes a")
     print("static slicing / time normalization for A.")
 
+    with out.derived_results():
+        out.line(
+            "s_areal can be expressed using A and areal-radius gradient norm",
+            StatusMark.PASS if s_via_grad else StatusMark.WARN,
+            "s = 1/2 ln(A |∇R|²)",
+        )
+
 
 # =============================================================================
 # Case 6: Compensation condition in gradient form
 # =============================================================================
 
-def case_6_compensation_condition_gradient_form():
+def case_6_compensation_condition_gradient_form(out: ScriptOutput) -> None:
     header("Case 6: Compensation condition in gradient form")
 
     X = sp.symbols("X", positive=True, real=True)
@@ -389,8 +435,7 @@ def case_6_compensation_condition_gradient_form():
     print("Equivalent to:")
     print(f"  {condition_arbitrary}")
 
-    status_line("gradient condition A=|grad R|² matches TQ=S'²",
-                is_zero(T(X) - gradR2) == is_zero((T(X) * Q(X) - Sp**2) / Q(X)))
+    gradient_condition_ok = is_zero(T(X) - gradR2) == is_zero((T(X) * Q(X) - Sp**2) / Q(X))
 
     print()
     print("Interpretation:")
@@ -400,12 +445,19 @@ def case_6_compensation_condition_gradient_form():
     print()
     print("  In areal gauge, |∇R|² = 1/B, so this becomes AB=1.")
 
+    with out.derived_results():
+        out.line(
+            "gradient condition A=|grad R|² matches TQ=S'²",
+            StatusMark.PASS if gradient_condition_ok else StatusMark.WARN,
+            "orbit-space form of areal compensation condition",
+        )
+
 
 # =============================================================================
 # Case 7: Schwarzschild check
 # =============================================================================
 
-def case_7_schwarzschild_check(ns=None):
+def case_7_schwarzschild_check(out: ScriptOutput, ns=None):
     header("Case 7: Schwarzschild exterior check")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -429,8 +481,8 @@ def case_7_schwarzschild_check(ns=None):
     print(f"s = {s}")
     print(f"|grad R|² = 1/B = {gradR2}")
 
-    status_line("Schwarzschild areal exterior has kappa=0", is_zero(A*B - 1))
-    status_line("Schwarzschild satisfies A=|grad R|²", is_zero(A - gradR2))
+    schw_kappa_zero = is_zero(A*B - 1)
+    schw_grad_ok = is_zero(A - gradR2)
 
     print()
     print("Note:")
@@ -480,6 +532,25 @@ def case_7_schwarzschild_check(ns=None):
     print("  That keeps the result in the right bucket: a consistency check")
     print("  against a known solution, not a source-law derivation.")
 
+    with out.derived_results():
+        out.line(
+            "Schwarzschild areal exterior has kappa=0",
+            StatusMark.PASS if schw_kappa_zero else StatusMark.FAIL,
+            f"AB = {sp.simplify(A*B)}",
+        )
+        out.line(
+            "Schwarzschild satisfies A=|grad R|²",
+            StatusMark.PASS if schw_grad_ok else StatusMark.WARN,
+            "exact exterior check in areal coordinates",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "Schwarzschild reciprocal relation is confirmed by construction, not derived",
+            StatusMark.PASS,
+            "B=1/A encodes AB=1 directly; consistency check not source-law derivation",
+        )
+
     if ns is not None:
         reciprocal_result = next(
             (result for result in concrete_results if result.requirement_id == "reciprocal_scaling"),
@@ -492,6 +563,7 @@ def case_7_schwarzschild_check(ns=None):
                 output=sp.Symbol(reciprocal_result.status),
                 method="concrete_metric_check",
                 status=Status.DERIVED,
+                record_kind=RecordKind.COMPATIBILITY_EXAMPLE,
                 metadata={"message": reciprocal_result.message},
             )
 
@@ -500,7 +572,7 @@ def case_7_schwarzschild_check(ns=None):
 # Case 8: Failure control — arbitrary radial coordinate without S
 # =============================================================================
 
-def case_8_failure_control_ignore_areal_scalar():
+def case_8_failure_control_ignore_areal_scalar(out: ScriptOutput) -> None:
     header("Case 8: Failure control — ignoring areal scalar")
 
     R = sp.symbols("R", positive=True, real=True)
@@ -529,14 +601,20 @@ def case_8_failure_control_ignore_areal_scalar():
     print("  corrected expression -> 1")
     print("  naive expression -> f'(R)^2")
     print()
-    status_line("including areal scalar removes radial Jacobian artifact", True)
+
+    with out.governance_assessments():
+        out.line(
+            "including areal scalar removes radial Jacobian artifact",
+            StatusMark.PASS,
+            "failure-control: naive TQ=f'^2; corrected TQ/S'^2=1",
+        )
 
 
 # =============================================================================
 # Case 9: Summary classification
 # =============================================================================
 
-def case_9_summary_classification():
+def case_9_summary_classification(out: ScriptOutput) -> None:
     header("Case 9: Summary classification")
 
     print("Results:")
@@ -568,12 +646,26 @@ def case_9_summary_classification():
     print("This is a more geometric spherical-reduction formulation.")
     print("It is not yet a full covariant theory.")
 
+    with out.governance_assessments():
+        out.line(
+            "orbit-space gradient formulation of kappa is more geometric than raw B",
+            StatusMark.PASS,
+            "kappa=1/2 ln(A/|∇R|^2); not yet a full covariant theory",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive full covariant field theory from orbit-space kappa formulation",
+            StatusMark.OBLIGATION,
+            "orbit-space reduction established; full covariant theory not yet derived",
+        )
+
 
 # =============================================================================
 # Final interpretation
 # =============================================================================
 
-def final_interpretation():
+def final_interpretation(out: ScriptOutput) -> None:
     header("Final interpretation")
 
     print("This orbit-space study improves the status of the reduced modes.")
@@ -607,6 +699,13 @@ def final_interpretation():
     print("Possible next artifact:")
     print("  candidate_orbit_space_modes.md")
 
+    with out.governance_assessments():
+        out.line(
+            "kappa is orbit-space geometric diagnostic built from h_AB and R scalar",
+            StatusMark.PASS,
+            "kappa=1/2 ln(A/|∇R|^2); compensation A=|∇R|^2; not a 4D scalar field",
+        )
+
 
 # =============================================================================
 # Main
@@ -616,17 +715,64 @@ def main():
     header("Candidate Orbit-Space Modes")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_orbit_space_decomposition()
-    case_1_static_diagonal_arbitrary_coordinate()
-    case_2_areal_gauge_reconstruction()
-    case_3_orbit_space_determinant_diagnostic()
-    case_4_areal_radius_gradient_norm()
-    case_5_shear_like_mode_from_gradient()
-    case_6_compensation_condition_gradient_form()
-    case_7_schwarzschild_check(ns)
-    case_8_failure_control_ignore_areal_scalar()
-    case_9_summary_classification()
-    final_interpretation()
+
+    out = ScriptOutput()
+
+    case_0_orbit_space_decomposition(out)
+    case_1_static_diagonal_arbitrary_coordinate(out)
+    case_2_areal_gauge_reconstruction(out)
+    case_3_orbit_space_determinant_diagnostic(out)
+    case_4_areal_radius_gradient_norm(out)
+    case_5_shear_like_mode_from_gradient(out)
+    case_6_compensation_condition_gradient_form(out)
+    case_7_schwarzschild_check(out, ns)
+    case_8_failure_control_ignore_areal_scalar(out)
+    case_9_summary_classification(out)
+    final_interpretation(out)
+
+    # Governance records inside the archive block.
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_orbit_space_gradient_diagnostic",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "In static diagonal spherical symmetry, kappa is a gauge-aware "
+            "orbit-space diagnostic: kappa = 1/2 ln(A/|∇R|^2), where |∇R|^2 "
+            "is the orbit-space norm of the areal-radius scalar gradient. "
+            "Compensation kappa=0 means A=|∇R|^2. This is not a 4D scalar field."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="schwarzschild_reciprocal_is_construction_check",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The Schwarzschild exterior satisfies kappa=0 (AB=1) by construction "
+            "when B=1/A is encoded as an assumption. This is a consistency check "
+            "against a known solution, not a source-law derivation of kappa suppression."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_full_covariant_orbit_space_theory",
+        script_id=SCRIPT_ID,
+        title="Derive full covariant field theory from orbit-space kappa formulation",
+        status=ObligationStatus.OPEN,
+        required_by=["kappa_orbit_space_gradient_diagnostic"],
+        description=(
+            "The orbit-space formulation kappa=1/2 ln(A/|∇R|^2) is a geometric "
+            "improvement over the raw areal-gauge formula, but it still assumes "
+            "a static slicing and spherical symmetry. A full covariant field "
+            "theory is needed that reduces to this diagnostic in the static "
+            "spherical areal-gauge sector."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

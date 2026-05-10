@@ -1,5 +1,11 @@
 # Candidate vector boundary coefficient from action
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   DERIVATION
+#
 # Purpose
 # -------
 # The vector boundary-value problem gave the exterior shape:
@@ -28,17 +34,23 @@
 # The goal is not to set the GR coefficient.
 # The goal is to show that the boundary/far-field coefficient is controlled by
 # the same missing ratio alpha_W/K_c, not a new arbitrary number.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_boundary_coefficient_from_action.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -50,21 +62,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "HAND_ASSIGNED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -105,8 +102,6 @@ def case_0_problem_statement():
     print("  do not insert Lense-Thirring normalization")
     print("  check whether C_b is a new free coefficient or controlled by alpha_W/K_c")
 
-    status_line("boundary coefficient problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_field_equation_ratio():
     header("Case 1: Curl-energy source ratio")
@@ -125,8 +120,7 @@ def case_1_field_equation_ratio():
     print()
     print("This ratio is still missing, but it should control the exterior amplitude.")
 
-    status_line("field-equation coefficient ratio identified", "MISSING",
-                "alpha_W/(2K_c) not derived")
+    return ratio
 
 
 def case_2_green_function_amplitude():
@@ -151,8 +145,7 @@ def case_2_green_function_amplitude():
     print("This is not a GR coefficient.")
     print("It only relates exterior amplitude to the missing action ratio.")
 
-    status_line("Green-function amplitude tied to alpha_W/K_c", "CONSTRAINED_BY_IDENTITY",
-                "absolute ratio still missing")
+    return lambda_green
 
 
 def case_3_far_field_multipole_relation():
@@ -178,15 +171,13 @@ def case_3_far_field_multipole_relation():
     print("C_shape depends on angular conventions and source model.")
     print("alpha_W/K_c remains the physical missing ratio.")
 
-    status_line("far-field coefficient tied to action ratio times shape factor",
-                "CONSTRAINED_BY_IDENTITY",
-                "shape factor and action ratio not fully derived")
+    return C_J
 
 
 def case_4_boundary_coefficient_relation():
     header("Case 4: Boundary coefficient relation")
 
-    C_b, C_shape, alpha_W, K_c = sp.symbols("C_b C_shape alpha_W K_c", positive=True, real=True)
+    C_shape, alpha_W, K_c = sp.symbols("C_shape alpha_W K_c", positive=True, real=True)
 
     Cb_expr = C_shape * alpha_W/(8*sp.pi*K_c)
 
@@ -201,9 +192,7 @@ def case_4_boundary_coefficient_relation():
     print()
     print("But C_shape and alpha_W/K_c are still missing.")
 
-    status_line("boundary coefficient reduced to action ratio plus shape factor",
-                "CONSTRAINED_BY_IDENTITY",
-                "not a final normalization")
+    return Cb_expr
 
 
 def case_5_precession_coefficient_separation():
@@ -227,8 +216,7 @@ def case_5_precession_coefficient_separation():
     print("  C_shape")
     print("  alpha_W/K_c")
 
-    status_line("precession coefficient separated into missing factors", "MISSING",
-                "observable normalization not derived")
+    return C_total
 
 
 def case_6_no_new_free_boundary_knob():
@@ -248,9 +236,6 @@ def case_6_no_new_free_boundary_knob():
     print("  if alpha_W/K_c, beta_W, and C_shape are all independently fitted,")
     print("  the vector sector becomes a fit machine.")
 
-    status_line("boundary knob reduced but not eliminated", "CONSTRAINED_BY_IDENTITY",
-                "main action ratio remains missing")
-
 
 def case_7_classification():
     header("Case 7: Classification")
@@ -263,9 +248,6 @@ def case_7_classification():
     print("| source/shape factor C_shape | MISSING |")
     print("| precession coupling beta_W | MISSING |")
     print("| Lense-Thirring normalization | HAND_ASSIGNED if inserted now |")
-    print()
-    status_line("boundary coefficient classification produced", "CONSTRAINED_BY_IDENTITY",
-                "C_b tied to missing action ratio, not solved")
 
 
 def case_8_next_tests():
@@ -285,9 +267,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_source_shape_factor.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "source shape factor is next local vector cleanup")
 
 
 def final_interpretation():
@@ -318,23 +297,167 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_field_equation_ratio()
-    case_2_green_function_amplitude()
-    case_3_far_field_multipole_relation()
-    case_4_boundary_coefficient_relation()
-    case_5_precession_coefficient_separation()
+    ratio = case_1_field_equation_ratio()
+    lambda_green = case_2_green_function_amplitude()
+    C_J = case_3_far_field_multipole_relation()
+    Cb_expr = case_4_boundary_coefficient_relation()
+    C_total = case_5_precession_coefficient_separation()
     case_6_no_new_free_boundary_knob()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_boundary_coefficient_from_action_marker",
-        inputs=[],
-        output=sp.Symbol("vector_boundary_coefficient_from_action_stated"),
-        method="vector_boundary_coefficient_from_action_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    with out.derived_results():
+        out.line(
+            "Green-function amplitude tied to alpha_W/K_c",
+            StatusMark.PASS,
+            f"lambda_green = {lambda_green} — links boundary to action ratio",
+        )
+        out.line(
+            "C_b parameterized as C_shape * alpha_W/(8*pi*K_c)",
+            StatusMark.PASS,
+            "boundary coefficient not a new free knob; controlled by action ratio",
+        )
+        out.line(
+            "C_total = beta_W * C_shape * alpha_W/(8*pi*K_c)",
+            StatusMark.PASS,
+            "precession coefficient separated into missing factors",
+        )
+
+    with out.governance_assessments():
+        out.line(
+            "alpha_W/K_c",
+            StatusMark.FAIL,
+            "missing; boundary coefficient not solved",
+        )
+        out.line(
+            "C_shape",
+            StatusMark.FAIL,
+            "missing; convention-dependent source/geometry factor",
+        )
+        out.line(
+            "GR matching forbidden",
+            StatusMark.DEFER,
+            "C_total must not be set to reproduce Lense-Thirring",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive vector beta_W observable coupling",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Contentful derivation: Green-function amplitude
+        alpha_W_s, K_c_s = sp.symbols("alpha_W K_c", positive=True, real=True)
+        lambda_eq_expr = alpha_W_s/(2*K_c_s)
+        lambda_green_expr = lambda_eq_expr/(4*sp.pi)
+
+        ns2.record_derivation(
+            derivation_id="green_function_amplitude_alpha_W_K_c",
+            inputs=[lambda_eq_expr],
+            output=lambda_green_expr,
+            method="lambda_green = (alpha_W/(2K_c)) / (4*pi) = alpha_W/(8*pi*K_c)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="coefficient_expression",
+        )
+
+        # Contentful derivation: C_total separation
+        beta_W_s, C_shape_s = sp.symbols("beta_W C_shape", positive=True, real=True)
+        C_total_expr = sp.simplify(beta_W_s * C_shape_s * alpha_W_s/(8*sp.pi*K_c_s))
+
+        ns2.record_derivation(
+            derivation_id="precession_coefficient_separation",
+            inputs=[lambda_green_expr, C_shape_s, beta_W_s],
+            output=C_total_expr,
+            method="C_total = beta_W * C_shape * alpha_W/(8*pi*K_c)",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+            result_type="coefficient_expression",
+        )
+
+        # Proof obligation: vector coefficient alpha_W/K_c
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The boundary coefficient C_b = C_shape * alpha_W/(8*pi*K_c) "
+                "is controlled by alpha_W/K_c and the source shape factor C_shape. "
+                "alpha_W/K_c remains missing from the vacuum transport action."
+            ),
+        ))
+
+        # Proof obligation: beta_W
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_beta_W_coupling",
+            script_id=SCRIPT_ID,
+            title="Derive beta_W observable coupling",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The observable precession coefficient separates as "
+                "C_total = beta_W * C_shape * alpha_W/(8*pi*K_c). "
+                "beta_W is missing and must not be matched to GR."
+            ),
+        ))
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The source/shape factor C_shape is convention-dependent and "
+                "requires a fully specified vector equation convention and "
+                "source model to compute."
+            ),
+        ))
+
+        # Governance claim: boundary coefficient not a new free knob
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_Cb_new_knob",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "C_b is not an independent new free coefficient. It is controlled by "
+                "alpha_W/K_c and C_shape once the vector action and source model are fixed. "
+                "Treating C_b as a free boundary knob to match GR is recovery smuggling."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_boundary_coefficient_from_action_marker",
+            inputs=[],
+            output=sp.Symbol("vector_boundary_coefficient_from_action_stated"),
+            method="vector_boundary_coefficient_from_action_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

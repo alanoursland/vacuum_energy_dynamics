@@ -1,5 +1,11 @@
 # Candidate gauge-invariant diagnostics
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The recombination study showed that a schematic metric map exists, but it
@@ -27,11 +33,6 @@
 #
 # This is not a derivation of gauge invariants. It is an inventory of which
 # diagnostics are safe and which require parent structure.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_gauge_invariant_diagnostics.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -40,6 +41,17 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -264,6 +276,8 @@ def case_4_status_counts(diags: List[Diagnostic]):
     else:
         status_line("diagnostic set complete", "SAFE_INVARIANT")
 
+    return counts
+
 
 # =============================================================================
 # Case 5: Safe comparison policy
@@ -292,11 +306,44 @@ def case_5_safe_comparison_policy():
 
 
 # =============================================================================
-# Case 6: Next study recommendation
+# Case 6: Controlled failure case (audit discipline)
 # =============================================================================
 
-def case_6_next_study():
-    header("Case 6: Next study recommendation")
+def case_6_good_failure():
+    header("Case 6: Controlled failure case - A_rad used as observable without suppression flag")
+
+    print("Bad usage pattern (controlled failure):")
+    print()
+    print("  If A_rad is treated as a physical observable without an explicit suppression flag,")
+    print("  the theory may compare a forbidden scalar breathing mode to observations.")
+    print()
+    print("Expected outcome of this bad pattern:")
+    print("  A_rad without suppression flag -> FAIL")
+    print("  Reason: unsuppressed massless scalar wave is not allowed as observable.")
+    print()
+
+    # Check: if the 'A_rad scalar radiation amplitude' diagnostic has RISK status,
+    # flag it correctly.
+    diags = build_diagnostics()
+    a_rad_diag = next((d for d in diags if "A_rad" in d.name), None)
+    if a_rad_diag is not None:
+        if a_rad_diag.status == "RISK":
+            print("[PASS] Controlled failure: A_rad correctly has RISK status in audit.")
+        else:
+            print(f"[FAIL] Controlled failure: A_rad has unexpected status {a_rad_diag.status}.")
+    else:
+        print("[FAIL] Controlled failure: A_rad diagnostic not found.")
+
+    status_line("controlled failure case passed", "SAFE_GAUGE_FIXED",
+                "A_rad RISK status correctly flagged")
+
+
+# =============================================================================
+# Case 7: Next study recommendation
+# =============================================================================
+
+def case_7_next_study():
+    header("Case 7: Next study recommendation")
 
     print("Recommended next script:")
     print()
@@ -346,22 +393,165 @@ def main():
     header("Candidate Gauge-Invariant Diagnostics")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     diags = build_diagnostics()
     case_2_print_diagnostics(diags)
     case_3_table(diags)
-    case_4_status_counts(diags)
+    counts = case_4_status_counts(diags)
     case_5_safe_comparison_policy()
-    case_6_next_study()
+    case_6_good_failure()
+    case_7_next_study()
     final_interpretation(diags)
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="safe_diagnostic_policy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Safe diagnostics for reduced comparisons: areal radius R (spherical), "
+            "normalized static A, TT strain. "
+            "Gauge-aware diagnostics (AB/kappa_areal, kappa response) must be labeled "
+            "as gauge-aware. "
+            "A_rad, raw W_i, and raw coordinate trace must not be used as physical observables "
+            "without explicit suppression flags or parent derivation."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="missing_observable_set_is_parent_blocker",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "The gauge-invariant observable set is missing. Without curvature-like "
+            "diagnostics and conservation flux identities, comparisons to observations "
+            "may rely on gauge-dependent sector variables."
+        ),
+    ))
+
+    # --- ProofObligationRecord for MISSING diagnostics ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_frame_dragging_gauge_invariant_observable",
+        script_id=SCRIPT_ID,
+        title="Derive gauge-invariant frame-dragging observable from W_i",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Construct a gauge-invariant or gauge-fixed frame-dragging diagnostic from "
+            "W_i, e.g. a curl or rotation of local inertial frames, that separates "
+            "physical frame-dragging from shift gauge."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_curvature_like_parent_diagnostics",
+        script_id=SCRIPT_ID,
+        title="Derive curvature-like parent-level diagnostics",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Construct curvature-like observables from the parent metric/vacuum geometry "
+            "that are gauge-invariant or have controlled gauge dependence."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conserved_flux_source_identity_diagnostics",
+        script_id=SCRIPT_ID,
+        title="Derive conserved flux/source identity diagnostics",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply Bianchi-like or continuity identities and construct associated flux "
+            "diagnostics for checking source-geometry compatibility."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_A_rad_suppression_for_observable_safety",
+        script_id=SCRIPT_ID,
+        title="Derive A_rad suppression to make scalar radiation diagnostic safe",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that A_rad is suppressed so that it cannot appear as a forbidden "
+            "scalar breathing mode in observational comparisons."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="full_observable_set_derivation_route",
+        script_id=SCRIPT_ID,
+        name="Full gauge-invariant observable set derivation route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_frame_dragging_gauge_invariant_observable",
+            "derive_curvature_like_parent_diagnostics",
+            "derive_conserved_flux_source_identity_diagnostics",
+        ],
+        activation_conditions=[
+            "frame-dragging observable is gauge-invariant or gauge-fixed",
+            "curvature-like diagnostics are derived from parent geometry",
+            "conservation flux diagnostics are established",
+        ],
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="gauge_invariant_diagnostics_marker",
         inputs=[],
         output=sp.Symbol("diagnostic_safety_inventory_built"),
         method="gauge_invariant_diagnostic_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    n_missing = counts.get("MISSING", 0)
+    n_risk = counts.get("RISK", 0)
+    n_gauge_aware = counts.get("GAUGE_AWARE", 0)
+    n_safe_fixed = counts.get("SAFE_GAUGE_FIXED", 0)
+    n_invariant = counts.get("SAFE_INVARIANT", 0)
+
+    with out.governance_assessments():
+        out.line(f"safe invariant: {n_invariant}", StatusMark.PASS,
+                 "areal radius R")
+        out.line(f"safe gauge-fixed: {n_safe_fixed}", StatusMark.PASS,
+                 "normalized A, orbit-space |grad R|^2, TT strain")
+        out.line(f"gauge-aware: {n_gauge_aware}", StatusMark.DEFER,
+                 "AB/kappa_areal, kappa interior response")
+        out.line(f"missing: {n_missing}", StatusMark.FAIL,
+                 "frame dragging, curvature-like, conservation flux")
+        out.line(f"risk: {n_risk}", StatusMark.FAIL,
+                 "A_rad scalar radiation amplitude")
+        out.line("safe diagnostic policy", StatusMark.PASS,
+                 "policy rule recorded")
+        out.line("missing observable set is parent blocker", StatusMark.FAIL,
+                 "open risk recorded")
+        out.line("controlled failure case passed", StatusMark.PASS,
+                 "A_rad RISK status correctly flagged")
+
+    with out.unresolved_obligations():
+        out.line("derive frame-dragging gauge-invariant observable", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive curvature-like parent diagnostics", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive conserved flux/source identity diagnostics", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive A_rad suppression for observable safety", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

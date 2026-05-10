@@ -1,5 +1,11 @@
 # Candidate shear profile source law
 #
+# Group:
+#   02_mechanics
+#
+# Script type:
+#   SAMPLE
+#
 # Purpose
 # -------
 # This script begins the shear/source-law development unit after the
@@ -72,6 +78,16 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -90,14 +106,6 @@ def subheader(title: str) -> None:
     print("-" * 92)
     print(title)
     print("-" * 92)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -130,7 +138,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
         print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
-def case_0_convention_check():
+def case_0_convention_check(out: ScriptOutput):
     header("Case 0: Convention check")
 
     kappa, s = sp.symbols("kappa s", real=True)
@@ -157,12 +165,20 @@ def case_0_convention_check():
     print(f"B = {B_k0}")
     print(f"AB = {AB_k0}")
 
-    status_line("kappa=0 gives A=exp(s)", is_zero(A_k0 - sp.exp(s)))
-    status_line("kappa=0 gives B=exp(-s)", is_zero(B_k0 - sp.exp(-s)))
-    status_line("kappa=0 gives AB=1", is_zero(AB_k0 - 1))
+    residual_A = sp.simplify(A_k0 - sp.exp(s))
+    residual_B = sp.simplify(B_k0 - sp.exp(-s))
+    residual_AB = sp.simplify(AB_k0 - 1)
+
+    with out.derived_results():
+        out.line("kappa=0 gives A=exp(s)", StatusMark.PASS if is_zero(residual_A) else StatusMark.FAIL,
+                 f"residual={residual_A}")
+        out.line("kappa=0 gives B=exp(-s)", StatusMark.PASS if is_zero(residual_B) else StatusMark.FAIL,
+                 f"residual={residual_B}")
+        out.line("kappa=0 gives AB=1", StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
 
 
-def case_1_radial_laplace_solution():
+def case_1_radial_laplace_solution(out: ScriptOutput):
     header("Case 1: Source-free radial Laplace equation")
 
     r = sp.symbols("r", positive=True, real=True)
@@ -186,10 +202,13 @@ def case_1_radial_laplace_solution():
     print(f"Candidate s(r) = {candidate}")
     print(f"∇²s = {lap_candidate}")
 
-    status_line("C1 + C2/r solves source-free radial Laplace equation", is_zero(lap_candidate))
+    with out.derived_results():
+        out.line("C1 + C2/r solves source-free radial Laplace equation",
+                 StatusMark.PASS if is_zero(lap_candidate) else StatusMark.FAIL,
+                 f"residual={lap_candidate}")
 
 
-def case_2_flux_fixes_coefficient():
+def case_2_flux_fixes_coefficient(out: ScriptOutput):
     header("Case 2: Mass/interface flux fixes coefficient")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -217,14 +236,20 @@ def case_2_flux_fixes_coefficient():
         print(f"s_fixed(r) = {s_fixed}")
 
         target_s = -2 * G * M / (r * c**2)
-        status_line("flux condition fixes s(r) = -2GM/(r c^2)", is_zero(s_fixed - target_s))
-
+        residual_s = sp.simplify(s_fixed - target_s)
         fixed_flux = sp.simplify(4 * sp.pi * r**2 * sp.diff(s_fixed, r))
         print(f"fixed flux = {fixed_flux}")
-        status_line("fixed solution has desired outward flux", is_zero(fixed_flux - target_flux))
+
+        with out.sample_results():
+            out.line("flux condition fixes s(r) = -2GM/(r c^2)",
+                     StatusMark.PASS if is_zero(residual_s) else StatusMark.FAIL,
+                     f"residual={residual_s}")
+            out.line("fixed solution has desired outward flux",
+                     StatusMark.PASS if is_zero(fixed_flux - target_flux) else StatusMark.FAIL,
+                     f"residual={sp.simplify(fixed_flux - target_flux)}")
 
 
-def case_3_metric_recovery_from_s(ns=None):
+def case_3_metric_recovery_from_s(out: ScriptOutput, ns=None):
     header("Case 3: Weak-field metric recovery from shear profile")
 
     eps = sp.symbols("eps", positive=True, real=True)
@@ -248,14 +273,24 @@ def case_3_metric_recovery_from_s(ns=None):
     print(f"AB series = {AB_series}")
 
     print()
-    status_line("A recovers temporal series through O(eps^2)", is_zero(sp.expand(A_series - (1 - 2 * eps + 2 * eps**2))))
-    status_line("B recovers reciprocal spatial series through O(eps^2)", is_zero(sp.expand(B_series - (1 + 2 * eps + 2 * eps**2))))
-    status_line("AB is exactly 1", is_zero(AB - 1))
-
-    print()
     print("First-order targets:")
     print(f"  A = {1 - 2 * eps} + O(eps^2)")
     print(f"  B = {1 + 2 * eps} + O(eps^2)")
+
+    residual_A_series = sp.expand(A_series - (1 - 2 * eps + 2 * eps**2))
+    residual_B_series = sp.expand(B_series - (1 + 2 * eps + 2 * eps**2))
+    residual_AB = AB - 1
+
+    with out.sample_results():
+        out.line("A recovers temporal series through O(eps^2)",
+                 StatusMark.PASS if is_zero(residual_A_series) else StatusMark.FAIL,
+                 f"residual={residual_A_series}")
+        out.line("B recovers reciprocal spatial series through O(eps^2)",
+                 StatusMark.PASS if is_zero(residual_B_series) else StatusMark.FAIL,
+                 f"residual={residual_B_series}")
+        out.line("AB is exactly 1",
+                 StatusMark.PASS if is_zero(residual_AB) else StatusMark.FAIL,
+                 f"residual={residual_AB}")
 
     ctx = TheoryContext("candidate_shear_profile_source_law")
     ctx.define_equal_response_algebraic_symbols()
@@ -263,19 +298,26 @@ def case_3_metric_recovery_from_s(ns=None):
     ctx.assumptions.add("weak_shear_A", sp.Eq(ms.A, sp.exp(-2 * eps)))
     ctx.assumptions.add("weak_shear_B", sp.Eq(ms.B, sp.exp(2 * eps)))
     reciprocal = ctx.requirements.validate("reciprocal_scaling", ctx)
-    status_line("VacuumForge reciprocal_scaling validator passes", reciprocal.status in {"pass", "assumed"})
+
+    with out.governance_assessments():
+        out.line("VacuumForge reciprocal_scaling validator passes",
+                 StatusMark.PASS if reciprocal.status in {"pass", "assumed"} else StatusMark.DEFER,
+                 f"status={reciprocal.status}")
 
     if ns is not None:
+        reciprocal_residual = sp.simplify(sp.exp(-2 * eps) * sp.exp(2 * eps) - 1)
         ns.record_derivation(
             derivation_id="weak_shear_metric_recovery",
             inputs=[eps],
             output=sp.Eq(sp.exp(-2 * eps) * sp.exp(2 * eps), 1),
-            method="weak_shear_metric_recovery",
+            method="weak_shear_metric_recovery: toy s=-2eps, A=exp(s), B=exp(-s)",
             status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="constant weak-field shear s=-2*eps only",
         )
 
 
-def case_4_poisson_source_form():
+def case_4_poisson_source_form(out: ScriptOutput):
     header("Case 4: Poisson source form and sign check")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -298,10 +340,14 @@ def case_4_poisson_source_form():
     print()
     print(f"Exterior s(r) = {s_expr}")
     print(f"Ordinary radial ∇²s for r>0 = {lap}")
-    status_line("exterior solution is harmonic away from source", is_zero(lap))
+
+    with out.derived_results():
+        out.line("exterior solution is harmonic away from source",
+                 StatusMark.PASS if is_zero(lap) else StatusMark.FAIL,
+                 f"residual={lap}")
 
 
-def case_5_failure_controls():
+def case_5_failure_controls(out: ScriptOutput):
     header("Case 5: Failure controls")
 
     r, C0, C1, eps = sp.symbols("r C0 C1 eps", positive=True, real=True)
@@ -312,7 +358,10 @@ def case_5_failure_controls():
     print(f"s(r) = {s_const}")
     print("If C0 != 0, then s(infinity) != 0.")
     print("This violates asymptotic flatness unless C0 = 0.")
-    status_line("asymptotic flatness requires C0=0", True)
+
+    with out.governance_assessments():
+        out.line("asymptotic flatness requires C0=0", StatusMark.PASS,
+                 "C0=0 enforced by asymptotic flatness condition")
 
     subheader("Failure control B: wrong coefficient")
     lam = sp.symbols("lambda", real=True)
@@ -324,7 +373,11 @@ def case_5_failure_controls():
     print("Weak-field temporal target requires coefficient lambda = 2.")
     lambda_solution = sp.solve(sp.Eq(A_wrong_series, 1 - 2 * eps), lam)
     print(f"lambda solution = {lambda_solution}")
-    status_line("weak-field temporal coefficient fixes lambda=2", lambda_solution == [2])
+
+    with out.derived_results():
+        out.line("weak-field temporal coefficient fixes lambda=2",
+                 StatusMark.PASS if lambda_solution == [2] else StatusMark.FAIL,
+                 f"solution={lambda_solution}")
 
 
 def final_interpretation():
@@ -368,13 +421,51 @@ def main():
     header("Candidate Shear Profile Source Law")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_convention_check()
-    case_1_radial_laplace_solution()
-    case_2_flux_fixes_coefficient()
-    case_3_metric_recovery_from_s(ns)
-    case_4_poisson_source_form()
-    case_5_failure_controls()
+
+    out = ScriptOutput()
+
+    case_0_convention_check(out)
+    case_1_radial_laplace_solution(out)
+    case_2_flux_fixes_coefficient(out)
+    case_3_metric_recovery_from_s(out, ns)
+    case_4_poisson_source_form(out)
+    case_5_failure_controls(out)
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_shear_field_equation_from_action",
+        script_id=SCRIPT_ID,
+        title="Derive shear field equation from vacuum action functional",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the vacuum configuration functional gives ∇²s = 8πG rho/c² "
+            "for the shear mode, rather than importing this as a reduced toy assumption."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_mass_interface_flux_normalization",
+        script_id=SCRIPT_ID,
+        title="Derive mass/interface flux normalization 4πr²s'=8πGM/c²",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Explain why the source/interface flux is fixed by mass M as 8πGM/c². "
+            "This is currently imported as a normalization assumption, not derived."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="shear_source_law_is_toy_only",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The reduced exterior shear source law ∇²s=0 and the profile s(r)=-2GM/(rc²) "
+            "are a reduced-sector toy. They are not the full field equation and not a theorem."
+        ),
+    ))
+
     ns.write_run_metadata()
 
 

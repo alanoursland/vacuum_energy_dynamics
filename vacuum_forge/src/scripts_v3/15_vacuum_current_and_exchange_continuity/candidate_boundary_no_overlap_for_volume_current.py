@@ -1,3 +1,9 @@
+# Group:
+#   15_vacuum_current_and_exchange_continuity
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate boundary/no-overlap for volume current
 #
 # Purpose
@@ -25,11 +31,22 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -37,34 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-        "CLOSED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -277,7 +266,7 @@ def print_entry(e: BoundaryOverlapEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -303,7 +292,10 @@ def case_0_problem_statement():
     print("  preserve no far-zone scalar flux")
     print("  keep gamma/AB recovery downstream")
 
-    status_line("boundary/no-overlap problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("boundary/no-overlap problem posed", StatusMark.OBLIGATION, "requires boundary theorem and no-overlap operator")
+    out.print()
 
 
 def case_1_inventory(entries: List[BoundaryOverlapEntry]):
@@ -330,7 +322,10 @@ def case_2_compact_table(entries: List[BoundaryOverlapEntry]):
             + " |"
         )
 
-    status_line("compact boundary/no-overlap ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact boundary/no-overlap ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[BoundaryOverlapEntry]):
@@ -351,7 +346,10 @@ def case_3_status_counts(entries: List[BoundaryOverlapEntry]):
     print("  Boundary shell sources and nonlocal boundary repair are dangerous.")
     print("  The no-overlap operator remains the central missing theorem if no failure is demonstrated.")
 
-    status_line("boundary/no-overlap status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("boundary/no-overlap status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_decision_tree():
@@ -377,7 +375,10 @@ def case_4_decision_tree():
     print("6. If leakage or overlap appears:")
     print("   current family is killed for ordinary sector.")
 
-    status_line("boundary/no-overlap decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("boundary/no-overlap decision tree stated", StatusMark.INFO, "decision tree recorded")
+    out.print()
 
 
 def case_4b_symbolic_boundary_flux(ns) -> None:
@@ -399,13 +400,19 @@ def case_4b_symbolic_boundary_flux(ns) -> None:
     print("Interpretation:")
     print("  the standard compact profile satisfies the zero-flux boundary requirement symbolically.")
 
-    status_line("compact-support boundary neutrality", "DERIVED_REDUCED", f"F_boundary = {boundary_flux}")
+    out = ScriptOutput()
+    with out.sample_results():
+        out.line("compact-support boundary neutrality", StatusMark.PASS, f"F_boundary = {boundary_flux}")
+    out.print()
+
     ns.record_derivation(
         derivation_id="boundary_no_overlap_zero_flux_sample",
         inputs=[profile],
         output=sp.Tuple(boundary_value, boundary_derivative, boundary_flux),
         method="compact-support boundary/no-overlap sample",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy compact zeta profile (1 - r^2/R^2)^2; not a general boundary theorem",
     )
 
 
@@ -425,7 +432,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  call an elliptic boundary solution a physical current law.")
 
-    status_line("boundary/no-overlap good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("boundary/no-overlap good failure stated", StatusMark.DEFER, "deferred pending boundary theorem and no-overlap operator")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -443,7 +453,10 @@ def case_6_failure_controls():
     print("8. elliptic completion is promoted to physical current")
     print("9. recovery checks choose boundary/no-overlap mechanism")
 
-    status_line("boundary/no-overlap failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("boundary/no-overlap failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -467,7 +480,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  Boundary neutrality reduces the next missing mechanism to the no-overlap operator for B_s versus residual trace.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_no_overlap_operator_for_volume_current.py")
+    out.print()
 
 
 def final_interpretation():
@@ -500,14 +516,94 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="boundary_no_overlap_for_volume_current_marker",
-        inputs=[],
-        output=sp.Symbol("boundary_no_overlap_for_volume_current_audited"),
-        method="boundary_no_overlap_for_volume_current_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_boundary_neutrality_theorem_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive boundary neutrality theorem for J_V-driven zeta",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Show that J_V-driven zeta has zero exterior flux, zero zeta/kappa scalar charge, "
+                "no far-zone scalar flux, and no M_ext shift. Zero-flux must follow from structure "
+                "or exchange law, not from a fitted counterterm."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_no_overlap_operator_in_15",
+            script_id=SCRIPT_ID,
+            title="Derive no-overlap operator O[B_s, zeta_residual/kappa_residual, J_V] = 0",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The count-once recombination theorem O = 0 is the central missing mechanism. "
+                "Either the operator must be derived, or residual zeta/kappa metric trace must "
+                "be killed or made non-metric."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="bo12_forbidden_boundary_repair",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "Choosing boundary counterterms, R_V, or J_V nonlocally to cancel boundary "
+                "leakage is rejected as a boundary neutrality mechanism in the ordinary branch."
+            ),
+        ))
+        ns.record_claim(ClaimRecord(
+            claim_id="bo14_recovery_downstream_boundary",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "gamma_like and AB recovery tests must be performed only after boundary/no-overlap "
+                "structure is fixed; they must not choose the boundary cancellation or overlap split."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="bo6_B_s_only_metric_insertion_candidate_route",
+            script_id=SCRIPT_ID,
+            name="B_s-only metric insertion with killed/non-metric residual",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_boundary_neutrality_theorem_in_15",
+                "derive_no_overlap_operator_in_15",
+            ],
+            activation_conditions=[
+                "J_V-driven zeta affects metric scalar trace only through B_s/A_spatial",
+                "residual zeta/kappa metric trace is killed or made non-metric",
+                "F_zeta/B_s insertion rule is explicit",
+            ],
+        ))
+        # BO15 branch kill applies only when leakage is demonstrated; none demonstrated here.
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_boundary_leakage_branch",
+            script_id=SCRIPT_ID,
+            branch_id="J_V_boundary_and_no_overlap_check",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_boundary_neutrality_theorem_in_15",
+                "derive_no_overlap_operator_in_15",
+            ],
+            description=(
+                "Boundary neutrality and no-overlap have not been demonstrated. "
+                "Current families that leak or double-count will be killed when "
+                "evidence is available. The branch is deferred pending the theorems."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="boundary_no_overlap_for_volume_current_marker",
+            inputs=[],
+            output=sp.Symbol("boundary_no_overlap_for_volume_current_audited"),
+            method="boundary_no_overlap_for_volume_current_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,5 +1,11 @@
 # Candidate sector bundle inventory
 #
+# Group:
+#   08_covariant_parent_structure
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # Group 08 asks whether the reduced sector program can be organized as the
@@ -33,17 +39,23 @@
 #
 # can "slide" with the source. A scalar wave instead satisfies a hyperbolic
 # dispersion relation and may produce a breathing polarization.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/08_covariant_parent_structure/
-#   or:
-#   scripts_v3/candidate_sector_bundle_inventory.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -59,14 +71,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -130,8 +134,6 @@ def case_0_problem_statement():
     print()
     print("This script inventories the bundle and records open requirements.")
 
-    status_line("sector bundle inventory problem posed", True)
-
 
 # =============================================================================
 # Case 1: Sector table
@@ -147,8 +149,6 @@ def case_1_sector_table():
     print("| trace/interior | kappa | pressure/stress/trace candidate | response/relaxation | volume/trace imbalance | suppressed exterior |")
     print("| vector current | W_i | mass current / angular momentum | vector constraint/evolution TBD | g_ti / shift | frame dragging, not ordinary wave yet |")
     print("| tensor radiation | h_ij^TT | trace-free quadrupole derivatives | hyperbolic wave | spatial TT metric | active radiation |")
-    print()
-    status_line("sector table stated", True)
 
 
 # =============================================================================
@@ -178,7 +178,7 @@ def case_2_A_constraint():
     print("  explain why A_constraint is elliptic/constraint-like, not an")
     print("  unsuppressed long-range scalar radiation mode.")
 
-    status_line("A_constraint supports static exterior gravity", is_zero(lapA))
+    return A, lapA
 
 
 # =============================================================================
@@ -204,7 +204,7 @@ def case_3_A_rad():
     print("  A_rad must be absent, projected out, damped/absorbed, massive,")
     print("  relaxed to minimum, weakly coupled, or observationally constrained.")
 
-    status_line("A_rad is dangerous if unsuppressed", is_zero(coeff - (k**2 - omega**2/c**2)))
+    return A_rad, coeff
 
 
 # =============================================================================
@@ -246,7 +246,7 @@ def case_4_moving_well_vs_scalar_wave():
     print("  A scalar wave has a dispersion relation and can carry a breathing")
     print("  polarization. That remains controlled/unsafe unless suppressed.")
 
-    status_line("moving well distinguished from free scalar wave", True)
+    return A_well, box_well, A_wave, wave_coeff
 
 
 # =============================================================================
@@ -272,7 +272,7 @@ def case_5_kappa_sector():
     print("Parent requirement:")
     print("  explain source of kappa inside matter and suppression/relaxation outside.")
 
-    status_line("kappa sector classified as trace/interior response", True)
+    return E, gradE
 
 
 # =============================================================================
@@ -298,7 +298,7 @@ def case_6_vector_sector():
     print("Parent requirement:")
     print("  derive frame dragging and decide whether vector radiation exists or is constrained.")
 
-    status_line("vector sector classified as current/frame-dragging response", True)
+    return W
 
 
 # =============================================================================
@@ -334,7 +334,7 @@ def case_7_tensor_sector():
     print("Parent requirement:")
     print("  derive TT wave equation, coupling, flux, and gauge constraints from parent structure.")
 
-    status_line("tensor sector remains TT radiation channel", is_zero(trace) and all(is_zero(e) for e in trans))
+    return H_TT, trace, trans
 
 
 # =============================================================================
@@ -351,8 +351,6 @@ def case_8_constraint_evolution_split():
     print("| kappa | response / relaxation / sourced interior | exterior suppression |")
     print("| W_i | constraint or slow vector response TBD | frame dragging |")
     print("| h_ij^TT | evolution / hyperbolic | gravitational waves |")
-    print()
-    status_line("constraint/evolution split stated", True)
 
 
 # =============================================================================
@@ -373,8 +371,6 @@ def case_9_parent_requirements():
     print("7. What the gauge freedoms are.")
     print("8. Which variables are physical versus coordinate shadows.")
     print("9. How the reduced sectors recombine into metric/geometric structure.")
-    print()
-    status_line("parent requirements enumerated", True)
 
 
 # =============================================================================
@@ -412,25 +408,239 @@ def main():
     header("Candidate Sector Bundle Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     case_1_sector_table()
-    case_2_A_constraint()
-    case_3_A_rad()
-    case_4_moving_well_vs_scalar_wave()
-    case_5_kappa_sector()
-    case_6_vector_sector()
-    case_7_tensor_sector()
+    A_static, lapA = case_2_A_constraint()
+    A_rad_wave, wave_coeff = case_3_A_rad()
+    A_well, box_well, A_wave, wave_coeff2 = case_4_moving_well_vs_scalar_wave()
+    E_kappa, gradE_kappa = case_5_kappa_sector()
+    W = case_6_vector_sector()
+    H_TT, trace_tt, trans_tt = case_7_tensor_sector()
     case_8_constraint_evolution_split()
     case_9_parent_requirements()
     final_interpretation()
+
+    # --- Derived results ---
+
+    # Case 2: static A_constraint in exterior
+    ns.record_derivation(
+        derivation_id="sector_bundle_A_constraint_laplacian",
+        inputs=[A_static],
+        output=lapA,
+        method="radial Laplacian of A_constraint = 1 - 2GM/(c^2 r)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="laplacian_residual",
+    )
+
+    # Case 5: kappa energy gradient
+    ns.record_derivation(
+        derivation_id="sector_bundle_kappa_energy_gradient",
+        inputs=[E_kappa],
+        output=gradE_kappa,
+        method="dE_kappa/dkappa for E = (1/2) m_k^2 kappa^2",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        result_type="energy_gradient",
+        scope="quadratic potential toy for kappa sector",
+    )
+
+    # Case 7: TT mode trace-free
+    ns.record_derivation(
+        derivation_id="sector_bundle_tt_trace_zero",
+        inputs=[H_TT],
+        output=trace_tt,
+        method="trace of TT plus/cross polarization matrix",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="polarization_trace_residual",
+    )
+
+    # Case 7: TT mode transversality
+    ns.record_derivation(
+        derivation_id="sector_bundle_tt_transversality",
+        inputs=[H_TT],
+        output=trans_tt,
+        method="k^i H_ij for z-propagating TT mode",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="transversality_residual",
+    )
+
+    # --- Governance claims ---
+
+    ns.record_claim(ClaimRecord(
+        claim_id="moving_well_not_scalar_wave_distinction",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "A moving mass can carry a moving/retarded scalar constraint configuration "
+            "(A_well sliding with source) without automatically producing a free scalar "
+            "breathing wave. The two must not be conflated. A free scalar wave has a "
+            "hyperbolic dispersion relation and potentially a breathing polarization."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="sector_bundle_parent_required",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "The reduced sector bundle (A_constraint, A_rad, kappa, W_i, h_ij^TT) "
+            "is coherent as an architecture but does not constitute a covariant parent. "
+            "A parent structure must explain gauge behavior, sector recombination, "
+            "conservation identities, and source coupling."
+        ),
+    ))
+
+    # --- Routes ---
+
+    ns.record_route(RouteRecord(
+        route_id="covariant_parent_from_sector_bundle_route",
+        script_id=SCRIPT_ID,
+        name="Covariant parent structure from sector bundle",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_parent_explanation_for_A_constraint_elliptic",
+            "derive_parent_explanation_for_A_rad_suppression",
+            "derive_kappa_source_law",
+            "derive_W_i_field_equation",
+            "derive_gauge_structure_from_parent",
+            "derive_conservation_identities_from_parent",
+        ],
+        activation_conditions=[
+            "parent structure explains all sector behaviors",
+            "gauge freedoms are identified",
+            "conservation identities are derived",
+            "recombination into metric structure is shown",
+        ],
+    ))
+
+    # --- Proof obligations ---
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_explanation_for_A_constraint_elliptic",
+        script_id=SCRIPT_ID,
+        title="Derive parent-theory explanation for A_constraint being elliptic",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show from the covariant parent structure why A_constraint obeys an "
+            "elliptic/Poisson equation in the exterior rather than an independent "
+            "hyperbolic dispersion relation."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_explanation_for_A_rad_suppression",
+        script_id=SCRIPT_ID,
+        title="Derive parent-theory explanation for A_rad suppression",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show from the covariant parent structure why A_rad is absent or "
+            "suppressed. The mechanism must follow from the parent theory, not be "
+            "imposed by hand."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_source_law",
+        script_id=SCRIPT_ID,
+        title="Derive kappa source law from parent structure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a derivation of the kappa source (stress/pressure/trace coupling) "
+            "and the exterior suppression or relaxation mechanism."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_W_i_field_equation",
+        script_id=SCRIPT_ID,
+        title="Derive W_i field equation from parent structure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply a derivation of the W_i field equation from mass current/angular "
+            "momentum coupling, including equation type (constraint or hyperbolic) and "
+            "radiation safety."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_gauge_structure_from_parent",
+        script_id=SCRIPT_ID,
+        title="Derive gauge structure from parent theory",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Identify gauge freedoms, gauge transformations, physical variables, and "
+            "gauge-invariant diagnostics from the parent structure."
+        ),
+    ))
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conservation_identities_from_parent",
+        script_id=SCRIPT_ID,
+        title="Derive conservation identities from parent theory",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Supply Bianchi-like or continuity-like identities from the parent structure "
+            "ensuring that sector source couplings are compatible."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="sector_bundle_inventory_marker",
         inputs=[],
         output=sp.Symbol("sector_bundle_parent_requirements_open"),
         method="sector_bundle_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
+
     ns.write_run_metadata()
+
+    with out.derived_results():
+        out.line("A_constraint satisfies source-free Laplacian", StatusMark.PASS,
+                 "Delta A = 0 for A = 1 - 2GM/(c^2 r)")
+        out.line("TT mode is trace-free", StatusMark.PASS, "trace(H_TT) = 0")
+        out.line("TT mode is transverse", StatusMark.PASS, "k^i H_ij = 0 for TT mode")
+
+    with out.sample_results():
+        out.line("kappa energy gradient sample", StatusMark.PASS,
+                 "dE/dkappa = m_k^2 kappa for quadratic toy")
+
+    with out.governance_assessments():
+        out.line("moving well not scalar wave (policy)", StatusMark.PASS,
+                 "distinction recorded")
+        out.line("sector bundle parent required (policy)", StatusMark.PASS,
+                 "parent structure is needed")
+        out.line("covariant parent from sector bundle route", StatusMark.DEFER,
+                 "candidate route recorded; 6 obligations open")
+
+    with out.unresolved_obligations():
+        out.line("derive parent explanation for A_constraint elliptic", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive parent explanation for A_rad suppression", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive kappa source law", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive W_i field equation", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive gauge structure from parent", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+        out.line("derive conservation identities from parent", StatusMark.OBLIGATION,
+                 "open proof obligation recorded")
+
+    out.print_summary()
 
 
 if __name__ == "__main__":

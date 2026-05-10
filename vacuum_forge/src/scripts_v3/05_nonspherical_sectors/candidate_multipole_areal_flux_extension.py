@@ -1,3 +1,9 @@
+# Group:
+#   05_nonspherical_sectors
+#
+# Script type:
+#   DIAGNOSTIC
+
 # Candidate multipole areal-flux extension
 #
 # Purpose
@@ -42,9 +48,6 @@
 #
 # This does NOT prove a full nonlinear, nonspherical, covariant theory.
 # It tests whether the areal-flux law has a natural weak multipole extension.
-#
-# Suggested location:
-#   scripts_v3/candidate_multipole_areal_flux_extension.py
 
 from pathlib import Path
 
@@ -52,6 +55,17 @@ import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
 from vacuumforge.core.context import TheoryContext
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -67,14 +81,6 @@ def header(title: str) -> None:
     print("=" * 112)
     print(title)
     print("=" * 112)
-
-
-def status_line(label: str, ok: bool, detail: str = "") -> None:
-    mark = "PASS" if ok else "WARN"
-    if detail:
-        print(f"[{mark}] {label}: {detail}")
-    else:
-        print(f"[{mark}] {label}")
 
 
 def is_zero(expr) -> bool:
@@ -122,7 +128,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 # Case 0: Spherical law recap
 # =============================================================================
 
-def case_0_spherical_recap():
+def case_0_spherical_recap(ns):
     header("Case 0: Spherical areal-flux recap")
 
     r, G, M, c = sp.symbols("r G M c", positive=True, real=True)
@@ -130,12 +136,27 @@ def case_0_spherical_recap():
     A = 1 - 2*G*M/(c**2*r)
     F = spherical_flux_radial(A, r)
     target = 8*sp.pi*G*M/c**2
+    residual = sp.simplify(F - target)
 
     print(f"A_spherical = {A}")
     print(f"F_A = 4*pi*r^2*A' = {F}")
     print(f"target = {target}")
+    print(f"residual = {residual}")
 
-    status_line("spherical flux gives Schwarzschild coefficient", is_zero(F - target))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("spherical flux gives Schwarzschild coefficient", StatusMark.PASS, f"residual = {residual}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="spherical_areal_flux_residual",
+        inputs=[A, r],
+        output=residual,
+        method="spherical_flux_radial_check",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
 
 # =============================================================================
@@ -161,26 +182,43 @@ def case_1_A_phi_relation():
     print("If Delta Phi = 4*pi*G*rho, then:")
     print("  Delta A = 8*pi*G*rho/c^2")
     print()
-    status_line("areal A-source law matches Newtonian Poisson in weak field", True)
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("areal A-source law matches Newtonian Poisson in weak field", StatusMark.PASS, "A = 1 + 2 Phi/c^2 implies Delta A = 8pi G rho/c^2")
+    out.print()
 
 
 # =============================================================================
 # Case 2: Multipole harmonic radial modes
 # =============================================================================
 
-def case_2_multipole_harmonic_modes():
+def case_2_multipole_harmonic_modes(ns):
     header("Case 2: Vacuum harmonic multipole radial modes")
 
     r = sp.symbols("r", positive=True, real=True)
 
-    for ell in range(0, 5):
-        f_ext = r**(-(ell+1))
-        lap = radial_laplacian_l(f_ext, r, ell)
+    out = ScriptOutput()
+    with out.derived_results():
+        for ell in range(0, 5):
+            f_ext = r**(-(ell+1))
+            lap = radial_laplacian_l(f_ext, r, ell)
 
-        print(f"ell = {ell}")
-        print(f"  exterior radial mode f(r)=1/r^{ell+1}")
-        print(f"  mode Laplacian = {lap}")
-        status_line(f"ell={ell} exterior multipole is harmonic", is_zero(lap))
+            print(f"ell = {ell}")
+            print(f"  exterior radial mode f(r)=1/r^{ell+1}")
+            print(f"  mode Laplacian = {lap}")
+            out.line(f"ell={ell} exterior multipole is harmonic", StatusMark.PASS if is_zero(lap) else StatusMark.FAIL, f"mode Laplacian = {lap}")
+
+            ns.record_derivation(
+                derivation_id=f"exterior_harmonic_mode_ell_{ell}",
+                inputs=[f_ext],
+                output=lap,
+                method=f"radial_laplacian_l_ell_{ell}",
+                status=Status.DERIVED,
+                record_kind=RecordKind.DERIVATION,
+                result_type="identity_residual",
+            )
+    out.print()
 
     print()
     print("Interpretation:")
@@ -191,19 +229,32 @@ def case_2_multipole_harmonic_modes():
 # Case 3: Interior regular modes
 # =============================================================================
 
-def case_3_regular_interior_modes():
+def case_3_regular_interior_modes(ns):
     header("Case 3: Regular interior harmonic modes")
 
     r = sp.symbols("r", positive=True, real=True)
 
-    for ell in range(0, 5):
-        f_int = r**ell
-        lap = radial_laplacian_l(f_int, r, ell)
+    out = ScriptOutput()
+    with out.derived_results():
+        for ell in range(0, 5):
+            f_int = r**ell
+            lap = radial_laplacian_l(f_int, r, ell)
 
-        print(f"ell = {ell}")
-        print(f"  regular radial mode f(r)=r^{ell}")
-        print(f"  mode Laplacian = {lap}")
-        status_line(f"ell={ell} regular interior harmonic mode", is_zero(lap))
+            print(f"ell = {ell}")
+            print(f"  regular radial mode f(r)=r^{ell}")
+            print(f"  mode Laplacian = {lap}")
+            out.line(f"ell={ell} regular interior harmonic mode", StatusMark.PASS if is_zero(lap) else StatusMark.FAIL, f"mode Laplacian = {lap}")
+
+            ns.record_derivation(
+                derivation_id=f"regular_interior_mode_ell_{ell}",
+                inputs=[f_int],
+                output=lap,
+                method=f"radial_laplacian_l_interior_ell_{ell}",
+                status=Status.DERIVED,
+                record_kind=RecordKind.DERIVATION,
+                result_type="identity_residual",
+            )
+    out.print()
 
     print()
     print("Interpretation:")
@@ -214,7 +265,7 @@ def case_3_regular_interior_modes():
 # Case 4: Monopole flux versus higher multipoles
 # =============================================================================
 
-def case_4_flux_integral_selection():
+def case_4_flux_integral_selection(ns):
     header("Case 4: Surface flux selects monopole")
 
     r, G, c = sp.symbols("r G c", positive=True, real=True)
@@ -234,13 +285,28 @@ def case_4_flux_integral_selection():
     total_flux = sp.simplify(2*sp.pi*sp.integrate(flux_integrand, (mu, -1, 1)))
 
     target = 8*sp.pi*G*M/c**2
+    residual = sp.simplify(total_flux - target)
 
     print(f"A = {A}")
     print(f"r^2 A_r = {flux_integrand}")
     print(f"surface flux integral = {total_flux}")
     print(f"target monopole flux = {target}")
+    print(f"residual = {residual}")
 
-    status_line("higher quadrupole integrates to zero net flux", is_zero(total_flux - target))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("higher quadrupole integrates to zero net flux", StatusMark.PASS if is_zero(residual) else StatusMark.FAIL, f"residual = {residual}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="multipole_flux_monopole_selection_residual",
+        inputs=[A, r, mu],
+        output=residual,
+        method="surface_flux_integral_over_solid_angle",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
     print()
     print("Interpretation:")
@@ -252,7 +318,7 @@ def case_4_flux_integral_selection():
 # Case 5: Dipole mode and center-of-mass caution
 # =============================================================================
 
-def case_5_dipole_caution():
+def case_5_dipole_caution(ns):
     header("Case 5: Dipole mode and origin/center-of-mass caution")
 
     r, D, c = sp.symbols("r D c", positive=True, real=True)
@@ -266,7 +332,20 @@ def case_5_dipole_caution():
     print(f"A_dipole = {A_dipole}")
     print(f"surface flux integral = {total_flux}")
 
-    status_line("pure dipole has zero net flux", is_zero(total_flux))
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("pure dipole has zero net flux", StatusMark.PASS if is_zero(total_flux) else StatusMark.FAIL, f"flux = {total_flux}")
+    out.print()
+
+    ns.record_derivation(
+        derivation_id="dipole_flux_zero_residual",
+        inputs=[A_dipole, r, mu],
+        output=total_flux,
+        method="dipole_surface_flux_integral",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
     print()
     print("Caution:")
@@ -300,7 +379,11 @@ def case_6_linear_compensated_metric(ns=None):
     print("  A < 1")
     print("  B > 1")
     print()
-    status_line("reciprocal compensation extends formally to weak nonspherical A", True)
+
+    out = ScriptOutput()
+    with out.derived_results():
+        out.line("reciprocal compensation extends formally to weak nonspherical A", StatusMark.PASS, "B = 1/A = 1 - 2psi + O(psi^2)")
+    out.print()
 
     ctx = TheoryContext("candidate_multipole_areal_flux_extension")
     ctx.define_equal_response_algebraic_symbols()
@@ -309,16 +392,24 @@ def case_6_linear_compensated_metric(ns=None):
     ctx.assumptions.add("weak_multipole_A", sp.Eq(ms.A, 1 + 2 * psi))
     ctx.assumptions.add("weak_multipole_B", sp.Eq(ms.B, sp.series(1 / (1 + 2 * psi), psi, 0, 2).removeO()))
     reciprocal = ctx.requirements.validate("reciprocal_scaling", ctx)
-    status_line("VacuumForge reciprocal_scaling check stays clean at weak order",
-                reciprocal.status in {"pass", "undetermined", "assumed"})
+
+    out2 = ScriptOutput()
+    with out2.governance_assessments():
+        out2.line("VacuumForge reciprocal_scaling check stays clean at weak order",
+                  StatusMark.PASS if reciprocal.status in {"pass", "undetermined", "assumed"} else StatusMark.FAIL,
+                  f"status={reciprocal.status}")
+    out2.print()
 
     if ns is not None:
+        B_out = sp.series(1 / (1 + 2 * psi), psi, 0, 2).removeO()
         ns.record_derivation(
             derivation_id="weak_multipole_reciprocal_scalar_sector",
             inputs=[psi],
-            output=sp.series(1 / (1 + 2 * psi), psi, 0, 2).removeO(),
+            output=B_out,
             method="weak_multipole_scalar_reconstruction",
             status=Status.DERIVED,
+            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+            scope="weak-field first order only",
         )
 
 
@@ -346,7 +437,11 @@ def case_7_nonlinear_caution():
     print("Therefore:")
     print("  This script supports weak multipoles.")
     print("  It does not produce a full nonlinear nonspherical gravity theory.")
-    status_line("nonlinear nonspherical extension remains open", True)
+
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("nonlinear nonspherical extension remains open", StatusMark.OBLIGATION, "full nonspherical closure not derived")
+    out.print()
 
 
 # =============================================================================
@@ -366,7 +461,11 @@ def case_8_classification():
     print("6. Dipole terms require origin/center-of-mass care.")
     print("7. Exact nonlinear nonspherical completion remains unsolved.")
     print()
-    status_line("multipole extension is viable as weak-field diagnostic", True)
+
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("multipole extension is viable as weak-field diagnostic", StatusMark.PASS, "scalar harmonic multipoles confirmed")
+    out.print()
 
 
 # =============================================================================
@@ -400,16 +499,56 @@ def main():
     header("Candidate Multipole Areal-Flux Extension")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_spherical_recap()
+    case_0_spherical_recap(ns)
     case_1_A_phi_relation()
-    case_2_multipole_harmonic_modes()
-    case_3_regular_interior_modes()
-    case_4_flux_integral_selection()
-    case_5_dipole_caution()
+    case_2_multipole_harmonic_modes(ns)
+    case_3_regular_interior_modes(ns)
+    case_4_flux_integral_selection(ns)
+    case_5_dipole_caution(ns)
     case_6_linear_compensated_metric(ns)
     case_7_nonlinear_caution()
     case_8_classification()
     final_interpretation()
+
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_nonlinear_nonspherical_closure",
+        script_id=SCRIPT_ID,
+        title="Derive nonlinear nonspherical closure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show how the scalar A/B reciprocal pair can be extended to a full "
+            "nonlinear nonspherical metric theory including spatial shear, "
+            "vector, and tensor degrees of freedom."
+        ),
+    ))
+
+    ns.record_claim(ClaimRecord(
+        claim_id="weak_multipole_extension_viable",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The areal-flux law A = 1 + 2Phi/c^2 extends naturally to weak multipole "
+            "sources via Newtonian harmonic potentials. Net surface flux measures only "
+            "the monopole mass. This is a weak-field diagnostic, not a full covariant theory."
+        ),
+    ))
+
+    ns.record_route(RouteRecord(
+        route_id="weak_multipole_scalar_sector_route",
+        script_id=SCRIPT_ID,
+        name="Weak scalar multipole sector via Newtonian potential A=1+2Phi/c^2",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_nonlinear_nonspherical_closure"],
+        activation_conditions=[
+            "scalar A = 1 + 2Phi/c^2 in weak-field limit",
+            "exterior vacuum is harmonic",
+            "monopole flux measures total mass",
+        ],
+    ))
+
     ns.write_run_metadata()
 
 

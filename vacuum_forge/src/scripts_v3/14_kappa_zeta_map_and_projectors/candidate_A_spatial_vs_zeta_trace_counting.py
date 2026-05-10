@@ -1,5 +1,11 @@
 # Candidate A_spatial versus zeta trace counting
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The recombination projector audit found:
@@ -27,11 +33,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -39,29 +54,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -234,7 +226,7 @@ def print_entry(e: TraceCountingEntry) -> None:
     print(f"Interpretation: {e.interpretation}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -257,8 +249,6 @@ def case_0_problem_statement():
     print("  do not let zeta/kappa become exterior scalar gravity")
     print("  do not let kappa be both diagnostic and physical trace")
     print("  metric recombination must match epsilon/e_kappa accounting")
-
-    status_line("A_spatial versus zeta trace counting problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[TraceCountingEntry]):
@@ -285,8 +275,6 @@ def case_2_compact_table(entries: List[TraceCountingEntry]):
             + " |"
         )
 
-    status_line("compact trace-counting ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[TraceCountingEntry]):
     header("Case 3: Status counts")
@@ -304,8 +292,6 @@ def case_3_status_counts(entries: List[TraceCountingEntry]):
     print("  If A_spatial consumes all scalar spatial trace, zeta/kappa must become diagnostic or residual only.")
     print("  If A_spatial consumes only mass-sector trace, a boundary-neutral zeta/kappa residual may survive.")
     print("  Triple scalar trace insertion is forbidden.")
-
-    status_line("trace-counting status count produced", "STRUCTURAL")
 
 
 def case_4_provisional_counting_rule():
@@ -327,8 +313,6 @@ def case_4_provisional_counting_rule():
     print()
     print("This is a theorem target, not a derived recombination law.")
 
-    status_line("provisional count-once rule stated", "RECOMMENDED")
-
 
 def case_5_failure_controls():
     header("Case 5: Failure controls")
@@ -342,8 +326,6 @@ def case_5_failure_controls():
     print("5. metric recombination and epsilon/e_kappa accounting disagree")
     print("6. boundary-neutral residual changes M_ext")
     print("7. overlap between A_spatial and residual trace remains nonzero")
-
-    status_line("trace-counting failure controls stated", "RISK")
 
 
 def case_6_next_tests():
@@ -366,8 +348,6 @@ def case_6_next_tests():
     print()
     print("Reason:")
     print("  The current counting problem depends on not silently promoting kappa=1/2 ln(AB) from reduced diagnostic to physical scalar.")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -405,14 +385,70 @@ def main():
     case_6_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="A_spatial_vs_zeta_trace_counting_marker",
-        inputs=[],
-        output=sp.Symbol("A_spatial_vs_zeta_trace_counting_audited"),
-        method="A_spatial_vs_zeta_trace_counting_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("trace-counting branches classified", StatusMark.PASS, "12 branches inventoried")
+        out.line("count-once theorem target stated", StatusMark.DEFER, "overlap=0 not yet derived")
+        out.line("C7 and C8 forbidden", StatusMark.FAIL, "triple trace and exterior scalar tail forbidden")
+
+    with out.unresolved_obligations():
+        out.line("derive count-once trace theorem", StatusMark.OBLIGATION, "open proof obligation recorded")
+        out.line("derive A_spatial recovery mechanism", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_count_once_trace_theorem_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive the count-once scalar trace theorem",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Theorem target: Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral with overlap=0. "
+                "Parent recombination identity is missing. No explicit projection formula is available. "
+                "Triple insertion (A_spatial + zeta + kappa as independent traces) is forbidden."
+            ),
+        ))
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_A_spatial_recovery_mechanism_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive A_spatial recovery mechanism",
+            status=ObligationStatus.OPEN,
+            description=(
+                "A_spatial companion is a recovery theorem target. No parent identity derives it without "
+                "importing GR spatial metric, B=1/A decree, or gamma=1 tuning. "
+                "Best branch: joint derivation of A and A_spatial from a parent scalar/spatial identity."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="trace_counting_provisional_convention",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The provisional count-once recombination rule is: scalar trace in g_ij = A_spatial_once "
+                "+ boundary-neutral trace_volume_residual_once, with no overlap, no exterior scalar charge, "
+                "no GR metric import, and no kappa diagnostic promotion. This is a theorem target, not a "
+                "derived covariant metric law."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="A_spatial_vs_zeta_trace_counting_marker",
+            inputs=[],
+            output=sp.Symbol("A_spatial_vs_zeta_trace_counting_audited"),
+            method="A_spatial_vs_zeta_trace_counting_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

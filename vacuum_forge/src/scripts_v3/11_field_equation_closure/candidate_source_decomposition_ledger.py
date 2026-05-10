@@ -1,5 +1,11 @@
 # Candidate source decomposition ledger
 #
+# Group:
+#   11_field_equation_closure
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The metric recombination map showed that recombination depends on a clean
@@ -17,11 +23,6 @@
 #   keep TT radiation separate from scalar trace response.
 #
 # This is an audit script, not a derivation.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/11_field_equation_closure/
-#   or:
-#   scripts_v3/candidate_source_decomposition_ledger.py
 
 from dataclasses import dataclass
 from pathlib import Path
@@ -30,6 +31,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -41,25 +52,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED": "PASS",
-        "DERIVED_REDUCED": "PASS",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "MATCHED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-        "UNFINISHED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -211,6 +203,18 @@ def build_sources() -> List[SourceEntry]:
 
 
 def print_entry(e: SourceEntry) -> None:
+    marks = {
+        "DERIVED": "PASS",
+        "DERIVED_REDUCED": "PASS",
+        "STRUCTURAL": "WARN",
+        "CONSTRAINED": "WARN",
+        "MATCHED": "WARN",
+        "MISSING": "FAIL",
+        "RISK": "WARN",
+        "REJECTED": "WARN",
+        "UNFINISHED": "FAIL",
+    }
+    mark = marks.get(e.status, "INFO")
     print()
     print("-" * 120)
     print(f"Source: {e.source}")
@@ -218,12 +222,12 @@ def print_entry(e: SourceEntry) -> None:
     print(f"Allowed role: {e.allowed_role}")
     print(f"Forbidden role: {e.forbidden_role}")
     print(f"Sector: {e.sector}")
-    status_line(e.source, e.status)
+    print(f"[{mark}] {e.source}: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Risk: {e.risk}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Source decomposition ledger problem")
 
     print("Question:")
@@ -242,7 +246,8 @@ def case_0_problem_statement():
     print("  TT stress/quadrupole -> h_ij^TT")
     print("  A_rad ordinary long-range scalar radiation -> rejected")
 
-    status_line("source decomposition problem posed", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("source decomposition problem posed", StatusMark.DEFER, "structural constraint")
 
 
 def case_1_source_inventory(entries: List[SourceEntry]):
@@ -251,7 +256,7 @@ def case_1_source_inventory(entries: List[SourceEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[SourceEntry]):
+def case_2_compact_table(entries: List[SourceEntry], out: ScriptOutput):
     header("Case 2: Compact source ledger")
 
     print("| Source | Allowed role | Forbidden role | Sector | Status |")
@@ -271,10 +276,11 @@ def case_2_compact_table(entries: List[SourceEntry]):
             + " |"
         )
 
-    status_line("compact source ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact source ledger produced", StatusMark.PASS, "inventory marker")
 
 
-def case_3_status_counts(entries: List[SourceEntry]):
+def case_3_status_counts(entries: List[SourceEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -284,10 +290,11 @@ def case_3_status_counts(entries: List[SourceEntry]):
     for status in sorted(counts):
         print(f"{status}: {counts[status]}")
 
-    status_line("source status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("source status count produced", StatusMark.PASS, "inventory marker")
 
 
-def case_4_key_no_double_counting_rules():
+def case_4_key_no_double_counting_rules(out: ScriptOutput):
     header("Case 4: Key no-double-counting rules")
 
     print("Rules:")
@@ -300,10 +307,11 @@ def case_4_key_no_double_counting_rules():
     print("6. A_rad is not an ordinary active sector.")
     print("7. relaxation may transfer imbalance into vacuum configuration, but must not erase A.")
 
-    status_line("key source rules stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("key source rules stated", StatusMark.DEFER, "structural constraint")
 
 
-def case_5_source_role_hierarchy():
+def case_5_source_role_hierarchy(out: ScriptOutput):
     header("Case 5: Source role hierarchy")
 
     print("Hierarchy:")
@@ -316,10 +324,11 @@ def case_5_source_role_hierarchy():
     print()
     print("This hierarchy keeps each source from doing too many jobs.")
 
-    status_line("source hierarchy stated", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("source hierarchy stated", StatusMark.DEFER, "structural constraint")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Source decomposition fails if:")
@@ -333,10 +342,12 @@ def case_6_failure_controls():
     print("7. Gamma_relax hides energy nonconservation.")
     print("8. source decomposition is chosen to imitate GR rather than forced by ontology.")
 
-    status_line("source decomposition failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("source decomposition failure controls stated", StatusMark.WARN,
+                 "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -357,7 +368,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The ledger identifies forbidden overlaps; the next check should formalize them.")
 
-    status_line("next test selected", "CONSTRAINED")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.DEFER, "structural guidance")
 
 
 def final_interpretation():
@@ -381,28 +393,132 @@ def final_interpretation():
     print("  candidate_no_double_counting_constraints.py")
 
 
-def main():
-    header("Candidate Source Decomposition Ledger")
-    archive, ns, invalidated = prepare_archive()
-    print_archive_status(ns, invalidated)
-    case_0_problem_statement()
-    entries = build_sources()
-    case_1_source_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_key_no_double_counting_rules()
-    case_5_source_role_hierarchy()
-    case_6_failure_controls()
-    case_7_next_tests()
-    final_interpretation()
+def record_governance(ns, entries: List[SourceEntry]) -> None:
+    # DERIVED_REDUCED -> ClaimRecord HEURISTIC
+    ns.record_claim(ClaimRecord(
+        claim_id="src_rho_a_sector_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "rho sources the A-sector scalar monopole/areal flux. "
+            "This is derived in the reduced static spherical case."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="src_j_L_scalar_continuity_derived_reduced",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The longitudinal current j_L = P_L j belongs to scalar continuity / "
+            "density redistribution and must not create a transverse vector curl field."
+        ),
+    ))
+
+    # STRUCTURAL -> ClaimRecord CANDIDATE_ROUTE
+    ns.record_claim(ClaimRecord(
+        claim_id="src_j_T_vector_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "j_T = P_T j sources the transverse vector W_i. "
+            "Boundary/global k=0 treatment and normalization are missing."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="src_TT_stress_tensor_structural",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "TT stress S_ij^TT sources h_ij^TT tensor radiation. "
+            "TT source identity and coupling C_T are missing."
+        ),
+    ))
+
+    # RISK -> ClaimRecord OPEN_RISK
+    ns.record_claim(ClaimRecord(
+        claim_id="src_sigma_creation_open_risk",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "Sigma_creation is a nonconservative active-regime term that must not "
+            "enter ordinary closed gravity field equations by default."
+        ),
+    ))
+
+    # Missing obligations
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_current_source_decomposition",
+        script_id=SCRIPT_ID,
+        title="Derive covariant current/source decomposition",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The split j = P_T j + P_L j with W_i sourced only by P_T j requires "
+            "a covariant current decomposition proof or gauge-fixed reduced proof."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_TT_source_identity_and_coupling",
+        script_id=SCRIPT_ID,
+        title="Derive TT source identity and coupling C_T",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The tensor coupling C_T in Box h_ij^TT = -C_T S_ij^TT must be derived "
+            "from vacuum ontology. It must not be imported from GR (2G/c^4 or 16*pi*G/c^4)."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_S_trace_effective_and_chi_kappa",
+        script_id=SCRIPT_ID,
+        title="Derive S_trace_effective and chi_kappa for pressure/trace kappa minimum",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The effective trace source S_trace_effective and coefficient chi_kappa "
+            "that shift kappa_min must be derived. Pressure must not produce an "
+            "exterior 1/r kappa tail or scalar radiation."
+        ),
+    ))
+
+    # Inventory marker
     ns.record_derivation(
         derivation_id="source_decomposition_ledger_marker",
         inputs=[],
         output=sp.Symbol("source_decomposition_ledger_built"),
         method="source_decomposition_ledger_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
-    ns.write_run_metadata()
+
+
+def main():
+    header("Candidate Source Decomposition Ledger")
+    archive, ns, invalidated = prepare_archive()
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    case_0_problem_statement(out)
+    entries = build_sources()
+    case_1_source_inventory(entries)
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_key_no_double_counting_rules(out)
+    case_5_source_role_hierarchy(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
+    final_interpretation()
+    out.print_summary()
+    with archive:
+        record_governance(ns, entries)
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

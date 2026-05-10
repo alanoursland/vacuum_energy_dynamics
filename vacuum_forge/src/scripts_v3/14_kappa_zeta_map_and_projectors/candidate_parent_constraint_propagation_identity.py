@@ -1,5 +1,11 @@
 # Candidate parent constraint propagation identity
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The A-sector parent identity inventory narrowed the search.
@@ -33,11 +39,21 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -45,31 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -242,7 +233,7 @@ def print_entry(e: ConstraintPropagationEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -266,8 +257,6 @@ def case_0_problem_statement():
     print("  do not rewrite Einstein constraints")
     print("  do not patch failure with zeta/kappa without no-overlap proof")
     print("  define closure or kill the branch")
-
-    status_line("parent constraint propagation problem posed", "REQUIRED")
 
 
 def case_1_inventory(entries: List[ConstraintPropagationEntry]):
@@ -294,8 +283,6 @@ def case_2_compact_table(entries: List[ConstraintPropagationEntry]):
             + " |"
         )
 
-    status_line("compact constraint-propagation ledger produced", "STRUCTURAL")
-
 
 def case_3_status_counts(entries: List[ConstraintPropagationEntry]):
     header("Case 3: Status counts")
@@ -314,8 +301,6 @@ def case_3_status_counts(entries: List[ConstraintPropagationEntry]):
     print("  If no non-GR closure law exists, the A-sector-local propagation branch is killed.")
     print("  Zeta can participate only if it stops being an independent overlapping residual.")
 
-    status_line("constraint-propagation status count produced", "STRUCTURAL")
-
 
 def case_4_minimal_closure_requirements():
     header("Case 4: Minimal closure requirements")
@@ -332,8 +317,6 @@ def case_4_minimal_closure_requirements():
     print("8. A branch-killed outcome if closure cannot be written.")
     print()
     print("Missing one of these makes the identity decorative.")
-
-    status_line("minimal closure requirements stated", "REQUIRED")
 
 
 def case_5_good_failure():
@@ -352,8 +335,6 @@ def case_5_good_failure():
     print()
     print("  Use GR spatial metric, B=1/A, or gamma tuning as patch.")
 
-    status_line("constraint-propagation good failure stated", "BRANCH_KILLED")
-
 
 def case_6_failure_controls():
     header("Case 6: Failure controls")
@@ -369,8 +350,6 @@ def case_6_failure_controls():
     print("7. no-overlap trace theorem is ignored")
     print("8. exterior matching is used as local propagation law")
     print("9. closure has no branch-killed criterion")
-
-    status_line("constraint-propagation failure controls stated", "RISK")
 
 
 def case_7_next_tests():
@@ -393,8 +372,6 @@ def case_7_next_tests():
     print()
     print("Reason:")
     print("  The propagation branch is now narrowed enough to test concretely: can a minimal closure be written without B=1/A, GR rewrite, or gamma tuning?")
-
-    status_line("next test selected", "STRUCTURAL")
 
 
 def final_interpretation():
@@ -427,14 +404,55 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="parent_constraint_propagation_identity_marker",
-        inputs=[],
-        output=sp.Symbol("parent_constraint_propagation_identity_audited"),
-        method="parent_constraint_propagation_identity_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line("constraint propagation branches inventoried", StatusMark.PASS, "12 branches classified")
+        out.line("CP9 branch-killed outcome", StatusMark.DEFER, "no decisive no-go proof yet")
+        out.line("CP10/CP11 rejected", StatusMark.FAIL, "GR rewrite and B=1/A closure rejected")
+
+    with out.unresolved_obligations():
+        out.line("derive or kill constraint propagation closure law", StatusMark.OBLIGATION, "open proof obligation recorded")
+
+    out.print_all()
+
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_or_kill_constraint_propagation_closure_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive or kill the constraint propagation closure law for A/A_spatial",
+            status=ObligationStatus.OPEN,
+            description=(
+                "Constraint propagation is the nearest surviving bridge from A to A_spatial. "
+                "A legitimate closure must: derive A_spatial, preserve source/current conservation, "
+                "recover gamma-like and AB checks, and maintain count-once trace theorem. "
+                "If no non-GR closure law exists, the A-sector-local branch is killed and the search "
+                "moves to action/stiffness or conservation/Bianchi-like identities."
+            ),
+        ))
+
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_GR_rewrite_closure",
+            script_id=SCRIPT_ID,
+            branch_id="constraint_propagation_GR_rewrite",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["derive_or_kill_constraint_propagation_closure_in_14"],
+            description="GR rewrite closure (CP10) and B=1/A closure (CP11) are rejected. Not pursued.",
+        ))
+
+        ns.record_derivation(
+            derivation_id="parent_constraint_propagation_identity_marker",
+            inputs=[],
+            output=sp.Symbol("parent_constraint_propagation_identity_audited"),
+            method="parent_constraint_propagation_identity_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

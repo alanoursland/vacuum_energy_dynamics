@@ -1,3 +1,9 @@
+# Group:
+#   13_vacuum_substance_accounting
+#
+# Script type:
+#   INVENTORY
+
 # Candidate volume form configuration variable
 #
 # Purpose
@@ -34,6 +40,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -45,26 +61,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DERIVED_REDUCED": "PASS",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -217,12 +213,12 @@ def print_candidate(v: VolumeCandidate) -> None:
     print(f"Role: {v.role}")
     print(f"Allowed use: {v.allowed_use}")
     print(f"Forbidden use: {v.forbidden_use}")
-    status_line(v.name, v.status)
+    print(f"Status: {v.status}")
     print(f"Missing: {v.missing}")
     print(f"Next test: {v.next_test}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Volume-form configuration variable problem")
 
     print("Question:")
@@ -241,7 +237,8 @@ def case_0_problem_statement():
     print("  scalar/trace modes should be conversion-limited")
     print("  do not import the 1D toy's one-way reservoir as theory")
 
-    status_line("volume-form problem posed", "REQUIRED")
+    with out.unresolved_obligations():
+        out.line("volume-form problem posed", StatusMark.OBLIGATION, "open: geometric definition of epsilon_vac_config required")
 
 
 def case_1_candidate_inventory(entries: List[VolumeCandidate]):
@@ -250,7 +247,7 @@ def case_1_candidate_inventory(entries: List[VolumeCandidate]):
         print_candidate(entry)
 
 
-def case_2_compact_table(entries: List[VolumeCandidate]):
+def case_2_compact_table(entries: List[VolumeCandidate], out: ScriptOutput):
     header("Case 2: Compact volume-form ledger")
 
     print("| Candidate | Role | Status | Forbidden use | Missing |")
@@ -270,10 +267,11 @@ def case_2_compact_table(entries: List[VolumeCandidate]):
             + " |"
         )
 
-    status_line("compact volume-form ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact volume-form ledger produced", StatusMark.PASS, "ledger complete")
 
 
-def case_3_status_counts(entries: List[VolumeCandidate]):
+def case_3_status_counts(entries: List[VolumeCandidate], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -289,10 +287,11 @@ def case_3_status_counts(entries: List[VolumeCandidate]):
     print("  The key structural fact is that TT perturbations are trace-free, hence volume-preserving at linear order.")
     print("  The key risk is duplicating A-sector scalar mass response.")
 
-    status_line("volume-form status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("volume-form status count produced", StatusMark.PASS, "counts complete")
 
 
-def case_3b_linear_volume_relation(ns) -> None:
+def case_3b_linear_volume_relation(ns, out: ScriptOutput) -> None:
     header("Case 3b: Linear volume-form relation")
 
     h = sp.symbols("h")
@@ -309,17 +308,21 @@ def case_3b_linear_volume_relation(ns) -> None:
     print("Interpretation:")
     print("  the isotropic trace perturbation gives delta zeta = h/2 at linear order.")
 
-    status_line("linear trace-volume relation", "DERIVED_REDUCED", f"delta zeta = {linear_delta}")
+    with out.sample_results():
+        out.line("linear trace-volume relation", StatusMark.PASS, f"delta zeta = {linear_delta}")
+
     ns.record_derivation(
         derivation_id="volume_form_linear_trace_relation",
         inputs=[scale],
         output=linear_delta,
         method="linearized volume-form perturbation",
         status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="isotropic trace perturbation only",
     )
 
 
-def case_4_minimal_candidate_definition():
+def case_4_minimal_candidate_definition(out: ScriptOutput):
     header("Case 4: Minimal candidate definition")
 
     print("Minimal candidate:")
@@ -345,10 +348,11 @@ def case_4_minimal_candidate_definition():
     print()
     print("This is a linear structural observation, not a full theorem.")
 
-    status_line("minimal volume-form candidate stated", "CANDIDATE")
+    with out.governance_assessments():
+        out.line("minimal volume-form candidate stated", StatusMark.DEFER, "candidate route: linear observation, not full theorem")
 
 
-def case_5_relation_to_1d_toy():
+def case_5_relation_to_1d_toy(out: ScriptOutput):
     header("Case 5: Relation to 1D toy model")
 
     print("The 1D toy has:")
@@ -375,10 +379,11 @@ def case_5_relation_to_1d_toy():
     print()
     print("  scalar/trace conversion changes the geometry/volume-form variable itself")
 
-    status_line("1D toy relation stated", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("1D toy relation stated", StatusMark.PASS, "analogy accepted; reservoir rejected")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("The volume-form candidate fails if:")
@@ -391,10 +396,11 @@ def case_6_failure_controls():
     print("6. scalar conversion becomes far-zone scalar radiation.")
     print("7. epsilon_vac_config becomes a coefficient tuning reservoir.")
 
-    status_line("volume-form failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("volume-form failure controls stated", StatusMark.DEFER, "open risk: failure conditions not yet excluded")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -415,7 +421,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  The volume-form candidate points directly to the trace/TT split as the possible TT-only radiation theorem.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.PASS, "trace vs TT geometric split")
 
 
 def final_interpretation():
@@ -447,23 +454,73 @@ def main():
     header("Candidate Volume Form Configuration Variable")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+
+    out = ScriptOutput()
     entries = build_candidates()
+
+    case_0_problem_statement(out)
     case_1_candidate_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_3b_linear_volume_relation(ns)
-    case_4_minimal_candidate_definition()
-    case_5_relation_to_1d_toy()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_3b_linear_volume_relation(ns, out)
+    case_4_minimal_candidate_definition(out)
+    case_5_relation_to_1d_toy(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_all()
+
+    ns.record_claim(ClaimRecord(
+        claim_id="zeta_volume_strain_candidate",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "zeta = ln sqrt(gamma) is the leading geometric candidate for the vacuum-spacetime "
+            "configuration variable. Trace/volume modes change zeta; TT modes preserve zeta "
+            "at linear order. This is a linear observation, not a full covariant theorem."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="zeta_must_not_duplicate_A_sector_mass",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "zeta and kappa must not create an exterior 1/r scalar tail or duplicate A-sector "
+            "exterior mass. M_ext is determined by A_flux, not by integral zeta."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_zeta_covariant_or_foliation_frame",
+        script_id=SCRIPT_ID,
+        title="Derive covariant extension or foliation/frame specification for zeta",
+        status=ObligationStatus.OPEN,
+        description=(
+            "zeta = ln sqrt(gamma) depends on spatial metric and foliation. "
+            "A frame u^mu or covariant volume current is required before zeta is an observable."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_exterior_charge_zero_for_zeta",
+        script_id=SCRIPT_ID,
+        title="Derive boundary/exterior charge zero theorem for zeta",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that local volume reconfiguration produces no exterior 1/r scalar tail "
+            "and no exterior kappa/zeta charge."
+        ),
+    ))
     ns.record_derivation(
         derivation_id="volume_form_configuration_variable_marker",
         inputs=[],
         output=sp.Symbol("volume_form_configuration_variable_audited"),
         method="volume_form_configuration_variable_inventory",
         status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
     )
     ns.write_run_metadata()
 

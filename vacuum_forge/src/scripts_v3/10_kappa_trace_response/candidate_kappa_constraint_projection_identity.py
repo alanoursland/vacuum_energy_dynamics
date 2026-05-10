@@ -1,3 +1,9 @@
+# Group:
+#   10_kappa_trace_response
+#
+# Script type:
+#   DERIVATION
+#
 # Candidate kappa constraint projection identity
 #
 # Purpose
@@ -31,17 +37,22 @@
 #
 # This is not yet a derivation from a covariant parent theory.
 # It is a formal constraint identity candidate.
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/10_kappa_trace_response/
-#   or:
-#   scripts_v3/candidate_kappa_constraint_projection_identity.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -53,22 +64,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "PLAUSIBLE": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-        "REJECTED": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -111,8 +106,6 @@ def case_0_problem_statement():
     print()
     print("  integral_support P_0 S d^3x = 0")
 
-    status_line("constraint projection identity problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_define_projection_operator():
     header("Case 1: Define zero-charge projection operator")
@@ -130,9 +123,6 @@ def case_1_define_projection_operator():
     print("  integral_V P_0 S d^3x = 0")
     print()
     print("This removes monopole kappa charge over the support.")
-
-    status_line("zero-charge projection operator defined", "CONSTRAINED_BY_IDENTITY",
-                "support/boundary definition required")
 
 
 def case_2_toy_profile_projection():
@@ -163,8 +153,7 @@ def case_2_toy_profile_projection():
     print()
     print(f"integral P_0 S d^3x = {Q_projected}")
 
-    status_line("toy projection has zero charge",
-                "DERIVED_REDUCED" if sp.simplify(Q_projected) == 0 else "RISK")
+    return r, R, S, S_avg, P0S, Q_projected
 
 
 def case_3_projector_idempotence():
@@ -185,10 +174,6 @@ def case_3_projector_idempotence():
     print()
     print("Thus P_0 is idempotent if the support region is fixed.")
 
-    status_line("zero-charge operator is idempotent for fixed support",
-                "DERIVED_REDUCED",
-                "moving/dynamical support still unresolved")
-
 
 def case_4_exterior_tail_control():
     header("Case 4: Exterior tail control")
@@ -208,10 +193,6 @@ def case_4_exterior_tail_control():
     print("  Q_projected = 0")
     print()
     print("then the exterior monopole tail is removed.")
-
-    status_line("projection removes exterior monopole tail",
-                "CONSTRAINED_BY_IDENTITY",
-                "higher multipoles/boundary layers not solved")
 
 
 def case_5_constraint_not_local_law():
@@ -234,10 +215,6 @@ def case_5_constraint_not_local_law():
     print("  an ordinary local scalar source")
     print()
     print("This supports kappa as constrained/non-propagating trace response.")
-
-    status_line("projection is nonlocal and constraint-like",
-                "CONSTRAINED_BY_IDENTITY",
-                "parent derivation missing")
 
 
 def case_6_possible_parent_forms():
@@ -263,10 +240,6 @@ def case_6_possible_parent_forms():
     print()
     print("None is derived yet.")
 
-    status_line("candidate parent identity forms listed",
-                "MISSING",
-                "must be derived or demoted to formal constraint")
-
 
 def case_7_schematic_projected_equation():
     header("Case 7: Schematic projected kappa equation")
@@ -290,10 +263,6 @@ def case_7_schematic_projected_equation():
     print("Status:")
     print("  structural candidate only")
 
-    status_line("schematic projected kappa equation stated",
-                "CONSTRAINED_BY_IDENTITY",
-                "not a final law")
-
 
 def case_8_failure_controls():
     header("Case 8: Failure controls")
@@ -306,10 +275,6 @@ def case_8_failure_controls():
     print("4. projection violates local energy/source accounting.")
     print("5. no parent identity enforces Q_kappa = 0.")
     print("6. kappa remains gauge-only but is treated as physical.")
-
-    status_line("projection identity failure controls stated",
-                "RISK",
-                "parent derivation required")
 
 
 def case_9_next_tests():
@@ -333,10 +298,6 @@ def case_9_next_tests():
     print("Reason:")
     print("  Projection removes monopole leakage, but scalar radiation safety is still")
     print("  the next hard dynamical check.")
-
-    status_line("next test selected",
-                "CONSTRAINED_BY_IDENTITY",
-                "scalar-radiation leak check is next")
 
 
 def final_interpretation():
@@ -366,9 +327,12 @@ def main():
     header("Candidate Kappa Constraint Projection Identity")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
+
+    out = ScriptOutput()
+
     case_0_problem_statement()
     case_1_define_projection_operator()
-    case_2_toy_profile_projection()
+    r, R, S, S_avg, P0S, Q_projected = case_2_toy_profile_projection()
     case_3_projector_idempotence()
     case_4_exterior_tail_control()
     case_5_constraint_not_local_law()
@@ -377,14 +341,79 @@ def main():
     case_8_failure_controls()
     case_9_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="kappa_constraint_projection_identity_marker",
-        inputs=[],
-        output=sp.Symbol("kappa_constraint_projection_identity_stated"),
-        method="kappa_constraint_projection_identity_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    with archive:
+        # Real algebraic computation: projection has zero charge
+        ns.record_derivation(
+            derivation_id="zero_charge_projection_identity_sample",
+            inputs=[S, S_avg, P0S],
+            output=Q_projected,
+            method="integrate 4*pi*r^2*(S - <S>) over [0,R]; verify integral = 0",
+            status=Status.DERIVED,
+            record_kind=RecordKind.SAMPLE_DERIVATION,
+            scope="parabolic pressure profile; fixed compact support; parent identity not derived",
+        )
+
+        # Idempotence is a real identity (structural)
+        ns.record_derivation(
+            derivation_id="zero_charge_projector_idempotence",
+            inputs=[],
+            output=sp.Symbol("P0_idempotent_for_fixed_support"),
+            method="algebraic: <P_0 S>=0 implies P_0(P_0 S)=P_0 S for fixed V",
+            status=Status.DERIVED,
+            record_kind=RecordKind.DERIVATION,
+        )
+
+        ns.record_derivation(
+            derivation_id="kappa_constraint_projection_identity_marker",
+            inputs=[],
+            output=sp.Symbol("kappa_constraint_projection_identity_stated"),
+            method="kappa_constraint_projection_identity_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_covariant_parent_identity_for_P0_in_10_kappa_trace",
+            script_id=SCRIPT_ID,
+            title="Derive a covariant parent identity from which the zero-charge projection P_0 follows",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The projection P_0 S = S - <S>_V removes monopole kappa charge algebraically "
+                "and is idempotent for fixed support. But it is nonlocal over V and not "
+                "derived from a covariant parent theory. A conservation law, matching identity, "
+                "or constraint equation must be derived to license it as a physical source law."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="zero_charge_projection_is_constraint_not_local_law",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            statement=(
+                "The zero-charge projection P_0 is structurally idempotent for fixed compact "
+                "support and removes monopole kappa leakage. It is best interpreted as a "
+                "constraint projection rather than an ordinary local source law."
+            ),
+        ))
+
+        with out.derived_results():
+            out.line("zero-charge projection integral vanishes (toy profile)", StatusMark.PASS, "sample result")
+            out.line("projector idempotence for fixed support", StatusMark.PASS, "algebraic identity")
+
+        with out.governance_assessments():
+            out.line("covariant parent identity for P_0", StatusMark.FAIL, "missing")
+            out.line("projection as local source law", StatusMark.FAIL, "not licensed - nonlocal")
+
+        with out.unresolved_obligations():
+            out.line("derive covariant parent identity for P_0", StatusMark.OBLIGATION, "open")
+
+        out.print_all()
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

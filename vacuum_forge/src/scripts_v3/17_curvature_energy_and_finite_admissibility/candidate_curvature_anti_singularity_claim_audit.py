@@ -3,6 +3,9 @@
 # Group:
 #   17_curvature_energy_and_finite_admissibility
 #
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The curvature boundary/mass neutrality audit found:
@@ -43,6 +46,16 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ProofObligationRecord,
+    ObligationStatus,
+    RecordKind,
+    ScriptOutput,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -56,7 +69,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> None:
+def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -81,6 +94,7 @@ def status_line(label: str, status: str, detail: str = "") -> None:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
+    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -555,14 +569,72 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="curvature_anti_singularity_claim_audit_marker",
-        inputs=[],
-        output=sp.Symbol("curvature_anti_singularity_claim_audit_complete"),
-        method="curvature_anti_singularity_claim_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="formalize_A_curv_branch_kill_in_17_claim_audit",
+            script_id=SCRIPT_ID,
+            title="Formalize A_curv branch-kill rule",
+            status=ObligationStatus.OPEN,
+            description="Formal finite-admissibility condition and branch-kill rule are required before any branch-filter anti-singularity claim can be made.",
+        ))
+        # AS17: diagnostic only is best (SAFE_IF, no claim beyond diagnostic) ->
+        # Per special rule: anti-singularity claim -> ClaimRecord(DEFERRED_PENDING_PREREQUISITES)
+        ns.record_claim(ClaimRecord(
+            claim_id="anti_singularity_diagnostic_only_in_17",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            statement="The anti-singularity claim is currently limited to diagnostic/branch-filter level only; no dynamical avoidance, bounce, or regular-core claim is licensed pending derivation of J_curv, balance law, boundary neutrality, and explicit solutions.",
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_dynamical_avoidance_in_17_claim_audit",
+            script_id=SCRIPT_ID,
+            branch_id="curvature_dynamical_singularity_avoidance",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_bounce_in_17_claim_audit",
+            script_id=SCRIPT_ID,
+            branch_id="curvature_bounce",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_regular_core_in_17_claim_audit",
+            script_id=SCRIPT_ID,
+            branch_id="curvature_regular_core",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_J_curv_anti_singularity_in_17_claim_audit",
+            script_id=SCRIPT_ID,
+            branch_id="J_curv_anti_singularity",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["formalize_A_curv_branch_kill_in_17_claim_audit"],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_H_curv_anti_singularity_in_17_claim_audit",
+            script_id=SCRIPT_ID,
+            branch_id="H_curv_anti_singularity",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=["formalize_A_curv_branch_kill_in_17_claim_audit"],
+        ))
+        ns.record_derivation(
+            derivation_id="curvature_anti_singularity_claim_audit_marker",
+            inputs=[],
+            output=sp.Symbol("curvature_anti_singularity_claim_audit_complete"),
+            method="curvature_anti_singularity_claim_audit",
+            status=Status.DERIVED,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

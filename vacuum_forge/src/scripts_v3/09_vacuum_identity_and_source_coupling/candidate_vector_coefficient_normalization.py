@@ -1,5 +1,11 @@
 # Candidate vector coefficient normalization
 #
+# Group:
+#   09_vacuum_identity_and_source_coupling
+#
+# Script type:
+#   AUDIT
+#
 # Purpose
 # -------
 # The vector frame-dragging observable study found:
@@ -21,26 +27,23 @@
 #   2. vector coefficient uses a new independent stiffness,
 #   3. vector coefficient is hand-matched to GR,
 #   4. vector coefficient remains missing.
-#
-# Status categories:
-#
-#   DERIVED_REDUCED
-#   CONSTRAINED_BY_IDENTITY
-#   INDEPENDENT_STIFFNESS
-#   HAND_ASSIGNED
-#   MISSING
-#   RISK
-#
-# Suggested location:
-#   theory_v3/development/field_equation_candidates/09_vacuum_identity_and_source_coupling/
-#   or:
-#   scripts_v3/candidate_vector_coefficient_normalization.py
 
 from pathlib import Path
 
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -52,22 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "DERIVED_REDUCED": "PASS",
-        "CONSTRAINED_BY_IDENTITY": "WARN",
-        "INDEPENDENT_STIFFNESS": "WARN",
-        "HAND_ASSIGNED": "WARN",
-        "MISSING": "FAIL",
-        "RISK": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 def prepare_archive():
@@ -110,8 +97,6 @@ def case_0_problem_statement():
     print("  Can the W_i coefficient be related to scalar A-flux normalization,")
     print("  or does it require an independent vector stiffness?")
 
-    status_line("vector coefficient problem posed", "CONSTRAINED_BY_IDENTITY")
-
 
 def case_1_scalar_normalization_reference():
     header("Case 1: Scalar A-flux normalization reference")
@@ -134,7 +119,7 @@ def case_1_scalar_normalization_reference():
     print("This scalar normalization is reduced-derived from A-flux.")
     print("Question: does W_i inherit this normalization or require its own stiffness?")
 
-    status_line("scalar normalization reference stated", "DERIVED_REDUCED")
+    return scalar_ratio, beta_relation
 
 
 def case_2_vector_action_ratio():
@@ -153,8 +138,7 @@ def case_2_vector_action_ratio():
     print("  source j_i is constrained by continuity")
     print("  ratio alpha_W/K_W is not derived")
 
-    status_line("vector coefficient ratio identified", "MISSING",
-                "alpha_W/K_W has no derivation yet")
+    return ratio_W
 
 
 def case_3_shared_stiffness_hypothesis():
@@ -178,8 +162,7 @@ def case_3_shared_stiffness_hypothesis():
     print("If lambda_W is derived, this becomes ontology work.")
     print("If lambda_W is chosen to match observations, it is hand matching.")
 
-    status_line("shared stiffness hypothesis formulated", "CONSTRAINED_BY_IDENTITY",
-                "lambda_W remains missing")
+    return vector_ratio
 
 
 def case_4_independent_stiffness_option():
@@ -203,8 +186,7 @@ def case_4_independent_stiffness_option():
     print("Risk:")
     print("  too many independent stiffnesses can make the theory a fit machine.")
 
-    status_line("independent vector stiffness option stated", "INDEPENDENT_STIFFNESS",
-                "allowed but must be justified")
+    return scalar_ratio, vector_ratio
 
 
 def case_5_hand_matching_forbidden():
@@ -223,9 +205,6 @@ def case_5_hand_matching_forbidden():
     print("  derive alpha_W/K_W from shared vacuum stiffness")
     print("  derive independent K_W from vector transport energy")
     print("  explicitly declare coefficient as phenomenological and fit it later")
-    print()
-    status_line("hand matching forbidden", "RISK",
-                "prevents fake reconstruction")
 
 
 def case_6_symbolic_frame_dragging_chain():
@@ -249,8 +228,7 @@ def case_6_symbolic_frame_dragging_chain():
     print()
     print("Do not set C_total by GR matching yet.")
 
-    status_line("symbolic coefficient chain stated", "MISSING",
-                "C_W and beta_W both missing")
+    return B_W, Omega
 
 
 def case_7_classification():
@@ -264,9 +242,6 @@ def case_7_classification():
     print("| independent vector stiffness K_W | INDEPENDENT_STIFFNESS, needs ontology |")
     print("| Lense-Thirring coefficient inserted directly | HAND_ASSIGNED / RISK |")
     print("| current best vector coefficient | MISSING |")
-    print()
-    status_line("vector coefficient classification produced", "MISSING",
-                "normalization not reconstructed")
 
 
 def case_8_next_tests():
@@ -286,9 +261,6 @@ def case_8_next_tests():
     print("Recommended next script:")
     print()
     print("  candidate_vector_stiffness_from_vacuum_transport.py")
-
-    status_line("next test selected", "CONSTRAINED_BY_IDENTITY",
-                "vector coefficient needs a stiffness origin")
 
 
 def final_interpretation():
@@ -322,23 +294,127 @@ def main():
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
     case_0_problem_statement()
-    case_1_scalar_normalization_reference()
-    case_2_vector_action_ratio()
-    case_3_shared_stiffness_hypothesis()
-    case_4_independent_stiffness_option()
+    scalar_ratio, beta_relation = case_1_scalar_normalization_reference()
+    ratio_W = case_2_vector_action_ratio()
+    vector_ratio_shared = case_3_shared_stiffness_hypothesis()
+    scalar_r, vector_r = case_4_independent_stiffness_option()
     case_5_hand_matching_forbidden()
-    case_6_symbolic_frame_dragging_chain()
+    B_W, Omega = case_6_symbolic_frame_dragging_chain()
     case_7_classification()
     case_8_next_tests()
     final_interpretation()
-    ns.record_derivation(
-        derivation_id="vector_coefficient_normalization_marker",
-        inputs=[],
-        output=sp.Symbol("vector_coefficient_normalization_audit"),
-        method="vector_coefficient_normalization_inventory",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+
+    out = ScriptOutput()
+
+    with out.governance_assessments():
+        out.line(
+            "scalar A normalization reference",
+            StatusMark.PASS,
+            "beta_A/(2K_A) = 8*pi*G/c^2 from reduced flux law",
+        )
+        out.line(
+            "vector coefficient alpha_W/K_W",
+            StatusMark.FAIL,
+            "not derived; Lense-Thirring matching forbidden",
+        )
+        out.line(
+            "shared stiffness hypothesis lambda_W",
+            StatusMark.DEFER,
+            "lambda_W missing; cannot confirm shared stiffness",
+        )
+        out.line(
+            "independent K_W option",
+            StatusMark.DEFER,
+            "allowed if ontology-justified; not yet derived",
+        )
+
+    with out.unresolved_obligations():
+        out.line(
+            "derive vector coefficient alpha_W / K_c",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive beta_W observable coupling",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+        out.line(
+            "derive global boundary normalization",
+            StatusMark.OBLIGATION,
+            "open proof obligation recorded",
+        )
+
+    out.print()
+
+    with archive.open() as ns2:
+        # Proof obligation: vector coefficient
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_coefficient_alpha_W_K_c",
+            script_id=SCRIPT_ID,
+            title="Derive vector coefficient alpha_W / K_c",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The vector action ratio alpha_W/K_W controls the W_i source equation. "
+                "It must be derived from the vacuum exchange ontology. "
+                "Options are: shared scalar stiffness (lambda_W derived) or "
+                "independent vector stiffness K_W (ontology-justified)."
+            ),
+        ))
+
+        # Proof obligation: beta_W
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_vector_beta_W_coupling",
+            script_id=SCRIPT_ID,
+            title="Derive beta_W observable coupling",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The precession coupling beta_W in Omega_drag = beta_W B_W "
+                "is missing. It must be derived from the observable/precession "
+                "theory, not chosen to match Lense-Thirring."
+            ),
+        ))
+
+        # Proof obligation: global boundary normalization
+        ns2.record_obligation(ProofObligationRecord(
+            obligation_id="derive_global_boundary_normalization",
+            script_id=SCRIPT_ID,
+            title="Derive global boundary normalization",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The far-field coefficient C_total = beta_W * C_W is missing. "
+                "Global boundary normalization for the rotating-body far field "
+                "must be derived from the vector action and source model."
+            ),
+        ))
+
+        # Governance claim: no recovery smuggling for vector coefficient
+        ns2.record_claim(ClaimRecord(
+            claim_id="no_recovery_smuggling_vector_coefficient",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.POLICY_RULE,
+            statement=(
+                "The vector coefficient alpha_W/K_W must not be chosen to reproduce "
+                "Lense-Thirring frame dragging. The combined coefficient C_total = "
+                "beta_W * C_W is a downstream test target, not a construction rule."
+            ),
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        ))
+
+        # Inventory marker
+        ns2.record_derivation(
+            derivation_id="vector_coefficient_normalization_marker",
+            inputs=[],
+            output=sp.Symbol("vector_coefficient_normalization_audit"),
+            method="vector_coefficient_normalization_inventory",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns2.write_run_metadata()
 
 
 if __name__ == "__main__":

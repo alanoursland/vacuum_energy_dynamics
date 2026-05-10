@@ -1,3 +1,9 @@
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Candidate volume current definition for u_vac
 #
 # Purpose
@@ -24,6 +30,19 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    BranchDecisionRecord,
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    ReasonCode,
+    RecordKind,
+    RouteRecord,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
@@ -36,32 +55,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -234,7 +227,7 @@ def print_entry(e: VolumeCurrentEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
@@ -259,7 +252,10 @@ def case_0_problem_statement():
     print("  preserve boundary neutrality and no-overlap")
     print("  close Group 14 if J_V remains unnamed")
 
-    status_line("volume current definition problem posed", "REQUIRED")
+    out = ScriptOutput()
+    with out.unresolved_obligations():
+        out.line("volume current definition problem posed", StatusMark.OBLIGATION, "requires real J_V flux law, not decoration")
+    out.print()
 
 
 def case_1_inventory(entries: List[VolumeCurrentEntry]):
@@ -286,7 +282,10 @@ def case_2_compact_table(entries: List[VolumeCurrentEntry]):
             + " |"
         )
 
-    status_line("compact volume-current ledger produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("compact volume-current ledger produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_3_status_counts(entries: List[VolumeCurrentEntry]):
@@ -307,7 +306,10 @@ def case_3_status_counts(entries: List[VolumeCurrentEntry]):
     print("  source-driven scalar Sigma_V alone does not determine flux direction.")
     print("  if no exchange/transport law is supplied, Group 14 should close.")
 
-    status_line("volume-current status count produced", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("volume-current status count produced", StatusMark.INFO, "inventory only")
+    out.print()
 
 
 def case_4_current_decision_tree():
@@ -330,7 +332,10 @@ def case_4_current_decision_tree():
     print("5. If no real J_V:")
     print("   close Group 14 with u_vac/J_V as bottleneck.")
 
-    status_line("volume-current decision tree stated", "RECOMMENDED")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("volume-current decision tree stated", StatusMark.INFO, "candidates ranked")
+    out.print()
 
 
 def case_5_good_failure():
@@ -349,7 +354,10 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  declare J_V and keep going because the next equation needs a clock.")
 
-    status_line("volume-current good failure stated", "DEFER")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("volume-current good failure stated", StatusMark.DEFER, "deferred: J_V/u_vac is surviving Group 14 bottleneck")
+    out.print()
 
 
 def case_6_failure_controls():
@@ -367,7 +375,10 @@ def case_6_failure_controls():
     print("8. sign/orientation is chosen from recovery")
     print("9. group continues without defining J_V")
 
-    status_line("volume-current failure controls stated", "RISK")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("volume-current failure controls stated", StatusMark.INFO, "guardrails recorded")
+    out.print()
 
 
 def case_7_next_tests():
@@ -391,7 +402,10 @@ def case_7_next_tests():
     print("Reason:")
     print("  J_V remains dependent on an exchange continuity law not yet available. Close Group 14 and promote J_V/u_vac to next-group bottleneck.")
 
-    status_line("next test selected", "STRUCTURAL")
+    out = ScriptOutput()
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.INFO, "candidate_group_14_closure_summary.py")
+    out.print()
 
 
 def final_interpretation():
@@ -424,14 +438,96 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    ns.record_derivation(
-        derivation_id="volume_current_definition_for_u_vac_marker",
-        inputs=[],
-        output=sp.Symbol("volume_current_definition_for_u_vac_audited"),
-        method="volume_current_definition_for_u_vac_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive:
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_J_V_flux_law",
+            script_id=SCRIPT_ID,
+            title="Derive J_V flux direction law for vacuum-volume current",
+            status=ObligationStatus.OPEN,
+            description=(
+                "J_V must have an independent physical flux or transport law — not just a divergence "
+                "equation — before u_vac^mu = J_V^mu / sqrt(-J_V^2) can define the vacuum rest frame."
+            ),
+        ))
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_J_V_domain_theorem",
+            script_id=SCRIPT_ID,
+            title="Derive timelike/nonzero domain theorem for J_V",
+            status=ObligationStatus.OPEN,
+            description=(
+                "J_V^2 < 0 and J_V != 0 must be proved or the domain explicitly restricted "
+                "to regimes where these conditions hold, to prevent invalid frame normalization."
+            ),
+        ))
+        ns.record_route(RouteRecord(
+            route_id="exchange_continuity_J_V_route",
+            script_id=SCRIPT_ID,
+            name="Exchange continuity J_V route: nabla_mu J_V^mu = Sigma_V - R_V",
+            status=GovernanceStatus.CANDIDATE_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            required_obligations=[
+                "derive_J_V_flux_law",
+                "derive_J_V_domain_theorem",
+                "derive_Sigma_V_source_law",
+                "derive_boundary_neutrality_for_Sigma_V",
+            ],
+            activation_conditions=[
+                "Sigma_V and R_V are independently defined",
+                "J_V has a non-circular transport/flux direction",
+                "J_V^2 < 0 and J_V != 0 in target domain",
+            ],
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_decorative_J_V",
+            script_id=SCRIPT_ID,
+            branch_id="decorative_J_V_current",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            description=(
+                "J_V declared as vacuum-volume current without a flux law is rejected. "
+                "Naming J_V does not define it; a real transport/balance law is required."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="reject_circular_J_V_n_V_u_vac",
+            script_id=SCRIPT_ID,
+            branch_id="circular_J_V_n_V_u_vac",
+            status=GovernanceStatus.REJECTED_ROUTE,
+            tier=ClaimTier.CONSTRAINED,
+            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+            description=(
+                "J_V^mu = n_V u_vac^mu used to define u_vac is rejected as a circular definition. "
+                "The clock cannot be defined using the clock."
+            ),
+        ))
+        ns.record_branch_decision(BranchDecisionRecord(
+            decision_id="defer_volume_current_and_u_vac_definition",
+            script_id=SCRIPT_ID,
+            branch_id="volume_current_J_V_and_u_vac",
+            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+            tier=ClaimTier.CONSTRAINED,
+            obligation_ids=[
+                "derive_J_V_flux_law",
+                "derive_J_V_domain_theorem",
+                "derive_Sigma_V_source_law",
+            ],
+            description=(
+                "J_V/u_vac definition is deferred pending an independent flux direction law, "
+                "a domain theorem, and defined Sigma_V/R_V operators. "
+                "Group 14 closes with J_V/u_vac as the surviving bottleneck."
+            ),
+        ))
+        ns.record_derivation(
+            derivation_id="volume_current_definition_for_u_vac_marker",
+            inputs=[],
+            output=sp.Symbol("volume_current_definition_for_u_vac_audited"),
+            method="volume_current_definition_for_u_vac_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":

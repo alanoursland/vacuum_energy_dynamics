@@ -1,5 +1,11 @@
 # Candidate stiffness ratio origin inventory
 #
+# Group:
+#   14_kappa_zeta_map_and_projectors
+#
+# Script type:
+#   INVENTORY
+#
 # Purpose
 # -------
 # The minimal coupled stiffness variation found:
@@ -21,11 +27,20 @@ from typing import List
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
 
 
 ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
 SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
-
 
 
 def header(title: str) -> None:
@@ -33,32 +48,6 @@ def header(title: str) -> None:
     print("=" * 120)
     print(title)
     print("=" * 120)
-
-
-def status_line(label: str, status: str, detail: str = "") -> None:
-    marks = {
-        "SAFE_IF": "WARN",
-        "CANDIDATE": "WARN",
-        "STRUCTURAL": "WARN",
-        "CONSTRAINED": "WARN",
-        "RECOMMENDED": "PASS",
-        "REQUIRED": "WARN",
-        "MISSING": "FAIL",
-        "UNRESOLVED": "FAIL",
-        "RISK": "WARN",
-        "FORBIDDEN": "PASS",
-        "REJECTED": "WARN",
-        "DANGER": "FAIL",
-        "THEOREM_TARGET": "WARN",
-        "RECOVERY_TARGET": "WARN",
-        "BRANCH_KILLED": "FAIL",
-        "DEFER": "WARN",
-    }
-    mark = marks.get(status, "INFO")
-    if detail:
-        print(f"[{mark}] {label}: {status} — {detail}")
-    else:
-        print(f"[{mark}] {label}: {status}")
 
 
 @dataclass
@@ -231,12 +220,12 @@ def print_entry(e: RatioOriginEntry) -> None:
     print(f"Role: {e.role}")
     print(f"Allowed if: {e.allowed_if}")
     print(f"Forbidden if: {e.forbidden_if}")
-    status_line(e.name, e.status)
+    print(f"Status: {e.status}")
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
 
 
-def case_0_problem_statement():
+def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Stiffness ratio origin inventory problem")
 
     print("Question:")
@@ -256,7 +245,8 @@ def case_0_problem_statement():
     print("  do not let zeta fix ratio while remaining independent residual")
     print("  move to conservation-current route if action/stiffness ratio remains free")
 
-    status_line("stiffness ratio origin problem posed", "REQUIRED")
+    with out.governance_assessments():
+        out.line("stiffness ratio origin problem posed", StatusMark.WARN, "open risk")
 
 
 def case_1_inventory(entries: List[RatioOriginEntry]):
@@ -265,7 +255,7 @@ def case_1_inventory(entries: List[RatioOriginEntry]):
         print_entry(entry)
 
 
-def case_2_compact_table(entries: List[RatioOriginEntry]):
+def case_2_compact_table(entries: List[RatioOriginEntry], out: ScriptOutput):
     header("Case 2: Compact stiffness-ratio ledger")
 
     print("| Entry | Origin | Status | Consequence |")
@@ -283,10 +273,11 @@ def case_2_compact_table(entries: List[RatioOriginEntry]):
             + " |"
         )
 
-    status_line("compact stiffness-ratio ledger produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("compact stiffness-ratio ledger produced", StatusMark.WARN, "structural inventory")
 
 
-def case_3_status_counts(entries: List[RatioOriginEntry]):
+def case_3_status_counts(entries: List[RatioOriginEntry], out: ScriptOutput):
     header("Case 3: Status counts")
 
     counts = {}
@@ -304,10 +295,11 @@ def case_3_status_counts(entries: List[RatioOriginEntry]):
     print("  Zeta/volume exchange is plausible but likely leaves the pure A-local stiffness branch.")
     print("  Recovery checks remain downstream.")
 
-    status_line("stiffness-ratio status count produced", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("stiffness-ratio status count produced", StatusMark.WARN, "structural")
 
 
-def case_4_ratio_decision_tree():
+def case_4_ratio_decision_tree(out: ScriptOutput):
     header("Case 4: Ratio-origin decision tree")
 
     print("Decision tree:")
@@ -327,10 +319,11 @@ def case_4_ratio_decision_tree():
     print("5. If none:")
     print("   action/stiffness does not derive q; defer to conservation-current or volume-exchange branch.")
 
-    status_line("stiffness-ratio decision tree stated", "RECOMMENDED")
+    with out.governance_assessments():
+        out.line("stiffness-ratio decision tree stated", StatusMark.WARN, "candidate route map")
 
 
-def case_5_good_failure():
+def case_5_good_failure(out: ScriptOutput):
     header("Case 5: Good failure / defer outcome")
 
     print("Good failure:")
@@ -345,10 +338,11 @@ def case_5_good_failure():
     print("Bad failure:")
     print("  choose c_x/c_s from gamma_like=1 and call it symmetry or normalization.")
 
-    status_line("stiffness ratio good failure stated", "DEFER")
+    with out.unresolved_obligations():
+        out.line("stiffness ratio c_x/c_s origin is missing", StatusMark.OBLIGATION, "open proof obligation recorded")
 
 
-def case_6_failure_controls():
+def case_6_failure_controls(out: ScriptOutput):
     header("Case 6: Failure controls")
 
     print("Stiffness-ratio origin test fails if:")
@@ -362,10 +356,11 @@ def case_6_failure_controls():
     print("7. zeta fixes ratio while remaining independent residual")
     print("8. no-overlap theorem is ignored after ratio selection")
 
-    status_line("stiffness-ratio failure controls stated", "RISK")
+    with out.governance_assessments():
+        out.line("stiffness-ratio failure controls stated", StatusMark.WARN, "open risk")
 
 
-def case_7_next_tests():
+def case_7_next_tests(out: ScriptOutput):
     header("Case 7: Next tests")
 
     print("Possible next scripts:")
@@ -386,7 +381,8 @@ def case_7_next_tests():
     print("Reason:")
     print("  Symmetry/normalization are currently unspecified. Conservation-current origin is the strongest next non-tuning route.")
 
-    status_line("next test selected", "STRUCTURAL")
+    with out.governance_assessments():
+        out.line("next test selected", StatusMark.WARN, "structural guidance")
 
 
 def final_interpretation():
@@ -409,25 +405,63 @@ def main():
     header("Candidate Stiffness Ratio Origin Inventory")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
-    case_0_problem_statement()
+    out = ScriptOutput()
+    case_0_problem_statement(out)
     entries = build_entries()
     case_1_inventory(entries)
-    case_2_compact_table(entries)
-    case_3_status_counts(entries)
-    case_4_ratio_decision_tree()
-    case_5_good_failure()
-    case_6_failure_controls()
-    case_7_next_tests()
+    case_2_compact_table(entries, out)
+    case_3_status_counts(entries, out)
+    case_4_ratio_decision_tree(out)
+    case_5_good_failure(out)
+    case_6_failure_controls(out)
+    case_7_next_tests(out)
     final_interpretation()
+    out.print_summary()
 
-    ns.record_derivation(
-        derivation_id="stiffness_ratio_origin_inventory_marker",
-        inputs=[],
-        output=sp.Symbol("stiffness_ratio_origin_inventory_audited"),
-        method="stiffness_ratio_origin_inventory_audit",
-        status=Status.DERIVED,
-    )
-    ns.write_run_metadata()
+    with archive.with_project_namespace(SCRIPT_ID) as ns:
+
+        ns.record_obligation(ProofObligationRecord(
+            obligation_id="derive_stiffness_ratio_r_s_pre_recovery_origin_in_14",
+            script_id=SCRIPT_ID,
+            title="Derive stiffness ratio r_s = c_x/c_s pre-recovery origin",
+            status=ObligationStatus.OPEN,
+            description=(
+                "The coupled stiffness variation yields q_action = -(c_x/c_s). The ratio r_s = c_x/c_s "
+                "must be derived from a pre-recovery principle. Candidate origins: field-space symmetry, "
+                "canonical normalization of coupled modes, conservation-current identity (div J_A = 0), "
+                "volume-exchange identity involving zeta, or constrained-variation with structural Lagrange "
+                "multiplier. Free ratio and recovery-tuned ratio are both rejected. "
+                "This obligation blocks the action/stiffness route until r_s is derived or the branch "
+                "moves to conservation-current or volume-exchange route."
+            ),
+        ))
+
+        ns.record_claim(ClaimRecord(
+            claim_id="stiffness_ratio_origin_missing_provisional",
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=GovernanceStatus.PROVISIONAL_CONVENTION,
+            statement=(
+                "The stiffness ratio r_s = c_x/c_s is the remaining bottleneck for the "
+                "action/stiffness coefficient-origin route. No pre-recovery symmetry, normalization, "
+                "or source-routing principle currently fixes r_s. The branch must defer to "
+                "conservation-current or volume-exchange identity for ratio origin. "
+                "This is provisional until a concrete ratio-origin principle is identified."
+            ),
+        ))
+
+        ns.record_derivation(
+            derivation_id="stiffness_ratio_origin_inventory_marker",
+            inputs=[],
+            output=sp.Symbol("stiffness_ratio_origin_inventory_audited"),
+            method="stiffness_ratio_origin_inventory_audit",
+            status=Status.DERIVED,
+            record_kind=RecordKind.INVENTORY_MARKER,
+            is_placeholder=True,
+        )
+
+        ns.write_run_metadata()
 
 
 if __name__ == "__main__":
