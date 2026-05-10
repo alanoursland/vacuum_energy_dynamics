@@ -1,0 +1,378 @@
+
+========================================================================================================================
+Candidate Projection Operator Minimum Structure
+========================================================================================================================
+[INFO] Archive dependency check:
+  - no_overlap_operator_role_inventory_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Projection operator minimum-structure problem
+========================================================================================================================
+Question:
+
+  What minimum structure must O have to be a real projector?
+
+Goal:
+
+  define the burden for any role-specific no-overlap projector
+
+Discipline:
+
+  no O by declaration
+  no recovery projector
+  no residual eraser
+  no boundary patch
+  no source separator by name
+  no tensor insertability patch
+  no orthogonality without measure or pairing
+  no projector without domain/kernel/image/composition law
+
+[unresolved_obligations]
+[OBLIGATION] minimum projector burden posed -- role-specific applications still open
+
+========================================================================================================================
+Case 1: Minimum projector-structure inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+P1: domain
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state the mathematical space the projector acts on
+Role: well-posedness prerequisite
+Allowed if: domain is specified before the projector is used
+Forbidden if: O acts on whatever sector currently needs separation
+[OBLIGATION] P1: domain: REQUIRED
+Missing: domain for each role-specific projector
+Consequence: without domain, O is not an operator
+
+------------------------------------------------------------------------------------------------------------------------
+P2: codomain
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state where the projected object lands
+Role: well-posedness prerequisite
+Allowed if: codomain is distinct from or equal to the domain by explicit map
+Forbidden if: projection output is inferred from desired no-overlap
+[OBLIGATION] P2: codomain: REQUIRED
+Missing: codomain for each role-specific projector
+Consequence: without codomain, source and metric routing remain ambiguous
+
+------------------------------------------------------------------------------------------------------------------------
+P3: kernel
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state what is removed or annihilated
+Role: no-overlap prerequisite
+Allowed if: kernel is defined independently of recovery or failure patching
+Forbidden if: kernel is whatever residual, source, or boundary term causes trouble
+[OBLIGATION] P3: kernel: REQUIRED
+Missing: kernel definition
+Consequence: without kernel, residual-kill is only a convention
+
+------------------------------------------------------------------------------------------------------------------------
+P4: image
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state what survives projection
+Role: sector routing prerequisite
+Allowed if: image is a defined sector subspace or diagnostic label
+Forbidden if: image is selected by GR recovery or insertability need
+[OBLIGATION] P4: image: REQUIRED
+Missing: image definition
+Consequence: without image, projected sector identity is not meaningful
+
+------------------------------------------------------------------------------------------------------------------------
+P5: sector labels / basis
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state the sector decomposition that domain, kernel, and image refer to
+Role: sector accounting prerequisite
+Allowed if: basis or decomposition is stated before projection
+Forbidden if: sector labels are invented after overlap is found
+[OBLIGATION] P5: sector labels / basis: REQUIRED
+Missing: metric/source/current/curvature sector basis
+Consequence: without sector basis, no-overlap cannot be audited
+
+------------------------------------------------------------------------------------------------------------------------
+P6: composition / idempotence law
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state P^2 = P or an equivalent projection rule
+Role: projector identity prerequisite
+Allowed if: idempotence or a weaker named composition law is proved or declared as theorem target
+Forbidden if: an arbitrary filter is called a projector
+[OBLIGATION] P6: composition / idempotence law: REQUIRED
+Missing: idempotence or equivalent law
+Consequence: without composition law, O is at most a diagnostic classifier
+
+------------------------------------------------------------------------------------------------------------------------
+P7: measure / pairing / inner product
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state the measure or pairing used when orthogonality is claimed
+Role: orthogonality prerequisite
+Allowed if: orthogonality is tied to a defined pairing and support
+Forbidden if: orthogonal is used as a synonym for separate
+[OBLIGATION] P7: measure / pairing / inner product: REQUIRED
+Missing: measure or pairing
+Consequence: without measure, no orthogonality claim is licensed
+
+------------------------------------------------------------------------------------------------------------------------
+P8: locality / nonlocality status
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state whether projection is algebraic, local differential, elliptic/nonlocal, support-based, or diagnostic-only
+Role: behavior prerequisite
+Allowed if: nonlocality and support behavior are explicit
+Forbidden if: nonlocal projection repairs boundary or scalar leakage by construction
+[OBLIGATION] P8: locality / nonlocality status: REQUIRED
+Missing: locality class
+Consequence: nonlocal projectors are high-risk until boundary effects are known
+
+------------------------------------------------------------------------------------------------------------------------
+P9: covariance / gauge status
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state whether the projector is covariant, gauge-fixed, gauge-invariant, or diagnostic in a chosen reduction
+Role: gauge discipline prerequisite
+Allowed if: gauge status is explicit
+Forbidden if: gauge-conditioned projection is promoted as covariant
+[OBLIGATION] P9: covariance / gauge status: REQUIRED
+Missing: covariance and gauge status
+Consequence: without gauge status, metric-sector O can overclaim
+
+------------------------------------------------------------------------------------------------------------------------
+P10: derivative / divergence behavior
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state whether projection commutes with derivatives, divergence, constraints, or source identities
+Role: divergence safety prerequisite
+Allowed if: commutation failure terms and boundary terms are accounted for
+Forbidden if: Bianchi-like compatibility is asserted by name
+[DEFER] P10: derivative / divergence behavior: THEOREM_TARGET
+Missing: projected divergence identity
+Consequence: no correction tensor becomes insertable from projection alone
+
+------------------------------------------------------------------------------------------------------------------------
+P11: boundary behavior
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state exterior support, boundary flux, shell-source, far-zone, and M_ext behavior
+Role: boundary neutrality prerequisite
+Allowed if: boundary behavior is structural and recovery-independent
+Forbidden if: projection cancels boundary leakage or mass shift
+[DEFER] P11: boundary behavior: THEOREM_TARGET
+Missing: boundary neutrality theorem
+Consequence: projection cannot protect exterior sector by declaration
+
+------------------------------------------------------------------------------------------------------------------------
+P12: source routing behavior
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state how ordinary matter, A-sector mass, curvature accounting, exchange roles, and optional dark labels are routed
+Role: source separation prerequisite
+Allowed if: ordinary matter and A-sector mass remain protected
+Forbidden if: projection hides source double-counting or repair labels
+[DEFER] P12: source routing behavior: THEOREM_TARGET
+Missing: source-sector projector
+Consequence: source separation remains a theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+P13: metric insertion behavior
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state how projection interacts with A, B_s, zeta, kappa, and residual metric trace
+Role: metric no-overlap prerequisite
+Allowed if: scalar response is counted once and recovery remains downstream
+Forbidden if: projection restores residual trace or chooses B_s by recovery
+[DEFER] P13: metric insertion behavior: THEOREM_TARGET
+Missing: metric-sector projector
+Consequence: B_s/F_zeta insertion remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+P14: diagnostic-only fallback
+------------------------------------------------------------------------------------------------------------------------
+Requirement: allow sector labels that classify records without active projection
+Role: safe fallback
+Allowed if: labels are never used to erase sources or insert field-equation terms
+Forbidden if: diagnostic labels become active operators
+[INFO] P14: diagnostic-only fallback: SAFE_IF
+Missing: none if kept diagnostic-only
+Consequence: audits can proceed while O remains undefined
+
+------------------------------------------------------------------------------------------------------------------------
+P15: O by declaration
+------------------------------------------------------------------------------------------------------------------------
+Requirement: define O as no-overlap by definition
+Role: forbidden shortcut
+Allowed if: never as derivation
+Forbidden if: accepted without domain/kernel/image/composition/boundary behavior
+[FAIL] P15: O by declaration: REJECTED
+Missing: not pursued
+Consequence: no-overlap language cannot replace projector structure
+
+------------------------------------------------------------------------------------------------------------------------
+P16: recovery projector
+------------------------------------------------------------------------------------------------------------------------
+Requirement: choose projection to recover gamma_like, AB, Schwarzschild, PPN, or expected exterior behavior
+Role: forbidden recovery-smuggling branch
+Allowed if: recovery is a downstream test only
+Forbidden if: recovery chooses kernel, image, support, coefficient, or residual status
+[FAIL] P16: recovery projector: REJECTED
+Missing: not pursued
+Consequence: recovery remains downstream
+
+------------------------------------------------------------------------------------------------------------------------
+P17: residual eraser
+------------------------------------------------------------------------------------------------------------------------
+Requirement: erase zeta/kappa residual trace after metric insertion
+Role: forbidden residual patch
+Allowed if: residual-kill remains provisional or is derived by real kernel/image
+Forbidden if: projection hides a still-active residual metric/source effect
+[FAIL] P17: residual eraser: REJECTED
+Missing: not pursued
+Consequence: residual-kill remains provisional
+
+------------------------------------------------------------------------------------------------------------------------
+P18: boundary patch
+------------------------------------------------------------------------------------------------------------------------
+Requirement: choose projection to cancel boundary leakage, scalar charge, far-zone flux, or M_ext shift
+Role: forbidden boundary repair branch
+Allowed if: never as mechanism
+Forbidden if: projection is selected after boundary failure appears
+[FAIL] P18: boundary patch: REJECTED
+Missing: not pursued
+Consequence: boundary neutrality must be structural
+
+------------------------------------------------------------------------------------------------------------------------
+P19: insertability patch
+------------------------------------------------------------------------------------------------------------------------
+Requirement: use projection to make H_curv/H_exch insertable
+Role: forbidden correction-tensor shortcut
+Allowed if: never as mechanism
+Forbidden if: projection substitutes for tensor definition, source origin, divergence, or boundary neutrality
+[FAIL] P19: insertability patch: REJECTED
+Missing: not pursued
+Consequence: H_curv/H_exch remain non-insertable
+
+------------------------------------------------------------------------------------------------------------------------
+P20: minimum projector burden
+------------------------------------------------------------------------------------------------------------------------
+Requirement: any future projector must satisfy the structural fields before being used
+Role: recommended next convention
+Allowed if: future scripts treat missing fields as obligations, not optional detail
+Forbidden if: later scripts invoke projector language before satisfying the burden
+[PASS] P20: minimum projector burden: RECOMMENDED
+Missing: role-specific applications
+Consequence: next script should test the metric-sector no-overlap operator
+
+========================================================================================================================
+Case 2: Compact projector-structure ledger
+========================================================================================================================
+| Entry | Requirement | Status | Consequence |
+|---|---|---|---|
+| P1: domain | state the mathematical space the projector acts on | REQUIRED | without domain, O is not an operator |
+| P2: codomain | state where the projected object lands | REQUIRED | without codomain, source and metric routing remain ambiguous |
+| P3: kernel | state what is removed or annihilated | REQUIRED | without kernel, residual-kill is only a convention |
+| P4: image | state what survives projection | REQUIRED | without image, projected sector identity is not meaningful |
+| P5: sector labels / basis | state the sector decomposition that domain, kernel, and image refer to | REQUIRED | without sector basis, no-overlap cannot be audited |
+| P6: composition / idempotence law | state P^2 = P or an equivalent projection rule | REQUIRED | without composition law, O is at most a diagnostic classifier |
+| P7: measure / pairing / inner product | state the measure or pairing used when orthogonality is claimed | REQUIRED | without measure, no orthogonality claim is licensed |
+| P8: locality / nonlocality status | state whether projection is algebraic, local differential, elliptic/nonlocal, support-based, or diagnostic-only | REQUIRED | nonlocal projectors are high-risk until boundary effects are known |
+| P9: covariance / gauge status | state whether the projector is covariant, gauge-fixed, gauge-invariant, or diagnostic in a chosen reduction | REQUIRED | without gauge status, metric-sector O can overclaim |
+| P10: derivative / divergence behavior | state whether projection commutes with derivatives, divergence, constraints, or source identities | THEOREM_TARGET | no correction tensor becomes insertable from projection alone |
+| P11: boundary behavior | state exterior support, boundary flux, shell-source, far-zone, and M_ext behavior | THEOREM_TARGET | projection cannot protect exterior sector by declaration |
+| P12: source routing behavior | state how ordinary matter, A-sector mass, curvature accounting, exchange roles, and optional dark labels are routed | THEOREM_TARGET | source separation remains a theorem target |
+| P13: metric insertion behavior | state how projection interacts with A, B_s, zeta, kappa, and residual metric trace | THEOREM_TARGET | B_s/F_zeta insertion remains theorem target |
+| P14: diagnostic-only fallback | allow sector labels that classify records without active projection | SAFE_IF | audits can proceed while O remains undefined |
+| P15: O by declaration | define O as no-overlap by definition | REJECTED | no-overlap language cannot replace projector structure |
+| P16: recovery projector | choose projection to recover gamma_like, AB, Schwarzschild, PPN, or expected exterior behavior | REJECTED | recovery remains downstream |
+| P17: residual eraser | erase zeta/kappa residual trace after metric insertion | REJECTED | residual-kill remains provisional |
+| P18: boundary patch | choose projection to cancel boundary leakage, scalar charge, far-zone flux, or M_ext shift | REJECTED | boundary neutrality must be structural |
+| P19: insertability patch | use projection to make H_curv/H_exch insertable | REJECTED | H_curv/H_exch remain non-insertable |
+| P20: minimum projector burden | any future projector must satisfy the structural fields before being used | RECOMMENDED | next script should test the metric-sector no-overlap operator |
+
+[governance_assessments]
+[INFO] compact projector-structure ledger produced -- minimum burden recorded
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+RECOMMENDED: 1
+REJECTED: 5
+REQUIRED: 9
+SAFE_IF: 1
+THEOREM_TARGET: 4
+
+Interpretation:
+  A real projector requires domain, codomain, kernel, image, sector basis,
+  composition/idempotence, measure if orthogonality is claimed, locality status,
+  gauge status, derivative/divergence behavior, and boundary behavior.
+  O is not defined until those fields are supplied.
+
+[governance_assessments]
+[INFO] projector minimum-structure status count produced -- {'REQUIRED': 9, 'THEOREM_TARGET': 4, 'SAFE_IF': 1, 'REJECTED': 5, 'RECOMMENDED': 1}
+
+========================================================================================================================
+Case 4: Symbolic idempotence check
+========================================================================================================================
+Formal projection law:
+
+  P^2 = P
+
+Applied twice:
+
+  P(Pv) = P^2 v
+
+If P^2 = P, then:
+
+  P(Pv) = Pv
+
+Formal before imposing idempotence: P*P*v
+Formal target after idempotence:     P*v
+
+Interpretation:
+  Without a composition law such as P^2=P, a filter is not yet a projector.
+
+[derived_results]
+[PASS] projector idempotence burden stated -- P^2=P required or equivalent composition law needed
+
+========================================================================================================================
+Case 5: Rejected definitions
+========================================================================================================================
+Rejected:
+
+1. O = no-overlap by definition.
+2. O = residual eraser.
+3. O = recovery projector.
+4. O = boundary patch.
+5. O = source separator by name.
+6. O = correction tensor insertability patch.
+7. orthogonality without measure or pairing.
+8. projection without domain/kernel/image/composition law.
+
+[counterexamples]
+[FAIL] O by declaration rejected -- missing projector structure
+[FAIL] recovery projector rejected -- recovery remains downstream
+[FAIL] insertability patch rejected -- H_curv/H_exch remain non-insertable
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+A real no-overlap projector must state at least:
+
+  domain
+  codomain
+  kernel
+  image
+  sector basis
+  composition / idempotence law
+  measure or pairing if orthogonality is claimed
+  locality / nonlocality status
+  covariance / gauge status
+  derivative / divergence behavior
+  boundary behavior
+  source and metric routing behavior
+
+Therefore:
+
+  O is still not defined.
+  Projection language is allowed only as a theorem target or diagnostic label.
+  Role-specific projector scripts must carry this minimum burden forward.
+
+Possible next artifact:
+  candidate_projection_operator_minimum_structure.md
+
+Possible next script:
+  candidate_metric_sector_no_overlap_operator.py
+
+[governance_assessments]
+[PASS] minimum projector structure complete -- projector burden defined; O still theorem target

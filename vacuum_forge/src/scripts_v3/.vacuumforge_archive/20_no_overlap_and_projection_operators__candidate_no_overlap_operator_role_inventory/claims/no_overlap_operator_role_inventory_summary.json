@@ -1,0 +1,30 @@
+{
+  "claim_id": "no_overlap_operator_role_inventory_summary",
+  "script_id": "20_no_overlap_and_projection_operators__candidate_no_overlap_operator_role_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The no-overlap symbol O is currently carrying multiple distinct jobs. It should be split into role-specific projection requirements; diagnostic sector labels remain safe only if not treated as active operators.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "define_minimum_projector_structure_20",
+    "derive_metric_sector_no_overlap_20",
+    "derive_source_sector_projection_20",
+    "derive_boundary_neutral_projection_20"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T18:31:37.290327+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

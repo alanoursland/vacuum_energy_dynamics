@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_metric_sector_no_overlap_20",
+  "script_id": "20_no_overlap_and_projection_operators__candidate_no_overlap_operator_role_inventory",
+  "title": "Derive metric-sector no-overlap projector",
+  "status": "open",
+  "required_by": [
+    "metric_sector_no_overlap_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T18:31:37.284327+00:00",
+  "description": "Show how A-sector mass response, B_s insertion, zeta volume insertion, and residual zeta/kappa trace are separated without scalar double-counting.",
+  "metadata": {}
+}
