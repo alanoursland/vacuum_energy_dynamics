@@ -91,13 +91,10 @@ def build_output_path(script_path: Path) -> Path:
 
 def print_failure_details(script_path: Path, completed: subprocess.CompletedProcess[str]) -> None:
     relative = script_path.relative_to(SCRIPT_ROOT)
-    if completed.stdout:
-        print(f"[stdout] {relative}")
-        print(completed.stdout, end="" if completed.stdout.endswith("\n") else "\n")
     if completed.stderr:
         print(f"[stderr] {relative}")
         print(completed.stderr, end="" if completed.stderr.endswith("\n") else "\n")
-    if not completed.stdout and not completed.stderr:
+    if not completed.stderr:
         print(f"[stderr] {relative}")
         print(f"Script exited with code {completed.returncode} and produced no output.")
 
