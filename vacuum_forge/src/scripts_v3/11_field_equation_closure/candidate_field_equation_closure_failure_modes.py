@@ -525,10 +525,8 @@ def main():
     case_5_next_tests(out)
     case_6_good_failure(out)
     final_interpretation()
-    out.print_summary()
-    with archive:
-        record_governance(ns, entries)
-        ns.write_run_metadata()
+    record_governance(ns, entries)
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

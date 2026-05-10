@@ -342,78 +342,77 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        # Real algebraic computation: projection has zero charge
-        ns.record_derivation(
-            derivation_id="zero_charge_projection_identity_sample",
-            inputs=[S, S_avg, P0S],
-            output=Q_projected,
-            method="integrate 4*pi*r^2*(S - <S>) over [0,R]; verify integral = 0",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="parabolic pressure profile; fixed compact support; parent identity not derived",
-        )
+    # Real algebraic computation: projection has zero charge
+    ns.record_derivation(
+        derivation_id="zero_charge_projection_identity_sample",
+        inputs=[S, S_avg, P0S],
+        output=Q_projected,
+        method="integrate 4*pi*r^2*(S - <S>) over [0,R]; verify integral = 0",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="parabolic pressure profile; fixed compact support; parent identity not derived",
+    )
 
-        # Idempotence is a real identity (structural)
-        ns.record_derivation(
-            derivation_id="zero_charge_projector_idempotence",
-            inputs=[],
-            output=sp.Symbol("P0_idempotent_for_fixed_support"),
-            method="algebraic: <P_0 S>=0 implies P_0(P_0 S)=P_0 S for fixed V",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-        )
+    # Idempotence is a real identity (structural)
+    ns.record_derivation(
+        derivation_id="zero_charge_projector_idempotence",
+        inputs=[],
+        output=sp.Symbol("P0_idempotent_for_fixed_support"),
+        method="algebraic: <P_0 S>=0 implies P_0(P_0 S)=P_0 S for fixed V",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_constraint_projection_identity_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_constraint_projection_identity_stated"),
-            method="kappa_constraint_projection_identity_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_constraint_projection_identity_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_constraint_projection_identity_stated"),
+        method="kappa_constraint_projection_identity_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_covariant_parent_identity_for_P0_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive a covariant parent identity from which the zero-charge projection P_0 follows",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The projection P_0 S = S - <S>_V removes monopole kappa charge algebraically "
-                "and is idempotent for fixed support. But it is nonlocal over V and not "
-                "derived from a covariant parent theory. A conservation law, matching identity, "
-                "or constraint equation must be derived to license it as a physical source law."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_parent_identity_for_P0_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive a covariant parent identity from which the zero-charge projection P_0 follows",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The projection P_0 S = S - <S>_V removes monopole kappa charge algebraically "
+            "and is idempotent for fixed support. But it is nonlocal over V and not "
+            "derived from a covariant parent theory. A conservation law, matching identity, "
+            "or constraint equation must be derived to license it as a physical source law."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="zero_charge_projection_is_constraint_not_local_law",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The zero-charge projection P_0 is structurally idempotent for fixed compact "
-                "support and removes monopole kappa leakage. It is best interpreted as a "
-                "constraint projection rather than an ordinary local source law."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="zero_charge_projection_is_constraint_not_local_law",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The zero-charge projection P_0 is structurally idempotent for fixed compact "
+            "support and removes monopole kappa leakage. It is best interpreted as a "
+            "constraint projection rather than an ordinary local source law."
+        ),
+    ))
 
-        with out.derived_results():
-            out.line("zero-charge projection integral vanishes (toy profile)", StatusMark.PASS, "sample result")
-            out.line("projector idempotence for fixed support", StatusMark.PASS, "algebraic identity")
+    with out.derived_results():
+        out.line("zero-charge projection integral vanishes (toy profile)", StatusMark.PASS, "sample result")
+        out.line("projector idempotence for fixed support", StatusMark.PASS, "algebraic identity")
 
-        with out.governance_assessments():
-            out.line("covariant parent identity for P_0", StatusMark.FAIL, "missing")
-            out.line("projection as local source law", StatusMark.FAIL, "not licensed - nonlocal")
+    with out.governance_assessments():
+        out.line("covariant parent identity for P_0", StatusMark.FAIL, "missing")
+        out.line("projection as local source law", StatusMark.FAIL, "not licensed - nonlocal")
 
-        with out.unresolved_obligations():
-            out.line("derive covariant parent identity for P_0", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive covariant parent identity for P_0", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

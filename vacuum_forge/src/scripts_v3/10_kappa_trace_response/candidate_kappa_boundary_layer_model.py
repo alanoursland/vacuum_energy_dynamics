@@ -364,78 +364,77 @@ def main():
     case_10_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_derivation(
-            derivation_id="compact_kappa_profile_boundary_conditions_sample",
-            inputs=[kappa],
-            output=flux_R,
-            method="compute kappa(R), kappa'(R), F_kappa(R) for kappa=kappa_0*(1-r^2/R^2)^2",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="toy parabolic-square profile; not derived from trace or relaxation law",
-        )
+    ns.record_derivation(
+        derivation_id="compact_kappa_profile_boundary_conditions_sample",
+        inputs=[kappa],
+        output=flux_R,
+        method="compute kappa(R), kappa'(R), F_kappa(R) for kappa=kappa_0*(1-r^2/R^2)^2",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy parabolic-square profile; not derived from trace or relaxation law",
+    )
 
-        ns.record_derivation(
-            derivation_id="compact_kappa_profile_zero_net_source_sample",
-            inputs=[kappa, lap],
-            output=integral,
-            method="integrate 4*pi*r^2*Delta_kappa from 0 to R; verify = 0",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="toy profile; divergence theorem argument",
-        )
+    ns.record_derivation(
+        derivation_id="compact_kappa_profile_zero_net_source_sample",
+        inputs=[kappa, lap],
+        output=integral,
+        method="integrate 4*pi*r^2*Delta_kappa from 0 to R; verify = 0",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy profile; divergence theorem argument",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_boundary_layer_model_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_boundary_layer_model_classified"),
-            method="kappa_boundary_layer_model_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_boundary_layer_model_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_boundary_layer_model_classified"),
+        method="kappa_boundary_layer_model_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_boundary_interface_source_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the boundary interface source law that produces the compact kappa profile",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The toy compact profile kappa=kappa_0*(1-r^2/R^2)^2 satisfies boundary "
-                "conditions by construction. A physical derivation of the interface source "
-                "or kappa_min(r) that produces this profile from matter trace is required."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_boundary_interface_source_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the boundary interface source law that produces the compact kappa profile",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The toy compact profile kappa=kappa_0*(1-r^2/R^2)^2 satisfies boundary "
+            "conditions by construction. A physical derivation of the interface source "
+            "or kappa_min(r) that produces this profile from matter trace is required."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="compact_kappa_profile_is_boundary_safe_toy",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The compact profile kappa=kappa_0*(1-r^2/R^2)^2 satisfies kappa(R)=0, "
-                "kappa'(R)=0, F_kappa(R)=0, and zero net effective source charge. "
-                "This is a toy demonstration that interior-confined kappa is structurally "
-                "possible. Source/interface derivation remains missing."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="compact_kappa_profile_is_boundary_safe_toy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The compact profile kappa=kappa_0*(1-r^2/R^2)^2 satisfies kappa(R)=0, "
+            "kappa'(R)=0, F_kappa(R)=0, and zero net effective source charge. "
+            "This is a toy demonstration that interior-confined kappa is structurally "
+            "possible. Source/interface derivation remains missing."
+        ),
+    ))
 
-        with out.sample_results():
-            out.line("kappa(R)=0, kappa'(R)=0, F_kappa(R)=0 for compact profile", StatusMark.PASS, "sample - toy profile")
-            out.line("integrated effective source = 0", StatusMark.PASS, "sample - divergence theorem")
+    with out.sample_results():
+        out.line("kappa(R)=0, kappa'(R)=0, F_kappa(R)=0 for compact profile", StatusMark.PASS, "sample - toy profile")
+        out.line("integrated effective source = 0", StatusMark.PASS, "sample - divergence theorem")
 
-        with out.governance_assessments():
-            out.line("boundary-confined kappa structurally possible", StatusMark.PASS, "toy model confirmed")
-            out.line("interface source derivation", StatusMark.OBLIGATION, "missing")
-            out.line("hidden boundary stress check", StatusMark.OBLIGATION, "not yet done")
+    with out.governance_assessments():
+        out.line("boundary-confined kappa structurally possible", StatusMark.PASS, "toy model confirmed")
+        out.line("interface source derivation", StatusMark.OBLIGATION, "missing")
+        out.line("hidden boundary stress check", StatusMark.OBLIGATION, "not yet done")
 
-        with out.unresolved_obligations():
-            out.line("derive boundary interface source law", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive boundary interface source law", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

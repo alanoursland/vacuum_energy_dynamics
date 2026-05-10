@@ -440,97 +440,96 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_J_V_flux_direction_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive J_V flux direction law (Group 14 record)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "J_V must have an independent physical flux or transport law before "
-                "nabla_mu J_V^mu = Sigma_V - R_V can define the vacuum-volume current."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_Sigma_V_source_law_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive Sigma_V source creation law (Group 14 record)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Sigma_V must be independently defined with a frame, projection, and "
-                "coefficient origin before exchange continuity becomes a real law."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_R_V_relaxation_law_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive R_V relaxation/exchange law (Group 14 record)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "R_V must be independently defined with an equilibrium target and operator "
-                "before it can be distinguished from a scalar-charge cancellation patch."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_exchange_continuity_law_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive exchange continuity law nabla_mu J_V^mu = Sigma_V - R_V (Group 14 record)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The full exchange continuity law remains a theorem target until J_V flux "
-                "direction, Sigma_V, R_V, timelike domain, static neutrality, boundary "
-                "neutrality, and no-overlap are all established."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="ec10_decorative_continuity_rejected_in_14",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "nabla_mu J_V^mu = Sigma_V - R_V with unnamed J_V/Sigma_V/R_V is rejected "
-                "as decorative conservation language and does not constitute a current definition."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="ec11_recovery_downstream_in_14",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "gamma_like and AB recovery tests are downstream checks only; "
-                "they must not be used to choose continuity terms, Sigma_V, or R_V."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_exchange_continuity_law_branch_in_14",
-            script_id=SCRIPT_ID,
-            branch_id="exchange_continuity_law_J_V_definition_in_14",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_J_V_flux_direction_in_14",
-                "derive_Sigma_V_source_law_in_14",
-                "derive_R_V_relaxation_law_in_14",
-                "derive_exchange_continuity_law_in_14",
-            ],
-            description=(
-                "Exchange continuity as a definition of J_V is deferred pending independent "
-                "flux direction, Sigma_V, R_V operators, and all ordinary-sector safety theorems."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="exchange_continuity_law_for_volume_marker",
-            inputs=[],
-            output=sp.Symbol("exchange_continuity_law_for_volume_audited"),
-            method="exchange_continuity_law_for_volume_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_V_flux_direction_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive J_V flux direction law (Group 14 record)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "J_V must have an independent physical flux or transport law before "
+            "nabla_mu J_V^mu = Sigma_V - R_V can define the vacuum-volume current."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_Sigma_V_source_law_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive Sigma_V source creation law (Group 14 record)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Sigma_V must be independently defined with a frame, projection, and "
+            "coefficient origin before exchange continuity becomes a real law."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_R_V_relaxation_law_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive R_V relaxation/exchange law (Group 14 record)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "R_V must be independently defined with an equilibrium target and operator "
+            "before it can be distinguished from a scalar-charge cancellation patch."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_exchange_continuity_law_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive exchange continuity law nabla_mu J_V^mu = Sigma_V - R_V (Group 14 record)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The full exchange continuity law remains a theorem target until J_V flux "
+            "direction, Sigma_V, R_V, timelike domain, static neutrality, boundary "
+            "neutrality, and no-overlap are all established."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="ec10_decorative_continuity_rejected_in_14",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "nabla_mu J_V^mu = Sigma_V - R_V with unnamed J_V/Sigma_V/R_V is rejected "
+            "as decorative conservation language and does not constitute a current definition."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="ec11_recovery_downstream_in_14",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_like and AB recovery tests are downstream checks only; "
+            "they must not be used to choose continuity terms, Sigma_V, or R_V."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_exchange_continuity_law_branch_in_14",
+        script_id=SCRIPT_ID,
+        branch_id="exchange_continuity_law_J_V_definition_in_14",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_J_V_flux_direction_in_14",
+            "derive_Sigma_V_source_law_in_14",
+            "derive_R_V_relaxation_law_in_14",
+            "derive_exchange_continuity_law_in_14",
+        ],
+        description=(
+            "Exchange continuity as a definition of J_V is deferred pending independent "
+            "flux direction, Sigma_V, R_V operators, and all ordinary-sector safety theorems."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="exchange_continuity_law_for_volume_marker",
+        inputs=[],
+        output=sp.Symbol("exchange_continuity_law_for_volume_audited"),
+        method="exchange_continuity_law_for_volume_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

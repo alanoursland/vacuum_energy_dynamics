@@ -842,18 +842,17 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive:
-        record_governance(ns)
-        ns.record_derivation(
-            derivation_id="H_exch_definition_requirements_marker",
-            inputs=[],
-            output=sp.Symbol("H_exch_definition_requirements_complete"),
-            method="H_exch_definition_requirements",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    record_governance(ns)
+    ns.record_derivation(
+        derivation_id="H_exch_definition_requirements_marker",
+        inputs=[],
+        output=sp.Symbol("H_exch_definition_requirements_complete"),
+        method="H_exch_definition_requirements",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

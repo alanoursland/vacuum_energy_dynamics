@@ -51,12 +51,23 @@ _log = logging.getLogger(__name__)
 class ProjectArchive:
     """Persistent storage of derivation records across scripts."""
 
-    def __init__(self, root_path: str | Path) -> None:
+    def __init__(self, root_path: str | Path | None = None, *, root: str | Path | None = None) -> None:
+        if root_path is None:
+            root_path = root
+        if root_path is None:
+            raise TypeError("ProjectArchive requires root_path or root")
         self.root_path = Path(root_path)
+        self.root = self.root_path
         self.root_path.mkdir(parents=True, exist_ok=True)
 
     def script_namespace(self, script_id: str) -> ScriptNamespace:
         return ScriptNamespace(self, script_id)
+
+    def __enter__(self) -> "ProjectArchive":
+        return self
+
+    def __exit__(self, exc_type, exc, tb) -> bool:
+        return False
 
     def query_claims(self, *, status=None, tier=None) -> list[ClaimRecord]:
         claims: list[ClaimRecord] = []

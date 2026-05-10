@@ -434,108 +434,107 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        # Final group-level summary claims
-        ns.record_claim(ClaimRecord(
-            claim_id="g15_J_V_unresolved_final",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.SUMMARY_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            statement=(
-                "Group 15 did not derive a field equation. J_V as a physical flux/transport "
-                "current remains undefined. Exchange continuity nabla_mu J_V^mu = Sigma_V - R_V "
-                "remains a theorem target."
-            ),
-            obligation_ids=[
-                "derive_J_V_physical_flux_law_in_15",
-                "derive_Sigma_V_operator_in_15",
-                "derive_R_V_operator_in_15",
-                "derive_exchange_continuity_law_in_15",
-            ],
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="g15_residual_kill_working_boundary",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.SUMMARY_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Group 15 established the working boundary: J_V-driven zeta may enter ordinary "
-                "metric trace only through B_s, with residual zeta/kappa metric trace killed or "
-                "non-metric, unless O is later derived. This is provisional."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="g15_no_overlap_O_unresolved_final",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.SUMMARY_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            statement=(
-                "O[B_s, zeta_residual/kappa_residual, J_V] = 0 remains unresolved. "
-                "Count-once recombination is the central missing theorem carried out of Group 15."
-            ),
-            obligation_ids=[
-                "derive_no_overlap_operator_or_residual_kill_in_15",
-                "derive_residual_kill_theorem_or_parent_identity_in_15",
-            ],
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="g15_policy_no_regression_list",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Group 15 rejected regressions must be preserved in all downstream groups: "
-                "no treating residual-kill as derived; no J_V without flux law; no continuity "
-                "as current definition; no zeta in both B_s and residual trace; no kappa "
-                "restoring killed trace; no recovery checks choosing residual status."
-            ),
-        ))
-        # HandoffImportRecord for Group 16 - the final group handoff
-        ns.record_handoff_import(HandoffImportRecord(
-            handoff_id="group_16_handoff_from_15",
-            script_id=SCRIPT_ID,
-            imported_as=RecordKind.SUMMARY_CLAIM,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            imported_record_refs=[
-                "claim:g15_J_V_unresolved_final",
-                "claim:g15_residual_kill_working_boundary",
-                "claim:g15_no_overlap_O_unresolved_final",
-                "claim:g15_policy_no_regression_list",
-                "obligation:derive_J_V_physical_flux_law_in_15",
-                "obligation:derive_exchange_continuity_law_in_15",
-                "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
-                "obligation:derive_boundary_neutrality_theorem_in_15",
-                "obligation:derive_static_source_neutrality_theorem_in_15",
-                "obligation:derive_J_V_timelike_domain_theorem_in_15",
-                "obligation:derive_residual_kill_theorem_or_parent_identity_in_15",
-                "obligation:derive_Sigma_V_operator_in_15",
-                "obligation:derive_R_V_operator_in_15",
-                "route:g15c_residual_kill_provisional_convention",
-                "route:no4_residual_kill_safe_route",
-                "route:bo6_B_s_only_metric_insertion_candidate_route",
-            ],
-            description=(
-                "What Group 16 may import from Group 15: the J_V/exchange-continuity unresolved "
-                "status, the residual-kill provisional convention as the working boundary for "
-                "ordinary metric entry, the no-overlap bottleneck, all Group 15 open proof "
-                "obligations, and the Group 15 rejection list. Group 16 must not treat any of "
-                "these as resolved without new derivation."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="group_15_status_after_residual_kill_marker",
-            inputs=[],
-            output=sp.Symbol("group_15_status_after_residual_kill_audited"),
-            method="group_15_status_after_residual_kill_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    # Final group-level summary claims
+    ns.record_claim(ClaimRecord(
+        claim_id="g15_J_V_unresolved_final",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        statement=(
+            "Group 15 did not derive a field equation. J_V as a physical flux/transport "
+            "current remains undefined. Exchange continuity nabla_mu J_V^mu = Sigma_V - R_V "
+            "remains a theorem target."
+        ),
+        obligation_ids=[
+            "derive_J_V_physical_flux_law_in_15",
+            "derive_Sigma_V_operator_in_15",
+            "derive_R_V_operator_in_15",
+            "derive_exchange_continuity_law_in_15",
+        ],
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="g15_residual_kill_working_boundary",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Group 15 established the working boundary: J_V-driven zeta may enter ordinary "
+            "metric trace only through B_s, with residual zeta/kappa metric trace killed or "
+            "non-metric, unless O is later derived. This is provisional."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="g15_no_overlap_O_unresolved_final",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        statement=(
+            "O[B_s, zeta_residual/kappa_residual, J_V] = 0 remains unresolved. "
+            "Count-once recombination is the central missing theorem carried out of Group 15."
+        ),
+        obligation_ids=[
+            "derive_no_overlap_operator_or_residual_kill_in_15",
+            "derive_residual_kill_theorem_or_parent_identity_in_15",
+        ],
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="g15_policy_no_regression_list",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Group 15 rejected regressions must be preserved in all downstream groups: "
+            "no treating residual-kill as derived; no J_V without flux law; no continuity "
+            "as current definition; no zeta in both B_s and residual trace; no kappa "
+            "restoring killed trace; no recovery checks choosing residual status."
+        ),
+    ))
+    # HandoffImportRecord for Group 16 - the final group handoff
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_16_handoff_from_15",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            "claim:g15_J_V_unresolved_final",
+            "claim:g15_residual_kill_working_boundary",
+            "claim:g15_no_overlap_O_unresolved_final",
+            "claim:g15_policy_no_regression_list",
+            "obligation:derive_J_V_physical_flux_law_in_15",
+            "obligation:derive_exchange_continuity_law_in_15",
+            "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
+            "obligation:derive_boundary_neutrality_theorem_in_15",
+            "obligation:derive_static_source_neutrality_theorem_in_15",
+            "obligation:derive_J_V_timelike_domain_theorem_in_15",
+            "obligation:derive_residual_kill_theorem_or_parent_identity_in_15",
+            "obligation:derive_Sigma_V_operator_in_15",
+            "obligation:derive_R_V_operator_in_15",
+            "route:g15c_residual_kill_provisional_convention",
+            "route:no4_residual_kill_safe_route",
+            "route:bo6_B_s_only_metric_insertion_candidate_route",
+        ],
+        description=(
+            "What Group 16 may import from Group 15: the J_V/exchange-continuity unresolved "
+            "status, the residual-kill provisional convention as the working boundary for "
+            "ordinary metric entry, the no-overlap bottleneck, all Group 15 open proof "
+            "obligations, and the Group 15 rejection list. Group 16 must not treat any of "
+            "these as resolved without new derivation."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="group_15_status_after_residual_kill_marker",
+        inputs=[],
+        output=sp.Symbol("group_15_status_after_residual_kill_audited"),
+        method="group_15_status_after_residual_kill_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

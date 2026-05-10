@@ -361,103 +361,102 @@ def main():
     case_11_next_tests()
     final_interpretation()
 
-    with archive:
-        # All diagnostics are symbolic definitions (no concrete profiles); DIAGNOSTIC_EXAMPLE type
-        ns.record_derivation(
-            derivation_id="near_boundary_profile_deviation_diagnostic_definition",
-            inputs=[f_joint, f_ref],
-            output=delta_f,
-            method="define delta_f = f_joint - f_GR_ref as symbolic profile deviation",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
-            scope="symbolic definition only; no specific f_joint profile assumed",
-        )
+    # All diagnostics are symbolic definitions (no concrete profiles); DIAGNOSTIC_EXAMPLE type
+    ns.record_derivation(
+        derivation_id="near_boundary_profile_deviation_diagnostic_definition",
+        inputs=[f_joint, f_ref],
+        output=delta_f,
+        method="define delta_f = f_joint - f_GR_ref as symbolic profile deviation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        scope="symbolic definition only; no specific f_joint profile assumed",
+    )
 
-        ns.record_derivation(
-            derivation_id="near_boundary_acceleration_diagnostic_definition",
-            inputs=[delta_f],
-            output=delta_g,
-            method="define delta_g = -d/dr(delta_f) as acceleration-like deviation",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
-            scope="symbolic definition only; normalization/recombination missing",
-        )
+    ns.record_derivation(
+        derivation_id="near_boundary_acceleration_diagnostic_definition",
+        inputs=[delta_f],
+        output=delta_g,
+        method="define delta_g = -d/dr(delta_f) as acceleration-like deviation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        scope="symbolic definition only; normalization/recombination missing",
+    )
 
-        ns.record_derivation(
-            derivation_id="near_boundary_curvature_diagnostic_definition",
-            inputs=[delta_f],
-            output=delta_curv,
-            method="define delta_curv = d^2/dr^2(delta_f) as curvature-like deviation",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
-            scope="symbolic definition only; metric mapping missing",
-        )
+    ns.record_derivation(
+        derivation_id="near_boundary_curvature_diagnostic_definition",
+        inputs=[delta_f],
+        output=delta_curv,
+        method="define delta_curv = d^2/dr^2(delta_f) as curvature-like deviation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        scope="symbolic definition only; metric mapping missing",
+    )
 
-        ns.record_derivation(
-            derivation_id="near_boundary_redshift_diagnostic_linearized",
-            inputs=[delta_A, A_ref],
-            output=linear_redshift,
-            method="linearize sqrt((A_ref+delta_A)/A_ref)-1 for small delta_A",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
-            scope="linearized in delta_A/A_ref; recombination map to lapse not derived",
-        )
+    ns.record_derivation(
+        derivation_id="near_boundary_redshift_diagnostic_linearized",
+        inputs=[delta_A, A_ref],
+        output=linear_redshift,
+        method="linearize sqrt((A_ref+delta_A)/A_ref)-1 for small delta_A",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
+        scope="linearized in delta_A/A_ref; recombination map to lapse not derived",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_near_boundary_deviation_diagnostic_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_near_boundary_deviation_diagnostics_stated"),
-            method="kappa_near_boundary_deviation_diagnostic_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_near_boundary_deviation_diagnostic_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_near_boundary_deviation_diagnostics_stated"),
+        method="kappa_near_boundary_deviation_diagnostic_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_near_boundary_deviation_recombination_map_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the recombination map from kappa deviation to observable metric quantity",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The diagnostics delta_f, delta_g, delta_curv are defined symbolically. "
-                "Before any magnitude estimate or observability claim, a recombination map "
-                "connecting the kappa-sector deviation to an observable metric quantity "
-                "(acceleration, redshift, etc.) must be derived."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_near_boundary_deviation_recombination_map_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the recombination map from kappa deviation to observable metric quantity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The diagnostics delta_f, delta_g, delta_curv are defined symbolically. "
+            "Before any magnitude estimate or observability claim, a recombination map "
+            "connecting the kappa-sector deviation to an observable metric quantity "
+            "(acceleration, redshift, etc.) must be derived."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="near_boundary_deviation_diagnostic_not_prediction",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "The near-boundary deviation diagnostics (delta_f, delta_g, delta_curv, "
-                "delta_redshift) are symbolic definitions only. They carry no magnitude "
-                "prediction. Premature observability claims before deriving weights, sigma, "
-                "and a recombination map are an open risk and are explicitly prohibited."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="near_boundary_deviation_diagnostic_not_prediction",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "The near-boundary deviation diagnostics (delta_f, delta_g, delta_curv, "
+            "delta_redshift) are symbolic definitions only. They carry no magnitude "
+            "prediction. Premature observability claims before deriving weights, sigma, "
+            "and a recombination map are an open risk and are explicitly prohibited."
+        ),
+    ))
 
-        with out.diagnostic_results():
-            out.line("delta_f = f_joint - f_GR_ref defined symbolically", StatusMark.PASS, "diagnostic definition")
-            out.line("delta_g = -d(delta_f)/dr defined symbolically", StatusMark.PASS, "diagnostic definition")
-            out.line("delta_curv = d^2(delta_f)/dr^2 defined symbolically", StatusMark.PASS, "diagnostic definition")
-            out.line("redshift linearization delta_A/(2*A_ref) stated", StatusMark.PASS, "diagnostic definition")
+    with out.diagnostic_results():
+        out.line("delta_f = f_joint - f_GR_ref defined symbolically", StatusMark.PASS, "diagnostic definition")
+        out.line("delta_g = -d(delta_f)/dr defined symbolically", StatusMark.PASS, "diagnostic definition")
+        out.line("delta_curv = d^2(delta_f)/dr^2 defined symbolically", StatusMark.PASS, "diagnostic definition")
+        out.line("redshift linearization delta_A/(2*A_ref) stated", StatusMark.PASS, "diagnostic definition")
 
-        with out.governance_assessments():
-            out.line("no magnitude prediction made", StatusMark.PASS, "discipline maintained")
-            out.line("no observability claim made", StatusMark.PASS, "discipline maintained")
-            out.line("recombination map", StatusMark.OBLIGATION, "missing")
-            out.line("sigma and weights", StatusMark.OBLIGATION, "not derived")
+    with out.governance_assessments():
+        out.line("no magnitude prediction made", StatusMark.PASS, "discipline maintained")
+        out.line("no observability claim made", StatusMark.PASS, "discipline maintained")
+        out.line("recombination map", StatusMark.OBLIGATION, "missing")
+        out.line("sigma and weights", StatusMark.OBLIGATION, "not derived")
 
-        with out.unresolved_obligations():
-            out.line("derive recombination map for kappa deviation to observable", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive recombination map for kappa deviation to observable", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

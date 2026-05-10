@@ -435,106 +435,105 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_Sigma_V_source_law",
-            script_id=SCRIPT_ID,
-            title="Derive explicit Sigma_V[A,T] source-driven volume creation law",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Sigma_V[A,T] must be written as a covariant, frame-safe, coefficient-fixed, "
-                "boundary-neutral, and no-overlap-compatible expression before the source-driven "
-                "zeta companion branch can be licensed."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_chi_origin_for_Sigma_V",
-            script_id=SCRIPT_ID,
-            title="Derive chi coefficient origin for Sigma_V",
-            status=ObligationStatus.OPEN,
-            description=(
-                "chi must be fixed by postulate or exchange-law origin before gamma/AB checks. "
-                "If chi is chosen from recovery, Sigma_V fails as a derivation."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_residual_kill_no_overlap_for_Sigma_V",
-            script_id=SCRIPT_ID,
-            title="Derive residual-kill/no-overlap theorem for source-driven zeta",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Source-driven zeta must enter the metric only through B_s, or the residual "
-                "zeta trace must be killed or proven non-metric, to prevent double-counting."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_boundary_neutrality_for_Sigma_V",
-            script_id=SCRIPT_ID,
-            title="Derive boundary neutrality for source-driven volume creation",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Q_ext[Sigma_V independent zeta] must equal 0 or the contribution must be "
-                "absorbed into B_s. Without this, source-driven volume creation becomes scalar gravity."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="acceleration_gradient_Sigma_V_route",
-            script_id=SCRIPT_ID,
-            name="Acceleration-gradient source-driven volume creation: Sigma_V ~ chi rho a^mu nabla_mu A",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_Sigma_V_source_law",
-                "derive_chi_origin_for_Sigma_V",
-                "derive_residual_kill_no_overlap_for_Sigma_V",
-                "derive_boundary_neutrality_for_Sigma_V",
-            ],
-            activation_conditions=[
-                "a^mu and frame/projection are defined covariantly",
-                "chi has prior normalization or exchange-law origin",
-                "boundary neutrality theorem is explicit",
-                "no-overlap/residual-kill theorem is attached",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_source_patch_Sigma_V_branch",
-            script_id=SCRIPT_ID,
-            branch_id="Sigma_V_source_patch",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "Sigma_V inserted only to fix q, gamma, or AB is rejected as a source-patch shortcut. "
-                "If no independent Sigma_V exists, the source-driven branch fails."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_source_driven_companion_branch",
-            script_id=SCRIPT_ID,
-            branch_id="source_driven_zeta_companion",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_Sigma_V_source_law",
-                "derive_chi_origin_for_Sigma_V",
-                "derive_residual_kill_no_overlap_for_Sigma_V",
-                "derive_boundary_neutrality_for_Sigma_V",
-            ],
-            description=(
-                "The source-driven zeta companion branch is deferred pending an explicit, "
-                "covariant, coefficient-fixed, boundary-neutral Sigma_V[A,T]."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="source_driven_volume_creation_law_marker",
-            inputs=[],
-            output=sp.Symbol("source_driven_volume_creation_law_audited"),
-            method="source_driven_volume_creation_law_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_Sigma_V_source_law",
+        script_id=SCRIPT_ID,
+        title="Derive explicit Sigma_V[A,T] source-driven volume creation law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Sigma_V[A,T] must be written as a covariant, frame-safe, coefficient-fixed, "
+            "boundary-neutral, and no-overlap-compatible expression before the source-driven "
+            "zeta companion branch can be licensed."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_chi_origin_for_Sigma_V",
+        script_id=SCRIPT_ID,
+        title="Derive chi coefficient origin for Sigma_V",
+        status=ObligationStatus.OPEN,
+        description=(
+            "chi must be fixed by postulate or exchange-law origin before gamma/AB checks. "
+            "If chi is chosen from recovery, Sigma_V fails as a derivation."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_residual_kill_no_overlap_for_Sigma_V",
+        script_id=SCRIPT_ID,
+        title="Derive residual-kill/no-overlap theorem for source-driven zeta",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Source-driven zeta must enter the metric only through B_s, or the residual "
+            "zeta trace must be killed or proven non-metric, to prevent double-counting."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_neutrality_for_Sigma_V",
+        script_id=SCRIPT_ID,
+        title="Derive boundary neutrality for source-driven volume creation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Q_ext[Sigma_V independent zeta] must equal 0 or the contribution must be "
+            "absorbed into B_s. Without this, source-driven volume creation becomes scalar gravity."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="acceleration_gradient_Sigma_V_route",
+        script_id=SCRIPT_ID,
+        name="Acceleration-gradient source-driven volume creation: Sigma_V ~ chi rho a^mu nabla_mu A",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_Sigma_V_source_law",
+            "derive_chi_origin_for_Sigma_V",
+            "derive_residual_kill_no_overlap_for_Sigma_V",
+            "derive_boundary_neutrality_for_Sigma_V",
+        ],
+        activation_conditions=[
+            "a^mu and frame/projection are defined covariantly",
+            "chi has prior normalization or exchange-law origin",
+            "boundary neutrality theorem is explicit",
+            "no-overlap/residual-kill theorem is attached",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_source_patch_Sigma_V_branch",
+        script_id=SCRIPT_ID,
+        branch_id="Sigma_V_source_patch",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "Sigma_V inserted only to fix q, gamma, or AB is rejected as a source-patch shortcut. "
+            "If no independent Sigma_V exists, the source-driven branch fails."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_source_driven_companion_branch",
+        script_id=SCRIPT_ID,
+        branch_id="source_driven_zeta_companion",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_Sigma_V_source_law",
+            "derive_chi_origin_for_Sigma_V",
+            "derive_residual_kill_no_overlap_for_Sigma_V",
+            "derive_boundary_neutrality_for_Sigma_V",
+        ],
+        description=(
+            "The source-driven zeta companion branch is deferred pending an explicit, "
+            "covariant, coefficient-fixed, boundary-neutral Sigma_V[A,T]."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="source_driven_volume_creation_law_marker",
+        inputs=[],
+        output=sp.Symbol("source_driven_volume_creation_law_audited"),
+        method="source_driven_volume_creation_law_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

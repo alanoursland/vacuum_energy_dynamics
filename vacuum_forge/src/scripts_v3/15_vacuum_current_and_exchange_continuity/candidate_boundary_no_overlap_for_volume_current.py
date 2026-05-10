@@ -516,94 +516,93 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_boundary_neutrality_theorem_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive boundary neutrality theorem for J_V-driven zeta",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that J_V-driven zeta has zero exterior flux, zero zeta/kappa scalar charge, "
-                "no far-zone scalar flux, and no M_ext shift. Zero-flux must follow from structure "
-                "or exchange law, not from a fitted counterterm."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_no_overlap_operator_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive no-overlap operator O[B_s, zeta_residual/kappa_residual, J_V] = 0",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The count-once recombination theorem O = 0 is the central missing mechanism. "
-                "Either the operator must be derived, or residual zeta/kappa metric trace must "
-                "be killed or made non-metric."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="bo12_forbidden_boundary_repair",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Choosing boundary counterterms, R_V, or J_V nonlocally to cancel boundary "
-                "leakage is rejected as a boundary neutrality mechanism in the ordinary branch."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="bo14_recovery_downstream_boundary",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "gamma_like and AB recovery tests must be performed only after boundary/no-overlap "
-                "structure is fixed; they must not choose the boundary cancellation or overlap split."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="bo6_B_s_only_metric_insertion_candidate_route",
-            script_id=SCRIPT_ID,
-            name="B_s-only metric insertion with killed/non-metric residual",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_boundary_neutrality_theorem_in_15",
-                "derive_no_overlap_operator_in_15",
-            ],
-            activation_conditions=[
-                "J_V-driven zeta affects metric scalar trace only through B_s/A_spatial",
-                "residual zeta/kappa metric trace is killed or made non-metric",
-                "F_zeta/B_s insertion rule is explicit",
-            ],
-        ))
-        # BO15 branch kill applies only when leakage is demonstrated; none demonstrated here.
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_boundary_leakage_branch",
-            script_id=SCRIPT_ID,
-            branch_id="J_V_boundary_and_no_overlap_check",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_boundary_neutrality_theorem_in_15",
-                "derive_no_overlap_operator_in_15",
-            ],
-            description=(
-                "Boundary neutrality and no-overlap have not been demonstrated. "
-                "Current families that leak or double-count will be killed when "
-                "evidence is available. The branch is deferred pending the theorems."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="boundary_no_overlap_for_volume_current_marker",
-            inputs=[],
-            output=sp.Symbol("boundary_no_overlap_for_volume_current_audited"),
-            method="boundary_no_overlap_for_volume_current_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_neutrality_theorem_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive boundary neutrality theorem for J_V-driven zeta",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that J_V-driven zeta has zero exterior flux, zero zeta/kappa scalar charge, "
+            "no far-zone scalar flux, and no M_ext shift. Zero-flux must follow from structure "
+            "or exchange law, not from a fitted counterterm."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_no_overlap_operator_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive no-overlap operator O[B_s, zeta_residual/kappa_residual, J_V] = 0",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The count-once recombination theorem O = 0 is the central missing mechanism. "
+            "Either the operator must be derived, or residual zeta/kappa metric trace must "
+            "be killed or made non-metric."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="bo12_forbidden_boundary_repair",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Choosing boundary counterterms, R_V, or J_V nonlocally to cancel boundary "
+            "leakage is rejected as a boundary neutrality mechanism in the ordinary branch."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="bo14_recovery_downstream_boundary",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_like and AB recovery tests must be performed only after boundary/no-overlap "
+            "structure is fixed; they must not choose the boundary cancellation or overlap split."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="bo6_B_s_only_metric_insertion_candidate_route",
+        script_id=SCRIPT_ID,
+        name="B_s-only metric insertion with killed/non-metric residual",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_boundary_neutrality_theorem_in_15",
+            "derive_no_overlap_operator_in_15",
+        ],
+        activation_conditions=[
+            "J_V-driven zeta affects metric scalar trace only through B_s/A_spatial",
+            "residual zeta/kappa metric trace is killed or made non-metric",
+            "F_zeta/B_s insertion rule is explicit",
+        ],
+    ))
+    # BO15 branch kill applies only when leakage is demonstrated; none demonstrated here.
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_boundary_leakage_branch",
+        script_id=SCRIPT_ID,
+        branch_id="J_V_boundary_and_no_overlap_check",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_boundary_neutrality_theorem_in_15",
+            "derive_no_overlap_operator_in_15",
+        ],
+        description=(
+            "Boundary neutrality and no-overlap have not been demonstrated. "
+            "Current families that leak or double-count will be killed when "
+            "evidence is available. The branch is deferred pending the theorems."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="boundary_no_overlap_for_volume_current_marker",
+        inputs=[],
+        output=sp.Symbol("boundary_no_overlap_for_volume_current_audited"),
+        method="boundary_no_overlap_for_volume_current_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

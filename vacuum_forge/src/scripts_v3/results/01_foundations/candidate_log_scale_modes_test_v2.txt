@@ -1,3 +1,6 @@
+[SCRIPT_FAILED]
+exit_code=1
+
 
 ========================================================================================
 Candidate Log-Scale Exterior Modes v2 — Derive, Record, Validate
@@ -10,14 +13,16 @@ A(kappa,s)  = exp(kappa + s)
 B(kappa,s)  = exp(kappa - s)
 AB          = exp(2*kappa)
 AB|kappa=0  = 1
-[PASS] kappa = 0 -> AB = 1
 
 A_gamma     = exp(Phi/c**2)
 B_gamma     = exp(-Phi*gamma_v/c**2)
 AB_gamma    = exp(Phi*(1 - gamma_v)/c**2)
 log(AB)     = Phi*(1 - gamma_v)/c**2
 gamma_v sol = [1]
-[PASS] AB = 1 -> gamma_v = 1 under weak-field ansatz
+
+[derived_results]
+[PASS] kappa = 0 -> AB = 1 -- AB|kappa=0 = 1
+[PASS] AB = 1 -> gamma_v = 1 under weak-field ansatz -- gamma_v solutions: [1]
 
 ========================================================================================
 Case A: Direct mode assumption / tautology control
@@ -52,7 +57,9 @@ Operator: direct_creation_kappa (creation)
 J_kappa = 0
 J_s     = 2*S
 Status  = tautological
-[PASS] direct delta_kappa=0 classified as tautological
+
+[governance_assessments]
+[PASS] direct delta_kappa=0 classified as tautological -- direct mode assumption is leak-controlled
 
 ========================================================================================
 Case B: Structural trace-kernel exterior
@@ -87,7 +94,6 @@ Operator: symmetric_creation_31 (creation)
   Note: Creation source is pure trace (traceful).
 Exchange J_kappa = 0
 Exchange J_s     = -2*S
-[PASS] pre-mode exchange derives J_kappa = 0
 
 ----------------------------------------------------------------------------------------
 B2: energy equilibrium and recorded reciprocal chain
@@ -96,7 +102,6 @@ Stationary equations: [Eq(2*C_kappa*kappa, 0), Eq(2*C_sigma*sigma - J_s, 0)]
 Solutions: [{kappa: 0, sigma: J_s/(2*C_sigma)}]
 kappa_eq = 0
 s_eq     = J_s/(2*C_sigma)
-[WARN] recorded kappa=0 -> AB=1 -> gamma_v=1
 
 ----------------------------------------------------------------------------------------
 Case B: requirement validation
@@ -116,6 +121,10 @@ Case B: leak detection audit
   gamma_v_one: clean
   trace_free_exchange: clean
 
+[sample_results]
+[PASS] Case B: pre-mode exchange derives J_kappa = 0 -- analyzer: derived
+[WARN] Case B: recorded kappa=0 -> AB=1 -> gamma_v=1 -- toy sample: consequence chain recorded; source law not derived
+
 ========================================================================================
 Case C: Generic kappa-sourced exchange
 ========================================================================================
@@ -124,7 +133,6 @@ Solutions: [{kappa: J_k/(2*C_kappa), sigma: J_s/(2*C_sigma)}]
 kappa_eq = J_k/(2*C_kappa)
 s_eq     = J_s/(2*C_sigma)
 AB = exp(2*kappa_eq) = exp(J_k/C_kappa)
-[PASS] generic kappa sourcing prevents AB=1
 
 ----------------------------------------------------------------------------------------
 Case C: requirement validation
@@ -144,6 +152,9 @@ Case C: leak detection audit
   gamma_v_one: clean
   trace_free_exchange: clean
 
+[sample_results]
+[PASS] Case C: generic kappa sourcing prevents AB=1 -- toy sample: kappa_eq = J_k/(2*C_kappa) != 0 generically
+
 ========================================================================================
 Case D: Interface/source-to-exterior separation toy
 ========================================================================================
@@ -156,8 +167,6 @@ Stationary equations: [Eq(2*C_kappa*kappa, 0), Eq(2*C_sigma*sigma - S_boundary, 
 Solutions: [{kappa: 0, sigma: S_boundary/(2*C_sigma)}]
 kappa_eq = 0
 s_eq     = S_boundary/(2*C_sigma)
-[WARN] exterior kappa suppression records AB=1 and gamma_v=1
-[PASS] compensated/shear exterior mode remains active: s_eq = S_boundary/(2*C_sigma)
 
 ----------------------------------------------------------------------------------------
 Case D: requirement validation
@@ -176,6 +185,10 @@ Case D: leak detection audit
   kappa_zero: clean
   gamma_v_one: clean
   trace_free_exchange: clean
+
+[sample_results]
+[WARN] Case D: exterior kappa suppression records AB=1 and gamma_v=1 -- toy sample: consequence chain recorded
+[PASS] Case D: compensated/shear exterior mode remains active -- s_eq = S_boundary/(2*C_sigma)
 
 ========================================================================================
 Final v2 interpretation
@@ -209,3 +222,19 @@ Main research target sharpened by the forge:
 This script still does not derive that deeper rule. It only verifies
 the reduced algebraic and energy-equilibrium consequences once such
 a rule is supplied.
+
+[governance_assessments]
+[PASS] v2 four-case sweep confirms tautology/derivation distinction -- Cases A-D establish correct record-keeping for mode suppression claims
+[DEFER] trace-kernel exterior route remains candidate pending source law -- deeper source/energy law needed before route is licensed
+
+[unresolved_obligations]
+[OBLIGATION] derive covariant source law or energy functional suppressing kappa -- open: all four cases confirm the research target is not yet closed
+
+[stderr]
+Traceback (most recent call last):
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test_v2.py", line 760, in <module>
+    main()
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test_v2.py", line 668, in main
+    ns.prepare_archive()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ScriptNamespace' object has no attribute 'prepare_archive'

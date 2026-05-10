@@ -295,68 +295,67 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    with archive:
-        # The compensated charge = 0 is a real sample computation
-        ns.record_derivation(
-            derivation_id="compensated_trace_zero_charge_sample",
-            inputs=[S_comp],
-            output=Q_comp,
-            method="integrate 4*pi*r^2*S_comp over [0,R] for S_comp = S_raw - <S_raw>",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="parabolic pressure profile only; parent identity for compensation not derived",
-        )
+    # The compensated charge = 0 is a real sample computation
+    ns.record_derivation(
+        derivation_id="compensated_trace_zero_charge_sample",
+        inputs=[S_comp],
+        output=Q_comp,
+        method="integrate 4*pi*r^2*S_comp over [0,R] for S_comp = S_raw - <S_raw>",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="parabolic pressure profile only; parent identity for compensation not derived",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_compensated_trace_constraint_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_compensated_trace_constraint_stated"),
-            method="kappa_compensated_trace_constraint_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_compensated_trace_constraint_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_compensated_trace_constraint_stated"),
+        method="kappa_compensated_trace_constraint_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_parent_identity_for_compensated_kappa_source_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive parent identity that enforces compensated kappa source (Q_kappa=0)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The compensated source S_comp = S_trace - <S_trace> removes monopole "
-                "kappa charge algebraically, but the subtraction is nonlocal over the support "
-                "and not derived from a parent law. A constraint/projection identity must be "
-                "derived before this is accepted as a physical source law."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_parent_identity_for_compensated_kappa_source_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive parent identity that enforces compensated kappa source (Q_kappa=0)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The compensated source S_comp = S_trace - <S_trace> removes monopole "
+            "kappa charge algebraically, but the subtraction is nonlocal over the support "
+            "and not derived from a parent law. A constraint/projection identity must be "
+            "derived before this is accepted as a physical source law."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="compensated_kappa_source_nonlocal_risk",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "The support-average subtraction S_comp = S_trace - <S_trace> is nonlocal "
-                "over the matter support region. It cannot be treated as an ordinary local "
-                "dynamical source law unless derived from a constrained or projected variable."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="compensated_kappa_source_nonlocal_risk",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "The support-average subtraction S_comp = S_trace - <S_trace> is nonlocal "
+            "over the matter support region. It cannot be treated as an ordinary local "
+            "dynamical source law unless derived from a constrained or projected variable."
+        ),
+    ))
 
-        with out.sample_results():
-            out.line("compensated source zero charge Q_comp=0", StatusMark.PASS, "parabolic profile sample only")
+    with out.sample_results():
+        out.line("compensated source zero charge Q_comp=0", StatusMark.PASS, "parabolic profile sample only")
 
-        with out.governance_assessments():
-            out.line("compensation removes monopole leakage", StatusMark.PASS, "algebraically valid")
-            out.line("parent identity for compensation", StatusMark.FAIL, "missing - not derived")
-            out.line("nonlocality risk", StatusMark.FAIL, "open risk")
+    with out.governance_assessments():
+        out.line("compensation removes monopole leakage", StatusMark.PASS, "algebraically valid")
+        out.line("parent identity for compensation", StatusMark.FAIL, "missing - not derived")
+        out.line("nonlocality risk", StatusMark.FAIL, "open risk")
 
-        with out.unresolved_obligations():
-            out.line("derive parent identity for Q_kappa=0", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive parent identity for Q_kappa=0", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

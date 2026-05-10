@@ -407,106 +407,105 @@ def main():
     case_11_next_tests()
     final_interpretation()
 
-    with archive:
-        # Euler-Lagrange structure is a real sample computation with toy assumptions
-        ns.record_derivation(
-            derivation_id="joint_minimum_euler_lagrange_fourth_order_sample",
-            inputs=[L],
-            output=EL,
-            method=(
-                "compute EL = dL/df - d/dr(dL/df') + d^2/dr^2(dL/df'') "
-                "for L = W_int*(f-f_int)^2 + W_ext*(f-f_ext)^2 + lam1*(f')^2 + lam2*(f'')^2"
-            ),
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope=(
-                "toy variational model with arbitrary weight functions W_int, W_ext; "
-                "lambda_1 and lambda_2 are free parameters not derived from action; "
-                "do not treat as physical prediction"
-            ),
-        )
+    # Euler-Lagrange structure is a real sample computation with toy assumptions
+    ns.record_derivation(
+        derivation_id="joint_minimum_euler_lagrange_fourth_order_sample",
+        inputs=[L],
+        output=EL,
+        method=(
+            "compute EL = dL/df - d/dr(dL/df') + d^2/dr^2(dL/df'') "
+            "for L = W_int*(f-f_int)^2 + W_ext*(f-f_ext)^2 + lam1*(f')^2 + lam2*(f'')^2"
+        ),
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope=(
+            "toy variational model with arbitrary weight functions W_int, W_ext; "
+            "lambda_1 and lambda_2 are free parameters not derived from action; "
+            "do not treat as physical prediction"
+        ),
+    )
 
-        # Constant-weight EL structure
-        ns.record_derivation(
-            derivation_id="joint_minimum_constant_weight_EL_sample",
-            inputs=[eq_const],
-            output=sp.Symbol("constant_weight_EL_structure_stated"),
-            method=(
-                "schematic EL for constant W_i, W_e: "
-                "lam2*f'''' - lam1*f'' + (W_i+W_e)*f = W_i*f_int + W_e*f_ext"
-            ),
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="constant weights only; radial weight dependence not handled",
-        )
+    # Constant-weight EL structure
+    ns.record_derivation(
+        derivation_id="joint_minimum_constant_weight_EL_sample",
+        inputs=[eq_const],
+        output=sp.Symbol("constant_weight_EL_structure_stated"),
+        method=(
+            "schematic EL for constant W_i, W_e: "
+            "lam2*f'''' - lam1*f'' + (W_i+W_e)*f = W_i*f_int + W_e*f_ext"
+        ),
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="constant weights only; radial weight dependence not handled",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_joint_minimum_energy_functional_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_joint_minimum_energy_functional_stated"),
-            method="kappa_joint_minimum_energy_functional_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_joint_minimum_energy_functional_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_joint_minimum_energy_functional_stated"),
+        method="kappa_joint_minimum_energy_functional_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_joint_minimum_observable_coupling_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the coupling between the joint minimum deviation and an observable quantity",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The deviation delta = f_joint - f_ref is defined symbolically but not "
-                "connected to an observable. Before any measurement claim, the coupling "
-                "to acceleration, redshift, or metric component must be derived."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_joint_minimum_observable_coupling_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the coupling between the joint minimum deviation and an observable quantity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The deviation delta = f_joint - f_ref is defined symbolically but not "
+            "connected to an observable. Before any measurement claim, the coupling "
+            "to acceleration, redshift, or metric component must be derived."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="joint_minimum_EL_is_fourth_order_toy_model",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The Euler-Lagrange equation for the joint minimum energy with lambda_2*(f'')^2 "
-                "is fourth-order in f, as expected for a curvature-smoothing functional. "
-                "This is a toy model: weights W_int, W_ext, lambda_1, lambda_2 are not derived "
-                "and the model must not be treated as a physical prediction."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="joint_minimum_EL_is_fourth_order_toy_model",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The Euler-Lagrange equation for the joint minimum energy with lambda_2*(f'')^2 "
+            "is fourth-order in f, as expected for a curvature-smoothing functional. "
+            "This is a toy model: weights W_int, W_ext, lambda_1, lambda_2 are not derived "
+            "and the model must not be treated as a physical prediction."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="near_boundary_deviation_defined_not_predicted",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "The near-boundary deviation diagnostic delta = f_joint - f_ref is defined "
-                "but carries no magnitude prediction. Any claim of observability requires "
-                "derived weights, derived transition width, and an identified observable. "
-                "Premature observability claims are an open risk."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="near_boundary_deviation_defined_not_predicted",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "The near-boundary deviation diagnostic delta = f_joint - f_ref is defined "
+            "but carries no magnitude prediction. Any claim of observability requires "
+            "derived weights, derived transition width, and an identified observable. "
+            "Premature observability claims are an open risk."
+        ),
+    ))
 
-        with out.sample_results():
-            out.line("Euler-Lagrange fourth-order structure computed (toy)", StatusMark.PASS, "sample - arbitrary weights")
-            out.line("constant-weight EL schematic stated", StatusMark.PASS, "sample - toy model")
-            out.line("deviation diagnostic delta defined symbolically", StatusMark.PASS, "no magnitude")
+    with out.sample_results():
+        out.line("Euler-Lagrange fourth-order structure computed (toy)", StatusMark.PASS, "sample - arbitrary weights")
+        out.line("constant-weight EL schematic stated", StatusMark.PASS, "sample - toy model")
+        out.line("deviation diagnostic delta defined symbolically", StatusMark.PASS, "no magnitude")
 
-        with out.governance_assessments():
-            out.line("observable coupling for deviation", StatusMark.OBLIGATION, "missing")
-            out.line("weights W_int, W_ext", StatusMark.OBLIGATION, "not derived")
-            out.line("transition width sigma", StatusMark.OBLIGATION, "not derived")
-            out.line("no observability claim made", StatusMark.PASS, "discipline maintained")
+    with out.governance_assessments():
+        out.line("observable coupling for deviation", StatusMark.OBLIGATION, "missing")
+        out.line("weights W_int, W_ext", StatusMark.OBLIGATION, "not derived")
+        out.line("transition width sigma", StatusMark.OBLIGATION, "not derived")
+        out.line("no observability claim made", StatusMark.PASS, "discipline maintained")
 
-        with out.unresolved_obligations():
-            out.line("derive observable coupling for joint minimum deviation", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive observable coupling for joint minimum deviation", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

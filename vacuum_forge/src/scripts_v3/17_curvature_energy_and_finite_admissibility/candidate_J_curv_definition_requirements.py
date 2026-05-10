@@ -561,85 +561,84 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="define_J_curv_domain_in_17_J_curv_requirements",
-            script_id=SCRIPT_ID,
-            title="Define J_curv domain D_curv",
-            status=ObligationStatus.OPEN,
-            description="D_curv must be geometric/physical and not selected after failure to exclude singularity.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="define_J_curv_orientation_in_17_J_curv_requirements",
-            script_id=SCRIPT_ID,
-            title="Define J_curv orientation law",
-            status=ObligationStatus.OPEN,
-            description="Direction/orientation of J_curv must follow from transport/admissibility structure, not be chosen to cancel blowup or leakage.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="define_J_curv_measure_in_17_J_curv_requirements",
-            script_id=SCRIPT_ID,
-            title="Define J_curv physical measure",
-            status=ObligationStatus.OPEN,
-            description="Physical measure for flux/integral must be structurally compatible with geometry, not chosen to make flux finite after the fact.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_J_curv_boundary_neutrality_in_17_J_curv_requirements",
-            script_id=SCRIPT_ID,
-            title="Prove J_curv boundary neutrality",
-            status=ObligationStatus.OPEN,
-            description="J_curv must have no boundary repair flux, hidden exterior charge, or mass-shift leakage.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_J_curv_matter_separation_in_17_J_curv_requirements",
-            script_id=SCRIPT_ID,
-            title="Prove J_curv matter separation",
-            status=ObligationStatus.OPEN,
-            description="J_curv must not double-count T_mu_nu or modify ordinary matter coupling.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_J_curv_repair_current_in_17",
-            script_id=SCRIPT_ID,
-            branch_id="J_curv_repair_current",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_J_curv_gradient_by_fiat_in_17",
-            script_id=SCRIPT_ID,
-            branch_id="J_curv_gradient_by_fiat",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_J_curv_source_reservoir_in_17",
-            script_id=SCRIPT_ID,
-            branch_id="J_curv_source_reservoir",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_J_curv_H_curv_handoff_in_17",
-            script_id=SCRIPT_ID,
-            branch_id="J_curv_informs_H_curv",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "define_J_curv_domain_in_17_J_curv_requirements",
-                "define_J_curv_orientation_in_17_J_curv_requirements",
-            ],
-        ))
-        ns.record_derivation(
-            derivation_id="J_curv_definition_requirements_marker",
-            inputs=[],
-            output=sp.Symbol("J_curv_definition_requirements_complete"),
-            method="J_curv_definition_requirements",
-            status=Status.DERIVED,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="define_J_curv_domain_in_17_J_curv_requirements",
+        script_id=SCRIPT_ID,
+        title="Define J_curv domain D_curv",
+        status=ObligationStatus.OPEN,
+        description="D_curv must be geometric/physical and not selected after failure to exclude singularity.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="define_J_curv_orientation_in_17_J_curv_requirements",
+        script_id=SCRIPT_ID,
+        title="Define J_curv orientation law",
+        status=ObligationStatus.OPEN,
+        description="Direction/orientation of J_curv must follow from transport/admissibility structure, not be chosen to cancel blowup or leakage.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="define_J_curv_measure_in_17_J_curv_requirements",
+        script_id=SCRIPT_ID,
+        title="Define J_curv physical measure",
+        status=ObligationStatus.OPEN,
+        description="Physical measure for flux/integral must be structurally compatible with geometry, not chosen to make flux finite after the fact.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_J_curv_boundary_neutrality_in_17_J_curv_requirements",
+        script_id=SCRIPT_ID,
+        title="Prove J_curv boundary neutrality",
+        status=ObligationStatus.OPEN,
+        description="J_curv must have no boundary repair flux, hidden exterior charge, or mass-shift leakage.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_J_curv_matter_separation_in_17_J_curv_requirements",
+        script_id=SCRIPT_ID,
+        title="Prove J_curv matter separation",
+        status=ObligationStatus.OPEN,
+        description="J_curv must not double-count T_mu_nu or modify ordinary matter coupling.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_J_curv_repair_current_in_17",
+        script_id=SCRIPT_ID,
+        branch_id="J_curv_repair_current",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_J_curv_gradient_by_fiat_in_17",
+        script_id=SCRIPT_ID,
+        branch_id="J_curv_gradient_by_fiat",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_J_curv_source_reservoir_in_17",
+        script_id=SCRIPT_ID,
+        branch_id="J_curv_source_reservoir",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_J_curv_H_curv_handoff_in_17",
+        script_id=SCRIPT_ID,
+        branch_id="J_curv_informs_H_curv",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "define_J_curv_domain_in_17_J_curv_requirements",
+            "define_J_curv_orientation_in_17_J_curv_requirements",
+        ],
+    ))
+    ns.record_derivation(
+        derivation_id="J_curv_definition_requirements_marker",
+        inputs=[],
+        output=sp.Symbol("J_curv_definition_requirements_complete"),
+        method="J_curv_definition_requirements",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

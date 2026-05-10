@@ -2,6 +2,7 @@
 ========================================================================================================
 Candidate Kappa-Leak Deviation
 ========================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - reduced_action_stationary_solution: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -17,9 +18,11 @@ AB = 1
 A series = 2*eps**2 - 2*eps + 1
 B series = 2*eps**2 + 2*eps + 1
 AB series = 1
-[PASS] baseline A first order is 1 - 2 eps
-[PASS] baseline B first order is 1 + 2 eps
-[PASS] baseline AB = 1 exactly
+
+[sample_results]
+[PASS] baseline A first order is 1 - 2 eps -- residual=0
+[PASS] baseline B first order is 1 + 2 eps -- residual=0
+[PASS] baseline AB = 1 exactly -- residual=0
 
 ========================================================================================================
 Case 1: Constant fractional kappa leak
@@ -33,9 +36,11 @@ AB = exp(2*eps*lambda_k)
 A series = eps**2*(lambda_k**2/2 - 2*lambda_k + 2) + eps*(lambda_k - 2) + 1
 B series = eps**2*(lambda_k**2/2 + 2*lambda_k + 2) + eps*(lambda_k + 2) + 1
 AB series = 2*eps**2*lambda_k**2 + 2*eps*lambda_k + 1
-[PASS] A first-order coefficient is lambda_k - 2
-[PASS] B first-order coefficient is lambda_k + 2
-[PASS] AB first-order coefficient is 2 lambda_k
+
+[sample_results]
+[PASS] A first-order coefficient is lambda_k - 2 -- residual=0
+[PASS] B first-order coefficient is lambda_k + 2 -- residual=0
+[PASS] AB first-order coefficient is 2 lambda_k -- residual=0
 
 ========================================================================================================
 Case 2: Gamma-like proxy from temporal normalization
@@ -52,7 +57,9 @@ Spatial coefficient:
 gamma_eff = (-lambda_k - 2)/(lambda_k - 2)
 gamma_eff - 1 = -2*lambda_k/(lambda_k - 2)
 small lambda series gamma_eff = lambda_k**2/2 + lambda_k + 1
-[PASS] gamma_eff - 1 = 2 lambda_k/(2-lambda_k)
+
+[sample_results]
+[PASS] gamma_eff - 1 = 2 lambda_k/(2-lambda_k) -- residual=0
 
 Interpretation:
   For small lambda_k, gamma_eff - 1 ≈ lambda_k.
@@ -66,7 +73,9 @@ then A must have first-order coefficient -2.
 
 A first-order coefficient = lambda_k - 2
 solve lambda_k - 2 = -2 -> [0]
-[PASS] Newtonian normalization forces lambda_k=0 in this simple leak model
+
+[sample_results]
+[PASS] Newtonian normalization forces lambda_k=0 in this simple leak model -- solution=[0]
 
 Interpretation:
   A constant kappa leak changes both temporal and radial first-order coefficients.
@@ -87,7 +96,9 @@ Large-radius behavior:
   kappa/eps = eta exp(-r/L)
   so gamma-like deviation proxy ≈ eta exp(-r/L) for small leak.
 
-[PASS] decaying leak vanishes asymptotically
+
+[sample_results]
+[PASS] decaying leak vanishes asymptotically -- kappa/eps=eta*exp(-r/L) -> 0 as r->infinity
 
 ========================================================================================================
 Case 5: Power-law kappa leak profile
@@ -104,7 +115,9 @@ Leak ratio:
 
 For n>0, the leak becomes smaller at large radius.
 For n=0, this reduces to the constant fractional leak case.
-[PASS] power-law leak is a tunable deviation profile
+
+[sample_results]
+[PASS] power-law leak is a tunable deviation profile -- kappa/eps=(R0/r)^n, decays for n>0
 
 ========================================================================================================
 Case 6: Mixed exchange + creation source as kappa leak origin
@@ -117,15 +130,19 @@ Solutions: [{kappa: C/(2*C_k), s: S/(2*C_s)}]
 kappa_eq = C/(2*C_k)
 s_eq = S/(2*C_s)
 AB = exp(C/C_k)
-[PASS] mixed source produces nonzero kappa leak
-[PASS] mixed source preserves shear channel
-[PASS] mixed source breaks reciprocal scaling generically
+
+[sample_results]
+[PASS] mixed source produces nonzero kappa leak -- kappa_eq=C/(2*C_k)
+[PASS] mixed source preserves shear channel -- s_eq=S/(2*C_s)
+[PASS] mixed source breaks reciprocal scaling generically -- AB=exp(C/C_k)
 
 Interpretation:
   A small traceful creation/destruction component mixed into exchange
   is a natural reduced source for kappa leak.
-[PASS] VacuumForge reproduces kappa leak equilibrium
-[PASS] VacuumForge reproduces shear equilibrium
+
+[sample_results]
+[PASS] VacuumForge reproduces kappa leak equilibrium -- residual=0
+[PASS] VacuumForge reproduces shear equilibrium -- residual=0
 
 ========================================================================================================
 Case 7: Observational pressure summary
@@ -147,6 +164,9 @@ Therefore:
 
 This script does not apply real observational bounds.
 It identifies the first reduced deviation proxy.
+
+[unresolved_obligations]
+[OBLIGATION] apply real observational bounds to kappa leak -- no actual PPN or solar system bounds applied; open proof obligation recorded
 
 ========================================================================================================
 Final interpretation

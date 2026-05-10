@@ -438,96 +438,95 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_J_V_flux_law",
-            script_id=SCRIPT_ID,
-            title="Derive J_V flux direction law for vacuum-volume current",
-            status=ObligationStatus.OPEN,
-            description=(
-                "J_V must have an independent physical flux or transport law — not just a divergence "
-                "equation — before u_vac^mu = J_V^mu / sqrt(-J_V^2) can define the vacuum rest frame."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_J_V_domain_theorem",
-            script_id=SCRIPT_ID,
-            title="Derive timelike/nonzero domain theorem for J_V",
-            status=ObligationStatus.OPEN,
-            description=(
-                "J_V^2 < 0 and J_V != 0 must be proved or the domain explicitly restricted "
-                "to regimes where these conditions hold, to prevent invalid frame normalization."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="exchange_continuity_J_V_route",
-            script_id=SCRIPT_ID,
-            name="Exchange continuity J_V route: nabla_mu J_V^mu = Sigma_V - R_V",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_J_V_flux_law",
-                "derive_J_V_domain_theorem",
-                "derive_Sigma_V_source_law",
-                "derive_boundary_neutrality_for_Sigma_V",
-            ],
-            activation_conditions=[
-                "Sigma_V and R_V are independently defined",
-                "J_V has a non-circular transport/flux direction",
-                "J_V^2 < 0 and J_V != 0 in target domain",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_decorative_J_V",
-            script_id=SCRIPT_ID,
-            branch_id="decorative_J_V_current",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "J_V declared as vacuum-volume current without a flux law is rejected. "
-                "Naming J_V does not define it; a real transport/balance law is required."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_circular_J_V_n_V_u_vac",
-            script_id=SCRIPT_ID,
-            branch_id="circular_J_V_n_V_u_vac",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "J_V^mu = n_V u_vac^mu used to define u_vac is rejected as a circular definition. "
-                "The clock cannot be defined using the clock."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_volume_current_and_u_vac_definition",
-            script_id=SCRIPT_ID,
-            branch_id="volume_current_J_V_and_u_vac",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_J_V_flux_law",
-                "derive_J_V_domain_theorem",
-                "derive_Sigma_V_source_law",
-            ],
-            description=(
-                "J_V/u_vac definition is deferred pending an independent flux direction law, "
-                "a domain theorem, and defined Sigma_V/R_V operators. "
-                "Group 14 closes with J_V/u_vac as the surviving bottleneck."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="volume_current_definition_for_u_vac_marker",
-            inputs=[],
-            output=sp.Symbol("volume_current_definition_for_u_vac_audited"),
-            method="volume_current_definition_for_u_vac_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_V_flux_law",
+        script_id=SCRIPT_ID,
+        title="Derive J_V flux direction law for vacuum-volume current",
+        status=ObligationStatus.OPEN,
+        description=(
+            "J_V must have an independent physical flux or transport law — not just a divergence "
+            "equation — before u_vac^mu = J_V^mu / sqrt(-J_V^2) can define the vacuum rest frame."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_V_domain_theorem",
+        script_id=SCRIPT_ID,
+        title="Derive timelike/nonzero domain theorem for J_V",
+        status=ObligationStatus.OPEN,
+        description=(
+            "J_V^2 < 0 and J_V != 0 must be proved or the domain explicitly restricted "
+            "to regimes where these conditions hold, to prevent invalid frame normalization."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="exchange_continuity_J_V_route",
+        script_id=SCRIPT_ID,
+        name="Exchange continuity J_V route: nabla_mu J_V^mu = Sigma_V - R_V",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_J_V_flux_law",
+            "derive_J_V_domain_theorem",
+            "derive_Sigma_V_source_law",
+            "derive_boundary_neutrality_for_Sigma_V",
+        ],
+        activation_conditions=[
+            "Sigma_V and R_V are independently defined",
+            "J_V has a non-circular transport/flux direction",
+            "J_V^2 < 0 and J_V != 0 in target domain",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_decorative_J_V",
+        script_id=SCRIPT_ID,
+        branch_id="decorative_J_V_current",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "J_V declared as vacuum-volume current without a flux law is rejected. "
+            "Naming J_V does not define it; a real transport/balance law is required."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_circular_J_V_n_V_u_vac",
+        script_id=SCRIPT_ID,
+        branch_id="circular_J_V_n_V_u_vac",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "J_V^mu = n_V u_vac^mu used to define u_vac is rejected as a circular definition. "
+            "The clock cannot be defined using the clock."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_volume_current_and_u_vac_definition",
+        script_id=SCRIPT_ID,
+        branch_id="volume_current_J_V_and_u_vac",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_J_V_flux_law",
+            "derive_J_V_domain_theorem",
+            "derive_Sigma_V_source_law",
+        ],
+        description=(
+            "J_V/u_vac definition is deferred pending an independent flux direction law, "
+            "a domain theorem, and defined Sigma_V/R_V operators. "
+            "Group 14 closes with J_V/u_vac as the surviving bottleneck."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="volume_current_definition_for_u_vac_marker",
+        inputs=[],
+        output=sp.Symbol("volume_current_definition_for_u_vac_audited"),
+        method="volume_current_definition_for_u_vac_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

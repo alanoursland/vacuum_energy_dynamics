@@ -500,64 +500,63 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_J_V_timelike_domain_theorem_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive timelike/nonzero domain theorem for J_V",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Prove that a candidate J_V satisfies J_V^2 < 0 and J_V != 0 on the domain "
-                "where u_vac = J_V / sqrt(-J_V^2) is used. Without this, u_vac is not well-defined."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="td9_no_global_u_vac_from_J_V",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "u_vac from J_V exists only on D_V = {J_V^2 < 0, J_V != 0}. "
-                "No global vacuum clock may be claimed from a domain-limited or zero current."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="td5_compact_support_safe_domain_route",
-            script_id=SCRIPT_ID,
-            name="Compact-support redistribution domain (local u_vac only)",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_J_V_timelike_domain_theorem_in_15"],
-            activation_conditions=[
-                "J_V is timelike/nonzero only inside compact active region",
-                "zero boundary flux is structural",
-                "no exterior scalar charge is created",
-                "u_vac is not claimed outside the support",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_J_V_timelike_domain_branch",
-            script_id=SCRIPT_ID,
-            branch_id="J_V_timelike_domain_u_vac_definition",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_J_V_timelike_domain_theorem_in_15"],
-            description=(
-                "The timelike/nonzero domain theorem for J_V has not been derived. "
-                "u_vac cannot yet be defined from J_V. The branch is deferred."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="timelike_domain_for_volume_current_marker",
-            inputs=[],
-            output=sp.Symbol("timelike_domain_for_volume_current_audited"),
-            method="timelike_domain_for_volume_current_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_V_timelike_domain_theorem_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive timelike/nonzero domain theorem for J_V",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Prove that a candidate J_V satisfies J_V^2 < 0 and J_V != 0 on the domain "
+            "where u_vac = J_V / sqrt(-J_V^2) is used. Without this, u_vac is not well-defined."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="td9_no_global_u_vac_from_J_V",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "u_vac from J_V exists only on D_V = {J_V^2 < 0, J_V != 0}. "
+            "No global vacuum clock may be claimed from a domain-limited or zero current."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="td5_compact_support_safe_domain_route",
+        script_id=SCRIPT_ID,
+        name="Compact-support redistribution domain (local u_vac only)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_J_V_timelike_domain_theorem_in_15"],
+        activation_conditions=[
+            "J_V is timelike/nonzero only inside compact active region",
+            "zero boundary flux is structural",
+            "no exterior scalar charge is created",
+            "u_vac is not claimed outside the support",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_J_V_timelike_domain_branch",
+        script_id=SCRIPT_ID,
+        branch_id="J_V_timelike_domain_u_vac_definition",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_J_V_timelike_domain_theorem_in_15"],
+        description=(
+            "The timelike/nonzero domain theorem for J_V has not been derived. "
+            "u_vac cannot yet be defined from J_V. The branch is deferred."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="timelike_domain_for_volume_current_marker",
+        inputs=[],
+        output=sp.Symbol("timelike_domain_for_volume_current_audited"),
+        method="timelike_domain_for_volume_current_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

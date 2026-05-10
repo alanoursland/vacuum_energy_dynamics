@@ -798,18 +798,17 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive:
-        record_governance(ns)
-        ns.record_derivation(
-            derivation_id="correction_tensor_source_separation_marker",
-            inputs=[],
-            output=sp.Symbol("correction_tensor_source_separation_complete"),
-            method="correction_tensor_source_separation",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    record_governance(ns)
+    ns.record_derivation(
+        derivation_id="correction_tensor_source_separation_marker",
+        inputs=[],
+        output=sp.Symbol("correction_tensor_source_separation_complete"),
+        method="correction_tensor_source_separation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

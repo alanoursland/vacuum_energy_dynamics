@@ -2,8 +2,9 @@
 ============================================================================================================
 Candidate Areal-Flux Principle
 ============================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
-  - exact_source_law_geometry_check: dependency_missing (Upstream derivation 'exact_schwarzschild_concrete_metric_check' not found in archive for script '02_mechanics__candidate_exact_source_law_geometry_check'.)
+  - exact_source_law_geometry_check: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ============================================================================================================
 Case 0: Define areal-flux law
@@ -28,7 +29,9 @@ Then:
 
   F_A'(r) = 32*pi^2*G*r^2*rho/c^2
 
-[PASS] areal source law can be written as Gauss-flux law
+
+[governance_assessments]
+[PASS] areal source law can be written as Gauss-flux law -- Delta_areal A=8πG*rho/c² equivalently gives d/dr(F_A)=32π²G*r²*rho/c²
 
 ============================================================================================================
 Case 1: Source-free flux conservation
@@ -44,7 +47,9 @@ General solution: Eq(A(r), C1 + C2/r)
 So:
   A(r)=C1+C2/r
 
-[PASS] source-free areal flux gives 1/r exterior
+
+[derived_results]
+[PASS] source-free areal flux gives 1/r exterior -- solution=Eq(A(r), C1 + C2/r)
 
 ============================================================================================================
 Case 2: Mass flux normalization
@@ -54,7 +59,9 @@ A' = r_s/r**2
 F_A = 4*pi*r^2*A' = 4*pi*r_s
 target flux = 8*pi*G*M/c**2
 r_s solution = [2*G*M/c**2]
-[PASS] mass flux fixes r_s=2GM/c^2
+
+[sample_results]
+[PASS] mass flux fixes r_s=2GM/c^2 -- solution=[2*G*M/c**2]
 
 ============================================================================================================
 Case 3: Enclosed mass form
@@ -69,7 +76,9 @@ Candidate flux law:
 
 F_A'(r) = 32*pi**2*G*r**2*rho(r)/c**2
 4*pi*r^2 * 8*pi*G*rho/c^2 = 32*pi**2*G*r**2*rho(r)/c**2
-[PASS] enclosed-mass flux law differentiates to source equation
+
+[derived_results]
+[PASS] enclosed-mass flux law differentiates to source equation -- residual=0
 
 ============================================================================================================
 Case 4: Thin shell jump condition
@@ -84,7 +93,9 @@ If inside flux is zero:
 
   F_A(outside) = 8*pi*G*M_shell/c**2
 
-[PASS] thin shell gives flux jump proportional to mass
+
+[governance_assessments]
+[PASS] thin shell gives flux jump proportional to mass -- jump=8πGM_shell/c²; F_outside-F_inside=8*pi*G*M_shell/c**2
 
 ============================================================================================================
 Case 5: Exterior metric recovery from flux principle
@@ -97,9 +108,13 @@ AB = 1
 
 Delta_areal A = 0
 F_A = 8*pi*G*M/c**2
-[PASS] A solves source-free areal equation outside source
-[PASS] kappa=0 gives AB=1
-[PASS] VacuumForge classifies flux-recovered metric as by-construction reciprocal: reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
+
+[sample_results]
+[PASS] A solves source-free areal equation outside source -- Delta_areal_A=0
+[PASS] kappa=0 gives AB=1 -- residual=0
+
+[governance_assessments]
+[PASS] VacuumForge classifies flux-recovered metric as by-construction reciprocal -- reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
 
 ============================================================================================================
 Case 6: Boundary / Gauss-law form
@@ -120,7 +135,9 @@ This is the cleanest current interpretation:
 
   mass controls the jump / value of areal A-flux.
 
-[PASS] source law has Gauss-law form over areal spheres
+
+[governance_assessments]
+[PASS] source law has Gauss-law form over areal spheres -- F_A(r2)-F_A(r1)=8πG*M_between/c²; mass controls areal flux jump
 
 ============================================================================================================
 Case 7: Comparison to curved spatial Laplacian
@@ -131,8 +148,10 @@ B = 1/(1 - r_s/r)
 Delta_areal A = 0
 Delta_spatial A = r_s**2/(2*r**4)
 
-[PASS] areal operator passes
-[PASS] curved spatial operator fails
+
+[derived_results]
+[PASS] areal operator passes -- residual=0
+[PASS] curved spatial operator fails -- curved_A=r_s**2/(2*r**4)
 
 Interpretation:
   The flux principle must not be described as ordinary scalar
@@ -148,7 +167,9 @@ Since A=e^s:
   Delta_areal A = e^s(Delta_areal s + |grad s|^2)
 
 Delta_areal s + |grad s|^2 = 0
-[PASS] areal flux law for A gives nonlinear s equation
+
+[derived_results]
+[PASS] areal flux law for A gives nonlinear s equation -- residual=0
 
 ============================================================================================================
 Case 9: Summary classification
@@ -182,6 +203,9 @@ Results:
 
 Open problem:
   derive the areal-flux principle from deeper geometry or ontology.
+
+[unresolved_obligations]
+[OBLIGATION] derive areal-flux principle from covariant geometry -- open problem: explain why mass sources areal flux of A=e^s; not yet derived
 
 ============================================================================================================
 Final interpretation

@@ -353,83 +353,82 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        # Real algebraic computation: dE/dt = -Gamma*v^2
-        ns.record_derivation(
-            derivation_id="damped_kappa_oscillator_energy_derivative",
-            inputs=[E_dmp],
-            output=dE_dt,
-            method=(
-                "compute d/dt[1/2 v^2 + 1/2 omega0^2 kappa^2] using "
-                "kappa_dot=v, v_dot=-Gamma*v-omega0^2*kappa"
-            ),
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-        )
+    # Real algebraic computation: dE/dt = -Gamma*v^2
+    ns.record_derivation(
+        derivation_id="damped_kappa_oscillator_energy_derivative",
+        inputs=[E_dmp],
+        output=dE_dt,
+        method=(
+            "compute d/dt[1/2 v^2 + 1/2 omega0^2 kappa^2] using "
+            "kappa_dot=v, v_dot=-Gamma*v-omega0^2*kappa"
+        ),
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_relaxation_energy_accounting_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_relaxation_energy_accounting_classified"),
-            method="kappa_relaxation_energy_accounting_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_relaxation_energy_accounting_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_relaxation_energy_accounting_classified"),
+        method="kappa_relaxation_energy_accounting_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_relaxation_vacuum_sink_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the vacuum sink term that accounts for kappa relaxation energy",
-            status=ObligationStatus.OPEN,
-            description=(
-                "If kappa damping is used, dE/dt = -Gamma*v^2 shows energy is lost. "
-                "The destination of this energy (vacuum configuration sink) must be "
-                "derived rather than assumed to prevent hiding scalar radiation."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_relaxation_vacuum_sink_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the vacuum sink term that accounts for kappa relaxation energy",
+        status=ObligationStatus.OPEN,
+        description=(
+            "If kappa damping is used, dE/dt = -Gamma*v^2 shows energy is lost. "
+            "The destination of this energy (vacuum configuration sink) must be "
+            "derived rather than assumed to prevent hiding scalar radiation."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_damping_rate_Gamma_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the kappa damping rate Gamma from first principles",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The attenuation length L_att ~ c/Gamma and critical damping condition "
-                "Gamma^2 = 4*omega0^2 are only meaningful if Gamma is derived. "
-                "Gamma must not be inserted by hand to hide scalar radiation."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_damping_rate_Gamma_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the kappa damping rate Gamma from first principles",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The attenuation length L_att ~ c/Gamma and critical damping condition "
+            "Gamma^2 = 4*omega0^2 are only meaningful if Gamma is derived. "
+            "Gamma must not be inserted by hand to hide scalar radiation."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="kappa_damping_requires_positive_vacuum_sink",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "If a kappa damping term Gamma is introduced, the energy loss rate "
-                "dE/dt = -Gamma*v^2 must be accounted for by a derived positive-definite "
-                "vacuum absorption/sink term. Inserting Gamma without this accounting "
-                "is rejected as a cosmetic fix for scalar radiation."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_damping_requires_positive_vacuum_sink",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "If a kappa damping term Gamma is introduced, the energy loss rate "
+            "dE/dt = -Gamma*v^2 must be accounted for by a derived positive-definite "
+            "vacuum absorption/sink term. Inserting Gamma without this accounting "
+            "is rejected as a cosmetic fix for scalar radiation."
+        ),
+    ))
 
-        with out.derived_results():
-            out.line("damped oscillator dE/dt = -Gamma*kappa_dot^2", StatusMark.PASS, "algebraic derivation")
+    with out.derived_results():
+        out.line("damped oscillator dE/dt = -Gamma*kappa_dot^2", StatusMark.PASS, "algebraic derivation")
 
-        with out.governance_assessments():
-            out.line("undamped kappa oscillator", StatusMark.FAIL, "can radiate if coupled externally")
-            out.line("damped kappa with vacuum sink", StatusMark.DEFER, "plausible fallback; Gamma not derived")
-            out.line("A-sector preservation guard", StatusMark.PASS, "sector split required")
+    with out.governance_assessments():
+        out.line("undamped kappa oscillator", StatusMark.FAIL, "can radiate if coupled externally")
+        out.line("damped kappa with vacuum sink", StatusMark.DEFER, "plausible fallback; Gamma not derived")
+        out.line("A-sector preservation guard", StatusMark.PASS, "sector split required")
 
-        with out.unresolved_obligations():
-            out.line("derive vacuum sink for kappa relaxation energy", StatusMark.OBLIGATION, "open")
-            out.line("derive Gamma from first principles", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive vacuum sink for kappa relaxation energy", StatusMark.OBLIGATION, "open")
+        out.line("derive Gamma from first principles", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

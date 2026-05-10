@@ -473,90 +473,89 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_static_source_neutrality_theorem_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive static-source neutrality theorem for J_V/Sigma/R",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that the candidate J_V/Sigma_V/R_V structure creates no exterior scalar "
-                "volume charge, no far-zone scalar flux, and no M_ext shift for ordinary static "
-                "sources. Q_V = 0 must hold by structure, not by R_V tuning."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="sn8_exterior_scalar_charge_mandatory_zero",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Q_V (net volume charge around static source) must be zero by structure. "
-                "Any static law that makes independent exterior scalar gravity is rejected."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="sn12_R_V_cancellation_patch_rejected",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "R_V tuned to cancel static exterior scalar charge is rejected as a neutrality "
-                "mechanism. Relaxation cannot serve as a scalar-charge eraser."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="sn13_recovery_downstream_static_neutrality",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "gamma_like and AB recovery tests must be performed only after static neutrality "
-                "is structural; they must not be used to tune the static balance."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="sn2_static_zero_current_safe_route",
-            script_id=SCRIPT_ID,
-            name="Static zero-current equilibrium (J_V = 0 in static region)",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_static_source_neutrality_theorem_in_15"],
-            activation_conditions=[
-                "J_V = 0 in static equilibrium with no exterior flux",
-                "u_vac is not required from J_V in the static region",
-                "separate equilibrium-frame fallback exists if frame is needed",
-            ],
-        ))
-        # SN14 is a BRANCH_KILLED entry but only "applies if charge is demonstrated".
-        # No exterior scalar charge has been demonstrated yet, so this is recorded
-        # as a conditional deferred branch, not a kill.
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_static_neutrality_unsafe_current_branch",
-            script_id=SCRIPT_ID,
-            branch_id="J_V_Sigma_R_static_neutrality_check",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_static_source_neutrality_theorem_in_15"],
-            description=(
-                "Static neutrality has not been demonstrated. Current families that produce "
-                "exterior scalar charge around ordinary static sources will be killed. "
-                "The branch is deferred pending the static neutrality theorem."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="static_source_neutrality_for_J_V_marker",
-            inputs=[],
-            output=sp.Symbol("static_source_neutrality_for_J_V_audited"),
-            method="static_source_neutrality_for_J_V_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_static_source_neutrality_theorem_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive static-source neutrality theorem for J_V/Sigma/R",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the candidate J_V/Sigma_V/R_V structure creates no exterior scalar "
+            "volume charge, no far-zone scalar flux, and no M_ext shift for ordinary static "
+            "sources. Q_V = 0 must hold by structure, not by R_V tuning."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="sn8_exterior_scalar_charge_mandatory_zero",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Q_V (net volume charge around static source) must be zero by structure. "
+            "Any static law that makes independent exterior scalar gravity is rejected."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="sn12_R_V_cancellation_patch_rejected",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "R_V tuned to cancel static exterior scalar charge is rejected as a neutrality "
+            "mechanism. Relaxation cannot serve as a scalar-charge eraser."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="sn13_recovery_downstream_static_neutrality",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_like and AB recovery tests must be performed only after static neutrality "
+            "is structural; they must not be used to tune the static balance."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="sn2_static_zero_current_safe_route",
+        script_id=SCRIPT_ID,
+        name="Static zero-current equilibrium (J_V = 0 in static region)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_static_source_neutrality_theorem_in_15"],
+        activation_conditions=[
+            "J_V = 0 in static equilibrium with no exterior flux",
+            "u_vac is not required from J_V in the static region",
+            "separate equilibrium-frame fallback exists if frame is needed",
+        ],
+    ))
+    # SN14 is a BRANCH_KILLED entry but only "applies if charge is demonstrated".
+    # No exterior scalar charge has been demonstrated yet, so this is recorded
+    # as a conditional deferred branch, not a kill.
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_static_neutrality_unsafe_current_branch",
+        script_id=SCRIPT_ID,
+        branch_id="J_V_Sigma_R_static_neutrality_check",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_static_source_neutrality_theorem_in_15"],
+        description=(
+            "Static neutrality has not been demonstrated. Current families that produce "
+            "exterior scalar charge around ordinary static sources will be killed. "
+            "The branch is deferred pending the static neutrality theorem."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="static_source_neutrality_for_J_V_marker",
+        inputs=[],
+        output=sp.Symbol("static_source_neutrality_for_J_V_audited"),
+        method="static_source_neutrality_for_J_V_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

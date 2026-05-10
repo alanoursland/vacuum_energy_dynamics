@@ -434,80 +434,79 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_J_V_for_u_vac",
-            script_id=SCRIPT_ID,
-            title="Derive J_V^mu vacuum-volume current to define u_vac",
-            status=ObligationStatus.OPEN,
-            description=(
-                "J_V must be a real vacuum-volume flux current defined by the volume exchange law "
-                "before u_vac^mu = J_V^mu / sqrt(-J_V^2) can be used as the vacuum rest frame."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_u_vac_static_neutrality",
-            script_id=SCRIPT_ID,
-            title="Derive static-source neutrality for u_vac definition",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The u_vac definition must yield Sigma_V static-neutral or boundary-neutral "
-                "around equilibrium sources; it must not create scalar charge around static mass."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="J_V_normalized_u_vac_route",
-            script_id=SCRIPT_ID,
-            name="u_vac^mu = J_V^mu / sqrt(-J_V^2) vacuum-current route",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_J_V_for_u_vac",
-                "derive_u_vac_static_neutrality",
-            ],
-            activation_conditions=[
-                "J_V is defined by volume exchange law before recovery checks",
-                "J_V^2 < 0 and J_V != 0 in target domain",
-                "static equilibrium sources produce no independent exterior zeta charge",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_arbitrary_preferred_frame",
-            script_id=SCRIPT_ID,
-            branch_id="arbitrary_preferred_vacuum_frame",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "Choosing u_vac as a convenient background rest frame is rejected. "
-                "It would introduce an unsupported preferred frame."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_u_vac_definition_branch",
-            script_id=SCRIPT_ID,
-            branch_id="vacuum_rest_frame_definition",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_J_V_for_u_vac",
-                "derive_u_vac_static_neutrality",
-            ],
-            description=(
-                "The vacuum rest frame branch is deferred pending J_V definition and "
-                "static-source neutrality. Group 14 should close if J_V cannot be defined."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="vacuum_rest_frame_definition_marker",
-            inputs=[],
-            output=sp.Symbol("vacuum_rest_frame_definition_audited"),
-            method="vacuum_rest_frame_definition_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_V_for_u_vac",
+        script_id=SCRIPT_ID,
+        title="Derive J_V^mu vacuum-volume current to define u_vac",
+        status=ObligationStatus.OPEN,
+        description=(
+            "J_V must be a real vacuum-volume flux current defined by the volume exchange law "
+            "before u_vac^mu = J_V^mu / sqrt(-J_V^2) can be used as the vacuum rest frame."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_u_vac_static_neutrality",
+        script_id=SCRIPT_ID,
+        title="Derive static-source neutrality for u_vac definition",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The u_vac definition must yield Sigma_V static-neutral or boundary-neutral "
+            "around equilibrium sources; it must not create scalar charge around static mass."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="J_V_normalized_u_vac_route",
+        script_id=SCRIPT_ID,
+        name="u_vac^mu = J_V^mu / sqrt(-J_V^2) vacuum-current route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_J_V_for_u_vac",
+            "derive_u_vac_static_neutrality",
+        ],
+        activation_conditions=[
+            "J_V is defined by volume exchange law before recovery checks",
+            "J_V^2 < 0 and J_V != 0 in target domain",
+            "static equilibrium sources produce no independent exterior zeta charge",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_arbitrary_preferred_frame",
+        script_id=SCRIPT_ID,
+        branch_id="arbitrary_preferred_vacuum_frame",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "Choosing u_vac as a convenient background rest frame is rejected. "
+            "It would introduce an unsupported preferred frame."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_u_vac_definition_branch",
+        script_id=SCRIPT_ID,
+        branch_id="vacuum_rest_frame_definition",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_J_V_for_u_vac",
+            "derive_u_vac_static_neutrality",
+        ],
+        description=(
+            "The vacuum rest frame branch is deferred pending J_V definition and "
+            "static-source neutrality. Group 14 should close if J_V cannot be defined."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="vacuum_rest_frame_definition_marker",
+        inputs=[],
+        output=sp.Symbol("vacuum_rest_frame_definition_audited"),
+        method="vacuum_rest_frame_definition_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

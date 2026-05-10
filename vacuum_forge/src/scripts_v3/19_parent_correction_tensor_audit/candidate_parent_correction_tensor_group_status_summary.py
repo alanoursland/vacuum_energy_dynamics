@@ -554,18 +554,17 @@ def main():
     case_7_next_options(out)
     final_interpretation(out)
 
-    with archive:
-        record_governance(ns)
-        ns.record_derivation(
-            derivation_id="parent_correction_tensor_group_status_summary_marker",
-            inputs=[],
-            output=sp.Symbol("parent_correction_tensor_group_status_summary_complete"),
-            method="parent_correction_tensor_group_status_summary",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    record_governance(ns)
+    ns.record_derivation(
+        derivation_id="parent_correction_tensor_group_status_summary_marker",
+        inputs=[],
+        output=sp.Symbol("parent_correction_tensor_group_status_summary_complete"),
+        method="parent_correction_tensor_group_status_summary",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

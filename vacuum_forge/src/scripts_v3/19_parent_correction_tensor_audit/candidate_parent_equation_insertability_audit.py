@@ -774,18 +774,17 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive:
-        record_governance(ns)
-        ns.record_derivation(
-            derivation_id="parent_equation_insertability_audit_marker",
-            inputs=[],
-            output=sp.Symbol("parent_equation_insertability_audit_complete"),
-            method="parent_equation_insertability_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    record_governance(ns)
+    ns.record_derivation(
+        derivation_id="parent_equation_insertability_audit_marker",
+        inputs=[],
+        output=sp.Symbol("parent_equation_insertability_audit_complete"),
+        method="parent_equation_insertability_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

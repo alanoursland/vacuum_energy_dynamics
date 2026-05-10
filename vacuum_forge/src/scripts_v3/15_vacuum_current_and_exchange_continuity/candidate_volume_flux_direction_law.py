@@ -478,88 +478,87 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_J_V_physical_flux_law_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive J_V physical flux / transport law",
-            status=ObligationStatus.OPEN,
-            description=(
-                "J_V must have a physical flux or transport law independent of the divergence "
-                "equation div J_V = Sigma_V - R_V. Candidate laws include exchange-potential "
-                "flux and causal transport current."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="fd2_scalar_source_cannot_give_direction",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Sigma_V - R_V supplies divergence strength, not vector direction. "
-                "The scalar source cannot masquerade as the flux direction of J_V."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="fd11_acausal_repair_current_rejected",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Acausal repair currents chosen nonlocally to cancel scalar charge or "
-                "enforce exterior neutrality are rejected as exchange currents in the ordinary branch."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="fd4_exchange_potential_flux_candidate_route",
-            script_id=SCRIPT_ID,
-            name="Exchange-potential flux J_V^mu ~ -D_V nabla^mu Phi_V",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_J_V_physical_flux_law_in_15"],
-            activation_conditions=[
-                "Phi_V is defined independently of recovery targets",
-                "D_V origin is established",
-                "boundary neutrality theorem is attached",
-            ],
-        ))
-        ns.record_route(RouteRecord(
-            route_id="fd7_causal_transport_current_candidate_route",
-            script_id=SCRIPT_ID,
-            name="Causal transport current with finite characteristic speed",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_J_V_physical_flux_law_in_15"],
-            activation_conditions=[
-                "transport law is derived and does not become Box zeta",
-                "no ordinary scalar radiation is created",
-                "boundary neutrality theorem is attached",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_J_V_flux_direction_branch",
-            script_id=SCRIPT_ID,
-            branch_id="J_V_flux_direction_definition",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_J_V_physical_flux_law_in_15"],
-            description=(
-                "No flux direction for J_V has been derived. Exchange-potential and causal "
-                "transport are candidates, but neither is established. The branch is deferred."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="volume_flux_direction_law_marker",
-            inputs=[],
-            output=sp.Symbol("volume_flux_direction_law_audited"),
-            method="volume_flux_direction_law_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_J_V_physical_flux_law_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive J_V physical flux / transport law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "J_V must have a physical flux or transport law independent of the divergence "
+            "equation div J_V = Sigma_V - R_V. Candidate laws include exchange-potential "
+            "flux and causal transport current."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="fd2_scalar_source_cannot_give_direction",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Sigma_V - R_V supplies divergence strength, not vector direction. "
+            "The scalar source cannot masquerade as the flux direction of J_V."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="fd11_acausal_repair_current_rejected",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Acausal repair currents chosen nonlocally to cancel scalar charge or "
+            "enforce exterior neutrality are rejected as exchange currents in the ordinary branch."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="fd4_exchange_potential_flux_candidate_route",
+        script_id=SCRIPT_ID,
+        name="Exchange-potential flux J_V^mu ~ -D_V nabla^mu Phi_V",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_J_V_physical_flux_law_in_15"],
+        activation_conditions=[
+            "Phi_V is defined independently of recovery targets",
+            "D_V origin is established",
+            "boundary neutrality theorem is attached",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="fd7_causal_transport_current_candidate_route",
+        script_id=SCRIPT_ID,
+        name="Causal transport current with finite characteristic speed",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_J_V_physical_flux_law_in_15"],
+        activation_conditions=[
+            "transport law is derived and does not become Box zeta",
+            "no ordinary scalar radiation is created",
+            "boundary neutrality theorem is attached",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_J_V_flux_direction_branch",
+        script_id=SCRIPT_ID,
+        branch_id="J_V_flux_direction_definition",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_J_V_physical_flux_law_in_15"],
+        description=(
+            "No flux direction for J_V has been derived. Exchange-potential and causal "
+            "transport are candidates, but neither is established. The branch is deferred."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="volume_flux_direction_law_marker",
+        inputs=[],
+        output=sp.Symbol("volume_flux_direction_law_audited"),
+        method="volume_flux_direction_law_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

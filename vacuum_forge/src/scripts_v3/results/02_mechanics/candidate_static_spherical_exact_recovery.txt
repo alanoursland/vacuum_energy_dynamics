@@ -2,6 +2,7 @@
 ============================================================================================================
 Candidate Static Spherical Exact Recovery
 ============================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - kappa_leak_mixed_source: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -16,9 +17,11 @@ s from 1/2 ln(A/B) = -log(r) + log((r - r_s)**2)/2
 s_exact = ln(A) = log(1 - r_s/r)
 
 For r > r_s, 1/2 ln(A/B) = ln(A).
-[PASS] exact Schwarzschild has AB=1
-[PASS] exact Schwarzschild has kappa=0
-[PASS] s=ln(A) reconstructs B=1/A
+
+[derived_results]
+[PASS] exact Schwarzschild has AB=1 -- residual=0
+[PASS] exact Schwarzschild has kappa=0 -- AB=1 implies kappa=0
+[PASS] s=ln(A) reconstructs B=1/A -- residual=0
 
 ============================================================================================================
 Case 1: Weak shear versus exact shear
@@ -35,8 +38,10 @@ s_exact       = -r_s/r - r_s**2/(2*r**2) - r_s**3/(3*r**3)
 s_weak        = -r_s/r
 
 A_weak_exp - A_exact through order 1/r² = r_s**2/(2*r**2)
-[PASS] weak exponential A matches exact A at first order
-[PASS] weak exponential differs at second order
+
+[sample_results]
+[PASS] weak exponential A matches exact A at first order -- residual=0
+[PASS] weak exponential differs at second order -- residual=r_s**2/(2*r**2)
 
 ============================================================================================================
 Case 2: Harmonic tests for weak and exact shear
@@ -44,9 +49,11 @@ Case 2: Harmonic tests for weak and exact shear
 ∇² s_weak = 0
 ∇² s_exact = -r_s**2/(r**2*(r - r_s)**2)
 ∇² A_exact = 0
-[PASS] s_weak is harmonic for r>0
-[PASS] s_exact is not harmonic under flat radial Laplacian
-[PASS] A_exact is harmonic for r>0
+
+[derived_results]
+[PASS] s_weak is harmonic for r>0 -- residual=0
+[PASS] s_exact is not harmonic under flat radial Laplacian -- lap_s_exact=-r_s**2/(r**2*(r - r_s)**2)
+[PASS] A_exact is harmonic for r>0 -- residual=0
 
 Interpretation:
   The weak-field source law ∇²s=0 is linearized.
@@ -60,7 +67,9 @@ s_exact = log(1 - r_s/r)
 ∇²s = -r_s**2/(r**2*(r - r_s)**2)
 |∇s|² = r_s**2/(r**2*(r - r_s)**2)
 ∇²s + |∇s|² = 0
-[PASS] s_exact satisfies nonlinear source-free equation
+
+[derived_results]
+[PASS] s_exact satisfies nonlinear source-free equation -- residual=0
 
 Equation:
   ∇²s + |∇s|² = 0
@@ -75,7 +84,9 @@ s = eps*u(r)
 ∇²s + |∇s|² = eps**2*Derivative(u(r), r)**2 + eps*Derivative(u(r), (r, 2)) + 2*eps*Derivative(u(r), r)/r
 first order in eps = eps*(Derivative(u(r), (r, 2)) + 2*Derivative(u(r), r)/r)
 through second order in eps = eps**2*Derivative(u(r), r)**2 + eps*(Derivative(u(r), (r, 2)) + 2*Derivative(u(r), r)/r)
-[PASS] linearized nonlinear equation is ∇²u=0
+
+[derived_results]
+[PASS] linearized nonlinear equation is ∇²u=0 -- residual=0
 
 Interpretation:
   The earlier shear Laplace law is the first-order approximation
@@ -89,7 +100,9 @@ A' = r_s/r**2
 4πr² A' = 4*pi*r_s
 target flux = 8*pi*G*M/c**2
 r_s solution = [2*G*M/c**2]
-[PASS] A-flux normalization gives r_s=2GM/c²
+
+[sample_results]
+[PASS] A-flux normalization gives r_s=2GM/c² -- solution=[2*G*M/c**2]
 
 Note:
   This parallels the earlier s-flux normalization in weak field,
@@ -118,7 +131,9 @@ In weak field, |∇s|² is second order, so:
 
   ∇²s ≈ 0
 
-[PASS] candidate exact law reduces to weak shear Laplace law
+
+[governance_assessments]
+[PASS] candidate exact law reduces to weak shear Laplace law -- linearization shows ∇²s+|∇s|²=0 reduces to ∇²s=0 at first order in s
 
 ============================================================================================================
 Case 7: Exact metric recovery
@@ -128,13 +143,17 @@ s = ln(A) = log(1 - r_s/r)
 kappa = 0
 B = exp(-s) = 1/(1 - r_s/r)
 AB = 1
-[PASS] B equals 1/A
-[PASS] AB=1 exactly
+
+[derived_results]
+[PASS] B equals 1/A -- residual=0
+[PASS] AB=1 exactly -- residual=0
 
 Result:
   kappa=0 and s=ln(1-r_s/r) recover exact Schwarzschild
   areal-gauge exterior metric factors.
-[PASS] VacuumForge classifies exact Schwarzschild reciprocal scaling as by-construction: reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
+
+[governance_assessments]
+[PASS] VacuumForge classifies exact Schwarzschild reciprocal scaling as by-construction -- reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
 
 ============================================================================================================
 Case 8: Compare source-law candidates
@@ -155,6 +174,9 @@ Exact candidate:
 Interpretation:
   The earlier shear Poisson law may be the linearized form of a
   nonlinear exact law for A=e^s.
+
+[governance_assessments]
+[PASS] exact candidate A-harmonic law subsumes weak-field shear Laplace law -- nonlinear ∇²A=0 linearizes to ∇²s=0 at first order
 
 ============================================================================================================
 Case 9: Summary classification

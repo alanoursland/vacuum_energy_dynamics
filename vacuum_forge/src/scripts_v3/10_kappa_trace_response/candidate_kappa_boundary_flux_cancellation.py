@@ -336,76 +336,75 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        # Real algebraic computations
-        ns.record_derivation(
-            derivation_id="massless_1_over_r_kappa_flux_residual",
-            inputs=[kappa_tail],
-            output=flux_tail,
-            method="compute 4*pi*r^2 * d/dr(C1/r)",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-        )
+    # Real algebraic computations
+    ns.record_derivation(
+        derivation_id="massless_1_over_r_kappa_flux_residual",
+        inputs=[kappa_tail],
+        output=flux_tail,
+        method="compute 4*pi*r^2 * d/dr(C1/r)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+    )
 
-        ns.record_derivation(
-            derivation_id="yukawa_kappa_exterior_flux",
-            inputs=[kappa_yukawa],
-            output=flux_yukawa,
-            method="compute 4*pi*r^2 * d/dr(C*exp(-m*r)/r)",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-        )
+    ns.record_derivation(
+        derivation_id="yukawa_kappa_exterior_flux",
+        inputs=[kappa_yukawa],
+        output=flux_yukawa,
+        method="compute 4*pi*r^2 * d/dr(C*exp(-m*r)/r)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_boundary_flux_cancellation_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_boundary_flux_cancellation_classified"),
-            method="kappa_boundary_flux_cancellation_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_boundary_flux_cancellation_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_boundary_flux_cancellation_classified"),
+        method="kappa_boundary_flux_cancellation_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_boundary_flux_zero_condition_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the mechanism enforcing zero exterior boundary flux F_kappa(R+)=0",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Static exterior safety requires F_kappa(R+) = 0. The massless 1/r tail "
-                "gives nonzero flux (C1 * (-4*pi)). Dynamic boundary motion adds further "
-                "terms. A derivation of the mechanism ensuring zero exterior flux is required."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_boundary_flux_zero_condition_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the mechanism enforcing zero exterior boundary flux F_kappa(R+)=0",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Static exterior safety requires F_kappa(R+) = 0. The massless 1/r tail "
+            "gives nonzero flux (C1 * (-4*pi)). Dynamic boundary motion adds further "
+            "terms. A derivation of the mechanism ensuring zero exterior flux is required."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="massless_kappa_1_over_r_tail_flux_nonzero",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "The massless exterior tail kappa=C1/r has F_kappa = -4*pi*C1 (nonzero), "
-                "confirming that a 1/r exterior kappa tail violates the required boundary "
-                "flux cancellation condition F_kappa(R+)=0."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="massless_kappa_1_over_r_tail_flux_nonzero",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "The massless exterior tail kappa=C1/r has F_kappa = -4*pi*C1 (nonzero), "
+            "confirming that a 1/r exterior kappa tail violates the required boundary "
+            "flux cancellation condition F_kappa(R+)=0."
+        ),
+    ))
 
-        with out.derived_results():
-            out.line("massless 1/r tail exterior flux F_kappa = -4*pi*C1", StatusMark.PASS, "algebraic derivation")
-            out.line("Yukawa exterior flux expression", StatusMark.PASS, "algebraic derivation")
+    with out.derived_results():
+        out.line("massless 1/r tail exterior flux F_kappa = -4*pi*C1", StatusMark.PASS, "algebraic derivation")
+        out.line("Yukawa exterior flux expression", StatusMark.PASS, "algebraic derivation")
 
-        with out.governance_assessments():
-            out.line("massless 1/r tail", StatusMark.FAIL, "exterior flux nonzero - forbidden")
-            out.line("dynamic boundary projection", StatusMark.FAIL, "open risk - unresolved")
-            out.line("boundary flux zero condition", StatusMark.OBLIGATION, "mechanism missing")
+    with out.governance_assessments():
+        out.line("massless 1/r tail", StatusMark.FAIL, "exterior flux nonzero - forbidden")
+        out.line("dynamic boundary projection", StatusMark.FAIL, "open risk - unresolved")
+        out.line("boundary flux zero condition", StatusMark.OBLIGATION, "mechanism missing")
 
-        with out.unresolved_obligations():
-            out.line("derive F_kappa(R+)=0 mechanism", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive F_kappa(R+)=0 mechanism", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

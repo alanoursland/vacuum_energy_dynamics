@@ -375,147 +375,146 @@ def main():
     case_6_next_group()
     final_interpretation()
 
-    with archive:
-        # Summary claim for Group 14 closure
-        ns.record_claim(ClaimRecord(
-            claim_id="group_14_A_spatial_not_derived",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.SUMMARY_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.NOT_INSERTABLE_YET,
-            statement=(
-                "Group 14 did not derive A_spatial or the spatial-trace q-origin. "
-                "The problem was reduced to J_V/u_vac definition, which remains a theorem target."
-            ),
-            obligation_ids=[
-                "derive_J_V_flux_law",
-                "derive_Sigma_V_source_law",
-                "derive_boundary_neutrality_for_Sigma_V",
-                "derive_residual_kill_no_overlap_for_Sigma_V",
-            ],
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="group_14_recovery_downstream_convention",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "gamma_like and AB are recovery checks, not construction tools. "
-                "They must remain downstream of source law derivation in all successor groups."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="group_14_zeta_companion_requires_residual_kill",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "zeta may become a B_s companion only if the residual zeta trace is killed or "
-                "proven non-metric. If zeta remains residual, it does not solve the A_spatial/q-origin."
-            ),
-        ))
+    # Summary claim for Group 14 closure
+    ns.record_claim(ClaimRecord(
+        claim_id="group_14_A_spatial_not_derived",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.NOT_INSERTABLE_YET,
+        statement=(
+            "Group 14 did not derive A_spatial or the spatial-trace q-origin. "
+            "The problem was reduced to J_V/u_vac definition, which remains a theorem target."
+        ),
+        obligation_ids=[
+            "derive_J_V_flux_law",
+            "derive_Sigma_V_source_law",
+            "derive_boundary_neutrality_for_Sigma_V",
+            "derive_residual_kill_no_overlap_for_Sigma_V",
+        ],
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="group_14_recovery_downstream_convention",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_like and AB are recovery checks, not construction tools. "
+            "They must remain downstream of source law derivation in all successor groups."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="group_14_zeta_companion_requires_residual_kill",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "zeta may become a B_s companion only if the residual zeta trace is killed or "
+            "proven non-metric. If zeta remains residual, it does not solve the A_spatial/q-origin."
+        ),
+    ))
 
-        # Rejected branch decisions for the closure record
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_free_q_from_gamma_AB",
-            script_id=SCRIPT_ID,
-            branch_id="free_q_from_gamma_AB",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description="Choosing q from gamma_like or AB is rejected as recovery-tuning.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_zeta_dual_role_branch",
-            script_id=SCRIPT_ID,
-            branch_id="zeta_companion_and_residual_trace",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "zeta cannot simultaneously be a B_s companion and an independent residual metric trace. "
-                "This branch is rejected; the companion route requires residual-kill."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_group_14_source_driven_branch",
-            script_id=SCRIPT_ID,
-            branch_id="group_14_source_driven_volume_creation",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_J_V_flux_law",
-                "derive_Sigma_V_source_law",
-                "derive_u_vac_from_vacuum_ontology",
-                "derive_boundary_neutrality_for_Sigma_V",
-                "derive_residual_kill_no_overlap_for_Sigma_V",
-            ],
-            description=(
-                "The source-driven volume creation branch (Sigma_V -> J_V -> u_vac -> B_s companion) "
-                "is deferred pending J_V flux law, Sigma_V source law, u_vac definition, boundary "
-                "neutrality, and no-overlap theorem. Group 14 closes here."
-            ),
-        ))
+    # Rejected branch decisions for the closure record
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_free_q_from_gamma_AB",
+        script_id=SCRIPT_ID,
+        branch_id="free_q_from_gamma_AB",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description="Choosing q from gamma_like or AB is rejected as recovery-tuning.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_zeta_dual_role_branch",
+        script_id=SCRIPT_ID,
+        branch_id="zeta_companion_and_residual_trace",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "zeta cannot simultaneously be a B_s companion and an independent residual metric trace. "
+            "This branch is rejected; the companion route requires residual-kill."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_group_14_source_driven_branch",
+        script_id=SCRIPT_ID,
+        branch_id="group_14_source_driven_volume_creation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_J_V_flux_law",
+            "derive_Sigma_V_source_law",
+            "derive_u_vac_from_vacuum_ontology",
+            "derive_boundary_neutrality_for_Sigma_V",
+            "derive_residual_kill_no_overlap_for_Sigma_V",
+        ],
+        description=(
+            "The source-driven volume creation branch (Sigma_V -> J_V -> u_vac -> B_s companion) "
+            "is deferred pending J_V flux law, Sigma_V source law, u_vac definition, boundary "
+            "neutrality, and no-overlap theorem. Group 14 closes here."
+        ),
+    ))
 
-        # Handoff import record: what Group 15 may import from Group 14
-        ns.record_handoff_import(HandoffImportRecord(
-            handoff_id="group_14_to_15_handoff",
-            script_id=SCRIPT_ID,
-            imported_as=RecordKind.SUMMARY_CLAIM,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            imported_record_refs=[
-                # Open obligations Group 15 must address or carry forward
-                "obligation:derive_Sigma_V_source_law",
-                "obligation:derive_chi_origin_for_Sigma_V",
-                "obligation:derive_residual_kill_no_overlap_for_Sigma_V",
-                "obligation:derive_boundary_neutrality_for_Sigma_V",
-                "obligation:derive_J_V_flux_law",
-                "obligation:derive_J_V_domain_theorem",
-                "obligation:derive_u_vac_from_vacuum_ontology",
-                "obligation:derive_u_vac_static_neutrality",
-                "obligation:derive_covariant_acceleration_for_Sigma_V",
-                "obligation:derive_static_source_neutrality_for_accel_gradient",
-                # Candidate routes Group 15 may build on
-                "route:exchange_continuity_J_V_route",
-                "route:acceleration_gradient_Sigma_V_candidate_route",
-                # Rejected branches Group 15 must not reopen
-                "decision:reject_free_q_from_gamma_AB",
-                "decision:reject_zeta_dual_role_branch",
-                "decision:reject_coordinate_velocity_accel_gradient",
-                "decision:reject_arbitrary_preferred_frame",
-                "decision:reject_decorative_J_V",
-                "decision:reject_circular_J_V_n_V_u_vac",
-                # Policy rules Group 15 must preserve
-                "claim:group_14_recovery_downstream_convention",
-                "claim:group_14_zeta_companion_requires_residual_kill",
-                # Summary closure claim
-                "claim:group_14_A_spatial_not_derived",
-            ],
-            description=(
-                "Group 15 (vacuum_current_and_exchange_continuity) may import the following from Group 14:\n"
-                "OPEN OBLIGATIONS: Sigma_V source law, chi-origin, residual-kill/no-overlap, boundary neutrality, "
-                "J_V flux law, J_V domain theorem, u_vac definition, u_vac static neutrality, "
-                "covariant acceleration, static-source safety.\n"
-                "CANDIDATE ROUTES: exchange continuity J_V route, acceleration-gradient Sigma_V route.\n"
-                "REJECTED BRANCHES: free-q tuning, zeta dual-role, coordinate velocity frame, "
-                "arbitrary preferred frame, decorative J_V, circular J_V = n_V u_vac.\n"
-                "POLICY RULES: recovery downstream, zeta companion requires residual-kill.\n"
-                "GROUP CLOSURE: A_spatial was not derived; J_V/u_vac is the surviving bottleneck."
-            ),
-        ))
+    # Handoff import record: what Group 15 may import from Group 14
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_14_to_15_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            # Open obligations Group 15 must address or carry forward
+            "obligation:derive_Sigma_V_source_law",
+            "obligation:derive_chi_origin_for_Sigma_V",
+            "obligation:derive_residual_kill_no_overlap_for_Sigma_V",
+            "obligation:derive_boundary_neutrality_for_Sigma_V",
+            "obligation:derive_J_V_flux_law",
+            "obligation:derive_J_V_domain_theorem",
+            "obligation:derive_u_vac_from_vacuum_ontology",
+            "obligation:derive_u_vac_static_neutrality",
+            "obligation:derive_covariant_acceleration_for_Sigma_V",
+            "obligation:derive_static_source_neutrality_for_accel_gradient",
+            # Candidate routes Group 15 may build on
+            "route:exchange_continuity_J_V_route",
+            "route:acceleration_gradient_Sigma_V_candidate_route",
+            # Rejected branches Group 15 must not reopen
+            "decision:reject_free_q_from_gamma_AB",
+            "decision:reject_zeta_dual_role_branch",
+            "decision:reject_coordinate_velocity_accel_gradient",
+            "decision:reject_arbitrary_preferred_frame",
+            "decision:reject_decorative_J_V",
+            "decision:reject_circular_J_V_n_V_u_vac",
+            # Policy rules Group 15 must preserve
+            "claim:group_14_recovery_downstream_convention",
+            "claim:group_14_zeta_companion_requires_residual_kill",
+            # Summary closure claim
+            "claim:group_14_A_spatial_not_derived",
+        ],
+        description=(
+            "Group 15 (vacuum_current_and_exchange_continuity) may import the following from Group 14:\n"
+            "OPEN OBLIGATIONS: Sigma_V source law, chi-origin, residual-kill/no-overlap, boundary neutrality, "
+            "J_V flux law, J_V domain theorem, u_vac definition, u_vac static neutrality, "
+            "covariant acceleration, static-source safety.\n"
+            "CANDIDATE ROUTES: exchange continuity J_V route, acceleration-gradient Sigma_V route.\n"
+            "REJECTED BRANCHES: free-q tuning, zeta dual-role, coordinate velocity frame, "
+            "arbitrary preferred frame, decorative J_V, circular J_V = n_V u_vac.\n"
+            "POLICY RULES: recovery downstream, zeta companion requires residual-kill.\n"
+            "GROUP CLOSURE: A_spatial was not derived; J_V/u_vac is the surviving bottleneck."
+        ),
+    ))
 
-        ns.record_derivation(
-            derivation_id="group_14_closure_summary_marker",
-            inputs=[],
-            output=sp.Symbol("group_14_closure_summary_audited"),
-            method="group_14_closure_summary_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="group_14_closure_summary_marker",
+        inputs=[],
+        output=sp.Symbol("group_14_closure_summary_audited"),
+        method="group_14_closure_summary_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

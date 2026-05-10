@@ -760,7 +760,6 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive:
         record_governance(ns)
         ns.record_derivation(
             derivation_id="correction_tensor_divergence_safety_marker",

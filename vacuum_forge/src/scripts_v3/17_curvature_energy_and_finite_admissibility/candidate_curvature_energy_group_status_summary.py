@@ -444,31 +444,30 @@ def main():
     case_7_next_options()
     final_interpretation()
 
-    with archive:
-        ns.record_handoff_import(HandoffImportRecord(
-            handoff_id="group_18_handoff",
-            script_id=SCRIPT_ID,
-            imported_as=RecordKind.SUMMARY_CLAIM,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            imported_record_refs=[
-                "obligation:formalize_A_curv_condition_in_17_finite_admissibility",
-                "obligation:formalize_branch_kill_rule_in_17_finite_admissibility",
-                "obligation:prove_e_curv_source_quarantine_in_17_curvature_energy",
-                "obligation:define_J_curv_domain_in_17_J_curv_requirements",
-                "obligation:prove_curvature_mass_neutrality_in_17_boundary_neutrality",
-                "claim:anti_singularity_diagnostic_only_in_17",
-                "claim:curvature_interior_diagnostic_safe_fallback_in_17",
-            ],
-            description="Group 18 may import: J_curv unresolved, e_curv accounting only, balance/neutrality theorem targets, no bounce/regular-core/dynamical claims. Group 18 should test J_sub/J_exch split independently with pure wind neutrality and ordinary matter decoupling.",
-        ))
-        ns.record_derivation(
-            derivation_id="curvature_energy_group_status_summary_marker",
-            inputs=[],
-            output=sp.Symbol("curvature_energy_group_status_summary_complete"),
-            method="curvature_energy_group_status_summary",
-            status=Status.DERIVED,
-        )
-        ns.write_run_metadata()
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_18_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            "obligation:formalize_A_curv_condition_in_17_finite_admissibility",
+            "obligation:formalize_branch_kill_rule_in_17_finite_admissibility",
+            "obligation:prove_e_curv_source_quarantine_in_17_curvature_energy",
+            "obligation:define_J_curv_domain_in_17_J_curv_requirements",
+            "obligation:prove_curvature_mass_neutrality_in_17_boundary_neutrality",
+            "claim:anti_singularity_diagnostic_only_in_17",
+            "claim:curvature_interior_diagnostic_safe_fallback_in_17",
+        ],
+        description="Group 18 may import: J_curv unresolved, e_curv accounting only, balance/neutrality theorem targets, no bounce/regular-core/dynamical claims. Group 18 should test J_sub/J_exch split independently with pure wind neutrality and ordinary matter decoupling.",
+    ))
+    ns.record_derivation(
+        derivation_id="curvature_energy_group_status_summary_marker",
+        inputs=[],
+        output=sp.Symbol("curvature_energy_group_status_summary_complete"),
+        method="curvature_energy_group_status_summary",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

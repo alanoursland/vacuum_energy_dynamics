@@ -2,6 +2,7 @@
 ================================================================================================
 Candidate Reduced Exterior Action
 ================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - shear_profile_metric_recovery: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -11,8 +12,10 @@ Case 0: Log-scale algebra
 A  = exp(kappa + s)
 B  = exp(kappa - s)
 AB = exp(2*kappa)
-[PASS] AB = exp(2*kappa)
-[PASS] kappa=0 gives AB=1
+
+[derived_results]
+[PASS] AB = exp(2*kappa) -- residual=0
+[PASS] kappa=0 gives AB=1 -- residual=0
 
 ================================================================================================
 Case 1: Reduced Euler-Lagrange equations in one coordinate
@@ -24,7 +27,9 @@ Euler-Lagrange equations:
   EL_s     = -2*K_s*Derivative(s(x), (x, 2)) + alpha*rho(x) = 0
 
 EL_kappa | kappa=0 = 0
-[PASS] kappa=0 solves source-free kappa equation
+
+[sample_results]
+[PASS] kappa=0 solves source-free kappa equation -- residual=0
 
 Shear equation rearranged:
   alpha*rho - 2*K_s*s'' = 0
@@ -45,20 +50,26 @@ Desired:
   ∇²s = 8πG rho/c²
 
 alpha solution = [16*pi*G*K_s/c**2]
-[PASS] normalization alpha = 16πG K_s/c²
+
+[sample_results]
+[PASS] normalization alpha = 16πG K_s/c² -- solution=[16*pi*G*K_s/c**2]
 
 ================================================================================================
 Case 3: Exterior spherical solution from reduced source law
 ================================================================================================
 s(r) = C/r
 ∇²s for r>0 = 0
-[PASS] C/r is harmonic outside source
 
 4πr²s'(r) = -4*pi*C
 target flux = 8*pi*G*M/c**2
 C solution = [-2*G*M/c**2]
+
+[sample_results]
+[PASS] C/r is harmonic outside source -- residual=0
 s_fixed(r) = -2*G*M/(c**2*r)
-[PASS] source flux fixes s=-2GM/(rc²)
+
+[sample_results]
+[PASS] source flux fixes s=-2GM/(rc²) -- residual=0
 
 ================================================================================================
 Case 4: Metric recovery
@@ -71,9 +82,11 @@ AB = 1
 
 A series = 2*eps**2 - 2*eps + 1
 B series = 2*eps**2 + 2*eps + 1
-[PASS] A = 1 - 2eps + 2eps² + ...
-[PASS] B = 1 + 2eps + 2eps² + ...
-[PASS] AB = 1 exactly
+
+[sample_results]
+[PASS] A = 1 - 2eps + 2eps² + ... -- residual=0
+[PASS] B = 1 + 2eps + 2eps² + ... -- residual=0
+[PASS] AB = 1 exactly -- residual=0
 
 ================================================================================================
 Case 5: Failure control — direct kappa source
@@ -85,8 +98,10 @@ constant equilibrium equation = -J_k + 2*M_k**2*k0 = 0
 kappa constant solutions = [J_k/(2*M_k**2)]
 kappa_eq = J_k/(2*M_k**2)
 AB = exp(J_k/M_k**2)
-[PASS] kappa source makes kappa nonzero generically
-[PASS] reciprocal scaling fails generically
+
+[governance_assessments]
+[PASS] kappa source makes kappa nonzero generically -- kappa_eq=J_k/(2*M_k**2)
+[PASS] reciprocal scaling fails generically -- AB=exp(J_k/M_k**2)
 
 ================================================================================================
 Case 5b: VacuumForge energy cross-check
@@ -95,8 +110,10 @@ Stationary equations: [Eq(2*C_kappa*kappa - J_k, 0), Eq(2*C_sigma*sigma - J_s, 0
 Solutions: [{kappa: J_k/(2*C_kappa), sigma: J_s/(2*C_sigma)}]
 kappa_eq = J_k/(2*C_kappa)
 s_eq = J_s/(2*C_sigma)
-[PASS] VacuumForge gives kappa_eq = J_k/(2 C_kappa)
-[PASS] VacuumForge gives sigma_eq = J_s/(2 C_sigma)
+
+[sample_results]
+[PASS] VacuumForge gives kappa_eq = J_k/(2 C_kappa) -- residual=0
+[PASS] VacuumForge gives sigma_eq = J_s/(2 C_sigma) -- residual=0
 
 ================================================================================================
 Case 6: Failure control — wrong shear coefficient
@@ -104,7 +121,9 @@ Case 6: Failure control — wrong shear coefficient
 s = -eps*lambda
 A series = -eps*lambda + 1
 lambda solution = [2]
-[PASS] weak-field temporal coefficient fixes lambda=2
+
+[derived_results]
+[PASS] weak-field temporal coefficient fixes lambda=2 -- solution=[2]
 
 ================================================================================================
 Final interpretation

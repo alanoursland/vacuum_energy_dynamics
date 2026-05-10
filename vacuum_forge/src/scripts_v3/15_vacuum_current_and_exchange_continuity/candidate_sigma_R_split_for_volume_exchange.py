@@ -507,100 +507,99 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_Sigma_V_operator_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive Sigma_V source operator",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Sigma_V must have an explicit mechanism, frame/projection, and coefficient "
-                "origin independent of recovery targets."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_R_V_operator_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive R_V relaxation operator",
-            status=ObligationStatus.OPEN,
-            description=(
-                "R_V must have an independently defined equilibrium target and operator; "
-                "it must not be a scalar-charge cancellation patch."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_sigma_R_double_counting_guard_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive Sigma/R double-counting guard",
-            status=ObligationStatus.OPEN,
-            description=(
-                "SR10: Sigma_V and R_V must not be two names for the same volume change; "
-                "a source/relaxation accounting rule must be established."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="sr13_decorative_sigma_R_rejected",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Sigma_V and R_V named without mechanisms or operators are rejected as "
-                "decorative; they cannot be used to promote J_V."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="sr14_recovery_downstream_sigma_R",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "gamma_like and AB recovery tests must be performed only after Sigma/R split "
-                "and flux law exist; they must not choose Sigma/R signs or coefficients."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="sigma_V_acceleration_gradient_candidate_route",
-            script_id=SCRIPT_ID,
-            name="Acceleration-gradient Sigma_V ~ chi rho a^mu nabla_mu A",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_Sigma_V_operator_in_15",
-            ],
-            activation_conditions=[
-                "frame and projection are defined independently",
-                "chi-origin is not recovery-fitted",
-                "static-source safety is established",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_sigma_R_split_branch",
-            script_id=SCRIPT_ID,
-            branch_id="sigma_R_split_exchange_continuity",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_Sigma_V_operator_in_15",
-                "derive_R_V_operator_in_15",
-                "derive_sigma_R_double_counting_guard_in_15",
-            ],
-            description=(
-                "The Sigma/R split exists at role-level, but neither operator is derived. "
-                "Exchange continuity as a law is deferred pending both operators."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="sigma_R_split_for_volume_exchange_marker",
-            inputs=[],
-            output=sp.Symbol("sigma_R_split_for_volume_exchange_audited"),
-            method="sigma_R_split_for_volume_exchange_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_Sigma_V_operator_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive Sigma_V source operator",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Sigma_V must have an explicit mechanism, frame/projection, and coefficient "
+            "origin independent of recovery targets."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_R_V_operator_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive R_V relaxation operator",
+        status=ObligationStatus.OPEN,
+        description=(
+            "R_V must have an independently defined equilibrium target and operator; "
+            "it must not be a scalar-charge cancellation patch."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_sigma_R_double_counting_guard_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive Sigma/R double-counting guard",
+        status=ObligationStatus.OPEN,
+        description=(
+            "SR10: Sigma_V and R_V must not be two names for the same volume change; "
+            "a source/relaxation accounting rule must be established."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="sr13_decorative_sigma_R_rejected",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Sigma_V and R_V named without mechanisms or operators are rejected as "
+            "decorative; they cannot be used to promote J_V."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="sr14_recovery_downstream_sigma_R",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_like and AB recovery tests must be performed only after Sigma/R split "
+            "and flux law exist; they must not choose Sigma/R signs or coefficients."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="sigma_V_acceleration_gradient_candidate_route",
+        script_id=SCRIPT_ID,
+        name="Acceleration-gradient Sigma_V ~ chi rho a^mu nabla_mu A",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_Sigma_V_operator_in_15",
+        ],
+        activation_conditions=[
+            "frame and projection are defined independently",
+            "chi-origin is not recovery-fitted",
+            "static-source safety is established",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_sigma_R_split_branch",
+        script_id=SCRIPT_ID,
+        branch_id="sigma_R_split_exchange_continuity",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_Sigma_V_operator_in_15",
+            "derive_R_V_operator_in_15",
+            "derive_sigma_R_double_counting_guard_in_15",
+        ],
+        description=(
+            "The Sigma/R split exists at role-level, but neither operator is derived. "
+            "Exchange continuity as a law is deferred pending both operators."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="sigma_R_split_for_volume_exchange_marker",
+        inputs=[],
+        output=sp.Symbol("sigma_R_split_for_volume_exchange_audited"),
+        method="sigma_R_split_for_volume_exchange_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

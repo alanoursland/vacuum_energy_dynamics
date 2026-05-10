@@ -405,93 +405,92 @@ def main():
     case_11_next_tests()
     final_interpretation()
 
-    with archive:
-        # Quintic smoothstep endpoint conditions are real algebraic results
-        ns.record_derivation(
-            derivation_id="quintic_smoothstep_C2_endpoint_conditions_sample",
-            inputs=[s],
-            output=sp.Matrix([ds0, ds1, d2s0, d2s1]),
-            method="evaluate d/dx and d^2/dx^2 of s=6x^5-15x^4+10x^3 at x=0,1",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="toy quintic smoothstep on [0,1]; transition width w is free parameter not derived",
-        )
+    # Quintic smoothstep endpoint conditions are real algebraic results
+    ns.record_derivation(
+        derivation_id="quintic_smoothstep_C2_endpoint_conditions_sample",
+        inputs=[s],
+        output=sp.Matrix([ds0, ds1, d2s0, d2s1]),
+        method="evaluate d/dx and d^2/dx^2 of s=6x^5-15x^4+10x^3 at x=0,1",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy quintic smoothstep on [0,1]; transition width w is free parameter not derived",
+    )
 
-        # C1 matching equations solution is a real sample computation
-        ns.record_derivation(
-            derivation_id="quadratic_interior_C1_matching_to_Schwarzschild_sample",
-            inputs=[sp.Symbol("f_int_quadratic"), sp.Symbol("f_ext_reciprocal")],
-            output=sp.Symbol("a0_a2_solution"),
-            method="solve f_int(R)=f_ext(R) and f_int'(R)=f_ext'(R) for a0, a2",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="toy C1 matching only; weight/energy functional not derived",
-        )
+    # C1 matching equations solution is a real sample computation
+    ns.record_derivation(
+        derivation_id="quadratic_interior_C1_matching_to_Schwarzschild_sample",
+        inputs=[sp.Symbol("f_int_quadratic"), sp.Symbol("f_ext_reciprocal")],
+        output=sp.Symbol("a0_a2_solution"),
+        method="solve f_int(R)=f_ext(R) and f_int'(R)=f_ext'(R) for a0, a2",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="toy C1 matching only; weight/energy functional not derived",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_joint_minimum_spline_model_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_joint_minimum_spline_model_stated"),
-            method="kappa_joint_minimum_spline_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_joint_minimum_spline_model_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_joint_minimum_spline_model_stated"),
+        method="kappa_joint_minimum_spline_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_joint_minimum_energy_weights_alpha_W_beta_W_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the weight functions alpha_W and beta_W for the joint interior/exterior minimum energy",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The spline blend uses W_int(r) and W_ext(r) (or equivalently alpha_W, beta_W) "
-                "that are not derived. These must come from the kappa action or a parent "
-                "variational principle before the joint minimum model is more than curve-fitting."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_joint_minimum_energy_weights_alpha_W_beta_W_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the weight functions alpha_W and beta_W for the joint interior/exterior minimum energy",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The spline blend uses W_int(r) and W_ext(r) (or equivalently alpha_W, beta_W) "
+            "that are not derived. These must come from the kappa action or a parent "
+            "variational principle before the joint minimum model is more than curve-fitting."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_transition_width_sigma_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the transition width sigma (or w) for the near-boundary kappa minimum",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The spline transition is controlled by a width parameter w (or sigma). "
-                "This must be derived from the physics of the kappa minimum or the "
-                "matter/vacuum interface, not chosen by hand."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_transition_width_sigma_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the transition width sigma (or w) for the near-boundary kappa minimum",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The spline transition is controlled by a width parameter w (or sigma). "
+            "This must be derived from the physics of the kappa minimum or the "
+            "matter/vacuum interface, not chosen by hand."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="quintic_smoothstep_achieves_C2_transition",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The quintic smoothstep s=6x^5-15x^4+10x^3 satisfies s'(0)=s'(1)=0 and "
-                "s''(0)=s''(1)=0, supporting C2 matching across a transition layer. "
-                "This is a valid basis for a joint minimum spline model, but the "
-                "transition width and weight functions must be derived."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="quintic_smoothstep_achieves_C2_transition",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The quintic smoothstep s=6x^5-15x^4+10x^3 satisfies s'(0)=s'(1)=0 and "
+            "s''(0)=s''(1)=0, supporting C2 matching across a transition layer. "
+            "This is a valid basis for a joint minimum spline model, but the "
+            "transition width and weight functions must be derived."
+        ),
+    ))
 
-        with out.sample_results():
-            out.line("quintic smoothstep: s'(0)=s'(1)=0, s''(0)=s''(1)=0", StatusMark.PASS, "C2 transition basis confirmed")
-            out.line("C1 quadratic/reciprocal matching coefficients computed", StatusMark.PASS, "sample - toy model")
+    with out.sample_results():
+        out.line("quintic smoothstep: s'(0)=s'(1)=0, s''(0)=s''(1)=0", StatusMark.PASS, "C2 transition basis confirmed")
+        out.line("C1 quadratic/reciprocal matching coefficients computed", StatusMark.PASS, "sample - toy model")
 
-        with out.governance_assessments():
-            out.line("spline model is curve-fitting without energy principle", StatusMark.FAIL, "risk - weights not derived")
-            out.line("alpha_W, beta_W weight functions", StatusMark.OBLIGATION, "missing")
-            out.line("transition width sigma/w", StatusMark.OBLIGATION, "missing")
+    with out.governance_assessments():
+        out.line("spline model is curve-fitting without energy principle", StatusMark.FAIL, "risk - weights not derived")
+        out.line("alpha_W, beta_W weight functions", StatusMark.OBLIGATION, "missing")
+        out.line("transition width sigma/w", StatusMark.OBLIGATION, "missing")
 
-        with out.unresolved_obligations():
-            out.line("derive weight functions alpha_W, beta_W", StatusMark.OBLIGATION, "open")
-            out.line("derive transition width sigma", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive weight functions alpha_W, beta_W", StatusMark.OBLIGATION, "open")
+        out.line("derive transition width sigma", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -16,8 +16,10 @@ b = ln B = b
 kappa = a/2 + b/2
 s = a/2 - b/2
 AB = exp(a + b)
-[PASS] AB = exp(2*kappa)
-[PASS] kappa=0 gives AB=1
+
+[derived_results]
+[PASS] AB = exp(2*kappa) -- areal-gauge algebra recap
+[PASS] kappa=0 gives AB=1 -- b=-a implies AB=1
 
 ====================================================================================================
 Case 1: General radial reparameterization r=f(R)
@@ -36,14 +38,16 @@ kappa_old_at_f = a(f(R))/2 + b(f(R))/2
 s_old_at_f = a(f(R))/2 - b(f(R))/2
 delta_kappa = log(Derivative(f(R), R))
 delta_s = -log(Derivative(f(R), R))
-[PASS] kappa shifts by log(f')
-[PASS] s shifts by -log(f')
-[PASS] coordinate-invariance validator marks reduced kappa as non-invariant: a(r)/2 + b(r)/2 shifts by a(r)/2 - a(f(R))/2 + b(r)/2 - b(f(R))/2 under coordinate change.
 
 Interpretation:
   Naive temporal-radial kappa and s are not invariant under radial
   reparameterization if one leaves areal gauge.
   The radial Jacobian moves information into B_new.
+
+[derived_results]
+[PASS] kappa shifts by log(f') under r=f(R) -- delta_kappa = log(Derivative(f(R), R))
+[PASS] s shifts by -log(f') under r=f(R) -- delta_s = -log(Derivative(f(R), R))
+[PASS] coordinate-invariance validator marks reduced kappa as non-invariant -- a(r)/2 + b(r)/2 shifts by a(r)/2 - a(f(R))/2 + b(r)/2 - b(f(R))/2 under coordinate change.
 
 ====================================================================================================
 Case 2: Scaling reparameterization r = lambda R
@@ -54,8 +58,10 @@ kappa_new = aR/2 + bR/2 + log(lambda)
 s_new = aR/2 - bR/2 - log(lambda)
 delta kappa = log(lambda)
 delta s = -log(lambda)
-[PASS] kappa shifts by log(lambda)
-[PASS] s shifts by -log(lambda)
+
+[derived_results]
+[PASS] kappa shifts by log(lambda) -- delta_kappa = log(lambda)
+[PASS] s shifts by -log(lambda) -- delta_s = -log(lambda)
 
 ====================================================================================================
 Case 3: Infinitesimal radial shift r = R + eps xi(R)
@@ -65,13 +71,15 @@ f'(R) = eps*Derivative(xi(R), R) + 1
 log(f') first order = eps*Derivative(xi(R), R)
 delta kappa = eps*Derivative(xi(R), R)
 delta s = -eps*Derivative(xi(R), R)
-[PASS] delta kappa = eps xi'(R)
-[PASS] delta s = -eps xi'(R)
 
 Interpretation:
   Even an infinitesimal radial coordinate change shifts the naive
   reduced kappa and s by opposite amounts.
   This is a gauge artifact unless the areal gauge has been fixed.
+
+[derived_results]
+[PASS] delta kappa = eps xi'(R) -- first-order shift = eps*Derivative(xi(R), R)
+[PASS] delta s = -eps xi'(R) -- first-order shift = -eps*Derivative(xi(R), R)
 
 ====================================================================================================
 Case 4: Reciprocal scaling gauge warning
@@ -83,24 +91,28 @@ After r=f(R), using R as radial coordinate:
   A_new = exp(s(f(R)))
   B_new = exp(-s(f(R)))*Derivative(f(R), R)**2
   naive A_new B_new = Derivative(f(R), R)**2
-[PASS] naive AB_new equals f'(R)^2
 
 Interpretation:
   AB=1 is an areal-gauge statement in this reduced formulation.
   After radial reparameterization, naive A_new B_new != 1 unless f'=1.
   The geometry has not changed; the reduced gauge representation changed.
 
+[derived_results]
+[PASS] naive AB_new equals f'(R)^2 after reparameterization -- AB=1 is areal-gauge specific; f'!=1 gives apparent violation
+
 ====================================================================================================
 Case 5: Determinant including angular sector
 ====================================================================================================
 sqrt|g_new| = sqrt(Derivative(f(R), R)**2)*f(R)**2*sin(theta)
 expected Jacobian volume factor = f(R)**2*sin(theta)*Derivative(f(R), R)
-[WARN] full determinant transforms with radial Jacobian
 
 Interpretation:
   The full volume element transforms correctly.
   The apparent shift in kappa is a reduced temporal-radial-sector effect
   caused by leaving areal gauge, not a physical change in the metric.
+
+[derived_results]
+[WARN] full determinant transforms with radial Jacobian -- volume element is coordinate-invariant; kappa shift is a gauge artifact
 
 ====================================================================================================
 Case 6: Restoring areal gauge
@@ -120,7 +132,9 @@ then the metric returns to:
 
 and the original reduced kappa and s are recovered.
 
-[PASS] kappa/s are meaningful only after reduced gauge is specified
+
+[governance_assessments]
+[PASS] kappa/s are meaningful only after reduced gauge is specified -- restoring areal gauge recovers original kappa and s
 
 ====================================================================================================
 Case 7: Summary classification
@@ -147,6 +161,12 @@ Development implication:
   Do not treat kappa or s as invariant fields yet.
   Treat them as reduced variables extracted after symmetry and gauge choice.
 
+[governance_assessments]
+[PASS] kappa and s are gauge-sensitive reduced variables -- areal-gauge condition; covariant parent remains open obligation
+
+[unresolved_obligations]
+[OBLIGATION] derive covariant or gauge-aware parent for kappa and s -- gauge dependence study confirms obligation from covariant parent script
+
 ====================================================================================================
 Final interpretation
 ====================================================================================================
@@ -170,3 +190,6 @@ structure whose static spherical areal-gauge reduction gives kappa and s.
 
 Possible next artifact:
   candidate_gauge_dependence_modes.md
+
+[governance_assessments]
+[PASS] reduced kappa/s are areal-gauge statements, not invariant scalars -- confirmed by coordinate shift analysis; covariant parent obligation open

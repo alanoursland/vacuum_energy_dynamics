@@ -548,10 +548,8 @@ def main():
     case_5_no_double_counting_first_rules(out)
     case_6_next_tests(out)
     final_interpretation()
-    out.print_summary()
-    with archive:
-        record_governance(ns, entries)
-        ns.write_run_metadata()
+    record_governance(ns, entries)
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

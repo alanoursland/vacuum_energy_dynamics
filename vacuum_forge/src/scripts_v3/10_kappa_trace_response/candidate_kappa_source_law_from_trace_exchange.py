@@ -455,67 +455,66 @@ def main():
     case_10_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_derivation(
-            derivation_id="kappa_source_law_from_trace_exchange_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_trace_source_family_narrowed"),
-            method="kappa_source_law_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_source_law_from_trace_exchange_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_trace_source_family_narrowed"),
+        method="kappa_source_law_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_primary_source_law_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive primary kappa source law from first principles",
-            status=ObligationStatus.OPEN,
-            description=(
-                "S_trace, K_k, alpha_k, and m_k are all unresolved. "
-                "The source family is narrowed to pressure/stress trace but not derived."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_primary_source_law_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive primary kappa source law from first principles",
+        status=ObligationStatus.OPEN,
+        description=(
+            "S_trace, K_k, alpha_k, and m_k are all unresolved. "
+            "The source family is narrowed to pressure/stress trace but not derived."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_gauge_vs_physical_split_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive gauge-vs-physical split for kappa",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Whether kappa is physical or a coordinate-volume artifact in the "
-                "areal/static reduction must be established before treating kappa as "
-                "a physical trace-response field."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_gauge_vs_physical_split_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive gauge-vs-physical split for kappa",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Whether kappa is physical or a coordinate-volume artifact in the "
+            "areal/static reduction must be established before treating kappa as "
+            "a physical trace-response field."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="kappa_must_not_duplicate_A_sector_density_response",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "Kappa must not be primarily sourced by raw density rho, "
-                "as rho already sources A_constraint. Using rho as the primary "
-                "kappa source risks double-counting the scalar mass response."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_must_not_duplicate_A_sector_density_response",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "Kappa must not be primarily sourced by raw density rho, "
+            "as rho already sources A_constraint. Using rho as the primary "
+            "kappa source risks double-counting the scalar mass response."
+        ),
+    ))
 
-        with out.governance_assessments():
-            out.line("kappa source family narrowed to pressure/stress trace", StatusMark.PASS, "raw rho rejected as primary")
-            out.line("K_k coefficient", StatusMark.OBLIGATION, "not derived")
-            out.line("alpha_k coupling", StatusMark.OBLIGATION, "not derived")
-            out.line("m_k scale", StatusMark.OBLIGATION, "not derived")
-            out.line("gauge-vs-physical status", StatusMark.OBLIGATION, "unresolved")
+    with out.governance_assessments():
+        out.line("kappa source family narrowed to pressure/stress trace", StatusMark.PASS, "raw rho rejected as primary")
+        out.line("K_k coefficient", StatusMark.OBLIGATION, "not derived")
+        out.line("alpha_k coupling", StatusMark.OBLIGATION, "not derived")
+        out.line("m_k scale", StatusMark.OBLIGATION, "not derived")
+        out.line("gauge-vs-physical status", StatusMark.OBLIGATION, "unresolved")
 
-        with out.unresolved_obligations():
-            out.line("derive primary kappa source law", StatusMark.OBLIGATION, "open")
-            out.line("derive gauge-vs-physical split", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive primary kappa source law", StatusMark.OBLIGATION, "open")
+        out.line("derive gauge-vs-physical split", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -417,78 +417,77 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        # Real algebraic result: kappa=0 recovers AB=1
-        exterior_check = sp.simplify(relation.subs(kappa, 0).lhs - relation.subs(kappa, 0).rhs)
-        ns.record_derivation(
-            derivation_id="kappa_zero_recovers_reciprocal_metric",
-            inputs=[relation],
-            output=exterior_check,
-            method="substitute kappa=0 into AB=exp(2*kappa)",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-        )
+    # Real algebraic result: kappa=0 recovers AB=1
+    exterior_check = sp.simplify(relation.subs(kappa, 0).lhs - relation.subs(kappa, 0).rhs)
+    ns.record_derivation(
+        derivation_id="kappa_zero_recovers_reciprocal_metric",
+        inputs=[relation],
+        output=exterior_check,
+        method="substitute kappa=0 into AB=exp(2*kappa)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_exterior_suppression_condition_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_exterior_suppression_conditions_classified"),
-            method="kappa_exterior_suppression_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_exterior_suppression_condition_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_exterior_suppression_conditions_classified"),
+        method="kappa_exterior_suppression_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_exterior_kappa_suppression_mechanism_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the mechanism that forces exterior kappa to zero",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Multiple candidate mechanisms exist (constraint projection, restoring term, "
-                "gauge fixing, compact support). A parent identity or derivation must select "
-                "and validate one before the exterior kappa=0 condition is licensed."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_exterior_kappa_suppression_mechanism_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the mechanism that forces exterior kappa to zero",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Multiple candidate mechanisms exist (constraint projection, restoring term, "
+            "gauge fixing, compact support). A parent identity or derivation must select "
+            "and validate one before the exterior kappa=0 condition is licensed."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_mass_scale_m_k_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the restoring/mass scale m_k for kappa if used",
-            status=ObligationStatus.OPEN,
-            description=(
-                "If Yukawa-like suppression is used, m_k must be derived or constrained "
-                "from the theory, not inserted to hide scalar radiation."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_mass_scale_m_k_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the restoring/mass scale m_k for kappa if used",
+        status=ObligationStatus.OPEN,
+        description=(
+            "If Yukawa-like suppression is used, m_k must be derived or constrained "
+            "from the theory, not inserted to hide scalar radiation."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="massless_kappa_permits_1_over_r_exterior_tail",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.OPEN_RISK,
-            statement=(
-                "A massless exterior kappa equation allows kappa ~ C1/r unless exterior "
-                "kappa charge/flux is independently set to zero. This is an unresolved risk "
-                "for any source-law that does not enforce zero exterior monopole charge."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="massless_kappa_permits_1_over_r_exterior_tail",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.OPEN_RISK,
+        statement=(
+            "A massless exterior kappa equation allows kappa ~ C1/r unless exterior "
+            "kappa charge/flux is independently set to zero. This is an unresolved risk "
+            "for any source-law that does not enforce zero exterior monopole charge."
+        ),
+    ))
 
-        with out.derived_results():
-            out.line("kappa=0 recovers AB=1 exterior metric factor", StatusMark.PASS, "residual = 0")
+    with out.derived_results():
+        out.line("kappa=0 recovers AB=1 exterior metric factor", StatusMark.PASS, "residual = 0")
 
-        with out.governance_assessments():
-            out.line("exterior suppression mechanism", StatusMark.DEFER, "not yet selected from candidates")
-            out.line("massless kappa 1/r tail risk", StatusMark.FAIL, "open risk if exterior charge not zero")
+    with out.governance_assessments():
+        out.line("exterior suppression mechanism", StatusMark.DEFER, "not yet selected from candidates")
+        out.line("massless kappa 1/r tail risk", StatusMark.FAIL, "open risk if exterior charge not zero")
 
-        with out.unresolved_obligations():
-            out.line("derive exterior suppression mechanism", StatusMark.OBLIGATION, "open")
-            out.line("derive m_k if restoring term used", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive exterior suppression mechanism", StatusMark.OBLIGATION, "open")
+        out.line("derive m_k if restoring term used", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

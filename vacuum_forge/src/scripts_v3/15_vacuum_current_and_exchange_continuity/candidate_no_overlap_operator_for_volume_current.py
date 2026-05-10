@@ -467,89 +467,88 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_no_overlap_operator_or_residual_kill_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive no-overlap operator O or establish residual-kill theorem",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Either O[B_s, zeta_residual/kappa_residual, J_V] = 0 must be derived with "
-                "an explicit mechanism (orthogonality pairing, projector split, or B_s-only "
-                "insertion law), or residual zeta/kappa metric trace must be killed/made "
-                "non-metric with a derivation or parent identity."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="no10_forbidden_zeta_both_B_s_and_residual",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "zeta/J_V cannot simultaneously change B_s and remain as an independent residual "
-                "metric trace. The double-counting branch is rejected in the ordinary sector."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="no7_kappa_must_not_restore_residual_trace",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "kappa must remain a reduced diagnostic / non-metric residual unless separately "
-                "derived. It must not restore killed zeta residual trace."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="no13_recovery_downstream_no_overlap",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "gamma_like and AB recovery tests must be performed only after O or residual-kill "
-                "is fixed; they must not be used to choose the overlap split."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="no4_residual_kill_safe_route",
-            script_id=SCRIPT_ID,
-            name="Residual-kill / non-metric residual (provisional count-once convention)",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_no_overlap_operator_or_residual_kill_in_15"],
-            activation_conditions=[
-                "zeta_residual_metric = 0 after B_s insertion",
-                "kappa_residual_metric = 0 or kappa remains non-metric/diagnostic",
-                "residual-kill or non-metric transition is explicit",
-            ],
-        ))
-        # NO14 branch kill applies only when demonstrated; no demonstration here.
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_no_overlap_operator_branch",
-            script_id=SCRIPT_ID,
-            branch_id="no_overlap_operator_O_definition",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_no_overlap_operator_or_residual_kill_in_15"],
-            description=(
-                "The no-overlap operator O has not been derived and residual-kill has not been "
-                "established from a theorem. The branch is deferred pending O derivation or "
-                "residual-kill theorem."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="no_overlap_operator_for_volume_current_marker",
-            inputs=[],
-            output=sp.Symbol("no_overlap_operator_for_volume_current_audited"),
-            method="no_overlap_operator_for_volume_current_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_no_overlap_operator_or_residual_kill_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive no-overlap operator O or establish residual-kill theorem",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Either O[B_s, zeta_residual/kappa_residual, J_V] = 0 must be derived with "
+            "an explicit mechanism (orthogonality pairing, projector split, or B_s-only "
+            "insertion law), or residual zeta/kappa metric trace must be killed/made "
+            "non-metric with a derivation or parent identity."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="no10_forbidden_zeta_both_B_s_and_residual",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "zeta/J_V cannot simultaneously change B_s and remain as an independent residual "
+            "metric trace. The double-counting branch is rejected in the ordinary sector."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="no7_kappa_must_not_restore_residual_trace",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "kappa must remain a reduced diagnostic / non-metric residual unless separately "
+            "derived. It must not restore killed zeta residual trace."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="no13_recovery_downstream_no_overlap",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "gamma_like and AB recovery tests must be performed only after O or residual-kill "
+            "is fixed; they must not be used to choose the overlap split."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="no4_residual_kill_safe_route",
+        script_id=SCRIPT_ID,
+        name="Residual-kill / non-metric residual (provisional count-once convention)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_no_overlap_operator_or_residual_kill_in_15"],
+        activation_conditions=[
+            "zeta_residual_metric = 0 after B_s insertion",
+            "kappa_residual_metric = 0 or kappa remains non-metric/diagnostic",
+            "residual-kill or non-metric transition is explicit",
+        ],
+    ))
+    # NO14 branch kill applies only when demonstrated; no demonstration here.
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_no_overlap_operator_branch",
+        script_id=SCRIPT_ID,
+        branch_id="no_overlap_operator_O_definition",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_no_overlap_operator_or_residual_kill_in_15"],
+        description=(
+            "The no-overlap operator O has not been derived and residual-kill has not been "
+            "established from a theorem. The branch is deferred pending O derivation or "
+            "residual-kill theorem."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="no_overlap_operator_for_volume_current_marker",
+        inputs=[],
+        output=sp.Symbol("no_overlap_operator_for_volume_current_audited"),
+        method="no_overlap_operator_for_volume_current_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

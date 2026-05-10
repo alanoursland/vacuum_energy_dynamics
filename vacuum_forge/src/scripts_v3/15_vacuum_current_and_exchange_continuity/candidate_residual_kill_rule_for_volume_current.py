@@ -466,88 +466,87 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_residual_kill_theorem_or_parent_identity_in_15",
-            script_id=SCRIPT_ID,
-            title="Derive residual-kill theorem or parent identity",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Residual-kill (zeta_residual_metric = 0 after B_s insertion) is currently a "
-                "provisional safety convention. It must either be derived from a no-overlap "
-                "operator O or from a parent identity that forces the residual to be non-metric."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="rk1_residual_kill_provisional_convention",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "If J_V-driven zeta enters B_s, residual zeta/kappa metric trace is killed or "
-                "made non-metric. This is the cleanest provisional count-once convention. "
-                "It is not derived and is revisitable if O is derived."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="rk9_residual_restoration_rejected",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "kappa or zeta residual restoring killed metric trace after B_s insertion is "
-                "rejected. Branches that undo residual-kill by relabeling are not pursued."
-            ),
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="rk13_residual_kill_not_derivation",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Residual-kill is provisional convention unless derived from O or parent identity. "
-                "It must not be treated as a postulate or field equation."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="rk4_non_metric_bookkeeping_residual_route",
-            script_id=SCRIPT_ID,
-            name="Non-metric bookkeeping residual (zeta/kappa as config bookkeeping only)",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_residual_kill_theorem_or_parent_identity_in_15"],
-            activation_conditions=[
-                "bookkeeping-to-metric insertion only through B_s or explicit map",
-                "bookkeeping terms do not become hidden source reservoir",
-                "no M_ext shift from bookkeeping",
-            ],
-        ))
-        # RK14 branch kill applies only when demonstrated; no demonstration here.
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_residual_kill_derivation_branch",
-            script_id=SCRIPT_ID,
-            branch_id="residual_kill_theorem_derivation",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_residual_kill_theorem_or_parent_identity_in_15"],
-            description=(
-                "Residual-kill has not been derived from O or a parent identity. "
-                "The convention is used provisionally. Derivation is deferred."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="residual_kill_rule_for_volume_current_marker",
-            inputs=[],
-            output=sp.Symbol("residual_kill_rule_for_volume_current_audited"),
-            method="residual_kill_rule_for_volume_current_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_residual_kill_theorem_or_parent_identity_in_15",
+        script_id=SCRIPT_ID,
+        title="Derive residual-kill theorem or parent identity",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Residual-kill (zeta_residual_metric = 0 after B_s insertion) is currently a "
+            "provisional safety convention. It must either be derived from a no-overlap "
+            "operator O or from a parent identity that forces the residual to be non-metric."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="rk1_residual_kill_provisional_convention",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "If J_V-driven zeta enters B_s, residual zeta/kappa metric trace is killed or "
+            "made non-metric. This is the cleanest provisional count-once convention. "
+            "It is not derived and is revisitable if O is derived."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="rk9_residual_restoration_rejected",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "kappa or zeta residual restoring killed metric trace after B_s insertion is "
+            "rejected. Branches that undo residual-kill by relabeling are not pursued."
+        ),
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="rk13_residual_kill_not_derivation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Residual-kill is provisional convention unless derived from O or parent identity. "
+            "It must not be treated as a postulate or field equation."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="rk4_non_metric_bookkeeping_residual_route",
+        script_id=SCRIPT_ID,
+        name="Non-metric bookkeeping residual (zeta/kappa as config bookkeeping only)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_residual_kill_theorem_or_parent_identity_in_15"],
+        activation_conditions=[
+            "bookkeeping-to-metric insertion only through B_s or explicit map",
+            "bookkeeping terms do not become hidden source reservoir",
+            "no M_ext shift from bookkeeping",
+        ],
+    ))
+    # RK14 branch kill applies only when demonstrated; no demonstration here.
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_residual_kill_derivation_branch",
+        script_id=SCRIPT_ID,
+        branch_id="residual_kill_theorem_derivation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_residual_kill_theorem_or_parent_identity_in_15"],
+        description=(
+            "Residual-kill has not been derived from O or a parent identity. "
+            "The convention is used provisionally. Derivation is deferred."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="residual_kill_rule_for_volume_current_marker",
+        inputs=[],
+        output=sp.Symbol("residual_kill_rule_for_volume_current_audited"),
+        method="residual_kill_rule_for_volume_current_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,7 +1,11 @@
+[SCRIPT_FAILED]
+exit_code=1
+
 
 ========================================================================================================
 Candidate Exchange / Creation Distinction Test
 ========================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - reduced_action_stationary_solution: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -18,7 +22,9 @@ Therefore:
   delta E_vac = 0  <=>  delta V_vac = 0
 when rho_v is nonzero and constant.
 
-[PASS] energy preservation and volume preservation are equivalent under P1+P3
+
+[derived_results]
+[PASS] energy preservation and volume preservation are equivalent under P1+P3 -- delta E_vac = rho_v delta V_vac; vanish together
 But this does not decide whether a process is exchange or creation.
 That classification must be supplied or derived separately.
 
@@ -34,11 +40,11 @@ Operator: exchange_compensated_shear (exchange)
   J_b = -S
   J_kappa = 0
   J_s = S
-  delta_volume_reduced ∝ J_a+J_b = 0
+  delta_volume_reduced prop J_a+J_b = 0
   Note: Conservative compensated transfer; trace-kernel in reduced two-sector.
-[PASS] exchange has J_kappa=0
-[PASS] exchange changes shear
-[PASS] exchange preserves reduced volume
+exchange J_kappa=0: True
+exchange changes shear: True
+exchange preserves reduced volume: True
 
 --------------------------------------------------------------------------------------------------------
 creation_traceful
@@ -48,10 +54,10 @@ Operator: creation_traceful (creation)
   J_b = C
   J_kappa = C
   J_s = 0
-  delta_volume_reduced ∝ J_a+J_b = 2*C
+  delta_volume_reduced prop J_a+J_b = 2*C
   Note: Net positive trace/volume content.
-[PASS] creation has positive trace source
-[PASS] creation is not volume-preserving
+creation positive trace source: True
+creation not volume-preserving: True
 
 --------------------------------------------------------------------------------------------------------
 destruction_traceful
@@ -61,10 +67,10 @@ Operator: destruction_traceful (destruction)
   J_b = -C
   J_kappa = -C
   J_s = 0
-  delta_volume_reduced ∝ J_a+J_b = -2*C
+  delta_volume_reduced prop J_a+J_b = -2*C
   Note: Net negative trace/volume content.
-[PASS] destruction has negative trace source
-[PASS] destruction is not volume-preserving
+destruction negative trace source: True
+destruction not volume-preserving: True
 
 --------------------------------------------------------------------------------------------------------
 mixed_exchange_plus_creation
@@ -74,10 +80,10 @@ Operator: mixed_exchange_plus_creation (mixed)
   J_b = C - S
   J_kappa = C
   J_s = S
-  delta_volume_reduced ∝ J_a+J_b = 2*C
+  delta_volume_reduced prop J_a+J_b = 2*C
   Note: Compensated shear plus net traceful creation.
-[PASS] mixed operator has shear
-[PASS] mixed operator has traceful creation
+mixed has shear: True
+mixed has traceful creation: True
 
 --------------------------------------------------------------------------------------------------------
 vacuumforge_source_classification
@@ -85,8 +91,10 @@ vacuumforge_source_classification
 exchange classification = trace_free
 exchange assumed_trace_free = True
 creation classification = pure_trace
-[PASS] VacuumForge exchange source is classified trace_free
-[PASS] VacuumForge creation source is not classified trace_free
+
+[derived_results]
+[PASS] VacuumForge exchange source is classified trace_free -- trace_free
+[PASS] VacuumForge creation source is not classified trace_free -- pure_trace
 
 ========================================================================================================
 Case 2: Equilibrium consequences
@@ -103,9 +111,9 @@ Solutions: [{kappa: 0, s: S/(2*C_s)}]
 kappa_eq = 0
 s_eq     = S/(2*C_s)
 AB       = 1
-[PASS] exchange equilibrium suppresses kappa
-[PASS] exchange equilibrium allows shear
-[PASS] exchange endpoint has AB=1
+exchange equilibrium suppresses kappa: True
+exchange equilibrium allows shear: True
+exchange endpoint has AB=1: True
 
 --------------------------------------------------------------------------------------------------------
 creation_traceful
@@ -118,8 +126,8 @@ Solutions: [{kappa: C/(2*C_k), s: 0}]
 kappa_eq = C/(2*C_k)
 s_eq     = 0
 AB       = exp(C/C_k)
-[PASS] creation equilibrium sources kappa generically
-[PASS] creation breaks AB=1 generically
+creation equilibrium sources kappa generically: True
+creation breaks AB=1 generically: True
 
 --------------------------------------------------------------------------------------------------------
 destruction_traceful
@@ -132,8 +140,8 @@ Solutions: [{kappa: -C/(2*C_k), s: 0}]
 kappa_eq = -C/(2*C_k)
 s_eq     = 0
 AB       = exp(-C/C_k)
-[PASS] destruction equilibrium sources kappa generically
-[PASS] destruction breaks AB=1 generically
+destruction equilibrium sources kappa generically: True
+destruction breaks AB=1 generically: True
 
 --------------------------------------------------------------------------------------------------------
 mixed_exchange_plus_creation
@@ -146,14 +154,18 @@ Solutions: [{kappa: C/(2*C_k), s: S/(2*C_s)}]
 kappa_eq = C/(2*C_k)
 s_eq     = S/(2*C_s)
 AB       = exp(C/C_k)
-[PASS] mixed equilibrium sources kappa generically
-[PASS] mixed breaks AB=1 generically
+mixed equilibrium sources kappa generically: True
+mixed breaks AB=1 generically: True
 
 --------------------------------------------------------------------------------------------------------
 vacuumforge_equilibrium_crosscheck
 --------------------------------------------------------------------------------------------------------
+
+[derived_results]
 [PASS] VacuumForge exchange equilibrium suppresses kappa
 [PASS] VacuumForge exchange equilibrium allows shear
+
+[derived_results]
 [PASS] VacuumForge creation equilibrium gives nonzero kappa
 
 ========================================================================================================
@@ -165,7 +177,9 @@ grad_s = 2*C_s*s
 d kappa/dtau = -2*C_k*kappa
 d s/dtau = -2*C_s*s
 dE/dtau = -4*C_k**2*kappa**2 - 4*C_s**2*s**2
-[PASS] relaxation decreases energy away from equilibrium
+
+[derived_results]
+[PASS] relaxation decreases energy away from equilibrium -- dE/dtau = -4*C_k**2*kappa**2 - 4*C_s**2*s**2
 
 Equilibrium of unsourced relaxation:
   grad_kappa = 0 -> kappa=0
@@ -173,7 +187,9 @@ Equilibrium of unsourced relaxation:
 
 For exterior gravity, s remains nonzero only if boundary/source data
 or a shear source law maintains it. Kappa can still relax to zero.
-[PASS] unsourced relaxation drives kappa toward zero
+
+[derived_results]
+[PASS] unsourced relaxation drives kappa toward zero -- gradient descent on quadratic E gives kappa=0 equilibrium
 
 ========================================================================================================
 Case 4: Relaxation with boundary-maintained shear
@@ -186,9 +202,11 @@ Solutions: [{kappa: 0, s: S_b}]
 kappa_eq = 0
 s_eq     = S_b
 AB       = 1
-[PASS] boundary-maintained shear allows s != 0
-[PASS] kappa remains suppressed
-[PASS] reciprocal scaling holds
+
+[derived_results]
+[PASS] boundary-maintained shear allows s != 0 -- s_eq = S_b
+[PASS] kappa remains suppressed -- kappa_eq = 0
+[PASS] reciprocal scaling holds -- AB = 1
 
 ========================================================================================================
 Case 5: Classification consistency matrix
@@ -203,7 +221,9 @@ Expected reduced behavior:
 | mixed | !=0 | !=0 | !=0 | !=1 | shear plus creation/destruction |
 | relaxation endpoint | response | ->0 if unsourced | 0 | 1 | balanced static exterior |
 
-[PASS] classification separates exchange from creation/destruction
+
+[governance_assessments]
+[PASS] classification separates exchange from creation/destruction -- exchange has J_kappa=0; creation/destruction have J_kappa nonzero
 
 ========================================================================================================
 Case 6: Impact on P3 volume-preservation question
@@ -229,7 +249,12 @@ Result:
 Open question:
   Can the exchange/creation distinction be derived from the postulates,
   or must it be added as a structural principle?
-[PASS] P3 alone does not classify process regime
+
+[governance_assessments]
+[PASS] P3 alone does not classify process regime -- P1+P3 tie energy to volume but do not determine operator class
+
+[unresolved_obligations]
+[OBLIGATION] derive exchange/creation classification from postulates -- currently added as a structural principle; derivation remains open
 
 ========================================================================================================
 Final interpretation
@@ -262,3 +287,12 @@ Next useful artifact:
   candidate_exchange_creation_distinction_lab_report.md
 or:
   candidate_regime_map_observations.md
+
+[stderr]
+Traceback (most recent call last):
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\03_active_regimes\candidate_exchange_creation_distinction_test.py", line 726, in <module>
+    main()
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\03_active_regimes\candidate_exchange_creation_distinction_test.py", line 666, in main
+    out.print_summary()
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'ScriptOutput' object has no attribute 'print_summary'

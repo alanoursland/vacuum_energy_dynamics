@@ -463,35 +463,34 @@ def main():
     case_7_next_options()
     final_interpretation()
 
-    with archive:
-        ns.record_handoff_import(HandoffImportRecord(
-            handoff_id="group_19_handoff",
-            script_id=SCRIPT_ID,
-            imported_as=RecordKind.SUMMARY_CLAIM,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            imported_record_refs=[
-                "obligation:prove_pure_wind_neutrality_in_18_inventory",
-                "obligation:prove_ordinary_matter_decoupling_in_18_inventory",
-                "obligation:prove_exterior_mass_neutrality_in_18_inventory",
-                "obligation:prove_pure_wind_mass_neutrality_in_18_pure_wind",
-                "obligation:define_J_sub_domain_in_18_J_sub_requirements",
-                "obligation:define_Sigma_exch_in_18_J_exch_requirements",
-                "obligation:define_R_exch_in_18_J_exch_requirements",
-                "claim:vacuum_current_split_role_level_only_in_18",
-                "claim:pure_wind_neutrality_theorem_target_in_18",
-                "claim:no_active_ordinary_source_side_for_J_exch_in_18",
-                "claim:dark_sector_no_coupling_default_in_18",
-            ],
-            description="Group 19 may import: J_V unresolved, J_sub/J_exch role-level only, pure wind neutrality required but not derived, no ordinary-sector J_exch source side, ordinary matter decoupling required, no dark-sector coupling, H_exch/H_curv remain deferred. Group 19 should audit correction tensors only as divergence-safe non-decorative targets after source/current objects are real.",
-        ))
-        ns.record_derivation(
-            derivation_id="vacuum_current_split_group_status_summary_marker",
-            inputs=[],
-            output=sp.Symbol("vacuum_current_split_group_status_summary_complete"),
-            method="vacuum_current_split_group_status_summary",
-            status=Status.DERIVED,
-        )
-        ns.write_run_metadata()
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_19_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            "obligation:prove_pure_wind_neutrality_in_18_inventory",
+            "obligation:prove_ordinary_matter_decoupling_in_18_inventory",
+            "obligation:prove_exterior_mass_neutrality_in_18_inventory",
+            "obligation:prove_pure_wind_mass_neutrality_in_18_pure_wind",
+            "obligation:define_J_sub_domain_in_18_J_sub_requirements",
+            "obligation:define_Sigma_exch_in_18_J_exch_requirements",
+            "obligation:define_R_exch_in_18_J_exch_requirements",
+            "claim:vacuum_current_split_role_level_only_in_18",
+            "claim:pure_wind_neutrality_theorem_target_in_18",
+            "claim:no_active_ordinary_source_side_for_J_exch_in_18",
+            "claim:dark_sector_no_coupling_default_in_18",
+        ],
+        description="Group 19 may import: J_V unresolved, J_sub/J_exch role-level only, pure wind neutrality required but not derived, no ordinary-sector J_exch source side, ordinary matter decoupling required, no dark-sector coupling, H_exch/H_curv remain deferred. Group 19 should audit correction tensors only as divergence-safe non-decorative targets after source/current objects are real.",
+    ))
+    ns.record_derivation(
+        derivation_id="vacuum_current_split_group_status_summary_marker",
+        inputs=[],
+        output=sp.Symbol("vacuum_current_split_group_status_summary_complete"),
+        method="vacuum_current_split_group_status_summary",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

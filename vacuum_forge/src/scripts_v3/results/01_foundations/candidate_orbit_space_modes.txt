@@ -20,7 +20,9 @@ where:
 This is more geometric than choosing an arbitrary radial coordinate.
 The reduced kappa/s variables should be shadows of structures in h_AB
 together with the scalar R(x).
-[PASS] orbit-space split separates 2D geometry from sphere area
+
+[governance_assessments]
+[PASS] orbit-space split separates 2D geometry from sphere area -- geometric setup; kappa/s are 2D orbit-space diagnostics
 
 ============================================================================================================
 Case 1: Static diagonal arbitrary radial coordinate
@@ -37,7 +39,9 @@ Areal-radius scalar:
   R(X) = S(X)
 
 Areal gauge is obtained by using R=S(X) as radial coordinate.
-[PASS] static diagonal metric is a special orbit-space representation
+
+[governance_assessments]
+[PASS] static diagonal metric is a special orbit-space representation -- h_tt=-Tc^2, h_XX=Q; areal radius R=S(X)
 
 ============================================================================================================
 Case 2: Areal-gauge reconstruction from orbit-space data
@@ -53,8 +57,9 @@ s_areal     = 1/2 ln(A/B) = log(T(X)*Derivative(S(X), X)**2/Q(X))/2
 
 Compensation condition:
   kappa_areal = 0  <=>  T(X) Q(X) = S'(X)²
-[PASS] kappa_areal built from T, Q, and sphere-area scalar S
-  exp(2*kappa_areal) = Q(X)*T(X)/Derivative(S(X), X)**2
+
+[derived_results]
+[PASS] kappa_areal built from T, Q, and sphere-area scalar S -- exp(2*kappa_areal) = Q(X)*T(X)/Derivative(S(X), X)**2
 
 ============================================================================================================
 Case 3: Orbit-space determinant diagnostic
@@ -70,12 +75,14 @@ After using areal coordinate R=S(X):
 Remove the constant c² factor:
   kappa_from_det = 1/2 ln(|det(h_areal)|/c²) = log(Q(X)*T(X)/Derivative(S(X), X)**2)/2
   kappa_areal = log(Q(X)*T(X)/Derivative(S(X), X)**2)/2
-[PASS] kappa_areal is half log orbit-space determinant factor in areal gauge
 
 Interpretation:
   kappa is not a 4D scalar field.
   In static spherical areal gauge, it is the log-volume factor of the
   2D temporal-radial orbit-space metric, after removing c².
+
+[derived_results]
+[PASS] kappa_areal is half log orbit-space determinant factor in areal gauge -- kappa = 1/2 ln(|det(h_areal)|/c^2)
 
 ============================================================================================================
 Case 4: Norm of areal-radius gradient
@@ -88,7 +95,6 @@ Orbit-space gradient norm:
 
 B_areal = Q(X)/Derivative(S(X), X)**2
 1/B_areal = Derivative(S(X), X)**2/Q(X)
-[PASS] |grad R|² = 1/B_areal
 
 Using A_areal=T and B_areal=1/|grad R|²:
   AB = A_areal / |∇R|²
@@ -96,14 +102,16 @@ Using A_areal=T and B_areal=1/|grad R|²:
 
 kappa from gradR = log(Q(X)*T(X)/Derivative(S(X), X)**2)/2
 kappa_areal      = log(Q(X)*T(X)/Derivative(S(X), X)**2)/2
-[PASS] kappa can be expressed using A and areal-radius gradient norm
+
+[derived_results]
+[PASS] |grad R|² = 1/B_areal -- |∇R|² = Derivative(S(X), X)**2/Q(X)
+[PASS] kappa can be expressed using A and areal-radius gradient norm -- kappa = 1/2 ln(A / |∇R|²)
 
 ============================================================================================================
 Case 5: Shear-like mode from temporal coefficient and areal gradient
 ============================================================================================================
 s_areal = 1/2 ln(A/B) = log(T(X)*Derivative(S(X), X)**2/Q(X))/2
 s from gradR = 1/2 ln(A |∇R|²) = log(T(X)*Derivative(S(X), X)**2/Q(X))/2
-[PASS] s_areal can be expressed using A and areal-radius gradient norm
 
 Interpretation:
   In static diagonal spherical symmetry, both kappa and s can be
@@ -115,6 +123,9 @@ Interpretation:
 
 This is more geometric than raw coordinate B, but still assumes a
 static slicing / time normalization for A.
+
+[derived_results]
+[PASS] s_areal can be expressed using A and areal-radius gradient norm -- s = 1/2 ln(A |∇R|²)
 
 ============================================================================================================
 Case 6: Compensation condition in gradient form
@@ -130,7 +141,6 @@ In arbitrary coordinate X:
 
 Equivalent to:
   Eq(Q(X)*T(X), Derivative(S(X), X)**2)
-[PASS] gradient condition A=|grad R|² matches TQ=S'²
 
 Interpretation:
   This may be the cleanest spherical-reduction statement:
@@ -138,6 +148,9 @@ Interpretation:
   the orbit-space norm of the areal-radius gradient.
 
   In areal gauge, |∇R|² = 1/B, so this becomes AB=1.
+
+[derived_results]
+[PASS] gradient condition A=|grad R|² matches TQ=S'² -- orbit-space form of areal compensation condition
 
 ============================================================================================================
 Case 7: Schwarzschild exterior check
@@ -148,8 +161,6 @@ A B = 1
 kappa = 0
 s = log((2*G*M - c**2*r)**2/(c**4*r**2))/2
 |grad R|² = 1/B = -2*G*M/(c**2*r) + 1
-[PASS] Schwarzschild areal exterior has kappa=0
-[PASS] Schwarzschild satisfies A=|grad R|²
 
 Note:
   This is an exact Schwarzschild exterior check in areal coordinates,
@@ -173,6 +184,13 @@ Classification:
   That keeps the result in the right bucket: a consistency check
   against a known solution, not a source-law derivation.
 
+[derived_results]
+[PASS] Schwarzschild areal exterior has kappa=0 -- AB = 1
+[PASS] Schwarzschild satisfies A=|grad R|² -- exact exterior check in areal coordinates
+
+[governance_assessments]
+[PASS] Schwarzschild reciprocal relation is confirmed by construction, not derived -- B=1/A encodes AB=1 directly; consistency check not source-law derivation
+
 ============================================================================================================
 Case 8: Failure control — ignoring areal scalar
 ============================================================================================================
@@ -185,7 +203,9 @@ If A(f)B(f)=1:
   corrected expression -> 1
   naive expression -> f'(R)^2
 
-[PASS] including areal scalar removes radial Jacobian artifact
+
+[governance_assessments]
+[PASS] including areal scalar removes radial Jacobian artifact -- failure-control: naive TQ=f'^2; corrected TQ/S'^2=1
 
 ============================================================================================================
 Case 9: Summary classification
@@ -218,6 +238,12 @@ Results:
 
 This is a more geometric spherical-reduction formulation.
 It is not yet a full covariant theory.
+
+[governance_assessments]
+[PASS] orbit-space gradient formulation of kappa is more geometric than raw B -- kappa=1/2 ln(A/|∇R|^2); not yet a full covariant theory
+
+[unresolved_obligations]
+[OBLIGATION] derive full covariant field theory from orbit-space kappa formulation -- orbit-space reduction established; full covariant theory not yet derived
 
 ============================================================================================================
 Final interpretation
@@ -252,3 +278,6 @@ from the orbit-space geometry and areal-radius scalar.
 
 Possible next artifact:
   candidate_orbit_space_modes.md
+
+[governance_assessments]
+[PASS] kappa is orbit-space geometric diagnostic built from h_AB and R scalar -- kappa=1/2 ln(A/|∇R|^2); compensation A=|∇R|^2; not a 4D scalar field

@@ -2,6 +2,7 @@
 ============================================================================================================
 Candidate Exact Source-Law Geometry Check
 ============================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - orbit_space_action_exact_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -12,7 +13,9 @@ A = 1 - r_s/r
 B = r/(r - r_s)
 AB = 1
 A' = r_s/r**2
-[PASS] Schwarzschild areal exterior has AB=1
+
+[derived_results]
+[PASS] Schwarzschild areal exterior has AB=1 -- residual=0
 
 ============================================================================================================
 Case 1: Flat areal radial Laplacian
@@ -22,8 +25,10 @@ Operator:
 
 Δ_flat A = 0
 4πr² A' = 4*pi*r_s
-[PASS] A=1-r_s/r is flat-harmonic for r>0
-[PASS] areal flux is constant
+
+[derived_results]
+[PASS] A=1-r_s/r is flat-harmonic for r>0 -- residual=0
+[PASS] areal flux is constant -- d/dr(flux)=0
 
 Interpretation:
   The exact source law used so far is equivalent to conserved
@@ -39,7 +44,9 @@ Operator:
   Δ_spatial A = 1/(r²√B) d/dr [ r²/√B A' ]
 
 Δ_spatial A = r_s**2/(2*r**4)
-[PASS] A is NOT generally harmonic under curved spatial Laplacian
+
+[derived_results]
+[PASS] A is NOT generally harmonic under curved spatial Laplacian -- lap_spatial_A=r_s**2/(2*r**4)
 
 Interpretation:
   The exact source law is not the ordinary scalar Laplacian built
@@ -62,7 +69,9 @@ With AB=1:
   □_h A = d/dr(A A')
 
 □_h A = r_s*(-2*r + 3*r_s)/r**4
-[PASS] A is NOT generally harmonic under orbit-space scalar operator
+
+[derived_results]
+[PASS] A is NOT generally harmonic under orbit-space scalar operator -- orbit_op_A=r_s*(-2*r + 3*r_s)/r**4
 
 Interpretation:
   The exact source law is also not simply the scalar wave/Laplace
@@ -83,7 +92,9 @@ Classification:
   curved spatial Laplacian: fails
   2D orbit-space scalar operator: fails
 
-[PASS] exact law is specifically areal-flux / flat-radial in current form
+
+[governance_assessments]
+[PASS] exact law is specifically areal-flux / flat-radial in current form -- flat Δ_flat passes; Δ_spatial and □_orbit both fail
 
 ============================================================================================================
 Case 5: General solution of conserved areal flux
@@ -99,7 +110,9 @@ So:
 
 Asymptotic flatness sets C0=1.
 Mass flux sets C1=-r_s.
-[PASS] conserved areal flux gives 1/r exterior form
+
+[derived_results]
+[PASS] conserved areal flux gives 1/r exterior form -- dsolve of d/dr(r²A')=0 gives A=C1+C2/r
 
 ============================================================================================================
 Case 6: Curved-spatial harmonic solution check
@@ -112,7 +125,9 @@ Equation expression = (r*Derivative(A(r), r)**2/2 + (r*Derivative(A(r), (r, 2)) 
 This is nonlinear and not solved by A=1-r_s/r in general.
 Therefore the current exact recovery is not based on spatial
 harmonicity of A.
-[PASS] curved-spatial harmonicity is a different theory branch
+
+[governance_assessments]
+[PASS] curved-spatial harmonicity is a different theory branch -- curved Δ_spatial A=0 with B=1/A is nonlinear and not solved by A=1-r_s/r
 
 ============================================================================================================
 Case 7: Interpretation of the flat/areal operator

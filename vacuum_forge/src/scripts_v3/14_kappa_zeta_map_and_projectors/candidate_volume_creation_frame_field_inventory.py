@@ -435,81 +435,80 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_physical_frame_for_accel_gradient",
-            script_id=SCRIPT_ID,
-            title="Derive physical frame field u^mu/u_vac^mu for acceleration-gradient source law",
-            status=ObligationStatus.OPEN,
-            description=(
-                "A physical frame (matter congruence u_m or vacuum rest frame u_vac) must be "
-                "defined before Sigma_V = chi rho a^mu nabla_mu A can be made covariant and frame-safe."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="matter_congruence_frame_route",
-            script_id=SCRIPT_ID,
-            name="Matter congruence frame u_m^mu for acceleration-gradient source law",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_physical_frame_for_accel_gradient",
-                "derive_static_source_neutrality_for_accel_gradient",
-            ],
-            activation_conditions=[
-                "matter current/congruence is well-defined and not coordinate velocity",
-                "static matter does not create independent exterior zeta charge",
-            ],
-        ))
-        ns.record_route(RouteRecord(
-            route_id="vacuum_rest_frame_route",
-            script_id=SCRIPT_ID,
-            name="Vacuum rest frame u_vac^mu for acceleration-gradient source law",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_physical_frame_for_accel_gradient",
-                "derive_static_source_neutrality_for_accel_gradient",
-            ],
-            activation_conditions=[
-                "u_vac follows from vacuum volume configuration or exchange law",
-                "not invented to make Sigma_V nonzero/zero as convenient",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_coordinate_velocity_frame",
-            script_id=SCRIPT_ID,
-            branch_id="coordinate_velocity_frame",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "Coordinate velocity frame u^mu from v^i is rejected as parent frame; "
-                "it is diagnostic only and prevents rho v dot grad A from becoming a field equation."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_hybrid_projection_frame",
-            script_id=SCRIPT_ID,
-            branch_id="hybrid_projection_frame",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_physical_frame_for_accel_gradient"],
-            description=(
-                "Hybrid projection (P_vac a_m) is deferred until both u_m and u_vac are "
-                "independently defined. It must not be used to patch failures of either branch."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="volume_creation_frame_field_inventory_marker",
-            inputs=[],
-            output=sp.Symbol("volume_creation_frame_field_inventory_audited"),
-            method="volume_creation_frame_field_inventory_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_physical_frame_for_accel_gradient",
+        script_id=SCRIPT_ID,
+        title="Derive physical frame field u^mu/u_vac^mu for acceleration-gradient source law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A physical frame (matter congruence u_m or vacuum rest frame u_vac) must be "
+            "defined before Sigma_V = chi rho a^mu nabla_mu A can be made covariant and frame-safe."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="matter_congruence_frame_route",
+        script_id=SCRIPT_ID,
+        name="Matter congruence frame u_m^mu for acceleration-gradient source law",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_physical_frame_for_accel_gradient",
+            "derive_static_source_neutrality_for_accel_gradient",
+        ],
+        activation_conditions=[
+            "matter current/congruence is well-defined and not coordinate velocity",
+            "static matter does not create independent exterior zeta charge",
+        ],
+    ))
+    ns.record_route(RouteRecord(
+        route_id="vacuum_rest_frame_route",
+        script_id=SCRIPT_ID,
+        name="Vacuum rest frame u_vac^mu for acceleration-gradient source law",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_physical_frame_for_accel_gradient",
+            "derive_static_source_neutrality_for_accel_gradient",
+        ],
+        activation_conditions=[
+            "u_vac follows from vacuum volume configuration or exchange law",
+            "not invented to make Sigma_V nonzero/zero as convenient",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_coordinate_velocity_frame",
+        script_id=SCRIPT_ID,
+        branch_id="coordinate_velocity_frame",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "Coordinate velocity frame u^mu from v^i is rejected as parent frame; "
+            "it is diagnostic only and prevents rho v dot grad A from becoming a field equation."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_hybrid_projection_frame",
+        script_id=SCRIPT_ID,
+        branch_id="hybrid_projection_frame",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_physical_frame_for_accel_gradient"],
+        description=(
+            "Hybrid projection (P_vac a_m) is deferred until both u_m and u_vac are "
+            "independently defined. It must not be used to patch failures of either branch."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="volume_creation_frame_field_inventory_marker",
+        inputs=[],
+        output=sp.Symbol("volume_creation_frame_field_inventory_audited"),
+        method="volume_creation_frame_field_inventory_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

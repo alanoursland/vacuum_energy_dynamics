@@ -52,7 +52,6 @@ from vacuumforge.governance import (
     ProofObligationRecord,
     ObligationStatus,
     RecordKind,
-    ScriptOutput,
 )
 
 
@@ -67,7 +66,7 @@ def header(title: str) -> None:
     print("=" * 120)
 
 
-def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
+def status_line(label: str, status: str, detail: str = "") -> None:
     marks = {
         "SAFE_IF": "WARN",
         "CANDIDATE": "WARN",
@@ -92,7 +91,6 @@ def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
-    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
@@ -591,62 +589,67 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_pure_wind_neutrality_in_18_inventory",
-            script_id=SCRIPT_ID,
-            status=ObligationStatus.OPEN,
-            statement="Pure wind neutrality theorem: J_sub must have no M_ext shift, no scalar trace, no ordinary matter coupling, no boundary leakage.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_ordinary_matter_decoupling_in_18_inventory",
-            script_id=SCRIPT_ID,
-            status=ObligationStatus.OPEN,
-            statement="Ordinary matter decoupling theorem: J_sub/J_exch must not alter ordinary matter routing unless a theorem derives it.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_exterior_mass_neutrality_in_18_inventory",
-            script_id=SCRIPT_ID,
-            status=ObligationStatus.OPEN,
-            statement="Exterior mass neutrality theorem: J_sub/J_exch must not shift M_ext independently of A-sector.",
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="vacuum_current_split_role_level_only_in_18",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement="J_V = J_sub + J_exch is role-level bookkeeping only. No operator-level split criterion is derived. J_sub/J_exch are useful labels for role distinctions pending real definitions.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_preferred_frame_wind_in_18_inventory",
-            script_id=SCRIPT_ID,
-            branch_name="preferred_frame_wind",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            rationale="J_sub as arbitrary preferred-frame wind is forbidden. Frame must follow from vacuum ontology or substrate law.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_repair_current_in_18_inventory",
-            script_id=SCRIPT_ID,
-            branch_name="repair_current",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            rationale="J_exch or J_V chosen to cancel boundary leakage, singularity behavior, or recovery mismatch is forbidden.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_premature_H_exch_in_18_inventory",
-            script_id=SCRIPT_ID,
-            branch_name="premature_H_exch_H_curv",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            rationale="J_sub/J_exch must not be used to justify H_exch or H_curv before source/current objects are real. Deferred to Group 19.",
-        ))
-        ns.record_derivation(
-            derivation_id="vacuum_current_split_inventory_marker",
-            inputs=[],
-            output=sp.Symbol("vacuum_current_split_inventory_complete"),
-            method="vacuum_current_split_inventory",
-            status=Status.DERIVED,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_pure_wind_neutrality_in_18_inventory",
+        script_id=SCRIPT_ID,
+        title="Prove pure wind neutrality",
+        status=ObligationStatus.OPEN,
+        description="Pure wind neutrality theorem: J_sub must have no M_ext shift, no scalar trace, no ordinary matter coupling, no boundary leakage.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_ordinary_matter_decoupling_in_18_inventory",
+        script_id=SCRIPT_ID,
+        title="Prove ordinary matter decoupling",
+        status=ObligationStatus.OPEN,
+        description="Ordinary matter decoupling theorem: J_sub/J_exch must not alter ordinary matter routing unless a theorem derives it.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_exterior_mass_neutrality_in_18_inventory",
+        script_id=SCRIPT_ID,
+        title="Prove exterior mass neutrality",
+        status=ObligationStatus.OPEN,
+        description="Exterior mass neutrality theorem: J_sub/J_exch must not shift M_ext independently of A-sector.",
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="vacuum_current_split_role_level_only_in_18",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement="J_V = J_sub + J_exch is role-level bookkeeping only. No operator-level split criterion is derived. J_sub/J_exch are useful labels for role distinctions pending real definitions.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_preferred_frame_wind_in_18_inventory",
+        script_id=SCRIPT_ID,
+        branch_id="preferred_frame_wind",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="J_sub as arbitrary preferred-frame wind is forbidden. Frame must follow from vacuum ontology or substrate law.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_repair_current_in_18_inventory",
+        script_id=SCRIPT_ID,
+        branch_id="repair_current",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="J_exch or J_V chosen to cancel boundary leakage, singularity behavior, or recovery mismatch is forbidden.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_premature_H_exch_in_18_inventory",
+        script_id=SCRIPT_ID,
+        branch_id="premature_H_exch_H_curv",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        description="J_sub/J_exch must not be used to justify H_exch or H_curv before source/current objects are real. Deferred to Group 19.",
+    ))
+    ns.record_derivation(
+        derivation_id="vacuum_current_split_inventory_marker",
+        inputs=[],
+        output=sp.Symbol("vacuum_current_split_inventory_complete"),
+        method="vacuum_current_split_inventory",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

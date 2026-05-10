@@ -431,97 +431,96 @@ def main():
     case_11_next_tests()
     final_interpretation()
 
-    with archive:
-        # Real sample computations
-        ns.record_derivation(
-            derivation_id="gradient_flow_kappa_relaxation_solution_sample",
-            inputs=[E, rhs],
-            output=solution,
-            method=(
-                "solve kappa_dot = -mu_k*K_k*(kappa-kappa_min) for constant kappa_min; "
-                "gives exponential decay"
-            ),
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="quadratic local minimum and constant kappa_min; K_k and mu_k not derived",
-        )
+    # Real sample computations
+    ns.record_derivation(
+        derivation_id="gradient_flow_kappa_relaxation_solution_sample",
+        inputs=[E, rhs],
+        output=solution,
+        method=(
+            "solve kappa_dot = -mu_k*K_k*(kappa-kappa_min) for constant kappa_min; "
+            "gives exponential decay"
+        ),
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="quadratic local minimum and constant kappa_min; K_k and mu_k not derived",
+    )
 
-        ns.record_derivation(
-            derivation_id="gradient_flow_kappa_energy_derivative_sample",
-            inputs=[E2, kappa_dot],
-            output=dE_dt,
-            method="compute dE/dt = (dE/dkappa)(kappa_dot) for gradient-flow law",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="quadratic minimum; mu_k and K_k are toy parameters not derived from action",
-        )
+    ns.record_derivation(
+        derivation_id="gradient_flow_kappa_energy_derivative_sample",
+        inputs=[E2, kappa_dot],
+        output=dE_dt,
+        method="compute dE/dt = (dE/dkappa)(kappa_dot) for gradient-flow law",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="quadratic minimum; mu_k and K_k are toy parameters not derived from action",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_noninertial_vacuum_curvature_relaxation_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_noninertial_relaxation_model_classified"),
-            method="kappa_noninertial_relaxation_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_noninertial_vacuum_curvature_relaxation_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_noninertial_relaxation_model_classified"),
+        method="kappa_noninertial_relaxation_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_mobility_mu_k_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the kappa mobility coefficient mu_k from first principles",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The gradient-flow law kappa_dot = -mu_k K_k (kappa - kappa_min) uses "
-                "mobility mu_k and stiffness K_k that are not derived. Both must come from "
-                "the action or a parent covariant identity."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_mobility_mu_k_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the kappa mobility coefficient mu_k from first principles",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The gradient-flow law kappa_dot = -mu_k K_k (kappa - kappa_min) uses "
+            "mobility mu_k and stiffness K_k that are not derived. Both must come from "
+            "the action or a parent covariant identity."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_min_source_coupling_chi_k_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the shifted-minimum coupling chi_k (kappa_min = chi_k S_trace)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The source relation kappa_min = chi_k S_trace is proposed as the way "
-                "trace enters kappa without acting as a radiative scalar charge. "
-                "chi_k must be derived from the parent Lagrangian."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_min_source_coupling_chi_k_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the shifted-minimum coupling chi_k (kappa_min = chi_k S_trace)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The source relation kappa_min = chi_k S_trace is proposed as the way "
+            "trace enters kappa without acting as a radiative scalar charge. "
+            "chi_k must be derived from the parent Lagrangian."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="gradient_flow_kappa_has_no_breathing_radiation",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "A first-order gradient-flow kappa law kappa_dot = -mu_k dE/dkappa for "
-                "quadratic local minimum gives monotonic no-overshoot decay with positive "
-                "energy absorption accounting and no independent momentum channel. "
-                "This is a viable control model for trace relaxation without breathing radiation, "
-                "but mu_k, K_k, and chi_k must be derived."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="gradient_flow_kappa_has_no_breathing_radiation",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "A first-order gradient-flow kappa law kappa_dot = -mu_k dE/dkappa for "
+            "quadratic local minimum gives monotonic no-overshoot decay with positive "
+            "energy absorption accounting and no independent momentum channel. "
+            "This is a viable control model for trace relaxation without breathing radiation, "
+            "but mu_k, K_k, and chi_k must be derived."
+        ),
+    ))
 
-        with out.sample_results():
-            out.line("gradient-flow solution kappa(t) = kappa_min + (kappa0-kappa_min)*exp(-mu*K*t)", StatusMark.PASS, "sample - constant kappa_min only")
-            out.line("gradient-flow dE/dt = -mu_k*K_k*(kappa-kappa_min)^2 <= 0", StatusMark.PASS, "sample - quadratic minimum only")
+    with out.sample_results():
+        out.line("gradient-flow solution kappa(t) = kappa_min + (kappa0-kappa_min)*exp(-mu*K*t)", StatusMark.PASS, "sample - constant kappa_min only")
+        out.line("gradient-flow dE/dt = -mu_k*K_k*(kappa-kappa_min)^2 <= 0", StatusMark.PASS, "sample - quadratic minimum only")
 
-        with out.governance_assessments():
-            out.line("gradient-flow kappa has no momentum channel", StatusMark.PASS, "no kappa_ddot term")
-            out.line("energy absorbed positively by vacuum configuration", StatusMark.PASS, "P_absorb = mu_k*(dE/dkappa)^2 >= 0")
-            out.line("K_k, mu_k, chi_k derivation", StatusMark.OBLIGATION, "missing")
-            out.line("parent covariant identity", StatusMark.OBLIGATION, "missing")
+    with out.governance_assessments():
+        out.line("gradient-flow kappa has no momentum channel", StatusMark.PASS, "no kappa_ddot term")
+        out.line("energy absorbed positively by vacuum configuration", StatusMark.PASS, "P_absorb = mu_k*(dE/dkappa)^2 >= 0")
+        out.line("K_k, mu_k, chi_k derivation", StatusMark.OBLIGATION, "missing")
+        out.line("parent covariant identity", StatusMark.OBLIGATION, "missing")
 
-        with out.unresolved_obligations():
-            out.line("derive mu_k from first principles", StatusMark.OBLIGATION, "open")
-            out.line("derive chi_k coupling", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive mu_k from first principles", StatusMark.OBLIGATION, "open")
+        out.line("derive chi_k coupling", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

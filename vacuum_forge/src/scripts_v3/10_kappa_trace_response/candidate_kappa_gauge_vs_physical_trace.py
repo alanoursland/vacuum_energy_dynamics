@@ -411,68 +411,67 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_derivation(
-            derivation_id="kappa_gauge_vs_physical_trace_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_gauge_vs_physical_trace_classified"),
-            method="kappa_gauge_vs_physical_trace_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_gauge_vs_physical_trace_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_gauge_vs_physical_trace_classified"),
+        method="kappa_gauge_vs_physical_trace_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_parent_constraint_projection_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the parent constraint identity for kappa as a constrained trace response",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The current best interpretation (I3: constrained non-propagating trace response) "
-                "requires a parent constraint identity that projects out exterior kappa charge. "
-                "Without this, compensation and projection are imposed by hand."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_parent_constraint_projection_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the parent constraint identity for kappa as a constrained trace response",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The current best interpretation (I3: constrained non-propagating trace response) "
+            "requires a parent constraint identity that projects out exterior kappa charge. "
+            "Without this, compensation and projection are imposed by hand."
+        ),
+    ))
 
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_ordinary_propagating_scalar_kappa_branch",
-            script_id=SCRIPT_ID,
-            branch_id="ordinary_local_propagating_scalar_kappa",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
-            obligation_ids=["derive_kappa_parent_constraint_projection_in_10_kappa_trace"],
-            description=(
-                "An ordinary local propagating scalar kappa is generically exterior-unsafe. "
-                "This branch is deferred pending derivation of a suppression mechanism or "
-                "constraint projection identity."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_ordinary_propagating_scalar_kappa_branch",
+        script_id=SCRIPT_ID,
+        branch_id="ordinary_local_propagating_scalar_kappa",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+        obligation_ids=["derive_kappa_parent_constraint_projection_in_10_kappa_trace"],
+        description=(
+            "An ordinary local propagating scalar kappa is generically exterior-unsafe. "
+            "This branch is deferred pending derivation of a suppression mechanism or "
+            "constraint projection identity."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="kappa_best_interpretation_constrained_trace_response",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Kappa is best interpreted as a constrained non-propagating trace response: "
-                "physical inside matter, projected out in the exterior, with no independent "
-                "scalar radiation channel. This interpretation requires a parent constraint identity."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_best_interpretation_constrained_trace_response",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Kappa is best interpreted as a constrained non-propagating trace response: "
+            "physical inside matter, projected out in the exterior, with no independent "
+            "scalar radiation channel. This interpretation requires a parent constraint identity."
+        ),
+    ))
 
-        with out.governance_assessments():
-            out.line("kappa as constrained non-propagating trace response", StatusMark.PASS, "current best interpretation")
-            out.line("ordinary propagating scalar kappa", StatusMark.DEFER, "deferred pending constraint derivation")
-            out.line("parent constraint identity", StatusMark.OBLIGATION, "missing")
+    with out.governance_assessments():
+        out.line("kappa as constrained non-propagating trace response", StatusMark.PASS, "current best interpretation")
+        out.line("ordinary propagating scalar kappa", StatusMark.DEFER, "deferred pending constraint derivation")
+        out.line("parent constraint identity", StatusMark.OBLIGATION, "missing")
 
-        with out.unresolved_obligations():
-            out.line("derive parent constraint projection identity", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive parent constraint projection identity", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

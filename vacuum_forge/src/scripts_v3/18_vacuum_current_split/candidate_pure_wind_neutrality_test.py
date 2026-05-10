@@ -632,62 +632,61 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_pure_wind_mass_neutrality_in_18_pure_wind",
-            script_id=SCRIPT_ID,
-            status=ObligationStatus.OPEN,
-            statement="Mass neutrality theorem: delta M_ext|J_sub = 0. Pure wind must not change measured exterior mass.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_pure_wind_scalar_trace_neutrality_in_18_pure_wind",
-            script_id=SCRIPT_ID,
-            status=ObligationStatus.OPEN,
-            statement="Scalar trace neutrality theorem: J_sub must not source B_s, zeta residual metric trace, or scalar charge.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_pure_wind_matter_decoupling_in_18_pure_wind",
-            script_id=SCRIPT_ID,
-            status=ObligationStatus.OPEN,
-            statement="Ordinary matter decoupling theorem: J_sub must not enter ordinary T_mu_nu routing or push matter.",
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="pure_wind_neutrality_theorem_target_in_18",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement="Pure wind neutrality is required but not derived. J_sub survives only as neutral substrate-current theorem target. The tangential-flow sample confirms compatibility but is not a J_sub theorem.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_pure_wind_mass_source_in_18_pure_wind",
-            script_id=SCRIPT_ID,
-            branch_name="pure_wind_as_mass_source",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            rationale="Pure wind contributing directly to mass/energy source is forbidden under pure wind neutrality.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_pure_wind_preferred_frame_force_in_18_pure_wind",
-            script_id=SCRIPT_ID,
-            branch_name="pure_wind_as_preferred_frame_force",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            rationale="Pure wind exerting ordinary force because it defines a preferred direction/frame is forbidden.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_pure_wind_boundary_patch_in_18_pure_wind",
-            script_id=SCRIPT_ID,
-            branch_name="pure_wind_as_boundary_patch",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            rationale="Pure wind chosen to cancel boundary leakage or shell source is a forbidden boundary patch.",
-        ))
-        ns.record_derivation(
-            derivation_id="pure_wind_neutrality_test_marker",
-            inputs=[],
-            output=sp.Symbol("pure_wind_neutrality_test_complete"),
-            method="pure_wind_neutrality_test",
-            status=Status.DERIVED,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_pure_wind_mass_neutrality_in_18_pure_wind",
+        script_id=SCRIPT_ID,
+        status=ObligationStatus.OPEN,
+        statement="Mass neutrality theorem: delta M_ext|J_sub = 0. Pure wind must not change measured exterior mass.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_pure_wind_scalar_trace_neutrality_in_18_pure_wind",
+        script_id=SCRIPT_ID,
+        status=ObligationStatus.OPEN,
+        statement="Scalar trace neutrality theorem: J_sub must not source B_s, zeta residual metric trace, or scalar charge.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_pure_wind_matter_decoupling_in_18_pure_wind",
+        script_id=SCRIPT_ID,
+        status=ObligationStatus.OPEN,
+        statement="Ordinary matter decoupling theorem: J_sub must not enter ordinary T_mu_nu routing or push matter.",
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="pure_wind_neutrality_theorem_target_in_18",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement="Pure wind neutrality is required but not derived. J_sub survives only as neutral substrate-current theorem target. The tangential-flow sample confirms compatibility but is not a J_sub theorem.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_pure_wind_mass_source_in_18_pure_wind",
+        script_id=SCRIPT_ID,
+        branch_name="pure_wind_as_mass_source",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        rationale="Pure wind contributing directly to mass/energy source is forbidden under pure wind neutrality.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_pure_wind_preferred_frame_force_in_18_pure_wind",
+        script_id=SCRIPT_ID,
+        branch_name="pure_wind_as_preferred_frame_force",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        rationale="Pure wind exerting ordinary force because it defines a preferred direction/frame is forbidden.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_pure_wind_boundary_patch_in_18_pure_wind",
+        script_id=SCRIPT_ID,
+        branch_name="pure_wind_as_boundary_patch",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        rationale="Pure wind chosen to cancel boundary leakage or shell source is a forbidden boundary patch.",
+    ))
+    ns.record_derivation(
+        derivation_id="pure_wind_neutrality_test_marker",
+        inputs=[],
+        output=sp.Symbol("pure_wind_neutrality_test_complete"),
+        method="pure_wind_neutrality_test",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

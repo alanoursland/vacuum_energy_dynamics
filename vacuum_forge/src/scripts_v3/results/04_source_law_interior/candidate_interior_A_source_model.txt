@@ -1,7 +1,11 @@
+[SCRIPT_FAILED]
+exit_code=1
+
 
 ============================================================================================================
 Candidate Interior A Source Model
 ============================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - mechanics_areal_flux_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -25,7 +29,9 @@ Interior test:
 
   M_enc(r) varies with r inside the source.
   Check whether A, A', and flux match smoothly to exterior.
-[PASS] areal-flux law has interior enclosed-mass form
+
+[derived_results]
+[PASS] areal-flux law has interior enclosed-mass form -- F_A = 8*pi*G*M_enc/c^2 holds for varying M_enc(r)
 
 ============================================================================================================
 Case 1: Constant-density enclosed mass
@@ -34,7 +40,9 @@ rho(r) = rho0
 M_enc(r) = 4*pi*r**3*rho0/3
 M_enc'(r) = 4*pi*r**2*rho0
 4*pi*r^2*rho0 = 4*pi*r**2*rho0
-[PASS] M_enc derivative matches density volume element
+
+[derived_results]
+[PASS] M_enc derivative matches density volume element -- residual = 0
 
 ============================================================================================================
 Case 2: Interior A solution from flux law
@@ -45,7 +53,9 @@ A_in(r) = C + 4*pi*G*r**2*rho0/(3*c**2)
 
 Delta_areal A_in = 8*pi*G*rho0/c**2
 8*pi*G*rho0/c^2 = 8*pi*G*rho0/c**2
-[PASS] interior A solves areal source equation
+
+[derived_results]
+[PASS] interior A solves areal source equation -- Delta_areal A_in - 8piGrho/c^2 = 0
 
 ============================================================================================================
 Case 3: Match interior to exterior at r=R
@@ -59,11 +69,17 @@ A_in(R) = C + 4*pi*G*R**2*rho0/(3*c**2)
 A_out(R) = -8*pi*G*R**2*rho0/(3*c**2) + 1
 C solution = [-4*pi*G*R**2*rho0/c**2 + 1]
 A_in matched = (-4*pi*G*R**2*rho0 + 4*pi*G*r**2*rho0/3 + c**2)/c**2
-[PASS] A continuity fixes interior constant
+
+[derived_results]
+[PASS] A continuity fixes interior constant -- C = -4*pi*G*R**2*rho0/c**2 + 1
 
 A_in'(R) = 8*pi*G*R*rho0/(3*c**2)
 A_out'(R) = 8*pi*G*R*rho0/(3*c**2)
-[PASS] A' matches at boundary
+
+[derived_results]
+[PASS] A' matches at boundary -- A_in'(R) - A_out'(R) = 0
+
+[derived_results]
 [PASS] VacuumForge context reproduces exterior flux normalization
 
 ============================================================================================================
@@ -72,8 +88,10 @@ Case 4: Flux continuity at source boundary
 F_in(R) = 32*pi**2*G*R**3*rho0/(3*c**2)
 F_out(R) = 32*pi**2*G*R**3*rho0/(3*c**2)
 target  = 32*pi**2*G*R**3*rho0/(3*c**2)
-[PASS] interior flux at boundary equals exterior flux
-[PASS] boundary flux equals mass normalization
+
+[derived_results]
+[PASS] interior flux at boundary equals exterior flux -- F_in(R) - F_out(R) = 0
+[PASS] boundary flux equals mass normalization -- F_out(R) - target = 0
 
 ============================================================================================================
 Case 5: Regularity at origin
@@ -82,9 +100,11 @@ A_in(r) = -4*pi*G*R**2*rho0/c**2 + 4*pi*G*r**2*rho0/(3*c**2) + 1
 A_in(0) = -4*pi*G*R**2*rho0/c**2 + 1
 A_in'(0) = 0
 F_A(0) = 0
-[PASS] A is finite at origin
-[PASS] A' vanishes at origin
-[PASS] flux vanishes at origin
+
+[derived_results]
+[PASS] A is finite at origin -- A(0) = -4*pi*G*R**2*rho0/c**2 + 1
+[PASS] A' vanishes at origin -- A'(0) = 0
+[PASS] flux vanishes at origin -- F(0) = 0
 
 ============================================================================================================
 Case 6: Interior B from kappa=0
@@ -93,7 +113,9 @@ A_in = -4*pi*G*R**2*rho0/c**2 + 4*pi*G*r**2*rho0/(3*c**2) + 1
 kappa = 0
 B_in = 1/A_in = 3*c**2/(-12*pi*G*R**2*rho0 + 4*pi*G*r**2*rho0 + 3*c**2)
 A_in B_in = 1
-[PASS] kappa=0 gives reciprocal interior B
+
+[sample_results]
+[PASS] kappa=0 gives reciprocal interior B -- by-construction: B=1/A when kappa=0
 
 Caution:
   This is the reciprocal interior metric implied by the reduced model.
@@ -106,7 +128,9 @@ A_in = -4*pi*G*R**2*rho0/c**2 + 4*pi*G*r**2*rho0/(3*c**2) + 1
 Using A ≈ 1 + 2 Phi/c²:
 Phi_from_A = 2*pi*G*rho0*(-3*R**2 + r**2)/3
 Phi_expected = -2*pi*G*R**2*rho0 + 2*pi*G*r**2*rho0/3
-[PASS] A interior matches weak-field Newtonian potential normalization
+
+[derived_results]
+[PASS] A interior matches weak-field Newtonian potential normalization -- Phi_from_A - Phi_expected = 0
 
 ============================================================================================================
 Case 8: Not the full GR interior Schwarzschild solution
@@ -127,7 +151,13 @@ Reasons:
   - the GR interior solution has a different exact lapse structure,
   - the current model enforces kappa=0 / B=1/A even inside.
 
-[PASS] interior model is reduced-source toy, not full GR interior
+
+[governance_assessments]
+[PASS] interior model is reduced-source toy, not full GR interior -- pressure and stress not yet included; kappa=0 enforced by construction
+
+[unresolved_obligations]
+[OBLIGATION] derive pressure and stress contribution to interior A-source -- GR interior Schwarzschild differs at second order; pressure missing
+[OBLIGATION] determine whether kappa=0 holds inside matter or only exterior -- GR interior has AB!=1 inside matter; kappa=0 may be exterior-only
 
 ============================================================================================================
 Case 9: Summary classification
@@ -175,3 +205,12 @@ kappa=0 should hold inside matter or only in source-free exterior.
 
 Possible next artifact:
   candidate_interior_A_source_model.md
+
+[stderr]
+Traceback (most recent call last):
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\04_source_law_interior\candidate_interior_A_source_model.py", line 636, in <module>
+    main()
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\04_source_law_interior\candidate_interior_A_source_model.py", line 583, in main
+    out.print_summary()
+    ^^^^^^^^^^^^^^^^^
+AttributeError: 'ScriptOutput' object has no attribute 'print_summary'

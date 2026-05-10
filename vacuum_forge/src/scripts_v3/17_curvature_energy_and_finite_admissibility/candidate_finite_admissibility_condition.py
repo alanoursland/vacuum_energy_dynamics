@@ -575,60 +575,59 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="formalize_A_curv_condition_in_17_finite_admissibility",
-            script_id=SCRIPT_ID,
-            title="Formalize finite-admissibility condition A_curv",
-            status=ObligationStatus.OPEN,
-            description="A_curv must be stated with domain, measure, invariant/function, and branch-kill rule before anti-singularity claims can become technical.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="formalize_branch_kill_rule_in_17_finite_admissibility",
-            script_id=SCRIPT_ID,
-            title="Formalize branch-kill rule for finite admissibility",
-            status=ObligationStatus.OPEN,
-            description="If the finite-admissibility condition fails, branches must be excluded from the candidate solution class before solutions are tested.",
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="prove_boundary_neutrality_in_17_finite_admissibility",
-            script_id=SCRIPT_ID,
-            title="Prove boundary neutrality for finite admissibility",
-            status=ObligationStatus.OPEN,
-            description="Finite admissibility cannot be restored by boundary counterterm, cutoff, or surface repair.",
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="finite_admissibility_diagnostic_branch_filter_in_17",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement="Finite admissibility can currently be stated only as a diagnostic / branch-filter condition, not as a dynamical avoidance theorem.",
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_anti_singularity_by_declaration_in_17",
-            script_id=SCRIPT_ID,
-            branch_id="anti_singularity_by_declaration",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_curvature_energy_reservoir_in_17_finite_admissibility",
-            script_id=SCRIPT_ID,
-            branch_id="curvature_energy_source_reservoir",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[],
-        ))
-        ns.record_derivation(
-            derivation_id="finite_admissibility_condition_marker",
-            inputs=[],
-            output=sp.Symbol("finite_admissibility_condition_complete"),
-            method="finite_admissibility_condition",
-            status=Status.DERIVED,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="formalize_A_curv_condition_in_17_finite_admissibility",
+        script_id=SCRIPT_ID,
+        title="Formalize finite-admissibility condition A_curv",
+        status=ObligationStatus.OPEN,
+        description="A_curv must be stated with domain, measure, invariant/function, and branch-kill rule before anti-singularity claims can become technical.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="formalize_branch_kill_rule_in_17_finite_admissibility",
+        script_id=SCRIPT_ID,
+        title="Formalize branch-kill rule for finite admissibility",
+        status=ObligationStatus.OPEN,
+        description="If the finite-admissibility condition fails, branches must be excluded from the candidate solution class before solutions are tested.",
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="prove_boundary_neutrality_in_17_finite_admissibility",
+        script_id=SCRIPT_ID,
+        title="Prove boundary neutrality for finite admissibility",
+        status=ObligationStatus.OPEN,
+        description="Finite admissibility cannot be restored by boundary counterterm, cutoff, or surface repair.",
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="finite_admissibility_diagnostic_branch_filter_in_17",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement="Finite admissibility can currently be stated only as a diagnostic / branch-filter condition, not as a dynamical avoidance theorem.",
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_anti_singularity_by_declaration_in_17",
+        script_id=SCRIPT_ID,
+        branch_id="anti_singularity_by_declaration",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_curvature_energy_reservoir_in_17_finite_admissibility",
+        script_id=SCRIPT_ID,
+        branch_id="curvature_energy_source_reservoir",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[],
+    ))
+    ns.record_derivation(
+        derivation_id="finite_admissibility_condition_marker",
+        inputs=[],
+        output=sp.Symbol("finite_admissibility_condition_complete"),
+        method="finite_admissibility_condition",
+        status=Status.DERIVED,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

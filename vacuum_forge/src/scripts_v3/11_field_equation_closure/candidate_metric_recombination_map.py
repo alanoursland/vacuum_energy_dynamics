@@ -462,10 +462,8 @@ def main():
     case_6_classification(pieces, out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_summary()
-    with archive:
-        record_governance(ns, pieces)
-        ns.write_run_metadata()
+    record_governance(ns, pieces)
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

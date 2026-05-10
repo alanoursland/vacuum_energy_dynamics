@@ -361,80 +361,79 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_derivation(
-            derivation_id="C1_kappa_second_derivative_jump_sample",
-            inputs=[kappa_c1],
-            output=jump_d2,
-            method="evaluate kappa''(R-) for kappa=k0*(1-r^2/R^2)^2",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="C1 toy profile only; value nonzero confirms jump risk",
-        )
+    ns.record_derivation(
+        derivation_id="C1_kappa_second_derivative_jump_sample",
+        inputs=[kappa_c1],
+        output=jump_d2,
+        method="evaluate kappa''(R-) for kappa=k0*(1-r^2/R^2)^2",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="C1 toy profile only; value nonzero confirms jump risk",
+    )
 
-        ns.record_derivation(
-            derivation_id="C2_kappa_profile_boundary_regularity_sample",
-            inputs=[kappa_c2],
-            output=flux_R_c2,
-            method=(
-                "verify kappa(R)=0, kappa'(R)=0, kappa''(R)=0, Delta_kappa(R)=0, "
-                "F_kappa(R)=0 for kappa=k0*(1-r^2/R^2)^3"
-            ),
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="C2 toy profile; higher-order matching; source compatibility not proven",
-        )
+    ns.record_derivation(
+        derivation_id="C2_kappa_profile_boundary_regularity_sample",
+        inputs=[kappa_c2],
+        output=flux_R_c2,
+        method=(
+            "verify kappa(R)=0, kappa'(R)=0, kappa''(R)=0, Delta_kappa(R)=0, "
+            "F_kappa(R)=0 for kappa=k0*(1-r^2/R^2)^3"
+        ),
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="C2 toy profile; higher-order matching; source compatibility not proven",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_second_derivative_boundary_stress_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_second_derivative_boundary_stress_classified"),
-            method="kappa_second_derivative_boundary_stress_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_second_derivative_boundary_stress_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_second_derivative_boundary_stress_classified"),
+        method="kappa_second_derivative_boundary_stress_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_required_kappa_profile_smoothness_from_action_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the minimum required smoothness of the kappa profile from the candidate action",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The C1 profile has a hidden kappa'' jump (shell stress). C2 resolves it. "
-                "Whether C2 is sufficient or higher smoothness is required depends on "
-                "derivative terms in the true kappa action. This derivation is missing."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_required_kappa_profile_smoothness_from_action_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the minimum required smoothness of the kappa profile from the candidate action",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The C1 profile has a hidden kappa'' jump (shell stress). C2 resolves it. "
+            "Whether C2 is sufficient or higher smoothness is required depends on "
+            "derivative terms in the true kappa action. This derivation is missing."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="C2_kappa_profile_removes_hidden_shell_stress",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The C2 compact profile kappa=k0*(1-r^2/R^2)^3 removes the hidden kappa'' "
-                "jump present in the C1 profile, while preserving zero boundary flux and zero "
-                "net effective source. This is the preferred toy boundary profile pending "
-                "source compatibility and action smoothness derivation."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="C2_kappa_profile_removes_hidden_shell_stress",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The C2 compact profile kappa=k0*(1-r^2/R^2)^3 removes the hidden kappa'' "
+            "jump present in the C1 profile, while preserving zero boundary flux and zero "
+            "net effective source. This is the preferred toy boundary profile pending "
+            "source compatibility and action smoothness derivation."
+        ),
+    ))
 
-        with out.sample_results():
-            out.line("C1 kappa''(R-) is nonzero - second derivative jump confirmed", StatusMark.FAIL, "C1 has hidden shell stress risk")
-            out.line("C2 boundary conditions: kappa=0, kappa'=0, kappa''=0, F=0", StatusMark.PASS, "C2 preferred toy profile")
+    with out.sample_results():
+        out.line("C1 kappa''(R-) is nonzero - second derivative jump confirmed", StatusMark.FAIL, "C1 has hidden shell stress risk")
+        out.line("C2 boundary conditions: kappa=0, kappa'=0, kappa''=0, F=0", StatusMark.PASS, "C2 preferred toy profile")
 
-        with out.governance_assessments():
-            out.line("C2 profile source compatibility", StatusMark.OBLIGATION, "missing")
-            out.line("required smoothness from true action", StatusMark.OBLIGATION, "missing")
+    with out.governance_assessments():
+        out.line("C2 profile source compatibility", StatusMark.OBLIGATION, "missing")
+        out.line("required smoothness from true action", StatusMark.OBLIGATION, "missing")
 
-        with out.unresolved_obligations():
-            out.line("derive required kappa smoothness from action", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive required kappa smoothness from action", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

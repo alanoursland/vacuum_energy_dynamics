@@ -837,18 +837,17 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive:
-        record_governance(ns)
-        ns.record_derivation(
-            derivation_id="parent_correction_tensor_role_inventory_marker",
-            inputs=[],
-            output=sp.Symbol("parent_correction_tensor_role_inventory_complete"),
-            method="parent_correction_tensor_role_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    record_governance(ns)
+    ns.record_derivation(
+        derivation_id="parent_correction_tensor_role_inventory_marker",
+        inputs=[],
+        output=sp.Symbol("parent_correction_tensor_role_inventory_complete"),
+        method="parent_correction_tensor_role_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -435,86 +435,85 @@ def main():
     case_7_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_covariant_acceleration_for_Sigma_V",
-            script_id=SCRIPT_ID,
-            title="Derive covariant acceleration a^mu for Sigma_V source law",
-            status=ObligationStatus.OPEN,
-            description=(
-                "u^mu must be a physically defined matter or vacuum flow field, not an arbitrary gauge choice, "
-                "before a^mu = u^nu nabla_nu u^mu can serve in Sigma_V = chi rho a^mu nabla_mu A."
-            ),
-        ))
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_static_source_neutrality_for_accel_gradient",
-            script_id=SCRIPT_ID,
-            title="Derive static-source neutrality for acceleration-gradient branch",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Static equilibrium sources must produce no independent exterior zeta charge "
-                "under Sigma_V = chi rho a^mu nabla_mu A, or the ordinary-sector safety is violated."
-            ),
-        ))
-        ns.record_route(RouteRecord(
-            route_id="accel_gradient_Sigma_V_candidate_route",
-            script_id=SCRIPT_ID,
-            name="Sigma_V = chi rho a^mu nabla_mu A acceleration-gradient route",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=[
-                "derive_covariant_acceleration_for_Sigma_V",
-                "derive_static_source_neutrality_for_accel_gradient",
-                "derive_chi_origin_for_Sigma_V",
-                "derive_residual_kill_no_overlap_for_Sigma_V",
-                "derive_boundary_neutrality_for_Sigma_V",
-            ],
-            activation_conditions=[
-                "u^mu is physically defined before recovery checks",
-                "chi has prior normalization or exchange-law origin",
-                "static sources are neutral",
-                "boundary neutrality theorem is explicit",
-                "no-overlap/residual-kill theorem is attached",
-            ],
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="reject_coordinate_velocity_accel_gradient",
-            script_id=SCRIPT_ID,
-            branch_id="coordinate_velocity_accel_gradient",
-            status=GovernanceStatus.REJECTED_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
-            description=(
-                "rho v^i partial_i A is rejected as a parent law; it is a diagnostic toy only "
-                "and forces a covariant/frame-safe expression."
-            ),
-        ))
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_accel_gradient_branch",
-            script_id=SCRIPT_ID,
-            branch_id="acceleration_gradient_volume_creation",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_covariant_acceleration_for_Sigma_V",
-                "derive_static_source_neutrality_for_accel_gradient",
-                "derive_chi_origin_for_Sigma_V",
-            ],
-            description=(
-                "The acceleration-gradient branch is deferred pending definition of u^mu/u_vac^mu, "
-                "chi-origin, static-source neutrality, and no-overlap."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="acceleration_gradient_volume_creation_marker",
-            inputs=[],
-            output=sp.Symbol("acceleration_gradient_volume_creation_audited"),
-            method="acceleration_gradient_volume_creation_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_acceleration_for_Sigma_V",
+        script_id=SCRIPT_ID,
+        title="Derive covariant acceleration a^mu for Sigma_V source law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "u^mu must be a physically defined matter or vacuum flow field, not an arbitrary gauge choice, "
+            "before a^mu = u^nu nabla_nu u^mu can serve in Sigma_V = chi rho a^mu nabla_mu A."
+        ),
+    ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_static_source_neutrality_for_accel_gradient",
+        script_id=SCRIPT_ID,
+        title="Derive static-source neutrality for acceleration-gradient branch",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Static equilibrium sources must produce no independent exterior zeta charge "
+            "under Sigma_V = chi rho a^mu nabla_mu A, or the ordinary-sector safety is violated."
+        ),
+    ))
+    ns.record_route(RouteRecord(
+        route_id="accel_gradient_Sigma_V_candidate_route",
+        script_id=SCRIPT_ID,
+        name="Sigma_V = chi rho a^mu nabla_mu A acceleration-gradient route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=[
+            "derive_covariant_acceleration_for_Sigma_V",
+            "derive_static_source_neutrality_for_accel_gradient",
+            "derive_chi_origin_for_Sigma_V",
+            "derive_residual_kill_no_overlap_for_Sigma_V",
+            "derive_boundary_neutrality_for_Sigma_V",
+        ],
+        activation_conditions=[
+            "u^mu is physically defined before recovery checks",
+            "chi has prior normalization or exchange-law origin",
+            "static sources are neutral",
+            "boundary neutrality theorem is explicit",
+            "no-overlap/residual-kill theorem is attached",
+        ],
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="reject_coordinate_velocity_accel_gradient",
+        script_id=SCRIPT_ID,
+        branch_id="coordinate_velocity_accel_gradient",
+        status=GovernanceStatus.REJECTED_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.RECOVERY_SELECTED_PARAMETER,
+        description=(
+            "rho v^i partial_i A is rejected as a parent law; it is a diagnostic toy only "
+            "and forces a covariant/frame-safe expression."
+        ),
+    ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_accel_gradient_branch",
+        script_id=SCRIPT_ID,
+        branch_id="acceleration_gradient_volume_creation",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_covariant_acceleration_for_Sigma_V",
+            "derive_static_source_neutrality_for_accel_gradient",
+            "derive_chi_origin_for_Sigma_V",
+        ],
+        description=(
+            "The acceleration-gradient branch is deferred pending definition of u^mu/u_vac^mu, "
+            "chi-origin, static-source neutrality, and no-overlap."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="acceleration_gradient_volume_creation_marker",
+        inputs=[],
+        output=sp.Symbol("acceleration_gradient_volume_creation_audited"),
+        method="acceleration_gradient_volume_creation_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

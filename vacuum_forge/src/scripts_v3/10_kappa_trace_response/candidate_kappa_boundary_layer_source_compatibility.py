@@ -377,67 +377,66 @@ def main():
     case_10_next_tests()
     final_interpretation()
 
-    with archive:
-        # Auditing computed shape of C2 effective source
-        ns.record_derivation(
-            derivation_id="C2_kappa_effective_source_sign_change_audit",
-            inputs=[kappa],
-            output=S_eff,
-            method="compute Delta_areal(kappa) = kappa'' + 2*kappa'/r for C2 profile",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    # Auditing computed shape of C2 effective source
+    ns.record_derivation(
+        derivation_id="C2_kappa_effective_source_sign_change_audit",
+        inputs=[kappa],
+        output=S_eff,
+        method="compute Delta_areal(kappa) = kappa'' + 2*kappa'/r for C2 profile",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_boundary_layer_source_compatibility_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_boundary_layer_source_compatibility_classified"),
-            method="kappa_boundary_layer_source_compatibility_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_boundary_layer_source_compatibility_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_boundary_layer_source_compatibility_classified"),
+        method="kappa_boundary_layer_source_compatibility_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_min_boundary_cutoff_source_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive the boundary-cutoff modified shifted minimum kappa_min(r) from trace/volume physics",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The non-inertial model favors kappa_min = chi_k * S_trace_effective with "
-                "a boundary cutoff that enforces kappa_min(R)=0, kappa_min'(R)=0. "
-                "The cutoff must be derived from interface/matching physics, not chosen "
-                "to produce a smooth compact profile by construction."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_min_boundary_cutoff_source_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive the boundary-cutoff modified shifted minimum kappa_min(r) from trace/volume physics",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The non-inertial model favors kappa_min = chi_k * S_trace_effective with "
+            "a boundary cutoff that enforces kappa_min(R)=0, kappa_min'(R)=0. "
+            "The cutoff must be derived from interface/matching physics, not chosen "
+            "to produce a smooth compact profile by construction."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="noninertial_kappa_source_preferred_over_poisson",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The non-inertial minimum-shift model (kappa_min = chi_k S_trace_effective) "
-                "is more compatible with smooth compact kappa profiles than a Poisson "
-                "source kappa model, because it does not require the trace to produce "
-                "a sign-changing Delta-kappa source."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="noninertial_kappa_source_preferred_over_poisson",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The non-inertial minimum-shift model (kappa_min = chi_k S_trace_effective) "
+            "is more compatible with smooth compact kappa profiles than a Poisson "
+            "source kappa model, because it does not require the trace to produce "
+            "a sign-changing Delta-kappa source."
+        ),
+    ))
 
-        with out.governance_assessments():
-            out.line("raw pressure as elliptic Poisson source", StatusMark.FAIL, "rejected - produces sign-changing Delta-kappa")
-            out.line("compensated trace as elliptic source", StatusMark.DEFER, "plausible but parent identity missing")
-            out.line("non-inertial minimum-shift preferred", StatusMark.PASS, "current best interpretation")
-            out.line("boundary cutoff derivation", StatusMark.OBLIGATION, "missing")
+    with out.governance_assessments():
+        out.line("raw pressure as elliptic Poisson source", StatusMark.FAIL, "rejected - produces sign-changing Delta-kappa")
+        out.line("compensated trace as elliptic source", StatusMark.DEFER, "plausible but parent identity missing")
+        out.line("non-inertial minimum-shift preferred", StatusMark.PASS, "current best interpretation")
+        out.line("boundary cutoff derivation", StatusMark.OBLIGATION, "missing")
 
-        with out.unresolved_obligations():
-            out.line("derive boundary-cutoff kappa_min from interface physics", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive boundary-cutoff kappa_min from interface physics", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

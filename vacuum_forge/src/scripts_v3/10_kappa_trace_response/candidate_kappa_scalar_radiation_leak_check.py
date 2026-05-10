@@ -377,70 +377,69 @@ def main():
     case_9_next_tests()
     final_interpretation()
 
-    with archive:
-        ns.record_derivation(
-            derivation_id="kappa_scalar_radiation_leak_check_marker",
-            inputs=[],
-            output=sp.Symbol("kappa_scalar_radiation_leak_options_classified"),
-            method="kappa_scalar_radiation_leak_check_inventory",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
+    ns.record_derivation(
+        derivation_id="kappa_scalar_radiation_leak_check_marker",
+        inputs=[],
+        output=sp.Symbol("kappa_scalar_radiation_leak_options_classified"),
+        method="kappa_scalar_radiation_leak_check_inventory",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
 
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_hyperbolic_massless_kappa_wave_branch",
-            script_id=SCRIPT_ID,
-            branch_id="hyperbolic_massless_kappa_wave",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
-            obligation_ids=["derive_kappa_parent_constraint_projection_in_10_kappa_trace"],
-            description=(
-                "A massless hyperbolic kappa (Box kappa = source) allows scalar radiation "
-                "even with zero monopole charge. This branch is deferred: it is not accepted "
-                "as a safe kappa dynamics option pending derivation of a suppression mechanism."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_hyperbolic_massless_kappa_wave_branch",
+        script_id=SCRIPT_ID,
+        branch_id="hyperbolic_massless_kappa_wave",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        reason_code=ReasonCode.MISSING_BOUNDARY_NEUTRALITY_THEOREM,
+        obligation_ids=["derive_kappa_parent_constraint_projection_in_10_kappa_trace"],
+        description=(
+            "A massless hyperbolic kappa (Box kappa = source) allows scalar radiation "
+            "even with zero monopole charge. This branch is deferred: it is not accepted "
+            "as a safe kappa dynamics option pending derivation of a suppression mechanism."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_dynamic_scalar_radiation_safety_in_10_kappa_trace",
-            script_id=SCRIPT_ID,
-            title="Derive dynamical scalar radiation safety for kappa",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Static zero-monopole charge is not sufficient. A time-dependent kappa "
-                "equation must be shown to be non-radiative dynamically. This requires "
-                "either elliptic/constrained dynamics, a relaxation law with energy accounting, "
-                "or a massive suppression with derived scale m_k."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_dynamic_scalar_radiation_safety_in_10_kappa_trace",
+        script_id=SCRIPT_ID,
+        title="Derive dynamical scalar radiation safety for kappa",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Static zero-monopole charge is not sufficient. A time-dependent kappa "
+            "equation must be shown to be non-radiative dynamically. This requires "
+            "either elliptic/constrained dynamics, a relaxation law with energy accounting, "
+            "or a massive suppression with derived scale m_k."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="kappa_safe_dynamics_must_be_non_wave",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Safe kappa dynamics must be elliptic/constrained, relaxational/non-wave, "
-                "or massive/restoring with derived scale. Ordinary massless hyperbolic kappa "
-                "introduces a scalar breathing wave channel incompatible with current requirements."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="kappa_safe_dynamics_must_be_non_wave",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Safe kappa dynamics must be elliptic/constrained, relaxational/non-wave, "
+            "or massive/restoring with derived scale. Ordinary massless hyperbolic kappa "
+            "introduces a scalar breathing wave channel incompatible with current requirements."
+        ),
+    ))
 
-        with out.governance_assessments():
-            out.line("massless hyperbolic kappa", StatusMark.FAIL, "deferred - creates breathing wave channel")
-            out.line("elliptic constrained kappa", StatusMark.DEFER, "safe structurally, parent identity missing")
-            out.line("relaxational kappa", StatusMark.DEFER, "plausible, energy accounting missing")
-            out.line("dynamic scalar radiation safety", StatusMark.OBLIGATION, "not yet proven")
+    with out.governance_assessments():
+        out.line("massless hyperbolic kappa", StatusMark.FAIL, "deferred - creates breathing wave channel")
+        out.line("elliptic constrained kappa", StatusMark.DEFER, "safe structurally, parent identity missing")
+        out.line("relaxational kappa", StatusMark.DEFER, "plausible, energy accounting missing")
+        out.line("dynamic scalar radiation safety", StatusMark.OBLIGATION, "not yet proven")
 
-        with out.unresolved_obligations():
-            out.line("derive dynamical scalar radiation safety", StatusMark.OBLIGATION, "open")
+    with out.unresolved_obligations():
+        out.line("derive dynamical scalar radiation safety", StatusMark.OBLIGATION, "open")
 
-        out.print_all()
+    out.print_all()
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -1,3 +1,6 @@
+[SCRIPT_FAILED]
+exit_code=1
+
 
 ==============================================================================
 Candidate Log-Scale Exterior Modes — VacuumForge Test
@@ -10,7 +13,6 @@ A = exp(kappa + s)
 B = exp(kappa - s)
 AB = exp(2*kappa)
 AB | kappa=0 = 1
-PASS: kappa = 0 implies AB = 1.
 
 Weak-field ansatz:
   A = exp(Phi/c**2)
@@ -18,7 +20,10 @@ Weak-field ansatz:
   AB = exp(Phi*(1 - gamma_v)/c**2)
   log(AB) = Phi*(1 - gamma_v)/c**2
   gamma_v solutions from AB=1: [1]
-PASS: AB = 1 implies gamma_v = 1 under the ansatz.
+
+[derived_results]
+[PASS] kappa = 0 implies AB = 1 -- AB|kappa=0 = 1
+[PASS] AB = 1 implies gamma_v = 1 under weak-field ansatz -- gamma_v solutions: [1]
 
 ==============================================================================
 Section 2: Leak control — direct mode basis
@@ -57,7 +62,9 @@ Classification: trace_free
 
 Leak warnings:
   - LEAK WARNING: Exchange operator explicitly zeroes all trace-contributing variables. Trace-free exchange is assumed via the operator definition, not derived from deeper structure.
-PASS: direct delta_kappa=0 was identified as tautological.
+
+[governance_assessments]
+[PASS] direct delta_kappa=0 classified as tautological -- direct mode assumption is leak-controlled, not a derivation
 
 ==============================================================================
 Section 3: Structural trace-kernel exchange in physical 3+1
@@ -106,7 +113,8 @@ Creation:
   status  = StructureStatus.DERIVED
   classification = pure_trace
 
-PASS: trace-free exchange is structurally derived from the projection kernel.
+[derived_results]
+[PASS] trace-free exchange derived from 3+1 projection kernel -- summary_status=derived
 
 ==============================================================================
 Section 4: Toy energy forks
@@ -119,7 +127,6 @@ Stationary equations: [Eq(2*C_kappa*kappa, 0), Eq(2*C_sigma*sigma - J_s, 0)]
 Solutions: [{kappa: 0, sigma: J_s/(2*C_sigma)}]
 kappa_eq = 0
 s_eq     = J_s/(2*C_sigma)
-PASS: kappa_eq = 0.
 Consequence: kappa = 0 -> AB = 1 -> gamma_v = 1 under ansatz.
 
 ------------------------------------------------------------------------------
@@ -165,6 +172,13 @@ Fork KS:
   gamma_v_one: clean
   trace_free_exchange: clean
 
+[sample_results]
+[PASS] Fork TC: kappa_eq = 0 under trace-free exchange -- toy sample only; J_kappa=0 assumed not derived from source law
+[PASS] Fork KS: kappa_eq != 0 when exchange sources kappa -- toy sample showing AB != 1 when kappa is sourced
+
+[unresolved_obligations]
+[OBLIGATION] derive source law suppressing kappa in static source-free exterior -- toy energy fork confirms need; physical mechanism not yet derived
+
 ==============================================================================
 Section 5: Candidate verdict
 ==============================================================================
@@ -189,3 +203,16 @@ Expected interpretation:
       suppresses kappa in static source-free exterior configurations
       without assuming reciprocal scaling by hand.
 
+
+[governance_assessments]
+[PASS] log-scale mode basis algebraically clean for kappa/s decomposition -- kappa=0 exactly encodes AB=1; basis is structurally sound
+[DEFER] trace-kernel exchange route is candidate, not licensed -- J_kappa=0 derivable from trace-kernel structure; physical source law open
+
+[stderr]
+Traceback (most recent call last):
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test.py", line 679, in <module>
+    main()
+  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test.py", line 599, in main
+    ns.prepare_archive()
+    ^^^^^^^^^^^^^^^^^^
+AttributeError: 'ScriptNamespace' object has no attribute 'prepare_archive'

@@ -512,10 +512,8 @@ def main():
     case_7_parent_identity_requirements(out)
     case_8_next_tests(out)
     final_interpretation()
-    out.print_summary()
-    with archive:
-        record_governance(ns, entries)
-        ns.write_run_metadata()
+    record_governance(ns, entries)
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

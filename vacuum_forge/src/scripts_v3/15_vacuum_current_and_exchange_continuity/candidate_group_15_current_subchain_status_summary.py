@@ -412,72 +412,71 @@ def main():
     case_6_next_options()
     final_interpretation()
 
-    with archive:
-        ns.record_claim(ClaimRecord(
-            claim_id="g15c_J_V_subchain_unresolved_bottleneck",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.SUMMARY_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            statement=(
-                "The J_V / exchange-continuity current subchain narrowed the problem to: "
-                "J_V physical flux law, Sigma_V/R_V operators, timelike domain, static "
-                "neutrality, boundary neutrality, and no-overlap operator O. None has been "
-                "derived. The central missing theorem is O[B_s, zeta_residual/kappa_residual, J_V] = 0."
-            ),
-            obligation_ids=[
-                "derive_J_V_physical_flux_law_in_15",
-                "derive_Sigma_V_operator_in_15",
-                "derive_R_V_operator_in_15",
-                "derive_J_V_timelike_domain_theorem_in_15",
-                "derive_static_source_neutrality_theorem_in_15",
-                "derive_boundary_neutrality_theorem_in_15",
-                "derive_no_overlap_operator_or_residual_kill_in_15",
-            ],
-        ))
-        ns.record_claim(ClaimRecord(
-            claim_id="g15c_residual_kill_provisional_convention",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Residual-kill / non-metric residual is the safest provisional count-once "
-                "convention if J_V-driven zeta enters B_s. It is not derived. It is revisitable "
-                "if O is later derived or if neutral residual becomes structurally safe."
-            ),
-        ))
-        ns.record_handoff_import(HandoffImportRecord(
-            handoff_id="group_15_current_subchain_handoff",
-            script_id=SCRIPT_ID,
-            imported_as=RecordKind.SUMMARY_CLAIM,
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            imported_record_refs=[
-                "claim:g15c_J_V_subchain_unresolved_bottleneck",
-                "claim:g15c_residual_kill_provisional_convention",
-                "obligation:derive_J_V_physical_flux_law_in_15",
-                "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
-                "obligation:derive_boundary_neutrality_theorem_in_15",
-                "obligation:derive_static_source_neutrality_theorem_in_15",
-                "obligation:derive_J_V_timelike_domain_theorem_in_15",
-                "route:no4_residual_kill_safe_route",
-            ],
-            description=(
-                "What the residual-kill and final Group 15 summary scripts may import from "
-                "the current subchain: the unresolved J_V/O bottleneck, the residual-kill "
-                "provisional convention, and all open proof obligations."
-            ),
-        ))
-        ns.record_derivation(
-            derivation_id="group_15_current_subchain_status_summary_marker",
-            inputs=[],
-            output=sp.Symbol("group_15_current_subchain_status_summary_audited"),
-            method="group_15_current_subchain_status_summary_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    ns.record_claim(ClaimRecord(
+        claim_id="g15c_J_V_subchain_unresolved_bottleneck",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.SUMMARY_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        statement=(
+            "The J_V / exchange-continuity current subchain narrowed the problem to: "
+            "J_V physical flux law, Sigma_V/R_V operators, timelike domain, static "
+            "neutrality, boundary neutrality, and no-overlap operator O. None has been "
+            "derived. The central missing theorem is O[B_s, zeta_residual/kappa_residual, J_V] = 0."
+        ),
+        obligation_ids=[
+            "derive_J_V_physical_flux_law_in_15",
+            "derive_Sigma_V_operator_in_15",
+            "derive_R_V_operator_in_15",
+            "derive_J_V_timelike_domain_theorem_in_15",
+            "derive_static_source_neutrality_theorem_in_15",
+            "derive_boundary_neutrality_theorem_in_15",
+            "derive_no_overlap_operator_or_residual_kill_in_15",
+        ],
+    ))
+    ns.record_claim(ClaimRecord(
+        claim_id="g15c_residual_kill_provisional_convention",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Residual-kill / non-metric residual is the safest provisional count-once "
+            "convention if J_V-driven zeta enters B_s. It is not derived. It is revisitable "
+            "if O is later derived or if neutral residual becomes structurally safe."
+        ),
+    ))
+    ns.record_handoff_import(HandoffImportRecord(
+        handoff_id="group_15_current_subchain_handoff",
+        script_id=SCRIPT_ID,
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        imported_record_refs=[
+            "claim:g15c_J_V_subchain_unresolved_bottleneck",
+            "claim:g15c_residual_kill_provisional_convention",
+            "obligation:derive_J_V_physical_flux_law_in_15",
+            "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
+            "obligation:derive_boundary_neutrality_theorem_in_15",
+            "obligation:derive_static_source_neutrality_theorem_in_15",
+            "obligation:derive_J_V_timelike_domain_theorem_in_15",
+            "route:no4_residual_kill_safe_route",
+        ],
+        description=(
+            "What the residual-kill and final Group 15 summary scripts may import from "
+            "the current subchain: the unresolved J_V/O bottleneck, the residual-kill "
+            "provisional convention, and all open proof obligations."
+        ),
+    ))
+    ns.record_derivation(
+        derivation_id="group_15_current_subchain_status_summary_marker",
+        inputs=[],
+        output=sp.Symbol("group_15_current_subchain_status_summary_audited"),
+        method="group_15_current_subchain_status_summary_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

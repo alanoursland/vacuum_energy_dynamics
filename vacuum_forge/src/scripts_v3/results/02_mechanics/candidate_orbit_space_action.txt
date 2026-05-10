@@ -2,6 +2,7 @@
 ============================================================================================================
 Candidate Orbit-Space Action
 ============================================================================================================
+[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - exact_metric_recovery: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -15,9 +16,11 @@ AB = 1
 
 ∇²A = 0
 ∇²s + |∇s|² = 0
-[PASS] A is harmonic outside source
-[PASS] s satisfies nonlinear source-free equation
-[PASS] kappa=0 gives AB=1
+
+[derived_results]
+[PASS] A is harmonic outside source -- residual=0
+[PASS] s satisfies nonlinear source-free equation -- residual=0
+[PASS] kappa=0 gives AB=1 -- residual=0
 
 ============================================================================================================
 Case 1: Weak-field linear s-action
@@ -29,7 +32,9 @@ Rearranged:
   s'' = alpha rho / (2 K_s)
 
 This is the weak-field linear action used earlier.
-[PASS] linear s-action gives Poisson equation for s
+
+[sample_results]
+[PASS] linear s-action gives Poisson equation for s -- residual=0
 
 ============================================================================================================
 Case 2: Exact candidate A-action
@@ -46,7 +51,9 @@ choose:
   beta/(2K_A) = 8πG/c²
   beta = 16πG K_A/c²
 beta = 16*pi*G*K_A/c**2
-[PASS] A-action gives Poisson equation for A
+
+[sample_results]
+[PASS] A-action gives Poisson equation for A -- residual=0
 
 ============================================================================================================
 Case 3: Nonlinear s-action induced by A=exp(s)
@@ -57,7 +64,9 @@ L_s_exact = (K_A*exp(s(x))*Derivative(s(x), x)**2 + beta*rho(x))*exp(s(x))
 Euler-Lagrange wrt s = (-2*K_A*exp(s(x))*Derivative(s(x), x)**2 - 2*K_A*exp(s(x))*Derivative(s(x), (x, 2)) + beta*rho(x))*exp(s(x))
 
 Expected EL_s = exp(s) * [beta rho - 2K_A A''] = (-2*K_A*(Derivative(s(x), x)**2 + Derivative(s(x), (x, 2)))*exp(s(x)) + beta*rho(x))*exp(s(x))
-[PASS] nonlinear s-action is equivalent to A-action under A=exp(s)
+
+[sample_results]
+[PASS] nonlinear s-action is equivalent to A-action under A=exp(s) -- residual=0
 
 ============================================================================================================
 Case 4: Radial source-free A equation
@@ -66,8 +75,10 @@ A = 1 - r_s/r
 s = ln(A) = log(1 - r_s/r)
 ∇²A = 0
 ∇²s + |∇s|² = 0
-[PASS] A=1-r_s/r solves radial source-free A equation
-[PASS] s=ln(1-r_s/r) solves nonlinear s equation
+
+[derived_results]
+[PASS] A=1-r_s/r solves radial source-free A equation -- residual=0
+[PASS] s=ln(1-r_s/r) solves nonlinear s equation -- residual=0
 
 ============================================================================================================
 Case 5: Radial A-action with spherical measure
@@ -75,7 +86,9 @@ Case 5: Radial A-action with spherical measure
 L_radial = r**2*(K_A*Derivative(A(r), r)**2 + beta*A(r)*rho(r))
 Euler-Lagrange = r*(-2*K_A*r*Derivative(A(r), (r, 2)) - 4*K_A*Derivative(A(r), r) + beta*r*rho(r)) = 0
 Expected = r*(-2*K_A*(r*Derivative(A(r), (r, 2)) + 2*Derivative(A(r), r)) + beta*r*rho(r))
-[PASS] radial A-action gives spherical Poisson equation
+
+[sample_results]
+[PASS] radial A-action gives spherical Poisson equation -- residual=0
 
 Rearranged:
   (1/r²)(r² A')' = beta rho/(2K_A)
@@ -88,7 +101,9 @@ A = 1 - r_s/r
 4πr² A' = 4*pi*r_s
 target = 8*pi*G*M/c**2
 r_s solution = [2*G*M/c**2]
-[PASS] flux normalization gives Schwarzschild radius
+
+[sample_results]
+[PASS] flux normalization gives Schwarzschild radius -- solution=[2*G*M/c**2]
 
 ============================================================================================================
 Case 7: Combine A-action with kappa suppression toy
@@ -97,8 +112,10 @@ L = K_A*Derivative(A(x), x)**2 + K_k*Derivative(kappa(x), x)**2 + M_k**2*kappa(x
 
 EL_kappa = -2*K_k*Derivative(kappa(x), (x, 2)) + 2*M_k**2*kappa(x) = 0
 EL_A     = -2*K_A*Derivative(A(x), (x, 2)) + beta*rho(x) = 0
-[PASS] kappa equation gives suppression when unsourced
-[PASS] A equation gives source law
+
+[sample_results]
+[PASS] kappa equation gives suppression when unsourced -- residual=0
+[PASS] A equation gives source law -- residual=0
 
 ============================================================================================================
 Case 8: Orbit-space compensation reminder
@@ -114,7 +131,9 @@ Compensation kappa=0 gives:
   T Q = S'²
 
 Exact Schwarzschild exterior satisfies this with A=1-r_s/r.
-[PASS] orbit-space condition supplies geometric compensation target
+
+[governance_assessments]
+[PASS] orbit-space condition supplies geometric compensation target -- kappa=0 gives A=|∇R|², connecting A-action variable to geometric reduction
 
 ============================================================================================================
 Case 9: Summary classification
