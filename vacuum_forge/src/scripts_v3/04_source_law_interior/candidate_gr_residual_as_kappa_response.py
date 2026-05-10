@@ -79,6 +79,13 @@ def is_zero(expr) -> bool:
         return False
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
 def series_u(expr, u, order):
     return sp.simplify(sp.series(expr, u, 0, order).removeO())
 
@@ -338,52 +345,51 @@ def case_6_interpretation_summary(out: ScriptOutput):
 
 def main():
     header("Candidate GR Residual as Kappa Response")
+    archive, ns, invalidated = prepare_archive()
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
 
     out = ScriptOutput()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
-        ns = archive.script_namespace(SCRIPT_ID)
-        ns.prepare_archive()
+    x, u, A_gr, B_gr, AB_gr, kappa_gr = case_0_define_gr_kappa(out, ns)
+    case_1_boundary_behavior(out, x, u, AB_gr, kappa_gr, ns)
+    case_2_weak_field_kappa_shape(out, x, u, AB_gr, kappa_gr, ns)
+    case_3_center_behavior(out, x, u, kappa_gr)
+    case_4_compare_A_residual(out, x, u, A_gr, ns)
+    case_5_effective_kappa_profile_fit(out, x, u, kappa_gr, ns)
+    case_6_interpretation_summary(out)
 
-        x, u, A_gr, B_gr, AB_gr, kappa_gr = case_0_define_gr_kappa(out, ns)
-        case_1_boundary_behavior(out, x, u, AB_gr, kappa_gr, ns)
-        case_2_weak_field_kappa_shape(out, x, u, AB_gr, kappa_gr, ns)
-        case_3_center_behavior(out, x, u, kappa_gr)
-        case_4_compare_A_residual(out, x, u, A_gr, ns)
-        case_5_effective_kappa_profile_fit(out, x, u, kappa_gr, ns)
-        case_6_interpretation_summary(out)
+    out.print_summary()
 
-        out.print_summary()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_gr_interior_kappa_from_matter_coupling",
+        script_id=SCRIPT_ID,
+        title="Derive interior kappa source from matter coupling, not GR comparison",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The GR interior kappa diagnostic shows kappa is nonzero inside matter "
+            "and vanishes at the boundary. This supports the exterior-only kappa=0 "
+            "hypothesis but does not derive the mechanism. The source law for "
+            "interior kappa from matter coupling remains open."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_gr_interior_kappa_from_matter_coupling",
-            script_id=SCRIPT_ID,
-            title="Derive interior kappa source from matter coupling, not GR comparison",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The GR interior kappa diagnostic shows kappa is nonzero inside matter "
-                "and vanishes at the boundary. This supports the exterior-only kappa=0 "
-                "hypothesis but does not derive the mechanism. The source law for "
-                "interior kappa from matter coupling remains open."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="gr_interior_kappa_boundary_smooth",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The GR interior kappa diagnostic (kappa_GR = 1/2 ln(A_GR B_GR)) is "
+            "nonzero inside matter, vanishes at the exterior boundary, and is regular "
+            "at the center. The A residual A_GR - A_red is boundary-smooth. This is "
+            "a diagnostic result, not a derivation of the mechanism."
+        ),
+        obligation_ids=["derive_gr_interior_kappa_from_matter_coupling"],
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="gr_interior_kappa_boundary_smooth",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.HEURISTIC,
-            statement=(
-                "The GR interior kappa diagnostic (kappa_GR = 1/2 ln(A_GR B_GR)) is "
-                "nonzero inside matter, vanishes at the exterior boundary, and is regular "
-                "at the center. The A residual A_GR - A_red is boundary-smooth. This is "
-                "a diagnostic result, not a derivation of the mechanism."
-            ),
-            obligation_ids=["derive_gr_interior_kappa_from_matter_coupling"],
-        ))
-
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

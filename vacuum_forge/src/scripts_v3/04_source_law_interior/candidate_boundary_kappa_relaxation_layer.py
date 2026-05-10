@@ -61,6 +61,13 @@ def is_zero(expr) -> bool:
         return False
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
 def case_0_problem_statement(out: ScriptOutput):
     header("Case 0: Problem statement")
 
@@ -316,73 +323,72 @@ def final_interpretation():
 
 def main():
     header("Candidate Boundary Kappa Relaxation Layer")
+    archive, ns, invalidated = prepare_archive()
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
 
     out = ScriptOutput()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
-        ns = archive.script_namespace(SCRIPT_ID)
-        ns.prepare_archive()
+    case_0_problem_statement(out)
+    case_1_sharp_cutoff(out)
+    case_2_smooth_polynomial_inside(out, ns)
+    case_3_exponential_exterior_relaxation(out, ns)
+    case_4_massive_kappa_relaxation_equation(out)
+    case_5_energy_penalty_boundary_layer(out, ns)
+    case_6_exterior_observable_constraint(out, ns)
+    final_interpretation()
 
-        case_0_problem_statement(out)
-        case_1_sharp_cutoff(out)
-        case_2_smooth_polynomial_inside(out, ns)
-        case_3_exponential_exterior_relaxation(out, ns)
-        case_4_massive_kappa_relaxation_equation(out)
-        case_5_energy_penalty_boundary_layer(out, ns)
-        case_6_exterior_observable_constraint(out, ns)
-        final_interpretation()
+    out.print_summary()
 
-        out.print_summary()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_relaxation_mechanism",
+        script_id=SCRIPT_ID,
+        title="Derive boundary kappa relaxation mechanism from field equation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The profiles tested here (sharp cutoff, smooth polynomial, exponential "
+            "tail, energy penalty) are toy/diagnostic. No full field equation for "
+            "the kappa relaxation layer has been derived. The mechanism that carries "
+            "interior kappa to exterior kappa=0 remains an open obligation."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_relaxation_mechanism",
-            script_id=SCRIPT_ID,
-            title="Derive boundary kappa relaxation mechanism from field equation",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The profiles tested here (sharp cutoff, smooth polynomial, exponential "
-                "tail, energy penalty) are toy/diagnostic. No full field equation for "
-                "the kappa relaxation layer has been derived. The mechanism that carries "
-                "interior kappa to exterior kappa=0 remains an open obligation."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_exterior_kappa_mass",
+        script_id=SCRIPT_ID,
+        title="Derive exterior kappa mass parameter from vacuum physics",
+        status=ObligationStatus.OPEN,
+        description=(
+            "A massive exterior kappa mode (kappa ~ C exp(-mr)/r) can suppress "
+            "exterior kappa leaks if m is large. The mass parameter m is not derived "
+            "from first principles and remains open."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_exterior_kappa_mass",
-            script_id=SCRIPT_ID,
-            title="Derive exterior kappa mass parameter from vacuum physics",
-            status=ObligationStatus.OPEN,
-            description=(
-                "A massive exterior kappa mode (kappa ~ C exp(-mr)/r) can suppress "
-                "exterior kappa leaks if m is large. The mass parameter m is not derived "
-                "from first principles and remains open."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="smooth_interior_kappa_profile_viable",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "A smooth interior kappa profile with kappa(R)=0 and kappa'(R)=0 is "
+            "the cleanest class for reconciling interior kappa response with exterior "
+            "kappa=0. This is a diagnostic assessment; mechanism derivation is open."
+        ),
+        obligation_ids=["derive_kappa_relaxation_mechanism"],
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="smooth_interior_kappa_profile_viable",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "A smooth interior kappa profile with kappa(R)=0 and kappa'(R)=0 is "
-                "the cleanest class for reconciling interior kappa response with exterior "
-                "kappa=0. This is a diagnostic assessment; mechanism derivation is open."
-            ),
-            obligation_ids=["derive_kappa_relaxation_mechanism"],
-        ))
+    ns.record_route(RouteRecord(
+        route_id="smooth_interior_kappa_compact_support_route",
+        script_id=SCRIPT_ID,
+        name="Smooth interior kappa with compact support vanishing at boundary",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_kappa_relaxation_mechanism"],
+    ))
 
-        ns.record_route(RouteRecord(
-            route_id="smooth_interior_kappa_compact_support_route",
-            script_id=SCRIPT_ID,
-            name="Smooth interior kappa with compact support vanishing at boundary",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_kappa_relaxation_mechanism"],
-        ))
-
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

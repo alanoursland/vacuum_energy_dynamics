@@ -421,40 +421,37 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_F_zeta_companion_map_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive F_zeta companion map and residual-kill theorem",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Derive F_zeta[A,zeta] from volume-exchange law with coefficient origin before "
+            "recovery checks. Prove that residual zeta metric trace is killed or non-metric "
+            "after F_zeta is applied. Boundary neutrality and no-overlap must hold."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_F_zeta_companion_map_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive F_zeta companion map and residual-kill theorem",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Derive F_zeta[A,zeta] from volume-exchange law with coefficient origin before "
-                "recovery checks. Prove that residual zeta metric trace is killed or non-metric "
-                "after F_zeta is applied. Boundary neutrality and no-overlap must hold."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_zeta_companion_branch_test",
+        script_id=SCRIPT_ID,
+        branch_id="zeta_companion_branch",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_F_zeta_companion_map_in_14"],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_zeta_companion_branch_test",
-            script_id=SCRIPT_ID,
-            branch_id="zeta_companion_branch",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_F_zeta_companion_map_in_14"],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="zeta_companion_branch_test_marker",
-            inputs=[],
-            output=sp.Symbol("zeta_companion_branch_test_audited"),
-            method="zeta_companion_branch_test_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="zeta_companion_branch_test_marker",
+        inputs=[],
+        output=sp.Symbol("zeta_companion_branch_test_audited"),
+        method="zeta_companion_branch_test_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

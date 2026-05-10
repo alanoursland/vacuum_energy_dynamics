@@ -415,54 +415,51 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_parent_operator_for_A_spatial_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive explicit E_parent operator for A_spatial balance",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Write E_parent[A,B_s,zeta,...] explicitly. The operator must not be the Einstein "
+            "tensor or a decorative Bianchi-like identity. B_closed[T] and B_relax must also be "
+            "defined before recovery checks."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_E_parent_operator_for_A_spatial_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive explicit E_parent operator for A_spatial balance",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Write E_parent[A,B_s,zeta,...] explicitly. The operator must not be the Einstein "
-                "tensor or a decorative Bianchi-like identity. B_closed[T] and B_relax must also be "
-                "defined before recovery checks."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_ab_ratio_from_parent_balance_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive a/b ratio from parent balance structure",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that a/b = r_balance[E_parent, B_closed, B_relax] follows from the balance "
+            "structure without choosing balance terms from gamma_like or AB recovery checks."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_ab_ratio_from_parent_balance_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive a/b ratio from parent balance structure",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that a/b = r_balance[E_parent, B_closed, B_relax] follows from the balance "
-                "structure without choosing balance terms from gamma_like or AB recovery checks."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_balance_identity_for_A_spatial_branch",
+        script_id=SCRIPT_ID,
+        branch_id="parent_balance_identity_for_A_spatial",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_E_parent_operator_for_A_spatial_in_14",
+            "derive_ab_ratio_from_parent_balance_in_14",
+        ],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_parent_balance_identity_for_A_spatial_branch",
-            script_id=SCRIPT_ID,
-            branch_id="parent_balance_identity_for_A_spatial",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_E_parent_operator_for_A_spatial_in_14",
-                "derive_ab_ratio_from_parent_balance_in_14",
-            ],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="parent_balance_identity_for_A_spatial_marker",
-            inputs=[],
-            output=sp.Symbol("parent_balance_identity_for_A_spatial_audited"),
-            method="parent_balance_identity_for_A_spatial_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="parent_balance_identity_for_A_spatial_marker",
+        inputs=[],
+        output=sp.Symbol("parent_balance_identity_for_A_spatial_audited"),
+        method="parent_balance_identity_for_A_spatial_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

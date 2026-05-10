@@ -425,53 +425,50 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_E_parent_operator_class_fixing_ratio_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive E_parent operator class that fixes coefficient ratio without relocation",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Write an explicit E_parent = E_A[A] + E_s[B_s] + E_x[A,B_s] (or volume-exchange "
+            "extension) that derives the coefficient ratio a/b or c_x/c_s without GR rewrite, "
+            "decorative balance, or recovery-tuned coefficients."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_E_parent_operator_class_fixing_ratio_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive E_parent operator class that fixes coefficient ratio without relocation",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Write an explicit E_parent = E_A[A] + E_s[B_s] + E_x[A,B_s] (or volume-exchange "
-                "extension) that derives the coefficient ratio a/b or c_x/c_s without GR rewrite, "
-                "decorative balance, or recovery-tuned coefficients."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="parent_balance_ratio_relocation_pattern",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Coupled stiffness, gradient current, and abstract balance operators all exhibit "
+            "ratio relocation: each relocates the coefficient origin rather than deriving it. "
+            "An ontology-native volume-exchange operator is the next candidate to break this pattern."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="parent_balance_ratio_relocation_pattern",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Coupled stiffness, gradient current, and abstract balance operators all exhibit "
-                "ratio relocation: each relocates the coefficient origin rather than deriving it. "
-                "An ontology-native volume-exchange operator is the next candidate to break this pattern."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_parent_balance_operator_inventory_branch",
+        script_id=SCRIPT_ID,
+        branch_id="parent_balance_operator_inventory",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_E_parent_operator_class_fixing_ratio_in_14"],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_parent_balance_operator_inventory_branch",
-            script_id=SCRIPT_ID,
-            branch_id="parent_balance_operator_inventory",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_E_parent_operator_class_fixing_ratio_in_14"],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="parent_balance_operator_inventory_marker",
-            inputs=[],
-            output=sp.Symbol("parent_balance_operator_inventory_audited"),
-            method="parent_balance_operator_inventory_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="parent_balance_operator_inventory_marker",
+        inputs=[],
+        output=sp.Symbol("parent_balance_operator_inventory_audited"),
+        method="parent_balance_operator_inventory_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

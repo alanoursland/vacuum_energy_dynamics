@@ -457,40 +457,37 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_gradient_current_ab_ratio_origin_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive pre-recovery origin of current coefficient ratio a/b",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the ratio a/b in J_A^i = a grad^i A + b grad^i B_s is fixed by "
+            "a field-space metric, source-routing identity, or parent balance, "
+            "not by gamma_like or AB recovery checks."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_gradient_current_ab_ratio_origin_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive pre-recovery origin of current coefficient ratio a/b",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that the ratio a/b in J_A^i = a grad^i A + b grad^i B_s is fixed by "
-                "a field-space metric, source-routing identity, or parent balance, "
-                "not by gamma_like or AB recovery checks."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_minimal_gradient_current_ratio_branch",
+        script_id=SCRIPT_ID,
+        branch_id="minimal_gradient_current_ratio",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_gradient_current_ab_ratio_origin_in_14"],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_minimal_gradient_current_ratio_branch",
-            script_id=SCRIPT_ID,
-            branch_id="minimal_gradient_current_ratio",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_gradient_current_ab_ratio_origin_in_14"],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="minimal_gradient_current_ratio_test_marker",
-            inputs=[],
-            output=sp.Symbol("minimal_gradient_current_ratio_test_audited"),
-            method="minimal_gradient_current_ratio_test_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="minimal_gradient_current_ratio_test_marker",
+        inputs=[],
+        output=sp.Symbol("minimal_gradient_current_ratio_test_audited"),
+        method="minimal_gradient_current_ratio_test_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

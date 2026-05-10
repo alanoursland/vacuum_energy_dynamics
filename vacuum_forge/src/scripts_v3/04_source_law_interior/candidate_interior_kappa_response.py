@@ -380,59 +380,55 @@ def main():
 
     out.print_summary()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
-        ns2 = archive2.script_namespace(SCRIPT_ID)
-        ns2.prepare_archive()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_interior_exterior_kappa_option",
+        script_id=SCRIPT_ID,
+        title="Derive which interior/exterior kappa option applies from first principles",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Four options are identified: kappa=0 everywhere, interior kappa with "
+            "kappa(R)=0, interior kappa with kappa(R)!=0, or smooth interior kappa "
+            "with kappa(R)=kappa'(R)=0. No first-principles derivation has selected "
+            "among these options."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_interior_exterior_kappa_option",
-            script_id=SCRIPT_ID,
-            title="Derive which interior/exterior kappa option applies from first principles",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Four options are identified: kappa=0 everywhere, interior kappa with "
-                "kappa(R)=0, interior kappa with kappa(R)!=0, or smooth interior kappa "
-                "with kappa(R)=kappa'(R)=0. No first-principles derivation has selected "
-                "among these options."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_interior_kappa_source_law",
+        script_id=SCRIPT_ID,
+        title="Derive interior kappa source law from matter coupling",
+        status=ObligationStatus.OPEN,
+        description=(
+            "If kappa is sourced inside matter, the source law J_k must be derived "
+            "from a matter coupling. The toy energy model only establishes the "
+            "response structure; the source origin is missing."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_interior_kappa_source_law",
-            script_id=SCRIPT_ID,
-            title="Derive interior kappa source law from matter coupling",
-            status=ObligationStatus.OPEN,
-            description=(
-                "If kappa is sourced inside matter, the source law J_k must be derived "
-                "from a matter coupling. The toy energy model only establishes the "
-                "response structure; the source origin is missing."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="exterior_kappa_must_be_suppressed",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Any persistent exterior kappa shifts weak-field coefficients and creates "
+            "an observational deviation channel. The exterior kappa must be suppressed "
+            "or tightly bounded regardless of the interior kappa option."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="exterior_kappa_must_be_suppressed",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Any persistent exterior kappa shifts weak-field coefficients and creates "
-                "an observational deviation channel. The exterior kappa must be suppressed "
-                "or tightly bounded regardless of the interior kappa option."
-            ),
-        ))
+    ns.record_route(RouteRecord(
+        route_id="smooth_interior_kappa_vanishing_at_surface_route",
+        script_id=SCRIPT_ID,
+        name="Smooth interior kappa vanishing at surface (option D)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_interior_exterior_kappa_option",
+                              "derive_interior_kappa_source_law"],
+    ))
 
-        ns2.record_route(RouteRecord(
-            route_id="smooth_interior_kappa_vanishing_at_surface_route",
-            script_id=SCRIPT_ID,
-            name="Smooth interior kappa vanishing at surface (option D)",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_interior_exterior_kappa_option",
-                                  "derive_interior_kappa_source_law"],
-        ))
-
-        ns2.write_run_metadata()
+    ns.write_run_metadata()
 
     ns.write_run_metadata()
 

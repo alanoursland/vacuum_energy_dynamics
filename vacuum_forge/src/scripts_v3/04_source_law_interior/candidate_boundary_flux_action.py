@@ -399,59 +399,55 @@ def main():
 
     out.print_summary()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
-        ns2 = archive2.script_namespace(SCRIPT_ID)
-        ns2.prepare_archive()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_K_A_from_microphysics",
+        script_id=SCRIPT_ID,
+        title="Derive K_A from vacuum microphysics",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The boundary action stiffness K_A appears in q_M = 4 K_A G M/c^2. "
+            "Its value is fixed by Newtonian/Schwarzschild matching but is not "
+            "derived from first principles. Origin of K_A remains open."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_K_A_from_microphysics",
-            script_id=SCRIPT_ID,
-            title="Derive K_A from vacuum microphysics",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The boundary action stiffness K_A appears in q_M = 4 K_A G M/c^2. "
-                "Its value is fixed by Newtonian/Schwarzschild matching but is not "
-                "derived from first principles. Origin of K_A remains open."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_action_form",
+        script_id=SCRIPT_ID,
+        title="Derive why boundary action is -q A(R)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The boundary coupling form E_boundary = -q A(R) is adopted as an "
+            "ansatz. A derivation of this coupling from covariant source action "
+            "or matter coupling has not yet been given."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_boundary_action_form",
-            script_id=SCRIPT_ID,
-            title="Derive why boundary action is -q A(R)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The boundary coupling form E_boundary = -q A(R) is adopted as an "
-                "ansatz. A derivation of this coupling from covariant source action "
-                "or matter coupling has not yet been given."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="areal_flux_as_boundary_momentum",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The areal-flux law F_A = 8piGM/c^2 can be read as a boundary "
+            "condition from variation of the reduced radial A-action with "
+            "boundary coupling -q A(R). This is a candidate interpretation; "
+            "the coupling origin remains underived."
+        ),
+        obligation_ids=["derive_K_A_from_microphysics", "derive_boundary_action_form"],
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="areal_flux_as_boundary_momentum",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The areal-flux law F_A = 8piGM/c^2 can be read as a boundary "
-                "condition from variation of the reduced radial A-action with "
-                "boundary coupling -q A(R). This is a candidate interpretation; "
-                "the coupling origin remains underived."
-            ),
-            obligation_ids=["derive_K_A_from_microphysics", "derive_boundary_action_form"],
-        ))
+    ns.record_route(RouteRecord(
+        route_id="boundary_action_flux_normalization_route",
+        script_id=SCRIPT_ID,
+        name="Boundary action / flux normalization route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_K_A_from_microphysics", "derive_boundary_action_form"],
+    ))
 
-        ns2.record_route(RouteRecord(
-            route_id="boundary_action_flux_normalization_route",
-            script_id=SCRIPT_ID,
-            name="Boundary action / flux normalization route",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_K_A_from_microphysics", "derive_boundary_action_form"],
-        ))
-
-        ns2.write_run_metadata()
+    ns.write_run_metadata()
 
     ns.write_run_metadata()
 

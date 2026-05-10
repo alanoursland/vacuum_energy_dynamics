@@ -425,40 +425,37 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="decide_zeta_companion_vs_residual_in_14",
+        script_id=SCRIPT_ID,
+        title="Decide zeta companion versus residual status",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Formally decide whether zeta is the A_spatial/B_s companion (requiring residual "
+            "zeta trace to be killed or non-metric) or remains residual (leaving A_spatial "
+            "unresolved). Ambiguous zeta status is not permitted."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="decide_zeta_companion_vs_residual_in_14",
-            script_id=SCRIPT_ID,
-            title="Decide zeta companion versus residual status",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Formally decide whether zeta is the A_spatial/B_s companion (requiring residual "
-                "zeta trace to be killed or non-metric) or remains residual (leaving A_spatial "
-                "unresolved). Ambiguous zeta status is not permitted."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_zeta_companion_vs_residual_decision",
+        script_id=SCRIPT_ID,
+        branch_id="zeta_companion_vs_residual",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["decide_zeta_companion_vs_residual_in_14"],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_zeta_companion_vs_residual_decision",
-            script_id=SCRIPT_ID,
-            branch_id="zeta_companion_vs_residual",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["decide_zeta_companion_vs_residual_in_14"],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="zeta_companion_vs_residual_decision_marker",
-            inputs=[],
-            output=sp.Symbol("zeta_companion_vs_residual_decision_audited"),
-            method="zeta_companion_vs_residual_decision_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="zeta_companion_vs_residual_decision_marker",
+        inputs=[],
+        output=sp.Symbol("zeta_companion_vs_residual_decision_audited"),
+        method="zeta_companion_vs_residual_decision_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

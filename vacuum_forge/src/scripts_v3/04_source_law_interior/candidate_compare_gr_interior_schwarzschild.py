@@ -354,39 +354,35 @@ def main():
 
     out.print_summary()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
-        ns2 = archive2.script_namespace(SCRIPT_ID)
-        ns2.prepare_archive()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_interior_kappa_from_matter_coupling",
+        script_id=SCRIPT_ID,
+        title="Derive interior kappa source from matter coupling",
+        status=ObligationStatus.OPEN,
+        description=(
+            "GR interior Schwarzschild has AB != 1 inside matter, implying "
+            "kappa != 0. The reduced model enforces kappa=0 inside by hand. "
+            "A mechanism or source law that produces interior kappa from "
+            "matter coupling remains underived."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_interior_kappa_from_matter_coupling",
-            script_id=SCRIPT_ID,
-            title="Derive interior kappa source from matter coupling",
-            status=ObligationStatus.OPEN,
-            description=(
-                "GR interior Schwarzschild has AB != 1 inside matter, implying "
-                "kappa != 0. The reduced model enforces kappa=0 inside by hand. "
-                "A mechanism or source law that produces interior kappa from "
-                "matter coupling remains underived."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="reduced_interior_differs_from_gr_second_order",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The reduced constant-density interior A model agrees with the GR "
+            "interior Schwarzschild solution at the boundary and at first weak-field "
+            "order, but differs at second order inside matter. The discrepancy is "
+            "interior-supported and boundary-smooth."
+        ),
+        obligation_ids=["derive_interior_kappa_from_matter_coupling"],
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="reduced_interior_differs_from_gr_second_order",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.HEURISTIC,
-            statement=(
-                "The reduced constant-density interior A model agrees with the GR "
-                "interior Schwarzschild solution at the boundary and at first weak-field "
-                "order, but differs at second order inside matter. The discrepancy is "
-                "interior-supported and boundary-smooth."
-            ),
-            obligation_ids=["derive_interior_kappa_from_matter_coupling"],
-        ))
-
-        ns2.write_run_metadata()
+    ns.write_run_metadata()
 
     ns.write_run_metadata()
 

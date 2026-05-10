@@ -426,53 +426,50 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_V_operator_shells_with_fixed_coefficients_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive V[A,B_s,zeta] shells with coefficient origin",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that at least one V shell (algebraic, derivative, current, or source-coupled) "
+            "fixes its coefficients before recovery checks and does not cause zeta to double-count "
+            "as both companion and independent residual trace."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_V_operator_shells_with_fixed_coefficients_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive V[A,B_s,zeta] shells with coefficient origin",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that at least one V shell (algebraic, derivative, current, or source-coupled) "
-                "fixes its coefficients before recovery checks and does not cause zeta to double-count "
-                "as both companion and independent residual trace."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="volume_exchange_operator_shells_identified",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Five explicit V[A,B_s,zeta] shell classes are identified: algebraic companion, "
+            "derivative exchange, volume current, source-coupled creation, and relaxation. "
+            "Each shell forces a zeta companion-vs-residual decision before it can fix q."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="volume_exchange_operator_shells_identified",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Five explicit V[A,B_s,zeta] shell classes are identified: algebraic companion, "
-                "derivative exchange, volume current, source-coupled creation, and relaxation. "
-                "Each shell forces a zeta companion-vs-residual decision before it can fix q."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_minimal_volume_exchange_operator_ansatz_branch",
+        script_id=SCRIPT_ID,
+        branch_id="minimal_volume_exchange_operator_ansatz",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_V_operator_shells_with_fixed_coefficients_in_14"],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_minimal_volume_exchange_operator_ansatz_branch",
-            script_id=SCRIPT_ID,
-            branch_id="minimal_volume_exchange_operator_ansatz",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_V_operator_shells_with_fixed_coefficients_in_14"],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="minimal_volume_exchange_operator_ansatz_marker",
-            inputs=[],
-            output=sp.Symbol("minimal_volume_exchange_operator_ansatz_audited"),
-            method="minimal_volume_exchange_operator_ansatz_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="minimal_volume_exchange_operator_ansatz_marker",
+        inputs=[],
+        output=sp.Symbol("minimal_volume_exchange_operator_ansatz_audited"),
+        method="minimal_volume_exchange_operator_ansatz_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

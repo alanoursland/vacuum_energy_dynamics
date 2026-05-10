@@ -429,54 +429,51 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_explicit_V_operator_for_volume_exchange_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive explicit V[A,B_s,zeta] volume-exchange operator",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Write V[A,B_s,zeta] explicitly such that it fixes c_x/c_s or a/b before recovery "
+            "checks, without zeta double-counting as both companion and independent residual trace, "
+            "and preserving boundary neutrality."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_explicit_V_operator_for_volume_exchange_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive explicit V[A,B_s,zeta] volume-exchange operator",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Write V[A,B_s,zeta] explicitly such that it fixes c_x/c_s or a/b before recovery "
-                "checks, without zeta double-counting as both companion and independent residual trace, "
-                "and preserving boundary neutrality."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_neutrality_for_V_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive boundary neutrality theorem for V[A,B_s,zeta]",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the volume-exchange contribution V has no exterior scalar charge unless "
+            "it is absorbed as the A_spatial companion. Prevents volume exchange from becoming scalar gravity."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_boundary_neutrality_for_V_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive boundary neutrality theorem for V[A,B_s,zeta]",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that the volume-exchange contribution V has no exterior scalar charge unless "
-                "it is absorbed as the A_spatial companion. Prevents volume exchange from becoming scalar gravity."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_volume_exchange_stiffness_ratio_origin_branch",
+        script_id=SCRIPT_ID,
+        branch_id="volume_exchange_stiffness_ratio_origin",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_explicit_V_operator_for_volume_exchange_in_14",
+            "derive_boundary_neutrality_for_V_in_14",
+        ],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_volume_exchange_stiffness_ratio_origin_branch",
-            script_id=SCRIPT_ID,
-            branch_id="volume_exchange_stiffness_ratio_origin",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_explicit_V_operator_for_volume_exchange_in_14",
-                "derive_boundary_neutrality_for_V_in_14",
-            ],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="volume_exchange_stiffness_ratio_origin_marker",
-            inputs=[],
-            output=sp.Symbol("volume_exchange_stiffness_ratio_origin_audited"),
-            method="volume_exchange_stiffness_ratio_origin_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="volume_exchange_stiffness_ratio_origin_marker",
+        inputs=[],
+        output=sp.Symbol("volume_exchange_stiffness_ratio_origin_audited"),
+        method="volume_exchange_stiffness_ratio_origin_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

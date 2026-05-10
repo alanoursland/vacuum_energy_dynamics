@@ -433,79 +433,76 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_conservation_current_coefficient_ratio_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive conservation current coefficient ratio a/b",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that the coefficient ratio a/b in J_A^i = a grad^i A + b grad^i B_s "
+            "can be fixed by a pre-recovery principle, so that q = -a/b is genuinely derived "
+            "and not merely a relocation of the stiffness ratio problem."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_conservation_current_coefficient_ratio_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive conservation current coefficient ratio a/b",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that the coefficient ratio a/b in J_A^i = a grad^i A + b grad^i B_s "
-                "can be fixed by a pre-recovery principle, so that q = -a/b is genuinely derived "
-                "and not merely a relocation of the stiffness ratio problem."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_explicit_J_A_balance_law_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive explicit J_A and balance law",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Define J_A[A,B_s,T] explicitly and provide the balance/conservation law "
+            "div J_A = 0 before any recovery checks. Decorative J_A is rejected."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_explicit_J_A_balance_law_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive explicit J_A and balance law",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Define J_A[A,B_s,T] explicitly and provide the balance/conservation law "
-                "div J_A = 0 before any recovery checks. Decorative J_A is rejected."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_no_overlap_for_conservation_current_in_14",
+        script_id=SCRIPT_ID,
+        title="Verify no-overlap for conservation-current fixed B_s",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Show that after J_A fixes q, the resulting B_s does not overlap the "
+            "zeta/kappa residual scalar trace. The count-once recombination theorem must hold."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_no_overlap_for_conservation_current_in_14",
-            script_id=SCRIPT_ID,
-            title="Verify no-overlap for conservation-current fixed B_s",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Show that after J_A fixes q, the resulting B_s does not overlap the "
-                "zeta/kappa residual scalar trace. The count-once recombination theorem must hold."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="conservation_current_coefficient_origin_candidate_route",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "A real conserved current J_A can fix c_x/c_s only if J_A is defined before "
+            "recovery checks and the coefficient ratio a/b has a pre-recovery origin. "
+            "Decorative conservation and recovery-tuned currents are rejected."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="conservation_current_coefficient_origin_candidate_route",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "A real conserved current J_A can fix c_x/c_s only if J_A is defined before "
-                "recovery checks and the coefficient ratio a/b has a pre-recovery origin. "
-                "Decorative conservation and recovery-tuned currents are rejected."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_conservation_current_coefficient_origin_branch",
+        script_id=SCRIPT_ID,
+        branch_id="conservation_current_coefficient_origin",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=[
+            "derive_explicit_J_A_balance_law_in_14",
+            "derive_conservation_current_coefficient_ratio_in_14",
+            "derive_no_overlap_for_conservation_current_in_14",
+        ],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_conservation_current_coefficient_origin_branch",
-            script_id=SCRIPT_ID,
-            branch_id="conservation_current_coefficient_origin",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=[
-                "derive_explicit_J_A_balance_law_in_14",
-                "derive_conservation_current_coefficient_ratio_in_14",
-                "derive_no_overlap_for_conservation_current_in_14",
-            ],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="conservation_current_coefficient_origin_marker",
-            inputs=[],
-            output=sp.Symbol("conservation_current_coefficient_origin_audited"),
-            method="conservation_current_coefficient_origin_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="conservation_current_coefficient_origin_marker",
+        inputs=[],
+        output=sp.Symbol("conservation_current_coefficient_origin_audited"),
+        method="conservation_current_coefficient_origin_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

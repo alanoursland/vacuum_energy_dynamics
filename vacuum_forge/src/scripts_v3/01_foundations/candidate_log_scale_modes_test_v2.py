@@ -192,6 +192,17 @@ def record_reciprocal_chain(ctx: TheoryContext, chain_label: str = "derived") ->
 
 
 # =============================================================================
+# Archive helpers
+# =============================================================================
+
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
+# =============================================================================
 # Section 1: Algebraic spine
 # =============================================================================
 
@@ -663,97 +674,97 @@ def main() -> None:
     case_d_interface_exterior_separation(out)
     final_summary(out)
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
-        ns = archive.script_namespace(SCRIPT_ID)
-        ns.prepare_archive()
+    archive, ns, invalidated = prepare_archive()
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
 
-        kappa, s = sp.symbols("kappa s", real=True)
-        A_ks = sp.exp(kappa + s)
-        B_ks = sp.exp(kappa - s)
-        AB_ks = sp.simplify(A_ks * B_ks)
-        residual = sp.simplify(AB_ks.subs(kappa, 0) - 1)
+    kappa, s = sp.symbols("kappa s", real=True)
+    A_ks = sp.exp(kappa + s)
+    B_ks = sp.exp(kappa - s)
+    AB_ks = sp.simplify(A_ks * B_ks)
+    residual = sp.simplify(AB_ks.subs(kappa, 0) - 1)
 
-        ns.record_derivation(
-            derivation_id="v2_kappa_zero_AB_one_residual",
-            inputs=[kappa, s],
-            output=sp.Eq(residual, 0),
-            method="simplify(exp(2*kappa)|kappa=0 - 1)",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-            result_type="identity_residual",
-        )
+    ns.record_derivation(
+        derivation_id="v2_kappa_zero_AB_one_residual",
+        inputs=[kappa, s],
+        output=sp.Eq(residual, 0),
+        method="simplify(exp(2*kappa)|kappa=0 - 1)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
-        Phi, c, gamma_v = sp.symbols("Phi c gamma_v", nonzero=True, real=True)
-        A_gamma = sp.exp(Phi / c**2)
-        B_gamma = sp.exp(-gamma_v * Phi / c**2)
-        AB_gamma = sp.simplify(A_gamma * B_gamma)
-        log_AB = sp.simplify(sp.log(AB_gamma))
+    Phi, c, gamma_v = sp.symbols("Phi c gamma_v", nonzero=True, real=True)
+    A_gamma = sp.exp(Phi / c**2)
+    B_gamma = sp.exp(-gamma_v * Phi / c**2)
+    AB_gamma = sp.simplify(A_gamma * B_gamma)
+    log_AB = sp.simplify(sp.log(AB_gamma))
 
-        ns.record_derivation(
-            derivation_id="v2_weak_field_gamma_v_extraction",
-            inputs=[A_gamma, B_gamma],
-            output=sp.Eq(log_AB, 0),
-            method="log(AB_gamma) = 0 under reciprocal scaling",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="weak-field ansatz only; Cases A-D are toy samples",
-        )
+    ns.record_derivation(
+        derivation_id="v2_weak_field_gamma_v_extraction",
+        inputs=[A_gamma, B_gamma],
+        output=sp.Eq(log_AB, 0),
+        method="log(AB_gamma) = 0 under reciprocal scaling",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="weak-field ansatz only; Cases A-D are toy samples",
+    )
 
-        ns.record_claim(ClaimRecord(
-            claim_id="v2_direct_mode_assumption_tautological",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Setting delta_kappa = 0 directly in the log-mode basis (Case A) "
-                "is tautological and must not be recorded as a derivation."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="v2_direct_mode_assumption_tautological",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Setting delta_kappa = 0 directly in the log-mode basis (Case A) "
+            "is tautological and must not be recorded as a derivation."
+        ),
+    ))
 
-        ns.record_route(RouteRecord(
-            route_id="v2_trace_kernel_kappa_suppression_route",
-            script_id=SCRIPT_ID,
-            name="Structural trace-kernel exchange suppresses kappa (Case B)",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["v2_derive_covariant_kappa_suppression_law"],
-            description=(
-                "Pre-mode exchange in the trace kernel of the 3+1 projection "
-                "derives J_kappa=0 non-tautologically. Toy energy equilibrium "
-                "then gives kappa=0, AB=1, gamma_v=1. Physical source law open."
-            ),
-        ))
+    ns.record_route(RouteRecord(
+        route_id="v2_trace_kernel_kappa_suppression_route",
+        script_id=SCRIPT_ID,
+        name="Structural trace-kernel exchange suppresses kappa (Case B)",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["v2_derive_covariant_kappa_suppression_law"],
+        description=(
+            "Pre-mode exchange in the trace kernel of the 3+1 projection "
+            "derives J_kappa=0 non-tautologically. Toy energy equilibrium "
+            "then gives kappa=0, AB=1, gamma_v=1. Physical source law open."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="v2_derive_covariant_kappa_suppression_law",
-            script_id=SCRIPT_ID,
-            title="Derive covariant source law or energy functional suppressing kappa",
-            status=ObligationStatus.OPEN,
-            required_by=["v2_trace_kernel_kappa_suppression_route"],
-            description=(
-                "Find a covariant source law, boundary/interface rule, or "
-                "configuration-energy functional that suppresses kappa in the "
-                "static source-free exterior while allowing compensated shear s. "
-                "Cases A-D all confirm the gap: the physical mechanism is not yet "
-                "derived from first principles."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="v2_derive_covariant_kappa_suppression_law",
+        script_id=SCRIPT_ID,
+        title="Derive covariant source law or energy functional suppressing kappa",
+        status=ObligationStatus.OPEN,
+        required_by=["v2_trace_kernel_kappa_suppression_route"],
+        description=(
+            "Find a covariant source law, boundary/interface rule, or "
+            "configuration-energy functional that suppresses kappa in the "
+            "static source-free exterior while allowing compensated shear s. "
+            "Cases A-D all confirm the gap: the physical mechanism is not yet "
+            "derived from first principles."
+        ),
+    ))
 
-        ns.record_branch_decision(BranchDecisionRecord(
-            decision_id="v2_defer_direct_mode_assumption_branch",
-            script_id=SCRIPT_ID,
-            branch_id="direct_mode_assumption_kappa_suppression",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["v2_derive_covariant_kappa_suppression_law"],
-            description=(
-                "The direct delta_kappa=0 route (Case A) is tautological and "
-                "deferred until a non-tautological physical mechanism is derived."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="v2_defer_direct_mode_assumption_branch",
+        script_id=SCRIPT_ID,
+        branch_id="direct_mode_assumption_kappa_suppression",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["v2_derive_covariant_kappa_suppression_law"],
+        description=(
+            "The direct delta_kappa=0 route (Case A) is tautological and "
+            "deferred until a non-tautological physical mechanism is derived."
+        ),
+    ))
 
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

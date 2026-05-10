@@ -423,53 +423,50 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with ProjectArchive(ARCHIVE_ROOT) as pa:
-        ns2 = pa.script_namespace(SCRIPT_ID)
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_source_driven_F_zeta_map_in_14",
+        script_id=SCRIPT_ID,
+        title="Derive source-driven F_zeta map via Sigma_V",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Express Sigma_V[A,T] before using it in F_zeta. Show that the source-driven "
+            "companion map derives its coefficient from postulates, not recovery checks, "
+            "and that residual-kill and no-overlap hold."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_source_driven_F_zeta_map_in_14",
-            script_id=SCRIPT_ID,
-            title="Derive source-driven F_zeta map via Sigma_V",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Express Sigma_V[A,T] before using it in F_zeta. Show that the source-driven "
-                "companion map derives its coefficient from postulates, not recovery checks, "
-                "and that residual-kill and no-overlap hold."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="F_zeta_companion_map_forms_inventoried",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "Five F_zeta map forms are inventoried: pure algebraic (RISK), A-plus-zeta algebraic (RISK), "
+            "differential zeta (CANDIDATE), source-driven (CANDIDATE), and non-metric bookkeeping (CANDIDATE). "
+            "Algebraic maps are high-risk. Source-driven is the preferred route pending Sigma_V expression."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="F_zeta_companion_map_forms_inventoried",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "Five F_zeta map forms are inventoried: pure algebraic (RISK), A-plus-zeta algebraic (RISK), "
-                "differential zeta (CANDIDATE), source-driven (CANDIDATE), and non-metric bookkeeping (CANDIDATE). "
-                "Algebraic maps are high-risk. Source-driven is the preferred route pending Sigma_V expression."
-            ),
-        ))
+    ns.record_branch_decision(BranchDecisionRecord(
+        decision_id="defer_F_zeta_companion_map_branch",
+        script_id=SCRIPT_ID,
+        branch_id="F_zeta_companion_map",
+        status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
+        tier=ClaimTier.CONSTRAINED,
+        obligation_ids=["derive_source_driven_F_zeta_map_in_14"],
+    ))
 
-        ns2.record_branch_decision(BranchDecisionRecord(
-            decision_id="defer_F_zeta_companion_map_branch",
-            script_id=SCRIPT_ID,
-            branch_id="F_zeta_companion_map",
-            status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-            tier=ClaimTier.CONSTRAINED,
-            obligation_ids=["derive_source_driven_F_zeta_map_in_14"],
-        ))
-
-        ns2.record_derivation(
-            derivation_id="F_zeta_companion_map_inventory_marker",
-            inputs=[],
-            output=sp.Symbol("F_zeta_companion_map_inventory_audited"),
-            method="F_zeta_companion_map_inventory_audit",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns2.write_run_metadata()
+    ns.record_derivation(
+        derivation_id="F_zeta_companion_map_inventory_marker",
+        inputs=[],
+        output=sp.Symbol("F_zeta_companion_map_inventory_audited"),
+        method="F_zeta_companion_map_inventory_audit",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
     out.print()
 

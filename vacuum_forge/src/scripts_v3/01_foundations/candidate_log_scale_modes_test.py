@@ -105,6 +105,13 @@ def is_zero(expr) -> bool:
         return False
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
 # ---------------------------------------------------------------------------
 # Section 1: Pure algebra of log-scale modes
 # ---------------------------------------------------------------------------
@@ -585,6 +592,9 @@ def section_5_verdict(out: ScriptOutput) -> None:
 
 def main() -> None:
     header("Candidate Log-Scale Exterior Modes — VacuumForge Test")
+    archive, ns, invalidated = prepare_archive()
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
 
     out = ScriptOutput()
 
@@ -594,85 +604,81 @@ def main() -> None:
     section_4_energy_forks(out)
     section_5_verdict(out)
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
-        ns = archive.script_namespace(SCRIPT_ID)
-        ns.prepare_archive()
+    kappa, s = sp.symbols("kappa s", real=True)
+    A_expr = sp.exp(kappa + s)
+    B_expr = sp.exp(kappa - s)
+    AB_expr = sp.simplify(A_expr * B_expr)
+    kappa_zero_residual = sp.simplify(AB_expr.subs(kappa, 0) - 1)
 
-        kappa, s = sp.symbols("kappa s", real=True)
-        A_expr = sp.exp(kappa + s)
-        B_expr = sp.exp(kappa - s)
-        AB_expr = sp.simplify(A_expr * B_expr)
-        kappa_zero_residual = sp.simplify(AB_expr.subs(kappa, 0) - 1)
+    ns.record_derivation(
+        derivation_id="kappa_zero_implies_AB_one_residual",
+        inputs=[kappa, s],
+        output=sp.Eq(kappa_zero_residual, 0),
+        method="simplify(exp(2*kappa)|kappa=0 - 1)",
+        status=Status.DERIVED,
+        record_kind=RecordKind.DERIVATION,
+        result_type="identity_residual",
+    )
 
-        ns.record_derivation(
-            derivation_id="kappa_zero_implies_AB_one_residual",
-            inputs=[kappa, s],
-            output=sp.Eq(kappa_zero_residual, 0),
-            method="simplify(exp(2*kappa)|kappa=0 - 1)",
-            status=Status.DERIVED,
-            record_kind=RecordKind.DERIVATION,
-            result_type="identity_residual",
-        )
+    Phi, c, gamma_v = sp.symbols("Phi c gamma_v", nonzero=True, real=True)
+    A_ansatz = sp.exp(Phi / c**2)
+    B_ansatz = sp.exp(-gamma_v * Phi / c**2)
+    AB_ansatz = sp.simplify(A_ansatz * B_ansatz)
+    log_AB = sp.simplify(sp.log(AB_ansatz))
 
-        Phi, c, gamma_v = sp.symbols("Phi c gamma_v", nonzero=True, real=True)
-        A_ansatz = sp.exp(Phi / c**2)
-        B_ansatz = sp.exp(-gamma_v * Phi / c**2)
-        AB_ansatz = sp.simplify(A_ansatz * B_ansatz)
-        log_AB = sp.simplify(sp.log(AB_ansatz))
+    ns.record_derivation(
+        derivation_id="weak_field_gamma_v_from_reciprocal_scaling",
+        inputs=[A_ansatz, B_ansatz],
+        output=sp.Eq(log_AB, 0),
+        method="log(A_ansatz*B_ansatz) = 0 under AB=1",
+        status=Status.DERIVED,
+        record_kind=RecordKind.SAMPLE_DERIVATION,
+        scope="weak-field ansatz only; gamma_v not derived from source law",
+    )
 
-        ns.record_derivation(
-            derivation_id="weak_field_gamma_v_from_reciprocal_scaling",
-            inputs=[A_ansatz, B_ansatz],
-            output=sp.Eq(log_AB, 0),
-            method="log(A_ansatz*B_ansatz) = 0 under AB=1",
-            status=Status.DERIVED,
-            record_kind=RecordKind.SAMPLE_DERIVATION,
-            scope="weak-field ansatz only; gamma_v not derived from source law",
-        )
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_kappa_suppression_source_law",
+        script_id=SCRIPT_ID,
+        title="Derive source law suppressing kappa in static source-free exterior",
+        status=ObligationStatus.OPEN,
+        required_by=["trace_kernel_kappa_suppression_route"],
+        description=(
+            "Find a covariant source law, boundary/interface rule, or "
+            "configuration-energy functional that suppresses kappa in the "
+            "static source-free exterior without assuming reciprocal scaling "
+            "by hand. Toy energy forks confirm the need but do not supply "
+            "the physical mechanism."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_kappa_suppression_source_law",
-            script_id=SCRIPT_ID,
-            title="Derive source law suppressing kappa in static source-free exterior",
-            status=ObligationStatus.OPEN,
-            required_by=["trace_kernel_kappa_suppression_route"],
-            description=(
-                "Find a covariant source law, boundary/interface rule, or "
-                "configuration-energy functional that suppresses kappa in the "
-                "static source-free exterior without assuming reciprocal scaling "
-                "by hand. Toy energy forks confirm the need but do not supply "
-                "the physical mechanism."
-            ),
-        ))
+    ns.record_route(RouteRecord(
+        route_id="trace_kernel_kappa_suppression_route",
+        script_id=SCRIPT_ID,
+        name="Trace-kernel exchange derives J_kappa = 0",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_kappa_suppression_source_law"],
+        description=(
+            "A pre-mode exchange direction lying in the trace kernel of the "
+            "3+1 projection derives J_kappa = 0 non-tautologically. "
+            "With a toy quadratic energy this gives kappa=0 and AB=1. "
+            "Physical source law remains open."
+        ),
+    ))
 
-        ns.record_route(RouteRecord(
-            route_id="trace_kernel_kappa_suppression_route",
-            script_id=SCRIPT_ID,
-            name="Trace-kernel exchange derives J_kappa = 0",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_kappa_suppression_source_law"],
-            description=(
-                "A pre-mode exchange direction lying in the trace kernel of the "
-                "3+1 projection derives J_kappa = 0 non-tautologically. "
-                "With a toy quadratic energy this gives kappa=0 and AB=1. "
-                "Physical source law remains open."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="direct_mode_assumption_is_tautological",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "Setting delta_kappa = 0 directly in the log-mode basis is "
+            "tautological and does not count as a derivation of kappa suppression."
+        ),
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="direct_mode_assumption_is_tautological",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "Setting delta_kappa = 0 directly in the log-mode basis is "
-                "tautological and does not count as a derivation of kappa suppression."
-            ),
-        ))
-
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

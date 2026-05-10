@@ -74,6 +74,13 @@ def is_zero(expr) -> bool:
         return False
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
 def case_0_boundary_relation(out: ScriptOutput):
     header("Case 0: Boundary relation recap")
 
@@ -327,100 +334,99 @@ def final_interpretation():
 
 def main():
     header("Candidate Source Coupling Normalization")
+    archive, ns, invalidated = prepare_archive()
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
 
     out = ScriptOutput()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
-        ns = archive.script_namespace(SCRIPT_ID)
-        ns.prepare_archive()
+    case_0_boundary_relation(out)
+    case_1_newtonian_matching(out, ns)
+    case_2_boundary_charge_from_flux(out, ns)
+    case_3_schwarzschild_radius_matching(out, ns)
+    case_4_additivity(out, ns)
+    case_5_energy_coupling_interpretation(out)
+    case_6_what_is_not_derived(out)
+    final_interpretation()
 
-        case_0_boundary_relation(out)
-        case_1_newtonian_matching(out, ns)
-        case_2_boundary_charge_from_flux(out, ns)
-        case_3_schwarzschild_radius_matching(out, ns)
-        case_4_additivity(out, ns)
-        case_5_energy_coupling_interpretation(out)
-        case_6_what_is_not_derived(out)
-        final_interpretation()
+    out.print_summary()
 
-        out.print_summary()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_K_A_from_vacuum_microphysics",
+        script_id=SCRIPT_ID,
+        title="Derive K_A from vacuum microphysics",
+        status=ObligationStatus.OPEN,
+        description=(
+            "K_A appears as the reduced stiffness/normalization parameter in the "
+            "boundary action. Its value is fixed by Newtonian/Schwarzschild matching "
+            "but its origin from vacuum microphysics is not derived."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_K_A_from_vacuum_microphysics",
-            script_id=SCRIPT_ID,
-            title="Derive K_A from vacuum microphysics",
-            status=ObligationStatus.OPEN,
-            description=(
-                "K_A appears as the reduced stiffness/normalization parameter in the "
-                "boundary action. Its value is fixed by Newtonian/Schwarzschild matching "
-                "but its origin from vacuum microphysics is not derived."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_boundary_action_coupling_form",
+        script_id=SCRIPT_ID,
+        title="Derive why matter couples to A via boundary action -q A(R)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The boundary coupling E_boundary = -q A(R) is an ansatz. A covariant "
+            "derivation of the coupling form and why matter couples to A rather than "
+            "another field variable has not been given."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_boundary_action_coupling_form",
-            script_id=SCRIPT_ID,
-            title="Derive why matter couples to A via boundary action -q A(R)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The boundary coupling E_boundary = -q A(R) is an ansatz. A covariant "
-                "derivation of the coupling form and why matter couples to A rather than "
-                "another field variable has not been given."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_pressure_stress_q_kappa_modification",
+        script_id=SCRIPT_ID,
+        title="Derive how pressure/stress modifies source coupling q or sources kappa",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The current normalization uses density-only mass M. How pressure and "
+            "stress modify the effective source charge q or contribute an independent "
+            "kappa source has not been derived."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_pressure_stress_q_kappa_modification",
-            script_id=SCRIPT_ID,
-            title="Derive how pressure/stress modifies source coupling q or sources kappa",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The current normalization uses density-only mass M. How pressure and "
-                "stress modify the effective source charge q or contribute an independent "
-                "kappa source has not been derived."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_covariant_source_action",
+        script_id=SCRIPT_ID,
+        title="Derive full covariant source action",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The reduced boundary action is a non-covariant toy. A full covariant "
+            "source action that reduces to the boundary coupling in the static "
+            "spherical case remains an open obligation."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_covariant_source_action",
-            script_id=SCRIPT_ID,
-            title="Derive full covariant source action",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The reduced boundary action is a non-covariant toy. A full covariant "
-                "source action that reduces to the boundary coupling in the static "
-                "spherical case remains an open obligation."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="q_M_normalization_fixed_by_newtonian_matching",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "The boundary charge normalization q_M = 4 K_A G M/c^2 is fixed by "
+            "the requirement that the exterior flux gives A = 1 - 2GM/(c^2 r) in "
+            "the weak-field/Schwarzschild limit. This is a matching result; K_A "
+            "and the coupling form are not derived from first principles."
+        ),
+        obligation_ids=["derive_K_A_from_vacuum_microphysics",
+                        "derive_boundary_action_coupling_form"],
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="q_M_normalization_fixed_by_newtonian_matching",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "The boundary charge normalization q_M = 4 K_A G M/c^2 is fixed by "
-                "the requirement that the exterior flux gives A = 1 - 2GM/(c^2 r) in "
-                "the weak-field/Schwarzschild limit. This is a matching result; K_A "
-                "and the coupling form are not derived from first principles."
-            ),
-            obligation_ids=["derive_K_A_from_vacuum_microphysics",
-                            "derive_boundary_action_coupling_form"],
-        ))
+    ns.record_route(RouteRecord(
+        route_id="newtonian_matched_boundary_charge_route",
+        script_id=SCRIPT_ID,
+        name="Newtonian-matched boundary charge normalization route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_K_A_from_vacuum_microphysics",
+                              "derive_boundary_action_coupling_form",
+                              "derive_covariant_source_action"],
+    ))
 
-        ns.record_route(RouteRecord(
-            route_id="newtonian_matched_boundary_charge_route",
-            script_id=SCRIPT_ID,
-            name="Newtonian-matched boundary charge normalization route",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_K_A_from_vacuum_microphysics",
-                                  "derive_boundary_action_coupling_form",
-                                  "derive_covariant_source_action"],
-        ))
-
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

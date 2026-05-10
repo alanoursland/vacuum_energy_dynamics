@@ -72,6 +72,13 @@ def is_zero(expr) -> bool:
         return False
 
 
+def prepare_archive():
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    return archive, ns, invalidated
+
+
 def series_u(expr, u, order):
     return sp.simplify(sp.series(expr, u, 0, order).removeO())
 
@@ -375,75 +382,74 @@ def final_interpretation():
 
 def main():
     header("Candidate Pressure/Stress Source Extension")
+    archive, ns, invalidated = prepare_archive()
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
 
     out = ScriptOutput()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive:
-        ns = archive.script_namespace(SCRIPT_ID)
-        ns.prepare_archive()
+    case_0_problem_statement(out)
+    case_1_gr_pressure_profile_weak_order(out, ns)
+    case_2_A_residual_vs_pressure_shape(out, ns)
+    case_3_pressure_direct_A_flux_hypothesis(out)
+    case_4_pressure_as_kappa_source_hypothesis(out, ns)
+    case_5_boundary_preservation_conditions(out, ns)
+    case_6_channel_classification(out)
+    final_interpretation()
 
-        case_0_problem_statement(out)
-        case_1_gr_pressure_profile_weak_order(out, ns)
-        case_2_A_residual_vs_pressure_shape(out, ns)
-        case_3_pressure_direct_A_flux_hypothesis(out)
-        case_4_pressure_as_kappa_source_hypothesis(out, ns)
-        case_5_boundary_preservation_conditions(out, ns)
-        case_6_channel_classification(out)
-        final_interpretation()
+    out.print_summary()
 
-        out.print_summary()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_pressure_A_flux_coupling",
+        script_id=SCRIPT_ID,
+        title="Derive pressure coupling coefficient for direct A-flux source (H1)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Hypothesis H1 proposes Delta_areal A = 8piG/c^2 * (rho + chi*p/c^2). "
+            "The coefficient chi and the full coupling form are not derived from "
+            "first principles. A covariant source action is missing."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_pressure_A_flux_coupling",
-            script_id=SCRIPT_ID,
-            title="Derive pressure coupling coefficient for direct A-flux source (H1)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Hypothesis H1 proposes Delta_areal A = 8piG/c^2 * (rho + chi*p/c^2). "
-                "The coefficient chi and the full coupling form are not derived from "
-                "first principles. A covariant source action is missing."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_pressure_kappa_source_coefficients",
+        script_id=SCRIPT_ID,
+        title="Derive pressure/stress kappa source coefficients (H2)",
+        status=ObligationStatus.OPEN,
+        description=(
+            "Hypothesis H2 proposes J_k = a*rho*c^2 + b*p as interior kappa source. "
+            "Coefficients a and b are not derived from matter coupling. The full "
+            "source law form has not been established."
+        ),
+    ))
 
-        ns.record_obligation(ProofObligationRecord(
-            obligation_id="derive_pressure_kappa_source_coefficients",
-            script_id=SCRIPT_ID,
-            title="Derive pressure/stress kappa source coefficients (H2)",
-            status=ObligationStatus.OPEN,
-            description=(
-                "Hypothesis H2 proposes J_k = a*rho*c^2 + b*p as interior kappa source. "
-                "Coefficients a and b are not derived from matter coupling. The full "
-                "source law form has not been established."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="pressure_corrections_boundary_contained",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "Interior pressure and stress corrections can in principle be boundary-"
+            "contained: they vanish at the source boundary and are boundary-smooth, "
+            "leaving exterior A-flux and kappa=0 intact. This is a diagnostic "
+            "assessment based on leading-order shape comparison, not a derivation."
+        ),
+        obligation_ids=["derive_pressure_A_flux_coupling",
+                        "derive_pressure_kappa_source_coefficients"],
+    ))
 
-        ns.record_claim(ClaimRecord(
-            claim_id="pressure_corrections_boundary_contained",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.HEURISTIC,
-            statement=(
-                "Interior pressure and stress corrections can in principle be boundary-"
-                "contained: they vanish at the source boundary and are boundary-smooth, "
-                "leaving exterior A-flux and kappa=0 intact. This is a diagnostic "
-                "assessment based on leading-order shape comparison, not a derivation."
-            ),
-            obligation_ids=["derive_pressure_A_flux_coupling",
-                            "derive_pressure_kappa_source_coefficients"],
-        ))
+    ns.record_route(RouteRecord(
+        route_id="density_mass_flux_pressure_kappa_split_route",
+        script_id=SCRIPT_ID,
+        name="Density -> A-flux; pressure/stress -> interior kappa split",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_pressure_A_flux_coupling",
+                              "derive_pressure_kappa_source_coefficients"],
+    ))
 
-        ns.record_route(RouteRecord(
-            route_id="density_mass_flux_pressure_kappa_split_route",
-            script_id=SCRIPT_ID,
-            name="Density -> A-flux; pressure/stress -> interior kappa split",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_pressure_A_flux_coupling",
-                                  "derive_pressure_kappa_source_coefficients"],
-        ))
-
-        ns.write_run_metadata()
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

@@ -665,59 +665,55 @@ def main():
 
     out.print_summary()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
-        ns2 = archive2.script_namespace(SCRIPT_ID)
-        ns2.prepare_archive()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_exchange_creation_from_postulates",
+        script_id=SCRIPT_ID,
+        title="Derive exchange/creation classification from postulates",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The exchange/creation/destruction classification is currently added "
+            "as a structural principle. It remains an open obligation to show "
+            "whether this distinction follows from the postulates P1-P3 or must "
+            "be introduced independently."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_exchange_creation_from_postulates",
-            script_id=SCRIPT_ID,
-            title="Derive exchange/creation classification from postulates",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The exchange/creation/destruction classification is currently added "
-                "as a structural principle. It remains an open obligation to show "
-                "whether this distinction follows from the postulates P1-P3 or must "
-                "be introduced independently."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="exchange_trace_kernel_in_reduced_model",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        statement=(
+            "In the reduced two-sector kappa/s model, exchange operators are "
+            "trace-kernel (J_kappa=0) and yield kappa_eq=0 and AB=1 at equilibrium. "
+            "This is a consistency check, not a derivation from first principles."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="exchange_trace_kernel_in_reduced_model",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            statement=(
-                "In the reduced two-sector kappa/s model, exchange operators are "
-                "trace-kernel (J_kappa=0) and yield kappa_eq=0 and AB=1 at equilibrium. "
-                "This is a consistency check, not a derivation from first principles."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="p3_does_not_classify_regime",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.POLICY_RULE,
+        statement=(
+            "P1+P3 make energy preservation equivalent to volume preservation "
+            "but do not decide whether a process is exchange or creation. "
+            "The regime classification must be supplied or derived separately."
+        ),
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="p3_does_not_classify_regime",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.POLICY_RULE,
-            statement=(
-                "P1+P3 make energy preservation equivalent to volume preservation "
-                "but do not decide whether a process is exchange or creation. "
-                "The regime classification must be supplied or derived separately."
-            ),
-        ))
+    ns.record_route(RouteRecord(
+        route_id="exchange_trace_kernel_exterior_compensation_route",
+        script_id=SCRIPT_ID,
+        name="Exchange as trace-kernel / exterior compensation route",
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        tier=ClaimTier.CONSTRAINED,
+        required_obligations=["derive_exchange_creation_from_postulates"],
+    ))
 
-        ns2.record_route(RouteRecord(
-            route_id="exchange_trace_kernel_exterior_compensation_route",
-            script_id=SCRIPT_ID,
-            name="Exchange as trace-kernel / exterior compensation route",
-            status=GovernanceStatus.CANDIDATE_ROUTE,
-            tier=ClaimTier.CONSTRAINED,
-            required_obligations=["derive_exchange_creation_from_postulates"],
-        ))
-
-        ns2.write_run_metadata()
+    ns.write_run_metadata()
 
     ns.write_run_metadata()
 

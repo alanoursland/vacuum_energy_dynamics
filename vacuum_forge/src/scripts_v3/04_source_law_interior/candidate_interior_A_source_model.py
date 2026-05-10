@@ -582,52 +582,48 @@ def main():
 
     out.print_summary()
 
-    with ProjectArchive(root=ARCHIVE_ROOT) as archive2:
-        ns2 = archive2.script_namespace(SCRIPT_ID)
-        ns2.prepare_archive()
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_interior_pressure_stress_A_source",
+        script_id=SCRIPT_ID,
+        title="Derive pressure and stress contribution to interior A-source",
+        status=ObligationStatus.OPEN,
+        description=(
+            "The current reduced interior A model does not include pressure or "
+            "stress-energy. GR interior Schwarzschild comparison shows missing "
+            "second-order structure. Pressure/stress coupling to the A-flux source "
+            "or to interior kappa remains underived."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_interior_pressure_stress_A_source",
-            script_id=SCRIPT_ID,
-            title="Derive pressure and stress contribution to interior A-source",
-            status=ObligationStatus.OPEN,
-            description=(
-                "The current reduced interior A model does not include pressure or "
-                "stress-energy. GR interior Schwarzschild comparison shows missing "
-                "second-order structure. Pressure/stress coupling to the A-flux source "
-                "or to interior kappa remains underived."
-            ),
-        ))
+    ns.record_obligation(ProofObligationRecord(
+        obligation_id="derive_interior_kappa_condition",
+        script_id=SCRIPT_ID,
+        title="Determine whether kappa=0 holds inside matter or only in exterior",
+        status=ObligationStatus.OPEN,
+        description=(
+            "kappa=0 is enforced by construction in the reduced model interior. "
+            "GR interior Schwarzschild has AB!=1 inside matter, so kappa=0 may be "
+            "an exterior/source-free condition rather than a universal interior law."
+        ),
+    ))
 
-        ns2.record_obligation(ProofObligationRecord(
-            obligation_id="derive_interior_kappa_condition",
-            script_id=SCRIPT_ID,
-            title="Determine whether kappa=0 holds inside matter or only in exterior",
-            status=ObligationStatus.OPEN,
-            description=(
-                "kappa=0 is enforced by construction in the reduced model interior. "
-                "GR interior Schwarzschild has AB!=1 inside matter, so kappa=0 may be "
-                "an exterior/source-free condition rather than a universal interior law."
-            ),
-        ))
+    ns.record_claim(ClaimRecord(
+        claim_id="interior_A_areal_flux_reduced_toy",
+        script_id=SCRIPT_ID,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
+        tier=ClaimTier.CONSTRAINED,
+        status=GovernanceStatus.HEURISTIC,
+        statement=(
+            "The constant-density interior A(r) derived from the areal-flux law "
+            "is a reduced toy model. It matches the weak-field Newtonian potential "
+            "and has smooth matching at the source boundary, but is not the full "
+            "GR interior Schwarzschild solution."
+        ),
+        obligation_ids=["derive_interior_pressure_stress_A_source",
+                        "derive_interior_kappa_condition"],
+    ))
 
-        ns2.record_claim(ClaimRecord(
-            claim_id="interior_A_areal_flux_reduced_toy",
-            script_id=SCRIPT_ID,
-            claim_kind=RecordKind.GOVERNANCE_CLAIM,
-            tier=ClaimTier.CONSTRAINED,
-            status=GovernanceStatus.HEURISTIC,
-            statement=(
-                "The constant-density interior A(r) derived from the areal-flux law "
-                "is a reduced toy model. It matches the weak-field Newtonian potential "
-                "and has smooth matching at the source boundary, but is not the full "
-                "GR interior Schwarzschild solution."
-            ),
-            obligation_ids=["derive_interior_pressure_stress_A_source",
-                            "derive_interior_kappa_condition"],
-        ))
-
-        ns2.write_run_metadata()
+    ns.write_run_metadata()
 
     ns.write_run_metadata()
 
