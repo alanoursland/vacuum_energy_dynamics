@@ -82,7 +82,6 @@ def status_line(label: str, status: str, detail: str = "") -> ScriptOutput:
         print(f"[{mark}] {label}: {status} — {detail}")
     else:
         print(f"[{mark}] {label}: {status}")
-    return ScriptOutput(label=label, status=mark, detail=detail or status)
 
 
 @dataclass
