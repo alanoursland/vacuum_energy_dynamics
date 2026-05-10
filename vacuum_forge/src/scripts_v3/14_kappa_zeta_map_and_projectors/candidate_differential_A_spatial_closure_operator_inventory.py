@@ -421,7 +421,7 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_L1_L2_operator_origin_for_differential_closure_in_14",

@@ -416,7 +416,7 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_action_stiffness_coefficient_origin_for_q_in_14",

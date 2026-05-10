@@ -421,7 +421,7 @@ def main():
         out.line("derive exterior stability theorem", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("derive P_recombination definition", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_P_boundary_composition_law_in_14",

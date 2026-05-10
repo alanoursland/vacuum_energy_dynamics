@@ -535,7 +535,8 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive.script_namespace(SCRIPT_ID) as ns2:
+    ns2 = ns
+    if True:
         # Proof obligations for residual non-metric theorems
         ns2.record_obligation(ProofObligationRecord(
             obligation_id="derive_nonmetric_residual_role_theorem",

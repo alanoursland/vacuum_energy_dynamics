@@ -424,7 +424,7 @@ def case_7_tt_projection_z(ns):
     ns.record_derivation(
         derivation_id="tt_projection_z_trace_free_transverse",
         inputs=[H],
-        output=sp.Matrix([trace_tt_z, trans]),
+        output=sp.Matrix([trace_tt_z, trans[0], trans[1], trans[2]]),
         method="TT_projection_z_propagation",
         status=Status.DERIVED,
         record_kind=RecordKind.DERIVATION,

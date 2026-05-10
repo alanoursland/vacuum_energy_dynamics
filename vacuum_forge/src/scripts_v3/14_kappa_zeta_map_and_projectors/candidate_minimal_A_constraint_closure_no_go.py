@@ -457,7 +457,7 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_explicit_non_GR_A_sector_local_closure_in_14",

@@ -413,7 +413,7 @@ def main():
         out.line("derive P_relax definition", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("derive exterior stability theorem", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_route(RouteRecord(
             route_id="kappa_as_projected_zeta_mismatch_route",

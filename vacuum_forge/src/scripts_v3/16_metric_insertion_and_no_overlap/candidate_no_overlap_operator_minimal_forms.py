@@ -537,7 +537,8 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive.script_namespace(SCRIPT_ID) as ns2:
+    ns2 = ns
+    if True:
         # Proof obligations for O theorem and derived forms
         ns2.record_obligation(ProofObligationRecord(
             obligation_id="derive_no_overlap_operator_O",

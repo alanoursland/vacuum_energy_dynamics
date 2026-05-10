@@ -429,7 +429,7 @@ def main():
         out.line("decide whether physical/residual kappa survives", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("decide fate of e_kappa", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="decide_physical_residual_kappa_fate_in_14",

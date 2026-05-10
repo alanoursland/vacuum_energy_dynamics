@@ -451,7 +451,7 @@ def main():
     with out.unresolved_obligations():
         out.line("derive specific parent identity for A and A_spatial", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_specific_A_sector_parent_identity_in_14",

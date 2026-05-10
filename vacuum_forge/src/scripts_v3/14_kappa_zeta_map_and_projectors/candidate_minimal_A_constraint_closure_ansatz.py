@@ -444,7 +444,7 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_differential_closure_operators_and_coefficient_origin_in_14",

@@ -492,7 +492,7 @@ def main():
         out.line("derive kappa-zeta map", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("derive P_trace definition", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_claim(ClaimRecord(
             claim_id="kappa_zeta_hybrid_provisional_convention",

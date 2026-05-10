@@ -417,7 +417,7 @@ def main():
     case_7_next_tests(out)
     final_interpretation()
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_stiffness_ratio_r_s_pre_recovery_origin_in_14",

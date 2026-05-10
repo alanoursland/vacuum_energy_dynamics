@@ -633,7 +633,8 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-    with archive.script_namespace(SCRIPT_ID) as ns2:
+    ns2 = ns
+    if True:
         # Proof obligation: derive full solutions after insertion mechanism is fixed
         ns2.record_obligation(ProofObligationRecord(
             obligation_id="derive_post_insertion_solutions_for_recovery",

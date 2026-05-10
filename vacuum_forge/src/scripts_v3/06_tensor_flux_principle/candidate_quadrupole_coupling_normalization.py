@@ -267,7 +267,7 @@ def case_4_amplitude_vs_power(ns):
     ns.record_derivation(
         derivation_id="amplitude_vs_power_normalization_proxy",
         inputs=[Q0, Omega, G, c],
-        output=sp.Matrix([sp.Integer(amp_source), P_proxy]),
+        output=sp.Matrix([amp_source, P_proxy]),
         method="second_third_derivative_amplitude_power_distinction",
         status=Status.DERIVED,
         record_kind=RecordKind.SAMPLE_DERIVATION,

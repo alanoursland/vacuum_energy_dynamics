@@ -437,7 +437,8 @@ def main():
     case_7_next_options(out)
     final_interpretation(out)
 
-    with archive.script_namespace(SCRIPT_ID) as ns2:
+    ns2 = ns
+    if True:
         # Summary claim: Group 16 does not license B_s/F_zeta insertion
         ns2.record_claim(ClaimRecord(
             claim_id="group_16_insertion_not_licensed",

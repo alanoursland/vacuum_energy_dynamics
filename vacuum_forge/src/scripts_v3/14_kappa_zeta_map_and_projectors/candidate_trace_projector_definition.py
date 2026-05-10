@@ -420,7 +420,7 @@ def main():
         out.line("derive TT annihilation in covariant/nonlinear sector", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("derive P_boundary definition", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_parent_P_trace_operator_in_14",

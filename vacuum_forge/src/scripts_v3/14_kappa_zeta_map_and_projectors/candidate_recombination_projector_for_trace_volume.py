@@ -434,7 +434,7 @@ def main():
         out.line("derive P_recombination explicit formula", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("resolve A_spatial vs zeta/kappa trace-volume overlap", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_P_recombination_explicit_formula_in_14",

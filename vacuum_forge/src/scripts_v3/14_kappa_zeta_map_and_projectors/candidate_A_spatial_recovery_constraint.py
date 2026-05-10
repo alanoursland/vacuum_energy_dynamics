@@ -453,7 +453,7 @@ def main():
     with out.unresolved_obligations():
         out.line("derive A and A_spatial together from parent identity", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    with archive.with_project_namespace(SCRIPT_ID) as ns:
+    if True:
 
         ns.record_obligation(ProofObligationRecord(
             obligation_id="derive_A_and_A_spatial_from_parent_identity_in_14",
