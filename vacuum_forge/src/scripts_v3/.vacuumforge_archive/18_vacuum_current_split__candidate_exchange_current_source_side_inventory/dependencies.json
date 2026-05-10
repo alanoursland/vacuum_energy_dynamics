@@ -3,6 +3,7 @@
     "dependency_id": "ordinary_matter_decoupling_for_vacuum_currents_marker",
     "upstream_script_id": "18_vacuum_current_split__candidate_ordinary_matter_decoupling_for_vacuum_currents",
     "upstream_derivation_id": "ordinary_matter_decoupling_for_vacuum_currents_marker",
-    "declared_at": "2026-05-09T15:24:42.757969+00:00"
+    "declared_at": "2026-05-10T02:27:46.933142+00:00",
+    "allow_superseded": false
   }
 ]

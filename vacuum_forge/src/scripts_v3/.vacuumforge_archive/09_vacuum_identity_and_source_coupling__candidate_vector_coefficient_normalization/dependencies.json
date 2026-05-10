@@ -3,6 +3,7 @@
     "dependency_id": "vector_frame_dragging_observable_marker",
     "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_frame_dragging_observable",
     "upstream_derivation_id": "vector_frame_dragging_observable_marker",
-    "declared_at": "2026-05-08T18:56:50.535110+00:00"
+    "declared_at": "2026-05-10T02:24:28.823112+00:00",
+    "allow_superseded": false
   }
 ]

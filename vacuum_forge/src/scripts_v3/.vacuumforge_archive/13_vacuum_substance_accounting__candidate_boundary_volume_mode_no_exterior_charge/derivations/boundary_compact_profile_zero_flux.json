@@ -17,6 +17,12 @@
   "method": "symbolic compact-profile boundary evaluation",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T07:32:00.099107+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:25:58.657222+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

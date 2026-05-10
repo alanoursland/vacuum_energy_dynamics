@@ -8,6 +8,12 @@
   "method": "kappa_zeta_map_inventory_audit",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T07:43:14.553449+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:26:06.398559+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

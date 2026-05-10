@@ -3,6 +3,7 @@
     "dependency_id": "no_overlap_operator_minimal_forms_marker",
     "upstream_script_id": "16_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
     "upstream_derivation_id": "no_overlap_operator_minimal_forms_marker",
-    "declared_at": "2026-05-09T14:57:35.423825+00:00"
+    "declared_at": "2026-05-10T02:27:19.942577+00:00",
+    "allow_superseded": false
   }
 ]

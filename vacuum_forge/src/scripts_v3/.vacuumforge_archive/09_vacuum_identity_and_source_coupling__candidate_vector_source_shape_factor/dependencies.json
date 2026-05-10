@@ -3,6 +3,7 @@
     "dependency_id": "vector_boundary_coefficient_from_action_marker",
     "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_boundary_coefficient_from_action",
     "upstream_derivation_id": "vector_boundary_coefficient_from_action_marker",
-    "declared_at": "2026-05-08T18:57:04.004953+00:00"
+    "declared_at": "2026-05-10T02:24:42.484428+00:00",
+    "allow_superseded": false
   }
 ]

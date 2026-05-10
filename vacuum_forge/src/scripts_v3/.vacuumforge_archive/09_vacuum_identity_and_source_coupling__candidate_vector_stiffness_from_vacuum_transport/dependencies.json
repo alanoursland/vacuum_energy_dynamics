@@ -3,6 +3,7 @@
     "dependency_id": "vector_coefficient_normalization_marker",
     "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_coefficient_normalization",
     "upstream_derivation_id": "vector_coefficient_normalization_marker",
-    "declared_at": "2026-05-08T18:56:52.011101+00:00"
+    "declared_at": "2026-05-10T02:24:30.280124+00:00",
+    "allow_superseded": false
   }
 ]

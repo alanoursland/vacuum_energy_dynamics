@@ -3,6 +3,7 @@
     "dependency_id": "gr_interior_first_order_match",
     "upstream_script_id": "04_source_law_interior__candidate_compare_gr_interior_schwarzschild",
     "upstream_derivation_id": "gr_interior_first_order_match",
-    "declared_at": "2026-05-08T17:25:53.049203+00:00"
+    "declared_at": "2026-05-10T02:23:35.521509+00:00",
+    "allow_superseded": false
   }
 ]

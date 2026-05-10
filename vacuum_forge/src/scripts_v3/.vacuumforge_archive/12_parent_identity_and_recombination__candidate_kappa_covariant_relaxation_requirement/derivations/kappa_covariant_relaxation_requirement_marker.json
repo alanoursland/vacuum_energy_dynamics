@@ -8,6 +8,12 @@
   "method": "kappa_covariant_relaxation_requirement_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T02:26:52.028334+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:25:38.612544+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

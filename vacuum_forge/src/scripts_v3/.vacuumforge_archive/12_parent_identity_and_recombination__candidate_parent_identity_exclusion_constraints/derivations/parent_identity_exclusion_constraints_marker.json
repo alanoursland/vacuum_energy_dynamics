@@ -8,6 +8,12 @@
   "method": "parent_identity_exclusion_constraints_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T02:26:44.082775+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:25:30.612691+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

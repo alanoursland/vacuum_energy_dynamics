@@ -3,6 +3,7 @@
     "dependency_id": "vector_stiffness_from_vacuum_transport_marker",
     "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_stiffness_from_vacuum_transport",
     "upstream_derivation_id": "vector_stiffness_from_vacuum_transport_marker",
-    "declared_at": "2026-05-08T18:56:53.472104+00:00"
+    "declared_at": "2026-05-10T02:24:31.804805+00:00",
+    "allow_superseded": false
   }
 ]

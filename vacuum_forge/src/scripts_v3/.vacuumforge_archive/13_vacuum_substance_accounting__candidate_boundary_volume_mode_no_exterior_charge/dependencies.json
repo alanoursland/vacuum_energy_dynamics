@@ -3,6 +3,7 @@
     "dependency_id": "binary_radiation_scalar_conversion_safety_marker",
     "upstream_script_id": "13_vacuum_substance_accounting__candidate_binary_radiation_scalar_conversion_safety",
     "upstream_derivation_id": "binary_radiation_scalar_conversion_safety_marker",
-    "declared_at": "2026-05-09T07:31:59.315104+00:00"
+    "declared_at": "2026-05-10T02:25:57.845217+00:00",
+    "allow_superseded": false
   }
 ]

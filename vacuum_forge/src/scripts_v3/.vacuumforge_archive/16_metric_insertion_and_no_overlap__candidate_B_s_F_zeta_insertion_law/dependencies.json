@@ -3,6 +3,7 @@
     "dependency_id": "group_15_status_after_residual_kill_marker",
     "upstream_script_id": "15_vacuum_current_and_exchange_continuity__candidate_group_15_status_after_residual_kill",
     "upstream_derivation_id": "group_15_status_after_residual_kill_marker",
-    "declared_at": "2026-05-09T14:57:29.306418+00:00"
+    "declared_at": "2026-05-10T02:27:13.452246+00:00",
+    "allow_superseded": false
   }
 ]

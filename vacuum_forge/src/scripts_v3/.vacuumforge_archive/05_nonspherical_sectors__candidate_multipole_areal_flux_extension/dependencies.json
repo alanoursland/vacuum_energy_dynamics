@@ -3,6 +3,7 @@
     "dependency_id": "boundary_flux_exact_metric",
     "upstream_script_id": "04_source_law_interior__candidate_boundary_flux_action",
     "upstream_derivation_id": "boundary_flux_exact_metric_check",
-    "declared_at": "2026-05-08T17:33:05.714939+00:00"
+    "declared_at": "2026-05-10T02:23:42.929178+00:00",
+    "allow_superseded": false
   }
 ]

@@ -32,6 +32,12 @@
     "classification": "trace_free",
     "summary_status": "derived"
   },
-  "recorded_at": "2026-05-08T02:18:35.201200+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:22:56.088329+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

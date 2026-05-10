@@ -3,6 +3,7 @@
     "dependency_id": "kappa_exterior_suppression_condition_marker",
     "upstream_script_id": "10_kappa_trace_response__candidate_kappa_exterior_suppression_condition",
     "upstream_derivation_id": "kappa_exterior_suppression_condition_marker",
-    "declared_at": "2026-05-08T19:05:42.931144+00:00"
+    "declared_at": "2026-05-10T02:24:47.222469+00:00",
+    "allow_superseded": false
   }
 ]

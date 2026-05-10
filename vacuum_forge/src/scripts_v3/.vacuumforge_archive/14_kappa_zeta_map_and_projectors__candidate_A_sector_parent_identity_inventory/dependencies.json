@@ -3,6 +3,7 @@
     "dependency_id": "A_spatial_recovery_constraint_marker",
     "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_A_spatial_recovery_constraint",
     "upstream_derivation_id": "A_spatial_recovery_constraint_marker",
-    "declared_at": "2026-05-09T07:43:25.938788+00:00"
+    "declared_at": "2026-05-10T02:26:17.779141+00:00",
+    "allow_superseded": false
   }
 ]

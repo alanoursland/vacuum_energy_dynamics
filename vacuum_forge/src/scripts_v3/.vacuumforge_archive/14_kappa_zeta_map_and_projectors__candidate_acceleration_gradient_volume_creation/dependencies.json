@@ -3,6 +3,7 @@
     "dependency_id": "source_driven_volume_creation_law_marker",
     "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_source_driven_volume_creation_law",
     "upstream_derivation_id": "source_driven_volume_creation_law_marker",
-    "declared_at": "2026-05-09T07:43:54.017322+00:00"
+    "declared_at": "2026-05-10T02:26:47.308268+00:00",
+    "allow_superseded": false
   }
 ]

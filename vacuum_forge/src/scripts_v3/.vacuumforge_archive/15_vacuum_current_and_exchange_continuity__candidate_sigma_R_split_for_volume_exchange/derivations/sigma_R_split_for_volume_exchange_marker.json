@@ -8,6 +8,12 @@
   "method": "sigma_R_split_for_volume_exchange_audit",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T14:31:41.663978+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:27:00.324290+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

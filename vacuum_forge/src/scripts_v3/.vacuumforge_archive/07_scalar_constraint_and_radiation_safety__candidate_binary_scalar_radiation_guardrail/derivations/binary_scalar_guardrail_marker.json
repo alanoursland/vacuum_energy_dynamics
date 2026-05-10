@@ -8,6 +8,12 @@
   "method": "binary_scalar_radiation_guardrail_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-08T18:28:18.168158+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:24:07.576593+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

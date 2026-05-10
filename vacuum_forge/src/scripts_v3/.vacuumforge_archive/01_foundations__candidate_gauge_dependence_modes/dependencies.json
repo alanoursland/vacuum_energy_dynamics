@@ -3,6 +3,7 @@
     "dependency_id": "covariant_parent_trace_kernel",
     "upstream_script_id": "01_foundations__candidate_covariant_parent_modes",
     "upstream_derivation_id": "kappa_trace_kernel_exchange",
-    "declared_at": "2026-05-08T02:18:36.221201+00:00"
+    "declared_at": "2026-05-10T02:22:57.162336+00:00",
+    "allow_superseded": false
   }
 ]

@@ -3,6 +3,7 @@
     "dependency_id": "B_s_insertion_boundary_safety_marker",
     "upstream_script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_insertion_boundary_safety",
     "upstream_derivation_id": "B_s_insertion_boundary_safety_marker",
-    "declared_at": "2026-05-09T14:57:37.121604+00:00"
+    "declared_at": "2026-05-10T02:27:21.656829+00:00",
+    "allow_superseded": false
   }
 ]

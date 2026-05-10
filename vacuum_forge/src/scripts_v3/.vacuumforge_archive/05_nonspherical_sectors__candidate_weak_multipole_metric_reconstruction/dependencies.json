@@ -3,6 +3,7 @@
     "dependency_id": "weak_multipole_scalar_sector",
     "upstream_script_id": "05_nonspherical_sectors__candidate_multipole_areal_flux_extension",
     "upstream_derivation_id": "weak_multipole_reciprocal_scalar_sector",
-    "declared_at": "2026-05-08T17:33:07.621939+00:00"
+    "declared_at": "2026-05-10T02:23:44.926195+00:00",
+    "allow_superseded": false
   }
 ]

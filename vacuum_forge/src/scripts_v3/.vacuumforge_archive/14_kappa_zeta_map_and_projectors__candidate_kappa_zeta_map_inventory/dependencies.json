@@ -3,6 +3,7 @@
     "dependency_id": "epsilon_kappa_double_counting_check_marker",
     "upstream_script_id": "13_vacuum_substance_accounting__candidate_epsilon_kappa_double_counting_check",
     "upstream_derivation_id": "epsilon_kappa_double_counting_check_marker",
-    "declared_at": "2026-05-09T07:43:13.942448+00:00"
+    "declared_at": "2026-05-10T02:26:05.776554+00:00",
+    "allow_superseded": false
   }
 ]

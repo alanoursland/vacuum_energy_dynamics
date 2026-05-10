@@ -3,6 +3,7 @@
     "dependency_id": "vector_current_projection_operator_marker",
     "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_current_projection_operator",
     "upstream_derivation_id": "vector_current_projection_operator_marker",
-    "declared_at": "2026-05-08T18:56:59.027704+00:00"
+    "declared_at": "2026-05-10T02:24:37.390447+00:00",
+    "allow_superseded": false
   }
 ]

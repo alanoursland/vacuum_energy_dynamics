@@ -3,6 +3,7 @@
     "dependency_id": "exact_source_law_geometry_check",
     "upstream_script_id": "02_mechanics__candidate_exact_source_law_geometry_check",
     "upstream_derivation_id": "exact_schwarzschild_concrete_metric_check",
-    "declared_at": "2026-05-08T08:52:33.896096+00:00"
+    "declared_at": "2026-05-10T02:23:21.016538+00:00",
+    "allow_superseded": false
   }
 ]

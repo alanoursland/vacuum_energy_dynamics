@@ -3,6 +3,7 @@
     "dependency_id": "field_equation_closure_failure_modes_marker",
     "upstream_script_id": "11_field_equation_closure__candidate_field_equation_closure_failure_modes",
     "upstream_derivation_id": "field_equation_closure_failure_modes_marker",
-    "declared_at": "2026-05-09T01:18:32.261400+00:00"
+    "declared_at": "2026-05-10T02:25:26.373657+00:00",
+    "allow_superseded": false
   }
 ]

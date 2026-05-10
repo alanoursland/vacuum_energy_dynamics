@@ -3,6 +3,7 @@
     "dependency_id": "vacuum_substance_continuity_identity_marker",
     "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vacuum_substance_continuity_identity",
     "upstream_derivation_id": "vacuum_substance_continuity_identity_marker",
-    "declared_at": "2026-05-08T18:56:45.772103+00:00"
+    "declared_at": "2026-05-10T02:24:24.177073+00:00",
+    "allow_superseded": false
   }
 ]

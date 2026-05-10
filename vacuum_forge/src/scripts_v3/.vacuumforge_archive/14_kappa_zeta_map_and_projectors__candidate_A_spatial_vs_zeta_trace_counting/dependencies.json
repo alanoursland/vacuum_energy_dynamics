@@ -3,6 +3,7 @@
     "dependency_id": "recombination_projector_for_trace_volume_marker",
     "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_recombination_projector_for_trace_volume",
     "upstream_derivation_id": "recombination_projector_for_trace_volume_marker",
-    "declared_at": "2026-05-09T07:43:21.575414+00:00"
+    "declared_at": "2026-05-10T02:26:13.393105+00:00",
+    "allow_superseded": false
   }
 ]

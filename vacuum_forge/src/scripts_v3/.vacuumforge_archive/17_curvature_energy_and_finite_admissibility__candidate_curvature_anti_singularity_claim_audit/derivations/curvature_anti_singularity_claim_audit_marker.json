@@ -8,6 +8,12 @@
   "method": "curvature_anti_singularity_claim_audit",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T15:06:53.663769+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:27:36.974724+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

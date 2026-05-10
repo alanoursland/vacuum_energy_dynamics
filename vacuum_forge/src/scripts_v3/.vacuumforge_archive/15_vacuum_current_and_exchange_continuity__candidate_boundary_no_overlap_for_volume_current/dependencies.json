@@ -3,6 +3,7 @@
     "dependency_id": "static_source_neutrality_for_J_V_marker",
     "upstream_script_id": "15_vacuum_current_and_exchange_continuity__candidate_static_source_neutrality_for_J_V",
     "upstream_derivation_id": "static_source_neutrality_for_J_V_marker",
-    "declared_at": "2026-05-09T14:31:47.420977+00:00"
+    "declared_at": "2026-05-10T02:27:05.943751+00:00",
+    "allow_superseded": false
   }
 ]

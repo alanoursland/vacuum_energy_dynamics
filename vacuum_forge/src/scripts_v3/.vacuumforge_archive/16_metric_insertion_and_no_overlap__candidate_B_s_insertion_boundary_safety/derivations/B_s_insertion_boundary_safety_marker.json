@@ -8,6 +8,12 @@
   "method": "B_s_insertion_boundary_safety_audit",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-09T14:57:36.179727+00:00",
-  "vacuumforge_version": "0.1.0"
+  "recorded_at": "2026-05-10T02:27:20.764587+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
 }

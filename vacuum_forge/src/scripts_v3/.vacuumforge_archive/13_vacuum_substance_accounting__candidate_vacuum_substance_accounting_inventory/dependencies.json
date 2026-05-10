@@ -3,6 +3,7 @@
     "dependency_id": "vacuum_configuration_energy_variable_marker",
     "upstream_script_id": "12_parent_identity_and_recombination__candidate_vacuum_configuration_energy_variable",
     "upstream_derivation_id": "vacuum_configuration_energy_variable_marker",
-    "declared_at": "2026-05-09T07:31:49.821052+00:00"
+    "declared_at": "2026-05-10T02:25:48.804034+00:00",
+    "allow_superseded": false
   }
 ]

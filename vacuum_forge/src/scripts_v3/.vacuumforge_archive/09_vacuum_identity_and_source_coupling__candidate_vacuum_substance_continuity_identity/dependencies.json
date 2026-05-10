@@ -3,6 +3,7 @@
     "dependency_id": "conservation_identity_requirements_marker",
     "upstream_script_id": "08_covariant_parent_structure__candidate_conservation_identity_requirements",
     "upstream_derivation_id": "conservation_identity_requirements_marker",
-    "declared_at": "2026-05-08T18:56:44.103101+00:00"
+    "declared_at": "2026-05-10T02:24:22.571531+00:00",
+    "allow_superseded": false
   }
 ]

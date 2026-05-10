@@ -3,6 +3,7 @@
     "dependency_id": "boundary_projector_for_volume_neutrality_marker",
     "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_boundary_projector_for_volume_neutrality",
     "upstream_derivation_id": "boundary_projector_for_volume_neutrality_marker",
-    "declared_at": "2026-05-09T07:43:20.131794+00:00"
+    "declared_at": "2026-05-10T02:26:11.947675+00:00",
+    "allow_superseded": false
   }
 ]

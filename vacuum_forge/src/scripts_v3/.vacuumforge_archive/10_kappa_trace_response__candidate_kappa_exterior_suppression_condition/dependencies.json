@@ -3,6 +3,7 @@
     "dependency_id": "kappa_source_law_from_trace_exchange_marker",
     "upstream_script_id": "10_kappa_trace_response__candidate_kappa_source_law_from_trace_exchange",
     "upstream_derivation_id": "kappa_source_law_from_trace_exchange_marker",
-    "declared_at": "2026-05-08T19:05:41.410142+00:00"
+    "declared_at": "2026-05-10T02:24:45.668455+00:00",
+    "allow_superseded": false
   }
 ]

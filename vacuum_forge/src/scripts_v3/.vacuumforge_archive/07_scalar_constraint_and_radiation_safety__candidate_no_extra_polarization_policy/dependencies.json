@@ -3,6 +3,7 @@
     "dependency_id": "A_channel_split_policy_marker",
     "upstream_script_id": "07_scalar_constraint_and_radiation_safety__candidate_A_channel_static_dynamic_split",
     "upstream_derivation_id": "A_channel_split_policy_marker",
-    "declared_at": "2026-05-08T18:28:20.655168+00:00"
+    "declared_at": "2026-05-10T02:24:10.274615+00:00",
+    "allow_superseded": false
   }
 ]

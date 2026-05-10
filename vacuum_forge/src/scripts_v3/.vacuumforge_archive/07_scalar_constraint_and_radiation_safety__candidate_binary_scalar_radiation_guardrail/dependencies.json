@@ -3,6 +3,7 @@
     "dependency_id": "scalar_breathing_suppression_marker",
     "upstream_script_id": "07_scalar_constraint_and_radiation_safety__candidate_scalar_breathing_mode_suppression",
     "upstream_derivation_id": "scalar_breathing_suppression_marker",
-    "declared_at": "2026-05-08T18:28:16.978155+00:00"
+    "declared_at": "2026-05-10T02:24:06.277573+00:00",
+    "allow_superseded": false
   }
 ]

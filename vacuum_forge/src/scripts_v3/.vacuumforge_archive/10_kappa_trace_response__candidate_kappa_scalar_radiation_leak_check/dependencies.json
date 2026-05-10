@@ -3,6 +3,7 @@
     "dependency_id": "kappa_constraint_projection_identity_marker",
     "upstream_script_id": "10_kappa_trace_response__candidate_kappa_constraint_projection_identity",
     "upstream_derivation_id": "kappa_constraint_projection_identity_marker",
-    "declared_at": "2026-05-08T19:05:49.834152+00:00"
+    "declared_at": "2026-05-10T02:24:53.865366+00:00",
+    "allow_superseded": false
   }
 ]

@@ -3,6 +3,7 @@
     "dependency_id": "exact_metric_recovery",
     "upstream_script_id": "02_mechanics__candidate_static_spherical_exact_recovery",
     "upstream_derivation_id": "exact_schwarzschild_concrete_metric_check",
-    "declared_at": "2026-05-08T08:52:29.962712+00:00"
+    "declared_at": "2026-05-10T02:23:17.040504+00:00",
+    "allow_superseded": false
   }
 ]
