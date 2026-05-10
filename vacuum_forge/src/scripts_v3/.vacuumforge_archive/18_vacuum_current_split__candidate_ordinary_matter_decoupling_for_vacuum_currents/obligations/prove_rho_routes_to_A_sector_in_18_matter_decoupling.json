@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_rho_routes_to_A_sector_in_18_matter_decoupling",
+  "script_id": "18_vacuum_current_split__candidate_ordinary_matter_decoupling_for_vacuum_currents",
+  "title": "Prove rho routes to A-sector",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:56.467389+00:00",
+  "description": "Ordinary rho/scalar charge must remain routed to A-sector. Vacuum currents must not replace or supplement ordinary mass source.",
+  "metadata": {}
+}

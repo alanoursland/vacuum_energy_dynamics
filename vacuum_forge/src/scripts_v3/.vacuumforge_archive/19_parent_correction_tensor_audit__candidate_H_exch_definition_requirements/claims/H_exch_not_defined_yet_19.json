@@ -1,0 +1,43 @@
+{
+  "claim_id": "H_exch_not_defined_yet_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_H_exch_definition_requirements",
+  "claim_kind": "summary_claim",
+  "tier": "constrained",
+  "status": "not_insertable_yet",
+  "statement": "H_exch is not defined yet and is not insertable. It survives only as theorem target or diagnostic-only fallback.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "guard_J_V_absence_H_exch_19",
+    "guard_J_exch_theorem_target_H_exch_19",
+    "derive_Sigma_R_operators_H_exch_19",
+    "derive_Sigma_R_distinction_H_exch_19",
+    "guard_ordinary_sector_source_side_H_exch_19",
+    "derive_H_exch_domain_19",
+    "derive_H_exch_orientation_19",
+    "derive_H_exch_projection_class_19",
+    "derive_H_exch_tensor_symmetry_19",
+    "derive_H_exch_divergence_behavior_19",
+    "derive_H_exch_boundary_neutrality_19",
+    "derive_H_exch_matter_decoupling_19",
+    "derive_H_exch_mass_neutrality_19",
+    "derive_H_exch_scalar_neutrality_19",
+    "derive_H_exch_coefficient_origin_19",
+    "derive_H_exch_zero_net_preservation_19",
+    "guard_H_exch_no_dark_patch_19"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:06.009329+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "not_insertable_yet",
+      "effective_status": "not_insertable_yet",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

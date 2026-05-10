@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_exchange_continuity_law_in_15",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_exchange_continuity_law_for_volume",
+  "title": "Derive exchange continuity law nabla_mu J_V^mu = Sigma_V - R_V",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:08.107847+00:00",
+  "description": "The full exchange continuity law remains a theorem target until J_V flux direction, Sigma_V, R_V, timelike domain, static neutrality, boundary neutrality, and no-overlap are all established.",
+  "metadata": {}
+}

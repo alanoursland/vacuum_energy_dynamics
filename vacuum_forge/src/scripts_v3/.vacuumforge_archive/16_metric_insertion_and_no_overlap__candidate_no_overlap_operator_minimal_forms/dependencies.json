@@ -3,7 +3,7 @@
     "dependency_id": "residual_nonmetric_bookkeeping_rule_marker",
     "upstream_script_id": "16_metric_insertion_and_no_overlap__candidate_residual_nonmetric_bookkeeping_rule",
     "upstream_derivation_id": "residual_nonmetric_bookkeeping_rule_marker",
-    "declared_at": "2026-05-10T02:27:18.421255+00:00",
+    "declared_at": "2026-05-10T17:22:28.253678+00:00",
     "allow_superseded": false
   }
 ]

@@ -3,7 +3,7 @@
     "dependency_id": "B_s_insertion_recovery_audit_marker",
     "upstream_script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_insertion_recovery_audit",
     "upstream_derivation_id": "B_s_insertion_recovery_audit_marker",
-    "declared_at": "2026-05-10T02:27:25.490862+00:00",
+    "declared_at": "2026-05-10T17:22:35.642614+00:00",
     "allow_superseded": false
   }
 ]

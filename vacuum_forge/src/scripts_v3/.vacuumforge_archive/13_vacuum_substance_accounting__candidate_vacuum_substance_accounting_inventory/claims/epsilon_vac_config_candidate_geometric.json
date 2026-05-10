@@ -1,0 +1,29 @@
+{
+  "claim_id": "epsilon_vac_config_candidate_geometric",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_substance_accounting_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "epsilon_vac_config is a candidate geometric/spacetime-configuration variable that exchanges with e_kappa during curvature excess/deficit restoration. It must not act as a bottomless energy reservoir or coefficient tuning knob.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:56.615456+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_metric_recombination_parent_map",
+  "script_id": "11_field_equation_closure__candidate_metric_recombination_map",
+  "title": "Derive covariant metric recombination parent map",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:17.178792+00:00",
+  "description": "The reduced recombination ansatz ds^2 = -A c^2 dt^2 + 2 W_i c dt dx^i + spatial_metric_ij dx^i dx^j must be derived from a covariant parent map with no-double-counting rules. Currently it is a bookkeeping ansatz.",
+  "metadata": {}
+}

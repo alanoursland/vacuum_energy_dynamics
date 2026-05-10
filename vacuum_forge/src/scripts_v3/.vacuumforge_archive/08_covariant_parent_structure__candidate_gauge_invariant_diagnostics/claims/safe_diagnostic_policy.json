@@ -1,0 +1,29 @@
+{
+  "claim_id": "safe_diagnostic_policy",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_invariant_diagnostics",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Safe diagnostics for reduced comparisons: areal radius R (spherical), normalized static A, TT strain. Gauge-aware diagnostics (AB/kappa_areal, kappa response) must be labeled as gauge-aware. A_rad, raw W_i, and raw coordinate trace must not be used as physical observables without explicit suppression flags or parent derivation.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:22.428531+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

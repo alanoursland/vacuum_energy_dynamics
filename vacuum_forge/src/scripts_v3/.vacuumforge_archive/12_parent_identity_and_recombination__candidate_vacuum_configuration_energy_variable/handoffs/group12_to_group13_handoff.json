@@ -1,0 +1,22 @@
+{
+  "handoff_id": "group12_to_group13_handoff",
+  "script_id": "12_parent_identity_and_recombination__candidate_vacuum_configuration_energy_variable",
+  "source_record_ref": "vacuum_configuration_energy_variable_marker",
+  "imported_record_refs": [
+    "parent_identity_exclusion_constraints_marker",
+    "parent_identity_reduced_implications_marker",
+    "projector_structure_for_parent_identity_marker",
+    "scalar_constraint_not_radiation_identity_marker",
+    "kappa_covariant_relaxation_requirement_marker",
+    "boundary_mass_preservation_identity_marker",
+    "recombination_without_double_counting_marker",
+    "relaxation_energy_accounting_identity_marker",
+    "parent_identity_template_v2_marker",
+    "vacuum_configuration_energy_variable_marker"
+  ],
+  "imported_as": "inventory_marker",
+  "status": "candidate_route",
+  "created_at": "2026-05-10T17:20:55.055468+00:00",
+  "description": "Group 13 (vacuum substance accounting) may import from Group 12: policy rules for scalar constraint, Box kappa, rho-kappa separation, GR coefficient insertion. Open proof obligations: scalar constraint propagation, P_scalar, P_recombination, E_vac_config definition, boundary mass preservation theorem. Candidate routes: kappa covariantized relaxation, reduced recombination map, kappa free-energy exchange. Branch decisions: all positive parent identity routes are deferred pending prerequisites. Group 13 must not reopen exclusions established in Group 12.",
+  "metadata": {}
+}

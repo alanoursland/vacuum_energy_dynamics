@@ -1,0 +1,29 @@
+{
+  "claim_id": "rk13_residual_kill_not_derivation",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_residual_kill_rule_for_volume_current",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Residual-kill is provisional convention unless derived from O or parent identity. It must not be treated as a postulate or field equation.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:21.055738+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

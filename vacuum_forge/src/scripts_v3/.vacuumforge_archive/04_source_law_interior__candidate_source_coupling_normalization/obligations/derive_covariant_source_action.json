@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_source_action",
+  "script_id": "04_source_law_interior__candidate_source_coupling_normalization",
+  "title": "Derive full covariant source action",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:37.602991+00:00",
+  "description": "The reduced boundary action is a non-covariant toy. A full covariant source action that reduces to the boundary coupling in the static spherical case remains an open obligation.",
+  "metadata": {}
+}

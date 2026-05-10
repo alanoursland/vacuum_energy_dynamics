@@ -1,0 +1,28 @@
+{
+  "derivation_id": "ppn_gamma_proxy_residual",
+  "inputs": [
+    {
+      "srepr": "Symbol('psi', real=True)",
+      "latex": "\\psi"
+    },
+    {
+      "srepr": "Symbol('gamma', real=True)",
+      "latex": "\\gamma"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "solve_spatial_factor_eq_reciprocal",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:41.765760+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "compatibility_example",
+  "scope": "scalar sector first order only",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

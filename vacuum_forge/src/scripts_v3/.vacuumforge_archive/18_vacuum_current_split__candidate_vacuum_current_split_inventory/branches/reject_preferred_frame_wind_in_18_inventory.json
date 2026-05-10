@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_preferred_frame_wind_in_18_inventory",
+  "script_id": "18_vacuum_current_split__candidate_vacuum_current_split_inventory",
+  "branch_id": "preferred_frame_wind",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:50.377494+00:00",
+  "description": "J_sub as arbitrary preferred-frame wind is forbidden. Frame must follow from vacuum ontology or substrate law.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

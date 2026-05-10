@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_zeta_map",
+  "script_id": "13_vacuum_substance_accounting__candidate_scalar_conversion_not_damping",
+  "title": "Derive kappa-zeta map",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:01.839412+00:00",
+  "description": "Show precisely how kappa relates to zeta - zeta_min, and whether kappa is an independent variable or a diagnostic projection of zeta mismatch.",
+  "metadata": {}
+}

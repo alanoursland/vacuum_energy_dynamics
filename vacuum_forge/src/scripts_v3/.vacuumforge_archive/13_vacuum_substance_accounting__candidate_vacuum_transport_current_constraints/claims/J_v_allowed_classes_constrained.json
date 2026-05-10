@@ -1,0 +1,29 @@
+{
+  "claim_id": "J_v_allowed_classes_constrained",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_transport_current_constraints",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "J_v is allowed as: absent/zero (J1), compact-support (J2), constrained redistribution (J3), or causal transport if separately derived (J4). All cases require zero exterior flux (J5) and zero far-zone scalar energy flux (J8).",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:08.180357+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

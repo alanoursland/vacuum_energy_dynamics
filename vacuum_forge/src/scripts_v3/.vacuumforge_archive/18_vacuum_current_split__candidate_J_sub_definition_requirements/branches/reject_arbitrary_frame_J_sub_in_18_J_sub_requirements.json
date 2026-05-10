@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_arbitrary_frame_J_sub_in_18_J_sub_requirements",
+  "script_id": "18_vacuum_current_split__candidate_J_sub_definition_requirements",
+  "branch_id": "arbitrary_preferred_frame_J_sub",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:53.441473+00:00",
+  "description": "J_sub = arbitrary preferred-frame wind is forbidden. Frame must follow from vacuum ontology.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

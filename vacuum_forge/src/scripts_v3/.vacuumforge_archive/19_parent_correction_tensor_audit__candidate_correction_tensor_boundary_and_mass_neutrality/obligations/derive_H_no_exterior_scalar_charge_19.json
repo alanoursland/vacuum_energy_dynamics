@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_H_no_exterior_scalar_charge_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
+  "title": "Derive no exterior scalar charge theorem for correction tensors",
+  "status": "open",
+  "required_by": [
+    "correction_tensor_insertability_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:10.678303+00:00",
+  "description": "H_curv/H_exch must not generate exterior B_s/zeta/kappa scalar charge or tail (BM4).",
+  "metadata": {}
+}

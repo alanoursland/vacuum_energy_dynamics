@@ -1,0 +1,13 @@
+{
+  "obligation_id": "formalize_A_curv_condition_in_17_finite_admissibility",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_finite_admissibility_condition",
+  "title": "Formalize finite-admissibility condition A_curv",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:39.477580+00:00",
+  "description": "A_curv must be stated with domain, measure, invariant/function, and branch-kill rule before anti-singularity claims can become technical.",
+  "metadata": {}
+}

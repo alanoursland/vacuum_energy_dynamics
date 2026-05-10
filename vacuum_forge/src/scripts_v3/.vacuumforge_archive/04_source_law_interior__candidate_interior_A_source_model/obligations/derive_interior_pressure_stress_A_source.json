@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_interior_pressure_stress_A_source",
+  "script_id": "04_source_law_interior__candidate_interior_A_source_model",
+  "title": "Derive pressure and stress contribution to interior A-source",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:21.319971+00:00",
+  "description": "The current reduced interior A model does not include pressure or stress-energy. GR interior Schwarzschild comparison shows missing second-order structure. Pressure/stress coupling to the A-flux source or to interior kappa remains underived.",
+  "metadata": {}
+}

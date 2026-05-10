@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_tensor_definition_for_insertability_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_equation_insertability_audit",
+  "title": "Derive correction tensor definition for insertability",
+  "status": "open",
+  "required_by": [
+    "parent_correction_tensor_insertion"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:12.165291+00:00",
+  "description": "H_curv/H_exch tensor rank, symmetry, trace behavior, index placement, and domain must be defined (PI2).",
+  "metadata": {}
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "vacuum_current_split_role_level_only_in_18",
+  "script_id": "18_vacuum_current_split__candidate_vacuum_current_split_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "J_V = J_sub + J_exch is role-level bookkeeping only. No operator-level split criterion is derived. J_sub/J_exch are useful labels for role distinctions pending real definitions.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:50.376494+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

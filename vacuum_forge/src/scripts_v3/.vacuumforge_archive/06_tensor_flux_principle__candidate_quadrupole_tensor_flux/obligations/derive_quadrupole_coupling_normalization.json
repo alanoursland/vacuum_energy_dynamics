@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_quadrupole_coupling_normalization",
+  "script_id": "06_tensor_flux_principle__candidate_quadrupole_tensor_flux",
+  "title": "Derive quadrupole coupling normalization",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:54.028387+00:00",
+  "description": "The projection of Q_TF onto plus/cross channels is derived. The coupling coefficient connecting Qdd to far-zone h_ij^TT must be derived or matched.",
+  "metadata": {}
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "areal_kappa_fenced_as_reduced_diagnostic",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_areal_kappa_diagnostic_vs_physical_variable",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "kappa_areal = 1/2 ln(AB) is a reduced spherical areal-gauge diagnostic. It is a test instrument for A/B mismatch and an exterior recovery check. It is not a covariant physical scalar, not an independent spatial trace insertion, not a sufficient basis for physical e_kappa, and not a parent field-equation building block.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:24.482219+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "provisional_convention",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_vector_beta_W_coupling",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_coefficient_normalization",
+  "title": "Derive beta_W observable coupling",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:31.889359+00:00",
+  "description": "The precession coupling beta_W in Omega_drag = beta_W B_W is missing. It must be derived from the observable/precession theory, not chosen to match Lense-Thirring.",
+  "metadata": {}
+}

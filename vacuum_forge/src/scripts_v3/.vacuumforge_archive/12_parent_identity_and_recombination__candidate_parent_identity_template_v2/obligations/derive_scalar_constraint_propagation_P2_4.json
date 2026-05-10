@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_scalar_constraint_propagation_P2_4",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_template_v2",
+  "title": "Derive continuity-compatible scalar constraint propagation (P2.4)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:53.487481+00:00",
+  "description": "partial_tau C_A[A,rho] must follow from continuity(rho,j_L) without Box A. This is the hardest and most critical missing clause in template v2.",
+  "metadata": {}
+}

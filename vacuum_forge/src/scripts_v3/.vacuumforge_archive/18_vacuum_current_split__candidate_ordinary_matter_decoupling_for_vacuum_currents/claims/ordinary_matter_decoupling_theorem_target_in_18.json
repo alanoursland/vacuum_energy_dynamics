@@ -1,0 +1,29 @@
+{
+  "claim_id": "ordinary_matter_decoupling_theorem_target_in_18",
+  "script_id": "18_vacuum_current_split__candidate_ordinary_matter_decoupling_for_vacuum_currents",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Ordinary matter decoupling is required but not derived. Zero-net and zero-creation ordinary-sector branches remain the safest current-compatible branches.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:56.469389+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

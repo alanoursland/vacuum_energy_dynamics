@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_no_far_zone_scalar_flux_theorem",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_insertion_boundary_safety",
+  "title": "Derive no far-zone scalar flux theorem",
+  "status": "open",
+  "required_by": [
+    "B_s_insertion_boundary_safe_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:30.712655+00:00",
+  "description": "Show that F_scalar_far[zeta, kappa, J_V] = 0 is structurally absent after B_s insertion and residual-kill.",
+  "metadata": {}
+}

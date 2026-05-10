@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_required_kappa_profile_smoothness_from_action_in_10_kappa_trace",
+  "script_id": "10_kappa_trace_response__candidate_kappa_second_derivative_boundary_stress",
+  "title": "Derive the minimum required smoothness of the kappa profile from the candidate action",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:06.756879+00:00",
+  "description": "The C1 profile has a hidden kappa'' jump (shell stress). C2 resolves it. Whether C2 is sufficient or higher smoothness is required depends on derivative terms in the true kappa action. This derivation is missing.",
+  "metadata": {}
+}

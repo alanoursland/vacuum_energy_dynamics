@@ -1,0 +1,28 @@
+{
+  "derivation_id": "nonlinear_s_equation_from_exact_schwarzschild",
+  "inputs": [
+    {
+      "srepr": "log(Add(Integer(1), Mul(Integer(-1), Pow(Symbol('r', positive=True, real=True), Integer(-1)), Symbol('r_s', positive=True, real=True))))",
+      "latex": "\\log{\\left(1 - \\frac{r_{s}}{r} \\right)}"
+    },
+    {
+      "srepr": "Symbol('r_s', positive=True, real=True)",
+      "latex": "r_{s}"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "compute \u2207\u00b2s + |\u2207s|\u00b2 for s=ln(1-r_s/r) via flat radial Laplacian",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:07.462576+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

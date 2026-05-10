@@ -1,0 +1,26 @@
+{
+  "decision_id": "defer_hybrid_projection_branch",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_matter_vs_vacuum_frame_branch_test",
+  "branch_id": "hybrid_projection_matter_vacuum",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_u_vac_from_vacuum_ontology",
+    "derive_physical_frame_for_accel_gradient"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:00.355914+00:00",
+  "description": "Hybrid projection (P_vac a_m) is deferred until both u_m and u_vac are independently defined. It must not be used to patch failures of either branch.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

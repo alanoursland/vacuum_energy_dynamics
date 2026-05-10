@@ -1,0 +1,44 @@
+{
+  "derivation_id": "tensor_action_positive_energy_proxy",
+  "inputs": [
+    {
+      "srepr": "Symbol('hdot_plus', positive=True, real=True)",
+      "latex": "\\dot{h}_{plus}"
+    },
+    {
+      "srepr": "Symbol('hdot_cross', positive=True, real=True)",
+      "latex": "\\dot{h}_{cross}"
+    },
+    {
+      "srepr": "Symbol('grad_plus', positive=True, real=True)",
+      "latex": "grad_{plus}"
+    },
+    {
+      "srepr": "Symbol('grad_cross', positive=True, real=True)",
+      "latex": "grad_{cross}"
+    },
+    {
+      "srepr": "Symbol('K_T', positive=True, real=True)",
+      "latex": "K_{T}"
+    },
+    {
+      "srepr": "Symbol('c', positive=True, real=True)",
+      "latex": "c"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Rational(1, 2), Symbol('K_T', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Add(Mul(Pow(Symbol('c', positive=True, real=True), Integer(2)), Add(Pow(Symbol('grad_cross', positive=True, real=True), Integer(2)), Pow(Symbol('grad_plus', positive=True, real=True), Integer(2)))), Pow(Symbol('hdot_cross', positive=True, real=True), Integer(2)), Pow(Symbol('hdot_plus', positive=True, real=True), Integer(2))))",
+    "latex": "\\frac{K_{T} \\left(c^{2} \\left(grad_{cross}^{2} + grad_{plus}^{2}\\right) + \\dot{h}_{cross}^{2} + \\dot{h}_{plus}^{2}\\right)}{2 c^{2}}"
+  },
+  "method": "hamiltonian_from_quadratic_tensor_action",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:03.351014+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "hamiltonian_proxy",
+  "superseded_by": null,
+  "is_placeholder": false
+}

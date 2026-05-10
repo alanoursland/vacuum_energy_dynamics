@@ -1,0 +1,31 @@
+{
+  "route_id": "identically_divergence_free_candidate_route_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_divergence_safety",
+  "name": "Identically divergence-free correction tensor",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "nabla_mu H^{mu nu} = 0 by constructed mathematical identity",
+    "identity is real and not asserted by Bianchi analogy"
+  ],
+  "required_obligations": [
+    "derive_H_curv_divergence_safety_route_19",
+    "derive_H_exch_divergence_safety_route_19",
+    "derive_divergence_safe_matter_separation_19",
+    "derive_divergence_safe_mass_neutrality_19",
+    "derive_divergence_safe_scalar_neutrality_19",
+    "derive_divergence_safe_coefficient_origin_19"
+  ],
+  "created_at": "2026-05-10T17:23:07.572321+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

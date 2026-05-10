@@ -1,0 +1,29 @@
+{
+  "route_id": "gauge_structure_completion_route",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_structure_requirements",
+  "name": "Gauge structure completion route for covariant parent",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "W_i gauge transformation is derived",
+    "gauge-invariant observable set is established",
+    "coordinate recombination map is derived"
+  ],
+  "required_obligations": [
+    "derive_G4_W_i_gauge_transformation",
+    "derive_G7_gauge_invariant_observable_set",
+    "derive_G8_coordinate_recombination_map"
+  ],
+  "created_at": "2026-05-10T17:19:19.443241+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "e_kappa_outside_epsilon_vac_config_provisional",
+  "script_id": "13_vacuum_substance_accounting__candidate_epsilon_kappa_double_counting_check",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Provisional convention: e_kappa is kept outside epsilon_vac_config until the kappa-zeta map is derived. epsilon_vac_config = 1/2 K_zeta (zeta-zeta_min)^2 + 1/2 L_zeta |grad zeta|^2. K_lock is treated as a diagnostic/constraint target, not physical energy. This convention must be revisited after the kappa-zeta map is derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:13.203315+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_F_zeta_B_s_insertion_law",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_F_zeta_insertion_law",
+  "title": "Derive explicit F_zeta / B_s insertion law",
+  "status": "open",
+  "required_by": [
+    "B_s_metric_insertion_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:24.151712+00:00",
+  "description": "Derive a concrete insertion rule B_s = F_zeta[A, zeta, J_V, Sigma_V, R_V] that does not rely on GR-copying, recovery tuning, or residual overlap.",
+  "metadata": {}
+}

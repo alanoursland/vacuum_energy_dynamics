@@ -1,0 +1,29 @@
+{
+  "claim_id": "sector_bundle_parent_required",
+  "script_id": "08_covariant_parent_structure__candidate_sector_bundle_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The reduced sector bundle (A_constraint, A_rad, kappa, W_i, h_ij^TT) is coherent as an architecture but does not constitute a covariant parent. A parent structure must explain gauge behavior, sector recombination, conservation identities, and source coupling.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:14.655058+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

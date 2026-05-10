@@ -1,0 +1,19 @@
+{
+  "evidence_id": "epsilon_kappa_double_counting_overlap_witness",
+  "evidence_type": "overlap_witness",
+  "script_id": "13_vacuum_substance_accounting__candidate_epsilon_kappa_double_counting_check",
+  "supports": [],
+  "challenges": [
+    "epsilon_kappa_double_counting_forbidden"
+  ],
+  "reason_code": null,
+  "expression": null,
+  "expected": null,
+  "observed": null,
+  "residual": null,
+  "source_records": [],
+  "status": "active",
+  "created_at": "2026-05-10T17:21:13.205314+00:00",
+  "description": "Entry D7 identifies the concrete double-counting witness: E_total = epsilon_vac_config + e_kappa when epsilon already contains the K_lock kappa-mismatch term counts the same trace/volume imbalance twice. This is a real overlap witness that the governance rule epsilon_kappa_double_counting_forbidden is designed to prevent. The provisional convention D9 is adopted to avoid this overlap.",
+  "metadata": {}
+}

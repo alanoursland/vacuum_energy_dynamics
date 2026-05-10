@@ -1,0 +1,27 @@
+{
+  "decision_id": "defer_accel_gradient_branch",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_acceleration_gradient_volume_creation",
+  "branch_id": "acceleration_gradient_volume_creation",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_covariant_acceleration_for_Sigma_V",
+    "derive_static_source_neutrality_for_accel_gradient",
+    "derive_chi_origin_for_Sigma_V"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:57.329941+00:00",
+  "description": "The acceleration-gradient branch is deferred pending definition of u^mu/u_vac^mu, chi-origin, static-source neutrality, and no-overlap.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

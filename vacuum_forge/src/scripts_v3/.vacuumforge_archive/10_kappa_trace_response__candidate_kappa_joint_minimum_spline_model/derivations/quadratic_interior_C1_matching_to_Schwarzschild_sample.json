@@ -1,0 +1,28 @@
+{
+  "derivation_id": "quadratic_interior_C1_matching_to_Schwarzschild_sample",
+  "inputs": [
+    {
+      "srepr": "Symbol('f_int_quadratic')",
+      "latex": "f_{int quadratic}"
+    },
+    {
+      "srepr": "Symbol('f_ext_reciprocal')",
+      "latex": "f_{ext \\mathcal{recipro}}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('a0_a2_solution')",
+    "latex": "a_{0 a2 solution}"
+  },
+  "method": "solve f_int(R)=f_ext(R) and f_int'(R)=f_ext'(R) for a0, a2",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:20:10.590846+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "toy C1 matching only; weight/energy functional not derived",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

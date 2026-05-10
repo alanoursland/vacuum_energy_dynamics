@@ -1,0 +1,19 @@
+{
+  "derivation_id": "A_rad_relaxation_solution_sample",
+  "inputs": [],
+  "output": {
+    "srepr": "Mul(Symbol('A0', positive=True, real=True), exp(Mul(Integer(-1), Symbol('Gamma', positive=True, real=True), Pow(Symbol('mu', positive=True, real=True), Integer(2)), Symbol('tau', positive=True, real=True))))",
+    "latex": "A_{0} e^{- \\Gamma \\mu^{2} \\tau}"
+  },
+  "method": "A_rad relaxation solution A0 * exp(-Gamma*mu^2*tau) for dA_rad/dtau = -Gamma mu^2 A_rad",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:10.899829+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "quadratic potential relaxation toy only",
+  "claim_tier": null,
+  "result_type": "relaxation_solution",
+  "superseded_by": null,
+  "is_placeholder": false
+}

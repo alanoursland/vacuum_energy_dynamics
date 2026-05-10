@@ -1,0 +1,29 @@
+{
+  "claim_id": "kappa_zero_areal_gauge_geometric_condition",
+  "script_id": "01_foundations__candidate_areal_gauge_kappa_condition",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The condition kappa=0 (AB=1 in areal gauge) can be given a gauge-fixed geometric meaning by defining the areal radius from sphere area and expressing the metric in areal-radius form. In arbitrary radial coordinate, this becomes T(R)Q(R) = S'(R)^2. This is a provisional convention pending a full covariant formulation.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:17:53.091193+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "provisional_convention",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

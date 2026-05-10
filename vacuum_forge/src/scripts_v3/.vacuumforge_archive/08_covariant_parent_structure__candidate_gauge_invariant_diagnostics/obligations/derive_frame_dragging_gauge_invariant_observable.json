@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_frame_dragging_gauge_invariant_observable",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_invariant_diagnostics",
+  "title": "Derive gauge-invariant frame-dragging observable from W_i",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:22.431038+00:00",
+  "description": "Construct a gauge-invariant or gauge-fixed frame-dragging diagnostic from W_i, e.g. a curl or rotation of local inertial frames, that separates physical frame-dragging from shift gauge.",
+  "metadata": {}
+}

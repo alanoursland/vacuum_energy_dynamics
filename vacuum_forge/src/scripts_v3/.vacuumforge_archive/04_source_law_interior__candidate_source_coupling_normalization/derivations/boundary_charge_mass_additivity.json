@@ -1,0 +1,40 @@
+{
+  "derivation_id": "boundary_charge_mass_additivity",
+  "inputs": [
+    {
+      "srepr": "Symbol('M1', positive=True, real=True)",
+      "latex": "M_{1}"
+    },
+    {
+      "srepr": "Symbol('M2', positive=True, real=True)",
+      "latex": "M_{2}"
+    },
+    {
+      "srepr": "Symbol('K_A', positive=True, real=True)",
+      "latex": "K_{A}"
+    },
+    {
+      "srepr": "Symbol('G', positive=True, real=True)",
+      "latex": "G"
+    },
+    {
+      "srepr": "Symbol('c', positive=True, real=True)",
+      "latex": "c"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "q(M1+M2) - q(M1) - q(M2)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:37.597989+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

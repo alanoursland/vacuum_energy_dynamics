@@ -1,0 +1,29 @@
+{
+  "claim_id": "inv_vector_sector_structural",
+  "script_id": "11_field_equation_closure__candidate_field_equation_closure_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The vector current sector curl curl W = -(alpha_W/(2K_c)) j_T has structural source/projection/shape support but normalization is not derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:15.658803+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

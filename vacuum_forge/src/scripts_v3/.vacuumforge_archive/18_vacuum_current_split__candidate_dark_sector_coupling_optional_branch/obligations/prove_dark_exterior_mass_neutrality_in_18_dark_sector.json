@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_dark_exterior_mass_neutrality_in_18_dark_sector",
+  "script_id": "18_vacuum_current_split__candidate_dark_sector_coupling_optional_branch",
+  "title": "Prove dark exterior mass neutrality",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:59.614367+00:00",
+  "description": "Ordinary exterior neutrality theorem: dark coupling must not shift M_ext for ordinary exterior sector.",
+  "metadata": {}
+}

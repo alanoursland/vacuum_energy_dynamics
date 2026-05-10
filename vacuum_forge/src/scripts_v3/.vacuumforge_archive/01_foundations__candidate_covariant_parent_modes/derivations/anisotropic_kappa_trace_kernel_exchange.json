@@ -30,11 +30,12 @@
   "status": "derived",
   "metadata": {
     "classification": "trace_free",
-    "summary_status": "derived"
+    "summary_status": "derived",
+    "scope": "anisotropic perturbation test; not a general derivation"
   },
-  "recorded_at": "2026-05-10T02:22:56.109328+00:00",
+  "recorded_at": "2026-05-10T17:17:49.339878+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
+  "record_kind": "diagnostic_example",
   "scope": null,
   "claim_tier": null,
   "result_type": null,

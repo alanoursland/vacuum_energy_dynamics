@@ -1,0 +1,25 @@
+{
+  "claim_id": "no_recovery_smuggling_C_W",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_global_rotation_mode",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "C_W and C_b must not be chosen to reproduce Lense-Thirring frame dragging. Matching to GR is a downstream test, not a construction rule for the global rotation boundary problem.",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:40.676101+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

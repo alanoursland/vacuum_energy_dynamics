@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_explicit_V_operator_for_volume_exchange_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_volume_exchange_stiffness_ratio_origin",
+  "title": "Derive explicit V[A,B_s,zeta] volume-exchange operator",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:48.264015+00:00",
+  "description": "Write V[A,B_s,zeta] explicitly such that it fixes c_x/c_s or a/b before recovery checks, without zeta double-counting as both companion and independent residual trace, and preserving boundary neutrality.",
+  "metadata": {}
+}

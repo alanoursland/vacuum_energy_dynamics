@@ -1,0 +1,29 @@
+{
+  "claim_id": "kappa_best_interpretation_constrained_trace_response",
+  "script_id": "10_kappa_trace_response__candidate_kappa_gauge_vs_physical_trace",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Kappa is best interpreted as a constrained non-propagating trace response: physical inside matter, projected out in the exterior, with no independent scalar radiation channel. This interpretation requires a parent constraint identity.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:54.274986+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

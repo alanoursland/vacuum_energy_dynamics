@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_source_separation_theorem_19_roles",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
+  "title": "Derive ordinary matter source separation theorem",
+  "status": "open",
+  "required_by": [
+    "parent_correction_tensor_insertion_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:02.901348+00:00",
+  "description": "Show that H_curv and H_exch do not reroute ordinary T_mu_nu or double-count matter sources. CT13 requirement.",
+  "metadata": {}
+}

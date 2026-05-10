@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_boundary_mass_preservation_theorem_12",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_exclusion_constraints",
+  "title": "Derive boundary mass preservation theorem",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:35.632634+00:00",
+  "description": "Show that kappa/boundary relaxation cannot change the exterior A-sector mass flux. delta M_ext|kappa_relaxation = 0 must be established as a theorem, not an assumption.",
+  "metadata": {}
+}

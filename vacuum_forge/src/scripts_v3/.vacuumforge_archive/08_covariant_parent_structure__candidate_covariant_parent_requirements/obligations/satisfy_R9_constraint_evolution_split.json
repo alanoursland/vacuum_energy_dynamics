@@ -1,0 +1,13 @@
+{
+  "obligation_id": "satisfy_R9_constraint_evolution_split",
+  "script_id": "08_covariant_parent_structure__candidate_covariant_parent_requirements",
+  "title": "R9: Derive principled constraint/evolution split from parent",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:16.247401+00:00",
+  "description": "The parent must supply a principled decomposition into constraints and evolution equations for all sectors.",
+  "metadata": {}
+}

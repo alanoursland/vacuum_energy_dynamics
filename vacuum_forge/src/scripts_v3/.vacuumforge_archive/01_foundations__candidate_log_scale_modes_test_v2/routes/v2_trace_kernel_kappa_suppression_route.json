@@ -1,0 +1,23 @@
+{
+  "route_id": "v2_trace_kernel_kappa_suppression_route",
+  "script_id": "01_foundations__candidate_log_scale_modes_test_v2",
+  "name": "Structural trace-kernel exchange suppresses kappa (Case B)",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [],
+  "required_obligations": [
+    "v2_derive_covariant_kappa_suppression_law"
+  ],
+  "created_at": "2026-05-10T17:17:47.772510+00:00",
+  "description": "Pre-mode exchange in the trace kernel of the 3+1 projection derives J_kappa=0 non-tautologically. Toy energy equilibrium then gives kappa=0, AB=1, gamma_v=1. Physical source law open.",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

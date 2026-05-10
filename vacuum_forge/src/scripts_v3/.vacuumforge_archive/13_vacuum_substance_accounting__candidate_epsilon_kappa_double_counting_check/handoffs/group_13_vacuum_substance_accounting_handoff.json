@@ -1,0 +1,17 @@
+{
+  "handoff_id": "group_13_vacuum_substance_accounting_handoff",
+  "script_id": "13_vacuum_substance_accounting__candidate_epsilon_kappa_double_counting_check",
+  "source_record_ref": "",
+  "imported_record_refs": [
+    "claim:epsilon_kappa_double_counting_forbidden",
+    "claim:epsilon_kappa_hybrid_provisional_convention",
+    "evidence:epsilon_kappa_double_counting_overlap_witness",
+    "obligation:derive_kappa_zeta_map_for_unified_convention",
+    "derivation:epsilon_kappa_double_counting_check_marker"
+  ],
+  "imported_as": "summary_claim",
+  "status": "candidate_route",
+  "created_at": "2026-05-10T17:21:13.206314+00:00",
+  "description": "Group 13 outputs: (1) zeta=ln sqrt(gamma) as leading geometric vacuum-configuration candidate; (2) trace/TT geometric split with delta zeta|TT=0 at linear order; (3) scalar conversion-not-damping policy; (4) binary-radiation safety filter (TT-only, no Box zeta/kappa); (5) boundary no-exterior-charge theorem target (Q_volume=0, F_zeta(R+)=0); (6) J_v class constraints (absent, compact, constrained, or causal); (7) parent balance skeleton u^mu nabla_mu epsilon + nabla_mu J_v = Sigma_exchange - Gamma_relax; (8) minimal epsilon_vac_config scaffold (zeta displacement + gradient terms); (9) provisional double-counting convention: e_kappa outside epsilon_vac_config.",
+  "metadata": {}
+}

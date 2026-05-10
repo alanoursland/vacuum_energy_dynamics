@@ -1,0 +1,28 @@
+{
+  "derivation_id": "gradient_flow_kappa_energy_derivative_sample",
+  "inputs": [
+    {
+      "srepr": "Mul(Rational(1, 2), Symbol('K_k', positive=True, real=True), Pow(Add(Symbol('kappa', positive=True, real=True), Mul(Integer(-1), Symbol('kappa_min', positive=True, real=True))), Integer(2)))",
+      "latex": "\\frac{K_{k} \\left(\\kappa - \\kappa_{min}\\right)^{2}}{2}"
+    },
+    {
+      "srepr": "Mul(Integer(-1), Rational(1, 2), Symbol('K_k', positive=True, real=True), Symbol('mu_k', positive=True, real=True), Add(Mul(Integer(2), Symbol('kappa', positive=True, real=True)), Mul(Integer(-1), Integer(2), Symbol('kappa_min', positive=True, real=True))))",
+      "latex": "- \\frac{K_{k} \\mu_{k} \\left(2 \\kappa - 2 \\kappa_{min}\\right)}{2}"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Integer(-1), Pow(Symbol('K_k', positive=True, real=True), Integer(2)), Symbol('mu_k', positive=True, real=True), Pow(Add(Symbol('kappa', positive=True, real=True), Mul(Integer(-1), Symbol('kappa_min', positive=True, real=True))), Integer(2)))",
+    "latex": "- K_{k}^{2} \\mu_{k} \\left(\\kappa - \\kappa_{min}\\right)^{2}"
+  },
+  "method": "compute dE/dt = (dE/dkappa)(kappa_dot) for gradient-flow law",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:20:02.878912+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "quadratic minimum; mu_k and K_k are toy parameters not derived from action",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

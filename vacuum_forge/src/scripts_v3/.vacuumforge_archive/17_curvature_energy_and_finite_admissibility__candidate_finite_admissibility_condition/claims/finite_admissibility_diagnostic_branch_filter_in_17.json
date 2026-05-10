@@ -1,0 +1,29 @@
+{
+  "claim_id": "finite_admissibility_diagnostic_branch_filter_in_17",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_finite_admissibility_condition",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Finite admissibility can currently be stated only as a diagnostic / branch-filter condition, not as a dynamical avoidance theorem.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:39.479581+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "derivation_id": "breathing_transverse_but_not_traceless",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('psi', real=True), Integer(0), Integer(0)], [Integer(0), Symbol('psi', real=True), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}\\psi & 0 & 0\\\\0 & \\psi & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Integer(0)], [Integer(0)], [Symbol('k', real=True)]])",
+      "latex": "\\left[\\begin{matrix}0\\\\0\\\\k\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Integer(0)], [Mul(Integer(2), Symbol('psi', real=True))]])",
+    "latex": "\\left[\\begin{matrix}0\\\\2 \\psi\\end{matrix}\\right]"
+  },
+  "method": "transversality_and_trace_check_breathing",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:48.360672+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

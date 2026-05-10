@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_global_boundary_normalization",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_boundary_value_problem",
+  "title": "Derive global boundary normalization",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:42.374086+00:00",
+  "description": "The exterior dipole ansatz W_phi ~ J sin(theta)/r^2 is shape-correct but the normalization C_b (and therefore C_J, C_W) is missing. C_b must be derived from the vector action and source model.",
+  "metadata": {}
+}

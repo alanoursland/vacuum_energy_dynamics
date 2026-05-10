@@ -1,0 +1,24 @@
+{
+  "derivation_id": "tt_wave_dispersion_coefficient_plus",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('H_plus', positive=True, real=True), cos(Add(Mul(Symbol('k', positive=True, real=True), Symbol('z', positive=True, real=True)), Mul(Integer(-1), Symbol('omega', positive=True, real=True), Symbol('t', positive=True, real=True)))))",
+      "latex": "H_{plus} \\cos{\\left(k z - \\omega t \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Pow(Symbol('k', positive=True, real=True), Integer(2)), Mul(Integer(-1), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Pow(Symbol('omega', positive=True, real=True), Integer(2))))",
+    "latex": "k^{2} - \\frac{\\omega^{2}}{c^{2}}"
+  },
+  "method": "wave_operator_divided_by_amplitude_plus",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:51.732254+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

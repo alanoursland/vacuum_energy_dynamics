@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_Sigma_V_source_law_in_15",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_exchange_continuity_law_for_volume",
+  "title": "Derive Sigma_V source creation law",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:08.106849+00:00",
+  "description": "Sigma_V must be independently defined with a frame, projection, and coefficient origin before exchange continuity becomes a real law.",
+  "metadata": {}
+}

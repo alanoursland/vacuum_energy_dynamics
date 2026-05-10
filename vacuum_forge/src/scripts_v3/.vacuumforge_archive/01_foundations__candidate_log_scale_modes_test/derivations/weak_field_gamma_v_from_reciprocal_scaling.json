@@ -1,0 +1,28 @@
+{
+  "derivation_id": "weak_field_gamma_v_from_reciprocal_scaling",
+  "inputs": [
+    {
+      "srepr": "exp(Mul(Symbol('Phi', nonzero=True, real=True), Pow(Symbol('c', nonzero=True, real=True), Integer(-2))))",
+      "latex": "e^{\\frac{\\Phi}{c^{2}}}"
+    },
+    {
+      "srepr": "exp(Mul(Integer(-1), Symbol('Phi', nonzero=True, real=True), Pow(Symbol('c', nonzero=True, real=True), Integer(-2)), Symbol('gamma_v', nonzero=True, real=True)))",
+      "latex": "e^{- \\frac{\\Phi \\gamma_{v}}{c^{2}}}"
+    }
+  ],
+  "output": {
+    "srepr": "Equality(Mul(Symbol('Phi', nonzero=True, real=True), Pow(Symbol('c', nonzero=True, real=True), Integer(-2)), Add(Integer(1), Mul(Integer(-1), Symbol('gamma_v', nonzero=True, real=True)))), Integer(0))",
+    "latex": "\\frac{\\Phi \\left(1 - \\gamma_{v}\\right)}{c^{2}} = 0"
+  },
+  "method": "log(A_ansatz*B_ansatz) = 0 under AB=1",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:17:39.746159+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "weak-field ansatz only; gamma_v not derived from source law",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

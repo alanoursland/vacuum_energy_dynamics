@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_scalar_constraint_propagation_reduced",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_reduced_implications",
+  "title": "Derive continuity-compatible scalar constraint propagation (R5)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:39.512599+00:00",
+  "description": "Show that partial_t C_A[A,rho] follows from partial_t rho + div j_L = 0. This is the most critical missing reduced implication for the parent identity.",
+  "metadata": {}
+}

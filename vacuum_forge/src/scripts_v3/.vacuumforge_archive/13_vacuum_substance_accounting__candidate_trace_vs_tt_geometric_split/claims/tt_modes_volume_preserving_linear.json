@@ -1,0 +1,29 @@
+{
+  "claim_id": "tt_modes_volume_preserving_linear",
+  "script_id": "13_vacuum_substance_accounting__candidate_trace_vs_tt_geometric_split",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "TT perturbations are trace-free (gamma^ij h_ij^TT = 0), hence delta zeta|TT = 0 at linear order. This is a candidate basis for TT-only far-zone radiation. The nonlinear/covariant extension remains an open theorem target.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:00.173425+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

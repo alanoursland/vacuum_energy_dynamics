@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_mass_interface_flux_normalization",
+  "script_id": "02_mechanics__candidate_shear_profile_source_law",
+  "title": "Derive mass/interface flux normalization 4\u03c0r\u00b2s'=8\u03c0GM/c\u00b2",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:01.618408+00:00",
+  "description": "Explain why the source/interface flux is fixed by mass M as 8\u03c0GM/c\u00b2. This is currently imported as a normalization assumption, not derived.",
+  "metadata": {}
+}

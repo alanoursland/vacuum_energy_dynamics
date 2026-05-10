@@ -1,0 +1,13 @@
+{
+  "obligation_id": "define_J_sub_measure_in_18_J_sub_requirements",
+  "script_id": "18_vacuum_current_split__candidate_J_sub_definition_requirements",
+  "title": "Define J_sub measure",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:53.439474+00:00",
+  "description": "Substrate amount/current measure must be specified; must not shift M_ext.",
+  "metadata": {}
+}

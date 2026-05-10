@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_gauge_mode_projections_for_recombination",
+  "script_id": "08_covariant_parent_structure__candidate_metric_geometric_recombination",
+  "title": "Derive gauge mode projections for metric recombination",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:20.896999+00:00",
+  "description": "Identify which metric components are pure gauge and derive projections that remove them, leaving only physical sector content.",
+  "metadata": {}
+}

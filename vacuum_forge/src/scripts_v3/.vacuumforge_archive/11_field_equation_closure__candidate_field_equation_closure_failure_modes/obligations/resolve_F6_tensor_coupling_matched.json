@@ -1,0 +1,13 @@
+{
+  "obligation_id": "resolve_F6_tensor_coupling_matched",
+  "script_id": "11_field_equation_closure__candidate_field_equation_closure_failure_modes",
+  "title": "Resolve F6: tensor coupling must not be claimed derived when matched",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:30.506677+00:00",
+  "description": "F6 is major: C_T and tensor flux coefficient must be derived from action stiffness. Until then they are marked MATCHED and must not be advertised as derived.",
+  "metadata": {}
+}

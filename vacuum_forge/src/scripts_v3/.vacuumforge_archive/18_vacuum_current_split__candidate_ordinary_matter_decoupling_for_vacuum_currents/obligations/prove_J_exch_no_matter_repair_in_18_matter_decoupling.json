@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_J_exch_no_matter_repair_in_18_matter_decoupling",
+  "script_id": "18_vacuum_current_split__candidate_ordinary_matter_decoupling_for_vacuum_currents",
+  "title": "Prove J_exch no matter repair",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:56.468386+00:00",
+  "description": "J_exch matter decoupling theorem: J_exch must not reroute ordinary matter to fix curvature, boundary, or exchange failure.",
+  "metadata": {}
+}

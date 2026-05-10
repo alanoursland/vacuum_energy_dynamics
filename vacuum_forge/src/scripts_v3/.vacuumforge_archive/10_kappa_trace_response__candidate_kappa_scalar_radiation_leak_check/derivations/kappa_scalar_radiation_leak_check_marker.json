@@ -8,12 +8,12 @@
   "method": "kappa_scalar_radiation_leak_check_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-10T02:24:54.528053+00:00",
+  "recorded_at": "2026-05-10T17:19:57.646956+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
+  "record_kind": "inventory_marker",
   "scope": null,
   "claim_tier": null,
   "result_type": null,
   "superseded_by": null,
-  "is_placeholder": false
+  "is_placeholder": true
 }

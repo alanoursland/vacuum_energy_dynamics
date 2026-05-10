@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_boundary_counterterm_17",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_boundary_and_mass_neutrality",
+  "branch_id": "singularity_avoidance_by_boundary_counterterm",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:45.790527+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

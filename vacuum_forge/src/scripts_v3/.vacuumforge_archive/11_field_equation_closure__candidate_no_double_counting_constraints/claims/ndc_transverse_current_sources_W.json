@@ -1,0 +1,29 @@
+{
+  "claim_id": "ndc_transverse_current_sources_W",
+  "script_id": "11_field_equation_closure__candidate_no_double_counting_constraints",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "C4: source(W_i) = P_T j; P_L j excluded. Frame-dragging/vector response is sourced only by transverse current. Covariant current decomposition is missing.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:20.249764+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

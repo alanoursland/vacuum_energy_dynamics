@@ -1,0 +1,25 @@
+{
+  "decision_id": "defer_scalar_radiation_A_rad_branch",
+  "script_id": "12_parent_identity_and_recombination__candidate_scalar_constraint_not_radiation_identity",
+  "branch_id": "scalar_radiation_A_rad",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_scalar_constraint_propagation_from_continuity_S6"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:42.835572+00:00",
+  "description": "The A_rad ordinary scalar radiation branch is not licensed. The parent identity must derive constraint propagation before any scalar radiation form can be considered.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

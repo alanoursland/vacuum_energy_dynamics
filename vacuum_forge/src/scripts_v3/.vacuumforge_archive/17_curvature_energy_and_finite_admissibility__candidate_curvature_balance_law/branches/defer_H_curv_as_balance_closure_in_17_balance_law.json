@@ -1,0 +1,25 @@
+{
+  "decision_id": "defer_H_curv_as_balance_closure_in_17_balance_law",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_balance_law",
+  "branch_id": "H_curv_as_balance_closure",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "prove_curvature_balance_source_sides_in_17_balance_law"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:44.257541+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

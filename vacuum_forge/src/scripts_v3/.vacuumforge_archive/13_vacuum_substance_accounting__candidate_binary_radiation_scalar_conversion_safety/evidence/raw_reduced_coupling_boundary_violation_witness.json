@@ -1,0 +1,19 @@
+{
+  "evidence_id": "raw_reduced_coupling_boundary_violation_witness",
+  "evidence_type": "boundary_violation",
+  "script_id": "13_vacuum_substance_accounting__candidate_binary_radiation_scalar_conversion_safety",
+  "supports": [],
+  "challenges": [
+    "TT_only_far_zone_radiation_required"
+  ],
+  "reason_code": null,
+  "expression": null,
+  "expected": null,
+  "observed": null,
+  "residual": null,
+  "source_records": [],
+  "status": "active",
+  "created_at": "2026-05-10T17:21:04.888387+00:00",
+  "description": "Entry B4 identifies rho*v dot grad A as a DANGER coupling: if used without proof of conservative bookkeeping, it produces secular orbital damping, violating the TT-only radiation safety requirement. This is an open risk, not a resolved failure.",
+  "metadata": {}
+}

@@ -1,0 +1,28 @@
+{
+  "derivation_id": "scalar_vs_tensor_coupling_comparison",
+  "inputs": [
+    {
+      "srepr": "Mul(Integer(-1), Integer(2), Symbol('G', positive=True, real=True), Symbol('M', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-2)))",
+      "latex": "- \\frac{2 G M}{R c^{2}}"
+    },
+    {
+      "srepr": "Mul(Integer(2), Symbol('G', positive=True, real=True), Symbol('Qdd', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-4)))",
+      "latex": "\\frac{2 G Qdd}{R c^{4}}"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Mul(Integer(-1), Integer(2), Symbol('G', positive=True, real=True), Symbol('M', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-2)))], [Mul(Integer(2), Symbol('G', positive=True, real=True), Symbol('Qdd', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-4)))]])",
+    "latex": "\\left[\\begin{matrix}- \\frac{2 G M}{R c^{2}}\\\\\\frac{2 G Qdd}{R c^{4}}\\end{matrix}\\right]"
+  },
+  "method": "scalar_monopole_vs_tensor_quadrupole_normalization",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:57.424271+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

@@ -1,0 +1,28 @@
+{
+  "route_id": "td5_compact_support_safe_domain_route",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_timelike_domain_for_volume_current",
+  "name": "Compact-support redistribution domain (local u_vac only)",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "J_V is timelike/nonzero only inside compact active region",
+    "zero boundary flux is structural",
+    "no exterior scalar charge is created",
+    "u_vac is not claimed outside the support"
+  ],
+  "required_obligations": [
+    "derive_J_V_timelike_domain_theorem_in_15"
+  ],
+  "created_at": "2026-05-10T17:22:13.084804+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "claim_id": "no_recovery_smuggling_Cb_new_knob",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_boundary_coefficient_from_action",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "C_b is not an independent new free coefficient. It is controlled by alpha_W/K_c and C_shape once the vector action and source model are fixed. Treating C_b as a free boundary knob to match GR is recovery smuggling.",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:44.059071+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

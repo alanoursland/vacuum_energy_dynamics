@@ -1,0 +1,29 @@
+{
+  "claim_id": "near_boundary_deviation_defined_not_predicted",
+  "script_id": "10_kappa_trace_response__candidate_kappa_joint_minimum_energy_functional",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The near-boundary deviation diagnostic delta = f_joint - f_ref is defined but carries no magnitude prediction. Any claim of observability requires derived weights, derived transition width, and an identified observable. Premature observability claims are an open risk.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:12.347833+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "open_risk",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

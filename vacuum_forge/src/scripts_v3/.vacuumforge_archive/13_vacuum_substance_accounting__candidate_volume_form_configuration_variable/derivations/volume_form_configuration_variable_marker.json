@@ -8,12 +8,12 @@
   "method": "volume_form_configuration_variable_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-10T02:25:51.000101+00:00",
+  "recorded_at": "2026-05-10T17:20:58.392440+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
+  "record_kind": "inventory_marker",
   "scope": null,
   "claim_tier": null,
   "result_type": null,
   "superseded_by": null,
-  "is_placeholder": false
+  "is_placeholder": true
 }

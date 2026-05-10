@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_gr_interior_kappa_from_matter_coupling",
+  "script_id": "04_source_law_interior__candidate_gr_residual_as_kappa_response",
+  "title": "Derive interior kappa source from matter coupling, not GR comparison",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:33.777981+00:00",
+  "description": "The GR interior kappa diagnostic shows kappa is nonzero inside matter and vanishes at the boundary. This supports the exterior-only kappa=0 hypothesis but does not derive the mechanism. The source law for interior kappa from matter coupling remains open.",
+  "metadata": {}
+}

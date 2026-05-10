@@ -1,0 +1,20 @@
+{
+  "handoff_id": "group_15_current_subchain_handoff",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_group_15_current_subchain_status_summary",
+  "source_record_ref": "",
+  "imported_record_refs": [
+    "claim:g15c_J_V_subchain_unresolved_bottleneck",
+    "claim:g15c_residual_kill_provisional_convention",
+    "obligation:derive_J_V_physical_flux_law_in_15",
+    "obligation:derive_no_overlap_operator_or_residual_kill_in_15",
+    "obligation:derive_boundary_neutrality_theorem_in_15",
+    "obligation:derive_static_source_neutrality_theorem_in_15",
+    "obligation:derive_J_V_timelike_domain_theorem_in_15",
+    "route:no4_residual_kill_safe_route"
+  ],
+  "imported_as": "summary_claim",
+  "status": "deferred_pending_prerequisites",
+  "created_at": "2026-05-10T17:22:19.480751+00:00",
+  "description": "What the residual-kill and final Group 15 summary scripts may import from the current subchain: the unresolved J_V/O bottleneck, the residual-kill provisional convention, and all open proof obligations.",
+  "metadata": {}
+}

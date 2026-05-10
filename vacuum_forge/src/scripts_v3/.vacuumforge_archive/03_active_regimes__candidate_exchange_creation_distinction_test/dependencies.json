@@ -3,7 +3,7 @@
     "dependency_id": "reduced_action_stationary_solution",
     "upstream_script_id": "02_mechanics__candidate_reduced_exterior_action",
     "upstream_derivation_id": "vf_reduced_action_stationary_solution",
-    "declared_at": "2026-05-10T02:23:24.823571+00:00",
+    "declared_at": "2026-05-10T17:18:18.496483+00:00",
     "allow_superseded": false
   }
 ]

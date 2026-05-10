@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_orthogonality_pairing_for_O",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
+  "title": "Derive orthogonality pairing for O",
+  "status": "open",
+  "required_by": [
+    "neutral_residual_metric_trace_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:28.868671+00:00",
+  "description": "Define the pairing <Trace_B_s, Trace_residual>_O from metric/source/accounting structure, not chosen ad hoc.",
+  "metadata": {}
+}

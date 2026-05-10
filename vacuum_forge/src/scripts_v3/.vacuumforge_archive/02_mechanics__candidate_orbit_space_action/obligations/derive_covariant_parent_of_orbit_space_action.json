@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_parent_of_orbit_space_action",
+  "script_id": "02_mechanics__candidate_orbit_space_action",
+  "title": "Derive covariant parent action for the exact A-action candidate",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:11.763539+00:00",
+  "description": "The exact candidate A-action E_A=\u222b[K_A|\u2207A|\u00b2+beta*rho*A]d\u00b3x is a reduced static spherical toy. Its covariant parent in the full theory is not derived.",
+  "metadata": {}
+}

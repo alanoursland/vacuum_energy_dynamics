@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_scalar_constraint_propagation_C_A",
+  "script_id": "11_field_equation_closure__candidate_parent_identity_template",
+  "title": "Derive scalar constraint propagation C_A (P3)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:28.766696+00:00",
+  "description": "P3 requires an explicit C_A[A,rho] and a continuity-compatible update law showing that A remains a constraint and does not require scalar radiation.",
+  "metadata": {}
+}

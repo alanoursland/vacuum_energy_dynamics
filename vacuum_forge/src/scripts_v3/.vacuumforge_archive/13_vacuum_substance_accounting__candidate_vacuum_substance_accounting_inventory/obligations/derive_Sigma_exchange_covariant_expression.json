@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_Sigma_exchange_covariant_expression",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_substance_accounting_inventory",
+  "title": "Derive covariant expression for Sigma_exchange",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:56.621456+00:00",
+  "description": "Provide a covariant tensor expression for the matter/vacuum-spacetime configuration coupling Sigma_exchange that does not duplicate A-sector mass sources.",
+  "metadata": {}
+}

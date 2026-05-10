@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_Sigma_R_distinction_in_18_J_exch_requirements",
+  "script_id": "18_vacuum_current_split__candidate_J_exch_definition_requirements",
+  "title": "Prove Sigma/R distinction",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:54.948401+00:00",
+  "description": "Sigma_exch and R_exch must have independent definitions. They must not be two names for one hidden tuning mechanism.",
+  "metadata": {}
+}

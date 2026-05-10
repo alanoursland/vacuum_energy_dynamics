@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_source_from_trace_exchange",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vacuum_substance_continuity_identity",
+  "title": "Derive kappa source from trace/volume exchange",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:25.616301+00:00",
+  "description": "The kappa sector source is MISSING from the vacuum-substance continuity picture. Whether kappa couples to pressure, stress trace, or relaxation must be derived.",
+  "metadata": {}
+}

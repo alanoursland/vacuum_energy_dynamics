@@ -1,0 +1,29 @@
+{
+  "claim_id": "P_trace_T_coupling_preferred_survivor",
+  "script_id": "13_vacuum_substance_accounting__candidate_mass_acceleration_gradient_coupling",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "P_trace[T] -> delta zeta is the preferred surviving coupling candidate because it aligns with the trace/TT geometric split. It must not produce far-zone scalar radiation or create extra orbital energy loss beyond TT radiation.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:03.402398+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "differential_closure_operator_inventory_provisional",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_differential_A_spatial_closure_operator_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The differential closure branch survives only if L1, L2 operators and coefficient ratio q = -(alpha2+alpha3)/alpha1 are derived without gamma/AB recovery targets. The minimal Laplacian form is a provisional structural candidate. The branch must defer to action/stiffness or conservation identity if q cannot be derived locally.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:34.115137+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "provisional_convention",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_nonmetric_residual_role_theorem",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_residual_nonmetric_bookkeeping_rule",
+  "title": "Derive non-metric residual role theorem",
+  "status": "open",
+  "required_by": [
+    "nonmetric_residual_bookkeeping_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:27.368684+00:00",
+  "description": "Show that residual zeta/kappa may remain as diagnostic, configuration bookkeeping, or first-order non-radiative relaxation without becoming metric scalar trace, M_ext shift, or exterior scalar charge.",
+  "metadata": {}
+}

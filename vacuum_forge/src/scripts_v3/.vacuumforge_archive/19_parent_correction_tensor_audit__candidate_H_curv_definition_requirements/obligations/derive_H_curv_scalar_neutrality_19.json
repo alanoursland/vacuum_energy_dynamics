@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_H_curv_scalar_neutrality_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_H_curv_definition_requirements",
+  "title": "Derive H_curv scalar trace neutrality",
+  "status": "open",
+  "required_by": [
+    "H_curv_insertion_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:04.465338+00:00",
+  "description": "H_curv must not reopen B_s/F_zeta, residual trace, kappa, or exterior scalar charge (HC15).",
+  "metadata": {}
+}

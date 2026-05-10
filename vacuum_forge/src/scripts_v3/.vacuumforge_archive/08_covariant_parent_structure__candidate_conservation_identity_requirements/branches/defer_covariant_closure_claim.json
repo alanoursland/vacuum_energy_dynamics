@@ -1,0 +1,28 @@
+{
+  "decision_id": "defer_covariant_closure_claim",
+  "script_id": "08_covariant_parent_structure__candidate_conservation_identity_requirements",
+  "branch_id": "covariant_closure_of_parent_field_equations",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_C7_bianchi_like_geometric_identity",
+    "derive_C2_current_conservation_for_W_i",
+    "derive_C3_stress_trace_identity_for_kappa",
+    "derive_C5_constraint_propagation"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:23.913957+00:00",
+  "description": "Covariant closure of the parent field equations is deferred. C2 (W_i), C3 (kappa), C5 (constraint propagation), and C7 (Bianchi) are missing. The reduced program may proceed but must not claim covariant closure.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "no_active_ordinary_source_side_for_J_exch_in_18",
+  "script_id": "18_vacuum_current_split__candidate_exchange_current_source_side_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "No active ordinary-sector source side for J_exch is derived. Sigma/R remain role-level. Zero-net exchange, zero creation, curvature-from-warping, and latent exchange remain the safest ordinary-sector branches.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:58.005379+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

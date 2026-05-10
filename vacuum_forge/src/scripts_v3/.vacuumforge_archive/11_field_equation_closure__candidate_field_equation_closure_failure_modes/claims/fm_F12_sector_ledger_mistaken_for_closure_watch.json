@@ -1,0 +1,29 @@
+{
+  "claim_id": "fm_F12_sector_ledger_mistaken_for_closure_watch",
+  "script_id": "11_field_equation_closure__candidate_field_equation_closure_failure_modes",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "F12 (sector ledger mistaken for closure) is under watch. Closure status is kept MISSING until parent identity and recombination are derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:30.509677+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "open_risk",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

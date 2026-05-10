@@ -1,0 +1,28 @@
+{
+  "route_id": "residual_kill_nonmetric_convention_route",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
+  "name": "Residual kill / non-metric residual convention",
+  "status": "provisional_convention",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "residual zeta/kappa metric trace is killed or non-metric",
+    "no O derived yet",
+    "energy/accounting is not a source reservoir",
+    "boundary safety holds structurally"
+  ],
+  "required_obligations": [
+    "derive_no_overlap_operator_O"
+  ],
+  "created_at": "2026-05-10T17:22:28.870671+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "provisional_convention",
+      "effective_status": "provisional_convention",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

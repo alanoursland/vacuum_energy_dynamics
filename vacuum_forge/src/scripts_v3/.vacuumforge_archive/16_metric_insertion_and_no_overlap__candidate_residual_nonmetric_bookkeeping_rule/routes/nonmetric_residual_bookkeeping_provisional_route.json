@@ -1,0 +1,31 @@
+{
+  "route_id": "nonmetric_residual_bookkeeping_provisional_route",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_residual_nonmetric_bookkeeping_rule",
+  "name": "Non-metric residual bookkeeping (diagnostic / configuration / P_relax)",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "residual is explicitly non-metric",
+    "no M_ext shift from residual",
+    "no exterior scalar charge from residual",
+    "bookkeeping cannot source metric equations",
+    "P_relax is non-radiative and first-order only"
+  ],
+  "required_obligations": [
+    "derive_nonmetric_residual_role_theorem",
+    "derive_P_relax_non_wave_theorem",
+    "derive_kappa_cleanup_theorem"
+  ],
+  "created_at": "2026-05-10T17:22:27.370685+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

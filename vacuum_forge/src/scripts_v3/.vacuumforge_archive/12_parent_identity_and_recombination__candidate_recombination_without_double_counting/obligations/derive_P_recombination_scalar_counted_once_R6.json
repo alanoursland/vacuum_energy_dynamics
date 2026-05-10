@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_P_recombination_scalar_counted_once_R6",
+  "script_id": "12_parent_identity_and_recombination__candidate_recombination_without_double_counting",
+  "title": "Derive explicit scalar accounting rule in recombination map (R6)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:50.168509+00:00",
+  "description": "Show that rho routes to A only and that trace routes to kappa_min only, with no duplication of rho scalar mass response in both A and kappa sectors.",
+  "metadata": {}
+}

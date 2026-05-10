@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_K_T_from_vacuum_action_stiffness",
+  "script_id": "11_field_equation_closure__candidate_closure_minimal_equation_set",
+  "title": "Derive K_T tensor energy flux coefficient from vacuum action stiffness",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:34.157647+00:00",
+  "description": "K_T in F_T ~ K_T <dot h_TT^2> must be derived from vacuum tensor ontology. GR radiation formula must not be copied.",
+  "metadata": {}
+}

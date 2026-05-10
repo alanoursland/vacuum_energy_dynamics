@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_conservation_identity_for_split",
+  "script_id": "08_covariant_parent_structure__candidate_constraint_vs_evolution_split",
+  "title": "Derive conservation identity for sector split",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:17.884388+00:00",
+  "description": "Supply Bianchi-like or continuity identities linking source conservation to the constraint and evolution equations.",
+  "metadata": {}
+}

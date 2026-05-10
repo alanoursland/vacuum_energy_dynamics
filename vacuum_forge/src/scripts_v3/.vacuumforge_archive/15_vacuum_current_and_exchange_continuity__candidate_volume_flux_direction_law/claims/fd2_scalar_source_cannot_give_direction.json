@@ -1,0 +1,29 @@
+{
+  "claim_id": "fd2_scalar_source_cannot_give_direction",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_volume_flux_direction_law",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Sigma_V - R_V supplies divergence strength, not vector direction. The scalar source cannot masquerade as the flux direction of J_V.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:11.373820+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

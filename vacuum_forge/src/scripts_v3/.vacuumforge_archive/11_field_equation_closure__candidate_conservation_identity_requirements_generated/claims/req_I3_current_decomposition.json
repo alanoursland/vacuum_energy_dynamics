@@ -1,0 +1,29 @@
+{
+  "claim_id": "req_I3_current_decomposition",
+  "script_id": "11_field_equation_closure__candidate_conservation_identity_requirements_generated",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "I3: j = P_T j + P_L j with W_i sourced only by P_T j. A covariant current split or gauge-fixed reduced proof is missing.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:23.378739+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

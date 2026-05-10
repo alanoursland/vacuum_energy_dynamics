@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_gradient_current_ab_ratio_origin_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_minimal_gradient_current_ratio_test",
+  "title": "Derive pre-recovery origin of current coefficient ratio a/b",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:43.592057+00:00",
+  "description": "Show that the ratio a/b in J_A^i = a grad^i A + b grad^i B_s is fixed by a field-space metric, source-routing identity, or parent balance, not by gamma_like or AB recovery checks.",
+  "metadata": {}
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_pure_wind_scalar_trace_neutrality_in_18_pure_wind",
+  "script_id": "18_vacuum_current_split__candidate_pure_wind_neutrality_test",
+  "title": "Pure wind scalar trace neutrality",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:51.925483+00:00",
+  "description": "Scalar trace neutrality theorem: J_sub must not source B_s, zeta residual metric trace, or scalar charge.",
+  "metadata": {}
+}

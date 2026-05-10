@@ -1,0 +1,24 @@
+{
+  "derivation_id": "decoupled_plus_cross_euler_lagrange",
+  "inputs": [
+    {
+      "srepr": "Add(Mul(Integer(-1), Rational(1, 2), Symbol('K_T', positive=True, real=True), Add(Pow(Derivative(Function('h_cross')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('z', positive=True, real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('h_plus')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('z', positive=True, real=True), Integer(1))), Integer(2)))), Mul(Rational(1, 2), Symbol('K_T', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Add(Pow(Derivative(Function('h_cross')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('t', positive=True, real=True), Integer(1))), Integer(2)), Pow(Derivative(Function('h_plus')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('t', positive=True, real=True), Integer(1))), Integer(2)))))",
+      "latex": "- \\frac{K_{T} \\left(\\left(\\frac{\\partial}{\\partial z} h_{cross}{\\left(t,z \\right)}\\right)^{2} + \\left(\\frac{\\partial}{\\partial z} h_{plus}{\\left(t,z \\right)}\\right)^{2}\\right)}{2} + \\frac{K_{T} \\left(\\left(\\frac{\\partial}{\\partial t} h_{cross}{\\left(t,z \\right)}\\right)^{2} + \\left(\\frac{\\partial}{\\partial t} h_{plus}{\\left(t,z \\right)}\\right)^{2}\\right)}{2 c^{2}}"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Add(Mul(Symbol('K_T', positive=True, real=True), Derivative(Function('h_plus')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('z', positive=True, real=True), Integer(2)))), Mul(Integer(-1), Symbol('K_T', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Derivative(Function('h_plus')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('t', positive=True, real=True), Integer(2)))))], [Add(Mul(Symbol('K_T', positive=True, real=True), Derivative(Function('h_cross')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('z', positive=True, real=True), Integer(2)))), Mul(Integer(-1), Symbol('K_T', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Derivative(Function('h_cross')(Symbol('t', positive=True, real=True), Symbol('z', positive=True, real=True)), Tuple(Symbol('t', positive=True, real=True), Integer(2)))))]])",
+    "latex": "\\left[\\begin{matrix}K_{T} \\frac{\\partial^{2}}{\\partial z^{2}} h_{plus}{\\left(t,z \\right)} - \\frac{K_{T} \\frac{\\partial^{2}}{\\partial t^{2}} h_{plus}{\\left(t,z \\right)}}{c^{2}}\\\\K_{T} \\frac{\\partial^{2}}{\\partial z^{2}} h_{cross}{\\left(t,z \\right)} - \\frac{K_{T} \\frac{\\partial^{2}}{\\partial t^{2}} h_{cross}{\\left(t,z \\right)}}{c^{2}}\\end{matrix}\\right]"
+  },
+  "method": "euler_lagrange_decoupled_plus_cross_action",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:02.932201+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "euler_lagrange_equation",
+  "superseded_by": null,
+  "is_placeholder": false
+}

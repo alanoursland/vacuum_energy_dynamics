@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_scalar_constraint_propagation_from_continuity_S6",
+  "script_id": "12_parent_identity_and_recombination__candidate_scalar_constraint_not_radiation_identity",
+  "title": "Derive continuity-compatible scalar constraint propagation (S6)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:42.833573+00:00",
+  "description": "Show that partial_t C_A[A,rho] follows from partial_t rho + div j_L = 0 without introducing Box A scalar radiation. This is the key missing scalar piece.",
+  "metadata": {}
+}

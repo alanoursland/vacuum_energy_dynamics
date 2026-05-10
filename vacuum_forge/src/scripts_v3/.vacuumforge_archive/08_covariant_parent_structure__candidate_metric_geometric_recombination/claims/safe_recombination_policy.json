@@ -1,0 +1,29 @@
+{
+  "claim_id": "safe_recombination_policy",
+  "script_id": "08_covariant_parent_structure__candidate_metric_geometric_recombination",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Until parent derivations exist: treat A_constraint as physical only after lapse normalization; treat A_rad as absent or controlled; treat kappa as gauge-aware; treat W_i as provisional; treat h_ij^TT as safest physical sector. Do not claim full metric recombination.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:20.899002+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

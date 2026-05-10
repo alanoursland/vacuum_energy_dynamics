@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_no_overlap_operator_O",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
+  "title": "Derive no-overlap operator O",
+  "status": "open",
+  "required_by": [
+    "neutral_residual_metric_trace_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:28.868671+00:00",
+  "description": "Derive a concrete no-overlap operator O[B_s, zeta_residual/kappa_residual, J_V] = 0 with explicit domain, pairing or projector construction, and boundary safety. Residual-kill and non-metric bookkeeping are not sufficient.",
+  "metadata": {}
+}

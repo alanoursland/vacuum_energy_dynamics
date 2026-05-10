@@ -1,0 +1,25 @@
+{
+  "claim_id": "no_recovery_smuggling_Wi_coefficient",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_current_from_continuity",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "The W_i coefficient alpha_W/K_W must not be chosen to reproduce the Lense-Thirring frame-dragging result. Recovery of GR precession is a downstream test, not a construction rule.",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:28.756305+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "derivation_id": "interior_A_newtonian_weak_field_match",
+  "inputs": [
+    {
+      "srepr": "Add(Mul(Integer(-1), Integer(4), pi, Symbol('G', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(2)), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Symbol('rho0', positive=True, real=True)), Mul(Rational(4, 3), pi, Symbol('G', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)), Pow(Symbol('r', positive=True, real=True), Integer(2)), Symbol('rho0', positive=True, real=True)), Integer(1))",
+      "latex": "- \\frac{4 \\pi G R^{2} \\rho_{0}}{c^{2}} + \\frac{4 \\pi G r^{2} \\rho_{0}}{3 c^{2}} + 1"
+    },
+    {
+      "srepr": "Symbol('r', positive=True, real=True)",
+      "latex": "r"
+    },
+    {
+      "srepr": "Symbol('R', positive=True, real=True)",
+      "latex": "R"
+    },
+    {
+      "srepr": "Symbol('rho0', positive=True, real=True)",
+      "latex": "\\rho_{0}"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "Phi = c^2/2*(A-1) vs Newtonian_uniform_sphere",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:21.317969+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "compatibility_example",
+  "scope": "weak-field limit, constant density",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

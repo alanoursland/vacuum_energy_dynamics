@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_no_overlap_for_conservation_current_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_conservation_current_coefficient_origin",
+  "title": "Verify no-overlap for conservation-current fixed B_s",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:41.944071+00:00",
+  "description": "Show that after J_A fixes q, the resulting B_s does not overlap the zeta/kappa residual scalar trace. The count-once recombination theorem must hold.",
+  "metadata": {}
+}

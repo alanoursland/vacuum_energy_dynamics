@@ -1,0 +1,32 @@
+{
+  "derivation_id": "precession_coefficient_separation",
+  "inputs": [
+    {
+      "srepr": "Mul(Rational(1, 8), Pow(pi, Integer(-1)), Pow(Symbol('K_c', positive=True, real=True), Integer(-1)), Symbol('alpha_W', positive=True, real=True))",
+      "latex": "\\frac{\\alpha_{W}}{8 \\pi K_{c}}"
+    },
+    {
+      "srepr": "Symbol('C_shape', positive=True, real=True)",
+      "latex": "C_{shape}"
+    },
+    {
+      "srepr": "Symbol('beta_W', positive=True, real=True)",
+      "latex": "\\beta_{W}"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Rational(1, 8), Pow(pi, Integer(-1)), Symbol('C_shape', positive=True, real=True), Pow(Symbol('K_c', positive=True, real=True), Integer(-1)), Symbol('alpha_W', positive=True, real=True), Symbol('beta_W', positive=True, real=True))",
+    "latex": "\\frac{C_{shape} \\alpha_{W} \\beta_{W}}{8 \\pi K_{c}}"
+  },
+  "method": "C_total = beta_W * C_shape * alpha_W/(8*pi*K_c)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:44.056073+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "coefficient_expression",
+  "superseded_by": null,
+  "is_placeholder": false
+}

@@ -1,0 +1,28 @@
+{
+  "derivation_id": "no_radiation_control_static_linear",
+  "inputs": [
+    {
+      "srepr": "Symbol('Q0', real=True)",
+      "latex": "Q_{0}"
+    },
+    {
+      "srepr": "Add(Symbol('Q0', real=True), Mul(Symbol('V', real=True), Symbol('t', real=True)))",
+      "latex": "Q_{0} + V t"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Integer(0)], [Integer(0)]])",
+    "latex": "\\left[\\begin{matrix}0\\\\0\\end{matrix}\\right]"
+  },
+  "method": "time_derivative_no_radiation_controls",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:59.164256+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

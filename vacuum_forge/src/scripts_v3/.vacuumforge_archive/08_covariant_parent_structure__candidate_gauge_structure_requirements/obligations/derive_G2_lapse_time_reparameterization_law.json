@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_G2_lapse_time_reparameterization_law",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_structure_requirements",
+  "title": "G2: Derive lapse/A transformation under time reparameterization",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:19.436729+00:00",
+  "description": "Show how A transforms under time-slicing changes and derive the asymptotic normalization condition A -> 1 at infinity.",
+  "metadata": {}
+}

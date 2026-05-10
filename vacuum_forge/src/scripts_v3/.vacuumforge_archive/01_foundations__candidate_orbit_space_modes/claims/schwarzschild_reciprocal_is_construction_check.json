@@ -1,0 +1,29 @@
+{
+  "claim_id": "schwarzschild_reciprocal_is_construction_check",
+  "script_id": "01_foundations__candidate_orbit_space_modes",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The Schwarzschild exterior satisfies kappa=0 (AB=1) by construction when B=1/A is encoded as an assumption. This is a consistency check against a known solution, not a source-law derivation of kappa suppression.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:17:59.153427+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

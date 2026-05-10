@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_alpha_W_K_c_and_beta_W",
+  "script_id": "11_field_equation_closure__candidate_gr_limit_recovery_audit",
+  "title": "Derive alpha_W/K_c and beta_W (vector coupling coefficients)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:27.150705+00:00",
+  "description": "The vector coupling coefficients alpha_W/K_c and observable coupling beta_W must be derived from vacuum vector stiffness / source coupling. GR Lense-Thirring coefficient must not be imported.",
+  "metadata": {}
+}

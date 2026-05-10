@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_E12_parent_closure_identity",
+  "script_id": "11_field_equation_closure__candidate_closure_minimal_equation_set",
+  "title": "Derive E12: parent closure identity Div E_parent = B_closed + B_relax",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:34.157647+00:00",
+  "description": "E12 is the main missing result. E_parent, B_closed, and B_relax must be defined and derived from vacuum ontology. This identity must imply A constraint propagation, W_i sourcing, h_TT radiation, kappa trace relaxation, exterior mass preservation, and ordinary Sigma_creation = 0.",
+  "metadata": {}
+}

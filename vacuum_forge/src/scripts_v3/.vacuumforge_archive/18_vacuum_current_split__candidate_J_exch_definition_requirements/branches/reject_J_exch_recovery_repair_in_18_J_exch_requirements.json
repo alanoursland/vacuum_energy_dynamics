@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_J_exch_recovery_repair_in_18_J_exch_requirements",
+  "script_id": "18_vacuum_current_split__candidate_J_exch_definition_requirements",
+  "branch_id": "J_exch_recovery_repair",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:54.950397+00:00",
+  "description": "J_exch chosen to pass gamma_like, AB, or exterior matching is forbidden recovery-smuggling.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

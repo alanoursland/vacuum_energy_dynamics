@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_C2_current_conservation_for_W_i",
+  "script_id": "08_covariant_parent_structure__candidate_conservation_identity_requirements",
+  "title": "C2: Derive current conservation identity for W_i source",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:23.907443+00:00",
+  "description": "Derive the relation between W_i source, mass current, angular momentum, and continuity identities so that the vector sector is compatible with source conservation.",
+  "metadata": {}
+}

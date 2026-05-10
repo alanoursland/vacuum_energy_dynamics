@@ -1,0 +1,27 @@
+{
+  "route_id": "no4_residual_kill_safe_route",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_no_overlap_operator_for_volume_current",
+  "name": "Residual-kill / non-metric residual (provisional count-once convention)",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "zeta_residual_metric = 0 after B_s insertion",
+    "kappa_residual_metric = 0 or kappa remains non-metric/diagnostic",
+    "residual-kill or non-metric transition is explicit"
+  ],
+  "required_obligations": [
+    "derive_no_overlap_operator_or_residual_kill_in_15"
+  ],
+  "created_at": "2026-05-10T17:22:17.947764+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

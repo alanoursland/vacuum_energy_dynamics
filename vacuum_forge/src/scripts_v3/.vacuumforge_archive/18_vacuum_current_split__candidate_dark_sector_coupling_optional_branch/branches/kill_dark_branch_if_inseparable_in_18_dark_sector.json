@@ -1,0 +1,27 @@
+{
+  "decision_id": "kill_dark_branch_if_inseparable_in_18_dark_sector",
+  "script_id": "18_vacuum_current_split__candidate_dark_sector_coupling_optional_branch",
+  "branch_id": "dark_sector_inseparable_from_repair",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:59.618367+00:00",
+  "description": "If dark coupling cannot be separated from ordinary repair behavior (DS16), the dark-sector branch should remain absent. BRANCH_KILLED outcome applies if failure is demonstrated.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

@@ -3,7 +3,7 @@
     "dependency_id": "kappa_noninertial_vacuum_curvature_relaxation_marker",
     "upstream_script_id": "10_kappa_trace_response__candidate_kappa_noninertial_vacuum_curvature_relaxation",
     "upstream_derivation_id": "kappa_noninertial_vacuum_curvature_relaxation_marker",
-    "declared_at": "2026-05-10T02:25:00.328449+00:00",
+    "declared_at": "2026-05-10T17:20:03.890904+00:00",
     "allow_superseded": false
   }
 ]

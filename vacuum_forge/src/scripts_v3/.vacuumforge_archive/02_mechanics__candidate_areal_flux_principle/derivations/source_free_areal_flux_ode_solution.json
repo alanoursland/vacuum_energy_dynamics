@@ -1,0 +1,24 @@
+{
+  "derivation_id": "source_free_areal_flux_ode_solution",
+  "inputs": [
+    {
+      "srepr": "Equality(Add(Mul(Pow(Symbol('r', positive=True, real=True), Integer(2)), Derivative(Function('A')(Symbol('r', positive=True, real=True)), Tuple(Symbol('r', positive=True, real=True), Integer(2)))), Mul(Integer(2), Symbol('r', positive=True, real=True), Derivative(Function('A')(Symbol('r', positive=True, real=True)), Tuple(Symbol('r', positive=True, real=True), Integer(1))))), Integer(0))",
+      "latex": "r^{2} \\frac{d^{2}}{d r^{2}} A{\\left(r \\right)} + 2 r \\frac{d}{d r} A{\\left(r \\right)} = 0"
+    }
+  ],
+  "output": {
+    "srepr": "Equality(Function('A')(Symbol('r', positive=True, real=True)), Add(Symbol('C1'), Mul(Symbol('C2'), Pow(Symbol('r', positive=True, real=True), Integer(-1)))))",
+    "latex": "A{\\left(r \\right)} = C_{1} + \\frac{C_{2}}{r}"
+  },
+  "method": "dsolve d/dr(r\u00b2A')=0 for A(r)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:15.303508+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "ode_solution",
+  "superseded_by": null,
+  "is_placeholder": false
+}

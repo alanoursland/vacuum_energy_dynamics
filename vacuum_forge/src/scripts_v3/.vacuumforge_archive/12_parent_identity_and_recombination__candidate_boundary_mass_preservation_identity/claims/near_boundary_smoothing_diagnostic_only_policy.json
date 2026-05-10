@@ -1,0 +1,29 @@
+{
+  "claim_id": "near_boundary_smoothing_diagnostic_only_policy",
+  "script_id": "12_parent_identity_and_recombination__candidate_boundary_mass_preservation_identity",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Near-boundary joint-minimum smoothing is diagnostic only. It may not be used to claim mass change or measurable deviation until weights, sigma, recombination, and observable map are derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:46.027546+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

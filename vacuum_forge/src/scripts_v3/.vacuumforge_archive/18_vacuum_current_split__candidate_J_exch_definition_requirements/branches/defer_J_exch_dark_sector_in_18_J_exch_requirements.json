@@ -1,0 +1,27 @@
+{
+  "decision_id": "defer_J_exch_dark_sector_in_18_J_exch_requirements",
+  "script_id": "18_vacuum_current_split__candidate_J_exch_definition_requirements",
+  "branch_id": "J_exch_dark_sector_coupling",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:54.951397+00:00",
+  "description": "Dark-sector coupling to J_exch remains optional and separated. Must not patch ordinary failure. Deferred pending dark-sector coupling rule.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

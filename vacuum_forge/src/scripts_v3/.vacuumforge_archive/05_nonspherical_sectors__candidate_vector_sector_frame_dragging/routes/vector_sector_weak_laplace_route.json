@@ -1,0 +1,27 @@
+{
+  "route_id": "vector_sector_weak_laplace_route",
+  "script_id": "05_nonspherical_sectors__candidate_vector_sector_frame_dragging",
+  "name": "Weak vector Laplace sector for frame dragging",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "vector W_i sourced by mass current / angular momentum",
+    "exterior satisfies Laplace equation",
+    "no contamination of scalar A-flux"
+  ],
+  "required_obligations": [
+    "derive_vector_sector_normalization"
+  ],
+  "created_at": "2026-05-10T17:18:45.185970+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

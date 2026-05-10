@@ -1,0 +1,30 @@
+{
+  "claim_id": "correction_tensor_role_inventory_informational",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "H_curv and H_exch are correction tensor theorem targets whose roles are inventoried but whose definitions, source/divergence/boundary structures, and insertability remain open obligations.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_source_separation_theorem_19_roles",
+    "derive_mass_neutrality_theorem_19_roles",
+    "derive_scalar_trace_neutrality_theorem_19_roles",
+    "derive_coefficient_origin_19_roles"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:02.911348+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

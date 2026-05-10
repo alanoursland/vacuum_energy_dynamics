@@ -1,0 +1,27 @@
+{
+  "route_id": "A_rad_controlled_fallback_route",
+  "script_id": "07_scalar_constraint_and_radiation_safety__candidate_A_channel_static_dynamic_split",
+  "name": "A_rad controlled fallback route",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "A_rad is present but explicitly damped, absorbed, massive, relaxed, or weakly coupled",
+    "A_constraint long-range response is preserved",
+    "h_ij^TT tensor radiation channel remains active"
+  ],
+  "required_obligations": [
+    "derive_A_rad_suppression_compatible_with_A_constraint"
+  ],
+  "created_at": "2026-05-10T17:19:10.912844+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

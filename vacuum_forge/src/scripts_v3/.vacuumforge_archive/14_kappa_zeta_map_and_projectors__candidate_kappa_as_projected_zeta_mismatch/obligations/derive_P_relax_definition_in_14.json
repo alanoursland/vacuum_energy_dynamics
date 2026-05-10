@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_P_relax_definition_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_kappa_as_projected_zeta_mismatch",
+  "title": "Derive P_relax definition",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:16.408287+00:00",
+  "description": "P_relax must preserve no-wave, no-overshoot kappa behavior and remain first-order. Its relation to Gamma_relax is unspecified.",
+  "metadata": {}
+}

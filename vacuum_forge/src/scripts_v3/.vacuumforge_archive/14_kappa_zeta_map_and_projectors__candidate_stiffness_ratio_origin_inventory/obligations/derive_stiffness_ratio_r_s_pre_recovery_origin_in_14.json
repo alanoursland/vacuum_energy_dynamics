@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_stiffness_ratio_r_s_pre_recovery_origin_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_stiffness_ratio_origin_inventory",
+  "title": "Derive stiffness ratio r_s = c_x/c_s pre-recovery origin",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:40.396083+00:00",
+  "description": "The coupled stiffness variation yields q_action = -(c_x/c_s). The ratio r_s = c_x/c_s must be derived from a pre-recovery principle. Candidate origins: field-space symmetry, canonical normalization of coupled modes, conservation-current identity (div J_A = 0), volume-exchange identity involving zeta, or constrained-variation with structural Lagrange multiplier. Free ratio and recovery-tuned ratio are both rejected. This obligation blocks the action/stiffness route until r_s is derived or the branch moves to conservation-current or volume-exchange route.",
+  "metadata": {}
+}

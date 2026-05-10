@@ -1,0 +1,32 @@
+{
+  "decision_id": "defer_parent_identity_v2_positive_derivation",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_template_v2",
+  "branch_id": "parent_identity_v2_positive_derivation",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_E_parent_definition_and_sector_projections_P2_1",
+    "derive_scalar_constraint_propagation_P2_4",
+    "derive_alpha_W_K_c_parent_normalization_P2_5",
+    "derive_tensor_stiffness_C_T_TT_source_P2_6",
+    "derive_u_mu_lambda_kappa_frame_P2_8",
+    "derive_E_vac_config_relaxation_exchange_P2_9",
+    "derive_P_recombination_scalar_once_P2_12",
+    "derive_P_coeff_action_stiffness_principle_P2_13"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:53.492481+00:00",
+  "description": "No positive parent identity v2 can be derived until all 8 core obligations are satisfied. Template v2 is a scaffold; the branch to a positive parent identity is deferred pending projector derivations, scalar constraint propagation, and E_vac_config definition.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

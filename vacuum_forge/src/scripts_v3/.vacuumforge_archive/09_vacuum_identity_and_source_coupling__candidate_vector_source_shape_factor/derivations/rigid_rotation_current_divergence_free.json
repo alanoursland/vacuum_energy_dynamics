@@ -1,0 +1,24 @@
+{
+  "derivation_id": "rigid_rotation_current_divergence_free",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Mul(Integer(-1), Symbol('Omega', real=True), Symbol('rho', real=True), Symbol('y', real=True))], [Mul(Symbol('Omega', real=True), Symbol('rho', real=True), Symbol('x', real=True))], [Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}- \\Omega \\rho y\\\\\\Omega \\rho x\\\\0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "div(rho*Omega*(-y, x, 0)) for constant rho, Omega",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:45.785057+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "uniform rigid rotation",
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

@@ -3,7 +3,7 @@
     "dependency_id": "no_overlap_operator_for_volume_current_marker",
     "upstream_script_id": "15_vacuum_current_and_exchange_continuity__candidate_no_overlap_operator_for_volume_current",
     "upstream_derivation_id": "no_overlap_operator_for_volume_current_marker",
-    "declared_at": "2026-05-10T02:27:09.073979+00:00",
+    "declared_at": "2026-05-10T17:22:18.894756+00:00",
     "allow_superseded": false
   }
 ]

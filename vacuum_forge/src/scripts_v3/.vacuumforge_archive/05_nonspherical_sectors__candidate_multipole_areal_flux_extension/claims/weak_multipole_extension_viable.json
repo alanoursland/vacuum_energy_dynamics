@@ -1,0 +1,29 @@
+{
+  "claim_id": "weak_multipole_extension_viable",
+  "script_id": "05_nonspherical_sectors__candidate_multipole_areal_flux_extension",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The areal-flux law A = 1 + 2Phi/c^2 extends naturally to weak multipole sources via Newtonian harmonic potentials. Net surface flux measures only the monopole mass. This is a weak-field diagnostic, not a full covariant theory.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:39.674780+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

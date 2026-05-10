@@ -1,0 +1,28 @@
+{
+  "decision_id": "defer_E_vac_config_full_definition_to_group13",
+  "script_id": "12_parent_identity_and_recombination__candidate_vacuum_configuration_energy_variable",
+  "branch_id": "E_vac_config_full_definition",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_epsilon_vac_config_definition_V1",
+    "derive_q_v_J_v_transport_law_V2_V3",
+    "derive_E_vac_config_not_A_sector_separation_V7",
+    "derive_P_recombination_accounting_variable_V9"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:55.055468+00:00",
+  "description": "Full definition of E_vac_config is deferred to Group 13 (vacuum substance accounting). Group 12 has established the constraints and requirements that E_vac_config must satisfy, but the derivation is a Group 13 responsibility.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

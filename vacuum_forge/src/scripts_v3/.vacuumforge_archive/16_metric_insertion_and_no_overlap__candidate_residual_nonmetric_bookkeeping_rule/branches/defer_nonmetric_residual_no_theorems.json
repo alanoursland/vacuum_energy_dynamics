@@ -1,0 +1,27 @@
+{
+  "decision_id": "defer_nonmetric_residual_no_theorems",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_residual_nonmetric_bookkeeping_rule",
+  "branch_id": "nonmetric_residual_bookkeeping",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": "missing_boundary_neutrality_theorem",
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_nonmetric_residual_role_theorem",
+    "derive_P_relax_non_wave_theorem",
+    "derive_kappa_cleanup_theorem"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:27.371685+00:00",
+  "description": "Non-metric residual bookkeeping cannot be licensed because the non-metric role theorem, P_relax non-wave theorem, and kappa cleanup theorem are missing. Diagnostic/bookkeeping roles survive provisionally.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "derivation_id": "amplitude_vs_power_normalization_proxy",
+  "inputs": [
+    {
+      "srepr": "Symbol('Q0', positive=True, real=True)",
+      "latex": "Q_{0}"
+    },
+    {
+      "srepr": "Symbol('Omega', positive=True, real=True)",
+      "latex": "\\Omega"
+    },
+    {
+      "srepr": "Symbol('G', positive=True, real=True)",
+      "latex": "G"
+    },
+    {
+      "srepr": "Symbol('c', positive=True, real=True)",
+      "latex": "c"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Mul(Integer(16), Pow(Symbol('Omega', positive=True, real=True), Integer(4)), Pow(Symbol('Q0', positive=True, real=True), Integer(2)))], [Mul(Rational(64, 5), Symbol('G', positive=True, real=True), Pow(Symbol('Omega', positive=True, real=True), Integer(6)), Pow(Symbol('Q0', positive=True, real=True), Integer(2)), Pow(Symbol('c', positive=True, real=True), Integer(-5)))]])",
+    "latex": "\\left[\\begin{matrix}16 \\Omega^{4} Q_{0}^{2}\\\\\\frac{64 G \\Omega^{6} Q_{0}^{2}}{5 c^{5}}\\end{matrix}\\right]"
+  },
+  "method": "second_third_derivative_amplitude_power_distinction",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:57.422269+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "rotating quadrupole toy; coefficient targets only",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

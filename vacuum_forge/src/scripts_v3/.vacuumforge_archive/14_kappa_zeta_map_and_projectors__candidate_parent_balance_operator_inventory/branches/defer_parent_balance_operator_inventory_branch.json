@@ -1,0 +1,25 @@
+{
+  "decision_id": "defer_parent_balance_operator_inventory_branch",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_parent_balance_operator_inventory",
+  "branch_id": "parent_balance_operator_inventory",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_E_parent_operator_class_fixing_ratio_in_14"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:46.727031+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

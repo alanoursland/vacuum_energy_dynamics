@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_Sigma_V_source_law_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_exchange_continuity_law_for_volume",
+  "title": "Derive Sigma_V source creation law (Group 14 record)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:06.639859+00:00",
+  "description": "Sigma_V must be independently defined with a frame, projection, and coefficient origin before exchange continuity becomes a real law.",
+  "metadata": {}
+}

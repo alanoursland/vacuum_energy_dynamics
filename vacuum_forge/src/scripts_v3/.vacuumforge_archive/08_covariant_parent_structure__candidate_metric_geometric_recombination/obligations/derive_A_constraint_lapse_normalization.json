@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_A_constraint_lapse_normalization",
+  "script_id": "08_covariant_parent_structure__candidate_metric_geometric_recombination",
+  "title": "Derive A_constraint lapse normalization condition from parent",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:20.897998+00:00",
+  "description": "Supply the parent-theory derivation of the asymptotic lapse normalization A_constraint -> 1 at spatial infinity and its constraint nature.",
+  "metadata": {}
+}

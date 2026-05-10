@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_shear_field_equation_from_action",
+  "script_id": "02_mechanics__candidate_shear_profile_source_law",
+  "title": "Derive shear field equation from vacuum action functional",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:01.617406+00:00",
+  "description": "Show that the vacuum configuration functional gives \u2207\u00b2s = 8\u03c0G rho/c\u00b2 for the shear mode, rather than importing this as a reduced toy assumption.",
+  "metadata": {}
+}

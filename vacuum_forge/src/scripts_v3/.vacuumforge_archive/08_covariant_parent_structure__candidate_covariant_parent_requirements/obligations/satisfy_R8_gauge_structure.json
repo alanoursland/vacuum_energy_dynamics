@@ -1,0 +1,13 @@
+{
+  "obligation_id": "satisfy_R8_gauge_structure",
+  "script_id": "08_covariant_parent_structure__candidate_covariant_parent_requirements",
+  "title": "R8: Derive gauge structure from parent theory",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:16.247401+00:00",
+  "description": "The parent must supply gauge freedoms, gauge-invariant diagnostics, and the mapping between coordinate choices.",
+  "metadata": {}
+}

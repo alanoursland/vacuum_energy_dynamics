@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_relaxation_parent_K_kappa",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_reduced_implications",
+  "title": "Derive K_kappa, mu_kappa, chi_kappa, S_trace_effective from parent vacuum minimum (R10)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:39.514600+00:00",
+  "description": "The parent identity must show that trace/pressure shifts kappa_min through S_trace_effective and chi_kappa, with K_kappa from the vacuum minimum structure.",
+  "metadata": {}
+}

@@ -1,0 +1,34 @@
+{
+  "route_id": "divergence_free_interior_neutral_boundary_route_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
+  "name": "Identically divergence-free interior tensor with neutral boundary",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "identity and boundary neutrality both derived",
+    "not Bianchi smoke"
+  ],
+  "required_obligations": [
+    "derive_H_mass_neutrality_theorem_19",
+    "derive_H_no_boundary_counterterm_19",
+    "derive_H_no_exterior_scalar_charge_19",
+    "derive_H_no_far_zone_flux_19",
+    "derive_H_no_shell_source_19",
+    "derive_H_boundary_coefficient_origin_19",
+    "guard_H_no_dark_boundary_patch_19",
+    "guard_H_no_antisingularity_boundary_claim_19",
+    "derive_H_ordinary_matter_boundary_decoupling_19"
+  ],
+  "created_at": "2026-05-10T17:23:10.684300+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

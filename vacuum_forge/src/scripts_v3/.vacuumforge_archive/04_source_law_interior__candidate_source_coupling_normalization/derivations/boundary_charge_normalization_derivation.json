@@ -1,0 +1,28 @@
+{
+  "derivation_id": "boundary_charge_normalization_derivation",
+  "inputs": [
+    {
+      "srepr": "Mul(Integer(8), pi, Symbol('G', positive=True, real=True), Symbol('M', positive=True, real=True), Pow(Symbol('c', positive=True, real=True), Integer(-2)))",
+      "latex": "\\frac{8 \\pi G M}{c^{2}}"
+    },
+    {
+      "srepr": "Symbol('K_A', positive=True, real=True)",
+      "latex": "K_{A}"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "q = K_A * F_target / (2*pi) vs q_target = 4*K_A*G*M/c^2",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:37.543988+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "normalization_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

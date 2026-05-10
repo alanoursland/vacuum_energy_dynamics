@@ -1,0 +1,28 @@
+{
+  "derivation_id": "mass_continuity_1d_expression",
+  "inputs": [
+    {
+      "srepr": "Function('rho')(Symbol('t', real=True), Symbol('x', real=True))",
+      "latex": "\\rho{\\left(t,x \\right)}"
+    },
+    {
+      "srepr": "Function('j')(Symbol('t', real=True), Symbol('x', real=True))",
+      "latex": "j{\\left(t,x \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Derivative(Function('j')(Symbol('t', real=True), Symbol('x', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Derivative(Function('rho')(Symbol('t', real=True), Symbol('x', real=True)), Tuple(Symbol('t', real=True), Integer(1))))",
+    "latex": "\\frac{\\partial}{\\partial x} j{\\left(t,x \\right)} + \\frac{\\partial}{\\partial t} \\rho{\\left(t,x \\right)}"
+  },
+  "method": "symbolic partial_t rho + partial_x j",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:28.752305+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "continuity_expression",
+  "superseded_by": null,
+  "is_placeholder": false
+}

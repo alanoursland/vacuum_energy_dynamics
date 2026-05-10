@@ -1,0 +1,27 @@
+{
+  "decision_id": "defer_B_s_F_zeta_insertion_no_law",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_F_zeta_insertion_law",
+  "branch_id": "B_s_F_zeta_metric_insertion",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": "missing_boundary_neutrality_theorem",
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_F_zeta_B_s_insertion_law",
+    "derive_residual_kill_or_O_for_insertion",
+    "derive_boundary_neutrality_for_B_s_insertion"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:24.154710+00:00",
+  "description": "No concrete F_zeta insertion law was derived. The insertion branch remains open but cannot be licensed without insertion law, residual-kill, and boundary neutrality theorems.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

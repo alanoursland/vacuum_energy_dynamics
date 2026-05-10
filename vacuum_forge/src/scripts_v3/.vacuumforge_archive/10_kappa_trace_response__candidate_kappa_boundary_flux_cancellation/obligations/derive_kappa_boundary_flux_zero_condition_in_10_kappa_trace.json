@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_boundary_flux_zero_condition_in_10_kappa_trace",
+  "script_id": "10_kappa_trace_response__candidate_kappa_boundary_flux_cancellation",
+  "title": "Derive the mechanism enforcing zero exterior boundary flux F_kappa(R+)=0",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:59.440941+00:00",
+  "description": "Static exterior safety requires F_kappa(R+) = 0. The massless 1/r tail gives nonzero flux (C1 * (-4*pi)). Dynamic boundary motion adds further terms. A derivation of the mechanism ensuring zero exterior flux is required.",
+  "metadata": {}
+}

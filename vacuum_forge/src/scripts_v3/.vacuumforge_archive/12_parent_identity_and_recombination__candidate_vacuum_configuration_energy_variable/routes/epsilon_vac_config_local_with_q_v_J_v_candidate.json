@@ -1,0 +1,31 @@
+{
+  "route_id": "epsilon_vac_config_local_with_q_v_J_v_candidate",
+  "script_id": "12_parent_identity_and_recombination__candidate_vacuum_configuration_energy_variable",
+  "name": "Candidate E_vac_config: local epsilon_vac_config with optional q_v/J_v bookkeeping",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "epsilon_vac_config defined with units and measure",
+    "q_v/J_v transport law is causal or constraint-declared",
+    "A-sector flux separated from E_vac_config",
+    "Sigma_creation excluded from E_vac_config exchange",
+    "no coefficient tuning by E_vac_config"
+  ],
+  "required_obligations": [
+    "derive_epsilon_vac_config_definition_V1",
+    "derive_q_v_J_v_transport_law_V2_V3",
+    "derive_E_vac_config_not_A_sector_separation_V7"
+  ],
+  "created_at": "2026-05-10T17:20:55.054468+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_scalar_constraint_propagation_from_continuity",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_exclusion_constraints",
+  "title": "Derive continuity-compatible scalar constraint propagation",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:35.631633+00:00",
+  "description": "Show that the A constraint propagates consistently with source continuity (partial_t rho + div j_L = 0) without introducing Box A radiation.",
+  "metadata": {}
+}

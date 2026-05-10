@@ -1,0 +1,25 @@
+{
+  "decision_id": "defer_ordinary_propagating_scalar_kappa_branch",
+  "script_id": "10_kappa_trace_response__candidate_kappa_gauge_vs_physical_trace",
+  "branch_id": "ordinary_local_propagating_scalar_kappa",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": "missing_boundary_neutrality_theorem",
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_kappa_parent_constraint_projection_in_10_kappa_trace"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:54.274986+00:00",
+  "description": "An ordinary local propagating scalar kappa is generically exterior-unsafe. This branch is deferred pending derivation of a suppression mechanism or constraint projection identity.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

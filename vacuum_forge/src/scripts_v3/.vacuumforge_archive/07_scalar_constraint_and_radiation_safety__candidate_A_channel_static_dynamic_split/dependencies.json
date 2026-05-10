@@ -3,7 +3,7 @@
     "dependency_id": "binary_scalar_guardrail_marker",
     "upstream_script_id": "07_scalar_constraint_and_radiation_safety__candidate_binary_scalar_radiation_guardrail",
     "upstream_derivation_id": "binary_scalar_guardrail_marker",
-    "declared_at": "2026-05-10T02:24:08.437601+00:00",
+    "declared_at": "2026-05-10T17:19:09.978150+00:00",
     "allow_superseded": false
   }
 ]

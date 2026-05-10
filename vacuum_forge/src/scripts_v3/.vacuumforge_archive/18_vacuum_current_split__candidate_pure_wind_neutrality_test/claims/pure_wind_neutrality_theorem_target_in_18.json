@@ -1,0 +1,29 @@
+{
+  "claim_id": "pure_wind_neutrality_theorem_target_in_18",
+  "script_id": "18_vacuum_current_split__candidate_pure_wind_neutrality_test",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Pure wind neutrality is required but not derived. J_sub survives only as neutral substrate-current theorem target. The tangential-flow sample confirms compatibility but is not a J_sub theorem.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:51.926483+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

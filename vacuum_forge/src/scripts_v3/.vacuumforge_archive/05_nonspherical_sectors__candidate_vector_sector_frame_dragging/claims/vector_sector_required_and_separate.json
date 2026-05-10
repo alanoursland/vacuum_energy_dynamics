@@ -1,0 +1,27 @@
+{
+  "claim_id": "vector_sector_required_and_separate",
+  "script_id": "05_nonspherical_sectors__candidate_vector_sector_frame_dragging",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "Scalar A cannot produce g_ti frame-dragging components. A separate vector sector W_i is required, sourced by angular momentum / mass current, and must not contaminate the scalar A-flux mass channel.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_vector_sector_normalization"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:45.184974+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "boundary_volume_mode_no_exterior_charge_theorem_target",
+  "script_id": "13_vacuum_substance_accounting__candidate_boundary_volume_mode_no_exterior_charge",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "If the trace/volume mode zeta is compactly supported or compensated and the boundary flux vanishes, then the exterior volume scalar charge vanishes: Q_volume=0, F_zeta(R+)=0, zeta_ext->0, kappa_ext->0, delta M_ext|volume/kappa=0. This is a theorem target, not a theorem.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:06.655369+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

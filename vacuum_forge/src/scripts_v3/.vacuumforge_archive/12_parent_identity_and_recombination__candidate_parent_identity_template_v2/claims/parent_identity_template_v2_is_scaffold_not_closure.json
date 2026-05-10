@@ -1,0 +1,29 @@
+{
+  "claim_id": "parent_identity_template_v2_is_scaffold_not_closure",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_template_v2",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Parent identity template v2 is a requirements scaffold, not a closure theorem. It defines the structure and gates that a positive parent identity must satisfy, but it does not constitute a derived parent identity. No reduced-sector implication can be claimed as derived from template v2 alone.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:53.491484+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

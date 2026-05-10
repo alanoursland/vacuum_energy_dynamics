@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_P_recombination_definition_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_boundary_projector_for_volume_neutrality",
+  "title": "Derive P_recombination definition for count-once metric assembly",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:19.696259+00:00",
+  "description": "P_recombination must assemble A, zeta, kappa, h_TT, and W_i into the metric once and only once. A_spatial versus zeta/kappa trace volume is unresolved.",
+  "metadata": {}
+}

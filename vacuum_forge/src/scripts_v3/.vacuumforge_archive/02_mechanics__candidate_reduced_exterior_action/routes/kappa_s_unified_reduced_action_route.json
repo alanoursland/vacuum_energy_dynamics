@@ -1,0 +1,25 @@
+{
+  "route_id": "kappa_s_unified_reduced_action_route",
+  "script_id": "02_mechanics__candidate_reduced_exterior_action",
+  "name": "Unified kappa-s reduced action candidate",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [],
+  "required_obligations": [
+    "derive_covariant_parent_of_reduced_action",
+    "derive_kappa_suppression_mechanism",
+    "derive_shear_source_coupling_coefficient_alpha"
+  ],
+  "created_at": "2026-05-10T17:18:03.448809+00:00",
+  "description": "The kappa-suppression plus shear-source reduced action candidate unifies both exterior mechanisms in one toy functional. Requires a covariant parent derivation.",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

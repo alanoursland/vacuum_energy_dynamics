@@ -1,0 +1,28 @@
+{
+  "derivation_id": "vacuum_substance_1d_continuity_expression",
+  "inputs": [
+    {
+      "srepr": "Function('q_v')(Symbol('t', real=True), Symbol('x', real=True))",
+      "latex": "q_{v}{\\left(t,x \\right)}"
+    },
+    {
+      "srepr": "Function('J_v')(Symbol('t', real=True), Symbol('x', real=True))",
+      "latex": "J_{v}{\\left(t,x \\right)}"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Derivative(Function('J_v')(Symbol('t', real=True), Symbol('x', real=True)), Tuple(Symbol('x', real=True), Integer(1))), Derivative(Function('q_v')(Symbol('t', real=True), Symbol('x', real=True)), Tuple(Symbol('t', real=True), Integer(1))))",
+    "latex": "\\frac{\\partial}{\\partial x} J_{v}{\\left(t,x \\right)} + \\frac{\\partial}{\\partial t} q_{v}{\\left(t,x \\right)}"
+  },
+  "method": "symbolic differentiation partial_t q_v + partial_x J_v",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:25.609794+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "continuity_expression",
+  "superseded_by": null,
+  "is_placeholder": false
+}

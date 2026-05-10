@@ -1,0 +1,29 @@
+{
+  "route_id": "kappa_as_projected_zeta_mismatch_route",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_kappa_as_projected_zeta_mismatch",
+  "name": "Kappa as projected zeta mismatch",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "P_trace removes exterior monopole",
+    "P_trace excludes A-sector mass",
+    "P_trace annihilates TT modes",
+    "P_relax remains first-order"
+  ],
+  "required_obligations": [
+    "derive_P_trace_definition_in_14",
+    "derive_exterior_neutrality_theorem_in_14"
+  ],
+  "created_at": "2026-05-10T17:21:16.407287+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "route_id": "covariant_parent_from_sector_bundle_route",
+  "script_id": "08_covariant_parent_structure__candidate_sector_bundle_inventory",
+  "name": "Covariant parent structure from sector bundle",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "parent structure explains all sector behaviors",
+    "gauge freedoms are identified",
+    "conservation identities are derived",
+    "recombination into metric structure is shown"
+  ],
+  "required_obligations": [
+    "derive_parent_explanation_for_A_constraint_elliptic",
+    "derive_parent_explanation_for_A_rad_suppression",
+    "derive_kappa_source_law",
+    "derive_W_i_field_equation",
+    "derive_gauge_structure_from_parent",
+    "derive_conservation_identities_from_parent"
+  ],
+  "created_at": "2026-05-10T17:19:14.656058+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

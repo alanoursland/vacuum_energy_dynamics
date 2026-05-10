@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_parent_identity_for_P0_in_10_kappa_trace",
+  "script_id": "10_kappa_trace_response__candidate_kappa_constraint_projection_identity",
+  "title": "Derive a covariant parent identity from which the zero-charge projection P_0 follows",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:56.052969+00:00",
+  "description": "The projection P_0 S = S - <S>_V removes monopole kappa charge algebraically and is idempotent for fixed support. But it is nonlocal over V and not derived from a covariant parent theory. A conservation law, matching identity, or constraint equation must be derived to license it as a physical source law.",
+  "metadata": {}
+}

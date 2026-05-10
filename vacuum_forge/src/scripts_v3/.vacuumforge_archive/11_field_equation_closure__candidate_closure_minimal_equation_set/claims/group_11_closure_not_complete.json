@@ -1,0 +1,35 @@
+{
+  "claim_id": "group_11_closure_not_complete",
+  "script_id": "11_field_equation_closure__candidate_closure_minimal_equation_set",
+  "claim_kind": "summary_claim",
+  "tier": "constrained",
+  "status": "deferred_pending_prerequisites",
+  "statement": "Group 11 does not license closure of the field-equation system. The minimal equation set is coherent and the A-sector is genuinely reduced-derived, but the parent conservation/recombination identity (E12) remains missing. Vector and tensor coefficients remain matched. Covariant recombination is unfinished.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_E12_parent_closure_identity",
+    "derive_K_T_from_vacuum_action_stiffness",
+    "derive_alpha_W_K_c_and_beta_W",
+    "derive_C_T_tensor_coupling_from_stiffness"
+  ],
+  "source_claim_ids": [
+    "min_E1_A_sector_scalar_constraint",
+    "min_E5_vector_current_response",
+    "min_E6_tensor_radiation_equation",
+    "min_E7_tensor_energy_flux_matched"
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:34.158647+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

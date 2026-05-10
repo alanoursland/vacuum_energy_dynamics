@@ -1,0 +1,35 @@
+{
+  "claim_id": "no_parent_equation_yet_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_equation_insertability_audit",
+  "claim_kind": "summary_claim",
+  "tier": "constrained",
+  "status": "not_insertable_yet",
+  "statement": "No parent correction tensor satisfies all insertability requirements. H_curv and H_exch remain deferred or diagnostic-only. No parent field equation is ready.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_tensor_definition_for_insertability_19",
+    "derive_source_origin_for_insertability_19",
+    "derive_projection_class_for_insertability_19",
+    "derive_divergence_relation_for_insertability_19",
+    "derive_boundary_neutrality_for_insertability_19",
+    "derive_ordinary_matter_separation_for_insertability_19",
+    "derive_M_ext_neutrality_for_insertability_19",
+    "derive_scalar_trace_neutrality_for_insertability_19",
+    "derive_coefficient_origin_for_insertability_19"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:12.176292+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "not_insertable_yet",
+      "effective_status": "not_insertable_yet",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

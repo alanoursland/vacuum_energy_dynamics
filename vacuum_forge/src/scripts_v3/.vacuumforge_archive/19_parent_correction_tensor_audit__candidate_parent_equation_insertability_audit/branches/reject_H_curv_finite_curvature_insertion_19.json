@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_H_curv_finite_curvature_insertion_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_equation_insertability_audit",
+  "branch_id": "H_curv_finite_curvature_parent_insertion",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:12.172292+00:00",
+  "description": "PI17: H_curv inserted to get finite curvature/regular core/bounce rejected by policy.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

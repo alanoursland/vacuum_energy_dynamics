@@ -1,0 +1,27 @@
+{
+  "decision_id": "defer_full_gauge_derived_parent",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_structure_requirements",
+  "branch_id": "gauge_derived_covariant_parent",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_G4_W_i_gauge_transformation",
+    "derive_G7_gauge_invariant_observable_set",
+    "derive_G8_coordinate_recombination_map"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:19.443241+00:00",
+  "description": "The claim to a fully gauge-derived covariant parent is deferred. G4, G7, and G8 are missing. The reduced program may proceed within reduced gauge choices but must not claim a covariant gauge derivation.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

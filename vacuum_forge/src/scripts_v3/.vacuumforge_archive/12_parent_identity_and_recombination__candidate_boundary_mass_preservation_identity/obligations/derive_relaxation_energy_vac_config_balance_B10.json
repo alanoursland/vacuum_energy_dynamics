@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_relaxation_energy_vac_config_balance_B10",
+  "script_id": "12_parent_identity_and_recombination__candidate_boundary_mass_preservation_identity",
+  "title": "Derive vacuum configuration energy balance for Gamma_relax (B10)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:46.027546+00:00",
+  "description": "Energy moved by Gamma_relax must be accounted as Delta E_vac_config with total exterior charge preserved. This requires defining E_vac_config.",
+  "metadata": {}
+}

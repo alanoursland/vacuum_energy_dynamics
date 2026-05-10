@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_Sigma_exchange_from_coupling_candidates",
+  "script_id": "13_vacuum_substance_accounting__candidate_mass_acceleration_gradient_coupling",
+  "title": "Derive Sigma_exchange from surviving coupling candidates",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:03.403397+00:00",
+  "description": "Select and derive Sigma_exchange from the surviving coupling candidates (P_trace[T], nabla_mu(T^munu nabla_nu A), T^munu nabla_mu nabla_nu A, geodesic identity). The chosen expression must pass the binary-radiation safety filter.",
+  "metadata": {}
+}

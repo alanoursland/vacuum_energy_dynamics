@@ -1,0 +1,32 @@
+{
+  "derivation_id": "breathing_orthogonal_to_tt_basis",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('b', real=True), Integer(0), Integer(0)], [Integer(0), Symbol('b', real=True), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}b & 0 & 0\\\\0 & b & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Integer(1), Integer(0), Integer(0)], [Integer(0), Integer(-1), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}1 & 0 & 0\\\\0 & -1 & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Integer(0), Integer(1), Integer(0)], [Integer(1), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}0 & 1 & 0\\\\1 & 0 & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Integer(0)], [Integer(0)]])",
+    "latex": "\\left[\\begin{matrix}0\\\\0\\end{matrix}\\right]"
+  },
+  "method": "frobenius_inner_product_breathing_vs_tt",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:50.025658+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

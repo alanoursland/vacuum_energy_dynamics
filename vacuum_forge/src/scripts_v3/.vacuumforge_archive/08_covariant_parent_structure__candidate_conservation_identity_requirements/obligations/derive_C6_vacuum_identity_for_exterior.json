@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_C6_vacuum_identity_for_exterior",
+  "script_id": "08_covariant_parent_structure__candidate_conservation_identity_requirements",
+  "title": "C6: Derive vacuum identity defining which sectors are active in exterior",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:23.909444+00:00",
+  "description": "Supply a unified vacuum identity stating which sectors may remain active in source-free regions and which must vanish.",
+  "metadata": {}
+}

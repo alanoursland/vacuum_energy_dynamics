@@ -1,0 +1,13 @@
+{
+  "obligation_id": "resolve_F1_decorative_parent_identity",
+  "script_id": "11_field_equation_closure__candidate_field_equation_closure_failure_modes",
+  "title": "Resolve F1: prevent decorative parent identity",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:30.505677+00:00",
+  "description": "F1 is fatal: Div E_parent must not merely rename the GR Bianchi identity. Definitions of E_parent and B_source from vacuum ontology are required, along with explicit reduced-sector implications.",
+  "metadata": {}
+}

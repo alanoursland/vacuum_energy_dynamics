@@ -1,0 +1,26 @@
+{
+  "decision_id": "defer_boundary_leakage_branch",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_boundary_no_overlap_for_volume_current",
+  "branch_id": "J_V_boundary_and_no_overlap_check",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_boundary_neutrality_theorem_in_15",
+    "derive_no_overlap_operator_in_15"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:16.334780+00:00",
+  "description": "Boundary neutrality and no-overlap have not been demonstrated. Current families that leak or double-count will be killed when evidence is available. The branch is deferred pending the theorems.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

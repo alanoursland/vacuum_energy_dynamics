@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_spatial_shear_sector_inventory",
+  "script_id": "05_nonspherical_sectors__candidate_nonspherical_degree_inventory",
+  "title": "Derive spatial shear sector",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:43.477987+00:00",
+  "description": "Trace-free spatial shear has 5 independent components not covered by scalar A. Mechanism and sourcing remain open.",
+  "metadata": {}
+}

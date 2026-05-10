@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_matter_decoupling_curv_17",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_admissibility_object_inventory",
+  "title": "Prove ordinary matter decoupling for curvature admissibility",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:37.752596+00:00",
+  "description": "Curvature admissibility must not modify ordinary matter coupling without a source theorem.",
+  "metadata": {}
+}

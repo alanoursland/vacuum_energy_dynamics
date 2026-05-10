@@ -1,0 +1,29 @@
+{
+  "claim_id": "rk1_residual_kill_provisional_convention",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_residual_kill_rule_for_volume_current",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "If J_V-driven zeta enters B_s, residual zeta/kappa metric trace is killed or made non-metric. This is the cleanest provisional count-once convention. It is not derived and is revisitable if O is derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:21.054738+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

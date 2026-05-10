@@ -1,0 +1,29 @@
+{
+  "claim_id": "sn13_recovery_downstream_static_neutrality",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_static_source_neutrality_for_J_V",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "gamma_like and AB recovery tests must be performed only after static neutrality is structural; they must not be used to tune the static balance.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:14.639792+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

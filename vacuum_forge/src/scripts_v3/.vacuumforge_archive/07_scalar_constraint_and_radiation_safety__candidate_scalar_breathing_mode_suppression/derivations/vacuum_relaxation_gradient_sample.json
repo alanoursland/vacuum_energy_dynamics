@@ -1,0 +1,24 @@
+{
+  "derivation_id": "vacuum_relaxation_gradient_sample",
+  "inputs": [
+    {
+      "srepr": "Mul(Rational(1, 2), Pow(Symbol('mu', positive=True, real=True), Integer(2)), Pow(Function('a')(Symbol('tau', positive=True, real=True)), Integer(2)))",
+      "latex": "\\frac{\\mu^{2} a^{2}{\\left(\\tau \\right)}}{2}"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Pow(Symbol('mu', positive=True, real=True), Integer(2)), Function('a')(Symbol('tau', positive=True, real=True)))",
+    "latex": "\\mu^{2} a{\\left(\\tau \\right)}"
+  },
+  "method": "dE/da for E = (1/2) mu^2 a^2; relaxation law da/dtau = -Gamma mu^2 a",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:06.772853+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "quadratic potential toy only",
+  "claim_tier": null,
+  "result_type": "relaxation_gradient",
+  "superseded_by": null,
+  "is_placeholder": false
+}

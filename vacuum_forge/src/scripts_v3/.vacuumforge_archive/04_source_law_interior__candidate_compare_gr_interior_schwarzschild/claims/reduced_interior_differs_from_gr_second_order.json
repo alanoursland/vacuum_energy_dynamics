@@ -1,0 +1,27 @@
+{
+  "claim_id": "reduced_interior_differs_from_gr_second_order",
+  "script_id": "04_source_law_interior__candidate_compare_gr_interior_schwarzschild",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The reduced constant-density interior A model agrees with the GR interior Schwarzschild solution at the boundary and at first weak-field order, but differs at second order inside matter. The discrepancy is interior-supported and boundary-smooth.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_interior_kappa_from_matter_coupling"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:28.474620+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

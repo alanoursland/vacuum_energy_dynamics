@@ -1,0 +1,33 @@
+{
+  "decision_id": "defer_boundary_mass_neutrality_failure_branch_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
+  "branch_id": "correction_tensor_boundary_mass_neutrality_failure",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_H_mass_neutrality_theorem_19",
+    "derive_H_no_boundary_counterterm_19",
+    "derive_H_no_exterior_scalar_charge_19",
+    "derive_H_no_far_zone_flux_19",
+    "derive_H_no_shell_source_19",
+    "derive_H_boundary_coefficient_origin_19",
+    "guard_H_no_dark_boundary_patch_19",
+    "guard_H_no_antisingularity_boundary_claim_19",
+    "derive_H_ordinary_matter_boundary_decoupling_19"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:10.686301+00:00",
+  "description": "BM22 failure condition: if correction tensors cannot avoid boundary repair or exterior mass shift, they remain deferred or diagnostic-only. Mapped to DEFERRED_PENDING_PREREQUISITES because no contradiction has been demonstrated \u2014 boundary/mass neutrality prerequisites are simply absent.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

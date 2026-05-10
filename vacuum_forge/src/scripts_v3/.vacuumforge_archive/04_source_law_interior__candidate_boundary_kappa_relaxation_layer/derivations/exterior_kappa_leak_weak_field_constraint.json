@@ -1,0 +1,32 @@
+{
+  "derivation_id": "exterior_kappa_leak_weak_field_constraint",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('eps', real=True), Symbol('lambda_k', real=True))",
+      "latex": "eps \\lambda_{k}"
+    },
+    {
+      "srepr": "Mul(Integer(-1), Integer(2), Symbol('eps', real=True))",
+      "latex": "- 2 eps"
+    },
+    {
+      "srepr": "Symbol('eps', real=True)",
+      "latex": "eps"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Mul(Integer(2), Symbol('eps', real=True), Symbol('lambda_k', real=True)), Integer(1))",
+    "latex": "2 eps \\lambda_{k} + 1"
+  },
+  "method": "series A*B to first order in eps with kappa=lambda_k*eps",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:34.948141+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": "weak-field exterior kappa leak constraint",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

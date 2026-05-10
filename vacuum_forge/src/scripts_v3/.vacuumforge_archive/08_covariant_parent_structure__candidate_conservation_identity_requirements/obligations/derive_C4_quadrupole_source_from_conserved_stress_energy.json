@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_C4_quadrupole_source_from_conserved_stress_energy",
+  "script_id": "08_covariant_parent_structure__candidate_conservation_identity_requirements",
+  "title": "C4: Derive quadrupole source for h_ij^TT from conserved stress-energy",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:23.908445+00:00",
+  "description": "Derive the h_ij^TT quadrupole radiation source from conserved stress-energy or vacuum-source identities rather than matching.",
+  "metadata": {}
+}

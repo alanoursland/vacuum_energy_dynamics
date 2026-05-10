@@ -1,0 +1,29 @@
+{
+  "claim_id": "tmpl_P6_kappa_trace_minimum_channel",
+  "script_id": "11_field_equation_closure__candidate_parent_identity_template",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "P6: trace/pressure shifts kappa_min; kappa relaxes first-order toward kappa_min. K_kappa, mu_kappa, chi_kappa, and S_trace_effective are missing.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:28.768691+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

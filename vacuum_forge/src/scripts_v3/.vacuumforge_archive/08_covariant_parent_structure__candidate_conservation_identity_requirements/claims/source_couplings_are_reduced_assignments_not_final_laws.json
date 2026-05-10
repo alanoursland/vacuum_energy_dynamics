@@ -1,0 +1,29 @@
+{
+  "claim_id": "source_couplings_are_reduced_assignments_not_final_laws",
+  "script_id": "08_covariant_parent_structure__candidate_conservation_identity_requirements",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Current source couplings (A_constraint <- rho, W_i <- mass current, kappa <- stress/trace, h_ij^TT <- quadrupole) are reduced-sector assignments, not final parent-theory laws. They must not be claimed as derived until conservation identities C1-C8 are supplied.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:23.912961+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

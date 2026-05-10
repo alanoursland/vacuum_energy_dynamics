@@ -1,0 +1,29 @@
+{
+  "claim_id": "curvature_balance_diagnostic_fallback_in_17",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_balance_law",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Curvature admissibility currently survives only as a diagnostic/branch-filter; no non-decorative balance law can be written until J_curv and source sides are defined.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:44.255539+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

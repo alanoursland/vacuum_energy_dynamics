@@ -1,0 +1,31 @@
+{
+  "route_id": "recovery_downstream_only_route",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_insertion_recovery_audit",
+  "name": "Recovery as downstream test only (anti-smuggling)",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "insertion mechanism is fixed before recovery checks",
+    "no coefficient is chosen to match gamma_like",
+    "no B=1/A construction",
+    "no GR spatial metric copy",
+    "no areal kappa physical promotion",
+    "no recovery-tuned boundary smoothing",
+    "residual-kill not chosen by recovery"
+  ],
+  "required_obligations": [
+    "derive_post_insertion_solutions_for_recovery"
+  ],
+  "created_at": "2026-05-10T17:22:34.528622+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

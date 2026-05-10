@@ -1,0 +1,29 @@
+{
+  "claim_id": "tensor_flux_principle_structural_claim",
+  "script_id": "06_tensor_flux_principle__candidate_tensor_flux_principle",
+  "claim_kind": "summary_claim",
+  "tier": "constrained",
+  "status": "candidate_route",
+  "statement": "The tensor-flux principle organizes the theory into scalar monopole (A-flux) and tensor quadrupole (h_ij^TT) channels. The TT basis, wave equation, and quadrupole projection are confirmed. Coupling normalization, energy flux, and scalar-radiation suppression remain open.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_tensor_coupling_normalization_summary",
+    "derive_tensor_radiation_energy_flux_summary",
+    "verify_no_unwanted_scalar_radiation_summary"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:55.742284+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

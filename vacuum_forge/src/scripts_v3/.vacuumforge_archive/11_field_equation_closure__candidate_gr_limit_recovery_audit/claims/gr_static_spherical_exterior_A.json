@@ -1,0 +1,29 @@
+{
+  "claim_id": "gr_static_spherical_exterior_A",
+  "script_id": "11_field_equation_closure__candidate_gr_limit_recovery_audit",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Static spherical exterior A = 1 - 2GM/(c^2 r) is genuinely reconstructed in the reduced static spherical case via areal flux law.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:27.148704+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

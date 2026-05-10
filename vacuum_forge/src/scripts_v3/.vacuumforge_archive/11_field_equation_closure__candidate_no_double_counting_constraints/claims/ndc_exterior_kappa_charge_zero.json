@@ -1,0 +1,29 @@
+{
+  "claim_id": "ndc_exterior_kappa_charge_zero",
+  "script_id": "11_field_equation_closure__candidate_no_double_counting_constraints",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "C2: Q_kappa = integral S_kappa d^3x = 0. No massless exterior kappa monopole. Projection/boundary identity is missing.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:20.247763+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

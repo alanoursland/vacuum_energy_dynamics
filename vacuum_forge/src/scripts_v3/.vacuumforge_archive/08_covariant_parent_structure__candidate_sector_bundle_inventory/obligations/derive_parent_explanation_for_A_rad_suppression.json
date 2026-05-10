@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_parent_explanation_for_A_rad_suppression",
+  "script_id": "08_covariant_parent_structure__candidate_sector_bundle_inventory",
+  "title": "Derive parent-theory explanation for A_rad suppression",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:14.658059+00:00",
+  "description": "Show from the covariant parent structure why A_rad is absent or suppressed. The mechanism must follow from the parent theory, not be imposed by hand.",
+  "metadata": {}
+}

@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_covariant_kappa_zero_condition",
+  "script_id": "01_foundations__candidate_areal_gauge_kappa_condition",
+  "title": "Derive full covariant or 4D invariant for kappa=0 condition",
+  "status": "open",
+  "required_by": [
+    "kappa_zero_areal_gauge_geometric_condition"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:17:53.092193+00:00",
+  "description": "The areal-gauge geometric construction of kappa=0 is well-defined in spherical symmetry, but it is not a full 4D covariant condition. A covariant generalization is needed before kappa=0 can be used outside the static spherical areal-gauge setting.",
+  "metadata": {}
+}

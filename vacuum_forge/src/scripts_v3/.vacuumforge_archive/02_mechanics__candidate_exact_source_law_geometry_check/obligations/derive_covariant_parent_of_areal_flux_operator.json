@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_parent_of_areal_flux_operator",
+  "script_id": "02_mechanics__candidate_exact_source_law_geometry_check",
+  "title": "Derive covariant geometric parent that reduces to flat areal Laplacian",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:13.673522+00:00",
+  "description": "The diagnostic shows the exact source law uses the flat areal Laplacian \u0394_areal=(1/r\u00b2)d/dr(r\u00b2A'), not the curved spatial Laplacian or orbit-space operator. The covariant geometric principle explaining this is not yet derived.",
+  "metadata": {}
+}

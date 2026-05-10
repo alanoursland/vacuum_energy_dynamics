@@ -8,12 +8,12 @@
   "method": "quadrupole_tensor_flux_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-10T02:23:57.626197+00:00",
+  "recorded_at": "2026-05-10T17:18:54.030388+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
+  "record_kind": "inventory_marker",
   "scope": null,
   "claim_tier": null,
   "result_type": null,
   "superseded_by": null,
-  "is_placeholder": false
+  "is_placeholder": true
 }

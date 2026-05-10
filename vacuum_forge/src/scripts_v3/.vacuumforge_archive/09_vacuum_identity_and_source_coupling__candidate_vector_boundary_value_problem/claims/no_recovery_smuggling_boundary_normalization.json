@@ -1,0 +1,25 @@
+{
+  "claim_id": "no_recovery_smuggling_boundary_normalization",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_boundary_value_problem",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "C_b, C_J, C_W, and C_total = beta_W * C_W must not be set to reproduce the Lense-Thirring precession coefficient. The exterior shape is structurally constrained; the normalization is downstream.",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:42.375089+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

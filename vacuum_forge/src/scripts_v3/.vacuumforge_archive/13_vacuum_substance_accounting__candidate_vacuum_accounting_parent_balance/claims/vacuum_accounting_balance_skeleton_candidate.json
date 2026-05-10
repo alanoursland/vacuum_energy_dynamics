@@ -1,0 +1,29 @@
+{
+  "claim_id": "vacuum_accounting_balance_skeleton_candidate",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_accounting_parent_balance",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The candidate balance skeleton u^mu nabla_mu epsilon_vac_config + nabla_mu J_v^mu = Sigma_exchange - Gamma_relax with Sigma_creation=0, zero J_v exterior flux, Q_volume=0, delta M_ext=0, F_scalar_far=0 is the first concrete vacuum-accounting candidate. It is not derived; all terms require definitions.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:09.733344+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

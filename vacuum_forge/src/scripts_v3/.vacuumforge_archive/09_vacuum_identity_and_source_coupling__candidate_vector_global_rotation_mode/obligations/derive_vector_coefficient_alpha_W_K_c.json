@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_vector_coefficient_alpha_W_K_c",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_global_rotation_mode",
+  "title": "Derive vector coefficient alpha_W / K_c",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:40.675100+00:00",
+  "description": "The far-field coefficient C_W is ultimately controlled by alpha_W/K_c and source geometry. alpha_W/K_c remains missing from the vacuum transport action.",
+  "metadata": {}
+}

@@ -1,0 +1,26 @@
+{
+  "decision_id": "defer_matter_vacuum_frame_branch",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_matter_vs_vacuum_frame_branch_test",
+  "branch_id": "matter_vs_vacuum_frame_branch",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_u_vac_from_vacuum_ontology",
+    "derive_matter_frame_static_safety"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:00.356914+00:00",
+  "description": "Both matter-frame and vacuum-frame branches are deferred pending their respective definitions and static-source neutrality proofs. The next step is to attempt u_vac definition from vacuum ontology.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

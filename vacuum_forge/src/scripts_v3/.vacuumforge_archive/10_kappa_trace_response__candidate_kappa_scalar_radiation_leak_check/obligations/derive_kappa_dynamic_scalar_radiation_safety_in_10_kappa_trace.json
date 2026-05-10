@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_dynamic_scalar_radiation_safety_in_10_kappa_trace",
+  "script_id": "10_kappa_trace_response__candidate_kappa_scalar_radiation_leak_check",
+  "title": "Derive dynamical scalar radiation safety for kappa",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:57.648957+00:00",
+  "description": "Static zero-monopole charge is not sufficient. A time-dependent kappa equation must be shown to be non-radiative dynamically. This requires either elliptic/constrained dynamics, a relaxation law with energy accounting, or a massive suppression with derived scale m_k.",
+  "metadata": {}
+}

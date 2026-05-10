@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_parent_identity_for_no_double_counting",
+  "script_id": "11_field_equation_closure__candidate_no_double_counting_constraints",
+  "title": "Derive parent identity enforcing no-double-counting rules",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:20.250764+00:00",
+  "description": "The no-double-counting constraints C1-C10 require a parent identity explaining why rho sources only A, why trace shifts kappa_min without radiating, why TT stress sources only TT radiation, why currents split cleanly, why boundary smoothing preserves exterior mass, and why Sigma_creation=0 in ordinary closed gravity. Without this, they are safety constraints, not derivations.",
+  "metadata": {}
+}

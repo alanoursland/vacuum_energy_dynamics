@@ -1,0 +1,28 @@
+{
+  "claim_id": "tensor_radiation_flux_scaling_diagnostic",
+  "script_id": "06_tensor_flux_principle__candidate_tensor_radiation_energy_flux",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The TT flux proxy F ~ c^3/(32*pi*G) <hdot\u00b2> and substituting h ~ 2G Qdd/(c^4 R) gives scaling P ~ G Qdddot\u00b2/c^5. This is a scaling diagnostic, not a derivation. Numerical coefficients require action/angular-pattern derivation.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_flux_coefficient_from_action",
+    "compare_angular_pattern_coefficients"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:59.167255+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -33,12 +33,12 @@
   "method": "spatial_shear_inventory",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-10T02:23:47.884519+00:00",
+  "recorded_at": "2026-05-10T17:18:43.473984+00:00",
   "vacuumforge_version": "0.1.0",
   "record_kind": "derivation",
   "scope": null,
   "claim_tier": null,
-  "result_type": null,
+  "result_type": "identity_residual",
   "superseded_by": null,
   "is_placeholder": false
 }

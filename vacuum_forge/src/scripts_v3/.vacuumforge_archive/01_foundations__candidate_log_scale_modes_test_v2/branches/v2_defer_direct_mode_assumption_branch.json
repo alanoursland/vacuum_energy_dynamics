@@ -1,0 +1,25 @@
+{
+  "decision_id": "v2_defer_direct_mode_assumption_branch",
+  "script_id": "01_foundations__candidate_log_scale_modes_test_v2",
+  "branch_id": "direct_mode_assumption_kappa_suppression",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "v2_derive_covariant_kappa_suppression_law"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:17:47.773510+00:00",
+  "description": "The direct delta_kappa=0 route (Case A) is tautological and deferred until a non-tautological physical mechanism is derived.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

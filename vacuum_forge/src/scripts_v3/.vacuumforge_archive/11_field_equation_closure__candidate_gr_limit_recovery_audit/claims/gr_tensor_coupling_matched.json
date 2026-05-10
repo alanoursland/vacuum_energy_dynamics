@@ -1,0 +1,29 @@
+{
+  "claim_id": "gr_tensor_coupling_matched",
+  "script_id": "11_field_equation_closure__candidate_gr_limit_recovery_audit",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Tensor wave coupling Box h_TT = -C_T S_TT has correct target structure. C_T from vacuum ontology is not yet derived. C_T must not be imported as 16*pi*G/c^4 or equivalent.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:27.151705+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "provisional_convention",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

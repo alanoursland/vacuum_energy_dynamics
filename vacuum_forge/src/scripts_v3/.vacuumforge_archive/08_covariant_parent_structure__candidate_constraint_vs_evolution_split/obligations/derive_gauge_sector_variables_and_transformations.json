@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_gauge_sector_variables_and_transformations",
+  "script_id": "08_covariant_parent_structure__candidate_constraint_vs_evolution_split",
+  "title": "Derive gauge sector variables and transformation laws",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:17.883388+00:00",
+  "description": "Identify which degrees of freedom are gauge artifacts, derive their transformation laws, and construct physical gauge-invariant combinations.",
+  "metadata": {}
+}

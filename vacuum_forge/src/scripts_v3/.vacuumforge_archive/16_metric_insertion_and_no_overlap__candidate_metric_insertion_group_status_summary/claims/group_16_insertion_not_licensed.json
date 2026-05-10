@@ -1,0 +1,35 @@
+{
+  "claim_id": "group_16_insertion_not_licensed",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_metric_insertion_group_status_summary",
+  "claim_kind": "summary_claim",
+  "tier": "constrained",
+  "status": "not_insertable_yet",
+  "statement": "Group 16 does not license B_s/F_zeta insertion into the metric sector. The conformal-volume split is structural. B_s-only insertion with residual-kill is provisional convention only. O is unresolved. Boundary safety and recovery are required but not derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_F_zeta_B_s_insertion_law",
+    "derive_residual_kill_or_O_for_insertion",
+    "derive_boundary_neutrality_for_B_s_insertion",
+    "derive_no_overlap_operator_O",
+    "derive_zero_exterior_scalar_charge_theorem",
+    "derive_no_far_zone_scalar_flux_theorem",
+    "derive_shell_avoidance_theorem"
+  ],
+  "source_claim_ids": [
+    "recovery_targets_downstream_only"
+  ],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:36.216609+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "not_insertable_yet",
+      "effective_status": "not_insertable_yet",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

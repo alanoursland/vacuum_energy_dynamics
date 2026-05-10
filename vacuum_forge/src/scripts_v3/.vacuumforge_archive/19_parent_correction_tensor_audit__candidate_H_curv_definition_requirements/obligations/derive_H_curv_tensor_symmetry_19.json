@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_H_curv_tensor_symmetry_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_H_curv_definition_requirements",
+  "title": "Specify H_curv tensor symmetry and rank",
+  "status": "open",
+  "required_by": [
+    "H_curv_insertion_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:04.463339+00:00",
+  "description": "Tensor rank, symmetry, trace behavior, and index placement required (HC10).",
+  "metadata": {}
+}

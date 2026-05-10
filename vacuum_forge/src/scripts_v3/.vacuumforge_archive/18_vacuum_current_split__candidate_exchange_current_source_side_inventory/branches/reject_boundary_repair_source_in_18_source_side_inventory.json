@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_boundary_repair_source_in_18_source_side_inventory",
+  "script_id": "18_vacuum_current_split__candidate_exchange_current_source_side_inventory",
+  "branch_id": "boundary_repair_as_source",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:58.006378+00:00",
+  "description": "Boundary leakage, shell, or scalar tail defining Sigma_exch is a forbidden boundary repair source.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

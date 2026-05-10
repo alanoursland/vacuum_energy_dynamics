@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_parent_identity_for_constraint_evolution_split",
+  "script_id": "11_field_equation_closure__candidate_constraint_vs_evolution_split_generated",
+  "title": "Derive parent identity enforcing constraint/evolution split",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:21.782754+00:00",
+  "description": "A parent identity is required to explain how constraints propagate consistently, why TT modes alone carry ordinary radiation, why scalar trace relaxes but does not radiate, why vector current response is transverse, and how energy/source conservation is maintained. Without this, the split is disciplined but not derived.",
+  "metadata": {}
+}

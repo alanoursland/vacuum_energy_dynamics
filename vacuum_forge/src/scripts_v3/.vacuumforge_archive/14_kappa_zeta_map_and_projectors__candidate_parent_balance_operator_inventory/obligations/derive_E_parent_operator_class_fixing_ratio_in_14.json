@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_E_parent_operator_class_fixing_ratio_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_parent_balance_operator_inventory",
+  "title": "Derive E_parent operator class that fixes coefficient ratio without relocation",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:46.725029+00:00",
+  "description": "Write an explicit E_parent = E_A[A] + E_s[B_s] + E_x[A,B_s] (or volume-exchange extension) that derives the coefficient ratio a/b or c_x/c_s without GR rewrite, decorative balance, or recovery-tuned coefficients.",
+  "metadata": {}
+}

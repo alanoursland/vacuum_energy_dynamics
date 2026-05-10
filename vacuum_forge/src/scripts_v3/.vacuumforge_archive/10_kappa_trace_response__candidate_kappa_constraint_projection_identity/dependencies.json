@@ -3,7 +3,7 @@
     "dependency_id": "kappa_gauge_vs_physical_trace_marker",
     "upstream_script_id": "10_kappa_trace_response__candidate_kappa_gauge_vs_physical_trace",
     "upstream_derivation_id": "kappa_gauge_vs_physical_trace_marker",
-    "declared_at": "2026-05-10T02:24:52.099351+00:00",
+    "declared_at": "2026-05-10T17:19:55.316977+00:00",
     "allow_superseded": false
   }
 ]

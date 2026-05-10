@@ -1,0 +1,24 @@
+{
+  "derivation_id": "gradient_current_zero_curl",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Derivative(Function('chi')(Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('x', real=True), Integer(1)))], [Derivative(Function('chi')(Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('y', real=True), Integer(1)))], [Derivative(Function('chi')(Symbol('x', real=True), Symbol('y', real=True), Symbol('z', real=True)), Tuple(Symbol('z', real=True), Integer(1)))]])",
+      "latex": "\\left[\\begin{matrix}\\frac{\\partial}{\\partial x} \\chi{\\left(x,y,z \\right)}\\\\\\frac{\\partial}{\\partial y} \\chi{\\left(x,y,z \\right)}\\\\\\frac{\\partial}{\\partial z} \\chi{\\left(x,y,z \\right)}\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "ImmutableDenseMatrix([[Integer(0)], [Integer(0)], [Integer(0)]])",
+    "latex": "\\left[\\begin{matrix}0\\\\0\\\\0\\end{matrix}\\right]"
+  },
+  "method": "curl(grad chi) \u2014 gradient current is longitudinal",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:36.798466+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

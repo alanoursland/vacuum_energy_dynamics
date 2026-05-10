@@ -1,0 +1,29 @@
+{
+  "claim_id": "J_v_acausal_coefficient_tuning_forbidden",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_transport_current_constraints",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "J_v as an acausal repair current (J11) or as a coefficient-tuning current (J12) is forbidden. Nonlocality in J_v must be declared as constraint bookkeeping, not physical transport. J_v must not alter A_flux, M_ext, or observable coefficients.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:08.179358+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

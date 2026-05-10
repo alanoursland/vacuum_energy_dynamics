@@ -3,7 +3,7 @@
     "dependency_id": "correction_tensor_boundary_and_mass_neutrality_marker",
     "upstream_script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
     "upstream_derivation_id": "correction_tensor_boundary_and_mass_neutrality_marker",
-    "declared_at": "2026-05-10T02:28:00.702382+00:00",
+    "declared_at": "2026-05-10T17:23:11.584295+00:00",
     "allow_superseded": false
   }
 ]

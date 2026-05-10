@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_G8_coordinate_recombination_map",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_structure_requirements",
+  "title": "G8: Derive coordinate recombination map",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:19.441235+00:00",
+  "description": "Supply a metric/geometric reconstruction rule and gauge conditions for combining A, kappa, W_i, and h_ij^TT into one consistent geometry.",
+  "metadata": {}
+}

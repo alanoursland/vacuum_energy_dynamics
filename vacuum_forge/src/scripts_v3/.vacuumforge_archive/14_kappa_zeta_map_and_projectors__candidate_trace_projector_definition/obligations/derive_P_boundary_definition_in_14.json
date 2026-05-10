@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_P_boundary_definition_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_trace_projector_definition",
+  "title": "Derive P_boundary definition",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:17.981272+00:00",
+  "description": "P_boundary must carry exterior zeta/kappa neutrality, zero boundary flux, zero volume/kappa charge, A-sector mass protection, and shell-source avoidance. Composition law P_boundary P_trace is missing.",
+  "metadata": {}
+}

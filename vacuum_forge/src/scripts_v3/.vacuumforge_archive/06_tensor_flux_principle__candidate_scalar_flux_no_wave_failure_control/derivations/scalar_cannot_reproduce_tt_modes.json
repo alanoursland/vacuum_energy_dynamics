@@ -1,0 +1,28 @@
+{
+  "derivation_id": "scalar_cannot_reproduce_tt_modes",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Mul(Integer(-1), Integer(2), Symbol('psi', real=True)), Integer(0), Integer(0)], [Integer(0), Mul(Integer(-1), Integer(2), Symbol('psi', real=True)), Integer(0)], [Integer(0), Integer(0), Mul(Integer(-1), Integer(2), Symbol('psi', real=True))]])",
+      "latex": "\\left[\\begin{matrix}- 2 \\psi & 0 & 0\\\\0 & - 2 \\psi & 0\\\\0 & 0 & - 2 \\psi\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('h_plus', real=True), Symbol('h_cross', real=True), Integer(0)], [Symbol('h_cross', real=True), Mul(Integer(-1), Symbol('h_plus', real=True)), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}h_{plus} & h_{cross} & 0\\\\h_{cross} & - h_{plus} & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "solve_scalar_eq_TT_for_nontrivial_solution",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:48.356674+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

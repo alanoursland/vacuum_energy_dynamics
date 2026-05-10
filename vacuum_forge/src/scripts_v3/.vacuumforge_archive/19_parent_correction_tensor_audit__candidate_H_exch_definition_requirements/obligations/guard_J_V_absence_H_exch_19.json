@@ -1,0 +1,15 @@
+{
+  "obligation_id": "guard_J_V_absence_H_exch_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_H_exch_definition_requirements",
+  "title": "Guard J_V absence in H_exch",
+  "status": "open",
+  "required_by": [
+    "H_exch_insertion_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:05.993329+00:00",
+  "description": "J_V remains unresolved and cannot be used as H_exch source/current (HE2).",
+  "metadata": {}
+}

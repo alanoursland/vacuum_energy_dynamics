@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_no_overlap_operator_in_15",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_boundary_no_overlap_for_volume_current",
+  "title": "Derive no-overlap operator O[B_s, zeta_residual/kappa_residual, J_V] = 0",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:16.331777+00:00",
+  "description": "The count-once recombination theorem O = 0 is the central missing mechanism. Either the operator must be derived, or residual zeta/kappa metric trace must be killed or made non-metric.",
+  "metadata": {}
+}

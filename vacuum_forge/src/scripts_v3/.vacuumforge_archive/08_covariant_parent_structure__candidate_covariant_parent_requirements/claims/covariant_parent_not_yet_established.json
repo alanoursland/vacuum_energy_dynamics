@@ -1,0 +1,29 @@
+{
+  "claim_id": "covariant_parent_not_yet_established",
+  "script_id": "08_covariant_parent_structure__candidate_covariant_parent_requirements",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The reduced sector program is coherent as an architecture but does not yet constitute a covariant parent theory. R8 (gauge), R10 (recombination), and R11 (conservation identities) are missing. Do not claim covariant closure until these are supplied.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:16.249402+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

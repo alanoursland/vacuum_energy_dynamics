@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_vector_source_identity",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_current_from_continuity",
+  "title": "Derive vector source identity",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:28.756305+00:00",
+  "description": "The identification j_i = rho v_i as the W_i source is motivated by continuity bookkeeping but the full field equation, gauge structure, and normalization are not derived.",
+  "metadata": {}
+}

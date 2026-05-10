@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_global_boundary_normalization",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_curl_energy_field_equation",
+  "title": "Derive global boundary normalization",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:35.219698+00:00",
+  "description": "The full time-dependent transverse/longitudinal current split and the global boundary normalization for the curl-energy vector sector are not yet derived.",
+  "metadata": {}
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "min_E1_A_sector_scalar_constraint",
+  "script_id": "11_field_equation_closure__candidate_closure_minimal_equation_set",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "E1: Delta_areal A = 8*pi*G*rho/c^2 is derived in the reduced static spherical scalar sector. Full nonlinear nonspherical parent equation is missing.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:34.153646+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

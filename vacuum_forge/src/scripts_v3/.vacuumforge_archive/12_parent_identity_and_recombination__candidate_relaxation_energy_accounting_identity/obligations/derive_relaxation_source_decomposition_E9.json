@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_relaxation_source_decomposition_E9",
+  "script_id": "12_parent_identity_and_recombination__candidate_relaxation_energy_accounting_identity",
+  "title": "Derive parent source decomposition for relaxation vs A-sector (E9)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:51.868497+00:00",
+  "description": "Show that trace displacement energy routes to E_vac_config/kappa sector and does not double-count with A-sector exterior mass response. Parent source decomposition required.",
+  "metadata": {}
+}

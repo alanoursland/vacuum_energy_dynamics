@@ -1,0 +1,24 @@
+{
+  "derivation_id": "boundary_source_coupling_flux_relation",
+  "inputs": [
+    {
+      "srepr": "Equality(Add(Mul(Integer(2), Symbol('A_prime_R', real=True), Symbol('K_A', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(2))), Mul(Integer(-1), Symbol('q', positive=True, real=True))), Integer(0))",
+      "latex": "2 A_{prime R} K_{A} R^{2} - q = 0"
+    }
+  ],
+  "output": {
+    "srepr": "Equality(Symbol('F_A'), Mul(Integer(2), pi, Pow(Symbol('K_A', positive=True, real=True), Integer(-1)), Symbol('q', positive=True, real=True)))",
+    "latex": "F_{A} = \\frac{2 \\pi q}{K_{A}}"
+  },
+  "method": "boundary_stationarity",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:23.053861+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "boundary_condition",
+  "superseded_by": null,
+  "is_placeholder": false
+}

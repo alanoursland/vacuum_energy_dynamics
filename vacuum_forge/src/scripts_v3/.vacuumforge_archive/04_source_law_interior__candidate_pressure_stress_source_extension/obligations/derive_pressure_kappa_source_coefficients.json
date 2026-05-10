@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_pressure_kappa_source_coefficients",
+  "script_id": "04_source_law_interior__candidate_pressure_stress_source_extension",
+  "title": "Derive pressure/stress kappa source coefficients (H2)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:36.458951+00:00",
+  "description": "Hypothesis H2 proposes J_k = a*rho*c^2 + b*p as interior kappa source. Coefficients a and b are not derived from matter coupling. The full source law form has not been established.",
+  "metadata": {}
+}

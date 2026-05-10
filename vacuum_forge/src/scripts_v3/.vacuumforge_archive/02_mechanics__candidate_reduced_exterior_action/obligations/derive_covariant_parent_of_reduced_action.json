@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_parent_of_reduced_action",
+  "script_id": "02_mechanics__candidate_reduced_exterior_action",
+  "title": "Derive covariant parent action for reduced kappa-s sector",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:03.446809+00:00",
+  "description": "Find the full covariant action whose static spherical reduction gives K_k|\u2207kappa|\u00b2+M_k\u00b2kappa\u00b2+K_s|\u2207s|\u00b2+alpha*rho*s. Currently only the reduced-sector toy is available.",
+  "metadata": {}
+}

@@ -1,0 +1,29 @@
+{
+  "claim_id": "epsilon_kappa_double_counting_forbidden",
+  "script_id": "13_vacuum_substance_accounting__candidate_epsilon_kappa_double_counting_check",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "E_total = epsilon_vac_config + e_kappa is forbidden when epsilon_vac_config already contains the kappa mismatch energy (D7). The same trace/volume imbalance must not be counted twice. Source response must be routed once by projectors (D8).",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:13.204314+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

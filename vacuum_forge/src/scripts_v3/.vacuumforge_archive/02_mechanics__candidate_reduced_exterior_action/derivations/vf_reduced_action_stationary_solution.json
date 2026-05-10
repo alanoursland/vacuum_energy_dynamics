@@ -14,15 +14,15 @@
     "srepr": "Equality(Symbol('kappa', real=True), Mul(Rational(1, 2), Pow(Symbol('C_kappa', positive=True), Integer(-1)), Symbol('J_k', real=True)))",
     "latex": "\\kappa = \\frac{J_{k}}{2 C_{\\kappa}}"
   },
-  "method": "vacuumforge_source_coupled_energy",
+  "method": "vacuumforge_source_coupled_energy stationary solution",
   "status": "derived",
   "metadata": {
     "sigma_solution": "Eq(sigma, J_s/(2*C_sigma))"
   },
-  "recorded_at": "2026-05-10T02:23:09.958446+00:00",
+  "recorded_at": "2026-05-10T17:18:03.420809+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
-  "scope": null,
+  "record_kind": "sample_derivation",
+  "scope": "algebraic source-coupled energy toy; not covariant field equation",
   "claim_tier": null,
   "result_type": null,
   "superseded_by": null,

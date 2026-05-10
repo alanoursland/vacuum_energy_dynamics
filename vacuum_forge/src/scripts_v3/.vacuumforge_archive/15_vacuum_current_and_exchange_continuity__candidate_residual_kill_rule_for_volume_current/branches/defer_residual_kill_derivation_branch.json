@@ -1,0 +1,25 @@
+{
+  "decision_id": "defer_residual_kill_derivation_branch",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_residual_kill_rule_for_volume_current",
+  "branch_id": "residual_kill_theorem_derivation",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_residual_kill_theorem_or_parent_identity_in_15"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:21.057739+00:00",
+  "description": "Residual-kill has not been derived from O or a parent identity. The convention is used provisionally. Derivation is deferred.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

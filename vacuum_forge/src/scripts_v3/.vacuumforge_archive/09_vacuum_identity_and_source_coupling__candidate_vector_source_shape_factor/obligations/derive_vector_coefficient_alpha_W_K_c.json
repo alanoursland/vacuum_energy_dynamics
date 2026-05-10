@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_vector_coefficient_alpha_W_K_c",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_source_shape_factor",
+  "title": "Derive vector coefficient alpha_W / K_c",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:45.786059+00:00",
+  "description": "The vector sector normalization C_b = C_shape * alpha_W/(8*pi*K_c) requires alpha_W/K_c to be derived from the vacuum transport action. Source geometry (shape factor, J) is now available; the action ratio is not.",
+  "metadata": {}
+}

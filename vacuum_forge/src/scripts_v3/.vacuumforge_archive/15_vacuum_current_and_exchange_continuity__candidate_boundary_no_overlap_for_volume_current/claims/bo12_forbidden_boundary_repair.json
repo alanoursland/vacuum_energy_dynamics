@@ -1,0 +1,29 @@
+{
+  "claim_id": "bo12_forbidden_boundary_repair",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_boundary_no_overlap_for_volume_current",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Choosing boundary counterterms, R_V, or J_V nonlocally to cancel boundary leakage is rejected as a boundary neutrality mechanism in the ordinary branch.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:16.332777+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

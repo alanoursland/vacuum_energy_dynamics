@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_projector_split_for_O",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
+  "title": "Derive projector split P_B, P_R for O",
+  "status": "open",
+  "required_by": [
+    "neutral_residual_metric_trace_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:28.869672+00:00",
+  "description": "Construct actual projectors P_B and P_R satisfying P_B * P_R = 0 with explicit source/domain definitions.",
+  "metadata": {}
+}

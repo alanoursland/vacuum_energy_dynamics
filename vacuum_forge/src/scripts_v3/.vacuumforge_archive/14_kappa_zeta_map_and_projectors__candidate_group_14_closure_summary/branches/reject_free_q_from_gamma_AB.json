@@ -1,0 +1,23 @@
+{
+  "decision_id": "reject_free_q_from_gamma_AB",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_group_14_closure_summary",
+  "branch_id": "free_q_from_gamma_AB",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:05.076873+00:00",
+  "description": "Choosing q from gamma_like or AB is rejected as recovery-tuning.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

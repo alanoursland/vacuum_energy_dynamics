@@ -1,0 +1,29 @@
+{
+  "claim_id": "sn8_exterior_scalar_charge_mandatory_zero",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_static_source_neutrality_for_J_V",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Q_V (net volume charge around static source) must be zero by structure. Any static law that makes independent exterior scalar gravity is rejected.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:14.638794+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

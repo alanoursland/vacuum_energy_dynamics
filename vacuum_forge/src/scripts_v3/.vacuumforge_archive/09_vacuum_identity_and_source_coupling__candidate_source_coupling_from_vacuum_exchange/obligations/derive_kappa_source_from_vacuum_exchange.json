@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_source_from_vacuum_exchange",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_source_coupling_from_vacuum_exchange",
+  "title": "Derive kappa source from vacuum exchange",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:27.094288+00:00",
+  "description": "The kappa trace/interior source has no derivation from the vacuum-exchange balance law. Whether kappa couples to pressure, stress trace, density gradients, relaxation, or creation must be derived.",
+  "metadata": {}
+}

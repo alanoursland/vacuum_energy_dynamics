@@ -1,0 +1,29 @@
+{
+  "claim_id": "volume_exchange_operator_shells_identified",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_minimal_volume_exchange_operator_ansatz",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Five explicit V[A,B_s,zeta] shell classes are identified: algebraic companion, derivative exchange, volume current, source-coupled creation, and relaxation. Each shell forces a zeta companion-vs-residual decision before it can fix q.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:49.740005+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

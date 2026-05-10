@@ -1,0 +1,28 @@
+{
+  "derivation_id": "v2_kappa_zero_AB_one_residual",
+  "inputs": [
+    {
+      "srepr": "Symbol('kappa', real=True)",
+      "latex": "\\kappa"
+    },
+    {
+      "srepr": "Symbol('s', real=True)",
+      "latex": "s"
+    }
+  ],
+  "output": {
+    "srepr": "true",
+    "latex": "\\text{True}"
+  },
+  "method": "simplify(exp(2*kappa)|kappa=0 - 1)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:17:47.751510+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

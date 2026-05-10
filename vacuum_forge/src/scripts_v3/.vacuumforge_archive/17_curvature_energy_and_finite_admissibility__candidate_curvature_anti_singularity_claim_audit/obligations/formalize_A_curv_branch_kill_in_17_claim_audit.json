@@ -1,0 +1,13 @@
+{
+  "obligation_id": "formalize_A_curv_branch_kill_in_17_claim_audit",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_anti_singularity_claim_audit",
+  "title": "Formalize A_curv branch-kill rule",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:47.317514+00:00",
+  "description": "Formal finite-admissibility condition and branch-kill rule are required before any branch-filter anti-singularity claim can be made.",
+  "metadata": {}
+}

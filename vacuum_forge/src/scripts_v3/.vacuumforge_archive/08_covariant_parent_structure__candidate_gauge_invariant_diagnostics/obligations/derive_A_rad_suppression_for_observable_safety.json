@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_A_rad_suppression_for_observable_safety",
+  "script_id": "08_covariant_parent_structure__candidate_gauge_invariant_diagnostics",
+  "title": "Derive A_rad suppression to make scalar radiation diagnostic safe",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:22.432047+00:00",
+  "description": "Show that A_rad is suppressed so that it cannot appear as a forbidden scalar breathing mode in observational comparisons.",
+  "metadata": {}
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "satisfy_R4_kappa_source_law",
+  "script_id": "08_covariant_parent_structure__candidate_covariant_parent_requirements",
+  "title": "R4: Derive kappa source law from parent structure",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:16.245402+00:00",
+  "description": "Supply a derivation of the kappa source from stress/pressure/trace matter content and a derivation of exterior suppression.",
+  "metadata": {}
+}

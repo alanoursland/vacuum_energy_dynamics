@@ -1,0 +1,32 @@
+{
+  "derivation_id": "far_zone_amplitude_coupling_law",
+  "inputs": [
+    {
+      "srepr": "Mul(Integer(2), Symbol('G', positive=True, real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-4)))",
+      "latex": "\\frac{2 G}{R c^{4}}"
+    },
+    {
+      "srepr": "Symbol('Qdd_plus', real=True)",
+      "latex": "Qdd_{plus}"
+    },
+    {
+      "srepr": "Symbol('Qdd_cross', real=True)",
+      "latex": "Qdd_{cross}"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Mul(Integer(2), Symbol('G', positive=True, real=True), Symbol('Qdd_plus', real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-4)))], [Mul(Integer(2), Symbol('G', positive=True, real=True), Symbol('Qdd_cross', real=True), Pow(Symbol('R', positive=True, real=True), Integer(-1)), Pow(Symbol('c', positive=True, real=True), Integer(-4)))]])",
+    "latex": "\\left[\\begin{matrix}\\frac{2 G Qdd_{plus}}{R c^{4}}\\\\\\frac{2 G Qdd_{cross}}{R c^{4}}\\end{matrix}\\right]"
+  },
+  "method": "far_zone_amplitude_GR_like_coupling",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:57.292275+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "GR-like target normalization; not derived from first principles",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

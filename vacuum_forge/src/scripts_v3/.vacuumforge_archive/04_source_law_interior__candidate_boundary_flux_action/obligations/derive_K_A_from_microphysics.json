@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_K_A_from_microphysics",
+  "script_id": "04_source_law_interior__candidate_boundary_flux_action",
+  "title": "Derive K_A from vacuum microphysics",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:25.255649+00:00",
+  "description": "The boundary action stiffness K_A appears in q_M = 4 K_A G M/c^2. Its value is fixed by Newtonian/Schwarzschild matching but is not derived from first principles. Origin of K_A remains open.",
+  "metadata": {}
+}

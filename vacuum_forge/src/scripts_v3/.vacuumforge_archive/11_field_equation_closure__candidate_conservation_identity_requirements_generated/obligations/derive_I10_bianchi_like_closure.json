@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_I10_bianchi_like_closure",
+  "script_id": "11_field_equation_closure__candidate_conservation_identity_requirements_generated",
+  "title": "Derive Bianchi-like closure identity (I10)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:23.376739+00:00",
+  "description": "A parent divergence identity must be derived that implies source conservation and sector constraints. Without this the theory remains a sector ledger, not a closed field equation system.",
+  "metadata": {}
+}

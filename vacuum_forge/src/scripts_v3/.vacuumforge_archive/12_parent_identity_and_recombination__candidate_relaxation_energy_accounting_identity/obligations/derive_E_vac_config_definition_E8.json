@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_E_vac_config_definition_E8",
+  "script_id": "12_parent_identity_and_recombination__candidate_relaxation_energy_accounting_identity",
+  "title": "Define vacuum configuration energy variable E_vac_config (E8)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:51.866494+00:00",
+  "description": "The destination of relaxation energy must be a named variable or constrained functional. E_vac_config[A,kappa,boundary,q_v] or q_v/J_v bookkeeping must be defined. An unnamed repair reservoir is forbidden.",
+  "metadata": {}
+}

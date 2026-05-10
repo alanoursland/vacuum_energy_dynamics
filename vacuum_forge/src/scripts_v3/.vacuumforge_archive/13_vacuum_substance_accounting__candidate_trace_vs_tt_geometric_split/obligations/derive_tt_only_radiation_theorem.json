@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_tt_only_radiation_theorem",
+  "script_id": "13_vacuum_substance_accounting__candidate_trace_vs_tt_geometric_split",
+  "title": "Derive TT-only radiation theorem",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:00.175426+00:00",
+  "description": "Show that ordinary far-zone radiation is TT-only because trace/scalar modes convert into vacuum-spacetime configuration. Requires zeta variable, P_trace conversion law, P_TT propagation law, scalar conversion safety, and nonlinear/covariant extension.",
+  "metadata": {}
+}

@@ -1,0 +1,20 @@
+{
+  "evidence_id": "recovery_precedes_origin_check",
+  "evidence_type": "target_selected_parameter",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_insertion_recovery_audit",
+  "supports": [],
+  "challenges": [
+    "gamma_like_coefficient_fit_route",
+    "B_equals_1_over_A_construction_route"
+  ],
+  "reason_code": "recovery_selected_parameter",
+  "expression": null,
+  "expected": null,
+  "observed": null,
+  "residual": null,
+  "source_records": [],
+  "status": "active",
+  "created_at": "2026-05-10T17:22:34.517623+00:00",
+  "description": "Gamma-like behavior, AB behavior, and Schwarzschild recovery are downstream tests, not construction rules for B_s/F_zeta insertion. Any route that uses these targets to select coefficients, boundary behavior, or residual status constitutes a recovery-selected-parameter violation and must be rejected.",
+  "metadata": {}
+}

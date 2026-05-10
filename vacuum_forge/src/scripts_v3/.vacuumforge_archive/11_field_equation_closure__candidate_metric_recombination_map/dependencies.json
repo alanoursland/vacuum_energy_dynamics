@@ -3,7 +3,7 @@
     "dependency_id": "field_equation_closure_inventory_marker",
     "upstream_script_id": "11_field_equation_closure__candidate_field_equation_closure_inventory",
     "upstream_derivation_id": "field_equation_closure_inventory_marker",
-    "declared_at": "2026-05-10T02:25:12.586476+00:00",
+    "declared_at": "2026-05-10T17:20:16.625795+00:00",
     "allow_superseded": false
   }
 ]

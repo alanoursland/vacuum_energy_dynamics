@@ -1,0 +1,28 @@
+{
+  "derivation_id": "breathing_vs_tt_trace_comparison",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('psi', real=True), Integer(0), Integer(0)], [Integer(0), Symbol('psi', real=True), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}\\psi & 0 & 0\\\\0 & \\psi & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('h_plus', real=True), Symbol('h_cross', real=True), Integer(0)], [Symbol('h_cross', real=True), Mul(Integer(-1), Symbol('h_plus', real=True)), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}h_{plus} & h_{cross} & 0\\\\h_{cross} & - h_{plus} & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "MutableDenseMatrix([[Mul(Integer(2), Symbol('psi', real=True))], [Integer(0)]])",
+    "latex": "\\left[\\begin{matrix}2 \\psi\\\\0\\end{matrix}\\right]"
+  },
+  "method": "trace_comparison_breathing_vs_TT",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:48.347675+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

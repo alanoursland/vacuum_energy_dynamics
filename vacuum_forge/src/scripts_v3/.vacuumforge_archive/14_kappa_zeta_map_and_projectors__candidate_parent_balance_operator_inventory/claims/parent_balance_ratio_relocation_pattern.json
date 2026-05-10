@@ -1,0 +1,29 @@
+{
+  "claim_id": "parent_balance_ratio_relocation_pattern",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_parent_balance_operator_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Coupled stiffness, gradient current, and abstract balance operators all exhibit ratio relocation: each relocates the coefficient origin rather than deriving it. An ontology-native volume-exchange operator is the next candidate to break this pattern.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:46.726031+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

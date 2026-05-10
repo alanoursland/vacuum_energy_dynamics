@@ -1,0 +1,28 @@
+{
+  "route_id": "bo6_B_s_only_metric_insertion_candidate_route",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_boundary_no_overlap_for_volume_current",
+  "name": "B_s-only metric insertion with killed/non-metric residual",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "J_V-driven zeta affects metric scalar trace only through B_s/A_spatial",
+    "residual zeta/kappa metric trace is killed or made non-metric",
+    "F_zeta/B_s insertion rule is explicit"
+  ],
+  "required_obligations": [
+    "derive_boundary_neutrality_theorem_in_15",
+    "derive_no_overlap_operator_in_15"
+  ],
+  "created_at": "2026-05-10T17:22:16.333777+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

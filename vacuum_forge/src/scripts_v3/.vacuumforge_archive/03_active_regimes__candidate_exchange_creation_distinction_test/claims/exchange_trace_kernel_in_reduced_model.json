@@ -1,0 +1,29 @@
+{
+  "claim_id": "exchange_trace_kernel_in_reduced_model",
+  "script_id": "03_active_regimes__candidate_exchange_creation_distinction_test",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "In the reduced two-sector kappa/s model, exchange operators are trace-kernel (J_kappa=0) and yield kappa_eq=0 and AB=1 at equilibrium. This is a consistency check, not a derivation from first principles.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:19.431474+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

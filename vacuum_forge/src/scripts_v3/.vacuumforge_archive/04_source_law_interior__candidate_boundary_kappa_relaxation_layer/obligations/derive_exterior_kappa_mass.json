@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_exterior_kappa_mass",
+  "script_id": "04_source_law_interior__candidate_boundary_kappa_relaxation_layer",
+  "title": "Derive exterior kappa mass parameter from vacuum physics",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:34.950141+00:00",
+  "description": "A massive exterior kappa mode (kappa ~ C exp(-mr)/r) can suppress exterior kappa leaks if m is large. The mass parameter m is not derived from first principles and remains open.",
+  "metadata": {}
+}

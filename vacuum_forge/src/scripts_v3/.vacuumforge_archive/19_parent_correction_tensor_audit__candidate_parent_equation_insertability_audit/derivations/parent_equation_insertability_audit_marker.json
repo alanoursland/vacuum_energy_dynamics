@@ -8,12 +8,12 @@
   "method": "parent_equation_insertability_audit",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-10T02:28:01.297386+00:00",
+  "recorded_at": "2026-05-10T17:23:12.177292+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
+  "record_kind": "inventory_marker",
   "scope": null,
   "claim_tier": null,
   "result_type": null,
   "superseded_by": null,
-  "is_placeholder": false
+  "is_placeholder": true
 }

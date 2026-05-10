@@ -1,0 +1,29 @@
+{
+  "claim_id": "recombination_map_is_schematic_not_derivation",
+  "script_id": "08_covariant_parent_structure__candidate_metric_geometric_recombination",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The schematic metric recombination map (A -> g_tt, kappa -> spatial trace, W_i -> g_ti, h_ij^TT -> TT spatial) is a provisional assignment, not a derivation. Gauge modes and conservation identities are missing. The map must not be treated as covariant closure.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:20.899002+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

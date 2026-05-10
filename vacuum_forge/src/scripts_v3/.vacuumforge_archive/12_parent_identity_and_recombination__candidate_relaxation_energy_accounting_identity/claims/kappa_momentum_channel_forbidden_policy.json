@@ -1,0 +1,29 @@
+{
+  "claim_id": "kappa_momentum_channel_forbidden_policy",
+  "script_id": "12_parent_identity_and_recombination__candidate_relaxation_energy_accounting_identity",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "First-order kappa relaxation must not carry an independent kinetic energy term 1/2*(u^mu nabla_mu kappa)^2. A second-order kappa oscillator/sloshing channel is forbidden unless separately and explicitly derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:51.869497+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

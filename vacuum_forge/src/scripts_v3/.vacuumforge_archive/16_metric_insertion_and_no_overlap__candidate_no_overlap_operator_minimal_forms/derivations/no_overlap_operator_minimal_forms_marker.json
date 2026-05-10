@@ -8,12 +8,12 @@
   "method": "no_overlap_operator_minimal_forms_audit",
   "status": "derived",
   "metadata": {},
-  "recorded_at": "2026-05-10T02:27:19.025254+00:00",
+  "recorded_at": "2026-05-10T17:22:28.871671+00:00",
   "vacuumforge_version": "0.1.0",
-  "record_kind": "derivation",
+  "record_kind": "inventory_marker",
   "scope": null,
   "claim_tier": null,
   "result_type": null,
   "superseded_by": null,
-  "is_placeholder": false
+  "is_placeholder": true
 }

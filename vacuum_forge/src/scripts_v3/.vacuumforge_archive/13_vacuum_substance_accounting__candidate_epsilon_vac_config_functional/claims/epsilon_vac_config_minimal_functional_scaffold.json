@@ -1,0 +1,29 @@
+{
+  "claim_id": "epsilon_vac_config_minimal_functional_scaffold",
+  "script_id": "13_vacuum_substance_accounting__candidate_epsilon_vac_config_functional",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The minimal candidate functional epsilon_vac_config = 1/2 K_zeta (zeta-zeta_min)^2 + 1/2 L_zeta |grad zeta|^2 + 1/2 K_lock (kappa-(zeta-zeta_min))^2 is a scaffold with unknown coefficients. It is not a derived action. It must not include A_flux, M_ext, or coefficient tuning terms.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:11.438329+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

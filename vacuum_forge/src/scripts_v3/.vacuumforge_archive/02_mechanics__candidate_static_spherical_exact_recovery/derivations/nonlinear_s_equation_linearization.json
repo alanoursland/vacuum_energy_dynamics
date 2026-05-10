@@ -1,0 +1,28 @@
+{
+  "derivation_id": "nonlinear_s_equation_linearization",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('eps', positive=True, real=True), Function('u')(Symbol('r', positive=True, real=True)))",
+      "latex": "eps u{\\left(r \\right)}"
+    },
+    {
+      "srepr": "Symbol('eps', positive=True, real=True)",
+      "latex": "eps"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Symbol('eps', positive=True, real=True), Add(Derivative(Function('u')(Symbol('r', positive=True, real=True)), Tuple(Symbol('r', positive=True, real=True), Integer(2))), Mul(Integer(2), Pow(Symbol('r', positive=True, real=True), Integer(-1)), Derivative(Function('u')(Symbol('r', positive=True, real=True)), Tuple(Symbol('r', positive=True, real=True), Integer(1))))))",
+    "latex": "eps \\left(\\frac{d^{2}}{d r^{2}} u{\\left(r \\right)} + \\frac{2 \\frac{d}{d r} u{\\left(r \\right)}}{r}\\right)"
+  },
+  "method": "series expansion of \u2207\u00b2s+|\u2207s|\u00b2 in eps to first order",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:07.528575+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "linearization_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

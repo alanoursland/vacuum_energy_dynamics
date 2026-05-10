@@ -1,0 +1,23 @@
+{
+  "decision_id": "defer_source_patch_Sigma_V_branch",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_source_driven_volume_creation_law",
+  "branch_id": "Sigma_V_source_patch",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:55.816952+00:00",
+  "description": "Sigma_V inserted only to fix q, gamma, or AB is rejected as a source-patch shortcut. If no independent Sigma_V exists, the source-driven branch fails.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_dark_ordinary_matter_separation_in_18_dark_sector",
+  "script_id": "18_vacuum_current_split__candidate_dark_sector_coupling_optional_branch",
+  "title": "Prove dark ordinary-matter separation",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:59.613368+00:00",
+  "description": "Ordinary/dark separation theorem: dark coupling must not alter ordinary matter routing. Ordinary rho/T_mu_nu must remain routed through established sectors.",
+  "metadata": {}
+}

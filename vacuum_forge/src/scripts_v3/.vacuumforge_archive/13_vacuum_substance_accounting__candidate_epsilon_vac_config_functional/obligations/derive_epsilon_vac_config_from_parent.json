@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_epsilon_vac_config_from_parent",
+  "script_id": "13_vacuum_substance_accounting__candidate_epsilon_vac_config_functional",
+  "title": "Derive epsilon_vac_config functional from parent identity",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:11.439329+00:00",
+  "description": "Derive the functional form epsilon_vac_config = F(zeta, zeta_min, gradients, kappa) from a parent field-equation identity, not as a postulated scaffold. Must include coefficients, measure, frame/foliation, boundary law.",
+  "metadata": {}
+}

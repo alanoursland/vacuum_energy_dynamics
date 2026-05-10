@@ -1,0 +1,28 @@
+{
+  "derivation_id": "compact_kappa_profile_zero_net_source_sample",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('kappa_0', positive=True, real=True), Pow(Add(Integer(1), Mul(Integer(-1), Pow(Symbol('R', positive=True, real=True), Integer(-2)), Pow(Symbol('r', positive=True, real=True), Integer(2)))), Integer(2)))",
+      "latex": "\\kappa_{0} \\left(1 - \\frac{r^{2}}{R^{2}}\\right)^{2}"
+    },
+    {
+      "srepr": "Mul(Integer(4), Pow(Symbol('R', positive=True, real=True), Integer(-4)), Symbol('kappa_0', positive=True, real=True), Add(Mul(Integer(-1), Integer(3), Pow(Symbol('R', positive=True, real=True), Integer(2))), Mul(Integer(5), Pow(Symbol('r', positive=True, real=True), Integer(2)))))",
+      "latex": "\\frac{4 \\kappa_{0} \\left(- 3 R^{2} + 5 r^{2}\\right)}{R^{4}}"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "integrate 4*pi*r^2*Delta_kappa from 0 to R; verify = 0",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:20:04.733897+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "toy profile; divergence theorem argument",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_parent_embedding_of_balance",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_accounting_parent_balance",
+  "title": "Derive parent identity embedding of vacuum accounting balance",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:09.733344+00:00",
+  "description": "Show that the accounting balance skeleton is a consequence of a parent field-equation identity rather than a decorative postulate appended to the theory.",
+  "metadata": {}
+}

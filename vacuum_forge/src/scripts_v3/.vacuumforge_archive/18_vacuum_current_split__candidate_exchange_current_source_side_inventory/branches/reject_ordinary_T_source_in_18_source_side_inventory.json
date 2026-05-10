@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_ordinary_T_source_in_18_source_side_inventory",
+  "script_id": "18_vacuum_current_split__candidate_exchange_current_source_side_inventory",
+  "branch_id": "ordinary_T_as_Sigma_exch_source",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:58.006378+00:00",
+  "description": "Sigma_exch = function(T_mu_nu) by convenience is forbidden as ordinary matter double-counting.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

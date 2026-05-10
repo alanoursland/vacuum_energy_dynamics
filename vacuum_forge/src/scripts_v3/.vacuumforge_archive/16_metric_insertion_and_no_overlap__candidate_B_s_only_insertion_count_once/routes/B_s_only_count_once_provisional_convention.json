@@ -1,0 +1,31 @@
+{
+  "route_id": "B_s_only_count_once_provisional_convention",
+  "script_id": "16_metric_insertion_and_no_overlap__candidate_B_s_only_insertion_count_once",
+  "name": "B_s-only count-once with provisional residual-kill",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "residual zeta/kappa metric trace is killed or non-metric",
+    "energy/accounting cannot source extra metric trace",
+    "no exterior scalar charge from residual",
+    "M_ext is not shifted independently",
+    "recovery remains downstream"
+  ],
+  "required_obligations": [
+    "derive_residual_kill_theorem_count_once",
+    "derive_energy_accounting_recombination_rule",
+    "derive_mass_accounting_theorem_count_once"
+  ],
+  "created_at": "2026-05-10T17:22:25.835697+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -3,7 +3,7 @@
     "dependency_id": "boundary_volume_mode_no_exterior_charge_marker",
     "upstream_script_id": "13_vacuum_substance_accounting__candidate_boundary_volume_mode_no_exterior_charge",
     "upstream_derivation_id": "boundary_volume_mode_no_exterior_charge_marker",
-    "declared_at": "2026-05-10T02:25:59.531883+00:00",
+    "declared_at": "2026-05-10T17:21:07.589362+00:00",
     "allow_superseded": false
   }
 ]

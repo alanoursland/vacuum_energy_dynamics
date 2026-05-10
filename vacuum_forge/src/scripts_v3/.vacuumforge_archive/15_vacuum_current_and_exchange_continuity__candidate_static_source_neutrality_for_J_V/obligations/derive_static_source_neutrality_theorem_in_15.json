@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_static_source_neutrality_theorem_in_15",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_static_source_neutrality_for_J_V",
+  "title": "Derive static-source neutrality theorem for J_V/Sigma/R",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:14.637793+00:00",
+  "description": "Show that the candidate J_V/Sigma_V/R_V structure creates no exterior scalar volume charge, no far-zone scalar flux, and no M_ext shift for ordinary static sources. Q_V = 0 must hold by structure, not by R_V tuning.",
+  "metadata": {}
+}

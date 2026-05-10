@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_vacuum_config_energy_accounting_12",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_exclusion_constraints",
+  "title": "Derive vacuum configuration energy accounting for Gamma_relax",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:35.633636+00:00",
+  "description": "Gamma_relax must represent exchange/restoration into a named vacuum configuration variable, not energy disappearance. The destination variable must be defined.",
+  "metadata": {}
+}

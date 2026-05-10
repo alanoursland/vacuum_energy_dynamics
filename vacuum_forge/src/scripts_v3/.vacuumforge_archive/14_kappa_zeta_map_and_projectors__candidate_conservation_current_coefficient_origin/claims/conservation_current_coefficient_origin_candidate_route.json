@@ -1,0 +1,29 @@
+{
+  "claim_id": "conservation_current_coefficient_origin_candidate_route",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_conservation_current_coefficient_origin",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "A real conserved current J_A can fix c_x/c_s only if J_A is defined before recovery checks and the coefficient ratio a/b has a pre-recovery origin. Decorative conservation and recovery-tuned currents are rejected.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:41.945070+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

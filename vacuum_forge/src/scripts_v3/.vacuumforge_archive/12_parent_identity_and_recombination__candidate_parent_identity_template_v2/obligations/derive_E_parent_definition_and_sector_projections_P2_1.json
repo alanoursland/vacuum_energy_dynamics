@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_E_parent_definition_and_sector_projections_P2_1",
+  "script_id": "12_parent_identity_and_recombination__candidate_parent_identity_template_v2",
+  "title": "Define E_parent and derive its sector projector reductions (P2.1)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:53.486481+00:00",
+  "description": "Div E_parent must be defined and its reduced projections must force the known sectors: A constraint (P_scalar), W_i (P_T), h_TT (P_TT), kappa_min (P_trace). A decorative Bianchi restatement is forbidden.",
+  "metadata": {}
+}

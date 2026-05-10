@@ -1,0 +1,29 @@
+{
+  "claim_id": "near_boundary_deviation_diagnostic_not_prediction",
+  "script_id": "10_kappa_trace_response__candidate_kappa_near_boundary_deviation_diagnostic",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The near-boundary deviation diagnostics (delta_f, delta_g, delta_curv, delta_redshift) are symbolic definitions only. They carry no magnitude prediction. Premature observability claims before deriving weights, sigma, and a recombination map are an open risk and are explicitly prohibited.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:14.050818+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "open_risk",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

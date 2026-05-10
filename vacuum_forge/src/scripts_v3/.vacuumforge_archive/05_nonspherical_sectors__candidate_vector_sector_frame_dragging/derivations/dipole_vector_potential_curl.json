@@ -1,0 +1,32 @@
+{
+  "derivation_id": "dipole_vector_potential_curl",
+  "inputs": [
+    {
+      "srepr": "Mul(Integer(-1), Symbol('J', real=True), Symbol('y', real=True), Pow(Add(Pow(Symbol('x', real=True), Integer(2)), Pow(Symbol('y', real=True), Integer(2)), Pow(Symbol('z', real=True), Integer(2))), Rational(-3, 2)))",
+      "latex": "- \\frac{J y}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{3}{2}}}"
+    },
+    {
+      "srepr": "Mul(Symbol('J', real=True), Symbol('x', real=True), Pow(Add(Pow(Symbol('x', real=True), Integer(2)), Pow(Symbol('y', real=True), Integer(2)), Pow(Symbol('z', real=True), Integer(2))), Rational(-3, 2)))",
+      "latex": "\\frac{J x}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{3}{2}}}"
+    },
+    {
+      "srepr": "Integer(0)",
+      "latex": "0"
+    }
+  ],
+  "output": {
+    "srepr": "ImmutableDenseMatrix([[Mul(Integer(3), Symbol('J', real=True), Symbol('x', real=True), Symbol('z', real=True), Pow(Add(Pow(Symbol('x', real=True), Integer(2)), Pow(Symbol('y', real=True), Integer(2)), Pow(Symbol('z', real=True), Integer(2))), Rational(-5, 2)))], [Mul(Integer(3), Symbol('J', real=True), Symbol('y', real=True), Symbol('z', real=True), Pow(Add(Pow(Symbol('x', real=True), Integer(2)), Pow(Symbol('y', real=True), Integer(2)), Pow(Symbol('z', real=True), Integer(2))), Rational(-5, 2)))], [Mul(Symbol('J', real=True), Add(Mul(Integer(-1), Pow(Symbol('x', real=True), Integer(2))), Mul(Integer(-1), Pow(Symbol('y', real=True), Integer(2))), Mul(Integer(2), Pow(Symbol('z', real=True), Integer(2)))), Pow(Add(Pow(Symbol('x', real=True), Integer(2)), Pow(Symbol('y', real=True), Integer(2)), Pow(Symbol('z', real=True), Integer(2))), Rational(-5, 2)))]])",
+    "latex": "\\left[\\begin{matrix}\\frac{3 J x z}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{5}{2}}}\\\\\\frac{3 J y z}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{5}{2}}}\\\\\\frac{J \\left(- x^{2} - y^{2} + 2 z^{2}\\right)}{\\left(x^{2} + y^{2} + z^{2}\\right)^{\\frac{5}{2}}}\\end{matrix}\\right]"
+  },
+  "method": "curl_cartesian_dipole_vector_potential",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:45.179969+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": "dipole-like vector potential for J along z",
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": false
+}

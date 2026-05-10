@@ -1,0 +1,24 @@
+{
+  "derivation_id": "quadrupole_tf_trace_zero",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Symbol('Q_xx', real=True), Symbol('Q_xy', real=True), Symbol('Q_xz', real=True)], [Symbol('Q_xy', real=True), Symbol('Q_yy', real=True), Symbol('Q_yz', real=True)], [Symbol('Q_xz', real=True), Symbol('Q_yz', real=True), Symbol('Q_zz', real=True)]])",
+      "latex": "\\left[\\begin{matrix}Q_{xx} & Q_{xy} & Q_{xz}\\\\Q_{xy} & Q_{yy} & Q_{yz}\\\\Q_{xz} & Q_{yz} & Q_{zz}\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "trace_free_decomposition_quadrupole",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:53.908260+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

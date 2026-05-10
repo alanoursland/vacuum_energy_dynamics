@@ -1,0 +1,29 @@
+{
+  "claim_id": "geometric_variables_preferred_over_bookkeeping",
+  "script_id": "13_vacuum_substance_accounting__candidate_vacuum_substance_accounting_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "Accounting variables must be geometric or explicitly bookkeeping-constrained. Bookkeeping variables q_v, J_v are allowed only if tied to geometry. Geometric candidates sqrt_gamma and ln_sqrt_gamma take priority.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:56.619455+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

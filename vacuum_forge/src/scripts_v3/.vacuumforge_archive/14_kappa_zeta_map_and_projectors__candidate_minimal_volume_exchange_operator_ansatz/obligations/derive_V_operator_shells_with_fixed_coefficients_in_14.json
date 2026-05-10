@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_V_operator_shells_with_fixed_coefficients_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_minimal_volume_exchange_operator_ansatz",
+  "title": "Derive V[A,B_s,zeta] shells with coefficient origin",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:49.739004+00:00",
+  "description": "Show that at least one V shell (algebraic, derivative, current, or source-coupled) fixes its coefficients before recovery checks and does not cause zeta to double-count as both companion and independent residual trace.",
+  "metadata": {}
+}

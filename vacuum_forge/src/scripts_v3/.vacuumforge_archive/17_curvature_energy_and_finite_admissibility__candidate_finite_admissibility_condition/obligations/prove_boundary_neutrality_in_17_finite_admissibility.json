@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_boundary_neutrality_in_17_finite_admissibility",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_finite_admissibility_condition",
+  "title": "Prove boundary neutrality for finite admissibility",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:39.479581+00:00",
+  "description": "Finite admissibility cannot be restored by boundary counterterm, cutoff, or surface repair.",
+  "metadata": {}
+}

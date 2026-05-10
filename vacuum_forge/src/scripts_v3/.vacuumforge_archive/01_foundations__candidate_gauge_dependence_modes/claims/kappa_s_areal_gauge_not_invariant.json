@@ -1,0 +1,29 @@
+{
+  "claim_id": "kappa_s_areal_gauge_not_invariant",
+  "script_id": "01_foundations__candidate_gauge_dependence_modes",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "The reduced log-scale modes kappa and s are not coordinate-invariant scalar fields. They are areal-gauge reduced variables. The condition kappa=0 (equivalently AB=1) is an areal-gauge geometric statement, not a raw scalar equation.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:17:51.357208+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

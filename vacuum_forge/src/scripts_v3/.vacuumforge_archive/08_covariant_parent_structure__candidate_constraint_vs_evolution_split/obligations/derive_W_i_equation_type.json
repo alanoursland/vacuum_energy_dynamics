@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_W_i_equation_type",
+  "script_id": "08_covariant_parent_structure__candidate_constraint_vs_evolution_split",
+  "title": "Derive W_i equation type (constraint or hyperbolic)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:17.882388+00:00",
+  "description": "Determine whether W_i obeys a constraint equation, a hyperbolic evolution equation, or a mixed system, and check vector radiation safety.",
+  "metadata": {}
+}

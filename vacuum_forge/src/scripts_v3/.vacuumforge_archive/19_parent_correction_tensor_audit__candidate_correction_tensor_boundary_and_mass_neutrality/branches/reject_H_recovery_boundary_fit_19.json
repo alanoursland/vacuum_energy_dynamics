@@ -1,0 +1,27 @@
+{
+  "decision_id": "reject_H_recovery_boundary_fit_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
+  "branch_id": "H_recovery_boundary_fit",
+  "status": "heuristic",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:10.689301+00:00",
+  "description": "BM21: recovery boundary fit rejected by policy.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

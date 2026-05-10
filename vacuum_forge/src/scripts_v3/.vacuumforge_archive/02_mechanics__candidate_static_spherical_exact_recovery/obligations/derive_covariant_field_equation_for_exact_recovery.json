@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_field_equation_for_exact_recovery",
+  "script_id": "02_mechanics__candidate_static_spherical_exact_recovery",
+  "title": "Derive covariant field equation producing \u2207\u00b2A=0 in exterior",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:09.660557+00:00",
+  "description": "The exact exterior equation \u2207\u00b2A=0 (equivalently \u2207\u00b2s+|\u2207s|\u00b2=0) is found by checking Schwarzschild, but the covariant field equation from which it follows has not been derived. This is not a derivation of Einstein's equations.",
+  "metadata": {}
+}

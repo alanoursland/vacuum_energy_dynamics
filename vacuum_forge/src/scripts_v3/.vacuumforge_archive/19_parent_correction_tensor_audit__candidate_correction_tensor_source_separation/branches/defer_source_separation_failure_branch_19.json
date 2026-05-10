@@ -1,0 +1,37 @@
+{
+  "decision_id": "defer_source_separation_failure_branch_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_correction_tensor_source_separation",
+  "branch_id": "correction_tensor_source_separation_failure",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_ordinary_matter_source_separation_19",
+    "derive_A_sector_mass_protection_19",
+    "guard_ecurv_not_source_reservoir_19",
+    "guard_A_curv_diagnostic_limit_19",
+    "guard_J_curv_absence_source_19",
+    "derive_Sigma_R_not_tuning_knobs_19",
+    "guard_J_V_J_exch_unresolved_19",
+    "derive_J_sub_J_exch_not_matter_channels_19",
+    "guard_dark_sector_not_ordinary_relabel_19",
+    "guard_zeta_Bs_insertion_not_reopened_19",
+    "guard_residual_killed_non_metric_19",
+    "derive_boundary_source_separation_19",
+    "derive_coefficient_source_separation_19"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:09.130310+00:00",
+  "description": "SS23 failure condition: if correction tensors cannot avoid ordinary/vacuum/source overlap, they remain deferred or diagnostic-only. Mapped to DEFERRED_PENDING_PREREQUISITES because no contradiction has been demonstrated \u2014 source-separation prerequisites are simply absent.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

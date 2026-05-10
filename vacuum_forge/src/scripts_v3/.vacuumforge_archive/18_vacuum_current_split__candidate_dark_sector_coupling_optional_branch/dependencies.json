@@ -3,7 +3,7 @@
     "dependency_id": "exchange_current_source_side_inventory_marker",
     "upstream_script_id": "18_vacuum_current_split__candidate_exchange_current_source_side_inventory",
     "upstream_derivation_id": "exchange_current_source_side_inventory_marker",
-    "declared_at": "2026-05-10T02:27:48.441549+00:00",
+    "declared_at": "2026-05-10T17:22:58.996372+00:00",
     "allow_superseded": false
   }
 ]

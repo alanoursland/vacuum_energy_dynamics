@@ -1,0 +1,25 @@
+{
+  "claim_id": "no_recovery_smuggling_projector_jT_only",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_current_projection_operator",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "The vector sector W_i must be sourced only by the transverse projection j_T = P_T j. Allowing the full j or j_L to source W_i would mix scalar and vector sectors.",
+  "reason_code": "recovery_selected_parameter",
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:38.928115+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_tensor_radiation_energy_flux_summary",
+  "script_id": "06_tensor_flux_principle__candidate_tensor_flux_principle",
+  "title": "Derive tensor radiation energy flux",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:55.741286+00:00",
+  "description": "A proper radiation energy flux for h_ij^TT must be derived from an action or stiffness picture, not just stated as a target.",
+  "metadata": {}
+}

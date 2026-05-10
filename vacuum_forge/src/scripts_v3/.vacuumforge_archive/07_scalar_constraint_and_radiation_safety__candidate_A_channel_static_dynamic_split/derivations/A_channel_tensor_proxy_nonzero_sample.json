@@ -1,0 +1,19 @@
+{
+  "derivation_id": "A_channel_tensor_proxy_nonzero_sample",
+  "inputs": [],
+  "output": {
+    "srepr": "Mul(Integer(64), Pow(Symbol('Omega', positive=True, real=True), Integer(6)), Pow(Symbol('Q0', positive=True, real=True), Integer(2)))",
+    "latex": "64 \\Omega^{6} Q_{0}^{2}"
+  },
+  "method": "Qdddot^2 proxy from Q_plus = Q0*cos(2*Omega*t), Q_cross = Q0*sin(2*Omega*t)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:19:10.909336+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "sample_derivation",
+  "scope": "constant-amplitude toy model only",
+  "claim_tier": null,
+  "result_type": "radiation_power_proxy",
+  "superseded_by": null,
+  "is_placeholder": false
+}

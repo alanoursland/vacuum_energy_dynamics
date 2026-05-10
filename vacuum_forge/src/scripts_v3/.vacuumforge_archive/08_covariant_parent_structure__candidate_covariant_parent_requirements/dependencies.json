@@ -3,7 +3,7 @@
     "dependency_id": "sector_bundle_inventory_marker",
     "upstream_script_id": "08_covariant_parent_structure__candidate_sector_bundle_inventory",
     "upstream_derivation_id": "sector_bundle_inventory_marker",
-    "declared_at": "2026-05-10T02:24:13.908178+00:00",
+    "declared_at": "2026-05-10T17:19:15.639419+00:00",
     "allow_superseded": false
   }
 ]

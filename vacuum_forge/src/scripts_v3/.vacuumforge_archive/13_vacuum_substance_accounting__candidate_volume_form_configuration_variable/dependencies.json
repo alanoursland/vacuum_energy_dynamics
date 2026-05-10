@@ -3,7 +3,7 @@
     "dependency_id": "vacuum_substance_accounting_inventory_marker",
     "upstream_script_id": "13_vacuum_substance_accounting__candidate_vacuum_substance_accounting_inventory",
     "upstream_derivation_id": "vacuum_substance_accounting_inventory_marker",
-    "declared_at": "2026-05-10T02:25:50.244094+00:00",
+    "declared_at": "2026-05-10T17:20:57.608448+00:00",
     "allow_superseded": false
   }
 ]

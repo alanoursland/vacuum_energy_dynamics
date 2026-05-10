@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_e_curv_source_quarantine_in_17_curvature_energy",
+  "script_id": "17_curvature_energy_and_finite_admissibility__candidate_curvature_energy_density_role",
+  "title": "Prove e_curv source quarantine",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:41.168567+00:00",
+  "description": "e_curv must be shown to be diagnostic/accounting only, not a field-equation source, until a recombination/source law is derived.",
+  "metadata": {}
+}

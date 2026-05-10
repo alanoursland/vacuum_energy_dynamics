@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_covariant_recombination_lapse_shift_R1_R3",
+  "script_id": "12_parent_identity_and_recombination__candidate_recombination_without_double_counting",
+  "title": "Derive covariant parent lapse/recombination and shift map (R1, R3)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:50.170513+00:00",
+  "description": "The reduced map g_tt <- A and g_0i <- W_i must be elevated to a covariant parent recombination derivation. beta_W normalization must be derived.",
+  "metadata": {}
+}

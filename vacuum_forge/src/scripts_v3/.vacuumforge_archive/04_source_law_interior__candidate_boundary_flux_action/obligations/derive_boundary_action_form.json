@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_boundary_action_form",
+  "script_id": "04_source_law_interior__candidate_boundary_flux_action",
+  "title": "Derive why boundary action is -q A(R)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:25.255649+00:00",
+  "description": "The boundary coupling form E_boundary = -q A(R) is adopted as an ansatz. A derivation of this coupling from covariant source action or matter coupling has not yet been given.",
+  "metadata": {}
+}

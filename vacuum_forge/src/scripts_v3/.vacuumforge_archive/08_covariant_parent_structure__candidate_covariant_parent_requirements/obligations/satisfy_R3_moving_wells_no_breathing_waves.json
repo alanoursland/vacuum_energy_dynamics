@@ -1,0 +1,13 @@
+{
+  "obligation_id": "satisfy_R3_moving_wells_no_breathing_waves",
+  "script_id": "08_covariant_parent_structure__candidate_covariant_parent_requirements",
+  "title": "R3: Derive retarded/constraint concept for moving wells without scalar breathing",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:16.244398+00:00",
+  "description": "The parent must show how moving sources carry moving scalar constraint configurations without producing forbidden long-range scalar breathing radiation.",
+  "metadata": {}
+}

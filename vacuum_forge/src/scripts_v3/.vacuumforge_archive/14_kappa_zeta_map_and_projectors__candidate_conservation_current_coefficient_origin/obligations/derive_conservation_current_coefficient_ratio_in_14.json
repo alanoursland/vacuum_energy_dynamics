@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_conservation_current_coefficient_ratio_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_conservation_current_coefficient_origin",
+  "title": "Derive conservation current coefficient ratio a/b",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:41.943069+00:00",
+  "description": "Show that the coefficient ratio a/b in J_A^i = a grad^i A + b grad^i B_s can be fixed by a pre-recovery principle, so that q = -a/b is genuinely derived and not merely a relocation of the stiffness ratio problem.",
+  "metadata": {}
+}

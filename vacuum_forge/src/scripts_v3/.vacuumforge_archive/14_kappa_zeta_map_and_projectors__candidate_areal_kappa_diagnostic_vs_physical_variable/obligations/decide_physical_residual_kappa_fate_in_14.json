@@ -1,0 +1,13 @@
+{
+  "obligation_id": "decide_physical_residual_kappa_fate_in_14",
+  "script_id": "14_kappa_zeta_map_and_projectors__candidate_areal_kappa_diagnostic_vs_physical_variable",
+  "title": "Decide whether physical or residual kappa survives beyond areal diagnostic",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:21:24.481217+00:00",
+  "description": "Areal kappa = 1/2 ln(AB) is a reduced diagnostic only. Physical/residual kappa is unresolved. e_kappa may need retirement, reinterpretation, or residual-variable relabeling if kappa is purely diagnostic.",
+  "metadata": {}
+}

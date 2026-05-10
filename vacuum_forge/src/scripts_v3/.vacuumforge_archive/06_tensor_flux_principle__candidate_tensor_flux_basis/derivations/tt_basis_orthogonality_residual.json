@@ -1,0 +1,28 @@
+{
+  "derivation_id": "tt_basis_orthogonality_residual",
+  "inputs": [
+    {
+      "srepr": "MutableDenseMatrix([[Integer(1), Integer(0), Integer(0)], [Integer(0), Integer(-1), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}1 & 0 & 0\\\\0 & -1 & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    },
+    {
+      "srepr": "MutableDenseMatrix([[Integer(0), Integer(1), Integer(0)], [Integer(1), Integer(0), Integer(0)], [Integer(0), Integer(0), Integer(0)]])",
+      "latex": "\\left[\\begin{matrix}0 & 1 & 0\\\\1 & 0 & 0\\\\0 & 0 & 0\\end{matrix}\\right]"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "frobenius_inner_product_plus_cross",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T17:18:49.875660+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

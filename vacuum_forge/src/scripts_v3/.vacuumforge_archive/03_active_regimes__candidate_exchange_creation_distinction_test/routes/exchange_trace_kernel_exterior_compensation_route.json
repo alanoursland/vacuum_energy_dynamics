@@ -1,0 +1,23 @@
+{
+  "route_id": "exchange_trace_kernel_exterior_compensation_route",
+  "script_id": "03_active_regimes__candidate_exchange_creation_distinction_test",
+  "name": "Exchange as trace-kernel / exterior compensation route",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [],
+  "required_obligations": [
+    "derive_exchange_creation_from_postulates"
+  ],
+  "created_at": "2026-05-10T17:18:19.433474+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

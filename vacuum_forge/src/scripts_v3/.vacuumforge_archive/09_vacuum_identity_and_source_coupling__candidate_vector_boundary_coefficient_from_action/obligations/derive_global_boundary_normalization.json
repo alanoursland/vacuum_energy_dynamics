@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_global_boundary_normalization",
+  "script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_boundary_coefficient_from_action",
+  "title": "Derive global boundary normalization",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:19:44.059071+00:00",
+  "description": "The source/shape factor C_shape is convention-dependent and requires a fully specified vector equation convention and source model to compute.",
+  "metadata": {}
+}

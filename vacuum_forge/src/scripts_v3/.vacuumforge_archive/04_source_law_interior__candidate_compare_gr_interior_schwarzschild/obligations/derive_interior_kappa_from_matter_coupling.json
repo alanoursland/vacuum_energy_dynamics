@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_interior_kappa_from_matter_coupling",
+  "script_id": "04_source_law_interior__candidate_compare_gr_interior_schwarzschild",
+  "title": "Derive interior kappa source from matter coupling",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:28.474620+00:00",
+  "description": "GR interior Schwarzschild has AB != 1 inside matter, implying kappa != 0. The reduced model enforces kappa=0 inside by hand. A mechanism or source law that produces interior kappa from matter coupling remains underived.",
+  "metadata": {}
+}

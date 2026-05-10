@@ -1,0 +1,13 @@
+{
+  "obligation_id": "prove_pure_wind_mass_neutrality_in_18_pure_wind",
+  "script_id": "18_vacuum_current_split__candidate_pure_wind_neutrality_test",
+  "title": "Pure wind mass neutrality",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:51.924483+00:00",
+  "description": "Mass neutrality theorem: delta M_ext|J_sub = 0. Pure wind must not change measured exterior mass.",
+  "metadata": {}
+}

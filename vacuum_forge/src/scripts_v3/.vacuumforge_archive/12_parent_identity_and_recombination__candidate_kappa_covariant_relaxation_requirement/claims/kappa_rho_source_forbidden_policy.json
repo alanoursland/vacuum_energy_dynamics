@@ -1,0 +1,29 @@
+{
+  "claim_id": "kappa_rho_source_forbidden_policy",
+  "script_id": "12_parent_identity_and_recombination__candidate_kappa_covariant_relaxation_requirement",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "S_kappa[rho] = 0 is a policy rule. rho must not contribute to kappa_min as an independent mass scalar charge. Trace/pressure shifts kappa_min; rho routes to A only.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:44.421560+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

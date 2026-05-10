@@ -1,0 +1,23 @@
+{
+  "route_id": "areal_flux_principle_candidate_route",
+  "script_id": "02_mechanics__candidate_areal_flux_principle",
+  "name": "Areal-flux principle as Gauss-law source law for A=e^s",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [],
+  "required_obligations": [
+    "derive_areal_flux_principle_from_covariant_geometry"
+  ],
+  "created_at": "2026-05-10T17:18:17.524491+00:00",
+  "description": "The areal-flux reframing F_A=8\u03c0GM_enc/c\u00b2 successfully recovers exact Schwarzschild exterior under kappa=0 and is distinct from curved spatial harmonicity. Requires covariant geometric derivation.",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

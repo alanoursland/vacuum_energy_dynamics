@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_K_kappa_and_E_kappa_functional_E2",
+  "script_id": "12_parent_identity_and_recombination__candidate_relaxation_energy_accounting_identity",
+  "title": "Derive K_kappa and measure/volume element for E_kappa (E2)",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:51.867495+00:00",
+  "description": "The candidate E_kappa = 1/2*K_kappa*(kappa-kappa_min)^2 requires K_kappa and a proper measure/volume element to be derived from the parent identity.",
+  "metadata": {}
+}

@@ -1,0 +1,27 @@
+{
+  "claim_id": "tt_basis_established_claim",
+  "script_id": "06_tensor_flux_principle__candidate_tensor_flux_basis",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "candidate_route",
+  "statement": "The plus/cross TT basis is trace-free, transverse, and orthogonal for propagation along z. It supplies the two polarizations needed for a tensor-flux gravitational-wave channel.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_tensor_wave_equation_from_basis"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:50.031658+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "route_id": "diagnostic_only_correction_tensor_route",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
+  "name": "Diagnostic-only H-like audit object",
+  "status": "heuristic",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "explicitly marked diagnostic-only",
+    "never inserted into field equation"
+  ],
+  "required_obligations": [],
+  "created_at": "2026-05-10T17:23:02.903349+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

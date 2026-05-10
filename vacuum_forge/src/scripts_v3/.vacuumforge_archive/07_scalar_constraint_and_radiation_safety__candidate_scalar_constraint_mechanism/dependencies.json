@@ -3,7 +3,7 @@
     "dependency_id": "scalar_flux_not_tt_guardrail",
     "upstream_script_id": "06_tensor_flux_principle__candidate_scalar_flux_no_wave_failure_control",
     "upstream_derivation_id": "scalar_flux_not_tt_guardrail",
-    "declared_at": "2026-05-10T02:24:02.912411+00:00",
+    "declared_at": "2026-05-10T17:19:04.338645+00:00",
     "allow_superseded": false
   }
 ]

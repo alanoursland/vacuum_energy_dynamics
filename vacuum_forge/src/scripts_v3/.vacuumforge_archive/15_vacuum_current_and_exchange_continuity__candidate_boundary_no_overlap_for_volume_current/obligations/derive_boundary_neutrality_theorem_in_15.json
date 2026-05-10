@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_boundary_neutrality_theorem_in_15",
+  "script_id": "15_vacuum_current_and_exchange_continuity__candidate_boundary_no_overlap_for_volume_current",
+  "title": "Derive boundary neutrality theorem for J_V-driven zeta",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:22:16.331777+00:00",
+  "description": "Show that J_V-driven zeta has zero exterior flux, zero zeta/kappa scalar charge, no far-zone scalar flux, and no M_ext shift. Zero-flux must follow from structure or exchange law, not from a fitted counterterm.",
+  "metadata": {}
+}

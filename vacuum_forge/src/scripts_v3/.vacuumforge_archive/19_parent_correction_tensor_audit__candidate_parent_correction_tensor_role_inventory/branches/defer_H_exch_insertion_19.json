@@ -1,0 +1,28 @@
+{
+  "decision_id": "defer_H_exch_insertion_19",
+  "script_id": "19_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
+  "branch_id": "H_exch_correction_tensor_insertion",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_source_separation_theorem_19_roles",
+    "derive_mass_neutrality_theorem_19_roles",
+    "derive_scalar_trace_neutrality_theorem_19_roles",
+    "derive_coefficient_origin_19_roles"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:23:02.905348+00:00",
+  "description": "H_exch remains deferred: J_V/J_exch, Sigma/R, source side, and divergence behavior are missing. Prerequisites not satisfied.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

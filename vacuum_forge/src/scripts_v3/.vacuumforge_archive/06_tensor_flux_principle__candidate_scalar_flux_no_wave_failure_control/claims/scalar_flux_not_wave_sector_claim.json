@@ -1,0 +1,27 @@
+{
+  "claim_id": "scalar_flux_not_wave_sector_claim",
+  "script_id": "06_tensor_flux_principle__candidate_scalar_flux_no_wave_failure_control",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "Scalar A-flux is not the gravitational-wave sector. The scalar conformal perturbation is pure trace; its TT projection vanishes. Gravitational waves require an independent h_ij^TT sector.",
+  "reason_code": null,
+  "evidence_ids": [
+    "scalar_cannot_produce_TT_modes_evidence"
+  ],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:48.462674+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

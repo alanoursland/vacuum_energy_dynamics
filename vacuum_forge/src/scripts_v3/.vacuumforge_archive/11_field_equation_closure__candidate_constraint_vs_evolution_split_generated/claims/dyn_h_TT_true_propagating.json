@@ -1,0 +1,29 @@
+{
+  "claim_id": "dyn_h_TT_true_propagating",
+  "script_id": "11_field_equation_closure__candidate_constraint_vs_evolution_split_generated",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "h_ij^TT is the true propagating tensor radiation sector. Box h_ij^TT = -C_T S_ij^TT. C_T and action stiffness are not yet derived.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:21.779751+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "heuristic",
+      "supported": false,
+      "messages": [
+        "Tier 2 claim lacks reason, provenance, evidence, or obligation links."
+      ],
+      "missing": [
+        "reason_or_provenance"
+      ]
+    }
+  }
+}

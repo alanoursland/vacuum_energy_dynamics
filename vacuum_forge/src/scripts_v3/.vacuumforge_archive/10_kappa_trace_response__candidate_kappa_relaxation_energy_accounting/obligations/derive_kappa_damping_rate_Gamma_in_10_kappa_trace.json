@@ -1,0 +1,13 @@
+{
+  "obligation_id": "derive_kappa_damping_rate_Gamma_in_10_kappa_trace",
+  "script_id": "10_kappa_trace_response__candidate_kappa_relaxation_energy_accounting",
+  "title": "Derive the kappa damping rate Gamma from first principles",
+  "status": "open",
+  "required_by": [],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:20:01.106927+00:00",
+  "description": "The attenuation length L_att ~ c/Gamma and critical damping condition Gamma^2 = 4*omega0^2 are only meaningful if Gamma is derived. Gamma must not be inserted by hand to hide scalar radiation.",
+  "metadata": {}
+}

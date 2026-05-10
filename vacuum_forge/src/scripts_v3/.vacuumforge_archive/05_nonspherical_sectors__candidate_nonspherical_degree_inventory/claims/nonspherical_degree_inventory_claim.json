@@ -1,0 +1,30 @@
+{
+  "claim_id": "nonspherical_degree_inventory_claim",
+  "script_id": "05_nonspherical_sectors__candidate_nonspherical_degree_inventory",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "The theory currently has a credible weak scalar sector (A = 1 + 2Phi/c^2) but is missing trace-free spatial shear, vector frame-dragging, tensor wave, and nonlinear closure sectors. Overclaiming beyond the scalar sector is not licensed.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_kappa_nonspherical_parent",
+    "derive_spatial_shear_sector_inventory",
+    "derive_vector_frame_dragging_sector",
+    "derive_tensor_wave_sector_inventory"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T17:18:43.479986+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}
