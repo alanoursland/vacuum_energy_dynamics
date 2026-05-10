@@ -38,6 +38,7 @@ from vacuumforge.requirements.targets import TargetLibrary, build_standard_targe
 from vacuumforge.requirements.validators import RequirementManager
 from vacuumforge.structure_search.search import StructureSearchEngine
 from vacuumforge.theorems.candidates import TheoremRegistry
+from vacuumforge.governance.manager import GovernanceManager
 
 
 class _ModeProxy:
@@ -198,6 +199,7 @@ class TheoryContext:
         self.scope = ScopeManager()
         self.theorems = TheoremRegistry()
         self.structure_search = StructureSearchEngine()
+        self.governance = GovernanceManager()
 
         # Notation profile
         self._notation: NotationProfile = FRAMEWORK_PROFILE

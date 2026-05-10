@@ -126,6 +126,17 @@ def build_parser() -> argparse.ArgumentParser:
     p_archive_invalidate = archive_sub.add_parser("invalidate", help="Clear derivations")
     p_archive_invalidate.add_argument("script_id")
     archive_sub.add_parser("doctor", help="Scan archive JSON files")
+    p_archive_query = archive_sub.add_parser("query", help="Query governance records")
+    query_sub = p_archive_query.add_subparsers(dest="query_kind", required=True)
+    q_ob = query_sub.add_parser("obligations", help="Query proof obligations")
+    q_ob.add_argument("--status")
+    q_claims = query_sub.add_parser("claims", help="Query claims")
+    q_claims.add_argument("--status")
+    q_claims.add_argument("--tier")
+    q_ev = query_sub.add_parser("evidence", help="Query evidence")
+    q_ev.add_argument("--type")
+    q_br = query_sub.add_parser("branches", help="Query branch decisions")
+    q_br.add_argument("--status")
 
     return parser
 

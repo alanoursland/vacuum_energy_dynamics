@@ -116,6 +116,8 @@ def run_script(script_path: Path) -> int:
             combined_output += "\n"
         combined_output += "\n[stderr]\n"
         combined_output += completed.stderr
+    if completed.returncode != 0:
+        combined_output = f"[SCRIPT_FAILED]\nexit_code={completed.returncode}\n\n" + combined_output
 
     output_path.write_text(combined_output, encoding="utf-8")
 

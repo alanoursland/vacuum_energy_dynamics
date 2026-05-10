@@ -239,3 +239,107 @@ def test_quiet_mode(tmp_path: Path, capsys):
     # Bad script should still appear.
     assert "bad.py" in captured.out
     assert code == 2
+
+
+# -- Governance lint rules ----------------------------------------------------
+
+def test_dataclass_status_with_provenance_is_not_literal_failure(tmp_path: Path):
+    script = tmp_path / "prov.py"
+    script.write_text(
+        "Entry(status='DERIVED', evidence_script='s', evidence_derivation='d')\n",
+        encoding="utf-8",
+    )
+    result = lint_file(script)
+    assert not any(c.rule_name == "verdict_in_dataclass_literal" for c in result.classifications)
+
+
+def test_branch_kill_without_evidence_warns(tmp_path: Path):
+    script = tmp_path / "kill.py"
+    script.write_text("status = 'BRANCH_KILLED'\n", encoding="utf-8")
+    result = lint_file(script)
+    assert any(c.rule_name == "branch_kill_without_evidence" for c in result.classifications)
+
+
+def test_branch_kill_with_evidence_call_is_allowed(tmp_path: Path):
+    script = tmp_path / "kill_supported.py"
+    script.write_text(
+        "Entry(status='BRANCH_KILLED', evidence_ids=['ev'])\n",
+        encoding="utf-8",
+    )
+    result = lint_file(script)
+    assert not any(c.rule_name == "branch_kill_without_evidence" for c in result.classifications)
+
+
+def test_placeholder_derivation_after_symbolic_work_warns(tmp_path: Path):
+    script = tmp_path / "placeholder.py"
+    script.write_text(
+        "import sympy as sp\n"
+        "residual = sp.simplify(x - x)\n"
+        "ns.record_derivation(\n"
+        "    derivation_id='marker',\n"
+        "    inputs=[],\n"
+        "    output=sp.Symbol('marker_stated'),\n"
+        "    method='inventory',\n"
+        "    status=Status.DERIVED,\n"
+        ")\n",
+        encoding="utf-8",
+    )
+    result = lint_file(script)
+    assert any(c.rule_name == "placeholder_derivation_after_symbolic_work" for c in result.classifications)
+
+
+def test_boolean_status_line_warns(tmp_path: Path):
+    script = tmp_path / "bool_status.py"
+    script.write_text(
+        "def status_line(label: str, ok: bool, detail: str = ''):\n"
+        "    mark = 'PASS' if ok else 'WARN'\n"
+        "    print(mark)\n",
+        encoding="utf-8",
+    )
+    result = lint_file(script)
+    assert any(c.rule_name == "boolean_status_line" for c in result.classifications)
+
+
+def test_evidence_call_elsewhere_does_not_satisfy_dataclass_status(tmp_path: Path):
+    script = tmp_path / "coarse.py"
+    script.write_text(
+        "ns.record_evidence(evidence)\n"
+        "Entry(status='BRANCH_KILLED')\n",
+        encoding="utf-8",
+    )
+    result = lint_file(script)
+    assert any(c.rule_name == "verdict_in_dataclass_literal" for c in result.classifications)
+    assert any(c.rule_name == "branch_kill_without_evidence" for c in result.classifications)
+
+
+def test_strong_language_in_docstring_does_not_trigger_governance_rule(tmp_path: Path):
+    script = tmp_path / "docstring.py"
+    script.write_text('"""This mentions BRANCH_KILLED as documentation."""\n', encoding="utf-8")
+    result = lint_file(script)
+    assert not any(c.rule_name == "branch_kill_without_evidence" for c in result.classifications)
+
+
+def test_stale_suggested_location_header_warns(tmp_path: Path):
+    script = tmp_path / "stale.py"
+    script.write_text("# Suggested location:\nprint('x')\n", encoding="utf-8")
+    result = lint_file(script)
+    assert any(c.rule_name == "stale_suggested_location_header" for c in result.classifications)
+
+
+def test_audit_script_without_controlled_failure_warns(tmp_path: Path):
+    script = tmp_path / "audit.py"
+    script.write_text("# Script type: AUDIT\nprint('audit')\n", encoding="utf-8")
+    result = lint_file(script)
+    assert any(c.rule_name == "audit_missing_controlled_failure" for c in result.classifications)
+
+
+def test_audit_script_with_controlled_failure_passes_audit_rule(tmp_path: Path):
+    script = tmp_path / "audit_good.py"
+    script.write_text(
+        "# Script type: AUDIT\n"
+        "def case_6_good_failure():\n"
+        "    return True\n",
+        encoding="utf-8",
+    )
+    result = lint_file(script)
+    assert not any(c.rule_name == "audit_missing_controlled_failure" for c in result.classifications)

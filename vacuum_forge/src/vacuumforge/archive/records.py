@@ -8,6 +8,7 @@ from typing import Any
 import sympy
 
 from vacuumforge.core.status import Status
+from vacuumforge.governance.kinds import RecordKind
 
 
 @dataclass
@@ -20,6 +21,12 @@ class DerivationRecord:
     metadata: dict[str, Any] = field(default_factory=dict)
     recorded_at: str = ""
     vacuumforge_version: str = "0.1.0"
+    record_kind: RecordKind = RecordKind.DERIVATION
+    scope: str | None = None
+    claim_tier: str | None = None
+    result_type: str | None = None
+    superseded_by: str | None = None
+    is_placeholder: bool = False
 
 
 @dataclass
@@ -28,6 +35,9 @@ class DependencyDeclaration:
     upstream_script_id: str
     upstream_derivation_id: str
     expected_output: sympy.Basic | None = None
+    expected_status: str | None = None
+    expected_record_kind: RecordKind | None = None
+    allow_superseded: bool = False
     declared_at: str = ""
 
 
@@ -36,4 +46,6 @@ class DependencyCheckResult:
     dependency: DependencyDeclaration
     status: str
     message: str
-
+    expected_output: sympy.Basic | None = None
+    actual_output: sympy.Basic | None = None
+    residual: sympy.Basic | None = None

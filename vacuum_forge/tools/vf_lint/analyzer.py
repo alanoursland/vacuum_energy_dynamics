@@ -19,8 +19,53 @@ VERDICT_WORDS = {
     "DERIVED",
     "DEFER",
     "BRANCH_KILLED",
+    "FORBIDDEN",
+    "REJECTED",
+    "LICENSED",
+    "SATISFIED_REDUCED",
     "FAIL",
     "FAILED",
+}
+
+STRONG_GOVERNANCE_WORDS = {
+    "BRANCH_KILLED",
+    "KILLED",
+    "FORBIDDEN",
+    "REJECTED",
+    "NO_VIABLE_ROUTE",
+    "LICENSED",
+}
+
+EVIDENCE_CALLS = {
+    "record_evidence",
+    "record_counterexample",
+    "record_branch_decision",
+    "record_claim",
+    "record_overlap_witness",
+    "record_dependency_leak",
+}
+
+PROVENANCE_FIELDS = {
+    "evidence_script",
+    "evidence_derivation",
+    "evidence_ids",
+    "derivation_ids",
+    "claim_tier",
+    "claim_kind",
+    "record_kind",
+}
+
+SYMBOLIC_WORK_CALLS = {
+    "simplify",
+    "is_zero",
+    "check_equal",
+    "solve",
+    "diff",
+    "euler_lagrange_1d",
+    "check_quadratic_positivity",
+    "check_concrete_metric",
+    "CoordinateChange",
+    "StructureSearchEngine.analyze",
 }
 
 # Well-known validation function names recognised regardless of import alias.
@@ -315,6 +360,7 @@ def lint_file(path: str | Path) -> FileLintResult:
     finder.visit(tree)
 
     classifications = [_classify_site(s, imports, assignments) for s in finder.sites]
+    classifications.extend(_classify_governance_rules(path, tree, source))
 
     # INFO-level check: verdicts present but no validation imports.
     has_validation_imports = bool(imports.imported_roots & {"sympy", "vacuumforge"})
@@ -329,6 +375,142 @@ def lint_file(path: str | Path) -> FileLintResult:
         )
 
     return FileLintResult(path, classifications, has_validation_imports=has_validation_imports)
+
+
+def _classify_governance_rules(path: Path, tree: ast.AST, source: str) -> list[VerdictClassification]:
+    classifications: list[VerdictClassification] = []
+    calls = [n for n in ast.walk(tree) if isinstance(n, ast.Call)]
+    call_names = {_call_name(c.func) or "" for c in calls}
+    call_leafs = {name.split(".")[-1] for name in call_names}
+    has_symbolic_work = any(
+        name in SYMBOLIC_WORK_CALLS or name.split(".")[-1] in SYMBOLIC_WORK_CALLS
+        for name in call_names
+    )
+    if "# Suggested location:" in source:
+        classifications.append(
+            VerdictClassification(
+                VerdictSite(path, 0, 0, "stale_header", "# Suggested location", tree),
+                "WARN",
+                "stale '# Suggested location:' header should be replaced with stable group metadata",
+                rule_name="stale_suggested_location_header",
+            )
+        )
+    metadata = _parse_comment_metadata(source)
+    if metadata.get("script type", "").upper() == "AUDIT" and "case_6_good_failure" not in source:
+        classifications.append(
+            VerdictClassification(
+                VerdictSite(path, 0, 0, "audit_controlled_failure", "Script type: AUDIT", tree),
+                "WARN",
+                "audit script has no controlled failure case",
+                rule_name="audit_missing_controlled_failure",
+            )
+        )
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Constant) and isinstance(node.value, str):
+            text = node.value
+            if _is_docstring_constant(node):
+                continue
+            if any(word in text for word in STRONG_GOVERNANCE_WORDS) and not _node_has_local_provenance(node):
+                classifications.append(
+                    VerdictClassification(
+                        VerdictSite(path, getattr(node, "lineno", 0), getattr(node, "col_offset", 0),
+                                    "governance_status", text, node),
+                        "WARN",
+                        "strong governance language appears without evidence-recording call",
+                        rule_name="branch_kill_without_evidence",
+                    )
+                )
+
+    for call in calls:
+        name = _call_name(call.func) or ""
+        leaf = name.split(".")[-1]
+        if leaf == "record_derivation":
+            has_empty_inputs = any(
+                kw.arg == "inputs" and isinstance(kw.value, ast.List) and len(kw.value.elts) == 0
+                for kw in call.keywords
+            )
+            has_placeholder_output = any(
+                kw.arg == "output" and _is_placeholder_symbol_call(kw.value)
+                for kw in call.keywords
+            )
+            if has_symbolic_work and (has_empty_inputs or has_placeholder_output):
+                classifications.append(
+                    VerdictClassification(
+                        VerdictSite(path, call.lineno, call.col_offset,
+                                    "placeholder_derivation", name, call),
+                        "WARN",
+                        "script performs symbolic work but records a placeholder derivation",
+                        rule_name="placeholder_derivation_after_symbolic_work",
+                    )
+                )
+
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            args = [a.arg for a in node.args.args]
+            if len(args) >= 2 and args[1] == "ok":
+                source = ast.unparse(node) if hasattr(ast, "unparse") else ""
+                if "'PASS'" in source and "'WARN'" in source and "'FAIL'" not in source:
+                    classifications.append(
+                        VerdictClassification(
+                            VerdictSite(path, node.lineno, node.col_offset,
+                                        "boolean_status_line", node.name, node),
+                            "WARN",
+                            "boolean status helper cannot emit FAIL",
+                            rule_name="boolean_status_line",
+                        )
+                    )
+
+    return classifications
+
+
+def _is_placeholder_symbol_call(node: ast.AST) -> bool:
+    if not isinstance(node, ast.Call):
+        return False
+    name = _call_name(node.func) or ""
+    if name.split(".")[-1] != "Symbol" or not node.args:
+        return False
+    first = node.args[0]
+    return (
+        isinstance(first, ast.Constant)
+        and isinstance(first.value, str)
+        and ("stated" in first.value or "marker" in first.value)
+    )
+
+
+def _parse_comment_metadata(source: str) -> dict[str, str]:
+    metadata: dict[str, str] = {}
+    for line in source.splitlines()[:40]:
+        stripped = line.strip()
+        if not stripped.startswith("#") or ":" not in stripped:
+            continue
+        key, value = stripped[1:].split(":", 1)
+        metadata[key.strip().lower()] = value.strip()
+    return metadata
+
+
+def _is_docstring_constant(node: ast.AST) -> bool:
+    parent = getattr(node, "_parent", None)
+    grandparent = getattr(parent, "_parent", None)
+    if not isinstance(parent, ast.Expr):
+        return False
+    if isinstance(grandparent, (ast.Module, ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):
+        return grandparent.body and grandparent.body[0] is parent
+    return False
+
+
+def _node_has_local_provenance(node: ast.AST) -> bool:
+    current = node
+    while current is not None:
+        if isinstance(current, ast.Call):
+            if any(kw.arg in PROVENANCE_FIELDS for kw in current.keywords):
+                return True
+            name = _call_name(current.func) or ""
+            if name.split(".")[-1] in EVIDENCE_CALLS:
+                return True
+            return False
+        current = getattr(current, "_parent", None)
+    return False
 
 
 # ---------------------------------------------------------------------------
@@ -353,6 +535,8 @@ def _contains_verdict_literal(node: ast.AST) -> bool:
 
 
 def _has_verdict_status_keyword(node: ast.Call) -> bool:
+    if any(kw.arg in PROVENANCE_FIELDS for kw in node.keywords):
+        return False
     for kw in node.keywords:
         if kw.arg == "status" and isinstance(kw.value, ast.Constant):
             return isinstance(kw.value.value, str) and kw.value.value in VERDICT_WORDS
