@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_residual_kill_or_nonmetric_rule_20",
+  "script_id": "20_no_overlap_and_projection_operators__candidate_metric_sector_no_overlap_operator",
+  "title": "Derive residual-kill or non-metric residual rule",
+  "status": "open",
+  "required_by": [
+    "metric_sector_no_overlap_route_20"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T20:07:21.781559+00:00",
+  "description": "Show why residual zeta/kappa metric trace is killed, non-metric, or genuinely no-overlap.",
+  "metadata": {}
+}

@@ -1,0 +1,31 @@
+{
+  "claim_id": "projection_commutation_summary",
+  "script_id": "20_no_overlap_and_projection_operators__candidate_projection_commutation_and_divergence",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "heuristic",
+  "statement": "A no-overlap projector does not automatically commute with derivatives or divergence. Variable, boundary-sensitive, or nonlocal projectors carry commutator and surface terms; divergence-compatible projection remains a theorem target.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [],
+  "obligation_ids": [
+    "derive_projected_divergence_identity_20",
+    "derive_commutator_law_20",
+    "derive_connection_compatible_sector_basis_20",
+    "derive_projection_boundary_terms_20",
+    "derive_projection_leakage_controls_20"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-10T20:07:26.433315+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "heuristic",
+      "effective_status": "heuristic",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

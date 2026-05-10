@@ -1,0 +1,19 @@
+{
+  "derivation_id": "source_sector_projection_operator_marker",
+  "inputs": [],
+  "output": {
+    "srepr": "Symbol('source_sector_projection_operator_complete')",
+    "latex": "source_{sector projection operator complete}"
+  },
+  "method": "source_sector_projection_operator",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-10T20:07:23.344440+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "inventory_marker",
+  "scope": null,
+  "claim_tier": null,
+  "result_type": null,
+  "superseded_by": null,
+  "is_placeholder": true
+}

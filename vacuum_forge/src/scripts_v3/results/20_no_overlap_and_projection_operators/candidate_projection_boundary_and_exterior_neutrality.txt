@@ -1,0 +1,285 @@
+
+========================================================================================================================
+Candidate Projection Boundary And Exterior Neutrality
+========================================================================================================================
+[INFO] Archive dependency check:
+  - projection_commutation_and_divergence_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Boundary and exterior projection problem
+========================================================================================================================
+Question:
+
+  Can O preserve boundary neutrality, M_ext, and exterior scalar silence?
+
+Goal:
+
+  prevent projection from becoming a boundary counterterm or exterior recovery patch
+
+Discipline:
+
+  no M_ext shift
+  no exterior scalar charge
+  no shell source from projection
+  no far-zone hidden flux
+  no recovery-tuned projection
+  no dark boundary patch
+
+[unresolved_obligations]
+[OBLIGATION] boundary projection problem posed -- boundary-neutral O not yet derived
+
+========================================================================================================================
+Case 1: Boundary and exterior neutrality inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: boundary/exterior-neutral projection target
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O preserves boundary neutrality, M_ext, and exterior scalar silence
+Role: core exterior safety target
+Allowed if: surface flux, mass neutrality, and scalar neutrality are derived
+Forbidden if: projection cancels boundary failure after it appears
+[DEFER] B1: boundary/exterior-neutral projection target: THEOREM_TARGET
+Missing: boundary flux theorem, M_ext theorem, scalar silence theorem
+Consequence: boundary-neutral projection remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+B2: diagnostic-only boundary label
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O labels interior/exterior evidence without modifying equations
+Role: safe fallback
+Allowed if: label has no source, metric, or flux effect
+Forbidden if: label becomes an active boundary filter
+[INFO] B2: diagnostic-only boundary label: SAFE_IF
+Missing: none for diagnostic use
+Consequence: safe while active boundary projection remains deferred
+
+------------------------------------------------------------------------------------------------------------------------
+B3: compact-support structural projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: projected sector has structural zero flux at exterior boundary
+Role: promising candidate class
+Allowed if: compact support is derived from the field law
+Forbidden if: support cutoff is imposed to hide leakage
+[INFO] B3: compact-support structural projector: CANDIDATE
+Missing: support theorem and smooth matching law
+Consequence: candidate route for exterior scalar silence
+
+------------------------------------------------------------------------------------------------------------------------
+B4: trace-free exterior-neutral split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: projected metric/source sector is trace-neutral outside the active domain
+Role: scalar silence route
+Allowed if: trace neutrality follows from equations and boundary conditions
+Forbidden if: trace is deleted to fix exterior scalar charge
+[DEFER] B4: trace-free exterior-neutral split: THEOREM_TARGET
+Missing: exterior trace-neutrality theorem
+Consequence: scalar silence remains unproved
+
+------------------------------------------------------------------------------------------------------------------------
+B5: source-neutral boundary projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O removes ordinary/exchange/curvature source overlap at the boundary
+Role: source routing target
+Allowed if: source neutrality is derived before projection is applied
+Forbidden if: boundary mismatch is relabeled as source routing
+[DEFER] B5: source-neutral boundary projector: THEOREM_TARGET
+Missing: boundary source-routing theorem
+Consequence: source boundary neutrality remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+B6: interior branch filter
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O acts only as an admissibility filter for interior candidate branches
+Role: safe candidate use
+Allowed if: filtered branches are not patched after recovery failure
+Forbidden if: filter is tuned by exterior recovery
+[INFO] B6: interior branch filter: CANDIDATE
+Missing: branch admissibility criteria
+Consequence: usable only as pre-recovery diagnostic filter
+
+------------------------------------------------------------------------------------------------------------------------
+B7: boundary counterterm projection
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O adds or selects counterterms to cancel boundary leakage
+Role: forbidden repair branch
+Allowed if: never as repair
+Forbidden if: counterterm is selected after leakage appears
+[FAIL] B7: boundary counterterm projection: REJECTED
+Missing: not pursued
+Consequence: projection cannot become a boundary counterterm
+
+------------------------------------------------------------------------------------------------------------------------
+B8: shell source from projection
+------------------------------------------------------------------------------------------------------------------------
+Candidate: projection produces a shell source at the matching surface
+Role: forbidden source shortcut
+Allowed if: never without independent source law
+Forbidden if: shell hides discontinuity or mass shift
+[FAIL] B8: shell source from projection: REJECTED
+Missing: not pursued
+Consequence: projection cannot create shell matter
+
+------------------------------------------------------------------------------------------------------------------------
+B9: far-zone hidden flux projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: projection suppresses far-zone leakage or scalar tail
+Role: forbidden exterior patch
+Allowed if: never as a patch
+Forbidden if: tail is removed to preserve exterior recovery
+[FAIL] B9: far-zone hidden flux projector: REJECTED
+Missing: not pursued
+Consequence: far-zone silence must be derived, not filtered
+
+------------------------------------------------------------------------------------------------------------------------
+B10: recovery-tuned exterior projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: choose O so Schwarzschild/PPN/exterior recovery works
+Role: forbidden recovery shortcut
+Allowed if: never
+Forbidden if: recovery chooses boundary behavior
+[FAIL] B10: recovery-tuned exterior projector: REJECTED
+Missing: not pursued
+Consequence: recovery remains downstream diagnostic
+
+------------------------------------------------------------------------------------------------------------------------
+B11: dark boundary patch
+------------------------------------------------------------------------------------------------------------------------
+Candidate: optional dark label absorbs boundary or exterior mismatch
+Role: forbidden optional-sector patch
+Allowed if: never as repair
+Forbidden if: dark label fixes ordinary-sector failure
+[FAIL] B11: dark boundary patch: REJECTED
+Missing: not pursued
+Consequence: dark sector remains optional downstream only
+
+------------------------------------------------------------------------------------------------------------------------
+B12: boundary neutrality decision
+------------------------------------------------------------------------------------------------------------------------
+Candidate: active boundary-neutral O remains deferred; diagnostic labels and compact-support candidates survive
+Role: current branch decision
+Allowed if: future scripts keep exterior neutrality as obligation
+Forbidden if: projection is used as boundary repair
+[PASS] B12: boundary neutrality decision: RECOMMENDED
+Missing: surface flux, M_ext, scalar silence theorems
+Consequence: Group 20 can close with O still theorem-targeted
+
+========================================================================================================================
+Case 2: Compact boundary ledger
+========================================================================================================================
+| Entry | Candidate | Status | Consequence |
+|---|---|---|---|
+| B1: boundary/exterior-neutral projection target | O preserves boundary neutrality, M_ext, and exterior scalar silence | THEOREM_TARGET | boundary-neutral projection remains theorem target |
+| B2: diagnostic-only boundary label | O labels interior/exterior evidence without modifying equations | SAFE_IF | safe while active boundary projection remains deferred |
+| B3: compact-support structural projector | projected sector has structural zero flux at exterior boundary | CANDIDATE | candidate route for exterior scalar silence |
+| B4: trace-free exterior-neutral split | projected metric/source sector is trace-neutral outside the active domain | THEOREM_TARGET | scalar silence remains unproved |
+| B5: source-neutral boundary projector | O removes ordinary/exchange/curvature source overlap at the boundary | THEOREM_TARGET | source boundary neutrality remains theorem target |
+| B6: interior branch filter | O acts only as an admissibility filter for interior candidate branches | CANDIDATE | usable only as pre-recovery diagnostic filter |
+| B7: boundary counterterm projection | O adds or selects counterterms to cancel boundary leakage | REJECTED | projection cannot become a boundary counterterm |
+| B8: shell source from projection | projection produces a shell source at the matching surface | REJECTED | projection cannot create shell matter |
+| B9: far-zone hidden flux projector | projection suppresses far-zone leakage or scalar tail | REJECTED | far-zone silence must be derived, not filtered |
+| B10: recovery-tuned exterior projector | choose O so Schwarzschild/PPN/exterior recovery works | REJECTED | recovery remains downstream diagnostic |
+| B11: dark boundary patch | optional dark label absorbs boundary or exterior mismatch | REJECTED | dark sector remains optional downstream only |
+| B12: boundary neutrality decision | active boundary-neutral O remains deferred; diagnostic labels and compact-support candidates survive | RECOMMENDED | Group 20 can close with O still theorem-targeted |
+
+[governance_assessments]
+[INFO] compact boundary projection ledger produced -- boundary-neutral O remains theorem target
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 2
+RECOMMENDED: 1
+REJECTED: 5
+SAFE_IF: 1
+THEOREM_TARGET: 3
+
+Interpretation:
+  Boundary/exterior-neutral projection remains theorem-targeted.
+  Diagnostic labels and structurally compact-support candidates remain safe routes.
+  Counterterm, shell, far-zone, recovery, and dark patches are rejected.
+
+[governance_assessments]
+[INFO] boundary projection status count produced -- {'THEOREM_TARGET': 3, 'SAFE_IF': 1, 'CANDIDATE': 2, 'REJECTED': 5, 'RECOMMENDED': 1}
+
+========================================================================================================================
+Case 4: Surface flux diagnostic
+========================================================================================================================
+Exterior scalar-tail diagnostic:
+
+  phi_tail = A/r
+  4*pi*r^2*d(phi_tail)/dr = -4*pi*A
+
+Compact-support toy diagnostic:
+
+  phi_compact = phi0*(1 - r^2/R^2)^2
+  [4*pi*r^2*d(phi_compact)/dr] at r=R = 0
+
+Interpretation:
+  A 1/r exterior scalar tail carries nonzero surface flux.
+  A compact-support toy can have zero boundary flux, but only as a diagnostic shape.
+  A real theory must derive support and matching; projection cannot impose them after leakage appears.
+
+[sample_results]
+[PASS] exterior scalar tail has nonzero surface flux -- tail flux = -4*pi*A
+[PASS] compact-support toy has zero boundary flux -- boundary flux = 0
+
+[governance_assessments]
+[DEFER] surface flux diagnostic is not a boundary theorem -- support and matching law missing
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+Boundary/exterior projection fails if:
+
+1. O shifts M_ext.
+2. O hides exterior scalar charge.
+3. O adds a boundary counterterm.
+4. O creates a shell source at the matching surface.
+5. O suppresses far-zone hidden flux.
+6. O is tuned by Schwarzschild/PPN recovery.
+7. O invokes a dark boundary patch.
+8. O converts boundary mismatch into source-sector routing.
+
+[counterexamples]
+[FAIL] boundary counterterm projection rejected -- projection cannot repair leakage
+[FAIL] shell source from projection rejected -- projection cannot create matching-surface matter
+[FAIL] far-zone hidden flux projector rejected -- exterior silence must be derived
+[FAIL] recovery-tuned exterior projector rejected -- recovery remains downstream
+[FAIL] dark boundary patch rejected -- dark labels cannot patch ordinary boundary failure
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Boundary/exterior-neutral projection is not solved.
+
+Allowed status:
+
+  diagnostic-only boundary labels remain safe
+  compact-support and interior branch filters remain candidate classes
+  trace-free exterior-neutral and source-neutral projectors remain theorem targets
+
+Rejected:
+
+  boundary counterterm projection
+  shell source from projection
+  far-zone hidden flux projector
+  recovery-tuned exterior projector
+  dark boundary patch
+
+Missing before boundary-neutral O can be real:
+
+  boundary flux theorem
+  M_ext neutrality theorem
+  exterior scalar silence theorem
+  support and smooth matching law
+  source boundary routing theorem
+
+Possible next artifact:
+  candidate_projection_boundary_and_exterior_neutrality.md
+
+Possible next script:
+  candidate_no_overlap_projection_group_status_summary.py
+
+[governance_assessments]
+[DEFER] boundary-neutral O remains theorem target -- surface flux and exterior neutrality laws missing

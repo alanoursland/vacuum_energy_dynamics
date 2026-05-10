@@ -9,7 +9,7 @@
   "obligation_ids": [],
   "activation_conditions": [],
   "superseded_by": null,
-  "created_at": "2026-05-10T18:31:38.873134+00:00",
+  "created_at": "2026-05-10T20:07:20.234563+00:00",
   "description": "Residual eraser projector is rejected unless residual-kill is derived through a real kernel/image split.",
   "metadata": {
     "validation": {

@@ -3,7 +3,7 @@
     "dependency_id": "parent_correction_tensor_group_status_marker",
     "upstream_script_id": "19_parent_correction_tensor_audit__candidate_parent_correction_tensor_group_status_summary",
     "upstream_derivation_id": "parent_correction_tensor_group_status_summary_marker",
-    "declared_at": "2026-05-10T18:31:36.745083+00:00",
+    "declared_at": "2026-05-10T20:07:18.132709+00:00",
     "allow_superseded": false
   }
 ]

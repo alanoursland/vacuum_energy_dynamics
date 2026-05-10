@@ -21,6 +21,9 @@ SAFE_IF
 CANDIDATE
 PROVISIONAL
 REJECTED
+DEFERRED
+NOT_READY
+CLOSED
 MISSING
 UNFINISHED
 UNRESOLVED
@@ -332,12 +335,25 @@ H_exch shortcut.
 O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]
 \]
 
-No-overlap operator target for count-once recombination.
+No-overlap / projection-operator target for count-once recombination.
 
 Status:
 
 ```text
-UNRESOLVED CENTRAL BOTTLENECK
+THEOREM_TARGET / DEFERRED AFTER GROUP 20
+NO UNIVERSAL ACTIVE O DEFINED
+ROLE-SPECIFIC PROJECTOR REQUIREMENTS EXPLICIT
+DIAGNOSTIC-ONLY LABELS SAFE_IF
+```
+
+Group 20 result:
+
+```text
+O cannot currently be used as one universal no-overlap operator.
+An active O requires domain, codomain, kernel, image, composition law,
+measure or pairing if orthogonality is claimed,
+derivative/divergence behavior, boundary behavior,
+and source/mass/scalar leakage controls.
 ```
 
 \[
@@ -1623,7 +1639,7 @@ Current source assignments:
 | (J_V)                 | vacuum-volume current                           | UNRESOLVED                       |
 | (\Sigma_V)            | volume source / creation side                   | ROLE-LEVEL ONLY                  |
 | (R_V)                 | relaxation / return side                        | ROLE-LEVEL ONLY                  |
-| (O)                   | no-overlap operator                             | UNRESOLVED                       |
+| (O)                   | no-overlap / projection target                  | THEOREM_TARGET / DEFERRED        |
 | (J_{\rm sub})         | neutral substrate / pure-wind role              | THEOREM_TARGET / NOT DEFINED     |
 | (J_{\rm exch})        | active exchange role                            | THEOREM_TARGET / NOT DEFINED     |
 | (\Sigma_{\rm exch}/R_{\rm exch}) | exchange source / relaxation sides   | ROLE-LEVEL ONLY / NOT OPERATOR-LEVEL |
@@ -1961,7 +1977,17 @@ No-overlap theorem target:
 Status:
 
 ```text
-UNRESOLVED
+THEOREM_TARGET / DEFERRED AFTER GROUP 20
+NO UNIVERSAL ACTIVE O DEFINED
+```
+
+Group 20 constraints:
+
+```text
+O cannot be introduced by name.
+Universal decorative O is rejected.
+Role-specific projectors require independent domain/kernel/image/boundary laws.
+Diagnostic-only labels remain safe only if they do not alter equations.
 ```
 
 Residual-kill convention:
@@ -2230,7 +2256,7 @@ K_\kappa,;\mu_\kappa,;\lambda_\kappa,;\chi_\kappa
 
 kappa relaxation parameters if a non-metric / relaxation branch survives.
 
-Projectors / operators still missing or unresolved:
+Projectors / operators still missing, unresolved, or theorem-targeted:
 
 ```text
 P_scalar,
@@ -2240,7 +2266,12 @@ P_relax,
 P_boundary,
 P_recombination,
 P_coeff,
-O no-overlap operator.
+O no-overlap / projection operator,
+O_metric,
+O_source,
+O_current,
+O_divergence,
+O_boundary.
 ```
 
 Structural unknowns:
@@ -2262,7 +2293,11 @@ timelike/nonzero active domain,
 equilibrium-frame fallback,
 static-source neutrality theorem,
 boundary neutrality theorem,
-no-overlap operator O,
+active no-overlap operator O,
+role-specific projector derivations,
+projector domain/kernel/image laws,
+projector divergence and commutator laws,
+projector boundary and exterior neutrality laws,
 residual-kill derivation or parent identity,
 kappa cleanup,
 B_s/F_zeta insertion law,
@@ -2354,6 +2389,16 @@ A_spatial / B_s spatial-trace origin:
   with residual zeta/kappa metric trace killed or non-metric,
   unless a real no-overlap operator O is later derived.
 
+No-overlap / projection status:
+  Group 20 completed the no-overlap audit;
+  O remains theorem-targeted and deferred;
+  no universal active O is defined;
+  role-specific projector requirements are now explicit;
+  diagnostic-only labels are safe only if they do not alter equations;
+  active projector use requires domain, kernel, image, composition,
+  pairing/measure, divergence behavior, boundary behavior,
+  and source/mass/scalar leakage controls.
+
 Vacuum-current / exchange-continuity sector:
   J_V remains undefined,
   u_vac remains unresolved / domain-limited,
@@ -2393,7 +2438,9 @@ Parent conservation:
 Metric recombination:
   reduced bookkeeping map stated,
   scalar double-counting constraints sharpened,
-  no-overlap O unresolved,
+  no-overlap O theorem-targeted and deferred after Group 20,
+  universal active O rejected as decorative unless derived,
+  role-specific projector route remains candidate,
   residual-kill / non-metric residual is the safest provisional convention.
 ```
 
@@ -2520,7 +2567,9 @@ J_V/J_v forbidden as far-zone scalar current or coefficient tuning knob,
 e_kappa kept separate from epsilon_vac_config until kappa-zeta map is derived,
 u_vac not promoted without a non-circular J_V definition,
 residual-kill marked provisional,
-O marked unresolved.
+O marked theorem-targeted and deferred,
+diagnostic-only no-overlap labels allowed only without field-equation effect,
+universal decorative O rejected.
 ```
 
 Anti-singularity claim ladder:
@@ -2697,10 +2746,22 @@ O[B_s, zeta_residual/kappa_residual, J_V] = 0
 Status:
 
 ```text
-UNRESOLVED
+THEOREM_TARGET / DEFERRED AFTER GROUP 20
+NO UNIVERSAL ACTIVE O DEFINED
 ```
 
-Candidate minimal forms have been identified but not derived:
+Group 20 status:
+
+```text
+O is not defined as an active no-overlap operator.
+No universal projection operator is available.
+No-overlap remains a theorem target.
+Role-specific projector requirements are explicit.
+Diagnostic-only labels remain safe.
+Parent equation forms remain not ready.
+```
+
+Candidate minimal forms and routes have been identified but not derived:
 
 ```text
 orthogonality pairing,
@@ -2709,7 +2770,13 @@ metric insertion exclusivity,
 residual-kill convention,
 energy/accounting exclusion,
 boundary-supported no-overlap,
-diagnostic elliptic overlap audit.
+diagnostic elliptic overlap audit,
+role-specific O_metric,
+role-specific O_source,
+role-specific O_current,
+role-specific O_divergence,
+role-specific O_boundary,
+diagnostic-only O_diagnostic.
 ```
 
 Current interpretation:
@@ -2719,7 +2786,38 @@ orthogonality is only a candidate if the pairing is real,
 projector split is only a candidate if the projectors are real,
 residual-kill / insertion exclusivity is the safest convention but not a derived O,
 non-metric bookkeeping is useful but not O,
-diagnostic overlap audits are not ontology.
+diagnostic overlap audits are not ontology,
+diagnostic-only labels are safe only if they do not alter sources, metrics,
+divergence identities, boundary behavior, or recovery.
+```
+
+Minimum burden for any active projector:
+
+```text
+domain,
+codomain,
+kernel,
+image,
+composition / idempotence law,
+measure or pairing if orthogonality is claimed,
+derivative / divergence behavior,
+boundary behavior,
+source, mass, and scalar leakage behavior.
+```
+
+Rejected by Group 20:
+
+```text
+O by declaration,
+O as residual eraser,
+O as recovery projector,
+O as boundary counterterm,
+O as source separator by name,
+O as tensor insertability patch,
+O as Bianchi/divergence patch,
+O as current repair,
+O as shell source generator,
+O as dark-sector patch.
 ```
 
 ## 17.6 Boundary Safety
@@ -2823,20 +2921,29 @@ Result:
   parent equation forms remain theorem targets only.
 ```
 
+Completed no-overlap / projection audit (Group 20):
+
+```text
+No universal active O was derived.
+O remains theorem-targeted and deferred.
+Role-specific projector requirements are explicit.
+Diagnostic-only no-overlap labels are safe only if they do not alter equations.
+Divergence-compatible projection remains theorem-targeted.
+Boundary/exterior-neutral projection remains theorem-targeted.
+Parent equation forms remain not ready.
+```
+
 The next technical target should be framed as:
 
 ```text
-What structural conditions would allow any correction tensor
-to become insertable?
+What bottleneck should be attacked next without assuming O exists?
 
-Required before insertion:
-  independent tensor definition (not from naming or from the source it corrects),
-  divergence identity or independently defined source-balance partner,
-  source separation from ordinary matter,
-  A-sector mass neutrality,
-  scalar-trace / no-overlap safety,
-  boundary and far-zone neutrality,
-  recovery-independent construction.
+Safe options:
+  core bottleneck closure and field snapshot,
+  metric insertion recovery retest,
+  source routing and mass neutrality,
+  role-specific projector derivation,
+  constraint projection and parent identity only if a real projector route is derived.
 ```
 
 Known unresolved dependencies (retained from prior status):
@@ -2878,7 +2985,16 @@ Sigma/R split is role-level only.
 
 Flux direction is missing.
 
-No-overlap O remains unresolved.
+No-overlap O remains theorem-targeted and deferred after Group 20.
+
+Group 20 no-overlap / projection status:
+  O remains theorem-targeted and deferred;
+  no universal active projection operator is defined;
+  role-specific projector requirements are explicit;
+  diagnostic-only labels remain safe only without field-equation effect;
+  divergence-compatible projection remains theorem-targeted;
+  boundary/exterior-neutral projection remains theorem-targeted;
+  parent equation forms remain not ready.
 
 Residual-kill / non-metric residual is the safest provisional convention.
 

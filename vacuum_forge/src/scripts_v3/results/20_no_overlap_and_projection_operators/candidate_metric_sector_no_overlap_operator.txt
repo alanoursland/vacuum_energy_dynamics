@@ -1,0 +1,285 @@
+
+========================================================================================================================
+Candidate Metric-Sector No-Overlap Operator
+========================================================================================================================
+[INFO] Archive dependency check:
+  - projection_operator_minimum_structure_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Metric-sector no-overlap problem
+========================================================================================================================
+Question:
+
+  Can O separate A, B_s, zeta insertion, and residual trace?
+
+Goal:
+
+  return to the Group 16 metric-insertion bottleneck using the minimum projector burden
+
+Discipline:
+
+  no scalar double-counting
+  no exterior scalar charge
+  no M_ext shift
+  no residual trace restoration by name
+  no GR-copy spatial metric
+  no B=1/A construction as parent law
+  recovery downstream only
+
+[unresolved_obligations]
+[OBLIGATION] metric-sector no-overlap problem posed -- O_metric not yet defined
+
+========================================================================================================================
+Case 1: Metric-sector no-overlap inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+M1: metric-sector no-overlap target
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_metric separates A, B_s, zeta insertion, kappa, and residual trace
+Role: core Group 20 metric target
+Allowed if: domain/kernel/image/idempotence/boundary behavior are supplied
+Forbidden if: O_metric is named only to prevent scalar double-counting
+[DEFER] M1: metric-sector no-overlap target: THEOREM_TARGET
+Missing: explicit O_metric operator
+Consequence: metric-sector no-overlap remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+M2: trace/traceless spatial split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: decompose spatial perturbation into trace and traceless pieces
+Role: candidate algebraic projector class
+Allowed if: inner product or contraction metric is specified and trace source routing is defined
+Forbidden if: trace projection is used to hide zeta/kappa residual overlap
+[INFO] M2: trace/traceless spatial split: CANDIDATE
+Missing: metric/pairing and source routing
+Consequence: useful local algebraic structure, not enough for B_s insertion
+
+------------------------------------------------------------------------------------------------------------------------
+M3: determinant/unimodular split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: gamma_ij = exp(2 zeta / 3) * bar_gamma_ij with det(bar_gamma)=1
+Role: structural volume/shear split
+Allowed if: used as decomposition only, not dynamics
+Forbidden if: declared to be the B_s/F_zeta field law
+[INFO] M3: determinant/unimodular split: STRUCTURAL
+Missing: source law, insertion law, boundary theorem
+Consequence: supports zeta as volume scalar but does not define O_metric
+
+------------------------------------------------------------------------------------------------------------------------
+M4: conformal volume projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: project scalar volume response into zeta/B_s companion channel
+Role: candidate B_s insertion projector
+Allowed if: kernel/image separate B_s companion from residual trace and preserve M_ext
+Forbidden if: projection is chosen to fit gamma_like or AB
+[DEFER] M4: conformal volume projector: THEOREM_TARGET
+Missing: kernel/image, coefficient origin, boundary neutrality
+Consequence: B_s/F_zeta insertion remains unresolved
+
+------------------------------------------------------------------------------------------------------------------------
+M5: A-sector scalar source separation
+------------------------------------------------------------------------------------------------------------------------
+Candidate: rho and exterior mass response stay in A-sector only
+Role: scalar mass protection rule
+Allowed if: A carries long-range mass and B_s/zeta/kappa do not duplicate rho
+Forbidden if: B_s/zeta/kappa become second mass-scalar channels
+[OBLIGATION] M5: A-sector scalar source separation: REQUIRED
+Missing: source routing theorem
+Consequence: A-sector mass result remains protected
+
+------------------------------------------------------------------------------------------------------------------------
+M6: residual zeta killed
+------------------------------------------------------------------------------------------------------------------------
+Candidate: if zeta enters B_s, residual zeta metric trace is killed
+Role: current safest metric convention
+Allowed if: explicitly provisional or derived by real O_metric
+Forbidden if: treated as a derived no-overlap theorem now
+[INFO] M6: residual zeta killed: SAFE_IF
+Missing: residual-kill derivation
+Consequence: safest convention remains provisional
+
+------------------------------------------------------------------------------------------------------------------------
+M7: residual zeta non-metric
+------------------------------------------------------------------------------------------------------------------------
+Candidate: residual zeta survives only as diagnostic/accounting/non-metric variable
+Role: safe fallback branch
+Allowed if: residual has no metric trace, scalar charge, M_ext shift, or source role
+Forbidden if: non-metric residual later re-enters metric through accounting
+[INFO] M7: residual zeta non-metric: SAFE_IF
+Missing: non-metric bookkeeping rule
+Consequence: residual variables may survive without double-counting
+
+------------------------------------------------------------------------------------------------------------------------
+M8: residual restored by O
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O permits neutral residual metric trace alongside B_s insertion
+Role: high-burden no-overlap branch
+Allowed if: real O_metric proves orthogonal/no-overlap residual sector with boundary neutrality
+Forbidden if: used as escape from residual-kill without kernel/image
+[WARN] M8: residual restored by O: RISK
+Missing: O_metric, measure, boundary theorem, scalar neutrality
+Consequence: not current working route
+
+------------------------------------------------------------------------------------------------------------------------
+M9: recovery-chosen split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: choose metric split from gamma_like, AB, Schwarzschild, or PPN recovery
+Role: forbidden recovery construction
+Allowed if: recovery is only downstream test
+Forbidden if: recovery chooses kernel/image/coefficient/residual status
+[FAIL] M9: recovery-chosen split: REJECTED
+Missing: not pursued
+Consequence: recovery cannot define O_metric
+
+------------------------------------------------------------------------------------------------------------------------
+M10: GR-copy spatial metric
+------------------------------------------------------------------------------------------------------------------------
+Candidate: copy GR spatial metric form and name it no-overlap
+Role: forbidden construction shortcut
+Allowed if: never as derivation
+Forbidden if: accepted as B_s/F_zeta or O_metric derivation
+[FAIL] M10: GR-copy spatial metric: REJECTED
+Missing: not pursued
+Consequence: prevents metric insertion from becoming GR notation import
+
+------------------------------------------------------------------------------------------------------------------------
+M11: B=1/A construction
+------------------------------------------------------------------------------------------------------------------------
+Candidate: use exterior B=1/A as general metric-sector projector
+Role: forbidden exterior overextension
+Allowed if: used only as reduced exterior recovery check
+Forbidden if: used as parent metric no-overlap rule
+[FAIL] M11: B=1/A construction: REJECTED
+Missing: not pursued
+Consequence: AB recovery remains downstream diagnostic
+
+------------------------------------------------------------------------------------------------------------------------
+M12: metric-sector current decision
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_metric cannot yet be defined; residual-kill/non-metric residual remains safest
+Role: current branch decision
+Allowed if: next scripts keep metric-sector O as theorem target
+Forbidden if: later scripts treat the convention as solved no-overlap
+[PASS] M12: metric-sector current decision: RECOMMENDED
+Missing: role-specific metric projector derivation
+Consequence: next script should test source-sector projection
+
+========================================================================================================================
+Case 2: Compact metric-sector ledger
+========================================================================================================================
+| Entry | Candidate | Status | Consequence |
+|---|---|---|---|
+| M1: metric-sector no-overlap target | O_metric separates A, B_s, zeta insertion, kappa, and residual trace | THEOREM_TARGET | metric-sector no-overlap remains theorem target |
+| M2: trace/traceless spatial split | decompose spatial perturbation into trace and traceless pieces | CANDIDATE | useful local algebraic structure, not enough for B_s insertion |
+| M3: determinant/unimodular split | gamma_ij = exp(2 zeta / 3) * bar_gamma_ij with det(bar_gamma)=1 | STRUCTURAL | supports zeta as volume scalar but does not define O_metric |
+| M4: conformal volume projector | project scalar volume response into zeta/B_s companion channel | THEOREM_TARGET | B_s/F_zeta insertion remains unresolved |
+| M5: A-sector scalar source separation | rho and exterior mass response stay in A-sector only | REQUIRED | A-sector mass result remains protected |
+| M6: residual zeta killed | if zeta enters B_s, residual zeta metric trace is killed | SAFE_IF | safest convention remains provisional |
+| M7: residual zeta non-metric | residual zeta survives only as diagnostic/accounting/non-metric variable | SAFE_IF | residual variables may survive without double-counting |
+| M8: residual restored by O | O permits neutral residual metric trace alongside B_s insertion | RISK | not current working route |
+| M9: recovery-chosen split | choose metric split from gamma_like, AB, Schwarzschild, or PPN recovery | REJECTED | recovery cannot define O_metric |
+| M10: GR-copy spatial metric | copy GR spatial metric form and name it no-overlap | REJECTED | prevents metric insertion from becoming GR notation import |
+| M11: B=1/A construction | use exterior B=1/A as general metric-sector projector | REJECTED | AB recovery remains downstream diagnostic |
+| M12: metric-sector current decision | O_metric cannot yet be defined; residual-kill/non-metric residual remains safest | RECOMMENDED | next script should test source-sector projection |
+
+[governance_assessments]
+[INFO] compact metric-sector no-overlap ledger produced -- metric O still theorem target
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 1
+RECOMMENDED: 1
+REJECTED: 3
+REQUIRED: 1
+RISK: 1
+SAFE_IF: 2
+STRUCTURAL: 1
+THEOREM_TARGET: 2
+
+Interpretation:
+  Trace/traceless and determinant/unimodular splits are useful structure.
+  They do not yet define the metric-sector no-overlap operator.
+  Residual-kill or non-metric residual remains the safest current convention.
+
+[governance_assessments]
+[INFO] metric-sector status count produced -- {'THEOREM_TARGET': 2, 'CANDIDATE': 1, 'STRUCTURAL': 1, 'REQUIRED': 1, 'SAFE_IF': 2, 'RISK': 1, 'REJECTED': 3, 'RECOMMENDED': 1}
+
+========================================================================================================================
+Case 4: Trace/traceless algebraic projector check
+========================================================================================================================
+For diagonal spatial perturbation h = diag(h11,h22,h33):
+
+trace(h) = h11 + h22 + h33
+
+Trace piece:
+Matrix([[h11/3 + h22/3 + h33/3, 0, 0], [0, h11/3 + h22/3 + h33/3, 0], [0, 0, h11/3 + h22/3 + h33/3]])
+
+Traceless piece:
+Matrix([[2*h11/3 - h22/3 - h33/3, 0, 0], [0, -h11/3 + 2*h22/3 - h33/3, 0], [0, 0, -h11/3 - h22/3 + 2*h33/3]])
+
+trace(traceless_piece) = 0
+
+Interpretation:
+  The trace/traceless split is an algebraic projector candidate.
+  It does not by itself decide whether trace belongs to B_s, zeta, kappa,
+  residual bookkeeping, or A-sector spatial response.
+
+[derived_results]
+[PASS] trace/traceless split verified algebraically -- trace of traceless part is zero
+
+[governance_assessments]
+[DEFER] trace split insufficient for metric no-overlap -- source routing and boundary behavior missing
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+Metric-sector no-overlap fails if:
+
+1. A and zeta/kappa both carry rho scalar mass response.
+2. zeta enters B_s and remains independent residual metric trace.
+3. kappa restores killed residual zeta trace.
+4. recovery chooses the trace split or coefficient.
+5. B=1/A is promoted from exterior diagnostic to parent law.
+6. GR spatial metric is copied as O_metric.
+7. boundary leakage or exterior scalar charge is hidden by projection.
+8. M_ext shifts outside the A-sector source law.
+
+[counterexamples]
+[FAIL] zeta-both metric branch rejected -- B_s companion plus residual metric trace double-counts
+[FAIL] recovery-chosen metric split rejected -- recovery remains downstream
+[FAIL] B=1/A construction rejected -- exterior diagnostic is not parent projector
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Metric-sector no-overlap is not solved.
+
+Useful structures exist:
+
+  trace/traceless algebraic split
+  determinant/unimodular volume split
+  conformal-volume zeta handle
+
+But they do not yet provide:
+
+  O_metric domain/kernel/image
+  B_s/F_zeta insertion law
+  residual-kill derivation
+  boundary neutrality theorem
+  A-sector mass protection theorem
+
+Current safest convention:
+
+  if zeta enters B_s, residual zeta/kappa metric trace is killed or non-metric
+  unless a real O_metric is later derived
+
+Possible next artifact:
+  candidate_metric_sector_no_overlap_operator.md
+
+Possible next script:
+  candidate_source_sector_projection_operator.py
+
+[governance_assessments]
+[DEFER] metric-sector O remains theorem target -- residual-kill/non-metric residual remains safest convention

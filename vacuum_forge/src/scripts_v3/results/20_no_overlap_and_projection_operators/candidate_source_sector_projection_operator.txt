@@ -1,0 +1,298 @@
+
+========================================================================================================================
+Candidate Source-Sector Projection Operator
+========================================================================================================================
+[INFO] Archive dependency check:
+  - metric_sector_no_overlap_operator_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Source-sector projection problem
+========================================================================================================================
+Question:
+
+  Can O separate ordinary matter, curvature accounting, and exchange sources?
+
+Goal:
+
+  address the Group 19 source-separation bottleneck directly
+
+Discipline:
+
+  ordinary T_mu_nu not double-counted
+  rho/scalar charge remains A-sector
+  e_curv is not reservoir
+  A_curv is not dynamics by projection
+  Sigma/R are not tuning knobs
+  J_sub/J_exch are not matter channels
+  dark sector is not relabel
+  boundary failure is not source
+
+[unresolved_obligations]
+[OBLIGATION] source-sector projection problem posed -- O_source not yet defined
+
+========================================================================================================================
+Case 1: Source-sector projection inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+S1: source-sector projection target
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_source separates ordinary matter, A-sector mass, curvature accounting, exchange roles, residual labels, and optional dark labels
+Role: core Group 20 source target
+Allowed if: source domain/kernel/image and routing rules are specified before correction or exchange use
+Forbidden if: O_source is named to avoid source double-counting without a real split
+[DEFER] S1: source-sector projection target: THEOREM_TARGET
+Missing: explicit source-sector projector
+Consequence: source-sector projection remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+S2: ordinary matter source projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: ordinary T_mu_nu / rho remains routed through established matter source channels
+Role: ordinary matter protection rule
+Allowed if: ordinary matter is not rerouted into curvature, exchange, residual, or dark labels by convenience
+Forbidden if: projection hides ordinary matter inside H_curv, H_exch, J_exch, e_curv, or dark source
+[OBLIGATION] S2: ordinary matter source projector: REQUIRED
+Missing: ordinary matter separation theorem
+Consequence: ordinary matter source routing remains protected but not derived by O_source
+
+------------------------------------------------------------------------------------------------------------------------
+S3: A-sector mass projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: rho and M_ext remain A-sector mass / scalar constraint sources
+Role: A-sector mass protection rule
+Allowed if: A carries the long-range mass response and other sectors do not duplicate it
+Forbidden if: curvature, exchange, zeta, kappa, or correction tensors become independent mass-source channels
+[OBLIGATION] S3: A-sector mass projector: REQUIRED
+Missing: A-sector source separation theorem
+Consequence: strongest reduced A-sector result remains protected
+
+------------------------------------------------------------------------------------------------------------------------
+S4: curvature diagnostic projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: A_curv/e_curv classify curvature admissibility without becoming dynamics or source reservoir
+Role: curvature source-separation candidate
+Allowed if: curvature variables remain diagnostic/branch-filter unless independent dynamics are derived
+Forbidden if: projection promotes A_curv or e_curv into a source that repairs singularities or boundaries
+[INFO] S4: curvature diagnostic projector: SAFE_IF
+Missing: curvature diagnostic/source split
+Consequence: curvature accounting remains diagnostic only
+
+------------------------------------------------------------------------------------------------------------------------
+S5: exchange role projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: Sigma/R/J_exch roles remain separate from ordinary matter and repair terms
+Role: exchange source-separation theorem target
+Allowed if: Sigma and R have independent operators, strengths, signs, and domains
+Forbidden if: Sigma/R are adjusted as tuning knobs or cancellation labels
+[DEFER] S5: exchange role projector: THEOREM_TARGET
+Missing: Sigma/R operators and source-strength law
+Consequence: exchange source side remains unresolved
+
+------------------------------------------------------------------------------------------------------------------------
+S6: residual/source exclusion projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: residual zeta/kappa bookkeeping is excluded from ordinary source roles
+Role: residual source safety rule
+Allowed if: residual variables are non-metric, diagnostic, or projected with real kernel/image
+Forbidden if: residual bookkeeping becomes hidden scalar source or coefficient reservoir
+[INFO] S6: residual/source exclusion projector: SAFE_IF
+Missing: residual source-exclusion theorem
+Consequence: residual variables may survive only with no source effect
+
+------------------------------------------------------------------------------------------------------------------------
+S7: correction tensor source projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: H_curv/H_exch source sides are separated from ordinary matter, curvature diagnostics, and exchange labels
+Role: correction tensor insertability prerequisite
+Allowed if: source origin exists before correction tensor and divergence relation are introduced
+Forbidden if: correction tensor defines its own source or absorbs unresolved sectors
+[DEFER] S7: correction tensor source projector: THEOREM_TARGET
+Missing: H source origin and source-sector projector
+Consequence: H_curv/H_exch remain non-insertable
+
+------------------------------------------------------------------------------------------------------------------------
+S8: dark-sector optional projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: dark source labels remain optional and downstream
+Role: optional branch guard
+Allowed if: dark coupling is derived and ordinary sector remains neutral
+Forbidden if: dark sector patches ordinary source, boundary, or recovery failure
+[DEFER] S8: dark-sector optional projector: DEFER
+Missing: dark-sector source/coupling theorem
+Consequence: dark labels do not participate in ordinary source projection
+
+------------------------------------------------------------------------------------------------------------------------
+S9: boundary source exclusion projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: boundary mismatch, shell terms, far-zone leakage, and M_ext shifts are not promoted to source channels
+Role: boundary source guard
+Allowed if: boundary behavior is structural and neutral
+Forbidden if: projection turns boundary failure into source term
+[DEFER] S9: boundary source exclusion projector: THEOREM_TARGET
+Missing: boundary source exclusion theorem
+Consequence: boundary repair remains rejected
+
+------------------------------------------------------------------------------------------------------------------------
+S10: diagnostic-only source labels
+------------------------------------------------------------------------------------------------------------------------
+Candidate: sector source labels classify evidence without active source routing
+Role: safe fallback
+Allowed if: labels do not write field equations, erase sources, or insert correction tensors
+Forbidden if: diagnostic label becomes active projector
+[INFO] S10: diagnostic-only source labels: SAFE_IF
+Missing: none if kept diagnostic
+Consequence: source audits can continue without O_source
+
+------------------------------------------------------------------------------------------------------------------------
+S11: source separator by name
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_source separates ordinary, curvature, exchange, residual, and dark sources by declaration
+Role: forbidden shortcut
+Allowed if: never as derivation
+Forbidden if: accepted without domain/kernel/image/source laws
+[FAIL] S11: source separator by name: REJECTED
+Missing: not pursued
+Consequence: source separation cannot be obtained by naming O_source
+
+------------------------------------------------------------------------------------------------------------------------
+S12: repair-source projector
+------------------------------------------------------------------------------------------------------------------------
+Candidate: projection turns singularity, boundary leakage, scalar charge, or recovery mismatch into a source side
+Role: forbidden repair branch
+Allowed if: never as mechanism
+Forbidden if: accepted as curvature or exchange source route
+[FAIL] S12: repair-source projector: REJECTED
+Missing: not pursued
+Consequence: projection cannot create repair sources
+
+------------------------------------------------------------------------------------------------------------------------
+S13: source-sector current decision
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_source cannot yet be defined; diagnostic labels and protected source routing remain safest
+Role: current branch decision
+Allowed if: future source scripts carry domain/kernel/image and source-law burden
+Forbidden if: later scripts treat source projection as solved
+[PASS] S13: source-sector current decision: RECOMMENDED
+Missing: role-specific source projector derivation
+Consequence: next script should test current split projection
+
+========================================================================================================================
+Case 2: Compact source-sector ledger
+========================================================================================================================
+| Entry | Candidate | Status | Consequence |
+|---|---|---|---|
+| S1: source-sector projection target | O_source separates ordinary matter, A-sector mass, curvature accounting, exchange roles, residual labels, and optional dark labels | THEOREM_TARGET | source-sector projection remains theorem target |
+| S2: ordinary matter source projector | ordinary T_mu_nu / rho remains routed through established matter source channels | REQUIRED | ordinary matter source routing remains protected but not derived by O_source |
+| S3: A-sector mass projector | rho and M_ext remain A-sector mass / scalar constraint sources | REQUIRED | strongest reduced A-sector result remains protected |
+| S4: curvature diagnostic projector | A_curv/e_curv classify curvature admissibility without becoming dynamics or source reservoir | SAFE_IF | curvature accounting remains diagnostic only |
+| S5: exchange role projector | Sigma/R/J_exch roles remain separate from ordinary matter and repair terms | THEOREM_TARGET | exchange source side remains unresolved |
+| S6: residual/source exclusion projector | residual zeta/kappa bookkeeping is excluded from ordinary source roles | SAFE_IF | residual variables may survive only with no source effect |
+| S7: correction tensor source projector | H_curv/H_exch source sides are separated from ordinary matter, curvature diagnostics, and exchange labels | THEOREM_TARGET | H_curv/H_exch remain non-insertable |
+| S8: dark-sector optional projector | dark source labels remain optional and downstream | DEFER | dark labels do not participate in ordinary source projection |
+| S9: boundary source exclusion projector | boundary mismatch, shell terms, far-zone leakage, and M_ext shifts are not promoted to source channels | THEOREM_TARGET | boundary repair remains rejected |
+| S10: diagnostic-only source labels | sector source labels classify evidence without active source routing | SAFE_IF | source audits can continue without O_source |
+| S11: source separator by name | O_source separates ordinary, curvature, exchange, residual, and dark sources by declaration | REJECTED | source separation cannot be obtained by naming O_source |
+| S12: repair-source projector | projection turns singularity, boundary leakage, scalar charge, or recovery mismatch into a source side | REJECTED | projection cannot create repair sources |
+| S13: source-sector current decision | O_source cannot yet be defined; diagnostic labels and protected source routing remain safest | RECOMMENDED | next script should test current split projection |
+
+[governance_assessments]
+[INFO] compact source-sector projection ledger produced -- source O remains theorem target
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+DEFER: 1
+RECOMMENDED: 1
+REJECTED: 2
+REQUIRED: 2
+SAFE_IF: 3
+THEOREM_TARGET: 4
+
+Interpretation:
+  Source-sector projection remains theorem-targeted.
+  Ordinary matter and A-sector mass routing are required guardrails.
+  Diagnostic-only labels are safer than active source projectors for now.
+
+[governance_assessments]
+[INFO] source-sector status count produced -- {'THEOREM_TARGET': 4, 'REQUIRED': 2, 'SAFE_IF': 3, 'DEFER': 1, 'REJECTED': 2, 'RECOMMENDED': 1}
+
+========================================================================================================================
+Case 4: Source-routing vector check
+========================================================================================================================
+Toy source vector:
+
+  S = [rho, e_curv, Sigma_exch, dark]^T
+
+A-sector projector candidate:
+Matrix([[1, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]])
+
+P_A S = Matrix([[rho], [0], [0], [0]])
+(I - P_A) S = Matrix([[0], [e_curv], [Sigma_exch], [dark]])
+P_A(I-P_A)S first component = 0
+
+Interpretation:
+  A block-diagonal source label can separate bookkeeping components in a toy vector.
+  This does not derive physical source projectors, source strengths, covariance, or boundary behavior.
+
+[sample_results]
+[PASS] toy A-sector source label separates rho component -- diagnostic vector split only
+
+[governance_assessments]
+[DEFER] toy source split insufficient for O_source -- physical source laws and boundary behavior missing
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+Source-sector projection fails if:
+
+1. ordinary matter is counted in multiple source channels.
+2. rho stops being protected as A-sector mass source.
+3. e_curv becomes a source reservoir.
+4. A_curv becomes dynamics by projection.
+5. Sigma/R become tuning knobs.
+6. J_sub/J_exch become ordinary matter channels.
+7. dark sector patches ordinary failure.
+8. boundary leakage becomes source.
+9. correction tensor source is defined by the tensor it is meant to support.
+
+[counterexamples]
+[FAIL] source separator by name rejected -- domain/kernel/image/source laws missing
+[FAIL] repair-source projector rejected -- projection cannot create repair source
+[FAIL] dark patch source rejected -- dark sector remains optional/downstream
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Source-sector projection is not solved.
+
+Current protected routing:
+
+  rho / M_ext -> A-sector mass source
+  A_curv / e_curv -> diagnostic / accounting only
+  Sigma/R -> exchange roles only, operators missing
+  J_sub/J_exch -> not ordinary matter channels
+  dark labels -> optional downstream only
+  boundary failure -> not source
+
+Useful safe fallback:
+
+  diagnostic source labels, not active source projectors
+
+Missing before O_source can be real:
+
+  source-domain projector
+  ordinary matter separation theorem
+  A-sector mass protection theorem
+  Sigma/R source-strength law
+  correction tensor source origin
+  boundary source exclusion theorem
+
+Possible next artifact:
+  candidate_source_sector_projection_operator.md
+
+Possible next script:
+  candidate_current_split_projection_operator.py
+
+[governance_assessments]
+[DEFER] source-sector O remains theorem target -- diagnostic labels remain safest current route

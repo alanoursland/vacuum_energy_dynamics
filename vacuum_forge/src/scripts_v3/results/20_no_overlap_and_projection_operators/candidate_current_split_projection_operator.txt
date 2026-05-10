@@ -1,0 +1,284 @@
+
+========================================================================================================================
+Candidate Current-Split Projection Operator
+========================================================================================================================
+[INFO] Archive dependency check:
+  - source_sector_projection_operator_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Current-split projection problem
+========================================================================================================================
+Question:
+
+  Can O make J_sub/J_exch or J_V split operator-level?
+
+Goal:
+
+  test whether projection can strengthen the Group 18 role-level split
+
+Discipline:
+
+  J_V must be defined first, or split remains role-level
+  J_sub is not a remainder current
+  J_exch is not repair
+  Sigma/R are not tuning knobs
+  ordinary matter decoupling required
+  M_ext neutrality required
+  scalar trace neutrality required
+  boundary neutrality required
+
+[unresolved_obligations]
+[OBLIGATION] current-split projection problem posed -- O_current not yet defined
+
+========================================================================================================================
+Case 1: Current-split projection inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: current-split projection target
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_current makes J_V -> J_sub + J_exch operator-level
+Role: core Group 20 current target
+Allowed if: J_V, split criterion, domains, source sides, and boundary behavior are defined first
+Forbidden if: projection defines the current split by naming subroles
+[DEFER] C1: current-split projection target: THEOREM_TARGET
+Missing: J_V, O_current, split criterion, source sides
+Consequence: current split remains theorem target
+
+------------------------------------------------------------------------------------------------------------------------
+C2: unresolved umbrella J_V
+------------------------------------------------------------------------------------------------------------------------
+Candidate: J_V remains unresolved umbrella notation
+Role: safe fallback
+Allowed if: no operator split criterion is derived
+Forbidden if: J_V is used as a physical current or repair current
+[INFO] C2: unresolved umbrella J_V: SAFE_IF
+Missing: physical J_V flux law
+Consequence: projection cannot split an undefined current into defined parts
+
+------------------------------------------------------------------------------------------------------------------------
+C3: support-based split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: J_sub and J_exch separated by support/domain
+Role: candidate split class
+Allowed if: support domains are structural and boundary-neutral
+Forbidden if: support is chosen after leakage or recovery failure appears
+[INFO] C3: support-based split: CANDIDATE
+Missing: support law and boundary theorem
+Consequence: possible only after current support is real
+
+------------------------------------------------------------------------------------------------------------------------
+C4: divergence-based split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: J_sub divergence-free, J_exch carries source/relaxation divergence
+Role: candidate split class
+Allowed if: divergence identities and Sigma/R operators are independently defined
+Forbidden if: divergence labels define Sigma/R or hide exchange tuning
+[DEFER] C4: divergence-based split: THEOREM_TARGET
+Missing: divergence identity, Sigma/R operators
+Consequence: cannot proceed while Sigma/R remain role-level
+
+------------------------------------------------------------------------------------------------------------------------
+C5: pure-wind neutral subspace
+------------------------------------------------------------------------------------------------------------------------
+Candidate: J_sub lies in a pure-wind neutral subspace
+Role: J_sub safety target
+Allowed if: pure wind neutrality, matter decoupling, M_ext neutrality, and scalar neutrality are derived
+Forbidden if: J_sub gravitates by existence or becomes preferred-frame force
+[DEFER] C5: pure-wind neutral subspace: THEOREM_TARGET
+Missing: pure wind neutrality theorem
+Consequence: J_sub remains theorem target only
+
+------------------------------------------------------------------------------------------------------------------------
+C6: active-exchange support subspace
+------------------------------------------------------------------------------------------------------------------------
+Candidate: J_exch lives only where exchange source/relaxation operators are active
+Role: J_exch safety target
+Allowed if: source side and relaxation side are real and not repair
+Forbidden if: J_exch cancels boundary leakage, singularity behavior, or recovery mismatch
+[DEFER] C6: active-exchange support subspace: THEOREM_TARGET
+Missing: J_exch source/support law
+Consequence: J_exch remains theorem target only
+
+------------------------------------------------------------------------------------------------------------------------
+C7: zero-net ordinary-sector projection
+------------------------------------------------------------------------------------------------------------------------
+Candidate: project ordinary sector onto Sigma_V - R_V = 0 branch
+Role: ordinary-sector safety candidate
+Allowed if: zero-net condition follows from source/relaxation laws
+Forbidden if: zero-net condition hides undefined active exchange
+[INFO] C7: zero-net ordinary-sector projection: CANDIDATE
+Missing: ordinary-sector exchange neutrality theorem
+Consequence: zero-net branch remains live but not derived
+
+------------------------------------------------------------------------------------------------------------------------
+C8: zero-creation ordinary-sector projection
+------------------------------------------------------------------------------------------------------------------------
+Candidate: project ordinary sector onto Sigma_V = R_V = 0 branch
+Role: strong ordinary-sector safety candidate
+Allowed if: curvature changes are attributed to constraint/warping rather than creation/destruction
+Forbidden if: creation language is still used as ordinary source
+[INFO] C8: zero-creation ordinary-sector projection: CANDIDATE
+Missing: zero-creation theorem
+Consequence: zero-creation branch remains a safe candidate
+
+------------------------------------------------------------------------------------------------------------------------
+C9: timelike/domain projection
+------------------------------------------------------------------------------------------------------------------------
+Candidate: restrict u_vac normalization to D_V = {J_V^2 < 0, J_V != 0}
+Role: domain guard
+Allowed if: J_V exists and domain is structural
+Forbidden if: domain excludes problematic regions by convenience
+[OBLIGATION] C9: timelike/domain projection: REQUIRED
+Missing: J_V domain theorem
+Consequence: u_vac remains unresolved and domain-limited
+
+------------------------------------------------------------------------------------------------------------------------
+C10: remainder-current split
+------------------------------------------------------------------------------------------------------------------------
+Candidate: define J_sub = J_V - J_exch or J_exch = J_V - J_sub
+Role: forbidden split shortcut
+Allowed if: never without an independent split criterion
+Forbidden if: leftover bookkeeping becomes ontology
+[FAIL] C10: remainder-current split: REJECTED
+Missing: not pursued
+Consequence: current split cannot be defined by remainder
+
+------------------------------------------------------------------------------------------------------------------------
+C11: repair-current projection
+------------------------------------------------------------------------------------------------------------------------
+Candidate: projection chooses current subspace to cancel leakage, mass shift, or scalar charge
+Role: forbidden repair branch
+Allowed if: never as mechanism
+Forbidden if: current projection is selected after failure appears
+[FAIL] C11: repair-current projection: REJECTED
+Missing: not pursued
+Consequence: current projection cannot repair boundary or recovery failures
+
+------------------------------------------------------------------------------------------------------------------------
+C12: current-split decision
+------------------------------------------------------------------------------------------------------------------------
+Candidate: O_current cannot make J_sub/J_exch operator-level until J_V and source sides exist
+Role: current branch decision
+Allowed if: future current scripts keep split role-level until prerequisites are derived
+Forbidden if: projection language is treated as current definition
+[PASS] C12: current-split decision: RECOMMENDED
+Missing: J_V/source/operator split derivation
+Consequence: next script should test projection commutation and divergence
+
+========================================================================================================================
+Case 2: Compact current-split ledger
+========================================================================================================================
+| Entry | Candidate | Status | Consequence |
+|---|---|---|---|
+| C1: current-split projection target | O_current makes J_V -> J_sub + J_exch operator-level | THEOREM_TARGET | current split remains theorem target |
+| C2: unresolved umbrella J_V | J_V remains unresolved umbrella notation | SAFE_IF | projection cannot split an undefined current into defined parts |
+| C3: support-based split | J_sub and J_exch separated by support/domain | CANDIDATE | possible only after current support is real |
+| C4: divergence-based split | J_sub divergence-free, J_exch carries source/relaxation divergence | THEOREM_TARGET | cannot proceed while Sigma/R remain role-level |
+| C5: pure-wind neutral subspace | J_sub lies in a pure-wind neutral subspace | THEOREM_TARGET | J_sub remains theorem target only |
+| C6: active-exchange support subspace | J_exch lives only where exchange source/relaxation operators are active | THEOREM_TARGET | J_exch remains theorem target only |
+| C7: zero-net ordinary-sector projection | project ordinary sector onto Sigma_V - R_V = 0 branch | CANDIDATE | zero-net branch remains live but not derived |
+| C8: zero-creation ordinary-sector projection | project ordinary sector onto Sigma_V = R_V = 0 branch | CANDIDATE | zero-creation branch remains a safe candidate |
+| C9: timelike/domain projection | restrict u_vac normalization to D_V = {J_V^2 < 0, J_V != 0} | REQUIRED | u_vac remains unresolved and domain-limited |
+| C10: remainder-current split | define J_sub = J_V - J_exch or J_exch = J_V - J_sub | REJECTED | current split cannot be defined by remainder |
+| C11: repair-current projection | projection chooses current subspace to cancel leakage, mass shift, or scalar charge | REJECTED | current projection cannot repair boundary or recovery failures |
+| C12: current-split decision | O_current cannot make J_sub/J_exch operator-level until J_V and source sides exist | RECOMMENDED | next script should test projection commutation and divergence |
+
+[governance_assessments]
+[INFO] compact current-split projection ledger produced -- current O remains theorem target
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 3
+RECOMMENDED: 1
+REJECTED: 2
+REQUIRED: 1
+SAFE_IF: 1
+THEOREM_TARGET: 4
+
+Interpretation:
+  O_current cannot make J_sub/J_exch operator-level until J_V and source sides exist.
+  Zero-net and zero-creation ordinary-sector branches remain useful candidates.
+  Remainder-current and repair-current projections are rejected.
+
+[governance_assessments]
+[INFO] current-split status count produced -- {'THEOREM_TARGET': 4, 'SAFE_IF': 1, 'CANDIDATE': 3, 'REQUIRED': 1, 'REJECTED': 2, 'RECOMMENDED': 1}
+
+========================================================================================================================
+Case 4: Toy current split check
+========================================================================================================================
+Toy role-level current vector:
+
+  J_role = [J_sub, J_exch]^T
+
+P_sub J_role = Matrix([[j_sub], [0]])
+P_exch J_role = Matrix([[0], [j_exch]])
+P_sub P_exch J_role = Matrix([[0], [0]])
+P_sub J_role + P_exch J_role = Matrix([[j_sub], [j_exch]])
+
+Interpretation:
+  A toy block split can label roles without overlap.
+  It does not define physical J_V, J_sub, J_exch, Sigma/R, or boundary behavior.
+
+[sample_results]
+[PASS] toy current role split has zero algebraic overlap -- diagnostic role vector only
+
+[governance_assessments]
+[DEFER] toy current split insufficient for O_current -- physical currents and source sides missing
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+Current-split projection fails if:
+
+1. J_V is assumed defined.
+2. J_sub is whatever remains after J_exch.
+3. J_exch is repair current.
+4. Sigma/R become tuning knobs.
+5. J_sub/J_exch become ordinary matter channels.
+6. current projection shifts M_ext.
+7. current projection leaks scalar trace or boundary charge.
+8. u_vac is normalized outside a timelike/nonzero J_V domain.
+
+[counterexamples]
+[FAIL] remainder-current split rejected -- no independent split criterion
+[FAIL] repair-current projection rejected -- current subspace cannot be selected after leakage
+[FAIL] undefined J_V split rejected -- projection cannot split undefined physical current
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Current-split projection is not solved.
+
+Allowed current status:
+
+  J_V remains unresolved umbrella notation
+  J_sub/J_exch remains role-level bookkeeping
+  zero-net exchange branch remains candidate
+  zero-creation ordinary-sector branch remains candidate
+  u_vac remains domain-limited theorem target
+
+Rejected:
+
+  remainder-current split
+  repair-current projection
+  projection as definition of J_V or source sides
+
+Missing before O_current can be real:
+
+  physical J_V flux law
+  J_sub/J_exch split criterion
+  Sigma/R operators
+  pure wind neutrality
+  ordinary matter decoupling
+  M_ext/scalar/boundary neutrality
+
+Possible next artifact:
+  candidate_current_split_projection_operator.md
+
+Possible next script:
+  candidate_projection_commutation_and_divergence.py
+
+[governance_assessments]
+[DEFER] current-split O remains theorem target -- J_sub/J_exch remains role-level

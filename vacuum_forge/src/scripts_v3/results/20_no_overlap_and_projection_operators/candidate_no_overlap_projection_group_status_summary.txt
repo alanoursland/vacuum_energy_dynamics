@@ -1,0 +1,253 @@
+
+========================================================================================================================
+Candidate No-Overlap Projection Group Status Summary
+========================================================================================================================
+[INFO] Archive dependency check:
+  - projection_boundary_and_exterior_neutrality_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Group 20 closure problem
+========================================================================================================================
+Question:
+
+  What is the current status of no-overlap / projection operators after Group 20?
+
+Goal:
+
+  close the group without promoting O into a field-equation operator
+
+Discipline:
+
+  no universal O by declaration
+  no projector without domain/kernel/image
+  no orthogonality without measure
+  no divergence or Bianchi compatibility by name
+  no boundary, source, current, residual, dark, or recovery repair
+  no parent equation readiness claim
+
+[unresolved_obligations]
+[OBLIGATION] Group 20 closure problem posed -- O remains theorem target
+
+========================================================================================================================
+Case 1: Group 20 status inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+G20-1: O role inventory
+------------------------------------------------------------------------------------------------------------------------
+Result: O has too many hidden jobs to be treated as one universal operator
+[PASS] G20-1: O role inventory: RECOMMENDED
+Consequence: split no-overlap into role-specific projector requirements
+Handoff: do not use one decorative O for metric, source, current, boundary, and correction sectors
+
+------------------------------------------------------------------------------------------------------------------------
+G20-2: minimum projector structure
+------------------------------------------------------------------------------------------------------------------------
+Result: a real projector requires domain, codomain, kernel, image, composition law, measure/pairing, and boundary behavior
+[OBLIGATION] G20-2: minimum projector structure: REQUIRED
+Consequence: O cannot be introduced by name alone
+Handoff: show the kernel/image/boundary law before claiming projection
+
+------------------------------------------------------------------------------------------------------------------------
+G20-3: metric-sector no-overlap
+------------------------------------------------------------------------------------------------------------------------
+Result: trace/traceless and determinant/unimodular splits are useful but do not define O_metric
+[DEFER] G20-3: metric-sector no-overlap: THEOREM_TARGET
+Consequence: B_s/F_zeta insertion and residual-kill remain unresolved theorem targets
+Handoff: do not restore residual zeta/kappa metric trace by projection
+
+------------------------------------------------------------------------------------------------------------------------
+G20-4: source-sector projection
+------------------------------------------------------------------------------------------------------------------------
+Result: ordinary matter and A-sector mass routing remain protected; active O_source is not derived
+[DEFER] G20-4: source-sector projection: THEOREM_TARGET
+Consequence: diagnostic source labels are safer than active source projectors
+Handoff: do not convert e_curv, A_curv, Sigma/R, dark labels, or boundary failure into sources
+
+------------------------------------------------------------------------------------------------------------------------
+G20-5: current-split projection
+------------------------------------------------------------------------------------------------------------------------
+Result: O_current cannot make J_V or J_sub/J_exch operator-level while J_V and source sides are undefined
+[DEFER] G20-5: current-split projection: THEOREM_TARGET
+Consequence: J_sub/J_exch remain role-level bookkeeping
+Handoff: do not define current split by remainder, repair, or projection label
+
+------------------------------------------------------------------------------------------------------------------------
+G20-6: divergence compatibility
+------------------------------------------------------------------------------------------------------------------------
+Result: variable, boundary-sensitive, or nonlocal projectors carry commutator and surface terms
+[DEFER] G20-6: divergence compatibility: THEOREM_TARGET
+Consequence: divergence-compatible projection remains unproved
+Handoff: do not claim Bianchi compatibility or conservation by naming O
+
+------------------------------------------------------------------------------------------------------------------------
+G20-7: boundary/exterior neutrality
+------------------------------------------------------------------------------------------------------------------------
+Result: boundary-neutral O is not derived; diagnostic labels and compact-support candidates survive
+[DEFER] G20-7: boundary/exterior neutrality: THEOREM_TARGET
+Consequence: M_ext neutrality and exterior scalar silence remain obligations
+Handoff: do not use O as counterterm, shell source, far-zone filter, recovery tune, or dark patch
+
+------------------------------------------------------------------------------------------------------------------------
+G20-8: diagnostic-only sector labels
+------------------------------------------------------------------------------------------------------------------------
+Result: diagnostic labels are currently the safest no-overlap mechanism
+[INFO] G20-8: diagnostic-only sector labels: SAFE_IF
+Consequence: audits can continue without active field-equation projection
+Handoff: diagnostic-only means no source, metric, divergence, boundary, or recovery effect
+
+------------------------------------------------------------------------------------------------------------------------
+G20-9: role-specific projector route
+------------------------------------------------------------------------------------------------------------------------
+Result: future work may derive role-specific projectors rather than one universal O
+[INFO] G20-9: role-specific projector route: CANDIDATE
+Consequence: O_metric, O_source, O_current, O_boundary, and diagnostic labels need separate requirements
+Handoff: derive each projector from its own domain/kernel/image/boundary law
+
+------------------------------------------------------------------------------------------------------------------------
+G20-10: rejected repair uses
+------------------------------------------------------------------------------------------------------------------------
+Result: recovery projector, residual eraser, boundary patch, source separator by name, Bianchi patch, current repair, shell source, dark patch, and tensor insertability patch are rejected
+[FAIL] G20-10: rejected repair uses: REJECTED
+Consequence: projection cannot be used as a rescue mechanism
+Handoff: preserve all rejected branches when writing later groups
+
+------------------------------------------------------------------------------------------------------------------------
+G20-11: parent equation readiness
+------------------------------------------------------------------------------------------------------------------------
+Result: no parent correction tensor or parent equation becomes ready from Group 20
+[DEFER] G20-11: parent equation readiness: NOT_READY
+Consequence: Group 19 non-insertability result remains intact
+Handoff: do not write a parent field equation yet
+
+------------------------------------------------------------------------------------------------------------------------
+G20-12: final Group 20 closure
+------------------------------------------------------------------------------------------------------------------------
+Result: Group 20 closes with O deferred, role-specific requirements explicit, and diagnostic-only labels safe
+[PASS] G20-12: final Group 20 closure: CLOSED
+Consequence: no-overlap is sharpened into requirements, not solved as an operator
+Handoff: next group should target the bottleneck snapshot or one role-specific projector route
+
+========================================================================================================================
+Case 2: Compact Group 20 ledger
+========================================================================================================================
+| Entry | Result | Status | Handoff |
+|---|---|---|---|
+| G20-1: O role inventory | O has too many hidden jobs to be treated as one universal operator | RECOMMENDED | do not use one decorative O for metric, source, current, boundary, and correction sectors |
+| G20-2: minimum projector structure | a real projector requires domain, codomain, kernel, image, composition law, measure/pairing, and boundary behavior | REQUIRED | show the kernel/image/boundary law before claiming projection |
+| G20-3: metric-sector no-overlap | trace/traceless and determinant/unimodular splits are useful but do not define O_metric | THEOREM_TARGET | do not restore residual zeta/kappa metric trace by projection |
+| G20-4: source-sector projection | ordinary matter and A-sector mass routing remain protected; active O_source is not derived | THEOREM_TARGET | do not convert e_curv, A_curv, Sigma/R, dark labels, or boundary failure into sources |
+| G20-5: current-split projection | O_current cannot make J_V or J_sub/J_exch operator-level while J_V and source sides are undefined | THEOREM_TARGET | do not define current split by remainder, repair, or projection label |
+| G20-6: divergence compatibility | variable, boundary-sensitive, or nonlocal projectors carry commutator and surface terms | THEOREM_TARGET | do not claim Bianchi compatibility or conservation by naming O |
+| G20-7: boundary/exterior neutrality | boundary-neutral O is not derived; diagnostic labels and compact-support candidates survive | THEOREM_TARGET | do not use O as counterterm, shell source, far-zone filter, recovery tune, or dark patch |
+| G20-8: diagnostic-only sector labels | diagnostic labels are currently the safest no-overlap mechanism | SAFE_IF | diagnostic-only means no source, metric, divergence, boundary, or recovery effect |
+| G20-9: role-specific projector route | future work may derive role-specific projectors rather than one universal O | CANDIDATE | derive each projector from its own domain/kernel/image/boundary law |
+| G20-10: rejected repair uses | recovery projector, residual eraser, boundary patch, source separator by name, Bianchi patch, current repair, shell source, dark patch, and tensor insertability patch are rejected | REJECTED | preserve all rejected branches when writing later groups |
+| G20-11: parent equation readiness | no parent correction tensor or parent equation becomes ready from Group 20 | NOT_READY | do not write a parent field equation yet |
+| G20-12: final Group 20 closure | Group 20 closes with O deferred, role-specific requirements explicit, and diagnostic-only labels safe | CLOSED | next group should target the bottleneck snapshot or one role-specific projector route |
+
+[governance_assessments]
+[INFO] compact Group 20 closure ledger produced -- O remains theorem target
+
+========================================================================================================================
+Case 3: Status counts
+========================================================================================================================
+CANDIDATE: 1
+CLOSED: 1
+NOT_READY: 1
+RECOMMENDED: 1
+REJECTED: 1
+REQUIRED: 1
+SAFE_IF: 1
+THEOREM_TARGET: 5
+
+Interpretation:
+  Group 20 produced requirements and guardrails, not an active projector.
+  O remains deferred as a theorem target.
+  Diagnostic-only labels and role-specific projector routes remain the safe handoff.
+
+[governance_assessments]
+[INFO] Group 20 status count produced -- {'RECOMMENDED': 1, 'REQUIRED': 1, 'THEOREM_TARGET': 5, 'SAFE_IF': 1, 'CANDIDATE': 1, 'REJECTED': 1, 'NOT_READY': 1, 'CLOSED': 1}
+
+========================================================================================================================
+Case 4: Role-specific projector requirements
+========================================================================================================================
+Future projector work must split into role-specific tasks:
+
+  O_metric: A/B_s/zeta/residual metric no-overlap
+  O_source: ordinary/A-sector/curvature/exchange/source routing
+  O_current: J_V and J_sub/J_exch split criterion
+  O_divergence: commutator, projected divergence, and boundary terms
+  O_boundary: M_ext neutrality, scalar silence, and smooth matching
+  O_diagnostic: labels that do not alter equations
+
+Minimum common burden:
+
+  domain
+  codomain
+  kernel
+  image
+  composition / idempotence law
+  measure or pairing if orthogonality is claimed
+  derivative / divergence behavior
+  boundary behavior
+  source, mass, and scalar leakage behavior
+
+[unresolved_obligations]
+[OBLIGATION] role-specific projector program stated -- each projector requires independent derivation
+
+========================================================================================================================
+Case 5: Rejected projection branches
+========================================================================================================================
+Rejected uses of O:
+
+1. O by declaration.
+2. O as residual eraser.
+3. O as recovery projector.
+4. O as boundary counterterm.
+5. O as source separator by name.
+6. O as tensor insertability patch.
+7. O as Bianchi/divergence patch.
+8. O as current repair.
+9. O as shell source generator.
+10. O as dark-sector patch.
+
+[counterexamples]
+[FAIL] universal decorative O rejected -- too many hidden jobs
+[FAIL] projection repair mechanisms rejected -- O cannot patch failure after the fact
+[FAIL] parent equation readiness rejected -- no correction tensor becomes insertable
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Group 20 is complete.
+
+Main result:
+
+  O is not defined as an active no-overlap operator.
+  No universal projection operator is available.
+  No-overlap remains a theorem target.
+  Role-specific projector requirements are explicit.
+  Diagnostic-only labels remain safe.
+  Parent equation forms remain not ready.
+
+Safe current status:
+
+  B_s/F_zeta insertion remains theorem target
+  residual-kill / non-metric residual remains provisional
+  ordinary matter and A-sector mass routing remain protected
+  J_V remains unresolved
+  J_sub/J_exch remain role-level
+  Sigma/R remain role-level
+  H_curv/H_exch remain non-insertable
+  boundary and exterior neutrality remain obligations
+
+Possible next directions:
+
+  core bottleneck closure and field snapshot
+  metric insertion recovery retest
+  source routing and mass neutrality
+  constraint projection and parent identity, only if a real projector route is derived
+
+[governance_assessments]
+[PASS] Group 20 closed with O deferred -- no active projector or parent equation readiness

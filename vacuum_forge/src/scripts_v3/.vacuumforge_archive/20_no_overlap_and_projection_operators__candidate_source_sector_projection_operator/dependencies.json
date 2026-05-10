@@ -1,0 +1,9 @@
+[
+  {
+    "dependency_id": "metric_sector_no_overlap_operator_marker",
+    "upstream_script_id": "20_no_overlap_and_projection_operators__candidate_metric_sector_no_overlap_operator",
+    "upstream_derivation_id": "metric_sector_no_overlap_operator_marker",
+    "declared_at": "2026-05-10T20:07:22.706439+00:00",
+    "allow_superseded": false
+  }
+]

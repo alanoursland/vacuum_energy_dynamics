@@ -9,7 +9,7 @@
   "satisfied_by": [],
   "failed_by": [],
   "superseded_by": null,
-  "created_at": "2026-05-10T18:31:37.283327+00:00",
+  "created_at": "2026-05-10T20:07:18.708559+00:00",
   "description": "Any no-overlap projector must specify domain, codomain, kernel, image, composition/idempotence law, measure or pairing if orthogonality is used, and boundary behavior.",
   "metadata": {}
 }

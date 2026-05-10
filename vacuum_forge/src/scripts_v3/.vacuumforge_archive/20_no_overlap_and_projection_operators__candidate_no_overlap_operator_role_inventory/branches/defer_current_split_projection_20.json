@@ -11,7 +11,7 @@
   ],
   "activation_conditions": [],
   "superseded_by": null,
-  "created_at": "2026-05-10T18:31:37.290327+00:00",
+  "created_at": "2026-05-10T20:07:18.714563+00:00",
   "description": "O_current cannot make J_sub/J_exch operator-level until J_V and source sides are defined.",
   "metadata": {
     "validation": {

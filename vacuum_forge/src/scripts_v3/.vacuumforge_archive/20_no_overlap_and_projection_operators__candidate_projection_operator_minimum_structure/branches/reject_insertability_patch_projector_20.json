@@ -9,7 +9,7 @@
   "obligation_ids": [],
   "activation_conditions": [],
   "superseded_by": null,
-  "created_at": "2026-05-10T18:31:38.875134+00:00",
+  "created_at": "2026-05-10T20:07:20.235562+00:00",
   "description": "Insertability patch projector is rejected: H_curv/H_exch still need tensor definitions, sources, divergence, and boundary behavior.",
   "metadata": {
     "validation": {

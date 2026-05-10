@@ -1,0 +1,9 @@
+[
+  {
+    "dependency_id": "projection_operator_minimum_structure_marker",
+    "upstream_script_id": "20_no_overlap_and_projection_operators__candidate_projection_operator_minimum_structure",
+    "upstream_derivation_id": "projection_operator_minimum_structure_marker",
+    "declared_at": "2026-05-10T20:07:21.120559+00:00",
+    "allow_superseded": false
+  }
+]

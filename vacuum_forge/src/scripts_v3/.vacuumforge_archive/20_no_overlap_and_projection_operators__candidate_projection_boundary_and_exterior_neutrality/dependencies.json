@@ -1,0 +1,9 @@
+[
+  {
+    "dependency_id": "projection_commutation_and_divergence_marker",
+    "upstream_script_id": "20_no_overlap_and_projection_operators__candidate_projection_commutation_and_divergence",
+    "upstream_derivation_id": "projection_commutation_and_divergence_marker",
+    "declared_at": "2026-05-10T20:07:27.321316+00:00",
+    "allow_superseded": false
+  }
+]
