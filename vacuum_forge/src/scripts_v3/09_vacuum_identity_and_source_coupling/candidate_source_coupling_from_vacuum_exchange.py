@@ -388,7 +388,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Proof obligation: kappa source
         ns2.record_obligation(ProofObligationRecord(
             obligation_id="derive_kappa_source_from_vacuum_exchange",

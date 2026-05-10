@@ -391,7 +391,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: P_T idempotence
         ns2.record_derivation(
             derivation_id="transverse_projector_idempotence_residual",

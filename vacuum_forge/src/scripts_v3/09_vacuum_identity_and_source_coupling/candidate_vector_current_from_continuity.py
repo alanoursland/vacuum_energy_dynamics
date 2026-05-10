@@ -408,7 +408,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: 1D continuity expression
         t, x = sp.symbols("t x", real=True)
         rho_fn = sp.Function("rho")(t, x)

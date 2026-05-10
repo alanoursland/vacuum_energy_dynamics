@@ -346,7 +346,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Proof obligation: vector coefficient
         ns2.record_obligation(ProofObligationRecord(
             obligation_id="derive_vector_coefficient_alpha_W_K_c",

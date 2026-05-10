@@ -334,7 +334,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: J/r^3 curl scaling from W_phi ansatz
         r_s, theta_s, J_s, Cj_s = sp.symbols("r theta J C_J", positive=True, real=True)
         W_phi_expr = Cj_s * J_s * sp.sin(theta_s) / r_s**2

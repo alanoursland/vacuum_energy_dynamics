@@ -350,7 +350,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: curl(grad chi) = 0
         x, y, z = sp.symbols("x y z", real=True)
         coords = (x, y, z)

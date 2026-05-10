@@ -361,7 +361,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: Green-function amplitude
         alpha_W_s, K_c_s = sp.symbols("alpha_W K_c", positive=True, real=True)
         lambda_eq_expr = alpha_W_s/(2*K_c_s)

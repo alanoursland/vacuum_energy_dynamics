@@ -329,7 +329,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: curl(grad phi) = 0
         x, y, z = sp.symbols("x y z", real=True)
         phi = sp.Function("phi")(x, y, z)

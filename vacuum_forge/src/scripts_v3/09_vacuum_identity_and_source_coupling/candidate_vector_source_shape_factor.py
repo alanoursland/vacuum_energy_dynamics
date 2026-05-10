@@ -432,7 +432,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: uniform sphere mass
         R_sym, rho_sym = sp.symbols("R rho", positive=True, real=True)
         M_expr = sp.simplify(4*sp.pi*rho_sym*R_sym**3/3)

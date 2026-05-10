@@ -391,7 +391,6 @@ def case_6_linear_compensated_metric(ns=None):
         out2.line("VacuumForge reciprocal_scaling check stays clean at weak order",
                   StatusMark.PASS if reciprocal.status in {"pass", "undetermined", "assumed"} else StatusMark.FAIL,
                   f"status={reciprocal.status}")
-    out2.print()
 
     if ns is not None:
         B_out = sp.series(1 / (1 + 2 * psi), psi, 0, 2).removeO()

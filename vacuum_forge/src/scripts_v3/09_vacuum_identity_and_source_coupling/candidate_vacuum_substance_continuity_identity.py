@@ -425,7 +425,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: the 1D continuity expression is computed from SymPy
         t, x = sp.symbols("t x", real=True)
         q = sp.Function("q_v")(t, x)

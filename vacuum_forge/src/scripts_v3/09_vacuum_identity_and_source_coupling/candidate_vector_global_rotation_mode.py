@@ -354,7 +354,8 @@ def main():
         )
 
 
-    with archive.open() as ns2:
+    ns2 = ns
+    if True:
         # Contentful derivation: uniform rotation current divergence-free
         x, y, z, rho, Omega = sp.symbols("x y z rho Omega", real=True)
         j_sample = rho * sp.Matrix([-Omega*y, Omega*x, sp.Integer(0)])

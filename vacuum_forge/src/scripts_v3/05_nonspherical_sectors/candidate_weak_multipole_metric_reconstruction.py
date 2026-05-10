@@ -186,7 +186,6 @@ def case_1_reciprocal_compensation(ns=None):
         out2.line("VacuumForge reciprocal_scaling check supports weak scalar sector",
                   StatusMark.PASS if reciprocal.status in {"pass", "undetermined", "assumed"} else StatusMark.FAIL,
                   f"status={reciprocal.status}")
-    out2.print()
 
     if ns is not None:
         B_out = sp.series(B_recip, psi, 0, 2).removeO()
