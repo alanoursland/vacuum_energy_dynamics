@@ -89,6 +89,19 @@ def build_output_path(script_path: Path) -> Path:
     return (RESULTS_ROOT / relative).with_suffix(".txt")
 
 
+def print_failure_details(script_path: Path, completed: subprocess.CompletedProcess[str]) -> None:
+    relative = script_path.relative_to(SCRIPT_ROOT)
+    if completed.stdout:
+        print(f"[stdout] {relative}")
+        print(completed.stdout, end="" if completed.stdout.endswith("\n") else "\n")
+    if completed.stderr:
+        print(f"[stderr] {relative}")
+        print(completed.stderr, end="" if completed.stderr.endswith("\n") else "\n")
+    if not completed.stdout and not completed.stderr:
+        print(f"[stderr] {relative}")
+        print(f"Script exited with code {completed.returncode} and produced no output.")
+
+
 def run_script(script_path: Path) -> int:
     output_path = build_output_path(script_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -121,11 +134,11 @@ def run_script(script_path: Path) -> int:
 
     output_path.write_text(combined_output, encoding="utf-8")
 
+    relative = script_path.relative_to(SCRIPT_ROOT)
     status = "PASS" if completed.returncode == 0 else "FAIL"
-    print(
-        f"[{status}] {script_path.relative_to(SCRIPT_ROOT)} -> "
-        f"{output_path.relative_to(SCRIPT_ROOT)}"
-    )
+    print(f"[{status}] {relative} -> {output_path.relative_to(SCRIPT_ROOT)}")
+    if completed.returncode != 0:
+        print_failure_details(script_path, completed)
     return completed.returncode
 
 
