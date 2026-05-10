@@ -21,7 +21,6 @@ Rules:
   keep coefficients symbolic
   do not insert Lense-Thirring normalization
   treat global angular momentum as boundary/source data
-[WARN] global rotation mode problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Angular momentum from current
@@ -39,7 +38,6 @@ Global angular momentum:
 
 Interpretation:
   A rotating source supplies global vector boundary data through J.
-[WARN] angular momentum follows from current: CONSTRAINED_BY_IDENTITY — global integral requires source model
 
 ========================================================================================================================
 Case 2: Uniform rotation current
@@ -54,7 +52,6 @@ Matrix([[-Omega*rho*y], [Omega*rho*x], [0]])
 div j = 0
 
 For constant rho and Omega, the current is divergence-free.
-[PASS] uniform rotational current is transverse in bulk: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 3: Boundary source view
@@ -71,7 +68,6 @@ Symbolic boundary condition:
 boundary data = C_b*J
 
 C_b is not derived.
-[WARN] global rotation treated as boundary data: CONSTRAINED_BY_IDENTITY — boundary coefficient missing
 
 ========================================================================================================================
 Case 4: Far-field angular-momentum shape
@@ -87,7 +83,6 @@ Interpretation:
   1/r^3 is the expected dipole-like curl falloff.
 
 But C_W is missing.
-[WARN] far-field angular-momentum shape stated: CONSTRAINED_BY_IDENTITY — coefficient missing
 
 ========================================================================================================================
 Case 5: k=0 / boundary warning
@@ -104,7 +99,6 @@ Therefore:
   global angular momentum must be supplied by boundary/source data
 
 This is not failure; it is a boundary problem.
-[WARN] zero-mode requires boundary treatment: RISK — not solved by local projector
 
 ========================================================================================================================
 Case 6: No GR matching
@@ -124,7 +118,6 @@ Current status:
   source object J: constrained by current
   far-field shape: constrained
   coefficient: missing
-[WARN] GR matching forbidden: RISK — coefficient must not be inserted
 
 ========================================================================================================================
 Case 7: Classification
@@ -138,7 +131,6 @@ Case 7: Classification
 | boundary coefficient C_b | MISSING |
 | far-field coefficient C_W | MISSING |
 | Lense-Thirring normalization | HAND_ASSIGNED if inserted now |
-[WARN] global rotation classification produced: CONSTRAINED_BY_IDENTITY — shape/source constrained, coefficient missing
 
 ========================================================================================================================
 Case 8: Next tests
@@ -157,7 +149,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_boundary_value_problem.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary value problem is next vector step
 
 ========================================================================================================================
 Final interpretation
@@ -181,3 +172,16 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_boundary_value_problem.py
+
+[derived_results]
+[PASS] uniform rotation current is divergence-free -- div j = 0 for rigid rotation j = rho*Omega*(-y, x, 0)
+[PASS] angular momentum density ell = r x j computed -- symbolic angular momentum density from current
+[PASS] far-field B_W ~ C_W J/r^3 shape stated -- constrained by dimensionality and symmetry; coefficient symbolic
+
+[governance_assessments]
+[FAIL] boundary coefficient C_b -- missing; k=0 global mode not resolved by local projector
+[DEFER] GR matching forbidden -- C_W and beta_W must not be set to reproduce Lense-Thirring
+
+[unresolved_obligations]
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded

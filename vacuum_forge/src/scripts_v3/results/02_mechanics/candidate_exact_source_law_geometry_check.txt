@@ -2,7 +2,6 @@
 ============================================================================================================
 Candidate Exact Source-Law Geometry Check
 ============================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - orbit_space_action_exact_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 

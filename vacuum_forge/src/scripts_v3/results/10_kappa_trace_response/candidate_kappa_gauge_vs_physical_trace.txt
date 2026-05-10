@@ -24,7 +24,6 @@ Known requirement:
 Known risk:
 
   ordinary scalar kappa dynamics can leak exterior 1/r tails or scalar radiation.
-[WARN] gauge-vs-physical problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Reduced diagnostic relation
@@ -40,7 +39,6 @@ Eq(kappa, log(A*B)/2)
 This measures departure from reciprocal AB=1 structure.
 
 It does not, by itself, decide whether kappa is physical or gauge.
-[PASS] kappa diagnostic relation stated: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 2: Interpretation inventory
@@ -49,7 +47,7 @@ Case 2: Interpretation inventory
 ----------------------------------------------------------------------------------------------------
 I1: Pure gauge / coordinate-volume artifact
 ----------------------------------------------------------------------------------------------------
-[WARN] I1: Pure gauge / coordinate-volume artifact: PLAUSIBLE
+Status: PLAUSIBLE
 Meaning: kappa measures coordinate or slicing/radial-volume choice rather than physical stress response
 Compatible with: exterior kappa=0 by gauge fixing; avoids scalar radiation if no physical dynamics
 Risk: undermines using kappa as an interior physical response; may demote prior kappa interpretations
@@ -57,7 +55,7 @@ Risk: undermines using kappa as an interior physical response; may demote prior 
 ----------------------------------------------------------------------------------------------------
 I2: Physical local trace field
 ----------------------------------------------------------------------------------------------------
-[WARN] I2: Physical local trace field: RISK
+Status: RISK
 Meaning: kappa is an ordinary scalar field sourced locally by trace/pressure
 Compatible with: interior trace response
 Risk: generically produces exterior charge/tails or scalar radiation unless screened
@@ -65,7 +63,7 @@ Risk: generically produces exterior charge/tails or scalar radiation unless scre
 ----------------------------------------------------------------------------------------------------
 I3: Constrained non-propagating trace response
 ----------------------------------------------------------------------------------------------------
-[WARN] I3: Constrained non-propagating trace response: CONSTRAINED_BY_IDENTITY
+Status: CONSTRAINED_BY_IDENTITY
 Meaning: kappa is physical in matter but constrained/projected so it has no independent exterior charge
 Compatible with: interior response, exterior kappa=0, compensated trace, scalar-radiation safety
 Risk: requires parent constraint identity; otherwise compensation/projection is imposed by hand
@@ -73,7 +71,7 @@ Risk: requires parent constraint identity; otherwise compensation/projection is 
 ----------------------------------------------------------------------------------------------------
 I4: Relaxational trace deviation
 ----------------------------------------------------------------------------------------------------
-[WARN] I4: Relaxational trace deviation: PLAUSIBLE
+Status: PLAUSIBLE
 Meaning: kappa is a deviation from vacuum minimum that relaxes back to zero outside sources
 Compatible with: exterior suppression and vacuum absorption intuition
 Risk: needs dynamics that do not create observable scalar radiation or erase static A
@@ -81,7 +79,7 @@ Risk: needs dynamics that do not create observable scalar radiation or erase sta
 ----------------------------------------------------------------------------------------------------
 I5: Dangerous propagating scalar mode
 ----------------------------------------------------------------------------------------------------
-[WARN] I5: Dangerous propagating scalar mode: REJECTED
+Status: REJECTED
 Meaning: kappa is an independent scalar wave/field with trace source
 Compatible with: none of the current exterior/radiation safety requirements without extra suppression
 Risk: would introduce scalar gravity radiation and exterior tails
@@ -102,7 +100,6 @@ But then:
 
 Conclusion:
   pure-gauge kappa is safe but weak.
-[WARN] pure gauge interpretation is exterior-safe but physically weak: PLAUSIBLE — needs gauge-invariant interior content
 
 ========================================================================================================================
 Case 4: Physical local scalar test
@@ -123,7 +120,6 @@ This violates exterior kappa=0 unless screened/projected.
 
 Conclusion:
   ordinary local scalar kappa is dangerous.
-[WARN] local physical scalar kappa leaks without suppression: RISK — not acceptable as final unscreened interpretation
 
 ========================================================================================================================
 Case 5: Constrained trace-response test
@@ -143,7 +139,6 @@ This best matches current requirements:
   no scalar radiation leak
 
 But a parent identity is required.
-[WARN] constrained trace response is current best interpretation: CONSTRAINED_BY_IDENTITY — parent identity missing
 
 ========================================================================================================================
 Case 6: Relaxational trace-deviation test
@@ -168,7 +163,6 @@ But it introduces:
 
 Conclusion:
   plausible as suppression mechanism, not source identity by itself.
-[WARN] relaxational kappa is plausible but incomplete: PLAUSIBLE — dynamics and energy accounting missing
 
 ========================================================================================================================
 Case 7: Status table
@@ -192,7 +186,6 @@ Secondary possibility:
 Rejected as final:
 
   ordinary unscreened propagating scalar kappa.
-[WARN] kappa interpretation classification produced: CONSTRAINED_BY_IDENTITY — parent constraint still missing
 
 ========================================================================================================================
 Case 8: Failure controls
@@ -205,7 +198,6 @@ The kappa interpretation fails if:
 4. compensation is inserted without parent constraint.
 5. relaxation hides the problem without energy/source accounting.
 6. kappa duplicates the A-sector density response.
-[WARN] gauge-vs-physical failure controls stated: RISK — must protect exterior and scalar-radiation safety
 
 ========================================================================================================================
 Case 9: Next tests
@@ -228,7 +220,6 @@ Recommended next script:
 Reason:
   Current best interpretation is constrained trace response; the missing
   piece is the parent projection identity.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — constraint projection identity is next
 
 ========================================================================================================================
 Final interpretation
@@ -259,3 +250,11 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_constraint_projection_identity.py
+
+[governance_assessments]
+[PASS] kappa as constrained non-propagating trace response -- current best interpretation
+[DEFER] ordinary propagating scalar kappa -- deferred pending constraint derivation
+[OBLIGATION] parent constraint identity -- missing
+
+[unresolved_obligations]
+[OBLIGATION] derive parent constraint projection identity -- open

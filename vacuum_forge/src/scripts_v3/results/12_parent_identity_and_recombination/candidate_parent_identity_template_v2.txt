@@ -24,7 +24,9 @@ Discipline:
   no scalar radiation
   no energy destruction
   no metric copying as derivation
-[WARN] parent template v2 problem posed: CANDIDATE
+
+[governance_assessments]
+[DEFER] parent template v2 problem posed -- scaffold only; not a derivation
 
 ========================================================================================================================
 Case 1: Parent v2 clause inventory
@@ -36,7 +38,7 @@ P2.1: parent balance object
 Clause: Div E_parent[A,W,h_TT,kappa; projectors] = B_closed[T] + B_relax[Gamma_relax]
 Required reduction: A single balance scaffold that routes sources through projectors.
 Forbidden failure: Decorative Bianchi restatement with no sector reductions.
-[WARN] P2.1: parent balance object: CANDIDATE
+[INFO] P2.1: parent balance object: CANDIDATE
 Missing: Definition of E_parent, Div, B_closed, B_relax.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -45,7 +47,7 @@ P2.2: ordinary closed regime
 Clause: Sigma_creation = 0 and B_active = 0 in ordinary gravity
 Required reduction: No active creation term enters ordinary field equations.
 Forbidden failure: Gamma_relax or Sigma_creation acts as net creation/destruction.
-[WARN] P2.2: ordinary closed regime: CONSTRAINED
+[INFO] P2.2: ordinary closed regime: CONSTRAINED
 Missing: Active-regime trigger/exclusion law.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +56,7 @@ P2.3: scalar projector
 Clause: P_scalar B_closed[T] -> rho_eff -> C_A[A,rho]=0
 Required reduction: Delta_areal A = 8*pi*G*rho/c^2 and weak Newtonian limit.
 Forbidden failure: Box A or A_rad ordinary scalar radiation.
-[WARN] P2.3: scalar projector: STRUCTURAL
+[INFO] P2.3: scalar projector: STRUCTURAL
 Missing: Parent definition of P_scalar and C_A.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -63,7 +65,7 @@ P2.4: scalar constraint propagation
 Clause: partial_tau C_A[A,rho] follows from continuity(rho,j_L)
 Required reduction: Moving sources update A without scalar radiation.
 Forbidden failure: Adding Box A by hand for dynamics.
-[FAIL] P2.4: scalar constraint propagation: MISSING
+[INFO] P2.4: scalar constraint propagation: MISSING
 Missing: Continuity-compatible scalar constraint propagation identity.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -72,7 +74,7 @@ P2.5: vector projector
 Clause: P_T B_closed[T] -> j_T -> curl curl W = -(alpha_W/(2K_c))*j_T
 Required reduction: W_i sourced only by transverse current.
 Forbidden failure: P_L j or scalar continuity sources W_i.
-[WARN] P2.5: vector projector: STRUCTURAL
+[INFO] P2.5: vector projector: STRUCTURAL
 Missing: Parent projection and alpha_W/K_c normalization.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +83,7 @@ P2.6: TT projector
 Clause: P_TT B_closed[T] -> S_ij^TT -> Box h_ij^TT = -C_T S_ij^TT
 Required reduction: Ordinary long-range radiation is TT-only.
 Forbidden failure: Trace stress, A_rad, Box kappa, or free W_i radiation.
-[WARN] P2.6: TT projector: STRUCTURAL
+[INFO] P2.6: TT projector: STRUCTURAL
 Missing: C_T, tensor action stiffness, TT source identity.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +92,7 @@ P2.7: trace / kappa minimum projector
 Clause: P_trace B_closed[T] -> S_trace_effective -> kappa_min
 Required reduction: Trace/pressure shifts kappa_min, not scalar radiation.
 Forbidden failure: Box kappa = alpha trace.
-[WARN] P2.7: trace / kappa minimum projector: STRUCTURAL
+[INFO] P2.7: trace / kappa minimum projector: STRUCTURAL
 Missing: S_trace_effective and chi_kappa.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +101,7 @@ P2.8: first-order kappa relaxation
 Clause: u^mu nabla_mu kappa = -lambda_kappa (kappa-kappa_min)
 Required reduction: Kappa relaxes without momentum channel or breathing wave.
 Forbidden failure: Second-order kappa oscillator/sloshing.
-[WARN] P2.8: first-order kappa relaxation: CANDIDATE
+[INFO] P2.8: first-order kappa relaxation: CANDIDATE
 Missing: Definition of u^mu and lambda_kappa.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +110,7 @@ P2.9: relaxation/vacuum-substance exchange
 Clause: dE_kappa/dtau + dE_vac_config/dtau = 0 for internal relaxation
 Required reduction: Curvature excess/deficit exchanges with vacuum substance instead of disappearing.
 Forbidden failure: Gamma_relax destroys energy or acts like Sigma_creation.
-[WARN] P2.9: relaxation/vacuum-substance exchange: CANDIDATE
+[INFO] P2.9: relaxation/vacuum-substance exchange: CANDIDATE
 Missing: Definition of E_vac_config or q_v/J_v balance.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -117,7 +119,7 @@ P2.10: exterior kappa neutrality
 Clause: Q_kappa = 0, F_kappa(R+) = 0, kappa_ext -> 0
 Required reduction: No exterior kappa 1/r tail.
 Forbidden failure: Second exterior scalar charge.
-[WARN] P2.10: exterior kappa neutrality: CONSTRAINED
+[INFO] P2.10: exterior kappa neutrality: CONSTRAINED
 Missing: Projection/boundary cancellation identity.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ P2.11: boundary mass preservation
 Clause: delta M_ext|kappa_relaxation = 0 and delta M_ext|Gamma_relax = 0
 Required reduction: Kappa/boundary relaxation cannot change A-sector exterior mass.
 Forbidden failure: Boundary smoothing tunes measured mass.
-[WARN] P2.11: boundary mass preservation: REQUIRED
+[INFO] P2.11: boundary mass preservation: REQUIRED
 Missing: Boundary mass preservation theorem.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +137,7 @@ P2.12: recombination without double-counting
 Clause: R[A,W,h_TT,kappa] counts scalar response once
 Required reduction: g_tt<-A, g_0i<-W_i, g_ij<-scalar(A)+kappa_trace+h_TT
 Forbidden failure: Metric copied from GR or A/kappa duplicate rho response.
-[WARN] P2.12: recombination without double-counting: CANDIDATE
+[INFO] P2.12: recombination without double-counting: CANDIDATE
 Missing: P_recombination identity.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -144,7 +146,7 @@ P2.13: coefficient derivation gate
 Clause: P_coeff(action/stiffness) -> alpha_W/K_c, beta_W, C_T, K_T
 Required reduction: Coefficients remain labeled until parent action/stiffness derives them.
 Forbidden failure: GR coefficients inserted as derivation.
-[FAIL] P2.13: coefficient derivation gate: MISSING
+[INFO] P2.13: coefficient derivation gate: MISSING
 Missing: Parent action/stiffness principle.
 
 ========================================================================================================================
@@ -165,7 +167,9 @@ Case 2: Compact parent v2 ledger
 | P2.11: boundary mass preservation | Kappa/boundary relaxation cannot change A-sector exterior mass. | REQUIRED | Boundary mass preservation theorem. |
 | P2.12: recombination without double-counting | g_tt<-A, g_0i<-W_i, g_ij<-scalar(A)+kappa_trace+h_TT | CANDIDATE | P_recombination identity. |
 | P2.13: coefficient derivation gate | Coefficients remain labeled until parent action/stiffness derives them. | MISSING | Parent action/stiffness principle. |
-[WARN] compact parent v2 ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact parent v2 ledger produced -- 13 parent v2 clauses recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -181,7 +185,9 @@ Interpretation:
   It includes projectors, kappa relaxation, boundary mass preservation,
   recombination, and relaxation energy exchange.
   It is still not closure.
-[WARN] parent v2 status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] parent v2 status count produced -- {'CANDIDATE': 4, 'CONSTRAINED': 2, 'STRUCTURAL': 4, 'MISSING': 2, 'REQUIRED': 1}
 
 ========================================================================================================================
 Case 4: Candidate symbolic parent v2
@@ -210,7 +216,9 @@ Relaxation exchange:
   dE_kappa/dtau + dE_vac_config/dtau = 0
 
 This is still a scaffold.
-[WARN] candidate symbolic parent v2 stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] candidate symbolic parent v2 stated -- scaffold only; E_parent undefined
 
 ========================================================================================================================
 Case 5: Parent v2 pass/fail tests
@@ -228,7 +236,9 @@ Template v2 fails if:
 9. boundary relaxation changes M_ext.
 10. recombination counts scalar response twice.
 11. coefficients are copied from GR.
-[WARN] parent v2 pass/fail tests stated: RISK
+
+[unresolved_obligations]
+[OBLIGATION] parent v2 pass/fail tests stated -- 11 tests required before v2 scaffold is licensed
 
 ========================================================================================================================
 Case 6: Next tests
@@ -250,7 +260,9 @@ Recommended next script:
 
 Reason:
   Template v2 now depends explicitly on E_vac_config; the vacuum-substance variable must be examined.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[DEFER] next test selected -- vacuum configuration energy variable script is the next gate
 
 ========================================================================================================================
 Final interpretation

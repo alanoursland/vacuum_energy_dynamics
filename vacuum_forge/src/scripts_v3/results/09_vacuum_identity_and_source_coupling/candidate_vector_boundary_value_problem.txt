@@ -18,7 +18,6 @@ Rules:
   keep all coefficients symbolic
   do not insert Lense-Thirring normalization
   solve only the structural exterior shape
-[WARN] vector boundary-value problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Boundary angular momentum data
@@ -35,7 +34,6 @@ Symbolic boundary amplitude:
 boundary_data = C_b*J/R**2
 
 C_b is not derived.
-[WARN] boundary data stated symbolically: CONSTRAINED_BY_IDENTITY — boundary coefficient missing
 
 ========================================================================================================================
 Case 2: Exterior dipole-like vector ansatz
@@ -49,7 +47,6 @@ W_phi = C_J*J*sin(theta)/r**2
 Interpretation:
   This is the axial/vector dipole-like exterior shape.
   C_J is symbolic and not derived.
-[WARN] exterior vector ansatz stated: CONSTRAINED_BY_IDENTITY — coefficient missing
 
 ========================================================================================================================
 Case 3: Curl diagnostic scaling
@@ -63,7 +60,6 @@ B_theta = (curl W)_theta =
 C_J*J*sin(theta)/r**3
 
 Both scale as J/r^3.
-[PASS] curl diagnostic has J/r^3 scaling: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 4: Boundary matching relation
@@ -77,7 +73,6 @@ C_J solution = [C_b]
 
 Thus C_J is fixed by boundary coefficient C_b.
 But C_b is still missing.
-[WARN] boundary matching fixes exterior coefficient from boundary coefficient: CONSTRAINED_BY_IDENTITY — boundary coefficient still missing
 
 ========================================================================================================================
 Case 5: Precession chain remains symbolic
@@ -95,7 +90,6 @@ Combined coefficient:
   C_total = beta_W C_W
 
 C_total is not derived.
-[FAIL] precession chain symbolic: MISSING — observable coefficient not derived
 
 ========================================================================================================================
 Case 6: No GR matching discipline
@@ -114,7 +108,6 @@ Current status:
 
   shape: derived/reduced
   normalization: missing
-[WARN] GR matching forbidden: RISK — normalization must not be inserted
 
 ========================================================================================================================
 Case 7: Classification
@@ -128,7 +121,6 @@ Case 7: Classification
 | boundary coefficient C_b | MISSING |
 | precession coefficient beta_W | MISSING |
 | Lense-Thirring normalization | HAND_ASSIGNED if inserted now |
-[WARN] boundary-value classification produced: CONSTRAINED_BY_IDENTITY — shape derived, normalization missing
 
 ========================================================================================================================
 Case 8: Next tests
@@ -147,7 +139,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_boundary_coefficient_from_action.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary coefficient is the remaining vector gap
 
 ========================================================================================================================
 Final interpretation
@@ -171,3 +162,15 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_boundary_coefficient_from_action.py
+
+[derived_results]
+[PASS] curl W_phi ansatz has J/r^3 scaling -- B_r and B_theta both scale ~ C_J J/r^3; shape confirmed
+[PASS] boundary matching fixes C_J from C_b -- C_J solution = [C_b]; coefficient reduced to C_b
+
+[governance_assessments]
+[FAIL] boundary coefficient C_b -- missing; cannot derive from shape argument alone
+[DEFER] GR matching forbidden -- C_total = beta_W * C_W must not be set to match Lense-Thirring
+
+[unresolved_obligations]
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded
+[OBLIGATION] derive vector beta_W observable coupling -- open proof obligation recorded

@@ -24,7 +24,9 @@ Discipline:
   no far-zone scalar flux
   no boundary mass tuning
   do not overclaim linear/toy profiles as parent theorem
-[WARN] boundary volume no-charge problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] boundary volume no-charge problem posed -- open: parent projector theorem required
 
 ========================================================================================================================
 Case 1: Boundary volume/no-charge inventory
@@ -36,7 +38,7 @@ VQ1: compact support volume reconfiguration
 Condition: zeta(r)=0 for r>=R or zeta has compact support
 Allowed meaning: local vacuum-spacetime volume reconfiguration remains interior/local
 Forbidden failure: zeta_ext has long-range 1/r scalar tail
-[WARN] VQ1: compact support volume reconfiguration: SAFE_IF
+Status: SAFE_IF
 Missing: physical reason for compact support from parent projector
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -45,7 +47,7 @@ VQ2: zero exterior volume charge
 Condition: Q_volume = integral S_volume d^3x = 0
 Allowed meaning: volume/trace source is compensated and produces no exterior monopole
 Forbidden failure: Q_volume != 0 produces exterior scalar charge
-[WARN] VQ2: zero exterior volume charge: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: definition of S_volume and compensation law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +56,7 @@ VQ3: zero boundary flux
 Condition: F_zeta(R+) = 4*pi*R^2*zeta_prime(R+) = 0
 Allowed meaning: no scalar volume flux enters exterior vacuum
 Forbidden failure: nonzero exterior flux seeds zeta_ext ~ 1/r
-[WARN] VQ3: zero boundary flux: REQUIRED
+Status: REQUIRED
 Missing: boundary/interface law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -63,7 +65,7 @@ VQ4: kappa exterior neutrality
 Condition: kappa_ext -> 0 and F_kappa(R+) = 0
 Allowed meaning: kappa remains trace/volume matching variable, not exterior scalar field
 Forbidden failure: kappa_ext ~ 1/r or nonzero exterior attractor
-[WARN] VQ4: kappa exterior neutrality: CONSTRAINED
+Status: CONSTRAINED
 Missing: kappa-zeta relation and boundary projector
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -72,7 +74,7 @@ VQ5: A-sector exterior mass protected
 Condition: delta M_ext|volume/kappa reconfiguration = 0
 Allowed meaning: A_flux carries exterior mass; volume mode does not tune measured gravity
 Forbidden failure: boundary volume smoothing changes exterior A 1/r coefficient
-[WARN] VQ5: A-sector exterior mass protected: REQUIRED
+Status: REQUIRED
 Missing: boundary mass preservation theorem
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +83,7 @@ VQ6: compensated source projection
 Condition: P_0 S = S - <S> over support, so integral P_0 S d^3x = 0
 Allowed meaning: nonlocal constraint projection removes exterior scalar monopole
 Forbidden failure: uncompensated trace/volume source
-[WARN] VQ6: compensated source projection: CANDIDATE
+Status: CANDIDATE
 Missing: whether projection is parent-derived or merely imposed
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +92,7 @@ VQ7: smooth compact profile
 Condition: zeta(R)=0, zeta_prime(R)=0, possibly zeta_double_prime(R)=0
 Allowed meaning: toy boundary profile avoids flux/shell artifacts
 Forbidden failure: hidden shell source at boundary
-[WARN] VQ7: smooth compact profile: STRUCTURAL
+Status: STRUCTURAL
 Missing: required smoothness from action/interface law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +101,7 @@ VQ8: divergence/boundary identity
 Condition: integral div J_volume d^3x = surface J_volume dot dS = 0
 Allowed meaning: conversion can be local or constrained with no exterior leakage
 Forbidden failure: J_volume carries scalar flux to infinity
-[WARN] VQ8: divergence/boundary identity: CANDIDATE
+Status: CANDIDATE
 Missing: definition of J_volume / J_v and support
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +110,7 @@ VQ9: exterior vacuum fixed point
 Condition: S_trace_effective=0 -> zeta_min=0, kappa_min=0, zeta,kappa -> 0
 Allowed meaning: ordinary exterior vacuum has no volume-mode scalar field
 Forbidden failure: nonzero exterior volume-form attractor
-[WARN] VQ9: exterior vacuum fixed point: CONSTRAINED
+Status: CONSTRAINED
 Missing: relaxation law and exterior stability proof
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -117,7 +119,7 @@ VQ10: no binary scalar flux
 Condition: dE_scalar_far/dt = 0 for volume/kappa mode
 Allowed meaning: binary scalar conversion remains local/conservative/compensated
 Forbidden failure: far-zone scalar energy flux or secular orbital damping
-[WARN] VQ10: no binary scalar flux: REQUIRED
+Status: REQUIRED
 Missing: radiation safety proof after coupling is selected
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ VQ11: nonlinear determinant caveat
 Condition: linear zeta control extended or replaced by nonlinear volume condition
 Allowed meaning: trace/volume neutrality survives beyond linear perturbation
 Forbidden failure: linear volume neutrality overclaimed
-[WARN] VQ11: nonlinear determinant caveat: RISK
+Status: RISK
 Missing: nonlinear determinant / covariant volume-form theorem
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +137,7 @@ VQ12: parent projector origin
 Condition: P_boundary P_trace enforces exterior neutrality
 Allowed meaning: zero exterior charge follows from parent structure
 Forbidden failure: boundary neutrality imposed by hand at each case
-[FAIL] VQ12: parent projector origin: MISSING
+Status: MISSING
 Missing: parent identity / projector derivation
 
 ========================================================================================================================
@@ -155,7 +157,9 @@ Case 2: Compact boundary volume ledger
 | VQ10: no binary scalar flux | dE_scalar_far/dt = 0 for volume/kappa mode | REQUIRED | far-zone scalar energy flux or secular orbital damping | radiation safety proof after coupling is selected |
 | VQ11: nonlinear determinant caveat | linear zeta control extended or replaced by nonlinear volume condition | RISK | linear volume neutrality overclaimed | nonlinear determinant / covariant volume-form theorem |
 | VQ12: parent projector origin | P_boundary P_trace enforces exterior neutrality | MISSING | boundary neutrality imposed by hand at each case | parent identity / projector derivation |
-[WARN] compact boundary volume ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact boundary volume ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -173,7 +177,9 @@ Interpretation:
   The boundary/no-charge theorem has clear necessary conditions.
   Compact support, zero flux, compensation, and A-flux protection are the core.
   Parent projector origin remains missing.
-[WARN] boundary volume status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] boundary volume status count produced -- counts complete
 
 ========================================================================================================================
 Case 4: Candidate theorem statement
@@ -199,7 +205,9 @@ Interpretation:
 
 Current status:
   theorem target, not theorem.
-[WARN] candidate no-exterior-charge theorem stated: THEOREM_TARGET
+
+[unresolved_obligations]
+[OBLIGATION] candidate no-exterior-charge theorem stated -- open: proof requires parent projector P_boundary P_trace
 
 ========================================================================================================================
 Case 5: Toy profile tests
@@ -225,7 +233,9 @@ Use:
 Do not use as:
 
   parent-derived physical profile
-[WARN] toy compact profile tests stated: STRUCTURAL
+
+[governance_assessments]
+[PASS] toy compact profile tests stated -- toy profiles consistent with zero boundary flux
 
 ========================================================================================================================
 Case 5b: Symbolic compact-profile boundary check
@@ -240,7 +250,9 @@ Compact profile example:
 Higher smoothness sample:
 
   zeta_n=3''(R) = 0
-[PASS] compact profile boundary flux check: DERIVED_REDUCED — F_zeta(R+) = 0
+
+[sample_results]
+[PASS] compact profile boundary flux check -- F_zeta(R+) = 0
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -256,7 +268,9 @@ The boundary volume theorem fails if:
 7. hidden shell sources appear at the boundary.
 8. binary scalar flux becomes nonzero.
 9. linear determinant logic is overclaimed as nonlinear theorem.
-[WARN] boundary volume failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] boundary volume failure controls stated -- open risk: nine failure conditions listed, parent projector required
 
 ========================================================================================================================
 Case 7: Next tests
@@ -278,7 +292,9 @@ Recommended next script:
 
 Reason:
   If volume conversion is compact/compensated, we need to know whether J_v is local, constrained, or transport.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- vacuum transport current constraints
 
 ========================================================================================================================
 Final interpretation

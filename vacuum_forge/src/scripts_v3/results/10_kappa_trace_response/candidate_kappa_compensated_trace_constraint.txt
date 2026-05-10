@@ -19,7 +19,6 @@ Candidate fix:
 Goal:
 
   remove exterior monopole leakage while retaining interior trace response.
-[WARN] compensated trace problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Define raw and compensated source
@@ -35,7 +34,6 @@ Support average:
 Compensated source:
 
 S_comp = 9*p0/5 - 3*p0*r**2/R**2
-[WARN] compensated source defined: CONSTRAINED_BY_IDENTITY — subtraction needs parent identity
 
 ========================================================================================================================
 Case 2: Zero-charge check
@@ -49,7 +47,6 @@ Compensated charge:
 Q_comp = 0
 
 Therefore the compensated source removes monopole kappa charge.
-[PASS] compensated source has zero integrated charge: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 3: Interior source remains nontrivial
@@ -65,7 +62,6 @@ Zero crossing(s):
 Interpretation:
   compensation does not erase kappa interior structure.
   it creates positive and negative regions with zero net charge.
-[WARN] compensated source retains interior structure: CONSTRAINED_BY_IDENTITY — physical meaning of negative compensation must be derived
 
 ========================================================================================================================
 Case 4: Massless exterior consequence
@@ -79,7 +75,6 @@ kappa_ext = Q_comp*alpha_k/(4*pi*K_k*r)
 If Q_comp = 0, the monopole 1/r tail vanishes.
 
 Higher multipoles or boundary-layer effects may remain, depending on source shape.
-[WARN] zero compensated charge removes monopole tail: CONSTRAINED_BY_IDENTITY — higher multipoles/boundary behavior not solved
 
 ========================================================================================================================
 Case 5: Parent identity requirement
@@ -99,7 +94,6 @@ or:
   exterior kappa charge is projected out by a constraint equation
 
 Otherwise the subtraction is just a hand-tuned fix.
-[FAIL] parent identity required for compensation: MISSING — zero-charge rule not derived
 
 ========================================================================================================================
 Case 6: Locality warning
@@ -115,7 +109,6 @@ dynamical source law unless derived from a constrained variable.
 
 Thus compensation points toward kappa as a constrained/non-propagating
 trace response, not an ordinary local scalar field.
-[WARN] compensation is nonlocal over support: RISK — suggests constraint projection rather than local scalar dynamics
 
 ========================================================================================================================
 Case 7: Classification
@@ -130,7 +123,6 @@ Case 7: Classification
 | parent identity for compensation | MISSING |
 | locality of support-average subtraction | RISK |
 | final kappa source law | UNFINISHED |
-[WARN] compensated trace classification produced: CONSTRAINED_BY_IDENTITY — works algebraically, needs parent identity
 
 ========================================================================================================================
 Case 8: Next tests
@@ -153,7 +145,6 @@ Recommended next script:
 Reason:
   Compensation looks nonlocal/constraint-like; before promoting it, separate
   physical trace from gauge-volume artifact.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — gauge-vs-physical trace is next
 
 ========================================================================================================================
 Final interpretation
@@ -176,3 +167,14 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_gauge_vs_physical_trace.py
+
+[sample_results]
+[PASS] compensated source zero charge Q_comp=0 -- parabolic profile sample only
+
+[governance_assessments]
+[PASS] compensation removes monopole leakage -- algebraically valid
+[FAIL] parent identity for compensation -- missing - not derived
+[FAIL] nonlocality risk -- open risk
+
+[unresolved_obligations]
+[OBLIGATION] derive parent identity for Q_kappa=0 -- open

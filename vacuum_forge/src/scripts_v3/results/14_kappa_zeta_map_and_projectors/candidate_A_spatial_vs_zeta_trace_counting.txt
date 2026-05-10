@@ -23,7 +23,6 @@ Discipline:
   do not let zeta/kappa become exterior scalar gravity
   do not let kappa be both diagnostic and physical trace
   metric recombination must match epsilon/e_kappa accounting
-[WARN] A_spatial versus zeta trace counting problem posed: REQUIRED
 
 ========================================================================================================================
 Case 1: Trace-counting branch inventory
@@ -36,7 +35,7 @@ Branch: g_ij scalar trace is fully fixed by A-sector recovery
 Interpretation: zeta/kappa cannot add independent scalar spatial trace
 Allowed if: A-sector parent identity derives both lapse and spatial scalar trace
 Forbidden if: zeta/kappa also add volume trace as independent geometry
-[WARN] C1: A_spatial consumes all scalar spatial trace: SAFE_IF
+Status: SAFE_IF
 Missing: A-sector spatial recovery theorem
 Consequence: kappa likely diagnostic/residual only; zeta volume energy cannot be inserted as independent metric trace
 
@@ -47,7 +46,7 @@ Branch: A_spatial accounts for exterior mass geometry, leaving compensated resid
 Interpretation: zeta/kappa may survive as boundary-neutral residual
 Allowed if: residual has zero exterior charge and does not alter M_ext
 Forbidden if: residual changes exterior mass or creates scalar tail
-[WARN] C2: A_spatial consumes only mass-sector trace: CANDIDATE
+Status: CANDIDATE
 Missing: projector separating mass-sector trace from residual trace
 Consequence: P_boundary P_trace residual can enter recombination once
 
@@ -58,7 +57,7 @@ Branch: zeta is the volume expression of the A-sector spatial response
 Interpretation: epsilon_vac_config may describe A-sector spatial volume configuration, not extra trace
 Allowed if: energy accounting is rewritten so zeta does not add independent geometry
 Forbidden if: A_spatial and zeta both inserted separately
-[WARN] C3: A_spatial and zeta are the same trace variable: RISK
+Status: RISK
 Missing: identity connecting A_spatial trace to zeta
 Consequence: zeta may become diagnostic/energy bookkeeping for A_spatial, kappa residual remains separate or diagnostic
 
@@ -69,7 +68,7 @@ Branch: A_spatial and zeta define volume geometry; kappa tracks mismatch/relaxat
 Interpretation: kappa does not enter g_ij as independent trace
 Allowed if: kappa energy is residual and recombination excludes duplicate kappa trace
 Forbidden if: kappa adds separate spatial trace
-[WARN] C4: kappa is only residual after A_spatial and zeta: CANDIDATE
+Status: CANDIDATE
 Missing: kappa-zeta residual map
 Consequence: supports kappa diagnostic/first-order residual role
 
@@ -80,7 +79,7 @@ Branch: zeta/kappa enter only through compact or boundary-neutral residual corre
 Interpretation: ordinary exterior metric is A-sector; volume residual is interior/boundary-neutral
 Allowed if: P_boundary enforces zero charge/flux and delta M_ext=0
 Forbidden if: boundary residual leaks into exterior scalar charge
-[WARN] C5: zeta/kappa boundary residual only: CANDIDATE
+Status: CANDIDATE
 Missing: boundary mass preservation theorem
 Consequence: preserves group-13 volume accounting while minimizing GR-smuggling risk
 
@@ -91,7 +90,7 @@ Branch: A_spatial is currently recovery bookkeeping, not derived
 Interpretation: do not assume GR spatial metric form
 Allowed if: A_spatial labeled recovery constraint / theorem target
 Forbidden if: GR spatial response is imported as field equation
-[FAIL] C6: no independent A_spatial derivation: UNRESOLVED
+Status: UNRESOLVED
 Missing: parent identity deriving A_spatial companion
 Consequence: recombination remains bookkeeping until A_spatial is derived
 
@@ -102,7 +101,7 @@ Branch: g_ij includes A_spatial + zeta + kappa as independent trace terms
 Interpretation: triple-counts scalar volume response
 Allowed if: never in ordinary branch
 Forbidden if: used as recombination map
-[PASS] C7: duplicate scalar spatial trace: FORBIDDEN
+Status: FORBIDDEN
 Missing: not pursued
 Consequence: kills the branch unless projection removes two of the three contributions
 
@@ -113,7 +112,7 @@ Branch: trace_volume_residual_once produces zeta_ext or kappa_ext ~ 1/r
 Interpretation: residual becomes scalar gravity
 Allowed if: never in ordinary exterior
 Forbidden if: residual has nonzero exterior charge
-[PASS] C8: exterior scalar tail from residual: FORBIDDEN
+Status: FORBIDDEN
 Missing: not pursued
 Consequence: requires P_boundary or branch rejection
 
@@ -124,7 +123,7 @@ Branch: metric count-once but epsilon/e_kappa count twice, or metric double-coun
 Interpretation: geometry and accounting disagree
 Allowed if: energy convention and metric recombination are matched
 Forbidden if: epsilon_zeta and e_kappa describe same metric trace independently
-[WARN] C9: energy accounting mismatch: REQUIRED
+Status: REQUIRED
 Missing: degree-of-freedom accounting rule
 Consequence: forces either kappa diagnostic status or absorbed/unified energy convention
 
@@ -135,7 +134,7 @@ Branch: kappa = 1/2 ln(AB) used as reduced diagnostic only
 Interpretation: spherical relation can diagnose A/B mismatch but cannot be silently promoted
 Allowed if: kept as reduced gauge diagnostic until covariant map is derived
 Forbidden if: AB diagnostic is treated as physical kappa trace in general recombination
-[WARN] C10: areal diagnostic caution: CONSTRAINED
+Status: CONSTRAINED
 Missing: areal diagnostic versus physical variable split
 Consequence: suggests a later diagnostic-vs-physical kappa script remains useful
 
@@ -146,7 +145,7 @@ Branch: A_spatial_once + boundary-neutral trace_volume_residual_once
 Interpretation: A owns mass-sector spatial response; zeta/kappa may only supply a compensated residual once
 Allowed if: declared provisional and tested against exterior neutrality / energy accounting
 Forbidden if: treated as derived covariant metric law
-[PASS] C11: best provisional counting convention: RECOMMENDED
+Status: RECOMMENDED
 Missing: A_spatial derivation and residual projector
 Consequence: use as working recombination convention until A_spatial theorem is derived
 
@@ -157,7 +156,7 @@ Branch: Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral, with no over
 Interpretation: desired count-once theorem for scalar spatial trace
 Allowed if: parent identity yields orthogonal/projected scalar trace pieces
 Forbidden if: overlap remains nonzero
-[WARN] C12: theorem target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: parent recombination identity
 Consequence: defines the central future recombination theorem
 
@@ -178,7 +177,6 @@ Case 2: Compact trace-counting ledger
 | C10: areal diagnostic caution | kappa = 1/2 ln(AB) used as reduced diagnostic only | CONSTRAINED | suggests a later diagnostic-vs-physical kappa script remains useful |
 | C11: best provisional counting convention | A_spatial_once + boundary-neutral trace_volume_residual_once | RECOMMENDED | use as working recombination convention until A_spatial theorem is derived |
 | C12: theorem target | Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral, with no overlap | THEOREM_TARGET | defines the central future recombination theorem |
-[WARN] compact trace-counting ledger produced: STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -198,7 +196,6 @@ Interpretation:
   If A_spatial consumes all scalar spatial trace, zeta/kappa must become diagnostic or residual only.
   If A_spatial consumes only mass-sector trace, a boundary-neutral zeta/kappa residual may survive.
   Triple scalar trace insertion is forbidden.
-[WARN] trace-counting status count produced: STRUCTURAL
 
 ========================================================================================================================
 Case 4: Provisional count-once rule
@@ -218,7 +215,6 @@ and:
   overlap(A_spatial_once, trace_volume_residual_once) = 0
 
 This is a theorem target, not a derived recombination law.
-[PASS] provisional count-once rule stated: RECOMMENDED
 
 ========================================================================================================================
 Case 5: Failure controls
@@ -232,7 +228,6 @@ Trace counting fails if:
 5. metric recombination and epsilon/e_kappa accounting disagree
 6. boundary-neutral residual changes M_ext
 7. overlap between A_spatial and residual trace remains nonzero
-[WARN] trace-counting failure controls stated: RISK
 
 ========================================================================================================================
 Case 6: Next tests
@@ -254,7 +249,6 @@ Recommended next script:
 
 Reason:
   The current counting problem depends on not silently promoting kappa=1/2 ln(AB) from reduced diagnostic to physical scalar.
-[WARN] next test selected: STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -275,3 +269,12 @@ Possible next artifact:
 
 Possible next script:
   candidate_areal_kappa_diagnostic_vs_physical_variable.py
+
+[governance_assessments]
+[PASS] trace-counting branches classified -- 12 branches inventoried
+[DEFER] count-once theorem target stated -- overlap=0 not yet derived
+[FAIL] C7 and C8 forbidden -- triple trace and exterior scalar tail forbidden
+
+[unresolved_obligations]
+[OBLIGATION] derive count-once trace theorem -- open proof obligation recorded
+[OBLIGATION] derive A_spatial recovery mechanism -- open proof obligation recorded

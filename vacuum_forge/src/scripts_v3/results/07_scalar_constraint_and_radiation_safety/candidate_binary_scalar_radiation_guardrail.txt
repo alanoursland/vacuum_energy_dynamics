@@ -18,7 +18,6 @@ Safe target:
 
 Danger:
   scalar breathing quadrupole becomes an extra radiation channel
-[PASS] binary scalar-radiation guardrail posed
 
 ========================================================================================================================
 Case 1: Equal-mass circular binary positions
@@ -27,7 +26,6 @@ x1 = Matrix([[a*cos(Omega*t)], [a*sin(Omega*t)], [0]])
 x2 = Matrix([[-a*cos(Omega*t)], [-a*sin(Omega*t)], [0]])
 M = 2*m
 D = Matrix([[0], [0], [0]])
-[PASS] center of mass dipole vanishes for equal circular binary
 
 ========================================================================================================================
 Case 2: Monopole and dipole controls
@@ -35,8 +33,6 @@ Case 2: Monopole and dipole controls
 Mdot = 0
 Dddot =
 Matrix([[0], [0], [0]])
-[PASS] binary total mass is conserved
-[PASS] binary center-of-mass dipole has zero second derivative
 
 ========================================================================================================================
 Case 3: Binary trace-free quadrupole tensor
@@ -45,15 +41,12 @@ Q_TF =
 Matrix([[2*a**2*m*(3*cos(Omega*t)**2 - 1)/3, a**2*m*sin(2*Omega*t), 0], [a**2*m*sin(2*Omega*t), 2*a**2*m*(3*sin(Omega*t)**2 - 1)/3, 0], [0, 0, -2*a**2*m/3]])
 
 trace(Q_TF) = 0
-[PASS] binary quadrupole is trace-free
 
 ========================================================================================================================
 Case 4: Plus/cross quadrupole projections
 ========================================================================================================================
 Q_plus = a**2*m*cos(2*Omega*t)
 Q_cross = a**2*m*sin(2*Omega*t)
-[PASS] binary has time-varying plus projection
-[PASS] binary has time-varying cross projection
 
 ========================================================================================================================
 Case 5: Tensor quadrupole radiation proxy
@@ -61,7 +54,6 @@ Case 5: Tensor quadrupole radiation proxy
 Q_plus_dddot = 8*Omega**3*a**2*m*sin(2*Omega*t)
 Q_cross_dddot = -8*Omega**3*a**2*m*cos(2*Omega*t)
 tensor Qdddot² proxy = 64*Omega**6*a**4*m**2
-[PASS] binary time-varying quadrupole supports tensor radiation proxy
 
 ========================================================================================================================
 Case 6: Scalar breathing danger from quadrupole
@@ -75,7 +67,6 @@ Matrix([[B0*cos(2*Omega*t), 0, 0], [0, B0*cos(2*Omega*t), 0], [0, 0, 0]])
 trace = 2*B0*cos(2*Omega*t)
 
 If B0 is not zero/suppressed, this is extra scalar radiation.
-[PASS] scalar breathing would be a non-TT extra channel
 
 ========================================================================================================================
 Case 7: Guardrail classification
@@ -91,8 +82,6 @@ Required safety condition:
 
   B_scalar_quadrupole = 0
   or B_scalar_quadrupole is massive/damped/absorbed/weakly coupled.
-
-[PASS] binary scalar-radiation guardrail established
 
 ========================================================================================================================
 Final interpretation
@@ -116,3 +105,20 @@ Possible next artifact:
 
 Possible next script:
   candidate_A_channel_static_dynamic_split.py
+
+[sample_results]
+[PASS] equal-mass binary COM dipole vanishes -- D = m*x1 + m*x2 = 0 for x2=-x1
+[PASS] binary total mass conserved (Mdot=0) -- M = 2m constant
+[PASS] binary dipole second derivative zero -- Dddot = 0 for equal circular binary
+[PASS] binary quadrupole is trace-free -- trace(Q_TF) = 0 for sample binary
+[PASS] tensor radiation proxy is nonzero -- Qdddot^2 proxy != 0; tensor radiation is active
+
+[counterexamples]
+[FAIL] scalar breathing mode trace is nonzero -- trace(H_breathing) = 2B != 0; extra non-TT channel if unsuppressed
+
+[governance_assessments]
+[PASS] binary scalar quadrupole must be controlled (policy) -- conservation kills monopole/dipole; quadrupole breathing must be suppressed
+[PASS] binary TT radiation only route -- candidate route recorded
+
+[unresolved_obligations]
+[OBLIGATION] derive binary scalar quadrupole suppression -- open proof obligation recorded

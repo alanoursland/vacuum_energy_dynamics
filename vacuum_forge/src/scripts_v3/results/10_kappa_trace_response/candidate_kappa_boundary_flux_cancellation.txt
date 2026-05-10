@@ -24,7 +24,6 @@ Allowed possibility:
 
   short-lived breathing response if damped/absorbed before becoming
   ordinary long-range scalar radiation
-[WARN] boundary flux problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Static massless exterior tail flux
@@ -39,7 +38,6 @@ F_kappa = -4*pi*C1
 
 If C1 != 0, exterior flux is nonzero.
 Thus kappa_ext = C1/r is forbidden unless C1 = 0.
-[WARN] massless 1/r tail has nonzero flux: RISK — must cancel C1
 
 ========================================================================================================================
 Case 2: Projected zero-charge flux
@@ -59,7 +57,6 @@ If:
 then:
 
   F_kappa = 0
-[WARN] projected zero charge cancels monopole flux: CONSTRAINED_BY_IDENTITY — static/fixed support only
 
 ========================================================================================================================
 Case 3: Boundary matching condition
@@ -78,7 +75,6 @@ through a boundary layer with no exterior flux.
 
 This is analogous to permitting interior trace response without exterior
 scalar charge.
-[WARN] static boundary flux condition stated: CONSTRAINED_BY_IDENTITY — boundary-layer mechanism missing
 
 ========================================================================================================================
 Case 4: Yukawa-suppressed exterior flux
@@ -93,7 +89,6 @@ F_kappa = -4*pi*C*(m*r + 1)*exp(-m*r)
 
 This does not make flux identically zero, but it suppresses it with distance.
 Useful only if m is derived/constrained and the mode is not observable long-range.
-[WARN] Yukawa suppression reduces long-range flux: PLAUSIBLE — m_k scale missing
 
 ========================================================================================================================
 Case 5: Damped breathing boundary response
@@ -112,7 +107,6 @@ Critical damping condition for oscillator model:
   Gamma^2 = 4 omega0^2
 
 Allowed only if damping/energy accounting is derived.
-[WARN] damped breathing response is possible failure-softening path: PLAUSIBLE — Gamma and energy accounting missing
 
 ========================================================================================================================
 Case 6: Dynamic boundary warning
@@ -131,7 +125,6 @@ Even if the instantaneous charge is zero, boundary motion may create
 effective flux terms unless the constraint propagates consistently.
 
 This is currently unresolved.
-[WARN] dynamic boundary projection unresolved: RISK — constraint propagation needed
 
 ========================================================================================================================
 Case 7: Classification
@@ -144,7 +137,6 @@ Case 7: Classification
 | Yukawa suppressed exterior | PLAUSIBLE if m_k derived |
 | damped/critically damped breathing | PLAUSIBLE if Gamma and energy accounting derived |
 | moving support projection | RISK / unresolved |
-[WARN] boundary flux classification produced: CONSTRAINED_BY_IDENTITY — static control plausible, dynamic control missing
 
 ========================================================================================================================
 Case 8: Failure controls
@@ -158,7 +150,6 @@ Boundary flux cancellation fails if:
 5. Yukawa scale m_k is inserted by hand only to hide scalar radiation.
 6. moving support creates uncancelled flux terms.
 7. suppression interferes with static A-sector gravity.
-[WARN] boundary flux failure controls stated: RISK — dynamic safety not proven
 
 ========================================================================================================================
 Case 9: Next tests
@@ -181,7 +172,6 @@ Recommended next script:
 Reason:
   User-raised possibility: breathing response may be absorbed by vacuum.
   That requires energy/damping accounting.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — relaxation energy accounting is next
 
 ========================================================================================================================
 Final interpretation
@@ -203,3 +193,15 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_relaxation_energy_accounting.py
+
+[derived_results]
+[PASS] massless 1/r tail exterior flux F_kappa = -4*pi*C1 -- algebraic derivation
+[PASS] Yukawa exterior flux expression -- algebraic derivation
+
+[governance_assessments]
+[FAIL] massless 1/r tail -- exterior flux nonzero - forbidden
+[FAIL] dynamic boundary projection -- open risk - unresolved
+[OBLIGATION] boundary flux zero condition -- mechanism missing
+
+[unresolved_obligations]
+[OBLIGATION] derive F_kappa(R+)=0 mechanism -- open

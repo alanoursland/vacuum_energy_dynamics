@@ -180,3 +180,21 @@ Possible next artifact:
 
 Possible next file:
   covariant_parent_structure_summary.md
+
+[governance_assessments]
+[DEFER] partial: 4 -- C1 mass continuity, C4 quadrupole source, C6 vacuum identity, C8 energy flux
+[FAIL] missing: 4 -- C2 W_i current, C3 kappa stress/trace, C5 constraint propagation, C7 Bianchi
+[FAIL] source couplings are reduced assignments (policy) -- must not claim derived until C1-C8 supplied
+[FAIL] Bianchi identity required for covariant closure (policy) -- C7 is a prerequisite for covariant closure
+[DEFER] covariant closure deferred -- deferred pending C2, C3, C5, C7
+[PASS] group 08 handoff recorded -- handoff import record recorded for downstream groups
+
+[unresolved_obligations]
+[OBLIGATION] derive C1: Mass continuity for scalar source -- open proof obligation recorded
+[OBLIGATION] derive C2: Current conservation for W_i -- open proof obligation recorded
+[OBLIGATION] derive C3: Stress/pressure consistency for kappa -- open proof obligation recorded
+[OBLIGATION] derive C4: Quadrupole source consistency for h_ij^TT -- open proof obligation recorded
+[OBLIGATION] derive C5: Constraint propagation -- open proof obligation recorded
+[OBLIGATION] derive C6: No-source exterior consistency -- open proof obligation recorded
+[OBLIGATION] derive C7: Bianchi-like geometric identity -- open proof obligation recorded
+[OBLIGATION] derive C8: Energy flux balance -- open proof obligation recorded

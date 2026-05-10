@@ -19,7 +19,6 @@ Fourier-space transverse projector:
 
 Goal:
   ensure W_i only sees transverse current j_T.
-[WARN] projection operator problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Define transverse and longitudinal projectors
@@ -32,7 +31,6 @@ Matrix([[k_x**2/(k_x**2 + k_y**2 + k_z**2), k_x*k_y/(k_x**2 + k_y**2 + k_z**2), 
 
 P_T = I - P_L =
 Matrix([[(k_y**2 + k_z**2)/(k_x**2 + k_y**2 + k_z**2), -k_x*k_y/(k_x**2 + k_y**2 + k_z**2), -k_x*k_z/(k_x**2 + k_y**2 + k_z**2)], [-k_x*k_y/(k_x**2 + k_y**2 + k_z**2), (k_x**2 + k_z**2)/(k_x**2 + k_y**2 + k_z**2), -k_y*k_z/(k_x**2 + k_y**2 + k_z**2)], [-k_x*k_z/(k_x**2 + k_y**2 + k_z**2), -k_y*k_z/(k_x**2 + k_y**2 + k_z**2), (k_x**2 + k_y**2)/(k_x**2 + k_y**2 + k_z**2)]])
-[WARN] projectors defined: CONSTRAINED_BY_IDENTITY — valid for k^2 != 0
 
 ========================================================================================================================
 Case 2: Projector identities
@@ -48,7 +46,6 @@ Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
 
 P_T + P_L - I =
 Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
-[PASS] projector identities verified: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 3: k-aligned test currents
@@ -71,7 +68,6 @@ P_T j_trans =
 Matrix([[J], [0], [0]])
 P_L j_trans =
 Matrix([[0], [0], [0]])
-[PASS] projector kills longitudinal and preserves transverse current: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 4: Projected vector field equation
@@ -91,7 +87,6 @@ Under div W = 0:
 Coefficient still missing:
 
   alpha_W/(2K_c) = alpha_W/(2*K_c)
-[WARN] projected vector equation formalized: CONSTRAINED_BY_IDENTITY — coefficient remains missing
 
 ========================================================================================================================
 Case 5: Scalar/vector allocation
@@ -115,7 +110,6 @@ Transverse current satisfies:
   k.j_T = 0
 
 so it does not directly change density.
-[WARN] scalar/vector allocation formalized: CONSTRAINED_BY_IDENTITY — time-domain/boundary implementation still needed
 
 ========================================================================================================================
 Case 6: k=0 zero-mode warning
@@ -131,7 +125,6 @@ Interpretation:
   may not be captured by the local projector alone.
 
 This is a boundary/global mode issue, not a local algebra failure.
-[WARN] zero-mode warning stated: RISK — boundary conditions required
 
 ========================================================================================================================
 Case 7: Classification
@@ -145,8 +138,6 @@ Case 7: Classification
 | projected vector equation | CONSTRAINED_BY_IDENTITY |
 | coefficient alpha_W/(2K_c) | MISSING |
 | k=0/global modes | RISK / boundary issue |
-
-[WARN] projection operator classification produced: CONSTRAINED_BY_IDENTITY — operator works locally, coefficient missing
 
 ========================================================================================================================
 Case 8: Next tests
@@ -165,7 +156,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_global_rotation_mode.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — projection reveals global rotation/boundary issue
 
 ========================================================================================================================
 Final interpretation
@@ -189,3 +179,15 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_global_rotation_mode.py
+
+[derived_results]
+[PASS] P_T idempotence: P_T^2 - P_T = 0 -- all four projector identities satisfied symbolically
+[PASS] P_T kills longitudinal current, preserves transverse current -- k-aligned test: P_T j_long=0, P_T j_trans=j_trans verified
+
+[governance_assessments]
+[FAIL] coefficient alpha_W/(2K_c) -- not derived; projector structure is structural only
+[DEFER] k=0 / global rotation mode -- local projector cannot handle global modes; boundary treatment required
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded

@@ -28,7 +28,9 @@ Discipline:
   no scalar trace leak
   no dark-sector patch
   no recovery-fit correction
-[WARN] H_exch definition requirements problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] H_exch definition requirements problem posed -- requirements audit required before H_exch can be used
 
 ========================================================================================================================
 Case 1: H_exch definition requirements inventory
@@ -41,7 +43,9 @@ Requirement: H_exch has J_V/J_exch definition, Sigma/R operators, source/relaxat
 Role: core exchange correction theorem target
 Allowed if: all requirements are explicit before H_exch is inserted
 Forbidden if: H_exch is named as exchange correction without current/source structure
-[WARN] HE1: H_exch definition target: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] HE1: H_exch definition target -- THEOREM_TARGET
 Missing: actual H_exch definition
 Consequence: decides whether exchange correction tensor language can become technical
 
@@ -52,7 +56,9 @@ Requirement: J_V remains unresolved and cannot be used as H_exch source/current
 Role: vacuum current absence guard
 Allowed if: H_exch remains deferred or independent of J_V
 Forbidden if: H_exch imports J_V by name
-[WARN] HE2: J_V absence guard: REQUIRED
+
+[governance_assessments]
+[INFO] HE2: J_V absence guard -- REQUIRED
 Missing: J_V definition
 Consequence: preserves Group 18 vacuum-current result
 
@@ -63,7 +69,9 @@ Requirement: J_exch remains active-exchange theorem target only
 Role: exchange-current guard
 Allowed if: H_exch does not promote role-level J_exch to operator
 Forbidden if: H_exch treats J_exch as physical current before definition
-[WARN] HE3: J_exch theorem-target guard: REQUIRED
+
+[governance_assessments]
+[INFO] HE3: J_exch theorem-target guard -- REQUIRED
 Missing: J_exch definition
 Consequence: prevents exchange-current hardening by tensor name
 
@@ -74,7 +82,9 @@ Requirement: Sigma_exch and R_exch are defined as operators before H_exch uses t
 Role: source/relaxation prerequisite
 Allowed if: source and relaxation are independently defined
 Forbidden if: H_exch defines Sigma/R by making balance work
-[WARN] HE4: Sigma/R operator requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE4: Sigma/R operator requirement -- REQUIRED
 Missing: Sigma_exch / R_exch operators
 Consequence: prevents exchange-continuity paint
 
@@ -85,7 +95,9 @@ Requirement: Sigma_exch and R_exch are not two names for one hidden tuning mecha
 Role: double-counting guard
 Allowed if: source and relaxation have distinct origins and strength laws
 Forbidden if: Sigma/R are adjusted to cancel divergence, boundary leakage, or recovery mismatch
-[WARN] HE5: source/relaxation distinction requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE5: source/relaxation distinction requirement -- REQUIRED
 Missing: Sigma/R separation and strength laws
 Consequence: prevents exchange tuning tensor
 
@@ -96,7 +108,9 @@ Requirement: no active ordinary-sector source side for J_exch is derived
 Role: ordinary-sector safety guard
 Allowed if: H_exch remains inactive/role-level in ordinary sector
 Forbidden if: H_exch invents ordinary exchange source
-[WARN] HE6: ordinary-sector source-side absence guard: REQUIRED
+
+[governance_assessments]
+[INFO] HE6: ordinary-sector source-side absence guard -- REQUIRED
 Missing: ordinary-sector exchange source theorem
 Consequence: preserves zero-net / zero-creation ordinary branches
 
@@ -107,7 +121,9 @@ Requirement: domain D_exch/H_exch where correction acts is specified
 Role: definition prerequisite
 Allowed if: domain follows from source/current structure
 Forbidden if: domain is chosen to hide leakage, mass shift, or scalar charge
-[WARN] HE7: domain requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE7: domain requirement -- REQUIRED
 Missing: exchange correction domain
 Consequence: prevents convenient exchange-support tensor
 
@@ -118,7 +134,9 @@ Requirement: H_exch relation to exchange flux direction or transport behavior is
 Role: orientation prerequisite
 Allowed if: orientation follows from defined current/source law
 Forbidden if: orientation is chosen to cancel boundary or recovery failure
-[WARN] HE8: orientation / flux behavior requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE8: orientation / flux behavior requirement -- REQUIRED
 Missing: exchange orientation / flux law
 Consequence: prevents repair-current tensor
 
@@ -129,7 +147,9 @@ Requirement: H_exch projection class is specified: spacetime tensor, spatial ten
 Role: covariance/projection guard
 Allowed if: projection class is explicit and source-compatible
 Forbidden if: projection hides overlap with matter, metric, or residual sectors
-[WARN] HE9: projection class requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE9: projection class requirement -- REQUIRED
 Missing: projection class / projector
 Consequence: prevents fake covariant-enough exchange tensor
 
@@ -140,7 +160,9 @@ Requirement: H_exch tensor rank, symmetry, trace behavior, and index placement a
 Role: tensor well-posedness guard
 Allowed if: symmetry follows from insertion target
 Forbidden if: symbol H_exch is used with no tensor type
-[WARN] HE10: tensor symmetry requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE10: tensor symmetry requirement -- REQUIRED
 Missing: tensor type / symmetry
 Consequence: prevents decorative tensor symbol
 
@@ -151,7 +173,9 @@ Requirement: H_exch divergence behavior is specified without decorative continui
 Role: divergence-safety prerequisite
 Allowed if: divergence identity or source-balanced partner is real
 Forbidden if: divergence safety is asserted because H_exch closes exchange
-[WARN] HE11: divergence behavior requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE11: divergence behavior requirement -- REQUIRED
 Missing: divergence identity or source partner
 Consequence: prevents fake parent compatibility
 
@@ -162,7 +186,9 @@ Requirement: H_exch has no boundary repair flux, shell hiding, scalar tail cance
 Role: boundary neutrality guard
 Allowed if: boundary behavior is structural and neutral
 Forbidden if: H_exch repairs boundary leakage or exchange failure
-[WARN] HE12: boundary behavior requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE12: boundary behavior requirement -- REQUIRED
 Missing: boundary neutrality theorem
 Consequence: protects exterior sector
 
@@ -173,7 +199,9 @@ Requirement: H_exch does not reroute ordinary T_mu_nu, ordinary rho, or scalar c
 Role: matter separation guard
 Allowed if: ordinary matter remains routed to A-sector unless theorem derives otherwise
 Forbidden if: H_exch hides ordinary matter in exchange correction side
-[WARN] HE13: ordinary matter decoupling requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE13: ordinary matter decoupling requirement -- REQUIRED
 Missing: ordinary matter decoupling theorem
 Consequence: protects ordinary matter coupling
 
@@ -184,7 +212,9 @@ Requirement: delta M_ext|H_exch = 0 unless derived through established A-sector 
 Role: mass neutrality guard
 Allowed if: H_exch is exterior-mass-neutral by theorem
 Forbidden if: H_exch changes measured exterior mass
-[WARN] HE14: M_ext neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE14: M_ext neutrality requirement -- REQUIRED
 Missing: mass neutrality theorem
 Consequence: protects strongest reduced A-sector result
 
@@ -195,7 +225,9 @@ Requirement: H_exch does not reopen B_s/F_zeta, residual trace, kappa, or exteri
 Role: metric scalar guard
 Allowed if: scalar/no-overlap guardrails remain closed
 Forbidden if: H_exch becomes hidden scalar channel
-[WARN] HE15: scalar trace neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE15: scalar trace neutrality requirement -- REQUIRED
 Missing: scalar trace neutrality / no-overlap theorem
 Consequence: preserves Group 16 guardrails
 
@@ -206,7 +238,9 @@ Requirement: H_exch coefficients have ontology-native, action, stiffness, or exc
 Role: coefficient tuning guard
 Allowed if: coefficients are derived before recovery and boundary tests
 Forbidden if: coefficients are chosen for exchange closure, exterior match, or recovery
-[WARN] HE16: coefficient origin requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE16: coefficient origin requirement -- REQUIRED
 Missing: coefficient origin
 Consequence: prevents exchange-continuity tuning
 
@@ -217,7 +251,9 @@ Requirement: H_exch preserves ordinary-sector zero-net exchange and zero-creatio
 Role: ordinary-sector neutral branch guard
 Allowed if: ordinary sector remains inactive, balanced, or latent
 Forbidden if: H_exch reintroduces net ordinary exchange by tensor insertion
-[WARN] HE17: zero-net / zero-creation preservation requirement: REQUIRED
+
+[governance_assessments]
+[INFO] HE17: zero-net / zero-creation preservation requirement -- REQUIRED
 Missing: ordinary-sector exchange neutrality theorem
 Consequence: preserves Group 18 safest branches
 
@@ -228,7 +264,9 @@ Requirement: H_exch does not use dark-sector coupling as ordinary-sector patch
 Role: dark-sector guard
 Allowed if: dark branch remains absent/deferred or separately sourced
 Forbidden if: H_exch invokes dark coupling to repair ordinary source failure
-[WARN] HE18: dark-sector no-patch guard: REQUIRED
+
+[governance_assessments]
+[INFO] HE18: dark-sector no-patch guard -- REQUIRED
 Missing: dark source separation if reopened
 Consequence: preserves no-dark-patch result
 
@@ -239,7 +277,9 @@ Requirement: H_exch-like object used only as diagnostic audit and never inserted
 Role: safe fallback branch
 Allowed if: explicitly diagnostic-only
 Forbidden if: diagnostic H_exch becomes correction tensor term
-[WARN] HE19: diagnostic-only H_exch branch: SAFE_IF
+
+[governance_assessments]
+[INFO] HE19: diagnostic-only H_exch branch -- SAFE_IF
 Missing: none if kept diagnostic
 Consequence: allows exchange correction audits without parent insertion
 
@@ -250,7 +290,9 @@ Requirement: H_exch divergence vanishes by constructed identity
 Role: future tensor class candidate
 Allowed if: identity is mathematically real and not repair
 Forbidden if: identity is asserted by Bianchi-like language
-[WARN] HE20: identically divergence-free H_exch candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] HE20: identically divergence-free H_exch candidate -- CANDIDATE
 Missing: actual tensor identity
 Consequence: possible future divergence-safe route if constructed
 
@@ -261,7 +303,9 @@ Requirement: divergence of H_exch balances independently defined exchange source
 Role: future source-balance candidate
 Allowed if: exchange source and relaxation sides exist before H_exch
 Forbidden if: H_exch and Sigma/R define each other
-[WARN] HE21: source-balanced H_exch candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] HE21: source-balanced H_exch candidate -- CANDIDATE
 Missing: exchange source/relaxation side
 Consequence: possible future route if source partner is real
 
@@ -272,7 +316,9 @@ Requirement: H_exch lives in defined exchange/current projector subspace
 Role: future projection candidate
 Allowed if: projector and sector split are defined
 Forbidden if: projection hides matter, metric, or residual overlap
-[WARN] HE22: projected H_exch candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] HE22: projected H_exch candidate -- CANDIDATE
 Missing: projector / sector split
 Consequence: possible route to no-overlap if projector is real
 
@@ -283,7 +329,9 @@ Requirement: H_exch is whatever makes nabla_mu J_exch^mu = Sigma_exch - R_exch w
 Role: forbidden exchange paint
 Allowed if: never as definition
 Forbidden if: accepted as H_exch
-[WARN] HE23: exchange-continuity paint rejection: REJECTED
+
+[governance_assessments]
+[INFO] HE23: exchange-continuity paint rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents decorative exchange closure
 
@@ -294,7 +342,9 @@ Requirement: H_exch uses Sigma/R as coefficient knobs or cancellation terms
 Role: forbidden source tuning branch
 Allowed if: never as construction
 Forbidden if: accepted as exchange correction
-[WARN] HE24: Sigma/R tuning tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] HE24: Sigma/R tuning tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents hidden tuning mechanism
 
@@ -305,7 +355,9 @@ Requirement: H_exch cancels boundary leakage, shell source, scalar tail, or M_ex
 Role: forbidden boundary patch
 Allowed if: never as mechanism
 Forbidden if: accepted as boundary behavior
-[WARN] HE25: boundary repair tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] HE25: boundary repair tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents boundary repair tensor
 
@@ -316,7 +368,9 @@ Requirement: H_exch reroutes ordinary matter to fix exchange, curvature, or boun
 Role: forbidden matter repair branch
 Allowed if: never without source theorem
 Forbidden if: accepted as exchange correction
-[WARN] HE26: ordinary matter rerouting rejection: REJECTED
+
+[governance_assessments]
+[INFO] HE26: ordinary matter rerouting rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves ordinary matter decoupling
 
@@ -327,7 +381,9 @@ Requirement: H_exch invokes dark sector to patch ordinary exchange-source failur
 Role: forbidden dark patch
 Allowed if: never as mechanism
 Forbidden if: accepted as exchange correction source
-[WARN] HE27: dark-sector patch rejection: REJECTED
+
+[governance_assessments]
+[INFO] HE27: dark-sector patch rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves optional/deferred dark-sector status
 
@@ -338,7 +394,9 @@ Requirement: H_exch chosen to recover gamma_like, AB, exterior matching, or PPN 
 Role: forbidden recovery construction
 Allowed if: never as origin
 Forbidden if: accepted as H_exch definition
-[WARN] HE28: recovery-fit correction rejection: REJECTED
+
+[governance_assessments]
+[INFO] HE28: recovery-fit correction rejection -- REJECTED
 Missing: not pursued
 Consequence: keeps recovery downstream
 
@@ -349,7 +407,9 @@ Requirement: H_exch cannot meet current, source, divergence, boundary, matter, m
 Role: branch failure condition
 Allowed if: used to keep H_exch deferred or diagnostic-only
 Forbidden if: patched with decorative tensor language
-[FAIL] HE29: H_exch failure: BRANCH_KILLED
+
+[governance_assessments]
+[INFO] HE29: H_exch failure -- BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: H_exch cannot be inserted into parent equation
 
@@ -360,7 +420,9 @@ Requirement: after H_curv and H_exch burdens are stated, audit correction tensor
 Role: next local bottleneck
 Allowed if: H_exch remains theorem target/deferred
 Forbidden if: jumping to insertability before divergence meaning is audited
-[PASS] HE30: recommended next move: RECOMMENDED
+
+[governance_assessments]
+[INFO] HE30: recommended next move -- RECOMMENDED
 Missing: divergence-safety audit
 Consequence: next script should be candidate_correction_tensor_divergence_safety.py
 
@@ -399,7 +461,9 @@ Case 2: Compact H_exch requirements ledger
 | HE28: recovery-fit correction rejection | H_exch chosen to recover gamma_like, AB, exterior matching, or PPN behavior | REJECTED | keeps recovery downstream |
 | HE29: H_exch failure | H_exch cannot meet current, source, divergence, boundary, matter, mass, scalar, and zero-net requirements | BRANCH_KILLED | H_exch cannot be inserted into parent equation |
 | HE30: recommended next move | after H_curv and H_exch burdens are stated, audit correction tensor divergence safety | RECOMMENDED | next script should be candidate_correction_tensor_divergence_safety.py |
-[WARN] compact H_exch requirements ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact H_exch requirements ledger produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -422,7 +486,9 @@ Interpretation:
   Diagnostic-only H_exch is the safest fallback.
   Exchange-continuity paint, Sigma/R tuning, boundary repair, matter rerouting, dark patch, and recovery-fit correction are rejected.
   Next gate is correction tensor divergence safety.
-[WARN] H_exch requirements status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] H_exch requirements status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Required H_exch fields
@@ -445,7 +511,9 @@ Required H_exch fields:
 14. coefficient origin
 15. zero-net / zero-creation preservation
 16. dark-sector no-patch guard
-[PASS] required H_exch fields listed: RECOMMENDED
+
+[governance_assessments]
+[PASS] required H_exch fields listed -- RECOMMENDED
 
 ========================================================================================================================
 Case 5: H_exch definition decision tree
@@ -472,7 +540,9 @@ Decision tree:
 
 7. H_exch cannot meet requirements:
    keep deferred or diagnostic-only.
-[PASS] H_exch definition decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] H_exch definition decision tree stated -- RECOMMENDED
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -490,7 +560,9 @@ Consequence:
 Bad failure:
 
   call H_exch an exchange correction because exchange continuity needs a tensor.
-[WARN] H_exch definition good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] H_exch definition good failure stated -- DEFERRED_PENDING_PREREQUISITES
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -512,7 +584,9 @@ H_exch definition fails if:
 13. scalar trace leaks
 14. dark sector patches ordinary failure
 15. coefficients tune recovery or exchange closure
-[WARN] H_exch definition failure controls stated: RISK
+
+[governance_assessments]
+[WARN] H_exch definition failure controls stated -- RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -535,7 +609,9 @@ Recommended next script:
 Reason:
   H_curv and H_exch have now both been burdened.
   The next shared bottleneck is what divergence-safe actually means without decoration.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -571,4 +647,6 @@ Rejected:
 Best next script:
 
   candidate_correction_tensor_divergence_safety.py
-[PASS] H_exch definition requirements audit complete: CLOSED
+
+[governance_assessments]
+[PASS] H_exch definition requirements audit complete -- CLOSED

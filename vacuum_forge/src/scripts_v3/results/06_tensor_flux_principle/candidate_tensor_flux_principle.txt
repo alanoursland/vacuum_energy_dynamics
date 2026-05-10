@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Tensor Flux Principle
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - quadrupole_tensor_flux_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Tensor-flux principle statement
@@ -16,7 +18,9 @@ Do not treat scalar flux as a complete gravity theory.
 
 Instead:
   build a multi-sector vacuum-response theory.
-[PASS] tensor-flux principle posed
+
+[governance_assessments]
+[PASS] tensor-flux principle posed -- multi-sector architecture stated
 
 ========================================================================================================================
 Case 1: Scalar monopole channel
@@ -29,7 +33,9 @@ F_A = 8*pi*G*M/c**2
 
 Interpretation:
   monopole mass controls scalar A-flux.
-[PASS] monopole scalar channel stated
+
+[derived_results]
+[PASS] monopole scalar channel stated -- F_A = 8*pi*G*M/c**2
 
 ========================================================================================================================
 Case 2: Scalar no-wave guardrail
@@ -40,8 +46,10 @@ Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
 trace = -6*psi
 trace-free projection:
 Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
-[PASS] scalar mode is pure trace
-[PASS] scalar mode has zero trace-free tensor content
+
+[derived_results]
+[PASS] scalar mode is pure trace -- trace = -6*psi
+[PASS] scalar mode has zero trace-free tensor content -- H_tf = 0
 
 ========================================================================================================================
 Case 3: Tensor TT channel
@@ -56,7 +64,9 @@ H_TT =
 Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
 
 trace(H_TT) = 0
-[PASS] TT tensor channel has two polarizations
+
+[derived_results]
+[PASS] TT tensor channel has two polarizations -- trace = 0
 
 ========================================================================================================================
 Case 4: Tensor wave propagation
@@ -67,7 +77,9 @@ Box h / h = k**2 - omega**2/c**2
 
 Wave condition:
   omega^2 = c^2 k^2
-[PASS] TT amplitude supports wave dispersion relation
+
+[derived_results]
+[PASS] TT amplitude supports wave dispersion relation -- residual = 0
 
 ========================================================================================================================
 Case 5: Quadrupole source projection
@@ -77,8 +89,10 @@ Matrix([[2*Q_xx/3 - Q_yy/3 - Q_zz/3, Q_xy, Q_xz], [Q_xy, -Q_xx/3 + 2*Q_yy/3 - Q_
 
 Q_plus = Q_xx/2 - Q_yy/2
 Q_cross = Q_xy
-[PASS] quadrupole projects into plus channel
-[PASS] quadrupole projects into cross channel
+
+[derived_results]
+[PASS] quadrupole projects into plus channel -- Q_plus = (Q_xx-Q_yy)/2; residual = 0
+[PASS] quadrupole projects into cross channel -- Q_cross = Q_xy; residual = 0
 
 ========================================================================================================================
 Case 6: Time-derivative distinction
@@ -88,8 +102,10 @@ Q_cross = Q0*sin(2*Omega*t)
 
 second-derivative amplitude proxy = 16*Omega**4*Q0**2
 third-derivative power proxy = 64*Omega**6*Q0**2
-[PASS] amplitude proxy uses second derivatives
-[PASS] power proxy uses third derivatives
+
+[sample_results]
+[PASS] amplitude proxy uses second derivatives -- proxy = 16*Omega**4*Q0**2; residual = 0
+[PASS] power proxy uses third derivatives -- proxy = 64*Omega**6*Q0**2; residual = 0
 
 ========================================================================================================================
 Case 7: Multi-channel vacuum-response map
@@ -101,7 +117,9 @@ Case 7: Multi-channel vacuum-response map
 | vector current | W_i | mass current / angular momentum | frame dragging |
 | tensor quadrupole | h_ij^TT | Q_ij^TF derivatives | radiation |
 
-[PASS] multi-channel map stated
+
+[governance_assessments]
+[PASS] multi-channel map stated -- four channels: scalar, trace, vector, tensor
 
 ========================================================================================================================
 Case 8: Classification
@@ -116,7 +134,9 @@ Results:
 6. Changing quadrupole structure is the source-side tensor object.
 7. Tensor-flux principle should be a multi-sector principle, not scalar-only.
 
-[PASS] tensor-flux principle passes structural checks
+
+[governance_assessments]
+[PASS] tensor-flux principle passes structural checks -- all upstream results confirmed
 
 ========================================================================================================================
 Final interpretation

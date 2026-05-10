@@ -23,7 +23,9 @@ Discipline:
   prevent scalar double-counting
   prevent hidden breathing radiation
   do not silently import GR
-[WARN] metric recombination problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] metric recombination problem posed -- structural constraint on scope
 
 ========================================================================================================================
 Case 1: Reduced metric ansatz
@@ -39,7 +41,9 @@ with:
 Current status:
 
   This is a bookkeeping ansatz, not a covariant parent derivation.
-[WARN] reduced metric ansatz stated: STRUCTURAL — normalizations and signs not final
+
+[governance_assessments]
+[DEFER] reduced metric ansatz stated -- normalizations and signs not final
 
 ========================================================================================================================
 Case 2: Metric component ledger
@@ -118,7 +122,9 @@ Preferred rule:
 
   kappa modifies trace/volume matching and interior/boundary relaxation
   while exterior kappa -> 0 and F_kappa(R+) = 0.
-[WARN] kappa recombination constrained: CONSTRAINED — parent/gauge split missing
+
+[governance_assessments]
+[DEFER] kappa recombination constrained -- parent/gauge split missing
 
 ========================================================================================================================
 Case 4: Recombination no-double-counting rules
@@ -132,7 +138,9 @@ Rules:
 5. trace/pressure may shift kappa_min but must not source propagating scalar radiation.
 6. spatial scalar response tied to A must not be duplicated by kappa.
 7. near-boundary kappa smoothing must not change total exterior mass flux by hand.
-[WARN] recombination no-double-counting rules stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] recombination no-double-counting rules stated -- structural constraint
 
 ========================================================================================================================
 Case 5: GR import risks
@@ -146,7 +154,9 @@ High-risk imports:
   Bianchi/conservation identity
 
 These may be targets, but should not be claimed as ontology-derived yet.
-[WARN] GR import risks listed: RISK — targets are not derivations
+
+[governance_assessments]
+[WARN] GR import risks listed -- targets are not derivations
 
 ========================================================================================================================
 Case 6: Recombination classification
@@ -166,7 +176,9 @@ Current recombination status:
   not covariantly derived
   scalar double-counting controlled by rules
   parent map missing
-[WARN] recombination classification produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] recombination classification produced -- inventory marker
 
 ========================================================================================================================
 Case 7: Next tests
@@ -188,7 +200,9 @@ Recommended next script:
 
 Reason:
   Recombination depends on a clean source split; source roles are the next trap.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

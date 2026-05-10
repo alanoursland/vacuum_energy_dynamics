@@ -24,7 +24,9 @@ Discipline:
   do not treat boundary safety as derived
   do not use recovery as construction
   do not write parent equation before status closure
-[WARN] Group 16 status problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] Group 16 status problem posed -- required for honest group closure
 
 ========================================================================================================================
 Case 1: Group 16 status ledger
@@ -34,7 +36,7 @@ Case 1: Group 16 status ledger
 G16-1: conformal-volume split
 ------------------------------------------------------------------------------------------------------------------------
 Result: gamma_ij = exp(2 zeta / 3) bar_gamma_ij, det(bar_gamma)=1 is structurally consistent with zeta = ln sqrt(gamma)
-[WARN] G16-1: conformal-volume split: STRUCTURAL
+[INFO] G16-1: conformal-volume split: STRUCTURAL
 Consequence: gives a clean volume/shear decomposition handle
 Handoff: do not treat this decomposition as B_s dynamics
 
@@ -42,7 +44,7 @@ Handoff: do not treat this decomposition as B_s dynamics
 G16-2: B_s/F_zeta insertion
 ------------------------------------------------------------------------------------------------------------------------
 Result: B_s = F_zeta[A,zeta,J_V,Sigma_V,R_V] remains a theorem target
-[WARN] G16-2: B_s/F_zeta insertion: THEOREM_TARGET
+[INFO] G16-2: B_s/F_zeta insertion: THEOREM_TARGET
 Consequence: J_V-driven zeta is not yet derived as metric scalar insertion
 Handoff: needs explicit insertion law or parent trace identity
 
@@ -50,7 +52,7 @@ Handoff: needs explicit insertion law or parent trace identity
 G16-3: B_s-only count-once
 ------------------------------------------------------------------------------------------------------------------------
 Result: J_V-driven zeta may enter ordinary metric scalar trace only through B_s
-[WARN] G16-3: B_s-only count-once: SAFE_IF
+[INFO] G16-3: B_s-only count-once: SAFE_IF
 Consequence: prevents second scalar trace if residual-kill/non-metric convention is attached
 Handoff: use as provisional convention, not derivation
 
@@ -58,7 +60,7 @@ Handoff: use as provisional convention, not derivation
 G16-4: residual-kill / non-metric residual
 ------------------------------------------------------------------------------------------------------------------------
 Result: residual zeta/kappa metric trace is killed or made non-metric if zeta enters B_s
-[WARN] G16-4: residual-kill / non-metric residual: SAFE_IF
+[INFO] G16-4: residual-kill / non-metric residual: SAFE_IF
 Consequence: cleanest count-once safety convention
 Handoff: still needs O or parent identity to become theorem
 
@@ -66,7 +68,7 @@ Handoff: still needs O or parent identity to become theorem
 G16-5: residual bookkeeping
 ------------------------------------------------------------------------------------------------------------------------
 Result: residual zeta/kappa may remain as diagnostic, configuration bookkeeping, first-order non-radiative relaxation, or accounting diagnostic only
-[WARN] G16-5: residual bookkeeping: CANDIDATE
+[INFO] G16-5: residual bookkeeping: CANDIDATE
 Consequence: residual variables may survive without direct metric trace
 Handoff: must not shift M_ext, create scalar charge, become source reservoir, or become Box zeta/kappa
 
@@ -74,7 +76,7 @@ Handoff: must not shift M_ext, create scalar charge, become source reservoir, or
 G16-6: no-overlap operator O
 ------------------------------------------------------------------------------------------------------------------------
 Result: O[B_s,zeta_residual/kappa_residual,J_V]=0 remains unresolved
-[FAIL] G16-6: no-overlap operator O: UNRESOLVED
+[INFO] G16-6: no-overlap operator O: UNRESOLVED
 Consequence: neutral residual metric trace cannot be used without a real O
 Handoff: orthogonality/projector routes remain future theorem targets only
 
@@ -82,7 +84,7 @@ Handoff: orthogonality/projector routes remain future theorem targets only
 G16-7: boundary safety
 ------------------------------------------------------------------------------------------------------------------------
 Result: B_s insertion requires no exterior zeta/kappa charge, no far-zone scalar flux, no M_ext shift, no shell source, no boundary repair
-[WARN] G16-7: boundary safety: THEOREM_TARGET
+[INFO] G16-7: boundary safety: THEOREM_TARGET
 Consequence: boundary safety is required but not derived
 Handoff: compact support, smooth transition, zero-flux boundary remain candidate safety routes only
 
@@ -90,7 +92,7 @@ Handoff: compact support, smooth transition, zero-flux boundary remain candidate
 G16-8: recovery audit
 ------------------------------------------------------------------------------------------------------------------------
 Result: gamma_like, AB, areal kappa, and Schwarzschild behavior remain downstream tests
-[WARN] G16-8: recovery audit: RECOVERY_TARGET
+[INFO] G16-8: recovery audit: RECOVERY_TARGET
 Consequence: recovery cannot choose coefficients, support, boundary behavior, residual status, or B_s itself
 Handoff: preserve anti-smuggling guard
 
@@ -98,7 +100,7 @@ Handoff: preserve anti-smuggling guard
 G16-9: rejected GR/recovery smuggling
 ------------------------------------------------------------------------------------------------------------------------
 Result: gamma_like coefficient fit, B=1/A construction, GR spatial copy, areal kappa physical promotion, recovery-tuned smoothing are rejected
-[WARN] G16-9: rejected GR/recovery smuggling: REJECTED
+[INFO] G16-9: rejected GR/recovery smuggling: REJECTED
 Consequence: prevents recovery target from becoming fake derivation
 Handoff: keep in future parent-identity audits
 
@@ -106,7 +108,7 @@ Handoff: keep in future parent-identity audits
 G16-10: kappa fence
 ------------------------------------------------------------------------------------------------------------------------
 Result: kappa remains diagnostic / non-metric / separately neutral unless derived
-[WARN] G16-10: kappa fence: REQUIRED
+[INFO] G16-10: kappa fence: REQUIRED
 Consequence: kappa cannot restore killed zeta residual trace
 Handoff: kappa cleanup still unresolved
 
@@ -114,7 +116,7 @@ Handoff: kappa cleanup still unresolved
 G16-11: J_V status
 ------------------------------------------------------------------------------------------------------------------------
 Result: J_V remains unresolved and cannot be used as recovery repair or insertion support without physical flux law
-[FAIL] G16-11: J_V status: UNRESOLVED
+[INFO] G16-11: J_V status: UNRESOLVED
 Consequence: J_V-driven insertion remains conditional
 Handoff: do not reopen J_V here unless real flux law is proposed
 
@@ -122,7 +124,7 @@ Handoff: do not reopen J_V here unless real flux law is proposed
 G16-12: Sigma/R status
 ------------------------------------------------------------------------------------------------------------------------
 Result: Sigma_V and R_V remain role-level only
-[WARN] G16-12: Sigma/R status: STRUCTURAL
+[INFO] G16-12: Sigma/R status: STRUCTURAL
 Consequence: Sigma/R cannot define B_s or boundary behavior
 Handoff: preserve double-counting guard
 
@@ -130,7 +132,7 @@ Handoff: preserve double-counting guard
 G16-13: field-equation status
 ------------------------------------------------------------------------------------------------------------------------
 Result: Group 16 did not derive a field equation
-[PASS] G16-13: field-equation status: CLOSED
+[INFO] G16-13: field-equation status: CLOSED
 Consequence: metric insertion remains convention-limited and theorem-targeted
 Handoff: update field-equation status before opening parent-identity work
 
@@ -138,7 +140,7 @@ Handoff: update field-equation status before opening parent-identity work
 G16-14: next technical target
 ------------------------------------------------------------------------------------------------------------------------
 Result: derive parent identity for B_s insertion / residual-kill / no-overlap, or keep J_V-driven zeta non-metric
-[PASS] G16-14: next technical target: RECOMMENDED
+[INFO] G16-14: next technical target: RECOMMENDED
 Consequence: next work should be parent-identity-level if continuing
 Handoff: candidate_parent_identity_for_B_s_insertion_and_residual_kill.py
 
@@ -161,7 +163,9 @@ Case 2: Compact Group 16 status table
 | G16-12: Sigma/R status | Sigma_V and R_V remain role-level only | STRUCTURAL | preserve double-counting guard |
 | G16-13: field-equation status | Group 16 did not derive a field equation | CLOSED | update field-equation status before opening parent-identity work |
 | G16-14: next technical target | derive parent identity for B_s insertion / residual-kill / no-overlap, or keep J_V-driven zeta non-metric | RECOMMENDED | candidate_parent_identity_for_B_s_insertion_and_residual_kill.py |
-[WARN] compact Group 16 status table produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact Group 16 status table produced -- fourteen status rows
 
 ========================================================================================================================
 Case 3: Status counts
@@ -183,7 +187,9 @@ Interpretation:
   B_s-only insertion with residual-kill/non-metric residual remains the safest convention.
   Boundary safety and recovery are theorem/target checks, not mechanisms.
   Next work should be parent-identity-level or status update, not more local relabeling.
-[WARN] Group 16 status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] Group 16 status count produced -- group did not derive insertion law or O
 
 ========================================================================================================================
 Case 4: Current working rule
@@ -209,7 +215,9 @@ Forbidden residual roles:
   M_ext shift
   Box zeta / Box kappa
   coefficient reservoir
-[WARN] working rule recorded: SAFE_IF
+
+[governance_assessments]
+[WARN] working rule recorded -- provisional convention only; not derived
 
 ========================================================================================================================
 Case 5: Surviving bottlenecks
@@ -229,7 +237,9 @@ Case 5: Surviving bottlenecks
 Central bottleneck:
 
   parent identity for B_s insertion + residual-kill/no-overlap
-[FAIL] surviving bottlenecks recorded: UNRESOLVED
+
+[unresolved_obligations]
+[OBLIGATION] surviving bottlenecks recorded -- eleven open bottlenecks
 
 ========================================================================================================================
 Case 6: Rejected regressions to preserve
@@ -249,7 +259,9 @@ Case 6: Rejected regressions to preserve
 13. use boundary repair / R_V cancellation
 14. recovery-tuned smoothing
 15. use J_V as recovery repair current
-[WARN] rejected regressions preserved: REJECTED
+
+[governance_assessments]
+[FAIL] rejected regressions preserved -- fifteen rejected branches preserved
 
 ========================================================================================================================
 Case 7: Next options
@@ -272,7 +284,9 @@ Recommended next document:
 Reason:
   Group 16 is a status closure. The field-equation snapshot should be updated
   before attempting parent-identity construction.
-[WARN] next document selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next document selected -- field_equation_status_after_group_16.md
 
 ========================================================================================================================
 Final interpretation
@@ -290,4 +304,6 @@ It produced a sharper metric-entry boundary:
 Best next document:
 
   field_equation_status_after_group_16.md
-[PASS] Group 16 metric insertion status complete: CLOSED
+
+[governance_assessments]
+[DEFER] Group 16 metric insertion status complete -- group closed without insertion law or O; deferred to Group 17+

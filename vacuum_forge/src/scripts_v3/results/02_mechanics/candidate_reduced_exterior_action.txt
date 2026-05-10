@@ -2,7 +2,6 @@
 ================================================================================================
 Candidate Reduced Exterior Action
 ================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - shear_profile_metric_recovery: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 

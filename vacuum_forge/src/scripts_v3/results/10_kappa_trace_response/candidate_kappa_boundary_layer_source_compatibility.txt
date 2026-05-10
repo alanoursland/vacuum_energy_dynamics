@@ -25,7 +25,6 @@ Known:
   zero net effective source
 
 Now test source compatibility.
-[WARN] boundary-layer source compatibility problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: C2 effective source
@@ -43,7 +42,6 @@ S_eff = -6*kappa_0*(-R + r)*(R + r)*(-3*R**2 + 7*r**2)/R**6
 Integrated effective source:
 
 Q_eff = 0
-[PASS] C2 effective source computed: DERIVED_REDUCED — source interpretation pending
 
 ========================================================================================================================
 Case 2: Sign structure
@@ -59,7 +57,6 @@ Nontrivial physical root inside support:
 Interpretation:
   S_eff changes sign inside the matter support.
   Therefore it is not a raw positive pressure source.
-[WARN] C2 effective source changes sign: CONSTRAINED_BY_IDENTITY — raw pressure trace cannot directly produce it
 
 ========================================================================================================================
 Case 3: Raw pressure trace comparison
@@ -76,7 +73,6 @@ But C2 S_eff changes sign.
 
 Conclusion:
   raw pressure trace alone is incompatible with the C2 effective source.
-[WARN] raw pressure trace incompatible as sole source: REJECTED — unless projected/combined with compensation
 
 ========================================================================================================================
 Case 4: Compensated trace comparison
@@ -91,7 +87,6 @@ S_eff = -6*kappa_0*(-R + r)*(R + r)*(-3*R**2 + 7*r**2)/R**6
 
 Both have zero net integral and sign-changing structure.
 They are not identical shapes, but they are in the same compensated-source family.
-[WARN] C2 source resembles compensated trace family: PLAUSIBLE — exact source law not derived
 
 ========================================================================================================================
 Case 5: Shifted local minimum interpretation
@@ -114,7 +109,6 @@ Important:
   this is different from the elliptic effective source Delta kappa.
   in the non-inertial model, trace shifts the minimum rather than acting
   as a Poisson charge.
-[WARN] shifted-minimum interpretation can produce compact kappa directly: PLAUSIBLE — chi_k and source law not derived
 
 ========================================================================================================================
 Case 6: Operator-dependence warning
@@ -133,7 +127,6 @@ If kappa is non-inertial relaxation:
 
 Therefore the non-inertial model is more compatible with ordinary
 interior trace response than a Poisson-source kappa model.
-[WARN] source compatibility depends on kappa dynamics: CONSTRAINED_BY_IDENTITY — supports non-inertial minimum-shift picture
 
 ========================================================================================================================
 Case 7: Boundary/interface interpretation
@@ -158,7 +151,6 @@ where the boundary cutoff enforces:
   kappa_min''(R)=0
 
 This is plausible but not derived.
-[WARN] boundary cutoff/minimum-shift interpretation is plausible: PLAUSIBLE — interface law missing
 
 ========================================================================================================================
 Case 8: Classification
@@ -172,7 +164,6 @@ Case 8: Classification
 | boundary cutoff/interface restoration | PLAUSIBLE |
 | hand-chosen smoothing | RISK |
 | final source compatibility | UNFINISHED |
-[WARN] source compatibility classification produced: CONSTRAINED_BY_IDENTITY — non-inertial shifted-minimum picture preferred
 
 ========================================================================================================================
 Case 9: Failure controls
@@ -185,7 +176,6 @@ Source compatibility fails if:
 4. shifted-minimum source is not connected to trace/volume physics.
 5. interface restoration conflicts with A-sector mass flux.
 6. kappa dynamics are mixed inconsistently between Poisson and relaxation pictures.
-[WARN] source compatibility failure controls stated: RISK — avoid mixing incompatible source interpretations
 
 ========================================================================================================================
 Case 10: Next tests
@@ -207,7 +197,6 @@ Recommended next script:
 
 Reason:
   Source compatibility favors non-inertial minimum-shift over Poisson source.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — minimum-shift source model is next
 
 ========================================================================================================================
 Final interpretation
@@ -232,3 +221,12 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_minimum_shift_source_model.py
+
+[governance_assessments]
+[FAIL] raw pressure as elliptic Poisson source -- rejected - produces sign-changing Delta-kappa
+[DEFER] compensated trace as elliptic source -- plausible but parent identity missing
+[PASS] non-inertial minimum-shift preferred -- current best interpretation
+[OBLIGATION] boundary cutoff derivation -- missing
+
+[unresolved_obligations]
+[OBLIGATION] derive boundary-cutoff kappa_min from interface physics -- open

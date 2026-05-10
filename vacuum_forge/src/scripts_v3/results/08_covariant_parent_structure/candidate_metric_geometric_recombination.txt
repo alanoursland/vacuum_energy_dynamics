@@ -125,8 +125,6 @@ Risks:
 5. A_constraint and kappa may mix in non-static or non-areal gauges.
 6. Source coupling may be inconsistent without conservation identities.
 
-[WARN] double-counting risks identified: RISK — recombination needs gauge and conservation structure
-
 ========================================================================================================================
 Case 6: Minimal safe recombination policy
 ========================================================================================================================
@@ -187,3 +185,19 @@ Possible next artifact:
 
 Possible next script:
   candidate_gauge_invariant_diagnostics.py
+
+[governance_assessments]
+[PASS] satisfied reduced: 2 -- A_constraint g_tt and h_ij^TT TT slot established at reduced level
+[DEFER] partial: 3 -- A_rad, kappa, W_i partial
+[FAIL] missing: 2 -- gauge modes and conservation identities missing
+[FAIL] recombination map is schematic not derivation (policy) -- must not claim covariant closure
+[DEFER] covariant metric recombination deferred -- deferred pending gauge projections and conservation identities
+
+[unresolved_obligations]
+[OBLIGATION] derive A_rad metric status -- open proof obligation recorded
+[OBLIGATION] derive kappa physical metric slot -- open proof obligation recorded
+[OBLIGATION] derive W_i recombination slot and gauge safety -- open proof obligation recorded
+[OBLIGATION] derive gauge mode projections for recombination -- open proof obligation recorded
+[OBLIGATION] derive conservation identities for recombination -- open proof obligation recorded
+[OBLIGATION] derive A_constraint lapse normalization -- open proof obligation recorded
+[OBLIGATION] derive TT projection for recombination -- open proof obligation recorded

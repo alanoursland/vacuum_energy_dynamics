@@ -24,7 +24,9 @@ Discipline:
   preserve boundary neutrality
   preserve no-overlap / residual-kill
   keep recovery checks downstream
-[WARN] timelike domain problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] timelike domain problem posed -- requires domain theorem for candidate J_V
 
 ========================================================================================================================
 Case 1: Timelike domain inventory
@@ -37,7 +39,7 @@ Domain test: J_V^2 < 0 and J_V != 0 where u_vac = J_V / sqrt(-J_V^2) is used
 Role: core viability condition for defining vacuum rest frame from current
 Allowed if: domain is proved or explicitly restricted before u_vac is used
 Forbidden if: J_V is normalized where it is spacelike, null, or zero
-[WARN] TD1: timelike-domain target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: domain theorem for candidate J_V
 Consequence: decides whether J_V can define u_vac anywhere useful
 
@@ -48,7 +50,7 @@ Domain test: J_V^mu ~ -D_z nabla^mu zeta requires (nabla zeta)^2 < 0 and nabla z
 Role: domain test for minimal zeta-gradient flux
 Allowed if: zeta gradient is timelike/nonzero in active exchange regions only
 Forbidden if: used in static, spacelike, null, or zero-gradient regimes
-[WARN] TD2: zeta-gradient current domain: RISK
+Status: RISK
 Missing: zeta-gradient causal character theorem
 Consequence: likely domain-limited, not a general vacuum clock
 
@@ -59,7 +61,7 @@ Domain test: J_V^mu ~ -D_V nabla^mu Phi_V requires (nabla Phi_V)^2 < 0 and Phi_V
 Role: domain test for exchange-potential flux
 Allowed if: Phi_V exists and has timelike gradient where u_vac is needed
 Forbidden if: Phi_V is invented or has spacelike/null gradient in target regimes
-[WARN] TD3: exchange-potential current domain: CANDIDATE
+Status: CANDIDATE
 Missing: Phi_V definition and causal-character theorem
 Consequence: could define u_vac only if exchange potential has clock-like gradient
 
@@ -70,7 +72,7 @@ Domain test: transport J_V has causal/timelike current with finite characteristi
 Role: domain test for dynamic current candidate
 Allowed if: transport law preserves timelike/nonzero J_V without Box zeta
 Forbidden if: transport becomes scalar radiation or spacelike signal
-[WARN] TD4: causal transport current domain: CANDIDATE
+Status: CANDIDATE
 Missing: transport equation and hyperbolic/first-order domain theorem
 Consequence: strong candidate if it avoids scalar wave behavior
 
@@ -81,7 +83,7 @@ Domain test: J_V timelike/nonzero only inside compact active region; zero bounda
 Role: domain-limited ordinary-sector safety branch
 Allowed if: u_vac is used only in active region and no exterior scalar charge is created
 Forbidden if: normalization is demanded outside support where J_V=0
-[WARN] TD5: compact-support redistribution domain: SAFE_IF
+Status: SAFE_IF
 Missing: support theorem and interior causal character
 Consequence: may define local u_vac but not a global vacuum clock
 
@@ -92,7 +94,7 @@ Domain test: J_V = 0 in static/local equilibrium while Sigma_V = R_V pointwise
 Role: equilibrium branch with no current-defined clock
 Allowed if: u_vac not required from J_V in zero-current equilibrium
 Forbidden if: u_vac is normalized from J_V=0
-[WARN] TD6: zero-flux local equilibrium: SAFE_IF
+Status: SAFE_IF
 Missing: separate equilibrium-frame rule if frame is still needed
 Consequence: protects neutrality but forces u_vac fallback outside current definition
 
@@ -103,7 +105,7 @@ Domain test: J_V^2 > 0 in spatial redistribution regimes
 Role: failure / non-clock branch
 Allowed if: treated as spatial flux that does not define u_vac
 Forbidden if: used to normalize vacuum rest frame
-[WARN] TD7: spacelike redistribution current: CONSTRAINED
+Status: CONSTRAINED
 Missing: separate treatment of spatial flux versus frame current
 Consequence: J_V may exist as redistribution current without defining u_vac
 
@@ -114,7 +116,7 @@ Domain test: J_V^2 = 0 at transition or boundary surfaces
 Role: domain boundary / failure surface
 Allowed if: normalization excluded or patched by separate limit rule
 Forbidden if: u_vac used at null current points
-[WARN] TD8: null transition current: RISK
+Status: RISK
 Missing: transition-domain rule
 Consequence: creates boundaries where vacuum clock is undefined
 
@@ -125,7 +127,7 @@ Domain test: J_V = 0 at equilibrium nodes, centers, or exterior
 Role: normalization failure zone
 Allowed if: domain of u_vac excludes zero-current regions
 Forbidden if: global u_vac is claimed from J_V
-[WARN] TD9: vanishing-current nodes: REQUIRED
+Status: REQUIRED
 Missing: domain restriction / fallback frame
 Consequence: prevents false global vacuum rest frame
 
@@ -136,7 +138,7 @@ Domain test: u_vac exists only on D_V = {J_V^2 < 0, J_V != 0}
 Role: honest partial-definition branch
 Allowed if: field equations do not require u_vac outside D_V
 Forbidden if: u_vac is silently extended beyond its domain
-[WARN] TD10: domain-limited u_vac: CANDIDATE
+Status: CANDIDATE
 Missing: domain-dependent equation rules
 Consequence: may save J_V definition by limiting where clock is used
 
@@ -147,7 +149,7 @@ Domain test: where J_V = 0, define vacuum frame by equilibrium/minimization rath
 Role: possible fallback if current vanishes in static equilibrium
 Allowed if: equilibrium frame is independently defined
 Forbidden if: arbitrary preferred frame is introduced
-[WARN] TD11: equilibrium-frame fallback: DEFER
+Status: DEFER
 Missing: equilibrium-frame definition
 Consequence: may be needed if static regions require u_vac but have J_V=0
 
@@ -158,7 +160,7 @@ Domain test: candidate domain must not create exterior scalar charge or forbidde
 Role: ordinary-sector safety guard
 Allowed if: boundary theorem holds on and outside current domain
 Forbidden if: timelike current leaks scalar flux or changes M_ext
-[WARN] TD12: boundary neutrality requirement: REQUIRED
+Status: REQUIRED
 Missing: boundary theorem tied to domain
 Consequence: kills timelike domains that become scalar gravity
 
@@ -169,7 +171,7 @@ Domain test: J_V-driven zeta enters metric only through B_s, or residual killed/
 Role: count-once recombination guard
 Allowed if: no-overlap theorem holds on current domain
 Forbidden if: domain creates independent residual trace
-[WARN] TD13: no-overlap requirement: REQUIRED
+Status: REQUIRED
 Missing: domain-sensitive no-overlap theorem
 Consequence: prevents current-defined frame from reviving scalar duplicate
 
@@ -180,7 +182,7 @@ Domain test: gamma_like and AB checked only after direction and domain are fixed
 Role: ordinary-regime recovery target
 Allowed if: checked after J_V domain is defined
 Forbidden if: used to select where J_V is timelike
-[WARN] TD14: recovery downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after domain law
 Consequence: keeps recovery from choosing the current domain
 
@@ -191,7 +193,7 @@ Domain test: if domain survives, test static-source neutrality for J_V/Sigma/R
 Role: best next bottleneck
 Allowed if: at least one candidate current has a viable timelike/nonzero domain
 Forbidden if: jumping to static neutrality without a domain
-[PASS] TD15: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: static-source neutrality test
 Consequence: next script should test whether the candidate current produces exterior scalar charge around static sources
 
@@ -215,7 +217,9 @@ Case 2: Compact timelike-domain ledger
 | TD13: no-overlap requirement | J_V-driven zeta enters metric only through B_s, or residual killed/non-metric | REQUIRED | prevents current-defined frame from reviving scalar duplicate |
 | TD14: recovery downstream | gamma_like and AB checked only after direction and domain are fixed | RECOVERY_TARGET | keeps recovery from choosing the current domain |
 | TD15: recommended next move | if domain survives, test static-source neutrality for J_V/Sigma/R | RECOMMENDED | next script should test whether the candidate current produces exterior scalar charge around static sources |
-[WARN] compact timelike-domain ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact timelike-domain ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -236,7 +240,9 @@ Interpretation:
   Compact-support domains may be safe but only define local u_vac.
   Zero-flux equilibrium protects neutrality but cannot define u_vac from J_V.
   If a domain survives, static-source neutrality is the next bottleneck.
-[WARN] timelike-domain status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] timelike-domain status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Domain decision tree
@@ -260,7 +266,9 @@ Decision tree:
 
 6. Equilibrium-frame fallback:
    deferred unless static regions require a frame.
-[PASS] timelike-domain decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] timelike-domain decision tree stated -- decision tree recorded
 
 ========================================================================================================================
 Case 4b: Symbolic timelike condition
@@ -272,7 +280,9 @@ Minkowski-signature sample:
 
 Interpretation:
   a current can define u_vac only where its temporal magnitude dominates its spatial flux.
-[PASS] symbolic timelike-domain condition: DERIVED_REDUCED — J_V^2 = -J0**2 + J1**2 + J2**2 + J3**2
+
+[derived_results]
+[PASS] symbolic timelike-domain condition -- J_V^2 = -J0**2 + J1**2 + J2**2 + J3**2
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -289,7 +299,9 @@ Consequence:
 
 Bad failure:
   normalize J_V anyway and pretend the vacuum clock exists globally.
-[WARN] timelike-domain good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] timelike-domain good failure stated -- deferred pending domain theorem
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -304,7 +316,9 @@ Timelike-domain test fails if:
 6. boundary neutrality is absent
 7. no-overlap is absent
 8. recovery checks choose the current domain
-[WARN] timelike-domain failure controls stated: RISK
+
+[governance_assessments]
+[INFO] timelike-domain failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -326,7 +340,9 @@ Recommended next script:
 
 Reason:
   If a timelike/nonzero domain can be stated, the next ordinary-sector gate is static-source neutrality.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_static_source_neutrality_for_J_V.py
 
 ========================================================================================================================
 Final interpretation

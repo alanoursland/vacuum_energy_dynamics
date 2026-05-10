@@ -24,7 +24,6 @@ Goal:
 
   allow local trace relaxation
   forbid ordinary long-range breathing radiation
-[WARN] non-inertial kappa relaxation problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Bad second-order/inertial model
@@ -44,7 +43,6 @@ Consequences:
   propagating scalar/breathing wave possible
 
 This is not the preferred kappa interpretation.
-[WARN] second-order inertial kappa is dangerous: RISK — can create breathing radiation
 
 ========================================================================================================================
 Case 2: Local vacuum-curvature minimum energy
@@ -63,7 +61,6 @@ Interpretation:
   kappa_min is the local vacuum-curvature equilibrium value.
   matter trace/pressure may shift kappa_min inside matter.
   exterior vacuum should have kappa_min = 0.
-[WARN] local quadratic minimum stated: PLAUSIBLE — K_k and kappa_min source law not derived
 
 ========================================================================================================================
 Case 3: First-order gradient-flow relaxation
@@ -78,7 +75,6 @@ kappa_dot = K_k*mu_k*(-kappa + kappa_min)
 
 This has no kappa_ddot term.
 Therefore it has no independent kappa momentum channel.
-[WARN] first-order kappa relaxation law stated: PLAUSIBLE — mobility mu_k not derived
 
 ========================================================================================================================
 Case 4: Solution has no overshoot
@@ -98,7 +94,6 @@ The displacement from minimum decays monotonically:
 No oscillation.
 No overshoot.
 No slosh.
-[PASS] first-order relaxation is monotonic: DERIVED_REDUCED — for fixed local minimum
 
 ========================================================================================================================
 Case 5: Energy transfer accounting
@@ -126,7 +121,6 @@ For mu_k > 0 and K_k > 0:
 Interpretation:
   energy is not destroyed
   explicit imbalance energy is converted into vacuum configuration/restoration
-[PASS] gradient flow has positive absorption accounting: DERIVED_REDUCED — destination variable E_vac still needs parent ontology
 
 ========================================================================================================================
 Case 6: No momentum channel
@@ -145,7 +139,6 @@ In the proposed non-inertial relaxation law:
   kappa moves by mobility down the vacuum-curvature energy gradient
 
 This is why it does not slosh.
-[WARN] non-inertial kappa has no independent momentum channel: CONSTRAINED_BY_IDENTITY — must be implemented without hidden second-order dynamics
 
 ========================================================================================================================
 Case 7: Static A-constraint guard
@@ -171,7 +164,6 @@ Allowed:
 
   restoring trace/volume imbalance toward local minimum
   keeping exterior kappa_min = 0
-[WARN] relaxation preserves A-sector if sector split holds: CONSTRAINED_BY_IDENTITY — sector split still must be derived
 
 ========================================================================================================================
 Case 8: Source-shifted local minimum
@@ -188,7 +180,6 @@ Interpretation:
   kappa then relaxes toward that equilibrium.
 
 This avoids treating trace source as a radiative scalar charge.
-[WARN] trace source as shifted minimum is plausible: PLAUSIBLE — chi_k and S_trace definition not derived
 
 ========================================================================================================================
 Case 9: Exterior condition
@@ -210,7 +201,6 @@ If boundary flux is also zero:
 
   no long-range exterior kappa tail
   no free breathing wave
-[WARN] exterior vacuum relaxes toward kappa=0: CONSTRAINED_BY_IDENTITY — boundary flux and parent constraint still needed
 
 ========================================================================================================================
 Case 10: Classification
@@ -226,7 +216,6 @@ Case 10: Classification
 | source as shifted local minimum | PLAUSIBLE |
 | K_k, mu_k, chi_k derivation | MISSING |
 | parent covariant identity | MISSING |
-[WARN] non-inertial relaxation classification produced: CONSTRAINED_BY_IDENTITY — promising control model, not final derivation
 
 ========================================================================================================================
 Case 11: Next tests
@@ -248,7 +237,6 @@ Recommended next artifact:
 
 Recommended next script:
   candidate_kappa_boundary_layer_model.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — boundary layer model is next concrete check
 
 ========================================================================================================================
 Final interpretation
@@ -272,3 +260,17 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_boundary_layer_model.py
+
+[sample_results]
+[PASS] gradient-flow solution kappa(t) = kappa_min + (kappa0-kappa_min)*exp(-mu*K*t) -- sample - constant kappa_min only
+[PASS] gradient-flow dE/dt = -mu_k*K_k*(kappa-kappa_min)^2 <= 0 -- sample - quadratic minimum only
+
+[governance_assessments]
+[PASS] gradient-flow kappa has no momentum channel -- no kappa_ddot term
+[PASS] energy absorbed positively by vacuum configuration -- P_absorb = mu_k*(dE/dkappa)^2 >= 0
+[OBLIGATION] K_k, mu_k, chi_k derivation -- missing
+[OBLIGATION] parent covariant identity -- missing
+
+[unresolved_obligations]
+[OBLIGATION] derive mu_k from first principles -- open
+[OBLIGATION] derive chi_k coupling -- open

@@ -19,7 +19,6 @@ while avoiding:
 Proposed split:
 
   A = A_constraint + A_rad
-[PASS] A-channel split problem posed
 
 ========================================================================================================================
 Case 1: Define A = A_constraint + A_rad
@@ -32,7 +31,6 @@ A_constraint:
 A_rad:
   possible scalar radiative perturbation
   must be zero/suppressed/absorbed/short-ranged/weakly coupled
-[PASS] A split defined
 
 ========================================================================================================================
 Case 2: Static exterior survives if A_rad=0
@@ -41,7 +39,6 @@ A_constraint = -2*G*M/(c**2*r) + 1
 A_rad = 0
 A = -2*G*M/(c**2*r) + 1
 Delta A = 0
-[PASS] static A gravity survives A_rad=0
 
 ========================================================================================================================
 Case 3: Unsuppressed A_rad is dangerous
@@ -51,7 +48,6 @@ Box A_rad = H*(c**2*k**2 - omega**2)*cos(k*z - omega*t)/c**2
 Box A_rad / A_rad = k**2 - omega**2/c**2
 
 If A_rad obeys Box A_rad=0, it propagates when omega²=c²k².
-[PASS] unsuppressed A_rad would be scalar radiation
 
 ========================================================================================================================
 Case 4: Damped / absorbed A_rad option
@@ -60,7 +56,6 @@ A_rad(t) = H*exp(-gamma*t/2)*cos(omega0*t)
 envelope = H*exp(-gamma*t/2)
 
 This represents vacuum absorption/damping of scalar perturbations.
-[PASS] damped A_rad decays over time
 
 ========================================================================================================================
 Case 5: Massive / short-ranged A_rad option
@@ -72,7 +67,6 @@ This can suppress scalar breathing at long range.
 
 Caution:
   A_constraint must remain long-ranged.
-[PASS] massive A_rad can be short-ranged while A_constraint remains long-ranged
 
 ========================================================================================================================
 Case 6: Relaxational A_rad option
@@ -81,7 +75,6 @@ Relaxation law:
   dA_rad/dtau = -Gamma mu² A_rad
 
 A_rad(tau) = A0*exp(-Gamma*mu**2*tau)
-[PASS] relaxational A_rad returns to scalar vacuum minimum
 
 ========================================================================================================================
 Case 7: Tensor channel remains active
@@ -89,7 +82,6 @@ Case 7: Tensor channel remains active
 Q_plus = Q0*cos(2*Omega*t)
 Q_cross = Q0*sin(2*Omega*t)
 tensor radiation proxy = 64*Omega**6*Q0**2
-[PASS] h_ij^TT tensor radiation remains active
 
 ========================================================================================================================
 Case 8: Safe architecture matrix
@@ -99,8 +91,6 @@ Case 8: Safe architecture matrix
 | A_constraint | allowed | static scalar gravity | long-ranged Poisson response |
 | A_rad | dangerous unless controlled | scalar breathing | zero/suppressed/absorbed/short-ranged/weak |
 | h_ij^TT | active | tensor radiation | remains unsuppressed |
-
-[PASS] A-channel safety matrix stated
 
 ========================================================================================================================
 Case 9: Classification
@@ -113,8 +103,6 @@ Results:
 4. A_rad can be removed, damped, massive, relaxed, or weakly coupled.
 5. Suppression must not destroy A_constraint.
 6. h_ij^TT remains the intended active radiation channel.
-
-[PASS] A-channel static/dynamic split passes architecture check
 
 ========================================================================================================================
 Final interpretation
@@ -138,3 +126,22 @@ Possible next artifact:
 
 Possible next script:
   candidate_no_extra_polarization_policy.py
+
+[derived_results]
+[PASS] A_constraint laplacian zero after A_rad=0 split -- Delta A = 0 for A_constraint = 1 - 2GM/(c^2 r)
+
+[sample_results]
+[PASS] damped A_rad envelope decay -- envelope = H*exp(-gamma*t/2); diagnostic sample
+[PASS] relaxational A_rad solution sample -- A_rad = A0*exp(-Gamma*mu^2*tau); quadratic toy only
+[PASS] tensor radiation proxy nonzero -- Qdddot^2 proxy != 0; constant-amplitude toy
+
+[governance_assessments]
+[PASS] A_rad requires safety flag (policy) -- absent/projected/damped/massive/relaxed/weak required
+[PASS] A_constraint must survive suppression (policy) -- long-range static gravity must be preserved
+[PASS] A_rad=0 safest route -- candidate route recorded
+[PASS] A_rad controlled fallback route -- candidate route recorded
+[DEFER] unsuppressed A_rad branch -- deferred pending suppression derivation
+
+[unresolved_obligations]
+[OBLIGATION] derive A_rad=0 from parent structure -- open proof obligation recorded
+[OBLIGATION] derive A_rad suppression compatible with A_constraint -- open proof obligation recorded

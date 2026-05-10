@@ -24,7 +24,6 @@ Required discipline:
   exterior suppression condition
   gauge-vs-physical distinction
   scalar-radiation safety
-[WARN] kappa source-law problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Prior reduced kappa relation
@@ -46,7 +45,6 @@ Exterior Schwarzschild recovery used:
 
 This defines a useful reduced diagnostic.
 It does not yet derive a source law.
-[PASS] kappa reduced diagnostic relation stated: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 3: Kappa source candidate inventory
@@ -55,7 +53,7 @@ Case 3: Kappa source candidate inventory
 ----------------------------------------------------------------------------------------------------
 K1: Density rho as primary kappa source
 ----------------------------------------------------------------------------------------------------
-[WARN] K1: Density rho as primary kappa source: REJECTED_AS_PRIMARY
+Status: REJECTED_AS_PRIMARY
 Candidate source: rho
 Reason: rho already sources A_constraint through the areal-flux law. Using rho again as the primary kappa source risks double-counting the scalar mass response.
 Risk: Would make kappa another Newtonian potential unless a distinct trace/volume mechanism is derived.
@@ -63,7 +61,7 @@ Risk: Would make kappa another Newtonian potential unless a distinct trace/volum
 ----------------------------------------------------------------------------------------------------
 K2: Pressure p as primary kappa source
 ----------------------------------------------------------------------------------------------------
-[WARN] K2: Pressure p as primary kappa source: PLAUSIBLE
+Status: PLAUSIBLE
 Candidate source: p
 Reason: Pressure is absent or weak in exterior vacuum and becomes important inside matter. This fits kappa as an interior response.
 Risk: A pressure-only source may miss anisotropic stress and relativistic trace structure.
@@ -71,7 +69,7 @@ Risk: A pressure-only source may miss anisotropic stress and relativistic trace 
 ----------------------------------------------------------------------------------------------------
 K3: Spatial stress trace as primary kappa source
 ----------------------------------------------------------------------------------------------------
-[WARN] K3: Spatial stress trace as primary kappa source: PLAUSIBLE
+Status: PLAUSIBLE
 Candidate source: T^i_i or sigma^i_i
 Reason: A trace/volume field should plausibly couple to the trace of spatial stress or compressive vacuum exchange.
 Risk: Requires a parent stress decomposition and gauge-invariant trace definition.
@@ -79,7 +77,7 @@ Risk: Requires a parent stress decomposition and gauge-invariant trace definitio
 ----------------------------------------------------------------------------------------------------
 K4: Relativistic stress-energy trace
 ----------------------------------------------------------------------------------------------------
-[WARN] K4: Relativistic stress-energy trace: CONSTRAINED_BY_IDENTITY
+Status: CONSTRAINED_BY_IDENTITY
 Candidate source: T = T^mu_mu
 Reason: A scalar trace response should be tested against the relativistic trace. This connects kappa to source-geometry compatibility more cleanly than pressure alone.
 Risk: Trace coupling can create scalar-tensor-like behavior or conflict with radiation constraints if unsuppressed.
@@ -87,7 +85,7 @@ Risk: Trace coupling can create scalar-tensor-like behavior or conflict with rad
 ----------------------------------------------------------------------------------------------------
 K5: Density gradients / boundary layer source
 ----------------------------------------------------------------------------------------------------
-[WARN] K5: Density gradients / boundary layer source: PLAUSIBLE
+Status: PLAUSIBLE
 Candidate source: grad rho, boundary jumps, shell terms
 Reason: Kappa may respond at matter/vacuum interfaces or matching layers rather than to bulk density directly.
 Risk: Can become an arbitrary matching patch unless derived from variation or relaxation.
@@ -95,7 +93,7 @@ Risk: Can become an arbitrary matching patch unless derived from variation or re
 ----------------------------------------------------------------------------------------------------
 K6: Relaxation source/sink
 ----------------------------------------------------------------------------------------------------
-[WARN] K6: Relaxation source/sink: PLAUSIBLE
+Status: PLAUSIBLE
 Candidate source: -m_kappa^2 kappa or -Gamma_kappa kappa_dot
 Reason: Exterior suppression of kappa can be represented by a restoring term driving kappa -> 0 in vacuum.
 Risk: Relaxation alone does not define what sources kappa inside matter.
@@ -103,7 +101,7 @@ Risk: Relaxation alone does not define what sources kappa inside matter.
 ----------------------------------------------------------------------------------------------------
 K7: Pure gauge / coordinate volume artifact
 ----------------------------------------------------------------------------------------------------
-[WARN] K7: Pure gauge / coordinate volume artifact: RISK
+Status: RISK
 Candidate source: none physical
 Reason: Some kappa-like deviations may be coordinate-volume artifacts in areal/static reductions.
 Risk: If kappa is mostly gauge, treating it as a physical field produces false dynamics.
@@ -125,7 +123,6 @@ Eq(-K_k*(Derivative(kappa(r), (r, 2)) + 2*Derivative(kappa(r), r)/r) + m_k**2*ka
 
 Important:
   This is a candidate template, not a derived law.
-[WARN] schematic kappa trace equation proposed: PLAUSIBLE — operator and source not derived
 
 ========================================================================================================================
 Case 5: Exterior suppression condition
@@ -149,7 +146,6 @@ Possible mechanisms:
 4. Gauge fixing: exterior areal/static gauge sets kappa = 0
 
 Need to distinguish physical suppression from gauge choice.
-[WARN] exterior suppression requirement stated: CONSTRAINED_BY_IDENTITY — mechanism not selected
 
 ========================================================================================================================
 Case 6: Perfect-fluid trace candidates
@@ -172,7 +168,6 @@ Options:
 Caution:
   Direct T coupling reintroduces density as a large source.
   Spatial trace / pressure-like coupling better isolates interior stress response.
-[WARN] perfect-fluid trace options identified: CONSTRAINED_BY_IDENTITY — source choice not derived
 
 ========================================================================================================================
 Case 7: Density double-counting guard
@@ -194,7 +189,6 @@ Allowed density appearances:
 Disallowed without derivation:
 
   Delta kappa ~ rho as a second independent mass potential
-[WARN] density double-counting guard stated: RISK — prevents kappa from becoming duplicate A
 
 ========================================================================================================================
 Case 8: Classification table
@@ -220,7 +214,6 @@ Current best schematic source:
 Rejected as primary:
 
   raw rho
-[WARN] kappa source classification produced: CONSTRAINED_BY_IDENTITY — source narrowed but not derived
 
 ========================================================================================================================
 Case 9: Failure controls
@@ -233,7 +226,6 @@ This kappa source program fails if:
 4. kappa is treated as physical before gauge artifacts are separated.
 5. exterior kappa=0 is imposed by hand with no suppression/constraint reason.
 6. pressure/stress trace source is chosen only because GR has pressure terms.
-[WARN] kappa failure controls stated: RISK — source law must do ontology work
 
 ========================================================================================================================
 Case 10: Next tests
@@ -255,7 +247,6 @@ Recommended next script:
 
 Reason:
   Exterior kappa=0 is required by the strongest reconstructed sector.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — exterior suppression is the next hard requirement
 
 ========================================================================================================================
 Final interpretation
@@ -287,3 +278,14 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_exterior_suppression_condition.py
+
+[governance_assessments]
+[PASS] kappa source family narrowed to pressure/stress trace -- raw rho rejected as primary
+[OBLIGATION] K_k coefficient -- not derived
+[OBLIGATION] alpha_k coupling -- not derived
+[OBLIGATION] m_k scale -- not derived
+[OBLIGATION] gauge-vs-physical status -- unresolved
+
+[unresolved_obligations]
+[OBLIGATION] derive primary kappa source law -- open
+[OBLIGATION] derive gauge-vs-physical split -- open

@@ -21,7 +21,9 @@ Discipline:
   one source may contribute to total stress-energy
   but it must not become multiple independent gravity sources
   unless a parent identity forces the split
-[WARN] no-double-counting problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] no-double-counting problem posed -- structural constraint
 
 ========================================================================================================================
 Case 1: Constraint inventory
@@ -132,7 +134,9 @@ Case 2: Compact constraint ledger
 | C8: kappa relaxation cannot erase A | Gamma_relax[A_mass_flux] = 0 | CONSTRAINED | Gravity mass flux disappears or is tuned by relaxation. |
 | C9: boundary smoothing preserves exterior mass | delta M_ext from kappa boundary smoothing = 0 | CONSTRAINED | Surface smoothing changes measured mass. |
 | C10: creation term excluded from ordinary closure | Sigma_creation = 0 in ordinary closed gravity regime | CONSTRAINED | Nonconservative source breaks closure. |
-[WARN] compact no-double-counting ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact no-double-counting ledger produced -- inventory marker
 
 ========================================================================================================================
 Case 3: Status counts
@@ -141,7 +145,9 @@ CONSTRAINED: 6
 DERIVED_REDUCED: 1
 REJECTED: 1
 STRUCTURAL: 2
-[WARN] constraint status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] constraint status count produced -- inventory marker
 
 ========================================================================================================================
 Case 4: Most dangerous violations
@@ -156,7 +162,9 @@ Most dangerous violations:
 6. recombination duplicates scalar spatial response.
 
 These are the goblin traps.
-[WARN] dangerous violations identified: RISK
+
+[governance_assessments]
+[WARN] dangerous violations identified -- open risk
 
 ========================================================================================================================
 Case 5: Parent identity requirements
@@ -171,7 +179,9 @@ The constraints require a parent identity that can explain:
   why ordinary closed gravity has Sigma_creation = 0
 
 Without that parent identity, these are safety constraints, not derivations.
-[FAIL] parent identity requirements stated: UNFINISHED
+
+[unresolved_obligations]
+[OBLIGATION] parent identity for no-double-counting rules -- open proof obligation recorded
 
 ========================================================================================================================
 Case 6: Next tests
@@ -193,7 +203,9 @@ Recommended next script:
 
 Reason:
   Source double-counting is controlled; next we must separate constraints from evolution.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

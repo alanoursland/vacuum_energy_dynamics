@@ -17,7 +17,9 @@ Standard weak scalar metric target:
 
 A_target = 2*psi + 1
 spatial_factor_target = 1 - 2*psi
-[PASS] weak scalar target stated
+
+[derived_results]
+[PASS] weak scalar target stated -- A = 1 + 2psi, spatial = 1 - 2psi
 
 ====================================================================================================================
 Case 1: Reciprocal compensation at weak order
@@ -28,8 +30,13 @@ B_recip series = -8*psi**3 + 4*psi**2 - 2*psi + 1
 
 To first order:
   B_recip ≈ 1 - 2 psi
-[PASS] reciprocal compensation matches scalar spatial factor at first order
-[WARN] VacuumForge reciprocal_scaling check supports weak scalar sector
+  first-order residual = 0
+
+[derived_results]
+[PASS] reciprocal compensation matches scalar spatial factor at first order -- residual = 0
+
+[governance_assessments]
+[FAIL] VacuumForge reciprocal_scaling check supports weak scalar sector -- status=fail
 
 ====================================================================================================================
 Case 2: Gamma proxy
@@ -41,7 +48,9 @@ Reciprocal compensation gives:
   spatial = 1 - 2 psi
 
 gamma solution = [1]
-[PASS] reciprocal scalar sector gives gamma=1
+
+[derived_results]
+[PASS] reciprocal scalar sector gives gamma=1 -- gamma = 1
 
 ====================================================================================================================
 Case 3: Multipole scalar potential reconstruction
@@ -53,21 +62,25 @@ spatial scalar factor = 1 - 2psi = 2*Mbar/r - 2*Q*(3*mu**2/2 - 1/2)/r**3 + 1
 Interpretation:
   The same weak multipole psi controls temporal and scalar spatial
   metric factors with gamma=1.
-[PASS] weak multipole scalar metric reconstructed
+
+[derived_results]
+[PASS] weak multipole scalar metric reconstructed -- A and spatial factor share same psi
 
 ====================================================================================================================
 Case 4: Vacuum harmonic modes remain valid
 ====================================================================================================================
+
+[derived_results]
 ell=0: f=1/r^1, mode Laplacian=0
-[PASS] ell=0 scalar multipole harmonic
+[PASS] ell=0 scalar multipole harmonic -- Laplacian = 0
 ell=1: f=1/r^2, mode Laplacian=0
-[PASS] ell=1 scalar multipole harmonic
+[PASS] ell=1 scalar multipole harmonic -- Laplacian = 0
 ell=2: f=1/r^3, mode Laplacian=0
-[PASS] ell=2 scalar multipole harmonic
+[PASS] ell=2 scalar multipole harmonic -- Laplacian = 0
 ell=3: f=1/r^4, mode Laplacian=0
-[PASS] ell=3 scalar multipole harmonic
+[PASS] ell=3 scalar multipole harmonic -- Laplacian = 0
 ell=4: f=1/r^5, mode Laplacian=0
-[PASS] ell=4 scalar multipole harmonic
+[PASS] ell=4 scalar multipole harmonic -- Laplacian = 0
 
 These are scalar A/psi multipoles, not the full tensor metric content.
 
@@ -84,10 +97,13 @@ trace = h_xx + h_yy + h_zz
 
 Trace-free diagonal shear part:
 Matrix([[2*h_xx/3 - h_yy/3 - h_zz/3, 0, 0], [0, -h_xx/3 + 2*h_yy/3 - h_zz/3, 0], [0, 0, -h_xx/3 - h_yy/3 + 2*h_zz/3]])
+trace of shear = 0
 
 A single scalar psi fixes only the conformal/trace spatial piece.
 It cannot represent arbitrary trace-free spatial shear.
-[PASS] anisotropic spatial shear requires extra degrees of freedom
+
+[unresolved_obligations]
+[OBLIGATION] anisotropic spatial shear requires extra degrees of freedom -- scalar sector covers trace only
 
 ====================================================================================================================
 Case 6: Vector/frame-dragging sector is missing
@@ -101,7 +117,9 @@ These are vector/gravitomagnetic/frame-dragging degrees of freedom.
 The scalar A field and reciprocal scalar spatial factor do not produce
 off-diagonal g_ti components.
 
-[PASS] frame-dragging requires vector sector beyond scalar A
+
+[unresolved_obligations]
+[OBLIGATION] frame-dragging requires vector sector beyond scalar A -- g_ti not produced by scalar A
 
 ====================================================================================================================
 Case 7: Tensor wave sector is missing
@@ -115,7 +133,9 @@ These are not captured by a scalar A=1+2psi alone.
 
 Therefore the scalar multipole extension is not a wave-sector theory.
 
-[PASS] tensor waves require additional tensor sector
+
+[unresolved_obligations]
+[OBLIGATION] tensor waves require additional tensor sector -- h_ij^TT not captured by scalar A
 
 ====================================================================================================================
 Case 8: Nonlinear nonspherical closure
@@ -139,7 +159,9 @@ Likely needed sectors:
   spatial shear
   vector frame-dragging
   tensor waves
-[PASS] nonlinear nonspherical closure remains open
+
+[unresolved_obligations]
+[OBLIGATION] nonlinear nonspherical closure remains open -- full spatial geometry reconstruction not derived
 
 ====================================================================================================================
 Case 9: Classification
@@ -155,7 +177,9 @@ Results:
 7. A single scalar cannot represent tensor gravitational waves.
 8. The nonlinear nonspherical closure remains an open problem.
 
-[PASS] weak scalar sector passes; full nonspherical theory remains incomplete
+
+[governance_assessments]
+[PASS] weak scalar sector passes; full nonspherical theory remains incomplete -- gamma=1 scalar sector confirmed; tensor/vector/shear sectors open
 
 ====================================================================================================================
 Final interpretation

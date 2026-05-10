@@ -2,7 +2,6 @@
 ========================================================================================================================
 Candidate B_s / F_zeta Insertion Law
 ========================================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - group_15_status_after_residual_kill_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -33,7 +32,9 @@ Discipline:
   do not let kappa restore killed residual trace
   do not reinsert killed residual through energy/accounting
   keep recovery downstream
-[WARN] B_s/F_zeta insertion problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] B_s/F_zeta insertion problem posed -- required before insertion can proceed
 
 ========================================================================================================================
 Case 1: B_s / F_zeta insertion inventory
@@ -46,7 +47,7 @@ Candidate rule: B_s = F_zeta[A, zeta, J_V, Sigma_V, R_V] with residual zeta/kapp
 Role: core Group 16 locked-door target
 Allowed if: F_zeta is a concrete insertion rule and residual metric trace is killed/non-metric
 Forbidden if: F_zeta is named but not defined, or zeta also remains residual metric trace
-[WARN] BI1: B_s / F_zeta insertion target: THEOREM_TARGET
+[INFO] BI1: B_s / F_zeta insertion target: THEOREM_TARGET
 Missing: explicit F_zeta / B_s insertion law
 Consequence: decides whether J_V-driven zeta may enter ordinary metric scalar sector
 
@@ -57,7 +58,7 @@ Candidate rule: gamma_ij = exp(2 zeta / 3) bar_gamma_ij, det(bar_gamma)=1
 Role: structural volume/shear decomposition candidate
 Allowed if: used as decomposition of spatial metric volume and unimodular shape, not as full dynamics
 Forbidden if: treated as derived B_s field law or copied GR spatial metric
-[WARN] BI2: conformal-volume split: STRUCTURAL
+[INFO] BI2: conformal-volume split: STRUCTURAL
 Missing: dynamics / source law / relation to B_s
 Consequence: makes zeta-volume role precise but does not derive insertion
 
@@ -68,7 +69,7 @@ Candidate rule: det(gamma_ij) = exp(2 zeta) det(bar_gamma) = exp(2 zeta)
 Role: consistency check for zeta = ln sqrt(gamma)
 Allowed if: det(bar_gamma)=1 exactly within the chosen split
 Forbidden if: zeta is also counted in bar_gamma determinant or residual metric trace
-[WARN] BI3: determinant consistency check: STRUCTURAL
+[INFO] BI3: determinant consistency check: STRUCTURAL
 Missing: global/covariant status of spatial split
 Consequence: supports zeta as volume scalar in this split
 
@@ -79,7 +80,7 @@ Candidate rule: delta gamma_ij / gamma_ij includes isotropic piece (2/3) delta z
 Role: candidate local metric insertion for scalar volume trace
 Allowed if: scalar trace enters only through B_s/conformal factor
 Forbidden if: same delta zeta reappears as residual trace correction
-[WARN] BI4: isotropic trace insertion: CANDIDATE
+[INFO] BI4: isotropic trace insertion: CANDIDATE
 Missing: source law connecting J_V-driven zeta to B_s
 Consequence: minimal way zeta could affect scalar spatial metric trace
 
@@ -90,7 +91,7 @@ Candidate rule: B_s = F_zeta[zeta]
 Role: minimal volume-only insertion branch
 Allowed if: boundary-neutral and recovery checks are downstream
 Forbidden if: chosen to force gamma_like=1 or AB recovery
-[WARN] BI5: B_s from zeta only: RISK
+[INFO] BI5: B_s from zeta only: RISK
 Missing: normalization, boundary theorem, recovery audit
 Consequence: simple but likely underdetermined and coefficient-prone
 
@@ -101,7 +102,7 @@ Candidate rule: B_s = F_zeta[A, zeta]
 Role: mass/volume companion insertion branch
 Allowed if: A contribution and zeta contribution are count-once and not GR-copied
 Forbidden if: A_spatial is imported from Schwarzschild/GR or zeta patches the leftover
-[WARN] BI6: B_s from A and zeta: CANDIDATE
+[INFO] BI6: B_s from A and zeta: CANDIDATE
 Missing: parent relation between A and zeta
 Consequence: possible bridge to A_spatial, but high GR-smuggling risk
 
@@ -112,7 +113,7 @@ Candidate rule: B_s = F_zeta[zeta(J_V)]
 Role: volume-current-supported insertion branch
 Allowed if: J_V is real and zeta support is boundary-neutral
 Forbidden if: J_V remains decorative or acausal repair current
-[WARN] BI7: B_s from J_V-supported zeta: CANDIDATE
+[INFO] BI7: B_s from J_V-supported zeta: CANDIDATE
 Missing: physical J_V flux law and zeta support law
 Consequence: keeps Group 15 current branch relevant without solving it here
 
@@ -123,7 +124,7 @@ Candidate rule: B_s = F_zeta[zeta] with nabla_mu J_V^mu = Sigma_V - R_V as sourc
 Role: exchange-continuity-assisted insertion branch
 Allowed if: Sigma/R roles become operators and do not double-count
 Forbidden if: Sigma/R are role labels used to choose B_s
-[WARN] BI8: B_s from Sigma/R-balanced zeta: RISK
+[INFO] BI8: B_s from Sigma/R-balanced zeta: RISK
 Missing: Sigma_V, R_V, flux direction, support
 Consequence: currently too underdefined for a true insertion law
 
@@ -134,7 +135,7 @@ Candidate rule: parent trace identity derives B_s and residual-kill/no-overlap t
 Role: best theorem-level route
 Allowed if: identity is not GR rewrite and fixes trace count before recovery
 Forbidden if: identity is decorative or imports Einstein spatial equation
-[WARN] BI9: B_s from parent trace constraint: THEOREM_TARGET
+[INFO] BI9: B_s from parent trace constraint: THEOREM_TARGET
 Missing: parent trace identity
 Consequence: would be strongest route if later derived
 
@@ -145,7 +146,7 @@ Candidate rule: J_V-driven zeta enters metric scalar trace only through B_s
 Role: current safest recombination convention
 Allowed if: residual zeta/kappa metric trace is killed or non-metric
 Forbidden if: residual zeta/kappa remains metric-active
-[WARN] BI10: B_s-only metric entry: SAFE_IF
+[INFO] BI10: B_s-only metric entry: SAFE_IF
 Missing: derivation of residual-kill or O
 Consequence: prevents double-counting while allowing a provisional insertion branch
 
@@ -156,7 +157,7 @@ Candidate rule: zeta_residual_metric = 0 and kappa_residual_metric = 0/non-metri
 Role: mandatory safety attachment for B_s-only branch
 Allowed if: marked provisional unless O/parent identity derives it
 Forbidden if: treated as derived postulate or bypassed by energy/accounting source
-[WARN] BI11: residual-kill attachment: REQUIRED
+[INFO] BI11: residual-kill attachment: REQUIRED
 Missing: residual-kill derivation
 Consequence: without this, B_s insertion double-counts scalar trace
 
@@ -167,7 +168,7 @@ Candidate rule: kappa remains areal diagnostic / non-metric residual / separatel
 Role: prevents kappa from undoing residual-kill
 Allowed if: kappa does not enter as independent metric trace
 Forbidden if: kappa restores killed zeta residual trace
-[WARN] BI12: kappa diagnostic fence: REQUIRED
+[INFO] BI12: kappa diagnostic fence: REQUIRED
 Missing: kappa cleanup theorem
 Consequence: preserves Group 14/15 safety boundary
 
@@ -178,7 +179,7 @@ Candidate rule: epsilon_vac_config and e_kappa do not reinsert killed residual a
 Role: prevents hidden second trace through accounting
 Allowed if: accounting is diagnostic or recombined once
 Forbidden if: killed residual becomes source energy or coefficient reservoir
-[WARN] BI13: energy/accounting exclusion: REQUIRED
+[INFO] BI13: energy/accounting exclusion: REQUIRED
 Missing: energy/accounting recombination rule
 Consequence: closes common back door for double-counting
 
@@ -189,7 +190,7 @@ Candidate rule: B_s copied from Schwarzschild/GR spatial metric or chosen by gam
 Role: forbidden shortcut
 Allowed if: never as derivation
 Forbidden if: used as F_zeta or parent trace identity
-[WARN] BI14: GR-copy insertion: REJECTED
+[INFO] BI14: GR-copy insertion: REJECTED
 Missing: not pursued
 Consequence: prevents recovery target from becoming construction
 
@@ -200,7 +201,7 @@ Candidate rule: B_s fixed by B=1/A generally
 Role: forbidden overextension of exterior diagnostic
 Allowed if: only as reduced static exterior recovery check
 Forbidden if: used as general B_s insertion law
-[WARN] BI15: B=1/A construction: REJECTED
+[INFO] BI15: B=1/A construction: REJECTED
 Missing: not pursued
 Consequence: prevents areal exterior recovery from becoming parent law
 
@@ -211,7 +212,7 @@ Candidate rule: zeta changes B_s and also remains independent residual metric tr
 Role: forbidden double-counting branch
 Allowed if: never unless real O explicitly separates neutral residual
 Forbidden if: accepted without O
-[WARN] BI16: zeta-both branch: REJECTED
+[INFO] BI16: zeta-both branch: REJECTED
 Missing: not pursued
 Consequence: kills the second-spoon branch
 
@@ -222,7 +223,7 @@ Candidate rule: B_s/F_zeta insertion creates no exterior zeta/kappa charge, no s
 Role: ordinary-sector safety guard
 Allowed if: boundary neutrality is structural
 Forbidden if: insertion requires boundary repair or scalar charge cancellation
-[WARN] BI17: boundary-neutral insertion requirement: REQUIRED
+[INFO] BI17: boundary-neutral insertion requirement: REQUIRED
 Missing: boundary neutrality theorem for insertion
 Consequence: unsafe insertion cannot support ordinary sector
 
@@ -233,7 +234,7 @@ Candidate rule: gamma_like and AB are tested only after F_zeta/no-overlap are fi
 Role: anti-smuggling guard
 Allowed if: recovery is check only
 Forbidden if: used to choose coefficients, residual-kill, or insertion map
-[WARN] BI18: recovery downstream: RECOVERY_TARGET
+[INFO] BI18: recovery downstream: RECOVERY_TARGET
 Missing: solutions after insertion law
 Consequence: keeps GR-compatible behavior from becoming construction
 
@@ -244,7 +245,7 @@ Candidate rule: real O permits neutral residual metric trace without overlap
 Role: alternative to residual-kill
 Allowed if: O is explicitly defined and boundary/mass safety are proved
 Forbidden if: neutral residual is asserted to avoid residual-kill
-[WARN] BI19: no-overlap alternative: RISK
+[INFO] BI19: no-overlap alternative: RISK
 Missing: O operator, pairing/projectors, boundary theorem
 Consequence: theorem-heavy escape hatch, not current working route
 
@@ -255,7 +256,7 @@ Candidate rule: if B_s-only insertion remains safest, test exactly what is forbi
 Role: next local bottleneck
 Allowed if: no explicit F_zeta is derived in this script
 Forbidden if: jumping to parent equation with residual status unresolved
-[PASS] BI20: recommended next move: RECOMMENDED
+[INFO] BI20: recommended next move: RECOMMENDED
 Missing: count-once B_s-only insertion audit
 Consequence: next script should be candidate_B_s_only_insertion_count_once.py
 
@@ -284,7 +285,9 @@ Case 2: Compact B_s / F_zeta insertion ledger
 | BI18: recovery downstream | gamma_like and AB are tested only after F_zeta/no-overlap are fixed | RECOVERY_TARGET | keeps GR-compatible behavior from becoming construction |
 | BI19: no-overlap alternative | real O permits neutral residual metric trace without overlap | RISK | theorem-heavy escape hatch, not current working route |
 | BI20: recommended next move | if B_s-only insertion remains safest, test exactly what is forbidden from entering separately | RECOMMENDED | next script should be candidate_B_s_only_insertion_count_once.py |
-[WARN] compact insertion ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact insertion ledger produced -- inventory of B_s/F_zeta candidate routes
 
 ========================================================================================================================
 Case 3: Status counts
@@ -306,7 +309,9 @@ Interpretation:
   B_s from Sigma/R is too underdefined while Sigma/R are role-level only.
   GR-copy, B=1/A construction, and zeta-both branches are rejected.
   Next gate is count-once: what exactly is forbidden from entering separately?
-[WARN] B_s/F_zeta insertion status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] B_s/F_zeta insertion status count produced -- insertion inventory enumerated
 
 ========================================================================================================================
 Case 4: Conformal-volume split check
@@ -337,7 +342,9 @@ But it does not derive:
   residual-kill
   recovery coefficients
   parent equation
-[WARN] conformal-volume split checked: STRUCTURAL
+
+[governance_assessments]
+[INFO] conformal-volume split checked -- structural consistency only, not dynamics
 
 ========================================================================================================================
 Case 4b: Symbolic conformal-volume check
@@ -347,7 +354,9 @@ Principal-branch determinant relation:
   sqrt(gamma) = exp(zeta)
   ln sqrt(gamma) = zeta
   delta gamma_ij / gamma_ij = 2*delta_zeta/3
-[PASS] symbolic conformal-volume relation: DERIVED_REDUCED — ln sqrt(gamma) = zeta, delta gamma_ij / gamma_ij = 2*delta_zeta/3
+
+[derived_results]
+[PASS] symbolic conformal-volume relation -- ln sqrt(gamma) = zeta, delta gamma_ij / gamma_ij = 2*delta_zeta/3
 
 ========================================================================================================================
 Case 5: Insertion decision tree
@@ -377,7 +386,9 @@ Decision tree:
 
 8. Zeta as both B_s and residual trace:
    rejected unless real O is later derived.
-[PASS] insertion decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] insertion decision tree stated -- recommended next is count-once audit
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -396,7 +407,9 @@ Bad failure:
 
   Declare gamma_ij = exp(2 zeta / 3) bar_gamma_ij to be the field equation
   and allow residual zeta/kappa metric trace to remain active.
-[WARN] B_s/F_zeta insertion good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] B_s/F_zeta insertion good failure stated -- deferred pending insertion law theorem
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -413,7 +426,9 @@ B_s/F_zeta insertion fails if:
 8. exterior scalar charge or far-zone scalar flux appears
 9. J_V shifts M_ext independently of A
 10. recovery checks choose insertion or residual-kill
-[WARN] B_s/F_zeta insertion failure controls stated: RISK
+
+[governance_assessments]
+[WARN] B_s/F_zeta insertion failure controls stated -- open risks enumerated
 
 ========================================================================================================================
 Case 8: Next tests
@@ -436,7 +451,9 @@ Recommended next script:
 Reason:
   The conformal-volume split makes zeta-volume insertion structurally plausible,
   but the next gate is count-once recombination, not parent equation construction.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_B_s_only_insertion_count_once.py
 
 ========================================================================================================================
 Final interpretation
@@ -459,4 +476,6 @@ Best current interpretation:
 Best next script:
 
   candidate_B_s_only_insertion_count_once.py
-[PASS] B_s/F_zeta insertion audit complete: CLOSED
+
+[governance_assessments]
+[DEFER] B_s/F_zeta insertion audit complete -- no insertion law derived; deferred

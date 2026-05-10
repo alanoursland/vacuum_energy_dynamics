@@ -22,7 +22,6 @@ Allowed outcomes:
   K_W related to scalar stiffness K_A
   K_W independent but ontology-justified
   K_W missing / phenomenological
-[WARN] vector stiffness problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Scalar exchange energy reference
@@ -34,7 +33,6 @@ Scalar reduced energy density:
 1D form = K_A*Derivative(A(x), x)**2
 
 K_A measures scalar exchange stiffness.
-[PASS] scalar stiffness reference stated: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 2: Candidate vector transport energy
@@ -50,7 +48,6 @@ If varied with source alpha_W j_i W_i, this yields:
   Delta W_i ~ - (alpha_W/K_W) j_i
 
 But K_W is not yet derived.
-[WARN] vector transport energy form stated: CONSTRAINED_BY_IDENTITY — K_W still missing
 
 ========================================================================================================================
 Case 3: Shared scalar/vector stiffness option
@@ -66,7 +63,6 @@ Special case:
 Interpretation:
   scalar exchange and vector transport are two modes of the same vacuum
   stiffness only if lambda_K is derived or fixed by ontology.
-[WARN] shared stiffness option formulated: CONSTRAINED_BY_IDENTITY — lambda_K remains missing
 
 ========================================================================================================================
 Case 4: Independent vector transport stiffness option
@@ -81,7 +77,6 @@ This may be legitimate if the ontology says:
   different vacuum energies.
 
 But if K_W is introduced only to fit frame dragging, that is hand matching.
-[WARN] independent K_W option stated: INDEPENDENT_STIFFNESS — needs ontology-native energy reason
 
 ========================================================================================================================
 Case 5: Curl-energy option
@@ -100,7 +95,6 @@ Reason:
 Open issue:
   variation of |curl W|^2 gives a transverse vector equation,
   but gauge fixing and boundary conditions are needed.
-[WARN] curl-energy option identified: CONSTRAINED_BY_IDENTITY — more gauge-aware, not fully derived
 
 ========================================================================================================================
 Case 6: Source coupling energy
@@ -116,7 +110,6 @@ Interpretation:
 
 Missing:
   alpha_W is no more derived than K_W.
-[FAIL] vector source coupling stated: MISSING — alpha_W and K_W both need ontology
 
 ========================================================================================================================
 Case 7: Dimensionless stiffness/coupling ratio
@@ -132,7 +125,6 @@ Need either:
 
   alpha_W and K_W separately
   or their ratio directly
-[FAIL] vector ratio remains the target: MISSING — stiffness alone does not fix coefficient
 
 ========================================================================================================================
 Case 8: Classification
@@ -146,8 +138,6 @@ Case 8: Classification
 | source coupling alpha_W | MISSING |
 | coefficient alpha_W/K_W | MISSING |
 | GR normalization inserted directly | HAND_ASSIGNED / RISK |
-
-[FAIL] vector stiffness classification produced: MISSING — coefficient not reconstructed
 
 ========================================================================================================================
 Case 9: Next tests
@@ -166,7 +156,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_curl_energy_field_equation.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — curl-energy is the most gauge-aware vector path
 
 ========================================================================================================================
 Final interpretation
@@ -190,3 +179,13 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_curl_energy_field_equation.py
+
+[governance_assessments]
+[PASS] scalar stiffness K_A as reference -- E_A ~ K_A |grad A|^2 provides scalar reference
+[FAIL] vector stiffness K_W -- K_W not derived; curl-energy K_c is better gauge-aware option
+[FAIL] source coupling alpha_W -- alpha_W not derived; ratio alpha_W/K_W fully missing
+[DEFER] GR normalization matching -- forbidden at this stage; must derive from vacuum transport action
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded

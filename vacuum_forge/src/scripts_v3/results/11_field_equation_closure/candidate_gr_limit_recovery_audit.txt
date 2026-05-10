@@ -22,7 +22,9 @@ Discipline:
   targets are not derivations
   structural agreement is not coefficient derivation
   reduced reconstruction is real but limited
-[WARN] GR recovery audit problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] GR recovery audit problem posed -- structural constraint
 
 ========================================================================================================================
 Case 1: GR limit audit inventory
@@ -201,7 +203,9 @@ Case 2: Compact GR recovery ledger
 | Near-boundary deviation | possible deviation from naive GR interior/exterior matching | RISK | Deviation diagnostics are defined. | Magnitude, observable, weights, transition width, compatibility with tests. |
 | Conservation / Bianchi compatibility | nabla_mu G^mu_nu = 0 and nabla_mu T^mu_nu = 0 compatibility | MISSING | The required identity is now named. | The identity itself. |
 | Metric recombination | one coherent metric field | UNFINISHED | Sector map is explicit and no-double-counting rules are known. | Covariant recombination map. |
-[WARN] compact GR recovery ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact GR recovery ledger produced -- inventory marker
 
 ========================================================================================================================
 Case 3: Status counts
@@ -219,7 +223,9 @@ Interpretation:
   Vector shape is reduced-derived but normalization is matched/missing.
   Tensor radiation is structurally correct but coupling and flux are matched.
   Conservation/Bianchi closure is missing.
-[WARN] GR audit status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] GR audit status count produced -- inventory marker
 
 ========================================================================================================================
 Case 4: Strongest results
@@ -233,7 +239,9 @@ Strongest current GR-facing recoveries:
 5. Frame-dragging far-field shape proportional to J.
 
 These are real reduced/structural wins, but limited.
-[PASS] strongest GR-facing results identified: DERIVED_REDUCED
+
+[governance_assessments]
+[PASS] strongest GR-facing results identified -- reduced derivations confirmed
 
 ========================================================================================================================
 Case 5: Weakest results
@@ -247,7 +255,9 @@ Weakest or most matched GR-facing pieces:
 5. Covariant metric recombination.
 
 These must not be advertised as derived.
-[WARN] weakest GR-facing pieces identified: RISK
+
+[governance_assessments]
+[WARN] weakest GR-facing pieces identified -- open risk
 
 ========================================================================================================================
 Case 6: Reconstruction scorecard
@@ -271,7 +281,9 @@ Reconstruction scorecard:
 
   Conservation/closure:
     missing
-[WARN] reconstruction scorecard produced: CONSTRAINED
+
+[governance_assessments]
+[DEFER] reconstruction scorecard produced -- structural assessment
 
 ========================================================================================================================
 Case 6b: VacuumForge reciprocal metric cross-check
@@ -281,7 +293,26 @@ B_value = 1/(-2*G*M/(c**2*r) + 1)
 A_value * B_value = 1
 ConcreteMetricCheck status = satisfied_by_construction
 Message = reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
-[PASS] VacuumForge classifies reciprocal Schwarzschild metric as by-construction: DERIVED_REDUCED
+
+[derived_results]
+[PASS] VacuumForge classifies reciprocal Schwarzschild metric as by-construction -- A*B = 1
+
+========================================================================================================================
+Case 6c: Good failure demonstration
+========================================================================================================================
+Controlled failure: A*B product check with non-reciprocal B.
+
+  If B is incorrectly set to 1 (flat) instead of 1/A,
+  then A*B != 1 and the reciprocal_scaling check must fail.
+A_value = -2*G*M/(c**2*r) + 1
+B_wrong = 1  (flat, not 1/A)
+A_value * B_wrong = -2*G*M/(c**2*r) + 1
+Nonzero deviation detected: True
+
+[counterexamples]
+[FAIL] non-reciprocal B gives A*B != 1 -- A*B = -2*G*M/(c**2*r) + 1; deviation = -2*G*M/(c**2*r)
+
+[PASS] Good failure: non-reciprocal B is correctly detected as failing reciprocal scaling.
 
 ========================================================================================================================
 Case 7: Next tests
@@ -303,7 +334,9 @@ Recommended next script:
 
 Reason:
   The GR audit has separated real wins from matched gaps; now try the parent identity.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

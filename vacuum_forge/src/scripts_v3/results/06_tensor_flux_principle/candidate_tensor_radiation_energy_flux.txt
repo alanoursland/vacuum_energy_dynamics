@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Tensor Radiation Energy Flux
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - quadrupole_tensor_flux_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Tensor radiation energy-flux problem
@@ -16,7 +18,9 @@ Need radiation flux / power proxy:
   P_quad ~ G/(5c^5) < Qdddot_ij Qdddot_ij >
 
 This script checks scaling consistency, not a derivation.
-[PASS] tensor radiation energy-flux problem posed
+
+[unresolved_obligations]
+[OBLIGATION] tensor radiation energy-flux problem posed -- target scalings stated; derivation from action remains open
 
 ========================================================================================================================
 Case 1: Plus/cross wave flux proxy
@@ -29,7 +33,9 @@ Target TT flux proxy:
   F = c^3/(32*pi*G) <hdot_plus² + hdot_cross²>
 
 F = c**3*omega**2*(H_cross**2 + H_plus**2)/(64*pi*G)
-[PASS] plus/cross flux proxy is quadratic in amplitudes
+
+[sample_results]
+[PASS] plus/cross flux proxy is quadratic in amplitudes -- F = c**3*omega**2*(H_cross**2 + H_plus**2)/(64*pi*G)
 
 ========================================================================================================================
 Case 2: Substitute quadrupole amplitude normalization
@@ -38,15 +44,19 @@ H_plus amplitude = H_cross amplitude = 8*G*Omega**2*Q0/(R*c**4)
 wave omega = 2*Omega
 
 F_TT proxy = 8*G*Omega**6*Q0**2/(pi*R**2*c**5)
-[WARN] flux scales as G Omega^6 Q0^2/(R^2 c^5)
+
+[sample_results]
+[FAIL] flux scales as G Omega^6 Q0^2/(R^2 c^5) -- residual = 4*G*Omega**6*Q0**2/(pi*R**2*c**5)
 
 ========================================================================================================================
 Case 3: Total power scaling from flux
 ========================================================================================================================
 F proxy = 4*G*Omega**6*Q0**2/(pi*R**2*c**5)
 P = 4*pi*R² F = 16*G*Omega**6*Q0**2/c**5
-[PASS] total power scaling cancels observer radius R
-[PASS] power scales as G Omega^6 Q0²/c^5
+
+[derived_results]
+[PASS] total power scaling cancels observer radius R -- dP/dR = 0
+[PASS] power scales as G Omega^6 Q0²/c^5 -- P = 16*G*Omega**6*Q0**2/c**5
 
 Caution:
   Numerical coefficient depends on angular pattern and full TT projection.
@@ -57,15 +67,19 @@ Case 4: Compare to Qdddot proxy
 ========================================================================================================================
 Qdddot² proxy = 64*Omega**6*Q0**2
 G/(5c^5) * Qdddot² proxy = 64*G*Omega**6*Q0**2/(5*c**5)
-[PASS] quadrupole power proxy uses G Qdddot²/c^5
+
+[sample_results]
+[PASS] quadrupole power proxy uses G Qdddot²/c^5 -- P_GR_like = 64*G*Omega**6*Q0**2/(5*c**5)
 
 ========================================================================================================================
 Case 5: No-radiation controls
 ========================================================================================================================
 static Qdddot = 0
 linear Qdddot = 0
-[PASS] static quadrupole has no power proxy
-[PASS] linearly changing quadrupole has no third-derivative power proxy
+
+[derived_results]
+[PASS] static quadrupole has no power proxy -- static Qdddot = 0
+[PASS] linearly changing quadrupole has no third-derivative power proxy -- linear Qdddot = 0
 
 ========================================================================================================================
 Case 6: Scalar and tensor radiation distinction
@@ -81,7 +95,9 @@ Tensor h_ij^TT channel:
 
 A viable theory must avoid large unwanted scalar radiation.
 
-[PASS] scalar and tensor radiation channels remain distinct
+
+[governance_assessments]
+[PASS] scalar and tensor radiation channels remain distinct -- A = static; h_TT = radiative
 
 ========================================================================================================================
 Case 7: Classification
@@ -97,7 +113,9 @@ Results:
 5. Numerical coefficients are not derived here.
 6. Scalar A remains separate from tensor radiation.
 
-[PASS] tensor radiation energy-flux scaling passes first checks
+
+[unresolved_obligations]
+[OBLIGATION] tensor radiation energy-flux scaling passes first checks -- scaling confirmed; coefficient derivation from action remains open
 
 ========================================================================================================================
 Final interpretation

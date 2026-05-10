@@ -27,7 +27,9 @@ Discipline:
   no M_ext shift
   no exterior scalar charge
   recovery downstream
-[WARN] residual non-metric bookkeeping problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] residual non-metric bookkeeping problem posed -- required before residual roles can be licensed
 
 ========================================================================================================================
 Case 1: Residual non-metric bookkeeping inventory
@@ -40,7 +42,7 @@ Rule: residual zeta/kappa may remain useful only as non-metric bookkeeping, diag
 Role: core residual-after-kill target
 Allowed if: residual cannot source metric trace, M_ext shift, or exterior scalar charge
 Forbidden if: residual becomes hidden metric source or scalar gravity
-[WARN] NM1: non-metric residual target: THEOREM_TARGET
+[INFO] NM1: non-metric residual target: THEOREM_TARGET
 Missing: non-metric residual rule
 Consequence: decides whether residual variables survive after B_s-only insertion
 
@@ -51,7 +53,7 @@ Rule: residual zeta/kappa records mismatch, gauge/reduction status, or internal 
 Role: safe diagnostic branch
 Allowed if: diagnostic has no source term in metric equations
 Forbidden if: diagnostic is promoted to field source
-[WARN] NM2: diagnostic residual: SAFE_IF
+[INFO] NM2: diagnostic residual: SAFE_IF
 Missing: diagnostic scope statement
 Consequence: keeps residual useful without physics overclaim
 
@@ -62,7 +64,7 @@ Rule: residual tracks vacuum-volume configuration history without direct metric 
 Role: non-metric bookkeeping branch
 Allowed if: bookkeeping cannot shift M_ext or exterior charge
 Forbidden if: bookkeeping becomes hidden source reservoir
-[WARN] NM3: configuration bookkeeping: CANDIDATE
+[INFO] NM3: configuration bookkeeping: CANDIDATE
 Missing: bookkeeping/accounting law
 Consequence: preserves ontology while blocking second trace
 
@@ -73,7 +75,7 @@ Rule: residual participates only in first-order non-radiative relaxation
 Role: possible safe dynamic branch
 Allowed if: first-order, boundary-neutral, compact/support-safe, not metric trace
 Forbidden if: P_relax becomes Box zeta, Box kappa, or ordinary scalar radiation
-[WARN] NM4: P_relax-only residual: CANDIDATE
+[INFO] NM4: P_relax-only residual: CANDIDATE
 Missing: P_relax operator and non-wave theorem
 Consequence: allows residual dynamics without far-zone scalar wave
 
@@ -84,7 +86,7 @@ Rule: epsilon_vac_config and e_kappa may audit configuration cost but not source
 Role: energy/accounting fence
 Allowed if: energy terms are diagnostic or recombined once through B_s only
 Forbidden if: energy terms become source reservoir or coefficient tuning knob
-[WARN] NM5: energy/accounting diagnostic only: REQUIRED
+[INFO] NM5: energy/accounting diagnostic only: REQUIRED
 Missing: energy/accounting recombination rule
 Consequence: prevents killed residual from returning through energy
 
@@ -95,7 +97,7 @@ Rule: non-metric residual cannot change exterior A-sector mass
 Role: mass-protection requirement
 Allowed if: residual bookkeeping is mass-neutral
 Forbidden if: residual alters measured exterior mass
-[WARN] NM6: no M_ext shift: REQUIRED
+[INFO] NM6: no M_ext shift: REQUIRED
 Missing: mass-neutrality theorem
 Consequence: protects strongest reduced A-sector result
 
@@ -106,7 +108,7 @@ Rule: non-metric residual creates no exterior zeta/kappa charge and no far-zone 
 Role: ordinary exterior safety requirement
 Allowed if: residual support/relaxation is boundary-neutral
 Forbidden if: residual leaks scalar tail
-[WARN] NM7: no exterior scalar charge: REQUIRED
+[INFO] NM7: no exterior scalar charge: REQUIRED
 Missing: boundary neutrality theorem
 Consequence: prevents residual from becoming scalar gravity
 
@@ -117,7 +119,7 @@ Rule: kappa remains reduced diagnostic / non-metric residual / separately neutra
 Role: standing kappa safety rule
 Allowed if: kappa does not enter metric scalar trace
 Forbidden if: kappa restores killed zeta residual trace
-[WARN] NM8: kappa diagnostic fence: REQUIRED
+[INFO] NM8: kappa diagnostic fence: REQUIRED
 Missing: kappa cleanup theorem
 Consequence: prevents kappa backdoor
 
@@ -128,7 +130,7 @@ Rule: bookkeeping status does not itself prove no-overlap operator O
 Role: anti-hardening guard
 Allowed if: O remains theorem target unless explicitly defined
 Forbidden if: non-metric label is used as fake O
-[WARN] NM9: non-metric residual cannot define O: REQUIRED
+[INFO] NM9: non-metric residual cannot define O: REQUIRED
 Missing: O operator
 Consequence: keeps no-overlap unresolved rather than renamed
 
@@ -139,7 +141,7 @@ Rule: non-metric residual later appears in metric equation source term
 Role: rejected regression
 Allowed if: never unless recast through explicit B_s insertion and count-once
 Forbidden if: accepted as hidden source
-[WARN] NM10: forbidden hidden metric source: REJECTED
+[INFO] NM10: forbidden hidden metric source: REJECTED
 Missing: not pursued
 Consequence: blocks source-reservoir behavior
 
@@ -150,7 +152,7 @@ Rule: residual evolves by Box zeta or Box kappa in ordinary sector
 Role: rejected scalar-radiation branch
 Allowed if: never in ordinary branch
 Forbidden if: accepted as relaxation
-[WARN] NM11: forbidden Box residual: REJECTED
+[INFO] NM11: forbidden Box residual: REJECTED
 Missing: not pursued
 Consequence: prevents ordinary scalar radiation
 
@@ -161,7 +163,7 @@ Rule: residual bookkeeping adjusts coefficients to recover gamma_like or AB
 Role: rejected tuning branch
 Allowed if: never as mechanism
 Forbidden if: used to pass recovery
-[WARN] NM12: forbidden coefficient reservoir: REJECTED
+[INFO] NM12: forbidden coefficient reservoir: REJECTED
 Missing: not pursued
 Consequence: prevents recovery smuggling through bookkeeping
 
@@ -172,7 +174,7 @@ Rule: residual metric trace survives only if O and boundary/mass neutrality are 
 Role: theorem-heavy alternative
 Allowed if: real O exists and residual is structurally neutral
 Forbidden if: used because non-metric bookkeeping feels too restrictive
-[WARN] NM13: neutral metric residual alternative: RISK
+[INFO] NM13: neutral metric residual alternative: RISK
 Missing: O, boundary theorem, no mass overlap
 Consequence: keeps alternative alive but out of current convention
 
@@ -183,7 +185,7 @@ Rule: gamma_like and AB are tested only after residual role is fenced
 Role: anti-smuggling guard
 Allowed if: recovery remains check only
 Forbidden if: recovery chooses diagnostic/bookkeeping/relaxation role
-[WARN] NM14: recovery downstream: RECOVERY_TARGET
+[INFO] NM14: recovery downstream: RECOVERY_TARGET
 Missing: solutions after residual rule
 Consequence: keeps residual status from being selected by GR target
 
@@ -194,7 +196,7 @@ Rule: parent identity derives whether residual is killed, non-metric, or neutral
 Role: future derivation route
 Allowed if: identity is explicit and not GR rewrite
 Forbidden if: identity is decorative
-[WARN] NM15: parent derivation route: THEOREM_TARGET
+[INFO] NM15: parent derivation route: THEOREM_TARGET
 Missing: parent residual identity
 Consequence: future route for replacing convention with theorem
 
@@ -205,7 +207,7 @@ Rule: residual cannot be kept non-metric and cannot be made neutral through O
 Role: branch failure condition
 Allowed if: used to block residual variables from ordinary sector
 Forbidden if: patched by relabeling residual as bookkeeping
-[FAIL] NM16: residual bookkeeping failure: BRANCH_KILLED
+[INFO] NM16: residual bookkeeping failure: BRANCH_KILLED
 Missing: applies if demonstrated
 Consequence: residual variables must remain outside ordinary metric/vacuum-current sector
 
@@ -216,7 +218,7 @@ Rule: if non-metric roles survive, test minimal O forms or boundary safety next
 Role: next local bottleneck
 Allowed if: residual bookkeeping is fenced but O remains unresolved
 Forbidden if: jumping to parent equation before O/minimal forms are audited
-[PASS] NM17: recommended next move: RECOMMENDED
+[INFO] NM17: recommended next move: RECOMMENDED
 Missing: minimal no-overlap operator audit
 Consequence: next script should be candidate_no_overlap_operator_minimal_forms.py
 
@@ -242,7 +244,9 @@ Case 2: Compact residual non-metric ledger
 | NM15: parent derivation route | parent identity derives whether residual is killed, non-metric, or neutral | THEOREM_TARGET | future route for replacing convention with theorem |
 | NM16: residual bookkeeping failure | residual cannot be kept non-metric and cannot be made neutral through O | BRANCH_KILLED | residual variables must remain outside ordinary metric/vacuum-current sector |
 | NM17: recommended next move | if non-metric roles survive, test minimal O forms or boundary safety next | RECOMMENDED | next script should be candidate_no_overlap_operator_minimal_forms.py |
-[WARN] compact non-metric residual ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact non-metric residual ledger produced -- residual roles enumerated
 
 ========================================================================================================================
 Case 3: Status counts
@@ -264,7 +268,9 @@ Interpretation:
   Energy/accounting is dangerous unless diagnostic or recombined once.
   O remains unresolved; non-metric bookkeeping does not define it.
   Next gate is minimal no-overlap operator forms.
-[WARN] residual non-metric bookkeeping status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] residual non-metric bookkeeping status count produced -- roles enumerated
 
 ========================================================================================================================
 Case 4: Allowed residual roles
@@ -285,7 +291,9 @@ Not allowed:
 4. M_ext shift
 5. Box zeta / Box kappa
 6. coefficient reservoir
-[PASS] allowed residual roles listed: RECOMMENDED
+
+[governance_assessments]
+[INFO] allowed residual roles listed -- five safe roles; six forbidden roles
 
 ========================================================================================================================
 Case 5: Non-metric residual decision tree
@@ -309,7 +317,9 @@ Decision tree:
 
 6. Hidden metric source or scalar wave:
    rejected.
-[PASS] non-metric residual decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] non-metric residual decision tree stated -- recommended next is minimal O audit
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -327,7 +337,9 @@ Consequence:
 Bad failure:
 
   call residual non-metric, then let it source metric equations indirectly.
-[WARN] residual non-metric bookkeeping good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] residual non-metric bookkeeping good failure stated -- deferred pending non-metric role theorems
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -342,7 +354,9 @@ Residual non-metric bookkeeping fails if:
 6. non-metric label is used as fake O
 7. kappa restores killed trace
 8. recovery checks choose residual role
-[WARN] residual non-metric bookkeeping failure controls stated: RISK
+
+[governance_assessments]
+[WARN] residual non-metric bookkeeping failure controls stated -- eight failure modes
 
 ========================================================================================================================
 Case 8: Next tests
@@ -365,7 +379,9 @@ Recommended next script:
 Reason:
   Non-metric bookkeeping can fence residual roles provisionally,
   but O remains the missing theorem for any neutral residual alternative.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_no_overlap_operator_minimal_forms.py
 
 ========================================================================================================================
 Final interpretation
@@ -389,4 +405,6 @@ Still not derived:
 Best next script:
 
   candidate_no_overlap_operator_minimal_forms.py
-[PASS] residual non-metric bookkeeping audit complete: CLOSED
+
+[governance_assessments]
+[DEFER] residual non-metric bookkeeping audit complete -- no residual-kill theorem derived; deferred

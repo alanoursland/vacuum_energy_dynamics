@@ -24,7 +24,9 @@ Discipline:
   preserve no-overlap
   expose kappa cleanup consequence
   prefer source-driven/differential maps over algebraic fitting
-[WARN] F_zeta companion map problem posed: REQUIRED
+
+[governance_assessments]
+[DEFER] F_zeta companion map problem posed -- branch open pending source-driven volume creation law
 
 ========================================================================================================================
 Case 1: F_zeta companion map inventory
@@ -37,7 +39,7 @@ Map form: B_s = F_zeta[A,zeta] fixes q before recovery checks
 Role: core map target for zeta companion branch
 Allowed if: F_zeta follows from volume-exchange law
 Forbidden if: map coefficient chosen from gamma_like or AB
-[WARN] FZ1: F_zeta theorem target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: volume-exchange derivation of F_zeta
 Consequence: decides whether zeta companion branch solves A_spatial
 
@@ -48,7 +50,7 @@ Map form: B_s = lambda_z zeta
 Role: minimal companion map
 Allowed if: lambda_z is fixed by ontology before recovery checks
 Forbidden if: lambda_z is tuned to gamma_like
-[WARN] FZ2: pure algebraic zeta map: RISK
+Status: RISK
 Missing: lambda_z origin and gauge/slicing status
 Consequence: too easy to become coefficient patch unless derived
 
@@ -59,7 +61,7 @@ Map form: B_s = G[A] + lambda_z zeta
 Role: lets A-sector and zeta-volume both contribute to B_s
 Allowed if: G and lambda_z have separate non-overlapping origins
 Forbidden if: G[A] duplicates A_spatial while zeta remains residual
-[WARN] FZ3: algebraic A-plus-zeta map: RISK
+Status: RISK
 Missing: count-once split and lambda_z origin
 Consequence: danger of duplicating A-sector spatial trace
 
@@ -70,7 +72,7 @@ Map form: Delta B_s = r_z Delta zeta + H[A,S_A]
 Role: derivative companion candidate
 Allowed if: r_z and H follow from exchange operator
 Forbidden if: r_z is chosen to match q
-[WARN] FZ4: differential zeta map: CANDIDATE
+Status: CANDIDATE
 Missing: operator deriving r_z and H
 Consequence: may avoid direct algebraic identification but still needs coefficient origin
 
@@ -81,7 +83,7 @@ Map form: Sigma_V[A,T] -> zeta -> B_s
 Role: postulate-facing map using source-driven volume creation
 Allowed if: Sigma_V is expressed before recovery checks
 Forbidden if: source term is invented to repair A_spatial
-[WARN] FZ5: source-driven map: CANDIDATE
+Status: CANDIDATE
 Missing: source-driven volume creation law
 Consequence: connects to mass/source coupling but remains central missing mechanism
 
@@ -92,7 +94,7 @@ Map form: zeta tracks vacuum configuration; metric trace insertion only through 
 Role: safe ontology-preserving map
 Allowed if: bookkeeping-to-metric map is explicit
 Forbidden if: zeta appears separately as metric trace
-[WARN] FZ6: non-metric bookkeeping map: CANDIDATE
+Status: CANDIDATE
 Missing: bookkeeping-to-metric rule
 Consequence: could preserve vacuum ontology while avoiding exterior scalar charge
 
@@ -103,7 +105,7 @@ Map form: zeta_residual_metric = 0 or non-metric after F_zeta map
 Role: mandatory companion-branch broom
 Allowed if: proved or made definitional by map
 Forbidden if: residual zeta remains metric-active
-[WARN] FZ7: residual-kill theorem: REQUIRED
+Status: REQUIRED
 Missing: residual-kill / non-metric theorem
 Consequence: prevents zeta from being both companion and residual
 
@@ -114,7 +116,7 @@ Map form: O[B_s,zeta_residual/kappa_residual] = 0
 Role: count-once recombination guardrail
 Allowed if: operator is explicit or residual killed
 Forbidden if: overlap is asserted without consequence
-[WARN] FZ8: no-overlap operator: REQUIRED
+Status: REQUIRED
 Missing: overlap operator or residual-kill theorem
 Consequence: map fails if B_s and residual trace overlap
 
@@ -125,7 +127,7 @@ Map form: Q_ext[zeta independent] = 0; companion contribution absorbed into B_s
 Role: protects no exterior scalar charge
 Allowed if: zeta has no independent exterior charge
 Forbidden if: F_zeta creates scalar exterior charge
-[WARN] FZ9: boundary neutrality: REQUIRED
+Status: REQUIRED
 Missing: boundary neutrality theorem
 Consequence: prevents companion branch from becoming scalar gravity
 
@@ -136,7 +138,7 @@ Map form: kappa remains diagnostic/non-metric or separately neutral after zeta m
 Role: prevents kappa from resurrecting killed residual trace
 Allowed if: kappa does not become overlapping metric scalar
 Forbidden if: kappa replaces residual zeta trace
-[WARN] FZ10: kappa cleanup consequence: CONSTRAINED
+Status: CONSTRAINED
 Missing: post-F_zeta kappa status script
 Consequence: requires later kappa cleanup after F_zeta branch decision
 
@@ -147,7 +149,7 @@ Map form: after F_zeta fixed, test gamma_like=1 and AB->1
 Role: ordinary-regime recovery tests
 Allowed if: checked after map and coefficients are derived
 Forbidden if: used to choose F_zeta
-[WARN] FZ11: recovery checks downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after F_zeta
 Consequence: tests but does not define map
 
@@ -158,7 +160,7 @@ Map form: test differential/source-driven maps before accepting algebraic lambda
 Role: best current concrete path
 Allowed if: residual-kill theorem stays attached
 Forbidden if: testing map coefficients without residual kill
-[PASS] FZ12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: source-driven volume creation law or differential map test
 Consequence: next script should test source-driven volume creation law, not tune algebraic map
 
@@ -179,7 +181,9 @@ Case 2: Compact F_zeta map ledger
 | FZ10: kappa cleanup consequence | kappa remains diagnostic/non-metric or separately neutral after zeta map | CONSTRAINED | requires later kappa cleanup after F_zeta branch decision |
 | FZ11: recovery checks downstream | after F_zeta fixed, test gamma_like=1 and AB->1 | RECOVERY_TARGET | tests but does not define map |
 | FZ12: recommended next move | test differential/source-driven maps before accepting algebraic lambda_z | RECOMMENDED | next script should test source-driven volume creation law, not tune algebraic map |
-[WARN] compact F_zeta map ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact F_zeta map ledger produced -- inventory table complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -197,7 +201,9 @@ Interpretation:
   Differential and source-driven maps are better candidates but need exchange/source laws.
   Residual-kill, no-overlap, and boundary neutrality are mandatory.
   Kappa cleanup is downstream, not optional.
-[WARN] F_zeta map status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] F_zeta map status count produced -- counts reviewed
 
 ========================================================================================================================
 Case 4: F_zeta map decision tree
@@ -218,7 +224,9 @@ Decision tree:
 
 5. Non-metric bookkeeping?
    Safe only if metric insertion occurs solely through B_s.
-[PASS] F_zeta map decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[DEFER] F_zeta map decision tree stated -- source-driven map is preferred route pending Sigma_V
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -235,7 +243,9 @@ Consequence:
 
 Bad failure:
   choose lambda_z from gamma_like and declare zeta the companion.
-[WARN] F_zeta map good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] F_zeta map good failure stated -- branch deferred pending source-driven volume creation law
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -250,7 +260,9 @@ F_zeta map inventory fails if:
 6. no-overlap operator/theorem is absent
 7. kappa restores killed residual trace
 8. source-driven volume creation remains unnamed
-[WARN] F_zeta map failure controls stated: RISK
+
+[governance_assessments]
+[INFO] F_zeta map failure controls stated -- eight failure controls recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -272,7 +284,9 @@ Recommended next script:
 
 Reason:
   The best non-fitting F_zeta route is source-driven volume creation. Express Sigma_V before adding more map structure.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_source_driven_volume_creation_law.py
 
 ========================================================================================================================
 Final interpretation

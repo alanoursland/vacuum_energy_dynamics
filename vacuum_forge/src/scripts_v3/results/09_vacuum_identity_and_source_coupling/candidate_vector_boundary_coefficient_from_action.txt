@@ -18,7 +18,6 @@ Rules:
   keep all coefficients symbolic
   do not insert Lense-Thirring normalization
   check whether C_b is a new free coefficient or controlled by alpha_W/K_c
-[WARN] boundary coefficient problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Curl-energy source ratio
@@ -32,7 +31,6 @@ Coefficient ratio:
 lambda_eq = alpha_W/(2*K_c)
 
 This ratio is still missing, but it should control the exterior amplitude.
-[FAIL] field-equation coefficient ratio identified: MISSING — alpha_W/(2K_c) not derived
 
 ========================================================================================================================
 Case 2: Green-function amplitude
@@ -49,7 +47,6 @@ lambda_green = alpha_W/(8*pi*K_c)
 
 This is not a GR coefficient.
 It only relates exterior amplitude to the missing action ratio.
-[WARN] Green-function amplitude tied to alpha_W/K_c: CONSTRAINED_BY_IDENTITY — absolute ratio still missing
 
 ========================================================================================================================
 Case 3: Far-field relation to angular momentum
@@ -66,7 +63,6 @@ C_J = C_shape*alpha_W/(8*pi*K_c)
 
 C_shape depends on angular conventions and source model.
 alpha_W/K_c remains the physical missing ratio.
-[WARN] far-field coefficient tied to action ratio times shape factor: CONSTRAINED_BY_IDENTITY — shape factor and action ratio not fully derived
 
 ========================================================================================================================
 Case 4: Boundary coefficient relation
@@ -81,7 +77,6 @@ This means C_b should not be an independent new knob if the action
 and source model are specified.
 
 But C_shape and alpha_W/K_c are still missing.
-[WARN] boundary coefficient reduced to action ratio plus shape factor: CONSTRAINED_BY_IDENTITY — not a final normalization
 
 ========================================================================================================================
 Case 5: Precession coefficient separation
@@ -99,7 +94,6 @@ Missing:
   beta_W
   C_shape
   alpha_W/K_c
-[FAIL] precession coefficient separated into missing factors: MISSING — observable normalization not derived
 
 ========================================================================================================================
 Case 6: No new free boundary knob
@@ -117,7 +111,6 @@ Remaining danger:
 
   if alpha_W/K_c, beta_W, and C_shape are all independently fitted,
   the vector sector becomes a fit machine.
-[WARN] boundary knob reduced but not eliminated: CONSTRAINED_BY_IDENTITY — main action ratio remains missing
 
 ========================================================================================================================
 Case 7: Classification
@@ -130,8 +123,6 @@ Case 7: Classification
 | source/shape factor C_shape | MISSING |
 | precession coupling beta_W | MISSING |
 | Lense-Thirring normalization | HAND_ASSIGNED if inserted now |
-
-[WARN] boundary coefficient classification produced: CONSTRAINED_BY_IDENTITY — C_b tied to missing action ratio, not solved
 
 ========================================================================================================================
 Case 8: Next tests
@@ -150,7 +141,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_source_shape_factor.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — source shape factor is next local vector cleanup
 
 ========================================================================================================================
 Final interpretation
@@ -173,3 +163,18 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_source_shape_factor.py
+
+[derived_results]
+[PASS] Green-function amplitude tied to alpha_W/K_c -- lambda_green = alpha_W/(8*pi*K_c) — links boundary to action ratio
+[PASS] C_b parameterized as C_shape * alpha_W/(8*pi*K_c) -- boundary coefficient not a new free knob; controlled by action ratio
+[PASS] C_total = beta_W * C_shape * alpha_W/(8*pi*K_c) -- precession coefficient separated into missing factors
+
+[governance_assessments]
+[FAIL] alpha_W/K_c -- missing; boundary coefficient not solved
+[FAIL] C_shape -- missing; convention-dependent source/geometry factor
+[DEFER] GR matching forbidden -- C_total must not be set to reproduce Lense-Thirring
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive vector beta_W observable coupling -- open proof obligation recorded
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded

@@ -24,7 +24,9 @@ Discipline:
   do not hide tuning in normalization or source coupling
   do not let zeta fix ratio while remaining independent residual
   move to conservation-current route if action/stiffness ratio remains free
-[WARN] stiffness ratio origin problem posed: REQUIRED
+
+[governance_assessments]
+[WARN] stiffness ratio origin problem posed -- open risk
 
 ========================================================================================================================
 Case 1: Stiffness ratio origin inventory
@@ -37,7 +39,7 @@ Origin: r_s = c_x/c_s, q_action = -r_s
 Role: core coefficient-ratio bottleneck exposed by coupled variation
 Allowed if: r_s is fixed before gamma/AB recovery checks
 Forbidden if: r_s is selected to pass recovery targets
-[WARN] SR1: stiffness ratio target: STRUCTURAL
+Status: STRUCTURAL
 Missing: pre-recovery origin of r_s
 Consequence: coupled stiffness lives or defers on r_s
 
@@ -48,7 +50,7 @@ Origin: choose c_x/c_s freely
 Role: repair knob
 Allowed if: never as derivation
 Forbidden if: used to save coupled stiffness branch
-[WARN] SR2: free stiffness ratio: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: turns action/stiffness into coefficient tuning
 
@@ -59,7 +61,7 @@ Origin: c_x/c_s fixed by field-space symmetry or diagonalization constraint
 Role: candidate legitimate ratio origin
 Allowed if: symmetry is specified before recovery checks
 Forbidden if: symmetry is invented to force q
-[WARN] SR3: symmetry origin: CANDIDATE
+Status: CANDIDATE
 Missing: actual symmetry / field-space metric
 Consequence: could keep action/stiffness branch alive if concrete
 
@@ -70,7 +72,7 @@ Origin: c_s and c_x fixed by canonical normalization of coupled modes
 Role: possible mathematical coefficient origin
 Allowed if: normalization follows from kinetic/stiffness metric, not recovery
 Forbidden if: normalization chosen after gamma_like check
-[WARN] SR4: normalization origin: CANDIDATE
+Status: CANDIDATE
 Missing: canonical variable choice and stiffness metric
 Consequence: may reduce ratio freedom but risks gauge/convention dependence
 
@@ -81,7 +83,7 @@ Origin: c_x/c_s fixed by div J_A = 0 or parent source-balance identity
 Role: candidate conservation route
 Allowed if: current and balance law are explicit
 Forbidden if: conservation language is decorative
-[WARN] SR5: conservation-current origin: CANDIDATE
+Status: CANDIDATE
 Missing: J_A and balance operator
 Consequence: may move next branch to conservation-current coefficient origin
 
@@ -92,7 +94,7 @@ Origin: source interaction fixes c_x/c_s through matter/vacuum coupling
 Role: possible ontology/source-routing origin
 Allowed if: coupling rule is specified before recovery checks
 Forbidden if: source coupling is added to repair gamma_like
-[WARN] SR6: source-coupling origin: RISK
+Status: RISK
 Missing: matter/vacuum coupling rule
 Consequence: could rescue ratio, but high risk of hidden tuning
 
@@ -103,7 +105,7 @@ Origin: c_x/c_s fixed by vacuum-volume / curvature-exchange identity
 Role: ontology-native but branch-shifting ratio origin
 Allowed if: zeta is companion or residual by no-overlap identity
 Forbidden if: zeta fixes ratio while remaining independent residual trace
-[WARN] SR7: volume/zeta exchange origin: RISK
+Status: RISK
 Missing: zeta exchange identity and no-overlap theorem
 Consequence: likely leaves pure A-local stiffness branch for volume-exchange branch
 
@@ -114,7 +116,7 @@ Origin: Lagrange constraint C[A,B_s,S_A]=0 fixes effective c_x/c_s
 Role: candidate route connecting closure shell to action
 Allowed if: constraint is structural and not B=1/A/gamma_like
 Forbidden if: constraint is recovery target in disguise
-[WARN] SR8: constrained-variation origin: CANDIDATE
+Status: CANDIDATE
 Missing: constraint origin and multiplier status
 Consequence: may rescue ratio only if constraint itself is derived
 
@@ -125,7 +127,7 @@ Origin: weak-field output after r_s fixed gives gamma_like=1
 Role: downstream recovery target
 Allowed if: checked after r_s is fixed
 Forbidden if: used to choose r_s
-[WARN] SR9: gamma-like recovery check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: weak-field mapping from r_s to gamma_like
 Consequence: tests but does not determine stiffness ratio
 
@@ -136,7 +138,7 @@ Origin: exterior solution after r_s fixed gives kappa_areal -> 0 / AB -> 1
 Role: downstream exterior diagnostic
 Allowed if: checked after solving varied equations
 Forbidden if: used as boundary/action constraint
-[WARN] SR10: AB exterior diagnostic check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: exterior solution with fixed r_s
 Consequence: keeps AB diagnostic-only
 
@@ -147,7 +149,7 @@ Origin: r_s must not produce overlapping B_s and zeta/kappa residual trace
 Role: protects count-once theorem
 Allowed if: overlap operator or residual status theorem is available
 Forbidden if: derived ratio still double-counts trace
-[WARN] SR11: no-overlap compatibility: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: overlap operator / residual theorem
 Consequence: ratio origin still fails if trace accounting fails
 
@@ -158,7 +160,7 @@ Origin: if no symmetry/normalization origin is concrete, move to conservation-cu
 Role: best current branch decision
 Allowed if: free ratio and recovery-tuned ratio are rejected
 Forbidden if: pretending action/stiffness has derived r_s without origin
-[PASS] SR12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: symmetry/normalization/conservation comparison
 Consequence: next script should compare symmetry/normalization against conservation-current route
 
@@ -179,7 +181,9 @@ Case 2: Compact stiffness-ratio ledger
 | SR10: AB exterior diagnostic check | exterior solution after r_s fixed gives kappa_areal -> 0 / AB -> 1 | RECOVERY_TARGET | keeps AB diagnostic-only |
 | SR11: no-overlap compatibility | r_s must not produce overlapping B_s and zeta/kappa residual trace | THEOREM_TARGET | ratio origin still fails if trace accounting fails |
 | SR12: recommended next move | if no symmetry/normalization origin is concrete, move to conservation-current origin | RECOMMENDED | next script should compare symmetry/normalization against conservation-current route |
-[WARN] compact stiffness-ratio ledger produced: STRUCTURAL
+
+[governance_assessments]
+[WARN] compact stiffness-ratio ledger produced -- structural inventory
 
 ========================================================================================================================
 Case 3: Status counts
@@ -198,7 +202,9 @@ Interpretation:
   Conservation-current origin is the strongest next alternative if stiffness ratio remains free.
   Zeta/volume exchange is plausible but likely leaves the pure A-local stiffness branch.
   Recovery checks remain downstream.
-[WARN] stiffness-ratio status count produced: STRUCTURAL
+
+[governance_assessments]
+[WARN] stiffness-ratio status count produced -- structural
 
 ========================================================================================================================
 Case 4: Ratio-origin decision tree
@@ -219,7 +225,9 @@ Decision tree:
 
 5. If none:
    action/stiffness does not derive q; defer to conservation-current or volume-exchange branch.
-[PASS] stiffness-ratio decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[WARN] stiffness-ratio decision tree stated -- candidate route map
 
 ========================================================================================================================
 Case 5: Good failure / defer outcome
@@ -235,7 +243,9 @@ Consequence:
 
 Bad failure:
   choose c_x/c_s from gamma_like=1 and call it symmetry or normalization.
-[WARN] stiffness ratio good failure stated: DEFER
+
+[unresolved_obligations]
+[OBLIGATION] stiffness ratio c_x/c_s origin is missing -- open proof obligation recorded
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -250,7 +260,9 @@ Stiffness-ratio origin test fails if:
 6. source coupling hides a fit
 7. zeta fixes ratio while remaining independent residual
 8. no-overlap theorem is ignored after ratio selection
-[WARN] stiffness-ratio failure controls stated: RISK
+
+[governance_assessments]
+[WARN] stiffness-ratio failure controls stated -- open risk
 
 ========================================================================================================================
 Case 7: Next tests
@@ -272,7 +284,9 @@ Recommended next script:
 
 Reason:
   Symmetry/normalization are currently unspecified. Conservation-current origin is the strongest next non-tuning route.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[WARN] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

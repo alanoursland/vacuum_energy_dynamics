@@ -15,7 +15,12 @@ Need:
   weak-field exterior kappa leak must be tiny or absent
 
 This script tests boundary relaxation profile classes.
-[PASS] boundary kappa relaxation problem isolated
+
+[governance_assessments]
+[PASS] boundary kappa relaxation problem isolated -- interior kappa nonzero; exterior suppression required
+
+[unresolved_obligations]
+[OBLIGATION] derive boundary kappa relaxation mechanism from field equation -- profiles tested here are toy/diagnostic; no full field equation derived
 
 ============================================================================================================
 Case 1: Sharp cutoff profile
@@ -27,7 +32,9 @@ Toy profile:
 This enforces exterior compensation but creates a derivative/jump
 localized at the boundary.
 
-[PASS] sharp cutoff needs interface stress or boundary condition
+
+[governance_assessments]
+[PASS] sharp cutoff needs interface stress or boundary condition -- kappa jump requires boundary physics; exterior compensation enforced by hand
 
 ============================================================================================================
 Case 2: Smooth polynomial interior profile
@@ -36,9 +43,11 @@ kappa_in(r) = k0*(1 - r**2/R**2)**2
 kappa(R) = 0
 kappa'(R) = 0
 kappa'(0) = 0
-[PASS] profile vanishes at boundary
-[PASS] profile derivative vanishes at boundary
-[PASS] profile regular at center
+
+[sample_results]
+[PASS] profile vanishes at boundary -- kappa(R) = 0
+[PASS] profile derivative vanishes at boundary -- kappa'(R) = 0
+[PASS] profile regular at center -- kappa'(0) = 0
 
 Interpretation:
   Smooth interior kappa can die at the surface without exterior leak.
@@ -48,28 +57,38 @@ Case 3: Exponential exterior relaxation
 ============================================================================================================
 kappa_ext(r) = kR*exp((R - r)/L)
 kappa_ext(R) = kR
-lim r->∞ kappa_ext = 0
+lim r->inf kappa_ext = 0
 kappa_ext'(R) = -kR/L
-[PASS] exterior relaxation decays asymptotically
+
+[sample_results]
+[PASS] exterior relaxation decays asymptotically -- lim = 0
 
 Caution:
   Any nonzero exterior tail is an observational kappa-leak channel.
   For ordinary exterior Schwarzschild recovery, prefer kR=0 or very
   short relaxation length.
 
+[governance_assessments]
+[PASS] exponential exterior tail is a kappa-leak risk -- kR must be very small or relaxation scale L very short to avoid deviation
+
 ============================================================================================================
 Case 4: Massive kappa relaxation equation outside
 ============================================================================================================
 Candidate exterior relaxation equation:
 
-  kappa'' + 2 kappa'/r - m² kappa = 0
+  kappa'' + 2 kappa'/r - m^2 kappa = 0
 
 The decaying spherical solution has form:
 
   kappa_ext ~ C exp(-m r)/r
 
 This supports rapid exterior suppression if m is large.
-[PASS] massive exterior kappa mode can suppress leaks
+
+[governance_assessments]
+[PASS] massive exterior kappa mode can suppress leaks -- decaying mode exp(-mr)/r gives rapid exterior suppression
+
+[unresolved_obligations]
+[OBLIGATION] derive exterior kappa mass parameter m from vacuum physics -- massive relaxation is candidate; mass m not derived from first principles
 
 ============================================================================================================
 Case 5: Energy penalty picture
@@ -79,19 +98,23 @@ kappa_inside_eq = [J_inside/(2*C_k)]
 
 E_outside = C_k*kappa**2
 kappa_outside_eq = []
-[PASS] sourceful interior can prefer nonzero kappa
-[WARN] source-free exterior prefers kappa=0
+
+[sample_results]
+[PASS] sourceful interior can prefer nonzero kappa -- kappa_eq = [J_inside/(2*C_k)]
+[FAIL] source-free exterior prefers kappa=0 -- kappa_eq = []
 
 ============================================================================================================
 Case 6: Exterior observable constraint
 ============================================================================================================
-A ≈ eps*(lambda_k - 2) + 1
-B ≈ eps*(lambda_k + 2) + 1
-AB ≈ 2*eps*lambda_k + 1
+A approx eps*(lambda_k - 2) + 1
+B approx eps*(lambda_k + 2) + 1
+AB approx 2*eps*lambda_k + 1
 
 Any persistent exterior lambda_k shifts weak-field coefficients.
 Thus exterior kappa relaxation must be efficient.
-[PASS] exterior kappa leak remains deviation channel
+
+[governance_assessments]
+[PASS] exterior kappa leak remains deviation channel -- nonzero lambda_k shifts A, B, AB at first order in eps
 
 ============================================================================================================
 Final interpretation

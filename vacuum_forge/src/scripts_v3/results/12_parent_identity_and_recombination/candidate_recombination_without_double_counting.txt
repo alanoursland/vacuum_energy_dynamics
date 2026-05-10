@@ -24,7 +24,9 @@ Discipline:
   W_i is transverse
   exterior Schwarzschild must be preserved when kappa=0
   do not import GR coefficients as derivation
-[WARN] recombination problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] recombination problem posed -- P_recombination not yet derived
 
 ========================================================================================================================
 Case 1: Recombination inventory
@@ -37,7 +39,7 @@ Component: g_tt-like component
 Allowed source: A-sector scalar mass response
 Forbidden source: independent kappa mass scalar or A_rad
 Candidate form: g_tt ~ -A*c^2 in reduced/static weak map
-[PASS] R1: lapse/time scalar from A: DERIVED_REDUCED
+[INFO] R1: lapse/time scalar from A: DERIVED_REDUCED
 Risk: Overextending reduced static scalar result.
 Missing: Covariant parent lapse/recombination map.
 
@@ -48,7 +50,7 @@ Component: g_rr-like radial scalar piece
 Allowed source: AB=e^(2*kappa), exterior kappa=0
 Forbidden source: independent B chosen by GR form or exterior kappa tail
 Candidate form: kappa_ext=0 -> B=1/A
-[PASS] R2: exterior radial reciprocal from A and kappa: DERIVED_REDUCED
+[INFO] R2: exterior radial reciprocal from A and kappa: DERIVED_REDUCED
 Risk: Treating areal-gauge relation as full covariant derivation.
 Missing: Gauge/physical split for B and kappa.
 
@@ -59,7 +61,7 @@ Component: g_0i-like component
 Allowed source: transverse W_i sourced by j_T
 Forbidden source: longitudinal current P_L j or scalar continuity
 Candidate form: g_0i ~ coefficient * W_i
-[WARN] R3: vector shift from W_i: STRUCTURAL
+[INFO] R3: vector shift from W_i: STRUCTURAL
 Risk: GR shift coefficient imported by hand.
 Missing: beta_W / normalization / parent shift map.
 
@@ -70,7 +72,7 @@ Component: trace-free spatial tensor
 Allowed source: h_ij^TT sourced by P_TT stress
 Forbidden source: trace stress or kappa trace response
 Candidate form: g_ij contains h_ij^TT as trace-free radiative part
-[WARN] R4: tensor radiation from h_TT: STRUCTURAL
+[INFO] R4: tensor radiation from h_TT: STRUCTURAL
 Risk: TT form correct but coupling/normalization matched.
 Missing: C_T, K_T, tensor action stiffness.
 
@@ -81,7 +83,7 @@ Component: scalar spatial / AB diagnostic role
 Allowed source: trace/pressure shifts kappa_min; kappa relaxes first-order
 Forbidden source: rho-sourced long-range scalar mass response
 Candidate form: kappa enters AB=e^(2*kappa) or local trace/volume matching only
-[WARN] R5: kappa limited to trace/volume matching: CONSTRAINED
+[INFO] R5: kappa limited to trace/volume matching: CONSTRAINED
 Risk: Kappa becomes second scalar gravity field.
 Missing: P_recombination role of kappa.
 
@@ -92,7 +94,7 @@ Component: scalar part of recombined geometry
 Allowed source: A-sector mass response plus constrained kappa trace correction
 Forbidden source: same rho response counted in both A and kappa
 Candidate form: rho -> A; trace -> kappa_min; no duplicate scalar mass channel
-[WARN] R6: scalar response counted once: REQUIRED
+[INFO] R6: scalar response counted once: REQUIRED
 Risk: Scalar double-counting.
 Missing: Explicit scalar accounting rule in recombination map.
 
@@ -103,7 +105,7 @@ Component: exterior recombined geometry
 Allowed source: A_ext and B=1/A with kappa_ext=0
 Forbidden source: recombination reintroduces exterior trace/scalar field
 Candidate form: outside ordinary matter: kappa=0, A=1-2GM/(c^2r), B=1/A
-[WARN] R7: exterior Schwarzschild preservation: REQUIRED
+[INFO] R7: exterior Schwarzschild preservation: REQUIRED
 Risk: Exterior scalar deviation introduced by recombination.
 Missing: P_recombination proof.
 
@@ -114,7 +116,7 @@ Component: radiative content
 Allowed source: h_TT only as ordinary long-range radiation
 Forbidden source: A_rad, Box kappa, free vector radiation
 Candidate form: ordinary radiation projector selects h_ij^TT only
-[WARN] R8: scalar radiation excluded after recombination: CONSTRAINED
+[INFO] R8: scalar radiation excluded after recombination: CONSTRAINED
 Risk: Hidden breathing mode after metric assembly.
 Missing: Parent radiation projector.
 
@@ -125,7 +127,7 @@ Component: near-boundary geometry
 Allowed source: kappa/joint-minimum smoothing with fixed M_ext
 Forbidden source: boundary smoothing changes exterior 1/r coefficient
 Candidate form: near-boundary adjustments preserve A_ext coefficient
-[WARN] R9: boundary smoothing remains local/diagnostic: CONSTRAINED
+[INFO] R9: boundary smoothing remains local/diagnostic: CONSTRAINED
 Risk: Boundary mass tuning / overclaimed prediction.
 Missing: Boundary mass theorem and observable map.
 
@@ -136,7 +138,7 @@ Component: observable coefficients
 Allowed source: parent action/stiffness only
 Forbidden source: GR coefficient insertion as derivation
 Candidate form: alpha_W/K_c, beta_W, C_T, K_T remain UNKNOWN/MATCHED until derived
-[FAIL] R10: coefficient map remains labeled: MISSING
+[INFO] R10: coefficient map remains labeled: MISSING
 Risk: Silent GR import.
 Missing: P_coeff / action stiffness derivation.
 
@@ -155,7 +157,9 @@ Case 2: Compact recombination ledger
 | R8: scalar radiation excluded after recombination | radiative content | ordinary radiation projector selects h_ij^TT only | CONSTRAINED | Parent radiation projector. |
 | R9: boundary smoothing remains local/diagnostic | near-boundary geometry | near-boundary adjustments preserve A_ext coefficient | CONSTRAINED | Boundary mass theorem and observable map. |
 | R10: coefficient map remains labeled | observable coefficients | alpha_W/K_c, beta_W, C_T, K_T remain UNKNOWN/MATCHED until derived | MISSING | P_coeff / action stiffness derivation. |
-[WARN] compact recombination ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact recombination ledger produced -- 10 recombination pieces recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -170,7 +174,9 @@ Interpretation:
   Exterior scalar pieces are reduced-derived.
   Vector/tensor/kappa recombination is structural or constrained.
   Coefficient mapping remains missing.
-[WARN] recombination status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] recombination status count produced -- {'DERIVED_REDUCED': 2, 'STRUCTURAL': 2, 'CONSTRAINED': 3, 'REQUIRED': 2, 'MISSING': 1}
 
 ========================================================================================================================
 Case 4: Candidate reduced recombination map
@@ -192,7 +198,9 @@ with constraints:
   delta M_ext|kappa_relaxation = 0
 
 This is a reduced map, not a covariant derivation.
-[WARN] candidate reduced recombination map stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] candidate reduced recombination map stated -- covariant derivation remains open
 
 ========================================================================================================================
 Case 5: No-double-counting checks
@@ -209,7 +217,9 @@ Recombination checks:
 8. Does exterior kappa=0 preserve B=1/A?
 9. Is scalar spatial response counted exactly once?
 10. Is near-boundary deviation still diagnostic-only?
-[WARN] recombination no-double-counting checks stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] recombination no-double-counting checks stated -- all 10 checks are requirements
 
 ========================================================================================================================
 Case 5b: VacuumForge recombination cross-check
@@ -218,7 +228,9 @@ A_value = -2*G*M/(c**2*r) + 1
 B_value = 1/(-2*G*M/(c**2*r) + 1)
 A_value * B_value = 1
 ConcreteMetricCheck status = satisfied_by_construction
-[PASS] recombination ledger preserves reciprocal exterior metric condition: DERIVED_REDUCED
+
+[derived_results]
+[PASS] recombination ledger preserves reciprocal exterior metric condition -- A*B = 1; check = satisfied_by_construction
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -233,7 +245,9 @@ Recombination fails if:
 6. Boundary smoothing changes the exterior 1/r coefficient.
 7. Scalar radiation appears as A_rad or Box kappa.
 8. Coefficients are matched but claimed derived.
-[WARN] recombination failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] recombination failure controls stated -- failure controls policy-guarded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -255,7 +269,9 @@ Recommended next script:
 
 Reason:
   Recombination can be constrained, but relaxation energy remains explicitly missing.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[DEFER] next test selected -- relaxation energy accounting script is the next gate
 
 ========================================================================================================================
 Final interpretation

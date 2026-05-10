@@ -27,7 +27,9 @@ Discipline:
   no scalar trace leakage
   no Bianchi-like decoration
   no recovery tuning
-[WARN] parent correction tensor role inventory problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] parent correction tensor role inventory problem posed -- role inventory required before any correction tensor is used
 
 ========================================================================================================================
 Case 1: Parent correction tensor role inventory
@@ -40,7 +42,9 @@ Role candidate: H_curv and H_exch are possible correction tensors only if source
 Role: core Group 19 target
 Allowed if: correction tensor language remains requirements-level until objects are defined
 Forbidden if: H_curv/H_exch are inserted to make parent equation close
-[WARN] CT1: parent correction tensor audit target: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] CT1: parent correction tensor audit target -- THEOREM_TARGET
 Missing: actual correction tensor definitions
 Consequence: decides whether correction-tensor language can become technical
 
@@ -51,7 +55,9 @@ Role candidate: H_curv as curvature / finite-admissibility correction tensor can
 Role: curvature correction theorem target
 Allowed if: A_curv/J_curv/source structure is real and ordinary-sector neutrality holds
 Forbidden if: H_curv is anti-singularity patch, e_curv reservoir, or regular-core tuning
-[WARN] CT2: H_curv role: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] CT2: H_curv role -- THEOREM_TARGET
 Missing: A_curv dynamics, J_curv, source side, divergence behavior
 Consequence: keeps curvature correction from hardening before curvature objects are real
 
@@ -62,7 +68,9 @@ Role candidate: H_exch as vacuum exchange / current / source-relaxation correcti
 Role: exchange correction theorem target
 Allowed if: J_V/J_exch and Sigma/R operators are real and matter decoupling holds
 Forbidden if: H_exch is exchange-continuity paint or Sigma/R tuning tensor
-[WARN] CT3: H_exch role: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] CT3: H_exch role -- THEOREM_TARGET
 Missing: J_V/J_exch, Sigma/R, source side, divergence behavior
 Consequence: keeps exchange correction from patching missing current/source law
 
@@ -73,7 +81,9 @@ Role candidate: H_metric_insert as B_s/F_zeta insertion or no-overlap correction
 Role: metric insertion correction candidate
 Allowed if: B_s/F_zeta and O no-overlap are derived
 Forbidden if: tensor restores residual scalar trace or copies GR spatial metric
-[WARN] CT4: H_metric_insert role: RISK
+
+[governance_assessments]
+[INFO] CT4: H_metric_insert role -- RISK
 Missing: B_s/F_zeta insertion law and O no-overlap operator
 Consequence: dangerous because it may reopen Group 16 bottlenecks
 
@@ -84,7 +94,9 @@ Role candidate: H_residual as residual-kill / non-metric residual correction can
 Role: residual bookkeeping candidate
 Allowed if: residual role is non-metric or no-overlap operator is real
 Forbidden if: H_residual restores killed zeta/kappa metric trace
-[WARN] CT5: H_residual role: RISK
+
+[governance_assessments]
+[INFO] CT5: H_residual role -- RISK
 Missing: residual-kill derivation or O
 Consequence: dangerous because residual can become hidden scalar metric trace
 
@@ -95,7 +107,9 @@ Role candidate: H_dark as dark-sector correction candidate
 Role: optional deferred branch
 Allowed if: dark source separation is derived and ordinary sector remains neutral
 Forbidden if: dark correction patches ordinary current/source failure
-[WARN] CT6: H_dark role: DEFER
+
+[governance_assessments]
+[DEFER] CT6: H_dark role -- DEFER
 Missing: dark-sector source/coupling theorem
 Consequence: preserves no-dark-patch result from Group 18
 
@@ -106,7 +120,9 @@ Role candidate: H-like object used only as diagnostic audit, not inserted into f
 Role: safe fallback
 Allowed if: explicitly marked diagnostic-only
 Forbidden if: diagnostic tensor becomes parent equation term
-[WARN] CT7: diagnostic tensor audit role: SAFE_IF
+
+[governance_assessments]
+[INFO] CT7: diagnostic tensor audit role -- SAFE_IF
 Missing: none if kept diagnostic
 Consequence: allows audits without premature field-equation insertion
 
@@ -117,7 +133,9 @@ Role candidate: correction tensor whose divergence vanishes by mathematical iden
 Role: possible divergence-safe tensor class
 Allowed if: identity is real and tensor source origin is not repair
 Forbidden if: divergence-free is asserted by Bianchi-like language
-[WARN] CT8: identically divergence-free candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] CT8: identically divergence-free candidate -- CANDIDATE
 Missing: actual tensor identity
 Consequence: possible safe class if constructed, not named
 
@@ -128,7 +146,9 @@ Role candidate: correction tensor divergence balances an independently defined s
 Role: possible source-balance tensor class
 Allowed if: source side exists before tensor is introduced
 Forbidden if: source and tensor define each other decoratively
-[WARN] CT9: source-balanced divergence candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] CT9: source-balanced divergence candidate -- CANDIDATE
 Missing: source side and divergence relation
 Consequence: possible class if source partner is real
 
@@ -139,7 +159,9 @@ Role candidate: correction tensor lives in a defined projector subspace
 Role: possible projection-safe tensor class
 Allowed if: projector and target sector are independently defined
 Forbidden if: projection is invented to hide overlap or leakage
-[WARN] CT10: projected correction candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] CT10: projected correction candidate -- CANDIDATE
 Missing: projector and sector split
 Consequence: possible route to no-double-counting if projectors are real
 
@@ -150,7 +172,9 @@ Role candidate: correction tensor preserves scalar/vector/tensor constraints
 Role: possible consistency tensor class
 Allowed if: constraint propagation is derived and not recovery-tuned
 Forbidden if: constraint preservation is asserted without propagation identity
-[WARN] CT11: constraint-preserving candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] CT11: constraint-preserving candidate -- CANDIDATE
 Missing: constraint propagation identity
 Consequence: possible route to parent compatibility if proven
 
@@ -161,7 +185,9 @@ Role candidate: correction tensor supported near boundary/interface
 Role: high-risk boundary tensor class
 Allowed if: support is structural and boundary-neutral
 Forbidden if: tensor repairs boundary leakage, shell source, scalar tail, or M_ext shift
-[WARN] CT12: boundary-supported candidate: RISK
+
+[governance_assessments]
+[INFO] CT12: boundary-supported candidate -- RISK
 Missing: support law and boundary neutrality theorem
 Consequence: dangerous because boundary repair is a recurring failure mode
 
@@ -172,7 +198,9 @@ Role candidate: correction tensor does not reroute ordinary T_mu_nu or double-co
 Role: source separation guard
 Allowed if: ordinary matter stays in established source routing
 Forbidden if: H_curv/H_exch hides ordinary matter in correction side
-[WARN] CT13: ordinary matter separation requirement: REQUIRED
+
+[governance_assessments]
+[INFO] CT13: ordinary matter separation requirement -- REQUIRED
 Missing: source separation theorem
 Consequence: protects A-sector and ordinary matter coupling
 
@@ -183,7 +211,9 @@ Role candidate: correction tensor does not shift M_ext independently of A-sector
 Role: mass neutrality guard
 Allowed if: mass effect is derived through established source law
 Forbidden if: H_curv/H_exch changes measured exterior mass
-[WARN] CT14: exterior mass neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] CT14: exterior mass neutrality requirement -- REQUIRED
 Missing: mass neutrality theorem
 Consequence: protects strongest reduced A-sector result
 
@@ -194,7 +224,9 @@ Role candidate: correction tensor does not leak B_s/zeta/kappa scalar charge
 Role: metric scalar guard
 Allowed if: scalar trace routing and no-overlap remain closed
 Forbidden if: H restores killed residual or creates far-zone scalar charge
-[WARN] CT15: scalar trace neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] CT15: scalar trace neutrality requirement -- REQUIRED
 Missing: scalar trace neutrality theorem
 Consequence: preserves metric insertion / no-overlap guardrails
 
@@ -205,7 +237,9 @@ Role candidate: correction tensor coefficients have ontology-native or action/st
 Role: coefficient tuning guard
 Allowed if: coefficients are derived before recovery checks
 Forbidden if: coefficients are chosen for gamma_like, AB, exterior matching, or regular core
-[WARN] CT16: coefficient origin requirement: REQUIRED
+
+[governance_assessments]
+[INFO] CT16: coefficient origin requirement -- REQUIRED
 Missing: coefficient origin
 Consequence: prevents recovery-tuned correction tensor
 
@@ -216,7 +250,9 @@ Role candidate: correction tensor added to cancel singularity, boundary leakage,
 Role: forbidden repair tensor
 Allowed if: never as mechanism
 Forbidden if: accepted as correction tensor
-[WARN] CT17: H_repair rejection: REJECTED
+
+[governance_assessments]
+[FAIL] CT17: H_repair rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents tensor patchwork
 
@@ -227,7 +263,9 @@ Role candidate: correction tensor chosen to pass gamma_like, AB, Schwarzschild e
 Role: forbidden recovery-smuggling tensor
 Allowed if: never as construction mechanism
 Forbidden if: accepted as tensor origin
-[WARN] CT18: H_recovery rejection: REJECTED
+
+[governance_assessments]
+[FAIL] CT18: H_recovery rejection -- REJECTED
 Missing: not pursued
 Consequence: keeps recovery downstream
 
@@ -238,7 +276,9 @@ Role candidate: correction tensor declared divergence-safe by Bianchi-like langu
 Role: forbidden decorative tensor
 Allowed if: never as result
 Forbidden if: accepted as parent compatibility
-[WARN] CT19: H_Bianchi_decorative rejection: REJECTED
+
+[governance_assessments]
+[FAIL] CT19: H_Bianchi_decorative rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents fake divergence safety
 
@@ -249,7 +289,9 @@ Role candidate: H_curv inserted to force bounce, regular core, or finite curvatu
 Role: forbidden anti-singularity tensor
 Allowed if: never without equations, solutions, and neutrality
 Forbidden if: accepted as curvature correction
-[WARN] CT20: H_curv anti-singularity patch rejection: REJECTED
+
+[governance_assessments]
+[FAIL] CT20: H_curv anti-singularity patch rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves Group 17 claim limits
 
@@ -260,7 +302,9 @@ Role candidate: H_exch inserted to make exchange continuity true despite undefin
 Role: forbidden exchange paint tensor
 Allowed if: never as mechanism
 Forbidden if: accepted as exchange correction
-[WARN] CT21: H_exch exchange-continuity patch rejection: REJECTED
+
+[governance_assessments]
+[FAIL] CT21: H_exch exchange-continuity patch rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves Group 18 source/current limits
 
@@ -271,7 +315,9 @@ Role candidate: E_parent + H_curv + H_exch is written before correction tensors 
 Role: forbidden premature parent equation
 Allowed if: deferred
 Forbidden if: accepted as current field system
-[WARN] CT22: parent equation insertion rejection: REJECTED
+
+[governance_assessments]
+[FAIL] CT22: parent equation insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents final parent equation overclaim
 
@@ -282,7 +328,9 @@ Role candidate: H_curv/H_exch cannot be made source-separated, divergence-safe, 
 Role: branch failure condition
 Allowed if: used to keep correction tensors deferred or diagnostic-only
 Forbidden if: patched with decorative identities
-[FAIL] CT23: correction tensor failure: BRANCH_KILLED
+
+[governance_assessments]
+[FAIL] CT23: correction tensor failure -- BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: correction tensors cannot be inserted
 
@@ -293,7 +341,9 @@ Role candidate: after role inventory, audit H_curv definition requirements
 Role: next local bottleneck
 Allowed if: H_curv remains theorem target
 Forbidden if: jumping to divergence-safety before H_curv burden is stated
-[PASS] CT24: recommended next move: RECOMMENDED
+
+[governance_assessments]
+[PASS] CT24: recommended next move -- RECOMMENDED
 Missing: H_curv requirements audit
 Consequence: next script should be candidate_H_curv_definition_requirements.py
 
@@ -326,7 +376,9 @@ Case 2: Compact correction tensor role ledger
 | CT22: parent equation insertion rejection | E_parent + H_curv + H_exch is written before correction tensors are defined | REJECTED | prevents final parent equation overclaim |
 | CT23: correction tensor failure | H_curv/H_exch cannot be made source-separated, divergence-safe, and boundary-neutral | BRANCH_KILLED | correction tensors cannot be inserted |
 | CT24: recommended next move | after role inventory, audit H_curv definition requirements | RECOMMENDED | next script should be candidate_H_curv_definition_requirements.py |
-[WARN] compact correction tensor role ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact correction tensor role ledger produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -350,7 +402,9 @@ Interpretation:
   Identically divergence-free, source-balanced, projected, and constraint-preserving classes are candidates only if constructed.
   Repair, recovery, Bianchi-decoration, anti-singularity patch, exchange-continuity patch, and premature parent insertion are rejected.
   Next gate is H_curv definition requirements.
-[WARN] correction tensor role status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] correction tensor role status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Correction tensor role classes
@@ -376,7 +430,9 @@ Rejected role classes:
 4. anti-singularity patch tensor
 5. exchange-continuity patch tensor
 6. premature parent-equation insertion
-[PASS] correction tensor role classes listed: RECOMMENDED
+
+[governance_assessments]
+[PASS] correction tensor role classes listed -- RECOMMENDED
 
 ========================================================================================================================
 Case 5: Correction tensor role decision tree
@@ -403,7 +459,9 @@ Decision tree:
 
 7. Parent equation insertion appears:
    rejected as premature.
-[PASS] correction tensor role decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] correction tensor role decision tree stated -- RECOMMENDED
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -421,7 +479,9 @@ Consequence:
 Bad failure:
 
   insert H_curv/H_exch because parent closure needs them.
-[WARN] correction tensor role good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] correction tensor role good failure stated -- DEFERRED_PENDING_PREREQUISITES
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -440,7 +500,9 @@ Correction tensor role inventory fails if:
 10. H is recovery-tuned
 11. H is called divergence-safe by Bianchi-like language
 12. parent equation is written prematurely
-[WARN] correction tensor role failure controls stated: RISK
+
+[governance_assessments]
+[WARN] correction tensor role failure controls stated -- RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -463,7 +525,9 @@ Recommended next script:
 Reason:
   H_curv is the first correction tensor to fence because curvature/admissibility language
   is especially prone to anti-singularity overclaim.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -492,4 +556,6 @@ Rejected:
 Best next script:
 
   candidate_H_curv_definition_requirements.py
-[PASS] parent correction tensor role inventory complete: CLOSED
+
+[governance_assessments]
+[PASS] parent correction tensor role inventory complete -- CLOSED

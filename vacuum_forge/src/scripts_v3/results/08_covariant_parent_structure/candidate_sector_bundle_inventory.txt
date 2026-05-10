@@ -22,7 +22,6 @@ Current sectors:
   h_ij^TT      -> tensor/radiative response
 
 This script inventories the bundle and records open requirements.
-[PASS] sector bundle inventory problem posed
 
 ========================================================================================================================
 Case 1: Current sector table
@@ -34,8 +33,6 @@ Case 1: Current sector table
 | trace/interior | kappa | pressure/stress/trace candidate | response/relaxation | volume/trace imbalance | suppressed exterior |
 | vector current | W_i | mass current / angular momentum | vector constraint/evolution TBD | g_ti / shift | frame dragging, not ordinary wave yet |
 | tensor radiation | h_ij^TT | trace-free quadrupole derivatives | hyperbolic wave | spatial TT metric | active radiation |
-
-[PASS] sector table stated
 
 ========================================================================================================================
 Case 2: A_constraint static scalar sector
@@ -52,7 +49,6 @@ Role:
 Parent requirement:
   explain why A_constraint is elliptic/constraint-like, not an
   unsuppressed long-range scalar radiation mode.
-[PASS] A_constraint supports static exterior gravity
 
 ========================================================================================================================
 Case 3: A_rad controlled scalar radiative hazard
@@ -66,7 +62,6 @@ This propagates when omega^2 = c^2 k^2.
 Safety requirement:
   A_rad must be absent, projected out, damped/absorbed, massive,
   relaxed to minimum, weakly coupled, or observationally constrained.
-[PASS] A_rad is dangerous if unsuppressed
 
 ========================================================================================================================
 Case 4: Moving gravity well versus scalar gravity wave
@@ -89,7 +84,6 @@ Interpretation:
 
   A scalar wave has a dispersion relation and can carry a breathing
   polarization. That remains controlled/unsafe unless suppressed.
-[PASS] moving well distinguished from free scalar wave
 
 ========================================================================================================================
 Case 5: kappa trace/interior response sector
@@ -104,7 +98,6 @@ dE/dkappa = kappa*m_k**2
 
 Parent requirement:
   explain source of kappa inside matter and suppression/relaxation outside.
-[PASS] kappa sector classified as trace/interior response
 
 ========================================================================================================================
 Case 6: W_i vector/current sector
@@ -121,7 +114,6 @@ Metric location:
 
 Parent requirement:
   derive frame dragging and decide whether vector radiation exists or is constrained.
-[PASS] vector sector classified as current/frame-dragging response
 
 ========================================================================================================================
 Case 7: h_ij^TT tensor/radiation sector
@@ -139,7 +131,6 @@ Role:
 
 Parent requirement:
   derive TT wave equation, coupling, flux, and gauge constraints from parent structure.
-[PASS] tensor sector remains TT radiation channel
 
 ========================================================================================================================
 Case 8: Constraint/evolution split
@@ -151,8 +142,6 @@ Case 8: Constraint/evolution split
 | kappa | response / relaxation / sourced interior | exterior suppression |
 | W_i | constraint or slow vector response TBD | frame dragging |
 | h_ij^TT | evolution / hyperbolic | gravitational waves |
-
-[PASS] constraint/evolution split stated
 
 ========================================================================================================================
 Case 9: Covariant/geometric parent requirements
@@ -168,8 +157,6 @@ A successful parent structure must explain:
 7. What the gauge freedoms are.
 8. Which variables are physical versus coordinate shadows.
 9. How the reduced sectors recombine into metric/geometric structure.
-
-[PASS] parent requirements enumerated
 
 ========================================================================================================================
 Final interpretation
@@ -196,3 +183,24 @@ Possible next artifact:
 
 Possible next script:
   candidate_covariant_parent_requirements.py
+
+[derived_results]
+[PASS] A_constraint satisfies source-free Laplacian -- Delta A = 0 for A = 1 - 2GM/(c^2 r)
+[PASS] TT mode is trace-free -- trace(H_TT) = 0
+[PASS] TT mode is transverse -- k^i H_ij = 0 for TT mode
+
+[sample_results]
+[PASS] kappa energy gradient sample -- dE/dkappa = m_k^2 kappa for quadratic toy
+
+[governance_assessments]
+[PASS] moving well not scalar wave (policy) -- distinction recorded
+[PASS] sector bundle parent required (policy) -- parent structure is needed
+[DEFER] covariant parent from sector bundle route -- candidate route recorded; 6 obligations open
+
+[unresolved_obligations]
+[OBLIGATION] derive parent explanation for A_constraint elliptic -- open proof obligation recorded
+[OBLIGATION] derive parent explanation for A_rad suppression -- open proof obligation recorded
+[OBLIGATION] derive kappa source law -- open proof obligation recorded
+[OBLIGATION] derive W_i field equation -- open proof obligation recorded
+[OBLIGATION] derive gauge structure from parent -- open proof obligation recorded
+[OBLIGATION] derive conservation identities from parent -- open proof obligation recorded

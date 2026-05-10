@@ -22,7 +22,9 @@ Discipline:
   kappa cannot add a second exterior scalar charge
   boundary smoothing cannot tune measured gravity
   near-boundary diagnostics are not predictions yet
-[WARN] boundary mass preservation problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] boundary mass preservation problem posed -- boundary mass preservation theorem required
 
 ========================================================================================================================
 Case 1: Boundary requirement inventory
@@ -34,7 +36,7 @@ B1: exterior mass is A-sector flux
 Requirement: Exterior mass must be defined by the A-sector flux / exterior 1/r coefficient.
 Candidate form: A_ext = 1 - 2*G*M_ext/(c^2*r)
 Forbidden form: M_ext adjusted by kappa boundary smoothing
-[PASS] B1: exterior mass is A-sector flux: DERIVED_REDUCED
+[INFO] B1: exterior mass is A-sector flux: DERIVED_REDUCED
 Risk: Measured mass becomes tunable by interface choice.
 Missing: Parent flux-charge definition.
 
@@ -44,7 +46,7 @@ B2: kappa boundary relaxation preserves M_ext
 Requirement: Kappa relaxation may change local trace/volume matching but not exterior mass.
 Candidate form: delta M_ext|kappa_relaxation = 0
 Forbidden form: delta M_ext != 0 from smoothing or kappa interface adjustment
-[WARN] B2: kappa boundary relaxation preserves M_ext: REQUIRED
+[INFO] B2: kappa boundary relaxation preserves M_ext: REQUIRED
 Risk: Boundary smoothing tunes measured gravity.
 Missing: Boundary mass preservation theorem.
 
@@ -54,7 +56,7 @@ B3: exterior kappa charge vanishes
 Requirement: Kappa must not create an exterior 1/r scalar tail.
 Candidate form: Q_kappa = integral S_kappa d^3x = 0
 Forbidden form: kappa_ext ~ q_kappa/r
-[WARN] B3: exterior kappa charge vanishes: CONSTRAINED
+[INFO] B3: exterior kappa charge vanishes: CONSTRAINED
 Risk: Second exterior scalar charge.
 Missing: Projection or boundary cancellation identity.
 
@@ -64,7 +66,7 @@ B4: exterior kappa flux vanishes
 Requirement: No kappa flux may cross into exterior vacuum as scalar charge.
 Candidate form: F_kappa(R+) = 4*pi*R^2*kappa_prime(R+) = 0
 Forbidden form: F_kappa(R+) != 0
-[WARN] B4: exterior kappa flux vanishes: CONSTRAINED
+[INFO] B4: exterior kappa flux vanishes: CONSTRAINED
 Risk: Exterior kappa tail and scalar double-counting.
 Missing: Interface law enforcing zero flux.
 
@@ -74,7 +76,7 @@ B5: exterior vacuum fixed point
 Requirement: Outside ordinary matter, kappa_min=0 and kappa relaxes to zero.
 Candidate form: S_trace_effective=0 -> kappa_min=0 -> kappa -> 0
 Forbidden form: nonzero exterior kappa attractor
-[WARN] B5: exterior vacuum fixed point: CONSTRAINED
+[INFO] B5: exterior vacuum fixed point: CONSTRAINED
 Risk: Persistent exterior scalar state.
 Missing: Exterior vacuum relaxation proof.
 
@@ -84,7 +86,7 @@ B6: A flux and kappa flux are independent charges
 Requirement: Kappa interface conditions must not modify the A-sector Gauss/flux charge.
 Candidate form: delta integral grad A dot dS | kappa = 0
 Forbidden form: kappa boundary condition changes integral grad A dot dS
-[WARN] B6: A flux and kappa flux are independent charges: REQUIRED
+[INFO] B6: A flux and kappa flux are independent charges: REQUIRED
 Risk: Scalar mass double-counting through boundary coupling.
 Missing: Parent separation of A flux and kappa boundary condition.
 
@@ -94,7 +96,7 @@ B7: joint-minimum smoothing is diagnostic only
 Requirement: Near-boundary smoothing may be modeled, but cannot be used to claim mass change.
 Candidate form: f_joint diagnostics with fixed exterior M_ext
 Forbidden form: joint-minimum fit changes exterior mass coefficient
-[WARN] B7: joint-minimum smoothing is diagnostic only: CONSTRAINED
+[INFO] B7: joint-minimum smoothing is diagnostic only: CONSTRAINED
 Risk: Near-boundary deviation overclaim or mass retuning.
 Missing: Weights, sigma, recombination, observable map.
 
@@ -104,7 +106,7 @@ B8: source compactness condition
 Requirement: Kappa relaxation support must be compact or compensated for ordinary isolated bodies.
 Candidate form: support(S_kappa_eff) compact and/or integral S_kappa_eff d^3x = 0
 Forbidden form: uncompensated trace source leaking into exterior
-[WARN] B8: source compactness condition: STRUCTURAL
+[INFO] B8: source compactness condition: STRUCTURAL
 Risk: Long-range kappa scalar field.
 Missing: Definition of S_kappa_eff and compensation law.
 
@@ -114,7 +116,7 @@ B9: recombination preserves exterior Schwarzschild
 Requirement: Metric recombination must preserve exterior A/B result when kappa=0.
 Candidate form: kappa_ext=0 -> recombination gives exterior Schwarzschild reduced form
 Forbidden form: recombination reintroduces scalar trace outside
-[WARN] B9: recombination preserves exterior Schwarzschild: REQUIRED
+[INFO] B9: recombination preserves exterior Schwarzschild: REQUIRED
 Risk: Silent GR import or scalar double-counting.
 Missing: P_recombination identity.
 
@@ -124,7 +126,7 @@ B10: relaxation energy does not alter M_ext by disappearance
 Requirement: Energy moved by Gamma_relax must be accounted without changing exterior mass incorrectly.
 Candidate form: Delta E_relax -> Delta E_vac_config with total exterior charge preserved
 Forbidden form: energy damping changes mass without source accounting
-[FAIL] B10: relaxation energy does not alter M_ext by disappearance: MISSING
+[INFO] B10: relaxation energy does not alter M_ext by disappearance: MISSING
 Risk: Energy nonconservation or hidden mass tuning.
 Missing: Vacuum configuration energy balance.
 
@@ -143,7 +145,9 @@ Case 2: Compact boundary ledger
 | B8: source compactness condition | support(S_kappa_eff) compact and/or integral S_kappa_eff d^3x = 0 | uncompensated trace source leaking into exterior | STRUCTURAL | Definition of S_kappa_eff and compensation law. |
 | B9: recombination preserves exterior Schwarzschild | kappa_ext=0 -> recombination gives exterior Schwarzschild reduced form | recombination reintroduces scalar trace outside | REQUIRED | P_recombination identity. |
 | B10: relaxation energy does not alter M_ext by disappearance | Delta E_relax -> Delta E_vac_config with total exterior charge preserved | energy damping changes mass without source accounting | MISSING | Vacuum configuration energy balance. |
-[WARN] compact boundary ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact boundary ledger produced -- 10 boundary requirements recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -158,7 +162,9 @@ Interpretation:
   Exterior A mass is reduced-derived.
   Boundary preservation is required but not proven.
   Relaxation energy accounting remains missing.
-[WARN] boundary status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] boundary status count produced -- {'DERIVED_REDUCED': 1, 'REQUIRED': 3, 'CONSTRAINED': 4, 'STRUCTURAL': 1, 'MISSING': 1}
 
 ========================================================================================================================
 Case 4: Candidate boundary identity
@@ -180,7 +186,9 @@ Equivalent reduced reading:
   but it cannot change the coefficient of 1/r in A_ext.
 
 This is currently a requirement, not a theorem.
-[WARN] candidate boundary identity stated: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] candidate boundary identity stated -- boundary mass preservation theorem not yet proved
 
 ========================================================================================================================
 Case 5: Failure controls
@@ -194,7 +202,9 @@ Boundary mass preservation fails if:
 5. A flux and kappa flux mix without parent identity.
 6. Near-boundary diagnostics are advertised as measured predictions.
 7. Relaxation energy disappears or changes exterior mass without accounting.
-[WARN] boundary failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] boundary failure controls stated -- failure controls policy-guarded
 
 ========================================================================================================================
 Case 6: Next tests
@@ -216,7 +226,9 @@ Recommended next script:
 
 Reason:
   Boundary mass is protected by requirements; now recombination must avoid reintroducing scalar double-counting.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[DEFER] next test selected -- recombination script is the next gate
 
 ========================================================================================================================
 Final interpretation

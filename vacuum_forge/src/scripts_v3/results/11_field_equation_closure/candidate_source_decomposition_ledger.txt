@@ -23,7 +23,9 @@ Discipline:
   trace/pressure -> kappa_min, not scalar radiation
   TT stress/quadrupole -> h_ij^TT
   A_rad ordinary long-range scalar radiation -> rejected
-[WARN] source decomposition problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] source decomposition problem posed -- structural constraint
 
 ========================================================================================================================
 Case 1: Source inventory
@@ -166,7 +168,9 @@ Case 2: Compact source ledger
 | A_rad source | none as ordinary long-range scalar radiation | forbidden unless separately derived, massive, constrained, or non-propagating | scalar radiation hazard | REJECTED |
 | Sigma_creation | special active-regime nonconservative source if separately invoked | must not enter ordinary closed gravity field equations by default | active regimes | RISK |
 | Gamma_relax | relaxation toward vacuum minimum / kappa non-inertial equilibration | must not destroy energy or damp A-sector mass field | kappa / vacuum balance | STRUCTURAL |
-[WARN] compact source ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact source ledger produced -- inventory marker
 
 ========================================================================================================================
 Case 3: Status counts
@@ -176,7 +180,9 @@ DERIVED_REDUCED: 3
 REJECTED: 1
 RISK: 1
 STRUCTURAL: 5
-[WARN] source status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] source status count produced -- inventory marker
 
 ========================================================================================================================
 Case 4: Key no-double-counting rules
@@ -190,7 +196,9 @@ Rules:
 5. TT stress sources h_ij^TT; trace stress does not source TT radiation.
 6. A_rad is not an ordinary active sector.
 7. relaxation may transfer imbalance into vacuum configuration, but must not erase A.
-[WARN] key source rules stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] key source rules stated -- structural constraint
 
 ========================================================================================================================
 Case 5: Source role hierarchy
@@ -204,7 +212,9 @@ Hierarchy:
   scalar radiative residue -> rejected or non-propagating
 
 This hierarchy keeps each source from doing too many jobs.
-[WARN] source hierarchy stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] source hierarchy stated -- structural constraint
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -219,7 +229,9 @@ Source decomposition fails if:
 6. Sigma_creation enters ordinary gravity closure without active-regime conditions.
 7. Gamma_relax hides energy nonconservation.
 8. source decomposition is chosen to imitate GR rather than forced by ontology.
-[WARN] source decomposition failure controls stated: RISK
+
+[governance_assessments]
+[WARN] source decomposition failure controls stated -- open risk
 
 ========================================================================================================================
 Case 7: Next tests
@@ -241,7 +253,9 @@ Recommended next script:
 
 Reason:
   The ledger identifies forbidden overlaps; the next check should formalize them.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

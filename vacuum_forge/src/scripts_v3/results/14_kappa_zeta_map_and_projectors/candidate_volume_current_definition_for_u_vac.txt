@@ -24,7 +24,9 @@ Discipline:
   protect static-source neutrality
   preserve boundary neutrality and no-overlap
   close Group 14 if J_V remains unnamed
-[WARN] volume current definition problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] volume current definition problem posed -- requires real J_V flux law, not decoration
 
 ========================================================================================================================
 Case 1: Volume current definition inventory
@@ -37,7 +39,7 @@ Current: J_V^mu is a real vacuum-volume flux current; u_vac^mu = J_V^mu / sqrt(-
 Role: core definition target for vacuum rest frame
 Allowed if: J_V is defined before recovery checks and is timelike where used
 Forbidden if: J_V is named only to create u_vac
-[WARN] JV1: volume-current theorem target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: explicit J_V^mu
 Consequence: decides whether u_vac can be defined
 
@@ -48,7 +50,7 @@ Current: J_V^mu = beta_z nabla^mu zeta
 Role: simplest scalar-derived current candidate
 Allowed if: nabla zeta is timelike and beta_z has prior origin
 Forbidden if: used in static/equilibrium regions where gradient is not a time-flow
-[WARN] JV2: zeta-gradient current: RISK
+Status: RISK
 Missing: causal character of nabla zeta and beta_z origin
 Consequence: likely insufficient as general vacuum rest frame
 
@@ -59,7 +61,7 @@ Current: nabla_mu J_V^mu = Sigma_V - R_V
 Role: volume-balance candidate current
 Allowed if: Sigma_V and R_V are defined independently
 Forbidden if: continuity equation is written with unnamed terms
-[WARN] JV3: exchange continuity current: CANDIDATE
+Status: CANDIDATE
 Missing: Sigma_V, R_V, and boundary conditions
 Consequence: strongest route if volume exchange supplies conservation/balance law
 
@@ -70,7 +72,7 @@ Current: J_V^mu sourced by Sigma_V ~ chi rho a^nu nabla_nu A
 Role: ties volume current to acceleration-gradient source law
 Allowed if: source creates divergence of J_V, not arbitrary direction
 Forbidden if: J_V direction is chosen after defining source scalar
-[WARN] JV4: source-driven current: CANDIDATE
+Status: CANDIDATE
 Missing: flux direction law and chi origin
 Consequence: needs more than scalar source; requires transport/flux law
 
@@ -81,7 +83,7 @@ Current: u_vac is rest frame where spatial J_V vanishes locally
 Role: defines vacuum rest frame once J_V exists
 Allowed if: J_V exists and is timelike/nonzero
 Forbidden if: zero-flux frame is coordinate rest frame without current
-[WARN] JV5: equilibrium zero-flux current: SAFE_IF
+Status: SAFE_IF
 Missing: J_V itself
 Consequence: useful rest-frame definition but not a current origin
 
@@ -92,7 +94,7 @@ Current: J_V^mu = n_V u_vac^mu
 Role: circular definition warning
 Allowed if: u_vac already defined elsewhere
 Forbidden if: used to define u_vac
-[WARN] JV6: density-times-frame circularity: REJECTED
+Status: REJECTED
 Missing: not pursued as definition
 Consequence: cannot define the clock using the clock
 
@@ -103,7 +105,7 @@ Current: J_V is declared as vacuum volume current without flux law
 Role: rejected shortcut
 Allowed if: never as derivation
 Forbidden if: used to keep u_vac branch alive
-[WARN] JV7: decorative current failure: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: triggers Group 14 closure if no current is written
 
@@ -114,7 +116,7 @@ Current: J_V^2 < 0 and J_V != 0 in regimes where u_vac is used
 Role: mathematical viability condition for normalized u_vac
 Allowed if: proved or domain-limited
 Forbidden if: normalization used where J_V is null/spacelike/zero
-[WARN] JV8: timelike/nonzero requirement: REQUIRED
+Status: REQUIRED
 Missing: domain theorem for J_V
 Consequence: prevents invalid frame definition
 
@@ -125,7 +127,7 @@ Current: static equilibrium sources do not produce independent exterior J_V/zeta
 Role: ordinary-sector safety condition
 Allowed if: static flux is zero or boundary-neutral
 Forbidden if: static mass creates scalar volume flux/charge
-[WARN] JV9: static-source neutrality: REQUIRED
+Status: REQUIRED
 Missing: static neutrality theorem
 Consequence: kills current definitions that create scalar gravity
 
@@ -136,7 +138,7 @@ Current: orientation of J_V fixes creation/destruction sign
 Role: resolves volume-source sign ambiguity
 Allowed if: orientation follows from exchange law
 Forbidden if: sign is chosen from gamma/AB recovery
-[FAIL] JV10: sign/orientation rule: UNRESOLVED
+Status: UNRESOLVED
 Missing: orientation convention
 Consequence: needed before numerical or recovery claims
 
@@ -147,7 +149,7 @@ Current: J_V-driven zeta is boundary-neutral and metric insertion occurs only th
 Role: protects exterior neutrality and count-once recombination
 Allowed if: boundary/no-overlap theorems are attached
 Forbidden if: J_V creates independent residual metric trace
-[WARN] JV11: boundary/no-overlap requirements: REQUIRED
+Status: REQUIRED
 Missing: boundary neutrality and no-overlap proof
 Consequence: even a real current fails if accounting fails
 
@@ -158,7 +160,7 @@ Current: if exchange continuity current cannot be specified, close Group 14
 Role: best current governance decision
 Allowed if: J_V remains undefined after this test
 Forbidden if: continuing ratio/frame relocation loops
-[PASS] JV12: recommended closure move: RECOMMENDED
+Status: RECOMMENDED
 Missing: closure summary if J_V remains undefined
 Consequence: next artifact should be Group 14 closure unless J_V becomes explicit
 
@@ -179,7 +181,9 @@ Case 2: Compact volume-current ledger
 | JV10: sign/orientation rule | orientation of J_V fixes creation/destruction sign | UNRESOLVED | needed before numerical or recovery claims |
 | JV11: boundary/no-overlap requirements | J_V-driven zeta is boundary-neutral and metric insertion occurs only through B_s | REQUIRED | even a real current fails if accounting fails |
 | JV12: recommended closure move | if exchange continuity current cannot be specified, close Group 14 | RECOMMENDED | next artifact should be Group 14 closure unless J_V becomes explicit |
-[WARN] compact volume-current ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact volume-current ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -199,7 +203,9 @@ Interpretation:
   exchange continuity current is the strongest candidate but needs Sigma_V and R_V.
   source-driven scalar Sigma_V alone does not determine flux direction.
   if no exchange/transport law is supplied, Group 14 should close.
-[WARN] volume-current status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] volume-current status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Volume-current decision tree
@@ -220,7 +226,9 @@ Decision tree:
 
 5. If no real J_V:
    close Group 14 with u_vac/J_V as bottleneck.
-[PASS] volume-current decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] volume-current decision tree stated -- candidates ranked
 
 ========================================================================================================================
 Case 5: Good failure / closure trigger
@@ -237,7 +245,9 @@ Consequence:
 
 Bad failure:
   declare J_V and keep going because the next equation needs a clock.
-[WARN] volume-current good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] volume-current good failure stated -- deferred: J_V/u_vac is surviving Group 14 bottleneck
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -253,7 +263,9 @@ Volume-current definition fails if:
 7. J_V creates residual metric trace outside B_s
 8. sign/orientation is chosen from recovery
 9. group continues without defining J_V
-[WARN] volume-current failure controls stated: RISK
+
+[governance_assessments]
+[INFO] volume-current failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -275,7 +287,9 @@ Recommended next script:
 
 Reason:
   J_V remains dependent on an exchange continuity law not yet available. Close Group 14 and promote J_V/u_vac to next-group bottleneck.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_group_14_closure_summary.py
 
 ========================================================================================================================
 Final interpretation

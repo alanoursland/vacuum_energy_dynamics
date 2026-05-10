@@ -25,7 +25,9 @@ Discipline:
   do not use boundary terms to hide overlap
   keep recovery downstream
   close subchain if no-overlap remains only a theorem target
-[WARN] no-overlap operator problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] no-overlap operator problem posed -- requires O derivation or residual-kill
 
 ========================================================================================================================
 Case 1: No-overlap operator inventory
@@ -38,7 +40,7 @@ Operator form: O[B_s, zeta_residual/kappa_residual, J_V] = 0
 Role: core count-once theorem for volume-current recombination
 Allowed if: O is derived or residual metric trace is killed
 Forbidden if: overlap is asserted without mechanism
-[WARN] NO1: no-overlap theorem target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: definition of O
 Consequence: decides whether volume current can recombine safely
 
@@ -49,7 +51,7 @@ Operator form: <B_s, zeta_residual/kappa_residual>_trace = 0
 Role: mathematical no-overlap candidate
 Allowed if: inner product / trace pairing is defined by theory
 Forbidden if: orthogonality is coordinate/gauge artifact
-[WARN] NO2: orthogonality condition: CANDIDATE
+Status: CANDIDATE
 Missing: trace pairing and domain
 Consequence: could express count-once if pairing is real
 
@@ -60,7 +62,7 @@ Operator form: P_comp zeta enters B_s, P_res zeta is non-metric or killed, P_com
 Role: projector-based no-overlap candidate
 Allowed if: projectors are explicit and not requirement bundles only
 Forbidden if: projectors are named to hide double-counting
-[WARN] NO3: projector split: CANDIDATE
+Status: CANDIDATE
 Missing: P_comp, P_res, and composition law
 Consequence: natural but risks reopening projector bundle problem
 
@@ -71,7 +73,7 @@ Operator form: zeta_residual_metric = 0 and kappa_residual_metric = 0 after B_s 
 Role: hard no-overlap branch
 Allowed if: residual becomes diagnostic/non-metric or belongs to P_relax only
 Forbidden if: residual trace remains metric-active
-[WARN] NO4: residual-kill rule: SAFE_IF
+Status: SAFE_IF
 Missing: residual-kill theorem and accounting update
 Consequence: simplest count-once route but demotes residual zeta/kappa
 
@@ -82,7 +84,7 @@ Operator form: metric scalar trace receives J_V-driven zeta only through B_s / A
 Role: recombination-rule candidate
 Allowed if: F_zeta-to-B_s map is explicit and residual metric insertion is forbidden
 Forbidden if: same zeta variation appears again as residual trace
-[WARN] NO5: metric insertion rule: CANDIDATE
+Status: CANDIDATE
 Missing: F_zeta/B_s insertion law
 Consequence: keeps volume current alive only as companion source
 
@@ -93,7 +95,7 @@ Operator form: epsilon_vac_config / e_kappa do not count the same scalar respons
 Role: prevents energy/accounting double-counting
 Allowed if: configuration energy is bookkeeping or enters once through recombination
 Forbidden if: energy terms are used as extra source reservoir
-[WARN] NO6: energy/accounting no-overlap: REQUIRED
+Status: REQUIRED
 Missing: energy recombination rule
 Consequence: protects against coefficient reservoir behavior
 
@@ -104,7 +106,7 @@ Operator form: kappa remains reduced diagnostic / non-metric residual unless sep
 Role: post-Group-14 kappa safety branch
 Allowed if: kappa does not restore killed zeta residual trace
 Forbidden if: kappa becomes substitute scalar metric trace
-[WARN] NO7: kappa diagnostic branch: REQUIRED
+Status: REQUIRED
 Missing: kappa cleanup theorem
 Consequence: prevents kappa from undoing residual kill
 
@@ -115,7 +117,7 @@ Operator form: Trace[g_ij^scalar] = Trace_A/B_s only, residual trace = 0
 Role: strong count-once branch
 Allowed if: B_s/A_spatial accounts for scalar spatial trace and residual is non-metric
 Forbidden if: residual trace is retained for metric corrections
-[WARN] NO8: B_s-only branch: CANDIDATE
+Status: CANDIDATE
 Missing: A_spatial/B_s derivation
 Consequence: may close zeta-residual metric branch
 
@@ -126,7 +128,7 @@ Operator form: Trace[g_ij^scalar] = Trace_B_s + Trace_residual_neutral with O=0
 Role: weaker count-once branch
 Allowed if: residual trace is orthogonal, boundary-neutral, and not A-sector mass
 Forbidden if: residual overlaps B_s or carries exterior charge
-[WARN] NO9: neutral residual branch: RISK
+Status: RISK
 Missing: orthogonality and boundary theorem
 Consequence: keeps residual alive but highest double-counting burden
 
@@ -137,7 +139,7 @@ Operator form: zeta/J_V changes B_s and also remains independent residual metric
 Role: rejected double-counting branch
 Allowed if: never in ordinary branch
 Forbidden if: accepted as recombination
-[WARN] NO10: forbidden overlap: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: kills branches where zeta is both companion and residual
 
@@ -148,7 +150,7 @@ Operator form: boundary terms hide overlap by moving residual trace into surface
 Role: failure mode
 Allowed if: only as diagnostic risk
 Forbidden if: used as no-overlap mechanism
-[WARN] NO11: boundary-coupled overlap risk: RISK
+Status: RISK
 Missing: surface accounting theorem
 Consequence: can disguise double-counting as boundary neutrality
 
@@ -159,7 +161,7 @@ Operator form: use diagnostic solve to measure overlap, not define O
 Role: diagnostic tool
 Allowed if: clearly non-ontological
 Forbidden if: diagnostic projection becomes physical operator
-[WARN] NO12: diagnostic elliptic overlap audit: SAFE_IF
+Status: SAFE_IF
 Missing: physical no-overlap mechanism
 Consequence: useful audit but cannot derive O
 
@@ -170,7 +172,7 @@ Operator form: gamma_like and AB checked only after O or residual-kill is fixed
 Role: ordinary-regime recovery target
 Allowed if: kept downstream
 Forbidden if: used to choose overlap split
-[WARN] NO13: recovery downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after safe recombination
 Consequence: keeps recovery from defining O
 
@@ -181,7 +183,7 @@ Operator form: O cannot be defined and residual trace cannot be killed/non-metri
 Role: branch failure condition
 Allowed if: used to close current subchain
 Forbidden if: patched by relabeling residuals
-[FAIL] NO14: no-overlap failure: BRANCH_KILLED
+Status: BRANCH_KILLED
 Missing: applies if no safe branch survives
 Consequence: J_V-driven zeta cannot enter ordinary metric sector
 
@@ -192,7 +194,7 @@ Operator form: if O remains theorem target, close current subchain with unresolv
 Role: best next bottleneck
 Allowed if: no explicit O is derived in this audit
 Forbidden if: continuing into field equations with unresolved double-counting
-[PASS] NO15: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: current-subchain status summary
 Consequence: next script should summarize Group 15 status unless O becomes explicit
 
@@ -216,7 +218,9 @@ Case 2: Compact no-overlap ledger
 | NO13: recovery downstream | gamma_like and AB checked only after O or residual-kill is fixed | RECOVERY_TARGET | keeps recovery from defining O |
 | NO14: no-overlap failure | O cannot be defined and residual trace cannot be killed/non-metric | BRANCH_KILLED | J_V-driven zeta cannot enter ordinary metric sector |
 | NO15: recommended next move | if O remains theorem target, close current subchain with unresolved no-overlap / J_V status | RECOMMENDED | next script should summarize Group 15 status unless O becomes explicit |
-[WARN] compact no-overlap ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact no-overlap ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -237,7 +241,9 @@ Interpretation:
   Neutral residual branch remains risky because it has the largest theorem burden.
   Kappa must not restore killed residual trace.
   If O is not made explicit, close the current subchain with no-overlap as unresolved bottleneck.
-[WARN] no-overlap status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] no-overlap status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: No-overlap decision tree
@@ -261,7 +267,9 @@ Decision tree:
 
 6. If overlap persists:
    J_V-driven zeta cannot enter ordinary metric sector.
-[PASS] no-overlap decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] no-overlap decision tree stated -- decision tree recorded
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -278,7 +286,9 @@ Consequence:
 
 Bad failure:
   rename overlap as orthogonality without defining the pairing.
-[WARN] no-overlap good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] no-overlap good failure stated -- deferred pending O derivation or residual-kill theorem
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -293,7 +303,9 @@ No-overlap operator fails if:
 6. energy/accounting counts same response twice
 7. diagnostic projection is promoted to physical O
 8. recovery checks choose overlap split
-[WARN] no-overlap failure controls stated: RISK
+
+[governance_assessments]
+[INFO] no-overlap failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -315,7 +327,9 @@ Recommended next script:
 
 Reason:
   If O remains a theorem target and no explicit operator is derived, the current subchain should close with no-overlap/J_V status rather than continue into field equations.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_group_15_current_subchain_status_summary.py
 
 ========================================================================================================================
 Final interpretation

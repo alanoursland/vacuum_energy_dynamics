@@ -178,3 +178,21 @@ Possible next artifact:
 
 Possible next script:
   candidate_constraint_vs_evolution_split.py
+
+[governance_assessments]
+[PASS] satisfied reduced: 2 -- strong reduced support for R1, R6
+[DEFER] partial: 6 -- R2, R3, R4, R5, R7, R9 have support but no parent derivation
+[FAIL] missing: 3 -- R8 gauge, R10 recombination, R11 conservation identities
+[FAIL] risk: 1 -- R12 GR overclaim risk
+[DEFER] covariant parent not yet established -- deferred pending R8, R10, R11
+
+[unresolved_obligations]
+[OBLIGATION] satisfy R2: No unsuppressed scalar radiation -- open proof obligation recorded
+[OBLIGATION] satisfy R3: Moving wells without scalar breathing waves -- open proof obligation recorded
+[OBLIGATION] satisfy R4: Kappa interior/trace response -- open proof obligation recorded
+[OBLIGATION] satisfy R5: Vector current/frame-dragging sector -- open proof obligation recorded
+[OBLIGATION] satisfy R7: Source coupling consistency -- open proof obligation recorded
+[OBLIGATION] satisfy R8: Gauge structure -- open proof obligation recorded
+[OBLIGATION] satisfy R9: Constraint/evolution split -- open proof obligation recorded
+[OBLIGATION] satisfy R10: Metric/geometric recombination -- open proof obligation recorded
+[OBLIGATION] satisfy R11: Conservation identities -- open proof obligation recorded

@@ -153,7 +153,22 @@ Do not use as physical observable yet:
 [WARN] safe comparison policy stated: GAUGE_AWARE — some diagnostics are safe only in reduced gauges
 
 ========================================================================================================================
-Case 6: Next study recommendation
+Case 6: Controlled failure case - A_rad used as observable without suppression flag
+========================================================================================================================
+Bad usage pattern (controlled failure):
+
+  If A_rad is treated as a physical observable without an explicit suppression flag,
+  the theory may compare a forbidden scalar breathing mode to observations.
+
+Expected outcome of this bad pattern:
+  A_rad without suppression flag -> FAIL
+  Reason: unsuppressed massless scalar wave is not allowed as observable.
+
+[PASS] Controlled failure: A_rad correctly has RISK status in audit.
+[PASS] controlled failure case passed: SAFE_GAUGE_FIXED — A_rad RISK status correctly flagged
+
+========================================================================================================================
+Case 7: Next study recommendation
 ========================================================================================================================
 Recommended next script:
 
@@ -190,3 +205,19 @@ Possible next artifact:
 
 Possible next script:
   candidate_conservation_identity_requirements.py
+
+[governance_assessments]
+[PASS] safe invariant: 1 -- areal radius R
+[PASS] safe gauge-fixed: 3 -- normalized A, orbit-space |grad R|^2, TT strain
+[DEFER] gauge-aware: 2 -- AB/kappa_areal, kappa interior response
+[FAIL] missing: 3 -- frame dragging, curvature-like, conservation flux
+[FAIL] risk: 1 -- A_rad scalar radiation amplitude
+[PASS] safe diagnostic policy -- policy rule recorded
+[FAIL] missing observable set is parent blocker -- open risk recorded
+[PASS] controlled failure case passed -- A_rad RISK status correctly flagged
+
+[unresolved_obligations]
+[OBLIGATION] derive frame-dragging gauge-invariant observable -- open proof obligation recorded
+[OBLIGATION] derive curvature-like parent diagnostics -- open proof obligation recorded
+[OBLIGATION] derive conserved flux/source identity diagnostics -- open proof obligation recorded
+[OBLIGATION] derive A_rad suppression for observable safety -- open proof obligation recorded

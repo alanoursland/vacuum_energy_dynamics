@@ -18,7 +18,9 @@ Need to distinguish:
   wave amplitude source ~ second time derivative of quadrupole
   radiated power proxy ~ third time derivative squared
 
-[PASS] quadrupole tensor-flux problem posed
+
+[governance_assessments]
+[PASS] quadrupole tensor-flux problem posed -- second vs third derivative distinction explicit
 
 ========================================================================================================================
 Case 1: Define trace-free quadrupole tensor
@@ -32,7 +34,9 @@ Trace-free quadrupole Q_TF = Q - Tr(Q) I/3:
 Matrix([[2*Q_xx/3 - Q_yy/3 - Q_zz/3, Q_xy, Q_xz], [Q_xy, -Q_xx/3 + 2*Q_yy/3 - Q_zz/3, Q_yz], [Q_xz, Q_yz, -Q_xx/3 - Q_yy/3 + 2*Q_zz/3]])
 
 Tr(Q_TF) = 0
-[PASS] Q_TF is trace-free
+
+[derived_results]
+[PASS] Q_TF is trace-free -- Tr(Q_TF) = 0
 
 ========================================================================================================================
 Case 2: Monopole and dipole are not TT radiation channels
@@ -48,8 +52,10 @@ Dipole:
 
 Tensor radiation starts at trace-free quadrupole order.
 
-[PASS] monopole belongs to scalar channel
-[PASS] dipole is not the leading isolated tensor radiation channel
+
+[governance_assessments]
+[PASS] monopole belongs to scalar channel -- M sources A-flux not TT radiation
+[PASS] dipole is not the leading isolated tensor radiation channel -- dipole removed by COM conservation
 
 ========================================================================================================================
 Case 3: Project Q_TF onto plus/cross basis
@@ -60,7 +66,9 @@ Q_cross projection = Q_xy
 For z propagation:
   plus source sees (Q_xx - Q_yy)/2
   cross source sees Q_xy
-[PASS] quadrupole projects onto plus/cross channels
+
+[derived_results]
+[PASS] quadrupole projects onto plus/cross channels -- Q_plus residual=0, Q_cross residual=0
 
 ========================================================================================================================
 Case 4: Time-dependent quadrupole source proxy
@@ -76,8 +84,10 @@ Q_cross_dddot = -8*Omega**3*Q0*cos(2*Omega*t)
 
 amplitude-source proxy Q_ddot² sum = 16*Omega**4*Q0**2
 power proxy Q_dddot² sum = 64*Omega**6*Q0**2
-[PASS] quadrupole amplitude proxy uses second derivatives
-[PASS] quadrupole power proxy uses third derivatives
+
+[sample_results]
+[PASS] quadrupole amplitude proxy uses second derivatives -- Qddot² proxy = 16*Omega**4*Q0**2
+[PASS] quadrupole power proxy uses third derivatives -- Qdddot² proxy = 64*Omega**6*Q0**2
 
 ========================================================================================================================
 Case 5: Static quadrupole does not radiate
@@ -85,8 +95,10 @@ Case 5: Static quadrupole does not radiate
 Q_static = Q0
 Q_ddot = 0
 Q_dddot = 0
-[PASS] static quadrupole has no wave-amplitude source
-[PASS] static quadrupole has no radiation-power proxy
+
+[derived_results]
+[PASS] static quadrupole has no wave-amplitude source -- Q_ddot = 0
+[PASS] static quadrupole has no radiation-power proxy -- Q_dddot = 0
 
 ========================================================================================================================
 Case 6: Tensor-flux analogy
@@ -106,7 +118,9 @@ Interpretive upgrade:
   A-flux is monopole scalar vacuum flow.
   Tensor flux is quadrupole TT radiative vacuum flow.
 
-[PASS] tensor-flux analogy stated
+
+[governance_assessments]
+[PASS] tensor-flux analogy stated -- M -> A-flux; Q_TF -> h_ij^TT radiation
 
 ========================================================================================================================
 Case 7: Classification
@@ -121,7 +135,9 @@ Results:
 6. Radiated-power proxy is associated with third derivatives squared.
 7. Static quadrupole does not radiate.
 
-[PASS] quadrupole tensor-flux source structure passes first checks
+
+[derived_results]
+[PASS] quadrupole tensor-flux source structure passes first checks -- TF quadrupole projected; derivative distinction explicit
 
 ========================================================================================================================
 Final interpretation

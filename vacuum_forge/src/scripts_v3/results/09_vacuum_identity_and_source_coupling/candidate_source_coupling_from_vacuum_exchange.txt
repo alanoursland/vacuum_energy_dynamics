@@ -20,7 +20,6 @@ Candidate balance:
 Goal:
 
   reduce hand-assigned couplings and identify what remains missing.
-[WARN] source coupling audit posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 2: Source coupling inventory
@@ -29,7 +28,7 @@ Case 2: Source coupling inventory
 ----------------------------------------------------------------------------------------------------
 A_constraint scalar source
 ----------------------------------------------------------------------------------------------------
-[PASS] A_constraint scalar source: DERIVED_REDUCED
+Status: DERIVED_REDUCED
 Source object: mass density rho / enclosed mass M
 Exchange projection: scalar part of Sigma_exchange
 Current support: Areal flux law gives Delta_areal A = 8*pi*G*rho/c^2 and recovers static exterior A = 1 - 2GM/(c^2 r).
@@ -38,7 +37,7 @@ Missing piece: Derive the 8*pi*G/c^2 coefficient from vacuum exchange ontology, 
 ----------------------------------------------------------------------------------------------------
 W_i vector/current source
 ----------------------------------------------------------------------------------------------------
-[WARN] W_i vector/current source: CONSTRAINED_BY_IDENTITY
+Status: CONSTRAINED_BY_IDENTITY
 Source object: mass current j_i = rho v_i / angular momentum
 Exchange projection: vector/current part of vacuum transport J_v
 Current support: Continuity bookkeeping points from density to current, suggesting W_i should couple to transport rather than be assigned only by analogy.
@@ -47,7 +46,7 @@ Missing piece: Derive W_i field equation, coefficient, gauge behavior, and frame
 ----------------------------------------------------------------------------------------------------
 kappa trace/interior source
 ----------------------------------------------------------------------------------------------------
-[FAIL] kappa trace/interior source: MISSING
+Status: MISSING
 Source object: pressure, stress trace, volume exchange candidate
 Exchange projection: trace/compressive part of exchange or relaxation
 Current support: Kappa is interpreted as trace/interior response, but no source identity exists.
@@ -56,7 +55,7 @@ Missing piece: Derive whether kappa couples to pressure, stress trace, density g
 ----------------------------------------------------------------------------------------------------
 h_ij^TT tensor source
 ----------------------------------------------------------------------------------------------------
-[WARN] h_ij^TT tensor source: HAND_ASSIGNED
+Status: HAND_ASSIGNED
 Source object: time-varying trace-free quadrupole derivatives
 Exchange projection: trace-free shear/tensor part of conserved source motion
 Current support: Tensor studies established TT basis, quadrupole projection, and target scaling.
@@ -65,7 +64,7 @@ Missing piece: Derive quadrupole coupling and 2G/c^4 normalization from the exch
 ----------------------------------------------------------------------------------------------------
 A_rad scalar radiative hazard
 ----------------------------------------------------------------------------------------------------
-[WARN] A_rad scalar radiative hazard: CONSTRAINED_BY_IDENTITY
+Status: CONSTRAINED_BY_IDENTITY
 Source object: scalar breathing perturbation
 Exchange projection: relaxation/deviation term Gamma_relax
 Current support: Relaxation term can represent vacuum absorption of scalar radiative perturbations.
@@ -74,7 +73,7 @@ Missing piece: Show relaxation suppresses A_rad without erasing A_constraint or 
 ----------------------------------------------------------------------------------------------------
 Creation regime
 ----------------------------------------------------------------------------------------------------
-[WARN] Creation regime: RISK
+Status: RISK
 Source object: Sigma_creation
 Exchange projection: nonconservative vacuum amount change
 Current support: Creation is classified as special-regime behavior, not ordinary exterior gravity.
@@ -91,7 +90,6 @@ Case 3: Coupling status table
 | h_ij^TT tensor source | time-varying trace-free quadrupole derivatives | HAND_ASSIGNED |
 | A_rad scalar radiative hazard | scalar breathing perturbation | CONSTRAINED_BY_IDENTITY |
 | Creation regime | Sigma_creation | RISK |
-[WARN] coupling table produced: CONSTRAINED_BY_IDENTITY — several couplings remain missing or hand-assigned
 
 ========================================================================================================================
 Case 4: Status counts
@@ -101,7 +99,6 @@ CONSTRAINED_BY_IDENTITY: 2
 HAND_ASSIGNED: 1
 MISSING: 1
 RISK: 1
-[FAIL] source coupling incomplete: MISSING — some sector sources are not derived from ontology
 
 ========================================================================================================================
 Case 5: Ontology work versus GR matching
@@ -118,8 +115,6 @@ Ontology is not yet doing enough work when:
   W_i coefficient is chosen to match frame dragging
   kappa source is left as pressure/stress/trace placeholder
   creation is invoked to solve mismatches
-
-[WARN] ontology-vs-matching boundary stated: RISK — future scripts should reduce matching by deriving couplings
 
 ========================================================================================================================
 Case 6: Next tests
@@ -141,7 +136,6 @@ Recommended next script:
 
 Reason:
   W_i is the nearest sector where continuity gives a concrete new source object: j_i.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — vector current is the most direct identity-derived next step
 
 ========================================================================================================================
 Final interpretation
@@ -164,3 +158,12 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_current_from_continuity.py
+
+[governance_assessments]
+[FAIL] source coupling audit -- MISSING=1 HAND_ASSIGNED=1 RISK=1 — several couplings not derived from ontology
+[DEFER] ontology-vs-matching boundary -- future scripts should reduce matching by deriving couplings
+
+[unresolved_obligations]
+[OBLIGATION] derive kappa source from trace/volume exchange -- open proof obligation recorded
+[OBLIGATION] derive tensor source coupling 2G/c^4 from exchange identity -- open proof obligation recorded
+[OBLIGATION] derive W_i field equation and coefficient -- open proof obligation recorded

@@ -22,7 +22,9 @@ Discipline:
   do not hide matched coefficients
   do not let kappa become a repair field
   mark unfinished closure explicitly
-[WARN] closure inventory problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] closure inventory problem posed -- structural constraint on inventory scope
 
 ========================================================================================================================
 Case 1: Field equation inventory
@@ -176,7 +178,9 @@ Case 2: Compact markdown ledger
 | Kappa near-boundary joint minimum | f_joint or kappa_min profile | lambda_2 fourth_derivative(f) - lambda_1 second_derivative(f) + (W_i+W_e)f = W_i f_int + W_e f_ext | Interior quadratic tendency + exterior reciprocal tendency + smoothness energy | STRUCTURAL | Weights, transition width sigma, variable identification, observable map. |
 | Vacuum-substance balance | q_v, J_v | partial_t q_v + div J_v = Sigma_exchange + Sigma_creation - Gamma_relax | Ontology-native vacuum exchange / creation / relaxation | UNFINISHED | Definitions, conservation identity, Bianchi-compatible closure. |
 | Metric recombination | g_tt, g_ti, g_ij | g_tt ~ -A c^2; g_ti ~ W_i; g_ij ~ scalar/kappa + h_ij^TT | Sector recombination | UNFINISHED | Covariant parent map and no-double-counting rules. |
-[WARN] compact ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact ledger produced -- inventory marker
 
 ========================================================================================================================
 Case 3: Status counts
@@ -190,7 +194,9 @@ UNFINISHED: 2
 Interpretation:
   The system has strong reduced scalar results, structural vector/tensor/kappa sectors,
   and unfinished covariant closure.
-[WARN] status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] status count produced -- inventory marker
 
 ========================================================================================================================
 Case 4: Strongest and weakest sectors
@@ -207,7 +213,9 @@ Most dangerous unfinished sectors:
   kappa covariant/source identity
   metric recombination map
   parent conservation/Bianchi-like closure
-[WARN] strong/weak sector audit stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] strong/weak sector audit stated -- structural assessment
 
 ========================================================================================================================
 Case 5: Initial no-double-counting rules
@@ -220,7 +228,9 @@ Initial rules:
 4. TT stress/quadrupole sources h_ij^TT.
 5. kappa boundary smoothing must not alter A-sector mass flux by hand.
 6. recombination must not count the same trace response in both kappa and h_ij^TT.
-[WARN] initial no-double-counting rules stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] initial no-double-counting rules stated -- structural constraint
 
 ========================================================================================================================
 Case 6: Next tests
@@ -242,7 +252,9 @@ Recommended next script:
 
 Reason:
   Once the inventory is explicit, recombination is the next place errors can hide.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

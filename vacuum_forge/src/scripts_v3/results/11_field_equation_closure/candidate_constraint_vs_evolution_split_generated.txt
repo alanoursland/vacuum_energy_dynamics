@@ -22,7 +22,9 @@ Discipline:
   kappa is not breathing radiation
   W_i is not automatically a free vector wave
   h_ij^TT is the true long-range radiation sector
-[WARN] constraint/evolution split problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] constraint/evolution split problem posed -- structural constraint
 
 ========================================================================================================================
 Case 1: Dynamics inventory
@@ -129,7 +131,9 @@ Case 2: Compact dynamics ledger
 | A_rad | rejected ordinary massless scalar radiation sector | No; rejected unless separately derived and controlled. | REJECTED |
 | Sigma_creation | excluded from ordinary closed-gravity evolution | Not a field; source/regime switch. | CONSTRAINED |
 | Gamma_relax | energy-transfer / restoration term, not propagating mode | No; local restoration/accounting term. | STRUCTURAL |
-[WARN] compact dynamics ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact dynamics ledger produced -- inventory marker
 
 ========================================================================================================================
 Case 3: True radiation rule
@@ -147,7 +151,9 @@ Constrained/rejected:
   W_i free vector radiation is not currently derived.
 
 This rule can be changed only by a separate derivation and observational control.
-[WARN] TT-only ordinary radiation rule stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] TT-only ordinary radiation rule stated -- structural constraint
 
 ========================================================================================================================
 Case 4: Constraint fields
@@ -168,7 +174,9 @@ Constraint-like fields:
 
 These may have time-dependent source response, but they are not currently
 ordinary free radiative degrees of freedom.
-[WARN] constraint-like fields listed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] constraint-like fields listed -- structural constraint
 
 ========================================================================================================================
 Case 5: Evolution fields
@@ -188,7 +196,9 @@ Possibly dynamic but not yet radiative:
 Rejected as ordinary radiative fields:
   A_rad
   kappa breathing wave
-[WARN] evolution fields classified: STRUCTURAL
+
+[governance_assessments]
+[DEFER] evolution fields classified -- structural
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -202,7 +212,9 @@ Constraint/evolution split fails if:
 5. Gamma_relax hides energy loss rather than vacuum exchange.
 6. Sigma_creation appears in ordinary closed gravity.
 7. constraint propagation is not compatible with source conservation.
-[WARN] constraint/evolution failure controls stated: RISK
+
+[governance_assessments]
+[WARN] constraint/evolution failure controls stated -- open risk
 
 ========================================================================================================================
 Case 7: Parent identity requirements
@@ -216,7 +228,9 @@ The parent identity must explain:
   how energy/source conservation is maintained
 
 Without this, the split is disciplined but not derived.
-[FAIL] parent identity requirements stated: UNFINISHED
+
+[unresolved_obligations]
+[OBLIGATION] parent identity for constraint/evolution split -- open proof obligation recorded
 
 ========================================================================================================================
 Case 8: Next tests
@@ -238,7 +252,9 @@ Recommended next script:
 
 Reason:
   The split is now clear; the next gap is the identity that enforces it.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

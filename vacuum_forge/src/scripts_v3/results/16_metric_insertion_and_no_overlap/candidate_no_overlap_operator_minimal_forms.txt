@@ -30,7 +30,9 @@ Discipline:
   do not let bookkeeping label become O
   do not hide overlap in boundary terms
   keep recovery downstream
-[WARN] minimal no-overlap operator problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] minimal no-overlap operator problem posed -- required before neutral residual can be permitted
 
 ========================================================================================================================
 Case 1: Minimal no-overlap operator inventory
@@ -43,7 +45,7 @@ Form: O[B_s, zeta_residual/kappa_residual, J_V] = 0
 Role: core count-once theorem target
 Allowed if: O has explicit domain, pairing/projector/action, and blocks double-counting
 Forbidden if: O is only a name for residual-kill or bookkeeping
-[WARN] OM1: minimal O target: THEOREM_TARGET
+[INFO] OM1: minimal O target: THEOREM_TARGET
 Missing: definition of O
 Consequence: decides whether neutral residual metric trace can survive
 
@@ -54,7 +56,7 @@ Form: <Trace_B_s, Trace_residual>_O = 0
 Role: minimal mathematical no-overlap candidate
 Allowed if: pairing is defined by metric/source/accounting structure, not chosen ad hoc
 Forbidden if: inner product is arbitrary or coordinate/gauge artifact
-[WARN] OM2: orthogonality pairing: CANDIDATE
+[INFO] OM2: orthogonality pairing: CANDIDATE
 Missing: pairing definition and domain
 Consequence: could permit neutral residual if physically meaningful
 
@@ -65,7 +67,7 @@ Form: P_B zeta enters B_s; P_R zeta is residual; P_B P_R = 0
 Role: operator split candidate
 Allowed if: P_B and P_R are actual projectors with source/domain definitions
 Forbidden if: projectors are labels for desired outcome
-[WARN] OM3: projector split: CANDIDATE
+[INFO] OM3: projector split: CANDIDATE
 Missing: projector definitions and composition theorem
 Consequence: natural route but risks bundle-renaming
 
@@ -76,7 +78,7 @@ Form: metric insertion map I_metric(zeta) = I_B_s(P_B zeta), I_metric(P_R zeta)=
 Role: direct count-once insertion rule
 Allowed if: insertion map is explicit and residual non-metric role is fenced
 Forbidden if: residual later appears in metric source/accounting
-[WARN] OM4: metric insertion exclusivity: SAFE_IF
+[INFO] OM4: metric insertion exclusivity: SAFE_IF
 Missing: explicit insertion map and residual fence
 Consequence: equivalent to clean residual-kill convention if P_R is non-metric
 
@@ -87,7 +89,7 @@ Form: O is implemented by zeta_residual_metric = 0 and kappa_residual_metric = 0
 Role: safe convention, not derived operator
 Allowed if: marked as provisional convention only
 Forbidden if: called a derived no-overlap operator
-[WARN] OM5: residual-kill as O: SAFE_IF
+[INFO] OM5: residual-kill as O: SAFE_IF
 Missing: derivation from parent identity
 Consequence: safe but does not solve O theorem
 
@@ -98,7 +100,7 @@ Form: epsilon_vac_config and e_kappa excluded from direct metric source after B_
 Role: accounting no-overlap guard
 Allowed if: energy/accounting is diagnostic or recombined once
 Forbidden if: exclusion is used to hide an actual source term
-[WARN] OM6: energy/accounting exclusion O: REQUIRED
+[INFO] OM6: energy/accounting exclusion O: REQUIRED
 Missing: accounting recombination law
 Consequence: blocks energy-source backdoor but does not define full O
 
@@ -109,7 +111,7 @@ Form: residual has compact/boundary-neutral support with zero exterior scalar ch
 Role: boundary safety candidate
 Allowed if: boundary theorem plus no metric overlap are both explicit
 Forbidden if: boundary neutrality is used as substitute for trace no-overlap
-[WARN] OM7: boundary-supported no-overlap: CANDIDATE
+[INFO] OM7: boundary-supported no-overlap: CANDIDATE
 Missing: boundary theorem and trace orthogonality
 Consequence: could protect exterior but does not alone prove count-once metric insertion
 
@@ -120,7 +122,7 @@ Form: solve diagnostic projection/elliptic problem to measure overlap
 Role: diagnostic tool
 Allowed if: kept as audit only
 Forbidden if: diagnostic result is promoted to physical O
-[WARN] OM8: diagnostic elliptic overlap audit: SAFE_IF
+[INFO] OM8: diagnostic elliptic overlap audit: SAFE_IF
 Missing: physical no-overlap mechanism
 Consequence: useful for testing branches but not ontology
 
@@ -131,7 +133,7 @@ Form: Trace[g_ij^scalar] = Trace_B_s + Trace_residual_neutral with O=0
 Role: theorem-heavy alternative to residual-kill
 Allowed if: O, boundary neutrality, no mass overlap, and no scalar charge are all derived
 Forbidden if: used without explicit O
-[WARN] OM9: neutral residual metric trace: RISK
+[INFO] OM9: neutral residual metric trace: RISK
 Missing: full O and safety theorems
 Consequence: keeps neutral residual alive only at high proof burden
 
@@ -142,7 +144,7 @@ Form: residual marked non-metric / bookkeeping
 Role: anti-hardening guard
 Allowed if: used only as residual fence
 Forbidden if: treated as proof of no-overlap
-[WARN] OM10: non-metric bookkeeping is not O: REQUIRED
+[INFO] OM10: non-metric bookkeeping is not O: REQUIRED
 Missing: O still missing
 Consequence: prevents bookkeeping label from becoming fake theorem
 
@@ -153,7 +155,7 @@ Form: <B_s,residual>=0 declared without pairing
 Role: rejected shortcut
 Allowed if: never as theorem
 Forbidden if: accepted as O
-[WARN] OM11: fake orthogonality: REJECTED
+[INFO] OM11: fake orthogonality: REJECTED
 Missing: not pursued
 Consequence: prevents symbolic orthogonality from replacing mechanism
 
@@ -164,7 +166,7 @@ Form: P_B and P_R named without construction
 Role: rejected shortcut
 Allowed if: never as theorem
 Forbidden if: accepted as projectors
-[WARN] OM12: fake projector: REJECTED
+[INFO] OM12: fake projector: REJECTED
 Missing: not pursued
 Consequence: prevents projector vocabulary from hiding missing operator
 
@@ -175,7 +177,7 @@ Form: overlap moved into boundary term or surface contribution
 Role: rejected/dangerous repair
 Allowed if: only as diagnostic failure mode
 Forbidden if: accepted as no-overlap
-[WARN] OM13: boundary-hidden overlap: REJECTED
+[INFO] OM13: boundary-hidden overlap: REJECTED
 Missing: not pursued
 Consequence: prevents surface bookkeeping from hiding double-counting
 
@@ -186,7 +188,7 @@ Form: gamma_like and AB tested only after O or residual-kill convention is fixed
 Role: anti-smuggling guard
 Allowed if: recovery remains check only
 Forbidden if: recovery chooses pairing/projectors/O
-[WARN] OM14: recovery downstream: RECOVERY_TARGET
+[INFO] OM14: recovery downstream: RECOVERY_TARGET
 Missing: solutions after O
 Consequence: keeps GR-compatible recovery from defining no-overlap
 
@@ -197,7 +199,7 @@ Form: parent trace/recombination identity derives O or residual-kill
 Role: future derivation route
 Allowed if: identity is explicit and not GR rewrite
 Forbidden if: decorative parent identity asserts O
-[WARN] OM15: parent identity route: THEOREM_TARGET
+[INFO] OM15: parent identity route: THEOREM_TARGET
 Missing: parent no-overlap identity
 Consequence: strongest route for replacing convention with theorem
 
@@ -208,7 +210,7 @@ Form: no explicit O, and residual-kill/non-metric convention is the only safe br
 Role: status outcome / branch narrowing
 Allowed if: used to keep O unresolved and residual-kill provisional
 Forbidden if: treated as derivation of O
-[FAIL] OM16: O failure: UNRESOLVED
+[INFO] OM16: O failure: UNRESOLVED
 Missing: O
 Consequence: metric insertion remains convention-limited
 
@@ -219,7 +221,7 @@ Form: if O remains unresolved, test boundary safety of B_s insertion under resid
 Role: next local bottleneck
 Allowed if: minimal O audit does not derive O
 Forbidden if: jumping to parent equation before boundary safety
-[PASS] OM17: recommended next move: RECOMMENDED
+[INFO] OM17: recommended next move: RECOMMENDED
 Missing: boundary safety audit
 Consequence: next script should be candidate_B_s_insertion_boundary_safety.py
 
@@ -245,7 +247,9 @@ Case 2: Compact minimal O ledger
 | OM15: parent identity route | parent trace/recombination identity derives O or residual-kill | THEOREM_TARGET | strongest route for replacing convention with theorem |
 | OM16: O failure | no explicit O, and residual-kill/non-metric convention is the only safe branch | UNRESOLVED | metric insertion remains convention-limited |
 | OM17: recommended next move | if O remains unresolved, test boundary safety of B_s insertion under residual-kill convention | RECOMMENDED | next script should be candidate_B_s_insertion_boundary_safety.py |
-[WARN] compact minimal O ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact minimal O ledger produced -- candidate O forms enumerated
 
 ========================================================================================================================
 Case 3: Status counts
@@ -266,7 +270,9 @@ Interpretation:
   Residual-kill and insertion exclusivity are safe conventions, not derived O.
   Non-metric bookkeeping is not O.
   If O remains unresolved, boundary safety should be tested under residual-kill convention.
-[WARN] minimal O status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] minimal O status count produced -- O unresolved; candidate forms only
 
 ========================================================================================================================
 Case 4: Candidate O forms
@@ -287,7 +293,9 @@ Strict distinction:
   Safe conventions prevent damage.
   Diagnostic audits test overlap.
   None of these is automatically a derived O.
-[PASS] candidate O forms listed: RECOMMENDED
+
+[governance_assessments]
+[INFO] candidate O forms listed -- seven forms listed; none derived
 
 ========================================================================================================================
 Case 5: Minimal O decision tree
@@ -311,7 +319,9 @@ Decision tree:
 
 6. Fake O:
    rejected if it only renames desired outcome.
-[PASS] minimal O decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] minimal O decision tree stated -- recommended next is boundary safety
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -330,7 +340,9 @@ Consequence:
 Bad failure:
 
   Call residual-kill, non-metric bookkeeping, or diagnostic projection a derived O.
-[WARN] minimal O good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] minimal O good failure stated -- deferred; O unresolved, continue under residual-kill convention
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -345,7 +357,9 @@ Minimal O fails if:
 6. diagnostic projection is promoted to ontology
 7. recovery checks choose O
 8. neutral residual is allowed without O
-[WARN] minimal O failure controls stated: RISK
+
+[governance_assessments]
+[WARN] minimal O failure controls stated -- eight failure modes
 
 ========================================================================================================================
 Case 8: Next tests
@@ -368,7 +382,9 @@ Recommended next script:
 Reason:
   O remains unresolved, so the safe convention must now survive boundary safety:
   no exterior charge, no far-zone scalar flux, no M_ext shift, no shell source.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_B_s_insertion_boundary_safety.py
 
 ========================================================================================================================
 Final interpretation
@@ -386,4 +402,6 @@ Current best status:
 Best next script:
 
   candidate_B_s_insertion_boundary_safety.py
-[PASS] minimal no-overlap operator audit complete: CLOSED
+
+[governance_assessments]
+[DEFER] minimal no-overlap operator audit complete -- O unresolved; convention-limited

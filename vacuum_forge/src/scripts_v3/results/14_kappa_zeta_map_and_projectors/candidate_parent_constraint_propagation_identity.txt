@@ -24,7 +24,6 @@ Discipline:
   do not rewrite Einstein constraints
   do not patch failure with zeta/kappa without no-overlap proof
   define closure or kill the branch
-[WARN] parent constraint propagation problem posed: REQUIRED
 
 ========================================================================================================================
 Case 1: Constraint propagation branch inventory
@@ -37,7 +36,7 @@ Branch: Delta_A A = source plus closure condition forces A_spatial
 Role: primary candidate route from existing A-sector success
 Allowed if: closure equation derives spatial companion and preserves source conservation
 Forbidden if: A_spatial is appended after solving A
-[WARN] CP1: A constraint with propagation closure: CANDIDATE
+Status: CANDIDATE
 Missing: explicit propagation/closure law
 Consequence: would keep A/A_spatial in one scalar constraint family
 
@@ -48,7 +47,7 @@ Branch: A constraint plus continuity/conservation determines spatial response co
 Role: candidate non-decorative closure condition
 Allowed if: conserved source/current is defined and links lapse/spatial response
 Forbidden if: conservation is invoked without a current/operator
-[WARN] CP2: source conservation compatibility: CANDIDATE
+Status: CANDIDATE
 Missing: conserved current and closure operator
 Consequence: may connect to broader Bianchi-like parent identity
 
@@ -59,7 +58,7 @@ Branch: spatial companion follows from elliptic constraint compatibility rather 
 Role: keeps A_spatial non-radiative and constraint-like
 Allowed if: elliptic compatibility fixes spatial trace without B=1/A decree
 Forbidden if: elliptic solution simply inserts Schwarzschild spatial metric
-[WARN] CP3: elliptic constraint propagation: CANDIDATE
+Status: CANDIDATE
 Missing: compatibility condition and boundary data rule
 Consequence: could derive static spatial companion without scalar wave modes
 
@@ -70,7 +69,7 @@ Branch: constraint propagation recovers gamma=1-like weak-field behavior
 Role: recovery target for acceptable propagation identity
 Allowed if: gamma-like result follows from closure, not coefficient tuning
 Forbidden if: gamma=1 is selected by hand
-[WARN] CP4: weak-field gamma recovery as check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: weak-field limit of closure identity
 Consequence: tests propagation identity without using gamma=1 as construction
 
@@ -81,7 +80,7 @@ Branch: recovered exterior passes kappa_areal -> 0 / AB -> 1 diagnostic
 Role: exterior recovery check
 Allowed if: AB relation emerges after deriving A_spatial
 Forbidden if: AB=1 is imposed to define A_spatial
-[WARN] CP5: exterior AB diagnostic as check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: derived exterior solution
 Consequence: keeps areal kappa fenced as diagnostic
 
@@ -92,7 +91,7 @@ Branch: Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral with overlap=
 Role: recombination compatibility requirement for propagation identity
 Allowed if: closure either derives residual-neutral split or kills residual trace
 Forbidden if: A_spatial and zeta/kappa residual overlap
-[WARN] CP6: no-overlap trace theorem: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: overlap operator and residual projector
 Consequence: decides what remains for zeta/kappa after A_spatial closure
 
@@ -103,7 +102,7 @@ Branch: zeta participates in propagation closure as A_spatial companion
 Role: possible ontology-native completion of A_spatial
 Allowed if: zeta is not also independent residual and preserves exterior neutrality
 Forbidden if: zeta patches A_spatial while remaining separate residual trace
-[WARN] CP7: zeta as closure participant: RISK
+Status: RISK
 Missing: zeta-A_spatial identity and accounting revision
 Consequence: may force revisit of zeta primary/residual convention
 
@@ -114,7 +113,7 @@ Branch: kappa remains residual/diagnostic after A_spatial closure
 Role: possible surviving role for kappa
 Allowed if: closure leaves non-overlapping boundary-neutral residual
 Forbidden if: kappa adds independent scalar trace
-[WARN] CP8: kappa residual after closure: SAFE_IF
+Status: SAFE_IF
 Missing: residual map after closure
 Consequence: may trigger kappa_diagnostic_or_residual_after_A_spatial script
 
@@ -125,7 +124,7 @@ Branch: A constraint cannot force A_spatial without additional parent structure
 Role: good branch-killed outcome
 Allowed if: used to move search to action/stiffness or Bianchi-like identity
 Forbidden if: failure is patched by GR metric import
-[FAIL] CP9: A-only closure failure: BRANCH_KILLED
+Status: BRANCH_KILLED
 Missing: decisive no-go proof
 Consequence: kills A-sector-local constraint propagation branch if proven
 
@@ -136,7 +135,7 @@ Branch: constraint propagation is just Einstein constraint equations rewritten
 Role: none
 Allowed if: never as derivation in current branch
 Forbidden if: used as closure proof
-[WARN] CP10: GR rewrite closure: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: would smuggle GR as parent closure
 
@@ -147,7 +146,7 @@ Branch: closure condition is AB=1 or B=1/A
 Role: shortcut
 Allowed if: only as exterior diagnostic after derivation
 Forbidden if: used as closure condition
-[WARN] CP11: B=1/A closure shortcut: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: repeats rejected construction shortcut
 
@@ -158,7 +157,7 @@ Branch: test whether a non-GR closure law can be written for A constraint propag
 Role: best current field-equation narrowing target
 Allowed if: closure has explicit mechanism and failure criteria
 Forbidden if: closure is merely named
-[PASS] CP12: recommended next route: RECOMMENDED
+Status: RECOMMENDED
 Missing: candidate closure law
 Consequence: next script should attempt a minimal symbolic closure/no-go test
 
@@ -179,7 +178,6 @@ Case 2: Compact constraint-propagation ledger
 | CP10: GR rewrite closure | constraint propagation is just Einstein constraint equations rewritten | REJECTED | would smuggle GR as parent closure |
 | CP11: B=1/A closure shortcut | closure condition is AB=1 or B=1/A | REJECTED | repeats rejected construction shortcut |
 | CP12: recommended next route | test whether a non-GR closure law can be written for A constraint propagation | RECOMMENDED | next script should attempt a minimal symbolic closure/no-go test |
-[WARN] compact constraint-propagation ledger produced: STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -198,7 +196,6 @@ Interpretation:
   Recovery checks remain gamma-like weak-field behavior and exterior AB diagnostic.
   If no non-GR closure law exists, the A-sector-local propagation branch is killed.
   Zeta can participate only if it stops being an independent overlapping residual.
-[WARN] constraint-propagation status count produced: STRUCTURAL
 
 ========================================================================================================================
 Case 4: Minimal closure requirements
@@ -215,7 +212,6 @@ A legitimate constraint propagation identity must provide:
 8. A branch-killed outcome if closure cannot be written.
 
 Missing one of these makes the identity decorative.
-[WARN] minimal closure requirements stated: REQUIRED
 
 ========================================================================================================================
 Case 5: Good failure
@@ -232,7 +228,6 @@ Consequence:
 Bad failure:
 
   Use GR spatial metric, B=1/A, or gamma tuning as patch.
-[FAIL] constraint-propagation good failure stated: BRANCH_KILLED
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -248,7 +243,6 @@ Constraint propagation fails if:
 7. no-overlap trace theorem is ignored
 8. exterior matching is used as local propagation law
 9. closure has no branch-killed criterion
-[WARN] constraint-propagation failure controls stated: RISK
 
 ========================================================================================================================
 Case 7: Next tests
@@ -270,7 +264,6 @@ Recommended next script:
 
 Reason:
   The propagation branch is now narrowed enough to test concretely: can a minimal closure be written without B=1/A, GR rewrite, or gamma tuning?
-[WARN] next test selected: STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -285,3 +278,11 @@ It survives only if:
 
 Best next test:
   candidate_minimal_A_constraint_closure_no_go.py
+
+[governance_assessments]
+[PASS] constraint propagation branches inventoried -- 12 branches classified
+[DEFER] CP9 branch-killed outcome -- no decisive no-go proof yet
+[FAIL] CP10/CP11 rejected -- GR rewrite and B=1/A closure rejected
+
+[unresolved_obligations]
+[OBLIGATION] derive or kill constraint propagation closure law -- open proof obligation recorded

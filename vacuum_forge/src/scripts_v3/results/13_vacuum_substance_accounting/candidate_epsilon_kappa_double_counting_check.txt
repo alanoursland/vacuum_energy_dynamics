@@ -23,7 +23,9 @@ Discipline:
   do not duplicate source response
   do not treat constraint penalties as physical energy unless derived
   keep provisional conventions explicit
-[WARN] epsilon-kappa double-counting problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] epsilon-kappa double-counting problem posed -- open: kappa-zeta map required before final convention
 
 ========================================================================================================================
 Case 1: Double-counting inventory
@@ -36,7 +38,7 @@ Option: epsilon_vac_config contains zeta geometry; e_kappa is separate sector re
 Accounting rule: E_total includes epsilon_vac_config + e_kappa once each
 Allowed if: kappa is an independent relaxation diagnostic not already included in epsilon
 Forbidden if: epsilon includes K_lock or kappa mismatch representing same energy
-[WARN] D1: e_kappa outside epsilon_vac_config: SAFE_IF
+Status: SAFE_IF
 Missing: whether kappa is independent or just zeta mismatch
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -46,7 +48,7 @@ Option: epsilon_vac_config includes kappa mismatch energy
 Accounting rule: E_total includes epsilon_vac_config only; do not add e_kappa separately
 Allowed if: kappa mismatch is part of vacuum configuration energy
 Forbidden if: e_kappa is also counted as separate energy
-[WARN] D2: e_kappa inside epsilon_vac_config: SAFE_IF
+Status: SAFE_IF
 Missing: how Gamma_relax is written when e_kappa is internal
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +58,7 @@ Option: K_lock -> constraint enforcing kappa = zeta-zeta_min
 Accounting rule: locking term not counted as physical energy if it is a Lagrange constraint
 Allowed if: parent/projector defines kappa as diagnostic projection of zeta
 Forbidden if: finite K_lock counted while also enforcing equality exactly
-[WARN] D3: kappa-zeta locking as constraint, not energy: CANDIDATE
+Status: CANDIDATE
 Missing: constraint versus penalty interpretation
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -66,7 +68,7 @@ Option: finite K_lock penalty energy included in epsilon_vac_config
 Accounting rule: locking energy counted inside epsilon; no duplicate e_kappa for same mismatch
 Allowed if: kappa and zeta can differ physically
 Forbidden if: creates extra scalar degree of freedom
-[WARN] D4: kappa-zeta locking as penalty energy: RISK
+Status: RISK
 Missing: degree-of-freedom count and projector identity
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +78,7 @@ Option: Gamma_relax transfers from e_kappa to epsilon_vac_config
 Accounting rule: d e_kappa/dtau + d epsilon_vac_config/dtau = 0
 Allowed if: e_kappa is outside epsilon_vac_config
 Forbidden if: epsilon already contains e_kappa
-[WARN] D5: Gamma_relax with external e_kappa: CANDIDATE
+Status: CANDIDATE
 Missing: sign convention and source of relaxation rate
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -86,7 +88,7 @@ Option: Gamma_relax is internal redistribution within epsilon_vac_config
 Accounting rule: d epsilon_vac_config/dtau accounts for kappa relaxation internally
 Allowed if: e_kappa included in epsilon_vac_config
 Forbidden if: additional transfer equation adds same change again
-[WARN] D6: Gamma_relax with internal e_kappa: CANDIDATE
+Status: CANDIDATE
 Missing: internal bookkeeping decomposition
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -96,7 +98,7 @@ Option: E_total = epsilon_vac_config + e_kappa when epsilon already includes kap
 Accounting rule: do not do this
 Allowed if: never
 Forbidden if: same trace/volume mismatch counted twice
-[PASS] D7: forbidden duplicate total energy: FORBIDDEN
+Status: FORBIDDEN
 Missing: not pursued
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -106,7 +108,7 @@ Option: rho or trace response creates A mass, zeta charge, and kappa charge inde
 Accounting rule: source response must be routed once by projectors
 Allowed if: never unless parent identity forces distinct channels
 Forbidden if: scalar mass/volume response double-counted
-[PASS] D8: forbidden duplicate source response: FORBIDDEN
+Status: FORBIDDEN
 Missing: P_recombination and source projector identity
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +118,7 @@ Option: treat e_kappa outside epsilon_vac_config for now; keep epsilon purely ze
 Accounting rule: epsilon_vac_config = zeta displacement + gradient/interface terms; e_kappa separate; no K_lock energy counted yet
 Allowed if: we label K_lock as diagnostic/constraint target, not physical energy
 Forbidden if: we need kappa-zeta locking energy to enforce consistency
-[PASS] D9: recommended provisional convention: RECOMMENDED
+Status: RECOMMENDED
 Missing: later revisit after kappa-zeta map
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ Option: after kappa-zeta map, absorb e_kappa into epsilon_vac_config or eliminat
 Accounting rule: single trace/volume energy functional
 Allowed if: parent projector shows kappa is not independent
 Forbidden if: done before derivation
-[WARN] D10: later unified convention: STRUCTURAL
+Status: STRUCTURAL
 Missing: parent projector / recombination derivation
 
 ========================================================================================================================
@@ -144,7 +146,9 @@ Case 2: Compact double-counting ledger
 | D8: forbidden duplicate source response | rho or trace response creates A mass, zeta charge, and kappa charge independently | FORBIDDEN | source response must be routed once by projectors | P_recombination and source projector identity |
 | D9: recommended provisional convention | treat e_kappa outside epsilon_vac_config for now; keep epsilon purely zeta-volume until kappa-zeta map is derived | RECOMMENDED | epsilon_vac_config = zeta displacement + gradient/interface terms; e_kappa separate; no K_lock energy counted yet | later revisit after kappa-zeta map |
 | D10: later unified convention | after kappa-zeta map, absorb e_kappa into epsilon_vac_config or eliminate kappa as independent energy | STRUCTURAL | single trace/volume energy functional | parent projector / recombination derivation |
-[WARN] compact double-counting ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact double-counting ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -160,7 +164,9 @@ Interpretation:
   Both inside and outside conventions are possible.
   The safest provisional convention is to keep e_kappa outside epsilon_vac_config.
   K_lock should remain diagnostic/constraint-like until the kappa-zeta map is derived.
-[WARN] double-counting status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] double-counting status count produced -- counts complete
 
 ========================================================================================================================
 Case 4: Recommended provisional convention
@@ -179,7 +185,9 @@ Recommended for now:
 
 Reason:
   the kappa-zeta map is not derived, so combining them risks double-counting.
-[PASS] recommended provisional convention stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] recommended provisional convention stated -- provisional convention explicit: e_kappa outside epsilon
 
 ========================================================================================================================
 Case 5: Forbidden patterns
@@ -191,7 +199,9 @@ Forbidden:
 3. rho contributes to A mass, zeta exterior charge, and kappa exterior charge.
 4. Gamma_relax transfers energy between two terms that are already the same term.
 5. Recombination counts zeta and kappa as independent scalar gravity sectors.
-[PASS] forbidden double-counting patterns stated: FORBIDDEN
+
+[governance_assessments]
+[PASS] forbidden double-counting patterns stated -- five forbidden patterns identified
 
 ========================================================================================================================
 Case 6: Updated provisional functional
@@ -215,7 +225,9 @@ Constraint target:
   kappa ~ zeta - zeta_min
 
 but no K_lock energy counted until derived.
-[WARN] updated provisional functional stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] updated provisional functional stated -- candidate route: provisional convention
 
 ========================================================================================================================
 Case 6b: Symbolic provisional accounting split
@@ -228,7 +240,9 @@ Provisional symbolic split:
 
 Interpretation:
   the provisional convention counts zeta-geometry and kappa-relaxation once each, separately.
-[PASS] symbolic provisional energy split: RECOMMENDED — epsilon and e_kappa kept separate
+
+[sample_results]
+[PASS] symbolic provisional energy split -- epsilon and e_kappa kept separate
 
 ========================================================================================================================
 Case 7: Next tests
@@ -250,7 +264,9 @@ Recommended next:
 
 Reason:
   Group 13 has reached a natural summary point with a provisional accounting convention.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- vacuum_substance_accounting_summary.md
 
 ========================================================================================================================
 Final interpretation

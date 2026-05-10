@@ -19,18 +19,25 @@ Candidate missing channels:
   pressure/stress source for interior kappa
   nonlinear interior self-field correction
 
-[PASS] pressure/stress source question isolated
+
+[governance_assessments]
+[PASS] pressure/stress source question isolated -- density-only A-flux law misses second-order interior structure vs GR
+
+[unresolved_obligations]
+[OBLIGATION] derive pressure/stress coupling to A-flux or interior kappa -- hypotheses H1-H4 are diagnostic; no first-principles derivation given
 
 ================================================================================================================
 Case 1: GR constant-density pressure profile expansion
 ================================================================================================================
 Dimensionless pressure profile for GR constant-density interior:
-  p/(rho c^2) = [sqrt(1-u x²)-sqrt(1-u)] /
-                 [3sqrt(1-u)-sqrt(1-u x²)]
+  p/(rho c^2) = [sqrt(1-u x^2)-sqrt(1-u)] /
+                 [3sqrt(1-u)-sqrt(1-u x^2)]
 
-p/(rho c^2) series through u² = u*(-u*x**2 + u - x**2 + 1)/4
+p/(rho c^2) series through u^2 = u*(-u*x**2 + u - x**2 + 1)/4
 leading pressure ratio = u*(1 - x**2)/4
-[PASS] pressure begins at order u
+
+[derived_results]
+[PASS] pressure begins at order u -- leading = u*(1 - x**2)/4
 [PASS] pressure vanishes at surface x=1
 
 ================================================================================================================
@@ -40,7 +47,9 @@ A_GR - A_red leading = 3*u**2*(x**4 - 2*x**2 + 1)/16
 leading pressure shape = u*(1 - x**2)/4
 3 * pressure_shape^2 = 3*u**2*(x**2 - 1)**2/16
 difference = 0
-[PASS] A residual has pressure-squared-like boundary shape
+
+[derived_results]
+[PASS] A residual has pressure-squared-like boundary shape -- leading residual = 3*u**2*(x**4 - 2*x**2 + 1)/16
 
 Interpretation:
   The A residual begins at order u^2 and has shape (1-x^2)^2.
@@ -60,7 +69,12 @@ Consequences:
   if pressure vanishes at boundary, exterior flux can still be set by
   integrated effective source.
 
-[PASS] direct pressure A-source hypothesis formulated
+
+[governance_assessments]
+[PASS] direct pressure A-source hypothesis formulated -- H1 is a candidate; coefficient chi and coupling form not derived
+
+[unresolved_obligations]
+[OBLIGATION] derive direct pressure A-flux coupling coefficient chi -- H1 requires coefficient chi from matter coupling; not derived
 
 ================================================================================================================
 Case 4: Pressure/stress as kappa-source hypothesis
@@ -75,7 +89,12 @@ stationary equation = Eq(2*C_k*kappa - a*c**2*rho - b*p, 0)
 kappa_eq = [(a*c**2*rho + b*p)/(2*C_k)]
 
 If J_k vanishes in exterior, kappa relaxes to zero outside.
-[PASS] pressure/stress kappa-source hypothesis formulated
+
+[governance_assessments]
+[PASS] pressure/stress kappa-source hypothesis formulated -- H2 is a candidate; coupling coefficients a, b not derived
+
+[unresolved_obligations]
+[OBLIGATION] derive pressure/stress kappa source coefficients a and b -- H2 requires coupling a, b from matter coupling; not derived
 
 ================================================================================================================
 Case 5: Boundary preservation conditions
@@ -88,9 +107,11 @@ pressure at boundary = 0
 kappa at boundary = 0
 A residual at boundary = 0
 A residual derivative at boundary = 0
-[PASS] pressure-like corrections vanish at boundary
-[PASS] kappa-like corrections vanish at boundary
-[PASS] A residual is boundary-smooth
+
+[derived_results]
+[PASS] pressure-like corrections vanish at boundary -- p(x=1) = 0
+[PASS] kappa-like corrections vanish at boundary -- kappa(x=1) = 0
+[PASS] A residual is boundary-smooth -- dA_residual/dx(x=1) = 0
 
 Interpretation:
   Interior pressure/stress corrections can be boundary-contained.
@@ -118,7 +139,9 @@ Candidate source channels:
    A-flux conserved
    B = 1/A
 
-[PASS] source-channel map separated
+
+[governance_assessments]
+[PASS] source-channel map separated -- four distinct channels identified; none fully derived
 
 ================================================================================================================
 Final interpretation

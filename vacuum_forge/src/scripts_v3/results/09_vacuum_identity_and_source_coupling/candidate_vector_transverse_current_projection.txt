@@ -20,7 +20,6 @@ Hypothesis:
 
   j_T sources W_i
   j_L belongs to scalar continuity/constraint handling
-[WARN] transverse current projection problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Helmholtz-style split statement
@@ -35,7 +34,6 @@ where:
   curl grad chi = 0
 
 This is the natural split for vector curl-energy.
-[WARN] current split stated: CONSTRAINED_BY_IDENTITY — requires boundary conditions
 
 ========================================================================================================================
 Case 2: Gradient current is longitudinal
@@ -45,7 +43,6 @@ Longitudinal current:
 
 curl j_L =
 Matrix([[0], [0], [0]])
-[PASS] gradient current has zero curl: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 3: Rotational current is transverse
@@ -56,7 +53,6 @@ Matrix([[-J0*y], [J0*x], [0]])
 div j_T = 0
 curl j_T =
 Matrix([[0], [0], [2*J0]])
-[PASS] rotational current is divergence-free: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 4: Continuity allocation
@@ -75,7 +71,6 @@ Interpretation:
   j_L carries compression/accumulation and belongs with scalar constraint.
 
 This prevents the vector sector from swallowing scalar continuity.
-[WARN] continuity allocates longitudinal current to scalar sector: CONSTRAINED_BY_IDENTITY — formal projection/boundary conditions still needed
 
 ========================================================================================================================
 Case 5: Projected vector field equation
@@ -95,7 +90,6 @@ Under div W = 0:
 Coefficient still missing:
 
   alpha_W/(2 K_c) = alpha_W/(2*K_c)
-[WARN] projected vector equation stated: CONSTRAINED_BY_IDENTITY — coefficient and projection operator missing
 
 ========================================================================================================================
 Case 6: Projection safety table
@@ -107,7 +101,6 @@ Case 6: Projection safety table
 | full j | continuity source | split required | PARTIAL |
 | time-dependent split | needs projection operator | MISSING |
 | coefficient alpha_W/(2K_c) | normalization | MISSING |
-[WARN] projection safety table produced: CONSTRAINED_BY_IDENTITY — projection structure helps sector allocation
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -119,8 +112,6 @@ This projection fails if:
 3. projection depends on arbitrary gauge choices without boundary rules.
 4. coefficient is inserted from GR matching.
 5. time-dependent longitudinal pieces violate scalar constraint propagation.
-
-[WARN] projection failure controls stated: RISK — requires boundary/gauge discipline
 
 ========================================================================================================================
 Case 8: Next tests
@@ -139,7 +130,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_current_projection_operator.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — formal projector is the next vector cleanup
 
 ========================================================================================================================
 Final interpretation
@@ -164,3 +154,15 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_current_projection_operator.py
+
+[derived_results]
+[PASS] curl(grad chi) = 0 longitudinal current identity -- gradient current has zero curl; confirmed longitudinal
+[PASS] rotational current div j_T = 0 -- circular j = J0(-y, x, 0) is divergence-free; confirmed transverse
+
+[governance_assessments]
+[DEFER] j_L must not source W_i -- policy: longitudinal current belongs to scalar constraint sector
+[FAIL] coefficient alpha_W/(2K_c) -- not derived; projection structure is structural only
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded

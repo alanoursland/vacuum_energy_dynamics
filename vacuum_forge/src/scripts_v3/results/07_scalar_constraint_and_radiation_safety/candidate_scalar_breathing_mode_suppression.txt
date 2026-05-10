@@ -22,7 +22,6 @@ Preferred architecture:
 
   A        -> scalar constraint/static channel
   h_ij^TT -> tensor radiation channel
-[PASS] scalar breathing suppression problem posed
 
 ========================================================================================================================
 Case 1: Constraint projection A_rad = 0
@@ -35,7 +34,6 @@ constraint projection A_rad=0 gives A = A_constraint
 
 Interpretation:
   The cleanest mechanism is that A has no independent radiative mode.
-[PASS] constraint projection removes scalar radiation by construction
 
 ========================================================================================================================
 Case 2: Massive / short-range scalar suppression
@@ -47,7 +45,6 @@ Static Green behavior:
   a(r) ~ exp(-m r)/r
 
 If m is large, scalar breathing is short-ranged and suppressed far away.
-[PASS] mass gap creates short-range scalar suppression
 
 ========================================================================================================================
 Case 3: Damping / vacuum absorption
@@ -59,7 +56,6 @@ envelope = a0*exp(-gamma*t/2)
 Interpretation:
   Scalar perturbations may be generated locally but damp back into the
   vacuum minimum instead of surviving as long-range radiation.
-[PASS] damping gives decaying scalar amplitude
 
 ========================================================================================================================
 Case 4: Relaxation to vacuum minimum
@@ -72,7 +68,6 @@ Relaxation law:
   da/dtau = -Gamma dE/da = -Gamma mu^2 a
 
 solution = a0*exp(-Gamma*mu**2*tau)
-[PASS] relaxation drives scalar perturbation back to minimum
 
 ========================================================================================================================
 Case 5: Weak scalar coupling
@@ -85,7 +80,6 @@ power proxy = S**2*epsilon_s**2/K**2
 
 If epsilon_s is small, scalar radiation is weak.
 This is less clean than constraint projection and requires bounds.
-[PASS] weak coupling suppresses scalar radiation but needs constraints
 
 ========================================================================================================================
 Case 6: Tensor radiation channel remains active
@@ -95,7 +89,6 @@ Qdddot² proxy = 64*Omega**6*Q0**2
 
 Suppression mechanisms should target scalar breathing modes,
 not the h_ij^TT tensor channel.
-[PASS] tensor quadrupole radiation remains intended active channel
 
 ========================================================================================================================
 Case 7: Mechanism classification
@@ -109,8 +102,6 @@ Case 7: Mechanism classification
 | weak coupling | small but nonzero | needs observational bounds |
 | unsuppressed scalar wave | present | dangerous |
 
-[PASS] scalar suppression mechanisms classified
-
 ========================================================================================================================
 Case 8: Results
 ========================================================================================================================
@@ -123,8 +114,6 @@ Results:
 5. Weak coupling can reduce scalar radiation but needs bounds.
 6. Tensor h_ij^TT radiation should remain active.
 7. The best current target is constraint-like A plus tensor radiation.
-
-[PASS] scalar breathing suppression passes as mechanism inventory
 
 ========================================================================================================================
 Final interpretation
@@ -149,3 +138,19 @@ Possible next artifact:
 
 Possible next script:
   candidate_binary_scalar_radiation_guardrail.py
+
+[sample_results]
+[PASS] constraint projection A_rad=0 algebraic check -- A = A_constraint after substitution; mechanism not yet derived
+[PASS] relaxation gradient for quadratic potential -- dE/da = mu^2 a; sample only
+
+[governance_assessments]
+[PASS] scalar breathing suppression required (policy) -- any A_rad must be absent/short-ranged/damped/absorbed/weak
+[PASS] static gravity must survive suppression (policy) -- A_constraint long-range response must be preserved
+[PASS] constraint projection route -- candidate route recorded
+[PASS] vacuum absorption/relaxation route -- candidate route recorded
+[PASS] mass gap route -- candidate route recorded
+
+[unresolved_obligations]
+[OBLIGATION] derive constraint projection mechanism -- open proof obligation recorded
+[OBLIGATION] derive vacuum absorption dynamical law -- open proof obligation recorded
+[OBLIGATION] derive mass gap compatible with static A -- open proof obligation recorded

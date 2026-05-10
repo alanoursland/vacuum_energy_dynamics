@@ -157,3 +157,19 @@ Possible next artifact:
 
 Possible next script:
   candidate_metric_geometric_recombination.py
+
+[governance_assessments]
+[PASS] satisfied reduced: 1 -- G5 TT plus/cross basis established in reduced
+[DEFER] partial: 4 -- G1 areal, G2 lapse, G3 kappa, G6 A_rad partial
+[FAIL] missing: 3 -- G4 W_i gauge, G7 observable set, G8 recombination map missing
+[FAIL] gauge structure is parent blocker (policy) -- must not compare gauge-dependent variables to observations
+[DEFER] gauge-derived parent deferred -- deferred pending G4, G7, G8
+
+[unresolved_obligations]
+[OBLIGATION] derive G1: Areal-radius gauge behavior -- open proof obligation recorded
+[OBLIGATION] derive G2: Static slicing / lapse behavior -- open proof obligation recorded
+[OBLIGATION] derive G3: Kappa physical versus gauge component -- open proof obligation recorded
+[OBLIGATION] derive G4: Vector W_i gauge behavior -- open proof obligation recorded
+[OBLIGATION] derive G6: Scalar A_rad versus gauge artifact -- open proof obligation recorded
+[OBLIGATION] derive G7: Gauge-invariant observable set -- open proof obligation recorded
+[OBLIGATION] derive G8: Coordinate recombination map -- open proof obligation recorded

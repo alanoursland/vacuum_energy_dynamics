@@ -87,7 +87,7 @@ G18-7: ordinary matter decoupling
 Result: ordinary matter decoupling is required but not derived
 [WARN] G18-7: ordinary matter decoupling: THEOREM_TARGET
 Consequence: rho/scalar charge remains routed to A-sector; no T_mu_nu double-count; no fifth force; no hidden scalar charge; no M_ext shift independent of A
-Handoff: ordinary matter must stay in A-sector unless theorem derives otherwise
+Handoff: ordinary matter must stay in A's lane unless theorem derives otherwise
 
 ------------------------------------------------------------------------------------------------------------------------
 G18-8: J_exch source side
@@ -148,7 +148,7 @@ Case 2: Compact Group 18 status table
 | G18-4: pure wind neutrality | pure wind neutrality is required but not derived | THEOREM_TARGET | preserve pure wind neutrality as required future theorem |
 | G18-5: J_exch | J_exch survives only as active-exchange theorem target | THEOREM_TARGET | exchange is not repair |
 | G18-6: Sigma/R | Sigma/R remain role-level unless distinct operators and strength laws are found | UNRESOLVED | do not write decorative nabla_mu J_exch^mu = Sigma_exch - R_exch |
-| G18-7: ordinary matter decoupling | ordinary matter decoupling is required but not derived | THEOREM_TARGET | ordinary matter must stay in A-sector unless theorem derives otherwise |
+| G18-7: ordinary matter decoupling | ordinary matter decoupling is required but not derived | THEOREM_TARGET | ordinary matter must stay in A's lane unless theorem derives otherwise |
 | G18-8: J_exch source side | no active ordinary-sector source side for J_exch is derived | UNRESOLVED | ordinary-sector J_exch should stay inactive/role-level unless source side is derived |
 | G18-9: safest ordinary-sector branches | zero-net exchange, zero creation, curvature-from-warping, and latent exchange survive | CANDIDATE | preserve zero-net / zero-creation branches in field-equation snapshot |
 | G18-10: dark-sector coupling | no dark-sector coupling is required | SAFE_IF | dark coupling to J_exch only may remain future candidate if ordinary separation and source law exist |

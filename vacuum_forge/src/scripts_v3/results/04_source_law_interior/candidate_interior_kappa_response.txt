@@ -20,7 +20,12 @@ Exterior compensation:
 Interior question:
   Should kappa=0 hold inside matter?
   Or can matter source kappa inside while exterior kappa relaxes to zero?
-[PASS] interior kappa question isolated
+
+[governance_assessments]
+[PASS] interior kappa question isolated -- kappa=0 is established exterior/source-free condition; interior remains open
+
+[unresolved_obligations]
+[OBLIGATION] derive interior kappa condition from matter coupling -- no first-principles derivation of whether kappa=0 holds inside matter
 
 ============================================================================================================
 Case 1: Forced interior compensation
@@ -29,7 +34,9 @@ A_in = -4*pi*G*R**2*rho0/c**2 + 4*pi*G*r**2*rho0/(3*c**2) + 1
 kappa_in = 0
 B_in = exp(2*kappa)/A = 3*c**2/(-12*pi*G*R**2*rho0 + 4*pi*G*r**2*rho0 + 3*c**2)
 A_in B_in = 1
-[PASS] forced kappa=0 gives reciprocal interior
+
+[sample_results]
+[PASS] forced kappa=0 gives reciprocal interior -- by-construction when kappa=0 is imposed
 
 Caution:
   This is the simplest interior extension, but it may be too strong.
@@ -47,10 +54,12 @@ kappa_in(R) = 0
 kappa_in'(R) = -2*G*R*eta*rho0/c**2
 kappa_in(0) = G*R**2*eta*rho0/c**2
 kappa_in'(0) = 0
-[PASS] interior kappa can vanish at boundary
-[PASS] interior kappa is regular at origin
+
+[sample_results]
+[PASS] interior kappa can vanish at boundary -- kappa_in(R) = 0
+[PASS] interior kappa is regular at origin -- kappa_in'(0) = 0
 [PASS] nonzero interior kappa breaks reciprocal interior generically
-[PASS] boundary derivative may jump unless exterior layer handles it
+[PASS] boundary derivative may jump unless exterior layer handles it -- kappa_in'(R) = -2*G*R*eta*rho0/c**2
 
 ============================================================================================================
 Case 3: Smooth boundary kappa profile
@@ -59,9 +68,11 @@ kappa_in = G*eta*rho0*(R**2 - r**2)**2/(R**2*c**2)
 kappa_in(R) = 0
 kappa_in'(R) = 0
 kappa_in'(0) = 0
-[PASS] kappa vanishes at boundary
-[PASS] kappa derivative vanishes at boundary
-[PASS] kappa regular at origin
+
+[sample_results]
+[PASS] kappa vanishes at boundary -- kappa(R) = 0
+[PASS] kappa derivative vanishes at boundary -- kappa'(R) = 0
+[PASS] kappa regular at origin -- kappa'(0) = 0
 
 ============================================================================================================
 Case 4: Interior kappa energy penalty model
@@ -72,8 +83,12 @@ kappa solution = [J_k/(2*C_k)]
 
 If J_k is nonzero inside matter, kappa responds.
 If J_k=0 outside, kappa relaxes to zero.
-[PASS] traceful source produces interior kappa response
-[PASS] VacuumForge reproduces interior kappa response
+
+[derived_results]
+[PASS] traceful source produces interior kappa response -- kappa_eq = [J_k/(2*C_k)]
+
+[derived_results]
+[PASS] VacuumForge reproduces interior kappa response -- kappa_eq = J_k/(2*C_kappa)
 
 ============================================================================================================
 Case 5: Exterior matching classification
@@ -96,18 +111,25 @@ C. kappa sourced inside, kappa(R)=kappa_R != 0
 
 D. smooth interior kappa with kappa(R)=kappa'(R)=0
    - cleanest coexistence of interior trace response and exterior compensation
-[PASS] classification separates interior matter response from exterior compensation
+
+[governance_assessments]
+[PASS] classification separates interior matter response from exterior compensation -- options A-D represent distinct physical routes
+
+[unresolved_obligations]
+[OBLIGATION] derive which interior/exterior kappa option applies -- no first-principles derivation selects option A, B, C, or D
 
 ============================================================================================================
 Case 6: Exterior pressure from kappa leakage
 ============================================================================================================
 If interior kappa leaks into exterior as kappa=lambda_k eps:
-A ≈ eps*(lambda_k - 2) + 1
-B ≈ eps*(lambda_k + 2) + 1
-AB ≈ 2*eps*lambda_k + 1
+A approx eps*(lambda_k - 2) + 1
+B approx eps*(lambda_k + 2) + 1
+AB approx 2*eps*lambda_k + 1
 
 Exterior kappa leak is observationally dangerous.
-[PASS] exterior kappa must be suppressed or tightly bounded
+
+[governance_assessments]
+[PASS] exterior kappa must be suppressed or tightly bounded -- nonzero exterior kappa shifts weak-field coefficients
 
 ============================================================================================================
 Final interpretation

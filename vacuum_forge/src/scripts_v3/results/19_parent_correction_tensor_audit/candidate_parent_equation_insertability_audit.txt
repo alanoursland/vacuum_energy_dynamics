@@ -28,7 +28,9 @@ Discipline:
   no scalar trace leak
   no recovery insertion
   no undefined current/source insertion
-[WARN] parent equation insertability problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] parent equation insertability problem posed -- insertability audit required before any parent equation is written
 
 ========================================================================================================================
 Case 1: Parent equation insertability inventory
@@ -41,7 +43,9 @@ Criterion: a correction tensor is insertable only if tensor definition, source o
 Role: core insertability theorem target
 Allowed if: all prerequisites are defined before field-equation insertion
 Forbidden if: parent equation is written because correction tensors are wanted
-[WARN] PI1: parent equation insertability target: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] PI1: parent equation insertability target -- THEOREM_TARGET
 Missing: complete insertability theorem
 Consequence: decides whether H_curv/H_exch can enter parent equation
 
@@ -52,7 +56,9 @@ Criterion: H_curv/H_exch tensor rank, symmetry, trace behavior, index placement,
 Role: tensor well-posedness prerequisite
 Allowed if: tensor type is explicit before insertion
 Forbidden if: H symbol is inserted without tensor definition
-[WARN] PI2: tensor definition requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI2: tensor definition requirement -- REQUIRED
 Missing: tensor definition
 Consequence: prevents decorative parent term
 
@@ -63,7 +69,9 @@ Criterion: correction tensor source origin is independently defined
 Role: source prerequisite
 Allowed if: source exists before correction tensor uses it
 Forbidden if: source is defined by the tensor divergence or usefulness
-[WARN] PI3: source origin requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI3: source origin requirement -- REQUIRED
 Missing: source origin theorem
 Consequence: prevents source-by-tensor closure
 
@@ -74,7 +82,9 @@ Criterion: projection class / sector placement is defined
 Role: no-overlap prerequisite
 Allowed if: projector and target sector are real
 Forbidden if: projection hides metric/matter/residual overlap
-[WARN] PI4: projection class requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI4: projection class requirement -- REQUIRED
 Missing: projection / sector theorem
 Consequence: prevents source and metric overlap
 
@@ -85,7 +95,9 @@ Criterion: divergence relation is a constructed identity, independent source bal
 Role: divergence prerequisite
 Allowed if: divergence safety is real before insertion
 Forbidden if: Bianchi-like language or decorative continuity is used
-[WARN] PI5: divergence relation requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI5: divergence relation requirement -- REQUIRED
 Missing: divergence-safety theorem
 Consequence: prevents fake parent compatibility
 
@@ -96,7 +108,9 @@ Criterion: correction tensor has no boundary repair, hidden shell source, scalar
 Role: boundary prerequisite
 Allowed if: boundary behavior is structural and neutral
 Forbidden if: boundary mismatch motivates insertion
-[WARN] PI6: boundary neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI6: boundary neutrality requirement -- REQUIRED
 Missing: boundary neutrality theorem
 Consequence: protects exterior sector
 
@@ -107,7 +121,9 @@ Criterion: ordinary T_mu_nu / rho / scalar charge remains in ordinary source rou
 Role: ordinary matter prerequisite
 Allowed if: ordinary matter is not double-counted or rerouted
 Forbidden if: correction tensor carries ordinary matter by convenience
-[WARN] PI7: ordinary matter separation requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI7: ordinary matter separation requirement -- REQUIRED
 Missing: ordinary matter separation theorem
 Consequence: protects ordinary matter coupling
 
@@ -118,7 +134,9 @@ Criterion: delta M_ext|H = 0 unless derived through established A-sector source 
 Role: mass prerequisite
 Allowed if: exterior mass neutrality is structural
 Forbidden if: H shifts measured exterior mass
-[WARN] PI8: M_ext neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI8: M_ext neutrality requirement -- REQUIRED
 Missing: M_ext neutrality theorem
 Consequence: protects strongest A-sector result
 
@@ -129,7 +147,9 @@ Criterion: H does not reopen B_s/F_zeta, residual trace, kappa, or exterior scal
 Role: scalar prerequisite
 Allowed if: scalar trace/no-overlap guardrails remain closed
 Forbidden if: H becomes hidden scalar metric/source channel
-[WARN] PI9: scalar trace neutrality requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI9: scalar trace neutrality requirement -- REQUIRED
 Missing: scalar trace neutrality / O no-overlap theorem
 Consequence: preserves Group 16 guardrails
 
@@ -140,7 +160,9 @@ Criterion: coefficients have ontology-native, action, stiffness, source, or iden
 Role: coefficient prerequisite
 Allowed if: coefficients are derived before recovery/boundary tests
 Forbidden if: coefficients tune finite core, exchange closure, boundary, or recovery
-[WARN] PI10: coefficient origin requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI10: coefficient origin requirement -- REQUIRED
 Missing: coefficient origin theorem
 Consequence: prevents tuning by constants
 
@@ -151,7 +173,9 @@ Criterion: correction tensor is not chosen to pass gamma_like, AB, exterior matc
 Role: recovery-smuggling guard
 Allowed if: recovery remains downstream test
 Forbidden if: recovery behavior selects tensor form
-[WARN] PI11: recovery-independent construction requirement: REQUIRED
+
+[governance_assessments]
+[INFO] PI11: recovery-independent construction requirement -- REQUIRED
 Missing: not a mechanism
 Consequence: keeps recovery downstream
 
@@ -162,7 +186,9 @@ Criterion: H_curv is not insertable because A_curv dynamics/J_curv/source/diverg
 Role: curvature correction status
 Allowed if: H_curv remains theorem target or diagnostic-only
 Forbidden if: H_curv is inserted to get finite curvature
-[WARN] PI12: H_curv insertability status: DEFER
+
+[governance_assessments]
+[DEFER] PI12: H_curv insertability status -- DEFER
 Missing: H_curv prerequisites
 Consequence: prevents anti-singularity correction insertion
 
@@ -173,7 +199,9 @@ Criterion: H_exch is not insertable because J_V/J_exch/Sigma/R/source/divergence
 Role: exchange correction status
 Allowed if: H_exch remains theorem target or diagnostic-only
 Forbidden if: H_exch is inserted to close exchange continuity
-[WARN] PI13: H_exch insertability status: DEFER
+
+[governance_assessments]
+[DEFER] PI13: H_exch insertability status -- DEFER
 Missing: H_exch prerequisites
 Consequence: prevents exchange correction insertion
 
@@ -184,7 +212,9 @@ Criterion: H-like object remains diagnostic-only and is not a parent equation te
 Role: safe fallback
 Allowed if: explicitly not inserted
 Forbidden if: diagnostic object becomes parent correction
-[WARN] PI14: diagnostic-only route: SAFE_IF
+
+[governance_assessments]
+[INFO] PI14: diagnostic-only route -- SAFE_IF
 Missing: none if kept diagnostic
 Consequence: only currently safe route
 
@@ -195,7 +225,9 @@ Criterion: E_parent + H_curv + H_exch = source side is allowed only as theorem t
 Role: non-law parent form
 Allowed if: explicitly marked not current field equation
 Forbidden if: presented as current minimal field system
-[WARN] PI15: theorem-target parent form: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] PI15: theorem-target parent form -- THEOREM_TARGET
 Missing: all H/source/divergence prerequisites
 Consequence: preserves future syntax without overclaim
 
@@ -206,7 +238,9 @@ Criterion: Div(E_parent + H_curv + H_exch) = B_closed[T] + B_relax is allowed on
 Role: non-law divergence form
 Allowed if: explicitly marked not law
 Forbidden if: used as closure before B_closed/B_relax/H are defined
-[WARN] PI16: divergence theorem target parent form: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] PI16: divergence theorem target parent form -- THEOREM_TARGET
 Missing: parent divergence identity and source terms
 Consequence: prevents decorative parent divergence closure
 
@@ -217,7 +251,9 @@ Criterion: H_curv inserted to get finite curvature, regular core, bounce, or ant
 Role: forbidden curvature insertion
 Allowed if: never as mechanism
 Forbidden if: accepted as parent correction
-[WARN] PI17: H_curv finite-curvature insertion rejection: REJECTED
+
+[governance_assessments]
+[INFO] PI17: H_curv finite-curvature insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves Group 17 claim limits
 
@@ -228,7 +264,9 @@ Criterion: H_exch inserted to close nabla_mu J_exch^mu = Sigma_exch - R_exch
 Role: forbidden exchange insertion
 Allowed if: never while J/Sigma/R are undefined
 Forbidden if: accepted as exchange correction
-[WARN] PI18: H_exch exchange-continuity insertion rejection: REJECTED
+
+[governance_assessments]
+[INFO] PI18: H_exch exchange-continuity insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves Group 18 current/source limits
 
@@ -239,7 +277,9 @@ Criterion: H inserted because geometric terms can be made Bianchi-compatible by 
 Role: forbidden divergence insertion
 Allowed if: never as proof
 Forbidden if: accepted as parent compatibility
-[WARN] PI19: Bianchi-like insertion rejection: REJECTED
+
+[governance_assessments]
+[INFO] PI19: Bianchi-like insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents Bianchi smoke
 
@@ -250,7 +290,9 @@ Criterion: H inserted to recover GR-like gamma, AB, exterior matching, or PPN be
 Role: forbidden recovery insertion
 Allowed if: never as construction
 Forbidden if: accepted as parent correction
-[WARN] PI20: recovery insertion rejection: REJECTED
+
+[governance_assessments]
+[INFO] PI20: recovery insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: keeps recovery downstream
 
@@ -261,7 +303,9 @@ Criterion: H inserted to cancel boundary leakage, shell source, scalar tail, or 
 Role: forbidden boundary insertion
 Allowed if: never as mechanism
 Forbidden if: accepted as correction tensor
-[WARN] PI21: boundary leakage insertion rejection: REJECTED
+
+[governance_assessments]
+[INFO] PI21: boundary leakage insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents boundary repair
 
@@ -272,7 +316,9 @@ Criterion: H inserted using undefined J_curv, J_V, J_sub, J_exch, Sigma/R, or da
 Role: forbidden source/current insertion
 Allowed if: never before definitions
 Forbidden if: accepted as parent correction source
-[WARN] PI22: undefined-current insertion rejection: REJECTED
+
+[governance_assessments]
+[INFO] PI22: undefined-current insertion rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents undefined-source parent equation
 
@@ -283,7 +329,9 @@ Criterion: no correction tensor satisfies all insertability requirements
 Role: closure failure condition
 Allowed if: used to keep H_curv/H_exch deferred or diagnostic-only
 Forbidden if: patched with theorem-target parent equation as law
-[FAIL] PI23: parent insertion failure: BRANCH_KILLED
+
+[governance_assessments]
+[INFO] PI23: parent insertion failure -- BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: no parent correction tensor is insertable yet
 
@@ -294,7 +342,9 @@ Criterion: after insertability audit, close Group 19 with status summary
 Role: next local bottleneck
 Allowed if: no tensor is insertable yet
 Forbidden if: opening a new parent equation group without closure summary
-[PASS] PI24: recommended next move: RECOMMENDED
+
+[governance_assessments]
+[INFO] PI24: recommended next move -- RECOMMENDED
 Missing: Group 19 status summary
 Consequence: next script should be candidate_parent_correction_tensor_group_status_summary.py
 
@@ -327,7 +377,9 @@ Case 2: Compact parent insertability ledger
 | PI22: undefined-current insertion rejection | H inserted using undefined J_curv, J_V, J_sub, J_exch, Sigma/R, or dark source | REJECTED | prevents undefined-source parent equation |
 | PI23: parent insertion failure | no correction tensor satisfies all insertability requirements | BRANCH_KILLED | no parent correction tensor is insertable yet |
 | PI24: recommended next move | after insertability audit, close Group 19 with status summary | RECOMMENDED | next script should be candidate_parent_correction_tensor_group_status_summary.py |
-[WARN] compact parent insertability ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact parent insertability ledger produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -348,7 +400,9 @@ Interpretation:
   Insertability requires tensor definition, source origin, projection class, divergence relation, boundary neutrality, ordinary matter separation, M_ext neutrality, scalar trace neutrality, coefficient origin, and recovery-independent construction.
   H_curv finite-curvature insertion, H_exch exchange-continuity insertion, Bianchi-like insertion, recovery insertion, boundary leakage insertion, and undefined-current insertion are rejected.
   Next gate is Group 19 status summary.
-[WARN] parent equation insertability status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] parent equation insertability status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Insertability requirements
@@ -369,7 +423,9 @@ Insertability requirements:
 Current result:
 
   no correction tensor satisfies all requirements
-[PASS] parent insertability requirements listed: RECOMMENDED
+
+[governance_assessments]
+[PASS] parent insertability requirements listed -- RECOMMENDED
 
 ========================================================================================================================
 Case 5: Parent insertability decision tree
@@ -393,7 +449,9 @@ Decision tree:
 
 6. No H satisfies requirements:
    parent correction tensors remain deferred.
-[PASS] parent insertability decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] parent insertability decision tree stated -- RECOMMENDED
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -410,7 +468,9 @@ Consequence:
 Bad failure:
 
   write a theorem-target parent equation as if it were the current field system.
-[WARN] parent insertability good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] parent insertability good failure stated -- DEFERRED_PENDING_PREREQUISITES
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -432,7 +492,9 @@ Parent insertability fails if:
 13. boundary leakage motivates insertion
 14. undefined current/source is used
 15. diagnostic-only H is inserted
-[WARN] parent insertability failure controls stated: RISK
+
+[governance_assessments]
+[WARN] parent insertability failure controls stated -- RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -455,7 +517,9 @@ Recommended next script:
 Reason:
   Group 19 has audited correction tensors for roles, definition requirements, divergence safety, source separation, boundary/mass neutrality, and insertability.
   It should close with a summary ledger.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -480,4 +544,6 @@ Parent equation forms:
 Best next script:
 
   candidate_parent_correction_tensor_group_status_summary.py
-[PASS] parent equation insertability audit complete: CLOSED
+
+[governance_assessments]
+[PASS] parent equation insertability audit complete -- CLOSED

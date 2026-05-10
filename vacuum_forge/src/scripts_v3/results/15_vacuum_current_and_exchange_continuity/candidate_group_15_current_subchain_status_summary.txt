@@ -24,7 +24,9 @@ Discipline:
   do not continue mechanism-relocation loops
   preserve recovery downstream
   name the surviving bottleneck clearly
-[WARN] current-subchain status problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] current-subchain status problem posed -- requires honest closure of J_V subchain
 
 ========================================================================================================================
 Case 1: Current-subchain status ledger
@@ -34,7 +36,7 @@ Case 1: Current-subchain status ledger
 G15C-1: exchange continuity target
 ------------------------------------------------------------------------------------------------------------------------
 Result: nabla_mu J_V^mu = Sigma_V - R_V is the right theorem target, not yet a law
-[WARN] G15C-1: exchange continuity target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Consequence: J_V requires independent flux direction and Sigma/R definitions
 Handoff: do not call continuity a current definition
 
@@ -42,7 +44,7 @@ Handoff: do not call continuity a current definition
 G15C-2: Sigma/R role-level split
 ------------------------------------------------------------------------------------------------------------------------
 Result: Sigma_V is source/creation/destruction side; R_V is relaxation/reconfiguration/return side
-[WARN] G15C-2: Sigma/R role-level split: STRUCTURAL
+Status: STRUCTURAL
 Consequence: role split exists, but neither operator is derived
 Handoff: preserve SR10 double-counting guard: Sigma/R must not be two names for one tuning mechanism
 
@@ -50,7 +52,7 @@ Handoff: preserve SR10 double-counting guard: Sigma/R must not be two names for 
 G15C-3: flux-direction result
 ------------------------------------------------------------------------------------------------------------------------
 Result: Sigma_V - R_V supplies divergence strength, not vector direction
-[WARN] G15C-3: flux-direction result: REQUIRED
+Status: REQUIRED
 Consequence: J_V still needs independent physical flux / transport law
 Handoff: distinguish physical flux law from diagnostic elliptic completion and forbidden repair current
 
@@ -58,7 +60,7 @@ Handoff: distinguish physical flux law from diagnostic elliptic completion and f
 G15C-4: candidate direction families
 ------------------------------------------------------------------------------------------------------------------------
 Result: exchange-potential and causal transport currents remain candidates; zeta/source/relaxation gradients are risky
-[WARN] G15C-4: candidate direction families: CANDIDATE
+Status: CANDIDATE
 Consequence: direction candidates exist but none is derived
 Handoff: causal transport must not become Box zeta or ordinary scalar radiation
 
@@ -66,7 +68,7 @@ Handoff: causal transport must not become Box zeta or ordinary scalar radiation
 G15C-5: timelike/nonzero domain
 ------------------------------------------------------------------------------------------------------------------------
 Result: u_vac from J_V exists only on D_V = {J_V^2 < 0, J_V != 0}
-[WARN] G15C-5: timelike/nonzero domain: THEOREM_TARGET
+Status: THEOREM_TARGET
 Consequence: no global u_vac follows from a domain-limited or zero current
 Handoff: separate active exchange domains from static/equilibrium domains
 
@@ -74,7 +76,7 @@ Handoff: separate active exchange domains from static/equilibrium domains
 G15C-6: static-source neutrality
 ------------------------------------------------------------------------------------------------------------------------
 Result: static zero-current or compact/balanced exchange may be safe; exterior scalar charge kills the family
-[WARN] G15C-6: static-source neutrality: REQUIRED
+Status: REQUIRED
 Consequence: ordinary static mass must not awaken a scalar volume tail
 Handoff: do not patch scalar charge with R_V tuning or boundary repair
 
@@ -82,7 +84,7 @@ Handoff: do not patch scalar charge with R_V tuning or boundary repair
 G15C-7: boundary neutrality
 ------------------------------------------------------------------------------------------------------------------------
 Result: surviving current must have zero exterior flux, zero zeta/kappa charge, no far-zone scalar flux, and no M_ext shift
-[WARN] G15C-7: boundary neutrality: REQUIRED
+Status: REQUIRED
 Consequence: volume current cannot leak into ordinary exterior scalar gravity
 Handoff: diagnostic elliptic boundary completion is not physical flux ontology
 
@@ -90,7 +92,7 @@ Handoff: diagnostic elliptic boundary completion is not physical flux ontology
 G15C-8: no-overlap bottleneck
 ------------------------------------------------------------------------------------------------------------------------
 Result: O[B_s, zeta_residual/kappa_residual, J_V] = 0 remains unresolved
-[FAIL] G15C-8: no-overlap bottleneck: UNRESOLVED
+Status: UNRESOLVED
 Consequence: count-once recombination remains the central missing theorem
 Handoff: do not proceed to field equations with unresolved double-counting
 
@@ -98,7 +100,7 @@ Handoff: do not proceed to field equations with unresolved double-counting
 G15C-9: safest recombination convention
 ------------------------------------------------------------------------------------------------------------------------
 Result: residual-kill / non-metric residual is the cleanest safe branch
-[WARN] G15C-9: safest recombination convention: SAFE_IF
+Status: SAFE_IF
 Consequence: zeta/kappa residual metric trace is demoted if J_V-driven zeta enters B_s
 Handoff: use as provisional convention only, not derivation
 
@@ -106,7 +108,7 @@ Handoff: use as provisional convention only, not derivation
 G15C-10: neutral residual branch
 ------------------------------------------------------------------------------------------------------------------------
 Result: neutral residual branch remains possible but theorem-heavy
-[WARN] G15C-10: neutral residual branch: RISK
+Status: RISK
 Consequence: requires orthogonality, boundary neutrality, no A-sector mass overlap, and no scalar charge
 Handoff: do not use neutral residual unless O is made real
 
@@ -114,7 +116,7 @@ Handoff: do not use neutral residual unless O is made real
 G15C-11: forbidden zeta-both branch
 ------------------------------------------------------------------------------------------------------------------------
 Result: zeta/J_V cannot change B_s and remain independent residual metric trace
-[WARN] G15C-11: forbidden zeta-both branch: REJECTED
+Status: REJECTED
 Consequence: kills double-counting branch
 Handoff: preserve from Group 14 through all future recombination scripts
 
@@ -122,7 +124,7 @@ Handoff: preserve from Group 14 through all future recombination scripts
 G15C-12: kappa safety
 ------------------------------------------------------------------------------------------------------------------------
 Result: kappa remains diagnostic / non-metric / separately neutral unless derived
-[WARN] G15C-12: kappa safety: REQUIRED
+Status: REQUIRED
 Consequence: kappa must not restore killed zeta residual trace
 Handoff: kappa cleanup remains necessary if residual branch is reopened
 
@@ -130,7 +132,7 @@ Handoff: kappa cleanup remains necessary if residual branch is reopened
 G15C-13: recovery downstream
 ------------------------------------------------------------------------------------------------------------------------
 Result: gamma_like and AB remain recovery checks only
-[WARN] G15C-13: recovery downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Consequence: recovery cannot choose flux, domain, boundary, or overlap mechanism
 Handoff: keep recovery tests downstream of mechanism
 
@@ -138,7 +140,7 @@ Handoff: keep recovery tests downstream of mechanism
 G15C-14: current-subchain closure
 ------------------------------------------------------------------------------------------------------------------------
 Result: current subchain should close with J_V/O as unresolved bottleneck unless a real O or flux law is introduced
-[PASS] G15C-14: current-subchain closure: RECOMMENDED
+Status: RECOMMENDED
 Consequence: prevents another loop of renamed missing mechanisms
 Handoff: next move should be either a real operator attempt or a Group 15 status update
 
@@ -161,7 +163,9 @@ Case 2: Compact current-subchain table
 | G15C-12: kappa safety | kappa remains diagnostic / non-metric / separately neutral unless derived | REQUIRED | kappa cleanup remains necessary if residual branch is reopened |
 | G15C-13: recovery downstream | gamma_like and AB remain recovery checks only | RECOVERY_TARGET | keep recovery tests downstream of mechanism |
 | G15C-14: current-subchain closure | current subchain should close with J_V/O as unresolved bottleneck unless a real O or flux law is introduced | RECOMMENDED | next move should be either a real operator attempt or a Group 15 status update |
-[WARN] compact current-subchain table produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact current-subchain table produced -- summary only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -183,7 +187,9 @@ Interpretation:
   It identified flux direction, timelike domain, static neutrality, boundary neutrality, and no-overlap as gates.
   The no-overlap operator remains unresolved.
   Residual-kill / non-metric residual is the safest provisional convention.
-[WARN] current-subchain status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] current-subchain status count produced -- summary only
 
 ========================================================================================================================
 Case 4: Surviving bottlenecks
@@ -204,7 +210,12 @@ Most central bottleneck:
   O[B_s, zeta_residual/kappa_residual, J_V] = 0
 
 because without count-once recombination, J_V-driven zeta cannot safely enter the ordinary metric sector.
-[FAIL] surviving bottlenecks recorded: UNRESOLVED
+
+[unresolved_obligations]
+[OBLIGATION] no-overlap operator O unresolved -- central missing theorem for recombination safety
+[OBLIGATION] J_V physical flux law unresolved -- open proof obligation
+[OBLIGATION] Sigma_V operator unresolved -- open proof obligation
+[OBLIGATION] R_V operator unresolved -- open proof obligation
 
 ========================================================================================================================
 Case 5: Rejected regressions to preserve
@@ -221,7 +232,9 @@ Case 5: Rejected regressions to preserve
 10. let zeta enter both B_s and residual metric trace
 11. let kappa restore killed residual trace
 12. use recovery targets to choose flux/domain/boundary/overlap
-[WARN] rejected regressions preserved: REJECTED
+
+[governance_assessments]
+[INFO] rejected regressions preserved -- policy rules recorded
 
 ========================================================================================================================
 Case 6: Next options
@@ -243,7 +256,9 @@ Recommended:
 
 Reason:
   The status summary has closed the audit. The next constructive narrow step, if continuing, is to test the cleanest safe convention: residual-kill / non-metric residual.
-[PASS] next option selected: RECOMMENDED
+
+[governance_assessments]
+[INFO] next option selected -- candidate_residual_kill_rule_for_volume_current.py
 
 ========================================================================================================================
 Final interpretation
@@ -262,4 +277,6 @@ Current best provisional convention:
 Best next script if continuing:
 
   candidate_residual_kill_rule_for_volume_current.py
-[PASS] current-subchain status summary complete: CLOSED
+
+[governance_assessments]
+[INFO] current-subchain status summary complete -- closed with unresolved bottleneck recorded

@@ -25,7 +25,6 @@ It must correspond to:
 Preferred outcome:
 
   no ordinary breathing radiation
-[WARN] relaxation energy-accounting problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Undamped trace oscillator energy
@@ -41,7 +40,6 @@ E = kappa**2*omega_0**2/2 + v**2/2
 
 This energy is conserved in the toy oscillator.
 If coupled to exterior wave modes, it can support breathing radiation.
-[WARN] undamped trace oscillator can store/radiate energy: RISK — not acceptable as ordinary long-range scalar channel
 
 ========================================================================================================================
 Case 2: Damped oscillator energy derivative
@@ -64,7 +62,6 @@ For Gamma > 0:
   dE/dt <= 0
 
 The lost energy must be accounted for as vacuum absorption/dissipation.
-[PASS] damped oscillator has definite energy loss: DERIVED_REDUCED — sink term still needs ontology
 
 ========================================================================================================================
 Case 3: Critical damping condition
@@ -86,7 +83,6 @@ Regimes:
 Cleanest fallback if breathing is forced:
 
   critical/overdamped, not underdamped propagating.
-[WARN] critical damping condition identified: CONSTRAINED_BY_IDENTITY — Gamma and omega0 not derived
 
 ========================================================================================================================
 Case 4: Relaxation sink balance
@@ -104,7 +100,6 @@ Vacuum balance must include a sink term:
 or an equivalent positive-definite absorption term.
 
 Without this, damping is just a hand-wave.
-[WARN] relaxation requires positive sink term: CONSTRAINED_BY_IDENTITY — vacuum energy sink not derived
 
 ========================================================================================================================
 Case 5: Static A-constraint guard
@@ -129,7 +124,6 @@ Therefore relaxation must act on:
 not on:
 
   A_constraint
-[WARN] relaxation must preserve A-sector constraint: CONSTRAINED_BY_IDENTITY — sector split must be explicit
 
 ========================================================================================================================
 Case 6: Safe versus unsafe breathing
@@ -143,7 +137,6 @@ Case 6: Safe versus unsafe breathing
 | underdamped but rapidly absorbed | risky, requires attenuation length |
 | massless long-range breathing radiation | rejected |
 | damping inserted only to hide scalar waves | rejected |
-[WARN] safe/unsafe breathing hierarchy stated: CONSTRAINED_BY_IDENTITY — breathing is fallback, not goal
 
 ========================================================================================================================
 Case 7: Attenuation length criterion
@@ -161,7 +154,6 @@ To avoid long-range breathing radiation:
 or the mode must be non-propagating/constrained.
 
 This gives a future phenomenological bound if damping is used.
-[WARN] attenuation length criterion stated: PLAUSIBLE — Gamma not derived
 
 ========================================================================================================================
 Case 8: Classification
@@ -175,7 +167,6 @@ Case 8: Classification
 | A-sector preservation guard | CONSTRAINED_BY_IDENTITY |
 | attenuation length criterion | PLAUSIBLE |
 | final relaxation law | MISSING |
-[WARN] relaxation energy accounting classification produced: CONSTRAINED_BY_IDENTITY — damping possible but not derived
 
 ========================================================================================================================
 Case 9: Next tests
@@ -197,7 +188,6 @@ Recommended next script:
 
 Reason:
   relaxation and projection both need the parent balance identity.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — parent balance is the next hard target
 
 ========================================================================================================================
 Final interpretation
@@ -222,3 +212,15 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_projection_parent_balance.py
+
+[derived_results]
+[PASS] damped oscillator dE/dt = -Gamma*kappa_dot^2 -- algebraic derivation
+
+[governance_assessments]
+[FAIL] undamped kappa oscillator -- can radiate if coupled externally
+[DEFER] damped kappa with vacuum sink -- plausible fallback; Gamma not derived
+[PASS] A-sector preservation guard -- sector split required
+
+[unresolved_obligations]
+[OBLIGATION] derive vacuum sink for kappa relaxation energy -- open
+[OBLIGATION] derive Gamma from first principles -- open

@@ -24,7 +24,9 @@ Discipline:
   preserve static-source neutrality
   preserve boundary neutrality and no-overlap
   keep gamma/AB recovery downstream
-[WARN] exchange continuity law problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] exchange continuity law problem posed -- requires independent J_V, Sigma_V, R_V operators
 
 ========================================================================================================================
 Case 1: Exchange continuity inventory
@@ -37,7 +39,7 @@ Law: nabla_mu J_V^mu = Sigma_V - R_V
 Role: core candidate law for defining vacuum-volume current
 Allowed if: J_V, Sigma_V, and R_V are independently meaningful
 Forbidden if: continuity law is written with unnamed terms
-[WARN] EC1: exchange continuity theorem target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: J_V flux law, Sigma_V, R_V, boundary conditions
 Consequence: decides whether u_vac can become a real ontology object
 
@@ -48,7 +50,7 @@ Law: J_V^mu must define u_vac, not depend on u_vac
 Role: prevents circular frame definition
 Allowed if: J_V has transport/flux direction before u_vac normalization
 Forbidden if: J_V^mu = n_V u_vac^mu is used to define u_vac
-[WARN] EC2: J_V as flux, not density-times-clock: REQUIRED
+Status: REQUIRED
 Missing: non-circular flux direction
 Consequence: without flux direction, no vacuum clock
 
@@ -59,7 +61,7 @@ Law: Sigma_V may include source-driven volume creation, e.g. chi rho a^mu nabla_
 Role: creation/destruction source candidate
 Allowed if: frame/projection and chi-origin are defined independently
 Forbidden if: Sigma_V is tuned to recover gamma_like or AB
-[WARN] EC3: Sigma_V source term: CANDIDATE
+Status: CANDIDATE
 Missing: complete Sigma_V law
 Consequence: source term remains theorem target until frame and chi are fixed
 
@@ -70,7 +72,7 @@ Law: R_V represents relaxation/reconfiguration of vacuum volume
 Role: sink/rebalancing term in volume continuity
 Allowed if: R_V follows from vacuum exchange ontology, not damping patch
 Forbidden if: R_V is inserted to kill unwanted scalar charge by hand
-[WARN] EC4: R_V relaxation/exchange term: CANDIDATE
+Status: CANDIDATE
 Missing: R_V operator and frame/sign convention
 Consequence: could distinguish creation from relaxation, but risks patching
 
@@ -81,7 +83,7 @@ Law: J_V direction must follow from gradient, transport, or exchange structure
 Role: turns scalar source into vector current
 Allowed if: direction is specified before recovery checks
 Forbidden if: direction is chosen after desired exterior behavior is known
-[WARN] EC5: flux direction law: REQUIRED
+Status: REQUIRED
 Missing: transport / constitutive law
 Consequence: scalar Sigma_V alone cannot define J_V
 
@@ -92,7 +94,7 @@ Law: J_V^2 < 0 and J_V != 0 where u_vac = J_V / sqrt(-J_V^2) is used
 Role: mathematical viability condition
 Allowed if: domain is proved or explicitly restricted
 Forbidden if: normalization used where J_V is null/spacelike/zero
-[WARN] EC6: timelike/nonzero domain: REQUIRED
+Status: REQUIRED
 Missing: domain theorem
 Consequence: defines where vacuum clock exists
 
@@ -103,7 +105,7 @@ Law: static equilibrium sources have zero or boundary-neutral independent J_V/ze
 Role: ordinary-sector safety
 Allowed if: continuity law gives no exterior scalar volume charge for static mass
 Forbidden if: static sources create scalar gravity
-[WARN] EC7: static-source neutrality: REQUIRED
+Status: REQUIRED
 Missing: static neutrality proof
 Consequence: kills continuity laws that produce ordinary scalar charge
 
@@ -114,7 +116,7 @@ Law: J_V-driven zeta is boundary-neutral and enters metric only through B_s, or 
 Role: protects exterior neutrality and count-once recombination
 Allowed if: boundary and residual-kill/no-overlap theorems are attached
 Forbidden if: J_V creates independent residual metric trace
-[WARN] EC8: boundary/no-overlap: REQUIRED
+Status: REQUIRED
 Missing: boundary/no-overlap theorem
 Consequence: continuity law fails if accounting fails
 
@@ -125,7 +127,7 @@ Law: orientation of J_V and signs of Sigma_V/R_V define creation versus destruct
 Role: resolves physical interpretation
 Allowed if: orientation follows from exchange ontology
 Forbidden if: sign chosen from gamma_like or AB
-[FAIL] EC9: sign/orientation: UNRESOLVED
+Status: UNRESOLVED
 Missing: orientation convention
 Consequence: needed before simulations or recovery claims
 
@@ -136,7 +138,7 @@ Law: nabla_mu J_V^mu = Sigma_V - R_V with unnamed J_V/Sigma_V/R_V
 Role: rejected shortcut
 Allowed if: never as derivation
 Forbidden if: used to promote u_vac
-[WARN] EC10: decorative continuity rejection: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: prevents Group 15 from becoming another painted tunnel
 
@@ -147,7 +149,7 @@ Law: after J_V/Sigma_V/R_V are fixed, test gamma_like and AB
 Role: ordinary-regime recovery target
 Allowed if: checked after exchange continuity is defined
 Forbidden if: used to choose continuity terms
-[WARN] EC11: recovery checks downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after exchange law
 Consequence: keeps recovery from becoming construction
 
@@ -158,7 +160,7 @@ Law: split Sigma_V and R_V definitions before claiming exchange continuity
 Role: best current next bottleneck
 Allowed if: J_V remains a theorem target until both sides are specified
 Forbidden if: declaring continuity law complete now
-[PASS] EC12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: Sigma_V/R_V branch inventory
 Consequence: next script should inventory Sigma_V and R_V roles in the continuity law
 
@@ -179,7 +181,9 @@ Case 2: Compact exchange-continuity ledger
 | EC10: decorative continuity rejection | nabla_mu J_V^mu = Sigma_V - R_V with unnamed J_V/Sigma_V/R_V | REJECTED | prevents Group 15 from becoming another painted tunnel |
 | EC11: recovery checks downstream | after J_V/Sigma_V/R_V are fixed, test gamma_like and AB | RECOVERY_TARGET | keeps recovery from becoming construction |
 | EC12: recommended next move | split Sigma_V and R_V definitions before claiming exchange continuity | RECOMMENDED | next script should inventory Sigma_V and R_V roles in the continuity law |
-[WARN] compact exchange-continuity ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact exchange-continuity ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -197,7 +201,9 @@ Interpretation:
   J_V needs a flux direction, not only a divergence equation.
   Sigma_V and R_V must be defined separately.
   Static neutrality, boundary neutrality, and no-overlap remain mandatory.
-[WARN] exchange-continuity status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] exchange-continuity status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Minimal law requirements
@@ -215,7 +221,15 @@ A real exchange continuity law must provide:
 9. recovery checks downstream
 
 Missing these turns continuity into decoration.
-[WARN] minimal exchange-continuity requirements stated: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] derive J_V flux direction -- open proof obligation
+[OBLIGATION] derive Sigma_V source creation law -- open proof obligation
+[OBLIGATION] derive R_V relaxation/exchange law -- open proof obligation
+[OBLIGATION] derive timelike/nonzero domain theorem -- open proof obligation
+[OBLIGATION] derive static-source neutrality -- open proof obligation
+[OBLIGATION] derive boundary neutrality -- open proof obligation
+[OBLIGATION] derive no-overlap/residual-kill theorem -- open proof obligation
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -231,7 +245,9 @@ Consequence:
 
 Bad failure:
   write nabla_mu J_V^mu = Sigma_V - R_V and pretend the current has been defined.
-[WARN] exchange-continuity good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] exchange-continuity good failure stated -- deferred pending J_V flux direction and Sigma/R operators
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -246,7 +262,9 @@ Exchange continuity law fails if:
 6. J_V creates residual metric trace outside B_s
 7. sign/orientation is chosen from gamma/AB
 8. continuity is used as decorative conservation language
-[WARN] exchange-continuity failure controls stated: RISK
+
+[governance_assessments]
+[INFO] exchange-continuity failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -268,7 +286,9 @@ Recommended next script:
 
 Reason:
   The continuity equation cannot define J_V until the source and relaxation/exchange terms are split and named.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_sigma_R_split_for_volume_exchange.py
 
 ========================================================================================================================
 Final interpretation

@@ -25,7 +25,9 @@ Discipline:
   preserve residual-kill/no-overlap
   preserve boundary neutrality
   keep recovery checks downstream
-[WARN] acceleration-gradient volume creation problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] acceleration-gradient volume creation problem posed -- requires covariant frame, chi-origin, neutrality, no-overlap
 
 ========================================================================================================================
 Case 1: Acceleration-gradient inventory
@@ -38,7 +40,7 @@ Form: Sigma_V = chi rho a^mu nabla_mu A
 Role: closest postulate-facing source-driven volume creation candidate
 Allowed if: a^mu, rho, projection, and chi are defined before recovery checks
 Forbidden if: coefficient or projection chosen from gamma_like/AB
-[WARN] AG1: acceleration-gradient target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: covariant acceleration, frame/projection, chi origin
 Consequence: decides whether source-driven companion branch has a real source law
 
@@ -49,7 +51,7 @@ Form: a^mu = u^nu nabla_nu u^mu
 Role: standard covariant acceleration candidate
 Allowed if: u^mu is a physical matter/vacuum flow field, not arbitrary gauge
 Forbidden if: u^mu is chosen to make Sigma_V work
-[WARN] AG2: covariant acceleration definition: CANDIDATE
+Status: CANDIDATE
 Missing: physical definition of u^mu
 Consequence: candidate becomes meaningful only after frame field is specified
 
@@ -60,7 +62,7 @@ Form: a_perp^mu = P^{mu}_{nu}(u_vac) a^nu, grad_perp A = P nabla A
 Role: frame-safe version using local vacuum rest frame
 Allowed if: u_vac^mu is defined by ontology or zeta/vacuum substance
 Forbidden if: vacuum frame is invented as fitting device
-[WARN] AG3: vacuum rest-frame projection: RISK
+Status: RISK
 Missing: u_vac^mu definition
 Consequence: ties directly to earlier missing vacuum frame field
 
@@ -71,7 +73,7 @@ Form: rho a_m^mu nabla_mu A using matter congruence u_m^mu
 Role: matter-based version of acceleration-gradient source
 Allowed if: valid for dust/fluid source and not coordinate velocity
 Forbidden if: used for static matter where a_m is coordinate artifact
-[WARN] AG4: matter-flow projection: CANDIDATE
+Status: CANDIDATE
 Missing: matter model and source current definition
 Consequence: may be local but source-model dependent
 
@@ -82,7 +84,7 @@ Form: Sigma_V = 0 or boundary-neutral for static equilibrium sources unless real
 Role: prevents pure density scalar charge
 Allowed if: static mass does not create independent exterior zeta charge
 Forbidden if: static rho in gradient creates scalar gravity
-[WARN] AG5: static-source safety: REQUIRED
+Status: REQUIRED
 Missing: static-source neutrality proof
 Consequence: ordinary-sector viability depends on this
 
@@ -93,7 +95,7 @@ Form: a^mu nabla_mu A may create or destroy volume depending on sign convention
 Role: tracks physical interpretation of creation versus destruction
 Allowed if: sign is fixed by postulate or exchange law before recovery
 Forbidden if: sign chosen to recover gamma_like
-[FAIL] AG6: sign/orientation ambiguity: UNRESOLVED
+Status: UNRESOLVED
 Missing: creation/destruction sign convention
 Consequence: must be resolved before numerical or recovery claims
 
@@ -104,7 +106,7 @@ Form: chi fixed by ontology/source coupling before gamma/AB checks
 Role: prevents acceleration-gradient law from becoming tuning
 Allowed if: chi has prior normalization or exchange-law origin
 Forbidden if: chi chosen to fix q or gamma_like
-[WARN] AG7: chi-origin requirement: REQUIRED
+Status: REQUIRED
 Missing: chi origin
 Consequence: Sigma_V remains candidate only while chi is not recovery-fit
 
@@ -115,7 +117,7 @@ Form: rho v^i partial_i A is diagnostic only
 Role: prevents toy from becoming parent law
 Allowed if: used only in reduced simulations or intuition
 Forbidden if: used as covariant source law
-[WARN] AG8: coordinate velocity toy rejection: REJECTED
+Status: REJECTED
 Missing: not pursued as parent law
 Consequence: forces covariant/frame-safe expression
 
@@ -126,7 +128,7 @@ Form: source-driven zeta enters metric only through B_s or residual trace killed
 Role: protects zeta companion branch
 Allowed if: residual-kill/no-overlap theorem is attached
 Forbidden if: source-driven zeta remains independent residual metric trace
-[WARN] AG9: residual-kill/no-overlap: REQUIRED
+Status: REQUIRED
 Missing: overlap/residual theorem
 Consequence: prevents zeta from doing both jobs
 
@@ -137,7 +139,7 @@ Form: Q_ext[Sigma_V independent zeta] = 0 or contribution absorbed into B_s
 Role: protects no exterior scalar charge
 Allowed if: neutrality theorem is explicit
 Forbidden if: Sigma_V creates independent exterior scalar charge
-[WARN] AG10: boundary neutrality: REQUIRED
+Status: REQUIRED
 Missing: boundary neutrality proof
 Consequence: prevents acceleration-gradient branch from becoming scalar gravity
 
@@ -148,7 +150,7 @@ Form: after Sigma_V/F_zeta fixed, test gamma_like=1 and AB->1
 Role: ordinary-regime recovery target
 Allowed if: checked after source law and coefficient are fixed
 Forbidden if: used to choose a^mu, projection, or chi
-[WARN] AG11: recovery checks downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after Sigma_V
 Consequence: tests but does not define acceleration-gradient law
 
@@ -159,7 +161,7 @@ Form: define the frame field u^mu/u_vac^mu before refining Sigma_V
 Role: best current bottleneck
 Allowed if: frame is treated as structural prerequisite
 Forbidden if: continuing with undefined acceleration
-[PASS] AG12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: candidate frame-field inventory
 Consequence: next script should inventory frame-field choices for a^mu and projection
 
@@ -180,7 +182,9 @@ Case 2: Compact acceleration-gradient ledger
 | AG10: boundary neutrality | Q_ext[Sigma_V independent zeta] = 0 or contribution absorbed into B_s | REQUIRED | prevents acceleration-gradient branch from becoming scalar gravity |
 | AG11: recovery checks downstream | after Sigma_V/F_zeta fixed, test gamma_like=1 and AB->1 | RECOVERY_TARGET | tests but does not define acceleration-gradient law |
 | AG12: recommended next move | define the frame field u^mu/u_vac^mu before refining Sigma_V | RECOMMENDED | next script should inventory frame-field choices for a^mu and projection |
-[WARN] compact acceleration-gradient ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact acceleration-gradient ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -199,7 +203,9 @@ Interpretation:
   u^mu or u_vac^mu is now the bottleneck.
   Static-source safety, chi-origin, no-overlap, and boundary neutrality are mandatory.
   Coordinate velocity remains rejected as a parent law.
-[WARN] acceleration-gradient status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] acceleration-gradient status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Minimal candidate form
@@ -219,7 +225,9 @@ Open choices:
 3. What fixes chi?
 4. What makes static sources neutral?
 5. How does zeta enter B_s without residual trace overlap?
-[WARN] minimal acceleration-gradient form stated: CANDIDATE
+
+[governance_assessments]
+[INFO] minimal acceleration-gradient form stated -- candidate route recorded
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -236,7 +244,9 @@ Consequence:
 
 Bad failure:
   keep using acceleration-gradient language while u^mu and chi remain undefined.
-[WARN] acceleration-gradient good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] acceleration-gradient good failure stated -- deferred pending frame and chi
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -252,7 +262,9 @@ Acceleration-gradient branch fails if:
 7. zeta residual trace remains metric-active
 8. boundary neutrality is absent
 9. no-overlap theorem is absent
-[WARN] acceleration-gradient failure controls stated: RISK
+
+[governance_assessments]
+[INFO] acceleration-gradient failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -274,7 +286,9 @@ Recommended next script:
 
 Reason:
   The acceleration-gradient branch cannot proceed until u^mu/u_vac^mu and projection are defined.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_volume_creation_frame_field_inventory.py
 
 ========================================================================================================================
 Final interpretation

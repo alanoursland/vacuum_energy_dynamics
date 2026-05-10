@@ -22,7 +22,9 @@ Discipline:
   do not allow A_rad
   do not allow rho-sourced kappa
   do not confuse static multipoles with scalar radiation
-[WARN] scalar constraint-not-radiation problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] scalar constraint-not-radiation problem posed -- scalar sector requirements open
 
 ========================================================================================================================
 Case 1: Scalar requirement inventory
@@ -34,7 +36,7 @@ S1: scalar source routes to A
 Requirement: rho / scalar charge feeds the A-sector constraint.
 Target form: P_scalar[T] -> rho_eff -> Delta_areal A = 8*pi*G*rho/c^2
 Forbidden form: rho feeds A_rad or independent kappa charge.
-[PASS] S1: scalar source routes to A: DERIVED_REDUCED
+[INFO] S1: scalar source routes to A: DERIVED_REDUCED
 Risk: Scalar source leaks into forbidden scalar sectors.
 Missing: Parent definition of rho_eff and P_scalar.
 
@@ -44,7 +46,7 @@ S2: A is constraint, not Box A
 Requirement: A must remain elliptic/constraint-like in ordinary gravity.
 Target form: C_A[A,rho]=0 with constraint propagation from continuity
 Forbidden form: Box A = alpha*rho
-[WARN] S2: A is constraint, not Box A: CONSTRAINED
+[INFO] S2: A is constraint, not Box A: CONSTRAINED
 Risk: Ordinary scalar gravitational radiation appears.
 Missing: Continuity-compatible constraint propagation identity.
 
@@ -54,7 +56,7 @@ S3: A_rad ordinary massless source vanishes
 Requirement: The ordinary long-range scalar radiative channel is absent.
 Target form: source(A_rad ordinary massless)=0
 Forbidden form: Box A_rad = source
-[WARN] S3: A_rad ordinary massless source vanishes: REJECTED
+[INFO] S3: A_rad ordinary massless source vanishes: REJECTED
 Risk: Breathing radiation channel.
 Missing: Parent mechanism proving scalar radiation exclusion.
 
@@ -64,7 +66,7 @@ S4: rho does not source long-range kappa
 Requirement: rho must not create independent exterior kappa charge.
 Target form: S_kappa[rho]=0 and Q_kappa=0
 Forbidden form: kappa_ext ~ 1/r from rho
-[WARN] S4: rho does not source long-range kappa: CONSTRAINED
+[INFO] S4: rho does not source long-range kappa: CONSTRAINED
 Risk: Scalar double-counting and second exterior scalar field.
 Missing: Parent projection or boundary cancellation identity.
 
@@ -74,7 +76,7 @@ S5: trace does not become scalar radiation
 Requirement: Trace/pressure may shift kappa_min but must not source Box kappa or A_rad.
 Target form: trace -> kappa_min; dot kappa = -mu*K*(kappa-kappa_min)
 Forbidden form: Box kappa = alpha*trace
-[WARN] S5: trace does not become scalar radiation: STRUCTURAL
+[INFO] S5: trace does not become scalar radiation: STRUCTURAL
 Risk: Hidden breathing mode.
 Missing: P_trace/P_relax parent identity.
 
@@ -84,7 +86,7 @@ S6: scalar continuity drives constraint update
 Requirement: Time-dependent rho updates A through continuity, not through scalar radiation.
 Target form: partial_t C_A[A,rho] implied by partial_t rho + div j_L = 0
 Forbidden form: add scalar wave dynamics to make A causal by hand
-[FAIL] S6: scalar continuity drives constraint update: MISSING
+[INFO] S6: scalar continuity drives constraint update: MISSING
 Risk: Constraint becomes inconsistent for moving sources.
 Missing: Reduced or parent constraint-propagation equation.
 
@@ -94,7 +96,7 @@ S7: exterior scalar charge equals A-sector mass
 Requirement: The only ordinary exterior scalar charge is M_ext in A.
 Target form: A_ext = 1 - 2*G*M_ext/(c^2*r)
 Forbidden form: additional scalar 1/r tails from A_rad or kappa
-[PASS] S7: exterior scalar charge equals A-sector mass: DERIVED_REDUCED
+[INFO] S7: exterior scalar charge equals A-sector mass: DERIVED_REDUCED
 Risk: Multiple scalar charges in exterior vacuum.
 Missing: Parent mass-flux charge conservation.
 
@@ -104,7 +106,7 @@ S8: scalar projector survives weak multipoles
 Requirement: P_scalar must support weak nonspherical Newtonian multipoles without scalar radiation.
 Target form: A ~= 1 + 2*Phi/c^2; nabla^2 Phi = 4*pi*G*rho
 Forbidden form: weak scalar waves sourced by ordinary matter
-[PASS] S8: scalar projector survives weak multipoles: DERIVED_REDUCED
+[INFO] S8: scalar projector survives weak multipoles: DERIVED_REDUCED
 Risk: Static weak multipoles confused with scalar radiation.
 Missing: Full nonspherical parent constraint.
 
@@ -114,7 +116,7 @@ S9: scalar sector recombination counted once
 Requirement: A's scalar response must not be duplicated in kappa or spatial metric trace.
 Target form: P_recombination counts scalar response exactly once
 Forbidden form: A and kappa both represent the same scalar mass response
-[FAIL] S9: scalar sector recombination counted once: UNRESOLVED
+[INFO] S9: scalar sector recombination counted once: UNRESOLVED
 Risk: Silent scalar double-counting in metric map.
 Missing: Recombination projector.
 
@@ -132,7 +134,9 @@ Case 2: Compact scalar constraint ledger
 | S7: exterior scalar charge equals A-sector mass | A_ext = 1 - 2*G*M_ext/(c^2*r) | additional scalar 1/r tails from A_rad or kappa | DERIVED_REDUCED | Parent mass-flux charge conservation. |
 | S8: scalar projector survives weak multipoles | A ~= 1 + 2*Phi/c^2; nabla^2 Phi = 4*pi*G*rho | weak scalar waves sourced by ordinary matter | DERIVED_REDUCED | Full nonspherical parent constraint. |
 | S9: scalar sector recombination counted once | P_recombination counts scalar response exactly once | A and kappa both represent the same scalar mass response | UNRESOLVED | Recombination projector. |
-[WARN] compact scalar ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact scalar ledger produced -- 9 scalar sector requirements recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -148,7 +152,9 @@ Interpretation:
   The static/reduced scalar sector is strong.
   The missing piece is scalar constraint propagation for time-dependent sources.
   Recombination remains unresolved.
-[WARN] scalar status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] scalar status count produced -- {'DERIVED_REDUCED': 3, 'CONSTRAINED': 2, 'REJECTED': 1, 'STRUCTURAL': 1, 'MISSING': 1, 'UNRESOLVED': 1}
 
 ========================================================================================================================
 Case 4: Candidate scalar identity shape
@@ -167,7 +173,9 @@ with reduced content:
 This would make scalar non-radiation structural rather than imposed.
 
 This is currently a target, not a derivation.
-[FAIL] candidate scalar identity shape stated: MISSING
+
+[unresolved_obligations]
+[OBLIGATION] candidate scalar identity shape stated -- scalar identity shape remains a theorem target
 
 ========================================================================================================================
 Case 5: Failure controls
@@ -181,7 +189,9 @@ The scalar sector fails if:
 5. scalar constraint cannot update with moving sources.
 6. weak static multipoles are used to justify scalar waves.
 7. recombination counts scalar response twice.
-[WARN] scalar failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] scalar failure controls stated -- failure controls policy-guarded
 
 ========================================================================================================================
 Case 6: Next tests
@@ -203,7 +213,9 @@ Recommended next script:
 
 Reason:
   Scalar A is protected by constraints; now kappa's first-order relaxation must be frame/covariance audited.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[DEFER] next test selected -- kappa covariant relaxation script is the next gate
 
 ========================================================================================================================
 Final interpretation

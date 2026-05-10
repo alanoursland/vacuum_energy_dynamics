@@ -22,7 +22,9 @@ Discipline:
   exterior mass flux remains protected
   ordinary Sigma_creation remains zero
   no kappa momentum channel appears by accident
-[WARN] relaxation energy accounting problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] relaxation energy accounting problem posed -- E_vac_config definition required
 
 ========================================================================================================================
 Case 1: Relaxation energy requirement inventory
@@ -34,7 +36,7 @@ E1: relaxation is exchange, not destruction
 Requirement: Gamma_relax must move imbalance into a vacuum configuration variable.
 Candidate form: Gamma_relax -> dE_vac_config/dtau
 Forbidden form: Gamma_relax removes energy with no destination
-[WARN] E1: relaxation is exchange, not destruction: REQUIRED
+[INFO] E1: relaxation is exchange, not destruction: REQUIRED
 Risk: Cosmetic damping / energy nonconservation.
 Missing: Definition of E_vac_config.
 
@@ -44,7 +46,7 @@ E2: kappa relaxation has an energy functional
 Requirement: Kappa should relax down a local vacuum configuration energy.
 Candidate form: E_kappa = 1/2*K_kappa*(kappa-kappa_min)^2
 Forbidden form: first-order relaxation without stored/free energy
-[WARN] E2: kappa relaxation has an energy functional: CANDIDATE
+[INFO] E2: kappa relaxation has an energy functional: CANDIDATE
 Risk: Relaxation law becomes phenomenological damping.
 Missing: Derivation of K_kappa and measure/volume element.
 
@@ -54,7 +56,7 @@ E3: monotonic local relaxation but conserved total accounting
 Requirement: Kappa local free energy may decrease, but total vacuum/matter accounting must close.
 Candidate form: dE_kappa/dtau <= 0, while d(E_total)/dtau = 0 in ordinary closed regime
 Forbidden form: local damping interpreted as total energy loss
-[WARN] E3: monotonic local relaxation but conserved total accounting: REQUIRED
+[INFO] E3: monotonic local relaxation but conserved total accounting: REQUIRED
 Risk: Energy disappears from the closed system.
 Missing: Destination reservoir and total balance identity.
 
@@ -64,7 +66,7 @@ E4: exterior mass remains fixed under relaxation
 Requirement: Relaxation energy accounting must not alter exterior A-sector mass flux incorrectly.
 Candidate form: delta M_ext|Gamma_relax = 0 for internal trace relaxation
 Forbidden form: relaxation changes exterior 1/r coefficient without source flux
-[WARN] E4: exterior mass remains fixed under relaxation: CONSTRAINED
+[INFO] E4: exterior mass remains fixed under relaxation: CONSTRAINED
 Risk: Hidden mass tuning through damping.
 Missing: Boundary mass/energy separation theorem.
 
@@ -74,7 +76,7 @@ E5: ordinary closed regime excludes creation
 Requirement: Relaxation must not secretly act as Sigma_creation.
 Candidate form: Sigma_creation=0; Gamma_relax internal exchange only
 Forbidden form: Gamma_relax creates/destroys net vacuum energy in ordinary regime
-[WARN] E5: ordinary closed regime excludes creation: CONSTRAINED
+[INFO] E5: ordinary closed regime excludes creation: CONSTRAINED
 Risk: Active-regime leakage.
 Missing: Active/ordinary regime separation.
 
@@ -84,7 +86,7 @@ E6: trace minimum stores configuration displacement
 Requirement: A shift in kappa_min must correspond to a shifted local minimum, not a direct radiative source.
 Candidate form: kappa_min = chi_kappa*S_trace_effective; E_kappa centered at kappa_min
 Forbidden form: trace source pumps Box kappa radiation
-[WARN] E6: trace minimum stores configuration displacement: STRUCTURAL
+[INFO] E6: trace minimum stores configuration displacement: STRUCTURAL
 Risk: Trace becomes breathing radiation.
 Missing: Source law for S_trace_effective and chi_kappa.
 
@@ -94,7 +96,7 @@ E7: no kappa momentum reservoir
 Requirement: First-order relaxation must avoid independent kappa kinetic energy unless separately derived.
 Candidate form: no 1/2*(u^mu nabla_mu kappa)^2 propagating energy term
 Forbidden form: second-order oscillator/sloshing kappa channel
-[WARN] E7: no kappa momentum reservoir: CONSTRAINED
+[INFO] E7: no kappa momentum reservoir: CONSTRAINED
 Risk: Hidden breathing wave / scalar radiation.
 Missing: Parent reason for non-inertial kappa.
 
@@ -104,7 +106,7 @@ E8: vacuum configuration variable must be named
 Requirement: The destination of relaxation energy must be a variable or constrained functional.
 Candidate form: E_vac_config[A,kappa,boundary,q_v] or q_v/J_v balance
 Forbidden form: unnamed reservoir invoked only when needed
-[FAIL] E8: vacuum configuration variable must be named: MISSING
+[INFO] E8: vacuum configuration variable must be named: MISSING
 Risk: Repair reservoir / unfalsifiable accounting.
 Missing: Definition of q_v, E_vac_config, or equivalent.
 
@@ -114,7 +116,7 @@ E9: recombination must not double-count relaxation energy
 Requirement: Energy stored in kappa/trace relaxation must not also be counted as A-sector mass response.
 Candidate form: rho -> A mass flux; trace displacement -> E_vac_config/kappa sector
 Forbidden form: same stress energy contributes independently to A mass and kappa stored energy as exterior charge
-[WARN] E9: recombination must not double-count relaxation energy: REQUIRED
+[INFO] E9: recombination must not double-count relaxation energy: REQUIRED
 Risk: Scalar/energy double-counting.
 Missing: Parent source decomposition and recombination accounting.
 
@@ -124,7 +126,7 @@ E10: near-boundary smoothing energy remains diagnostic
 Requirement: Joint-minimum smoothing energy cannot be used as an observational claim until closure.
 Candidate form: E_joint diagnostic with fixed M_ext and no prediction claim
 Forbidden form: boundary smoothing energy predicts measurable deviation without weights/recombination
-[WARN] E10: near-boundary smoothing energy remains diagnostic: CONSTRAINED
+[INFO] E10: near-boundary smoothing energy remains diagnostic: CONSTRAINED
 Risk: Near-boundary overclaim.
 Missing: Weights, sigma, observable map, closure.
 
@@ -143,7 +145,9 @@ Case 2: Compact relaxation energy ledger
 | E8: vacuum configuration variable must be named | E_vac_config[A,kappa,boundary,q_v] or q_v/J_v balance | unnamed reservoir invoked only when needed | MISSING | Definition of q_v, E_vac_config, or equivalent. |
 | E9: recombination must not double-count relaxation energy | rho -> A mass flux; trace displacement -> E_vac_config/kappa sector | same stress energy contributes independently to A mass and kappa stored energy as exterior charge | REQUIRED | Parent source decomposition and recombination accounting. |
 | E10: near-boundary smoothing energy remains diagnostic | E_joint diagnostic with fixed M_ext and no prediction claim | boundary smoothing energy predicts measurable deviation without weights/recombination | CONSTRAINED | Weights, sigma, observable map, closure. |
-[WARN] compact relaxation energy ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact relaxation energy ledger produced -- 10 energy accounting requirements recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -158,7 +162,9 @@ Interpretation:
   A kappa free-energy form is plausible but not derived.
   The missing object is the vacuum configuration energy variable/reservoir.
   The accounting must preserve exterior mass and ordinary closed-regime conservation.
-[WARN] relaxation energy status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] relaxation energy status count produced -- {'REQUIRED': 3, 'CANDIDATE': 1, 'CONSTRAINED': 4, 'STRUCTURAL': 1, 'MISSING': 1}
 
 ========================================================================================================================
 Case 4: Candidate relaxation energy form
@@ -184,7 +190,9 @@ But the lost local free energy must go somewhere:
   dE_vac_config/dtau = -dE_kappa/dtau
 
 This is candidate accounting, not yet a parent identity.
-[WARN] candidate kappa energy form stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] candidate kappa energy form stated -- candidate only; K_kappa and E_vac_config undefined
 
 ========================================================================================================================
 Case 5: Required total balance
@@ -201,7 +209,9 @@ with:
   no Box kappa
 
 This is a requirement, not a derivation.
-[WARN] required total balance stated: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] required total balance stated -- total balance identity not yet derived
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -215,7 +225,9 @@ Relaxation energy accounting fails if:
 5. Kappa gains a kinetic/momentum channel and becomes radiative.
 6. Trace minimum energy is counted again as A-sector exterior mass.
 7. Boundary smoothing energy is advertised as prediction before closure.
-[WARN] relaxation energy failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] relaxation energy failure controls stated -- failure controls policy-guarded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -237,7 +249,9 @@ Recommended next script:
 
 Reason:
   The missing energy variable is named; now update the parent scaffold with all group-12 constraints.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[DEFER] next test selected -- parent identity template v2 is the next gate
 
 ========================================================================================================================
 Final interpretation

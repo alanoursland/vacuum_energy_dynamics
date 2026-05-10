@@ -22,7 +22,6 @@ Discipline:
 
   do not claim observability yet
   define a deviation diagnostic only
-[WARN] joint minimum energy-functional problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Define toy energy density
@@ -39,7 +38,6 @@ Interpretation:
   W_ext anchors to exterior tendency
   lambda_1 penalizes slope strain
   lambda_2 penalizes curvature jumps / sharp bending
-[WARN] toy energy density defined: PLAUSIBLE — weights not derived
 
 ========================================================================================================================
 Case 2: Euler-Lagrange equation with second-derivative term
@@ -56,7 +54,6 @@ The lambda_2 term makes the toy minimizer fourth-order.
 That is expected for curvature-smoothing energy.
 
 Boundary conditions must therefore be handled carefully.
-[PASS] Euler-Lagrange equation computed: DERIVED_REDUCED — toy variational structure only
 
 ========================================================================================================================
 Case 3: Simplified constant-weight equation
@@ -72,7 +69,6 @@ Equivalent:
 
 This shows the minimizer is pulled toward both tendencies while
 smoothness terms distribute the mismatch.
-[PASS] constant-weight minimizer equation stated: DERIVED_REDUCED — still toy model
 
 ========================================================================================================================
 Case 4: Interior/exterior tendencies
@@ -87,7 +83,6 @@ f_ext = -M/r + 1
 
 In the energy model, these are not manually spliced.
 They are competing attractors/minima with radial weights.
-[WARN] interior/exterior attractors stated: PLAUSIBLE — physical identification still open
 
 ========================================================================================================================
 Case 5: Weight functions
@@ -109,7 +104,6 @@ A possible logistic weight:
 This avoids a hard seam but introduces sigma.
 
 sigma would control the near-boundary deviation width.
-[WARN] smooth radial weights proposed: PLAUSIBLE — sigma/weights not derived
 
 ========================================================================================================================
 Case 6: Deviation diagnostic
@@ -130,7 +124,6 @@ Possible derived diagnostics later:
 
 Current status:
   diagnostic named, not predicted.
-[WARN] near-boundary deviation diagnostic defined: CONSTRAINED_BY_IDENTITY — no magnitude prediction yet
 
 ========================================================================================================================
 Case 7: Measurement caution
@@ -154,7 +147,6 @@ Likely location of largest deviation:
 Likely status:
 
   theoretical effect first, possible niche experimental target later
-[WARN] measurement caution stated: CONSTRAINED_BY_IDENTITY — do not overclaim
 
 ========================================================================================================================
 Case 8: GR-deviation hierarchy
@@ -168,7 +160,6 @@ Case 8: GR-deviation hierarchy
 | radiation sector | no breathing wave from kappa |
 
 This hierarchy keeps the model from claiming broad GR violation.
-[WARN] GR-deviation hierarchy stated: PLAUSIBLE — requires quantitative model
 
 ========================================================================================================================
 Case 9: Failure controls
@@ -182,7 +173,6 @@ The variational joint-minimum model fails if:
 5. kappa and A variables are mixed without a recombination rule.
 6. fourth-order smoothing introduces unphysical boundary modes.
 7. near-boundary deviation is claimed without observable definition.
-[WARN] energy-functional failure controls stated: RISK — quantitative discipline required
 
 ========================================================================================================================
 Case 10: Classification
@@ -197,7 +187,6 @@ Case 10: Classification
 | near-boundary deviation diagnostic | CONSTRAINED_BY_IDENTITY |
 | observability | UNKNOWN |
 | final prediction | UNFINISHED |
-[WARN] joint minimum energy-functional classification produced: CONSTRAINED_BY_IDENTITY — variational toy model, not prediction
 
 ========================================================================================================================
 Case 11: Next tests
@@ -220,7 +209,6 @@ Recommended next script:
 Reason:
   If deviation from GR is possible, define what would deviate before
   claiming magnitude or measurability.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — diagnostic before prediction
 
 ========================================================================================================================
 Final interpretation
@@ -241,3 +229,17 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_near_boundary_deviation_diagnostic.py
+
+[sample_results]
+[PASS] Euler-Lagrange fourth-order structure computed (toy) -- sample - arbitrary weights
+[PASS] constant-weight EL schematic stated -- sample - toy model
+[PASS] deviation diagnostic delta defined symbolically -- no magnitude
+
+[governance_assessments]
+[OBLIGATION] observable coupling for deviation -- missing
+[OBLIGATION] weights W_int, W_ext -- not derived
+[OBLIGATION] transition width sigma -- not derived
+[PASS] no observability claim made -- discipline maintained
+
+[unresolved_obligations]
+[OBLIGATION] derive observable coupling for joint minimum deviation -- open

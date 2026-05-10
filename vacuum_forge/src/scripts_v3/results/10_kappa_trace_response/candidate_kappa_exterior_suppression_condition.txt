@@ -19,7 +19,6 @@ Reason:
 Question:
 
   What mechanism forces or permits kappa = 0 in exterior vacuum?
-[WARN] exterior suppression problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Exterior relation to Schwarzschild reconstruction
@@ -38,7 +37,6 @@ Thus:
   B = 1/A
 
 This is required for the reconstructed static exterior.
-[PASS] exterior kappa=0 recovers reciprocal metric factor: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 2: Suppression mechanism inventory
@@ -47,7 +45,7 @@ Case 2: Suppression mechanism inventory
 ----------------------------------------------------------------------------------------------------
 S1: Boundary-only suppression
 ----------------------------------------------------------------------------------------------------
-[WARN] S1: Boundary-only suppression: PLAUSIBLE
+Status: PLAUSIBLE
 Mechanism: S_trace = 0 outside and kappa(infinity)=0
 Reason: For a massless elliptic kappa equation, exterior vacuum plus boundary conditions may force kappa=0 if no boundary flux is supplied.
 Risk: Boundary-only suppression may fail if interior matching induces a 1/r kappa tail.
@@ -55,7 +53,7 @@ Risk: Boundary-only suppression may fail if interior matching induces a 1/r kapp
 ----------------------------------------------------------------------------------------------------
 S2: Massive/restoring suppression
 ----------------------------------------------------------------------------------------------------
-[WARN] S2: Massive/restoring suppression: PLAUSIBLE
+Status: PLAUSIBLE
 Mechanism: -K_k Delta kappa + m_k^2 kappa = alpha_k S_trace
 Reason: A restoring/mass term gives Yukawa-like decay outside matter and can drive kappa toward zero.
 Risk: Introduces new scale m_k and may imply an extra scalar mode unless handled as constrained/relaxational.
@@ -63,7 +61,7 @@ Risk: Introduces new scale m_k and may imply an extra scalar mode unless handled
 ----------------------------------------------------------------------------------------------------
 S3: Constraint projection
 ----------------------------------------------------------------------------------------------------
-[WARN] S3: Constraint projection: CONSTRAINED_BY_IDENTITY
+Status: CONSTRAINED_BY_IDENTITY
 Mechanism: kappa is not an independent exterior degree of freedom
 Reason: This best protects the static exterior: kappa is allowed as an interior trace response but projected out in source-free exterior.
 Risk: Requires a parent constraint identity; otherwise it is imposed by hand.
@@ -71,7 +69,7 @@ Risk: Requires a parent constraint identity; otherwise it is imposed by hand.
 ----------------------------------------------------------------------------------------------------
 S4: Gauge fixing
 ----------------------------------------------------------------------------------------------------
-[WARN] S4: Gauge fixing: RISK
+Status: RISK
 Mechanism: exterior areal/static gauge sets kappa = 0
 Reason: Some kappa behavior may be gauge-volume artifact in areal/static reductions.
 Risk: If kappa is only gauge, interior physical interpretation is weakened. If it is physical, gauge fixing cannot be the whole mechanism.
@@ -79,7 +77,7 @@ Risk: If kappa is only gauge, interior physical interpretation is weakened. If i
 ----------------------------------------------------------------------------------------------------
 S5: Relaxation to vacuum minimum
 ----------------------------------------------------------------------------------------------------
-[WARN] S5: Relaxation to vacuum minimum: PLAUSIBLE
+Status: PLAUSIBLE
 Mechanism: dot kappa = -Gamma_kappa kappa or damped relaxation
 Reason: Vacuum relaxation can drive trace deviations back to kappa=0 after matter/source support disappears.
 Risk: Relaxation law must not introduce propagating scalar radiation or erase static A_constraint.
@@ -87,7 +85,7 @@ Risk: Relaxation law must not introduce propagating scalar radiation or erase st
 ----------------------------------------------------------------------------------------------------
 S6: Compact source support only
 ----------------------------------------------------------------------------------------------------
-[WARN] S6: Compact source support only: PLAUSIBLE
+Status: PLAUSIBLE
 Mechanism: S_trace has compact support inside matter
 Reason: Pressure/stress trace vanishes outside matter, so kappa source naturally turns off in exterior.
 Risk: Source compactness alone does not prevent homogeneous exterior tails.
@@ -107,7 +105,6 @@ Boundary condition kappa(infinity)=0 sets C0 = 0.
 But a 1/r tail remains unless C1 = 0.
 
 Therefore boundary-only suppression requires no kappa flux at the surface.
-[WARN] massless exterior permits 1/r tail: RISK — must set exterior kappa charge/flux to zero
 
 ========================================================================================================================
 Case 4: Massive/restoring exterior decay
@@ -123,7 +120,6 @@ kappa_ext = C*exp(-m*r)/r
 This suppresses long-range kappa tails.
 
 But m_k is a new scale and must be derived or constrained.
-[WARN] massive/restoring term suppresses exterior tail: PLAUSIBLE — m_k not derived
 
 ========================================================================================================================
 Case 5: Constraint projection policy
@@ -141,7 +137,6 @@ Symbolically:
   kappa_ext = 0
 
 This is clean only if a parent identity enforces it.
-[WARN] constraint projection is exterior-safe: CONSTRAINED_BY_IDENTITY — parent identity missing
 
 ========================================================================================================================
 Case 6: Best current suppression policy
@@ -161,7 +156,6 @@ Most conservative exterior condition:
   F_kappa_ext = 4*pi r^2 kappa' = 0
 
 This prevents a long-range scalar trace field.
-[WARN] best current suppression policy stated: CONSTRAINED_BY_IDENTITY — mechanism not fully derived
 
 ========================================================================================================================
 Case 7: Classification table
@@ -182,7 +176,6 @@ Current preferred combination:
 Optional:
 
   massive/restoring suppression if derived
-[WARN] suppression classification produced: CONSTRAINED_BY_IDENTITY — exterior kappa=0 requires zero charge/flux or projection
 
 ========================================================================================================================
 Case 8: Failure controls
@@ -195,7 +188,6 @@ Exterior suppression fails if:
 4. gauge fixing is mistaken for physical suppression.
 5. interior kappa matching creates nonzero exterior kappa flux.
 6. parent identity does not explain why exterior kappa charge vanishes.
-[WARN] suppression failure controls stated: RISK — must preserve Schwarzschild exterior
 
 ========================================================================================================================
 Case 9: Next tests
@@ -217,7 +209,6 @@ Recommended next script:
 
 Reason:
   After exterior suppression, the next issue is the interior source.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — interior pressure/trace model is next
 
 ========================================================================================================================
 Final interpretation
@@ -242,3 +233,14 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_pressure_trace_model.py
+
+[derived_results]
+[PASS] kappa=0 recovers AB=1 exterior metric factor -- residual = 0
+
+[governance_assessments]
+[DEFER] exterior suppression mechanism -- not yet selected from candidates
+[FAIL] massless kappa 1/r tail risk -- open risk if exterior charge not zero
+
+[unresolved_obligations]
+[OBLIGATION] derive exterior suppression mechanism -- open
+[OBLIGATION] derive m_k if restoring term used -- open

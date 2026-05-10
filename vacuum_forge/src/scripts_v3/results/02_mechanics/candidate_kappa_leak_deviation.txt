@@ -2,7 +2,6 @@
 ========================================================================================================
 Candidate Kappa-Leak Deviation
 ========================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - reduced_action_stationary_solution: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 

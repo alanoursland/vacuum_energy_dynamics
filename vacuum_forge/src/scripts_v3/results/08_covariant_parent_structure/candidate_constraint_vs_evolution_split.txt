@@ -113,8 +113,6 @@ Key risks:
 4. If gauge modes are mistaken for physical modes, the sector count is wrong.
 5. If conservation identities are missing, source coupling may be inconsistent.
 
-[WARN] consistency risks identified: RISK — these risks must be handled by parent structure
-
 ========================================================================================================================
 Case 6: Parent target split
 ========================================================================================================================
@@ -174,3 +172,16 @@ Possible next artifact:
 
 Possible next script:
   candidate_gauge_structure_requirements.py
+
+[governance_assessments]
+[PASS] satisfied reduced: 2 -- A_constraint and h_ij^TT have strong reduced support
+[DEFER] partial: 3 -- A_rad, kappa, W_i partial only
+[FAIL] missing: 2 -- gauge sector and conservation identities missing
+[DEFER] sector split map provisional -- pending gauge and conservation derivations
+
+[unresolved_obligations]
+[OBLIGATION] derive A_rad suppression mechanism for split -- open proof obligation recorded
+[OBLIGATION] derive kappa source and exterior suppression -- open proof obligation recorded
+[OBLIGATION] derive W_i equation type -- open proof obligation recorded
+[OBLIGATION] derive gauge sector variables and transformations -- open proof obligation recorded
+[OBLIGATION] derive conservation identity for split -- open proof obligation recorded

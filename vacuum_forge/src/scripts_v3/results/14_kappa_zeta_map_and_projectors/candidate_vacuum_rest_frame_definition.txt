@@ -25,7 +25,9 @@ Discipline:
   keep chi-origin separate
   preserve boundary neutrality and no-overlap
   close the group if u_vac cannot be defined
-[WARN] vacuum rest frame definition problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] vacuum rest frame definition problem posed -- requires ontology-derived u_vac^mu
 
 ========================================================================================================================
 Case 1: Vacuum rest frame definition inventory
@@ -38,7 +40,7 @@ Definition: u_vac^mu is derived from vacuum substance / zeta / volume configurat
 Role: core ontology-native frame target
 Allowed if: definition is independent of recovery checks
 Forbidden if: u_vac is invented to make Sigma_V work
-[WARN] VF1: vacuum frame theorem target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: actual definition of u_vac^mu
 Consequence: decides whether acceleration-gradient source law can proceed
 
@@ -49,7 +51,7 @@ Definition: u_vac^mu parallel to normalized timelike gradient of zeta, if grad z
 Role: local scalar-clock candidate
 Allowed if: nabla_mu zeta is timelike and nonzero in the regime of interest
 Forbidden if: used where zeta gradient is spacelike/null/zero or gauge-dependent
-[WARN] VF2: zeta-gradient normal candidate: RISK
+Status: RISK
 Missing: causal character and slicing/gauge status of zeta
 Consequence: may fail in static or equilibrium regions where zeta has no usable time gradient
 
@@ -60,7 +62,7 @@ Definition: u_vac^mu = J_V^mu / sqrt(-J_V^2), with J_V a vacuum-volume flux curr
 Role: best physical-flow candidate if J_V exists
 Allowed if: J_V is defined by volume exchange law before recovery checks
 Forbidden if: J_V is invented after choosing u_vac
-[WARN] VF3: vacuum volume current candidate: CANDIDATE
+Status: CANDIDATE
 Missing: explicit J_V^mu
 Consequence: strongest route if volume exchange supplies a real current
 
@@ -71,7 +73,7 @@ Definition: u_vac is frame in which local vacuum volume flux vanishes / zeta con
 Role: rest-frame-by-equilibrium definition
 Allowed if: vacuum equilibrium condition is defined invariantly
 Forbidden if: equilibrium frame is just chosen coordinates
-[WARN] VF4: local equilibrium frame candidate: CANDIDATE
+Status: CANDIDATE
 Missing: invariant rest/equilibrium criterion
 Consequence: may define u_vac in static regions without scalar time gradient
 
@@ -82,7 +84,7 @@ Definition: u_vac^mu = n^mu normal to preferred zeta/vacuum-volume foliation
 Role: mathematical diagnostic candidate
 Allowed if: foliation is physically defined by vacuum ontology
 Forbidden if: n^mu is arbitrary ADM/gauge slicing
-[WARN] VF5: hypersurface-normal diagnostic: CONSTRAINED
+Status: CONSTRAINED
 Missing: physical foliation rule
 Consequence: diagnostic only unless vacuum ontology picks the slices
 
@@ -93,7 +95,7 @@ Definition: u_vac^mu = u_m^mu in tightly coupled matter/vacuum equilibrium
 Role: fallback branch where vacuum is dragged by matter
 Allowed if: matter-vacuum locking is derived and not assumed generally
 Forbidden if: used to choose matter frame by convenience
-[WARN] VF6: matter-comoving fallback: RISK
+Status: RISK
 Missing: matter-vacuum locking law
 Consequence: may collapse back to matter-frame source-model dependence
 
@@ -104,7 +106,7 @@ Definition: u_vac chosen as convenient background rest frame
 Role: forbidden shortcut
 Allowed if: never as parent definition
 Forbidden if: used to make acceleration-gradient branch work
-[WARN] VF7: arbitrary preferred frame: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: would introduce an unsupported preferred frame
 
@@ -115,7 +117,7 @@ Definition: u_vac definition yields Sigma_V static-neutral or boundary-neutral a
 Role: ordinary-sector safety requirement
 Allowed if: static source does not create independent exterior zeta charge
 Forbidden if: vacuum frame creates scalar charge around static mass
-[WARN] VF8: static-source neutrality requirement: REQUIRED
+Status: REQUIRED
 Missing: static neutrality theorem
 Consequence: kills u_vac definitions that create ordinary scalar gravity
 
@@ -126,7 +128,7 @@ Definition: u_vac and projection fix sign of a_vac dot grad A as creation/destru
 Role: resolves source-law orientation ambiguity
 Allowed if: sign follows from vacuum-volume exchange convention
 Forbidden if: sign is chosen from gamma/AB recovery
-[FAIL] VF9: sign/orientation rule: UNRESOLVED
+Status: UNRESOLVED
 Missing: creation/destruction orientation rule
 Consequence: needed before numerical or recovery claims
 
@@ -137,7 +139,7 @@ Definition: u_vac definition does not determine chi by recovery fitting
 Role: prevents frame from hiding coefficient origin
 Allowed if: chi remains separately derived from exchange/source coupling
 Forbidden if: normalization of u_vac/J_V absorbs chi tuning
-[WARN] VF10: chi-origin dependency: REQUIRED
+Status: REQUIRED
 Missing: chi origin
 Consequence: u_vac alone does not complete Sigma_V
 
@@ -148,7 +150,7 @@ Definition: source-driven zeta is boundary-neutral and enters metric only throug
 Role: protects exterior neutrality and count-once recombination
 Allowed if: boundary neutrality and residual-kill/no-overlap theorems are attached
 Forbidden if: u_vac route creates independent residual metric trace
-[WARN] VF11: boundary/no-overlap requirements: REQUIRED
+Status: REQUIRED
 Missing: boundary/no-overlap proof
 Consequence: even a defined u_vac fails if accounting fails
 
@@ -159,7 +161,7 @@ Definition: try volume-current J_V definition first; otherwise closure summary
 Role: best current branch decision
 Allowed if: J_V is treated as required structure, not decoration
 Forbidden if: continuing with unnamed vacuum frame
-[PASS] VF12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: volume-current definition or group closure
 Consequence: next script should either define J_V or close Group 14 with u_vac as bottleneck
 
@@ -180,7 +182,9 @@ Case 2: Compact vacuum-frame ledger
 | VF10: chi-origin dependency | u_vac definition does not determine chi by recovery fitting | REQUIRED | u_vac alone does not complete Sigma_V |
 | VF11: boundary/no-overlap requirements | source-driven zeta is boundary-neutral and enters metric only through B_s | REQUIRED | even a defined u_vac fails if accounting fails |
 | VF12: recommended next move | try volume-current J_V definition first; otherwise closure summary | RECOMMENDED | next script should either define J_V or close Group 14 with u_vac as bottleneck |
-[WARN] compact vacuum-frame ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact vacuum-frame ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -200,7 +204,9 @@ Interpretation:
   volume-current J_V is the strongest candidate if the exchange law supplies it.
   equilibrium-frame definition may work in static regions if defined invariantly.
   if neither J_V nor equilibrium frame can be defined, Group 14 should close with u_vac as the bottleneck.
-[WARN] vacuum-frame status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] vacuum-frame status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Vacuum-frame definition decision tree
@@ -221,7 +227,9 @@ Decision tree:
 
 5. If u_vac cannot be defined:
    close Group 14 with u_vac as surviving bottleneck.
-[PASS] vacuum-frame definition decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] vacuum-frame definition decision tree stated -- candidates ranked
 
 ========================================================================================================================
 Case 5: Good failure / group closure trigger
@@ -237,7 +245,9 @@ Consequence:
 
 Bad failure:
   choose a convenient preferred frame and continue as if u_vac were derived.
-[WARN] vacuum-frame good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] vacuum-frame good failure stated -- deferred pending J_V or equilibrium criterion
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -253,7 +263,9 @@ Vacuum-frame definition fails if:
 7. static source creates independent exterior zeta charge
 8. boundary neutrality or no-overlap is dropped
 9. chi tuning is hidden in normalization
-[WARN] vacuum-frame failure controls stated: RISK
+
+[governance_assessments]
+[INFO] vacuum-frame failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -275,7 +287,9 @@ Recommended next script:
 
 Reason:
   J_V is the strongest non-arbitrary u_vac candidate. Test it once, then close the group if it remains unnamed.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_volume_current_definition_for_u_vac.py
 
 ========================================================================================================================
 Final interpretation

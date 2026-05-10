@@ -1,11 +1,7 @@
-[SCRIPT_FAILED]
-exit_code=1
-
 
 ========================================================================================================
 Candidate Exchange / Creation Distinction Test
 ========================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - reduced_action_stationary_solution: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -287,12 +283,3 @@ Next useful artifact:
   candidate_exchange_creation_distinction_lab_report.md
 or:
   candidate_regime_map_observations.md
-
-[stderr]
-Traceback (most recent call last):
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\03_active_regimes\candidate_exchange_creation_distinction_test.py", line 726, in <module>
-    main()
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\03_active_regimes\candidate_exchange_creation_distinction_test.py", line 666, in main
-    out.print_summary()
-    ^^^^^^^^^^^^^^^^^
-AttributeError: 'ScriptOutput' object has no attribute 'print_summary'

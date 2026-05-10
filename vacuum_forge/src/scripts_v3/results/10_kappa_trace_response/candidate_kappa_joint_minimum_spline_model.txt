@@ -24,7 +24,6 @@ Goal:
   allow interior deviation from naive parabola near the surface
   preserve exterior smoothness
   avoid propagating kappa/breathing wave
-[WARN] joint minimum spline problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Interior and exterior tendencies
@@ -39,7 +38,6 @@ f_ext(r) = -M/r + 1
 
 These are not asserted as final metric functions here.
 They are basis tendencies for a joint minimum model.
-[WARN] quadratic and reciprocal basis tendencies stated: PLAUSIBLE — coefficients/source relation not derived
 
 ========================================================================================================================
 Case 2: Hermite transition layer setup
@@ -53,7 +51,6 @@ H11 = x**3 - x**2
 
 This can match value and first derivative across a transition layer.
 For curvature matching, a quintic smoothstep or higher spline is better.
-[WARN] Hermite transition basis stated: PLAUSIBLE — C1 smooth; C2 requires quintic/higher
 
 ========================================================================================================================
 Case 3: Quintic smoothstep for C2 matching
@@ -70,7 +67,7 @@ s''(0) = 0
 s''(1) = 0
 
 This basis can splice tendencies without value/slope/curvature jumps.
-[PASS] quintic smoothstep supports C2 transition: DERIVED_REDUCED
+[StatusMark.PASS] quintic smoothstep supports C2 transition
 
 ========================================================================================================================
 Case 4: Blended joint minimum model
@@ -94,7 +91,6 @@ Interpretation:
   near inner side, interior tendency dominates
   near outer side, exterior reciprocal tendency dominates
   transition region modifies naive interior parabola near surface
-[WARN] joint interior/exterior blend defined: PLAUSIBLE — energy functional not derived
 
 ========================================================================================================================
 Case 5: Boundary matching equations
@@ -112,7 +108,6 @@ quadratic interior coefficients if direct matching is imposed.
 
 With a transition layer, the interior can remain more Newtonian in the
 bulk while the boundary region absorbs the smoothing.
-[PASS] direct C1 matching equations solved: DERIVED_REDUCED — toy coefficient relation only
 
 ========================================================================================================================
 Case 6: Curvature deviation near surface
@@ -131,7 +126,6 @@ This implies:
   joint-minimum model.
 
 But exterior far field should recover the reciprocal 1/r behavior.
-[WARN] near-surface curvature deviation identified: PLAUSIBLE — observable consequences not assessed
 
 ========================================================================================================================
 Case 7: Energy functional placeholder
@@ -149,7 +143,6 @@ The minimizer would naturally compromise between interior and exterior
 tendencies while penalizing sharp boundary curvature.
 
 This is the more principled version of spline blending.
-[WARN] joint minimum energy functional sketched: PLAUSIBLE — weights and variational derivation missing
 
 ========================================================================================================================
 Case 8: Relation to kappa
@@ -167,7 +160,6 @@ For kappa specifically:
   boundary smoothing gives compact kappa response
 
 This supports non-propagating trace relaxation rather than breathing waves.
-[WARN] spline model supports kappa minimum-shift interpretation: CONSTRAINED_BY_IDENTITY — variable identification must be fixed
 
 ========================================================================================================================
 Case 9: Failure controls
@@ -180,7 +172,6 @@ Spline/joint-minimum model fails if:
 4. interior deviation conflicts with known matching constraints.
 5. kappa and A profiles are mixed inconsistently.
 6. smoothing hides rather than explains scalar confinement.
-[WARN] joint-minimum failure controls stated: RISK — must derive energy/weights
 
 ========================================================================================================================
 Case 10: Classification
@@ -195,7 +186,6 @@ Case 10: Classification
 | near-surface interior deviation | PLAUSIBLE |
 | joint energy functional | PLAUSIBLE / missing derivation |
 | final physical spline model | UNFINISHED |
-[WARN] joint minimum spline classification produced: CONSTRAINED_BY_IDENTITY — useful model, not derivation
 
 ========================================================================================================================
 Case 11: Next tests
@@ -217,7 +207,6 @@ Recommended next artifact:
 
 Recommended next script:
   candidate_kappa_joint_minimum_energy_functional.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — energy functional is next if continuing
 
 ========================================================================================================================
 Final interpretation
@@ -240,3 +229,16 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_joint_minimum_energy_functional.py
+
+[sample_results]
+[PASS] quintic smoothstep: s'(0)=s'(1)=0, s''(0)=s''(1)=0 -- C2 transition basis confirmed
+[PASS] C1 quadratic/reciprocal matching coefficients computed -- sample - toy model
+
+[governance_assessments]
+[FAIL] spline model is curve-fitting without energy principle -- risk - weights not derived
+[OBLIGATION] alpha_W, beta_W weight functions -- missing
+[OBLIGATION] transition width sigma/w -- missing
+
+[unresolved_obligations]
+[OBLIGATION] derive weight functions alpha_W, beta_W -- open
+[OBLIGATION] derive transition width sigma -- open

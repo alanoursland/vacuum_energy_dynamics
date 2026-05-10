@@ -22,7 +22,6 @@ Goal:
   allow interior trace/volume response
   forbid exterior kappa tail
   forbid propagating breathing leakage
-[WARN] boundary-layer problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Smooth compact interior profile
@@ -42,7 +41,7 @@ Center values:
 
 kappa(0) = kappa_0
 kappa'(0) = 0
-[PASS] smooth compact profile has zero value and flux at boundary: DERIVED_REDUCED
+[StatusMark.PASS] smooth compact profile has zero value and flux at boundary
 
 ========================================================================================================================
 Case 2: Boundary flux diagnostic
@@ -56,7 +55,7 @@ F_kappa(r) = 16*pi*kappa_0*r**3*(-R**2 + r**2)/R**4
 At boundary:
 
 F_kappa(R) = 0
-[PASS] boundary flux vanishes: DERIVED_REDUCED
+[StatusMark.PASS] boundary flux vanishes
 
 ========================================================================================================================
 Case 3: Exterior extension
@@ -78,7 +77,6 @@ and exterior satisfies:
 there is no jump in value or first derivative.
 
 Thus no exterior 1/r tail is required by matching.
-[WARN] zero exterior kappa extension is smooth to first derivative: CONSTRAINED_BY_IDENTITY — second derivative / stress layer not yet checked
 
 ========================================================================================================================
 Case 4: Effective source implied by profile
@@ -94,7 +92,6 @@ Delta kappa = 4*kappa_0*(-3*R**2 + 5*r**2)/R**4
 This is the effective source shape needed to support the boundary-confined profile.
 
 It is not derived from matter trace yet.
-[PASS] effective source shape computed: DERIVED_REDUCED — source law not derived
 
 ========================================================================================================================
 Case 5: Effective source integral check
@@ -109,7 +106,7 @@ By divergence theorem this equals boundary flux.
 Since boundary flux is zero, the integrated source is zero.
 
 This matches the zero-charge projection idea.
-[PASS] effective source has zero net charge: DERIVED_REDUCED
+[StatusMark.PASS] effective source has zero net charge
 
 ========================================================================================================================
 Case 6: Boundary-layer interpretation
@@ -128,7 +125,6 @@ Interpretation:
 
 But:
   the profile is chosen, not derived.
-[WARN] boundary-confined kappa is structurally possible: CONSTRAINED_BY_IDENTITY — interface physics missing
 
 ========================================================================================================================
 Case 7: Compatibility with non-inertial relaxation
@@ -147,7 +143,6 @@ This realizes:
 
   local trace relaxation
   no propagating breathing wave
-[WARN] boundary profile fits non-inertial relaxation picture: PLAUSIBLE — kappa_min source law missing
 
 ========================================================================================================================
 Case 8: Failure controls
@@ -160,7 +155,6 @@ The boundary-layer model fails if:
 4. chosen profile cannot be produced by trace/pressure source.
 5. boundary confinement is inserted only to hide scalar radiation.
 6. non-inertial relaxation secretly includes a second-order wave channel.
-[WARN] boundary-layer failure controls stated: RISK — interface/source derivation needed
 
 ========================================================================================================================
 Case 9: Classification
@@ -175,7 +169,6 @@ Case 9: Classification
 | effective source integral zero | DERIVED_REDUCED |
 | source/interface derivation | MISSING |
 | hidden boundary stress check | MISSING |
-[WARN] boundary-layer classification produced: CONSTRAINED_BY_IDENTITY — toy confinement works, derivation missing
 
 ========================================================================================================================
 Case 10: Next tests
@@ -197,7 +190,6 @@ Recommended next script:
 
 Reason:
   Value and flux match, but second derivative/interface stress is the next trap.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — hidden boundary stress check is next
 
 ========================================================================================================================
 Final interpretation
@@ -218,3 +210,15 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_second_derivative_boundary_stress.py
+
+[sample_results]
+[PASS] kappa(R)=0, kappa'(R)=0, F_kappa(R)=0 for compact profile -- sample - toy profile
+[PASS] integrated effective source = 0 -- sample - divergence theorem
+
+[governance_assessments]
+[PASS] boundary-confined kappa structurally possible -- toy model confirmed
+[OBLIGATION] interface source derivation -- missing
+[OBLIGATION] hidden boundary stress check -- not yet done
+
+[unresolved_obligations]
+[OBLIGATION] derive boundary interface source law -- open

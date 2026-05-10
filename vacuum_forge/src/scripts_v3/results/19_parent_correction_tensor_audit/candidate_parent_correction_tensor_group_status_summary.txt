@@ -29,7 +29,9 @@ Discipline:
   no scalar trace leak
   no recovery-fit correction
   diagnostic-only means not inserted
-[WARN] Group 19 status problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] Group 19 status problem posed -- closure summary required before next group
 
 ========================================================================================================================
 Case 1: Group 19 status ledger
@@ -39,7 +41,9 @@ Case 1: Group 19 status ledger
 G19-1: H_curv
 ------------------------------------------------------------------------------------------------------------------------
 Result: H_curv is not defined and is not insertable
-[WARN] G19-1: H_curv: DEFER
+
+[governance_assessments]
+[DEFER] G19-1: H_curv -- DEFER
 Consequence: curvature correction remains theorem target / diagnostic-only fallback
 Handoff: do not use H_curv as finite-curvature, regular-core, bounce, or anti-singularity patch
 
@@ -47,7 +51,9 @@ Handoff: do not use H_curv as finite-curvature, regular-core, bounce, or anti-si
 G19-2: H_exch
 ------------------------------------------------------------------------------------------------------------------------
 Result: H_exch is not defined and is not insertable
-[WARN] G19-2: H_exch: DEFER
+
+[governance_assessments]
+[DEFER] G19-2: H_exch -- DEFER
 Consequence: exchange correction remains theorem target / diagnostic-only fallback
 Handoff: do not use H_exch as exchange-continuity or Sigma/R paint
 
@@ -55,7 +61,9 @@ Handoff: do not use H_exch as exchange-continuity or Sigma/R paint
 G19-3: correction tensor roles
 ------------------------------------------------------------------------------------------------------------------------
 Result: correction tensor language is useful as requirements audit only
-[WARN] G19-3: correction tensor roles: SAFE_IF
+
+[governance_assessments]
+[INFO] G19-3: correction tensor roles -- SAFE_IF
 Consequence: H-like objects may remain diagnostic-only audit labels
 Handoff: do not promote audit labels to field-equation terms
 
@@ -63,7 +71,9 @@ Handoff: do not promote audit labels to field-equation terms
 G19-4: divergence safety
 ------------------------------------------------------------------------------------------------------------------------
 Result: divergence safety is not derived
-[WARN] G19-4: divergence safety: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] G19-4: divergence safety -- THEOREM_TARGET
 Consequence: future route requires constructed identity, independent source-balance partner, defined projection/constraint theorem, or diagnostic-only status
 Handoff: Bianchi-like language is not enough
 
@@ -71,7 +81,9 @@ Handoff: Bianchi-like language is not enough
 G19-5: source separation
 ------------------------------------------------------------------------------------------------------------------------
 Result: source separation is required but not derived
-[WARN] G19-5: source separation: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] G19-5: source separation -- THEOREM_TARGET
 Consequence: correction tensors cannot double-count ordinary matter, A-sector mass, e_curv, A_curv, J_curv, Sigma/R, J_V/J_exch, dark labels, residual trace, or boundary failure
 Handoff: source sectors must stay separated before any H insertion
 
@@ -79,7 +91,9 @@ Handoff: source sectors must stay separated before any H insertion
 G19-6: boundary/mass neutrality
 ------------------------------------------------------------------------------------------------------------------------
 Result: boundary/mass neutrality is required but not derived
-[WARN] G19-6: boundary/mass neutrality: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] G19-6: boundary/mass neutrality -- THEOREM_TARGET
 Consequence: correction tensors cannot shift M_ext, repair boundaries, generate exterior scalar charge, hide far-zone flux, or create shell sources
 Handoff: boundary and mass neutrality remain prerequisites
 
@@ -87,7 +101,9 @@ Handoff: boundary and mass neutrality remain prerequisites
 G19-7: insertability
 ------------------------------------------------------------------------------------------------------------------------
 Result: no correction tensor satisfies all insertability requirements
-[FAIL] G19-7: insertability: BRANCH_KILLED
+
+[governance_assessments]
+[INFO] G19-7: insertability -- BRANCH_KILLED
 Consequence: no parent correction tensor is insertable yet
 Handoff: do not write parent field equation
 
@@ -95,7 +111,9 @@ Handoff: do not write parent field equation
 G19-8: diagnostic-only route
 ------------------------------------------------------------------------------------------------------------------------
 Result: diagnostic-only H-like audit objects remain the only safe current route
-[WARN] G19-8: diagnostic-only route: SAFE_IF
+
+[governance_assessments]
+[INFO] G19-8: diagnostic-only route -- SAFE_IF
 Consequence: audits may continue without field-equation insertion
 Handoff: diagnostic-only means not inserted
 
@@ -103,7 +121,9 @@ Handoff: diagnostic-only means not inserted
 G19-9: theorem-target parent forms
 ------------------------------------------------------------------------------------------------------------------------
 Result: parent equation forms may be retained only as theorem targets
-[WARN] G19-9: theorem-target parent forms: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] G19-9: theorem-target parent forms -- THEOREM_TARGET
 Consequence: syntax can be preserved for future work without becoming current field system
 Handoff: mark parent forms as not laws
 
@@ -111,7 +131,9 @@ Handoff: mark parent forms as not laws
 G19-10: rejected H_curv uses
 ------------------------------------------------------------------------------------------------------------------------
 Result: finite-curvature insertion, regular-core tuning, bounce, anti-singularity patch, e_curv reservoir, boundary counterterm, Bianchi decoration, and recovery-fit correction are rejected
-[WARN] G19-10: rejected H_curv uses: REJECTED
+
+[governance_assessments]
+[INFO] G19-10: rejected H_curv uses -- REJECTED
 Consequence: curvature correction cannot be rescue cloak
 Handoff: preserve Group 17 claim limits
 
@@ -119,7 +141,9 @@ Handoff: preserve Group 17 claim limits
 G19-11: rejected H_exch uses
 ------------------------------------------------------------------------------------------------------------------------
 Result: exchange-continuity insertion, Sigma/R tuning, boundary repair, ordinary matter rerouting, dark-sector patch, and recovery-fit correction are rejected
-[WARN] G19-11: rejected H_exch uses: REJECTED
+
+[governance_assessments]
+[INFO] G19-11: rejected H_exch uses -- REJECTED
 Consequence: exchange correction cannot be continuity paint
 Handoff: preserve Group 18 current/source limits
 
@@ -127,7 +151,9 @@ Handoff: preserve Group 18 current/source limits
 G19-12: final Group 19 closure
 ------------------------------------------------------------------------------------------------------------------------
 Result: Group 19 closes with H_curv/H_exch deferred and no parent equation ready
-[PASS] G19-12: final Group 19 closure: CLOSED
+
+[governance_assessments]
+[INFO] G19-12: final Group 19 closure -- CLOSED
 Consequence: parent correction tensor audit sharpened requirements but did not derive tensors
 Handoff: update field-equation snapshot before any next group
 
@@ -148,7 +174,9 @@ Case 2: Compact Group 19 status table
 | G19-10: rejected H_curv uses | finite-curvature insertion, regular-core tuning, bounce, anti-singularity patch, e_curv reservoir, boundary counterterm, Bianchi decoration, and recovery-fit correction are rejected | REJECTED | preserve Group 17 claim limits |
 | G19-11: rejected H_exch uses | exchange-continuity insertion, Sigma/R tuning, boundary repair, ordinary matter rerouting, dark-sector patch, and recovery-fit correction are rejected | REJECTED | preserve Group 18 current/source limits |
 | G19-12: final Group 19 closure | Group 19 closes with H_curv/H_exch deferred and no parent equation ready | CLOSED | update field-equation snapshot before any next group |
-[WARN] compact Group 19 status table produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact Group 19 status table produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -168,7 +196,9 @@ Interpretation:
   Parent equation forms remain theorem targets only.
   H_curv and H_exch cannot be used as repair mechanisms.
   The final parent field equation is not ready.
-[WARN] Group 19 status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] Group 19 status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Current working rule
@@ -198,7 +228,9 @@ Not currently licensed:
   source-by-tensor closure
   Bianchi-like closure
   boundary/mass repair tensor
-[WARN] Group 19 working rule recorded: SAFE_IF
+
+[governance_assessments]
+[WARN] Group 19 working rule recorded -- SAFE_IF
 
 ========================================================================================================================
 Case 5: Surviving bottlenecks
@@ -226,7 +258,9 @@ Central bottleneck:
 
   no correction tensor can be inserted until it has
   definition, source, divergence, boundary, and bookkeeping.
-[FAIL] surviving bottlenecks recorded: UNRESOLVED
+
+[governance_assessments]
+[FAIL] surviving bottlenecks recorded -- UNRESOLVED
 
 ========================================================================================================================
 Case 6: Rejected regressions to preserve
@@ -251,7 +285,9 @@ Case 6: Rejected regressions to preserve
 18. undefined current/source insertion
 19. diagnostic-only object inserted into field equation
 20. theorem-target parent form treated as current law
-[WARN] rejected regressions preserved: REJECTED
+
+[governance_assessments]
+[WARN] rejected regressions preserved -- REJECTED
 
 ========================================================================================================================
 Case 7: Next options
@@ -274,7 +310,9 @@ Recommended next document:
 Reason:
   Group 19 is a closure. The field-equation snapshot should record
   that no parent correction tensor is insertable and no parent equation is ready.
-[WARN] next document selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next document selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -296,4 +334,6 @@ It established:
 Best next document:
 
   field_equation_status_after_group_19.md
-[PASS] Group 19 parent correction tensor status complete: CLOSED
+
+[governance_assessments]
+[PASS] Group 19 parent correction tensor status complete -- CLOSED

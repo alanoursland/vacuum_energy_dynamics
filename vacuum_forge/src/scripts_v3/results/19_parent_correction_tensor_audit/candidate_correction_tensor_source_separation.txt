@@ -27,7 +27,9 @@ Discipline:
   zeta/B_s insertion not reopened
   residual killed/non-metric unless O derived
   boundary source not counted as tensor correction
-[WARN] correction tensor source-separation problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] correction tensor source-separation problem posed -- source-separation audit required before any H insertion
 
 ========================================================================================================================
 Case 1: Correction tensor source-separation inventory
@@ -40,7 +42,9 @@ Rule: correction tensors must not double-count ordinary matter, curvature accoun
 Role: core source-separation theorem target
 Allowed if: each source sector is independently routed before correction tensor insertion
 Forbidden if: H_curv/H_exch hide source overlap or repair missing source laws
-[WARN] SS1: source-separation target: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] SS1: source-separation target -- THEOREM_TARGET
 Missing: source-separation theorem
 Consequence: decides whether correction tensors can enter parent equation without double-counting
 
@@ -51,7 +55,9 @@ Rule: ordinary T_mu_nu / rho / scalar charge remains routed through established 
 Role: ordinary matter guard
 Allowed if: ordinary matter source does not appear again inside H_curv/H_exch
 Forbidden if: ordinary matter is counted as both source and correction tensor content
-[WARN] SS2: ordinary matter routing: REQUIRED
+
+[governance_assessments]
+[INFO] SS2: ordinary matter routing -- REQUIRED
 Missing: ordinary matter source-separation theorem
 Consequence: protects ordinary matter coupling and A-sector mass result
 
@@ -62,7 +68,9 @@ Rule: A-sector mass result is not modified by correction tensor source accountin
 Role: mass-source guard
 Allowed if: any mass effect is derived through established A-sector law
 Forbidden if: H_curv/H_exch shift M_ext or redefine source mass
-[WARN] SS3: A-sector mass protection: REQUIRED
+
+[governance_assessments]
+[INFO] SS3: A-sector mass protection -- REQUIRED
 Missing: mass neutrality theorem
 Consequence: protects strongest reduced reconstruction result
 
@@ -73,7 +81,9 @@ Rule: e_curv remains diagnostic/accounting and is not placed inside H_curv as st
 Role: curvature energy guard
 Allowed if: e_curv is used only diagnostically
 Forbidden if: e_curv supplies bounce money, regular-core tuning, pressure, or H_curv coefficients
-[WARN] SS4: e_curv not source reservoir: REQUIRED
+
+[governance_assessments]
+[INFO] SS4: e_curv not source reservoir -- REQUIRED
 Missing: source law if e_curv is promoted
 Consequence: preserves Group 17 closure
 
@@ -84,7 +94,9 @@ Rule: A_curv remains diagnostic/branch-filter unless dynamics are derived
 Role: curvature admissibility guard
 Allowed if: H_curv does not promote A_curv into active source
 Forbidden if: finite-admissibility failure becomes H_curv source by repair
-[WARN] SS5: A_curv diagnostic limit: REQUIRED
+
+[governance_assessments]
+[INFO] SS5: A_curv diagnostic limit -- REQUIRED
 Missing: A_curv dynamics/source theorem
 Consequence: prevents anti-singularity source smuggling
 
@@ -95,7 +107,9 @@ Rule: J_curv is not defined and cannot be counted as source/current for H_curv
 Role: curvature current guard
 Allowed if: H_curv remains independent of J_curv or deferred
 Forbidden if: H_curv uses J_curv by name
-[WARN] SS6: J_curv absence: REQUIRED
+
+[governance_assessments]
+[INFO] SS6: J_curv absence -- REQUIRED
 Missing: J_curv definition
 Consequence: preserves curvature-current unresolved status
 
@@ -106,7 +120,9 @@ Rule: Sigma/R are not coefficients, cancellation knobs, or hidden tuning terms i
 Role: exchange source guard
 Allowed if: Sigma/R operators and strength laws are independent
 Forbidden if: H_exch adjusts Sigma/R to close divergence or recovery
-[WARN] SS7: Sigma/R not tuning knobs: REQUIRED
+
+[governance_assessments]
+[INFO] SS7: Sigma/R not tuning knobs -- REQUIRED
 Missing: Sigma/R operators and distinction theorem
 Consequence: prevents exchange source double-counting
 
@@ -117,7 +133,9 @@ Rule: J_V and J_exch are not defined enough to source H_exch
 Role: vacuum current guard
 Allowed if: H_exch remains diagnostic/deferred until currents are real
 Forbidden if: H_exch imports current content from role labels
-[WARN] SS8: J_V/J_exch unresolved guard: REQUIRED
+
+[governance_assessments]
+[INFO] SS8: J_V/J_exch unresolved guard -- REQUIRED
 Missing: J_V/J_exch definitions
 Consequence: preserves Group 18 role-level split
 
@@ -128,7 +146,9 @@ Rule: J_sub and J_exch do not become ordinary matter coupling channels through c
 Role: ordinary-sector current guard
 Allowed if: ordinary matter decoupling remains intact
 Forbidden if: H_exch reroutes matter through J_sub/J_exch
-[WARN] SS9: J_sub/J_exch not ordinary matter channels: REQUIRED
+
+[governance_assessments]
+[INFO] SS9: J_sub/J_exch not ordinary matter channels -- REQUIRED
 Missing: ordinary matter decoupling theorem
 Consequence: prevents current split from becoming source overlap
 
@@ -139,7 +159,9 @@ Rule: dark-sector source is absent/deferred and cannot relabel ordinary matter o
 Role: dark source guard
 Allowed if: dark branch remains optional and separated
 Forbidden if: H_exch/H_curv uses dark sector to patch ordinary failure
-[WARN] SS10: dark sector not ordinary relabel: REQUIRED
+
+[governance_assessments]
+[INFO] SS10: dark sector not ordinary relabel -- REQUIRED
 Missing: dark source separation if reopened
 Consequence: preserves no-dark-patch rule
 
@@ -150,7 +172,9 @@ Rule: correction tensors do not reopen B_s/F_zeta insertion or residual metric t
 Role: metric insertion guard
 Allowed if: B_s/F_zeta and O no-overlap are solved before tensor coupling
 Forbidden if: H_metric_insert or H_exch restores scalar trace by correction
-[WARN] SS11: zeta/B_s insertion not reopened: REQUIRED
+
+[governance_assessments]
+[INFO] SS11: zeta/B_s insertion not reopened -- REQUIRED
 Missing: B_s/F_zeta insertion and O no-overlap theorem
 Consequence: preserves Group 16 guardrails
 
@@ -161,7 +185,9 @@ Rule: residual zeta/kappa trace remains killed or non-metric unless no-overlap o
 Role: residual source guard
 Allowed if: residual sector does not source correction tensor
 Forbidden if: H_residual revives killed residual trace
-[WARN] SS12: residual killed/non-metric unless O derived: REQUIRED
+
+[governance_assessments]
+[INFO] SS12: residual killed/non-metric unless O derived -- REQUIRED
 Missing: O no-overlap or residual-kill derivation
 Consequence: prevents hidden scalar source restoration
 
@@ -172,7 +198,9 @@ Rule: boundary leakage, shell source, scalar tail, or mass shift cannot be recla
 Role: boundary source guard
 Allowed if: boundary source is structural and neutral before correction tensor
 Forbidden if: boundary failure becomes H_curv/H_exch source
-[WARN] SS13: boundary source not counted as tensor correction: REQUIRED
+
+[governance_assessments]
+[INFO] SS13: boundary source not counted as tensor correction -- REQUIRED
 Missing: boundary neutrality theorem
 Consequence: prevents boundary repair as source separation
 
@@ -183,7 +211,9 @@ Rule: correction tensor coefficients are not fitted from overlapping source sect
 Role: coefficient origin guard
 Allowed if: coefficients have single, derived origin
 Forbidden if: coefficients absorb matter/exchange/curvature overlap or recovery mismatch
-[WARN] SS14: coefficient source separation: REQUIRED
+
+[governance_assessments]
+[INFO] SS14: coefficient source separation -- REQUIRED
 Missing: coefficient origin theorem
 Consequence: prevents coefficient-level double-counting
 
@@ -194,7 +224,9 @@ Rule: defined projectors separate ordinary, curvature, exchange, residual, and d
 Role: future candidate route
 Allowed if: projectors are real and do not hide overlap
 Forbidden if: projector is invented after source collision appears
-[WARN] SS15: projected source separation candidate: CANDIDATE
+
+[governance_assessments]
+[INFO] SS15: projected source separation candidate -- CANDIDATE
 Missing: projector / sector split theorem
 Consequence: possible future no-double-counting route
 
@@ -205,7 +237,9 @@ Rule: H-like objects remain diagnostic-only and therefore do not source or doubl
 Role: safe fallback
 Allowed if: not inserted into field equation
 Forbidden if: diagnostic object becomes parent correction term
-[WARN] SS16: diagnostic-only separation fallback: SAFE_IF
+
+[governance_assessments]
+[INFO] SS16: diagnostic-only separation fallback -- SAFE_IF
 Missing: none if kept diagnostic
 Consequence: allows source audits without source overlap
 
@@ -216,7 +250,9 @@ Rule: ordinary T_mu_nu appears inside H_exch as exchange source by convenience
 Role: forbidden ordinary double-count
 Allowed if: never without theorem
 Forbidden if: accepted as H_exch source
-[WARN] SS17: ordinary T inside H_exch by fiat rejection: REJECTED
+
+[governance_assessments]
+[INFO] SS17: ordinary T inside H_exch by fiat rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents ordinary matter double-counting
 
@@ -227,7 +263,9 @@ Rule: e_curv is inserted into H_curv as source reservoir
 Role: forbidden curvature source overlap
 Allowed if: never under current status
 Forbidden if: accepted as H_curv source
-[WARN] SS18: e_curv inside H_curv source reservoir rejection: REJECTED
+
+[governance_assessments]
+[INFO] SS18: e_curv inside H_curv source reservoir rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents curvature energy reservoir
 
@@ -238,7 +276,9 @@ Rule: Sigma/R are hidden inside H_exch as adjustable coefficient knobs
 Role: forbidden exchange tuning
 Allowed if: never as construction
 Forbidden if: accepted as exchange correction
-[WARN] SS19: Sigma/R inside H_exch coefficient knobs rejection: REJECTED
+
+[governance_assessments]
+[INFO] SS19: Sigma/R inside H_exch coefficient knobs rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents source/relaxation double-counting
 
@@ -249,7 +289,9 @@ Rule: B_s/F_zeta residual trace is restored through correction tensor after bein
 Role: forbidden residual source restoration
 Allowed if: never without O/no-overlap theorem
 Forbidden if: accepted as tensor correction
-[WARN] SS20: residual restored through tensor correction rejection: REJECTED
+
+[governance_assessments]
+[INFO] SS20: residual restored through tensor correction rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents scalar trace resurrection
 
@@ -260,7 +302,9 @@ Rule: dark-sector source is ordinary matter or ordinary exchange failure under a
 Role: forbidden dark relabel
 Allowed if: never as mechanism
 Forbidden if: accepted as dark correction
-[WARN] SS21: dark sector relabels ordinary matter rejection: REJECTED
+
+[governance_assessments]
+[INFO] SS21: dark sector relabels ordinary matter rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents dark patch
 
@@ -271,7 +315,9 @@ Rule: boundary leakage/shell/scalar tail is counted as correction tensor source
 Role: forbidden boundary repair source
 Allowed if: never as source separation
 Forbidden if: accepted as H source
-[WARN] SS22: boundary source counted as tensor correction rejection: REJECTED
+
+[governance_assessments]
+[INFO] SS22: boundary source counted as tensor correction rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents boundary repair tensor
 
@@ -282,7 +328,9 @@ Rule: correction tensors cannot avoid ordinary/vacuum/source overlap
 Role: branch failure condition
 Allowed if: used to keep correction tensors deferred or diagnostic-only
 Forbidden if: patched with projectors, coefficients, or dark labels
-[FAIL] SS23: source-separation failure: BRANCH_KILLED
+
+[governance_assessments]
+[INFO] SS23: source-separation failure -- BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: correction tensors cannot be inserted
 
@@ -293,7 +341,9 @@ Rule: after source separation, audit boundary and mass neutrality
 Role: next local bottleneck
 Allowed if: source separation remains theorem-targeted
 Forbidden if: jumping to insertability before boundary/mass neutrality
-[PASS] SS24: recommended next move: RECOMMENDED
+
+[governance_assessments]
+[INFO] SS24: recommended next move -- RECOMMENDED
 Missing: boundary and mass neutrality audit
 Consequence: next script should be candidate_correction_tensor_boundary_and_mass_neutrality.py
 
@@ -326,7 +376,9 @@ Case 2: Compact source-separation ledger
 | SS22: boundary source counted as tensor correction rejection | boundary leakage/shell/scalar tail is counted as correction tensor source | REJECTED | prevents boundary repair tensor |
 | SS23: source-separation failure | correction tensors cannot avoid ordinary/vacuum/source overlap | BRANCH_KILLED | correction tensors cannot be inserted |
 | SS24: recommended next move | after source separation, audit boundary and mass neutrality | RECOMMENDED | next script should be candidate_correction_tensor_boundary_and_mass_neutrality.py |
-[WARN] compact source-separation ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact source-separation ledger produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -351,7 +403,9 @@ Interpretation:
   Projected source separation is a candidate only if projectors are real.
   Diagnostic-only remains the safest fallback.
   Next gate is boundary and mass neutrality.
-[WARN] source-separation status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] source-separation status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Source-separation classes
@@ -374,7 +428,9 @@ Candidate safe routes:
 
 1. real projectors
 2. diagnostic-only H-like objects
-[PASS] source-separation classes listed: RECOMMENDED
+
+[governance_assessments]
+[PASS] source-separation classes listed -- RECOMMENDED
 
 ========================================================================================================================
 Case 4b: Sample projector-based source separation
@@ -389,7 +445,9 @@ P_ordinary + P_correction - I = Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
 Interpretation:
   this is a compatibility example of exact sector separation by projectors.
   It does not prove the real sectors admit such projectors.
-[PASS] sample projector separation witness: DERIVED_REDUCED — projectors are orthogonal and complete in the toy source space
+
+[sample_results]
+[PASS] sample projector separation witness -- projectors are orthogonal and complete in the toy source space
 
 ========================================================================================================================
 Case 5: Source-separation decision tree
@@ -413,7 +471,9 @@ Decision tree:
 
 6. Source separation cannot be proven:
    keep correction tensors deferred.
-[PASS] source-separation decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] source-separation decision tree stated -- RECOMMENDED
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -431,7 +491,9 @@ Consequence:
 Bad failure:
 
   hide source overlap inside H_curv/H_exch coefficients or projector labels.
-[WARN] source-separation good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] source-separation good failure stated -- DEFERRED_PENDING_PREREQUISITES
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -452,7 +514,9 @@ Source separation fails if:
 12. boundary failure becomes source
 13. projectors are invented after overlap
 14. coefficients absorb overlap
-[WARN] source-separation failure controls stated: RISK
+
+[governance_assessments]
+[WARN] source-separation failure controls stated -- RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -475,7 +539,9 @@ Recommended next script:
 Reason:
   Source separation is not enough if the tensor repairs boundary behavior or shifts exterior mass.
   The next gate is boundary/mass neutrality.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -504,4 +570,6 @@ Candidate safe routes:
 Best next script:
 
   candidate_correction_tensor_boundary_and_mass_neutrality.py
-[PASS] correction tensor source-separation audit complete: CLOSED
+
+[governance_assessments]
+[PASS] correction tensor source-separation audit complete -- CLOSED

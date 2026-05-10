@@ -22,7 +22,9 @@ But nonspherical gravity also needs:
   tensor/wave modes
   nonlinear closure
 
-[PASS] degree inventory needed beyond scalar A
+
+[governance_assessments]
+[PASS] degree inventory needed beyond scalar A -- SVT decomposition required
 
 ====================================================================================================================
 Case 1: Metric component count
@@ -39,7 +41,9 @@ scalar/vector/tensor structures.
 
 Scalar A covers only one temporal scalar component.
 
-[PASS] single scalar A cannot represent full metric perturbation
+
+[governance_assessments]
+[PASS] single scalar A cannot represent full metric perturbation -- 10 components vs 1 scalar
 
 ====================================================================================================================
 Case 2: Scalar A / Newtonian sector
@@ -52,7 +56,9 @@ This controls:
   g_tt weak scalar/Newtonian potential
   ordinary weak multipoles through Phi
 
-[PASS] scalar A sector is present
+
+[derived_results]
+[PASS] scalar A sector is present -- A = 1 + 2psi confirmed from upstream
 
 ====================================================================================================================
 Case 3: Kappa / trace-response sector
@@ -72,7 +78,9 @@ Known status:
   matter interiors may source kappa
   kappa is not yet generalized covariantly for nonspherical fields
 
-[PASS] kappa sector exists in reduced theory but needs nonspherical parent
+
+[unresolved_obligations]
+[OBLIGATION] kappa sector exists in reduced theory but needs nonspherical parent -- covariant nonspherical kappa not yet derived
 
 ====================================================================================================================
 Case 4: Spatial conformal scalar sector
@@ -84,7 +92,10 @@ Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
 trace = -6*psi
 trace-free part:
 Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
-[WARN] spatial scalar sector is pure trace/conformal
+trace of trace-free part = 0
+
+[derived_results]
+[PASS] spatial scalar sector is pure trace/conformal -- trace-free part vanishes: True
 
 ====================================================================================================================
 Case 5: Trace-free spatial shear sector
@@ -99,7 +110,9 @@ trace of shear part = 0
 A scalar conformal factor cannot represent these 5 trace-free
 spatial degrees of freedom.
 
-[PASS] trace-free spatial shear has 5 independent components
+
+[derived_results]
+[PASS] trace-free spatial shear has 5 independent components -- trace of shear part = 0
 
 ====================================================================================================================
 Case 6: Vector / frame-dragging sector
@@ -117,7 +130,9 @@ This sector is needed for:
 
 Scalar A and scalar reciprocal compensation do not produce g_ti.
 
-[PASS] vector/frame-dragging sector is missing from scalar branch
+
+[unresolved_obligations]
+[OBLIGATION] vector/frame-dragging sector is missing from scalar branch -- g_ti not produced by scalar A
 
 ====================================================================================================================
 Case 7: Tensor / wave sector
@@ -133,7 +148,9 @@ This sector is needed for:
 
 It is not represented by scalar A.
 
-[PASS] tensor/wave sector is independent of scalar A
+
+[derived_results]
+[PASS] tensor/wave sector is independent of scalar A -- TT trace = 0
 
 ====================================================================================================================
 Case 8: Scalar-vector-tensor map
@@ -150,7 +167,9 @@ Weak-field sector inventory:
 | tensor TT | missing | gravitational waves |
 | nonlinear closure | missing | strong nonspherical gravity |
 
-[PASS] SVT inventory separated
+
+[governance_assessments]
+[PASS] SVT inventory separated -- scalar present; shear/vector/tensor missing
 
 ====================================================================================================================
 Case 9: Claim boundaries
@@ -170,7 +189,9 @@ Not yet supported:
 4. Complete covariant field equations.
 5. Full matter stress-energy coupling.
 
-[PASS] claim boundaries made explicit
+
+[governance_assessments]
+[PASS] claim boundaries made explicit -- scalar sector present; SVT sectors open
 
 ====================================================================================================================
 Final interpretation

@@ -24,7 +24,9 @@ Discipline:
   protect static-source neutrality
   keep chi-origin separate
   preserve boundary neutrality and no-overlap
-[WARN] volume creation frame-field problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] volume creation frame-field problem posed -- requires physical u^mu/u_vac^mu definition
 
 ========================================================================================================================
 Case 1: Frame-field inventory
@@ -37,7 +39,7 @@ Frame choice: choose physical u^mu/u_vac^mu for Sigma_V = chi rho a^mu nabla_mu 
 Role: core prerequisite for acceleration-gradient source law
 Allowed if: frame is defined by matter flow, vacuum substance, or explicit ontology
 Forbidden if: frame is selected to fit recovery checks
-[WARN] FF1: frame-field target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: physical frame definition
 Consequence: decides whether acceleration-gradient candidate can be covariant
 
@@ -48,7 +50,7 @@ Frame choice: u^mu = u_m^mu from matter flow; a_m^mu = u_m^nu nabla_nu u_m^mu
 Role: source-local matter-frame candidate
 Allowed if: matter current/congruence is well-defined and not coordinate velocity
 Forbidden if: used for static matter as coordinate artifact
-[WARN] FF2: matter congruence frame: CANDIDATE
+Status: CANDIDATE
 Missing: matter model and current definition
 Consequence: works best for fluid/dust sources but may be source-dependent
 
@@ -59,7 +61,7 @@ Frame choice: u^mu = u_vac^mu from local rest frame of vacuum substance / zeta f
 Role: ontology-native frame candidate
 Allowed if: u_vac follows from vacuum volume configuration or exchange law
 Forbidden if: invented to make Sigma_V nonzero/zero as convenient
-[WARN] FF3: vacuum rest frame: CANDIDATE
+Status: CANDIDATE
 Missing: definition of u_vac^mu
 Consequence: best aligned with vacuum ontology but currently missing
 
@@ -70,7 +72,7 @@ Frame choice: Sigma_V = chi rho (P_vac a_m)^mu (P_vac nabla A)_mu
 Role: hybrid frame: matter acceleration measured relative to vacuum frame
 Allowed if: both u_m and u_vac are defined
 Forbidden if: projection is chosen from gamma/AB recovery
-[WARN] FF4: projected matter acceleration: RISK
+Status: RISK
 Missing: u_vac, projection convention, sign
 Consequence: may express mass accelerating across vacuum gradient, but adds structure
 
@@ -81,7 +83,7 @@ Frame choice: Sigma_V = chi rho a_vac^mu nabla_mu A
 Role: vacuum-flow acceleration candidate
 Allowed if: rho coupling to vacuum acceleration is justified
 Forbidden if: matter source disappears or coupling is arbitrary
-[WARN] FF5: vacuum acceleration of vacuum flow: RISK
+Status: RISK
 Missing: rho-vacuum coupling rule
 Consequence: may shift source law away from matter acceleration
 
@@ -92,7 +94,7 @@ Frame choice: u^mu = n^mu normal to chosen slicing
 Role: mathematically convenient frame
 Allowed if: slicing is physically defined by vacuum ontology
 Forbidden if: pure gauge slicing is treated as physical
-[WARN] FF6: hypersurface normal frame: CONSTRAINED
+Status: CONSTRAINED
 Missing: physical slicing rule
 Consequence: likely diagnostic only unless tied to vacuum rest frame
 
@@ -103,7 +105,7 @@ Frame choice: u^mu from coordinate velocity v^i
 Role: toy / reduced diagnostic only
 Allowed if: used only in simulations or reduced intuition
 Forbidden if: accepted as parent law
-[WARN] FF7: coordinate velocity frame: REJECTED
+Status: REJECTED
 Missing: not pursued as parent frame
 Consequence: prevents rho v dot grad A from becoming field equation
 
@@ -114,7 +116,7 @@ Frame choice: frame choice makes Sigma_V static-neutral unless physical accelera
 Role: ordinary-sector safety requirement
 Allowed if: static equilibrium source has no independent exterior zeta charge
 Forbidden if: static density in a gradient creates scalar charge
-[WARN] FF8: static-source safety: REQUIRED
+Status: REQUIRED
 Missing: static neutrality theorem
 Consequence: kills frame choices that make static matter source scalar volume charge
 
@@ -125,7 +127,7 @@ Frame choice: frame/projection fixes sign of a·grad A as creation/destruction
 Role: resolves unresolved orientation ambiguity
 Allowed if: sign follows from postulate/exchange convention before recovery
 Forbidden if: sign chosen to match gamma/AB
-[FAIL] FF9: sign/orientation rule: UNRESOLVED
+Status: UNRESOLVED
 Missing: creation/destruction orientation convention
 Consequence: needed before numerical or recovery claims
 
@@ -136,7 +138,7 @@ Frame choice: frame choice does not fix chi by recovery; chi still needs ontolog
 Role: prevents frame from hiding coefficient tuning
 Allowed if: chi remains separately constrained by postulate/exchange law
 Forbidden if: frame/projection absorbs chi fit
-[WARN] FF10: chi-origin dependency: REQUIRED
+Status: REQUIRED
 Missing: chi origin
 Consequence: frame field alone cannot complete Sigma_V derivation
 
@@ -147,7 +149,7 @@ Frame choice: source-driven zeta is boundary-neutral and enters metric only thro
 Role: protects exterior neutrality and count-once recombination
 Allowed if: boundary and overlap theorems are attached
 Forbidden if: frame choice creates exterior scalar charge or residual overlap
-[WARN] FF11: boundary/no-overlap requirements: REQUIRED
+Status: REQUIRED
 Missing: boundary neutrality and no-overlap proofs
 Consequence: frame-safe source still fails if accounting fails
 
@@ -158,7 +160,7 @@ Frame choice: test vacuum rest frame vs matter congruence frame before hybrid pr
 Role: best current branch decision
 Allowed if: each branch has static-source and no-overlap checks
 Forbidden if: jumping to hybrid frame to patch failures
-[PASS] FF12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: frame branch comparison script
 Consequence: next script should compare u_matter and u_vac branches directly
 
@@ -179,7 +181,9 @@ Case 2: Compact frame-field ledger
 | FF10: chi-origin dependency | frame choice does not fix chi by recovery; chi still needs ontology/source coupling | REQUIRED | frame field alone cannot complete Sigma_V derivation |
 | FF11: boundary/no-overlap requirements | source-driven zeta is boundary-neutral and enters metric only through B_s | REQUIRED | frame-safe source still fails if accounting fails |
 | FF12: recommended next move | test vacuum rest frame vs matter congruence frame before hybrid projection | RECOMMENDED | next script should compare u_matter and u_vac branches directly |
-[WARN] compact frame-field ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact frame-field ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -199,7 +203,9 @@ Interpretation:
   Hypersurface normal is diagnostic unless physically tied to vacuum ontology.
   Coordinate velocity is rejected as parent frame.
   Static neutrality, chi-origin, boundary neutrality, and no-overlap remain mandatory.
-[WARN] frame-field status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] frame-field status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Frame decision tree
@@ -220,7 +226,9 @@ Decision tree:
 
 5. Coordinate velocity?
    Rejected as parent law.
-[PASS] frame decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] frame decision tree stated -- candidates ranked
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -237,7 +245,9 @@ Consequence:
 
 Bad failure:
   choose a convenient frame and proceed as if it were physical.
-[WARN] frame-field good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] frame-field good failure stated -- deferred pending physical frame definition
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -252,7 +262,9 @@ Frame-field inventory fails if:
 6. frame choice hides chi tuning
 7. boundary neutrality is absent
 8. no-overlap theorem is absent
-[WARN] frame-field failure controls stated: RISK
+
+[governance_assessments]
+[INFO] frame-field failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -274,7 +286,9 @@ Recommended next script:
 
 Reason:
   The next bottleneck is choosing between matter-flow and vacuum-flow frames before adding hybrid projections.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_matter_vs_vacuum_frame_branch_test.py
 
 ========================================================================================================================
 Final interpretation

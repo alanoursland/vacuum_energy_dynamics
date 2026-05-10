@@ -24,7 +24,9 @@ Discipline:
   no Box kappa
   no secular scalar orbital damping
   no exterior zeta/kappa charge
-[WARN] binary-radiation safety problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] binary-radiation safety problem posed -- open: TT-only theorem and coupling safety required
 
 ========================================================================================================================
 Case 1: Binary safety inventory
@@ -36,7 +38,7 @@ B1: conservative geodesic bookkeeping
 Scenario: scalar/trace conversion is just geometric bookkeeping of conservative motion
 Allowed if: no net far-zone scalar flux and no secular orbital energy loss beyond TT
 Forbidden if: conversion removes orbital energy as a separate dissipative channel
-[WARN] B1: conservative geodesic bookkeeping: SAFE_IF
+Status: SAFE_IF
 Missing: explicit identity showing exchange is conservative/local
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -45,7 +47,7 @@ B2: local compact conversion
 Scenario: trace/volume conversion occurs only inside/near matter support
 Allowed if: zeta/kappa support is compact or compensated and exterior zeta,kappa -> 0
 Forbidden if: conversion produces exterior 1/r scalar charge
-[WARN] B2: local compact conversion: SAFE_IF
+Status: SAFE_IF
 Missing: boundary volume mode no exterior charge theorem
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -54,7 +56,7 @@ B3: far-zone scalar flux
 Scenario: scalar/trace mode propagates to infinity
 Allowed if: never, for ordinary gravity
 Forbidden if: A_rad, Box zeta, or Box kappa carries energy to far zone
-[PASS] B3: far-zone scalar flux: FORBIDDEN
+Status: FORBIDDEN
 Missing: parent proof of scalar-radiation exclusion
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -63,7 +65,7 @@ B4: raw rho v dot grad A coupling
 Scenario: reduced power-like coupling active during orbital motion
 Allowed if: it is pure conservative bookkeeping or averages to boundary/constraint identity
 Forbidden if: it produces secular orbital damping
-[FAIL] B4: raw rho v dot grad A coupling: DANGER
+Status: DANGER
 Missing: orbit-average and conservation interpretation
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -72,7 +74,7 @@ B5: raw rho a dot grad A coupling
 Scenario: acceleration-gradient coupling active in binaries
 Allowed if: a is a constrained/geometric relative acceleration and gives no extra loss
 Forbidden if: coordinate acceleration creates frame-dependent damping
-[WARN] B5: raw rho a dot grad A coupling: RISK
+Status: RISK
 Missing: definition of acceleration and frame
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -81,7 +83,7 @@ B6: proper-acceleration coupling
 Scenario: rho a^mu nabla_mu A with a^mu proper acceleration
 Allowed if: used only for non-geodesic/internal stresses
 Forbidden if: used to explain geodesic gravity exchange but vanishes for geodesics
-[WARN] B6: proper-acceleration coupling: RISK
+Status: RISK
 Missing: role of proper acceleration versus geodesic motion
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -90,7 +92,7 @@ B7: trace-volume projector coupling
 Scenario: P_trace[T] -> delta zeta
 Allowed if: trace/volume conversion is compact/compensated and not radiative
 Forbidden if: trace source leaks to far-zone scalar flux or exterior charge
-[WARN] B7: trace-volume projector coupling: SAFE_IF
+Status: SAFE_IF
 Missing: P_trace and compensation law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -99,7 +101,7 @@ B8: stress-energy Hessian coupling
 Scenario: T^munu nabla_mu nabla_nu A
 Allowed if: acts as local/tidal conservative configuration term
 Forbidden if: creates higher-derivative radiative scalar source or double-counts A
-[WARN] B8: stress-energy Hessian coupling: RISK
+Status: RISK
 Missing: projection, integration by parts, boundary behavior
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -108,7 +110,7 @@ B9: divergence stress-gradient coupling
 Scenario: nabla_mu(T^munu nabla_nu A)
 Allowed if: reduces to constraint/boundary bookkeeping with no far-zone flux
 Forbidden if: is decorative or hides nonzero scalar flux
-[WARN] B9: divergence stress-gradient coupling: CANDIDATE
+Status: CANDIDATE
 Missing: relation to stress conservation and boundary terms
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -117,7 +119,7 @@ B10: TT-only ordinary loss rule
 Scenario: ordinary binary radiation loss
 Allowed if: energy loss at infinity is carried by h_ij^TT only
 Forbidden if: scalar/trace conversion adds independent far-zone power
-[WARN] B10: TT-only ordinary loss rule: REQUIRED
+Status: REQUIRED
 Missing: parent derivation of TT-only radiation
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ B11: cumulative local geometry change
 Scenario: conversion deposits local vacuum-spacetime configuration near accelerating sources
 Allowed if: bounded, reversible, periodic, or absorbed into conservative near-zone geometry
 Forbidden if: secular accumulation changes exterior field or orbital dynamics beyond observed bounds
-[FAIL] B11: cumulative local geometry change: UNRESOLVED
+Status: UNRESOLVED
 Missing: post-deposition dynamics of zeta/epsilon_vac_config
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +137,7 @@ B12: observational constraint placeholder
 Scenario: binary pulsar / gravitational-wave agreement with quadrupole radiation
 Allowed if: scalar conversion contributes zero or observationally negligible far-zone/secular loss
 Forbidden if: predicts a generic extra scalar damping channel
-[WARN] B12: observational constraint placeholder: REQUIRED
+Status: REQUIRED
 Missing: quantitative bound once candidate coupling exists
 
 ========================================================================================================================
@@ -155,7 +157,9 @@ Case 2: Compact binary safety ledger
 | B10: TT-only ordinary loss rule | ordinary binary radiation loss | REQUIRED | scalar/trace conversion adds independent far-zone power | parent derivation of TT-only radiation |
 | B11: cumulative local geometry change | conversion deposits local vacuum-spacetime configuration near accelerating sources | UNRESOLVED | secular accumulation changes exterior field or orbital dynamics beyond observed bounds | post-deposition dynamics of zeta/epsilon_vac_config |
 | B12: observational constraint placeholder | binary pulsar / gravitational-wave agreement with quadrupole radiation | REQUIRED | predicts a generic extra scalar damping channel | quantitative bound once candidate coupling exists |
-[WARN] compact binary safety ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact binary safety ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -173,7 +177,9 @@ Interpretation:
   Far-zone scalar flux is forbidden.
   Raw reduced power-like couplings are dangerous until proven conservative.
   Boundary/exterior charge theorem is now central.
-[WARN] binary safety status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] binary safety status count produced -- counts complete
 
 ========================================================================================================================
 Case 4: Safe classes
@@ -194,7 +200,9 @@ Safe or potentially safe classes:
 
 5. TT-only far-zone loss:
    radiated energy at infinity carried only by h_ij^TT.
-[WARN] safe classes stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] safe classes stated -- candidate route: five safe classes under test
 
 ========================================================================================================================
 Case 5: Danger classes
@@ -208,7 +216,9 @@ Danger classes:
 5. exterior zeta/kappa 1/r tail.
 6. cumulative local deposition that changes M_ext.
 7. scalar conversion producing secular orbital damping.
-[WARN] danger classes stated: RISK
+
+[governance_assessments]
+[DEFER] danger classes stated -- open risk: danger classes not yet excluded
 
 ========================================================================================================================
 Case 6: Required next theorem
@@ -228,7 +238,9 @@ Equivalent requirements:
 Reason:
 
   Binary safety depends on scalar conversion not becoming far-zone scalar flux or extra exterior charge.
-[WARN] boundary/no-exterior-charge theorem target selected: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] boundary/no-exterior-charge theorem target selected -- open: boundary no-exterior-charge theorem required
 
 ========================================================================================================================
 Case 7: Next tests
@@ -250,7 +262,9 @@ Recommended next script:
 
 Reason:
   Binary safety reduces to the boundary/exterior charge problem for scalar/volume conversion.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- boundary volume mode no exterior charge
 
 ========================================================================================================================
 Final interpretation

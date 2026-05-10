@@ -11,7 +11,10 @@ Case 0: Spherical areal-flux recap
 A_spherical = -2*G*M/(c**2*r) + 1
 F_A = 4*pi*r^2*A' = 8*pi*G*M/c**2
 target = 8*pi*G*M/c**2
-[PASS] spherical flux gives Schwarzschild coefficient
+residual = 0
+
+[derived_results]
+[PASS] spherical flux gives Schwarzschild coefficient -- residual = 0
 
 ================================================================================================================
 Case 1: Weak-field A as Newtonian potential variable
@@ -28,31 +31,35 @@ Then:
 If Delta Phi = 4*pi*G*rho, then:
   Delta A = 8*pi*G*rho/c^2
 
-[PASS] areal A-source law matches Newtonian Poisson in weak field
+
+[derived_results]
+[PASS] areal A-source law matches Newtonian Poisson in weak field -- A = 1 + 2 Phi/c^2 implies Delta A = 8pi G rho/c^2
 
 ================================================================================================================
 Case 2: Vacuum harmonic multipole radial modes
 ================================================================================================================
+
+[derived_results]
 ell = 0
   exterior radial mode f(r)=1/r^1
   mode Laplacian = 0
-[PASS] ell=0 exterior multipole is harmonic
+[PASS] ell=0 exterior multipole is harmonic -- mode Laplacian = 0
 ell = 1
   exterior radial mode f(r)=1/r^2
   mode Laplacian = 0
-[PASS] ell=1 exterior multipole is harmonic
+[PASS] ell=1 exterior multipole is harmonic -- mode Laplacian = 0
 ell = 2
   exterior radial mode f(r)=1/r^3
   mode Laplacian = 0
-[PASS] ell=2 exterior multipole is harmonic
+[PASS] ell=2 exterior multipole is harmonic -- mode Laplacian = 0
 ell = 3
   exterior radial mode f(r)=1/r^4
   mode Laplacian = 0
-[PASS] ell=3 exterior multipole is harmonic
+[PASS] ell=3 exterior multipole is harmonic -- mode Laplacian = 0
 ell = 4
   exterior radial mode f(r)=1/r^5
   mode Laplacian = 0
-[PASS] ell=4 exterior multipole is harmonic
+[PASS] ell=4 exterior multipole is harmonic -- mode Laplacian = 0
 
 Interpretation:
   The weak exterior A field can carry ordinary harmonic multipoles.
@@ -60,26 +67,28 @@ Interpretation:
 ================================================================================================================
 Case 3: Regular interior harmonic modes
 ================================================================================================================
+
+[derived_results]
 ell = 0
   regular radial mode f(r)=r^0
   mode Laplacian = 0
-[PASS] ell=0 regular interior harmonic mode
+[PASS] ell=0 regular interior harmonic mode -- mode Laplacian = 0
 ell = 1
   regular radial mode f(r)=r^1
   mode Laplacian = 0
-[PASS] ell=1 regular interior harmonic mode
+[PASS] ell=1 regular interior harmonic mode -- mode Laplacian = 0
 ell = 2
   regular radial mode f(r)=r^2
   mode Laplacian = 0
-[PASS] ell=2 regular interior harmonic mode
+[PASS] ell=2 regular interior harmonic mode -- mode Laplacian = 0
 ell = 3
   regular radial mode f(r)=r^3
   mode Laplacian = 0
-[PASS] ell=3 regular interior harmonic mode
+[PASS] ell=3 regular interior harmonic mode -- mode Laplacian = 0
 ell = 4
   regular radial mode f(r)=r^4
   mode Laplacian = 0
-[PASS] ell=4 regular interior harmonic mode
+[PASS] ell=4 regular interior harmonic mode -- mode Laplacian = 0
 
 Interpretation:
   Standard regular/harmonic mode structure is available in the weak limit.
@@ -91,7 +100,10 @@ A = -2*G*M/(c**2*r) + Q*(3*mu**2/2 - 1/2)/r**3 + 1
 r^2 A_r = r**2*(2*G*M/(c**2*r**2) - 3*Q*(3*mu**2/2 - 1/2)/r**4)
 surface flux integral = 8*pi*G*M/c**2
 target monopole flux = 8*pi*G*M/c**2
-[PASS] higher quadrupole integrates to zero net flux
+residual = 0
+
+[derived_results]
+[PASS] higher quadrupole integrates to zero net flux -- residual = 0
 
 Interpretation:
   Total A-flux through a large sphere measures only the monopole mass.
@@ -102,7 +114,9 @@ Case 5: Dipole mode and origin/center-of-mass caution
 ================================================================================================================
 A_dipole = D*mu/r**2
 surface flux integral = 0
-[PASS] pure dipole has zero net flux
+
+[derived_results]
+[PASS] pure dipole has zero net flux -- flux = 0
 
 Caution:
   Dipole terms depend on origin choice and center-of-mass frame.
@@ -123,8 +137,12 @@ For attractive gravity Phi<0:
   A < 1
   B > 1
 
-[PASS] reciprocal compensation extends formally to weak nonspherical A
-[WARN] VacuumForge reciprocal_scaling check stays clean at weak order
+
+[derived_results]
+[PASS] reciprocal compensation extends formally to weak nonspherical A -- B = 1/A = 1 - 2psi + O(psi^2)
+
+[governance_assessments]
+[FAIL] VacuumForge reciprocal_scaling check stays clean at weak order -- status=fail
 
 ================================================================================================================
 Case 7: Nonlinear caution
@@ -146,7 +164,9 @@ define the full spatial metric. There are tensor/shear degrees of freedom.
 Therefore:
   This script supports weak multipoles.
   It does not produce a full nonlinear nonspherical gravity theory.
-[PASS] nonlinear nonspherical extension remains open
+
+[unresolved_obligations]
+[OBLIGATION] nonlinear nonspherical extension remains open -- full nonspherical closure not derived
 
 ================================================================================================================
 Case 8: Classification
@@ -161,7 +181,9 @@ Results:
 6. Dipole terms require origin/center-of-mass care.
 7. Exact nonlinear nonspherical completion remains unsolved.
 
-[PASS] multipole extension is viable as weak-field diagnostic
+
+[governance_assessments]
+[PASS] multipole extension is viable as weak-field diagnostic -- scalar harmonic multipoles confirmed
 
 ================================================================================================================
 Final interpretation

@@ -24,7 +24,9 @@ Discipline:
   do not let current merely restate stiffness ratio
   preserve no-overlap trace condition
   move to parent balance or volume-exchange if local current ratio remains free
-[WARN] minimal gradient-current ratio problem posed: REQUIRED
+
+[governance_assessments]
+[DEFER] minimal gradient-current ratio problem posed -- branch open pending derivation of a/b
 
 ========================================================================================================================
 Case 1: Gradient-current ratio inventory
@@ -37,7 +39,7 @@ Statement: J_A^i = a grad^i A + b grad^i B_s
 Role: least decorated local current tying A and A_spatial variable
 Allowed if: a and b have pre-recovery origin
 Forbidden if: a:b is chosen to fit gamma_like
-[WARN] GC1: minimal gradient current: STRUCTURAL
+Status: STRUCTURAL
 Missing: origin of a:b
 Consequence: current is explicit but ratio remains exposed
 
@@ -48,7 +50,7 @@ Statement: div J_A = a Delta A + b Delta B_s = (a + b q) S_A
 Role: shows how current fixes q if div J_A=0
 Allowed if: Delta A=S_A and Delta B_s=q S_A are the intended reduced equations
 Forbidden if: divergence relation is used after choosing q
-[WARN] GC2: divergence calculation: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: current-origin justification
 Consequence: with nonzero S_A, div J_A=0 implies q=-a/b
 
@@ -59,7 +61,7 @@ Statement: q = -a/b
 Role: tests whether conservation solved or relocated coefficient origin
 Allowed if: a/b is derived independently
 Forbidden if: a/b remains free but q is claimed derived
-[WARN] GC3: ratio relocation: DEFER
+Status: DEFER
 Missing: pre-recovery origin of a/b
 Consequence: minimal current relocates the problem unless a/b is fixed
 
@@ -70,7 +72,7 @@ Statement: choose a/b freely
 Role: repair knob
 Allowed if: never as derivation
 Forbidden if: used to save conservation-current branch
-[WARN] GC4: free current ratio: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: turns conservation into coefficient tuning
 
@@ -81,7 +83,7 @@ Statement: a:b maps to c_x:c_s or Noether current of coupled stiffness
 Role: checks whether current gives new information
 Allowed if: mapping imposes additional identity beyond q=-c_x/c_s
 Forbidden if: current merely restates stiffness ratio
-[WARN] GC5: stiffness-current equivalence: CONSTRAINED
+Status: CONSTRAINED
 Missing: Noether / stiffness-current map
 Consequence: may collapse conservation route back into stiffness-ratio problem
 
@@ -92,7 +94,7 @@ Statement: a/b fixed by metric on (A,B_s) field space
 Role: possible symmetry / normalization origin for current ratio
 Allowed if: field-space metric is specified before recovery
 Forbidden if: metric is chosen to fit q
-[WARN] GC6: field-space metric origin: CANDIDATE
+Status: CANDIDATE
 Missing: field-space metric or symmetry
 Consequence: could rescue local current if concrete
 
@@ -103,7 +105,7 @@ Statement: a/b fixed by matching current divergence to source routing
 Role: possible source-routing route
 Allowed if: source routing is derived from matter/vacuum coupling
 Forbidden if: source balance is invented to repair gamma_like
-[WARN] GC7: source-balance origin: RISK
+Status: RISK
 Missing: source-routing identity
 Consequence: may require parent balance identity rather than local current
 
@@ -114,7 +116,7 @@ Statement: a/b fixed by Div E_parent = B_closed[T] + B_relax
 Role: broader nonlocal/parent route
 Allowed if: parent operator and balance terms are explicit
 Forbidden if: parent balance is named but undefined
-[WARN] GC8: parent balance origin: CANDIDATE
+Status: CANDIDATE
 Missing: E_parent, B_closed, B_relax
 Consequence: likely next route if local current ratio remains free
 
@@ -125,7 +127,7 @@ Statement: after a/b fixed, weak-field output gives gamma_like=1
 Role: downstream recovery target
 Allowed if: checked after ratio derivation
 Forbidden if: used to choose a/b
-[WARN] GC9: gamma-like recovery check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: weak-field map from current-fixed q
 Consequence: tests but does not determine a/b
 
@@ -136,7 +138,7 @@ Statement: after a/b fixed, exterior solution gives AB -> 1 diagnostic
 Role: downstream exterior recovery target
 Allowed if: checked after solving equations
 Forbidden if: used to choose current coefficients
-[WARN] GC10: AB diagnostic check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: exterior solution
 Consequence: keeps AB diagnostic-only
 
@@ -147,7 +149,7 @@ Statement: current-fixed B_s must not overlap zeta/kappa residual trace
 Role: protects count-once theorem
 Allowed if: overlap operator or residual theorem is present
 Forbidden if: current fixes q but double-counts scalar trace
-[WARN] GC11: no-overlap trace condition: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: overlap operator / residual status
 Consequence: current route still fails if trace accounting overlaps
 
@@ -158,7 +160,7 @@ Statement: if a/b has no local origin, move to parent balance or volume-exchange
 Role: best current branch decision
 Allowed if: free ratio and recovery-tuned ratio are rejected
 Forbidden if: pretending local current derived q
-[PASS] GC12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: parent balance or volume-exchange script
 Consequence: next script should test parent balance identity or volume-exchange stiffness ratio origin
 
@@ -179,7 +181,9 @@ Case 2: Compact gradient-current ledger
 | GC10: AB diagnostic check | after a/b fixed, exterior solution gives AB -> 1 diagnostic | RECOVERY_TARGET | keeps AB diagnostic-only |
 | GC11: no-overlap trace condition | current-fixed B_s must not overlap zeta/kappa residual trace | THEOREM_TARGET | current route still fails if trace accounting overlaps |
 | GC12: recommended next move | if a/b has no local origin, move to parent balance or volume-exchange origin | RECOMMENDED | next script should test parent balance identity or volume-exchange stiffness ratio origin |
-[WARN] compact gradient-current ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact gradient-current ledger produced -- inventory table complete
 
 ========================================================================================================================
 Case 3: Minimal gradient-current calculation
@@ -207,7 +211,9 @@ If div J_A = 0 and S_A != 0:
 
 Interpretation:
   This fixes q only if a/b is fixed independently.
-[WARN] minimal gradient-current calculation produced: THEOREM_TARGET
+
+[unresolved_obligations]
+[OBLIGATION] derive pre-recovery origin of a/b -- open proof obligation recorded
 
 ========================================================================================================================
 Case 3b: Symbolic current-ratio derivation
@@ -216,7 +222,9 @@ Symbolic reduced relation:
 
   div J_A = S_A*a + S_A*b*q
   solving a + b q = 0 gives q = -a/b
-[PASS] symbolic q from current ratio: DERIVED_REDUCED — q = -a/b
+
+[derived_results]
+[PASS] symbolic q from current ratio -- q = -a/b
 
 ========================================================================================================================
 Case 4: Status counts
@@ -236,7 +244,9 @@ Interpretation:
   Free a/b is rejected.
   Field-space metric and parent balance are the main surviving origins.
   Local conservation likely defers to parent balance or volume-exchange identity.
-[WARN] gradient-current status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] gradient-current status count produced -- counts reviewed
 
 ========================================================================================================================
 Case 5: Good failure / defer outcome
@@ -252,7 +262,9 @@ Consequence:
 
 Bad failure:
   choose a/b from gamma_like=1 and call it a conservation law.
-[WARN] gradient-current good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] gradient-current good failure stated -- branch deferred; a/b free without ontology origin
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -267,7 +279,9 @@ Gradient-current ratio test fails if:
 6. parent balance terms are named but undefined
 7. no-overlap trace theorem is ignored
 8. q is claimed derived while a/b remains free
-[WARN] gradient-current failure controls stated: RISK
+
+[governance_assessments]
+[INFO] gradient-current failure controls stated -- eight failure controls recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -289,7 +303,9 @@ Recommended next script:
 
 Reason:
   Local gradient current relocates q to a/b. A parent balance identity is the next non-decorative route for fixing a/b.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_parent_balance_identity_for_A_spatial.py
 
 ========================================================================================================================
 Final interpretation

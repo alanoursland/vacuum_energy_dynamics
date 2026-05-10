@@ -22,7 +22,6 @@ Policy:
 
   Extra modes must be absent, projected out, damped, absorbed,
   massive/short-ranged, weakly coupled, or observationally constrained.
-[PASS] no-extra-polarization policy posed
 
 ========================================================================================================================
 Case 1: Allowed TT plus/cross modes
@@ -32,8 +31,6 @@ Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
 trace = 0
 k^i H_ij =
 Matrix([[0, 0, 0]])
-[PASS] plus/cross modes are trace-free
-[PASS] plus/cross modes are transverse for z propagation
 
 ========================================================================================================================
 Case 2: Scalar breathing is an extra non-TT mode
@@ -43,9 +40,6 @@ Matrix([[b, 0, 0], [0, b, 0], [0, 0, 0]])
 trace = 2*b
 k^i H_ij =
 Matrix([[0, 0, 0]])
-[PASS] breathing mode may be transverse
-[PASS] breathing mode is not traceless
-[PASS] breathing mode must be suppressed unless deliberately allowed
 
 ========================================================================================================================
 Case 3: Longitudinal scalar is an extra non-TT mode
@@ -55,8 +49,6 @@ Matrix([[0, 0, 0], [0, 0, 0], [0, 0, ell]])
 trace = ell
 k^i H_ij =
 Matrix([[0, 0, ell*k]])
-[PASS] longitudinal mode is not transverse
-[PASS] longitudinal mode is not allowed as ordinary radiation
 
 ========================================================================================================================
 Case 4: Vector-like modes are separate sector
@@ -68,7 +60,6 @@ Interpretation:
   W_i may be needed for frame dragging.
   It is not the ordinary TT radiation channel.
   Any long-range vector radiation would require separate derivation and constraints.
-[PASS] vector modes are outside current allowed radiation set
 
 ========================================================================================================================
 Case 5: Allowed / controlled mode policy
@@ -80,8 +71,6 @@ Case 5: Allowed / controlled mode policy
 | scalar breathing | controlled | zero/suppressed/absorbed/massive/weak |
 | scalar longitudinal | controlled | projected out/suppressed |
 | vector radiation | controlled | separate derivation and constraints |
-
-[PASS] polarization policy table stated
 
 ========================================================================================================================
 Case 6: A_rad suppression flags
@@ -99,7 +88,6 @@ For A_rad, allowed safety flags are:
 Unsafe flag:
 
   unsuppressed_massless_scalar_wave
-[PASS] A_rad requires explicit safety flag
 
 ========================================================================================================================
 Case 7: Classification
@@ -112,8 +100,6 @@ Results:
 4. Vector radiation is outside the current ordinary radiation channel.
 5. A_rad must carry a suppression/absence flag.
 6. The theory's ordinary radiation claim should remain TT-only for now.
-
-[PASS] no-extra-polarization policy established
 
 ========================================================================================================================
 Final interpretation
@@ -133,3 +119,21 @@ Possible next artifact:
 
 Possible next file:
   scalar_constraint_and_radiation_safety_summary.md
+
+[derived_results]
+[PASS] TT mode is trace-free -- trace(H_TT) = 0
+[PASS] TT mode is transverse for z-propagation -- k^i H_ij = 0 for TT mode
+
+[counterexamples]
+[FAIL] scalar breathing mode is not trace-free -- trace(H_breathing) = 2b != 0; extra non-TT mode
+[FAIL] longitudinal mode is not transverse -- k^i H_ij != 0 for longitudinal mode; excluded from ordinary radiation
+
+[governance_assessments]
+[PASS] ordinary radiation TT-only policy -- only h_plus and h_cross allowed as ordinary radiation
+[PASS] extra modes require suppression flag -- policy rule recorded for scalar/vector extra modes
+[PASS] TT-only radiation route -- candidate route recorded
+
+[unresolved_obligations]
+[OBLIGATION] derive scalar breathing controlled in parent structure -- open proof obligation recorded
+[OBLIGATION] derive vector radiation controlled in parent structure -- open proof obligation recorded
+[OBLIGATION] derive TT projection from parent gauge structure -- open proof obligation recorded

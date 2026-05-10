@@ -24,7 +24,6 @@ Discipline:
   e_kappa and epsilon_zeta must not count the same mismatch twice
   K_lock remains diagnostic only
   recombination must count trace/volume response once
-[WARN] projected kappa-zeta problem posed: REQUIRED
 
 ========================================================================================================================
 Case 1: Projected map inventory
@@ -37,7 +36,7 @@ Condition: kappa = P_trace(zeta - zeta_min)
 Role: defines kappa as the trace/volume part of zeta displacement
 Allowed if: P_trace is a constraint/projector and not a wave operator
 Forbidden if: P_trace is identity and creates raw exterior scalar charge
-[WARN] PZ1: raw projected map: CANDIDATE
+Status: CANDIDATE
 Missing: definition of P_trace
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -47,7 +46,7 @@ Condition: kappa = P_relax P_trace(zeta - zeta_min)
 Role: adds first-order relaxation filter after trace projection
 Allowed if: P_relax preserves no-wave, no-overshoot kappa behavior
 Forbidden if: P_relax becomes second-order scalar dynamics
-[WARN] PZ2: relaxed projected map: CANDIDATE
+Status: CANDIDATE
 Missing: P_relax definition and relation to Gamma_relax
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -57,7 +56,7 @@ Condition: integral P_trace(zeta - zeta_min) d^3x = 0 or Q_kappa=0
 Role: removes exterior monopole / scalar charge
 Allowed if: compensation follows from parent projector or boundary law
 Forbidden if: compensation is imposed ad hoc for each source
-[WARN] PZ3: compensation requirement: REQUIRED
+Status: REQUIRED
 Missing: Q_kappa / Q_volume relation and parent origin
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -67,7 +66,7 @@ Condition: zeta_ext=0, zeta_min_ext=0, kappa_ext=0
 Role: keeps ordinary exterior vacuum scalar-neutral
 Allowed if: projector maps exterior vacuum to zero
 Forbidden if: projector permits kappa_ext ~ 1/r
-[WARN] PZ4: exterior fixed point: REQUIRED
+Status: REQUIRED
 Missing: exterior stability theorem
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -77,7 +76,7 @@ Condition: F_kappa(R+)=0 and F_zeta(R+)=0
 Role: prevents projected trace/volume residual from leaking outside
 Allowed if: P_trace includes or cooperates with P_boundary
 Forbidden if: nonzero boundary flux seeds exterior scalar tail
-[WARN] PZ5: zero boundary flux: REQUIRED
+Status: REQUIRED
 Missing: P_boundary relation
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -87,7 +86,7 @@ Condition: delta M_ext|projected zeta/kappa = 0
 Role: protects exterior mass from volume/trace reconfiguration
 Allowed if: P_trace excludes A_flux / rho mass charge
 Forbidden if: zeta/kappa changes the A-sector 1/r coefficient
-[WARN] PZ6: A-sector mass separation: REQUIRED
+Status: REQUIRED
 Missing: boundary mass theorem and scalar constraint propagation
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -97,7 +96,7 @@ Condition: epsilon_zeta and e_kappa counted separately; no K_lock energy
 Role: preserves group-13 double-counting convention
 Allowed if: kappa is residual/diagnostic projection and not duplicate zeta energy
 Forbidden if: projected map makes e_kappa identical to epsilon_zeta displacement
-[WARN] PZ7: epsilon/e_kappa accounting: SAFE_IF
+Status: SAFE_IF
 Missing: whether e_kappa is residual energy or should be absorbed later
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -107,7 +106,7 @@ Condition: P_trace map may be diagnostic, energetic, or constraint-defining
 Role: decides whether kappa has independent energy
 Allowed if: status is explicitly labeled
 Forbidden if: same projection is used both as identity and energy term
-[FAIL] PZ8: diagnostic versus energetic projection: UNRESOLVED
+Status: UNRESOLVED
 Missing: degree-of-freedom count
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -117,7 +116,7 @@ Condition: P_trace h_TT = 0 and P_TT P_trace = 0
 Role: prevents trace/volume projection from contaminating TT radiation
 Allowed if: projectors are orthogonal at least in the reduced/linear sense
 Forbidden if: trace residual sources h_TT or TT changes zeta
-[WARN] PZ9: trace/TT separation: CONSTRAINED
+Status: CONSTRAINED
 Missing: nonlinear/covariant projector structure
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -127,7 +126,7 @@ Condition: no Box kappa, no Box zeta
 Role: keeps projected map non-radiative
 Allowed if: projection/relaxation remains elliptic/constraint/first-order
 Forbidden if: projected residual is promoted to a hyperbolic scalar field
-[PASS] PZ10: no scalar wave promotion: FORBIDDEN
+Status: FORBIDDEN
 Missing: parent proof of no scalar inertia
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -137,7 +136,7 @@ Condition: A, zeta, kappa assembled once into g_ij
 Role: prevents A spatial response, zeta volume response, and kappa trace response from triple-counting
 Allowed if: P_recombination defines one trace/volume contribution
 Forbidden if: g_ij includes scalar_spatial_response(A) + zeta + kappa as independent volume terms
-[WARN] PZ11: recombination compatibility: REQUIRED
+Status: REQUIRED
 Missing: P_recombination
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -147,7 +146,7 @@ Condition: kappa = P_relax P_trace(zeta - zeta_min), with K_lock diagnostic only
 Role: best provisional projected map
 Allowed if: P_trace removes exterior charge and P_relax stays first-order
 Forbidden if: projection fails exterior neutrality or double-counting
-[PASS] PZ12: recommended projected convention: RECOMMENDED
+Status: RECOMMENDED
 Missing: definitions of P_trace, P_relax, P_boundary
 
 ========================================================================================================================
@@ -167,7 +166,6 @@ Case 2: Compact projected-map ledger
 | PZ10: no scalar wave promotion | no Box kappa, no Box zeta | FORBIDDEN | parent proof of no scalar inertia |
 | PZ11: recombination compatibility | A, zeta, kappa assembled once into g_ij | REQUIRED | P_recombination |
 | PZ12: recommended projected convention | kappa = P_relax P_trace(zeta - zeta_min), with K_lock diagnostic only | RECOMMENDED | definitions of P_trace, P_relax, P_boundary |
-[WARN] compact projected-map ledger produced: STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -184,7 +182,6 @@ Interpretation:
   Projected kappa is promising, but only if P_trace also supports compensation/exterior neutrality.
   The relaxed projected map is safer than raw equality.
   The main unresolved issue is whether the projection is diagnostic, energetic, or constraint-defining.
-[WARN] projected-map status count produced: STRUCTURAL
 
 ========================================================================================================================
 Case 4: Minimal projected map
@@ -212,7 +209,6 @@ Accounting:
   epsilon_zeta counted separately
   e_kappa counted separately only if kappa is a residual
   K_lock not counted as physical energy
-[WARN] minimal projected map stated: CANDIDATE
 
 ========================================================================================================================
 Case 5: P_trace requirements
@@ -227,7 +223,6 @@ P_trace must:
 6. avoid becoming a wave operator
 7. support first-order relaxation if P_relax is included
 8. leave recombination with only one trace/volume contribution
-[WARN] P_trace requirements stated: REQUIRED
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -242,7 +237,6 @@ The projected map fails if:
 6. Box kappa or Box zeta reappears.
 7. TT modes alter zeta through projector leakage.
 8. recombination counts A spatial response, zeta, and kappa separately.
-[WARN] projected-map failure controls stated: RISK
 
 ========================================================================================================================
 Case 7: Next tests
@@ -264,7 +258,6 @@ Recommended next script:
 
 Reason:
   The projected map is only as good as P_trace. Define the projector next.
-[WARN] next test selected: STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -290,3 +283,12 @@ Possible next artifact:
 
 Possible next script:
   candidate_trace_projector_definition.py
+
+[governance_assessments]
+[PASS] projected kappa-zeta map audited -- 12 projected-map entries classified
+[DEFER] P_trace requirements stated -- P_trace not yet derived
+
+[unresolved_obligations]
+[OBLIGATION] derive P_trace for exterior neutrality -- open proof obligation recorded
+[OBLIGATION] derive P_relax definition -- open proof obligation recorded
+[OBLIGATION] derive exterior stability theorem -- open proof obligation recorded

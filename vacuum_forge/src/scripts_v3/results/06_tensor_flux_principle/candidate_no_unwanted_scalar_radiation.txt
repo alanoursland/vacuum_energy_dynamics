@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate No Unwanted Scalar Radiation
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - quadrupole_tensor_flux_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: No unwanted scalar radiation problem
@@ -16,7 +18,9 @@ Danger:
 
 Goal:
   Establish guardrails that keep radiation in the TT tensor channel.
-[PASS] unwanted scalar radiation guardrail posed
+
+[governance_assessments]
+[PASS] unwanted scalar radiation guardrail posed -- failure control for scalar radiation setup
 
 ========================================================================================================================
 Case 1: Monopole scalar radiation control
@@ -24,14 +28,18 @@ Case 1: Monopole scalar radiation control
 M(t) = M0
 Mdot = 0
 Mddot = 0
-[PASS] conserved total mass gives no scalar monopole radiation
+
+[derived_results]
+[PASS] conserved total mass gives no scalar monopole radiation -- Mdot = 0, Mddot = 0
 
 ========================================================================================================================
 Case 2: Dipole scalar radiation control
 ========================================================================================================================
 D(t) = D0 + V*t
 Dddot = 0
-[PASS] constant-velocity center-of-mass dipole gives no dipole radiation proxy
+
+[derived_results]
+[PASS] constant-velocity center-of-mass dipole gives no dipole radiation proxy -- Dddot = 0
 
 ========================================================================================================================
 Case 3: Scalar breathing quadrupole is not TT
@@ -39,7 +47,9 @@ Case 3: Scalar breathing quadrupole is not TT
 Scalar breathing mode:
 Matrix([[b, 0, 0], [0, b, 0], [0, 0, 0]])
 trace = 2*b
-[PASS] breathing mode is scalar trace mode, not TT
+
+[counterexamples]
+[PASS] breathing mode is scalar trace mode, not TT -- trace = 2*b
 
 ========================================================================================================================
 Case 4: Scalar breathing energy danger
@@ -48,7 +58,9 @@ scalar breathing derivative proxy = B**2*omega**2/2
 tensor plus/cross derivative proxy = omega**2*(H_cross**2 + H_plus**2)/2
 
 If B is not suppressed, scalar radiation would add an extra channel.
-[PASS] scalar breathing radiation must be absent or suppressed
+
+[unresolved_obligations]
+[OBLIGATION] scalar breathing radiation must be absent or suppressed -- B must be absent, constrained, or suppressed
 
 ========================================================================================================================
 Case 5: Architectural suppression options
@@ -67,7 +79,9 @@ The cleanest target for this program:
   A handles static/scalar mass response.
   h_ij^TT handles radiation.
 
-[PASS] suppression architecture options listed
+
+[unresolved_obligations]
+[OBLIGATION] suppression architecture options listed -- suppression mechanism not yet decided or derived
 
 ========================================================================================================================
 Case 6: Tensor quadrupole remains intended radiation channel
@@ -75,7 +89,9 @@ Case 6: Tensor quadrupole remains intended radiation channel
 Q_plus = Q0*cos(2*Omega*t)
 Q_cross = Q0*sin(2*Omega*t)
 Qdddot² proxy = 64*Omega**6*Q0**2
-[PASS] time-varying quadrupole supports tensor radiation proxy
+
+[sample_results]
+[PASS] time-varying quadrupole supports tensor radiation proxy -- Qdddot² proxy = 64*Omega**6*Q0**2
 
 ========================================================================================================================
 Case 7: Classification
@@ -90,7 +106,9 @@ Results:
 6. A should remain scalar/static/constraint-like unless scalar radiation
    is deliberately added and tightly constrained.
 
-[PASS] no-unwanted-scalar-radiation guardrail established
+
+[counterexamples]
+[PASS] no-unwanted-scalar-radiation guardrail established -- monopole and dipole radiation absent; breathing mode is extra if unsuppressed
 
 ========================================================================================================================
 Final interpretation

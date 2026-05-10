@@ -23,7 +23,9 @@ Discipline:
   keep gamma/AB recovery downstream
   preserve no-overlap and boundary-neutrality guardrails
   name the surviving bottleneck explicitly
-[WARN] Group 14 closure problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] Group 14 closure problem posed -- J_V/u_vac surviving bottleneck must be named
 
 ========================================================================================================================
 Case 1: Closure inventory
@@ -33,91 +35,91 @@ Case 1: Closure inventory
 G14-1: original group purpose
 ------------------------------------------------------------------------------------------------------------------------
 Finding: map kappa/zeta/projector responsibilities and prevent scalar double-counting
-[WARN] G14-1: original group purpose: STRUCTURAL
+Status: STRUCTURAL
 Consequence: projector accounting was sharpened into spatial-trace origin search
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-2: A_spatial origin target
 ------------------------------------------------------------------------------------------------------------------------
 Finding: derive A_spatial/spatial trace without GR smuggling or gamma tuning
-[WARN] G14-2: A_spatial origin target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Consequence: became the central field-equation narrowing problem of the group
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-3: local differential closure
 ------------------------------------------------------------------------------------------------------------------------
 Finding: local closure produces q but does not derive q
-[WARN] G14-3: local differential closure: DEFER
+Status: DEFER
 Consequence: coefficient origin became the bottleneck
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-4: coupled stiffness route
 ------------------------------------------------------------------------------------------------------------------------
 Finding: coupled stiffness yields q = -c_x/c_s
-[WARN] G14-4: coupled stiffness route: DEFER
+Status: DEFER
 Consequence: moved coefficient problem to stiffness ratio
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-5: conservation-current route
 ------------------------------------------------------------------------------------------------------------------------
 Finding: minimal gradient current yields q = -a/b
-[WARN] G14-5: conservation-current route: DEFER
+Status: DEFER
 Consequence: moved coefficient problem to current ratio
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-6: parent balance route
 ------------------------------------------------------------------------------------------------------------------------
 Finding: parent balance requires explicit E_parent and otherwise relocates ratio
-[WARN] G14-6: parent balance route: DEFER
+Status: DEFER
 Consequence: decorative balance and GR rewrite were rejected
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-7: volume-exchange route
 ------------------------------------------------------------------------------------------------------------------------
 Finding: volume exchange is ontology-native but requires explicit V[A,B_s,zeta]
-[WARN] G14-7: volume-exchange route: CANDIDATE
+Status: CANDIDATE
 Consequence: forced zeta companion-versus-residual decision
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-8: zeta status
 ------------------------------------------------------------------------------------------------------------------------
 Finding: zeta cannot be both B_s companion and independent residual trace
-[WARN] G14-8: zeta status: REQUIRED
+Status: REQUIRED
 Consequence: companion branch requires residual zeta trace killed or non-metric
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-9: F_zeta map
 ------------------------------------------------------------------------------------------------------------------------
 Finding: algebraic F_zeta maps are high-risk; source-driven maps need Sigma_V[A,T]
-[WARN] G14-9: F_zeta map: DEFER
+Status: DEFER
 Consequence: moved live branch to source-driven volume creation
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-10: source-driven volume creation
 ------------------------------------------------------------------------------------------------------------------------
 Finding: best candidate is Sigma_V ~ chi rho a^mu nabla_mu A
-[WARN] G14-10: source-driven volume creation: CANDIDATE
+Status: CANDIDATE
 Consequence: requires frame/projection, chi-origin, neutrality, and no-overlap
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-11: frame field
 ------------------------------------------------------------------------------------------------------------------------
 Finding: matter frame is concrete but risky; vacuum frame is ontology-native but undefined
-[WARN] G14-11: frame field: DEFER
+Status: DEFER
 Consequence: moved live branch to u_vac definition
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-12: vacuum current
 ------------------------------------------------------------------------------------------------------------------------
 Finding: u_vac best candidate is normalized J_V, but J_V is not defined
-[FAIL] G14-12: vacuum current: UNRESOLVED
+Status: UNRESOLVED
 Consequence: final surviving bottleneck is J_V/u_vac
 
 ------------------------------------------------------------------------------------------------------------------------
 G14-13: closure decision
 ------------------------------------------------------------------------------------------------------------------------
 Finding: Group 14 should stop rather than continue ratio/frame relocation loops
-[PASS] G14-13: closure decision: CLOSED
+Status: CLOSED
 Consequence: promote J_V/u_vac and exchange continuity to next group
 
 ========================================================================================================================
@@ -138,7 +140,9 @@ Case 2: Compact closure ledger
 | G14-11: frame field | matter frame is concrete but risky; vacuum frame is ontology-native but undefined | DEFER | moved live branch to u_vac definition |
 | G14-12: vacuum current | u_vac best candidate is normalized J_V, but J_V is not defined | UNRESOLVED | final surviving bottleneck is J_V/u_vac |
 | G14-13: closure decision | Group 14 should stop rather than continue ratio/frame relocation loops | CLOSED | promote J_V/u_vac and exchange continuity to next group |
-[WARN] compact closure ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact closure ledger produced -- summary inventory
 
 ========================================================================================================================
 Case 3: Killed or rejected branches
@@ -151,7 +155,9 @@ Case 3: Killed or rejected branches
 - arbitrary preferred vacuum frame
 - decorative J_V or decorative Div E_parent
 - J_V = n_V u_vac used to define u_vac circularly
-[WARN] rejected branch list stated: REJECTED
+
+[governance_assessments]
+[INFO] rejected branch list stated -- branches rejected or deferred
 
 ========================================================================================================================
 Case 4: Surviving bottleneck
@@ -178,7 +184,9 @@ Missing:
   no-overlap / residual-kill theorem
   sign/orientation
   chi-origin
-[FAIL] surviving bottleneck named: UNRESOLVED
+
+[unresolved_obligations]
+[OPEN] surviving bottleneck named -- J_V/u_vac definition unresolved
 
 ========================================================================================================================
 Case 5: Provisional conventions to carry forward
@@ -190,7 +198,9 @@ Case 5: Provisional conventions to carry forward
 - gamma_like and AB are recovery checks, not construction tools.
 - boundary neutrality and no-overlap remain mandatory.
 - J_V/u_vac is the next-group bottleneck.
-[PASS] provisional conventions stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] provisional conventions stated -- carried forward as provisional
 
 ========================================================================================================================
 Case 6: Recommended next group
@@ -211,7 +221,9 @@ Reason:
 
   Group 14 reached J_V/u_vac as bottleneck.
   The next group should derive or kill the volume-current route directly.
-[PASS] next group selected: RECOMMENDED
+
+[governance_assessments]
+[INFO] next group selected -- 15_vacuum_current_and_exchange_continuity
 
 ========================================================================================================================
 Final interpretation

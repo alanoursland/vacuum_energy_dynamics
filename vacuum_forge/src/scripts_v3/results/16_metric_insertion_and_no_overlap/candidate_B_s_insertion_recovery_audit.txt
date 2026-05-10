@@ -2,7 +2,6 @@
 ========================================================================================================================
 Candidate B_s Insertion Recovery Audit
 ========================================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - B_s_insertion_boundary_safety_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -27,7 +26,9 @@ Discipline:
   residual-kill is not chosen by recovery
   boundary safety is not chosen by recovery
   J_V is not a recovery repair current
-[WARN] B_s insertion recovery-audit problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] B_s insertion recovery-audit problem posed -- required before insertion branch can be summarized
 
 ========================================================================================================================
 Case 1: B_s insertion recovery-audit inventory
@@ -40,7 +41,7 @@ Rule: gamma_like, AB, and Schwarzschild recovery are downstream tests, not B_s/F
 Role: core anti-smuggling target
 Allowed if: insertion mechanism is fixed before recovery checks
 Forbidden if: recovery target chooses coefficient, support, boundary, or residual status
-[WARN] RA1: recovery-audit target: THEOREM_TARGET
+[INFO] RA1: recovery-audit target: THEOREM_TARGET
 Missing: solutions after insertion mechanism
 Consequence: protects B_s insertion from GR-copy construction
 
@@ -51,7 +52,7 @@ Rule: ordinary weak-field spatial curvature / gamma_like behavior checked after 
 Role: weak-field recovery target
 Allowed if: gamma_like is output of parent/insertion mechanism
 Forbidden if: coefficient is chosen to make gamma_like = 1
-[WARN] RA2: gamma_like downstream test: RECOVERY_TARGET
+[INFO] RA2: gamma_like downstream test: RECOVERY_TARGET
 Missing: post-insertion weak-field solution
 Consequence: keeps observational safety from becoming coefficient tuning
 
@@ -62,7 +63,7 @@ Rule: AB -> 1 in ordinary exterior is diagnostic/recovery check
 Role: static exterior diagnostic
 Allowed if: AB is checked after boundary-safe insertion
 Forbidden if: AB=1 is imposed to construct B_s
-[WARN] RA3: AB downstream exterior diagnostic: RECOVERY_TARGET
+[INFO] RA3: AB downstream exterior diagnostic: RECOVERY_TARGET
 Missing: exterior solution after insertion
 Consequence: keeps exterior recovery from becoming field law
 
@@ -73,7 +74,7 @@ Rule: kappa_areal = 1/2 ln(AB) remains reduced diagnostic / mismatch test
 Role: allowed reduced diagnostic
 Allowed if: used only to test exterior AB mismatch
 Forbidden if: areal kappa becomes physical scalar or insertion mechanism
-[WARN] RA4: areal kappa diagnostic only: SAFE_IF
+[INFO] RA4: areal kappa diagnostic only: SAFE_IF
 Missing: not a mechanism
 Consequence: preserves kappa fence
 
@@ -84,7 +85,7 @@ Rule: ordinary exterior should recover Schwarzschild/GR-compatible spatial behav
 Role: exterior recovery target
 Allowed if: used only as target for acceptable parent/insertion equations
 Forbidden if: spatial metric is copied as derivation
-[WARN] RA5: Schwarzschild spatial metric as recovery target: RECOVERY_TARGET
+[INFO] RA5: Schwarzschild spatial metric as recovery target: RECOVERY_TARGET
 Missing: derived exterior solution
 Consequence: keeps GR-compatible exterior as test
 
@@ -95,7 +96,7 @@ Rule: acceptable insertion should recover ordinary weak-field scalar spatial cur
 Role: weak-field recovery target
 Allowed if: checked after mechanism is specified
 Forbidden if: curvature coefficient is fit by hand
-[WARN] RA6: weak-field spatial curvature target: RECOVERY_TARGET
+[INFO] RA6: weak-field spatial curvature target: RECOVERY_TARGET
 Missing: weak-field solution from mechanism
 Consequence: preserves observational target without tuning
 
@@ -106,7 +107,7 @@ Rule: B=1/A imposed generally to define B_s
 Role: forbidden shortcut
 Allowed if: only as reduced static exterior recovery diagnostic
 Forbidden if: used as general insertion or field equation
-[WARN] RA7: B=1/A construction rejection: REJECTED
+[INFO] RA7: B=1/A construction rejection: REJECTED
 Missing: not pursued
 Consequence: prevents exterior relation from becoming parent construction
 
@@ -117,7 +118,7 @@ Rule: choose B_s/F_zeta coefficient so gamma_like = 1
 Role: forbidden coefficient tuning
 Allowed if: never as derivation
 Forbidden if: accepted as mechanism
-[WARN] RA8: gamma coefficient fit rejection: REJECTED
+[INFO] RA8: gamma coefficient fit rejection: REJECTED
 Missing: not pursued
 Consequence: prevents observational recovery from being fake derivation
 
@@ -128,7 +129,7 @@ Rule: copy Schwarzschild/GR spatial metric as B_s or F_zeta
 Role: forbidden GR smuggling
 Allowed if: never as derivation
 Forbidden if: accepted as insertion law
-[WARN] RA9: GR spatial copy rejection: REJECTED
+[INFO] RA9: GR spatial copy rejection: REJECTED
 Missing: not pursued
 Consequence: keeps B_s/F_zeta theorem target honest
 
@@ -139,7 +140,7 @@ Rule: use kappa_areal as physical scalar to justify B_s
 Role: forbidden diagnostic promotion
 Allowed if: never as physical insertion mechanism
 Forbidden if: accepted as scalar field
-[WARN] RA10: areal kappa physical promotion rejection: REJECTED
+[INFO] RA10: areal kappa physical promotion rejection: REJECTED
 Missing: not pursued
 Consequence: prevents kappa diagnostic from becoming scalar gravity
 
@@ -150,7 +151,7 @@ Rule: choose support/smoothing boundary behavior to pass AB/gamma recovery
 Role: forbidden boundary/recovery coupling
 Allowed if: never as mechanism
 Forbidden if: accepted as boundary safety
-[WARN] RA11: recovery-tuned boundary smoothing rejection: REJECTED
+[INFO] RA11: recovery-tuned boundary smoothing rejection: REJECTED
 Missing: not pursued
 Consequence: prevents boundary safety from being recovery-fit
 
@@ -161,7 +162,7 @@ Rule: residual-kill / non-metric residual status fixed before recovery checks
 Role: count-once protection
 Allowed if: residual status follows safety convention or O/parent identity
 Forbidden if: residual is killed because recovery fails otherwise
-[WARN] RA12: residual-kill not chosen by recovery: REQUIRED
+[INFO] RA12: residual-kill not chosen by recovery: REQUIRED
 Missing: residual-kill theorem remains missing
 Consequence: prevents recovery from choosing recombination split
 
@@ -172,7 +173,7 @@ Rule: compact support / smooth transition / zero flux fixed before recovery chec
 Role: boundary anti-smuggling guard
 Allowed if: boundary behavior follows insertion/current law
 Forbidden if: chosen to force exterior Schwarzschild behavior
-[WARN] RA13: boundary safety not chosen by recovery: REQUIRED
+[INFO] RA13: boundary safety not chosen by recovery: REQUIRED
 Missing: boundary theorem
 Consequence: prevents recovery-tuned boundary repair
 
@@ -183,7 +184,7 @@ Rule: J_V remains unresolved and cannot be chosen to pass recovery
 Role: current-branch guard
 Allowed if: J_V stays theorem target unless physical flux law exists
 Forbidden if: J_V is used as recovery repair current
-[WARN] RA14: J_V unresolved guard: REQUIRED
+[INFO] RA14: J_V unresolved guard: REQUIRED
 Missing: physical J_V law
 Consequence: prevents current from becoming painted tunnel
 
@@ -194,7 +195,7 @@ Rule: insertion branch may proceed only if recovery targets are cleanly downstre
 Role: branch-survival condition
 Allowed if: no recovery target has been used as construction input
 Forbidden if: any recovery target selects insertion/coefficient/boundary/residual
-[WARN] RA15: recovery audit pass condition: REQUIRED
+[INFO] RA15: recovery audit pass condition: REQUIRED
 Missing: mechanism remains theorem target
 Consequence: decides whether group can summarize branch honestly
 
@@ -205,7 +206,7 @@ Rule: B_s insertion depends on gamma_like, AB, GR metric copy, or areal kappa pr
 Role: branch-kill condition
 Allowed if: used to reject unsafe insertion family
 Forbidden if: patched or relabeled
-[FAIL] RA16: recovery-smuggling failure: BRANCH_KILLED
+[INFO] RA16: recovery-smuggling failure: BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: unsafe insertion cannot support ordinary sector
 
@@ -216,7 +217,7 @@ Rule: if recovery audit passes only conventionally, close Group 16 with status s
 Role: next local bottleneck
 Allowed if: no concrete insertion/O theorem is derived
 Forbidden if: continuing into parent equations before status closure
-[PASS] RA17: recommended next move: RECOMMENDED
+[INFO] RA17: recommended next move: RECOMMENDED
 Missing: Group 16 status summary
 Consequence: next script should be candidate_metric_insertion_group_status_summary.py
 
@@ -242,7 +243,9 @@ Case 2: Compact recovery-audit ledger
 | RA15: recovery audit pass condition | insertion branch may proceed only if recovery targets are cleanly downstream | REQUIRED | decides whether group can summarize branch honestly |
 | RA16: recovery-smuggling failure | B_s insertion depends on gamma_like, AB, GR metric copy, or areal kappa promotion | BRANCH_KILLED | unsafe insertion cannot support ordinary sector |
 | RA17: recommended next move | if recovery audit passes only conventionally, close Group 16 with status summary | RECOMMENDED | next script should be candidate_metric_insertion_group_status_summary.py |
-[WARN] compact recovery-audit ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact recovery-audit ledger produced -- recovery routes enumerated
 
 ========================================================================================================================
 Case 3: Status counts
@@ -260,7 +263,9 @@ Interpretation:
   Gamma_like, AB, Schwarzschild behavior, and areal kappa may test insertion branches.
   They may not construct B_s, choose coefficients, choose boundary behavior, or choose residual status.
   If no smuggling occurs, Group 16 should close with a status summary rather than jump to parent equations.
-[WARN] B_s insertion recovery-audit status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] B_s insertion recovery-audit status count produced -- recovery anti-smuggling guards enumerated
 
 ========================================================================================================================
 Case 4: Allowed recovery tests
@@ -281,7 +286,9 @@ Not allowed:
 4. areal kappa physical promotion
 5. recovery-tuned support/smoothing
 6. recovery-selected residual-kill
-[PASS] allowed recovery tests listed: RECOMMENDED
+
+[governance_assessments]
+[INFO] allowed recovery tests listed -- five allowed; six forbidden
 
 ========================================================================================================================
 Case 4b: Concrete recovery check stays downstream
@@ -290,7 +297,9 @@ A(r) = -2*G*M/(c**2*r) + 1
 B(r) = 1/(-2*G*M/(c**2*r) + 1)
 A(r) * B(r) = 1
 ConcreteMetricCheck status = satisfied_by_construction
-[PASS] downstream reciprocal recovery audit: DERIVED_REDUCED — A*B = 1; ConcreteMetricCheck = satisfied_by_construction
+
+[sample_results]
+[PASS] downstream reciprocal recovery audit -- A*B = 1; ConcreteMetricCheck = satisfied_by_construction
 
 ========================================================================================================================
 Case 5: Recovery-audit decision tree
@@ -317,7 +326,9 @@ Decision tree:
 
 7. If audit passes only conventionally:
    close Group 16 with status summary.
-[PASS] recovery-audit decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] recovery-audit decision tree stated -- recommended next is group status summary
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -335,7 +346,16 @@ Consequence:
 Bad failure:
 
   Call a recovery target a theorem because it gets the right exterior answer.
-[WARN] B_s insertion recovery-audit good failure stated: DEFER
+
+Recovery-target selected-parameter finding:
+
+  gamma_like, AB, Schwarzschild recovery, and areal kappa are downstream tests.
+  Gamma-like behavior, AB behavior, and Schwarzschild recovery are downstream tests,
+  not construction rules for B_s/F_zeta insertion.
+  Using them as construction inputs constitutes a RECOVERY_SELECTED_PARAMETER violation.
+
+[governance_assessments]
+[DEFER] B_s insertion recovery-audit good failure stated -- deferred; recovery-smuggling would kill branch
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -350,7 +370,9 @@ Recovery audit fails if:
 6. boundary smoothing is recovery-tuned
 7. J_V is used as recovery repair current
 8. recovery target is called parent identity
-[WARN] B_s insertion recovery-audit failure controls stated: RISK
+
+[governance_assessments]
+[WARN] B_s insertion recovery-audit failure controls stated -- eight failure modes
 
 ========================================================================================================================
 Case 8: Next tests
@@ -374,7 +396,9 @@ Reason:
   The branch has now been audited for insertion, count-once, non-metric residuals,
   minimal O, boundary safety, and recovery smuggling.
   Unless a concrete insertion/O theorem has appeared, the group should close with status.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_metric_insertion_group_status_summary.py
 
 ========================================================================================================================
 Final interpretation
@@ -399,4 +423,6 @@ Rejected:
 Best next script:
 
   candidate_metric_insertion_group_status_summary.py
-[PASS] B_s insertion recovery-audit complete: CLOSED
+
+[governance_assessments]
+[DEFER] B_s insertion recovery-audit complete -- recovery anti-smuggling guards in place; no theorem derived

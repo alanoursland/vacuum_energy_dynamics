@@ -2,7 +2,6 @@
 ============================================================================================================
 Candidate Areal-Flux Principle
 ============================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - exact_source_law_geometry_check: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 

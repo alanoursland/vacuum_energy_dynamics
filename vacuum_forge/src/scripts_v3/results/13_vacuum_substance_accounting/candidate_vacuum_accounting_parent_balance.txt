@@ -32,7 +32,9 @@ Discipline:
   no scalar far-zone radiation
   no exterior mass change
   no decorative parent balance
-[WARN] vacuum accounting parent balance problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] vacuum accounting parent balance problem posed -- open: balance skeleton requires parent embedding
 
 ========================================================================================================================
 Case 1: Parent balance term inventory
@@ -45,7 +47,7 @@ Term: epsilon_vac_config
 Role: local geometric vacuum-spacetime configuration variable, likely built from zeta=ln sqrt(gamma)
 Required condition: geometric definition, not thermodynamic bucket
 Forbidden failure: repair reservoir or coefficient tuning functional
-[WARN] PB1: volume configuration density: CANDIDATE
+Status: CANDIDATE
 Missing: functional definition from zeta/kappa/volume form
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +57,7 @@ Term: u^mu nabla_mu epsilon_vac_config
 Role: local rate of vacuum-configuration change along chosen frame/flow
 Required condition: u^mu defined or replaced by covariant/constraint operator
 Forbidden failure: bare coordinate time derivative with hidden frame
-[FAIL] PB2: flow derivative: UNRESOLVED
+Status: UNRESOLVED
 Missing: u^mu or foliation/volume current
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +67,7 @@ Term: nabla_mu J_v^mu
 Role: optional compact/constrained/causal redistribution term
 Required condition: zero exterior flux and no far-zone scalar energy
 Forbidden failure: acausal repair current or scalar radiation current
-[WARN] PB3: vacuum configuration current: CANDIDATE
+Status: CANDIDATE
 Missing: J_v class selection and support law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -75,7 +77,7 @@ Term: Sigma_exchange
 Role: matter/vacuum-spacetime configuration coupling
 Required condition: geometric/projector-derived, not free knob
 Forbidden failure: duplicates A-sector mass source or acts as arbitrary source
-[FAIL] PB4: exchange source: UNRESOLVED
+Status: UNRESOLVED
 Missing: mass-acceleration-gradient or trace-volume coupling expression
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -85,7 +87,7 @@ Term: Gamma_relax
 Role: internal restoration/conversion between e_kappa and epsilon_vac_config
 Required condition: exchange/restoration, not destruction
 Forbidden failure: damping sink or Sigma_creation in ordinary gravity
-[WARN] PB5: relaxation term: CONSTRAINED
+Status: CONSTRAINED
 Missing: sign convention and relation to e_kappa
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -95,7 +97,7 @@ Term: Sigma_creation = 0
 Role: ordinary closed-regime condition
 Required condition: no nonconservative creation/destruction in ordinary gravity
 Forbidden failure: active-regime leakage into ordinary sector
-[WARN] PB6: active creation exclusion: REQUIRED
+Status: REQUIRED
 Missing: active-regime trigger/exclusion law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -105,7 +107,7 @@ Term: surface integral J_v dot dS at R+ = 0
 Role: prevents vacuum configuration current from leaking into exterior scalar charge
 Required condition: zero exterior boundary flux
 Forbidden failure: zeta/kappa exterior 1/r tail
-[WARN] PB7: boundary flux zero: REQUIRED
+Status: REQUIRED
 Missing: boundary/interface law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -115,7 +117,7 @@ Term: Q_volume = 0
 Role: prevents exterior volume scalar monopole
 Required condition: compact support or compensated source
 Forbidden failure: uncompensated scalar charge
-[WARN] PB8: zero volume charge: REQUIRED
+Status: REQUIRED
 Missing: S_volume and compensation law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -125,7 +127,7 @@ Term: delta M_ext = 0
 Role: keeps exterior mass tied to A_flux, not volume accounting
 Required condition: volume/kappa/J_v terms do not alter A exterior coefficient
 Forbidden failure: boundary/vacuum transport tunes measured mass
-[WARN] PB9: A-sector mass protected: REQUIRED
+Status: REQUIRED
 Missing: boundary mass preservation theorem
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -135,7 +137,7 @@ Term: F_scalar_far = 0
 Role: binary-radiation safety condition
 Required condition: ordinary far-zone energy loss remains TT-only
 Forbidden failure: scalar orbital damping or scalar radiation
-[WARN] PB10: no far-zone scalar flux: REQUIRED
+Status: REQUIRED
 Missing: radiation flux proof after coupling selection
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -145,7 +147,7 @@ Term: P_recombination
 Role: keeps A mass response, volume zeta/kappa, W_i, and h_TT counted once
 Required condition: no scalar double-counting
 Forbidden failure: zeta/kappa duplicates A-sector mass
-[FAIL] PB11: recombination separation: MISSING
+Status: MISSING
 Missing: recombination projector identity
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -155,7 +157,7 @@ Term: Div E_parent = B_closed + B_relax
 Role: eventual embedding of accounting balance in field-equation parent structure
 Required condition: balance is derived from parent identity rather than appended
 Forbidden failure: decorative balance law
-[FAIL] PB12: parent identity embedding: MISSING
+Status: MISSING
 Missing: E_parent, B_closed, B_relax definitions
 
 ========================================================================================================================
@@ -175,7 +177,9 @@ Case 2: Compact parent balance ledger
 | PB10: no far-zone scalar flux | F_scalar_far = 0 | REQUIRED | ordinary far-zone energy loss remains TT-only | radiation flux proof after coupling selection |
 | PB11: recombination separation | P_recombination | MISSING | no scalar double-counting | recombination projector identity |
 | PB12: parent identity embedding | Div E_parent = B_closed + B_relax | MISSING | balance is derived from parent identity rather than appended | E_parent, B_closed, B_relax definitions |
-[WARN] compact parent balance ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact parent balance ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -190,7 +194,9 @@ Interpretation:
   The balance skeleton is now explicit enough to audit.
   Most boundary/safety conditions are required.
   The central missing definitions are epsilon_vac_config, Sigma_exchange, u^mu, and parent embedding.
-[WARN] parent balance status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] parent balance status count produced -- counts complete
 
 ========================================================================================================================
 Case 4: Candidate balance skeleton
@@ -217,7 +223,9 @@ exterior safety:
   Q_volume = 0
   delta M_ext = 0
   F_scalar_far = 0
-[WARN] candidate balance skeleton stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] candidate balance skeleton stated -- candidate route: skeleton awaits parent embedding
 
 ========================================================================================================================
 Case 5: Sign interpretation
@@ -237,7 +245,9 @@ Required:
   curvature excess/deficit exchange must be geometric accounting
   not energy deletion
   not active creation in ordinary gravity
-[WARN] sign interpretation stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] sign interpretation stated -- candidate route: signs not yet fixed
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -255,7 +265,9 @@ The parent balance skeleton fails if:
 9. M_ext changes under vacuum accounting.
 10. scalar far-zone flux appears.
 11. parent embedding remains decorative.
-[WARN] parent balance failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] parent balance failure controls stated -- open risk: eleven failure conditions listed
 
 ========================================================================================================================
 Case 7: Next tests
@@ -277,7 +289,9 @@ Recommended next script:
 
 Reason:
   The balance skeleton now depends explicitly on epsilon_vac_config; define the functional next.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- epsilon_vac_config functional
 
 ========================================================================================================================
 Final interpretation

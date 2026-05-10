@@ -1,11 +1,7 @@
-[SCRIPT_FAILED]
-exit_code=1
-
 
 ============================================================================================================
 Candidate Interior A Source Model
 ============================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - mechanics_areal_flux_metric: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -205,12 +201,3 @@ kappa=0 should hold inside matter or only in source-free exterior.
 
 Possible next artifact:
   candidate_interior_A_source_model.md
-
-[stderr]
-Traceback (most recent call last):
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\04_source_law_interior\candidate_interior_A_source_model.py", line 636, in <module>
-    main()
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\04_source_law_interior\candidate_interior_A_source_model.py", line 583, in main
-    out.print_summary()
-    ^^^^^^^^^^^^^^^^^
-AttributeError: 'ScriptOutput' object has no attribute 'print_summary'

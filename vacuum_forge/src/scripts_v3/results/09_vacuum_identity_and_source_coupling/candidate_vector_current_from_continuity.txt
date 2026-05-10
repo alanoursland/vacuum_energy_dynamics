@@ -20,7 +20,6 @@ Starting point:
 Hypothesis:
 
   W_i should be sourced by current j_i, not assigned only by analogy.
-[WARN] vector current problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Mass continuity links density and current
@@ -33,7 +32,6 @@ expression = Derivative(j(t, x), x) + Derivative(rho(t, x), t)
 
 Interpretation:
   If density sources scalar exchange, current should source vector transport.
-[WARN] current follows from density continuity: CONSTRAINED_BY_IDENTITY — identity form is standard but parent derivation still needed
 
 ========================================================================================================================
 Case 2: Candidate W_i source equation
@@ -47,7 +45,6 @@ Minimal reduced vector-current source equation:
 Status:
   source object j_i is identity-constrained
   coefficient alpha_W/K_W is not derived
-[WARN] W_i source form proposed from current: CONSTRAINED_BY_IDENTITY — coefficient and gauge behavior missing
 
 ========================================================================================================================
 Case 3: Stationary incompressible current is transverse
@@ -58,7 +55,6 @@ div j = 0
 
 Interpretation:
   Stationary rotational current naturally belongs to a transverse/vector sector.
-[PASS] stationary circular current is divergence-free: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 4: Curl W as gauge-safer frame-dragging diagnostic
@@ -72,7 +68,6 @@ curl W =
 Interpretation:
   raw W_i may be gauge-sensitive.
   curl-like diagnostics are better candidates for physical frame dragging.
-[WARN] curl W gives frame-dragging diagnostic candidate: CONSTRAINED_BY_IDENTITY — observable normalization still missing
 
 ========================================================================================================================
 Case 5: Coefficient discipline
@@ -90,7 +85,6 @@ Future success condition:
 
   derive coefficient from same vacuum exchange normalization that produced A_flux
   or show exactly where a new independent stiffness enters
-[WARN] coefficient matching forbidden at this stage: RISK — prevents fake derivation
 
 ========================================================================================================================
 Case 6: Current relation to angular momentum
@@ -104,7 +98,6 @@ l = Matrix([[-rho*v_y*z + rho*v_z*y], [rho*v_x*z - rho*v_z*x], [-rho*v_x*y + rho
 Interpretation:
   If W_i couples to current j_i, frame dragging should be tied to angular
   momentum through r x j.
-[WARN] angular momentum source follows from current: CONSTRAINED_BY_IDENTITY — global integral and coefficient missing
 
 ========================================================================================================================
 Case 7: Classification
@@ -119,8 +112,6 @@ Case 7: Classification
 | full gauge behavior | MISSING |
 | Lense-Thirring normalization | HAND_ASSIGNED if inserted now |
 
-[WARN] vector current classification produced: CONSTRAINED_BY_IDENTITY — source type is constrained, coefficient missing
-
 ========================================================================================================================
 Case 8: Failure controls
 ========================================================================================================================
@@ -131,8 +122,6 @@ This vector-current reconstruction fails if:
 3. curl W does not connect to frame-dragging measurement.
 4. vector radiation appears unsuppressed without evidence.
 5. current continuity does not connect to the scalar density source.
-
-[WARN] vector-current failure controls stated: RISK — next scripts must avoid coefficient matching
 
 ========================================================================================================================
 Final interpretation
@@ -158,3 +147,18 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_frame_dragging_observable.py
+
+[derived_results]
+[PASS] 1D mass continuity expression -- partial_t rho + partial_x j computed symbolically
+[PASS] stationary circular current is divergence-free -- div j = 0
+[PASS] rotational W gives nonzero curl diagnostic -- curl W is nonzero for rotational vector potential
+[PASS] angular momentum density l = r x j computed -- symbolic l = r x j for frame-dragging link
+
+[governance_assessments]
+[DEFER] W_i coefficient matching forbidden -- alpha_W/K_W must not be set to match Lense-Thirring
+[DEFER] raw W_i is gauge-sensitive -- only curl W is a safe observable candidate at this stage
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive full gauge behavior of W_i -- open proof obligation recorded
+[OBLIGATION] derive vector source identity -- open proof obligation recorded

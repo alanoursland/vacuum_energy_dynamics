@@ -23,7 +23,9 @@ Discipline:
   preserve no-overlap as unresolved
   preserve recovery downstream
   prepare field-equation status update
-[WARN] Group 15 status-after-residual-kill problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] Group 15 status-after-residual-kill problem posed -- requires honest Group 15 closure
 
 ========================================================================================================================
 Case 1: Group 15 status ledger after residual-kill
@@ -33,7 +35,7 @@ Case 1: Group 15 status ledger after residual-kill
 G15R-1: J_V status
 ------------------------------------------------------------------------------------------------------------------------
 Result: J_V remains undefined as a physical flux / transport current
-[FAIL] G15R-1: J_V status: UNRESOLVED
+Status: UNRESOLVED
 Consequence: u_vac cannot be globally defined from J_V
 Handoff: do not promote J_V to field-equation ingredient
 
@@ -41,7 +43,7 @@ Handoff: do not promote J_V to field-equation ingredient
 G15R-2: exchange continuity status
 ------------------------------------------------------------------------------------------------------------------------
 Result: nabla_mu J_V^mu = Sigma_V - R_V remains a theorem target, not a law
-[WARN] G15R-2: exchange continuity status: THEOREM_TARGET
+Status: THEOREM_TARGET
 Consequence: continuity constrains but does not define current
 Handoff: requires independent J_V, Sigma_V, and R_V operators
 
@@ -49,7 +51,7 @@ Handoff: requires independent J_V, Sigma_V, and R_V operators
 G15R-3: Sigma/R status
 ------------------------------------------------------------------------------------------------------------------------
 Result: Sigma_V and R_V have been split at role-level only
-[WARN] G15R-3: Sigma/R status: STRUCTURAL
+Status: STRUCTURAL
 Consequence: source and relaxation jobs are separated, but no operators are derived
 Handoff: preserve double-counting guard between Sigma_V and R_V
 
@@ -57,7 +59,7 @@ Handoff: preserve double-counting guard between Sigma_V and R_V
 G15R-4: flux direction status
 ------------------------------------------------------------------------------------------------------------------------
 Result: Sigma_V - R_V supplies divergence strength, not vector direction
-[WARN] G15R-4: flux direction status: REQUIRED
+Status: REQUIRED
 Consequence: J_V requires an independent physical flux / transport law
 Handoff: do not promote elliptic completion or repair current
 
@@ -65,7 +67,7 @@ Handoff: do not promote elliptic completion or repair current
 G15R-5: u_vac domain status
 ------------------------------------------------------------------------------------------------------------------------
 Result: u_vac from J_V exists only on D_V = {J_V^2 < 0, J_V != 0}
-[WARN] G15R-5: u_vac domain status: THEOREM_TARGET
+Status: THEOREM_TARGET
 Consequence: domain-limited current does not give global vacuum clock
 Handoff: static/equilibrium regions need separate treatment if frame is required
 
@@ -73,7 +75,7 @@ Handoff: static/equilibrium regions need separate treatment if frame is required
 G15R-6: ordinary static safety
 ------------------------------------------------------------------------------------------------------------------------
 Result: static zero-current or compact/balanced exchange may be safe; exterior scalar charge kills current family
-[WARN] G15R-6: ordinary static safety: REQUIRED
+Status: REQUIRED
 Consequence: ordinary static mass must not create zeta/kappa/J_V scalar tail
 Handoff: do not patch scalar charge with R_V or boundary repair
 
@@ -81,7 +83,7 @@ Handoff: do not patch scalar charge with R_V or boundary repair
 G15R-7: boundary safety
 ------------------------------------------------------------------------------------------------------------------------
 Result: surviving current requires zero exterior flux, zero scalar charge, no far-zone scalar flux, and no M_ext shift
-[WARN] G15R-7: boundary safety: REQUIRED
+Status: REQUIRED
 Consequence: volume current cannot become scalar exterior gravity
 Handoff: boundary elliptic completion remains diagnostic only
 
@@ -89,7 +91,7 @@ Handoff: boundary elliptic completion remains diagnostic only
 G15R-8: no-overlap status
 ------------------------------------------------------------------------------------------------------------------------
 Result: O[B_s, zeta_residual/kappa_residual, J_V] = 0 remains unresolved
-[FAIL] G15R-8: no-overlap status: UNRESOLVED
+Status: UNRESOLVED
 Consequence: count-once recombination remains missing theorem
 Handoff: do not insert J_V-driven zeta into ordinary metric sector without residual-kill convention or O
 
@@ -97,7 +99,7 @@ Handoff: do not insert J_V-driven zeta into ordinary metric sector without resid
 G15R-9: residual-kill convention
 ------------------------------------------------------------------------------------------------------------------------
 Result: if J_V-driven zeta enters B_s, residual zeta/kappa metric trace is killed or made non-metric
-[WARN] G15R-9: residual-kill convention: SAFE_IF
+Status: SAFE_IF
 Consequence: cleanest provisional count-once convention
 Handoff: use only as provisional safety convention, not derivation
 
@@ -105,7 +107,7 @@ Handoff: use only as provisional safety convention, not derivation
 G15R-10: non-metric residual branch
 ------------------------------------------------------------------------------------------------------------------------
 Result: zeta/kappa residual may remain as bookkeeping or first-order non-radiative relaxation, not direct metric trace
-[WARN] G15R-10: non-metric residual branch: CANDIDATE
+Status: CANDIDATE
 Consequence: preserves residual variables without scalar-gravity behavior if guarded
 Handoff: requires non-metric bookkeeping or P_relax mechanism
 
@@ -113,7 +115,7 @@ Handoff: requires non-metric bookkeeping or P_relax mechanism
 G15R-11: neutral residual branch
 ------------------------------------------------------------------------------------------------------------------------
 Result: neutral residual metric trace remains possible only if O, boundary neutrality, and no mass overlap are derived
-[WARN] G15R-11: neutral residual branch: RISK
+Status: RISK
 Consequence: highest theorem burden
 Handoff: do not use neutral residual as escape from residual-kill
 
@@ -121,7 +123,7 @@ Handoff: do not use neutral residual as escape from residual-kill
 G15R-12: kappa status
 ------------------------------------------------------------------------------------------------------------------------
 Result: kappa remains diagnostic / non-metric / separately neutral unless derived
-[WARN] G15R-12: kappa status: REQUIRED
+Status: REQUIRED
 Consequence: kappa must not restore killed zeta residual trace
 Handoff: kappa cleanup remains a standing guardrail
 
@@ -129,7 +131,7 @@ Handoff: kappa cleanup remains a standing guardrail
 G15R-13: energy/accounting status
 ------------------------------------------------------------------------------------------------------------------------
 Result: epsilon_vac_config / e_kappa cannot count killed residual as extra source energy
-[WARN] G15R-13: energy/accounting status: REQUIRED
+Status: REQUIRED
 Consequence: prevents hidden coefficient reservoir
 Handoff: energy/accounting is diagnostic unless recombined once
 
@@ -137,7 +139,7 @@ Handoff: energy/accounting is diagnostic unless recombined once
 G15R-14: recovery status
 ------------------------------------------------------------------------------------------------------------------------
 Result: gamma_like and AB remain recovery checks only
-[WARN] G15R-14: recovery status: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Consequence: recovery cannot choose residual-kill, flux law, domain, or overlap split
 Handoff: keep observational/GR-compatible targets downstream
 
@@ -145,7 +147,7 @@ Handoff: keep observational/GR-compatible targets downstream
 G15R-15: Group 15 status decision
 ------------------------------------------------------------------------------------------------------------------------
 Result: Group 15 has narrowed the current/exchange path but has not derived a field equation
-[PASS] G15R-15: Group 15 status decision: CLOSED
+Status: CLOSED
 Consequence: next document should update field-equation status rather than continue the same subchain
 Handoff: recommended next: update field-equation status after Group 15
 
@@ -169,7 +171,9 @@ Case 2: Compact Group 15 status table
 | G15R-13: energy/accounting status | epsilon_vac_config / e_kappa cannot count killed residual as extra source energy | REQUIRED | energy/accounting is diagnostic unless recombined once |
 | G15R-14: recovery status | gamma_like and AB remain recovery checks only | RECOVERY_TARGET | keep observational/GR-compatible targets downstream |
 | G15R-15: Group 15 status decision | Group 15 has narrowed the current/exchange path but has not derived a field equation | CLOSED | recommended next: update field-equation status after Group 15 |
-[WARN] compact Group 15 status table produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact Group 15 status table produced -- summary only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -190,7 +194,9 @@ Interpretation:
   Residual-kill is the safest provisional convention.
   Group 15 narrowed the field-equation search but did not derive a field equation.
   Next step should update field-equation status after Group 15.
-[WARN] Group 15 status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] Group 15 status count produced -- summary only
 
 ========================================================================================================================
 Case 4: Surviving bottlenecks after residual-kill
@@ -210,7 +216,9 @@ Case 4: Surviving bottlenecks after residual-kill
 Central surviving bottleneck:
 
   real J_V + no-overlap/residual-kill mechanism
-[FAIL] surviving bottlenecks recorded: UNRESOLVED
+
+[unresolved_obligations]
+[OBLIGATION] real J_V + no-overlap/residual-kill mechanism -- central surviving bottleneck after Group 15
 
 ========================================================================================================================
 Case 5: Current working convention
@@ -234,7 +242,9 @@ Revisit triggers:
 3. B_s/F_zeta insertion law changes
 4. kappa obtains separately derived non-overlap status
 5. parent identity derives residual-kill or residual survival
-[WARN] working convention recorded: SAFE_IF
+
+[governance_assessments]
+[WARN] working convention recorded -- provisional only; not derived
 
 ========================================================================================================================
 Case 6: Rejected regressions to preserve
@@ -250,7 +260,9 @@ Case 6: Rejected regressions to preserve
 9. P_relax becomes Box zeta / Box kappa
 10. boundary repair hides exterior scalar charge
 11. recovery checks choose residual status
-[WARN] rejected regressions preserved: REJECTED
+
+[governance_assessments]
+[INFO] rejected regressions preserved -- policy rules recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -272,7 +284,9 @@ Recommended next document:
 
 Reason:
   Group 15 has produced a durable status update. The larger field-equation status should now be revised before opening another mechanism search.
-[WARN] next document selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next document selected -- field_equation_status_after_group_15.md
 
 ========================================================================================================================
 Final interpretation
@@ -288,4 +302,6 @@ It has produced a sharper working boundary:
 Best next document:
 
   field_equation_status_after_group_15.md
-[PASS] Group 15 status after residual-kill complete: CLOSED
+
+[governance_assessments]
+[PASS] Group 15 status after residual-kill complete -- closed

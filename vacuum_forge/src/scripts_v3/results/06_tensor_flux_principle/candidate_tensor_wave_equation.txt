@@ -17,7 +17,9 @@ Need propagation equation:
   Box h_ij^TT = 0
 
 This script checks plane-wave propagation and preservation of TT conditions.
-[PASS] tensor wave equation problem posed
+
+[governance_assessments]
+[PASS] tensor wave equation problem posed -- checking Box h_ij^TT = 0
 
 ========================================================================================================================
 Case 1: Define plus/cross plane-wave TT tensor
@@ -27,7 +29,9 @@ h_cross = H_cross*cos(k*z - omega*t)
 
 H_TT =
 Matrix([[H_plus*cos(k*z - omega*t), H_cross*cos(k*z - omega*t), 0], [H_cross*cos(k*z - omega*t), -H_plus*cos(k*z - omega*t), 0], [0, 0, 0]])
-[PASS] plus/cross plane-wave tensor defined
+
+[derived_results]
+[PASS] plus/cross plane-wave tensor defined -- H_TT = h_plus e_plus + h_cross e_cross
 
 ========================================================================================================================
 Case 2: Wave operator on plus/cross polarizations
@@ -40,8 +44,10 @@ Both vanish when:
 
 Box h_plus / h_plus = k**2 - omega**2/c**2
 Box h_cross / h_cross = k**2 - omega**2/c**2
-[PASS] plus mode has wave dispersion coefficient
-[PASS] cross mode has wave dispersion coefficient
+
+[derived_results]
+[PASS] plus mode has wave dispersion coefficient -- residual = 0
+[PASS] cross mode has wave dispersion coefficient -- residual = 0
 
 ========================================================================================================================
 Case 3: Wave operator on full TT tensor
@@ -51,7 +57,9 @@ Matrix([[H_plus*(c**2*k**2 - omega**2)*cos(k*z - omega*t)/c**2, H_cross*(c**2*k*
 
 Box entries divided by (c²k²-omega²), where nonzero:
 [H_plus*cos(k*z - omega*t)/c**2, H_cross*cos(k*z - omega*t)/c**2, 0, H_cross*cos(k*z - omega*t)/c**2, -H_plus*cos(k*z - omega*t)/c**2, 0, 0, 0, 0]
-[PASS] full tensor wave vanishes on dispersion relation
+
+[derived_results]
+[PASS] full tensor wave vanishes on dispersion relation -- Box H_TT proportional to (c²k²-ω²)
 
 ========================================================================================================================
 Case 4: TT conditions preserved during propagation
@@ -59,8 +67,10 @@ Case 4: TT conditions preserved during propagation
 trace(H_TT) = 0
 k^i H_ij =
 Matrix([[0, 0, 0]])
-[PASS] trace remains zero for all t,z
-[PASS] transversality remains zero for all t,z
+
+[derived_results]
+[PASS] trace remains zero for all t,z -- trace = 0
+[PASS] transversality remains zero for all t,z -- k^i H_ij = Matrix([[0, 0, 0]])
 
 ========================================================================================================================
 Case 5: Quadratic energy proxy
@@ -70,7 +80,9 @@ Quadratic wave-energy proxy:
   E ~ (h_dot_plus²+h_dot_cross²)/c² + (h_plus'²+h_cross'²)
 
 E_proxy = (H_cross**2*omega**2 + H_plus**2*omega**2 + c**2*k**2*(H_cross**2 + H_plus**2))*sin(k*z - omega*t)**2/c**2
-[PASS] energy proxy is quadratic in both tensor polarizations
+
+[sample_results]
+[PASS] energy proxy is quadratic in both tensor polarizations -- E_proxy > 0 for nonzero amplitudes
 
 Caution:
   This is only a positive quadratic diagnostic, not a derived GR energy flux.
@@ -92,7 +104,9 @@ Tensor channel:
 
 The tensor wave equation is not supplied by scalar A.
 
-[PASS] scalar and tensor channels remain distinct
+
+[governance_assessments]
+[PASS] scalar and tensor channels remain distinct -- Box h_TT separate from scalar A equation
 
 ========================================================================================================================
 Case 7: Classification
@@ -106,7 +120,9 @@ Results:
 5. A quadratic energy proxy can be formed from plus/cross derivatives.
 6. This is a tensor sector, not scalar A-flux.
 
-[PASS] minimal TT wave equation passes linear checks
+
+[derived_results]
+[PASS] minimal TT wave equation passes linear checks -- dispersion, TT preservation, quadratic energy all verified
 
 ========================================================================================================================
 Final interpretation

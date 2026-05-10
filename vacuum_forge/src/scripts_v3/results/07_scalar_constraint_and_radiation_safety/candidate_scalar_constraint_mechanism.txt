@@ -24,7 +24,6 @@ Candidate safety mechanism:
   rather than an independent radiative scalar:
 
     Box A = 8*pi*G*rho/c^2
-[PASS] scalar constraint mechanism problem posed
 
 ========================================================================================================================
 Case 1: Poisson/constraint branch supports static exterior A
@@ -34,7 +33,6 @@ Delta A = 0
 
 For r>0, source-free exterior satisfies:
   Delta A = 0
-[PASS] static exterior A solves source-free Poisson branch
 
 ========================================================================================================================
 Case 2: Poisson branch has no independent time-wave dispersion
@@ -47,7 +45,6 @@ A_wave = H*cos(k*z - omega*t)
 Source-free Poisson requires spatial Laplacian = 0.
 For k != 0, this is not a propagating dispersion relation.
 It forces the spatial harmonic condition, not omega^2=c^2k^2.
-[PASS] Poisson branch does not produce scalar wave dispersion
 
 ========================================================================================================================
 Case 3: Hyperbolic scalar branch would radiate
@@ -60,7 +57,6 @@ Box A / A = k**2 - omega**2/c**2
 
 This admits scalar waves when:
   omega^2 = c^2 k^2
-[PASS] hyperbolic A branch admits scalar radiation
 
 ========================================================================================================================
 Case 4: Static source prefers constraint branch
@@ -80,7 +76,6 @@ Wave branch:
 Interpretation:
   Static Newtonian gravity naturally belongs to the constraint branch.
   Treating A as fundamentally wave-like adds a dangerous extra scalar sector.
-[PASS] static mass response favors constraint interpretation
 
 ========================================================================================================================
 Case 5: Conserved monopole and dipole controls
@@ -92,8 +87,6 @@ D(t) = D0 + V*t
 Dddot = 0
 
 Conservation suppresses ordinary scalar monopole/dipole radiation proxies.
-[PASS] conserved mass kills scalar monopole radiation proxy
-[PASS] center-of-mass inertial motion kills scalar dipole radiation proxy
 
 ========================================================================================================================
 Case 6: Scalar breathing remains dangerous if A propagates
@@ -107,8 +100,6 @@ Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
 trace = 0
 
 If A propagates with a breathing mode, it adds a non-TT polarization.
-[PASS] scalar breathing mode is non-TT
-[PASS] TT tensor mode remains trace-free
 
 ========================================================================================================================
 Case 7: Static/dynamic split for A
@@ -132,7 +123,6 @@ Radiation channel:
 This keeps:
   A        -> static scalar mass response
   h_ij^TT -> radiative tensor response
-[PASS] A static/dynamic split formulated
 
 ========================================================================================================================
 Case 8: Classification
@@ -146,8 +136,6 @@ Results:
    scalar radiation proxies.
 5. Scalar breathing remains dangerous if A has a radiative quadrupole mode.
 6. Preferred architecture: A is constraint-like; h_ij^TT radiates.
-
-[PASS] scalar constraint mechanism passes as architecture guardrail
 
 ========================================================================================================================
 Final interpretation
@@ -172,3 +160,21 @@ Possible next artifact:
 
 Possible next script:
   candidate_scalar_breathing_mode_suppression.py
+
+[derived_results]
+[PASS] static exterior A satisfies source-free Laplacian -- Delta A = 0 for A = 1 - 2GM/(c^2 r)
+[PASS] conserved mass kills scalar monopole radiation proxy -- Mdot = 0
+[PASS] inertial dipole kills scalar dipole radiation proxy -- Dddot = 0
+[PASS] TT tensor mode is trace-free -- trace(H_TT) = 0
+
+[counterexamples]
+[FAIL] scalar breathing mode is non-TT -- trace(H_breathing) = 2b != 0; extra non-TT polarization if A propagates
+
+[governance_assessments]
+[PASS] constraint A architecture policy rule -- A must be elliptic/Poisson in ordinary exterior
+[DEFER] hyperbolic A branch -- deferred pending scalar radiation suppression mechanism
+[PASS] constraint A Poisson route -- candidate route recorded
+
+[unresolved_obligations]
+[OBLIGATION] derive scalar radiation suppression mechanism -- open proof obligation recorded
+[OBLIGATION] derive constraint nature of A from parent structure -- open proof obligation recorded

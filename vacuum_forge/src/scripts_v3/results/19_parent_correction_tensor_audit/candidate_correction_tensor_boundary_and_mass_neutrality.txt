@@ -26,7 +26,9 @@ Discipline:
   no recovery-tuned boundary smoothing
   no dark boundary patch
   no anti-singularity by boundary tensor
-[WARN] correction tensor boundary/mass neutrality problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] correction tensor boundary/mass neutrality problem posed -- boundary/mass neutrality audit required before any H insertion
 
 ========================================================================================================================
 Case 1: Correction tensor boundary/mass neutrality inventory
@@ -39,7 +41,9 @@ Rule: H_curv/H_exch must avoid boundary repair, exterior mass shift, scalar char
 Role: core boundary/mass theorem target
 Allowed if: neutrality is structural and derived before insertion
 Forbidden if: boundary/mass behavior is repaired by tensor choice
-[WARN] BM1: boundary/mass neutrality target: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] BM1: boundary/mass neutrality target -- THEOREM_TARGET
 Missing: boundary/mass neutrality theorem
 Consequence: decides whether correction tensors can be inserted without corrupting exterior sector
 
@@ -50,7 +54,9 @@ Rule: delta M_ext|H_curv/H_exch = 0 unless derived through established A-sector 
 Role: mass neutrality guard
 Allowed if: correction tensor is exterior-mass-neutral by theorem
 Forbidden if: H_curv/H_exch changes measured exterior mass
-[WARN] BM2: no M_ext shift independent of A: REQUIRED
+
+[governance_assessments]
+[INFO] BM2: no M_ext shift independent of A -- REQUIRED
 Missing: mass neutrality theorem
 Consequence: protects strongest reduced A-sector result
 
@@ -61,7 +67,9 @@ Rule: H_curv/H_exch is not a counterterm chosen to cancel boundary leakage or mi
 Role: boundary repair guard
 Allowed if: boundary behavior follows from source/tensor law
 Forbidden if: correction tensor exists because boundary behavior failed
-[WARN] BM3: no boundary counterterm: REQUIRED
+
+[governance_assessments]
+[INFO] BM3: no boundary counterterm -- REQUIRED
 Missing: boundary law
 Consequence: prevents painted boundary closure
 
@@ -72,7 +80,9 @@ Rule: H_curv/H_exch does not generate exterior B_s/zeta/kappa scalar charge or t
 Role: scalar exterior guard
 Allowed if: scalar trace neutrality and no-overlap are preserved
 Forbidden if: correction tensor leaks scalar charge outside
-[WARN] BM4: no exterior scalar charge: REQUIRED
+
+[governance_assessments]
+[INFO] BM4: no exterior scalar charge -- REQUIRED
 Missing: scalar trace / exterior charge theorem
 Consequence: preserves Group 16 guardrails
 
@@ -83,7 +93,9 @@ Rule: H_curv/H_exch does not carry hidden far-zone flux of mass, scalar charge, 
 Role: far-zone neutrality guard
 Allowed if: flux neutrality follows structurally
 Forbidden if: hidden flux is used to balance interior correction
-[WARN] BM5: no far-zone hidden flux: REQUIRED
+
+[governance_assessments]
+[INFO] BM5: no far-zone hidden flux -- REQUIRED
 Missing: far-zone flux theorem
 Consequence: protects exterior recovery and mass accounting
 
@@ -94,7 +106,9 @@ Rule: compact/boundary support does not create an unaccounted shell source
 Role: support regularity guard
 Allowed if: support is smooth/structural and shell-neutral
 Forbidden if: support discontinuity hides source layer
-[WARN] BM6: no shell source by support: REQUIRED
+
+[governance_assessments]
+[INFO] BM6: no shell source by support -- REQUIRED
 Missing: support regularity theorem
 Consequence: prevents support-shaped source smuggling
 
@@ -105,7 +119,9 @@ Rule: boundary behavior is not chosen to pass gamma_like, AB, exterior matching,
 Role: recovery-smuggling guard
 Allowed if: boundary law is derived before recovery tests
 Forbidden if: boundary smoothing is recovery-fit
-[WARN] BM7: no recovery-tuned boundary smoothing: REQUIRED
+
+[governance_assessments]
+[INFO] BM7: no recovery-tuned boundary smoothing -- REQUIRED
 Missing: boundary coefficient/origin theorem
 Consequence: keeps recovery downstream
 
@@ -116,7 +132,9 @@ Rule: dark-sector label is not used to absorb boundary mismatch, exterior mass s
 Role: dark boundary guard
 Allowed if: dark branch remains absent/deferred or independently sourced
 Forbidden if: dark sector patches ordinary boundary failure
-[WARN] BM8: no dark boundary patch: REQUIRED
+
+[governance_assessments]
+[INFO] BM8: no dark boundary patch -- REQUIRED
 Missing: dark boundary separation theorem if reopened
 Consequence: preserves no-dark-patch rule
 
@@ -127,7 +145,9 @@ Rule: H_curv/H_exch does not claim bounce, regular core, or finite admissibility
 Role: anti-overclaim guard
 Allowed if: anti-singularity claims remain theorem targets with equations/solutions
 Forbidden if: boundary tensor is used as singularity cure
-[WARN] BM9: no anti-singularity by boundary tensor: REQUIRED
+
+[governance_assessments]
+[INFO] BM9: no anti-singularity by boundary tensor -- REQUIRED
 Missing: anti-singularity theorem if stronger claim is wanted
 Consequence: preserves Group 17 claim limits
 
@@ -138,7 +158,9 @@ Rule: boundary behavior does not reroute ordinary matter or modify ordinary sour
 Role: ordinary matter boundary guard
 Allowed if: ordinary matter remains in established source routing
 Forbidden if: boundary tensor fixes matter coupling or source discontinuity
-[WARN] BM10: ordinary matter boundary decoupling: REQUIRED
+
+[governance_assessments]
+[INFO] BM10: ordinary matter boundary decoupling -- REQUIRED
 Missing: ordinary matter boundary decoupling theorem
 Consequence: protects ordinary matter coupling
 
@@ -149,7 +171,9 @@ Rule: H-like object remains diagnostic-only and therefore has no boundary or mas
 Role: safe fallback
 Allowed if: not inserted into field equation
 Forbidden if: diagnostic object becomes boundary/mass correction
-[WARN] BM11: diagnostic-only correction tensor: SAFE_IF
+
+[governance_assessments]
+[INFO] BM11: diagnostic-only correction tensor -- SAFE_IF
 Missing: none if kept diagnostic
 Consequence: safe route if correction tensors remain audit objects
 
@@ -160,7 +184,9 @@ Rule: correction object acts as interior diagnostic / branch filter only
 Role: candidate safe route
 Allowed if: does not alter exterior mass, boundary conditions, or field equations
 Forbidden if: branch filter is promoted to dynamics
-[WARN] BM12: interior-only branch filter: CANDIDATE
+
+[governance_assessments]
+[INFO] BM12: interior-only branch filter -- CANDIDATE
 Missing: branch-filter theorem and interior domain
 Consequence: possible non-inserted curvature/admissibility route
 
@@ -171,7 +197,9 @@ Rule: correction tensor has compact support and structural zero exterior flux
 Role: candidate boundary-safe tensor class
 Allowed if: support and zero-flux are derived, smooth, and not solution-tailored
 Forbidden if: compact support is chosen to hide exterior effects
-[WARN] BM13: compact support with structural zero-flux: CANDIDATE
+
+[governance_assessments]
+[INFO] BM13: compact support with structural zero-flux -- CANDIDATE
 Missing: support and zero-flux theorem
 Consequence: possible safe route if support is real
 
@@ -182,7 +210,9 @@ Rule: interior tensor is divergence-free by identity and has neutral boundary be
 Role: candidate divergence/boundary class
 Allowed if: identity and boundary neutrality are both derived
 Forbidden if: identity is Bianchi smoke or boundary behavior is patched
-[WARN] BM14: identically divergence-free interior tensor: CANDIDATE
+
+[governance_assessments]
+[INFO] BM14: identically divergence-free interior tensor -- CANDIDATE
 Missing: identity plus boundary neutrality theorem
 Consequence: possible insertable class if all other source guards hold
 
@@ -193,7 +223,9 @@ Rule: tensor divergence balances an independent source while boundary remains ne
 Role: candidate source/boundary class
 Allowed if: source partner is independent and boundary flux is neutral
 Forbidden if: boundary flux balances source failure
-[WARN] BM15: source-balanced tensor with neutral boundary: CANDIDATE
+
+[governance_assessments]
+[INFO] BM15: source-balanced tensor with neutral boundary -- CANDIDATE
 Missing: source partner and neutral boundary theorem
 Consequence: possible route if source/boundary are both real
 
@@ -204,7 +236,9 @@ Rule: correction tensor lives at boundary/interface
 Role: high-risk tensor class
 Allowed if: boundary support is structural, shell-neutral, mass-neutral, scalar-neutral
 Forbidden if: support repairs leakage or hides shell source
-[WARN] BM16: boundary-supported tensor risk: RISK
+
+[governance_assessments]
+[INFO] BM16: boundary-supported tensor risk -- RISK
 Missing: boundary support theorem
 Consequence: dangerous because boundary repair is recurring failure mode
 
@@ -215,7 +249,9 @@ Rule: H_curv/H_exch cancels boundary leakage, scalar tail, shell source, or exte
 Role: forbidden boundary repair
 Allowed if: never as mechanism
 Forbidden if: accepted as boundary behavior
-[WARN] BM17: boundary repair tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] BM17: boundary repair tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents boundary patch tensor
 
@@ -226,7 +262,9 @@ Rule: H_curv/H_exch changes M_ext to fix exterior behavior
 Role: forbidden mass correction
 Allowed if: never without A-sector source theorem
 Forbidden if: accepted as mass effect
-[WARN] BM18: M_ext correction tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] BM18: M_ext correction tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: protects exterior mass
 
@@ -237,7 +275,9 @@ Rule: H_curv/H_exch cancels or hides exterior scalar tail
 Role: forbidden scalar repair
 Allowed if: never as mechanism
 Forbidden if: accepted as scalar neutrality
-[WARN] BM19: scalar tail cancellation tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] BM19: scalar tail cancellation tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents scalar charge cover-up
 
@@ -248,7 +288,9 @@ Rule: support or boundary behavior hides an unaccounted shell source
 Role: forbidden support trick
 Allowed if: never as mechanism
 Forbidden if: accepted as compact/boundary support
-[WARN] BM20: shell-source hiding tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] BM20: shell-source hiding tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents source layer smuggling
 
@@ -259,7 +301,9 @@ Rule: boundary behavior is selected to recover gamma_like, AB, exterior matching
 Role: forbidden recovery construction
 Allowed if: never as origin
 Forbidden if: accepted as boundary law
-[WARN] BM21: recovery boundary fit rejection: REJECTED
+
+[governance_assessments]
+[INFO] BM21: recovery boundary fit rejection -- REJECTED
 Missing: not pursued
 Consequence: keeps recovery downstream
 
@@ -270,7 +314,9 @@ Rule: correction tensors cannot avoid boundary repair or exterior mass shift
 Role: branch failure condition
 Allowed if: used to keep correction tensors deferred or diagnostic-only
 Forbidden if: patched with support choices, counterterms, or dark labels
-[FAIL] BM22: boundary/mass neutrality failure: BRANCH_KILLED
+
+[governance_assessments]
+[INFO] BM22: boundary/mass neutrality failure -- BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: correction tensors cannot be inserted
 
@@ -281,7 +327,9 @@ Rule: after boundary/mass neutrality, audit parent equation insertability
 Role: next local bottleneck
 Allowed if: boundary/mass neutrality remains theorem-targeted
 Forbidden if: jumping to parent equation before insertability audit
-[PASS] BM23: recommended next move: RECOMMENDED
+
+[governance_assessments]
+[INFO] BM23: recommended next move -- RECOMMENDED
 Missing: parent equation insertability audit
 Consequence: next script should be candidate_parent_equation_insertability_audit.py
 
@@ -313,7 +361,9 @@ Case 2: Compact boundary/mass neutrality ledger
 | BM21: recovery boundary fit rejection | boundary behavior is selected to recover gamma_like, AB, exterior matching, or PPN behavior | REJECTED | keeps recovery downstream |
 | BM22: boundary/mass neutrality failure | correction tensors cannot avoid boundary repair or exterior mass shift | BRANCH_KILLED | correction tensors cannot be inserted |
 | BM23: recommended next move | after boundary/mass neutrality, audit parent equation insertability | RECOMMENDED | next script should be candidate_parent_equation_insertability_audit.py |
-[WARN] compact boundary/mass neutrality ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact boundary/mass neutrality ledger produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -335,7 +385,9 @@ Interpretation:
   Boundary-supported tensors are risky.
   Boundary repair tensor, M_ext correction tensor, scalar tail cancellation tensor, shell-source hiding tensor, and recovery boundary fit are rejected.
   Next gate is parent equation insertability.
-[WARN] boundary/mass neutrality status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] boundary/mass neutrality status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Candidate safe routes
@@ -359,7 +411,9 @@ Rejected:
 3. scalar tail cancellation tensor
 4. shell-source hiding tensor
 5. recovery boundary fit
-[PASS] boundary/mass safe routes listed: RECOMMENDED
+
+[governance_assessments]
+[PASS] boundary/mass safe routes listed -- RECOMMENDED
 
 ========================================================================================================================
 Case 4b: Sample compact-support neutral-boundary profile
@@ -374,7 +428,9 @@ Interpretation:
   this is a compatibility example for a smooth compact-support profile
   with zero boundary value and zero first derivative at the support edge.
   It is not a real correction-tensor boundary theorem.
-[PASS] sample neutral-boundary support witness: DERIVED_REDUCED — compact-support sample has h(R)=0 and h'(R)=0
+
+[sample_results]
+[PASS] sample neutral-boundary support witness -- compact-support sample has h(R)=0 and h'(R)=0
 
 ========================================================================================================================
 Case 5: Boundary/mass neutrality decision tree
@@ -398,7 +454,9 @@ Decision tree:
 
 6. Neutrality cannot be shown:
    keep correction tensors deferred.
-[PASS] boundary/mass neutrality decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] boundary/mass neutrality decision tree stated -- RECOMMENDED
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -415,7 +473,9 @@ Consequence:
 Bad failure:
 
   hide boundary/mass failure inside support choices, counterterms, or dark labels.
-[WARN] boundary/mass neutrality good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] boundary/mass neutrality good failure stated -- DEFERRED_PENDING_PREREQUISITES
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -434,7 +494,9 @@ Boundary/mass neutrality fails if:
 10. compact support is solution-tailored
 11. boundary-supported tensor repairs leakage
 12. diagnostic-only object is inserted
-[WARN] boundary/mass neutrality failure controls stated: RISK
+
+[governance_assessments]
+[WARN] boundary/mass neutrality failure controls stated -- RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -457,7 +519,9 @@ Recommended next script:
 Reason:
   H_curv/H_exch have now been audited for role, definition requirements, divergence safety, source separation, and boundary/mass neutrality.
   The next gate is whether any correction tensor is insertable at all.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -486,4 +550,6 @@ Candidate routes:
 Best next script:
 
   candidate_parent_equation_insertability_audit.py
-[PASS] correction tensor boundary/mass neutrality audit complete: CLOSED
+
+[governance_assessments]
+[PASS] correction tensor boundary/mass neutrality audit complete -- CLOSED

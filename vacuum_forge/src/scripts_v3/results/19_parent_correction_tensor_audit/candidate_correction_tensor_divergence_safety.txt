@@ -27,7 +27,9 @@ Discipline:
   no scalar trace leak
   no dark-sector patch
   diagnostic-only remains allowed if not inserted
-[WARN] correction tensor divergence-safety problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] correction tensor divergence-safety problem posed -- audit required to distinguish real from decorative divergence safety
 
 ========================================================================================================================
 Case 1: Correction tensor divergence-safety inventory
@@ -40,7 +42,9 @@ Criterion: a correction tensor is divergence-safe only through real identity, re
 Role: core divergence-safety theorem target
 Allowed if: divergence behavior is specified before field-equation insertion
 Forbidden if: divergence safety is declared to make parent equation close
-[WARN] DSF1: divergence-safety target: THEOREM_TARGET
+
+[governance_assessments]
+[INFO] DSF1: divergence-safety target -- THEOREM_TARGET
 Missing: actual divergence identity / source partner / projection theorem
 Consequence: decides whether correction tensors can become parent-equation terms
 
@@ -51,7 +55,9 @@ Criterion: nabla_mu H^{mu nu} = 0 by constructed mathematical identity
 Role: strong candidate tensor class
 Allowed if: identity is real, local/covariant enough, and not repair
 Forbidden if: identity is asserted by analogy or Bianchi-like language
-[WARN] DSF2: identically divergence-free tensor: CANDIDATE
+
+[governance_assessments]
+[INFO] DSF2: identically divergence-free tensor -- CANDIDATE
 Missing: actual identity and tensor definition
 Consequence: cleanest insertable class if source separation and boundary neutrality also hold
 
@@ -62,7 +68,9 @@ Criterion: divergence behavior preserves independently defined constraint propag
 Role: candidate consistency tensor class
 Allowed if: constraint propagation equation is real and not recovery-tuned
 Forbidden if: constraint preservation is asserted without propagation identity
-[WARN] DSF3: constraint-compatible tensor: CANDIDATE
+
+[governance_assessments]
+[INFO] DSF3: constraint-compatible tensor -- CANDIDATE
 Missing: constraint propagation theorem
 Consequence: possible route to parent compatibility if constraints are explicit
 
@@ -73,7 +81,9 @@ Criterion: nabla_mu H^{mu nu} balances an independently defined source/exchange 
 Role: candidate source-balance class
 Allowed if: source side is defined before H and not by H
 Forbidden if: H and source define each other decoratively
-[WARN] DSF4: source-balanced divergence tensor: CANDIDATE
+
+[governance_assessments]
+[INFO] DSF4: source-balanced divergence tensor -- CANDIDATE
 Missing: independent source partner
 Consequence: possible route if source-side accounting is already real
 
@@ -84,7 +94,9 @@ Criterion: divergence safety holds within a defined projector subspace
 Role: candidate projected class
 Allowed if: projector, target sector, and projected divergence are defined
 Forbidden if: projection is invented to hide overlap or leakage
-[WARN] DSF5: projected tensor: CANDIDATE
+
+[governance_assessments]
+[INFO] DSF5: projected tensor -- CANDIDATE
 Missing: projector and projected-divergence theorem
 Consequence: possible route to no-overlap if projector is real
 
@@ -95,7 +107,9 @@ Criterion: H-like object is diagnostic-only and not inserted into field equation
 Role: safe fallback
 Allowed if: explicitly never contributes to parent equation
 Forbidden if: diagnostic object later becomes correction tensor term
-[WARN] DSF6: diagnostic tensor: SAFE_IF
+
+[governance_assessments]
+[INFO] DSF6: diagnostic tensor -- SAFE_IF
 Missing: none if kept diagnostic
 Consequence: allows auditing without divergence-safety burden
 
@@ -106,7 +120,9 @@ Criterion: H has boundary/interface support with controlled divergence
 Role: high-risk boundary class
 Allowed if: support is structural, boundary-neutral, and does not shift M_ext or scalar charge
 Forbidden if: boundary support repairs leakage, shell source, or scalar tail
-[WARN] DSF7: boundary-supported tensor: RISK
+
+[governance_assessments]
+[INFO] DSF7: boundary-supported tensor -- RISK
 Missing: boundary support and neutrality theorem
 Consequence: dangerous because boundary repair is recurring failure mode
 
@@ -117,7 +133,9 @@ Criterion: H has compact support with structural zero exterior flux
 Role: candidate boundary-safe subcase
 Allowed if: compact support and zero-flux follow from tensor/source law
 Forbidden if: support is chosen to hide exterior effects
-[WARN] DSF8: compact-support zero-flux tensor: CANDIDATE
+
+[governance_assessments]
+[INFO] DSF8: compact-support zero-flux tensor -- CANDIDATE
 Missing: support law and exterior flux theorem
 Consequence: possible route if not solution-tailored
 
@@ -128,7 +146,9 @@ Criterion: H_curv cannot be divergence-safe through undefined A_curv dynamics, J
 Role: curvature divergence guard
 Allowed if: H_curv remains diagnostic/deferred until source/divergence structure exists
 Forbidden if: curvature correction is made safe by naming curvature balance
-[WARN] DSF9: H_curv divergence guard: REQUIRED
+
+[governance_assessments]
+[INFO] DSF9: H_curv divergence guard -- REQUIRED
 Missing: A_curv dynamics / J_curv / curvature source side
 Consequence: preserves H_curv requirements audit
 
@@ -139,7 +159,9 @@ Criterion: H_exch cannot be divergence-safe through undefined J_V, J_exch, Sigma
 Role: exchange divergence guard
 Allowed if: H_exch remains diagnostic/deferred until current/source/divergence structure exists
 Forbidden if: exchange correction is made safe by writing continuity
-[WARN] DSF10: H_exch divergence guard: REQUIRED
+
+[governance_assessments]
+[INFO] DSF10: H_exch divergence guard -- REQUIRED
 Missing: J_V/J_exch/Sigma/R definitions
 Consequence: preserves H_exch requirements audit
 
@@ -150,7 +172,9 @@ Criterion: divergence safety does not reroute ordinary T_mu_nu or double-count m
 Role: source separation guard
 Allowed if: ordinary matter remains in established source routing
 Forbidden if: divergence balance hides ordinary matter in correction side
-[WARN] DSF11: ordinary matter separation: REQUIRED
+
+[governance_assessments]
+[INFO] DSF11: ordinary matter separation -- REQUIRED
 Missing: ordinary matter separation theorem
 Consequence: protects ordinary matter coupling
 
@@ -161,7 +185,9 @@ Criterion: divergence-safe tensor does not shift M_ext independently of A-sector
 Role: mass neutrality guard
 Allowed if: mass neutrality is structural or derived through A-sector
 Forbidden if: divergence-safe tensor changes exterior mass
-[WARN] DSF12: M_ext neutrality: REQUIRED
+
+[governance_assessments]
+[INFO] DSF12: M_ext neutrality -- REQUIRED
 Missing: mass neutrality theorem
 Consequence: protects strongest reduced A-sector result
 
@@ -172,7 +198,9 @@ Criterion: divergence-safe tensor does not leak B_s/zeta/kappa scalar charge
 Role: metric scalar guard
 Allowed if: scalar/no-overlap guardrails remain closed
 Forbidden if: divergence safety creates hidden scalar channel
-[WARN] DSF13: scalar trace neutrality: REQUIRED
+
+[governance_assessments]
+[INFO] DSF13: scalar trace neutrality -- REQUIRED
 Missing: scalar trace neutrality theorem
 Consequence: preserves Group 16 guardrails
 
@@ -183,7 +211,9 @@ Criterion: divergence-safe construction does not rely on recovery-fit coefficien
 Role: coefficient tuning guard
 Allowed if: coefficients follow from tensor/source identity
 Forbidden if: coefficients are tuned to make divergence vanish
-[WARN] DSF14: coefficient origin requirement: REQUIRED
+
+[governance_assessments]
+[INFO] DSF14: coefficient origin requirement -- REQUIRED
 Missing: coefficient origin
 Consequence: prevents tuned divergence safety
 
@@ -194,7 +224,9 @@ Criterion: H is divergence-safe because it is geometric / Bianchi-compatible by 
 Role: forbidden divergence decoration
 Allowed if: never as proof
 Forbidden if: accepted as divergence safety
-[WARN] DSF15: Bianchi-like language rejection: REJECTED
+
+[governance_assessments]
+[INFO] DSF15: Bianchi-like language rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents fake parent compatibility
 
@@ -205,7 +237,9 @@ Criterion: H, source, and divergence relation are introduced together and define
 Role: forbidden circular closure
 Allowed if: never as derivation
 Forbidden if: accepted as parent correction
-[WARN] DSF16: decorative tensor rejection: REJECTED
+
+[governance_assessments]
+[INFO] DSF16: decorative tensor rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents decorative correction tensor
 
@@ -216,7 +250,9 @@ Criterion: divergence behavior chosen to pass gamma_like, AB, exterior matching,
 Role: forbidden recovery construction
 Allowed if: never as origin
 Forbidden if: accepted as divergence condition
-[WARN] DSF17: recovery-chosen divergence rejection: REJECTED
+
+[governance_assessments]
+[INFO] DSF17: recovery-chosen divergence rejection -- REJECTED
 Missing: not pursued
 Consequence: keeps recovery downstream
 
@@ -227,7 +263,9 @@ Criterion: divergence chosen to cancel boundary leakage, scalar tail, shell sour
 Role: forbidden repair divergence
 Allowed if: never as mechanism
 Forbidden if: accepted as divergence safety
-[WARN] DSF18: leakage-canceling divergence rejection: REJECTED
+
+[governance_assessments]
+[INFO] DSF18: leakage-canceling divergence rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents repair tensor
 
@@ -238,7 +276,9 @@ Criterion: source side is defined as whatever equals nabla_mu H^{mu nu}
 Role: forbidden source relabeling
 Allowed if: never without independent source meaning
 Forbidden if: accepted as source-balanced divergence
-[WARN] DSF19: source-by-divergence rejection: REJECTED
+
+[governance_assessments]
+[INFO] DSF19: source-by-divergence rejection -- REJECTED
 Missing: not pursued
 Consequence: prevents fake source balance
 
@@ -249,7 +289,9 @@ Criterion: dark sector is invoked to absorb correction tensor divergence
 Role: forbidden dark patch
 Allowed if: never as ordinary-sector repair
 Forbidden if: accepted as divergence partner
-[WARN] DSF20: dark-patch divergence rejection: REJECTED
+
+[governance_assessments]
+[INFO] DSF20: dark-patch divergence rejection -- REJECTED
 Missing: not pursued
 Consequence: preserves no-dark-patch rule
 
@@ -260,7 +302,9 @@ Criterion: no real identity, source partner, projection theorem, or diagnostic-o
 Role: branch failure condition
 Allowed if: used to keep correction tensors deferred
 Forbidden if: patched by Bianchi smoke or source relabeling
-[FAIL] DSF21: divergence-safety failure: BRANCH_KILLED
+
+[governance_assessments]
+[INFO] DSF21: divergence-safety failure -- BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: correction tensors cannot be inserted
 
@@ -271,7 +315,9 @@ Criterion: after divergence-safety audit, audit source separation
 Role: next local bottleneck
 Allowed if: divergence safety remains theorem-targeted
 Forbidden if: jumping to insertability before source separation
-[PASS] DSF22: recommended next move: RECOMMENDED
+
+[governance_assessments]
+[INFO] DSF22: recommended next move -- RECOMMENDED
 Missing: source-separation audit
 Consequence: next script should be candidate_correction_tensor_source_separation.py
 
@@ -302,7 +348,9 @@ Case 2: Compact divergence-safety ledger
 | DSF20: dark-patch divergence rejection | dark sector is invoked to absorb correction tensor divergence | REJECTED | preserves no-dark-patch rule |
 | DSF21: divergence-safety failure | no real identity, source partner, projection theorem, or diagnostic-only status exists | BRANCH_KILLED | correction tensors cannot be inserted |
 | DSF22: recommended next move | after divergence-safety audit, audit source separation | RECOMMENDED | next script should be candidate_correction_tensor_source_separation.py |
-[WARN] compact divergence-safety ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact divergence-safety ledger produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -324,7 +372,9 @@ Interpretation:
   Ordinary matter separation, M_ext neutrality, scalar trace neutrality, and coefficient origin remain required.
   Bianchi-like language, decorative tensor closure, recovery-chosen divergence, leakage-canceling divergence, source relabeling, and dark-patch divergence are rejected.
   Next gate is source separation.
-[WARN] correction tensor divergence-safety status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] correction tensor divergence-safety status count produced -- STRUCTURAL
 
 ========================================================================================================================
 Case 4: Divergence-safety classes
@@ -350,7 +400,9 @@ Rejected:
 4. leakage-canceling divergence
 5. source-by-divergence
 6. dark-patch divergence
-[PASS] divergence-safety classes listed: RECOMMENDED
+
+[governance_assessments]
+[PASS] divergence-safety classes listed -- RECOMMENDED
 
 ========================================================================================================================
 Case 4b: Sample identically divergence-free tensor class
@@ -365,7 +417,9 @@ Interpretation:
   this is a compatibility example of a constructed identity class.
   It does not define H_curv or H_exch, but it shows what a real
   divergence-free tensor witness would look like.
-[PASS] sample divergence-free tensor witness: DERIVED_REDUCED — constructed Airy-style tensor has identically vanishing divergence
+
+[sample_results]
+[PASS] sample divergence-free tensor witness -- constructed Airy-style tensor has identically vanishing divergence
 
 ========================================================================================================================
 Case 5: Divergence-safety decision tree
@@ -389,7 +443,9 @@ Decision tree:
 
 6. No route exists:
    keep correction tensors deferred.
-[PASS] divergence-safety decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[PASS] divergence-safety decision tree stated -- RECOMMENDED
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -407,7 +463,9 @@ Consequence:
 Bad failure:
 
   call a tensor divergence-safe because the parent equation needs it to be.
-[WARN] divergence-safety good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] divergence-safety good failure stated -- DEFERRED_PENDING_PREREQUISITES
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -426,7 +484,9 @@ Divergence safety fails if:
 10. coefficients are tuned to make divergence vanish
 11. boundary-supported tensor repairs boundary
 12. diagnostic-only tensor is inserted into field equation
-[WARN] divergence-safety failure controls stated: RISK
+
+[governance_assessments]
+[WARN] divergence-safety failure controls stated -- RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -449,7 +509,9 @@ Recommended next script:
 Reason:
   Divergence safety requires more than an identity or balance form.
   The next shared bottleneck is whether the correction tensor double-counts source sectors.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -475,4 +537,6 @@ H_curv and H_exch cannot yet pass divergence safety through their missing curren
 Best next script:
 
   candidate_correction_tensor_source_separation.py
-[PASS] correction tensor divergence-safety audit complete: CLOSED
+
+[governance_assessments]
+[PASS] correction tensor divergence-safety audit complete -- CLOSED

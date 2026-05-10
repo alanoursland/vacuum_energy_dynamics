@@ -23,7 +23,9 @@ Discipline:
   do not make Sigma_exchange a free knob
   do not replace scalar conversion with Box scalar radiation
   distinguish geodesic bookkeeping from non-geodesic force
-[WARN] mass-acceleration-gradient problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] mass-acceleration-gradient problem posed -- open: coupling expression and binary safety required
 
 ========================================================================================================================
 Case 1: Coupling candidate inventory
@@ -36,7 +38,7 @@ Expression: rho * v^i * partial_i A
 Interpretation: matter moving through scalar potential/gradient changes kinetic/geometric accounting
 Allowed role: reduced diagnostic for exchange along motion
 Danger: nonzero for ordinary orbital motion may imply extra dissipation unless conservative bookkeeping
-[WARN] G1: reduced power-like coupling: CANDIDATE
+Status: CANDIDATE
 Missing: whether this is energy exchange, constraint bookkeeping, or coordinate artifact
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -46,7 +48,7 @@ Expression: rho * a^i * partial_i A
 Interpretation: mass acceleration across gradient triggers vacuum/spacetime reconfiguration
 Allowed role: closer to user's phrase 'accelerating across a gradient'
 Danger: proper acceleration vanishes for geodesic free fall in GR-like motion
-[WARN] G2: acceleration-gradient coupling: CANDIDATE
+Status: CANDIDATE
 Missing: definition of a^i: coordinate acceleration, proper acceleration, or relative acceleration
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +58,7 @@ Expression: rho * a^mu * nabla_mu A
 Interpretation: covariantized acceleration-gradient candidate
 Allowed role: possible non-geodesic/source-internal coupling
 Danger: zero for geodesic dust if a^mu=0; may miss gravitational free-fall exchange
-[WARN] G3: covariant force-gradient scalar: RISK
+Status: RISK
 Missing: whether a^mu should be proper acceleration or flow derivative relative to vacuum frame
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -66,7 +68,7 @@ Expression: T^munu * nabla_mu nabla_nu A
 Interpretation: stress-energy samples curvature/second gradient of scalar configuration
 Allowed role: covariant scalar candidate tied to tidal/curvature structure
 Danger: may duplicate A-sector field equation or introduce higher-derivative source
-[WARN] G4: stress-energy Hessian coupling: CANDIDATE
+Status: CANDIDATE
 Missing: projection removing double-counting and boundary terms
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -76,7 +78,7 @@ Expression: nabla_mu(T^munu * nabla_nu A)
 Interpretation: exchange as divergence of stress-energy weighted scalar-gradient current
 Allowed role: may turn into boundary/constraint bookkeeping rather than local loss
 Danger: could be identically related to stress conservation, or become decorative
-[WARN] G5: divergence of stress-gradient current: STRUCTURAL
+Status: STRUCTURAL
 Missing: relation to nabla_mu T^munu=0 and parent balance
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -86,7 +88,7 @@ Expression: P_trace[T] -> delta zeta
 Interpretation: stress trace/volume content drives vacuum-spacetime volume configuration
 Allowed role: most aligned with trace/TT split and zeta=ln sqrt(gamma)
 Danger: trace source may leak into exterior scalar charge if uncompensated
-[WARN] G6: trace-volume coupling: CANDIDATE
+Status: CANDIDATE
 Missing: P_trace definition, compensation law, relation to A-sector mass
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -96,7 +98,7 @@ Expression: d/dtau (1/2 rho v_phys^2) <-> d epsilon_vac_config/dtau
 Interpretation: vacuum creation/destruction changes kinetic-energy bookkeeping
 Allowed role: ontology-level accounting candidate
 Danger: may produce extra orbital damping if not conservative/geometric
-[FAIL] G7: kinetic-energy exchange rate: UNRESOLVED
+Status: UNRESOLVED
 Missing: definition of physical velocity, frame, and conservative balance
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -106,7 +108,7 @@ Expression: u^nu nabla_nu u^mu + Gamma^mu_{alpha beta} u^alpha u^beta = 0
 Interpretation: geodesic motion and vacuum exchange are the same geometric event
 Allowed role: top-down ontology interpretation; exchange is geometry bookkeeping
 Danger: may become only a restatement of GR geodesic motion if not tied to zeta conversion
-[WARN] G8: geodesic identity interpretation: STRUCTURAL
+Status: STRUCTURAL
 Missing: explicit map from connection/volume change to Sigma_exchange
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -116,7 +118,7 @@ Expression: nabla_mu J_v^mu = Sigma_exchange - Gamma_relax
 Interpretation: vacuum-spacetime configuration current balances exchange/conversion
 Allowed role: parent-accounting candidate once q_v/J_v are geometric
 Danger: J_v may hide acausal repair transport
-[WARN] G9: volume-current coupling: CANDIDATE
+Status: CANDIDATE
 Missing: definition of J_v and locality/constraint status
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +128,7 @@ Expression: Box zeta = alpha * rho or Box kappa = alpha * T
 Interpretation: ordinary sourced scalar radiation
 Allowed role: none in ordinary gravity
 Danger: far-zone scalar radiation and binary-energy-loss failure
-[WARN] G10: rejected free scalar-wave source: REJECTED
+Status: REJECTED
 Missing: not pursued unless observations/theory force a new controlled mode
 
 ========================================================================================================================
@@ -144,7 +146,9 @@ Case 2: Compact coupling ledger
 | G8: geodesic identity interpretation | u^nu nabla_nu u^mu + Gamma^mu_{alpha beta} u^alpha u^beta = 0 | STRUCTURAL | may become only a restatement of GR geodesic motion if not tied to zeta conversion | explicit map from connection/volume change to Sigma_exchange |
 | G9: volume-current coupling | nabla_mu J_v^mu = Sigma_exchange - Gamma_relax | CANDIDATE | J_v may hide acausal repair transport | definition of J_v and locality/constraint status |
 | G10: rejected free scalar-wave source | Box zeta = alpha * rho or Box kappa = alpha * T | REJECTED | far-zone scalar radiation and binary-energy-loss failure | not pursued unless observations/theory force a new controlled mode |
-[WARN] compact coupling ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact coupling ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -160,7 +164,9 @@ Interpretation:
   Proper acceleration forms may vanish for geodesic motion.
   Trace-volume coupling best matches the zeta/TT split.
   Binary-radiation safety is the next hard filter.
-[WARN] coupling status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] coupling status count produced -- counts complete
 
 ========================================================================================================================
 Case 4: Key distinctions
@@ -183,7 +189,9 @@ Trace-volume coupling versus A-sector mass:
 Current caution:
 
   the coupling must not turn ordinary orbital motion into extra scalar damping.
-[WARN] key coupling distinctions stated: CONSTRAINED
+
+[governance_assessments]
+[PASS] key coupling distinctions stated -- distinctions explicit
 
 ========================================================================================================================
 Case 5: Preferred survivors
@@ -209,7 +217,9 @@ High-risk candidates:
 
 Reason:
   they may be useful reduced diagnostics, but risk frame dependence or extra orbital dissipation.
-[WARN] preferred coupling survivors stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] preferred coupling survivors stated -- candidate route: four survivors under test
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -224,7 +234,9 @@ The coupling fails if:
 6. It becomes a free Sigma_exchange knob.
 7. It turns zeta/kappa into exterior scalar charge.
 8. It is just a decorative rewriting of GR geodesics.
-[WARN] coupling failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] coupling failure controls stated -- open risk: failure conditions not yet excluded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -246,7 +258,9 @@ Recommended next script:
 
 Reason:
   Any coupling candidate must survive the binary-radiation safety filter.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- binary radiation scalar conversion safety
 
 ========================================================================================================================
 Final interpretation

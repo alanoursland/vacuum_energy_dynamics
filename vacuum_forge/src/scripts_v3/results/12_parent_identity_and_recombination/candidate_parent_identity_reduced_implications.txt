@@ -20,7 +20,9 @@ Discipline:
 
   reduced targets are tests, not derivations
   a parent identity must force the sector ledger, not merely coexist with it
-[WARN] reduced implication problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] reduced implication problem posed -- 15 reduced sector tests required
 
 ========================================================================================================================
 Case 1: Reduced implication inventory
@@ -34,7 +36,7 @@ Parent must imply: A satisfies an areal scalar constraint sourced by rho.
 Reduced target: Delta_areal A = 8*pi*G*rho/c^2
 Why required: This is the strongest real reduced reconstruction and must survive parent closure.
 Forbidden alternative: Box A ordinary scalar radiation or arbitrary Schwarzschild matching.
-[WARN] R1: Static spherical A constraint: DERIVED_REDUCED_TARGET
+[INFO] R1: Static spherical A constraint: DERIVED_REDUCED_TARGET
 Missing derivation: Parent projection yielding the areal operator and coefficient.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -45,7 +47,7 @@ Parent must imply: Exterior vacuum integration gives A_ext = 1 - 2GM/(c^2 r).
 Reduced target: A_ext(r) = 1 - 2GM/(c^2*r)
 Why required: This is the main real reconstruction event.
 Forbidden alternative: Setting Schwarzschild A by metric ansatz.
-[WARN] R2: Exterior Schwarzschild A: DERIVED_REDUCED_TARGET
+[INFO] R2: Exterior Schwarzschild A: DERIVED_REDUCED_TARGET
 Missing derivation: Parent exterior vacuum reduction and mass-flux charge law.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -56,7 +58,7 @@ Parent must imply: Exterior kappa=0 gives AB=1 and therefore B=1/A.
 Reduced target: AB = exp(2*kappa), kappa_ext=0 -> B=1/A
 Why required: Reciprocal radial factor is necessary for Schwarzschild exterior and gamma=1 support.
 Forbidden alternative: Independent B chosen by GR metric form.
-[WARN] R3: Exterior B reciprocal when kappa vanishes: DERIVED_REDUCED_TARGET
+[INFO] R3: Exterior B reciprocal when kappa vanishes: DERIVED_REDUCED_TARGET
 Missing derivation: Covariant/gauge interpretation of AB=e^(2 kappa).
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -67,7 +69,7 @@ Parent must imply: Weak field limit gives A ~= 1 + 2Phi/c^2 and nabla^2 Phi = 4*
 Reduced target: A ~= 1 + 2Phi/c^2; nabla^2 Phi = 4*pi*G*rho
 Why required: The parent must preserve the weak scalar and Newtonian limit.
 Forbidden alternative: Scalar coefficient inserted only to match Newtonian gravity.
-[WARN] R4: Weak scalar / Newtonian limit: DERIVED_REDUCED_TARGET
+[INFO] R4: Weak scalar / Newtonian limit: DERIVED_REDUCED_TARGET
 Missing derivation: Weak-field parent expansion.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -78,7 +80,7 @@ Parent must imply: Time evolution of the A constraint is compatible with continu
 Reduced target: partial_t C_A[A,rho] follows from continuity(rho,j_L)
 Why required: A must remain a constraint without becoming scalar radiation.
 Forbidden alternative: Box A scalar wave equation.
-[FAIL] R5: Scalar constraint propagation: MISSING
+[INFO] R5: Scalar constraint propagation: MISSING
 Missing derivation: Continuity-compatible constraint propagation law.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -89,7 +91,7 @@ Parent must imply: W_i is sourced only by transverse current j_T.
 Reduced target: curl curl W = -(alpha_W/(2*K_c))*j_T; div W=0
 Why required: Frame-dragging shape depends on transverse current, not longitudinal continuity.
 Forbidden alternative: P_L j sourcing W_i or free vector radiation imported by analogy.
-[WARN] R6: Transverse vector source: STRUCTURAL_TARGET
+[INFO] R6: Transverse vector source: STRUCTURAL_TARGET
 Missing derivation: Parent current projection and normalization alpha_W/K_c.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -100,7 +102,7 @@ Parent must imply: Uniform rotating source reduces to angular momentum J and far
 Reduced target: curl W far-field ~ J/r^3
 Why required: This is the current vector-sector shape success.
 Forbidden alternative: Claiming full Lense-Thirring recovery without coefficient derivation.
-[WARN] R7: Angular momentum far-field shape: DERIVED_REDUCED_TARGET
+[INFO] R7: Angular momentum far-field shape: DERIVED_REDUCED_TARGET
 Missing derivation: beta_W and absolute normalization from parent identity/action.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -111,7 +113,7 @@ Parent must imply: Ordinary long-range radiation propagates only in the TT tenso
 Reduced target: Box h_ij^TT = -C_T*S_ij^TT
 Why required: GR-compatible radiation requires TT modes and excludes scalar breathing.
 Forbidden alternative: A_rad, Box kappa, or free vector radiation as ordinary long-range modes.
-[WARN] R8: TT tensor radiation only: STRUCTURAL_TARGET
+[INFO] R8: TT tensor radiation only: STRUCTURAL_TARGET
 Missing derivation: Tensor action stiffness, C_T, TT source identity.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -122,7 +124,7 @@ Parent must imply: Trace and pressure do not directly source h_ij^TT.
 Reduced target: source(h_TT) = P_TT S_ij; trace excluded
 Why required: TT radiation must remain trace-free and not double-count kappa/trace response.
 Forbidden alternative: Trace contamination of TT radiation.
-[WARN] R9: TT source trace exclusion: CONSTRAINED_TARGET
+[INFO] R9: TT source trace exclusion: CONSTRAINED_TARGET
 Missing derivation: Parent projector identity for TT stress.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -133,7 +135,7 @@ Parent must imply: Trace/pressure shifts kappa_min and kappa relaxes first-order
 Reduced target: dot(kappa) = -mu_kappa*K_kappa*(kappa-kappa_min)
 Why required: Kappa must remain non-radiative trace/volume relaxation.
 Forbidden alternative: Box kappa = alpha*trace_or_pressure.
-[WARN] R10: Kappa trace-minimum relaxation: STRUCTURAL_TARGET
+[INFO] R10: Kappa trace-minimum relaxation: STRUCTURAL_TARGET
 Missing derivation: K_kappa, mu_kappa, chi_kappa, S_trace_effective from parent vacuum minimum.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -144,7 +146,7 @@ Parent must imply: Ordinary closed matter has no exterior kappa charge.
 Reduced target: Q_kappa=0; kappa->0; F_kappa(R+)=0
 Why required: Prevents second scalar exterior field and scalar double-counting.
 Forbidden alternative: kappa_ext ~ 1/r.
-[WARN] R11: Exterior kappa neutrality: CONSTRAINED_TARGET
+[INFO] R11: Exterior kappa neutrality: CONSTRAINED_TARGET
 Missing derivation: Parent projection/boundary cancellation law.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -155,7 +157,7 @@ Parent must imply: Kappa or boundary relaxation cannot change exterior A mass fl
 Reduced target: delta M_ext|kappa_relaxation = 0
 Why required: Exterior mass is the A-sector charge and cannot be tuned by smoothing.
 Forbidden alternative: Boundary smoothing changes measured gravitational mass.
-[WARN] R12: Boundary mass preservation: CONSTRAINED_TARGET
+[INFO] R12: Boundary mass preservation: CONSTRAINED_TARGET
 Missing derivation: Boundary mass preservation theorem.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -166,7 +168,7 @@ Parent must imply: Sigma_creation vanishes in ordinary closed gravity.
 Reduced target: Sigma_creation = 0
 Why required: Ordinary gravity must remain conservative/closed.
 Forbidden alternative: Active-regime leakage into ordinary field equations.
-[WARN] R13: Ordinary closed regime: CONSTRAINED_TARGET
+[INFO] R13: Ordinary closed regime: CONSTRAINED_TARGET
 Missing derivation: Active-regime trigger and exclusion law.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -177,7 +179,7 @@ Parent must imply: Gamma_relax transfers imbalance into vacuum configuration ene
 Reduced target: Gamma_relax -> vacuum configuration restoration/accounting
 Why required: Kappa damping cannot destroy energy.
 Forbidden alternative: Cosmetic relaxation as dissipation without destination variable.
-[WARN] R14: Relaxation energy accounting: STRUCTURAL_TARGET
+[INFO] R14: Relaxation energy accounting: STRUCTURAL_TARGET
 Missing derivation: Vacuum configuration energy variable and balance law.
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -188,7 +190,7 @@ Parent must imply: A, W_i, h_TT, and kappa combine without duplicating scalar re
 Reduced target: g_tt<-A, g_0i<-W_i, g_ij<-scalar response + constrained kappa + h_TT
 Why required: Metric recombination is the main place silent GR import can occur.
 Forbidden alternative: Copying GR metric form before deriving recombination.
-[FAIL] R15: Recombination without double-counting: UNRESOLVED
+[INFO] R15: Recombination without double-counting: UNRESOLVED
 Missing derivation: Covariant or reduced parent recombination map.
 
 ========================================================================================================================
@@ -211,7 +213,9 @@ Case 2: Compact reduced implication ledger
 | R13: Ordinary closed regime | active regimes | Sigma_creation = 0 | CONSTRAINED_TARGET | Active-regime trigger and exclusion law. |
 | R14: Relaxation energy accounting | vacuum relaxation | Gamma_relax -> vacuum configuration restoration/accounting | STRUCTURAL_TARGET | Vacuum configuration energy variable and balance law. |
 | R15: Recombination without double-counting | metric / geometry recombination | g_tt<-A, g_0i<-W_i, g_ij<-scalar response + constrained kappa + h_TT | UNRESOLVED | Covariant or reduced parent recombination map. |
-[WARN] compact reduced implication ledger produced: REQUIRED
+
+[governance_assessments]
+[INFO] compact reduced implication ledger produced -- 15 reduced sector tests recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -226,7 +230,9 @@ Interpretation:
   The parent identity has many clear reduced targets.
   Most are not derived from a parent identity yet.
   Scalar constraint propagation and recombination remain especially unresolved.
-[WARN] reduced implication count produced: REQUIRED
+
+[governance_assessments]
+[INFO] reduced implication count produced -- {'DERIVED_REDUCED_TARGET': 5, 'MISSING': 1, 'STRUCTURAL_TARGET': 4, 'CONSTRAINED_TARGET': 4, 'UNRESOLVED': 1}
 
 ========================================================================================================================
 Case 4: Parent identity test suite
@@ -248,7 +254,9 @@ A candidate parent identity passes only if it implies:
 13. Sigma_creation=0 in ordinary closed gravity.
 14. Relaxation energy accounting.
 15. Recombination without scalar double-counting.
-[WARN] parent identity test suite stated: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] parent identity test suite stated -- 15 tests required before parent identity is licensed
 
 ========================================================================================================================
 Case 5: Hardest reduced implications
@@ -269,7 +277,9 @@ Hardest reduced implications:
 
 5. Recombination.
    The parent must map sectors into geometry without copying GR by form.
-[WARN] hardest reduced implications identified: RISK
+
+[unresolved_obligations]
+[OBLIGATION] hardest reduced implications identified -- 5 hardest implications need derivation
 
 ========================================================================================================================
 Case 5b: VacuumForge reciprocal implication cross-check
@@ -278,7 +288,9 @@ A_value = -2*G*M/(c**2*r) + 1
 B_value = 1/(-2*G*M/(c**2*r) + 1)
 A_value * B_value = 1
 ConcreteMetricCheck status = satisfied_by_construction
-[INFO] reduced-implication ledger reproduces reciprocal exterior metric check: DERIVED_REDUCED
+
+[derived_results]
+[PASS] reduced-implication ledger reproduces reciprocal exterior metric check -- A*B = 1
 
 ========================================================================================================================
 Case 6: Next tests
@@ -300,7 +312,9 @@ Recommended next script:
 
 Reason:
   The reduced implications require projectors. Projector structure is the next gate.
-[WARN] next test selected: REQUIRED
+
+[governance_assessments]
+[DEFER] next test selected -- projector structure script is the next gate
 
 ========================================================================================================================
 Final interpretation

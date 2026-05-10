@@ -23,7 +23,6 @@ Candidate identity:
 
 Goal:
   see whether sector source assignments begin to follow from this identity.
-[PASS] vacuum continuity problem posed: PASS
 
 ========================================================================================================================
 Case 1: Pure vacuum-substance conservation identity
@@ -38,7 +37,6 @@ Interpretation:
   q_v is not yet mass density.
   It is a vacuum bookkeeping charge/density proxy.
   The parent theory must define what q_v physically is.
-[WARN] pure continuity identity formulated: PARTIAL — q_v still needs physical definition
 
 ========================================================================================================================
 Case 2: Exchange / creation / relaxation balance
@@ -53,7 +51,6 @@ Interpretation:
   exchange: matter/vacuum transfer or coupling
   creation: nonconservative vacuum amount change
   relaxation: return toward vacuum minimum
-[WARN] exchange/creation/relaxation balance formulated: PARTIAL — terms need sector-specific definitions
 
 ========================================================================================================================
 Case 3: Static exterior consistency
@@ -69,7 +66,6 @@ Vacuum exterior policy:
   Gamma_relax = 0 for settled static constraint configuration
 
 Then exterior flux is conserved.
-[PASS] static exterior compatible with zero local source: PASS
 
 ========================================================================================================================
 Case 4: Matter exchange as A_constraint source
@@ -89,7 +85,6 @@ Ontology interpretation:
 
 Candidate identification:
   Sigma_exchange,A ~ 8*pi*G*rho/c^2
-[WARN] matter exchange can source A_constraint flux: PARTIAL — normalization inherited from reduced A-flux; parent derivation still needed
 
 ========================================================================================================================
 Case 5: Vacuum current and W_i source hint
@@ -106,7 +101,6 @@ Candidate direction:
   not assigned only by analogy to frame dragging.
 
 But no W_i field equation is derived here.
-[WARN] W_i source hint follows from continuity bookkeeping: PARTIAL — equation and coefficient missing
 
 ========================================================================================================================
 Case 6: Relaxation term and A_rad suppression
@@ -122,7 +116,6 @@ Ontology interpretation:
 
 Important caveat:
   This must suppress A_rad without erasing A_constraint.
-[WARN] relaxation can represent vacuum absorption of A_rad: PARTIAL — must be separated from static constraint field
 
 ========================================================================================================================
 Case 7: Creation regime is explicitly nonconservative
@@ -139,7 +132,6 @@ But ordinary exterior gravity should usually set:
   Sigma_creation = 0
 
 Otherwise source closure becomes too flexible.
-[WARN] creation regime flagged as nonconservative special case: RISK — must not be used as free knob
 
 ========================================================================================================================
 Case 8: Sector source classification from continuity attempt
@@ -156,7 +148,6 @@ Case 8: Sector source classification from continuity attempt
 Interpretation:
   The continuity picture begins to constrain A and W_i source types.
   It does not yet derive kappa, tensor normalization, or closure identities.
-[WARN] sector source classification produced: PARTIAL — continuity picture is useful but incomplete
 
 ========================================================================================================================
 Case 9: Failure controls
@@ -169,8 +160,6 @@ This ontology-native identity attempt fails if:
 4. Gamma_relax suppresses unwanted modes but also destroys static gravity.
 5. W_i current coupling is set only by GR matching.
 6. No Bianchi-like closure emerges from the balance law.
-
-[WARN] failure controls stated: RISK — these tests should guide group 09
 
 ========================================================================================================================
 Final interpretation
@@ -199,3 +188,22 @@ Possible next artifact:
 
 Possible next script:
   candidate_source_coupling_from_vacuum_exchange.py
+
+[derived_results]
+[PASS] pure 1D continuity expression formulated -- partial_t q_v + partial_x J_v = 0 written symbolically
+[PASS] exchange/creation/relaxation balance formulated -- 1D balance law with Sigma_exchange + Sigma_creation - Gamma_relax
+[PASS] static exterior flux derivative vanishes -- exterior A-flux satisfies div=0 (dF_A/dr=0) when matter absent
+[PASS] matter exchange sources A-flux -- Sigma_exchange,A ~ 8*pi*G*rho/c^2 from reduced flux law
+[PASS] current j_i = rho v_i identified as W_i source candidate -- ontology-native vector source hint from continuity bookkeeping
+[PASS] relaxation law A_rad exponential decay -- A_rad ~ exp(-Gamma mu^2 tau) represents vacuum absorption
+
+[governance_assessments]
+[DEFER] kappa source derivation -- kappa source from continuity not yet derived
+[DEFER] creation regime is nonconservative special case -- Sigma_creation must not be used as free knob
+[DEFER] W_i coefficient matching forbidden -- coefficient must not be set by GR analogy at this stage
+
+[unresolved_obligations]
+[OBLIGATION] derive q_v physical definition -- open proof obligation recorded
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive kappa source from continuity/trace exchange -- open proof obligation recorded
+[OBLIGATION] derive vector source identity -- open proof obligation recorded

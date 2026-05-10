@@ -22,7 +22,9 @@ Discipline:
   do not leave dot(kappa) frame-undefined
   do not let kappa carry rho
   do not let relaxation destroy energy
-[WARN] kappa covariant relaxation problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] kappa covariant relaxation problem posed -- kappa frame and energy requirements open
 
 ========================================================================================================================
 Case 1: Kappa requirement inventory
@@ -34,7 +36,7 @@ K1: replace dot(kappa) with a defined flow derivative
 Requirement: Kappa relaxation must specify the derivative direction.
 Candidate form: u^mu nabla_mu kappa = -mu_kappa*K_kappa*(kappa-kappa_min)
 Forbidden form: bare dot(kappa) with unspecified frame
-[WARN] K1: replace dot(kappa) with a defined flow derivative: CANDIDATE
+[INFO] K1: replace dot(kappa) with a defined flow derivative: CANDIDATE
 Risk: Preferred-frame ambiguity hidden in notation.
 Missing: Definition of u^mu or local vacuum frame.
 
@@ -44,7 +46,7 @@ K2: preserve first-order non-inertial relaxation
 Requirement: Kappa must not acquire an independent momentum channel.
 Candidate form: u^mu nabla_mu kappa = -lambda_kappa*(kappa-kappa_min)
 Forbidden form: Box kappa = alpha*S_trace
-[WARN] K2: preserve first-order non-inertial relaxation: CONSTRAINED
+[INFO] K2: preserve first-order non-inertial relaxation: CONSTRAINED
 Risk: Hidden scalar breathing radiation.
 Missing: Parent reason for first-order rather than second-order operator.
 
@@ -54,7 +56,7 @@ K3: define kappa_min as a scalar or frame-compatible field
 Requirement: The local minimum must transform consistently.
 Candidate form: kappa_min = chi_kappa*S_trace_effective, with S_trace_effective scalar/frame-defined
 Forbidden form: kappa_min depends on coordinate pressure without frame definition
-[WARN] K3: define kappa_min as a scalar or frame-compatible field: STRUCTURAL
+[INFO] K3: define kappa_min as a scalar or frame-compatible field: STRUCTURAL
 Risk: Kappa source law becomes gauge/frame artifact.
 Missing: Definition of S_trace_effective.
 
@@ -64,7 +66,7 @@ K4: define local vacuum/rest frame
 Requirement: Relaxation requires a physical or effective frame field if using u^mu.
 Candidate form: u^mu = vacuum-substance flow / matter-comoving flow / normal to preferred foliation
 Forbidden form: implicit universal time coordinate with no ontology
-[FAIL] K4: define local vacuum/rest frame: UNRESOLVED
+[INFO] K4: define local vacuum/rest frame: UNRESOLVED
 Risk: Unacknowledged preferred slicing.
 Missing: Choice and justification of frame field.
 
@@ -74,7 +76,7 @@ K5: exterior vacuum fixed point
 Requirement: In exterior ordinary vacuum, kappa_min=0 and kappa relaxes to zero.
 Candidate form: S_trace_effective=0 -> kappa_min=0 -> kappa -> 0
 Forbidden form: exterior kappa tail or nonzero exterior kappa attractor
-[WARN] K5: exterior vacuum fixed point: CONSTRAINED
+[INFO] K5: exterior vacuum fixed point: CONSTRAINED
 Risk: Second scalar exterior charge.
 Missing: Boundary/projection identity enforcing Q_kappa=0.
 
@@ -84,7 +86,7 @@ K6: boundary flux condition preserved
 Requirement: Boundary relaxation must not leak kappa charge into exterior.
 Candidate form: F_kappa(R+) = 0 and delta M_ext|kappa_relaxation = 0
 Forbidden form: boundary smoothing changes exterior A flux or creates kappa 1/r tail
-[WARN] K6: boundary flux condition preserved: CONSTRAINED
+[INFO] K6: boundary flux condition preserved: CONSTRAINED
 Risk: Boundary mass tuning or scalar double-counting.
 Missing: Boundary mass preservation theorem.
 
@@ -94,7 +96,7 @@ K7: relaxation energy accounting
 Requirement: Relaxation must transfer imbalance into vacuum configuration energy, not destroy it.
 Candidate form: Gamma_relax -> Delta E_vac_config, total exchange balance conserved
 Forbidden form: damping term with no energy destination
-[FAIL] K7: relaxation energy accounting: MISSING
+[INFO] K7: relaxation energy accounting: MISSING
 Risk: Cosmetic damping / energy nonconservation.
 Missing: Vacuum configuration energy variable and balance law.
 
@@ -104,7 +106,7 @@ K8: no direct rho source
 Requirement: Kappa relaxation source must exclude rho as independent long-range scalar source.
 Candidate form: S_kappa[rho]=0; trace/pressure only shifts kappa_min under P_trace
 Forbidden form: rho contributes to kappa_min as mass scalar charge
-[WARN] K8: no direct rho source: CONSTRAINED
+[INFO] K8: no direct rho source: CONSTRAINED
 Risk: Scalar double-counting with A-sector.
 Missing: Parent source decomposition for trace vs mass.
 
@@ -114,7 +116,7 @@ K9: recombination role limited
 Requirement: Kappa may affect trace/volume matching but must not duplicate A's scalar mass response.
 Candidate form: AB=e^(2*kappa) diagnostic; exterior kappa=0; scalar mass response counted by A
 Forbidden form: kappa used as second metric scalar carrying mass response
-[WARN] K9: recombination role limited: STRUCTURAL
+[INFO] K9: recombination role limited: STRUCTURAL
 Risk: Silent scalar double-counting in metric recombination.
 Missing: P_recombination map.
 
@@ -124,7 +126,7 @@ K10: causality / relaxation locality
 Requirement: First-order relaxation must be local along the chosen flow and not imply instantaneous nonlocal correction.
 Candidate form: u^mu nabla_mu kappa local; kappa_min local or projection-defined with stated support
 Forbidden form: global projection with hidden acausal adjustment, unless explicitly a constraint
-[WARN] K10: causality / relaxation locality: RISK
+[INFO] K10: causality / relaxation locality: RISK
 Risk: Acausal hidden constraint or nonlocal repair.
 Missing: Local versus constrained/nonlocal status of kappa_min projection.
 
@@ -143,7 +145,9 @@ Case 2: Compact kappa relaxation ledger
 | K8: no direct rho source | S_kappa[rho]=0; trace/pressure only shifts kappa_min under P_trace | rho contributes to kappa_min as mass scalar charge | CONSTRAINED | Parent source decomposition for trace vs mass. |
 | K9: recombination role limited | AB=e^(2*kappa) diagnostic; exterior kappa=0; scalar mass response counted by A | kappa used as second metric scalar carrying mass response | STRUCTURAL | P_recombination map. |
 | K10: causality / relaxation locality | u^mu nabla_mu kappa local; kappa_min local or projection-defined with stated support | global projection with hidden acausal adjustment, unless explicitly a constraint | RISK | Local versus constrained/nonlocal status of kappa_min projection. |
-[WARN] compact kappa ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact kappa ledger produced -- 10 kappa relaxation requirements recorded
 
 ========================================================================================================================
 Case 3: Status counts
@@ -159,7 +163,9 @@ Interpretation:
   Kappa's first-order role is constrained/structural.
   The major unresolved issue is the frame field or derivative direction.
   Energy accounting remains missing.
-[WARN] kappa status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] kappa status count produced -- {'CANDIDATE': 1, 'CONSTRAINED': 4, 'STRUCTURAL': 2, 'UNRESOLVED': 1, 'MISSING': 1, 'RISK': 1}
 
 ========================================================================================================================
 Case 4: Candidate covariantized form
@@ -181,7 +187,9 @@ Exterior ordinary vacuum:
 
 This is not yet derived.
 It is a requirement-shaped candidate.
-[WARN] candidate covariantized kappa form stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] candidate covariantized kappa form stated -- candidate form not yet derived
 
 ========================================================================================================================
 Case 5: Possible frame choices
@@ -205,7 +213,9 @@ Possible choices for u^mu:
    Risk: needs definition from parent identity.
 
 No choice is final.
-[FAIL] kappa frame options listed: UNRESOLVED
+
+[unresolved_obligations]
+[OBLIGATION] kappa frame options listed -- frame choice for u^mu remains open
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -220,7 +230,9 @@ Kappa covariant relaxation fails if:
 6. relaxation removes energy without destination.
 7. rho sources kappa as a second mass field.
 8. recombination uses kappa as duplicate scalar response.
-[WARN] kappa failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] kappa failure controls stated -- failure controls policy-guarded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -242,7 +254,9 @@ Recommended next script:
 
 Reason:
   Kappa relaxation is only safe if boundary/exterior mass preservation is enforced.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[DEFER] next test selected -- boundary mass preservation script is the next gate
 
 ========================================================================================================================
 Final interpretation

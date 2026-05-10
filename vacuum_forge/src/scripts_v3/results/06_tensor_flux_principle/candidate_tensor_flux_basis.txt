@@ -18,7 +18,9 @@ Need a tensor channel:
   two polarizations
 
 This script defines the plus/cross TT basis for propagation along z.
-[PASS] tensor flux basis problem posed
+
+[governance_assessments]
+[PASS] tensor flux basis problem posed -- TT basis construction starting
 
 ========================================================================================================================
 Case 1: Define plus and cross basis tensors
@@ -28,15 +30,19 @@ Matrix([[1, 0, 0], [0, -1, 0], [0, 0, 0]])
 
 e_cross =
 Matrix([[0, 1, 0], [1, 0, 0], [0, 0, 0]])
-[PASS] plus and cross basis tensors defined
+
+[derived_results]
+[PASS] plus and cross basis tensors defined -- e_plus = diag(1,-1,0); e_cross = sym off-diag xy
 
 ========================================================================================================================
 Case 2: Trace-free checks
 ========================================================================================================================
 Tr(e_plus) = 0
 Tr(e_cross) = 0
-[PASS] plus basis is trace-free
-[PASS] cross basis is trace-free
+
+[derived_results]
+[PASS] plus basis is trace-free -- Tr(e_plus) = 0
+[PASS] cross basis is trace-free -- Tr(e_cross) = 0
 
 ========================================================================================================================
 Case 3: Transversality checks for propagation along z
@@ -48,8 +54,10 @@ Matrix([[0, 0, 0]])
 
 k^i e_cross_ij =
 Matrix([[0, 0, 0]])
-[PASS] plus basis is transverse
-[PASS] cross basis is transverse
+
+[derived_results]
+[PASS] plus basis is transverse -- k^i e_plus = Matrix([[0, 0, 0]])
+[PASS] cross basis is transverse -- k^i e_cross = Matrix([[0, 0, 0]])
 
 ========================================================================================================================
 Case 4: Basis inner products
@@ -57,8 +65,10 @@ Case 4: Basis inner products
 <plus, plus> = 2
 <cross, cross> = 2
 <plus, cross> = 0
-[PASS] plus and cross are nonzero
-[PASS] plus and cross are orthogonal
+
+[derived_results]
+[PASS] plus and cross are nonzero -- <+,+>=2, <x,x>=2
+[PASS] plus and cross are orthogonal -- <+,x>=0
 
 ========================================================================================================================
 Case 5: General TT wave from plus/cross basis
@@ -67,8 +77,10 @@ H_TT = h_plus e_plus + h_cross e_cross =
 Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
 
 trace = 0
-[PASS] general basis combination is trace-free
-[PASS] general basis combination has two amplitudes
+
+[derived_results]
+[PASS] general basis combination is trace-free -- trace = 0
+[PASS] general basis combination has two amplitudes -- h_plus and h_cross are free parameters
 
 ========================================================================================================================
 Case 6: Scalar breathing mode is distinct from TT basis
@@ -79,8 +91,10 @@ Matrix([[b, 0, 0], [0, b, 0], [0, 0, 0]])
 trace = 2*b
 <breathing, plus> = 0
 <breathing, cross> = 0
-[PASS] breathing mode is not traceless unless trivial
-[PASS] breathing mode is distinct from TT basis
+
+[derived_results]
+[PASS] breathing mode is not traceless unless trivial -- trace = 2*b
+[PASS] breathing mode is distinct from TT basis -- <b,+>=0, <b,x>=0
 
 ========================================================================================================================
 Case 7: TT projection for z-propagating spatial tensor
@@ -97,8 +111,10 @@ Matrix([[h_xx/2 - h_yy/2, h_xy, 0], [h_xy, -h_xx/2 + h_yy/2, 0], [0, 0, 0]])
 trace = 0
 k^i H_TT_ij =
 Matrix([[0, 0, 0]])
-[PASS] z-TT projection is trace-free
-[PASS] z-TT projection is transverse
+
+[derived_results]
+[PASS] z-TT projection is trace-free -- trace = 0
+[PASS] z-TT projection is transverse -- k^i H_TT = Matrix([[0, 0, 0]])
 
 ========================================================================================================================
 Case 8: Tensor flux channel interpretation
@@ -115,7 +131,9 @@ Next steps:
   add propagation speed
   add quadrupole source coupling
   define tensor-flux conservation/radiation law
-[PASS] tensor flux channel basis established
+
+[governance_assessments]
+[PASS] tensor flux channel basis established -- TT basis: trace-free, transverse, two polarizations
 
 ========================================================================================================================
 Final interpretation

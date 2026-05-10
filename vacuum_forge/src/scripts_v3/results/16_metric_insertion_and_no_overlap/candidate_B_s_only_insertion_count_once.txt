@@ -2,7 +2,6 @@
 ========================================================================================================================
 Candidate B_s-Only Insertion Count-Once
 ========================================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - B_s_F_zeta_insertion_law_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -34,7 +33,9 @@ Discipline:
   do not let P_relax become scalar radiation
   do not allow exterior scalar charge
   keep recovery downstream
-[WARN] B_s-only count-once problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] B_s-only count-once problem posed -- required before insertion can proceed
 
 ========================================================================================================================
 Case 1: B_s-only count-once inventory
@@ -47,7 +48,7 @@ Rule: Trace[g_ij^scalar] receives J_V-driven zeta only through B_s
 Role: core count-once target
 Allowed if: residual zeta/kappa metric trace is killed or non-metric
 Forbidden if: same zeta change appears as residual metric trace
-[WARN] CO1: B_s-only count-once target: THEOREM_TARGET
+[INFO] CO1: B_s-only count-once target: THEOREM_TARGET
 Missing: derivation of B_s-only insertion / residual-kill
 Consequence: decides whether zeta-volume insertion can enter ordinary metric sector safely
 
@@ -58,7 +59,7 @@ Rule: gamma_ij = exp(2 zeta / 3) bar_gamma_ij supplies isotropic volume trace
 Role: structural source of possible B_s trace contribution
 Allowed if: treated as decomposition, not full dynamics
 Forbidden if: treated as complete field law
-[WARN] CO2: conformal-volume contribution: STRUCTURAL
+[INFO] CO2: conformal-volume contribution: STRUCTURAL
 Missing: dynamical B_s/F_zeta law
 Consequence: identifies where zeta can enter once
 
@@ -69,7 +70,7 @@ Rule: zeta_residual_metric = 0 after B_s insertion
 Role: direct residual-kill rule for zeta
 Allowed if: marked provisional unless O/parent identity derives it
 Forbidden if: zeta_residual remains metric-active
-[WARN] CO3: zeta residual metric killed: SAFE_IF
+[INFO] CO3: zeta residual metric killed: SAFE_IF
 Missing: residual-kill theorem
 Consequence: prevents zeta from taking a second metric spoon
 
@@ -80,7 +81,7 @@ Rule: kappa_residual_metric = 0, or kappa remains diagnostic / non-metric / sepa
 Role: prevents kappa from restoring killed trace
 Allowed if: kappa does not become independent metric trace
 Forbidden if: kappa substitutes for killed zeta residual
-[WARN] CO4: kappa residual metric killed / diagnostic: REQUIRED
+[INFO] CO4: kappa residual metric killed / diagnostic: REQUIRED
 Missing: kappa cleanup theorem
 Consequence: keeps areal kappa diagnostic fence intact
 
@@ -91,7 +92,7 @@ Rule: epsilon_vac_config does not source extra metric scalar trace after B_s ins
 Role: prevents energy-accounting back door
 Allowed if: configuration energy remains bookkeeping or recombines once
 Forbidden if: epsilon_vac_config becomes coefficient/source reservoir
-[WARN] CO5: epsilon_vac_config exclusion: REQUIRED
+[INFO] CO5: epsilon_vac_config exclusion: REQUIRED
 Missing: energy/accounting recombination rule
 Consequence: prevents killed residual from returning as energy source
 
@@ -102,7 +103,7 @@ Rule: e_kappa does not source extra metric scalar trace after B_s insertion
 Role: prevents kappa energy back door
 Allowed if: e_kappa remains diagnostic/provisional bookkeeping
 Forbidden if: e_kappa restores residual scalar trace or shifts M_ext
-[WARN] CO6: e_kappa exclusion: REQUIRED
+[INFO] CO6: e_kappa exclusion: REQUIRED
 Missing: e_kappa status after insertion
 Consequence: blocks kappa reservoir behavior
 
@@ -113,7 +114,7 @@ Rule: P_relax residual may survive only as first-order non-radiative non-metric 
 Role: possible safe residual role
 Allowed if: first-order, boundary-neutral, non-radiative, and not metric trace
 Forbidden if: P_relax becomes Box zeta, Box kappa, scalar wave, or metric source
-[WARN] CO7: P_relax non-metric branch: CANDIDATE
+[INFO] CO7: P_relax non-metric branch: CANDIDATE
 Missing: P_relax mechanism
 Consequence: allows residual dynamics without ordinary scalar gravity
 
@@ -124,7 +125,7 @@ Rule: residual zeta/kappa may remain as diagnostic/configuration bookkeeping, no
 Role: preserves useful variables without double-counting
 Allowed if: bookkeeping cannot shift M_ext or create scalar exterior charge
 Forbidden if: bookkeeping becomes hidden source term
-[WARN] CO8: non-metric bookkeeping branch: CANDIDATE
+[INFO] CO8: non-metric bookkeeping branch: CANDIDATE
 Missing: bookkeeping/accounting rule
 Consequence: keeps residual goblin alive but takes away metric spoon
 
@@ -135,7 +136,7 @@ Rule: residual metric trace survives only if real O proves no overlap, boundary 
 Role: theorem-heavy alternative to residual-kill
 Allowed if: O is explicit and safety theorems are proved
 Forbidden if: neutral residual is asserted to avoid residual-kill
-[WARN] CO9: neutral residual alternative: RISK
+[INFO] CO9: neutral residual alternative: RISK
 Missing: O operator, boundary theorem, no-mass-overlap theorem
 Consequence: keeps neutral residual branch alive only at high proof burden
 
@@ -146,7 +147,7 @@ Rule: zeta enters B_s and also enters residual metric trace
 Role: forbidden double-counting branch
 Allowed if: never unless real O explicitly separates neutral residual
 Forbidden if: accepted without O
-[WARN] CO10: forbidden zeta second trace: REJECTED
+[INFO] CO10: forbidden zeta second trace: REJECTED
 Missing: not pursued
 Consequence: kills zeta-both branch
 
@@ -157,7 +158,7 @@ Rule: kappa restores killed zeta residual trace as independent metric scalar
 Role: forbidden regression
 Allowed if: never in ordinary branch
 Forbidden if: accepted as recombination
-[WARN] CO11: forbidden kappa restoration: REJECTED
+[INFO] CO11: forbidden kappa restoration: REJECTED
 Missing: not pursued
 Consequence: prevents kappa from sneaking through residual door
 
@@ -168,7 +169,7 @@ Rule: B_s-only insertion and killed/non-metric residual do not alter A-sector ex
 Role: A-sector mass protection
 Allowed if: volume trace recombines without changing measured mass independently
 Forbidden if: residual/accounting shifts M_ext
-[WARN] CO12: no M_ext shift: REQUIRED
+[INFO] CO12: no M_ext shift: REQUIRED
 Missing: mass-accounting theorem
 Consequence: protects strongest reduced A-sector result
 
@@ -179,7 +180,7 @@ Rule: killed/non-metric residual creates no exterior zeta/kappa charge or far-zo
 Role: ordinary-sector exterior safety
 Allowed if: residual-kill also removes exterior scalar tail
 Forbidden if: residual bookkeeping leaks scalar charge
-[WARN] CO13: no exterior scalar charge: REQUIRED
+[INFO] CO13: no exterior scalar charge: REQUIRED
 Missing: boundary neutrality theorem
 Consequence: prevents B_s insertion from reviving scalar gravity
 
@@ -190,7 +191,7 @@ Rule: gamma_like and AB tested only after count-once status is fixed
 Role: anti-smuggling guard
 Allowed if: recovery is check only
 Forbidden if: used to choose what gets killed or counted
-[WARN] CO14: recovery downstream: RECOVERY_TARGET
+[INFO] CO14: recovery downstream: RECOVERY_TARGET
 Missing: solutions after count-once rule
 Consequence: prevents recovery from becoming recombination construction
 
@@ -201,7 +202,7 @@ Rule: parent identity derives B_s insertion and residual-kill/no-overlap togethe
 Role: strongest future derivation route
 Allowed if: identity is not GR rewrite and fixes count-once before recovery
 Forbidden if: decorative identity asserts count-once without mechanism
-[WARN] CO15: parent trace identity route: THEOREM_TARGET
+[INFO] CO15: parent trace identity route: THEOREM_TARGET
 Missing: parent trace identity
 Consequence: future route for turning convention into theorem
 
@@ -212,7 +213,7 @@ Rule: diagnostic projection may measure overlap but cannot define physical O
 Role: allowed diagnostic tool
 Allowed if: kept explicitly diagnostic
 Forbidden if: projection is promoted to ontology
-[WARN] CO16: diagnostic overlap audit: SAFE_IF
+[INFO] CO16: diagnostic overlap audit: SAFE_IF
 Missing: physical no-overlap mechanism
 Consequence: can help test branches without hardening scaffold
 
@@ -223,7 +224,7 @@ Rule: residual cannot be killed/non-metric and no O exists
 Role: branch failure condition
 Allowed if: used to block metric insertion
 Forbidden if: patched by relabeling residual variables
-[FAIL] CO17: count-once failure: BRANCH_KILLED
+[INFO] CO17: count-once failure: BRANCH_KILLED
 Missing: applies if demonstrated
 Consequence: J_V-driven zeta cannot enter ordinary metric scalar sector
 
@@ -234,7 +235,7 @@ Rule: if residual variables remain useful only non-metrically, test their allowe
 Role: next local bottleneck
 Allowed if: B_s-only count-once survives as provisional convention
 Forbidden if: jumping to parent equation before residual bookkeeping is fenced
-[PASS] CO18: recommended next move: RECOMMENDED
+[INFO] CO18: recommended next move: RECOMMENDED
 Missing: non-metric residual bookkeeping audit
 Consequence: next script should be candidate_residual_nonmetric_bookkeeping_rule.py
 
@@ -261,7 +262,9 @@ Case 2: Compact B_s-only count-once ledger
 | CO16: diagnostic overlap audit | diagnostic projection may measure overlap but cannot define physical O | SAFE_IF | can help test branches without hardening scaffold |
 | CO17: count-once failure | residual cannot be killed/non-metric and no O exists | BRANCH_KILLED | J_V-driven zeta cannot enter ordinary metric scalar sector |
 | CO18: recommended next move | if residual variables remain useful only non-metrically, test their allowed bookkeeping/relaxation roles | RECOMMENDED | next script should be candidate_residual_nonmetric_bookkeeping_rule.py |
-[WARN] compact count-once ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact count-once ledger produced -- inventory of second-spoon routes
 
 ========================================================================================================================
 Case 3: Status counts
@@ -283,7 +286,9 @@ Interpretation:
   Energy/accounting and P_relax are major second-spoon risks.
   Neutral residual remains possible but theorem-heavy.
   Next gate is non-metric residual bookkeeping: what can residual variables still do safely?
-[WARN] B_s-only count-once status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] B_s-only count-once status count produced -- second-spoon routes enumerated
 
 ========================================================================================================================
 Case 4: Second-spoon routes to block
@@ -301,7 +306,9 @@ Second-spoon routes:
 9. recovery check choosing what gets counted
 
 All must be blocked unless a real O / parent identity permits a neutral residual.
-[WARN] second-spoon routes listed: REQUIRED
+
+[governance_assessments]
+[WARN] second-spoon routes listed -- nine routes require blocking
 
 ========================================================================================================================
 Case 4b: Symbolic count-once check
@@ -309,7 +316,9 @@ Case 4b: Symbolic count-once check
 For gamma_ij = exp(2 zeta / 3) bar_gamma_ij in 3 spatial dimensions:
   fractional scalar entry = 2*delta_zeta/3
   total scalar trace contribution = 2*delta_zeta
-[PASS] symbolic count-once scalar trace: DERIVED_REDUCED — delta gamma_ij / gamma_ij = 2*delta_zeta/3, trace contribution = 2*delta_zeta
+
+[derived_results]
+[PASS] symbolic count-once scalar trace -- delta gamma_ij / gamma_ij = 2*delta_zeta/3, trace contribution = 2*delta_zeta
 
 ========================================================================================================================
 Case 5: Count-once decision tree
@@ -333,7 +342,9 @@ Decision tree:
 
 6. Parent trace identity:
    future route to derive count-once, not available here.
-[PASS] count-once decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] count-once decision tree stated -- recommended next is non-metric bookkeeping audit
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -352,7 +363,9 @@ Bad failure:
 
   Declare residual killed, then reinsert it through kappa, energy accounting,
   or P_relax scalar radiation.
-[WARN] B_s-only count-once good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] B_s-only count-once good failure stated -- deferred pending residual-kill or O theorem
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -369,7 +382,9 @@ B_s-only count-once fails if:
 8. residual creates exterior scalar charge
 9. recovery checks choose counted sector
 10. O is named but not defined
-[WARN] B_s-only count-once failure controls stated: RISK
+
+[governance_assessments]
+[WARN] B_s-only count-once failure controls stated -- open second-spoon risks
 
 ========================================================================================================================
 Case 8: Next tests
@@ -392,7 +407,9 @@ Recommended next script:
 Reason:
   B_s-only count-once blocks metric residuals, but residual variables may still
   have safe non-metric bookkeeping or relaxation roles that need fencing.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_residual_nonmetric_bookkeeping_rule.py
 
 ========================================================================================================================
 Final interpretation
@@ -414,4 +431,6 @@ Not derived:
 Best next script:
 
   candidate_residual_nonmetric_bookkeeping_rule.py
-[PASS] B_s-only count-once audit complete: CLOSED
+
+[governance_assessments]
+[DEFER] B_s-only count-once audit complete -- no count-once theorem derived; deferred

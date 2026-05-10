@@ -2,6 +2,8 @@
 ========================================================================================================================
 Candidate Quadrupole Coupling Normalization
 ========================================================================================================================
+[INFO] Archive dependency check:
+  - quadrupole_tensor_flux_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
 ========================================================================================================================
 Case 0: Quadrupole coupling normalization problem
@@ -19,7 +21,9 @@ GR-like weak far-zone scaling uses:
   C_Q = 2G/(c^4 R)
 
 This script treats that as a target normalization, not a derivation.
-[PASS] quadrupole coupling normalization problem posed
+
+[unresolved_obligations]
+[OBLIGATION] quadrupole coupling normalization problem posed -- C_Q = 2G/(c^4 R) is a target, not yet derived
 
 ========================================================================================================================
 Case 1: Symbolic far-zone amplitude law
@@ -27,7 +31,9 @@ Case 1: Symbolic far-zone amplitude law
 C_Q = 2*G/(R*c**4)
 h_plus = 2*G*Qdd_plus/(R*c**4)
 h_cross = 2*G*Qdd_cross/(R*c**4)
-[PASS] far-zone amplitude normalization stated
+
+[sample_results]
+[PASS] far-zone amplitude normalization stated -- h ~ C_Q Qdd; C_Q = 2*G/(R*c**4)
 
 ========================================================================================================================
 Case 2: Rotating quadrupole amplitude scaling
@@ -42,7 +48,9 @@ h_plus = -8*G*Omega**2*Q0*cos(2*Omega*t)/(R*c**4)
 h_cross = -8*G*Omega**2*Q0*sin(2*Omega*t)/(R*c**4)
 
 h_plus² + h_cross² = 64*G**2*Omega**4*Q0**2/(R**2*c**8)
-[PASS] amplitude scales as G Omega² Q0/(c⁴ R)
+
+[sample_results]
+[PASS] amplitude scales as G Omega² Q0/(c⁴ R) -- amp_sq residual = 0
 
 ========================================================================================================================
 Case 3: Dimensional scaling sanity check
@@ -58,7 +66,9 @@ Dimension check:
     = [L^3/(M T^2)] [M L^2/T^2] [T^4/L^5]
     = dimensionless
 
-[PASS] quadrupole amplitude coefficient is dimensionally consistent
+
+[governance_assessments]
+[PASS] quadrupole amplitude coefficient is dimensionally consistent -- G Qdd/(c^4 R) is dimensionless
 
 ========================================================================================================================
 Case 4: Amplitude versus power normalization
@@ -71,7 +81,9 @@ Interpretation:
   amplitude normalization uses G/c^4
   power normalization uses G/c^5
   they are related but not the same step
-[PASS] amplitude and power normalizations kept distinct
+
+[governance_assessments]
+[PASS] amplitude and power normalizations kept distinct -- amplitude G/c^4; power G/c^5
 
 ========================================================================================================================
 Case 5: Scalar versus tensor normalization
@@ -86,7 +98,9 @@ Comparison:
   scalar mass channel uses GM/(c²R)
   tensor quadrupole channel uses G Qdd/(c⁴R)
 
-[PASS] scalar and tensor coupling normalizations are distinct
+
+[governance_assessments]
+[PASS] scalar and tensor coupling normalizations are distinct -- scalar G/c^2; tensor G/c^4
 
 ========================================================================================================================
 Case 6: Coupling target classification
@@ -100,7 +114,9 @@ Results:
 5. Scalar monopole normalization GM/(c²R) is distinct from tensor
    quadrupole normalization GQdd/(c⁴R).
 
-[PASS] quadrupole coupling normalization target established
+
+[unresolved_obligations]
+[OBLIGATION] quadrupole coupling normalization target established -- C_Q = 2G/(c^4 R) is target; derivation from action remains open
 
 ========================================================================================================================
 Final interpretation

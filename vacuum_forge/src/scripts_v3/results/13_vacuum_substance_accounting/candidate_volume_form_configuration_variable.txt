@@ -23,7 +23,9 @@ Discipline:
   TT modes should be volume-preserving
   scalar/trace modes should be conversion-limited
   do not import the 1D toy's one-way reservoir as theory
-[WARN] volume-form problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] volume-form problem posed -- open: geometric definition of epsilon_vac_config required
 
 ========================================================================================================================
 Case 1: Volume-form candidate inventory
@@ -36,7 +38,7 @@ Candidate form: dV_phys = sqrt(gamma) d^3x
 Role: Geometric expression of local vacuum/spacetime amount in a chosen slice.
 Allowed use: candidate basis for epsilon_vac_config
 Forbidden use: treated as gauge-invariant observable without slicing/frame definition
-[WARN] V1: physical volume element: CANDIDATE
+Status: CANDIDATE
 Missing: choice of spatial metric gamma_ij and foliation/frame
 Next test: trace_vs_TT_split
 
@@ -47,7 +49,7 @@ Candidate form: zeta = ln sqrt(gamma)
 Role: Additive local trace/volume configuration variable.
 Allowed use: candidate scalar/trace conversion variable
 Forbidden use: duplicate A-sector mass response or exterior scalar charge
-[WARN] V2: logarithmic volume strain: CANDIDATE
+Status: CANDIDATE
 Missing: reference volume / background subtraction and relation to kappa
 Next test: trace_vs_TT_split
 
@@ -58,7 +60,7 @@ Candidate form: delta zeta = 1/2 gamma^ij delta gamma_ij
 Role: Shows that volume change is trace part of spatial metric perturbation.
 Allowed use: separate trace/volume channel from TT shear
 Forbidden use: allowing trace to source h_TT or scalar radiation
-[WARN] V3: perturbative trace relation: STRUCTURAL
+Status: STRUCTURAL
 Missing: parent projector P_trace
 Next test: candidate_trace_vs_tt_geometric_split.py
 
@@ -69,7 +71,7 @@ Candidate form: gamma^ij h_ij^TT = 0 -> delta zeta|TT = 0
 Role: Candidate reason TT modes propagate without vacuum creation/destruction.
 Allowed use: theorem target behind TT-only radiation
 Forbidden use: claiming theorem before parent projector derivation
-[WARN] V4: TT volume preservation: CANDIDATE
+Status: CANDIDATE
 Missing: full nonlinear/covariant statement and TT source identity
 Next test: candidate_trace_vs_tt_geometric_split.py
 
@@ -80,7 +82,7 @@ Candidate form: ds = e^phi dx, so zeta_1D = phi
 Role: Concrete analog: local expansion field multiplies physical length.
 Allowed use: intuition and toy diagnostic for volume-form accounting
 Forbidden use: importing the toy's irreversible reservoir R as theory
-[WARN] V5: 1D toy analog: STRUCTURAL
+Status: STRUCTURAL
 Missing: higher-dimensional generalization and conservative exchange law
 Next test: scalar_conversion_not_damping
 
@@ -91,7 +93,7 @@ Candidate form: kappa ~ zeta - zeta_min or kappa = 1/2 ln(AB) in reduced areal g
 Role: Relates kappa to volume/trace mismatch rather than independent scalar field.
 Allowed use: kappa as constrained trace/volume relaxation diagnostic
 Forbidden use: kappa as rho-sourced exterior scalar charge
-[WARN] V6: kappa relation candidate: CANDIDATE
+Status: CANDIDATE
 Missing: precise map between kappa and volume-form strain
 Next test: candidate_scalar_conversion_not_damping.py
 
@@ -102,7 +104,7 @@ Candidate form: epsilon_vac_config = F(zeta, zeta_min, grad zeta, ...)
 Role: Geometric local configuration density built from volume strain.
 Allowed use: destination/source for scalar/trace conversion
 Forbidden use: bottomless reservoir or coefficient tuning functional
-[WARN] V7: epsilon_vac_config candidate: CANDIDATE
+Status: CANDIDATE
 Missing: functional form F and stiffness coefficients
 Next test: vacuum_accounting_parent_balance
 
@@ -113,7 +115,7 @@ Candidate form: M_ext determined by A_flux, not by integral zeta
 Role: Protects exterior mass from volume-form relaxation.
 Allowed use: volume reconfiguration may be compact/compensated while A_flux remains fixed
 Forbidden use: using volume strain integral to alter exterior mass
-[WARN] V8: A-sector separation: CONSTRAINED
+Status: CONSTRAINED
 Missing: boundary volume mode no exterior charge theorem
 Next test: candidate_boundary_volume_mode_no_exterior_charge.py
 
@@ -124,7 +126,7 @@ Candidate form: zeta_ext -> 0, kappa_ext -> 0, Q_volume = 0
 Role: Prevents volume-form scalar tail outside ordinary matter.
 Allowed use: compact or compensated trace/volume reconfiguration
 Forbidden use: zeta_ext ~ 1/r scalar charge
-[WARN] V9: exterior neutrality: CONSTRAINED
+Status: CONSTRAINED
 Missing: projection/boundary theorem
 Next test: candidate_boundary_volume_mode_no_exterior_charge.py
 
@@ -135,7 +137,7 @@ Candidate form: zeta = ln sqrt(gamma) depends on spatial decomposition
 Role: Flags that volume-form accounting needs a frame/foliation or covariant replacement.
 Allowed use: temporary reduced/3+1 candidate
 Forbidden use: pretending zeta is fully covariant without extra structure
-[FAIL] V10: slicing/frame caveat: UNRESOLVED
+Status: UNRESOLVED
 Missing: frame u^mu, foliation, or covariant volume current
 Next test: candidate_vacuum_transport_current_constraints.py
 
@@ -154,7 +156,9 @@ Case 2: Compact volume-form ledger
 | M_ext determined by A_flux, not by integral zeta | Protects exterior mass from volume-form relaxation. | CONSTRAINED | using volume strain integral to alter exterior mass | boundary volume mode no exterior charge theorem |
 | zeta_ext -> 0, kappa_ext -> 0, Q_volume = 0 | Prevents volume-form scalar tail outside ordinary matter. | CONSTRAINED | zeta_ext ~ 1/r scalar charge | projection/boundary theorem |
 | zeta = ln sqrt(gamma) depends on spatial decomposition | Flags that volume-form accounting needs a frame/foliation or covariant replacement. | UNRESOLVED | pretending zeta is fully covariant without extra structure | frame u^mu, foliation, or covariant volume current |
-[WARN] compact volume-form ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact volume-form ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -168,7 +172,9 @@ Interpretation:
   The volume-form candidate is promising but not covariant yet.
   The key structural fact is that TT perturbations are trace-free, hence volume-preserving at linear order.
   The key risk is duplicating A-sector scalar mass response.
-[WARN] volume-form status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] volume-form status count produced -- counts complete
 
 ========================================================================================================================
 Case 3b: Linear volume-form relation
@@ -181,7 +187,9 @@ Pure trace perturbation model:
 
 Interpretation:
   the isotropic trace perturbation gives delta zeta = h/2 at linear order.
-[PASS] linear trace-volume relation: DERIVED_REDUCED — delta zeta = h/2
+
+[sample_results]
+[PASS] linear trace-volume relation -- delta zeta = h/2
 
 ========================================================================================================================
 Case 4: Minimal candidate definition
@@ -208,7 +216,9 @@ Interpretation:
   TT modes are volume-preserving shear
 
 This is a linear structural observation, not a full theorem.
-[WARN] minimal volume-form candidate stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] minimal volume-form candidate stated -- candidate route: linear observation, not full theorem
 
 ========================================================================================================================
 Case 5: Relation to 1D toy model
@@ -236,7 +246,9 @@ Rejected extraction:
 Reinterpreted extraction:
 
   scalar/trace conversion changes the geometry/volume-form variable itself
-[WARN] 1D toy relation stated: STRUCTURAL
+
+[governance_assessments]
+[PASS] 1D toy relation stated -- analogy accepted; reservoir rejected
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -250,7 +262,9 @@ The volume-form candidate fails if:
 5. TT modes accidentally change volume.
 6. scalar conversion becomes far-zone scalar radiation.
 7. epsilon_vac_config becomes a coefficient tuning reservoir.
-[WARN] volume-form failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] volume-form failure controls stated -- open risk: failure conditions not yet excluded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -272,7 +286,9 @@ Recommended next script:
 
 Reason:
   The volume-form candidate points directly to the trace/TT split as the possible TT-only radiation theorem.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- trace vs TT geometric split
 
 ========================================================================================================================
 Final interpretation

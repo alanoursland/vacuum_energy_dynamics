@@ -20,7 +20,9 @@ Discipline:
 
   do not claim closure just because the sector split is organized
   identify what must be derived before the system is closed
-[FAIL] conservation identity requirements problem posed: UNFINISHED
+
+[unresolved_obligations]
+[OBLIGATION] conservation identity requirements -- system not closed; parent identities required
 
 ========================================================================================================================
 Case 1: Identity requirement inventory
@@ -131,7 +133,9 @@ Case 2: Compact identity ledger
 | I8: relaxation energy accounting | kappa relaxation is exchange/restoration, not dissipation from total system. | STRUCTURAL | cosmetic damping or energy disappearance. |
 | I9: metric recombination compatibility | A, W_i, h_TT, and kappa combine without double-counting. | UNFINISHED | GR metric imported by hand or scalar trace duplicated. |
 | I10: Bianchi-like closure target | full field system is compatible with conservation. | MISSING | theory remains a sector ledger, not a closed field equation system. |
-[WARN] compact identity ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact identity ledger produced -- inventory marker
 
 ========================================================================================================================
 Case 3: Status counts
@@ -144,7 +148,9 @@ UNFINISHED: 2
 Interpretation:
   Most identities are constrained or structural requirements.
   The Bianchi-like closure identity remains missing.
-[WARN] identity status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] identity status count produced -- inventory marker
 
 ========================================================================================================================
 Case 4: Minimal parent identity template
@@ -163,7 +169,9 @@ and in reduced sector language it must imply:
   ordinary Sigma_creation = 0
 
 This is a requirement template, not a derivation.
-[FAIL] minimal parent identity template stated: UNFINISHED
+
+[unresolved_obligations]
+[OBLIGATION] minimal parent identity template -- template only; parent identity not derived
 
 ========================================================================================================================
 Case 5: Hardest requirements
@@ -177,7 +185,9 @@ Hardest requirements:
 5. Boundary mass preservation.
 
 These are where the reconstruction can still fail.
-[WARN] hardest requirements identified: RISK
+
+[governance_assessments]
+[WARN] hardest requirements identified -- open risk
 
 ========================================================================================================================
 Case 6: Next tests
@@ -199,7 +209,9 @@ Recommended next script:
 
 Reason:
   Before inventing the parent identity, audit which GR limits are actually derived.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

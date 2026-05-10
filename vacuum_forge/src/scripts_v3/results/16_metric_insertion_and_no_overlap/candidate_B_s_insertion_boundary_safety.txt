@@ -2,7 +2,6 @@
 ========================================================================================================================
 Candidate B_s Insertion Boundary Safety
 ========================================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - no_overlap_operator_minimal_forms_marker: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 
@@ -27,7 +26,9 @@ Discipline:
   no boundary repair
   diagnostic elliptic audit only
   recovery downstream
-[WARN] B_s insertion boundary-safety problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] B_s insertion boundary-safety problem posed -- boundary safety required before insertion can be licensed
 
 ========================================================================================================================
 Case 1: B_s insertion boundary-safety inventory
@@ -40,7 +41,7 @@ Rule: B_s insertion under residual-kill creates no exterior scalar leakage, no M
 Role: core boundary safety theorem target
 Allowed if: boundary neutrality is structural, not tuned
 Forbidden if: leakage is canceled by repair current or boundary term
-[WARN] BS1: B_s insertion boundary-safety target: THEOREM_TARGET
+[INFO] BS1: B_s insertion boundary-safety target: THEOREM_TARGET
 Missing: boundary safety theorem
 Consequence: decides whether B_s insertion can survive ordinary exterior sector
 
@@ -51,7 +52,7 @@ Rule: Q_ext[zeta,kappa] = 0 outside ordinary static source
 Role: scalar-charge guard
 Allowed if: zero charge follows from support/projection/residual-kill structure
 Forbidden if: charge is canceled by R_V or boundary tuning
-[WARN] BS2: zero exterior zeta/kappa charge: REQUIRED
+[INFO] BS2: zero exterior zeta/kappa charge: REQUIRED
 Missing: zero-charge theorem
 Consequence: prevents scalar exterior gravity
 
@@ -62,7 +63,7 @@ Rule: F_scalar_far[zeta,kappa,J_V] = 0
 Role: radiation/exterior guard
 Allowed if: far-zone scalar flux is structurally absent
 Forbidden if: B_s insertion creates scalar tail or breathing leakage
-[WARN] BS3: no far-zone scalar flux: REQUIRED
+[INFO] BS3: no far-zone scalar flux: REQUIRED
 Missing: far-zone flux theorem
 Consequence: protects ordinary TT-only radiation target
 
@@ -73,7 +74,7 @@ Rule: delta M_ext|B_s/zeta/residual = 0 independent of A-sector mass
 Role: A-sector mass protection
 Allowed if: metric insertion recombines without changing measured exterior mass
 Forbidden if: zeta/residual bookkeeping changes M_ext
-[WARN] BS4: no M_ext shift: REQUIRED
+[INFO] BS4: no M_ext shift: REQUIRED
 Missing: mass-accounting theorem
 Consequence: protects strongest reduced A result
 
@@ -84,7 +85,7 @@ Rule: B_s/F_zeta support or transition creates no shell-like scalar source
 Role: boundary regularity guard
 Allowed if: support/matching is smooth or shell term structurally vanishes
 Forbidden if: sharp support creates unaccounted surface scalar charge
-[WARN] BS5: no boundary shell source: REQUIRED
+[INFO] BS5: no boundary shell source: REQUIRED
 Missing: shell-avoidance theorem
 Consequence: blocks boundary source smuggling
 
@@ -95,7 +96,7 @@ Rule: B_s/F_zeta active only inside compact source/interior with zero boundary f
 Role: candidate safe-support branch
 Allowed if: compact support follows from insertion law, not after-the-fact repair
 Forbidden if: support is imposed to hide exterior scalar charge
-[WARN] BS6: compact-support insertion: CANDIDATE
+[INFO] BS6: compact-support insertion: CANDIDATE
 Missing: support law and smooth matching
 Consequence: may protect exterior if not decorative
 
@@ -106,7 +107,7 @@ Rule: B_s/F_zeta transitions smoothly to exterior recovery region without shell 
 Role: candidate matching branch
 Allowed if: transition follows from field/insertion law and preserves zero charge
 Forbidden if: smoothing function is tuned to pass recovery
-[WARN] BS7: smooth transition insertion: CANDIDATE
+[INFO] BS7: smooth transition insertion: CANDIDATE
 Missing: transition law
 Consequence: possible boundary-safe insertion if coefficient-free
 
@@ -117,7 +118,7 @@ Rule: n_i J_V^i = 0 or relevant volume flux vanishes structurally at boundary
 Role: current-boundary safety condition
 Allowed if: zero flux follows from physical current/support law
 Forbidden if: zero flux is imposed as repair boundary condition
-[WARN] BS8: zero-flux boundary condition: CANDIDATE
+[INFO] BS8: zero-flux boundary condition: CANDIDATE
 Missing: physical J_V/support law
 Consequence: can protect exterior only if J_V becomes real
 
@@ -128,7 +129,7 @@ Rule: solve boundary diagnostic to test leakage, not define physical boundary la
 Role: diagnostic tool
 Allowed if: kept explicitly diagnostic
 Forbidden if: elliptic completion becomes physical insertion mechanism
-[WARN] BS9: diagnostic elliptic boundary audit: SAFE_IF
+[INFO] BS9: diagnostic elliptic boundary audit: SAFE_IF
 Missing: physical boundary mechanism
 Consequence: can reveal leakage without becoming ontology
 
@@ -139,7 +140,7 @@ Rule: choose boundary counterterm, R_V, or J_V to cancel leakage after the fact
 Role: rejected repair branch
 Allowed if: never as mechanism
 Forbidden if: accepted as boundary neutrality
-[WARN] BS10: boundary repair rejection: REJECTED
+[INFO] BS10: boundary repair rejection: REJECTED
 Missing: not pursued
 Consequence: prevents tuned exterior safety
 
@@ -150,7 +151,7 @@ Rule: AB recovery / kappa_areal used only as exterior diagnostic check
 Role: allowed recovery diagnostic
 Allowed if: diagnostic does not choose insertion or boundary law
 Forbidden if: areal kappa becomes physical scalar or boundary mechanism
-[WARN] BS11: exterior areal-kappa diagnostic: SAFE_IF
+[INFO] BS11: exterior areal-kappa diagnostic: SAFE_IF
 Missing: not a mechanism
 Consequence: keeps AB check downstream and diagnostic
 
@@ -161,7 +162,7 @@ Rule: unrestricted grad zeta insertion creates exterior scalar tail
 Role: failure mode
 Allowed if: only as diagnostic risk
 Forbidden if: accepted without zero-charge theorem
-[WARN] BS12: zeta-gradient exterior-tail risk: RISK
+[INFO] BS12: zeta-gradient exterior-tail risk: RISK
 Missing: zeta support/boundary theorem
 Consequence: can kill unrestricted zeta-gradient insertion
 
@@ -172,7 +173,7 @@ Rule: source/support-gradient insertion creates shell-like boundary scalar sourc
 Role: failure mode
 Allowed if: only as diagnostic risk
 Forbidden if: accepted without shell-avoidance
-[WARN] BS13: source-gradient shell risk: RISK
+[INFO] BS13: source-gradient shell risk: RISK
 Missing: boundary smoothing/source law
 Consequence: can kill source-gradient insertion branch
 
@@ -183,7 +184,7 @@ Rule: killed/non-metric residual produces no exterior charge, no flux, no mass s
 Role: required consequence of safe convention
 Allowed if: residual-kill removes exterior metric/source effects
 Forbidden if: non-metric residual leaks through boundary/accounting
-[WARN] BS14: residual-kill boundary consequence: REQUIRED
+[INFO] BS14: residual-kill boundary consequence: REQUIRED
 Missing: residual-kill boundary theorem
 Consequence: tests whether residual-kill is safe enough as convention
 
@@ -194,7 +195,7 @@ Rule: gamma_like and AB checked only after boundary safety is structural
 Role: anti-smuggling guard
 Allowed if: recovery remains check only
 Forbidden if: recovery chooses support/smoothing/boundary law
-[WARN] BS15: recovery downstream: RECOVERY_TARGET
+[INFO] BS15: recovery downstream: RECOVERY_TARGET
 Missing: solutions after boundary-safe insertion
 Consequence: keeps recovery from constructing boundary behavior
 
@@ -205,7 +206,7 @@ Rule: B_s insertion creates exterior scalar charge, far flux, M_ext shift, or sh
 Role: branch-kill condition
 Allowed if: used to reject unsafe insertion family
 Forbidden if: patched with boundary repair
-[FAIL] BS16: boundary failure: BRANCH_KILLED
+[INFO] BS16: boundary failure: BRANCH_KILLED
 Missing: applies if failure demonstrated
 Consequence: unsafe insertion cannot enter ordinary metric sector
 
@@ -216,7 +217,7 @@ Rule: if boundary safety survives as theorem target, audit recovery without cons
 Role: next local bottleneck
 Allowed if: boundary safety is not failed but not derived
 Forbidden if: jumping to parent equation before recovery anti-smuggling audit
-[PASS] BS17: recommended next move: RECOMMENDED
+[INFO] BS17: recommended next move: RECOMMENDED
 Missing: recovery audit
 Consequence: next script should be candidate_B_s_insertion_recovery_audit.py
 
@@ -242,7 +243,9 @@ Case 2: Compact B_s boundary-safety ledger
 | BS15: recovery downstream | gamma_like and AB checked only after boundary safety is structural | RECOVERY_TARGET | keeps recovery from constructing boundary behavior |
 | BS16: boundary failure | B_s insertion creates exterior scalar charge, far flux, M_ext shift, or shell source | BRANCH_KILLED | unsafe insertion cannot enter ordinary metric sector |
 | BS17: recommended next move | if boundary safety survives as theorem target, audit recovery without construction | RECOMMENDED | next script should be candidate_B_s_insertion_recovery_audit.py |
-[WARN] compact boundary-safety ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact boundary-safety ledger produced -- boundary safety routes enumerated
 
 ========================================================================================================================
 Case 3: Status counts
@@ -264,7 +267,9 @@ Interpretation:
   Boundary repair is rejected.
   Zeta-gradient exterior tails and source-gradient shell sources remain major risks.
   If boundary safety survives, recovery must be audited without construction.
-[WARN] B_s insertion boundary-safety status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] B_s insertion boundary-safety status count produced -- safety required but unproved
 
 ========================================================================================================================
 Case 4: Boundary-safety routes
@@ -284,7 +289,9 @@ Danger routes:
 3. boundary counterterm
 4. R_V cancellation
 5. recovery-tuned smoothing
-[PASS] boundary-safety routes listed: RECOMMENDED
+
+[governance_assessments]
+[INFO] boundary-safety routes listed -- five candidate routes; five danger routes
 
 ========================================================================================================================
 Case 4b: Symbolic compact-support boundary sample
@@ -293,7 +300,9 @@ zeta_interior(r) = epsilon*(1 - r**2/R**2)**2
 zeta(R) = 0
 zeta'(R) = 0
 zeta''(R) = 8*epsilon/R**2
-[PASS] compact-support boundary sample: DERIVED_REDUCED — zeta(R) = 0, zeta'(R) = 0
+
+[sample_results]
+[PASS] compact-support boundary sample -- zeta(R) = 0, zeta'(R) = 0
 
 ========================================================================================================================
 Case 5: Boundary-safety decision tree
@@ -320,7 +329,9 @@ Decision tree:
 
 7. If scalar leakage or shell source appears:
    insertion branch killed for ordinary sector.
-[PASS] boundary-safety decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] boundary-safety decision tree stated -- recommended next is recovery audit
 
 ========================================================================================================================
 Case 6: Good failure / branch decision
@@ -338,7 +349,9 @@ Consequence:
 Bad failure:
 
   Hide leakage in boundary counterterms or call elliptic completion a mechanism.
-[WARN] B_s insertion boundary-safety good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] B_s insertion boundary-safety good failure stated -- deferred pending boundary safety theorem
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -355,7 +368,9 @@ B_s insertion boundary safety fails if:
 8. boundary counterterm cancels leakage
 9. diagnostic elliptic audit becomes ontology
 10. AB/gamma_like chooses boundary behavior
-[WARN] B_s insertion boundary-safety failure controls stated: RISK
+
+[governance_assessments]
+[WARN] B_s insertion boundary-safety failure controls stated -- ten failure modes
 
 ========================================================================================================================
 Case 8: Next tests
@@ -378,7 +393,9 @@ Recommended next script:
 Reason:
   If boundary safety is not killed, the next danger is recovery smuggling:
   gamma_like, AB, Schwarzschild spatial metric, or areal kappa as construction.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_B_s_insertion_recovery_audit.py
 
 ========================================================================================================================
 Final interpretation
@@ -396,4 +413,6 @@ B_s insertion under residual-kill convention remains alive only if:
 Best next script:
 
   candidate_B_s_insertion_recovery_audit.py
-[PASS] B_s insertion boundary-safety audit complete: CLOSED
+
+[governance_assessments]
+[DEFER] B_s insertion boundary-safety audit complete -- boundary safety not derived; deferred

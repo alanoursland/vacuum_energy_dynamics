@@ -24,7 +24,6 @@ Discipline:
   do not allow exterior kappa/zeta scalar charge
   do not allow Box kappa or Box zeta
   do not duplicate A-sector mass
-[WARN] kappa-zeta inventory problem posed: REQUIRED
 
 ========================================================================================================================
 Case 1: Kappa-zeta map candidate inventory
@@ -40,7 +39,7 @@ Energy accounting: e_kappa and epsilon_vac_config likely collapse unless one is 
 Exterior neutrality: safe only if zeta_ext=0 and zeta_min_ext=0
 Double-counting risk: high: e_kappa may duplicate K_zeta volume displacement
 Scalar-radiation risk: low only if zeta remains non-radiative/constraint-like
-[WARN] M1: direct equality: RISK
+Status: RISK
 Missing: whether kappa is redundant and which energy survives
 Next test: candidate_kappa_as_zeta_mismatch.py
 
@@ -54,7 +53,7 @@ Energy accounting: e_kappa may remain separate if projection defines a relaxatio
 Exterior neutrality: promising if P_trace removes exterior monopole / enforces compensation
 Double-counting risk: moderate: depends on whether projection is diagnostic or energetic
 Scalar-radiation risk: low if P_trace is constraint/projector, not wave operator
-[WARN] M2: projected zeta mismatch: CANDIDATE
+Status: CANDIDATE
 Missing: definition of P_trace and whether it includes boundary compensation
 Next test: candidate_kappa_as_projected_zeta_mismatch.py
 
@@ -68,7 +67,7 @@ Energy accounting: e_kappa is residual energy; epsilon_vac_config is zeta config
 Exterior neutrality: promising if P_relax/P_boundary enforce zero exterior charge
 Double-counting risk: moderate but controllable if residual and configuration are separated
 Scalar-radiation risk: low if relaxation remains first-order
-[WARN] M3: relaxed projected mismatch: CANDIDATE
+Status: CANDIDATE
 Missing: P_relax, P_trace, and P_boundary definitions
 Next test: candidate_kappa_as_projected_zeta_mismatch.py
 
@@ -82,7 +81,7 @@ Energy accounting: e_kappa outside epsilon_vac_config; exchange de_kappa + d eps
 Exterior neutrality: must separately impose kappa_ext=0 and zeta_ext=0
 Double-counting risk: moderate: independence may become two scalar responses
 Scalar-radiation risk: moderate unless first-order/no-wave rule is enforced
-[WARN] M4: independent kappa relaxation variable: SAFE_IF
+Status: SAFE_IF
 Missing: coupling law tying kappa to zeta without extra degree of freedom
 Next test: candidate_kappa_independent_relaxation_variable.py
 
@@ -96,7 +95,7 @@ Energy accounting: no independent e_kappa unless physical kappa is separately de
 Exterior neutrality: safe in Schwarzschild exterior because AB=1 -> kappa=0
 Double-counting risk: low if diagnostic is not counted as physical energy
 Scalar-radiation risk: low if diagnostic is not promoted to wave field
-[WARN] M5: areal-gauge diagnostic only: SAFE_IF
+Status: SAFE_IF
 Missing: whether there is a covariant physical kappa beyond diagnostic
 Next test: candidate_areal_kappa_diagnostic_vs_physical_variable.py
 
@@ -110,7 +109,7 @@ Energy accounting: e_kappa may be boundary/interface energy only
 Exterior neutrality: promising if support is compact and boundary flux vanishes
 Double-counting risk: low to moderate if boundary energy is not also volume energy
 Scalar-radiation risk: low if boundary mode has no propagation
-[WARN] M6: boundary/interface mismatch only: CANDIDATE
+Status: CANDIDATE
 Missing: interface law and boundary mass preservation theorem
 Next test: candidate_boundary_projector_for_volume_neutrality.py
 
@@ -124,7 +123,7 @@ Energy accounting: no e_kappa as physical energy unless multiplier dynamics are 
 Exterior neutrality: safe if constraint enforces Q_volume=0 and exterior fixed point
 Double-counting risk: low if kappa has no separate energy
 Scalar-radiation risk: low if kappa has no kinetic/wave term
-[WARN] M7: auxiliary Lagrange multiplier: CANDIDATE
+Status: CANDIDATE
 Missing: constraint C and whether prior e_kappa language must be retired
 Next test: candidate_trace_projector_definition.py
 
@@ -138,7 +137,7 @@ Energy accounting: adds third energy unless e_kappa/epsilon are revised
 Exterior neutrality: risky unless both fields have zero exterior charge
 Double-counting risk: high: K_lock plus e_kappa plus epsilon may overcount
 Scalar-radiation risk: moderate/high if finite stiffness creates oscillatory mode
-[WARN] M8: penalty locking energy: REJECTED
+Status: REJECTED
 Missing: would require derived degree-of-freedom count and action
 Next test: not recommended
 
@@ -152,7 +151,7 @@ Energy accounting: independent scalar energy likely required
 Exterior neutrality: fails generically for positive pressure: exterior charge likely nonzero
 Double-counting risk: high: trace source may duplicate A-sector mass/stress response
 Scalar-radiation risk: high if promoted dynamically
-[WARN] M9: raw trace source kappa: REJECTED
+Status: REJECTED
 Missing: not pursued in ordinary sector
 Next test: not recommended
 
@@ -166,7 +165,7 @@ Energy accounting: requires scalar wave energy and far-zone flux
 Exterior neutrality: fails unless source forbidden
 Double-counting risk: high
 Scalar-radiation risk: fatal: creates breathing/scalar radiation channel
-[PASS] M10: scalar wave kappa or zeta: FORBIDDEN
+Status: FORBIDDEN
 Missing: not pursued
 Next test: not recommended
 
@@ -180,7 +179,7 @@ Energy accounting: e_kappa may be removed or reinterpreted after recombination
 Exterior neutrality: safe if recombination forces kappa_ext=0
 Double-counting risk: low if A/zeta/kappa are assembled once
 Scalar-radiation risk: low if no evolution equation is attached
-[WARN] M11: recombination-only kappa: STRUCTURAL
+Status: STRUCTURAL
 Missing: P_recombination and relation to AB=e^(2kappa)
 Next test: candidate_recombination_projector_for_trace_volume.py
 
@@ -194,7 +193,7 @@ Energy accounting: epsilon_zeta and e_kappa counted separately; no K_lock energy
 Exterior neutrality: requires both zeta and kappa neutrality conditions
 Double-counting risk: controlled by explicitly not counting K_lock
 Scalar-radiation risk: controlled by first-order kappa and no Box zeta/kappa
-[PASS] M12: hybrid provisional convention: RECOMMENDED
+Status: RECOMMENDED
 Missing: actual kappa-zeta map and projectors
 Next test: candidate_kappa_as_projected_zeta_mismatch.py
 
@@ -215,7 +214,6 @@ Case 2: Compact kappa-zeta map ledger
 | M10: scalar wave kappa or zeta | Box kappa = alpha S or Box zeta = alpha S | FORBIDDEN | high | not recommended |
 | M11: recombination-only kappa | kappa appears only inside spatial metric recombination, not as separate source variable | STRUCTURAL | low if A/zeta/kappa are assembled once | candidate_recombination_projector_for_trace_volume.py |
 | M12: hybrid provisional convention | zeta primary; kappa separate first-order residual; K_lock diagnostic only | RECOMMENDED | controlled by explicitly not counting K_lock | candidate_kappa_as_projected_zeta_mismatch.py |
-[WARN] compact kappa-zeta ledger produced: STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -234,7 +232,6 @@ Interpretation:
   The recommended provisional convention remains hybrid:
     zeta primary, kappa separate first-order residual, K_lock diagnostic only.
   The strongest next test is projected zeta mismatch.
-[WARN] kappa-zeta status count produced: STRUCTURAL
 
 ========================================================================================================================
 Case 4: Survivor shortlist
@@ -258,7 +255,6 @@ Surviving interpretations:
 
 6. kappa as auxiliary constraint variable.
    Safe if no independent kinetic or energy term is attached.
-[WARN] survivor shortlist stated: CANDIDATE
 
 ========================================================================================================================
 Case 5: Rejected or forbidden maps
@@ -279,7 +275,6 @@ Rejected or forbidden:
 
 5. kappa and zeta as independent exterior scalar charges
    risk: second scalar gravity
-[WARN] rejected kappa-zeta maps stated: REJECTED
 
 ========================================================================================================================
 Case 6: Recommended provisional convention
@@ -302,7 +297,6 @@ Recommended for now:
 
 Next preferred map to test:
   kappa = P_trace(zeta-zeta_min)
-[PASS] recommended provisional convention stated: RECOMMENDED
 
 ========================================================================================================================
 Case 7: Next tests
@@ -327,7 +321,6 @@ Recommended next script:
 
 Reason:
   Projection is the best current chance to relate kappa to zeta while preserving exterior neutrality and avoiding double-counting.
-[WARN] next test selected: STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -347,3 +340,12 @@ Possible next artifact:
 
 Possible next script:
   candidate_kappa_as_projected_zeta_mismatch.py
+
+[governance_assessments]
+[PASS] kappa-zeta inventory problem posed -- 12 candidate maps classified
+[FAIL] rejected maps: M8 M9 M10 -- scalar radiation, double-counting, or GR smuggling
+[PASS] provisional convention: hybrid zeta primary + kappa residual -- recommended pending derivation
+
+[unresolved_obligations]
+[OBLIGATION] derive kappa-zeta map -- open proof obligation recorded
+[OBLIGATION] derive P_trace definition -- open proof obligation recorded

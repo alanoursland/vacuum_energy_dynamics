@@ -24,7 +24,9 @@ Discipline:
   do not call exterior matching local closure
   do not use zeta as patch without no-overlap identity
   if no explicit closure class survives, kill the branch
-[WARN] minimal A-constraint closure/no-go problem posed: REQUIRED
+
+[governance_assessments]
+[WARN] minimal A-constraint closure/no-go problem posed -- open risk
 
 ========================================================================================================================
 Case 1: Minimal closure/no-go inventory
@@ -37,7 +39,7 @@ Closure class: Delta_A A = S_A[rho] or equivalent scalar constraint
 Role: starting point from existing A-sector success
 Allowed if: treated as reduced scalar mass-response constraint
 Forbidden if: claimed to determine spatial response by itself
-[WARN] NG1: symbolic A constraint: STRUCTURAL
+Status: STRUCTURAL
 Missing: parent embedding
 Consequence: A constraint remains strong but incomplete without closure
 
@@ -48,7 +50,7 @@ Closure class: A_spatial = F[A] by algebraic rule
 Role: minimal possible closure
 Allowed if: F is derived from non-GR parent principle
 Forbidden if: F is B=1/A, Schwarzschild copy, or gamma tuning
-[WARN] NG2: algebraic companion closure: RISK
+Status: RISK
 Missing: non-GR derivation of F[A]
 Consequence: without derivation this is just metric import
 
@@ -59,7 +61,7 @@ Closure class: C[A, A_spatial, S_A] = 0 as local differential compatibility cond
 Role: best local non-GR closure candidate
 Allowed if: C derives A_spatial and enforces source/current compatibility
 Forbidden if: C is Einstein constraint rewritten or exterior matching condition
-[WARN] NG3: differential compatibility closure: CANDIDATE
+Status: CANDIDATE
 Missing: explicit compatibility operator C
 Consequence: could keep A-sector-local branch alive if written
 
@@ -70,7 +72,7 @@ Closure class: nabla_mu J_A^mu[A,A_spatial,T] = 0
 Role: closure through defined current/source conservation
 Allowed if: J_A is specified and not decorative
 Forbidden if: conservation is invoked without current/operator
-[WARN] NG4: conservation-current closure: CANDIDATE
+Status: CANDIDATE
 Missing: J_A and relation to T conservation
 Consequence: may bridge to conservation/Bianchi-like parent identity
 
@@ -81,7 +83,7 @@ Closure class: A_spatial solves elliptic compatibility equation with A as input
 Role: non-radiative closure candidate
 Allowed if: interior equation plus boundary data derive spatial companion without exterior matching alone
 Forbidden if: boundary conditions simply impose Schwarzschild/AB=1
-[WARN] NG5: elliptic boundary-value closure: CANDIDATE
+Status: CANDIDATE
 Missing: elliptic operator and admissible boundary data
 Consequence: could derive static spatial response while preserving no scalar waves
 
@@ -92,7 +94,7 @@ Closure class: C[A, A_spatial, zeta] = 0
 Role: possible ontology-native closure via volume configuration
 Allowed if: zeta becomes non-overlapping companion or residual by identity
 Forbidden if: zeta patches A_spatial while also independent residual
-[WARN] NG6: zeta-assisted closure: RISK
+Status: RISK
 Missing: zeta-A_spatial no-overlap identity
 Consequence: may force revision of zeta primary/residual convention
 
@@ -103,7 +105,7 @@ Closure class: weak-field spatial response recovers gamma=1-like behavior
 Role: observational/recovery test
 Allowed if: emerges from closure
 Forbidden if: used to choose closure coefficients
-[WARN] NG7: gamma-like recovery check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: weak-field expansion of closure
 Consequence: closure candidates must pass this test without tuning
 
@@ -114,7 +116,7 @@ Closure class: exterior solution passes kappa_areal -> 0 / AB -> 1 diagnostic
 Role: reduced exterior recovery test
 Allowed if: emerges after closure solution
 Forbidden if: AB=1 is imposed as closure
-[WARN] NG8: AB diagnostic check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: exterior solution of closure
 Consequence: keeps areal kappa diagnostic-only
 
@@ -125,7 +127,7 @@ Closure class: Trace[g_ij scalar] = Trace_A_mass + Trace_residual_neutral, overl
 Role: prevents closure from double-counting zeta/kappa
 Allowed if: closure either derives residual split or kills residual trace
 Forbidden if: A_spatial and zeta/kappa overlap
-[WARN] NG9: count-once trace check: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: overlap operator and residual rule
 Consequence: closure decides whether kappa/zeta survive as metric residuals
 
@@ -136,7 +138,7 @@ Closure class: F[A] = GR spatial metric, B=1/A, Einstein constraint, or tuned ga
 Role: forbidden shortcut family
 Allowed if: never as closure in current branch
 Forbidden if: used to keep A-sector-local branch alive
-[WARN] NG10: GR shortcut no-go: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: if only this works, A-sector-local closure branch is killed
 
@@ -147,7 +149,7 @@ Closure class: no non-GR algebraic/differential/current/elliptic closure can be 
 Role: good no-go result
 Allowed if: used to move search to action/stiffness or broader Bianchi-like identity
 Forbidden if: patched with GR import
-[FAIL] NG11: A-sector-local branch killed: BRANCH_KILLED
+Status: BRANCH_KILLED
 Missing: actual attempted closure comparison
 Consequence: kills local constraint-propagation route if confirmed
 
@@ -158,7 +160,7 @@ Closure class: try C[A,A_spatial,S_A]=0 and J_A closure forms before abandoning 
 Role: best next concrete closure attempt
 Allowed if: forms are explicit enough to test recovery and no-overlap
 Forbidden if: symbols only rename missing equations
-[PASS] NG12: recommended minimal test: RECOMMENDED
+Status: RECOMMENDED
 Missing: explicit minimal closure ansatz
 Consequence: next work should write/test minimal symbolic closure candidates
 
@@ -179,7 +181,9 @@ Case 2: Compact minimal-closure ledger
 | NG10: GR shortcut no-go | F[A] = GR spatial metric, B=1/A, Einstein constraint, or tuned gamma | REJECTED | if only this works, A-sector-local closure branch is killed |
 | NG11: A-sector-local branch killed | no non-GR algebraic/differential/current/elliptic closure can be stated | BRANCH_KILLED | kills local constraint-propagation route if confirmed |
 | NG12: recommended minimal test | try C[A,A_spatial,S_A]=0 and J_A closure forms before abandoning branch | RECOMMENDED | next work should write/test minimal symbolic closure candidates |
-[WARN] compact minimal-closure ledger produced: STRUCTURAL
+
+[governance_assessments]
+[WARN] compact minimal-closure ledger produced -- structural inventory
 
 ========================================================================================================================
 Case 3: Status counts
@@ -198,7 +202,9 @@ Interpretation:
   Viable closure classes must become explicit: differential compatibility, conservation-current, elliptic boundary-value, or zeta-assisted closure.
   GR shortcut closure is rejected.
   If explicit non-GR closure cannot be stated, the A-sector-local propagation branch is killed.
-[WARN] minimal-closure status count produced: STRUCTURAL
+
+[governance_assessments]
+[WARN] minimal-closure status count produced -- structural
 
 ========================================================================================================================
 Case 4: Minimal symbolic closure forms to try
@@ -222,7 +228,9 @@ Each must be explicit enough to test:
    AB diagnostic as output
    no-overlap trace theorem
    no GR shortcut
-[WARN] minimal symbolic forms stated: CANDIDATE
+
+[governance_assessments]
+[WARN] minimal symbolic forms stated -- candidate families
 
 ========================================================================================================================
 Case 5: Branch-kill criterion
@@ -241,23 +249,39 @@ If killed, move to:
   parent action/stiffness identity,
   conservation/Bianchi-like identity,
   or volume-exchange identity.
-[FAIL] A-sector-local branch-kill criterion stated: BRANCH_KILLED
+
+[governance_assessments]
+[FAIL] A-sector-local branch-kill criterion stated -- branch kill if no explicit closure
 
 ========================================================================================================================
-Case 6: Failure controls
+Case 6: Good failure / no-go demonstration
 ========================================================================================================================
-Minimal closure test fails if:
+Good failure: the A-sector-local closure branch cannot be stated explicitly without GR shortcuts.
 
-1. closure symbols only rename missing equations
-2. closure uses B=1/A
-3. closure copies GR spatial metric
-4. closure tunes gamma=1
-5. closure rewrites Einstein constraints
-6. closure uses exterior matching as local equation
-7. zeta/kappa patch closure while remaining independent residual
-8. count-once trace theorem is ignored
-9. branch cannot be killed despite no explicit closure
-[WARN] minimal closure failure controls stated: RISK
+Symbolic no-go evidence:
+
+  The minimal closure family C[A, A_spatial, S_A] = 0 reduces to:
+    alpha1 Delta A_spatial + alpha2 Delta A + alpha3 S_A = 0
+
+  Using the A constraint (Delta A = S_A):
+    Delta A_spatial = q S_A,  q = -(alpha2 + alpha3)/alpha1
+
+  But q cannot be derived without: action/stiffness, conservation identity, or volume-exchange.
+
+  Without a pre-recovery origin for q, choosing q to match gamma_like=1 is GR shortcut tuning.
+
+This is the good failure: the branch is not killed by contradiction,
+but it cannot stand locally without coefficient origin.
+
+  Symbolic result: q = (-alpha2 - alpha3)/alpha1
+
+  q depends on free coefficients. No local principle fixes them.
+  This is the no-go: local closure reduces to coefficient tuning.
+
+[counterexamples]
+[FAIL] local A-sector closure reduces to free coefficient ratio -- q = (-alpha2 - alpha3)/alpha1; no pre-recovery principle fixes alpha ratios
+
+[PASS] Good failure: no-go correctly identified. Branch must defer to action/stiffness or conservation route.
 
 ========================================================================================================================
 Case 7: Next tests
@@ -279,7 +303,9 @@ Recommended next script:
 
 Reason:
   The no-go ledger has narrowed the branch to explicit closure ansatz forms. Try those forms next; kill the branch if they collapse to shortcuts.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[WARN] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

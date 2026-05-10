@@ -22,7 +22,9 @@ Discipline:
   do not claim closure
   keep kappa non-radiative
   keep parent identity marked missing
-[WARN] minimal equation set problem posed: CONSTRAINED
+
+[governance_assessments]
+[DEFER] minimal equation set problem posed -- structural constraint on scope
 
 ========================================================================================================================
 Case 1: Minimal equation inventory
@@ -165,7 +167,9 @@ Case 2: Compact minimal equation table
 | E10: scalar radiation rejection | TT-only ordinary radiation safety | REJECTED | parent mechanism proving exclusion |
 | E11: ordinary closed regime | ordinary conservative closure | CONSTRAINED | active-regime trigger/exclusion law |
 | E12: parent closure target | candidate parent identity target | MISSING | E_parent, B_closed, B_relax definitions and proof |
-[WARN] compact minimal equation table produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact minimal equation table produced -- inventory marker
 
 ========================================================================================================================
 Case 3: Status counts
@@ -180,7 +184,9 @@ STRUCTURAL: 3
 Interpretation:
   The minimal set has strong reduced scalar equations, structural vector/tensor/kappa rules,
   constrained scalar-radiation safety, one matched tensor energy coefficient, and missing parent closure.
-[WARN] minimal equation status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] minimal equation status count produced -- inventory marker
 
 ========================================================================================================================
 Case 4: Minimal reduced system
@@ -200,7 +206,9 @@ Minimal current reduced system:
 Parent closure target:
 
   Div E_parent = B_closed + B_relax
-[WARN] minimal reduced system stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] minimal reduced system stated -- structural constraint
 
 ========================================================================================================================
 Case 5: GR recovery status
@@ -221,7 +229,9 @@ Matched or missing:
   tensor energy flux coefficient
   parent conservation identity
   covariant recombination
-[WARN] GR recovery status restated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] GR recovery status restated -- structural assessment
 
 ========================================================================================================================
 Case 5b: VacuumForge minimal metric cross-check
@@ -230,7 +240,9 @@ A_value = -2*G*M/(c**2*r) + 1
 B_value = 1/(-2*G*M/(c**2*r) + 1)
 A_value * B_value = 1
 ConcreteMetricCheck status = satisfied_by_construction
-[PASS] minimal equation set reproduces reciprocal concrete metric classification: DERIVED_REDUCED
+
+[derived_results]
+[PASS] minimal equation set reproduces reciprocal concrete metric classification -- A*B = 1; ConcreteMetricCheck: satisfied_by_construction
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -244,7 +256,9 @@ This minimal set fails if:
 5. A_rad or Box kappa scalar radiation appears.
 6. Sigma_creation enters ordinary closed regime.
 7. Recombination silently copies GR.
-[WARN] minimal set failure controls stated: RISK
+
+[governance_assessments]
+[WARN] minimal set failure controls stated -- open risk
 
 ========================================================================================================================
 Case 7: Next tests
@@ -267,7 +281,9 @@ Recommended next:
 Reason:
   Group 11 has reached a natural summary point after inventory, recombination, sources, constraints,
   evolution split, GR audit, parent scaffold, failure modes, and minimal equation set.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

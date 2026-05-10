@@ -22,7 +22,9 @@ Discipline:
   do not let trace modes source TT radiation
   do not let scalar conversion become far-zone scalar radiation
   keep A-sector mass separate from volume-form charge
-[WARN] trace versus TT split problem posed: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] trace versus TT split problem posed -- open: nonlinear/covariant theorem target
 
 ========================================================================================================================
 Case 1: Trace/TT split inventory
@@ -35,7 +37,7 @@ Mode: trace/volume scalar
 Geometric effect: zeta = ln sqrt(gamma) measures local volume-form strain in a chosen slice
 Candidate rule: delta zeta = 1/2 gamma^ij delta gamma_ij
 Forbidden interpretation: zeta as fully covariant observable without frame/foliation
-[WARN] T1: volume strain variable: CANDIDATE
+Status: CANDIDATE
 Missing: frame/foliation or covariant volume current
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -45,7 +47,7 @@ Mode: h_ij = (1/3) gamma_ij h
 Geometric effect: changes volume form: delta zeta = h/2
 Candidate rule: trace perturbation routes to P_trace / volume conversion
 Forbidden interpretation: trace perturbation propagates as ordinary far-zone scalar radiation
-[WARN] T2: pure trace perturbation: STRUCTURAL
+Status: STRUCTURAL
 Missing: parent P_trace and conversion law
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -55,7 +57,7 @@ Mode: h_ij^TT with gamma^ij h_ij^TT=0 and div h^TT=0
 Geometric effect: preserves volume at linear order: delta zeta|TT=0
 Candidate rule: TT shear may propagate without vacuum creation/destruction
 Forbidden interpretation: TT mode treated as volume-changing scalar conversion
-[WARN] T3: TT perturbation: CANDIDATE
+Status: CANDIDATE
 Missing: nonlinear/covariant TT statement and source coefficient
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -65,7 +67,7 @@ Mode: scalar mass constraint
 Geometric effect: controls exterior mass response through A_flux, not volume-form charge
 Candidate rule: rho -> A_flux; not rho -> zeta exterior charge
 Forbidden interpretation: A-sector mass duplicated as volume-form exterior scalar tail
-[WARN] T4: scalar A-sector: CONSTRAINED
+Status: CONSTRAINED
 Missing: parent scalar constraint propagation
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -75,7 +77,7 @@ Mode: kappa
 Geometric effect: candidate mismatch between zeta and local equilibrium zeta_min
 Candidate rule: kappa ~ zeta - zeta_min or reduced kappa = 1/2 ln(AB)
 Forbidden interpretation: kappa as independent rho-sourced scalar field
-[WARN] T5: kappa trace/volume mismatch: CANDIDATE
+Status: CANDIDATE
 Missing: precise kappa-zeta map
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -85,7 +87,7 @@ Mode: would-be scalar wave
 Geometric effect: conversion into vacuum-spacetime configuration rather than far-zone propagation
 Candidate rule: trace/volume disturbance changes zeta and relaxes/exchanges with epsilon_vac_config
 Forbidden interpretation: Box A, A_rad, or Box kappa as ordinary radiation
-[WARN] T6: scalar/trace conversion: CONSTRAINED
+Status: CONSTRAINED
 Missing: conversion operator / parent projector
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -95,7 +97,7 @@ Mode: P_L j
 Geometric effect: updates scalar constraint / density redistribution, not transverse shear
 Candidate rule: P_L j -> scalar continuity and A constraint propagation
 Forbidden interpretation: P_L j sources W_i or TT radiation
-[WARN] T7: longitudinal current: CONSTRAINED
+Status: CONSTRAINED
 Missing: scalar constraint propagation identity
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -105,7 +107,7 @@ Mode: P_T j
 Geometric effect: sources vector shear/frame-dragging response
 Candidate rule: P_T j -> W_i
 Forbidden interpretation: transverse vector response treated as volume creation
-[WARN] T8: transverse current: STRUCTURAL
+Status: STRUCTURAL
 Missing: normalization alpha_W/K_c and recombination map
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -115,7 +117,7 @@ Mode: finite-amplitude TT/shear
 Geometric effect: linear trace-free does not automatically prove nonlinear determinant preservation
 Candidate rule: TT-only radiation theorem needs nonlinear/covariant extension
 Forbidden interpretation: linear result advertised as full theorem
-[WARN] T9: nonlinear volume preservation caveat: RISK
+Status: RISK
 Missing: nonlinear determinant/shear analysis
 
 ------------------------------------------------------------------------------------------------------------------------
@@ -125,7 +127,7 @@ Mode: ordinary radiation
 Geometric effect: far-zone propagating radiation should be volume-preserving TT shear only
 Candidate rule: ordinary far-zone radiation = h_ij^TT
 Forbidden interpretation: scalar/trace conversion leaks into far-zone scalar flux
-[WARN] T10: far-zone radiation rule: CANDIDATE
+Status: CANDIDATE
 Missing: binary-radiation scalar conversion safety check
 
 ========================================================================================================================
@@ -143,7 +145,9 @@ Case 2: Compact trace/TT ledger
 | T8: transverse current | P_T j | P_T j -> W_i | STRUCTURAL | normalization alpha_W/K_c and recombination map |
 | T9: nonlinear volume preservation caveat | finite-amplitude TT/shear | TT-only radiation theorem needs nonlinear/covariant extension | RISK | nonlinear determinant/shear analysis |
 | T10: far-zone radiation rule | ordinary radiation | ordinary far-zone radiation = h_ij^TT | CANDIDATE | binary-radiation scalar conversion safety check |
-[WARN] compact trace/TT ledger produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] compact trace/TT ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -157,7 +161,9 @@ Interpretation:
   The trace/TT split is structurally promising.
   The linear TT volume-preservation result is strong but not a full theorem.
   The next danger is scalar conversion leaking into far-zone radiation.
-[WARN] trace/TT status count produced: STRUCTURAL
+
+[governance_assessments]
+[PASS] trace/TT status count produced -- counts complete
 
 ========================================================================================================================
 Case 4: Minimal geometric split
@@ -185,7 +191,9 @@ Interpretation:
 
   trace changes vacuum-spacetime amount
   TT shear preserves vacuum-spacetime amount at linear order
-[WARN] minimal trace/TT split stated: CANDIDATE
+
+[governance_assessments]
+[DEFER] minimal trace/TT split stated -- candidate route: linear observation, not full theorem
 
 ========================================================================================================================
 Case 4b: Symbolic trace and TT split
@@ -199,8 +207,10 @@ TT sector sample:
 
   trace(h_TT) = 0
   linear delta zeta|TT = 0
-[PASS] trace mode changes zeta: DERIVED_REDUCED — delta zeta = h/2
-[PASS] TT mode preserves zeta linearly: DERIVED_REDUCED — delta zeta = 0
+
+[sample_results]
+[PASS] trace mode changes zeta -- delta zeta = h/2
+[PASS] TT mode preserves zeta linearly -- delta zeta = 0
 
 ========================================================================================================================
 Case 5: TT-only radiation theorem target
@@ -222,7 +232,9 @@ Required pieces:
 
 Current status:
   theorem target, not theorem.
-[WARN] TT-only theorem target stated: CANDIDATE
+
+[unresolved_obligations]
+[OBLIGATION] TT-only theorem target stated -- open: all six required pieces remain unresolved
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -236,7 +248,9 @@ The trace/TT split fails if:
 5. Linear trace-free identity is overclaimed as full covariance.
 6. Binary systems acquire extra scalar energy loss.
 7. P_trace and P_TT are not actually independent projectors.
-[WARN] trace/TT failure controls stated: RISK
+
+[governance_assessments]
+[DEFER] trace/TT failure controls stated -- open risk: failure conditions not yet excluded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -258,7 +272,9 @@ Recommended next script:
 
 Reason:
   The trace/TT split suggests scalar modes convert; now define conversion versus damping.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[PASS] next test selected -- scalar conversion not damping
 
 ========================================================================================================================
 Final interpretation

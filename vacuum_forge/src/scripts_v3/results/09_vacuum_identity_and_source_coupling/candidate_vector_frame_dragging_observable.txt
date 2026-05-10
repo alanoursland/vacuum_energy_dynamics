@@ -21,7 +21,6 @@ Rules:
 Candidate diagnostic:
 
   B_W = curl W
-[WARN] frame-dragging observable problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Curl kills pure-gradient gauge-like piece
@@ -34,7 +33,6 @@ Matrix([[0], [0], [0]])
 
 Interpretation:
   If gauge shifts add gradient-like pieces, curl W removes them.
-[PASS] curl removes pure-gradient pieces: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 2: Rotational W gives nonzero curl
@@ -48,7 +46,6 @@ div W = 0
 
 Interpretation:
   Rotational vector structure gives a nonzero curl diagnostic.
-[WARN] rotational W produces nonzero B_W: CONSTRAINED_BY_IDENTITY — normalization remains symbolic
 
 ========================================================================================================================
 Case 3: Current loop / angular momentum structure
@@ -63,7 +60,6 @@ Matrix([[-rho*v_y*z + rho*v_z*y], [rho*v_x*z - rho*v_z*x], [-rho*v_x*y + rho*v_y
 Interpretation:
   A frame-dragging diagnostic sourced by current should reduce globally
   to an angular-momentum-like source for rotating bodies.
-[WARN] angular momentum structure follows from current: CONSTRAINED_BY_IDENTITY — global integral and coefficient missing
 
 ========================================================================================================================
 Case 4: Symbolic precession relation
@@ -78,7 +74,6 @@ Status:
   B_W = curl W is diagnostic candidate
   beta_W is not derived
   do not set beta_W from GR yet
-[WARN] precession relation stated symbolically: CONSTRAINED_BY_IDENTITY — beta_W missing
 
 ========================================================================================================================
 Case 5: Dipole-like far-field shape
@@ -93,7 +88,6 @@ Interpretation:
   Continuity/current gives angular momentum J as source.
   A dipole-like vector field suggests 1/r^3 curl falloff.
   Coefficient C_W remains symbolic.
-[WARN] dipole-like far-field shape stated: CONSTRAINED_BY_IDENTITY — coefficient and derivation missing
 
 ========================================================================================================================
 Case 6: Observable safety classification
@@ -106,8 +100,6 @@ Case 6: Observable safety classification
 | Omega_drag = beta_W curl W | CONSTRAINED_BY_IDENTITY, beta_W missing |
 | Lense-Thirring coefficient | HAND_ASSIGNED if inserted now |
 
-[WARN] observable safety classification produced: CONSTRAINED_BY_IDENTITY — raw W_i remains unsafe
-
 ========================================================================================================================
 Case 7: Failure controls
 ========================================================================================================================
@@ -118,8 +110,6 @@ This observable reconstruction fails if:
 3. curl W does not connect to a physical precession observable.
 4. the current source j_i is disconnected from continuity.
 5. vector radiation is accidentally introduced without suppression or evidence.
-
-[WARN] frame-dragging failure controls stated: RISK — next stage must derive beta_W or mark it independent
 
 ========================================================================================================================
 Final interpretation
@@ -141,3 +131,16 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_coefficient_normalization.py
+
+[derived_results]
+[PASS] curl(grad phi) = 0 identity verified -- curl removes pure-gradient gauge pieces
+[PASS] rotational W gives nonzero curl diagnostic -- B_W = curl W is nonzero for rotational W = a(-y, x, 0)
+[PASS] angular momentum density l = r x j computed -- symbolic angular momentum density from current
+
+[governance_assessments]
+[DEFER] beta_W observable coupling -- beta_W not derived; Lense-Thirring matching forbidden
+[DEFER] raw W_i is gauge-sensitive -- only B_W = curl W is a safe observable candidate
+
+[unresolved_obligations]
+[OBLIGATION] derive beta_W observable coupling -- open proof obligation recorded
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded

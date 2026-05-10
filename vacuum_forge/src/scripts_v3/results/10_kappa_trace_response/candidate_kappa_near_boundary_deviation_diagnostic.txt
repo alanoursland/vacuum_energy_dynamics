@@ -21,7 +21,6 @@ Profile deviation:
   delta_f = f_joint - f_GR_ref
 
 delta_f = -f_GR_ref(r) + f_joint(r)
-[WARN] profile deviation diagnostic defined: CONSTRAINED_BY_IDENTITY — reference profile must be specified
 
 ========================================================================================================================
 Case 0: Near-boundary deviation diagnostic problem
@@ -39,7 +38,6 @@ Discipline:
 Likely region:
 
   near surface / matter-vacuum interface
-[WARN] near-boundary deviation diagnostic problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 2: Acceleration diagnostic
@@ -52,7 +50,6 @@ acceleration deviation is proportional to:
 delta_g = Derivative(f_GR_ref(r), r) - Derivative(f_joint(r), r)
 
 This would likely peak where the transition layer bends fastest.
-[WARN] acceleration deviation diagnostic defined: CONSTRAINED_BY_IDENTITY — normalization/recombination missing
 
 ========================================================================================================================
 Case 3: Curvature diagnostic
@@ -68,7 +65,6 @@ Areal Laplacian-like deviation:
   delta_lap = delta_f'' + 2 delta_f'/r
 
 delta_lap = (r*(-Derivative(f_GR_ref(r), (r, 2)) + Derivative(f_joint(r), (r, 2))) - 2*Derivative(f_GR_ref(r), r) + 2*Derivative(f_joint(r), r))/r
-[WARN] curvature deviation diagnostics defined: CONSTRAINED_BY_IDENTITY — metric mapping still needed
 
 ========================================================================================================================
 Case 4: Redshift/lapse diagnostic
@@ -86,7 +82,6 @@ exact = -1 + sqrt(A_ref + delta_A)/sqrt(A_ref)
 Linearized for small delta_A:
 
 approx = delta_A/(2*A_ref)
-[WARN] redshift/lapse diagnostic defined: CONSTRAINED_BY_IDENTITY — requires recombination map
 
 ========================================================================================================================
 Case 5: Transition width scaling
@@ -104,7 +99,6 @@ Thus curvature-like deviations are most sensitive to narrow transition
 layers.
 
 But sigma is not derived, so this is only scaling discipline.
-[WARN] transition-width scaling stated: PLAUSIBLE — epsilon and sigma not derived
 
 ========================================================================================================================
 Case 6: Region hierarchy
@@ -118,7 +112,6 @@ Case 6: Region hierarchy
 | far exterior | delta should decay / vanish |
 
 This keeps the expected deviation localized.
-[WARN] near-boundary region hierarchy stated: PLAUSIBLE — magnitude unknown
 
 ========================================================================================================================
 Case 7: Possible observable channels
@@ -134,7 +127,6 @@ Candidate observable channels:
 Caution:
   no channel is claimed viable yet.
   these are diagnostic buckets only.
-[WARN] observable channel inventory stated: PLAUSIBLE — no viability assessment
 
 ========================================================================================================================
 Case 8: Measurement caution
@@ -150,7 +142,6 @@ Why this may be unmeasured or hard to measure:
 Therefore:
 
   possible deviation != practical test yet
-[WARN] measurement caution retained: CONSTRAINED_BY_IDENTITY — avoid overclaim
 
 ========================================================================================================================
 Case 9: Failure controls
@@ -163,7 +154,6 @@ Deviation diagnostic program fails if:
 4. predicted acceleration/redshift deviation is already excluded.
 5. kappa-sector deviation is confused with A-sector mass flux.
 6. magnitude is claimed before sigma/weights are derived.
-[WARN] deviation diagnostic failure controls stated: RISK — diagnostic before prediction
 
 ========================================================================================================================
 Case 10: Classification
@@ -178,7 +168,6 @@ Case 10: Classification
 | observable channels | PLAUSIBLE inventory only |
 | magnitude prediction | MISSING |
 | measurement claim | NOT MADE |
-[WARN] near-boundary diagnostic classification produced: CONSTRAINED_BY_IDENTITY — no prediction yet
 
 ========================================================================================================================
 Case 11: Next tests
@@ -201,7 +190,6 @@ Recommended next script:
 Reason:
   Group 10 has reached a natural boundary: kappa status is now clear enough
   to summarize before pushing numerical/observational speculation.
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — summary is recommended
 
 ========================================================================================================================
 Final interpretation
@@ -225,3 +213,18 @@ Possible next artifact:
 
 Recommended next:
   candidate_kappa_trace_response_status_summary.md
+
+[derived_results]
+[PASS] delta_f = f_joint - f_GR_ref defined symbolically -- diagnostic definition
+[PASS] delta_g = -d(delta_f)/dr defined symbolically -- diagnostic definition
+[PASS] delta_curv = d^2(delta_f)/dr^2 defined symbolically -- diagnostic definition
+[PASS] redshift linearization delta_A/(2*A_ref) stated -- diagnostic definition
+
+[governance_assessments]
+[PASS] no magnitude prediction made -- discipline maintained
+[PASS] no observability claim made -- discipline maintained
+[OBLIGATION] recombination map -- missing
+[OBLIGATION] sigma and weights -- not derived
+
+[unresolved_obligations]
+[OBLIGATION] derive recombination map for kappa deviation to observable -- open

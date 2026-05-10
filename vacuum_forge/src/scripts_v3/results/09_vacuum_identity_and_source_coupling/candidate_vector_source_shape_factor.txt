@@ -24,7 +24,6 @@ Rules:
   compute source geometry only
   keep alpha_W/K_c symbolic
   do not insert Lense-Thirring normalization
-[WARN] source shape factor problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Uniform sphere mass
@@ -34,7 +33,6 @@ Uniform sphere mass:
   M = integral rho d^3x
 
 M = 4*pi*R**3*rho/3
-[PASS] uniform sphere mass computed: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 2: Rigid rotation current
@@ -46,7 +44,6 @@ j_y = Omega*rho*x
 j_z = 0
 
 div j = 0
-[PASS] rigid rotation current is divergence-free: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 3: Total current monopole vanishes
@@ -59,7 +56,6 @@ For a symmetric uniformly rotating sphere:
 
 Therefore the current monopole vanishes.
 The leading far-field vector effect is dipole/angular-momentum-like.
-[PASS] current monopole vanishes by symmetry: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 4: Angular momentum of uniform sphere
@@ -73,7 +69,6 @@ J_z = I_z Omega = 8*pi*Omega*R**5*rho/15
 So:
 
   J_z = (2/5) M R^2 Omega
-[PASS] uniform sphere angular momentum computed: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 5: Source shape factor status
@@ -91,7 +86,6 @@ the Green-function multipole expansion to J.
 
 But the exact numerical C_shape depends on the vector equation convention,
 component convention, and definition of W_phi.
-[WARN] source geometry reduces to angular momentum J: CONSTRAINED_BY_IDENTITY — numeric C_shape convention-dependent
 
 ========================================================================================================================
 Case 6: Far-field coefficient chain
@@ -108,7 +102,6 @@ Still missing:
   alpha_W/K_c
   beta_W
   convention-fixed C_shape
-[WARN] far-field chain assembled symbolically: CONSTRAINED_BY_IDENTITY — normalization still missing
 
 ========================================================================================================================
 Case 7: No GR matching
@@ -124,8 +117,6 @@ Allowed:
   derive beta_W from observable coupling
   or declare remaining coefficient phenomenological
 
-[WARN] GR matching forbidden: RISK — shape factor cleanup is not normalization derivation
-
 ========================================================================================================================
 Case 8: Classification
 ========================================================================================================================
@@ -139,7 +130,6 @@ Case 8: Classification
 | numeric C_shape | CONSTRAINED_BY_IDENTITY / convention-dependent |
 | alpha_W/K_c | MISSING |
 | beta_W | MISSING |
-[WARN] source shape classification produced: CONSTRAINED_BY_IDENTITY — source geometry cleaned up, normalization missing
 
 ========================================================================================================================
 Case 9: Next tests
@@ -161,7 +151,6 @@ Recommended next file:
 
 Reason:
   The vector line has reached a natural boundary: structure yes, normalization no.
-[WARN] next file selected: CONSTRAINED_BY_IDENTITY — vector sector ready for status summary
 
 ========================================================================================================================
 Final interpretation
@@ -188,3 +177,23 @@ Possible next artifact:
 
 Recommended next file:
   candidate_vector_sector_status_summary.md
+
+[derived_results]
+[PASS] uniform sphere mass M = 4*pi*rho*R^3/3 -- M = 4*pi*R**3*rho/3
+[PASS] rigid rotation current is divergence-free -- div j = 0 for rigid rotation
+[PASS] current monopole vanishes by symmetry -- integral j d^3x = 0 by odd-parity integrands over symmetric sphere
+[PASS] J_z = (2/5) M R^2 Omega computed -- J_z = 8*pi*Omega*R**5*rho/15
+[PASS] source geometry reduces to angular momentum J -- leading far-field term is dipole-like, sourced by J
+
+[governance_assessments]
+[FAIL] alpha_W/K_c -- missing; vector sector normalization not derived
+[FAIL] beta_W observable coupling -- missing; precession coefficient not derived
+[DEFER] GR matching forbidden -- C_shape, alpha_W/K_c, beta_W must not be set to match Lense-Thirring
+[DEFER] group 09 vector sector summary -- structure derived: source j_i, projection P_T, curl identity, shape J; normalization missing: alpha_W/K_c, beta_W, C_shape
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation — blocks vector sector normalization
+[OBLIGATION] derive beta_W observable coupling -- open proof obligation — blocks precession prediction
+[OBLIGATION] derive global boundary normalization -- open proof obligation — blocks far-field amplitude
+[OBLIGATION] derive vector source identity -- open proof obligation — source type constrained, full identity pending
+[OBLIGATION] derive kappa source from trace/volume exchange -- open proof obligation — kappa sector source still missing

@@ -1,6 +1,3 @@
-[SCRIPT_FAILED]
-exit_code=1
-
 
 ==============================================================================
 Candidate Log-Scale Exterior Modes — VacuumForge Test
@@ -207,12 +204,3 @@ Expected interpretation:
 [governance_assessments]
 [PASS] log-scale mode basis algebraically clean for kappa/s decomposition -- kappa=0 exactly encodes AB=1; basis is structurally sound
 [DEFER] trace-kernel exchange route is candidate, not licensed -- J_kappa=0 derivable from trace-kernel structure; physical source law open
-
-[stderr]
-Traceback (most recent call last):
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test.py", line 679, in <module>
-    main()
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test.py", line 599, in main
-    ns.prepare_archive()
-    ^^^^^^^^^^^^^^^^^^
-AttributeError: 'ScriptNamespace' object has no attribute 'prepare_archive'

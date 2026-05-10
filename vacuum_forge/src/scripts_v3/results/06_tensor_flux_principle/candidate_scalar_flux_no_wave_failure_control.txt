@@ -25,7 +25,9 @@ Question:
 
 Expected answer:
   No. Scalar A-flux is the monopole/scalar channel, not the TT wave channel.
-[PASS] scalar no-wave failure control posed
+
+[governance_assessments]
+[PASS] scalar no-wave failure control posed -- failure control setup complete
 
 ========================================================================================================================
 Case 1: Scalar spatial perturbation is not trace-free
@@ -37,7 +39,9 @@ Scalar spatial perturbation:
 Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
 
 trace = -6*psi
-[PASS] scalar perturbation has nonzero trace unless psi=0
+
+[derived_results]
+[PASS] scalar perturbation has nonzero trace unless psi=0 -- trace = -6*psi
 
 Interpretation:
   A TT gravitational wave must be trace-free.
@@ -51,7 +55,9 @@ Matrix([[-2*psi, 0, 0], [0, -2*psi, 0], [0, 0, -2*psi]])
 
 Trace-free projection:
 Matrix([[0, 0, 0], [0, 0, 0], [0, 0, 0]])
-[PASS] trace-free projection of pure scalar conformal mode vanishes
+
+[derived_results]
+[PASS] trace-free projection of pure scalar conformal mode vanishes -- H_tf = 0
 
 Interpretation:
   The scalar spatial mode has no TT content after removing the trace.
@@ -66,8 +72,10 @@ trace = 2*psi
 Tensor TT plus/cross mode:
 Matrix([[h_plus, h_cross, 0], [h_cross, -h_plus, 0], [0, 0, 0]])
 trace = 0
-[PASS] breathing mode is not trace-free unless trivial
-[PASS] TT plus/cross mode is trace-free
+
+[derived_results]
+[PASS] breathing mode is not trace-free unless trivial -- trace_b = 2*psi
+[PASS] TT plus/cross mode is trace-free -- trace_tt = 0
 
 Interpretation:
   A scalar wave would be a breathing-type mode, not the two GR TT modes.
@@ -77,7 +85,9 @@ Case 4: No scalar psi reproduces nontrivial TT modes
 ========================================================================================================================
 Solve H_scalar = H_TT for psi, h_plus, h_cross:
 solutions = [{h_cross: 0, h_plus: 0, psi: 0}]
-[PASS] only trivial scalar=TT solution exists
+
+[counterexamples]
+[PASS] only trivial scalar=TT solution exists -- solution = [{h_cross: 0, h_plus: 0, psi: 0}]
 
 Interpretation:
   A scalar conformal perturbation cannot generate nonzero plus/cross modes.
@@ -90,8 +100,10 @@ Matrix([[psi, 0, 0], [0, psi, 0], [0, 0, 0]])
 
 k^i h_ij = Matrix([[0, 0, 0]])
 trace = 2*psi
-[PASS] breathing mode can be transverse
-[PASS] but breathing mode is not traceless
+
+[derived_results]
+[PASS] breathing mode can be transverse -- k^i h_ij = Matrix([[0, 0, 0]])
+[PASS] but breathing mode is not traceless -- trace = 2*psi
 
 Interpretation:
   Even a transverse scalar breathing mode is not a GR TT wave.
@@ -105,10 +117,13 @@ Suppose scalar psi obeys a wave equation:
 
 psi = H*cos(k*z - omega*t)
 Box psi = H*(c**2*k**2 - omega**2)*cos(k*z - omega*t)/c**2
+Box psi / psi = k**2 - omega**2/c**2
 
 This gives scalar propagation when omega^2 = c^2 k^2.
 But it would be scalar radiation, not tensor TT radiation.
-[PASS] scalar wave equation is not a tensor wave equation
+
+[governance_assessments]
+[PASS] scalar wave equation is not a tensor wave equation -- scalar radiation distinct from TT tensor radiation
 
 ========================================================================================================================
 Case 7: Required TT tensor sector
@@ -122,7 +137,9 @@ trace = 0
 Independent polarizations:
   h_plus
   h_cross
-[PASS] TT sector has the two needed tensor polarizations
+
+[derived_results]
+[PASS] TT sector has the two needed tensor polarizations -- trace = 0
 
 ========================================================================================================================
 Case 8: Classification
@@ -136,7 +153,9 @@ Results:
 5. A scalar wave equation would produce scalar radiation, not GR tensor waves.
 6. Gravitational waves require an independent h_ij^TT sector.
 
-[PASS] scalar flux law cannot be the gravitational-wave sector
+
+[counterexamples]
+[PASS] scalar flux law cannot be the gravitational-wave sector -- all checks confirm scalar is not TT
 
 ========================================================================================================================
 Final interpretation

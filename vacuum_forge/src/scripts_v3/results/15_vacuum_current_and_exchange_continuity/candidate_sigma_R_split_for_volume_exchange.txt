@@ -24,7 +24,9 @@ Discipline:
   preserve ordinary closed-regime neutrality
   keep sign/orientation explicit
   keep gamma/AB recovery downstream
-[WARN] Sigma/R split problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] Sigma/R split problem posed -- requires distinct mechanism definitions
 
 ========================================================================================================================
 Case 1: Sigma/R split inventory
@@ -37,7 +39,7 @@ Term: nabla_mu J_V^mu = Sigma_V - R_V with source and relaxation independently m
 Role: core requirement for exchange continuity to become a law
 Allowed if: Sigma_V and R_V have distinct mechanisms and compatible signs
 Forbidden if: Sigma_V and R_V are named only to balance the equation
-[WARN] SR1: Sigma/R split target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: mechanism split, sign convention, operator definitions
 Consequence: decides whether continuity has a source side worth using
 
@@ -48,7 +50,7 @@ Term: Sigma_V[A,T] creates or destroys vacuum-volume configuration
 Role: source side of volume continuity
 Allowed if: source law is explicit and not chosen from recovery
 Forbidden if: Sigma_V becomes gamma_like / AB repair term
-[WARN] SR2: Sigma_V as source-driven creation/destruction: CANDIDATE
+Status: CANDIDATE
 Missing: complete Sigma_V law and coefficient origin
 Consequence: can feed volume exchange only if independently defined
 
@@ -59,7 +61,7 @@ Term: Sigma_V ~ chi rho a^mu nabla_mu A
 Role: best inherited source-driven candidate from Group 14
 Allowed if: frame/projection, chi-origin, and static safety are defined
 Forbidden if: coordinate velocity or recovery-fitted chi is used
-[WARN] SR3: acceleration-gradient Sigma_V: CANDIDATE
+Status: CANDIDATE
 Missing: frame/projection, chi-origin, static-source safety
 Consequence: remains theorem target until frame and chi are real
 
@@ -70,7 +72,7 @@ Term: Sigma_V from trace/pressure/volume conversion into zeta
 Role: possible conversion source
 Allowed if: projected, compact/boundary-neutral, and non-radiative
 Forbidden if: raw pressure/trace scalar source creates exterior charge
-[WARN] SR4: trace/volume conversion Sigma_V: RISK
+Status: RISK
 Missing: P_trace/P_boundary mechanism and no scalar charge theorem
 Consequence: dangerous because it can revive rejected trace scalar gravity
 
@@ -81,7 +83,7 @@ Term: Sigma_creation != 0 active/non-ordinary regime
 Role: nonconservative or active-regime source
 Allowed if: explicitly outside ordinary closed gravity
 Forbidden if: leaks into ordinary-sector recovery
-[WARN] SR5: active creation Sigma_V: CONSTRAINED
+Status: CONSTRAINED
 Missing: active-regime ontology and boundary conditions
 Consequence: not available for ordinary static/weak recovery branch
 
@@ -92,7 +94,7 @@ Term: R_V restores zeta or volume configuration toward local equilibrium
 Role: relaxation / reconfiguration side of continuity
 Allowed if: local equilibrium target is defined before use
 Forbidden if: R_V is damping pasted onto scalar waves
-[WARN] SR6: R_V as local equilibrium restoration: CANDIDATE
+Status: CANDIDATE
 Missing: equilibrium target and operator
 Consequence: can balance Sigma_V only if not energy destruction
 
@@ -103,7 +105,7 @@ Term: R_V ~ lambda_z (zeta - zeta_min)
 Role: minimal local relaxation candidate
 Allowed if: zeta_min and lambda_z have ontology/source origin
 Forbidden if: lambda_z is tuned to kill scalar exterior charge
-[WARN] SR7: R_V as zeta_min relaxation: RISK
+Status: RISK
 Missing: zeta_min, lambda_z, sign convention
 Consequence: may become another coefficient patch if not derived
 
@@ -114,7 +116,7 @@ Term: R_V linked to kappa residual / e_kappa exchange
 Role: connects Group 14 residual accounting to volume continuity
 Allowed if: kappa remains diagnostic/non-metric or separately neutral
 Forbidden if: kappa reintroduces duplicate scalar trace
-[WARN] SR8: R_V as kappa-linked relaxation: RISK
+Status: RISK
 Missing: post-Group-14 kappa status and no-overlap theorem
 Consequence: high double-counting risk unless kappa cleanup is explicit
 
@@ -125,7 +127,7 @@ Term: R_V redistributes local volume with zero exterior flux / zero charge
 Role: ordinary-sector safety mechanism candidate
 Allowed if: compact support or boundary theorem is explicit
 Forbidden if: R_V cancels exterior scalar charge by tuning
-[WARN] SR9: R_V as boundary-neutral reconfiguration: CANDIDATE
+Status: CANDIDATE
 Missing: boundary/no-flux theorem and flux direction
 Consequence: could protect exterior neutrality but cannot replace source law
 
@@ -136,7 +138,7 @@ Term: Sigma_V and R_V must not be two names for the same volume change
 Role: prevents fake continuity balance
 Allowed if: creation and relaxation mechanisms are distinct but coupled
 Forbidden if: same effect appears with opposite signs to force closure
-[WARN] SR10: Sigma/R double-counting guard: REQUIRED
+Status: REQUIRED
 Missing: source/relaxation accounting rule
 Consequence: without this, continuity is algebraic bookkeeping only
 
@@ -147,7 +149,7 @@ Term: positive Sigma_V and positive R_V must have fixed creation/restoration mea
 Role: required for physical interpretation
 Allowed if: sign follows from exchange ontology before recovery
 Forbidden if: signs chosen from desired recovery
-[FAIL] SR11: sign/orientation convention: UNRESOLVED
+Status: UNRESOLVED
 Missing: orientation convention
 Consequence: needed before flux direction, simulation, or recovery claims
 
@@ -158,7 +160,7 @@ Term: ordinary gravity has no net volume charge, no far-zone scalar flux, no M_e
 Role: safety guard for Sigma/R split
 Allowed if: Sigma/R balance is compact, neutral, and recombination-safe
 Forbidden if: ordinary static source creates exterior zeta/kappa charge
-[WARN] SR12: ordinary closed-regime constraint: REQUIRED
+Status: REQUIRED
 Missing: static neutrality and boundary theorem
 Consequence: kills Sigma/R split if it produces scalar gravity
 
@@ -169,7 +171,7 @@ Term: Sigma_V and R_V named without mechanisms or operators
 Role: rejected shortcut
 Allowed if: never as derivation
 Forbidden if: used to promote J_V
-[WARN] SR13: decorative Sigma/R rejection: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: prevents continuity from becoming painted conservation language
 
@@ -180,7 +182,7 @@ Term: after Sigma/R/J_V structure fixed, test gamma_like and AB
 Role: ordinary-regime recovery target
 Allowed if: checked only after split and flux law exist
 Forbidden if: used to choose Sigma/R signs or coefficients
-[WARN] SR14: recovery downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after exchange law
 Consequence: keeps recovery from becoming construction
 
@@ -191,7 +193,7 @@ Term: after Sigma/R split, test J_V flux direction law
 Role: best next bottleneck if split survives
 Allowed if: Sigma/R are sufficiently separated as source and relaxation targets
 Forbidden if: jumping to flux direction while Sigma/R are still decorative
-[PASS] SR15: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: volume flux direction law
 Consequence: next script should test what determines J_V direction
 
@@ -215,7 +217,9 @@ Case 2: Compact Sigma/R split ledger
 | SR13: decorative Sigma/R rejection | Sigma_V and R_V named without mechanisms or operators | REJECTED | prevents continuity from becoming painted conservation language |
 | SR14: recovery downstream | after Sigma/R/J_V structure fixed, test gamma_like and AB | RECOVERY_TARGET | keeps recovery from becoming construction |
 | SR15: recommended next move | after Sigma/R split, test J_V flux direction law | RECOMMENDED | next script should test what determines J_V direction |
-[WARN] compact Sigma/R ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact Sigma/R ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -236,7 +240,9 @@ Interpretation:
   R_V as local equilibrium restoration is the cleanest relaxation candidate.
   Trace-source and kappa-linked branches are risky because they can revive double-counting.
   Flux direction is still missing and should be tested next if this split survives.
-[WARN] Sigma/R status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] Sigma/R status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Split decision tree
@@ -260,7 +266,9 @@ Decision tree:
 
 6. If Sigma/R remain decorative:
    exchange continuity branch fails or defers.
-[PASS] Sigma/R split decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] Sigma/R split decision tree stated -- decision tree recorded
 
 ========================================================================================================================
 Case 4b: Zero-current local balance
@@ -273,7 +281,9 @@ If J_V = 0 locally, then:
 
 Interpretation:
   the zero-current branch forces pointwise source/relaxation balance.
-[PASS] zero-current Sigma/R balance: DERIVED_REDUCED — Sigma_V = R_V
+
+[derived_results]
+[PASS] zero-current Sigma/R balance -- Sigma_V = R_V
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -290,7 +300,9 @@ Consequence:
 
 Bad failure:
   define Sigma_V and R_V as whatever makes nabla_mu J_V^mu balance.
-[WARN] Sigma/R split good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] Sigma/R split good failure stated -- deferred pending independent Sigma/R operators
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -305,7 +317,9 @@ Sigma/R split fails if:
 6. signs are chosen from desired recovery
 7. ordinary closed regime gets net volume charge
 8. J_V is promoted before flux direction exists
-[WARN] Sigma/R split failure controls stated: RISK
+
+[governance_assessments]
+[INFO] Sigma/R split failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -327,7 +341,9 @@ Recommended next script:
 
 Reason:
   If Sigma/R are separated as source and relaxation roles, the next missing object is the flux direction of J_V.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_volume_flux_direction_law.py
 
 ========================================================================================================================
 Final interpretation

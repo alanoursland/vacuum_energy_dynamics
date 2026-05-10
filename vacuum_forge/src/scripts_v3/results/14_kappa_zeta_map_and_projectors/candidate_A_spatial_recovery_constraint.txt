@@ -25,7 +25,6 @@ Discipline:
   do not use zeta/kappa as patch without count-once rule
   do not promote kappa_areal to physical scalar
   keep recovery targets separate from construction rules
-[WARN] A_spatial recovery problem posed: REQUIRED
 
 ========================================================================================================================
 Case 1: A_spatial recovery branch inventory
@@ -38,7 +37,7 @@ Branch: lapse A and spatial scalar response arise together from one parent ident
 Role: best candidate mechanism for avoiding GR smuggling
 Allowed if: parent identity derives both A and its spatial companion
 Forbidden if: spatial response is appended after A-sector solution
-[WARN] AS1: A_spatial derived with A from parent scalar constraint: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: A-sector parent identity
 Consequence: would make A_spatial a derived companion, not a GR import
 
@@ -49,7 +48,7 @@ Branch: A_spatial is specified only as required recovery behavior
 Role: temporary safety boundary for acceptable equations
 Allowed if: explicitly labeled recovery constraint / not field equation
 Forbidden if: treated as derived geometry
-[WARN] AS2: A_spatial as recovery constraint only: SAFE_IF
+Status: SAFE_IF
 Missing: derivation mechanism
 Consequence: recombination remains bookkeeping until parent identity is found
 
@@ -60,7 +59,7 @@ Branch: set spatial metric response equal to GR/Schwarzschild form
 Role: none
 Allowed if: never as derivation in current search
 Forbidden if: used as field-equation construction
-[WARN] AS3: copy GR spatial metric: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: would collapse search into GR import
 
@@ -71,7 +70,7 @@ Branch: set B = 1/A as construction rule
 Role: shortcut to exterior Schwarzschild-like form
 Allowed if: used only as exterior recovery diagnostic after derivation
 Forbidden if: imposed as parent metric law
-[WARN] AS4: impose B=1/A by decree: REJECTED
+Status: REJECTED
 Missing: parent derivation of exterior recovery
 Consequence: AB=1 remains check, not construction
 
@@ -82,7 +81,7 @@ Branch: choose coefficients so weak-field spatial curvature matches gamma=1
 Role: observational recovery target
 Allowed if: gamma=1 emerges from action/stiffness/identity
 Forbidden if: coefficient is tuned by hand
-[WARN] AS5: PPN gamma=1 as coefficient tuning: REJECTED
+Status: REJECTED
 Missing: coefficient/action principle
 Consequence: gamma=1 can constrain candidates but cannot be fitted by repair knob
 
@@ -93,7 +92,7 @@ Branch: zeta volume configuration provides the spatial scalar response associate
 Role: possible mechanism if A-sector alone lacks spatial companion
 Allowed if: zeta does not also appear as independent residual and preserves exterior neutrality
 Forbidden if: zeta patches A_spatial while also adding residual trace
-[WARN] AS6: zeta supplies missing A_spatial companion: RISK
+Status: RISK
 Missing: identity linking zeta to A_spatial trace
 Consequence: may force zeta to be A_spatial bookkeeping rather than independent residual
 
@@ -104,7 +103,7 @@ Branch: A_spatial handles mass-sector trace; zeta/kappa residual remains boundar
 Role: preserves volume residual without altering exterior mass
 Allowed if: residual has zero charge/flux and no overlap with A_spatial
 Forbidden if: residual changes M_ext or duplicates mass-sector trace
-[WARN] AS7: boundary-neutral residual after A_spatial: CANDIDATE
+Status: CANDIDATE
 Missing: residual projector and boundary mass theorem
 Consequence: supports prior count-once recombination rule
 
@@ -115,7 +114,7 @@ Branch: A_spatial fully determines scalar trace in g_ij
 Role: kills independent zeta/kappa metric trace
 Allowed if: parent identity derives full scalar spatial response from A-sector
 Forbidden if: zeta/kappa also inserted as trace
-[WARN] AS8: A_spatial consumes all scalar trace: SAFE_IF
+Status: SAFE_IF
 Missing: A_spatial derivation
 Consequence: kappa/zeta become diagnostic, residual energy bookkeeping, or non-metric variables
 
@@ -126,7 +125,7 @@ Branch: use kappa_areal=1/2 ln(AB) to justify A_spatial
 Role: diagnostic only
 Allowed if: used only to check A/B mismatch after recovery
 Forbidden if: used as physical scalar or spatial-response derivation
-[WARN] AS9: areal kappa patch: CONSTRAINED
+Status: CONSTRAINED
 Missing: physical kappa map, if any
 Consequence: areal kappa remains fenced; cannot derive A_spatial
 
@@ -137,7 +136,7 @@ Branch: spatial response follows only from coordinate/gauge choice
 Role: gauge bookkeeping
 Allowed if: clearly separated from physical recovery
 Forbidden if: physical curvature is claimed from gauge alone
-[WARN] AS10: coordinate gauge-only derivation: REJECTED
+Status: REJECTED
 Missing: gauge-invariant observable statement
 Consequence: gauge can organize variables but not supply physical field equation
 
@@ -148,7 +147,7 @@ Branch: Schwarzschild-like exterior, AB diagnostic, weak-field gamma=1 behavior
 Role: tests acceptable parent equations
 Allowed if: phrased as recovery constraints
 Forbidden if: used as construction rules
-[WARN] AS11: recovery targets: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: parent derivations
 Consequence: keeps observational safety without GR smuggling
 
@@ -159,7 +158,7 @@ Branch: A_spatial is recovery theorem target; derive with A or keep bookkeeping
 Role: best current convention for field-equation search
 Allowed if: used to test future parent equations
 Forbidden if: hardened into metric law by convention
-[PASS] AS12: recommended framing: RECOMMENDED
+Status: RECOMMENDED
 Missing: A-sector parent identity
 Consequence: pushes next search toward parent scalar/spatial identity if local branches fail
 
@@ -180,7 +179,6 @@ Case 2: Compact A_spatial recovery ledger
 | AS10: coordinate gauge-only derivation | spatial response follows only from coordinate/gauge choice | REJECTED | gauge can organize variables but not supply physical field equation |
 | AS11: recovery targets | Schwarzschild-like exterior, AB diagnostic, weak-field gamma=1 behavior | RECOVERY_TARGET | keeps observational safety without GR smuggling |
 | AS12: recommended framing | A_spatial is recovery theorem target; derive with A or keep bookkeeping | RECOMMENDED | pushes next search toward parent scalar/spatial identity if local branches fail |
-[WARN] compact A_spatial recovery ledger produced: STRUCTURAL
 
 ========================================================================================================================
 Case 3: Status counts
@@ -199,7 +197,6 @@ Interpretation:
   The best branch is joint derivation of A and A_spatial from a parent scalar/spatial identity.
   GR metric copying, B=1/A by decree, and gamma=1 tuning are rejected.
   Zeta can only help if it does not become both A_spatial patch and independent residual.
-[WARN] A_spatial recovery status count produced: STRUCTURAL
 
 ========================================================================================================================
 Case 4: Recovery targets, not construction
@@ -220,7 +217,6 @@ Unsafe phrasing:
 Rule:
 
   Recovery targets constrain the search; they do not construct the equation.
-[WARN] A_spatial recovery language stated: CONSTRAINED
 
 ========================================================================================================================
 Case 5: Count-once constraint carried forward
@@ -238,7 +234,6 @@ A_spatial script focuses on:
   What is Trace_A_mass required to be?
   Can it be derived with A rather than imported?
   What residual trace, if any, remains?
-[WARN] count-once A_spatial theorem target stated: THEOREM_TARGET
 
 ========================================================================================================================
 Case 6: Good failure modes
@@ -257,7 +252,6 @@ This means:
 Bad failure:
 
   copy GR spatial response and move on.
-[WARN] A_spatial good failure stated: SAFE_IF
 
 ========================================================================================================================
 Case 7: Failure controls
@@ -273,7 +267,6 @@ A_spatial recovery fails if:
 7. spatial response is derived from coordinate gauge only
 8. A_spatial changes M_ext independently of A_flux
 9. recovery bookkeeping is called parent identity
-[WARN] A_spatial failure controls stated: RISK
 
 ========================================================================================================================
 Case 8: Next tests
@@ -295,7 +288,6 @@ Recommended next script:
 
 Reason:
   A_spatial appears to require joint derivation with A from a parent scalar/spatial identity. That is now the field-equation bottleneck.
-[WARN] next test selected: STRUCTURAL
 
 ========================================================================================================================
 Final interpretation
@@ -321,3 +313,11 @@ Possible next artifact:
 
 Possible next script:
   candidate_A_sector_parent_identity_inventory.py
+
+[governance_assessments]
+[PASS] A_spatial recovery branches classified -- 12 branches inventoried
+[DEFER] A_spatial as derived companion -- theorem target, not yet derived
+[FAIL] AS3/AS4/AS5/AS10 rejected -- GR smuggling, B=1/A decree, gamma tuning, gauge-only rejected
+
+[unresolved_obligations]
+[OBLIGATION] derive A and A_spatial together from parent identity -- open proof obligation recorded

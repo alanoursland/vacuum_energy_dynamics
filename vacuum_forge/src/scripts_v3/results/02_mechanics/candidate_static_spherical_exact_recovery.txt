@@ -2,7 +2,6 @@
 ============================================================================================================
 Candidate Static Spherical Exact Recovery
 ============================================================================================================
-[INFO] Archive invalidated due to source change.
 [INFO] Archive dependency check:
   - kappa_leak_mixed_source: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
 

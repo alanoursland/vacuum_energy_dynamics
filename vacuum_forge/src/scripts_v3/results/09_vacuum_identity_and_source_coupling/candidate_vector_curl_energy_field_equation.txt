@@ -25,7 +25,6 @@ Under div W = 0:
   -Delta W = source
 
 Coefficient remains symbolic.
-[WARN] curl-energy field-equation problem posed: CONSTRAINED_BY_IDENTITY
 
 ========================================================================================================================
 Case 1: Vector identity curl curl W
@@ -36,7 +35,6 @@ Identity:
 
 Check curlcurl - [grad div W - Delta W] =
 Matrix([[0], [0], [0]])
-[PASS] curl-curl identity verified: DERIVED_REDUCED
 
 ========================================================================================================================
 Case 2: Transverse reduction
@@ -55,7 +53,6 @@ This recovers a Poisson-like vector equation from curl-energy:
 
 Interpretation:
   curl-energy naturally favors transverse/vector content.
-[WARN] transverse reduction gives vector Poisson form: CONSTRAINED_BY_IDENTITY — requires gauge condition div W=0
 
 ========================================================================================================================
 Case 3: Variational field-equation structure
@@ -80,7 +77,6 @@ Under div W = 0:
 Coefficient target:
 
   alpha_W / (2 K_c)
-[WARN] curl-energy variation gives source equation: CONSTRAINED_BY_IDENTITY — coefficient remains symbolic
 
 ========================================================================================================================
 Case 4: Pure-gradient null mode
@@ -92,7 +88,6 @@ Matrix([[0], [0], [0]])
 
 Thus |curl W|^2 does not penalize pure-gradient pieces.
 This is gauge-like behavior and requires gauge fixing or boundary conditions.
-[WARN] curl-energy has pure-gradient null mode: CONSTRAINED_BY_IDENTITY — gauge fixing required
 
 ========================================================================================================================
 Case 5: Current transversality condition
@@ -110,7 +105,6 @@ mass continuity:
 
 For time-dependent sources, longitudinal/current-continuity pieces
 must be handled by scalar constraint or gauge structure.
-[WARN] stationary transverse current compatibility stated: CONSTRAINED_BY_IDENTITY — time-dependent split still missing
 
 ========================================================================================================================
 Case 6: Coefficient status
@@ -126,7 +120,6 @@ Current status:
   equation structure: derived from candidate curl-energy
   coefficient: missing
   GR normalization: not inserted
-[FAIL] coefficient ratio identified but not derived: MISSING — normalization still absent
 
 ========================================================================================================================
 Case 7: Classification
@@ -140,7 +133,6 @@ Case 7: Classification
 | coefficient alpha_W/(2K_c) | MISSING |
 | full time-dependent current split | MISSING |
 | GR frame-dragging normalization | HAND_ASSIGNED if inserted now |
-[WARN] curl-energy classification produced: CONSTRAINED_BY_IDENTITY — structure derived, coefficient missing
 
 ========================================================================================================================
 Case 8: Next tests
@@ -159,7 +151,6 @@ Possible next scripts:
 Recommended next script:
 
   candidate_vector_transverse_current_projection.py
-[WARN] next test selected: CONSTRAINED_BY_IDENTITY — curl-energy needs transverse current projection
 
 ========================================================================================================================
 Final interpretation
@@ -183,3 +174,16 @@ Possible next artifact:
 
 Possible next script:
   candidate_vector_transverse_current_projection.py
+
+[derived_results]
+[PASS] curl curl W = grad(div W) - Delta W identity -- curlcurl - [grad div W - Delta W] = 0 verified symbolically
+[PASS] curl(grad phi) = 0 pure-gradient null mode -- pure-gradient pieces have zero curl; gauge fixing required
+[PASS] curl-energy field equation structure -- curl curl W = -alpha_W j/(2K_c) from variational argument
+
+[governance_assessments]
+[FAIL] coefficient alpha_W/(2K_c) -- not derived; equation structure correct but normalization missing
+[DEFER] GR matching forbidden -- Lense-Thirring normalization must not be inserted
+
+[unresolved_obligations]
+[OBLIGATION] derive vector coefficient alpha_W / K_c -- open proof obligation recorded
+[OBLIGATION] derive global boundary normalization -- open proof obligation recorded

@@ -24,7 +24,9 @@ Discipline:
   preserve boundary neutrality
   expose consequences for kappa
   reject zeta as recovery patch
-[WARN] zeta companion branch problem posed: REQUIRED
+
+[governance_assessments]
+[DEFER] zeta companion branch problem posed -- branch open pending F_zeta derivation and residual kill theorem
 
 ========================================================================================================================
 Case 1: Zeta companion branch inventory
@@ -37,7 +39,7 @@ Branch: B_s = F_zeta[A,zeta] fixes A_spatial/q-origin before recovery checks
 Role: core theorem target for zeta companion branch
 Allowed if: F_zeta is derived from volume-exchange law
 Forbidden if: F_zeta coefficient is chosen from gamma_like or AB
-[WARN] ZC1: companion branch target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: explicit F_zeta / V derivation
 Consequence: decides whether zeta companion branch solves A_spatial
 
@@ -48,7 +50,7 @@ Branch: B_s = lambda_z zeta + G[A]
 Role: minimal test map from volume variable to spatial companion
 Allowed if: lambda_z and G are derived before recovery checks
 Forbidden if: lambda_z is tuned to gamma_like
-[WARN] ZC2: algebraic companion map: RISK
+Status: RISK
 Missing: lambda_z origin and gauge status
 Consequence: can easily become coefficient patch unless derived
 
@@ -59,7 +61,7 @@ Branch: Delta B_s = r_z Delta zeta + H[A,S_A]
 Role: differential version of zeta companion relation
 Allowed if: r_z follows from exchange operator
 Forbidden if: r_z chosen to match q
-[WARN] ZC3: derivative companion map: CANDIDATE
+Status: CANDIDATE
 Missing: exchange operator and r_z origin
 Consequence: may connect volume dynamics to A_spatial without direct algebraic identification
 
@@ -70,7 +72,7 @@ Branch: Sigma_V[A,T] drives zeta, and zeta drives B_s
 Role: postulate-facing branch tied to source-driven volume creation
 Allowed if: Sigma_V is expressed before recovery checks
 Forbidden if: source term is added to repair A_spatial
-[WARN] ZC4: source-driven companion map: CANDIDATE
+Status: CANDIDATE
 Missing: source-driven volume creation law
 Consequence: connects to mass/source coupling but remains underdefined
 
@@ -81,7 +83,7 @@ Branch: zeta has no independent residual metric trace after becoming B_s compani
 Role: mandatory no-double-counting consequence
 Allowed if: residual zeta is killed, non-metric, or pure bookkeeping
 Forbidden if: zeta remains separate scalar metric residual
-[WARN] ZC5: residual zeta trace killed: REQUIRED
+Status: REQUIRED
 Missing: residual kill/non-metric theorem
 Consequence: collapses or revises previous residual-zeta convention
 
@@ -92,7 +94,7 @@ Branch: zeta remains vacuum configuration variable but metric insertion occurs o
 Role: possible safe version of companion branch
 Allowed if: bookkeeping-to-metric map is explicit
 Forbidden if: zeta also appears as metric trace
-[WARN] ZC6: non-metric zeta bookkeeping: CANDIDATE
+Status: CANDIDATE
 Missing: bookkeeping-to-metric map
 Consequence: preserves ontology while avoiding exterior scalar charge
 
@@ -103,7 +105,7 @@ Branch: O[B_s,zeta_residual/kappa_residual] = 0 or residual killed
 Role: protects count-once recombination
 Allowed if: operator exists or residual is killed/non-metric
 Forbidden if: overlap is asserted without consequence
-[WARN] ZC7: no-overlap requirement: REQUIRED
+Status: REQUIRED
 Missing: overlap operator / residual status theorem
 Consequence: branch fails if B_s and residual trace overlap
 
@@ -114,7 +116,7 @@ Branch: companion contribution absorbed into B_s; no independent zeta exterior c
 Role: protects exterior no-scalar-charge result
 Allowed if: zeta charge is absent or not independent of A_spatial
 Forbidden if: zeta companion creates separate exterior scalar charge
-[WARN] ZC8: boundary neutrality requirement: REQUIRED
+Status: REQUIRED
 Missing: boundary neutrality theorem
 Consequence: prevents zeta companion from becoming scalar gravity
 
@@ -125,7 +127,7 @@ Branch: kappa must remain diagnostic/non-metric or separately neutral after zeta
 Role: prevents kappa from restoring killed residual trace
 Allowed if: kappa does not become independent overlapping scalar trace
 Forbidden if: kappa becomes residual substitute for killed zeta trace
-[WARN] ZC9: kappa consequence: CONSTRAINED
+Status: CONSTRAINED
 Missing: post-zeta kappa status
 Consequence: requires later kappa cleanup script
 
@@ -136,7 +138,7 @@ Branch: after F_zeta/q-origin fixed, test gamma_like and AB
 Role: ordinary-regime recovery targets
 Allowed if: checked after companion map is derived
 Forbidden if: used to choose zeta map coefficients
-[WARN] ZC10: recovery checks downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after companion map
 Consequence: tests but does not define the companion branch
 
@@ -147,7 +149,7 @@ Branch: zeta selected as companion only because it can fit recovery targets
 Role: rejected shortcut
 Allowed if: used only as no-go diagnosis
 Forbidden if: accepted as derivation
-[WARN] ZC11: zeta companion patch failure: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: kills companion branch if no exchange law derives F_zeta
 
@@ -158,7 +160,7 @@ Branch: test minimal F_zeta maps and residual-kill theorem together
 Role: best current concrete test
 Allowed if: companion and residual-kill requirements are tested as one package
 Forbidden if: testing F_zeta while leaving residual trace ambiguous
-[PASS] ZC12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: minimal F_zeta map inventory
 Consequence: next script should inventory F_zeta candidate maps and branch-kill criteria
 
@@ -179,7 +181,9 @@ Case 2: Compact zeta-companion ledger
 | ZC10: recovery checks downstream | after F_zeta/q-origin fixed, test gamma_like and AB | RECOVERY_TARGET | tests but does not define the companion branch |
 | ZC11: zeta companion patch failure | zeta selected as companion only because it can fit recovery targets | REJECTED | kills companion branch if no exchange law derives F_zeta |
 | ZC12: recommended next move | test minimal F_zeta maps and residual-kill theorem together | RECOMMENDED | next script should inventory F_zeta candidate maps and branch-kill criteria |
-[WARN] compact zeta-companion ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact zeta-companion ledger produced -- ledger complete
 
 ========================================================================================================================
 Case 3: Status counts
@@ -199,7 +203,9 @@ Interpretation:
   Algebraic maps are risky because coefficients can become recovery patches.
   Differential/source-driven maps are candidates but need explicit exchange law.
   Kappa cleanup becomes mandatory if zeta residual trace is killed.
-[WARN] zeta-companion status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] zeta-companion status count produced -- counts reviewed
 
 ========================================================================================================================
 Case 4: Companion branch requirements
@@ -215,7 +221,9 @@ A valid zeta companion branch must provide:
 7. recovery checks downstream
 
 Missing any of these leaves zeta as a patch, not a companion.
-[WARN] zeta companion requirements stated: REQUIRED
+
+[unresolved_obligations]
+[OBLIGATION] derive F_zeta companion map and residual-kill theorem -- open proof obligation recorded
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -233,7 +241,9 @@ Consequence:
 
 Bad failure:
   use zeta as companion but quietly keep residual trace.
-[WARN] zeta companion good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] zeta companion good failure stated -- branch deferred pending F_zeta derivation
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -248,7 +258,9 @@ Zeta companion branch fails if:
 6. no-overlap theorem is absent
 7. kappa restores killed residual trace
 8. source-driven volume creation remains unnamed
-[WARN] zeta companion failure controls stated: RISK
+
+[governance_assessments]
+[INFO] zeta companion failure controls stated -- eight failure controls recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -270,7 +282,9 @@ Recommended next script:
 
 Reason:
   The companion branch now depends on deriving F_zeta. Inventory map forms before kappa cleanup.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_F_zeta_companion_map_inventory.py
 
 ========================================================================================================================
 Final interpretation

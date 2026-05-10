@@ -1,6 +1,3 @@
-[SCRIPT_FAILED]
-exit_code=1
-
 
 ========================================================================================
 Candidate Log-Scale Exterior Modes v2 — Derive, Record, Validate
@@ -229,12 +226,3 @@ a rule is supplied.
 
 [unresolved_obligations]
 [OBLIGATION] derive covariant source law or energy functional suppressing kappa -- open: all four cases confirm the research target is not yet closed
-
-[stderr]
-Traceback (most recent call last):
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test_v2.py", line 760, in <module>
-    main()
-  File "E:\Projects\vacuum_energy_dynamics\vacuum_forge\src\scripts_v3\01_foundations\candidate_log_scale_modes_test_v2.py", line 668, in main
-    ns.prepare_archive()
-    ^^^^^^^^^^^^^^^^^^
-AttributeError: 'ScriptNamespace' object has no attribute 'prepare_archive'

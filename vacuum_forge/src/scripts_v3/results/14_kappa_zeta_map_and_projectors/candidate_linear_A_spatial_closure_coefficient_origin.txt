@@ -23,7 +23,9 @@ Discipline:
   do not hide q inside source normalization
   do not let zeta fix q while remaining independent residual
   if q has no local origin, defer to parent identity
-[WARN] linear coefficient-origin problem posed: REQUIRED
+
+[governance_assessments]
+[WARN] linear coefficient-origin problem posed -- open risk
 
 ========================================================================================================================
 Case 1: Coefficient-origin inventory
@@ -36,7 +38,7 @@ Origin: q = -((alpha2 + alpha3)/alpha1)
 Role: controls Delta A_spatial = q S_A
 Allowed if: q is derived before recovery checks
 Forbidden if: q is selected to force gamma_like=1
-[WARN] CO1: linear closure ratio: STRUCTURAL
+Status: STRUCTURAL
 Missing: origin of alpha ratios
 Consequence: the linear branch lives or dies on q
 
@@ -47,7 +49,7 @@ Origin: choose q to match gamma_like=1
 Role: repair knob
 Allowed if: never as derivation
 Forbidden if: used to save the linear closure branch
-[WARN] CO2: free-fit q: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: turns differential closure into observational tuning
 
@@ -58,7 +60,7 @@ Origin: alpha ratios follow from variation of a stiffness/action functional
 Role: candidate legitimate coefficient origin
 Allowed if: functional is specified before fitting recovery targets
 Forbidden if: functional weights are chosen to reproduce gamma_like=1
-[WARN] CO3: action/stiffness origin: CANDIDATE
+Status: CANDIDATE
 Missing: action/stiffness functional
 Consequence: may defer linear branch to parent_action_stiffness_identity
 
@@ -69,7 +71,7 @@ Origin: alpha ratios fixed by div J_A = 0 or source-balance closure
 Role: candidate constraint/conservation origin
 Allowed if: current J_A and balance law are explicit
 Forbidden if: conservation language is decorative
-[WARN] CO4: conservation-current origin: CANDIDATE
+Status: CANDIDATE
 Missing: J_A and balance operator
 Consequence: may move branch toward conservation/Bianchi-like identity
 
@@ -80,7 +82,7 @@ Origin: alpha3 fixed by same source routing that fixes Delta A = S_A
 Role: possible internal normalization route
 Allowed if: source routing identity fixes alpha3 relative to alpha1/alpha2
 Forbidden if: source normalization is adjusted after checking gamma
-[WARN] CO5: source normalization origin: CANDIDATE
+Status: CANDIDATE
 Missing: source routing identity
 Consequence: could keep branch local if source normalization derives q
 
@@ -91,7 +93,7 @@ Origin: alpha1 fixed by normalization of L1 and boundary-admissible elliptic pro
 Role: operator normalization candidate
 Allowed if: normalization is mathematical/variational, not recovery-tuned
 Forbidden if: boundary data impose Schwarzschild or AB=1
-[WARN] CO6: elliptic operator normalization: SAFE_IF
+Status: SAFE_IF
 Missing: operator normalization rule and boundary class
 Consequence: helps only if alpha2/alpha3 are also derived
 
@@ -102,7 +104,7 @@ Origin: q fixed by volume/curvature exchange relation involving zeta
 Role: ontology-native but risky coefficient origin
 Allowed if: zeta becomes companion or residual by no-overlap identity
 Forbidden if: zeta supplies q while remaining independent residual trace
-[WARN] CO7: zeta participation origin: RISK
+Status: RISK
 Missing: zeta-A_spatial no-overlap identity
 Consequence: may leave A-local branch and become volume-exchange branch
 
@@ -113,7 +115,7 @@ Origin: linearized solution yields gamma_like=1
 Role: observational recovery test
 Allowed if: checked only after q is derived
 Forbidden if: used to choose q
-[WARN] CO8: gamma-like recovery check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: linearized recovery calculation
 Consequence: tests q; does not determine q
 
@@ -124,7 +126,7 @@ Origin: exterior solution yields kappa_areal -> 0 / AB -> 1
 Role: reduced exterior recovery test
 Allowed if: emerges from solved closure
 Forbidden if: used as boundary or coefficient condition
-[WARN] CO9: AB exterior diagnostic check: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: exterior solution with derived q
 Consequence: keeps AB diagnostic-only
 
@@ -135,7 +137,7 @@ Origin: q must not force overlapping A_spatial and zeta/kappa residual trace
 Role: protects count-once theorem
 Allowed if: overlap operator or residual-kill theorem is present
 Forbidden if: metric trace is counted twice
-[WARN] CO10: no-overlap compatibility: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: overlap operator O
 Consequence: derived q still fails if trace accounting fails
 
@@ -146,7 +148,7 @@ Origin: no pre-recovery principle fixes q
 Role: good failure / branch defer
 Allowed if: used to defer to action/stiffness or conservation parent identity
 Forbidden if: q is then chosen by hand anyway
-[WARN] CO11: coefficient-origin failure: DEFER
+Status: DEFER
 Missing: coefficient principle
 Consequence: linear differential branch is not killed absolutely, but cannot stand locally
 
@@ -157,7 +159,7 @@ Origin: defer q-origin to parent action/stiffness unless source/conservation ori
 Role: best current search move
 Allowed if: local coefficient tuning is rejected
 Forbidden if: pretending q is derived locally
-[PASS] CO12: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: parent coefficient-origin script
 Consequence: next script should test action/stiffness coefficient origin or conservation current origin
 
@@ -178,7 +180,9 @@ Case 2: Compact coefficient-origin ledger
 | CO10: no-overlap compatibility | q must not force overlapping A_spatial and zeta/kappa residual trace | THEOREM_TARGET | derived q still fails if trace accounting fails |
 | CO11: coefficient-origin failure | no pre-recovery principle fixes q | DEFER | linear differential branch is not killed absolutely, but cannot stand locally |
 | CO12: recommended next move | defer q-origin to parent action/stiffness unless source/conservation origin can be made explicit | RECOMMENDED | next script should test action/stiffness coefficient origin or conservation current origin |
-[WARN] compact coefficient-origin ledger produced: STRUCTURAL
+
+[governance_assessments]
+[WARN] compact coefficient-origin ledger produced -- structural inventory
 
 ========================================================================================================================
 Case 3: Status counts
@@ -198,7 +202,9 @@ Interpretation:
   Legitimate q origins are action/stiffness, conservation-current, source-routing, or volume-exchange identities.
   If none is explicit, the linear closure branch must defer to a parent coefficient-origin identity.
   This is a useful narrowing result, not a failure of the whole theory.
-[WARN] coefficient-origin status count produced: STRUCTURAL
+
+[governance_assessments]
+[WARN] coefficient-origin status count produced -- structural
 
 ========================================================================================================================
 Case 4: Linear ratio statement
@@ -224,7 +230,9 @@ Allowed:
 
 Forbidden:
   choose q from gamma_like=1, AB=1, or Schwarzschild matching.
-[WARN] linear q statement produced: REQUIRED
+
+[governance_assessments]
+[WARN] linear q statement produced -- coefficient origin missing
 
 ========================================================================================================================
 Case 5: Good failure / defer outcome
@@ -243,7 +251,9 @@ Consequence:
 
 Bad failure:
   choose q by matching gamma_like=1 and call it closure.
-[WARN] linear coefficient-origin good failure stated: DEFER
+
+[unresolved_obligations]
+[OBLIGATION] linear coefficient q origin is missing -- open proof obligation recorded
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -258,7 +268,9 @@ Coefficient-origin test fails if:
 6. q is attributed to conservation without a current
 7. zeta fixes q while also remaining independent residual
 8. no-overlap theorem is ignored after q is chosen
-[WARN] coefficient-origin failure controls stated: RISK
+
+[governance_assessments]
+[WARN] coefficient-origin failure controls stated -- open risk
 
 ========================================================================================================================
 Case 7: Next tests
@@ -280,7 +292,9 @@ Recommended next script:
 
 Reason:
   The local branch reduced to coefficient origin. The cleanest next source of coefficient ratios is an action/stiffness identity.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[WARN] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

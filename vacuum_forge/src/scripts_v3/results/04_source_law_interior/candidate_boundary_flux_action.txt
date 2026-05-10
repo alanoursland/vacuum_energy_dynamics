@@ -14,17 +14,21 @@ Euler-Lagrange = 2*K_A*r*(-r*Derivative(A(r), (r, 2)) - 2*Derivative(A(r), r)) =
 Equivalent:
   d/dr(r^2 A') = 0
   source-free areal flux is conserved
-[PASS] bulk action gives conserved areal flux
+
+[derived_results]
+[PASS] bulk action gives conserved areal flux -- EL residual = 0
 
 ============================================================================================================
 Case 1: Boundary variation term
 ============================================================================================================
 Variation of bulk action gives boundary term:
 
-  [2 K_A r² A' deltaA] at boundary
+  [2 K_A r^2 A' deltaA] at boundary
 
 At r=R: 2*A_prime_R*K_A*R**2*deltaA_R
-[PASS] bulk variation exposes areal flux as boundary momentum
+
+[derived_results]
+[PASS] bulk variation exposes areal flux as boundary momentum -- boundary term = 2 K_A R^2 A'(R) deltaA(R)
 
 ============================================================================================================
 Case 2: Source boundary coupling
@@ -33,11 +37,13 @@ Boundary source coupling:
   E_boundary = -q A(R)
 
 Boundary stationarity:
-  2 K_A R² A'(R) - q = 0
+  2 K_A R^2 A'(R) - q = 0
 
 A'(R) = q/(2*K_A*R**2)
-F_A(R)=4πR²A'(R) = 2*pi*q/K_A
-[PASS] boundary source fixes areal flux
+F_A(R)=4piR^2*A'(R) = 2*pi*q/K_A
+
+[derived_results]
+[PASS] boundary source fixes areal flux -- F_A(R) = 2*pi*q/K_A
 
 ============================================================================================================
 Case 3: Mass normalization of boundary charge
@@ -46,7 +52,12 @@ q_M = 4*G*K_A*M/c**2
 A'(R) = 2*G*M/(R**2*c**2)
 F_A = 8*pi*G*M/c**2
 target = 8*pi*G*M/c**2
-[PASS] mass-normalized boundary charge gives desired flux
+
+[derived_results]
+[PASS] mass-normalized boundary charge gives desired flux -- F_A - target = 0
+
+[unresolved_obligations]
+[OBLIGATION] derive K_A from vacuum microphysics -- q_M = 4 K_A G M/c^2 fixes normalization only after Newtonian matching; K_A origin missing
 
 ============================================================================================================
 Case 4: Exterior solution from boundary condition
@@ -55,7 +66,9 @@ A_general = C0 + C1/r
 F_A = -4*pi*C1
 C1 from flux = -2*G*M/c**2
 A with asymptotic flatness = -2*G*M/(c**2*r) + 1
-[PASS] boundary flux gives Schwarzschild A coefficient
+
+[derived_results]
+[PASS] boundary flux gives Schwarzschild A coefficient -- A_matched - A_Schwarzschild = 0
 
 ============================================================================================================
 Case 5: Boundary source versus bulk source
@@ -63,18 +76,20 @@ Case 5: Boundary source versus bulk source
 Two equivalent reduced descriptions:
 
 1. Bulk density source:
-   d/dr(4πr²A') = 4πr² * 8πGρ/c²
+   d/dr(4pir^2*A') = 4pir^2 * 8piGrho/c^2
 
 2. Boundary/source interface:
-   4πR²A'(R) = 8πGM/c²
+   4piR^2*A'(R) = 8piGM/c^2
 
 For exterior r>R, both give:
-   A = 1 - 2GM/(rc²)
+   A = 1 - 2GM/(rc^2)
 
 Interpretation:
    The areal-flux law can be viewed as a Gauss law: the bulk source
    determines the boundary flux seen by the exterior.
-[PASS] boundary and bulk views agree for exterior flux
+
+[governance_assessments]
+[PASS] boundary and bulk views agree for exterior flux -- both recover A = 1 - 2GM/(rc^2) for r > R
 
 ============================================================================================================
 Case 6: Coupling to kappa compensation
@@ -83,8 +98,12 @@ A = -2*G*M/(c**2*r) + 1
 kappa = 0
 B = exp(2kappa)/A = c**2*r/(-2*G*M + c**2*r)
 AB = 1
-[PASS] boundary flux plus kappa=0 recovers reciprocal exterior
-[PASS] VacuumForge classifies boundary-flux exterior metric as by-construction reciprocal: reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
+
+[derived_results]
+[PASS] boundary flux plus kappa=0 recovers reciprocal exterior -- AB = 1
+
+[derived_results]
+[PASS] VacuumForge classifies boundary-flux exterior metric as by-construction reciprocal -- reciprocal_scaling is satisfied, but the target form is present in the metric definition. Reciprocal scaling is encoded by the concrete A/B metric definition.
 
 ============================================================================================================
 Final interpretation
@@ -92,16 +111,16 @@ Final interpretation
 The reduced radial A-action exposes areal flux as the boundary
 momentum conjugate to A:
 
-  boundary momentum ∝ r² A'
+  boundary momentum prop r^2 A'
 
 A source/interface coupling -q A(R) fixes that boundary momentum.
 With q proportional to M, the boundary condition becomes:
 
-  4πR²A'(R) = 8πGM/c²
+  4piR^2*A'(R) = 8piGM/c^2
 
 The exterior bulk equation then gives:
 
-  A = 1 - 2GM/(rc²)
+  A = 1 - 2GM/(rc^2)
 
 Combined with kappa=0:
 

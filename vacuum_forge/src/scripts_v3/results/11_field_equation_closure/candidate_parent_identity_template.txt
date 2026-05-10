@@ -22,7 +22,9 @@ Discipline:
   template is not derivation
   parent identity must explain constraints, not merely restate them
   avoid copying GR Bianchi identity with new words
-[WARN] parent identity template problem posed: TEMPLATE
+
+[governance_assessments]
+[DEFER] parent identity template problem posed -- template only; not derivation
 
 ========================================================================================================================
 Case 1: Parent identity clause inventory
@@ -133,7 +135,9 @@ Case 2: Compact parent identity template
 | P8: exterior mass preservation | boundary relaxation changes local trace configuration but leaves exterior A flux invariant | CONSTRAINED | Boundary/interface theorem. |
 | P9: relaxation energy accounting | Gamma_relax transfers imbalance energy into vacuum configuration energy | STRUCTURAL | Vacuum configuration energy variable. |
 | P10: metric recombination compatibility | metric map R[A,W,h_TT,kappa] preserves source split and constraints | UNFINISHED | Covariant recombination map. |
-[WARN] compact parent identity template produced: TEMPLATE
+
+[governance_assessments]
+[DEFER] compact parent identity template produced -- template only
 
 ========================================================================================================================
 Case 3: Candidate symbolic template
@@ -156,7 +160,9 @@ Reduced closure requirements:
   P_trace(Div E_parent) -> kappa_min relaxation, not Box kappa
 
 This is only a scaffold.
-[WARN] candidate symbolic parent template stated: TEMPLATE — not a derivation
+
+[governance_assessments]
+[DEFER] candidate symbolic parent template stated -- not a derivation
 
 ========================================================================================================================
 Case 4: Template pass/fail tests
@@ -174,7 +180,9 @@ The parent template must pass these tests:
 9. Produce a recombination map without scalar double-counting.
 
 If it cannot pass these, it is decorative.
-[WARN] parent template tests stated: CONSTRAINED
+
+[governance_assessments]
+[DEFER] parent template tests stated -- structural test criteria
 
 ========================================================================================================================
 Case 5: Honest status
@@ -192,7 +200,9 @@ What it does not accomplish:
   does not derive coefficients
   does not prove Bianchi compatibility
   does not prove metric recombination
-[FAIL] honest parent template status stated: UNFINISHED
+
+[unresolved_obligations]
+[OBLIGATION] parent identity template remains template -- E_parent, B_source, coefficients, Bianchi compatibility all unresolved
 
 ========================================================================================================================
 Case 6: Next tests
@@ -214,7 +224,9 @@ Recommended next script:
 
 Reason:
   The parent template is only a scaffold; now list the ways closure can fail.
-[WARN] next test selected: CONSTRAINED
+
+[governance_assessments]
+[DEFER] next test selected -- structural guidance
 
 ========================================================================================================================
 Final interpretation

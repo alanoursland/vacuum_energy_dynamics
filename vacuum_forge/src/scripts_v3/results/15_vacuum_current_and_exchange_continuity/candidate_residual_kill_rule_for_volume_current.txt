@@ -25,7 +25,9 @@ Discipline:
   preserve boundary neutrality
   preserve no M_ext shift
   keep recovery downstream
-[WARN] residual-kill rule problem posed: REQUIRED
+
+[governance_assessments]
+[OBLIGATION] residual-kill rule problem posed -- requires residual-kill theorem or parent identity
 
 ========================================================================================================================
 Case 1: Residual-kill inventory
@@ -38,7 +40,7 @@ Rule: If J_V-driven zeta enters B_s, residual zeta/kappa metric trace is killed 
 Role: core clean no-overlap convention
 Allowed if: used as provisional safety convention until O is derived
 Forbidden if: treated as derived field equation
-[WARN] RK1: residual-kill target: THEOREM_TARGET
+Status: THEOREM_TARGET
 Missing: residual-kill theorem
 Consequence: prevents J_V-driven zeta from double-counting scalar trace
 
@@ -49,7 +51,7 @@ Rule: zeta_residual_metric = 0 after B_s insertion
 Role: direct zeta count-once rule
 Allowed if: zeta remains metric-active only through B_s/A_spatial channel
 Forbidden if: zeta also appears as independent residual metric scalar
-[WARN] RK2: zeta residual metric killed: SAFE_IF
+Status: SAFE_IF
 Missing: derivation of kill/non-metric transition
 Consequence: demotes residual zeta from metric correction to bookkeeping or inactive residual
 
@@ -60,7 +62,7 @@ Rule: kappa_residual_metric = 0 or kappa remains reduced diagnostic / non-metric
 Role: prevents kappa from restoring killed trace
 Allowed if: kappa is diagnostic, separately neutral, or non-metric
 Forbidden if: kappa becomes substitute scalar metric trace
-[WARN] RK3: kappa residual metric killed / diagnostic: REQUIRED
+Status: REQUIRED
 Missing: kappa cleanup theorem
 Consequence: protects Group 14 areal-kappa fence and count-once recombination
 
@@ -71,7 +73,7 @@ Rule: zeta/kappa residual may remain as configuration bookkeeping but not direct
 Role: preserves ontology without metric double-counting
 Allowed if: bookkeeping-to-metric insertion is only through B_s or other explicit map
 Forbidden if: bookkeeping terms become hidden source reservoir
-[WARN] RK4: non-metric bookkeeping branch: CANDIDATE
+Status: CANDIDATE
 Missing: bookkeeping status and accounting law
 Consequence: keeps residual variables useful without scalar-gravity behavior
 
@@ -82,7 +84,7 @@ Rule: residual belongs only to first-order non-radiative relaxation, not metric 
 Role: possible safe dynamic residual role
 Allowed if: P_relax is first-order, boundary-neutral, and non-radiative
 Forbidden if: P_relax becomes Box zeta / Box kappa or scalar radiation
-[WARN] RK5: P_relax-only residual branch: CANDIDATE
+Status: CANDIDATE
 Missing: P_relax mechanism and non-wave theorem
 Consequence: may preserve residual dynamics without ordinary scalar wave
 
@@ -93,7 +95,7 @@ Rule: Trace[g_ij^scalar] receives J_V-driven zeta only through B_s
 Role: metric recombination rule
 Allowed if: B_s/F_zeta insertion law is explicit
 Forbidden if: same zeta variation enters both B_s and residual metric trace
-[WARN] RK6: B_s-only metric insertion: REQUIRED
+Status: REQUIRED
 Missing: B_s/F_zeta map
 Consequence: central condition for safe ordinary metric entry
 
@@ -104,7 +106,7 @@ Rule: epsilon_vac_config / e_kappa do not count killed residual as extra source 
 Role: prevents coefficient reservoir behavior
 Allowed if: energy/accounting terms are diagnostic or recombine once
 Forbidden if: killed residual reappears as physical energy source
-[WARN] RK7: energy/accounting consequence: REQUIRED
+Status: REQUIRED
 Missing: energy/accounting rule
 Consequence: prevents hidden double-counting through vacuum bookkeeping
 
@@ -115,7 +117,7 @@ Rule: residual metric trace survives only if O=0, boundary-neutral, no mass over
 Role: alternative theorem-heavy branch
 Allowed if: orthogonality, boundary neutrality, and no A-sector overlap are derived
 Forbidden if: neutral residual is assumed to avoid residual-kill
-[WARN] RK8: neutral residual alternative: RISK
+Status: RISK
 Missing: full no-overlap operator and boundary theorem
 Consequence: keeps residual branch alive only at high proof burden
 
@@ -126,7 +128,7 @@ Rule: kappa or zeta residual restores killed metric trace after B_s insertion
 Role: rejected regression
 Allowed if: never in ordinary branch
 Forbidden if: accepted as recombination
-[WARN] RK9: residual restoration forbidden: REJECTED
+Status: REJECTED
 Missing: not pursued
 Consequence: kills branches that undo residual-kill by relabeling
 
@@ -137,7 +139,7 @@ Rule: killed/non-metric residual creates no exterior scalar charge or far-zone s
 Role: ordinary-sector safety guard
 Allowed if: residual-kill also removes exterior scalar tail
 Forbidden if: non-metric residual still sources exterior metric behavior
-[WARN] RK10: boundary-neutral killed residual: REQUIRED
+Status: REQUIRED
 Missing: boundary consequence theorem
 Consequence: links residual-kill to exterior safety
 
@@ -148,7 +150,7 @@ Rule: residual-kill / non-metric residual does not alter A-sector exterior mass
 Role: A-sector mass protection
 Allowed if: B_s/J_V recombination preserves M_ext accounting
 Forbidden if: residual bookkeeping shifts measured mass
-[WARN] RK11: no M_ext shift: REQUIRED
+Status: REQUIRED
 Missing: mass-accounting proof
 Consequence: keeps volume accounting from becoming mass reservoir
 
@@ -159,7 +161,7 @@ Rule: gamma_like and AB tested only after residual-kill convention is fixed
 Role: ordinary-regime recovery target
 Allowed if: kept downstream
 Forbidden if: used to decide which residual to kill
-[WARN] RK12: recovery downstream: RECOVERY_TARGET
+Status: RECOVERY_TARGET
 Missing: solutions after residual-kill convention
 Consequence: keeps recovery from choosing the safety convention
 
@@ -170,7 +172,7 @@ Rule: residual-kill is provisional convention unless derived from O or parent id
 Role: anti-hardening warning
 Allowed if: explicitly marked provisional
 Forbidden if: treated as postulate or field equation without derivation
-[WARN] RK13: residual-kill not derivation warning: REQUIRED
+Status: REQUIRED
 Missing: parent derivation
 Consequence: prevents scaffold from hardening into assumption
 
@@ -181,7 +183,7 @@ Rule: residual cannot be killed/non-metric, and O cannot be defined
 Role: ordinary metric branch failure condition
 Allowed if: used to keep J_V-driven zeta out of metric sector
 Forbidden if: patched by neutral-residual assertion
-[FAIL] RK14: branch failure: BRANCH_KILLED
+Status: BRANCH_KILLED
 Missing: applies if no safe residual branch survives
 Consequence: J_V-driven zeta cannot enter ordinary metric scalar sector
 
@@ -192,7 +194,7 @@ Rule: if residual-kill is only provisional, update Group 15 status and field-equ
 Role: best next checkpoint
 Allowed if: residual-kill audit does not derive a theorem
 Forbidden if: continuing into field equations as if residual-kill were derived
-[PASS] RK15: recommended next move: RECOMMENDED
+Status: RECOMMENDED
 Missing: status update
 Consequence: next script should summarize Group 15 with residual-kill as provisional convention
 
@@ -216,7 +218,9 @@ Case 2: Compact residual-kill ledger
 | RK13: residual-kill not derivation warning | residual-kill is provisional convention unless derived from O or parent identity | REQUIRED | prevents scaffold from hardening into assumption |
 | RK14: branch failure | residual cannot be killed/non-metric, and O cannot be defined | BRANCH_KILLED | J_V-driven zeta cannot enter ordinary metric scalar sector |
 | RK15: recommended next move | if residual-kill is only provisional, update Group 15 status and field-equation status | RECOMMENDED | next script should summarize Group 15 with residual-kill as provisional convention |
-[WARN] compact residual-kill ledger produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] compact residual-kill ledger produced -- inventory only
 
 ========================================================================================================================
 Case 3: Status counts
@@ -237,7 +241,9 @@ Interpretation:
   Non-metric bookkeeping and P_relax-only residual are candidate residual roles.
   Neutral residual remains risky and theorem-heavy.
   If residual-kill cannot be kept provisional and safe, J_V-driven zeta cannot enter the ordinary metric sector.
-[WARN] residual-kill status count produced: STRUCTURAL
+
+[governance_assessments]
+[INFO] residual-kill status count produced -- inventory only
 
 ========================================================================================================================
 Case 4: Residual-kill decision tree
@@ -261,7 +267,9 @@ Decision tree:
 
 6. If residual metric trace persists without O:
    J_V-driven zeta cannot enter ordinary metric sector.
-[PASS] residual-kill decision tree stated: RECOMMENDED
+
+[governance_assessments]
+[INFO] residual-kill decision tree stated -- decision tree recorded
 
 ========================================================================================================================
 Case 5: Good failure / branch decision
@@ -277,7 +285,9 @@ Consequence:
 
 Bad failure:
   kill residual by declaration and then use it as hidden source/accounting reservoir.
-[WARN] residual-kill good failure stated: DEFER
+
+[governance_assessments]
+[DEFER] residual-kill good failure stated -- deferred pending residual-kill theorem or O
 
 ========================================================================================================================
 Case 6: Failure controls
@@ -292,7 +302,9 @@ Residual-kill rule fails if:
 6. non-metric bookkeeping shifts M_ext
 7. neutral residual is assumed without O
 8. recovery checks decide residual status
-[WARN] residual-kill failure controls stated: RISK
+
+[governance_assessments]
+[INFO] residual-kill failure controls stated -- guardrails recorded
 
 ========================================================================================================================
 Case 7: Next tests
@@ -314,7 +326,9 @@ Recommended next script:
 
 Reason:
   Residual-kill is a provisional safety convention, not a derivation. The next useful step is a status update before any field-equation attempt.
-[WARN] next test selected: STRUCTURAL
+
+[governance_assessments]
+[INFO] next test selected -- candidate_group_15_status_after_residual_kill.py
 
 ========================================================================================================================
 Final interpretation
