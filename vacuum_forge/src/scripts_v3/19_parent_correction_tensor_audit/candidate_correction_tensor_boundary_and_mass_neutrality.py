@@ -343,7 +343,7 @@ def print_entry(e: BoundaryMassEntry) -> None:
     print(f"Forbidden if: {e.forbidden_if}")
     out = ScriptOutput()
     with out.governance_assessments():
-        out.line(e.name, StatusMark.from_string(e.status), e.status)
+        out.line(e.name, StatusMark(e.status) if e.status in StatusMark._value2member_map_ else StatusMark.INFO, e.status)
 
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
@@ -770,17 +770,17 @@ def main():
     case_8_next_tests(out)
     final_interpretation(out)
 
-        record_governance(ns)
-        ns.record_derivation(
-            derivation_id="correction_tensor_boundary_and_mass_neutrality_marker",
-            inputs=[],
-            output=sp.Symbol("correction_tensor_boundary_and_mass_neutrality_complete"),
-            method="correction_tensor_boundary_and_mass_neutrality",
-            status=Status.DERIVED,
-            record_kind=RecordKind.INVENTORY_MARKER,
-            is_placeholder=True,
-        )
-        ns.write_run_metadata()
+    record_governance(ns)
+    ns.record_derivation(
+        derivation_id="correction_tensor_boundary_and_mass_neutrality_marker",
+        inputs=[],
+        output=sp.Symbol("correction_tensor_boundary_and_mass_neutrality_complete"),
+        method="correction_tensor_boundary_and_mass_neutrality",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+    )
+    ns.write_run_metadata()
 
 
 if __name__ == "__main__":

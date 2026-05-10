@@ -552,42 +552,42 @@ def main():
     final_interpretation()
 
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="define_A_curv_in_17_curvature_energy_and_finite_admissibility",
+        obligation_id="define_A_curv_17",
         script_id=SCRIPT_ID,
         title="Define finite-admissibility object A_curv",
         status=ObligationStatus.OPEN,
         description="A_curv[g, matter, vacuum] must be defined with domain, measure, and branch-kill rule before anti-singularity claims can become technical.",
     ))
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="define_J_curv_in_17_curvature_energy_and_finite_admissibility",
+        obligation_id="define_J_curv_17",
         script_id=SCRIPT_ID,
         title="Define curvature current J_curv",
         status=ObligationStatus.OPEN,
         description="J_curv requires domain, orientation, measure, balance law, and boundary behavior before any current-based anti-singularity claim.",
     ))
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="prove_mass_neutrality_curv_in_17_curvature_energy_and_finite_admissibility",
+        obligation_id="prove_mass_neutrality_curv_17",
         script_id=SCRIPT_ID,
         title="Prove exterior mass neutrality for curvature admissibility",
         status=ObligationStatus.OPEN,
         description="delta M_ext|curv = 0 must be derived to protect the A-sector result.",
     ))
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="prove_boundary_neutrality_curv_in_17_curvature_energy_and_finite_admissibility",
+        obligation_id="prove_boundary_neutrality_curv_17",
         script_id=SCRIPT_ID,
         title="Prove boundary neutrality for curvature admissibility",
         status=ObligationStatus.OPEN,
         description="No curvature boundary term may hide blowup, leakage, or mass shift.",
     ))
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="prove_matter_decoupling_curv_in_17_curvature_energy_and_finite_admissibility",
+        obligation_id="prove_matter_decoupling_curv_17",
         script_id=SCRIPT_ID,
         title="Prove ordinary matter decoupling for curvature admissibility",
         status=ObligationStatus.OPEN,
         description="Curvature admissibility must not modify ordinary matter coupling without a source theorem.",
     ))
     ns.record_claim(ClaimRecord(
-        claim_id="curvature_admissibility_diagnostic_only_in_17",
+        claim_id="curvature_admissibility_diag_17",
         script_id=SCRIPT_ID,
         claim_kind=RecordKind.GOVERNANCE_CLAIM,
         tier=ClaimTier.CONSTRAINED,
@@ -595,18 +595,18 @@ def main():
         statement="Curvature admissibility can function as a diagnostic / branch-filter only until J_curv, e_curv source role, and neutrality theorems are derived.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="defer_H_curv_in_17_curvature_energy_and_finite_admissibility",
+        decision_id="defer_H_curv_17",
         script_id=SCRIPT_ID,
         branch_id="H_curv_parent_correction_tensor",
         status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
         tier=ClaimTier.CONSTRAINED,
         obligation_ids=[
-            "define_J_curv_in_17_curvature_energy_and_finite_admissibility",
-            "define_A_curv_in_17_curvature_energy_and_finite_admissibility",
+            "define_J_curv_17",
+            "define_A_curv_17",
         ],
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="reject_GR_rewrite_in_17_curvature_energy_and_finite_admissibility",
+        decision_id="reject_GR_rewrite_17",
         script_id=SCRIPT_ID,
         branch_id="GR_rewrite_diagnostic",
         status=GovernanceStatus.REJECTED_ROUTE,
@@ -614,7 +614,7 @@ def main():
         obligation_ids=[],
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="reject_repair_current_in_17_curvature_energy_and_finite_admissibility",
+        decision_id="reject_repair_current_17",
         script_id=SCRIPT_ID,
         branch_id="repair_current_J_curv",
         status=GovernanceStatus.REJECTED_ROUTE,
@@ -622,7 +622,7 @@ def main():
         obligation_ids=[],
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="reject_source_reservoir_curv_in_17_curvature_energy_and_finite_admissibility",
+        decision_id="reject_source_reservoir_curv_17",
         script_id=SCRIPT_ID,
         branch_id="curvature_energy_source_reservoir",
         status=GovernanceStatus.REJECTED_ROUTE,

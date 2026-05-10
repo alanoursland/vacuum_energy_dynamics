@@ -38,6 +38,7 @@ from vacuumforge.governance import (
     ProofObligationRecord,
     RecordKind,
     ScriptOutput,
+    StatusMark,
 )
 
 
@@ -326,7 +327,7 @@ def case_4_operator_shells(out: ScriptOutput):
     print("Each must fix ratios before recovery checks or be treated as decorative.")
 
     with out.governance_assessments():
-        out.line("volume-exchange operator shells stated", "CANDIDATE",
+        out.line("volume-exchange operator shells stated", StatusMark.DEFER,
                  "five shell classes identified; none yet has fixed coefficient origin")
 
 

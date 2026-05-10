@@ -193,7 +193,7 @@ def print_entry(e: Group19StatusEntry) -> None:
     print(f"Result: {e.result}")
     out = ScriptOutput()
     with out.governance_assessments():
-        out.line(e.name, StatusMark.from_string(e.status), e.status)
+        out.line(e.name, StatusMark(e.status) if e.status in StatusMark._value2member_map_ else StatusMark.INFO, e.status)
 
     print(f"Consequence: {e.consequence}")
     print(f"Handoff: {e.handoff}")

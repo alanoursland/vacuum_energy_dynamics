@@ -587,20 +587,23 @@ def main():
     ns.record_obligation(ProofObligationRecord(
         obligation_id="prove_rho_routes_to_A_sector_in_18_matter_decoupling",
         script_id=SCRIPT_ID,
+        title="Prove rho routes to A-sector",
         status=ObligationStatus.OPEN,
-        statement="Ordinary rho/scalar charge must remain routed to A-sector. Vacuum currents must not replace or supplement ordinary mass source.",
+        description="Ordinary rho/scalar charge must remain routed to A-sector. Vacuum currents must not replace or supplement ordinary mass source.",
     ))
     ns.record_obligation(ProofObligationRecord(
         obligation_id="prove_J_sub_matter_silence_in_18_matter_decoupling",
         script_id=SCRIPT_ID,
+        title="Prove J_sub matter silence",
         status=ObligationStatus.OPEN,
-        statement="J_sub matter decoupling theorem: J_sub must not push, drag, accelerate, or otherwise couple to ordinary matter.",
+        description="J_sub matter decoupling theorem: J_sub must not push, drag, accelerate, or otherwise couple to ordinary matter.",
     ))
     ns.record_obligation(ProofObligationRecord(
         obligation_id="prove_J_exch_no_matter_repair_in_18_matter_decoupling",
         script_id=SCRIPT_ID,
+        title="Prove J_exch no matter repair",
         status=ObligationStatus.OPEN,
-        statement="J_exch matter decoupling theorem: J_exch must not reroute ordinary matter to fix curvature, boundary, or exchange failure.",
+        description="J_exch matter decoupling theorem: J_exch must not reroute ordinary matter to fix curvature, boundary, or exchange failure.",
     ))
     ns.record_claim(ClaimRecord(
         claim_id="ordinary_matter_decoupling_theorem_target_in_18",
@@ -613,23 +616,26 @@ def main():
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_J_sub_matter_coupling_in_18_matter_decoupling",
         script_id=SCRIPT_ID,
-        branch_name="J_sub_matter_coupling",
+        branch_id="J_sub_matter_coupling",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="J_sub directly pushing or dragging ordinary matter is forbidden under pure wind neutrality.",
+        tier=ClaimTier.CONSTRAINED,
+        description="J_sub directly pushing or dragging ordinary matter is forbidden under pure wind neutrality.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_J_exch_matter_repair_in_18_matter_decoupling",
         script_id=SCRIPT_ID,
-        branch_name="J_exch_matter_repair",
+        branch_id="J_exch_matter_repair",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="J_exch rerouting ordinary matter to fix curvature, boundary, or recovery behavior is forbidden.",
+        tier=ClaimTier.CONSTRAINED,
+        description="J_exch rerouting ordinary matter to fix curvature, boundary, or recovery behavior is forbidden.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_ordinary_T_as_Sigma_exch_in_18_matter_decoupling",
         script_id=SCRIPT_ID,
-        branch_name="ordinary_T_as_Sigma_exch",
+        branch_id="ordinary_T_as_Sigma_exch",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="Sigma_exch = function(T_mu_nu) by convenience is forbidden as matter double-counting.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Sigma_exch = function(T_mu_nu) by convenience is forbidden as matter double-counting.",
     ))
     ns.record_derivation(
         derivation_id="ordinary_matter_decoupling_for_vacuum_currents_marker",

@@ -608,20 +608,23 @@ def main():
     ns.record_obligation(ProofObligationRecord(
         obligation_id="prove_Sigma_R_separation_in_18_source_side_inventory",
         script_id=SCRIPT_ID,
+        title="Prove Sigma/R separation",
         status=ObligationStatus.OPEN,
-        statement="Sigma_exch and R_exch must be proven distinct with independent definitions. They must not be two names for one hidden tuning mechanism.",
+        description="Sigma_exch and R_exch must be proven distinct with independent definitions. They must not be two names for one hidden tuning mechanism.",
     ))
     ns.record_obligation(ProofObligationRecord(
         obligation_id="define_R_exch_relaxation_mechanism_in_18_source_side_inventory",
         script_id=SCRIPT_ID,
+        title="Define R_exch relaxation mechanism",
         status=ObligationStatus.OPEN,
-        statement="R_exch as real relaxation/return/sink mechanism must be defined, distinct from Sigma_exch and not tunable against it.",
+        description="R_exch as real relaxation/return/sink mechanism must be defined, distinct from Sigma_exch and not tunable against it.",
     ))
     ns.record_obligation(ProofObligationRecord(
         obligation_id="define_Sigma_exch_sign_strength_law_in_18_source_side_inventory",
         script_id=SCRIPT_ID,
+        title="Define Sigma_exch sign/strength law",
         status=ObligationStatus.OPEN,
-        statement="Sigma_exch must have sign, magnitude, and domain rule from an ontology-native operator, not chosen to pass recovery/boundary constraints.",
+        description="Sigma_exch must have sign, magnitude, and domain rule from an ontology-native operator, not chosen to pass recovery/boundary constraints.",
     ))
     ns.record_claim(ClaimRecord(
         claim_id="no_active_ordinary_source_side_for_J_exch_in_18",
@@ -634,23 +637,26 @@ def main():
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_ordinary_T_source_in_18_source_side_inventory",
         script_id=SCRIPT_ID,
-        branch_name="ordinary_T_as_Sigma_exch_source",
+        branch_id="ordinary_T_as_Sigma_exch_source",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="Sigma_exch = function(T_mu_nu) by convenience is forbidden as ordinary matter double-counting.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Sigma_exch = function(T_mu_nu) by convenience is forbidden as ordinary matter double-counting.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_boundary_repair_source_in_18_source_side_inventory",
         script_id=SCRIPT_ID,
-        branch_name="boundary_repair_as_source",
+        branch_id="boundary_repair_as_source",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="Boundary leakage, shell, or scalar tail defining Sigma_exch is a forbidden boundary repair source.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Boundary leakage, shell, or scalar tail defining Sigma_exch is a forbidden boundary repair source.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_e_curv_reservoir_source_in_18_source_side_inventory",
         script_id=SCRIPT_ID,
-        branch_name="e_curv_reservoir_as_source",
+        branch_id="e_curv_reservoir_as_source",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="e_curv supplying source strength for J_exch is forbidden under Group 17 closure. Preserves e_curv diagnostic/accounting-only status.",
+        tier=ClaimTier.CONSTRAINED,
+        description="e_curv supplying source strength for J_exch is forbidden under Group 17 closure. Preserves e_curv diagnostic/accounting-only status.",
     ))
     ns.record_derivation(
         derivation_id="exchange_current_source_side_inventory_marker",

@@ -496,9 +496,16 @@ def main():
     ns.record_handoff_import(HandoffImportRecord(
         handoff_id="group_13_vacuum_substance_accounting_handoff",
         script_id=SCRIPT_ID,
-        imported_from_group="13_vacuum_substance_accounting",
-        imported_script_id=SCRIPT_ID,
-        summary=(
+        imported_as=RecordKind.SUMMARY_CLAIM,
+        status=GovernanceStatus.CANDIDATE_ROUTE,
+        imported_record_refs=[
+            "claim:epsilon_kappa_double_counting_forbidden",
+            "claim:epsilon_kappa_hybrid_provisional_convention",
+            "evidence:epsilon_kappa_double_counting_overlap_witness",
+            "obligation:derive_kappa_zeta_map_for_unified_convention",
+            "derivation:epsilon_kappa_double_counting_check_marker",
+        ],
+        description=(
             "Group 13 outputs: "
             "(1) zeta=ln sqrt(gamma) as leading geometric vacuum-configuration candidate; "
             "(2) trace/TT geometric split with delta zeta|TT=0 at linear order; "

@@ -581,6 +581,7 @@ def main():
     case_8_next_tests()
     final_interpretation()
 
+    if True:
         ns.record_obligation(ProofObligationRecord(
             obligation_id="prove_e_curv_source_quarantine_in_17_curvature_energy",
             script_id=SCRIPT_ID,

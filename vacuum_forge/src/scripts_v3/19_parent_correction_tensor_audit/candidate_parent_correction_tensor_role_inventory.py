@@ -106,6 +106,19 @@ def print_archive_status(ns, invalidated: bool) -> None:
         print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
 
 
+def entry_status_mark(status: str) -> StatusMark:
+    try:
+        return StatusMark(status)
+    except ValueError:
+        return {
+            "THEOREM_TARGET": StatusMark.INFO,
+            "RECOMMENDED": StatusMark.PASS,
+            "REJECTED": StatusMark.FAIL,
+            "BRANCH_KILLED": StatusMark.FAIL,
+            "HEURISTIC": StatusMark.MEMO,
+        }.get(status, StatusMark.INFO)
+
+
 def build_entries() -> List[CorrectionTensorRoleEntry]:
     return [
         CorrectionTensorRoleEntry(
@@ -362,7 +375,7 @@ def print_entry(e: CorrectionTensorRoleEntry) -> None:
     print(f"Forbidden if: {e.forbidden_if}")
     out = ScriptOutput()
     with out.governance_assessments():
-        out.line(e.name, StatusMark.from_string(e.status), e.status)
+        out.line(e.name, entry_status_mark(e.status), e.status)
 
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")
@@ -802,7 +815,7 @@ def record_governance(ns) -> None:
     ns.record_claim(ClaimRecord(
         claim_id="correction_tensor_role_inventory_informational",
         script_id=SCRIPT_ID,
-        claim_kind=RecordKind.INFORMATIONAL,
+        claim_kind=RecordKind.GOVERNANCE_CLAIM,
         tier=ClaimTier.CONSTRAINED,
         status=GovernanceStatus.HEURISTIC,
         statement=(

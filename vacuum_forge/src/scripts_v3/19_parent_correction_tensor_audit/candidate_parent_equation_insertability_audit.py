@@ -365,7 +365,7 @@ def print_entry(e: InsertabilityEntry) -> None:
     print(f"Forbidden if: {e.forbidden_if}")
     out = ScriptOutput()
     with out.governance_assessments():
-        out.line(e.name, StatusMark.from_string(e.status), e.status)
+        out.line(e.name, StatusMark(e.status) if e.status in StatusMark._value2member_map_ else StatusMark.INFO, e.status)
 
     print(f"Missing: {e.missing}")
     print(f"Consequence: {e.consequence}")

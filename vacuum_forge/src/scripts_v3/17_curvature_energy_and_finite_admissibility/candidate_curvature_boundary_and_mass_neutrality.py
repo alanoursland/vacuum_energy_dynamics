@@ -610,21 +610,21 @@ def main():
     final_interpretation()
 
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="prove_curvature_mass_neutrality_in_17_boundary_neutrality",
+        obligation_id="prove_curv_mass_neutrality_17",
         script_id=SCRIPT_ID,
         title="Prove curvature mass neutrality",
         status=ObligationStatus.OPEN,
         description="delta M_ext|curv = 0 must be derived to protect the A-sector result; curvature admissibility must not shift measured exterior mass.",
     ))
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="prove_boundary_repair_rejection_in_17_boundary_neutrality",
+        obligation_id="reject_boundary_repair_17",
         script_id=SCRIPT_ID,
         title="Prove curvature boundary repair rejection",
         status=ObligationStatus.OPEN,
         description="J_curv and boundary functionals must not cancel blowup, leakage, or mass shift at boundaries.",
     ))
     ns.record_obligation(ProofObligationRecord(
-        obligation_id="prove_exterior_scalar_neutrality_in_17_boundary_neutrality",
+        obligation_id="prove_exterior_scalar_neutrality_17",
         script_id=SCRIPT_ID,
         title="Prove exterior scalar charge neutrality",
         status=ObligationStatus.OPEN,
@@ -639,7 +639,7 @@ def main():
         statement="Interior-only diagnostic curvature admissibility is the safe fallback until boundary/mass neutrality theorems are derived.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="reject_e_curv_mass_reservoir_in_17_boundary_neutrality",
+        decision_id="reject_e_curv_mass_reservoir_17",
         script_id=SCRIPT_ID,
         branch_id="e_curv_mass_reservoir",
         status=GovernanceStatus.REJECTED_ROUTE,
@@ -647,7 +647,7 @@ def main():
         obligation_ids=[],
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="reject_J_curv_boundary_repair_in_17_boundary_neutrality",
+        decision_id="reject_J_curv_boundary_repair_17",
         script_id=SCRIPT_ID,
         branch_id="J_curv_boundary_repair",
         status=GovernanceStatus.REJECTED_ROUTE,
@@ -655,7 +655,7 @@ def main():
         obligation_ids=[],
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="reject_boundary_counterterm_avoidance_in_17_boundary_neutrality",
+        decision_id="reject_boundary_counterterm_17",
         script_id=SCRIPT_ID,
         branch_id="singularity_avoidance_by_boundary_counterterm",
         status=GovernanceStatus.REJECTED_ROUTE,
@@ -663,12 +663,12 @@ def main():
         obligation_ids=[],
     ))
     ns.record_branch_decision(BranchDecisionRecord(
-        decision_id="defer_H_curv_as_neutrality_enforcer_in_17_boundary_neutrality",
+        decision_id="defer_H_curv_neutrality_17",
         script_id=SCRIPT_ID,
         branch_id="H_curv_as_neutrality_enforcer",
         status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
         tier=ClaimTier.CONSTRAINED,
-        obligation_ids=["prove_curvature_mass_neutrality_in_17_boundary_neutrality"],
+        obligation_ids=["prove_curv_mass_neutrality_17"],
     ))
     ns.record_derivation(
         derivation_id="curvature_boundary_and_mass_neutrality_marker",

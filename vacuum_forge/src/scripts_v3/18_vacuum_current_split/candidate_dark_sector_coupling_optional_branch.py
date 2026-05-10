@@ -544,14 +544,16 @@ def main():
     ns.record_obligation(ProofObligationRecord(
         obligation_id="prove_dark_ordinary_matter_separation_in_18_dark_sector",
         script_id=SCRIPT_ID,
+        title="Prove dark ordinary-matter separation",
         status=ObligationStatus.OPEN,
-        statement="Ordinary/dark separation theorem: dark coupling must not alter ordinary matter routing. Ordinary rho/T_mu_nu must remain routed through established sectors.",
+        description="Ordinary/dark separation theorem: dark coupling must not alter ordinary matter routing. Ordinary rho/T_mu_nu must remain routed through established sectors.",
     ))
     ns.record_obligation(ProofObligationRecord(
         obligation_id="prove_dark_exterior_mass_neutrality_in_18_dark_sector",
         script_id=SCRIPT_ID,
+        title="Prove dark exterior mass neutrality",
         status=ObligationStatus.OPEN,
-        statement="Ordinary exterior neutrality theorem: dark coupling must not shift M_ext for ordinary exterior sector.",
+        description="Ordinary exterior neutrality theorem: dark coupling must not shift M_ext for ordinary exterior sector.",
     ))
     ns.record_claim(ClaimRecord(
         claim_id="dark_sector_no_coupling_default_in_18",
@@ -564,37 +566,42 @@ def main():
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_dark_patch_for_ordinary_in_18_dark_sector",
         script_id=SCRIPT_ID,
-        branch_name="dark_patch_for_ordinary_sector",
+        branch_id="dark_patch_for_ordinary_sector",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="Dark coupling introduced because ordinary J_sub/J_exch failed is forbidden speculative patching.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Dark coupling introduced because ordinary J_sub/J_exch failed is forbidden speculative patching.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_dark_boundary_repair_in_18_dark_sector",
         script_id=SCRIPT_ID,
-        branch_name="dark_boundary_repair",
+        branch_id="dark_boundary_repair",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="Dark sector canceling boundary leakage, shell source, scalar tail, or singularity behavior is a forbidden boundary repair branch.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Dark sector canceling boundary leakage, shell source, scalar tail, or singularity behavior is a forbidden boundary repair branch.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="reject_dark_H_exch_shortcut_in_18_dark_sector",
         script_id=SCRIPT_ID,
-        branch_name="dark_H_exch_shortcut",
+        branch_id="dark_H_exch_shortcut",
         status=GovernanceStatus.REJECTED_ROUTE,
-        rationale="Dark coupling introduced to justify H_exch/H_curv parent correction is a forbidden parent-correction shortcut. Deferred to Group 19.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Dark coupling introduced to justify H_exch/H_curv parent correction is a forbidden parent-correction shortcut. Deferred to Group 19.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="defer_dark_coupling_to_J_exch_in_18_dark_sector",
         script_id=SCRIPT_ID,
-        branch_name="dark_coupling_to_J_exch",
+        branch_id="dark_coupling_to_J_exch",
         status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-        rationale="Dark coupling to J_exch only is a candidate future branch pending: ordinary matter decoupling theorem, mass neutrality theorem, dark source separation theorem. Must not patch ordinary J_exch source failure.",
+        tier=ClaimTier.CONSTRAINED,
+        description="Dark coupling to J_exch only is a candidate future branch pending: ordinary matter decoupling theorem, mass neutrality theorem, dark source separation theorem. Must not patch ordinary J_exch source failure.",
     ))
     ns.record_branch_decision(BranchDecisionRecord(
         decision_id="kill_dark_branch_if_inseparable_in_18_dark_sector",
         script_id=SCRIPT_ID,
-        branch_name="dark_sector_inseparable_from_repair",
+        branch_id="dark_sector_inseparable_from_repair",
         status=GovernanceStatus.DEFERRED_PENDING_PREREQUISITES,
-        rationale="If dark coupling cannot be separated from ordinary repair behavior (DS16), the dark-sector branch should remain absent. BRANCH_KILLED outcome applies if failure is demonstrated.",
+        tier=ClaimTier.CONSTRAINED,
+        description="If dark coupling cannot be separated from ordinary repair behavior (DS16), the dark-sector branch should remain absent. BRANCH_KILLED outcome applies if failure is demonstrated.",
     ))
     ns.record_derivation(
         derivation_id="dark_sector_coupling_optional_branch_marker",
