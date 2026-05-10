@@ -485,8 +485,6 @@ def main():
         out.line("derive exterior suppression mechanism", StatusMark.OBLIGATION, "open")
         out.line("derive m_k if restoring term used", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

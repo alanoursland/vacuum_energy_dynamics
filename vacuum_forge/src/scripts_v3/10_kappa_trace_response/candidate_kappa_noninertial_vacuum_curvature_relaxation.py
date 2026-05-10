@@ -518,8 +518,6 @@ def main():
         out.line("derive mu_k from first principles", StatusMark.OBLIGATION, "open")
         out.line("derive chi_k coupling", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

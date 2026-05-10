@@ -465,7 +465,6 @@ def main():
     case_6_failure_controls(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="boundary_volume_mode_no_exterior_charge_theorem_target",

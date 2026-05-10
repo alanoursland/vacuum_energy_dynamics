@@ -434,8 +434,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive boundary-cutoff kappa_min from interface physics", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

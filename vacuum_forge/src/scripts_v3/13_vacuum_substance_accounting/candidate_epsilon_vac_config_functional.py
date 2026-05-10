@@ -461,7 +461,6 @@ def main():
     case_6_failure_controls(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="epsilon_vac_config_minimal_functional_scaffold",

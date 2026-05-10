@@ -408,7 +408,6 @@ def main():
     case_6_candidate_balance_shape(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="J_v_acausal_coefficient_tuning_forbidden",

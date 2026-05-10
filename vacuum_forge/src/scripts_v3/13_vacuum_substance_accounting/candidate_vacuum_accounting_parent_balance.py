@@ -454,7 +454,6 @@ def main():
     case_6_failure_controls(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     # The candidate balance skeleton is a symbolic balance target, not a derivation.
     # Per Rule 10: symbolic balance equation -> ProofObligationRecord (theorem target).

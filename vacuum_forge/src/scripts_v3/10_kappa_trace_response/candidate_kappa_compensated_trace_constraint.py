@@ -353,8 +353,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive parent identity for Q_kappa=0", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

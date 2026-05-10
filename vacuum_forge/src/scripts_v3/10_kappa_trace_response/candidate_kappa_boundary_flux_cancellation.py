@@ -402,8 +402,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive F_kappa(R+)=0 mechanism", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

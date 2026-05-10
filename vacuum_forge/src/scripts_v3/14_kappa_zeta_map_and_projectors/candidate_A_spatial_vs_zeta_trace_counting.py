@@ -396,8 +396,6 @@ def main():
         out.line("derive count-once trace theorem", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("derive A_spatial recovery mechanism", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    out.print_all()
-
     with archive.with_project_namespace(SCRIPT_ID) as ns:
 
         ns.record_obligation(ProofObligationRecord(

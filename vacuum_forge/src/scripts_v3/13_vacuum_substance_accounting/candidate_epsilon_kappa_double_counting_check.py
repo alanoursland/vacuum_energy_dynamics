@@ -440,7 +440,6 @@ def main():
     case_6b_symbolic_accounting_split(ns, out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="e_kappa_outside_epsilon_vac_config_provisional",

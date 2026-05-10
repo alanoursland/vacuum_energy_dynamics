@@ -492,8 +492,6 @@ def main():
         out.line("derive kappa-zeta map", StatusMark.OBLIGATION, "open proof obligation recorded")
         out.line("derive P_trace definition", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    out.print_all()
-
     with archive.with_project_namespace(SCRIPT_ID) as ns:
 
         ns.record_claim(ClaimRecord(

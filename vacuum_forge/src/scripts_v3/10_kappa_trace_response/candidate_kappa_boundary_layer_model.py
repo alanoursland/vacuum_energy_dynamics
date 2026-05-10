@@ -432,8 +432,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive boundary interface source law", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

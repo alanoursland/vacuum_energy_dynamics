@@ -410,8 +410,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive covariant parent identity for P_0", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

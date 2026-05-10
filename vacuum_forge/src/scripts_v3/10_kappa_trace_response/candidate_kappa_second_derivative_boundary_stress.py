@@ -431,8 +431,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive required kappa smoothness from action", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

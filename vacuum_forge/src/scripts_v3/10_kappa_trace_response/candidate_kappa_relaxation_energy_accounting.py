@@ -426,8 +426,6 @@ def main():
         out.line("derive vacuum sink for kappa relaxation energy", StatusMark.OBLIGATION, "open")
         out.line("derive Gamma from first principles", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

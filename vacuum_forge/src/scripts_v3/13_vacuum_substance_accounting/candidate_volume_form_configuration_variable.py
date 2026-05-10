@@ -468,7 +468,6 @@ def main():
     case_6_failure_controls(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="zeta_volume_strain_candidate",

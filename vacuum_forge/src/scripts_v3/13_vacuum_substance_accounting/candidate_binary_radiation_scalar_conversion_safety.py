@@ -407,7 +407,6 @@ def main():
     case_6_required_next_theorem(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="TT_only_far_zone_radiation_required",

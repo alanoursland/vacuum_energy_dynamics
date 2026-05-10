@@ -488,8 +488,6 @@ def main():
         out.line("derive weight functions alpha_W, beta_W", StatusMark.OBLIGATION, "open")
         out.line("derive transition width sigma", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

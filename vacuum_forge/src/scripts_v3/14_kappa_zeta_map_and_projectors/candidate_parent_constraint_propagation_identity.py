@@ -414,8 +414,6 @@ def main():
     with out.unresolved_obligations():
         out.line("derive or kill constraint propagation closure law", StatusMark.OBLIGATION, "open proof obligation recorded")
 
-    out.print_all()
-
     with archive.with_project_namespace(SCRIPT_ID) as ns:
 
         ns.record_obligation(ProofObligationRecord(

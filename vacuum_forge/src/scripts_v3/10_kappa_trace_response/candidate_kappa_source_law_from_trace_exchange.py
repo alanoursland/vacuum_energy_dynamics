@@ -512,8 +512,6 @@ def main():
         out.line("derive primary kappa source law", StatusMark.OBLIGATION, "open")
         out.line("derive gauge-vs-physical split", StatusMark.OBLIGATION, "open")
 
-    out.print_all()
-
     ns.write_run_metadata()
 
 

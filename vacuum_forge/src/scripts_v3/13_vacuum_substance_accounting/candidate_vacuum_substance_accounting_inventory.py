@@ -523,7 +523,6 @@ def main():
     case_6_conversion_picture(out)
     case_7_next_tests(out)
     final_interpretation()
-    out.print_all()
 
     ns.record_claim(ClaimRecord(
         claim_id="epsilon_vac_config_candidate_geometric",
