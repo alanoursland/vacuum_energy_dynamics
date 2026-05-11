@@ -1,0 +1,218 @@
+
+========================================================================================================================
+Candidate Distributional Shell Source Audit
+========================================================================================================================
+[INFO] Archive dependency check:
+  - matching_ladder_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_targets_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_repair_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Distributional shell source audit problem
+========================================================================================================================
+Question:
+
+  What distributional shell terms appear when boundary profiles are cut off?
+
+Reference discipline:
+
+  Group 23 matching ladder showed value matching alone is risky.
+  This script audits cutoff profiles f(r)*Theta(R-r).
+  It records delta-shell and slope/flux shell diagnostics.
+  It does not prove no-shell matching or compact support.
+
+[governance_assessments]
+[INFO] distributional shell source audit opened -- auditing cutoff profiles for value-jump and slope/flux shell diagnostics
+
+========================================================================================================================
+Case 1: Cutoff profile shell diagnostics
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+S0_constant_cutoff
+------------------------------------------------------------------------------------------------------------------------
+interior f(r): phi0
+boundary value f(R): phi0
+boundary slope f'(R): 0
+first-derivative delta coefficient -f(R): -phi0
+boundary flux 4*pi*R^2*f'(R): 0
+shell-like second-order coefficient -R^2*f'(R): 0
+[FAIL] S0_constant_cutoff: REJECTED
+Safe if: not safe: value jump coefficient is nonzero
+
+------------------------------------------------------------------------------------------------------------------------
+S1_linear_value_match_cutoff
+------------------------------------------------------------------------------------------------------------------------
+interior f(r): phi0*(1 - r/R)
+boundary value f(R): 0
+boundary slope f'(R): -phi0/R
+first-derivative delta coefficient -f(R): 0
+boundary flux 4*pi*R^2*f'(R): -4*pi*R*phi0
+shell-like second-order coefficient -R^2*f'(R): R*phi0
+[WARN] S1_linear_value_match_cutoff: RISK
+Safe if: not safe yet: value matches but slope/flux shell diagnostic is nonzero
+
+------------------------------------------------------------------------------------------------------------------------
+S2_quadratic_value_slope_cutoff
+------------------------------------------------------------------------------------------------------------------------
+interior f(r): phi0*(1 - r/R)**2
+boundary value f(R): 0
+boundary slope f'(R): 0
+first-derivative delta coefficient -f(R): 0
+boundary flux 4*pi*R^2*f'(R): 0
+shell-like second-order coefficient -R^2*f'(R): 0
+[INFO] S2_quadratic_value_slope_cutoff: SAFE_IF
+Safe if: diagnostically safe only if higher distributional/support/source/recovery burdens are also controlled
+
+------------------------------------------------------------------------------------------------------------------------
+S3_cubic_value_slope_curvature_cutoff
+------------------------------------------------------------------------------------------------------------------------
+interior f(r): phi0*(1 - r/R)**3
+boundary value f(R): 0
+boundary slope f'(R): 0
+first-derivative delta coefficient -f(R): 0
+boundary flux 4*pi*R^2*f'(R): 0
+shell-like second-order coefficient -R^2*f'(R): 0
+[INFO] S3_cubic_value_slope_curvature_cutoff: SAFE_IF
+Safe if: diagnostically safe only if higher distributional/support/source/recovery burdens are also controlled
+
+------------------------------------------------------------------------------------------------------------------------
+S4_smooth_bump_cutoff
+------------------------------------------------------------------------------------------------------------------------
+interior f(r): phi0*(1 - r**2/R**2)**2
+boundary value f(R): 0
+boundary slope f'(R): 0
+first-derivative delta coefficient -f(R): 0
+boundary flux 4*pi*R^2*f'(R): 0
+shell-like second-order coefficient -R^2*f'(R): 0
+[INFO] S4_smooth_bump_cutoff: SAFE_IF
+Safe if: diagnostically safe only if higher distributional/support/source/recovery burdens are also controlled
+
+[sample_results]
+[FAIL] cutoff value-jump profiles flagged -- 1 rejected cutoff profile(s)
+[WARN] cutoff value-only profiles flagged -- 1 risky value-match profile(s)
+[INFO] value/slope matched cutoff profiles are diagnostic safe-if only -- 3 profile(s) satisfy f(R)=f'(R)=0 diagnostics
+
+========================================================================================================================
+Case 2: Distributional shell audit ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+D1: value-jump delta shell
+------------------------------------------------------------------------------------------------------------------------
+Shell source: delta(R-r) from d[f(r) Theta(R-r)]/dr
+Appears when: f(R) != 0
+[FAIL] D1: value-jump delta shell: REJECTED
+Consequence: exterior zero does not erase a nonzero boundary value
+
+------------------------------------------------------------------------------------------------------------------------
+D2: slope / flux shell diagnostic
+------------------------------------------------------------------------------------------------------------------------
+Shell source: boundary flux or reduced radial shell-like term from f'(R)
+Appears when: f(R)=0 but f'(R) != 0
+[WARN] D2: slope / flux shell diagnostic: RISK
+Consequence: value matching alone does not prove no-shell/no-flux behavior
+
+------------------------------------------------------------------------------------------------------------------------
+D3: higher-derivative edge diagnostic
+------------------------------------------------------------------------------------------------------------------------
+Shell source: curvature/second-derivative edge behavior
+Appears when: higher derivatives are uncontrolled or profile is only toy-smooth
+[INFO] D3: higher-derivative edge diagnostic: SAFE_IF
+Consequence: higher derivative behavior must be audited before support theorem claims
+
+------------------------------------------------------------------------------------------------------------------------
+D4: structural support law
+------------------------------------------------------------------------------------------------------------------------
+Shell source: none allowed
+Appears when: support origin, value/slope matching, distributional shell absence, recovery independence, and source compatibility are derived
+[DEFER] D4: structural support law: THEOREM_TARGET
+Consequence: positive no-shell route remains open but not derived here
+
+[governance_assessments]
+[PASS] distributional shell audit ledger populated -- 4 shell diagnostics classified
+
+========================================================================================================================
+Case 3: Rejected shell-source shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: sharp cutoff as scalar silence
+------------------------------------------------------------------------------------------------------------------------
+Route: sharp_cutoff_scalar_silence
+Forbidden use: multiplying by Theta(R-r) and declaring exterior zero
+[FAIL] R1: sharp cutoff as scalar silence: REJECTED
+Consequence: cutoff can create delta-shell terms
+
+------------------------------------------------------------------------------------------------------------------------
+R2: value match as no-shell
+------------------------------------------------------------------------------------------------------------------------
+Route: value_match_no_shell
+Forbidden use: using f(R)=0 alone to prove no shell
+[FAIL] R2: value match as no-shell: REJECTED
+Consequence: slope/boundary flux can remain nonzero
+
+------------------------------------------------------------------------------------------------------------------------
+R3: slope match as full theorem
+------------------------------------------------------------------------------------------------------------------------
+Route: slope_match_full_theorem
+Forbidden use: using f(R)=f'(R)=0 as the entire support law
+[FAIL] R3: slope match as full theorem: REJECTED
+Consequence: support origin, higher edge behavior, source compatibility, and recovery independence remain open
+
+------------------------------------------------------------------------------------------------------------------------
+R4: smoothing hides shell
+------------------------------------------------------------------------------------------------------------------------
+Route: smoothing_hides_shell
+Forbidden use: smooth transition layer replaces distributional shell audit
+[FAIL] R4: smoothing hides shell: REJECTED
+Consequence: smooth layers can still carry net flux or hidden source load
+
+------------------------------------------------------------------------------------------------------------------------
+R5: repair object cancels shell
+------------------------------------------------------------------------------------------------------------------------
+Route: O_H_dark_exchange_curvature_shell_repair
+Forbidden use: O, H, dark, exchange, curvature, or current role cancels boundary shell by name
+[FAIL] R5: repair object cancels shell: REJECTED
+Consequence: repair routes remain rejected
+
+[counterexamples]
+[FAIL] shell-source shortcuts rejected -- sharp cutoff, value-match proof, slope-match theorem, smoothing cover, and repair-object cancellation remain rejected
+
+========================================================================================================================
+Case 4: Failure controls
+========================================================================================================================
+The distributional shell source audit fails if a later script allows:
+
+1. f(r)*Theta(R-r) to count as compact support by declaration
+2. nonzero f(R) value jump to be ignored
+3. f(R)=0 alone to prove no shell
+4. nonzero f'(R) boundary flux to be ignored
+5. f(R)=f'(R)=0 to be treated as full support law
+6. smoothing layer to replace distributional audit
+7. O, H, dark, curvature, exchange, or current repair to cancel shell terms
+8. recovery-selected support to determine where the cutoff lives
+9. parent equation to open from no-shell diagnostics alone
+
+[governance_assessments]
+[OBLIGATION] distributional shell overclaim controls stated -- future scripts must not confuse cutoff diagnostics with derived no-shell matching
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Distributional shell audit result:
+
+  A sharp cutoff can create delta-shell behavior from nonzero f(R).
+  Value matching f(R)=0 removes the first value-jump diagnostic but not slope/flux danger.
+  Slope matching f'(R)=0 is a necessary diagnostic no-flux condition.
+  Value+slope matching is still not a support theorem.
+  Structural support, distributional shell absence, recovery independence, and source compatibility remain open.
+
+Possible next script:
+  candidate_compact_support_admissibility_conditions.py
+
+Tiny goblin label:
+  Sharp edge makes shell crumbs. Sweep before claiming silence.
+
+[governance_assessments]
+[PASS] distributional shell source audit complete -- cutoff shell diagnostics explicit; no-shell theorem remains open

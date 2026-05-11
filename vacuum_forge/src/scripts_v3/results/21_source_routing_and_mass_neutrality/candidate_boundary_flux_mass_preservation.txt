@@ -1,0 +1,253 @@
+
+========================================================================================================================
+Candidate Boundary Flux Mass Preservation
+========================================================================================================================
+[INFO] Archive dependency check:
+  - residual_scalar_tail_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - residual_scalar_zero_flux_condition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Boundary flux mass-preservation problem
+========================================================================================================================
+Question:
+
+  Can boundary or smoothing behavior preserve A-sector mass without repair?
+
+Reference discipline:
+
+  A-flux outside must remain fixed by the A-sector mass charge.
+  Non-A boundary behavior must not change exterior A'.
+  No shell source, smoothing repair, counterterm, or recovery-tuned boundary condition is licensed.
+  This script is a reduced diagnostic and requirements audit, not a boundary theorem.
+
+[governance_assessments]
+[INFO] boundary flux mass-preservation audit opened -- testing reduced boundary flux conditions without assuming a boundary repair mechanism
+
+========================================================================================================================
+Case 1: Exterior non-A boundary tail shifts A-flux
+========================================================================================================================
+Take a generic exterior non-A boundary contribution:
+
+  delta_A_boundary(r) = q/r
+
+Then:
+
+  delta_F_A = 4*pi*r^2*d(delta_A_boundary)/dr = -4*pi*q
+  delta_M_A = c^2*delta_F_A/(8*pi*G) = -c**2*q/(2*G)
+
+Residual checks:
+
+  delta_F_A + 4*pi*q = 0
+  delta_M_A + c^2*q/(2*G) = 0
+
+Neutrality condition:
+
+  Eq(q, 0)
+
+[derived_results]
+[PASS] boundary 1/r A-flux shift derived -- delta_F_A = -4*pi*q
+[PASS] boundary 1/r mass shift derived -- delta_M_A = -c**2*q/(2*G)
+[PASS] generic nonzero q shifts A-sector mass -- delta_F_A vanishes only when the exterior boundary-tail coefficient q vanishes
+
+========================================================================================================================
+Case 2: Boundary profile diagnostics
+========================================================================================================================
+C1-style toy profile:
+
+  phi_C1(r) = phi0*(1 - r/R)
+  phi_C1(R) = 0
+  phi_C1'(R) = -phi0/R
+  boundary flux at R = -4*pi*R*phi0
+
+C2-style toy profile:
+
+  phi_C2(r) = phi0*(1 - r/R)**2
+  phi_C2(R) = 0
+  phi_C2'(R) = 0
+  boundary flux at R = 0
+
+Smooth compact toy profile:
+
+  phi_compact(r) = phi0*(1 - r**2/R**2)**2
+  phi_compact(R) = 0
+  phi_compact'(R) = 0
+  boundary flux at R = 0
+
+Interpretation:
+
+  A value-continuous boundary profile can still carry boundary flux if its slope is not neutral.
+  Zero boundary value and zero boundary slope are safer diagnostic conditions.
+  But compact support and smoothing must be derived, not chosen to repair recovery.
+
+[sample_results]
+[PASS] C1 toy boundary profile can carry shell-like flux -- boundary flux = -4*pi*R*phi0
+[PASS] C2 toy boundary profile has zero boundary flux -- boundary flux = 0
+[PASS] smooth compact toy profile has zero boundary flux -- boundary flux = 0
+
+========================================================================================================================
+Case 3: Boundary branch ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+BND1: smooth compact residual
+------------------------------------------------------------------------------------------------------------------------
+Branch: smooth_compact_residual
+Condition: boundary value and boundary flux vanish, and support/matching are derived before recovery
+[INFO] BND1: smooth compact residual: SAFE_IF
+Consequence: safe only as diagnostic/sample until a compact-support law is derived
+
+------------------------------------------------------------------------------------------------------------------------
+BND2: C1 residual profile
+------------------------------------------------------------------------------------------------------------------------
+Branch: C1_residual_profile
+Condition: value matches at boundary but derivative/flux may be nonzero
+[WARN] BND2: C1 residual profile: RISK
+Consequence: can hide shell flux or tune exterior A' unless derivative neutrality is derived
+
+------------------------------------------------------------------------------------------------------------------------
+BND3: C2 residual profile
+------------------------------------------------------------------------------------------------------------------------
+Branch: C2_residual_profile
+Condition: value and first derivative vanish in the toy profile
+[INFO] BND3: C2 residual profile: SAFE_IF
+Consequence: may be diagnostic if no source, metric, or recovery effect follows from the residual
+
+------------------------------------------------------------------------------------------------------------------------
+BND4: boundary shell source
+------------------------------------------------------------------------------------------------------------------------
+Branch: boundary_shell_source
+Condition: shell source changes exterior flux or hides discontinuity
+[FAIL] BND4: boundary shell source: REJECTED
+Consequence: ordinary mass preservation cannot be achieved by hidden shell source
+
+------------------------------------------------------------------------------------------------------------------------
+BND5: surface counterterm
+------------------------------------------------------------------------------------------------------------------------
+Branch: surface_counterterm
+Condition: counterterm selected after leakage appears
+[FAIL] BND5: surface counterterm: REJECTED
+Consequence: boundary counterterms cannot preserve M_A by repair
+
+------------------------------------------------------------------------------------------------------------------------
+BND6: diagnostic boundary audit
+------------------------------------------------------------------------------------------------------------------------
+Branch: diagnostic_boundary_audit
+Condition: audit labels boundary behavior without modifying equations
+[INFO] BND6: diagnostic boundary audit: SAFE_IF
+Consequence: safe bookkeeping if it has no source, metric, flux, or recovery effect
+
+------------------------------------------------------------------------------------------------------------------------
+BND7: residual-kill convention
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual_kill_convention
+Condition: residual is kept non-metric or killed before it can alter A-flux
+[INFO] BND7: residual-kill convention: PROVISIONAL
+Consequence: safer than residual mass but not a derived no-overlap theorem
+
+------------------------------------------------------------------------------------------------------------------------
+BND8: neutral residual theorem target
+------------------------------------------------------------------------------------------------------------------------
+Branch: neutral_residual_theorem_target
+Condition: derive delta F_A|boundary,non-A = 0 with no shell and no recovery tuning
+[DEFER] BND8: neutral residual theorem target: THEOREM_TARGET
+Consequence: the desired future boundary mass-preservation theorem
+
+[governance_assessments]
+[PASS] boundary branch ledger populated -- 8 boundary branches classified for mass-preservation risk
+
+========================================================================================================================
+Case 4: Rejected boundary repair routes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: boundary repair current
+------------------------------------------------------------------------------------------------------------------------
+Route: boundary_repair_current
+Forbidden use: current selected to cancel boundary flux after leakage appears
+[FAIL] R1: boundary repair current: REJECTED
+Consequence: repair current is not a mass-preservation theorem
+
+------------------------------------------------------------------------------------------------------------------------
+R2: R_V boundary cancellation
+------------------------------------------------------------------------------------------------------------------------
+Route: R_V_boundary_cancellation
+Forbidden use: relaxation role used to erase non-A boundary mismatch
+[FAIL] R2: R_V boundary cancellation: REJECTED
+Consequence: R_V cannot be a boundary purse while its operator remains role-level
+
+------------------------------------------------------------------------------------------------------------------------
+R3: H boundary counterterm
+------------------------------------------------------------------------------------------------------------------------
+Route: H_boundary_counterterm
+Forbidden use: undefined correction tensor absorbs boundary flux mismatch
+[FAIL] R3: H boundary counterterm: REJECTED
+Consequence: H_curv/H_exch remain non-insertable
+
+------------------------------------------------------------------------------------------------------------------------
+R4: curvature boundary rescue
+------------------------------------------------------------------------------------------------------------------------
+Route: curvature_boundary_rescue
+Forbidden use: curvature diagnostic or balance term smooths mass by repair
+[FAIL] R4: curvature boundary rescue: REJECTED
+Consequence: curvature admissibility remains diagnostic/branch-filter, not a mass source
+
+------------------------------------------------------------------------------------------------------------------------
+R5: recovery-tuned smoothing
+------------------------------------------------------------------------------------------------------------------------
+Route: recovery_tuned_smoothing
+Forbidden use: boundary behavior chosen to recover Schwarzschild, gamma_like, AB, or B=1/A
+[FAIL] R5: recovery-tuned smoothing: REJECTED
+Consequence: recovery remains downstream diagnostic, not construction rule
+
+------------------------------------------------------------------------------------------------------------------------
+R6: sharp support hiding shell charge
+------------------------------------------------------------------------------------------------------------------------
+Route: sharp_support_hides_shell_charge
+Forbidden use: compact support imposed with derivative jump or hidden shell flux
+[FAIL] R6: sharp support hiding shell charge: REJECTED
+Consequence: support and matching must be derived, not imposed after leakage
+
+[counterexamples]
+[FAIL] boundary repair routes rejected -- shell sources, counterterms, recovery tuning, and undefined repair currents are not mass-preservation theorems
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The boundary flux mass-preservation audit fails if a later script allows:
+
+1. non-A boundary behavior to change exterior A' or A-flux
+2. a smoothing layer to tune M_ext after recovery failure
+3. a shell source or derivative jump to hide mass leakage
+4. R_V, J_exch, curvature balance, or H to act as boundary repair
+5. compact support to be imposed without matching and no-shell conditions
+6. residual-kill to be treated as a derived boundary theorem
+7. boundary conditions to be chosen by Schwarzschild/PPN/AB recovery
+8. O to enforce boundary neutrality without domain/kernel/image/boundary law
+
+[unresolved_obligations]
+[OBLIGATION] derive boundary mass-preservation theorem -- show delta F_A|boundary,non-A = 0 with no shell source, no repair current, and no recovery tuning
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The reduced boundary warning is:
+
+  delta_A_boundary = q/r
+  delta_F_A = -4*pi*q
+  delta_M_A = -c^2*q/(2*G)
+
+Therefore:
+
+  a non-A boundary or smoothing contribution with a nonzero exterior 1/r coefficient
+  shifts the A-sector mass charge unless q = 0 or a future parent/source identity
+  derives a new mass law without double counting.
+
+This script does not prove boundary mass preservation.
+It records the reduced flux witness and the branch-level repair exclusions.
+
+Possible next script:
+  candidate_zeta_kappa_mass_neutrality_conditions.py
+
+[governance_assessments]
+[PASS] boundary flux mass-preservation audit complete -- boundary mass preservation remains theorem-targeted; only neutral diagnostic behavior is safe

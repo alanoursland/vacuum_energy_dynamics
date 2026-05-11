@@ -1,0 +1,313 @@
+
+========================================================================================================================
+Candidate J_V Mass Neutrality Conditions
+========================================================================================================================
+[INFO] Archive dependency check:
+  - zeta_kappa_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - zeta_tail_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - kappa_tail_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: J_V / J_sub / J_exch mass-neutrality problem
+========================================================================================================================
+Question:
+
+  Can J_V, J_sub, or J_exch be ordinary-sector mass-neutral?
+
+Reference discipline:
+
+  A-sector mass charge remains the reduced ordinary exterior reference.
+  J_V is unresolved; J_sub/J_exch are role-level only.
+  Sigma/R operators, flux direction, and u_vac remain missing.
+  No current branch may shift A-flux, create scalar charge, repair a boundary,
+  or reroute ordinary matter by convenience.
+  This script records reduced diagnostics and theorem burden, not a current law.
+
+[governance_assessments]
+[INFO] vacuum-current mass-neutrality audit opened -- J_V/J_sub/J_exch are audited for scalar residue, far-zone flux, repair, and source-rerouting danger
+
+========================================================================================================================
+Case 1: J_V-induced scalar residue
+========================================================================================================================
+Take a generic scalar residue that could be left by an unresolved J_V:
+
+  phi_JV(r) = C_JV/r
+
+Then:
+
+  F_phi_JV = 4*pi*r^2*phi_JV' = -4*pi*C_JV
+  delta_M_JV_like = c^2*F_phi_JV/(8*pi*G) = -C_JV*c**2/(2*G)
+
+Residual checks:
+
+  F_phi_JV + 4*pi*C_JV = 0
+  delta_M_JV_like + c^2*C_JV/(2*G) = 0
+
+Interpretation:
+
+  This is a danger diagnostic, not a licensed J_V mass law.
+  It shows that a J_V-induced 1/r scalar residue would act like a second mass coin.
+
+[derived_results]
+[PASS] J_V scalar residue flux derived -- F_phi_JV = -4*pi*C_JV
+[PASS] J_V A-like mass-shift diagnostic derived -- delta_M_JV_like = -C_JV*c**2/(2*G)
+
+========================================================================================================================
+Case 2: Far-zone radial current flux diagnostic
+========================================================================================================================
+Use generic 1/r^2 radial current profiles as diagnostics:
+
+  j_V^r    = I_V/(4*pi*r**2)
+  j_sub^r  = I_sub/(4*pi*r**2)
+  j_exch^r = I_exch/(4*pi*r**2)
+
+Their sphere fluxes are:
+
+  Phi_JV    = 4*pi*r^2*j_V^r    = I_V
+  Phi_Jsub  = 4*pi*r^2*j_sub^r  = I_sub
+  Phi_Jexch = 4*pi*r^2*j_exch^r = I_exch
+
+Neutral ordinary exterior current flux requires the relevant I coefficient to vanish
+unless a future current theorem derives a neutral transport interpretation.
+
+[derived_results]
+[PASS] J_V far-zone current flux diagnostic derived -- Phi_JV = I_V
+[PASS] J_sub far-zone current flux diagnostic derived -- Phi_Jsub = I_sub
+[PASS] J_exch far-zone current flux diagnostic derived -- Phi_Jexch = I_exch
+
+========================================================================================================================
+Case 3: Zero-net exchange diagnostic
+========================================================================================================================
+At role level, a zero-net ordinary branch would require:
+
+  Sigma_0 - R_0 = 0
+
+The symbolic net role-label residual is:
+
+  net_exchange = -R_0 + Sigma_0
+  net_exchange - (Sigma_0 - R_0) = 0
+
+Interpretation:
+
+  Zero-net exchange is a theorem target, not a declaration.
+  Sigma/R need operators, signs, strengths, domains, and boundary behavior.
+
+[derived_results]
+[PASS] zero-net exchange diagnostic stated -- neutral role target is Sigma_0 - R_0 = 0
+
+[unresolved_obligations]
+[OBLIGATION] derive Sigma/R operators before zero-net claim -- zero-net exchange cannot be asserted while Sigma/R remain role-level
+
+========================================================================================================================
+Case 4: J_V / J_sub / J_exch condition ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+JV1: unresolved J_V umbrella
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_V
+Allowed condition: J_V remains unresolved notation until a current definition, source side, domain, and flux direction are supplied
+Forbidden condition: J_V is treated as a physical mass current by name
+[DEFER] JV1: unresolved J_V umbrella: UNRESOLVED
+Consequence: J_V cannot carry ordinary exterior mass while undefined.
+
+------------------------------------------------------------------------------------------------------------------------
+JV2: J_V scalar residue
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_V residue
+Allowed condition: C_JV = 0 outside, or residue is strictly non-metric/diagnostic and has no A-flux effect
+Forbidden condition: phi_JV = C_JV/r with C_JV != 0 behaves as exterior scalar charge
+[DEFER] JV2: J_V scalar residue: THEOREM_TARGET
+Consequence: J_V must not leave a hidden 1/r scalar tail.
+
+------------------------------------------------------------------------------------------------------------------------
+JV3: J_V far-zone current flux
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_V
+Allowed condition: I_V = 0 in ordinary exterior unless a future current law derives a neutral transport meaning
+Forbidden condition: nonzero 1/r^2 far-zone current flux shifts or mimics exterior mass
+[DEFER] JV3: J_V far-zone current flux: THEOREM_TARGET
+Consequence: A far-zone vacuum current cannot become a second mass flux coin.
+
+------------------------------------------------------------------------------------------------------------------------
+JV4: u_vac domain guard
+------------------------------------------------------------------------------------------------------------------------
+Sector: u_vac / J_V domain
+Allowed condition: u_vac is defined only after J_V is nonzero, timelike where needed, and physically sourced
+Forbidden condition: u_vac is chosen first and then used to manufacture J_V or Sigma_V
+[DEFER] JV4: u_vac domain guard: UNRESOLVED
+Consequence: no frame field can rescue mass routing while J_V is undefined.
+
+------------------------------------------------------------------------------------------------------------------------
+JS1: J_sub role-level pure wind
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_sub
+Allowed condition: J_sub remains role-level or proves pure wind neutrality with no A-flux, scalar trace, boundary repair, or matter push
+Forbidden condition: J_sub gravitates by being a wind or preferred-frame flow
+[INFO] JS1: J_sub role-level pure wind: ROLE_LEVEL
+Consequence: pure wind is not gravity without an independent theorem.
+
+------------------------------------------------------------------------------------------------------------------------
+JS2: J_sub scalar trace leakage
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_sub residue
+Allowed condition: J_sub leaves no scalar residue and no exterior 1/r tail
+Forbidden condition: J_sub becomes a hidden scalar trace source
+[DEFER] JS2: J_sub scalar trace leakage: THEOREM_TARGET
+Consequence: substrate-current labels cannot hide a scalar mass route.
+
+------------------------------------------------------------------------------------------------------------------------
+JS3: J_sub boundary repair
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_sub boundary behavior
+Allowed condition: J_sub has no boundary effect unless a source-neutral boundary law is derived
+Forbidden condition: J_sub cancels boundary mismatch, shell flux, or recovery failure
+[FAIL] JS3: J_sub boundary repair: REJECTED
+Consequence: J_sub cannot be a boundary purse.
+
+------------------------------------------------------------------------------------------------------------------------
+JE1: J_exch role-level exchange current
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_exch
+Allowed condition: J_exch remains role-level until exchange source/support operators are defined
+Forbidden condition: J_exch is used as ordinary matter source side by convenience
+[INFO] JE1: J_exch role-level exchange current: ROLE_LEVEL
+Consequence: exchange is not an ordinary mass route by vocabulary.
+
+------------------------------------------------------------------------------------------------------------------------
+JE2: J_exch repair current
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_exch repair route
+Allowed condition: none in the current ordinary-sector audit
+Forbidden condition: J_exch repairs ordinary matter routing, boundary leakage, or exterior scalar tails
+[FAIL] JE2: J_exch repair current: REJECTED
+Consequence: exchange cannot fix ordinary-sector failures after the fact.
+
+------------------------------------------------------------------------------------------------------------------------
+SR1: Sigma/R zero-net branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: Sigma_V / R_V
+Allowed condition: Sigma_0 - R_0 = 0 only as a role-level neutrality target until operators, strengths, signs, and domains are derived
+Forbidden condition: zero-net is declared to hold without source and relaxation operators
+[DEFER] SR1: Sigma/R zero-net branch: THEOREM_TARGET
+Consequence: zero-net exchange is promising but not a theorem here.
+
+------------------------------------------------------------------------------------------------------------------------
+SR2: zero-creation ordinary branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: Sigma_V / R_V
+Allowed condition: ordinary sector may remain zero-creation if curvature is warping/constraint rather than vacuum creation/destruction
+Forbidden condition: creation language is used as an ordinary source while claiming neutrality
+[INFO] SR2: zero-creation ordinary branch: CANDIDATE
+Consequence: zero-creation remains a safe candidate, not a derived law.
+
+------------------------------------------------------------------------------------------------------------------------
+SR3: latent exchange branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: latent exchange / curvature-from-warping
+Allowed condition: exchange roles remain latent or diagnostic unless a real source law activates them without shifting M_A
+Forbidden condition: latent exchange becomes a hidden mass current or boundary repair
+[INFO] SR3: latent exchange branch: SAFE_IF
+Consequence: latent exchange may remain bookkeeping only if it has no source, metric, boundary, or mass effect.
+
+[governance_assessments]
+[PASS] vacuum-current condition ledger populated -- 12 current/source-role conditions classified for mass-neutrality burden
+
+========================================================================================================================
+Case 5: Rejected vacuum-current mass routes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+RJ1: undefined J_V mass current
+------------------------------------------------------------------------------------------------------------------------
+Route: undefined_JV_mass_current
+Forbidden use: J_V shifts exterior mass without current definition, flux law, or source side
+[FAIL] RJ1: undefined J_V mass current: REJECTED
+Consequence: undefined J_V cannot carry M_ext.
+
+------------------------------------------------------------------------------------------------------------------------
+RJ2: J_V scalar 1/r residue
+------------------------------------------------------------------------------------------------------------------------
+Route: JV_scalar_tail_mass_route
+Forbidden use: C_JV/r residue treated as ordinary exterior scalar mass channel
+[FAIL] RJ2: J_V scalar 1/r residue: REJECTED
+Consequence: J_V scalar residue must vanish or stay non-metric/diagnostic.
+
+------------------------------------------------------------------------------------------------------------------------
+RJ3: pure wind gravitates by existence
+------------------------------------------------------------------------------------------------------------------------
+Route: Jsub_wind_gravity
+Forbidden use: J_sub produces gravity merely because a substrate wind exists
+[FAIL] RJ3: pure wind gravitates by existence: REJECTED
+Consequence: pure wind is not a mass source.
+
+------------------------------------------------------------------------------------------------------------------------
+RJ4: exchange repair current
+------------------------------------------------------------------------------------------------------------------------
+Route: Jexch_repair_current
+Forbidden use: J_exch cancels boundary, source, scalar-tail, or recovery mismatch
+[FAIL] RJ4: exchange repair current: REJECTED
+Consequence: exchange is not repair.
+
+------------------------------------------------------------------------------------------------------------------------
+RJ5: Sigma/R tuning knob
+------------------------------------------------------------------------------------------------------------------------
+Route: Sigma_R_tuning_knob
+Forbidden use: Sigma/R roles are adjusted to preserve mass or recovery after leakage appears
+[FAIL] RJ5: Sigma/R tuning knob: REJECTED
+Consequence: Sigma/R need operators, not knobs.
+
+------------------------------------------------------------------------------------------------------------------------
+RJ6: u_vac chosen by recovery
+------------------------------------------------------------------------------------------------------------------------
+Route: recovery_chosen_u_vac
+Forbidden use: u_vac frame is selected from Schwarzschild/PPN/gamma_like/AB recovery
+[FAIL] RJ6: u_vac chosen by recovery: REJECTED
+Consequence: the vacuum frame cannot be a recovery fit.
+
+[counterexamples]
+[FAIL] vacuum-current mass routes rejected -- undefined J_V mass current, J_V scalar tail, pure-wind gravity, exchange repair, Sigma/R tuning, and recovery-chosen u_vac are not licensed
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The J_V / J_sub / J_exch mass-neutrality audit fails if a later script allows:
+
+1. J_V to shift exterior mass without a derived current and flux law
+2. J_V to leave a scalar C_JV/r residue with C_JV != 0
+3. a nonzero far-zone J_V, J_sub, or J_exch flux to count as ordinary mass
+4. J_sub to gravitate by being a pure wind or preferred-frame flow
+5. J_exch to repair ordinary source routing or boundary leakage
+6. Sigma/R zero-net language to replace source and relaxation operators
+7. Sigma/R, R_V, or J_exch to tune M_ext after recovery failure
+8. u_vac to be chosen from Schwarzschild/PPN/gamma_like/AB recovery
+9. O to enforce current neutrality without domain/kernel/image/boundary law
+
+[unresolved_obligations]
+[OBLIGATION] derive vacuum-current mass-neutrality theorem -- show J_V/J_sub/J_exch have no independent A-flux shift, scalar charge, far-zone current flux, boundary repair, or ordinary matter rerouting
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The reduced diagnostics are:
+
+  phi_JV = C_JV/r       -> F_phi_JV = -4*pi*C_JV
+  j^r = I/(4*pi*r^2)   -> sphere current flux = I
+  zero-net exchange     -> Sigma_0 - R_0 = 0
+
+Therefore ordinary-sector vacuum-current neutrality requires:
+
+  C_JV = 0 for scalar residue silence
+  I_V = I_sub = I_exch = 0 for no independent far-zone current flux
+  Sigma/R operators before any zero-net exchange claim
+  no boundary repair, source repair, matter rerouting, preferred-frame force, or recovery-chosen u_vac
+
+This script does not define J_V, J_sub, J_exch, Sigma/R, or u_vac.
+It records the current theorem burden and keeps vacuum currents role-level.
+
+Possible next script:
+  candidate_curvature_accounting_mass_neutrality.py
+
+[governance_assessments]
+[PASS] vacuum-current mass-neutrality audit complete -- J_V remains unresolved; J_sub/J_exch remain role-level; zero-net and zero-creation branches remain theorem-targeted

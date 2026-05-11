@@ -1304,6 +1304,32 @@ Status:
   NOT DERIVED
 ```
 
+Group 23 smooth-support / matching-law update:
+
+```text
+Boundary neutrality still requires a real matching/support law.
+
+Group 23 made the seam burden explicit:
+
+  structural support origin,
+  f(R) = 0,
+  f'(R) = 0 or equivalent no-flux condition,
+  distributional shell absence,
+  transition layer neutrality,
+  recovery independence,
+  source compatibility,
+  diagnostic residual non-reentry,
+  no repair route.
+
+Group 23 did not prove these conditions.
+
+Status:
+
+  REQUIRED / THEOREM_TARGET
+  GROUP 23 MATCHING/SUPPORT REQUIREMENTS EXPLICIT
+  NOT DERIVED
+```
+
 ---
 
 ## 6.7a Group 21 Mass-Neutrality Witnesses
@@ -1416,6 +1442,85 @@ Status:
 CLOSED_DIAGNOSTIC / REQUIREMENTS EXPLICIT
 BOUNDARY NEUTRALITY STILL THEOREM_TARGET
 SCALAR SILENCE STILL THEOREM_TARGET
+```
+
+---
+
+## 6.7c Group 23 Smooth Support / Matching-Law Requirements
+
+Group 23 completed the smooth-support and matching-law requirements audit.
+
+Core matching/support obligation ledger:
+
+```text
+structural support origin,
+value matching,
+slope / no-flux matching,
+distributional shell absence,
+transition layer neutrality,
+recovery independence,
+source compatibility,
+diagnostic residual non-reentry,
+no repair route.
+```
+
+Reduced seam witnesses:
+
+```text
+phi(R),
+phi'(R),
+phi''(R),
+F_R = 4*pi*R^2 phi'(R)
+```
+
+Cutoff profile witness:
+
+```text
+phi(r) = f(r) Theta(R-r)
+
+d[f(r) Theta(R-r)]/dr
+  = f'(r) Theta(R-r) - f(R) delta(R-r)
+```
+
+Transition-layer witnesses:
+
+```text
+F_layer = -4*pi*C_layer
+delta M_A|layer = -c^2 q_layer/(2G)
+Phi_layer = I_layer
+```
+
+Required transition-layer neutrality:
+
+```text
+C_layer = 0
+q_layer = 0
+I_layer = 0
+sigma_layer = 0
+alpha_recovery = 0
+source_load = 0
+layer origin is structural
+```
+
+Interpretation:
+
+```text
+Value matching alone is not enough.
+Value+slope matching is a necessary diagnostic condition, not a support theorem.
+Sharp cutoffs can create shell diagnostics.
+Smooth transition layers cannot hide mass, scalar flux, current flux, shell/source load, recovery tuning, or source load.
+Recovery is downstream audit, not construction.
+Matching/support/layer laws must preserve ordinary A-sector source routing.
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / REQUIREMENTS EXPLICIT
+COMPACT SUPPORT STILL THEOREM_TARGET
+NO-SHELL MATCHING STILL THEOREM_TARGET
+TRANSITION LAYER NEUTRALITY STILL THEOREM_TARGET
+BOUNDARY / SCALAR SILENCE STILL NOT_READY
 ```
 
 ---
@@ -1646,6 +1751,25 @@ Non-metric vocabulary is not a no-overlap theorem.
 Residual-kill remains provisional and theorem-targeted.
 ```
 
+Group 23 support/matching residual refinement:
+
+```text
+Diagnostic/non-metric residuals must not re-enter through support,
+matching, smoothing, transition-layer, recovery, or source-compatibility language.
+
+Forbidden:
+
+  residual becomes support parameter,
+  residual becomes smoothing width,
+  residual becomes transition-layer coefficient,
+  residual status chosen to suppress visible scalar tail,
+  residual used to repair boundary flux,
+  residual used as source-loaded seam parameter,
+  residual used to open parent equation.
+
+Residual non-reentry through support/matching remains theorem-targeted.
+```
+
 ---
 
 ## 7.4 Neutral Residual Alternative
@@ -1678,6 +1802,24 @@ It requires:
   no recovery-selected status.
 
 Total cancellation across residual sectors is not neutral residual status.
+```
+
+Group 23 update:
+
+```text
+Neutral residual survival also requires a real matching/support law.
+
+Required:
+
+  structural support origin,
+  value/slope matching,
+  distributional shell absence,
+  transition layer neutrality,
+  recovery independence,
+  source compatibility,
+  no residual re-entry through support or layer parameters.
+
+Toy compact profiles and smooth layers are diagnostic only.
 ```
 
 ---
@@ -1981,6 +2123,38 @@ Forbidden:
 Source-routing compatibility remains a theorem obligation.
 ```
 
+Group 23 matching/support source-compatibility update:
+
+```text
+Matching/support/layer laws must preserve ordinary source no-double-counting.
+
+Protected route:
+
+  rho / M_enc -> A-sector mass charge
+
+Forbidden duplicate source loads:
+
+  rho_shell,
+  rho_scalar,
+  rho_current,
+  rho_curv,
+  rho_H,
+  rho_exch,
+  rho_dark,
+  rho_layer_param.
+
+Required:
+
+  rho_shell = 0,
+  rho_scalar = 0,
+  rho_current = 0,
+  rho_curv = rho_H = rho_exch = rho_dark = 0,
+  rho_layer_param = 0,
+  no cancellation ledger replaces sector-by-sector zero.
+
+Matching/support/layer source compatibility remains theorem-targeted.
+```
+
 Current source assignments:
 
 | Sector                | Source                                          | Status                           |
@@ -2050,7 +2224,21 @@ curvature, H, exchange, or dark repair channels,
 
 diagnostic residuals -> must not re-enter source routing,
 
-repair routes -> rejected as source-routing substitutes.
+repair routes -> rejected as source-routing substitutes,
+
+matching/support/layer laws -> must preserve ordinary A-sector source routing,
+
+support/layer parameters -> must not carry ordinary source load,
+
+boundary shell source -> rejected as matching/support law,
+
+scalar tail source -> rejected as matching/support law,
+
+current flux source -> rejected as matching/support law,
+
+curvature/H/exchange/dark repair source -> rejected as matching/support law,
+
+source compatibility -> requires sector-by-sector zero, not total cancellation.
 ```
 
 No-double-counting rules:
@@ -2098,7 +2286,17 @@ non-A current-flux coefficients cannot be canceled by total flux ledgers,
 
 diagnostic residual labels cannot re-enter through source projectors,
 
-boundary/scalar repair mechanisms cannot be used to bypass source no-double-counting.
+boundary/scalar repair mechanisms cannot be used to bypass source no-double-counting,
+
+matching/support laws cannot duplicate A-sector source load,
+
+support radius, smoothing width, and transition-layer coefficients cannot hide ordinary source load,
+
+ordinary source cannot be rerouted into shell/scalar/current/repair seam pockets,
+
+source-loaded support parameters are rejected,
+
+source cancellation ledgers are not source compatibility.
 ```
 
 Status:
@@ -2438,6 +2636,130 @@ Meaning:
 
 ```text
 Boundary/scalar silence cannot be supplied by repair mechanisms.
+```
+
+Group 23 matching/support target ledger:
+
+```text
+structural support origin,
+f(R) = 0,
+f'(R) = 0 or equivalent no-flux matching,
+distributional shell absence,
+transition layer neutrality,
+recovery independence,
+source compatibility,
+diagnostic residual non-reentry,
+no repair route
+```
+
+Status:
+
+```text
+REQUIREMENTS EXPLICIT / THEOREM_TARGET
+NOT DERIVED
+```
+
+Meaning:
+
+```text
+Compact support and no-shell matching are not solved.
+The exact matching/support closure targets are now explicit.
+```
+
+Boundary regularity witness:
+
+```text
+F_R = 4*pi*R^2 phi'(R)
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / GROUP 23
+```
+
+Meaning:
+
+```text
+Value matching alone is insufficient.
+Value+slope matching is necessary diagnostically, but not a support theorem.
+```
+
+Cutoff shell witness:
+
+```text
+phi(r) = f(r) Theta(R-r)
+
+d[f(r) Theta(R-r)]/dr
+  = f'(r) Theta(R-r) - f(R) delta(R-r)
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / GROUP 23
+```
+
+Meaning:
+
+```text
+Sharp support and exterior zero do not prove no-shell behavior.
+```
+
+Transition-layer neutrality witness:
+
+```text
+F_layer = -4*pi*C_layer
+delta M_A|layer = -c^2 q_layer/(2G)
+Phi_layer = I_layer
+
+Required:
+  C_layer = 0
+  q_layer = 0
+  I_layer = 0
+  sigma_layer = 0
+  alpha_recovery = 0
+  source_load = 0
+```
+
+Status:
+
+```text
+REQUIREMENTS EXPLICIT / THEOREM_TARGET
+NOT DERIVED
+```
+
+Meaning:
+
+```text
+Smoothness is not neutrality.
+```
+
+Recovery-independence guard:
+
+```text
+support radius,
+smoothing width,
+AB/gamma coefficients,
+residual tail status,
+boundary data,
+layer data
+
+must not be selected from:
+
+  Schwarzschild recovery,
+  PPN / gamma_like recovery,
+  AB = 1,
+  B = 1/A,
+  scalar-tail failure,
+  boundary-load cancellation,
+  parent-fit closure.
+```
+
+Status:
+
+```text
+REQUIRED / THEOREM_TARGET
 ```
 
 Vacuum exchange theorem target:
@@ -2924,7 +3246,18 @@ diagnostic residual inertness theorem,
 diagnostic residual non-reentry theorem,
 recovery-independent boundary data theorem,
 source-routing compatibility with boundary/scalar silence,
-no-repair boundary theorem.
+no-repair boundary theorem,
+structural support origin theorem,
+value matching theorem,
+slope / no-flux matching theorem,
+transition layer neutrality theorem,
+recovery-independent support parameter theorem,
+recovery-independent smoothing/layer theorem,
+source-compatible matching law,
+matching/support residual non-reentry theorem,
+no-repair matching/support law,
+compact-support admissibility theorem,
+source-compatible transition-layer theorem.
 ```
 
 ---
@@ -2965,6 +3298,30 @@ Boundary neutrality and scalar silence:
   diagnostic/non-metric residuals must remain inert and non-reentering;
   boundary neutrality and scalar silence remain theorem-targeted;
   parent equation remains not ready.
+
+Smooth support and matching laws:
+  Group 23 completed the smooth-support and matching-law requirements audit;
+  the matching/support target conditions are now explicit:
+    structural support origin,
+    value matching,
+    slope / no-flux matching,
+    distributional shell absence,
+    transition layer neutrality,
+    recovery independence,
+    source compatibility,
+    diagnostic residual non-reentry,
+    no repair route;
+  value matching alone is insufficient;
+  value+slope matching is necessary diagnostically but not a support theorem;
+  cutoff profiles can create value-jump and slope/flux shell diagnostics;
+  compact support is admissible only with structural origin, no shell, no tails,
+  recovery independence, no hidden tuning, and source compatibility;
+  smooth transition layers cannot hide mass, scalar flux, current flux,
+  shell/source load, recovery tuning, or duplicate source load;
+  recovery-selected support/smoothing/boundary/layer parameters remain rejected;
+  matching/support/layer laws must preserve ordinary A-sector source routing;
+  compact support, no-shell matching, transition neutrality, boundary/scalar silence,
+  and parent equation remain not ready.
 
 Vector sector:
   source/projection/action/shape reconstructed,
@@ -3171,7 +3528,30 @@ recovery target used to select smoothing/support/boundary/current/residual data,
 diagnostic residual re-enters metric/source/boundary behavior,
 nonmetric vocabulary treated as no-overlap theorem,
 neutral transport target treated as current law,
-parent equation opened from Group 22 requirements alone.
+parent equation opened from Group 22 requirements alone,
+Group 23 diagnostics treated as support theorem,
+matching regularity ladder treated as compact-support proof,
+value+slope matching treated as full no-shell theorem,
+distributional shell audit treated as no-shell theorem,
+compact-support admissibility ledger treated as derived compact support,
+smooth transition layer treated as neutral by smoothness,
+finite-width layer hiding shell/source load,
+transition width chosen from recovery,
+transition coefficient chosen to cancel scalar tail, A-tail, or current flux,
+support radius chosen from Schwarzschild recovery,
+smoothing width chosen from PPN/gamma_like recovery,
+coefficient chosen to enforce AB=1 or B=1/A,
+residual tail status chosen from scalar-tail failure,
+boundary parameter chosen to cancel A-tail/current/shell/source load,
+parent-fit parameter chosen to make a parent-looking equation close,
+ordinary source rerouted into support radius, smoothing width, or layer coefficient,
+ordinary source rerouted into boundary shell by matching law,
+ordinary source rerouted into scalar tail by matching law,
+ordinary source rerouted into current flux by matching law,
+source cancellation ledger treated as source compatibility,
+diagnostic residual re-enters through support/matching/layer parameters,
+O/H/dark/exchange/curvature/current object supplies missing support law,
+parent equation opened from Group 23 requirements alone.
 ```
 
 Major closure risks:
@@ -3506,6 +3886,38 @@ Status:
   NOT DERIVED
 ```
 
+Group 23 status:
+
+```text
+matching/support requirements are now explicit but not derived.
+
+Required:
+
+  structural support origin,
+  f(R) = 0,
+  f'(R) = 0 or equivalent no-flux condition,
+  distributional shell absence,
+  neutral transition layer,
+  recovery-independent support/smoothing/boundary/layer data,
+  source-compatible matching/support/layer law,
+  no residual re-entry through support/matching,
+  no repair route.
+
+Diagnostic lessons:
+
+  value matching alone is insufficient.
+  value+slope matching is a necessary diagnostic condition, not a support theorem.
+  sharp cutoffs can create shell diagnostics.
+  smooth layers can hide load unless their coefficients vanish or are theorem-routed.
+  recovery cannot choose seam data.
+  ordinary source load cannot hide in seam pockets.
+
+Status:
+
+  THEOREM_TARGET / REQUIREMENTS EXPLICIT
+  NOT DERIVED
+```
+
 Candidate safety routes:
 
 ```text
@@ -3535,7 +3947,20 @@ dark boundary patch,
 recovery-tuned smoothing,
 sharp support hiding shell charge,
 total scalar-tail cancellation,
-total current-flux cancellation.
+total current-flux cancellation,
+support by declaration,
+exterior zero as support proof,
+value+slope matching as full support theorem,
+smoothness as neutrality,
+finite-width shell disguise,
+recovery-selected support,
+recovery-selected smoothing,
+AB-product tuning,
+tail-suppression tuning,
+boundary-load tuning,
+parent-fit parameter,
+source-loaded support parameter,
+source cancellation ledger.
 ```
 
 ## 17.7 Recovery Audit
@@ -3575,6 +4000,26 @@ Meaning:
 ```text
 Recovery may test the branch.
 Recovery may not build the branch.
+```
+
+Group 23 recovery-independence update:
+
+```text
+Recovery remains downstream of support/matching/layer construction.
+
+Rejected as construction:
+
+  support radius from Schwarzschild,
+  smoothing width from PPN/gamma_like,
+  coefficient from AB=1 or B=1/A,
+  residual tail status from scalar-tail failure,
+  boundary data from A-tail/current/shell/source cancellation,
+  transition layer width/profile from recovery,
+  parent-fit parameter tuning.
+
+Allowed:
+
+  recovery tests only after support/matching/layer data are fixed structurally.
 ```
 
 ---
@@ -3643,50 +4088,60 @@ Boundary neutrality and exterior scalar silence remain theorem-targeted.
 Parent equation remains not ready.
 ```
 
+Completed smooth support and matching laws audit (Group 23):
+
+```text
+Matching regularity ladder is explicit.
+Distributional shell dangers are explicit.
+Compact support admissibility conditions are explicit.
+Transition layer mass/flux/source/recovery burdens are explicit.
+Recovery-selected boundary/support/layer parameters remain rejected.
+Matching/support/layer laws must preserve ordinary source no-double-counting.
+Matching/support theorem obligations are explicit.
+Compact support, no-shell matching, transition neutrality, boundary/scalar silence,
+and parent equation remain not ready.
+```
+
 The next technical target should be framed as one of the following narrower routes:
 
 ```text
-23_smooth_support_and_matching_laws
-23_metric_insertion_recovery_retest
-23_role_specific_boundary_projectors
-23_reduced_observational_audit
+24_metric_insertion_recovery_retest
+24_role_specific_boundary_projectors
+24_source_compatible_boundary_laws
+24_reduced_observational_audit
 ```
 
 Recommended next group:
 
 ```text
-23_smooth_support_and_matching_laws
+24_metric_insertion_recovery_retest
 ```
 
 Reason:
 
 ```text
-Group 22 repeatedly reduced the boundary/scalar bottleneck to:
-  value/slope matching,
-  no derivative jump,
-  no shell source,
-  support law before recovery,
-  no repair routes.
+Groups 22 and 23 have now built the guardrails needed to retest metric insertion
+without smuggling boundary/scalar/support assumptions:
+
+  no recovery-selected support,
+  no toy-profile support theorem,
+  no shell hiding,
+  no transition-layer load hiding,
+  no duplicate source seam pockets,
+  no O/H/dark/exchange/curvature repair.
 ```
 
-Caution:
+Safe alternatives:
 
 ```text
-Do not use toy profiles, sharp cutoffs, recovery-selected support,
-O, H, dark labels, exchange, or curvature rescue as proof.
-```
+24_source_compatible_boundary_laws
+  if the project wants to attack the still-open source-compatible matching/support theorem directly;
 
-Alternative safe handoffs:
+24_role_specific_boundary_projectors
+  if projector structure becomes the next bottleneck;
 
-```text
-23_metric_insertion_recovery_retest
-  if testing B_s/F_zeta insertion against Group 22 guardrails;
-
-23_role_specific_boundary_projectors
-  if attempting real projector routes with domain, kernel, image, divergence, and boundary law;
-
-23_reduced_observational_audit
-  if auditing reduced consequences without claiming parent closure.
+24_reduced_observational_audit
+  if no theorem route is ready and reduced consequences should be audited without claiming parent closure.
 ```
 
 Known unresolved dependencies (retained from prior status):
@@ -3775,6 +4230,29 @@ Group 22 boundary-neutrality / scalar-silence status:
   boundary neutrality and exterior scalar silence remain theorem-targeted;
   parent equation remains not ready.
 
+Group 23 smooth-support / matching-law status:
+  matching regularity ladder is explicit;
+  value jump is rejected;
+  value matching alone is risky;
+  value+slope matching is necessary diagnostically but not a support theorem;
+  cutoff profiles f(r) Theta(R-r) can create delta-shell diagnostics from f(R)
+  and slope/flux diagnostics from f'(R);
+  compact support requires structural origin, f(R)=0, f'(R)=0/no-flux,
+  shell absence, recovery independence, no hidden tuning, no A-tail,
+  no scalar tail, and source compatibility;
+  smooth transition layers must have zero C_layer, q_layer, I_layer,
+  sigma_layer, alpha_recovery, and source_load, with structural origin;
+  recovery-selected support radius, smoothing width, AB/gamma coefficients,
+  residual tail status, boundary data, and layer data remain rejected;
+  matching/support/layer laws must preserve A-sector source routing and create
+  no duplicate shell/scalar/current/repair/parameter source loads;
+  real matching/support law still requires structural support origin,
+  value matching, slope/no-flux matching, distributional shell absence,
+  transition layer neutrality, recovery independence, source compatibility,
+  residual non-reentry, and no repair route;
+  compact support, no-shell matching, transition neutrality,
+  boundary/scalar silence, and parent equation remain not ready.
+
 Residual-kill / non-metric residual is the safest provisional convention.
 
 Boundary safety is required and not derived:
@@ -3824,10 +4302,11 @@ Parent correction tensor status:
 
 The theory should not yet write a final parent equation.
 
-Group 22 did not open the parent gate.
+Group 23 did not open the parent gate.
 
-The next honest target is a narrower proof or constraint group,
-most directly smooth support and matching laws,
+The next honest target is a narrower metric-insertion retest,
+projector-law audit, source-compatible boundary-law audit,
+or reduced observational audit,
 not parent closure.
 ```
 
@@ -3842,4 +4321,10 @@ No compact-support theorem is earned.
 No toy profile substitutes for no-shell matching.
 No repair route substitutes for boundary neutrality.
 No parent equation gate opens after Group 22.
+No smooth-support theorem is earned.
+No no-shell matching theorem is earned.
+No transition-layer neutrality theorem is earned.
+No recovery-independent seam construction is earned.
+No source-compatible matching law is earned.
+No parent equation gate opens after Group 23.
 ```

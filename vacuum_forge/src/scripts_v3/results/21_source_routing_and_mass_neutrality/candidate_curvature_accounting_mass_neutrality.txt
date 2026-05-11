@@ -1,0 +1,309 @@
+
+========================================================================================================================
+Candidate Curvature Accounting Mass Neutrality
+========================================================================================================================
+[INFO] Archive dependency check:
+  - JV_mass_neutrality_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - JV_scalar_residue_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Curvature accounting mass-neutrality problem
+========================================================================================================================
+Question:
+
+  Can curvature admissibility or e_curv affect exterior mass?
+
+Reference discipline:
+
+  A-sector mass charge remains the reduced ordinary exterior reference.
+  A_curv is diagnostic / branch-filter until a source-neutral dynamics is derived.
+  e_curv is diagnostic / accounting only and not source energy.
+  J_curv remains unresolved; curvature balance remains theorem-targeted.
+  No curvature object may smooth mass, repair a boundary, or shift M_ext by declaration.
+  This script records reduced diagnostics and theorem burden, not curvature dynamics.
+
+[governance_assessments]
+[INFO] curvature accounting mass-neutrality audit opened -- A_curv/e_curv/J_curv are audited for scalar residue, A-tail, far-zone flux, boundary repair, and source-reservoir danger
+
+========================================================================================================================
+Case 1: Curvature scalar residue
+========================================================================================================================
+Take a generic curvature diagnostic residue:
+
+  phi_curv(r) = C_curv/r
+
+Then:
+
+  F_phi_curv = 4*pi*r^2*phi_curv' = -4*pi*C_curv
+  delta_M_curv_like = c^2*F_phi_curv/(8*pi*G) = -C_curv*c**2/(2*G)
+
+Residual checks:
+
+  F_phi_curv + 4*pi*C_curv = 0
+  delta_M_curv_like + c^2*C_curv/(2*G) = 0
+
+Interpretation:
+
+  This is a danger diagnostic, not a licensed curvature mass law.
+  A nonzero curvature 1/r scalar residue would behave like hidden scalar charge.
+
+[derived_results]
+[PASS] curvature scalar residue flux derived -- F_phi_curv = -4*pi*C_curv
+[PASS] curvature A-like mass-shift diagnostic derived -- delta_M_curv_like = -C_curv*c**2/(2*G)
+
+========================================================================================================================
+Case 2: e_curv source-reservoir diagnostic
+========================================================================================================================
+If curvature accounting were incorrectly allowed to induce an A-like exterior tail:
+
+  delta_A_e(r) = q_e/r
+
+then:
+
+  delta_F_A|e_curv = 4*pi*r^2*delta_A_e' = -4*pi*q_e
+  delta_M_A|e_curv = c^2*delta_F_A/(8*pi*G) = -c**2*q_e/(2*G)
+
+Residual checks:
+
+  delta_F_A|e_curv + 4*pi*q_e = 0
+  delta_M_A|e_curv + c^2*q_e/(2*G) = 0
+
+Interpretation:
+
+  This is not a source law.
+  It shows why e_curv cannot become an exterior source reservoir by vocabulary.
+
+[derived_results]
+[PASS] e_curv A-tail flux diagnostic derived -- delta_F_A|e_curv = -4*pi*q_e
+[PASS] e_curv A-like mass-shift diagnostic derived -- delta_M_A|e_curv = -c**2*q_e/(2*G)
+
+========================================================================================================================
+Case 3: J_curv far-zone flux and curvature-balance diagnostic
+========================================================================================================================
+Use a generic far-zone radial curvature-current profile:
+
+  j_curv^r = I_curv/(4*pi*r**2)
+
+Its sphere flux is:
+
+  Phi_Jcurv = 4*pi*r^2*j_curv^r = I_curv
+
+Role-level curvature balance target:
+
+  curvature_balance = S_curv - R_curv = -R_curv + S_curv
+
+Residual checks:
+
+  Phi_Jcurv - I_curv = 0
+  curvature_balance - (S_curv - R_curv) = 0
+
+Interpretation:
+
+  J_curv is unresolved; a nonzero far-zone curvature-current coefficient is a mass-leak danger.
+  Curvature balance is a theorem target, not a repair knob.
+
+[derived_results]
+[PASS] J_curv far-zone current flux diagnostic derived -- Phi_Jcurv = I_curv
+[PASS] curvature balance diagnostic stated -- role-level target is S_curv - R_curv = 0 only after operators exist
+
+[unresolved_obligations]
+[OBLIGATION] derive J_curv and curvature-balance operators before neutrality claim -- curvature current and balance cannot be asserted while source side, orientation, and boundary law are missing
+
+========================================================================================================================
+Case 4: Curvature accounting condition ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: A_curv diagnostic branch-filter
+------------------------------------------------------------------------------------------------------------------------
+Sector: A_curv
+Allowed condition: A_curv remains diagnostic / branch-filter or receives independent source-neutral dynamics
+Forbidden condition: A_curv changes A-flux, selects boundary behavior after recovery failure, or becomes scalar curvature charge
+[INFO] C1: A_curv diagnostic branch-filter: DIAGNOSTIC_ONLY
+Consequence: curvature admissibility can filter branches only if it does not become dynamics by vocabulary.
+
+------------------------------------------------------------------------------------------------------------------------
+C2: A_curv scalar residue neutrality
+------------------------------------------------------------------------------------------------------------------------
+Sector: A_curv residue
+Allowed condition: C_curv = 0 outside, or curvature residue is strictly diagnostic/non-metric
+Forbidden condition: phi_curv = C_curv/r with C_curv != 0 treated as ordinary exterior scalar charge
+[DEFER] C2: A_curv scalar residue neutrality: THEOREM_TARGET
+Consequence: curvature diagnostics must not leave a hidden scalar mass tail.
+
+------------------------------------------------------------------------------------------------------------------------
+C3: e_curv accounting-only status
+------------------------------------------------------------------------------------------------------------------------
+Sector: e_curv
+Allowed condition: e_curv remains diagnostic/accounting and never sources A without derivation
+Forbidden condition: e_curv is counted as exterior source energy or coefficient reservoir
+[INFO] C3: e_curv accounting-only status: ACCOUNTING_ONLY
+Consequence: curvature accounting cannot become mass source by naming it energy.
+
+------------------------------------------------------------------------------------------------------------------------
+C4: e_curv A-tail danger
+------------------------------------------------------------------------------------------------------------------------
+Sector: e_curv source-reservoir route
+Allowed condition: q_e = 0 unless a future source law derives e_curv routing and no double counting
+Forbidden condition: e_curv induces delta_A = q_e/r and shifts M_A by source-reservoir logic
+[FAIL] C4: e_curv A-tail danger: REJECTED
+Consequence: e_curv cannot become a second exterior A-tail source.
+
+------------------------------------------------------------------------------------------------------------------------
+C5: J_curv unresolved current
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_curv
+Allowed condition: J_curv remains unresolved until orientation, source side, boundary law, and mass neutrality are defined
+Forbidden condition: J_curv is used as a curvature repair current or gradient-by-fiat
+[DEFER] C5: J_curv unresolved current: UNRESOLVED
+Consequence: J_curv cannot carry ordinary exterior mass while undefined.
+
+------------------------------------------------------------------------------------------------------------------------
+C6: J_curv far-zone flux neutrality
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_curv far-zone flux
+Allowed condition: I_curv = 0 in ordinary exterior unless a future curvature-current law derives neutral transport
+Forbidden condition: nonzero curvature-current sphere flux shifts or mimics exterior mass
+[DEFER] C6: J_curv far-zone flux neutrality: THEOREM_TARGET
+Consequence: curvature flux is not an ordinary mass flux coin.
+
+------------------------------------------------------------------------------------------------------------------------
+C7: curvature balance role target
+------------------------------------------------------------------------------------------------------------------------
+Sector: curvature balance
+Allowed condition: S_curv - R_curv = 0 only as a future theorem target with defined operators
+Forbidden condition: curvature balance is used as mass repair or singularity bounce by declaration
+[DEFER] C7: curvature balance role target: THEOREM_TARGET
+Consequence: curvature balance remains theorem-heavy and cannot tune M_ext.
+
+------------------------------------------------------------------------------------------------------------------------
+C8: anti-singularity branch-filter guard
+------------------------------------------------------------------------------------------------------------------------
+Sector: finite admissibility / anti-singularity language
+Allowed condition: admissibility filters candidate branches without becoming a source reservoir or bounce energy
+Forbidden condition: branch-kill or finite-admissibility language is called dynamics that changes exterior mass
+[INFO] C8: anti-singularity branch-filter guard: SAFE_IF
+Consequence: anti-singularity language remains diagnostic until a real current/source law exists.
+
+------------------------------------------------------------------------------------------------------------------------
+C9: curvature boundary neutrality
+------------------------------------------------------------------------------------------------------------------------
+Sector: curvature boundary behavior
+Allowed condition: curvature boundary terms are neutral, no-shell, and recovery-independent if introduced
+Forbidden condition: curvature smoothing preserves mass by repair or hides boundary flux
+[DEFER] C9: curvature boundary neutrality: THEOREM_TARGET
+Consequence: curvature boundary behavior cannot be a boundary purse.
+
+------------------------------------------------------------------------------------------------------------------------
+C10: H_curv rescue dependency
+------------------------------------------------------------------------------------------------------------------------
+Sector: H_curv / correction tensor dependency
+Allowed condition: H_curv remains non-insertable until tensor definition, source side, divergence safety, and mass neutrality are derived
+Forbidden condition: H_curv is introduced as curvature rescue, M_ext correction, boundary counterterm, or Bianchi paint
+[FAIL] C10: H_curv rescue dependency: NOT_INSERTABLE
+Consequence: correction tensors cannot be inserted from curvature accounting language.
+
+[governance_assessments]
+[PASS] curvature accounting ledger populated -- 10 curvature/accounting conditions classified for mass-neutrality burden
+
+========================================================================================================================
+Case 5: Rejected curvature mass routes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+RC1: e_curv source reservoir
+------------------------------------------------------------------------------------------------------------------------
+Route: e_curv_source_reservoir
+Forbidden use: e_curv counted as ordinary exterior source energy or coefficient reservoir
+[FAIL] RC1: e_curv source reservoir: REJECTED
+Consequence: curvature energy accounting cannot become mass source by naming it energy.
+
+------------------------------------------------------------------------------------------------------------------------
+RC2: curvature balance as mass repair
+------------------------------------------------------------------------------------------------------------------------
+Route: curvature_balance_mass_repair
+Forbidden use: curvature balance adjusted to preserve M_ext or recovery after leakage appears
+[FAIL] RC2: curvature balance as mass repair: REJECTED
+Consequence: balance requires operators and cannot tune exterior mass.
+
+------------------------------------------------------------------------------------------------------------------------
+RC3: J_curv gradient by fiat
+------------------------------------------------------------------------------------------------------------------------
+Route: J_curv_gradient_by_fiat
+Forbidden use: J_curv direction, sign, or flux chosen to cancel a boundary or singularity problem
+[FAIL] RC3: J_curv gradient by fiat: REJECTED
+Consequence: curvature current needs orientation, source side, and boundary law first.
+
+------------------------------------------------------------------------------------------------------------------------
+RC4: branch-kill called bounce
+------------------------------------------------------------------------------------------------------------------------
+Route: branch_kill_called_bounce
+Forbidden use: finite-admissibility rejection is rebranded as a dynamical anti-singularity mechanism
+[FAIL] RC4: branch-kill called bounce: REJECTED
+Consequence: diagnostic branch filtering is not dynamics.
+
+------------------------------------------------------------------------------------------------------------------------
+RC5: H_curv curvature rescue
+------------------------------------------------------------------------------------------------------------------------
+Route: H_curv_curvature_rescue
+Forbidden use: undefined H_curv inserted to absorb curvature, boundary, divergence, or mass mismatch
+[FAIL] RC5: H_curv curvature rescue: REJECTED
+Consequence: H_curv remains non-insertable.
+
+------------------------------------------------------------------------------------------------------------------------
+RC6: recovery-chosen curvature route
+------------------------------------------------------------------------------------------------------------------------
+Route: recovery_chosen_curvature_route
+Forbidden use: curvature scalar, coefficient, boundary behavior, or admissibility threshold chosen from Schwarzschild/PPN/gamma_like/AB recovery
+[FAIL] RC6: recovery-chosen curvature route: REJECTED
+Consequence: recovery remains downstream diagnostic, not a curvature-routing rule.
+
+[counterexamples]
+[FAIL] curvature mass routes rejected -- e_curv source reservoir, curvature balance repair, J_curv by fiat, branch-kill bounce, H_curv rescue, and recovery-chosen curvature routes are not licensed
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The curvature accounting mass-neutrality audit fails if a later script allows:
+
+1. A_curv to alter A-flux or M_ext as a branch-filter side effect
+2. e_curv to become exterior source energy or a coefficient reservoir
+3. J_curv to act as a repair current without definition, orientation, source side, or boundary law
+4. curvature balance to tune mass or recovery after leakage appears
+5. finite admissibility or branch-kill language to become bounce dynamics by name
+6. curvature boundary behavior to smooth mass by repair or hide shell flux
+7. H_curv to be inserted as curvature rescue before tensor definition and neutrality
+8. Schwarzschild/PPN/gamma_like/AB recovery to choose curvature scalar, coefficient, threshold, or boundary behavior
+9. O to enforce curvature/source neutrality without domain/kernel/image/boundary law
+
+[unresolved_obligations]
+[OBLIGATION] derive curvature-accounting mass-neutrality theorem -- show A_curv/e_curv/J_curv have no independent A-flux shift, scalar charge, source reservoir, boundary repair, or recovery tuning
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The reduced diagnostics are:
+
+  phi_curv = C_curv/r      -> F_phi_curv = -4*pi*C_curv
+  delta_A_e = q_e/r        -> delta_M_A|e_curv = -c^2*q_e/(2*G)
+  j_curv^r = I_curv/(4*pi*r^2) -> sphere current flux = I_curv
+  curvature balance target -> S_curv - R_curv = 0 only after operators exist
+
+Therefore ordinary-sector curvature accounting neutrality requires:
+
+  C_curv = 0 for scalar residue silence
+  q_e = 0 for no e_curv A-tail source-reservoir effect
+  I_curv = 0 for no independent far-zone curvature-current flux
+  A_curv and e_curv remain diagnostic/accounting unless source-neutral dynamics are derived
+  J_curv, curvature balance, and boundary behavior remain theorem-targeted
+  no mass repair, source reservoir, bounce-by-name, H_curv rescue, or recovery-chosen curvature route
+
+This script does not define curvature dynamics or J_curv.
+It records the current theorem burden and keeps curvature accounting diagnostic.
+
+Possible next script:
+  candidate_correction_tensor_mass_neutrality_guard.py
+
+[governance_assessments]
+[PASS] curvature accounting mass-neutrality audit complete -- curvature remains diagnostic/accounting/branch-filter; mass neutrality remains required and not derived

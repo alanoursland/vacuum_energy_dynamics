@@ -1,0 +1,226 @@
+
+========================================================================================================================
+Candidate Residual Scalar Tail Flux Audit
+========================================================================================================================
+[INFO] Archive dependency check:
+  - non_A_sector_mass_neutrality_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Residual scalar tail flux problem
+========================================================================================================================
+Question:
+
+  What exterior scalar tails are automatically mass-dangerous?
+
+Reference discipline:
+
+  A-sector mass charge remains the reduced ordinary exterior reference.
+  Non-A residual scalar tails must not create a second exterior flux coin.
+  This script tests the surface flux of a generic 1/r residual tail.
+  It does not prove scalar silence for every sector.
+
+
+[governance_assessments]
+[INFO] residual scalar tail audit opened -- testing whether a generic non-A 1/r residual carries exterior surface flux
+
+========================================================================================================================
+Case 1: Generic 1/r scalar tail flux
+========================================================================================================================
+Take a generic residual scalar tail:
+
+  phi_tail(r) = C/r
+
+Then:
+
+  dphi_tail/dr = -C/r**2
+
+The reduced surface flux is:
+
+  F_phi = 4*pi*r^2*dphi_tail/dr = -4*pi*C
+
+Flux residual:
+
+  F_phi + 4*pi*C = 0
+
+Neutrality condition for this tail:
+
+  Eq(C, 0)
+
+[derived_results]
+[PASS] 1/r tail flux derived -- F_phi = -4*pi*C
+[PASS] generic nonzero C gives nonzero scalar flux -- F_phi vanishes only when the tail coefficient C vanishes
+
+========================================================================================================================
+Case 2: Power-tail diagnostic
+========================================================================================================================
+For a diagnostic power tail:
+
+  phi_n(r) = C/r**n
+
+the reduced surface flux is:
+
+  F_n = -4*pi*C*n*r**(1 - n)
+
+Special cases:
+
+  n = 1: F_n = -4*pi*C
+  n = 2: F_n = -8*pi*C/r
+
+Interpretation:
+
+  The 1/r tail is the constant-flux danger.
+  Faster falloff may remove far-zone constant flux, but still needs boundary/domain checks.
+
+[sample_results]
+[PASS] 1/r tail is constant-flux scalar residue -- F_n at n=1 is -4*pi*C
+[INFO] faster-falloff diagnostic still boundary-sensitive -- F_n at n=2 is -8*pi*C/r
+
+========================================================================================================================
+Case 3: Sector tail inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+T1: zeta residual scalar tail
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual
+Dangerous tail: zeta_tail = C_zeta/r
+Why dangerous: nonzero C_zeta gives exterior scalar flux and can behave as a second scalar mass route
+Required condition: C_zeta = 0 outside, or residual zeta is strictly non-metric / killed / compact-neutral
+[WARN] T1: zeta residual scalar tail: RISK
+Consequence: zeta residual cannot carry ordinary exterior scalar charge by declaration.
+
+------------------------------------------------------------------------------------------------------------------------
+T2: kappa residual scalar tail
+------------------------------------------------------------------------------------------------------------------------
+Sector: kappa_residual
+Dangerous tail: kappa_tail = C_kappa/r
+Why dangerous: nonzero C_kappa breaks exterior scalar silence and can duplicate A-sector mass response
+Required condition: C_kappa = 0 outside, or kappa is suppressed / non-metric / compact-neutral
+[WARN] T2: kappa residual scalar tail: RISK
+Consequence: kappa residual remains diagnostic or theorem-targeted, not an exterior scalar mass channel.
+
+------------------------------------------------------------------------------------------------------------------------
+T3: J_V-induced scalar residue
+------------------------------------------------------------------------------------------------------------------------
+Sector: J_V_residue
+Dangerous tail: phi_JV = C_JV/r
+Why dangerous: an unresolved vacuum current leaving a 1/r residue becomes a hidden scalar current charge
+Required condition: define J_V and prove C_JV = 0 or route it through a derived A-sector law
+[DEFER] T3: J_V-induced scalar residue: UNRESOLVED
+Consequence: J_V cannot leave a scalar residue while the current itself is undefined.
+
+------------------------------------------------------------------------------------------------------------------------
+T4: curvature scalar residue
+------------------------------------------------------------------------------------------------------------------------
+Sector: A_curv / e_curv / J_curv residue
+Dangerous tail: phi_curv = C_curv/r
+Why dangerous: curvature diagnostics become source dynamics if they carry exterior scalar flux
+Required condition: curvature objects remain diagnostic/branch-filter or prove C_curv = 0
+[DEFER] T4: curvature scalar residue: THEOREM_TARGET
+Consequence: curvature admissibility cannot become scalar mass energy by being named curvature.
+
+------------------------------------------------------------------------------------------------------------------------
+T5: correction-tensor scalar leakage
+------------------------------------------------------------------------------------------------------------------------
+Sector: H_curv / H_exch trace leakage
+Dangerous tail: phi_H = C_H/r
+Why dangerous: tensor trace leakage can mimic a hidden scalar correction to exterior mass
+Required condition: H remains non-insertable, or future tensor definition proves scalar trace neutrality C_H = 0
+[DEFER] T5: correction-tensor scalar leakage: THEOREM_TARGET
+Consequence: H_curv/H_exch cannot enter as scalar tail cancellation or mass correction.
+
+------------------------------------------------------------------------------------------------------------------------
+T6: boundary shell scalar residue
+------------------------------------------------------------------------------------------------------------------------
+Sector: boundary_smoothing / shell residue
+Dangerous tail: phi_boundary = C_boundary/r
+Why dangerous: a boundary shell or smoothing layer can tune exterior flux while pretending to preserve mass
+Required condition: derive no shell scalar source and C_boundary = 0 without recovery-tuned smoothing
+[DEFER] T6: boundary shell scalar residue: THEOREM_TARGET
+Consequence: boundary purse stays closed until scalar silence and mass preservation are derived.
+
+[governance_assessments]
+[PASS] sector scalar-tail inventory populated -- 6 residual-tail sectors audited for scalar-flux danger
+
+========================================================================================================================
+Case 4: Branch classification
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: residual 1/r tail with C != 0
+------------------------------------------------------------------------------------------------------------------------
+Branch: nonzero_residual_scalar_tail
+Condition: F_phi = -4*pi*C is nonzero
+[FAIL] B1: residual 1/r tail with C != 0: REJECTED
+Consequence: ordinary-sector residual scalar tail carries exterior flux and fails scalar silence
+
+------------------------------------------------------------------------------------------------------------------------
+B2: residual 1/r tail with C = 0
+------------------------------------------------------------------------------------------------------------------------
+Branch: zero_amplitude_scalar_tail
+Condition: C = 0
+[INFO] B2: residual 1/r tail with C = 0: SAFE_IF
+Consequence: the dangerous exterior 1/r scalar flux vanishes
+
+------------------------------------------------------------------------------------------------------------------------
+B3: compact or faster-decaying diagnostic residual
+------------------------------------------------------------------------------------------------------------------------
+Branch: compact_or_diagnostic_residual
+Condition: no exterior 1/r coefficient and no boundary shell flux
+[INFO] B3: compact or faster-decaying diagnostic residual: SAFE_IF
+Consequence: may remain diagnostic if it has no metric, source, boundary, or A-flux effect
+
+------------------------------------------------------------------------------------------------------------------------
+B4: tail routed through A-sector by future theorem
+------------------------------------------------------------------------------------------------------------------------
+Branch: A_sector_routed_tail
+Condition: future parent/source identity derives route and avoids double counting
+[DEFER] B4: tail routed through A-sector by future theorem: THEOREM_TARGET
+Consequence: not licensed in this script; remains a high-burden future route
+
+[counterexamples]
+[FAIL] nonzero residual 1/r scalar tail rejected -- C != 0 gives F_phi = -4*pi*C, a nonzero exterior scalar flux
+
+[governance_assessments]
+[PASS] scalar-tail branch ledger complete -- safe branches require C = 0, compact/diagnostic behavior, or future A-sector routing theorem
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The residual scalar-tail audit fails if a later script allows:
+
+1. zeta or kappa residuals to carry C/r outside with C != 0
+2. J_V to leave a scalar 1/r residue while undefined
+3. curvature diagnostics to become scalar curvature charge
+4. H_curv/H_exch trace leakage to cancel or modify exterior mass
+5. boundary smoothing or shell behavior to leave C_boundary/r
+6. scalar silence to be imposed by O without kernel/image/boundary law
+7. faster falloff to be treated as safe without boundary/domain checks
+8. a residual scalar tail to be routed through A without a no-double-counting theorem
+
+[unresolved_obligations]
+[OBLIGATION] derive residual scalar silence theorem -- show all ordinary-sector residual scalar tail coefficients vanish or are non-metric/diagnostic
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The symbolic result is simple:
+
+  phi_tail = C/r
+  F_phi = 4*pi*r^2*phi_tail' = -4*pi*C
+
+Therefore:
+
+  an ordinary-sector residual 1/r scalar tail is not neutral unless C = 0
+  or a future theorem explicitly routes it through the A-sector mass charge
+  without double-counting.
+
+This script does not prove scalar silence sector by sector.
+It gives the reduced flux witness that defines the next proof burden.
+
+Possible next script:
+  candidate_boundary_flux_mass_preservation.py
+
+[governance_assessments]
+[PASS] residual scalar-tail flux audit complete -- ordinary residual scalar silence requires vanishing 1/r coefficients

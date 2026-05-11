@@ -1,0 +1,242 @@
+
+========================================================================================================================
+Candidate Matching Regularization Ladder
+========================================================================================================================
+[INFO] Archive dependency check:
+  - g22_summary_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_smooth_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_targets_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_obligation_dep_23: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Matching regularization ladder problem
+========================================================================================================================
+Question:
+
+  What matching regularity is required at the boundary?
+
+Reference discipline:
+
+  Group 22 made boundary/scalar silence targets explicit.
+  Group 22 showed value matching alone can still carry boundary flux.
+  Group 23 starts by building a matching ladder.
+  This script audits toy profiles, not a support theorem.
+  No parent equation, O eraser, H counterterm, dark patch, or recovery-tuned seam is used.
+
+[governance_assessments]
+[INFO] matching regularization ladder audit opened -- testing value/slope/curvature boundary diagnostics without deriving support
+
+========================================================================================================================
+Case 1: Boundary profile diagnostic table
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+P0_value_jump_constant
+------------------------------------------------------------------------------------------------------------------------
+profile: phi0
+phi(R): phi0
+phi'(R): 0
+phi''(R): 0
+F_R = 4*pi*R^2*phi'(R): 0
+value jump vs exterior zero: phi0
+slope jump vs exterior zero: 0
+
+------------------------------------------------------------------------------------------------------------------------
+P1_value_match_linear
+------------------------------------------------------------------------------------------------------------------------
+profile: phi0*(1 - r/R)
+phi(R): 0
+phi'(R): -phi0/R
+phi''(R): 0
+F_R = 4*pi*R^2*phi'(R): -4*pi*R*phi0
+value jump vs exterior zero: 0
+slope jump vs exterior zero: -phi0/R
+
+------------------------------------------------------------------------------------------------------------------------
+P2_value_slope_match_quadratic
+------------------------------------------------------------------------------------------------------------------------
+profile: phi0*(1 - r/R)**2
+phi(R): 0
+phi'(R): 0
+phi''(R): 2*phi0/R**2
+F_R = 4*pi*R^2*phi'(R): 0
+value jump vs exterior zero: 0
+slope jump vs exterior zero: 0
+
+------------------------------------------------------------------------------------------------------------------------
+P3_value_slope_curvature_diagnostic
+------------------------------------------------------------------------------------------------------------------------
+profile: phi0*(1 - r/R)**3
+phi(R): 0
+phi'(R): 0
+phi''(R): 0
+F_R = 4*pi*R^2*phi'(R): 0
+value jump vs exterior zero: 0
+slope jump vs exterior zero: 0
+
+------------------------------------------------------------------------------------------------------------------------
+P4_smooth_compact_bump_toy
+------------------------------------------------------------------------------------------------------------------------
+profile: phi0*(1 - r**2/R**2)**2
+phi(R): 0
+phi'(R): 0
+phi''(R): 8*phi0/R**2
+F_R = 4*pi*R^2*phi'(R): 0
+value jump vs exterior zero: 0
+slope jump vs exterior zero: 0
+
+[sample_results]
+[WARN] value-match linear profile carries boundary flux -- F_R = -4*pi*R*phi0
+[PASS] quadratic value/slope profile has zero boundary flux -- F_R = 0
+[PASS] cubic diagnostic profile has zero value/slope boundary flux but nonzero curvature diagnostic -- phi''(R) = 0
+[PASS] smooth compact toy profile has zero boundary flux -- F_R = 0
+
+========================================================================================================================
+Case 2: Matching regularization ladder
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+L0: value jump
+------------------------------------------------------------------------------------------------------------------------
+Matching level: no value match against exterior zero
+Required conditions: none satisfied
+[FAIL] L0: value jump: REJECTED
+Danger: nonzero phi(R) can hide a distributional edge or shell source
+Consequence: not admissible as compact support or scalar silence
+
+------------------------------------------------------------------------------------------------------------------------
+L1: value match only
+------------------------------------------------------------------------------------------------------------------------
+Matching level: phi(R)=0
+Required conditions: value continuity only
+[WARN] L1: value match only: RISK
+Danger: phi'(R) can be nonzero, giving boundary flux F_R = 4*pi*R^2*phi'(R)
+Consequence: value matching alone does not prove no-shell or no-flux behavior
+
+------------------------------------------------------------------------------------------------------------------------
+L2: value and slope match
+------------------------------------------------------------------------------------------------------------------------
+Matching level: phi(R)=0 and phi'(R)=0
+Required conditions: value and first derivative vanish at boundary
+[INFO] L2: value and slope match: SAFE_IF
+Danger: higher derivative/distributional behavior and support origin are still not derived
+Consequence: necessary diagnostic condition for no boundary scalar flux, not a theorem
+
+------------------------------------------------------------------------------------------------------------------------
+L3: curvature diagnostic match
+------------------------------------------------------------------------------------------------------------------------
+Matching level: phi(R)=0, phi'(R)=0, and controlled phi''(R)
+Required conditions: value/slope match plus second-derivative audit
+[INFO] L3: curvature diagnostic match: SAFE_IF
+Danger: curvature/second-derivative matching does not by itself derive support law
+Consequence: stronger diagnostic regularity level
+
+------------------------------------------------------------------------------------------------------------------------
+L4: smooth compact bump
+------------------------------------------------------------------------------------------------------------------------
+Matching level: smooth-looking compact profile with zero value and slope at R
+Required conditions: toy smooth profile diagnostics pass
+[INFO] L4: smooth compact bump: SAFE_IF
+Danger: smooth paint can still be recovery-selected or source-incompatible
+Consequence: promising diagnostic class, not structural support
+
+------------------------------------------------------------------------------------------------------------------------
+L5: derived matching/support law
+------------------------------------------------------------------------------------------------------------------------
+Matching level: support and boundary regularity derived before recovery
+Required conditions: support origin, value/slope matching, no distributional shell, recovery independence, source compatibility
+[DEFER] L5: derived matching/support law: THEOREM_TARGET
+Danger: not currently derived
+Consequence: positive route for future boundary/scalar silence
+
+[governance_assessments]
+[PASS] matching regularization ladder populated -- 6 matching levels classified
+
+========================================================================================================================
+Case 3: Rejected ladder upgrades
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+U1: exterior zero becomes compact-support proof
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: using exterior zero as proof of compact support
+[FAIL] U1: exterior zero becomes compact-support proof: REJECTED
+Reason: boundary matching and distributional shell behavior still need audit
+
+------------------------------------------------------------------------------------------------------------------------
+U2: value match becomes no-shell proof
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: using phi(R)=0 as proof of no shell
+[FAIL] U2: value match becomes no-shell proof: REJECTED
+Reason: nonzero phi'(R) can carry boundary flux and derivative jumps can remain
+
+------------------------------------------------------------------------------------------------------------------------
+U3: slope match becomes full support law
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: using phi(R)=phi'(R)=0 as a derived support theorem
+[FAIL] U3: slope match becomes full support law: REJECTED
+Reason: value/slope matching is necessary diagnostic behavior, not support origin
+
+------------------------------------------------------------------------------------------------------------------------
+U4: smooth toy profile becomes structural smoothing
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: using a smooth toy bump as construction law
+[FAIL] U4: smooth toy profile becomes structural smoothing: REJECTED
+Reason: smoothness does not prove recovery independence, source compatibility, or no hidden layer load
+
+------------------------------------------------------------------------------------------------------------------------
+U5: matching ladder opens parent gate
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: using matching diagnostics to open a parent equation
+[FAIL] U5: matching ladder opens parent gate: REJECTED
+Reason: parent equation still needs boundary/scalar silence, source/projector/divergence, and recombination theorems
+
+[counterexamples]
+[FAIL] matching ladder over-upgrades rejected -- exterior zero, value matching, slope matching, smooth toys, and matching diagnostics are not support theorems
+
+========================================================================================================================
+Case 4: Failure controls
+========================================================================================================================
+The matching regularization ladder audit fails if a later script allows:
+
+1. compact support by exterior zero alone
+2. C0/value jump to count as boundary silence
+3. C1 value matching to count as no-shell/no-flux proof
+4. C2 value/slope matching to count as derived support law
+5. smooth toy bump to count as structural smoothing
+6. derivative or curvature jumps to be ignored
+7. support radius chosen from recovery
+8. O, H, dark, curvature, exchange, or current repair of a seam
+9. diagnostic matching ladder to open parent equation gate
+
+[governance_assessments]
+[OBLIGATION] matching ladder overclaim controls stated -- future scripts must not confuse diagnostic regularity with derived support
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The matching ladder result:
+
+  value jump is rejected.
+  value matching alone is risky.
+  value+slope matching is a necessary diagnostic condition for zero boundary scalar flux.
+  curvature/second-derivative behavior needs explicit audit.
+  smooth compact bumps are useful diagnostics but not support laws.
+  derived support/matching law remains theorem-targeted.
+
+Boundary diagnostic target:
+
+  phi(R) = 0
+  phi'(R) = 0
+  distributional shell terms controlled
+  support law derived before recovery
+  source compatibility preserved
+
+Possible next script:
+  candidate_distributional_shell_source_audit.py
+
+Tiny goblin label:
+  Inspect the seam. Count the jumps. Trust no smooth paint.
+
+[governance_assessments]
+[PASS] matching regularization ladder audit complete -- regularity ladder explicit; support theorem remains open

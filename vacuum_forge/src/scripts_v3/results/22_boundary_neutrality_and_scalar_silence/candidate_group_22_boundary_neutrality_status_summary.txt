@@ -1,0 +1,247 @@
+
+========================================================================================================================
+Candidate Group 22 Boundary Neutrality Status Summary
+========================================================================================================================
+[INFO] Archive dependency check:
+  - targets_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - smooth_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - scalar_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - current_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - repair_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - nonmetric_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - obligation_dep_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Group 22 status summary problem
+========================================================================================================================
+Question:
+
+  What did Group 22 establish, and what remains theorem-targeted?
+
+Discipline:
+
+  This is a group summary, not a closure proof.
+  Boundary neutrality and scalar silence are not solved.
+  Repair routes are rejected.
+  Parent equation remains not ready.
+
+[governance_assessments]
+[INFO] Group 22 status summary opened -- summarizing boundary/scalar silence requirements without upgrading them to theorems
+
+========================================================================================================================
+Case 1: Group 22 status entries
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+G22-1: boundary/scalar silence targets
+------------------------------------------------------------------------------------------------------------------------
+Result: Group 22 target ledger states delta F_A|boundary,non-A = 0, C_i = 0 sector-wise, I_nonA = 0, no shell, no recovery-tuned smoothing, no active O, and no H insertion
+[PASS] G22-1: boundary/scalar silence targets: SUMMARY
+Consequence: exact vanishing/no-repair targets are visible but not proved
+Handoff: future scripts must not treat target conditions as solved theorems
+
+------------------------------------------------------------------------------------------------------------------------
+G22-2: smooth compact support/no-shell diagnostics
+------------------------------------------------------------------------------------------------------------------------
+Result: C1 value matching can carry boundary flux; C2 and smooth compact toy profiles have zero toy boundary flux but remain diagnostics
+[PASS] G22-2: smooth compact support/no-shell diagnostics: CLOSED_DIAGNOSTIC
+Consequence: value matching alone is insufficient; derived value/slope/no-shell support remains required
+Handoff: compact support remains theorem-targeted
+
+------------------------------------------------------------------------------------------------------------------------
+G22-3: sector scalar-tail silence
+------------------------------------------------------------------------------------------------------------------------
+Result: zeta, kappa, J_V, J_sub, J_exch, curvature, J_curv, H trace, boundary shell, and dark label tails C_i/r carry F_i = -4*pi*C_i
+[PASS] G22-3: sector scalar-tail silence: CLOSED_DIAGNOSTIC
+Consequence: each sector coefficient must vanish or remain inert/nonmetric/diagnostic/theorem-routed
+Handoff: total cancellation is not sector silence
+
+------------------------------------------------------------------------------------------------------------------------
+G22-4: boundary/current flux silence
+------------------------------------------------------------------------------------------------------------------------
+Result: J_V, J_sub, J_exch, J_curv, H, boundary, and dark radial currents I_i/(4*pi*r^2) carry sphere flux I_i
+[PASS] G22-4: boundary/current flux silence: CLOSED_DIAGNOSTIC
+Consequence: each current coefficient must vanish or remain role-level/diagnostic/theorem-routed
+Handoff: neutral transport remains theorem-targeted
+
+------------------------------------------------------------------------------------------------------------------------
+G22-5: boundary repair route exclusion
+------------------------------------------------------------------------------------------------------------------------
+Result: surface counterterm, repair current, R_V cancellation, J_exch repair, curvature rescue, H counterterm, O eraser, dark patch, recovery smoothing, and sharp support remain rejected
+[FAIL] G22-5: boundary repair route exclusion: REJECTED
+Consequence: boundary/scalar silence cannot be supplied by repair mechanisms
+Handoff: only inert diagnostics and future derived no-repair theorems remain possible
+
+------------------------------------------------------------------------------------------------------------------------
+G22-6: diagnostic residual nonmetric conditions
+------------------------------------------------------------------------------------------------------------------------
+Result: diagnostic/nonmetric residuals are safe only with no metric, source, boundary, far-zone, coefficient, recovery, or later re-entry effect
+[OBLIGATION] G22-6: diagnostic residual nonmetric conditions: REQUIRED
+Consequence: nonmetric vocabulary is not a no-overlap theorem
+Handoff: residual-kill/no-overlap remains theorem-targeted
+
+------------------------------------------------------------------------------------------------------------------------
+G22-7: theorem obligations
+------------------------------------------------------------------------------------------------------------------------
+Result: nine obligations are explicit: no-shell, scalar silence, non-A A-flux neutrality, current silence, compact support, residual non-reentry, recovery independence, source-routing compatibility, no-repair theorem
+[DEFER] G22-7: theorem obligations: THEOREM_TARGET
+Consequence: boundary neutrality and scalar silence remain not solved
+Handoff: Group 22 closes as requirements/diagnostic audit, not theorem closure
+
+------------------------------------------------------------------------------------------------------------------------
+G22-8: parent equation status
+------------------------------------------------------------------------------------------------------------------------
+Result: parent field equation remains not ready because Group 22 states prerequisites rather than deriving them
+[DEFER] G22-8: parent equation status: NOT_READY
+Consequence: do not open parent closure from Group 22 alone
+Handoff: next group should choose a narrower proof/constraint target
+
+[governance_assessments]
+[PASS] Group 22 status ledger populated -- 8 status entries summarized from the Group 22 chain
+
+========================================================================================================================
+Case 2: Closure outcomes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome A: silence targets explicit
+------------------------------------------------------------------------------------------------------------------------
+Statement: The exact vanishing/no-repair conditions are visible.
+[PASS] Outcome A: silence targets explicit: SUMMARY
+Consequence: future scripts have a concrete checklist
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome B: repair routes rejected
+------------------------------------------------------------------------------------------------------------------------
+Statement: Boundary/scalar/current repair routes remain rejected.
+[FAIL] Outcome B: repair routes rejected: REJECTED
+Consequence: fake boundary neutrality is blocked
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome C: diagnostic residuals constrained
+------------------------------------------------------------------------------------------------------------------------
+Statement: Residuals may survive only if inert, nonmetric/diagnostic, compact-neutral, and non-reentering.
+[OBLIGATION] Outcome C: diagnostic residuals constrained: REQUIRED
+Consequence: nonmetric labels cannot silently become active channels
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome D: boundary neutrality still theorem target
+------------------------------------------------------------------------------------------------------------------------
+Statement: Boundary neutrality and exterior scalar silence are clearer but not solved.
+[DEFER] Outcome D: boundary neutrality still theorem target: THEOREM_TARGET
+Consequence: the theorem burden is explicit
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome E: parent equation still not ready
+------------------------------------------------------------------------------------------------------------------------
+Statement: Group 22 does not open the parent equation gate.
+[DEFER] Outcome E: parent equation still not ready: NOT_READY
+Consequence: parent closure remains downstream
+
+[governance_assessments]
+[PASS] Group 22 closure outcomes stated -- targets explicit and repair routes rejected; theorem burden remains open
+
+========================================================================================================================
+Case 3: Known unknowns preserved
+========================================================================================================================
+  - boundary neutrality theorem
+  - exterior scalar silence theorem
+  - no-shell matching law
+  - compact support support law
+  - residual-kill derivation
+  - no-overlap O
+  - diagnostic residual non-reentry theorem
+  - neutral transport theorem
+  - J_V definition
+  - J_sub/J_exch definitions
+  - J_curv definition
+  - H_curv/H_exch tensor definitions
+  - source-routing compatibility theorem
+  - recovery-independent boundary data theorem
+  - parent identity
+
+[unresolved_obligations]
+[OBLIGATION] Group 22 known unknowns preserved -- Group 22 made boundary/scalar obligations explicit but did not close them
+
+========================================================================================================================
+Case 4: Handoff options
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 1: smooth support and matching laws
+------------------------------------------------------------------------------------------------------------------------
+Route: 23_smooth_support_and_matching_laws
+Allowed if: the next step attacks the no-shell/value-slope/support theorem directly
+Caution: do not use toy profiles, sharp cutoffs, or recovery-selected support as proof
+[INFO] Handoff 1: smooth support and matching laws: CANDIDATE
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 2: metric insertion recovery retest
+------------------------------------------------------------------------------------------------------------------------
+Route: 23_metric_insertion_recovery_retest
+Allowed if: the next step tests B_s/F_zeta insertion against the Group 22 boundary/scalar guardrails
+Caution: recovery may audit but may not construct scalar silence or boundary data
+[INFO] Handoff 2: metric insertion recovery retest: CANDIDATE
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 3: role-specific boundary/source projectors
+------------------------------------------------------------------------------------------------------------------------
+Route: 23_role_specific_boundary_projectors
+Allowed if: a real projector route is attempted with domain, kernel, image, divergence, and boundary law
+Caution: active O remains unavailable; diagnostic labels are safe only if inert
+[INFO] Handoff 3: role-specific boundary/source projectors: CANDIDATE
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 4: reduced observational audit
+------------------------------------------------------------------------------------------------------------------------
+Route: 23_reduced_observational_audit
+Allowed if: the project wants to audit reduced consequences without claiming parent closure
+Caution: observational checks must not choose boundary/scalar/current data
+[INFO] Handoff 4: reduced observational audit: CANDIDATE
+
+[governance_assessments]
+[PASS] Group 22 handoff options recorded -- next group should attack a narrower proof/constraint target
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The Group 22 summary fails if a later script treats it as proving:
+
+1. boundary neutrality
+2. scalar silence
+3. compact support
+4. no-shell matching
+5. residual-kill
+6. no-overlap O
+7. neutral transport
+8. current laws
+9. H insertability
+10. parent equation readiness
+
+The summary only licenses this governance result:
+
+  targets explicit; repairs rejected; obligations open.
+
+[governance_assessments]
+[OBLIGATION] Group 22 overclaim controls stated -- summary must not upgrade requirements into solved claims
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Group 22 result:
+
+  Boundary/scalar silence targets are explicit.
+  Smooth compact support diagnostics show value matching alone is insufficient.
+  Sector scalar-tail coefficients must vanish or remain inert/theorem-targeted.
+  Non-A current flux coefficients must vanish or remain role-level/theorem-targeted.
+  Repair routes are rejected.
+  Diagnostic residuals are constrained by no-reentry conditions.
+  Boundary neutrality and scalar silence remain theorem-targeted.
+  Parent equation remains not ready.
+
+Tiny goblin label:
+
+  Door mapped. Locks listed. No spell yet.
+
+[governance_assessments]
+[PASS] Group 22 boundary neutrality status summary complete -- Group 22 closes as explicit requirements/diagnostic audit; theorem burden remains open

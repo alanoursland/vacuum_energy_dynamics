@@ -1,0 +1,284 @@
+
+========================================================================================================================
+Candidate Group 21 Source Routing Status Summary
+========================================================================================================================
+[INFO] Archive dependency check:
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_schwarzschild_mass_residual_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - non_A_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - residual_scalar_tail_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_flux_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - zeta_kappa_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - JV_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - curvature_accounting_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - correction_tensor_guard_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - source_routing_no_double_counting_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Group 21 status summary problem
+========================================================================================================================
+Question:
+
+  What did Group 21 actually establish, and what remains theorem-targeted?
+
+Discipline:
+
+  This is a group summary, not a closure proof.
+  Summary claims must not outrank the archived derivations and obligations.
+  A-sector mass charge remains protected.
+  Non-A mass neutrality remains required unless explicitly derived.
+  Parent equation remains not ready.
+
+[governance_assessments]
+[INFO] Group 21 summary opened -- summarizing archive-backed source-routing and mass-neutrality status
+
+========================================================================================================================
+Case 1: Group 21 status entries
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+G21-1: A-sector mass charge
+------------------------------------------------------------------------------------------------------------------------
+Result: M_A = c^2 F_A/(8*pi*G) is the current reduced ordinary-exterior reference charge; for A = 1 - 2GM/(c^2 r), M_A = M
+[PASS] G21-1: A-sector mass charge: CLOSED_REDUCED
+Consequence: A carries the ordinary exterior mass coin in the current reduced branch
+Handoff: all non-A sectors are audited against delta M_A = 0 unless a future parent identity redefines mass
+
+------------------------------------------------------------------------------------------------------------------------
+G21-2: non-A mass-neutrality inventory
+------------------------------------------------------------------------------------------------------------------------
+Result: 18 non-A sectors were audited for possible exterior mass leakage
+[PASS] G21-2: non-A mass-neutrality inventory: SUMMARY
+Consequence: no non-A sector is licensed as an independent ordinary exterior mass carrier
+Handoff: non-A sectors remain diagnostic, non-metric, role-level, deferred, non-insertable, or theorem-targeted
+
+------------------------------------------------------------------------------------------------------------------------
+G21-3: residual scalar tail rule
+------------------------------------------------------------------------------------------------------------------------
+Result: a residual tail C/r carries F = -4*pi*C and is neutral only when C = 0 or non-metric/diagnostic
+[PASS] G21-3: residual scalar tail rule: CLOSED_REDUCED
+Consequence: ordinary residual 1/r scalar tails are mass-dangerous
+Handoff: future residual sectors must prove vanishing exterior 1/r coefficients or a no-double-counting parent route
+
+------------------------------------------------------------------------------------------------------------------------
+G21-4: boundary mass preservation
+------------------------------------------------------------------------------------------------------------------------
+Result: a non-A boundary A-tail q/r shifts delta_M_A = -c^2 q/(2G)
+[DEFER] G21-4: boundary mass preservation: THEOREM_TARGET
+Consequence: boundary mass preservation remains required but not derived
+Handoff: no shell source, counterterm, recovery-tuned smoothing, sharp-support patch, or boundary purse is licensed
+
+------------------------------------------------------------------------------------------------------------------------
+G21-5: zeta/kappa neutrality
+------------------------------------------------------------------------------------------------------------------------
+Result: zeta_tail = C_zeta/r and kappa_tail = C_kappa/r carry independent scalar fluxes unless C_zeta = C_kappa = 0
+[DEFER] G21-5: zeta/kappa neutrality: THEOREM_TARGET
+Consequence: residual-kill / non-metric residual remains the safest current convention
+Handoff: zeta/kappa cancellation by hand, Box zeta/kappa, residual repair, and recovery-chosen residual status remain rejected
+
+------------------------------------------------------------------------------------------------------------------------
+G21-6: vacuum-current neutrality
+------------------------------------------------------------------------------------------------------------------------
+Result: J_V scalar residue, far-zone current flux, and Sigma/R zero-net language were audited as diagnostics
+[DEFER] G21-6: vacuum-current neutrality: UNRESOLVED
+Consequence: J_V remains unresolved; J_sub/J_exch remain role-level
+Handoff: pure wind is not gravity; exchange is not repair; zero-net exchange needs real operators
+
+------------------------------------------------------------------------------------------------------------------------
+G21-7: curvature accounting neutrality
+------------------------------------------------------------------------------------------------------------------------
+Result: A_curv/e_curv/J_curv were audited for scalar residue, source-reservoir behavior, far-zone flux, and boundary repair danger
+[INFO] G21-7: curvature accounting neutrality: DIAGNOSTIC_ONLY
+Consequence: curvature remains diagnostic/accounting/branch-filter; mass neutrality is required and not derived
+Handoff: e_curv source reservoir, curvature balance repair, J_curv by fiat, branch-kill bounce, and H_curv rescue remain rejected
+
+------------------------------------------------------------------------------------------------------------------------
+G21-8: correction tensor guard
+------------------------------------------------------------------------------------------------------------------------
+Result: H_curv/H_exch were audited for trace leakage, A-tail correction, far-zone flux, divergence/source gap, and boundary repair danger
+[FAIL] G21-8: correction tensor guard: NOT_INSERTABLE
+Consequence: no correction tensor is insertable
+Handoff: future H requires tensor definition, source side, divergence safety, scalar trace neutrality, boundary neutrality, far-zone neutrality, and delta_M_A = 0
+
+------------------------------------------------------------------------------------------------------------------------
+G21-9: ordinary source routing
+------------------------------------------------------------------------------------------------------------------------
+Result: rho/M_enc remains routed to A-sector; non-A duplicate source channels are forbidden, diagnostic, role-level, or theorem-targeted
+[PASS] G21-9: ordinary source routing: PROTECTED
+Consequence: ordinary matter remains routed through protected channels without duplicate source counting
+Handoff: pressure/trace, longitudinal current, transverse current, TT stress, exchange, curvature, H, dark, and accounting routes need separate no-double-counting discipline
+
+------------------------------------------------------------------------------------------------------------------------
+G21-10: no-double-counting guardrails
+------------------------------------------------------------------------------------------------------------------------
+Result: duplicate scalar tail, duplicate A-tail, and extra source-load ledger witnesses were recorded
+[PASS] G21-10: no-double-counting guardrails: SUMMARY
+Consequence: source cancellation ledgers do not count as sector neutrality
+Handoff: each non-A pocket must be empty, diagnostic, non-metric, role-level, or theorem-routed
+
+------------------------------------------------------------------------------------------------------------------------
+G21-11: parent equation status
+------------------------------------------------------------------------------------------------------------------------
+Result: Group 21 sharpened mass-routing obligations but did not define a parent field equation
+[DEFER] G21-11: parent equation status: THEOREM_TARGET
+Consequence: parent equation remains not ready
+Handoff: do not insert O, H, J_V, Sigma/R, zeta/kappa scalar routes, curvature currents, or dark labels into a parent equation from this group alone
+
+[governance_assessments]
+[PASS] Group 21 status ledger populated -- 11 status entries summarized from the Group 21 script chain
+
+========================================================================================================================
+Case 2: Closure outcomes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome A: A-sector charge protected
+------------------------------------------------------------------------------------------------------------------------
+Statement: M_A = c^2 F_A/(8*pi*G) is the only currently derived reduced ordinary exterior mass charge
+[PASS] Outcome A: A-sector charge protected: CLOSED_REDUCED
+Consequence: A-sector mass coin remains protected
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome B: non-A sectors neutral or deferred
+------------------------------------------------------------------------------------------------------------------------
+Statement: All non-A sectors must satisfy delta_M_A = 0 or remain diagnostic, non-metric, role-level, deferred, or theorem-targeted
+[OBLIGATION] Outcome B: non-A sectors neutral or deferred: REQUIRED
+Consequence: no non-A exterior mass carrier is licensed
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome C: scalar-tail rule
+------------------------------------------------------------------------------------------------------------------------
+Statement: Any residual 1/r scalar tail carries nonzero surface flux unless its coefficient vanishes
+[PASS] Outcome C: scalar-tail rule: CLOSED_REDUCED
+Consequence: ordinary residual exterior scalar tails must vanish or be non-metric/diagnostic
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome D: boundary neutrality still target
+------------------------------------------------------------------------------------------------------------------------
+Statement: Boundary mass preservation and exterior scalar silence are required but not derived
+[DEFER] Outcome D: boundary neutrality still target: THEOREM_TARGET
+Consequence: boundary repair mechanisms remain rejected
+
+------------------------------------------------------------------------------------------------------------------------
+Outcome E: parent equation not ready
+------------------------------------------------------------------------------------------------------------------------
+Statement: Mass-neutrality requirements sharpen future parent identity but do not make it available
+[DEFER] Outcome E: parent equation not ready: THEOREM_TARGET
+Consequence: next group must choose a narrower follow-up path
+
+[governance_assessments]
+[PASS] Group 21 closure outcomes stated -- A-sector charge protected; non-A neutrality remains required/theorem-targeted
+
+========================================================================================================================
+Case 3: Known unknowns preserved
+========================================================================================================================
+  - boundary mass preservation theorem
+  - static-source neutrality theorem
+  - ordinary matter decoupling theorem
+  - B_s/F_zeta insertion law
+  - residual-kill derivation
+  - O no-overlap
+  - J_V definition
+  - J_sub/J_exch definition
+  - Sigma/R operators
+  - curvature admissibility functional
+  - J_curv
+  - H_curv/H_exch tensor definitions
+  - correction tensor divergence safety
+  - source separation
+  - parent identity
+
+[unresolved_obligations]
+[OBLIGATION] Group 21 known unknowns preserved -- mass-routing audit did not close parent, boundary, current, projection, curvature, or correction-tensor obligations
+
+========================================================================================================================
+Case 4: Handoff options
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 1: boundary neutrality and scalar silence
+------------------------------------------------------------------------------------------------------------------------
+Route: 22_boundary_neutrality_and_scalar_silence
+Allowed if: the next step should attack the remaining boundary/scalar-tail theorem burden directly
+Caution: do not use smoothing, O, H, or recovery tuning as a shortcut
+[INFO] Handoff 1: boundary neutrality and scalar silence: RECOMMENDED
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 2: metric insertion recovery retest
+------------------------------------------------------------------------------------------------------------------------
+Route: 22_metric_insertion_recovery_retest
+Allowed if: the next step wants to re-test B_s/F_zeta insertion under the Group 21 mass-neutrality guardrails
+Caution: B_s/F_zeta insertion remains theorem-targeted; do not treat residual-kill as derived
+[INFO] Handoff 2: metric insertion recovery retest: CANDIDATE
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 3: role-specific source projectors
+------------------------------------------------------------------------------------------------------------------------
+Route: 22_role_specific_source_projectors
+Allowed if: a real source-projector route is attempted with explicit domain, kernel, image, source side, and boundary law
+Caution: Group 20 already rejected universal O and projection-by-name
+[INFO] Handoff 3: role-specific source projectors: CANDIDATE
+
+------------------------------------------------------------------------------------------------------------------------
+Handoff 4: reduced observational audit
+------------------------------------------------------------------------------------------------------------------------
+Route: 22_reduced_observational_audit
+Allowed if: the A-sector reduced mass charge is stable enough for downstream observational bookkeeping
+Caution: observational checks must not choose non-A mass routes or boundary conditions
+[INFO] Handoff 4: reduced observational audit: CANDIDATE
+
+[governance_assessments]
+[PASS] Group 21 handoff options recorded -- boundary neutrality/scalar silence is the most direct next target; other routes remain candidates
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The Group 21 summary fails if a later script treats it as proving:
+
+1. mass neutrality is solved
+2. boundary neutrality is solved
+3. ordinary matter decoupling is solved
+4. J_V is defined
+5. J_sub/J_exch are real currents
+6. O exists
+7. B_s/F_zeta insertion is derived
+8. H_curv/H_exch are insertable
+9. curvature dynamics are derived
+10. a parent field equation is ready
+
+The summary only licenses this reduced governance result:
+
+  A carries the ordinary exterior mass coin.
+  Every other sector must show empty pockets.
+
+[governance_assessments]
+[OBLIGATION] Group 21 overclaim controls stated -- summary must not upgrade theorem targets into solved claims
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Group 21 result:
+
+  A-sector mass charge is protected as the current reduced ordinary exterior mass reference.
+  Non-A sectors are not proven mass-neutral.
+  Instead, Group 21 records the sector-by-sector theorem burden and rejected repair routes.
+
+Current closed-reduced rule:
+
+  M_A = c^2 F_A/(8*pi*G)
+
+Current governance rule:
+
+  non-A sectors must satisfy delta_M_A = 0, remain diagnostic, remain non-metric,
+  stay role-level, be non-insertable, or remain theorem-targeted.
+
+Recommended next group:
+
+  22_boundary_neutrality_and_scalar_silence
+
+Tiny goblin label:
+
+  A carries the coin. Everyone else shows empty pockets.
+
+[governance_assessments]
+[PASS] Group 21 source-routing status summary complete -- A-sector mass protected; non-A neutrality sharpened but not solved; parent equation still not ready

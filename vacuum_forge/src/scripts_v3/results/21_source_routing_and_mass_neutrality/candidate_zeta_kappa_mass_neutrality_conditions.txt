@@ -1,0 +1,322 @@
+
+========================================================================================================================
+Candidate Zeta/Kappa Mass Neutrality Conditions
+========================================================================================================================
+[INFO] Archive dependency check:
+  - residual_scalar_tail_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_tail_delta_A_flux_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_mass_preservation_inventory_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: zeta/kappa mass-neutrality problem
+========================================================================================================================
+Question:
+
+  Under what conditions can zeta/kappa exist without shifting exterior mass?
+
+Reference discipline:
+
+  A-sector mass charge remains the reduced ordinary exterior reference.
+  zeta may be a volume-form candidate but is not a mass route by declaration.
+  kappa remains diagnostic / suppressed / non-metric unless a source law derives otherwise.
+  No Box zeta, no Box kappa, no exterior zeta/kappa 1/r tail, no residual cancellation by hand.
+  This script records reduced flux witnesses and conditions, not a residual-neutrality theorem.
+
+[governance_assessments]
+[INFO] zeta/kappa mass-neutrality audit opened -- testing residual trace variables against A-sector mass neutrality and scalar silence
+
+========================================================================================================================
+Case 1: Individual zeta/kappa exterior-tail flux
+========================================================================================================================
+Take residual exterior tails:
+
+  zeta_tail(r)  = C_zeta/r
+  kappa_tail(r) = C_kappa/r
+
+Then their reduced surface fluxes are:
+
+  F_zeta  = 4*pi*r^2*zeta_tail'  = -4*pi*C_zeta
+  F_kappa = 4*pi*r^2*kappa_tail' = -4*pi*C_kappa
+
+Flux residual checks:
+
+  F_zeta + 4*pi*C_zeta = 0
+  F_kappa + 4*pi*C_kappa = 0
+
+Exterior scalar silence requires independent vanishing coefficients:
+
+  C_zeta = 0
+  C_kappa = 0
+
+[derived_results]
+[PASS] zeta 1/r tail flux derived -- F_zeta = -4*pi*C_zeta
+[PASS] kappa 1/r tail flux derived -- F_kappa = -4*pi*C_kappa
+[PASS] independent zeta/kappa scalar silence condition stated -- ordinary exterior requires C_zeta = 0 and C_kappa = 0 unless residuals are non-metric/diagnostic
+
+========================================================================================================================
+Case 2: A-like mass-shift diagnostic
+========================================================================================================================
+If a residual scalar tail is incorrectly allowed to behave as an A-like exterior mass contribution:
+
+  delta_M_zeta_like  = c^2*F_zeta/(8*pi*G)  = -C_zeta*c**2/(2*G)
+  delta_M_kappa_like = c^2*F_kappa/(8*pi*G) = -C_kappa*c**2/(2*G)
+
+Mass residual checks:
+
+  delta_M_zeta_like + c^2*C_zeta/(2*G) = 0
+  delta_M_kappa_like + c^2*C_kappa/(2*G) = 0
+
+Interpretation:
+
+  This is a danger diagnostic, not a licensed mass law.
+  It shows the mass-equivalent size of the leak if zeta/kappa were allowed to enter A-like flux.
+
+[derived_results]
+[PASS] zeta A-like mass-shift diagnostic derived -- delta_M_zeta_like = -C_zeta*c**2/(2*G)
+[PASS] kappa A-like mass-shift diagnostic derived -- delta_M_kappa_like = -C_kappa*c**2/(2*G)
+
+========================================================================================================================
+Case 3: Combined-tail cancellation diagnostic
+========================================================================================================================
+Combined residual tail:
+
+  phi_zk(r) = zeta_tail + kappa_tail = (C_kappa + C_zeta)/r
+
+Combined surface flux:
+
+  F_zk = -4*pi*(C_kappa + C_zeta)
+
+Residual check:
+
+  F_zk + 4*pi*(C_zeta + C_kappa) = 0
+
+A total-flux cancellation condition would be:
+
+  Eq(C_kappa + C_zeta, 0)
+
+But this is not sector neutrality:
+
+  C_zeta = -C_kappa can hide nonzero residual scalar pockets.
+  Group 21 requires empty pockets, non-metric residuals, or a future parent theorem.
+
+[derived_results]
+[PASS] combined zeta/kappa residual flux derived -- F_zk = -4*pi*(C_kappa + C_zeta)
+
+[counterexamples]
+[FAIL] zeta/kappa cancellation by hand rejected -- C_zeta + C_kappa = 0 is not the same as C_zeta = C_kappa = 0
+
+========================================================================================================================
+Case 4: zeta/kappa condition ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+ZK1: zeta residual non-metric branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual
+Allowed condition: zeta residual is strictly non-metric / diagnostic and has no source, flux, or A-effect
+Forbidden condition: zeta residual becomes a metric scalar source or second mass channel
+[INFO] ZK1: zeta residual non-metric branch: SAFE_IF
+Consequence: safest current zeta residual route; still requires bookkeeping discipline
+
+------------------------------------------------------------------------------------------------------------------------
+ZK2: zeta residual exterior-neutral branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual
+Allowed condition: C_zeta = 0 outside, with no boundary shell and no recovery-tuned support
+Forbidden condition: zeta_tail = C_zeta/r with C_zeta != 0
+[DEFER] ZK2: zeta residual exterior-neutral branch: THEOREM_TARGET
+Consequence: neutral zeta metric trace is theorem-heavy but not logically forbidden
+
+------------------------------------------------------------------------------------------------------------------------
+ZK3: zeta residual metric 1/r tail
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual
+Allowed condition: never in ordinary exterior unless routed by a future A-sector theorem without double counting
+Forbidden condition: nonzero zeta 1/r tail treated as ordinary exterior scalar charge
+[FAIL] ZK3: zeta residual metric 1/r tail: REJECTED
+Consequence: zeta cannot carry the ordinary exterior mass coin by declaration
+
+------------------------------------------------------------------------------------------------------------------------
+ZK4: kappa suppressed exterior branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: kappa_residual
+Allowed condition: kappa is suppressed or killed before ordinary exterior, with no exterior 1/r tail
+Forbidden condition: kappa leak repairs boundary mismatch or changes AB/recovery
+[INFO] ZK4: kappa suppressed exterior branch: SAFE_IF
+Consequence: matches the current reduced exterior discipline: kappa remains suppressed/diagnostic
+
+------------------------------------------------------------------------------------------------------------------------
+ZK5: kappa residual exterior-neutral branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: kappa_residual
+Allowed condition: C_kappa = 0 outside, with no boundary shell and no recovery-tuned support
+Forbidden condition: kappa_tail = C_kappa/r with C_kappa != 0
+[DEFER] ZK5: kappa residual exterior-neutral branch: THEOREM_TARGET
+Consequence: neutral kappa residual metric trace is theorem-heavy but possible as a target
+
+------------------------------------------------------------------------------------------------------------------------
+ZK6: kappa residual metric 1/r tail
+------------------------------------------------------------------------------------------------------------------------
+Sector: kappa_residual
+Allowed condition: never in ordinary exterior unless routed by a future A-sector theorem without double counting
+Forbidden condition: nonzero kappa 1/r tail treated as exterior scalar mass response
+[FAIL] ZK6: kappa residual metric 1/r tail: REJECTED
+Consequence: kappa leak is scalar-silence and equal-response danger
+
+------------------------------------------------------------------------------------------------------------------------
+ZK7: e_kappa diagnostic stiffness
+------------------------------------------------------------------------------------------------------------------------
+Sector: e_kappa
+Allowed condition: e_kappa remains stiffness/diagnostic bookkeeping and does not source A or exterior kappa
+Forbidden condition: e_kappa becomes a source reservoir or boundary mass purse
+[INFO] ZK7: e_kappa diagnostic stiffness: SAFE_IF
+Consequence: kappa energy may suppress imbalance but cannot add mass charge
+
+------------------------------------------------------------------------------------------------------------------------
+ZK8: epsilon_vac_config accounting
+------------------------------------------------------------------------------------------------------------------------
+Sector: epsilon_vac_config
+Allowed condition: configuration energy remains diagnostic/accounting or receives independent source-neutral law
+Forbidden condition: configuration label becomes mass energy or boundary repair by vocabulary
+[INFO] ZK8: epsilon_vac_config accounting: SAFE_IF
+Consequence: configuration bookkeeping cannot shift M_A without a source theorem
+
+------------------------------------------------------------------------------------------------------------------------
+ZK9: zeta/kappa cancellation branch
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual + kappa_residual
+Allowed condition: not licensed; future parent theorem would need sector source routing and no double counting
+Forbidden condition: C_zeta + C_kappa = 0 used to hide nonzero residual scalar pockets
+[FAIL] ZK9: zeta/kappa cancellation branch: REJECTED
+Consequence: cancellation is not sector neutrality; each pocket must be empty or non-metric
+
+------------------------------------------------------------------------------------------------------------------------
+ZK10: residual-kill / non-metric convention
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual + kappa_residual
+Allowed condition: residual metric trace is killed or demoted before source/metric effect
+Forbidden condition: residual-kill is treated as a derived no-overlap theorem
+[INFO] ZK10: residual-kill / non-metric convention: PROVISIONAL
+Consequence: safest current convention, but still provisional
+
+------------------------------------------------------------------------------------------------------------------------
+ZK11: Box zeta / Box kappa route
+------------------------------------------------------------------------------------------------------------------------
+Sector: zeta_residual + kappa_residual
+Allowed condition: not in ordinary exterior as a scalar Poisson route
+Forbidden condition: Box zeta or Box kappa produces a long-range ordinary scalar charge
+[FAIL] ZK11: Box zeta / Box kappa route: REJECTED
+Consequence: ordinary scalar radiation/source channel remains rejected unless separately derived
+
+------------------------------------------------------------------------------------------------------------------------
+ZK12: B_s / zeta insertion dependency
+------------------------------------------------------------------------------------------------------------------------
+Sector: B_s / zeta insertion
+Allowed condition: derive insertion with residual-kill or neutral residual trace and delta M_A = 0
+Forbidden condition: B_s or zeta insertion chosen from gamma_like, AB, B=1/A, or recovery target
+[DEFER] ZK12: B_s / zeta insertion dependency: THEOREM_TARGET
+Consequence: B_s/F_zeta insertion remains outside this script's license
+
+[governance_assessments]
+[PASS] zeta/kappa condition ledger populated -- 12 residual trace conditions classified for mass-neutrality burden
+
+========================================================================================================================
+Case 5: Rejected zeta/kappa residual routes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+RZK1: nonzero zeta exterior tail
+------------------------------------------------------------------------------------------------------------------------
+Route: zeta_tail_mass_route
+Forbidden use: C_zeta/r treated as an ordinary exterior scalar mass channel
+[FAIL] RZK1: nonzero zeta exterior tail: REJECTED
+Consequence: zeta residual must be non-metric, killed, compact-neutral, or C_zeta = 0
+
+------------------------------------------------------------------------------------------------------------------------
+RZK2: nonzero kappa exterior tail
+------------------------------------------------------------------------------------------------------------------------
+Route: kappa_tail_mass_route
+Forbidden use: C_kappa/r treated as an ordinary exterior scalar mass channel
+[FAIL] RZK2: nonzero kappa exterior tail: REJECTED
+Consequence: kappa residual must be suppressed, non-metric, compact-neutral, or C_kappa = 0
+
+------------------------------------------------------------------------------------------------------------------------
+RZK3: residual cancellation by hand
+------------------------------------------------------------------------------------------------------------------------
+Route: zeta_kappa_tail_cancellation
+Forbidden use: C_zeta + C_kappa = 0 used to hide nonzero sector tails
+[FAIL] RZK3: residual cancellation by hand: REJECTED
+Consequence: cancellation is not mass neutrality unless a future parent identity derives it
+
+------------------------------------------------------------------------------------------------------------------------
+RZK4: Box zeta / Box kappa scalar source
+------------------------------------------------------------------------------------------------------------------------
+Route: box_zeta_box_kappa_scalar_source
+Forbidden use: ordinary exterior scalar Poisson channel introduced for zeta/kappa
+[FAIL] RZK4: Box zeta / Box kappa scalar source: REJECTED
+Consequence: no ordinary long-range residual scalar charge is licensed
+
+------------------------------------------------------------------------------------------------------------------------
+RZK5: residual relaxation repairs A-flux
+------------------------------------------------------------------------------------------------------------------------
+Route: residual_relaxation_A_flux_repair
+Forbidden use: residual relaxation changes exterior A-flux or boundary slope to save recovery
+[FAIL] RZK5: residual relaxation repairs A-flux: REJECTED
+Consequence: residual relaxation is not a boundary purse
+
+------------------------------------------------------------------------------------------------------------------------
+RZK6: recovery-chosen residual status
+------------------------------------------------------------------------------------------------------------------------
+Route: recovery_chosen_residual_status
+Forbidden use: zeta/kappa residual role chosen from Schwarzschild, PPN, gamma_like, AB, or B=1/A
+[FAIL] RZK6: recovery-chosen residual status: REJECTED
+Consequence: recovery remains downstream, not a residual-routing rule
+
+[counterexamples]
+[FAIL] zeta/kappa residual mass routes rejected -- nonzero residual tails, cancellation, Box routes, repair relaxation, and recovery-chosen residual status are not licensed
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The zeta/kappa mass-neutrality audit fails if a later script allows:
+
+1. zeta residual metric trace with C_zeta/r outside and C_zeta != 0
+2. kappa residual metric trace with C_kappa/r outside and C_kappa != 0
+3. C_zeta + C_kappa = 0 cancellation to stand in for sector neutrality
+4. Box zeta or Box kappa as ordinary exterior scalar source laws
+5. e_kappa or epsilon_vac_config to become a source reservoir
+6. residual relaxation to alter A-flux or repair boundary mismatch
+7. residual-kill to be treated as a derived no-overlap theorem
+8. B_s/zeta insertion to be chosen from gamma_like, AB, B=1/A, PPN, or Schwarzschild recovery
+9. O to enforce zeta/kappa neutrality without domain/kernel/image/boundary law
+
+[unresolved_obligations]
+[OBLIGATION] derive zeta/kappa residual mass-neutrality theorem -- show residual trace variables are non-metric, killed/suppressed, compact-neutral, or have vanishing exterior 1/r coefficients
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The reduced flux witness is:
+
+  zeta_tail = C_zeta/r  ->  F_zeta = -4*pi*C_zeta
+  kappa_tail = C_kappa/r -> F_kappa = -4*pi*C_kappa
+
+Therefore ordinary exterior mass neutrality requires:
+
+  C_zeta = 0 and C_kappa = 0
+
+unless the residuals are strictly non-metric/diagnostic, killed/suppressed, compact-neutral,
+or routed through a future parent identity that avoids double counting.
+
+The safest current convention remains:
+
+  residual-kill / non-metric residual for zeta/kappa trace leftovers.
+
+Neutral residual metric trace remains theorem-heavy.
+
+Possible next script:
+  candidate_JV_mass_neutrality_conditions.py
+
+[governance_assessments]
+[PASS] zeta/kappa mass-neutrality audit complete -- residual-kill/non-metric residual remains safest; neutral metric trace remains theorem-targeted

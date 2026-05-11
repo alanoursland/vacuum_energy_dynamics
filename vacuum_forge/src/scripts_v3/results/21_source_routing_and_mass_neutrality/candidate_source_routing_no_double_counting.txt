@@ -1,0 +1,343 @@
+
+========================================================================================================================
+Candidate Source Routing No Double Counting
+========================================================================================================================
+[INFO] Archive dependency check:
+  - correction_tensor_guard_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - H_scalar_trace_leakage_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - A_sector_mass_definition_dependency_21: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Source-routing no-double-counting problem
+========================================================================================================================
+Question:
+
+  Can ordinary matter be routed without being counted multiple times?
+
+Reference discipline:
+
+  A-sector mass charge remains the reduced ordinary exterior reference.
+  Ordinary rho / M_enc routes to A-flux.
+  Non-A sectors must not also count the same ordinary matter as independent mass.
+  No active O, no source projector, no correction tensor, no exchange source side,
+  and no dark label is assumed.
+  This script records a source-routing ledger and no-double-counting guardrails, not a parent source law.
+
+[governance_assessments]
+[INFO] source-routing no-double-counting audit opened -- ordinary matter routing is consolidated without deriving a parent source projector
+
+========================================================================================================================
+Case 1: Duplicate scalar source tail diagnostic
+========================================================================================================================
+If an ordinary source were duplicated into a non-A scalar exterior tail:
+
+  phi_dup(r) = C_dup/r
+
+then:
+
+  F_dup = 4*pi*r^2*phi_dup' = -4*pi*C_dup
+  delta_M_dup_like = c^2*F_dup/(8*pi*G) = -C_dup*c**2/(2*G)
+
+Residual checks:
+
+  F_dup + 4*pi*C_dup = 0
+  delta_M_dup_like + c^2*C_dup/(2*G) = 0
+
+Interpretation:
+
+  This is a danger diagnostic, not a licensed duplicate source law.
+  Any duplicated ordinary scalar tail with C_dup != 0 becomes a second mass coin.
+
+[derived_results]
+[PASS] duplicate scalar tail flux derived -- F_dup = -4*pi*C_dup
+[PASS] duplicate scalar A-like mass shift diagnostic derived -- delta_M_dup_like = -C_dup*c**2/(2*G)
+
+========================================================================================================================
+Case 2: Duplicate A-tail source diagnostic
+========================================================================================================================
+If a non-A source-routing branch were allowed to induce an extra A-like exterior tail:
+
+  delta_A_dup(r) = q_dup/r
+
+then:
+
+  delta_F_A|dup = 4*pi*r^2*delta_A_dup' = -4*pi*q_dup
+  delta_M_A|dup = c^2*delta_F_A|dup/(8*pi*G) = -c**2*q_dup/(2*G)
+
+Residual checks:
+
+  delta_F_A|dup + 4*pi*q_dup = 0
+  delta_M_A|dup + c^2*q_dup/(2*G) = 0
+
+Interpretation:
+
+  This is not a source law.
+  It shows why non-A branches may not induce q_dup/r A-tails by routing vocabulary.
+
+[derived_results]
+[PASS] duplicate A-tail flux diagnostic derived -- delta_F_A|dup = -4*pi*q_dup
+[PASS] duplicate A-tail mass-shift diagnostic derived -- delta_M_A|dup = -c**2*q_dup/(2*G)
+
+========================================================================================================================
+Case 3: Algebraic source-load ledger
+========================================================================================================================
+Use a symbolic source-load ledger:
+
+  rho_A        = protected A-sector ordinary mass source
+  rho_kappa    = forbidden/targeted kappa duplicate source
+  rho_zeta     = forbidden/targeted zeta duplicate source
+  rho_curv     = curvature diagnostic source-reservoir danger
+  rho_H        = correction tensor source-absorption danger
+  rho_exch     = exchange source-rerouting danger
+  rho_dark     = dark-label patch danger
+  E_accounting = energy/accounting source-reservoir danger
+
+Total source-load candidate:
+
+  total_source_load = E_accounting + rho_A + rho_H + rho_curv + rho_dark + rho_exch + rho_kappa + rho_zeta
+
+Extra non-A source-load beyond A-sector:
+
+  extra_source_load = total_source_load - rho_A = E_accounting + rho_H + rho_curv + rho_dark + rho_exch + rho_kappa + rho_zeta
+
+Residual check:
+
+  extra_source_load residual = 0
+
+A cancellation condition would be:
+
+  Eq(E_accounting + rho_H + rho_curv + rho_dark + rho_exch + rho_kappa + rho_zeta, 0)
+
+But Group 21 does not accept cancellation ledgers as sector neutrality.
+Each non-A pocket must be empty, diagnostic, non-metric, role-level, or theorem-routed.
+
+[derived_results]
+[PASS] extra non-A source-load ledger derived -- extra_source_load = E_accounting + rho_H + rho_curv + rho_dark + rho_exch + rho_kappa + rho_zeta
+
+[counterexamples]
+[FAIL] source cancellation by hand rejected -- extra_source_load = 0 by cancellation is not sector-by-sector no-double-counting
+
+========================================================================================================================
+Case 4: Ordinary source-routing ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+SRD1: rho / M_enc to A-sector
+------------------------------------------------------------------------------------------------------------------------
+Route: rho / M_enc -> A-sector mass charge
+Allowed condition: ordinary mass density sources the reduced A-flux reference charge
+Forbidden condition: rho is also routed into kappa, zeta, curvature, H, exchange, or dark mass channels by convenience
+[PASS] SRD1: rho / M_enc to A-sector: PROTECTED
+Consequence: A-sector remains the only currently licensed ordinary exterior mass coin.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD2: longitudinal current
+------------------------------------------------------------------------------------------------------------------------
+Route: longitudinal current -> scalar continuity / density redistribution
+Allowed condition: current affects density redistribution only through a derived continuity/source law
+Forbidden condition: longitudinal current becomes a second exterior mass flux without a mass-neutral theorem
+[DEFER] SRD2: longitudinal current: THEOREM_TARGET
+Consequence: longitudinal flow needs continuity discipline before mass-routing use.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD3: transverse current
+------------------------------------------------------------------------------------------------------------------------
+Route: transverse current -> W_i vector sector
+Allowed condition: transverse current is routed to W_i and does not create scalar A-flux, kappa, or zeta mass charge
+Forbidden condition: transverse current is counted again as scalar mass or exchange repair
+[INFO] SRD3: transverse current: SAFE_IF
+Consequence: vector routing is safe only if it remains non-scalar and mass-neutral.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD4: TT stress / quadrupole
+------------------------------------------------------------------------------------------------------------------------
+Route: TT stress / quadrupole -> h_TT
+Allowed condition: radiative/tensor content is routed to tensor sector without duplicating ordinary scalar mass charge
+Forbidden condition: TT stress becomes H_curv/H_exch source, dark patch, or scalar correction by convenience
+[DEFER] SRD4: TT stress / quadrupole: THEOREM_TARGET
+Consequence: tensor/radiative routing remains separate from ordinary exterior mass charge.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD5: pressure / trace
+------------------------------------------------------------------------------------------------------------------------
+Route: pressure / trace -> diagnostic or non-metric kappa/zeta relaxation only if neutral
+Allowed condition: pressure trace produces no exterior kappa/zeta 1/r scalar charge unless a parent theorem routes it without double counting
+Forbidden condition: pressure trace creates exterior kappa Poisson charge or zeta mass route
+[DEFER] SRD5: pressure / trace: THEOREM_TARGET
+Consequence: pressure/trace cannot become a second scalar mass source by declaration.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD6: residual zeta/kappa source exclusion
+------------------------------------------------------------------------------------------------------------------------
+Route: zeta/kappa residuals excluded from ordinary source roles
+Allowed condition: residuals are killed, non-metric, diagnostic, compact-neutral, or have vanishing exterior 1/r coefficients
+Forbidden condition: zeta/kappa residuals become second scalar metric source
+[INFO] SRD6: residual zeta/kappa source exclusion: PROVISIONAL
+Consequence: residual-kill/non-metric residual remains safest but not a theorem.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD7: curvature diagnostics
+------------------------------------------------------------------------------------------------------------------------
+Route: A_curv / e_curv / J_curv excluded from ordinary matter source roles
+Allowed condition: curvature objects remain diagnostic/accounting/theorem-targeted unless source-neutral dynamics are derived
+Forbidden condition: curvature diagnostics become matter sources, source reservoirs, or boundary repair currents
+[INFO] SRD7: curvature diagnostics: DIAGNOSTIC_ONLY
+Consequence: curvature accounting remains diagnostic, not source energy.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD8: correction tensors
+------------------------------------------------------------------------------------------------------------------------
+Route: H_curv / H_exch excluded from ordinary matter source roles
+Allowed condition: H labels remain non-inserted diagnostics until tensor definition, source side, divergence safety, and neutrality are derived
+Forbidden condition: H tensors absorb ordinary source mismatch or define their own source by divergence
+[FAIL] SRD8: correction tensors: REJECTED
+Consequence: correction tensors cannot be ordinary matter sinks or mass patches.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD9: exchange roles
+------------------------------------------------------------------------------------------------------------------------
+Route: J_exch / Sigma_exch / R_exch remain separate from ordinary matter routing
+Allowed condition: exchange roles remain role-level or derive source/support law with zero ordinary mass double count
+Forbidden condition: ordinary T_mu_nu becomes Sigma_exch or J_exch by convenience
+[INFO] SRD9: exchange roles: ROLE_LEVEL
+Consequence: exchange is not ordinary matter rerouting and not repair.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD10: dark labels
+------------------------------------------------------------------------------------------------------------------------
+Route: dark-sector labels optional downstream only
+Allowed condition: dark coupling is derived after ordinary-sector neutrality, not used to patch ordinary failure
+Forbidden condition: dark labels absorb ordinary source, boundary, scalar-tail, H, or recovery failure
+[DEFER] SRD10: dark labels: DEFER
+Consequence: dark sector is not an ordinary mass patch.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD11: energy/accounting terms
+------------------------------------------------------------------------------------------------------------------------
+Route: e_kappa / e_curv / epsilon_vac_config remain diagnostic/accounting
+Allowed condition: accounting terms do not source A or supply coefficients unless a source theorem derives it
+Forbidden condition: energy/accounting labels become coefficient reservoirs or source energy by vocabulary
+[INFO] SRD11: energy/accounting terms: ACCOUNTING_ONLY
+Consequence: energy words do not create source channels.
+
+------------------------------------------------------------------------------------------------------------------------
+SRD12: ordinary scalar radiation
+------------------------------------------------------------------------------------------------------------------------
+Route: ordinary scalar radiation rejected
+Allowed condition: no ordinary long-range scalar radiation/source channel is licensed in this audit
+Forbidden condition: scalar radiation reintroduces exterior residual 1/r tails or independent mass flux
+[FAIL] SRD12: ordinary scalar radiation: REJECTED
+Consequence: ordinary scalar radiation remains outside the current source-routing license.
+
+[governance_assessments]
+[PASS] ordinary source-routing ledger populated -- 12 routing rules classified for no-double-counting burden
+
+========================================================================================================================
+Case 5: Rejected source double-counting routes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+RR1: rho also sources kappa mass charge
+------------------------------------------------------------------------------------------------------------------------
+Route: rho_to_kappa_mass_charge
+Forbidden use: ordinary density produces an independent exterior kappa mass tail
+[FAIL] RR1: rho also sources kappa mass charge: REJECTED
+Consequence: rho is counted twice unless kappa route is derived and no double counting is proved.
+
+------------------------------------------------------------------------------------------------------------------------
+RR2: pressure trace exterior scalar charge
+------------------------------------------------------------------------------------------------------------------------
+Route: pressure_trace_scalar_charge
+Forbidden use: pressure or trace source creates exterior kappa/zeta Poisson charge
+[FAIL] RR2: pressure trace exterior scalar charge: REJECTED
+Consequence: pressure trace cannot become a long-range scalar mass channel by convenience.
+
+------------------------------------------------------------------------------------------------------------------------
+RR3: ordinary T_mu_nu becomes Sigma_exch
+------------------------------------------------------------------------------------------------------------------------
+Route: ordinary_T_to_Sigma_exch
+Forbidden use: ordinary matter is rerouted into exchange source labels
+[FAIL] RR3: ordinary T_mu_nu becomes Sigma_exch: REJECTED
+Consequence: exchange source side needs its own theorem and cannot absorb ordinary matter.
+
+------------------------------------------------------------------------------------------------------------------------
+RR4: curvature diagnostics as matter sources
+------------------------------------------------------------------------------------------------------------------------
+Route: curvature_diagnostics_as_sources
+Forbidden use: A_curv, e_curv, or J_curv become ordinary matter source channels
+[FAIL] RR4: curvature diagnostics as matter sources: REJECTED
+Consequence: curvature diagnostics remain diagnostic/accounting until real dynamics are derived.
+
+------------------------------------------------------------------------------------------------------------------------
+RR5: H absorbs ordinary mismatch
+------------------------------------------------------------------------------------------------------------------------
+Route: H_absorbs_ordinary_source_mismatch
+Forbidden use: H_curv or H_exch absorbs missing ordinary source, boundary, or divergence content
+[FAIL] RR5: H absorbs ordinary mismatch: REJECTED
+Consequence: correction tensors remain non-insertable and cannot define source routing.
+
+------------------------------------------------------------------------------------------------------------------------
+RR6: dark label patches ordinary failure
+------------------------------------------------------------------------------------------------------------------------
+Route: dark_label_patches_ordinary_failure
+Forbidden use: dark label absorbs source, scalar-tail, boundary, H, or recovery failure
+[FAIL] RR6: dark label patches ordinary failure: REJECTED
+Consequence: dark sector is not an ordinary source-routing patch.
+
+------------------------------------------------------------------------------------------------------------------------
+RR7: cancellation ledger instead of sector neutrality
+------------------------------------------------------------------------------------------------------------------------
+Route: source_cancellation_ledger
+Forbidden use: sum of non-A source labels cancels while individual pockets remain nonzero
+[FAIL] RR7: cancellation ledger instead of sector neutrality: REJECTED
+Consequence: cancellation is not no-double-counting unless a future parent identity derives it.
+
+[counterexamples]
+[FAIL] source double-counting routes rejected -- rho-to-kappa, pressure scalar charge, ordinary T to exchange, curvature source, H absorption, dark patch, and cancellation ledger are not licensed
+
+========================================================================================================================
+Case 6: Failure controls
+========================================================================================================================
+The source-routing no-double-counting audit fails if a later script allows:
+
+1. rho / M_enc to source any second ordinary exterior mass channel by declaration
+2. rho to also source kappa, zeta, curvature, H, exchange, or dark labels
+3. pressure trace to create exterior kappa/zeta scalar charge
+4. ordinary T_mu_nu to become Sigma_exch, J_exch, H_curv, or H_exch by convenience
+5. curvature diagnostics or accounting terms to become source reservoirs
+6. H tensors to absorb ordinary source mismatch or define their own source by divergence
+7. dark labels to patch ordinary source, boundary, scalar-tail, H, or recovery failure
+8. zeta/kappa residuals to become second scalar metric source
+9. source cancellation ledgers to stand in for sector-by-sector neutrality
+10. O/source projectors to enforce routing without domain/kernel/image/boundary law
+
+[unresolved_obligations]
+[OBLIGATION] derive ordinary source no-double-counting theorem -- show ordinary matter routes through protected channels without duplicate non-A mass/source channels
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Current ordinary source-routing discipline:
+
+  rho / M_enc -> A-sector mass charge
+  longitudinal current -> continuity / density redistribution only if derived
+  transverse current -> W_i without scalar mass duplication
+  TT stress / quadrupole -> h_TT without scalar mass duplication
+  pressure / trace -> diagnostic or non-metric kappa/zeta relaxation only if neutral
+  ordinary scalar radiation -> rejected
+  ordinary matter -> not rerouted into J_sub/J_exch/Sigma_exch/H_exch/H_curv
+
+The reduced danger witnesses are:
+
+  duplicate scalar tail C_dup/r -> F_dup = -4*pi*C_dup
+  duplicate A-tail q_dup/r      -> delta_M_A|dup = -c^2*q_dup/(2*G)
+  extra source-load ledger      -> non-A source labels must not survive by cancellation
+
+This script does not derive parent source routing.
+It records the no-double-counting burden for the Group 21 closure.
+
+Possible next script:
+  candidate_group_21_source_routing_status_summary.py
+
+[governance_assessments]
+[PASS] source-routing no-double-counting audit complete -- ordinary matter remains routed to protected channels; source routing remains constrained but not parent-derived
