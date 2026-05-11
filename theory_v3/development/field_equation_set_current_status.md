@@ -1269,6 +1269,41 @@ shell-source created by sharp support,
 recovery checks choosing boundary conditions.
 ```
 
+Group 22 boundary/scalar-silence update:
+
+```text
+Boundary neutrality and exterior scalar silence remain required but not derived.
+
+Group 22 made the target ledger explicit:
+
+  delta F_A|boundary,non-A = 0,
+  C_i = 0 sector-wise,
+  I_nonA = 0,
+  no shell source,
+  no recovery-tuned smoothing,
+  no active O,
+  no H insertion.
+
+Group 22 also closed the following repair routes as rejected:
+
+  surface counterterm,
+  boundary repair current,
+  R_V boundary cancellation,
+  J_exch repair,
+  curvature boundary rescue,
+  H boundary counterterm,
+  O boundary eraser,
+  dark boundary patch,
+  recovery-tuned smoothing,
+  sharp support hiding shell charge.
+
+Status:
+
+  REQUIRED / THEOREM_TARGET
+  GROUP 22 REQUIREMENTS EXPLICIT
+  NOT DERIVED
+```
+
 ---
 
 ## 6.7a Group 21 Mass-Neutrality Witnesses
@@ -1316,6 +1351,75 @@ DERIVED_REDUCED DIAGNOSTIC
 
 ---
 
+## 6.7b Group 22 Boundary / Scalar-Silence Requirements
+
+Group 22 completed the boundary-neutrality and scalar-silence requirements audit.
+
+Core target ledger:
+
+```text
+delta F_A|boundary,non-A = 0
+C_zeta = 0
+C_kappa = 0
+C_JV = 0
+C_Jsub = 0
+C_Jexch = 0
+C_curv = 0
+C_Jcurv = 0
+C_H = 0
+C_boundary = 0
+C_dark = 0
+I_V = 0
+I_sub = 0
+I_exch = 0
+I_curv = 0
+I_H = 0
+I_boundary = 0
+I_dark = 0
+no shell source
+no recovery-tuned smoothing
+no active O
+no H insertion
+```
+
+Reduced witnesses:
+
+```text
+phi_i = C_i/r
+F_i = -4*pi*C_i
+
+j_i^r = I_i/(4*pi*r^2)
+Phi_i = I_i
+
+delta A_boundary = q/r
+delta M_A = -c^2 q/(2G)
+```
+
+Interpretation:
+
+```text
+Every ordinary-sector residual scalar tail coefficient must vanish
+or remain strictly inert, diagnostic, non-metric, compact-neutral with derived matching,
+or future theorem-routed without double counting.
+
+Every non-A far-zone current coefficient must vanish
+or remain role-level / diagnostic / future theorem-routed as neutral transport.
+
+Total cancellation is not sector silence.
+Repair routes are not boundary neutrality.
+Diagnostic/non-metric labels are not no-overlap theorems.
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / REQUIREMENTS EXPLICIT
+BOUNDARY NEUTRALITY STILL THEOREM_TARGET
+SCALAR SILENCE STILL THEOREM_TARGET
+```
+
+---
+
 ## 6.8 Curvature Boundary / Mass Neutrality
 
 Status:
@@ -1343,6 +1447,23 @@ Current safe fallback:
 curvature admissibility remains interior diagnostic / branch-filter only.
 ```
 
+Group 22 boundary/scalar update:
+
+```text
+Curvature diagnostics and curvature-current labels must not rescue boundary or scalar leakage.
+
+Required:
+
+  C_curv = 0,
+  C_Jcurv = 0,
+  I_curv = 0,
+
+unless a future curvature-current / curvature-admissibility theorem derives neutral behavior
+with no boundary repair, no scalar tail, no source rerouting, and no recovery tuning.
+
+Curvature boundary rescue remains rejected.
+```
+
 ---
 
 ## 6.9 Correction Tensor Boundary / Mass Neutrality
@@ -1365,6 +1486,23 @@ create shell sources,
 smooth boundaries for recovery,
 use dark-sector boundary patches,
 claim anti-singularity by boundary behavior.
+```
+
+Group 22 boundary/scalar update:
+
+```text
+H_curv/H_exch remain non-insertable.
+
+Required before any future H insertion:
+
+  C_H = 0,
+  I_H = 0,
+  no H boundary counterterm,
+  no H scalar-tail cancellation,
+  no H M_ext correction,
+  no H repair of shell, boundary, or current leakage.
+
+H boundary counterterm and H flux insertion remain rejected.
 ```
 
 ---
@@ -1491,6 +1629,23 @@ Cancellation by hand,
 is not sector neutrality.
 ```
 
+Group 22 diagnostic-residual refinement:
+
+```text
+Residuals may survive as diagnostic / non-metric only if they have:
+
+  no metric trace effect,
+  no source role,
+  no boundary flux,
+  no far-zone tail,
+  no coefficient reservoir,
+  no later re-entry through H, O, dark labels, curvature, exchange, source projectors, or parent placeholders,
+  no recovery-selected status.
+
+Non-metric vocabulary is not a no-overlap theorem.
+Residual-kill remains provisional and theorem-targeted.
+```
+
 ---
 
 ## 7.4 Neutral Residual Alternative
@@ -1507,6 +1662,22 @@ Status:
 
 ```text
 RISK / THEOREM-HEAVY
+```
+
+Group 22 update:
+
+```text
+Neutral residual survival remains theorem-heavy.
+
+It requires:
+  exterior scalar coefficient vanishing,
+  compact-neutral support with derived matching/no-shell behavior,
+  diagnostic residual non-reentry,
+  source-routing compatibility,
+  no repair route,
+  no recovery-selected status.
+
+Total cancellation across residual sectors is not neutral residual status.
 ```
 
 ---
@@ -1535,7 +1706,13 @@ zeta/kappa cancellation by hand,
 nonzero zeta exterior 1/r tail,
 nonzero kappa exterior 1/r tail,
 residual relaxation repairing A-flux,
-recovery-chosen residual status.
+recovery-chosen residual status,
+scalar silence by total cancellation,
+O erasing zeta/kappa tails by name,
+H canceling zeta/kappa tails,
+boundary shell absorbing zeta/kappa leakage,
+recovery-selected zeta/kappa coefficient zero,
+diagnostic residual re-entering metric/source/boundary behavior.
 ```
 
 ---
@@ -1786,6 +1963,24 @@ A duplicate A-tail q_dup/r shifts delta M_A = -c^2 q_dup/(2G).
 Extra source-load cancellation ledgers do not count as sector-by-sector neutrality.
 ```
 
+Group 22 boundary/source-routing compatibility update:
+
+```text
+Boundary and scalar silence cannot be obtained by rerouting ordinary sources into non-A repair channels.
+
+Forbidden:
+
+  ordinary rho/T rerouted into boundary shell,
+  ordinary rho/T rerouted into scalar-tail cancellation,
+  ordinary rho/T rerouted into non-A current flux,
+  ordinary rho/T rerouted into curvature boundary rescue,
+  ordinary rho/T rerouted into H counterterm,
+  ordinary rho/T rerouted into exchange repair,
+  ordinary rho/T rerouted into dark boundary patch.
+
+Source-routing compatibility remains a theorem obligation.
+```
+
 Current source assignments:
 
 | Sector                | Source                                          | Status                           |
@@ -1846,7 +2041,16 @@ H_curv/H_exch -> not ordinary matter sinks or correction patches,
 
 dark labels -> optional downstream only, not ordinary failure patches,
 
-source cancellation ledgers -> not sector neutrality.
+source cancellation ledgers -> not sector neutrality,
+
+boundary/scalar silence -> requires source-routing compatibility,
+
+ordinary source routing -> must not create boundary shell, scalar-tail, current-flux,
+curvature, H, exchange, or dark repair channels,
+
+diagnostic residuals -> must not re-enter source routing,
+
+repair routes -> rejected as source-routing substitutes.
 ```
 
 No-double-counting rules:
@@ -1884,7 +2088,17 @@ H tensors cannot absorb ordinary source mismatch or define their own source by d
 
 dark labels cannot patch ordinary source, boundary, scalar-tail, H, or recovery failure,
 
-source-load cancellation across non-A labels is not sector-by-sector neutrality.
+source-load cancellation across non-A labels is not sector-by-sector neutrality,
+
+boundary shells cannot hide duplicate ordinary source load,
+
+non-A scalar-tail coefficients cannot be canceled by total source ledgers,
+
+non-A current-flux coefficients cannot be canceled by total flux ledgers,
+
+diagnostic residual labels cannot re-enter through source projectors,
+
+boundary/scalar repair mechanisms cannot be used to bypass source no-double-counting.
 ```
 
 Status:
@@ -2130,6 +2344,100 @@ Meaning:
 ```text
 ordinary residual 1/r scalar tails are mass-dangerous unless C = 0
 or strictly non-metric/diagnostic.
+```
+
+Group 22 boundary/scalar-silence target ledger:
+
+```text
+delta F_A|boundary,non-A = 0
+C_i = 0 sector-wise
+I_nonA = 0
+no shell source
+no recovery-tuned smoothing
+no active O
+no H insertion
+```
+
+Status:
+
+```text
+REQUIREMENTS EXPLICIT / THEOREM_TARGET
+NOT DERIVED
+```
+
+Meaning:
+
+```text
+Boundary neutrality and exterior scalar silence are not solved.
+The exact closure targets are now explicit.
+```
+
+Sector scalar-tail witness:
+
+```text
+phi_i = C_i/r
+F_i = -4*pi*C_i
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / GROUP 22
+```
+
+Meaning:
+
+```text
+Every ordinary-sector residual scalar coefficient must vanish
+or remain inert, non-metric, diagnostic, compact-neutral with derived matching,
+or future theorem-routed without double counting.
+```
+
+Non-A current-flux witness:
+
+```text
+j_i^r = I_i/(4*pi*r^2)
+Phi_i = I_i
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / GROUP 22
+```
+
+Meaning:
+
+```text
+Every non-A far-zone current coefficient must vanish
+or remain role-level, diagnostic, or future theorem-routed as neutral transport.
+```
+
+Boundary repair route exclusion:
+
+```text
+surface counterterm,
+boundary repair current,
+R_V boundary cancellation,
+J_exch repair,
+curvature boundary rescue,
+H boundary counterterm,
+O boundary eraser,
+dark boundary patch,
+recovery-tuned smoothing,
+sharp support hiding shell charge
+```
+
+Status:
+
+```text
+REJECTED / GROUP 22
+```
+
+Meaning:
+
+```text
+Boundary/scalar silence cannot be supplied by repair mechanisms.
 ```
 
 Vacuum exchange theorem target:
@@ -2602,7 +2910,21 @@ residual 1/r scalar coefficient vanishing theorem,
 no-shell boundary matching law,
 far-zone non-A current flux neutrality theorem,
 ordinary source no-double-counting theorem,
-correction tensor mass-neutrality and insertability theorem.
+correction tensor mass-neutrality and insertability theorem,
+boundary neutrality theorem,
+exterior scalar silence theorem,
+no-shell matching law,
+compact support law,
+value/slope boundary matching theorem,
+distributional shell absence theorem,
+sector scalar coefficient vanishing theorem,
+sector current flux neutrality theorem,
+neutral transport theorem,
+diagnostic residual inertness theorem,
+diagnostic residual non-reentry theorem,
+recovery-independent boundary data theorem,
+source-routing compatibility with boundary/scalar silence,
+no-repair boundary theorem.
 ```
 
 ---
@@ -2624,6 +2946,25 @@ Source routing and mass neutrality:
   cannot shift exterior mass by declaration;
   non-A mass neutrality remains required and theorem-targeted;
   boundary neutrality and scalar silence remain the most direct next bottleneck.
+
+Boundary neutrality and scalar silence:
+  Group 22 completed the boundary-neutrality and scalar-silence requirements audit;
+  the target conditions are now explicit:
+    delta F_A|boundary,non-A = 0,
+    sector scalar-tail coefficients C_i vanish,
+    non-A current coefficients I_i vanish,
+    no shell source,
+    no recovery-tuned smoothing,
+    no active O,
+    no H insertion;
+  value matching alone is insufficient for no-shell behavior;
+  C2/smooth compact toy profiles are diagnostics, not compact-support theorems;
+  total scalar-tail cancellation is not sector silence;
+  total current-flux cancellation is not sector current silence;
+  repair routes remain rejected;
+  diagnostic/non-metric residuals must remain inert and non-reentering;
+  boundary neutrality and scalar silence remain theorem-targeted;
+  parent equation remains not ready.
 
 Vector sector:
   source/projection/action/shape reconstructed,
@@ -2807,7 +3148,30 @@ source cancellation ledger treated as no-double-counting,
 H inserted as M_ext correction,
 H trace cancels scalar tail,
 dark label patches ordinary mass leakage,
-ordinary rho counted in A-sector and again in non-A sector.
+ordinary rho counted in A-sector and again in non-A sector,
+Group 22 target conditions treated as proved,
+boundary neutrality claimed from target ledger alone,
+scalar silence claimed from target ledger alone,
+compact support claimed from toy profiles alone,
+C1 value matching treated as no-shell proof,
+value continuity alone treated as no-shell proof,
+derivative jump hiding shell flux,
+sharp support called scalar silence,
+total scalar-tail cancellation treated as sector silence,
+total current-flux cancellation treated as sector current silence,
+surface counterterm as boundary neutrality,
+boundary repair current introduced after leakage,
+R_V used to erase boundary mismatch,
+J_exch used as scalar/source/boundary repair,
+curvature diagnostic/current/balance used as boundary rescue,
+H_curv/H_exch used as boundary counterterm or M_ext correction,
+O used to erase boundary/scalar leakage by name,
+dark label used to patch ordinary boundary failure,
+recovery target used to select smoothing/support/boundary/current/residual data,
+diagnostic residual re-enters metric/source/boundary behavior,
+nonmetric vocabulary treated as no-overlap theorem,
+neutral transport target treated as current law,
+parent equation opened from Group 22 requirements alone.
 ```
 
 Major closure risks:
@@ -3117,6 +3481,31 @@ THEOREM_TARGET
 NOT DERIVED
 ```
 
+Group 22 status:
+
+```text
+boundary safety requirements are now explicit but not derived.
+
+Required:
+
+  delta F_A|boundary,non-A = 0,
+  no exterior scalar coefficients C_i,
+  no non-A far-zone current coefficients I_i,
+  no shell source,
+  no repair route,
+  no recovery-selected support or smoothing.
+
+Diagnostic lessons:
+
+  C1 value matching can still carry boundary flux.
+  C2 and smooth compact toy profiles are safer diagnostics but not support theorems.
+
+Status:
+
+  THEOREM_TARGET / REQUIREMENTS EXPLICIT
+  NOT DERIVED
+```
+
 Candidate safety routes:
 
 ```text
@@ -3134,7 +3523,19 @@ boundary counterterm,
 R_V cancellation of leakage,
 recovery-tuned smoothing,
 source-gradient shell source,
-zeta-gradient exterior tail without zero-charge theorem.
+zeta-gradient exterior tail without zero-charge theorem,
+surface counterterm,
+boundary repair current,
+R_V cancellation,
+J_exch repair,
+curvature rescue,
+H boundary counterterm,
+O boundary eraser,
+dark boundary patch,
+recovery-tuned smoothing,
+sharp support hiding shell charge,
+total scalar-tail cancellation,
+total current-flux cancellation.
 ```
 
 ## 17.7 Recovery Audit
@@ -3225,30 +3626,67 @@ Ordinary source routing is protected from duplicate non-A source channels.
 Parent equation remains not ready.
 ```
 
-The next technical target should be framed as:
+Completed boundary-neutrality and scalar-silence requirements audit (Group 22):
 
 ```text
-Can the ordinary closed regime enforce boundary neutrality and exterior scalar silence
-without repair mechanisms?
+Boundary/scalar silence targets are explicit.
+Smooth compact support diagnostics show value matching alone is insufficient.
+Sector scalar-tail coefficients C_i/r carry F_i = -4*pi*C_i.
+Non-A far-zone current profiles I_i/(4*pi*r^2) carry Phi_i = I_i.
+Total scalar-tail cancellation is not sector silence.
+Total current-flux cancellation is not sector current silence.
+Surface counterterms, repair currents, R_V cancellation, J_exch repair,
+curvature rescue, H counterterms, O erasers, dark patches,
+recovery-tuned smoothing, and sharp support remain rejected.
+Diagnostic/non-metric residuals are safe only if inert and non-reentering.
+Boundary neutrality and exterior scalar silence remain theorem-targeted.
+Parent equation remains not ready.
+```
+
+The next technical target should be framed as one of the following narrower routes:
+
+```text
+23_smooth_support_and_matching_laws
+23_metric_insertion_recovery_retest
+23_role_specific_boundary_projectors
+23_reduced_observational_audit
+```
 
 Recommended next group:
 
-  22_boundary_neutrality_and_scalar_silence
+```text
+23_smooth_support_and_matching_laws
+```
 
 Reason:
 
-  Group 21 repeatedly reduced the remaining bottleneck to:
-    no residual 1/r scalar tails,
-    no non-A boundary A-tail,
-    no shell source,
-    no far-zone non-A flux,
-    no smoothing, O, H, dark label, or recovery-tuned repair.
+```text
+Group 22 repeatedly reduced the boundary/scalar bottleneck to:
+  value/slope matching,
+  no derivative jump,
+  no shell source,
+  support law before recovery,
+  no repair routes.
+```
 
-Safe options after that:
-  metric insertion recovery retest,
-  role-specific boundary/source projectors,
-  reduced observational audit,
-  parent identity only if boundary/scalar silence and projector obligations are real.
+Caution:
+
+```text
+Do not use toy profiles, sharp cutoffs, recovery-selected support,
+O, H, dark labels, exchange, or curvature rescue as proof.
+```
+
+Alternative safe handoffs:
+
+```text
+23_metric_insertion_recovery_retest
+  if testing B_s/F_zeta insertion against Group 22 guardrails;
+
+23_role_specific_boundary_projectors
+  if attempting real projector routes with domain, kernel, image, divergence, and boundary law;
+
+23_reduced_observational_audit
+  if auditing reduced consequences without claiming parent closure.
 ```
 
 Known unresolved dependencies (retained from prior status):
@@ -3317,6 +3755,26 @@ Group 21 source-routing / mass-neutrality status:
   boundary neutrality and scalar silence remain the next bottleneck;
   parent equation remains not ready.
 
+Group 22 boundary-neutrality / scalar-silence status:
+  boundary/scalar silence targets are explicit;
+  delta F_A|boundary,non-A = 0 is required;
+  sector scalar-tail coefficients C_i must vanish or remain inert/nonmetric/diagnostic/compact-neutral/theorem-routed;
+  C_i/r tails carry F_i = -4*pi*C_i;
+  non-A current coefficients I_i must vanish or remain role-level/diagnostic/theorem-routed;
+  I_i/(4*pi*r^2) current profiles carry Phi_i = I_i;
+  no shell source is allowed;
+  no recovery-tuned smoothing is allowed;
+  no active O is available;
+  no H insertion is allowed;
+  value matching alone is insufficient;
+  C2/smooth compact toy profiles are diagnostics, not compact-support theorems;
+  total scalar-tail cancellation is not sector silence;
+  total current-flux cancellation is not sector current silence;
+  repair routes remain rejected;
+  diagnostic/non-metric residuals must remain inert and non-reentering;
+  boundary neutrality and exterior scalar silence remain theorem-targeted;
+  parent equation remains not ready.
+
 Residual-kill / non-metric residual is the safest provisional convention.
 
 Boundary safety is required and not derived:
@@ -3366,7 +3824,10 @@ Parent correction tensor status:
 
 The theory should not yet write a final parent equation.
 
-The next honest target is boundary neutrality and scalar silence,
+Group 22 did not open the parent gate.
+
+The next honest target is a narrower proof or constraint group,
+most directly smooth support and matching laws,
 not parent closure.
 ```
 
@@ -3376,4 +3837,9 @@ Compact version:
 No correction tensor is earned.
 No Bianchi-like language substitutes for divergence safety.
 No parent equation gate opens without defined, separated, boundary-neutral tensors.
+No boundary/scalar silence theorem is earned.
+No compact-support theorem is earned.
+No toy profile substitutes for no-shell matching.
+No repair route substitutes for boundary neutrality.
+No parent equation gate opens after Group 22.
 ```
