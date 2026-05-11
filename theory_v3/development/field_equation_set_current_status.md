@@ -97,7 +97,7 @@ e_{\kappa,{\rm metric}}
 \zeta_{{\rm residual},{\rm metric}}.
 \]
 
-This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. None of these routes is currently derived.
+This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. The residual-control theorem attempt has now been performed. Direct structural residual kill did not close. Full strict non-metric inertness did not close. Zeta/kappa geometric residual non-reentry did not close. epsilon_vac/e_kappa accounting inertness only partially reduced and does not close the geometric residual obstruction. No non-O residual-control route closes under current licensed objects. This is a controlled obstruction, not a mathematical no-go theorem. Active O remains optional-open/deferred, not derived, and not proven necessary. The preferred constructive handoff is active no-overlap operator construction; the alternate constructive handoff is \(B_s/F_\zeta\) coefficient-origin work.
 
 Ordinary long-range gravitational radiation is TT-only. Ordinary scalar breathing radiation through \(A_{\rm rad}\), \(\zeta\), or \(\kappa\) is rejected.
 
@@ -710,6 +710,32 @@ support / matching behavior,
 recovery independence.
 ```
 
+Current residual-control result:
+
+```text
+Direct residual kill:
+  NOT DERIVED
+
+Strict non-metric inertness:
+  NOT DERIVED
+
+Zeta/kappa geometric non-reentry:
+  NOT DERIVED
+
+epsilon_vac/e_kappa accounting inertness:
+  PARTIAL_REDUCTION / NOT FULL RESIDUAL CONTROL
+
+Non-O residual control:
+  CONTROLLED_OBSTRUCTION under current licensed objects
+  NOT a mathematical no-go theorem
+
+Active O:
+  OPTIONAL_OPEN / DEFERRED
+  NOT DERIVED
+  NOT PROVEN NECESSARY
+  NOT USABLE AS A SHORTCUT
+```
+
 Current residual-control rule:
 
 ```text
@@ -717,6 +743,8 @@ O may appear as a theorem target or diagnostic placeholder.
 O may not remove residual overlap by name.
 O may not be selected from recovery success, boundary failure, source failure, or parent-fit closure.
 ```
+
+Active O is now the preferred constructive route only if it is actually constructed. O remains unavailable as a tool until its domain, codomain, kernel, image, composition/replacement law, pairing/no-overlap criterion, derivative behavior, divergence behavior, boundary behavior, source behavior, mass behavior, scalar/current/support behavior, and recovery independence are derived.
 
 ### \(J_{\rm curv}^\mu\)
 
@@ -1200,6 +1228,30 @@ recovery-selected residual status,
 boundary/source-selected residual cleanup.
 ```
 
+Current theorem-attempt result:
+
+```text
+Route 1, structural residual kill:
+  tested;
+  NOT DERIVED.
+
+Route 2, strict non-metric / inert residual status:
+  tested;
+  NOT DERIVED.
+
+Route 3, active no-overlap O:
+  not constructed;
+  OPTIONAL_OPEN / DEFERRED.
+
+Accounting pair:
+  epsilon_vac_metric and e_kappa_metric partially reduce to accounting-only inertness targets,
+  but this does not close zeta/kappa geometric residual non-reentry.
+
+Non-O residual control:
+  CONTROLLED_OBSTRUCTION under current licensed objects.
+  This does not prove non-O residual control mathematically impossible.
+```
+
 ## 5.5 \(B_s/F_\zeta\) Insertion Target
 
 Current target:
@@ -1248,19 +1300,28 @@ Residual-control closure currently has the following gates:
 
 ```text
 Residual-kill gate:
-  NOT_READY
+  NOT_READY / TESTED_NOT_DERIVED
 
 Non-metric inertness gate:
-  NOT_READY
+  NOT_READY / TESTED_NOT_DERIVED
+
+Zeta/kappa non-reentry gate:
+  NOT_READY / TESTED_NOT_DERIVED
+
+epsilon_vac/e_kappa accounting inertness gate:
+  PARTIAL_REDUCTION / NOT FULL RESIDUAL CONTROL
 
 Active O gate:
-  NOT_READY
+  OPTIONAL_OPEN / DEFERRED / NOT DERIVED
+
+Non-O residual-control gate:
+  CONTROLLED_OBSTRUCTION under current licensed objects
 
 Count-once recombination gate:
   NOT_READY
 
 Boundary/source-compatible residual cleanup gate:
-  NOT_READY
+  NOT_READY / GUARDRAILS PRESERVED
 
 B_s/F_zeta insertion gate:
   NOT_READY
@@ -1270,6 +1331,8 @@ Parent equation gate:
 ```
 
 The gates open only if residual control is derived by structural law, strict no-reentry, or a real active no-overlap operator. They do not open from labels, recovery success, boundary/source compatibility audits, or parent-looking closure.
+
+The residual-control obstruction state preserves recovery independence, boundary/source/support guardrails, insertion separation, and parent-gate closure. This consistency is not a residual-control theorem.
 
 ---
 
@@ -1492,6 +1555,10 @@ Boundary/source failure may not select residual cleanup.
 Residual cleanup may not license B_s/F_zeta insertion.
 Residual cleanup may not open parent closure.
 ```
+
+The residual-kill convention has now been directly tested as a theorem route and remains not derived. It is still a safe provisional convention only if treated as provisional. It may not be promoted to a structural law from the theorem attempt.
+
+Strict non-metric inertness was tested and remains not derived. The accounting pair epsilon_vac_config/e_kappa partially reduces to accounting-only inertness targets, but those reductions do not close zeta/kappa geometric non-reentry.
 
 Residual scalar-tail witness:
 
@@ -3418,11 +3485,35 @@ repair-independent,
 and non-reentering sector-by-sector.
 ```
 
-Status:
+Current theorem-attempt status:
 
 ```text
-THEOREM_TARGET
-NOT DERIVED
+Direct structural kill:
+  NOT DERIVED
+
+Strict inertness / non-reentry:
+  NOT DERIVED
+
+Zeta/kappa geometric non-reentry:
+  NOT DERIVED
+
+epsilon_vac/e_kappa accounting inertness:
+  PARTIAL_REDUCTION
+  NOT SUFFICIENT FOR RESIDUAL CONTROL
+
+Non-O residual control:
+  CONTROLLED_OBSTRUCTION under current licensed objects
+
+Active O:
+  OPTIONAL_OPEN / DEFERRED
+  NOT DERIVED
+  NOT PROVEN NECESSARY
+
+B_s/F_zeta insertion:
+  NOT_READY
+
+Parent equation:
+  NOT_READY
 ```
 
 Not licensed:
@@ -3668,6 +3759,17 @@ Gate 9: correction tensor definition and divergence safety if correction tensors
 Gate 10: parent source identity / conservation compatibility.
 ```
 
+Gate 4 current status:
+
+```text
+direct residual kill tested and not derived;
+strict inertness tested and not derived;
+zeta/kappa non-reentry tested and not derived;
+accounting inertness partially reduced only;
+active O optional-open/deferred but not derived;
+non-O residual control obstructed under current licensed objects.
+```
+
 ## 15.3 Metric Insertion Closure Obligations
 
 Metric insertion theorem obligations:
@@ -3690,29 +3792,31 @@ Residual-control theorem obligations:
 
 ```text
 O1: derive residual-kill law or leave residual kill explicitly provisional.
+  Status: OPEN / TESTED_NOT_DERIVED
 
 O2: derive strict non-metric inertness law if residuals survive as bookkeeping.
+  Status: OPEN / TESTED_NOT_DERIVED
 
 O3: derive zeta residual non-reentry.
+  Status: OPEN / TESTED_NOT_DERIVED
 
 O4: derive kappa residual non-reentry.
+  Status: OPEN / TESTED_NOT_DERIVED
 
 O5: derive epsilon_vac_config / e_kappa inertness.
+  Status: PARTIAL_REDUCTION / OPEN
 
 O6: derive active O structure if O is used.
+  Status: OPTIONAL_OPEN / DEFERRED / NOT_DERIVED
 
 O7: derive recovery-independent residual status.
+  Status: OPEN
 
 O8: derive boundary/source-compatible residual cleanup.
+  Status: GUARDRAILS PRESERVED / THEOREM NOT DERIVED
 
 O9: prevent residual cleanup from licensing B_s/F_zeta insertion or parent closure.
-```
-
-Current status:
-
-```text
-THEOREM_TARGET
-NOT DERIVED
+  Status: PRESERVED
 ```
 
 ## 15.5 No Premature Closure Rule
@@ -3916,6 +4020,24 @@ boundary/source-compatible residual cleanup theorem,
 sector-by-sector residual non-reentry theorem.
 ```
 
+Residual-control theorem attempt note:
+
+```text
+residual-control theorem:
+  theorem attempt completed;
+  no non-O route closes under current licensed objects;
+  controlled obstruction, not mathematical impossibility.
+
+active O:
+  optional-open / deferred;
+  preferred constructive handoff;
+  not derived.
+
+B_s/F_zeta coefficient origin:
+  alternate constructive handoff;
+  not derived.
+```
+
 ---
 
 # 17. Minimal Honest Claim
@@ -3937,14 +4059,18 @@ a candidate zeta/vacuum-volume architecture, with kappa kept diagnostic/non-metr
 
 a provisional residual-kill convention or future no-overlap route for count-once scalar trace insertion;
 
-an explicit residual-control requirements ledger:
+an explicit residual-control theorem-attempt result:
   the safe trace target is zeta_to_Bs;
   the double-count load is L_double;
-  residual labels are constrained;
-  nonmetric / inertness status requires no-reentry;
-  active O requires full operator structure;
+  direct residual kill was tested and not derived;
+  strict non-metric inertness was tested and not derived;
+  zeta/kappa geometric non-reentry was tested and not derived;
+  epsilon_vac/e_kappa accounting inertness only partially reduced;
+  no non-O residual-control route closes under current licensed objects;
+  active O is optional-open/deferred, not derived, and not proven necessary;
   recovery may audit residual status but may not select it;
   boundary/source failure may not select residual cleanup;
+  parent closure remains not ready;
 
 a sharpened boundary/scalar-silence and matching/support ledger;
 
@@ -3992,7 +4118,6 @@ Do not immediately write a parent field equation.
 The next technical target should be one of the following narrower routes:
 
 ```text
-residual-control theorem attempt,
 active no-overlap operator construction,
 B_s/F_zeta coefficient-origin theorem,
 reduced observational audit.
@@ -4001,44 +4126,17 @@ reduced observational audit.
 Recommended next target:
 
 ```text
-residual-control theorem attempt
+active no-overlap operator construction
 ```
 
 Reason:
 
 ```text
-The residual-control target is now explicit but not solved.
+The residual-control theorem attempt has now been performed.
 
-The next step is to try to actually close one of the allowed routes:
+It did not close direct residual kill, strict inertness, zeta/kappa non-reentry, or non-O residual control.
 
-  derive L_double = 0 structurally,
-
-  or derive strict non-metric inertness / no-reentry sector-by-sector,
-
-  or prove that residual control cannot be closed without active O.
-```
-
-Alternative:
-
-```text
-active no-overlap operator construction
-```
-
-Use this if the next step attacks actual O structure:
-
-```text
-domain,
-codomain,
-kernel,
-image,
-idempotence / composition,
-pairing / no-overlap criterion,
-derivative / divergence behavior,
-boundary behavior,
-source / mass behavior,
-scalar-tail / current-flux behavior,
-support / matching behavior,
-recovery independence.
+Active O is optional-open/deferred and not derived, but it is now the preferred constructive route because it attacks the sharp missing operator structure directly.
 ```
 
 Alternative:
@@ -4047,7 +4145,7 @@ Alternative:
 B_s/F_zeta coefficient-origin theorem
 ```
 
-Use this only if residual-control obligations remain explicitly open and insertion is not licensed.
+Use this if the next step attacks insertion law and coefficient origin directly while keeping residual control explicitly open.
 
 Alternative:
 
@@ -4055,12 +4153,18 @@ Alternative:
 reduced observational audit
 ```
 
-Use this only if no theorem route is ready and reduced consequences are audited without selecting residual status, coefficients, insertion form, or parent closure.
+Use this only if observations remain downstream audits and do not select residual status, O, coefficients, insertion form, or parent closure.
+
+Do not proceed to parent field equation.
+
+```text
+Parent closure remains blocked by missing residual control, B_s/F_zeta insertion law, active O if used, boundary/source/support neutrality, divergence safety, and parent identity.
+```
 
 Known unresolved dependencies retained upstream of any parent equation:
 
 ```text
-residual-control theorem,
+residual-control theorem (non-O routes obstructed; active O deferred),
 B_s/F_zeta insertion law,
 coefficient origin,
 active O if used,
@@ -4586,6 +4690,26 @@ license B_s/F_zeta insertion,
 or open parent closure.
 ```
 
+## B.19 Residual-Control Theorem Attempt Witness
+
+Meaning:
+
+```text
+The residual-control theorem attempt tested the available non-O routes.
+
+Direct residual kill did not close.
+Strict non-metric inertness did not close.
+Zeta/kappa geometric non-reentry did not close.
+epsilon/e_kappa accounting inertness only partially reduced.
+No non-O route closes under current licensed objects.
+
+This is a controlled obstruction, not a mathematical no-go theorem.
+
+Active O is optional-open/deferred, not derived, and not proven necessary.
+B_s/F_zeta coefficient origin remains an alternate constructive route.
+Parent equation remains not ready.
+```
+
 ---
 
 # Appendix C — Rejected Route Index
@@ -4830,7 +4954,15 @@ residual status selected from parent-fit closure,
 O erases residual overlap by name,
 H/dark/exchange/curvature/current label supplies residual cleanup,
 residual cleanup licenses B_s/F_zeta insertion,
-residual cleanup opens parent equation.
+residual cleanup opens parent equation,
+Group/status summary treated as residual-control theorem,
+controlled obstruction treated as mathematical no-go theorem,
+optional-open/deferred O treated as active O,
+accounting partial reduction treated as full residual control,
+active-O handoff treated as O construction,
+coefficient-origin handoff treated as B_s/F_zeta insertion,
+reduced observational audit selecting residual status or coefficients,
+parent equation opened from residual-control theorem attempt.
 ```
 
 ---
@@ -5086,12 +5218,18 @@ Residual-control status:
   residual-control target is explicit;
   zeta_to_Bs is the safe scalar trace target;
   L_double is the double-count load;
-  residual labels are constrained;
-  nonmetric / inertness requires sector-by-sector no-reentry;
-  active O requires full operator structure;
+  direct residual kill has been tested and is not derived;
+  strict non-metric inertness has been tested and is not derived;
+  zeta/kappa geometric non-reentry has been tested and is not derived;
+  epsilon_vac/e_kappa accounting inertness is partially reduced but not full residual control;
+  no non-O residual-control route closes under current licensed objects;
+  this is a controlled obstruction, not mathematical impossibility;
+  active O is optional-open/deferred, not derived, and not proven necessary;
+  active O is now the preferred constructive handoff if actual operator structure is derived;
+  B_s/F_zeta coefficient-origin is the alternate constructive handoff;
   recovery may audit residual status but may not select it;
   boundary/source failure may not select residual cleanup;
-  residual kill, nonmetric inertness, active O, and count-once recombination remain theorem-targeted and not derived.
+  residual cleanup may not license insertion or parent closure.
 
 Boundary safety is required and not derived:
   no exterior zeta/kappa charge,
@@ -5141,12 +5279,10 @@ Parent correction tensor status:
 The theory should not yet write a final parent equation.
 
 The next honest target is:
-  residual-control theorem attempt
-    (residual-kill law, strict non-metric inertness, or active O derivation),
   active no-overlap operator construction,
   B_s/F_zeta coefficient-origin theorem,
   or reduced observational audit,
-not parent closure.
+not residual-control theorem attempt and not parent closure.
 ```
 
 Compact closure rule:
