@@ -81,7 +81,23 @@ is recovered only in the static spherical exterior after the reduced areal diagn
 
 This relation is a recovery check, not a general parent-theory construction rule.
 
-The central unresolved burden is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), count-once scalar trace insertion, residual-kill or active no-overlap, boundary neutrality, scalar silence, source no-double-counting, and parent divergence safety without using recovery as construction or undefined objects as repair mechanisms.
+The central unresolved burden is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), count-once scalar trace insertion, residual kill or strict non-metric inertness, active no-overlap only if a real operator \(O\) is derived, boundary neutrality, scalar silence, source no-double-counting, and parent divergence safety without using recovery as construction, boundary/source failure as residual cleanup, or undefined objects as repair mechanisms.
+
+The current residual-control target is explicit. The safe scalar trace target is \(\zeta_{B_s}\). The double-count load is
+
+\[
+L_{\rm double}
+=
+e_{\kappa,{\rm metric}}
++
+\epsilon_{{\rm vac},{\rm metric}}
++
+\kappa_{\rm metric}
++
+\zeta_{{\rm residual},{\rm metric}}.
+\]
+
+This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. None of these routes is currently derived.
 
 Ordinary long-range gravitational radiation is TT-only. Ordinary scalar breathing radiation through \(A_{\rm rad}\), \(\zeta\), or \(\kappa\) is rejected.
 
@@ -111,6 +127,7 @@ REJECTED
 DEFERRED
 NOT_READY
 CLOSED
+CLOSED_DIAGNOSTIC
 MISSING
 UNFINISHED
 UNRESOLVED
@@ -214,6 +231,14 @@ The object or relation remains open and cannot yet do active field-theory work.
 ### RISK
 
 A route remains possible only with heavy theorem burdens or serious double-counting / leakage risks.
+
+### CLOSED_DIAGNOSTIC
+
+A diagnostic audit, witness ledger, or requirement inventory is closed at the current bookkeeping level.
+
+Licensed use: citing the diagnostic result as a current constraint.
+
+Not licensed: treating the diagnostic closure as a parent theorem, active operator, residual-kill law, insertion law, or recovery proof.
 
 ## 2.3 Proof and Witness Labels
 
@@ -670,13 +695,27 @@ domain,
 codomain,
 kernel,
 image,
+idempotence / projection law or replacement law,
 composition law,
 measure or pairing if orthogonality is claimed,
-derivative/divergence behavior,
+orthogonality / no-overlap criterion,
+derivative behavior,
+divergence behavior,
 boundary behavior,
 source leakage controls,
 mass leakage controls,
-scalar leakage controls.
+scalar-tail controls,
+current-flux controls,
+support / matching behavior,
+recovery independence.
+```
+
+Current residual-control rule:
+
+```text
+O may appear as a theorem target or diagnostic placeholder.
+O may not remove residual overlap by name.
+O may not be selected from recovery success, boundary failure, source failure, or parent-fit closure.
 ```
 
 ### \(J_{\rm curv}^\mu\)
@@ -1047,6 +1086,29 @@ SAFE_IF / PROVISIONAL
 NOT DERIVED
 ```
 
+Residual-control status:
+
+```text
+Residual kill:
+  THEOREM_TARGET / NOT DERIVED
+
+Strict non-metric inertness:
+  THEOREM_TARGET / NOT DERIVED
+
+Active no-overlap O:
+  THEOREM_TARGET / NOT DERIVED
+
+Count-once recombination:
+  THEOREM_TARGET / NOT DERIVED
+```
+
+Current rule:
+
+```text
+A residual-control label is not a proof.
+Killed, non-metric, diagnostic-only, inert, and O-projected labels are safe only with their own theorem burden.
+```
+
 Revisit triggers:
 
 ```text
@@ -1069,6 +1131,22 @@ kappa_metric
 epsilon_vac_metric
 e_kappa_metric
 ```
+
+Total scalar metric-trace ledger under \(B_s\) insertion:
+
+\[
+T_{\rm total}
+=
+e_{\kappa,{\rm metric}}
++
+\epsilon_{{\rm vac},{\rm metric}}
++
+\kappa_{\rm metric}
++
+\zeta_{{\rm residual},{\rm metric}}
++
+\zeta_{B_s}.
+\]
 
 Double-count load:
 
@@ -1095,6 +1173,31 @@ Current requirement:
 ```text
 L_double must vanish or remain strictly inert, non-metric, and non-reentering.
 Count-once recombination remains theorem-targeted.
+```
+
+Allowed theorem routes:
+
+```text
+Route 1:
+  derive a structural residual-kill law forcing L_double = 0.
+
+Route 2:
+  derive strict non-metric / inert residual status with sector-by-sector no-reentry.
+
+Route 3:
+  derive active no-overlap O with full operator structure.
+```
+
+Rejected:
+
+```text
+L_double killed by declaration,
+nonmetric vocabulary treated as theorem,
+diagnostic labels used as construction data,
+O erasing overlap by name,
+total cancellation treated as non-reentry,
+recovery-selected residual status,
+boundary/source-selected residual cleanup.
 ```
 
 ## 5.5 \(B_s/F_\zeta\) Insertion Target
@@ -1138,6 +1241,35 @@ Count-once residual trace is the central unresolved burden.
 No active O is available.
 Parent equation remains not ready.
 ```
+
+## 5.6 Residual-Control Closure Gates
+
+Residual-control closure currently has the following gates:
+
+```text
+Residual-kill gate:
+  NOT_READY
+
+Non-metric inertness gate:
+  NOT_READY
+
+Active O gate:
+  NOT_READY
+
+Count-once recombination gate:
+  NOT_READY
+
+Boundary/source-compatible residual cleanup gate:
+  NOT_READY
+
+B_s/F_zeta insertion gate:
+  NOT_READY
+
+Parent equation gate:
+  NOT_READY
+```
+
+The gates open only if residual control is derived by structural law, strict no-reentry, or a real active no-overlap operator. They do not open from labels, recovery success, boundary/source compatibility audits, or parent-looking closure.
 
 ---
 
@@ -1342,6 +1474,25 @@ SAFE_IF / PROVISIONAL
 NOT DERIVED
 ```
 
+Residual-control refinement:
+
+```text
+Residual kill is the safest current convention, not a derived law.
+
+Strict non-metric inertness is allowed only if all reentry channels are closed sector-by-sector.
+
+Active O is allowed only if full operator structure is derived.
+
+Recovery may audit residual status after derivation.
+Recovery may not select residual kill, inertness, or O.
+
+Boundary/source failure may reject or flag a branch.
+Boundary/source failure may not select residual cleanup.
+
+Residual cleanup may not license B_s/F_zeta insertion.
+Residual cleanup may not open parent closure.
+```
+
 Residual scalar-tail witness:
 
 ```text
@@ -1375,7 +1526,15 @@ no boundary flux,
 no far-zone tail,
 no coefficient reservoir,
 no later re-entry through H, O, dark labels, curvature, exchange, source projectors, or parent placeholders,
-no recovery-selected status.
+no recovery-selected status,
+no A-sector mass shift,
+no shell/source load,
+no support radius / smoothing width / transition-layer role,
+no recovery coefficient role,
+no gamma/AB diagnostic role,
+no O/H/dark/exchange/curvature/current repair role,
+no insertion-license role,
+no parent-identity placeholder role.
 ```
 
 Non-metric vocabulary is not a no-overlap theorem.
@@ -1425,6 +1584,25 @@ no residual re-entry through support or layer parameters.
 
 Total cancellation across residual sectors is not neutral residual status.
 
+Neutral residual survival is not established by total cancellation.
+
+Required:
+
+```text
+each residual reentry path vanishes sector-by-sector,
+or each path is separately theorem-routed.
+```
+
+Rejected:
+
+```text
+metric reentry canceled by source reentry,
+scalar tail canceled by kappa tail,
+boundary load canceled by source load,
+support-layer load canceled by recovery tuning,
+repair label used to erase residual path.
+```
+
 ## 6.7 Rejected Kappa / Zeta Interpretations
 
 Rejected as ordinary propagating scalar gravity:
@@ -1455,7 +1633,23 @@ O erasing zeta/kappa tails by name,
 H canceling zeta/kappa tails,
 boundary shell absorbing zeta/kappa leakage,
 recovery-selected zeta/kappa coefficient zero,
-diagnostic residual re-entering metric/source/boundary behavior.
+diagnostic residual re-entering metric/source/boundary behavior,
+residual kill by declaration,
+nonmetric label as proof,
+inert label as proof,
+diagnostic residual later used as construction data,
+zeta residual metric trace after zeta_to_Bs insertion,
+kappa metric trace restoring killed zeta trace,
+epsilon_vac_config as extra metric/source channel,
+e_kappa as extra metric/source channel,
+residual status chosen from Schwarzschild recovery,
+residual status chosen from AB=1,
+residual status chosen from B=1/A,
+residual status chosen from gamma_like or PPN response,
+residual status chosen from areal kappa,
+residual status chosen from scalar-tail failure,
+residual status chosen from boundary/source failure,
+residual status chosen from parent-fit closure.
 ```
 
 ## 6.8 Energy / Accounting Guardrail
@@ -1495,6 +1689,20 @@ killed residual reappears as physical energy source,
 energy term becomes coefficient reservoir,
 vacuum accounting shifts M_ext independently,
 e_kappa restores scalar trace through the back door.
+```
+
+Additional residual-control guardrail:
+
+```text
+epsilon_vac_config and e_kappa must not be used as residual-control reservoirs.
+
+They may not:
+  restore killed trace,
+  carry ordinary source load,
+  carry support/layer load,
+  repair boundary leakage,
+  tune recovery,
+  fill a parent-equation placeholder.
 ```
 
 Status:
@@ -2057,7 +2265,80 @@ TRANSITION LAYER NEUTRALITY STILL THEOREM_TARGET
 BOUNDARY / SCALAR SILENCE STILL NOT_READY
 ```
 
-## 8.5 Curvature Boundary / Mass Neutrality
+## 8.5 Residual Cleanup Boundary / Source Compatibility
+
+Residual cleanup must preserve:
+
+```text
+A-sector mass,
+scalar silence,
+current silence,
+boundary neutrality,
+no-shell matching,
+smooth support / matching,
+ordinary source no-double-counting,
+recovery-independent seam data,
+no repair route,
+no insertion licensing.
+```
+
+Representative compatibility failure load:
+
+\[
+L_{\rm cleanup\_fail}
+=
+A_{\rm mass\_shift}
++
+{\rm scalar\_tail}
++
+{\rm nonA\_current\_flux}
++
+{\rm boundary\_flux}
++
+{\rm shell\_source\_load}
++
+{\rm support\_layer\_load}
++
+{\rm ordinary\_source\_dup}
++
+{\rm recovery\_selected\_seam}
++
+{\rm repair\_object}
++
+{\rm insertion\_license}.
+\]
+
+Required:
+
+```text
+L_cleanup_fail must vanish sector-by-sector,
+or every entry must be separately theorem-routed.
+```
+
+Rejected:
+
+```text
+residual cleanup shifts A-sector mass,
+residual cleanup hides scalar tail,
+residual cleanup hides non-A current flux,
+residual cleanup hides boundary flux,
+residual cleanup hides shell/source load,
+residual cleanup hides in support/smoothing/transition/matching language,
+residual cleanup selected from source-compatibility failure,
+residual cleanup selected from recovery-selected seam data,
+O/H/dark/exchange/curvature/current repair object supplies compatibility,
+residual cleanup licenses B_s/F_zeta insertion,
+residual cleanup opens parent equation.
+```
+
+Status:
+
+```text
+REQUIRED / THEOREM_TARGET
+NOT DERIVED
+```
+
+## 8.6 Curvature Boundary / Mass Neutrality
 
 Status:
 
@@ -2098,7 +2379,7 @@ unless a future curvature-current / curvature-admissibility theorem derives neut
 
 Curvature boundary rescue remains rejected.
 
-## 8.6 Correction Tensor Boundary / Mass Neutrality
+## 8.7 Correction Tensor Boundary / Mass Neutrality
 
 Status:
 
@@ -2236,7 +2517,15 @@ current flux source -> rejected as matching/support law,
 
 curvature/H/exchange/dark repair source -> rejected as matching/support law,
 
-source compatibility -> requires sector-by-sector zero, not total cancellation.
+source compatibility -> requires sector-by-sector zero, not total cancellation,
+
+residual cleanup -> must not duplicate ordinary source load,
+
+residual cleanup -> must not be selected from source-compatibility failure,
+
+epsilon_vac_config / e_kappa -> must not become source reservoirs,
+
+residual non-reentry -> requires sector-by-sector zero, not total cancellation.
 ```
 
 ## 9.4 Forbidden Duplicate Source Loads
@@ -2333,7 +2622,21 @@ support/layer/boundary parameters under insertion cannot carry ordinary source l
 curvature/H/exchange/dark repair labels cannot carry ordinary source load under insertion,
 
 metric insertion duplicate source loads cancel only in sector-by-sector zero,
-  not total cancellation.
+  not total cancellation,
+
+residual kill cannot be used to hide duplicate ordinary source load,
+
+non-metric residual status cannot carry source role,
+
+diagnostic residual status cannot later become source data,
+
+epsilon_vac_config cannot become a second source channel,
+
+e_kappa cannot become a second source channel,
+
+residual cleanup cannot be chosen because source compatibility would otherwise fail,
+
+residual cleanup cannot become source compatibility by cancellation.
 ```
 
 Status:
@@ -3078,6 +3381,63 @@ Status:
 SAFE_IF / PROVISIONAL / NOT DERIVED
 ```
 
+Residual-control theorem target:
+
+\[
+\boxed{
+L_{\rm double}
+=
+e_{\kappa,{\rm metric}}
++
+\epsilon_{{\rm vac},{\rm metric}}
++
+\kappa_{\rm metric}
++
+\zeta_{{\rm residual},{\rm metric}}
+}
+\]
+
+Required:
+
+\[
+\boxed{
+L_{\rm double}=0
+}
+\]
+
+or:
+
+```text
+all entries in L_double are strictly inert,
+non-metric,
+non-sourcing,
+boundary-neutral,
+support-neutral,
+recovery-independent,
+repair-independent,
+and non-reentering sector-by-sector.
+```
+
+Status:
+
+```text
+THEOREM_TARGET
+NOT DERIVED
+```
+
+Not licensed:
+
+```text
+zero by declaration,
+nonmetric by label,
+inert by label,
+diagnostic residual used as construction data,
+O eraser by name,
+recovery-selected residual status,
+boundary/source-selected cleanup,
+parent closure from residual cleanup.
+```
+
 Parent equation theorem target:
 
 \[
@@ -3299,12 +3659,13 @@ Parent closure requires at least the following gates:
 Gate 1: A-sector reduced mass consistency.
 Gate 2: B_s/F_zeta insertion law.
 Gate 3: count-once scalar trace.
-Gate 4: residual-kill or no-overlap derivation.
-Gate 5: boundary neutrality / scalar silence.
-Gate 6: smooth support / no-shell matching.
-Gate 7: source no-double-counting.
-Gate 8: correction tensor definition and divergence safety if correction tensors are used.
-Gate 9: parent source identity / conservation compatibility.
+Gate 4: residual-kill, strict non-metric inertness, or active no-overlap derivation.
+Gate 5: residual non-reentry sector-by-sector.
+Gate 6: boundary neutrality / scalar silence.
+Gate 7: smooth support / no-shell matching.
+Gate 8: source no-double-counting.
+Gate 9: correction tensor definition and divergence safety if correction tensors are used.
+Gate 10: parent source identity / conservation compatibility.
 ```
 
 ## 15.3 Metric Insertion Closure Obligations
@@ -3323,7 +3684,38 @@ O8: keep recovery diagnostics downstream.
 O9: do not open parent equation before divergence/source identities are derived.
 ```
 
-## 15.4 No Premature Closure Rule
+## 15.4 Residual-Control Closure Obligations
+
+Residual-control theorem obligations:
+
+```text
+O1: derive residual-kill law or leave residual kill explicitly provisional.
+
+O2: derive strict non-metric inertness law if residuals survive as bookkeeping.
+
+O3: derive zeta residual non-reentry.
+
+O4: derive kappa residual non-reentry.
+
+O5: derive epsilon_vac_config / e_kappa inertness.
+
+O6: derive active O structure if O is used.
+
+O7: derive recovery-independent residual status.
+
+O8: derive boundary/source-compatible residual cleanup.
+
+O9: prevent residual cleanup from licensing B_s/F_zeta insertion or parent closure.
+```
+
+Current status:
+
+```text
+THEOREM_TARGET
+NOT DERIVED
+```
+
+## 15.5 No Premature Closure Rule
 
 ```text
 Reduced recovery success does not open parent closure.
@@ -3507,7 +3899,21 @@ gamma-like recovery gate,
 AB / B=1/A gate,
 no-overlap / residual gate,
 boundary/support/source gate under metric insertion,
-parent equation gate under metric insertion.
+parent equation gate under metric insertion,
+residual-control theorem,
+residual-kill structural law,
+non-metric inertness law,
+zeta residual non-reentry theorem,
+kappa residual non-reentry theorem,
+epsilon_vac_config inertness theorem,
+e_kappa inertness theorem,
+active O domain/codomain/kernel/image,
+active O idempotence/composition/pairing,
+active O derivative/divergence behavior,
+active O boundary/source/mass/scalar/current/support behavior,
+recovery-independent residual status theorem,
+boundary/source-compatible residual cleanup theorem,
+sector-by-sector residual non-reentry theorem.
 ```
 
 ---
@@ -3531,6 +3937,15 @@ a candidate zeta/vacuum-volume architecture, with kappa kept diagnostic/non-metr
 
 a provisional residual-kill convention or future no-overlap route for count-once scalar trace insertion;
 
+an explicit residual-control requirements ledger:
+  the safe trace target is zeta_to_Bs;
+  the double-count load is L_double;
+  residual labels are constrained;
+  nonmetric / inertness status requires no-reentry;
+  active O requires full operator structure;
+  recovery may audit residual status but may not select it;
+  boundary/source failure may not select residual cleanup;
+
 a sharpened boundary/scalar-silence and matching/support ledger;
 
 a source-routing/no-double-counting ledger protecting the A-sector mass coin;
@@ -3547,6 +3962,11 @@ full covariant parent field equation,
 B_s/F_zeta insertion law,
 active no-overlap operator O,
 derived residual-kill theorem,
+strict non-metric inertness theorem,
+sector-by-sector residual non-reentry theorem,
+active no-overlap operator,
+recovery-independent residual status theorem,
+boundary/source-compatible residual cleanup theorem,
 J_V flux law,
 Sigma_V/R_V operator laws,
 J_sub pure-wind neutrality theorem,
@@ -3572,56 +3992,79 @@ Do not immediately write a parent field equation.
 The next technical target should be one of the following narrower routes:
 
 ```text
-25_residual_kill_or_no_overlap_theorem
-25_role_specific_boundary_projectors
-25_source_compatible_boundary_laws
-25_reduced_observational_audit
+residual-control theorem attempt,
+active no-overlap operator construction,
+B_s/F_zeta coefficient-origin theorem,
+reduced observational audit.
 ```
 
-Recommended next group:
+Recommended next target:
 
 ```text
-25_residual_kill_or_no_overlap_theorem
+residual-control theorem attempt
 ```
 
 Reason:
 
 ```text
-Count-once recombination is the central unresolved burden.
+The residual-control target is now explicit but not solved.
 
-The next step is to attack this core obstacle directly:
+The next step is to try to actually close one of the allowed routes:
 
-  derive residual-kill, meaning B_s insertion kills residual zeta/kappa metric trace,
-  or derive active no-overlap O with full operator structure:
-    domain, kernel, image, composition, pairing, divergence,
-    boundary, source/mass/scalar leakage.
+  derive L_double = 0 structurally,
 
-No shortcut through O by name is allowed.
-No recovery-selected residual status is allowed.
+  or derive strict non-metric inertness / no-reentry sector-by-sector,
+
+  or prove that residual control cannot be closed without active O.
 ```
 
-Safe alternatives:
+Alternative:
 
 ```text
-25_role_specific_boundary_projectors:
-  if the next step attempts actual projector routes with domain, kernel, image,
-  divergence, boundary, and source compatibility.
-
-25_source_compatible_boundary_laws:
-  if the next step prioritizes boundary/support/source compatibility for insertion.
-
-25_reduced_observational_audit:
-  if no theorem route is ready and reduced consequences should be audited
-  without claiming insertion or parent closure.
+active no-overlap operator construction
 ```
+
+Use this if the next step attacks actual O structure:
+
+```text
+domain,
+codomain,
+kernel,
+image,
+idempotence / composition,
+pairing / no-overlap criterion,
+derivative / divergence behavior,
+boundary behavior,
+source / mass behavior,
+scalar-tail / current-flux behavior,
+support / matching behavior,
+recovery independence.
+```
+
+Alternative:
+
+```text
+B_s/F_zeta coefficient-origin theorem
+```
+
+Use this only if residual-control obligations remain explicitly open and insertion is not licensed.
+
+Alternative:
+
+```text
+reduced observational audit
+```
+
+Use this only if no theorem route is ready and reduced consequences are audited without selecting residual status, coefficients, insertion form, or parent closure.
 
 Known unresolved dependencies retained upstream of any parent equation:
 
 ```text
-B_s/F_zeta insertion together with residual-kill or no-overlap,
-without GR metric copying, gamma_like tuning, B=1/A construction,
-areal-kappa promotion, or recovery-tuned boundary behavior.
-
+residual-control theorem,
+B_s/F_zeta insertion law,
+coefficient origin,
+active O if used,
+boundary/source-compatible residual cleanup,
 J_V / J_sub / J_exch definition and ordinary matter decoupling.
 ```
 
@@ -4038,6 +4481,111 @@ Metric insertion must preserve source no-double-counting sector by sector.
 Source coin stays in A. No metric pocket.
 ```
 
+## B.13 Residual-Control Double-Count Witness
+
+\[
+L_{\rm double}
+=
+e_{\kappa,{\rm metric}}
++
+\epsilon_{{\rm vac},{\rm metric}}
++
+\kappa_{\rm metric}
++
+\zeta_{{\rm residual},{\rm metric}}.
+\]
+
+Meaning:
+
+```text
+The safe ordinary scalar trace target is zeta_to_Bs.
+The double-count load must vanish by law,
+remain strictly inert / non-metric / non-reentering,
+or be removed by a derived active O.
+```
+
+## B.14 Nonmetric Inertness Failure Witness
+
+\[
+L_{\rm nonmetric\_fail}
+=
+{\rm metric\_trace}
++
+{\rm source\_role}
++
+{\rm boundary\_flux}
++
+{\rm scalar\_tail}
++
+{\rm current\_flux}
++
+A_{\rm tail\_mass\_shift}
++
+{\rm shell\_source\_load}
++
+{\rm support\_layer\_role}
++
+{\rm recovery\_selected\_status}
++
+{\rm repair\_role}
++
+{\rm parent\_placeholder\_role}.
+\]
+
+Meaning:
+
+```text
+Nonmetric / inert status requires every failure channel to vanish
+or be separately theorem-routed.
+```
+
+## B.15 Residual Reentry Witness
+
+Meaning:
+
+```text
+Residual non-reentry is sector-by-sector.
+Total cancellation is not non-reentry.
+Residuals may not re-enter as metric, source, boundary, support,
+recovery, repair, or parent-placeholder data.
+```
+
+## B.16 Active O Missing-Structure Witness
+
+Meaning:
+
+```text
+Active O is unavailable unless domain, codomain, kernel, image,
+idempotence/composition, pairing/no-overlap criterion,
+derivative/divergence behavior, boundary behavior, source/mass behavior,
+scalar/current/support behavior, and recovery independence are derived.
+```
+
+## B.17 Recovery-Selection Witness
+
+Meaning:
+
+```text
+Residual status may not be selected from Schwarzschild recovery,
+AB=1, B=1/A, gamma_like, PPN response, areal kappa,
+scalar-tail failure, boundary/source failure, or parent-fit closure.
+```
+
+## B.18 Residual Cleanup Compatibility Witness
+
+Meaning:
+
+```text
+Residual cleanup may not shift A-sector mass,
+hide scalar/current/boundary leakage,
+create shell/source/support loads,
+duplicate ordinary source,
+use recovery-selected seam data,
+use repair labels,
+license B_s/F_zeta insertion,
+or open parent closure.
+```
+
 ---
 
 # Appendix C — Rejected Route Index
@@ -4251,6 +4799,40 @@ parent-fit parameter chosen to make a parent-looking equation close,
 parent equation opened from recovery success.
 ```
 
+## C.11 Residual-Control Failures
+
+```text
+L_double killed by declaration,
+residuals set to zero by naming,
+nonmetric label used as proof,
+inert label used as proof,
+diagnostic residual later used as construction data,
+killed / nonmetric / inert / diagnostic / O-projected labels treated as proof,
+zeta enters B_s and residual trace/source/seam data,
+kappa restores residual metric trace or source load,
+epsilon_vac_config becomes extra metric/source channel,
+e_kappa becomes extra metric/source channel,
+residual re-enters through metric trace,
+residual re-enters through source load,
+residual re-enters through boundary flux,
+residual re-enters through scalar tail,
+residual re-enters through current flux,
+residual shifts A-sector mass,
+residual creates shell/source load,
+residual hides in support/smoothing/transition/matching language,
+residual status selected from Schwarzschild recovery,
+residual status selected from AB=1,
+residual status selected from B=1/A,
+residual status selected from gamma_like or PPN response,
+residual status selected from areal kappa,
+residual status selected from boundary/source failure,
+residual status selected from parent-fit closure,
+O erases residual overlap by name,
+H/dark/exchange/curvature/current label supplies residual cleanup,
+residual cleanup licenses B_s/F_zeta insertion,
+residual cleanup opens parent equation.
+```
+
 ---
 
 # Appendix D — Operator / Projector Readiness Checklists
@@ -4264,14 +4846,19 @@ domain,
 codomain,
 kernel,
 image,
-composition / idempotence law,
+idempotence / projection law or replacement law,
+composition law,
 measure or pairing if orthogonality is claimed,
+orthogonality / no-overlap criterion,
 derivative behavior,
 divergence behavior,
 boundary behavior,
 source leakage controls,
 mass leakage controls,
-scalar leakage controls,
+scalar-tail behavior,
+current-flux behavior,
+support / matching behavior,
+recovery independence,
 compatibility with B_s/F_zeta insertion,
 compatibility with residual-kill or residual survival,
 compatibility with parent source identity.
@@ -4468,111 +5055,7 @@ L_source_dup:
 
 ---
 
-# Appendix F — Provenance / Former Group Audit History
-
-This appendix preserves the development provenance without letting historical chronology dominate the current-state architecture.
-
-## F.1 Group 20 — No-Overlap / Projection Audit
-
-Current outcome:
-
-```text
-O remains theorem-targeted and deferred.
-No universal active projection operator is defined.
-Role-specific projector requirements are explicit.
-Diagnostic-only labels remain safe only without field-equation effect.
-Divergence-compatible projection remains theorem-targeted.
-Boundary/exterior-neutral projection remains theorem-targeted.
-Parent equation forms remain not ready.
-```
-
-## F.2 Group 21 — Source-Routing / Mass-Neutrality Audit
-
-Current outcome:
-
-```text
-A-sector mass charge is protected as the current reduced ordinary exterior reference.
-M_A = c^2 F_A/(8*pi*G).
-For A = 1 - 2GM/(c^2 r), M_A = M.
-No non-A sector is licensed as an independent ordinary exterior mass carrier.
-Residual 1/r scalar tails carry F = -4*pi*C.
-Boundary A-tails q/r shift delta M_A = -c^2 q/(2G).
-Zeta/kappa residuals must be killed, non-metric, compact-neutral, coefficient-zero, or theorem-targeted.
-J_V remains unresolved.
-J_sub/J_exch remain role-level.
-Curvature accounting remains diagnostic/accounting.
-H_curv/H_exch remain non-insertable.
-Ordinary source routing is protected from duplicate non-A source channels.
-Boundary neutrality and scalar silence remain the next bottleneck.
-Parent equation remains not ready.
-```
-
-## F.3 Group 22 — Boundary-Neutrality / Scalar-Silence Requirements Audit
-
-Current outcome:
-
-```text
-Boundary/scalar silence targets are explicit.
-delta F_A|boundary,non-A = 0 is required.
-Sector scalar-tail coefficients C_i must vanish or remain inert/nonmetric/diagnostic/compact-neutral/theorem-routed.
-C_i/r tails carry F_i = -4*pi*C_i.
-Non-A current coefficients I_i must vanish or remain role-level/diagnostic/theorem-routed.
-I_i/(4*pi*r^2) current profiles carry Phi_i = I_i.
-No shell source is allowed.
-No recovery-tuned smoothing is allowed.
-No active O is available.
-No H insertion is allowed.
-Value matching alone is insufficient.
-C2/smooth compact toy profiles are diagnostics, not compact-support theorems.
-Total scalar-tail cancellation is not sector silence.
-Total current-flux cancellation is not sector current silence.
-Repair routes remain rejected.
-Diagnostic/non-metric residuals must remain inert and non-reentering.
-Boundary neutrality and exterior scalar silence remain theorem-targeted.
-Parent equation remains not ready.
-```
-
-## F.4 Group 23 — Smooth Support / Matching-Law Audit
-
-Current outcome:
-
-```text
-Matching regularity ladder is explicit.
-Value jump is rejected.
-Value matching alone is risky.
-Value+slope matching is necessary diagnostically but not a support theorem.
-Cutoff profiles f(r) Theta(R-r) can create delta-shell diagnostics from f(R) and slope/flux diagnostics from f'(R).
-Compact support requires structural origin, f(R)=0, f'(R)=0/no-flux, shell absence, recovery independence, no hidden tuning, no A-tail, no scalar tail, and source compatibility.
-Smooth transition layers must have zero C_layer, q_layer, I_layer, sigma_layer, alpha_recovery, and source_load, with structural origin.
-Recovery-selected support radius, smoothing width, AB/gamma coefficients, residual tail status, boundary data, and layer data remain rejected.
-Matching/support/layer laws must preserve A-sector source routing and create no duplicate shell/scalar/current/repair/parameter source loads.
-Real matching/support law still requires structural support origin, value matching, slope/no-flux matching, distributional shell absence, transition layer neutrality, recovery independence, source compatibility, residual non-reentry, and no repair route.
-Compact support, no-shell matching, transition neutrality, boundary/scalar silence, and parent equation remain not ready.
-```
-
-## F.5 Group 24 — Metric-Insertion Retest and Requirements Audit
-
-Current outcome:
-
-```text
-B_s/F_zeta insertion target clarified.
-A-sector exterior is the recovery anchor, not a spatial metric construction.
-AB=1, B=1/A, gamma_like, and areal kappa remain downstream recovery diagnostics.
-Count-once trace burden is explicit:
-  L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
-  must vanish or remain strictly inert.
-Gamma/AB diagnostics are classified as audit-only.
-Boundary/support guardrails from Groups 22/23 remain active for metric insertion.
-Source no-double-counting guardrails remain active for metric insertion.
-Metric insertion theorem obligations are explicit.
-B_s/F_zeta insertion remains not solved.
-Count-once recombination remains the central unresolved burden.
-Parent equation remains not ready.
-```
-
----
-
-# Appendix G — Compact Final Current Summary
+# Appendix F — Compact Final Current Summary
 
 ```text
 A-sector remains the strongest reduced branch.
@@ -4598,6 +5081,17 @@ Flux direction is missing.
 No-overlap O remains theorem-targeted and deferred.
 
 Residual-kill / non-metric residual is the safest provisional convention.
+
+Residual-control status:
+  residual-control target is explicit;
+  zeta_to_Bs is the safe scalar trace target;
+  L_double is the double-count load;
+  residual labels are constrained;
+  nonmetric / inertness requires sector-by-sector no-reentry;
+  active O requires full operator structure;
+  recovery may audit residual status but may not select it;
+  boundary/source failure may not select residual cleanup;
+  residual kill, nonmetric inertness, active O, and count-once recombination remain theorem-targeted and not derived.
 
 Boundary safety is required and not derived:
   no exterior zeta/kappa charge,
@@ -4647,9 +5141,10 @@ Parent correction tensor status:
 The theory should not yet write a final parent equation.
 
 The next honest target is:
-  residual-kill or no-overlap theorem,
-  role-specific boundary projectors,
-  source-compatible boundary laws,
+  residual-control theorem attempt
+    (residual-kill law, strict non-metric inertness, or active O derivation),
+  active no-overlap operator construction,
+  B_s/F_zeta coefficient-origin theorem,
   or reduced observational audit,
 not parent closure.
 ```
@@ -4675,5 +5170,12 @@ No residual-kill theorem is earned.
 No active no-overlap operator is earned.
 No gamma-like recovery is earned without smuggling.
 No parent equation gate opens from reduced recovery or metric-insertion retest alone.
+No residual-control theorem is earned.
+No non-metric inertness theorem is earned.
+No sector-by-sector residual non-reentry theorem is earned.
+No active O theorem is earned.
+No recovery-independent residual-status theorem is earned.
+No boundary/source-compatible residual-cleanup theorem is earned.
+No parent equation gate opens from residual-control requirements alone.
 ```
 
