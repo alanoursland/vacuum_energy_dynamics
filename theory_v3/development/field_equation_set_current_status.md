@@ -81,6 +81,22 @@ NOT DERIVED
 
 It must be recovered by an acceptable parent equation, not copied from the GR metric form or imposed by (\gamma_{\rm like}=1) tuning.
 
+Group 24 metric-insertion retest update:
+
+```text
+B_s/F_zeta insertion target clarified.
+
+A-sector exterior A_ext = 1 - 2GM/(c^2 r) is the recovery anchor, not a spatial metric construction.
+
+AB=1, B=1/A, gamma_like, and areal kappa remain downstream recovery diagnostics.
+
+Count-once residual trace is the central unresolved burden.
+
+No active O is available.
+
+Parent equation remains not ready.
+```
+
 \[
 \zeta=\ln\sqrt{\gamma}
 \]
@@ -599,6 +615,26 @@ parent identity derives residual-kill or residual survival,
 real J_V flux law changes recombination structure.
 ```
 
+Group 24 count-once metric-trace update:
+
+```text
+Metric trace entries under B_s insertion:
+  zeta_to_Bs
+  zeta_residual_metric
+  kappa_metric
+  epsilon_vac_metric
+  e_kappa_metric
+
+Double-count load:
+  L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+
+Safe count-once target:
+  T_safe = zeta_Bs
+
+L_double must vanish or remain strictly inert, non-metric, and non-reentering.
+Count-once recombination remains theorem-targeted.
+```
+
 ---
 
 # 3. Scalar Static / Monopole Sector
@@ -735,6 +771,21 @@ Important boundary:
 ```text
 B=1/A is not a general construction rule for the parent theory.
 It is a recovered static spherical exterior relation.
+```
+
+Group 24 recovery anti-smuggling update:
+
+```text
+B=1/A may audit a structurally fixed candidate in the reduced static exterior.
+
+Forbidden uses:
+
+  choosing F_zeta coefficients from AB=1 or B=1/A,
+  selecting seam data from Schwarzschild or gamma_like recovery,
+  setting residual-kill status from recovery outcomes,
+  opening parent closure from reduced recovery success.
+
+Recovery may judge but may not forge.
 ```
 
 ---
@@ -1655,6 +1706,19 @@ kappa as hidden residual-restoration path,
 e_kappa as physical source reservoir before derivation.
 ```
 
+Group 24 areal-kappa update:
+
+```text
+kappa_areal = (1/2)*ln(AB) is a reduced gauge-conditioned diagnostic.
+
+Areal kappa may classify a structurally fixed candidate.
+Areal kappa may not construct B_s or become a physical scalar insertion law.
+
+kappa_areal = 0 in the reduced Schwarzschild exterior is an anchor, not a parent law.
+
+e_kappa must not become an additional ordinary metric/source channel.
+```
+
 ---
 
 ## 7.2 Current Role of Zeta
@@ -1676,6 +1740,20 @@ Forbidden:
 
 ```text
 zeta changes B_s and also remains independent residual metric trace.
+```
+
+Group 24 zeta insertion update:
+
+```text
+B_s = F_zeta[A, zeta, J_V, Sigma_V, R_V] is the theorem target.
+
+Coefficient origin must be structural or theorem-targeted before recovery tests.
+
+Recovery may not choose F_zeta form, coefficient, or zeta residual status.
+
+zeta enters metric trace only once through B_s.
+
+Count-once recombination remains theorem-targeted.
 ```
 
 ---
@@ -1768,6 +1846,21 @@ Forbidden:
   residual used to open parent equation.
 
 Residual non-reentry through support/matching remains theorem-targeted.
+```
+
+Group 24 residual-kill/no-overlap refinement:
+
+```text
+Residual-kill and O remain the two routes to count-once insertion.
+
+Residual-kill is provisional: status must be fixed before recovery diagnostics are run.
+
+O erases overlap by name only if real operator structure (domain, kernel, image,
+composition, pairing, divergence, boundary, source/mass/scalar leakage) is derived.
+
+Recovery may not choose residual-kill or non-metric status from diagnostic outcomes.
+
+Count-once recombination remains the central unresolved theorem target.
 ```
 
 ---
@@ -2155,6 +2248,32 @@ Required:
 Matching/support/layer source compatibility remains theorem-targeted.
 ```
 
+Group 24 metric-insertion source-compatibility update:
+
+```text
+Metric insertion must preserve ordinary source no-double-counting.
+
+Protected source route:
+  rho/M_enc -> A-sector mass charge.
+
+Forbidden duplicate source loads:
+  rho_Bs_coeff
+  rho_zeta_residual
+  rho_kappa_residual
+  rho_support_layer
+  rho_curv
+  rho_H
+  rho_exch
+  rho_dark
+  rho_cancel
+
+B_s/F_zeta coefficients cannot carry ordinary source load.
+Zeta/kappa residuals cannot become source channels.
+Support/layer/boundary parameters cannot become source reservoirs.
+Cancellation ledgers are not source compatibility.
+Metric insertion source compatibility remains theorem-targeted.
+```
+
 Current source assignments:
 
 | Sector                | Source                                          | Status                           |
@@ -2296,7 +2415,18 @@ ordinary source cannot be rerouted into shell/scalar/current/repair seam pockets
 
 source-loaded support parameters are rejected,
 
-source cancellation ledgers are not source compatibility.
+source cancellation ledgers are not source compatibility,
+
+B_s/F_zeta insertion coefficients cannot carry ordinary source load,
+
+zeta/kappa residuals after insertion cannot become source channels,
+
+support/layer/boundary parameters under insertion cannot carry ordinary source load,
+
+curvature/H/exchange/dark repair labels cannot carry ordinary source load under insertion,
+
+metric insertion duplicate source loads cancel only in sector-by-sector zero,
+  not total cancellation.
 ```
 
 Status:
@@ -2760,6 +2890,172 @@ Status:
 
 ```text
 REQUIRED / THEOREM_TARGET
+```
+
+Group 24 metric-insertion retest target ledger:
+
+```text
+B_s = F_zeta[A, zeta, J_V, Sigma_V, R_V]
+```
+
+Status:
+
+```text
+THEOREM_TARGET
+NOT DERIVED
+GROUP 24 RETEST TARGET CLARIFIED
+```
+
+Meaning:
+
+```text
+A-sector exterior is the recovery anchor, not a spatial metric construction.
+AB=1, B=1/A, gamma_like, and areal kappa are downstream diagnostics.
+Count-once residual trace is the central unresolved burden.
+```
+
+Group 24 recovery diagnostics:
+
+```text
+gamma_like_target
+AB_target = 1
+kappa_areal_target = 0
+```
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / GROUP 24
+```
+
+Meaning:
+
+```text
+Recovery diagnostics may audit a structurally fixed candidate.
+They may not choose F_zeta coefficients, seam data, residual status, or parent closure.
+```
+
+Group 24 count-once trace witness:
+
+\[
+L_{\rm double}
+=
+e_{\kappa,\rm metric}
++
+\epsilon_{\rm vac,metric}
++
+\kappa_{\rm metric}
++
+\zeta_{\rm residual,metric}
+\]
+
+Status:
+
+```text
+REQUIRED / GROUP 24
+```
+
+Meaning:
+
+```text
+L_double must vanish or remain strictly inert, non-metric, and non-reentering.
+Count-once recombination remains theorem-targeted.
+```
+
+Group 24 gamma/AB diagnostic witness:
+
+\[
+AB - 1
+=
+x\left(2\gamma_s + x(\beta_{AB} - 4\gamma_s) - 2\right)
+\]
+
+Status:
+
+```text
+CLOSED_DIAGNOSTIC / GROUP 24
+```
+
+Meaning:
+
+```text
+gamma_s and beta_AB are diagnostic placeholders.
+They must be structurally fixed before this diagnostic is interpreted.
+Setting them from recovery is smuggling.
+```
+
+Group 24 boundary/support compatibility witness:
+
+\[
+L_{\rm boundary/support}
+=
+C_{\rm ext}
++
+I_{\rm nonA}
++
+q_{A\rm tail}
++
+\sigma_{\rm shell}
++
+{\rm value\_jump}
++
+{\rm slope\_flux}
++
+{\rm layer\_load}
++
+{\rm recovery\_seam}
++
+{\rm repair\_route}
+\]
+
+Status:
+
+```text
+REQUIRED / GROUP 24
+```
+
+Meaning:
+
+```text
+Metric insertion is not licensed while any boundary/support load remains.
+Group 22/23 guardrails remain active for metric insertion.
+```
+
+Group 24 source-compatibility witness:
+
+\[
+L_{\rm source\_dup}
+=
+\rho_{B_s\rm coeff}
++
+\rho_{\zeta\rm residual}
++
+\rho_{\kappa\rm residual}
++
+\rho_{\rm support/layer}
++
+\rho_{\rm curv}
++
+\rho_H
++
+\rho_{\rm exch}
++
+\rho_{\rm dark}
++
+\rho_{\rm cancel}
+\]
+
+Status:
+
+```text
+REQUIRED / GROUP 24
+```
+
+Meaning:
+
+```text
+Metric insertion must preserve source no-double-counting sector by sector.
+Source coin stays in A. No metric pocket.
 ```
 
 Vacuum exchange theorem target:
@@ -3257,7 +3553,22 @@ source-compatible matching law,
 matching/support residual non-reentry theorem,
 no-repair matching/support law,
 compact-support admissibility theorem,
-source-compatible transition-layer theorem.
+source-compatible transition-layer theorem,
+F_zeta insertion law,
+coefficient origin independent of recovery,
+count-once recombination theorem,
+residual-kill or no-overlap derivation,
+gamma / AB recovery without diagnostic tuning,
+boundary / scalar silence compatibility under metric insertion,
+smooth support / matching compatibility under metric insertion,
+source compatibility under metric insertion,
+no-repair insertion,
+metric insertion closure gate (O1-O9),
+gamma-like recovery gate,
+AB / B=1/A gate,
+no-overlap / residual gate,
+boundary/support/source gate under metric insertion,
+parent equation gate under metric insertion.
 ```
 
 ---
@@ -3406,6 +3717,20 @@ Metric recombination:
   universal active O rejected as decorative unless derived,
   role-specific projector route remains candidate,
   residual-kill / non-metric residual is the safest provisional convention.
+
+Metric insertion retest:
+  Group 24 completed the metric-insertion retest and requirements audit;
+  B_s/F_zeta insertion target is now clarified as THEOREM_TARGET;
+  recovery diagnostics are audit-only: gamma_like, AB, B=1/A, and areal kappa
+    may classify a fixed candidate but may not construct it;
+  count-once trace burden is explicit:
+    L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+    must vanish or remain strictly inert;
+  boundary/support guardrails from Groups 22/23 remain active for insertion;
+  source no-double-counting guardrails remain active for insertion;
+  metric insertion theorem obligations (O1-O9) are explicit;
+  B_s/F_zeta insertion remains not solved;
+  parent equation remains not ready.
 ```
 
 The candidate system is therefore not yet a finished covariant theory.
@@ -3551,7 +3876,34 @@ ordinary source rerouted into current flux by matching law,
 source cancellation ledger treated as source compatibility,
 diagnostic residual re-enters through support/matching/layer parameters,
 O/H/dark/exchange/curvature/current object supplies missing support law,
-parent equation opened from Group 23 requirements alone.
+parent equation opened from Group 23 requirements alone,
+B_s copied from Schwarzschild / GR spatial metric after Group 24,
+B=1/A used as general construction rule after Group 24,
+gamma-like coefficient fit after Group 24,
+AB=1 used as parent insertion law after Group 24,
+areal kappa promoted to physical scalar after Group 24,
+zeta inserted into both B_s and residual metric trace after Group 24,
+kappa restores killed residual trace after Group 24,
+O erases overlap by name after Group 24,
+H or dark label patches insertion failure after Group 24,
+recovery target chooses F_zeta coefficients after Group 24,
+recovery target chooses seam data after Group 24,
+recovery target chooses residual-kill status after Group 24,
+support/smoothing/boundary/layer data chosen from recovery after Group 24,
+ordinary source hidden in B_s/F_zeta coefficient after Group 24,
+zeta residual becomes source channel after insertion (Group 24),
+kappa residual or e_kappa becomes source channel after insertion (Group 24),
+support/layer/boundary parameter carries ordinary source load (Group 24),
+curvature/H/exchange/dark label absorbs ordinary source load under insertion (Group 24),
+duplicate source loads cancel only in total after Group 24,
+source compatibility assumed from recovery success (Group 24),
+source compatibility assumed from boundary/support audit alone (Group 24),
+retest ledger treated as insertion theorem (Group 24),
+recovery diagnostics become metric insertion construction (Group 24),
+count-once convention treated as no-overlap theorem after Group 24,
+boundary/support audit licenses insertion after Group 24,
+source audit licenses insertion after Group 24,
+parent equation opened from Group 24 retest alone.
 ```
 
 Major closure risks:
@@ -3692,6 +4044,25 @@ areal kappa promoted to physical scalar,
 zeta inserted into both B_s and residual metric trace.
 ```
 
+Group 24 B_s/F_zeta retest status:
+
+```text
+B_s/F_zeta insertion target clarified after Group 24.
+
+A-sector exterior is the recovery anchor.
+AB=1, B=1/A, gamma_like, and areal kappa remain downstream diagnostics.
+
+Recovery diagnostics may audit a structurally fixed candidate.
+Recovery diagnostics may not construct B_s.
+
+Theorem obligations O1-O9 are now explicit.
+
+B_s/F_zeta insertion remains not solved.
+
+Status:
+  THEOREM_TARGET / NOT DERIVED / GROUP 24 RETEST TARGET CLARIFIED
+```
+
 ## 17.3 Count-Once Rule
 
 Current count-once rule:
@@ -3720,6 +4091,29 @@ Status:
 ```text
 SAFE_IF / PROVISIONAL
 NOT DERIVED
+```
+
+Group 24 count-once update:
+
+```text
+Metric trace entries under B_s insertion:
+  zeta_to_Bs
+  zeta_residual_metric
+  kappa_metric
+  epsilon_vac_metric
+  e_kappa_metric
+
+L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+
+L_double must vanish or remain strictly inert, non-metric, and non-reentering.
+
+O cannot erase overlap by name.
+Recovery cannot choose residual-kill / nonmetric status.
+
+Count-once recombination remains theorem-targeted.
+
+Status:
+  REQUIRED / GROUP 24 TRACE BURDEN EXPLICIT
 ```
 
 ## 17.4 Residual Non-Metric Roles
@@ -3838,6 +4232,23 @@ O as Bianchi/divergence patch,
 O as current repair,
 O as shell source generator,
 O as dark-sector patch.
+```
+
+Group 24 no-overlap update:
+
+```text
+Count-once insertion requires one of:
+  residual-kill (provisional, must be fixed before recovery),
+  active no-overlap operator O with full operator structure.
+
+O cannot erase residual overlap by name.
+
+Residual-kill status must not be chosen from recovery outcomes.
+
+No-overlap theorem obligation O4 is explicit after Group 24.
+
+Status:
+  THEOREM_TARGET / DEFERRED / GROUP 24 OBLIGATIONS EXPLICIT
 ```
 
 ## 17.6 Boundary Safety
@@ -3963,6 +4374,29 @@ source-loaded support parameter,
 source cancellation ledger.
 ```
 
+Group 24 metric-insertion boundary/support status:
+
+```text
+B_s/F_zeta cannot be licensed while any boundary/support load remains.
+
+Boundary/support loads audited by Group 24:
+  C_ext (exterior scalar tail),
+  I_nonA (non-A far-zone current flux),
+  q_A_tail (A-tail seam shift),
+  sigma_shell (shell source or finite-width disguise),
+  value_jump / slope_flux (regularity ladder violation),
+  layer_load (smooth layer hiding scalar/A/current/shell/source/recovery load),
+  recovery_seam (support/smoothing/boundary/layer data from recovery),
+  repair_route (O/H/dark/exchange/curvature/current patch).
+
+Group 22/23 guardrails remain active for metric insertion.
+
+Diagnostic compatibility can classify a candidate; it cannot prove insertion.
+
+Status:
+  REQUIRED / GROUP 24 BOUNDARY/SUPPORT GUARDRAILS IMPORTED
+```
+
 ## 17.7 Recovery Audit
 
 Recovery remains downstream.
@@ -4020,6 +4454,29 @@ Rejected as construction:
 Allowed:
 
   recovery tests only after support/matching/layer data are fixed structurally.
+```
+
+Group 24 recovery anti-smuggling update:
+
+```text
+Recovery remains downstream of metric insertion construction.
+
+Allowed as audit after insertion data are fixed:
+  Schwarzschild exterior,
+  AB diagnostic,
+  B=1/A reduced exterior relation,
+  gamma_like / PPN-like response,
+  areal kappa diagnostic,
+  boundary/support compatibility checks.
+
+Rejected as construction:
+  F_zeta form or coefficient chosen from recovery target,
+  support radius chosen from Schwarzschild,
+  smoothing width or transition layer chosen from PPN/gamma/AB recovery,
+  residual-kill or nonmetric status chosen from recovery outcomes,
+  parent closure opened from recovery success.
+
+Recovery may judge. Recovery may not forge.
 ```
 
 ---
@@ -4102,46 +4559,66 @@ Compact support, no-shell matching, transition neutrality, boundary/scalar silen
 and parent equation remain not ready.
 ```
 
+Completed metric-insertion retest and requirements audit (Group 24):
+
+```text
+B_s/F_zeta insertion target is clarified.
+A-sector exterior is the recovery anchor, not a spatial metric construction.
+AB=1, B=1/A, gamma_like, and areal kappa remain downstream recovery diagnostics.
+Count-once trace burden is explicit:
+  L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+  must vanish or remain strictly inert.
+Gamma/AB diagnostics are classified as audit-only.
+Boundary/support guardrails from Groups 22/23 remain active for metric insertion.
+Source no-double-counting guardrails remain active for metric insertion.
+Metric insertion theorem obligations (O1-O9) are explicit.
+B_s/F_zeta insertion remains not solved.
+Parent equation remains not ready.
+```
+
 The next technical target should be framed as one of the following narrower routes:
 
 ```text
-24_metric_insertion_recovery_retest
-24_role_specific_boundary_projectors
-24_source_compatible_boundary_laws
-24_reduced_observational_audit
+25_residual_kill_or_no_overlap_theorem
+25_role_specific_boundary_projectors
+25_source_compatible_boundary_laws
+25_reduced_observational_audit
 ```
 
 Recommended next group:
 
 ```text
-24_metric_insertion_recovery_retest
+25_residual_kill_or_no_overlap_theorem
 ```
 
 Reason:
 
 ```text
-Groups 22 and 23 have now built the guardrails needed to retest metric insertion
-without smuggling boundary/scalar/support assumptions:
+Group 24 established that count-once recombination is the central unresolved burden.
 
-  no recovery-selected support,
-  no toy-profile support theorem,
-  no shell hiding,
-  no transition-layer load hiding,
-  no duplicate source seam pockets,
-  no O/H/dark/exchange/curvature repair.
+The next step is to attack this core obstacle directly:
+
+  derive residual-kill (B_s insertion kills residual zeta/kappa metric trace),
+  or derive active no-overlap O with full operator structure
+    (domain, kernel, image, composition, pairing, divergence, boundary, source/mass/scalar leakage).
+
+No shortcut through O by name is allowed.
+No recovery-selected residual status is allowed.
 ```
 
 Safe alternatives:
 
 ```text
-24_source_compatible_boundary_laws
-  if the project wants to attack the still-open source-compatible matching/support theorem directly;
+25_role_specific_boundary_projectors
+  if the next step attempts actual projector routes with domain, kernel, image,
+  divergence, boundary, and source compatibility;
 
-24_role_specific_boundary_projectors
-  if projector structure becomes the next bottleneck;
+25_source_compatible_boundary_laws
+  if the next step prioritizes boundary/support/source compatibility for insertion;
 
-24_reduced_observational_audit
-  if no theorem route is ready and reduced consequences should be audited without claiming parent closure.
+25_reduced_observational_audit
+  if no theorem route is ready and reduced consequences should be audited
+  without claiming insertion or parent closure.
 ```
 
 Known unresolved dependencies (retained from prior status):
@@ -4253,6 +4730,21 @@ Group 23 smooth-support / matching-law status:
   compact support, no-shell matching, transition neutrality,
   boundary/scalar silence, and parent equation remain not ready.
 
+Group 24 metric-insertion retest status:
+  B_s/F_zeta insertion target clarified;
+  A-sector exterior is the recovery anchor, not a spatial metric construction;
+  AB=1, B=1/A, gamma_like, and areal kappa are downstream diagnostics;
+  count-once trace burden is explicit:
+    L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+    must vanish or remain strictly inert;
+  gamma/AB diagnostics are classified as audit-only;
+  boundary/support guardrails from Groups 22/23 remain active for insertion;
+  source no-double-counting guardrails remain active for insertion;
+  metric insertion theorem obligations O1-O9 are explicit;
+  B_s/F_zeta insertion remains not solved;
+  count-once recombination is the central unresolved burden;
+  parent equation remains not ready.
+
 Residual-kill / non-metric residual is the safest provisional convention.
 
 Boundary safety is required and not derived:
@@ -4308,6 +4800,28 @@ The next honest target is a narrower metric-insertion retest,
 projector-law audit, source-compatible boundary-law audit,
 or reduced observational audit,
 not parent closure.
+
+Group 24 metric-insertion retest status:
+  B_s/F_zeta insertion target clarified as THEOREM_TARGET;
+  recovery diagnostics are audit-only;
+  count-once trace burden is explicit:
+    L_double must vanish or remain strictly inert;
+  gamma/AB diagnostics are classified as audit-only;
+  boundary/support guardrails from Groups 22/23 remain active;
+  source no-double-counting guardrails remain active;
+  metric insertion theorem obligations (O1-O9) are explicit;
+  B_s/F_zeta insertion remains not solved;
+  count-once recombination remains the central unresolved burden;
+  parent equation remains not ready.
+
+Group 24 did not open the parent gate.
+
+The next honest target is:
+  residual-kill or no-overlap theorem,
+  role-specific boundary projectors,
+  source-compatible boundary laws,
+  or reduced observational audit,
+not parent closure.
 ```
 
 Compact version:
@@ -4327,4 +4841,10 @@ No transition-layer neutrality theorem is earned.
 No recovery-independent seam construction is earned.
 No source-compatible matching law is earned.
 No parent equation gate opens after Group 23.
+No metric insertion is earned.
+No count-once recombination theorem is earned.
+No residual-kill theorem is earned.
+No active no-overlap operator is earned.
+No gamma-like recovery is earned without smuggling.
+No parent equation gate opens after Group 24.
 ```
