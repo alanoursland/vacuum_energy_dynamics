@@ -97,7 +97,7 @@ e_{\kappa,{\rm metric}}
 \zeta_{{\rm residual},{\rm metric}}.
 \]
 
-This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. The residual-control theorem attempt has now been performed. Direct structural residual kill did not close. Full strict non-metric inertness did not close. Zeta/kappa geometric residual non-reentry did not close. epsilon_vac/e_kappa accounting inertness only partially reduced and does not close the geometric residual obstruction. No non-O residual-control route closes under current licensed objects. This is a controlled obstruction, not a mathematical no-go theorem. Active O remains optional-open/deferred, not derived, and not proven necessary. The preferred constructive handoff is active no-overlap operator construction; the alternate constructive handoff is \(B_s/F_\zeta\) coefficient-origin work.
+This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. The residual-control theorem attempt has now been performed. Direct structural residual kill did not close. Full strict non-metric inertness did not close. Zeta/kappa geometric residual non-reentry did not close. epsilon_vac/e_kappa accounting inertness only partially reduced and does not close the geometric residual obstruction. No non-O residual-control route closes under current licensed objects. This is a controlled obstruction, not a mathematical no-go theorem. The active no-overlap operator construction attempt has now been performed. Active O was not constructed from current licensed objects. Candidate domain/codomain ledgers exist, and \(O(\zeta_{B_s})=\zeta_{B_s}\) remains a useful candidate preservation direction. However, zeta/kappa residual action is not derived, no-overlap pairing is not derived, projection/replacement/constraint law is not derived, divergence behavior is not derived, and boundary/source/mass behavior is not derived. Recovery-selected and repair-selected O are rejected. This is controlled underdetermination, not a proof that O is impossible. O remains not usable in residual control or field equations. The preferred constructive handoff is now sector pairing / no-overlap geometry. The alternate constructive handoff remains \(B_s/F_\zeta\) coefficient origin.
 
 Ordinary long-range gravitational radiation is TT-only. Ordinary scalar breathing radiation through \(A_{\rm rad}\), \(\zeta\), or \(\kappa\) is rejected.
 
@@ -710,7 +710,40 @@ support / matching behavior,
 recovery independence.
 ```
 
-Current residual-control result:
+Current active-O construction result:
+
+```text
+Active O construction attempt:
+  COMPLETED AS CONTROLLED UNDERDETERMINATION
+
+Active O:
+  NOT_CONSTRUCTED
+  NOT USABLE
+  NOT PROVEN IMPOSSIBLE
+
+Partial structure:
+  candidate domain/codomain ledgers exist;
+  O(zeta_Bs)=zeta_Bs remains a candidate preservation direction.
+
+Still not derived:
+  final domain/codomain,
+  kernel/image,
+  no-overlap pairing or criterion,
+  projection/replacement/constraint law,
+  divergence behavior,
+  boundary/source/mass/scalar/current/support behavior,
+  full recovery-independent construction.
+
+Rejected:
+  O by name,
+  O as magic eraser,
+  recovery-selected O,
+  repair-selected O,
+  parent-fit-selected O,
+  partial O structure treated as usable operator.
+```
+
+Residual-control background:
 
 ```text
 Direct residual kill:
@@ -728,23 +761,18 @@ epsilon_vac/e_kappa accounting inertness:
 Non-O residual control:
   CONTROLLED_OBSTRUCTION under current licensed objects
   NOT a mathematical no-go theorem
-
-Active O:
-  OPTIONAL_OPEN / DEFERRED
-  NOT DERIVED
-  NOT PROVEN NECESSARY
-  NOT USABLE AS A SHORTCUT
 ```
 
 Current residual-control rule:
 
 ```text
-O may appear as a theorem target or diagnostic placeholder.
+O may appear as a theorem target, diagnostic placeholder, or controlled-underdefinition marker.
+O may not be used as an active operator.
 O may not remove residual overlap by name.
 O may not be selected from recovery success, boundary failure, source failure, or parent-fit closure.
+O construction status does not license B_s/F_zeta insertion.
+O construction status does not open parent closure.
 ```
-
-Active O is now the preferred constructive route only if it is actually constructed. O remains unavailable as a tool until its domain, codomain, kernel, image, composition/replacement law, pairing/no-overlap criterion, derivative behavior, divergence behavior, boundary behavior, source behavior, mass behavior, scalar/current/support behavior, and recovery independence are derived.
 
 ### \(J_{\rm curv}^\mu\)
 
@@ -1240,8 +1268,9 @@ Route 2, strict non-metric / inert residual status:
   NOT DERIVED.
 
 Route 3, active no-overlap O:
-  not constructed;
-  OPTIONAL_OPEN / DEFERRED.
+  construction attempted;
+  NOT_CONSTRUCTED;
+  CONTROLLED_UNDERDETERMINATION.
 
 Accounting pair:
   epsilon_vac_metric and e_kappa_metric partially reduce to accounting-only inertness targets,
@@ -1250,6 +1279,16 @@ Accounting pair:
 Non-O residual control:
   CONTROLLED_OBSTRUCTION under current licensed objects.
   This does not prove non-O residual control mathematically impossible.
+```
+
+Active-O construction route note:
+
+```text
+The active-O construction route has now been tested.
+It produced useful partial structure but no usable operator.
+The safe trace preservation candidate O(zeta_Bs)=zeta_Bs survives,
+but residual action on zeta_residual_metric and kappa_metric remains underived.
+Therefore active O cannot currently close L_double or count-once recombination.
 ```
 
 ## 5.5 \(B_s/F_\zeta\) Insertion Target
@@ -1312,7 +1351,26 @@ epsilon_vac/e_kappa accounting inertness gate:
   PARTIAL_REDUCTION / NOT FULL RESIDUAL CONTROL
 
 Active O gate:
-  OPTIONAL_OPEN / DEFERRED / NOT DERIVED
+  ATTEMPTED
+  NOT_CONSTRUCTED
+  CONTROLLED_UNDERDETERMINATION
+  NOT USABLE
+
+Partial result:
+  candidate domain/codomain ledgers exist;
+  safe trace preservation candidate O(zeta_Bs)=zeta_Bs exists.
+
+Still missing:
+  no-overlap pairing / sector geometry,
+  kernel/image closure,
+  algebraic operator law,
+  divergence behavior,
+  boundary/source/mass behavior.
+
+Next handoff:
+  sector pairing / no-overlap geometry.
+
+(gate label: ATTEMPTED / NOT_CONSTRUCTED)
 
 Non-O residual-control gate:
   CONTROLLED_OBSTRUCTION under current licensed objects
@@ -1559,6 +1617,8 @@ Residual cleanup may not open parent closure.
 The residual-kill convention has now been directly tested as a theorem route and remains not derived. It is still a safe provisional convention only if treated as provisional. It may not be promoted to a structural law from the theorem attempt.
 
 Strict non-metric inertness was tested and remains not derived. The accounting pair epsilon_vac_config/e_kappa partially reduces to accounting-only inertness targets, but those reductions do not close zeta/kappa geometric non-reentry.
+
+The O route has now been audited as an active construction attempt. It did not produce an active operator. Its main positive result is localization of the missing structure: the no-overlap pairing / sector geometry is now the sharpest obstruction. Until that pairing or equivalent criterion is derived, O cannot be used to kill, project, or inertially separate residual metric trace.
 
 Residual scalar-tail witness:
 
@@ -3425,11 +3485,47 @@ No-overlap theorem target:
 \boxed{O[B_s,\zeta_{\rm residual}/\kappa_{\rm residual},J_V]=0}
 \]
 
+O remains theorem-targeted, but the active-O construction attempt has now been performed.
+
 Status:
 
 ```text
-THEOREM_TARGET / DEFERRED
-NO UNIVERSAL ACTIVE O DEFINED
+NOT_CONSTRUCTED
+CONTROLLED_UNDERDETERMINATION
+PARTIAL STRUCTURE ONLY
+```
+
+Partial structure:
+
+```text
+candidate domain/codomain ledgers exist;
+O(zeta_Bs)=zeta_Bs remains a candidate preservation law.
+```
+
+Not derived:
+
+```text
+O(zeta_res)=0,
+O(kappa_res)=0,
+kernel/image closure,
+no-overlap pairing,
+O^2=O,
+linearity,
+replacement law,
+constraint law,
+divergence commutation,
+correction law,
+boundary/source/mass neutrality.
+```
+
+Not licensed:
+
+```text
+O eraser by name,
+O selected from recovery,
+O selected from boundary/source/mass repair,
+O used in residual control,
+O used in field equations.
 ```
 
 Residual-kill convention:
@@ -3766,8 +3862,9 @@ direct residual kill tested and not derived;
 strict inertness tested and not derived;
 zeta/kappa non-reentry tested and not derived;
 accounting inertness partially reduced only;
-active O optional-open/deferred but not derived;
-non-O residual control obstructed under current licensed objects.
+active O construction attempted and not constructed;
+active O remains controlled-underdefined and not usable;
+non-O residual control remains obstructed under current licensed objects.
 ```
 
 ## 15.3 Metric Insertion Closure Obligations
@@ -3885,6 +3982,18 @@ O_source,
 O_current,
 O_divergence,
 O_boundary.
+```
+
+Active O construction obstruction:
+
+```text
+active O construction obstruction:
+  controlled underdetermination;
+  missing no-overlap pairing / sector geometry;
+  missing kernel/image closure;
+  missing algebraic law;
+  missing divergence behavior;
+  missing boundary/source/mass behavior.
 ```
 
 ## 16.3 Structural Unknowns
@@ -4020,7 +4129,7 @@ boundary/source-compatible residual cleanup theorem,
 sector-by-sector residual non-reentry theorem.
 ```
 
-Residual-control theorem attempt note:
+Residual-control and active-O construction status note:
 
 ```text
 residual-control theorem:
@@ -4029,9 +4138,15 @@ residual-control theorem:
   controlled obstruction, not mathematical impossibility.
 
 active O:
-  optional-open / deferred;
-  preferred constructive handoff;
-  not derived.
+  construction attempt completed;
+  not constructed;
+  partial domain/codomain and safe trace preservation candidate exist;
+  no-overlap pairing / sector geometry is the sharpest missing structure;
+  controlled underdetermination, not impossibility;
+  not usable in residual control or field equations.
+
+next preferred handoff:
+  sector pairing / no-overlap geometry.
 
 B_s/F_zeta coefficient origin:
   alternate constructive handoff;
@@ -4059,7 +4174,7 @@ a candidate zeta/vacuum-volume architecture, with kappa kept diagnostic/non-metr
 
 a provisional residual-kill convention or future no-overlap route for count-once scalar trace insertion;
 
-an explicit residual-control theorem-attempt result:
+an explicit residual-control and active-O construction status:
   the safe trace target is zeta_to_Bs;
   the double-count load is L_double;
   direct residual kill was tested and not derived;
@@ -4067,7 +4182,11 @@ an explicit residual-control theorem-attempt result:
   zeta/kappa geometric non-reentry was tested and not derived;
   epsilon_vac/e_kappa accounting inertness only partially reduced;
   no non-O residual-control route closes under current licensed objects;
-  active O is optional-open/deferred, not derived, and not proven necessary;
+  active O construction was attempted and did not construct O;
+  candidate domain/codomain and O(zeta_Bs)=zeta_Bs preservation structure exist;
+  no-overlap pairing / sector geometry remains missing;
+  O is not usable in residual control or field equations;
+  recovery-selected and repair-selected O are rejected;
   recovery may audit residual status but may not select it;
   boundary/source failure may not select residual cleanup;
   parent closure remains not ready;
@@ -4087,10 +4206,14 @@ The current theory does not yet have:
 full covariant parent field equation,
 B_s/F_zeta insertion law,
 active no-overlap operator O,
+O no-overlap pairing / sector geometry,
+O kernel/image closure,
+O algebraic law,
+O divergence behavior,
+O boundary/source/mass behavior,
 derived residual-kill theorem,
 strict non-metric inertness theorem,
 sector-by-sector residual non-reentry theorem,
-active no-overlap operator,
 recovery-independent residual status theorem,
 boundary/source-compatible residual cleanup theorem,
 J_V flux law,
@@ -4118,7 +4241,7 @@ Do not immediately write a parent field equation.
 The next technical target should be one of the following narrower routes:
 
 ```text
-active no-overlap operator construction,
+sector pairing / no-overlap geometry,
 B_s/F_zeta coefficient-origin theorem,
 reduced observational audit.
 ```
@@ -4126,17 +4249,18 @@ reduced observational audit.
 Recommended next target:
 
 ```text
-active no-overlap operator construction
+sector pairing / no-overlap geometry
 ```
 
 Reason:
 
 ```text
-The residual-control theorem attempt has now been performed.
+The active-O construction attempt has now been performed and did not construct a usable O.
 
-It did not close direct residual kill, strict inertness, zeta/kappa non-reentry, or non-O residual control.
+It localized the sharpest missing structure: the no-overlap pairing / sector geometry.
 
-Active O is optional-open/deferred and not derived, but it is now the preferred constructive route because it attacks the sharp missing operator structure directly.
+This missing pairing blocks kernel/image closure, projection/replacement/constraint law,
+and any future active-O residual-control retest.
 ```
 
 Alternative:
@@ -4145,7 +4269,7 @@ Alternative:
 B_s/F_zeta coefficient-origin theorem
 ```
 
-Use this if the next step attacks insertion law and coefficient origin directly while keeping residual control explicitly open.
+Use this if the next step attacks insertion law and coefficient origin directly. It may change the residual interpretation or decide whether active O is needed, but it must keep residual control, O construction, and parent closure explicitly open.
 
 Alternative:
 
@@ -4156,6 +4280,8 @@ reduced observational audit
 Use this only if observations remain downstream audits and do not select residual status, O, coefficients, insertion form, or parent closure.
 
 Do not proceed to parent field equation.
+Do not retest residual control with O.
+O is not usable yet.
 
 ```text
 Parent closure remains blocked by missing residual control, B_s/F_zeta insertion law, active O if used, boundary/source/support neutrality, divergence safety, and parent identity.
@@ -4164,10 +4290,10 @@ Parent closure remains blocked by missing residual control, B_s/F_zeta insertion
 Known unresolved dependencies retained upstream of any parent equation:
 
 ```text
-residual-control theorem (non-O routes obstructed; active O deferred),
+residual-control theorem (non-O routes obstructed; active O not constructed),
+active O (controlled underdetermination; no-overlap pairing / sector geometry missing),
 B_s/F_zeta insertion law,
 coefficient origin,
-active O if used,
 boundary/source-compatible residual cleanup,
 J_V / J_sub / J_exch definition and ordinary matter decoupling.
 ```
@@ -4690,6 +4816,28 @@ license B_s/F_zeta insertion,
 or open parent closure.
 ```
 
+## B.20 Active-O Construction Attempt Witness
+
+Meaning:
+
+```text
+The active-O construction attempt did not construct O.
+
+Partial structure exists:
+  candidate domain/codomain ledgers;
+  O(zeta_Bs)=zeta_Bs as candidate safe-trace preservation.
+
+Still missing:
+  no-overlap pairing / sector geometry,
+  kernel/image closure,
+  algebraic law,
+  divergence behavior,
+  boundary/source/mass behavior.
+
+This is controlled underdetermination, not O impossibility.
+O remains unusable in residual control or field equations.
+```
+
 ## B.19 Residual-Control Theorem Attempt Witness
 
 Meaning:
@@ -4895,7 +5043,13 @@ O as shell source generator,
 O as dark-sector patch,
 O used to erase boundary/scalar leakage by name,
 nonmetric vocabulary treated as no-overlap theorem,
-neutral transport target treated as current law.
+neutral transport target treated as current law,
+partial O structure treated as usable O,
+candidate domain/codomain treated as full O,
+O(zeta_Bs)=zeta_Bs treated as residual-control operator,
+controlled underdetermination treated as O impossibility,
+sector-pairing handoff treated as no-overlap theorem,
+active-O construction summary treated as active-O theorem.
 ```
 
 ## C.9 Dark-Label Patches
@@ -4994,6 +5148,34 @@ recovery independence,
 compatibility with B_s/F_zeta insertion,
 compatibility with residual-kill or residual survival,
 compatibility with parent source identity.
+```
+
+Current active-O checklist status:
+
+```text
+domain/codomain:
+  candidate only.
+
+kernel/image:
+  underdetermined.
+
+pairing/no-overlap criterion:
+  not derived.
+
+projection/replacement/constraint law:
+  not derived.
+
+derivative/divergence behavior:
+  not derived.
+
+boundary/source/mass/scalar/current/support behavior:
+  not derived.
+
+recovery independence:
+  recovery selection rejected, but full O not constructed.
+
+Current conclusion:
+  active O is not constructed and not usable.
 ```
 
 ## D.2 Role-Specific Projectors
@@ -5210,8 +5392,6 @@ Sigma/R split is role-level only.
 
 Flux direction is missing.
 
-No-overlap O remains theorem-targeted and deferred.
-
 Residual-kill / non-metric residual is the safest provisional convention.
 
 Residual-control status:
@@ -5224,12 +5404,21 @@ Residual-control status:
   epsilon_vac/e_kappa accounting inertness is partially reduced but not full residual control;
   no non-O residual-control route closes under current licensed objects;
   this is a controlled obstruction, not mathematical impossibility;
-  active O is optional-open/deferred, not derived, and not proven necessary;
-  active O is now the preferred constructive handoff if actual operator structure is derived;
-  B_s/F_zeta coefficient-origin is the alternate constructive handoff;
   recovery may audit residual status but may not select it;
   boundary/source failure may not select residual cleanup;
   residual cleanup may not license insertion or parent closure.
+
+No-overlap O status:
+  active-O construction attempt completed;
+  active O not constructed;
+  candidate domain/codomain and safe trace preservation structure exist;
+  no-overlap pairing / sector geometry remains missing;
+  kernel/image, algebraic law, divergence behavior, and boundary/source/mass behavior remain open;
+  recovery-selected and repair-selected O are rejected;
+  controlled underdetermination, not impossibility;
+  O is not usable in residual control or field equations;
+  preferred next target is sector pairing / no-overlap geometry;
+  B_s/F_zeta coefficient origin remains alternate.
 
 Boundary safety is required and not derived:
   no exterior zeta/kappa charge,
@@ -5279,10 +5468,10 @@ Parent correction tensor status:
 The theory should not yet write a final parent equation.
 
 The next honest target is:
-  active no-overlap operator construction,
+  sector pairing / no-overlap geometry,
   B_s/F_zeta coefficient-origin theorem,
   or reduced observational audit,
-not residual-control theorem attempt and not parent closure.
+not active-O construction attempt and not parent closure.
 ```
 
 Compact closure rule:
@@ -5313,5 +5502,10 @@ No active O theorem is earned.
 No recovery-independent residual-status theorem is earned.
 No boundary/source-compatible residual-cleanup theorem is earned.
 No parent equation gate opens from residual-control requirements alone.
+No active-O construction theorem is earned.
+No partial-O structure is usable as O.
+No sector-pairing handoff is a no-overlap theorem.
+No O impossibility theorem is earned.
+No residual-control retest with O is licensed.
 ```
 
