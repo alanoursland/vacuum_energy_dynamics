@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "interior_A_boundary_matching",
-    "upstream_script_id": "04_source_law_interior__candidate_interior_A_source_model",
-    "upstream_derivation_id": "interior_A_boundary_matching",
-    "declared_at": "2026-05-10T17:18:26.227639+00:00",
-    "allow_superseded": false
-  }
-]

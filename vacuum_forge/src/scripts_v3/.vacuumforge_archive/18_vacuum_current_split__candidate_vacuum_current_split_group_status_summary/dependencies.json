@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "dark_sector_coupling_optional_branch_marker",
-    "upstream_script_id": "18_vacuum_current_split__candidate_dark_sector_coupling_optional_branch",
-    "upstream_derivation_id": "dark_sector_coupling_optional_branch_marker",
-    "declared_at": "2026-05-10T17:23:00.713363+00:00",
-    "allow_superseded": false
-  }
-]

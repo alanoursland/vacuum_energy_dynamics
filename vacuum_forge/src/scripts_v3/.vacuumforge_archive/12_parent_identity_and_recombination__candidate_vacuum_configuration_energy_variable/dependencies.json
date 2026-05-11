@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "parent_identity_template_v2_marker",
-    "upstream_script_id": "12_parent_identity_and_recombination__candidate_parent_identity_template_v2",
-    "upstream_derivation_id": "parent_identity_template_v2_marker",
-    "declared_at": "2026-05-10T17:20:54.469476+00:00",
-    "allow_superseded": false
-  }
-]

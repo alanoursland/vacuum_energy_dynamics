@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vacuum_rest_frame_definition_marker",
-    "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_vacuum_rest_frame_definition",
-    "upstream_derivation_id": "vacuum_rest_frame_definition_marker",
-    "declared_at": "2026-05-10T17:22:02.931893+00:00",
-    "allow_superseded": false
-  }
-]

@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "acceleration_gradient_volume_creation_marker",
-    "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_acceleration_gradient_volume_creation",
-    "upstream_derivation_id": "acceleration_gradient_volume_creation_marker",
-    "declared_at": "2026-05-10T17:21:58.272931+00:00",
-    "allow_superseded": false
-  }
-]

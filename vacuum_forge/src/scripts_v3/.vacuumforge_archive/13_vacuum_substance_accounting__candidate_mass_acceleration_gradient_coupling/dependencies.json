@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "scalar_conversion_not_damping_marker",
-    "upstream_script_id": "13_vacuum_substance_accounting__candidate_scalar_conversion_not_damping",
-    "upstream_derivation_id": "scalar_conversion_not_damping_marker",
-    "declared_at": "2026-05-10T17:21:02.814404+00:00",
-    "allow_superseded": false
-  }
-]

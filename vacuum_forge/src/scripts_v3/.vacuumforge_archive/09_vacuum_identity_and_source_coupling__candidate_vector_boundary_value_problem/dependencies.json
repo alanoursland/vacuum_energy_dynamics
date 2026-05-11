@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vector_global_rotation_mode_marker",
-    "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_global_rotation_mode",
-    "upstream_derivation_id": "vector_global_rotation_mode_marker",
-    "declared_at": "2026-05-10T17:19:41.668091+00:00",
-    "allow_superseded": false
-  }
-]

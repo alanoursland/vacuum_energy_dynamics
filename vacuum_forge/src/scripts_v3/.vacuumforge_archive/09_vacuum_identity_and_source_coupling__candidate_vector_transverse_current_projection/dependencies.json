@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vector_curl_energy_field_equation_marker",
-    "upstream_script_id": "09_vacuum_identity_and_source_coupling__candidate_vector_curl_energy_field_equation",
-    "upstream_derivation_id": "vector_curl_energy_field_equation_marker",
-    "declared_at": "2026-05-10T17:19:36.075338+00:00",
-    "allow_superseded": false
-  }
-]

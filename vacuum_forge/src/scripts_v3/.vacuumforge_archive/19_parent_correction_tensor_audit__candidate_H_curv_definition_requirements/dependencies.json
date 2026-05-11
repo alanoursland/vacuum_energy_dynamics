@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "parent_correction_tensor_role_inventory_marker",
-    "upstream_script_id": "19_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
-    "upstream_derivation_id": "parent_correction_tensor_role_inventory_marker",
-    "declared_at": "2026-05-10T17:23:03.894343+00:00",
-    "allow_superseded": false
-  }
-]

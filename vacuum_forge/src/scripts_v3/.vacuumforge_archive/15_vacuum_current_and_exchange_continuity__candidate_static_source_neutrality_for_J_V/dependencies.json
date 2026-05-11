@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "timelike_domain_for_volume_current_marker",
-    "upstream_script_id": "15_vacuum_current_and_exchange_continuity__candidate_timelike_domain_for_volume_current",
-    "upstream_derivation_id": "timelike_domain_for_volume_current_marker",
-    "declared_at": "2026-05-10T17:22:14.055797+00:00",
-    "allow_superseded": false
-  }
-]

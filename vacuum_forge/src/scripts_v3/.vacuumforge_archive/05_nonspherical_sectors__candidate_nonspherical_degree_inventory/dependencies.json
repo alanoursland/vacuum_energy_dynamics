@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "weak_scalar_gamma_one_sector",
-    "upstream_script_id": "05_nonspherical_sectors__candidate_weak_multipole_metric_reconstruction",
-    "upstream_derivation_id": "weak_scalar_gamma_one_sector",
-    "declared_at": "2026-05-10T17:18:42.675753+00:00",
-    "allow_superseded": false
-  }
-]

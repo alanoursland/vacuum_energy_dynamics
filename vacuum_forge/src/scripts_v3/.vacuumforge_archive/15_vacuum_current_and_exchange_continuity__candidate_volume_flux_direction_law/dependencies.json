@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "sigma_R_split_for_volume_exchange_marker",
-    "upstream_script_id": "15_vacuum_current_and_exchange_continuity__candidate_sigma_R_split_for_volume_exchange",
-    "upstream_derivation_id": "sigma_R_split_for_volume_exchange_marker",
-    "declared_at": "2026-05-10T17:22:10.755826+00:00",
-    "allow_superseded": false
-  }
-]

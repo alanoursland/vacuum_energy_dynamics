@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "covariant_parent_requirements_marker",
-    "upstream_script_id": "08_covariant_parent_structure__candidate_covariant_parent_requirements",
-    "upstream_derivation_id": "covariant_parent_requirements_marker",
-    "declared_at": "2026-05-10T17:19:17.302812+00:00",
-    "allow_superseded": false
-  }
-]

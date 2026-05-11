@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "tensor_wave_equation_marker",
-    "upstream_script_id": "06_tensor_flux_principle__candidate_tensor_wave_equation",
-    "upstream_derivation_id": "tensor_wave_equation_marker",
-    "declared_at": "2026-05-10T17:18:53.126266+00:00",
-    "allow_superseded": false
-  }
-]

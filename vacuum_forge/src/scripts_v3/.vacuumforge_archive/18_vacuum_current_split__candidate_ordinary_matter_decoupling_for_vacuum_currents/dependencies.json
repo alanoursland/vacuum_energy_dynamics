@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "J_exch_definition_requirements_marker",
-    "upstream_script_id": "18_vacuum_current_split__candidate_J_exch_definition_requirements",
-    "upstream_derivation_id": "J_exch_definition_requirements_marker",
-    "declared_at": "2026-05-10T17:22:55.892391+00:00",
-    "allow_superseded": false
-  }
-]

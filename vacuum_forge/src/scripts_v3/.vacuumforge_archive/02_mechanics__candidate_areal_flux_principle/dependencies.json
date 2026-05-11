@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "exact_source_law_geometry_check",
-    "upstream_script_id": "02_mechanics__candidate_exact_source_law_geometry_check",
-    "upstream_derivation_id": "flat_laplacian_harmonic_check_schwarzschild_A",
-    "declared_at": "2026-05-10T17:18:14.524515+00:00",
-    "allow_superseded": false
-  }
-]

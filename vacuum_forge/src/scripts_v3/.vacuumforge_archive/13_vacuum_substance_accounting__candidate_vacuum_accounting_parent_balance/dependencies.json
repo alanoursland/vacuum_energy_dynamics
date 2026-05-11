@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vacuum_transport_current_constraints_marker",
-    "upstream_script_id": "13_vacuum_substance_accounting__candidate_vacuum_transport_current_constraints",
-    "upstream_derivation_id": "vacuum_transport_current_constraints_marker",
-    "declared_at": "2026-05-10T17:21:09.141352+00:00",
-    "allow_superseded": false
-  }
-]

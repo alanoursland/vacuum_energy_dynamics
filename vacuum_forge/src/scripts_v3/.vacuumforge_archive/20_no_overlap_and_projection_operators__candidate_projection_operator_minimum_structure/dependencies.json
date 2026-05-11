@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "no_overlap_operator_role_inventory_marker",
-    "upstream_script_id": "20_no_overlap_and_projection_operators__candidate_no_overlap_operator_role_inventory",
-    "upstream_derivation_id": "no_overlap_operator_role_inventory_marker",
-    "declared_at": "2026-05-10T20:07:19.595559+00:00",
-    "allow_superseded": false
-  }
-]

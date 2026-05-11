@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "group_15_current_subchain_status_summary_marker",
-    "upstream_script_id": "15_vacuum_current_and_exchange_continuity__candidate_group_15_current_subchain_status_summary",
-    "upstream_derivation_id": "group_15_current_subchain_status_summary_marker",
-    "declared_at": "2026-05-10T17:22:20.478743+00:00",
-    "allow_superseded": false
-  }
-]

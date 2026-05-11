@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "metric_recombination_marker",
-    "upstream_script_id": "08_covariant_parent_structure__candidate_metric_geometric_recombination",
-    "upstream_derivation_id": "metric_recombination_marker",
-    "declared_at": "2026-05-10T17:19:21.861976+00:00",
-    "allow_superseded": false
-  }
-]

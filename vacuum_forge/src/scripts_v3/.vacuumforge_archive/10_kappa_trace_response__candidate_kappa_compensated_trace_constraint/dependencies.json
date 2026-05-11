@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "kappa_pressure_trace_model_marker",
-    "upstream_script_id": "10_kappa_trace_response__candidate_kappa_pressure_trace_model",
-    "upstream_derivation_id": "kappa_pressure_trace_model_marker",
-    "declared_at": "2026-05-10T17:19:51.877005+00:00",
-    "allow_superseded": false
-  }
-]

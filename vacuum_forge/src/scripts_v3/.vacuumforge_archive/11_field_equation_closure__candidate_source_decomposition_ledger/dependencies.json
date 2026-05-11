@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "metric_recombination_map_marker",
-    "upstream_script_id": "11_field_equation_closure__candidate_metric_recombination_map",
-    "upstream_derivation_id": "metric_recombination_map_marker",
-    "declared_at": "2026-05-10T17:20:18.152782+00:00",
-    "allow_superseded": false
-  }
-]

@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vacuum_current_split_group_status_summary_marker",
-    "upstream_script_id": "18_vacuum_current_split__candidate_vacuum_current_split_group_status_summary",
-    "upstream_derivation_id": "vacuum_current_split_group_status_summary_marker",
-    "declared_at": "2026-05-10T17:23:02.290354+00:00",
-    "allow_superseded": false
-  }
-]

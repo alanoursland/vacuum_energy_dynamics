@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "minimal_coupled_stiffness_variation_marker",
-    "upstream_script_id": "14_kappa_zeta_map_and_projectors__candidate_minimal_coupled_stiffness_variation",
-    "upstream_derivation_id": "minimal_coupled_stiffness_variation_marker",
-    "declared_at": "2026-05-10T17:21:39.799088+00:00",
-    "allow_superseded": false
-  }
-]

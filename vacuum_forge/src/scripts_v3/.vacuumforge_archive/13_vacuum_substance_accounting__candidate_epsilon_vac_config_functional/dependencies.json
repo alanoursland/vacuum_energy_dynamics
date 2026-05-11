@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vacuum_accounting_parent_balance_marker",
-    "upstream_script_id": "13_vacuum_substance_accounting__candidate_vacuum_accounting_parent_balance",
-    "upstream_derivation_id": "vacuum_accounting_parent_balance_marker",
-    "declared_at": "2026-05-10T17:21:10.675336+00:00",
-    "allow_superseded": false
-  }
-]

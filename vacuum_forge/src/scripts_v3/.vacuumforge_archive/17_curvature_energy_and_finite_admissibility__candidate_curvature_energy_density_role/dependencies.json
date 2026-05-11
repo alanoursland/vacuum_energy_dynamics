@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "finite_admissibility_condition_marker",
-    "upstream_script_id": "17_curvature_energy_and_finite_admissibility__candidate_finite_admissibility_condition",
-    "upstream_derivation_id": "finite_admissibility_condition_marker",
-    "declared_at": "2026-05-10T17:22:40.447573+00:00",
-    "allow_superseded": false
-  }
-]

@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "vector_sector_inventory_marker",
-    "upstream_script_id": "05_nonspherical_sectors__candidate_vector_sector_frame_dragging",
-    "upstream_derivation_id": "vector_sector_inventory_marker",
-    "declared_at": "2026-05-10T17:18:47.601678+00:00",
-    "allow_superseded": false
-  }
-]

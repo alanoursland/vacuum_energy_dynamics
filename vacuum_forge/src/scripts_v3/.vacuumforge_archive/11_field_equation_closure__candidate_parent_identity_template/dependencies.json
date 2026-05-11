@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "gr_limit_recovery_audit_marker",
-    "upstream_script_id": "11_field_equation_closure__candidate_gr_limit_recovery_audit",
-    "upstream_derivation_id": "gr_limit_recovery_audit_marker",
-    "declared_at": "2026-05-10T17:20:28.251697+00:00",
-    "allow_superseded": false
-  }
-]

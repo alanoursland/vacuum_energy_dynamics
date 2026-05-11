@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "tensor_tt_basis_marker",
-    "upstream_script_id": "06_tensor_flux_principle__candidate_tensor_flux_basis",
-    "upstream_derivation_id": "tensor_tt_basis_marker",
-    "declared_at": "2026-05-10T17:18:50.888265+00:00",
-    "allow_superseded": false
-  }
-]

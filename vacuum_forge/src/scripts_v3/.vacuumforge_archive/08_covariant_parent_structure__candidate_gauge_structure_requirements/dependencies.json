@@ -1,9 +1,0 @@
-[
-  {
-    "dependency_id": "constraint_evolution_split_marker",
-    "upstream_script_id": "08_covariant_parent_structure__candidate_constraint_vs_evolution_split",
-    "upstream_derivation_id": "constraint_evolution_split_marker",
-    "declared_at": "2026-05-10T17:19:18.817121+00:00",
-    "allow_superseded": false
-  }
-]
