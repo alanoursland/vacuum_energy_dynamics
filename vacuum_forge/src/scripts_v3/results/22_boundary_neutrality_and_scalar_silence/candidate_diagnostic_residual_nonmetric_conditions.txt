@@ -1,0 +1,208 @@
+
+========================================================================================================================
+Candidate Diagnostic Residual Nonmetric Conditions
+========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_scalar_silence_target_ledger_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - sector_scalar_silence_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - smooth_compact_no_shell_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_repair_exclusion_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Diagnostic residual nonmetric problem
+========================================================================================================================
+Question:
+
+  When can a residual survive as diagnostic/non-metric without affecting mass or boundary behavior?
+
+Reference discipline:
+
+  Scalar-tail sector coefficients must vanish unless residuals are inert or theorem-routed.
+  Compact support needs matching/no-shell conditions.
+  Boundary repair routes are rejected.
+  Nonmetric vocabulary is not a proof of no-overlap.
+  This script records no-reentry conditions for diagnostic residuals.
+
+[governance_assessments]
+[INFO] diagnostic residual nonmetric audit opened -- checking when residual labels may survive without metric/source/boundary/mass effect
+
+========================================================================================================================
+Case 1: Residual re-entry diagnostics
+========================================================================================================================
+If a diagnostic residual re-enters forbidden channels, the load ledger is:
+
+  total_reentry_load = C_metric + C_source + E_account + I_far + q_boundary
+
+Representative reduced leakage witnesses:
+
+  scalar flux from metric tail coefficient = -4*pi*C_metric
+  boundary mass shift from A-tail coefficient = -c**2*q_boundary/(2*G)
+  far-zone current flux = I_far
+
+Neutral diagnostic residual status requires all re-entry channels to remain inert.
+Cancellation among these labels is not nonmetric status.
+
+[derived_results]
+[PASS] diagnostic residual re-entry load ledger stated -- total_reentry_load = C_metric + C_source + E_account + I_far + q_boundary
+[PASS] metric-tail leakage witness stated -- F = -4*pi*C_metric
+[PASS] boundary A-tail leakage witness stated -- delta_M_A = -c**2*q_boundary/(2*G)
+[PASS] far-zone current leakage witness stated -- Phi = I_far
+
+========================================================================================================================
+Case 2: Diagnostic/non-metric residual condition ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+N1: no metric trace effect
+------------------------------------------------------------------------------------------------------------------------
+Condition: residual does not enter g_ij scalar trace, A, B_s, zeta metric trace, or kappa metric trace
+[OBLIGATION] N1: no metric trace effect: REQUIRED
+Failure if: diagnostic residual becomes metric scalar tail or spatial trace component
+Consequence: residual remains bookkeeping, not geometry
+
+------------------------------------------------------------------------------------------------------------------------
+N2: no source role
+------------------------------------------------------------------------------------------------------------------------
+Condition: residual does not source A, zeta, kappa, J_V, curvature, H, exchange, dark, or ordinary matter routing
+[OBLIGATION] N2: no source role: REQUIRED
+Failure if: diagnostic label becomes source reservoir or coefficient supply
+Consequence: residual cannot become hidden source energy
+
+------------------------------------------------------------------------------------------------------------------------
+N3: no boundary flux
+------------------------------------------------------------------------------------------------------------------------
+Condition: residual creates no boundary A-tail, scalar flux, derivative jump, or shell source
+[OBLIGATION] N3: no boundary flux: REQUIRED
+Failure if: diagnostic residual changes boundary behavior or hides shell flux
+Consequence: residual cannot be boundary purse
+
+------------------------------------------------------------------------------------------------------------------------
+N4: no far-zone tail
+------------------------------------------------------------------------------------------------------------------------
+Condition: residual has no exterior 1/r scalar coefficient and no 1/r^2 current flux coefficient
+[OBLIGATION] N4: no far-zone tail: REQUIRED
+Failure if: residual leaves C/r or I/(4*pi*r^2) far-zone residue
+Consequence: residual remains exterior-silent
+
+------------------------------------------------------------------------------------------------------------------------
+N5: no coefficient reservoir
+------------------------------------------------------------------------------------------------------------------------
+Condition: residual accounting terms do not supply recovery, stiffness, smoothing, mass, or support coefficients
+[OBLIGATION] N5: no coefficient reservoir: REQUIRED
+Failure if: epsilon/e/residual label becomes parameter bank
+Consequence: residual cannot tune recovery or boundary behavior
+
+------------------------------------------------------------------------------------------------------------------------
+N6: no later re-entry
+------------------------------------------------------------------------------------------------------------------------
+Condition: residual cannot re-enter through H, O, dark label, curvature, exchange, source projector, or parent equation placeholder
+[OBLIGATION] N6: no later re-entry: REQUIRED
+Failure if: residual is demoted now but reintroduced later through a patch object
+Consequence: diagnostic/non-metric status must be stable under later bookkeeping
+
+------------------------------------------------------------------------------------------------------------------------
+N7: recovery independence
+------------------------------------------------------------------------------------------------------------------------
+Condition: diagnostic/non-metric status is not chosen from Schwarzschild/PPN/gamma_like/AB/B=1/A recovery
+[OBLIGATION] N7: recovery independence: REQUIRED
+Failure if: residual status is selected to pass a recovery check
+Consequence: recovery remains downstream diagnostic, not construction
+
+------------------------------------------------------------------------------------------------------------------------
+N8: explicit theorem target if residual survives
+------------------------------------------------------------------------------------------------------------------------
+Condition: any residual survival beyond inert diagnostics is marked theorem-targeted
+[OBLIGATION] N8: explicit theorem target if residual survives: REQUIRED
+Failure if: surviving residual is treated as licensed by nonmetric vocabulary
+Consequence: nonmetric labels do not prove no-overlap
+
+[governance_assessments]
+[PASS] diagnostic/nonmetric residual condition ledger populated -- 8 no-reentry conditions stated
+
+========================================================================================================================
+Case 3: Rejected residual re-entry routes
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: metric trace re-entry
+------------------------------------------------------------------------------------------------------------------------
+Route: residual_to_metric_trace
+Forbidden use: residual returns as g_ij scalar trace after being called non-metric
+[FAIL] R1: metric trace re-entry: REJECTED
+Consequence: violates count-once / scalar silence discipline
+
+------------------------------------------------------------------------------------------------------------------------
+R2: source reservoir re-entry
+------------------------------------------------------------------------------------------------------------------------
+Route: residual_to_source_reservoir
+Forbidden use: residual supplies A, kappa, zeta, curvature, H, exchange, or dark source coefficient
+[FAIL] R2: source reservoir re-entry: REJECTED
+Consequence: diagnostic residual becomes hidden source energy
+
+------------------------------------------------------------------------------------------------------------------------
+R3: boundary repair re-entry
+------------------------------------------------------------------------------------------------------------------------
+Route: residual_to_boundary_repair
+Forbidden use: residual adjusts boundary slope, support, smoothing, or shell behavior
+[FAIL] R3: boundary repair re-entry: REJECTED
+Consequence: residual becomes boundary purse
+
+------------------------------------------------------------------------------------------------------------------------
+R4: H/O patch re-entry
+------------------------------------------------------------------------------------------------------------------------
+Route: residual_to_H_or_O_patch
+Forbidden use: H or O reintroduces a killed/nonmetric residual as correction or projection remainder
+[FAIL] R4: H/O patch re-entry: REJECTED
+Consequence: undefined patch objects cannot license residual survival
+
+------------------------------------------------------------------------------------------------------------------------
+R5: recovery-selected nonmetric status
+------------------------------------------------------------------------------------------------------------------------
+Route: recovery_selected_nonmetric_status
+Forbidden use: residual is declared non-metric only because recovery requires it
+[FAIL] R5: recovery-selected nonmetric status: REJECTED
+Consequence: recovery may audit residual status but cannot construct it
+
+[counterexamples]
+[FAIL] residual re-entry routes rejected -- metric/source/boundary/H/O/recovery re-entry routes are not licensed
+
+========================================================================================================================
+Case 4: Failure controls
+========================================================================================================================
+The diagnostic residual nonmetric audit fails if a later script allows:
+
+1. nonmetric residual to enter metric scalar trace
+2. diagnostic residual to source A, zeta, kappa, curvature, H, exchange, or dark labels
+3. residual accounting to become coefficient reservoir
+4. residual to alter boundary slope/support/smoothing/shell behavior
+5. residual to leave exterior C/r scalar tail
+6. residual to leave far-zone I/(4*pi*r^2) current flux
+7. H or O to reinsert a killed/nonmetric residual
+8. dark label to absorb residual leakage
+9. recovery target to choose nonmetric status
+10. nonmetric vocabulary to be treated as no-overlap theorem
+
+[governance_assessments]
+[OBLIGATION] diagnostic residual overclaim controls stated -- future scripts must not convert inert residual labels into active channels
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+A residual may survive as diagnostic/non-metric only if it has:
+
+  no metric trace effect
+  no source role
+  no boundary flux
+  no far-zone tail
+  no coefficient reservoir
+  no later re-entry through H, O, dark labels, curvature, exchange, or parent placeholders
+  no recovery-selected status
+
+This script does not prove residual-kill or no-overlap.
+It records the no-reentry burden for diagnostic residual survival.
+
+Possible next script:
+  candidate_boundary_neutrality_theorem_obligations.py
+
+[governance_assessments]
+[PASS] diagnostic residual nonmetric audit complete -- diagnostic residuals are safe only if inert and non-reentering

@@ -1,0 +1,249 @@
+
+========================================================================================================================
+Candidate Smooth Compact Support No-Shell Conditions
+========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_scalar_silence_target_ledger_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - scalar_tail_flux_witness_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_A_tail_mass_witness_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Smooth compact support no-shell problem
+========================================================================================================================
+Question:
+
+  When does compact support avoid hiding a shell source?
+
+Reference discipline:
+
+  Boundary/scalar silence targets are explicit but not proved.
+  Compact support is not safe by name.
+  Value matching alone may still leave boundary flux.
+  Smooth matching must be derived, not chosen by recovery.
+  This script tests toy profiles and records requirements.
+
+[governance_assessments]
+[INFO] smooth compact support no-shell audit opened -- testing boundary value/slope/flux diagnostics without deriving support
+
+========================================================================================================================
+Case 1: Boundary profile diagnostics
+========================================================================================================================
+C0-style interior constant profile:
+
+  phi_C0(r) = phi0
+  phi_C0(R) = phi0
+  phi_C0'(R) = 0
+  boundary flux = 0
+  if exterior value is zero, nonzero phi_C0(R) means value jump danger
+
+C1-style toy profile:
+
+  phi_C1(r) = phi0*(1 - r/R)
+  phi_C1(R) = 0
+  phi_C1'(R) = -phi0/R
+  boundary flux = -4*pi*R*phi0
+
+C2-style toy profile:
+
+  phi_C2(r) = phi0*(1 - r/R)**2
+  phi_C2(R) = 0
+  phi_C2'(R) = 0
+  boundary flux = 0
+
+Smooth compact toy profile:
+
+  phi_compact(r) = phi0*(1 - r**2/R**2)**2
+  phi_compact(R) = 0
+  phi_compact'(R) = 0
+  boundary flux = 0
+
+
+[sample_results]
+[WARN] C1 value-match profile can carry boundary flux -- boundary flux = -4*pi*R*phi0
+[PASS] C2 value/slope profile has zero toy boundary flux -- boundary flux = 0
+[PASS] smooth compact toy profile has zero toy boundary flux -- boundary flux = 0
+
+========================================================================================================================
+Case 2: Sharp support / shell danger
+========================================================================================================================
+Sharp-support toy:
+
+  phi_inside(r) = phi0
+  phi_outside(r) = 0
+
+At the boundary:
+
+  value jump if phi0 != 0: jump = phi0
+  inside slope at R = 0
+  inside flux at R = 0
+
+Interpretation:
+
+  zero interior slope does not save a sharp cutoff if the value jumps.
+  a value jump can encode distributional boundary behavior.
+  compact support must include matching/no-shell conditions, not only exterior zero.
+
+[counterexamples]
+[FAIL] sharp support can hide shell behavior -- exterior zero is not enough if boundary matching is not controlled
+
+========================================================================================================================
+Case 3: Smooth compact support branch ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: C0 match only
+------------------------------------------------------------------------------------------------------------------------
+Branch: C0_or_value_jump_profile
+Condition: value may fail to match exterior zero, or only interior value is specified
+[FAIL] B1: C0 match only: REJECTED
+Danger: nonzero boundary value can hide a distributional edge when exterior is zero
+Consequence: not a safe compact-support condition
+
+------------------------------------------------------------------------------------------------------------------------
+B2: C1 value match
+------------------------------------------------------------------------------------------------------------------------
+Branch: C1_value_match
+Condition: phi(R) = 0 but phi'(R) may be nonzero
+[WARN] B2: C1 value match: RISK
+Danger: boundary flux can survive even when the value vanishes
+Consequence: value continuity alone does not prove no-shell/no-flux behavior
+
+------------------------------------------------------------------------------------------------------------------------
+B3: C2 value and slope match
+------------------------------------------------------------------------------------------------------------------------
+Branch: C2_value_and_slope_match
+Condition: phi(R) = 0 and phi'(R) = 0 in the toy profile
+[INFO] B3: C2 value and slope match: SAFE_IF
+Danger: still requires derived support law and no recovery tuning
+Consequence: safe diagnostic condition, not a compact-support theorem
+
+------------------------------------------------------------------------------------------------------------------------
+B4: smooth compact bump
+------------------------------------------------------------------------------------------------------------------------
+Branch: smooth_compact_profile
+Condition: value and slope vanish at boundary in the toy profile
+[INFO] B4: smooth compact bump: SAFE_IF
+Danger: support/matching must be structural, not chosen after leakage appears
+Consequence: promising diagnostic class for no-shell behavior
+
+------------------------------------------------------------------------------------------------------------------------
+B5: sharp cutoff
+------------------------------------------------------------------------------------------------------------------------
+Branch: sharp_cutoff
+Condition: interior residual is set to zero abruptly outside
+[FAIL] B5: sharp cutoff: REJECTED
+Danger: derivative/distributional shell can be hidden at the cutoff
+Consequence: sharp support is not neutral by declaration
+
+------------------------------------------------------------------------------------------------------------------------
+B6: derivative jump
+------------------------------------------------------------------------------------------------------------------------
+Branch: derivative_jump
+Condition: phi is continuous but derivative jumps at boundary
+[FAIL] B6: derivative jump: REJECTED
+Danger: jump can encode shell-like flux or boundary source
+Consequence: no-shell condition must control derivative matching
+
+------------------------------------------------------------------------------------------------------------------------
+B7: derived compact support
+------------------------------------------------------------------------------------------------------------------------
+Branch: derived_compact_support
+Condition: support, value matching, slope matching, and no-shell law follow before recovery
+[DEFER] B7: derived compact support: THEOREM_TARGET
+Danger: currently not derived
+Consequence: target for future boundary neutrality theorem
+
+[governance_assessments]
+[PASS] smooth compact support branch ledger populated -- 7 support/matching branches classified
+
+========================================================================================================================
+Case 4: Rejected compact-support shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: compact support by declaration
+------------------------------------------------------------------------------------------------------------------------
+Route: compact_support_by_declaration
+Forbidden use: support imposed to hide scalar tail or boundary leakage
+[FAIL] R1: compact support by declaration: REJECTED
+Consequence: support law must be derived before it can protect scalar silence
+
+------------------------------------------------------------------------------------------------------------------------
+R2: recovery-selected support radius
+------------------------------------------------------------------------------------------------------------------------
+Route: recovery_selected_support_radius
+Forbidden use: support chosen from Schwarzschild/PPN/gamma_like/AB recovery
+[FAIL] R2: recovery-selected support radius: REJECTED
+Consequence: recovery may audit support behavior but may not choose it
+
+------------------------------------------------------------------------------------------------------------------------
+R3: derivative jump shell
+------------------------------------------------------------------------------------------------------------------------
+Route: derivative_jump_shell
+Forbidden use: slope mismatch hidden as shell source or harmless seam
+[FAIL] R3: derivative jump shell: REJECTED
+Consequence: no-shell theorem must control derivative behavior
+
+------------------------------------------------------------------------------------------------------------------------
+R4: residual-kill called support theorem
+------------------------------------------------------------------------------------------------------------------------
+Route: residual_kill_called_support
+Forbidden use: residual-kill convention treated as a derived compact-support law
+[FAIL] R4: residual-kill called support theorem: REJECTED
+Consequence: residual-kill remains provisional unless derived
+
+------------------------------------------------------------------------------------------------------------------------
+R5: smoothing as repair
+------------------------------------------------------------------------------------------------------------------------
+Route: smoothing_as_repair
+Forbidden use: smooth profile chosen after boundary/mass/scalar failure appears
+[FAIL] R5: smoothing as repair: REJECTED
+Consequence: smoothness is not neutrality unless source and boundary behavior are structural
+
+[counterexamples]
+[FAIL] compact-support shortcuts rejected -- support by declaration, recovery-selected support, shell jumps, residual-kill-as-support, and smoothing repair are not licensed
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The smooth compact support no-shell audit fails if a later script allows:
+
+1. compact support by declaration
+2. exterior zero to replace boundary matching
+3. value continuity alone to prove no shell
+4. derivative jump to hide shell flux
+5. smoothing selected after recovery failure
+6. support radius chosen from Schwarzschild/PPN/gamma_like/AB/B=1/A
+7. residual-kill treated as a compact-support theorem
+8. sharp cutoff called scalar silence
+9. O, H, dark label, curvature, or exchange used to repair a boundary seam
+
+[governance_assessments]
+[OBLIGATION] smooth compact support overclaim controls stated -- future scripts must not mistake toy smooth profiles for derived support laws
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+The diagnostic result is:
+
+  value matching alone is not enough.
+  a C1-style profile can have phi(R)=0 while carrying nonzero boundary flux.
+  value and slope matching are safer diagnostic conditions.
+  sharp support can hide a shell if the value or derivative matching is uncontrolled.
+
+Safe diagnostic target:
+
+  phi(R) = 0
+  phi'(R) = 0
+  no derivative jump
+  no shell source
+  support/matching law derived before recovery
+
+This script does not derive compact support.
+It states the matching/no-shell burden for future boundary neutrality.
+
+Possible next script:
+  candidate_scalar_tail_silence_sector_conditions.py
+
+[governance_assessments]
+[PASS] smooth compact support no-shell audit complete -- compact support is safe only with matching/no-shell conditions; theorem burden remains open

@@ -1,0 +1,241 @@
+
+========================================================================================================================
+Candidate Boundary Neutrality Theorem Obligations
+========================================================================================================================
+[INFO] Archive dependency check:
+  - boundary_scalar_silence_target_ledger_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - smooth_compact_no_shell_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - sector_scalar_silence_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_current_flux_silence_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - boundary_repair_exclusion_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - diagnostic_residual_nonmetric_dependency_22: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Boundary neutrality theorem obligations problem
+========================================================================================================================
+Question:
+
+  What theorem obligations are required before claiming boundary neutrality?
+
+Reference discipline:
+
+  Group 22 has stated targets and rejected shortcuts.
+  This script consolidates obligations.
+  It does not prove boundary neutrality or scalar silence.
+  It prepares the Group 22 status summary.
+
+[governance_assessments]
+[INFO] boundary neutrality theorem obligation audit opened -- consolidating Group 22 theorem burdens without upgrading them to proofs
+
+========================================================================================================================
+Case 1: Boundary/scalar theorem obligation ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+O1: no-shell condition
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive no-shell boundary condition
+Required inputs: matching law, support law, distributional boundary audit
+[OBLIGATION] O1: no-shell condition: REQUIRED
+Blocks: compact support and boundary neutrality claims
+Failure if: value jump, derivative jump, sharp support, or shell source is treated as harmless
+
+------------------------------------------------------------------------------------------------------------------------
+O2: residual scalar silence
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive residual scalar coefficient vanishing or strict nonmetric inertness
+Required inputs: sector coefficients, residual-kill/nonmetric proof, no-reentry proof
+[OBLIGATION] O2: residual scalar silence: REQUIRED
+Blocks: scalar silence and parent recombination claims
+Failure if: any ordinary-sector C_i/r tail survives with C_i != 0
+
+------------------------------------------------------------------------------------------------------------------------
+O3: non-A boundary A-flux neutrality
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive delta F_A|boundary,non-A = 0
+Required inputs: boundary A-tail audit, A-sector mass-charge protection, no repair route
+[OBLIGATION] O3: non-A boundary A-flux neutrality: REQUIRED
+Blocks: boundary mass preservation claims
+Failure if: non-A q/r A-tail shifts M_A
+
+------------------------------------------------------------------------------------------------------------------------
+O4: current flux silence
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive non-A far-zone current flux silence
+Required inputs: current definitions or role-level inertness, neutral transport theorem if nonzero
+[OBLIGATION] O4: current flux silence: REQUIRED
+Blocks: current neutrality and boundary flux claims
+Failure if: I_i/(4*pi*r^2) flux survives without neutral-transport theorem
+
+------------------------------------------------------------------------------------------------------------------------
+O5: compact-support matching law
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive compact support with value/slope matching and no shell
+Required inputs: support mechanism, matching order, derivative behavior, recovery independence
+[OBLIGATION] O5: compact-support matching law: REQUIRED
+Blocks: compact-support scalar silence claims
+Failure if: support is declared, recovery-selected, or sharply imposed
+
+------------------------------------------------------------------------------------------------------------------------
+O6: diagnostic residual non-reentry
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive diagnostic residual inertness and non-reentry
+Required inputs: metric/source/boundary/far-zone/coefficient/recovery no-effect proof
+[OBLIGATION] O6: diagnostic residual non-reentry: REQUIRED
+Blocks: nonmetric residual survival claims
+Failure if: diagnostic residual re-enters through metric, source, H, O, dark, curvature, exchange, or parent placeholder
+
+------------------------------------------------------------------------------------------------------------------------
+O7: no recovery-tuned boundary data
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive boundary/support/residual status independent of recovery targets
+Required inputs: structural boundary law before Schwarzschild/PPN/gamma_like/AB/B=1/A tests
+[OBLIGATION] O7: no recovery-tuned boundary data: REQUIRED
+Blocks: anti-smuggling and recovery audit claims
+Failure if: recovery selects smoothing, support radius, coefficients, residual status, or current direction
+
+------------------------------------------------------------------------------------------------------------------------
+O8: source-routing compatibility
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive compatibility with ordinary source no-double-counting
+Required inputs: A-sector source routing, non-A source exclusion, no cancellation ledger
+[OBLIGATION] O8: source-routing compatibility: REQUIRED
+Blocks: ordinary closed-regime source/boundary closure
+Failure if: ordinary rho/T is rerouted into boundary, scalar, current, curvature, H, exchange, or dark repair
+
+------------------------------------------------------------------------------------------------------------------------
+O9: no-repair theorem
+------------------------------------------------------------------------------------------------------------------------
+Theorem target: derive boundary/scalar silence without repair routes
+Required inputs: no shell, no tail, no current flux, no O/H/dark/curvature/exchange/smoothing repair
+[OBLIGATION] O9: no-repair theorem: REQUIRED
+Blocks: all boundary neutrality closure claims
+Failure if: surface counterterm, repair current, H, O, dark patch, curvature rescue, or exchange repair is used
+
+[unresolved_obligations]
+[OBLIGATION] boundary/scalar theorem obligations consolidated -- 9 theorem obligations remain open
+
+========================================================================================================================
+Case 2: Closure gates
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+G1: scalar silence claim gate
+------------------------------------------------------------------------------------------------------------------------
+Gate: scalar silence
+[DEFER] G1: scalar silence claim gate: NOT_READY
+Opens if: all sector C_i coefficients vanish or are proven strictly nonmetric/inert/nonreentering
+Remains closed if: any sector uses cancellation, O/H repair, shell absorption, recovery selection, or diagnostic re-entry
+
+------------------------------------------------------------------------------------------------------------------------
+G2: boundary neutrality claim gate
+------------------------------------------------------------------------------------------------------------------------
+Gate: boundary neutrality
+[DEFER] G2: boundary neutrality claim gate: NOT_READY
+Opens if: delta F_A|boundary,non-A = 0, no shell, no A-tail, no current flux, no repair route
+Remains closed if: boundary A-tail, shell source, smoothing repair, or support-by-declaration remains
+
+------------------------------------------------------------------------------------------------------------------------
+G3: compact support claim gate
+------------------------------------------------------------------------------------------------------------------------
+Gate: compact support
+[DEFER] G3: compact support claim gate: NOT_READY
+Opens if: support is derived with value/slope matching, no derivative jump, no shell, and recovery independence
+Remains closed if: sharp support, value-only matching, recovery-selected support, or residual-kill-as-support remains
+
+------------------------------------------------------------------------------------------------------------------------
+G4: parent equation gate
+------------------------------------------------------------------------------------------------------------------------
+Gate: parent field equation
+[DEFER] G4: parent equation gate: NOT_READY
+Opens if: boundary/scalar silence plus source/projector/divergence obligations are actually derived
+Remains closed if: Group 22 only states obligations and does not prove them
+
+[governance_assessments]
+[DEFER] closure gates remain not ready -- scalar silence, boundary neutrality, compact support, and parent equation gates remain closed
+
+========================================================================================================================
+Case 3: Rejected obligation upgrades
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+U1: target becomes theorem
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: treating vanishing targets as solved
+[FAIL] U1: target becomes theorem: REJECTED
+Reason: Group 22 records obligations; it does not prove the vanishing conditions
+
+------------------------------------------------------------------------------------------------------------------------
+U2: diagnostic becomes operator
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: diagnostic/nonmetric label treated as no-overlap O
+[FAIL] U2: diagnostic becomes operator: REJECTED
+Reason: nonmetric vocabulary is not an operator with domain/kernel/image/boundary law
+
+------------------------------------------------------------------------------------------------------------------------
+U3: safe toy profile becomes support law
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: C2/smooth toy profile treated as derived compact support
+[FAIL] U3: safe toy profile becomes support law: REJECTED
+Reason: toy boundary flux checks are diagnostics, not support dynamics
+
+------------------------------------------------------------------------------------------------------------------------
+U4: repair exclusion becomes positive proof
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: rejecting repairs treated as proving boundary neutrality
+[FAIL] U4: repair exclusion becomes positive proof: REJECTED
+Reason: excluding fake routes does not prove the real route
+
+------------------------------------------------------------------------------------------------------------------------
+U5: future theorem route becomes current law
+------------------------------------------------------------------------------------------------------------------------
+Rejected upgrade: neutral transport theorem target treated as J_V/J_sub/J_exch/J_curv law
+[FAIL] U5: future theorem route becomes current law: REJECTED
+Reason: the currents remain undefined or role-level
+
+[counterexamples]
+[FAIL] obligation-to-theorem upgrades rejected -- targets, diagnostics, toy profiles, repair exclusions, and theorem routes are not solved claims
+
+========================================================================================================================
+Case 4: Failure controls
+========================================================================================================================
+The theorem-obligation audit fails if a later script allows:
+
+1. Group 22 target conditions to be treated as proved
+2. scalar silence claim while sector coefficients remain unproved
+3. boundary neutrality claim while no-shell/no-tail/no-current obligations remain open
+4. compact support claim from toy profiles alone
+5. diagnostic residual label to replace residual-kill/no-overlap theorem
+6. repair-route exclusion to count as positive boundary proof
+7. neutral transport target to count as current law
+8. recovery tests to select boundary/scalar/current data
+9. parent equation to be opened from Group 22 requirements alone
+
+[governance_assessments]
+[OBLIGATION] boundary theorem-obligation overclaim controls stated -- future scripts must not upgrade requirements into solved theorems
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Before claiming boundary neutrality, Group 22 requires:
+
+  no-shell boundary condition
+  residual scalar silence
+  non-A boundary A-flux neutrality
+  current flux silence
+  compact-support matching law
+  diagnostic residual non-reentry
+  no recovery-tuned boundary data
+  source-routing compatibility
+  no-repair boundary theorem
+
+All remain open theorem obligations.
+
+This script prepares the Group 22 closing summary.
+It does not prove any of these obligations.
+
+Possible next script:
+  candidate_group_22_boundary_neutrality_status_summary.py
+
+[governance_assessments]
+[PASS] boundary neutrality theorem obligation audit complete -- Group 22 obligations are explicit; closure remains not ready as a theorem
