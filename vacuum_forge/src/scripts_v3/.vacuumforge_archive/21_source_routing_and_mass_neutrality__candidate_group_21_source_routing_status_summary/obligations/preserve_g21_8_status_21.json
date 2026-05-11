@@ -1,0 +1,15 @@
+{
+  "obligation_id": "preserve_g21_8_status_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
+  "title": "Preserve Group 21 status: G21-8: correction tensor guard",
+  "status": "open",
+  "required_by": [
+    "group21_source_routing_status_summary_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:16:25.961231+00:00",
+  "description": "Result: H_curv/H_exch were audited for trace leakage, A-tail correction, far-zone flux, divergence/source gap, and boundary repair danger. Status: NOT_INSERTABLE. Consequence: no correction tensor is insertable. Handoff: future H requires tensor definition, source side, divergence safety, scalar trace neutrality, boundary neutrality, far-zone neutrality, and delta_M_A = 0.",
+  "metadata": {}
+}

@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_residual_source_exclusion_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+  "title": "Resolve source-routing rule: SRD6: residual zeta/kappa source exclusion",
+  "status": "open",
+  "required_by": [
+    "ordinary_source_no_double_counting_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:09:20.828298+00:00",
+  "description": "Route: zeta/kappa residuals excluded from ordinary source roles. Allowed condition: residuals are killed, non-metric, diagnostic, compact-neutral, or have vanishing exterior 1/r coefficients. Forbidden condition: zeta/kappa residuals become second scalar metric source. Consequence: residual-kill/non-metric residual remains safest but not a theorem..",
+  "metadata": {}
+}

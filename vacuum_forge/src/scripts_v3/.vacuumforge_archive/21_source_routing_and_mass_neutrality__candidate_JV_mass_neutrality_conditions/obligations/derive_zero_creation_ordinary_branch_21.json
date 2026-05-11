@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_zero_creation_ordinary_branch_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: SR2: zero-creation ordinary branch",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.230717+00:00",
+  "description": "Sector: Sigma_V / R_V. Allowed condition: ordinary sector may remain zero-creation if curvature is warping/constraint rather than vacuum creation/destruction. Forbidden condition: creation language is used as an ordinary source while claiming neutrality. Consequence: zero-creation remains a safe candidate, not a derived law..",
+  "metadata": {}
+}

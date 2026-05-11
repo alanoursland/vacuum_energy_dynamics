@@ -1,0 +1,15 @@
+{
+  "obligation_id": "inventory_non_A_mass_neutrality_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_a_sector_mass_charge_definition",
+  "title": "Inventory non-A mass neutrality obligations",
+  "status": "open",
+  "required_by": [
+    "group21_mass_neutrality_audit_route"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:19.353080+00:00",
+  "description": "Audit B_s, zeta residual, kappa residual, epsilon_vac_config, e_kappa, J_V, J_sub, J_exch, Sigma/R, A_curv/e_curv, J_curv, H_curv/H_exch, boundary smoothing, and dark labels for possible exterior mass leakage.",
+  "metadata": {}
+}

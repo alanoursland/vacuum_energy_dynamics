@@ -1,0 +1,25 @@
+{
+  "decision_id": "reject_zeta_kappa_nonzero_exterior_tail_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "branch_id": "zeta_kappa_nonzero_exterior_scalar_tail",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_zeta_kappa_no_exterior_tail_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.618841+00:00",
+  "description": "Reject nonzero ordinary exterior zeta/kappa 1/r residual tails. They carry surface flux and can behave as second scalar mass routes.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

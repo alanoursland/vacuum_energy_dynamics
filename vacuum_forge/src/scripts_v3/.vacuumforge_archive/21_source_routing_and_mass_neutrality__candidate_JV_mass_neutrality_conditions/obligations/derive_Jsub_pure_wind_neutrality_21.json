@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_Jsub_pure_wind_neutrality_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: JS1: J_sub role-level pure wind",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.227717+00:00",
+  "description": "Sector: J_sub. Allowed condition: J_sub remains role-level or proves pure wind neutrality with no A-flux, scalar trace, boundary repair, or matter push. Forbidden condition: J_sub gravitates by being a wind or preferred-frame flow. Consequence: pure wind is not gravity without an independent theorem..",
+  "metadata": {}
+}

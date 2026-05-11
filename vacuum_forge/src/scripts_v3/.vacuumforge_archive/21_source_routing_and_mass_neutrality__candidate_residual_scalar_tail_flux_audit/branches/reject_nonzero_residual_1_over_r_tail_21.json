@@ -1,0 +1,25 @@
+{
+  "decision_id": "reject_nonzero_residual_1_over_r_tail_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+  "branch_id": "nonzero_residual_scalar_1_over_r_tail",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_ordinary_closed_regime_scalar_silence_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:28:53.498053+00:00",
+  "description": "Reject ordinary-sector residual scalar tails phi = C/r with C != 0 as neutral branches, because the reduced surface flux is F_phi = -4*pi*C. A future theorem may route scalar content through the A-sector only if it also proves no double counting.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

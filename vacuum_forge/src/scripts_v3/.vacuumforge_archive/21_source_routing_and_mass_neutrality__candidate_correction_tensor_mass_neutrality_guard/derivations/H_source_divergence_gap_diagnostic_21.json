@@ -1,0 +1,28 @@
+{
+  "derivation_id": "H_source_divergence_gap_diagnostic_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('Div_H', real=True)",
+      "latex": "Div_{H}"
+    },
+    {
+      "srepr": "Symbol('S_H', real=True)",
+      "latex": "S_{H}"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Symbol('Div_H', real=True), Mul(Integer(-1), Symbol('S_H', real=True)))",
+    "latex": "Div_{H} - S_{H}"
+  },
+  "method": "source_divergence_gap = simplify(Div_H - S_H)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T15:00:25.868213+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": "role-level diagnostic only; not a divergence identity",
+  "claim_tier": null,
+  "result_type": "source_divergence_gap_diagnostic",
+  "superseded_by": null,
+  "is_placeholder": false
+}

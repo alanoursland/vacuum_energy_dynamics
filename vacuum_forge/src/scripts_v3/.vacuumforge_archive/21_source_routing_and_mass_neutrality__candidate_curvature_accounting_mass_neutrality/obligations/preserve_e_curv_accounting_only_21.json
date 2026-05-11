@@ -1,0 +1,15 @@
+{
+  "obligation_id": "preserve_e_curv_accounting_only_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "title": "Resolve curvature-accounting condition: C3: e_curv accounting-only status",
+  "status": "open",
+  "required_by": [
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.194836+00:00",
+  "description": "Sector: e_curv. Allowed condition: e_curv remains diagnostic/accounting and never sources A without derivation. Forbidden condition: e_curv is counted as exterior source energy or coefficient reservoir. Consequence: curvature accounting cannot become mass source by naming it energy..",
+  "metadata": {}
+}

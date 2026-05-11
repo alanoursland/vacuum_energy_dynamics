@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_dark_label_mass_neutrality_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_non_A_sector_mass_neutrality_inventory",
+  "title": "Prove mass neutrality for dark_sector_labels",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:25.659403+00:00",
+  "description": "Current role: optional downstream labels only. Required condition: derive independent dark coupling after ordinary-sector neutrality, not before. This sector must not change M_A or measured M_ext unless a future parent identity or sector-specific source law derives the modification.",
+  "metadata": {}
+}

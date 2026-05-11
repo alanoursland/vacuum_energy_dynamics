@@ -1,0 +1,15 @@
+{
+  "obligation_id": "ordinary_source_no_double_counting_theorem_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+  "title": "Derive ordinary source no-double-counting theorem",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:09:20.836299+00:00",
+  "description": "Show ordinary rho/T_mu_nu routes through protected ordinary channels without duplicate kappa/zeta scalar mass charge, curvature source reservoir, correction tensor source absorption, exchange rerouting, dark patching, accounting-source leakage, or cancellation-ledger replacement for sector neutrality.",
+  "metadata": {}
+}

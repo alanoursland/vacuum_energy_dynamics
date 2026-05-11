@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_zeta_kappa_no_A_flux_shift_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "title": "Derive zeta/kappa no A-flux shift",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.616841+00:00",
+  "description": "Show residual zeta/kappa variables do not alter exterior A-flux, A-sector mass charge, boundary slope, or measured M_ext.",
+  "metadata": {}
+}

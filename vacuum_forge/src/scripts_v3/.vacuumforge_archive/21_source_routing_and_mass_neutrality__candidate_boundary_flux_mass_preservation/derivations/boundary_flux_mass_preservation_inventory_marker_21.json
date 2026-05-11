@@ -1,0 +1,52 @@
+{
+  "derivation_id": "boundary_flux_mass_preservation_inventory_marker_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('BND1')",
+      "latex": "BND_{1}"
+    },
+    {
+      "srepr": "Symbol('BND2')",
+      "latex": "BND_{2}"
+    },
+    {
+      "srepr": "Symbol('BND3')",
+      "latex": "BND_{3}"
+    },
+    {
+      "srepr": "Symbol('BND4')",
+      "latex": "BND_{4}"
+    },
+    {
+      "srepr": "Symbol('BND5')",
+      "latex": "BND_{5}"
+    },
+    {
+      "srepr": "Symbol('BND6')",
+      "latex": "BND_{6}"
+    },
+    {
+      "srepr": "Symbol('BND7')",
+      "latex": "BND_{7}"
+    },
+    {
+      "srepr": "Symbol('BND8')",
+      "latex": "BND_{8}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('boundary_flux_mass_preservation_inventory_stated')",
+    "latex": "boundary_{flux mass preservation inventory stated}"
+  },
+  "method": "boundary branch and repair-route inventory for mass preservation",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:37:32.213590+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "inventory_marker",
+  "scope": "Group 21 source routing and mass neutrality",
+  "claim_tier": null,
+  "result_type": "inventory_marker",
+  "superseded_by": null,
+  "is_placeholder": true
+}

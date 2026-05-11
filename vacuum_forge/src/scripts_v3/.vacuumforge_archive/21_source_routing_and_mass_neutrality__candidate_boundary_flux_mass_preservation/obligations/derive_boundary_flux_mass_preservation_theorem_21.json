@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_boundary_flux_mass_preservation_theorem_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
+  "title": "Resolve boundary branch: neutral_residual_theorem_target",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_boundary_mass_preservation_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:37:32.219591+00:00",
+  "description": "Branch condition: derive delta F_A|boundary,non-A = 0 with no shell and no recovery tuning. Consequence: the desired future boundary mass-preservation theorem. Future work must show whether this branch is genuinely boundary-neutral, diagnostic-only, or rejected as a repair/source route.",
+  "metadata": {}
+}

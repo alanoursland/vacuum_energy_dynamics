@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_sigma_R_zero_net_ordinary_branch_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: SR1: Sigma/R zero-net branch",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.230717+00:00",
+  "description": "Sector: Sigma_V / R_V. Allowed condition: Sigma_0 - R_0 = 0 only as a role-level neutrality target until operators, strengths, signs, and domains are derived. Forbidden condition: zero-net is declared to hold without source and relaxation operators. Consequence: zero-net exchange is promising but not a theorem here..",
+  "metadata": {}
+}

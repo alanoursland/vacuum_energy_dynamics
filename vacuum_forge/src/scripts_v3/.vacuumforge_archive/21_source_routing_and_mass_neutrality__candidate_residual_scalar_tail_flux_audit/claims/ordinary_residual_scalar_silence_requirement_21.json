@@ -1,0 +1,35 @@
+{
+  "claim_id": "ordinary_residual_scalar_silence_requirement_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "Ordinary-sector non-A residual scalar tails must have zero exterior 1/r coefficient, remain diagnostic/non-metric/compact-neutral, or stay theorem-targeted. A nonzero 1/r residual tail is not mass-neutral by declaration.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [
+    "residual_scalar_tail_flux_1_over_r_21"
+  ],
+  "obligation_ids": [
+    "derive_zeta_no_exterior_scalar_tail_21",
+    "derive_kappa_no_exterior_scalar_tail_21",
+    "derive_JV_no_scalar_residue_21",
+    "derive_curvature_no_scalar_residue_21",
+    "derive_H_no_scalar_leakage_21",
+    "derive_boundary_no_shell_scalar_residue_21",
+    "derive_ordinary_closed_regime_scalar_silence_theorem_21"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:28:53.509055+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

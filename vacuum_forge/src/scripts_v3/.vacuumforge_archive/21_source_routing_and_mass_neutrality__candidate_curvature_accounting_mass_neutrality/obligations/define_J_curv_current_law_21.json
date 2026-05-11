@@ -1,0 +1,15 @@
+{
+  "obligation_id": "define_J_curv_current_law_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "title": "Resolve curvature-accounting condition: C5: J_curv unresolved current",
+  "status": "open",
+  "required_by": [
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.196836+00:00",
+  "description": "Sector: J_curv. Allowed condition: J_curv remains unresolved until orientation, source side, boundary law, and mass neutrality are defined. Forbidden condition: J_curv is used as a curvature repair current or gradient-by-fiat. Consequence: J_curv cannot carry ordinary exterior mass while undefined..",
+  "metadata": {}
+}

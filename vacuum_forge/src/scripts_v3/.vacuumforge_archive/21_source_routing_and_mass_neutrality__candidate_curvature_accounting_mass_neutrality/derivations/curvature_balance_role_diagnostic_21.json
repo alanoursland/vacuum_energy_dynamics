@@ -1,0 +1,28 @@
+{
+  "derivation_id": "curvature_balance_role_diagnostic_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('S_curv', real=True)",
+      "latex": "S_{curv}"
+    },
+    {
+      "srepr": "Symbol('R_curv', real=True)",
+      "latex": "R_{curv}"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Mul(Integer(-1), Symbol('R_curv', real=True)), Symbol('S_curv', real=True))",
+    "latex": "- R_{curv} + S_{curv}"
+  },
+  "method": "curvature_balance = simplify(S_curv - R_curv)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:56:23.191839+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": "role-level curvature balance diagnostic only; not an operator derivation",
+  "claim_tier": null,
+  "result_type": "balance_condition_diagnostic",
+  "superseded_by": null,
+  "is_placeholder": false
+}

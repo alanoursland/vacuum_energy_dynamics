@@ -1,0 +1,37 @@
+{
+  "route_id": "boundary_flux_mass_preservation_audit_route_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
+  "name": "Boundary flux mass-preservation audit route",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "A-sector mass charge remains the reduced exterior reference",
+    "non-A boundary contributions must satisfy delta F_A = 0",
+    "no shell source, counterterm, recovery tuning, active O, or undefined repair current is assumed",
+    "compact or smooth profiles remain diagnostic until support and matching are derived"
+  ],
+  "required_obligations": [
+    "derive_compact_boundary_support_law_21",
+    "derive_no_C1_boundary_flux_leak_21",
+    "derive_C2_boundary_matching_law_21",
+    "derive_no_boundary_shell_source_21",
+    "reject_surface_counterterm_mass_repair_21",
+    "derive_residual_kill_boundary_neutrality_21",
+    "derive_boundary_flux_mass_preservation_theorem_21",
+    "derive_boundary_non_A_delta_FA_zero_21",
+    "derive_no_recovery_tuned_smoothing_21",
+    "ordinary_closed_boundary_mass_preservation_theorem_21"
+  ],
+  "created_at": "2026-05-11T14:37:32.222592+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

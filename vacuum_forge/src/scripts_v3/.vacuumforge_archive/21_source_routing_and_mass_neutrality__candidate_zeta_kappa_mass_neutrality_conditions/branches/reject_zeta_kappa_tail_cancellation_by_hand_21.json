@@ -1,0 +1,25 @@
+{
+  "decision_id": "reject_zeta_kappa_tail_cancellation_by_hand_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "branch_id": "zeta_kappa_tail_cancellation_by_hand",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "reject_zeta_kappa_scalar_tail_cancellation_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.619843+00:00",
+  "description": "Reject C_zeta + C_kappa = 0 as a substitute for sector neutrality. Cancellation does not prove empty pockets.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

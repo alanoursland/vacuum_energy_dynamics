@@ -1,0 +1,15 @@
+{
+  "obligation_id": "define_H_curv_tensor_before_insertion_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_correction_tensor_mass_neutrality_guard",
+  "title": "Resolve correction-tensor condition: H1: H_curv undefined tensor candidate",
+  "status": "open",
+  "required_by": [
+    "correction_tensor_mass_neutrality_and_insertability_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:00:25.871212+00:00",
+  "description": "Sector: H_curv. Allowed condition: H_curv remains non-insertable until tensor definition, source side, divergence safety, and mass neutrality are derived. Forbidden condition: H_curv is inserted as curvature rescue, M_ext correction, boundary counterterm, or Bianchi paint. Consequence: H_curv cannot alter exterior mass while undefined..",
+  "metadata": {}
+}

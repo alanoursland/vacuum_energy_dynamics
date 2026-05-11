@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_recovery_chosen_uvac_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Preserve rejection: RJ6: u_vac chosen by recovery",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.234717+00:00",
+  "description": "Route: recovery_chosen_u_vac. Forbidden use: u_vac frame is selected from Schwarzschild/PPN/gamma_like/AB recovery. Consequence: the vacuum frame cannot be a recovery fit..",
+  "metadata": {}
+}

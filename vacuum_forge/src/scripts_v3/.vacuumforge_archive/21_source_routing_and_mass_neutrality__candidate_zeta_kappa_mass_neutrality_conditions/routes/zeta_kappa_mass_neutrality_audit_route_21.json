@@ -1,0 +1,42 @@
+{
+  "route_id": "zeta_kappa_mass_neutrality_audit_route_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "name": "zeta/kappa mass-neutrality audit route",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "A-sector mass charge remains the reduced ordinary exterior reference",
+    "zeta/kappa residuals must be non-metric, killed/suppressed, compact-neutral, or C=0 outside",
+    "no Box zeta, Box kappa, scalar-tail cancellation, residual repair, recovery tuning, or active O is assumed",
+    "B_s/zeta insertion remains theorem-targeted"
+  ],
+  "required_obligations": [
+    "derive_zeta_nonmetric_bookkeeping_rule_21",
+    "derive_zeta_residual_C_zero_21",
+    "reject_zeta_scalar_tail_mass_route_21",
+    "derive_kappa_exterior_suppression_21",
+    "derive_kappa_residual_C_zero_21",
+    "reject_kappa_scalar_tail_mass_route_21",
+    "derive_e_kappa_source_neutrality_21",
+    "derive_epsilon_vac_config_mass_neutrality_21",
+    "reject_zeta_kappa_scalar_tail_cancellation_21",
+    "derive_residual_kill_no_metric_trace_21",
+    "reject_box_zeta_box_kappa_ordinary_scalar_route_21",
+    "derive_Bs_zeta_insertion_mass_neutrality_21",
+    "derive_zeta_kappa_no_exterior_tail_21",
+    "derive_zeta_kappa_no_A_flux_shift_21",
+    "zeta_kappa_mass_neutrality_theorem_21"
+  ],
+  "created_at": "2026-05-11T14:41:47.617841+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

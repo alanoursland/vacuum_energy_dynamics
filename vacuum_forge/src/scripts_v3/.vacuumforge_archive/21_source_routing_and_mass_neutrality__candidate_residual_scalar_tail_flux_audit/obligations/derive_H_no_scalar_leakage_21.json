@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_H_no_scalar_leakage_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+  "title": "Prove no exterior scalar tail for H_curv / H_exch trace leakage",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_scalar_silence_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:28:53.494053+00:00",
+  "description": "Dangerous form: phi_H = C_H/r. Required condition: H remains non-insertable, or future tensor definition proves scalar trace neutrality C_H = 0. The sector must not leave a nonzero ordinary exterior 1/r scalar tail unless a future source-routing theorem explicitly routes it through the A-sector without double counting.",
+  "metadata": {}
+}

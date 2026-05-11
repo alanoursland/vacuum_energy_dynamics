@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_non_A_delta_MA_zero_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_a_sector_mass_charge_definition",
+  "title": "Derive non-A delta M_A equals zero",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:19.354080+00:00",
+  "description": "Show that every non-A sector in the ordinary closed regime is mass-neutral, diagnostic-only, non-metric, compact/neutral, or theorem-targeted.",
+  "metadata": {}
+}

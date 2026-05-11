@@ -1,0 +1,28 @@
+{
+  "decision_id": "defer_neutral_zeta_kappa_metric_trace_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "branch_id": "neutral_zeta_kappa_metric_trace",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_zeta_residual_C_zero_21",
+    "derive_kappa_residual_C_zero_21",
+    "derive_zeta_kappa_no_A_flux_shift_21",
+    "zeta_kappa_mass_neutrality_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.620841+00:00",
+  "description": "Defer neutral zeta/kappa metric trace as a theorem target. It requires exterior scalar silence, boundary neutrality, and no A-flux shift.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

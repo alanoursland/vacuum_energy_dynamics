@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_u_vac_domain_from_JV_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: JV4: u_vac domain guard",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.226717+00:00",
+  "description": "Sector: u_vac / J_V domain. Allowed condition: u_vac is defined only after J_V is nonzero, timelike where needed, and physically sourced. Forbidden condition: u_vac is chosen first and then used to manufacture J_V or Sigma_V. Consequence: no frame field can rescue mass routing while J_V is undefined..",
+  "metadata": {}
+}

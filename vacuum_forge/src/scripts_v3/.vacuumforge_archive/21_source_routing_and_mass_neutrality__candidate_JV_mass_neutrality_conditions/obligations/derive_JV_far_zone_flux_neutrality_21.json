@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_JV_far_zone_flux_neutrality_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: JV3: J_V far-zone current flux",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.226717+00:00",
+  "description": "Sector: J_V. Allowed condition: I_V = 0 in ordinary exterior unless a future current law derives a neutral transport meaning. Forbidden condition: nonzero 1/r^2 far-zone current flux shifts or mimics exterior mass. Consequence: A far-zone vacuum current cannot become a second mass flux coin..",
+  "metadata": {}
+}

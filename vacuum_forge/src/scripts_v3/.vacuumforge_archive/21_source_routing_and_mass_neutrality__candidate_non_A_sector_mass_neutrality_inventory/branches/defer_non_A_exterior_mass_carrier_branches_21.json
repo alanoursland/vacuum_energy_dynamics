@@ -1,0 +1,43 @@
+{
+  "decision_id": "defer_non_A_exterior_mass_carrier_branches_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_non_A_sector_mass_neutrality_inventory",
+  "branch_id": "non_A_exterior_mass_carrier_branches",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_Bs_A_spatial_mass_neutrality_21",
+    "derive_zeta_residual_mass_neutrality_21",
+    "derive_kappa_residual_mass_neutrality_21",
+    "derive_epsilon_vac_config_mass_neutrality_21",
+    "derive_e_kappa_mass_neutrality_21",
+    "derive_JV_mass_neutrality_21",
+    "derive_Jsub_mass_neutrality_21",
+    "derive_Jexch_mass_neutrality_21",
+    "derive_SigmaV_RV_mass_neutrality_21",
+    "derive_Sigma_exch_R_exch_mass_neutrality_21",
+    "derive_A_curv_mass_neutrality_21",
+    "derive_e_curv_mass_neutrality_21",
+    "derive_J_curv_mass_neutrality_21",
+    "derive_H_curv_mass_neutrality_21",
+    "derive_H_exch_mass_neutrality_21",
+    "derive_boundary_smoothing_mass_neutrality_21",
+    "derive_metric_insertion_residual_kill_mass_neutrality_21",
+    "derive_dark_label_mass_neutrality_21",
+    "derive_ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:25.661403+00:00",
+  "description": "All non-A exterior mass-carrier branches remain deferred pending sector-specific mass-neutrality, boundary-neutrality, scalar-silence, and source-routing theorems.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

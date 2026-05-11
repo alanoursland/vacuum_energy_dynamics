@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_sigma_R_tuning_knob_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Preserve rejection: RJ5: Sigma/R tuning knob",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.234717+00:00",
+  "description": "Route: Sigma_R_tuning_knob. Forbidden use: Sigma/R roles are adjusted to preserve mass or recovery after leakage appears. Consequence: Sigma/R need operators, not knobs..",
+  "metadata": {}
+}

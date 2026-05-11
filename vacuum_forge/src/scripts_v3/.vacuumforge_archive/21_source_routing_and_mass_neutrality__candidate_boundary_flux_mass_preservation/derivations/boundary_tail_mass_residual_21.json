@@ -1,0 +1,36 @@
+{
+  "derivation_id": "boundary_tail_mass_residual_21",
+  "inputs": [
+    {
+      "srepr": "Mul(Integer(-1), Rational(1, 2), Pow(Symbol('G', positive=True), Integer(-1)), Pow(Symbol('c', positive=True), Integer(2)), Symbol('q', real=True))",
+      "latex": "- \\frac{c^{2} q}{2 G}"
+    },
+    {
+      "srepr": "Symbol('q', real=True)",
+      "latex": "q"
+    },
+    {
+      "srepr": "Symbol('c', positive=True)",
+      "latex": "c"
+    },
+    {
+      "srepr": "Symbol('G', positive=True)",
+      "latex": "G"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "simplify(delta_M_A + c**2*q/(2*G))",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:37:32.206594+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": "boundary tail mass-shift identity",
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

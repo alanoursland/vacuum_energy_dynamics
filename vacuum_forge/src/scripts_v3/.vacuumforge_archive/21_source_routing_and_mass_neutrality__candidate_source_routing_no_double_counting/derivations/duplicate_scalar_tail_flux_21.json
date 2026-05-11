@@ -1,0 +1,32 @@
+{
+  "derivation_id": "duplicate_scalar_tail_flux_21",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('C_dup', real=True), Pow(Symbol('r', positive=True), Integer(-1)))",
+      "latex": "\\frac{C_{dup}}{r}"
+    },
+    {
+      "srepr": "Symbol('r', positive=True)",
+      "latex": "r"
+    },
+    {
+      "srepr": "Symbol('C_dup', real=True)",
+      "latex": "C_{dup}"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Integer(-1), Integer(4), pi, Symbol('C_dup', real=True))",
+    "latex": "- 4 \\pi C_{dup}"
+  },
+  "method": "F_dup = simplify(4*pi*r**2*diff(C_dup/r, r))",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T15:09:20.816298+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": "reduced ordinary exterior duplicate scalar source diagnostic",
+  "claim_tier": null,
+  "result_type": "surface_flux",
+  "superseded_by": null,
+  "is_placeholder": false
+}

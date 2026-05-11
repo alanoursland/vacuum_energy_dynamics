@@ -1,0 +1,28 @@
+{
+  "decision_id": "defer_J_curv_mass_carrier_route_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "branch_id": "J_curv_exterior_mass_carrier",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "define_J_curv_current_law_21",
+    "derive_J_curv_far_zone_flux_neutrality_21",
+    "derive_curvature_boundary_mass_neutrality_21",
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.205835+00:00",
+  "description": "J_curv is deferred as any exterior mass carrier until a current definition, orientation, source side, boundary law, far-zone flux neutrality, and A-sector mass neutrality are derived.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

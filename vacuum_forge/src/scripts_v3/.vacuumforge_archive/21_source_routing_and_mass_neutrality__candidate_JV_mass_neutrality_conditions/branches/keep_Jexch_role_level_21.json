@@ -1,0 +1,27 @@
+{
+  "decision_id": "keep_Jexch_role_level_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "branch_id": "Jexch_exchange_current_branch",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_Jexch_source_support_law_21",
+    "reject_Jexch_repair_current_21",
+    "derive_sigma_R_zero_net_ordinary_branch_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.239717+00:00",
+  "description": "J_exch remains role-level exchange bookkeeping unless exchange source/support laws, zero-net or zero-creation ordinary behavior, and no repair/source-rerouting conditions are derived.",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

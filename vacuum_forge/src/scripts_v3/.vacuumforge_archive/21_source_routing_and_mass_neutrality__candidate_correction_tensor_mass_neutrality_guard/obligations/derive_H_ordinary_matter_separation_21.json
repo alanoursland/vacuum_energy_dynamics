@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_H_ordinary_matter_separation_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_correction_tensor_mass_neutrality_guard",
+  "title": "Resolve correction-tensor condition: H9: ordinary matter separation",
+  "status": "open",
+  "required_by": [
+    "correction_tensor_mass_neutrality_and_insertability_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:00:25.877212+00:00",
+  "description": "Sector: ordinary matter routing with H. Allowed condition: ordinary rho/T_mu_nu remains routed through established ordinary source channels unless a parent identity derives otherwise. Forbidden condition: ordinary matter mismatch is absorbed into H_curv or H_exch. Consequence: H cannot become a second ordinary-matter source channel..",
+  "metadata": {}
+}

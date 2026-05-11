@@ -1,0 +1,64 @@
+{
+  "derivation_id": "group21_source_routing_status_summary_marker_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('G21_1')",
+      "latex": "G_{21 1}"
+    },
+    {
+      "srepr": "Symbol('G21_2')",
+      "latex": "G_{21 2}"
+    },
+    {
+      "srepr": "Symbol('G21_3')",
+      "latex": "G_{21 3}"
+    },
+    {
+      "srepr": "Symbol('G21_4')",
+      "latex": "G_{21 4}"
+    },
+    {
+      "srepr": "Symbol('G21_5')",
+      "latex": "G_{21 5}"
+    },
+    {
+      "srepr": "Symbol('G21_6')",
+      "latex": "G_{21 6}"
+    },
+    {
+      "srepr": "Symbol('G21_7')",
+      "latex": "G_{21 7}"
+    },
+    {
+      "srepr": "Symbol('G21_8')",
+      "latex": "G_{21 8}"
+    },
+    {
+      "srepr": "Symbol('G21_9')",
+      "latex": "G_{21 9}"
+    },
+    {
+      "srepr": "Symbol('G21_10')",
+      "latex": "G_{21 10}"
+    },
+    {
+      "srepr": "Symbol('G21_11')",
+      "latex": "G_{21 11}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('group21_source_routing_status_summary_stated')",
+    "latex": "group_{21 source routing status summary stated}"
+  },
+  "method": "Group 21 source-routing and mass-neutrality status summary",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T15:16:25.952230+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "inventory_marker",
+  "scope": "Group 21 source routing and mass neutrality",
+  "claim_tier": null,
+  "result_type": "summary_marker",
+  "superseded_by": null,
+  "is_placeholder": true
+}

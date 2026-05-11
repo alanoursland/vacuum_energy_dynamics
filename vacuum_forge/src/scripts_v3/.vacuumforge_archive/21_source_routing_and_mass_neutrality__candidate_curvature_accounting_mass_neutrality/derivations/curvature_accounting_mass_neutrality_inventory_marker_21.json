@@ -1,0 +1,60 @@
+{
+  "derivation_id": "curvature_accounting_mass_neutrality_inventory_marker_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('C1')",
+      "latex": "C_{1}"
+    },
+    {
+      "srepr": "Symbol('C2')",
+      "latex": "C_{2}"
+    },
+    {
+      "srepr": "Symbol('C3')",
+      "latex": "C_{3}"
+    },
+    {
+      "srepr": "Symbol('C4')",
+      "latex": "C_{4}"
+    },
+    {
+      "srepr": "Symbol('C5')",
+      "latex": "C_{5}"
+    },
+    {
+      "srepr": "Symbol('C6')",
+      "latex": "C_{6}"
+    },
+    {
+      "srepr": "Symbol('C7')",
+      "latex": "C_{7}"
+    },
+    {
+      "srepr": "Symbol('C8')",
+      "latex": "C_{8}"
+    },
+    {
+      "srepr": "Symbol('C9')",
+      "latex": "C_{9}"
+    },
+    {
+      "srepr": "Symbol('C10')",
+      "latex": "C_{10}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('curvature_accounting_mass_neutrality_conditions_stated')",
+    "latex": "curvature_{accounting mass neutrality conditions stated}"
+  },
+  "method": "A_curv/e_curv/J_curv mass-neutrality condition and rejected-route inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:56:23.192835+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "inventory_marker",
+  "scope": "Group 21 source routing and mass neutrality",
+  "claim_tier": null,
+  "result_type": "inventory_marker",
+  "superseded_by": null,
+  "is_placeholder": true
+}

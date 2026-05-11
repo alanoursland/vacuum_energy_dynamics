@@ -1,0 +1,26 @@
+[
+  {
+    "dependency_id": "A_sector_mass_definition_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+    "upstream_derivation_id": "A_sector_mass_definition_21",
+    "declared_at": "2026-05-11T14:25:25.031392+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "A_sector_schwarzschild_mass_residual_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+    "upstream_derivation_id": "A_sector_schwarzschild_mass_residual_21",
+    "declared_at": "2026-05-11T14:25:25.032393+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "group20_no_overlap_projection_status_marker",
+    "upstream_script_id": "20_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
+    "upstream_derivation_id": "no_overlap_projection_group_status_summary_marker",
+    "declared_at": "2026-05-11T14:25:25.041392+00:00",
+    "expected_record_kind": "inventory_marker",
+    "allow_superseded": false
+  }
+]

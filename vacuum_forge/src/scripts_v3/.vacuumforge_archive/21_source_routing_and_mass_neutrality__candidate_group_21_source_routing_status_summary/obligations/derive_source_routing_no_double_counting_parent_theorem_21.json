@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_source_routing_no_double_counting_parent_theorem_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
+  "title": "Derive source-routing no-double-counting parent theorem",
+  "status": "open",
+  "required_by": [
+    "group21_source_routing_status_summary_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:16:25.955231+00:00",
+  "description": "Show ordinary rho/T_mu_nu is not duplicated into kappa, zeta, curvature, H, exchange, dark, or accounting source channels.",
+  "metadata": {}
+}

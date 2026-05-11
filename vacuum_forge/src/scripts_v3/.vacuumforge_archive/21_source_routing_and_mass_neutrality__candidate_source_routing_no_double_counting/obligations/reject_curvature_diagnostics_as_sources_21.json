@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_curvature_diagnostics_as_sources_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+  "title": "Preserve rejected source route: RR4: curvature diagnostics as matter sources",
+  "status": "open",
+  "required_by": [
+    "ordinary_source_no_double_counting_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:09:20.834297+00:00",
+  "description": "Route: curvature_diagnostics_as_sources. Forbidden use: A_curv, e_curv, or J_curv become ordinary matter source channels. Consequence: curvature diagnostics remain diagnostic/accounting until real dynamics are derived..",
+  "metadata": {}
+}

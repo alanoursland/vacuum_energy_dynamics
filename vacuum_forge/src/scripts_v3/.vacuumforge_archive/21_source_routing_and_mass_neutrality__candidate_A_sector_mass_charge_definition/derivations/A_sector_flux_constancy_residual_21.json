@@ -1,0 +1,24 @@
+{
+  "derivation_id": "A_sector_flux_constancy_residual_21",
+  "inputs": [
+    {
+      "srepr": "Mul(Integer(8), pi, Symbol('G', positive=True), Symbol('M', positive=True), Pow(Symbol('c', positive=True), Integer(-2)))",
+      "latex": "\\frac{8 \\pi G M}{c^{2}}"
+    }
+  ],
+  "output": {
+    "srepr": "Integer(0)",
+    "latex": "0"
+  },
+  "method": "simplify(diff(F_A, r))",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:25:19.351079+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "derivation",
+  "scope": "Schwarzschild exterior A-sector branch",
+  "claim_tier": null,
+  "result_type": "identity_residual",
+  "superseded_by": null,
+  "is_placeholder": false
+}

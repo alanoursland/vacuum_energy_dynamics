@@ -1,0 +1,29 @@
+{
+  "claim_id": "zeta_kappa_tail_flux_rule_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "claim_kind": "governance_claim",
+  "tier": "licensing",
+  "status": "licensed_claim",
+  "statement": "For reduced exterior residual tails zeta=C_zeta/r and kappa=C_kappa/r, the surface fluxes are F_zeta=-4*pi*C_zeta and F_kappa=-4*pi*C_kappa. Ordinary exterior scalar silence requires C_zeta=0 and C_kappa=0 unless residuals are non-metric/diagnostic or routed by a future theorem.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [
+    "zeta_residual_tail_flux_21",
+    "kappa_residual_tail_flux_21",
+    "zeta_kappa_independent_zero_conditions_21"
+  ],
+  "obligation_ids": [],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.621841+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "licensed_claim",
+      "effective_status": "licensed_claim",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

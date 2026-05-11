@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_pressure_trace_scalar_charge_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+  "title": "Preserve rejected source route: RR2: pressure trace exterior scalar charge",
+  "status": "open",
+  "required_by": [
+    "ordinary_source_no_double_counting_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:09:20.833299+00:00",
+  "description": "Route: pressure_trace_scalar_charge. Forbidden use: pressure or trace source creates exterior kappa/zeta Poisson charge. Consequence: pressure trace cannot become a long-range scalar mass channel by convenience..",
+  "metadata": {}
+}

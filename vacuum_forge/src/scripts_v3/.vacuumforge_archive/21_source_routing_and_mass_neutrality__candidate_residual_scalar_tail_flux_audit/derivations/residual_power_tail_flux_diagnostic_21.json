@@ -1,0 +1,36 @@
+{
+  "derivation_id": "residual_power_tail_flux_diagnostic_21",
+  "inputs": [
+    {
+      "srepr": "Mul(Symbol('C', real=True), Pow(Symbol('r', positive=True), Mul(Integer(-1), Symbol('n', positive=True))))",
+      "latex": "C r^{- n}"
+    },
+    {
+      "srepr": "Symbol('r', positive=True)",
+      "latex": "r"
+    },
+    {
+      "srepr": "Symbol('C', real=True)",
+      "latex": "C"
+    },
+    {
+      "srepr": "Symbol('n', positive=True)",
+      "latex": "n"
+    }
+  ],
+  "output": {
+    "srepr": "Mul(Integer(-1), Integer(4), pi, Symbol('C', real=True), Symbol('n', positive=True), Pow(Symbol('r', positive=True), Add(Integer(1), Mul(Integer(-1), Symbol('n', positive=True)))))",
+    "latex": "- 4 \\pi C n r^{1 - n}"
+  },
+  "method": "F_n = simplify(4*pi*r**2*diff(C/r**n, r))",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:28:53.487053+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": "power-law residual scalar tail diagnostic",
+  "claim_tier": null,
+  "result_type": "surface_flux_diagnostic",
+  "superseded_by": null,
+  "is_placeholder": false
+}

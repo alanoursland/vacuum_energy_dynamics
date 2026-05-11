@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_Jexch_source_support_law_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: JE1: J_exch role-level exchange current",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.228717+00:00",
+  "description": "Sector: J_exch. Allowed condition: J_exch remains role-level until exchange source/support operators are defined. Forbidden condition: J_exch is used as ordinary matter source side by convenience. Consequence: exchange is not an ordinary mass route by vocabulary..",
+  "metadata": {}
+}

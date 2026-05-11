@@ -1,0 +1,27 @@
+{
+  "decision_id": "keep_Jsub_role_level_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "branch_id": "Jsub_pure_wind_branch",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_Jsub_pure_wind_neutrality_21",
+    "derive_Jsub_no_scalar_trace_21",
+    "reject_Jsub_boundary_repair_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.239717+00:00",
+  "description": "J_sub remains role-level pure-wind bookkeeping unless pure-wind neutrality, no scalar trace, no matter push, and no boundary repair are derived.",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

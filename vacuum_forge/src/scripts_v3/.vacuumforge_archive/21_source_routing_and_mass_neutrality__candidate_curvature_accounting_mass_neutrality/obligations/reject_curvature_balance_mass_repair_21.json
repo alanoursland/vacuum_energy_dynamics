@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_curvature_balance_mass_repair_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "title": "Preserve rejection: RC2: curvature balance as mass repair",
+  "status": "open",
+  "required_by": [
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.200835+00:00",
+  "description": "Route: curvature_balance_mass_repair. Forbidden use: curvature balance adjusted to preserve M_ext or recovery after leakage appears. Consequence: balance requires operators and cannot tune exterior mass..",
+  "metadata": {}
+}

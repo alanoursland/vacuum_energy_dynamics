@@ -1,0 +1,15 @@
+{
+  "obligation_id": "preserve_dark_patch_exclusion_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+  "title": "Resolve source-routing rule: SRD10: dark labels",
+  "status": "open",
+  "required_by": [
+    "ordinary_source_no_double_counting_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:09:20.831299+00:00",
+  "description": "Route: dark-sector labels optional downstream only. Allowed condition: dark coupling is derived after ordinary-sector neutrality, not used to patch ordinary failure. Forbidden condition: dark labels absorb ordinary source, boundary, scalar-tail, H, or recovery failure. Consequence: dark sector is not an ordinary mass patch..",
+  "metadata": {}
+}

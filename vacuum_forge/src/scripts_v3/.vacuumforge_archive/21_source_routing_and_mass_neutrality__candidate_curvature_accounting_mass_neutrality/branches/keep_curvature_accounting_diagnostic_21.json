@@ -1,0 +1,28 @@
+{
+  "decision_id": "keep_curvature_accounting_diagnostic_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "branch_id": "curvature_accounting_diagnostic_branch",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "preserve_A_curv_diagnostic_only_21",
+    "preserve_e_curv_accounting_only_21",
+    "preserve_finite_admissibility_as_diagnostic_21",
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.204836+00:00",
+  "description": "A_curv/e_curv remain diagnostic/accounting/branch-filter objects unless a future source-neutral dynamics derives their mass and boundary neutrality.",
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "obligation_id": "curvature_accounting_mass_neutrality_theorem_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "title": "Derive curvature-accounting mass-neutrality theorem",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.203835+00:00",
+  "description": "Show A_curv/e_curv/J_curv have no independent A-flux shift, no exterior scalar charge, no source-reservoir role, no far-zone curvature-current flux, no boundary repair, no curvature balance repair, and no recovery-chosen curvature routing unless a future parent/source law derives otherwise.",
+  "metadata": {}
+}

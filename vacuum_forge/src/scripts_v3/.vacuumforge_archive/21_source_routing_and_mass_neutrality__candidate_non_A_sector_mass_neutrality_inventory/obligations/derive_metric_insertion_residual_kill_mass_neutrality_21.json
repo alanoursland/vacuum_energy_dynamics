@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_metric_insertion_residual_kill_mass_neutrality_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_non_A_sector_mass_neutrality_inventory",
+  "title": "Prove mass neutrality for metric_insertion / residual_kill",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:25.658401+00:00",
+  "description": "Current role: provisional safety convention / theorem target. Required condition: derive insertion/no-overlap or keep residual strictly non-metric and diagnostic. This sector must not change M_A or measured M_ext unless a future parent identity or sector-specific source law derives the modification.",
+  "metadata": {}
+}

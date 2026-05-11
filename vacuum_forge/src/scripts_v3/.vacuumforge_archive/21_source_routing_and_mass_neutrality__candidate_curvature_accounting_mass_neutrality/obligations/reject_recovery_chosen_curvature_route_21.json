@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_recovery_chosen_curvature_route_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "title": "Preserve rejection: RC6: recovery-chosen curvature route",
+  "status": "open",
+  "required_by": [
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.202836+00:00",
+  "description": "Route: recovery_chosen_curvature_route. Forbidden use: curvature scalar, coefficient, boundary behavior, or admissibility threshold chosen from Schwarzschild/PPN/gamma_like/AB recovery. Consequence: recovery remains downstream diagnostic, not a curvature-routing rule..",
+  "metadata": {}
+}

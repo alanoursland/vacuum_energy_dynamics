@@ -1,0 +1,26 @@
+[
+  {
+    "dependency_id": "correction_tensor_guard_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_correction_tensor_mass_neutrality_guard",
+    "upstream_derivation_id": "correction_tensor_mass_neutrality_guard_marker_21",
+    "declared_at": "2026-05-11T15:09:20.076295+00:00",
+    "expected_record_kind": "inventory_marker",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "H_scalar_trace_leakage_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_correction_tensor_mass_neutrality_guard",
+    "upstream_derivation_id": "H_scalar_trace_leakage_flux_21",
+    "declared_at": "2026-05-11T15:09:20.076295+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "A_sector_mass_definition_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+    "upstream_derivation_id": "A_sector_mass_definition_21",
+    "declared_at": "2026-05-11T15:09:20.083293+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  }
+]

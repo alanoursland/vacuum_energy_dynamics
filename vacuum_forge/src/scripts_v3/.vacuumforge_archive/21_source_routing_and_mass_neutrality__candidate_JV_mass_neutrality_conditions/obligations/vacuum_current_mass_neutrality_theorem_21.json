@@ -1,0 +1,15 @@
+{
+  "obligation_id": "vacuum_current_mass_neutrality_theorem_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Derive vacuum-current mass-neutrality theorem",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.235717+00:00",
+  "description": "Show J_V, J_sub, and J_exch have no independent A-flux shift, no exterior scalar charge, no far-zone current flux, no boundary repair, no scalar trace source, no ordinary matter push, and no source rerouting unless a future parent/source law derives otherwise.",
+  "metadata": {}
+}

@@ -1,0 +1,37 @@
+{
+  "claim_id": "correction_tensor_mass_repair_routes_rejected_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_correction_tensor_mass_neutrality_guard",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "Correction tensors may not be used as repair mechanisms: H cannot shift M_ext, cancel scalar tails, act as boundary counterterm, paint over Bianchi/divergence issues, define its own source, patch through dark labels, or be chosen by recovery.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [
+    "H_scalar_trace_leakage_flux_21",
+    "H_A_tail_flux_diagnostic_21",
+    "H_source_divergence_gap_diagnostic_21"
+  ],
+  "obligation_ids": [
+    "preserve_no_H_M_ext_correction_21",
+    "preserve_no_H_scalar_tail_cancellation_21",
+    "preserve_no_H_boundary_counterterm_21",
+    "preserve_no_H_Bianchi_paint_21",
+    "preserve_no_H_source_by_divergence_21",
+    "preserve_no_H_dark_sector_patch_21",
+    "preserve_no_recovery_chosen_H_21"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:00:25.887214+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

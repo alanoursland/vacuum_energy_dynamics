@@ -1,0 +1,48 @@
+{
+  "claim_id": "curvature_accounting_mass_neutrality_conditions_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "A_curv, e_curv, and J_curv are not licensed as ordinary exterior mass carriers in Group 21. They must remain diagnostic/accounting/unresolved or prove no A-flux shift, no scalar residue, no source reservoir, no far-zone curvature-current flux, no boundary repair, and no recovery tuning.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [
+    "curvature_scalar_residue_flux_21",
+    "e_curv_A_tail_flux_diagnostic_21",
+    "J_curv_far_zone_current_flux_diagnostic_21",
+    "curvature_balance_role_diagnostic_21"
+  ],
+  "obligation_ids": [
+    "preserve_A_curv_diagnostic_only_21",
+    "derive_A_curv_no_scalar_residue_21",
+    "preserve_e_curv_accounting_only_21",
+    "reject_e_curv_A_tail_source_reservoir_21",
+    "define_J_curv_current_law_21",
+    "derive_J_curv_far_zone_flux_neutrality_21",
+    "derive_curvature_balance_without_mass_repair_21",
+    "preserve_finite_admissibility_as_diagnostic_21",
+    "derive_curvature_boundary_mass_neutrality_21",
+    "preserve_H_curv_non_insertable_21",
+    "reject_e_curv_source_reservoir_21",
+    "reject_curvature_balance_mass_repair_21",
+    "reject_J_curv_gradient_by_fiat_21",
+    "reject_branch_kill_called_bounce_21",
+    "reject_H_curv_curvature_rescue_21",
+    "reject_recovery_chosen_curvature_route_21",
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.206836+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

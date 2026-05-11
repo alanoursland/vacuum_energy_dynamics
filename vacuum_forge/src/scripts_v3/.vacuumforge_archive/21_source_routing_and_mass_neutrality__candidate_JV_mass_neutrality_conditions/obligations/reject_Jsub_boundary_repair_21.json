@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_Jsub_boundary_repair_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "title": "Resolve vacuum-current condition: JS3: J_sub boundary repair",
+  "status": "open",
+  "required_by": [
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:49:30.228717+00:00",
+  "description": "Sector: J_sub boundary behavior. Allowed condition: J_sub has no boundary effect unless a source-neutral boundary law is derived. Forbidden condition: J_sub cancels boundary mismatch, shell flux, or recovery failure. Consequence: J_sub cannot be a boundary purse..",
+  "metadata": {}
+}

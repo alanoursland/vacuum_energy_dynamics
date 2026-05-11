@@ -1,0 +1,26 @@
+{
+  "decision_id": "defer_A_sector_routed_residual_tail_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+  "branch_id": "A_sector_routed_residual_scalar_tail",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_ordinary_closed_regime_scalar_silence_theorem_21",
+    "derive_ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:28:53.498053+00:00",
+  "description": "Defer any route that tries to keep a residual scalar tail by routing it through A-sector mass. Such a route requires a future source identity and no-double-counting theorem.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

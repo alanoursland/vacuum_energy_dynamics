@@ -1,0 +1,68 @@
+{
+  "derivation_id": "zeta_kappa_mass_neutrality_inventory_marker_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('ZK1')",
+      "latex": "ZK_{1}"
+    },
+    {
+      "srepr": "Symbol('ZK2')",
+      "latex": "ZK_{2}"
+    },
+    {
+      "srepr": "Symbol('ZK3')",
+      "latex": "ZK_{3}"
+    },
+    {
+      "srepr": "Symbol('ZK4')",
+      "latex": "ZK_{4}"
+    },
+    {
+      "srepr": "Symbol('ZK5')",
+      "latex": "ZK_{5}"
+    },
+    {
+      "srepr": "Symbol('ZK6')",
+      "latex": "ZK_{6}"
+    },
+    {
+      "srepr": "Symbol('ZK7')",
+      "latex": "ZK_{7}"
+    },
+    {
+      "srepr": "Symbol('ZK8')",
+      "latex": "ZK_{8}"
+    },
+    {
+      "srepr": "Symbol('ZK9')",
+      "latex": "ZK_{9}"
+    },
+    {
+      "srepr": "Symbol('ZK10')",
+      "latex": "ZK_{10}"
+    },
+    {
+      "srepr": "Symbol('ZK11')",
+      "latex": "ZK_{11}"
+    },
+    {
+      "srepr": "Symbol('ZK12')",
+      "latex": "ZK_{12}"
+    }
+  ],
+  "output": {
+    "srepr": "Symbol('zeta_kappa_mass_neutrality_conditions_stated')",
+    "latex": "\\zeta_{\\kappa mass neutrality conditions stated}"
+  },
+  "method": "zeta/kappa residual condition and rejected-route inventory",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T14:41:47.606841+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "inventory_marker",
+  "scope": "Group 21 source routing and mass neutrality",
+  "claim_tier": null,
+  "result_type": "inventory_marker",
+  "superseded_by": null,
+  "is_placeholder": true
+}

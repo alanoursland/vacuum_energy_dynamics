@@ -1,0 +1,15 @@
+{
+  "obligation_id": "preserve_A_curv_diagnostic_only_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_curvature_accounting_mass_neutrality",
+  "title": "Resolve curvature-accounting condition: C1: A_curv diagnostic branch-filter",
+  "status": "open",
+  "required_by": [
+    "curvature_accounting_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:56:23.193834+00:00",
+  "description": "Sector: A_curv. Allowed condition: A_curv remains diagnostic / branch-filter or receives independent source-neutral dynamics. Forbidden condition: A_curv changes A-flux, selects boundary behavior after recovery failure, or becomes scalar curvature charge. Consequence: curvature admissibility can filter branches only if it does not become dynamics by vocabulary..",
+  "metadata": {}
+}

@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_JV_no_scalar_residue_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+  "title": "Prove no exterior scalar tail for J_V_residue",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_regime_scalar_silence_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:28:53.493054+00:00",
+  "description": "Dangerous form: phi_JV = C_JV/r. Required condition: define J_V and prove C_JV = 0 or route it through a derived A-sector law. The sector must not leave a nonzero ordinary exterior 1/r scalar tail unless a future source-routing theorem explicitly routes it through the A-sector without double counting.",
+  "metadata": {}
+}

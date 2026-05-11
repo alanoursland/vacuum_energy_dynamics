@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_zeta_nonmetric_bookkeeping_rule_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "title": "Resolve zeta/kappa condition: ZK1: zeta residual non-metric branch",
+  "status": "open",
+  "required_by": [
+    "zeta_kappa_mass_neutrality_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.607841+00:00",
+  "description": "Sector: zeta_residual. Allowed condition: zeta residual is strictly non-metric / diagnostic and has no source, flux, or A-effect. Forbidden condition: zeta residual becomes a metric scalar source or second mass channel. Consequence: safest current zeta residual route; still requires bookkeeping discipline.",
+  "metadata": {}
+}

@@ -1,0 +1,32 @@
+{
+  "decision_id": "keep_H_curv_H_exch_non_insertable_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_correction_tensor_mass_neutrality_guard",
+  "branch_id": "H_curv_H_exch_insertion",
+  "status": "deferred_pending_prerequisites",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "define_H_curv_tensor_before_insertion_21",
+    "define_H_exch_tensor_before_insertion_21",
+    "derive_H_divergence_safety_21",
+    "derive_H_source_separation_21",
+    "derive_H_scalar_trace_neutrality_21",
+    "derive_H_boundary_neutrality_21",
+    "derive_H_far_zone_flux_neutrality_21",
+    "correction_tensor_mass_neutrality_and_insertability_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:00:25.885213+00:00",
+  "description": "H_curv/H_exch remain non-insertable until tensor definitions, source separation, divergence safety, scalar trace neutrality, boundary neutrality, far-zone flux neutrality, and A-sector mass neutrality are derived.",
+  "metadata": {
+    "validation": {
+      "requested_status": "deferred_pending_prerequisites",
+      "effective_status": "deferred_pending_prerequisites",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

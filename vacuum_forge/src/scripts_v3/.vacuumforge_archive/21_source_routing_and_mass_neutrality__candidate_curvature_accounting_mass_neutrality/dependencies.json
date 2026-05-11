@@ -1,0 +1,26 @@
+[
+  {
+    "dependency_id": "JV_mass_neutrality_inventory_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+    "upstream_derivation_id": "JV_mass_neutrality_inventory_marker_21",
+    "declared_at": "2026-05-11T14:56:21.921529+00:00",
+    "expected_record_kind": "inventory_marker",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "JV_scalar_residue_flux_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+    "upstream_derivation_id": "JV_scalar_residue_flux_21",
+    "declared_at": "2026-05-11T14:56:21.921529+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "A_sector_mass_definition_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+    "upstream_derivation_id": "A_sector_mass_definition_21",
+    "declared_at": "2026-05-11T14:56:21.928531+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  }
+]

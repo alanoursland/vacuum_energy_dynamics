@@ -1,0 +1,52 @@
+{
+  "derivation_id": "ordinary_source_extra_load_ledger_21",
+  "inputs": [
+    {
+      "srepr": "Symbol('rho_A', real=True)",
+      "latex": "\\rho_{A}"
+    },
+    {
+      "srepr": "Symbol('rho_kappa', real=True)",
+      "latex": "\\rho_{\\kappa}"
+    },
+    {
+      "srepr": "Symbol('rho_zeta', real=True)",
+      "latex": "\\rho_{\\zeta}"
+    },
+    {
+      "srepr": "Symbol('rho_curv', real=True)",
+      "latex": "\\rho_{curv}"
+    },
+    {
+      "srepr": "Symbol('rho_H', real=True)",
+      "latex": "\\rho_{H}"
+    },
+    {
+      "srepr": "Symbol('rho_exch', real=True)",
+      "latex": "\\rho_{exch}"
+    },
+    {
+      "srepr": "Symbol('rho_dark', real=True)",
+      "latex": "\\rho_{dark}"
+    },
+    {
+      "srepr": "Symbol('E_accounting', real=True)",
+      "latex": "E_{accounting}"
+    }
+  ],
+  "output": {
+    "srepr": "Add(Symbol('E_accounting', real=True), Symbol('rho_H', real=True), Symbol('rho_curv', real=True), Symbol('rho_dark', real=True), Symbol('rho_exch', real=True), Symbol('rho_kappa', real=True), Symbol('rho_zeta', real=True))",
+    "latex": "E_{accounting} + \\rho_{H} + \\rho_{curv} + \\rho_{dark} + \\rho_{exch} + \\rho_{\\kappa} + \\rho_{\\zeta}"
+  },
+  "method": "extra_source_load = simplify(total_source_load - rho_A)",
+  "status": "derived",
+  "metadata": {},
+  "recorded_at": "2026-05-11T15:09:20.821299+00:00",
+  "vacuumforge_version": "0.1.0",
+  "record_kind": "diagnostic_example",
+  "scope": "source-routing no-double-counting diagnostic only",
+  "claim_tier": null,
+  "result_type": "source_load_ledger",
+  "superseded_by": null,
+  "is_placeholder": false
+}

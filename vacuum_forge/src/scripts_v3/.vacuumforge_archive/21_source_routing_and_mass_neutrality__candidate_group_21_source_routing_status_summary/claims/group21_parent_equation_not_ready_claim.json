@@ -1,0 +1,32 @@
+{
+  "claim_id": "group21_parent_equation_not_ready_claim",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "The parent field equation remains not ready after Group 21. Boundary neutrality, scalar silence, source separation, current definitions, curvature-current definitions, correction-tensor definitions, and no-double-counting obligations remain open.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [
+    "group21_source_routing_status_summary_marker_21"
+  ],
+  "obligation_ids": [
+    "derive_ordinary_closed_regime_mass_neutrality_theorem_21",
+    "derive_boundary_neutrality_and_scalar_silence_21",
+    "derive_source_routing_no_double_counting_parent_theorem_21",
+    "derive_parent_identity_after_mass_neutrality_21"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:16:25.970231+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

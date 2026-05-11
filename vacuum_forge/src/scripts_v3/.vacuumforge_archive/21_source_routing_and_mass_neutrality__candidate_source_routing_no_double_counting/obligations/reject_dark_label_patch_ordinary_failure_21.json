@@ -1,0 +1,15 @@
+{
+  "obligation_id": "reject_dark_label_patch_ordinary_failure_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+  "title": "Preserve rejected source route: RR6: dark label patches ordinary failure",
+  "status": "open",
+  "required_by": [
+    "ordinary_source_no_double_counting_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T15:09:20.835299+00:00",
+  "description": "Route: dark_label_patches_ordinary_failure. Forbidden use: dark label absorbs source, scalar-tail, boundary, H, or recovery failure. Consequence: dark sector is not an ordinary source-routing patch..",
+  "metadata": {}
+}

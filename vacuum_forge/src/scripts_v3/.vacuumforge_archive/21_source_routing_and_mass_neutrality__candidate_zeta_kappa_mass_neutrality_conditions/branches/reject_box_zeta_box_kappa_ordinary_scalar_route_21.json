@@ -1,0 +1,25 @@
+{
+  "decision_id": "reject_box_zeta_box_kappa_ordinary_scalar_route_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+  "branch_id": "box_zeta_box_kappa_ordinary_scalar_route",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "reject_box_zeta_box_kappa_ordinary_scalar_route_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:41:47.619843+00:00",
+  "description": "Reject Box zeta / Box kappa as ordinary exterior scalar source routes in the current branch.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

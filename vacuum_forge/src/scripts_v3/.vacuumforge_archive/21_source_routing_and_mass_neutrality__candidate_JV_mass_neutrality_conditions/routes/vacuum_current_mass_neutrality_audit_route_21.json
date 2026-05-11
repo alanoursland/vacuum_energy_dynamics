@@ -1,0 +1,46 @@
+{
+  "route_id": "vacuum_current_mass_neutrality_audit_route_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_JV_mass_neutrality_conditions",
+  "name": "J_V / J_sub / J_exch mass-neutrality audit route",
+  "status": "candidate_route",
+  "tier": "constrained",
+  "witness_ids": [],
+  "activation_conditions": [
+    "A-sector mass charge remains the reduced ordinary exterior reference",
+    "J_V remains unresolved until current definition, source side, domain, and flux direction are derived",
+    "J_sub/J_exch remain role-level until pure-wind neutrality and exchange source/support laws are derived",
+    "no scalar residue, far-zone current flux, boundary repair, source repair, recovery-chosen u_vac, or active O is assumed"
+  ],
+  "required_obligations": [
+    "define_JV_current_law_21",
+    "derive_JV_no_scalar_residue_21",
+    "derive_JV_far_zone_flux_neutrality_21",
+    "derive_u_vac_domain_from_JV_21",
+    "derive_Jsub_pure_wind_neutrality_21",
+    "derive_Jsub_no_scalar_trace_21",
+    "reject_Jsub_boundary_repair_21",
+    "derive_Jexch_source_support_law_21",
+    "reject_Jexch_repair_current_21",
+    "derive_sigma_R_zero_net_ordinary_branch_21",
+    "derive_zero_creation_ordinary_branch_21",
+    "derive_latent_exchange_mass_neutrality_21",
+    "reject_undefined_JV_mass_current_21",
+    "reject_JV_scalar_tail_mass_route_21",
+    "reject_Jsub_wind_gravity_21",
+    "reject_Jexch_repair_current_route_21",
+    "reject_sigma_R_tuning_knob_21",
+    "reject_recovery_chosen_uvac_21",
+    "vacuum_current_mass_neutrality_theorem_21"
+  ],
+  "created_at": "2026-05-11T14:49:30.235717+00:00",
+  "description": null,
+  "metadata": {
+    "validation": {
+      "requested_status": "candidate_route",
+      "effective_status": "candidate_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

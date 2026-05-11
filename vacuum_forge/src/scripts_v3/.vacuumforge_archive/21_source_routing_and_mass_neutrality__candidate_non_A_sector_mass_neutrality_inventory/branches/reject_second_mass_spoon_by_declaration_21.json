@@ -1,0 +1,25 @@
+{
+  "decision_id": "reject_second_mass_spoon_by_declaration_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_non_A_sector_mass_neutrality_inventory",
+  "branch_id": "second_mass_spoon_by_declaration",
+  "status": "rejected_route",
+  "tier": "constrained",
+  "reason_code": null,
+  "evidence_ids": [],
+  "obligation_ids": [
+    "derive_ordinary_closed_regime_mass_neutrality_theorem_21"
+  ],
+  "activation_conditions": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:25.662402+00:00",
+  "description": "Reject any route where a residual scalar, current, curvature diagnostic, correction tensor, boundary label, or dark label is declared to carry ordinary exterior mass without derivation.",
+  "metadata": {
+    "validation": {
+      "requested_status": "rejected_route",
+      "effective_status": "rejected_route",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

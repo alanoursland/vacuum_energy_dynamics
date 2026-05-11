@@ -1,0 +1,15 @@
+{
+  "obligation_id": "derive_no_recovery_tuned_smoothing_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
+  "title": "Derive boundary smoothing without recovery tuning",
+  "status": "open",
+  "required_by": [
+    "ordinary_closed_boundary_mass_preservation_theorem_21"
+  ],
+  "satisfied_by": [],
+  "failed_by": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:37:32.221591+00:00",
+  "description": "Show that any smoothing or matching law is derived structurally and is not chosen from Schwarzschild, PPN, AB, or B=1/A recovery.",
+  "metadata": {}
+}

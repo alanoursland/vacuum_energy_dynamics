@@ -1,0 +1,32 @@
+{
+  "claim_id": "non_A_mass_routes_require_neutrality_21",
+  "script_id": "21_source_routing_and_mass_neutrality__candidate_a_sector_mass_charge_definition",
+  "claim_kind": "governance_claim",
+  "tier": "constrained",
+  "status": "policy_rule",
+  "statement": "Group 21 should audit all non-A sectors against delta M_A = 0. No non-A sector is currently licensed to shift ordinary exterior mass by declaration.",
+  "reason_code": null,
+  "evidence_ids": [],
+  "derivation_ids": [
+    "A_sector_schwarzschild_mass_residual_21"
+  ],
+  "obligation_ids": [
+    "inventory_non_A_mass_neutrality_21",
+    "derive_non_A_delta_MA_zero_21",
+    "derive_boundary_mass_preservation_21",
+    "derive_no_residual_scalar_tail_21"
+  ],
+  "source_claim_ids": [],
+  "supersedes": [],
+  "superseded_by": null,
+  "created_at": "2026-05-11T14:25:19.366079+00:00",
+  "metadata": {
+    "validation": {
+      "requested_status": "policy_rule",
+      "effective_status": "policy_rule",
+      "supported": true,
+      "messages": [],
+      "missing": []
+    }
+  }
+}

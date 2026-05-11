@@ -1,0 +1,34 @@
+[
+  {
+    "dependency_id": "zeta_kappa_inventory_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+    "upstream_derivation_id": "zeta_kappa_mass_neutrality_inventory_marker_21",
+    "declared_at": "2026-05-11T14:49:29.510712+00:00",
+    "expected_record_kind": "inventory_marker",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "zeta_tail_flux_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+    "upstream_derivation_id": "zeta_residual_tail_flux_21",
+    "declared_at": "2026-05-11T14:49:29.511713+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "kappa_tail_flux_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+    "upstream_derivation_id": "kappa_residual_tail_flux_21",
+    "declared_at": "2026-05-11T14:49:29.518716+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  },
+  {
+    "dependency_id": "A_sector_mass_definition_dependency_21",
+    "upstream_script_id": "21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+    "upstream_derivation_id": "A_sector_mass_definition_21",
+    "declared_at": "2026-05-11T14:49:29.524713+00:00",
+    "expected_record_kind": "derivation",
+    "allow_superseded": false
+  }
+]
