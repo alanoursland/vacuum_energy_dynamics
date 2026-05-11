@@ -49,6 +49,23 @@ DERIVED_REDUCED in static spherical sector
 STRUCTURAL beyond reduced sector
 ```
 
+Group 21 mass-routing update:
+
+```text
+A-sector areal flux defines the current reduced ordinary-exterior reference charge,
+
+  F_A = 4*pi*r^2 A'(r),
+  M_A = c^2 F_A/(8*pi*G).
+
+For the reduced exterior A-sector branch
+  A = 1 - 2GM/(c^2 r),
+this gives
+  M_A = M.
+
+This is the protected reduced mass coin for ordinary exterior audits.
+It is not a final covariant parent mass definition.
+```
+
 \[
 B_s \quad \text{or} \quad A_{\rm spatial}
 \]
@@ -181,6 +198,16 @@ UNRESOLVED
 
 It is not defined by naming it and is not defined by the divergence equation alone.
 
+Group 21 mass-neutrality update:
+
+```text
+J_V is not allowed to shift exterior mass while unresolved.
+A J_V-induced scalar residue C_JV/r carries surface flux -4*pi*C_JV.
+A far-zone current j^r = I/(4*pi*r^2) carries sphere flux I.
+Ordinary-sector neutrality therefore requires C_JV = 0 and I_V = 0
+unless a future current theorem derives a neutral transport interpretation.
+```
+
 \[
 u_{\rm vac}^\mu = \frac{J_V^\mu}{\sqrt{-J_V^2}}
 \]
@@ -292,6 +319,15 @@ pure wind gravitating by existence,
 dark-sector convenience.
 ```
 
+Group 21 update:
+
+```text
+J_sub remains role-level / pure-wind theorem target.
+Pure wind is not gravity.
+J_sub must not shift M_ext, source scalar trace, push ordinary matter,
+repair a boundary, or act as a preferred-frame force.
+```
+
 \[
 J_{\rm exch}^\mu
 \]
@@ -329,6 +365,15 @@ recovery repair,
 matter repair,
 e_curv source reservoir,
 H_exch shortcut.
+```
+
+Group 21 update:
+
+```text
+J_exch remains role-level / active-exchange theorem target.
+Exchange is not repair.
+J_exch must not reroute ordinary matter, cancel scalar tails,
+fix boundary leakage, or tune M_ext.
 ```
 
 \[
@@ -386,6 +431,16 @@ Current consequence:
 
 ```text
 current-based anti-singularity claims are deferred.
+```
+
+Group 21 update:
+
+```text
+J_curv remains undefined.
+A far-zone curvature current j_curv^r = I_curv/(4*pi*r^2)
+carries sphere flux I_curv.
+Ordinary-sector neutrality requires I_curv = 0 unless a future
+curvature-current law derives neutral transport.
 ```
 
 ### Parent correction tensor status
@@ -458,6 +513,27 @@ H_curv is not a curvature rescue cloak.
 H_exch is not exchange-continuity paint.
 Bianchi-like language is not divergence safety.
 Diagnostic-only means not inserted.
+```
+
+Group 21 correction-tensor guard:
+
+```text
+H_curv/H_exch remain non-insertable.
+A trace leakage phi_H = C_H/r carries flux -4*pi*C_H.
+An H-induced A-tail q_H/r shifts delta M_A = -c^2 q_H/(2G).
+A far-zone H flux j_H^r = I_H/(4*pi*r^2) carries sphere flux I_H.
+
+Future H insertion requires:
+  independent tensor definition,
+  independent source-side counterpart,
+  divergence safety,
+  ordinary matter separation,
+  A-sector mass neutrality,
+  scalar trace neutrality,
+  boundary neutrality,
+  far-zone flux neutrality,
+  no shell source,
+  no recovery tuning.
 ```
 
 ---
@@ -1195,6 +1271,51 @@ recovery checks choosing boundary conditions.
 
 ---
 
+## 6.7a Group 21 Mass-Neutrality Witnesses
+
+Group 21 derived reduced danger witnesses for ordinary exterior mass leakage.
+
+Residual scalar tail:
+
+```text
+phi_tail = C/r
+F_phi = 4*pi*r^2 phi_tail' = -4*pi*C
+```
+
+Therefore a residual ordinary-sector 1/r scalar tail is not neutral unless C = 0,
+or unless it is strictly non-metric/diagnostic,
+or unless a future parent theorem routes it without double counting.
+
+Boundary A-tail:
+
+```text
+delta A_boundary = q/r
+delta F_A = -4*pi*q
+delta M_A = -c^2 q/(2G)
+```
+
+Therefore non-A boundary behavior must not leave a nonzero exterior A-tail.
+
+Far-zone current flux:
+
+```text
+j^r = I/(4*pi*r^2)
+Phi = 4*pi*r^2 j^r = I
+```
+
+Therefore non-A far-zone currents are neutral only if I = 0,
+unless a future current theorem derives a neutral transport interpretation.
+
+These are reduced diagnostics and theorem burdens, not parent field equations.
+
+Status:
+
+```text
+DERIVED_REDUCED DIAGNOSTIC
+```
+
+---
+
 ## 6.8 Curvature Boundary / Mass Neutrality
 
 Status:
@@ -1349,6 +1470,27 @@ SAFE_IF / PROVISIONAL
 NOT DERIVED
 ```
 
+Group 21 scalar-silence update:
+
+```text
+zeta_tail = C_zeta/r gives F_zeta = -4*pi*C_zeta.
+kappa_tail = C_kappa/r gives F_kappa = -4*pi*C_kappa.
+
+Ordinary exterior scalar silence requires:
+
+  C_zeta = 0,
+  C_kappa = 0,
+
+unless residuals are strictly non-metric/diagnostic,
+killed/suppressed,
+compact-neutral,
+or routed through a future parent identity without double counting.
+
+Cancellation by hand,
+  C_zeta + C_kappa = 0,
+is not sector neutrality.
+```
+
 ---
 
 ## 7.4 Neutral Residual Alternative
@@ -1388,7 +1530,12 @@ raw pressure trace Poisson kappa,
 zeta exterior scalar charge,
 kappa exterior scalar charge,
 zeta/kappa independent scalar gravities,
-kappa restoring killed residual metric trace.
+kappa restoring killed residual metric trace,
+zeta/kappa cancellation by hand,
+nonzero zeta exterior 1/r tail,
+nonzero kappa exterior 1/r tail,
+residual relaxation repairing A-flux,
+recovery-chosen residual status.
 ```
 
 ---
@@ -1625,6 +1772,20 @@ COEFFICIENT NOT DERIVED
 
 # 10. Source Coupling, Projectors, and No-Double-Counting
 
+Group 21 source-routing update:
+
+```text
+ordinary rho / M_enc remains routed to the A-sector mass charge.
+
+Non-A duplicate source channels are not licensed.
+
+A duplicate scalar tail C_dup/r carries F_dup = -4*pi*C_dup.
+
+A duplicate A-tail q_dup/r shifts delta M_A = -c^2 q_dup/(2G).
+
+Extra source-load cancellation ledgers do not count as sector-by-sector neutrality.
+```
+
 Current source assignments:
 
 | Sector                | Source                                          | Status                           |
@@ -1669,7 +1830,23 @@ J_exch -> must not reroute ordinary matter,
   must not become boundary or curvature repair,
 
 ordinary matter -> rho / scalar charge remains routed to A-sector
-  unless a separate source theorem derives otherwise.
+  unless a separate source theorem derives otherwise,
+
+rho / M_enc -> A-sector mass charge,
+
+non-A duplicate scalar tails -> rejected unless coefficient vanishes or future parent theorem routes without double counting,
+
+non-A duplicate A-tails -> rejected unless q = 0 or future parent mass law derives the route,
+
+pressure / trace -> diagnostic or non-metric kappa/zeta relaxation only if neutral,
+
+curvature diagnostics -> not ordinary matter sources,
+
+H_curv/H_exch -> not ordinary matter sinks or correction patches,
+
+dark labels -> optional downstream only, not ordinary failure patches,
+
+source cancellation ledgers -> not sector neutrality.
 ```
 
 No-double-counting rules:
@@ -1693,7 +1870,21 @@ Sigma_exch and R_exch cannot be two names for one hidden tuning mechanism,
 
 J_sub cannot be defined as J_V - J_exch without a split criterion,
 
-dark-sector coupling cannot relabel ordinary matter failure.
+dark-sector coupling cannot relabel ordinary matter failure,
+
+ordinary rho / M_enc cannot source a second ordinary exterior mass channel by declaration,
+
+rho cannot also source kappa, zeta, curvature, H, exchange, or dark labels,
+
+ordinary T_mu_nu cannot become Sigma_exch, J_exch, H_curv, or H_exch by convenience,
+
+curvature diagnostics and accounting terms cannot become source reservoirs,
+
+H tensors cannot absorb ordinary source mismatch or define their own source by divergence,
+
+dark labels cannot patch ordinary source, boundary, scalar-tail, H, or recovery failure,
+
+source-load cancellation across non-A labels is not sector-by-sector neutrality.
 ```
 
 Status:
@@ -1882,6 +2073,63 @@ Status:
 
 ```text
 STRUCTURAL / COEFFICIENT UNKNOWN
+```
+
+A-sector mass-charge reference:
+
+\[
+M_A = \frac{c^2 F_A}{8\pi G}
+\]
+
+Status:
+
+```text
+CLOSED_REDUCED / GROUP 21 AUDIT ANCHOR
+```
+
+Meaning:
+
+```text
+A-sector mass charge is the current reduced ordinary exterior reference.
+It is not a final covariant parent mass definition.
+```
+
+Group 21 non-A mass rule:
+
+\[
+\delta M_A\big|_{\rm non\text{-}A} = 0
+\]
+
+Status:
+
+```text
+REQUIRED / THEOREM_TARGET SECTOR BY SECTOR
+```
+
+Meaning:
+
+```text
+Non-A sectors may not shift ordinary exterior mass by declaration.
+```
+
+Residual scalar-tail witness:
+
+```text
+phi = C/r
+F_phi = -4*pi*C
+```
+
+Status:
+
+```text
+DERIVED_REDUCED DIAGNOSTIC
+```
+
+Meaning:
+
+```text
+ordinary residual 1/r scalar tails are mass-dangerous unless C = 0
+or strictly non-metric/diagnostic.
 ```
 
 Vacuum exchange theorem target:
@@ -2346,7 +2594,15 @@ far-zone flux neutrality for correction tensors,
 shell-source absence for correction tensors,
 coefficient origin for correction tensors,
 recovery-independent construction of correction tensors,
-parent divergence identity.
+parent divergence identity,
+ordinary closed-regime mass-neutrality theorem,
+boundary scalar-silence theorem,
+non-A delta M_A = 0 theorem,
+residual 1/r scalar coefficient vanishing theorem,
+no-shell boundary matching law,
+far-zone non-A current flux neutrality theorem,
+ordinary source no-double-counting theorem,
+correction tensor mass-neutrality and insertability theorem.
 ```
 
 ---
@@ -2358,6 +2614,16 @@ The current field-equation status is:
 ```text
 A-sector:
   real reduced reconstruction.
+
+Source routing and mass neutrality:
+  Group 21 completed the source-routing and mass-neutrality audit;
+  A-sector mass charge is protected as the current reduced ordinary exterior reference;
+  no non-A sector is licensed as an independent exterior mass carrier;
+  residual scalar tails, boundary A-tails, far-zone non-A currents,
+  curvature accounting, correction tensors, dark labels, and duplicate source ledgers
+  cannot shift exterior mass by declaration;
+  non-A mass neutrality remains required and theorem-targeted;
+  boundary neutrality and scalar silence remain the most direct next bottleneck.
 
 Vector sector:
   source/projection/action/shape reconstructed,
@@ -2531,7 +2797,17 @@ shell-source hiding tensor,
 recovery-fit correction,
 undefined current/source insertion,
 diagnostic-only object inserted into field equation,
-theorem-target parent form treated as current law.
+theorem-target parent form treated as current law,
+non-A sector shifts M_ext by declaration,
+residual 1/r scalar tail treated as neutral with nonzero coefficient,
+boundary A-tail shifts mass by smoothing,
+far-zone non-A current flux counted as ordinary mass,
+zeta/kappa cancellation by hand treated as neutrality,
+source cancellation ledger treated as no-double-counting,
+H inserted as M_ext correction,
+H trace cancels scalar tail,
+dark label patches ordinary mass leakage,
+ordinary rho counted in A-sector and again in non-A sector.
 ```
 
 Major closure risks:
@@ -2933,17 +3209,46 @@ Boundary/exterior-neutral projection remains theorem-targeted.
 Parent equation forms remain not ready.
 ```
 
+Completed source-routing and mass-neutrality audit (Group 21):
+
+```text
+A-sector mass charge is protected as the current reduced ordinary exterior reference.
+No non-A sector is licensed as an independent exterior mass carrier.
+Residual 1/r scalar tails are mass-dangerous.
+Boundary A-tail contributions shift A-sector mass unless neutral.
+Zeta/kappa residuals remain killed, non-metric, compact-neutral, or theorem-targeted.
+J_V remains unresolved.
+J_sub/J_exch remain role-level.
+Curvature accounting remains diagnostic/accounting.
+H_curv/H_exch remain non-insertable.
+Ordinary source routing is protected from duplicate non-A source channels.
+Parent equation remains not ready.
+```
+
 The next technical target should be framed as:
 
 ```text
-What bottleneck should be attacked next without assuming O exists?
+Can the ordinary closed regime enforce boundary neutrality and exterior scalar silence
+without repair mechanisms?
 
-Safe options:
-  core bottleneck closure and field snapshot,
+Recommended next group:
+
+  22_boundary_neutrality_and_scalar_silence
+
+Reason:
+
+  Group 21 repeatedly reduced the remaining bottleneck to:
+    no residual 1/r scalar tails,
+    no non-A boundary A-tail,
+    no shell source,
+    no far-zone non-A flux,
+    no smoothing, O, H, dark label, or recovery-tuned repair.
+
+Safe options after that:
   metric insertion recovery retest,
-  source routing and mass neutrality,
-  role-specific projector derivation,
-  constraint projection and parent identity only if a real projector route is derived.
+  role-specific boundary/source projectors,
+  reduced observational audit,
+  parent identity only if boundary/scalar silence and projector obligations are real.
 ```
 
 Known unresolved dependencies (retained from prior status):
@@ -2996,6 +3301,22 @@ Group 20 no-overlap / projection status:
   boundary/exterior-neutral projection remains theorem-targeted;
   parent equation forms remain not ready.
 
+Group 21 source-routing / mass-neutrality status:
+  A-sector mass charge is protected as the current reduced ordinary exterior reference;
+  M_A = c^2 F_A/(8*pi*G);
+  for A = 1 - 2GM/(c^2 r), M_A = M;
+  no non-A sector is licensed as an independent ordinary exterior mass carrier;
+  residual 1/r scalar tails carry F = -4*pi*C;
+  boundary A-tails q/r shift delta M_A = -c^2 q/(2G);
+  zeta/kappa residuals must be killed, non-metric, compact-neutral, coefficient-zero, or theorem-targeted;
+  J_V remains unresolved;
+  J_sub/J_exch remain role-level;
+  curvature accounting remains diagnostic/accounting;
+  H_curv/H_exch remain non-insertable;
+  ordinary source routing is protected from duplicate non-A source channels;
+  boundary neutrality and scalar silence remain the next bottleneck;
+  parent equation remains not ready.
+
 Residual-kill / non-metric residual is the safest provisional convention.
 
 Boundary safety is required and not derived:
@@ -3044,6 +3365,9 @@ Parent correction tensor status:
   the final parent field equation is not ready.
 
 The theory should not yet write a final parent equation.
+
+The next honest target is boundary neutrality and scalar silence,
+not parent closure.
 ```
 
 Compact version:
