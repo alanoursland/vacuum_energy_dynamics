@@ -1,0 +1,356 @@
+
+========================================================================================================================
+Candidate Recovery Independent Sector Geometry
+========================================================================================================================
+[INFO] Archive dependency check:
+  - g28_div: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_bdy: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_as: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_tr: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_forms: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_mem: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_inv: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_prob: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g27_summary: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Recovery-independent sector geometry problem
+========================================================================================================================
+Question:
+
+  Can sector geometry be defined without recovery selection?
+
+Reference discipline:
+
+  Recovery may audit after construction.
+  Recovery may not choose membership, incidence, routing, divergence behavior, or parent closure.
+
+[governance_assessments]
+[INFO] recovery-independent sector geometry audit opened -- testing anti-smuggling constraints for sector geometry
+
+========================================================================================================================
+Case 1: Recovery-selection symbolic ledger
+========================================================================================================================
+Recovery target symbols:
+
+  AB1 = AB1
+  B_inv_A = B_inv_A
+  Schw = Schw
+  gamma = gamma
+  PPN = PPN
+  weak = weak
+  kappa0 = kappa0
+  parent_fit = parent_fit
+
+Recovery-selection load:
+
+  L_recovery_geometry = gamma_gap + kappa_gap + parent_fit_gap + recovery_gap + schwarz_gap + weak_gap
+
+Interpretation:
+
+  Recovery can audit completed sector geometry.
+  Recovery cannot construct sector geometry.
+
+[derived_results]
+[OBLIGATION] recovery-selection load stated -- L_recovery_geometry = gamma_gap + kappa_gap + parent_fit_gap + recovery_gap + schwarz_gap + weak_gap
+
+========================================================================================================================
+Case 2: Recovery targets
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: AB=1
+------------------------------------------------------------------------------------------------------------------------
+Target: AB=1 exterior compensation
+[INFO] R1: AB=1: AUDIT_ONLY
+Allowed as: downstream recovery check
+Forbidden as: sector membership, pairing, incidence, routing, or divergence selector
+
+------------------------------------------------------------------------------------------------------------------------
+R2: B=1/A
+------------------------------------------------------------------------------------------------------------------------
+Target: reciprocal spatial factor
+[INFO] R2: B=1/A: AUDIT_ONLY
+Allowed as: downstream static exterior check
+Forbidden as: sector split definition
+
+------------------------------------------------------------------------------------------------------------------------
+R3: Schwarzschild exterior
+------------------------------------------------------------------------------------------------------------------------
+Target: Schwarzschild-like exterior recovery
+[INFO] R3: Schwarzschild exterior: AUDIT_ONLY
+Allowed as: downstream solution audit
+Forbidden as: reason for no-overlap geometry
+
+------------------------------------------------------------------------------------------------------------------------
+R4: gamma / PPN
+------------------------------------------------------------------------------------------------------------------------
+Target: gamma-like or PPN gamma = 1
+[INFO] R4: gamma / PPN: AUDIT_ONLY
+Allowed as: phenomenological audit
+Forbidden as: incidence or pairing criterion
+
+------------------------------------------------------------------------------------------------------------------------
+R5: weak-field success
+------------------------------------------------------------------------------------------------------------------------
+Target: weak-field recovery
+[INFO] R5: weak-field success: AUDIT_ONLY
+Allowed as: downstream linearized audit
+Forbidden as: sector geometry construction rule
+
+------------------------------------------------------------------------------------------------------------------------
+R6: kappa=0 exterior
+------------------------------------------------------------------------------------------------------------------------
+Target: areal/static exterior kappa suppression
+[INFO] R6: kappa=0 exterior: AUDIT_ONLY
+Allowed as: downstream kappa audit
+Forbidden as: residual-sector exclusion rule
+
+------------------------------------------------------------------------------------------------------------------------
+R7: parent-fit closure
+------------------------------------------------------------------------------------------------------------------------
+Target: parent equation fit or closure
+[FAIL] R7: parent-fit closure: REJECTED
+Allowed as: not allowed in this group
+Forbidden as: sector geometry construction target
+
+[governance_assessments]
+[PASS] sector-geometry recovery targets classified -- 7 targets classified as audit-only or rejected
+
+========================================================================================================================
+Case 3: Recovery-independence tests
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+T1: recovery audit permission
+------------------------------------------------------------------------------------------------------------------------
+Test: may recovery audit a completed sector geometry?
+[INFO] T1: recovery audit permission: CONDITIONALLY_SAFE
+Result: yes, after construction
+Implication: recovery remains useful downstream
+
+------------------------------------------------------------------------------------------------------------------------
+T2: recovery selection
+------------------------------------------------------------------------------------------------------------------------
+Test: may recovery choose sector membership or incidence?
+[FAIL] T2: recovery selection: REJECTED
+Result: no
+Implication: sector geometry must be structurally defined
+
+------------------------------------------------------------------------------------------------------------------------
+T3: AB=1 / B=1/A selection
+------------------------------------------------------------------------------------------------------------------------
+Test: may AB=1 or B=1/A select sector geometry?
+[FAIL] T3: AB=1 / B=1/A selection: REJECTED
+Result: no
+Implication: exterior compensation cannot define no-overlap
+
+------------------------------------------------------------------------------------------------------------------------
+T4: Schwarzschild/gamma/PPN selection
+------------------------------------------------------------------------------------------------------------------------
+Test: may Schwarzschild, gamma, or PPN success select sector geometry?
+[FAIL] T4: Schwarzschild/gamma/PPN selection: REJECTED
+Result: no
+Implication: phenomenology cannot define incidence
+
+------------------------------------------------------------------------------------------------------------------------
+T5: weak-field selection
+------------------------------------------------------------------------------------------------------------------------
+Test: may weak-field success define sector split?
+[FAIL] T5: weak-field selection: REJECTED
+Result: no
+Implication: weak-field recovery remains audit-only
+
+------------------------------------------------------------------------------------------------------------------------
+T6: kappa=0 selection
+------------------------------------------------------------------------------------------------------------------------
+Test: may exterior kappa suppression define residual-sector exclusion?
+[FAIL] T6: kappa=0 selection: REJECTED
+Result: no
+Implication: kappa recovery cannot define no-overlap
+
+------------------------------------------------------------------------------------------------------------------------
+T7: parent-fit selection
+------------------------------------------------------------------------------------------------------------------------
+Test: may parent-fit closure select sector geometry?
+[FAIL] T7: parent-fit selection: REJECTED
+Result: no
+Implication: parent equation remains closed
+
+[governance_assessments]
+[PASS] sector-geometry recovery-independence tests completed -- recovery selection rejected; recovery audit remains conditionally safe
+
+========================================================================================================================
+Case 4: Recovery-independence requirements
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+Q1: structural definition first
+------------------------------------------------------------------------------------------------------------------------
+Requirement: sector inventory, membership, incidence/routing, and divergence behavior must be structurally defined
+[OBLIGATION] Q1: structural definition first: REQUIRED
+Needed for: recovery-independent sector geometry
+Fails if: recovery target chooses structure
+
+------------------------------------------------------------------------------------------------------------------------
+Q2: audit only
+------------------------------------------------------------------------------------------------------------------------
+Requirement: AB=1/B=1/A/Schwarzschild/gamma/PPN/weak-field/kappa=0 are audits only
+[OBLIGATION] Q2: audit only: REQUIRED
+Needed for: anti-smuggling
+Fails if: recovery result becomes construction rule
+
+------------------------------------------------------------------------------------------------------------------------
+Q3: no parent fit
+------------------------------------------------------------------------------------------------------------------------
+Requirement: parent-fit closure cannot select sector geometry
+[OBLIGATION] Q3: no parent fit: REQUIRED
+Needed for: parent gate closure
+Fails if: parent readiness chooses no-overlap
+
+------------------------------------------------------------------------------------------------------------------------
+Q4: no hidden insertion
+------------------------------------------------------------------------------------------------------------------------
+Requirement: recovery success cannot license B_s/F_zeta insertion
+[OBLIGATION] Q4: no hidden insertion: REQUIRED
+Needed for: insertion separation
+Fails if: recovery success becomes coefficient/insertion law
+
+------------------------------------------------------------------------------------------------------------------------
+Q5: no active O upgrade
+------------------------------------------------------------------------------------------------------------------------
+Requirement: recovery-independent audit does not construct active O
+[OBLIGATION] Q5: no active O upgrade: REQUIRED
+Needed for: active-O separation
+Fails if: anti-smuggling result is upgraded to O theorem
+
+------------------------------------------------------------------------------------------------------------------------
+Q6: no residual-control upgrade
+------------------------------------------------------------------------------------------------------------------------
+Requirement: recovery-independent audit does not close residual control
+[OBLIGATION] Q6: no residual-control upgrade: REQUIRED
+Needed for: residual-control separation
+Fails if: recovery rejection is treated as no-overlap theorem
+
+[unresolved_obligations]
+[OBLIGATION] sector-geometry recovery-independence requirements stated -- 6 anti-smuggling requirements remain active
+
+========================================================================================================================
+Case 5: Rejected recovery shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+S1: AB=1 selected geometry
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose sector split because AB=1 works
+[FAIL] S1: AB=1 selected geometry: REJECTED
+Reason: AB=1 is downstream audit, not construction rule
+
+------------------------------------------------------------------------------------------------------------------------
+S2: Schwarzschild selected geometry
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose incidence because Schwarzschild exterior works
+[FAIL] S2: Schwarzschild selected geometry: REJECTED
+Reason: Schwarzschild recovery may audit but not select incidence
+
+------------------------------------------------------------------------------------------------------------------------
+S3: gamma selected geometry
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose pairing because gamma/PPN works
+[FAIL] S3: gamma selected geometry: REJECTED
+Reason: phenomenology cannot define no-overlap
+
+------------------------------------------------------------------------------------------------------------------------
+S4: weak-field selected geometry
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose sector geometry from weak-field success
+[FAIL] S4: weak-field selected geometry: REJECTED
+Reason: weak-field recovery is not sector-geometry derivation
+
+------------------------------------------------------------------------------------------------------------------------
+S5: kappa=0 selected geometry
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose residual exclusion because exterior kappa should vanish
+[FAIL] S5: kappa=0 selected geometry: REJECTED
+Reason: kappa recovery cannot define residual-sector exclusion
+
+------------------------------------------------------------------------------------------------------------------------
+S6: parent-fit selected geometry
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose sector geometry to make parent equation close
+[FAIL] S6: parent-fit selected geometry: REJECTED
+Reason: parent gate remains closed
+
+------------------------------------------------------------------------------------------------------------------------
+S7: recovery licenses insertion
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: use recovery success as B_s/F_zeta insertion law
+[FAIL] S7: recovery licenses insertion: REJECTED
+Reason: coefficient origin and insertion remain separate
+
+[counterexamples]
+[FAIL] sector-geometry recovery shortcuts rejected -- AB=1, Schwarzschild, gamma/PPN, weak-field, kappa=0, parent-fit, and insertion-by-recovery shortcuts are rejected
+
+========================================================================================================================
+Case 6: Recovery-independent sector geometry conclusions
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: recovery as audit
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: recovery may audit completed sector geometry
+[INFO] C1: recovery as audit: CONDITIONALLY_SAFE
+Meaning: recovery remains downstream validation only
+
+------------------------------------------------------------------------------------------------------------------------
+C2: recovery as construction
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: recovery may not select sector geometry
+[FAIL] C2: recovery as construction: REJECTED
+Meaning: sector geometry must be structurally defined
+
+------------------------------------------------------------------------------------------------------------------------
+C3: parent/insertion
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: parent-fit and insertion-by-recovery are rejected
+[FAIL] C3: parent/insertion: REJECTED
+Meaning: parent and insertion gates remain closed
+
+------------------------------------------------------------------------------------------------------------------------
+C4: construction status
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: recovery independence alone does not construct no-overlap geometry
+[DEFER] C4: construction status: NOT_DERIVED
+Meaning: anti-smuggling is necessary but not sufficient
+
+------------------------------------------------------------------------------------------------------------------------
+C5: next route
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: sector geometry obstruction should be classified next
+[DEFER] C5: next route: OPEN
+Meaning: the group is ready to summarize whether current objects construct no-overlap geometry
+
+[governance_assessments]
+[PASS] sector-geometry recovery-independence conclusion stated -- recovery selection rejected; construction obstruction classifier is next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Recovery-independent sector geometry result:
+
+  Recovery may audit completed sector geometry.
+  Recovery may not select sector geometry.
+  AB=1, B=1/A, Schwarzschild, gamma, PPN, weak-field, and kappa=0 cannot define membership, incidence, routing, or divergence behavior.
+  Parent-fit closure cannot define sector geometry.
+  Recovery success cannot license B_s/F_zeta insertion.
+  Anti-smuggling is necessary but does not construct no-overlap geometry.
+  No active O, residual control, insertion, or parent closure is licensed.
+
+Possible next script:
+  candidate_sector_geometry_obstruction.py
+
+Tiny goblin label:
+  A map may be tested by the treasure, but not drawn from the glitter.
+
+[governance_assessments]
+[PASS] recovery-independent sector geometry audit complete -- recovery selection rejected; sector geometry obstruction should be classified next

@@ -97,7 +97,9 @@ e_{\kappa,{\rm metric}}
 \zeta_{{\rm residual},{\rm metric}}.
 \]
 
-This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. The residual-control theorem attempt has now been performed. Direct structural residual kill did not close. Full strict non-metric inertness did not close. Zeta/kappa geometric residual non-reentry did not close. epsilon_vac/e_kappa accounting inertness only partially reduced and does not close the geometric residual obstruction. No non-O residual-control route closes under current licensed objects. This is a controlled obstruction, not a mathematical no-go theorem. The active no-overlap operator construction attempt has now been performed. Active O was not constructed from current licensed objects. Candidate domain/codomain ledgers exist, and \(O(\zeta_{B_s})=\zeta_{B_s}\) remains a useful candidate preservation direction. However, zeta/kappa residual action is not derived, no-overlap pairing is not derived, projection/replacement/constraint law is not derived, divergence behavior is not derived, and boundary/source/mass behavior is not derived. Recovery-selected and repair-selected O are rejected. This is controlled underdetermination, not a proof that O is impossible. O remains not usable in residual control or field equations. The preferred constructive handoff is now sector pairing / no-overlap geometry. The alternate constructive handoff remains \(B_s/F_\zeta\) coefficient origin.
+This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. The residual-control theorem attempt has now been performed. Direct structural residual kill did not close. Full strict non-metric inertness did not close. Zeta/kappa geometric residual non-reentry did not close. epsilon_vac/e_kappa accounting inertness only partially reduced and does not close the geometric residual obstruction. No non-O residual-control route closes under current licensed objects. This is a controlled obstruction, not a mathematical no-go theorem. The active no-overlap operator construction attempt has now been performed. Active O was not constructed from current licensed objects. Candidate domain/codomain ledgers exist, and \(O(\zeta_{B_s})=\zeta_{B_s}\) remains a useful candidate preservation direction. However, zeta/kappa residual action is not derived, no-overlap pairing is not derived, projection/replacement/constraint law is not derived, divergence behavior is not derived, and boundary/source/mass behavior is not derived. Recovery-selected and repair-selected O are rejected. This is controlled underdetermination, not a proof that O is impossible. O remains not usable in residual control or field equations. The sector pairing / no-overlap geometry attempt has now been performed. No-overlap sector geometry was not constructed from current licensed objects. Candidate sector inventory exists. Incidence matrix and routing graph are the best current candidate forms. \(\zeta_{B_s}\rightarrow T_\zeta\) remains a candidate safe-trace anchor. However, complete membership, zero incidence, routing edge law, accounting no-reservoir, guardrail neutralities, and divergence-safe sector behavior remain open. Recovery-selected sector geometry is rejected. This is controlled underdetermination, not a proof of impossibility. Sector geometry is not usable for active \(O\), residual control, \(B_s/F_\zeta\) insertion, or parent closure.
+
+The preferred constructive handoff is now \(B_s/F_\zeta\) coefficient origin. The alternate constructive handoff is minimal sector-geometry postulate inventory.
 
 Ordinary long-range gravitational radiation is TT-only. Ordinary scalar breathing radiation through \(A_{\rm rad}\), \(\zeta\), or \(\kappa\) is rejected.
 
@@ -743,6 +745,62 @@ Rejected:
   partial O structure treated as usable operator.
 ```
 
+No-overlap sector-geometry attempt:
+
+```text
+COMPLETED AS CONTROLLED UNDERDETERMINATION
+```
+
+No-overlap sector geometry:
+
+```text
+NOT_CONSTRUCTED
+NOT USABLE
+NOT PROVEN IMPOSSIBLE
+```
+
+Partial structure:
+
+```text
+candidate sector inventory exists;
+incidence matrix and routing graph are the best current candidate forms;
+zeta_Bs -> T_zeta remains a candidate safe-trace anchor.
+```
+
+Still not derived:
+
+```text
+complete sector membership rule;
+I(T_zeta,R_zeta)=0;
+I(T_zeta,R_kappa)=0;
+construction-derived routing edge law;
+accounting no-reservoir theorem;
+residual-to-source edge exclusion;
+boundary/current/mass/support neutralities;
+strict divergence preservation;
+residual divergence non-reentry.
+```
+
+Rejected:
+
+```text
+sector inventory treated as no-overlap geometry;
+incidence/routing candidates treated as zero/edge laws;
+support-only separation as full no-overlap;
+projection algebra smuggling active O;
+quotient relation hiding residual geometry;
+recovery-selected sector geometry;
+repair-selected sector geometry;
+parent-fit-selected sector geometry.
+```
+
+Current handoff:
+
+```text
+preferred: B_s/F_zeta coefficient origin;
+alternate: minimal sector-geometry postulate inventory.
+```
+
 Residual-control background:
 
 ```text
@@ -772,6 +830,10 @@ O may not remove residual overlap by name.
 O may not be selected from recovery success, boundary failure, source failure, or parent-fit closure.
 O construction status does not license B_s/F_zeta insertion.
 O construction status does not open parent closure.
+Sector geometry status does not license active O.
+Sector geometry status does not license residual control.
+Sector geometry status does not license B_s/F_zeta insertion.
+Sector geometry status does not open parent closure.
 ```
 
 ### \(J_{\rm curv}^\mu\)
@@ -1291,6 +1353,30 @@ but residual action on zeta_residual_metric and kappa_metric remains underived.
 Therefore active O cannot currently close L_double or count-once recombination.
 ```
 
+Sector-geometry construction route note:
+
+```text
+The sector pairing / no-overlap geometry route has now been tested.
+
+It did not construct no-overlap sector geometry.
+
+Positive partial structure:
+  candidate sector inventory exists;
+  incidence matrix and routing graph are the best current candidate forms;
+  zeta_Bs -> T_zeta remains a candidate safe-trace anchor.
+
+Still missing:
+  complete membership;
+  zero incidence;
+  routing edge law;
+  accounting no-reservoir;
+  source no-double-counting;
+  boundary/current/mass/support neutralities;
+  divergence-safe sector law.
+
+Therefore sector geometry cannot currently close L_double or count-once recombination.
+```
+
 ## 5.5 \(B_s/F_\zeta\) Insertion Target
 
 Current target:
@@ -1361,14 +1447,36 @@ Partial result:
   safe trace preservation candidate O(zeta_Bs)=zeta_Bs exists.
 
 Still missing:
-  no-overlap pairing / sector geometry,
   kernel/image closure,
   algebraic operator law,
   divergence behavior,
   boundary/source/mass behavior.
 
+Sector pairing / no-overlap geometry gate:
+  ATTEMPTED
+  NOT_CONSTRUCTED
+  CONTROLLED_UNDERDETERMINATION
+  NOT USABLE
+
+Partial result:
+  candidate sector inventory exists;
+  incidence matrix and routing graph are the best current candidate forms;
+  zeta_Bs -> T_zeta remains a candidate safe-trace anchor.
+
+Still missing:
+  complete sector membership rule,
+  zero incidence law,
+  construction-derived routing edge law,
+  accounting no-reservoir theorem,
+  source no-double-counting,
+  boundary/current/mass/support neutralities,
+  divergence-safe sector law.
+
 Next handoff:
-  sector pairing / no-overlap geometry.
+  B_s/F_zeta coefficient origin.
+
+Alternate handoff:
+  minimal sector-geometry postulate inventory.
 
 (gate label: ATTEMPTED / NOT_CONSTRUCTED)
 
@@ -3528,6 +3636,57 @@ O used in residual control,
 O used in field equations.
 ```
 
+No-overlap sector geometry theorem target:
+
+\[
+I(T_\zeta,R_\zeta)=0,
+\qquad
+I(T_\zeta,R_\kappa)=0.
+\]
+
+Status:
+
+```text
+ATTEMPTED
+NOT_CONSTRUCTED
+CONTROLLED_UNDERDETERMINATION
+NOT USABLE
+```
+
+Current partial scaffold:
+
+```text
+candidate sector inventory exists;
+incidence matrix and routing graph are best current candidate forms;
+zeta_Bs -> T_zeta remains a candidate safe-trace anchor.
+```
+
+Not derived:
+
+```text
+complete sector membership,
+zero incidence law,
+routing edge law,
+accounting no-reservoir theorem,
+source no-double-counting,
+boundary/current/mass/support neutralities,
+divergence-safe sector law.
+```
+
+Not licensed:
+
+```text
+sector inventory as no-overlap geometry,
+incidence by notation,
+routing edge deletion by desire,
+support-only no-overlap,
+projection algebra as active O,
+quotient hiding residual geometry,
+recovery-selected sector geometry,
+repair-selected sector geometry,
+parent-fit-selected sector geometry.
+```
+
 Residual-kill convention:
 
 \[
@@ -3864,8 +4023,12 @@ zeta/kappa non-reentry tested and not derived;
 accounting inertness partially reduced only;
 active O construction attempted and not constructed;
 active O remains controlled-underdefined and not usable;
+sector pairing / no-overlap geometry attempted and not constructed;
+sector geometry remains controlled-underdefined and not usable;
 non-O residual control remains obstructed under current licensed objects.
 ```
+
+Gate 4 does not open from sector inventory, incidence/routing candidates, safe-trace anchoring, or controlled underdetermination.
 
 ## 15.3 Metric Insertion Closure Obligations
 
@@ -3989,11 +4152,29 @@ Active O construction obstruction:
 ```text
 active O construction obstruction:
   controlled underdetermination;
-  missing no-overlap pairing / sector geometry;
+  no-overlap pairing / sector geometry attempted but not constructed;
   missing kernel/image closure;
   missing algebraic law;
   missing divergence behavior;
   missing boundary/source/mass behavior.
+```
+
+Sector pairing / no-overlap geometry obstruction:
+
+```text
+sector pairing / no-overlap geometry obstruction:
+  controlled underdetermination;
+  candidate sector inventory exists;
+  incidence matrix and routing graph are best current candidate forms;
+  zeta_Bs -> T_zeta remains a candidate safe-trace anchor;
+  complete membership missing;
+  zero incidence law missing;
+  routing edge law missing;
+  accounting no-reservoir theorem missing;
+  guardrail neutralities missing;
+  divergence-safe law missing;
+  preferred handoff is B_s/F_zeta coefficient origin;
+  alternate handoff is minimal sector-geometry postulate inventory.
 ```
 
 ## 16.3 Structural Unknowns
@@ -4126,7 +4307,16 @@ active O derivative/divergence behavior,
 active O boundary/source/mass/scalar/current/support behavior,
 recovery-independent residual status theorem,
 boundary/source-compatible residual cleanup theorem,
-sector-by-sector residual non-reentry theorem.
+sector-by-sector residual non-reentry theorem,
+sector inventory to membership theorem,
+trace/residual incidence zero law,
+routing graph edge law,
+accounting no-reservoir theorem,
+source no-double-counting from sector geometry,
+boundary/current/mass/support neutralities from sector geometry,
+divergence-safe sector split,
+recovery-independent no-overlap sector geometry,
+minimal sector-geometry postulate inventory if coefficient origin does not force geometry.
 ```
 
 Residual-control and active-O construction status note:
@@ -4145,12 +4335,18 @@ active O:
   controlled underdetermination, not impossibility;
   not usable in residual control or field equations.
 
-next preferred handoff:
-  sector pairing / no-overlap geometry.
+sector pairing / no-overlap geometry:
+  construction attempt completed;
+  not constructed;
+  controlled underdetermination;
+  partial scaffold only;
+  not usable for active O, residual control, insertion, or parent closure.
 
-B_s/F_zeta coefficient origin:
-  alternate constructive handoff;
-  not derived.
+next preferred handoff:
+  B_s/F_zeta coefficient origin.
+
+alternate constructive handoff:
+  minimal sector-geometry postulate inventory.
 ```
 
 ---
@@ -4174,7 +4370,7 @@ a candidate zeta/vacuum-volume architecture, with kappa kept diagnostic/non-metr
 
 a provisional residual-kill convention or future no-overlap route for count-once scalar trace insertion;
 
-an explicit residual-control and active-O construction status:
+an explicit residual-control, active-O, and sector-geometry construction status:
   the safe trace target is zeta_to_Bs;
   the double-count load is L_double;
   direct residual kill was tested and not derived;
@@ -4184,11 +4380,14 @@ an explicit residual-control and active-O construction status:
   no non-O residual-control route closes under current licensed objects;
   active O construction was attempted and did not construct O;
   candidate domain/codomain and O(zeta_Bs)=zeta_Bs preservation structure exist;
-  no-overlap pairing / sector geometry remains missing;
-  O is not usable in residual control or field equations;
-  recovery-selected and repair-selected O are rejected;
-  recovery may audit residual status but may not select it;
-  boundary/source failure may not select residual cleanup;
+  sector pairing / no-overlap geometry was attempted and did not construct no-overlap geometry;
+  candidate sector inventory exists;
+  incidence matrix and routing graph are the best current candidate forms;
+  zeta_Bs -> T_zeta remains a candidate safe-trace anchor;
+  complete membership, zero incidence, routing edge law, accounting no-reservoir, guardrail neutralities, and divergence-safe law remain open;
+  recovery-selected and repair-selected sector geometry are rejected;
+  recovery may audit residual/sector status but may not select it;
+  boundary/source failure may not select residual cleanup or sector geometry;
   parent closure remains not ready;
 
 a sharpened boundary/scalar-silence and matching/support ledger;
@@ -4211,6 +4410,14 @@ O kernel/image closure,
 O algebraic law,
 O divergence behavior,
 O boundary/source/mass behavior,
+no-overlap sector geometry,
+complete sector membership theorem,
+trace/residual zero incidence law,
+routing edge law,
+accounting no-reservoir theorem,
+guardrail-neutral sector geometry,
+divergence-safe sector geometry,
+minimal sector-geometry postulate inventory,
 derived residual-kill theorem,
 strict non-metric inertness theorem,
 sector-by-sector residual non-reentry theorem,
@@ -4241,35 +4448,48 @@ Do not immediately write a parent field equation.
 The next technical target should be one of the following narrower routes:
 
 ```text
-sector pairing / no-overlap geometry,
 B_s/F_zeta coefficient-origin theorem,
+minimal sector-geometry postulate inventory,
 reduced observational audit.
 ```
 
 Recommended next target:
 
 ```text
-sector pairing / no-overlap geometry
+B_s/F_zeta coefficient-origin theorem
 ```
 
 Reason:
 
 ```text
-The active-O construction attempt has now been performed and did not construct a usable O.
+The sector pairing / no-overlap geometry attempt has now been performed and did not construct
+usable no-overlap geometry.
 
-It localized the sharpest missing structure: the no-overlap pairing / sector geometry.
+It did produce a partial scaffold:
+  candidate sector inventory,
+  incidence/routing as best candidate forms,
+  zeta_Bs -> T_zeta as a candidate safe-trace anchor.
 
-This missing pairing blocks kernel/image closure, projection/replacement/constraint law,
-and any future active-O residual-control retest.
+But the necessary laws remain open:
+  complete membership,
+  zero incidence,
+  routing edge law,
+  accounting no-reservoir,
+  guardrail neutralities,
+  divergence-safe behavior.
+
+The next constructive route is therefore to ask whether B_s/F_zeta coefficient origin can
+supply the safe scalar membership and residual interpretation that sector geometry could not
+derive directly.
 ```
 
 Alternative:
 
 ```text
-B_s/F_zeta coefficient-origin theorem
+minimal sector-geometry postulate inventory
 ```
 
-Use this if the next step attacks insertion law and coefficient origin directly. It may change the residual interpretation or decide whether active O is needed, but it must keep residual control, O construction, and parent closure explicitly open.
+Use this if B_s/F_zeta coefficient origin does not force the needed sector geometry. Any new sector structure must be marked as an explicit choice or postulate, not a derived theorem.
 
 Alternative:
 
@@ -4280,8 +4500,11 @@ reduced observational audit
 Use this only if observations remain downstream audits and do not select residual status, O, coefficients, insertion form, or parent closure.
 
 Do not proceed to parent field equation.
-Do not retest residual control with O.
-O is not usable yet.
+Do not rebuild active O from sector geometry.
+Do not retest residual control using sector scaffold.
+Do not treat incidence/routing candidates as zero/edge laws.
+Do not treat zeta_Bs -> T_zeta as residual control.
+Do not treat controlled underdetermination as impossibility.
 
 ```text
 Parent closure remains blocked by missing residual control, B_s/F_zeta insertion law, active O if used, boundary/source/support neutrality, divergence safety, and parent identity.
@@ -4291,7 +4514,8 @@ Known unresolved dependencies retained upstream of any parent equation:
 
 ```text
 residual-control theorem (non-O routes obstructed; active O not constructed),
-active O (controlled underdetermination; no-overlap pairing / sector geometry missing),
+active O (controlled underdetermination; sector geometry partial scaffold only),
+no-overlap sector geometry (controlled underdetermination; membership/incidence/edge law open),
 B_s/F_zeta insertion law,
 coefficient origin,
 boundary/source-compatible residual cleanup,
@@ -4816,6 +5040,26 @@ license B_s/F_zeta insertion,
 or open parent closure.
 ```
 
+## B.19 Residual-Control Theorem Attempt Witness
+
+Meaning:
+
+```text
+The residual-control theorem attempt tested the available non-O routes.
+
+Direct residual kill did not close.
+Strict non-metric inertness did not close.
+Zeta/kappa geometric non-reentry did not close.
+epsilon/e_kappa accounting inertness only partially reduced.
+No non-O route closes under current licensed objects.
+
+This is a controlled obstruction, not a mathematical no-go theorem.
+
+Active O is optional-open/deferred, not derived, and not proven necessary.
+B_s/F_zeta coefficient origin remains an alternate constructive route.
+Parent equation remains not ready.
+```
+
 ## B.20 Active-O Construction Attempt Witness
 
 Meaning:
@@ -4838,24 +5082,42 @@ This is controlled underdetermination, not O impossibility.
 O remains unusable in residual control or field equations.
 ```
 
-## B.19 Residual-Control Theorem Attempt Witness
+## B.21 Sector-Geometry Construction Attempt Witness
 
 Meaning:
 
 ```text
-The residual-control theorem attempt tested the available non-O routes.
+The sector pairing / no-overlap geometry attempt did not construct no-overlap geometry.
 
-Direct residual kill did not close.
-Strict non-metric inertness did not close.
-Zeta/kappa geometric non-reentry did not close.
-epsilon/e_kappa accounting inertness only partially reduced.
-No non-O route closes under current licensed objects.
+Partial structure exists:
+  candidate sector inventory;
+  incidence matrix and routing graph as best current candidate forms;
+  zeta_Bs -> T_zeta as candidate safe-trace anchor.
 
-This is a controlled obstruction, not a mathematical no-go theorem.
+Still missing:
+  complete sector membership;
+  zero incidence law;
+  routing edge law;
+  accounting no-reservoir;
+  source no-double-counting;
+  boundary/current/mass/support neutralities;
+  divergence-safe sector behavior.
 
-Active O is optional-open/deferred, not derived, and not proven necessary.
-B_s/F_zeta coefficient origin remains an alternate constructive route.
-Parent equation remains not ready.
+Rejected:
+  inventory as geometry;
+  incidence by notation;
+  edge deletion by desire;
+  support-only no-overlap;
+  projection algebra as active O;
+  quotient hiding residual geometry;
+  recovery-selected geometry;
+  repair-selected geometry;
+  parent-fit-selected geometry.
+
+This is controlled underdetermination, not impossibility.
+
+Sector geometry remains unusable for active O, residual control, B_s/F_zeta insertion,
+or parent equation closure.
 ```
 
 ---
@@ -5119,6 +5381,43 @@ reduced observational audit selecting residual status or coefficients,
 parent equation opened from residual-control theorem attempt.
 ```
 
+## C.12 Sector-Geometry Failures
+
+```text
+sector inventory treated as no-overlap geometry,
+sector label treated as membership,
+symbol-origin membership,
+trace label as safe trace theorem,
+residual label as inertness,
+ordinary orthogonality by habit,
+zero incidence by notation,
+routing edge deletion by desire,
+support-only no-overlap,
+source routing as full no-overlap,
+accounting sector as residual reservoir,
+quotient relation hiding residual geometry,
+projection algebra smuggling active O,
+correction term as hidden source,
+boundary repair selecting sector geometry,
+current leak hidden by sector split,
+mass shift hidden by sector split,
+support layer hiding no-overlap failure,
+recovery-selected sector geometry,
+AB=1-selected sector geometry,
+B=1/A-selected sector geometry,
+Schwarzschild-selected sector geometry,
+gamma/PPN-selected sector geometry,
+weak-field-selected sector geometry,
+kappa=0-selected sector geometry,
+parent-fit-selected sector geometry,
+coefficient-origin handoff treated as insertion theorem,
+minimal-postulate handoff treated as already chosen,
+controlled underdetermination treated as no-overlap impossibility,
+active O rebuild before sector geometry or alternate structure,
+residual-control retest using sector scaffold,
+parent equation attempted from sector geometry summary.
+```
+
 ---
 
 # Appendix D — Operator / Projector Readiness Checklists
@@ -5176,6 +5475,103 @@ recovery independence:
 
 Current conclusion:
   active O is not constructed and not usable.
+```
+
+## D.1a No-Overlap Sector Geometry
+
+Required checklist:
+
+```text
+sector inventory:
+  complete sector list with membership rule and boundary conditions.
+
+complete membership rule:
+  every object assigned to exactly one sector with no ambiguity.
+
+mathematical zero / no-overlap criterion:
+  I(T_zeta, R_zeta) = 0, I(T_zeta, R_kappa) = 0 (or equivalent incidence law).
+
+trace / residual incidence law:
+  zeta_Bs -> T_zeta: safe-trace anchor must satisfy incidence zero exactly.
+
+routing edge law:
+  routing graph edges licensed by derived law, not by candidate assignment.
+
+accounting no-reservoir theorem:
+  no field-type acts as a hidden reservoir across sector boundaries.
+
+source no-double-counting theorem:
+  no source contributes to more than one sector's L_double load.
+
+boundary / current / mass / support neutralities:
+  sector boundaries do not generate spurious currents, masses, or scalar tails.
+
+divergence-safe sector law:
+  divergence of sector-assigned fields does not leak across sectors.
+
+recovery independence:
+  recovery selection does not implicitly merge sectors.
+
+repair independence:
+  repair insertion does not re-route across sector boundaries.
+
+compatibility with B_s/F_zeta insertion:
+  sector geometry must survive B_s and F_zeta coefficient derivation.
+
+compatibility with residual control:
+  sector geometry must be consistent with residual-kill or residual-survival.
+
+parent-gate closure:
+  sector geometry does not open any parent equation gate by itself.
+```
+
+Current sector-geometry checklist status:
+
+```text
+sector inventory:
+  candidate only; best current candidate: object-type list from registry.
+
+complete membership rule:
+  not derived; no candidate.
+
+mathematical zero / no-overlap criterion:
+  not derived; best current candidate form: incidence matrix I(T,R).
+
+trace / residual incidence law:
+  not derived; zeta_Bs -> T_zeta is candidate safe-trace anchor only.
+
+routing edge law:
+  not derived; best current candidate form: routing graph edge assignment.
+
+accounting no-reservoir theorem:
+  not derived; no candidate.
+
+source no-double-counting theorem:
+  not derived; no candidate.
+
+boundary / current / mass / support neutralities:
+  not derived; no candidate.
+
+divergence-safe sector law:
+  not derived; no candidate.
+
+recovery independence:
+  not addressed.
+
+repair independence:
+  not addressed.
+
+compatibility with B_s/F_zeta insertion:
+  not tested; sector geometry not constructed.
+
+compatibility with residual control:
+  not tested; sector geometry not constructed.
+
+parent-gate closure:
+  not claimed; sector geometry does not open any parent equation gate.
+
+Current conclusion:
+  no-overlap sector geometry is not constructed and not usable.
 ```
 
 ## D.2 Role-Specific Projectors
@@ -5416,9 +5812,24 @@ No-overlap O status:
   kernel/image, algebraic law, divergence behavior, and boundary/source/mass behavior remain open;
   recovery-selected and repair-selected O are rejected;
   controlled underdetermination, not impossibility;
-  O is not usable in residual control or field equations;
-  preferred next target is sector pairing / no-overlap geometry;
-  B_s/F_zeta coefficient origin remains alternate.
+  O is not usable in residual control or field equations.
+
+No-overlap sector geometry status:
+  sector pairing / no-overlap geometry attempt completed;
+  no-overlap sector geometry not constructed;
+  candidate sector inventory exists;
+  best current candidate forms: incidence matrix I(T,R) and routing graph;
+  zeta_Bs -> T_zeta is candidate safe-trace anchor only;
+  complete membership rule not derived;
+  I(T_zeta,R_zeta) = 0 and I(T_zeta,R_kappa) = 0 not derived;
+  routing edge law not derived;
+  accounting no-reservoir theorem not derived;
+  guardrail neutralities not derived;
+  divergence-safe sector behavior not derived;
+  controlled underdetermination, not impossibility;
+  sector geometry does not open any parent equation gate;
+  preferred next target is B_s/F_zeta coefficient-origin theorem;
+  alternate: minimal sector-geometry postulate inventory.
 
 Boundary safety is required and not derived:
   no exterior zeta/kappa charge,
@@ -5468,10 +5879,10 @@ Parent correction tensor status:
 The theory should not yet write a final parent equation.
 
 The next honest target is:
-  sector pairing / no-overlap geometry,
   B_s/F_zeta coefficient-origin theorem,
+  or minimal sector-geometry postulate inventory,
   or reduced observational audit,
-not active-O construction attempt and not parent closure.
+not active-O construction attempt, not sector-geometry retest, and not parent closure.
 ```
 
 Compact closure rule:
@@ -5507,5 +5918,14 @@ No partial-O structure is usable as O.
 No sector-pairing handoff is a no-overlap theorem.
 No O impossibility theorem is earned.
 No residual-control retest with O is licensed.
+No no-overlap sector geometry is earned.
+No sector inventory is usable as geometry.
+No incidence/routing candidate is usable as a zero/edge law.
+No safe-trace anchor is usable as residual control.
+No sector-geometry obstruction is an impossibility theorem.
+No active-O rebuild is licensed from sector scaffold.
+No residual-control retest is licensed from sector scaffold.
+No B_s/F_zeta insertion is licensed from sector scaffold.
+No parent equation gate opens from sector-geometry attempt.
 ```
 

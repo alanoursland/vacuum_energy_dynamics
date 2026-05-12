@@ -1,0 +1,379 @@
+
+========================================================================================================================
+Candidate Sector Inventory
+========================================================================================================================
+[INFO] Archive dependency check:
+  - g28_sector_problem: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g27_summary: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g27_ob: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g26_summary: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Sector inventory problem
+========================================================================================================================
+Question:
+
+  What sectors must the theory distinguish before no-overlap can be meaningful?
+
+Reference discipline:
+
+  Sector names are not sector membership rules.
+  Sector inventory is not no-overlap pairing.
+  Parent sector is included only to exclude it.
+
+[governance_assessments]
+[INFO] sector inventory opened -- inventorying candidate sectors without deriving membership or pairing
+
+========================================================================================================================
+Case 1: Sector inventory symbolic ledger
+========================================================================================================================
+Full candidate sector tuple:
+
+  sectors = (T_zeta, R_zeta, R_kappa, A_eps, A_kappa, S_src, B_bdy, J_cur, M_A, U_sup, D_diag, P_parent)
+
+Admissible candidate sector tuple:
+
+  admissible = (T_zeta, R_zeta, R_kappa, A_eps, A_kappa, S_src, B_bdy, J_cur, M_A, U_sup, D_diag)
+
+Excluded sector tuple:
+
+  excluded = (P_parent,)
+
+Inventory load:
+
+  L_sector_inventory = inventory_gap + membership_gap
+
+Interpretation:
+
+  Inventory and membership remain distinct.
+  Parent sector is excluded from construction.
+
+[derived_results]
+[OBLIGATION] sector inventory candidate ledger stated -- sectors = (T_zeta, R_zeta, R_kappa, A_eps, A_kappa, S_src, B_bdy, J_cur, M_A, U_sup, D_diag, P_parent)
+
+========================================================================================================================
+Case 2: Candidate sector inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+S1: safe scalar trace sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: T_zeta
+Meaning: zeta_to_Bs / zeta_Bs safe trace route
+[INFO] S1: safe scalar trace sector: ADMISSIBLE_CANDIDATE
+Allowed role: candidate safe ordinary scalar trace sector
+Hazard: safe trace sector accidentally admits residual zeta/kappa reentry
+
+------------------------------------------------------------------------------------------------------------------------
+S2: zeta residual sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: R_zeta
+Meaning: zeta_residual_metric sector
+[INFO] S2: zeta residual sector: ADMISSIBLE_CANDIDATE
+Allowed role: candidate residual sector requiring classification
+Hazard: residual zeta is declared inert/killed by naming
+
+------------------------------------------------------------------------------------------------------------------------
+S3: kappa residual sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: R_kappa
+Meaning: kappa_metric residual sector
+[INFO] S3: kappa residual sector: ADMISSIBLE_CANDIDATE
+Allowed role: candidate residual sector requiring classification
+Hazard: kappa residual is declared diagnostic or harmless by naming
+
+------------------------------------------------------------------------------------------------------------------------
+S4: epsilon accounting sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: A_eps
+Meaning: epsilon_vac accounting sector
+[INFO] S4: epsilon accounting sector: AUXILIARY_CANDIDATE
+Allowed role: accounting sector if non-reservoir discipline is preserved
+Hazard: epsilon accounting hides residual metric/source load
+
+------------------------------------------------------------------------------------------------------------------------
+S5: e_kappa accounting sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: A_kappa
+Meaning: e_kappa accounting sector
+[INFO] S5: e_kappa accounting sector: AUXILIARY_CANDIDATE
+Allowed role: accounting sector if non-reservoir discipline is preserved
+Hazard: e_kappa accounting hides kappa/zeta residual geometry
+
+------------------------------------------------------------------------------------------------------------------------
+S6: ordinary source sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: S_src
+Meaning: ordinary source / source-routing sector
+[INFO] S6: ordinary source sector: AUXILIARY_CANDIDATE
+Allowed role: source audit sector
+Hazard: source routing treated as full no-overlap proof
+
+------------------------------------------------------------------------------------------------------------------------
+S7: boundary sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: B_bdy
+Meaning: boundary scalar-tail, shell, or boundary-load sector
+[INFO] S7: boundary sector: AUXILIARY_CANDIDATE
+Allowed role: boundary audit sector
+Hazard: boundary failure selects sector geometry
+
+------------------------------------------------------------------------------------------------------------------------
+S8: current sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: J_cur
+Meaning: current-flux sector
+[INFO] S8: current sector: AUXILIARY_CANDIDATE
+Allowed role: current-flux audit sector
+Hazard: current leakage hidden by sector split
+
+------------------------------------------------------------------------------------------------------------------------
+S9: A-sector mass
+------------------------------------------------------------------------------------------------------------------------
+Symbol: M_A
+Meaning: A-sector mass / mass accounting sector
+[INFO] S9: A-sector mass: AUXILIARY_CANDIDATE
+Allowed role: mass audit sector
+Hazard: mass shift hidden as residual cleanup
+
+------------------------------------------------------------------------------------------------------------------------
+S10: support/matching sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: U_sup
+Meaning: support, smoothing, transition, seam, and matching data
+[INFO] S10: support/matching sector: AUXILIARY_CANDIDATE
+Allowed role: support/matching audit sector
+Hazard: support disjointness treated as full no-overlap proof
+
+------------------------------------------------------------------------------------------------------------------------
+S11: diagnostic sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: D_diag
+Meaning: diagnostic-only bookkeeping sector
+[INFO] S11: diagnostic sector: DIAGNOSTIC_CANDIDATE
+Allowed role: audit-only sector if no constructive role is derived
+Hazard: diagnostic label is upgraded to inertness theorem
+
+------------------------------------------------------------------------------------------------------------------------
+S12: parent sector
+------------------------------------------------------------------------------------------------------------------------
+Symbol: P_parent
+Meaning: parent field-equation sector
+[FAIL] S12: parent sector: PARENT_EXCLUDED
+Allowed role: listed only for explicit exclusion
+Hazard: sector inventory opens parent equation
+
+[governance_assessments]
+[PASS] candidate sector inventory classified -- 12 sector candidates classified
+
+========================================================================================================================
+Case 3: Inventory boundaries
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: inventory not membership
+------------------------------------------------------------------------------------------------------------------------
+Boundary: naming a sector does not define membership
+[OBLIGATION] B1: inventory not membership: REQUIRED
+Meaning: membership rules must be derived next
+
+------------------------------------------------------------------------------------------------------------------------
+B2: inventory not pairing
+------------------------------------------------------------------------------------------------------------------------
+Boundary: naming sectors does not define overlap
+[OBLIGATION] B2: inventory not pairing: REQUIRED
+Meaning: pairing/incidence/projection/routing criterion remains open
+
+------------------------------------------------------------------------------------------------------------------------
+B3: inventory not O
+------------------------------------------------------------------------------------------------------------------------
+Boundary: sector inventory does not construct active O
+[OBLIGATION] B3: inventory not O: REQUIRED
+Meaning: O still needs kernel/image, algebraic law, divergence, and guardrails
+
+------------------------------------------------------------------------------------------------------------------------
+B4: inventory not residual control
+------------------------------------------------------------------------------------------------------------------------
+Boundary: sector inventory does not close residual control
+[OBLIGATION] B4: inventory not residual control: REQUIRED
+Meaning: residual non-reentry and count-once recombination remain open
+
+------------------------------------------------------------------------------------------------------------------------
+B5: parent sector excluded
+------------------------------------------------------------------------------------------------------------------------
+Boundary: parent sector is explicitly excluded from construction
+[OBLIGATION] B5: parent sector excluded: REQUIRED
+Meaning: parent equation remains closed
+
+[governance_assessments]
+[PASS] sector inventory boundaries stated -- inventory is not membership, pairing, active O, residual control, or parent closure
+
+========================================================================================================================
+Case 4: Inventory tests
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+T1: inventory completeness
+------------------------------------------------------------------------------------------------------------------------
+Test: does the inventory include trace, residual, accounting, source, boundary, current, mass, support, diagnostic, and parent-exclusion sectors?
+[DEFER] T1: inventory completeness: CANDIDATE
+Result: yes, as candidate labels
+Implication: inventory is broad enough for next membership audit
+
+------------------------------------------------------------------------------------------------------------------------
+T2: safe trace uniqueness
+------------------------------------------------------------------------------------------------------------------------
+Test: does T_zeta preserve zeta_to_Bs as the safe trace candidate?
+[DEFER] T2: safe trace uniqueness: CANDIDATE
+Result: yes, as inventory label only
+Implication: safe trace sector still needs membership rule
+
+------------------------------------------------------------------------------------------------------------------------
+T3: residual sector classification
+------------------------------------------------------------------------------------------------------------------------
+Test: are R_zeta and R_kappa classified as inert or killed?
+[DEFER] T3: residual sector classification: NOT_DERIVED
+Result: no; they are candidate residual sectors only
+Implication: no residual control is gained from inventory
+
+------------------------------------------------------------------------------------------------------------------------
+T4: accounting reservoir test
+------------------------------------------------------------------------------------------------------------------------
+Test: do A_eps and A_kappa absorb residual geometry?
+[FAIL] T4: accounting reservoir test: REJECTED
+Result: no; accounting sectors are listed only with non-reservoir guardrail
+Implication: accounting cannot solve zeta/kappa geometry
+
+------------------------------------------------------------------------------------------------------------------------
+T5: support/source sufficiency test
+------------------------------------------------------------------------------------------------------------------------
+Test: do source/support sectors define no-overlap by themselves?
+[FAIL] T5: support/source sufficiency test: REJECTED
+Result: no; they are auxiliary audit sectors
+Implication: source/support disjointness is insufficient alone
+
+------------------------------------------------------------------------------------------------------------------------
+T6: parent sector test
+------------------------------------------------------------------------------------------------------------------------
+Test: is P_parent an admissible construction sector?
+[FAIL] T6: parent sector test: PARENT_EXCLUDED
+Result: no; it is included only for exclusion
+Implication: parent equation remains closed
+
+[governance_assessments]
+[DEFER] sector inventory tests completed -- candidate inventory exists; membership and pairing remain open
+
+========================================================================================================================
+Case 5: Rejected inventory shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+F1: sector label as membership
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: named sector treated as derived membership rule
+[FAIL] F1: sector label as membership: REJECTED
+Reason: membership rules remain open
+
+------------------------------------------------------------------------------------------------------------------------
+F2: inventory as pairing
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: sector inventory treated as no-overlap pairing
+[FAIL] F2: inventory as pairing: REJECTED
+Reason: pairing/incidence criterion remains open
+
+------------------------------------------------------------------------------------------------------------------------
+F3: residual sector as inertness
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: R_zeta or R_kappa label makes residuals inert
+[FAIL] F3: residual sector as inertness: REJECTED
+Reason: residual non-reentry is not derived
+
+------------------------------------------------------------------------------------------------------------------------
+F4: diagnostic sector as theorem
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: D_diag label makes diagnostic data non-constructive by theorem
+[FAIL] F4: diagnostic sector as theorem: REJECTED
+Reason: diagnostic-only status must be controlled by a rule
+
+------------------------------------------------------------------------------------------------------------------------
+F5: support/source as full proof
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: S_src or U_sup disjointness treated as full no-overlap
+[FAIL] F5: support/source as full proof: REJECTED
+Reason: source/support separation is insufficient alone
+
+------------------------------------------------------------------------------------------------------------------------
+F6: parent sector admitted
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: P_parent used as active construction sector
+[FAIL] F6: parent sector admitted: REJECTED
+Reason: parent equation remains excluded
+
+[counterexamples]
+[FAIL] sector inventory shortcuts rejected -- sector label as membership, inventory as pairing, residual sector as inertness, diagnostic theorem, support/source proof, and parent admission are rejected
+
+========================================================================================================================
+Case 6: Sector inventory conclusions
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: sector inventory
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: candidate sector inventory is available
+[DEFER] C1: sector inventory: CANDIDATE
+Meaning: the theory has a named list of sectors to test
+
+------------------------------------------------------------------------------------------------------------------------
+C2: membership
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: sector membership rules are not derived
+[DEFER] C2: membership: NOT_DERIVED
+Meaning: membership is the next target
+
+------------------------------------------------------------------------------------------------------------------------
+C3: no-overlap
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: no-overlap pairing/incidence is not derived
+[DEFER] C3: no-overlap: NOT_DERIVED
+Meaning: inventory does not define overlap
+
+------------------------------------------------------------------------------------------------------------------------
+C4: residual control
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: residual control is not advanced to closure
+[DEFER] C4: residual control: NOT_DERIVED
+Meaning: R_zeta and R_kappa remain unresolved
+
+------------------------------------------------------------------------------------------------------------------------
+C5: parent
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: parent sector is excluded
+[FAIL] C5: parent: PARENT_EXCLUDED
+Meaning: parent equation remains not ready
+
+[governance_assessments]
+[DEFER] sector inventory conclusion stated -- candidate inventory available; membership rules are next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Sector inventory result:
+
+  Candidate sector inventory is available.
+  T_zeta is the candidate safe scalar trace sector.
+  R_zeta and R_kappa are candidate residual sectors, not inert/killed sectors.
+  A_eps and A_kappa are accounting sectors only if no-reservoir discipline is preserved.
+  source, boundary, current, mass, and support sectors are audit sectors, not full no-overlap proof.
+  diagnostic sector is audit-only unless a rule is derived.
+  parent sector is excluded.
+  Sector membership rules are not derived.
+  No-overlap pairing/incidence is not derived.
+
+Possible next script:
+  candidate_sector_membership_rules.py
+
+Tiny goblin label:
+  Name the rooms before drawing the doors.
+
+[governance_assessments]
+[PASS] sector inventory complete -- candidate sectors classified; membership rules remain next

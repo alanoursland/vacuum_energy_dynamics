@@ -1,0 +1,361 @@
+
+========================================================================================================================
+Candidate Trace Residual Incidence
+========================================================================================================================
+[INFO] Archive dependency check:
+  - g28_forms: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_mem: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_inv: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g28_prob: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g27_summary: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Trace/residual incidence problem
+========================================================================================================================
+Question:
+
+  Can the safe trace sector be separated from zeta/kappa residual sectors?
+
+Reference discipline:
+
+  Incidence zero must have content.
+  Routing edges must be derived.
+  Residual non-incidence is not residual erasure.
+
+[governance_assessments]
+[INFO] trace/residual incidence audit opened -- testing incidence/routing candidates on T_zeta, R_zeta, and R_kappa
+
+========================================================================================================================
+Case 1: Trace/residual incidence symbolic ledger
+========================================================================================================================
+Trace/residual incidence symbols:
+
+  I_T_Rz = I_T_Rz
+  I_T_Rk = I_T_Rk
+  E_Rz_T = E_Rz_T
+  E_Rk_T = E_Rk_T
+  E_Rz_src = E_Rz_src
+  E_Rk_src = E_Rk_src
+
+Trace/residual incidence load:
+
+  L_trace_residual = edge_gap + incidence_gap + reentry_gap + residual_gap + trace_gap
+
+Interpretation:
+
+  Trace/residual incidence is not derived.
+  Candidate safe-trace anchoring survives, but residual edge rules remain open.
+
+[derived_results]
+[OBLIGATION] trace/residual incidence load stated -- L_trace_residual = edge_gap + incidence_gap + reentry_gap + residual_gap + trace_gap
+
+========================================================================================================================
+Case 2: Trace/residual incidence candidates
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+I1: safe trace incidence
+------------------------------------------------------------------------------------------------------------------------
+Candidate: zeta_Bs is incident to T_zeta
+[DEFER] I1: safe trace incidence: CANDIDATE
+Works if: T_zeta is defined by safe zeta_to_Bs trace role
+Hazard: T_zeta also admits residual trace reentry
+
+------------------------------------------------------------------------------------------------------------------------
+I2: zeta residual non-incidence
+------------------------------------------------------------------------------------------------------------------------
+Candidate: I(T_zeta, R_zeta) = 0
+[DEFER] I2: zeta residual non-incidence: UNDERDETERMINED
+Works if: incidence zero is defined by a trace/residual role law
+Hazard: zero incidence is declared by notation
+
+------------------------------------------------------------------------------------------------------------------------
+I3: kappa residual non-incidence
+------------------------------------------------------------------------------------------------------------------------
+Candidate: I(T_zeta, R_kappa) = 0
+[DEFER] I3: kappa residual non-incidence: UNDERDETERMINED
+Works if: kappa cannot route back into ordinary trace/source role
+Hazard: kappa residual is hidden by sector label
+
+------------------------------------------------------------------------------------------------------------------------
+I4: residual-to-trace edge exclusion
+------------------------------------------------------------------------------------------------------------------------
+Candidate: no directed edge R_zeta -> T_zeta and no directed edge R_kappa -> T_zeta
+[DEFER] I4: residual-to-trace edge exclusion: CANDIDATE
+Works if: edge rules are construction-derived and not selected by recovery/repair
+Hazard: edge deletion by desire
+
+------------------------------------------------------------------------------------------------------------------------
+I5: residual-to-source edge exclusion
+------------------------------------------------------------------------------------------------------------------------
+Candidate: no directed edge R_zeta/R_kappa -> ordinary source sector
+[DEFER] I5: residual-to-source edge exclusion: UNDERDETERMINED
+Works if: source-routing law prevents ordinary source duplication
+Hazard: source no-double-counting assumed
+
+------------------------------------------------------------------------------------------------------------------------
+I6: support-only separation
+------------------------------------------------------------------------------------------------------------------------
+Candidate: support(T_zeta) disjoint from support(R_zeta/R_kappa)
+[DEFER] I6: support-only separation: INSUFFICIENT
+Works if: also paired with boundary/divergence/reentry controls
+Hazard: transition and boundary terms reintroduce overlap
+
+------------------------------------------------------------------------------------------------------------------------
+I7: recovery-selected incidence
+------------------------------------------------------------------------------------------------------------------------
+Candidate: incidence chosen so AB=1 or Schwarzschild recovery works
+[FAIL] I7: recovery-selected incidence: REJECTED
+Works if: never allowed
+Hazard: recovery constructs incidence
+
+[governance_assessments]
+[DEFER] trace/residual incidence candidates classified -- 7 trace/residual incidence candidates classified
+
+========================================================================================================================
+Case 3: Trace/residual incidence tests
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+T1: safe trace assignment
+------------------------------------------------------------------------------------------------------------------------
+Test: can zeta_Bs -> T_zeta remain candidate?
+[DEFER] T1: safe trace assignment: CANDIDATE
+Result: yes, as safe-trace assignment only
+Implication: safe trace survives as candidate anchor
+
+------------------------------------------------------------------------------------------------------------------------
+T2: zeta residual zero incidence
+------------------------------------------------------------------------------------------------------------------------
+Test: can I(T_zeta, R_zeta)=0 be derived now?
+[DEFER] T2: zeta residual zero incidence: NOT_DERIVED
+Result: no; zero incidence has no derived rule yet
+Implication: zeta residual non-overlap remains open
+
+------------------------------------------------------------------------------------------------------------------------
+T3: kappa residual zero incidence
+------------------------------------------------------------------------------------------------------------------------
+Test: can I(T_zeta, R_kappa)=0 be derived now?
+[DEFER] T3: kappa residual zero incidence: NOT_DERIVED
+Result: no; kappa reentry exclusion has no derived rule yet
+Implication: kappa residual non-overlap remains open
+
+------------------------------------------------------------------------------------------------------------------------
+T4: residual-to-trace route exclusion
+------------------------------------------------------------------------------------------------------------------------
+Test: can residual-to-trace edges be excluded now?
+[DEFER] T4: residual-to-trace route exclusion: UNDERDETERMINED
+Result: not yet; edge rules are not derived
+Implication: routing graph remains promising but open
+
+------------------------------------------------------------------------------------------------------------------------
+T5: residual-to-source route exclusion
+------------------------------------------------------------------------------------------------------------------------
+Test: can residual-to-source edges be excluded now?
+[DEFER] T5: residual-to-source route exclusion: UNDERDETERMINED
+Result: not yet; source routing law remains open
+Implication: source no-double-counting remains a required audit
+
+------------------------------------------------------------------------------------------------------------------------
+T6: support-only separation
+------------------------------------------------------------------------------------------------------------------------
+Test: does support-only separation close trace/residual incidence?
+[DEFER] T6: support-only separation: INSUFFICIENT
+Result: no; support cannot control trace/source/divergence reentry alone
+Implication: support can only be auxiliary
+
+------------------------------------------------------------------------------------------------------------------------
+T7: downstream closure
+------------------------------------------------------------------------------------------------------------------------
+Test: does trace/residual incidence close active O or residual control now?
+[FAIL] T7: downstream closure: REJECTED
+Result: no
+Implication: downstream gates remain closed
+
+[governance_assessments]
+[DEFER] trace/residual incidence tests completed -- safe trace anchor survives; residual incidence/routing non-overlap not derived
+
+========================================================================================================================
+Case 4: Trace/residual incidence requirements
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: define trace incidence
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state what it means for zeta_Bs to be incident to T_zeta
+[OBLIGATION] R1: define trace incidence: REQUIRED
+Needed for: safe trace membership theorem
+Fails if: T_zeta is just a name
+
+------------------------------------------------------------------------------------------------------------------------
+R2: define residual non-incidence
+------------------------------------------------------------------------------------------------------------------------
+Requirement: state what I(T_zeta, R_zeta)=0 and I(T_zeta, R_kappa)=0 mean
+[OBLIGATION] R2: define residual non-incidence: REQUIRED
+Needed for: no-overlap theorem
+Fails if: zero incidence is notation only
+
+------------------------------------------------------------------------------------------------------------------------
+R3: edge rules
+------------------------------------------------------------------------------------------------------------------------
+Requirement: derive routing graph edge rules
+[OBLIGATION] R3: edge rules: REQUIRED
+Needed for: residual-to-trace/source exclusion
+Fails if: edges are deleted because closure needs them gone
+
+------------------------------------------------------------------------------------------------------------------------
+R4: no residual erasure
+------------------------------------------------------------------------------------------------------------------------
+Requirement: residual non-incidence cannot mean residuals are killed
+[OBLIGATION] R4: no residual erasure: REQUIRED
+Needed for: honest residual classification
+Fails if: R_zeta/R_kappa become inert by label
+
+------------------------------------------------------------------------------------------------------------------------
+R5: source/boundary compatibility
+------------------------------------------------------------------------------------------------------------------------
+Requirement: trace/residual incidence must preserve source/boundary/support auditability
+[OBLIGATION] R5: source/boundary compatibility: REQUIRED
+Needed for: guardrail safety
+Fails if: incidence hides source or boundary leakage
+
+------------------------------------------------------------------------------------------------------------------------
+R6: recovery independence
+------------------------------------------------------------------------------------------------------------------------
+Requirement: incidence cannot be selected from AB=1, Schwarzschild, gamma, PPN, weak-field, or kappa=0
+[OBLIGATION] R6: recovery independence: REQUIRED
+Needed for: anti-smuggling
+Fails if: recovery chooses incidence
+
+------------------------------------------------------------------------------------------------------------------------
+R7: downstream separation
+------------------------------------------------------------------------------------------------------------------------
+Requirement: trace/residual incidence does not license active O, residual control, insertion, or parent closure
+[OBLIGATION] R7: downstream separation: REQUIRED
+Needed for: not overclaiming
+Fails if: incidence audit becomes theorem closure
+
+[unresolved_obligations]
+[OBLIGATION] trace/residual incidence requirements stated -- 7 requirements remain open for trace/residual non-overlap
+
+========================================================================================================================
+Case 5: Rejected trace/residual incidence shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+F1: zero by notation
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: I(T_zeta,R_zeta)=0 written without incidence law
+[FAIL] F1: zero by notation: REJECTED
+Reason: zero incidence must have content
+
+------------------------------------------------------------------------------------------------------------------------
+F2: edge deletion by desire
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: delete R_zeta/R_kappa -> T_zeta edges because residual control needs them gone
+[FAIL] F2: edge deletion by desire: REJECTED
+Reason: edge rules must be derived
+
+------------------------------------------------------------------------------------------------------------------------
+F3: residual non-incidence as inertness
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: non-incidence means residuals are inert or killed
+[FAIL] F3: residual non-incidence as inertness: REJECTED
+Reason: non-incidence is not residual erasure
+
+------------------------------------------------------------------------------------------------------------------------
+F4: source route ignored
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: trace incidence declared while residual-to-source route remains unaudited
+[FAIL] F4: source route ignored: REJECTED
+Reason: source duplication must remain visible
+
+------------------------------------------------------------------------------------------------------------------------
+F5: support-only proof
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: support disjointness treated as complete trace/residual separation
+[FAIL] F5: support-only proof: REJECTED
+Reason: support separation is insufficient alone
+
+------------------------------------------------------------------------------------------------------------------------
+F6: recovery-selected incidence
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose incidence because recovery succeeds
+[FAIL] F6: recovery-selected incidence: REJECTED
+Reason: recovery may audit but not construct
+
+------------------------------------------------------------------------------------------------------------------------
+F7: incidence opens parent
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: trace/residual incidence treated as parent readiness
+[FAIL] F7: incidence opens parent: REJECTED
+Reason: parent equation remains closed
+
+[counterexamples]
+[FAIL] trace/residual incidence shortcuts rejected -- zero by notation, edge deletion by desire, residual inertness, source route ignored, support-only proof, recovery-selected incidence, and parent readiness are rejected
+
+========================================================================================================================
+Case 6: Trace/residual incidence conclusions
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: safe trace anchor
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: zeta_Bs -> T_zeta remains candidate
+[DEFER] C1: safe trace anchor: CANDIDATE
+Meaning: safe trace anchor survives but is not full no-overlap
+
+------------------------------------------------------------------------------------------------------------------------
+C2: zeta residual incidence
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: I(T_zeta,R_zeta)=0 is not derived
+[DEFER] C2: zeta residual incidence: NOT_DERIVED
+Meaning: zeta residual non-overlap remains open
+
+------------------------------------------------------------------------------------------------------------------------
+C3: kappa residual incidence
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: I(T_zeta,R_kappa)=0 is not derived
+[DEFER] C3: kappa residual incidence: NOT_DERIVED
+Meaning: kappa residual non-overlap remains open
+
+------------------------------------------------------------------------------------------------------------------------
+C4: routing edges
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: residual-to-trace/source routing exclusion is underdetermined
+[DEFER] C4: routing edges: UNDERDETERMINED
+Meaning: routing graph remains promising but requires edge law
+
+------------------------------------------------------------------------------------------------------------------------
+C5: next route
+------------------------------------------------------------------------------------------------------------------------
+Conclusion: accounting/source incidence should be audited next
+[DEFER] C5: next route: OPEN
+Meaning: residual-to-source and accounting reservoir risks remain central
+
+[governance_assessments]
+[DEFER] trace/residual incidence conclusion stated -- trace/residual non-overlap not derived; accounting/source incidence should be audited next
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Trace/residual incidence result:
+
+  zeta_Bs -> T_zeta remains a candidate safe-trace anchor.
+  I(T_zeta, R_zeta)=0 is not derived.
+  I(T_zeta, R_kappa)=0 is not derived.
+  residual-to-trace edge exclusion is underdetermined.
+  residual-to-source edge exclusion is underdetermined.
+  support-only separation is insufficient.
+  residual non-incidence does not mean residual erasure.
+  recovery-selected incidence is rejected.
+  no active O, residual control, insertion, or parent closure is licensed.
+
+Possible next script:
+  candidate_accounting_source_incidence.py
+
+Tiny goblin label:
+  No secret tunnel from residue to trace.
+
+[governance_assessments]
+[PASS] trace/residual incidence audit complete -- safe trace anchor candidate survives; residual incidence not derived
