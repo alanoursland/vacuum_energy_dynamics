@@ -99,7 +99,13 @@ e_{\kappa,{\rm metric}}
 
 This load must vanish by structural law, remain strictly inert / non-metric / non-reentering sector-by-sector, or be removed by a derived active no-overlap operator. The residual-control theorem attempt has now been performed. Direct structural residual kill did not close. Full strict non-metric inertness did not close. Zeta/kappa geometric residual non-reentry did not close. epsilon_vac/e_kappa accounting inertness only partially reduced and does not close the geometric residual obstruction. No non-O residual-control route closes under current licensed objects. This is a controlled obstruction, not a mathematical no-go theorem. The active no-overlap operator construction attempt has now been performed. Active O was not constructed from current licensed objects. Candidate domain/codomain ledgers exist, and \(O(\zeta_{B_s})=\zeta_{B_s}\) remains a useful candidate preservation direction. However, zeta/kappa residual action is not derived, no-overlap pairing is not derived, projection/replacement/constraint law is not derived, divergence behavior is not derived, and boundary/source/mass behavior is not derived. Recovery-selected and repair-selected O are rejected. This is controlled underdetermination, not a proof that O is impossible. O remains not usable in residual control or field equations. The sector pairing / no-overlap geometry attempt has now been performed. No-overlap sector geometry was not constructed from current licensed objects. Candidate sector inventory exists. Incidence matrix and routing graph are the best current candidate forms. \(\zeta_{B_s}\rightarrow T_\zeta\) remains a candidate safe-trace anchor. However, complete membership, zero incidence, routing edge law, accounting no-reservoir, guardrail neutralities, and divergence-safe sector behavior remain open. Recovery-selected sector geometry is rejected. This is controlled underdetermination, not a proof of impossibility. Sector geometry is not usable for active \(O\), residual control, \(B_s/F_\zeta\) insertion, or parent closure.
 
-The preferred constructive handoff is now \(B_s/F_\zeta\) coefficient origin. The alternate constructive handoff is minimal sector-geometry postulate inventory.
+The \(B_s/F_\zeta\) coefficient-origin attempt has now been performed. It partially constrained coefficient origin but did not derive it. Volume/trace algebra is a real structural candidate origin: \(\zeta=\ln\sqrt{\gamma}\), determinant variation, and conformal-volume trace structure support \(\zeta\) as a spatial volume-trace scalar. As a result, \(\zeta_{B_s}\rightarrow T_\zeta\) is now a constrained candidate safe-trace anchor, stronger than the earlier loose candidate status.
+
+However, full coefficient law, trace-normalization law, complete coefficient-origin membership theorem, trace/residual zero incidence, source no-double-counting, boundary/current/mass/support neutralities, and divergence-safe coefficient behavior remain open. \(B_s/F_\zeta\) insertion is not derived. Active \(O\), residual control, and parent closure remain not ready.
+
+Recovery-selected, repair-selected, residual-cleanup-selected, active-\(O\)-selected, and parent-fit-selected coefficient routes are rejected. In particular, \(AB=1\), \(B=1/A\), Schwarzschild recovery, gamma/PPN recovery, weak-field success, and \(\kappa=0\) may audit only after construction; they may not choose the coefficient.
+
+The preferred constructive handoffs are now minimal coefficient/sector postulate inventory and source/divergence coefficient law. The conditional handoff is trace-normalization law.
 
 Ordinary long-range gravitational radiation is TT-only. Ordinary scalar breathing radiation through \(A_{\rm rad}\), \(\zeta\), or \(\kappa\) is rejected.
 
@@ -307,7 +313,8 @@ Current status:
 
 ```text
 RECOVERY_TARGET / THEOREM_TARGET
-NOT DERIVED
+COEFFICIENT ORIGIN PARTIALLY CONSTRAINED
+INSERTION NOT DERIVED
 ```
 
 Licensed use:
@@ -340,6 +347,59 @@ Status:
 ```text
 THEOREM_TARGET
 NOT DERIVED
+```
+
+Coefficient-origin attempt:
+
+```text
+COMPLETED AS PARTIAL CONSTRAINT
+```
+
+Current coefficient-origin status:
+
+```text
+PARTIALLY_CONSTRAINED
+NOT DERIVED
+NOT INSERTION
+```
+
+Positive result:
+
+```text
+volume/trace algebra is a real structural candidate origin;
+zeta = ln sqrt(gamma) has natural spatial volume-trace meaning;
+delta zeta = 1/2 gamma^ij delta gamma_ij;
+conformal split supports zeta as pure spatial volume/trace scalar;
+zeta_Bs -> T_zeta is now a constrained candidate safe-trace anchor.
+```
+
+Still not derived:
+
+```text
+complete B_s/F_zeta coefficient law;
+trace-normalization law;
+complete coefficient-origin membership theorem;
+I(T_zeta,R_zeta)=0;
+I(T_zeta,R_kappa)=0;
+source no-double-counting;
+boundary/current/mass/support neutralities;
+divergence-safe coefficient law;
+B_s/F_zeta insertion theorem.
+```
+
+Rejected coefficient selections:
+
+```text
+AB=1-selected coefficient;
+B=1/A-selected coefficient;
+Schwarzschild-selected coefficient;
+gamma/PPN-selected coefficient;
+weak-field-only coefficient;
+kappa=0-selected coefficient;
+residual-cleanup coefficient;
+source/boundary/current/mass/support repair coefficient;
+active-O-selected coefficient;
+parent-fit-selected coefficient.
 ```
 
 ### \(\zeta=\ln\sqrt{\gamma}\)
@@ -794,11 +854,46 @@ repair-selected sector geometry;
 parent-fit-selected sector geometry.
 ```
 
+Coefficient-origin follow-up:
+
+B_s/F_zeta coefficient origin has now been tested.
+
+Result:
+
+```text
+PARTIALLY_CONSTRAINED
+NOT DERIVED
+NOT INSERTION
+```
+
+Positive structure:
+
+```text
+volume/trace algebra is a real structural candidate origin;
+zeta_Bs -> T_zeta is now a constrained candidate safe-trace anchor.
+```
+
+Still missing:
+
+```text
+full coefficient law;
+normalization law;
+complete membership theorem;
+trace/residual zero incidence;
+source no-double-counting;
+guardrail neutralities;
+divergence-safe coefficient law.
+```
+
 Current handoff:
 
 ```text
-preferred: B_s/F_zeta coefficient origin;
-alternate: minimal sector-geometry postulate inventory.
+preferred:
+  minimal coefficient/sector postulate inventory;
+  source/divergence coefficient law.
+
+conditional:
+  trace-normalization law.
 ```
 
 Residual-control background:
@@ -834,6 +929,10 @@ Sector geometry status does not license active O.
 Sector geometry status does not license residual control.
 Sector geometry status does not license B_s/F_zeta insertion.
 Sector geometry status does not open parent closure.
+Coefficient-origin status does not license B_s/F_zeta insertion.
+Coefficient-origin status does not license active O.
+Coefficient-origin status does not license residual control.
+Coefficient-origin status does not open parent closure.
 ```
 
 ### \(J_{\rm curv}^\mu\)
@@ -1377,6 +1476,38 @@ Still missing:
 Therefore sector geometry cannot currently close L_double or count-once recombination.
 ```
 
+Coefficient-origin construction route note:
+
+```text
+The B_s/F_zeta coefficient-origin route has now been tested.
+
+It did not derive B_s/F_zeta insertion.
+
+Positive partial structure:
+  volume/trace algebra is a real structural candidate origin;
+  zeta = ln sqrt(gamma) has natural spatial volume-trace meaning;
+  determinant variation supports trace role:
+    delta zeta = 1/2 gamma^ij delta gamma_ij;
+  conformal split supports zeta as pure spatial volume/trace scalar;
+  zeta_Bs -> T_zeta is now a constrained candidate safe-trace anchor.
+
+Still missing:
+  complete B_s/F_zeta coefficient law;
+  trace-normalization law;
+  complete coefficient-origin membership theorem;
+  trace/residual zero incidence;
+  source no-double-counting;
+  guardrail neutralities;
+  divergence-safe coefficient law.
+
+Therefore coefficient origin cannot currently close L_double,
+count-once recombination,
+B_s/F_zeta insertion,
+active O,
+residual control,
+or parent closure.
+```
+
 ## 5.5 \(B_s/F_\zeta\) Insertion Target
 
 Current target:
@@ -1392,12 +1523,44 @@ THEOREM_TARGET
 NOT DERIVED
 ```
 
+Coefficient-origin status:
+
+```text
+ATTEMPTED
+PARTIALLY_CONSTRAINED
+NOT DERIVED
+NOT INSERTION
+```
+
+Current positive result:
+
+```text
+volume/trace algebra supplies a real structural candidate origin;
+zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor.
+```
+
+Current obstruction:
+
+```text
+full coefficient law missing;
+trace-normalization law missing;
+complete membership theorem missing;
+zero incidence missing;
+source no-double-counting missing;
+guardrail neutralities missing;
+divergence-safe coefficient law missing.
+```
+
 Coefficient-origin rule:
 
 ```text
-Coefficient origin must be structural or theorem-targeted before recovery tests.
-Recovery may not choose F_zeta form, coefficient, or zeta residual status.
-Zeta enters metric trace only once through B_s.
+Coefficient origin has now been structurally tested.
+
+Volume/trace algebra is a real candidate origin, but it does not by itself derive the full coefficient law or insertion theorem.
+
+Recovery may not choose F_zeta form, coefficient, normalization, membership, zero incidence, or zeta residual status.
+
+Zeta may enter metric trace only once through B_s after a valid insertion and residual-control/no-overlap structure are derived.
 ```
 
 Recovery diagnostics downstream of insertion:
@@ -1472,13 +1635,38 @@ Still missing:
   boundary/current/mass/support neutralities,
   divergence-safe sector law.
 
-Next handoff:
-  B_s/F_zeta coefficient origin.
+B_s/F_zeta coefficient-origin gate:
+  ATTEMPTED
+  PARTIALLY_CONSTRAINED
+  NOT DERIVED
+  NOT INSERTION
 
-Alternate handoff:
-  minimal sector-geometry postulate inventory.
+Partial result:
+  volume/trace algebra is a real structural candidate origin;
+  zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor;
+  recovery-selected and repair-selected coefficient routes are rejected;
+  safe trace versus residual classification improved;
+  source/boundary/current/mass/support/divergence visibility is preserved only as candidate compatibility.
+
+Still missing:
+  complete B_s/F_zeta coefficient law;
+  trace-normalization law;
+  complete coefficient-origin membership theorem;
+  trace/residual zero incidence;
+  source no-double-counting;
+  guardrail neutralities;
+  divergence-safe coefficient law.
+
+Next handoffs:
+  minimal coefficient/sector postulate inventory;
+  source/divergence coefficient law.
+
+Conditional handoff:
+  trace-normalization law.
 
 (gate label: ATTEMPTED / NOT_CONSTRUCTED)
+
+The coefficient-origin gate does not open from volume/trace structure alone, constrained safe-trace anchoring, recovery rejection, guardrail compatibility, or controlled obstruction.
 
 Non-O residual-control gate:
   CONTROLLED_OBSTRUCTION under current licensed objects
@@ -3687,6 +3875,60 @@ repair-selected sector geometry,
 parent-fit-selected sector geometry.
 ```
 
+B_s/F_zeta coefficient-origin theorem target:
+
+\[
+B_s=F_\zeta[A,\zeta,J_V,\Sigma_V,R_V].
+\]
+
+Current coefficient-origin status:
+
+```text
+ATTEMPTED
+PARTIALLY_CONSTRAINED
+NOT DERIVED
+NOT INSERTION
+```
+
+Current partial scaffold:
+
+```text
+volume/trace algebra is a real structural candidate origin;
+zeta = ln sqrt(gamma);
+delta zeta = 1/2 gamma^ij delta gamma_ij;
+conformal split supports zeta as pure spatial volume/trace scalar;
+zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor.
+```
+
+Not derived:
+
+```text
+complete B_s/F_zeta coefficient law,
+trace-normalization law,
+complete coefficient-origin membership theorem,
+I(T_zeta,R_zeta)=0,
+I(T_zeta,R_kappa)=0,
+source no-double-counting,
+boundary/current/mass/support neutralities,
+divergence-safe coefficient law,
+B_s/F_zeta insertion.
+```
+
+Rejected:
+
+```text
+coefficient chosen from AB=1,
+coefficient chosen from B=1/A,
+coefficient chosen from Schwarzschild,
+coefficient chosen from gamma/PPN,
+coefficient chosen from weak-field success alone,
+coefficient chosen from kappa=0,
+coefficient chosen from residual cleanup,
+coefficient chosen from source/boundary/current/mass/support repair,
+coefficient chosen from active O convenience,
+coefficient chosen from parent-fit closure.
+```
+
 Residual-kill convention:
 
 \[
@@ -4025,10 +4267,43 @@ active O construction attempted and not constructed;
 active O remains controlled-underdefined and not usable;
 sector pairing / no-overlap geometry attempted and not constructed;
 sector geometry remains controlled-underdefined and not usable;
-non-O residual control remains obstructed under current licensed objects.
+non-O residual control remains obstructed under current licensed objects;
+B_s/F_zeta coefficient origin attempted and partially constrained;
+coefficient origin remains underderived and not usable as insertion;
+volume/trace structure strengthens zeta_Bs -> T_zeta but does not derive membership, zero incidence, source no-double-counting, guardrail neutralities, divergence safety, or residual control.
 ```
 
 Gate 4 does not open from sector inventory, incidence/routing candidates, safe-trace anchoring, or controlled underdetermination.
+
+B_s/F_zeta coefficient-origin gate current status:
+
+```text
+attempted;
+partially constrained;
+not derived;
+not insertion.
+```
+
+Positive result:
+
+```text
+volume/trace algebra is a real structural candidate origin;
+zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor.
+```
+
+Still missing:
+
+```text
+full coefficient law;
+normalization law;
+complete membership theorem;
+zero incidence;
+source no-double-counting;
+guardrail neutralities;
+divergence-safe coefficient law.
+```
+
+This gate does not open parent closure.
 
 ## 15.3 Metric Insertion Closure Obligations
 
@@ -4036,7 +4311,12 @@ Metric insertion theorem obligations:
 
 ```text
 O1: define B_s/F_zeta structurally, not by recovery.
-O2: fix coefficient origin before recovery diagnostics.
+O2: complete coefficient origin before recovery diagnostics.
+  Current status: ATTEMPTED / PARTIALLY_CONSTRAINED / NOT DERIVED.
+O2a: derive trace-normalization law for how B_s reads the volume-trace scalar.
+  Current status: OPEN.
+O2b: derive source/divergence-safe coefficient law or explicitly inventory a minimal coefficient/sector postulate.
+  Current status: OPEN / HANDOFF_READY.
 O3: enforce count-once trace insertion.
 O4: derive residual-kill or active no-overlap O.
 O5: preserve boundary neutrality and exterior scalar silence.
@@ -4173,8 +4453,27 @@ sector pairing / no-overlap geometry obstruction:
   accounting no-reservoir theorem missing;
   guardrail neutralities missing;
   divergence-safe law missing;
-  preferred handoff is B_s/F_zeta coefficient origin;
-  alternate handoff is minimal sector-geometry postulate inventory.
+  B_s/F_zeta coefficient origin has now been tested: partially constrained, not insertion;
+  preferred handoffs are minimal coefficient/sector postulate inventory and source/divergence coefficient law;
+  conditional handoff is trace-normalization law.
+```
+
+B_s/F_zeta coefficient-origin obstruction:
+
+```text
+controlled obstruction / partial constraint;
+volume/trace algebra is a real structural candidate origin;
+zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor;
+full coefficient law missing;
+trace-normalization law missing;
+complete membership theorem missing;
+trace/residual zero incidence missing;
+source no-double-counting missing;
+boundary/current/mass/support neutralities missing;
+divergence-safe coefficient law missing;
+B_s/F_zeta insertion not derived;
+preferred handoffs are minimal coefficient/sector postulate inventory and source/divergence coefficient law;
+conditional handoff is trace-normalization law.
 ```
 
 ## 16.3 Structural Unknowns
@@ -4316,7 +4615,16 @@ source no-double-counting from sector geometry,
 boundary/current/mass/support neutralities from sector geometry,
 divergence-safe sector split,
 recovery-independent no-overlap sector geometry,
-minimal sector-geometry postulate inventory if coefficient origin does not force geometry.
+minimal sector-geometry postulate inventory if coefficient origin does not force geometry,
+complete B_s/F_zeta coefficient-origin law,
+trace-normalization law,
+coefficient-origin membership theorem,
+coefficient-origin source no-double-counting theorem,
+coefficient-origin guardrail neutralities,
+divergence-safe coefficient law,
+minimal coefficient/sector postulate inventory,
+source/divergence coefficient law,
+recovery-independent coefficient normalization theorem.
 ```
 
 Residual-control and active-O construction status note:
@@ -4342,11 +4650,23 @@ sector pairing / no-overlap geometry:
   partial scaffold only;
   not usable for active O, residual control, insertion, or parent closure.
 
-next preferred handoff:
-  B_s/F_zeta coefficient origin.
+B_s/F_zeta coefficient origin:
+  construction attempt completed;
+  partially constrained;
+  not derived;
+  not insertion;
+  volume/trace algebra is a real structural candidate origin;
+  zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor;
+  full coefficient law, normalization, complete membership, zero incidence,
+  source no-double-counting, guardrail neutralities,
+  and divergence-safe coefficient law remain open.
 
-alternate constructive handoff:
-  minimal sector-geometry postulate inventory.
+next preferred handoffs:
+  minimal coefficient/sector postulate inventory;
+  source/divergence coefficient law.
+
+conditional constructive handoff:
+  trace-normalization law.
 ```
 
 ---
@@ -4383,12 +4703,18 @@ an explicit residual-control, active-O, and sector-geometry construction status:
   sector pairing / no-overlap geometry was attempted and did not construct no-overlap geometry;
   candidate sector inventory exists;
   incidence matrix and routing graph are the best current candidate forms;
-  zeta_Bs -> T_zeta remains a candidate safe-trace anchor;
+  zeta_Bs -> T_zeta was strengthened by coefficient-origin analysis and is now a constrained candidate safe-trace anchor;
   complete membership, zero incidence, routing edge law, accounting no-reservoir, guardrail neutralities, and divergence-safe law remain open;
   recovery-selected and repair-selected sector geometry are rejected;
   recovery may audit residual/sector status but may not select it;
   boundary/source failure may not select residual cleanup or sector geometry;
   parent closure remains not ready;
+  B_s/F_zeta coefficient origin was attempted and partially constrained;
+  volume/trace algebra is a real structural candidate origin;
+  zeta = ln sqrt(gamma), determinant variation, and conformal trace split support zeta as a spatial volume-trace scalar;
+  recovery-selected and repair-selected coefficient routes are rejected;
+  full coefficient law, trace-normalization law, complete coefficient-origin membership theorem, trace/residual zero incidence, source no-double-counting, guardrail neutralities, and divergence-safe coefficient law remain open;
+  B_s/F_zeta insertion remains not derived;
 
 a sharpened boundary/scalar-silence and matching/support ledger;
 
@@ -4418,6 +4744,14 @@ accounting no-reservoir theorem,
 guardrail-neutral sector geometry,
 divergence-safe sector geometry,
 minimal sector-geometry postulate inventory,
+complete B_s/F_zeta coefficient law,
+trace-normalization law,
+complete coefficient-origin membership theorem,
+coefficient-origin source no-double-counting theorem,
+coefficient-origin guardrail neutralities,
+divergence-safe coefficient law,
+minimal coefficient/sector postulate inventory,
+source/divergence coefficient law,
 derived residual-kill theorem,
 strict non-metric inertness theorem,
 sector-by-sector residual non-reentry theorem,
@@ -4445,66 +4779,70 @@ The central unfinished problem is not the reduced A-sector exterior. The central
 
 Do not immediately write a parent field equation.
 
-The next technical target should be one of the following narrower routes:
+Recommended next targets:
 
 ```text
-B_s/F_zeta coefficient-origin theorem,
-minimal sector-geometry postulate inventory,
-reduced observational audit.
-```
+minimal coefficient/sector postulate inventory
 
-Recommended next target:
+or
 
-```text
-B_s/F_zeta coefficient-origin theorem
+source/divergence coefficient law
 ```
 
 Reason:
 
 ```text
-The sector pairing / no-overlap geometry attempt has now been performed and did not construct
-usable no-overlap geometry.
+The B_s/F_zeta coefficient-origin attempt has now been performed.
 
-It did produce a partial scaffold:
-  candidate sector inventory,
-  incidence/routing as best candidate forms,
-  zeta_Bs -> T_zeta as a candidate safe-trace anchor.
+It partially constrained coefficient origin:
+  volume/trace algebra is a real structural candidate origin;
+  zeta_Bs -> T_zeta is now a constrained candidate safe-trace anchor;
+  recovery-selected and repair-selected coefficient routes are rejected.
 
-But the necessary laws remain open:
-  complete membership,
-  zero incidence,
-  routing edge law,
-  accounting no-reservoir,
+But it did not derive:
+  full coefficient law,
+  trace-normalization law,
+  complete membership theorem,
+  trace/residual zero incidence,
+  source no-double-counting,
   guardrail neutralities,
-  divergence-safe behavior.
+  divergence-safe coefficient law,
+  B_s/F_zeta insertion.
 
-The next constructive route is therefore to ask whether B_s/F_zeta coefficient origin can
-supply the safe scalar membership and residual interpretation that sector geometry could not
-derive directly.
+The next constructive route is therefore either to make the remaining coefficient/sector choices explicit,
+or to test whether source no-double-counting and divergence-safe coefficient behavior can supply the missing law.
 ```
 
-Alternative:
+Co-preferred target:
 
 ```text
-minimal sector-geometry postulate inventory
+source/divergence coefficient law
 ```
 
-Use this if B_s/F_zeta coefficient origin does not force the needed sector geometry. Any new sector structure must be marked as an explicit choice or postulate, not a derived theorem.
+Use this if the aim is to keep trying for a theorem rather than introduce an explicit postulate. It must not hide ordinary source load inside the coefficient, and any divergence correction must remain explicit and auditable.
 
-Alternative:
+Co-preferred target:
 
 ```text
-reduced observational audit
+minimal coefficient/sector postulate inventory
 ```
 
-Use this only if observations remain downstream audits and do not select residual status, O, coefficients, insertion form, or parent closure.
+Use this if the theory now needs a clean explicit choice. Any new coefficient, normalization, membership, incidence, or sector rule must be marked as a postulate/choice, not a derivation.
 
+Conditional target:
+
+```text
+trace-normalization law
+```
+
+Use this if the immediate goal is to isolate how B_s reads the volume-trace scalar before deciding whether a postulate or source/divergence law is needed.
+
+Do not proceed to B_s/F_zeta insertion theorem.
+Do not treat coefficient-origin partial constraint as insertion.
+Do not treat zeta_Bs -> T_zeta constrained candidate as complete membership.
+Do not retest residual control using coefficient scaffold.
+Do not rebuild active O from coefficient scaffold.
 Do not proceed to parent field equation.
-Do not rebuild active O from sector geometry.
-Do not retest residual control using sector scaffold.
-Do not treat incidence/routing candidates as zero/edge laws.
-Do not treat zeta_Bs -> T_zeta as residual control.
-Do not treat controlled underdetermination as impossibility.
 
 ```text
 Parent closure remains blocked by missing residual control, B_s/F_zeta insertion law, active O if used, boundary/source/support neutrality, divergence safety, and parent identity.
@@ -4516,8 +4854,8 @@ Known unresolved dependencies retained upstream of any parent equation:
 residual-control theorem (non-O routes obstructed; active O not constructed),
 active O (controlled underdetermination; sector geometry partial scaffold only),
 no-overlap sector geometry (controlled underdetermination; membership/incidence/edge law open),
+B_s/F_zeta coefficient origin (partially constrained; not insertion),
 B_s/F_zeta insertion law,
-coefficient origin,
 boundary/source-compatible residual cleanup,
 J_V / J_sub / J_exch definition and ordinary matter decoupling.
 ```
@@ -5120,6 +5458,47 @@ Sector geometry remains unusable for active O, residual control, B_s/F_zeta inse
 or parent equation closure.
 ```
 
+## B.22 B_s/F_zeta Coefficient-Origin Attempt Witness
+
+Meaning:
+
+```text
+The B_s/F_zeta coefficient-origin attempt did not derive B_s/F_zeta insertion.
+
+Partial structure exists:
+  volume/trace algebra is a real structural candidate origin;
+  zeta = ln sqrt(gamma);
+  delta zeta = 1/2 gamma^ij delta gamma_ij;
+  conformal split supports zeta as pure spatial volume/trace scalar;
+  zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor.
+
+Rejected:
+  coefficient selected from AB=1;
+  coefficient selected from B=1/A;
+  coefficient selected from Schwarzschild;
+  coefficient selected from gamma/PPN;
+  coefficient selected from weak-field success;
+  coefficient selected from kappa=0;
+  coefficient selected from residual cleanup;
+  coefficient selected from boundary/source/current/mass/support repair;
+  coefficient selected from active O convenience;
+  coefficient selected from parent-fit closure.
+
+Still missing:
+  complete B_s/F_zeta coefficient law;
+  trace-normalization law;
+  complete coefficient-origin membership theorem;
+  trace/residual zero incidence;
+  source no-double-counting;
+  boundary/current/mass/support neutralities;
+  divergence-safe coefficient law.
+
+This is partial constraint / controlled obstruction, not insertion.
+
+Coefficient-origin status remains unusable for active O, residual control, B_s/F_zeta insertion,
+or parent equation closure.
+```
+
 ---
 
 # Appendix C — Rejected Route Index
@@ -5418,6 +5797,49 @@ residual-control retest using sector scaffold,
 parent equation attempted from sector geometry summary.
 ```
 
+## C.13 Coefficient-Origin Failures
+
+```text
+coefficient origin by naming,
+volume/trace identity as insertion theorem,
+conformal split as dynamics,
+partial coefficient origin as full law,
+zeta_Bs -> T_zeta constrained candidate as complete membership theorem,
+safe trace anchor as no-overlap,
+safe trace anchor as residual control,
+safe trace anchor as source routing,
+safe trace anchor as insertion,
+coefficient selected from AB=1,
+coefficient selected from B=1/A,
+coefficient selected from Schwarzschild,
+coefficient selected from gamma/PPN,
+coefficient selected from weak-field success alone,
+coefficient selected from kappa=0,
+coefficient selected from residual cleanup,
+coefficient selected from accounting reservoir,
+coefficient selected from source repair,
+coefficient selected from boundary repair,
+coefficient selected from current-flux repair,
+coefficient selected from A-sector mass repair,
+coefficient selected from support/matching repair,
+coefficient selected from active O convenience,
+coefficient selected from parent-fit closure,
+source load hidden inside coefficient,
+boundary load hidden inside coefficient,
+current leak hidden inside coefficient,
+mass shift hidden inside coefficient,
+support failure hidden inside coefficient,
+divergence correction as source/boundary/current/mass/support reservoir,
+guardrail compatibility as neutrality,
+coefficient-origin partial constraint as B_s/F_zeta insertion,
+coefficient-origin scaffold as active O,
+coefficient-origin scaffold as residual control,
+coefficient-origin scaffold as parent readiness,
+minimal postulate handoff treated as already chosen,
+source/divergence coefficient-law handoff treated as already solved,
+trace-normalization handoff treated as already derived.
+```
+
 ---
 
 # Appendix D — Operator / Projector Readiness Checklists
@@ -5572,6 +5994,74 @@ parent-gate closure:
 
 Current conclusion:
   no-overlap sector geometry is not constructed and not usable.
+```
+
+## D.1b B_s/F_zeta Coefficient Origin
+
+A real B_s/F_zeta coefficient-origin theorem requires:
+
+```text
+non-recovery coefficient origin,
+trace-normalization law,
+rule for how B_s reads zeta,
+complete coefficient-origin membership theorem,
+source no-double-counting,
+ordinary source separation,
+trace/residual zero-incidence compatibility,
+boundary/current/mass/support neutralities,
+divergence-safe coefficient behavior,
+explicit correction law if divergence correction is used,
+recovery independence,
+repair independence,
+compatibility with no-overlap sector geometry if later derived,
+compatibility with residual control if later retested,
+compatibility with active O if later rebuilt,
+parent-gate closure until all upstream obligations are met.
+```
+
+Current checklist status:
+
+```text
+volume/trace structural origin:
+  partially constrained;
+  real candidate.
+
+trace-normalization law:
+  not derived.
+
+B_s reading rule:
+  not derived.
+
+zeta_Bs -> T_zeta:
+  constrained candidate only.
+
+complete membership theorem:
+  not derived.
+
+trace/residual zero incidence:
+  not derived.
+
+source no-double-counting:
+  not derived.
+
+guardrail neutralities:
+  not derived.
+
+divergence-safe coefficient behavior:
+  not derived.
+
+recovery independence:
+  recovery-selected coefficients rejected.
+
+repair independence:
+  repair-selected coefficients rejected.
+
+B_s/F_zeta insertion:
+  not derived.
+
+Current conclusion:
+  B_s/F_zeta coefficient origin is partially constrained,
+  but no insertion theorem is available.
 ```
 
 ## D.2 Role-Specific Projectors
@@ -5819,7 +6309,8 @@ No-overlap sector geometry status:
   no-overlap sector geometry not constructed;
   candidate sector inventory exists;
   best current candidate forms: incidence matrix I(T,R) and routing graph;
-  zeta_Bs -> T_zeta is candidate safe-trace anchor only;
+  zeta_Bs -> T_zeta was candidate safe-trace anchor after Group 28;
+  coefficient-origin analysis has now strengthened it to constrained candidate;
   complete membership rule not derived;
   I(T_zeta,R_zeta) = 0 and I(T_zeta,R_kappa) = 0 not derived;
   routing edge law not derived;
@@ -5827,9 +6318,35 @@ No-overlap sector geometry status:
   guardrail neutralities not derived;
   divergence-safe sector behavior not derived;
   controlled underdetermination, not impossibility;
-  sector geometry does not open any parent equation gate;
-  preferred next target is B_s/F_zeta coefficient-origin theorem;
-  alternate: minimal sector-geometry postulate inventory.
+  sector geometry does not open any parent equation gate.
+
+B_s/F_zeta coefficient-origin status:
+  coefficient-origin attempt completed;
+  partially constrained;
+  not derived;
+  not insertion;
+  volume/trace algebra is a real structural candidate origin;
+  zeta = ln sqrt(gamma);
+  delta zeta = 1/2 gamma^ij delta gamma_ij;
+  conformal split supports zeta as pure spatial volume/trace scalar;
+  zeta_Bs -> T_zeta is a constrained candidate safe-trace anchor;
+  recovery-selected coefficient routes are rejected;
+  repair-selected coefficient routes are rejected;
+  residual-cleanup, active-O-selected, and parent-fit-selected coefficient routes are rejected;
+  full coefficient law not derived;
+  trace-normalization law not derived;
+  complete coefficient-origin membership theorem not derived;
+  trace/residual zero incidence not derived;
+  source no-double-counting not derived;
+  guardrail neutralities not derived;
+  divergence-safe coefficient law not derived;
+  B_s/F_zeta insertion not derived;
+  active O, residual control, and parent equation remain not ready;
+  preferred next targets:
+    minimal coefficient/sector postulate inventory;
+    source/divergence coefficient law;
+  conditional target:
+    trace-normalization law.
 
 Boundary safety is required and not derived:
   no exterior zeta/kappa charge,
@@ -5878,11 +6395,15 @@ Parent correction tensor status:
 
 The theory should not yet write a final parent equation.
 
-The next honest target is:
-  B_s/F_zeta coefficient-origin theorem,
-  or minimal sector-geometry postulate inventory,
-  or reduced observational audit,
-not active-O construction attempt, not sector-geometry retest, and not parent closure.
+The next honest targets are:
+  minimal coefficient/sector postulate inventory,
+  or source/divergence coefficient law,
+  or conditionally trace-normalization law,
+not B_s/F_zeta insertion theorem,
+not active-O rebuild,
+not residual-control retest,
+not sector-geometry retest,
+and not parent closure.
 ```
 
 Compact closure rule:
@@ -5927,5 +6448,17 @@ No active-O rebuild is licensed from sector scaffold.
 No residual-control retest is licensed from sector scaffold.
 No B_s/F_zeta insertion is licensed from sector scaffold.
 No parent equation gate opens from sector-geometry attempt.
+No B_s/F_zeta coefficient-origin theorem is earned.
+No volume/trace partial constraint is usable as insertion.
+No constrained safe-trace anchor is usable as complete membership.
+No coefficient-origin scaffold is usable as residual control.
+No coefficient-origin scaffold is usable as active O.
+No coefficient-origin scaffold is usable as parent readiness.
+No recovery-selected coefficient is licensed.
+No repair-selected coefficient is licensed.
+No source load may be hidden in coefficient.
+No divergence correction may become a hidden reservoir.
+No B_s/F_zeta insertion theorem is ready.
+No parent equation gate opens from coefficient-origin attempt.
 ```
 
