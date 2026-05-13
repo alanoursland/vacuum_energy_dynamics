@@ -105,7 +105,11 @@ However, full coefficient law, trace-normalization law, complete coefficient-ori
 
 Recovery-selected, repair-selected, residual-cleanup-selected, active-\(O\)-selected, and parent-fit-selected coefficient routes are rejected. In particular, \(AB=1\), \(B=1/A\), Schwarzschild recovery, gamma/PPN recovery, weak-field success, and \(\kappa=0\) may audit only after construction; they may not choose the coefficient.
 
-The preferred constructive handoffs are now minimal coefficient/sector postulate inventory and source/divergence coefficient law. The conditional handoff is trace-normalization law.
+The source/divergence coefficient-law route has now also been performed. It closed as a partial-constraint result, not as a coefficient law. It rules out hidden ordinary source carriers and hidden divergence reservoirs as admissible shortcuts. Coefficient-side ordinary source load may not be hidden inside the coefficient. Divergence/correction terms may not hide source, boundary, current, mass, support, residual, or parent loads. Non-reservoir divergence explicitness is admissible as visible/auditable correction discipline, but it is weaker than a divergence-safe coefficient law.
+
+However, source/divergence constraints do not derive the complete \(B_s/F_\zeta\) coefficient law. They do not derive trace normalization, safe trace membership, trace/residual incidence, source no-double-counting theorem, divergence-safe coefficient law, \(B_s/F_\zeta\) insertion, active \(O\), residual control, or parent readiness. No Group 30 candidate postulate is adopted. Trace normalization remains an open candidate/theorem target, not selected by recovery or repair. Safe trace membership remains open. Trace/residual incidence remains high-risk.
+
+The minimal coefficient/sector postulate inventory and source/divergence coefficient-law route have now both been performed. Neither adopted postulates nor derived insertion. The currently honest next routes are explicit minimal postulate selection, trace-normalization theorem, safe-trace membership theorem, or a source/divergence obstruction summary. \(B_s/F_\zeta\) insertion theorem, active-\(O\) rebuild, residual-control retest, and parent field equation remain not ready.
 
 Ordinary long-range gravitational radiation is TT-only. Ordinary scalar breathing radiation through \(A_{\rm rad}\), \(\zeta\), or \(\kappa\) is rejected.
 
@@ -314,6 +318,7 @@ Current status:
 ```text
 RECOVERY_TARGET / THEOREM_TARGET
 COEFFICIENT ORIGIN PARTIALLY CONSTRAINED
+SOURCE/DIVERGENCE ROUTE COMPLETED AS PARTIAL CONSTRAINT
 INSERTION NOT DERIVED
 ```
 
@@ -384,7 +389,10 @@ I(T_zeta,R_kappa)=0;
 source no-double-counting;
 boundary/current/mass/support neutralities;
 divergence-safe coefficient law;
-B_s/F_zeta insertion theorem.
+B_s/F_zeta insertion theorem;
+source no-double-counting theorem;
+non-reservoir explicitness theorem;
+source/divergence-derived coefficient law.
 ```
 
 Rejected coefficient selections:
@@ -399,8 +407,26 @@ kappa=0-selected coefficient;
 residual-cleanup coefficient;
 source/boundary/current/mass/support repair coefficient;
 active-O-selected coefficient;
-parent-fit-selected coefficient.
+parent-fit-selected coefficient;
+source-repair-selected coefficient;
+divergence-repair-selected coefficient;
+hidden-source coefficient;
+hidden-reservoir correction coefficient;
+source/divergence partial constraint treated as coefficient law.
 ```
+
+Source/divergence coefficient-law attempt:
+
+```text
+COMPLETED AS PARTIAL CONSTRAINT
+NOT DERIVED
+NOT INSERTION
+NOT POSTULATE ADOPTION
+```
+
+The source/divergence route rules out hidden ordinary source carriers and hidden divergence reservoirs as admissible shortcuts. It requires coefficient-side ordinary source load to vanish sector-by-sector or be independently derived neutral. It requires correction/divergence terms to remain explicit, visible, auditable, and non-reservoir.
+
+This constrains coefficient behavior but does not determine the full coefficient law. It does not fix trace normalization, safe trace membership, trace/residual incidence, source no-double-counting theorem, divergence-safe coefficient law, or \(B_s/F_\zeta\) insertion.
 
 ### \(\zeta=\ln\sqrt{\gamma}\)
 
@@ -888,12 +914,67 @@ divergence-safe coefficient law.
 Current handoff:
 
 ```text
-preferred:
-  minimal coefficient/sector postulate inventory;
-  source/divergence coefficient law.
+minimal coefficient/sector postulate inventory and source/divergence coefficient-law route
+have both been performed; neither derived insertion nor adopted postulates.
 
-conditional:
-  trace-normalization law.
+Honest next routes:
+  explicit minimal postulate selection;
+  trace-normalization theorem;
+  safe-trace membership theorem;
+  source/divergence obstruction summary.
+```
+
+Source/divergence coefficient-law follow-up:
+
+The source/divergence coefficient-law route has now been tested.
+
+Result:
+
+```text
+PARTIAL_CONSTRAINT
+NOT DERIVED
+NOT INSERTION
+NOT POSTULATE ADOPTION
+```
+
+Positive constraint:
+
+```text
+hidden ordinary source carriers are rejected;
+hidden divergence reservoirs are rejected;
+coefficient-side ordinary source load may not be hidden;
+correction/divergence load may not be hidden;
+non-reservoir explicitness is admissible as visible/auditable correction discipline.
+```
+
+Still missing:
+
+```text
+complete B_s/F_zeta coefficient law;
+trace-normalization law;
+safe trace membership theorem;
+trace/residual zero incidence;
+full source no-double-counting theorem;
+divergence-safe coefficient law;
+B_s/F_zeta insertion.
+```
+
+Current handoff:
+
+```text
+explicit minimal postulate selection;
+trace-normalization theorem;
+safe-trace membership theorem;
+source/divergence obstruction summary.
+```
+
+Forbidden immediate handoff:
+
+```text
+B_s/F_zeta insertion theorem;
+active O rebuild;
+residual-control retest;
+parent field equation.
 ```
 
 Residual-control background:
@@ -933,6 +1014,11 @@ Coefficient-origin status does not license B_s/F_zeta insertion.
 Coefficient-origin status does not license active O.
 Coefficient-origin status does not license residual control.
 Coefficient-origin status does not open parent closure.
+Source/divergence partial constraints do not license B_s/F_zeta insertion.
+Source/divergence partial constraints do not license active O.
+Source/divergence partial constraints do not license residual control.
+Source/divergence partial constraints do not open parent closure.
+Source/divergence partial constraints do not adopt Group 30 candidate postulates.
 ```
 
 ### \(J_{\rm curv}^\mu\)
@@ -1658,15 +1744,45 @@ Still missing:
   divergence-safe coefficient law.
 
 Next handoffs:
-  minimal coefficient/sector postulate inventory;
-  source/divergence coefficient law.
+  explicit minimal postulate selection;
+  trace-normalization theorem;
+  safe-trace membership theorem;
+  source/divergence obstruction summary.
 
-Conditional handoff:
-  trace-normalization law.
+Not ready:
+  B_s/F_zeta insertion theorem;
+  active O rebuild;
+  residual-control retest;
+  parent field equation.
 
 (gate label: ATTEMPTED / NOT_CONSTRUCTED)
 
 The coefficient-origin gate does not open from volume/trace structure alone, constrained safe-trace anchoring, recovery rejection, guardrail compatibility, or controlled obstruction.
+
+Source/divergence coefficient-law gate:
+  ATTEMPTED
+  PARTIAL_CONSTRAINT
+  NOT DERIVED
+  NOT INSERTION
+  NOT POSTULATE ADOPTION
+
+Partial result:
+  hidden ordinary source carriers are rejected as admissible shortcuts;
+  hidden divergence reservoirs are rejected as admissible shortcuts;
+  coefficient-side ordinary source load may not be hidden;
+  correction/divergence load may not be hidden;
+  non-reservoir explicitness is admissible discipline.
+
+Still missing:
+  complete B_s/F_zeta coefficient law;
+  trace-normalization law;
+  safe trace membership theorem;
+  trace/residual zero incidence;
+  full source no-double-counting theorem;
+  divergence-safe coefficient law;
+  B_s/F_zeta insertion.
+
+The source/divergence gate does not open from source-neutrality language, explicitness language, total cancellation, recovery success, repair avoidance, or parent-fit closure.
 
 Non-O residual-control gate:
   CONTROLLED_OBSTRUCTION under current licensed objects
@@ -2979,6 +3095,21 @@ Cancellation ledgers are not source compatibility.
 Metric insertion source compatibility remains theorem-targeted.
 ```
 
+Source/divergence update:
+
+The source/divergence coefficient-law route has now explicitly tested duplicate source and coefficient source channels. It rejects hidden ordinary source in coefficient, residual, boundary, support, correction, exchange, curvature, and parent-placeholder channels. It also rejects total cancellation as source compatibility.
+
+Current result:
+
+```text
+PARTIAL_CONSTRAINT
+FULL SOURCE NO-DOUBLE-COUNTING THEOREM NOT DERIVED
+```
+
+Meaning:
+
+hidden source pockets are forbidden as shortcuts, but full sector-by-sector source no-double-counting remains theorem-targeted.
+
 ## 9.5 No-Double-Counting Rules
 
 ```text
@@ -3059,7 +3190,19 @@ e_kappa cannot become a second source channel,
 
 residual cleanup cannot be chosen because source compatibility would otherwise fail,
 
-residual cleanup cannot become source compatibility by cancellation.
+residual cleanup cannot become source compatibility by cancellation,
+
+coefficient-side ordinary source load must vanish sector-by-sector or be independently derived neutral,
+
+coefficient source neutrality is not full source no-double-counting,
+
+source/divergence partial constraints are not B_s/F_zeta insertion,
+
+source/divergence partial constraints are not parent readiness,
+
+total duplicate-source cancellation is not source neutrality,
+
+open trace normalization is not postulate adoption.
 ```
 
 Status:
@@ -3929,6 +4072,76 @@ coefficient chosen from active O convenience,
 coefficient chosen from parent-fit closure.
 ```
 
+Source/divergence coefficient-law theorem route:
+
+\[
+L_{\rm source\_dup}
+=
+\rho_{\rm boundary}
++
+\rho_{\rm coeff}
++
+\rho_{\rm corr}
++
+\rho_{\kappa{\rm res}}
++
+\rho_{\zeta{\rm res}}.
+\]
+
+\[
+L_{\rm div\_reservoir}
+=
+R_{\rm div}
++
+{\rm hidden\_boundary}
++
+{\rm hidden\_current}
++
+{\rm hidden\_mass}
++
+{\rm hidden\_parent}
++
+{\rm hidden\_residual}
++
+{\rm hidden\_source}
++
+{\rm hidden\_support}.
+\]
+
+Status:
+
+```text
+ATTEMPTED
+PARTIAL_CONSTRAINT
+NOT DERIVED
+NOT INSERTION
+NOT POSTULATE ADOPTION
+```
+
+Result:
+
+```text
+hidden ordinary source carriers are rejected;
+hidden divergence reservoirs are rejected;
+coefficient source neutrality is required but not a full source no-double-counting theorem;
+non-reservoir explicitness is admissible discipline but not a divergence-safe coefficient law;
+trace normalization remains open;
+safe trace membership remains open;
+trace/residual incidence remains high-risk;
+B_s/F_zeta insertion remains not ready.
+```
+
+Not licensed:
+
+```text
+source/divergence constraints as full coefficient law;
+source neutrality as full source no-double-counting theorem;
+non-reservoir explicitness as divergence-safe coefficient law;
+trace-normalization open status as adoption;
+source/divergence discipline as B_s/F_zeta insertion;
+source/divergence discipline as parent readiness.
+```
+
 Residual-kill convention:
 
 \[
@@ -4305,6 +4518,40 @@ divergence-safe coefficient law.
 
 This gate does not open parent closure.
 
+Source/divergence coefficient-law gate current status:
+
+```text
+attempted;
+partial constraint;
+not derived;
+not insertion;
+not postulate adoption.
+```
+
+Positive result:
+
+```text
+hidden ordinary source carriers are rejected;
+hidden divergence reservoirs are rejected;
+coefficient-side ordinary source load may not be hidden;
+correction/divergence load may not be hidden;
+non-reservoir explicitness is admissible discipline.
+```
+
+Still missing:
+
+```text
+complete coefficient law;
+trace-normalization law;
+safe trace membership theorem;
+trace/residual incidence theorem;
+full source no-double-counting theorem;
+divergence-safe coefficient law;
+B_s/F_zeta insertion.
+```
+
+This gate does not open parent closure.
+
 ## 15.3 Metric Insertion Closure Obligations
 
 Metric insertion theorem obligations:
@@ -4315,8 +4562,17 @@ O2: complete coefficient origin before recovery diagnostics.
   Current status: ATTEMPTED / PARTIALLY_CONSTRAINED / NOT DERIVED.
 O2a: derive trace-normalization law for how B_s reads the volume-trace scalar.
   Current status: OPEN.
-O2b: derive source/divergence-safe coefficient law or explicitly inventory a minimal coefficient/sector postulate.
-  Current status: OPEN / HANDOFF_READY.
+O2b: derive source/divergence-safe coefficient law or explicitly select a minimal coefficient/sector postulate.
+  Current status:
+    minimal coefficient/sector postulate inventory: ATTEMPTED / NO POSTULATE ADOPTED / COMPLETE SET NOT IDENTIFIED.
+    source/divergence coefficient law: ATTEMPTED / PARTIAL_CONSTRAINT / NOT DERIVED.
+    explicit minimal postulate selection: OPEN.
+O2c: keep trace normalization open unless derived or explicitly adopted.
+  Current status: OPEN / CANDIDATE_REMAINS.
+O2d: keep safe trace membership separate unless derived.
+  Current status: OPEN.
+O2e: keep trace/residual incidence high-risk unless derived.
+  Current status: HIGH_RISK / NOT DERIVED.
 O3: enforce count-once trace insertion.
 O4: derive residual-kill or active no-overlap O.
 O5: preserve boundary neutrality and exterior scalar silence.
@@ -4454,8 +4710,9 @@ sector pairing / no-overlap geometry obstruction:
   guardrail neutralities missing;
   divergence-safe law missing;
   B_s/F_zeta coefficient origin has now been tested: partially constrained, not insertion;
-  preferred handoffs are minimal coefficient/sector postulate inventory and source/divergence coefficient law;
-  conditional handoff is trace-normalization law.
+  minimal coefficient/sector postulate inventory and source/divergence coefficient-law route have both been performed;
+  neither derived insertion nor adopted postulates;
+  next honest handoffs: explicit minimal postulate selection, trace-normalization theorem, safe-trace membership theorem.
 ```
 
 B_s/F_zeta coefficient-origin obstruction:
@@ -4472,8 +4729,15 @@ source no-double-counting missing;
 boundary/current/mass/support neutralities missing;
 divergence-safe coefficient law missing;
 B_s/F_zeta insertion not derived;
-preferred handoffs are minimal coefficient/sector postulate inventory and source/divergence coefficient law;
-conditional handoff is trace-normalization law.
+source/divergence coefficient-law route has now been tested;
+it closed as partial constraint only;
+hidden source carriers and hidden divergence reservoirs are rejected;
+complete source no-double-counting theorem is not derived;
+divergence-safe coefficient law is not derived;
+trace normalization remains open;
+safe membership remains open;
+trace/residual incidence remains high-risk;
+B_s/F_zeta insertion remains not derived.
 ```
 
 ## 16.3 Structural Unknowns
@@ -4623,7 +4887,7 @@ coefficient-origin source no-double-counting theorem,
 coefficient-origin guardrail neutralities,
 divergence-safe coefficient law,
 minimal coefficient/sector postulate inventory,
-source/divergence coefficient law,
+source/divergence-derived coefficient law,
 recovery-independent coefficient normalization theorem.
 ```
 
@@ -4661,12 +4925,33 @@ B_s/F_zeta coefficient origin:
   source no-double-counting, guardrail neutralities,
   and divergence-safe coefficient law remain open.
 
-next preferred handoffs:
-  minimal coefficient/sector postulate inventory;
-  source/divergence coefficient law.
+source/divergence coefficient-law route:
+  construction attempt completed;
+  partial constraint only;
+  not derived;
+  not insertion;
+  not postulate adoption;
+  hidden source carriers rejected;
+  hidden divergence reservoirs rejected;
+  complete source no-double-counting theorem not derived;
+  divergence-safe coefficient law not derived;
+  trace normalization still open;
+  safe membership still open;
+  trace/residual incidence still high-risk.
 
-conditional constructive handoff:
-  trace-normalization law.
+next honest handoffs:
+  explicit minimal postulate selection;
+  trace-normalization theorem;
+  safe-trace membership theorem;
+  source/divergence obstruction summary.
+
+not ready:
+  B_s/F_zeta insertion theorem;
+  active O rebuild;
+  residual-control retest;
+  parent field equation.
+
+trace-normalization theorem remains open and is one of the honest next routes.
 ```
 
 ---
@@ -4715,6 +5000,18 @@ an explicit residual-control, active-O, and sector-geometry construction status:
   recovery-selected and repair-selected coefficient routes are rejected;
   full coefficient law, trace-normalization law, complete coefficient-origin membership theorem, trace/residual zero incidence, source no-double-counting, guardrail neutralities, and divergence-safe coefficient law remain open;
   B_s/F_zeta insertion remains not derived;
+  source/divergence coefficient-law route was attempted and closed as partial constraint;
+  hidden ordinary source carriers are rejected as admissible shortcuts;
+  hidden divergence reservoirs are rejected as admissible shortcuts;
+  coefficient-side ordinary source load may not be hidden;
+  correction/divergence load may not be hidden;
+  non-reservoir explicitness is admissible discipline;
+  complete B_s/F_zeta coefficient law is not derived;
+  trace normalization is not derived;
+  safe trace membership is not derived;
+  trace/residual incidence is not derived;
+  B_s/F_zeta insertion is not derived;
+  no Group 30 candidate postulate is adopted;
 
 a sharpened boundary/scalar-silence and matching/support ledger;
 
@@ -4751,7 +5048,11 @@ coefficient-origin source no-double-counting theorem,
 coefficient-origin guardrail neutralities,
 divergence-safe coefficient law,
 minimal coefficient/sector postulate inventory,
-source/divergence coefficient law,
+source/divergence-derived coefficient law,
+non-reservoir explicitness theorem,
+trace-normalization theorem,
+safe-trace membership theorem,
+trace/residual incidence theorem,
 derived residual-kill theorem,
 strict non-metric inertness theorem,
 sector-by-sector residual non-reentry theorem,
@@ -4779,69 +5080,50 @@ The central unfinished problem is not the reduced A-sector exterior. The central
 
 Do not immediately write a parent field equation.
 
-Recommended next targets:
+The minimal coefficient/sector postulate inventory has now been performed.
+It did not adopt a postulate and did not identify a complete minimal admissible set.
+
+The source/divergence coefficient-law route has now been performed.
+It closed as partial constraint only.
+It rejected hidden ordinary source carriers and hidden divergence reservoirs.
+It did not derive the complete \(B_s/F_\zeta\) coefficient law.
+It did not derive trace normalization.
+It did not derive safe trace membership.
+It did not derive trace/residual incidence.
+It did not derive \(B_s/F_\zeta\) insertion.
+
+The next honest targets are now:
 
 ```text
-minimal coefficient/sector postulate inventory
+explicit minimal postulate selection
 
 or
 
-source/divergence coefficient law
+trace-normalization theorem
+
+or
+
+safe-trace membership theorem
+
+or
+
+source/divergence obstruction summary
 ```
 
-Reason:
+Use explicit minimal postulate selection if the theory now deliberately chooses one or more of the surviving candidates as postulates. This must be explicit. It must not be disguised as theorem output, recovery selection, source repair, divergence repair, residual cleanup, active-O convenience, or parent-fit closure.
 
-```text
-The B_s/F_zeta coefficient-origin attempt has now been performed.
+Use trace-normalization theorem if the next goal is to keep seeking a theorem for how B_s reads zeta. This route must not choose normalization from AB=1, B=1/A, Schwarzschild recovery, gamma/PPN recovery, weak-field success, kappa=0, source repair, divergence repair, active-O convenience, or parent fit.
 
-It partially constrained coefficient origin:
-  volume/trace algebra is a real structural candidate origin;
-  zeta_Bs -> T_zeta is now a constrained candidate safe-trace anchor;
-  recovery-selected and repair-selected coefficient routes are rejected.
+Use safe-trace membership theorem if the next goal is to keep seeking a theorem for zeta_Bs -> T_zeta. This route must not smuggle no-overlap geometry, trace/residual zero incidence, residual control, or active O.
 
-But it did not derive:
-  full coefficient law,
-  trace-normalization law,
-  complete membership theorem,
-  trace/residual zero incidence,
-  source no-double-counting,
-  guardrail neutralities,
-  divergence-safe coefficient law,
-  B_s/F_zeta insertion.
+Use source/divergence obstruction summary if the next goal is to make the partial-constraint/obstruction status fully explicit before choosing between theorem and postulate routes.
 
-The next constructive route is therefore either to make the remaining coefficient/sector choices explicit,
-or to test whether source no-double-counting and divergence-safe coefficient behavior can supply the missing law.
-```
-
-Co-preferred target:
-
-```text
-source/divergence coefficient law
-```
-
-Use this if the aim is to keep trying for a theorem rather than introduce an explicit postulate. It must not hide ordinary source load inside the coefficient, and any divergence correction must remain explicit and auditable.
-
-Co-preferred target:
-
-```text
-minimal coefficient/sector postulate inventory
-```
-
-Use this if the theory now needs a clean explicit choice. Any new coefficient, normalization, membership, incidence, or sector rule must be marked as a postulate/choice, not a derivation.
-
-Conditional target:
-
-```text
-trace-normalization law
-```
-
-Use this if the immediate goal is to isolate how B_s reads the volume-trace scalar before deciding whether a postulate or source/divergence law is needed.
-
-Do not proceed to B_s/F_zeta insertion theorem.
+Do not proceed to \(B_s/F_\zeta\) insertion theorem.
+Do not treat source/divergence partial constraints as insertion.
 Do not treat coefficient-origin partial constraint as insertion.
 Do not treat zeta_Bs -> T_zeta constrained candidate as complete membership.
-Do not retest residual control using coefficient scaffold.
-Do not rebuild active O from coefficient scaffold.
+Do not retest residual control using Group 31 partial constraints.
+Do not rebuild active O from Group 31 partial constraints.
 Do not proceed to parent field equation.
 
 ```text
@@ -4855,7 +5137,10 @@ residual-control theorem (non-O routes obstructed; active O not constructed),
 active O (controlled underdetermination; sector geometry partial scaffold only),
 no-overlap sector geometry (controlled underdetermination; membership/incidence/edge law open),
 B_s/F_zeta coefficient origin (partially constrained; not insertion),
+source/divergence coefficient-law route (partial constraint; not derived; not insertion),
 B_s/F_zeta insertion law,
+trace-normalization theorem,
+safe-trace membership theorem,
 boundary/source-compatible residual cleanup,
 J_V / J_sub / J_exch definition and ordinary matter decoupling.
 ```
@@ -5499,6 +5784,49 @@ Coefficient-origin status remains unusable for active O, residual control, B_s/F
 or parent equation closure.
 ```
 
+## B.23 Source / Divergence Coefficient-Law Attempt Witness
+
+Meaning:
+
+```text
+The source/divergence coefficient-law route did not derive the complete B_s/F_zeta coefficient law.
+
+Partial structure exists:
+  hidden ordinary source carriers are rejected;
+  hidden divergence reservoirs are rejected;
+  coefficient-side ordinary source load may not be hidden;
+  correction/divergence load may not be hidden;
+  non-reservoir explicitness is admissible as visible/auditable correction discipline.
+
+Rejected:
+  coefficient as ordinary source carrier;
+  coefficient selected from source repair;
+  coefficient selected from recovery;
+  hidden-source coefficient definition;
+  correction as source reservoir;
+  correction as boundary reservoir;
+  correction as current reservoir;
+  correction as mass/support/residual/parent reservoir;
+  non-reservoir explicitness as divergence-safe coefficient law;
+  coefficient source neutrality as full source no-double-counting theorem;
+  source/divergence constraints as B_s/F_zeta insertion;
+  source/divergence constraints as parent readiness;
+  source/divergence partiality as postulate adoption.
+
+Still missing:
+  complete B_s/F_zeta coefficient law;
+  trace-normalization law;
+  safe trace membership theorem;
+  trace/residual zero incidence;
+  full source no-double-counting theorem;
+  divergence-safe coefficient law;
+  B_s/F_zeta insertion.
+
+This is a partial constraint / controlled obstruction, not insertion.
+
+Source/divergence status remains unusable for active O, residual control, B_s/F_zeta insertion, or parent equation closure.
+```
+
 ---
 
 # Appendix C — Rejected Route Index
@@ -5840,6 +6168,47 @@ source/divergence coefficient-law handoff treated as already solved,
 trace-normalization handoff treated as already derived.
 ```
 
+## C.14 Source / Divergence Coefficient-Law Failures
+
+```text
+coefficient as ordinary source carrier,
+source-repair-selected coefficient,
+recovery-selected coefficient,
+hidden-source coefficient definition,
+coefficient source neutrality as full source no-double-counting theorem,
+coefficient source neutrality as B_s/F_zeta insertion,
+coefficient source neutrality as parent readiness,
+correction as source reservoir,
+correction as boundary reservoir,
+correction as current reservoir,
+correction as mass reservoir,
+correction as support reservoir,
+correction as residual cleanup,
+correction as coefficient repair,
+correction as B_s/F_zeta insertion,
+correction as parent closure,
+non-reservoir explicitness as divergence-safe coefficient law,
+visible correction channel as neutrality theorem,
+explicitness as source no-double-counting,
+explicitness as residual control,
+explicitness as parent readiness,
+explicitness as postulate adoption,
+source/divergence partial constraint as full coefficient law,
+source/divergence partial constraint as trace normalization,
+source/divergence partial constraint as safe membership,
+source/divergence partial constraint as trace/residual incidence,
+source/divergence partial constraint as B_s/F_zeta insertion,
+source/divergence partial constraint as active O readiness,
+source/divergence partial constraint as residual-control readiness,
+source/divergence partial constraint as parent readiness,
+trace-normalization open status as adoption,
+Group 31 summary as postulate adoption,
+immediate B_s/F_zeta insertion theorem after Group 31,
+active O rebuild from Group 31,
+residual-control retest from Group 31,
+parent field equation from Group 31.
+```
+
 ---
 
 # Appendix D — Operator / Projector Readiness Checklists
@@ -6062,6 +6431,40 @@ B_s/F_zeta insertion:
 Current conclusion:
   B_s/F_zeta coefficient origin is partially constrained,
   but no insertion theorem is available.
+
+Source/divergence coefficient-law route:
+  attempted;
+  partial constraint;
+  not derived;
+  not insertion;
+  not postulate adoption.
+
+Hidden ordinary source carriers:
+  rejected.
+
+Hidden divergence reservoirs:
+  rejected.
+
+Coefficient source neutrality:
+  constrained;
+  not full source no-double-counting theorem.
+
+Non-reservoir explicitness:
+  admissible discipline;
+  not divergence-safe coefficient law.
+
+Trace normalization:
+  still open.
+
+Safe membership:
+  still open.
+
+Trace/residual incidence:
+  still high-risk.
+
+Current conclusion:
+  B_s/F_zeta coefficient origin and source/divergence constraints together sharpen the obstruction,
+  but still do not provide insertion.
 ```
 
 ## D.2 Role-Specific Projectors
@@ -6342,11 +6745,38 @@ B_s/F_zeta coefficient-origin status:
   divergence-safe coefficient law not derived;
   B_s/F_zeta insertion not derived;
   active O, residual control, and parent equation remain not ready;
-  preferred next targets:
-    minimal coefficient/sector postulate inventory;
-    source/divergence coefficient law;
-  conditional target:
-    trace-normalization law.
+  minimal coefficient/sector postulate inventory and source/divergence coefficient-law route have both been performed;
+  neither derived insertion nor adopted postulates.
+
+Source/divergence coefficient-law status:
+  source/divergence coefficient-law route completed;
+  partial constraint only;
+  not derived;
+  not insertion;
+  not postulate adoption;
+  hidden ordinary source carriers rejected;
+  hidden divergence reservoirs rejected;
+  coefficient-side ordinary source load may not be hidden;
+  correction/divergence load may not be hidden;
+  non-reservoir explicitness is admissible discipline;
+  complete B_s/F_zeta coefficient law not derived;
+  source no-double-counting theorem not derived;
+  divergence-safe coefficient law not derived;
+  trace normalization not derived;
+  safe trace membership not derived;
+  trace/residual incidence not derived;
+  B_s/F_zeta insertion remains not derived;
+  active O, residual control, and parent equation remain not ready;
+  next honest routes:
+    explicit minimal postulate selection;
+    trace-normalization theorem;
+    safe-trace membership theorem;
+    source/divergence obstruction summary;
+  forbidden immediate routes:
+    B_s/F_zeta insertion theorem;
+    active O rebuild;
+    residual-control retest;
+    parent field equation.
 
 Boundary safety is required and not derived:
   no exterior zeta/kappa charge,
@@ -6395,10 +6825,14 @@ Parent correction tensor status:
 
 The theory should not yet write a final parent equation.
 
+The theory should not yet write a final parent equation.
+
 The next honest targets are:
-  minimal coefficient/sector postulate inventory,
-  or source/divergence coefficient law,
-  or conditionally trace-normalization law,
+  explicit minimal postulate selection,
+  or trace-normalization theorem,
+  or safe-trace membership theorem,
+  or source/divergence obstruction summary,
+
 not B_s/F_zeta insertion theorem,
 not active-O rebuild,
 not residual-control retest,
