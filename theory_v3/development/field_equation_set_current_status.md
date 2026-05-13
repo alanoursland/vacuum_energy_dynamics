@@ -14,7 +14,8 @@ The short answer is:
 
 ```text
 The reduced static spherical A-sector is the strongest reconstructed branch.
-The scalar spatial-response / recombination problem is the main unresolved blocker.
+The scalar spatial-response / recombination problem is still the main unresolved blocker.
+The trace-anchor choice surface has been audited, but no postulate has been adopted.
 The parent field equation is not ready.
 ```
 
@@ -40,7 +41,7 @@ can vanish, giving
 B=\frac1A.
 \]
 
-This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery.
+This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that the leading trace-anchor package is minimal plausible-to-audit under current criteria, but it is not selected, not adopted, not recommended, and not insertable.
 
 ---
 
@@ -156,7 +157,9 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | \(\kappa_{\rm areal}\) | `DIAGNOSTIC` | Reduced exterior compensation check | Not a general scalar field |
 | \(B=1/A\) | `RECOVERED_REDUCED` | Static spherical exterior recovery | Not a construction rule |
 | \(B_s/F_\zeta\) | `THEOREM_TARGET` / `NOT_DERIVED` | Candidate scalar spatial response | Not insertable |
-| \(\zeta_{B_s}\to T_\zeta\) | `CONSTRAINED_CANDIDATE` | Possible safe trace anchor | Membership and normalization not derived |
+| trace normalization / \(P_{\rm trace\_norm}\) | `CANDIDATE_REMAINS` | Candidate rule for how \(B_s\) reads \(\zeta\) | Not derived, not chosen, not adopted |
+| safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `CANDIDATE_REMAINS` | Candidate trace-anchor membership | Not derived, not chosen, not incidence or insertion |
+| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Not selected, not adopted, not recommended, not insertion |
 | residual \(\zeta/\kappa\) | `SAFE_IF` killed, inert, or non-metric | Provisional double-count protection | Residual-control theorem not closed |
 | no-overlap operator \(O\) | `THEOREM_TARGET` / `NOT_CONSTRUCTED` | Diagnostic labels only | No active projector exists |
 | \(J_V\) | `UNRESOLVED` | Vacuum-current theorem target | Not a physical flux law |
@@ -196,6 +199,8 @@ parent identity
 ```
 
 Until these are solved, the parent field equation is not ready.
+
+The trace-anchor choice surface is now clearer: trace normalization and safe trace membership remain candidate choices/theorem targets, and the leading trace-anchor package is minimal plausible-to-audit only. This does not close recombination. It does not derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
 
 ---
 
@@ -504,6 +509,12 @@ is only a theorem target.
 
 It is not a current field equation.
 
+## 9.5 Do Not Treat Audit Status as Adoption
+
+Do not shorten "Package B is minimal plausible-to-audit" into selected, adopted, recommended, insertion-ready, or parent-ready.
+
+Audit status is not theory adoption.
+
 ---
 
 # 10. Current Recovery Scorecard
@@ -556,9 +567,24 @@ O status:
 Current status of parent equation:
   not ready.
 
+Trace-anchor choice surface:
+  audited.
+
+Leading trace-anchor package:
+  minimal plausible-to-audit only.
+
+Adoption status:
+  no postulate adopted.
+
+Still not ready:
+  B_s/F_zeta insertion,
+  active O,
+  residual control,
+  parent field equation.
+
 Next honest moves:
-  minimal postulate selection,
-  trace-normalization theorem,
-  safe-trace membership theorem,
-  or source/divergence obstruction summary.
+  explicit adoption decision,
+  trace-normalization theorem route,
+  safe-membership theorem route,
+  or conditional trace-anchor precondition inventory.
 ```
