@@ -41,7 +41,7 @@ can vanish, giving
 B=\frac1A.
 \]
 
-This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B is minimal plausible-to-audit, while trace-normalization and safe-membership remain compatible-if-declared only; Groups 35–36 made the required declaration slots, status modes, safety gates, and handoff conditions visible, but no declaration value, component status, adoption, derivation, theorem support, or insertion is supplied.
+This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B is minimal plausible-to-audit, while trace-normalization and safe-membership remain compatible-if-declared only; Groups 35–37 made the required declaration slots, status modes, safety gates, handoff conditions, and declaration-ready option classes visible, but no option is chosen, no declaration value is installed, and no component status, adoption, derivation, theorem support, or insertion is supplied.
 
 ---
 
@@ -157,9 +157,9 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | \(\kappa_{\rm areal}\) | `DIAGNOSTIC` | Reduced exterior compensation check | Not a general scalar field |
 | \(B=1/A\) | `RECOVERED_REDUCED` | Static spherical exterior recovery | Not a construction rule |
 | \(B_s/F_\zeta\) | `THEOREM_TARGET` / `NOT_DERIVED` | Candidate scalar spatial response | Not insertable |
-| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` | Candidate forms for how \(B_s\) reads \(\zeta\) | Requires declared \(B_s\) convention, \(\zeta\) convention, and traced dimension; not selected, derived, or adopted |
-| safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` | Candidate typed trace-sector membership | Requires declared object, sector, domain, codomain, criterion, and exclusion zones; not selected, derived, adopted, incidence, or insertion |
-| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Declaration slots, status modes, safety gates, and handoff conditions visible; not selected, adopted, recommended, derived, or insertable |
+| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` | Candidate forms for how \(B_s\) reads \(\zeta\) | Declaration-ready options exist; requires explicit \(B_s\) convention, \(\zeta\) convention, traced dimension, and scope; not selected, declared, derived, or adopted |
+| safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` | Candidate typed trace-sector membership | Declaration-ready options exist; requires explicit object, sector, domain, codomain, criterion, role purity, and exclusion zones; not selected, declared, derived, adopted, incidence, or insertion |
+| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Declaration slots, status modes, safety gates, handoff conditions, and declaration-ready option classes visible; no option selected, adopted, recommended, derived, or insertable |
 | residual \(\zeta/\kappa\) | `SAFE_IF` killed, inert, or non-metric | Provisional double-count protection | Residual-control theorem not closed |
 | no-overlap operator \(O\) | `THEOREM_TARGET` / `NOT_CONSTRUCTED` | Diagnostic labels only | No active projector exists |
 | \(J_V\) | `UNRESOLVED` | Vacuum-current theorem target | Not a physical flux law |
@@ -200,7 +200,7 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–36 inventoried the declaration slots, status modes, safety gates, and handoff conditions needed before either component can be used. These inventories do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
+The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–37 inventoried the declaration slots, status modes, safety gates, handoff conditions, and declaration-ready option classes needed before either component can be used. Several coherent declaration-ready options now exist, but none is chosen. These inventories do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
 
 ---
 
@@ -568,8 +568,10 @@ Current status of parent equation:
   not ready.
 
 Trace-anchor choice surface:
-  audited; declaration slots, status modes, safety gates, and handoff conditions are visible.
+  audited; declaration slots, status modes, safety gates, handoff conditions,
+  and declaration-ready option classes are visible.
   Trace-normalization and safe-membership remain compatible-if-declared only.
+  Several coherent declaration-ready options exist, but none is chosen.
 
 Leading trace-anchor package:
   minimal plausible-to-audit only.
