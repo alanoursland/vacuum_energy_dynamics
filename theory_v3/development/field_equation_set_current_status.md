@@ -41,7 +41,7 @@ can vanish, giving
 B=\frac1A.
 \]
 
-This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that the leading trace-anchor package is minimal plausible-to-audit under current criteria, but it is not selected, not adopted, not recommended, and not insertable.
+This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B is minimal plausible-to-audit, while trace-normalization candidate forms now survive only as compatible-if-declared; no trace-normalization form is selected, adopted, derived, or insertable.
 
 ---
 
@@ -157,7 +157,7 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | \(\kappa_{\rm areal}\) | `DIAGNOSTIC` | Reduced exterior compensation check | Not a general scalar field |
 | \(B=1/A\) | `RECOVERED_REDUCED` | Static spherical exterior recovery | Not a construction rule |
 | \(B_s/F_\zeta\) | `THEOREM_TARGET` / `NOT_DERIVED` | Candidate scalar spatial response | Not insertable |
-| trace normalization / \(P_{\rm trace\_norm}\) | `CANDIDATE_REMAINS` | Candidate rule for how \(B_s\) reads \(\zeta\) | Not derived, not chosen, not adopted |
+| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` | Candidate forms for how \(B_s\) reads \(\zeta\) | Requires declared \(B_s\) convention, \(\zeta\) convention, and traced dimension; not selected, derived, or adopted |
 | safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `CANDIDATE_REMAINS` | Candidate trace-anchor membership | Not derived, not chosen, not incidence or insertion |
 | trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Not selected, not adopted, not recommended, not insertion |
 | residual \(\zeta/\kappa\) | `SAFE_IF` killed, inert, or non-metric | Provisional double-count protection | Residual-control theorem not closed |
@@ -200,7 +200,7 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-The trace-anchor choice surface is now clearer: trace normalization and safe trace membership remain candidate choices/theorem targets, and the leading trace-anchor package is minimal plausible-to-audit only. This does not close recombination. It does not derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
+The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. For trace normalization, the scale-factor and metric-coefficient volume-log forms survive only as compatible-if-declared candidates; per-dimension forms remain notation-dependent; linearized trace bookkeeping remains first-order only. This does not close recombination or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
 
 ---
 
@@ -568,7 +568,7 @@ Current status of parent equation:
   not ready.
 
 Trace-anchor choice surface:
-  audited.
+  audited; trace-normalization forms are compatible-if-declared only.
 
 Leading trace-anchor package:
   minimal plausible-to-audit only.
