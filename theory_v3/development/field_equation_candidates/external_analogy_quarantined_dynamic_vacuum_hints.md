@@ -6,6 +6,11 @@ This note collects development hints for the current field-equation program usin
 
 The central idea is to treat the reduced \(A\)-sector success as a hard constraint on any future parent construction. The current branch already recovers the ordinary exterior mass response, but the full theory is not licensed until scalar spatial response, trace membership, compensation, residual control, source neutrality, boundary neutrality, and parent divergence safety are closed without undefined repair objects.
 
+External motivation: possible vacuum manipulation / Casimir relevance.
+Archive status: not evidence, not derivation, not a source of field-equation licenses.
+Allowed use: generate audit questions about boundary behavior, vacuum accounting, source neutrality, and exterior loads.
+Forbidden use: justify coefficients, currents, correction tensors, parent closure, or insertion.
+
 ## 1. Preserve the reduced \(A\)-sector as the strongest licensed anchor
 
 The most stable result remains
