@@ -41,7 +41,7 @@ can vanish, giving
 B=\frac1A.
 \]
 
-This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B remains minimal plausible-to-audit, while trace-normalization and safe membership remain compatible-if-declared only. Groups 35–46 made the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition surface, equation-choice exclusion map, branch-or-parallel decision surface, selector-context audit, explicit parallel trace-normalization record surface, and convention-field closure audit visible. Group 45 made the two branch-indexed trace-normalization record schemas concrete: a non-active metric record for \(\log B_{s,{\rm metric}}=2\zeta/d\) and a non-active scale record for \(\log b_{s,{\rm scale}}=\zeta/d\). Group 46 closed \(\zeta\) and symbolic \(d\) for paired record review only, while identifying normalization declaration scope/status as the main remaining convention blocker. No active branch is chosen, no trace-normalization declaration is completed, no Package B component is adopted or derived, and no insertion or parent route is opened.
+This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B remains minimal plausible-to-audit, while trace-normalization and safe membership remain compatible-if-declared only. Groups 35–47 made the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition surface, equation-choice exclusion map, branch-or-parallel decision surface, selector-context audit, explicit parallel trace-normalization record surface, convention-field closure audit, and targeted declaration-scope closure audit visible. Group 45 made the two branch-indexed trace-normalization record schemas concrete. Group 46 closed \(\zeta\) and symbolic \(d\) for paired record review only, while identifying normalization declaration scope/status as the main remaining convention blocker. Group 47 then separated record-review scope from declaration scope and narrowed the next target to an explicit paired declaration-scope/status record. No active branch is chosen, no trace-normalization declaration is completed, no Package B component is adopted or derived, and no insertion or parent route is opened.
 
 ---
 
@@ -157,9 +157,9 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | \(\kappa_{\rm areal}\) | `DIAGNOSTIC` | Reduced exterior compensation check | Not a general scalar field |
 | \(B=1/A\) | `RECOVERED_REDUCED` | Static spherical exterior recovery | Not a construction rule |
 | \(B_s/F_\zeta\) | `THEOREM_TARGET` / `NOT_DERIVED` | Candidate scalar spatial response | Not insertable |
-| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `PARALLEL_RECORD_SURFACE_EXPLICIT` / `REVIEW_READY_ONLY` / `NOT_DECLARED` | Candidate forms for how \(B_s\) reads \(\zeta\) | Metric and scale trace-normalization records are explicit and non-active; \(\zeta\) is closed for review as a shared record-local trace-payload symbol; symbolic \(d\) is closed for review as the shared traced-dimension field; numeric \(d\) remains scope-dependent; declaration scope/status remain blocked; no branch selected, no declaration completed, no insertion licensed |
+| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `PARALLEL_RECORD_SURFACE_EXPLICIT` / `REVIEW_READY_ONLY` / `DECLARATION_SCOPE_READY_FOR_RECORD` / `NOT_DECLARED` | Candidate forms for how \(B_s\) reads \(\zeta\) | Metric and scale trace-normalization records are explicit and non-active; \(\zeta\) and symbolic \(d\) are closed for paired record review; a limited paired-record declaration-scope candidate survives; next target is an explicit paired declaration-scope/status record; no branch selected, no declaration completed, no insertion licensed |
 | safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `PRECONDITIONS_SHARPENED` | Candidate typed trace-sector membership | Object, sector, domain/codomain, criteria, role-purity exclusions, and diagnostic/active boundary are now explicit; not selected, declared, derived, adopted, incidence, residual control, active O, or insertion |
-| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition sharpening, equation-family exclusions, branch-or-parallel decision surface, selector-context audit, explicit parallel trace-normalization record surface, and convention-field closure audit visible; no active branch, option, package, adoption, recommendation, derivation, or insertion |
+| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition sharpening, equation-family exclusions, branch-or-parallel decision surface, selector-context audit, explicit parallel trace-normalization record surface, convention-field closure audit, and declaration-scope closure audit visible; no active branch, option, package, adoption, recommendation, derivation, or insertion |
 | residual \(\zeta/\kappa\) | `SAFE_IF` killed, inert, or non-metric | Provisional double-count protection | Residual-control theorem not closed |
 | no-overlap operator \(O\) | `THEOREM_TARGET` / `NOT_CONSTRUCTED` | Diagnostic labels only | No active projector exists |
 | \(J_V\) | `UNRESOLVED` | Vacuum-current theorem target | Not a physical flux law |
@@ -200,7 +200,7 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–40 inventoried the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, and split-safe preconditions needed before either component can be used. The overloaded \(B_s\) notation has been split into metric-coefficient and scale-factor branches, and split-safe preconditions can now be carried while both branches remain visible. Neutral \(F_\zeta\) remains safe only while expression-free. Group 41 continued the safe-membership side by sharpening \(\zeta_{B_s}\) as the membership-test payload object, \(T_\zeta\) as the safe trace-sector target, the membership criterion matrix, mandatory role-purity exclusion zones, and the diagnostic-versus-active membership boundary. This did not complete safe-membership declaration, prove membership, prove incidence, prove residual nonentry, prove source no-double-counting, install active \(O\), or license insertion. Group 42 performed an equation-choice exclusion map: forbidden equation families across trace normalization, safe membership, scalar spatial response, residual/source, and boundary/divergence were eliminated or demoted, leaving only conditional candidates and future axiom-required routes. No equation was selected, no branch was chosen, and no axiom was adopted. Group 43 separated the legitimate trace-normalization route classes — metric branch choice (\(\log B_{s,{\rm metric}}=2\zeta/d\)), scale branch choice (\(\log b_{s,{\rm scale}}=\zeta/d\)), explicit parallel records, and continued deferral — and rejected the forbidden selectors: recovery, downstream convenience, neutral \(F_\zeta\) expression, inherited symbol shape, and majority notation count. Source hierarchy, consequence comparison, and theory-owner convention may serve as admissible context for a later explicit decision, but are not derivations. Group 44 then audited admissible selector context for a later trace-normalization decision. It sharpened how source hierarchy, branch consequences, route burdens, and explicit theory-owner convention boundaries may inform a future record. This context audit did not choose metric or scale branch, execute the parallel-record route, complete trace-normalization declaration, adopt Package B, license \(B_s/F_\zeta\) insertion, or advance residual control, active \(O\), recombination, or parent closure. Group 45 made the explicit parallel trace-normalization record route concrete. It defined paired non-active record schemas for the metric-coefficient branch and scale-factor branch while preserving separate branch labels, separate candidate expressions, shared convention gaps, and equal non-insertability. This did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not complete trace-normalization declaration, did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Group 46 then audited the convention fields shared by the paired trace-normalization records. It closed \(\zeta\) for review as a shared record-local trace-payload symbol and closed symbolic \(d\) for review as the shared traced-dimension field. Numeric \(d\) remains tied to explicit normalization scope. Record-review scope is usable for comparison, but declaration scope and parent-facing scope remain blocked. Group 46 makes the pair review-ready only. It does not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), does not complete trace-normalization declaration, does not adopt Package B, does not license \(B_s/F_\zeta\) insertion, and does not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. These audits do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, choose a branch, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
+The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–40 inventoried the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, and split-safe preconditions needed before either component can be used. The overloaded \(B_s\) notation has been split into metric-coefficient and scale-factor branches, and split-safe preconditions can now be carried while both branches remain visible. Neutral \(F_\zeta\) remains safe only while expression-free. Group 41 continued the safe-membership side by sharpening \(\zeta_{B_s}\) as the membership-test payload object, \(T_\zeta\) as the safe trace-sector target, the membership criterion matrix, mandatory role-purity exclusion zones, and the diagnostic-versus-active membership boundary. This did not complete safe-membership declaration, prove membership, prove incidence, prove residual nonentry, prove source no-double-counting, install active \(O\), or license insertion. Group 42 performed an equation-choice exclusion map: forbidden equation families across trace normalization, safe membership, scalar spatial response, residual/source, and boundary/divergence were eliminated or demoted, leaving only conditional candidates and future axiom-required routes. No equation was selected, no branch was chosen, and no axiom was adopted. Group 43 separated the legitimate trace-normalization route classes — metric branch choice (\(\log B_{s,{\rm metric}}=2\zeta/d\)), scale branch choice (\(\log b_{s,{\rm scale}}=\zeta/d\)), explicit parallel records, and continued deferral — and rejected the forbidden selectors: recovery, downstream convenience, neutral \(F_\zeta\) expression, inherited symbol shape, and majority notation count. Source hierarchy, consequence comparison, and theory-owner convention may serve as admissible context for a later explicit decision, but are not derivations. Group 44 then audited admissible selector context for a later trace-normalization decision. It sharpened how source hierarchy, branch consequences, route burdens, and explicit theory-owner convention boundaries may inform a future record. This context audit did not choose metric or scale branch, execute the parallel-record route, complete trace-normalization declaration, adopt Package B, license \(B_s/F_\zeta\) insertion, or advance residual control, active \(O\), recombination, or parent closure. Group 45 made the explicit parallel trace-normalization record route concrete. It defined paired non-active record schemas for the metric-coefficient branch and scale-factor branch while preserving separate branch labels, separate candidate expressions, shared convention gaps, and equal non-insertability. This did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not complete trace-normalization declaration, did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Group 46 then audited the convention fields shared by the paired trace-normalization records. It closed \(\zeta\) for review as a shared record-local trace-payload symbol and closed symbolic \(d\) for review as the shared traced-dimension field. Numeric \(d\) remains tied to explicit normalization scope. Record-review scope is usable for comparison, but declaration scope and parent-facing scope remain blocked. Group 46 makes the pair review-ready only. It does not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), does not complete trace-normalization declaration, does not adopt Package B, does not license \(B_s/F_\zeta\) insertion, and does not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Group 47 attacked the normalization declaration-scope/status blocker directly. It separated record-review scope from declaration scope, identified a limited paired-record declaration-scope candidate as the surviving route, and made the explicit paired declaration-scope/status record the next non-looping target. Group 47 did not declare trace normalization. It did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Parent-facing, insertion-facing, active-\(O\), safety-proof, neutral-law, and single-branch-without-choice scope routes remain blocked. These audits do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, choose a branch, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
 
 ---
 
@@ -464,6 +464,8 @@ The explicit parallel records from Group 45 are candidate record surfaces only. 
 
 Group 46 closed only review-level convention fields. Shared \(\zeta\) and symbolic \(d\) support comparison of the paired records, not branch selection or declaration. Numeric \(d\), declaration scope, parent-facing scope, and insertion scope remain blocked until explicitly licensed. Review-ready is not declaration-ready.
 
+Group 47 sharpened declaration-scope readiness but still did not install trace normalization. A limited paired-record declaration-scope candidate survives only as pre-declaration infrastructure. The next target is an explicit paired declaration-scope/status record that states status, paired-record domain, shared \(\zeta\) assumption, symbolic \(d\), numeric-\(d\) condition, non-active branch status, and downstream caveats. Scope-record-ready is not declaration-ready.
+
 ## 9.2 Do Not Use Undefined Objects as Repair Tools
 
 Do not use the following as repair mechanisms:
@@ -620,16 +622,42 @@ Trace-anchor choice surface:
       usable for comparing paired records.
 
     declaration scope:
-      still blocked;
-      main remaining convention target before any declaration attempt.
+      now separated from record-review scope;
+      surviving route: limited paired-record declaration-scope candidate only;
+      not one neutral law; not single-branch scope; not insertion-facing;
+      not parent-facing.
 
     parent-facing scope:
       theorem-required;
       not available by naming.
 
+  Declaration-scope status:
+    record-review scope and declaration scope are now separated.
+
+    surviving declaration-scope candidate:
+      limited paired-record declaration-scope candidate;
+      domain = paired non-active metric/scale record surface;
+      not one neutral law;
+      not single-branch scope;
+      not insertion-facing;
+      not parent-facing.
+
+    next non-looping target:
+      explicit paired declaration-scope/status record.
+
+    that future record must state:
+      status,
+      paired-record domain,
+      shared zeta assumption,
+      symbolic d,
+      numeric-d condition,
+      non-active branch status,
+      downstream caveats.
+
   The metric/scale pair is review-ready only.
   No branch is chosen.
   No trace-normalization declaration is completed.
+  Scope-record-ready is not declaration-ready.
   Review-ready is not declaration-ready.
   Parallel records are visibility infrastructure and pre-declaration review
   surfaces only.
@@ -650,7 +678,8 @@ Adoption status:
   no postulate adopted.
 
 Still not ready:
-  trace-normalization declaration scope,
+  explicit paired declaration-scope/status record,
+  trace-normalization declaration,
   B_s/F_zeta insertion,
   active O,
   residual control,
@@ -658,10 +687,10 @@ Still not ready:
   parent field equation.
 
 Next honest moves:
-  normalization declaration-scope closure audit,
-  declaration-scope axiom or choice audit,
-  parallel trace-normalization declaration attempt only after scope/status closure,
-  residual/source safety theorem route if scope depends on safety theorems,
+  explicit paired declaration-scope/status record,
+  parallel trace-normalization declaration attempt only after scope/status record is explicit and assumptions remain acceptable,
+  explicit branch-choice record only as a separate daylight-labeled choice,
+  residual/source safety theorem route,
   boundary/scalar-silence theorem route,
   safe-membership declaration/theorem route,
   or explicit adoption decision only as a separate theory choice.
