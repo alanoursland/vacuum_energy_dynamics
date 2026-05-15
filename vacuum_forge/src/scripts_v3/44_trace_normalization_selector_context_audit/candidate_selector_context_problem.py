@@ -1,0 +1,304 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+from pathlib import Path
+from typing import List
+
+import sympy as sp
+
+from vacuumforge import ProjectArchive, Status
+from vacuumforge.governance import (
+    ClaimRecord,
+    ClaimTier,
+    GovernanceStatus,
+    ObligationStatus,
+    ProofObligationRecord,
+    RecordKind,
+    ScriptOutput,
+    StatusMark,
+)
+
+ARCHIVE_ROOT = Path(__file__).resolve().parents[1] / ".vacuumforge_archive"
+SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
+
+
+def header(title: str) -> None:
+    print()
+    print("=" * 120)
+    print(title)
+    print("=" * 120)
+
+
+def subheader(title: str) -> None:
+    print()
+    print("-" * 120)
+    print(title)
+    print("-" * 120)
+
+
+def prepare_archive(dependencies):
+    archive = ProjectArchive(ARCHIVE_ROOT)
+    ns = archive.script_namespace(SCRIPT_ID)
+    invalidated = ns.check_source_invalidation(__file__)
+    for dep_id, upstream_script_id, upstream_derivation_id in dependencies:
+        ns.declare_dependency(
+            dependency_id=dep_id,
+            upstream_script_id=upstream_script_id,
+            upstream_derivation_id=upstream_derivation_id,
+            expected_record_kind=RecordKind.INVENTORY_MARKER,
+        )
+    return archive, ns, invalidated
+
+
+def print_archive_status(ns, invalidated: bool) -> None:
+    if invalidated:
+        print("[INFO] Archive invalidated due to source change.")
+    checks = ns.verify_dependencies()
+    if not checks:
+        print("[INFO] Archive dependencies: none declared.")
+        return
+    print("[INFO] Archive dependency check:")
+    for check in checks:
+        print(f"  - {check.dependency.dependency_id}: {check.status} ({check.message})")
+
+
+def mark(status: str) -> StatusMark:
+    return {
+        "PASS": StatusMark.PASS,
+        "MATCHED_EXPECTATION": StatusMark.PASS,
+        "CONTEXT_ONLY": StatusMark.INFO,
+        "ADMISSIBLE_CONTEXT": StatusMark.INFO,
+        "EVIDENCE_CONTEXT": StatusMark.INFO,
+        "CONSEQUENCE_CONTEXT": StatusMark.INFO,
+        "ROUTE_BURDEN_CONTEXT": StatusMark.INFO,
+        "BRANCH_CHOICE_CANDIDATE": StatusMark.INFO,
+        "PARALLEL_RECORD_CANDIDATE": StatusMark.INFO,
+        "PARALLEL_ROUTE_PREFERRED": StatusMark.INFO,
+        "CONTINUED_DEFERRAL": StatusMark.DEFER,
+        "CONTEXT_INSUFFICIENT": StatusMark.DEFER,
+        "CONTEXT_READY": StatusMark.DEFER,
+        "CHOICE_CONTEXT_READY": StatusMark.DEFER,
+        "EXPLICIT_CHOICE_REQUIRED": StatusMark.OBLIGATION,
+        "POLICY_RULE": StatusMark.OBLIGATION,
+        "OPEN": StatusMark.DEFER,
+        "DEFER": StatusMark.DEFER,
+        "NOT_READY": StatusMark.DEFER,
+        "NOT_DECLARED": StatusMark.DEFER,
+        "DECLARATION_DEFERRED": StatusMark.DEFER,
+        "NOT_ADOPTED": StatusMark.DEFER,
+        "NOT_DERIVED": StatusMark.DEFER,
+        "SELECTOR_REJECTED": StatusMark.FAIL,
+        "RECOVERY_SELECTOR_REJECTED": StatusMark.FAIL,
+        "FORBIDDEN_BY_GUARDRAIL": StatusMark.FAIL,
+        "FORBIDDEN_SHORTCUT": StatusMark.FAIL,
+        "REJECTED": StatusMark.FAIL,
+        "ELIMINATED": StatusMark.FAIL,
+    }.get(status, StatusMark.INFO)
+
+
+def obligation_status(status: str) -> ObligationStatus:
+    if status in {"NOT_READY", "NOT_DECLARED", "DECLARATION_DEFERRED", "NOT_ADOPTED", "NOT_DERIVED", "CONTEXT_INSUFFICIENT", "CONTINUED_DEFERRAL"}:
+        return ObligationStatus.DEFERRED
+    return ObligationStatus.OPEN
+
+
+def record_marker(ns, marker_id: str, symbol_name: str, scope: str) -> None:
+    ns.record_derivation(
+        derivation_id=marker_id,
+        inputs=[],
+        output=sp.Symbol(symbol_name),
+        method="inventory marker; no physical derivation",
+        status=Status.DERIVED,
+        record_kind=RecordKind.INVENTORY_MARKER,
+        is_placeholder=True,
+        scope=scope,
+    )
+
+
+def record_claim(ns, claim_id: str, marker_id: str, statement: str, status=GovernanceStatus.POLICY_RULE) -> None:
+    ns.record_claim(
+        ClaimRecord(
+            claim_id=claim_id,
+            script_id=SCRIPT_ID,
+            claim_kind=RecordKind.GOVERNANCE_CLAIM,
+            tier=ClaimTier.CONSTRAINED,
+            status=status,
+            statement=statement,
+            derivation_ids=[marker_id],
+            obligation_ids=[],
+        )
+    )
+
+
+def record_obligation(ns, obligation_id: str, title: str, description: str, status: str = "OPEN") -> None:
+    ns.record_obligation(
+        ProofObligationRecord(
+            obligation_id=obligation_id,
+            script_id=SCRIPT_ID,
+            title=title,
+            status=obligation_status(status),
+            required_by=[SCRIPT_ID],
+            description=description,
+        )
+    )
+
+
+@dataclass(frozen=True)
+class Entry:
+    name: str
+    subject: str
+    status: str
+    detail: str
+    boundary: str
+
+
+@dataclass(frozen=True)
+class Shortcut:
+    name: str
+    shortcut: str
+    reason: str
+
+
+@dataclass(frozen=True)
+class ObligationEntry:
+    name: str
+    title: str
+    status: str
+    obligation: str
+    discipline: str
+
+# Group:
+#   44_trace_normalization_selector_context_audit
+# Script type:
+#   AUDIT / CONTEXT
+
+SCRIPT_LABEL = 'Candidate Selector Context Problem'
+MARKER_ID = 'g44_problem'
+DEPENDENCIES = [
+    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'),
+]
+SCOPE = 'Group 44 trace-normalization selector-context audit'
+QUESTION = 'What admissible context can inform a later trace-normalization route decision after forbidden selectors have been rejected?'
+DISCIPLINE = 'This script opens Group 44 as a selector-context audit. It sharpens source hierarchy, consequence context, route burden comparison, and explicit convention-choice boundaries without choosing any route.'
+OPENING_STATUS = 'selector-context audit only; no branch choice, declaration completion, adoption, insertion, active O, recombination, or parent route'
+CASE_1_TITLE = 'Case 1: Selector-context opening entries'
+NEXT_SCRIPT = 'candidate_source_hierarchy_evidence_ledger.py'
+CONCLUSIONS = [('Group 44 opener complete', 'PASS', 'selector-context audit opened'),
+        ('no route selected', 'DEFER', 'metric, scale, parallel, and deferral routes remain unchosen')]
+
+def build_entries() -> List[Entry]:
+    return [
+        Entry('P1: context audit opened', 'source hierarchy, consequences, burden comparison, and convention boundaries may be sharpened', 'CONTEXT_ONLY', 'admissible context can be prepared for a later explicit decision', 'context is not selector, choice, declaration, or insertion'),
+        Entry('P2: source hierarchy context', 'ranked source authority may inform a later choice', 'ADMISSIBLE_CONTEXT', 'source evidence can be organized by authority and relevance', 'not derivation and not majority-count selection'),
+        Entry('P3: consequence context', 'metric, scale, parallel, and deferral consequences may be compared', 'CONSEQUENCE_CONTEXT', 'consequences expose risk and obligation profiles', 'downstream convenience remains forbidden as selector'),
+        Entry('P4: explicit convention boundary', 'theory-owner intuition may enter only as labeled future choice', 'EXPLICIT_CHOICE_REQUIRED', 'choice can be prepared only if not disguised as derivation', 'not adopted here'),
+        Entry('P5: deferral remains honest', 'insufficient context may justify continued deferral', 'CONTINUED_DEFERRAL', 'deferral can prevent hidden branch choice', 'deferral is not branch rejection'),
+        Entry('P6: downstream locks', 'adoption, insertion, active O, residual control, recombination, and parent closure remain closed', 'NOT_READY', 'selector-context work cannot open field-equation routes', 'context clarity is not field-equation use'),
+    ]
+
+def build_shortcuts() -> List[Shortcut]:
+    return [
+        Shortcut('X1: context as choice', 'treat source hierarchy or consequence context as selecting a branch', 'context can inform only a later explicit record'),
+        Shortcut('X2: burden as selector', 'choose whichever route has fewer listed obligations', 'smaller burden is not an admissible selector by itself'),
+        Shortcut('X3: convention as derivation', 'present theory-owner intuition as theorem or derivation', 'choice must be labeled as choice'),
+        Shortcut('X4: context as declaration', 'treat sharpened context as trace-normalization declaration', 'declaration requires separate record'),
+        Shortcut('X5: context as insertion', 'open B_s/F_zeta insertion from improved context', 'insertion remains downstream and not ready'),
+    ]
+
+def build_obligations() -> List[ObligationEntry]:
+    return [
+        ObligationEntry('O1: keep context non-active', 'preserve context/selector/choice/declaration separation', 'POLICY_RULE', 'context may inform later choice but must not select route', 'avoid hidden branch choice'),
+        ObligationEntry('O2: rank evidence if used', 'rank source hierarchy by authority and relevance', 'OPEN', 'notation/source evidence needs quality ranking before use', 'avoid majority-count selection'),
+        ObligationEntry('O3: preserve explicit-choice label', 'label future theory-owner preference as convention choice', 'EXPLICIT_CHOICE_REQUIRED', 'intuition cannot masquerade as derivation', 'choice in daylight only'),
+        ObligationEntry('O4: keep downstream closed', 'do not open adoption, insertion, active O, recombination, or parent closure', 'NOT_READY', 'context audit cannot license field-equation routes', 'avoid overreach'),
+    ]
+
+
+def case_0(out: ScriptOutput) -> None:
+    header(SCRIPT_LABEL)
+    print("Question:\n")
+    for line in QUESTION.splitlines():
+        print("  " + line if line else "")
+    print("\nDiscipline:\n")
+    for line in DISCIPLINE.splitlines():
+        print("  " + line if line else "")
+    with out.governance_assessments():
+        out.line(f"{SCRIPT_LABEL} opened", StatusMark.PASS, OPENING_STATUS)
+
+
+def case_1(out: ScriptOutput, entries: List[Entry]) -> None:
+    header(CASE_1_TITLE)
+    for item in entries:
+        subheader(item.name)
+        print(f"Subject: {item.subject}")
+        print(f"Detail: {item.detail}")
+        print(f"Boundary: {item.boundary}")
+        with out.governance_assessments():
+            out.line(item.name, mark(item.status), f"{item.status}: {item.detail}. Boundary: {item.boundary}")
+
+
+def case_2(out: ScriptOutput, shortcuts: List[Shortcut]) -> None:
+    header("Case 2: Invalid upgrades and forbidden shortcuts")
+    for item in shortcuts:
+        subheader(item.name)
+        print(f"Shortcut: {item.shortcut}")
+        with out.counterexamples():
+            out.line(item.name, StatusMark.FAIL, f"FORBIDDEN_SHORTCUT: {item.reason}")
+
+
+def case_3(out: ScriptOutput, obligations: List[ObligationEntry]) -> None:
+    header("Case 3: Open obligations")
+    for item in obligations:
+        subheader(item.name)
+        print(f"Obligation: {item.obligation}")
+        with out.unresolved_obligations():
+            out.line(item.name, mark(item.status), f"{item.status}: {item.obligation}; discipline: {item.discipline}")
+
+
+def case_4(out: ScriptOutput) -> None:
+    header("Case 4: Local conclusions")
+    with out.governance_assessments():
+        for name, status, detail in CONCLUSIONS:
+            out.line(name, mark(status), detail)
+    print("\nPossible next script:")
+    print("  " + NEXT_SCRIPT)
+
+
+def record_governance(ns, entries: List[Entry], obligations: List[ObligationEntry]) -> None:
+    record_marker(ns, MARKER_ID, MARKER_ID, SCOPE)
+    for idx, item in enumerate(entries, 1):
+        record_claim(
+            ns,
+            f"{MARKER_ID}_c{idx}",
+            MARKER_ID,
+            f"{item.name}: {item.subject}. {item.detail}. Boundary: {item.boundary}.",
+        )
+    for idx, item in enumerate(obligations, 1):
+        record_obligation(
+            ns,
+            f"{MARKER_ID}_o{idx}",
+            item.title,
+            f"{item.obligation}. Discipline: {item.discipline}.",
+            item.status,
+        )
+
+
+def main() -> None:
+    archive, ns, invalidated = prepare_archive(DEPENDENCIES)
+    print_archive_status(ns, invalidated)
+    out = ScriptOutput()
+    entries = build_entries()
+    shortcuts = build_shortcuts()
+    obligations = build_obligations()
+    case_0(out)
+    case_1(out, entries)
+    case_2(out, shortcuts)
+    case_3(out, obligations)
+    case_4(out)
+    record_governance(ns, entries, obligations)
+    ns.write_run_metadata()
+
+
+if __name__ == "__main__":
+    main()
