@@ -41,7 +41,7 @@ can vanish, giving
 B=\frac1A.
 \]
 
-This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B is minimal plausible-to-audit, while trace-normalization and safe-membership remain compatible-if-declared only; Groups 35–41 made the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, and safe-membership precondition slots visible. Group 41 sharpened the safe-membership object, T_zeta sector, criteria, role-purity exclusions, and diagnostic/active boundary. No active branch is chosen, no declaration value is installed, and no component status, adoption, derivation, theorem support, or insertion is supplied.
+This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B is minimal plausible-to-audit, while trace-normalization and safe-membership remain compatible-if-declared only; Groups 35–43 made the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition slots, equation-choice exclusion map, and decision-surface separation visible. Group 41 sharpened the safe-membership object, T_zeta sector, criteria, role-purity exclusions, and diagnostic/active boundary. Group 42 eliminated forbidden equation families without selecting any equation. Group 43 separated the legitimate trace-normalization route classes and rejected forbidden selectors. No active branch is chosen, no declaration value is installed, and no component status, adoption, derivation, theorem support, or insertion is supplied.
 
 ---
 
@@ -157,9 +157,9 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | \(\kappa_{\rm areal}\) | `DIAGNOSTIC` | Reduced exterior compensation check | Not a general scalar field |
 | \(B=1/A\) | `RECOVERED_REDUCED` | Static spherical exterior recovery | Not a construction rule |
 | \(B_s/F_\zeta\) | `THEOREM_TARGET` / `NOT_DERIVED` | Candidate scalar spatial response | Not insertable |
-| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` | Candidate forms for how \(B_s\) reads \(\zeta\) | Declaration-ready options exist; \(B_s\) notation split into metric-coefficient and scale-factor branches, but no active branch is chosen; requires explicit \(B_s\) convention, \(\zeta\) convention, traced dimension, and scope; not selected, declared, derived, or adopted |
+| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `DECISION_SURFACE_CLARIFIED` | Candidate forms for how \(B_s\) reads \(\zeta\) | Route classes separated: metric branch (\(\log B_{s,{\rm metric}}=2\zeta/d\)), scale branch (\(\log b_{s,{\rm scale}}=\zeta/d\)), explicit parallel records, and continued deferral; forbidden selectors (recovery, downstream convenience, neutral expression, inherited symbol, majority count) rejected; no active branch is chosen; not selected, declared, derived, or adopted |
 | safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `PRECONDITIONS_SHARPENED` | Candidate typed trace-sector membership | Object, sector, domain/codomain, criteria, role-purity exclusions, and diagnostic/active boundary are now explicit; not selected, declared, derived, adopted, incidence, residual control, active O, or insertion |
-| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, and split-safe preconditions visible; no active branch, option, package, adoption, recommendation, derivation, or insertion |
+| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` | Current audit package for trace-anchor choice surface | Declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, equation-choice exclusion map, and decision-surface separation visible; no active branch, option, package, adoption, recommendation, derivation, or insertion |
 | residual \(\zeta/\kappa\) | `SAFE_IF` killed, inert, or non-metric | Provisional double-count protection | Residual-control theorem not closed |
 | no-overlap operator \(O\) | `THEOREM_TARGET` / `NOT_CONSTRUCTED` | Diagnostic labels only | No active projector exists |
 | \(J_V\) | `UNRESOLVED` | Vacuum-current theorem target | Not a physical flux law |
@@ -200,7 +200,7 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–40 inventoried the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, and split-safe preconditions needed before either component can be used. The overloaded \(B_s\) notation has been split into metric-coefficient and scale-factor branches, and split-safe preconditions can now be carried while both branches remain visible. Neutral \(F_\zeta\) remains safe only while expression-free. Group 41 continued the safe-membership side by sharpening \(\zeta_{B_s}\) as the membership-test payload object, \(T_\zeta\) as the safe trace-sector target, the membership criterion matrix, mandatory role-purity exclusion zones, and the diagnostic-versus-active membership boundary. This did not complete safe-membership declaration, prove membership, prove incidence, prove residual nonentry, prove source no-double-counting, install active \(O\), or license insertion. These inventories and the split do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
+The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–40 inventoried the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, and split-safe preconditions needed before either component can be used. The overloaded \(B_s\) notation has been split into metric-coefficient and scale-factor branches, and split-safe preconditions can now be carried while both branches remain visible. Neutral \(F_\zeta\) remains safe only while expression-free. Group 41 continued the safe-membership side by sharpening \(\zeta_{B_s}\) as the membership-test payload object, \(T_\zeta\) as the safe trace-sector target, the membership criterion matrix, mandatory role-purity exclusion zones, and the diagnostic-versus-active membership boundary. This did not complete safe-membership declaration, prove membership, prove incidence, prove residual nonentry, prove source no-double-counting, install active \(O\), or license insertion. Group 42 performed an equation-choice exclusion map: forbidden equation families across trace normalization, safe membership, scalar spatial response, residual/source, and boundary/divergence were eliminated or demoted, leaving only conditional candidates and future axiom-required routes. No equation was selected, no branch was chosen, and no axiom was adopted. Group 43 separated the legitimate trace-normalization route classes — metric branch choice (\(\log B_{s,{\rm metric}}=2\zeta/d\)), scale branch choice (\(\log b_{s,{\rm scale}}=\zeta/d\)), explicit parallel records, and continued deferral — and rejected the forbidden selectors: recovery, downstream convenience, neutral \(F_\zeta\) expression, inherited symbol shape, and majority notation count. Source hierarchy, consequence comparison, and theory-owner convention may serve as admissible context for a later explicit decision, but are not derivations. These exclusions and the decision-surface separation do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, choose a branch, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
 
 ---
 
@@ -447,6 +447,11 @@ PPN gamma recovery
 weak-field success
 kappa = 0
 parent-fit closure
+branch convenience
+downstream fit
+neutral F_zeta expression
+inherited symbol shape
+majority notation count
 ```
 
 Recovery is an audit, not a construction rule.
@@ -570,20 +575,31 @@ Current status of parent equation:
 Trace-anchor choice surface:
   audited; declaration slots, status modes, safety gates, handoff conditions,
   declaration-ready option classes, notation-split repair, branch-choice
-  route requirements, and split-safe preconditions are visible.
-  Trace-normalization and safe-membership remain compatible-if-declared only.
-  B_s notation is split into metric-coefficient and scale-factor branches,
-  but no active branch or joint package is chosen.
-  Neutral F_zeta deferral is safe only while expression-free.
-  Safe-membership slots are now sharpened:
+  route requirements, split-safe preconditions, equation-choice exclusion map,
+  and decision-surface separation are visible.
+  Trace-normalization route classes are now separated:
+    metric branch choice (log B_s_metric = 2*zeta/d),
+    scale branch choice (log b_s_scale = zeta/d),
+    explicit parallel records,
+    continued deferral.
+  Forbidden selectors:
+    recovery (AB=1, B=1/A, Schwarzschild, PPN, weak-field, kappa=0, parent-fit),
+    downstream convenience,
+    neutral F_zeta expression,
+    inherited symbol shape,
+    majority notation count.
+  Admissible context (not derivation):
+    source hierarchy,
+    consequence comparison,
+    theory-owner convention.
+  Safe-membership slots remain sharpened:
     zeta_Bs object,
     T_zeta sector,
     domain/codomain and criterion needs,
     role-purity exclusion zones,
     diagnostic-versus-active boundary.
-
-  These remain preconditions, not declarations, incidence, residual control,
-  active O, insertion support, or solved theorems.
+  Trace-normalization and safe-membership remain compatible-if-declared only.
+  No active branch is chosen. No declaration is completed.
 
 Leading trace-anchor package:
   minimal plausible-to-audit only.
@@ -598,10 +614,13 @@ Still not ready:
   parent field equation.
 
 Next honest moves:
+  explicit branch-choice record (metric or scale, with labeled convention),
+  source-hierarchy evidence route,
+  branch consequence comparison,
+  explicit parallel declaration candidate route,
+  continued deferral with residual/source theorem work,
   safe-membership declaration attempt only as a later explicit route,
   membership theorem route,
   role-purity / source no-double-counting theorem route,
-  branch-indexed membership comparison,
-  diagnostic bookkeeping continuation,
   or explicit adoption decision only as a separate theory choice.
 ```
