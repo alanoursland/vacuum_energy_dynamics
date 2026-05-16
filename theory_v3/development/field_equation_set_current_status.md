@@ -17,10 +17,11 @@ The short answer is:
 ```text
 The reduced static spherical A-sector is the strongest reconstructed branch.
 The scalar spatial-response / recombination problem is still the main unresolved blocker.
-Trace-anchor work has produced a conditional paired trace-normalization candidate and an audited adopt/defer/reject decision surface.
-The first residual/source/boundary safety load test has been performed.
-The candidate survives only as audit material and remains blocked for physical use by explicit trace double-count, source duplication, A-sector mass-shift, and exterior scalar-tail witnesses.
-No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
+Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, and first safety load tests.
+Group 53 sharpened the non-O residual/source safety theorem route.
+The non-O route conditionally survives as an unproved theorem target: count-once trace, residual nonentry, A-sector-only source routing, and trace mass neutrality are now explicit conditions.
+Active O necessity is not established.
+No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no safety theorem is closed, and the parent field equation is not ready.
 ```
 
 ---
@@ -60,6 +61,8 @@ with shared record-local (\zeta), symbolic (d), conditioned and unfixed numeric 
 The adopt/defer/reject decision surface for this conditional attempt has now been audited. The candidate may be retained only as caveated audit material; it has not been adopted. Strong adoption remains deferred, requiring a separate theory-owner decision, explicit branch and numeric-(d) choices, and residual/source/boundary safety theorems. Rejected broadenings — neutral-law collapse, numeric-(d) leakage, recovery support, hidden branch choice, insertion drift, and treating caveats as safety theorems — remain rejected. No new physical-use route was opened.
 
 The first residual/source/boundary safety load test has now been performed against the retained conditional trace-normalization candidate. This did not prove safety. It found diagnostic witnesses: trace double-counting when both (B_s/F_\zeta) and residual trace channels are active, source duplication if ordinary source load enters (B_s) or residual (\zeta/\kappa) channels, an A-sector mass-shift witness from independent (Q_{\rm trace}), and an exterior scalar-tail witness from (q_\zeta/r). The candidate therefore survives only as audit material and remains blocked for physical use pending count-once trace, residual nonentry, source no-double-counting, A-sector mass protection, boundary neutrality, and exterior scalar silence theorems.
+
+The residual/source part of the safety problem has since been refined. This did not prove safety. It formalized a conditional non-(O) theorem route: trace incidence must satisfy (i_{B_s}+i_{\rm res}=1); a (B_s/F_\zeta) trace-entry route requires (i_{B_s}=1) and (i_{\rm res}=0); residual metric/source incidence must vanish; ordinary source routing must remain A-sector-only; and trace-sector mass charge (Q_{\rm trace}) must be zero, inert, or non-mass-carrying. These conditions can be stated without active (O), so active-(O) necessity is not established. The retained candidate remains audit-only and blocked for physical use.
 
 ---
 
@@ -175,11 +178,12 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; diagnostic safety witnesses found; safety theorems remain open |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; diagnostic safety witnesses found; safety theorems remain open |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
-| Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `DIAGNOSTIC_DOUBLE_COUNT_WITNESS`                               | Provisional double-count protection                                     | Residual metric/source reentry would duplicate scalar trace/source load; no residual nonentry theorem is closed |
-| Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `SOURCE_DUPLICATION_WITNESSES_FOUND`                            | A-sector source protection; no ordinary mass duplication                | Source duplication witnesses found; source no-double-counting theorem remains open |
+| Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `NON_O_ROUTE_DEFINED` / `ZERO_INCIDENCE_CONDITION`              | Provisional double-count protection                                     | Non-O residual nonentry can be stated as i_res_metric=0 and i_res_source=0, but this is a theorem target, not a proof |
+| Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `A_SECTOR_ONLY_ROLE_PURITY_CONDITION`                           | A-sector source protection; no ordinary mass duplication                | Ordinary source routing condition is i_A=1, i_Bs=0, i_zeta=0, i_kappa=0; not proved |
+| A-sector mass protection                         | `A_SECTOR_MASS_PROTECTION_REQUIRED` / `TRACE_MASS_NEUTRALITY_CONDITION`                                | M_A=M preservation; no independent trace-sector mass charge             | Q_trace must be zero, inert, compactly supported, or non-mass-carrying; not proved |
 | Boundary / exterior scalar silence               | `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `SCALAR_TAIL_WITNESS_FOUND`                                      | Boundary neutrality and exterior scalar silence targets                 | Scalar-tail witness found; boundary/scalar-silence theorems remain open |
 | No-overlap operator (O)                          | `THEOREM_TARGET` / `NOT_CONSTRUCTED`                                                                   | Diagnostic labels only                                                  | No active projector exists                                       |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
@@ -230,6 +234,35 @@ exterior scalar-tail witness.
 ```
 
 Group 52 did not close these missing pieces. It made them sharper. The parent equation remains not ready because physical use of the trace-normalization candidate would require safety theorems that are still open.
+
+Group 53 did not close the missing safety theorems. It sharpened the non-O residual/source route into explicit conditions.
+
+Group 53 conditional non-O route:
+
+```text
+count-once trace:
+  i_Bs + i_res = 1
+
+B_s/F_zeta clean incidence route:
+  i_Bs = 1
+  i_res = 0
+
+residual nonentry:
+  i_res_metric = 0
+  i_res_source = 0
+
+source role-purity:
+  i_A = 1
+  i_Bs = 0
+  i_zeta = 0
+  i_kappa = 0
+
+trace mass neutrality:
+  Q_trace = 0
+  or Q_trace proven inert / non-mass-carrying.
+```
+
+These are theorem targets. They do not license physical use.
 
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
@@ -283,6 +316,15 @@ exterior scalar charge q_zeta produces scalar-tail flux;
 physical use remains blocked pending safety theorems.
 ```
 
+Residual/source theorem-route sharpening added:
+
+```text
+the non-O route can be stated conditionally;
+active O necessity is not established;
+residual/source safety is not proven;
+physical use remains blocked.
+```
+
 Current result:
 
 ```text
@@ -307,6 +349,7 @@ B_s/F_zeta is not insertable.
 Active O is not constructed.
 Residual/source/boundary safety is load-tested but not proven.
 Diagnostic witnesses do not reject the narrow candidate, but they block physical use.
+The non-O residual/source route survives conditionally, but no residual nonentry theorem, source no-double-counting theorem, or trace mass neutrality theorem is closed.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -504,6 +547,53 @@ boundary neutrality;
 exterior scalar silence.
 ```
 
+## 5.8 Non-O Residual / Source Safety Route
+
+The non-O residual/source safety theorem route has been sharpened.
+
+Current result:
+
+```text
+NON_O_ROUTE_SURVIVES_CONDITIONALLY
+ACTIVE_O_NECESSITY_NOT_ESTABLISHED
+CANDIDATE_BLOCKED_FOR_PHYSICAL_USE
+```
+
+Conditional theorem-target conditions:
+
+```text
+count-once trace:
+  i_Bs + i_res = 1
+
+B_s/F_zeta clean incidence route:
+  i_Bs = 1
+  i_res = 0
+
+residual nonentry:
+  i_res_metric = 0
+  i_res_source = 0
+
+source role-purity:
+  i_A = 1
+  i_Bs = 0
+  i_zeta = 0
+  i_kappa = 0
+
+trace mass neutrality:
+  Q_trace = 0
+  or Q_trace proven inert / non-mass-carrying
+```
+
+Current meaning:
+
+```text
+The non-O route can be stated as a theorem target.
+It is not proven.
+It does not make the trace-normalization candidate insertable.
+It does not establish active-O necessity.
+It does not solve boundary neutrality or exterior scalar silence.
+```
+
 ---
 
 # 6. Residual-Control Status
@@ -568,6 +658,18 @@ Clean incidence condition:
 
 This is diagnostic only. It does not prove residual nonentry. It shows that residual (\zeta/\kappa) metric reentry remains a theorem target before physical use.
 
+Non-O residual route (theorem target):
+
+```text
+residual nonentry can be stated as:
+  i_res_metric = 0
+  i_res_source = 0
+```
+
+This removes residual reentry load at the diagnostic level, but it is not derived.
+
+Active (O) necessity is not established. (O) remains deferred unless the non-O route fails or becomes structurally obstructed.
+
 ---
 
 # 7. No-Overlap Status
@@ -601,6 +703,14 @@ mass leakage controls
 scalar-tail controls
 support and matching behavior
 recovery independence
+```
+
+Current non-O route status:
+
+```text
+Active O necessity is not established.
+The non-O residual/source safety route survives conditionally as an unproved theorem target.
+O should not be constructed by anxiety or as a repair label.
 ```
 
 Rejected uses of (O):
@@ -660,6 +770,17 @@ A+zeta+kappa case:
 
 This confirms that ordinary source load cannot be duplicated through (B_s), (\zeta), (\kappa), or residual bookkeeping. A source no-double-counting theorem remains required before physical use.
 
+Source role-purity condition (theorem target):
+
+```text
+i_A = 1
+i_Bs = 0
+i_zeta = 0
+i_kappa = 0
+```
+
+This is the clean A-sector-only source-routing target. It remains a theorem target, not a proof.
+
 The reduced A-sector mass coin is preserved:
 
 ```text
@@ -673,6 +794,15 @@ M_effective - M = Q_trace
 ```
 
 Trace-sector variables, residual variables, and boundary terms must not create independent mass charge unless a theorem proves neutrality.
+
+Trace mass neutrality condition (theorem target):
+
+```text
+Q_trace = 0
+or Q_trace proven inert / compactly supported / non-mass-carrying.
+```
+
+This condition is required because the mass-shift witness showed (M_{\rm effective} - M = Q_{\rm trace}). The condition is not proved.
 
 ## 8.2 Vacuum Currents
 
@@ -967,6 +1097,25 @@ Diagnostic witnesses sharpen theorem targets. They do not close them.
 
 Do not use audit-only survival to license (B_s/F_\zeta) insertion. Do not use obstruction witnesses as total rejection of the narrow candidate. Do not set (q_\zeta = 0) or residual incidence to zero by assumption.
 
+## 10.9 Do Not Treat Conditional Non-O Survival as Safety Proof
+
+Do not shorten:
+
+```text
+non-O residual/source route survives conditionally as theorem target
+```
+
+into:
+
+```text
+residual/source safety proven,
+B_s/F_zeta insertable,
+active O unnecessary forever,
+parent route opened.
+```
+
+The conditions are not proofs. Zero incidence and trace mass neutrality must not be assumed by fiat.
+
 ---
 
 # 11. Current Recovery Scorecard
@@ -1042,6 +1191,17 @@ Group 52 safety-load status:
     A-sector mass-shift witness;
     exterior scalar-tail witness.
 
+Group 53 residual/source route status:
+  non-O route conditionally survives as theorem target.
+  Active O necessity is not established.
+  Conditions:
+    i_Bs+i_res=1;
+    i_Bs=1 and i_res=0 for B_s clean route;
+    i_res_metric=0 and i_res_source=0;
+    i_A=1, i_Bs=0, i_zeta=0, i_kappa=0;
+    Q_trace=0 or inert/non-mass-carrying.
+  These are not proven.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -1061,15 +1221,16 @@ Still not ready:
   count-once trace theorem,
   residual nonentry theorem,
   source no-double-counting theorem,
+  trace mass neutrality theorem,
   A-sector mass protection theorem,
   boundary neutrality / exterior scalar silence theorem,
   recombination,
   parent field equation.
 
 Next honest moves:
-  focused residual/source safety theorem route,
+  focused proof attempt for the non-O residual/source conditions,
   boundary/scalar-silence theorem route,
-  non-O safety obstruction classifier before active O,
+  active-O necessity audit only if non-O theorem routes fail or are obstructed,
   explicit theory-owner adopt/defer/reject decision only as a separate decision.
 
 Forbidden immediate moves:
@@ -1526,6 +1687,56 @@ no recombination;
 no parent closure.
 ```
 
+## A.12 Non-O Residual / Source Safety Theorem Route
+
+The residual/source safety theorem route has been sharpened.
+
+Stable outcome:
+
+```text
+NON_O_ROUTE_SURVIVES_CONDITIONALLY
+ACTIVE_O_NECESSITY_NOT_ESTABLISHED
+CANDIDATE_BLOCKED_FOR_PHYSICAL_USE
+```
+
+Conditional theorem-target conditions:
+
+```text
+count-once trace:
+  i_Bs + i_res = 1
+
+B_s/F_zeta clean route:
+  i_Bs = 1
+  i_res = 0
+
+residual nonentry:
+  i_res_metric = 0
+  i_res_source = 0
+
+source role-purity:
+  i_A = 1
+  i_Bs = 0
+  i_zeta = 0
+  i_kappa = 0
+
+trace mass neutrality:
+  Q_trace = 0
+  or Q_trace proven inert / non-mass-carrying
+```
+
+Non-results:
+
+```text
+no residual nonentry theorem closed;
+no source no-double-counting theorem closed;
+no trace mass neutrality theorem closed;
+no boundary/scalar-silence theorem closed;
+no insertion license;
+no active O construction;
+no recombination;
+no parent closure.
+```
+
 ---
 
 # Appendix B — Provenance Compression
@@ -1588,17 +1799,30 @@ Group 52:
   The conditional candidate survived only as audit material.
   Physical use remained blocked pending safety theorems.
   No insertion, active O, recombination, or parent closure was opened.
+
+Group 53:
+  non-O residual/source safety theorem route was sharpened.
+  Count-once trace was formalized as i_Bs+i_res=1.
+  B_s/F_zeta clean incidence route requires i_Bs=1 and i_res=0.
+  Residual metric/source incidence must vanish.
+  Ordinary source routing must remain A-sector-only.
+  Trace mass charge Q_trace must be zero, inert, or non-mass-carrying.
+  The non-O route survived conditionally as an unproved theorem target.
+  Active O necessity was not established.
+  Physical use, insertion, recombination, and parent closure remained closed.
 ```
 
 Current combined outcome:
 
 ```text
-The trace-anchor surface is visible, branch-safe, decision-surface audited, and first safety-load tested.
+The trace-anchor surface is visible, branch-safe, decision-surface audited,
+safety-load tested, and residual/source theorem-route sharpened.
 The conditional paired attempt can be retained only as audit material.
-Diagnostic witnesses now block physical use unless safety theorems are supplied.
+The non-O residual/source route survives conditionally as an unproved theorem target.
+Active O necessity is not established.
 It is not adopted.
 It is not insertable.
-It does not solve residual/source/boundary safety.
+It does not close residual/source/boundary safety.
 It does not construct O.
 It does not open recombination.
 It does not open the parent equation.
