@@ -17,10 +17,10 @@ The short answer is:
 ```text
 The reduced static spherical A-sector is the strongest reconstructed branch.
 The scalar spatial-response / recombination problem is still the main unresolved blocker.
-Recent trace-anchor work sharpened the blocker into a branch-indexed declaration surface.
-A symbolic paired trace-normalization attempt exists as a conditional pre-adoption candidate; its adopt/defer/reject decision surface has been audited.
-The candidate can be retained for audit only; strong adoption is deferred; physical use remains closed.
-No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, and the parent field equation is not ready.
+Trace-anchor work has produced a conditional paired trace-normalization candidate and an audited adopt/defer/reject decision surface.
+The first residual/source/boundary safety load test has been performed.
+The candidate survives only as audit material and remains blocked for physical use by explicit trace double-count, source duplication, A-sector mass-shift, and exterior scalar-tail witnesses.
+No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
 
 ---
@@ -57,7 +57,9 @@ Recent trace-anchor work did not solve recombination, but it clarified the next 
 
 with shared record-local (\zeta), symbolic (d), conditioned and unfixed numeric (d), and explicit downstream caveats. This attempt survives only as a conditional, caveated, pre-adoption trace-normalization candidate. No active branch is chosen, Package B is not adopted, (B_s/F_\zeta) is not insertable, no active (O) exists, residual/source/boundary safety is not proven, recombination is not opened, and the parent field equation remains not ready.
 
-The adopt/defer/reject decision surface for this conditional attempt has now been audited. The candidate may be retained only as caveated audit material; it has not been adopted. Strong adoption remains deferred, requiring a separate theory-owner decision, explicit branch and numeric-(d) choices, and residual/source/boundary safety theorems. Rejected broadenings — neutral-law collapse, numeric-(d) leakage, recovery support, hidden branch choice, insertion drift, and treating caveats as safety theorems — remain rejected. No new physical-use route was opened. The best next technical target is residual/source/boundary safety load testing.
+The adopt/defer/reject decision surface for this conditional attempt has now been audited. The candidate may be retained only as caveated audit material; it has not been adopted. Strong adoption remains deferred, requiring a separate theory-owner decision, explicit branch and numeric-(d) choices, and residual/source/boundary safety theorems. Rejected broadenings — neutral-law collapse, numeric-(d) leakage, recovery support, hidden branch choice, insertion drift, and treating caveats as safety theorems — remain rejected. No new physical-use route was opened.
+
+The first residual/source/boundary safety load test has now been performed against the retained conditional trace-normalization candidate. This did not prove safety. It found diagnostic witnesses: trace double-counting when both (B_s/F_\zeta) and residual trace channels are active, source duplication if ordinary source load enters (B_s) or residual (\zeta/\kappa) channels, an A-sector mass-shift witness from independent (Q_{\rm trace}), and an exterior scalar-tail witness from (q_\zeta/r). The candidate therefore survives only as audit material and remains blocked for physical use pending count-once trace, residual nonentry, source no-double-counting, A-sector mass protection, boundary neutrality, and exterior scalar silence theorems.
 
 ---
 
@@ -173,10 +175,12 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `CANDIDATE_RETAINED_FOR_AUDIT` / `STRONG_ADOPTION_DEFERRED` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; strong adoption deferred |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; diagnostic safety witnesses found; safety theorems remain open |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
-| Residual (\zeta/\kappa)                          | `SAFE_IF` killed, inert, or non-metric                                                                 | Provisional double-count protection                                     | Residual-control theorem not closed                              |
+| Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `DIAGNOSTIC_DOUBLE_COUNT_WITNESS`                               | Provisional double-count protection                                     | Residual metric/source reentry would duplicate scalar trace/source load; no residual nonentry theorem is closed |
+| Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `SOURCE_DUPLICATION_WITNESSES_FOUND`                            | A-sector source protection; no ordinary mass duplication                | Source duplication witnesses found; source no-double-counting theorem remains open |
+| Boundary / exterior scalar silence               | `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `SCALAR_TAIL_WITNESS_FOUND`                                      | Boundary neutrality and exterior scalar silence targets                 | Scalar-tail witness found; boundary/scalar-silence theorems remain open |
 | No-overlap operator (O)                          | `THEOREM_TARGET` / `NOT_CONSTRUCTED`                                                                   | Diagnostic labels only                                                  | No active projector exists                                       |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
 | (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
@@ -215,6 +219,17 @@ parent identity
 ```
 
 Until these are solved, the parent field equation is not ready.
+
+Group 52 diagnostic witnesses (sharpening the above targets):
+
+```text
+trace double-count witness;
+source duplication witnesses;
+A-sector mass-shift witness;
+exterior scalar-tail witness.
+```
+
+Group 52 did not close these missing pieces. It made them sharper. The parent equation remains not ready because physical use of the trace-normalization candidate would require safety theorems that are still open.
 
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
@@ -257,6 +272,17 @@ recombination scope
 parent-facing scope
 ```
 
+The first safety load test added:
+
+```text
+the conditional candidate remains audit-only after load testing;
+trace double-counting appears if B_s/F_zeta and residual trace channels both carry T_zeta;
+ordinary source duplication appears if A-sector source load is also routed through B_s or residual zeta/kappa channels;
+independent trace-sector charge Q_trace shifts the protected reduced mass coin;
+exterior scalar charge q_zeta produces scalar-tail flux;
+physical use remains blocked pending safety theorems.
+```
+
 Current result:
 
 ```text
@@ -265,6 +291,10 @@ It is conditional, caveated, branch-indexed, pre-adoption, and non-insertable.
 Its adopt/defer/reject decision surface has been audited.
 The candidate is retained for audit only.
 Strong adoption is deferred.
+The first residual/source/boundary safety load test has been performed.
+Diagnostic witnesses found: trace double-count, source duplication, A-sector mass shift, exterior scalar tail.
+The candidate survives as audit material only.
+Physical use is blocked pending safety theorems.
 ```
 
 Current non-result:
@@ -275,7 +305,8 @@ No branch is chosen.
 Package B is not adopted.
 B_s/F_zeta is not insertable.
 Active O is not constructed.
-Residual/source/boundary safety is not proven.
+Residual/source/boundary safety is load-tested but not proven.
+Diagnostic witnesses do not reject the narrow candidate, but they block physical use.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -423,6 +454,56 @@ Best next technical target:
 residual/source/boundary safety load testing.
 ```
 
+## 5.7 Residual / Source / Boundary Safety Load Test
+
+The first safety load test has been performed against the retained conditional trace-normalization candidate.
+
+Current result:
+
+```text
+SAFETY_LOAD_TESTED
+CANDIDATE_SURVIVES_AS_AUDIT_ONLY
+CANDIDATE_BLOCKED_FOR_PHYSICAL_USE
+```
+
+Diagnostic witnesses:
+
+```text
+trace double-count:
+  residual = T_zeta when i_Bs=1 and i_res=1
+
+source duplication:
+  A+B_s residual = S_M
+  A+zeta+kappa residual = 2*S_M
+
+A-sector mass shift:
+  M_effective - M = Q_trace
+
+exterior scalar tail:
+  phi_tail=q_zeta/r gives scalar flux = -4*pi*q_zeta
+```
+
+Current meaning:
+
+```text
+The retained trace-normalization candidate can still be used as audit material.
+It cannot be inserted.
+It does not prove safety.
+It does not license active O.
+It does not open recombination or parent closure.
+```
+
+Required theorem targets:
+
+```text
+count-once scalar trace;
+residual nonentry;
+source no-double-counting;
+A-sector mass protection;
+boundary neutrality;
+exterior scalar silence.
+```
+
 ---
 
 # 6. Residual-Control Status
@@ -470,6 +551,22 @@ Current limit:
 ```text
 This is a safety convention / theorem target, not a completed derivation.
 ```
+
+Diagnostic witness (from first safety load test):
+
+```text
+trace_load = T_zeta*(i_Bs + i_res)
+count_once_target = T_zeta
+residual = T_zeta*(i_Bs + i_res - 1)
+
+Double-count witness:
+  if i_Bs=1 and i_res=1, residual = T_zeta.
+
+Clean incidence condition:
+  if i_Bs=1 and i_res=0, residual = 0.
+```
+
+This is diagnostic only. It does not prove residual nonentry. It shows that residual (\zeta/\kappa) metric reentry remains a theorem target before physical use.
 
 ---
 
@@ -545,6 +642,38 @@ coefficient-side source neutrality
 boundary source-routing theorem
 ```
 
+Diagnostic witness (from first safety load test):
+
+```text
+source duplicate residual =
+  S_M*(i_A + i_Bs + i_kappa + i_zeta - 1)
+
+A-only case:
+  residual = 0
+
+A+B_s case:
+  residual = S_M
+
+A+zeta+kappa case:
+  residual = 2*S_M
+```
+
+This confirms that ordinary source load cannot be duplicated through (B_s), (\zeta), (\kappa), or residual bookkeeping. A source no-double-counting theorem remains required before physical use.
+
+The reduced A-sector mass coin is preserved:
+
+```text
+M_A = M
+```
+
+But an independent trace-sector charge gives:
+
+```text
+M_effective - M = Q_trace
+```
+
+Trace-sector variables, residual variables, and boundary terms must not create independent mass charge unless a theorem proves neutrality.
+
 ## 8.2 Vacuum Currents
 
 (J_V) remains unresolved.
@@ -592,6 +721,15 @@ Current rule:
 Boundary behavior must be derived before recovery.
 It cannot be patched after leakage appears.
 ```
+
+Diagnostic witness (from first safety load test):
+
+```text
+phi_tail = q_zeta/r
+4*pi*r^2*d(phi_tail)/dr = -4*pi*q_zeta
+```
+
+A nonzero trace-sector scalar charge creates exterior scalar flux. Setting (q_\zeta = 0) is only a condition, not a theorem. Boundary neutrality and exterior scalar silence remain required before insertion.
 
 ## 8.4 Correction Tensors
 
@@ -808,6 +946,27 @@ Classifying routes and burdens is not making a theory decision.
 
 Retaining a conditional candidate for audit is not adopting a postulate.
 
+## 10.8 Do Not Treat Safety Load Testing as Safety Proof
+
+Do not shorten:
+
+```text
+diagnostic safety witnesses found
+```
+
+into:
+
+```text
+residual/source/boundary safety proven,
+trace normalization insertable,
+active O required,
+parent route opened.
+```
+
+Diagnostic witnesses sharpen theorem targets. They do not close them.
+
+Do not use audit-only survival to license (B_s/F_\zeta) insertion. Do not use obstruction witnesses as total rejection of the narrow candidate. Do not set (q_\zeta = 0) or residual incidence to zero by assumption.
+
 ---
 
 # 11. Current Recovery Scorecard
@@ -873,6 +1032,16 @@ Trace-anchor status:
   They are not insertion-ready.
   They are not parent-facing.
 
+Group 52 safety-load status:
+  first residual/source/boundary safety load test completed.
+  Candidate survives audit-only.
+  Physical use blocked.
+  Diagnostic witnesses found:
+    trace double-count witness;
+    source duplication witnesses;
+    A-sector mass-shift witness;
+    exterior scalar-tail witness.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -889,18 +1058,25 @@ Still not ready:
   Package B adoption,
   B_s/F_zeta insertion,
   active O,
-  residual control,
-  source protection theorem,
-  boundary/scalar-silence theorem,
+  count-once trace theorem,
+  residual nonentry theorem,
+  source no-double-counting theorem,
+  A-sector mass protection theorem,
+  boundary neutrality / exterior scalar silence theorem,
   recombination,
   parent field equation.
 
 Next honest moves:
-  residual/source/boundary safety load testing (best non-looping technical target),
-  explicit adopt / defer / reject theory-owner decision (if made separately from script output),
+  focused residual/source safety theorem route,
   boundary/scalar-silence theorem route,
-  explicit branch-choice record only as a separate daylight-labeled choice,
-  or Package B adoption only as a separate theory decision.
+  non-O safety obstruction classifier before active O,
+  explicit theory-owner adopt/defer/reject decision only as a separate decision.
+
+Forbidden immediate moves:
+  B_s/F_zeta insertion,
+  active O construction by shortcut,
+  recombination,
+  parent closure.
 ```
 
 ---
@@ -1300,6 +1476,56 @@ residual/source/boundary safety load testing.
 
 Decision-surface audit is not a theory decision. Candidate retained for audit is not Package B adoption or physical use.
 
+## A.11 Residual / Source / Boundary Safety Load Testing
+
+The first safety load test of the retained conditional trace-normalization candidate was performed.
+
+Stable outcome:
+
+```text
+candidate survives audit-only;
+physical use blocked;
+safety theorems required.
+```
+
+Diagnostic witnesses:
+
+```text
+trace double-count:
+  residual = T_zeta when i_Bs=1 and i_res=1
+
+source duplication:
+  A+B_s residual = S_M
+  A+zeta+kappa residual = 2*S_M
+
+A-sector mass shift:
+  M_effective - M = Q_trace
+
+exterior scalar tail:
+  scalar flux = -4*pi*q_zeta
+```
+
+Open theorem targets:
+
+```text
+count-once scalar trace;
+residual nonentry;
+source no-double-counting;
+A-sector mass protection;
+boundary neutrality;
+exterior scalar silence.
+```
+
+Non-results:
+
+```text
+no safety theorem closed;
+no insertion license;
+no active O;
+no recombination;
+no parent closure.
+```
+
 ---
 
 # Appendix B — Provenance Compression
@@ -1354,19 +1580,26 @@ Group 51:
   The branch burden (zeta/d difference) remains live.
   Rejected broadenings remain rejected.
   No adoption, no insertion, no physical-use route was opened.
+
+Group 52:
+  first residual/source/boundary safety load test was performed.
+  Diagnostic witnesses were found for trace double-counting, source duplication,
+  A-sector mass shift, and exterior scalar tail.
+  The conditional candidate survived only as audit material.
+  Physical use remained blocked pending safety theorems.
+  No insertion, active O, recombination, or parent closure was opened.
 ```
 
 Current combined outcome:
 
 ```text
-The trace-anchor surface is visible, branch-safe, and has been audited through the adopt/defer/reject decision surface.
-The conditional paired attempt is retained for audit only.
-Strong adoption is deferred and requires explicit theory-owner action, prerequisites, and safety support.
+The trace-anchor surface is visible, branch-safe, decision-surface audited, and first safety-load tested.
+The conditional paired attempt can be retained only as audit material.
+Diagnostic witnesses now block physical use unless safety theorems are supplied.
 It is not adopted.
 It is not insertable.
-It does not solve residual control.
+It does not solve residual/source/boundary safety.
 It does not construct O.
 It does not open recombination.
 It does not open the parent equation.
-Best next technical target: residual/source/boundary safety load testing.
 ```
