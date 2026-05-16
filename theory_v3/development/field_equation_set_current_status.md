@@ -17,10 +17,8 @@ The short answer is:
 ```text
 The reduced static spherical A-sector is the strongest reconstructed branch.
 The scalar spatial-response / recombination problem remains unresolved.
-Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, first safety load tests, and a sharpened non-O residual/source theorem route.
-Group 54 added a reduced exterior scalar-silence theorem surface: phi=C0+C1/r in the homogeneous static-spherical exterior, and C0=0 plus C1=0 imply phi=0.
-Zero scalar flux requires C1=0, no-shell neutrality requires J=0, and zero scalar charge conditionally blocks trace mass shift.
-This is reduced and conditional, not full boundary closure.
+Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, and a reduced boundary/scalar-silence route.
+Group 55 began insertion work as an exclusion sieve. Direct insertion, source-carrying insertion, boundary-leaking insertion, and mass-shifting insertion routes were rejected. Only a silent/inert insertion route survives conditionally as an unproved theorem target.
 No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
 
@@ -65,6 +63,8 @@ The first residual/source/boundary safety load test has now been performed again
 The residual/source part of the safety problem has since been refined. This did not prove safety. It formalized a conditional non-(O) theorem route: trace incidence must satisfy (i_{B_s}+i_{\rm res}=1); a (B_s/F_\zeta) trace-entry route requires (i_{B_s}=1) and (i_{\rm res}=0); residual metric/source incidence must vanish; ordinary source routing must remain A-sector-only; and trace-sector mass charge (Q_{\rm trace}) must be zero, inert, or non-mass-carrying. These conditions can be stated without active (O), so active-(O) necessity is not established. The retained candidate remains audit-only and blocked for physical use.
 
 The boundary/scalar-silence part of the safety problem has since been refined. In the reduced static-spherical homogeneous exterior, the scalar solution has the form (\phi = C_0 + C_1/r). With zero asymptotic offset (C_0=0) and zero scalar charge coefficient (C_1=0), the exterior scalar vanishes. The flux condition is (F_\phi = -4\pi C_1), so zero flux requires (C_1=0). The reduced shell-source diagnostic is (J = R^2(\phi'_{\rm ext}(R) - \phi'_{\rm int}(R))), so no-shell neutrality requires (J=0). A trace-sector mass-shift diagnostic (\Delta M = \alpha q_\zeta) is blocked conditionally by (q_\zeta=0). These are conditional reduced theorem-surface results, not full covariant boundary neutrality or insertion permission.
+
+The accumulated safety conditions were then used as filters against (B_s/F_\zeta) insertion families. Direct trace/source/boundary/mass load routes were rejected using the diagnostic (L = a_T T_\zeta + a_S S_M + a_C C_1 + a_J J + a_Q Q_{\rm trace}). Double-entry and missing-entry trace routes were rejected. Source-carrying (B_s/\zeta/\kappa) routes were rejected. Scalar-tail, nonzero-flux, shell-source, and boundary-repair insertion routes were rejected. Mass-shifting trace-charge routes were rejected. The only surviving route is a silent/inert insertion route, and it survives only as an unproved theorem target requiring an insertion law plus residual/source/boundary/mass theorem support.
 
 ---
 
@@ -180,14 +180,15 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; diagnostic safety witnesses found; safety theorems remain open |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `SILENT_INSERTION_ROUTE_CONDITIONAL_ONLY` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
+| (B_s/F_\zeta) insertion families                 | `DIRECT_INSERTION_REJECTED` / `SOURCE_CARRYING_INSERTION_REJECTED` / `BOUNDARY_LEAKING_INSERTION_REJECTED` / `MASS_SHIFTING_INSERTION_REJECTED` / `SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY` | Insertion-family exclusion sieve                                         | No insertion occurred; filters exclude unsafe families; silent/inert survivor requires insertion law and safety theorem support |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
 | Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `NON_O_ROUTE_DEFINED` / `ZERO_INCIDENCE_CONDITION`              | Provisional double-count protection                                     | Non-O residual nonentry can be stated as i_res_metric=0 and i_res_source=0, but this is a theorem target, not a proof |
 | Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `A_SECTOR_ONLY_ROLE_PURITY_CONDITION`                           | A-sector source protection; no ordinary mass duplication                | Ordinary source routing condition is i_A=1, i_Bs=0, i_zeta=0, i_kappa=0; not proved |
 | A-sector mass protection                         | `A_SECTOR_MASS_PROTECTION_REQUIRED` / `TRACE_MASS_NEUTRALITY_CONDITION`                                | M_A=M preservation; no independent trace-sector mass charge             | Q_trace must be zero, inert, compactly supported, or non-mass-carrying; not proved |
 | Boundary / exterior scalar silence               | `REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY` / `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `NOT_FULL_COVARIANT_THEOREM` | Boundary neutrality and exterior scalar silence targets                 | Reduced exterior scalar form phi=C0+C1/r derived; zero offset and zero charge imply phi=0; zero flux requires C1=0; no-shell condition requires J=0; conditions not yet derived from full theory |
-| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Neither Group 53 nor Group 54 forced active O; O remains deferred unless non-O residual/source/boundary routes fail |
+| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 55 filtering does not establish active-O necessity; O remains deferred unless the silent non-O insertion route fails or becomes obstructed |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
 | (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
 | (\Sigma_V, R_V)                                  | role-level only                                                                                        | Exchange accounting targets                                             | Operators not derived                                            |
@@ -293,6 +294,36 @@ trace mass-shift condition:
 
 These are reduced theorem-surface conditions. They do not license physical use.
 
+Group 55 did not insert (B_s/F_\zeta). It filtered insertion families and rejected unsafe routes.
+
+Group 55 insertion filters:
+
+```text
+direct load:
+  L=a_T*T_zeta+a_S*S_M+a_C*C1+a_J*J+a_Q*Q_trace
+  nonzero trace/source/boundary/mass direct loads rejected
+
+trace count:
+  T_zeta*(i_Bs+i_res-1)
+  double-entry and missing-entry routes rejected
+
+source routing:
+  S_M*(i_A+i_Bs+i_kappa+i_zeta-1)
+  B_s/zeta/kappa ordinary-source routes rejected
+
+boundary silence:
+  phi=C0+C1/r
+  flux=-4*pi*C1
+  J=0
+  scalar-tail, nonzero-flux, shell-source, and repair routes rejected
+
+mass neutrality:
+  Delta_M=alpha*Q_trace
+  nonzero trace-sector mass-shifting route rejected
+```
+
+Only a silent/inert insertion route survives conditionally. It remains an unproved theorem target, not insertion permission.
+
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
 The recent process advanced the program from a vague scalar spatial-response blocker to a sharply constrained trace-anchor declaration surface.
@@ -366,6 +397,18 @@ boundary counterterm and hidden shell repair routes are rejected;
 physical use remains blocked.
 ```
 
+Insertion-family exclusion added:
+
+```text
+direct insertion routes rejected;
+double/missing trace routes rejected;
+source-carrying B_s/zeta/kappa routes rejected;
+boundary-leaking and repair routes rejected;
+mass-shifting trace-charge routes rejected;
+only a silent/inert insertion route survives conditionally;
+physical use remains blocked.
+```
+
 Current result:
 
 ```text
@@ -392,6 +435,7 @@ Residual/source/boundary safety is load-tested but not proven.
 Diagnostic witnesses do not reject the narrow candidate, but they block physical use.
 The non-O residual/source route survives conditionally, but no residual nonentry theorem, source no-double-counting theorem, or trace mass neutrality theorem is closed.
 Reduced exterior scalar silence survives conditionally, but full boundary neutrality, zero scalar charge, no-shell matching, and reduced-to-general lift are not proven.
+Insertion-family filtering is not insertion. The filters are necessary conditions, not safety proofs. The silent/inert survivor is not yet a field-equation term.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -681,6 +725,64 @@ It does not establish active-O necessity.
 It does not open recombination or parent closure.
 ```
 
+## 5.10 Insertion-Family Exclusion Sieve
+
+Possible (B_s/F_\zeta) insertion families have been filtered.
+
+Current result:
+
+```text
+INSERTION_EXCLUSION_SURFACE_OPENED
+DIRECT_INSERTION_REJECTED
+SOURCE_CARRYING_INSERTION_REJECTED
+BOUNDARY_LEAKING_INSERTION_REJECTED
+MASS_SHIFTING_INSERTION_REJECTED
+SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY
+PHYSICAL_USE_BLOCKED
+```
+
+Direct-load diagnostic:
+
+```text
+L=a_T*T_zeta+a_S*S_M+a_C*C1+a_J*J+a_Q*Q_trace
+```
+
+Rejected direct loads:
+
+```text
+trace direct load:
+  T_zeta
+
+source direct load:
+  S_M
+
+boundary direct load:
+  C1+J
+
+mass direct load:
+  Q_trace
+```
+
+Required survivor conditions:
+
+```text
+no direct trace/source/boundary/mass load;
+count-once trace;
+residual nonentry;
+A-sector-only source routing;
+zero scalar tail / zero flux / no shell;
+trace-sector mass neutrality.
+```
+
+Current meaning:
+
+```text
+Unsafe insertion families are excluded.
+Only a silent/inert insertion route survives conditionally.
+The survivor requires an insertion law and safety theorem support.
+No insertion occurred.
+```
+
 ---
 
 # 6. Residual-Control Status
@@ -759,6 +861,16 @@ Active (O) necessity is not established. (O) remains deferred unless the non-O r
 
 The reduced boundary/scalar-silence route complements the non-O residual/source route by adding reduced exterior conditions. It does not change the residual nonentry condition (i_{\rm res,metric}=0) and (i_{\rm res,source}=0).
 
+Insertion trace filter (Group 55):
+
+```text
+B_s/F_zeta route can survive the trace-count filter only if:
+  i_Bs=1
+  i_res=0
+```
+
+Double-entry and missing-entry trace routes are rejected. Residual nonentry remains required.
+
 ---
 
 # 7. No-Overlap Status
@@ -794,12 +906,14 @@ support and matching behavior
 recovery independence
 ```
 
-Current non-O / boundary route status:
+Current non-O / boundary / insertion route status:
 
 ```text
 Active O necessity is not established.
 The non-O residual/source safety route survives conditionally as an unproved theorem target.
 The reduced boundary/scalar-silence route did not force active O.
+Insertion-family filtering did not establish active-O necessity.
+O should only be audited if the silent non-O insertion route fails or becomes obstructed.
 O should not be constructed as a repair for scalar tails, shell jumps, or mass shifts unless non-O routes fail.
 O should not be constructed by anxiety or as a repair label.
 ```
@@ -872,6 +986,18 @@ i_kappa = 0
 
 This is the clean A-sector-only source-routing target. It remains a theorem target, not a proof.
 
+Insertion source filter (Group 55):
+
+```text
+A-sector-only source route remains:
+  i_A=1
+  i_Bs=0
+  i_zeta=0
+  i_kappa=0
+```
+
+Insertion families where (B_s), (\zeta), or (\kappa) carry ordinary source load are rejected.
+
 The reduced A-sector mass coin is preserved:
 
 ```text
@@ -896,6 +1022,14 @@ or Q_trace proven inert / compactly supported / non-mass-carrying.
 This condition is required because the mass-shift witness showed (M_{\rm effective} - M = Q_{\rm trace}). The condition is not proved.
 
 The reduced boundary/scalar-silence result strengthens this burden: (\Delta M = \alpha q_\zeta). Zero scalar charge blocks the diagnostic trace mass shift. This does not prove mass neutrality; it means trace-sector boundary behavior must not generate scalar charge or exterior mass shift.
+
+Insertion mass filter (Group 55):
+
+```text
+Delta_M=alpha*Q_trace.
+Nonzero Q_trace insertion families are rejected.
+Q_trace=0 or inert/non-mass-carrying trace load remains required.
+```
 
 ## 8.2 Vacuum Currents
 
@@ -981,6 +1115,18 @@ Current rule:
 Boundary behavior must be derived before recovery.
 It cannot be patched after leakage appears.
 Do not use boundary counterterms, hidden shell sources, mass patches, or zero scalar charge by fiat.
+```
+
+Insertion boundary filter (Group 55):
+
+```text
+Scalar-tail, nonzero-flux, shell-source, and boundary-repair insertion families are rejected.
+
+A surviving insertion route must satisfy:
+  C0=0
+  C1=0
+  flux=0
+  J=0
 ```
 
 ## 8.4 Correction Tensors
@@ -1259,6 +1405,28 @@ The result is reduced static-spherical and conditional.
 
 Do not use boundary counterterms, hidden shell sources, mass patches, or zero scalar charge by fiat as substitutes for a theorem.
 
+## 10.11 Do Not Treat Insertion Filtering as Insertion
+
+Do not shorten:
+
+```text
+only a silent/inert insertion route survives conditionally
+```
+
+into:
+
+```text
+B_s/F_zeta inserted,
+silent insertion law derived,
+residual/source/boundary/mass safety proven,
+active O necessary,
+parent equation ready.
+```
+
+Group 55 excludes unsafe insertion families. It does not construct the surviving route.
+
+Do not treat filters as safety theorems. Do not treat rejected insertion families as total rejection of the retained audit candidate.
+
 ---
 
 # 11. Current Recovery Scorecard
@@ -1357,6 +1525,15 @@ Group 54 boundary/scalar route status:
   Boundary counterterm repair routes rejected.
   Full boundary theorem not closed.
 
+Group 55 insertion status:
+  insertion families filtered.
+  Direct insertion rejected.
+  Source-carrying insertion rejected.
+  Boundary-leaking insertion rejected.
+  Mass-shifting insertion rejected.
+  Only silent/inert route survives conditionally.
+  No insertion occurred.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -1373,10 +1550,13 @@ Still not ready:
   Package B adoption,
   B_s/F_zeta insertion,
   active O,
+  silent/inert insertion law,
   count-once trace theorem,
   residual nonentry theorem,
   source no-double-counting theorem,
+  boundary scalar-silence theorem,
   trace mass neutrality theorem,
+  trace-sector mass neutrality theorem,
   A-sector mass protection theorem,
   zero scalar charge / zero flux theorem,
   zero asymptotic offset condition,
@@ -1386,14 +1566,14 @@ Still not ready:
   parent field equation.
 
 Next honest moves:
-  boundary theorem strengthening for zero charge, zero offset, and no-shell matching,
-  insertion-family exclusion using residual/source/boundary conditions as filters,
-  active-O necessity audit only if non-O routes fail.
+  silent/inert insertion law attempt;
+  active-O necessity audit only if silent non-O route fails or is obstructed;
+  parent divergence/identity obstruction audit only after insertion route status is clearer.
 
 Forbidden immediate moves:
-  B_s/F_zeta insertion,
-  active O construction by shortcut,
-  recombination,
+  B_s/F_zeta insertion;
+  active O construction by shortcut;
+  recombination;
   parent closure.
 ```
 
@@ -1955,6 +2135,65 @@ no parent closure.
 
 ---
 
+## A.14 Insertion-Family Exclusion Sieve
+
+Possible (B_s/F_\zeta) insertion families were filtered against accumulated safety conditions.
+
+Stable outcome:
+
+```text
+INSERTION_EXCLUSION_SURFACE_OPENED
+DIRECT_INSERTION_REJECTED
+SOURCE_CARRYING_INSERTION_REJECTED
+BOUNDARY_LEAKING_INSERTION_REJECTED
+MASS_SHIFTING_INSERTION_REJECTED
+SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY
+PHYSICAL_USE_BLOCKED
+```
+
+Filters applied:
+
+```text
+direct-load diagnostic: L=a_T*T_zeta+a_S*S_M+a_C*C1+a_J*J+a_Q*Q_trace;
+count-once trace condition: i_Bs+i_res=1;
+residual nonentry condition: i_res_metric=0, i_res_source=0;
+A-sector-only source routing: i_A=1, i_Bs=0, i_zeta=0, i_kappa=0;
+trace mass neutrality: Q_trace=0 or inert.
+```
+
+Rejected families:
+
+```text
+direct trace load;
+direct source load;
+direct boundary load;
+direct mass load;
+double-entry or missing-entry trace route;
+source-carrying (B_s/zeta/kappa) route;
+mass-shifting trace-charge route.
+```
+
+Survivor:
+
+```text
+silent/inert insertion route survives conditionally as an unproved theorem target.
+Requires: insertion law; residual nonentry theorem; source no-double-counting theorem;
+boundary scalar-silence theorem; trace-sector mass neutrality theorem.
+```
+
+Non-results:
+
+```text
+no insertion law derived;
+no residual nonentry theorem;
+no source no-double-counting theorem;
+no boundary scalar-silence theorem;
+no trace-sector mass neutrality theorem;
+no insertion occurred.
+```
+
+---
+
 # Appendix B — Provenance Compression
 
 The following provenance is retained only to identify the audit lineage of the current trace-anchor status. It is not part of the main snapshot logic.
@@ -2036,17 +2275,29 @@ Group 54:
   Zero scalar charge conditionally blocks Delta_M=alpha*q_zeta.
   Boundary counterterm, hidden shell, and mass-patch repairs were rejected.
   Full covariant boundary theorem, insertion, active O, recombination, and parent closure remained closed.
+
+Group 55:
+  possible (B_s/F_\zeta) insertion families were filtered against accumulated safety conditions.
+  Direct trace/source/boundary/mass load routes were rejected using L=a_T*T_zeta+a_S*S_M+a_C*C1+a_J*J+a_Q*Q_trace.
+  Double-entry and missing-entry trace routes were rejected.
+  Source-carrying (B_s/\zeta/\kappa) routes were rejected.
+  Scalar-tail, nonzero-flux, shell-source, and boundary-repair routes were rejected.
+  Mass-shifting trace-charge routes were rejected.
+  Only the silent/inert insertion route survives conditionally as an unproved theorem target.
+  No insertion law exists. No insertion occurred.
+  Physical use, recombination, and parent closure remained closed.
 ```
 
 Current combined outcome:
 
 ```text
 The trace-anchor surface is visible, branch-safe, decision-surface audited,
-safety-load tested, residual/source theorem-route sharpened, and reduced
-boundary/scalar-silence theorem-surface derived.
+safety-load tested, residual/source theorem-route sharpened, reduced
+boundary/scalar-silence theorem-surface derived, and insertion families filtered.
 The conditional paired attempt can be retained only as audit material.
 The non-O residual/source route survives conditionally as an unproved theorem target.
 The reduced exterior scalar-silence route survives conditionally.
+The silent/inert insertion route survives conditionally as an unproved theorem target.
 Active O necessity is not established.
 It is not adopted.
 It is not insertable.
