@@ -4,7 +4,9 @@
 
 This is a quick-reference snapshot of the current field-equation development state.
 
-It is not a development log, not a proof archive, not a complete license ledger, and not a covariant parent theory. The detailed arguments, audits, candidate inventories, and rejected-route records live elsewhere. This file exists to answer one question quickly:
+It is not a development log, not a proof archive, not a complete license ledger, and not a covariant parent theory. Detailed arguments, audits, candidate inventories, proof capsules, and rejected-route records live elsewhere.
+
+This file exists to answer one question quickly:
 
 ```text
 Where does the field-equation program currently stand?
@@ -15,33 +17,47 @@ The short answer is:
 ```text
 The reduced static spherical A-sector is the strongest reconstructed branch.
 The scalar spatial-response / recombination problem is still the main unresolved blocker.
-The trace-anchor choice surface has been audited, but no postulate has been adopted.
-The parent field equation is not ready.
+Recent trace-anchor work sharpened the blocker into a branch-indexed declaration surface.
+A symbolic paired trace-normalization attempt exists as a conditional pre-adoption candidate; its adopt/defer/reject decision surface has been audited.
+The candidate can be retained for audit only; strong adoption is deferred; physical use remains closed.
+No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, and the parent field equation is not ready.
 ```
 
 ---
 
 # 1. Current State in One Paragraph
 
-The field-equation program currently has a strong reduced static spherical mass-response result: the areal-flux law for the scalar lapse / mass-response field \(A\) recovers the Schwarzschild exterior factor
+The field-equation program currently has a strong reduced static spherical mass-response result: the areal-flux law for the scalar lapse / mass-response field (A) recovers the exterior factor
 
-\[
+[
 A_{\rm ext}(r)=1-\frac{2GM}{c^2r}.
-\]
+]
 
 In the source-free static spherical exterior, the reduced compensation diagnostic
 
-\[
+[
 \kappa_{\rm areal}=\frac12\ln(AB)
-\]
+]
 
 can vanish, giving
 
-\[
+[
 B=\frac1A.
-\]
+]
 
-This gives the correct reduced exterior metric factors in areal gauge. It is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response \(B_s/F_\zeta\), inserting scalar trace exactly once, preventing residual \(\zeta/\kappa\) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery. The current trace-anchor audit status is that Package B remains minimal plausible-to-audit, while trace-normalization and safe membership remain compatible-if-declared only. Groups 35–50 made the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition surface, equation-choice exclusion map, branch-or-parallel decision surface, selector-context audit, explicit parallel trace-normalization record surface, convention-field closure audit, declaration-scope closure audit, paired declaration-scope/status record, declaration-readiness review, and symbolic paired declaration attempt visible. Group 50 stated the symbolic paired trace-normalization declaration attempt authorized by Group 49. The attempt survives only as a conditional, caveated, pre-adoption trace-normalization candidate. No active branch is chosen, Package B is not adopted, \(B_s/F_\zeta\) is not insertable, and no active \(O\), recombination, or parent route is opened.
+This gives the correct reduced exterior metric factors in areal gauge, but it is not yet a final covariant parent field equation. The central unfinished problem is licensed metric recombination: deriving the scalar spatial response (B_s/F_\zeta), inserting scalar trace exactly once, preventing residual (\zeta/\kappa) metric re-entry, preserving source/boundary/mass neutrality, and obtaining parent divergence safety without using recovery targets, undefined projectors, correction tensors, or currents as repair machinery.
+
+Recent trace-anchor work did not solve recombination, but it clarified the next decision surface. The overloaded (B_s) notation has been split into metric-coefficient and scale-factor readings. A symbolic paired trace-normalization attempt now carries both candidate records,
+
+[
+\log B_{s,{\rm metric}}=\frac{2\zeta}{d},
+\qquad
+\log b_{s,{\rm scale}}=\frac{\zeta}{d},
+]
+
+with shared record-local (\zeta), symbolic (d), conditioned and unfixed numeric (d), and explicit downstream caveats. This attempt survives only as a conditional, caveated, pre-adoption trace-normalization candidate. No active branch is chosen, Package B is not adopted, (B_s/F_\zeta) is not insertable, no active (O) exists, residual/source/boundary safety is not proven, recombination is not opened, and the parent field equation remains not ready.
+
+The adopt/defer/reject decision surface for this conditional attempt has now been audited. The candidate may be retained only as caveated audit material; it has not been adopted. Strong adoption remains deferred, requiring a separate theory-owner decision, explicit branch and numeric-(d) choices, and residual/source/boundary safety theorems. Rejected broadenings — neutral-law collapse, numeric-(d) leakage, recovery support, hidden branch choice, insertion drift, and treating caveats as safety theorems — remain rejected. No new physical-use route was opened. The best next technical target is residual/source/boundary safety load testing.
 
 ---
 
@@ -51,40 +67,40 @@ This gives the correct reduced exterior metric factors in areal gauge. It is not
 
 Current reduced equation:
 
-\[
+[
 \Delta_{\rm areal}A=\frac{8\pi G}{c^2}\rho.
-\]
+]
 
 where
 
-\[
-\Delta_{\rm areal}A =
+[
+\Delta_{\rm areal}A=
 \frac1{r^2}\frac{d}{dr}\left(r^2A'\right).
-\]
+]
 
 Define the reduced A-sector areal-flux charge:
 
-\[
+[
 F_A=4\pi r^2A'(r).
-\]
+]
 
 The corresponding reduced ordinary exterior mass reference is
 
-\[
+[
 M_A=\frac{c^2F_A}{8\pi G}.
-\]
+]
 
 For the reduced exterior solution,
 
-\[
+[
 A_{\rm ext}(r)=1-\frac{2GM}{c^2r},
-\]
+]
 
 this gives
 
-\[
+[
 M_A=M.
-\]
+]
 
 Current status:
 
@@ -109,23 +125,23 @@ It is not a final covariant parent mass definition.
 
 The reduced areal diagnostic is
 
-\[
+[
 \kappa_{\rm areal}=\frac12\ln(AB).
-\]
+]
 
 In the reduced static spherical exterior, the compensated branch has
 
-\[
+[
 \kappa_{\rm areal}=0.
-\]
+]
 
 Therefore
 
-\[
+[
 AB=1,
 \qquad
 B=\frac1A.
-\]
+]
 
 Current status:
 
@@ -148,28 +164,28 @@ AB = 1 must not be used to choose the parent spatial-response law.
 
 ---
 
-# 3. What Is Solid, What Is Structural, What Is Not Ready
+# 3. Current Status Table
 
-| Object / sector | Current status | Current use | Main limit |
-|---|---|---|---|
-| \(A\) | `DERIVED_REDUCED` in static spherical sector; `STRUCTURAL` beyond it | Reduced scalar mass response | Not yet a full covariant parent field |
-| \(F_A, M_A\) | `DERIVED_REDUCED` | Reduced exterior mass audit | Not a final covariant mass definition |
-| \(\kappa_{\rm areal}\) | `DIAGNOSTIC` | Reduced exterior compensation check | Not a general scalar field |
-| \(B=1/A\) | `RECOVERED_REDUCED` | Static spherical exterior recovery | Not a construction rule |
-| \(B_s/F_\zeta\) | `THEOREM_TARGET` / `NOT_DERIVED` | Candidate scalar spatial response | Not insertable |
-| trace normalization / \(P_{\rm trace\_norm}\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY` / `NOT_ADOPTED` / `NOT_READY_FOR_INSERTION` | Candidate forms for how \(B_s\) reads \(\zeta\) | A symbolic paired declaration attempt has been stated: \(\log B_{s,{\rm metric}}=2\zeta/d\) and \(\log b_{s,{\rm scale}}=\zeta/d\) remain separated and branch-indexed; \(\zeta\) remains record-local trace payload; symbolic \(d\) is allowed; numeric \(d\) remains conditioned and unfixed; attempt survives only as conditional caveated pre-adoption candidate; no branch selected, no Package B adoption, no insertion licensed |
-| safe trace membership / \(\zeta_{B_s}\to T_\zeta\) | `COMPATIBLE_IF_DECLARED` / `CANDIDATE_REMAINS` / `PRECONDITIONS_SHARPENED` | Candidate typed trace-sector membership | Object, sector, domain/codomain, criteria, role-purity exclusions, and diagnostic/active boundary are now explicit; not selected, declared, derived, adopted, incidence, residual control, active O, or insertion |
-| trace-anchor Package B | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY` | Current audit package for trace-anchor choice surface | Trace-normalization attempt is now explicitly stated as symbolic paired conditional candidate; branch labels and factor-of-two burden remain visible; no active branch, package adoption, recommendation, insertion, active O, recombination, or parent use |
-| residual \(\zeta/\kappa\) | `SAFE_IF` killed, inert, or non-metric | Provisional double-count protection | Residual-control theorem not closed |
-| no-overlap operator \(O\) | `THEOREM_TARGET` / `NOT_CONSTRUCTED` | Diagnostic labels only | No active projector exists |
-| \(J_V\) | `UNRESOLVED` | Vacuum-current theorem target | Not a physical flux law |
-| \(J_{\rm sub}\), \(J_{\rm exch}\) | `THEOREM_TARGET` / role-level only | Bookkeeping labels | Not physical currents |
-| \(\Sigma_V, R_V\) | role-level only | Exchange accounting targets | Operators not derived |
-| \(H_{\rm curv}, H_{\rm exch}\) | `NOT_INSERTABLE` | Diagnostic-only audit language at most | Cannot enter parent equation |
-| \(W_i\) | `STRUCTURAL` | Vector/frame-dragging candidate | Normalization missing |
-| \(h^{TT}_{ij}\) | `STRUCTURAL` | Ordinary tensor radiation channel | Coupling and flux coefficient missing |
-| \(A_{\rm rad}\) | `REJECTED` as ordinary long-range scalar radiation | Do not use | Would create scalar breathing radiation |
-| Parent equation | `NOT_READY` | Theorem target only | Missing recombination, neutrality, divergence safety |
+| Object / sector                                  | Current status                                                                                         | Current use                                                             | Main limit                                                       |
+| ------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| (A)                                              | `DERIVED_REDUCED` in static spherical sector; `STRUCTURAL` beyond it                                   | Reduced scalar mass response                                            | Not yet a full covariant parent field                            |
+| (F_A, M_A)                                       | `DERIVED_REDUCED`                                                                                      | Reduced exterior mass audit                                             | Not a final covariant mass definition                            |
+| (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
+| (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
+| (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `CANDIDATE_RETAINED_FOR_AUDIT` / `STRONG_ADOPTION_DEFERRED` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; strong adoption deferred |
+| Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
+| Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
+| Residual (\zeta/\kappa)                          | `SAFE_IF` killed, inert, or non-metric                                                                 | Provisional double-count protection                                     | Residual-control theorem not closed                              |
+| No-overlap operator (O)                          | `THEOREM_TARGET` / `NOT_CONSTRUCTED`                                                                   | Diagnostic labels only                                                  | No active projector exists                                       |
+| (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
+| (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
+| (\Sigma_V, R_V)                                  | role-level only                                                                                        | Exchange accounting targets                                             | Operators not derived                                            |
+| (H_{\rm curv}, H_{\rm exch})                     | `NOT_INSERTABLE`                                                                                       | Diagnostic-only audit language at most                                  | Cannot enter parent equation                                     |
+| (W_i)                                            | `STRUCTURAL`                                                                                           | Vector/frame-dragging candidate                                         | Normalization missing                                            |
+| (h^{TT}_{ij})                                    | `STRUCTURAL`                                                                                           | Ordinary tensor radiation channel                                       | Coupling and flux coefficient missing                            |
+| (A_{\rm rad})                                    | `REJECTED` as ordinary long-range scalar radiation                                                     | Do not use                                                              | Would create scalar breathing radiation                          |
+| Parent equation                                  | `NOT_READY`                                                                                            | Theorem target only                                                     | Missing recombination, neutrality, divergence safety             |
 
 ---
 
@@ -200,16 +216,221 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-The trace-anchor choice surface is now clearer. Package B remains minimal plausible-to-audit only. Trace normalization and safe membership both remain compatible-if-declared. Groups 35–40 inventoried the declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, and split-safe preconditions needed before either component can be used. The overloaded \(B_s\) notation has been split into metric-coefficient and scale-factor branches, and split-safe preconditions can now be carried while both branches remain visible. Neutral \(F_\zeta\) remains safe only while expression-free. Group 41 continued the safe-membership side by sharpening \(\zeta_{B_s}\) as the membership-test payload object, \(T_\zeta\) as the safe trace-sector target, the membership criterion matrix, mandatory role-purity exclusion zones, and the diagnostic-versus-active membership boundary. This did not complete safe-membership declaration, prove membership, prove incidence, prove residual nonentry, prove source no-double-counting, install active \(O\), or license insertion. Group 42 performed an equation-choice exclusion map: forbidden equation families across trace normalization, safe membership, scalar spatial response, residual/source, and boundary/divergence were eliminated or demoted, leaving only conditional candidates and future axiom-required routes. No equation was selected, no branch was chosen, and no axiom was adopted. Group 43 separated the legitimate trace-normalization route classes — metric branch choice (\(\log B_{s,{\rm metric}}=2\zeta/d\)), scale branch choice (\(\log b_{s,{\rm scale}}=\zeta/d\)), explicit parallel records, and continued deferral — and rejected the forbidden selectors: recovery, downstream convenience, neutral \(F_\zeta\) expression, inherited symbol shape, and majority notation count. Source hierarchy, consequence comparison, and theory-owner convention may serve as admissible context for a later explicit decision, but are not derivations. Group 44 then audited admissible selector context for a later trace-normalization decision. It sharpened how source hierarchy, branch consequences, route burdens, and explicit theory-owner convention boundaries may inform a future record. This context audit did not choose metric or scale branch, execute the parallel-record route, complete trace-normalization declaration, adopt Package B, license \(B_s/F_\zeta\) insertion, or advance residual control, active \(O\), recombination, or parent closure. Group 45 made the explicit parallel trace-normalization record route concrete. It defined paired non-active record schemas for the metric-coefficient branch and scale-factor branch while preserving separate branch labels, separate candidate expressions, shared convention gaps, and equal non-insertability. This did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not complete trace-normalization declaration, did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Group 46 then audited the convention fields shared by the paired trace-normalization records. It closed \(\zeta\) for review as a shared record-local trace-payload symbol and closed symbolic \(d\) for review as the shared traced-dimension field. Numeric \(d\) remains tied to explicit normalization scope. Record-review scope is usable for comparison, but declaration scope and parent-facing scope remain blocked. Group 46 makes the pair review-ready only. It does not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), does not complete trace-normalization declaration, does not adopt Package B, does not license \(B_s/F_\zeta\) insertion, and does not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Group 47 attacked the normalization declaration-scope/status blocker directly. It separated record-review scope from declaration scope, identified a limited paired-record declaration-scope candidate as the surviving route, and made the explicit paired declaration-scope/status record the next non-looping target. Group 47 did not declare trace normalization. It did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Parent-facing, insertion-facing, active-\(O\), safety-proof, neutral-law, and single-branch-without-choice scope routes remain blocked. Group 48 instantiated the explicit paired declaration-scope/status record requested by Group 47. The record names its identity, paired-record domain, pre-declaration status, shared \(\zeta\) assumption, symbolic \(d\), numeric-\(d\) condition, non-active branch status, downstream caveats, and conditional handoff route. Group 48 did not declare trace normalization. It did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Broadening the record into a neutral law, insertion-facing scope, parent-facing scope, active \(O\), or safety proof remains rejected. Group 49 completed declaration-readiness review for the paired trace-normalization route. It accepted the Group 48 paired declaration-scope/status record as review input, preserved symbolic \(d\) for a future symbolic paired attempt, kept numeric \(d\) conditioned and unfixed, and made the future declaration-attempt requirements explicit: identity, paired branch domain, separated expressions, \(\zeta/d\) clauses, status transition, and downstream caveats. Group 49 did not declare trace normalization. It did not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), did not adopt Package B, did not license \(B_s/F_\zeta\) insertion, and did not advance residual control, source protection, active \(O\), recombination, divergence safety, or parent closure. Branch smuggling, neutral-law collapse, numeric-\(d\) leak, recovery-selector support, insertion, active-\(O\), safety-proof, recombination, and parent-use broadenings remain rejected. Group 50 stated the symbolic paired trace-normalization declaration attempt. The attempt carries both branch-indexed expressions, \(\log B_{s,{\rm metric}}=2\zeta/d\) and \(\log b_{s,{\rm scale}}=\zeta/d\), while preserving expression separation, shared record-local \(\zeta\), symbolic \(d\), numeric-\(d\) conditioning, and downstream caveats. Group 50 does not adopt Package B, does not choose \(B_{s,{\rm metric}}\) or \(b_{s,{\rm scale}}\), does not make \(B_s/F_\zeta\) insertable, does not construct active \(O\), does not prove residual/source safety, and does not open recombination or parent closure. The attempt survives only as a conditional, caveated, pre-adoption trace-normalization candidate. These audits do not fill declarations, assign component status, adopt Package B, prove either component, close recombination, choose a branch, or derive \(B_s/F_\zeta\), insertion, residual control, active \(O\), or parent closure.
+## 4.1 What the Recent Trace-Anchor Work Learned
+
+The recent process advanced the program from a vague scalar spatial-response blocker to a sharply constrained trace-anchor declaration surface.
+
+It learned the following stable facts:
+
+```text
+The overloaded B_s notation must be split before trace normalization can be discussed safely.
+
+There are two branch-indexed trace-normalization records:
+  metric-coefficient branch:
+    log(B_s_metric)=2*zeta/d
+
+  scale-factor branch:
+    log(b_s_scale)=zeta/d
+
+The two records may be carried in parallel as non-active candidate records.
+
+The pair is not one neutral law.
+
+The pair is not a compromise expression.
+
+The pair is not an insertion law.
+
+The pair is not Package B adoption.
+
+The pair is not parent-facing.
+```
+
+The process also learned that declaration has separate gates:
+
+```text
+record-review scope
+declaration scope
+declaration-attempt status
+adoption status
+insertion-facing scope
+recombination scope
+parent-facing scope
+```
+
+Current result:
+
+```text
+A symbolic paired trace-normalization declaration attempt exists.
+It is conditional, caveated, branch-indexed, pre-adoption, and non-insertable.
+Its adopt/defer/reject decision surface has been audited.
+The candidate is retained for audit only.
+Strong adoption is deferred.
+```
+
+Current non-result:
+
+```text
+Trace normalization is not adopted.
+No branch is chosen.
+Package B is not adopted.
+B_s/F_zeta is not insertable.
+Active O is not constructed.
+Residual/source/boundary safety is not proven.
+Recombination is not opened.
+The parent equation remains not ready.
+The adopt/defer/reject decision has not been made by any script output.
+```
 
 ---
 
-# 5. Residual-Control Status
+# 5. Trace-Anchor / Trace-Normalization Status
+
+## 5.1 Why This Section Exists
+
+The trace-anchor problem now sits between the general recombination problem and any possible (B_s/F_\zeta) insertion law.
+
+The key question is not yet:
+
+```text
+What is the final B_s/F_zeta law?
+```
+
+The current prior question is:
+
+```text
+What trace-normalization convention, if any, is allowed to become a declared candidate without smuggling recovery, branch choice, residual control, or parent insertion?
+```
+
+## 5.2 Current Paired Candidate Records
+
+Metric-coefficient branch:
+
+[
+\log B_{s,{\rm metric}}=\frac{2\zeta}{d}.
+]
+
+Scale-factor branch:
+
+[
+\log b_{s,{\rm scale}}=\frac{\zeta}{d}.
+]
+
+Current shared assumptions:
+
+```text
+zeta is record-local trace payload.
+symbolic d is allowed as the shared traced-dimension field.
+numeric d remains conditioned and unfixed.
+```
+
+Current branch status:
+
+```text
+non-active
+candidate
+not chosen
+not adopted
+not insertable
+not parent-facing
+```
+
+## 5.3 What the Paired Attempt Allows
+
+The paired attempt currently allows:
+
+```text
+keeping both trace-normalization readings visible;
+preventing unqualified B_s notation from hiding the factor-of-two burden;
+comparing metric-coefficient and scale-factor record consequences;
+carrying symbolic d without fixing numeric d prematurely;
+preparing a future explicit adopt / defer / reject decision.
+```
+
+## 5.4 What the Paired Attempt Does Not Allow
+
+The paired attempt does not allow:
+
+```text
+choosing B_s_metric;
+choosing b_s_scale;
+collapsing both into one neutral law;
+adopting Package B;
+installing trace normalization;
+licensing B_s/F_zeta insertion;
+constructing active O;
+proving residual control;
+proving source protection;
+proving boundary neutrality;
+opening recombination;
+opening parent closure.
+```
+
+## 5.5 Current Trace-Anchor Status Sentence
+
+```text
+The trace-anchor choice surface has been audited through a symbolic paired declaration-attempt stage. The result is a conditional, caveated, pre-adoption candidate record, not a selected branch, not an adopted postulate, not an insertion law, and not a parent-facing result.
+```
+
+## 5.6 Adopt / Defer / Reject Decision Surface
+
+The adopt/defer/reject decision surface for the conditional paired attempt has been audited.
+
+Decision-surface result:
+
+```text
+decision surface audited;
+candidate retained for audit only;
+strong adoption deferred;
+physical use remains closed.
+```
+
+What the audit allowed:
+
+```text
+classifying routes and burdens;
+retaining the conditional attempt as caveated audit material;
+preserving the branch burden (metric and scale expressions differ by zeta/d);
+identifying the best technical next target.
+```
+
+What the audit did not allow:
+
+```text
+adopting trace normalization;
+choosing a branch;
+adopting Package B;
+licensing B_s/F_zeta insertion;
+constructing active O;
+proving residual/source/boundary safety;
+opening recombination;
+opening parent closure.
+```
+
+Rejected decision upgrades:
+
+```text
+writing the audit as adoption;
+using retained-candidate status for insertion;
+single-expression summary (branch burden remains visible);
+recovery-supported adoption;
+treating caveats as safety theorems;
+treating the decision surface as parent-equation readiness.
+```
+
+Best next technical target:
+
+```text
+residual/source/boundary safety load testing.
+```
+
+---
+
+# 6. Residual-Control Status
 
 The current double-count load is
 
-\[
-L_{\rm double} =
+[
+L_{\rm double}=
 e_{\kappa,{\rm metric}}
 +
 \epsilon_{{\rm vac},{\rm metric}}
@@ -217,7 +438,7 @@ e_{\kappa,{\rm metric}}
 \kappa_{\rm metric}
 +
 \zeta_{{\rm residual},{\rm metric}}.
-\]
+]
 
 This load must do one of the following:
 
@@ -252,9 +473,9 @@ This is a safety convention / theorem target, not a completed derivation.
 
 ---
 
-# 6. No-Overlap Status
+# 7. No-Overlap Status
 
-The no-overlap operator \(O\) remains unresolved.
+The no-overlap operator (O) remains unresolved.
 
 Current result:
 
@@ -285,7 +506,7 @@ support and matching behavior
 recovery independence
 ```
 
-Rejected uses of \(O\):
+Rejected uses of (O):
 
 ```text
 O by declaration
@@ -302,9 +523,9 @@ O as dark-sector patch
 
 ---
 
-# 7. Source, Current, Boundary, and Correction Status
+# 8. Source, Current, Boundary, and Correction Status
 
-## 7.1 Source Routing
+## 8.1 Source Routing
 
 Ordinary matter and the A-sector mass response remain protected.
 
@@ -324,11 +545,11 @@ coefficient-side source neutrality
 boundary source-routing theorem
 ```
 
-## 7.2 Vacuum Currents
+## 8.2 Vacuum Currents
 
-\(J_V\) remains unresolved.
+(J_V) remains unresolved.
 
-\(J_{\rm sub}\) and \(J_{\rm exch}\) remain theorem targets / role-level bookkeeping labels.
+(J_{\rm sub}) and (J_{\rm exch}) remain theorem targets / role-level bookkeeping labels.
 
 Current rule:
 
@@ -350,7 +571,7 @@ ordinary matter decoupling
 mass and scalar neutrality
 ```
 
-## 7.3 Boundary and Exterior Neutrality
+## 8.3 Boundary and Exterior Neutrality
 
 Boundary-neutral projection is not solved.
 
@@ -372,13 +593,15 @@ Boundary behavior must be derived before recovery.
 It cannot be patched after leakage appears.
 ```
 
-## 7.4 Correction Tensors
+## 8.4 Correction Tensors
 
 No correction tensor is insertable.
 
-\[
-H_{\rm curv},\qquad H_{\rm exch}
-\]
+[
+H_{\rm curv},
+\qquad
+H_{\rm exch}
+]
 
 remain diagnostic / theorem-target language only.
 
@@ -390,13 +613,13 @@ H_curv and H_exch cannot be added to a parent equation until their source origin
 
 ---
 
-# 8. Radiation Status
+# 9. Radiation Status
 
 Ordinary long-range gravitational radiation is currently TT-only.
 
-\[
+[
 h^{TT}_{ij}
-\]
+]
 
 is the ordinary radiative sector candidate.
 
@@ -417,9 +640,13 @@ parent derivation
 
 Ordinary scalar breathing radiation through
 
-\[
-A_{\rm rad},\qquad \zeta,\qquad \kappa
-\]
+[
+A_{\rm rad},
+\qquad
+\zeta,
+\qquad
+\kappa
+]
 
 is rejected.
 
@@ -431,13 +658,13 @@ No ordinary long-range scalar gravity channel is licensed.
 
 ---
 
-# 9. Hard Guardrails
+# 10. Hard Guardrails
 
 The current theory must not do any of the following.
 
-## 9.1 Do Not Choose the Spatial Response from Recovery
+## 10.1 Do Not Choose the Spatial Response from Recovery
 
-Do not derive or select \(B_s/F_\zeta\), trace normalization, or coefficient behavior from:
+Do not derive or select (B_s/F_\zeta), trace normalization, or coefficient behavior from:
 
 ```text
 AB = 1
@@ -458,21 +685,34 @@ clean algebra / prettiest factor
 
 Recovery is an audit, not a construction rule.
 
-Group 44 sharpened admissible context but did not authorize context-as-choice. Ranked source hierarchy, consequence profiles, route-burden comparison, and theory-owner intuition may only inform a later explicit record. They cannot select a branch by themselves, cannot be reported as derivation, and cannot license insertion or parent readiness.
+Admissible context for a later explicit decision may include:
 
-The explicit parallel records from Group 45 are candidate record surfaces only. They preserve branch labels and the factor-of-two burden; they do not choose a branch, complete trace normalization, create a neutral law, or license \(B_s/F_\zeta\) insertion.
+```text
+ranked source hierarchy,
+branch consequence profiles,
+route-burden comparison,
+explicit theory-owner convention boundaries.
+```
 
-Group 46 closed only review-level convention fields. Shared \(\zeta\) and symbolic \(d\) support comparison of the paired records, not branch selection or declaration. Numeric \(d\), declaration scope, parent-facing scope, and insertion scope remain blocked until explicitly licensed. Review-ready is not declaration-ready.
+But context is not derivation and does not select a branch by itself.
 
-Group 47 sharpened declaration-scope readiness but still did not install trace normalization. A limited paired-record declaration-scope candidate survives only as pre-declaration infrastructure. The next target is an explicit paired declaration-scope/status record that states status, paired-record domain, shared \(\zeta\) assumption, symbolic \(d\), numeric-\(d\) condition, non-active branch status, and downstream caveats. Scope-record-ready is not declaration-ready.
+## 10.2 Do Not Collapse the Paired Trace Records
 
-Group 48 instantiated the paired declaration-scope/status record, but this is still pre-declaration infrastructure. The record makes assumptions and caveats explicit; it does not install an equation. Its domain is the paired non-active \(B_{s,{\rm metric}}\) / \(b_{s,{\rm scale}}\) record surface, not a physical insertion domain. Numeric \(d\) remains conditioned and not fixed. Scope/status record integrity is not trace-normalization declaration.
+Forbidden collapses:
 
-Group 49 makes the paired route attempt-ready only under conditions. Readiness permits a separate symbolic paired declaration-attempt record; it is not declaration success. That future attempt must preserve paired labels, separated expressions, symbolic \(d\), numeric-\(d\) conditioning, no-recovery support, and downstream caveats. It must fail or demote if it smuggles a branch choice, collapses into a neutral law, fixes numeric \(d\) without scope support, uses recovery as support, or drifts into insertion, active \(O\), safety-proof, recombination, or parent use.
+```text
+unqualified B_s;
+neutral F_zeta with expression;
+compromise expression;
+treating the pair as one neutral law;
+using expression similarity as adoption;
+using symbolic d to erase branch difference;
+fixing numeric d without explicit scope support.
+```
 
-Group 50 makes the declaration attempt explicit, but only conditionally. The paired attempt must retain both expressions separately, keep neutral \(F_\zeta\) expression-free, keep numeric \(d\) unfixed, and preserve all downstream caveats. The attempt fails or demotes if it smuggles a branch choice, collapses into a neutral law, fixes numeric \(d\) without support, uses recovery as support, or drifts into insertion, active \(O\), safety-proof, recombination, or parent use.
+Neutral (F_\zeta) deferral is safe only while expression-free.
 
-## 9.2 Do Not Use Undefined Objects as Repair Tools
+## 10.3 Do Not Use Undefined Objects as Repair Tools
 
 Do not use the following as repair mechanisms:
 
@@ -500,7 +740,7 @@ divergence failure
 parent closure
 ```
 
-## 9.3 Do Not Hide Source Load
+## 10.4 Do Not Hide Source Load
 
 Do not hide ordinary source load inside:
 
@@ -516,46 +756,78 @@ dark labels
 
 Any source load must be explicit, derived, and auditable.
 
-## 9.4 Do Not Open the Parent Equation Early
+## 10.5 Do Not Open the Parent Equation Early
 
 The parent equation is not ready.
 
 The schematic target
 
-\[
+[
 E_{\rm parent}+H_{\rm curv}+H_{\rm exch}=\text{source side}
-\]
+]
 
 is only a theorem target.
 
 It is not a current field equation.
 
-## 9.5 Do Not Treat Audit Status as Adoption
+## 10.6 Do Not Treat Audit Status as Adoption
 
-Do not shorten "Package B is minimal plausible-to-audit" into selected, adopted, recommended, insertion-ready, or parent-ready.
+Do not shorten
+
+```text
+Package B is minimal plausible-to-audit
+```
+
+into:
+
+```text
+selected,
+adopted,
+recommended,
+insertion-ready,
+parent-ready.
+```
 
 Audit status is not theory adoption.
 
+## 10.7 Do Not Treat Decision-Surface Audit as Adoption
+
+Do not read the adopt/defer/reject decision-surface audit as:
+
+```text
+trace-normalization adoption;
+Package B adoption;
+B_s/F_zeta insertion license;
+active O construction;
+residual/source/boundary safety proof;
+recombination license;
+parent-equation readiness.
+```
+
+Classifying routes and burdens is not making a theory decision.
+
+Retaining a conditional candidate for audit is not adopting a postulate.
+
 ---
 
-# 10. Current Recovery Scorecard
+# 11. Current Recovery Scorecard
 
-| Target | Current status |
-|---|---|
-| Static spherical exterior \(A\) | `DERIVED_REDUCED` |
-| Exterior \(B=1/A\) after \(\kappa_{\rm areal}=0\) | `DERIVED_REDUCED / GAUGE-CONDITIONED` |
-| Reduced ordinary exterior mass \(M_A=M\) | `DERIVED_REDUCED` |
-| Weak scalar multipole shape | `RECONSTRUCTED AT WEAK ORDER` |
-| Weak \(\gamma=1\) behavior | `RECOVERY SUPPORT / NOT FULL PPN AUDIT` |
-| Vector curl/curl structure | `STRUCTURAL / COEFFICIENT MISSING` |
-| Tensor TT radiation structure | `STRUCTURAL / COUPLING MISSING` |
-| Scalar breathing radiation | `REJECTED` |
-| Full PPN audit | `MISSING` |
-| Full covariant parent field equation | `NOT_READY` |
+| Target                                        | Current status                          |
+| --------------------------------------------- | --------------------------------------- |
+| Static spherical exterior (A)                 | `DERIVED_REDUCED`                       |
+| Exterior (B=1/A) after (\kappa_{\rm areal}=0) | `DERIVED_REDUCED / GAUGE-CONDITIONED`   |
+| Reduced ordinary exterior mass (M_A=M)        | `DERIVED_REDUCED`                       |
+| Weak scalar multipole shape                   | `RECONSTRUCTED AT WEAK ORDER`           |
+| Weak (\gamma=1) behavior                      | `RECOVERY SUPPORT / NOT FULL PPN AUDIT` |
+| Vector curl/curl structure                    | `STRUCTURAL / COEFFICIENT MISSING`      |
+| Tensor TT radiation structure                 | `STRUCTURAL / COUPLING MISSING`         |
+| Scalar breathing radiation                    | `REJECTED`                              |
+| Full PPN audit                                | `MISSING`                               |
+| Full covariant parent field equation          | `NOT_READY`                             |
 
 ---
 
-# 11. One-Screen Status Snapshot
+# 12. One-Screen Status Snapshot
 
 ```text
 Best current result:
@@ -566,8 +838,8 @@ Recovered exterior:
   With kappa_areal = 0, B = 1/A.
 
 Protected reduced mass coin:
-  F_A = 4 pi r^2 A'(r).
-  M_A = c^2 F_A / (8 pi G).
+  F_A = 4*pi*r^2 A'(r).
+  M_A = c^2 F_A / (8*pi*G).
 
 Main unresolved blocker:
   Licensed recombination of A, B_s/F_zeta, zeta/kappa residuals,
@@ -582,198 +854,36 @@ Most important missing safety theorem:
 Most dangerous shortcut:
   choosing spatial response or projection from recovery.
 
-O status:
-  not constructed; diagnostic labels only.
+Trace-anchor status:
+  The overloaded B_s notation is split into metric-coefficient and scale-factor branches.
 
-Current status of parent equation:
-  not ready.
+  Metric branch candidate:
+    log(B_s_metric)=2*zeta/d
 
-Trace-anchor choice surface:
-  audited; declaration slots, status modes, safety gates, handoff conditions,
-  declaration-ready option classes, notation-split repair, branch-choice
-  route requirements, split-safe preconditions, safe-membership precondition
-  sharpening, equation-family exclusions, branch-or-parallel decision surface,
-  selector-context audit, and explicit parallel trace-normalization record
-  surface are visible.
+  Scale branch candidate:
+    log(b_s_scale)=zeta/d
 
-  Trace-normalization and safe-membership remain compatible-if-declared only.
+  These are paired, non-active, branch-indexed candidate records.
+  The branch burden (zeta/d factor-of-two difference) remains live.
+  The adopt/defer/reject decision surface has been audited.
+  Candidate retained for audit only.
+  Strong adoption deferred.
+  They are not one neutral law.
+  They are not Package B adoption.
+  They are not insertion-ready.
+  They are not parent-facing.
 
-  B_s notation is split into metric-coefficient and scale-factor branches.
-
-  Explicit parallel trace-normalization records:
-    metric record:
-      branch object = B_s_metric
-      candidate expression = log(B_s_metric)=2*zeta/d
-      status = non-active / candidate / not chosen
-
-    scale record:
-      branch object = b_s_scale
-      candidate expression = log(b_s_scale)=zeta/d
-      status = non-active / candidate / not chosen
-
-  Convention-field status:
-    zeta convention:
-      closed for record review as shared record-local trace-payload symbol;
-      not F_zeta, not active field, not residual control, not insertion.
-
-    symbolic d:
-      closed for record review as shared traced-dimension field;
-      preserves comparison between 2*zeta/d and zeta/d.
-
-    numeric d:
-      scope-dependent;
-      not fixed by recovery, algebraic prettiness, or factor-of-two erasure.
-
-    record-review scope:
-      usable for comparing paired records.
-
-    declaration scope:
-      now separated from record-review scope;
-      surviving route: limited paired-record declaration-scope candidate only;
-      not one neutral law; not single-branch scope; not insertion-facing;
-      not parent-facing.
-
-    parent-facing scope:
-      theorem-required;
-      not available by naming.
-
-  Declaration-scope status:
-    record-review scope and declaration scope are now separated.
-
-    surviving declaration-scope candidate:
-      limited paired-record declaration-scope candidate;
-      domain = paired non-active metric/scale record surface;
-      not one neutral law;
-      not single-branch scope;
-      not insertion-facing;
-      not parent-facing.
-
-  Paired declaration-scope/status record:
-    instantiated as coherent pre-declaration infrastructure.
-
-    record identity:
-      explicit paired declaration-scope/status record.
-
-    domain:
-      paired non-active B_s_metric / b_s_scale record surface;
-      not physical insertion domain.
-
-    status:
-      pre-declaration;
-      trace normalization not declared;
-      branches non-active / candidate / not chosen.
-
-    inherited assumptions:
-      shared record-local zeta;
-      shared symbolic d.
-
-    numeric-d condition:
-      numeric d remains conditioned;
-      not fixed by recovery, aesthetics, or factor-of-two erasure.
-
-    downstream caveats:
-      no B_s/F_zeta insertion;
-      no active O;
-      no residual/source theorem;
-      no recombination;
-      no parent-facing use.
-
-    rejected broadening:
-      neutral law,
-      insertion-facing scope,
-      parent-facing scope,
-      active-O scope,
-      safety-proof scope.
-
-  The paired scope/status record is instantiated.
-  It is still not a trace-normalization declaration.
-
-  Declaration-readiness status:
-    Group 48 paired scope/status record:
-      accepted as review input.
-
-    readiness result:
-      READY_FOR_DECLARATION_ATTEMPT_WITH_CONDITIONS.
-
-    permitted next target:
-      separate symbolic paired trace-normalization declaration attempt.
-
-    conditions:
-      paired B_s_metric / b_s_scale labels remain explicit;
-      log(B_s_metric)=2*zeta/d and log(b_s_scale)=zeta/d remain separated;
-      symbolic d may be carried;
-      numeric d remains conditioned and unfixed;
-      zeta/d clauses must be explicit;
-      status transition must be explicit;
-      downstream caveats must remain attached.
-
-    the attempt must reject:
-      branch smuggling,
-      neutral-law collapse,
-      numeric-d leak,
-      recovery-selector support,
-      insertion drift,
-      active-O drift,
-      residual/source safety-proof drift,
-      recombination drift,
-      parent-use drift.
-
-  Symbolic paired trace-normalization declaration attempt:
-    stated as conditional, caveated, pre-adoption candidate.
-
-    metric-side candidate:
-      log(B_s_metric)=2*zeta/d
-
-    scale-side candidate:
-      log(b_s_scale)=zeta/d
-
-    expression status:
-      separated;
-      branch-indexed;
-      not one neutral law;
-      not compromise expression.
-
-    zeta/d status:
-      zeta = record-local trace payload;
-      symbolic d allowed;
-      numeric d conditioned and unfixed.
-
-    survival status:
-      DECLARATION_ATTEMPT_CONDITIONAL_ONLY.
-
-    rejected upgrades:
-      branch smuggling,
-      neutral-law collapse,
-      numeric-d leakage,
-      recovery support,
-      B_s/F_zeta insertion,
-      active-O drift,
-      residual/source safety-proof drift,
-      recombination,
-      parent use.
-
-  Package B is not adopted.
-  The conditional attempt is not insertable.
-  It is not parent-facing.
-  No branch is chosen.
-  Trace normalization remains undeclared.
-  Parallel records are visibility infrastructure and pre-declaration review
-  surfaces only.
-
-  Forbidden collapses:
-    unqualified B_s,
-    neutral F_zeta with expression,
-    compromise expression,
-    treating the pair as one neutral law.
-
-  Neutral F_zeta deferral is safe only while expression-free.
-  Safe-membership slots are sharpened as preconditions, not solved theorems.
-
-Leading trace-anchor package:
+Package B status:
   minimal plausible-to-audit only.
 
 Adoption status:
   no postulate adopted.
+
+O status:
+  not constructed; diagnostic labels only.
+
+Current parent equation status:
+  not ready.
 
 Still not ready:
   Package B adoption,
@@ -781,13 +891,482 @@ Still not ready:
   active O,
   residual control,
   source protection theorem,
+  boundary/scalar-silence theorem,
   recombination,
   parent field equation.
 
 Next honest moves:
-  explicit adopt/defer/reject decision for the conditional trace-normalization attempt,
-  residual/source safety theorem route before any physical use,
+  residual/source/boundary safety load testing (best non-looping technical target),
+  explicit adopt / defer / reject theory-owner decision (if made separately from script output),
   boundary/scalar-silence theorem route,
   explicit branch-choice record only as a separate daylight-labeled choice,
   or Package B adoption only as a separate theory decision.
+```
+
+---
+
+# Appendix A — Trace-Anchor Detail Ledger
+
+This appendix preserves the detailed status record from the trace-anchor audit without letting the main snapshot become a development log.
+
+## A.1 Trace-Anchor Choice Surface
+
+Current compressed outcome:
+
+```text
+The trace-anchor choice surface has been audited.
+Declaration slots, status modes, safety gates, handoff conditions, declaration-ready option classes, notation-split repair, branch-choice route requirements, split-safe preconditions, safe-membership precondition surface, equation-choice exclusions, branch-or-parallel decision surface, selector-context limits, paired trace-normalization records, convention-field closure, declaration-scope closure, paired declaration-scope/status record, declaration-readiness review, and symbolic paired declaration attempt are now visible.
+```
+
+Current meaning:
+
+```text
+The trace-anchor problem is clearer.
+It is not solved.
+```
+
+## A.2 Safe-Membership Surface
+
+Safe membership currently remains:
+
+```text
+COMPATIBLE_IF_DECLARED / CANDIDATE_REMAINS / PRECONDITIONS_SHARPENED
+```
+
+The following are now explicit:
+
+```text
+zeta_Bs as membership-test payload object;
+T_zeta as safe trace-sector target;
+membership criterion matrix;
+mandatory role-purity exclusion zones;
+diagnostic-versus-active membership boundary.
+```
+
+Not completed:
+
+```text
+safe-membership declaration;
+membership proof;
+incidence proof;
+residual nonentry proof;
+source no-double-counting proof;
+active O construction;
+insertion license.
+```
+
+## A.3 Equation-Choice Exclusion Map
+
+Forbidden equation families across trace normalization, safe membership, scalar spatial response, residual/source behavior, and boundary/divergence behavior have been eliminated or demoted.
+
+Surviving routes are:
+
+```text
+conditional candidates;
+future axiom-required routes;
+continued deferral.
+```
+
+No equation was selected. No branch was chosen. No axiom was adopted.
+
+## A.4 Branch-Or-Parallel Decision Surface
+
+Legitimate trace-normalization route classes:
+
+```text
+metric branch choice:
+  log(B_s_metric)=2*zeta/d
+
+scale branch choice:
+  log(b_s_scale)=zeta/d
+
+explicit parallel records;
+continued deferral.
+```
+
+Rejected selectors:
+
+```text
+recovery;
+downstream convenience;
+neutral F_zeta expression;
+inherited symbol shape;
+majority notation count;
+clean algebra;
+prettiest factor.
+```
+
+Admissible context for a later explicit decision:
+
+```text
+source hierarchy;
+consequence comparison;
+route-burden comparison;
+theory-owner convention boundaries.
+```
+
+These are context, not derivation.
+
+## A.5 Explicit Parallel Trace-Normalization Records
+
+Metric record:
+
+```text
+branch object:
+  B_s_metric
+
+candidate expression:
+  log(B_s_metric)=2*zeta/d
+
+status:
+  non-active / candidate / not chosen
+```
+
+Scale record:
+
+```text
+branch object:
+  b_s_scale
+
+candidate expression:
+  log(b_s_scale)=zeta/d
+
+status:
+  non-active / candidate / not chosen
+```
+
+The paired records preserve:
+
+```text
+separate branch labels;
+separate candidate expressions;
+shared convention gaps;
+equal non-insertability;
+factor-of-two visibility.
+```
+
+They do not choose a branch, complete trace normalization, create a neutral law, or license (B_s/F_\zeta) insertion.
+
+## A.6 Convention-Field Status
+
+Shared (\zeta):
+
+```text
+closed for record review as shared record-local trace-payload symbol;
+not F_zeta;
+not active field;
+not residual control;
+not insertion.
+```
+
+Symbolic (d):
+
+```text
+closed for record review as shared traced-dimension field;
+preserves comparison between 2*zeta/d and zeta/d.
+```
+
+Numeric (d):
+
+```text
+scope-dependent;
+conditioned;
+not fixed by recovery, algebraic prettiness, or factor-of-two erasure.
+```
+
+Record-review scope:
+
+```text
+usable for comparing paired records.
+```
+
+Declaration scope:
+
+```text
+separated from record-review scope;
+surviving route is a limited paired-record declaration-scope candidate;
+not one neutral law;
+not single-branch scope;
+not insertion-facing;
+not parent-facing.
+```
+
+Parent-facing scope:
+
+```text
+theorem-required;
+not available by naming.
+```
+
+## A.7 Paired Declaration-Scope / Status Record
+
+Record identity:
+
+```text
+explicit paired declaration-scope/status record.
+```
+
+Domain:
+
+```text
+paired non-active B_s_metric / b_s_scale record surface;
+not physical insertion domain.
+```
+
+Status:
+
+```text
+pre-declaration;
+trace normalization not adopted;
+branches non-active / candidate / not chosen.
+```
+
+Inherited assumptions:
+
+```text
+shared record-local zeta;
+shared symbolic d.
+```
+
+Numeric-d condition:
+
+```text
+numeric d remains conditioned;
+not fixed by recovery, aesthetics, or factor-of-two erasure.
+```
+
+Downstream caveats:
+
+```text
+no B_s/F_zeta insertion;
+no active O;
+no residual/source theorem;
+no recombination;
+no parent-facing use.
+```
+
+Rejected broadening:
+
+```text
+neutral law;
+insertion-facing scope;
+parent-facing scope;
+active-O scope;
+safety-proof scope.
+```
+
+The paired scope/status record is instantiated. It is still not a trace-normalization adoption.
+
+## A.8 Declaration-Readiness Status
+
+Readiness result:
+
+```text
+READY_FOR_DECLARATION_ATTEMPT_WITH_CONDITIONS
+```
+
+Permitted next target:
+
+```text
+separate symbolic paired trace-normalization declaration attempt.
+```
+
+Conditions:
+
+```text
+paired B_s_metric / b_s_scale labels remain explicit;
+log(B_s_metric)=2*zeta/d and log(b_s_scale)=zeta/d remain separated;
+symbolic d may be carried;
+numeric d remains conditioned and unfixed;
+zeta/d clauses must be explicit;
+status transition must be explicit;
+downstream caveats must remain attached.
+```
+
+The attempt must reject:
+
+```text
+branch smuggling;
+neutral-law collapse;
+numeric-d leak;
+recovery-selector support;
+insertion drift;
+active-O drift;
+residual/source safety-proof drift;
+recombination drift;
+parent-use drift.
+```
+
+## A.9 Symbolic Paired Trace-Normalization Declaration Attempt
+
+Current status:
+
+```text
+DECLARATION_ATTEMPT_CONDITIONAL_ONLY
+```
+
+Metric-side candidate:
+
+[
+\log B_{s,{\rm metric}}=\frac{2\zeta}{d}.
+]
+
+Scale-side candidate:
+
+[
+\log b_{s,{\rm scale}}=\frac{\zeta}{d}.
+]
+
+Expression status:
+
+```text
+separated;
+branch-indexed;
+not one neutral law;
+not compromise expression.
+```
+
+(\zeta/d) status:
+
+```text
+zeta = record-local trace payload;
+symbolic d allowed;
+numeric d conditioned and unfixed.
+```
+
+Survival status:
+
+```text
+conditional, caveated, pre-adoption candidate.
+```
+
+Rejected upgrades:
+
+```text
+branch smuggling;
+neutral-law collapse;
+numeric-d leakage;
+recovery support;
+B_s/F_zeta insertion;
+active-O drift;
+residual/source safety-proof drift;
+recombination;
+parent use.
+```
+
+## A.10 Adopt / Defer / Reject Decision Surface
+
+Decision-surface audit result:
+
+```text
+ADOPTION_DECISION_SURFACE / CANDIDATE_RETAINED_FOR_AUDIT / ADOPTION_DECISION_DEFERRED
+```
+
+Routes classified:
+
+```text
+narrow candidate-retention route: available, caveated audit only;
+strong adoption route: deferred, requires explicit decision + prerequisites;
+physical-use route: closed.
+```
+
+Burdens preserved:
+
+```text
+numeric d: conditioned and unfixed;
+branch choice: metric and scale remain paired unless a separate decision is made;
+residual/source safety theorems: required before insertion;
+boundary/scalar-silence theorems: required before insertion;
+insertion law: required separately;
+theory-owner decision: required for any actual adoption.
+```
+
+Rejected upgrades:
+
+```text
+summary-as-adoption;
+retained-candidate-as-insertion;
+single-expression summary;
+recovery-supported adoption;
+caveats-as-theorems;
+decision-surface-as-parent-readiness.
+```
+
+Best technical handoff:
+
+```text
+residual/source/boundary safety load testing.
+```
+
+Decision-surface audit is not a theory decision. Candidate retained for audit is not Package B adoption or physical use.
+
+---
+
+# Appendix B — Provenance Compression
+
+The following provenance is retained only to identify the audit lineage of the current trace-anchor status. It is not part of the main snapshot logic.
+
+```text
+Groups 35–40:
+  declaration slots, status modes, safety gates, handoff conditions,
+  declaration-ready option classes, notation-split repair,
+  branch-choice route requirements, and split-safe preconditions became explicit.
+
+Group 41:
+  safe-membership precondition surface was sharpened.
+
+Group 42:
+  equation-choice exclusion map eliminated or demoted unsafe equation families.
+
+Group 43:
+  branch-or-parallel decision surface separated metric branch, scale branch,
+  explicit parallel records, and continued deferral.
+
+Group 44:
+  selector-context audit clarified which considerations may inform a later explicit decision
+  without becoming derivations or branch selectors.
+
+Group 45:
+  explicit parallel trace-normalization record surface was instantiated.
+
+Group 46:
+  shared convention fields were closed for review-level comparison:
+  record-local zeta and symbolic d.
+
+Group 47:
+  declaration scope was separated from record-review scope;
+  limited paired-record declaration-scope candidate survived.
+
+Group 48:
+  paired declaration-scope/status record was instantiated as pre-declaration infrastructure.
+
+Group 49:
+  declaration-readiness review made a symbolic paired declaration attempt conditionally permitted.
+
+Group 50:
+  symbolic paired trace-normalization declaration attempt was stated.
+  It survives only as conditional, caveated, branch-indexed, pre-adoption candidate.
+
+Group 51:
+  adopt/defer/reject decision surface was audited for the Group 50 conditional attempt.
+  The conditional attempt is retained only as caveated audit material.
+  Strong adoption is deferred.
+  The branch burden (zeta/d difference) remains live.
+  Rejected broadenings remain rejected.
+  No adoption, no insertion, no physical-use route was opened.
+```
+
+Current combined outcome:
+
+```text
+The trace-anchor surface is visible, branch-safe, and has been audited through the adopt/defer/reject decision surface.
+The conditional paired attempt is retained for audit only.
+Strong adoption is deferred and requires explicit theory-owner action, prerequisites, and safety support.
+It is not adopted.
+It is not insertable.
+It does not solve residual control.
+It does not construct O.
+It does not open recombination.
+It does not open the parent equation.
+Best next technical target: residual/source/boundary safety load testing.
 ```
