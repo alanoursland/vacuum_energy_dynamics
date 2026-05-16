@@ -6,6 +6,7 @@ Implements Milestones 49-50 from the validation-hardening technical design.
 from __future__ import annotations
 
 import datetime as _dt
+import hashlib
 import json
 import logging
 import os
@@ -46,6 +47,9 @@ from vacuumforge.governance.tiers import ClaimTier
 from vacuumforge.governance.validation import validate_branch_decision, validate_claim_support, validate_route
 
 _log = logging.getLogger(__name__)
+
+_MAX_NAMESPACE_DIRNAME_LENGTH = 80
+_NAMESPACE_METADATA_FILE = "namespace_metadata.json"
 
 
 class ProjectArchive:
@@ -114,7 +118,17 @@ class ProjectArchive:
     def _namespaces(self) -> list[ScriptNamespace]:
         if not self.root_path.exists():
             return []
-        return [self.script_namespace(p.name) for p in self.root_path.iterdir() if p.is_dir()]
+        namespaces: list[ScriptNamespace] = []
+        seen: set[str] = set()
+        for path in self.root_path.iterdir():
+            if not path.is_dir():
+                continue
+            script_id = _script_id_for_namespace_dir(path)
+            if script_id in seen:
+                continue
+            seen.add(script_id)
+            namespaces.append(self.script_namespace(script_id))
+        return namespaces
 
     def detect_cycles(self) -> list[list[str]]:
         """Return a list of dependency cycles across all scripts.
@@ -127,7 +141,7 @@ class ProjectArchive:
         for script_dir in self.root_path.iterdir():
             if not script_dir.is_dir():
                 continue
-            script_id = script_dir.name
+            script_id = _script_id_for_namespace_dir(script_dir)
             deps_file = script_dir / "dependencies.json"
             if not deps_file.exists():
                 continue
@@ -154,9 +168,13 @@ class ScriptNamespace:
     def __init__(self, archive: ProjectArchive, script_id: str) -> None:
         self.archive = archive
         self.script_id = script_id
-        self.path = archive.root_path / script_id
+        self.namespace_dir_name = _namespace_dir_name(script_id)
+        self.path = archive.root_path / self.namespace_dir_name
+        legacy_path = archive.root_path / script_id
+        self.legacy_path = legacy_path if legacy_path != self.path else None
         self.derivations_path = self.path / "derivations"
         self.derivations_path.mkdir(parents=True, exist_ok=True)
+        self._write_namespace_metadata()
         self.evidence_path = self.path / "evidence"
         self.obligations_path = self.path / "obligations"
         self.claims_path = self.path / "claims"
@@ -209,7 +227,7 @@ class ScriptNamespace:
         return record
 
     def get_derivation(self, derivation_id: str) -> DerivationRecord | None:
-        path = self._derivation_file(derivation_id)
+        path = self._existing_derivation_file(derivation_id)
         if not path.exists():
             return None
         try:
@@ -519,8 +537,21 @@ class ScriptNamespace:
     def _derivation_file(self, derivation_id: str) -> Path:
         return self.derivations_path / f"{derivation_id}.json"
 
+    def _existing_derivation_file(self, derivation_id: str) -> Path:
+        path = self._derivation_file(derivation_id)
+        if path.exists() or self.legacy_path is None:
+            return path
+        legacy_path = self.legacy_path / "derivations" / f"{derivation_id}.json"
+        if legacy_path.exists():
+            return legacy_path
+        return path
+
     def _load_dependencies(self) -> list[DependencyDeclaration]:
         path = self.path / "dependencies.json"
+        if not path.exists() and self.legacy_path is not None:
+            legacy_path = self.legacy_path / "dependencies.json"
+            if legacy_path.exists():
+                path = legacy_path
         if not path.exists():
             return []
         try:
@@ -530,10 +561,51 @@ class ScriptNamespace:
             _log.warning("Corrupt dependencies file %s: %s", path, exc)
             return []
 
+    def _write_namespace_metadata(self) -> None:
+        metadata_path = self.path / _NAMESPACE_METADATA_FILE
+        if metadata_path.exists():
+            return
+        data = {
+            "script_id": self.script_id,
+            "namespace_dir_name": self.namespace_dir_name,
+        }
+        _atomic_write_json(metadata_path, data)
+
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
+def _namespace_dir_name(script_id: str) -> str:
+    if len(script_id) <= _MAX_NAMESPACE_DIRNAME_LENGTH:
+        return script_id
+    digest = hashlib.sha1(script_id.encode("utf-8")).hexdigest()[:16]
+    prefix_len = _MAX_NAMESPACE_DIRNAME_LENGTH - len("__") - len(digest)
+    return f"{script_id[:prefix_len]}__{digest}"
+
+
+def _script_id_for_namespace_dir(path: Path) -> str:
+    metadata_path = path / _NAMESPACE_METADATA_FILE
+    if metadata_path.exists():
+        try:
+            data = json.loads(metadata_path.read_text(encoding="utf-8"))
+            script_id = data.get("script_id")
+            if isinstance(script_id, str) and script_id:
+                return script_id
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    metadata_path = path / "last_run_metadata.json"
+    if metadata_path.exists():
+        try:
+            data = json.loads(metadata_path.read_text(encoding="utf-8"))
+            script_id = data.get("script_id")
+            if isinstance(script_id, str) and script_id:
+                return script_id
+        except (json.JSONDecodeError, OSError):
+            pass
+
+    return path.name
 
 def _now() -> str:
     return _dt.datetime.now(tz=_dt.timezone.utc).isoformat()

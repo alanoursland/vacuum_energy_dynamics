@@ -32,6 +32,50 @@ def test_record_and_retrieve(tmp_path):
     assert sympy.simplify(record.output - 2 * x) == 0
 
 
+def test_long_script_id_uses_short_archive_directory(tmp_path):
+    archive = ProjectArchive(tmp_path / "archive")
+    x = sympy.Symbol("x")
+    script_id = "54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_exterior_radial_laplace_silence_theorem_attempt"
+
+    ns = archive.script_namespace(script_id)
+    ns.record_derivation(
+        "g54_laplace_exterior_solution_residual",
+        [x],
+        x,
+        "algebraic",
+        Status.DERIVED,
+    )
+    ns.write_run_metadata()
+
+    assert ns.path.name != script_id
+    assert len(ns.path.name) <= 80
+
+    metadata_path = ns.path / "namespace_metadata.json"
+    metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
+    assert metadata["script_id"] == script_id
+
+    record = archive.script_namespace(script_id).get_derivation("g54_laplace_exterior_solution_residual")
+    assert record is not None
+    assert record.derivation_id == "g54_laplace_exterior_solution_residual"
+
+
+def test_long_script_id_dependency_verifies(tmp_path):
+    archive = ProjectArchive(tmp_path / "archive")
+    x = sympy.Symbol("x")
+    upstream_id = "54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_exterior_radial_laplace_silence_theorem_attempt"
+    downstream_id = "54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_scalar_flux_charge_zero_condition"
+
+    upstream = archive.script_namespace(upstream_id)
+    upstream.record_derivation("g54_laplace", [x], x, "marker", Status.DERIVED)
+
+    downstream = archive.script_namespace(downstream_id)
+    downstream.declare_dependency("g54_laplace", upstream_id, "g54_laplace")
+    results = downstream.verify_dependencies()
+
+    assert len(results) == 1
+    assert results[0].status == "dependency_satisfied"
+
+
 def test_record_overwrite(tmp_path):
     archive = ProjectArchive(tmp_path / "archive")
     x = sympy.Symbol("x")
