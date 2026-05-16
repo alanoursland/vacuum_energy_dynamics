@@ -16,12 +16,12 @@ The short answer is:
 
 ```text
 The reduced static spherical A-sector is the strongest reconstructed branch.
-The scalar spatial-response / recombination problem is still the main unresolved blocker.
-Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, and first safety load tests.
-Group 53 sharpened the non-O residual/source safety theorem route.
-The non-O route conditionally survives as an unproved theorem target: count-once trace, residual nonentry, A-sector-only source routing, and trace mass neutrality are now explicit conditions.
-Active O necessity is not established.
-No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no safety theorem is closed, and the parent field equation is not ready.
+The scalar spatial-response / recombination problem remains unresolved.
+Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, first safety load tests, and a sharpened non-O residual/source theorem route.
+Group 54 added a reduced exterior scalar-silence theorem surface: phi=C0+C1/r in the homogeneous static-spherical exterior, and C0=0 plus C1=0 imply phi=0.
+Zero scalar flux requires C1=0, no-shell neutrality requires J=0, and zero scalar charge conditionally blocks trace mass shift.
+This is reduced and conditional, not full boundary closure.
+No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
 
 ---
@@ -63,6 +63,8 @@ The adopt/defer/reject decision surface for this conditional attempt has now bee
 The first residual/source/boundary safety load test has now been performed against the retained conditional trace-normalization candidate. This did not prove safety. It found diagnostic witnesses: trace double-counting when both (B_s/F_\zeta) and residual trace channels are active, source duplication if ordinary source load enters (B_s) or residual (\zeta/\kappa) channels, an A-sector mass-shift witness from independent (Q_{\rm trace}), and an exterior scalar-tail witness from (q_\zeta/r). The candidate therefore survives only as audit material and remains blocked for physical use pending count-once trace, residual nonentry, source no-double-counting, A-sector mass protection, boundary neutrality, and exterior scalar silence theorems.
 
 The residual/source part of the safety problem has since been refined. This did not prove safety. It formalized a conditional non-(O) theorem route: trace incidence must satisfy (i_{B_s}+i_{\rm res}=1); a (B_s/F_\zeta) trace-entry route requires (i_{B_s}=1) and (i_{\rm res}=0); residual metric/source incidence must vanish; ordinary source routing must remain A-sector-only; and trace-sector mass charge (Q_{\rm trace}) must be zero, inert, or non-mass-carrying. These conditions can be stated without active (O), so active-(O) necessity is not established. The retained candidate remains audit-only and blocked for physical use.
+
+The boundary/scalar-silence part of the safety problem has since been refined. In the reduced static-spherical homogeneous exterior, the scalar solution has the form (\phi = C_0 + C_1/r). With zero asymptotic offset (C_0=0) and zero scalar charge coefficient (C_1=0), the exterior scalar vanishes. The flux condition is (F_\phi = -4\pi C_1), so zero flux requires (C_1=0). The reduced shell-source diagnostic is (J = R^2(\phi'_{\rm ext}(R) - \phi'_{\rm int}(R))), so no-shell neutrality requires (J=0). A trace-sector mass-shift diagnostic (\Delta M = \alpha q_\zeta) is blocked conditionally by (q_\zeta=0). These are conditional reduced theorem-surface results, not full covariant boundary neutrality or insertion permission.
 
 ---
 
@@ -178,14 +180,14 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; diagnostic safety witnesses found; safety theorems remain open |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; diagnostic safety witnesses found; safety theorems remain open |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
 | Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `NON_O_ROUTE_DEFINED` / `ZERO_INCIDENCE_CONDITION`              | Provisional double-count protection                                     | Non-O residual nonentry can be stated as i_res_metric=0 and i_res_source=0, but this is a theorem target, not a proof |
 | Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `A_SECTOR_ONLY_ROLE_PURITY_CONDITION`                           | A-sector source protection; no ordinary mass duplication                | Ordinary source routing condition is i_A=1, i_Bs=0, i_zeta=0, i_kappa=0; not proved |
 | A-sector mass protection                         | `A_SECTOR_MASS_PROTECTION_REQUIRED` / `TRACE_MASS_NEUTRALITY_CONDITION`                                | M_A=M preservation; no independent trace-sector mass charge             | Q_trace must be zero, inert, compactly supported, or non-mass-carrying; not proved |
-| Boundary / exterior scalar silence               | `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `SCALAR_TAIL_WITNESS_FOUND`                                      | Boundary neutrality and exterior scalar silence targets                 | Scalar-tail witness found; boundary/scalar-silence theorems remain open |
-| No-overlap operator (O)                          | `THEOREM_TARGET` / `NOT_CONSTRUCTED`                                                                   | Diagnostic labels only                                                  | No active projector exists                                       |
+| Boundary / exterior scalar silence               | `REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY` / `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `NOT_FULL_COVARIANT_THEOREM` | Boundary neutrality and exterior scalar silence targets                 | Reduced exterior scalar form phi=C0+C1/r derived; zero offset and zero charge imply phi=0; zero flux requires C1=0; no-shell condition requires J=0; conditions not yet derived from full theory |
+| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Neither Group 53 nor Group 54 forced active O; O remains deferred unless non-O residual/source/boundary routes fail |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
 | (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
 | (\Sigma_V, R_V)                                  | role-level only                                                                                        | Exchange accounting targets                                             | Operators not derived                                            |
@@ -264,6 +266,33 @@ trace mass neutrality:
 
 These are theorem targets. They do not license physical use.
 
+Group 54 did not close boundary neutrality. It derived a reduced exterior scalar-silence theorem surface and rejected boundary-repair shortcuts.
+
+Group 54 reduced exterior conditions:
+
+```text
+homogeneous exterior scalar:
+  phi(r)=C0+C1/r
+
+zero-tail condition:
+  C0=0
+  C1=0
+  therefore phi=0
+
+flux condition:
+  F_phi=-4*pi*C1
+  zero flux requires C1=0
+
+no-shell condition:
+  J=R^2*(phi_ext'(R)-phi_int'(R))=0
+
+trace mass-shift condition:
+  Delta_M=alpha*q_zeta
+  q_zeta=0 implies Delta_M=0
+```
+
+These are reduced theorem-surface conditions. They do not license physical use.
+
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
 The recent process advanced the program from a vague scalar spatial-response blocker to a sharply constrained trace-anchor declaration surface.
@@ -325,6 +354,18 @@ residual/source safety is not proven;
 physical use remains blocked.
 ```
 
+Reduced boundary/scalar-silence theorem-surface progress added:
+
+```text
+homogeneous exterior scalar solution is phi=C0+C1/r;
+zero offset and zero scalar charge kill the exterior scalar tail;
+zero scalar flux requires C1=0;
+no-shell neutrality requires J=0;
+zero scalar charge conditionally blocks trace mass shift;
+boundary counterterm and hidden shell repair routes are rejected;
+physical use remains blocked.
+```
+
 Current result:
 
 ```text
@@ -350,6 +391,7 @@ Active O is not constructed.
 Residual/source/boundary safety is load-tested but not proven.
 Diagnostic witnesses do not reject the narrow candidate, but they block physical use.
 The non-O residual/source route survives conditionally, but no residual nonentry theorem, source no-double-counting theorem, or trace mass neutrality theorem is closed.
+Reduced exterior scalar silence survives conditionally, but full boundary neutrality, zero scalar charge, no-shell matching, and reduced-to-general lift are not proven.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -594,6 +636,51 @@ It does not establish active-O necessity.
 It does not solve boundary neutrality or exterior scalar silence.
 ```
 
+## 5.9 Reduced Boundary / Exterior Scalar Silence Route
+
+A reduced exterior scalar-silence theorem surface has been derived.
+
+Current result:
+
+```text
+REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY
+BOUNDARY_COUNTERTERM_REJECTED
+PHYSICAL_USE_BLOCKED_PENDING_BOUNDARY_THEOREM
+```
+
+Reduced theorem-surface conditions:
+
+```text
+exterior scalar form:
+  phi(r)=C0+C1/r
+
+zero-tail condition:
+  C0=0
+  C1=0
+  phi=0
+
+flux / scalar charge condition:
+  F_phi=-4*pi*C1
+  zero flux requires C1=0
+
+no-shell condition:
+  J=R^2*(phi_ext'(R)-phi_int'(R))=0
+
+trace mass-shift condition:
+  Delta_M=alpha*q_zeta
+  q_zeta=0 implies Delta_M=0
+```
+
+Current meaning:
+
+```text
+The reduced exterior scalar-silence route can be stated conditionally.
+It is not a full covariant boundary theorem.
+It does not make the trace-normalization candidate insertable.
+It does not establish active-O necessity.
+It does not open recombination or parent closure.
+```
+
 ---
 
 # 6. Residual-Control Status
@@ -670,6 +757,8 @@ This removes residual reentry load at the diagnostic level, but it is not derive
 
 Active (O) necessity is not established. (O) remains deferred unless the non-O route fails or becomes structurally obstructed.
 
+The reduced boundary/scalar-silence route complements the non-O residual/source route by adding reduced exterior conditions. It does not change the residual nonentry condition (i_{\rm res,metric}=0) and (i_{\rm res,source}=0).
+
 ---
 
 # 7. No-Overlap Status
@@ -705,11 +794,13 @@ support and matching behavior
 recovery independence
 ```
 
-Current non-O route status:
+Current non-O / boundary route status:
 
 ```text
 Active O necessity is not established.
 The non-O residual/source safety route survives conditionally as an unproved theorem target.
+The reduced boundary/scalar-silence route did not force active O.
+O should not be constructed as a repair for scalar tails, shell jumps, or mass shifts unless non-O routes fail.
 O should not be constructed by anxiety or as a repair label.
 ```
 
@@ -804,6 +895,8 @@ or Q_trace proven inert / compactly supported / non-mass-carrying.
 
 This condition is required because the mass-shift witness showed (M_{\rm effective} - M = Q_{\rm trace}). The condition is not proved.
 
+The reduced boundary/scalar-silence result strengthens this burden: (\Delta M = \alpha q_\zeta). Zero scalar charge blocks the diagnostic trace mass shift. This does not prove mass neutrality; it means trace-sector boundary behavior must not generate scalar charge or exterior mass shift.
+
 ## 8.2 Vacuum Currents
 
 (J_V) remains unresolved.
@@ -832,17 +925,54 @@ mass and scalar neutrality
 
 ## 8.3 Boundary and Exterior Neutrality
 
-Boundary-neutral projection is not solved.
+Boundary / exterior scalar silence now has a reduced theorem surface.
+
+For homogeneous static-spherical exterior scalar behavior:
+
+[
+\phi(r) = C_0 + \frac{C_1}{r}.
+]
+
+Exterior scalar silence requires:
+
+```text
+C0=0
+C1=0
+```
+
+The scalar flux is:
+
+[
+F_\phi = -4\pi C_1,
+]
+
+so zero scalar flux requires (C_1=0).
+
+No-shell neutrality requires:
+
+[
+J = R^2\bigl(\phi'_{\rm ext}(R) - \phi'_{\rm int}(R)\bigr) = 0.
+]
+
+Trace-sector mass-shift neutrality is diagnostic:
+
+```text
+Delta_M = alpha*q_zeta
+q_zeta=0 -> Delta_M=0
+```
+
+These are reduced conditional results, not full covariant boundary closure.
 
 Still missing:
 
 ```text
-boundary neutrality theorem
-exterior scalar silence theorem
+zero scalar charge theorem
+zero asymptotic offset theorem
 no-shell matching theorem
 projection M_ext neutrality
 support / compactness theorem
 far-zone scalar-tail exclusion
+reduced-to-general theorem lift
 ```
 
 Current rule:
@@ -850,16 +980,8 @@ Current rule:
 ```text
 Boundary behavior must be derived before recovery.
 It cannot be patched after leakage appears.
+Do not use boundary counterterms, hidden shell sources, mass patches, or zero scalar charge by fiat.
 ```
-
-Diagnostic witness (from first safety load test):
-
-```text
-phi_tail = q_zeta/r
-4*pi*r^2*d(phi_tail)/dr = -4*pi*q_zeta
-```
-
-A nonzero trace-sector scalar charge creates exterior scalar flux. Setting (q_\zeta = 0) is only a condition, not a theorem. Boundary neutrality and exterior scalar silence remain required before insertion.
 
 ## 8.4 Correction Tensors
 
@@ -1116,6 +1238,27 @@ parent route opened.
 
 The conditions are not proofs. Zero incidence and trace mass neutrality must not be assumed by fiat.
 
+## 10.10 Do Not Treat Reduced Exterior Silence as Insertion Permission
+
+Do not shorten:
+
+```text
+reduced exterior scalar silence survives conditionally
+```
+
+into:
+
+```text
+boundary neutrality proven,
+B_s/F_zeta insertable,
+active O unnecessary forever,
+parent route opened.
+```
+
+The result is reduced static-spherical and conditional.
+
+Do not use boundary counterterms, hidden shell sources, mass patches, or zero scalar charge by fiat as substitutes for a theorem.
+
 ---
 
 # 11. Current Recovery Scorecard
@@ -1202,6 +1345,18 @@ Group 53 residual/source route status:
     Q_trace=0 or inert/non-mass-carrying.
   These are not proven.
 
+Group 54 boundary/scalar route status:
+  reduced exterior scalar-silence route survives conditionally.
+  Conditions:
+    phi=C0+C1/r;
+    C0=0 and C1=0 imply phi=0;
+    F_phi=-4*pi*C1;
+    zero flux requires C1=0;
+    J=0 required for no shell source;
+    q_zeta=0 blocks Delta_M=alpha*q_zeta.
+  Boundary counterterm repair routes rejected.
+  Full boundary theorem not closed.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -1223,15 +1378,17 @@ Still not ready:
   source no-double-counting theorem,
   trace mass neutrality theorem,
   A-sector mass protection theorem,
-  boundary neutrality / exterior scalar silence theorem,
+  zero scalar charge / zero flux theorem,
+  zero asymptotic offset condition,
+  no-shell / matching neutrality theorem,
+  reduced-to-general boundary theorem lift,
   recombination,
   parent field equation.
 
 Next honest moves:
-  focused proof attempt for the non-O residual/source conditions,
-  boundary/scalar-silence theorem route,
-  active-O necessity audit only if non-O theorem routes fail or are obstructed,
-  explicit theory-owner adopt/defer/reject decision only as a separate decision.
+  boundary theorem strengthening for zero charge, zero offset, and no-shell matching,
+  insertion-family exclusion using residual/source/boundary conditions as filters,
+  active-O necessity audit only if non-O routes fail.
 
 Forbidden immediate moves:
   B_s/F_zeta insertion,
@@ -1737,6 +1894,65 @@ no recombination;
 no parent closure.
 ```
 
+## A.13 Reduced Boundary / Exterior Scalar Silence Route
+
+A reduced exterior scalar-silence theorem surface has been derived.
+
+Stable outcome:
+
+```text
+REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY
+BOUNDARY_COUNTERTERM_REJECTED
+ACTIVE_O_NECESSITY_NOT_ESTABLISHED
+PHYSICAL_USE_BLOCKED_PENDING_BOUNDARY_THEOREM
+```
+
+Reduced conditions:
+
+```text
+homogeneous exterior scalar:
+  phi(r)=C0+C1/r
+
+zero-tail:
+  C0=0
+  C1=0
+  phi=0
+
+flux:
+  F_phi=-4*pi*C1
+  zero flux requires C1=0
+
+no-shell:
+  J=R^2*(phi_ext'(R)-phi_int'(R))=0
+
+mass shift:
+  Delta_M=alpha*q_zeta
+  q_zeta=0 implies Delta_M=0
+```
+
+Rejected repairs:
+
+```text
+boundary counterterm cancellation;
+hidden shell source;
+mass patch by redefining M_ext;
+zero scalar charge by fiat;
+reduced theorem as parent closure.
+```
+
+Non-results:
+
+```text
+no full covariant boundary theorem;
+no zero scalar charge theorem;
+no no-shell matching theorem;
+no mass neutrality theorem;
+no insertion license;
+no active O construction;
+no recombination;
+no parent closure.
+```
+
 ---
 
 # Appendix B — Provenance Compression
@@ -1810,19 +2026,31 @@ Group 53:
   The non-O route survived conditionally as an unproved theorem target.
   Active O necessity was not established.
   Physical use, insertion, recombination, and parent closure remained closed.
+
+Group 54:
+  reduced boundary / exterior scalar-silence theorem surface was derived.
+  The homogeneous exterior scalar form phi=C0+C1/r was verified.
+  C0=0 and C1=0 imply phi=0.
+  F_phi=-4*pi*C1, so zero flux requires C1=0.
+  No-shell neutrality requires J=0 at the matching surface.
+  Zero scalar charge conditionally blocks Delta_M=alpha*q_zeta.
+  Boundary counterterm, hidden shell, and mass-patch repairs were rejected.
+  Full covariant boundary theorem, insertion, active O, recombination, and parent closure remained closed.
 ```
 
 Current combined outcome:
 
 ```text
 The trace-anchor surface is visible, branch-safe, decision-surface audited,
-safety-load tested, and residual/source theorem-route sharpened.
+safety-load tested, residual/source theorem-route sharpened, and reduced
+boundary/scalar-silence theorem-surface derived.
 The conditional paired attempt can be retained only as audit material.
 The non-O residual/source route survives conditionally as an unproved theorem target.
+The reduced exterior scalar-silence route survives conditionally.
 Active O necessity is not established.
 It is not adopted.
 It is not insertable.
-It does not close residual/source/boundary safety.
+It does not close full residual/source/boundary safety.
 It does not construct O.
 It does not open recombination.
 It does not open the parent equation.
