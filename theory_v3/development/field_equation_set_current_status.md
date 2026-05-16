@@ -16,8 +16,8 @@ The short answer is:
 
 ```text
 The reduced static spherical A-sector remains the strongest reconstructed branch.
-Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, a reduced boundary/scalar-silence route, insertion-family exclusions, and a reduced silent/inert theorem surface.
-Group 57 added a finite transition-layer unification probe. A quintic smoothstep can replace hard-boundary-only matching in the reduced model; blending interior and exterior profiles produces explicit residues R1=(F_out-F_in)s' and R2=(F_out-F_in)s''+2(F_out'-F_in')s'. Reduced layer energy scales as 5A^2/(7ell), so the hard-shell limit is costly. The sharp warning is that flat odd charge cancellation is not enough: spherical weighting leaves Q_layer=4Rell^2rho1/3 and Delta_M_layer=4R alpha ell^2 rho1/3 unless weighted neutrality is enforced.
+Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, a reduced boundary/scalar-silence route, insertion-family exclusions, a reduced silent/inert theorem surface, and a finite transition-layer unification probe.
+Group 58 directly answered the weighted-neutrality blocker from Group 57. It constructed a nontrivial localized profile rho=rho0*(1-y^2)^2*(y-c*) with c*=2Rell/(7R^2+ell^2), satisfying integral (R+ell*y)^2 rho dy=0. Flat odd cancellation remains rejected. The weighted-neutral layer has finite reduced energy, kills reduced Q-driven exterior tail and mass-shift diagnostics, and supports reduced D=0 closure.
 No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
 
@@ -68,6 +68,8 @@ The accumulated safety conditions were then used as filters against (B_s/F_\zeta
 Group 56 turned the silent/inert survivor from Group 55 into a concrete reduced theorem surface. It constructed a boundary-null profile W=r^2(R-r)^2 with W(R)=W'(R)=0, a nontrivial charge-neutral internal profile rho=rho0*(1-5r^2/(3R^2)) with integral_0^R r^2*rho dr=0, an exterior-tail condition phi_ext=C0+kQ/r where C0=0 and Q=0 imply phi_ext=0, a shell-neutral reduced match where phi_int=A*r^2(R-r)^2 gives J=0 when matched to exterior zero, and a reduced divergence-silent closure p_t=p_r+r*p_r'/2 giving D=p_r'+2(p_r-p_t)/r=0. These are reduced constructive results, not insertion permission.
 
 Group 57 replaced the hard-boundary-only picture with a finite transition-layer diagnostic. It used the quintic smoothstep s(x)=10x^3-15x^4+6x^5 with endpoint value, slope, and curvature control. For a blended reduced field F=(1-s)F_in+sF_out, the first and second derivative residues are R1=(F_out-F_in)s' and R2=(F_out-F_in)s''+2(F_out'-F_in')s'. Reduced layer energy scales as E_layer=5A^2/(7ell), making finite smoothing explicit and the hard-shell limit costly. The layer charge/mass diagnostic showed that an odd flat layer profile can have Q_flat=0 while still having weighted spherical charge Q_weighted=4Rell^2rho1/3 and mass shift Delta_M_layer=4R alpha ell^2 rho1/3. A reduced layer-local stress closure p_t=p_r+r p_r'/2 gives D=0, but this is not a covariant Bianchi proof. The finite-layer unification probe survives conditionally, with weighted neutrality, candidate-term audit, and covariant lift still required.
+
+Group 58 constructed a nontrivial weighted-neutral finite-layer profile, directly addressing Group 57's sharp weighted-neutrality blocker. With r=R+ell*y and w=(1-y^2)^2, the profile rho=rho0*w*(y-c*) with c*=2Rell/(7R^2+ell^2) satisfies integral_{-1}^{1} (R+ell*y)^2 rho(y) dy=0 while remaining endpoint-localized and internally nontrivial. Flat odd cancellation remains rejected: rho_odd=rho1*y has Q_flat=0 but Q_weighted=4Rell*rho1/3. The weighted-neutral profile has finite reduced gradient energy, gives phi_ext=C0 and Delta_M=0, and with C0=0 yields exterior scalar silence. A reduced divergence closure using the weighted shape gives D=0. These are reduced theorem-surface results, not insertion permission.
 
 ---
 
@@ -183,17 +185,18 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `REDUCED_SILENT_INSERTION_SURFACE_CONDITIONAL` / `FINITE_LAYER_UNIFICATION_PROBE_CONDITIONAL` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `REDUCED_SILENT_INSERTION_SURFACE_CONDITIONAL` / `FINITE_LAYER_UNIFICATION_PROBE_CONDITIONAL` / `WEIGHTED_NEUTRAL_LAYER_CONSTRUCTED` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
 | (B_s/F_\zeta) insertion families                 | `DIRECT_INSERTION_REJECTED` / `SOURCE_CARRYING_INSERTION_REJECTED` / `BOUNDARY_LEAKING_INSERTION_REJECTED` / `MASS_SHIFTING_INSERTION_REJECTED` / `SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY` | Insertion-family exclusion sieve                                         | No insertion occurred; filters exclude unsafe families; silent/inert survivor requires insertion law and safety theorem support |
 | Silent/inert insertion route                     | `REDUCED_THEOREM_SURFACE_CONSTRUCTED` / `CONDITIONAL_ONLY` / `COVARIANT_LIFT_REQUIRED` / `INSERTION_LAW_REQUIRED` / `NOT_INSERTABLE` | Reduced silent/inert route theorem surface | Reduced profiles and closures exist. They are not a field-equation insertion law and not a covariant theorem. |
 | Finite transition layer                          | `LAYER_PROBE_OPENED` / `SMOOTHSTEP_PROFILE_DERIVED` / `BLEND_RESIDUE_DERIVED` / `LAYER_ENERGY_CONDITION_DERIVED` / `WEIGHTED_NEUTRALITY_REQUIRED` / `LAYER_DIVERGENCE_CLOSURE_DERIVED` / `CONDITIONAL_ONLY` / `NOT_INSERTABLE` | Finite-layer unification probe | Finite-layer diagnostics are explicit. Residues are candidate clues, not inserted terms. Weighted layer neutrality remains required. |
+| Weighted-neutral finite layer                    | `WEIGHTED_NEUTRAL_PROFILE_DERIVED` / `GEOMETRIC_SKEW_DERIVED` / `FLAT_NEUTRALITY_REJECTED` / `WEIGHTED_ENERGY_CONDITION_DERIVED` / `TAIL_MASS_ZERO_CONFIRMED` / `WEIGHTED_DIVERGENCE_CLOSURE_DERIVED` / `CONDITIONAL_ONLY` / `NOT_INSERTABLE` | Weighted-neutral finite-layer construction | A nontrivial reduced weighted-neutral profile exists. It is not a source law, not an insertion law, and not a covariant theorem. |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
 | Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `NON_O_ROUTE_DEFINED` / `ZERO_INCIDENCE_CONDITION`              | Provisional double-count protection                                     | Non-O residual nonentry can be stated as i_res_metric=0 and i_res_source=0, but this is a theorem target, not a proof |
 | Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `A_SECTOR_ONLY_ROLE_PURITY_CONDITION`                           | A-sector source protection; no ordinary mass duplication                | Ordinary source routing condition is i_A=1, i_Bs=0, i_zeta=0, i_kappa=0; not proved |
 | A-sector mass protection                         | `A_SECTOR_MASS_PROTECTION_REQUIRED` / `TRACE_MASS_NEUTRALITY_CONDITION`                                | M_A=M preservation; no independent trace-sector mass charge             | Q_trace must be zero, inert, compactly supported, or non-mass-carrying; not proved |
 | Boundary / exterior scalar silence               | `REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY` / `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `NOT_FULL_COVARIANT_THEOREM` | Boundary neutrality and exterior scalar silence targets                 | Reduced exterior scalar form phi=C0+C1/r derived; zero offset and zero charge imply phi=0; zero flux requires C1=0; no-shell condition requires J=0; conditions not yet derived from full theory |
-| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 57 did not force active O. It produced a finite-layer non-O diagnostic route that survives conditionally. |
+| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 58 did not force active O. The reduced non-O finite-layer route survives conditionally after weighted-neutral construction. |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
 | (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
 | (\Sigma_V, R_V)                                  | role-level only                                                                                        | Exchange accounting targets                                             | Operators not derived                                            |
@@ -395,6 +398,38 @@ reduced divergence closure:
 
 These are reduced diagnostics. They do not license physical use.
 
+Group 58 did not insert B_s/F_zeta. It solved the reduced weighted-neutrality blocker by constructing a nontrivial finite-layer profile with exact spherical weighted charge zero.
+
+Group 58 weighted-neutral finite-layer construction:
+
+```text
+layer coordinate:
+  y in [-1,1]
+  r=R+ell*y
+
+window:
+  w(y)=(1-y^2)^2
+
+profile:
+  rho(y)=rho0*w(y)*(y-c*)
+
+geometric skew:
+  c*=2Rell/(7R^2+ell^2)
+
+weighted neutrality:
+  integral_{-1}^{1} (R+ell*y)^2 rho(y) dy = 0
+
+endpoint localization:
+  rho(-1)=0
+  rho(1)=0
+
+nontriviality:
+  rho(0)=-2Rell*rho0/(7R^2+ell^2)
+  rho(1/2)=9rho0*(7R^2-4Rell+ell^2)/(32*(7R^2+ell^2))
+```
+
+These are reduced diagnostics and construction results. They do not license physical use.
+
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
 The recent process advanced the program from a vague scalar spatial-response blocker to a sharply constrained trace-anchor declaration surface.
@@ -506,6 +541,20 @@ Group 57 added finite transition-layer unification-probe progress:
   covariant lift and candidate-term audit remain required.
 ```
 
+Constructive weighted-neutral finite-layer progress added:
+
+```text
+Group 58 added constructive weighted-neutral finite-layer progress:
+  flat odd cancellation remains rejected;
+  spherical weighted neutrality is the correct reduced target;
+  a nontrivial localized weighted-neutral profile exists;
+  the needed skew c*=2Rell/(7R^2+ell^2) is fixed by geometry, not arbitrary tuning;
+  weighted-neutral profile energy is finite for finite ell but nonfree;
+  Q_weighted=0 kills reduced Q-driven tail and mass-shift diagnostics;
+  the weighted shape supports reduced D=0 closure;
+  source safety, candidate transition-term audit, covariant lift, and physical-use block remain.
+```
+
 Current result:
 
 ```text
@@ -535,6 +584,7 @@ Reduced exterior scalar silence survives conditionally, but full boundary neutra
 Insertion-family filtering is not insertion. The filters are necessary conditions, not safety proofs. The silent/inert survivor is not yet a field-equation term.
 The reduced silent-route construction is not insertion. It is not a covariant theorem. Reduced D=0 is not a Bianchi or parent-identity proof.
 The finite layer is not a parent equation. Blend residues are not inserted terms. Endpoint smoothness is not neutrality. Reduced D=0 is not a Bianchi proof.
+Weighted neutrality is not source safety. The radial weighted profile is not a covariant theorem. Reduced D=0 is not a Bianchi proof. The weighted-neutral layer is not an inserted field-equation term.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -1000,6 +1050,99 @@ No insertion occurred.
 
 ---
 
+## 5.13 Weighted-Neutral Finite Transition Layer
+
+A weighted-neutral finite-layer profile has been constructed.
+
+Current result:
+
+```text
+WEIGHTED_LAYER_PROBLEM_OPENED
+WEIGHTED_NEUTRAL_PROFILE_DERIVED
+GEOMETRIC_SKEW_DERIVED
+FLAT_NEUTRALITY_REJECTED
+WEIGHTED_NEUTRALITY_CONFIRMED
+WEIGHTED_ENERGY_CONDITION_DERIVED
+TAIL_MASS_ZERO_CONFIRMED
+WEIGHTED_DIVERGENCE_CLOSURE_DERIVED
+WEIGHTED_LAYER_ROUTE_SURVIVES_CONDITIONALLY
+PHYSICAL_USE_BLOCKED
+```
+
+Reduced construction:
+
+```text
+layer coordinate:
+  y in [-1,1]
+  r(y)=R+ell*y
+
+window:
+  w(y)=(1-y^2)^2
+
+profile:
+  rho(y)=rho0*w(y)*(y-c*)
+
+geometric skew:
+  c*=2Rell/(7R^2+ell^2)
+
+weighted neutrality:
+  integral_{-1}^{1} (R+ell*y)^2 rho(y) dy = 0
+
+endpoint localization:
+  rho(-1)=0
+  rho(1)=0
+
+nontriviality:
+  rho(0)=-2Rell*rho0/(7R^2+ell^2)
+  rho(1/2)=9rho0*(7R^2-4Rell+ell^2)/(32*(7R^2+ell^2))
+```
+
+Flat-neutrality rejection:
+
+```text
+rho_odd=rho1*y has Q_flat=0 but Q_weighted=4Rell*rho1/3.
+Flat odd cancellation is not physical reduced neutrality.
+The weighted profile fixes the correct target: Q_weighted=0.
+```
+
+Energy:
+
+```text
+E=256*rho0^2*(49R^4+26R^2ell^2+ell^4)/(315ell*(7R^2+ell^2)^2)
+Finite for finite ell; thin-layer scaling E~1/ell.
+lim_{ell->0} ell*E/rho0^2=256/315.
+```
+
+Tail/mass:
+
+```text
+Q_weighted=0
+phi_ext=C0
+C0=0 -> phi_ext=0
+Delta_M=0
+```
+
+Divergence:
+
+```text
+p_t=p_r+r*p_r'/2
+D=p_r'+2(p_r-p_t)/r=0
+p_r(-1)=p_r(1)=p_t(-1)=p_t(1)=0
+```
+
+Current meaning:
+
+```text
+A nontrivial weighted-neutral localized finite-layer profile exists.
+The geometric skew is fixed by the weighted-neutrality condition, not by tuning.
+Flat odd cancellation is rejected as insufficient.
+The profile has finite reduced energy, kills Q-driven tail and mass-shift diagnostics, and supports reduced D=0 closure.
+This is a reduced theorem-surface result, not insertion permission.
+No insertion occurred.
+```
+
+---
+
 # 6. Residual-Control Status
 
 The current double-count load is
@@ -1164,6 +1307,14 @@ Finite-layer diagnostics provide a non-O route to study boundary transition term
 Active O should not be constructed unless non-O layer/covariant-lift routes fail or become obstructed.
 ```
 
+Group 58 status:
+
+```text
+Active O necessity is not established.
+The reduced non-O finite-layer route survives conditionally after weighted-neutral construction.
+Active O should not be constructed unless non-O layer/covariant-lift/source-safety routes fail or become obstructed.
+```
+
 ---
 
 # 8. Source, Current, Boundary, and Correction Status
@@ -1272,6 +1423,15 @@ for the tested odd layer density rho_layer=rho1*y.
 ```
 
 This shows that layer charge can shift mass unless weighted neutrality or inert/non-mass-carrying behavior is proven.
+
+Group 58 tail/mass diagnostic:
+
+```text
+Q_weighted=0 gives Delta_M=alpha*Q_weighted=0.
+The weighted-neutral layer avoids the reduced charge-driven mass-shift diagnostic.
+```
+
+Group 58 does not prove source safety. Weighted neutrality means no net weighted scalar charge. It does not prove the layer profile does not duplicate ordinary source load. Source safety audit remains required.
 
 ## 8.2 Vacuum Currents
 
@@ -1428,6 +1588,35 @@ blend residues R1=(F_out-F_in)s' and R2=(F_out-F_in)s''+2(F_out'-F_in')s' are ex
 ```
 
 These may guide future candidate transition terms, but they are not adopted and must not be inserted as repair tensors.
+
+Group 58 strengthens the finite-layer boundary route by constructing a weighted-neutral layer profile satisfying:
+
+```text
+integral_{-1}^{1} (R+ell*y)^2 rho(y) dy = 0.
+```
+
+Flat odd cancellation is rejected: Q_flat=0 does not imply Q_weighted=0. Spherical weighting requires explicit geometric skew c*=2Rell/(7R^2+ell^2).
+
+Group 58 weighted-neutral profile energy:
+
+```text
+E=256*rho0^2*(49R^4+26R^2ell^2+ell^4)/(315ell*(7R^2+ell^2)^2)
+```
+
+Finite for finite ell; scaling E~1/ell confirms finite-layer picture remains important.
+
+Group 58 reduced weighted-layer divergence result:
+
+```text
+p_r proportional to [(1-y^2)^2*(y-c*)]^2;
+choose p_t=p_r+r*p_r'/2;
+then D=0.
+Endpoint stresses vanish.
+```
+
+This is not a covariant Bianchi proof and does not open parent closure.
+
+Group 58 strengthens future candidate transition-term work by providing a weighted-neutral profile shape that can be used alongside Group 57 blend residues to test admissible layer response terms. No transition term is adopted.
 
 ## 8.4 Correction Tensors
 
@@ -1775,6 +1964,34 @@ Do not treat reduced D=0 as covariant divergence proof.
 
 ---
 
+## 10.14 Do Not Treat Weighted Neutrality as Insertion or Full Safety
+
+Do not shorten:
+
+```text
+weighted-neutral finite-layer profile constructed conditionally
+```
+
+into:
+
+```text
+B_s/F_zeta inserted,
+source safety proven,
+covariant theorem derived,
+Bianchi identity proven,
+parent equation ready.
+```
+
+Group 58 constructed a reduced weighted-neutral profile. It did not prove source safety, covariant lift, or parent closure.
+
+Do not treat Q_weighted=0 as source no-double-counting.
+Do not treat reduced D=0 as covariant divergence proof.
+Do not treat the radial profile as a covariant theorem.
+Do not treat flat odd neutrality as physical weighted neutrality.
+Do not treat the weighted-neutral layer as an insertable field-equation term.
+
+---
+
 # 11. Current Recovery Scorecard
 
 | Target                                        | Current status                          |
@@ -1907,6 +2124,19 @@ Group 57 finite-layer status:
   Weighted neutrality remains required.
   No insertion occurred.
 
+Group 58 weighted-neutral layer status:
+  weighted-neutral finite-layer profile constructed.
+  rho=rho0*(1-y^2)^2*(y-c*) with c*=2Rell/(7R^2+ell^2).
+  integral_{-1}^{1} (R+ell*y)^2 rho dy=0.
+  flat odd cancellation rejected.
+  Q_weighted=0 kills Q-driven tail and mass-shift diagnostics.
+  C0=0 gives phi_ext=0.
+  Delta_M=0.
+  reduced weighted D=0 closure.
+  Route survives conditionally.
+  Source safety, covariant lift, and transition-term audit remain open.
+  No insertion occurred.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -1925,7 +2155,8 @@ Still not ready:
   active O,
   covariant lift,
   silent/inert insertion law,
-  weighted-neutral finite-layer profile,
+  source safety for weighted-neutral layer,
+  covariant weighted-layer lift,
   candidate transition-term audit,
   energy/stress accounting,
   count-once trace theorem,
@@ -1946,14 +2177,15 @@ Still not ready:
   parent field equation.
 
 Next honest moves:
-  construct weighted-neutral finite-layer profile;
-  audit whether blend residues define admissible transition candidate terms;
-  covariantly lift finite-layer coordinate/profile/stress;
+  audit whether blend residues and weighted-neutral profile define admissible transition candidate terms;
+  covariantly lift weighted-layer measure, skew, and profile;
+  run source safety audit for weighted-neutral layer response;
   continue energy/stress accounting.
 
 Forbidden immediate moves:
   B_s/F_zeta insertion;
   blend-residue insertion as repair;
+  weighted profile insertion as source;
   active O construction by shortcut;
   recombination;
   parent closure.
@@ -2693,6 +2925,84 @@ no parent closure.
 
 ---
 
+## A.17 Weighted-Neutral Finite Transition Layer
+
+A weighted-neutral finite-layer profile has been constructed.
+
+Stable status codes:
+
+```text
+WEIGHTED_LAYER_PROBLEM_OPENED
+WEIGHTED_NEUTRAL_PROFILE_DERIVED
+GEOMETRIC_SKEW_DERIVED
+FLAT_NEUTRALITY_REJECTED
+WEIGHTED_NEUTRALITY_CONFIRMED
+WEIGHTED_ENERGY_CONDITION_DERIVED
+TAIL_MASS_ZERO_CONFIRMED
+WEIGHTED_DIVERGENCE_CLOSURE_DERIVED
+WEIGHTED_LAYER_ROUTE_SURVIVES_CONDITIONALLY
+PHYSICAL_USE_BLOCKED
+```
+
+Reduced construction:
+
+```text
+r(y)=R+ell*y
+w(y)=(1-y^2)^2
+rho(y)=rho0*w(y)*(y-c*)
+c*=2Rell/(7R^2+ell^2)
+integral_{-1}^{1} (R+ell*y)^2 rho(y) dy=0
+rho(-1)=0; rho(1)=0
+rho(0)=-2Rell*rho0/(7R^2+ell^2)
+rho(1/2)=9rho0*(7R^2-4Rell+ell^2)/(32*(7R^2+ell^2))
+```
+
+Flat-neutrality rejection:
+
+```text
+rho_odd=rho1*y: Q_flat=0 but Q_weighted=4Rell*rho1/3.
+Flat odd cancellation is not physical reduced neutrality.
+Weighted profile: Q_weighted=0.
+```
+
+Energy:
+
+```text
+E=256*rho0^2*(49R^4+26R^2ell^2+ell^4)/(315ell*(7R^2+ell^2)^2)
+lim_{ell->0} ell*E/rho0^2=256/315
+```
+
+Tail/mass:
+
+```text
+Q_weighted=0
+phi_ext=C0; C0=0 -> phi_ext=0
+Delta_M=0
+```
+
+Divergence:
+
+```text
+p_t=p_r+r*p_r'/2
+D=0
+p_r(-1)=p_r(1)=p_t(-1)=p_t(1)=0
+```
+
+Non-results:
+
+```text
+no B_s/F_zeta insertion;
+no source safety theorem;
+no covariant theorem;
+no covariant Bianchi proof;
+no parent equation;
+no active O construction;
+no recombination;
+no parent closure.
+```
+
+---
+
 # Appendix B — Provenance Compression
 
 The following provenance is retained only to identify the audit lineage of the current trace-anchor status. It is not part of the main snapshot logic.
@@ -2809,6 +3119,15 @@ Group 57:
   The finite-layer unification probe survived conditionally.
   Weighted neutrality, candidate transition-term audit, covariant lift, energy/stress accounting, and divergence identity support remained required.
   No insertion, active O, recombination, or parent closure was opened.
+
+Group 58:
+  a weighted-neutral finite-layer profile was constructed.
+  rho=rho0*(1-y^2)^2*(y-c*) with c*=2Rell/(7R^2+ell^2) satisfies integral (R+ell*y)^2 rho dy=0.
+  Flat odd cancellation was rejected: Q_flat=0 but Q_weighted=4Rell*rho1/3.
+  The weighted-neutral profile has finite reduced energy, kills Q-driven tail and mass-shift diagnostics, and supports reduced D=0 closure.
+  The weighted-neutrality blocker now has a constructive reduced answer.
+  Source safety, covariant lift, transition-term audit, and parent closure remain required.
+  No insertion, active O, recombination, or parent closure was opened.
 ```
 
 Current combined outcome:
@@ -2817,13 +3136,14 @@ Current combined outcome:
 The trace-anchor surface is visible, branch-safe, decision-surface audited,
 safety-load tested, residual/source theorem-route sharpened, reduced
 boundary/scalar-silence theorem-surface derived, insertion-family filtered,
-reduced silent/inert theorem-surface constructed, and finite transition-layer
-unification probe opened.
+reduced silent/inert theorem-surface constructed, finite transition-layer
+unification probe opened, and weighted-neutral finite-layer profile constructed.
 The conditional paired attempt can be retained only as audit material.
 Unsafe insertion families are excluded.
 The silent/inert route survives conditionally with concrete reduced profiles and closures.
 The finite layer exposes transition residues, energy cost, weighted charge/mass diagnostics, and reduced divergence closure.
-Weighted layer neutrality is the sharpest current blocker.
+The weighted-neutrality blocker now has a constructive reduced answer.
+Source safety, covariant lift, and candidate transition-term audit remain open.
 Active O necessity is not established.
 It is not adopted.
 It is not insertable.
