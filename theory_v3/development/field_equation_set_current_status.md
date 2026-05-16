@@ -16,8 +16,8 @@ The short answer is:
 
 ```text
 The reduced static spherical A-sector remains the strongest reconstructed branch.
-Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, a reduced boundary/scalar-silence route, insertion-family exclusions, a reduced silent/inert theorem surface, a finite transition-layer unification probe, and a weighted-neutral finite-layer construction.
-Group 59 opened and filtered a transition-term candidate surface. Blend residues R1=(F_out-F_in)s' and R2=(F_out-F_in)s''+2(F_out'-F_in')s' are retained as candidate clues, not inserted terms. The weighted-neutralizer N_w[f]=w(f-mu_w[f]) was derived, with mu_w[f]=integral r^2*w*f dy / integral r^2*w dy, reproducing the Group 58 skew for f=y. Nonlocal constants, source-carrying terms, trace-double-counting terms, radial-only stress, and residue-as-repair routes were rejected. A narrow localized weighted-neutral closure-supported transition response survives conditionally.
+Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, a reduced boundary/scalar-silence route, insertion-family exclusions, a reduced silent/inert theorem surface, a finite transition-layer unification probe, a weighted-neutral finite-layer construction, and a filtered transition-term candidate surface.
+Group 60 applied a stricter exclusion sieve to that transition-response candidate. Raw R1/R2 repair and arbitrary counterterms were rejected. eta has a second-derivative endpoint burden, while eta^2 has stronger endpoint silence but is not weighted-neutral as scalar response. Constant/tuning routes, source repair/carrying, trace double-counting, radial-only stress, and active-O-by-disguise routes were rejected. The only surviving reduced candidate is stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, and audit-only.
 No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
 
@@ -72,6 +72,8 @@ Group 57 replaced the hard-boundary-only picture with a finite transition-layer 
 Group 58 constructed a nontrivial weighted-neutral finite-layer profile, directly addressing Group 57's sharp weighted-neutrality blocker. With r=R+ell*y and w=(1-y^2)^2, the profile rho=rho0*w*(y-c*) with c*=2Rell/(7R^2+ell^2) satisfies integral_{-1}^{1} (R+ell*y)^2 rho(y) dy=0 while remaining endpoint-localized and internally nontrivial. Flat odd cancellation remains rejected: rho_odd=rho1*y has Q_flat=0 but Q_weighted=4Rell*rho1/3. The weighted-neutral profile has finite reduced gradient energy, gives phi_ext=C0 and Delta_M=0, and with C0=0 yields exterior scalar silence. A reduced divergence closure using the weighted shape gives D=0. These are reduced theorem-surface results, not insertion permission.
 
 Group 59 opened a transition-term candidate audit using the Group 57 blend residues and Group 58 weighted-neutral layer shape. It retained R1=(F_out-F_in)s' and R2=(F_out-F_in)s''+2(F_out'-F_in')s' as candidate clues, not inserted terms. It verified endpoint locality for w, eta, and eta^2 while rejecting constant/nonlocal terms. It derived a reduced weighted-neutralizer N_w[f]=w(f-mu_w[f]), where mu_w[f]=integral r^2*w*f dy / integral r^2*w dy; for f=y this gives mu_w[y]=2Rell/(7R^2+ell^2) and zero weighted charge, reproducing the Group 58 skew. It rejected source-carrying transition terms, trace-double-counting terms, and radial-only stress. A localized weighted-neutral closure-supported transition response survives conditionally, but source safety, covariant lift, candidate-equation sieve, energy/stress accounting, and physical-use blocks remain.
+
+Group 60 applied a stricter exclusion sieve to the Group 59 transition-response survivor. It rejected raw R1/R2 insertion and arbitrary counterterm repair. It found that w and eta have nonzero endpoint second derivatives, while eta^2 is silent through second derivative; however, eta^2 is not weighted-neutral as a scalar response, so it can survive only as stress-like basis. Constant admixture candidate=a*eta+b is rejected because weighted neutrality and endpoint locality force b=0. Source repair/carrying and trace double-counting remain rejected. Radial-only stress is rejected; the closure route p_t=p_r+r p_r'/2 gives reduced D=0 and survives conditionally with explicit energy/stress burden. The surviving candidate is narrowed to a stress-only localized weighted-neutral-generated closure-supported transition response, still audit-only and non-insertable.
 
 ---
 
@@ -187,19 +189,19 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `REDUCED_SILENT_INSERTION_SURFACE_CONDITIONAL` / `FINITE_LAYER_UNIFICATION_PROBE_CONDITIONAL` / `WEIGHTED_NEUTRAL_LAYER_CONSTRUCTED` / `TRANSITION_TERM_CANDIDATE_SURFACE_FILTERED` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `REDUCED_SILENT_INSERTION_SURFACE_CONDITIONAL` / `FINITE_LAYER_UNIFICATION_PROBE_CONDITIONAL` / `WEIGHTED_NEUTRAL_LAYER_CONSTRUCTED` / `TRANSITION_TERM_CANDIDATE_SURFACE_FILTERED` / `STRICT_TERM_EXCLUSION_SIEVE_APPLIED` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
 | (B_s/F_\zeta) insertion families                 | `DIRECT_INSERTION_REJECTED` / `SOURCE_CARRYING_INSERTION_REJECTED` / `BOUNDARY_LEAKING_INSERTION_REJECTED` / `MASS_SHIFTING_INSERTION_REJECTED` / `SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY` | Insertion-family exclusion sieve                                         | No insertion occurred; filters exclude unsafe families; silent/inert survivor requires insertion law and safety theorem support |
 | Silent/inert insertion route                     | `REDUCED_THEOREM_SURFACE_CONSTRUCTED` / `CONDITIONAL_ONLY` / `COVARIANT_LIFT_REQUIRED` / `INSERTION_LAW_REQUIRED` / `NOT_INSERTABLE` | Reduced silent/inert route theorem surface | Reduced profiles and closures exist. They are not a field-equation insertion law and not a covariant theorem. |
 | Finite transition layer                          | `LAYER_PROBE_OPENED` / `SMOOTHSTEP_PROFILE_DERIVED` / `BLEND_RESIDUE_DERIVED` / `LAYER_ENERGY_CONDITION_DERIVED` / `WEIGHTED_NEUTRALITY_REQUIRED` / `LAYER_DIVERGENCE_CLOSURE_DERIVED` / `CONDITIONAL_ONLY` / `NOT_INSERTABLE` | Finite-layer unification probe | Finite-layer diagnostics are explicit. Residues are candidate clues, not inserted terms. Weighted layer neutrality remains required. |
 | Weighted-neutral finite layer                    | `WEIGHTED_NEUTRAL_PROFILE_DERIVED` / `GEOMETRIC_SKEW_DERIVED` / `FLAT_NEUTRALITY_REJECTED` / `WEIGHTED_ENERGY_CONDITION_DERIVED` / `TAIL_MASS_ZERO_CONFIRMED` / `WEIGHTED_DIVERGENCE_CLOSURE_DERIVED` / `CONDITIONAL_ONLY` / `NOT_INSERTABLE` | Weighted-neutral finite-layer construction | A nontrivial reduced weighted-neutral profile exists. It is not a source law, not an insertion law, and not a covariant theorem. |
-| Transition response candidate surface            | `RESIDUE_INVENTORY_DERIVED` / `LOCALITY_FILTER_APPLIED` / `WEIGHTED_NEUTRALIZER_DERIVED` / `SOURCE_TRACE_FILTER_APPLIED` / `DIVERGENCE_FILTER_APPLIED` / `TRANSITION_TERM_SURVIVES_CONDITIONALLY` / `NOT_INSERTABLE` | Transition-term candidate audit | A localized weighted-neutral closure-supported transition response survives reduced filters. It is not inserted and not covariant. |
+| Transition response candidate surface            | `RESIDUE_INVENTORY_DERIVED` / `LOCALITY_FILTER_APPLIED` / `WEIGHTED_NEUTRALIZER_DERIVED` / `SOURCE_TRACE_FILTER_APPLIED` / `DIVERGENCE_FILTER_APPLIED` / `TRANSITION_TERM_SURVIVES_CONDITIONALLY` / `TERM_SURVIVES_NARROWLY` / `STRESS_ONLY_INTERPRETATION_REQUIRED` / `CLOSURE_SUPPORTED_TERM_SURVIVES` / `ENERGY_ACCOUNTING_REQUIRED` / `SOURCE_SAFETY_REQUIRED` / `COVARIANT_LIFT_REQUIRED` / `NOT_INSERTABLE` | Transition-term candidate audit / strict sieve | After Group 60, the surviving candidate is stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, and audit-only. |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
 | Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `NON_O_ROUTE_DEFINED` / `ZERO_INCIDENCE_CONDITION`              | Provisional double-count protection                                     | Non-O residual nonentry can be stated as i_res_metric=0 and i_res_source=0, but this is a theorem target, not a proof |
 | Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `A_SECTOR_ONLY_ROLE_PURITY_CONDITION`                           | A-sector source protection; no ordinary mass duplication                | Ordinary source routing condition is i_A=1, i_Bs=0, i_zeta=0, i_kappa=0; not proved |
 | A-sector mass protection                         | `A_SECTOR_MASS_PROTECTION_REQUIRED` / `TRACE_MASS_NEUTRALITY_CONDITION`                                | M_A=M preservation; no independent trace-sector mass charge             | Q_trace must be zero, inert, compactly supported, or non-mass-carrying; not proved |
 | Boundary / exterior scalar silence               | `REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY` / `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `NOT_FULL_COVARIANT_THEOREM` | Boundary neutrality and exterior scalar silence targets                 | Reduced exterior scalar form phi=C0+C1/r derived; zero offset and zero charge imply phi=0; zero flux requires C1=0; no-shell condition requires J=0; conditions not yet derived from full theory |
-| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 59 did not force active O. N_w is only a reduced weighted-neutralizer, not an active no-overlap operator. |
+| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 60 again rejects promoting N_w to active O. N_w remains only a reduced weighted-neutralizer. |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
 | (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
 | (\Sigma_V, R_V)                                  | role-level only                                                                                        | Exchange accounting targets                                             | Operators not derived                                            |
@@ -470,6 +472,53 @@ survivor:
 
 These are candidate-surface and filter results. They do not license physical use.
 
+Group 60 did not insert B_s/F_zeta. It applied a stricter exclusion sieve to the Group 59 survivor and narrowed the candidate to a stress-only localized weighted-neutral-generated closure-supported transition response.
+
+Group 60 exclusion sieve:
+
+```text
+repair:
+  raw R1/R2 insertion rejected;
+  arbitrary counterterm repair rejected.
+
+derivative locality:
+  w and eta have value/slope endpoint silence but nonzero second derivatives;
+  eta^2 has value/slope/second-derivative endpoint silence.
+
+scalar neutrality:
+  Q[eta]=0;
+  Q[eta^2]!=0;
+  Q[constant]!=0.
+
+interpretation:
+  eta^2 rejected as scalar response;
+  eta^2 may survive only as stress-like basis.
+
+tuning:
+  candidate=a*eta+b has Q proportional to b and endpoint values b;
+  b must be zero;
+  constant admixture rejected.
+
+source/trace:
+  source repair/carrying rejected;
+  trace carrying and residual reentry rejected.
+
+divergence:
+  radial-only p_t=0 rejected;
+  closure p_t=p_r+r p_r'/2 gives D=0.
+
+energy:
+  E_layer =
+  256*ell*p0*(49R^4+58R^2ell^2+ell^4)
+  /
+  (3465*(7R^2+ell^2)^2)
+
+survivor:
+  stress-only localized weighted-neutral-generated closure-supported transition response.
+```
+
+These are reduced sieve results. They do not license physical use.
+
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
 The recent process advanced the program from a vague scalar spatial-response blocker to a sharply constrained trace-anchor declaration surface.
@@ -610,6 +659,23 @@ Group 59 added candidate transition-term audit progress:
   a narrow localized weighted-neutral closure-supported transition response survives conditionally.
 ```
 
+Stricter exclusion-sieve progress added:
+
+```text
+Group 60 added stricter exclusion-sieve progress:
+  transition residues remain clues only and cannot be inserted as repair tensors;
+  arbitrary counterterms are rejected;
+  eta has a second-derivative endpoint burden;
+  eta^2 has stronger endpoint silence but fails as scalar response;
+  constant/tuning routes are rejected;
+  source repair/carrying remains rejected;
+  trace double-counting remains rejected;
+  radial-only stress remains rejected;
+  closure-supported stress survives reduced D=0;
+  energy/stress burden remains explicit;
+  the surviving candidate is narrowed to stress-only localized weighted-neutral-generated closure-supported response.
+```
+
 Current result:
 
 ```text
@@ -641,6 +707,7 @@ The reduced silent-route construction is not insertion. It is not a covariant th
 The finite layer is not a parent equation. Blend residues are not inserted terms. Endpoint smoothness is not neutrality. Reduced D=0 is not a Bianchi proof.
 Weighted neutrality is not source safety. The radial weighted profile is not a covariant theorem. Reduced D=0 is not a Bianchi proof. The weighted-neutral layer is not an inserted field-equation term.
 N_w is not active O. Transition residues are not repair tensors. Weighted charge zero is not source safety. Reduced D=0 is not a Bianchi proof. The surviving candidate response is not inserted.
+The narrowed survivor is not inserted. eta^2 is not scalar source. N_w is not active O. Reduced D=0 is not a Bianchi proof. Incidence filtering is not source safety. The energy expression is not a covariant stress theorem.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -1301,6 +1368,142 @@ It does not open the parent equation.
 
 ---
 
+## 5.15 Stricter Term Exclusion Sieve
+
+Group 60 applied a stricter exclusion sieve to the transition-response candidate.
+
+Current result:
+
+```text
+SIEVE_OPENED
+REPAIR_TERM_REJECTED
+DERIVATIVE_BURDEN_FOUND
+STRONG_LOCALITY_CONFIRMED
+SCALAR_CHARGE_TERM_REJECTED
+STRESS_ONLY_INTERPRETATION_REQUIRED
+TUNING_ROUTE_REJECTED
+SOURCE_TRACE_SIEVE_APPLIED
+DIVERGENCE_FAILING_TERM_REJECTED
+CLOSURE_SUPPORTED_TERM_SURVIVES
+ENERGY_ACCOUNTING_REQUIRED
+TERM_SURVIVES_NARROWLY
+PHYSICAL_USE_BLOCKED
+```
+
+Repair sieve:
+
+```text
+raw R1/R2 insertion:
+  rejected
+
+arbitrary counterterm:
+  rejected
+
+R1/R2:
+  retained only as clues
+```
+
+Derivative locality:
+
+```text
+w:
+  value/slope endpoint silence;
+  second-derivative endpoint burden
+
+eta:
+  value/slope endpoint silence;
+  second-derivative endpoint burden
+
+eta^2:
+  value/slope/second-derivative endpoint silence
+```
+
+Weighted scalar charge:
+
+```text
+Q[eta]=0
+Q[eta^2]!=0
+Q[constant]!=0
+```
+
+Interpretation:
+
+```text
+eta can be weighted-neutral scalar basis;
+eta^2 cannot be scalar response;
+eta^2 may survive only as stress-like closure basis.
+```
+
+Tuning:
+
+```text
+candidate=a*eta+b
+
+Q = 2*b*(3R^2+ell^2)/3
+endpoint values = b
+
+therefore b=0;
+constant admixture rejected.
+```
+
+Source/trace:
+
+```text
+safe source:
+  i_A=1
+  i_trans_src=0
+
+rejected:
+  source repair;
+  source carrying
+
+safe trace:
+  i_Bs=1
+  i_trans_trace=0
+  i_res=0
+
+rejected:
+  trace carrying;
+  residual reentry
+```
+
+Divergence/energy:
+
+```text
+p_r=p0*eta^2
+
+radial-only p_t=0:
+  rejected
+
+closure:
+  p_t=p_r+r p_r'/2
+  D=0
+
+E_layer =
+256*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+```
+
+Narrow survivor:
+
+```text
+stress-only localized weighted-neutral-generated closure-supported transition response
+```
+
+Current meaning:
+
+```text
+The candidate survived only in a narrower stress-like audit role.
+It is not inserted.
+It is not source-safe yet.
+It is not covariant yet.
+It does not prove a Bianchi identity.
+It does not open the parent equation.
+```
+
+---
+
 # 6. Residual-Control Status
 
 The current double-count load is
@@ -1481,6 +1684,14 @@ N_w[f] is a reduced weighted-neutralizer, not active O.
 Do not promote N_w to a no-overlap operator without domain, codomain, idempotence, covariance, derivative behavior, boundary behavior, and leakage controls.
 ```
 
+Group 60 status:
+
+```text
+Active O necessity is not established.
+N_w is still only a reduced weighted-neutralizer.
+Group 60 explicitly rejects promoting N_w to active O without operator construction.
+```
+
 ---
 
 # 8. Source, Current, Boundary, and Correction Status
@@ -1614,6 +1825,22 @@ Rejected:
 ```
 
 Weighted charge zero does not prove source safety. A source safety theorem remains required.
+
+Group 60 source sieve:
+
+```text
+source repair and source carrying remain rejected.
+
+Safe incidence:
+  i_A=1
+  i_trans_src=0.
+
+Rejected:
+  i_A=1, i_trans_src=1;
+  i_A=0, i_trans_src=1 as source replacement/repair.
+```
+
+The source-repair case can have zero incidence residual algebraically, but is still rejected by role-purity.
 
 ## 8.2 Vacuum Currents
 
@@ -1847,6 +2074,61 @@ Rejected families:
   trace-double-counting terms;
   radial-only stress;
   reduced D=0 as parent identity.
+```
+
+Group 60 preserves eta as weighted-neutral scalar basis but rejects eta^2 as scalar response because Q[eta^2]!=0. eta^2 may survive only as stress-like basis, not as scalar charge profile.
+
+Group 60 trace sieve:
+
+```text
+trace carrying and residual reentry remain rejected.
+
+Safe incidence:
+  i_Bs=1
+  i_trans_trace=0
+  i_res=0.
+
+Rejected:
+  i_trans_trace=1 with B_s;
+  i_res=1 with B_s.
+```
+
+The surviving transition response must be trace-neutral in incidence.
+
+Group 60 closure-supported stress energy burden:
+
+```text
+E_layer =
+256*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+```
+
+This is reduced accounting. It is not a covariant stress theorem. The surviving response is nonfree.
+
+Group 60 divergence sieve:
+
+```text
+radial-only p_t=0 is rejected;
+closure p_t=p_r+r p_r'/2 gives reduced D=0.
+```
+
+This is not a covariant Bianchi proof and does not open parent closure.
+
+After Group 60, the surviving transition-response candidate is stress-only localized weighted-neutral-generated closure-supported transition response. It survives only as audit material.
+
+Rejected candidate interpretations:
+
+```text
+raw residue insertion;
+arbitrary counterterm;
+eta as unrestricted scalar insertion;
+eta^2 as scalar response;
+constant/tuning route;
+source repair/carrying;
+trace double-count;
+radial-only stress;
+active O by disguise.
 ```
 
 ## 8.4 Correction Tensors
@@ -2252,6 +2534,36 @@ Do not treat reduced D=0 as covariant divergence closure.
 
 ---
 
+## 10.16 Do Not Treat the Narrowed Transition Response as Insertion
+
+Do not shorten:
+
+```text
+stress-only localized weighted-neutral-generated closure-supported transition response survives narrowly
+```
+
+into:
+
+```text
+B_s/F_zeta inserted,
+transition response adopted,
+eta^2 scalar source accepted,
+active O constructed,
+source safety proven,
+Bianchi identity proven,
+parent equation ready.
+```
+
+Group 60 narrowed an audit candidate. It did not insert it into the field equation.
+
+Do not treat eta^2 as scalar response.
+Do not treat N_w as active O.
+Do not treat reduced D=0 as covariant divergence closure.
+Do not treat incidence filtering as source theorem.
+Do not treat the energy expression as covariant stress theorem.
+
+---
+
 # 11. Current Recovery Scorecard
 
 | Target                                        | Current status                          |
@@ -2412,6 +2724,24 @@ Group 59 transition-term status:
   Narrow localized weighted-neutral closure-supported transition response survives conditionally.
   No insertion occurred.
 
+Group 60 term exclusion status:
+  stricter exclusion sieve applied.
+  raw R1/R2 repair rejected.
+  arbitrary counterterm repair rejected.
+  eta has second-derivative endpoint burden.
+  eta^2 has stronger endpoint silence.
+  Q[eta]=0.
+  Q[eta^2]!=0, so eta^2 rejected as scalar response.
+  constant admixture rejected; b must be zero.
+  source repair/carrying rejected.
+  trace double-counting rejected.
+  radial-only stress rejected.
+  closure p_t=p_r+r p_r'/2 gives reduced D=0.
+  E_layer=256*ell*p0*(49R^4+58R^2ell^2+ell^4)/(3465*(7R^2+ell^2)^2).
+  Narrow survivor:
+    stress-only localized weighted-neutral-generated closure-supported transition response.
+  No insertion occurred.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -2431,10 +2761,12 @@ Still not ready:
   covariant lift,
   silent/inert insertion law,
   source safety for weighted-neutral layer,
-  source safety for surviving transition response,
+  source safety for narrowed transition response,
   covariant weighted-layer lift,
-  candidate-equation exclusion sieve,
+  covariant layer lift,
+  covariant divergence identity,
   energy/stress accounting,
+  actual insertion law,
   count-once trace theorem,
   residual nonentry theorem,
   source no-double-counting theorem,
@@ -2453,16 +2785,16 @@ Still not ready:
   parent field equation.
 
 Next honest moves:
-  run a stricter candidate-equation exclusion sieve;
-  audit source safety for the surviving transition response;
-  covariantly lift N_w, endpoint locality, weighted measure, and closure;
-  continue energy/stress accounting.
+  source safety audit for the stress-only transition response;
+  covariant lift of derivative locality, N_w, weighted measure, and closure;
+  energy/stress accounting for the narrowed survivor.
 
 Forbidden immediate moves:
   B_s/F_zeta insertion;
   R1/R2 residue insertion as repair;
+  eta^2 scalar-source use;
   N_w promoted to active O;
-  transition response adopted as source/stress law;
+  transition response adopted as field-equation term;
   recombination;
   parent closure.
 ```
@@ -3353,6 +3685,95 @@ no parent closure.
 
 ---
 
+## A.19 Strict Term Exclusion Sieve
+
+Group 60 applied a stricter exclusion sieve to the transition-response candidate.
+
+Stable outcome:
+
+```text
+SIEVE_OPENED
+REPAIR_TERM_REJECTED
+DERIVATIVE_BURDEN_FOUND
+STRONG_LOCALITY_CONFIRMED
+SCALAR_CHARGE_TERM_REJECTED
+STRESS_ONLY_INTERPRETATION_REQUIRED
+TUNING_ROUTE_REJECTED
+SOURCE_TRACE_SIEVE_APPLIED
+DIVERGENCE_FAILING_TERM_REJECTED
+CLOSURE_SUPPORTED_TERM_SURVIVES
+ENERGY_ACCOUNTING_REQUIRED
+TERM_SURVIVES_NARROWLY
+PHYSICAL_USE_BLOCKED
+```
+
+Rejected:
+
+```text
+raw R1/R2 repair;
+arbitrary counterterm repair;
+eta as unrestricted scalar insertion;
+eta^2 as scalar response;
+constant/tuning route;
+source repair/carrying;
+trace double-count;
+radial-only stress;
+active O by disguise.
+```
+
+Survivor:
+
+```text
+stress-only localized weighted-neutral-generated closure-supported transition response
+```
+
+Derivative result:
+
+```text
+w and eta:
+  second-derivative endpoint burden
+
+eta^2:
+  second-derivative endpoint silence
+```
+
+Scalar charge:
+
+```text
+Q[eta]=0
+Q[eta^2]!=0
+Q[constant]!=0
+```
+
+Divergence/energy:
+
+```text
+p_r=p0*eta^2
+p_t=p_r+r p_r'/2
+D=0
+
+E_layer =
+256*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+```
+
+Non-results:
+
+```text
+no B_s/F_zeta insertion;
+no residue repair insertion;
+no eta^2 scalar source;
+no active O construction;
+no source safety theorem;
+no covariant layer theorem;
+no Bianchi / parent identity proof;
+no recombination;
+no parent closure.
+```
+
+---
+
 # Appendix B — Provenance Compression
 
 The following provenance is retained only to identify the audit lineage of the current trace-anchor status. It is not part of the main snapshot logic.
@@ -3493,6 +3914,20 @@ Group 59:
   A narrow localized weighted-neutral closure-supported transition response survived conditionally.
   Source safety, covariant lift, candidate-equation sieve, divergence identity support, and energy/stress accounting remained required.
   No insertion, active O, recombination, or parent closure was opened.
+
+Group 60:
+  stricter term exclusion sieve was applied to the Group 59 survivor.
+  Raw R1/R2 insertion and arbitrary counterterm repair were rejected.
+  Derivative locality test found w and eta have nonzero endpoint second derivatives, while eta^2 is silent through second derivative.
+  Weighted scalar-charge test found Q[eta]=0 but Q[eta^2]!=0 and Q[constant]!=0.
+  eta^2 was rejected as scalar response and retained only as possible stress-like basis.
+  Constant admixture candidate=a*eta+b was rejected because weighted neutrality and endpoint locality force b=0.
+  Source repair/carrying and trace double-counting routes were rejected.
+  Radial-only stress was rejected; closure p_t=p_r+r p_r'/2 survived reduced D=0.
+  Energy/stress burden for the closure-supported response was preserved.
+  The transition-response candidate was narrowed to stress-only localized weighted-neutral-generated closure-supported response.
+  Source safety, covariant lift, divergence identity support, and energy/stress accounting remained required.
+  No insertion, active O, recombination, or parent closure was opened.
 ```
 
 Current combined outcome:
@@ -3503,19 +3938,19 @@ safety-load tested, residual/source theorem-route sharpened, reduced
 boundary/scalar-silence theorem-surface derived, insertion-family filtered,
 reduced silent/inert theorem-surface constructed, finite transition-layer
 unification probe opened, weighted-neutral finite-layer profile constructed,
-and transition-term candidate surface filtered.
+transition-term candidate surface filtered, and strict term exclusion sieve applied.
 The conditional paired attempt can be retained only as audit material.
 Unsafe insertion families are excluded.
 The silent/inert route survives conditionally with concrete reduced profiles and closures.
 The finite layer exposes transition residues, energy cost, charge/mass diagnostics, and reduced divergence closure.
 The weighted-neutrality blocker has a reduced constructive answer.
-The transition-term route now has a narrow surviving candidate family:
-  localized weighted-neutral closure-supported transition response.
+The transition-term route now has a narrower surviving candidate family:
+  stress-only localized weighted-neutral-generated closure-supported transition response.
 Active O necessity is not established.
 N_w is not active O.
 It is not adopted.
 It is not insertable.
-It does not close source safety, covariant boundary/mass/divergence safety, candidate-equation exclusion, or parent identity.
+It does not close source safety, covariant boundary/mass/divergence safety, energy/stress accounting, or parent identity.
 It does not construct O.
 It does not open recombination.
 It does not open the parent equation.
