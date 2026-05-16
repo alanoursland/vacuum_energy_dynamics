@@ -15,10 +15,10 @@ Where does the field-equation program currently stand?
 The short answer is:
 
 ```text
-The reduced static spherical A-sector is the strongest reconstructed branch.
-The scalar spatial-response / recombination problem remains unresolved.
-Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, and a reduced boundary/scalar-silence route.
-Group 55 began insertion work as an exclusion sieve. Direct insertion, source-carrying insertion, boundary-leaking insertion, and mass-shifting insertion routes were rejected. Only a silent/inert insertion route survives conditionally as an unproved theorem target.
+The reduced static spherical A-sector remains the strongest reconstructed branch.
+Trace-anchor work has produced a conditional paired trace-normalization candidate, an audited decision surface, safety load tests, a sharpened non-O residual/source route, a reduced boundary/scalar-silence route, insertion-family exclusions, and now a reduced silent/inert theorem surface.
+Group 56 constructed concrete reduced silent-route ingredients: a boundary-null profile W=r^2(R-r)^2, a nontrivial charge-neutral profile rho=rho0*(1-5r^2/(3R^2)), exterior-tail silence from C0=0 and Q=0, shell-neutral matching with J=0, and a reduced divergence-silent closure p_t=p_r+r*p_r'/2.
+This is real reduced progress, but not insertion.
 No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
 
@@ -65,6 +65,8 @@ The residual/source part of the safety problem has since been refined. This did 
 The boundary/scalar-silence part of the safety problem has since been refined. In the reduced static-spherical homogeneous exterior, the scalar solution has the form (\phi = C_0 + C_1/r). With zero asymptotic offset (C_0=0) and zero scalar charge coefficient (C_1=0), the exterior scalar vanishes. The flux condition is (F_\phi = -4\pi C_1), so zero flux requires (C_1=0). The reduced shell-source diagnostic is (J = R^2(\phi'_{\rm ext}(R) - \phi'_{\rm int}(R))), so no-shell neutrality requires (J=0). A trace-sector mass-shift diagnostic (\Delta M = \alpha q_\zeta) is blocked conditionally by (q_\zeta=0). These are conditional reduced theorem-surface results, not full covariant boundary neutrality or insertion permission.
 
 The accumulated safety conditions were then used as filters against (B_s/F_\zeta) insertion families. Direct trace/source/boundary/mass load routes were rejected using the diagnostic (L = a_T T_\zeta + a_S S_M + a_C C_1 + a_J J + a_Q Q_{\rm trace}). Double-entry and missing-entry trace routes were rejected. Source-carrying (B_s/\zeta/\kappa) routes were rejected. Scalar-tail, nonzero-flux, shell-source, and boundary-repair insertion routes were rejected. Mass-shifting trace-charge routes were rejected. The only surviving route is a silent/inert insertion route, and it survives only as an unproved theorem target requiring an insertion law plus residual/source/boundary/mass theorem support.
+
+Group 56 turned the silent/inert survivor from Group 55 into a concrete reduced theorem surface. It constructed a boundary-null profile W=r^2(R-r)^2 with W(R)=W'(R)=0, a nontrivial charge-neutral internal profile rho=rho0*(1-5r^2/(3R^2)) with integral_0^R r^2*rho dr=0, an exterior-tail condition phi_ext=C0+kQ/r where C0=0 and Q=0 imply phi_ext=0, a shell-neutral reduced match where phi_int=A*r^2(R-r)^2 gives J=0 when matched to exterior zero, and a reduced divergence-silent closure p_t=p_r+r*p_r'/2 giving D=p_r'+2(p_r-p_t)/r=0. These are reduced constructive results, not insertion permission.
 
 ---
 
@@ -180,15 +182,16 @@ AB = 1 must not be used to choose the parent spatial-response law.
 | (\kappa_{\rm areal})                             | `DIAGNOSTIC`                                                                                           | Reduced exterior compensation check                                     | Not a general scalar field                                       |
 | (B=1/A)                                          | `RECOVERED_REDUCED`                                                                                    | Static spherical exterior recovery                                      | Not a construction rule                                          |
 | (B_s/F_\zeta)                                    | `THEOREM_TARGET` / `NOT_DERIVED`                                                                       | Candidate scalar spatial response                                       | Not insertable                                                   |
-| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `SILENT_INSERTION_ROUTE_CONDITIONAL_ONLY` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
+| Trace normalization / (P_{\rm trace_norm})       | `SYMBOLIC_PAIRED_DECLARATION_ATTEMPT` / `CONDITIONAL_ONLY` / `DECISION_SURFACE_AUDITED` / `SAFETY_LOAD_TESTED` / `NON_O_RESIDUAL_SOURCE_ROUTE_CONDITIONAL` / `REDUCED_BOUNDARY_SILENCE_ROUTE_CONDITIONAL` / `INSERTION_FAMILIES_FILTERED` / `REDUCED_SILENT_INSERTION_SURFACE_CONDITIONAL` / `AUDIT_ONLY` / `BLOCKED_FOR_PHYSICAL_USE` / `NOT_READY_FOR_INSERTION` | Branch-indexed candidate records for how scalar trace may be normalized | No branch selected; no Package B adoption; no insertion licensed; unsafe insertion families excluded; silent/inert survivor requires insertion law and safety theorem support |
 | (B_s/F_\zeta) insertion families                 | `DIRECT_INSERTION_REJECTED` / `SOURCE_CARRYING_INSERTION_REJECTED` / `BOUNDARY_LEAKING_INSERTION_REJECTED` / `MASS_SHIFTING_INSERTION_REJECTED` / `SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY` | Insertion-family exclusion sieve                                         | No insertion occurred; filters exclude unsafe families; silent/inert survivor requires insertion law and safety theorem support |
+| Silent/inert insertion route                     | `REDUCED_THEOREM_SURFACE_CONSTRUCTED` / `CONDITIONAL_ONLY` / `COVARIANT_LIFT_REQUIRED` / `INSERTION_LAW_REQUIRED` / `NOT_INSERTABLE` | Reduced silent/inert route theorem surface | Reduced profiles and closures exist. They are not a field-equation insertion law and not a covariant theorem. |
 | Safe trace membership / (\zeta_{B_s}\to T_\zeta) | `COMPATIBLE_IF_DECLARED` / `PRECONDITIONS_SHARPENED`                                                   | Candidate typed trace-sector membership surface                         | Not selected, declared, proven, or made active                   |
 | Trace-anchor Package B                           | `MINIMAL_PLAUSIBLE_TO_AUDIT` / `DECLARATION_ATTEMPT_CONDITIONAL_ONLY`                                  | Current audit package for trace-anchor choice surface                   | Not adopted, recommended, insertable, or parent-facing           |
 | Residual (\zeta/\kappa)                          | `RESIDUAL_NONENTRY_THEOREM_REQUIRED` / `NON_O_ROUTE_DEFINED` / `ZERO_INCIDENCE_CONDITION`              | Provisional double-count protection                                     | Non-O residual nonentry can be stated as i_res_metric=0 and i_res_source=0, but this is a theorem target, not a proof |
 | Source routing                                   | `SOURCE_NO_DOUBLE_COUNTING_REQUIRED` / `A_SECTOR_ONLY_ROLE_PURITY_CONDITION`                           | A-sector source protection; no ordinary mass duplication                | Ordinary source routing condition is i_A=1, i_Bs=0, i_zeta=0, i_kappa=0; not proved |
 | A-sector mass protection                         | `A_SECTOR_MASS_PROTECTION_REQUIRED` / `TRACE_MASS_NEUTRALITY_CONDITION`                                | M_A=M preservation; no independent trace-sector mass charge             | Q_trace must be zero, inert, compactly supported, or non-mass-carrying; not proved |
 | Boundary / exterior scalar silence               | `REDUCED_EXTERIOR_SILENCE_SURVIVES_CONDITIONALLY` / `BOUNDARY_SCALAR_SILENCE_REQUIRED` / `NOT_FULL_COVARIANT_THEOREM` | Boundary neutrality and exterior scalar silence targets                 | Reduced exterior scalar form phi=C0+C1/r derived; zero offset and zero charge imply phi=0; zero flux requires C1=0; no-shell condition requires J=0; conditions not yet derived from full theory |
-| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 55 filtering does not establish active-O necessity; O remains deferred unless the silent non-O insertion route fails or becomes obstructed |
+| No-overlap operator (O)                          | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                                               | Diagnostic labels only                                                  | Group 56 did not force active O. A reduced non-O silent route survives conditionally. O remains deferred unless the silent non-O insertion route fails or becomes obstructed. |
 | (J_V)                                            | `UNRESOLVED`                                                                                           | Vacuum-current theorem target                                           | Not a physical flux law                                          |
 | (J_{\rm sub}), (J_{\rm exch})                    | `THEOREM_TARGET` / role-level only                                                                     | Bookkeeping labels                                                      | Not physical currents                                            |
 | (\Sigma_V, R_V)                                  | role-level only                                                                                        | Exchange accounting targets                                             | Operators not derived                                            |
@@ -324,6 +327,38 @@ mass neutrality:
 
 Only a silent/inert insertion route survives conditionally. It remains an unproved theorem target, not insertion permission.
 
+Group 56 did not insert B_s/F_zeta. It constructed a reduced silent/inert theorem surface for the only insertion route that survived Group 55.
+
+Group 56 reduced silent-route construction:
+
+```text
+boundary-null profile:
+  W(r)=r^2(R-r)^2
+  W(R)=0
+  W'(R)=0
+
+charge-neutral internal profile:
+  rho(r)=rho0*(1-5r^2/(3R^2))
+  integral_0^R r^2*rho dr=0
+  rho(R/2)=7rho0/12
+
+exterior-tail silence:
+  phi_ext=C0+kQ/r
+  C0=0 and Q=0 imply phi_ext=0
+
+shell-neutral match:
+  phi_int=A*r^2(R-r)^2
+  phi_int(R)=0
+  phi_int'(R)=0
+  J=0
+
+reduced divergence-silent closure:
+  p_t=p_r+r*p_r'/2
+  D=p_r'+2(p_r-p_t)/r=0
+```
+
+These are reduced theorem-surface results. They do not license physical use.
+
 ## 4.1 What the Recent Trace-Anchor Work Learned
 
 The recent process advanced the program from a vague scalar spatial-response blocker to a sharply constrained trace-anchor declaration surface.
@@ -409,6 +444,19 @@ only a silent/inert insertion route survives conditionally;
 physical use remains blocked.
 ```
 
+Reduced silent-route constructive progress added:
+
+```text
+Group 56 added constructive reduced silent-route progress:
+  boundary-null profiles exist;
+  nontrivial charge-neutral internal profiles exist;
+  zero charge plus zero offset kills the exterior scalar tail;
+  boundary-null matching kills the reduced shell jump;
+  a reduced anisotropic closure can make the radial divergence diagnostic vanish;
+  the silent/inert route survives conditionally;
+  covariant lift and actual insertion law remain required.
+```
+
 Current result:
 
 ```text
@@ -436,6 +484,7 @@ Diagnostic witnesses do not reject the narrow candidate, but they block physical
 The non-O residual/source route survives conditionally, but no residual nonentry theorem, source no-double-counting theorem, or trace mass neutrality theorem is closed.
 Reduced exterior scalar silence survives conditionally, but full boundary neutrality, zero scalar charge, no-shell matching, and reduced-to-general lift are not proven.
 Insertion-family filtering is not insertion. The filters are necessary conditions, not safety proofs. The silent/inert survivor is not yet a field-equation term.
+The reduced silent-route construction is not insertion. It is not a covariant theorem. Reduced D=0 is not a Bianchi or parent-identity proof.
 Recombination is not opened.
 The parent equation remains not ready.
 The adopt/defer/reject decision has not been made by any script output.
@@ -785,6 +834,61 @@ No insertion occurred.
 
 ---
 
+## 5.11 Reduced Silent / Inert Insertion-Law Surface
+
+Group 56 constructed a reduced theorem surface for the silent/inert route that survived Group 55.
+
+Current result:
+
+```text
+SILENT_LAW_SURFACE_OPENED
+BOUNDARY_NULL_PROFILE_DERIVED
+CHARGE_NEUTRAL_PROFILE_DERIVED
+EXTERIOR_TAIL_ZERO_CONDITION_DERIVED
+SHELL_NEUTRAL_CONDITION_DERIVED
+DIVERGENCE_SILENT_CLOSURE_DERIVED
+SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY
+PHYSICAL_USE_BLOCKED
+```
+
+Reduced construction:
+
+```text
+boundary-null profile:
+  W(r)=r^2(R-r)^2
+  W(R)=0
+  W'(R)=0
+
+charge-neutral profile:
+  rho(r)=rho0*(1-5r^2/(3R^2))
+  integral_0^R r^2*rho dr=0
+
+exterior silence:
+  phi_ext=C0+kQ/r
+  C0=0 and Q=0 imply phi_ext=0
+
+shell neutrality:
+  phi_int=A*r^2(R-r)^2
+  J=0 when matched to exterior zero
+
+divergence silence:
+  p_t=p_r+r*p_r'/2
+  D=p_r'+2(p_r-p_t)/r=0
+```
+
+Current meaning:
+
+```text
+The silent/inert route now has a concrete reduced theorem surface.
+It is not inserted.
+It is not covariant yet.
+It does not prove source safety.
+It does not prove full boundary/mass safety.
+It does not prove the parent divergence identity.
+```
+
+---
+
 # 6. Residual-Control Status
 
 The current double-count load is
@@ -933,6 +1037,14 @@ O as shell-source generator
 O as dark-sector patch
 ```
 
+Group 56 status:
+
+```text
+Active O necessity is not established.
+A reduced non-O silent route survives conditionally.
+Active O should not be constructed unless covariant lift or insertion-law attempts fail or become obstructed.
+```
+
 ---
 
 # 8. Source, Current, Boundary, and Correction Status
@@ -997,6 +1109,8 @@ A-sector-only source route remains:
 ```
 
 Insertion families where (B_s), (\zeta), or (\kappa) carry ordinary source load are rejected.
+
+Group 56 charge-neutral profile is not ordinary source permission. A nontrivial internal profile with zero net scalar charge still requires a source no-double-counting theorem.
 
 The reduced A-sector mass coin is preserved:
 
@@ -1128,6 +1242,29 @@ A surviving insertion route must satisfy:
   flux=0
   J=0
 ```
+
+Group 56 reduced boundary strengthening:
+
+```text
+W(R)=0 and W'(R)=0 for W=r^2(R-r)^2.
+phi_ext=C0+kQ/r vanishes when C0=0 and Q=0.
+matching phi_int=A*r^2(R-r)^2 to exterior zero gives J=0.
+```
+
+This is reduced shell/tail neutrality, not full boundary theorem closure.
+
+Group 56 reduced divergence result:
+
+```text
+for reduced spherical anisotropic stress,
+  D=p_r'+2(p_r-p_t)/r.
+choosing
+  p_t=p_r+r*p_r'/2
+gives
+  D=0.
+```
+
+This is not a covariant Bianchi proof and does not open parent closure.
 
 ## 8.4 Correction Tensors
 
@@ -1427,6 +1564,28 @@ Group 55 excludes unsafe insertion families. It does not construct the surviving
 
 Do not treat filters as safety theorems. Do not treat rejected insertion families as total rejection of the retained audit candidate.
 
+## 10.12 Do Not Treat Reduced Silent Surface as Insertion
+
+Do not shorten:
+
+```text
+reduced silent/inert route survives conditionally as theorem surface
+```
+
+into:
+
+```text
+B_s/F_zeta inserted,
+silent insertion law completed,
+covariant theorem proven,
+Bianchi identity proven,
+parent equation ready.
+```
+
+Group 56 constructed reduced profiles and closures. It did not insert them into the field equation.
+
+Do not treat the internal silent profile as ordinary matter source. Do not treat reduced D=0 as covariant divergence closure.
+
 ---
 
 # 11. Current Recovery Scorecard
@@ -1534,6 +1693,16 @@ Group 55 insertion status:
   Only silent/inert route survives conditionally.
   No insertion occurred.
 
+Group 56 silent-route status:
+  reduced silent/inert theorem surface constructed.
+  W=r^2(R-r)^2 gives W(R)=W'(R)=0.
+  rho=rho0*(1-5r^2/(3R^2)) has zero net scalar charge.
+  C0=0 and Q=0 imply phi_ext=0.
+  boundary-null match gives J=0.
+  p_t=p_r+r*p_r'/2 gives reduced D=0.
+  Route survives conditionally.
+  No insertion occurred.
+
 Package B status:
   minimal plausible-to-audit only.
 
@@ -1550,11 +1719,14 @@ Still not ready:
   Package B adoption,
   B_s/F_zeta insertion,
   active O,
+  covariant lift,
   silent/inert insertion law,
   count-once trace theorem,
   residual nonentry theorem,
   source no-double-counting theorem,
+  source no-double-counting for internal silent profile,
   boundary scalar-silence theorem,
+  full boundary/mass safety,
   trace mass neutrality theorem,
   trace-sector mass neutrality theorem,
   A-sector mass protection theorem,
@@ -1562,13 +1734,15 @@ Still not ready:
   zero asymptotic offset condition,
   no-shell / matching neutrality theorem,
   reduced-to-general boundary theorem lift,
+  covariant divergence identity / parent compatibility,
   recombination,
   parent field equation.
 
 Next honest moves:
-  silent/inert insertion law attempt;
-  active-O necessity audit only if silent non-O route fails or is obstructed;
-  parent divergence/identity obstruction audit only after insertion route status is clearer.
+  covariant lift audit for the reduced silent route;
+  actual silent/inert insertion law attempt;
+  divergence / parent obstruction audit after insertion-law status is clearer;
+  active-O necessity audit only if the non-O silent route fails.
 
 Forbidden immediate moves:
   B_s/F_zeta insertion;
@@ -2194,6 +2368,62 @@ no insertion occurred.
 
 ---
 
+## A.15 Reduced Silent / Inert Insertion-Law Surface
+
+Group 56 constructed a reduced theorem surface for the silent/inert route.
+
+Stable outcome:
+
+```text
+SILENT_LAW_SURFACE_OPENED
+BOUNDARY_NULL_PROFILE_DERIVED
+CHARGE_NEUTRAL_PROFILE_DERIVED
+EXTERIOR_TAIL_ZERO_CONDITION_DERIVED
+SHELL_NEUTRAL_CONDITION_DERIVED
+DIVERGENCE_SILENT_CLOSURE_DERIVED
+SILENT_INSERTION_ROUTE_SURVIVES_CONDITIONALLY
+PHYSICAL_USE_BLOCKED
+```
+
+Reduced construction:
+
+```text
+W(r)=r^2(R-r)^2:
+  W(R)=0
+  W'(R)=0
+
+rho(r)=rho0*(1-5r^2/(3R^2)):
+  integral_0^R r^2*rho dr=0
+  rho(R/2)=7rho0/12
+
+exterior:
+  phi_ext=C0+kQ/r
+  C0=0 and Q=0 imply phi_ext=0
+
+matching:
+  phi_int=A*r^2(R-r)^2
+  J=0 when matched to exterior zero
+
+divergence:
+  p_t=p_r+r*p_r'/2
+  D=p_r'+2(p_r-p_t)/r=0
+```
+
+Non-results:
+
+```text
+no B_s/F_zeta insertion;
+no covariant theorem;
+no source no-double-counting proof;
+no full boundary/mass theorem;
+no Bianchi / parent identity proof;
+no active O construction;
+no recombination;
+no parent closure.
+```
+
+---
+
 # Appendix B — Provenance Compression
 
 The following provenance is retained only to identify the audit lineage of the current trace-anchor status. It is not part of the main snapshot logic.
@@ -2286,6 +2516,17 @@ Group 55:
   Only the silent/inert insertion route survives conditionally as an unproved theorem target.
   No insertion law exists. No insertion occurred.
   Physical use, recombination, and parent closure remained closed.
+
+Group 56:
+  reduced silent/inert insertion-law theorem surface was constructed.
+  Boundary-null profile W=r^2(R-r)^2 was verified with W(R)=W'(R)=0.
+  Nontrivial charge-neutral profile rho=rho0*(1-5r^2/(3R^2)) was verified with integral r^2*rho dr=0.
+  Exterior-tail condition phi_ext=C0+kQ/r was verified to vanish for C0=0 and Q=0.
+  Boundary-null matching to exterior zero gave J=0.
+  Reduced anisotropic closure p_t=p_r+r*p_r'/2 gave D=0.
+  The silent/inert route survived conditionally as a reduced theorem target.
+  Covariant lift, actual insertion law, source safety, boundary/mass safety, and divergence identity support remained required.
+  No insertion, active O, recombination, or parent closure was opened.
 ```
 
 Current combined outcome:
@@ -2293,15 +2534,15 @@ Current combined outcome:
 ```text
 The trace-anchor surface is visible, branch-safe, decision-surface audited,
 safety-load tested, residual/source theorem-route sharpened, reduced
-boundary/scalar-silence theorem-surface derived, and insertion families filtered.
+boundary/scalar-silence theorem-surface derived, insertion-family filtered,
+and reduced silent/inert theorem-surface constructed.
 The conditional paired attempt can be retained only as audit material.
-The non-O residual/source route survives conditionally as an unproved theorem target.
-The reduced exterior scalar-silence route survives conditionally.
-The silent/inert insertion route survives conditionally as an unproved theorem target.
+Unsafe insertion families are excluded.
+The silent/inert route survives conditionally with concrete reduced profiles and closures.
 Active O necessity is not established.
 It is not adopted.
 It is not insertable.
-It does not close full residual/source/boundary safety.
+It does not close covariant source/boundary/mass/divergence safety.
 It does not construct O.
 It does not open recombination.
 It does not open the parent equation.
