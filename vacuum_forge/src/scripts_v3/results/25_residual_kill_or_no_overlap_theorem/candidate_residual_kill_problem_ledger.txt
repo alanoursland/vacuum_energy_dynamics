@@ -1,0 +1,280 @@
+
+========================================================================================================================
+Candidate Residual Kill Problem Ledger
+========================================================================================================================
+[INFO] Archive dependency check:
+  - g20_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g21_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g23_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g24_count_once_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g24_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Residual kill / no-overlap problem
+========================================================================================================================
+Question:
+
+  What exactly must be killed, made inert, or projected out?
+
+Reference discipline:
+
+  Group 25 attacks the count-once bottleneck from Group 24.
+  zeta may enter B_s only if residual zeta/kappa metric trace does not re-enter.
+  residual kill, inertness, and active O remain theorem targets.
+  This script opens the ledger and proves none of them.
+
+[governance_assessments]
+[INFO] residual kill / no-overlap problem ledger opened -- collecting residual trace objects and inherited count-once burden
+
+========================================================================================================================
+Case 1: Residual trace ledger
+========================================================================================================================
+Trace entries:
+
+  zeta_to_Bs = zeta_to_Bs
+  zeta_residual_metric = zeta_residual_metric
+  kappa_metric = kappa_metric
+  epsilon_vac_metric = epsilon_vac_metric
+  e_kappa_metric = e_kappa_metric
+  O_target = O_target
+
+Total ordinary metric trace ledger:
+
+  T_total = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric + zeta_to_Bs
+
+Double-count load:
+
+  L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+
+Safe target:
+
+  T_safe = zeta_to_Bs
+
+Residual-control gap:
+
+  gap = -O_target + e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+
+Interpretation:
+
+  O_target does not automatically cancel L_double.
+  The group must derive kill, inertness, or real no-overlap before the gap can close.
+
+[derived_results]
+[PASS] residual trace total ledger stated -- T_total = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric + zeta_to_Bs
+[OBLIGATION] double-count load ledger stated -- L_double = e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+[OBLIGATION] residual-control gap stated -- gap = -O_target + e_kappa_metric + epsilon_vac_metric + kappa_metric + zeta_residual_metric
+
+========================================================================================================================
+Case 2: Residual object inventory
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R0: inserted scalar spatial trace
+------------------------------------------------------------------------------------------------------------------------
+Symbol: zeta_to_Bs
+Role: portion of zeta allowed to enter ordinary metric scalar trace through B_s/F_zeta
+[DEFER] R0: inserted scalar spatial trace: THEOREM_TARGET
+Required control: allowed only as count-once insertion target
+Forbidden use: must not coexist with residual zeta/kappa metric trace unless no-overlap is derived
+
+------------------------------------------------------------------------------------------------------------------------
+R1: residual zeta metric trace
+------------------------------------------------------------------------------------------------------------------------
+Symbol: zeta_residual_metric
+Role: leftover zeta-like metric trace after B_s insertion
+[OBLIGATION] R1: residual zeta metric trace: UNRESOLVED
+Required control: must be zero, strictly non-metric/inert/non-reentering, or removed by derived O
+Forbidden use: must not survive as ordinary metric trace
+
+------------------------------------------------------------------------------------------------------------------------
+R2: kappa metric trace
+------------------------------------------------------------------------------------------------------------------------
+Symbol: kappa_metric
+Role: kappa-like trace channel that could restore killed residual trace
+[OBLIGATION] R2: kappa metric trace: UNRESOLVED
+Required control: must be zero, diagnostic-only, strictly non-metric/inert/non-reentering, or removed by derived O
+Forbidden use: must not restore killed residual trace or become physical scalar by areal diagnostic
+
+------------------------------------------------------------------------------------------------------------------------
+R3: epsilon_vac_config metric/source channel
+------------------------------------------------------------------------------------------------------------------------
+Symbol: epsilon_vac_metric
+Role: configuration residual that could become hidden metric/source channel
+[OBLIGATION] R3: epsilon_vac_config metric/source channel: UNRESOLVED
+Required control: must be absent from ordinary metric/source trace or proven strictly inert
+Forbidden use: must not become extra metric/source channel
+
+------------------------------------------------------------------------------------------------------------------------
+R4: e_kappa metric/source channel
+------------------------------------------------------------------------------------------------------------------------
+Symbol: e_kappa_metric
+Role: kappa energy-like label that could become hidden metric/source channel
+[OBLIGATION] R4: e_kappa metric/source channel: UNRESOLVED
+Required control: must be absent from ordinary metric/source trace or proven strictly inert
+Forbidden use: must not reintroduce kappa trace through energy/source language
+
+------------------------------------------------------------------------------------------------------------------------
+R5: no-overlap operator target
+------------------------------------------------------------------------------------------------------------------------
+Symbol: O
+Role: possible future operator that removes or separates overlap
+[DEFER] R5: no-overlap operator target: THEOREM_TARGET
+Required control: requires domain, codomain, kernel, image, idempotence/composition, divergence, boundary, source, mass, and scalar-tail behavior
+Forbidden use: must not erase overlap by name
+
+[governance_assessments]
+[PASS] residual object inventory populated -- 6 residual objects classified
+
+========================================================================================================================
+Case 3: Residual control route ledger
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: derived residual kill
+------------------------------------------------------------------------------------------------------------------------
+Route: L_double = 0 by structural residual-kill law
+[DEFER] C1: derived residual kill: THEOREM_TARGET
+Allowed if: kill law is derived before recovery and preserves boundary/source/support guardrails
+Blocked if: residuals are set to zero by declaration
+
+------------------------------------------------------------------------------------------------------------------------
+C2: strict non-metric / inert residual status
+------------------------------------------------------------------------------------------------------------------------
+Route: entries in L_double are non-metric, inert, and non-reentering
+[DEFER] C2: strict non-metric / inert residual status: THEOREM_TARGET
+Allowed if: no metric, source, boundary, support, recovery, repair, or parent reentry is proven
+Blocked if: non-metric means merely ignored
+
+------------------------------------------------------------------------------------------------------------------------
+C3: active no-overlap operator
+------------------------------------------------------------------------------------------------------------------------
+Route: O projects/removes overlap through derived operator structure
+[DEFER] C3: active no-overlap operator: THEOREM_TARGET
+Allowed if: full O structure and compatibility laws are derived
+Blocked if: O is used as eraser by name
+
+------------------------------------------------------------------------------------------------------------------------
+C4: diagnostic-only residual bookkeeping
+------------------------------------------------------------------------------------------------------------------------
+Route: residuals remain diagnostic and do not enter ordinary metric/source equations
+[INFO] C4: diagnostic-only residual bookkeeping: SAFE_IF
+Allowed if: diagnostic status is fixed before recovery and no reentry paths exist
+Blocked if: diagnostics later become metric/source/support/recovery parameters
+
+------------------------------------------------------------------------------------------------------------------------
+C5: recovery-selected residual silence
+------------------------------------------------------------------------------------------------------------------------
+Route: residuals are killed or made inert because recovery would otherwise fail
+[FAIL] C5: recovery-selected residual silence: REJECTED
+Allowed if: never
+Blocked if: Schwarzschild, gamma, AB, B=1/A, PPN, or parent-fit selects residual status
+
+[governance_assessments]
+[PASS] residual control routes classified -- 5 residual control routes classified
+
+========================================================================================================================
+Case 4: Rejected residual-control shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+S1: residual kill by declaration
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: declare zeta_residual_metric = 0
+Forbidden use: residual is set to zero without a structural law
+[FAIL] S1: residual kill by declaration: REJECTED
+Consequence: count-once theorem is smuggled
+
+------------------------------------------------------------------------------------------------------------------------
+S2: kappa kill by declaration
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: declare kappa_metric = 0
+Forbidden use: kappa trace is killed without diagnostic/inertness/no-overlap proof
+[FAIL] S2: kappa kill by declaration: REJECTED
+Consequence: kappa may later restore residual trace
+
+------------------------------------------------------------------------------------------------------------------------
+S3: epsilon / e_kappa ignored
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: ignore epsilon_vac_config or e_kappa
+Forbidden use: configuration or energy labels are treated as inert without no-reentry conditions
+[FAIL] S3: epsilon / e_kappa ignored: REJECTED
+Consequence: hidden metric/source channel remains possible
+
+------------------------------------------------------------------------------------------------------------------------
+S4: O eraser
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: use O to erase overlap by name
+Forbidden use: O removes residual load without domain/kernel/image/divergence/boundary/source structure
+[FAIL] S4: O eraser: REJECTED
+Consequence: active no-overlap theorem is smuggled
+
+------------------------------------------------------------------------------------------------------------------------
+S5: recovery-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose residual kill/inertness from recovery target
+Forbidden use: AB, B=1/A, gamma_like, PPN, Schwarzschild, or parent-fit determines residual status
+[FAIL] S5: recovery-selected residual status: REJECTED
+Consequence: recovery constructs residual control
+
+------------------------------------------------------------------------------------------------------------------------
+S6: boundary/source repair residual status
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: choose residual status to cancel boundary/source failure
+Forbidden use: residual kill hides scalar tail, current flux, A-tail, shell, or source duplication
+[FAIL] S6: boundary/source repair residual status: REJECTED
+Consequence: residual cleanup becomes repair route
+
+------------------------------------------------------------------------------------------------------------------------
+S7: parent closure from residual cleanup
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: open parent equation after residual ledger is stated
+Forbidden use: residual-control audit is treated as parent identity
+[FAIL] S7: parent closure from residual cleanup: REJECTED
+Consequence: parent equation is smuggled
+
+[counterexamples]
+[FAIL] residual-control shortcuts rejected -- kill by declaration, ignored residuals, O eraser, recovery-selected status, boundary/source repair, and parent shortcut remain rejected
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The residual kill problem ledger fails if a later script allows:
+
+1. residual zeta_metric killed by declaration
+2. kappa_metric killed by declaration
+3. epsilon_vac_config or e_kappa treated as inert without conditions
+4. O erases overlap by name
+5. residual status chosen from recovery
+6. residual status chosen from boundary/scalar failure
+7. residual status chosen from source compatibility needs
+8. residual re-enters through support/matching/layer language
+9. residual re-enters through source language
+10. H/dark/exchange/curvature/current object supplies residual kill
+11. parent equation opens from residual cleanup
+
+[governance_assessments]
+[OBLIGATION] residual kill problem failure controls stated -- future scripts must not pretend residuals are gone without law, inertness, or real O
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Group 25 opening result:
+
+  The residual objects that must be controlled are explicit.
+  The double-count load is explicit.
+  The safe trace target is zeta_to_Bs alone.
+  Residual kill remains theorem-targeted.
+  Non-metric / inert residual status remains theorem-targeted.
+  Active no-overlap O remains theorem-targeted.
+  B_s/F_zeta insertion remains blocked unless residual control is derived or explicitly left open.
+  Parent equation remains not ready.
+
+Possible next script:
+  candidate_metric_trace_residual_classification.py
+
+Tiny goblin label:
+  No echo coin. No ghost trace. No fake eraser.
+
+[governance_assessments]
+[PASS] residual kill problem ledger complete -- residual-control target explicit; kill/inertness/O theorem remains open

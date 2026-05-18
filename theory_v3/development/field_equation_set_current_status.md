@@ -1,8 +1,8 @@
-# Field Equation Set — Snapshot After Group 60
+# Field Equation Set — Snapshot After Group 61
 
 ## What This Document Is
 
-This is a quick-reference snapshot of the current field-equation development state after Group 60.
+This is a quick-reference snapshot of the current field-equation development state after Group 61.
 
 It is not a development log, not a proof archive, not a complete license ledger, and not a covariant parent theory. Detailed arguments, audits, candidate inventories, proof capsules, and rejected-route records live elsewhere.
 
@@ -30,6 +30,8 @@ The only surviving reduced insertion route is silent/inert and conditional.
 Finite transition-layer work has produced a weighted-neutral reduced layer construction and a narrowed transition-response survivor.
 
 After Group 60, the surviving transition-response candidate is stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, and non-insertable.
+
+After Group 61, source safety for the stress-only survivor was audited but not proven. Direct source coupling, mass-coupled routes, and D_layer=0-as-source-safety were rejected. A mass-moment burden, trace/mass closure tension, and exchange accounting gap were identified. The surviving candidate is source-independent and stress-only, and remains audit-only.
 
 No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
 ```
@@ -69,6 +71,8 @@ The trace-anchor decision surface is now much sharper than before. The overloade
 with shared record-local \(\zeta), symbolic \(d), conditioned and unfixed numeric \(d), and explicit downstream caveats. This attempt survives only as a conditional, caveated, pre-adoption candidate. It is not a branch choice, not Package B adoption, not an insertion law, not active \(O), not residual/source/boundary safety, not recombination, and not parent closure.
 
 Groups 51–60 did not adopt the trace-normalization candidate. They tested it, filtered unsafe routes, and built reduced theorem surfaces around the only route that still survives: silent/inert, non-source-carrying, non-boundary-leaking, non-mass-shifting, non-trace-duplicating insertion. The finite-layer work then narrowed the surviving transition-response candidate to a stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only object. This is progress, but it is not physical-use permission.
+
+Group 61 audited source safety for that candidate. Direct ordinary-source coupling was rejected by role purity (lambda=0 required). A mass-moment burden was identified: the stress-only layer has a nonzero reduced moment E_layer, and a mass-coupled interpretation gives Delta_M=beta*E_layer, which is unsafe unless a later theorem proves inertness. A trace/mass closure tension was found: trace-free and active-mass-neutral conditions together force p_r+2p_t=0, which the closure-supported layer does not satisfy generically. Exchange accounting showed that D_layer=0 alone is only internal layer balance, not source safety. The source-independent stress-only route is retained as audit material, but source safety is not closed.
 
 ---
 
@@ -114,9 +118,10 @@ Finite transition layer:
   Not insertion.
   Not covariant lift.
 
-Transition response after Group 60:
+Transition response after Group 61:
   candidate survivor only.
-  Stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, non-insertable.
+  Source-independent, stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, non-insertable.
+  Source safety audited but not proven.
 ```
 
 ---
@@ -245,7 +250,8 @@ Recovery may audit; recovery may not construct.
 | Silent/inert insertion route       | `REDUCED_THEOREM_SURFACE_CONSTRUCTED` / `CONDITIONAL_ONLY`                   | Reduced silent/inert route surface                    | Not insertion law; not covariant theorem                                                   |
 | Finite transition layer            | `LAYER_PROBE_OPENED` / `CONDITIONAL_ONLY`                                    | Finite-layer unification probe                        | Residues are clues, not terms; weighted neutrality required                                |
 | Weighted-neutral finite layer      | `WEIGHTED_NEUTRAL_PROFILE_DERIVED` / `CONDITIONAL_ONLY`                      | Reduced finite-layer construction                     | Not source law, not insertion law, not covariant theorem                                   |
-| Transition response candidate      | `STRICT_TERM_EXCLUSION_SIEVE_APPLIED` / `TERM_SURVIVES_NARROWLY`             | Transition-response audit survivor                    | Stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only |
+| Transition response candidate      | `STRICT_TERM_EXCLUSION_SIEVE_APPLIED` / `SOURCE_COUPLING_REJECTED` / `SOURCE_SAFETY_NOT_CLOSED` / `TERM_SURVIVES_NARROWLY` | Transition-response source-safety audit survivor       | Source-independent, stress-only, nonfree, audit-only; source safety not proven            |
+| Source-safety audit (transition)   | `SOURCE_AUDIT_OPENED` / `MASS_MOMENT_BURDEN_FOUND` / `TRACE_MASS_TENSION_FOUND` / `CONSERVATION_EXCHANGE_FILTER_APPLIED` | Source-safety accounting surface                      | Not source-safe; not mass-safe; not trace-safe; not covariant yet                          |
 | No-overlap operator \(O\)           | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                     | Diagnostic labels only                                | \(N_w\) is not active \(O\)                                                                   |
 | \(J_V\)                             | `UNRESOLVED`                                                                 | Vacuum-current theorem target                         | Not a physical flux law                                                                    |
 | \(J_{\rm sub}, J_{\rm exch}\)       | `THEOREM_TARGET` / role-level only                                           | Bookkeeping labels                                    | Not physical currents                                                                      |
@@ -280,6 +286,10 @@ boundary neutrality theorem
 exterior scalar silence theorem
 support / matching neutrality theorem
 finite-layer source safety theorem
+transition-response source-safety theorem
+transition-response mass-moment theorem
+trace/mass closure theorem or obstruction
+source-exchange conservation identity
 transition-response stress/energy theorem
 covariant lift
 parent divergence safety
@@ -288,7 +298,7 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-## 5.1 What Groups 51–60 Added
+## 5.1 What Groups 51–61 Added
 
 The recent work did not solve recombination. It refined the blocker into narrower theorem surfaces and candidate survivors.
 
@@ -307,6 +317,7 @@ Current learned structure:
 10. Weighted-neutral finite-layer construction solves the reduced weighted-neutrality blocker.
 11. Transition-term candidates have been filtered.
 12. Group 60 narrows the survivor to a stress-only localized weighted-neutral-generated closure-supported transition response.
+13. Group 61 sharpens source safety: direct source coupling rejected; mass-moment burden identified; trace/mass closure tension found; exchange-only accounting insufficient; source-independent stress-only route retained as audit material only.
 ```
 
 Current non-result:
@@ -322,6 +333,8 @@ The finite transition layer is not a parent law.
 N_w is not active O.
 Reduced D=0 is not a covariant Bianchi proof.
 The transition response is not inserted.
+Source safety is not proven.
+The source-independent stress-only route is not inserted.
 The parent equation remains not ready.
 ```
 
@@ -785,7 +798,9 @@ finite-layer diagnostic opened;
 weighted-neutrality blocker exposed;
 weighted-neutral reduced construction found;
 transition-term candidate surface filtered;
-strict sieve narrowed survivor to stress-only candidate.
+strict sieve narrowed survivor to stress-only candidate;
+source safety audited but not proven;
+source-independent stress-only route retained as audit material.
 ```
 
 No physical-use route is opened.
@@ -943,7 +958,7 @@ No insertion occurred.
 
 ---
 
-# 11. Transition-Response Candidate After Group 60
+# 11. Transition-Response Candidate After Group 61
 
 ## 11.1 Candidate-Term Audit Before Group 60
 
@@ -1138,9 +1153,9 @@ E_layer =
 (3465*(7R^2+ell^2)^2)
 ```
 
-## 11.3 Current Survivor
+## 11.3 Group 60 Survivor
 
-The surviving transition-response candidate is:
+The Group 60 surviving transition-response candidate is:
 
 ```text
 stress-only;
@@ -1176,6 +1191,102 @@ It is not source-safe yet.
 It is not covariant yet.
 It does not prove a Bianchi identity.
 It does not open the parent equation.
+```
+
+## 11.4 Group 61 Source-Safety Audit
+
+Source safety for the Group 60 stress-only survivor was audited and sharpened but not proven.
+
+Current status:
+
+```text
+SOURCE_AUDIT_OPENED
+ROLE_SEPARATION_APPLIED
+SOURCE_COUPLING_REJECTED
+SOURCE_NEUTRAL_AMPLITUDE_CONDITIONAL
+MASS_MOMENT_BURDEN_FOUND
+MASS_COUPLED_ROUTE_UNSAFE
+TRACE_MASS_TENSION_FOUND
+CONSERVATION_EXCHANGE_FILTER_APPLIED
+SOURCE_SAFETY_NOT_CLOSED
+AUDIT_CANDIDATE_RETAINED
+PHYSICAL_USE_BLOCKED
+```
+
+Role separation:
+
+```text
+source residual:
+  S_M*(i_A+i_trans_src-1)
+
+trace residual:
+  T_zeta*(i_Bs+i_res+i_trans_trace-1)
+
+safe source incidence:
+  i_A=1
+  i_trans_src=0
+
+rejected:
+  source carrying;
+  source repair (i_A=0, i_trans_src=1);
+  trace carrying;
+  residual reentry.
+```
+
+Source-coupled amplitude test:
+
+```text
+p0=p_free+lambda*rho_M
+d(p_r)/d(rho_M)=eta^2*lambda
+lambda != 0 rejected as direct source dependence.
+lambda=0 required; p0=p_free remains underived.
+```
+
+Mass-moment burden:
+
+```text
+E_layer =
+256*ell*p0*(49R^4+58R^2*ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+
+Delta_M=beta*E_layer
+beta != 0 blocked.
+Weighted scalar neutrality is not mass safety.
+```
+
+Trace/mass closure tension:
+
+```text
+trace-free: u=p_r+2p_t
+active-mass-neutral: u=-(p_r+2p_t)
+both hold only if p_r+2p_t=0.
+closure-supported layer does not satisfy this generically.
+```
+
+Exchange accounting:
+
+```text
+D_total=D_A+D_layer+J_exchange
+D_layer=0 is internal balance only.
+D_layer=0 is not source safety.
+D_layer=0 is not covariant conservation.
+J_exchange=-(D_A+D_layer) rejected as repair.
+```
+
+Current meaning:
+
+```text
+Source-independent stress-only transition response retained as audit material.
+Direct source coupling is dead.
+Mass coupling is unsafe.
+Trace/mass closure has tension.
+D_layer=0 is not enough.
+Not inserted.
+Not source-safe yet.
+Not mass-safe yet.
+Not trace-safe yet.
+Not covariant yet.
 ```
 
 ---
@@ -1236,6 +1347,16 @@ Clean incidence condition:
 
 This is diagnostic only. It does not prove residual nonentry. It shows that residual \(\zeta/\kappa\) metric reentry remains a theorem target before physical use.
 
+Transition-source exchange note:
+
+```text
+D_total=D_A+D_layer+J_exchange.
+D_layer=0 is internal transition-layer balance.
+It does not prove source safety for the transition response.
+It does not prove covariant conservation.
+J_exchange=-(D_A+D_layer) is rejected as repair.
+```
+
 ---
 
 # 13. No-Overlap Status
@@ -1280,6 +1401,7 @@ The reduced boundary/scalar-silence route did not force active O.
 Insertion-family filtering did not establish active-O necessity.
 Finite-layer diagnostics provide a non-O route to study boundary transition terms.
 N_w[f] is a reduced weighted-neutralizer, not active O.
+Source-safety audit confirms: source-independent route is non-O and does not require active O construction.
 ```
 
 Rejected uses of \(O):
@@ -1375,6 +1497,15 @@ Source safety can be stated, but is not proven.
 A source-repair case may look algebraically clean, but remains rejected by role purity.
 ```
 
+Group 61 source-coupled amplitude:
+
+```text
+p0=p_free+lambda*rho_M
+d(p_r)/d(rho_M)=eta^2*lambda
+lambda=0 required by role purity.
+Source-independent amplitude p0=p_free is underived.
+```
+
 ## 14.2 A-Sector Mass Protection
 
 The reduced A-sector mass coin is preserved:
@@ -1410,10 +1541,25 @@ Weighted-neutral layer result:
 Q_weighted=0 gives Delta_M=0.
 ```
 
+Transition-response mass-moment burden:
+
+```text
+E_layer =
+256*ell*p0*(49R^4+58R^2*ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+
+Delta_M=beta*E_layer
+beta != 0 is unsafe.
+Mass-coupled route blocked without theorem.
+Weighted scalar neutrality is not mass safety.
+```
+
 Current meaning:
 
 ```text
 Weighted neutrality avoids the reduced charge-driven mass-shift diagnostic.
+Stress-only transition response carries a mass-moment burden that is not resolved by weighted neutrality.
 It does not prove source safety or covariant mass neutrality.
 ```
 
@@ -1465,6 +1611,7 @@ projection M_ext neutrality
 support / compactness theorem
 far-zone scalar-tail exclusion
 finite-layer source neutrality
+transition-response mass/trace neutrality theorem
 reduced-to-general theorem lift
 ```
 
@@ -1500,6 +1647,45 @@ J_sub pure-wind neutrality theorem
 J_exch active exchange theorem
 ordinary matter decoupling
 mass and scalar neutrality
+```
+
+## 14.6 Transition Stress Source/Mass Accounting
+
+The transition-response stress components u, p_r, p_t carry accounting burdens not resolved by reduced-layer closure alone.
+
+Trace-free condition:
+
+```text
+u=p_r+2p_t
+```
+
+Active-mass-neutral condition:
+
+```text
+u=-(p_r+2p_t)
+```
+
+Both conditions can hold simultaneously only if:
+
+```text
+p_r+2p_t=0
+```
+
+The closure-supported layer does not satisfy this generically.
+
+Exchange accounting:
+
+```text
+D_total=D_A+D_layer+J_exchange
+D_A=0, D_layer=0, J_exchange=0 is the safe reduced diagnostic case.
+D_layer=0 alone is internal balance only.
+J_exchange=-(D_A+D_layer) is rejected as repair.
+```
+
+Current rule:
+
+```text
+Transition-response stress accounting, mass-moment burden, trace/mass closure tension, and exchange conservation must be resolved before any physical-use license.
 ```
 
 ## 14.5 Correction Tensors
@@ -1697,7 +1883,25 @@ stress closure terms
 
 Any source load must be explicit, derived, and auditable.
 
-## 16.6 Do Not Open the Parent Equation Early
+## 16.6 Do Not Treat the Source-Safety Audit as Source Safety
+
+Group 61 audited source safety but did not prove it.
+
+Do not treat any of the following as source safety:
+
+```text
+source-independent amplitude (lambda=0);
+role separation applied;
+reduced D_layer=0;
+forced exchange cancellation;
+weighted scalar neutrality.
+```
+
+Source safety requires a theorem showing the transition response does not duplicate ordinary source load, does not shift the A-sector mass, does not carry trace payload, and does not violate covariant conservation.
+
+That theorem does not exist yet.
+
+## 16.7 Do Not Open the Parent Equation Early
 
 The parent equation is not ready.
 
@@ -1733,7 +1937,7 @@ Weighted neutrality is not source safety.
 | Reduced exterior scalar silence               | `CONDITIONAL REDUCED THEOREM SURFACE`         |
 | Silent/inert route                            | `CONDITIONAL REDUCED THEOREM SURFACE`         |
 | Weighted-neutral finite layer                 | `REDUCED CONSTRUCTION / NOT INSERTABLE`       |
-| Group 60 transition response                  | `STRESS-ONLY AUDIT SURVIVOR / NOT INSERTABLE` |
+| Group 61 transition response                  | `SOURCE-INDEPENDENT STRESS-ONLY / SOURCE SAFETY NOT CLOSED / NOT INSERTABLE` |
 | Vector curl/curl structure                    | `STRUCTURAL / COEFFICIENT MISSING`            |
 | Tensor TT radiation structure                 | `STRUCTURAL / COUPLING MISSING`               |
 | Scalar breathing radiation                    | `REJECTED`                                    |
@@ -1823,7 +2027,7 @@ Group 60 transition-response status:
   eta^2 rejected as scalar response, retained only as stress-like basis;
   constants/tuning/source repair/trace carrying/radial-only stress rejected.
 
-  Surviving candidate:
+  Group 60 surviving candidate:
     stress-only;
     localized;
     weighted-neutral-generated;
@@ -1831,6 +2035,26 @@ Group 60 transition-response status:
     nonfree;
     audit-only;
     non-insertable.
+
+Group 61 source-safety audit status:
+  direct source coupling (lambda!=0) rejected;
+  source-repair route (i_A=0, i_trans_src=1) rejected by role purity;
+  lambda=0 required; p0=p_free underived;
+  mass-moment burden: Delta_M=beta*E_layer; beta!=0 unsafe;
+  trace/mass closure tension: p_r+2p_t=0 required but not satisfied generically;
+  D_layer=0 is internal balance only, not source safety;
+  forced exchange cancellation rejected.
+
+  Group 61 surviving candidate:
+    source-independent;
+    stress-only;
+    localized;
+    weighted-neutral-generated;
+    closure-supported;
+    nonfree;
+    audit-only;
+    non-insertable.
+    Source safety not proven.
 
 O status:
   not constructed;
@@ -1847,6 +2071,10 @@ Still not ready:
   source protection theorem;
   boundary/scalar-silence theorem;
   finite-layer source safety theorem;
+  transition-response source-safety theorem;
+  transition-response mass-moment theorem;
+  trace/mass closure theorem or obstruction;
+  source-exchange conservation identity;
   transition-response stress/energy theorem;
   covariant lift;
   recombination;
@@ -1854,9 +2082,9 @@ Still not ready:
 
 Next honest moves:
   prove or reject the silent/inert route;
-  source-safety audit for weighted-neutral layer;
-  energy/stress accounting for the stress-only survivor;
-  covariant lift attempt;
+  energy/stress accounting for the source-independent stress-only survivor;
+  trace/mass closure audit (can trace-free and active-mass-neutral coexist?);
+  covariant layer lift attempt;
   divergence identity / Bianchi compatibility audit;
   explicit adopt/defer/reject decision for the trace-normalization candidate only after safety theorem burdens are handled.
 ```
@@ -1992,6 +2220,31 @@ E_layer =
 (3465*(7R^2+ell^2)^2)
 ```
 
+## A.11 Group 61 Source-Safety Audit
+
+```text
+source residual: S_M*(i_A+i_trans_src-1)
+trace residual: T_zeta*(i_Bs+i_res+i_trans_trace-1)
+safe source: i_A=1, i_trans_src=0
+source repair rejected: i_A=0, i_trans_src=1
+
+p0=p_free+lambda*rho_M
+lambda=0 required
+p0=p_free underived
+
+E_layer=256*ell*p0*(49R^4+58R^2*ell^2+ell^4)/(3465*(7R^2+ell^2)^2)
+Delta_M=beta*E_layer
+beta!=0 blocked
+
+trace-free: u=p_r+2p_t
+active-mass-neutral: u=-(p_r+2p_t)
+compatible only if p_r+2p_t=0
+
+D_total=D_A+D_layer+J_exchange
+D_layer=0 not source safety
+J_exchange=-(D_A+D_layer) rejected
+```
+
 ---
 
 # Appendix B — Rejected Route Index
@@ -2023,7 +2276,10 @@ source replacement by transition response;
 source repair by transition response;
 source load hidden in coefficients;
 source load hidden in weighted-neutral profile;
-source load hidden in stress closure.
+source load hidden in stress closure;
+direct rho_M amplitude in transition response (lambda!=0);
+mass-coupled transition route without source-safety theorem;
+D_layer=0 treated as source safety.
 ```
 
 ## B.3 Boundary / Scalar Rejections
@@ -2054,7 +2310,11 @@ source-carrying transition term;
 residual reentry through transition term;
 radial-only stress p_t=0;
 N_w promoted to active O;
-reduced D=0 promoted to Bianchi proof.
+reduced D=0 promoted to Bianchi proof;
+source-coupled amplitude (lambda!=0);
+mass-coupled transition response without theorem;
+D_layer=0 as exchange conservation safety;
+forced exchange cancellation as repair.
 ```
 
 ## B.5 Parent-Closure Rejections
@@ -2065,6 +2325,8 @@ parent equation opened from finite-layer construction;
 parent equation opened from reduced D=0;
 parent equation opened from weighted neutrality;
 parent equation opened from stress-only survivor;
+parent equation opened from source-independent audit;
+parent equation opened from D_layer=0;
 H_curv/H_exch insertion without definition;
 Bianchi-like language as divergence safety;
 active O by disguise.
@@ -2130,18 +2392,29 @@ Group 60:
   eta^2 rejected as scalar response and retained only as stress-like basis;
   constant/tuning routes, source repair/carrying, trace double-counting, residual reentry, radial-only stress, and active-O-by-disguise rejected;
   survivor narrowed to stress-only localized weighted-neutral-generated closure-supported transition response.
+
+Group 61:
+  source-safety audit applied to stress-only transition response;
+  direct source coupling (lambda!=0) rejected;
+  source-repair route rejected by role purity;
+  mass-moment burden identified: Delta_M=beta*E_layer, beta!=0 unsafe;
+  trace/mass closure tension found: p_r+2p_t=0 required but not satisfied generically;
+  D_layer=0 shown to be internal balance only, not source safety;
+  forced exchange cancellation rejected;
+  source-independent stress-only route retained as audit material only.
 ```
 
 Current combined outcome:
 
 ```text
-The trace-anchor surface is visible, branch-safe, decision-surface audited, safety-load tested, residual/source theorem-route sharpened, reduced boundary/scalar-silence theorem-surface derived, insertion-family filtered, reduced silent/inert theorem-surface constructed, finite transition-layer unification probe opened, weighted-neutral finite-layer profile constructed, transition-term candidate surface filtered, and strict term exclusion sieve applied.
+The trace-anchor surface is visible, branch-safe, decision-surface audited, safety-load tested, residual/source theorem-route sharpened, reduced boundary/scalar-silence theorem-surface derived, insertion-family filtered, reduced silent/inert theorem-surface constructed, finite transition-layer unification probe opened, weighted-neutral finite-layer profile constructed, transition-term candidate surface filtered, strict term exclusion sieve applied, and source-safety audit performed.
 
 The conditional paired attempt can be retained only as audit material.
 Unsafe insertion families are excluded.
 The silent/inert route survives conditionally with concrete reduced profiles and closures.
 The finite-layer route has a weighted-neutral reduced construction.
-The transition response survivor is narrow: stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, and non-insertable.
+The transition response survivor is narrower: source-independent, stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, and non-insertable.
+Source safety was audited and sharpened but not proven.
 
 No physical-use license has been reached.
 No parent equation is ready.

@@ -1,0 +1,254 @@
+
+========================================================================================================================
+Candidate Residual Kill Recovery Independence
+========================================================================================================================
+[INFO] Archive dependency check:
+  - residual_problem_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - classification_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - inertness_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - O_burden_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g24_recovery_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g24_gamma_AB_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Residual-kill recovery-independence problem
+========================================================================================================================
+Question:
+
+  Is residual-kill / inertness independent of recovery targets?
+
+Reference discipline:
+
+  Recovery may audit residual status only after it is derived.
+  Recovery may not select residual kill, inertness, or active O.
+  Boundary/source failure and parent-fit closure also may not select residual status.
+
+[governance_assessments]
+[INFO] residual-kill recovery-independence audit opened -- testing whether residual status is independent of recovery and repair targets
+
+========================================================================================================================
+Case 1: Recovery-selection load ledger
+========================================================================================================================
+Rejected residual-status dependencies:
+
+  schwarzschild = schwarzschild
+  AB_one = AB_one
+  B_inverse_A = B_inverse_A
+  gamma_like = gamma_like
+  PPN_like = PPN_like
+  areal_kappa_zero = areal_kappa_zero
+  scalar_tail_failure = scalar_tail_failure
+  boundary_load_cancellation = boundary_load_cancellation
+  source_compat_failure = source_compat_failure
+  parent_fit_closure = parent_fit_closure
+
+Recovery-selection load:
+
+  L_recovery_select = AB_one + B_inverse_A + PPN_like + areal_kappa_zero + boundary_load_cancellation + gamma_like + parent_fit_closure + scalar_tail_failure + schwarzschild + source_compat_failure
+
+Interpretation:
+
+  All entries must vanish as construction dependencies.
+  Recovery may audit only after residual status is structurally fixed.
+
+[derived_results]
+[OBLIGATION] residual recovery-selection load stated -- L_recovery_select = AB_one + B_inverse_A + PPN_like + areal_kappa_zero + boundary_load_cancellation + gamma_like + parent_fit_closure + scalar_tail_failure + schwarzschild + source_compat_failure
+
+========================================================================================================================
+Case 2: Rejected recovery dependencies
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+D1: Schwarzschild-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: Schwarzschild exterior
+Forbidden use: residual kill, inertness, or O chosen to make Schwarzschild recovery pass
+[FAIL] D1: Schwarzschild-selected residual status: REJECTED
+Consequence: recovery constructs residual control
+
+------------------------------------------------------------------------------------------------------------------------
+D2: AB=1-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: AB = 1
+Forbidden use: residual status chosen to enforce AB=1
+[FAIL] D2: AB=1-selected residual status: REJECTED
+Consequence: AB diagnostic becomes construction
+
+------------------------------------------------------------------------------------------------------------------------
+D3: B=1/A-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: B = 1/A
+Forbidden use: residual status chosen to preserve B=1/A
+[FAIL] D3: B=1/A-selected residual status: REJECTED
+Consequence: static exterior diagnostic becomes construction rule
+
+------------------------------------------------------------------------------------------------------------------------
+D4: gamma-like-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: gamma_like / PPN-like response
+Forbidden use: residual status chosen to fit gamma_like or PPN behavior
+[FAIL] D4: gamma-like-selected residual status: REJECTED
+Consequence: weak-field recovery tunes residual control
+
+------------------------------------------------------------------------------------------------------------------------
+D5: areal-kappa-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: kappa_areal = 0
+Forbidden use: residual status chosen from areal kappa diagnostic
+[FAIL] D5: areal-kappa-selected residual status: REJECTED
+Consequence: diagnostic kappa becomes control law
+
+------------------------------------------------------------------------------------------------------------------------
+D6: scalar-tail-failure-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: scalar-tail failure
+Forbidden use: residual killed or made inert because exterior scalar tail appears
+[FAIL] D6: scalar-tail-failure-selected residual status: REJECTED
+Consequence: boundary/scalar failure constructs residual status
+
+------------------------------------------------------------------------------------------------------------------------
+D7: boundary-load-cancellation-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: boundary-load cancellation
+Forbidden use: residual status chosen to cancel boundary/current/A-tail/shell load
+[FAIL] D7: boundary-load-cancellation-selected residual status: REJECTED
+Consequence: residual control becomes boundary repair
+
+------------------------------------------------------------------------------------------------------------------------
+D8: source-compat-failure-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: source compatibility failure
+Forbidden use: residual status chosen to avoid duplicate source load
+[FAIL] D8: source-compat-failure-selected residual status: REJECTED
+Consequence: residual control becomes source repair
+
+------------------------------------------------------------------------------------------------------------------------
+D9: parent-fit-selected residual status
+------------------------------------------------------------------------------------------------------------------------
+Dependency: parent-fit closure
+Forbidden use: residual status chosen to make parent-looking equation close
+[FAIL] D9: parent-fit-selected residual status: REJECTED
+Consequence: parent closure constructs residual control
+
+[counterexamples]
+[FAIL] recovery-selected residual dependencies rejected -- 9 recovery/repair dependencies rejected as residual-status origins
+
+========================================================================================================================
+Case 3: Recovery-independence rules
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+R1: residual status before recovery
+------------------------------------------------------------------------------------------------------------------------
+Rule: residual kill, inertness, or O status must be fixed by structural law before recovery diagnostics
+[OBLIGATION] R1: residual status before recovery: REQUIRED
+Failure if: status is chosen after recovery target is known
+
+------------------------------------------------------------------------------------------------------------------------
+R2: recovery may audit only
+------------------------------------------------------------------------------------------------------------------------
+Rule: Schwarzschild, AB, B=1/A, gamma_like, PPN, and areal kappa may audit derived residual status
+[OBLIGATION] R2: recovery may audit only: REQUIRED
+Failure if: recovery target chooses residual status
+
+------------------------------------------------------------------------------------------------------------------------
+R3: failure may reject, not tune
+------------------------------------------------------------------------------------------------------------------------
+Rule: failed recovery may reject or flag a branch but cannot tune residual status
+[OBLIGATION] R3: failure may reject, not tune: REQUIRED
+Failure if: residual kill/inertness/O is changed to pass recovery
+
+------------------------------------------------------------------------------------------------------------------------
+R4: boundary/source failure may not select status
+------------------------------------------------------------------------------------------------------------------------
+Rule: boundary or source failure cannot choose residual kill or inertness
+[OBLIGATION] R4: boundary/source failure may not select status: REQUIRED
+Failure if: residual status repairs tail, flux, shell, or source duplication
+
+------------------------------------------------------------------------------------------------------------------------
+R5: parent fit may not select status
+------------------------------------------------------------------------------------------------------------------------
+Rule: parent-looking closure cannot select residual status
+[OBLIGATION] R5: parent fit may not select status: REQUIRED
+Failure if: residual status is picked to make parent equation close
+
+[unresolved_obligations]
+[OBLIGATION] recovery-independence rules populated -- 5 rules constrain residual status selection
+
+========================================================================================================================
+Case 4: Residual status recovery-independence branches
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: recovery-independent residual control
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual kill/inertness/O status is derived before recovery and then audited
+[DEFER] B1: recovery-independent residual control: THEOREM_TARGET
+Allowed if: status has structural origin and recovery is downstream
+Rejected if: status depends on any recovery target
+
+------------------------------------------------------------------------------------------------------------------------
+B2: diagnostic-only recovery audit
+------------------------------------------------------------------------------------------------------------------------
+Branch: recovery diagnostics test an already fixed residual status
+[INFO] B2: diagnostic-only recovery audit: SAFE_IF
+Allowed if: used only to classify or reject a fixed branch
+Rejected if: used to tune residual status
+
+------------------------------------------------------------------------------------------------------------------------
+B3: recovery-selected residual control
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual kill/inertness/O chosen to pass recovery
+[FAIL] B3: recovery-selected residual control: REJECTED
+Allowed if: never
+Rejected if: Schwarzschild/gamma/AB/B=1/A/PPN/parent-fit selects status
+
+------------------------------------------------------------------------------------------------------------------------
+B4: boundary/source-selected residual control
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual status chosen to repair boundary/source failure
+[FAIL] B4: boundary/source-selected residual control: REJECTED
+Allowed if: never
+Rejected if: tail, flux, shell, A-tail, or source duplication selects status
+
+[governance_assessments]
+[PASS] residual recovery-independence branches classified -- 4 branches classified
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The residual-kill recovery-independence audit fails if a later script allows:
+
+1. residual status chosen from Schwarzschild recovery
+2. residual status chosen from AB=1
+3. residual status chosen from B=1/A
+4. residual status chosen from gamma_like or PPN response
+5. residual status chosen from areal kappa = 0
+6. residual status chosen from scalar-tail failure
+7. residual status chosen from boundary/current/A-tail/shell cancellation
+8. residual status chosen from source-compatibility failure
+9. residual status chosen from parent-fit closure
+10. recovery success opens insertion or parent gate
+
+[governance_assessments]
+[OBLIGATION] residual recovery-independence failure controls stated -- future scripts must not select residual status from recovery or repair targets
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Residual-kill recovery-independence result:
+
+  Recovery may audit residual status after it is derived.
+  Recovery may not select residual kill, inertness, or active O.
+  Boundary/source failure may not select residual status.
+  Parent-fit closure may not select residual status.
+  Recovery-independent residual control remains theorem-targeted.
+
+Possible next script:
+  candidate_residual_kill_boundary_source_compatibility.py
+
+Tiny goblin label:
+  Recovery judges. It does not choose the corpse.
+
+[governance_assessments]
+[PASS] residual-kill recovery-independence audit complete -- recovery selection routes rejected; residual control theorem remains open

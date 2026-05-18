@@ -1,0 +1,298 @@
+
+========================================================================================================================
+Candidate Residual Kill Boundary Source Compatibility
+========================================================================================================================
+[INFO] Archive dependency check:
+  - residual_problem_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - inertness_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - reentry_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - recovery_independence_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g21_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g22_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g23_summary_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g24_source_dep_25: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Case 0: Residual-kill boundary/source compatibility problem
+========================================================================================================================
+Question:
+
+  Can residual kill / inertness preserve boundary and source guardrails?
+
+Reference discipline:
+
+  Residual cleanup cannot be a boundary/source repair route.
+  It must preserve A-sector mass, scalar silence, current silence, no-shell, support/matching, and source no-double-counting.
+  It cannot license B_s/F_zeta insertion by itself.
+
+[governance_assessments]
+[INFO] residual-kill boundary/source compatibility audit opened -- auditing residual cleanup against Groups 21-24 guardrails
+
+========================================================================================================================
+Case 1: Residual cleanup compatibility failure-load ledger
+========================================================================================================================
+Representative compatibility failure channels:
+
+  A_mass_shift = A_mass_shift
+  scalar_tail = scalar_tail
+  nonA_current_flux = nonA_current_flux
+  boundary_flux = boundary_flux
+  shell_source_load = shell_source_load
+  support_layer_load = support_layer_load
+  ordinary_source_dup = ordinary_source_dup
+  recovery_selected_seam = recovery_selected_seam
+  repair_object = repair_object
+  insertion_license = insertion_license
+
+Compatibility failure load:
+
+  L_cleanup_fail = A_mass_shift + boundary_flux + insertion_license + nonA_current_flux + ordinary_source_dup + recovery_selected_seam + repair_object + scalar_tail + shell_source_load + support_layer_load
+
+Each channel must vanish or be theorem-routed before residual cleanup can be compatible.
+
+[derived_results]
+[OBLIGATION] residual cleanup compatibility failure-load ledger stated -- L_cleanup_fail = A_mass_shift + boundary_flux + insertion_license + nonA_current_flux + ordinary_source_dup + recovery_selected_seam + repair_object + scalar_tail + shell_source_load + support_layer_load
+
+========================================================================================================================
+Case 2: Boundary/source compatibility conditions
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+C1: no A-sector mass shift
+------------------------------------------------------------------------------------------------------------------------
+Condition: A_mass_shift = 0
+[OBLIGATION] C1: no A-sector mass shift: REQUIRED
+Failure if: residual cleanup changes protected A-sector exterior mass
+Consequence: source routing and mass neutrality fail
+
+------------------------------------------------------------------------------------------------------------------------
+C2: no exterior scalar tail
+------------------------------------------------------------------------------------------------------------------------
+Condition: scalar_tail = 0
+[OBLIGATION] C2: no exterior scalar tail: REQUIRED
+Failure if: residual cleanup leaves C/r scalar tail
+Consequence: scalar silence fails
+
+------------------------------------------------------------------------------------------------------------------------
+C3: no non-A current flux
+------------------------------------------------------------------------------------------------------------------------
+Condition: nonA_current_flux = 0
+[OBLIGATION] C3: no non-A current flux: REQUIRED
+Failure if: residual cleanup exports non-A current flux
+Consequence: boundary/current silence fails
+
+------------------------------------------------------------------------------------------------------------------------
+C4: no boundary flux
+------------------------------------------------------------------------------------------------------------------------
+Condition: boundary_flux = 0
+[OBLIGATION] C4: no boundary flux: REQUIRED
+Failure if: residual cleanup leaks through boundary
+Consequence: boundary neutrality fails
+
+------------------------------------------------------------------------------------------------------------------------
+C5: no shell/source load
+------------------------------------------------------------------------------------------------------------------------
+Condition: shell_source_load = 0
+[OBLIGATION] C5: no shell/source load: REQUIRED
+Failure if: residual cleanup creates shell or finite-width source disguise
+Consequence: no-shell and source compatibility fail
+
+------------------------------------------------------------------------------------------------------------------------
+C6: no support/layer load
+------------------------------------------------------------------------------------------------------------------------
+Condition: support_layer_load = 0
+[OBLIGATION] C6: no support/layer load: REQUIRED
+Failure if: residual cleanup hides load in support radius, smoothing width, or transition layer
+Consequence: smooth-support/matching guardrails fail
+
+------------------------------------------------------------------------------------------------------------------------
+C7: no ordinary source duplication
+------------------------------------------------------------------------------------------------------------------------
+Condition: ordinary_source_dup = 0
+[OBLIGATION] C7: no ordinary source duplication: REQUIRED
+Failure if: residual cleanup duplicates rho/M_enc or hides ordinary source load
+Consequence: source no-double-counting fails
+
+------------------------------------------------------------------------------------------------------------------------
+C8: no recovery-selected seam
+------------------------------------------------------------------------------------------------------------------------
+Condition: recovery_selected_seam = 0
+[OBLIGATION] C8: no recovery-selected seam: REQUIRED
+Failure if: residual cleanup chooses seam/support/boundary data from recovery
+Consequence: recovery constructs residual cleanup
+
+------------------------------------------------------------------------------------------------------------------------
+C9: no repair object
+------------------------------------------------------------------------------------------------------------------------
+Condition: repair_object = 0
+[OBLIGATION] C9: no repair object: REQUIRED
+Failure if: O/H/dark/exchange/curvature/current labels supply residual cleanup
+Consequence: repair route smuggles missing theorem
+
+------------------------------------------------------------------------------------------------------------------------
+C10: no insertion license
+------------------------------------------------------------------------------------------------------------------------
+Condition: insertion_license = 0
+[OBLIGATION] C10: no insertion license: REQUIRED
+Failure if: residual cleanup alone licenses B_s/F_zeta insertion
+Consequence: metric insertion theorem is smuggled
+
+[unresolved_obligations]
+[OBLIGATION] residual boundary/source compatibility conditions populated -- 10 compatibility conditions constrain residual cleanup
+
+========================================================================================================================
+Case 3: Boundary/source compatibility branches
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+B1: compatible residual cleanup
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual kill/inertness/O preserves boundary, support, source, and mass guardrails
+[DEFER] B1: compatible residual cleanup: THEOREM_TARGET
+Allowed if: all compatibility loads vanish sector-by-sector or are theorem-routed
+Rejected if: cleanup hides any boundary/source/support/mass load
+
+------------------------------------------------------------------------------------------------------------------------
+B2: diagnostic-only compatibility audit
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual cleanup is audited against guardrails without claiming theorem
+[INFO] B2: diagnostic-only compatibility audit: SAFE_IF
+Allowed if: used only to list obligations and reject shortcuts
+Rejected if: used to license residual kill or insertion
+
+------------------------------------------------------------------------------------------------------------------------
+B3: boundary-repair residual cleanup
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual cleanup is chosen to remove tail, flux, A-tail, shell, or layer load
+[FAIL] B3: boundary-repair residual cleanup: REJECTED
+Allowed if: never
+Rejected if: cleanup repairs boundary/support failure
+
+------------------------------------------------------------------------------------------------------------------------
+B4: source-repair residual cleanup
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual cleanup is chosen to avoid ordinary source duplication
+[FAIL] B4: source-repair residual cleanup: REJECTED
+Allowed if: never
+Rejected if: cleanup repairs source compatibility failure
+
+------------------------------------------------------------------------------------------------------------------------
+B5: insertion-licensing residual cleanup
+------------------------------------------------------------------------------------------------------------------------
+Branch: residual cleanup is treated as sufficient for B_s/F_zeta insertion
+[FAIL] B5: insertion-licensing residual cleanup: REJECTED
+Allowed if: never
+Rejected if: cleanup opens metric insertion or parent gate
+
+[governance_assessments]
+[PASS] residual boundary/source compatibility branches classified -- 5 compatibility branches classified
+
+========================================================================================================================
+Case 4: Rejected boundary/source cleanup shortcuts
+========================================================================================================================
+
+------------------------------------------------------------------------------------------------------------------------
+S1: mass shift cleanup
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: residual cleanup shifts A-sector mass
+Forbidden use: residual kill/inertness/O changes protected A mass charge
+[FAIL] S1: mass shift cleanup: REJECTED
+Consequence: Group 21 mass protection fails
+
+------------------------------------------------------------------------------------------------------------------------
+S2: tail cleanup by kill
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: residual kill hides scalar tail
+Forbidden use: kill/inertness chosen because C/r tail would otherwise remain
+[FAIL] S2: tail cleanup by kill: REJECTED
+Consequence: Group 22 scalar silence is bypassed
+
+------------------------------------------------------------------------------------------------------------------------
+S3: current cleanup by kill
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: residual kill hides non-A current flux
+Forbidden use: kill/inertness chosen because current flux would otherwise remain
+[FAIL] S3: current cleanup by kill: REJECTED
+Consequence: current silence is bypassed
+
+------------------------------------------------------------------------------------------------------------------------
+S4: shell/source cleanup by kill
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: residual cleanup hides shell/source load
+Forbidden use: kill/inertness/O hides shell source or finite-width source disguise
+[FAIL] S4: shell/source cleanup by kill: REJECTED
+Consequence: no-shell/source compatibility is bypassed
+
+------------------------------------------------------------------------------------------------------------------------
+S5: support/layer cleanup
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: residual cleanup hides in support or transition layer
+Forbidden use: support radius, smoothing width, transition layer, or matching condition carries residual cleanup
+[FAIL] S5: support/layer cleanup: REJECTED
+Consequence: Group 23 support/matching guardrails fail
+
+------------------------------------------------------------------------------------------------------------------------
+S6: source duplication cleanup
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: residual status chosen to avoid duplicate ordinary source load
+Forbidden use: residual control is selected from source no-double-counting failure
+[FAIL] S6: source duplication cleanup: REJECTED
+Consequence: source compatibility constructs residual control
+
+------------------------------------------------------------------------------------------------------------------------
+S7: repair object cleanup
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: O/H/dark/exchange/curvature/current label supplies compatibility
+Forbidden use: repair object closes residual compatibility gap
+[FAIL] S7: repair object cleanup: REJECTED
+Consequence: repair theorem is smuggled
+
+------------------------------------------------------------------------------------------------------------------------
+S8: insertion from compatibility
+------------------------------------------------------------------------------------------------------------------------
+Shortcut: boundary/source-compatible cleanup licenses B_s/F_zeta insertion
+Forbidden use: compatibility audit treated as insertion theorem
+[FAIL] S8: insertion from compatibility: REJECTED
+Consequence: metric insertion is smuggled
+
+[counterexamples]
+[FAIL] residual boundary/source cleanup shortcuts rejected -- mass shifts, tails, fluxes, shells, support loads, source duplication, repair objects, and insertion licensing remain rejected
+
+========================================================================================================================
+Case 5: Failure controls
+========================================================================================================================
+The residual-kill boundary/source compatibility audit fails if a later script allows:
+
+1. residual cleanup shifts A-sector mass
+2. residual cleanup hides scalar tail
+3. residual cleanup hides non-A current flux or boundary flux
+4. residual cleanup hides shell/source load
+5. residual cleanup hides in support/smoothing/transition/matching language
+6. residual cleanup selected from source-compatibility failure
+7. residual cleanup selected from recovery-selected seam data
+8. O/H/dark/exchange/curvature/current repair object supplies compatibility
+9. residual cleanup licenses B_s/F_zeta insertion
+10. residual cleanup opens parent equation
+
+[governance_assessments]
+[OBLIGATION] residual boundary/source compatibility failure controls stated -- future scripts must not use residual cleanup as boundary/source repair or insertion license
+
+========================================================================================================================
+Final interpretation
+========================================================================================================================
+Residual-kill boundary/source compatibility result:
+
+  Residual cleanup must preserve A-sector mass, scalar silence, current silence, boundary neutrality, no-shell matching, support/matching, and source no-double-counting.
+  Residual cleanup cannot be selected from boundary/source failure.
+  Residual cleanup cannot use O/H/dark/exchange/curvature/current repair labels.
+  Residual cleanup cannot license B_s/F_zeta insertion or parent closure by itself.
+  Compatibility remains theorem-targeted.
+
+Possible next script:
+  candidate_residual_kill_theorem_obligations.py
+
+Tiny goblin label:
+  Cleanup is not a repair shop.
+
+[governance_assessments]
+[PASS] residual-kill boundary/source compatibility audit complete -- boundary/source repair routes rejected; residual-control theorem remains open
