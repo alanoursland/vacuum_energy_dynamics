@@ -1,8 +1,8 @@
-# Field Equation Set — Snapshot After Group 61
+# Field Equation Set — Snapshot After Group 62
 
 ## What This Document Is
 
-This is a quick-reference snapshot of the current field-equation development state after Group 61.
+This is a quick-reference snapshot of the current field-equation development state after Group 62.
 
 It is not a development log, not a proof archive, not a complete license ledger, and not a covariant parent theory. Detailed arguments, audits, candidate inventories, proof capsules, and rejected-route records live elsewhere.
 
@@ -33,7 +33,11 @@ After Group 60, the surviving transition-response candidate is stress-only, loca
 
 After Group 61, source safety for the stress-only survivor was audited but not proven. Direct source coupling, mass-coupled routes, and D_layer=0-as-source-safety were rejected. A mass-moment burden, trace/mass closure tension, and exchange accounting gap were identified. The surviving candidate is source-independent and stress-only, and remains audit-only.
 
-No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no active O exists, and the parent field equation is not ready.
+Group 62 audited stress-energy accounting for the retained source-independent stress-only response. It made the closure variables explicit: p_r=p0*eta^2, p_t=p_r+r*p_r'/2, P=p_r+2p_t, T=-u+P, and A=u+P. The closure family u=gamma*P gives gamma=1 for trace-free closure and gamma=-1 for active-mass-neutral closure; both close together only if P=0. The pressure sum P is not generically zero, and integrated accounting gives I_P=2*E_pr. Simple closures u=0, u=P, and u=-P do not license the response. p_free remains underived after source-coupled, diagnostic-repair, and zero-response origins are rejected.
+
+The retained transition response remains source-independent, stress-only, audit-only, non-insertable, and possibly downgradeable to diagnostic-only if no stress-energy principle is found.
+
+No branch is selected, no Package B postulate is adopted, no B_s/F_zeta insertion is licensed, no transition response is inserted, no active O exists, and the parent field equation is not ready.
 ```
 
 ---
@@ -73,6 +77,8 @@ with shared record-local \(\zeta), symbolic \(d), conditioned and unfixed numeri
 Groups 51–60 did not adopt the trace-normalization candidate. They tested it, filtered unsafe routes, and built reduced theorem surfaces around the only route that still survives: silent/inert, non-source-carrying, non-boundary-leaking, non-mass-shifting, non-trace-duplicating insertion. The finite-layer work then narrowed the surviving transition-response candidate to a stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only object. This is progress, but it is not physical-use permission.
 
 Group 61 audited source safety for that candidate. Direct ordinary-source coupling was rejected by role purity (lambda=0 required). A mass-moment burden was identified: the stress-only layer has a nonzero reduced moment E_layer, and a mass-coupled interpretation gives Delta_M=beta*E_layer, which is unsafe unless a later theorem proves inertness. A trace/mass closure tension was found: trace-free and active-mass-neutral conditions together force p_r+2p_t=0, which the closure-supported layer does not satisfy generically. Exchange accounting showed that D_layer=0 alone is only internal layer balance, not source safety. The source-independent stress-only route is retained as audit material, but source safety is not closed.
+
+Group 62 then audited stress-energy accounting for the retained source-independent stress-only response. It showed that the reduced diagnostics T=-u+P and A=u+P force incompatible simple closures: u=P is trace-free but not active-mass-neutral, while u=-P is active-mass-neutral but not trace-free. Both close only if P=p_r+2p_t vanishes, but P is not generically zero for the closure-supported layer. Integrated accounting gives I_P=2*E_pr, tying the pressure-sum burden directly to layer stress energy. The amplitude p_free remains underived after source-coupled, diagnostic-repair, and zero-response origins are rejected. The candidate remains audit-only and may need diagnostic-only downgrade without a stress-energy principle.
 
 ---
 
@@ -118,10 +124,14 @@ Finite transition layer:
   Not insertion.
   Not covariant lift.
 
-Transition response after Group 61:
-  candidate survivor only.
+Transition response after Group 62:
+  stress-energy-accounting-audited candidate survivor only.
   Source-independent, stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, non-insertable.
-  Source safety audited but not proven.
+  Stress-energy accounting not closed.
+  Trace/mass closure obstructed unless P=0.
+  P is not generically zero.
+  p_free remains underived.
+  Diagnostic-only downgrade possible.
 ```
 
 ---
@@ -250,8 +260,9 @@ Recovery may audit; recovery may not construct.
 | Silent/inert insertion route       | `REDUCED_THEOREM_SURFACE_CONSTRUCTED` / `CONDITIONAL_ONLY`                   | Reduced silent/inert route surface                    | Not insertion law; not covariant theorem                                                   |
 | Finite transition layer            | `LAYER_PROBE_OPENED` / `CONDITIONAL_ONLY`                                    | Finite-layer unification probe                        | Residues are clues, not terms; weighted neutrality required                                |
 | Weighted-neutral finite layer      | `WEIGHTED_NEUTRAL_PROFILE_DERIVED` / `CONDITIONAL_ONLY`                      | Reduced finite-layer construction                     | Not source law, not insertion law, not covariant theorem                                   |
-| Transition response candidate      | `STRICT_TERM_EXCLUSION_SIEVE_APPLIED` / `SOURCE_COUPLING_REJECTED` / `SOURCE_SAFETY_NOT_CLOSED` / `TERM_SURVIVES_NARROWLY` | Transition-response source-safety audit survivor       | Source-independent, stress-only, nonfree, audit-only; source safety not proven            |
+| Transition response candidate      | `STRESS_ACCOUNTING_NOT_CLOSED` / `AUDIT_CANDIDATE_RETAINED` / `DIAGNOSTIC_ONLY_DOWNGRADE_POSSIBLE` | Source-independent stress-only audit survivor          | Stress-energy accounting, trace/mass closure, source safety, covariant conservation, and covariant lift remain open |
 | Source-safety audit (transition)   | `SOURCE_AUDIT_OPENED` / `MASS_MOMENT_BURDEN_FOUND` / `TRACE_MASS_TENSION_FOUND` / `CONSERVATION_EXCHANGE_FILTER_APPLIED` | Source-safety accounting surface                      | Not source-safe; not mass-safe; not trace-safe; not covariant yet                          |
+| Transition stress accounting       | `TRACE_MASS_TENSION_CONFIRMED` / `PRESSURE_SUM_OBSTRUCTION_FOUND` / `INTEGRAL_ACCOUNTING_DERIVED` / `AMPLITUDE_UNDERIVED` | Stress closure audit                                  | u=P and u=-P close opposite diagnostics; P not generically zero; I_P=2E_pr; p_free underived |
 | No-overlap operator \(O\)           | `ACTIVE_O_NECESSITY_NOT_ESTABLISHED` / `NOT_CONSTRUCTED`                     | Diagnostic labels only                                | \(N_w\) is not active \(O\)                                                                   |
 | \(J_V\)                             | `UNRESOLVED`                                                                 | Vacuum-current theorem target                         | Not a physical flux law                                                                    |
 | \(J_{\rm sub}, J_{\rm exch}\)       | `THEOREM_TARGET` / role-level only                                           | Bookkeeping labels                                    | Not physical currents                                                                      |
@@ -288,9 +299,13 @@ support / matching neutrality theorem
 finite-layer source safety theorem
 transition-response source-safety theorem
 transition-response mass-moment theorem
-trace/mass closure theorem or obstruction
+trace/mass closure theorem or obstruction decision
 source-exchange conservation identity
 transition-response stress/energy theorem
+stress-energy principle for u, p_r, p_t, and p_free
+decision whether transition response is downgraded to diagnostic-only
+covariant stress-energy lift
+covariant conservation / divergence identity
 covariant lift
 parent divergence safety
 parent identity
@@ -298,7 +313,7 @@ parent identity
 
 Until these are solved, the parent field equation is not ready.
 
-## 5.1 What Groups 51–61 Added
+## 5.1 What Groups 51–62 Added
 
 The recent work did not solve recombination. It refined the blocker into narrower theorem surfaces and candidate survivors.
 
@@ -318,6 +333,7 @@ Current learned structure:
 11. Transition-term candidates have been filtered.
 12. Group 60 narrows the survivor to a stress-only localized weighted-neutral-generated closure-supported transition response.
 13. Group 61 sharpens source safety: direct source coupling rejected; mass-moment burden identified; trace/mass closure tension found; exchange-only accounting insufficient; source-independent stress-only route retained as audit material only.
+14. Group 62 audits stress-energy accounting for the source-independent transition response, confirms trace/mass closure tension, shows P is not generically zero, derives I_P=2E_pr, rejects simple u and p_free repair routes, and leaves the candidate audit-only with diagnostic-only downgrade possible.
 ```
 
 Current non-result:
@@ -335,6 +351,11 @@ Reduced D=0 is not a covariant Bianchi proof.
 The transition response is not inserted.
 Source safety is not proven.
 The source-independent stress-only route is not inserted.
+Stress-energy accounting is not solved.
+Trace/mass closure is not solved.
+p_free is not derived.
+I_P=2E_pr is reduced accounting, not a covariant stress theorem.
+The source-independent stress-only response remains audit-only and may be downgraded to diagnostic-only.
 The parent equation remains not ready.
 ```
 
@@ -800,7 +821,9 @@ weighted-neutral reduced construction found;
 transition-term candidate surface filtered;
 strict sieve narrowed survivor to stress-only candidate;
 source safety audited but not proven;
-source-independent stress-only route retained as audit material.
+source-independent stress-only route retained as audit material;
+stress-energy accounting audited but not closed;
+closure burden explicit through P=p_r+2p_t and I_P=2E_pr.
 ```
 
 No physical-use route is opened.
@@ -958,7 +981,7 @@ No insertion occurred.
 
 ---
 
-# 11. Transition-Response Candidate After Group 61
+# 11. Transition-Response Candidate After Group 62
 
 ## 11.1 Candidate-Term Audit Before Group 60
 
@@ -1289,6 +1312,139 @@ Not trace-safe yet.
 Not covariant yet.
 ```
 
+## 11.5 Group 62 Stress-Energy Accounting Audit
+
+Group 62 audited stress-energy accounting for the retained source-independent stress-only transition response.
+
+Current result:
+
+```text
+STRESS_AUDIT_OPENED
+CLOSURE_INVENTORY_DERIVED
+TRACE_MASS_TENSION_CONFIRMED
+PRESSURE_SUM_OBSTRUCTION_FOUND
+INTEGRAL_ACCOUNTING_DERIVED
+ACTIVE_MASS_BURDEN_FOUND
+TRACE_BURDEN_FOUND
+ENERGY_SIGN_BURDEN_FOUND
+AMPLITUDE_UNDERIVED
+STRESS_ACCOUNTING_NOT_CLOSED
+AUDIT_CANDIDATE_RETAINED
+DIAGNOSTIC_ONLY_DOWNGRADE_POSSIBLE
+PHYSICAL_USE_BLOCKED
+```
+
+Reduced closure variables:
+
+```text
+p_r=p0*eta^2
+p_t=p_r+r*p_r'/2
+P=p_r+2p_t
+```
+
+Diagnostics:
+
+```text
+T=-u+P
+A=u+P
+```
+
+Closure family:
+
+```text
+u=gamma*P
+
+T=P*(1-gamma)
+A=P*(gamma+1)
+```
+
+Therefore:
+
+```text
+trace-free:
+  gamma=1
+  u=P
+
+active-mass-neutral:
+  gamma=-1
+  u=-P
+
+simultaneous closure:
+  P=0
+```
+
+Pressure-sum obstruction:
+
+```text
+P is not generically zero.
+```
+
+Reduced witnesses include:
+
+```text
+P(0)=
+-4R^2*p0*(7R^2-2ell^2)/(7R^2+ell^2)^2
+```
+
+Integrated accounting:
+
+```text
+E_pr =
+256*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+
+I_P =
+512*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+
+I_P=2*E_pr
+```
+
+Simple closure status:
+
+```text
+u=0:
+  rejected;
+  T=P and A=P remain.
+
+u=P:
+  trace-free;
+  active diagnostic remains A=2P.
+
+u=-P:
+  active-mass-neutral;
+  trace diagnostic remains T=2P.
+```
+
+Amplitude status:
+
+```text
+p_free remains underived.
+
+Rejected origins:
+  source-coupled p_free;
+  diagnostic-repair p_free;
+  p_free=0 as fake survival.
+```
+
+Current retained route:
+
+```text
+source-independent stress-only transition response as audit material
+```
+
+Current meaning:
+
+```text
+Stress-energy accounting is not closed.
+Trace/mass closure is obstructed unless P=0.
+P is not generically zero.
+The candidate is not insertable.
+Diagnostic-only downgrade is possible if no stress-energy principle is found.
+```
+
 ---
 
 # 12. Residual-Control Status
@@ -1506,6 +1662,16 @@ lambda=0 required by role purity.
 Source-independent amplitude p0=p_free is underived.
 ```
 
+Group 62 amplitude-origin sieve:
+
+```text
+p_free cannot be derived from rho_M.
+Source-coupled p_free rejected: d(p0)/d(rho_M)=lambda.
+Diagnostic-repair p_free rejected.
+Zero-response p_free=0 rejected as trivial no-response.
+p_free remains underived.
+```
+
 ## 14.2 A-Sector Mass Protection
 
 The reduced A-sector mass coin is preserved:
@@ -1555,11 +1721,29 @@ Mass-coupled route blocked without theorem.
 Weighted scalar neutrality is not mass safety.
 ```
 
+Group 62 stress accounting:
+
+```text
+active-mass-neutral closure requires u=-P.
+trace-free closure requires u=P.
+These are incompatible unless P=0.
+P is not generically zero.
+Therefore active-mass neutrality remains unproven.
+```
+
+Integrated pressure accounting:
+
+```text
+I_P=2*E_pr.
+```
+
 Current meaning:
 
 ```text
 Weighted neutrality avoids the reduced charge-driven mass-shift diagnostic.
 Stress-only transition response carries a mass-moment burden that is not resolved by weighted neutrality.
+Active-mass neutrality and trace neutrality are incompatible unless P=0.
+P is not generically zero.
 It does not prove source safety or covariant mass neutrality.
 ```
 
@@ -1687,6 +1871,8 @@ Current rule:
 ```text
 Transition-response stress accounting, mass-moment burden, trace/mass closure tension, and exchange conservation must be resolved before any physical-use license.
 ```
+
+Group 62 adds that source-independent stress-only status is not enough. The stress-energy closure itself remains unlicensed because u=P and u=-P close opposite diagnostics, P is not generically zero, and p_free remains underived.
 
 ## 14.5 Correction Tensors
 
@@ -1921,6 +2107,73 @@ Finite-layer stress accounting is not a parent stress theorem.
 
 Weighted neutrality is not source safety.
 
+## 16.8 Do Not Treat Stress Accounting Audit as Stress Closure
+
+Do not shorten:
+
+```text
+stress-energy accounting audited and clarified
+```
+
+into:
+
+```text
+stress-energy accounting solved;
+transition response stress tensor derived;
+trace neutrality proven;
+active-mass neutrality proven;
+source safety proven;
+transition response insertable.
+```
+
+Do not treat:
+
+```text
+u=P
+```
+
+as active-mass-neutral.
+
+Do not treat:
+
+```text
+u=-P
+```
+
+as trace-free.
+
+Do not treat:
+
+```text
+P=0
+```
+
+as available by fiat.
+
+Do not treat:
+
+```text
+I_P=2E_pr
+```
+
+as a covariant stress theorem.
+
+Do not use:
+
+```text
+p_free
+```
+
+as an arbitrary repair coefficient.
+
+Do not use:
+
+```text
+p_free=0
+```
+
+as survival of the transition response.
+
 ---
 
 # 17. Current Recovery Scorecard
@@ -1937,7 +2190,8 @@ Weighted neutrality is not source safety.
 | Reduced exterior scalar silence               | `CONDITIONAL REDUCED THEOREM SURFACE`         |
 | Silent/inert route                            | `CONDITIONAL REDUCED THEOREM SURFACE`         |
 | Weighted-neutral finite layer                 | `REDUCED CONSTRUCTION / NOT INSERTABLE`       |
-| Group 61 transition response                  | `SOURCE-INDEPENDENT STRESS-ONLY / SOURCE SAFETY NOT CLOSED / NOT INSERTABLE` |
+| Group 61 transition source safety             | `AUDITED / SOURCE_SAFETY_NOT_CLOSED / AUDIT_ONLY / NOT INSERTABLE`           |
+| Group 62 transition stress accounting         | `AUDITED / STRESS_ACCOUNTING_NOT_CLOSED / TRACE_MASS_TENSION / POSSIBLE_DOWNGRADE / NOT INSERTABLE` |
 | Vector curl/curl structure                    | `STRUCTURAL / COEFFICIENT MISSING`            |
 | Tensor TT radiation structure                 | `STRUCTURAL / COUPLING MISSING`               |
 | Scalar breathing radiation                    | `REJECTED`                                    |
@@ -2056,6 +2310,24 @@ Group 61 source-safety audit status:
     non-insertable.
     Source safety not proven.
 
+Group 62 stress-energy status:
+  p_r=p0*eta^2.
+  p_t=p_r+r*p_r'/2.
+  P=p_r+2p_t.
+  T=-u+P.
+  A=u+P.
+  u=gamma*P gives gamma=1 for trace-free and gamma=-1 for active-mass-neutral.
+  Both close only if P=0.
+  P is not generically zero.
+  I_P=2E_pr.
+  u=0 fails both diagnostics.
+  u=P leaves active-mass burden.
+  u=-P leaves trace burden.
+  p_free remains underived.
+  Stress-energy accounting is not closed.
+  Candidate remains audit-only.
+  Diagnostic-only downgrade possible.
+
 O status:
   not constructed;
   N_w is not active O.
@@ -2073,20 +2345,22 @@ Still not ready:
   finite-layer source safety theorem;
   transition-response source-safety theorem;
   transition-response mass-moment theorem;
-  trace/mass closure theorem or obstruction;
+  trace/mass closure theorem or obstruction decision;
   source-exchange conservation identity;
   transition-response stress/energy theorem;
+  stress-energy principle for u/p_r/p_t/p_free;
+  decision whether transition response is downgraded to diagnostic-only;
+  covariant stress-energy lift;
   covariant lift;
   recombination;
   parent field equation.
 
 Next honest moves:
-  prove or reject the silent/inert route;
-  energy/stress accounting for the source-independent stress-only survivor;
-  trace/mass closure audit (can trace-free and active-mass-neutral coexist?);
-  covariant layer lift attempt;
-  divergence identity / Bianchi compatibility audit;
-  explicit adopt/defer/reject decision for the trace-normalization candidate only after safety theorem burdens are handled.
+  trace/mass obstruction decision;
+  variational stress-origin attempt;
+  covariant layer lift;
+  source-safety theorem only after stress-energy accounting is explicit;
+  parent route still closed.
 ```
 
 ---
@@ -2245,6 +2519,93 @@ D_layer=0 not source safety
 J_exchange=-(D_A+D_layer) rejected
 ```
 
+## A.12 Group 62 Stress-Energy Accounting Audit
+
+Closure variables:
+
+```text
+p_r=p0*eta^2
+p_t=p_r+r*p_r'/2
+P=p_r+2p_t
+```
+
+Diagnostics:
+
+```text
+T=-u+P
+A=u+P
+```
+
+Closure family:
+
+```text
+u=gamma*P
+T=P*(1-gamma)
+A=P*(gamma+1)
+```
+
+Closure conditions:
+
+```text
+trace-free:
+  gamma=1
+
+active-mass-neutral:
+  gamma=-1
+
+simultaneous:
+  P=0
+```
+
+Pressure obstruction:
+
+```text
+P is not generically zero.
+
+P(0)=
+-4R^2*p0*(7R^2-2ell^2)/(7R^2+ell^2)^2
+```
+
+Integrated accounting:
+
+```text
+E_pr =
+256*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+
+I_P =
+512*ell*p0*(49R^4+58R^2ell^2+ell^4)
+/
+(3465*(7R^2+ell^2)^2)
+
+I_P=2E_pr
+```
+
+Rejected closures:
+
+```text
+u=0;
+u=P as full closure;
+u=-P as full closure;
+P=0 by fiat.
+```
+
+Amplitude status:
+
+```text
+p_free underived;
+source-coupled p_free rejected;
+diagnostic-repair p_free rejected;
+p_free=0 rejected as trivial no-response.
+```
+
+Retained route:
+
+```text
+source-independent stress-only transition response as audit material
+```
+
 ---
 
 # Appendix B — Rejected Route Index
@@ -2314,7 +2675,16 @@ reduced D=0 promoted to Bianchi proof;
 source-coupled amplitude (lambda!=0);
 mass-coupled transition response without theorem;
 D_layer=0 as exchange conservation safety;
-forced exchange cancellation as repair.
+forced exchange cancellation as repair;
+u chosen only to pass one diagnostic;
+u=P treated as active-mass-neutral;
+u=-P treated as trace-free;
+u=0 treated as no-energy solution;
+P=0 declared by fiat;
+p_free derived from rho_M;
+p_free chosen to cancel trace/mass diagnostic;
+p_free=0 treated as candidate survival;
+stress-accounting audit treated as insertion permission.
 ```
 
 ## B.5 Parent-Closure Rejections
@@ -2402,19 +2772,47 @@ Group 61:
   D_layer=0 shown to be internal balance only, not source safety;
   forced exchange cancellation rejected;
   source-independent stress-only route retained as audit material only.
+
+Group 62:
+  stress-energy accounting audit applied to the source-independent stress-only transition response;
+  closure variables p_r, p_t, P, T, and A made explicit;
+  u=gamma*P closure algebra derived;
+  trace-free closure requires gamma=1;
+  active-mass-neutral closure requires gamma=-1;
+  simultaneous closure requires P=0;
+  P shown not generically zero for the closure-supported layer;
+  integrated accounting derived I_P=2E_pr;
+  u=0, u=P, and u=-P rejected as complete closures;
+  p_free remains underived after source-coupled, diagnostic-repair, and zero-response origins rejected;
+  stress-energy accounting remains unclosed;
+  candidate remains audit-only with diagnostic-only downgrade possible;
+  no insertion, active O, recombination, or parent closure opened.
 ```
 
 Current combined outcome:
 
 ```text
-The trace-anchor surface is visible, branch-safe, decision-surface audited, safety-load tested, residual/source theorem-route sharpened, reduced boundary/scalar-silence theorem-surface derived, insertion-family filtered, reduced silent/inert theorem-surface constructed, finite transition-layer unification probe opened, weighted-neutral finite-layer profile constructed, transition-term candidate surface filtered, strict term exclusion sieve applied, and source-safety audit performed.
+The trace-anchor surface is visible, branch-safe, decision-surface audited, safety-load tested, residual/source theorem-route sharpened, reduced boundary/scalar-silence theorem-surface derived, insertion-family filtered, reduced silent/inert theorem-surface constructed, finite transition-layer unification probe opened, weighted-neutral finite-layer profile constructed, transition-term candidate surface filtered, strict term exclusion sieve applied, source-safety audit performed, and stress-energy accounting audit performed.
 
 The conditional paired attempt can be retained only as audit material.
 Unsafe insertion families are excluded.
 The silent/inert route survives conditionally with concrete reduced profiles and closures.
 The finite-layer route has a weighted-neutral reduced construction.
-The transition response survivor is narrower: source-independent, stress-only, localized, weighted-neutral-generated, closure-supported, nonfree, audit-only, and non-insertable.
-Source safety was audited and sharpened but not proven.
+The transition response survivor is now source-safety-audited and stress-accounting-audited.
+It remains:
+  source-independent;
+  stress-only;
+  localized;
+  weighted-neutral-generated;
+  closure-supported;
+  nonfree;
+  audit-only;
+  non-insertable.
+
+Stress-energy accounting is not closed.
+Trace/mass closure is obstructed unless P=0, and P is not generically zero.
+p_free is underived.
+Diagnostic-only downgrade is possible.
 
 No physical-use license has been reached.
 No parent equation is ready.
