@@ -1,0 +1,9 @@
+candidate_variational_problem.py
+candidate_functional_requirements.py
+candidate_quadratic_scalar_origin.py
+candidate_linear_closure_origin.py
+candidate_amplitude_origin_scale.py
+candidate_boundary_variation_sieve.py
+candidate_variational_route_classifier.py
+candidate_variational_batch_reconcile.py
+candidate_group_64_status_summary.py
