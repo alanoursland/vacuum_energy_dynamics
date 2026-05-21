@@ -1,0 +1,29 @@
+[INFO] Archive dependency check:
+  - g77_zero: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Candidate Gauge-Exact Classification Test
+========================================================================================================================
+rho = dXi*i_exact + i_phys*rho_phys
+exact-only route = dXi
+physical-only remainder = rho_phys
+physical removed route = dXi
+unresolved exact+physical = dXi + rho_phys
+
+Interpretation:
+  gauge-exact status requires proof that dXi is nonphysical and rho_phys=0.
+
+[derived_results]
+[PASS] rho decomposition -- dXi*i_exact + i_phys*rho_phys
+[PASS] physical remainder -- rho_phys
+
+[governance_assessments]
+[INFO] gauge-exact route -- retained only if exactness and zero physical remainder are derived
+[OBLIGATION] rho_phys -- rho_phys=0 must be derived
+
+[counterexamples]
+[FAIL] exact by label -- calling dXi exact/nonphysical is not proof
+[FAIL] unresolved physical -- unresolved=dXi + rho_phys
+
+Possible next script:
+  candidate_boundary_exactness_test.py

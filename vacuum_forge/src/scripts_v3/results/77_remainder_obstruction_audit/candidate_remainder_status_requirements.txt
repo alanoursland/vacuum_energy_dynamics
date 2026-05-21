@@ -1,0 +1,34 @@
+[INFO] Archive dependency check:
+  - g76_summary: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+  - g77_problem: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Candidate Remainder Status Requirements
+========================================================================================================================
+Legal rho statuses:
+  ZERO_DERIVED: rho=0 by theorem
+  GAUGE_EXACT: rho=dXi and physical remainder vanishes
+  BOUNDARY_EXACT: rho=div_boundary(Pi) and physical bulk remainder vanishes
+  INERT: rho carries no source/trace/mass/divergence payload by theorem
+  PHYSICAL_REMAINDER: rho_phys remains
+  UNRESOLVED: no theorem status derived
+
+zero status residual = 0
+gauge-exact form = dXi + rho_phys
+boundary-exact form = divB + rho_phys
+
+[derived_results]
+[PASS] zero residual form -- 0
+[PASS] gauge form -- dXi + rho_phys
+[PASS] boundary form -- divB + rho_phys
+
+[governance_assessments]
+[PASS] requirements -- legal rho status requirements stated
+[OBLIGATION] physical remainder -- rho_phys must vanish or be proven inert for exact routes
+
+[counterexamples]
+[FAIL] status by label -- naming rho exact/inert is not proof
+[FAIL] dropped rho -- dropping rho is not a legal status
+
+Possible next script:
+  candidate_zero_remainder_theorem_test.py

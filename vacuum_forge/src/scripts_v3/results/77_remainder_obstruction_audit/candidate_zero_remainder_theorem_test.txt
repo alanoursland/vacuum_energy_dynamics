@@ -1,0 +1,30 @@
+[INFO] Archive dependency check:
+  - g77_requirements: dependency_satisfied (Upstream derivation exists; output not verified (no expected_output declared).)
+
+========================================================================================================================
+Candidate Zero Remainder Theorem Test
+========================================================================================================================
+rho = R0*c_rho
+closure by c_rho solution = [0]
+closure by R0 solution = [0]
+assigned-zero residual = 0
+active remainder = R0
+
+Interpretation:
+  zero remainder requires c_rho=0 or R0=0 by theorem, not assignment.
+
+[derived_results]
+[PASS] rho factorization -- R0*c_rho
+[PASS] c_rho closure -- [0]
+[PASS] R0 closure -- [0]
+
+[governance_assessments]
+[INFO] zero route -- retained only if c_rho=0 or R0=0 is derived
+[OBLIGATION] zero theorem -- derive zero remainder from lift structure
+
+[counterexamples]
+[FAIL] assigned zero -- setting c_rho=0 by hand is compatibility, not theorem
+[FAIL] active remainder -- active remainder=R0
+
+Possible next script:
+  candidate_gauge_exact_classification_test.py
