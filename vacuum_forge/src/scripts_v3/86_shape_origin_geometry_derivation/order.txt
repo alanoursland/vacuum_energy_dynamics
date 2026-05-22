@@ -1,0 +1,8 @@
+candidate_shape_origin_problem.py
+candidate_moment_map_from_shape_coefficients.py
+candidate_minimal_degree_obstruction.py
+candidate_quartic_uniqueness_theorem.py
+candidate_payload_action_minimizer.py
+candidate_weighted_consistency_from_flat_block.py
+candidate_shape_origin_route_classifier.py
+candidate_group_86_status_summary.py
