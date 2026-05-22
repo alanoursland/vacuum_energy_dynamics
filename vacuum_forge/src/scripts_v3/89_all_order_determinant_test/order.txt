@@ -1,0 +1,8 @@
+candidate_determinant_problem.py
+candidate_closed_rational_entry_formula.py
+candidate_determinant_sequence_N1_to_N10.py
+candidate_lu_pivot_nonzero_test.py
+candidate_moment_pairing_factorization.py
+candidate_profile_generation_under_invertibility.py
+candidate_determinant_route_classifier.py
+candidate_group_89_status_summary.py
