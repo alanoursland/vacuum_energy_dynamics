@@ -1,0 +1,8 @@
+candidate_concrete_input_handoff_problem.py
+candidate_concrete_input_acceptance_criteria.py
+candidate_D_layer_geometry_input_gate.py
+candidate_lift_identity_input_gate.py
+candidate_rho_exactness_input_gate.py
+candidate_parent_and_active_O_input_gate.py
+candidate_next_group_selector_from_input.py
+candidate_group_81_status_summary.py
