@@ -1,0 +1,8 @@
+candidate_adoption_surface_problem.py
+candidate_adoption_decision_criteria.py
+candidate_D_layer_axiom_decision_surface.py
+candidate_lift_axiom_decision_surface.py
+candidate_rho_axiom_decision_surface.py
+candidate_parent_facing_axiom_gate.py
+candidate_adoption_route_classifier.py
+candidate_group_80_status_summary.py
