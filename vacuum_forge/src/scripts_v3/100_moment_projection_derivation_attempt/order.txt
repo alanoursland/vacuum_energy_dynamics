@@ -1,0 +1,6 @@
+candidate_projection_derivation_problem.py
+candidate_weighted_moment_identity.py
+candidate_test_trial_projection_derivation.py
+candidate_row_test_function_structure.py
+candidate_projection_origin_classifier.py
+candidate_group_100_status_summary.py
