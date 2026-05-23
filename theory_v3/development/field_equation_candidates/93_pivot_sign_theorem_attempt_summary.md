@@ -1,4 +1,4 @@
-# Group 93 Summary: Pivot Sign Theorem Attempt
+# Group 93 Summary: Pivot Sign Theorem Attempt — Updated After Schur Patch
 
 ## Purpose
 
@@ -18,7 +18,7 @@ pi_N = -p_N  for N >= 11
 p_N = det(A_N)/det(A_(N-1)).
 ```
 
-Group 93 introduced:
+Group 93 introduced the row-signed matrix:
 
 ```text
 B_N = diag(epsilon_1,...,epsilon_N) A_N
@@ -28,9 +28,9 @@ epsilon_k = -1 for k >= 11.
 
 ## Main Result
 
-Group 93 is partially successful and needs one script patch.
+After the patched rerun, Group 93 is successful as a structural reduction group.
 
-Correct stable result:
+Stable result:
 
 ```text
 row-sign normalization derived and verified through N=30;
@@ -39,15 +39,15 @@ det(B_N) equals sign-normalized det(A_N) through N=30;
 
 leading determinants and pivots of B_N are positive through N=30;
 
+Schur complement pivot identity derived and verified through N=15;
+
+row-signed Schur pivots are positive through N=15;
+
 simple strict total positivity route blocked by negative 1x1 entries;
 
 full P-matrix / all-principal-minor route blocked by a small negative principal minor;
 
-Schur complement pivot identity script failed with a matrix shape error;
-
-Schur complement route remains open but is not archived as derived;
-
-all-order row-signed leading-minor positivity theorem remains open;
+all-order row-signed Schur positivity theorem remains open;
 
 all-order determinant nonzero theorem remains open;
 
@@ -56,83 +56,76 @@ parent divergence identity remains unproven;
 recombination remains blocked.
 ```
 
+## What Changed From the Previous Markdown
+
+The previous markdown said:
+
+```text
+SCHUR_COMPLEMENT_SCRIPT_FAILED
+SCHUR_COMPLEMENT_ROUTE_OPEN_PATCH_REQUIRED
+```
+
+That is now obsolete.
+
+The patched Schur script passed and verified:
+
+```text
+Schur/determinant pivot failures through N=15: []
+```
+
+with all Schur pivot signs positive through `N=15`.
+
+Correct replacement:
+
+```text
+SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+SCHUR_PIVOTS_POSITIVE_N1_TO_N15
+```
+
 ## What We Actually Learned
 
-Group 93 makes real progress even with the failed Schur script.
+Group 93 successfully converts the normalized pivot theorem into a row-signed leading-chain theorem.
 
-The row-sign idea works. It absorbs the determinant sign pattern and gives positive leading pivots through `N=30`.
-
-That means the theorem target can be restated cleanly:
+The structural chain is now:
 
 ```text
-prove leading principal minors / leading pivots of B_N are positive for all N.
+raw determinant signs of A_N
+-> row-sign normalized matrix B_N
+-> positive leading pivots of B_N
+-> positive leading Schur complements of B_N.
 ```
 
-The negative results are also valuable:
+This is real progress. The theorem target is now much sharper:
 
 ```text
-B_N is not strictly totally positive;
-B_N is not a P-matrix in the tested sense.
+prove all row-signed leading Schur complements are positive.
 ```
 
-So the proof must be specialized to the leading chain, not broad matrix positivity.
+## Useful Negative Results
 
-## Script-Level Analysis
+Group 93 also blocks two overly broad proof routes.
 
-### 1. Pivot Sign Theorem Problem
-
-The opener correctly frames the group as a structural theorem attempt.
-
-### 2. Row-Sign Normalized Matrix
-
-The script verifies:
+First:
 
 ```text
-det normalization failures through N=30: []
-nonpositive B pivot failures through N=30: []
+strict total positivity is blocked
 ```
 
-This is the strongest successful result.
+because `B_12` has negative `1x1` entries.
 
-### 3. Schur Complement Pivot Identity
-
-This script failed with:
+Second:
 
 ```text
-ShapeError: Matrix size mismatch: (2, 1) * (2, 1)
+P-matrix / all-principal-minor positivity is blocked
 ```
 
-The Schur identity is not archived as derived.
-
-### 4. Total Positivity Obstruction
-
-The script finds:
-
-```text
-negative 1x1 entries in B_12: 68.
-```
-
-So strict total positivity is blocked.
-
-### 5. Principal Minor Route Test
-
-The script finds:
+because a small principal minor is already negative:
 
 ```text
 N=2, index (2,), det = -512/5360355.
 ```
 
-So the full P-matrix route is blocked.
-
-### 6. Positive Leading Minor Table
-
-The script reports:
-
-```text
-leading determinant/pivot failures through N=30: []
-```
-
-So row-signed leading-minor positivity is strongly supported through `N=30`.
+So the eventual proof must target the leading principal chain specifically. It cannot rely on broad positivity of all minors.
 
 ## Final Status Ledger
 
@@ -150,8 +143,10 @@ leading_pivots_of_B:
   POSITIVE_THROUGH_N30
 
 Schur_complement_identity:
-  SCRIPT_FAILED
-  NOT_ARCHIVED_AS_DERIVED
+  DERIVED_THROUGH_N15
+
+Schur_pivots:
+  POSITIVE_THROUGH_N15
 
 strict_total_positivity:
   BLOCKED_BY_NEGATIVE_1x1_ENTRIES
@@ -159,7 +154,7 @@ strict_total_positivity:
 P_matrix_route:
   BLOCKED_BY_SMALL_NEGATIVE_PRINCIPAL_MINOR
 
-all_order_leading_minor_positivity:
+all_order_row_signed_Schur_positivity:
   OPEN
 
 all_order_nonzero_determinant:
@@ -172,48 +167,62 @@ recombination:
   BLOCKED
 ```
 
+## Rejected Overclaims
+
+Group 93 rejects:
+
+```text
+raw determinant positivity;
+B_N strict total positivity;
+B_N P-matrix positivity;
+finite leading-minor positivity as all-order theorem;
+finite Schur positivity as all-order theorem;
+parent equation jump;
+recombination opening.
+```
+
+## Strategic Interpretation
+
+The updated Group 93 result is stronger than the earlier interpretation.
+
+The row-sign trap works, and now the Schur handle works too.
+
+The next theorem target is:
+
+```text
+prove row-signed leading Schur complements stay positive.
+```
+
+Group 94 can now be interpreted as a confirmation/refinement group, not as a rescue group.
+
 ## Recommended Next Step
 
-Immediate next step:
+The existing Group 94 results should be lightly reframed from:
 
 ```text
-Patch and rerun candidate_schur_complement_pivot_identity.py.
+repair the failed Schur identity
 ```
 
-Patch:
-
-```python
-C = B[:N-1, :N-1]
-u = B[:N-1, N-1]
-v_row = B[N-1, :N-1]
-alpha = B[N-1, N-1]
-
-x = C.LUsolve(u)
-schur = sp.factor(alpha - (v_row * x)[0])
-```
-
-After that succeeds, the next substantial group should be:
+to:
 
 ```text
-94_schur_complement_positivity_attempt
+confirm the patched Schur identity and refine the positivity mechanism.
 ```
 
-or:
+Its substantive result remains useful:
 
 ```text
-94_biorthogonal_pivot_construction.
+two-regime alpha/correction balance;
+correction/alpha ratio-bound target.
 ```
 
 ## Final Interpretation
 
-Group 93 caught two goblins and tripped over one wire.
+Group 93 is now clean.
 
 ```text
 The row-sign trap works.
-The total-positivity door is painted.
-The P-matrix door is painted too.
-The Schur door is probably real,
-but the handle fell off in the script.
-
-Fix the handle before entering.
+The Schur handle is fixed.
+The broad positivity doors are painted.
+The real door is the leading Schur chain.
 ```

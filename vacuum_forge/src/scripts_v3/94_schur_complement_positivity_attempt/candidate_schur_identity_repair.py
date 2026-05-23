@@ -1,6 +1,5 @@
 from __future__ import annotations
 from pathlib import Path
-import itertools
 import sympy as sp
 
 from vacuumforge import ProjectArchive, Status
@@ -104,74 +103,85 @@ def row_signed_matrix(N: int):
             B[k-1, j-1] = eps * A[k-1, j-1]
     return B
 
+def schur_components(N: int):
+    B = row_signed_matrix(N)
+    detB = sp.factor(B.det(method="bareiss"))
+    if N == 1:
+        alpha = B[0, 0]
+        correction = sp.Integer(0)
+        schur = sp.factor(alpha)
+        previous_det = sp.Integer(1)
+    else:
+        C = B[:N-1, :N-1]
+        u = B[:N-1, N-1]
+        v_row = B[N-1, :N-1]
+        alpha = B[N-1, N-1]
+        x = C.LUsolve(u)
+        correction = sp.factor((v_row * x)[0])
+        schur = sp.factor(alpha - correction)
+        previous_det = sp.factor(C.det(method="bareiss"))
+    pivot = sp.factor(detB / previous_det)
+    return {
+        "N": N,
+        "alpha": sp.factor(alpha),
+        "correction": sp.factor(correction),
+        "schur": sp.factor(schur),
+        "pivot": sp.factor(pivot),
+        "difference": sp.factor(schur - pivot),
+        "alpha_sign": sp.sign(alpha),
+        "correction_sign": sp.sign(correction),
+        "schur_sign": sp.sign(schur),
+        "pivot_sign": sp.sign(pivot),
+    }
+
 DEPENDENCIES = [
+    ("g94_problem", "94_schur_complement_positivity_attempt__candidate_schur_repair_problem", "g94_problem"),
     ("g93_row_sign_matrix", "93_pivot_sign_theorem_attempt__candidate_row_sign_normalized_matrix", "g93_row_sign_matrix"),
 ]
-MARKER_ID = "g93_schur_pivots"
+MARKER_ID = "g94_schur_identity"
 
 def main():
     archive, ns, invalidated = prepare_archive(DEPENDENCIES)
     print_archive_status(ns, invalidated)
     out = ScriptOutput()
 
-    failures = []
-    schur_rows = []
-    previous_det = sp.Integer(1)
+    rows = [schur_components(N) for N in range(1, 16)]
+    failures = [(r["N"], r["difference"]) for r in rows if r["difference"] != 0]
+    nonpositive = [(r["N"], r["schur_sign"]) for r in rows if r["schur_sign"] <= 0]
 
-    for N in range(1, 16):
-        B = row_signed_matrix(N)
-        detB = sp.factor(B.det(method="bareiss"))
-        pivot_det = sp.factor(detB / previous_det)
-
-        if N == 1:
-            schur = sp.factor(B[0, 0])
-        else:
-            C = B[:N-1, :N-1]
-            u = B[:N-1, N-1]          # column vector
-            v_row = B[N-1, :N-1]      # row vector
-            alpha = B[N-1, N-1]
-            x = C.LUsolve(u)          # column vector solving C*x = u
-            schur = sp.factor(alpha - (v_row * x)[0])
-
-        diff = sp.factor(schur - pivot_det)
-        if diff != 0:
-            failures.append((N, diff))
-        schur_rows.append((N, schur, sp.sign(schur)))
-        previous_det = detB
-
-    header("Candidate Schur Complement Pivot Identity")
-    print("For B_N=[[B_(N-1),u],[v_row,alpha]], pivot_N = alpha - v_row B_(N-1)^(-1) u.")
-    print(f"Schur/determinant pivot failures through N=15: {failures}")
-    for N, schur, sign_schur in schur_rows:
-        print(f"N={N}: sign(schur pivot)={sign_schur}, schur={schur}")
+    header("Candidate Schur Identity Confirmation")
+    print("Corrected formula: schur = alpha - (v_row * C.LUsolve(u))[0]")
+    print(f"Schur/pivot failures through N=15: {failures}")
+    print(f"nonpositive Schur pivots through N=15: {nonpositive}")
+    for r in rows:
+        print(f"N={r['N']}: schur_sign={r['schur_sign']}, pivot_sign={r['pivot_sign']}, difference={r['difference']}")
 
     with out.derived_results():
-        out.line("Schur failures", StatusMark.PASS if not failures else StatusMark.FAIL, str(failures))
-        for N, schur, sign_schur in schur_rows:
-            out.line(f"N={N} Schur sign", StatusMark.PASS if sign_schur > 0 else StatusMark.FAIL, str(sign_schur))
+        out.line("Schur/pivot failures", StatusMark.PASS if not failures else StatusMark.FAIL, str(failures))
+        out.line("nonpositive Schur pivots", StatusMark.PASS if not nonpositive else StatusMark.FAIL, str(nonpositive))
     with out.governance_assessments():
-        out.line("Schur pivot identity", StatusMark.PASS, "verified through N=15")
-        out.line("positive Schur evidence", StatusMark.PASS, "row-signed Schur pivots positive through N=15")
-        out.line("theorem target", StatusMark.INFO, "prove all row-signed leading Schur complements positive")
+        out.line("Schur identity confirmation", StatusMark.PASS, "Schur pivots equal determinant pivots through N=15")
+        out.line("Schur positivity evidence", StatusMark.PASS, "repaired Schur pivots positive through N=15")
+        out.line("theorem status", StatusMark.OBLIGATION, "all-order Schur positivity remains unproven")
     with out.counterexamples():
-        out.line("pivot positivity without Schur target", StatusMark.FAIL, "pivot positivity has exact Schur complement form")
-        out.line("finite Schur evidence as theorem", StatusMark.FAIL, "N=15 is not all N")
+        out.line("Group 93 failure persists", StatusMark.FAIL, "orientation bug is patched and independently confirmed here")
+        out.line("finite Schur evidence as theorem", StatusMark.FAIL, "N=15 is finite")
 
     ns.record_derivation(
         derivation_id=MARKER_ID,
         inputs=[],
-        output=sp.Matrix([row[2] for row in schur_rows]),
-        method="verify row-signed determinant pivots equal Schur complements through N=15 using row-vector Schur product",
+        output=sp.Matrix([r["difference"] for r in rows]),
+        method="dimension-safe Schur complement calculation with row vector times solved column",
         status=Status.DERIVED,
         record_kind=RecordKind.DERIVATION,
-        result_type="schur_complement_pivot_identity",
-        scope="structural pivot sign theorem attempt",
+        result_type="schur_identity_confirmation",
+        scope="row-signed pivot theorem branch",
     )
-    record_claim(ns, MARKER_ID, "g93_schur_c1", GovernanceStatus.POLICY_RULE, "Sign-normalized pivot positivity is equivalent to positivity of row-signed leading Schur complements.")
-    record_obligation(ns, "g93_schur_o1", "Test simple total positivity route.")
+    record_claim(ns, MARKER_ID, "g94_schur_c1", GovernanceStatus.POLICY_RULE, "The Schur complement pivot identity is confirmed through N=15 after the Group 93 patch.")
+    record_obligation(ns, "g94_schur_o1", "Analyze Schur term-balance regimes.")
     ns.write_run_metadata()
     print("\nPossible next script:")
-    print("  candidate_total_positivity_obstruction.py")
+    print("  candidate_schur_term_balance_regimes.py")
 
 if __name__ == "__main__":
     main()

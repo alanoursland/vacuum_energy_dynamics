@@ -1,8 +1,8 @@
-# candidate_group_93_status_summary — Analysis Note
+# candidate_group_93_status_summary — Updated Analysis Note
 
 ## Result
 
-`candidate_group_93_status_summary.py` reports:
+`candidate_group_93_status_summary.py` now reports a clean Group 93 close:
 
 ```text
 row-sign normalization B_N=diag(epsilon)A_N derived;
@@ -17,53 +17,35 @@ parent divergence identity remains unproven;
 recombination remains blocked.
 ```
 
-The row-sign, leading-minor, total-positivity, and P-matrix claims are supported.
+## Interpretation
 
-The Schur-complement claim is not supported, because `candidate_schur_complement_pivot_identity.py` failed and did not archive `g93_schur_pivots`.
+The old Group 93 markdowns do need to change.
 
-## Corrected interpretation
+After the patch, Group 93 is no longer “partially successful with Schur failure.” It is now a successful structural reduction group with two useful proof-route obstructions.
 
-Correct Group 93 result:
+Correct Group 93 interpretation:
 
 ```text
-row-sign normalization derived and verified through N=30;
-
-det(B_N) equals sign-normalized det(A_N) through N=30;
-
-leading determinants and pivots of B_N are positive through N=30;
-
-simple total positivity route blocked by negative entries;
-
-full P-matrix route blocked by small principal minor;
-
-Schur complement pivot identity script failed;
-
-Schur route remains open and requires patch;
-
-all-order leading-minor / pivot positivity remains open;
-
-parent divergence identity remains unproven;
-
-recombination remains blocked.
+row-sign normalization works;
+leading pivots are positive through N=30;
+Schur-complement pivot identity is derived and verified through N=15;
+strict total positivity route is blocked;
+P-matrix/all-principal-minor route is blocked;
+all-order Schur/leading-pivot theorem remains open.
 ```
 
 ## Carry-forward status
 
-Carry forward:
-
 ```text
 ROW_SIGN_NORMALIZATION_DERIVED
-ROW_SIGNED_LEADING_MINORS_POSITIVE_N1_TO_N30
+DET_B_EQUALS_SIGN_NORMALIZED_DET_A_THROUGH_N30
+ROW_SIGNED_LEADING_PIVOTS_POSITIVE_N1_TO_N30
+SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+SCHUR_PIVOTS_POSITIVE_N1_TO_N15
 TOTAL_POSITIVITY_ROUTE_BLOCKED
 P_MATRIX_ROUTE_BLOCKED
-SCHUR_COMPLEMENT_ROUTE_OPEN_PATCH_REQUIRED
-ALL_ORDER_LEADING_MINOR_POSITIVITY_OPEN
+ALL_ORDER_ROW_SIGNED_SCHUR_POSITIVITY_OPEN
+ALL_ORDER_NONZERO_DETERMINANT_THEOREM_OPEN
+PARENT_DIVERGENCE_UNPROVEN
+RECOMBINATION_BLOCKED
 ```
-
-Do not carry forward:
-
-```text
-SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
-```
-
-until the script is patched and rerun.

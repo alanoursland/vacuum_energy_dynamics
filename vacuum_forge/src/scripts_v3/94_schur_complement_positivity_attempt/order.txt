@@ -1,0 +1,6 @@
+candidate_schur_repair_problem.py
+candidate_schur_identity_repair.py
+candidate_schur_term_balance_regimes.py
+candidate_schur_ratio_bound_probe.py
+candidate_schur_theorem_target_classifier.py
+candidate_group_94_status_summary.py

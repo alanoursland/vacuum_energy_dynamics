@@ -1,68 +1,69 @@
-# candidate_schur_complement_pivot_identity — Analysis Note
+# candidate_schur_complement_pivot_identity — Updated Analysis Note
 
 ## Result
 
-`candidate_schur_complement_pivot_identity.py` failed.
+The patched `candidate_schur_complement_pivot_identity.py` now passes.
 
-The error is:
-
-```text
-ShapeError: Matrix size mismatch: (2, 1) * (2, 1)
-```
-
-The failure occurs at:
-
-```python
-(v.T * C.LUsolve(u))[0]
-```
-
-The intended identity is:
+It verifies:
 
 ```text
-B_N = [[C, u],
-       [v^T, alpha]]
-
-pivot_N = det(B_N)/det(C)
-        = alpha - v^T C^(-1) u.
+Schur/determinant pivot failures through N=15: []
 ```
 
-But the implementation created incompatible vector orientations.
+For every `N=1..15`, the Schur pivot sign is positive:
+
+```text
+N=1..15:
+  sign(schur pivot)=1
+```
+
+The script now uses the corrected row-vector form:
+
+```text
+B_N = [[B_(N-1), u],
+       [v_row, alpha]]
+
+pivot_N = alpha - v_row B_(N-1)^(-1) u.
+```
 
 ## Interpretation
 
-This is a script bug, not a mathematical disproof.
+This changes the Group 93 status materially.
 
-However, it means the archive does not currently derive or verify the Schur complement pivot identity for Group 93. Downstream statuses claiming:
+The previous markdown said the Schur route failed and required patching. That is no longer true after the rerun. The Schur-complement pivot identity is now archived and supported through `N=15`.
+
+This means Group 93 successfully completes the structural reduction:
 
 ```text
-SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+sign-normalized pivot positivity
+=
+positivity of row-signed leading Schur complements.
 ```
 
-are unsupported by this run.
+within the tested range.
 
-## Correct status
+## What changed after the patch
 
-Carry forward:
+Old status:
 
 ```text
 SCHUR_COMPLEMENT_SCRIPT_FAILED
-SCHUR_COMPLEMENT_IDENTITY_NOT_ARCHIVED
-PATCH_REQUIRED
-SCHUR_COMPLEMENT_ROUTE_REMAINS_OPEN
+SCHUR_COMPLEMENT_ROUTE_OPEN_PATCH_REQUIRED
 ```
 
-## Patch instruction
+New status:
 
-Use row-column multiplication safely:
-
-```python
-C = B[:N-1, :N-1]
-u = B[:N-1, N-1]
-v_row = B[N-1, :N-1]
-alpha = B[N-1, N-1]
-
-x = C.LUsolve(u)
-schur = sp.factor(alpha - (v_row * x)[0])
+```text
+SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+SCHUR_PIVOTS_POSITIVE_N1_TO_N15
+ALL_ORDER_SCHUR_POSITIVITY_OPEN
 ```
 
-Do not transpose `v_row` if slicing already returns a row matrix.
+## Carry-forward status
+
+```text
+SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+SCHUR_PIVOTS_POSITIVE_N1_TO_N15
+ROW_SIGNED_LEADING_SCHUR_COMPLEMENT_POSITIVITY_SUPPORTED_N1_TO_N15
+ALL_ORDER_SCHUR_POSITIVITY_THEOREM_OPEN
+```

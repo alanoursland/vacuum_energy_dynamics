@@ -1,8 +1,8 @@
-# candidate_positive_leading_minor_table — Analysis Note
+# candidate_positive_leading_minor_table — Updated Analysis Note
 
 ## Result
 
-`candidate_positive_leading_minor_table.py` records leading determinant and pivot signs for row-signed matrices.
+`candidate_positive_leading_minor_table.py` records row-signed leading determinant and pivot signs.
 
 It reports:
 
@@ -10,45 +10,36 @@ It reports:
 leading determinant/pivot failures through N=30: []
 ```
 
-Displayed checkpoints show:
+The displayed checkpoints all have:
 
 ```text
-N=1..12:
-  det_sign = 1
-  pivot_sign = 1
-
-N=20:
-  det_sign = 1
-  pivot_sign = 1
-
-N=30:
-  det_sign = 1
-  pivot_sign = 1
+det_sign = 1
+pivot_sign = 1
 ```
 
-Governance records:
+including:
 
 ```text
-leading minors:
-  row-signed leading determinants and pivots positive through N=30
-
-theorem status:
-  all-order leading-minor positivity remains unproven
+N=1..12
+N=20
+N=30.
 ```
 
 ## Interpretation
 
-This is the strongest finite evidence result of Group 93.
+This remains the strongest finite leading-chain evidence in Group 93.
 
-Together with the row-sign normalization script, this shows the Group 91/92 sign pattern is cleanly absorbed into `B_N`. The determinant branch now has a precise finite theorem target:
+Together with row-sign normalization and the repaired Schur identity, this shows:
 
 ```text
-prove leading principal minors of B_N are positive for all N.
+row-signed leading determinants are positive through N=30;
+row-signed leading pivots are positive through N=30;
+row-signed Schur pivots are positive through N=15.
 ```
 
-## Carry-forward status
+The all-order theorem is still open, but the finite structural target is now coherent.
 
-Carry forward:
+## Carry-forward status
 
 ```text
 ROW_SIGNED_LEADING_DETERMINANTS_POSITIVE_N1_TO_N30

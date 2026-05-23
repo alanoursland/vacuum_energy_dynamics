@@ -1,10 +1,10 @@
-# candidate_total_positivity_obstruction — Analysis Note
+# candidate_total_positivity_obstruction — Updated Analysis Note
 
 ## Result
 
-`candidate_total_positivity_obstruction.py` tests the naive strict total-positivity route for the row-signed matrix `B_N`.
+`candidate_total_positivity_obstruction.py` tests whether the row-signed matrix `B_N` is strictly totally positive in the naive sense.
 
-It reports:
+It finds:
 
 ```text
 negative 1x1 entries in B_12: 68
@@ -19,33 +19,21 @@ The first negative entries include:
 (3,2): -3584/18706545
 ```
 
-Governance records:
-
-```text
-total positivity route:
-  blocked by negative 1x1 entries
-
-leading minor route:
-  leading principal positivity remains possible
-```
-
 ## Interpretation
 
-This is useful negative progress.
+This remains a useful negative result.
 
-The row-signed matrix has positive leading pivots in the tested range, but it is not entrywise positive and cannot be strictly totally positive in the usual sense. Strict total positivity would require all `1x1` minors to be positive.
+Even though row-signed leading pivots are positive, `B_N` is not entrywise positive and cannot be strictly totally positive in the usual sense. Strict total positivity would require all `1x1` minors to be positive.
 
 So the proof route:
 
 ```text
-B_N is totally positive, therefore leading minors are positive
+B_N is totally positive, therefore leading minors are positive.
 ```
 
-is blocked immediately.
+is blocked.
 
 ## Carry-forward status
-
-Carry forward:
 
 ```text
 TOTAL_POSITIVITY_ROUTE_BLOCKED
