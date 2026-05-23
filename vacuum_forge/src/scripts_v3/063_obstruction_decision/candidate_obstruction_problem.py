@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Obstruction Decision Problem'
 MARKER_ID = 'g63_problem'
-DEPENDENCIES = [('g62_summary', '62_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary')]
+DEPENDENCIES = [('g62_summary', '062_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary')]
 QUESTION = 'Given the Group 62 stress-accounting obstruction, what status is licensed for the transition-response candidate?'
 DISCIPLINE = 'This opener frames Group 63 as an obstruction decision-surface audit, not a stress-closure or insertion group.'
 OPENING_LINE = 'Group 63 obstruction decision opened'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Strict Source/Trace Sieve'
 MARKER_ID = 'g60_src'
-DEPENDENCIES = [('g59_summary', '59_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '60_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_tune', '60_term_exclusion_sieve__candidate_tuning_sieve', 'g60_tune')]
+DEPENDENCIES = [('g59_summary', '059_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '060_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_tune', '060_term_exclusion_sieve__candidate_tuning_sieve', 'g60_tune')]
 QUESTION = 'Can the narrowed transition candidate avoid source repair, source duplication, and trace double-counting?'
 DISCIPLINE = 'This script reapplies strict source/trace incidence filters. It is not a source safety theorem.'
 OPENING_LINE = 'Strict source/trace sieve opened'

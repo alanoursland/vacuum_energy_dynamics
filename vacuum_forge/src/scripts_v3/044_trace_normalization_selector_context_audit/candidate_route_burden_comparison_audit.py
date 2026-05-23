@@ -175,9 +175,9 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Route Burden Comparison Audit'
 MARKER_ID = 'g44_route_burden'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g43_obligation_matrix', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_decision_obligation_matrix', 'g43_obligation_matrix'),
-    ('g44_consequence_context', '44_trace_normalization_selector_context_audit__candidate_branch_consequence_context_matrix', 'g44_consequence_context'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g43_obligation_matrix', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_decision_obligation_matrix', 'g43_obligation_matrix'),
+    ('g44_consequence_context', '044_trace_normalization_selector_context_audit__candidate_branch_consequence_context_matrix', 'g44_consequence_context'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'How do the burdens of metric choice, scale choice, parallel records, and continued deferral compare without becoming selectors?'

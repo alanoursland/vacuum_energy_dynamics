@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Downgrade Semantics'
 MARKER_ID = 'g63_down'
-DEPENDENCIES = [('g62_summary', '62_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '63_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_decision', '63_obstruction_decision__candidate_status_decision_surface', 'g63_decision')]
+DEPENDENCIES = [('g62_summary', '062_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '063_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_decision', '063_obstruction_decision__candidate_status_decision_surface', 'g63_decision')]
 QUESTION = 'What does diagnostic-only downgrade preserve and forbid?'
 DISCIPLINE = 'This script defines downgrade semantics so diagnostic-only status is not confused with rejection of useful clues.'
 OPENING_LINE = 'Diagnostic-only downgrade semantics opened'

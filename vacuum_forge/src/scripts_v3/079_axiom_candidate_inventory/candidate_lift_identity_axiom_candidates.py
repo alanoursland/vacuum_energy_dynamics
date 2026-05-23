@@ -78,7 +78,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
         )
     )
 
-DEPENDENCIES = [('g79_criteria', '79_axiom_candidate_inventory__candidate_axiom_admissibility_criteria', 'g79_criteria'), ('g79_D_layer_axioms', '79_axiom_candidate_inventory__candidate_D_layer_axiom_candidates', 'g79_D_layer_axioms')]
+DEPENDENCIES = [('g79_criteria', '079_axiom_candidate_inventory__candidate_axiom_admissibility_criteria', 'g79_criteria'), ('g79_D_layer_axioms', '079_axiom_candidate_inventory__candidate_D_layer_axiom_candidates', 'g79_D_layer_axioms')]
 MARKER_ID = 'g79_lift_axioms'
 def main():
     archive, ns, invalidated = prepare_archive(DEPENDENCIES)

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Tail / Mass Zero'
 MARKER_ID = 'g58_tailmass'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '58_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '58_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_energy', '58_weighted_neutral_layer__candidate_weighted_energy', 'g58_energy')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '058_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '058_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_energy', '058_weighted_neutral_layer__candidate_weighted_energy', 'g58_energy')]
 QUESTION = 'Does the weighted-neutral layer profile kill reduced exterior tail and mass-shift diagnostics?'
 DISCIPLINE = 'This script uses Q_weighted=0 to check reduced tail and mass-shift diagnostics. It does not prove full boundary or mass theorem.'
 OPENING_LINE = 'Tail and mass zero diagnostic opened'

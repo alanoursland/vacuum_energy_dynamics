@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Source No-Double-Counting Matrix'
 MARKER_ID = 'g52_source_matrix'
-DEPENDENCIES = [('g51_summary', '51_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '52_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_count_once_trace', '52_residual_source_boundary_safety_load_testing__candidate_count_once_trace_incidence_audit', 'g52_count_once_trace'), ('g52_residual_nonentry', '52_residual_source_boundary_safety_load_testing__candidate_residual_nonentry_obstruction_sieve', 'g52_residual_nonentry')]
+DEPENDENCIES = [('g51_summary', '051_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '052_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_count_once_trace', '052_residual_source_boundary_safety_load_testing__candidate_count_once_trace_incidence_audit', 'g52_count_once_trace'), ('g52_residual_nonentry', '052_residual_source_boundary_safety_load_testing__candidate_residual_nonentry_obstruction_sieve', 'g52_residual_nonentry')]
 QUESTION = 'Can ordinary source load remain routed through the A-sector without being duplicated through B_s, zeta, kappa, curvature accounting, exchange labels, or residual variables?'
 DISCIPLINE = 'This script uses a diagnostic source-incidence matrix. It identifies source-duplication witnesses; it does not derive the full source-routing theorem.'
 OPENING_LINE = 'Source no-double-counting matrix opened -- diagnostic source incidence only'

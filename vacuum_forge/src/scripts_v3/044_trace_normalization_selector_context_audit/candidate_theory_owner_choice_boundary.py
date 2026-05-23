@@ -175,9 +175,9 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Theory-Owner Choice Boundary'
 MARKER_ID = 'g44_owner_boundary'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g43_selector_sieve', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_selector_admissibility_and_rejection_sieve', 'g43_selector_sieve'),
-    ('g44_route_burden', '44_trace_normalization_selector_context_audit__candidate_route_burden_comparison_audit', 'g44_route_burden'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g43_selector_sieve', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_selector_admissibility_and_rejection_sieve', 'g43_selector_sieve'),
+    ('g44_route_burden', '044_trace_normalization_selector_context_audit__candidate_route_burden_comparison_audit', 'g44_route_burden'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'What must a later explicit theory-owner convention choice say if intuition is used to choose a trace-normalization route?'

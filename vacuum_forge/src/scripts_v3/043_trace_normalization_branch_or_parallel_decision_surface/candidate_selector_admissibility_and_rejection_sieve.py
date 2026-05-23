@@ -310,7 +310,7 @@ def main() -> None:
 SCRIPT_LABEL = 'Candidate Selector Admissibility and Rejection Sieve'
 MARKER_ID = 'g43_selector_sieve'
 GROUP_SCOPE = 'Group 43 trace-normalization branch or parallel decision surface'
-DEPENDENCIES = [('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g43_parallel_records', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_parallel_declaration_candidate_ledger', 'g43_parallel_records')]
+DEPENDENCIES = [('g42_summary', '042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g43_parallel_records', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_parallel_declaration_candidate_ledger', 'g43_parallel_records')]
 QUESTION = 'Which branch-decision selectors are forbidden, which are admissible only as context, and which require explicit theory-owner choice?'
 DISCIPLINE = 'This script classifies selector types for the branch-or-parallel decision surface. It rejects recovery/downstream selectors and separates admissible context from derivation or choice.'
 OPENING_DETAIL = 'selector sieve only; no selector chooses a branch in this group'

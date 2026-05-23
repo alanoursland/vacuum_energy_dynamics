@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Boundary Scalar Silence Dependency Audit'
 MARKER_ID = 'g52_boundary_silence'
-DEPENDENCIES = [('g51_summary', '51_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '52_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_a_mass_protection', '52_residual_source_boundary_safety_load_testing__candidate_a_sector_mass_protection_audit', 'g52_a_mass_protection')]
+DEPENDENCIES = [('g51_summary', '051_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '052_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_a_mass_protection', '052_residual_source_boundary_safety_load_testing__candidate_a_sector_mass_protection_audit', 'g52_a_mass_protection')]
 QUESTION = 'What boundary neutrality and exterior scalar-silence conditions are required before the conditional candidate can touch physical use?'
 DISCIPLINE = 'This script audits exterior scalar-tail and boundary neutrality burdens. It does not prove boundary neutrality.'
 OPENING_LINE = 'Boundary scalar-silence dependency audit opened -- boundary burdens only'

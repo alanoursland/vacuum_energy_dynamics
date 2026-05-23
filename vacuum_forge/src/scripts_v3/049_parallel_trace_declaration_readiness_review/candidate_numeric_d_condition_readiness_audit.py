@@ -226,7 +226,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Numeric d Condition Readiness Audit'
 MARKER_ID = 'g49_numeric_d_readiness'
-DEPENDENCIES = [('g48_summary', '48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_record_acceptance', '49_parallel_trace_declaration_readiness_review__candidate_scope_status_record_acceptance_audit', 'g49_record_acceptance')]
+DEPENDENCIES = [('g48_summary', '048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_record_acceptance', '049_parallel_trace_declaration_readiness_review__candidate_scope_status_record_acceptance_audit', 'g49_record_acceptance')]
 QUESTION = 'Does the numeric-d condition block a later parallel declaration attempt, or can a symbolic scope-conditioned declaration attempt preserve it?'
 DISCIPLINE = 'This script decides whether numeric d must be fixed before any declaration attempt. It may permit only a symbolic and scope-conditioned declaration attempt, not a numeric declaration.'
 OPENING_LINE = 'Numeric-d condition readiness audit opened -- symbolic/scope-conditioned review only; no numeric d declaration'

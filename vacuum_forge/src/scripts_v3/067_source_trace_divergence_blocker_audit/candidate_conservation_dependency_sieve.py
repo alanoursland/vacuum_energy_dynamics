@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Conservation Dependency Sieve'
 MARKER_ID = 'g67_cons'
-DEPENDENCIES = [('g66_summary', '66_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary'), ('g67_problem', '67_source_trace_divergence_blocker_audit__candidate_blocker_problem', 'g67_problem'), ('g67_div', '67_source_trace_divergence_blocker_audit__candidate_divergence_identity_obstruction', 'g67_div')]
+DEPENDENCIES = [('g66_summary', '066_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary'), ('g67_problem', '067_source_trace_divergence_blocker_audit__candidate_blocker_problem', 'g67_problem'), ('g67_div', '067_source_trace_divergence_blocker_audit__candidate_divergence_identity_obstruction', 'g67_div')]
 QUESTION = 'What prerequisites remain for a real parent divergence identity?'
 DISCIPLINE = 'This script records conservation prerequisites after the reduced divergence obstruction.'
 OPENING_LINE = 'Conservation dependency sieve opened'

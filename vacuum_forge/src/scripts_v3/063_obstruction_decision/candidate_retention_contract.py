@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Retention Contract'
 MARKER_ID = 'g63_contract'
-DEPENDENCIES = [('g62_summary', '62_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '63_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_down', '63_obstruction_decision__candidate_downgrade_semantics', 'g63_down')]
+DEPENDENCIES = [('g62_summary', '062_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '063_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_down', '063_obstruction_decision__candidate_downgrade_semantics', 'g63_down')]
 QUESTION = 'Under what contract may the obstructed transition response remain as audit material?'
 DISCIPLINE = 'This script defines the minimum contract for conditional audit retention.'
 OPENING_LINE = 'Conditional audit-retention contract opened'

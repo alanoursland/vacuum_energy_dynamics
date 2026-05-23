@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Derivative Locality Sieve'
 MARKER_ID = 'g60_der'
-DEPENDENCIES = [('g59_summary', '59_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '60_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_repair', '60_term_exclusion_sieve__candidate_repair_sieve', 'g60_repair')]
+DEPENDENCIES = [('g59_summary', '059_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '060_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_repair', '060_term_exclusion_sieve__candidate_repair_sieve', 'g60_repair')]
 QUESTION = 'Do candidate bases remain localized under derivatives needed by field equations?'
 DISCIPLINE = 'This script tests endpoint derivative locality through second order. It narrows the scalar/stress interpretation.'
 OPENING_LINE = 'Derivative locality sieve opened'

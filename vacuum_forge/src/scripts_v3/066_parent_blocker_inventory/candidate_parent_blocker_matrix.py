@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Parent Blocker Matrix'
 MARKER_ID = 'g66_matrix'
-DEPENDENCIES = [('g65_summary', '65_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '66_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_ledger', '66_parent_blocker_inventory__candidate_artifact_status_ledger', 'g66_ledger')]
+DEPENDENCIES = [('g65_summary', '065_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '066_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_ledger', '066_parent_blocker_inventory__candidate_artifact_status_ledger', 'g66_ledger')]
 QUESTION = 'What remaining blockers prevent parent field-equation construction?'
 DISCIPLINE = 'This script records the parent blocker matrix after transition-response quarantine.'
 OPENING_LINE = 'Parent blocker matrix opened'

@@ -222,7 +222,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Declaration Scope Candidate Sieve'
 MARKER_ID = 'g47_scope_candidate_sieve'
-DEPENDENCIES = [('g46_summary', '46_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_review_decl_boundary', '47_normalization_declaration_scope_closure_audit__candidate_review_vs_declaration_scope_boundary', 'g47_review_decl_boundary')]
+DEPENDENCIES = [('g46_summary', '046_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_review_decl_boundary', '047_normalization_declaration_scope_closure_audit__candidate_review_vs_declaration_scope_boundary', 'g47_review_decl_boundary')]
 QUESTION = 'Which declaration-scope candidates survive the current guardrails, and which scope routes are eliminated?'
 DISCIPLINE = 'This script sieves possible declaration-scope routes. It may identify a surviving pre-declaration scope candidate but cannot declare trace normalization.'
 OPENING_LINE = 'Declaration-scope candidate sieve opened -- candidate routes classified; no declaration executed'

@@ -224,7 +224,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Status Field and Nonactive Branch Record'
 MARKER_ID = 'g48_status_field'
-DEPENDENCIES = [('g47_summary', '47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_schema', '48_explicit_paired_declaration_scope_status_record__candidate_paired_scope_record_schema', 'g48_schema')]
+DEPENDENCIES = [('g47_summary', '047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_schema', '048_explicit_paired_declaration_scope_status_record__candidate_paired_scope_record_schema', 'g48_schema')]
 QUESTION = 'How should the status field prevent the paired record from becoming a hidden declaration or branch choice?'
 DISCIPLINE = 'This script audits the status field and branch non-active clauses. It must prevent scope-record clarity from becoming branch choice, declaration, or adoption.'
 OPENING_LINE = 'Status/non-active branch record opened -- status discipline only; no branch choice or declaration'

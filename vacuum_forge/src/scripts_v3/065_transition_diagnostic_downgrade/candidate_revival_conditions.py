@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Revival Conditions'
 MARKER_ID = 'g65_revival'
-DEPENDENCIES = [('g64_summary', '64_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '65_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_convert', '65_transition_diagnostic_downgrade__candidate_status_conversion', 'g65_convert')]
+DEPENDENCIES = [('g64_summary', '064_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '065_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_convert', '065_transition_diagnostic_downgrade__candidate_status_conversion', 'g65_convert')]
 QUESTION = 'What would be required to revive the diagnostic-only transition response as a candidate?'
 DISCIPLINE = 'This script records the future theorem gate for candidate revival.'
 OPENING_LINE = 'Revival-condition gate opened'

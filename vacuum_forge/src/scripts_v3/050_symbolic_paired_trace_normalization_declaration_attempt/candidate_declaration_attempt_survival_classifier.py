@@ -161,7 +161,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 # Group: 50_symbolic_paired_trace_normalization_declaration_attempt
 SCRIPT_LABEL = 'Candidate Declaration Attempt Survival Classifier'
 MARKER_ID = 'g50_survival_classifier'
-DEPENDENCIES = [('g49_summary', '49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_failure_sieve', '50_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_attempt_failure_sieve', 'g50_failure_sieve')]
+DEPENDENCIES = [('g49_summary', '049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_failure_sieve', '050_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_attempt_failure_sieve', 'g50_failure_sieve')]
 QUESTION = 'What is the honest status of the Group 50 declaration attempt?'
 DISCIPLINE = 'This script classifies whether the attempt succeeds as conditional only, fails, or requires additional axiom/choice/theorem work.'
 OPENING_LINE = 'Declaration attempt survival classifier opened -- classification only; no adoption or insertion'

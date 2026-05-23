@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Covariant Divergence Identity Problem'
 MARKER_ID = 'g68_problem'
-DEPENDENCIES = [('g67_summary', '67_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary')]
+DEPENDENCIES = [('g67_summary', '067_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary')]
 QUESTION = 'Can strict count-once incidence be lifted into a no-repair parent divergence identity?'
 DISCIPLINE = 'This opener frames Group 68 as a covariant divergence identity attempt, not parent construction.'
 OPENING_LINE = 'Group 68 covariant divergence identity attempt opened'

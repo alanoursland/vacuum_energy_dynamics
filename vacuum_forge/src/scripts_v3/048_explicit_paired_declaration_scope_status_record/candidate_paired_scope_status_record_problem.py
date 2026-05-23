@@ -224,7 +224,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Paired Scope Status Record Problem'
 MARKER_ID = 'g48_problem'
-DEPENDENCIES = [('g47_summary', '47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g47_route_classifier', '47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_route_classifier', 'g47_route_classifier')]
+DEPENDENCIES = [('g47_summary', '047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g47_route_classifier', '047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_route_classifier', 'g47_route_classifier')]
 QUESTION = 'What exactly can Group 48 instantiate as the explicit paired declaration-scope/status record without declaring trace normalization?'
 DISCIPLINE = 'This script opens Group 48 as explicit record-surface instantiation. It may state the paired declaration-scope/status record fields, but it cannot declare trace normalization, choose a branch, adopt Package B, insert B_s/F_zeta, construct active O, or open parent closure.'
 OPENING_LINE = 'Group 48 paired declaration-scope/status record opened -- record instantiation only; no trace declaration, branch choice, adoption, insertion, active O, recombination, or parent route'

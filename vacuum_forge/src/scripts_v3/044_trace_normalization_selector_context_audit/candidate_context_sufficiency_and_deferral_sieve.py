@@ -175,11 +175,11 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Context Sufficiency and Deferral Sieve'
 MARKER_ID = 'g44_context_sufficiency'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g44_source_hierarchy', '44_trace_normalization_selector_context_audit__candidate_source_hierarchy_evidence_ledger', 'g44_source_hierarchy'),
-    ('g44_consequence_context', '44_trace_normalization_selector_context_audit__candidate_branch_consequence_context_matrix', 'g44_consequence_context'),
-    ('g44_route_burden', '44_trace_normalization_selector_context_audit__candidate_route_burden_comparison_audit', 'g44_route_burden'),
-    ('g44_owner_boundary', '44_trace_normalization_selector_context_audit__candidate_theory_owner_choice_boundary', 'g44_owner_boundary'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g44_source_hierarchy', '044_trace_normalization_selector_context_audit__candidate_source_hierarchy_evidence_ledger', 'g44_source_hierarchy'),
+    ('g44_consequence_context', '044_trace_normalization_selector_context_audit__candidate_branch_consequence_context_matrix', 'g44_consequence_context'),
+    ('g44_route_burden', '044_trace_normalization_selector_context_audit__candidate_route_burden_comparison_audit', 'g44_route_burden'),
+    ('g44_owner_boundary', '044_trace_normalization_selector_context_audit__candidate_theory_owner_choice_boundary', 'g44_owner_boundary'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'Is the current context enough to support a later explicit branch choice, parallel route, or continued deferral handoff?'

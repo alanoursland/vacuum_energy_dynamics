@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Quadratic Scalar Origin'
 MARKER_ID = 'g64_quad'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '64_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_req', '64_variational_stress_origin__candidate_functional_requirements', 'g64_req')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '064_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_req', '064_variational_stress_origin__candidate_functional_requirements', 'g64_req')]
 QUESTION = 'Can eta arise as a stationary profile of a simple constant-coefficient quadratic scalar functional?'
 DISCIPLINE = "This script tests the necessary condition f''=k f with constant k."
 OPENING_LINE = 'Quadratic scalar origin test opened'

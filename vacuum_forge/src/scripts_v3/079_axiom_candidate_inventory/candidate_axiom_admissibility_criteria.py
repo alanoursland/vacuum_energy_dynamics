@@ -78,7 +78,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
         )
     )
 
-DEPENDENCIES = [('g79_problem', '79_axiom_candidate_inventory__candidate_axiom_inventory_problem', 'g79_problem')]
+DEPENDENCIES = [('g79_problem', '079_axiom_candidate_inventory__candidate_axiom_inventory_problem', 'g79_problem')]
 MARKER_ID = 'g79_criteria'
 def main():
     archive, ns, invalidated = prepare_archive(DEPENDENCIES)

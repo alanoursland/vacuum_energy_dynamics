@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Diagnostic Preservation Ledger'
 MARKER_ID = 'g65_ledger'
-DEPENDENCIES = [('g64_summary', '64_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '65_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem')]
+DEPENDENCIES = [('g64_summary', '064_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '065_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem')]
 QUESTION = 'What useful evidence is preserved by diagnostic-only downgrade?'
 DISCIPLINE = 'This script records the diagnostic clues that survive quarantine.'
 OPENING_LINE = 'Diagnostic preservation ledger opened'

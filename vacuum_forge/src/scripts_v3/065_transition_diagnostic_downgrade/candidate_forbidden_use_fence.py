@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Forbidden Use Fence'
 MARKER_ID = 'g65_fence'
-DEPENDENCIES = [('g64_summary', '64_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '65_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_ledger', '65_transition_diagnostic_downgrade__candidate_diagnostic_preservation_ledger', 'g65_ledger')]
+DEPENDENCIES = [('g64_summary', '064_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '065_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_ledger', '065_transition_diagnostic_downgrade__candidate_diagnostic_preservation_ledger', 'g65_ledger')]
 QUESTION = 'What physical uses are forbidden after diagnostic-only downgrade?'
 DISCIPLINE = 'This script records the hard fence around diagnostic-only status.'
 OPENING_LINE = 'Forbidden-use fence opened'

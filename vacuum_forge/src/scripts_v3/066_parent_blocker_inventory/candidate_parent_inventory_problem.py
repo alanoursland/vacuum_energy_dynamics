@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Parent Inventory Problem'
 MARKER_ID = 'g66_problem'
-DEPENDENCIES = [('g65_summary', '65_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary')]
+DEPENDENCIES = [('g65_summary', '065_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary')]
 QUESTION = 'What blocks parent field-equation construction after transition-response diagnostic quarantine?'
 DISCIPLINE = 'This opener frames Group 66 as parent blocker inventory, not parent equation construction.'
 OPENING_LINE = 'Group 66 parent blocker inventory opened'

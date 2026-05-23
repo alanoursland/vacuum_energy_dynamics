@@ -221,7 +221,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Traced Dimension Field Audit'
 MARKER_ID = 'g46_dimension_field'
-DEPENDENCIES = [('g45_summary', '45_explicit_parallel_trace_normalization_record__candidate_group_45_status_summary', 'g45_summary'), ('g46_zeta_convention', '46_parallel_trace_convention_field_closure_audit__candidate_zeta_convention_field_audit', 'g46_zeta_convention')]
+DEPENDENCIES = [('g45_summary', '045_explicit_parallel_trace_normalization_record__candidate_group_45_status_summary', 'g45_summary'), ('g46_zeta_convention', '046_parallel_trace_convention_field_closure_audit__candidate_zeta_convention_field_audit', 'g46_zeta_convention')]
 
 
 def build_entries() -> List[Entry]:

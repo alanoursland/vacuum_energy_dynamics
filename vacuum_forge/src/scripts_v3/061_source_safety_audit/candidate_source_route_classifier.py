@@ -25,12 +25,12 @@ def prepare_archive():
     archive = ProjectArchive(ARCHIVE_ROOT)
     ns = archive.script_namespace(SCRIPT_ID)
     invalidated = ns.check_source_invalidation(__file__)
-    ns.declare_dependency(dependency_id='g60_summary', upstream_script_id='60_term_exclusion_sieve__candidate_group_60_status_summary', upstream_derivation_id='g60_summary')
-    ns.declare_dependency(dependency_id='g61_role', upstream_script_id='61_source_safety_audit__candidate_role_separation', upstream_derivation_id='g61_role')
-    ns.declare_dependency(dependency_id='g61_coupling', upstream_script_id='61_source_safety_audit__candidate_source_coupling', upstream_derivation_id='g61_coupling')
-    ns.declare_dependency(dependency_id='g61_mass', upstream_script_id='61_source_safety_audit__candidate_mass_moment', upstream_derivation_id='g61_mass')
-    ns.declare_dependency(dependency_id='g61_tension', upstream_script_id='61_source_safety_audit__candidate_trace_mass_tension', upstream_derivation_id='g61_tension')
-    ns.declare_dependency(dependency_id='g61_exchange', upstream_script_id='61_source_safety_audit__candidate_conservation_exchange', upstream_derivation_id='g61_exchange')
+    ns.declare_dependency(dependency_id='g60_summary', upstream_script_id='060_term_exclusion_sieve__candidate_group_60_status_summary', upstream_derivation_id='g60_summary')
+    ns.declare_dependency(dependency_id='g61_role', upstream_script_id='061_source_safety_audit__candidate_role_separation', upstream_derivation_id='g61_role')
+    ns.declare_dependency(dependency_id='g61_coupling', upstream_script_id='061_source_safety_audit__candidate_source_coupling', upstream_derivation_id='g61_coupling')
+    ns.declare_dependency(dependency_id='g61_mass', upstream_script_id='061_source_safety_audit__candidate_mass_moment', upstream_derivation_id='g61_mass')
+    ns.declare_dependency(dependency_id='g61_tension', upstream_script_id='061_source_safety_audit__candidate_trace_mass_tension', upstream_derivation_id='g61_tension')
+    ns.declare_dependency(dependency_id='g61_exchange', upstream_script_id='061_source_safety_audit__candidate_conservation_exchange', upstream_derivation_id='g61_exchange')
     return ns, invalidated
 
 

@@ -310,7 +310,7 @@ def main() -> None:
 SCRIPT_LABEL = 'Candidate Scale Branch Choice Readiness Ledger'
 MARKER_ID = 'g43_scale_branch'
 GROUP_SCOPE = 'Group 43 trace-normalization branch or parallel decision surface'
-DEPENDENCIES = [('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g42_trace_norm_sieve', '42_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve', 'g42_trace_norm_sieve'), ('g43_problem', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_problem', 'g43_problem'), ('g43_metric_branch', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger', 'g43_metric_branch')]
+DEPENDENCIES = [('g42_summary', '042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g42_trace_norm_sieve', '042_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve', 'g42_trace_norm_sieve'), ('g43_problem', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_problem', 'g43_problem'), ('g43_metric_branch', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger', 'g43_metric_branch')]
 QUESTION = 'What would be required before b_s_scale could be chosen explicitly as the trace-normalization branch?'
 DISCIPLINE = 'This script audits the scale-factor branch as a future explicit-choice candidate only. It does not choose b_s_scale, complete trace normalization, adopt Package B, or license insertion.'
 OPENING_DETAIL = 'scale branch readiness ledger only; b_s_scale remains non-active'

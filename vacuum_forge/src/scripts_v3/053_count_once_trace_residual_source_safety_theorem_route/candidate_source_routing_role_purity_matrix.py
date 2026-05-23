@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Source Routing Role-Purity Matrix'
 MARKER_ID = 'g53_source_role_purity'
-DEPENDENCIES = [('g52_summary', '52_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem'), ('g53_residual_non_o', '53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_nonentry_non_o_route_audit', 'g53_residual_non_o')]
+DEPENDENCIES = [('g52_summary', '052_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem'), ('g53_residual_non_o', '053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_nonentry_non_o_route_audit', 'g53_residual_non_o')]
 QUESTION = 'Can ordinary source incidence be restricted to the A-sector while trace/residual sectors remain source-pure?'
 DISCIPLINE = 'This script refines source no-double-counting into a role-purity condition. It does not prove ordinary matter separation.'
 OPENING_LINE = 'Source routing role-purity matrix opened -- A-sector-only source condition'

@@ -226,7 +226,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Parallel Declaration Attempt Route Classifier'
 MARKER_ID = 'g49_route_classifier'
-DEPENDENCIES = [('g48_summary', '48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_failure_sieve', '49_parallel_trace_declaration_readiness_review__candidate_predeclaration_failure_mode_sieve', 'g49_failure_sieve')]
+DEPENDENCIES = [('g48_summary', '048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_failure_sieve', '049_parallel_trace_declaration_readiness_review__candidate_predeclaration_failure_mode_sieve', 'g49_failure_sieve')]
 QUESTION = 'After declaration-readiness review, what is the honest next route?'
 DISCIPLINE = 'This script classifies whether a separate parallel trace-normalization declaration attempt is now an honest next target. It does not write the declaration.'
 OPENING_LINE = 'Parallel declaration-attempt route classifier opened -- route classification only; no declaration executed'

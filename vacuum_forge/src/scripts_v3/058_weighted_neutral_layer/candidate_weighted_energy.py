@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted Profile Energy'
 MARKER_ID = 'g58_energy'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '58_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '58_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_compare', '58_weighted_neutral_layer__candidate_flat_vs_weighted', 'g58_compare')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '058_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '058_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_compare', '058_weighted_neutral_layer__candidate_flat_vs_weighted', 'g58_compare')]
 QUESTION = 'Does the weighted-neutral profile have finite explicit reduced gradient energy?'
 DISCIPLINE = 'This script computes reduced gradient-energy scaling for the weighted-neutral layer profile. It does not prove full stress-energy accounting.'
 OPENING_LINE = 'Weighted-neutral layer energy audit opened'

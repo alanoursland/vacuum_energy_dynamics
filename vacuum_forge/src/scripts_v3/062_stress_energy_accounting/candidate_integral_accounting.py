@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Integral Accounting'
 MARKER_ID = 'g62_int'
-DEPENDENCIES = [('g61_summary', '61_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '62_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_P', '62_stress_energy_accounting__candidate_pressure_sum_obstruction', 'g62_P')]
+DEPENDENCIES = [('g61_summary', '061_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '062_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_P', '062_stress_energy_accounting__candidate_pressure_sum_obstruction', 'g62_P')]
 QUESTION = 'What is the integrated pressure/energy burden of trace-free versus active-mass-neutral closures?'
 DISCIPLINE = 'This script computes reduced integrated accounting for p_r and P.'
 OPENING_LINE = 'Integrated stress accounting opened'

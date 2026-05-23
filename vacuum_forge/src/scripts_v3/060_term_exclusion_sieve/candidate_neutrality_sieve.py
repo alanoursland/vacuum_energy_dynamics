@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted-Neutrality Sieve'
 MARKER_ID = 'g60_neu'
-DEPENDENCIES = [('g59_summary', '59_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '60_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_der', '60_term_exclusion_sieve__candidate_derivative_sieve', 'g60_der')]
+DEPENDENCIES = [('g59_summary', '059_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '060_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_der', '060_term_exclusion_sieve__candidate_derivative_sieve', 'g60_der')]
 QUESTION = 'Which candidate bases are actually weighted-neutral if interpreted as scalar response?'
 DISCIPLINE = 'This script tests weighted scalar charge of eta, eta^2, and constant terms. It narrows eta^2 to stress-only interpretation.'
 OPENING_LINE = 'Weighted-neutrality exclusion sieve opened'

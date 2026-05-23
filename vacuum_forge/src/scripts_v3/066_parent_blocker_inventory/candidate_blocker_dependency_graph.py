@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Blocker Dependency Graph'
 MARKER_ID = 'g66_graph'
-DEPENDENCIES = [('g65_summary', '65_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '66_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_recomb', '66_parent_blocker_inventory__candidate_recombination_prerequisite_sieve', 'g66_recomb')]
+DEPENDENCIES = [('g65_summary', '065_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '066_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_recomb', '066_parent_blocker_inventory__candidate_recombination_prerequisite_sieve', 'g66_recomb')]
 QUESTION = 'How do the remaining parent blockers depend on one another?'
 DISCIPLINE = 'This script records the dependency shape that should guide the next groups.'
 OPENING_LINE = 'Parent blocker dependency graph opened'

@@ -222,7 +222,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Declaration Scope Closure Problem'
 MARKER_ID = 'g47_problem'
-DEPENDENCIES = [('g46_summary', '46_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g46_scope_field', '46_parallel_trace_convention_field_closure_audit__candidate_normalization_scope_field_audit', 'g46_scope_field'), ('g46_route_classifier', '46_parallel_trace_convention_field_closure_audit__candidate_convention_closure_route_classifier', 'g46_route_classifier')]
+DEPENDENCIES = [('g46_summary', '046_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g46_scope_field', '046_parallel_trace_convention_field_closure_audit__candidate_normalization_scope_field_audit', 'g46_scope_field'), ('g46_route_classifier', '046_parallel_trace_convention_field_closure_audit__candidate_convention_closure_route_classifier', 'g46_route_classifier')]
 QUESTION = 'Can the normalization declaration-scope blocker named by Group 46 be closed, or must it become an explicit axiom/choice/theorem target?'
 DISCIPLINE = 'This script opens Group 47 as a targeted declaration-scope closure audit. It attacks the scope/status blocker directly and must not rerun all convention fields, choose a branch, declare trace normalization, adopt Package B, or license insertion.'
 OPENING_LINE = 'Group 47 declaration-scope closure audit opened -- targeted scope/status audit only; no branch choice, trace declaration, adoption, insertion, active O, recombination, or parent route'

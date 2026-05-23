@@ -78,7 +78,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
         )
     )
 
-DEPENDENCIES = [('g78_summary', '78_boundary_lift_split_obligation_ledger__candidate_group_78_status_summary', 'g78_summary')]
+DEPENDENCIES = [('g78_summary', '078_boundary_lift_split_obligation_ledger__candidate_group_78_status_summary', 'g78_summary')]
 MARKER_ID = 'g79_problem'
 def main():
     archive, ns, invalidated = prepare_archive(DEPENDENCIES)

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Active O Divergence Necessity'
 MARKER_ID = 'g68_o'
-DEPENDENCIES = [('g67_summary', '67_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '68_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem'), ('g68_repair', '68_covariant_divergence_identity_attempt__candidate_repair_current_rejection', 'g68_repair')]
+DEPENDENCIES = [('g67_summary', '067_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '068_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem'), ('g68_repair', '068_covariant_divergence_identity_attempt__candidate_repair_current_rejection', 'g68_repair')]
 QUESTION = 'Is active O necessary or licensed by the remaining divergence burden?'
 DISCIPLINE = 'This script classifies active O as conditional and unconstructed, not a cancellation label.'
 OPENING_LINE = 'Active O divergence necessity opened'

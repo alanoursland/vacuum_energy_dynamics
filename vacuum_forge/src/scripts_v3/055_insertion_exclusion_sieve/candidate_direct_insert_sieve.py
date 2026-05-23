@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Direct Insertion Sieve'
 MARKER_ID = 'g55_direct'
-DEPENDENCIES = [('g54_summary', '54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_group_54_status_summary', 'g54_summary'), ('g55_problem', '55_insertion_exclusion_sieve__candidate_insert_problem', 'g55_problem')]
+DEPENDENCIES = [('g54_summary', '054_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_group_54_status_summary', 'g54_summary'), ('g55_problem', '055_insertion_exclusion_sieve__candidate_insert_problem', 'g55_problem')]
 QUESTION = 'Does direct insertion create trace/source/boundary/mass load before theorem support exists?'
 DISCIPLINE = 'This script builds a direct insertion load diagnostic. It rejects direct load routes and preserves only no-direct-load/silent routes as possible theorem targets.'
 OPENING_LINE = 'Direct insertion sieve opened -- reject direct load routes'

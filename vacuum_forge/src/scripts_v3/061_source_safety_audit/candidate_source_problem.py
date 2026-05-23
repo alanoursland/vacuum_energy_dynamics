@@ -25,7 +25,7 @@ def prepare_archive():
     archive = ProjectArchive(ARCHIVE_ROOT)
     ns = archive.script_namespace(SCRIPT_ID)
     invalidated = ns.check_source_invalidation(__file__)
-    ns.declare_dependency(dependency_id='g60_summary', upstream_script_id='60_term_exclusion_sieve__candidate_group_60_status_summary', upstream_derivation_id='g60_summary')
+    ns.declare_dependency(dependency_id='g60_summary', upstream_script_id='060_term_exclusion_sieve__candidate_group_60_status_summary', upstream_derivation_id='g60_summary')
     return ns, invalidated
 
 

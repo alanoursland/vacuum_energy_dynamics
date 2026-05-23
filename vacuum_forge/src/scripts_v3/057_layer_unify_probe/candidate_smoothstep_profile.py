@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Smoothstep Profile'
 MARKER_ID = 'g57_s'
-DEPENDENCIES = [('g56_summary', '56_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '57_layer_unify_probe__candidate_layer_problem', 'g57_problem')]
+DEPENDENCIES = [('g56_summary', '056_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '057_layer_unify_probe__candidate_layer_problem', 'g57_problem')]
 QUESTION = 'Can a finite transition layer have smooth endpoint value, slope, and curvature matching?'
 DISCIPLINE = 'This script constructs a quintic smoothstep layer profile and verifies endpoint behavior. It does not prove physical boundary neutrality.'
 OPENING_LINE = 'Smoothstep finite-layer profile construction opened'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Next Route Priority'
 MARKER_ID = 'g66_priority'
-DEPENDENCIES = [('g65_summary', '65_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '66_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_graph', '66_parent_blocker_inventory__candidate_blocker_dependency_graph', 'g66_graph')]
+DEPENDENCIES = [('g65_summary', '065_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '066_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_graph', '066_parent_blocker_inventory__candidate_blocker_dependency_graph', 'g66_graph')]
 QUESTION = 'Which next route should follow the parent blocker inventory?'
 DISCIPLINE = 'This script prioritizes next work based on the dependency graph.'
 OPENING_LINE = 'Next-route priority opened'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Functional Requirements'
 MARKER_ID = 'g64_req'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '64_variational_stress_origin__candidate_variational_problem', 'g64_problem')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '064_variational_stress_origin__candidate_variational_problem', 'g64_problem')]
 QUESTION = 'What must a real variational/stress origin derive to keep the candidate live?'
 DISCIPLINE = 'This script restates the retention contract as concrete origin requirements.'
 OPENING_LINE = 'Functional-origin requirements opened'

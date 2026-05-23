@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Layer Unification Problem'
 MARKER_ID = 'g57_problem'
-DEPENDENCIES = [('g56_summary', '56_silent_insert_law__candidate_group_56_status_summary', 'g56_summary')]
+DEPENDENCIES = [('g56_summary', '056_silent_insert_law__candidate_group_56_status_summary', 'g56_summary')]
 QUESTION = 'Can a finite transition layer expose the residue terms a unified interior/exterior rule must explain?'
 DISCIPLINE = 'This opener frames Group 57 as a finite transition-layer unification probe. It may compute layer residues and diagnostics, but it must not insert B_s/F_zeta or open a parent equation.'
 OPENING_LINE = 'Group 57 finite transition-layer unification probe opened -- diagnostic only'

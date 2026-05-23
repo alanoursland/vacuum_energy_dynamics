@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Residual Nonentry Obstruction Sieve'
 MARKER_ID = 'g52_residual_nonentry'
-DEPENDENCIES = [('g51_summary', '51_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '52_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_count_once_trace', '52_residual_source_boundary_safety_load_testing__candidate_count_once_trace_incidence_audit', 'g52_count_once_trace')]
+DEPENDENCIES = [('g51_summary', '051_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '052_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_count_once_trace', '052_residual_source_boundary_safety_load_testing__candidate_count_once_trace_incidence_audit', 'g52_count_once_trace')]
 QUESTION = 'What residual-entry routes would block the conditional trace-normalization candidate from physical use?'
 DISCIPLINE = 'This sieve rejects residual-entry shortcuts. It does not construct active O and does not prove residual nonentry.'
 OPENING_LINE = 'Residual nonentry obstruction sieve opened -- reject residual-entry shortcuts'

@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Residual Nonentry Non-O Route Audit'
 MARKER_ID = 'g53_residual_non_o'
-DEPENDENCIES = [('g52_summary', '52_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem'), ('g53_count_once_condition', '53_count_once_trace_residual_source_safety_theorem_route__candidate_count_once_trace_condition_formalization', 'g53_count_once_condition')]
+DEPENDENCIES = [('g52_summary', '052_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem'), ('g53_count_once_condition', '053_count_once_trace_residual_source_safety_theorem_route__candidate_count_once_trace_condition_formalization', 'g53_count_once_condition')]
 QUESTION = 'Can residual zeta/kappa nonentry be defined as a role-purity theorem target without constructing active O?'
 DISCIPLINE = 'This script tests the non-O residual nonentry route as a role-purity condition. It does not construct O and does not prove residual nonentry.'
 OPENING_LINE = 'Residual non-O route audit opened -- role-purity condition only'

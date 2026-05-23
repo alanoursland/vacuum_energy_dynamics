@@ -222,7 +222,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Review vs Declaration Scope Boundary'
 MARKER_ID = 'g47_review_decl_boundary'
-DEPENDENCIES = [('g46_summary', '46_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_problem', '47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_closure_problem', 'g47_problem')]
+DEPENDENCIES = [('g46_summary', '046_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_problem', '047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_closure_problem', 'g47_problem')]
 QUESTION = 'Where exactly is the boundary between record-review scope and trace-normalization declaration scope?'
 DISCIPLINE = 'This script separates record-review scope from declaration scope so review-ready parallel records cannot be promoted by prose.'
 OPENING_LINE = 'Review/declaration scope boundary opened -- boundary audit only; no declaration or branch choice'

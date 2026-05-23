@@ -161,7 +161,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 # Group: 50_symbolic_paired_trace_normalization_declaration_attempt
 SCRIPT_LABEL = 'Candidate Paired Declaration Attempt Record'
 MARKER_ID = 'g50_attempt_record'
-DEPENDENCIES = [('g49_summary', '49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_problem', '50_symbolic_paired_trace_normalization_declaration_attempt__candidate_symbolic_paired_declaration_attempt_problem', 'g50_problem')]
+DEPENDENCIES = [('g49_summary', '049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_problem', '050_symbolic_paired_trace_normalization_declaration_attempt__candidate_symbolic_paired_declaration_attempt_problem', 'g50_problem')]
 QUESTION = 'What does the paired symbolic declaration-attempt record actually state?'
 DISCIPLINE = 'This script states the declaration-attempt record fields. It does not turn the attempt into adoption or field-equation use.'
 OPENING_LINE = 'Paired declaration-attempt record opened -- record only; no adoption or insertion'

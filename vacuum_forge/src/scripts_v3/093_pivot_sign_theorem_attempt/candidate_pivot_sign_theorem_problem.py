@@ -47,7 +47,7 @@ def det_rows(max_n:int, signed=False):
     return rows
 def sign_normalization_factor(N:int): return sp.Integer(1 if N<=10 else (-1 if N%2 else 1))
 
-DEPENDENCIES = [('g92_summary', '92_determinant_sign_recurrence_search__candidate_group_92_status_summary', 'g92_summary')]
+DEPENDENCIES = [('g92_summary', '092_determinant_sign_recurrence_search__candidate_group_92_status_summary', 'g92_summary')]
 MARKER_ID = 'g93_problem'
 
 

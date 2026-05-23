@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Divergence-Silent Stress'
 MARKER_ID = 'g56_div'
-DEPENDENCIES = [('g55_summary', '55_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '56_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_shell', '56_silent_insert_law__candidate_shell_neutral_match', 'g56_shell')]
+DEPENDENCIES = [('g55_summary', '055_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '056_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_shell', '056_silent_insert_law__candidate_shell_neutral_match', 'g56_shell')]
 QUESTION = 'Can a reduced anisotropic stress closure be made divergence-silent and boundary-null?'
 DISCIPLINE = 'This script constructs a reduced spherical divergence-silent stress closure. It is not a covariant Bianchi identity proof.'
 OPENING_LINE = 'Divergence-silent stress closure opened'

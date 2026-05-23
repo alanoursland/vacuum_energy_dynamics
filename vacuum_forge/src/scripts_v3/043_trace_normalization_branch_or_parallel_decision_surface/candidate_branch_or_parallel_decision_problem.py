@@ -310,7 +310,7 @@ def main() -> None:
 SCRIPT_LABEL = 'Candidate Branch or Parallel Decision Problem'
 MARKER_ID = 'g43_problem'
 GROUP_SCOPE = 'Group 43 trace-normalization branch or parallel decision surface'
-DEPENDENCIES = [('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g41_summary', '41_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary')]
+DEPENDENCIES = [('g42_summary', '042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g41_summary', '041_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary')]
 QUESTION = 'After Group 42 exclusions, what trace-normalization decision routes are legitimate: metric branch, scale branch, parallel records, or continued deferral?'
 DISCIPLINE = 'This script opens Group 43 as a branch-or-parallel decision-surface audit. It classifies decision routes but does not choose a branch, complete trace normalization, adopt Package B, insert B_s/F_zeta, construct active O, or open parent closure.'
 OPENING_DETAIL = 'decision-surface audit only; branch choice, declaration, adoption, insertion, and parent closure remain closed'

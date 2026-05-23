@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Flat vs Weighted Neutrality'
 MARKER_ID = 'g58_compare'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '58_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '58_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '058_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '058_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile')]
 QUESTION = 'Does the new weighted-neutral profile fix the Group 57 flat-neutrality failure?'
 DISCIPLINE = 'This script compares flat odd cancellation to weighted spherical neutrality. It rejects flat neutrality as sufficient.'
 OPENING_LINE = 'Flat versus weighted neutrality comparison opened'

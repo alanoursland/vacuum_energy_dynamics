@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Silent Insertion Problem'
 MARKER_ID = 'g56_problem'
-DEPENDENCIES = [('g55_summary', '55_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary')]
+DEPENDENCIES = [('g55_summary', '055_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary')]
 QUESTION = 'Can the conditional silent/inert insertion route be made into a reduced theorem surface?'
 DISCIPLINE = 'This opener frames Group 56 as a reduced silent/inert insertion-law attempt. It may construct reduced theorem-surface candidates, but it must not insert B_s/F_zeta into a field equation.'
 OPENING_LINE = 'Group 56 silent/inert insertion-law surface opened -- reduced theorem target only'

@@ -140,8 +140,8 @@ class Entry:
 SCRIPT_LABEL = 'Candidate Split-Safe Precondition Problem'
 MARKER_ID = 'g40_problem'
 DEPENDENCIES = [
-    ('g39_summary', '39_trace_anchor_branch_choice_readiness_audit__candidate_group_39_status_summary', 'g39_summary'),
-    ('g38_summary', '38_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
+    ('g39_summary', '039_trace_anchor_branch_choice_readiness_audit__candidate_group_39_status_summary', 'g39_summary'),
+    ('g38_summary', '038_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
 ]
 
 

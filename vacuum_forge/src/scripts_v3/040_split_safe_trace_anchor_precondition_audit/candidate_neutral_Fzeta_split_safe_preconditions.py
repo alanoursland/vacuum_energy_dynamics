@@ -140,9 +140,9 @@ class Entry:
 SCRIPT_LABEL = 'Candidate Neutral F_zeta Split-Safe Preconditions'
 MARKER_ID = 'g40_fzeta_precond'
 DEPENDENCIES = [
-    ('g39_summary', '39_trace_anchor_branch_choice_readiness_audit__candidate_group_39_status_summary', 'g39_summary'),
-    ('g38_summary', '38_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
-    ('g40_branch_indexed', '40_split_safe_trace_anchor_precondition_audit__candidate_branch_indexed_precondition_ledger', 'g40_branch_indexed'),
+    ('g39_summary', '039_trace_anchor_branch_choice_readiness_audit__candidate_group_39_status_summary', 'g39_summary'),
+    ('g38_summary', '038_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
+    ('g40_branch_indexed', '040_split_safe_trace_anchor_precondition_audit__candidate_branch_indexed_precondition_ledger', 'g40_branch_indexed'),
 ]
 
 

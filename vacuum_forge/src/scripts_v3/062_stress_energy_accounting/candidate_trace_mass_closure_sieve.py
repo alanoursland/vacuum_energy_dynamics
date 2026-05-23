@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Trace/Mass Closure Sieve'
 MARKER_ID = 'g62_closure'
-DEPENDENCIES = [('g61_summary', '61_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '62_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_inv', '62_stress_energy_accounting__candidate_closure_inventory', 'g62_inv')]
+DEPENDENCIES = [('g61_summary', '061_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '062_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_inv', '062_stress_energy_accounting__candidate_closure_inventory', 'g62_inv')]
 QUESTION = 'Can a one-parameter closure u=gamma*P satisfy trace-free and active-mass-neutral diagnostics?'
 DISCIPLINE = 'This script derives the trace/mass closure conflict algebraically.'
 OPENING_LINE = 'Trace/mass closure sieve opened'

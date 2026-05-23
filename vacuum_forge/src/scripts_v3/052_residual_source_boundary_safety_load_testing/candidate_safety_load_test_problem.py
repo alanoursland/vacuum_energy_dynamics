@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Safety Load Test Problem'
 MARKER_ID = 'g52_problem'
-DEPENDENCIES = [('g51_summary', '51_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary')]
+DEPENDENCIES = [('g51_summary', '051_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary')]
 QUESTION = 'What safety load-test surface follows from the Group 51 retained conditional trace-normalization candidate?'
 DISCIPLINE = 'This opener frames Group 52 as residual/source/boundary safety load testing. It may classify burdens and obstruction routes, but it must not insert B_s/F_zeta, construct active O, adopt Package B, or open parent closure.'
 OPENING_LINE = 'Group 52 safety load-test surface opened -- audit-only candidate; no insertion or parent route'

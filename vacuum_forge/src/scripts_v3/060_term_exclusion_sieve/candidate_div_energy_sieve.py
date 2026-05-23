@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Divergence/Energy Sieve'
 MARKER_ID = 'g60_div'
-DEPENDENCIES = [('g59_summary', '59_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '60_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_src', '60_term_exclusion_sieve__candidate_source_trace_sieve', 'g60_src')]
+DEPENDENCIES = [('g59_summary', '059_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '060_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_src', '060_term_exclusion_sieve__candidate_source_trace_sieve', 'g60_src')]
 QUESTION = 'Does the narrowed stress-only candidate survive divergence while preserving explicit energy burden?'
 DISCIPLINE = 'This script rejects radial-only stress, retains closure-supported reduced D=0, and preserves nonfree energy/stress burden.'
 OPENING_LINE = 'Divergence/energy sieve opened'

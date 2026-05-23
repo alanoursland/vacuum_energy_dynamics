@@ -175,9 +175,9 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Source Hierarchy Evidence Ledger'
 MARKER_ID = 'g44_source_hierarchy'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g43_selector_sieve', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_selector_admissibility_and_rejection_sieve', 'g43_selector_sieve'),
-    ('g44_problem', '44_trace_normalization_selector_context_audit__candidate_selector_context_problem', 'g44_problem'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g43_selector_sieve', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_selector_admissibility_and_rejection_sieve', 'g43_selector_sieve'),
+    ('g44_problem', '044_trace_normalization_selector_context_audit__candidate_selector_context_problem', 'g44_problem'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'What source or notation evidence can legitimately inform a later trace-normalization route choice?'

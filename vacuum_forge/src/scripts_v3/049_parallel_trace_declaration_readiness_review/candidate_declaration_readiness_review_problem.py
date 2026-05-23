@@ -226,7 +226,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Declaration Readiness Review Problem'
 MARKER_ID = 'g49_problem'
-DEPENDENCIES = [('g48_summary', '48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g48_integrity_sieve', '48_explicit_paired_declaration_scope_status_record__candidate_scope_status_record_integrity_sieve', 'g48_integrity_sieve')]
+DEPENDENCIES = [('g48_summary', '048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g48_integrity_sieve', '048_explicit_paired_declaration_scope_status_record__candidate_scope_status_record_integrity_sieve', 'g48_integrity_sieve')]
 QUESTION = 'Can the instantiated paired declaration-scope/status record support a later separate parallel trace-normalization declaration attempt?'
 DISCIPLINE = 'This script opens Group 49 as declaration-readiness review. It may review whether an attempt is honest, but it does not declare trace normalization, choose a branch, adopt Package B, or license insertion.'
 OPENING_LINE = 'Group 49 declaration-readiness review opened -- review only; no trace declaration, branch choice, adoption, insertion, active O, recombination, or parent route'

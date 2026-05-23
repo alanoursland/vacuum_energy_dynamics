@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Energy Sign Sieve'
 MARKER_ID = 'g62_sign'
-DEPENDENCIES = [('g61_summary', '61_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '62_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_int', '62_stress_energy_accounting__candidate_integral_accounting', 'g62_int')]
+DEPENDENCIES = [('g61_summary', '061_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '062_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_int', '062_stress_energy_accounting__candidate_integral_accounting', 'g62_int')]
 QUESTION = 'Do simple u closures provide admissible stress-energy accounting?'
 DISCIPLINE = 'This script rejects arbitrary zero-energy closure and records sign/positivity burdens for u=±P.'
 OPENING_LINE = 'Energy sign/positivity burden sieve opened'

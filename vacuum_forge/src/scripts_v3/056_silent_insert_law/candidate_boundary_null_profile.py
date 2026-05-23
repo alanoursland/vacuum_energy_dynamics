@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Boundary-Null Profile'
 MARKER_ID = 'g56_w'
-DEPENDENCIES = [('g55_summary', '55_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '56_silent_insert_law__candidate_silent_problem', 'g56_problem')]
+DEPENDENCIES = [('g55_summary', '055_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '056_silent_insert_law__candidate_silent_problem', 'g56_problem')]
 QUESTION = 'Can a nontrivial reduced profile vanish with its derivative at the boundary?'
 DISCIPLINE = 'This script constructs a compact boundary-null profile. It does not prove physical insertion.'
 OPENING_LINE = 'Boundary-null profile construction opened'

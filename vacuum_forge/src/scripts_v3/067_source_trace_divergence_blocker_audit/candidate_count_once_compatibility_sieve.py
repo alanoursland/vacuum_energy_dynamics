@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Count-Once Compatibility Sieve'
 MARKER_ID = 'g67_count'
-DEPENDENCIES = [('g66_summary', '66_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary'), ('g67_problem', '67_source_trace_divergence_blocker_audit__candidate_blocker_problem', 'g67_problem'), ('g67_incidence', '67_source_trace_divergence_blocker_audit__candidate_source_trace_incidence_audit', 'g67_incidence')]
+DEPENDENCIES = [('g66_summary', '066_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary'), ('g67_problem', '067_source_trace_divergence_blocker_audit__candidate_blocker_problem', 'g67_problem'), ('g67_incidence', '067_source_trace_divergence_blocker_audit__candidate_source_trace_incidence_audit', 'g67_incidence')]
 QUESTION = 'Which combined source/trace incidence state is role-compatible for parent use?'
 DISCIPLINE = 'This script identifies the strict safe source/trace count-once state and rejects repair/carrier states.'
 OPENING_LINE = 'Count-once compatibility sieve opened'

@@ -226,7 +226,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Scope Status Record Acceptance Audit'
 MARKER_ID = 'g49_record_acceptance'
-DEPENDENCIES = [('g48_summary', '48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_problem', '49_parallel_trace_declaration_readiness_review__candidate_declaration_readiness_review_problem', 'g49_problem')]
+DEPENDENCIES = [('g48_summary', '048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_problem', '049_parallel_trace_declaration_readiness_review__candidate_declaration_readiness_review_problem', 'g49_problem')]
 QUESTION = 'Is the Group 48 paired scope/status record complete enough to be accepted as input for declaration-readiness review?'
 DISCIPLINE = 'This script accepts or rejects the record as review input only. Acceptance does not declare trace normalization.'
 OPENING_LINE = 'Scope/status record acceptance audit opened -- input acceptance only; no declaration execution'

@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate A-Sector Mass Protection Audit'
 MARKER_ID = 'g52_a_mass_protection'
-DEPENDENCIES = [('g51_summary', '51_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '52_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_source_matrix', '52_residual_source_boundary_safety_load_testing__candidate_source_no_double_counting_matrix', 'g52_source_matrix')]
+DEPENDENCIES = [('g51_summary', '051_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary', 'g51_summary'), ('g52_problem', '052_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem', 'g52_problem'), ('g52_source_matrix', '052_residual_source_boundary_safety_load_testing__candidate_source_no_double_counting_matrix', 'g52_source_matrix')]
 QUESTION = 'Does retaining the trace-normalization candidate threaten the protected reduced A-sector mass coin?'
 DISCIPLINE = 'This script protects the reduced A-sector mass result by auditing independent scalar trace charge. It does not derive a full covariant mass theorem.'
 OPENING_LINE = 'A-sector mass protection audit opened -- protect reduced mass coin'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted-Neutral Route Classifier'
 MARKER_ID = 'g58_class'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '58_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '58_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_compare', '58_weighted_neutral_layer__candidate_flat_vs_weighted', 'g58_compare'), ('g58_energy', '58_weighted_neutral_layer__candidate_weighted_energy', 'g58_energy'), ('g58_tailmass', '58_weighted_neutral_layer__candidate_tail_mass_zero', 'g58_tailmass'), ('g58_div', '58_weighted_neutral_layer__candidate_weighted_divergence', 'g58_div')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '058_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '058_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_compare', '058_weighted_neutral_layer__candidate_flat_vs_weighted', 'g58_compare'), ('g58_energy', '058_weighted_neutral_layer__candidate_weighted_energy', 'g58_energy'), ('g58_tailmass', '058_weighted_neutral_layer__candidate_tail_mass_zero', 'g58_tailmass'), ('g58_div', '058_weighted_neutral_layer__candidate_weighted_divergence', 'g58_div')]
 QUESTION = 'After weighted profile, flat comparison, energy, tail/mass, and divergence checks, what is the route status?'
 DISCIPLINE = 'This classifier reports the weighted-neutral finite-layer route status. It must not turn a reduced neutral profile into insertion or parent closure.'
 OPENING_LINE = 'Weighted-neutral route classifier opened'

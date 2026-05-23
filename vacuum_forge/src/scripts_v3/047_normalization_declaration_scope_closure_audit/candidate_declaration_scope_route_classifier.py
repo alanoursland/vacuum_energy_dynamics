@@ -222,7 +222,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Declaration Scope Route Classifier'
 MARKER_ID = 'g47_route_classifier'
-DEPENDENCIES = [('g46_summary', '46_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_parent_scope_reject', '47_normalization_declaration_scope_closure_audit__candidate_parent_facing_scope_rejection_audit', 'g47_parent_scope_reject'), ('g47_scope_status_matrix', '47_normalization_declaration_scope_closure_audit__candidate_scope_status_and_assumption_matrix', 'g47_scope_status_matrix')]
+DEPENDENCIES = [('g46_summary', '046_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_parent_scope_reject', '047_normalization_declaration_scope_closure_audit__candidate_parent_facing_scope_rejection_audit', 'g47_parent_scope_reject'), ('g47_scope_status_matrix', '047_normalization_declaration_scope_closure_audit__candidate_scope_status_and_assumption_matrix', 'g47_scope_status_matrix')]
 QUESTION = 'After the declaration-scope audits, what is the honest next route classification?'
 DISCIPLINE = 'This script classifies whether Group 47 made declaration scope ready for a later explicit record, still blocked it, or pushed the problem to axiom/choice/theorem routes.'
 OPENING_LINE = 'Declaration-scope route classifier opened -- route classification only; no declaration executed'

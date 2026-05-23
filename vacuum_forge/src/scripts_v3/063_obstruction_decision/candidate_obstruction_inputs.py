@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Obstruction Inputs'
 MARKER_ID = 'g63_inputs'
-DEPENDENCIES = [('g62_summary', '62_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '63_obstruction_decision__candidate_obstruction_problem', 'g63_problem')]
+DEPENDENCIES = [('g62_summary', '062_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '063_obstruction_decision__candidate_obstruction_problem', 'g63_problem')]
 QUESTION = 'What exact obstruction inputs from Group 62 control the candidate status decision?'
 DISCIPLINE = 'This script restates the closure algebra, P obstruction, and integral accounting as decision inputs.'
 OPENING_LINE = 'Obstruction input restatement opened'

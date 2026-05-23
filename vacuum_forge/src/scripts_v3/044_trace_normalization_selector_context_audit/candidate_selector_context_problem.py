@@ -175,8 +175,8 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Selector Context Problem'
 MARKER_ID = 'g44_problem'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g42_summary', '042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'What admissible context can inform a later trace-normalization route decision after forbidden selectors have been rejected?'

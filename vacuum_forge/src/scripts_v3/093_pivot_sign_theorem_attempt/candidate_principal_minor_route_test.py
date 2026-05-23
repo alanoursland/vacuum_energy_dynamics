@@ -47,7 +47,7 @@ def det_rows(max_n:int, signed=False):
     return rows
 def sign_normalization_factor(N:int): return sp.Integer(1 if N<=10 else (-1 if N%2 else 1))
 
-DEPENDENCIES = [('g93_total_positivity', '93_pivot_sign_theorem_attempt__candidate_total_positivity_obstruction', 'g93_total_positivity')]
+DEPENDENCIES = [('g93_total_positivity', '093_pivot_sign_theorem_attempt__candidate_total_positivity_obstruction', 'g93_total_positivity')]
 MARKER_ID = 'g93_principal_minor_test'
 
 

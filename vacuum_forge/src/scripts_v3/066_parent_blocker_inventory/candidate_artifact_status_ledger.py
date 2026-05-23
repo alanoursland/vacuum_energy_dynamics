@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Artifact Status Ledger'
 MARKER_ID = 'g66_ledger'
-DEPENDENCIES = [('g65_summary', '65_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '66_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem')]
+DEPENDENCIES = [('g65_summary', '065_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '066_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem')]
 QUESTION = 'Which current artifacts are parent-usable, diagnostic-only, rejected, or blocked?'
 DISCIPLINE = 'This script classifies current artifacts by parent usability.'
 OPENING_LINE = 'Artifact status ledger opened'

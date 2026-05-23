@@ -224,7 +224,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Paired Scope Record Schema'
 MARKER_ID = 'g48_schema'
-DEPENDENCIES = [('g47_summary', '47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_problem', '48_explicit_paired_declaration_scope_status_record__candidate_paired_scope_status_record_problem', 'g48_problem')]
+DEPENDENCIES = [('g47_summary', '047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_problem', '048_explicit_paired_declaration_scope_status_record__candidate_paired_scope_status_record_problem', 'g48_problem')]
 QUESTION = 'What fields must the explicit paired declaration-scope/status record contain?'
 DISCIPLINE = 'This script states the schema of the paired scope/status record. The schema makes the artifact explicit but does not install trace normalization.'
 OPENING_LINE = 'Paired scope/status record schema opened -- schema only; no declaration or downstream route'

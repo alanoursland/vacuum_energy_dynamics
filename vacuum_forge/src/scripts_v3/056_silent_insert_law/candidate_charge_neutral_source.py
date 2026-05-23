@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Charge-Neutral Source'
 MARKER_ID = 'g56_q'
-DEPENDENCIES = [('g55_summary', '55_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '56_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_w', '56_silent_insert_law__candidate_boundary_null_profile', 'g56_w')]
+DEPENDENCIES = [('g55_summary', '055_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '056_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_w', '056_silent_insert_law__candidate_boundary_null_profile', 'g56_w')]
 QUESTION = 'Can a nontrivial internal profile carry zero net exterior scalar charge?'
 DISCIPLINE = 'This script constructs a nontrivial reduced internal profile whose scalar charge integral vanishes. It does not prove physical source admissibility.'
 OPENING_LINE = 'Charge-neutral source construction opened'

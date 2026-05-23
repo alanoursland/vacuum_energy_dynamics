@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Linear Closure Origin'
 MARKER_ID = 'g64_lin'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '64_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_quad', '64_variational_stress_origin__candidate_quadratic_scalar_origin', 'g64_quad')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '064_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_quad', '064_variational_stress_origin__candidate_quadratic_scalar_origin', 'g64_quad')]
 QUESTION = 'Can a linear energy-density closure u=a p_r+b p_t solve trace and active-mass diagnostics?'
 DISCIPLINE = 'This script tests whether linear closure improves on u=gamma P.'
 OPENING_LINE = 'Linear closure origin test opened'

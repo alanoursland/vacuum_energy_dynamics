@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Trace Mass-Shift Boundary Neutrality Audit'
 MARKER_ID = 'g54_boundary_mass'
-DEPENDENCIES = [('g53_summary', '53_count_once_trace_residual_source_safety_theorem_route__candidate_group_53_status_summary', 'g53_summary'), ('g54_problem', '54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_boundary_scalar_silence_theorem_problem', 'g54_problem'), ('g54_flux_charge', '54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_scalar_flux_charge_zero_condition', 'g54_flux_charge'), ('g54_shell_jump', '54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_boundary_shell_jump_neutrality_audit', 'g54_shell_jump')]
+DEPENDENCIES = [('g53_summary', '053_count_once_trace_residual_source_safety_theorem_route__candidate_group_53_status_summary', 'g53_summary'), ('g54_problem', '054_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_boundary_scalar_silence_theorem_problem', 'g54_problem'), ('g54_flux_charge', '054_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_scalar_flux_charge_zero_condition', 'g54_flux_charge'), ('g54_shell_jump', '054_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_boundary_shell_jump_neutrality_audit', 'g54_shell_jump')]
 QUESTION = 'Does zero scalar charge conditionally block trace-sector exterior mass shift?'
 DISCIPLINE = 'This script links scalar charge neutrality to trace-sector mass neutrality. It does not prove covariant mass neutrality.'
 OPENING_LINE = 'Trace mass-shift boundary neutrality audit opened -- zero-charge mass condition'

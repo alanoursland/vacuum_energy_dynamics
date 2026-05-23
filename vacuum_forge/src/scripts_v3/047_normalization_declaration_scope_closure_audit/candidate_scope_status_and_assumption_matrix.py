@@ -222,7 +222,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Scope Status and Assumption Matrix'
 MARKER_ID = 'g47_scope_status_matrix'
-DEPENDENCIES = [('g46_summary', '46_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_scope_candidate_sieve', '47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_candidate_sieve', 'g47_scope_candidate_sieve')]
+DEPENDENCIES = [('g46_summary', '046_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary', 'g46_summary'), ('g47_scope_candidate_sieve', '047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_candidate_sieve', 'g47_scope_candidate_sieve')]
 QUESTION = 'What explicit status and assumptions would a surviving paired declaration-scope record need before any declaration attempt?'
 DISCIPLINE = 'This script maps the status and assumption fields needed by the surviving paired declaration-scope candidate. It does not close those assumptions as a declaration.'
 OPENING_LINE = 'Scope status/assumption matrix opened -- requirements visible; no trace declaration'

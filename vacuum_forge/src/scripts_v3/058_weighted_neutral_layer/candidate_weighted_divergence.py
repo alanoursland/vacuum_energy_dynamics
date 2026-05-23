@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted Layer Divergence'
 MARKER_ID = 'g58_div'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '58_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '58_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_tailmass', '58_weighted_neutral_layer__candidate_tail_mass_zero', 'g58_tailmass')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '058_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem'), ('g58_profile', '058_weighted_neutral_layer__candidate_weighted_profile', 'g58_profile'), ('g58_tailmass', '058_weighted_neutral_layer__candidate_tail_mass_zero', 'g58_tailmass')]
 QUESTION = 'Can the weighted-neutral layer shape support reduced divergence-silent closure?'
 DISCIPLINE = 'This script constructs a reduced divergence-silent closure using the weighted-neutral layer shape. It is not a covariant Bianchi proof.'
 OPENING_LINE = 'Weighted-neutral layer divergence closure opened'

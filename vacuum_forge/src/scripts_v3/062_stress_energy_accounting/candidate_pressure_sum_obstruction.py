@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Pressure-Sum Obstruction'
 MARKER_ID = 'g62_P'
-DEPENDENCIES = [('g61_summary', '61_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '62_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_closure', '62_stress_energy_accounting__candidate_trace_mass_closure_sieve', 'g62_closure')]
+DEPENDENCIES = [('g61_summary', '061_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '062_stress_energy_accounting__candidate_stress_problem', 'g62_problem'), ('g62_closure', '062_stress_energy_accounting__candidate_trace_mass_closure_sieve', 'g62_closure')]
 QUESTION = 'Is P=p_r+2p_t identically zero for the closure-supported layer?'
 DISCIPLINE = 'This script tests the simultaneous trace/mass closure condition P=0.'
 OPENING_LINE = 'Pressure-sum obstruction test opened'

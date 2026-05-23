@@ -78,7 +78,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
         )
     )
 
-DEPENDENCIES = [('g79_D_layer_axioms', '79_axiom_candidate_inventory__candidate_D_layer_axiom_candidates', 'g79_D_layer_axioms'), ('g79_lift_axioms', '79_axiom_candidate_inventory__candidate_lift_identity_axiom_candidates', 'g79_lift_axioms'), ('g79_rho_axioms', '79_axiom_candidate_inventory__candidate_rho_status_axiom_candidates', 'g79_rho_axioms'), ('g79_risk_sieve', '79_axiom_candidate_inventory__candidate_axiom_risk_sieve', 'g79_risk_sieve')]
+DEPENDENCIES = [('g79_D_layer_axioms', '079_axiom_candidate_inventory__candidate_D_layer_axiom_candidates', 'g79_D_layer_axioms'), ('g79_lift_axioms', '079_axiom_candidate_inventory__candidate_lift_identity_axiom_candidates', 'g79_lift_axioms'), ('g79_rho_axioms', '079_axiom_candidate_inventory__candidate_rho_status_axiom_candidates', 'g79_rho_axioms'), ('g79_risk_sieve', '079_axiom_candidate_inventory__candidate_axiom_risk_sieve', 'g79_risk_sieve')]
 MARKER_ID = 'g79_route_classifier'
 def main():
     archive, ns, invalidated = prepare_archive(DEPENDENCIES)

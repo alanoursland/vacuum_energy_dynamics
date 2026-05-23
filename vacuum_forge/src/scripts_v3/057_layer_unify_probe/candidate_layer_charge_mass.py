@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Layer Charge / Mass'
 MARKER_ID = 'g57_qm'
-DEPENDENCIES = [('g56_summary', '56_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '57_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_energy', '57_layer_unify_probe__candidate_layer_energy', 'g57_energy')]
+DEPENDENCIES = [('g56_summary', '056_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '057_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_energy', '057_layer_unify_probe__candidate_layer_energy', 'g57_energy')]
 QUESTION = 'Does the finite transition layer create net scalar charge or mass shift?'
 DISCIPLINE = 'This script computes reduced layer charge and mass-shift diagnostics. It does not prove charge neutrality.'
 OPENING_LINE = 'Layer charge/mass diagnostic opened'

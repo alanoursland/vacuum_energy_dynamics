@@ -221,7 +221,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Convention Field Closure Problem'
 MARKER_ID = 'g46_problem'
-DEPENDENCIES = [('g45_summary', '45_explicit_parallel_trace_normalization_record__candidate_group_45_status_summary', 'g45_summary'), ('g44_summary', '44_trace_normalization_selector_context_audit__candidate_group_44_status_summary', 'g44_summary')]
+DEPENDENCIES = [('g45_summary', '045_explicit_parallel_trace_normalization_record__candidate_group_45_status_summary', 'g45_summary'), ('g44_summary', '044_trace_normalization_selector_context_audit__candidate_group_44_status_summary', 'g44_summary')]
 
 
 def build_entries() -> List[Entry]:

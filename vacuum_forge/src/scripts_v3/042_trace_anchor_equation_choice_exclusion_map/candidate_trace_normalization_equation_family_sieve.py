@@ -169,7 +169,7 @@ def obligation_status(status: str) -> ObligationStatus:
 SCRIPT_LABEL = 'Candidate Trace-Normalization Equation Family Sieve'
 MARKER_ID = 'g42_trace_norm_sieve'
 GROUP_SCOPE = 'Group 42 trace-anchor equation choice exclusion map'
-DEPENDENCIES = [('g41_summary', '41_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g42_problem', '42_trace_anchor_equation_choice_exclusion_map__candidate_equation_choice_exclusion_problem', 'g42_problem')]
+DEPENDENCIES = [('g41_summary', '041_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g42_problem', '042_trace_anchor_equation_choice_exclusion_map__candidate_equation_choice_exclusion_problem', 'g42_problem')]
 QUESTION = 'Which trace-normalization equation families survive the current branch, neutrality, and recovery-selector guardrails?'
 DISCIPLINE = 'This script classifies trace-normalization equation families. It does not choose B_s_metric or b_s_scale and does not complete trace normalization.'
 OPENING_DETAIL = 'trace-normalization family sieve only; no branch choice or declaration completion'

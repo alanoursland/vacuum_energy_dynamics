@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Boundary Variation Sieve'
 MARKER_ID = 'g64_bdy'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '64_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_amp', '64_variational_stress_origin__candidate_amplitude_origin_scale', 'g64_amp')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '064_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_amp', '064_variational_stress_origin__candidate_amplitude_origin_scale', 'g64_amp')]
 QUESTION = 'Does endpoint value/slope silence supply a variational origin?'
 DISCIPLINE = 'This script checks boundary behavior and rejects boundary silence as sufficient origin without interior Euler equation.'
 OPENING_LINE = 'Boundary-variation sieve opened'

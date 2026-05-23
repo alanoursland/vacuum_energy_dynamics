@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Source/Trace/Divergence Blocker Problem'
 MARKER_ID = 'g67_problem'
-DEPENDENCIES = [('g66_summary', '66_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary')]
+DEPENDENCIES = [('g66_summary', '066_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary')]
 QUESTION = 'What exact source-count, trace-count, residual-nonentry, and divergence conditions block parent recombination?'
 DISCIPLINE = 'This opener frames Group 67 as blocker audit, not parent equation construction.'
 OPENING_LINE = 'Group 67 source/trace/divergence blocker audit opened'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Locality Filter'
 MARKER_ID = 'g59_loc'
-DEPENDENCIES = [('g58_summary', '58_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '59_transition_term_audit__candidate_transition_problem', 'g59_problem'), ('g59_inv', '59_transition_term_audit__candidate_residue_inventory', 'g59_inv')]
+DEPENDENCIES = [('g58_summary', '058_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '059_transition_term_audit__candidate_transition_problem', 'g59_problem'), ('g59_inv', '059_transition_term_audit__candidate_residue_inventory', 'g59_inv')]
 QUESTION = 'Which candidate transition bases are localized to the finite layer endpoints?'
 DISCIPLINE = 'This script filters candidate bases for endpoint locality. It does not prove covariant compact support.'
 OPENING_LINE = 'Layer locality filter opened'

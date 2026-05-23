@@ -161,7 +161,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 # Group: 50_symbolic_paired_trace_normalization_declaration_attempt
 SCRIPT_LABEL = 'Candidate Declaration Attempt Failure Sieve'
 MARKER_ID = 'g50_failure_sieve'
-DEPENDENCIES = [('g49_summary', '49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_numeric_zeta_guard', '50_symbolic_paired_trace_normalization_declaration_attempt__candidate_numeric_d_and_zeta_clause_guard', 'g50_numeric_zeta_guard')]
+DEPENDENCIES = [('g49_summary', '049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_numeric_zeta_guard', '050_symbolic_paired_trace_normalization_declaration_attempt__candidate_numeric_d_and_zeta_clause_guard', 'g50_numeric_zeta_guard')]
 QUESTION = 'Which failures would kill or demote the symbolic paired declaration attempt?'
 DISCIPLINE = 'This adversarial sieve tests whether the attempt remains narrow or drifts into forbidden roles.'
 OPENING_LINE = 'Declaration attempt failure sieve opened -- adversarial check only'

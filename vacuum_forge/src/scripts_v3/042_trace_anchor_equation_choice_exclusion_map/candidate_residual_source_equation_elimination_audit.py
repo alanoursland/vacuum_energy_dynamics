@@ -169,7 +169,7 @@ def obligation_status(status: str) -> ObligationStatus:
 SCRIPT_LABEL = 'Candidate Residual Source Equation Elimination Audit'
 MARKER_ID = 'g42_residual_source'
 GROUP_SCOPE = 'Group 42 trace-anchor equation choice exclusion map'
-DEPENDENCIES = [('g41_summary', '41_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g41_role_purity', '41_safe_membership_precondition_continuation__candidate_role_purity_exclusion_zone_audit', 'g41_role_purity'), ('g42_spatial_response', '42_trace_anchor_equation_choice_exclusion_map__candidate_spatial_response_equation_family_sieve', 'g42_spatial_response')]
+DEPENDENCIES = [('g41_summary', '041_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g41_role_purity', '041_safe_membership_precondition_continuation__candidate_role_purity_exclusion_zone_audit', 'g41_role_purity'), ('g42_spatial_response', '042_trace_anchor_equation_choice_exclusion_map__candidate_spatial_response_equation_family_sieve', 'g42_spatial_response')]
 QUESTION = 'Which equation families must be eliminated or demoted because they mishandle residuals or source load?'
 DISCIPLINE = 'This script eliminates or demotes equation families that hide residual/source load. It does not prove residual nonentry or source no-double-counting.'
 OPENING_DETAIL = 'residual/source equation elimination audit only; no residual theorem or source theorem supplied'

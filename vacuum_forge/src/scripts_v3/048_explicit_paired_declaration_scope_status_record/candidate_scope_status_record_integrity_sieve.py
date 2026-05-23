@@ -224,7 +224,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Scope Status Record Integrity Sieve'
 MARKER_ID = 'g48_integrity_sieve'
-DEPENDENCIES = [('g47_summary', '47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_caveat_record', '48_explicit_paired_declaration_scope_status_record__candidate_downstream_caveat_and_rejected_broadening_record', 'g48_caveat_record')]
+DEPENDENCIES = [('g47_summary', '047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_caveat_record', '048_explicit_paired_declaration_scope_status_record__candidate_downstream_caveat_and_rejected_broadening_record', 'g48_caveat_record')]
 QUESTION = 'Does the paired scope/status record stay internally consistent without becoming declaration-ready?'
 DISCIPLINE = 'This script checks the assembled record for integrity. It should decide whether the record is instantiated for pre-declaration use, still incomplete, or drifting into forbidden roles.'
 OPENING_LINE = 'Scope/status record integrity sieve opened -- integrity audit only; no declaration execution'

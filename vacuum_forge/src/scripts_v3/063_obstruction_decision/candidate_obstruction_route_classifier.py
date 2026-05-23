@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Obstruction Route Classifier'
 MARKER_ID = 'g63_class'
-DEPENDENCIES = [('g62_summary', '62_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '63_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_inputs', '63_obstruction_decision__candidate_obstruction_inputs', 'g63_inputs'), ('g63_decision', '63_obstruction_decision__candidate_status_decision_surface', 'g63_decision'), ('g63_down', '63_obstruction_decision__candidate_downgrade_semantics', 'g63_down'), ('g63_contract', '63_obstruction_decision__candidate_retention_contract', 'g63_contract'), ('g63_escape', '63_obstruction_decision__candidate_escape_hatch_requirements', 'g63_escape')]
+DEPENDENCIES = [('g62_summary', '062_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '063_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_inputs', '063_obstruction_decision__candidate_obstruction_inputs', 'g63_inputs'), ('g63_decision', '063_obstruction_decision__candidate_status_decision_surface', 'g63_decision'), ('g63_down', '063_obstruction_decision__candidate_downgrade_semantics', 'g63_down'), ('g63_contract', '063_obstruction_decision__candidate_retention_contract', 'g63_contract'), ('g63_escape', '063_obstruction_decision__candidate_escape_hatch_requirements', 'g63_escape')]
 QUESTION = 'After the obstruction decision audit, what status remains licensed?'
 DISCIPLINE = 'This classifier reports status without upgrading the candidate.'
 OPENING_LINE = 'Obstruction route classifier opened'

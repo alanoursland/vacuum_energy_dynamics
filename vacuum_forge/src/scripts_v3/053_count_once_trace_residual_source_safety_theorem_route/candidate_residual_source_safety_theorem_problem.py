@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Residual / Source Safety Theorem Problem'
 MARKER_ID = 'g53_problem'
-DEPENDENCIES = [('g52_summary', '52_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary')]
+DEPENDENCIES = [('g52_summary', '052_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary')]
 QUESTION = 'What residual/source safety theorem route follows from the Group 52 diagnostic witnesses?'
 DISCIPLINE = 'This opener frames Group 53 as a focused non-O residual/source safety theorem-route audit. It must not insert B_s/F_zeta, construct active O, adopt Package B, or open parent closure.'
 OPENING_LINE = 'Group 53 residual/source safety theorem route opened -- non-O route audit only; no insertion'

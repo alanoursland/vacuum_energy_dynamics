@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Recombination Prerequisite Sieve'
 MARKER_ID = 'g66_recomb'
-DEPENDENCIES = [('g65_summary', '65_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '66_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_matrix', '66_parent_blocker_inventory__candidate_parent_blocker_matrix', 'g66_matrix')]
+DEPENDENCIES = [('g65_summary', '065_transition_diagnostic_downgrade__candidate_group_65_status_summary', 'g65_summary'), ('g66_problem', '066_parent_blocker_inventory__candidate_parent_inventory_problem', 'g66_problem'), ('g66_matrix', '066_parent_blocker_inventory__candidate_parent_blocker_matrix', 'g66_matrix')]
 QUESTION = 'Are parent recombination prerequisites satisfied?'
 DISCIPLINE = 'This script rejects parent recombination from diagnostics or unclosed theorem targets.'
 OPENING_LINE = 'Recombination prerequisite sieve opened'

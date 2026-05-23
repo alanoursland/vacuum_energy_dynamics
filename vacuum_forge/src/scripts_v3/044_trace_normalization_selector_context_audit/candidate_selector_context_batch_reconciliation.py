@@ -175,13 +175,13 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Selector Context Batch Reconciliation'
 MARKER_ID = 'g44_recon'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g44_problem', '44_trace_normalization_selector_context_audit__candidate_selector_context_problem', 'g44_problem'),
-    ('g44_source_hierarchy', '44_trace_normalization_selector_context_audit__candidate_source_hierarchy_evidence_ledger', 'g44_source_hierarchy'),
-    ('g44_consequence_context', '44_trace_normalization_selector_context_audit__candidate_branch_consequence_context_matrix', 'g44_consequence_context'),
-    ('g44_route_burden', '44_trace_normalization_selector_context_audit__candidate_route_burden_comparison_audit', 'g44_route_burden'),
-    ('g44_owner_boundary', '44_trace_normalization_selector_context_audit__candidate_theory_owner_choice_boundary', 'g44_owner_boundary'),
-    ('g44_context_sufficiency', '44_trace_normalization_selector_context_audit__candidate_context_sufficiency_and_deferral_sieve', 'g44_context_sufficiency'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g44_problem', '044_trace_normalization_selector_context_audit__candidate_selector_context_problem', 'g44_problem'),
+    ('g44_source_hierarchy', '044_trace_normalization_selector_context_audit__candidate_source_hierarchy_evidence_ledger', 'g44_source_hierarchy'),
+    ('g44_consequence_context', '044_trace_normalization_selector_context_audit__candidate_branch_consequence_context_matrix', 'g44_consequence_context'),
+    ('g44_route_burden', '044_trace_normalization_selector_context_audit__candidate_route_burden_comparison_audit', 'g44_route_burden'),
+    ('g44_owner_boundary', '044_trace_normalization_selector_context_audit__candidate_theory_owner_choice_boundary', 'g44_owner_boundary'),
+    ('g44_context_sufficiency', '044_trace_normalization_selector_context_audit__candidate_context_sufficiency_and_deferral_sieve', 'g44_context_sufficiency'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'Did the Group 44 batch sharpen admissible selector context without turning context into a branch choice?'

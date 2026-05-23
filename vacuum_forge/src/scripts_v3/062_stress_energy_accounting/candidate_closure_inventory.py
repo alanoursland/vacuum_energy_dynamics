@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Closure Inventory'
 MARKER_ID = 'g62_inv'
-DEPENDENCIES = [('g61_summary', '61_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '62_stress_energy_accounting__candidate_stress_problem', 'g62_problem')]
+DEPENDENCIES = [('g61_summary', '061_source_safety_audit__candidate_group_61_status_summary', 'g61_summary'), ('g62_problem', '062_stress_energy_accounting__candidate_stress_problem', 'g62_problem')]
 QUESTION = 'What reduced stress-energy closure variables are available for the source-independent transition response?'
 DISCIPLINE = 'This script inventories p_r, p_t, P=p_r+2p_t, trace, and active-mass diagnostics.'
 OPENING_LINE = 'Reduced stress closure inventory opened'

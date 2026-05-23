@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Insertion Exclusion Problem'
 MARKER_ID = 'g55_problem'
-DEPENDENCIES = [('g54_summary', '54_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_group_54_status_summary', 'g54_summary')]
+DEPENDENCIES = [('g54_summary', '054_boundary_neutrality_exterior_scalar_silence_theorem_route__candidate_group_54_status_summary', 'g54_summary')]
 QUESTION = 'Which B_s/F_zeta insertion families should be excluded before any insertion attempt?'
 DISCIPLINE = 'This opener frames Group 55 as an insertion-family exclusion sieve. It may reject unsafe insertion families, but it must not insert B_s/F_zeta into a field equation.'
 OPENING_LINE = 'Group 55 insertion exclusion surface opened -- exclusion only, no insertion'

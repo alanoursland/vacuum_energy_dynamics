@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Residue Inventory'
 MARKER_ID = 'g59_inv'
-DEPENDENCIES = [('g58_summary', '58_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '59_transition_term_audit__candidate_transition_problem', 'g59_problem')]
+DEPENDENCIES = [('g58_summary', '058_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '059_transition_term_audit__candidate_transition_problem', 'g59_problem')]
 QUESTION = 'What candidate ingredients are available from blend residues and the weighted-neutral layer shape?'
 DISCIPLINE = 'This script inventories transition-term ingredients. It does not adopt or insert them.'
 OPENING_LINE = 'Transition residue inventory opened'

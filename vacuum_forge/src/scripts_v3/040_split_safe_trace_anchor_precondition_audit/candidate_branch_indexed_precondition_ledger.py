@@ -140,9 +140,9 @@ class Entry:
 SCRIPT_LABEL = 'Candidate Branch-Indexed Precondition Ledger'
 MARKER_ID = 'g40_branch_indexed'
 DEPENDENCIES = [
-    ('g39_summary', '39_trace_anchor_branch_choice_readiness_audit__candidate_group_39_status_summary', 'g39_summary'),
-    ('g38_summary', '38_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
-    ('g40_problem', '40_split_safe_trace_anchor_precondition_audit__candidate_split_safe_precondition_problem', 'g40_problem'),
+    ('g39_summary', '039_trace_anchor_branch_choice_readiness_audit__candidate_group_39_status_summary', 'g39_summary'),
+    ('g38_summary', '038_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
+    ('g40_problem', '040_split_safe_trace_anchor_precondition_audit__candidate_split_safe_precondition_problem', 'g40_problem'),
 ]
 
 

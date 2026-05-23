@@ -161,7 +161,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 # Group: 50_symbolic_paired_trace_normalization_declaration_attempt
 SCRIPT_LABEL = 'Candidate Symbolic Paired Declaration Attempt Problem'
 MARKER_ID = 'g50_problem'
-DEPENDENCIES = [('g49_summary', '49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g49_route_classifier', '49_parallel_trace_declaration_readiness_review__candidate_parallel_declaration_attempt_route_classifier', 'g49_route_classifier')]
+DEPENDENCIES = [('g49_summary', '049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g49_route_classifier', '049_parallel_trace_declaration_readiness_review__candidate_parallel_declaration_attempt_route_classifier', 'g49_route_classifier')]
 QUESTION = 'Can Group 50 state a symbolic paired trace-normalization declaration attempt under the conditions named by Group 49?'
 DISCIPLINE = 'This script opens Group 50 as a declaration-attempt group. It may state the attempt shape, but cannot adopt Package B, choose a branch, insert B_s/F_zeta, construct active O, or open parent closure.'
 OPENING_LINE = 'Group 50 symbolic paired declaration attempt opened -- attempt only; no adoption, insertion, active O, recombination, or parent route'

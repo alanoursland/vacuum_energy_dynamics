@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate No-Repair Identity Target'
 MARKER_ID = 'g68_target'
-DEPENDENCIES = [('g67_summary', '67_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '68_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem')]
+DEPENDENCIES = [('g67_summary', '067_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '068_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem')]
 QUESTION = 'What no-repair and O-free equations must hold for divergence closure?'
 DISCIPLINE = 'This script derives the sharp divergence identity target after strict count-once.'
 OPENING_LINE = 'No-repair identity target opened'

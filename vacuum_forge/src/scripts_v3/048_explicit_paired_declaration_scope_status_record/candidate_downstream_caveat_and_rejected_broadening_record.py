@@ -224,7 +224,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Downstream Caveat and Rejected Broadening Record'
 MARKER_ID = 'g48_caveat_record'
-DEPENDENCIES = [('g47_summary', '47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_assumption_domain', '48_explicit_paired_declaration_scope_status_record__candidate_assumption_domain_and_numeric_d_condition_record', 'g48_assumption_domain')]
+DEPENDENCIES = [('g47_summary', '047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_assumption_domain', '048_explicit_paired_declaration_scope_status_record__candidate_assumption_domain_and_numeric_d_condition_record', 'g48_assumption_domain')]
 QUESTION = 'What downstream caveats must the paired scope/status record carry, and which broadening routes remain rejected?'
 DISCIPLINE = 'This script records the negative boundary of the paired scope/status record. It makes non-insertion and non-parent use explicit.'
 OPENING_LINE = 'Downstream caveat/rejected-broadening record opened -- caveat fields only; no downstream gate opened'

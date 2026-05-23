@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Layer Energy'
 MARKER_ID = 'g57_energy'
-DEPENDENCIES = [('g56_summary', '56_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '57_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_s', '57_layer_unify_probe__candidate_smoothstep_profile', 'g57_s'), ('g57_res', '57_layer_unify_probe__candidate_blend_residue', 'g57_res')]
+DEPENDENCIES = [('g56_summary', '056_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '057_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_s', '057_layer_unify_probe__candidate_smoothstep_profile', 'g57_s'), ('g57_res', '057_layer_unify_probe__candidate_blend_residue', 'g57_res')]
 QUESTION = 'Does a smooth finite transition layer have finite explicit reduced gradient energy?'
 DISCIPLINE = 'This script computes a reduced layer gradient-energy scaling. It does not prove full physical energy accounting.'
 OPENING_LINE = 'Layer energy accounting opened'

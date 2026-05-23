@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Transition-Term Audit Problem'
 MARKER_ID = 'g59_problem'
-DEPENDENCIES = [('g58_summary', '58_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary')]
+DEPENDENCIES = [('g58_summary', '058_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary')]
 QUESTION = 'Can finite-layer residues and weighted-neutral shapes generate admissible candidate transition-response terms without becoming inserted repair terms?'
 DISCIPLINE = 'This opener frames Group 59 as a transition-term audit. It may generate and classify candidate surfaces, but it must not insert B_s/F_zeta or open a parent equation.'
 OPENING_LINE = 'Group 59 transition-term audit opened -- candidate surfaces only'

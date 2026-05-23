@@ -169,7 +169,7 @@ def obligation_status(status: str) -> ObligationStatus:
 SCRIPT_LABEL = 'Candidate Equation Choice Exclusion Problem'
 MARKER_ID = 'g42_problem'
 GROUP_SCOPE = 'Group 42 trace-anchor equation choice exclusion map'
-DEPENDENCIES = [('g41_summary', '41_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g40_summary', '40_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary', 'g40_summary')]
+DEPENDENCIES = [('g41_summary', '041_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g40_summary', '040_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary', 'g40_summary')]
 QUESTION = 'Which trace-anchor and scalar-spatial-response equation families can be eliminated before making any new axiom or branch choice?'
 DISCIPLINE = 'This script opens Group 42 as an equation-choice exclusion map. It narrows equation families but does not choose, adopt, derive, declare, insert, or open parent closure.'
 OPENING_DETAIL = 'equation-family exclusion audit only; equation elimination is allowed, equation selection is not allowed'

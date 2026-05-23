@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Boundary Scalar Silence Theorem Problem'
 MARKER_ID = 'g54_problem'
-DEPENDENCIES = [('g53_summary', '53_count_once_trace_residual_source_safety_theorem_route__candidate_group_53_status_summary', 'g53_summary')]
+DEPENDENCIES = [('g53_summary', '053_count_once_trace_residual_source_safety_theorem_route__candidate_group_53_status_summary', 'g53_summary')]
 QUESTION = 'What reduced boundary/exterior scalar-silence theorem route follows from Groups 52 and 53?'
 DISCIPLINE = 'This opener frames Group 54 as a reduced static-spherical boundary/scalar-silence theorem route. It must not insert B_s/F_zeta, construct active O, adopt Package B, or open parent closure.'
 OPENING_LINE = 'Group 54 boundary/scalar silence theorem surface opened -- reduced exterior theorem route only'

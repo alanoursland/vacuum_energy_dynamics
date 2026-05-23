@@ -226,7 +226,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Declaration Record Requirement Matrix'
 MARKER_ID = 'g49_requirement_matrix'
-DEPENDENCIES = [('g48_summary', '48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_numeric_d_readiness', '49_parallel_trace_declaration_readiness_review__candidate_numeric_d_condition_readiness_audit', 'g49_numeric_d_readiness')]
+DEPENDENCIES = [('g48_summary', '048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_numeric_d_readiness', '049_parallel_trace_declaration_readiness_review__candidate_numeric_d_condition_readiness_audit', 'g49_numeric_d_readiness')]
 QUESTION = 'What must a later parallel trace-normalization declaration record contain if Group 49 allows an attempt?'
 DISCIPLINE = 'This script states the minimum requirements for the future declaration record. It does not write that declaration.'
 OPENING_LINE = 'Declaration record requirement matrix opened -- requirements only; no declaration executed'

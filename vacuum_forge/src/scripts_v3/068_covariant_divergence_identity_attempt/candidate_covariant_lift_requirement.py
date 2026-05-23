@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Covariant Lift Requirement'
 MARKER_ID = 'g68_lift'
-DEPENDENCIES = [('g67_summary', '67_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '68_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem'), ('g68_target', '68_covariant_divergence_identity_attempt__candidate_no_repair_identity_target', 'g68_target')]
+DEPENDENCIES = [('g67_summary', '067_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '068_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem'), ('g68_target', '068_covariant_divergence_identity_attempt__candidate_no_repair_identity_target', 'g68_target')]
 QUESTION = 'What must be proven before a reduced divergence balance can count as covariant?'
 DISCIPLINE = 'This script records the covariant-lift condition and rejects reduced identity overclaim.'
 OPENING_LINE = 'Covariant lift requirement opened'

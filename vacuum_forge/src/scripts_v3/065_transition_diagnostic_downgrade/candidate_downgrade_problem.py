@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Diagnostic Downgrade Problem'
 MARKER_ID = 'g65_problem'
-DEPENDENCIES = [('g64_summary', '64_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary')]
+DEPENDENCIES = [('g64_summary', '064_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary')]
 QUESTION = 'Can the transition response be formally downgraded to diagnostic-only while preserving useful clues?'
 DISCIPLINE = 'This opener frames Group 65 as formal diagnostic quarantine, not deletion and not physical insertion.'
 OPENING_LINE = 'Group 65 diagnostic downgrade opened'

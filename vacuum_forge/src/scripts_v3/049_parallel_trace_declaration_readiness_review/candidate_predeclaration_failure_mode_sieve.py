@@ -226,7 +226,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Predeclaration Failure Mode Sieve'
 MARKER_ID = 'g49_failure_sieve'
-DEPENDENCIES = [('g48_summary', '48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_requirement_matrix', '49_parallel_trace_declaration_readiness_review__candidate_declaration_record_requirement_matrix', 'g49_requirement_matrix')]
+DEPENDENCIES = [('g48_summary', '048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary', 'g48_summary'), ('g49_requirement_matrix', '049_parallel_trace_declaration_readiness_review__candidate_declaration_record_requirement_matrix', 'g49_requirement_matrix')]
 QUESTION = 'Which failure modes would still kill or demote a future parallel declaration attempt?'
 DISCIPLINE = 'This script attacks the possible declaration attempt before it is written. Surviving this sieve is not declaration.'
 OPENING_LINE = 'Predeclaration failure-mode sieve opened -- adversarial review only; no declaration executed'

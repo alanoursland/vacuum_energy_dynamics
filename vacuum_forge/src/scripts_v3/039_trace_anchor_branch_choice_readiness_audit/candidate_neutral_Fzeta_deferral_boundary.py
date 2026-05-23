@@ -129,11 +129,11 @@ def record_obligation(ns, obligation_id: str, marker_id: str, description: str, 
 SCRIPT_LABEL = 'Candidate Neutral F_zeta Deferral Boundary'
 MARKER_ID = 'g39_fzeta_boundary'
 DEPENDENCIES = [
-    ('g38_summary', '38_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
-    ('g38_bs_split', '38_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration', 'g38_bs_split'),
-    ('g38_bs_choice', '38_trace_anchor_explicit_declaration_record__candidate_Bs_explicit_branch_choice_sieve', 'g38_bs_choice'),
-    ('g37_summary', '37_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary', 'g37_summary'),
-    ('g39_split_safe', '39_trace_anchor_branch_choice_readiness_audit__candidate_split_notation_safe_continuation_sieve', 'g39_split_safe'),
+    ('g38_summary', '038_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
+    ('g38_bs_split', '038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration', 'g38_bs_split'),
+    ('g38_bs_choice', '038_trace_anchor_explicit_declaration_record__candidate_Bs_explicit_branch_choice_sieve', 'g38_bs_choice'),
+    ('g37_summary', '037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary', 'g37_summary'),
+    ('g39_split_safe', '039_trace_anchor_branch_choice_readiness_audit__candidate_split_notation_safe_continuation_sieve', 'g39_split_safe'),
 ]
 
 @dataclass

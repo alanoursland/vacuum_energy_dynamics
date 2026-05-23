@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Layer Divergence'
 MARKER_ID = 'g57_div'
-DEPENDENCIES = [('g56_summary', '56_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '57_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_qm', '57_layer_unify_probe__candidate_layer_charge_mass', 'g57_qm')]
+DEPENDENCIES = [('g56_summary', '056_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '057_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_qm', '057_layer_unify_probe__candidate_layer_charge_mass', 'g57_qm')]
 QUESTION = 'Can finite-layer stress be made reduced-divergence-silent while vanishing at layer endpoints?'
 DISCIPLINE = 'This script builds a reduced layer-local divergence-silent stress closure. It is not a covariant Bianchi proof.'
 OPENING_LINE = 'Layer divergence closure opened'

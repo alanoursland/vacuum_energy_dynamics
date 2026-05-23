@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted Neutralizer'
 MARKER_ID = 'g59_neu'
-DEPENDENCIES = [('g58_summary', '58_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '59_transition_term_audit__candidate_transition_problem', 'g59_problem'), ('g59_inv', '59_transition_term_audit__candidate_residue_inventory', 'g59_inv'), ('g59_loc', '59_transition_term_audit__candidate_locality_filter', 'g59_loc')]
+DEPENDENCIES = [('g58_summary', '058_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '059_transition_term_audit__candidate_transition_problem', 'g59_problem'), ('g59_inv', '059_transition_term_audit__candidate_residue_inventory', 'g59_inv'), ('g59_loc', '059_transition_term_audit__candidate_locality_filter', 'g59_loc')]
 QUESTION = 'Can candidate scalar layer profiles be neutralized by a weighted rule that reproduces the Group 58 skew?'
 DISCIPLINE = 'This script derives a reduced weighted-neutralization rule. It is not a covariant projection or insertion law.'
 OPENING_LINE = 'Weighted-neutralization operator derivation opened'

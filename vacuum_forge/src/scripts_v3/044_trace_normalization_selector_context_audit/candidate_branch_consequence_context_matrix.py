@@ -175,11 +175,11 @@ class ObligationEntry:
 SCRIPT_LABEL = 'Candidate Branch Consequence Context Matrix'
 MARKER_ID = 'g44_consequence_context'
 DEPENDENCIES = [
-    ('g43_summary', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
-    ('g43_metric_branch', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger', 'g43_metric_branch'),
-    ('g43_scale_branch', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_scale_branch_choice_readiness_ledger', 'g43_scale_branch'),
-    ('g43_parallel_records', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_parallel_declaration_candidate_ledger', 'g43_parallel_records'),
-    ('g44_source_hierarchy', '44_trace_normalization_selector_context_audit__candidate_source_hierarchy_evidence_ledger', 'g44_source_hierarchy'),
+    ('g43_summary', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_group_43_status_summary', 'g43_summary'),
+    ('g43_metric_branch', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger', 'g43_metric_branch'),
+    ('g43_scale_branch', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_scale_branch_choice_readiness_ledger', 'g43_scale_branch'),
+    ('g43_parallel_records', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_parallel_declaration_candidate_ledger', 'g43_parallel_records'),
+    ('g44_source_hierarchy', '044_trace_normalization_selector_context_audit__candidate_source_hierarchy_evidence_ledger', 'g44_source_hierarchy'),
 ]
 SCOPE = 'Group 44 trace-normalization selector-context audit'
 QUESTION = 'What consequences of metric choice, scale choice, parallel records, and continued deferral are admissible context?'

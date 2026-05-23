@@ -161,7 +161,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 # Group: 50_symbolic_paired_trace_normalization_declaration_attempt
 SCRIPT_LABEL = 'Candidate Numeric d and Zeta Clause Guard'
 MARKER_ID = 'g50_numeric_zeta_guard'
-DEPENDENCIES = [('g49_summary', '49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_expression_separation', '50_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_expression_separation_audit', 'g50_expression_separation')]
+DEPENDENCIES = [('g49_summary', '049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_expression_separation', '050_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_expression_separation_audit', 'g50_expression_separation')]
 QUESTION = 'Do the zeta and d clauses preserve symbolic conditional status in the declaration attempt?'
 DISCIPLINE = 'This script guards zeta and d clauses against numeric leakage, parent-facing promotion, or response-map drift.'
 OPENING_LINE = 'Numeric-d and zeta clause guard opened -- symbolic/conditioned only'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Stress-Energy Accounting Problem'
 MARKER_ID = 'g62_problem'
-DEPENDENCIES = [('g61_summary', '61_source_safety_audit__candidate_group_61_status_summary', 'g61_summary')]
+DEPENDENCIES = [('g61_summary', '061_source_safety_audit__candidate_group_61_status_summary', 'g61_summary')]
 QUESTION = 'Can the source-independent stress-only transition response receive admissible reduced stress-energy accounting?'
 DISCIPLINE = 'This opener frames Group 62 as stress-energy accounting audit, not insertion or parent closure.'
 OPENING_LINE = 'Group 62 stress-energy accounting audit opened'

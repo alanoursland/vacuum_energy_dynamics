@@ -199,7 +199,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Metric Trace Record Schema'
 MARKER_ID = 'g45_metric_record'
-DEPENDENCIES = [('g44_summary', '44_trace_normalization_selector_context_audit__candidate_group_44_status_summary', 'g44_summary'), ('g45_problem', '45_explicit_parallel_trace_normalization_record__candidate_parallel_trace_record_problem', 'g45_problem')]
+DEPENDENCIES = [('g44_summary', '044_trace_normalization_selector_context_audit__candidate_group_44_status_summary', 'g44_summary'), ('g45_problem', '045_explicit_parallel_trace_normalization_record__candidate_parallel_trace_record_problem', 'g45_problem')]
 
 def build_entries() -> List[Entry]:
     return [

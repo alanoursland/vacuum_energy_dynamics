@@ -161,7 +161,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 # Group: 50_symbolic_paired_trace_normalization_declaration_attempt
 SCRIPT_LABEL = 'Candidate Declaration Expression Separation Audit'
 MARKER_ID = 'g50_expression_separation'
-DEPENDENCIES = [('g49_summary', '49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_attempt_record', '50_symbolic_paired_trace_normalization_declaration_attempt__candidate_paired_declaration_attempt_record', 'g50_attempt_record')]
+DEPENDENCIES = [('g49_summary', '049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary', 'g49_summary'), ('g50_attempt_record', '050_symbolic_paired_trace_normalization_declaration_attempt__candidate_paired_declaration_attempt_record', 'g50_attempt_record')]
 QUESTION = 'Do the attempted declaration expressions remain separated without neutral-law collapse?'
 DISCIPLINE = 'This script audits whether the paired expressions remain branch-indexed and factor-of-two visible.'
 OPENING_LINE = 'Expression separation audit opened -- no neutral law or branch choice'

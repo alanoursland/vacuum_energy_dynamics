@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate A-Sector Mass Neutrality Condition Audit'
 MARKER_ID = 'g53_mass_neutrality'
-DEPENDENCIES = [('g52_summary', '52_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem'), ('g53_source_role_purity', '53_count_once_trace_residual_source_safety_theorem_route__candidate_source_routing_role_purity_matrix', 'g53_source_role_purity')]
+DEPENDENCIES = [('g52_summary', '052_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem'), ('g53_source_role_purity', '053_count_once_trace_residual_source_safety_theorem_route__candidate_source_routing_role_purity_matrix', 'g53_source_role_purity')]
 QUESTION = 'What condition prevents trace-sector variables from shifting the protected A-sector mass coin?'
 DISCIPLINE = 'This script refines the A-sector mass-shift witness into neutrality conditions. It does not prove mass neutrality.'
 OPENING_LINE = 'A-sector mass neutrality condition audit opened -- trace charge neutrality only'

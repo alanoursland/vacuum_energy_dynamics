@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Boundary Divergence Neutrality'
 MARKER_ID = 'g68_boundary'
-DEPENDENCIES = [('g67_summary', '67_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '68_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem'), ('g68_lift', '68_covariant_divergence_identity_attempt__candidate_covariant_lift_requirement', 'g68_lift')]
+DEPENDENCIES = [('g67_summary', '067_source_trace_divergence_blocker_audit__candidate_group_67_status_summary', 'g67_summary'), ('g68_problem', '068_covariant_divergence_identity_attempt__candidate_covariant_identity_problem', 'g68_problem'), ('g68_lift', '068_covariant_divergence_identity_attempt__candidate_covariant_lift_requirement', 'g68_lift')]
 QUESTION = 'What boundary condition is required for the no-repair divergence identity?'
 DISCIPLINE = 'This script records the boundary divergence neutrality target and rejects boundary cancellation by fiat.'
 OPENING_LINE = 'Boundary divergence neutrality opened'

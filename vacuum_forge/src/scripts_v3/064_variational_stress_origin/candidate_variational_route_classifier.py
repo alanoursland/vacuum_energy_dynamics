@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Variational Route Classifier'
 MARKER_ID = 'g64_class'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '64_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_req', '64_variational_stress_origin__candidate_functional_requirements', 'g64_req'), ('g64_quad', '64_variational_stress_origin__candidate_quadratic_scalar_origin', 'g64_quad'), ('g64_lin', '64_variational_stress_origin__candidate_linear_closure_origin', 'g64_lin'), ('g64_amp', '64_variational_stress_origin__candidate_amplitude_origin_scale', 'g64_amp'), ('g64_bdy', '64_variational_stress_origin__candidate_boundary_variation_sieve', 'g64_bdy')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '064_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_req', '064_variational_stress_origin__candidate_functional_requirements', 'g64_req'), ('g64_quad', '064_variational_stress_origin__candidate_quadratic_scalar_origin', 'g64_quad'), ('g64_lin', '064_variational_stress_origin__candidate_linear_closure_origin', 'g64_lin'), ('g64_amp', '064_variational_stress_origin__candidate_amplitude_origin_scale', 'g64_amp'), ('g64_bdy', '064_variational_stress_origin__candidate_boundary_variation_sieve', 'g64_bdy')]
 QUESTION = 'After testing simple variational/stress origins, what candidate status remains?'
 DISCIPLINE = 'This classifier reports the origin attempt result without upgrading the transition response.'
 OPENING_LINE = 'Variational origin route classifier opened'

@@ -221,7 +221,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Zeta Convention Field Audit'
 MARKER_ID = 'g46_zeta_convention'
-DEPENDENCIES = [('g45_summary', '45_explicit_parallel_trace_normalization_record__candidate_group_45_status_summary', 'g45_summary'), ('g45_metric_record', '45_explicit_parallel_trace_normalization_record__candidate_metric_trace_record_schema', 'g45_metric_record'), ('g45_scale_record', '45_explicit_parallel_trace_normalization_record__candidate_scale_trace_record_schema', 'g45_scale_record'), ('g46_problem', '46_parallel_trace_convention_field_closure_audit__candidate_convention_field_closure_problem', 'g46_problem')]
+DEPENDENCIES = [('g45_summary', '045_explicit_parallel_trace_normalization_record__candidate_group_45_status_summary', 'g45_summary'), ('g45_metric_record', '045_explicit_parallel_trace_normalization_record__candidate_metric_trace_record_schema', 'g45_metric_record'), ('g45_scale_record', '045_explicit_parallel_trace_normalization_record__candidate_scale_trace_record_schema', 'g45_scale_record'), ('g46_problem', '046_parallel_trace_convention_field_closure_audit__candidate_convention_field_closure_problem', 'g46_problem')]
 
 
 def build_entries() -> List[Entry]:

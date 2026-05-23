@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Shell-Neutral Match'
 MARKER_ID = 'g56_shell'
-DEPENDENCIES = [('g55_summary', '55_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '56_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_w', '56_silent_insert_law__candidate_boundary_null_profile', 'g56_w'), ('g56_tail', '56_silent_insert_law__candidate_exterior_tail_zero', 'g56_tail')]
+DEPENDENCIES = [('g55_summary', '055_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '056_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_w', '056_silent_insert_law__candidate_boundary_null_profile', 'g56_w'), ('g56_tail', '056_silent_insert_law__candidate_exterior_tail_zero', 'g56_tail')]
 QUESTION = 'Does the boundary-null profile avoid a reduced shell jump when matched to exterior zero?'
 DISCIPLINE = 'This script verifies reduced no-shell matching for a boundary-null profile and exterior zero. It does not prove a full junction theorem.'
 OPENING_LINE = 'Shell-neutral matching check opened'

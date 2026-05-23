@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Parent Path Implications'
 MARKER_ID = 'g65_parent'
-DEPENDENCIES = [('g64_summary', '64_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '65_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_revival', '65_transition_diagnostic_downgrade__candidate_revival_conditions', 'g65_revival')]
+DEPENDENCIES = [('g64_summary', '064_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '065_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_revival', '065_transition_diagnostic_downgrade__candidate_revival_conditions', 'g65_revival')]
 QUESTION = 'What does diagnostic-only transition status imply for the parent field-equation path?'
 DISCIPLINE = 'This script records that the transition response is not a parent ingredient while its diagnostics remain constraints.'
 OPENING_LINE = 'Parent path implications opened'

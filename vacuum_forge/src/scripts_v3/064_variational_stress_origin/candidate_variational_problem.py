@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Variational Origin Problem'
 MARKER_ID = 'g64_problem'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary')]
 QUESTION = 'Can a reduced variational/stress principle derive the source-independent stress-only transition response?'
 DISCIPLINE = 'This opener frames Group 64 as an origin attempt, not insertion. Negative results strengthen diagnostic-only downgrade.'
 OPENING_LINE = 'Group 64 variational/stress origin attempt opened'

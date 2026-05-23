@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Layer Route Classifier'
 MARKER_ID = 'g57_class'
-DEPENDENCIES = [('g56_summary', '56_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '57_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_s', '57_layer_unify_probe__candidate_smoothstep_profile', 'g57_s'), ('g57_res', '57_layer_unify_probe__candidate_blend_residue', 'g57_res'), ('g57_energy', '57_layer_unify_probe__candidate_layer_energy', 'g57_energy'), ('g57_qm', '57_layer_unify_probe__candidate_layer_charge_mass', 'g57_qm'), ('g57_div', '57_layer_unify_probe__candidate_layer_divergence', 'g57_div')]
+DEPENDENCIES = [('g56_summary', '056_silent_insert_law__candidate_group_56_status_summary', 'g56_summary'), ('g57_problem', '057_layer_unify_probe__candidate_layer_problem', 'g57_problem'), ('g57_s', '057_layer_unify_probe__candidate_smoothstep_profile', 'g57_s'), ('g57_res', '057_layer_unify_probe__candidate_blend_residue', 'g57_res'), ('g57_energy', '057_layer_unify_probe__candidate_layer_energy', 'g57_energy'), ('g57_qm', '057_layer_unify_probe__candidate_layer_charge_mass', 'g57_qm'), ('g57_div', '057_layer_unify_probe__candidate_layer_divergence', 'g57_div')]
 QUESTION = 'After smoothstep, residue, energy, charge/mass, and divergence checks, what is the honest finite-layer route status?'
 DISCIPLINE = 'This classifier reports finite-layer unification-probe status. It must not turn a reduced layer probe into insertion or a parent equation.'
 OPENING_LINE = 'Layer route classifier opened'

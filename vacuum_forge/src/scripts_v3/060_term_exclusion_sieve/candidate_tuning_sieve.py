@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Tuning Sieve'
 MARKER_ID = 'g60_tune'
-DEPENDENCIES = [('g59_summary', '59_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '60_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_neu', '60_term_exclusion_sieve__candidate_neutrality_sieve', 'g60_neu')]
+DEPENDENCIES = [('g59_summary', '059_transition_term_audit__candidate_group_59_status_summary', 'g59_summary'), ('g60_problem', '060_term_exclusion_sieve__candidate_sieve_problem', 'g60_problem'), ('g60_neu', '060_term_exclusion_sieve__candidate_neutrality_sieve', 'g60_neu')]
 QUESTION = 'Does the survivor require arbitrary coefficient tuning or bad-basis cancellation?'
 DISCIPLINE = 'This script rejects constant admixture and tuning routes. Survival cannot depend on adding bad terms and forcing their coefficients away.'
 OPENING_LINE = 'Amplitude/tuning exclusion sieve opened'

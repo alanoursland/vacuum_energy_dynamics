@@ -310,7 +310,7 @@ def main() -> None:
 SCRIPT_LABEL = 'Candidate Parallel Declaration Candidate Ledger'
 MARKER_ID = 'g43_parallel_records'
 GROUP_SCOPE = 'Group 43 trace-normalization branch or parallel decision surface'
-DEPENDENCIES = [('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g43_metric_branch', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger', 'g43_metric_branch'), ('g43_scale_branch', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_scale_branch_choice_readiness_ledger', 'g43_scale_branch')]
+DEPENDENCIES = [('g42_summary', '042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g43_metric_branch', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger', 'g43_metric_branch'), ('g43_scale_branch', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_scale_branch_choice_readiness_ledger', 'g43_scale_branch')]
 QUESTION = 'Can metric and scale trace-normalization forms be carried as two explicit parallel declaration candidates without choosing either?'
 DISCIPLINE = 'This script audits explicitly parallel branch-indexed declaration candidates. It preserves both branch forms as non-active candidates and does not collapse them into a neutral law.'
 OPENING_DETAIL = 'parallel record audit only; no active branch or declaration installed'

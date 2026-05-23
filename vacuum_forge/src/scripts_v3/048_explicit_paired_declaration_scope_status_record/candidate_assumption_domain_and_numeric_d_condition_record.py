@@ -224,7 +224,7 @@ def record_governance(ns, marker_id: str, entries: List[Entry], obligations: Lis
 
 SCRIPT_LABEL = 'Candidate Assumption Domain and Numeric d Condition Record'
 MARKER_ID = 'g48_assumption_domain'
-DEPENDENCIES = [('g47_summary', '47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_status_field', '48_explicit_paired_declaration_scope_status_record__candidate_status_field_and_nonactive_branch_record', 'g48_status_field')]
+DEPENDENCIES = [('g47_summary', '047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary', 'g47_summary'), ('g48_status_field', '048_explicit_paired_declaration_scope_status_record__candidate_status_field_and_nonactive_branch_record', 'g48_status_field')]
 QUESTION = 'What assumptions and domain conditions must the paired scope/status record state, especially for numeric d?'
 DISCIPLINE = 'This script records the assumption/domain surface. It inherits shared zeta and symbolic d for review while keeping numeric d scope-conditioned and non-active.'
 OPENING_LINE = 'Assumption/domain/numeric-d record opened -- assumption fields only; no numeric declaration or trace declaration'

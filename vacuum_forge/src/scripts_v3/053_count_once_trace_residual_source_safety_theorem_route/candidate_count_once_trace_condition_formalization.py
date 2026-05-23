@@ -29,7 +29,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Count-Once Trace Condition Formalization'
 MARKER_ID = 'g53_count_once_condition'
-DEPENDENCIES = [('g52_summary', '52_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem')]
+DEPENDENCIES = [('g52_summary', '052_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary', 'g52_summary'), ('g53_problem', '053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem', 'g53_problem')]
 QUESTION = 'What incidence conditions are required for trace payload to enter exactly once?'
 DISCIPLINE = 'This script formalizes the incidence condition from Group 52. It classifies allowed incidence patterns and rejected patterns, but does not derive dynamics or insertion.'
 OPENING_LINE = 'Count-once trace condition formalization opened -- incidence condition only'

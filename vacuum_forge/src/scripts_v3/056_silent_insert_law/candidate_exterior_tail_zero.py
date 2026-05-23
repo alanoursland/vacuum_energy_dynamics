@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Exterior Tail Zero'
 MARKER_ID = 'g56_tail'
-DEPENDENCIES = [('g55_summary', '55_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '56_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_q', '56_silent_insert_law__candidate_charge_neutral_source', 'g56_q')]
+DEPENDENCIES = [('g55_summary', '055_insertion_exclusion_sieve__candidate_group_55_status_summary', 'g55_summary'), ('g56_problem', '056_silent_insert_law__candidate_silent_problem', 'g56_problem'), ('g56_q', '056_silent_insert_law__candidate_charge_neutral_source', 'g56_q')]
 QUESTION = 'Does zero scalar charge plus zero offset kill the reduced exterior scalar tail?'
 DISCIPLINE = 'This script links charge neutrality to exterior scalar silence in the reduced exterior. It does not prove the full boundary theorem.'
 OPENING_LINE = 'Exterior tail zero condition opened'

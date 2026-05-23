@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Divergence Filter'
 MARKER_ID = 'g59_div'
-DEPENDENCIES = [('g58_summary', '58_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '59_transition_term_audit__candidate_transition_problem', 'g59_problem'), ('g59_neu', '59_transition_term_audit__candidate_weighted_neutralizer', 'g59_neu'), ('g59_src', '59_transition_term_audit__candidate_source_trace_filter', 'g59_src')]
+DEPENDENCIES = [('g58_summary', '058_weighted_neutral_layer__candidate_group_58_status_summary', 'g58_summary'), ('g59_problem', '059_transition_term_audit__candidate_transition_problem', 'g59_problem'), ('g59_neu', '059_transition_term_audit__candidate_weighted_neutralizer', 'g59_neu'), ('g59_src', '059_transition_term_audit__candidate_source_trace_filter', 'g59_src')]
 QUESTION = 'Which transition stress candidates satisfy the reduced divergence diagnostic?'
 DISCIPLINE = 'This script rejects radial-only divergence-failing candidates and retains closure-supported reduced candidates. It is not a covariant Bianchi proof.'
 OPENING_LINE = 'Transition divergence filter opened'

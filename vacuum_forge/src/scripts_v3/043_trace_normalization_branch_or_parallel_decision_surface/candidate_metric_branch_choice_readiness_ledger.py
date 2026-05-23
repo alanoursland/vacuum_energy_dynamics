@@ -310,7 +310,7 @@ def main() -> None:
 SCRIPT_LABEL = 'Candidate Metric Branch Choice Readiness Ledger'
 MARKER_ID = 'g43_metric_branch'
 GROUP_SCOPE = 'Group 43 trace-normalization branch or parallel decision surface'
-DEPENDENCIES = [('g42_summary', '42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g42_trace_norm_sieve', '42_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve', 'g42_trace_norm_sieve'), ('g43_problem', '43_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_problem', 'g43_problem')]
+DEPENDENCIES = [('g42_summary', '042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary', 'g42_summary'), ('g42_trace_norm_sieve', '042_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve', 'g42_trace_norm_sieve'), ('g43_problem', '043_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_problem', 'g43_problem')]
 QUESTION = 'What would be required before B_s_metric could be chosen explicitly as the trace-normalization branch?'
 DISCIPLINE = 'This script audits the metric-coefficient branch as a future explicit-choice candidate only. It does not choose B_s_metric, complete trace normalization, adopt Package B, or license insertion.'
 OPENING_DETAIL = 'metric branch readiness ledger only; B_s_metric remains non-active'

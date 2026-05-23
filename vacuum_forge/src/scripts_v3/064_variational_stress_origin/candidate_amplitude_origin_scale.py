@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Amplitude Origin Scale'
 MARKER_ID = 'g64_amp'
-DEPENDENCIES = [('g63_summary', '63_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '64_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_lin', '64_variational_stress_origin__candidate_linear_closure_origin', 'g64_lin')]
+DEPENDENCIES = [('g63_summary', '063_obstruction_decision__candidate_group_63_status_summary', 'g63_summary'), ('g64_problem', '064_variational_stress_origin__candidate_variational_problem', 'g64_problem'), ('g64_lin', '064_variational_stress_origin__candidate_linear_closure_origin', 'g64_lin')]
 QUESTION = 'Can p_free be derived by source coupling, normalization, diagnostic scaling, or zero response?'
 DISCIPLINE = 'This script rejects source-coupled and repair amplitude origins and treats normalization as scale-setting, not physics.'
 OPENING_LINE = 'Amplitude-origin scale audit opened'

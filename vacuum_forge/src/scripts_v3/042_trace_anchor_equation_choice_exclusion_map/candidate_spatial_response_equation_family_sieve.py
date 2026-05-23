@@ -169,7 +169,7 @@ def obligation_status(status: str) -> ObligationStatus:
 SCRIPT_LABEL = 'Candidate Spatial-Response Equation Family Sieve'
 MARKER_ID = 'g42_spatial_response'
 GROUP_SCOPE = 'Group 42 trace-anchor equation choice exclusion map'
-DEPENDENCIES = [('g41_summary', '41_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g42_trace_norm_sieve', '42_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve', 'g42_trace_norm_sieve'), ('g42_membership_sieve', '42_trace_anchor_equation_choice_exclusion_map__candidate_safe_membership_relation_family_sieve', 'g42_membership_sieve')]
+DEPENDENCIES = [('g41_summary', '041_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g42_trace_norm_sieve', '042_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve', 'g42_trace_norm_sieve'), ('g42_membership_sieve', '042_trace_anchor_equation_choice_exclusion_map__candidate_safe_membership_relation_family_sieve', 'g42_membership_sieve')]
 QUESTION = 'Which B_s/F_zeta scalar spatial-response equation families are eliminated before insertion can be attempted?'
 DISCIPLINE = 'This script classifies scalar spatial-response and B_s/F_zeta equation families. It does not derive or insert B_s/F_zeta.'
 OPENING_DETAIL = 'spatial-response equation-family sieve only; B_s/F_zeta insertion remains not ready'

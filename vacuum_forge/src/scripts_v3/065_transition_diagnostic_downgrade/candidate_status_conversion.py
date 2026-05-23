@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Status Conversion'
 MARKER_ID = 'g65_convert'
-DEPENDENCIES = [('g64_summary', '64_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '65_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_ledger', '65_transition_diagnostic_downgrade__candidate_diagnostic_preservation_ledger', 'g65_ledger'), ('g65_fence', '65_transition_diagnostic_downgrade__candidate_forbidden_use_fence', 'g65_fence')]
+DEPENDENCIES = [('g64_summary', '064_variational_stress_origin__candidate_group_64_status_summary', 'g64_summary'), ('g65_problem', '065_transition_diagnostic_downgrade__candidate_downgrade_problem', 'g65_problem'), ('g65_ledger', '065_transition_diagnostic_downgrade__candidate_diagnostic_preservation_ledger', 'g65_ledger'), ('g65_fence', '065_transition_diagnostic_downgrade__candidate_forbidden_use_fence', 'g65_fence')]
 QUESTION = 'Can the transition response be assigned diagnostic-only status with a revival gate?'
 DISCIPLINE = 'This script converts the candidate status to diagnostic-only and preserves a strict future revival gate.'
 OPENING_LINE = 'Diagnostic status conversion opened'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Divergence Identity Obstruction'
 MARKER_ID = 'g67_div'
-DEPENDENCIES = [('g66_summary', '66_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary'), ('g67_problem', '67_source_trace_divergence_blocker_audit__candidate_blocker_problem', 'g67_problem'), ('g67_residual', '67_source_trace_divergence_blocker_audit__candidate_residual_nonentry_sieve', 'g67_residual')]
+DEPENDENCIES = [('g66_summary', '066_parent_blocker_inventory__candidate_group_66_status_summary', 'g66_summary'), ('g67_problem', '067_source_trace_divergence_blocker_audit__candidate_blocker_problem', 'g67_problem'), ('g67_residual', '067_source_trace_divergence_blocker_audit__candidate_residual_nonentry_sieve', 'g67_residual')]
 QUESTION = 'Is strict count-once incidence sufficient to prove a parent divergence identity?'
 DISCIPLINE = 'This script derives a reduced divergence balance and shows count-once is necessary but not sufficient.'
 OPENING_LINE = 'Divergence identity obstruction opened'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Status Decision Surface'
 MARKER_ID = 'g63_decision'
-DEPENDENCIES = [('g62_summary', '62_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '63_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_inputs', '63_obstruction_decision__candidate_obstruction_inputs', 'g63_inputs')]
+DEPENDENCIES = [('g62_summary', '062_stress_energy_accounting__candidate_group_62_status_summary', 'g62_summary'), ('g63_problem', '063_obstruction_decision__candidate_obstruction_problem', 'g63_problem'), ('g63_inputs', '063_obstruction_decision__candidate_obstruction_inputs', 'g63_inputs')]
 QUESTION = 'Which candidate statuses remain licensed after the stress-accounting obstruction?'
 DISCIPLINE = 'This script rejects insertion and unqualified retention while allowing diagnostic-only downgrade or conditional audit retention.'
 OPENING_LINE = 'Candidate status decision surface opened'

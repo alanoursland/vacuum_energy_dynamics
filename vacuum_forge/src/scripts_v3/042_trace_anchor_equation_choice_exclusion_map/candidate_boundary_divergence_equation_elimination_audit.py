@@ -169,7 +169,7 @@ def obligation_status(status: str) -> ObligationStatus:
 SCRIPT_LABEL = 'Candidate Boundary Divergence Equation Elimination Audit'
 MARKER_ID = 'g42_boundary_div'
 GROUP_SCOPE = 'Group 42 trace-anchor equation choice exclusion map'
-DEPENDENCIES = [('g41_summary', '41_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g42_residual_source', '42_trace_anchor_equation_choice_exclusion_map__candidate_residual_source_equation_elimination_audit', 'g42_residual_source')]
+DEPENDENCIES = [('g41_summary', '041_safe_membership_precondition_continuation__candidate_group_41_status_summary', 'g41_summary'), ('g42_residual_source', '042_trace_anchor_equation_choice_exclusion_map__candidate_residual_source_equation_elimination_audit', 'g42_residual_source')]
 QUESTION = 'Which equation families must be eliminated or demoted because they repair boundary or divergence failures by name?'
 DISCIPLINE = 'This script eliminates or demotes boundary, support, scalar-tail, divergence, and parent-identity repair equations. It does not prove boundary neutrality or parent identity.'
 OPENING_DETAIL = 'boundary/divergence equation elimination audit only; no parent identity supplied'

@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted-Neutral Profile'
 MARKER_ID = 'g58_profile'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '58_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary'), ('g58_problem', '058_weighted_neutral_layer__candidate_weighted_problem', 'g58_problem')]
 QUESTION = 'Can a localized nontrivial layer profile be made exactly neutral under spherical weighting?'
 DISCIPLINE = 'This script constructs a windowed profile and solves for the geometric skew required by weighted neutrality. It does not make the profile physical source.'
 OPENING_LINE = 'Weighted-neutral profile construction opened'

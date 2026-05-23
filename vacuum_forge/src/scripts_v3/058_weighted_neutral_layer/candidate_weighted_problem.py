@@ -23,7 +23,7 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 
 SCRIPT_LABEL = 'Candidate Weighted-Neutral Layer Problem'
 MARKER_ID = 'g58_problem'
-DEPENDENCIES = [('g57_summary', '57_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary')]
+DEPENDENCIES = [('g57_summary', '057_layer_unify_probe__candidate_group_57_status_summary', 'g57_summary')]
 QUESTION = 'Can the finite transition layer be nontrivial while carrying zero spherical weighted scalar charge?'
 DISCIPLINE = 'This opener frames Group 58 as a weighted-neutral finite-layer construction group. It may construct reduced neutral profiles, but it must not insert B_s/F_zeta or open a parent equation.'
 OPENING_LINE = 'Group 58 weighted-neutral finite-layer construction opened -- reduced theorem surface only'
