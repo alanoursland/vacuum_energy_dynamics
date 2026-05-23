@@ -1,0 +1,7 @@
+candidate_sign_recurrence_problem.py
+candidate_pivot_sign_reduction.py
+candidate_sign_normalized_pivot_sequence.py
+candidate_low_degree_rational_recurrence_search.py
+candidate_recurrence_candidate_holdout_test.py
+candidate_sign_recurrence_theorem_target.py
+candidate_group_92_status_summary.py
