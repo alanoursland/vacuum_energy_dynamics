@@ -88,25 +88,25 @@ def prepare_archive():
     dependencies = [
         (
             "boundary_scalar_silence_target_ledger_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
             "boundary_scalar_silence_target_ledger_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "smooth_compact_no_shell_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_smooth_compact_support_no_shell_conditions",
+            "022_boundary_neutrality_and_scalar_silence__candidate_smooth_compact_support_no_shell_conditions",
             "smooth_compact_support_no_shell_inventory_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "sector_scalar_silence_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_scalar_tail_silence_sector_conditions",
+            "022_boundary_neutrality_and_scalar_silence__candidate_scalar_tail_silence_sector_conditions",
             "scalar_tail_silence_sector_inventory_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "boundary_current_flux_silence_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_current_flux_silence",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_current_flux_silence",
             "boundary_current_flux_silence_inventory_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),

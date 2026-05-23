@@ -101,31 +101,31 @@ def prepare_archive():
     dependencies = [
         (
             "group21_status_summary_dependency_22",
-            "21_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
+            "021_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
             "group21_source_routing_status_summary_marker_21",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "A_sector_mass_definition_dependency_22",
-            "21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+            "021_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
             "A_sector_mass_definition_21",
             RecordKind.DERIVATION,
         ),
         (
             "residual_scalar_tail_flux_dependency_22",
-            "21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+            "021_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
             "residual_scalar_tail_flux_1_over_r_21",
             RecordKind.DERIVATION,
         ),
         (
             "boundary_tail_delta_A_flux_dependency_22",
-            "21_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
+            "021_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
             "boundary_tail_delta_A_flux_21",
             RecordKind.DERIVATION,
         ),
         (
             "source_routing_no_double_counting_dependency_22",
-            "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+            "021_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
             "source_routing_no_double_counting_marker_21",
             RecordKind.INVENTORY_MARKER,
         ),

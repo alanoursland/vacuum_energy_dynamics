@@ -94,25 +94,25 @@ def prepare_archive():
 
     ns.declare_dependency(
         dependency_id="zeta_kappa_inventory_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
         upstream_derivation_id="zeta_kappa_mass_neutrality_inventory_marker_21",
         expected_record_kind=RecordKind.INVENTORY_MARKER,
     )
     ns.declare_dependency(
         dependency_id="zeta_tail_flux_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
         upstream_derivation_id="zeta_residual_tail_flux_21",
         expected_record_kind=RecordKind.DERIVATION,
     )
     ns.declare_dependency(
         dependency_id="kappa_tail_flux_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_zeta_kappa_mass_neutrality_conditions",
         upstream_derivation_id="kappa_residual_tail_flux_21",
         expected_record_kind=RecordKind.DERIVATION,
     )
     ns.declare_dependency(
         dependency_id="A_sector_mass_definition_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_a_sector_mass_charge_definition",
         upstream_derivation_id="A_sector_mass_definition_21",
         expected_record_kind=RecordKind.DERIVATION,
     )

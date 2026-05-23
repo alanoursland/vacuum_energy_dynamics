@@ -105,25 +105,25 @@ def prepare_archive():
 
     ns.declare_dependency(
         dependency_id="residual_scalar_tail_flux_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_residual_scalar_tail_flux_audit",
         upstream_derivation_id="residual_scalar_tail_flux_1_over_r_21",
         expected_record_kind=RecordKind.DERIVATION,
     )
     ns.declare_dependency(
         dependency_id="boundary_tail_delta_A_flux_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
         upstream_derivation_id="boundary_tail_delta_A_flux_21",
         expected_record_kind=RecordKind.DERIVATION,
     )
     ns.declare_dependency(
         dependency_id="boundary_mass_preservation_inventory_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_boundary_flux_mass_preservation",
         upstream_derivation_id="boundary_flux_mass_preservation_inventory_marker_21",
         expected_record_kind=RecordKind.INVENTORY_MARKER,
     )
     ns.declare_dependency(
         dependency_id="A_sector_mass_definition_dependency_21",
-        upstream_script_id="21_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+        upstream_script_id="021_source_routing_and_mass_neutrality__candidate_a_sector_mass_charge_definition",
         upstream_derivation_id="A_sector_mass_definition_21",
         expected_record_kind=RecordKind.DERIVATION,
     )

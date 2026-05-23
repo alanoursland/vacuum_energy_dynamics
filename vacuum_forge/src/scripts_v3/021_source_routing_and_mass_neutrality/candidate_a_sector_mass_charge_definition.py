@@ -86,7 +86,7 @@ def prepare_archive():
 
     ns.declare_dependency(
         dependency_id="group20_no_overlap_projection_status_marker",
-        upstream_script_id="20_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
+        upstream_script_id="020_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
         upstream_derivation_id="no_overlap_projection_group_status_summary_marker",
         expected_record_kind=RecordKind.INVENTORY_MARKER,
     )

@@ -86,19 +86,19 @@ def prepare_archive():
     dependencies = [
         (
             "boundary_scalar_silence_target_ledger_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
             "boundary_scalar_silence_target_ledger_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "scalar_tail_flux_witness_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
             "boundary_scalar_silence_scalar_tail_flux_witness_22",
             RecordKind.DERIVATION,
         ),
         (
             "boundary_A_tail_mass_witness_dependency_22",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_scalar_silence_targets",
             "boundary_scalar_silence_boundary_A_tail_mass_witness_22",
             RecordKind.DERIVATION,
         ),
