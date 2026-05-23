@@ -1,0 +1,62 @@
+# candidate_pivot_sign_route_classifier — Analysis Note
+
+## Result
+
+`candidate_pivot_sign_route_classifier.py` records:
+
+```text
+ROW_SIGN_NORMALIZATION_DERIVED
+SIGN_NORMALIZED_LEADING_MINORS_POSITIVE_N1_TO_N30
+SIGN_NORMALIZED_PIVOTS_POSITIVE_N1_TO_N30
+SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+TOTAL_POSITIVITY_ROUTE_BLOCKED
+PRINCIPAL_MINOR_ROUTE_TESTED_SMALL_N
+ALL_ORDER_PIVOT_SIGN_THEOREM_OPEN
+ALL_ORDER_NONZERO_DETERMINANT_THEOREM_OPEN
+PARENT_DIVERGENCE_UNPROVEN
+RECOMBINATION_BLOCKED
+```
+
+But its dependency check reports:
+
+```text
+g93_schur_pivots: dependency_missing
+```
+
+because the Schur script failed.
+
+## Interpretation
+
+The classifier is mostly correct, but one status must be corrected.
+
+Supported statuses:
+
+```text
+ROW_SIGN_NORMALIZATION_DERIVED
+SIGN_NORMALIZED_LEADING_MINORS_POSITIVE_N1_TO_N30
+SIGN_NORMALIZED_PIVOTS_POSITIVE_N1_TO_N30
+TOTAL_POSITIVITY_ROUTE_BLOCKED
+P_MATRIX_ROUTE_BLOCKED_OR_TESTED_SMALL_N
+ALL_ORDER_PIVOT_SIGN_THEOREM_OPEN
+ALL_ORDER_NONZERO_DETERMINANT_THEOREM_OPEN
+PARENT_DIVERGENCE_UNPROVEN
+RECOMBINATION_BLOCKED
+```
+
+Unsupported status:
+
+```text
+SCHUR_COMPLEMENT_PIVOT_IDENTITY_DERIVED
+```
+
+Correct replacement:
+
+```text
+SCHUR_COMPLEMENT_SCRIPT_FAILED
+SCHUR_COMPLEMENT_ROUTE_REMAINS_OPEN
+PATCH_REQUIRED_BEFORE_CARRY_FORWARD
+```
+
+## Steering consequence
+
+Do not carry this classifier forward unchanged. Patch and rerun the Schur script before depending on the Schur-complement theorem target.

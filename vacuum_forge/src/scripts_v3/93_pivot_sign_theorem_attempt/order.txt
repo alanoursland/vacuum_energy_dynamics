@@ -1,0 +1,8 @@
+candidate_pivot_sign_theorem_problem.py
+candidate_row_sign_normalized_matrix.py
+candidate_schur_complement_pivot_identity.py
+candidate_total_positivity_obstruction.py
+candidate_principal_minor_route_test.py
+candidate_positive_leading_minor_table.py
+candidate_pivot_sign_route_classifier.py
+candidate_group_93_status_summary.py
