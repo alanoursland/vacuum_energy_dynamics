@@ -27,7 +27,7 @@ def record_claim(ns, marker_id, claim_id, status, statement):
 def record_obligation(ns, obligation_id, statement, status=ObligationStatus.OPEN):
     ns.record_obligation(ProofObligationRecord(obligation_id=obligation_id, script_id=SCRIPT_ID, title=obligation_id, status=status, required_by=[SCRIPT_ID], description=statement))
 
-DEPENDENCIES=[("g68_summary","68_covariant_divergence_identity_attempt__candidate_group_68_status_summary","g68_summary"),("g69_condition","69_boundary_covariant_cancellation_attempt__candidate_o_free_cancellation_condition","g69_condition")]
+DEPENDENCIES=[("g68_summary","068_covariant_divergence_identity_attempt__candidate_group_68_status_summary","g68_summary"),("g69_condition","069_boundary_covariant_cancellation_attempt__candidate_o_free_cancellation_condition","g69_condition")]
 MARKER_ID="g69_decomp"
 def main():
     archive,ns,invalidated=prepare_archive(DEPENDENCIES); print_archive_status(ns,invalidated); out=ScriptOutput(); header("Candidate Boundary/Lift Decomposition")

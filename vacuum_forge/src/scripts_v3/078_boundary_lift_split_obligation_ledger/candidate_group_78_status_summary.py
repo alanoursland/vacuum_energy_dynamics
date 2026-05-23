@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g77_summary", "77_remainder_obstruction_audit__candidate_group_77_status_summary", "g77_summary"),
-    ("g78_problem", "78_boundary_lift_split_obligation_ledger__candidate_obligation_ledger_problem", "g78_problem"),
-    ("g78_inventory", "78_boundary_lift_split_obligation_ledger__candidate_split_target_inventory", "g78_inventory"),
-    ("g78_dependency_graph", "78_boundary_lift_split_obligation_ledger__candidate_route_dependency_graph", "g78_dependency_graph"),
-    ("g78_readiness", "78_boundary_lift_split_obligation_ledger__candidate_readiness_gate_matrix", "g78_readiness"),
-    ("g78_repetition_sieve", "78_boundary_lift_split_obligation_ledger__candidate_repetition_risk_sieve", "g78_repetition_sieve"),
-    ("g78_active_O_gate", "78_boundary_lift_split_obligation_ledger__candidate_active_O_threshold_gate", "g78_active_O_gate"),
-    ("g78_next_work", "78_boundary_lift_split_obligation_ledger__candidate_next_work_selector", "g78_next_work"),
+    ("g77_summary", "077_remainder_obstruction_audit__candidate_group_77_status_summary", "g77_summary"),
+    ("g78_problem", "078_boundary_lift_split_obligation_ledger__candidate_obligation_ledger_problem", "g78_problem"),
+    ("g78_inventory", "078_boundary_lift_split_obligation_ledger__candidate_split_target_inventory", "g78_inventory"),
+    ("g78_dependency_graph", "078_boundary_lift_split_obligation_ledger__candidate_route_dependency_graph", "g78_dependency_graph"),
+    ("g78_readiness", "078_boundary_lift_split_obligation_ledger__candidate_readiness_gate_matrix", "g78_readiness"),
+    ("g78_repetition_sieve", "078_boundary_lift_split_obligation_ledger__candidate_repetition_risk_sieve", "g78_repetition_sieve"),
+    ("g78_active_O_gate", "078_boundary_lift_split_obligation_ledger__candidate_active_O_threshold_gate", "g78_active_O_gate"),
+    ("g78_next_work", "078_boundary_lift_split_obligation_ledger__candidate_next_work_selector", "g78_next_work"),
 ]
 MARKER_ID = "g78_summary"
 

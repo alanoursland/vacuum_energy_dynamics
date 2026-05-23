@@ -271,7 +271,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vacuum_configuration_energy_variable_marker",
-        upstream_script_id="12_parent_identity_and_recombination__candidate_vacuum_configuration_energy_variable",
+        upstream_script_id="012_parent_identity_and_recombination__candidate_vacuum_configuration_energy_variable",
         upstream_derivation_id="vacuum_configuration_energy_variable_marker",
     )
     return archive, ns, invalidated

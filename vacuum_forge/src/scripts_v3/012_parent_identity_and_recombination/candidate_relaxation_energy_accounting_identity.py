@@ -79,7 +79,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="recombination_without_double_counting_marker",
-        upstream_script_id="12_parent_identity_and_recombination__candidate_recombination_without_double_counting",
+        upstream_script_id="012_parent_identity_and_recombination__candidate_recombination_without_double_counting",
         upstream_derivation_id="recombination_without_double_counting_marker",
     )
     return archive, ns, invalidated

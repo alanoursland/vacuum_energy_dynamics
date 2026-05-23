@@ -79,9 +79,9 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g81_dlayer_gate", "81_concrete_geometry_input_handoff__candidate_D_layer_geometry_input_gate", "g81_dlayer_gate"),
-    ("g81_lift_gate", "81_concrete_geometry_input_handoff__candidate_lift_identity_input_gate", "g81_lift_gate"),
-    ("g81_rho_gate", "81_concrete_geometry_input_handoff__candidate_rho_exactness_input_gate", "g81_rho_gate"),
+    ("g81_dlayer_gate", "081_concrete_geometry_input_handoff__candidate_D_layer_geometry_input_gate", "g81_dlayer_gate"),
+    ("g81_lift_gate", "081_concrete_geometry_input_handoff__candidate_lift_identity_input_gate", "g81_lift_gate"),
+    ("g81_rho_gate", "081_concrete_geometry_input_handoff__candidate_rho_exactness_input_gate", "g81_rho_gate"),
 ]
 MARKER_ID = "g81_parent_active_gate"
 

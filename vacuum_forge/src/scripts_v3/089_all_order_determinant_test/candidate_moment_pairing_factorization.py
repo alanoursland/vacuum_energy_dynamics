@@ -109,7 +109,7 @@ def next_moment_for_coeffs(coeffs):
     return next_m, rho0
 
 DEPENDENCIES = [
-    ("g89_pivots", "89_all_order_determinant_test__candidate_lu_pivot_nonzero_test", "g89_pivots"),
+    ("g89_pivots", "089_all_order_determinant_test__candidate_lu_pivot_nonzero_test", "g89_pivots"),
 ]
 MARKER_ID = "g89_pairing"
 

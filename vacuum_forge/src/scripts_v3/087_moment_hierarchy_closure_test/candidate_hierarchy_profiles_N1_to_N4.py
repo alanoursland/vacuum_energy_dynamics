@@ -94,7 +94,7 @@ def hierarchy_solution(N: int):
     return y, coeffs, P, J, rho, constraints, sol
 
 DEPENDENCIES = [
-    ("g87_operator", "87_moment_hierarchy_closure_test__candidate_general_even_shape_operator", "g87_operator"),
+    ("g87_operator", "087_moment_hierarchy_closure_test__candidate_general_even_shape_operator", "g87_operator"),
 ]
 MARKER_ID = "g87_profiles"
 

@@ -24,14 +24,14 @@ SCRIPT_LABEL = "Candidate Group 68 Status Summary"
 MARKER_ID = "g68_summary"
 
 DEPENDENCIES = [
-    ("g67_summary", "67_source_trace_divergence_blocker_audit__candidate_group_67_status_summary", "g67_summary"),
-    ("g68_problem", "68_covariant_divergence_identity_attempt__candidate_covariant_identity_problem", "g68_problem"),
-    ("g68_target", "68_covariant_divergence_identity_attempt__candidate_no_repair_identity_target", "g68_target"),
-    ("g68_lift", "68_covariant_divergence_identity_attempt__candidate_covariant_lift_requirement", "g68_lift"),
-    ("g68_boundary", "68_covariant_divergence_identity_attempt__candidate_boundary_divergence_neutrality", "g68_boundary"),
-    ("g68_repair", "68_covariant_divergence_identity_attempt__candidate_repair_current_rejection", "g68_repair"),
-    ("g68_o", "68_covariant_divergence_identity_attempt__candidate_active_O_divergence_necessity", "g68_o"),
-    ("g68_class", "68_covariant_divergence_identity_attempt__candidate_divergence_identity_route_classifier", "g68_class"),
+    ("g67_summary", "067_source_trace_divergence_blocker_audit__candidate_group_67_status_summary", "g67_summary"),
+    ("g68_problem", "068_covariant_divergence_identity_attempt__candidate_covariant_identity_problem", "g68_problem"),
+    ("g68_target", "068_covariant_divergence_identity_attempt__candidate_no_repair_identity_target", "g68_target"),
+    ("g68_lift", "068_covariant_divergence_identity_attempt__candidate_covariant_lift_requirement", "g68_lift"),
+    ("g68_boundary", "068_covariant_divergence_identity_attempt__candidate_boundary_divergence_neutrality", "g68_boundary"),
+    ("g68_repair", "068_covariant_divergence_identity_attempt__candidate_repair_current_rejection", "g68_repair"),
+    ("g68_o", "068_covariant_divergence_identity_attempt__candidate_active_O_divergence_necessity", "g68_o"),
+    ("g68_class", "068_covariant_divergence_identity_attempt__candidate_divergence_identity_route_classifier", "g68_class"),
 ]
 
 

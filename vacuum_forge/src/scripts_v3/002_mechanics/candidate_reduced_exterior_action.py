@@ -103,7 +103,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="shear_profile_metric_recovery",
-        upstream_script_id="02_mechanics__candidate_shear_profile_source_law",
+        upstream_script_id="002_mechanics__candidate_shear_profile_source_law",
         upstream_derivation_id="weak_shear_metric_recovery",
     )
     return archive, ns, invalidated

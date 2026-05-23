@@ -186,7 +186,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="trace_projector_definition_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_trace_projector_definition",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_trace_projector_definition",
         upstream_derivation_id="trace_projector_definition_marker",
     )
     return archive, ns, invalidated

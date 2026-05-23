@@ -109,14 +109,14 @@ def next_moment_for_coeffs(coeffs):
     return next_m, rho0
 
 DEPENDENCIES = [
-    ("g88_summary", "88_hierarchy_formula_derivation__candidate_group_88_status_summary", "g88_summary"),
-    ("g89_problem", "89_all_order_determinant_test__candidate_determinant_problem", "g89_problem"),
-    ("g89_entry_formula", "89_all_order_determinant_test__candidate_closed_rational_entry_formula", "g89_entry_formula"),
-    ("g89_det_sequence", "89_all_order_determinant_test__candidate_determinant_sequence_N1_to_N10", "g89_det_sequence"),
-    ("g89_pivots", "89_all_order_determinant_test__candidate_lu_pivot_nonzero_test", "g89_pivots"),
-    ("g89_pairing", "89_all_order_determinant_test__candidate_moment_pairing_factorization", "g89_pairing"),
-    ("g89_profile_generation", "89_all_order_determinant_test__candidate_profile_generation_under_invertibility", "g89_profile_generation"),
-    ("g89_route_classifier", "89_all_order_determinant_test__candidate_determinant_route_classifier", "g89_route_classifier"),
+    ("g88_summary", "088_hierarchy_formula_derivation__candidate_group_88_status_summary", "g88_summary"),
+    ("g89_problem", "089_all_order_determinant_test__candidate_determinant_problem", "g89_problem"),
+    ("g89_entry_formula", "089_all_order_determinant_test__candidate_closed_rational_entry_formula", "g89_entry_formula"),
+    ("g89_det_sequence", "089_all_order_determinant_test__candidate_determinant_sequence_N1_to_N10", "g89_det_sequence"),
+    ("g89_pivots", "089_all_order_determinant_test__candidate_lu_pivot_nonzero_test", "g89_pivots"),
+    ("g89_pairing", "089_all_order_determinant_test__candidate_moment_pairing_factorization", "g89_pairing"),
+    ("g89_profile_generation", "089_all_order_determinant_test__candidate_profile_generation_under_invertibility", "g89_profile_generation"),
+    ("g89_route_classifier", "089_all_order_determinant_test__candidate_determinant_route_classifier", "g89_route_classifier"),
 ]
 MARKER_ID = "g89_summary"
 

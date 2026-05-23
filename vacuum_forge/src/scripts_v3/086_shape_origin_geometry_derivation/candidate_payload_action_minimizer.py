@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g86_quartic_uniqueness", "86_shape_origin_geometry_derivation__candidate_quartic_uniqueness_theorem", "g86_quartic_uniqueness"),
+    ("g86_quartic_uniqueness", "086_shape_origin_geometry_derivation__candidate_quartic_uniqueness_theorem", "g86_quartic_uniqueness"),
 ]
 MARKER_ID = "g86_payload_action"
 

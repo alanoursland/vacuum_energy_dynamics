@@ -74,7 +74,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="closure_minimal_equation_set_marker",
-        upstream_script_id="11_field_equation_closure__candidate_closure_minimal_equation_set",
+        upstream_script_id="011_field_equation_closure__candidate_closure_minimal_equation_set",
         upstream_derivation_id="closure_minimal_equation_set_marker",
     )
     return archive, ns, invalidated

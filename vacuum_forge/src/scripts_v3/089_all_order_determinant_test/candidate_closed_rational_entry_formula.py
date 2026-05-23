@@ -109,7 +109,7 @@ def next_moment_for_coeffs(coeffs):
     return next_m, rho0
 
 DEPENDENCIES = [
-    ("g89_problem", "89_all_order_determinant_test__candidate_determinant_problem", "g89_problem"),
+    ("g89_problem", "089_all_order_determinant_test__candidate_determinant_problem", "g89_problem"),
 ]
 MARKER_ID = "g89_entry_formula"
 

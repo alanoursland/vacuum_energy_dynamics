@@ -141,7 +141,7 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g95_ratio_equivalence", "95_schur_ratio_bound_theorem_attempt__candidate_ratio_bound_equivalence", "g95_ratio_equivalence"),
+    ("g95_ratio_equivalence", "095_schur_ratio_bound_theorem_attempt__candidate_ratio_bound_equivalence", "g95_ratio_equivalence"),
 ]
 MARKER_ID = "g95_post_transition_evidence"
 

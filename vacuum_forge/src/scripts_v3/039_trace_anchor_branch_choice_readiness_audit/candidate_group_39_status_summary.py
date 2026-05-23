@@ -29,13 +29,13 @@ SCRIPT_LABEL = "Candidate Group 39 Status Summary"
 MARKER_ID = "g39_summary"
 
 DEPENDENCIES = [
-    ("g39_recon", "39_trace_anchor_branch_choice_readiness_audit__candidate_branch_readiness_batch_reconciliation", "g39_recon"),
-    ("g39_blockers", "39_trace_anchor_branch_choice_readiness_audit__candidate_branch_choice_blocker_inventory", "g39_blockers"),
-    ("g39_fzeta_boundary", "39_trace_anchor_branch_choice_readiness_audit__candidate_neutral_Fzeta_deferral_boundary", "g39_fzeta_boundary"),
-    ("g39_split_safe", "39_trace_anchor_branch_choice_readiness_audit__candidate_split_notation_safe_continuation_sieve", "g39_split_safe"),
-    ("g39_route_matrix", "39_trace_anchor_branch_choice_readiness_audit__candidate_route_branch_requirement_matrix", "g39_route_matrix"),
-    ("g39_problem", "39_trace_anchor_branch_choice_readiness_audit__candidate_branch_choice_readiness_problem", "g39_problem"),
-    ("g38_summary", "38_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary", "g38_summary"),
+    ("g39_recon", "039_trace_anchor_branch_choice_readiness_audit__candidate_branch_readiness_batch_reconciliation", "g39_recon"),
+    ("g39_blockers", "039_trace_anchor_branch_choice_readiness_audit__candidate_branch_choice_blocker_inventory", "g39_blockers"),
+    ("g39_fzeta_boundary", "039_trace_anchor_branch_choice_readiness_audit__candidate_neutral_Fzeta_deferral_boundary", "g39_fzeta_boundary"),
+    ("g39_split_safe", "039_trace_anchor_branch_choice_readiness_audit__candidate_split_notation_safe_continuation_sieve", "g39_split_safe"),
+    ("g39_route_matrix", "039_trace_anchor_branch_choice_readiness_audit__candidate_route_branch_requirement_matrix", "g39_route_matrix"),
+    ("g39_problem", "039_trace_anchor_branch_choice_readiness_audit__candidate_branch_choice_readiness_problem", "g39_problem"),
+    ("g38_summary", "038_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary", "g38_summary"),
 ]
 
 

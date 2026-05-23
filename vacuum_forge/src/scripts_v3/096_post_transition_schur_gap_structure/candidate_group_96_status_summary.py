@@ -159,12 +159,12 @@ def decreasing(values):
     return failures
 
 DEPENDENCIES = [
-    ("g95_summary", "95_schur_ratio_bound_theorem_attempt__candidate_group_95_status_summary", "g95_summary"),
-    ("g96_problem", "96_post_transition_schur_gap_structure__candidate_gap_structure_problem", "g96_problem"),
-    ("g96_parity_sequences", "96_post_transition_schur_gap_structure__candidate_parity_gap_sequence_probe", "g96_parity_sequences"),
-    ("g96_parity_monotonicity", "96_post_transition_schur_gap_structure__candidate_parity_monotonicity_test", "g96_parity_monotonicity"),
-    ("g96_gap_interlacing", "96_post_transition_schur_gap_structure__candidate_gap_interlacing_test", "g96_gap_interlacing"),
-    ("g96_classifier", "96_post_transition_schur_gap_structure__candidate_parity_theorem_target_classifier", "g96_classifier"),
+    ("g95_summary", "095_schur_ratio_bound_theorem_attempt__candidate_group_95_status_summary", "g95_summary"),
+    ("g96_problem", "096_post_transition_schur_gap_structure__candidate_gap_structure_problem", "g96_problem"),
+    ("g96_parity_sequences", "096_post_transition_schur_gap_structure__candidate_parity_gap_sequence_probe", "g96_parity_sequences"),
+    ("g96_parity_monotonicity", "096_post_transition_schur_gap_structure__candidate_parity_monotonicity_test", "g96_parity_monotonicity"),
+    ("g96_gap_interlacing", "096_post_transition_schur_gap_structure__candidate_gap_interlacing_test", "g96_gap_interlacing"),
+    ("g96_classifier", "096_post_transition_schur_gap_structure__candidate_parity_theorem_target_classifier", "g96_classifier"),
 ]
 MARKER_ID = "g96_summary"
 

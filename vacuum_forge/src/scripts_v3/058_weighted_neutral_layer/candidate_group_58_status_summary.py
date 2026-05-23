@@ -24,15 +24,15 @@ SCRIPT_LABEL = "Candidate Group 58 Status Summary"
 MARKER_ID = "g58_summary"
 
 DEPENDENCIES = [
-    ("g57_summary", "57_layer_unify_probe__candidate_group_57_status_summary", "g57_summary"),
-    ("g58_problem", "58_weighted_neutral_layer__candidate_weighted_problem", "g58_problem"),
-    ("g58_profile", "58_weighted_neutral_layer__candidate_weighted_profile", "g58_profile"),
-    ("g58_compare", "58_weighted_neutral_layer__candidate_flat_vs_weighted", "g58_compare"),
-    ("g58_energy", "58_weighted_neutral_layer__candidate_weighted_energy", "g58_energy"),
-    ("g58_tailmass", "58_weighted_neutral_layer__candidate_tail_mass_zero", "g58_tailmass"),
-    ("g58_div", "58_weighted_neutral_layer__candidate_weighted_divergence", "g58_div"),
-    ("g58_class", "58_weighted_neutral_layer__candidate_weighted_route_classifier", "g58_class"),
-    ("g58_reconcile", "58_weighted_neutral_layer__candidate_weighted_batch_reconcile", "g58_reconcile"),
+    ("g57_summary", "057_layer_unify_probe__candidate_group_57_status_summary", "g57_summary"),
+    ("g58_problem", "058_weighted_neutral_layer__candidate_weighted_problem", "g58_problem"),
+    ("g58_profile", "058_weighted_neutral_layer__candidate_weighted_profile", "g58_profile"),
+    ("g58_compare", "058_weighted_neutral_layer__candidate_flat_vs_weighted", "g58_compare"),
+    ("g58_energy", "058_weighted_neutral_layer__candidate_weighted_energy", "g58_energy"),
+    ("g58_tailmass", "058_weighted_neutral_layer__candidate_tail_mass_zero", "g58_tailmass"),
+    ("g58_div", "058_weighted_neutral_layer__candidate_weighted_divergence", "g58_div"),
+    ("g58_class", "058_weighted_neutral_layer__candidate_weighted_route_classifier", "g58_class"),
+    ("g58_reconcile", "058_weighted_neutral_layer__candidate_weighted_batch_reconcile", "g58_reconcile"),
 ]
 
 

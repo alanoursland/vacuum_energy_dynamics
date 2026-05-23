@@ -82,7 +82,7 @@ def status_label(ok: bool) -> str:
     return "PASS" if ok else "FAIL"
 
 DEPENDENCIES = [
-    ("g98_problem", "98_hierarchy_burden_ledger_role_audit__candidate_burden_ledger_role_problem", "g98_problem"),
+    ("g98_problem", "098_hierarchy_burden_ledger_role_audit__candidate_burden_ledger_role_problem", "g98_problem"),
 ]
 MARKER_ID = "g98_role_matrix"
 

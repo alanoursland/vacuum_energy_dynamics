@@ -135,9 +135,9 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g94_schur_identity", "94_schur_complement_positivity_attempt__candidate_schur_identity_repair", "g94_schur_identity"),
-    ("g94_schur_balance", "94_schur_complement_positivity_attempt__candidate_schur_term_balance_regimes", "g94_schur_balance"),
-    ("g94_schur_ratio", "94_schur_complement_positivity_attempt__candidate_schur_ratio_bound_probe", "g94_schur_ratio"),
+    ("g94_schur_identity", "094_schur_complement_positivity_attempt__candidate_schur_identity_repair", "g94_schur_identity"),
+    ("g94_schur_balance", "094_schur_complement_positivity_attempt__candidate_schur_term_balance_regimes", "g94_schur_balance"),
+    ("g94_schur_ratio", "094_schur_complement_positivity_attempt__candidate_schur_ratio_bound_probe", "g94_schur_ratio"),
 ]
 MARKER_ID = "g94_classifier"
 

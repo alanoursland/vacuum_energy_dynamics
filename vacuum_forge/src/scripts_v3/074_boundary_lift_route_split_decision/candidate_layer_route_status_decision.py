@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g73_summary", "73_layer_generator_construction__candidate_group_73_status_summary", "g73_summary"),
-    ("g74_route_ledger", "74_boundary_lift_route_split_decision__candidate_route_status_ledger", "g74_route_ledger"),
+    ("g73_summary", "073_layer_generator_construction__candidate_group_73_status_summary", "g73_summary"),
+    ("g74_route_ledger", "074_boundary_lift_route_split_decision__candidate_route_status_ledger", "g74_route_ledger"),
 ]
 MARKER_ID = "g74_layer_decision"
 

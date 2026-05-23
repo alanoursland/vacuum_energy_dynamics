@@ -104,37 +104,37 @@ def prepare_archive():
     dependencies = [
         (
             "g32_summary",
-            "32_explicit_minimal_postulate_selection__candidate_group_32_status_summary",
+            "032_explicit_minimal_postulate_selection__candidate_group_32_status_summary",
             "g32_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g32_minimality",
-            "32_explicit_minimal_postulate_selection__candidate_postulate_package_minimality",
+            "032_explicit_minimal_postulate_selection__candidate_postulate_package_minimality",
             "g32_postulate_package_minimality",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g32_candidate_ledger",
-            "32_explicit_minimal_postulate_selection__candidate_postulate_candidate_ledger",
+            "032_explicit_minimal_postulate_selection__candidate_postulate_candidate_ledger",
             "g32_candidate_postulate_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_trace_norm",
-            "31_source_divergence_coefficient_law__candidate_trace_normalization_from_source_divergence",
+            "031_source_divergence_coefficient_law__candidate_trace_normalization_from_source_divergence",
             "g31_trace_normalization_fork",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_summary",
-            "31_source_divergence_coefficient_law__candidate_group_31_status_summary",
+            "031_source_divergence_coefficient_law__candidate_group_31_status_summary",
             "g31_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_summary",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
             "g30_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

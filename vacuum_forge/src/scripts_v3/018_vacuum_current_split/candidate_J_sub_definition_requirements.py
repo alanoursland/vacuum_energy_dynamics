@@ -107,7 +107,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="pure_wind_neutrality_test_marker",
-        upstream_script_id="18_vacuum_current_split__candidate_pure_wind_neutrality_test",
+        upstream_script_id="018_vacuum_current_split__candidate_pure_wind_neutrality_test",
         upstream_derivation_id="pure_wind_neutrality_test_marker",
     )
     return archive, ns, invalidated

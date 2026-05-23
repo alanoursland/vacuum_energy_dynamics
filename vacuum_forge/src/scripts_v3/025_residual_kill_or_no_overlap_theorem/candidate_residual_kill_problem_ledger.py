@@ -83,37 +83,37 @@ def prepare_archive():
     dependencies = [
         (
             "g20_summary_dep_25",
-            "20_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
+            "020_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
             "no_overlap_projection_group_status_summary_marker",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g21_summary_dep_25",
-            "21_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
+            "021_source_routing_and_mass_neutrality__candidate_group_21_source_routing_status_summary",
             "group21_source_routing_status_summary_marker_21",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g22_summary_dep_25",
-            "22_boundary_neutrality_and_scalar_silence__candidate_group_22_boundary_neutrality_status_summary",
+            "022_boundary_neutrality_and_scalar_silence__candidate_group_22_boundary_neutrality_status_summary",
             "group22_boundary_neutrality_status_summary_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g23_summary_dep_25",
-            "23_smooth_support_and_matching_laws__candidate_group_23_matching_laws_status_summary",
+            "023_smooth_support_and_matching_laws__candidate_group_23_matching_laws_status_summary",
             "group23_matching_laws_status_summary_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_count_once_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_count_once_metric_trace_audit",
+            "024_metric_insertion_recovery_retest__candidate_count_once_metric_trace_audit",
             "count_once_metric_trace_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_summary_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_group_24_metric_insertion_status_summary",
+            "024_metric_insertion_recovery_retest__candidate_group_24_metric_insertion_status_summary",
             "group24_metric_insertion_status_summary_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),

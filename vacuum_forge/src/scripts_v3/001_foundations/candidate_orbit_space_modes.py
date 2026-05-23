@@ -122,7 +122,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="areal_kappa_coordinate_fixing",
-        upstream_script_id="01_foundations__candidate_areal_gauge_kappa_condition",
+        upstream_script_id="001_foundations__candidate_areal_gauge_kappa_condition",
         upstream_derivation_id="areal_kappa_coordinate_fixed",
     )
     return archive, ns, invalidated

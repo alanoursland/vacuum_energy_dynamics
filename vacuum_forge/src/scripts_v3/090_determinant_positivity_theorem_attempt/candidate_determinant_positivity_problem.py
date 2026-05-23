@@ -97,7 +97,7 @@ def q_poly(k, t):
     return t**k - sp.Rational(2*k - 1, 2*k + 3)*t**(k-1)
 
 DEPENDENCIES = [
-    ("g89_summary", "89_all_order_determinant_test__candidate_group_89_status_summary", "g89_summary"),
+    ("g89_summary", "089_all_order_determinant_test__candidate_group_89_status_summary", "g89_summary"),
 ]
 MARKER_ID = "g90_problem"
 

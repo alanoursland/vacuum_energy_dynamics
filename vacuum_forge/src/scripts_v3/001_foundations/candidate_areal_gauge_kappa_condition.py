@@ -108,7 +108,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="gauge_dependence_shift",
-        upstream_script_id="01_foundations__candidate_gauge_dependence_modes",
+        upstream_script_id="001_foundations__candidate_gauge_dependence_modes",
         upstream_derivation_id="reduced_mode_coordinate_shift",
     )
     return archive, ns, invalidated

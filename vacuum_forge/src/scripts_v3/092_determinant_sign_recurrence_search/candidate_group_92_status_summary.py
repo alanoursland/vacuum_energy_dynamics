@@ -132,13 +132,13 @@ def fit_rational_function(data, deg_num: int, deg_den: int):
     return expr
 
 DEPENDENCIES = [
-    ("g91_summary", "91_determinant_sign_pattern_and_nonzero_audit__candidate_group_91_status_summary", "g91_summary"),
-    ("g92_problem", "92_determinant_sign_recurrence_search__candidate_sign_recurrence_problem", "g92_problem"),
-    ("g92_pivot_reduction", "92_determinant_sign_recurrence_search__candidate_pivot_sign_reduction", "g92_pivot_reduction"),
-    ("g92_normalized_pivots", "92_determinant_sign_recurrence_search__candidate_sign_normalized_pivot_sequence", "g92_normalized_pivots"),
-    ("g92_recurrence_search", "92_determinant_sign_recurrence_search__candidate_low_degree_rational_recurrence_search", "g92_recurrence_search"),
-    ("g92_recurrence_holdout", "92_determinant_sign_recurrence_search__candidate_recurrence_candidate_holdout_test", "g92_recurrence_holdout"),
-    ("g92_theorem_target", "92_determinant_sign_recurrence_search__candidate_sign_recurrence_theorem_target", "g92_theorem_target"),
+    ("g91_summary", "091_determinant_sign_pattern_and_nonzero_audit__candidate_group_91_status_summary", "g91_summary"),
+    ("g92_problem", "092_determinant_sign_recurrence_search__candidate_sign_recurrence_problem", "g92_problem"),
+    ("g92_pivot_reduction", "092_determinant_sign_recurrence_search__candidate_pivot_sign_reduction", "g92_pivot_reduction"),
+    ("g92_normalized_pivots", "092_determinant_sign_recurrence_search__candidate_sign_normalized_pivot_sequence", "g92_normalized_pivots"),
+    ("g92_recurrence_search", "092_determinant_sign_recurrence_search__candidate_low_degree_rational_recurrence_search", "g92_recurrence_search"),
+    ("g92_recurrence_holdout", "092_determinant_sign_recurrence_search__candidate_recurrence_candidate_holdout_test", "g92_recurrence_holdout"),
+    ("g92_theorem_target", "092_determinant_sign_recurrence_search__candidate_sign_recurrence_theorem_target", "g92_theorem_target"),
 ]
 MARKER_ID = "g92_summary"
 

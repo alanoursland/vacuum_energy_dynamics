@@ -132,7 +132,7 @@ def fit_rational_function(data, deg_num: int, deg_den: int):
     return expr
 
 DEPENDENCIES = [
-    ("g91_summary", "91_determinant_sign_pattern_and_nonzero_audit__candidate_group_91_status_summary", "g91_summary"),
+    ("g91_summary", "091_determinant_sign_pattern_and_nonzero_audit__candidate_group_91_status_summary", "g91_summary"),
 ]
 MARKER_ID = "g92_problem"
 

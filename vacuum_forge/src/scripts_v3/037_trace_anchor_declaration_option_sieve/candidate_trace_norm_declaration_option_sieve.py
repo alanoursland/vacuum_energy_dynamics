@@ -117,13 +117,13 @@ def prepare_archive():
     ns = archive.script_namespace(SCRIPT_ID)
     invalidated = ns.check_source_invalidation(__file__)
     dependencies = [
-        ("g36_summary", "36_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_status_summary", RecordKind.INVENTORY_MARKER),
-        ("g36_pc_obl", "36_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_precondition_obligations", "g36_pc_obligations", RecordKind.INVENTORY_MARKER),
-        ("g36_handoff_pc", "36_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_handoff_condition_ledger", "g36_handoff_pc", RecordKind.INVENTORY_MARKER),
-        ("g36_safety_pc", "36_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_safety_precondition_ledger", "g36_safety_pc", RecordKind.INVENTORY_MARKER),
-        ("g36_status_pc", "36_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_status_precondition_matrix", "g36_status_precond_matrix", RecordKind.INVENTORY_MARKER),
-        ("g36_decl_pc", "36_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_declaration_precondition_ledger", "g36_decl_precond_ledger", RecordKind.INVENTORY_MARKER),
-        ("g37_problem", "37_trace_anchor_declaration_option_sieve__candidate_trace_anchor_declaration_option_problem", "g37_option_problem", RecordKind.INVENTORY_MARKER),
+        ("g36_summary", "036_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_status_summary", RecordKind.INVENTORY_MARKER),
+        ("g36_pc_obl", "036_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_precondition_obligations", "g36_pc_obligations", RecordKind.INVENTORY_MARKER),
+        ("g36_handoff_pc", "036_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_handoff_condition_ledger", "g36_handoff_pc", RecordKind.INVENTORY_MARKER),
+        ("g36_safety_pc", "036_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_safety_precondition_ledger", "g36_safety_pc", RecordKind.INVENTORY_MARKER),
+        ("g36_status_pc", "036_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_status_precondition_matrix", "g36_status_precond_matrix", RecordKind.INVENTORY_MARKER),
+        ("g36_decl_pc", "036_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_declaration_precondition_ledger", "g36_decl_precond_ledger", RecordKind.INVENTORY_MARKER),
+        ("g37_problem", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_declaration_option_problem", "g37_option_problem", RecordKind.INVENTORY_MARKER),
     ]
     for dependency_id, upstream_script_id, upstream_derivation_id, record_kind in dependencies:
         ns.declare_dependency(

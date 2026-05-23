@@ -80,7 +80,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g72_measure_support", "72_layer_term_legitimacy_audit__candidate_layer_measure_support_test", "g72_measure_support"),
+    ("g72_measure_support", "072_layer_term_legitimacy_audit__candidate_layer_measure_support_test", "g72_measure_support"),
 ]
 MARKER_ID = "g72_source_trace_filter"
 

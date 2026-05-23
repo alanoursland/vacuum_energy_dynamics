@@ -30,15 +30,15 @@ SCRIPT_LABEL = "Candidate Group 42 Status Summary"
 MARKER_ID = "g42_summary"
 
 DEPENDENCIES = [
-    ("g42_recon", "42_trace_anchor_equation_choice_exclusion_map__candidate_equation_choice_exclusion_batch_reconciliation", "g42_recon"),
-    ("g42_boundary_div", "42_trace_anchor_equation_choice_exclusion_map__candidate_boundary_divergence_equation_elimination_audit", "g42_boundary_div"),
-    ("g42_residual_source", "42_trace_anchor_equation_choice_exclusion_map__candidate_residual_source_equation_elimination_audit", "g42_residual_source"),
-    ("g42_spatial_response", "42_trace_anchor_equation_choice_exclusion_map__candidate_spatial_response_equation_family_sieve", "g42_spatial_response"),
-    ("g42_membership_sieve", "42_trace_anchor_equation_choice_exclusion_map__candidate_safe_membership_relation_family_sieve", "g42_membership_sieve"),
-    ("g42_trace_norm_sieve", "42_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve", "g42_trace_norm_sieve"),
-    ("g42_problem", "42_trace_anchor_equation_choice_exclusion_map__candidate_equation_choice_exclusion_problem", "g42_problem"),
-    ("g41_summary", "41_safe_membership_precondition_continuation__candidate_group_41_status_summary", "g41_summary"),
-    ("g40_summary", "40_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
+    ("g42_recon", "042_trace_anchor_equation_choice_exclusion_map__candidate_equation_choice_exclusion_batch_reconciliation", "g42_recon"),
+    ("g42_boundary_div", "042_trace_anchor_equation_choice_exclusion_map__candidate_boundary_divergence_equation_elimination_audit", "g42_boundary_div"),
+    ("g42_residual_source", "042_trace_anchor_equation_choice_exclusion_map__candidate_residual_source_equation_elimination_audit", "g42_residual_source"),
+    ("g42_spatial_response", "042_trace_anchor_equation_choice_exclusion_map__candidate_spatial_response_equation_family_sieve", "g42_spatial_response"),
+    ("g42_membership_sieve", "042_trace_anchor_equation_choice_exclusion_map__candidate_safe_membership_relation_family_sieve", "g42_membership_sieve"),
+    ("g42_trace_norm_sieve", "042_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve", "g42_trace_norm_sieve"),
+    ("g42_problem", "042_trace_anchor_equation_choice_exclusion_map__candidate_equation_choice_exclusion_problem", "g42_problem"),
+    ("g41_summary", "041_safe_membership_precondition_continuation__candidate_group_41_status_summary", "g41_summary"),
+    ("g40_summary", "040_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
 ]
 
 

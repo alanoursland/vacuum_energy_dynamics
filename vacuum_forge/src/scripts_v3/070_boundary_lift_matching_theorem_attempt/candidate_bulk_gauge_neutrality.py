@@ -80,8 +80,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g69_summary", "69_boundary_covariant_cancellation_attempt__candidate_group_69_status_summary", "g69_summary"),
-    ("g70_coefficients", "70_boundary_lift_matching_theorem_attempt__candidate_component_coefficient_matching", "g70_coefficients"),
+    ("g69_summary", "069_boundary_covariant_cancellation_attempt__candidate_group_69_status_summary", "g69_summary"),
+    ("g70_coefficients", "070_boundary_lift_matching_theorem_attempt__candidate_component_coefficient_matching", "g70_coefficients"),
 ]
 MARKER_ID = "g70_bulk_gauge"
 

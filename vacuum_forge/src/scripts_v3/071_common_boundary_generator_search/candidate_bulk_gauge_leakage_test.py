@@ -73,8 +73,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g70_bulk_gauge", "70_boundary_lift_matching_theorem_attempt__candidate_bulk_gauge_neutrality", "g70_bulk_gauge"),
-    ("g71_components", "71_common_boundary_generator_search__candidate_component_forcing_test", "g71_component_forcing"),
+    ("g70_bulk_gauge", "070_boundary_lift_matching_theorem_attempt__candidate_bulk_gauge_neutrality", "g70_bulk_gauge"),
+    ("g71_components", "071_common_boundary_generator_search__candidate_component_forcing_test", "g71_component_forcing"),
 ]
 DERIVATION_ID = "g71_bulk_gauge_leakage"
 

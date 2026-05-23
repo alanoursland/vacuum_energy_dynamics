@@ -103,37 +103,37 @@ def prepare_archive():
     dependencies = [
         (
             "g32_candidate_ledger",
-            "32_explicit_minimal_postulate_selection__candidate_postulate_candidate_ledger",
+            "032_explicit_minimal_postulate_selection__candidate_postulate_candidate_ledger",
             "g32_candidate_postulate_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g32_problem",
-            "32_explicit_minimal_postulate_selection__candidate_explicit_postulate_selection_problem",
+            "032_explicit_minimal_postulate_selection__candidate_explicit_postulate_selection_problem",
             "g32_explicit_selection_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_summary",
-            "31_source_divergence_coefficient_law__candidate_group_31_status_summary",
+            "031_source_divergence_coefficient_law__candidate_group_31_status_summary",
             "g31_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_obligations",
-            "31_source_divergence_coefficient_law__candidate_source_divergence_obligations",
+            "031_source_divergence_coefficient_law__candidate_source_divergence_obligations",
             "g31_obligations",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_trace_norm",
-            "31_source_divergence_coefficient_law__candidate_trace_normalization_from_source_divergence",
+            "031_source_divergence_coefficient_law__candidate_trace_normalization_from_source_divergence",
             "g31_trace_normalization_fork",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_summary",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
             "g30_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

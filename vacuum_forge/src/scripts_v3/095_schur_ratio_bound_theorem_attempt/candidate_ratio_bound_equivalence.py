@@ -141,7 +141,7 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g95_problem", "95_schur_ratio_bound_theorem_attempt__candidate_ratio_bound_problem", "g95_problem"),
+    ("g95_problem", "095_schur_ratio_bound_theorem_attempt__candidate_ratio_bound_problem", "g95_problem"),
 ]
 MARKER_ID = "g95_ratio_equivalence"
 

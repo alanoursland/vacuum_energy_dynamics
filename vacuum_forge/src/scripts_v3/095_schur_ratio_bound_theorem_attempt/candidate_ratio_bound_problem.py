@@ -141,7 +141,7 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g94_summary", "94_schur_complement_positivity_attempt__candidate_group_94_status_summary", "g94_summary"),
+    ("g94_summary", "094_schur_complement_positivity_attempt__candidate_group_94_status_summary", "g94_summary"),
 ]
 MARKER_ID = "g95_problem"
 

@@ -105,7 +105,7 @@ def row_signed_matrix(N: int):
     return B
 
 DEPENDENCIES = [
-    ("g93_row_sign_matrix", "93_pivot_sign_theorem_attempt__candidate_row_sign_normalized_matrix", "g93_row_sign_matrix"),
+    ("g93_row_sign_matrix", "093_pivot_sign_theorem_attempt__candidate_row_sign_normalized_matrix", "g93_row_sign_matrix"),
 ]
 MARKER_ID = "g93_schur_pivots"
 

@@ -76,31 +76,31 @@ def prepare_archive():
     dependencies = [
         (
             "residual_problem_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
             "residual_kill_problem_ledger_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "classification_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_metric_trace_residual_classification",
+            "025_residual_kill_or_no_overlap_theorem__candidate_metric_trace_residual_classification",
             "metric_trace_residual_classification_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "inertness_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_nonmetric_inertness_conditions",
+            "025_residual_kill_or_no_overlap_theorem__candidate_nonmetric_inertness_conditions",
             "nonmetric_inertness_conditions_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_boundary_support_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_metric_insertion_boundary_support_compatibility",
+            "024_metric_insertion_recovery_retest__candidate_metric_insertion_boundary_support_compatibility",
             "metric_insertion_boundary_support_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_source_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_metric_insertion_source_compatibility",
+            "024_metric_insertion_recovery_retest__candidate_metric_insertion_source_compatibility",
             "metric_insertion_source_compatibility_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),

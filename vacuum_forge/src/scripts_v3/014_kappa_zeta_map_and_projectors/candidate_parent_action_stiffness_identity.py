@@ -196,7 +196,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="linear_A_spatial_closure_coefficient_origin_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_linear_A_spatial_closure_coefficient_origin",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_linear_A_spatial_closure_coefficient_origin",
         upstream_derivation_id="linear_A_spatial_closure_coefficient_origin_marker",
     )
     return archive, ns, invalidated

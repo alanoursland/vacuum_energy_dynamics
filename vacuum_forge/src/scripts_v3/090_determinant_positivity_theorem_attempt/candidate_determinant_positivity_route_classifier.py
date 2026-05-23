@@ -97,11 +97,11 @@ def q_poly(k, t):
     return t**k - sp.Rational(2*k - 1, 2*k + 3)*t**(k-1)
 
 DEPENDENCIES = [
-    ("g90_derivative_factorization", "90_determinant_positivity_theorem_attempt__candidate_derivative_factorization", "g90_derivative_factorization"),
-    ("g90_andreief", "90_determinant_positivity_theorem_attempt__candidate_andreief_representation", "g90_andreief"),
-    ("g90_chebyshev_sign", "90_determinant_positivity_theorem_attempt__candidate_chebyshev_sign_route_test", "g90_chebyshev_sign"),
-    ("g90_hankel_difference", "90_determinant_positivity_theorem_attempt__candidate_hankel_difference_structure", "g90_hankel_difference"),
-    ("g90_pivot_extension", "90_determinant_positivity_theorem_attempt__candidate_pivot_evidence_extension_N1_to_N12", "g90_pivot_extension"),
+    ("g90_derivative_factorization", "090_determinant_positivity_theorem_attempt__candidate_derivative_factorization", "g90_derivative_factorization"),
+    ("g90_andreief", "090_determinant_positivity_theorem_attempt__candidate_andreief_representation", "g90_andreief"),
+    ("g90_chebyshev_sign", "090_determinant_positivity_theorem_attempt__candidate_chebyshev_sign_route_test", "g90_chebyshev_sign"),
+    ("g90_hankel_difference", "090_determinant_positivity_theorem_attempt__candidate_hankel_difference_structure", "g90_hankel_difference"),
+    ("g90_pivot_extension", "090_determinant_positivity_theorem_attempt__candidate_pivot_evidence_extension_N1_to_N12", "g90_pivot_extension"),
 ]
 MARKER_ID = "g90_route_classifier"
 

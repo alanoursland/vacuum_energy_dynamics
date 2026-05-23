@@ -135,7 +135,7 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g94_schur_balance", "94_schur_complement_positivity_attempt__candidate_schur_term_balance_regimes", "g94_schur_balance"),
+    ("g94_schur_balance", "094_schur_complement_positivity_attempt__candidate_schur_term_balance_regimes", "g94_schur_balance"),
 ]
 MARKER_ID = "g94_schur_ratio"
 

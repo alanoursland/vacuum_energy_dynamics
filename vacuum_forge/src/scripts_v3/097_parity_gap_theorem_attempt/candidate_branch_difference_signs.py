@@ -130,7 +130,7 @@ def rational_sign_parts(expr):
     return sp.factor(num), sp.factor(den), sp.sign(num), sp.sign(den), sp.sign(expr)
 
 DEPENDENCIES = [
-    ("g97_problem", "97_parity_gap_theorem_attempt__candidate_parity_gap_theorem_problem", "g97_problem"),
+    ("g97_problem", "097_parity_gap_theorem_attempt__candidate_parity_gap_theorem_problem", "g97_problem"),
 ]
 MARKER_ID = "g97_branch_differences"
 

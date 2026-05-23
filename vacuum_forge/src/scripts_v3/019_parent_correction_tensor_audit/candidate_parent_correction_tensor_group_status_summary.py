@@ -78,7 +78,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="parent_equation_insertability_audit_marker",
-        upstream_script_id="19_parent_correction_tensor_audit__candidate_parent_equation_insertability_audit",
+        upstream_script_id="019_parent_correction_tensor_audit__candidate_parent_equation_insertability_audit",
         upstream_derivation_id="parent_equation_insertability_audit_marker",
     )
     return archive, ns, invalidated

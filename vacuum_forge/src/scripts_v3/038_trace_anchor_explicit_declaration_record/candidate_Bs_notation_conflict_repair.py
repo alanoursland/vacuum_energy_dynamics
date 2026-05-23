@@ -29,17 +29,17 @@ MARKER_ID = "g38_bs_conflict_repair"
 DEPENDENCIES = [
     (
         "g38_bs_usage",
-        "38_trace_anchor_explicit_declaration_record__candidate_Bs_actual_notation_usage_collector",
+        "038_trace_anchor_explicit_declaration_record__candidate_Bs_actual_notation_usage_collector",
         "g38_bs_usage",
     ),
     (
         "g38_bs_evsrc",
-        "38_trace_anchor_explicit_declaration_record__candidate_Bs_notation_evidence_source_inventory",
+        "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_evidence_source_inventory",
         "g38_bs_evsrc",
     ),
     (
         "g38_recon",
-        "38_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation",
+        "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation",
         "g38_recon",
     ),
 ]

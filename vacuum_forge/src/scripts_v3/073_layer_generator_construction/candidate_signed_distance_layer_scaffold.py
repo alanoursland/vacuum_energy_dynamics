@@ -42,7 +42,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g73_requirements", "73_layer_generator_construction__candidate_geometric_layer_generator_requirements", "g73_requirements"),
+    ("g73_requirements", "073_layer_generator_construction__candidate_geometric_layer_generator_requirements", "g73_requirements"),
 ]
 MARKER_ID = "g73_signed_distance"
 

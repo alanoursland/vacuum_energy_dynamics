@@ -24,14 +24,14 @@ SCRIPT_LABEL = "Candidate Group 67 Status Summary"
 MARKER_ID = "g67_summary"
 
 DEPENDENCIES = [
-    ("g66_summary", "66_parent_blocker_inventory__candidate_group_66_status_summary", "g66_summary"),
-    ("g67_problem", "67_source_trace_divergence_blocker_audit__candidate_blocker_problem", "g67_problem"),
-    ("g67_incidence", "67_source_trace_divergence_blocker_audit__candidate_source_trace_incidence_audit", "g67_incidence"),
-    ("g67_count", "67_source_trace_divergence_blocker_audit__candidate_count_once_compatibility_sieve", "g67_count"),
-    ("g67_residual", "67_source_trace_divergence_blocker_audit__candidate_residual_nonentry_sieve", "g67_residual"),
-    ("g67_div", "67_source_trace_divergence_blocker_audit__candidate_divergence_identity_obstruction", "g67_div"),
-    ("g67_cons", "67_source_trace_divergence_blocker_audit__candidate_conservation_dependency_sieve", "g67_cons"),
-    ("g67_class", "67_source_trace_divergence_blocker_audit__candidate_parent_blocker_route_classifier", "g67_class"),
+    ("g66_summary", "066_parent_blocker_inventory__candidate_group_66_status_summary", "g66_summary"),
+    ("g67_problem", "067_source_trace_divergence_blocker_audit__candidate_blocker_problem", "g67_problem"),
+    ("g67_incidence", "067_source_trace_divergence_blocker_audit__candidate_source_trace_incidence_audit", "g67_incidence"),
+    ("g67_count", "067_source_trace_divergence_blocker_audit__candidate_count_once_compatibility_sieve", "g67_count"),
+    ("g67_residual", "067_source_trace_divergence_blocker_audit__candidate_residual_nonentry_sieve", "g67_residual"),
+    ("g67_div", "067_source_trace_divergence_blocker_audit__candidate_divergence_identity_obstruction", "g67_div"),
+    ("g67_cons", "067_source_trace_divergence_blocker_audit__candidate_conservation_dependency_sieve", "g67_cons"),
+    ("g67_class", "067_source_trace_divergence_blocker_audit__candidate_parent_blocker_route_classifier", "g67_class"),
 ]
 
 

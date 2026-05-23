@@ -94,8 +94,8 @@ def hierarchy_solution(N: int):
     return y, coeffs, P, J, rho, constraints, sol
 
 DEPENDENCIES = [
-    ("g87_weighted_inheritance", "87_moment_hierarchy_closure_test__candidate_weighted_block_inheritance_theorem", "g87_weighted_inheritance"),
-    ("g87_profiles", "87_moment_hierarchy_closure_test__candidate_hierarchy_profiles_N1_to_N4", "g87_profiles"),
+    ("g87_weighted_inheritance", "087_moment_hierarchy_closure_test__candidate_weighted_block_inheritance_theorem", "g87_weighted_inheritance"),
+    ("g87_profiles", "087_moment_hierarchy_closure_test__candidate_hierarchy_profiles_N1_to_N4", "g87_profiles"),
 ]
 MARKER_ID = "g87_next_obstruction"
 

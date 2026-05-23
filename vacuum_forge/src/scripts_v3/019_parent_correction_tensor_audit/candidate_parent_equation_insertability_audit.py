@@ -91,7 +91,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="correction_tensor_boundary_and_mass_neutrality_marker",
-        upstream_script_id="19_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
+        upstream_script_id="019_parent_correction_tensor_audit__candidate_correction_tensor_boundary_and_mass_neutrality",
         upstream_derivation_id="correction_tensor_boundary_and_mass_neutrality_marker",
     )
     return archive, ns, invalidated

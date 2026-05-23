@@ -73,8 +73,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g70_orientation", "70_boundary_lift_matching_theorem_attempt__candidate_orientation_sign_sieve", "g70_orientation"),
-    ("g71_requirements", "71_common_boundary_generator_search__candidate_boundary_generator_requirements", "g71_requirements"),
+    ("g70_orientation", "070_boundary_lift_matching_theorem_attempt__candidate_orientation_sign_sieve", "g70_orientation"),
+    ("g71_requirements", "071_common_boundary_generator_search__candidate_boundary_generator_requirements", "g71_requirements"),
 ]
 DERIVATION_ID = "g71_orientation_forcing"
 

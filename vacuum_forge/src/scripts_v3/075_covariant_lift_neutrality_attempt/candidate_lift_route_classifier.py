@@ -79,10 +79,10 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g75_bulk", "75_covariant_lift_neutrality_attempt__candidate_bulk_neutrality_test", "g75_bulk"),
-    ("g75_gauge", "75_covariant_lift_neutrality_attempt__candidate_gauge_neutrality_test", "g75_gauge"),
-    ("g75_shared_identity", "75_covariant_lift_neutrality_attempt__candidate_shared_lift_identity_test", "g75_shared_identity"),
-    ("g75_discriminator", "75_covariant_lift_neutrality_attempt__candidate_mutual_cancellation_discriminator", "g75_discriminator"),
+    ("g75_bulk", "075_covariant_lift_neutrality_attempt__candidate_bulk_neutrality_test", "g75_bulk"),
+    ("g75_gauge", "075_covariant_lift_neutrality_attempt__candidate_gauge_neutrality_test", "g75_gauge"),
+    ("g75_shared_identity", "075_covariant_lift_neutrality_attempt__candidate_shared_lift_identity_test", "g75_shared_identity"),
+    ("g75_discriminator", "075_covariant_lift_neutrality_attempt__candidate_mutual_cancellation_discriminator", "g75_discriminator"),
 ]
 MARKER_ID = "g75_route_classifier"
 

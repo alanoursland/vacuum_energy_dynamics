@@ -91,31 +91,31 @@ def prepare_archive():
     dependencies = [
         (
             "g27_summary",
-            "27_active_O_construction__candidate_group_27_status_summary",
+            "027_active_O_construction__candidate_group_27_status_summary",
             "g27_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g27_ob",
-            "27_active_O_construction__candidate_O_obligations",
+            "027_active_O_construction__candidate_O_obligations",
             "g27_O_obligations",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g27_pair",
-            "27_active_O_construction__candidate_O_no_overlap_pairing",
+            "027_active_O_construction__candidate_O_no_overlap_pairing",
             "g27_O_pairing",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g27_obs",
-            "27_active_O_construction__candidate_O_construction_obstruction",
+            "027_active_O_construction__candidate_O_construction_obstruction",
             "g27_O_obstruction",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_summary",
-            "26_residual_control_theorem_attempt__candidate_group_26_status_summary",
+            "026_residual_control_theorem_attempt__candidate_group_26_status_summary",
             "g26_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

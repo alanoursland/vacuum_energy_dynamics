@@ -82,31 +82,31 @@ def prepare_archive():
     dependencies = [
         (
             "g31_explicitness",
-            "31_source_divergence_coefficient_law__candidate_nonreservoir_divergence_explicitness",
+            "031_source_divergence_coefficient_law__candidate_nonreservoir_divergence_explicitness",
             "g31_nonreservoir_explicitness",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_div_res",
-            "31_source_divergence_coefficient_law__candidate_divergence_reservoir_obstruction",
+            "031_source_divergence_coefficient_law__candidate_divergence_reservoir_obstruction",
             "g31_divergence_reservoir",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_coeff",
-            "31_source_divergence_coefficient_law__candidate_coefficient_source_no_double_counting_tests",
+            "031_source_divergence_coefficient_law__candidate_coefficient_source_no_double_counting_tests",
             "g31_coeff_source_tests",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_dup",
-            "31_source_divergence_coefficient_law__candidate_source_duplicate_load_ledger",
+            "031_source_divergence_coefficient_law__candidate_source_duplicate_load_ledger",
             "g31_source_duplicate_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_problem",
-            "31_source_divergence_coefficient_law__candidate_source_divergence_problem_ledger",
+            "031_source_divergence_coefficient_law__candidate_source_divergence_problem_ledger",
             "g31_source_divergence_problem",
             RecordKind.INVENTORY_MARKER,
         ),

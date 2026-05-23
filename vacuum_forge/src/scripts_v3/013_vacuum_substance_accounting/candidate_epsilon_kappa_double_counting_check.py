@@ -175,7 +175,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="epsilon_vac_config_functional_marker",
-        upstream_script_id="13_vacuum_substance_accounting__candidate_epsilon_vac_config_functional",
+        upstream_script_id="013_vacuum_substance_accounting__candidate_epsilon_vac_config_functional",
         upstream_derivation_id="epsilon_vac_config_functional_marker",
     )
     return archive, ns, invalidated

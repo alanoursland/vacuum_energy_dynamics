@@ -132,9 +132,9 @@ SCRIPT_LABEL = "Candidate Trace Anchor Declaration Record Problem"
 MARKER_ID = "g38_problem"
 
 DEPENDENCIES = [
-    ("g37_summary", "37_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary", "g37_summary"),
-    ("g37_recon", "37_trace_anchor_declaration_option_sieve__candidate_trace_anchor_option_batch_reconciliation", "g37_recon"),
-    ("g36_summary", "36_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_summary"),
+    ("g37_summary", "037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary", "g37_summary"),
+    ("g37_recon", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_option_batch_reconciliation", "g37_recon"),
+    ("g36_summary", "036_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_summary"),
 ]
 
 @dataclass

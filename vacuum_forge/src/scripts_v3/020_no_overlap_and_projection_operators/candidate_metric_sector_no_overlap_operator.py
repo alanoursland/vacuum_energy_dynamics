@@ -66,7 +66,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="projection_operator_minimum_structure_marker",
-        upstream_script_id="20_no_overlap_and_projection_operators__candidate_projection_operator_minimum_structure",
+        upstream_script_id="020_no_overlap_and_projection_operators__candidate_projection_operator_minimum_structure",
         upstream_derivation_id="projection_operator_minimum_structure_marker",
     )
     return archive, ns, invalidated

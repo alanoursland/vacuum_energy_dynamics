@@ -103,7 +103,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="ordinary_matter_decoupling_for_vacuum_currents_marker",
-        upstream_script_id="18_vacuum_current_split__candidate_ordinary_matter_decoupling_for_vacuum_currents",
+        upstream_script_id="018_vacuum_current_split__candidate_ordinary_matter_decoupling_for_vacuum_currents",
         upstream_derivation_id="ordinary_matter_decoupling_for_vacuum_currents_marker",
     )
     return archive, ns, invalidated

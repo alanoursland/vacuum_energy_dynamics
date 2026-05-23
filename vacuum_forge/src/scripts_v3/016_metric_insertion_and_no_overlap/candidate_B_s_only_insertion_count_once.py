@@ -81,7 +81,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="B_s_F_zeta_insertion_law_marker",
-        upstream_script_id="16_metric_insertion_and_no_overlap__candidate_B_s_F_zeta_insertion_law",
+        upstream_script_id="016_metric_insertion_and_no_overlap__candidate_B_s_F_zeta_insertion_law",
         upstream_derivation_id="B_s_F_zeta_insertion_law_marker",
     )
     return archive, ns, invalidated

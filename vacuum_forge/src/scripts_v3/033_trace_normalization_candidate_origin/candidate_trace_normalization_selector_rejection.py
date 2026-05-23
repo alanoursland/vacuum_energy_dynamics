@@ -94,31 +94,31 @@ def prepare_archive():
     dependencies = [
         (
             "g33_volume_trace",
-            "33_trace_normalization_candidate_origin__candidate_trace_normalization_volume_trace_ledger",
+            "033_trace_normalization_candidate_origin__candidate_trace_normalization_volume_trace_ledger",
             "g33_volume_trace_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g33_origin_problem",
-            "33_trace_normalization_candidate_origin__candidate_trace_normalization_origin_problem",
+            "033_trace_normalization_candidate_origin__candidate_trace_normalization_origin_problem",
             "g33_trace_normalization_origin_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g32_summary",
-            "32_explicit_minimal_postulate_selection__candidate_group_32_status_summary",
+            "032_explicit_minimal_postulate_selection__candidate_group_32_status_summary",
             "g32_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g32_minimality",
-            "32_explicit_minimal_postulate_selection__candidate_postulate_package_minimality",
+            "032_explicit_minimal_postulate_selection__candidate_postulate_package_minimality",
             "g32_package_minimality",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_trace_norm",
-            "31_source_divergence_coefficient_law__candidate_trace_normalization_from_source_divergence",
+            "031_source_divergence_coefficient_law__candidate_trace_normalization_from_source_divergence",
             "g31_trace_normalization_fork",
             RecordKind.INVENTORY_MARKER,
         ),

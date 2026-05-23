@@ -26,47 +26,47 @@ MARKER_ID = "g51_summary"
 DEPENDENCIES = [
     (
         "g50_summary",
-        "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_group_50_status_summary",
+        "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_group_50_status_summary",
         "g50_summary",
     ),
     (
         "g51_problem",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_adopt_defer_reject_decision_problem",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_adopt_defer_reject_decision_problem",
         "g51_problem",
     ),
     (
         "g51_record_level_adoption",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_record_level_adoption_meaning_audit",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_record_level_adoption_meaning_audit",
         "g51_record_level_adoption",
     ),
     (
         "g51_branch_burden_sanity",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_branch_burden_symbolic_sanity_check",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_branch_burden_symbolic_sanity_check",
         "g51_branch_burden_sanity",
     ),
     (
         "g51_prereq_matrix",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_adoption_prerequisite_matrix",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_adoption_prerequisite_matrix",
         "g51_prereq_matrix",
     ),
     (
         "g51_defer_route",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_defer_route_and_theorem_dependency_audit",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_defer_route_and_theorem_dependency_audit",
         "g51_defer_route",
     ),
     (
         "g51_rejection_sieve",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_rejection_trigger_sieve",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_rejection_trigger_sieve",
         "g51_rejection_sieve",
     ),
     (
         "g51_route_classifier",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_decision_surface_route_classifier",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_decision_surface_route_classifier",
         "g51_route_classifier",
     ),
     (
         "g51_reconciliation",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_adopt_defer_reject_decision_batch_reconciliation",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_adopt_defer_reject_decision_batch_reconciliation",
         "g51_reconciliation",
     ),
 ]

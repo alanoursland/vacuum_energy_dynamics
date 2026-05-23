@@ -76,7 +76,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="binary_scalar_guardrail_marker",
-        upstream_script_id="07_scalar_constraint_and_radiation_safety__candidate_binary_scalar_radiation_guardrail",
+        upstream_script_id="007_scalar_constraint_and_radiation_safety__candidate_binary_scalar_radiation_guardrail",
         upstream_derivation_id="binary_scalar_guardrail_marker",
     )
     return archive, ns, invalidated

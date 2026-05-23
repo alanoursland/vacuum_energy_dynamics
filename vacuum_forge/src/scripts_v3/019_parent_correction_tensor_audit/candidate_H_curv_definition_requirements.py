@@ -89,7 +89,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="parent_correction_tensor_role_inventory_marker",
-        upstream_script_id="19_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
+        upstream_script_id="019_parent_correction_tensor_audit__candidate_parent_correction_tensor_role_inventory",
         upstream_derivation_id="parent_correction_tensor_role_inventory_marker",
     )
     return archive, ns, invalidated

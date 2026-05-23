@@ -148,13 +148,13 @@ class Entry:
 SCRIPT_LABEL = "Candidate Safe-Membership Precondition Batch Reconciliation"
 MARKER_ID = "g41_recon"
 DEPENDENCIES = [
-    ("g40_summary", "40_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
-    ("g41_problem", "41_safe_membership_precondition_continuation__candidate_safe_membership_precondition_problem", "g41_problem"),
-    ("g41_zeta_object", "41_safe_membership_precondition_continuation__candidate_zeta_Bs_object_precondition_ledger", "g41_zeta_object"),
-    ("g41_tzeta_sector", "41_safe_membership_precondition_continuation__candidate_Tzeta_sector_precondition_ledger", "g41_tzeta_sector"),
-    ("g41_criterion_matrix", "41_safe_membership_precondition_continuation__candidate_membership_criterion_precondition_matrix", "g41_criterion_matrix"),
-    ("g41_role_purity", "41_safe_membership_precondition_continuation__candidate_role_purity_exclusion_zone_audit", "g41_role_purity"),
-    ("g41_active_boundary", "41_safe_membership_precondition_continuation__candidate_diagnostic_vs_active_membership_boundary", "g41_active_boundary"),
+    ("g40_summary", "040_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
+    ("g41_problem", "041_safe_membership_precondition_continuation__candidate_safe_membership_precondition_problem", "g41_problem"),
+    ("g41_zeta_object", "041_safe_membership_precondition_continuation__candidate_zeta_Bs_object_precondition_ledger", "g41_zeta_object"),
+    ("g41_tzeta_sector", "041_safe_membership_precondition_continuation__candidate_Tzeta_sector_precondition_ledger", "g41_tzeta_sector"),
+    ("g41_criterion_matrix", "041_safe_membership_precondition_continuation__candidate_membership_criterion_precondition_matrix", "g41_criterion_matrix"),
+    ("g41_role_purity", "041_safe_membership_precondition_continuation__candidate_role_purity_exclusion_zone_audit", "g41_role_purity"),
+    ("g41_active_boundary", "041_safe_membership_precondition_continuation__candidate_diagnostic_vs_active_membership_boundary", "g41_active_boundary"),
 ]
 
 

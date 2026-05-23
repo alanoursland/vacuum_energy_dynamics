@@ -196,7 +196,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="stiffness_ratio_origin_inventory_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_stiffness_ratio_origin_inventory",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_stiffness_ratio_origin_inventory",
         upstream_derivation_id="stiffness_ratio_origin_inventory_marker",
     )
     return archive, ns, invalidated

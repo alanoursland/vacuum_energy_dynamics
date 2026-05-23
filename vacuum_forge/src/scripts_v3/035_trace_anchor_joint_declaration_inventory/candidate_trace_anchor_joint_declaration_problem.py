@@ -89,31 +89,31 @@ def prepare_archive():
     dependencies = [
         (
             "g34_summary",
-            "34_safe_trace_membership_candidate_origin__candidate_group_34_status_summary",
+            "034_safe_trace_membership_candidate_origin__candidate_group_34_status_summary",
             "g34_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g34_obligations",
-            "34_safe_trace_membership_candidate_origin__candidate_safe_trace_membership_obligations",
+            "034_safe_trace_membership_candidate_origin__candidate_safe_trace_membership_obligations",
             "g34_safe_membership_obligations",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g33_summary",
-            "33_trace_normalization_candidate_origin__candidate_group_33_status_summary",
+            "033_trace_normalization_candidate_origin__candidate_group_33_status_summary",
             "g33_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g33_obligations",
-            "33_trace_normalization_candidate_origin__candidate_trace_normalization_obligations",
+            "033_trace_normalization_candidate_origin__candidate_trace_normalization_obligations",
             "g33_trace_normalization_obligations",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g32_summary",
-            "32_explicit_minimal_postulate_selection__candidate_group_32_status_summary",
+            "032_explicit_minimal_postulate_selection__candidate_group_32_status_summary",
             "g32_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

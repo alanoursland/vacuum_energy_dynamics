@@ -141,9 +141,9 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g95_ratio_equivalence", "95_schur_ratio_bound_theorem_attempt__candidate_ratio_bound_equivalence", "g95_ratio_equivalence"),
-    ("g95_post_transition_evidence", "95_schur_ratio_bound_theorem_attempt__candidate_post_transition_ratio_evidence_N11_to_N25", "g95_post_transition_evidence"),
-    ("g95_gap_probe", "95_schur_ratio_bound_theorem_attempt__candidate_ratio_gap_structure_probe", "g95_gap_probe"),
+    ("g95_ratio_equivalence", "095_schur_ratio_bound_theorem_attempt__candidate_ratio_bound_equivalence", "g95_ratio_equivalence"),
+    ("g95_post_transition_evidence", "095_schur_ratio_bound_theorem_attempt__candidate_post_transition_ratio_evidence_N11_to_N25", "g95_post_transition_evidence"),
+    ("g95_gap_probe", "095_schur_ratio_bound_theorem_attempt__candidate_ratio_gap_structure_probe", "g95_gap_probe"),
 ]
 MARKER_ID = "g95_route_audit"
 

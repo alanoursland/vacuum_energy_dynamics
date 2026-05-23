@@ -96,7 +96,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="gauge_invariant_diagnostics_marker",
-        upstream_script_id="08_covariant_parent_structure__candidate_gauge_invariant_diagnostics",
+        upstream_script_id="008_covariant_parent_structure__candidate_gauge_invariant_diagnostics",
         upstream_derivation_id="gauge_invariant_diagnostics_marker",
     )
     return archive, ns, invalidated

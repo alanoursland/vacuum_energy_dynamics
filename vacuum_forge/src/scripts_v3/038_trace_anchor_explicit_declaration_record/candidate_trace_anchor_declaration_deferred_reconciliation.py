@@ -35,13 +35,13 @@ SCRIPT_LABEL = "Candidate Trace Anchor Declaration Deferred Reconciliation"
 MARKER_ID = "g38_decl_defer_recon"
 
 DEPENDENCIES = [
-    ("g38_recon", "38_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation", "g38_recon"),
-    ("g38_bs_usage", "38_trace_anchor_explicit_declaration_record__candidate_Bs_actual_notation_usage_collector", "g38_bs_usage"),
-    ("g38_bs_split", "38_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration", "g38_bs_split_decl"),
-    ("g38_bs_choice", "38_trace_anchor_explicit_declaration_record__candidate_Bs_explicit_branch_choice_sieve", "g38_bs_branch_choice"),
-    ("g38_norm", "38_trace_anchor_explicit_declaration_record__candidate_trace_normalization_declaration_attempt", "g38_norm"),
-    ("g38_mem", "38_trace_anchor_explicit_declaration_record__candidate_safe_membership_declaration_attempt", "g38_mem"),
-    ("g38_joint", "38_trace_anchor_explicit_declaration_record__candidate_joint_trace_anchor_declaration_record", "g38_joint"),
+    ("g38_recon", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation", "g38_recon"),
+    ("g38_bs_usage", "038_trace_anchor_explicit_declaration_record__candidate_Bs_actual_notation_usage_collector", "g38_bs_usage"),
+    ("g38_bs_split", "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration", "g38_bs_split_decl"),
+    ("g38_bs_choice", "038_trace_anchor_explicit_declaration_record__candidate_Bs_explicit_branch_choice_sieve", "g38_bs_branch_choice"),
+    ("g38_norm", "038_trace_anchor_explicit_declaration_record__candidate_trace_normalization_declaration_attempt", "g38_norm"),
+    ("g38_mem", "038_trace_anchor_explicit_declaration_record__candidate_safe_membership_declaration_attempt", "g38_mem"),
+    ("g38_joint", "038_trace_anchor_explicit_declaration_record__candidate_joint_trace_anchor_declaration_record", "g38_joint"),
 ]
 
 

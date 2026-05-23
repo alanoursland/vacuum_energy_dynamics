@@ -148,8 +148,8 @@ class Entry:
 SCRIPT_LABEL = "Candidate Diagnostic vs Active Membership Boundary"
 MARKER_ID = "g41_active_boundary"
 DEPENDENCIES = [
-    ("g40_summary", "40_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
-    ("g41_role_purity", "41_safe_membership_precondition_continuation__candidate_role_purity_exclusion_zone_audit", "g41_role_purity"),
+    ("g40_summary", "040_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
+    ("g41_role_purity", "041_safe_membership_precondition_continuation__candidate_role_purity_exclusion_zone_audit", "g41_role_purity"),
 ]
 
 

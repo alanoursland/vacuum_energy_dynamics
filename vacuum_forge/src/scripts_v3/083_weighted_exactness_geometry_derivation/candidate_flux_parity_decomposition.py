@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g83_measure_gradient", "83_weighted_exactness_geometry_derivation__candidate_measure_gradient_identity", "g83_measure_gradient"),
+    ("g83_measure_gradient", "083_weighted_exactness_geometry_derivation__candidate_measure_gradient_identity", "g83_measure_gradient"),
 ]
 MARKER_ID = "g83_parity"
 

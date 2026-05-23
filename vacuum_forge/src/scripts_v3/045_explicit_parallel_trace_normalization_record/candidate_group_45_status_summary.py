@@ -30,14 +30,14 @@ SCRIPT_LABEL = "Candidate Group 45 Status Summary"
 MARKER_ID = "g45_summary"
 
 DEPENDENCIES = [
-    ("g45_recon", "45_explicit_parallel_trace_normalization_record__candidate_parallel_trace_record_batch_reconciliation", "g45_recon"),
-    ("g45_downstream_lock", "45_explicit_parallel_trace_normalization_record__candidate_parallel_record_downstream_lock_audit", "g45_downstream_lock"),
-    ("g45_decl_boundary", "45_explicit_parallel_trace_normalization_record__candidate_parallel_record_declaration_boundary", "g45_decl_boundary"),
-    ("g45_consistency", "45_explicit_parallel_trace_normalization_record__candidate_parallel_record_consistency_audit", "g45_consistency"),
-    ("g45_scale_record", "45_explicit_parallel_trace_normalization_record__candidate_scale_trace_record_schema", "g45_scale_record"),
-    ("g45_metric_record", "45_explicit_parallel_trace_normalization_record__candidate_metric_trace_record_schema", "g45_metric_record"),
-    ("g45_problem", "45_explicit_parallel_trace_normalization_record__candidate_parallel_trace_record_problem", "g45_problem"),
-    ("g44_summary", "44_trace_normalization_selector_context_audit__candidate_group_44_status_summary", "g44_summary"),
+    ("g45_recon", "045_explicit_parallel_trace_normalization_record__candidate_parallel_trace_record_batch_reconciliation", "g45_recon"),
+    ("g45_downstream_lock", "045_explicit_parallel_trace_normalization_record__candidate_parallel_record_downstream_lock_audit", "g45_downstream_lock"),
+    ("g45_decl_boundary", "045_explicit_parallel_trace_normalization_record__candidate_parallel_record_declaration_boundary", "g45_decl_boundary"),
+    ("g45_consistency", "045_explicit_parallel_trace_normalization_record__candidate_parallel_record_consistency_audit", "g45_consistency"),
+    ("g45_scale_record", "045_explicit_parallel_trace_normalization_record__candidate_scale_trace_record_schema", "g45_scale_record"),
+    ("g45_metric_record", "045_explicit_parallel_trace_normalization_record__candidate_metric_trace_record_schema", "g45_metric_record"),
+    ("g45_problem", "045_explicit_parallel_trace_normalization_record__candidate_parallel_trace_record_problem", "g45_problem"),
+    ("g44_summary", "044_trace_normalization_selector_context_audit__candidate_group_44_status_summary", "g44_summary"),
 ]
 
 

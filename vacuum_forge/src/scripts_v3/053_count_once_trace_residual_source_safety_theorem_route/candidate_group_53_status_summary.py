@@ -26,47 +26,47 @@ MARKER_ID = "g53_summary"
 DEPENDENCIES = [
     (
         "g52_summary",
-        "52_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary",
+        "052_residual_source_boundary_safety_load_testing__candidate_group_52_status_summary",
         "g52_summary",
     ),
     (
         "g53_problem",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_theorem_problem",
         "g53_problem",
     ),
     (
         "g53_count_once_condition",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_count_once_trace_condition_formalization",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_count_once_trace_condition_formalization",
         "g53_count_once_condition",
     ),
     (
         "g53_residual_non_o",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_nonentry_non_o_route_audit",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_nonentry_non_o_route_audit",
         "g53_residual_non_o",
     ),
     (
         "g53_source_role_purity",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_source_routing_role_purity_matrix",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_source_routing_role_purity_matrix",
         "g53_source_role_purity",
     ),
     (
         "g53_mass_neutrality",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_a_sector_mass_neutrality_condition_audit",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_a_sector_mass_neutrality_condition_audit",
         "g53_mass_neutrality",
     ),
     (
         "g53_non_o_obstruction",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_non_o_safety_route_obstruction_classifier",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_non_o_safety_route_obstruction_classifier",
         "g53_non_o_obstruction",
     ),
     (
         "g53_route_classifier",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_route_classifier",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_route_classifier",
         "g53_route_classifier",
     ),
     (
         "g53_reconciliation",
-        "53_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_batch_reconciliation",
+        "053_count_once_trace_residual_source_safety_theorem_route__candidate_residual_source_safety_batch_reconciliation",
         "g53_reconciliation",
     ),
 ]

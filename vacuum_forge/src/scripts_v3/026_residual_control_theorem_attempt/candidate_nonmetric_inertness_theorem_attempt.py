@@ -99,31 +99,31 @@ def prepare_archive():
     dependencies = [
         (
             "problem_ledger_dep_26",
-            "26_residual_control_theorem_attempt__candidate_residual_control_theorem_problem_ledger",
+            "026_residual_control_theorem_attempt__candidate_residual_control_theorem_problem_ledger",
             "residual_control_theorem_problem_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "structural_kill_dep_26",
-            "26_residual_control_theorem_attempt__candidate_structural_residual_kill_law_attempt",
+            "026_residual_control_theorem_attempt__candidate_structural_residual_kill_law_attempt",
             "structural_residual_kill_law_attempt_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g25_inertness_dep_26",
-            "25_residual_kill_or_no_overlap_theorem__candidate_nonmetric_inertness_conditions",
+            "025_residual_kill_or_no_overlap_theorem__candidate_nonmetric_inertness_conditions",
             "nonmetric_inertness_conditions_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g25_reentry_dep_26",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_reentry_exclusion_audit",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_reentry_exclusion_audit",
             "residual_reentry_exclusion_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g25_summary_dep_26",
-            "25_residual_kill_or_no_overlap_theorem__candidate_group_25_residual_kill_status_summary",
+            "025_residual_kill_or_no_overlap_theorem__candidate_group_25_residual_kill_status_summary",
             "group25_residual_kill_status_summary_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),

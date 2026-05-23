@@ -91,31 +91,31 @@ def prepare_archive():
     dependencies = [
         (
             "g26_summary",
-            "26_residual_control_theorem_attempt__candidate_group_26_status_summary",
+            "026_residual_control_theorem_attempt__candidate_group_26_status_summary",
             "g26_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_oblig",
-            "26_residual_control_theorem_attempt__candidate_residual_control_theorem_attempt_obligations",
+            "026_residual_control_theorem_attempt__candidate_residual_control_theorem_attempt_obligations",
             "g26_obligation_status",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_nonO",
-            "26_residual_control_theorem_attempt__candidate_residual_control_without_active_O_obstruction",
+            "026_residual_control_theorem_attempt__candidate_residual_control_without_active_O_obstruction",
             "residual_control_without_active_O_obstruction_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_O_class",
-            "26_residual_control_theorem_attempt__candidate_minimal_O_necessity_or_deferral",
+            "026_residual_control_theorem_attempt__candidate_minimal_O_necessity_or_deferral",
             "minimal_O_necessity_or_deferral_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g25_O_burden",
-            "25_residual_kill_or_no_overlap_theorem__candidate_no_overlap_operator_minimum_burden",
+            "025_residual_kill_or_no_overlap_theorem__candidate_no_overlap_operator_minimum_burden",
             "no_overlap_operator_minimum_burden_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),

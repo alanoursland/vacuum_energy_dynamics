@@ -159,7 +159,7 @@ def decreasing(values):
     return failures
 
 DEPENDENCIES = [
-    ("g95_summary", "95_schur_ratio_bound_theorem_attempt__candidate_group_95_status_summary", "g95_summary"),
+    ("g95_summary", "095_schur_ratio_bound_theorem_attempt__candidate_group_95_status_summary", "g95_summary"),
 ]
 MARKER_ID = "g96_problem"
 

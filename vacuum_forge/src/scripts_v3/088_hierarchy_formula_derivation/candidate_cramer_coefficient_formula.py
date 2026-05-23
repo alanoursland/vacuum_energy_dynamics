@@ -121,7 +121,7 @@ def profile_from_coeffs(coeffs):
     return sp.expand(1 + sum(coeffs[j-1] * t**j for j in range(1, len(coeffs)+1)))
 
 DEPENDENCIES = [
-    ("g88_beta_system", "88_hierarchy_formula_derivation__candidate_beta_linear_system_formula", "g88_beta_system"),
+    ("g88_beta_system", "088_hierarchy_formula_derivation__candidate_beta_linear_system_formula", "g88_beta_system"),
 ]
 MARKER_ID = "g88_cramer"
 

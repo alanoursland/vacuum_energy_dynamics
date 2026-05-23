@@ -121,14 +121,14 @@ def profile_from_coeffs(coeffs):
     return sp.expand(1 + sum(coeffs[j-1] * t**j for j in range(1, len(coeffs)+1)))
 
 DEPENDENCIES = [
-    ("g87_summary", "87_moment_hierarchy_closure_test__candidate_group_87_status_summary", "g87_summary"),
-    ("g88_problem", "88_hierarchy_formula_derivation__candidate_hierarchy_formula_problem", "g88_problem"),
-    ("g88_moment_ratio", "88_hierarchy_formula_derivation__candidate_moment_ratio_identity", "g88_moment_ratio"),
-    ("g88_beta_system", "88_hierarchy_formula_derivation__candidate_beta_linear_system_formula", "g88_beta_system"),
-    ("g88_cramer", "88_hierarchy_formula_derivation__candidate_cramer_coefficient_formula", "g88_cramer"),
-    ("g88_validation", "88_hierarchy_formula_derivation__candidate_formula_validation_N1_to_N6", "g88_validation"),
-    ("g88_next_sequence", "88_hierarchy_formula_derivation__candidate_next_obstruction_sequence", "g88_next_sequence"),
-    ("g88_route_classifier", "88_hierarchy_formula_derivation__candidate_hierarchy_formula_route_classifier", "g88_route_classifier"),
+    ("g87_summary", "087_moment_hierarchy_closure_test__candidate_group_87_status_summary", "g87_summary"),
+    ("g88_problem", "088_hierarchy_formula_derivation__candidate_hierarchy_formula_problem", "g88_problem"),
+    ("g88_moment_ratio", "088_hierarchy_formula_derivation__candidate_moment_ratio_identity", "g88_moment_ratio"),
+    ("g88_beta_system", "088_hierarchy_formula_derivation__candidate_beta_linear_system_formula", "g88_beta_system"),
+    ("g88_cramer", "088_hierarchy_formula_derivation__candidate_cramer_coefficient_formula", "g88_cramer"),
+    ("g88_validation", "088_hierarchy_formula_derivation__candidate_formula_validation_N1_to_N6", "g88_validation"),
+    ("g88_next_sequence", "088_hierarchy_formula_derivation__candidate_next_obstruction_sequence", "g88_next_sequence"),
+    ("g88_route_classifier", "088_hierarchy_formula_derivation__candidate_hierarchy_formula_route_classifier", "g88_route_classifier"),
 ]
 MARKER_ID = "g88_summary"
 

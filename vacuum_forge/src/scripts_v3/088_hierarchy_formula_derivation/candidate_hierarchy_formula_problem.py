@@ -121,7 +121,7 @@ def profile_from_coeffs(coeffs):
     return sp.expand(1 + sum(coeffs[j-1] * t**j for j in range(1, len(coeffs)+1)))
 
 DEPENDENCIES = [
-    ("g87_summary", "87_moment_hierarchy_closure_test__candidate_group_87_status_summary", "g87_summary"),
+    ("g87_summary", "087_moment_hierarchy_closure_test__candidate_group_87_status_summary", "g87_summary"),
 ]
 MARKER_ID = "g88_problem"
 

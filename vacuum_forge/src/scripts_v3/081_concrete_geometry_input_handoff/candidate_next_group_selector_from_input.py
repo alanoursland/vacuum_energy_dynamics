@@ -79,10 +79,10 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g81_dlayer_gate", "81_concrete_geometry_input_handoff__candidate_D_layer_geometry_input_gate", "g81_dlayer_gate"),
-    ("g81_lift_gate", "81_concrete_geometry_input_handoff__candidate_lift_identity_input_gate", "g81_lift_gate"),
-    ("g81_rho_gate", "81_concrete_geometry_input_handoff__candidate_rho_exactness_input_gate", "g81_rho_gate"),
-    ("g81_parent_active_gate", "81_concrete_geometry_input_handoff__candidate_parent_and_active_O_input_gate", "g81_parent_active_gate"),
+    ("g81_dlayer_gate", "081_concrete_geometry_input_handoff__candidate_D_layer_geometry_input_gate", "g81_dlayer_gate"),
+    ("g81_lift_gate", "081_concrete_geometry_input_handoff__candidate_lift_identity_input_gate", "g81_lift_gate"),
+    ("g81_rho_gate", "081_concrete_geometry_input_handoff__candidate_rho_exactness_input_gate", "g81_rho_gate"),
+    ("g81_parent_active_gate", "081_concrete_geometry_input_handoff__candidate_parent_and_active_O_input_gate", "g81_parent_active_gate"),
 ]
 MARKER_ID = "g81_next_selector"
 
@@ -92,11 +92,11 @@ def main():
     out = ScriptOutput()
 
     routes = [
-        ("concrete_D_layer_geometry", "82_layer_geometry_concrete_test"),
-        ("concrete_lift_identity", "82_covariant_lift_identity_concrete_test"),
-        ("concrete_rho_exactness", "82_rho_exactness_concrete_test"),
-        ("explicit_axiom_instruction", "82_axiom_owner_decision"),
-        ("active_O_structural_requirement", "82_active_O_necessity_or_rejection"),
+        ("concrete_D_layer_geometry", "082_layer_geometry_concrete_test"),
+        ("concrete_lift_identity", "082_covariant_lift_identity_concrete_test"),
+        ("concrete_rho_exactness", "082_rho_exactness_concrete_test"),
+        ("explicit_axiom_instruction", "082_axiom_owner_decision"),
+        ("active_O_structural_requirement", "082_active_O_necessity_or_rejection"),
         ("no_concrete_input", "pause_theorem_attempts_or_82_parent_blocker_refresh"),
     ]
 

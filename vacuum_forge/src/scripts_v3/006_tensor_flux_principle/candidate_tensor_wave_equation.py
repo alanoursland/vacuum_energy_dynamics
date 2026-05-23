@@ -91,7 +91,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="tensor_tt_basis_marker",
-        upstream_script_id="06_tensor_flux_principle__candidate_tensor_flux_basis",
+        upstream_script_id="006_tensor_flux_principle__candidate_tensor_flux_basis",
         upstream_derivation_id="tensor_tt_basis_marker",
     )
     return archive, ns, invalidated

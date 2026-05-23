@@ -30,15 +30,15 @@ SCRIPT_LABEL = "Candidate Group 43 Status Summary"
 MARKER_ID = "g43_summary"
 
 DEPENDENCIES = [
-    ("g43_recon", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_batch_reconciliation", "g43_recon"),
-    ("g43_obligation_matrix", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_decision_obligation_matrix", "g43_obligation_matrix"),
-    ("g43_selector_sieve", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_selector_admissibility_and_rejection_sieve", "g43_selector_sieve"),
-    ("g43_parallel_records", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_parallel_declaration_candidate_ledger", "g43_parallel_records"),
-    ("g43_scale_branch", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_scale_branch_choice_readiness_ledger", "g43_scale_branch"),
-    ("g43_metric_branch", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger", "g43_metric_branch"),
-    ("g43_problem", "43_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_problem", "g43_problem"),
-    ("g42_summary", "42_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary", "g42_summary"),
-    ("g42_trace_norm_sieve", "42_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve", "g42_trace_norm_sieve"),
+    ("g43_recon", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_batch_reconciliation", "g43_recon"),
+    ("g43_obligation_matrix", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_decision_obligation_matrix", "g43_obligation_matrix"),
+    ("g43_selector_sieve", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_selector_admissibility_and_rejection_sieve", "g43_selector_sieve"),
+    ("g43_parallel_records", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_parallel_declaration_candidate_ledger", "g43_parallel_records"),
+    ("g43_scale_branch", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_scale_branch_choice_readiness_ledger", "g43_scale_branch"),
+    ("g43_metric_branch", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_metric_branch_choice_readiness_ledger", "g43_metric_branch"),
+    ("g43_problem", "043_trace_normalization_branch_or_parallel_decision_surface__candidate_branch_or_parallel_decision_problem", "g43_problem"),
+    ("g42_summary", "042_trace_anchor_equation_choice_exclusion_map__candidate_group_42_status_summary", "g42_summary"),
+    ("g42_trace_norm_sieve", "042_trace_anchor_equation_choice_exclusion_map__candidate_trace_normalization_equation_family_sieve", "g42_trace_norm_sieve"),
 ]
 
 

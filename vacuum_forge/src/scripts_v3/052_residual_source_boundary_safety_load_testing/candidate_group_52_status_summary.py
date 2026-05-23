@@ -26,47 +26,47 @@ MARKER_ID = "g52_summary"
 DEPENDENCIES = [
     (
         "g51_summary",
-        "51_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary",
+        "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_group_51_status_summary",
         "g51_summary",
     ),
     (
         "g52_problem",
-        "52_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem",
+        "052_residual_source_boundary_safety_load_testing__candidate_safety_load_test_problem",
         "g52_problem",
     ),
     (
         "g52_count_once_trace",
-        "52_residual_source_boundary_safety_load_testing__candidate_count_once_trace_incidence_audit",
+        "052_residual_source_boundary_safety_load_testing__candidate_count_once_trace_incidence_audit",
         "g52_count_once_trace",
     ),
     (
         "g52_residual_nonentry",
-        "52_residual_source_boundary_safety_load_testing__candidate_residual_nonentry_obstruction_sieve",
+        "052_residual_source_boundary_safety_load_testing__candidate_residual_nonentry_obstruction_sieve",
         "g52_residual_nonentry",
     ),
     (
         "g52_source_matrix",
-        "52_residual_source_boundary_safety_load_testing__candidate_source_no_double_counting_matrix",
+        "052_residual_source_boundary_safety_load_testing__candidate_source_no_double_counting_matrix",
         "g52_source_matrix",
     ),
     (
         "g52_a_mass_protection",
-        "52_residual_source_boundary_safety_load_testing__candidate_a_sector_mass_protection_audit",
+        "052_residual_source_boundary_safety_load_testing__candidate_a_sector_mass_protection_audit",
         "g52_a_mass_protection",
     ),
     (
         "g52_boundary_silence",
-        "52_residual_source_boundary_safety_load_testing__candidate_boundary_scalar_silence_dependency_audit",
+        "052_residual_source_boundary_safety_load_testing__candidate_boundary_scalar_silence_dependency_audit",
         "g52_boundary_silence",
     ),
     (
         "g52_safety_classifier",
-        "52_residual_source_boundary_safety_load_testing__candidate_safety_load_route_classifier",
+        "052_residual_source_boundary_safety_load_testing__candidate_safety_load_route_classifier",
         "g52_safety_classifier",
     ),
     (
         "g52_safety_reconciliation",
-        "52_residual_source_boundary_safety_load_testing__candidate_residual_source_boundary_safety_batch_reconciliation",
+        "052_residual_source_boundary_safety_load_testing__candidate_residual_source_boundary_safety_batch_reconciliation",
         "g52_safety_reconciliation",
     ),
 ]

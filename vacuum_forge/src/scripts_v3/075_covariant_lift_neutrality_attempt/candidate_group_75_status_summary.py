@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g74_summary", "74_boundary_lift_route_split_decision__candidate_group_74_status_summary", "g74_summary"),
-    ("g75_problem", "75_covariant_lift_neutrality_attempt__candidate_lift_neutrality_problem", "g75_problem"),
-    ("g75_requirements", "75_covariant_lift_neutrality_attempt__candidate_lift_cleanliness_requirements", "g75_requirements"),
-    ("g75_bulk", "75_covariant_lift_neutrality_attempt__candidate_bulk_neutrality_test", "g75_bulk"),
-    ("g75_gauge", "75_covariant_lift_neutrality_attempt__candidate_gauge_neutrality_test", "g75_gauge"),
-    ("g75_shared_identity", "75_covariant_lift_neutrality_attempt__candidate_shared_lift_identity_test", "g75_shared_identity"),
-    ("g75_discriminator", "75_covariant_lift_neutrality_attempt__candidate_mutual_cancellation_discriminator", "g75_discriminator"),
-    ("g75_route_classifier", "75_covariant_lift_neutrality_attempt__candidate_lift_route_classifier", "g75_route_classifier"),
+    ("g74_summary", "074_boundary_lift_route_split_decision__candidate_group_74_status_summary", "g74_summary"),
+    ("g75_problem", "075_covariant_lift_neutrality_attempt__candidate_lift_neutrality_problem", "g75_problem"),
+    ("g75_requirements", "075_covariant_lift_neutrality_attempt__candidate_lift_cleanliness_requirements", "g75_requirements"),
+    ("g75_bulk", "075_covariant_lift_neutrality_attempt__candidate_bulk_neutrality_test", "g75_bulk"),
+    ("g75_gauge", "075_covariant_lift_neutrality_attempt__candidate_gauge_neutrality_test", "g75_gauge"),
+    ("g75_shared_identity", "075_covariant_lift_neutrality_attempt__candidate_shared_lift_identity_test", "g75_shared_identity"),
+    ("g75_discriminator", "075_covariant_lift_neutrality_attempt__candidate_mutual_cancellation_discriminator", "g75_discriminator"),
+    ("g75_route_classifier", "075_covariant_lift_neutrality_attempt__candidate_lift_route_classifier", "g75_route_classifier"),
 ]
 MARKER_ID = "g75_summary"
 

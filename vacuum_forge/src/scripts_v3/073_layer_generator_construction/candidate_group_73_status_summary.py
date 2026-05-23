@@ -46,15 +46,15 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g72_summary", "72_layer_term_legitimacy_audit__candidate_group_72_status_summary", "g72_summary"),
-    ("g73_problem", "73_layer_generator_construction__candidate_layer_generator_problem", "g73_problem"),
-    ("g73_requirements", "73_layer_generator_construction__candidate_geometric_layer_generator_requirements", "g73_requirements"),
-    ("g73_signed_distance", "73_layer_generator_construction__candidate_signed_distance_layer_scaffold", "g73_signed_distance"),
-    ("g73_measure_origin", "73_layer_generator_construction__candidate_boundary_measure_origin_test", "g73_measure_origin"),
-    ("g73_component_membership", "73_layer_generator_construction__candidate_component_membership_origin_test", "g73_component_membership"),
-    ("g73_payload_purity", "73_layer_generator_construction__candidate_payload_purity_and_role_test", "g73_payload_purity"),
-    ("g73_lift_interface", "73_layer_generator_construction__candidate_boundary_lift_interface_test", "g73_lift_interface"),
-    ("g73_route_classifier", "73_layer_generator_construction__candidate_layer_generator_route_classifier", "g73_route_classifier"),
+    ("g72_summary", "072_layer_term_legitimacy_audit__candidate_group_72_status_summary", "g72_summary"),
+    ("g73_problem", "073_layer_generator_construction__candidate_layer_generator_problem", "g73_problem"),
+    ("g73_requirements", "073_layer_generator_construction__candidate_geometric_layer_generator_requirements", "g73_requirements"),
+    ("g73_signed_distance", "073_layer_generator_construction__candidate_signed_distance_layer_scaffold", "g73_signed_distance"),
+    ("g73_measure_origin", "073_layer_generator_construction__candidate_boundary_measure_origin_test", "g73_measure_origin"),
+    ("g73_component_membership", "073_layer_generator_construction__candidate_component_membership_origin_test", "g73_component_membership"),
+    ("g73_payload_purity", "073_layer_generator_construction__candidate_payload_purity_and_role_test", "g73_payload_purity"),
+    ("g73_lift_interface", "073_layer_generator_construction__candidate_boundary_lift_interface_test", "g73_lift_interface"),
+    ("g73_route_classifier", "073_layer_generator_construction__candidate_layer_generator_route_classifier", "g73_route_classifier"),
 ]
 MARKER_ID = "g73_summary"
 

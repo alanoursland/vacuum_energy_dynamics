@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g75_requirements", "75_covariant_lift_neutrality_attempt__candidate_lift_cleanliness_requirements", "g75_requirements"),
-    ("g75_shared_identity", "75_covariant_lift_neutrality_attempt__candidate_shared_lift_identity_test", "g75_shared_identity"),
+    ("g75_requirements", "075_covariant_lift_neutrality_attempt__candidate_lift_cleanliness_requirements", "g75_requirements"),
+    ("g75_shared_identity", "075_covariant_lift_neutrality_attempt__candidate_shared_lift_identity_test", "g75_shared_identity"),
 ]
 MARKER_ID = "g75_discriminator"
 

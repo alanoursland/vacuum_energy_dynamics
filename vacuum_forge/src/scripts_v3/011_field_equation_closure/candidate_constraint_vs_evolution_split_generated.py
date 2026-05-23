@@ -75,7 +75,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="no_double_counting_constraints_marker",
-        upstream_script_id="11_field_equation_closure__candidate_no_double_counting_constraints",
+        upstream_script_id="011_field_equation_closure__candidate_no_double_counting_constraints",
         upstream_derivation_id="no_double_counting_constraints_marker",
     )
     return archive, ns, invalidated

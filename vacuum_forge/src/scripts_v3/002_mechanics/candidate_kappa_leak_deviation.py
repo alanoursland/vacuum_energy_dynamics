@@ -144,7 +144,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="reduced_action_stationary_solution",
-        upstream_script_id="02_mechanics__candidate_reduced_exterior_action",
+        upstream_script_id="002_mechanics__candidate_reduced_exterior_action",
         upstream_derivation_id="vf_reduced_action_stationary_solution",
     )
     return archive, ns, invalidated

@@ -86,7 +86,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g70_summary", "70_boundary_lift_matching_theorem_attempt__candidate_group_70_status_summary", "g70_summary"),
+    ("g70_summary", "070_boundary_lift_matching_theorem_attempt__candidate_group_70_status_summary", "g70_summary"),
 ]
 MARKER_ID = "g71_problem"
 

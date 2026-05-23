@@ -95,25 +95,25 @@ def prepare_archive():
     dependencies = [
         (
             "matching_ladder_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_matching_regularization_ladder",
+            "023_smooth_support_and_matching_laws__candidate_matching_regularization_ladder",
             "matching_regularization_ladder_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "shell_audit_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_distributional_shell_source_audit",
+            "023_smooth_support_and_matching_laws__candidate_distributional_shell_source_audit",
             "distributional_shell_source_audit_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "compact_support_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_compact_support_admissibility_conditions",
+            "023_smooth_support_and_matching_laws__candidate_compact_support_admissibility_conditions",
             "compact_support_admissibility_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g22_current_dep_23",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_current_flux_silence",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_current_flux_silence",
             "boundary_current_flux_silence_inventory_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),

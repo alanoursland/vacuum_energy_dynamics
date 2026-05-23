@@ -135,8 +135,8 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g94_problem", "94_schur_complement_positivity_attempt__candidate_schur_repair_problem", "g94_problem"),
-    ("g93_row_sign_matrix", "93_pivot_sign_theorem_attempt__candidate_row_sign_normalized_matrix", "g93_row_sign_matrix"),
+    ("g94_problem", "094_schur_complement_positivity_attempt__candidate_schur_repair_problem", "g94_problem"),
+    ("g93_row_sign_matrix", "093_pivot_sign_theorem_attempt__candidate_row_sign_normalized_matrix", "g93_row_sign_matrix"),
 ]
 MARKER_ID = "g94_schur_identity"
 

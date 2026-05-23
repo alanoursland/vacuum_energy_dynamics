@@ -63,7 +63,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vector_current_from_continuity_marker",
-        upstream_script_id="09_vacuum_identity_and_source_coupling__candidate_vector_current_from_continuity",
+        upstream_script_id="009_vacuum_identity_and_source_coupling__candidate_vector_current_from_continuity",
         upstream_derivation_id="vector_current_from_continuity_marker",
     )
     return archive, ns, invalidated

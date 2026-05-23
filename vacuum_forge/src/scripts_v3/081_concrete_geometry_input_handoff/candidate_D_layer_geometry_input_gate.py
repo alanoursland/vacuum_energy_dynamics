@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g81_acceptance", "81_concrete_geometry_input_handoff__candidate_concrete_input_acceptance_criteria", "g81_acceptance"),
+    ("g81_acceptance", "081_concrete_geometry_input_handoff__candidate_concrete_input_acceptance_criteria", "g81_acceptance"),
 ]
 MARKER_ID = "g81_dlayer_gate"
 

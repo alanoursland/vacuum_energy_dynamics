@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g76_summary", "76_covariant_lift_identity_construction__candidate_group_76_status_summary", "g76_summary"),
-    ("g77_problem", "77_remainder_obstruction_audit__candidate_remainder_audit_problem", "g77_problem"),
-    ("g77_requirements", "77_remainder_obstruction_audit__candidate_remainder_status_requirements", "g77_requirements"),
-    ("g77_zero", "77_remainder_obstruction_audit__candidate_zero_remainder_theorem_test", "g77_zero"),
-    ("g77_gauge_exact", "77_remainder_obstruction_audit__candidate_gauge_exact_classification_test", "g77_gauge_exact"),
-    ("g77_boundary_exact", "77_remainder_obstruction_audit__candidate_boundary_exactness_test", "g77_boundary_exact"),
-    ("g77_payload", "77_remainder_obstruction_audit__candidate_physical_remainder_payload_test", "g77_payload"),
-    ("g77_route_classifier", "77_remainder_obstruction_audit__candidate_remainder_route_classifier", "g77_route_classifier"),
+    ("g76_summary", "076_covariant_lift_identity_construction__candidate_group_76_status_summary", "g76_summary"),
+    ("g77_problem", "077_remainder_obstruction_audit__candidate_remainder_audit_problem", "g77_problem"),
+    ("g77_requirements", "077_remainder_obstruction_audit__candidate_remainder_status_requirements", "g77_requirements"),
+    ("g77_zero", "077_remainder_obstruction_audit__candidate_zero_remainder_theorem_test", "g77_zero"),
+    ("g77_gauge_exact", "077_remainder_obstruction_audit__candidate_gauge_exact_classification_test", "g77_gauge_exact"),
+    ("g77_boundary_exact", "077_remainder_obstruction_audit__candidate_boundary_exactness_test", "g77_boundary_exact"),
+    ("g77_payload", "077_remainder_obstruction_audit__candidate_physical_remainder_payload_test", "g77_payload"),
+    ("g77_route_classifier", "077_remainder_obstruction_audit__candidate_remainder_route_classifier", "g77_route_classifier"),
 ]
 MARKER_ID = "g77_summary"
 

@@ -159,7 +159,7 @@ def decreasing(values):
     return failures
 
 DEPENDENCIES = [
-    ("g96_problem", "96_post_transition_schur_gap_structure__candidate_gap_structure_problem", "g96_problem"),
+    ("g96_problem", "096_post_transition_schur_gap_structure__candidate_gap_structure_problem", "g96_problem"),
 ]
 MARKER_ID = "g96_parity_sequences"
 

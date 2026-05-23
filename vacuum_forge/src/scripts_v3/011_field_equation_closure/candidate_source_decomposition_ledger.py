@@ -71,7 +71,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="metric_recombination_map_marker",
-        upstream_script_id="11_field_equation_closure__candidate_metric_recombination_map",
+        upstream_script_id="011_field_equation_closure__candidate_metric_recombination_map",
         upstream_derivation_id="metric_recombination_map_marker",
     )
     return archive, ns, invalidated

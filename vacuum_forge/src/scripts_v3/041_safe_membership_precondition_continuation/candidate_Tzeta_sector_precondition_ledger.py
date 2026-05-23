@@ -148,9 +148,9 @@ class Entry:
 SCRIPT_LABEL = "Candidate Tzeta Sector Precondition Ledger"
 MARKER_ID = "g41_tzeta_sector"
 DEPENDENCIES = [
-    ("g40_summary", "40_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
-    ("g40_membership_precond", "40_split_safe_trace_anchor_precondition_audit__candidate_safe_membership_split_safe_preconditions", "g40_membership_precond"),
-    ("g41_zeta_object", "41_safe_membership_precondition_continuation__candidate_zeta_Bs_object_precondition_ledger", "g41_zeta_object"),
+    ("g40_summary", "040_split_safe_trace_anchor_precondition_audit__candidate_group_40_status_summary", "g40_summary"),
+    ("g40_membership_precond", "040_split_safe_trace_anchor_precondition_audit__candidate_safe_membership_split_safe_preconditions", "g40_membership_precond"),
+    ("g41_zeta_object", "041_safe_membership_precondition_continuation__candidate_zeta_Bs_object_precondition_ledger", "g41_zeta_object"),
 ]
 
 

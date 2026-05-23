@@ -94,7 +94,7 @@ def hierarchy_solution(N: int):
     return y, coeffs, P, J, rho, constraints, sol
 
 DEPENDENCIES = [
-    ("g87_rank_uniqueness", "87_moment_hierarchy_closure_test__candidate_constraint_rank_uniqueness_test", "g87_rank_uniqueness"),
+    ("g87_rank_uniqueness", "087_moment_hierarchy_closure_test__candidate_constraint_rank_uniqueness_test", "g87_rank_uniqueness"),
 ]
 MARKER_ID = "g87_weighted_inheritance"
 

@@ -148,9 +148,9 @@ class Entry:
 SCRIPT_LABEL = "Candidate Role Purity Exclusion Zone Audit"
 MARKER_ID = "g41_role_purity"
 DEPENDENCIES = [
-    ("g40_safety_split", "40_split_safe_trace_anchor_precondition_audit__candidate_residual_source_safety_split_audit", "g40_safety_split"),
-    ("g40_membership_precond", "40_split_safe_trace_anchor_precondition_audit__candidate_safe_membership_split_safe_preconditions", "g40_membership_precond"),
-    ("g41_criterion_matrix", "41_safe_membership_precondition_continuation__candidate_membership_criterion_precondition_matrix", "g41_criterion_matrix"),
+    ("g40_safety_split", "040_split_safe_trace_anchor_precondition_audit__candidate_residual_source_safety_split_audit", "g40_safety_split"),
+    ("g40_membership_precond", "040_split_safe_trace_anchor_precondition_audit__candidate_safe_membership_split_safe_preconditions", "g40_membership_precond"),
+    ("g41_criterion_matrix", "041_safe_membership_precondition_continuation__candidate_membership_criterion_precondition_matrix", "g41_criterion_matrix"),
 ]
 
 

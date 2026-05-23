@@ -110,7 +110,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="finite_admissibility_condition_marker",
-        upstream_script_id="17_curvature_energy_and_finite_admissibility__candidate_finite_admissibility_condition",
+        upstream_script_id="017_curvature_energy_and_finite_admissibility__candidate_finite_admissibility_condition",
         upstream_derivation_id="finite_admissibility_condition_marker",
     )
     return archive, ns, invalidated

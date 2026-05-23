@@ -88,7 +88,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="gr_limit_recovery_audit_marker",
-        upstream_script_id="11_field_equation_closure__candidate_gr_limit_recovery_audit",
+        upstream_script_id="011_field_equation_closure__candidate_gr_limit_recovery_audit",
         upstream_derivation_id="gr_limit_recovery_audit_marker",
     )
     return archive, ns, invalidated

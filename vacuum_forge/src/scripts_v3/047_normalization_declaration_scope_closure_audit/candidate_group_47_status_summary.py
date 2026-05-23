@@ -24,14 +24,14 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 SCRIPT_LABEL = "Candidate Group 47 Status Summary"
 MARKER_ID = "g47_summary"
 DEPENDENCIES = [
-    ("g47_recon", "47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_closure_batch_reconciliation", "g47_recon"),
-    ("g47_route_classifier", "47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_route_classifier", "g47_route_classifier"),
-    ("g47_parent_scope_reject", "47_normalization_declaration_scope_closure_audit__candidate_parent_facing_scope_rejection_audit", "g47_parent_scope_reject"),
-    ("g47_scope_status_matrix", "47_normalization_declaration_scope_closure_audit__candidate_scope_status_and_assumption_matrix", "g47_scope_status_matrix"),
-    ("g47_scope_candidate_sieve", "47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_candidate_sieve", "g47_scope_candidate_sieve"),
-    ("g47_review_decl_boundary", "47_normalization_declaration_scope_closure_audit__candidate_review_vs_declaration_scope_boundary", "g47_review_decl_boundary"),
-    ("g47_problem", "47_normalization_declaration_scope_closure_audit__candidate_declaration_scope_closure_problem", "g47_problem"),
-    ("g46_summary", "46_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary", "g46_summary"),
+    ("g47_recon", "047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_closure_batch_reconciliation", "g47_recon"),
+    ("g47_route_classifier", "047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_route_classifier", "g47_route_classifier"),
+    ("g47_parent_scope_reject", "047_normalization_declaration_scope_closure_audit__candidate_parent_facing_scope_rejection_audit", "g47_parent_scope_reject"),
+    ("g47_scope_status_matrix", "047_normalization_declaration_scope_closure_audit__candidate_scope_status_and_assumption_matrix", "g47_scope_status_matrix"),
+    ("g47_scope_candidate_sieve", "047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_candidate_sieve", "g47_scope_candidate_sieve"),
+    ("g47_review_decl_boundary", "047_normalization_declaration_scope_closure_audit__candidate_review_vs_declaration_scope_boundary", "g47_review_decl_boundary"),
+    ("g47_problem", "047_normalization_declaration_scope_closure_audit__candidate_declaration_scope_closure_problem", "g47_problem"),
+    ("g46_summary", "046_parallel_trace_convention_field_closure_audit__candidate_group_46_status_summary", "g46_summary"),
 ]
 
 

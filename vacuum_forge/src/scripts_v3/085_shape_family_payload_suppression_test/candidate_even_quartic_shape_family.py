@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g85_problem", "85_shape_family_payload_suppression_test__candidate_shape_suppression_problem", "g85_problem"),
+    ("g85_problem", "085_shape_family_payload_suppression_test__candidate_shape_suppression_problem", "g85_problem"),
 ]
 MARKER_ID = "g85_even_quartic_family"
 

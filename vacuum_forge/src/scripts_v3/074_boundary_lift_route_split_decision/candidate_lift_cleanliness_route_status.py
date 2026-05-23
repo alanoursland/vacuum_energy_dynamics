@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g71_bulk_gauge", "71_common_boundary_generator_search__candidate_bulk_gauge_leakage_test", "g71_bulk_gauge"),
-    ("g74_layer_decision", "74_boundary_lift_route_split_decision__candidate_layer_route_status_decision", "g74_layer_decision"),
+    ("g71_bulk_gauge", "071_common_boundary_generator_search__candidate_bulk_gauge_leakage_test", "g71_bulk_gauge"),
+    ("g74_layer_decision", "074_boundary_lift_route_split_decision__candidate_layer_route_status_decision", "g74_layer_decision"),
 ]
 MARKER_ID = "g74_lift_cleanliness"
 

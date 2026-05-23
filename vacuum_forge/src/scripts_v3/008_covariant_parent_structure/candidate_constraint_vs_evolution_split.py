@@ -99,7 +99,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="covariant_parent_requirements_marker",
-        upstream_script_id="08_covariant_parent_structure__candidate_covariant_parent_requirements",
+        upstream_script_id="008_covariant_parent_structure__candidate_covariant_parent_requirements",
         upstream_derivation_id="covariant_parent_requirements_marker",
     )
     return archive, ns, invalidated

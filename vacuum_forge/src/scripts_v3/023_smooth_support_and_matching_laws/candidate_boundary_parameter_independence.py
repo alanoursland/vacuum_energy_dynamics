@@ -86,25 +86,25 @@ def prepare_archive():
     dependencies = [
         (
             "matching_ladder_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_matching_regularization_ladder",
+            "023_smooth_support_and_matching_laws__candidate_matching_regularization_ladder",
             "matching_regularization_ladder_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "compact_support_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_compact_support_admissibility_conditions",
+            "023_smooth_support_and_matching_laws__candidate_compact_support_admissibility_conditions",
             "compact_support_admissibility_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "transition_layer_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_transition_layer_mass_flux_audit",
+            "023_smooth_support_and_matching_laws__candidate_transition_layer_mass_flux_audit",
             "transition_layer_mass_flux_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g22_summary_dep_23",
-            "22_boundary_neutrality_and_scalar_silence__candidate_group_22_boundary_neutrality_status_summary",
+            "022_boundary_neutrality_and_scalar_silence__candidate_group_22_boundary_neutrality_status_summary",
             "group22_boundary_neutrality_status_summary_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),

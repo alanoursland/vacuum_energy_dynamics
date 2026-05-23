@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g83_skew_derivation", "83_weighted_exactness_geometry_derivation__candidate_geometric_skew_derivation", "g83_skew_derivation"),
-    ("g83_uniqueness_scaling", "83_weighted_exactness_geometry_derivation__candidate_uniqueness_and_scaling_test", "g83_uniqueness_scaling"),
+    ("g83_skew_derivation", "083_weighted_exactness_geometry_derivation__candidate_geometric_skew_derivation", "g83_skew_derivation"),
+    ("g83_uniqueness_scaling", "083_weighted_exactness_geometry_derivation__candidate_uniqueness_and_scaling_test", "g83_uniqueness_scaling"),
 ]
 MARKER_ID = "g83_repair_discriminator"
 

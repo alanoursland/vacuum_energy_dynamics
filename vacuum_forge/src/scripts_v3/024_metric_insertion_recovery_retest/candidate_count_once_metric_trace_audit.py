@@ -90,25 +90,25 @@ def prepare_archive():
     dependencies = [
         (
             "metric_retest_dep_24",
-            "24_metric_insertion_recovery_retest__candidate_metric_insertion_retest_ledger",
+            "024_metric_insertion_recovery_retest__candidate_metric_insertion_retest_ledger",
             "metric_insertion_retest_ledger_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "recovery_antismuggle_dep_24",
-            "24_metric_insertion_recovery_retest__candidate_recovery_target_anti_smuggling_audit",
+            "024_metric_insertion_recovery_retest__candidate_recovery_target_anti_smuggling_audit",
             "recovery_target_anti_smuggling_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g20_summary_dep_24",
-            "20_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
+            "020_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
             "no_overlap_projection_group_status_summary_marker",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g22_nonmetric_dep_24",
-            "22_boundary_neutrality_and_scalar_silence__candidate_diagnostic_residual_nonmetric_conditions",
+            "022_boundary_neutrality_and_scalar_silence__candidate_diagnostic_residual_nonmetric_conditions",
             "diagnostic_residual_nonmetric_conditions_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),

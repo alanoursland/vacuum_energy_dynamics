@@ -128,9 +128,9 @@ def record_obligation(ns, obligation_id: str, marker_id: str, statement: str, st
 SCRIPT_LABEL = "Candidate Trace-Normalization Declaration Attempt"
 MARKER_ID = "g38_norm_decl"
 DEPENDENCIES = [
-    ("g38_problem", "38_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
-    ("g38_bs_fork", "38_trace_anchor_explicit_declaration_record__candidate_Bs_convention_declaration_fork", "g38_bs_fork"),
-    ("g37_norm", "37_trace_anchor_declaration_option_sieve__candidate_trace_norm_declaration_option_sieve", "g37_norm_options"),
+    ("g38_problem", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
+    ("g38_bs_fork", "038_trace_anchor_explicit_declaration_record__candidate_Bs_convention_declaration_fork", "g38_bs_fork"),
+    ("g37_norm", "037_trace_anchor_declaration_option_sieve__candidate_trace_norm_declaration_option_sieve", "g37_norm_options"),
 ]
 CHOSEN_CONVENTION = None  # keep synchronized with B_s fork if making a real declaration
 TRACED_DIMENSION = None   # e.g. 3; None keeps declaration deferred

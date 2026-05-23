@@ -109,7 +109,7 @@ def next_moment_for_coeffs(coeffs):
     return next_m, rho0
 
 DEPENDENCIES = [
-    ("g88_summary", "88_hierarchy_formula_derivation__candidate_group_88_status_summary", "g88_summary"),
+    ("g88_summary", "088_hierarchy_formula_derivation__candidate_group_88_status_summary", "g88_summary"),
 ]
 MARKER_ID = "g89_problem"
 

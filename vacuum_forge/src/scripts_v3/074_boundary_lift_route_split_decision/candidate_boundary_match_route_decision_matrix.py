@@ -79,9 +79,9 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g74_route_ledger", "74_boundary_lift_route_split_decision__candidate_route_status_ledger", "g74_route_ledger"),
-    ("g74_layer_decision", "74_boundary_lift_route_split_decision__candidate_layer_route_status_decision", "g74_layer_decision"),
-    ("g74_lift_cleanliness", "74_boundary_lift_route_split_decision__candidate_lift_cleanliness_route_status", "g74_lift_cleanliness"),
+    ("g74_route_ledger", "074_boundary_lift_route_split_decision__candidate_route_status_ledger", "g74_route_ledger"),
+    ("g74_layer_decision", "074_boundary_lift_route_split_decision__candidate_layer_route_status_decision", "g74_layer_decision"),
+    ("g74_lift_cleanliness", "074_boundary_lift_route_split_decision__candidate_lift_cleanliness_route_status", "g74_lift_cleanliness"),
 ]
 MARKER_ID = "g74_decision_matrix"
 

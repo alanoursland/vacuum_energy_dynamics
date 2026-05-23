@@ -226,7 +226,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="group_15_current_subchain_status_summary_marker",
-        upstream_script_id="15_vacuum_current_and_exchange_continuity__candidate_group_15_current_subchain_status_summary",
+        upstream_script_id="015_vacuum_current_and_exchange_continuity__candidate_group_15_current_subchain_status_summary",
         upstream_derivation_id="group_15_current_subchain_status_summary_marker",
     )
     return archive, ns, invalidated

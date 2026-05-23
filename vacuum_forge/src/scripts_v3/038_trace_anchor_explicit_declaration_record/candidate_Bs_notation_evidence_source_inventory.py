@@ -29,22 +29,22 @@ MARKER_ID = "g38_bs_evsrc"
 DEPENDENCIES = [
     (
         "g38_bs_audit",
-        "38_trace_anchor_explicit_declaration_record__candidate_Bs_notation_usage_audit",
+        "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_usage_audit",
         "g38_bs_notation_audit",
     ),
     (
         "g38_bs_fork",
-        "38_trace_anchor_explicit_declaration_record__candidate_Bs_convention_declaration_fork",
+        "038_trace_anchor_explicit_declaration_record__candidate_Bs_convention_declaration_fork",
         "g38_bs_fork",
     ),
     (
         "g38_recon",
-        "38_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation",
+        "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation",
         "g38_recon",
     ),
     (
         "g37_joint",
-        "37_trace_anchor_declaration_option_sieve__candidate_trace_anchor_joint_declaration_package_sieve",
+        "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_joint_declaration_package_sieve",
         "g37_joint_packages",
     ),
 ]

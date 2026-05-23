@@ -203,7 +203,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="parent_constraint_propagation_identity_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_parent_constraint_propagation_identity",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_parent_constraint_propagation_identity",
         upstream_derivation_id="parent_constraint_propagation_identity_marker",
     )
     return archive, ns, invalidated

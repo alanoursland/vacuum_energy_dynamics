@@ -82,12 +82,12 @@ def status_label(ok: bool) -> str:
     return "PASS" if ok else "FAIL"
 
 DEPENDENCIES = [
-    ("g97_summary", "97_parity_gap_theorem_attempt__candidate_group_97_status_summary", "g97_summary"),
-    ("g98_problem", "98_hierarchy_burden_ledger_role_audit__candidate_burden_ledger_role_problem", "g98_problem"),
-    ("g98_role_matrix", "98_hierarchy_burden_ledger_role_audit__candidate_hierarchy_role_decision_matrix", "g98_role_matrix"),
-    ("g98_balance_audit", "98_hierarchy_burden_ledger_role_audit__candidate_ledger_balance_equation_audit", "g98_balance_audit"),
-    ("g98_object_map", "98_hierarchy_burden_ledger_role_audit__candidate_hierarchy_physical_object_map", "g98_object_map"),
-    ("g98_classifier", "98_hierarchy_burden_ledger_role_audit__candidate_role_decision_surface_classifier", "g98_classifier"),
+    ("g97_summary", "097_parity_gap_theorem_attempt__candidate_group_97_status_summary", "g97_summary"),
+    ("g98_problem", "098_hierarchy_burden_ledger_role_audit__candidate_burden_ledger_role_problem", "g98_problem"),
+    ("g98_role_matrix", "098_hierarchy_burden_ledger_role_audit__candidate_hierarchy_role_decision_matrix", "g98_role_matrix"),
+    ("g98_balance_audit", "098_hierarchy_burden_ledger_role_audit__candidate_ledger_balance_equation_audit", "g98_balance_audit"),
+    ("g98_object_map", "098_hierarchy_burden_ledger_role_audit__candidate_hierarchy_physical_object_map", "g98_object_map"),
+    ("g98_classifier", "098_hierarchy_burden_ledger_role_audit__candidate_role_decision_surface_classifier", "g98_classifier"),
 ]
 MARKER_ID = "g98_summary"
 

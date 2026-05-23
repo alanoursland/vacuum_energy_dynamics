@@ -80,8 +80,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g71_summary", "71_common_boundary_generator_search__candidate_group_71_status_summary", "g71_summary"),
-    ("g72_problem", "72_layer_term_legitimacy_audit__candidate_layer_legitimacy_problem", "g72_problem"),
+    ("g71_summary", "071_common_boundary_generator_search__candidate_group_71_status_summary", "g71_summary"),
+    ("g72_problem", "072_layer_term_legitimacy_audit__candidate_layer_legitimacy_problem", "g72_problem"),
 ]
 MARKER_ID = "g72_requirements"
 

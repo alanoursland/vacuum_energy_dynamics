@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g80_summary", "80_axiom_adoption_decision_surface__candidate_group_80_status_summary", "g80_summary"),
-    ("g81_problem", "81_concrete_geometry_input_handoff__candidate_concrete_input_handoff_problem", "g81_problem"),
+    ("g80_summary", "080_axiom_adoption_decision_surface__candidate_group_80_status_summary", "g80_summary"),
+    ("g81_problem", "081_concrete_geometry_input_handoff__candidate_concrete_input_handoff_problem", "g81_problem"),
 ]
 MARKER_ID = "g81_acceptance"
 

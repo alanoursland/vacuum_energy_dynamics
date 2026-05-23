@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g85_summary", "85_shape_family_payload_suppression_test__candidate_group_85_status_summary", "g85_summary"),
-    ("g86_problem", "86_shape_origin_geometry_derivation__candidate_shape_origin_problem", "g86_problem"),
-    ("g86_moment_map", "86_shape_origin_geometry_derivation__candidate_moment_map_from_shape_coefficients", "g86_moment_map"),
-    ("g86_minimal_degree", "86_shape_origin_geometry_derivation__candidate_minimal_degree_obstruction", "g86_minimal_degree"),
-    ("g86_quartic_uniqueness", "86_shape_origin_geometry_derivation__candidate_quartic_uniqueness_theorem", "g86_quartic_uniqueness"),
-    ("g86_payload_action", "86_shape_origin_geometry_derivation__candidate_payload_action_minimizer", "g86_payload_action"),
-    ("g86_weighted_consistency", "86_shape_origin_geometry_derivation__candidate_weighted_consistency_from_flat_block", "g86_weighted_consistency"),
-    ("g86_route_classifier", "86_shape_origin_geometry_derivation__candidate_shape_origin_route_classifier", "g86_route_classifier"),
+    ("g85_summary", "085_shape_family_payload_suppression_test__candidate_group_85_status_summary", "g85_summary"),
+    ("g86_problem", "086_shape_origin_geometry_derivation__candidate_shape_origin_problem", "g86_problem"),
+    ("g86_moment_map", "086_shape_origin_geometry_derivation__candidate_moment_map_from_shape_coefficients", "g86_moment_map"),
+    ("g86_minimal_degree", "086_shape_origin_geometry_derivation__candidate_minimal_degree_obstruction", "g86_minimal_degree"),
+    ("g86_quartic_uniqueness", "086_shape_origin_geometry_derivation__candidate_quartic_uniqueness_theorem", "g86_quartic_uniqueness"),
+    ("g86_payload_action", "086_shape_origin_geometry_derivation__candidate_payload_action_minimizer", "g86_payload_action"),
+    ("g86_weighted_consistency", "086_shape_origin_geometry_derivation__candidate_weighted_consistency_from_flat_block", "g86_weighted_consistency"),
+    ("g86_route_classifier", "086_shape_origin_geometry_derivation__candidate_shape_origin_route_classifier", "g86_route_classifier"),
 ]
 MARKER_ID = "g86_summary"
 

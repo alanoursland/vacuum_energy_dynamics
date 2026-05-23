@@ -97,7 +97,7 @@ def q_poly(k, t):
     return t**k - sp.Rational(2*k - 1, 2*k + 3)*t**(k-1)
 
 DEPENDENCIES = [
-    ("g90_hankel_difference", "90_determinant_positivity_theorem_attempt__candidate_hankel_difference_structure", "g90_hankel_difference"),
+    ("g90_hankel_difference", "090_determinant_positivity_theorem_attempt__candidate_hankel_difference_structure", "g90_hankel_difference"),
 ]
 MARKER_ID = "g90_pivot_extension"
 

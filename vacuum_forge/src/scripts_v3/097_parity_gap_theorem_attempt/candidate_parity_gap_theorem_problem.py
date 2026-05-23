@@ -130,7 +130,7 @@ def rational_sign_parts(expr):
     return sp.factor(num), sp.factor(den), sp.sign(num), sp.sign(den), sp.sign(expr)
 
 DEPENDENCIES = [
-    ("g96_summary", "96_post_transition_schur_gap_structure__candidate_group_96_status_summary", "g96_summary"),
+    ("g96_summary", "096_post_transition_schur_gap_structure__candidate_group_96_status_summary", "g96_summary"),
 ]
 MARKER_ID = "g97_problem"
 

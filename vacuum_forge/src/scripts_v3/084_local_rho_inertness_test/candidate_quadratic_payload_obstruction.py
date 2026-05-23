@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g84_tradeoff", "84_local_rho_inertness_test__candidate_skew_inertness_tradeoff_test", "g84_tradeoff"),
+    ("g84_tradeoff", "084_local_rho_inertness_test__candidate_skew_inertness_tradeoff_test", "g84_tradeoff"),
 ]
 MARKER_ID = "g84_quadratic_obstruction"
 

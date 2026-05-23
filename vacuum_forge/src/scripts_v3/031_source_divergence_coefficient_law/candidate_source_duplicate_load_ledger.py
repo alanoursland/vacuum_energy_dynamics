@@ -82,19 +82,19 @@ def prepare_archive():
     dependencies = [
         (
             "g31_problem",
-            "31_source_divergence_coefficient_law__candidate_source_divergence_problem_ledger",
+            "031_source_divergence_coefficient_law__candidate_source_divergence_problem_ledger",
             "g31_source_divergence_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_summary",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
             "g30_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_summary",
-            "29_Bs_Fzeta_coefficient_origin__candidate_group_29_status_summary",
+            "029_Bs_Fzeta_coefficient_origin__candidate_group_29_status_summary",
             "g29_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

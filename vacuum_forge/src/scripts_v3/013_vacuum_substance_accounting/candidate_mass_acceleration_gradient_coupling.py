@@ -173,7 +173,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="scalar_conversion_not_damping_marker",
-        upstream_script_id="13_vacuum_substance_accounting__candidate_scalar_conversion_not_damping",
+        upstream_script_id="013_vacuum_substance_accounting__candidate_scalar_conversion_not_damping",
         upstream_derivation_id="scalar_conversion_not_damping_marker",
     )
     return archive, ns, invalidated

@@ -75,7 +75,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="quadrupole_tensor_flux_marker",
-        upstream_script_id="06_tensor_flux_principle__candidate_quadrupole_tensor_flux",
+        upstream_script_id="006_tensor_flux_principle__candidate_quadrupole_tensor_flux",
         upstream_derivation_id="quadrupole_tensor_flux_marker",
     )
     return archive, ns, invalidated

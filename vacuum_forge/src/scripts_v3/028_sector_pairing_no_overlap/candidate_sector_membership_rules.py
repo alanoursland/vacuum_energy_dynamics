@@ -87,25 +87,25 @@ def prepare_archive():
     dependencies = [
         (
             "g28_inv",
-            "28_sector_pairing_no_overlap__candidate_sector_inventory",
+            "028_sector_pairing_no_overlap__candidate_sector_inventory",
             "g28_sector_inventory",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g28_prob",
-            "28_sector_pairing_no_overlap__candidate_sector_problem_ledger",
+            "028_sector_pairing_no_overlap__candidate_sector_problem_ledger",
             "g28_sector_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g27_summary",
-            "27_active_O_construction__candidate_group_27_status_summary",
+            "027_active_O_construction__candidate_group_27_status_summary",
             "g27_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g27_ob",
-            "27_active_O_construction__candidate_O_obligations",
+            "027_active_O_construction__candidate_O_obligations",
             "g27_O_obligations",
             RecordKind.INVENTORY_MARKER,
         ),

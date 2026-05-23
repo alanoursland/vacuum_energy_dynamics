@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g86_minimal_degree", "86_shape_origin_geometry_derivation__candidate_minimal_degree_obstruction", "g86_minimal_degree"),
+    ("g86_minimal_degree", "086_shape_origin_geometry_derivation__candidate_minimal_degree_obstruction", "g86_minimal_degree"),
 ]
 MARKER_ID = "g86_quartic_uniqueness"
 

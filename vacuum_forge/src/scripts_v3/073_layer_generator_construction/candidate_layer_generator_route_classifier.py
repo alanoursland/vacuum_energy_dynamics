@@ -46,11 +46,11 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g73_signed_distance", "73_layer_generator_construction__candidate_signed_distance_layer_scaffold", "g73_signed_distance"),
-    ("g73_measure_origin", "73_layer_generator_construction__candidate_boundary_measure_origin_test", "g73_measure_origin"),
-    ("g73_component_membership", "73_layer_generator_construction__candidate_component_membership_origin_test", "g73_component_membership"),
-    ("g73_payload_purity", "73_layer_generator_construction__candidate_payload_purity_and_role_test", "g73_payload_purity"),
-    ("g73_lift_interface", "73_layer_generator_construction__candidate_boundary_lift_interface_test", "g73_lift_interface"),
+    ("g73_signed_distance", "073_layer_generator_construction__candidate_signed_distance_layer_scaffold", "g73_signed_distance"),
+    ("g73_measure_origin", "073_layer_generator_construction__candidate_boundary_measure_origin_test", "g73_measure_origin"),
+    ("g73_component_membership", "073_layer_generator_construction__candidate_component_membership_origin_test", "g73_component_membership"),
+    ("g73_payload_purity", "073_layer_generator_construction__candidate_payload_purity_and_role_test", "g73_payload_purity"),
+    ("g73_lift_interface", "073_layer_generator_construction__candidate_boundary_lift_interface_test", "g73_lift_interface"),
 ]
 MARKER_ID = "g73_route_classifier"
 

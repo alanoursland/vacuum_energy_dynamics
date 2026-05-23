@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g85_profile_validation", "85_shape_family_payload_suppression_test__candidate_suppressed_profile_validation", "g85_profile_validation"),
+    ("g85_profile_validation", "085_shape_family_payload_suppression_test__candidate_suppressed_profile_validation", "g85_profile_validation"),
 ]
 MARKER_ID = "g85_weighted_extension"
 

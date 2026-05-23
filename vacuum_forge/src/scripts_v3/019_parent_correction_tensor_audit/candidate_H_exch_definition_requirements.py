@@ -96,7 +96,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="H_curv_definition_requirements_marker",
-        upstream_script_id="19_parent_correction_tensor_audit__candidate_H_curv_definition_requirements",
+        upstream_script_id="019_parent_correction_tensor_audit__candidate_H_curv_definition_requirements",
         upstream_derivation_id="H_curv_definition_requirements_marker",
     )
     return archive, ns, invalidated

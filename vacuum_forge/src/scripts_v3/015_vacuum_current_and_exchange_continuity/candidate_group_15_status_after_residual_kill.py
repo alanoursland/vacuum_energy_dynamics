@@ -177,7 +177,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="residual_kill_rule_for_volume_current_marker",
-        upstream_script_id="15_vacuum_current_and_exchange_continuity__candidate_residual_kill_rule_for_volume_current",
+        upstream_script_id="015_vacuum_current_and_exchange_continuity__candidate_residual_kill_rule_for_volume_current",
         upstream_derivation_id="residual_kill_rule_for_volume_current_marker",
     )
     return archive, ns, invalidated

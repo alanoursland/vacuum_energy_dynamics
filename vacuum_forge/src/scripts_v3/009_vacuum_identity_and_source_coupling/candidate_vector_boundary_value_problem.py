@@ -57,7 +57,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vector_global_rotation_mode_marker",
-        upstream_script_id="09_vacuum_identity_and_source_coupling__candidate_vector_global_rotation_mode",
+        upstream_script_id="009_vacuum_identity_and_source_coupling__candidate_vector_global_rotation_mode",
         upstream_derivation_id="vector_global_rotation_mode_marker",
     )
     return archive, ns, invalidated

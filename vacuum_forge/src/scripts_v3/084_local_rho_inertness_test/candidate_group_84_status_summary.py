@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g83_summary", "83_weighted_exactness_geometry_derivation__candidate_group_83_status_summary", "g83_summary"),
-    ("g84_problem", "84_local_rho_inertness_test__candidate_local_inertness_problem", "g84_problem"),
-    ("g84_probe_basis", "84_local_rho_inertness_test__candidate_payload_probe_basis", "g84_probe_basis"),
-    ("g84_flat_moments", "84_local_rho_inertness_test__candidate_flat_probe_moment_test", "g84_flat_moments"),
-    ("g84_weighted_moments", "84_local_rho_inertness_test__candidate_weighted_probe_moment_test", "g84_weighted_moments"),
-    ("g84_tradeoff", "84_local_rho_inertness_test__candidate_skew_inertness_tradeoff_test", "g84_tradeoff"),
-    ("g84_quadratic_obstruction", "84_local_rho_inertness_test__candidate_quadratic_payload_obstruction", "g84_quadratic_obstruction"),
-    ("g84_route_classifier", "84_local_rho_inertness_test__candidate_local_inertness_route_classifier", "g84_route_classifier"),
+    ("g83_summary", "083_weighted_exactness_geometry_derivation__candidate_group_83_status_summary", "g83_summary"),
+    ("g84_problem", "084_local_rho_inertness_test__candidate_local_inertness_problem", "g84_problem"),
+    ("g84_probe_basis", "084_local_rho_inertness_test__candidate_payload_probe_basis", "g84_probe_basis"),
+    ("g84_flat_moments", "084_local_rho_inertness_test__candidate_flat_probe_moment_test", "g84_flat_moments"),
+    ("g84_weighted_moments", "084_local_rho_inertness_test__candidate_weighted_probe_moment_test", "g84_weighted_moments"),
+    ("g84_tradeoff", "084_local_rho_inertness_test__candidate_skew_inertness_tradeoff_test", "g84_tradeoff"),
+    ("g84_quadratic_obstruction", "084_local_rho_inertness_test__candidate_quadratic_payload_obstruction", "g84_quadratic_obstruction"),
+    ("g84_route_classifier", "084_local_rho_inertness_test__candidate_local_inertness_route_classifier", "g84_route_classifier"),
 ]
 MARKER_ID = "g84_summary"
 

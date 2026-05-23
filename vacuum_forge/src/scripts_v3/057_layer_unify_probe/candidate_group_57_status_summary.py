@@ -24,15 +24,15 @@ SCRIPT_LABEL = "Candidate Group 57 Status Summary"
 MARKER_ID = "g57_summary"
 
 DEPENDENCIES = [
-    ("g56_summary", "56_silent_insert_law__candidate_group_56_status_summary", "g56_summary"),
-    ("g57_problem", "57_layer_unify_probe__candidate_layer_problem", "g57_problem"),
-    ("g57_s", "57_layer_unify_probe__candidate_smoothstep_profile", "g57_s"),
-    ("g57_res", "57_layer_unify_probe__candidate_blend_residue", "g57_res"),
-    ("g57_energy", "57_layer_unify_probe__candidate_layer_energy", "g57_energy"),
-    ("g57_qm", "57_layer_unify_probe__candidate_layer_charge_mass", "g57_qm"),
-    ("g57_div", "57_layer_unify_probe__candidate_layer_divergence", "g57_div"),
-    ("g57_class", "57_layer_unify_probe__candidate_layer_route_classifier", "g57_class"),
-    ("g57_reconcile", "57_layer_unify_probe__candidate_layer_batch_reconcile", "g57_reconcile"),
+    ("g56_summary", "056_silent_insert_law__candidate_group_56_status_summary", "g56_summary"),
+    ("g57_problem", "057_layer_unify_probe__candidate_layer_problem", "g57_problem"),
+    ("g57_s", "057_layer_unify_probe__candidate_smoothstep_profile", "g57_s"),
+    ("g57_res", "057_layer_unify_probe__candidate_blend_residue", "g57_res"),
+    ("g57_energy", "057_layer_unify_probe__candidate_layer_energy", "g57_energy"),
+    ("g57_qm", "057_layer_unify_probe__candidate_layer_charge_mass", "g57_qm"),
+    ("g57_div", "057_layer_unify_probe__candidate_layer_divergence", "g57_div"),
+    ("g57_class", "057_layer_unify_probe__candidate_layer_route_classifier", "g57_class"),
+    ("g57_reconcile", "057_layer_unify_probe__candidate_layer_batch_reconcile", "g57_reconcile"),
 ]
 
 

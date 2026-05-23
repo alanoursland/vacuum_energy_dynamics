@@ -187,7 +187,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="kappa_as_projected_zeta_mismatch_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_kappa_as_projected_zeta_mismatch",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_kappa_as_projected_zeta_mismatch",
         upstream_derivation_id="kappa_as_projected_zeta_mismatch_marker",
     )
     return archive, ns, invalidated

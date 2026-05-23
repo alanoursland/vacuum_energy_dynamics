@@ -178,7 +178,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="mass_acceleration_gradient_coupling_marker",
-        upstream_script_id="13_vacuum_substance_accounting__candidate_mass_acceleration_gradient_coupling",
+        upstream_script_id="013_vacuum_substance_accounting__candidate_mass_acceleration_gradient_coupling",
         upstream_derivation_id="mass_acceleration_gradient_coupling_marker",
     )
     return archive, ns, invalidated

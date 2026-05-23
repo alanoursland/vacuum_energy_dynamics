@@ -24,14 +24,14 @@ SCRIPT_LABEL = "Candidate Group 66 Status Summary"
 MARKER_ID = "g66_summary"
 
 DEPENDENCIES = [
-    ("g65_summary", "65_transition_diagnostic_downgrade__candidate_group_65_status_summary", "g65_summary"),
-    ("g66_problem", "66_parent_blocker_inventory__candidate_parent_inventory_problem", "g66_problem"),
-    ("g66_ledger", "66_parent_blocker_inventory__candidate_artifact_status_ledger", "g66_ledger"),
-    ("g66_matrix", "66_parent_blocker_inventory__candidate_parent_blocker_matrix", "g66_matrix"),
-    ("g66_recomb", "66_parent_blocker_inventory__candidate_recombination_prerequisite_sieve", "g66_recomb"),
-    ("g66_graph", "66_parent_blocker_inventory__candidate_blocker_dependency_graph", "g66_graph"),
-    ("g66_priority", "66_parent_blocker_inventory__candidate_next_route_priority", "g66_priority"),
-    ("g66_class", "66_parent_blocker_inventory__candidate_parent_inventory_classifier", "g66_class"),
+    ("g65_summary", "065_transition_diagnostic_downgrade__candidate_group_65_status_summary", "g65_summary"),
+    ("g66_problem", "066_parent_blocker_inventory__candidate_parent_inventory_problem", "g66_problem"),
+    ("g66_ledger", "066_parent_blocker_inventory__candidate_artifact_status_ledger", "g66_ledger"),
+    ("g66_matrix", "066_parent_blocker_inventory__candidate_parent_blocker_matrix", "g66_matrix"),
+    ("g66_recomb", "066_parent_blocker_inventory__candidate_recombination_prerequisite_sieve", "g66_recomb"),
+    ("g66_graph", "066_parent_blocker_inventory__candidate_blocker_dependency_graph", "g66_graph"),
+    ("g66_priority", "066_parent_blocker_inventory__candidate_next_route_priority", "g66_priority"),
+    ("g66_class", "066_parent_blocker_inventory__candidate_parent_inventory_classifier", "g66_class"),
 ]
 
 

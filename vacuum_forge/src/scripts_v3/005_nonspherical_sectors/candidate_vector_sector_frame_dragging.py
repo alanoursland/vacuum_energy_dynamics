@@ -76,7 +76,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="trace_free_spatial_shear_inventory",
-        upstream_script_id="05_nonspherical_sectors__candidate_nonspherical_degree_inventory",
+        upstream_script_id="005_nonspherical_sectors__candidate_nonspherical_degree_inventory",
         upstream_derivation_id="trace_free_spatial_shear_inventory",
     )
     return archive, ns, invalidated

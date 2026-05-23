@@ -159,7 +159,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="volume_current_definition_for_u_vac_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_volume_current_definition_for_u_vac",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_volume_current_definition_for_u_vac",
         upstream_derivation_id="volume_current_definition_for_u_vac_marker",
     )
     return archive, ns, invalidated
@@ -336,7 +336,7 @@ def case_6_next_group():
 
     out = ScriptOutput()
     with out.governance_assessments():
-        out.line("next group selected", StatusMark.INFO, "15_vacuum_current_and_exchange_continuity")
+        out.line("next group selected", StatusMark.INFO, "015_vacuum_current_and_exchange_continuity")
 
 
 def final_interpretation():

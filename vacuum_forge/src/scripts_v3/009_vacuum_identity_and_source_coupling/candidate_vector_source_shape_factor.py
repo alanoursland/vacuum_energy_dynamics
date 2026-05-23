@@ -86,7 +86,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vector_boundary_coefficient_from_action_marker",
-        upstream_script_id="09_vacuum_identity_and_source_coupling__candidate_vector_boundary_coefficient_from_action",
+        upstream_script_id="009_vacuum_identity_and_source_coupling__candidate_vector_boundary_coefficient_from_action",
         upstream_derivation_id="vector_boundary_coefficient_from_action_marker",
     )
     return archive, ns, invalidated

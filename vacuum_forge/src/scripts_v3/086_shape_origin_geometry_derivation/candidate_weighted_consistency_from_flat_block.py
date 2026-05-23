@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g86_payload_action", "86_shape_origin_geometry_derivation__candidate_payload_action_minimizer", "g86_payload_action"),
+    ("g86_payload_action", "086_shape_origin_geometry_derivation__candidate_payload_action_minimizer", "g86_payload_action"),
 ]
 MARKER_ID = "g86_weighted_consistency"
 

@@ -97,7 +97,7 @@ def q_poly(k, t):
     return t**k - sp.Rational(2*k - 1, 2*k + 3)*t**(k-1)
 
 DEPENDENCIES = [
-    ("g90_problem", "90_determinant_positivity_theorem_attempt__candidate_determinant_positivity_problem", "g90_problem"),
+    ("g90_problem", "090_determinant_positivity_theorem_attempt__candidate_determinant_positivity_problem", "g90_problem"),
 ]
 MARKER_ID = "g90_derivative_factorization"
 

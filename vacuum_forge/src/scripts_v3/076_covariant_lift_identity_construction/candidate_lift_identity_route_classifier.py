@@ -79,10 +79,10 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g76_exact_pair", "76_covariant_lift_identity_construction__candidate_exact_pair_scaffold", "g76_exact_pair"),
-    ("g76_remainder", "76_covariant_lift_identity_construction__candidate_remainder_obstruction_test", "g76_remainder"),
-    ("g76_gauge_exact", "76_covariant_lift_identity_construction__candidate_gauge_exact_remainder_test", "g76_gauge_exact"),
-    ("g76_sieve", "76_covariant_lift_identity_construction__candidate_identity_vs_repair_sieve", "g76_sieve"),
+    ("g76_exact_pair", "076_covariant_lift_identity_construction__candidate_exact_pair_scaffold", "g76_exact_pair"),
+    ("g76_remainder", "076_covariant_lift_identity_construction__candidate_remainder_obstruction_test", "g76_remainder"),
+    ("g76_gauge_exact", "076_covariant_lift_identity_construction__candidate_gauge_exact_remainder_test", "g76_gauge_exact"),
+    ("g76_sieve", "076_covariant_lift_identity_construction__candidate_identity_vs_repair_sieve", "g76_sieve"),
 ]
 MARKER_ID = "g76_route_classifier"
 

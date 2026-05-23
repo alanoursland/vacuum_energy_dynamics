@@ -117,7 +117,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="covariant_parent_trace_kernel",
-        upstream_script_id="01_foundations__candidate_covariant_parent_modes",
+        upstream_script_id="001_foundations__candidate_covariant_parent_modes",
         upstream_derivation_id="kappa_trace_kernel_exchange",
     )
     return archive, ns, invalidated

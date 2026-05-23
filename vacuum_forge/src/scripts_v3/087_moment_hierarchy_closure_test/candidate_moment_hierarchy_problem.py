@@ -94,7 +94,7 @@ def hierarchy_solution(N: int):
     return y, coeffs, P, J, rho, constraints, sol
 
 DEPENDENCIES = [
-    ("g86_summary", "86_shape_origin_geometry_derivation__candidate_group_86_status_summary", "g86_summary"),
+    ("g86_summary", "086_shape_origin_geometry_derivation__candidate_group_86_status_summary", "g86_summary"),
 ]
 MARKER_ID = "g87_problem"
 

@@ -80,14 +80,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g71_summary", "71_common_boundary_generator_search__candidate_group_71_status_summary", "g71_summary"),
-    ("g72_problem", "72_layer_term_legitimacy_audit__candidate_layer_legitimacy_problem", "g72_problem"),
-    ("g72_requirements", "72_layer_term_legitimacy_audit__candidate_layer_component_requirements", "g72_requirements"),
-    ("g72_diagnostic_exclusion", "72_layer_term_legitimacy_audit__candidate_diagnostic_transition_exclusion", "g72_diagnostic_exclusion"),
-    ("g72_boundary_component", "72_layer_term_legitimacy_audit__candidate_layer_as_boundary_component_test", "g72_boundary_component"),
-    ("g72_measure_support", "72_layer_term_legitimacy_audit__candidate_layer_measure_support_test", "g72_measure_support"),
-    ("g72_source_trace_filter", "72_layer_term_legitimacy_audit__candidate_layer_source_trace_divergence_filter", "g72_source_trace_filter"),
-    ("g72_route_classifier", "72_layer_term_legitimacy_audit__candidate_layer_legitimacy_route_classifier", "g72_route_classifier"),
+    ("g71_summary", "071_common_boundary_generator_search__candidate_group_71_status_summary", "g71_summary"),
+    ("g72_problem", "072_layer_term_legitimacy_audit__candidate_layer_legitimacy_problem", "g72_problem"),
+    ("g72_requirements", "072_layer_term_legitimacy_audit__candidate_layer_component_requirements", "g72_requirements"),
+    ("g72_diagnostic_exclusion", "072_layer_term_legitimacy_audit__candidate_diagnostic_transition_exclusion", "g72_diagnostic_exclusion"),
+    ("g72_boundary_component", "072_layer_term_legitimacy_audit__candidate_layer_as_boundary_component_test", "g72_boundary_component"),
+    ("g72_measure_support", "072_layer_term_legitimacy_audit__candidate_layer_measure_support_test", "g72_measure_support"),
+    ("g72_source_trace_filter", "072_layer_term_legitimacy_audit__candidate_layer_source_trace_divergence_filter", "g72_source_trace_filter"),
+    ("g72_route_classifier", "072_layer_term_legitimacy_audit__candidate_layer_legitimacy_route_classifier", "g72_route_classifier"),
 ]
 MARKER_ID = "g72_summary"
 

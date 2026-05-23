@@ -130,12 +130,12 @@ def rational_sign_parts(expr):
     return sp.factor(num), sp.factor(den), sp.sign(num), sp.sign(den), sp.sign(expr)
 
 DEPENDENCIES = [
-    ("g96_summary", "96_post_transition_schur_gap_structure__candidate_group_96_status_summary", "g96_summary"),
-    ("g97_problem", "97_parity_gap_theorem_attempt__candidate_parity_gap_theorem_problem", "g97_problem"),
-    ("g97_branch_differences", "97_parity_gap_theorem_attempt__candidate_branch_difference_signs", "g97_branch_differences"),
-    ("g97_interlacing_differences", "97_parity_gap_theorem_attempt__candidate_interlacing_difference_signs", "g97_interlacing_differences"),
-    ("g97_numerator_probe", "97_parity_gap_theorem_attempt__candidate_difference_numerator_probe", "g97_numerator_probe"),
-    ("g97_classifier", "97_parity_gap_theorem_attempt__candidate_parity_gap_route_classifier", "g97_classifier"),
+    ("g96_summary", "096_post_transition_schur_gap_structure__candidate_group_96_status_summary", "g96_summary"),
+    ("g97_problem", "097_parity_gap_theorem_attempt__candidate_parity_gap_theorem_problem", "g97_problem"),
+    ("g97_branch_differences", "097_parity_gap_theorem_attempt__candidate_branch_difference_signs", "g97_branch_differences"),
+    ("g97_interlacing_differences", "097_parity_gap_theorem_attempt__candidate_interlacing_difference_signs", "g97_interlacing_differences"),
+    ("g97_numerator_probe", "097_parity_gap_theorem_attempt__candidate_difference_numerator_probe", "g97_numerator_probe"),
+    ("g97_classifier", "097_parity_gap_theorem_attempt__candidate_parity_gap_route_classifier", "g97_classifier"),
 ]
 MARKER_ID = "g97_summary"
 

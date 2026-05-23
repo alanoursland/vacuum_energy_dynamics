@@ -84,7 +84,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="parent_identity_reduced_implications_marker",
-        upstream_script_id="12_parent_identity_and_recombination__candidate_parent_identity_reduced_implications",
+        upstream_script_id="012_parent_identity_and_recombination__candidate_parent_identity_reduced_implications",
         upstream_derivation_id="parent_identity_reduced_implications_marker",
     )
     return archive, ns, invalidated

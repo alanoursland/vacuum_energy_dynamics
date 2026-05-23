@@ -77,7 +77,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vector_transverse_current_projection_marker",
-        upstream_script_id="09_vacuum_identity_and_source_coupling__candidate_vector_transverse_current_projection",
+        upstream_script_id="009_vacuum_identity_and_source_coupling__candidate_vector_transverse_current_projection",
         upstream_derivation_id="vector_transverse_current_projection_marker",
     )
     return archive, ns, invalidated

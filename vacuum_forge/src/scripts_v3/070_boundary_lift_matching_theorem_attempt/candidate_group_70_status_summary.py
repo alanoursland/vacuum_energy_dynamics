@@ -80,14 +80,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g69_summary", "69_boundary_covariant_cancellation_attempt__candidate_group_69_status_summary", "g69_summary"),
-    ("g70_problem", "70_boundary_lift_matching_theorem_attempt__candidate_matching_problem", "g70_problem"),
-    ("g70_common_generator", "70_boundary_lift_matching_theorem_attempt__candidate_common_generator_ansatz", "g70_common_generator"),
-    ("g70_orientation", "70_boundary_lift_matching_theorem_attempt__candidate_orientation_sign_sieve", "g70_orientation"),
-    ("g70_coefficients", "70_boundary_lift_matching_theorem_attempt__candidate_component_coefficient_matching", "g70_coefficients"),
-    ("g70_bulk_gauge", "70_boundary_lift_matching_theorem_attempt__candidate_bulk_gauge_neutrality", "g70_bulk_gauge"),
-    ("g70_discriminator", "70_boundary_lift_matching_theorem_attempt__candidate_matching_vs_repair_discriminator", "g70_discriminator"),
-    ("g70_class", "70_boundary_lift_matching_theorem_attempt__candidate_theorem_burden_classifier", "g70_class"),
+    ("g69_summary", "069_boundary_covariant_cancellation_attempt__candidate_group_69_status_summary", "g69_summary"),
+    ("g70_problem", "070_boundary_lift_matching_theorem_attempt__candidate_matching_problem", "g70_problem"),
+    ("g70_common_generator", "070_boundary_lift_matching_theorem_attempt__candidate_common_generator_ansatz", "g70_common_generator"),
+    ("g70_orientation", "070_boundary_lift_matching_theorem_attempt__candidate_orientation_sign_sieve", "g70_orientation"),
+    ("g70_coefficients", "070_boundary_lift_matching_theorem_attempt__candidate_component_coefficient_matching", "g70_coefficients"),
+    ("g70_bulk_gauge", "070_boundary_lift_matching_theorem_attempt__candidate_bulk_gauge_neutrality", "g70_bulk_gauge"),
+    ("g70_discriminator", "070_boundary_lift_matching_theorem_attempt__candidate_matching_vs_repair_discriminator", "g70_discriminator"),
+    ("g70_class", "070_boundary_lift_matching_theorem_attempt__candidate_theorem_burden_classifier", "g70_class"),
 ]
 MARKER_ID = "g70_summary"
 
@@ -107,7 +107,7 @@ def main():
         out.line("matching theorem", StatusMark.OBLIGATION, "boundary-lift matching theorem not proven")
         out.line("parent divergence", StatusMark.OBLIGATION, "parent divergence identity remains unproven")
         out.line("recombination", StatusMark.DEFER, "parent recombination remains blocked")
-        out.line("next group", StatusMark.INFO, "71_common_boundary_generator_search")
+        out.line("next group", StatusMark.INFO, "071_common_boundary_generator_search")
     with out.counterexamples():
         out.line("chosen sign", StatusMark.FAIL, "sigma=1 cannot be selected by convenience")
         out.line("chosen coefficients", StatusMark.FAIL, "coefficients cannot be selected by repair")

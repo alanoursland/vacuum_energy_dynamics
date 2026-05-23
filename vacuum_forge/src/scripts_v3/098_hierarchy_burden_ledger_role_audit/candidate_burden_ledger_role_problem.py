@@ -82,7 +82,7 @@ def status_label(ok: bool) -> str:
     return "PASS" if ok else "FAIL"
 
 DEPENDENCIES = [
-    ("g97_summary", "97_parity_gap_theorem_attempt__candidate_group_97_status_summary", "g97_summary"),
+    ("g97_summary", "097_parity_gap_theorem_attempt__candidate_group_97_status_summary", "g97_summary"),
 ]
 MARKER_ID = "g98_problem"
 

@@ -200,7 +200,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="minimal_A_constraint_closure_no_go_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_minimal_A_constraint_closure_no_go",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_minimal_A_constraint_closure_no_go",
         upstream_derivation_id="minimal_A_constraint_closure_no_go_marker",
     )
     return archive, ns, invalidated

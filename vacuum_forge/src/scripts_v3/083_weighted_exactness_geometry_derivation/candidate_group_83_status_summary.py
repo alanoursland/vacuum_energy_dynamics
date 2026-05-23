@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g82_summary", "82_rho_exactness_concrete_test__candidate_group_82_status_summary", "g82_summary"),
-    ("g83_problem", "83_weighted_exactness_geometry_derivation__candidate_weighted_skew_problem", "g83_problem"),
-    ("g83_measure_gradient", "83_weighted_exactness_geometry_derivation__candidate_measure_gradient_identity", "g83_measure_gradient"),
-    ("g83_parity", "83_weighted_exactness_geometry_derivation__candidate_flux_parity_decomposition", "g83_parity"),
-    ("g83_skew_derivation", "83_weighted_exactness_geometry_derivation__candidate_geometric_skew_derivation", "g83_skew_derivation"),
-    ("g83_uniqueness_scaling", "83_weighted_exactness_geometry_derivation__candidate_uniqueness_and_scaling_test", "g83_uniqueness_scaling"),
-    ("g83_repair_discriminator", "83_weighted_exactness_geometry_derivation__candidate_repair_discriminator", "g83_repair_discriminator"),
-    ("g83_route_classifier", "83_weighted_exactness_geometry_derivation__candidate_weighted_exactness_route_classifier", "g83_route_classifier"),
+    ("g82_summary", "082_rho_exactness_concrete_test__candidate_group_82_status_summary", "g82_summary"),
+    ("g83_problem", "083_weighted_exactness_geometry_derivation__candidate_weighted_skew_problem", "g83_problem"),
+    ("g83_measure_gradient", "083_weighted_exactness_geometry_derivation__candidate_measure_gradient_identity", "g83_measure_gradient"),
+    ("g83_parity", "083_weighted_exactness_geometry_derivation__candidate_flux_parity_decomposition", "g83_parity"),
+    ("g83_skew_derivation", "083_weighted_exactness_geometry_derivation__candidate_geometric_skew_derivation", "g83_skew_derivation"),
+    ("g83_uniqueness_scaling", "083_weighted_exactness_geometry_derivation__candidate_uniqueness_and_scaling_test", "g83_uniqueness_scaling"),
+    ("g83_repair_discriminator", "083_weighted_exactness_geometry_derivation__candidate_repair_discriminator", "g83_repair_discriminator"),
+    ("g83_route_classifier", "083_weighted_exactness_geometry_derivation__candidate_weighted_exactness_route_classifier", "g83_route_classifier"),
 ]
 MARKER_ID = "g83_summary"
 

@@ -143,7 +143,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="orbit_space_action_exact_metric",
-        upstream_script_id="02_mechanics__candidate_static_spherical_exact_recovery",
+        upstream_script_id="002_mechanics__candidate_static_spherical_exact_recovery",
         upstream_derivation_id="exact_schwarzschild_concrete_metric_check",
     )
     return archive, ns, invalidated

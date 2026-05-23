@@ -82,31 +82,31 @@ def prepare_archive():
     dependencies = [
         (
             "compact_support_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_compact_support_admissibility_conditions",
+            "023_smooth_support_and_matching_laws__candidate_compact_support_admissibility_conditions",
             "compact_support_admissibility_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "transition_layer_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_transition_layer_mass_flux_audit",
+            "023_smooth_support_and_matching_laws__candidate_transition_layer_mass_flux_audit",
             "transition_layer_mass_flux_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "parameter_independence_dep_23",
-            "23_smooth_support_and_matching_laws__candidate_boundary_parameter_independence",
+            "023_smooth_support_and_matching_laws__candidate_boundary_parameter_independence",
             "boundary_parameter_independence_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g21_source_dep_23",
-            "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+            "021_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
             "source_routing_no_double_counting_marker_21",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g22_repair_dep_23",
-            "22_boundary_neutrality_and_scalar_silence__candidate_boundary_repair_route_exclusion",
+            "022_boundary_neutrality_and_scalar_silence__candidate_boundary_repair_route_exclusion",
             "boundary_repair_route_exclusion_inventory_marker_22",
             RecordKind.INVENTORY_MARKER,
         ),

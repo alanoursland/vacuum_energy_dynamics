@@ -24,15 +24,15 @@ SCRIPT_LABEL = "Candidate Group 59 Status Summary"
 MARKER_ID = "g59_summary"
 
 DEPENDENCIES = [
-    ("g58_summary", "58_weighted_neutral_layer__candidate_group_58_status_summary", "g58_summary"),
-    ("g59_problem", "59_transition_term_audit__candidate_transition_problem", "g59_problem"),
-    ("g59_inv", "59_transition_term_audit__candidate_residue_inventory", "g59_inv"),
-    ("g59_loc", "59_transition_term_audit__candidate_locality_filter", "g59_loc"),
-    ("g59_neu", "59_transition_term_audit__candidate_weighted_neutralizer", "g59_neu"),
-    ("g59_src", "59_transition_term_audit__candidate_source_trace_filter", "g59_src"),
-    ("g59_div", "59_transition_term_audit__candidate_divergence_filter", "g59_div"),
-    ("g59_class", "59_transition_term_audit__candidate_transition_route_classifier", "g59_class"),
-    ("g59_reconcile", "59_transition_term_audit__candidate_transition_batch_reconcile", "g59_reconcile"),
+    ("g58_summary", "058_weighted_neutral_layer__candidate_group_58_status_summary", "g58_summary"),
+    ("g59_problem", "059_transition_term_audit__candidate_transition_problem", "g59_problem"),
+    ("g59_inv", "059_transition_term_audit__candidate_residue_inventory", "g59_inv"),
+    ("g59_loc", "059_transition_term_audit__candidate_locality_filter", "g59_loc"),
+    ("g59_neu", "059_transition_term_audit__candidate_weighted_neutralizer", "g59_neu"),
+    ("g59_src", "059_transition_term_audit__candidate_source_trace_filter", "g59_src"),
+    ("g59_div", "059_transition_term_audit__candidate_divergence_filter", "g59_div"),
+    ("g59_class", "059_transition_term_audit__candidate_transition_route_classifier", "g59_class"),
+    ("g59_reconcile", "059_transition_term_audit__candidate_transition_batch_reconcile", "g59_reconcile"),
 ]
 
 

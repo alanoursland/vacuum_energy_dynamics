@@ -141,7 +141,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="kappa_leak_mixed_source",
-        upstream_script_id="02_mechanics__candidate_kappa_leak_deviation",
+        upstream_script_id="002_mechanics__candidate_kappa_leak_deviation",
         upstream_derivation_id="vf_mixed_source_kappa_leak",
     )
     return archive, ns, invalidated

@@ -79,10 +79,10 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g80_D_layer_surface", "80_axiom_adoption_decision_surface__candidate_D_layer_axiom_decision_surface", "g80_D_layer_surface"),
-    ("g80_lift_surface", "80_axiom_adoption_decision_surface__candidate_lift_axiom_decision_surface", "g80_lift_surface"),
-    ("g80_rho_surface", "80_axiom_adoption_decision_surface__candidate_rho_axiom_decision_surface", "g80_rho_surface"),
-    ("g80_parent_gate", "80_axiom_adoption_decision_surface__candidate_parent_facing_axiom_gate", "g80_parent_gate"),
+    ("g80_D_layer_surface", "080_axiom_adoption_decision_surface__candidate_D_layer_axiom_decision_surface", "g80_D_layer_surface"),
+    ("g80_lift_surface", "080_axiom_adoption_decision_surface__candidate_lift_axiom_decision_surface", "g80_lift_surface"),
+    ("g80_rho_surface", "080_axiom_adoption_decision_surface__candidate_rho_axiom_decision_surface", "g80_rho_surface"),
+    ("g80_parent_gate", "080_axiom_adoption_decision_surface__candidate_parent_facing_axiom_gate", "g80_parent_gate"),
 ]
 MARKER_ID = "g80_route_classifier"
 

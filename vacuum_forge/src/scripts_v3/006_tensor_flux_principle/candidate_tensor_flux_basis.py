@@ -72,7 +72,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="scalar_flux_not_tt_guardrail",
-        upstream_script_id="06_tensor_flux_principle__candidate_scalar_flux_no_wave_failure_control",
+        upstream_script_id="006_tensor_flux_principle__candidate_scalar_flux_no_wave_failure_control",
         upstream_derivation_id="scalar_flux_not_tt_guardrail",
     )
     return archive, ns, invalidated

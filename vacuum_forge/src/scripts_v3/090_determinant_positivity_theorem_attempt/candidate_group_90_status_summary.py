@@ -97,14 +97,14 @@ def q_poly(k, t):
     return t**k - sp.Rational(2*k - 1, 2*k + 3)*t**(k-1)
 
 DEPENDENCIES = [
-    ("g89_summary", "89_all_order_determinant_test__candidate_group_89_status_summary", "g89_summary"),
-    ("g90_problem", "90_determinant_positivity_theorem_attempt__candidate_determinant_positivity_problem", "g90_problem"),
-    ("g90_derivative_factorization", "90_determinant_positivity_theorem_attempt__candidate_derivative_factorization", "g90_derivative_factorization"),
-    ("g90_andreief", "90_determinant_positivity_theorem_attempt__candidate_andreief_representation", "g90_andreief"),
-    ("g90_chebyshev_sign", "90_determinant_positivity_theorem_attempt__candidate_chebyshev_sign_route_test", "g90_chebyshev_sign"),
-    ("g90_hankel_difference", "90_determinant_positivity_theorem_attempt__candidate_hankel_difference_structure", "g90_hankel_difference"),
-    ("g90_pivot_extension", "90_determinant_positivity_theorem_attempt__candidate_pivot_evidence_extension_N1_to_N12", "g90_pivot_extension"),
-    ("g90_route_classifier", "90_determinant_positivity_theorem_attempt__candidate_determinant_positivity_route_classifier", "g90_route_classifier"),
+    ("g89_summary", "089_all_order_determinant_test__candidate_group_89_status_summary", "g89_summary"),
+    ("g90_problem", "090_determinant_positivity_theorem_attempt__candidate_determinant_positivity_problem", "g90_problem"),
+    ("g90_derivative_factorization", "090_determinant_positivity_theorem_attempt__candidate_derivative_factorization", "g90_derivative_factorization"),
+    ("g90_andreief", "090_determinant_positivity_theorem_attempt__candidate_andreief_representation", "g90_andreief"),
+    ("g90_chebyshev_sign", "090_determinant_positivity_theorem_attempt__candidate_chebyshev_sign_route_test", "g90_chebyshev_sign"),
+    ("g90_hankel_difference", "090_determinant_positivity_theorem_attempt__candidate_hankel_difference_structure", "g90_hankel_difference"),
+    ("g90_pivot_extension", "090_determinant_positivity_theorem_attempt__candidate_pivot_evidence_extension_N1_to_N12", "g90_pivot_extension"),
+    ("g90_route_classifier", "090_determinant_positivity_theorem_attempt__candidate_determinant_positivity_route_classifier", "g90_route_classifier"),
 ]
 MARKER_ID = "g90_summary"
 

@@ -87,7 +87,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="exact_source_law_geometry_check",
-        upstream_script_id="02_mechanics__candidate_exact_source_law_geometry_check",
+        upstream_script_id="002_mechanics__candidate_exact_source_law_geometry_check",
         upstream_derivation_id="flat_laplacian_harmonic_check_schwarzschild_A",
     )
     return archive, ns, invalidated

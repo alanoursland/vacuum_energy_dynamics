@@ -24,14 +24,14 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 SCRIPT_LABEL = "Candidate Group 49 Status Summary"
 MARKER_ID = "g49_summary"
 DEPENDENCIES = [
-    ("g49_recon", "49_parallel_trace_declaration_readiness_review__candidate_declaration_readiness_review_batch_reconciliation", "g49_recon"),
-    ("g49_route_classifier", "49_parallel_trace_declaration_readiness_review__candidate_parallel_declaration_attempt_route_classifier", "g49_route_classifier"),
-    ("g49_failure_sieve", "49_parallel_trace_declaration_readiness_review__candidate_predeclaration_failure_mode_sieve", "g49_failure_sieve"),
-    ("g49_requirement_matrix", "49_parallel_trace_declaration_readiness_review__candidate_declaration_record_requirement_matrix", "g49_requirement_matrix"),
-    ("g49_numeric_d_readiness", "49_parallel_trace_declaration_readiness_review__candidate_numeric_d_condition_readiness_audit", "g49_numeric_d_readiness"),
-    ("g49_record_acceptance", "49_parallel_trace_declaration_readiness_review__candidate_scope_status_record_acceptance_audit", "g49_record_acceptance"),
-    ("g49_problem", "49_parallel_trace_declaration_readiness_review__candidate_declaration_readiness_review_problem", "g49_problem"),
-    ("g48_summary", "48_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary", "g48_summary"),
+    ("g49_recon", "049_parallel_trace_declaration_readiness_review__candidate_declaration_readiness_review_batch_reconciliation", "g49_recon"),
+    ("g49_route_classifier", "049_parallel_trace_declaration_readiness_review__candidate_parallel_declaration_attempt_route_classifier", "g49_route_classifier"),
+    ("g49_failure_sieve", "049_parallel_trace_declaration_readiness_review__candidate_predeclaration_failure_mode_sieve", "g49_failure_sieve"),
+    ("g49_requirement_matrix", "049_parallel_trace_declaration_readiness_review__candidate_declaration_record_requirement_matrix", "g49_requirement_matrix"),
+    ("g49_numeric_d_readiness", "049_parallel_trace_declaration_readiness_review__candidate_numeric_d_condition_readiness_audit", "g49_numeric_d_readiness"),
+    ("g49_record_acceptance", "049_parallel_trace_declaration_readiness_review__candidate_scope_status_record_acceptance_audit", "g49_record_acceptance"),
+    ("g49_problem", "049_parallel_trace_declaration_readiness_review__candidate_declaration_readiness_review_problem", "g49_problem"),
+    ("g48_summary", "048_explicit_paired_declaration_scope_status_record__candidate_group_48_status_summary", "g48_summary"),
 ]
 
 

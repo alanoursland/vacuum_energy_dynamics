@@ -148,9 +148,9 @@ class Entry:
 SCRIPT_LABEL = "Candidate Membership Criterion Precondition Matrix"
 MARKER_ID = "g41_criterion_matrix"
 DEPENDENCIES = [
-    ("g40_membership_precond", "40_split_safe_trace_anchor_precondition_audit__candidate_safe_membership_split_safe_preconditions", "g40_membership_precond"),
-    ("g41_zeta_object", "41_safe_membership_precondition_continuation__candidate_zeta_Bs_object_precondition_ledger", "g41_zeta_object"),
-    ("g41_tzeta_sector", "41_safe_membership_precondition_continuation__candidate_Tzeta_sector_precondition_ledger", "g41_tzeta_sector"),
+    ("g40_membership_precond", "040_split_safe_trace_anchor_precondition_audit__candidate_safe_membership_split_safe_preconditions", "g40_membership_precond"),
+    ("g41_zeta_object", "041_safe_membership_precondition_continuation__candidate_zeta_Bs_object_precondition_ledger", "g41_zeta_object"),
+    ("g41_tzeta_sector", "041_safe_membership_precondition_continuation__candidate_Tzeta_sector_precondition_ledger", "g41_tzeta_sector"),
 ]
 
 

@@ -135,7 +135,7 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g93_summary", "93_pivot_sign_theorem_attempt__candidate_group_93_status_summary", "g93_summary"),
+    ("g93_summary", "093_pivot_sign_theorem_attempt__candidate_group_93_status_summary", "g93_summary"),
 ]
 MARKER_ID = "g94_problem"
 

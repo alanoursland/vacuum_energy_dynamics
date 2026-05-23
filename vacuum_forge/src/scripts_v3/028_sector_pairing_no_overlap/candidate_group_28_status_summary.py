@@ -83,18 +83,18 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
 
     dependencies = [
-        ("g28_ob", "28_sector_pairing_no_overlap__candidate_sector_geometry_obligations", "g28_obligations", RecordKind.INVENTORY_MARKER),
-        ("g28_obs", "28_sector_pairing_no_overlap__candidate_sector_geometry_obstruction", "g28_obstruction", RecordKind.INVENTORY_MARKER),
-        ("g28_rec", "28_sector_pairing_no_overlap__candidate_recovery_independent_sector_geometry", "g28_recovery", RecordKind.INVENTORY_MARKER),
-        ("g28_div", "28_sector_pairing_no_overlap__candidate_divergence_safe_sector_split", "g28_div_safe", RecordKind.INVENTORY_MARKER),
-        ("g28_bdy", "28_sector_pairing_no_overlap__candidate_boundary_support_incidence", "g28_bdy_sup", RecordKind.INVENTORY_MARKER),
-        ("g28_as", "28_sector_pairing_no_overlap__candidate_accounting_source_incidence", "g28_acct_src", RecordKind.INVENTORY_MARKER),
-        ("g28_tr", "28_sector_pairing_no_overlap__candidate_trace_residual_incidence", "g28_trace_res", RecordKind.INVENTORY_MARKER),
-        ("g28_forms", "28_sector_pairing_no_overlap__candidate_pairing_incidence_forms", "g28_pair_forms", RecordKind.INVENTORY_MARKER),
-        ("g28_mem", "28_sector_pairing_no_overlap__candidate_sector_membership_rules", "g28_membership", RecordKind.INVENTORY_MARKER),
-        ("g28_inv", "28_sector_pairing_no_overlap__candidate_sector_inventory", "g28_sector_inventory", RecordKind.INVENTORY_MARKER),
-        ("g28_prob", "28_sector_pairing_no_overlap__candidate_sector_problem_ledger", "g28_sector_problem", RecordKind.INVENTORY_MARKER),
-        ("g27_summary", "27_active_O_construction__candidate_group_27_status_summary", "g27_status_summary", RecordKind.INVENTORY_MARKER),
+        ("g28_ob", "028_sector_pairing_no_overlap__candidate_sector_geometry_obligations", "g28_obligations", RecordKind.INVENTORY_MARKER),
+        ("g28_obs", "028_sector_pairing_no_overlap__candidate_sector_geometry_obstruction", "g28_obstruction", RecordKind.INVENTORY_MARKER),
+        ("g28_rec", "028_sector_pairing_no_overlap__candidate_recovery_independent_sector_geometry", "g28_recovery", RecordKind.INVENTORY_MARKER),
+        ("g28_div", "028_sector_pairing_no_overlap__candidate_divergence_safe_sector_split", "g28_div_safe", RecordKind.INVENTORY_MARKER),
+        ("g28_bdy", "028_sector_pairing_no_overlap__candidate_boundary_support_incidence", "g28_bdy_sup", RecordKind.INVENTORY_MARKER),
+        ("g28_as", "028_sector_pairing_no_overlap__candidate_accounting_source_incidence", "g28_acct_src", RecordKind.INVENTORY_MARKER),
+        ("g28_tr", "028_sector_pairing_no_overlap__candidate_trace_residual_incidence", "g28_trace_res", RecordKind.INVENTORY_MARKER),
+        ("g28_forms", "028_sector_pairing_no_overlap__candidate_pairing_incidence_forms", "g28_pair_forms", RecordKind.INVENTORY_MARKER),
+        ("g28_mem", "028_sector_pairing_no_overlap__candidate_sector_membership_rules", "g28_membership", RecordKind.INVENTORY_MARKER),
+        ("g28_inv", "028_sector_pairing_no_overlap__candidate_sector_inventory", "g28_sector_inventory", RecordKind.INVENTORY_MARKER),
+        ("g28_prob", "028_sector_pairing_no_overlap__candidate_sector_problem_ledger", "g28_sector_problem", RecordKind.INVENTORY_MARKER),
+        ("g27_summary", "027_active_O_construction__candidate_group_27_status_summary", "g27_status_summary", RecordKind.INVENTORY_MARKER),
     ]
 
     for dependency_id, upstream_script_id, upstream_derivation_id, expected_record_kind in dependencies:
@@ -242,31 +242,31 @@ def build_handoffs() -> List[FinalHandoff]:
     return [
         FinalHandoff(
             name="H1: preferred next group",
-            route="29_Bs_Fzeta_coefficient_origin",
+            route="029_Bs_Fzeta_coefficient_origin",
             status="HANDOFF_READY",
             reason="coefficient origin may determine safe scalar membership and residual interpretation",
         ),
         FinalHandoff(
             name="H2: alternate next group",
-            route="29_minimal_sector_geometry_postulate_inventory",
+            route="029_minimal_sector_geometry_postulate_inventory",
             status="HANDOFF_READY",
             reason="if coefficient origin does not force geometry, the theory may need an explicit new choice",
         ),
         FinalHandoff(
             name="H3: conditional incidence route",
-            route="29_incidence_routing_law",
+            route="029_incidence_routing_law",
             status="OPEN",
             reason="incidence/routing are best candidate forms but need zero and edge laws",
         ),
         FinalHandoff(
             name="H4: conditional divergence route",
-            route="29_divergence_safe_sector_law",
+            route="029_divergence_safe_sector_law",
             status="OPEN",
             reason="field-equation use requires divergence behavior but correction cannot hide source/boundary/current/support load",
         ),
         FinalHandoff(
             name="H5: active O rebuild",
-            route="29_active_O_rebuild_from_sector_geometry",
+            route="029_active_O_rebuild_from_sector_geometry",
             status="NOT_READY",
             reason="sector geometry is not constructed",
         ),

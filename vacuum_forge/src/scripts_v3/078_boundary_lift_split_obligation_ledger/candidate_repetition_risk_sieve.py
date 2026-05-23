@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g78_readiness", "78_boundary_lift_split_obligation_ledger__candidate_readiness_gate_matrix", "g78_readiness"),
+    ("g78_readiness", "078_boundary_lift_split_obligation_ledger__candidate_readiness_gate_matrix", "g78_readiness"),
 ]
 MARKER_ID = "g78_repetition_sieve"
 

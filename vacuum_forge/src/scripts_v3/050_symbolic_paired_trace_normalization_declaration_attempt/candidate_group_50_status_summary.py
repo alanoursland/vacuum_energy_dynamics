@@ -23,14 +23,14 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 SCRIPT_LABEL = "Candidate Group 50 Status Summary"
 MARKER_ID = "g50_summary"
 DEPENDENCIES = [
-    ("g50_recon", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_symbolic_paired_declaration_attempt_batch_reconciliation", "g50_recon"),
-    ("g50_survival_classifier", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_attempt_survival_classifier", "g50_survival_classifier"),
-    ("g50_failure_sieve", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_attempt_failure_sieve", "g50_failure_sieve"),
-    ("g50_numeric_zeta_guard", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_numeric_d_and_zeta_clause_guard", "g50_numeric_zeta_guard"),
-    ("g50_expression_separation", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_expression_separation_audit", "g50_expression_separation"),
-    ("g50_attempt_record", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_paired_declaration_attempt_record", "g50_attempt_record"),
-    ("g50_problem", "50_symbolic_paired_trace_normalization_declaration_attempt__candidate_symbolic_paired_declaration_attempt_problem", "g50_problem"),
-    ("g49_summary", "49_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary", "g49_summary"),
+    ("g50_recon", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_symbolic_paired_declaration_attempt_batch_reconciliation", "g50_recon"),
+    ("g50_survival_classifier", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_attempt_survival_classifier", "g50_survival_classifier"),
+    ("g50_failure_sieve", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_attempt_failure_sieve", "g50_failure_sieve"),
+    ("g50_numeric_zeta_guard", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_numeric_d_and_zeta_clause_guard", "g50_numeric_zeta_guard"),
+    ("g50_expression_separation", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_declaration_expression_separation_audit", "g50_expression_separation"),
+    ("g50_attempt_record", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_paired_declaration_attempt_record", "g50_attempt_record"),
+    ("g50_problem", "050_symbolic_paired_trace_normalization_declaration_attempt__candidate_symbolic_paired_declaration_attempt_problem", "g50_problem"),
+    ("g49_summary", "049_parallel_trace_declaration_readiness_review__candidate_group_49_status_summary", "g49_summary"),
 ]
 
 

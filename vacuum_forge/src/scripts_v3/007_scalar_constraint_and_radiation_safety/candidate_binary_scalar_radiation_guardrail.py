@@ -73,7 +73,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="scalar_breathing_suppression_marker",
-        upstream_script_id="07_scalar_constraint_and_radiation_safety__candidate_scalar_breathing_mode_suppression",
+        upstream_script_id="007_scalar_constraint_and_radiation_safety__candidate_scalar_breathing_mode_suppression",
         upstream_derivation_id="scalar_breathing_suppression_marker",
     )
     return archive, ns, invalidated

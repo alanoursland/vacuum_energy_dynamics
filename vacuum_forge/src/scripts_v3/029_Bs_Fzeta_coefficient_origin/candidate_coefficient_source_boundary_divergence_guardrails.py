@@ -79,37 +79,37 @@ def prepare_archive():
     dependencies = [
         (
             "g29_residual",
-            "29_Bs_Fzeta_coefficient_origin__candidate_residual_interpretation_from_coefficient",
+            "029_Bs_Fzeta_coefficient_origin__candidate_residual_interpretation_from_coefficient",
             "g29_residual_interpretation",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_membership",
-            "29_Bs_Fzeta_coefficient_origin__candidate_coefficient_membership_bridge",
+            "029_Bs_Fzeta_coefficient_origin__candidate_coefficient_membership_bridge",
             "g29_membership_bridge",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_filter",
-            "29_Bs_Fzeta_coefficient_origin__candidate_recovery_smuggling_filter",
+            "029_Bs_Fzeta_coefficient_origin__candidate_recovery_smuggling_filter",
             "g29_recovery_filter",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_volume_trace",
-            "29_Bs_Fzeta_coefficient_origin__candidate_volume_trace_coefficient_origin",
+            "029_Bs_Fzeta_coefficient_origin__candidate_volume_trace_coefficient_origin",
             "g29_volume_trace",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_problem",
-            "29_Bs_Fzeta_coefficient_origin__candidate_coefficient_origin_problem_ledger",
+            "029_Bs_Fzeta_coefficient_origin__candidate_coefficient_origin_problem_ledger",
             "g29_coeff_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g28_summary",
-            "28_sector_pairing_no_overlap__candidate_group_28_status_summary",
+            "028_sector_pairing_no_overlap__candidate_group_28_status_summary",
             "g28_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

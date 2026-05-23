@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g77_summary", "77_remainder_obstruction_audit__candidate_group_77_status_summary", "g77_summary"),
+    ("g77_summary", "077_remainder_obstruction_audit__candidate_group_77_status_summary", "g77_summary"),
 ]
 MARKER_ID = "g78_problem"
 

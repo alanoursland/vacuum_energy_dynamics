@@ -231,7 +231,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="exchange_continuity_law_for_volume_marker",
-        upstream_script_id="15_vacuum_current_and_exchange_continuity__candidate_exchange_continuity_law_for_volume",
+        upstream_script_id="015_vacuum_current_and_exchange_continuity__candidate_exchange_continuity_law_for_volume",
         upstream_derivation_id="exchange_continuity_law_for_volume_marker",
     )
     return archive, ns, invalidated

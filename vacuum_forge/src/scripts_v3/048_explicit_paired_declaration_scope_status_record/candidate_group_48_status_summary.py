@@ -24,14 +24,14 @@ SCRIPT_ID = f"{Path(__file__).parent.name}__{Path(__file__).stem}"
 SCRIPT_LABEL = "Candidate Group 48 Status Summary"
 MARKER_ID = "g48_summary"
 DEPENDENCIES = [
-    ("g48_recon", "48_explicit_paired_declaration_scope_status_record__candidate_paired_scope_status_record_batch_reconciliation", "g48_recon"),
-    ("g48_integrity_sieve", "48_explicit_paired_declaration_scope_status_record__candidate_scope_status_record_integrity_sieve", "g48_integrity_sieve"),
-    ("g48_caveat_record", "48_explicit_paired_declaration_scope_status_record__candidate_downstream_caveat_and_rejected_broadening_record", "g48_caveat_record"),
-    ("g48_assumption_domain", "48_explicit_paired_declaration_scope_status_record__candidate_assumption_domain_and_numeric_d_condition_record", "g48_assumption_domain"),
-    ("g48_status_field", "48_explicit_paired_declaration_scope_status_record__candidate_status_field_and_nonactive_branch_record", "g48_status_field"),
-    ("g48_schema", "48_explicit_paired_declaration_scope_status_record__candidate_paired_scope_record_schema", "g48_schema"),
-    ("g48_problem", "48_explicit_paired_declaration_scope_status_record__candidate_paired_scope_status_record_problem", "g48_problem"),
-    ("g47_summary", "47_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary", "g47_summary"),
+    ("g48_recon", "048_explicit_paired_declaration_scope_status_record__candidate_paired_scope_status_record_batch_reconciliation", "g48_recon"),
+    ("g48_integrity_sieve", "048_explicit_paired_declaration_scope_status_record__candidate_scope_status_record_integrity_sieve", "g48_integrity_sieve"),
+    ("g48_caveat_record", "048_explicit_paired_declaration_scope_status_record__candidate_downstream_caveat_and_rejected_broadening_record", "g48_caveat_record"),
+    ("g48_assumption_domain", "048_explicit_paired_declaration_scope_status_record__candidate_assumption_domain_and_numeric_d_condition_record", "g48_assumption_domain"),
+    ("g48_status_field", "048_explicit_paired_declaration_scope_status_record__candidate_status_field_and_nonactive_branch_record", "g48_status_field"),
+    ("g48_schema", "048_explicit_paired_declaration_scope_status_record__candidate_paired_scope_record_schema", "g48_schema"),
+    ("g48_problem", "048_explicit_paired_declaration_scope_status_record__candidate_paired_scope_status_record_problem", "g48_problem"),
+    ("g47_summary", "047_normalization_declaration_scope_closure_audit__candidate_group_47_status_summary", "g47_summary"),
 ]
 
 

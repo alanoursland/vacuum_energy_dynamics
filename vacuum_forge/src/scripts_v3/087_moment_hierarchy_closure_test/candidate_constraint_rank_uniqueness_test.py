@@ -94,7 +94,7 @@ def hierarchy_solution(N: int):
     return y, coeffs, P, J, rho, constraints, sol
 
 DEPENDENCIES = [
-    ("g87_profiles", "87_moment_hierarchy_closure_test__candidate_hierarchy_profiles_N1_to_N4", "g87_profiles"),
+    ("g87_profiles", "087_moment_hierarchy_closure_test__candidate_hierarchy_profiles_N1_to_N4", "g87_profiles"),
 ]
 MARKER_ID = "g87_rank_uniqueness"
 

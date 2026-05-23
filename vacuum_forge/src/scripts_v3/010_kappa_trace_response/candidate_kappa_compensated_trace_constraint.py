@@ -62,7 +62,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="kappa_pressure_trace_model_marker",
-        upstream_script_id="10_kappa_trace_response__candidate_kappa_pressure_trace_model",
+        upstream_script_id="010_kappa_trace_response__candidate_kappa_pressure_trace_model",
         upstream_derivation_id="kappa_pressure_trace_model_marker",
     )
     return archive, ns, invalidated

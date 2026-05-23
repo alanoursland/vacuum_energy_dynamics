@@ -82,31 +82,31 @@ def prepare_archive():
     dependencies = [
         (
             "g30_trace_norm",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_trace_normalization_postulate",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_trace_normalization_postulate",
             "g30_trace_normalization",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_filter",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_postulate_smuggling_filter",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_postulate_smuggling_filter",
             "g30_postulate_smuggling_filter",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_minimality",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_postulate_minimality_tests",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_postulate_minimality_tests",
             "g30_postulate_minimality",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_problem",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_minimal_postulate_problem_ledger",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_minimal_postulate_problem_ledger",
             "g30_postulate_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_summary",
-            "29_Bs_Fzeta_coefficient_origin__candidate_group_29_status_summary",
+            "029_Bs_Fzeta_coefficient_origin__candidate_group_29_status_summary",
             "g29_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

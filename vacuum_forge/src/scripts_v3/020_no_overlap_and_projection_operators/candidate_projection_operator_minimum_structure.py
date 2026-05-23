@@ -68,7 +68,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="no_overlap_operator_role_inventory_marker",
-        upstream_script_id="20_no_overlap_and_projection_operators__candidate_no_overlap_operator_role_inventory",
+        upstream_script_id="020_no_overlap_and_projection_operators__candidate_no_overlap_operator_role_inventory",
         upstream_derivation_id="no_overlap_operator_role_inventory_marker",
     )
     return archive, ns, invalidated

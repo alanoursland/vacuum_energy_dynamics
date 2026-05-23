@@ -77,7 +77,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="interior_A_boundary_matching",
-        upstream_script_id="04_source_law_interior__candidate_interior_A_source_model",
+        upstream_script_id="004_source_law_interior__candidate_interior_A_source_model",
         upstream_derivation_id="interior_A_boundary_matching",
     )
     return archive, ns, invalidated

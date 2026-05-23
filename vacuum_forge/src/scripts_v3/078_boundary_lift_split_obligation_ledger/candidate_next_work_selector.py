@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g78_readiness", "78_boundary_lift_split_obligation_ledger__candidate_readiness_gate_matrix", "g78_readiness"),
-    ("g78_active_O_gate", "78_boundary_lift_split_obligation_ledger__candidate_active_O_threshold_gate", "g78_active_O_gate"),
+    ("g78_readiness", "078_boundary_lift_split_obligation_ledger__candidate_readiness_gate_matrix", "g78_readiness"),
+    ("g78_active_O_gate", "078_boundary_lift_split_obligation_ledger__candidate_active_O_threshold_gate", "g78_active_O_gate"),
 ]
 MARKER_ID = "g78_next_work"
 
@@ -90,11 +90,11 @@ def main():
     out = ScriptOutput()
 
     routes = [
-        ("79_gauge_exact_remainder_theorem_attempt", "conditional", "only if concrete exactness operator is supplied"),
-        ("79_boundary_exact_remainder_theorem_attempt", "conditional", "only if concrete boundary divergence object is supplied"),
-        ("79_layer_geometry_concrete_test", "conditional", "only if concrete boundary/layer geometry is supplied"),
-        ("79_axiom_candidate_inventory", "safe_fallback", "if theory wants to inventory explicit axiom candidates"),
-        ("79_active_O_necessity_or_rejection", "later", "only after O-free split targets fail cleanly or require projection"),
+        ("079_gauge_exact_remainder_theorem_attempt", "conditional", "only if concrete exactness operator is supplied"),
+        ("079_boundary_exact_remainder_theorem_attempt", "conditional", "only if concrete boundary divergence object is supplied"),
+        ("079_layer_geometry_concrete_test", "conditional", "only if concrete boundary/layer geometry is supplied"),
+        ("079_axiom_candidate_inventory", "safe_fallback", "if theory wants to inventory explicit axiom candidates"),
+        ("079_active_O_necessity_or_rejection", "later", "only after O-free split targets fail cleanly or require projection"),
     ]
 
     header("Candidate Next Work Selector")

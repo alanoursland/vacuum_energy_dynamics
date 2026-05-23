@@ -82,19 +82,19 @@ def prepare_archive():
     dependencies = [
         (
             "residual_problem_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
             "residual_kill_problem_ledger_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_count_once_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_count_once_metric_trace_audit",
+            "024_metric_insertion_recovery_retest__candidate_count_once_metric_trace_audit",
             "count_once_metric_trace_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_summary_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_group_24_metric_insertion_status_summary",
+            "024_metric_insertion_recovery_retest__candidate_group_24_metric_insertion_status_summary",
             "group24_metric_insertion_status_summary_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),

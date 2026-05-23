@@ -72,7 +72,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="B_s_insertion_recovery_audit_marker",
-        upstream_script_id="16_metric_insertion_and_no_overlap__candidate_B_s_insertion_recovery_audit",
+        upstream_script_id="016_metric_insertion_and_no_overlap__candidate_B_s_insertion_recovery_audit",
         upstream_derivation_id="B_s_insertion_recovery_audit_marker",
     )
     return archive, ns, invalidated

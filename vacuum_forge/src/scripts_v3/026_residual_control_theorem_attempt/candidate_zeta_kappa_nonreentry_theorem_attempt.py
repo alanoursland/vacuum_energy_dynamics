@@ -92,37 +92,37 @@ def prepare_archive():
     dependencies = [
         (
             "problem_ledger_dep_26",
-            "26_residual_control_theorem_attempt__candidate_residual_control_theorem_problem_ledger",
+            "026_residual_control_theorem_attempt__candidate_residual_control_theorem_problem_ledger",
             "residual_control_theorem_problem_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "structural_kill_dep_26",
-            "26_residual_control_theorem_attempt__candidate_structural_residual_kill_law_attempt",
+            "026_residual_control_theorem_attempt__candidate_structural_residual_kill_law_attempt",
             "structural_residual_kill_law_attempt_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "inertness_attempt_dep_26",
-            "26_residual_control_theorem_attempt__candidate_nonmetric_inertness_theorem_attempt",
+            "026_residual_control_theorem_attempt__candidate_nonmetric_inertness_theorem_attempt",
             "nonmetric_inertness_theorem_attempt_marker_26",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g25_reentry_dep_26",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_reentry_exclusion_audit",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_reentry_exclusion_audit",
             "residual_reentry_exclusion_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_count_once_dep_26",
-            "24_metric_insertion_recovery_retest__candidate_count_once_metric_trace_audit",
+            "024_metric_insertion_recovery_retest__candidate_count_once_metric_trace_audit",
             "count_once_metric_trace_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_boundary_source_dep_26",
-            "24_metric_insertion_recovery_retest__candidate_metric_insertion_boundary_support_compatibility",
+            "024_metric_insertion_recovery_retest__candidate_metric_insertion_boundary_support_compatibility",
             "metric_insertion_boundary_support_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),

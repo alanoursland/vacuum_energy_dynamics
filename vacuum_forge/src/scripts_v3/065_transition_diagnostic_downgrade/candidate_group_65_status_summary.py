@@ -24,14 +24,14 @@ SCRIPT_LABEL = "Candidate Group 65 Status Summary"
 MARKER_ID = "g65_summary"
 
 DEPENDENCIES = [
-    ("g64_summary", "64_variational_stress_origin__candidate_group_64_status_summary", "g64_summary"),
-    ("g65_problem", "65_transition_diagnostic_downgrade__candidate_downgrade_problem", "g65_problem"),
-    ("g65_ledger", "65_transition_diagnostic_downgrade__candidate_diagnostic_preservation_ledger", "g65_ledger"),
-    ("g65_fence", "65_transition_diagnostic_downgrade__candidate_forbidden_use_fence", "g65_fence"),
-    ("g65_convert", "65_transition_diagnostic_downgrade__candidate_status_conversion", "g65_convert"),
-    ("g65_revival", "65_transition_diagnostic_downgrade__candidate_revival_conditions", "g65_revival"),
-    ("g65_parent", "65_transition_diagnostic_downgrade__candidate_parent_path_implications", "g65_parent"),
-    ("g65_class", "65_transition_diagnostic_downgrade__candidate_downgrade_route_classifier", "g65_class"),
+    ("g64_summary", "064_variational_stress_origin__candidate_group_64_status_summary", "g64_summary"),
+    ("g65_problem", "065_transition_diagnostic_downgrade__candidate_downgrade_problem", "g65_problem"),
+    ("g65_ledger", "065_transition_diagnostic_downgrade__candidate_diagnostic_preservation_ledger", "g65_ledger"),
+    ("g65_fence", "065_transition_diagnostic_downgrade__candidate_forbidden_use_fence", "g65_fence"),
+    ("g65_convert", "065_transition_diagnostic_downgrade__candidate_status_conversion", "g65_convert"),
+    ("g65_revival", "065_transition_diagnostic_downgrade__candidate_revival_conditions", "g65_revival"),
+    ("g65_parent", "065_transition_diagnostic_downgrade__candidate_parent_path_implications", "g65_parent"),
+    ("g65_class", "065_transition_diagnostic_downgrade__candidate_downgrade_route_classifier", "g65_class"),
 ]
 
 

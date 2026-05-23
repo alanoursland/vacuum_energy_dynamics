@@ -135,12 +135,12 @@ def schur_components(N: int):
     }
 
 DEPENDENCIES = [
-    ("g93_summary", "93_pivot_sign_theorem_attempt__candidate_group_93_status_summary", "g93_summary"),
-    ("g94_problem", "94_schur_complement_positivity_attempt__candidate_schur_repair_problem", "g94_problem"),
-    ("g94_schur_identity", "94_schur_complement_positivity_attempt__candidate_schur_identity_repair", "g94_schur_identity"),
-    ("g94_schur_balance", "94_schur_complement_positivity_attempt__candidate_schur_term_balance_regimes", "g94_schur_balance"),
-    ("g94_schur_ratio", "94_schur_complement_positivity_attempt__candidate_schur_ratio_bound_probe", "g94_schur_ratio"),
-    ("g94_classifier", "94_schur_complement_positivity_attempt__candidate_schur_theorem_target_classifier", "g94_classifier"),
+    ("g93_summary", "093_pivot_sign_theorem_attempt__candidate_group_93_status_summary", "g93_summary"),
+    ("g94_problem", "094_schur_complement_positivity_attempt__candidate_schur_repair_problem", "g94_problem"),
+    ("g94_schur_identity", "094_schur_complement_positivity_attempt__candidate_schur_identity_repair", "g94_schur_identity"),
+    ("g94_schur_balance", "094_schur_complement_positivity_attempt__candidate_schur_term_balance_regimes", "g94_schur_balance"),
+    ("g94_schur_ratio", "094_schur_complement_positivity_attempt__candidate_schur_ratio_bound_probe", "g94_schur_ratio"),
+    ("g94_classifier", "094_schur_complement_positivity_attempt__candidate_schur_theorem_target_classifier", "g94_classifier"),
 ]
 MARKER_ID = "g94_summary"
 

@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g82_weighted", "82_rho_exactness_concrete_test__candidate_weighted_measure_neutrality_test", "g82_weighted"),
+    ("g82_weighted", "082_rho_exactness_concrete_test__candidate_weighted_measure_neutrality_test", "g82_weighted"),
 ]
 MARKER_ID = "g82_skew_condition"
 

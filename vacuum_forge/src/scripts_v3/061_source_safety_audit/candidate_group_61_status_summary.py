@@ -24,15 +24,15 @@ SCRIPT_LABEL = "Candidate Group 61 Status Summary"
 MARKER_ID = "g61_summary"
 
 DEPENDENCIES = [
-    ("g60_summary", "60_term_exclusion_sieve__candidate_group_60_status_summary", "g60_summary"),
-    ("g61_problem", "61_source_safety_audit__candidate_source_problem", "g61_problem"),
-    ("g61_role", "61_source_safety_audit__candidate_role_separation", "g61_role"),
-    ("g61_coupling", "61_source_safety_audit__candidate_source_coupling", "g61_coupling"),
-    ("g61_mass", "61_source_safety_audit__candidate_mass_moment", "g61_mass"),
-    ("g61_tension", "61_source_safety_audit__candidate_trace_mass_tension", "g61_tension"),
-    ("g61_exchange", "61_source_safety_audit__candidate_conservation_exchange", "g61_exchange"),
-    ("g61_class", "61_source_safety_audit__candidate_source_route_classifier", "g61_class"),
-    ("g61_reconcile", "61_source_safety_audit__candidate_source_batch_reconcile", "g61_reconcile"),
+    ("g60_summary", "060_term_exclusion_sieve__candidate_group_60_status_summary", "g60_summary"),
+    ("g61_problem", "061_source_safety_audit__candidate_source_problem", "g61_problem"),
+    ("g61_role", "061_source_safety_audit__candidate_role_separation", "g61_role"),
+    ("g61_coupling", "061_source_safety_audit__candidate_source_coupling", "g61_coupling"),
+    ("g61_mass", "061_source_safety_audit__candidate_mass_moment", "g61_mass"),
+    ("g61_tension", "061_source_safety_audit__candidate_trace_mass_tension", "g61_tension"),
+    ("g61_exchange", "061_source_safety_audit__candidate_conservation_exchange", "g61_exchange"),
+    ("g61_class", "061_source_safety_audit__candidate_source_route_classifier", "g61_class"),
+    ("g61_reconcile", "061_source_safety_audit__candidate_source_batch_reconcile", "g61_reconcile"),
 ]
 
 

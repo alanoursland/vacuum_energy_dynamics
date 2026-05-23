@@ -115,7 +115,7 @@ def expected_pivot_sign(N: int):
     return sp.Integer(-1)
 
 DEPENDENCIES = [
-    ("g90_pivot_extension", "90_determinant_positivity_theorem_attempt__candidate_pivot_evidence_extension_N1_to_N12", "g90_pivot_extension"),
+    ("g90_pivot_extension", "090_determinant_positivity_theorem_attempt__candidate_pivot_evidence_extension_N1_to_N12", "g90_pivot_extension"),
 ]
 MARKER_ID = "g91_problem"
 

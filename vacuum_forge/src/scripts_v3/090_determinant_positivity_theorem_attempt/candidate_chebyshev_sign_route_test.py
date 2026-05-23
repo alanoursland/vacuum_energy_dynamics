@@ -97,7 +97,7 @@ def q_poly(k, t):
     return t**k - sp.Rational(2*k - 1, 2*k + 3)*t**(k-1)
 
 DEPENDENCIES = [
-    ("g90_andreief", "90_determinant_positivity_theorem_attempt__candidate_andreief_representation", "g90_andreief"),
+    ("g90_andreief", "090_determinant_positivity_theorem_attempt__candidate_andreief_representation", "g90_andreief"),
 ]
 MARKER_ID = "g90_chebyshev_sign"
 

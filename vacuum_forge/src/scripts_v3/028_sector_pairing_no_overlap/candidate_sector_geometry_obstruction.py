@@ -83,16 +83,16 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
 
     dependencies = [
-        ("g28_rec", "28_sector_pairing_no_overlap__candidate_recovery_independent_sector_geometry", "g28_recovery", RecordKind.INVENTORY_MARKER),
-        ("g28_div", "28_sector_pairing_no_overlap__candidate_divergence_safe_sector_split", "g28_div_safe", RecordKind.INVENTORY_MARKER),
-        ("g28_bdy", "28_sector_pairing_no_overlap__candidate_boundary_support_incidence", "g28_bdy_sup", RecordKind.INVENTORY_MARKER),
-        ("g28_as", "28_sector_pairing_no_overlap__candidate_accounting_source_incidence", "g28_acct_src", RecordKind.INVENTORY_MARKER),
-        ("g28_tr", "28_sector_pairing_no_overlap__candidate_trace_residual_incidence", "g28_trace_res", RecordKind.INVENTORY_MARKER),
-        ("g28_forms", "28_sector_pairing_no_overlap__candidate_pairing_incidence_forms", "g28_pair_forms", RecordKind.INVENTORY_MARKER),
-        ("g28_mem", "28_sector_pairing_no_overlap__candidate_sector_membership_rules", "g28_membership", RecordKind.INVENTORY_MARKER),
-        ("g28_inv", "28_sector_pairing_no_overlap__candidate_sector_inventory", "g28_sector_inventory", RecordKind.INVENTORY_MARKER),
-        ("g28_prob", "28_sector_pairing_no_overlap__candidate_sector_problem_ledger", "g28_sector_problem", RecordKind.INVENTORY_MARKER),
-        ("g27_summary", "27_active_O_construction__candidate_group_27_status_summary", "g27_status_summary", RecordKind.INVENTORY_MARKER),
+        ("g28_rec", "028_sector_pairing_no_overlap__candidate_recovery_independent_sector_geometry", "g28_recovery", RecordKind.INVENTORY_MARKER),
+        ("g28_div", "028_sector_pairing_no_overlap__candidate_divergence_safe_sector_split", "g28_div_safe", RecordKind.INVENTORY_MARKER),
+        ("g28_bdy", "028_sector_pairing_no_overlap__candidate_boundary_support_incidence", "g28_bdy_sup", RecordKind.INVENTORY_MARKER),
+        ("g28_as", "028_sector_pairing_no_overlap__candidate_accounting_source_incidence", "g28_acct_src", RecordKind.INVENTORY_MARKER),
+        ("g28_tr", "028_sector_pairing_no_overlap__candidate_trace_residual_incidence", "g28_trace_res", RecordKind.INVENTORY_MARKER),
+        ("g28_forms", "028_sector_pairing_no_overlap__candidate_pairing_incidence_forms", "g28_pair_forms", RecordKind.INVENTORY_MARKER),
+        ("g28_mem", "028_sector_pairing_no_overlap__candidate_sector_membership_rules", "g28_membership", RecordKind.INVENTORY_MARKER),
+        ("g28_inv", "028_sector_pairing_no_overlap__candidate_sector_inventory", "g28_sector_inventory", RecordKind.INVENTORY_MARKER),
+        ("g28_prob", "028_sector_pairing_no_overlap__candidate_sector_problem_ledger", "g28_sector_problem", RecordKind.INVENTORY_MARKER),
+        ("g27_summary", "027_active_O_construction__candidate_group_27_status_summary", "g27_status_summary", RecordKind.INVENTORY_MARKER),
     ]
 
     for dependency_id, upstream_script_id, upstream_derivation_id, expected_record_kind in dependencies:

@@ -118,7 +118,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="J_exch_definition_requirements_marker",
-        upstream_script_id="18_vacuum_current_split__candidate_J_exch_definition_requirements",
+        upstream_script_id="018_vacuum_current_split__candidate_J_exch_definition_requirements",
         upstream_derivation_id="J_exch_definition_requirements_marker",
     )
     return archive, ns, invalidated

@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g84_probe_basis", "84_local_rho_inertness_test__candidate_payload_probe_basis", "g84_probe_basis"),
+    ("g84_probe_basis", "084_local_rho_inertness_test__candidate_payload_probe_basis", "g84_probe_basis"),
 ]
 MARKER_ID = "g84_flat_moments"
 

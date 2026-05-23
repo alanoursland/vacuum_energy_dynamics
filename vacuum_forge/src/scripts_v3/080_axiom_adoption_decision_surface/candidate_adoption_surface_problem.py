@@ -78,7 +78,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
         )
     )
 
-DEPENDENCIES = [("g79_summary", "79_axiom_candidate_inventory__candidate_group_79_status_summary", "g79_summary")]
+DEPENDENCIES = [("g79_summary", "079_axiom_candidate_inventory__candidate_group_79_status_summary", "g79_summary")]
 MARKER_ID = "g80_problem"
 
 def main():

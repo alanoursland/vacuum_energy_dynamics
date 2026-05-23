@@ -79,7 +79,7 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g83_parity", "83_weighted_exactness_geometry_derivation__candidate_flux_parity_decomposition", "g83_parity"),
+    ("g83_parity", "083_weighted_exactness_geometry_derivation__candidate_flux_parity_decomposition", "g83_parity"),
 ]
 MARKER_ID = "g83_skew_derivation"
 

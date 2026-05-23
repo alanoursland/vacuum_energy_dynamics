@@ -89,25 +89,25 @@ def prepare_archive():
     dependencies = [
         (
             "g30_summary",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
             "g30_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_obligations",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_minimal_postulate_obligations",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_minimal_postulate_obligations",
             "g30_obligations",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_obstruction",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_minimal_postulate_set_obstruction",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_minimal_postulate_set_obstruction",
             "g30_postulate_set_obstruction",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g29_summary",
-            "29_Bs_Fzeta_coefficient_origin__candidate_group_29_status_summary",
+            "029_Bs_Fzeta_coefficient_origin__candidate_group_29_status_summary",
             "g29_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

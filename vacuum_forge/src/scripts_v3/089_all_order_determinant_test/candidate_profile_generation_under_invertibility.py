@@ -109,8 +109,8 @@ def next_moment_for_coeffs(coeffs):
     return next_m, rho0
 
 DEPENDENCIES = [
-    ("g89_det_sequence", "89_all_order_determinant_test__candidate_determinant_sequence_N1_to_N10", "g89_det_sequence"),
-    ("g89_pairing", "89_all_order_determinant_test__candidate_moment_pairing_factorization", "g89_pairing"),
+    ("g89_det_sequence", "089_all_order_determinant_test__candidate_determinant_sequence_N1_to_N10", "g89_det_sequence"),
+    ("g89_pairing", "089_all_order_determinant_test__candidate_moment_pairing_factorization", "g89_pairing"),
 ]
 MARKER_ID = "g89_profile_generation"
 

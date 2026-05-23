@@ -128,8 +128,8 @@ def record_obligation(ns, obligation_id: str, marker_id: str, statement: str, st
 SCRIPT_LABEL = "Candidate Safe-Membership Declaration Attempt"
 MARKER_ID = "g38_mem_decl"
 DEPENDENCIES = [
-    ("g38_problem", "38_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
-    ("g37_mem", "37_trace_anchor_declaration_option_sieve__candidate_safe_membership_declaration_option_sieve", "g37_membership_options"),
+    ("g38_problem", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
+    ("g37_mem", "037_trace_anchor_declaration_option_sieve__candidate_safe_membership_declaration_option_sieve", "g37_membership_options"),
 ]
 MEMBERSHIP_FORM = None  # allowed: "typed", "role_pure", or None
 ZETA_BS_OBJECT = None

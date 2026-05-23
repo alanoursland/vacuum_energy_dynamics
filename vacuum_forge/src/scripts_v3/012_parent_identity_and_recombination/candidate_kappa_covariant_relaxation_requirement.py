@@ -79,7 +79,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="scalar_constraint_not_radiation_identity_marker",
-        upstream_script_id="12_parent_identity_and_recombination__candidate_scalar_constraint_not_radiation_identity",
+        upstream_script_id="012_parent_identity_and_recombination__candidate_scalar_constraint_not_radiation_identity",
         upstream_derivation_id="scalar_constraint_not_radiation_identity_marker",
     )
     return archive, ns, invalidated

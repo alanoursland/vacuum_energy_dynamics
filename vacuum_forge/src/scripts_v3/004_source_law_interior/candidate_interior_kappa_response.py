@@ -54,7 +54,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="gr_interior_first_order_match",
-        upstream_script_id="04_source_law_interior__candidate_compare_gr_interior_schwarzschild",
+        upstream_script_id="004_source_law_interior__candidate_compare_gr_interior_schwarzschild",
         upstream_derivation_id="gr_interior_first_order_match",
     )
     return archive, ns, invalidated

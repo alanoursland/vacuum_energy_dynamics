@@ -77,7 +77,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="no_overlap_operator_minimal_forms_marker",
-        upstream_script_id="16_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
+        upstream_script_id="016_metric_insertion_and_no_overlap__candidate_no_overlap_operator_minimal_forms",
         upstream_derivation_id="no_overlap_operator_minimal_forms_marker",
     )
     return archive, ns, invalidated

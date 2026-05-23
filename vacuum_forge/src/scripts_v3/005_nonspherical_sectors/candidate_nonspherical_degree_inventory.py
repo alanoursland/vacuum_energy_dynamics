@@ -84,7 +84,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="weak_scalar_gamma_one_sector",
-        upstream_script_id="05_nonspherical_sectors__candidate_weak_multipole_metric_reconstruction",
+        upstream_script_id="005_nonspherical_sectors__candidate_weak_multipole_metric_reconstruction",
         upstream_derivation_id="weak_scalar_gamma_one_sector",
     )
     return archive, ns, invalidated

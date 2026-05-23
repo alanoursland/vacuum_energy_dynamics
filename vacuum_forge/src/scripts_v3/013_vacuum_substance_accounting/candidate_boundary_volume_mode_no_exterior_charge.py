@@ -179,7 +179,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="binary_radiation_scalar_conversion_safety_marker",
-        upstream_script_id="13_vacuum_substance_accounting__candidate_binary_radiation_scalar_conversion_safety",
+        upstream_script_id="013_vacuum_substance_accounting__candidate_binary_radiation_scalar_conversion_safety",
         upstream_derivation_id="binary_radiation_scalar_conversion_safety_marker",
     )
     return archive, ns, invalidated

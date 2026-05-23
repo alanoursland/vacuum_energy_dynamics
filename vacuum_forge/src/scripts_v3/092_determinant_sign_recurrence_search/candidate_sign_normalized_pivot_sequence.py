@@ -132,7 +132,7 @@ def fit_rational_function(data, deg_num: int, deg_den: int):
     return expr
 
 DEPENDENCIES = [
-    ("g92_pivot_reduction", "92_determinant_sign_recurrence_search__candidate_pivot_sign_reduction", "g92_pivot_reduction"),
+    ("g92_pivot_reduction", "092_determinant_sign_recurrence_search__candidate_pivot_sign_reduction", "g92_pivot_reduction"),
 ]
 MARKER_ID = "g92_normalized_pivots"
 

@@ -83,25 +83,25 @@ def prepare_archive():
     dependencies = [
         (
             "metric_retest_dep_24",
-            "24_metric_insertion_recovery_retest__candidate_metric_insertion_retest_ledger",
+            "024_metric_insertion_recovery_retest__candidate_metric_insertion_retest_ledger",
             "metric_insertion_retest_ledger_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "boundary_support_dep_24",
-            "24_metric_insertion_recovery_retest__candidate_metric_insertion_boundary_support_compatibility",
+            "024_metric_insertion_recovery_retest__candidate_metric_insertion_boundary_support_compatibility",
             "metric_insertion_boundary_support_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g21_source_dep_24",
-            "21_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
+            "021_source_routing_and_mass_neutrality__candidate_source_routing_no_double_counting",
             "source_routing_no_double_counting_marker_21",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g23_source_dep_24",
-            "23_smooth_support_and_matching_laws__candidate_matching_law_source_compatibility",
+            "023_smooth_support_and_matching_laws__candidate_matching_law_source_compatibility",
             "matching_law_source_compatibility_marker_23",
             RecordKind.INVENTORY_MARKER,
         ),

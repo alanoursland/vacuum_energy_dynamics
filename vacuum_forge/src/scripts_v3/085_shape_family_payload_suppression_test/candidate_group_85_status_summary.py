@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g84_summary", "84_local_rho_inertness_test__candidate_group_84_status_summary", "g84_summary"),
-    ("g85_problem", "85_shape_family_payload_suppression_test__candidate_shape_suppression_problem", "g85_problem"),
-    ("g85_even_quartic_family", "85_shape_family_payload_suppression_test__candidate_even_quartic_shape_family", "g85_even_quartic_family"),
-    ("g85_moment_solver", "85_shape_family_payload_suppression_test__candidate_moment_constraint_solver", "g85_moment_solver"),
-    ("g85_profile_validation", "85_shape_family_payload_suppression_test__candidate_suppressed_profile_validation", "g85_profile_validation"),
-    ("g85_weighted_extension", "85_shape_family_payload_suppression_test__candidate_weighted_payload_extension", "g85_weighted_extension"),
-    ("g85_admissibility", "85_shape_family_payload_suppression_test__candidate_shape_admissibility_and_repair_discriminator", "g85_admissibility"),
-    ("g85_route_classifier", "85_shape_family_payload_suppression_test__candidate_shape_suppression_route_classifier", "g85_route_classifier"),
+    ("g84_summary", "084_local_rho_inertness_test__candidate_group_84_status_summary", "g84_summary"),
+    ("g85_problem", "085_shape_family_payload_suppression_test__candidate_shape_suppression_problem", "g85_problem"),
+    ("g85_even_quartic_family", "085_shape_family_payload_suppression_test__candidate_even_quartic_shape_family", "g85_even_quartic_family"),
+    ("g85_moment_solver", "085_shape_family_payload_suppression_test__candidate_moment_constraint_solver", "g85_moment_solver"),
+    ("g85_profile_validation", "085_shape_family_payload_suppression_test__candidate_suppressed_profile_validation", "g85_profile_validation"),
+    ("g85_weighted_extension", "085_shape_family_payload_suppression_test__candidate_weighted_payload_extension", "g85_weighted_extension"),
+    ("g85_admissibility", "085_shape_family_payload_suppression_test__candidate_shape_admissibility_and_repair_discriminator", "g85_admissibility"),
+    ("g85_route_classifier", "085_shape_family_payload_suppression_test__candidate_shape_suppression_route_classifier", "g85_route_classifier"),
 ]
 MARKER_ID = "g85_summary"
 

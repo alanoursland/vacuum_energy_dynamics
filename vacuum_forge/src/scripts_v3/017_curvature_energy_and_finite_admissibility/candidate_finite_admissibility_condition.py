@@ -101,7 +101,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="curvature_admissibility_object_inventory_marker",
-        upstream_script_id="17_curvature_energy_and_finite_admissibility__candidate_curvature_admissibility_object_inventory",
+        upstream_script_id="017_curvature_energy_and_finite_admissibility__candidate_curvature_admissibility_object_inventory",
         upstream_derivation_id="curvature_admissibility_object_inventory_marker",
     )
     return archive, ns, invalidated

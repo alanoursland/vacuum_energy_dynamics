@@ -128,8 +128,8 @@ def record_obligation(ns, obligation_id: str, marker_id: str, statement: str, st
 SCRIPT_LABEL = "Candidate B_s Convention Declaration Fork"
 MARKER_ID = "g38_bs_fork"
 DEPENDENCIES = [
-    ("g38_problem", "38_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
-    ("g37_summary", "37_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary", "g37_summary"),
+    ("g38_problem", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
+    ("g37_summary", "037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary", "g37_summary"),
 ]
 CHOSEN_CONVENTION = None  # allowed: "scale_factor", "metric_coefficient", or None
 

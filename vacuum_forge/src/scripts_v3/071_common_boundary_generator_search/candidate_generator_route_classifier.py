@@ -86,9 +86,9 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g71_class_sieve", "71_common_boundary_generator_search__candidate_generator_class_sieve", "g71_class_sieve"),
-    ("g71_bulk_gauge", "71_common_boundary_generator_search__candidate_bulk_gauge_leakage_test", "g71_bulk_gauge_leakage"),
-    ("g71_components", "71_common_boundary_generator_search__candidate_component_forcing_test", "g71_component_forcing"),
+    ("g71_class_sieve", "071_common_boundary_generator_search__candidate_generator_class_sieve", "g71_class_sieve"),
+    ("g71_bulk_gauge", "071_common_boundary_generator_search__candidate_bulk_gauge_leakage_test", "g71_bulk_gauge_leakage"),
+    ("g71_components", "071_common_boundary_generator_search__candidate_component_forcing_test", "g71_component_forcing"),
 ]
 MARKER_ID = "g71_route_classifier"
 

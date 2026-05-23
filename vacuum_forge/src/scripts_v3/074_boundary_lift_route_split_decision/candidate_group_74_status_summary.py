@@ -79,15 +79,15 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g73_summary", "73_layer_generator_construction__candidate_group_73_status_summary", "g73_summary"),
-    ("g74_problem", "74_boundary_lift_route_split_decision__candidate_split_decision_problem", "g74_problem"),
-    ("g74_route_ledger", "74_boundary_lift_route_split_decision__candidate_route_status_ledger", "g74_route_ledger"),
-    ("g74_layer_decision", "74_boundary_lift_route_split_decision__candidate_layer_route_status_decision", "g74_layer_decision"),
-    ("g74_lift_cleanliness", "74_boundary_lift_route_split_decision__candidate_lift_cleanliness_route_status", "g74_lift_cleanliness"),
-    ("g74_decision_matrix", "74_boundary_lift_route_split_decision__candidate_boundary_match_route_decision_matrix", "g74_decision_matrix"),
-    ("g74_active_O_gate", "74_boundary_lift_route_split_decision__candidate_active_O_gate_audit", "g74_active_O_gate"),
-    ("g74_parent_gate", "74_boundary_lift_route_split_decision__candidate_parent_recombination_gate", "g74_parent_gate"),
-    ("g74_next_route", "74_boundary_lift_route_split_decision__candidate_next_route_classifier", "g74_next_route"),
+    ("g73_summary", "073_layer_generator_construction__candidate_group_73_status_summary", "g73_summary"),
+    ("g74_problem", "074_boundary_lift_route_split_decision__candidate_split_decision_problem", "g74_problem"),
+    ("g74_route_ledger", "074_boundary_lift_route_split_decision__candidate_route_status_ledger", "g74_route_ledger"),
+    ("g74_layer_decision", "074_boundary_lift_route_split_decision__candidate_layer_route_status_decision", "g74_layer_decision"),
+    ("g74_lift_cleanliness", "074_boundary_lift_route_split_decision__candidate_lift_cleanliness_route_status", "g74_lift_cleanliness"),
+    ("g74_decision_matrix", "074_boundary_lift_route_split_decision__candidate_boundary_match_route_decision_matrix", "g74_decision_matrix"),
+    ("g74_active_O_gate", "074_boundary_lift_route_split_decision__candidate_active_O_gate_audit", "g74_active_O_gate"),
+    ("g74_parent_gate", "074_boundary_lift_route_split_decision__candidate_parent_recombination_gate", "g74_parent_gate"),
+    ("g74_next_route", "074_boundary_lift_route_split_decision__candidate_next_route_classifier", "g74_next_route"),
 ]
 MARKER_ID = "g74_summary"
 
@@ -123,7 +123,7 @@ def main():
         out.line("active O", StatusMark.DEFER, "not yet forced")
         out.line("parent divergence", StatusMark.OBLIGATION, "unproven")
         out.line("recombination", StatusMark.DEFER, "blocked")
-        out.line("next route", StatusMark.INFO, "75_covariant_lift_neutrality_attempt")
+        out.line("next route", StatusMark.INFO, "075_covariant_lift_neutrality_attempt")
     with out.counterexamples():
         out.line("hard route kill", StatusMark.FAIL, "current obstruction is not no-go theorem")
         out.line("route promotion", StatusMark.FAIL, "cannot promote while D_layer/lift remain open")

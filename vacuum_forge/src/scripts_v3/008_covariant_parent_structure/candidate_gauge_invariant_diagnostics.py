@@ -99,7 +99,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="metric_recombination_marker",
-        upstream_script_id="08_covariant_parent_structure__candidate_metric_geometric_recombination",
+        upstream_script_id="008_covariant_parent_structure__candidate_metric_geometric_recombination",
         upstream_derivation_id="metric_recombination_marker",
     )
     return archive, ns, invalidated

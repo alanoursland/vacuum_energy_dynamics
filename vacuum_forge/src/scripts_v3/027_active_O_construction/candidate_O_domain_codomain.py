@@ -87,25 +87,25 @@ def prepare_archive():
     dependencies = [
         (
             "g27_O_problem",
-            "27_active_O_construction__candidate_O_problem_ledger",
+            "027_active_O_construction__candidate_O_problem_ledger",
             "g27_O_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_summary",
-            "26_residual_control_theorem_attempt__candidate_group_26_status_summary",
+            "026_residual_control_theorem_attempt__candidate_group_26_status_summary",
             "g26_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_oblig",
-            "26_residual_control_theorem_attempt__candidate_residual_control_theorem_attempt_obligations",
+            "026_residual_control_theorem_attempt__candidate_residual_control_theorem_attempt_obligations",
             "g26_obligation_status",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g26_consistency",
-            "26_residual_control_theorem_attempt__candidate_residual_control_boundary_source_recovery_consistency",
+            "026_residual_control_theorem_attempt__candidate_residual_control_boundary_source_recovery_consistency",
             "g26_rc_consistency_marker",
             RecordKind.INVENTORY_MARKER,
         ),

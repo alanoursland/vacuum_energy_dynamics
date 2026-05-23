@@ -197,7 +197,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="minimal_volume_exchange_operator_ansatz_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_minimal_volume_exchange_operator_ansatz",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_minimal_volume_exchange_operator_ansatz",
         upstream_derivation_id="minimal_volume_exchange_operator_ansatz_marker",
     )
     return archive, ns, invalidated

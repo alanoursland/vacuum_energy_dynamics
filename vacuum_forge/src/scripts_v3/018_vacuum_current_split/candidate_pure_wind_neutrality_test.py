@@ -107,7 +107,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vacuum_current_split_inventory_marker",
-        upstream_script_id="18_vacuum_current_split__candidate_vacuum_current_split_inventory",
+        upstream_script_id="018_vacuum_current_split__candidate_vacuum_current_split_inventory",
         upstream_derivation_id="vacuum_current_split_inventory_marker",
     )
     return archive, ns, invalidated

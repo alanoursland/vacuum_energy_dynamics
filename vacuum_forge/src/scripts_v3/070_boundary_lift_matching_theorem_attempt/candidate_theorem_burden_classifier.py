@@ -80,12 +80,12 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g69_summary", "69_boundary_covariant_cancellation_attempt__candidate_group_69_status_summary", "g69_summary"),
-    ("g70_common_generator", "70_boundary_lift_matching_theorem_attempt__candidate_common_generator_ansatz", "g70_common_generator"),
-    ("g70_orientation", "70_boundary_lift_matching_theorem_attempt__candidate_orientation_sign_sieve", "g70_orientation"),
-    ("g70_coefficients", "70_boundary_lift_matching_theorem_attempt__candidate_component_coefficient_matching", "g70_coefficients"),
-    ("g70_bulk_gauge", "70_boundary_lift_matching_theorem_attempt__candidate_bulk_gauge_neutrality", "g70_bulk_gauge"),
-    ("g70_discriminator", "70_boundary_lift_matching_theorem_attempt__candidate_matching_vs_repair_discriminator", "g70_discriminator"),
+    ("g69_summary", "069_boundary_covariant_cancellation_attempt__candidate_group_69_status_summary", "g69_summary"),
+    ("g70_common_generator", "070_boundary_lift_matching_theorem_attempt__candidate_common_generator_ansatz", "g70_common_generator"),
+    ("g70_orientation", "070_boundary_lift_matching_theorem_attempt__candidate_orientation_sign_sieve", "g70_orientation"),
+    ("g70_coefficients", "070_boundary_lift_matching_theorem_attempt__candidate_component_coefficient_matching", "g70_coefficients"),
+    ("g70_bulk_gauge", "070_boundary_lift_matching_theorem_attempt__candidate_bulk_gauge_neutrality", "g70_bulk_gauge"),
+    ("g70_discriminator", "070_boundary_lift_matching_theorem_attempt__candidate_matching_vs_repair_discriminator", "g70_discriminator"),
 ]
 MARKER_ID = "g70_class"
 
@@ -100,7 +100,7 @@ def main():
         out.line("theorem status", StatusMark.OBLIGATION, "boundary-lift matching theorem is not proven")
         out.line("parent divergence status", StatusMark.OBLIGATION, "parent divergence identity remains unproven")
         out.line("recombination", StatusMark.DEFER, "parent recombination remains blocked")
-        out.line("next route", StatusMark.INFO, "71_common_boundary_generator_search")
+        out.line("next route", StatusMark.INFO, "071_common_boundary_generator_search")
     with out.counterexamples():
         out.line("chosen values", StatusMark.FAIL, "choosing sigma or coefficients is repair-like")
         out.line("bulk/gauge omission", StatusMark.FAIL, "omitting L_bulk/L_gauge is not covariant lift proof")

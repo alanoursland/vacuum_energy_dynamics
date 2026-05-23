@@ -204,7 +204,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="group_14_closure_summary_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_group_14_closure_summary",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_group_14_closure_summary",
         upstream_derivation_id="group_14_closure_summary_marker",
     )
     return archive, ns, invalidated

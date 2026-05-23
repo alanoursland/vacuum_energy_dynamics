@@ -78,17 +78,17 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
 
     dependencies = [
-        ("g27_O_problem", "27_active_O_construction__candidate_O_problem_ledger", "g27_O_problem", RecordKind.INVENTORY_MARKER),
-        ("g27_dc", "27_active_O_construction__candidate_O_domain_codomain", "g27_O_domain_codomain", RecordKind.INVENTORY_MARKER),
-        ("g27_ki", "27_active_O_construction__candidate_O_kernel_image", "g27_O_kernel_image", RecordKind.INVENTORY_MARKER),
-        ("g27_pair", "27_active_O_construction__candidate_O_no_overlap_pairing", "g27_O_pairing", RecordKind.INVENTORY_MARKER),
-        ("g27_alg", "27_active_O_construction__candidate_O_projection_law", "g27_O_alg_law", RecordKind.INVENTORY_MARKER),
-        ("g27_div", "27_active_O_construction__candidate_O_divergence_commutation", "g27_O_divergence", RecordKind.INVENTORY_MARKER),
-        ("g27_bsm", "27_active_O_construction__candidate_O_boundary_source_mass", "g27_O_bsm", RecordKind.INVENTORY_MARKER),
-        ("g27_rec", "27_active_O_construction__candidate_O_recovery_independence", "g27_O_recovery", RecordKind.INVENTORY_MARKER),
-        ("g27_obs", "27_active_O_construction__candidate_O_construction_obstruction", "g27_O_obstruction", RecordKind.INVENTORY_MARKER),
-        ("g27_ob", "27_active_O_construction__candidate_O_obligations", "g27_O_obligations", RecordKind.INVENTORY_MARKER),
-        ("g26_summary", "26_residual_control_theorem_attempt__candidate_group_26_status_summary", "g26_status_summary", RecordKind.INVENTORY_MARKER),
+        ("g27_O_problem", "027_active_O_construction__candidate_O_problem_ledger", "g27_O_problem", RecordKind.INVENTORY_MARKER),
+        ("g27_dc", "027_active_O_construction__candidate_O_domain_codomain", "g27_O_domain_codomain", RecordKind.INVENTORY_MARKER),
+        ("g27_ki", "027_active_O_construction__candidate_O_kernel_image", "g27_O_kernel_image", RecordKind.INVENTORY_MARKER),
+        ("g27_pair", "027_active_O_construction__candidate_O_no_overlap_pairing", "g27_O_pairing", RecordKind.INVENTORY_MARKER),
+        ("g27_alg", "027_active_O_construction__candidate_O_projection_law", "g27_O_alg_law", RecordKind.INVENTORY_MARKER),
+        ("g27_div", "027_active_O_construction__candidate_O_divergence_commutation", "g27_O_divergence", RecordKind.INVENTORY_MARKER),
+        ("g27_bsm", "027_active_O_construction__candidate_O_boundary_source_mass", "g27_O_bsm", RecordKind.INVENTORY_MARKER),
+        ("g27_rec", "027_active_O_construction__candidate_O_recovery_independence", "g27_O_recovery", RecordKind.INVENTORY_MARKER),
+        ("g27_obs", "027_active_O_construction__candidate_O_construction_obstruction", "g27_O_obstruction", RecordKind.INVENTORY_MARKER),
+        ("g27_ob", "027_active_O_construction__candidate_O_obligations", "g27_O_obligations", RecordKind.INVENTORY_MARKER),
+        ("g26_summary", "026_residual_control_theorem_attempt__candidate_group_26_status_summary", "g26_status_summary", RecordKind.INVENTORY_MARKER),
     ]
 
     for dependency_id, upstream_script_id, upstream_derivation_id, expected_record_kind in dependencies:
@@ -223,25 +223,25 @@ def build_handoffs() -> List[FinalHandoff]:
     return [
         FinalHandoff(
             name="H1: preferred next group",
-            route="28_sector_pairing_and_no_overlap_geometry",
+            route="028_sector_pairing_and_no_overlap_geometry",
             status="HANDOFF_READY",
             reason="missing pairing blocks kernel/image and projection law; sector-projection remains the best candidate no-overlap structure",
         ),
         FinalHandoff(
             name="H2: alternate next group",
-            route="28_Bs_Fzeta_coefficient_origin",
+            route="028_Bs_Fzeta_coefficient_origin",
             status="HANDOFF_READY",
             reason="coefficient origin may decide residual interpretation and O classification",
         ),
         FinalHandoff(
             name="H3: later O algebra",
-            route="28_operator_algebra_and_constraint_law",
+            route="028_operator_algebra_and_constraint_law",
             status="OPEN",
             reason="useful after or alongside a no-overlap criterion, but not enough alone",
         ),
         FinalHandoff(
             name="H4: residual-control retest",
-            route="28_O_residual_control_retest",
+            route="028_O_residual_control_retest",
             status="NOT_READY",
             reason="O is not usable yet",
         ),

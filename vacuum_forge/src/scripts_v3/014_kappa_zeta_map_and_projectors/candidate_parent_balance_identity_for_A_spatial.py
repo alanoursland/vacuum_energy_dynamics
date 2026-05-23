@@ -196,7 +196,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="minimal_gradient_current_ratio_test_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_minimal_gradient_current_ratio_test",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_minimal_gradient_current_ratio_test",
         upstream_derivation_id="minimal_gradient_current_ratio_test_marker",
     )
     return archive, ns, invalidated

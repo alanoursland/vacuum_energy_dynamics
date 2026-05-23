@@ -86,14 +86,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
 
 
 DEPENDENCIES = [
-    ("g70_summary", "70_boundary_lift_matching_theorem_attempt__candidate_group_70_status_summary", "g70_summary"),
-    ("g71_problem", "71_common_boundary_generator_search__candidate_generator_search_problem", "g71_problem"),
-    ("g71_requirements", "71_common_boundary_generator_search__candidate_boundary_generator_requirements", "g71_requirements"),
-    ("g71_orientation", "71_common_boundary_generator_search__candidate_orientation_forcing_test", "g71_orientation_forcing"),
-    ("g71_components", "71_common_boundary_generator_search__candidate_component_forcing_test", "g71_component_forcing"),
-    ("g71_bulk_gauge", "71_common_boundary_generator_search__candidate_bulk_gauge_leakage_test", "g71_bulk_gauge_leakage"),
-    ("g71_class_sieve", "71_common_boundary_generator_search__candidate_generator_class_sieve", "g71_class_sieve"),
-    ("g71_route_classifier", "71_common_boundary_generator_search__candidate_generator_route_classifier", "g71_route_classifier"),
+    ("g70_summary", "070_boundary_lift_matching_theorem_attempt__candidate_group_70_status_summary", "g70_summary"),
+    ("g71_problem", "071_common_boundary_generator_search__candidate_generator_search_problem", "g71_problem"),
+    ("g71_requirements", "071_common_boundary_generator_search__candidate_boundary_generator_requirements", "g71_requirements"),
+    ("g71_orientation", "071_common_boundary_generator_search__candidate_orientation_forcing_test", "g71_orientation_forcing"),
+    ("g71_components", "071_common_boundary_generator_search__candidate_component_forcing_test", "g71_component_forcing"),
+    ("g71_bulk_gauge", "071_common_boundary_generator_search__candidate_bulk_gauge_leakage_test", "g71_bulk_gauge_leakage"),
+    ("g71_class_sieve", "071_common_boundary_generator_search__candidate_generator_class_sieve", "g71_class_sieve"),
+    ("g71_route_classifier", "071_common_boundary_generator_search__candidate_generator_route_classifier", "g71_route_classifier"),
 ]
 MARKER_ID = "g71_summary"
 

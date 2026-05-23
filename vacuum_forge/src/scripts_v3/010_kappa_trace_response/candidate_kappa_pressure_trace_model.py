@@ -59,7 +59,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="kappa_exterior_suppression_condition_marker",
-        upstream_script_id="10_kappa_trace_response__candidate_kappa_exterior_suppression_condition",
+        upstream_script_id="010_kappa_trace_response__candidate_kappa_exterior_suppression_condition",
         upstream_derivation_id="kappa_exterior_suppression_condition_marker",
     )
     return archive, ns, invalidated

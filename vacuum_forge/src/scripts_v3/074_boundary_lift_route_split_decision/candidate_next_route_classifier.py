@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g74_decision_matrix", "74_boundary_lift_route_split_decision__candidate_boundary_match_route_decision_matrix", "g74_decision_matrix"),
-    ("g74_parent_gate", "74_boundary_lift_route_split_decision__candidate_parent_recombination_gate", "g74_parent_gate"),
+    ("g74_decision_matrix", "074_boundary_lift_route_split_decision__candidate_boundary_match_route_decision_matrix", "g74_decision_matrix"),
+    ("g74_parent_gate", "074_boundary_lift_route_split_decision__candidate_parent_recombination_gate", "g74_parent_gate"),
 ]
 MARKER_ID = "g74_next_route"
 
@@ -90,11 +90,11 @@ def main():
     out = ScriptOutput()
 
     routes = [
-        ("75_covariant_lift_neutrality_attempt", "preferred", "attacks L_bulk/L_gauge without needing new D_layer geometry"),
-        ("75_boundary_lift_split_obligation_ledger", "safe_fallback", "records split targets before more attempts"),
-        ("75_layer_geometry_axiom_inventory", "conditional", "only if theory wants explicit layer axiom candidates"),
-        ("75_layer_generator_construction_with_concrete_geometry", "conditional", "only if new concrete geometry is supplied"),
-        ("75_active_O_necessity_or_rejection", "later", "only after O-free split targets fail cleanly"),
+        ("075_covariant_lift_neutrality_attempt", "preferred", "attacks L_bulk/L_gauge without needing new D_layer geometry"),
+        ("075_boundary_lift_split_obligation_ledger", "safe_fallback", "records split targets before more attempts"),
+        ("075_layer_geometry_axiom_inventory", "conditional", "only if theory wants explicit layer axiom candidates"),
+        ("075_layer_generator_construction_with_concrete_geometry", "conditional", "only if new concrete geometry is supplied"),
+        ("075_active_O_necessity_or_rejection", "later", "only after O-free split targets fail cleanly"),
     ]
 
     header("Candidate Next Route Classifier")
@@ -102,7 +102,7 @@ def main():
         print(f"{name}: {status}; {reason}")
 
     with out.governance_assessments():
-        out.line("preferred next", StatusMark.INFO, "75_covariant_lift_neutrality_attempt")
+        out.line("preferred next", StatusMark.INFO, "075_covariant_lift_neutrality_attempt")
         out.line("route split", StatusMark.PASS, "split route state is explicit enough to move to lift-cleanliness")
         out.line("layer route", StatusMark.DEFER, "continue only with new concrete geometry or axiom inventory")
         out.line("active O", StatusMark.DEFER, "later only if O-free routes fail cleanly")

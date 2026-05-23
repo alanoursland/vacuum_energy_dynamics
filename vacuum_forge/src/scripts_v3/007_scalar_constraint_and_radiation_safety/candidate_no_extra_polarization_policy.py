@@ -80,7 +80,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="A_channel_split_policy_marker",
-        upstream_script_id="07_scalar_constraint_and_radiation_safety__candidate_A_channel_static_dynamic_split",
+        upstream_script_id="007_scalar_constraint_and_radiation_safety__candidate_A_channel_static_dynamic_split",
         upstream_derivation_id="A_channel_split_policy_marker",
     )
     return archive, ns, invalidated

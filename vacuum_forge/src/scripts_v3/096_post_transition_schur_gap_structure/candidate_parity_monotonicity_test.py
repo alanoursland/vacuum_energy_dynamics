@@ -159,7 +159,7 @@ def decreasing(values):
     return failures
 
 DEPENDENCIES = [
-    ("g96_parity_sequences", "96_post_transition_schur_gap_structure__candidate_parity_gap_sequence_probe", "g96_parity_sequences"),
+    ("g96_parity_sequences", "096_post_transition_schur_gap_structure__candidate_parity_gap_sequence_probe", "g96_parity_sequences"),
 ]
 MARKER_ID = "g96_parity_monotonicity"
 

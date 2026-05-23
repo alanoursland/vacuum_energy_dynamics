@@ -84,25 +84,25 @@ def prepare_archive():
     dependencies = [
         (
             "g31_classifier",
-            "31_source_divergence_coefficient_law__candidate_source_divergence_coefficient_law_classifier",
+            "031_source_divergence_coefficient_law__candidate_source_divergence_coefficient_law_classifier",
             "g31_source_divergence_classifier",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_explicitness",
-            "31_source_divergence_coefficient_law__candidate_nonreservoir_divergence_explicitness",
+            "031_source_divergence_coefficient_law__candidate_nonreservoir_divergence_explicitness",
             "g31_nonreservoir_explicitness",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_coeff",
-            "31_source_divergence_coefficient_law__candidate_coefficient_source_no_double_counting_tests",
+            "031_source_divergence_coefficient_law__candidate_coefficient_source_no_double_counting_tests",
             "g31_coeff_source_tests",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g30_summary",
-            "30_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
+            "030_minimal_coefficient_sector_postulate_inventory__candidate_group_30_status_summary",
             "g30_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),

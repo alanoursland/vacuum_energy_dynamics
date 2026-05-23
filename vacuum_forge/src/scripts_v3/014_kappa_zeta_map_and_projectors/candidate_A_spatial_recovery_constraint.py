@@ -208,7 +208,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="areal_kappa_diagnostic_vs_physical_variable_marker",
-        upstream_script_id="14_kappa_zeta_map_and_projectors__candidate_areal_kappa_diagnostic_vs_physical_variable",
+        upstream_script_id="014_kappa_zeta_map_and_projectors__candidate_areal_kappa_diagnostic_vs_physical_variable",
         upstream_derivation_id="areal_kappa_diagnostic_vs_physical_variable_marker",
     )
     return archive, ns, invalidated

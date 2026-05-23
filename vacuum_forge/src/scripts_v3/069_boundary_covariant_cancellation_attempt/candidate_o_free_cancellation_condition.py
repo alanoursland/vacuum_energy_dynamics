@@ -27,7 +27,7 @@ def record_claim(ns, marker_id, claim_id, status, statement):
 def record_obligation(ns, obligation_id, statement, status=ObligationStatus.OPEN):
     ns.record_obligation(ProofObligationRecord(obligation_id=obligation_id, script_id=SCRIPT_ID, title=obligation_id, status=status, required_by=[SCRIPT_ID], description=statement))
 
-DEPENDENCIES=[("g68_summary","68_covariant_divergence_identity_attempt__candidate_group_68_status_summary","g68_summary"),("g69_problem","69_boundary_covariant_cancellation_attempt__candidate_boundary_covariant_problem","g69_problem")]
+DEPENDENCIES=[("g68_summary","068_covariant_divergence_identity_attempt__candidate_group_68_status_summary","g68_summary"),("g69_problem","069_boundary_covariant_cancellation_attempt__candidate_boundary_covariant_problem","g69_problem")]
 MARKER_ID="g69_condition"
 def main():
     archive,ns,invalidated=prepare_archive(DEPENDENCIES); print_archive_status(ns,invalidated); out=ScriptOutput()

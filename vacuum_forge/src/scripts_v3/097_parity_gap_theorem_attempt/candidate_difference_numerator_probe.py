@@ -130,8 +130,8 @@ def rational_sign_parts(expr):
     return sp.factor(num), sp.factor(den), sp.sign(num), sp.sign(den), sp.sign(expr)
 
 DEPENDENCIES = [
-    ("g97_branch_differences", "97_parity_gap_theorem_attempt__candidate_branch_difference_signs", "g97_branch_differences"),
-    ("g97_interlacing_differences", "97_parity_gap_theorem_attempt__candidate_interlacing_difference_signs", "g97_interlacing_differences"),
+    ("g97_branch_differences", "097_parity_gap_theorem_attempt__candidate_branch_difference_signs", "g97_branch_differences"),
+    ("g97_interlacing_differences", "097_parity_gap_theorem_attempt__candidate_interlacing_difference_signs", "g97_interlacing_differences"),
 ]
 MARKER_ID = "g97_numerator_probe"
 

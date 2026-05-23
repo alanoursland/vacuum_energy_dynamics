@@ -75,25 +75,25 @@ def prepare_archive():
     dependencies = [
         (
             "residual_problem_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
             "residual_kill_problem_ledger_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "classification_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_metric_trace_residual_classification",
+            "025_residual_kill_or_no_overlap_theorem__candidate_metric_trace_residual_classification",
             "metric_trace_residual_classification_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "reentry_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_reentry_exclusion_audit",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_reentry_exclusion_audit",
             "residual_reentry_exclusion_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g20_summary_dep_25",
-            "20_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
+            "020_no_overlap_and_projection_operators__candidate_no_overlap_projection_group_status_summary",
             "no_overlap_projection_group_status_summary_marker",
             RecordKind.INVENTORY_MARKER,
         ),

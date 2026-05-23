@@ -24,15 +24,15 @@ SCRIPT_LABEL = "Candidate Group 56 Status Summary"
 MARKER_ID = "g56_summary"
 
 DEPENDENCIES = [
-    ("g55_summary", "55_insertion_exclusion_sieve__candidate_group_55_status_summary", "g55_summary"),
-    ("g56_problem", "56_silent_insert_law__candidate_silent_problem", "g56_problem"),
-    ("g56_w", "56_silent_insert_law__candidate_boundary_null_profile", "g56_w"),
-    ("g56_q", "56_silent_insert_law__candidate_charge_neutral_source", "g56_q"),
-    ("g56_tail", "56_silent_insert_law__candidate_exterior_tail_zero", "g56_tail"),
-    ("g56_shell", "56_silent_insert_law__candidate_shell_neutral_match", "g56_shell"),
-    ("g56_div", "56_silent_insert_law__candidate_divergence_silent_stress", "g56_div"),
-    ("g56_class", "56_silent_insert_law__candidate_silent_route_classifier", "g56_class"),
-    ("g56_reconcile", "56_silent_insert_law__candidate_silent_batch_reconcile", "g56_reconcile"),
+    ("g55_summary", "055_insertion_exclusion_sieve__candidate_group_55_status_summary", "g55_summary"),
+    ("g56_problem", "056_silent_insert_law__candidate_silent_problem", "g56_problem"),
+    ("g56_w", "056_silent_insert_law__candidate_boundary_null_profile", "g56_w"),
+    ("g56_q", "056_silent_insert_law__candidate_charge_neutral_source", "g56_q"),
+    ("g56_tail", "056_silent_insert_law__candidate_exterior_tail_zero", "g56_tail"),
+    ("g56_shell", "056_silent_insert_law__candidate_shell_neutral_match", "g56_shell"),
+    ("g56_div", "056_silent_insert_law__candidate_divergence_silent_stress", "g56_div"),
+    ("g56_class", "056_silent_insert_law__candidate_silent_route_classifier", "g56_class"),
+    ("g56_reconcile", "056_silent_insert_law__candidate_silent_batch_reconcile", "g56_reconcile"),
 ]
 
 

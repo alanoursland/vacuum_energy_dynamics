@@ -159,9 +159,9 @@ def decreasing(values):
     return failures
 
 DEPENDENCIES = [
-    ("g96_parity_sequences", "96_post_transition_schur_gap_structure__candidate_parity_gap_sequence_probe", "g96_parity_sequences"),
-    ("g96_parity_monotonicity", "96_post_transition_schur_gap_structure__candidate_parity_monotonicity_test", "g96_parity_monotonicity"),
-    ("g96_gap_interlacing", "96_post_transition_schur_gap_structure__candidate_gap_interlacing_test", "g96_gap_interlacing"),
+    ("g96_parity_sequences", "096_post_transition_schur_gap_structure__candidate_parity_gap_sequence_probe", "g96_parity_sequences"),
+    ("g96_parity_monotonicity", "096_post_transition_schur_gap_structure__candidate_parity_monotonicity_test", "g96_parity_monotonicity"),
+    ("g96_gap_interlacing", "096_post_transition_schur_gap_structure__candidate_gap_interlacing_test", "g96_gap_interlacing"),
 ]
 MARKER_ID = "g96_classifier"
 

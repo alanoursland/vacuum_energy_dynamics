@@ -24,16 +24,16 @@ SCRIPT_LABEL = "Candidate Group 62 Status Summary"
 MARKER_ID = "g62_summary"
 
 DEPENDENCIES = [
-    ("g61_summary", "61_source_safety_audit__candidate_group_61_status_summary", "g61_summary"),
-    ("g62_problem", "62_stress_energy_accounting__candidate_stress_problem", "g62_problem"),
-    ("g62_inv", "62_stress_energy_accounting__candidate_closure_inventory", "g62_inv"),
-    ("g62_closure", "62_stress_energy_accounting__candidate_trace_mass_closure_sieve", "g62_closure"),
-    ("g62_P", "62_stress_energy_accounting__candidate_pressure_sum_obstruction", "g62_P"),
-    ("g62_int", "62_stress_energy_accounting__candidate_integral_accounting", "g62_int"),
-    ("g62_sign", "62_stress_energy_accounting__candidate_energy_sign_sieve", "g62_sign"),
-    ("g62_amp", "62_stress_energy_accounting__candidate_amplitude_origin_sieve", "g62_amp"),
-    ("g62_class", "62_stress_energy_accounting__candidate_stress_route_classifier", "g62_class"),
-    ("g62_reconcile", "62_stress_energy_accounting__candidate_stress_batch_reconcile", "g62_reconcile"),
+    ("g61_summary", "061_source_safety_audit__candidate_group_61_status_summary", "g61_summary"),
+    ("g62_problem", "062_stress_energy_accounting__candidate_stress_problem", "g62_problem"),
+    ("g62_inv", "062_stress_energy_accounting__candidate_closure_inventory", "g62_inv"),
+    ("g62_closure", "062_stress_energy_accounting__candidate_trace_mass_closure_sieve", "g62_closure"),
+    ("g62_P", "062_stress_energy_accounting__candidate_pressure_sum_obstruction", "g62_P"),
+    ("g62_int", "062_stress_energy_accounting__candidate_integral_accounting", "g62_int"),
+    ("g62_sign", "062_stress_energy_accounting__candidate_energy_sign_sieve", "g62_sign"),
+    ("g62_amp", "062_stress_energy_accounting__candidate_amplitude_origin_sieve", "g62_amp"),
+    ("g62_class", "062_stress_energy_accounting__candidate_stress_route_classifier", "g62_class"),
+    ("g62_reconcile", "062_stress_energy_accounting__candidate_stress_batch_reconcile", "g62_reconcile"),
 ]
 
 

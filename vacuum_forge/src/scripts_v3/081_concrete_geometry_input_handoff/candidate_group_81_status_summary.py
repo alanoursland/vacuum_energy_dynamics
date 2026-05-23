@@ -79,14 +79,14 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g80_summary", "80_axiom_adoption_decision_surface__candidate_group_80_status_summary", "g80_summary"),
-    ("g81_problem", "81_concrete_geometry_input_handoff__candidate_concrete_input_handoff_problem", "g81_problem"),
-    ("g81_acceptance", "81_concrete_geometry_input_handoff__candidate_concrete_input_acceptance_criteria", "g81_acceptance"),
-    ("g81_dlayer_gate", "81_concrete_geometry_input_handoff__candidate_D_layer_geometry_input_gate", "g81_dlayer_gate"),
-    ("g81_lift_gate", "81_concrete_geometry_input_handoff__candidate_lift_identity_input_gate", "g81_lift_gate"),
-    ("g81_rho_gate", "81_concrete_geometry_input_handoff__candidate_rho_exactness_input_gate", "g81_rho_gate"),
-    ("g81_parent_active_gate", "81_concrete_geometry_input_handoff__candidate_parent_and_active_O_input_gate", "g81_parent_active_gate"),
-    ("g81_next_selector", "81_concrete_geometry_input_handoff__candidate_next_group_selector_from_input", "g81_next_selector"),
+    ("g80_summary", "080_axiom_adoption_decision_surface__candidate_group_80_status_summary", "g80_summary"),
+    ("g81_problem", "081_concrete_geometry_input_handoff__candidate_concrete_input_handoff_problem", "g81_problem"),
+    ("g81_acceptance", "081_concrete_geometry_input_handoff__candidate_concrete_input_acceptance_criteria", "g81_acceptance"),
+    ("g81_dlayer_gate", "081_concrete_geometry_input_handoff__candidate_D_layer_geometry_input_gate", "g81_dlayer_gate"),
+    ("g81_lift_gate", "081_concrete_geometry_input_handoff__candidate_lift_identity_input_gate", "g81_lift_gate"),
+    ("g81_rho_gate", "081_concrete_geometry_input_handoff__candidate_rho_exactness_input_gate", "g81_rho_gate"),
+    ("g81_parent_active_gate", "081_concrete_geometry_input_handoff__candidate_parent_and_active_O_input_gate", "g81_parent_active_gate"),
+    ("g81_next_selector", "081_concrete_geometry_input_handoff__candidate_next_group_selector_from_input", "g81_next_selector"),
 ]
 MARKER_ID = "g81_summary"
 

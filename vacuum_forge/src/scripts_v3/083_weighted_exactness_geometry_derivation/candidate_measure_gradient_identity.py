@@ -79,8 +79,8 @@ def record_obligation(ns, obligation_id: str, statement: str, status: Obligation
     )
 
 DEPENDENCIES = [
-    ("g82_summary", "82_rho_exactness_concrete_test__candidate_group_82_status_summary", "g82_summary"),
-    ("g83_problem", "83_weighted_exactness_geometry_derivation__candidate_weighted_skew_problem", "g83_problem"),
+    ("g82_summary", "082_rho_exactness_concrete_test__candidate_group_82_status_summary", "g82_summary"),
+    ("g83_problem", "083_weighted_exactness_geometry_derivation__candidate_weighted_skew_problem", "g83_problem"),
 ]
 MARKER_ID = "g83_measure_gradient"
 

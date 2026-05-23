@@ -70,7 +70,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="vector_sector_inventory_marker",
-        upstream_script_id="05_nonspherical_sectors__candidate_vector_sector_frame_dragging",
+        upstream_script_id="005_nonspherical_sectors__candidate_vector_sector_frame_dragging",
         upstream_derivation_id="vector_sector_inventory_marker",
     )
     return archive, ns, invalidated

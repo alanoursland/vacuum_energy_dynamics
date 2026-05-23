@@ -77,37 +77,37 @@ def prepare_archive():
     dependencies = [
         (
             "residual_problem_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
+            "025_residual_kill_or_no_overlap_theorem__candidate_residual_kill_problem_ledger",
             "residual_kill_problem_ledger_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "classification_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_metric_trace_residual_classification",
+            "025_residual_kill_or_no_overlap_theorem__candidate_metric_trace_residual_classification",
             "metric_trace_residual_classification_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "inertness_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_nonmetric_inertness_conditions",
+            "025_residual_kill_or_no_overlap_theorem__candidate_nonmetric_inertness_conditions",
             "nonmetric_inertness_conditions_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "O_burden_dep_25",
-            "25_residual_kill_or_no_overlap_theorem__candidate_no_overlap_operator_minimum_burden",
+            "025_residual_kill_or_no_overlap_theorem__candidate_no_overlap_operator_minimum_burden",
             "no_overlap_operator_minimum_burden_marker_25",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_recovery_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_recovery_target_anti_smuggling_audit",
+            "024_metric_insertion_recovery_retest__candidate_recovery_target_anti_smuggling_audit",
             "recovery_target_anti_smuggling_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g24_gamma_AB_dep_25",
-            "24_metric_insertion_recovery_retest__candidate_gamma_AB_recovery_diagnostics",
+            "024_metric_insertion_recovery_retest__candidate_gamma_AB_recovery_diagnostics",
             "gamma_AB_recovery_diagnostics_marker_24",
             RecordKind.INVENTORY_MARKER,
         ),

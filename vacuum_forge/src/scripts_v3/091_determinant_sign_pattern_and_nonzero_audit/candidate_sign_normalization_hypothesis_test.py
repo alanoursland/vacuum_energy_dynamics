@@ -115,7 +115,7 @@ def expected_pivot_sign(N: int):
     return sp.Integer(-1)
 
 DEPENDENCIES = [
-    ("g91_sign_sequence", "91_determinant_sign_pattern_and_nonzero_audit__candidate_determinant_sign_sequence_N1_to_N30", "g91_sign_sequence"),
+    ("g91_sign_sequence", "091_determinant_sign_pattern_and_nonzero_audit__candidate_determinant_sign_sequence_N1_to_N30", "g91_sign_sequence"),
 ]
 MARKER_ID = "g91_sign_normalization"
 

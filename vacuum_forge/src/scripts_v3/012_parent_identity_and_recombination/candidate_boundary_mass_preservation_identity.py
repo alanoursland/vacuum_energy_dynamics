@@ -79,7 +79,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="kappa_covariant_relaxation_requirement_marker",
-        upstream_script_id="12_parent_identity_and_recombination__candidate_kappa_covariant_relaxation_requirement",
+        upstream_script_id="012_parent_identity_and_recombination__candidate_kappa_covariant_relaxation_requirement",
         upstream_derivation_id="kappa_covariant_relaxation_requirement_marker",
     )
     return archive, ns, invalidated

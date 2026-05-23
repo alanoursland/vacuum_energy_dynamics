@@ -114,7 +114,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="curvature_boundary_and_mass_neutrality_marker",
-        upstream_script_id="17_curvature_energy_and_finite_admissibility__candidate_curvature_boundary_and_mass_neutrality",
+        upstream_script_id="017_curvature_energy_and_finite_admissibility__candidate_curvature_boundary_and_mass_neutrality",
         upstream_derivation_id="curvature_boundary_and_mass_neutrality_marker",
     )
     return archive, ns, invalidated

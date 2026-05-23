@@ -107,7 +107,7 @@ def prepare_archive():
     invalidated = ns.check_source_invalidation(__file__)
     ns.declare_dependency(
         dependency_id="mechanics_areal_flux_metric",
-        upstream_script_id="02_mechanics__candidate_areal_flux_principle",
+        upstream_script_id="002_mechanics__candidate_areal_flux_principle",
         upstream_derivation_id="areal_flux_exact_metric_check",
     )
     return archive, ns, invalidated
