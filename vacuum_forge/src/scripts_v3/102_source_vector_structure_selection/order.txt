@@ -1,0 +1,6 @@
+candidate_source_structure_problem.py
+candidate_monomial_source_signature_scan.py
+candidate_endpoint_weight_source_signature_scan.py
+candidate_mixed_source_signature_scan.py
+candidate_source_structure_classifier.py
+candidate_group_102_status_summary.py
