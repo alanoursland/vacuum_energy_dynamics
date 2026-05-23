@@ -96,7 +96,7 @@ def hierarchy_matrix(N: int):
     return A
 
 DEPENDENCIES = [
-    ("g98_summary", "098_hierarchy_burden_ledger_role_audit__candidate_group_98_status_summary", "g98_summary"),
+    ("g98_summary", "098_hierarchy_burden_ledger_role_audit__candidate_group_098_status_summary", "g98_summary"),
 ]
 MARKER_ID = "g099_problem"
 

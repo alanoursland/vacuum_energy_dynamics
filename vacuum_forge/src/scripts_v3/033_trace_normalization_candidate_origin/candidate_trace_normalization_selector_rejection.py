@@ -95,7 +95,7 @@ def prepare_archive():
         (
             "g33_volume_trace",
             "033_trace_normalization_candidate_origin__candidate_trace_normalization_volume_trace_ledger",
-            "g33_volume_trace_ledger",
+            "g33_trace_normalization_volume_trace_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (
@@ -113,7 +113,7 @@ def prepare_archive():
         (
             "g32_minimality",
             "032_explicit_minimal_postulate_selection__candidate_postulate_package_minimality",
-            "g32_package_minimality",
+            "g32_postulate_package_minimality",
             RecordKind.INVENTORY_MARKER,
         ),
         (

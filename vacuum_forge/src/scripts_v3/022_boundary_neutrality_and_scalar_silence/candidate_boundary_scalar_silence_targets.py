@@ -107,7 +107,7 @@ def prepare_archive():
         ),
         (
             "A_sector_mass_definition_dependency_22",
-            "021_source_routing_and_mass_neutrality__candidate_A_sector_mass_charge_definition",
+            "021_source_routing_and_mass_neutrality__candidate_a_sector_mass_charge_definition",
             "A_sector_mass_definition_21",
             RecordKind.DERIVATION,
         ),

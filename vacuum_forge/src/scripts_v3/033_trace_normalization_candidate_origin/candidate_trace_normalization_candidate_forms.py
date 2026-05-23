@@ -108,7 +108,7 @@ def prepare_archive():
         (
             "g33_volume_trace",
             "033_trace_normalization_candidate_origin__candidate_trace_normalization_volume_trace_ledger",
-            "g33_volume_trace_ledger",
+            "g33_trace_normalization_volume_trace_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (

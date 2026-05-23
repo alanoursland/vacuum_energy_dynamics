@@ -31,7 +31,7 @@ MARKER_ID = "g38_bs_usage"
 DEPENDENCIES = [
     ("g38_recon", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation", "g38_recon"),
     ("g38_bs_fork", "038_trace_anchor_explicit_declaration_record__candidate_Bs_convention_declaration_fork", "g38_bs_fork"),
-    ("g38_norm", "038_trace_anchor_explicit_declaration_record__candidate_trace_normalization_declaration_attempt", "g38_norm"),
+    ("g38_norm_decl", "038_trace_anchor_explicit_declaration_record__candidate_trace_normalization_declaration_attempt", "g38_norm_decl"),
     ("g37_joint", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_joint_declaration_package_sieve", "g37_joint_packages"),
 ]
 

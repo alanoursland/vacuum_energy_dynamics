@@ -27,8 +27,8 @@ DEPENDENCIES = [
     ("g38_bs_split", "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration", "g38_bs_split_decl"),
     ("g38_bs_usage", "038_trace_anchor_explicit_declaration_record__candidate_Bs_actual_notation_usage_collector", "g38_bs_usage"),
     ("g38_recon", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation", "g38_recon"),
-    ("g37_summary", "037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary", "g37_status_summary"),
-    ("g36_summary", "036_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_status_summary"),
+    ("g37_status_summary", "037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary", "g37_status_summary"),
+    ("g36_status_summary", "036_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_status_summary"),
 ]
 
 

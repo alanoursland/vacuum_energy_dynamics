@@ -131,7 +131,7 @@ def main():
     record_obligation(ns, "g98_class_o1", "Choose between numerator factorization and hierarchy source-origin audit next.")
     ns.write_run_metadata()
     print("\nPossible next script:")
-    print("  candidate_group_98_status_summary.py")
+    print("  candidate_group_098_status_summary.py")
 
 if __name__ == "__main__":
     main()

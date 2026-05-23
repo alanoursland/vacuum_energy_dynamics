@@ -131,7 +131,7 @@ def prepare_archive():
         (
             "g35_problem",
             "035_trace_anchor_joint_declaration_inventory__candidate_trace_anchor_joint_declaration_problem",
-            "g35_joint_declaration_problem",
+            "g35_trace_anchor_joint_declaration_problem",
             RecordKind.INVENTORY_MARKER,
         ),
         (

@@ -262,7 +262,7 @@ def case_covariant_lift(out: ScriptOutput):
 
     D_reduced, D_cov, L_error = sp.symbols("D_reduced D_cov L_error")
     lift_relation = sp.Eq(D_cov, D_reduced + L_error)
-    lift_required = sp.solve(sp.Eq(D_cov, D_reduced), L_error)[0]
+    lift_required = sp.solve(lift_relation, L_error)[0]
 
     print(f"lift relation: {lift_relation}")
     print(f"exact lift condition: L_error = {lift_required}")

@@ -130,9 +130,9 @@ SCRIPT_LABEL = 'Candidate Branch Readiness Batch Reconciliation'
 MARKER_ID = 'g39_recon'
 DEPENDENCIES = [
     ('g38_summary', '038_trace_anchor_explicit_declaration_record__candidate_group_38_status_summary', 'g38_summary'),
-    ('g38_bs_split', '038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration', 'g38_bs_split'),
-    ('g38_bs_choice', '038_trace_anchor_explicit_declaration_record__candidate_Bs_explicit_branch_choice_sieve', 'g38_bs_choice'),
-    ('g37_summary', '037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary', 'g37_summary'),
+    ('g38_bs_split', '038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration', 'g38_bs_split_decl'),
+    ('g38_bs_choice', '038_trace_anchor_explicit_declaration_record__candidate_Bs_explicit_branch_choice_sieve', 'g38_bs_branch_choice'),
+    ('g37_status_summary', '037_trace_anchor_declaration_option_sieve__candidate_group_37_status_summary', 'g37_status_summary'),
     ('g39_problem', '039_trace_anchor_branch_choice_readiness_audit__candidate_branch_choice_readiness_problem', 'g39_problem'),
     ('g39_route_matrix', '039_trace_anchor_branch_choice_readiness_audit__candidate_route_branch_requirement_matrix', 'g39_route_matrix'),
     ('g39_split_safe', '039_trace_anchor_branch_choice_readiness_audit__candidate_split_notation_safe_continuation_sieve', 'g39_split_safe'),

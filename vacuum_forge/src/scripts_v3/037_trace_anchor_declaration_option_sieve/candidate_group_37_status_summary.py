@@ -124,13 +124,13 @@ def prepare_archive():
     ns = archive.script_namespace(SCRIPT_ID)
     invalidated = ns.check_source_invalidation(__file__)
     dependencies = [
-        ("g37_recon", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_option_batch_reconciliation", "g37_batch_recon", RecordKind.INVENTORY_MARKER),
+        ("g37_batch_recon", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_option_batch_reconciliation", "g37_batch_recon", RecordKind.INVENTORY_MARKER),
         ("g37_fail", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_option_failure_controls", "g37_fail_controls", RecordKind.INVENTORY_MARKER),
         ("g37_joint", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_joint_declaration_package_sieve", "g37_joint_packages", RecordKind.INVENTORY_MARKER),
         ("g37_mem", "037_trace_anchor_declaration_option_sieve__candidate_safe_membership_declaration_option_sieve", "g37_membership_options", RecordKind.INVENTORY_MARKER),
         ("g37_norm", "037_trace_anchor_declaration_option_sieve__candidate_trace_norm_declaration_option_sieve", "g37_norm_options", RecordKind.INVENTORY_MARKER),
         ("g37_problem", "037_trace_anchor_declaration_option_sieve__candidate_trace_anchor_declaration_option_problem", "g37_option_problem", RecordKind.INVENTORY_MARKER),
-        ("g36_summary", "036_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_status_summary", RecordKind.INVENTORY_MARKER),
+        ("g36_status_summary", "036_conditional_trace_anchor_precondition_inventory__candidate_group_36_status_summary", "g36_status_summary", RecordKind.INVENTORY_MARKER),
         ("g36_pc_obl", "036_conditional_trace_anchor_precondition_inventory__candidate_trace_anchor_precondition_obligations", "g36_pc_obligations", RecordKind.INVENTORY_MARKER),
     ]
     for dependency_id, upstream_script_id, upstream_derivation_id, record_kind in dependencies:
@@ -515,7 +515,7 @@ def record_obligations(ns) -> None:
 def record_governance(ns) -> None:
     ns.record_route(
         RouteRecord(
-            route_id="g37_summary",
+            route_id="g37_status_summary",
             script_id=SCRIPT_ID,
             name="Group 37 Trace Anchor Declaration Option Sieve Summary",
             status=GovernanceStatus.CANDIDATE_ROUTE,

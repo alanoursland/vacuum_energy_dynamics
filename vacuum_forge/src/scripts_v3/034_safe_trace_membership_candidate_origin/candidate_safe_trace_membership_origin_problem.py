@@ -122,13 +122,13 @@ def prepare_archive():
         (
             "g32_candidate_ledger",
             "032_explicit_minimal_postulate_selection__candidate_postulate_candidate_ledger",
-            "g32_postulate_candidate_ledger",
+            "g32_candidate_postulate_ledger",
             RecordKind.INVENTORY_MARKER,
         ),
         (
             "g31_summary",
             "031_source_divergence_coefficient_law__candidate_group_31_status_summary",
-            "source_divergence_group_status_summary_marker",
+            "g31_status_summary",
             RecordKind.INVENTORY_MARKER,
         ),
     ]

@@ -130,7 +130,7 @@ MARKER_ID = "g38_joint_decl"
 DEPENDENCIES = [
     ("g38_problem", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_record_problem", "g38_problem"),
     ("g38_bs_fork", "038_trace_anchor_explicit_declaration_record__candidate_Bs_convention_declaration_fork", "g38_bs_fork"),
-    ("g38_norm", "038_trace_anchor_explicit_declaration_record__candidate_trace_normalization_declaration_attempt", "g38_norm_decl"),
+    ("g38_norm_decl", "038_trace_anchor_explicit_declaration_record__candidate_trace_normalization_declaration_attempt", "g38_norm_decl"),
     ("g38_mem", "038_trace_anchor_explicit_declaration_record__candidate_safe_membership_declaration_attempt", "g38_mem_decl"),
 ]
 # This switch lets a user install exactly one named package after editing the file.

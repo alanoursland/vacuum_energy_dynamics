@@ -1,11 +1,12 @@
 """Run scripts_v3 groups and capture their output under a mirrored results tree.
 
 Usage:
-    python run_scripts_v3.py <group-directory-name|all>
+    python run_scripts_v3.py <group-directory-name|all|group+>
 
 Examples:
     python run_scripts_v3.py 01_foundations
     python run_scripts_v3.py all
+    python run_scripts_v3.py 040+  (run from group 040 onwards)
 """
 
 from __future__ import annotations
@@ -22,11 +23,12 @@ SKIP_DIRS = {"results", "__pycache__"}
 
 
 def print_usage() -> None:
-    print("Usage: python run_scripts_v3.py <group-directory-name|all>")
+    print("Usage: python run_scripts_v3.py <group-directory-name|all|group+>")
     print()
     print("Examples:")
     print("  python run_scripts_v3.py 01_foundations")
     print("  python run_scripts_v3.py all")
+    print("  python run_scripts_v3.py 040+           (run from 040 onwards)")
     print()
     print("Available groups:")
     for group_dir in list_group_directories():
@@ -76,6 +78,16 @@ def resolve_requested_groups(arg: str) -> list[Path]:
     all_groups = list_group_directories()
     if arg == "all":
         return all_groups
+
+    # Handle "group+" syntax to run from group onwards
+    if arg.endswith("+"):
+        group_name = arg[:-1]
+        matching = [path for path in all_groups if path.name == group_name]
+        if matching:
+            start_group = matching[0]
+            start_index = all_groups.index(start_group)
+            return all_groups[start_index:]
+        raise ValueError(f"Unknown group '{group_name}'.")
 
     exact = [path for path in all_groups if path.name == arg]
     if exact:

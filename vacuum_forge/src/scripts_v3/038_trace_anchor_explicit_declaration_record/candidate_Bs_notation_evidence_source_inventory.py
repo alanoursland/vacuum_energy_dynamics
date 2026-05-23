@@ -30,7 +30,7 @@ DEPENDENCIES = [
     (
         "g38_bs_audit",
         "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_usage_audit",
-        "g38_bs_notation_audit",
+        "g38_bs_usage",
     ),
     (
         "g38_bs_fork",

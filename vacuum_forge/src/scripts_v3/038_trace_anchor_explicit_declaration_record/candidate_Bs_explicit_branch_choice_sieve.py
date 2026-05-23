@@ -34,7 +34,7 @@ MARKER_ID = "g38_bs_branch_choice"
 
 DEPENDENCIES = [
     ("g38_bs_split", "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_split_declaration", "g38_bs_split_decl"),
-    ("g38_bs_repair", "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_conflict_repair", "g38_bs_repair"),
+    ("g38_bs_repair", "038_trace_anchor_explicit_declaration_record__candidate_Bs_notation_conflict_repair", "g38_bs_conflict_repair"),
     ("g38_bs_usage", "038_trace_anchor_explicit_declaration_record__candidate_Bs_actual_notation_usage_collector", "g38_bs_usage"),
     ("g38_recon", "038_trace_anchor_explicit_declaration_record__candidate_trace_anchor_declaration_batch_reconciliation", "g38_recon"),
 ]

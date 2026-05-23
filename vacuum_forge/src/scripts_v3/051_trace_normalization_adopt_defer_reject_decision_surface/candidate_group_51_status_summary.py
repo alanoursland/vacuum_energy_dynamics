@@ -67,7 +67,7 @@ DEPENDENCIES = [
     (
         "g51_reconciliation",
         "051_trace_normalization_adopt_defer_reject_decision_surface__candidate_adopt_defer_reject_decision_batch_reconciliation",
-        "g51_reconciliation",
+        "g51_recon",
     ),
 ]
 

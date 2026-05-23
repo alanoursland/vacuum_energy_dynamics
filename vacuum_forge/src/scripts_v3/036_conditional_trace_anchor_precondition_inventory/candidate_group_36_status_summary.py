@@ -874,7 +874,7 @@ def record_governance(
 ) -> None:
     ns.record_route(
         RouteRecord(
-            route_id="g36_summary",
+            route_id="g36_status_summary",
             script_id=SCRIPT_ID,
             name="Group 36 conditional trace-anchor precondition inventory summary route",
             status=GovernanceStatus.CANDIDATE_ROUTE,
