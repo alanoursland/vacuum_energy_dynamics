@@ -631,6 +631,172 @@ The algebraic form must remain the validated divergence form.
 
 ---
 
+# Variational Energy-Minimization Target
+
+A possible external anchor for the hierarchy is an energy-minimization principle.
+
+In this reading, the profile `f` is not selected merely because it satisfies formal moment conditions. It is selected because it is stationary, or possibly minimizing, relative to nearby admissible profiles:
+
+```text
+f -> f + εη
+```
+
+where `η` ranges over allowed comparison directions satisfying the same regularity and boundary conditions.
+
+A natural candidate energy has the schematic form:
+
+```text
+E[f] = 1/2 <L[f], L[f]>_w - <S, f>_w
+```
+
+with:
+
+```text
+w = a^4
+a = 1 - x^2
+```
+
+and:
+
+```text
+L[f] = a f' - 6xf
+     = a^(-2) d/dx[a^3 f].
+```
+
+The first term measures weighted gradient or flux energy. The second term couples the profile to a source.
+
+The stationarity condition is:
+
+```text
+δE[f;η] = 0
+```
+
+for every admissible variation `η`.
+
+Formally,
+
+```text
+δE[f;η]
+=
+<L[f], L[η]>_w - <S, η>_w.
+```
+
+Using the weighted adjoint of `L`, and assuming the boundary terms vanish on the chosen domain, this becomes:
+
+```text
+δE[f;η]
+=
+<L_w^*L[f] - S, η>_w.
+```
+
+Thus the Euler-Lagrange equation would be:
+
+```text
+L_w^*L[f] = S.
+```
+
+This would give the operator composition `L_w^*L` a natural role as the second-order energy operator associated with the first-order flux operator `L`.
+
+In that setting, the projection hierarchy could be interpreted as a finite-dimensional Galerkin or moment projection of the variational equation. The matrix would no longer be merely a formal projection matrix; it would be a stiffness-like matrix associated with comparing the energy of nearby profiles.
+
+This is a stronger interpretation than the current formal result.
+
+It would mean:
+
+```text
+not merely:
+  f satisfies weighted moment identities
+
+but:
+  f is stationary relative to nearby admissible profiles
+  under a weighted energy built from L[f].
+```
+
+However, this variational reading is not currently derived.
+
+To promote it from a speculative target to a result, one would need an independent derivation of:
+
+* the energy form `1/2 <L[f], L[f]>_w`;
+* the weight `w = a^4`;
+* the source pairing `<S, f>_w`;
+* the allowed variation space;
+* the boundary conditions that make the adjoint calculation clean;
+* the reason this energy selects the observed operator `L`, rather than another member of the family `L_m`.
+
+The zero-source case also needs care.
+
+Since:
+
+```text
+L[f] = a^(-2) d/dx[a^3 f],
+```
+
+the condition:
+
+```text
+L[f] = 0
+```
+
+implies:
+
+```text
+d/dx[a^3 f] = 0
+```
+
+so:
+
+```text
+a^3 f = constant.
+```
+
+Thus:
+
+```text
+f = constant / a^3.
+```
+
+This is singular at `x = 1` unless the constant is zero. Therefore, under regular boundary conditions, the only zero-energy source-free profile is:
+
+```text
+f = 0.
+```
+
+So the variational picture does not by itself produce a nonzero trivial vacuum profile. A nonzero baseline profile would require either a different variable, a shifted energy, a constraint, or a separately specified background state.
+
+The useful role of this variational target is therefore precise:
+
+```text
+It identifies what kind of external principle would close the formal gap.
+```
+
+If a first-principles argument independently produces this energy functional, then the hierarchy gains a natural parent problem:
+
+```text
+energy minimization
+  -> Euler-Lagrange equation L_w^*L[f] = S
+  -> projected moment/Galerkin hierarchy
+  -> observed first-order pullback structure.
+```
+
+Until then, this remains a reopen condition, not an established interpretation.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # The final status table
 
