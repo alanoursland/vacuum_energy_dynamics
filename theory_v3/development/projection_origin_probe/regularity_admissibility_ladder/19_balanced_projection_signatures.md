@@ -1,0 +1,162 @@
+# Synthesis Proof 19: Balanced Projection Signatures
+
+## Purpose
+
+This report analyzes how the `psi_k` projection diagnostics act on the
+regular balanced source classes:
+
+```text
+B_(R,q)(x) = a^R [x^(2q) - c_(R,q)].
+```
+
+These classes satisfy the admissibility/regularity ladder conditions from the
+transformed `u` problem.
+
+## Validated Checks
+
+- balanced source classes satisfy integral aB=0: passed
+- balanced projection moment closed form grid R=0..5 Q,K=1..6: passed
+- balanced projection signatures full rank for R=0..5 N=2..7: passed
+- balanced signature matrices are full, not naively triangular: passed
+
+## Balanced Source Classes
+
+The coefficient is chosen by:
+
+```text
+c_(R,q)
+  =
+  integral_0^1 x^(2q)a^(R+1) dx
+  /
+  integral_0^1 a^(R+1) dx.
+```
+
+Therefore:
+
+```text
+integral_0^1 a B_(R,q) dx = 0.
+```
+
+The factor `a^R` gives the endpoint vanishing needed for the `C^R` regularity
+class.
+
+## Projection Signature Closed Form
+
+For:
+
+```text
+P_R[k,q] = integral psi_k B_(R,q) a^4 dx,
+```
+
+the exact moment form is:
+
+```text
+P_R[k,q]
+  =
+  M(2k+2q,R+4) - r_k M(2k+2q-2,R+4)
+  - c_(R,q)[M(2k,R+4) - r_k M(2k-2,R+4)].
+```
+
+where:
+
+```text
+M(n,p) = integral_0^1 x^n a^p dx.
+```
+
+## Rank Result
+
+For tested truncations `R=0..5` and `N=2..7`, the matrix:
+
+```text
+rows: q=1..N
+cols: k=1..N
+entry: P_R[k,q]
+```
+
+has full rank.
+
+```text
+R=0, N=2: rank=2
+R=0, N=3: rank=3
+R=0, N=4: rank=4
+R=0, N=5: rank=5
+R=0, N=6: rank=6
+R=0, N=7: rank=7
+R=1, N=2: rank=2
+R=1, N=3: rank=3
+R=1, N=4: rank=4
+R=1, N=5: rank=5
+R=1, N=6: rank=6
+R=1, N=7: rank=7
+R=2, N=2: rank=2
+R=2, N=3: rank=3
+R=2, N=4: rank=4
+R=2, N=5: rank=5
+R=2, N=6: rank=6
+R=2, N=7: rank=7
+R=3, N=2: rank=2
+R=3, N=3: rank=3
+R=3, N=4: rank=4
+R=3, N=5: rank=5
+R=3, N=6: rank=6
+R=3, N=7: rank=7
+R=4, N=2: rank=2
+R=4, N=3: rank=3
+R=4, N=4: rank=4
+R=4, N=5: rank=5
+R=4, N=6: rank=6
+R=4, N=7: rank=7
+R=5, N=2: rank=2
+R=5, N=3: rank=3
+R=5, N=4: rank=4
+R=5, N=5: rank=5
+R=5, N=6: rank=6
+R=5, N=7: rank=7
+```
+
+This means the projection hierarchy still resolves the balanced regular source
+classes after the first admissibility constraint and its higher-regularity
+extensions are imposed.
+
+## Shape
+
+The signature matrices are not naively triangular in the tested `q,k` order:
+
+```text
+R=0: upper entries all zero? False; lower entries all zero? False
+R=1: upper entries all zero? False; lower entries all zero? False
+R=2: upper entries all zero? False; lower entries all zero? False
+R=3: upper entries all zero? False; lower entries all zero? False
+R=4: upper entries all zero? False; lower entries all zero? False
+R=5: upper entries all zero? False; lower entries all zero? False
+```
+
+So the relationship is not a simple mode-by-mode decoupling. The current best
+description is:
+
+```text
+psi_k projections are full-rank diagnostics on the admissible balanced source
+classes, not the same constraints as the admissibility ladder itself.
+```
+
+## Sample Signature Matrices
+
+```text
+R=0, N=5 signature matrix rows q=1..5 cols k=1..5:
+Matrix([[1024/102375, 1024/1576575, -1024/34459425, -7168/114317775, -1024/24249225], [38912/7882875, 108544/187612425, 305152/4583103525, -2048/266741475, -108544/7250518275], [72704/26801775, 31744/79214135, 1024/14101857, 1024/105172353, -1024/345262775], [4096/2462229, 20480/74687613, 1994752/33129291195, 2707456/202456779525, 1134592/717801309225], [17408/15690675, 21545984/111657981435, 33762304/717801309225, 100484096/7895814401475, 118469632/38658727653975]])
+
+R=1, N=5 signature matrix rows q=1..5 cols k=1..5:
+Matrix([[2048/315315, 2048/12507495, -2048/20369349, -2048/32008977, -2048/61519549], [217088/80405325, 446464/2138781645, -4096/549972423, -4096/200783583, -2134016/152260883775], [4253696/3360942585, 2048/14567553, 96256/8184883707, -3033088/607370338575, -27437056/5024609164575], [598016/891678645, 17850368/200984366583, 82878464/6460211783025, -24576/292437570425, -3055616/1546349106159], [3745792/9570684123, 95401984/1674869721525, 2048/197107911, 59672576/45795723528555, -942217216/1677788780182515]])
+
+R=2, N=5 signature matrix rows q=1..5 cols k=1..5:
+Matrix([[155648/34459425, -8192/305540235, -8192/78567489, -335872/6625858239, -499712/21751554825], [3915776/2400673275, 16384/224062839, -16384/736206471, -10534912/607370338575, -6864896/717801309225], [598016/891678645, 3596288/66994788861, -253952/113337048825, -647168/114432092775, -349315072/90203697859275], [27099136/86136157107, 164528128/5024609164575, 12222464/6460211783025, -1191870464/686935852928325, -10256384/6428309502615], [39231488/239267103075, 336683008/17083671159555, 1439522816/636976881806265, -653729792/1608956419969899, -3761561600/5704481852620551]])
+
+R=3, N=5 signature matrix rows q=1..5 cols k=1..5:
+Matrix([[376832/114317775, -16384/160044885, -606208/6625858239, -1097728/28922397075, -1589248/102543044175], [2195456/2080583505, 6324224/334973944305, -47808512/2153403927675, -14385152/1127973485925, -238649344/38658727653975], [606208/1563837275, 1654784/79755701025, -1163264/239267103075, -9322496/2180748739455, -194756608/79894703818215], [95092736/581077250325, 8323072/642243276675, -304021504/454983487004475, -25422266368/17238818785391775, -20418985984/20373149473644825], [673562624/8716158754875, 50634047488/6723644863510575, 14492942336/53597054769127155, -33229717504/65507511384488745, -1158503579648/2709628879994761725]])
+
+R=4, N=5 signature matrix rows q=1..5 cols k=1..5:
+Matrix([[262144/105079975, -262144/2030145117, -262144/3434456025, -262144/9322094925, -12320768/1171476595575], [78118912/108757774125, -524288/152260883775, -524288/27966284775, -134742016/14868741405375, -2164785152/544736616942375], [88342528/369776432025, 8126464/1109329296075, -190578688/41362135182225, -4657512448/1567165344126525, -253493248/168373136145825], [1383071744/15055183303875, 642777088/122248088427465, -26582450176/24362297622330525, -30690770944/29776141538403975, -147929956352/246329898181341975], [17346854912/436600315812375, 57951911936/18948453706257075, -926154752/4872459524466105, -2681470976/7187344509269925, -2294640541696/9114206232709653075]])
+
+R=5, N=5 signature matrix rows q=1..5 cols k=1..5:
+Matrix([[16252928/8365982625, -524288/3904125225, -524288/8365982625, -71827456/3431248016625, -101187584/13967605562625], [1048576/2061184125, -1048576/85333022775, -1674575872/111359594721375, -3870294016/602755901587125, -615514112/237449294564625], [1254621184/8106637163625, 182976512/109709822947725, -5469896704/1457573362019775, -4645715968/2290472426031075, -131596288/140358916342645], [12861833216/235092477745125, 2342518784/1133668170459825, -476053504/485857787339925, -33028046848/48099920946652575, -480247808/1335414832631451], [5898764288/269920992966625, 99995877376/78223103761727925, -25182076928/100572561979364475, -1122970894336/4548114747289037925, -71364509696/488640427394690025]])
+```

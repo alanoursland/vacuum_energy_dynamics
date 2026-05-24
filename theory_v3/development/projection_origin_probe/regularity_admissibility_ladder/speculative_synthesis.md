@@ -489,16 +489,36 @@ Requiring a strict adjacent ordered ladder forces
 m = beta / 2.
 ```
 
-Equivalently:
+This is the primitive/flux balance condition:
 
 ```text
 primitive power = weight power / 2.
 ```
 
-For `beta = 4`, this gives `m = 2`. The half-weight relation is a compact
-mathematical summary of the ladder clue. It becomes a derivation only if an
-external principle first explains both the weight `a^4` and the ordered ladder
-requirement.
+For the entire four-term chain to be consecutive,
+
+```text
+primitive -> flux -> weight -> boundary,
+```
+
+the second adjacency condition also requires
+
+```text
+m = 2.
+```
+
+Together these give
+
+```text
+beta = 4
+m = 2.
+```
+
+So the half-weight relation is a compact mathematical summary of the balance
+clue, while the fully adjacent four-term ladder is more restrictive: it
+selects the observed `beta = 4`, `m = 2` case. This becomes a derivation only
+if an external principle first explains why the ordered ladder should be
+required.
 
 ## 7. The Cleanest Reopen Condition: A Variational Object
 
@@ -550,9 +570,461 @@ the quadratic part becomes
   = 1/2 integral_0^1 (u')^2 dx.
 ```
 
-So the proposed variational target is, after a change of variable, ordinary
-Dirichlet energy plus a transformed source coupling. That is mathematically
-clean. It is not yet physically derived.
+The source coupling also simplifies:
+
+```text
+<S, f>_w
+  = integral_0^1 S f a^4 dx
+  = integral_0^1 S u a dx.
+```
+
+So the proposed variational target becomes
+
+```text
+E[u] = 1/2 integral_0^1 (u')^2 dx
+       - integral_0^1 a S u dx.
+```
+
+The interior Euler-Lagrange equation in the transformed variable is therefore
+
+```text
+-u'' = aS.
+```
+
+Equivalently,
+
+```text
+L_w^*L[f] = S
+```
+
+becomes
+
+```text
+-u'' = aS
+```
+
+after multiplying by `a`. This is a strong algebraic simplification: the
+candidate weighted variational problem is a disguised one-dimensional
+Dirichlet/Poisson problem in `u`. It is still not a physical derivation of the
+energy functional.
+
+With the simple boundary test
+
+```text
+u'(0) = 0
+u(1) = 0,
+```
+
+the Green kernel for
+
+```text
+-u'' = F
+```
+
+is
+
+```text
+G(x,y) = 1 - max(x,y).
+```
+
+Thus
+
+```text
+u(x) = integral_0^1 G(x,y)F(y)dy.
+```
+
+For the transformed source equation, `F = aS`. This makes the variational
+target explicitly solvable once a domain is chosen.
+
+However, regularity of
+
+```text
+f = u/a^3
+```
+
+at `x = 1` is much stronger than the minimal condition `u(1)=0`. It requires
+high-order vanishing of `u` at the boundary. In the simple Green problem above,
+
+```text
+u'(1) = - integral_0^1 F(y)dy.
+```
+
+For positive source-family probes
+
+```text
+S_(p,q) = x^(2q)a^p,
+F = aS_(p,q) = x^(2q)a^(p+1),
+```
+
+this integral is positive, so `u'(1)` is nonzero and negative. Therefore the
+associated `f = u/a^3` is singular at `x=1` for these positive probes unless
+additional cancellations, stronger boundary conditions, or a different domain
+are supplied.
+
+This turns regularity into a concrete admissibility direction:
+
+```text
+regular f requires moment/endpoint cancellations in F = aS.
+```
+
+For the Green problem with `u'(0)=0`, `u(1)=0`, the endpoint derivative
+identities are:
+
+```text
+u'(1) = - integral_0^1 F dx
+u''(1) = -F(1)
+u'''(1) = -F'(1)
+u''''(1) = -F''(1).
+```
+
+Since
+
+```text
+a = (1-x)(1+x),
+```
+
+boundedness of
+
+```text
+f = u/a^3
+```
+
+requires `u` to vanish to order at least 3 at `x=1`. With `u(1)=0` already
+imposed, the first boundedness conditions are:
+
+```text
+u'(1)=0
+u''(1)=0.
+```
+
+Using the endpoint identities, this becomes:
+
+```text
+integral_0^1 F dx = 0
+F(1) = 0.
+```
+
+For the original source variable `F=aS`, this is:
+
+```text
+integral_0^1 aS dx = 0
+(aS)(1) = 0.
+```
+
+The endpoint condition is automatic for regular `S`, because `a(1)=0`. The
+global cancellation condition is not automatic:
+
+```text
+integral_0^1 aS dx = 0.
+```
+
+This is the first concrete admissibility condition produced by the transformed
+energy problem. Positive source-family probes fail it; signed sources can
+satisfy it.
+
+A natural balanced source basis for this first condition is:
+
+```text
+B_q(x) = x^(2q) - c_q
+```
+
+where `c_q` is chosen so that
+
+```text
+integral_0^1 aB_q dx = 0.
+```
+
+The coefficient is:
+
+```text
+c_q = 3 / ((2q + 1)(2q + 3)).
+```
+
+Thus
+
+```text
+B_q(x) = x^(2q) - 3 / ((2q + 1)(2q + 3)).
+```
+
+The first member is:
+
+```text
+B_1(x) = x^2 - 1/5,
+```
+
+which is exactly the signed example that makes
+
+```text
+F = aB_1
+```
+
+pass the boundedness condition. The tested balanced-source projection
+signatures retain full rank, so imposing the first admissibility condition does
+not collapse the projection hierarchy; it replaces positive monomial probes by
+signed balanced probes.
+
+The boundedness condition is the first member of a regularity ladder. For the
+Green-domain problem,
+
+```text
+u'(1) = - integral_0^1 F dx
+u^(n)(1) = -F^(n-2)(1),  n >= 2.
+```
+
+Since `F=aS`, regularity of `f=u/a^3` translates into:
+
+```text
+C^0 f:
+  integral_0^1 aS dx = 0
+
+C^1 f:
+  integral_0^1 aS dx = 0
+  S(1) = 0
+
+C^2 f:
+  integral_0^1 aS dx = 0
+  S(1) = 0
+  S'(1) = 0
+
+C^R f:
+  integral_0^1 aS dx = 0
+  S vanishes to order R at x=1.
+```
+
+An explicit source basis for the `C^R` class is:
+
+```text
+B_(R,q)(x) = a^R [x^(2q) - c_(R,q)]
+```
+
+with:
+
+```text
+c_(R,q)
+  =
+  integral_0^1 x^(2q)a^(R+1) dx
+  /
+  integral_0^1 a^(R+1) dx.
+```
+
+This gives a concrete hierarchy of admissible signed source classes.
+
+A finite row-space comparison gives an important guardrail. On even polynomial
+source truncations, the projection rows
+
+```text
+P_k[S] = integral_0^1 psi_k S a^4 dx
+```
+
+are full-rank moment diagnostics. The low-order admissibility rows
+
+```text
+integral aS,
+S(1),
+S'(1),
+...
+```
+
+have smaller rank until enough endpoint derivatives are included to span the
+whole dual space. Therefore the `psi_k` hierarchy is not simply identical to
+the low-order regularity ladder. It is adjacent to the admissibility problem,
+and it resolves the balanced source spaces, but the row spaces do not match at
+low regularity order.
+
+This blocks the strongest possible bridge claim:
+
+```text
+psi_k hierarchy = regularity ladder
+```
+
+The better current statement is:
+
+```text
+psi_k hierarchy:
+  full-rank moment diagnostics compatible with the admissible source classes
+
+regularity ladder:
+  boundary/domain constraints generated by the transformed energy problem
+```
+
+On the explicit balanced regular source classes
+
+```text
+B_(R,q)(x) = a^R [x^(2q) - c_(R,q)],
+```
+
+the projection signatures
+
+```text
+P_R[k,q] = integral_0^1 psi_k B_(R,q) a^4 dx
+```
+
+have full tested rank for `R=0..5` and truncations through `N=7`. Thus the
+projection hierarchy continues to resolve the admissible source classes after
+the regularity constraints are imposed. The signature matrices are not
+diagonal or triangular in the naive `q,k` ordering, so the relationship is a
+full-rank diagnostic relation rather than simple mode-by-mode decoupling.
+
+The balanced signature matrices factor as:
+
+```text
+P_R = M_R T_R,
+```
+
+where
+
+```text
+M_R[k,j] = integral_0^1 psi_k x^(2j) a^(R+4) dx
+```
+
+is the raw monomial projection matrix under the shifted weight, and `T_R` is
+the balancing transform
+
+```text
+x^(2q) -> x^(2q) - c_(R,q).
+```
+
+So the admissible-source signatures are not a new projection mechanism. They
+are the original projection mechanism composed with the regularity balancing
+map.
+
+Exact determinant checks show nonzero determinants for the original projection
+truncations through `N=8` and balanced signature truncations for `R=0..5`
+through `N=7`. This is still evidence rather than a closed determinant
+formula, but it supports the full-rank diagnostic interpretation.
+
+Finally, exact finite `psi_k`-adapted balanced bases can be constructed by
+inverting the balanced signature matrix. In finite truncation, there are
+balanced source combinations `D_l` satisfying:
+
+```text
+integral_0^1 psi_k D_l a^4 dx = delta_(k,l).
+```
+
+Thus the `psi_k` projections can serve as coordinates on finite balanced
+admissible source spaces.
+
+The natural variable for the projection algebra is also
+
+```text
+y = x^2.
+```
+
+In this variable:
+
+```text
+psi_k(y) = y^k - ((2k-1)/(2k+3))y^(k-1)
+         = y^(k-1)(y-r_k),
+```
+
+and
+
+```text
+B_(R,q)(y) = (1-y)^R(y^q-c_(R,q)).
+```
+
+The pairing becomes a Jacobi-type polynomial pairing:
+
+```text
+1/2 integral_0^1
+  psi_k(y)(y^q-c_(R,q))(1-y)^(R+4)y^(-1/2) dy.
+```
+
+The balancing coefficient has beta/Pochhammer form:
+
+```text
+c_(R,q)
+  =
+  B(q+1/2,R+2) / B(1/2,R+2)
+  =
+  (1/2)_q / (R+5/2)_q.
+```
+
+In `y` coordinates, `psi_1,...,psi_N` span an `N`-dimensional subspace of the
+`N+1` dimensional polynomial space of degree `<=N`; there is exactly one
+coefficient-space complement direction at each finite `N`. This supports the
+current route toward a general determinant proof through polynomial filtration
+and a codimension-one balancing constraint.
+
+That missing coefficient direction has a closed form:
+
+```text
+m_j = 3 / ((2j+1)(2j+3)).
+```
+
+It is not incidental. The first admissibility functional on even polynomial
+sources has coefficients:
+
+```text
+integral_0^1 a x^(2j) dx
+  = 2 / ((2j+1)(2j+3))
+  = (2/3)m_j.
+```
+
+Therefore, on finite even-polynomial coefficient spaces,
+
+```text
+span{psi_1,...,psi_N}
+  =
+ker[S -> integral_0^1 aS dx].
+```
+
+This is the strongest bridge found so far. The row functions themselves encode
+the first admissibility condition at the level of polynomial coefficient
+space.
+
+For higher regularity classes, the kernel changes because the relevant moment
+is weighted by `a^(R+1)`. The adapted basis is therefore:
+
+```text
+B_(R,q) = a^R[y^q - c_(R,q)],
+```
+
+rather than the unshifted `psi_k` family. Thus the exact `psi_k` kernel bridge
+is strongest at `R=0`; higher regularity is handled by the rebalanced
+`B_(R,q)` source classes.
+
+There is also a generalized row family adapted to the `R`-weighted
+admissibility kernel:
+
+```text
+chi_(R,k)(y)
+  =
+  y^k - ((2k-1)/(2k+2R+3))y^(k-1).
+```
+
+The original rows are:
+
+```text
+psi_k = chi_(0,k).
+```
+
+This connects directly to the primitive-power family. The primitive-power
+ratio is:
+
+```text
+(2k-1)/(2k+2m-1).
+```
+
+The regularity-row ratio matches it when:
+
+```text
+m = R + 2.
+```
+
+Therefore the observed case
+
+```text
+m = 2
+```
+
+is the `R=0` member of the regularity ladder: the row family adapted to
+boundedness of `f = u/a^3`. Higher regularity levels would naturally shift to
+`m=3,4,...`.
+
+Exact determinant pattern probes remain nonzero over the tested grids and
+provide ratio/factor data, but no closed determinant product formula has been
+proved yet.
 
 If such a functional were independently supplied, the hierarchy could be read
 as a finite-dimensional Galerkin or moment projection of the equation
@@ -642,6 +1114,24 @@ L_w^*L:
 
 u = a^3 f:
   turns the quadratic <Lf,Lf>_w term into ordinary Dirichlet energy
+  transforms L_w^*L[f] = S into -u'' = aS
+  exposes regularity of f as high-order boundary cancellation in u
+  yields first admissibility condition integral aS dx = 0
+  suggests balanced source basis B_q=x^(2q)-3/((2q+1)(2q+3))
+  extends to C^R ladder using B_(R,q)=a^R[x^(2q)-c_(R,q)]
+  row-space comparison shows psi_k diagnostics are adjacent, not identical
+  balanced-source signatures remain full-rank under psi_k projections
+  balanced signatures factor as raw projections composed with balancing map
+  finite psi-adapted balanced bases give projection-coordinate systems
+  y=x^2 form exposes Jacobi-type pairing and codimension-one psi span
+  psi span equals first-admissibility kernel on finite coefficient spaces
+  higher regularity requires rebalanced B_(R,q) source classes
+  generalized rows chi_(R,k) connect regularity level R to primitive m=R+2
+  determinant data remains nonzero, closed product formula still open
+
+source-family diagnostic:
+  S_(p,q) probes endpoint order
+  signature controlled by -(2kp + 6k - p - 4q - 3)
 ```
 
 It also establishes the artifact risk:
