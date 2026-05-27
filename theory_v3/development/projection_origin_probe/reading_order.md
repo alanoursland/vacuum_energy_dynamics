@@ -53,6 +53,10 @@ vacuum_action_origin/45_eh_ghy_normalization_status.md
 vacuum_action_origin/51_projection_tensor_boundary_completion_status.md
 vacuum_action_origin/57_remaining_physical_selectors_status.md
 vacuum_interval_directional_probe_origin/6_directional_selector_initial_status.md
+vacuum_interval_directional_probe_origin/12_directional_selector_tensor_gate_status.md
+vacuum_interval_directional_probe_origin/18_metric_origin_gate_status.md
+vacuum_interval_directional_probe_origin/24_hessian_origin_status.md
+vacuum_interval_directional_probe_origin/25_directional_probe_conclusion.md
 ```
 
 This gives the whole state of the work without reading every proof script.
@@ -319,6 +323,10 @@ Use:
 ```text
 vacuum_interval_directional_probe_origin/selector_level_work_plan.md
 vacuum_interval_directional_probe_origin/6_directional_selector_initial_status.md
+vacuum_interval_directional_probe_origin/12_directional_selector_tensor_gate_status.md
+vacuum_interval_directional_probe_origin/18_metric_origin_gate_status.md
+vacuum_interval_directional_probe_origin/24_hessian_origin_status.md
+vacuum_interval_directional_probe_origin/25_directional_probe_conclusion.md
 ```
 
 This folder starts the selector-level work. The first batch proves that local
@@ -326,7 +334,19 @@ directional interval comparisons can recover symmetric tensor data by
 polarization, while scalar trace probes cannot recover shear/traceless data.
 It also separates null-cone information from interval-scale information and
 shows that tangent boundary probes recover induced metric data rather than
-normal/bulk data.
+normal/bulk data. The second status report closes the algebraic tensor-data
+gate: enough local directional probes recover a frame-covariant symmetric
+bilinear form, one non-null calibration fixes scale, tangent/normal probes
+separate boundary and bulk data, and full tensor source coupling is required
+to use shear data. The third status report sharpens the physical origin gate:
+metric interval data requires parallelogram/quadratic behavior, one shared
+local scale, preserved directional comparisons, and no un-routed nonquadratic
+directional channel. The fourth status report gives the conditional origin:
+a stationary local second variation supplies a Hessian, whose directional
+quadratic form is metric-like; first variation and higher-order response must
+be separately routed. The conclusion closes the folder as a conditional
+tensor-boundary-data bridge and identifies `torsion_defect_exclusion` as the
+next selector folder.
 
 ## Optional Deep-Dive Order
 
