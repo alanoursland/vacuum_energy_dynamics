@@ -18,6 +18,7 @@ projection ratio
   -> geometric lift
   -> Einstein-Hilbert gates
   -> vacuum-action origin gates
+  -> selector-level gates
 ```
 
 The chain is conditional. It proves a sequence of formal bridges and gates; it
@@ -48,6 +49,10 @@ geometric_field_lift/97_geometric_lift_final_status.md
 einstein_hilbert_origin_tests/126_status_after_assumption_origin_gates.md
 vacuum_action_origin/33_vacuum_action_origin_conclusion.md
 vacuum_action_origin/39_nonlinear_boundary_interval_action_status.md
+vacuum_action_origin/45_eh_ghy_normalization_status.md
+vacuum_action_origin/51_projection_tensor_boundary_completion_status.md
+vacuum_action_origin/57_remaining_physical_selectors_status.md
+vacuum_interval_directional_probe_origin/6_directional_selector_initial_status.md
 ```
 
 This gives the whole state of the work without reading every proof script.
@@ -282,13 +287,46 @@ Use:
 ```text
 vacuum_action_origin/33_vacuum_action_origin_conclusion.md
 vacuum_action_origin/39_nonlinear_boundary_interval_action_status.md
+vacuum_action_origin/45_eh_ghy_normalization_status.md
+vacuum_action_origin/51_projection_tensor_boundary_completion_status.md
+vacuum_action_origin/57_remaining_physical_selectors_status.md
 ```
 
 This folder records the strongest conditional action-origin chain so far. The
 newer status report continues the folder after the matter-source handoff and
 records the weak boundary normalization, induced interval variable ownership,
 projection boundary rank limitation, auxiliary boundary promotion gate, and
-no-extra-copy boundary normalization rule.
+no-extra-copy boundary normalization rule. The newest status report records the
+EH/GHY normalization match, induced-metric boundary component gate,
+trace/traceless limitation, conformal trace-sector prefactor, and projection
+boundary current role classification. The latest status report answers the
+projection-to-GHY completion question: the scalar projection ladder does not
+produce full tensor boundary data unless a tensor-valued extension is
+independently derived. The final status report in this folder isolates the
+remaining physical selectors: directional tensor boundary data, torsion-source
+absence, the 3+1 dimensional selector, and Lambda branch selection.
+
+### 11. Directional Interval Selector
+
+Then read:
+
+```text
+vacuum_interval_directional_probe_origin/
+```
+
+Use:
+
+```text
+vacuum_interval_directional_probe_origin/selector_level_work_plan.md
+vacuum_interval_directional_probe_origin/6_directional_selector_initial_status.md
+```
+
+This folder starts the selector-level work. The first batch proves that local
+directional interval comparisons can recover symmetric tensor data by
+polarization, while scalar trace probes cannot recover shear/traceless data.
+It also separates null-cone information from interval-scale information and
+shows that tangent boundary probes recover induced metric data rather than
+normal/bulk data.
 
 ## Optional Deep-Dive Order
 
@@ -310,22 +348,25 @@ focused proof folders are the current mathematical record.
 
 The next missing bridge is not another proof of `r_k`.
 
-The current frontier is now the nonlinear boundary-action normalization gate:
+The current frontier is now outside the scalar projection ladder and naturally
+splits into selector-specific follow-up folders:
 
 ```text
-vacuum_action_origin / nonlinear_boundary_interval_action
+vacuum_interval_directional_probe_origin
+torsion_defect_exclusion
+vacuum_dimension_selector
+lambda_relaxation_mechanism
 ```
 
 Expected target:
 
 ```text
-prove, in the same conventions used by the weak A-sector chain, that EH/GHY
-weak boundary variation carries K=c^2/(16*pi*G) against the same induced
-interval variable;
-then prove whether projection/admissibility boundary terms derive part of that
-structure or remain auxiliary diagnostics.
+derive tensor-valued boundary data from vacuum interval/comparison structure;
+derive torsion-source absence or explicit torsion routing;
+derive the 3+1 dimension selector rather than only checking consistency;
+derive zero-Lambda/asymptotically-flat selection or a nonzero-Lambda relaxation branch.
 ```
 
-Until that positive source-origin theorem closes, the projection hierarchy
-remains a structured admissibility/projection object with strong bridges, not a
-standalone field equation.
+Until one of those selector gates closes, the projection hierarchy remains a
+structured admissibility/projection object with strong bridges, not a
+standalone field equation, and the EH/action bridge remains conditional.
