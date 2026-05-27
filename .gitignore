@@ -3,3 +3,4 @@ __pycache__
 admin_utils
 .vacuumforge_archive
 vacuum_forge/src/scripts_v3/results
+*.zip
