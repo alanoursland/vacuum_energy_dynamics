@@ -1,4 +1,4 @@
-# Speculation Quarantine
+﻿# Speculation Quarantine
 
 This file isolates interpretive speculation from the formal packet.
 
@@ -30,7 +30,7 @@ L:
 u=a^3f:
   transforms the candidate energy to 1D Dirichlet form
 
-regularity ladder:
+endpoint-contact ladder:
   gives an internal mathematical role for m=2 as R=0
 
 physical interpretation:
@@ -172,7 +172,7 @@ a^5:
 The later ladder result refines this:
 
 ```text
-m=2 is R=0 in the regularity ladder.
+m=2 is R=0 in the endpoint-contact/admissibility ladder.
 ```
 
 So the physical question becomes:
@@ -300,3 +300,4 @@ projected moments.
 ```
 
 Again: this is speculation, not a result.
+

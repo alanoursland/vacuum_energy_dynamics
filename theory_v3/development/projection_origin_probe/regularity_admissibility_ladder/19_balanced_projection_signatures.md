@@ -9,7 +9,7 @@ regular balanced source classes:
 B_(R,q)(x) = a^R [x^(2q) - c_(R,q)].
 ```
 
-These classes satisfy the admissibility/regularity ladder conditions from the
+These classes satisfy the endpoint-contact/admissibility ladder conditions from the
 transformed `u` problem.
 
 ## Validated Checks
@@ -37,8 +37,8 @@ Therefore:
 integral_0^1 a B_(R,q) dx = 0.
 ```
 
-The factor `a^R` gives the endpoint vanishing needed for the `C^R` regularity
-class.
+The factor `a^R` gives the endpoint vanishing needed for the `R`-fold boundary
+contact class.
 
 ## Projection Signature Closed Form
 
@@ -115,7 +115,7 @@ R=5, N=7: rank=7
 ```
 
 This means the projection hierarchy still resolves the balanced regular source
-classes after the first admissibility constraint and its higher-regularity
+classes after the first admissibility constraint and its higher-contact
 extensions are imposed.
 
 ## Shape

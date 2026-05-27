@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_13_energy_minimization_u_transform.py
 
@@ -270,8 +270,12 @@ problem in `u`.
 It does not prove that this energy is physically derived.
 """
 
-out = Path("13_energy_minimization_u_transform.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("13_energy_minimization_u_transform.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

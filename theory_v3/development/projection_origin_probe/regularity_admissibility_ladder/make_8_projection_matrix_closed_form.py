@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_8_projection_matrix_closed_form.py
 
@@ -157,8 +157,12 @@ Rows are `k=1..6`; columns are `j=0..5`.
 ```
 """
 
-out = Path("8_projection_matrix_closed_form.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("8_projection_matrix_closed_form.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

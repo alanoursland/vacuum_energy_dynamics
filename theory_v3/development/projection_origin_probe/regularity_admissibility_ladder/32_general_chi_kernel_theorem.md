@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This report proves the finite-dimensional kernel theorem for the regularity
+This report proves the finite-dimensional kernel theorem for the endpoint-contact
 ladder row family.
 
 ## Theorem

@@ -1,11 +1,11 @@
-# Synthesis Proof 28: Higher-Regular Kernel Bridge
+# Synthesis Proof 28: Higher-Contact Kernel Bridge
 
 ## Purpose
 
 This report tests how the first-admissibility kernel bridge changes for higher
-regularity classes.
+endpoint-contact classes.
 
-For the `C^R` source class:
+For the `R` endpoint-contact source class:
 
 ```text
 S(y) = (1-y)^R P(y),
@@ -102,7 +102,7 @@ R=5, N=8: rank(a^R psi)= 8, unshifted psi in R-kernel? False, balanced rank=8
 The exact `psi` kernel bridge is strongest at the first admissibility level
 `R=0`.
 
-Higher regularity classes require rebalanced source bases:
+Higher endpoint-contact classes require rebalanced source bases:
 
 ```text
 B_(R,q) = a^R[y^q-c_(R,q)].

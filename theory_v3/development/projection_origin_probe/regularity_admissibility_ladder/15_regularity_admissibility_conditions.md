@@ -1,8 +1,8 @@
-# Synthesis Proof 15: Regularity and Admissibility Conditions
+# Synthesis Proof 15: Boundedness and Admissibility Conditions
 
 ## Purpose
 
-This report turns the regularity issue for:
+This report turns the boundedness issue for:
 
 ```text
 f = u/a^3
@@ -23,6 +23,7 @@ For the energy transform, `F=aS`.
 - Green solution satisfies ODE and base boundary conditions: passed
 - endpoint derivative identities through fourth derivative: passed
 - u/a^3 boundedness threshold is order >=3 at x=1: passed
+- ordinary smoothness is not the endpoint-contact ladder: passed
 - bounded f admissibility conditions derived: passed
 - positive source-family fails moment cancellation but satisfies F(1)=0: passed
 - example signed forcing satisfies bounded-f admissibility: passed
@@ -79,6 +80,34 @@ integral_0^1 aS dx = 0
 
 The second condition is automatic for regular `S` because `a(1)=0`. The first
 condition is a genuine global cancellation condition.
+
+## Ordinary Smoothness Is Not the Ladder
+
+The endpoint-contact ladder must not be read as ordinary `C^R` regularity.
+
+Counterexample:
+
+```text
+f = 1
+u = a^3 = (1-x^2)^3.
+```
+
+Then `f` is smooth, but `u` only vanishes to order `3` at `x=1`. The
+corresponding source is:
+
+```text
+S = -u''/a = 6a - 24x^2,
+```
+
+so:
+
+```text
+S(1) = -24.
+```
+
+Thus ordinary smoothness of `f` does not force `S(1)=0`, nor does it force
+arbitrarily high vanishing of `u`. The later `R` ladder measures boundary
+contact / endpoint suppression, not ordinary differentiability.
 
 ## Model Boundedness Table
 
@@ -180,7 +209,7 @@ lim_(x->1-) f(x) = -1/30
 
 ## Interpretation
 
-The transformed variational problem converts regularity of `f` into explicit
+The transformed variational problem converts boundedness/contact of `f` into explicit
 admissibility conditions on `F=aS`.
 
 The first nontrivial condition is:

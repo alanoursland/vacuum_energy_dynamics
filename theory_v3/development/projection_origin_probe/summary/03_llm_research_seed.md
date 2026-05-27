@@ -1,4 +1,4 @@
-# Compact LLM Research Seed
+﻿# Compact LLM Research Seed
 
 You are continuing a mathematical research thread. Treat this as a distilled formal packet, not as a full proof corpus. Use the source breadcrumbs only to locate the original files if needed.
 
@@ -227,14 +227,14 @@ f=u/a^3
 at `x=1` gives:
 
 ```text
-C^0 f:
+R=0 bounded/non-contact level:
   integral_0^1 aS dx = 0
 
-C^1 f:
+R=1 contact level:
   integral_0^1 aS dx = 0
   S(1)=0
 
-C^R f:
+R contact level:
   integral_0^1 aS dx = 0
   S vanishes to order R at x=1.
 ```
@@ -330,7 +330,7 @@ This is the strongest bridge result.
 
 ### 9. Generalized regularity rows
 
-For regularity level `R`, define:
+For endpoint-contact level `R`, define:
 
 ```text
 C_R[P]=integral_0^1 P(y)(1-y)^(R+1)y^(-1/2)dy.
@@ -372,7 +372,7 @@ Primitive power relates to regularity by:
 m=R+2.
 ```
 
-Thus observed `m=2` corresponds to `R=0`, the boundedness-level regularity problem for `f=u/a^3`.
+Thus observed `m=2` corresponds to `R=0`, the bounded/non-contact admissibility problem for `f=u/a^3`.
 
 ## Guardrails
 
@@ -439,3 +439,4 @@ reason R=0 boundedness is selected
 ```
 
 Without one of these, stop at formal/admissibility status.
+

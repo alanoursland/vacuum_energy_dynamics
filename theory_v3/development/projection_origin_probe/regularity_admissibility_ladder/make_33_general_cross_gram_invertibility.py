@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_33_general_cross_gram_invertibility.py
 
@@ -71,7 +71,7 @@ md = f"""# Regularity Ladder Proof 33: General Cross-Gram Invertibility
 ## Purpose
 
 This report tests the cross-Gram invertibility mechanism for the generalized
-regularity row family.
+endpoint-contact row family.
 
 ## Objects
 
@@ -114,15 +114,19 @@ produce an invertible cross-Gram matrix.
 Together with the kernel theorem, this supports the general picture:
 
 ```text
-regularity level R
+endpoint-contact level R
   -> adapted row family chi_(R,k)
   -> balanced source basis y^q-c_(R,q)
   -> nondegenerate finite coordinate pairing.
 ```
 """
 
-out = Path("33_general_cross_gram_invertibility.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("33_general_cross_gram_invertibility.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

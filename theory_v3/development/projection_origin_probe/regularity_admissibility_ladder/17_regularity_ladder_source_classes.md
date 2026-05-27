@@ -1,8 +1,8 @@
-# Synthesis Proof 17: Regularity Ladder and Source Classes
+# Synthesis Proof 17: Endpoint-Contact Ladder and Source Classes
 
 ## Purpose
 
-This report extends the first admissibility condition into a regularity
+This report extends the first admissibility condition into an endpoint-contact
 ladder for:
 
 ```text
@@ -21,8 +21,9 @@ u(1)=0.
 
 - endpoint derivative identities through n=7: passed
 - F=aS endpoint derivative formulas through m=6: passed
-- regularity ladder conditions assembled: passed
-- balanced C^R source bases verified for R=0..4 q=1..5: passed
+- endpoint-contact ladder conditions assembled: passed
+- ordinary smoothness counterexample distinguishes contact ladder: passed
+- balanced endpoint-contact source bases verified for R=0..4 q=1..5: passed
 
 ## Endpoint Derivative Ladder
 
@@ -57,33 +58,42 @@ m=6: (aS)^(6)(1) = -30*Subs(Derivative(S(x), (x, 4)), x, 1) - 12*Subs(Derivative
 Since `a(1)=0`, the condition `F(1)=0` is automatic for regular `S`. Higher
 endpoint conditions force vanishing derivatives of `S` at `x=1`.
 
-## Regularity Conditions
+## Endpoint-Contact Conditions
 
-For `f=u/a^3` to be `C^R` at `x=1`, `u` must vanish to order at least `R+3`.
-With `u(1)=0` already imposed, the first conditions are:
+This is not ordinary `C^R` regularity.
+
+It is a boundary-contact / endpoint-suppression ladder:
 
 ```text
-C^0 f condition: integral_0^1 aS dx = 0
-C^1 f condition: integral_0^1 aS dx = 0; S(1) = 0
-C^2 f condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0
-C^3 f condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0; S^(2)(1) = 0
-C^4 f condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0; S^(2)(1) = 0; S^(3)(1) = 0
-C^5 f condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0; S^(2)(1) = 0; S^(3)(1) = 0; S^(4)(1) = 0
+S vanishes to order R
+  -> u vanishes to order R+3
+  -> f=u/a^3 has R-fold boundary contact.
 ```
 
-Thus boundedness requires only:
+With `u(1)=0` already imposed, the contact conditions are:
+
+```text
+R=0 contact condition: integral_0^1 aS dx = 0
+R=1 contact condition: integral_0^1 aS dx = 0; S(1) = 0
+R=2 contact condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0
+R=3 contact condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0; S^(2)(1) = 0
+R=4 contact condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0; S^(2)(1) = 0; S^(3)(1) = 0
+R=5 contact condition: integral_0^1 aS dx = 0; S(1) = 0; S^(1)(1) = 0; S^(2)(1) = 0; S^(3)(1) = 0; S^(4)(1) = 0
+```
+
+The base bounded/non-contact level requires only:
 
 ```text
 integral_0^1 aS dx = 0.
 ```
 
-`C^1` regularity additionally requires:
+`R=1` endpoint contact additionally requires:
 
 ```text
 S(1)=0.
 ```
 
-`C^2` regularity additionally requires:
+`R=2` endpoint contact additionally requires:
 
 ```text
 S(1)=0
@@ -94,7 +104,7 @@ and so on.
 
 ## Balanced Source Classes
 
-A source basis satisfying the `C^R` ladder through order `R` is:
+A source basis satisfying the endpoint-contact ladder through order `R` is:
 
 ```text
 B_(R,q)(x) = a^R [x^(2q) - c_(R,q)]
@@ -115,7 +125,8 @@ This ensures:
 integral_0^1 a B_(R,q) dx = 0
 ```
 
-and gives `S` the endpoint vanishing needed for `C^R` regularity.
+and gives `S` the endpoint vanishing needed for `R`-fold boundary contact of
+`f=u/a^3`.
 
 Exact checked basis rows:
 
@@ -152,18 +163,32 @@ R=4, q=5: c=3/4199, B=(x - 1)**4*(x + 1)**4*(4199*x**10 - 3)/4199, order_1(u)=7
 The admissibility condition is not a single accident. It extends into a ladder:
 
 ```text
-C^0 f:
+R=0 bounded/non-contact level:
   integral aS = 0
 
-C^1 f:
+R=1 contact level:
   integral aS = 0 and S(1)=0
 
-C^2 f:
+R=2 contact level:
   integral aS = 0 and S(1)=S'(1)=0
 
-C^R f:
+R contact level:
   integral aS = 0 and S vanishes to order R at x=1.
 ```
 
 The balanced bases `B_(R,q)` provide explicit source classes satisfying these
 conditions.
+
+## Ordinary Smoothness Counterexample
+
+The contact ladder does not describe ordinary differentiability of `f`.
+
+```text
+f = 1
+u = a^3
+S = -u''/a = 6a - 24x^2
+S(1) = -24.
+```
+
+Here `f` is smooth, but `u` only has third-order endpoint contact. Therefore
+ordinary smoothness of `f` does not require the higher `R` contact conditions.

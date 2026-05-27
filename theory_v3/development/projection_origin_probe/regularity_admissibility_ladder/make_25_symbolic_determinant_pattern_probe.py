@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_25_symbolic_determinant_pattern_probe.py
 
@@ -100,8 +100,12 @@ This is the next remaining internal target: replace determinant evidence with
 a general determinant theorem.
 """
 
-out = Path("25_symbolic_determinant_pattern_probe.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("25_symbolic_determinant_pattern_probe.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All determinant checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

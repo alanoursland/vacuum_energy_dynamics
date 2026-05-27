@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_27_first_admissibility_kernel_bridge.py
 
@@ -149,8 +149,9 @@ inside the coefficient space of degree `<=N` even polynomials.
 
 This is stronger than the earlier row-space comparison.
 
-The full projected moment matrix is not identical to the low-order regularity
-ladder under the `a^4` pairing, but the polynomial shape of the `psi_k` rows is
+The full projected moment matrix is not identical to the low-order
+endpoint-contact ladder under the `a^4` pairing, but the polynomial shape of
+the `psi_k` rows is
 exactly adapted to the first admissibility condition:
 
 ```text
@@ -161,8 +162,12 @@ The row functions themselves span the finite coefficient-space kernel of this
 condition.
 """
 
-out = Path("27_first_admissibility_kernel_bridge.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("27_first_admissibility_kernel_bridge.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

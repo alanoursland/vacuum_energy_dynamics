@@ -3,8 +3,8 @@
 ## Purpose
 
 This report records algebraic tests that support the metric perturbation as the
-correct weak-field geometric variable once the scalar boundary-flux bridge is
-lifted to a universal field theory.
+weak-field geometric variable under a local massless spin-2 lift with universal
+conserved-source coupling.
 
 This is not yet a derivation of the metric from the vacuum ontology. It is a
 selection gate.
@@ -66,9 +66,9 @@ partial_a T^ab = 0.
 
 ## Interpretation
 
-The scalar field alone carries the Newtonian potential, but the universal
-conserved-source lift requires the symmetric metric perturbation. This supports
-the route:
+The scalar field alone carries the Newtonian potential. Under the assumption of
+a local massless spin-2 lift with universal conserved-source coupling, the
+symmetric metric perturbation is selected. This supports the route:
 
 ```text
 scalar boundary flux

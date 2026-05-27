@@ -170,6 +170,9 @@ G_ab = -1/2 box bar h_ab.
 This is the controlled replacement for the naive componentwise Laplacian. The
 componentwise scalar bridge is recovered only after gauge and trace-reversal
 bookkeeping are handled.
+
+This imports the standard massless spin-2 weak-field operator. The report does
+not by itself prove that the vacuum ontology uniquely forces this operator.
 """
 
 out = Path(__file__).with_name("83_linearized_einstein_tensor.md")

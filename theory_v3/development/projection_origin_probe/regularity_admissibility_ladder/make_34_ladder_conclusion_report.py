@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_34_ladder_conclusion_report.py
 
@@ -45,9 +45,9 @@ The candidate weighted energy becomes ordinary Dirichlet energy:
 1/2 integral_0^1 (u')^2 dx.
 ```
 
-## Regularity Interpretation
+## Boundary-Contact Interpretation
 
-Regularity of:
+Boundedness and boundary contact of:
 
 ```text
 f = u/a^3
@@ -65,20 +65,25 @@ The first condition is:
 integral_0^1 aS dx = 0.
 ```
 
-The regularity ladder is:
+The endpoint-contact ladder is:
 
 ```text
-C^0 f:
+R=0 bounded/non-contact level:
   integral aS = 0
 
-C^1 f:
+R=1 contact level:
   integral aS = 0
   S(1)=0
 
-C^R f:
+R contact level:
   integral aS = 0
   S vanishes to order R at x=1.
 ```
+
+This is not ordinary `C^R` regularity. A smooth function can have only the base
+contact order in `u=a^3 f`. For example, `f=1` gives `u=a^3` and the source
+`S=-u''/a=6a-24x^2`, so `S(1)=-24`. Thus higher `R` labels endpoint contact /
+source suppression, not ordinary differentiability.
 
 ## Row Families
 
@@ -95,7 +100,7 @@ functional:
 S -> integral_0^1 aS dx.
 ```
 
-For higher regularity level `R`, the adapted row family is:
+For higher endpoint-contact level `R`, the adapted row family is:
 
 ```text
 chi_(R,k)(y)
@@ -125,7 +130,7 @@ the boundedness level for `f = u/a^3`.
 
 ## Balanced Source Classes
 
-The balanced source basis for regularity level `R` is:
+The balanced source basis for endpoint-contact level `R` is:
 
 ```text
 B_(R,q)(y) = (1-y)^R[y^q-c_(R,q)].
@@ -141,8 +146,8 @@ c_(R,q)
   (1/2)_q/(R+5/2)_q.
 ```
 
-These sources satisfy the first admissibility cancellation for the `C^R`
-class.
+These sources satisfy the first admissibility cancellation and the endpoint
+suppression for the `R` contact class.
 
 ## Main Interpretation
 
@@ -157,7 +162,7 @@ by the transformed energy problem.
 ```
 
 Higher primitive powers are not arbitrary replicas. They correspond to higher
-regularity levels:
+boundary-contact/admissibility levels:
 
 ```text
 m = R + 2.
@@ -170,7 +175,7 @@ remaining open questions are external:
 
 ```text
 Why should this energy functional be physically fundamental?
-Why should boundedness of f be the selected regularity target?
+Why should boundedness/contact level zero of f be the selected target?
 Why should the domain be the transformed Green domain used here?
 Why should w=a^4 be the projection weight from first principles?
 ```
@@ -178,18 +183,22 @@ Why should w=a^4 be the projection weight from first principles?
 The strongest internal result is:
 
 ```text
-m=2 is selected by the boundedness-level regularity problem.
+m=2 is selected by the bounded/non-contact admissibility problem.
 ```
 
 The strongest external gap is:
 
 ```text
-the boundedness-level regularity problem itself has not been physically
+the bounded/non-contact admissibility problem itself has not been physically
 derived.
 ```
 """
 
-out = Path("34_ladder_conclusion_report.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("34_ladder_conclusion_report.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print(f"Wrote {out.resolve()}")
+
+

@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_16_regular_source_basis.py
 
-Construct signed source profiles satisfying the first regularity/admissibility
+Construct signed source profiles satisfying the first boundedness/admissibility
 condition:
 
     integral_0^1 a S dx = 0
@@ -142,12 +142,12 @@ balanced_lines = "\n".join(
     for q, c_q, B_q, sig in balanced_rows
 )
 
-md = f"""# Synthesis Proof 16: Regular Source Basis
+md = f"""# Synthesis Proof 16: Balanced Source Basis
 
 ## Purpose
 
 This report constructs signed source profiles satisfying the first
-regularity/admissibility condition:
+boundedness/admissibility condition:
 
 ```text
 integral_0^1 aS dx = 0.
@@ -218,7 +218,7 @@ The first member is:
 B_1 = x^2 - 1/5,
 ```
 
-which matches the signed admissible example from the regularity theorem:
+which matches the signed admissible example from the boundedness theorem:
 
 ```text
 F = a(x^2 - 1/5).
@@ -234,8 +234,12 @@ signatures. It removes the purely positive monomial probes and leaves a signed
 balanced source space that the projection hierarchy still resolves.
 """
 
-out = Path("16_regular_source_basis.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("16_regular_source_basis.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

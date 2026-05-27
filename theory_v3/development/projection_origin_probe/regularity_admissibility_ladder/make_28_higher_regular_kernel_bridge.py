@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_28_higher_regular_kernel_bridge.py
 
-Generalize the kernel bridge to higher regularity classes by multiplying the
+Generalize the kernel bridge to higher endpoint-contact classes by multiplying the
 first-admissibility kernel basis by a^R.
 
 Output:
@@ -93,14 +93,14 @@ row_lines = "\n".join(
     for R, N, shift_rank, all_in_kernel, b_rank in rows
 )
 
-md = f"""# Synthesis Proof 28: Higher-Regular Kernel Bridge
+md = f"""# Synthesis Proof 28: Higher-Contact Kernel Bridge
 
 ## Purpose
 
 This report tests how the first-admissibility kernel bridge changes for higher
-regularity classes.
+endpoint-contact classes.
 
-For the `C^R` source class:
+For the `R` endpoint-contact source class:
 
 ```text
 S(y) = (1-y)^R P(y),
@@ -148,7 +148,7 @@ Exact tested data:
 The exact `psi` kernel bridge is strongest at the first admissibility level
 `R=0`.
 
-Higher regularity classes require rebalanced source bases:
+Higher endpoint-contact classes require rebalanced source bases:
 
 ```text
 B_(R,q) = a^R[y^q-c_(R,q)].
@@ -158,8 +158,12 @@ This matches the source-class ladder already found from the transformed energy
 problem.
 """
 
-out = Path("28_higher_regular_kernel_bridge.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("28_higher_regular_kernel_bridge.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

@@ -79,8 +79,9 @@ N=13: rank(span psi)=13, dim(kernel C0)=13
 
 This is stronger than the earlier row-space comparison.
 
-The full projected moment matrix is not identical to the low-order regularity
-ladder under the `a^4` pairing, but the polynomial shape of the `psi_k` rows is
+The full projected moment matrix is not identical to the low-order
+endpoint-contact ladder under the `a^4` pairing, but the polynomial shape of
+the `psi_k` rows is
 exactly adapted to the first admissibility condition:
 
 ```text

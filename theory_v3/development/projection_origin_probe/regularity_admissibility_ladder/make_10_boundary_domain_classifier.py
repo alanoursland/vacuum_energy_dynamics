@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_10_boundary_domain_classifier.py
 
@@ -196,8 +196,12 @@ The exceptional model power `s=-3` makes `L[a^s]=0` formally.
 ```
 """
 
-out = Path("10_boundary_domain_classifier.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("10_boundary_domain_classifier.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

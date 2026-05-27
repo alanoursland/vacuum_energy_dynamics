@@ -40,8 +40,8 @@ E[h] = 1/2 integral sum_ab |grad h_ab|^2
 does reduce to the scalar bridge in the isotropic trace sector, but it is not a
 full geometric field theory.
 
-The real linearized geometric operator is the Fierz-Pauli / linearized Einstein
-operator:
+The Fierz-Pauli / linearized Einstein operator is the gauge-invariant massless
+spin-2 operator compatible with the standard weak-field GR lift:
 
 ```text
 G_ab
@@ -131,7 +131,7 @@ The geometric lift proves:
    gravity.
 2. Scalar boundary flux maps to weak-field mass flux.
 3. The componentwise strain model is insufficient as a geometric theory.
-4. The correct linearized geometric operator has Fierz-Pauli / Einstein gauge
+4. The standard massless spin-2 lift has Fierz-Pauli / Einstein gauge
    structure.
 ```
 

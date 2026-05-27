@@ -1,9 +1,10 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_31_primitive_m_regular_ladder_connection.py
 
 Connect the generalized admissibility row family chi_(R,k) to the primitive
-power family m.
+power family m. Here R labels boundary contact / endpoint suppression, not
+ordinary C^R differentiability.
 
 Output:
     31_primitive_m_regular_ladder_connection.md
@@ -52,18 +53,18 @@ for R in range(0, 7):
 
     rows.append((R, m, f"(2k-1)/(2k+{2*R+3})"))
 
-checks.append("regularity level R corresponds to primitive power m=R+2")
+checks.append("endpoint-contact level R corresponds to primitive power m=R+2")
 checks.append("primitive derivative identity verified for R=0..6")
 
 validation_bullets = "\n".join("- " + item + ": passed" for item in checks)
 row_lines = "\n".join(f"R={R}: m={m}, ratio={ratio}" for R, m, ratio in rows)
 
-md = f"""# Synthesis Proof 31: Primitive Power and Regularity Ladder
+md = f"""# Synthesis Proof 31: Primitive Power and Endpoint-Contact Ladder
 
 ## Purpose
 
-This report connects the generalized regularity rows to the primitive-power
-family.
+This report connects the generalized endpoint-contact/admissibility rows to the
+primitive-power family.
 
 ## Validated Checks
 
@@ -71,7 +72,7 @@ family.
 
 ## Main Relation
 
-The row family adapted to regularity level `R` has ratio:
+The row family adapted to endpoint-contact level `R` has ratio:
 
 ```text
 (2k-1)/(2k+2R+3).
@@ -103,10 +104,10 @@ The observed hierarchy has:
 m = 2.
 ```
 
-Therefore it is the `R=0` member of the regularity ladder: the row family
-adapted to boundedness of `f=u/a^3`.
+Therefore it is the `R=0` member of the endpoint-contact/admissibility ladder:
+the row family adapted to the bounded/non-contact level of `f=u/a^3`.
 
-Higher regularity levels would naturally shift the primitive power:
+Higher endpoint-contact levels shift the primitive power:
 
 ```text
 R=1 -> m=3
@@ -117,12 +118,21 @@ R=2 -> m=4
 This gives the primitive-power family a new interpretation:
 
 ```text
-m labels regularity level plus 2.
+m labels boundary-contact/admissibility level plus 2.
 ```
+
+The relation must not be read as ordinary smoothness. The base case `R=0`
+corresponds to boundedness/contact level zero. Higher `R` imposes additional
+endpoint suppression on `S` and therefore additional boundary contact of
+`f=u/a^3`; it is not required by ordinary `C^R` differentiability of `f`.
 """
 
-out = Path("31_primitive_m_regular_ladder_connection.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("31_primitive_m_regular_ladder_connection.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

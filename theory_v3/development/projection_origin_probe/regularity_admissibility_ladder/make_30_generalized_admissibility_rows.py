@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_30_generalized_admissibility_rows.py
 
-Derive the row family adapted to the R-th regularity source class:
+Derive the row family adapted to the R-th endpoint-contact source class:
 
     chi_(R,k)(y) = y^k - ((2k-1)/(2k+2R+3)) y^(k-1).
 
@@ -70,7 +70,7 @@ md = f"""# Synthesis Proof 30: Generalized Admissibility Rows
 
 ## Purpose
 
-This report derives the row family adapted to the `C^R` regularity source
+This report derives the row family adapted to the `R` endpoint-contact source
 class.
 
 For source class:
@@ -119,7 +119,7 @@ The original row family is the `R=0` case:
 psi_k = chi_(0,k).
 ```
 
-Higher regularity classes have their own adapted row families, with the
+Higher endpoint-contact classes have their own adapted row families, with the
 denominator shifted from:
 
 ```text
@@ -133,8 +133,12 @@ to:
 ```
 """
 
-out = Path("30_generalized_admissibility_rows.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("30_generalized_admissibility_rows.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

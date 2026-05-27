@@ -1,4 +1,4 @@
-# Core Math Packet
+﻿# Core Math Packet
 
 This file keeps the mathematical spine of the projection-origin probe and regularity/admissibility ladder. It omits most discussion prose.
 
@@ -560,19 +560,19 @@ f = u/a^3
 at `x=1` requires `u` to vanish to high enough order. With `u(1)=0` already imposed:
 
 ```text
-C^0 f:
+R=0 bounded/non-contact level:
   integral_0^1 aS dx = 0
 
-C^1 f:
+R=1 contact level:
   integral_0^1 aS dx = 0
   S(1) = 0
 
-C^2 f:
+R=2 contact level:
   integral_0^1 aS dx = 0
   S(1) = 0
   S'(1) = 0
 
-C^R f:
+R contact level:
   integral_0^1 aS dx = 0
   S vanishes to order R at x=1.
 ```
@@ -634,7 +634,7 @@ Then:
 integral_0^1 a B_q dx = 0.
 ```
 
-For regularity level `R`, define:
+For endpoint-contact level `R`, define:
 
 ```text
 B_(R,q)(x) = a^R[x^(2q) - c_(R,q)]
@@ -798,7 +798,7 @@ span{psi_1,...,psi_N}
 ker[S -> integral_0^1 aS dx].
 ```
 
-For higher regularity level `R`, define:
+For higher endpoint-contact level `R`, define:
 
 ```text
 C_R[P]
@@ -842,7 +842,7 @@ The original row family is:
 psi_k = chi_(0,k).
 ```
 
-## 11. Primitive power as regularity level
+## 11. Primitive power as endpoint-contact level
 
 Sources:
 
@@ -852,7 +852,7 @@ regularity_admissibility_ladder/32_general_chi_kernel_theorem.md
 regularity_admissibility_ladder/34_ladder_conclusion_report.md
 ```
 
-The generalized regularity row ratio is:
+The generalized endpoint-contact row ratio is:
 
 ```text
 (2k-1)/(2k+2R+3).
@@ -885,13 +885,13 @@ This refines the earlier artifact warning:
 
 ```text
 The primitive family is not just arbitrary duplication.
-It labels regularity level plus 2.
+It labels endpoint-contact/admissibility level plus 2.
 ```
 
 External gap:
 
 ```text
-The boundedness-level regularity problem itself still needs a physical/geometric derivation.
+The bounded/non-contact admissibility problem itself still needs a physical/geometric derivation.
 ```
 
 ## 12. Matrix and determinant facts
@@ -1006,7 +1006,7 @@ psi_k is not a direct same-weight a^4 orthogonal row.
 
 A is not the variational stiffness matrix K.
 
-The psi hierarchy is not identical to the low-order regularity ladder
+The psi hierarchy is not identical to the low-order endpoint-contact ladder
 {integral aS, S(1), S'(1), ...} as row spaces.
 
 Gegenbauer/Jacobi structure is contextual, not an identification of psi_k.
@@ -1020,3 +1020,4 @@ Boundary cleanliness of the IBP term is family-wide, not m=2-specific.
 
 Physical meanings of x, f, S, w, E[f], and the domain are not yet derived.
 ```
+

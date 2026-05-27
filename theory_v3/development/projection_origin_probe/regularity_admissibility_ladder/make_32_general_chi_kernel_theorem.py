@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_32_general_chi_kernel_theorem.py
 
@@ -79,7 +79,7 @@ md = f"""# Regularity Ladder Proof 32: General `chi` Kernel Theorem
 
 ## Purpose
 
-This report proves the finite-dimensional kernel theorem for the regularity
+This report proves the finite-dimensional kernel theorem for the endpoint-contact
 ladder row family.
 
 ## Theorem
@@ -133,8 +133,12 @@ highest-degree term. Since `ker C_R` has dimension `N` inside the `N+1`
 dimensional degree-`<=N` space, the rows span the whole kernel.
 """
 
-out = Path("32_general_chi_kernel_theorem.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("32_general_chi_kernel_theorem.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

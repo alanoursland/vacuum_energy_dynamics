@@ -61,8 +61,8 @@ The naive componentwise strain model reduces to the scalar bridge in the trace
 sector, but it fails as a geometric field theory because it is not gauge
 invariant.
 
-The correct linearized operator is the Fierz-Pauli / linearized Einstein
-operator:
+The Fierz-Pauli / linearized Einstein operator is the gauge-invariant massless
+spin-2 operator compatible with the standard weak-field GR lift:
 
 ```text
 G_ab
@@ -169,7 +169,8 @@ The folder proves:
 1. The scalar bridge is the Newtonian exterior sector of linearized geometry.
 2. Scalar boundary flux is weak-field mass flux.
 3. Naive componentwise strain is insufficient because of gauge failure.
-4. Fierz-Pauli / linearized Einstein structure fixes the gauge problem.
+4. Fierz-Pauli / linearized Einstein structure fixes the gauge problem for the
+   standard massless spin-2 lift.
 5. The reduced-action attraction mechanism lifts to the linearized geometric
    setting with the standard Newtonian coefficient.
 ```
@@ -184,7 +185,8 @@ Not proven:
 why the fundamental vacuum variable must be the metric;
 why the nonlinear action must be Einstein-Hilbert;
 how the boundary/source coupling emerges microscopically;
-how the original regularity ladder selects the geometric action;
+how the original endpoint-contact/admissibility ladder relates to the geometric
+action;
 whether nonlinear corrections differ from GR.
 ```
 

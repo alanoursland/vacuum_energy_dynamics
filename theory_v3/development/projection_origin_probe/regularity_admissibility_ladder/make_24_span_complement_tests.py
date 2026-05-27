@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_24_span_complement_tests.py
 
@@ -109,8 +109,12 @@ This supports looking for a determinant/invertibility proof via polynomial
 filtration and codimension-one balancing constraints.
 """
 
-out = Path("24_span_complement_tests.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("24_span_complement_tests.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

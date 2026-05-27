@@ -1,8 +1,9 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_17_regularity_ladder_source_classes.py
 
-Derive the regularity ladder for f=u/a^3 in the transformed problem:
+Derive the endpoint-contact/admissibility ladder for f=u/a^3 in the
+transformed problem:
 
     -u'' = F = aS
     u'(0)=0
@@ -122,10 +123,11 @@ for m in range(0, 7):
 checks.append("F=aS endpoint derivative formulas through m=6")
 
 # ---------------------------------------------------------------------
-# 3. C^r source-class ladder.
+# 3. Endpoint-contact source-class ladder.
 #
-# f=u/a^3 is C^R at x=1 if u vanishes to order at least R+3.
-# With u(1)=0, this requires:
+# The R ladder is not ordinary C^R regularity. It is a contact/suppression
+# ladder: f=u/a^3 has R-fold boundary contact if u vanishes to order at least
+# R+3. With u(1)=0, this requires:
 #   int F = 0
 #   F^(m)(1)=0 for m=0..R.
 #
@@ -140,10 +142,22 @@ for R in range(0, 6):
     if R >= 1:
         conditions.extend(f"S^({m})(1) = 0" if m else "S(1) = 0" for m in range(0, R))
     ladder_rows.append((R, conditions))
-checks.append("regularity ladder conditions assembled")
+checks.append("endpoint-contact ladder conditions assembled")
+
+# Ordinary smoothness counterexample: f=1 is smooth, u=a^3 has only third-order
+# contact, and the corresponding source does not vanish at x=1.
+u_counter = a**3
+f_counter = simplify_expr(u_counter / a**3)
+S_counter = simplify_expr(-sp.diff(u_counter, x, 2) / a)
+require_equal("ordinary smoothness counterexample f", f_counter, 1)
+require_equal("ordinary smoothness counterexample S", S_counter, 6 * a - 24 * x**2)
+require_equal("ordinary smoothness counterexample S endpoint", S_counter.subs(x, 1), -24)
+if vanishing_order_at_one(u_counter) != 3:
+    raise AssertionError(f"expected u=a^3 order 3: {u_counter}")
+checks.append("ordinary smoothness counterexample distinguishes contact ladder")
 
 # ---------------------------------------------------------------------
-# 4. Build balanced bases for C^R classes:
+# 4. Build balanced bases for endpoint-contact classes:
 #
 #   B_(R,q)(x) = a^R [x^(2q) - c_(R,q)]
 #
@@ -171,13 +185,13 @@ for R in range(0, 5):
             )
 
         basis_rows.append((R, q, c_Rq, sp.factor(B_Rq), order_u))
-checks.append("balanced C^R source bases verified for R=0..4 q=1..5")
+checks.append("balanced endpoint-contact source bases verified for R=0..4 q=1..5")
 
 
 validation_bullets = "\n".join("- " + item + ": passed" for item in checks)
 symbolic_lines = "\n".join(f"m={m}: (aS)^({m})(1) = {expr}" for m, expr in symbolic_rows)
 ladder_lines = "\n".join(
-    f"C^{R} f condition: " + "; ".join(conditions)
+    f"R={R} contact condition: " + "; ".join(conditions)
     for R, conditions in ladder_rows
 )
 basis_lines = "\n".join(
@@ -185,11 +199,11 @@ basis_lines = "\n".join(
     for R, q, c_Rq, B_Rq, order_u in basis_rows
 )
 
-md = f"""# Synthesis Proof 17: Regularity Ladder and Source Classes
+md = f"""# Synthesis Proof 17: Endpoint-Contact Ladder and Source Classes
 
 ## Purpose
 
-This report extends the first admissibility condition into a regularity
+This report extends the first admissibility condition into an endpoint-contact
 ladder for:
 
 ```text
@@ -235,28 +249,37 @@ For `F=aS`, the endpoint derivatives are:
 Since `a(1)=0`, the condition `F(1)=0` is automatic for regular `S`. Higher
 endpoint conditions force vanishing derivatives of `S` at `x=1`.
 
-## Regularity Conditions
+## Endpoint-Contact Conditions
 
-For `f=u/a^3` to be `C^R` at `x=1`, `u` must vanish to order at least `R+3`.
-With `u(1)=0` already imposed, the first conditions are:
+This is not ordinary `C^R` regularity.
+
+It is a boundary-contact / endpoint-suppression ladder:
+
+```text
+S vanishes to order R
+  -> u vanishes to order R+3
+  -> f=u/a^3 has R-fold boundary contact.
+```
+
+With `u(1)=0` already imposed, the contact conditions are:
 
 ```text
 {ladder_lines}
 ```
 
-Thus boundedness requires only:
+The base bounded/non-contact level requires only:
 
 ```text
 integral_0^1 aS dx = 0.
 ```
 
-`C^1` regularity additionally requires:
+`R=1` endpoint contact additionally requires:
 
 ```text
 S(1)=0.
 ```
 
-`C^2` regularity additionally requires:
+`R=2` endpoint contact additionally requires:
 
 ```text
 S(1)=0
@@ -267,7 +290,7 @@ and so on.
 
 ## Balanced Source Classes
 
-A source basis satisfying the `C^R` ladder through order `R` is:
+A source basis satisfying the endpoint-contact ladder through order `R` is:
 
 ```text
 B_(R,q)(x) = a^R [x^(2q) - c_(R,q)]
@@ -288,7 +311,8 @@ This ensures:
 integral_0^1 a B_(R,q) dx = 0
 ```
 
-and gives `S` the endpoint vanishing needed for `C^R` regularity.
+and gives `S` the endpoint vanishing needed for `R`-fold boundary contact of
+`f=u/a^3`.
 
 Exact checked basis rows:
 
@@ -301,25 +325,43 @@ Exact checked basis rows:
 The admissibility condition is not a single accident. It extends into a ladder:
 
 ```text
-C^0 f:
+R=0 bounded/non-contact level:
   integral aS = 0
 
-C^1 f:
+R=1 contact level:
   integral aS = 0 and S(1)=0
 
-C^2 f:
+R=2 contact level:
   integral aS = 0 and S(1)=S'(1)=0
 
-C^R f:
+R contact level:
   integral aS = 0 and S vanishes to order R at x=1.
 ```
 
 The balanced bases `B_(R,q)` provide explicit source classes satisfying these
 conditions.
+
+## Ordinary Smoothness Counterexample
+
+The contact ladder does not describe ordinary differentiability of `f`.
+
+```text
+f = 1
+u = a^3
+S = -u''/a = 6a - 24x^2
+S(1) = -24.
+```
+
+Here `f` is smooth, but `u` only has third-order endpoint contact. Therefore
+ordinary smoothness of `f` does not require the higher `R` contact conditions.
 """
 
-out = Path("17_regularity_ladder_source_classes.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("17_regularity_ladder_source_classes.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

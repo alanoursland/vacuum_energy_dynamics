@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_18_projection_vs_admissibility_rowspace.py
 
@@ -7,8 +7,8 @@ Compare finite-truncation row spaces:
     projection rows:      S -> <psi_k, S>_w
     admissibility rows:   S -> int aS, S(1), S'(1), ...
 
-This tests whether the projection hierarchy is equivalent to the regularity
-admissibility ladder on even polynomial source spaces.
+This tests whether the projection hierarchy is equivalent to the
+endpoint-contact/admissibility ladder on even polynomial source spaces.
 
 Output:
     18_projection_vs_admissibility_rowspace.md
@@ -79,7 +79,7 @@ for degree in range(2, 9):
     P_rows = [projection_row(k, degree) for k in range(1, ncols + 1)]
     P_rank = rowspace_rank(P_rows)
 
-    # Boundedness through C^R with R=degree-1 gives enough admissibility rows
+    # Endpoint-contact rows through R=degree-1 give enough admissibility rows
     # to span the full dual space on degree-N even polynomials:
     #   int aS plus derivatives S^(m)(1), m=0..degree-1.
     A_rows_full = [admissibility_row(-1, degree)] + [
@@ -97,7 +97,7 @@ for degree in range(2, 9):
     A0_rows = [admissibility_row(-1, degree)]
     A0_in_projection = rowspace_contains(P_rows, A0_rows[0])
 
-    # C^R ladder row spaces for R=0..min(4,degree-1).
+    # Endpoint-contact ladder row spaces for R=0..min(4,degree-1).
     ladder = []
     for R in range(0, min(5, degree)):
         A_R_rows = [admissibility_row(-1, degree)] + [
@@ -115,9 +115,9 @@ for degree in range(2, 9):
 
 # Direct non-equivalence at small ladder levels:
 #
-# On degree 4, projection rows are full rank with 5 rows, while C^0/C^1/C^2
-# admissibility rows have ranks 1,2,3 respectively. Therefore the projection
-# hierarchy is not the same as any low-order regularity ladder truncation.
+# On degree 4, projection rows are full rank with 5 rows, while R=0/1/2
+# contact rows have ranks 1,2,3 respectively. Therefore the projection
+# hierarchy is not the same as any low-order contact-ladder truncation.
 degree = 4
 P_rows = [projection_row(k, degree) for k in range(1, degree + 2)]
 for R, expected_rank in [(0, 1), (1, 2), (2, 3)]:
@@ -125,14 +125,14 @@ for R, expected_rank in [(0, 1), (1, 2), (2, 3)]:
         admissibility_row(m, degree) for m in range(0, R)
     ]
     if rowspace_rank(A_R_rows) != expected_rank:
-        raise AssertionError(f"unexpected C^{R} rank")
+        raise AssertionError(f"unexpected contact R={R} rank")
     if rowspace_rank(P_rows) == expected_rank:
-        raise AssertionError(f"projection rank unexpectedly equals C^{R} rank")
-checks.append("low-order admissibility ladders are not equal to full projection rowspace")
+        raise AssertionError(f"projection rank unexpectedly equals contact R={R} rank")
+checks.append("low-order endpoint-contact ladders are not equal to full projection rowspace")
 
 # Kernel comparison on degree 6:
 #
-# C^R admissibility has a nontrivial nullspace until R reaches degree.
+# Endpoint-contact admissibility has a nontrivial nullspace until R reaches degree.
 # Projection rows with degree+1 rows have zero nullspace.
 degree = 6
 P_rows = [projection_row(k, degree) for k in range(1, degree + 2)]
@@ -146,7 +146,7 @@ for R in range(0, degree):
         admissibility_row(m, degree) for m in range(0, R)
     ]
     kernel_rows.append((R, len(nullspace_basis(A_R_rows))))
-checks.append("kernel dimensions distinguish projection rows from finite regularity ladders")
+checks.append("kernel dimensions distinguish projection rows from finite contact ladders")
 
 
 validation_bullets = "\n".join("- " + item + ": passed" for item in checks)
@@ -157,7 +157,7 @@ case_lines = "\n".join(
     )
     for degree, P_rank, A_rank, A0_in_projection, ladder in cases
 )
-kernel_lines = "\n".join(f"C^{R} admissibility nullity on degree 6: {dim}" for R, dim in kernel_rows)
+kernel_lines = "\n".join(f"R={R} contact/admissibility nullity on degree 6: {dim}" for R, dim in kernel_rows)
 
 md = f"""# Synthesis Proof 18: Projection vs. Admissibility Row Spaces
 
@@ -166,7 +166,7 @@ md = f"""# Synthesis Proof 18: Projection vs. Admissibility Row Spaces
 This report tests the proposed bridge:
 
 ```text
-Are the psi_k projection rows equivalent to the regularity/admissibility rows?
+Are the psi_k projection rows equivalent to the endpoint-contact/admissibility rows?
 ```
 
 The comparison is finite-dimensional, on even polynomial source spaces:
@@ -197,10 +197,10 @@ C_3[S] = S''(1)
 ...
 ```
 
-where the regularity ladder uses:
+where the endpoint-contact ladder uses:
 
 ```text
-C^R f:
+R contact level:
   integral aS = 0
   S vanishes to order R at x=1.
 ```
@@ -211,7 +211,7 @@ The projection rows are full rank on the tested even polynomial truncations.
 The full admissibility row family is also full rank once enough endpoint
 derivatives are included.
 
-But the low-order regularity ladders are not equal to the projection rowspace.
+But the low-order endpoint-contact ladders are not equal to the projection rowspace.
 They have smaller rank and larger nullspaces.
 
 Exact row-space data:
@@ -232,7 +232,7 @@ projection nullity on degree 6: {P_null_dim}
 This is a partial negative result for the strongest bridge claim.
 
 The `psi_k` hierarchy is not simply the same rowspace as the low-order
-regularity/admissibility ladder:
+endpoint-contact/admissibility ladder:
 
 ```text
 integral aS = 0,
@@ -250,17 +250,21 @@ projection rows:
   full-rank moment diagnostics on the tested source space
 
 admissibility rows:
-  lower-rank boundary/regularity constraints until the full derivative tower is
+  lower-rank boundary/contact constraints until the full derivative tower is
   included
 ```
 
 So the projection hierarchy is adjacent to the admissibility problem, and it
 resolves admissible balanced source spaces, but it is not identical to the
-low-order regularity ladder.
+low-order endpoint-contact ladder.
 """
 
-out = Path("18_projection_vs_admissibility_rowspace.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("18_projection_vs_admissibility_rowspace.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

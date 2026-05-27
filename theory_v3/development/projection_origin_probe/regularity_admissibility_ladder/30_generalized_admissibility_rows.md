@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This report derives the row family adapted to the `C^R` regularity source
+This report derives the row family adapted to the `R` endpoint-contact source
 class.
 
 For source class:
@@ -57,7 +57,7 @@ The original row family is the `R=0` case:
 psi_k = chi_(0,k).
 ```
 
-Higher regularity classes have their own adapted row families, with the
+Higher endpoint-contact classes have their own adapted row families, with the
 denominator shifted from:
 
 ```text

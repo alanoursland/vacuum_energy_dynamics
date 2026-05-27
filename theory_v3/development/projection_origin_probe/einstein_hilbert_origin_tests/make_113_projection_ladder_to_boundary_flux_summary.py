@@ -36,8 +36,8 @@ checks = []
 
 r_original = (2 * k - 1) / (2 * k + 3)
 r_ladder = (2 * k - 1) / (2 * k + 2 * R + 3)
-require_equal("original ratio is R=0 ladder row", r_ladder.subs(R, 0), r_original)
-checks.append("original ratio is R=0 ladder row")
+require_equal("original ratio is R=0 contact ladder row", r_ladder.subs(R, 0), r_original)
+checks.append("original ratio is R=0 contact ladder row")
 
 m_from_R = R + 2
 require_equal("R=0 corresponds to primitive power m=2", m_from_R.subs(R, 0), 2)
@@ -94,7 +94,7 @@ The original row ratio is:
 r_k = (2k - 1)/(2k + 3).
 ```
 
-The regularity ladder ratio is:
+The endpoint-contact/admissibility ladder ratio is:
 
 ```text
 r_(R,k) = (2k - 1)/(2k + 2R + 3).
@@ -183,12 +183,12 @@ functional is a boundary-flux defect.
 
 ## Interpretation
 
-The original ratio is not merely a row coefficient. It is the `R=0` boundedness
-member of the regularity ladder. Under the energy transform `u=a^3 f`, the same
-condition becomes the compatibility condition for a one-dimensional Dirichlet
-energy equation. The scalar bridge then interprets the compatibility defect as
-boundary flux, and the geometric lift identifies that flux with weak-field
-mass.
+The original ratio is not merely a row coefficient. It is the `R=0`
+bounded/non-contact member of the endpoint-contact/admissibility ladder. Under
+the energy transform `u=a^3 f`, the same condition becomes the compatibility
+condition for a one-dimensional Dirichlet energy equation. The scalar bridge
+then interprets the compatibility defect as boundary flux, and the geometric
+lift identifies that flux with weak-field mass.
 """
 
 out = Path(__file__).with_name("113_projection_ladder_to_boundary_flux_summary.md")

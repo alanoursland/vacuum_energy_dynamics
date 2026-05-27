@@ -5,7 +5,7 @@
 This report tests the proposed bridge:
 
 ```text
-Are the psi_k projection rows equivalent to the regularity/admissibility rows?
+Are the psi_k projection rows equivalent to the endpoint-contact/admissibility rows?
 ```
 
 The comparison is finite-dimensional, on even polynomial source spaces:
@@ -23,8 +23,8 @@ S(x) = sum_j c_j x^(2j).
 - degree 6: projection and full admissibility row spaces both full rank: passed
 - degree 7: projection and full admissibility row spaces both full rank: passed
 - degree 8: projection and full admissibility row spaces both full rank: passed
-- low-order admissibility ladders are not equal to full projection rowspace: passed
-- kernel dimensions distinguish projection rows from finite regularity ladders: passed
+- low-order endpoint-contact ladders are not equal to full projection rowspace: passed
+- kernel dimensions distinguish projection rows from finite contact ladders: passed
 
 ## Row Families
 
@@ -44,10 +44,10 @@ C_3[S] = S''(1)
 ...
 ```
 
-where the regularity ladder uses:
+where the endpoint-contact ladder uses:
 
 ```text
-C^R f:
+R contact level:
   integral aS = 0
   S vanishes to order R at x=1.
 ```
@@ -58,7 +58,7 @@ The projection rows are full rank on the tested even polynomial truncations.
 The full admissibility row family is also full rank once enough endpoint
 derivatives are included.
 
-But the low-order regularity ladders are not equal to the projection rowspace.
+But the low-order endpoint-contact ladders are not equal to the projection rowspace.
 They have smaller rank and larger nullspaces.
 
 Exact row-space data:
@@ -77,12 +77,12 @@ Kernel comparison on degree 6:
 
 ```text
 projection nullity on degree 6: 0
-C^0 admissibility nullity on degree 6: 6
-C^1 admissibility nullity on degree 6: 5
-C^2 admissibility nullity on degree 6: 4
-C^3 admissibility nullity on degree 6: 3
-C^4 admissibility nullity on degree 6: 2
-C^5 admissibility nullity on degree 6: 1
+R=0 contact/admissibility nullity on degree 6: 6
+R=1 contact/admissibility nullity on degree 6: 5
+R=2 contact/admissibility nullity on degree 6: 4
+R=3 contact/admissibility nullity on degree 6: 3
+R=4 contact/admissibility nullity on degree 6: 2
+R=5 contact/admissibility nullity on degree 6: 1
 ```
 
 ## Interpretation
@@ -90,7 +90,7 @@ C^5 admissibility nullity on degree 6: 1
 This is a partial negative result for the strongest bridge claim.
 
 The `psi_k` hierarchy is not simply the same rowspace as the low-order
-regularity/admissibility ladder:
+endpoint-contact/admissibility ladder:
 
 ```text
 integral aS = 0,
@@ -108,10 +108,10 @@ projection rows:
   full-rank moment diagnostics on the tested source space
 
 admissibility rows:
-  lower-rank boundary/regularity constraints until the full derivative tower is
+  lower-rank boundary/contact constraints until the full derivative tower is
   included
 ```
 
 So the projection hierarchy is adjacent to the admissibility problem, and it
 resolves admissible balanced source spaces, but it is not identical to the
-low-order regularity ladder.
+low-order endpoint-contact ladder.

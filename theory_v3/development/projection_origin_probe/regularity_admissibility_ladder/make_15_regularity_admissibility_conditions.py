@@ -1,8 +1,8 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_15_regularity_admissibility_conditions.py
 
-Derive regularity/admissibility conditions for f=u/a^3 from the transformed
+Derive boundedness/admissibility conditions for f=u/a^3 from the transformed
 problem:
 
     -u'' = F
@@ -99,8 +99,8 @@ require_equal(
 )
 checks.append("endpoint derivative identities through fourth derivative")
 
-# Regular f=u/a^3 requires u to have factor (1-x^2)^3.  Since 1+x is nonzero
-# at x=1, this is equivalent locally to order at least 3 in (x-1).
+# Bounded f=u/a^3 requires u to have factor (1-x^2)^3.  Since 1+x is
+# nonzero at x=1, this is equivalent locally to order at least 3 in (x-1).
 model_rows = []
 for R in range(0, 7):
     u_model = (1 - x) ** R
@@ -118,6 +118,19 @@ for R in range(0, 7):
         if limit not in [sp.oo, -sp.oo]:
             raise AssertionError(f"expected divergent quotient for R={R}: {limit}")
 checks.append("u/a^3 boundedness threshold is order >=3 at x=1")
+
+# Ordinary smoothness of f is not the same as forcing additional endpoint
+# contact in u. The counterexample f=1, u=a^3 is smooth, but u only has
+# third-order contact at x=1 and the corresponding S does not vanish there.
+u_counter = a**3
+f_counter = simplify_expr(u_counter / a**3)
+S_counter = simplify_expr(-sp.diff(u_counter, x, 2) / a)
+require_equal("smooth counterexample f", f_counter, 1)
+require_equal("smooth counterexample source", S_counter, 6 * a - 24 * x**2)
+require_equal("smooth counterexample S endpoint", S_counter.subs(x, 1), -24)
+if vanishing_order_at_one(u_counter) != 3:
+    raise AssertionError(f"expected u=a^3 to have order 3: {u_counter}")
+checks.append("ordinary smoothness is not the endpoint-contact ladder")
 
 # For Green solution, u has order >=3 at x=1 iff u'(1)=0 and u''(1)=0,
 # given u(1)=0.  Translate to moment/endpoint conditions:
@@ -181,11 +194,11 @@ source_lines = "\n".join(
     for P, Q, moment, endpoint in source_rows
 )
 
-md = f"""# Synthesis Proof 15: Regularity and Admissibility Conditions
+md = f"""# Synthesis Proof 15: Boundedness and Admissibility Conditions
 
 ## Purpose
 
-This report turns the regularity issue for:
+This report turns the boundedness issue for:
 
 ```text
 f = u/a^3
@@ -258,6 +271,34 @@ integral_0^1 aS dx = 0
 The second condition is automatic for regular `S` because `a(1)=0`. The first
 condition is a genuine global cancellation condition.
 
+## Ordinary Smoothness Is Not the Ladder
+
+The endpoint-contact ladder must not be read as ordinary `C^R` regularity.
+
+Counterexample:
+
+```text
+f = 1
+u = a^3 = (1-x^2)^3.
+```
+
+Then `f` is smooth, but `u` only vanishes to order `3` at `x=1`. The
+corresponding source is:
+
+```text
+S = -u''/a = 6a - 24x^2,
+```
+
+so:
+
+```text
+S(1) = -24.
+```
+
+Thus ordinary smoothness of `f` does not force `S(1)=0`, nor does it force
+arbitrarily high vanishing of `u`. The later `R` ladder measures boundary
+contact / endpoint suppression, not ordinary differentiability.
+
 ## Model Boundedness Table
 
 ```text
@@ -317,7 +358,7 @@ lim_(x->1-) f(x) = {signed_limit}
 
 ## Interpretation
 
-The transformed variational problem converts regularity of `f` into explicit
+The transformed variational problem converts boundedness/contact of `f` into explicit
 admissibility conditions on `F=aS`.
 
 The first nontrivial condition is:
@@ -330,8 +371,11 @@ This is a concrete global cancellation requirement, not just a local boundary
 condition.
 """
 
-out = Path("15_regularity_admissibility_conditions.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("15_regularity_admissibility_conditions.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+

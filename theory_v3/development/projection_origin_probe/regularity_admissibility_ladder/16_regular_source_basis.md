@@ -1,9 +1,9 @@
-# Synthesis Proof 16: Regular Source Basis
+# Synthesis Proof 16: Balanced Source Basis
 
 ## Purpose
 
 This report constructs signed source profiles satisfying the first
-regularity/admissibility condition:
+boundedness/admissibility condition:
 
 ```text
 integral_0^1 aS dx = 0.
@@ -91,7 +91,7 @@ The first member is:
 B_1 = x^2 - 1/5,
 ```
 
-which matches the signed admissible example from the regularity theorem:
+which matches the signed admissible example from the boundedness theorem:
 
 ```text
 F = a(x^2 - 1/5).

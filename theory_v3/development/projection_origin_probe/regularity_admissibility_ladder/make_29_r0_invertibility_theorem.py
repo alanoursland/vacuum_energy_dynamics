@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_29_r0_invertibility_theorem.py
 
@@ -134,8 +134,12 @@ class. The original `psi_k` rows are exactly adapted to the first
 admissibility condition.
 """
 
-out = Path("29_r0_invertibility_theorem.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("29_r0_invertibility_theorem.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

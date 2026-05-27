@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_22_psi_adapted_balanced_basis.py
 
@@ -146,8 +146,12 @@ This means the projection hierarchy can be used as coordinates on finite
 balanced admissible source spaces.
 """
 
-out = Path("22_psi_adapted_balanced_basis.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("22_psi_adapted_balanced_basis.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_14_u_green_regular_solution.py
 
@@ -262,15 +262,15 @@ SymPy verifies the exact polynomial solutions for `P,Q=0..4`.
 {solution_lines}
 ```
 
-## Boundary Regularity for `f = u/a^3`
+## Boundary Boundedness for `f = u/a^3`
 
-Regularity of:
+Boundedness of:
 
 ```text
 f = u/a^3
 ```
 
-at `x=1` requires `u` to vanish to at least third order in `a`, equivalently
+at `x=1` requires `u` to vanish to at least third order in `1-x`, equivalently
 high-order vanishing in `1-x`. The minimal boundary condition `u(1)=0` is not
 enough.
 
@@ -290,20 +290,23 @@ at `x=1` for these positive source probes under this simple boundary problem.
 
 ## Interpretation
 
-The transformed equation is explicitly solvable, but regularity of `f` is much
+The transformed equation is explicitly solvable, but boundedness of `f` is much
 stronger than the simple Dirichlet condition `u(1)=0`.
 
 This suggests a concrete admissibility direction:
 
 ```text
-regular f requires moment/endpoint cancellations in F=aS.
+bounded/contact-controlled f requires moment/endpoint cancellations in F=aS.
 ```
 
 For positive source-family probes, those cancellations do not occur.
 """
 
-out = Path("14_u_green_regular_solution.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("14_u_green_regular_solution.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+

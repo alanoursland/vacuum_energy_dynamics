@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_11_low_order_matrix_patterns.py
 
@@ -133,8 +133,12 @@ Rows are `k=1..{N}`; columns are `j=0..{N - 1}`.
 ```
 """
 
-out = Path("11_low_order_matrix_patterns.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("11_low_order_matrix_patterns.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All exact matrix checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

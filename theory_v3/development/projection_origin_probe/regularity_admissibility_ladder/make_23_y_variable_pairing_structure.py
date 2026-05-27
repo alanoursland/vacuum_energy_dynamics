@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_23_y_variable_pairing_structure.py
 
@@ -139,8 +139,12 @@ integral_0^1 a B_(R,q) dx = 0.
 ```
 """
 
-out = Path("23_y_variable_pairing_structure.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("23_y_variable_pairing_structure.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

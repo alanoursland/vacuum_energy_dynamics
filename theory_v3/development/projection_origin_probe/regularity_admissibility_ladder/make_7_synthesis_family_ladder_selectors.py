@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_7_synthesis_family_ladder_selectors.py
 
@@ -392,8 +392,12 @@ n = -5/c.
 Thus ordinary compactified radial measure does not explain `w=a^4`.
 """
 
-out = Path("7_synthesis_family_ladder_selectors.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("7_synthesis_family_ladder_selectors.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

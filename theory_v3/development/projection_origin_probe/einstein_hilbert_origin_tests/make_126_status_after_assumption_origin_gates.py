@@ -89,7 +89,8 @@ The proof chain now separates three levels cleanly:
 
 ```text
 Level 1: projection/admissibility mathematics
-  r_k is a regularity ratio and boundary-flux defect detector.
+  r_k is an endpoint-contact/admissibility ratio and boundary-flux defect
+  detector.
 
 Level 2: scalar and linearized geometric bridge
   boundary flux gives Newtonian inverse-square behavior and lifts to the
@@ -102,7 +103,7 @@ Level 3: nonlinear geometric completion
 
 ## Remaining Gap
 
-The remaining gap is now narrow:
+The remaining gap is now sharply identified:
 
 ```text
 derive the Level 3 assumptions from the vacuum ontology.

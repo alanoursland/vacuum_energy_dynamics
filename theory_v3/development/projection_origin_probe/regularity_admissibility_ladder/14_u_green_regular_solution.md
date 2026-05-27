@@ -108,15 +108,15 @@ P=4, Q=3: u(x) = (x - 1)*(x + 1)*(8008*x**16 - 43043*x**14 + 91597*x**12 - 94043
 P=4, Q=4: u(x) = (x - 1)*(x + 1)*(306306*x**18 - 1595594*x**16 + 3254251*x**14 - 3141149*x**12 + 1267801*x**10 - 25491*x**8 - 25491*x**6 - 25491*x**4 - 25491*x**2 - 25491)/116396280
 ```
 
-## Boundary Regularity for `f = u/a^3`
+## Boundary Boundedness for `f = u/a^3`
 
-Regularity of:
+Boundedness of:
 
 ```text
 f = u/a^3
 ```
 
-at `x=1` requires `u` to vanish to at least third order in `a`, equivalently
+at `x=1` requires `u` to vanish to at least third order in `1-x`, equivalently
 high-order vanishing in `1-x`. The minimal boundary condition `u(1)=0` is not
 enough.
 
@@ -160,13 +160,13 @@ P=4, Q=4: u'(1)=-256/415701, u''(1)=0, u'''(1)=0, u''''(1)=0, regular f? False
 
 ## Interpretation
 
-The transformed equation is explicitly solvable, but regularity of `f` is much
+The transformed equation is explicitly solvable, but boundedness of `f` is much
 stronger than the simple Dirichlet condition `u(1)=0`.
 
 This suggests a concrete admissibility direction:
 
 ```text
-regular f requires moment/endpoint cancellations in F=aS.
+bounded/contact-controlled f requires moment/endpoint cancellations in F=aS.
 ```
 
 For positive source-family probes, those cancellations do not occur.

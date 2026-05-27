@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+﻿#!/usr/bin/env python3
 """
 make_6_synthesis_source_weight_diagnostics.py
 
@@ -292,8 +292,12 @@ weight in a known orthogonal-polynomial neighborhood, but it does not derive
 the row functions or select `m=2`.
 """
 
-out = Path("6_synthesis_source_weight_diagnostics.md")
-out.write_text(md, encoding="utf-8")
+out = Path(__file__).with_name("6_synthesis_source_weight_diagnostics.md")
+tmp = out.with_suffix(out.suffix + ".tmp")
+tmp.write_text(md, encoding="utf-8")
+tmp.replace(out)
 
 print("All symbolic checks passed.")
 print(f"Wrote {out.resolve()}")
+
+

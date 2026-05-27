@@ -1,4 +1,4 @@
-# Results and Conclusions Packet
+﻿# Results and Conclusions Packet
 
 This file states what the uploaded proof corpus establishes, what it does not establish, and what remains worth proving next.
 
@@ -44,7 +44,7 @@ Refined internal status:
   corresponding to boundedness of f=u/a^3.
 
 Remaining external gap:
-  the boundedness-level regularity problem itself has not been physically/geometrically derived.
+  the bounded/non-contact admissibility problem itself has not been physically/geometrically derived.
 ```
 
 ## Main established mathematical results
@@ -309,7 +309,7 @@ c_(R,q)
 integral x^(2q)a^(R+1)dx / integral a^(R+1)dx.
 ```
 
-These classes satisfy the first admissibility cancellation and endpoint vanishing appropriate to regularity level `R`.
+These classes satisfy the first admissibility cancellation and endpoint vanishing appropriate to endpoint-contact level `R`.
 
 The projection signatures:
 
@@ -400,7 +400,7 @@ at low order. The better statement is:
 
 ```text
 psi_k rows encode the first admissibility kernel in coefficient space,
-while higher regularity requires generalized rows and rebalanced source classes.
+while higher endpoint contact requires generalized rows and rebalanced source classes.
 ```
 
 ### Compactified radial measure does not produce the weight
@@ -479,13 +479,13 @@ L and w=a^4
 u=a^3f
   -> energy becomes 1D Dirichlet
   -> equation becomes -u''=aS
-  -> regularity of f generates admissibility conditions
+  -> boundedness/contact of f generates admissibility conditions
 
 first admissibility C0[S]=integral aS=0
   -> balanced source basis B_q=x^(2q)-3/((2q+1)(2q+3))
   -> y=x^2 psi span equals ker C0
 
-higher regularity R
+higher endpoint-contact R
   -> balanced classes B_(R,q)=a^R[y^q-c_(R,q)]
   -> generalized rows chi_(R,k)
   -> primitive power m=R+2
@@ -496,7 +496,7 @@ higher regularity R
 The strongest formal result is:
 
 ```text
-The observed projection hierarchy is the R=0 regularity-adapted row family
+The observed projection hierarchy is the R=0 endpoint-contact/admissibility row family
 for the transformed problem u=a^3f, where boundedness of f=u/a^3 produces
 the first admissibility kernel integral aS=0.
 ```
@@ -562,3 +562,4 @@ a physical reason boundedness R=0 is the selected target
 ```
 
 Until one appears, do not promote the hierarchy to physics.
+

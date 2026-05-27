@@ -73,7 +73,8 @@ symmetric metric perturbation in 4D -> 2 massless spin-2 degrees of freedom
 metric source coupling gauge invariance -> partial_a T^ab = 0
 ```
 
-This supports the metric as the correct universal lift variable, while still
+Under a local massless spin-2 lift with universal conserved-source coupling,
+this supports the metric as the selected weak-field variable, while still
 leaving the ontology-to-metric derivation open.
 
 ## Projection Ladder to Boundary Flux
@@ -82,7 +83,7 @@ Proof `113` validates the exact chain:
 
 ```text
 r_k = (2k-1)/(2k+3)
-  = R=0 regularity-ladder ratio
+  = R=0 endpoint-contact/admissibility ratio
   -> m=2 primitive level
   -> u=a^3 f transform
   -> L*_w L[f]=S equivalent to -u''=aS
@@ -97,11 +98,12 @@ and geometric boundary-flux interpretation.
 The proof chain now establishes:
 
 ```text
-1. The original ratio is a regularity/admissibility ratio.
+1. The original ratio is an endpoint-contact/admissibility ratio.
 2. The admissibility defect is a boundary-flux quantity.
 3. Boundary flux in three spatial dimensions gives the inverse-square field.
 4. The scalar field lifts to the Newtonian sector of linearized geometry.
-5. Linearized geometry requires the Fierz-Pauli / linearized Einstein operator.
+5. The standard massless spin-2 lift uses the Fierz-Pauli / linearized
+   Einstein operator.
 6. Einstein-Hilbert contains that linearized operator.
 7. Under the Lovelock gate, EH is the unique four-dimensional nonlinear local
    metric completion up to Lambda and topological terms.
@@ -134,7 +136,7 @@ only matching its weak-field boundary flux.
 The direction is now clear:
 
 ```text
-regularity ladder
+endpoint-contact/admissibility ladder
   -> boundary flux
   -> scalar inverse-square bridge
   -> linearized metric geometry

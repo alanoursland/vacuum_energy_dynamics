@@ -1,13 +1,13 @@
 # Projection Origin Probe — LLM Distill Manifest
 
-This packet is a curated compression of the uploaded `projection_origin_probe` markdown corpus. It is not a concatenation and not a line-extraction dump. It keeps the mathematical spine, conclusions, guardrails, and source breadcrumbs needed for another LLM to continue the work without inheriting the full discussion bulk.
+This packet is a curated compression of the uploaded `projection_origin_probe` markdown corpus. It is not a concatenation and not a line-extraction dump. It keeps the mathematical spine, conclusions, guardrails, and source breadcrumbs needed to continue the work without inheriting the full discussion bulk.
 
 ## Files in this packet
 
 - `00_manifest.md`: packet map, source map, and use guidance.
 - `01_core_math_packet.md`: definitions, identities, operators, transforms, admissibility rows, balanced bases, and determinant/invertibility facts.
 - `02_results_conclusions.md`: established results, negative results, interpretation limits, and open targets.
-- `03_llm_research_seed.md`: the smallest practical file to hand to another LLM for new math work.
+- `03_llm_research_seed.md`: the smallest practical file to use as a seed for new math work.
 - `04_speculation_quarantine.md`: speculative physical readings, isolated from the formal results.
 
 ## Recommended use

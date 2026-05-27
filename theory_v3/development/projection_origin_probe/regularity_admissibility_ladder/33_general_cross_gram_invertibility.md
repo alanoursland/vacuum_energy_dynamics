@@ -3,7 +3,7 @@
 ## Purpose
 
 This report tests the cross-Gram invertibility mechanism for the generalized
-regularity row family.
+endpoint-contact row family.
 
 ## Objects
 
@@ -65,7 +65,7 @@ produce an invertible cross-Gram matrix.
 Together with the kernel theorem, this supports the general picture:
 
 ```text
-regularity level R
+endpoint-contact level R
   -> adapted row family chi_(R,k)
   -> balanced source basis y^q-c_(R,q)
   -> nondegenerate finite coordinate pairing.
