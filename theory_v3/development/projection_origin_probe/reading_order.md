@@ -32,6 +32,8 @@ overview.md
 conclusion.md
 regularity_admissibility_ladder/34_ladder_conclusion_report.md
 field_search_survivor_audit/7_corrected_provenance_summary.md
+field_search_survivor_audit/8_mathematical_context_for_rk.md
+field_search_survivor_audit/9_archive_to_math_interpretation.md
 source_safety_gate/7_source_safety_gate_status.md
 boundary_flux_field_bridge/75_scalar_bridge_final_status.md
 geometric_field_lift/97_geometric_lift_final_status.md
@@ -112,6 +114,8 @@ Use:
 
 ```text
 field_search_survivor_audit/7_corrected_provenance_summary.md
+field_search_survivor_audit/8_mathematical_context_for_rk.md
+field_search_survivor_audit/9_archive_to_math_interpretation.md
 ```
 
 This folder connects the focused proof chain back to the archived search tree.
