@@ -57,6 +57,19 @@ vacuum_interval_directional_probe_origin/12_directional_selector_tensor_gate_sta
 vacuum_interval_directional_probe_origin/18_metric_origin_gate_status.md
 vacuum_interval_directional_probe_origin/24_hessian_origin_status.md
 vacuum_interval_directional_probe_origin/25_directional_probe_conclusion.md
+torsion_defect_exclusion/proof_chain_plan.md
+torsion_defect_exclusion/6_reduced_torsion_gate_status.md
+torsion_defect_exclusion/12_torsion_source_ledger_status.md
+torsion_defect_exclusion/18_connection_split_status.md
+torsion_defect_exclusion/24_action_branch_status.md
+torsion_defect_exclusion/29_torsion_defect_exclusion_conclusion.md
+vacuum_dimension_selector/proof_chain_plan.md
+vacuum_dimension_selector/5_flux_dimension_gate_status.md
+vacuum_dimension_selector/10_time_channel_status.md
+vacuum_dimension_selector/15_polarization_selector_status.md
+vacuum_dimension_selector/20_action_dimension_status.md
+vacuum_dimension_selector/25_boundary_dimension_status.md
+vacuum_dimension_selector/29_vacuum_dimension_selector_conclusion.md
 ```
 
 This gives the whole state of the work without reading every proof script.
@@ -347,6 +360,105 @@ quadratic form is metric-like; first variation and higher-order response must
 be separately routed. The conclusion closes the folder as a conditional
 tensor-boundary-data bridge and identifies `torsion_defect_exclusion` as the
 next selector folder.
+
+### 12. Torsion Defect Exclusion
+
+Then read:
+
+```text
+torsion_defect_exclusion/
+```
+
+Use:
+
+```text
+torsion_defect_exclusion/proof_chain_plan.md
+torsion_defect_exclusion/6_reduced_torsion_gate_status.md
+torsion_defect_exclusion/12_torsion_source_ledger_status.md
+torsion_defect_exclusion/18_connection_split_status.md
+torsion_defect_exclusion/24_action_branch_status.md
+torsion_defect_exclusion/29_torsion_defect_exclusion_conclusion.md
+```
+
+This folder tests the next selector:
+
+```text
+When is the torsion-free Einstein-Hilbert branch justified?
+```
+
+It starts from the already-proved reduced gate:
+
+```text
+tau = J_total/(24 mu)
+```
+
+and makes the key condition explicit:
+
+```text
+torsion-free stationarity requires J_total = 0.
+```
+
+The folder should either prove torsion-source absence from the vacuum ontology
+or route torsion as an explicit additional field branch. The first status
+report localizes the reduced torsion gate: `tau = 0` is stationary iff
+`J_total = 0`, nonzero torsion source leaves a reduced correction, and the
+existing scalar projection and symmetric interval channels cannot hide that
+source. The second status report classifies the possible source routes:
+spin-like sources require antisymmetric/internal-angular data, rotational
+defects require holonomy or closure failure, auxiliary torsion requires an
+explicit carrier, and cancellation must be structural rather than unexplained
+tuning. The third status report separates metric data from connection data:
+metric compatibility preserves interval data but does not remove torsion,
+torsion-free metric compatibility selects Levi-Civita, and contorsion carries
+the torsion branch when it is not excluded. The fourth status report makes the
+action branch explicit: `K=0` and `J_total=0` gives the Levi-Civita/EH branch,
+while sourced torsion gives a torsion-extended branch with source corrections
+and boundary/current gates. The conclusion closes the folder with a conditional
+selector: if spin, defect, and auxiliary torsion sources are absent, positive
+torsion stiffness selects `tau=0`; if any source survives, torsion is an
+explicit additional field branch. The next selector is `vacuum_dimension_selector`.
+
+### 13. Vacuum Dimension Selector
+
+Then read:
+
+```text
+vacuum_dimension_selector/
+```
+
+Use:
+
+```text
+vacuum_dimension_selector/proof_chain_plan.md
+vacuum_dimension_selector/5_flux_dimension_gate_status.md
+vacuum_dimension_selector/10_time_channel_status.md
+vacuum_dimension_selector/15_polarization_selector_status.md
+vacuum_dimension_selector/20_action_dimension_status.md
+vacuum_dimension_selector/25_boundary_dimension_status.md
+vacuum_dimension_selector/29_vacuum_dimension_selector_conclusion.md
+```
+
+This folder tests the next selector:
+
+```text
+Why 3 spatial dimensions plus 1 time dimension?
+```
+
+The plan starts from existing consistency gates:
+
+```text
+inverse-square flux -> n=3;
+one clock channel -> D=n+1;
+two massless spin-2 polarizations -> D=4;
+4D Lovelock gate -> EH is the unique dynamical local metric curvature term.
+```
+
+The folder now closes as a conditional selector chain. It proves that the
+flux-plus-clock gate, the two-polarization spin-2 gate, the four-dimensional
+Lovelock gate, and the three-boundary induced-metric gate all converge on
+`D=4`. It also records the dependencies explicitly: time, Lorentzian signature,
+massless spin-2 metric lift, diffeomorphism invariance, second-order locality,
+and boundary source origin are not derived inside this folder.
 
 ## Optional Deep-Dive Order
 
