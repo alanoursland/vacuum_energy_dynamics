@@ -779,6 +779,81 @@ This folder should be read after `boundary_reduction_origin_gate` and
 solved boundary-admissibility coefficient and moves the ontology question
 upstream to the structure being reduced.
 
+### 19 GR Boundary Reduction Measurement
+
+Then read:
+
+```text
+gr_boundary_reduction_measurement/
+````
+
+Use:
+
+```text
+gr_boundary_reduction_measurement/proof_chain_plan.md
+gr_boundary_reduction_measurement/5_compactification_q_contact.md
+gr_boundary_reduction_measurement/6_boundary_variable_changes_contact.md
+gr_boundary_reduction_measurement/8_test_pairing_weight_shift.md
+gr_boundary_reduction_measurement/10_projection_moment_ladder_ratio.md
+gr_boundary_reduction_measurement/14_gr_can_be_embedded_as_R0_conditionally.md
+gr_boundary_reduction_measurement/15_Rgr_requires_projection_embedding.md
+gr_boundary_reduction_measurement/20_measurement_status_conclusion.md
+```
+
+This folder completes the scalar GR boundary-comparison scaffold by asking
+whether the contact-class integer
+
+```text
+R_GR
+```
+
+is actually determined by weak-field GR's scalar boundary reduction.
+
+The folder verifies the ordinary physical scalar ledger:
+
+```text
+weak-field GR -> Poisson equation -> finite Gauss flux -> 1/r exterior.
+```
+
+It also verifies the projection ladder:
+
+```text
+C_R[P] = ∫_0^1 P(y)(1-y)^(R+1)y^(-1/2) dy,
+r_(R,k) = (2k - 1)/(2k + 2R + 3).
+```
+
+The observed projection-origin class is
+
+```text
+R = 0,
+r_(0,k) = (2k - 1)/(2k + 3).
+```
+
+The main result is conservative:
+
+```text
+Weak-field GR scalar boundary data fixes the physical finite-flux class, but it
+does not by itself specify the projection contact-class integer R.
+```
+
+The reason is that `R` belongs to the compactified moment/test pairing. It can
+shift under boundary-variable choice, field rescaling, or additional endpoint
+contact factors in the projection pairing. Thus `R_GR` is measured only after a
+specific projection embedding is chosen.
+
+If the GR scalar ledger is embedded using the same compactified moment
+functional as the original projection problem, then by that embedding
+
+```text
+R_GR = 0.
+```
+
+This establishes GR-compatible scalar boundary reduction, not a novel boundary
+condition. It also does not prove that the vacuum ontology is idle: any
+distinctive ontology work remains upstream, in the selection of the quadratic
+metric branch, calibration-coherent transport, EH/GHY variation, matter
+coupling, or the scalar weak-field reduction itself.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
