@@ -979,6 +979,72 @@ This folder should be read after the scalar ladder and GR boundary comparison
 folders, and before nonlinear constraint closure or radiative boundary-memory
 work.
 
+### 22 Boundary Symplectic Closure
+
+Then read:
+
+```text
+boundary_symplectic_closure/
+````
+
+Use:
+
+```text
+boundary_symplectic_closure/proof_chain_plan.md
+boundary_symplectic_closure/2_boundary_potential_symplectic_current.md
+boundary_symplectic_closure/4_on_shell_symplectic_conservation.md
+boundary_symplectic_closure/7_charge_integrability_condition.md
+boundary_symplectic_closure/8_nonintegrable_flux_witness.md
+boundary_symplectic_closure/9_coulomb_charge_radiative_flux_split.md
+boundary_symplectic_closure/13_boundary_tensor_pair_count.md
+boundary_symplectic_closure/16_no_double_count_charge_flux_ledger.md
+boundary_symplectic_closure/20_boundary_symplectic_closure_conclusion.md
+```
+
+This folder tests the dynamic boundary ledger that sits beyond scalar
+Gauss-charge accounting.
+
+The main distinction is:
+
+```text
+Coulombic / constraint boundary charge
+  !=
+radiative / symplectic boundary flux.
+```
+
+The folder starts from ordinary variational boundary terms. A scalar gradient
+energy produces a bulk equation plus a boundary potential. That boundary
+potential generates a symplectic current, and the symplectic current is
+antisymmetric and conserved on shell.
+
+The folder then checks Hamiltonian differentiability and boundary generator
+cancellation. It distinguishes integrable boundary charges from non-integrable
+boundary fluxes, and it records that a radiative flux can pass through the
+boundary while a static monopole charge remains unchanged.
+
+It also connects this to the scalar ladder limitation:
+
+```text
+scalar r_k ledger -> one scalar charge channel;
+tensor/radiative boundary phase space -> canonical pairs.
+```
+
+For a three-dimensional boundary, symmetric tensor data has six configuration
+components and twelve phase-space components. Scalar trace data supplies only
+one configuration channel.
+
+The conclusion is:
+
+```text
+The scalar boundary ledger is a constraint ledger.
+The boundary symplectic structure is the dynamical ledger.
+```
+
+This folder should be read after `weyl_sector_boundary_gate` and before
+radiative memory or nonlinear constraint-closure work. It explains how boundary
+data can be dynamically rich even though the original scalar boundary reduction
+only sees the trace/monopole sector.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
