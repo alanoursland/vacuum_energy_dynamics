@@ -854,6 +854,70 @@ distinctive ontology work remains upstream, in the selection of the quadratic
 metric branch, calibration-coherent transport, EH/GHY variation, matter
 coupling, or the scalar weak-field reduction itself.
 
+### 20 Matter Action Origin Gate
+
+Then read:
+
+```text
+matter_action_origin_gate/
+````
+
+Use:
+
+```text
+matter_action_origin_gate/proof_chain_plan.md
+matter_action_origin_gate/4_stress_variation_normalization.md
+matter_action_origin_gate/7_conformal_trace_only_gate.md
+matter_action_origin_gate/10_null_radiation_trace_failure.md
+matter_action_origin_gate/13_nonmetric_channel_routing_gate.md
+matter_action_origin_gate/15_diffeomorphism_variation_conservation_gate.md
+matter_action_origin_gate/21_scalar_boundary_cannot_set_full_matter_coupling.md
+matter_action_origin_gate/23_matter_action_origin_status.md
+matter_action_origin_gate/24_matter_action_origin_gate_conclusion.md
+```
+
+This folder tests the source-side gate left open after the scalar boundary
+comparison:
+
+```text
+Does shared interval dependence force universal metric stress coupling,
+or is matter coupling still imported?
+```
+
+The folder proves the conditional bridge:
+
+```text
+matter action uses shared metric interval
+  -> metric variation produces stress tensor source.
+```
+
+It verifies proper-time variation, volume-factor variation, inverse-metric
+variation, scalar-field stress, point-particle stress, stress-additivity, and
+the diffeomorphism/conservation route. It also checks the limitations of
+trace-only coupling: conformal response sees only the stress trace, traceless
+stress is invisible to conformal variation, and null radiation can have zero
+trace while still carrying nonzero energy.
+
+The folder also audits source purity. Species-dependent metric factors leave
+observable coupling residuals, and nonmetric matter channels introduce extra
+source ledgers unless explicitly routed as additional fields.
+
+The conclusion is conditional:
+
+```text
+If matter actions use the shared metric interval and volume structure, then
+universal stress coupling is not an independent extra force law.
+```
+
+But the folder does not derive microscopic matter itself:
+
+```text
+vacuum ontology -> existence and form of matter action
+```
+
+remains open. Thus this folder strengthens the metric-coupling bridge while
+leaving the deeper matter-origin problem as a separate frontier.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
