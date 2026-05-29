@@ -515,6 +515,67 @@ Lovelock gate, and the three-boundary induced-metric gate all converge on
 massless spin-2 metric lift, diffeomorphism invariance, second-order locality,
 and boundary source origin are not derived inside this folder.
 
+
+### 15. Lambda Branch Selector
+
+Then read:
+
+```text
+lambda_branch_selector/
+````
+
+Use:
+
+```text
+lambda_branch_selector/proof_chain_plan.md
+lambda_branch_selector/5_asymptotic_flat_selects_lambda_zero.md
+lambda_branch_selector/10_trace_equation_lambda_shift.md
+lambda_branch_selector/14_finite_flux_boundary_condition_gate.md
+lambda_branch_selector/15_lambda_requires_global_or_auxiliary_route.md
+lambda_branch_selector/21_branch_intersection_selector.md
+lambda_branch_selector/24_lambda_branch_selector_conclusion.md
+```
+
+This folder tests the vacuum-baseline selector left open after the scalar
+bridge, metric lift, quadratic response selector, torsion audit, and dimension
+selector:
+
+```text
+Why the asymptotically flat / zero-Lambda branch, and what changes when Lambda
+is nonzero?
+```
+
+The folder separates local connection strain from vacuum baseline density. It
+checks that Lambda behaves as a volume baseline term, not as quadratic
+connection strain; that nonzero Lambda produces a different radial weak-field
+asymptotic class; and that finite asymptotically flat Gauss flux selects
+
+```text
+Lambda = 0.
+```
+
+The folder also records the complementary fact that constant Lambda is allowed
+by the metric branch: it is compatible with metric compatibility, Bianchi
+structure, trace-shift algebra, and Lovelock/EH action allowance. Thus nonzero
+Lambda is not mathematically forbidden by the metric action class; it is a
+different global/asymptotic branch.
+
+The conclusion is conditional:
+
+```text
+The zero-Lambda branch is selected by asymptotically flat inverse-square
+boundary normalization and finite conserved flux. Nonzero Lambda remains an
+allowed vacuum-baseline branch, but it changes the asymptotic class and
+requires separate physical routing or a relaxation mechanism if it is to be
+explained rather than chosen.
+```
+
+This folder should be read after the dimension selector and quadratic response
+selector. It does not derive the observed cosmological constant, and it does
+not prove Lambda must vanish from pure ontology. It isolates the branch
+condition and the missing relaxation problem.
+
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
