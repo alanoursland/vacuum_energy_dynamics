@@ -918,6 +918,67 @@ vacuum ontology -> existence and form of matter action
 remains open. Thus this folder strengthens the metric-coupling bridge while
 leaving the deeper matter-origin problem as a separate frontier.
 
+### 21 Weyl Sector Boundary Gate
+
+Then read:
+
+```text
+weyl_sector_boundary_gate/
+````
+
+Use:
+
+```text
+weyl_sector_boundary_gate/proof_chain_plan.md
+weyl_sector_boundary_gate/2_trace_projection_kernel_dimension.md
+weyl_sector_boundary_gate/4_scalar_monopole_projection_gate.md
+weyl_sector_boundary_gate/6_ricci_weyl_component_count_4d.md
+weyl_sector_boundary_gate/8_tt_tensor_trace_and_divergence_gate.md
+weyl_sector_boundary_gate/10_electric_weyl_tidal_trace_zero.md
+weyl_sector_boundary_gate/14_boundary_tensor_component_requirement.md
+weyl_sector_boundary_gate/17_scalar_ladder_scope_limit.md
+weyl_sector_boundary_gate/20_weyl_sector_boundary_gate_conclusion.md
+```
+
+This folder tests what the scalar boundary ledger cannot see.
+
+The main result is:
+
+```text
+scalar r_k boundary/admissibility ladder
+  -> trace / monopole / Newtonian scalar sector only.
+```
+
+The folder proves that trace projection kills traceless tensors, scalar
+monopole averaging kills higher angular modes, higher multipoles carry zero
+net scalar flux, and TT/radiative tensors can have zero trace and zero
+longitudinal divergence while still carrying nonzero invariant content.
+
+It also checks the component gap. On a three-dimensional boundary, a symmetric
+tensor has
+
+```text
+m(m+1)/2 = 6
+```
+
+components, while scalar trace data supplies only one. The missing traceless
+boundary sector has five components. In four spacetime dimensions, the Weyl
+component count is ten, and the massless spin-2 TT sector has two propagating
+polarizations.
+
+The conclusion is:
+
+```text
+The scalar boundary is blind to Weyl/TT data because it is scalar, not because
+all boundary data is blind.
+```
+
+Recovering the Weyl/traceless/radiative sector requires tensorial directional
+boundary data, shear-sensitive probes, or boundary symplectic/radiative flux.
+This folder should be read after the scalar ladder and GR boundary comparison
+folders, and before nonlinear constraint closure or radiative boundary-memory
+work.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
