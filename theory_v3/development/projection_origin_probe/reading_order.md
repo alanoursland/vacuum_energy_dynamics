@@ -576,6 +576,66 @@ not prove Lambda must vanish from pure ontology. It isolates the branch
 condition and the missing relaxation problem.
 
 
+### 16 Scalar Ladder Geometric Embedding
+
+Then read:
+
+```text
+scalar_ladder_geometric_embedding/
+````
+
+Use:
+
+```text
+scalar_ladder_geometric_embedding/proof_chain_plan.md
+scalar_ladder_geometric_embedding/6_monopole_projection_legendre_gate.md
+scalar_ladder_geometric_embedding/12_symmetric_tensor_rank_gap.md
+scalar_ladder_geometric_embedding/15_polarization_recovers_metric_components.md
+scalar_ladder_geometric_embedding/17_tt_mode_scalar_projection_zero.md
+scalar_ladder_geometric_embedding/23_scalar_shadow_status.md
+scalar_ladder_geometric_embedding/24_scalar_ladder_geometric_embedding_conclusion.md
+```
+
+This folder records the correct geometric placement of the original scalar
+admissibility ladder. It does not re-prove the `r_k` ladder. Instead, it shows
+that the scalar projection hierarchy is the trace / isotropic / monopole shadow
+of the later directional metric branch.
+
+The folder proves that scalar trace data can encode
+
+```text
+Tr(H)/m
+```
+
+for a symmetric bilinear response `H`, but cannot recover traceless shear,
+off-diagonal metric components, higher multipoles, or TT radiative data. It
+checks that angular scalar averaging keeps only the `l=0` monopole sector, that
+higher Legendre modes have zero net scalar flux, and that a symmetric tensor
+on an `m`-dimensional boundary has rank
+
+```text
+m(m+1)/2
+```
+
+while the scalar trace channel supplies only one component. The per-mode rank
+gap is therefore
+
+```text
+m(m+1)/2 - 1.
+```
+
+The conclusion is conditional:
+
+```text
+scalar admissibility -> scalar trace/monopole sector;
+directional quadratic probes -> full metric tensor sector.
+```
+
+This folder should be read after `quadratic_response_selector` and before
+affine/torsion, dimension, or action-closure selectors. It protects the scalar
+ladder from overpromotion: the ladder is the first visible projection shadow of
+the relational geometry, not the whole geometry by itself.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
