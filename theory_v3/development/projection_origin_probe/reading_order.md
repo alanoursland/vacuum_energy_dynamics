@@ -636,6 +636,71 @@ affine/torsion, dimension, or action-closure selectors. It protects the scalar
 ladder from overpromotion: the ladder is the first visible projection shadow of
 the relational geometry, not the whole geometry by itself.
 
+### 17 Boundary Reduction Origin Gate
+
+Then read:
+
+```text
+boundary_reduction_origin_gate/
+````
+
+Use:
+
+```text
+boundary_reduction_origin_gate/proof_chain_plan.md
+boundary_reduction_origin_gate/6_rk_moment_kernel_gate.md
+boundary_reduction_origin_gate/7_primitive_boundary_regular_identity.md
+boundary_reduction_origin_gate/8_general_contact_ladder_gate.md
+boundary_reduction_origin_gate/13_enclosing_surface_invariance_gate.md
+boundary_reduction_origin_gate/18_beta_moment_standard_boundary_analysis.md
+boundary_reduction_origin_gate/23_boundary_reduction_status.md
+boundary_reduction_origin_gate/24_boundary_reduction_origin_gate_conclusion.md
+```
+
+This folder clarifies the interpretive status of the boundary throughout the
+projection and field-bridge chain.
+
+The main point is:
+
+```text
+boundary = reduction / ledger / admissibility interface;
+physics = the local, bulk, or relational structure that generates the boundary data.
+```
+
+The folder proves that boundary terms arise from ordinary integration by parts,
+bulk variation, compactification, Gauss flux, endpoint contact, and finite
+moment-kernel admissibility. It places
+
+```text
+r_k = (2k - 1)/(2k + 3)
+```
+
+inside standard boundary/admissibility analysis. The ratio appears as a
+moment-kernel coefficient, a primitive integration-by-parts coefficient, and
+the base case of the endpoint-contact ladder
+
+```text
+r_(R,k) = (2k - 1)/(2k + 2R + 3).
+```
+
+The folder also checks that conserved flux is independent of the enclosing
+surface when no source crosses the shell, that compactified endpoints can
+represent asymptotic infinity, and that quadratic contact is a flux-silence
+condition rather than a source-origin law.
+
+The conclusion is interpretive but proof-backed:
+
+```text
+r_k is a real boundary-reduction/admissibility object.
+It is not an independent physical ontology by itself.
+```
+
+This folder should be read after the scalar ladder/geometric embedding folders
+and before deeper source, action, or selector claims that use boundary data.
+It protects the project from accidentally saying that the underlying physics
+is “the boundary” merely because the reduced analysis naturally produces
+boundary terms, endpoint ratios, and flux ledgers.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
