@@ -701,6 +701,84 @@ It protects the project from accidentally saying that the underlying physics
 is “the boundary” merely because the reduced analysis naturally produces
 boundary terms, endpoint ratios, and flux ledgers.
 
+### 18 GR Boundary Reduction Comparison
+
+Then read:
+
+```text
+gr_boundary_reduction_comparison/
+````
+
+Use:
+
+```text
+gr_boundary_reduction_comparison/proof_chain_plan.md
+gr_boundary_reduction_comparison/5_finite_flux_asymptotic_selector.md
+gr_boundary_reduction_comparison/7_rk_moment_kernel_ratio.md
+gr_boundary_reduction_comparison/8_general_contact_ladder_ratio.md
+gr_boundary_reduction_comparison/14_gr_boundary_same_universality_condition.md
+gr_boundary_reduction_comparison/18_same_boundary_not_no_work_gate.md
+gr_boundary_reduction_comparison/21_tensor_sector_not_decided_by_scalar_boundary.md
+gr_boundary_reduction_comparison/24_gr_boundary_reduction_comparison_conclusion.md
+```
+
+This folder compares the projection-origin scalar boundary/admissibility
+ledger with the ordinary weak-field GR/Newtonian scalar reduction.
+
+The folder does not claim that the scalar projection hierarchy derives GR.
+Instead, it asks a narrower question:
+
+```text
+After the same radial scalar reduction, compactification, field normalization,
+and moment pairing, does the weak-field GR boundary ledger land in the same
+admissibility/contact class as the projection-origin r_k ladder?
+```
+
+The folder checks the standard weak-field scalar chain:
+
+```text
+Poisson equation
+  -> radial Gauss flux
+  -> exterior 1/r finite-flux class
+  -> compactified beta-moment admissibility comparison.
+```
+
+It then compares that ledger to the projection-origin coefficient
+
+```text
+r_k = (2k - 1)/(2k + 3),
+```
+
+which is the `R=0` base case of
+
+```text
+r_(R,k) = (2k - 1)/(2k + 2R + 3).
+```
+
+The important interpretive result is:
+
+```text
+Matching the GR weak-field scalar boundary ledger would not mean the vacuum
+ontology is doing no work. It would mean the ontology is not doing distinctive
+work inside the already-reduced scalar boundary algebra. Any distinctive work
+must be upstream: selecting the metric/quadratic interval structure,
+calibration-coherent transport, EH/GHY variational class, matter coupling, or
+the scalar weak-field reduction itself.
+```
+
+The folder also records the diagnostic for genuine boundary-condition novelty:
+if a fully normalized GR reduction produced a different contact class `R != 0`,
+the difference would appear directly in
+
+```text
+r_(R,k) - r_(0,k).
+```
+
+This folder should be read after `boundary_reduction_origin_gate` and
+`scalar_ladder_geometric_embedding`. It stabilizes the status of `r_k` as a
+solved boundary-admissibility coefficient and moves the ontology question
+upstream to the structure being reduced.
+
 ## Optional Deep-Dive Order
 
 If you want to audit the historical search process rather than the current
