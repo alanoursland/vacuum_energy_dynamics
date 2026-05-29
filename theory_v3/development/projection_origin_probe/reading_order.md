@@ -361,7 +361,62 @@ be separately routed. The conclusion closes the folder as a conditional
 tensor-boundary-data bridge and identifies `torsion_defect_exclusion` as the
 next selector folder.
 
-### 12. Torsion Defect Exclusion
+### 12. Quadratic Response Selector
+
+Then read:
+
+```text
+quadratic_response_selector/
+````
+
+Use:
+
+```text
+quadratic_response_selector/proof_chain_plan.md
+quadratic_response_selector/6_hessian_vs_exact_quadratic_status.md
+quadratic_response_selector/12_finsler_obstruction_status.md
+quadratic_response_selector/18_null_cone_stability_status.md
+quadratic_response_selector/24_metric_branch_selection_status.md
+quadratic_response_selector/29_quadratic_response_selector_conclusion.md
+```
+
+This folder tests the central selector exposed by the directional interval
+program:
+
+```text
+When does a local directional interval response actually define a metric?
+```
+
+The folder separates exact quadratic response from mere local Hessian
+approximation. It proves that the parallelogram identity is equivalent to
+quadratic/bilinear metric reconstruction, that polarization recovers a
+symmetric bilinear form only on the exact quadratic branch, and that smooth
+stationary response supplies only a second-order Hessian approximation unless
+higher-order directional terms are suppressed or routed.
+
+The folder also constructs explicit nonquadratic obstruction witnesses. These
+show that quartic/Finsler-like directional response breaks exact polarization,
+introduces scale-dependent effective metrics, destabilizes universal null-cone
+structure, and prevents a single direction-independent metric tensor from
+owning all interval comparison data.
+
+The conclusion is conditional:
+
+```text
+pseudo-Riemannian metric geometry is selected only after the local response
+satisfies the exact quadratic/parallelogram gate, or after all nonquadratic
+directional response is routed as explicit extra structure rather than hidden
+inside the metric branch.
+```
+
+This folder should be read before the affine/torsion and dimension selectors,
+because metric compatibility, Levi-Civita transport, EH/GHY boundary variation,
+and spin-2 polarization counting all assume that the directional response has
+already collapsed to the quadratic metric branch.
+
+
+
+### 13. Torsion Defect Exclusion
 
 Then read:
 
@@ -418,7 +473,7 @@ selector: if spin, defect, and auxiliary torsion sources are absent, positive
 torsion stiffness selects `tau=0`; if any source survives, torsion is an
 explicit additional field branch. The next selector is `vacuum_dimension_selector`.
 
-### 13. Vacuum Dimension Selector
+### 14. Vacuum Dimension Selector
 
 Then read:
 
