@@ -1,6 +1,26 @@
 # Conclusion
 
-## Final Status
+> **STATUS UPDATE (superseded in part by later work).** This document records
+> the pause point after the first four root-level notes. Its central open
+> item — "m = 2 is not independently selected" — was subsequently **closed**:
+>
+> - `03_regularity_admissibility_ladder/` (proofs 13, 14, 27, 31, 32, 34)
+>   proves m = R + 2 and selects the observed m = 2 as the R = 0
+>   bounded/non-contact admissibility level of f = u/a^3 under the
+>   transformed Dirichlet problem -u'' = aS.
+> - `17_boundary_reduction_origin_gate/11` and
+>   `18_gr_boundary_reduction_comparison/10` prove boundary flux silence
+>   fails at m = 1 and passes at m = 2, forcing m >= 2 with minimality
+>   selecting m = 2.
+> - `27_assumption_ledger_final_audit/1_rk_closed_status.md` records the
+>   final ledger status: r_k CLOSED as the R = 0 moment-kernel coefficient.
+>
+> What remains open is one level up (why this variational problem /
+> projection embedding), which is routed to the vacuum strain functional
+> question. See `summary/02_results_conclusions.md` and
+> `research_synthesis/` for the current status.
+
+## Final Status (as of the original pause point)
 
 This branch should pause here.
 

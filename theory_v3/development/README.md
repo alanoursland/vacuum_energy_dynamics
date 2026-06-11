@@ -6,6 +6,7 @@
 - [reduced_exterior_mode_program_summary_v2.md](reduced_exterior_mode_program_summary_v2.md)
 - [background_geometry/](background_geometry/README.md)
 - [field_equation_candidates/](field_equation_candidates/README.md)
+- [field_equation_trials/](field_equation_trials/00_introduction.md) — active: candidate functionals vs. the gate stack
 - [intuition_models/](intuition_models/README.md)
 - [lab_reports/](lab_reports/README.md)
 - [ontology_and_mechanism/](ontology_and_mechanism/README.md)
