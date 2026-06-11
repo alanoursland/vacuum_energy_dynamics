@@ -336,7 +336,14 @@ a concrete object was on the table.
   falsifying a plausible conjecture.)
 - 093–097: row-sign normalization, Schur-complement pivot identities, ratio
   bounds, and odd/even parity gap structure (interlacing zig-zag through N=30).
-  All-order theorems remain open; the structure is mapped.
+  All-order theorems remained open at archive time. (Later note: the
+  regularity-admissibility ladder in
+  `projection_origin_probe/03_regularity_admissibility_ladder/` — proofs 27,
+  29, 32, 33 — supplies the conceptual resolution: A_N is the cross-Gram
+  matrix of two bases of the same admissibility kernel under a positive
+  pairing, hence invertible for every N; positivity was never protected
+  because a cross-Gram is not a Gram. The same ladder proves m=2 is selected
+  as the R=0 bounded/non-contact admissibility level via u=a³f, −u″=aS.)
 - 098–099: role audit. The hierarchy is licensed only as an
   **AUXILIARY_ADMISSIBILITY_CANDIDATE** — explicitly *not* J_curv, H_curv,
   H_exch, interface smoothing, total burden, or a source law. 099 then finds
