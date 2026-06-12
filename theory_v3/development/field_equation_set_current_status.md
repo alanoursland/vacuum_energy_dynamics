@@ -105,6 +105,7 @@ through the positive channel.
 | G02/G03 | **PASS** — sector signature complete |
 | 008 (radiative bootstrap) | **SUCCESS** — $K_T$ derived; zero matched coefficients remain |
 | E1 (sharp-source gate) | **UNDERDETERMINED** (constraint-recording): reduced VED = GR at boundaries; smooth-boundary intuition ⟺ $\beta\neq0$ in $K_{\text{strain}}$, $\ell^*=\sqrt{\beta}$ |
+| E2 (observable face of $\ell^*$) | Boundary smoothing ⟺ bench-top Yukawa (exact identity): $\ell^*<38.6\,\mu$m at $\|\alpha\|=1$ today; NS-tidal/GW channel **KILLED** (shortfall $\ge 3\times10^7$); window coincides with the UFFT squeeze |
 
 **Data gates:** the 3-layer protocol is operational with verified
 anchors (Lee 2020, Tan 2020). Layer-2 Yukawa conversion done. Standing
@@ -145,8 +146,10 @@ Ordered by centrality:
 8. **Cosmology branch** — the κ-leak's large-scale counterpart;
    expansion-as-creation bookkeeping under P7′ at the limit.
 9. **Data program** — α(λ) curve digitization (manual artifacts with
-   instructions in `src_exp/dataexp`); template reanalysis for
-   non-Yukawa pressure shapes.
+   instructions in `src_exp/dataexp`) — **promoted to top priority by
+   E2**: the curves now constrain both $a_{\text{disc}}$ (UFFT squeeze)
+   and $\ell^*$ (the α=1/3 reading of the boundary-smoothing bound);
+   template reanalysis for non-Yukawa pressure shapes.
 10. **Housekeeping** — P8/T4 formal rewrite as theorems; UFFT remaining
     gates (G04 χ scalar safety; G20 Weyl² ghost check if a covariant
     coupling is retained).
