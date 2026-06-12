@@ -1,16 +1,20 @@
-# P7: Static Exterior Vacuum Compensation
+# Shadow P7: Static Exterior Vacuum Compensation
 
-> **STATUS UPDATE (2026-06-11).** P7 has been superseded as a primitive
-> commitment by **P7' (Static Frame Indifference)** — see
-> `p7_prime_static_frame_indifference.md`. Trial C3 established
-> (conditional on the probe's gates) that P7's content, AB = 1, is
-> exactly the metric shadow of the statement "static vacuum
-> configurations carry no energy current and no preferred frame in the
-> t-r plane." P7' also defines the expansion correction: real exteriors
-> embedded in an expanding cosmos satisfy AB - 1 = O(H_0 r/c), making
-> the kappa-leak a scaled prediction rather than a free worry. This
-> document is retained as the metric-level consequence and for the
-> theorem chain's references (T3 onward).
+> **STATUS: SHADOW (renamed 2026-06-12; superseded as primitive
+> 2026-06-11).** P7 is no longer a primitive commitment. Its content,
+> AB = 1, is the **metric shadow** of the adopted postulate **P7′
+> (Static Frame Indifference)** — see
+> `p7_prime_static_frame_indifference.md`. Trial C3 proved (conditional
+> on the probe's gates) that AB = 1 ⟺ "static vacuum configurations
+> carry no energy current and no preferred frame in the t-r plane."
+> Subsequent results strengthened the shadow: it is **exact** in any
+> pure-Λ epoch (Trial F1: Schwarzschild–de Sitter has AB = 1
+> identically), and the surviving cosmological correction is second
+> order, AB − 1 = (3/2)Ω_m(H₀r/c)² — not the earlier O(H₀r/c) estimate.
+> The shadow also became a selection principle: it forces the
+> four-derivative sector of the field equations to vanish (Trial E3).
+> This document is retained for the theorem chain's references (T3
+> onward) and as the metric-level statement of record.
 
 ## What This Postulate Says
 
