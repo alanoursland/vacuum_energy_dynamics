@@ -1,5 +1,28 @@
 # Lab Report: Trial A2 Weyl-Screening Gate (G26) vs Minimal Tidal Vacuum Nucleation
 
+> **SCOPE ADDENDUM (added after author review).** This kill applies to the
+> mechanism written in memo sections 15-19 (the tidal coupling
+> alpha_eff = alpha_0 - kappa_W * invariant and its dark-matter-bridge
+> phenomenology) and to nothing else. Author review after the run
+> established that those sections formalized BEYOND the underlying
+> intuition: the original idea was (a) boundary-relaxation in the Casimir
+> gap, (b) possibly a 2D configuration at extreme curvature (black-hole
+> cores), and (c) dark matter as the standing energy cost of maintaining
+> 3D structure -- with NO tidal trigger and NO phase transition at solar or
+> galactic scales. The tested tidal-threshold mechanism was a drafting
+> extrapolation (the curvature-as-boundary analogy), and this trial severed
+> exactly that extrapolation. Explicitly untouched: the Casimir/boundary
+> sector, the bulk-frustration -> Lambda sector, the single-well
+> extreme-curvature (BH core) case -- which survives G26 trivially, since
+> the up-set theorem permits nucleation confined to invariants above all
+> solar-system values -- and the author's standing-ledger intuition, now
+> registered as its own candidate:
+> `ontology_and_mechanism/standing_frustration_ledger.md` (Trial D).
+> This addendum is itself an instance of the failure mode documented in
+> `field_equation_candidates/ai_governance_validation_ideas.md` (drift
+> toward a cleaner, more dramatic story during drafting) being caught by
+> the gate system and corrected in the record.
+
 ## Experiment
 
 **Script:** `vacuum_forge/src/field_equation_trials/003_trial_A_ufft_gates/trial_A2_weyl_screening_gate.py`

@@ -275,6 +275,19 @@ dominates the two-body ledger**, and that is a calculation:
 
 ---
 
+### Trial D: Standing Frustration Ledger (registered post-A2)
+
+Source: `ontology_and_mechanism/standing_frustration_ledger.md`.
+
+The author's dark-sector intuition, distinguished from the memo's tidal
+nucleation (killed at G26, Trial A2): the dark sector as the standing
+energy cost of maintaining 3D structure — a ledger entry, no phase
+transition, no tidal trigger. Entry gate D-G1: a uniform standing cost is
+Lambda, not dark matter, so the candidate must first produce a mechanism
+making the frustration cost cluster like halos (candidate mechanisms
+D-M1..D-M4 in the note). The TVN-killing profile gate applies to this
+candidate with full force.
+
 ## 3. Gate Inventory (The Filter Stack)
 
 Every trial faces these, cheapest kills first. A gate failure is a recorded
