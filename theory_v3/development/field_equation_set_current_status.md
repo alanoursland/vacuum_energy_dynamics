@@ -103,6 +103,8 @@ through the positive channel.
 | A2 (UFFT tidal sector, TVN) | **KILLED** at G26 (up-set theorem, $4.7\times10^{33}$ hierarchy) — memo §15–19 only; the Casimir-gap core survives |
 | D1 (depletion-history halos) | **KILLED** parameter-free: budget/requirement $=\eta v^2/5c^2\sim10^{-7}$, shortfall ≥2000× at maximum generosity |
 | G02/G03 | **PASS** — sector signature complete |
+| 008 (radiative bootstrap) | **SUCCESS** — $K_T$ derived; zero matched coefficients remain |
+| E1 (sharp-source gate) | **UNDERDETERMINED** (constraint-recording): reduced VED = GR at boundaries; smooth-boundary intuition ⟺ $\beta\neq0$ in $K_{\text{strain}}$, $\ell^*=\sqrt{\beta}$ |
 
 **Data gates:** the 3-layer protocol is operational with verified
 anchors (Lee 2020, Tan 2020). Layer-2 Yukawa conversion done. Standing
@@ -115,11 +117,16 @@ $$29.9\,\mu\text{m} \;<\; a_{\text{disc}} \;<\; 38.6\,\mu\text{m}$$
 Ordered by centrality:
 
 1. **The covariant $K_{\text{strain}}$ parent.** Every reduced theorem
-   (C2, C3, G02, G03, B1, 008) is a limit of one covariant functional
-   not yet written down. This is *the* open problem; everything below
-   feeds it. New derived constraint (008): the parent's quadratic TT
-   expansion must yield $K_T=c^4/16\pi G$ relative to $N=c^4/8\pi G$ —
-   the relative shear/TT weight is no longer free.
+   (C2, C3, G02, G03, B1, 008, E1) is a limit of one covariant
+   functional not yet written down. This is *the* open problem;
+   everything below feeds it. Derived constraints so far: the static
+   normalization $N=c^4/8\pi G$; the quadratic TT expansion must yield
+   $K_T=c^4/16\pi G$ (008) — the relative shear/TT weight is not free;
+   and its higher-curvature content $\beta$ *is* the boundary-smoothness
+   question (E1): $\beta\neq0$ forces curvature continuity at matter
+   boundaries with derived smoothing scale $\ell^*=\sqrt{\beta}$ (a
+   testable deviation from GR, gated by G20/Ostrogradsky), while
+   $\beta=0$ makes VED boundary behavior identical to GR.
 2. ~~Radiative bootstrap for $K_T$~~ — **CLOSED 2026-06-12** (group
    008); residual coefficient-free obligations: in-house
    closure-uniqueness proof (Deser 1970 currently cited), averaging
