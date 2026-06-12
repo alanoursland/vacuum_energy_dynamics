@@ -153,6 +153,64 @@ P6 exchange during dynamics; it governs the static sourcing ledger.
 
 ---
 
+## The Fence: What Counts as a Source Under P9
+
+(Added at adoption, following multi-model review. This section is part of
+the postulate's content, not commentary.)
+
+P9 is a license with a strict admission rule, not a master key.
+
+**The admission rule (the load-bearing clause):**
+
+```text
+A configuration-energy term is a gravitational source under P9 if and
+only if it is part of the adopted dynamical law -- the vacuum action or
+equilibrium equation -- at the current level of the theory. Its
+stress/source contribution must then be counted, exactly once.
+
+Source status is earned by presence in the dynamics, not by being
+named an energy.
+```
+
+Operationally: a term gravitates because it survives variation of the
+adopted action (or appears in the adopted equilibrium equation), never
+because a document labels it "E_something."
+
+**What P9 therefore does NOT mean:**
+
+```text
+It does not make diagnostic energies into sources. (e_curv,
+  epsilon_vac_config, e_kappa, burden ledgers, and residual
+  diagnostics remain accounting/diagnostic objects unless and until
+  they earn a place in the dynamics.)
+
+It does not license arbitrary curvature-energy reservoirs. (The FEC
+  prohibitions on source reservoirs, repair currents, and
+  relabeling-as-promotion stand unchanged; P9 is not an appeal route
+  around them.)
+
+It does not bypass the no-overlap/count-once, boundary-neutrality,
+  mass-coin, or radiative-positivity gates. (A P9-counted source must
+  still pass G02/G03, G09-G14; P9 changes what must be counted, not
+  what must be proven.)
+```
+
+**The paradigm case (why C2 passes its own fence):** the (s')^2 term that
+Trial C2 identified as self-coupling was not a named reservoir; it was
+already present inside the framework's exact equilibrium equation
+(Delta_areal A = 0). P9 required it to be READ as a counted source, with
+the magnitude fixed by universality. That is the intended pattern: P9
+forces the counting of energy the dynamics already contains; it never
+invents energy for the dynamics to contain.
+
+**Consequence for Trial D:** the standing-frustration excess gravitates
+only once it holds a term in the actual vacuum dynamics. A name plus an
+abundance estimate does not gravitate. This strengthens Trial D's entry
+gate: before the equation-of-state question, the excess needs a seat in
+the action.
+
+---
+
 ## Relationship to the P4 Sign Fork
 
 The development note `ontology_and_mechanism/p4_sign_fork_infall_ledger.md`
