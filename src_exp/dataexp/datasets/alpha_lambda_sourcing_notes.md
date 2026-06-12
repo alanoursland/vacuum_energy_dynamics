@@ -99,8 +99,13 @@ To extend to Tan 2020 (or any other curve):
 
 ## Open items
 
-- Tan 2020 (PRL 124, 051301): locate arXiv id, repeat extraction
-  (anchor: |alpha| = 1 at 48 um).
+- Tan 2020 (PRL 124, 051301): **no arXiv preprint exists** (searched
+  2026-06-12: only paywalled APS/PubMed/ResearchGate versions). Options:
+  (a) email the HUST authors for the curve table, (b) obtain the
+  published PDF via institutional access and run the same vector
+  recipe (anchor: |alpha| = 1 at 48 um), (c) leave Lee 2020 as the
+  binding curve -- it is the stronger limit at the 38-55 um window the
+  program cares about.
 - Wire the generated CSV into `short_range_gravity.py` as a proper
   Dataset (replacing the ManualFile placeholder for Lee 2020), with the
   anchor validation as the dataset's integrity check.

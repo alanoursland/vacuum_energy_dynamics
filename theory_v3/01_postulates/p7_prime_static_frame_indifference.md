@@ -37,7 +37,22 @@ recognizes that no real exterior is strictly static: every physical mass
 is embedded in an expanding cosmos whose substance creation supplies a
 small, persistent vacuum current.
 
-The postulate is therefore adopted in scoped form:
+> **REVISION (2026-06-12, Trial F1 — derived, supersedes the estimate
+> below):** with the local sector closed (E3), the correction is now
+> DERIVED rather than estimated, and the estimate below was wrong in a
+> structured way. (i) Under pure-Λ expansion the shadow is **exact**:
+> Schwarzschild–de Sitter has AB = 1 identically — P7′ is *stronger*
+> than this scoping assumed. (ii) The O(H₀r/c) quantity is the comoving
+> **frame velocity** v = H₀r (curvature-free, gauge in GR; physical in
+> VED only via substance-frame couplings, quarantined at the seam).
+> (iii) The surviving metric deviation is matter-sourced and second
+> order: **AB − 1 = (3/2)Ω_m(H₀r/c)² ≈ 5.6×10⁻³¹ at 1 AU** —
+> derived, parameter-free, and unobservable. The "falsifiable linear
+> scaling" below is superseded. See
+> `development/field_equation_trials/lab_reports/trial_F1_kappa_leak_lab_report.md`.
+
+The postulate is therefore adopted in scoped form (original text, see
+revision banner above):
 
 ```text
 P7' holds exactly for strictly static configurations

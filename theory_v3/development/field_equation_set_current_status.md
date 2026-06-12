@@ -86,11 +86,14 @@ through the positive channel.
 * **Vector / frame-dragging ($W_i$):** structural; sourced by transverse
   matter current via the continuity identity. Normalization not yet
   derived.
-* **Trace ($\kappa$):** no longer "must be strictly killed" — under P7′
-  at the limit it is a **predicted channel**: the κ-leak
-  $$AB-1 \;=\; O\!\left(\frac{H_0 r}{c}\right) \;\sim\; 10^{-15}
+* **Trace ($\kappa$):** the κ-leak is now **derived** (Trial F1,
+  2026-06-12, superseding the $O(H_0r/c)$ estimate): exactly zero in any
+  pure-Λ epoch (SdS has $AB=1$ identically — P7′ stronger than adopted);
+  the $O(H_0r/c)$ sector is curvature-free frame velocity (gauge in GR);
+  the surviving metric deviation is
+  $$AB-1 \;=\; \tfrac{3}{2}\,\Omega_m\left(\frac{H_0 r}{c}\right)^2 \;\sim\; 6\times10^{-31}
   \text{ at 1 AU}$$
-  — the theory's first parameter-free deviation from GR.
+  — parameter-free, and honestly unobservable.
 
 ## 5. Trial scoreboard
 
