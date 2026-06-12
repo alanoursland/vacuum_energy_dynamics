@@ -131,7 +131,20 @@ construction (nothing couples the excess to local curvature).
 
 ---
 
-## 3. Candidate Inhomogeneity Mechanisms (none derived)
+## 3. Candidate Inhomogeneity Mechanisms
+
+> **STATUS UPDATE (Trial D1).** The P6-exchange (depletion-history) form
+> of D-M1/D-M2 is **KILLED** at the abundance entry gate, parameter-free:
+> the P6 budget is bound to kinetic energy by the postulate itself, giving
+> budget/requirement = eta*v^2/(5c^2) ~ 1e-7 (Milky Way) to 4e-6
+> (clusters); all plausible channels including compact-object binding sum
+> below 2e-3 of requirement; the scaling shape is wrong ((v/c)^2 vs the
+> observed flat ~5); and outbound radiation creates vacuum, refilling the
+> residue. See
+> `field_equation_trials/lab_reports/trial_D1_depletion_budget_lab_report.md`.
+> Trial D continues on the excess/EoS branch (Section 2's two-component
+> ledger: gapped excitations / defect gas with w ~ 0, abundance from
+> production physics) and the K_strain route (D-M3).
 
 Routes by which the standing cost could vary spatially, for future scripts
 to develop or kill:
