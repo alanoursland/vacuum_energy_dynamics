@@ -99,6 +99,9 @@ To extend to Tan 2020 (or any other curve):
 
 ## Open items
 
+- **Email requests for official tables: see `TODO_data_requests.md`**
+  (drafts ready to send for both Tan 2020 and Lee 2020).
+
 - Tan 2020 (PRL 124, 051301): **no arXiv preprint exists** (searched
   2026-06-12: only paywalled APS/PubMed/ResearchGate versions). Options:
   (a) email the HUST authors for the curve table, (b) obtain the
