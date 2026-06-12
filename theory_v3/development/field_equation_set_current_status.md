@@ -106,6 +106,7 @@ through the positive channel.
 | 008 (radiative bootstrap) | **SUCCESS** — $K_T$ derived; zero matched coefficients remain |
 | E1 (sharp-source gate) | **UNDERDETERMINED** (constraint-recording): reduced VED = GR at boundaries; smooth-boundary intuition ⟺ $\beta\neq0$ in $K_{\text{strain}}$, $\ell^*=\sqrt{\beta}$ |
 | E2 (observable face of $\ell^*$) | Boundary smoothing ⟺ bench-top Yukawa (exact identity): $\ell^*<38.6\,\mu$m at $\|\alpha\|=1$ today; NS-tidal/GW channel **KILLED** (shortfall $\ge 3\times10^7$); window coincides with the UFFT squeeze |
+| G20 (β health) | **Scalaron class PASSES, Weyl class KILLED**: unique ghost-safe realization $aR^2$ ($a>0$) + Gauss-Bonnet; $\alpha=+1/3$ exactly (positive sign), $\ell^*=\sqrt{6a}$, $\gamma_{\rm eff}=1/2$ inside $\ell^*$; radiative sector untouched |
 
 **Data gates:** the 3-layer protocol is operational with verified
 anchors (Lee 2020, Tan 2020). Layer-2 Yukawa conversion done. Standing
@@ -123,11 +124,14 @@ Ordered by centrality:
    everything below feeds it. Derived constraints so far: the static
    normalization $N=c^4/8\pi G$; the quadratic TT expansion must yield
    $K_T=c^4/16\pi G$ (008) — the relative shear/TT weight is not free;
-   and its higher-curvature content $\beta$ *is* the boundary-smoothness
-   question (E1): $\beta\neq0$ forces curvature continuity at matter
-   boundaries with derived smoothing scale $\ell^*=\sqrt{\beta}$ (a
-   testable deviation from GR, gated by G20/Ostrogradsky), while
-   $\beta=0$ makes VED boundary behavior identical to GR.
+   and its higher-curvature content *is* the boundary-smoothness
+   question (E1), now fully gated (G20): the unique ghost-safe
+   realization is $aR^2$ ($a>0$) + Gauss-Bonnet, giving curvature
+   continuity at matter boundaries with $\ell^*=\sqrt{6a}$, a bench-top
+   Yukawa $\alpha=+1/3$ exactly (positive sign), and $\gamma_{\rm eff}=
+   1/2$ inside $\ell^*$; $a=0$ makes VED boundary behavior identical to
+   GR. The parent's two- and four-derivative content is now essentially
+   forced up to the single bounded coefficient $a$.
 2. ~~Radiative bootstrap for $K_T$~~ — **CLOSED 2026-06-12** (group
    008); residual coefficient-free obligations: in-house
    closure-uniqueness proof (Deser 1970 currently cited), averaging
