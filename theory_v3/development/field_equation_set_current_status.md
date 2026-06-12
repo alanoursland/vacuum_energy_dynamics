@@ -83,9 +83,12 @@ through the positive channel.
   $P=(G/5c^5)\langle\dddot Q_{ij}\dddot Q_{ij}\rangle$ — and the
   binary-pulsar anchor passes as a kill condition, not a calibration.
   **Zero matched coefficients remain in the reduced theory.**
-* **Vector / frame-dragging ($W_i$):** structural; sourced by transverse
-  matter current via the continuity identity. Normalization not yet
-  derived.
+* **Vector / frame-dragging ($W_i$):** **DERIVED** (2026-06-12, group
+  012): $G_{ti}=-\tfrac12\Delta w_i$, field equation $\Delta w_i =
+  (16\pi G/c^2)\rho v_i$ with no free constant (the FEC
+  $\alpha_W/K_c$ blocker discharged); far field = Lense–Thirring
+  $w=-(2G/c^2)(\mathbf S\times\mathbf r)/r^3$; GPB/LAGEOS anchors pass
+  as inherited kill conditions. **No structural sectors remain.**
 * **Trace ($\kappa$):** the κ-leak is now **derived** (Trial F1,
   2026-06-12, superseding the $O(H_0r/c)$ estimate): exactly zero in any
   pure-Λ epoch (SdS has $AB=1$ identically — P7′ stronger than adopted);
@@ -110,6 +113,8 @@ through the positive channel.
 | E1 (sharp-source gate) | **UNDERDETERMINED** (constraint-recording): reduced VED = GR at boundaries; smooth-boundary intuition ⟺ $\beta\neq0$ in $K_{\text{strain}}$, $\ell^*=\sqrt{\beta}$ |
 | E2 (observable face of $\ell^*$) | Boundary smoothing ⟺ bench-top Yukawa (exact identity): $\ell^*<38.6\,\mu$m at $\|\alpha\|=1$ today; NS-tidal/GW channel **KILLED** (shortfall $\ge 3\times10^7$); window coincides with the UFFT squeeze |
 | G20 (β health) | **Scalaron class PASSES, Weyl class KILLED**: unique ghost-safe realization $aR^2$ ($a>0$) + Gauss-Bonnet; $\alpha=+1/3$ exactly (positive sign), $\ell^*=\sqrt{6a}$, $\gamma_{\rm eff}=1/2$ inside $\ell^*$; radiative sector untouched |
+| F1 (κ-leak coefficient) | **DERIVED, prediction revised**: Λ-era leak exactly zero (SdS); $O(H_0r/c)$ is frame velocity (gauge); metric leak $=\tfrac32\Omega_m(H_0r/c)^2\sim6\times10^{-31}$ at 1 AU |
+| 012 (vector sector) | **CLOSED** — gravitomagnetic equation with no free constant; Lense–Thirring derived; GPB/LAGEOS pass inherited |
 | E3 (P7′ vs scalaron) | **Smooth-boundary route KILLED_BY_CONTRADICTION**: scalaron hair has $AB\neq1$ in static vacuum and is mandatory for $a\neq0$; P7′ ⟹ $a=0$. **K_strain ≤4-derivative sector CLOSED** = EH + Λ + GB exactly. Trial E resolved: VED boundaries = GR. Appeal path (P7′ re-scope) documented, default kill stands |
 
 **Data gates:** the 3-layer protocol is operational with verified
@@ -143,7 +148,7 @@ Ordered by centrality:
 5. **Interior behavior** — finite-admissibility cap; what replaces the
    singularity (quarantined as an engineering seam, but a physics
    obligation).
-6. **Vector-sector normalization** ($\alpha_W$).
+6. ~~Vector-sector normalization~~ — **CLOSED 2026-06-12** (group 012).
 7. **Dark sector** — funneled entirely into Trial D2: equation of state
    and production of the $w\approx 0$ frustration excess (needs a seat
    in the dynamics first, per the P9 fence); plus D-M3, dark sector as a
