@@ -1,5 +1,12 @@
 # Vacuum Field Equations — Status of Record
 
+> **ADMITTED TO THE THEORY (2026-06-12):** the field equations are now
+> presented as established results in **`theory_v3/04_field_equations/`**
+> (statement, derivation chain, sector architecture, divergences from GR,
+> open obligations). The trials program is closed
+> (`field_equation_trials/99_closing_report.md`). This file remains as
+> the development-era status snapshot.
+
 **Updated:** 2026-06-12 (field equation trials program)
 **Supersedes:** the Groups 01–96 snapshot previously in this file (preserved
 below as a historical appendix). The "All-Order Parity Gap Theorem"
