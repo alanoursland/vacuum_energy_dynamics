@@ -275,6 +275,53 @@ dominates the two-body ledger**, and that is a calculation:
 
 ---
 
+### Trial D: Standing Frustration Ledger (registered post-A2)
+
+Source: `ontology_and_mechanism/standing_frustration_ledger.md`.
+
+The author's dark-sector intuition, distinguished from the memo's tidal
+nucleation (killed at G26, Trial A2): the dark sector as the standing
+energy cost of maintaining 3D structure — a ledger entry, no phase
+transition, no tidal trigger. Entry gate D-G1: a uniform standing cost is
+Lambda, not dark matter, so the candidate must first produce a mechanism
+making the frustration cost cluster like halos (candidate mechanisms
+D-M1..D-M4 in the note). The TVN-killing profile gate applies to this
+candidate with full force.
+
+### Trial E: Boundary Admissibility (registered 2026-06-12)
+
+Source: theory-owner intuition, surfaced in discussion — "curvature at
+mass boundaries must be smooth in VED because of curvature energy,
+whereas GR allows but does not require non-smooth curvature."
+
+Status of the intuition at registration: NOT a theorem of the trials.
+The derived reduced static law is pointwise-algebraic in the source and
+therefore transcribes source jumps into curvature jumps exactly as GR
+does. The old transition-layer machinery (groups 052–065) was
+quarantined diagnostic-only and never derived a forced layer. Trial E
+exists to either earn the intuition as a property of K_strain or kill
+it at a gate.
+
+Entry gates:
+
+- **E-G1 (sharp-source admissibility, reduced):** does the derived
+  static sector admit step sources without pathology? (Expected: yes —
+  the honest baseline that the intuition is not yet in the theory.)
+- **E-G2 (GR control):** verify the conditional response handles the
+  sharp boundary via standard junction behavior, so any later VED
+  difference is real and not an artifact.
+- **E-G3 (mechanism classification):** what structure in the parent
+  would FORCE boundary smoothing, at what cost, and with what derived
+  smoothing scale. Higher-curvature terms raise the equation order and
+  force curvature continuity with a derived layer width — but face the
+  Ostrogradsky/G20 ghost gate.
+
+Prediction shape if the intuition survives: a minimum smoothing scale at
+matter boundaries, where GR transcribes the source profile exactly — a
+deviation in the kappa-leak family. Forecast verdict class:
+UNDERDETERMINED at reduced level (constraint-recording), since the
+decision lives in K_strain's higher-curvature content.
+
 ## 3. Gate Inventory (The Filter Stack)
 
 Every trial faces these, cheapest kills first. A gate failure is a recorded

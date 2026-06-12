@@ -2,6 +2,27 @@
 
 ## Informal Research Memo and Field-Equation Targets
 
+> **STATUS UPDATE (Trial A2, gate G26).** Sections 15-19 (Tidal Vacuum
+> Nucleation: alpha_eff = alpha_0 - kappa E_ij E^ij / kappa_W C^2, midpoint
+> nucleation, dark-matter bridges, hysteretic memory at galactic scales)
+> were KILLED for the dark-sector role by a structural, parameter-free
+> argument: the nucleation set is an up-set in the tidal invariant, the
+> solar-system invariant exceeds galactic-bridge values by ~34 orders of
+> magnitude (a ~2 pc super-threshold bubble surrounds every star), and the
+> induced-source profile is inverted relative to halo phenomenology for
+> every coupling value. See
+> `theory_v3/development/field_equation_trials/lab_reports/trial_A2_weyl_screening_gate_lab_report.md`.
+>
+> Author review: sections 15-19 formalized beyond the underlying intuition
+> (curvature-as-boundary was a drafting extrapolation, not a commitment).
+> Surviving sectors of this memo: the bulk-frustration -> Lambda sector
+> (sections 1-4), the boundary/Casimir relaxation sector (sections 5-12),
+> and the single-well extreme-curvature case (section 13), which passes
+> G26 trivially at high threshold. The author's actual dark-sector
+> intuition -- dark matter as the standing energy cost of maintaining 3D
+> structure, no phase transition -- is a different candidate, registered at
+> `ontology_and_mechanism/standing_frustration_ledger.md` (Trial D).
+
 **Status:** speculative development notes. This document is not a finished theory, not a claim of established physics, and not written as a publication. It is a coherent memo that organizes the current intuition pumps, toy models, equations, and target structures for a possible parent theory of spacetime microstructure.
 
 **Working names:** Unified Frustration Field Theory (UFFT), Confinement-Induced Dimensional Reduction (CDR), Tidal Vacuum Nucleation (TVN).
