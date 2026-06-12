@@ -1,5 +1,17 @@
 # P7: Static Exterior Vacuum Compensation
 
+> **STATUS UPDATE (2026-06-11).** P7 has been superseded as a primitive
+> commitment by **P7' (Static Frame Indifference)** — see
+> `p7_prime_static_frame_indifference.md`. Trial C3 established
+> (conditional on the probe's gates) that P7's content, AB = 1, is
+> exactly the metric shadow of the statement "static vacuum
+> configurations carry no energy current and no preferred frame in the
+> t-r plane." P7' also defines the expansion correction: real exteriors
+> embedded in an expanding cosmos satisfy AB - 1 = O(H_0 r/c), making
+> the kappa-leak a scaled prediction rather than a free worry. This
+> document is retained as the metric-level consequence and for the
+> theorem chain's references (T3 onward).
+
 ## What This Postulate Says
 
 In a static, source-free exterior vacuum configuration, curvature is a redistribution of vacuum extent, not a net creation or destruction of vacuum substance.
