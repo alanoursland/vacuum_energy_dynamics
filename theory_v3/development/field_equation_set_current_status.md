@@ -75,10 +75,14 @@ through the positive channel.
 
 ## 4. Other sectors
 
-* **Radiative coupling $K_T$:** structure derived (positivity, flux,
-  quadrupole form); magnitude still **MATCHED** to $2G/c^4$ — the last
-  matched coefficient. The radiative-bootstrap route (same
-  self-consistency that fixed the temporal sector) is registered.
+* **Radiative coupling $K_T$:** **DERIVED** (2026-06-12, radiative
+  bootstrap, group 008): $K_T = c^4/16\pi G$ per polarization, forced
+  by P9 self-sourcing at the static sector's own normalization
+  $N=c^4/8\pi G$. The quadrupole chain closes with no free constants —
+  amplitude coefficient $2G/c^4$, projector average $2/5$,
+  $P=(G/5c^5)\langle\dddot Q_{ij}\dddot Q_{ij}\rangle$ — and the
+  binary-pulsar anchor passes as a kill condition, not a calibration.
+  **Zero matched coefficients remain in the reduced theory.**
 * **Vector / frame-dragging ($W_i$):** structural; sourced by transverse
   matter current via the continuity identity. Normalization not yet
   derived.
@@ -111,10 +115,15 @@ $$29.9\,\mu\text{m} \;<\; a_{\text{disc}} \;<\; 38.6\,\mu\text{m}$$
 Ordered by centrality:
 
 1. **The covariant $K_{\text{strain}}$ parent.** Every reduced theorem
-   (C2, C3, G02, G03, B1) is a limit of one covariant functional not yet
-   written down. This is *the* open problem; everything below feeds it.
-2. **Radiative bootstrap for $K_T$** — derive the last matched
-   coefficient from self-consistency.
+   (C2, C3, G02, G03, B1, 008) is a limit of one covariant functional
+   not yet written down. This is *the* open problem; everything below
+   feeds it. New derived constraint (008): the parent's quadratic TT
+   expansion must yield $K_T=c^4/16\pi G$ relative to $N=c^4/8\pi G$ —
+   the relative shear/TT weight is no longer free.
+2. ~~Radiative bootstrap for $K_T$~~ — **CLOSED 2026-06-12** (group
+   008); residual coefficient-free obligations: in-house
+   closure-uniqueness proof (Deser 1970 currently cited), averaging
+   rigor in the covariant lift.
 3. **Covariant lifts** of the reduced theorems; nonlinear stability.
 4. **Source-law origin** — why $8\pi G/c^2$ couples to $\rho$ (P6's
    exchange gives the structure; the constant is anchored, not derived).
