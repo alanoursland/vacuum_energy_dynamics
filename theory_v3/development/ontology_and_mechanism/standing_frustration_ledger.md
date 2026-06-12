@@ -68,40 +68,66 @@ dark-matter role.
 
 ---
 
-## 2. The Central Gate (D-G1): Uniform Frustration Is Lambda, Not Dark Matter
+## 2. The Central Gate (D-G1): Equation of State of the Excess
 
-The candidate's first and hardest gate is its own arithmetic:
+(Revised after author review. The first version of this gate said "uniform
+frustration is Lambda, so the candidate must produce inhomogeneity." That
+was too strong: uniformity is not the discriminator. Equation of state and
+transport are.)
 
-```text
-If the standing frustration energy density is spatially uniform and
-Lorentz invariant, it enters gravity as T_munu = -rho_f g_munu --
-a cosmological constant. That is dark ENERGY. The memo already
-routes it there (section 3).
-```
-
-Therefore, for the standing cost of 3D-ness to play the dark-MATTER role,
-its density must be INHOMOGENEOUS, and inhomogeneous in a very specific way:
+How a uniform energy density gravitates depends on its pressure:
 
 ```text
-required: clustered like halos;
-          roughly isothermal profiles (rho ~ r^-2 over the rotation-curve
-          range) around galaxies;
-          scaling with structure (more around bigger galaxies);
-          present in galaxy clusters at ~5x baryonic gravitational effect;
-          NOT spiked around individual stars (else solar-system tests fail).
+w = -1 (Lorentz-invariant, vacuum-like):
+  T_munu = -rho g_munu; density constant under expansion; repulsive;
+  CANNOT cluster even in principle. This is the cosmological constant.
+  The memo's section 3 derivation assumes this -- correctly, for the
+  GROUND-STATE FLOOR: the unavoidable per-volume rent of 3D-ness,
+  frame-independent, with constant density under expansion (P3 +
+  vacuum creation). The floor is dark energy.
+
+w ~ 0 (pressureless, transportable, conserved total):
+  then "uniform" is only the initial condition. A pressureless
+  component clusters BY ITSELF through gravitational instability --
+  that is literally what cold dark matter is. If the frustration
+  component has this equation of state, the clustering problem
+  dissolves: halos come free from standard structure formation.
 ```
 
-So the candidate owes exactly one object before anything else:
+The candidate therefore sharpens into a TWO-COMPONENT LEDGER:
 
 ```text
-D-OBJECT: a mechanism making the local frustration cost depend on
-environment, with halo-shaped (not star-shaped, not uniform) variation.
+ground-state frustration floor  -> w = -1 -> dark energy / Lambda
+excess frustration above floor  -> w ~ 0? -> dark matter candidate
+  (excitations, defects, unrelaxed backlog: transportable, conserved)
 ```
 
-Without this object, Trial D reduces to the Lambda sector and the
-dark-matter claim is empty. With the wrong-shaped object, it dies the same
-profile death as TVN. The profile gate that killed TVN applies to this
-candidate with full force and no favoritism.
+Physical basis for the split: w = -1 follows from the Lorentz invariance
+of the GROUND STATE. Excitations above a ground state are generically not
+Lorentz-invariant -- they have rest frames and dispersion relations, and
+gapped (massive) excitations at low temperature gravitate like dust. This
+is the standard condensed-matter-analog structure: condensate -> Lambda,
+quasiparticle/defect gas -> matter. (This promotes mechanism D-M4: a
+defect gas IS a conserved transportable excess.)
+
+So the candidate owes, before anything else:
+
+```text
+D-OBJECT (revised): the equation of state and transport law of the
+excess-frustration component, derived from the frustration ontology:
+  (a) why is the excess pressureless (or what is its w)?
+  (b) is it conserved and transportable (collisionless)?
+  (c) what produced it, in abundance Omega_DM ~ 5 x Omega_b?
+```
+
+If the excess turns out vacuum-like (w = -1), Trial D reduces to the
+Lambda sector and the dark-matter claim is empty. If w ~ 0 and mobile,
+clustering and halo profiles follow from gravitational instability as in
+standard CDM, and the burden moves to abundance, collisionlessness, and
+small-scale phenomenology. The TVN-killing profile gate still applies --
+but for the w ~ 0 branch it is largely discharged by the same N-body
+physics that vindicates CDM, with the star-spike failure mode absent by
+construction (nothing couples the excess to local curvature).
 
 ---
 
