@@ -1,4 +1,33 @@
-# P8: Static Exterior Temporal Self-Coupling
+# Demoted P8: Static Exterior Temporal Self-Coupling
+
+> **STATUS: DEMOTED FROM POSTULATE TO THEOREM (renamed 2026-06-12;
+> demotion established 2026-06-11).** P8 is no longer a postulate. Its
+> content — temporal mappings compose multiplicatively, so
+> $d\ln\alpha = -dU/c^2$ with no independent $U^2/c^4$ term — is a
+> **consequence** of the adopted dynamical law:
+>
+> - **Why it is derived, not assumed:** P9 (configuration energy
+>   gravitates, counted once) plus the static bootstrap (Trial C2)
+>   force the self-coupling form $\Delta_{\text{areal}}\,s = -(s')^2 +
+>   \text{source}$, whose linearizing solution $A = e^{s}$ *is*
+>   multiplicative composition — the exponential is exactly "each shell
+>   acts on the already-distorted rate inherited from interior shells."
+>   The exact exterior $A = 1 - 2GM/c^2 r$ then reproduces P8's 1PN
+>   statement to all orders, not just second.
+> - **Why demoted rather than killed:** the statement is *true* and the
+>   reasoning below is sound; what changed is its status. It was a
+>   structural guess that the bootstrap later proved. Nothing downstream
+>   (T4, and the 1PN recoveries in `03_weak_field/`) is invalidated;
+>   their framing "conditional on P8" should now be read as "conditional
+>   on P9 + the C2 bootstrap, of which P8 is a theorem."
+> - **Provenance:** Trial C2
+>   (`vacuum_forge/src/field_equation_trials/002_trial_C_burden_ledger/`);
+>   the P9 adoption record (group 005, postulate-set status claim: "P8 a
+>   1PN theorem under P9"); subsumed by the admitted field equations
+>   (`04_field_equations/`).
+>
+> The original postulate text is retained below, unmodified, as the
+> historical statement and for T4's references.
 
 ## What This Postulate Says
 

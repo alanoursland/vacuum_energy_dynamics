@@ -1,5 +1,16 @@
 # T4: Second-Order Temporal Self-Coupling
 
+> **DEPENDENCY UPGRADE (2026-06-12).** This proof cites P8 as a
+> postulate. P8 has been **demoted to a theorem**: P9 + the static
+> bootstrap (Trial C2) force the self-coupling whose solution A = e^s
+> *is* multiplicative composition, reproducing P8's content to all
+> orders. Read every "conditional on P8" below as "conditional on P9 +
+> the C2 bootstrap, of which P8 is a theorem." The proof is retained
+> verbatim and remains sound — it is now a corollary chain rather than
+> a postulate-dependent one. See
+> `01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`
+> and `04_field_equations/02_derivation_chain.md`.
+
 ## What This Theorem Establishes
 
 In a static, source-free exterior weak field, the framework's temporal mapping has the second-order self-coupling required by the PPN value

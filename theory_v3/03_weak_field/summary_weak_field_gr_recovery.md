@@ -1,5 +1,13 @@
 # Summary: Weak-Field GR Recovery
 
+> **DEPENDENCY UPGRADE (2026-06-12).** The recoveries below cite P7 and
+> P8 as postulates. Both have changed status: P7 is the metric shadow of
+> adopted P7′ (Trial C3), and P8 is a theorem under P9 + the C2
+> bootstrap. All recoveries in this folder are also now corollaries of
+> the full field equations admitted in `04_field_equations/`. The
+> conditional framings below remain correct with the substitutions
+> "P7 → P7′ (via C3)" and "P8 → P9 + C2." See `00_overview.md`.
+
 ## What This Document Is
 
 This document summarizes how the framework recovers the standard weak-field tests of general relativity in the static, source-free exterior regime.

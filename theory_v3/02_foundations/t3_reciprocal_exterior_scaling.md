@@ -1,5 +1,15 @@
 # T3: Reciprocal Exterior Scaling
 
+> **DEPENDENCY UPGRADE (2026-06-12).** This proof cites P7 as a
+> postulate. P7 is now the *shadow* of the adopted postulate **P7′
+> (Static Frame Indifference)**: Trial C3 proved AB = 1 ⟺ no energy
+> current / no preferred frame in the static t-r plane, and Trial E3
+> made the shadow a selection principle for the field equations. Read
+> every "conditional on P7" below as "conditional on P7′, via C3."
+> The proof itself is retained verbatim and remains sound. See
+> `01_postulates/shadow_p7_static_exterior_vacuum_compensation.md` and
+> `04_field_equations/02_derivation_chain.md`.
+
 ## What This Theorem Establishes
 
 In a static, spherically symmetric, source-free exterior vacuum configuration, the temporal mapping and radial spatial mapping are reciprocal.
