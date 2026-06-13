@@ -10,7 +10,12 @@ vacuum-sector program).
 1. **In-house closure-uniqueness proof.** The covariant closure cites
    Deser (1970) for uniqueness of the self-coupled spin-2 theory.
    Coefficient-free, structural; recorded as ASSUMPTION in the archive
-   (008). Retiring the citation is the largest single rigor item.
+   (008). Retiring the citation is the largest single rigor item. The
+   in-house replacement program has started in
+   `development/closure_uniqueness/`; forge script
+   `018_closure_uniqueness/closure_step_1.py` proves the first
+   conservation/self-coupling obstruction but does **not** retire the
+   Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 

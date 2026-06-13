@@ -417,15 +417,23 @@ $AB-1 = \tfrac32\Omega_m(H_0 r/c)^2$.
 | "GR data calibrated the constants." | One constant ($G$) enters, from Newton. Everything else is derived. Pulsar, GPB, LAGEOS, Eöt-Wash enter only afterward, as kill conditions — each could have falsified a derived coefficient; none did. |
 | "AB = 1 is Schwarzschild knowledge." | $AB=1$ is the metric shadow of adopted P7′ (substance statement: no preferred static t–r frame), with the shadow equivalence proved as differential geometry. It is also *independently checkable*: P7′ predicts **no gravitational-strength Yukawa deviation at any range** (since it forbids the only ghost-safe mechanism, §5.2) — a standing null test, currently probed to 54 μm at the scalaron coupling $\alpha = 1/3$. A bench-top detection would falsify P7′ and reopen §5. |
 
-## 8. Scope and rigor debts
+## 8. Scope, rigor closures, and remaining debts
+
+Completed proof-hardening closures are indexed in
+`06_rigor_closures.md`: P8/T4 formal rewrite, scalaron screening,
+tensor-virial identity in generality, Isaacson-style TT averaging,
+radiative gauge invariance, and the general time-dependent vector-sector
+lift. These closures support this proof without changing the field
+equations or moving any coefficient.
 
 The sector derivations are theorem-grade at reduced level (static
-spherical; linearized TT; stationary vector; quasi-static cosmological
-patch) with exact solutions where stated. Open rigor items — none of
-which carries a coefficient: in-house re-derivation of the Deser
-closure; covariant lifts of the sector theorems (including Isaacson
-averaging rigor); nonlinear stability; the tensor-virial identity in
-generality. Inventory: `05_open_obligations.md`.
+spherical; linearized TT; vector sector through general linear time
+dependence; quasi-static cosmological patch) with exact solutions where
+stated. Current live debts after the closures above are: in-house
+re-derivation of the Deser closure; covariant lift of the C2/C3 static
+bookkeeping sector; nonlinear stability. The earlier tensor-virial,
+Isaacson averaging, radiative gauge, and vector time-dependence debts
+are retired in `06_rigor_closures.md`.
 
 ## 9. Verification index
 
@@ -440,6 +448,11 @@ generality. Inventory: `05_open_obligations.md`.
 | boundary corollary | `009_.../trial_E1_sharp_source_gate.py` | `trial_E1_..._lab_report.md` |
 | cosmological corollary | `011_trial_F_cosmology/trial_F1_kappa_leak_coefficient.py` | `trial_F1_kappa_leak_lab_report.md` |
 | vector corollary | `012_vector_sector/vector_sector_closure.py` | `vector_sector_closure_lab_report.md` |
+| scalaron screening closure | `013_scalaron_screening/scalaron_screening_p7prime_obstruction.py` | `06_rigor_closures.md` |
+| tensor-virial closure | `014_tensor_virial_identity/tensor_virial_identity_general.py` | `06_rigor_closures.md` |
+| TT averaging closure | `015_isaacson_averaging/isaacson_tt_averaging.py` | `06_rigor_closures.md` |
+| radiative gauge closure | `016_radiative_gauge_invariance/radiative_gauge_invariance.py` | `06_rigor_closures.md` |
+| time-dependent vector lift | `017_vector_time_dependent/vector_time_dependent.py` | `06_rigor_closures.md` |
 
 Run any of them: `cd vacuum_forge/src && PYTHONPATH=. python <script>` —
 each re-derives its theorems from scratch and verifies its declared

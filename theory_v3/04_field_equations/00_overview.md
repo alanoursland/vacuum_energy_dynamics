@@ -34,10 +34,12 @@ the substance frame, and the interior cap.
 | `03_sector_architecture.md` | signs, stability, and why the scalar sector must be a constraint |
 | `04_divergences_from_gr.md` | where VED is *not* GR: ontology, substance frame, predictions ledger, falsifiers |
 | `05_open_obligations.md` | rigor debts on the closed result; handoff to the vacuum-sector program |
+| `06_rigor_closures.md` | completed proof-hardening closures that support `proof.md` without changing the equations |
 
 `proof.md` is the document to read for confidence in the result; the
 numbered files are the reference statement, the chain map, the sector
-architecture, the divergences, and the debts respectively.
+architecture, the divergences, the debts, and the discharged rigor
+closures respectively.
 
 ## Status and conditionality (stated once, here)
 
@@ -48,7 +50,7 @@ rests on the conditional-response gates (G15/G16/G20 lineage) plus the
 uniqueness of the self-coupled spin-2 closure (Deser 1970, cited; in-house
 proof an open obligation). These are rigor debts, not freedoms: no
 coefficient can move while they are paid down. See
-`05_open_obligations.md`.
+`05_open_obligations.md` and `06_rigor_closures.md`.
 
 ## Relation to the rest of the theory
 
