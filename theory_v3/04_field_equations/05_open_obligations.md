@@ -17,8 +17,6 @@ vacuum-sector program).
    nonlinear stability.
 3. **Tensor-virial identity in generality** (verified on a compact
    witness in 008).
-4. **Scalaron screening note** (G20): moot for the equations (a = 0)
-   but should be recorded for the E3 appeal file.
 
 ## Retired rigor debts
 
@@ -31,6 +29,15 @@ vacuum-sector program).
   `01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`,
   `02_foundations/t4_second_order_temporal_self_coupling.md`,
   `03_weak_field/summary_weak_field_gr_recovery.md`.
+- **Scalaron screening note completed (2026-06-13).** Screening changes
+  scalaron detectability, range, or amplitude; it does not satisfy exact
+  P7' unless the scalar profile is identically zero. The general screened
+  profile obstruction was checked in forge: for
+  $\phi=\phi_{\rm GR}-q(r)$ and $\psi=\phi_{\rm GR}+q(r)$, the P7'
+  shadow is $r q'-q$; exact P7' plus asymptotic flatness forces
+  $q=0$, while the G20 Yukawa profile gives a nonzero shadow. Discharge
+  files: `development/scalaron_screening/scalaron_screening_note.md`,
+  `vacuum_forge/src/field_equation_trials/013_scalaron_screening/scalaron_screening_p7prime_obstruction.py`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 
