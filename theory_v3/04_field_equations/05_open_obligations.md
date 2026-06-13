@@ -11,8 +11,8 @@ vacuum-sector program).
    Deser (1970) for uniqueness of the self-coupled spin-2 theory.
    Coefficient-free, structural; recorded as ASSUMPTION in the archive
    (008). Retiring the citation is the largest single rigor item.
-2. **Covariant lifts** of the reduced theorems: C2/C3 (statics), 012
-   (vector, general time dependence), nonlinear stability.
+2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
+   nonlinear stability.
 
 ## Retired rigor debts
 
@@ -68,6 +68,16 @@ vacuum-sector program).
   the $\lambda/L$-suppressed class established by 015. Discharge files:
   `development/covariant_lifts/radiative_gauge_invariance/radiative_gauge_invariance_note.md`,
   `vacuum_forge/src/field_equation_trials/016_radiative_gauge_invariance/radiative_gauge_invariance.py`.
+- **General time-dependent vector sector completed (2026-06-13).** The
+  stationary 012 frame-dragging closure has been lifted to the linear
+  time-dependent transverse vector sector. Forge verifies
+  $G_{ti}^{(1)}=-\tfrac12\Delta w_i$ and
+  $G_{ij}^{(1)}=-(2c^2)^{-1}(\partial_i\dot w_j+\partial_j\dot w_i)$,
+  recovers the 012 normalization in the stationary limit, and checks
+  that source-free transverse vector Fourier modes have zero amplitude
+  for $k\neq0$ rather than a propagation law. Discharge files:
+  `development/covariant_lifts/vector_time_dependent/vector_time_dependent_note.md`,
+  `vacuum_forge/src/field_equation_trials/017_vector_time_dependent/vector_time_dependent.py`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 
