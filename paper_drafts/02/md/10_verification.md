@@ -10,7 +10,7 @@ scratch and verify declared dependencies on upstream archived results.
 |---|---|---|
 | static self-coupling identity and `lambda = -1` selector | `002_trial_C_burden_ledger/trial_C2_self_coupling_bootstrap.py` | derives `Delta_ar(e^s)` identity, bootstrap family, negative static energy |
 | static placement / `AB = 1` compatibility | `002_trial_C_burden_ledger/trial_C3_spatial_bootstrap.py` | verifies the t-r block identity and excludes explicit scalar-source placement |
-| TT positivity, ghost exclusion, source slavery | `006_gate_G03_radiative_positivity/gate_G03_radiative_positivity.py` | proves the sector-sign architecture at reduced level |
+| TT positivity, ghost exclusion, source binding | `006_gate_G03_radiative_positivity/gate_G03_radiative_positivity.py` | proves the sector-sign architecture at reduced level |
 | linear underdetermination and `K_T` bootstrap | `008_radiative_bootstrap/radiative_bootstrap_KT.py` | shows linear work-flux balance cannot fix `K_T`, then fixes it by second-order self-coupling |
 
 For a public version of the paper, the scripts should be archived with a

@@ -243,7 +243,7 @@ minimum-energy commitment) therefore forces the $s$-sector to be
 propagate. This is *why* the scalar sector must be a constraint —
 derived, not imposed.
 
-**Theorem 3 (source slavery).** The source-free constraint sector
+**Theorem 3 (source binding).** The source-free constraint sector
 $(r^2 A')' = 0$ with asymptotic flatness and regularity has the unique
 solution $A \equiv 1$: flat vacuum is the unique zero-source static
 state. The negative reservoir is a *functional of its sources* — it

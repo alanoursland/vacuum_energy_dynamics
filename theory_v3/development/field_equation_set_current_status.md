@@ -71,7 +71,7 @@ forced**.
 
 | Sector | Sign | Character | Established by |
 |---|---|---|---|
-| Temporal ($s$, static) | **Negative** | Non-propagating (forced), source-slaved | C2 + P9; ghost exclusion (G03/T2); uniqueness $A\equiv 1$ at zero source (G02) |
+| Temporal ($s$, static) | **Negative** | Non-propagating (forced), source-bound | C2 + P9; ghost exclusion (G03/T2); uniqueness $A\equiv 1$ at zero source (G02) |
 | Radiative (TT) | **Positive** | Propagating, outward flux | G03: sum-of-squares energy density; sign anchored by binary-pulsar spin-down |
 
 This is the architecture by which GR survives its conformal-factor

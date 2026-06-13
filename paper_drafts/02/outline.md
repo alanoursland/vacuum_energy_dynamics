@@ -34,7 +34,7 @@ is forced into a sector-indefinite architecture:
 
 - the static scalar/temporal sector carries negative field energy,
 - that negative sector cannot be promoted to a propagating mode,
-- the source-free static sector is source-slaved and cannot be mined,
+- the source-free static sector is source-bound and cannot be mined,
 - the propagating transverse-traceless sector is positive,
 - the radiative normalization is fixed only after self-coupling is
   included.
@@ -76,7 +76,7 @@ the scalar/static sector is forced to be negative,
 degree of freedom, its Hamiltonian is unbounded below; stability therefore
 forces it to be elliptic/constraint-type. The source-free constraint
 equation has flat space as its unique regular asymptotically flat
-solution, so the negative reservoir is source-slaved and cannot be mined.
+solution, so the negative reservoir is source-bound and cannot be mined.
 The transverse-traceless sector is then the only propagating sector and
 has positive definite energy. A final normalization argument shows why
 linear radiation theory alone cannot fix the gravitational-wave kinetic
@@ -219,13 +219,13 @@ Important phrasing:
 
 - This is not "negative energy is harmless."
 - It is "negative energy is harmless only because it is non-propagating
-  and source-slaved."
+  and source-bound."
 
 Verification/provenance:
 
 - G03/T2 ghost exclusion.
 
-### 5. Source slavery: why the negative reservoir cannot be mined
+### 5. Source-bound constraint: why the negative reservoir cannot be mined
 
 Goal: answer the obvious objection that a static negative-energy field
 could still be exploited.
@@ -258,7 +258,7 @@ Points to make:
 
 Verification/provenance:
 
-- G02 flat-vacuum uniqueness / source-slavery result.
+- G02 flat-vacuum uniqueness / source-binding result.
 
 ### 6. Radiative positivity: what is allowed to propagate
 
@@ -343,7 +343,7 @@ Table columns:
 
 Rows:
 
-- static scalar/shear: negative, elliptic constraint, source-slaved;
+- static scalar/shear: negative, elliptic constraint, source-bound;
 - TT radiation: positive, hyperbolic propagating, carries waves;
 - vector/momentum sector: constraint-sourced, bounded/magnetic-type;
 - trace/kappa sector: suppressed in static vacuum by frame indifference.
@@ -393,7 +393,7 @@ Content:
 - Give a table:
   - static sign/bootstrap: C2,
   - placement exclusion: C3,
-  - ghost exclusion/source-slavery/radiative positivity: G02/G03,
+  - ghost exclusion/source-binding/radiative positivity: G02/G03,
   - radiative normalization/quadrupole: 008.
 - Explain that scripts re-derive from scratch and check declared
   dependencies.
@@ -520,7 +520,7 @@ Static self-coupling bootstrap
 
 Source-free static equation + regularity + flatness
   -> flat vacuum unique
-  -> negative sector source-slaved
+  -> negative sector source-bound
 
 TT decomposition + radiative energy calculation
   -> positive propagating sector
@@ -560,7 +560,7 @@ one of them, the paper plan should be adjusted rather than defended.
 2. A finalized notation convention for `s`, `A`, `B`, `K_T`, and TT
    normalization.
 3. A polished proof of ghost exclusion with no hidden sign convention.
-4. A polished proof of source-free uniqueness / source slavery.
+4. A polished proof of source-free uniqueness / source binding.
 5. A concise derivation of radiative positivity and null flux.
 6. A concise derivation of the `K_T` underdetermination lemma.
 7. A second-order bootstrap derivation fixing `K_T`.

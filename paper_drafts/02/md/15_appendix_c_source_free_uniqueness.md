@@ -56,7 +56,7 @@ A(r)\equiv1.
 $$
 
 The zero-source regular asymptotically flat static solution is unique.
-This proves the source-slavery statement used in Sec. 5: the negative
+This proves the source-binding statement used in Sec. 5: the negative
 static sector is not an independent reservoir. It exists only as a
 response to sources or boundary data that represent sources.
 

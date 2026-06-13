@@ -10,7 +10,7 @@
   paper versus being cited as background.
 - Tighten the statement of the ghost-exclusion theorem so no sign
   convention is hidden.
-- Confirm the source-slavery proof uses the right domain and boundary
+- Confirm the source-binding proof uses the right domain and boundary
   assumptions for the intended claim.
 - Confirm the radiative positivity coefficient matches the convention used
   in the final `K_T` normalization section.
@@ -30,7 +30,7 @@
 ## Writing
 
 - Smooth transitions between Sections 3-7.
-- Reduce repeated phrases around "source-slaved" and "cannot be mined."
+- Reduce repeated phrases around "source-bound" and "cannot be mined."
 - Decide whether the tone is AJP/EJP pedagogical or arXiv technical note.
 - Turn the references stub into a real bibliography.
 - Add figure captions in the Markdown text or in a future compiled paper

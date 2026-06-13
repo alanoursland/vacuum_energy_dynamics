@@ -66,7 +66,7 @@ def main():
     cells = [
         ((160, 180, 600, 420), "FORBIDDEN GHOST\nH unbounded below\nvacuum decay", lightred, red),
         ((660, 180, 1100, 420), "GRAVITATIONAL WAVES\nTT modes\npositive flux", lightgreen, green),
-        ((160, 490, 600, 730), "STATIC GRAVITY\nnegative but elliptic\nsource-slaved", lightgold, gold),
+        ((160, 490, 600, 730), "STATIC GRAVITY\nnegative but elliptic\nsource-bound", lightgold, gold),
         ((660, 490, 1100, 730), "NONDANGEROUS\nnot central here\nbounded constraint", lightblue, blue),
     ]
 

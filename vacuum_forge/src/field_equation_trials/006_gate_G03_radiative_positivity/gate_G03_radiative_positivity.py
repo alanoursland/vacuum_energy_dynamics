@@ -31,7 +31,7 @@
 #   T3 (G02): the source-free constraint sector with asymptotic flatness
 #       and regularity has the unique solution A == 1: flat vacuum is the
 #       unique zero-source static state. The negative sector is
-#       source-slaved -- not an independent energy reservoir. No runaway.
+#       source-bound -- not an independent energy reservoir. No runaway.
 #
 # Together: the sector-indefinite signature is stable by architecture --
 # the negative sector cannot radiate (it has no propagating mode) and
@@ -275,7 +275,7 @@ def case_3_vacuum_uniqueness(out: ScriptOutput):
     print()
     print("  Hence A == 1 (flat) is the UNIQUE zero-source static configuration.")
     print("  Consequences:")
-    print("    - the negative sector's energy is source-slaved: it is a")
+    print("    - the negative sector's energy is source-bound: it is a")
     print("      functional of the sources, not an independent reservoir;")
     print("    - there is no zero-source configuration with arbitrarily")
     print("      negative energy to decay into; flat vacuum is stable (G02);")
@@ -302,7 +302,7 @@ def case_4_verdict(out: ScriptOutput) -> None:
     print("    - sign derived (C2 + P9 + exact recovery)")
     print("    - non-propagating: elliptic adopted law; hyperbolic promotion is")
     print("      a ghost, excluded by stability (T2)")
-    print("    - source-slaved: flat vacuum unique at zero source (T3)")
+    print("    - source-bound: flat vacuum unique at zero source (T3)")
     print("  POSITIVE sector (TT/radiative):")
     print("    - energy density a sum of squares; outgoing flux positive (T1)")
     print("    - sign anchored by binary-pulsar spin-down")
@@ -370,7 +370,7 @@ def record_results(ns) -> None:
         record_kind=RecordKind.DERIVATION,
         result_type="uniqueness_theorem",
         scope="flat vacuum is the unique zero-source static state; negative sector is "
-              "source-slaved, not a reservoir (gate G02, reduced level)",
+              "source-bound, not a reservoir (gate G02, reduced level)",
     )
 
     ns.record_claim(ClaimRecord(
@@ -383,7 +383,7 @@ def record_results(ns) -> None:
             "The sector-indefinite signature is complete at the reduced level: "
             "the temporal sector is negative (C2 + P9 + exact recovery), "
             "non-propagating (elliptic adopted law; hyperbolic promotion is a "
-            "ghost), and source-slaved (flat vacuum unique at zero source -- "
+            "ghost), and source-bound (flat vacuum unique at zero source -- "
             "gate G02); the TT sector is positive-definite with outward flux, "
             "sign anchored by the binary pulsar (gate G03). This mirrors the "
             "architecture by which GR survives the conformal-factor problem. "

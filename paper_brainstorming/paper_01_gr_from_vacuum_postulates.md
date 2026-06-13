@@ -39,7 +39,7 @@ not by observation.
    — novelty check required (see paper 6, which could be split out or
    absorbed here).
 3. **The sector-indefinite signature as theorem.** Why the conformal
-   mode must be a constraint (ghost exclusion + source slavery),
+   mode must be a constraint (ghost exclusion + source binding),
    derived rather than imposed.
 4. **Kill-condition discipline.** Every coefficient confronted an
    observation that could have falsified it *after* derivation (binary
@@ -51,7 +51,7 @@ not by observation.
 1. Postulates (fences included as content, not apologetics)
 2. The static bootstrap: areal-flux law → Schwarzschild exact (C2)
 3. Placement and frame indifference: P7′, count-once geometry-side (C3)
-4. Sector signature: ghost exclusion, source slavery, TT positivity (G02/G03)
+4. Sector signature: ghost exclusion, source binding, TT positivity (G02/G03)
 5. The radiative bootstrap: K_T derived; quadrupole with no free constants (008)
 6. Closing the four-derivative sector: ghost gate + the P7′ no-hair theorem (G20/E3)
 7. Result, conditionality (Deser citation; reduced-level scope), divergence

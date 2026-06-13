@@ -26,7 +26,7 @@ gravity survives an indefinite energy spectrum:
 2. promoting it to a propagating mode yields a Hamiltonian unbounded
    below → it must be elliptic/constraint (ghost exclusion),
 3. flat vacuum is the unique zero-source static state → the negative
-   reservoir is source-slaved and cannot be mined,
+   reservoir is source-bound and cannot be mined,
 4. everything that does propagate (TT) is positive-definite, and its
    coupling is then *fixed* by the same self-consistency (the
    work–flux balance shows the linear theory cannot fix it; the

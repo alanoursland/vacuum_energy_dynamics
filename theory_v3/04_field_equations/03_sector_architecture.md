@@ -9,7 +9,7 @@ conformal-factor problem, obtained from its own postulates.
 
 | sector | sign of energy | character | established by |
 |---|---|---|---|
-| temporal/static ($s$) | **negative**: $u=-\dfrac{c^4(s')^2}{8\pi G}$ | non-propagating (forced), source-slaved | C2 + P9; G03/T2; G02 |
+| temporal/static ($s$) | **negative**: $u=-\dfrac{c^4(s')^2}{8\pi G}$ | non-propagating (forced), source-bound | C2 + P9; G03/T2; G02 |
 | radiative (TT) | **positive definite** | propagating, outward null flux | G03; coefficient by 008 |
 | vector ($w_i$) | (magnetic-type, bounded) | constraint-sourced by momentum density | 012 |
 | trace ($\kappa$) | — | suppressed: exactly 0 in Λ-era statics; $O((H_0r/c)^2)$ matter-era | P7′; F1 |
@@ -23,7 +23,7 @@ the positive TT sector. Stability therefore *forces* the
 elliptic/constraint assignment. What the old FEC-007 program adopted as
 policy ("A is constraint, not radiation") is a theorem.
 
-**2. The negative sector cannot be mined (source-slavery, G02).**
+**2. The negative sector cannot be mined (source-binding, G02).**
 $(r^2A')'=0$ with flatness and regularity has the unique solution
 $A\equiv1$: the static sector is a functional of its sources, not an
 independent reservoir. Extracting its energy requires moving sources,

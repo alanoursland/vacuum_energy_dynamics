@@ -200,7 +200,7 @@ Explain why the negative static sector is not pathological.
 Content:
 
 - ghost exclusion: negative scalar/static sector cannot propagate;
-- source slavery: source-free flat vacuum is unique;
+- source binding: source-free flat vacuum is unique;
 - TT positivity: propagating modes have positive energy and null flux.
 
 This section can cite Paper 2 if Paper 2 is written first. If Paper 1 is
@@ -208,7 +208,7 @@ written first, include the compact proof and move details to an appendix.
 
 Table:
 
-- static scalar/shear: negative, elliptic, source-slaved;
+- static scalar/shear: negative, elliptic, source-bound;
 - TT radiation: positive, hyperbolic, radiative;
 - vector sector: constraint-sourced by momentum;
 - trace/kappa: suppressed in static vacuum.

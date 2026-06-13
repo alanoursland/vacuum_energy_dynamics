@@ -28,7 +28,7 @@ be elliptic: it is a constraint, not radiation.
 
 Third, the source-free static constraint has flat vacuum as its unique
 regular asymptotically flat solution. The negative sector is therefore
-source-slaved. It cannot be mined as an independent energy reservoir.
+source-bound. It cannot be mined as an independent energy reservoir.
 
 Fourth, the transverse-traceless sector is positive and carries outward
 null flux. Its sign is fixed by positivity, while its normalization is
@@ -37,7 +37,7 @@ theory alone cannot determine it.
 
 The point is not that gravity has positive local energy in every sector.
 It does not. The point is that sign and dynamical character are locked
-together. The negative sector is non-propagating and source-slaved; the
+together. The negative sector is non-propagating and source-bound; the
 propagating sector is positive.
 
 The derivation was developed inside the Vacuum Energy Dynamics archive,

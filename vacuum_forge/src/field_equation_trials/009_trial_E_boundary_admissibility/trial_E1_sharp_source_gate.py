@@ -367,7 +367,7 @@ def case_3_dichotomy(out: ScriptOutput) -> None:
     print(f"       Delta E(ell) = {sp.sstr(sp.expand(dE))},  lim(ell->0) = {sp.sstr(dE_limit)}")
     print("       The derived (s')^2 energy cannot prefer smooth boundaries: the")
     print("       sharp configuration costs the same in the limit. P5 has no")
-    print("       lever here, and the static sector is source-slaved anyway (G02).")
+    print("       lever here, and the static sector is source-bound anyway (G02).")
     c2_ok = is_zero(dE_limit)
 
     # ---- (c3) the mechanism: curvature energy => fourth order => smoothness
@@ -524,7 +524,7 @@ def record_results(ns) -> None:
         status=ObligationStatus.OPEN,
         required_by=[],
         description="Alternative to the beta mechanism: smoothing could live in rho's dynamics "
-                    "rather than the geometric response. Outside the static source-slaved sector.",
+                    "rather than the geometric response. Outside the static source-bound sector.",
     ))
 
     ns.record_route(RouteRecord(

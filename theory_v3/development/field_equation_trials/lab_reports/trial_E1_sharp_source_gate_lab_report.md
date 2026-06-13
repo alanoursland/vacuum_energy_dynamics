@@ -47,7 +47,7 @@ with no layer and no shell.
 * **(c2) No energy barrier.** Smoothing a curvature kink over width
   $\ell$ changes the derived $(s')^2$ energy by $\Delta E = 4\ell^3/15
   \to 0$. The derived energy cannot dynamically prefer smooth boundaries;
-  P5 has no lever, and the static sector is source-slaved anyway (G02).
+  P5 has no lever, and the static sector is source-bound anyway (G02).
 * **(c3) The mechanism.** Add a curvature-energy term $\beta(s'')^2$ and
   the response becomes fourth order; for the curvature $v=s''$ the
   equation is $\beta v''-v=\kappa\rho$, whose bounded solution across a

@@ -1,4 +1,4 @@
-# 5. Source Slavery: Why the Negative Reservoir Cannot Be Mined
+# 5. Source-Bound Constraint: Why the Negative Reservoir Cannot Be Mined
 
 One might still worry that a non-propagating negative sector could be
 mined. Even if it cannot radiate on its own, perhaps an engineered process
@@ -40,7 +40,7 @@ $$
 Flat vacuum is the unique regular, asymptotically flat, zero-source static
 state.
 
-The negative static field energy is therefore source-slaved. It exists
+The negative static field energy is therefore source-bound. It exists
 only as the constrained response to sources. Without a source there is no
 independent well, and without an independent well there is no free
 negative reservoir to mine.
@@ -62,5 +62,5 @@ available. The constraint equation and boundary conditions determine which
 static configurations exist. In the absence of sources, the only one is
 flat space.
 
-The reduced source-slavery result is verified as the G02 part of
+The reduced source-binding result is verified as the G02 part of
 `gate_G03_radiative_positivity.py`.

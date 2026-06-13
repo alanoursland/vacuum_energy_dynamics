@@ -9,7 +9,7 @@ The sector architecture is:
 
 | sector | energy sign | character |
 |---|---|---|
-| static scalar/shear | negative | elliptic, source-slaved |
+| static scalar/shear | negative | elliptic, source-bound |
 | transverse-traceless radiation | positive | hyperbolic, propagating |
 | vector sector | bounded magnetic-type constraint | sourced by momentum |
 | trace/kappa | suppressed in static vacuum | cosmological correction only |

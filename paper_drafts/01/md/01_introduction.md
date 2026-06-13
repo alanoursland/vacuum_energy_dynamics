@@ -28,7 +28,7 @@ carry a symmetric tensor metric variable with relabeling gauge freedom and
 universal matter response. Third, static bookkeeping derives the exact
 Schwarzschild exterior and the negative static field-energy density without
 using the Einstein equations. Fourth, stability forces the sign-indefinite
-sector architecture: the negative static sector is source-slaved and
+sector architecture: the negative static sector is source-bound and
 non-propagating, while transverse-traceless radiation is positive. Fifth,
 spin-2 closure and radiative self-coupling fix the dynamical normalization.
 Finally, the four-derivative sector is eliminated, leaving the Einstein-Hilbert

@@ -9,7 +9,7 @@ $u_{\rm stat}=-c^4(s')^2/(8\pi G)$. If this sector is promoted to a
 propagating hyperbolic mode, its Hamiltonian is unbounded below, so
 stability forces it to be elliptic and constrained. The source-free
 constraint equation has flat space as its unique regular asymptotically
-flat solution, so the negative sector is source-slaved and cannot be
+flat solution, so the negative sector is source-bound and cannot be
 mined. The transverse-traceless sector is positive and carries outward
 null flux. Finally, linear radiation theory is shown to underdetermine its
 own kinetic normalization: amplitudes, fluxes, and work all scale so that

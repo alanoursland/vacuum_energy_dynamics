@@ -27,7 +27,7 @@ source at the same universal coupling as all other energy.
 This gives a compact answer to the conformal/static-sector puzzle:
 gravity survives its wrong-sign sector because that sector is not a
 radiative degree of freedom. The negative mode is constrained and
-source-slaved; the propagating modes are positive.
+source-bound; the propagating modes are positive.
 
 The broader Vacuum Energy Dynamics program uses this sector architecture
 as one component in a derivation of the Einstein field equations. The

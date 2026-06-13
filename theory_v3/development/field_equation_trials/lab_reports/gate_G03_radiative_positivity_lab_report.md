@@ -38,7 +38,7 @@ the old FEC-007 "A is constraint, not radiation" *policy* -- is now a
 **T3 (G02).** The source-free constraint sector $(r^2A')'=0$ with
 asymptotic flatness and regularity at the origin has the unique solution
 $A\equiv1$: flat vacuum is the unique zero-source static state. The
-negative sector is therefore source-slaved -- a functional of the sources,
+negative sector is therefore source-bound -- a functional of the sources,
 not an independent reservoir. Nothing to decay into; mining it requires
 moving sources (P6 dynamics), radiated through the positive channel.
 
@@ -49,7 +49,7 @@ G03 PASS: everything that propagates is positive; sign anchored.
 G02 PASS: flat vacuum unique at zero source; no runaway.
 
 Sector-indefinite signature, complete (reduced level):
-  temporal sector: negative, non-propagating (forced), source-slaved
+  temporal sector: negative, non-propagating (forced), source-bound
   radiative sector: positive definite, outward flux
 ```
 

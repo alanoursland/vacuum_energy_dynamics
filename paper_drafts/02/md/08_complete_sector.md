@@ -6,7 +6,7 @@ The architecture is summarized in Table 1.
 | sector | energy sign | dynamical character | reason |
 |---|---:|---|---|
 | static scalar/shear `s` | negative | elliptic constraint | self-coupling fixes `u_stat < 0`; stability forbids propagation |
-| source-free static sector | none independently | source-slaved | regular asymptotically flat zero-source solution is `A = 1` |
+| source-free static sector | none independently | source-bound | regular asymptotically flat zero-source solution is `A = 1` |
 | transverse-traceless radiation | positive | hyperbolic propagating | quadratic energy is a sum of squares and flux is outward |
 | vector/momentum sector | bounded magnetic-type | constraint-sourced | sourced by momentum density, not an independent scalar reservoir |
 | trace/kappa sector | suppressed in strict statics | constrained/quarantined | static frame indifference removes the static trace channel |
@@ -16,7 +16,7 @@ positive definite at the level of local static field energy. The important
 feature is that the indefinite sectors have the only dynamical character
 compatible with stability.
 
-The negative sector is allowed because it is constrained and source-slaved.
+The negative sector is allowed because it is constrained and source-bound.
 The positive sector propagates because it is bounded below. A theory that
 changed either assignment would be unstable or empirically wrong:
 

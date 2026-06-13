@@ -72,7 +72,7 @@ def main():
         (70, 170, 350, 300, "Static self-coupling\nfixes sign", lightblue, blue),
         (420, 170, 700, 300, "Negative static\nfield energy", lightred, red),
         (770, 170, 1050, 300, "Stability forbids\npropagation", lightgold, gold),
-        (1070, 400, 1350, 530, "Constraint sector:\nsource-slaved", lightgreen, green),
+        (1070, 400, 1350, 530, "Constraint sector:\nsource-bound", lightgreen, green),
         (420, 500, 700, 630, "TT sector:\npositive radiation", lightgreen, green),
     ]
 
