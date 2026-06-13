@@ -255,7 +255,7 @@ The leading delay uses only the first-order part of that metric. In terms of ear
 - T3 supplies $\gamma=1$, the spatial-response coefficient.
 - T5 packages these into the weak-field metric used here.
 
-T4 and P8 are not required for the leading Shapiro delay coefficient. They are part of the full one-post-Newtonian metric assembly, but Shapiro delay at leading order is controlled by $\gamma$, not by $\beta$.
+T4 and its P9+C2 temporal self-coupling input are not required for the leading Shapiro delay coefficient. They are part of the full one-post-Newtonian metric assembly, but Shapiro delay at leading order is controlled by $\gamma$, not by $\beta$.
 
 This dependency structure is parallel to T7. Light deflection and Shapiro delay test the spatial-response side of weak-field recovery. Perihelion precession tests the combination of spatial response and second-order temporal self-coupling.
 
@@ -319,7 +319,7 @@ It depends on:
 - T3: Reciprocal Exterior Scaling, for $\gamma=1$.
 - T5: Static Exterior Weak-Field Metric, the direct metric input for the proof.
 
-T4 and P8 are part of T5's full one-post-Newtonian assembly, but the leading Shapiro delay coefficient does not require $\beta=1$.
+T4 and its P9+C2 temporal self-coupling input are part of T5's full one-post-Newtonian assembly, but the leading Shapiro delay coefficient does not require $\beta=1$.
 
 ## Summary
 

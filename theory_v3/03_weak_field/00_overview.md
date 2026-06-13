@@ -24,12 +24,10 @@ before the field equations existed.
   P8-content) that already pin the weak field, well before the full
   equations were available.
 - They are **not conditional on standalone P7/P8** in the current
-  theory: P7 is the metric shadow of adopted P7′ (Trial C3), and P8 is
-  a theorem under P9 + the C2 bootstrap. The original conditional
-  language is retained in the proof texts; read it with the
-  substitutions "P7 → P7′ (via C3)" and "P8 → P9 + C2". See the banner
-  on `summary_weak_field_gr_recovery.md` and the renamed postulate
-  files in `01_postulates/`.
+  theory: P7 is the metric shadow of adopted P7′ (Trial C3), and the
+  former P8 content is a theorem under P9 + the C2 bootstrap. T4 and the
+  dependency sections in this folder have been updated to use that
+  modern chain directly.
 - They do **not** exhaust the tests: frame dragging (GPB/LAGEOS-class),
   gravitational-wave energy loss (binary-pulsar-class), and strong-field
   statics are covered by the full equations — see

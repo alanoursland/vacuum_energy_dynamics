@@ -24,12 +24,11 @@ Each file is a self-contained derivation with its dependencies stated.
   postulate-level derivations and show which commitment carries which
   result.
 - They are **no longer conditional on standalone P7/P8**: those two
-  postulates changed status during the trials program (P7 → shadow of
-  adopted P7′; P8 → theorem under P9). The proof texts retain their
-  original conditional framing for fidelity; the banners at the top of
-  T3 and T4 give the correct modern reading. The dependency-bearing
-  files are `01_postulates/shadow_p7_static_exterior_vacuum_compensation.md`
-  and `01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`.
+  postulates changed status during the trials program (P7 -> shadow of
+  adopted P7′; P8 -> theorem under P9). T4 has been formally rewritten
+  with P9+C2 as its direct dependency. The dependency-bearing files are
+  `01_postulates/shadow_p7_static_exterior_vacuum_compensation.md` and
+  `01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`.
 
 **Where the story continues:** the direct, self-contained derivation of
 the full field equations (with these foundations folded in as §2's

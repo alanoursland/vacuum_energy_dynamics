@@ -344,7 +344,7 @@ It depends on:
 * P6: Vacuum Exchange in Gradients, for the equivalent force-per-energy interpretation of the Newtonian acceleration.
 * T5: Static Exterior Weak-Field Metric, the direct metric input for the proof.
 
-T5's dependency chain includes T1, T2, T3, T4, P7, and P8. T6 inherits those dependencies through T5, although the leading Newtonian acceleration itself uses only the first-order temporal coefficient.
+T5's dependency chain includes T1, T2, T3, T4, P7', P9, and the C2 bootstrap. T6 inherits those dependencies through T5, although the leading Newtonian acceleration itself uses only the first-order temporal coefficient.
 
 ---
 

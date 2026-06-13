@@ -52,7 +52,7 @@ T5 assembles these into the static exterior weak-field metric.
 
 T9 uses that metric to derive the perihelion advance.
 
-Without T4/P8, this theorem would remain incomplete. The precession formula would still contain an undetermined $\beta$. With T4 in place, the framework recovers the standard result.
+Without T4's P9+C2 temporal self-coupling result, this theorem would remain incomplete. The precession formula would still contain an undetermined $\beta$. With T4 in place, the framework recovers the standard result.
 
 ## The Setup
 
@@ -250,7 +250,7 @@ First, the spatial mapping of the exterior vacuum is not flat. P7/T3 supplies th
 
 $$\gamma=1.$$
 
-Second, the temporal mapping is nonlinear. P8/T4 supplies temporal self-coupling, giving
+Second, the temporal mapping is nonlinear. The P9+C2/T4 chain supplies temporal self-coupling, giving
 
 $$\beta=1.$$
 
@@ -318,7 +318,7 @@ T9 does not apply inside matter. It assumes a source-free exterior.
 
 T9 does not establish $\gamma=1$ or $\beta=1$ by itself. It depends on T3 and T4 for those values.
 
-T9 does not derive P7 or P8. It is conditional on the exterior structural postulates through the earlier theorem chain.
+T9 does not derive T3 or T4. It is downstream of the exterior theorem chain that supplies $\gamma=1$ and $\beta=1$.
 
 ## Status of the Result
 
@@ -340,7 +340,7 @@ $$\Delta\varpi=\frac{6\pi GM}{a(1-e^2)c^2}.$$
 
 This matches the standard weak-field general-relativistic perihelion-precession result.
 
-The theorem is conditional on the framework's exterior weak-field recovery structure. If P7/T3 were removed, the result would remain parameterized by $\gamma$. If P8/T4 were removed, the result would remain parameterized by $\beta$.
+The theorem is conditional on the framework's exterior weak-field recovery structure. If P7'/T3 were removed, the result would remain parameterized by $\gamma$. If P9+C2/T4 were removed, the result would remain parameterized by $\beta$.
 
 ## Imports and Dependencies
 
@@ -356,8 +356,9 @@ It depends on:
 - P3a: Spatial Differential is Curvature, for the framework's curvature vocabulary.
 - P4: Curvature Contains Energy, for the configuration-energy status of curved vacuum.
 - P5: Vacuum Seeks Minimum Energy Configuration, for the static exterior as a constrained minimum configuration.
-- P7: Static Exterior Vacuum Compensation, inherited through T3.
-- P8: Static Exterior Temporal Self-Coupling, inherited through T4.
+- P7': Static Frame Indifference, inherited through T3 via its metric shadow.
+- P9: Configuration Energy Gravitates, inherited through T4 via the C2 bootstrap.
+- Trial C2: the static temporal self-coupling bootstrap, inherited through T4.
 - T3: Reciprocal Exterior Scaling, for $\gamma=1$.
 - T4: Second-Order Temporal Self-Coupling, for $\beta=1$.
 - T5: Static Exterior Weak-Field Metric, the direct metric input for the proof.

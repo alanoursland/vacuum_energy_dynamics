@@ -290,7 +290,7 @@ The leading deflection uses only the first-order part of that metric. In terms o
 * T3 supplies $\gamma=1$, the spatial-response coefficient.
 * T5 packages these into the weak-field metric used here.
 
-T4 and P8 are not required for the leading light-deflection coefficient. They are part of the assembled one-post-Newtonian recovery structure, but the leading light-deflection proof is controlled by $\gamma$, not by $\beta$.
+T4 and its P9+C2 temporal self-coupling input are not required for the leading light-deflection coefficient. They are part of the assembled one-post-Newtonian recovery structure, but the leading light-deflection proof is controlled by $\gamma$, not by $\beta$.
 
 This dependency distinction matters. Light deflection is a test of the framework's spatial response. Perihelion precession will test the combination of spatial response and second-order temporal response.
 
@@ -358,7 +358,7 @@ It depends on:
 * T3: Reciprocal Exterior Scaling, for $\gamma=1$.
 * T5: Static Exterior Weak-Field Metric, the direct metric input for the proof.
 
-T4 and P8 are part of T5's full one-post-Newtonian assembly, but the leading light-deflection coefficient does not require $\beta=1$.
+T4 and its P9+C2 temporal self-coupling input are part of T5's full one-post-Newtonian assembly, but the leading light-deflection coefficient does not require $\beta=1$.
 
 ---
 

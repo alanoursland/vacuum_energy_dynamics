@@ -15,12 +15,22 @@ vacuum-sector program).
    + 008 (radiative, incl. Isaacson averaging rigor: secular terms,
    gauge invariance of ⟨t_ab⟩), 012 (vector, general time dependence),
    nonlinear stability.
-3. **P8/T4 formal rewrite** as theorems under P9 (housekeeping; the
-   content is already proved).
-4. **Tensor-virial identity in generality** (verified on a compact
+3. **Tensor-virial identity in generality** (verified on a compact
    witness in 008).
-5. **Scalaron screening note** (G20): moot for the equations (a = 0)
+4. **Scalaron screening note** (G20): moot for the equations (a = 0)
    but should be recorded for the E3 appeal file.
+
+## Retired rigor debts
+
+- **P8/T4 formal rewrite completed (2026-06-13).** P8 is no longer
+  treated as a live postulate or standalone recovery condition. The
+  retained P8 file is now a theorem record: former P8 content =
+  P9 + C2. T4 has been rewritten with P9 + the C2 bootstrap as its
+  direct dependency, and the weak-field dependency summaries now inherit
+  $\beta=1$ through the P9+C2/T4 chain. Discharge files:
+  `01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`,
+  `02_foundations/t4_second_order_temporal_self_coupling.md`,
+  `03_weak_field/summary_weak_field_gr_recovery.md`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 

@@ -43,15 +43,18 @@ External motivation: the Nordtvedt test. Lunar laser ranging shows the
 Earth's gravitational self-energy (~4.6e-10 of its mass) both falls and
 sources gravity like ordinary energy. A framework in which configuration
 energy did not gravitate would fail this observation and would also break
-its own T4/T9 chain (P8's self-coupling content is what produces beta = 1).
+its own T4/T9 chain: the P9+C2 self-coupling theorem is what produces
+beta = 1.
 
 ---
 
 ## The Question This Answers
 
-The weak-field recovery left two structural postulates (P7, P8) as
-admittedly underived recovery conditions, with the standing obligation that
-a future principle should derive them.
+The older weak-field recovery left P7 and P8 as admittedly underived
+recovery conditions, with the standing obligation that a future principle
+should derive them. That status has since changed: P7 is the metric shadow
+of adopted P7', and the former P8 content is a theorem under P9 plus the
+C2 bootstrap.
 
 Trial C2 established, in the reduced static spherical temporal sector:
 
@@ -102,12 +105,11 @@ the same structure GR carries in its conformal-mode kinetic term.
 
 ## What P9 Buys
 
-**P8 becomes a theorem at one post-Newtonian order.** P8's multiplicative
-temporal composition is the first-order shadow of the lamda = -1 bootstrap.
-Under P9 plus exact recovery, the second-order temporal coefficient is
-derived, not postulated. P8 is retained as a document describing the
-derived behavior; its epistemic status upgrades from structural postulate
-to consequence (formal rewrite pending).
+**The former P8 content is a theorem at one post-Newtonian order.** Its
+multiplicative temporal composition is the first-order shadow of the
+lamda = -1 bootstrap. Under P9 plus the C2 static bootstrap, the
+second-order temporal coefficient is derived, not postulated. The former
+P8 file is retained only as a document describing the derived behavior.
 
 **The exact exterior becomes a derivation.** A = 1 - r_s/r in areal gauge
 follows from: areal-flux law (mechanics branch) + P9 self-coupling + sign
@@ -249,5 +251,6 @@ Related results:
   selector, and sign resolution.
 - `ontology_and_mechanism/curvature_self_coupling.md`: branch verdicts and
   the bootstrap-selector strategy.
-- P7, P8: exterior recovery postulates that P9 begins to demote to
-  consequences (P8 at 1PN now; P7 pending Trial C3).
+- P7', via its shadow: the static exterior compensation statement used by
+  T3.
+- Former P8 content: now the P9+C2 theorem used by T4.
