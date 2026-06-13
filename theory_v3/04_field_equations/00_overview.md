@@ -28,11 +28,16 @@ the substance frame, and the interior cap.
 
 | file | contents |
 |---|---|
+| **`proof.md`** | **the direct derivation: postulates → field equations, ordered so GR is never imported to derive GR; anti-circularity ledger; verification index** |
 | `01_the_field_equations.md` | full statement; sector table; every coefficient and where it was derived |
 | `02_derivation_chain.md` | the logical chain from postulates to equations, with provenance pointers |
 | `03_sector_architecture.md` | signs, stability, and why the scalar sector must be a constraint |
 | `04_divergences_from_gr.md` | where VED is *not* GR: ontology, substance frame, predictions ledger, falsifiers |
 | `05_open_obligations.md` | rigor debts on the closed result; handoff to the vacuum-sector program |
+
+`proof.md` is the document to read for confidence in the result; the
+numbered files are the reference statement, the chain map, the sector
+architecture, the divergences, and the debts respectively.
 
 ## Status and conditionality (stated once, here)
 

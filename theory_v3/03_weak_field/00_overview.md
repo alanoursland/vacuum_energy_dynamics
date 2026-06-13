@@ -36,6 +36,9 @@ before the field equations existed.
   `04_field_equations/01_the_field_equations.md` (coefficient table with
   kill-condition anchors).
 
-**Where the story continues:** `04_field_equations/` for the equations
-these recoveries are corollaries of; `02_derivation_chain.md` there for
-the full postulates-to-equations chain.
+**Where the story continues:** `04_field_equations/proof.md` for the
+direct derivation these recoveries are corollaries of (the weak-field
+tests appear there as §6 kill-condition corollaries);
+`04_field_equations/01_the_field_equations.md` for the equations and
+coefficient table; `02_derivation_chain.md` there for the full
+postulates-to-equations chain.
