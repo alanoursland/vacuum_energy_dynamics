@@ -105,7 +105,7 @@ $$
 Using the leading-order T5 metric,
 
 $$
-0
+0 =
 -\left(1-\frac{2U}{c^2}\right)c^2dt^2
 +
 \left(1+2\frac{U}{c^2}\right)d\ell^2.
@@ -115,14 +115,14 @@ Solve for the coordinate travel time:
 
 $$
 c^2dt^2
-\frac{1+2U/c^2}{1-2U/c^2}d\ell^2.
+=\frac{1+2U/c^2}{1-2U/c^2}d\ell^2.
 $$
 
 Taking the square root and expanding to first order,
 
 $$
 cdt
-\sqrt{\frac{1+2U/c^2}{1-2U/c^2}}d\ell
+=\sqrt{\frac{1+2U/c^2}{1-2U/c^2}}d\ell
 \approx
 \left(1+2\frac{U}{c^2}\right)d\ell.
 $$
@@ -167,7 +167,7 @@ In a weakly varying optical medium, the small deflection angle is obtained by in
 
 $$
 \Delta\boldsymbol{\theta}
-\int_{-\infty}^{\infty}\nabla_\perp n,dz.
+=\int_{-\infty}^{\infty}\nabla_\perp n\,dz.
 $$
 
 With
@@ -180,7 +180,7 @@ we have
 
 $$
 \nabla_\perp n
-\frac{2}{c^2}\nabla_\perp U.
+=\frac{2}{c^2}\nabla_\perp U.
 $$
 
 For the unperturbed path, take the transverse coordinate to be $b$. Then
@@ -193,28 +193,28 @@ The transverse derivative is
 
 $$
 \frac{\partial U}{\partial b}
--\frac{GMb}{(b^2+z^2)^{3/2}}.
+=-\frac{GMb}{(b^2+z^2)^{3/2}}.
 $$
 
 The negative sign means the deflection points inward, toward the mass. The magnitude is
 
 $$
 |\Delta\theta|
-\frac{2}{c^2}\int_{-\infty}^{\infty}\frac{GMb}{(b^2+z^2)^{3/2}}dz.
+=\frac{2}{c^2}\int_{-\infty}^{\infty}\frac{GMb}{(b^2+z^2)^{3/2}}dz.
 $$
 
 The integral is standard:
 
 $$
-\int_{-\infty}^{\infty}\frac{b,dz}{(b^2+z^2)^{3/2}}
-\frac{2}{b}.
+\int_{-\infty}^{\infty}\frac{b\,dz}{(b^2+z^2)^{3/2}}
+=\frac{2}{b}.
 $$
 
 Therefore,
 
 $$
 |\Delta\theta|
-\frac{2GM}{c^2}\cdot\frac{2}{b}.
+=\frac{2GM}{c^2}\cdot\frac{2}{b}.
 $$
 
 So
@@ -239,7 +239,7 @@ The same integration gives
 
 $$
 \Delta\theta
-(1+\gamma)\frac{2GM}{bc^2}.
+=(1+\gamma)\frac{2GM}{bc^2}.
 $$
 
 T3 gives
@@ -252,8 +252,8 @@ so
 
 $$
 \Delta\theta
-2\frac{2GM}{bc^2}
-\frac{4GM}{bc^2}.
+=2\frac{2GM}{bc^2}
+=\frac{4GM}{bc^2}.
 $$
 
 This makes the role of T3 explicit. The temporal part gives one contribution. The spatial part, fixed by reciprocal exterior scaling, gives the second equal contribution. Together they produce the observed value.
@@ -391,8 +391,8 @@ the transverse-gradient integral gives
 
 $$
 \Delta\theta
-\frac{2}{c^2}\int_{-\infty}^{\infty}\frac{GMb}{(b^2+z^2)^{3/2}}dz
-\frac{4GM}{bc^2}.
+=\frac{2}{c^2}\int_{-\infty}^{\infty}\frac{GMb}{(b^2+z^2)^{3/2}}dz
+=\frac{4GM}{bc^2}.
 $$
 
 The result depends on the spatial-response coefficient $\gamma=1$ supplied by T3. This is the theorem that shows the framework recovers the full weak-field light-deflection result rather than the half-deflection produced by temporal gravity alone.

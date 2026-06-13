@@ -75,12 +75,12 @@ $$
 Consider a slow massive test body moving in the static, source-free exterior weak-field metric established by T5:
 
 $$
-ds^2
+ds^2 =
 -\left(1-\frac{2U}{c^2}+2\frac{U^2}{c^4}\right)c^2dt^2
 +
-\left(1+2\frac{U}{c^2}\right)d\vec{x}^{,2}
+\left(1+2\frac{U}{c^2}\right)d\vec{x}^{\,2}
 +
-O(c^{-6})*{tt}+O(c^{-4})*{ij}.
+O(c^{-6})_{tt}+O(c^{-4})_{ij}.
 $$
 
 For the Newtonian limit, only the leading temporal coefficient is needed:
@@ -137,14 +137,14 @@ The Christoffel symbol is
 
 $$
 \Gamma^i_{tt}
-\frac{1}{2}g^{i\lambda}\left(\partial_t g_{t\lambda}+\partial_t g_{t\lambda}-\partial_\lambda g_{tt}\right).
+=\frac{1}{2}g^{i\lambda}\left(\partial_t g_{t\lambda}+\partial_t g_{t\lambda}-\partial_\lambda g_{tt}\right).
 $$
 
 The metric is static and has no time-space cross terms in this regime, so the time derivatives vanish and the only leading contribution is
 
 $$
 \Gamma^i_{tt}
--\frac{1}{2}g^{ij}\partial_j g_{tt}.
+=-\frac{1}{2}g^{ij}\partial_j g_{tt}.
 $$
 
 To Newtonian order, the inverse spatial metric is
@@ -220,13 +220,13 @@ Its gradient is
 
 $$
 \nabla U
-\frac{d}{dr}\left(\frac{GM}{r}\right)\hat{\mathbf{r}}
--\frac{GM}{r^2}\hat{\mathbf{r}}.
+=\frac{d}{dr}\left(\frac{GM}{r}\right)\hat{\mathbf{r}}
+=-\frac{GM}{r^2}\hat{\mathbf{r}}.
 $$
 
 Therefore,
 
-$$\frac{d^2\mathbf{x}}{dt^2}-\frac{GM}{r^2}\hat{\mathbf{r}}.$$
+$$\frac{d^2\mathbf{x}}{dt^2}=-\frac{GM}{r^2}\hat{\mathbf{r}}.$$
 
 This is Newton's inverse-square gravitational acceleration.
 

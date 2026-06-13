@@ -16,21 +16,21 @@ $$U(r)=\frac{GM}{r},$$
 
 and with $U/c^2 \ll 1$, the exterior metric takes the form
 
-$$ds^2 
+$$ds^2 =
 -\left(1-\frac{2U}{c^2}+2\frac{U^2}{c^4}\right)c^2dt^2
 +
-\left(1+2\frac{U}{c^2}\right)d\vec{x}^{,2}
+\left(1+2\frac{U}{c^2}\right)d\vec{x}^{\,2}
 +
-O(c^{-6})*{tt}+O(c^{-4})*{ij}.$$
+O(c^{-6})_{tt}+O(c^{-4})_{ij}.$$
 
 Equivalently,
 
-$$-g_{tt}
+$$-g_{tt} =
 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}),$$
 
 and
 
-$$g_{ij}
+$$g_{ij} =
 \left(1+2\frac{U}{c^2}\right)\delta_{ij}+O(c^{-4}).$$
 
 This is the weak-field exterior metric form used by the classical solar-system tests: light deflection, Shapiro delay, and perihelion precession.
@@ -172,12 +172,12 @@ This is the second-order temporal side of weak-field gravity supplied by exterio
 
 The standard PPN-compatible weak-field metric for a static exterior field can be written as
 
-$$ds^2
+$$ds^2 =
 -\left(1-\frac{2U}{c^2}+2\beta\frac{U^2}{c^4}\right)c^2dt^2
 +
-\left(1+2\gamma\frac{U}{c^2}\right)d\vec{x}^{,2}
+\left(1+2\gamma\frac{U}{c^2}\right)d\vec{x}^{\,2}
 +
-O(c^{-6})*{tt}+O(c^{-4})*{ij}.$$
+O(c^{-6})_{tt}+O(c^{-4})_{ij}.$$
 
 Here $U$ is the positive Newtonian potential magnitude, with $U\to0$ at infinity.
 
@@ -191,21 +191,21 @@ $$\beta=1.$$
 
 Substituting these values gives
 
-$$ds^2
+$$ds^2 =
 -\left(1-\frac{2U}{c^2}+2\frac{U^2}{c^4}\right)c^2dt^2
 +
-\left(1+2\frac{U}{c^2}\right)d\vec{x}^{,2}
+\left(1+2\frac{U}{c^2}\right)d\vec{x}^{\,2}
 +
-O(c^{-6})*{tt}+O(c^{-4})*{ij}.$$
+O(c^{-6})_{tt}+O(c^{-4})_{ij}.$$
 
 Therefore,
 
-$$-g_{tt}
+$$-g_{tt} =
 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}),$$
 
 and
 
-$$g_{ij}
+$$g_{ij} =
 \left(1+2\frac{U}{c^2}\right)\delta_{ij}+O(c^{-4}).$$
 
 This is the framework's assembled static exterior weak-field metric.
@@ -216,12 +216,12 @@ This is the framework's assembled static exterior weak-field metric.
 
 In standard general relativity, the exterior weak-field metric of a nonrotating mass has the same one-post-Newtonian form:
 
-$$-g_{tt}
+$$-g_{tt} =
 1-\frac{2U}{c^2}+2\frac{U^2}{c^4}+O(c^{-6}),$$
 
 and
 
-$$g_{ij}
+$$g_{ij} =
 \left(1+2\frac{U}{c^2}\right)\delta_{ij}+O(c^{-4}).$$
 
 In PPN language, GR predicts
@@ -334,12 +334,12 @@ Given:
 
 then the framework's assembled weak-field exterior metric is
 
-$$ds^2
+$$ds^2 =
 -\left(1-\frac{2U}{c^2}+2\frac{U^2}{c^4}\right)c^2dt^2
 +
-\left(1+2\frac{U}{c^2}\right)d\vec{x}^{,2}
+\left(1+2\frac{U}{c^2}\right)d\vec{x}^{\,2}
 +
-O(c^{-6})*{tt}+O(c^{-4})*{ij}.$$
+O(c^{-6})_{tt}+O(c^{-4})_{ij}.$$
 
 This is the same metric structure used by standard one-post-Newtonian weak-field tests.
 
@@ -384,12 +384,12 @@ $$\beta=1.$$
 
 Substituting these into the PPN-compatible static weak-field metric gives
 
-$$ds^2
+$$ds^2 =
 -\left(1-\frac{2U}{c^2}+2\frac{U^2}{c^4}\right)c^2dt^2
 +
-\left(1+2\frac{U}{c^2}\right)d\vec{x}^{,2}
+\left(1+2\frac{U}{c^2}\right)d\vec{x}^{\,2}
 +
-O(c^{-6})*{tt}+O(c^{-4})*{ij}.$$
+O(c^{-6})_{tt}+O(c^{-4})_{ij}.$$
 
 This theorem does not introduce a new metric postulate. It assembles previous framework results into the form needed for downstream weak-field proofs.
 
