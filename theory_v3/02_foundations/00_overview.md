@@ -31,6 +31,8 @@ Each file is a self-contained derivation with its dependencies stated.
   files are `01_postulates/shadow_p7_static_exterior_vacuum_compensation.md`
   and `01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`.
 
-**Where the story continues:** the derivation chain from these theorems
-to the full field equations is `04_field_equations/02_derivation_chain.md`;
-the trials notebook that built it is `development/field_equation_trials/`.
+**Where the story continues:** the direct, self-contained derivation of
+the full field equations (with these foundations folded in as §2's
+bookkeeping sector) is `04_field_equations/proof.md`; the chain map is
+`04_field_equations/02_derivation_chain.md`; the trials notebook that
+built it is `development/field_equation_trials/`.
