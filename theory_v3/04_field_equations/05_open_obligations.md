@@ -12,9 +12,8 @@ vacuum-sector program).
    Coefficient-free, structural; recorded as ASSUMPTION in the archive
    (008). Retiring the citation is the largest single rigor item.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics), G02/G03
-   + 008 (radiative, incl. Isaacson averaging rigor: secular terms,
-   gauge invariance of ⟨t_ab⟩), 012 (vector, general time dependence),
-   nonlinear stability.
+   + 008 (radiative gauge invariance of ⟨t_ab⟩), 012 (vector, general
+   time dependence), nonlinear stability.
 
 ## Retired rigor debts
 
@@ -47,6 +46,17 @@ vacuum-sector program).
   files:
   `development/tensor_virial_identity/tensor_virial_identity_note.md`,
   `vacuum_forge/src/field_equation_trials/014_tensor_virial_identity/tensor_virial_identity_general.py`.
+- **Radiative TT averaging completed (2026-06-13).** The Isaacson
+  averaging portion of the radiative covariant-lift debt has been
+  separated from the still-open gauge-invariance question and discharged
+  at local inertial short-wave level. The proof states the averaging
+  window $\lambda \ll \ell_{\rm avg} \ll L$, validates that fast
+  periodic total derivatives and cross terms average away, records the
+  slow-envelope correction as suppressed by powers of $\lambda/L$, and
+  checks positivity/null transport for a retarded TT wave. Discharge
+  files:
+  `development/covariant_lifts/radiative_tt_averaging/radiative_tt_averaging_note.md`,
+  `vacuum_forge/src/field_equation_trials/015_isaacson_averaging/isaacson_tt_averaging.py`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 
