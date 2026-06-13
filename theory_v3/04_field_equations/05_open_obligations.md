@@ -12,10 +12,11 @@ vacuum-sector program).
    Coefficient-free, structural; recorded as ASSUMPTION in the archive
    (008). Retiring the citation is the largest single rigor item. The
    in-house replacement program has started in
-   `development/closure_uniqueness/`; forge script
-   `018_closure_uniqueness/closure_step_1.py` proves the first
-   conservation/self-coupling obstruction but does **not** retire the
-   Deser citation.
+   `development/closure_uniqueness/`; forge scripts
+   `018_closure_uniqueness/closure_step_1.py` and
+   `018_closure_uniqueness/closure_step_2_palatini_finite.py` prove the
+   first conservation/self-coupling obstruction and the finite Palatini
+   closure witness, but do **not** retire the Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 
