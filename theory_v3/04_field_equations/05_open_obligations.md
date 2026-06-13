@@ -15,8 +15,6 @@ vacuum-sector program).
    + 008 (radiative, incl. Isaacson averaging rigor: secular terms,
    gauge invariance of ⟨t_ab⟩), 012 (vector, general time dependence),
    nonlinear stability.
-3. **Tensor-virial identity in generality** (verified on a compact
-   witness in 008).
 
 ## Retired rigor debts
 
@@ -38,6 +36,17 @@ vacuum-sector program).
   $q=0$, while the G20 Yukawa profile gives a nonzero shadow. Discharge
   files: `development/scalaron_screening/scalaron_screening_note.md`,
   `vacuum_forge/src/field_equation_trials/013_scalaron_screening/scalaron_screening_p7prime_obstruction.py`.
+- **Tensor-virial identity in generality completed (2026-06-13).** The
+  compact witness in 008 has been replaced by the standard conservation
+  theorem under explicit assumptions: flat-background stress
+  conservation with $x^0=ct$, symmetric stress tensor, compact support
+  or sufficient falloff to kill surface terms, and enough regularity to
+  commute time derivatives through the spatial integral. Forge validates
+  the two product-rule identities for all spatial index pairs, the
+  symmetry reduction, and a compact-support boundary witness. Discharge
+  files:
+  `development/tensor_virial_identity/tensor_virial_identity_note.md`,
+  `vacuum_forge/src/field_equation_trials/014_tensor_virial_identity/tensor_virial_identity_general.py`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 
