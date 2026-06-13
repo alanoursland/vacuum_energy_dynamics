@@ -11,9 +11,8 @@ vacuum-sector program).
    Deser (1970) for uniqueness of the self-coupled spin-2 theory.
    Coefficient-free, structural; recorded as ASSUMPTION in the archive
    (008). Retiring the citation is the largest single rigor item.
-2. **Covariant lifts** of the reduced theorems: C2/C3 (statics), G02/G03
-   + 008 (radiative gauge invariance of ⟨t_ab⟩), 012 (vector, general
-   time dependence), nonlinear stability.
+2. **Covariant lifts** of the reduced theorems: C2/C3 (statics), 012
+   (vector, general time dependence), nonlinear stability.
 
 ## Retired rigor debts
 
@@ -57,6 +56,18 @@ vacuum-sector program).
   files:
   `development/covariant_lifts/radiative_tt_averaging/radiative_tt_averaging_note.md`,
   `vacuum_forge/src/field_equation_trials/015_isaacson_averaging/isaacson_tt_averaging.py`.
+- **Radiative gauge invariance completed (2026-06-13).** The averaged
+  radiative stress built from TT-projected data is invariant under
+  admissible high-frequency relabeling gauge transformations at leading
+  local inertial short-wave order. Forge validates that the TT projector
+  annihilates the leading pure-gauge tensor
+  $n_i v_j+n_j v_i$ for arbitrary unit propagation direction, checks an
+  explicit $z$-propagating pure-gauge addition, and verifies that the
+  averaged derivative contraction is unchanged for a plus/cross wave
+  with a longitudinal gauge piece. Slow gauge-envelope terms remain in
+  the $\lambda/L$-suppressed class established by 015. Discharge files:
+  `development/covariant_lifts/radiative_gauge_invariance/radiative_gauge_invariance_note.md`,
+  `vacuum_forge/src/field_equation_trials/016_radiative_gauge_invariance/radiative_gauge_invariance.py`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 
