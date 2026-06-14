@@ -3,3 +3,4 @@ closure_step_2_palatini_finite.py
 closure_step_3_deformation_audit.py
 closure_step_4_connection_elimination.py
 closure_step_5_ansatz_reduction_gate.py
+closure_step_6_field_redefinition_h2.py

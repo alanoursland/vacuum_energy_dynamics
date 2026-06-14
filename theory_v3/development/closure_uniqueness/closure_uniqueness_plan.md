@@ -163,16 +163,39 @@ The remaining lemma is to show that those higher-`H` two-derivative
 deformations are boundary terms, field redefinitions, normalization
 changes, or inconsistent with gauge/conservation identities.
 
+The sixth forge script starts that reduction at quadratic order in `H`:
+
+1. A nonlinear metric-density variable change
+
+   ```text
+   K = H + a H2
+   ```
+
+   inserted into the Palatini replacement generates
+
+   ```text
+   a(H2.Rlin + H2.Q)
+   ```
+
+2. A general quadratic deformation splits as
+
+   ```text
+   cR H2.Rlin + cQ H2.Q
+   = ((cR+cQ)/2)(H2.Rlin + H2.Q)
+   + ((cR-cQ)/2)(H2.Rlin - H2.Q)
+   ```
+
+3. Therefore the equal-coefficient direction is removable field
+   redefinition. The active `H^2` target is the mismatch
+   `H2.Rlin - H2.Q`.
+
 ## Next Rungs
 
-The next useful script should attack the higher-`H` part of the
-ansatz-reduction lemma directly:
+The next useful script should attack the `H^2` mismatch directly:
 
-1. State the allowed deformation ansatz under locality, two-derivative
-   order, no extra fields, torsion-free connection, and universal
-   coupling.
-2. Show which deformation coefficients are removable by field
-   redefinitions, boundary terms, or normalization.
-3. Isolate the remaining condition that forces the Einstein-Hilbert
-   Palatini endpoint, or record the exact missing lemma if the proof
-   cannot be completed in-house yet.
+1. Compute the gauge/conservation variation of the mismatch direction,
+   or a reduced witness for it.
+2. Show it cannot be absorbed into the total conserved source without
+   introducing a non-Palatini term, an extra field, or a new coupling.
+3. If that fails, record the exact missing identity rather than
+   overclaiming the Deser replacement.

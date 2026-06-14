@@ -23,7 +23,11 @@ vacuum-sector program).
    independent connection.
    `018_closure_uniqueness/closure_step_5_ansatz_reduction_gate.py`
    isolates the remaining missing lemma to higher-H two-derivative
-   deformations. These do **not** retire the Deser citation.
+   deformations.
+   `018_closure_uniqueness/closure_step_6_field_redefinition_h2.py`
+   reduces the quadratic higher-H equal-coefficient direction to a field
+   redefinition, leaving the H2 mismatch as the next target. These do
+   **not** retire the Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 
