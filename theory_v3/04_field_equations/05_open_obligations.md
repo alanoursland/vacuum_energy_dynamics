@@ -20,7 +20,10 @@ vacuum-sector program).
    closure witness, and the replacement-ansatz deformation audit.
    `018_closure_uniqueness/closure_step_4_connection_elimination.py`
    proves that the torsion-free Palatini endpoint eliminates the
-   independent connection. These do **not** retire the Deser citation.
+   independent connection.
+   `018_closure_uniqueness/closure_step_5_ansatz_reduction_gate.py`
+   isolates the remaining missing lemma to higher-H two-derivative
+   deformations. These do **not** retire the Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 

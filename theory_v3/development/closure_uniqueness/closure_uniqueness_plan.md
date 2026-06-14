@@ -128,9 +128,45 @@ This closes the independent-connection loophole within the Palatini
 endpoint. It still does not prove the endpoint is the unique admissible
 completion.
 
+The fifth forge script turns the remaining obligation into a precise
+ansatz-reduction gate:
+
+1. Covered derivative classes:
+
+   ```text
+   eta.Rlin  -> boundary
+   H.Rlin    -> free core
+   eta.Q     -> free core
+   H.Q       -> generated self-coupling
+   ```
+
+2. Admitted residual:
+
+   ```text
+   Lambda    -> zero-derivative cosmological term
+   ```
+
+3. Excluded by theorem scope or prior rungs:
+
+   ```text
+   higher derivatives, extra fields, torsion/nonmetricity,
+   nonuniversal matter coupling
+   ```
+
+4. Remaining open class:
+
+   ```text
+   H^p.Rlin and H^p.Q for p >= 2
+   ```
+
+The remaining lemma is to show that those higher-`H` two-derivative
+deformations are boundary terms, field redefinitions, normalization
+changes, or inconsistent with gauge/conservation identities.
+
 ## Next Rungs
 
-The next useful script should attack the ansatz-reduction lemma:
+The next useful script should attack the higher-`H` part of the
+ansatz-reduction lemma directly:
 
 1. State the allowed deformation ansatz under locality, two-derivative
    order, no extra fields, torsion-free connection, and universal
