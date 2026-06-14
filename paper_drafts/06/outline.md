@@ -252,7 +252,8 @@ Content:
 - If `a` is allowed, scalaron gives a gravitational-strength Yukawa
   correction with fixed coupling convention, e.g. alpha = 1/3.
 - Existing short-range tests bound range.
-- Lee 2020 vector-extracted alpha = 1/3 crossing: 54.05 micrometers.
+- Validated curves: Lee 2020 alpha = 1/3 crossing at 54.03 micrometers;
+  Tan 2020 alpha = 1/3 crossing at 57.29 micrometers. Lee is binding.
 - Static frame indifference predicts no such gravitational-strength
   Yukawa at any range.
 
@@ -315,6 +316,7 @@ mandatory static hair, and mandatory hair violates the principle.
 1. Literature novelty check.
 2. Convention-clean anisotropy derivation.
 3. Matching theorem stated for an acceptable source class.
-4. Yukawa parameter translation checked.
-5. Citation-ready Lee 2020 extraction provenance.
+4. Yukawa parameter translation checked against validated Lee/Tan curves.
+5. Citation-ready Lee 2020 supplemental extraction and vector-path
+   cross-check provenance.
 6. Decision: standalone note or absorbed into Paper 1.

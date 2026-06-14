@@ -52,7 +52,9 @@ path coordinates into data coordinates, and validate the result against a
 text-stated anchor value. In a case study on the Lee et al. 2020 Yukawa
 exclusion figure, the method recovers the published alpha = 1 crossing at
 38.6 micrometers to within 0.03% and reads an unpublished alpha = 1/3
-crossing at 54.05 micrometers from the same author-generated path. We
+crossing at 54.05 micrometers from the same author-generated path. A later
+supplemental-table extraction gives 54.03 micrometers, providing an
+independent cross-check. We
 compare the method to pixel digitization, discuss failure modes, and
 propose a validation-or-refuse norm for reuse of data extracted from
 published vector figures.
@@ -146,6 +148,8 @@ Content:
   - relative error.
 - New read-off:
   - alpha = 1/3 crossing at 54.05 micrometers.
+- Cross-check:
+  - supplemental-table extraction gives alpha = 1/3 at 54.03 micrometers.
 
 Tables:
 

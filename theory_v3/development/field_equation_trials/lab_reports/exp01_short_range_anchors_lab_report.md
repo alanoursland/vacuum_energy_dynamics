@@ -43,16 +43,16 @@ Verified scalar anchors:
 
 | anchor | result | confidence | status |
 |---|---|---|---|
-| Lee et al. 2020, PRL 124, 101101 | $|\alpha|=1$ excluded for $\lambda\ge38.6\,\mu$m; separations tested 52 $\mu$m - 3.0 mm | 95% CL | VERIFIED_FROM_ABSTRACT |
-| Tan et al. 2020, PRL 124, 051301 | $|\alpha|\le1$ holds down to $\lambda=48\,\mu$m | 95% CL | VERIFIED_FROM_ABSTRACT |
-| Kapner et al. 2007, PRL 98, 021101 | $|\alpha|=1$ excluded for $\lambda\ge56\,\mu$m | 95% CL | SUPERSEDED by Lee 2020 |
+| Lee et al. 2020 [Lee et al., 2020], PRL 124, 101101 | $\|\alpha\|=1$ excluded for $\lambda\ge38.6\,\mu$m; separations tested 52 $\mu$m - 3.0 mm | 95% CL | VERIFIED_FROM_ABSTRACT |
+| Tan et al. 2020 [Tan et al., 2020], PRL 124, 051301 | $\|\alpha\|\le1$ holds down to $\lambda=48\,\mu$m | 95% CL | VERIFIED_FROM_ABSTRACT |
+| Kapner et al. 2007, PRL 98, 021101 | $\|\alpha\|=1$ excluded for $\lambda\ge56\,\mu$m | 95% CL | SUPERSEDED by Lee 2020 |
 
 Validated curve artifacts:
 
 | curve | source artifact | points | validation |
 |---|---|---:|---|
-| Lee 2020 | `lee2020_chi_squared_vs_lambda.csv` from validated `suppMaterial1.pdf` text extraction | 66 | $|\alpha|=1$ crossing 38.63 $\mu$m; 0.08% from abstract anchor |
-| Tan 2020 | `tan2020_alpha_lambda_95cl.txt` from author-provided `PRL2020-AlphaLambda.txt` | 25 | $|\alpha|=1$ crossing 47.74 $\mu$m; 0.55% from abstract anchor |
+| Lee 2020 | `lee2020_chi_squared_vs_lambda.csv` from validated `suppMaterial1.pdf` text extraction | 66 | $\|\alpha\|=1$ crossing 38.63 $\mu$m; 0.08% from abstract anchor |
+| Tan 2020 | `tan2020_alpha_lambda_95cl.txt` from author-provided `PRL2020-AlphaLambda.txt` | 25 | $\|\alpha\|=1$ crossing 47.74 $\mu$m; 0.55% from abstract anchor |
 
 Artifact cache status at run time:
 
@@ -63,8 +63,10 @@ OK  manual  lee2020_chi_squared_vs_lambda.csv
 OK  manual  tan2020_alpha_lambda_95cl.txt
 ```
 
-Physical inputs to the crossover formula: $\hbar=1.054571817\times10^{-34}$ J s,
-$c=2.99792458\times10^8$ m/s, $\rho_\Lambda=5.4\times10^{-10}$ J/m$^3$.
+Physical inputs to the crossover formula: 
+$\hbar=1.054571817\times10^{-34}$ J s,
+$c=2.99792458\times10^8$ m/s, 
+$\rho_\Lambda=5.4\times10^{-10}$ J/m$^3$.
 
 ## Results
 

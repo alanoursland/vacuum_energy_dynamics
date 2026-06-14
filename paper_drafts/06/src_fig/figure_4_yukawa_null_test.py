@@ -38,8 +38,8 @@ left_lines = [
     "V(r) = -Gm/r [1 + alpha exp(-r/ell)]",
     "alpha = 1/3",
     "ell = sqrt(6a)",
-    "Lee 2020 curve: alpha = 1/3 crossing",
-    "ell < 54.05 um",
+    "validated curves: Lee binds",
+    "ell < 54.03 um",
 ]
 right_lines = [
     "a = 0",
@@ -62,7 +62,7 @@ d.polygon([(865, 475), (842, 462), (842, 488)], fill="#64748b")
 
 footer = (250, 800, 1350, 865)
 d.rounded_rectangle(footer, radius=8, fill="#fff7ed", outline="#fdba74", width=2)
-d.text((290, 820), "Data do not select a = 0; the principle does. Data test whether the principle survives.", font=body, fill="#7c2d12")
+d.text((290, 820), "Data do not select a = 0; the principle does. Current alpha=1/3 frontier: 54.03 um.", font=body, fill="#7c2d12")
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 img.save(OUT)

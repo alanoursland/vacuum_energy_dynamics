@@ -5,8 +5,13 @@ BibTeX file or venue-native reference format.
 
 Required reference groups:
 
-- Lee et al. 2020 short-range gravity/Yukawa exclusion paper, including arXiv
-  and journal metadata.
+- J. G. Lee, E. G. Adelberger, T. S. Cook, S. M. Fleischer, and
+  B. R. Heckel, "New Test of the Gravitational 1/r^2 Law at Separations
+  down to 52 um," *Physical Review Letters* **124**, 101101 (2020).
+  arXiv:2002.11761. DOI: 10.1103/PhysRevLett.124.101101.
+- W.-H. Tan et al., "Improvement for Testing the Gravitational
+  Inverse-Square Law at the Submillimeter Range," *Physical Review Letters*
+  **124**, 051301 (2020). DOI: 10.1103/PhysRevLett.124.051301.
 - PyMuPDF documentation for PDF drawing extraction.
 - WebPlotDigitizer or equivalent pixel digitization tool references.
 - PDF specification or a practical PDF graphics model reference.

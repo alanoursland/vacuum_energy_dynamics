@@ -16,9 +16,13 @@ observational anchors enter after derivation as kill conditions.
 The short-range gravity channel is especially important conceptually. The
 four-derivative scalar would have produced a Yukawa correction with scalaron
 coupling `alpha = 1/3`. P7-prime eliminates that route, so the theory predicts
-no gravitational-strength Yukawa signal from this sector. The Lee 2020 vector
-extraction used in Paper 3 places the `alpha = 1/3` crossing at `54.05 um` for
-that experimental curve, but the theory's prediction is a null result, not a
+no gravitational-strength Yukawa signal from this sector. The current
+`ShortRangeGravity` v1 data gate contains two validated 95%-CL curves:
+Lee 2020 [Lee et al., 2020] gives the `alpha = 1/3` crossing at `54.03 um`,
+and Tan 2020 [Tan et al., 2020] gives `57.29 um`. Lee is binding in this
+window. The earlier vector-path extraction from Lee Fig. 5 [Lee et al., 2020]
+gave `54.05 um`, so the supplemental-table value is cross-checked at the
+level relevant here. The theory's prediction is a null result, not a
 near-threshold signal.
 
 This structure makes the empirical posture unusual but clean. The theory does

@@ -28,7 +28,7 @@ label = font(25, True)
 small = font(19)
 
 d.text((70, 45), "Lee 2020 case study: anchor-validated curve readout", font=title, fill="#172033")
-d.text((72, 104), "Schematic log-log rendering of the extracted vector path and two crossings used by the program.", font=small, fill="#526071")
+d.text((72, 104), "Schematic log-log rendering of the extracted vector path, with supplemental-table cross-check.", font=small, fill="#526071")
 
 plot = (160, 190, 1430, 870)
 left, top, right, bottom = plot
@@ -69,6 +69,8 @@ d.text((28, 490), "alpha", font=label, fill="#1f2937")
 # Smooth illustrative curve constrained to pass through the two recorded crossings.
 cross_a1 = 38.61e-6
 cross_a13 = 54.05e-6
+supp_a1 = 38.63e-6
+supp_a13 = 54.03e-6
 points = [
     (1.2e-5, 6.0e2),
     (1.8e-5, 8.0e1),
@@ -101,6 +103,12 @@ d.rounded_rectangle(note, radius=8, fill="#fff7ed", outline="#fdba74", width=2)
 d.text((900, 244), "Validation result", font=label, fill="#7c2d12")
 d.text((900, 286), "38.61 um vs text anchor 38.6 um", font=small, fill="#7c2d12")
 d.text((900, 315), "relative deviation: 0.03%", font=small, fill="#7c2d12")
+
+cross = (875, 360, 1395, 475)
+d.rounded_rectangle(cross, radius=8, fill="#eff6ff", outline="#93c5fd", width=2)
+d.text((900, 383), "Supplemental-table check", font=label, fill="#1d4ed8")
+d.text((900, 425), "38.63 um and 54.03 um", font=small, fill="#1d4ed8")
+d.text((900, 454), "agrees at the physics readout", font=small, fill="#1d4ed8")
 
 OUT.parent.mkdir(parents=True, exist_ok=True)
 img.save(OUT)

@@ -1,7 +1,7 @@
 # 5. Case Study: Lee et al. 2020 Yukawa Exclusion Curve
 
 The first case study is the short-range gravity Yukawa exclusion curve in
-Lee et al. 2020, Figure 5. The figure reports a `95%` confidence-level
+Lee et al. 2020 [Lee et al., 2020], Figure 5. The figure reports a `95%` confidence-level
 exclusion boundary in the `alpha(lambda)` plane. The relevant public PDF page
 contains vector drawings and no raster images for the plotted figure.
 
@@ -28,6 +28,14 @@ The same extracted curve gives the `alpha = 1/3` crossing as
 It is a read-off from the author-generated plotted path, with provenance
 `VECTOR_EXTRACTED_FROM_ARXIV_PDF`.
 
+After this extraction was written, the project also obtained a text extraction
+of the Lee supplemental `chi^2` table, validated by the project owner. That
+table [Lee et al., 2020] gives `|alpha| = 1` at `38.63 um` and
+`alpha = 1/3` at `54.03 um`.
+The agreement is a useful independent check: the path-level figure extraction
+and the supplemental-table extraction differ by about `0.02 um` at the
+scalaron crossing.
+
 | quantity | value |
 |---|---:|
 | source figure | Lee et al. 2020, Figure 5 bottom panel |
@@ -36,6 +44,7 @@ It is a read-off from the author-generated plotted path, with provenance
 | extracted anchor crossing | `38.61 um` |
 | relative anchor deviation | `0.03%` |
 | scalaron crossing | `alpha = 1/3` at `54.05 um` |
+| supplemental-table cross-check | `alpha = 1/3` at `54.03 um` |
 
 Figure 3 shows the recovered curve and the two crossings used in the present
 program.

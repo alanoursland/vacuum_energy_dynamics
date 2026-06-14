@@ -11,6 +11,8 @@ Lee et al., PRL 124, 101101 (2020)
 Figure 5 bottom panel, PDF page 4
 ```
 
+Citation marker: [Lee et al., 2020].
+
 The script loads the PDF with PyMuPDF and inspects drawing paths on page index
 `3`. The target object is a green filled polygon with fill color
 `(0.0, 1.0, 0.0)`. Its line-segment vertices are transformed from PDF
@@ -40,6 +42,15 @@ Derived readout:
 
 ```text
 alpha = 1/3 crossing:  54.05 um
+```
+
+Supplemental-table cross-check:
+
+```text
+source:                  Lee 2020 supplement, chi^2 vs lambda table
+|alpha| = 1 crossing:    38.63 um
+alpha = 1/3 crossing:    54.03 um
+status:                  agrees with vector-path extraction
 ```
 
 The output CSV path is:
