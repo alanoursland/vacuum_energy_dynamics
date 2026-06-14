@@ -11,6 +11,34 @@
 **Dataset:** `dataexp/datasets/short_range_gravity.py`, version v1
 **Run date:** 2026-06-14
 
+## Experimentalist-Facing Summary
+
+This run evaluates the Lee and Tan short-range gravity exclusion curves at a
+nonstandard but physically motivated Yukawa coupling, $\alpha=1/3$. That
+number is not chosen for convenience: in the healthy local $R+aR^2$
+extension of GR, equivalently the scalaron sector of $f(R)$ gravity, the
+Newtonian potential acquires a scalar Yukawa correction with fixed relative
+strength $\alpha=1/3$ and range $\lambda=\sqrt{6a}$. Reading the exclusion
+curve on this slice directly bounds the scalaron range.
+
+From the validated Lee 2020 supplemental table, $\alpha=1/3$ is excluded for
+$\lambda\ge54.03\,\mu$m; the independent vector extraction gives
+$54.05\,\mu$m. From the Tan 2020 author-provided table, the same slice crosses
+at $57.29\,\mu$m. Lee is currently the binding dataset on this scalaron-coupling
+readout.
+
+Separately, the UFFT/Casimir-vacuum crossover scale computed from the ideal
+Casimir energy density equals the dark-energy density at
+$a_\Lambda=29.9\,\mu$m. That scale lies below the current
+gravitational-strength benchmark frontier ($|\alpha|=1$ at $38.6\,\mu$m) and
+below the $\alpha=1/3$ scalaron frontier ($54.03\,\mu$m). A next factor-of-two
+improvement in reach would therefore begin testing a model-motivated range,
+not just extending a generic exclusion plot.
+
+Short external version: the Lee and Tan curves imply scalaron-coupling bounds
+near $\lambda<54$-$57\,\mu$m, while an independent vacuum-sector scale points
+to $\sim30\,\mu$m as the next interesting target.
+
 ## Purpose
 
 First confrontation of a trial candidate with published short-range gravity
@@ -24,6 +52,8 @@ Two questions:
    dataset module?
 2. Where does UFFT's predicted crossover scale sit relative to the validated
    short-range-gravity Yukawa exclusion curves?
+3. What do the same data imply on the $\alpha=1/3$ Yukawa slice motivated by
+   the scalaron sector of $R+aR^2$ gravity?
 
 The UFFT crossover is the separation at which ideal-Casimir energy density
 equals the dark-energy density:
@@ -54,6 +84,10 @@ Validated curve artifacts:
 | Lee 2020 | `lee2020_chi_squared_vs_lambda.csv` from validated `suppMaterial1.pdf` text extraction | 66 | $\|\alpha\|=1$ crossing 38.63 $\mu$m; 0.08% from abstract anchor |
 | Tan 2020 | `tan2020_alpha_lambda_95cl.txt` from author-provided `PRL2020-AlphaLambda.txt` | 25 | $\|\alpha\|=1$ crossing 47.74 $\mu$m; 0.55% from abstract anchor |
 
+The $\alpha=1/3$ readout is reported because it is the fixed scalar Yukawa
+coupling of the ghost-safe $R+aR^2$ sector. It gives an experimentalist-facing
+translation from each exclusion curve into a scalaron range bound.
+
 Artifact cache status at run time:
 
 ```text
@@ -69,6 +103,13 @@ $c=2.99792458\times10^8$ m/s,
 $\rho_\Lambda=5.4\times10^{-10}$ J/m$^3$.
 
 ## Results
+
+Experimental readout:
+
+| slice | Lee 2020 crossing | Tan 2020 crossing | binding dataset |
+|---|---:|---:|---|
+| $|\alpha|=1$ benchmark | 38.63 $\mu$m | 47.74 $\mu$m | Lee 2020 |
+| $\alpha=1/3$ scalaron coupling | 54.03 $\mu$m | 57.29 $\mu$m | Lee 2020 |
 
 Validated curve readouts:
 
@@ -100,13 +141,23 @@ frontier.
 
 ## Interpretation
 
-1. **Gate G25 is not an instant kill for UFFT.** Had $a_\Lambda$ landed above
+1. **The most portable result is the $\alpha=1/3$ slice.** Lee 2020 implies
+   $\lambda<54.03\,\mu$m for a scalaron-coupling Yukawa correction, while
+   Tan 2020 gives the independent check $\lambda<57.29\,\mu$m. This is the
+   part of the analysis most likely to be useful to Lee/Tan, because it reads
+   their curves at a physically motivated coupling rather than only at the
+   conventional $|\alpha|=1$ benchmark.
+2. **Gate G25 is not an instant kill for UFFT.** Had $a_\Lambda$ landed above
    the Lee 2020 crossing, any gravitational-strength boundary-relaxation
    force at the crossover would already be excluded. Instead the scale lands
    below the current $|\alpha|=1$ exclusion crossing.
-2. **Lee 2020 is the binding curve in the window of interest.** Tan 2020 is an
+3. **The next reach target is close.** The $\sim30\,\mu$m crossover sits below
+   present reach, but not far below it: 38.63/29.9 = 1.29 on the
+   gravitational-strength benchmark, and 54.03/29.9 = 1.81 on the
+   scalaron-coupling slice.
+4. **Lee 2020 is the binding curve in the window of interest.** Tan 2020 is an
    independent check and is weaker at both $|\alpha|=1$ and $\alpha=1/3$.
-3. **The confrontation is now curve-level, not anchor-only.** The remaining
+5. **The confrontation is now curve-level, not anchor-only.** The remaining
    missing step is not data acquisition; it is the Layer-2 forge conversion
    from the UFFT pressure spectrum into effective Yukawa or explicitly
    non-Yukawa observables.
@@ -158,3 +209,6 @@ trial A status: OPEN; Layer-2 pressure-to-Yukawa conversion pending
    parameters; record excluded and surviving regions.
 3. Preserve `src_exp/external_data/` as the received-source/provenance folder
    for the Lee and Tan files.
+4. For external Lee/Tan communication, use the short $\alpha=1/3$ and
+   $\sim30\,\mu$m motivation paragraph rather than sending this full
+   governance report.
