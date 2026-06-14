@@ -17,8 +17,10 @@ vacuum-sector program).
    `018_closure_uniqueness/closure_step_2_palatini_finite.py`, and
    `018_closure_uniqueness/closure_step_3_deformation_audit.py` prove
    the first conservation/self-coupling obstruction, the finite Palatini
-   closure witness, and the replacement-ansatz deformation audit, but
-   do **not** retire the Deser citation.
+   closure witness, and the replacement-ansatz deformation audit.
+   `018_closure_uniqueness/closure_step_4_connection_elimination.py`
+   proves that the torsion-free Palatini endpoint eliminates the
+   independent connection. These do **not** retire the Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 

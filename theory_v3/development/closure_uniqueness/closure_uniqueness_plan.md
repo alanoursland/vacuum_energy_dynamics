@@ -105,6 +105,29 @@ witness:
 This narrows the remaining uniqueness proof to an ansatz-reduction
 lemma.
 
+The fourth forge script checks the connection equation inside the
+Palatini endpoint:
+
+1. The torsion-free Palatini equation can be written as
+
+   ```text
+   P_a^{mn} - delta_a^{(m} P_b^{n)b} = 0
+   ```
+
+   where `P_a^{mn} = nabla_a gdens^{mn}`.
+
+2. Tracing gives `((1-D)/2) P_b^{mb}=0`, so in four dimensions
+   `P_b^{mb}=0`, and the original equation then gives
+   `P_a^{mn}=0`.
+
+3. A local component solve verifies that the homogeneous difference
+   between two torsion-free density-compatible connections has only the
+   zero solution around `eta`.
+
+This closes the independent-connection loophole within the Palatini
+endpoint. It still does not prove the endpoint is the unique admissible
+completion.
+
 ## Next Rungs
 
 The next useful script should attack the ansatz-reduction lemma:

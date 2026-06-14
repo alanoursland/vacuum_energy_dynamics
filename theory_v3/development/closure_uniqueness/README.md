@@ -12,6 +12,7 @@ Status: started, not retired. The current forge-checked rungs are:
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_1.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_2_palatini_finite.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_3_deformation_audit.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_4_connection_elimination.py
 ```
 
 ## What Must Eventually Be Proved
@@ -74,6 +75,14 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
 
    Status: finite algebraic witness completed; full endpoint uniqueness
    still open.
+
+   Follow-on status: the fourth forge-checked rung proves that the
+   torsion-free Palatini endpoint does not leave an independent
+   connection sector. The connection equation forces
+   `nabla_a gdens^{mn}=0`, and a component solve around a local inertial
+   frame verifies that the compatible torsion-free connection difference
+   is zero. The endpoint is therefore metric/Levi-Civita once the
+   Palatini ansatz is admitted.
 
 5. **Uniqueness assumptions audit.**
 
