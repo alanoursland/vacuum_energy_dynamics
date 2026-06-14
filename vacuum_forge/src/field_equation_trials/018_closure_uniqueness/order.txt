@@ -1,2 +1,3 @@
 closure_step_1.py
 closure_step_2_palatini_finite.py
+closure_step_3_deformation_audit.py

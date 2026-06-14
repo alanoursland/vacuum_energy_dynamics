@@ -79,10 +79,35 @@ witness:
 This proves why the first-order bootstrap can be finite. It still does
 not prove uniqueness of the endpoint.
 
+The third forge script audits the deformation space near the Palatini
+witness:
+
+1. Taylor expansion of `(eta + eps H).(Rlin + Q)` has no `H^2`
+   derivative tower.
+2. The terms `H.Rlin`, `H.Q`, `H2.Rlin`, and `H2.Q` are separated by
+   `(H-degree, connection-degree)`:
+
+   ```text
+   H.Rlin   -> (1, 1)
+   H.Q      -> (1, 2)
+   H2.Rlin  -> (2, 1)
+   H2.Q     -> (2, 2)
+   ```
+
+3. Matching the universal replacement target fixes the derivative
+   self-coupling within this ansatz:
+
+   ```text
+   a H.Q + b H.Rlin + c H2.Rlin + d H2.Q = H.Q
+   => a = 1, b = c = d = 0
+   ```
+
+This narrows the remaining uniqueness proof to an ansatz-reduction
+lemma.
+
 ## Next Rungs
 
-The next useful script should move from the finite Palatini witness to a
-uniqueness audit:
+The next useful script should attack the ansatz-reduction lemma:
 
 1. State the allowed deformation ansatz under locality, two-derivative
    order, no extra fields, torsion-free connection, and universal

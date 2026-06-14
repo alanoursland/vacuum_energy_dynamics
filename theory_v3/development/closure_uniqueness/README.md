@@ -11,6 +11,7 @@ Status: started, not retired. The current forge-checked rungs are:
 ```text
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_1.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_2_palatini_finite.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_3_deformation_audit.py
 ```
 
 ## What Must Eventually Be Proved
@@ -78,6 +79,15 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
 
    State exactly where locality, two-derivative order, no extra fields,
    universal coupling, and gauge consistency enter.
+
+   Status: started. The third forge-checked rung proves that, within
+   the first-order Palatini replacement ansatz, `H.Q` is the only
+   generated derivative self-coupling. `H.Rlin` is free-core
+   renormalization, and `H^2` derivative terms are outside the
+   universal replacement. The remaining missing lemma is ansatz
+   reduction: every admissible completion must be shown reducible to
+   this Palatini class up to boundary terms, field redefinitions,
+   normalization, and the cosmological term.
 
 6. **Retirement decision.**
 
