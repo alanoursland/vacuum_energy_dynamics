@@ -75,11 +75,23 @@ configuration *is* spacetime: the temporal and spatial mappings of the
 vacuum are what clocks and rods read. Three consequences, used
 throughout:
 
-**(K1) The configuration is a metric field.** A local configuration of
-the substance assigns rates and lengths to all directions at a point —
-a symmetric, nondegenerate rank-2 tensor $g_{ab}$. Perturbations of the
-zero-source state are symmetric tensor fields $h_{ab}$ on Minkowski
-space.
+**(K1) The configuration is restricted to the metric branch.** A local
+configuration of the substance assigns rates and lengths to all
+directions at a point. By itself, that statement would allow a general
+direction-dependent norm (a Finsler-type structure), not necessarily a
+symmetric bilinear metric. The proof therefore uses the SR import in
+§0.1 in its algebraic form: the zero-source tangent structure has a
+quadratic Lorentz interval, and admissible weak configurations are
+perturbations of that quadratic interval. By the polarization identity,
+the local interval is represented by a symmetric, nondegenerate rank-2
+tensor $g_{ab}$, and perturbations are symmetric tensor fields $h_{ab}$
+on Minkowski space.
+
+This is a branch restriction, not a derivation from P2 alone. P2 says
+the vacuum configuration is what clocks and rods read; SR supplies the
+quadratic local line-element structure used by the Fierz-Pauli
+classification below. Finsler-like generalizations are not killed here;
+they are outside this proof's metric/SR branch.
 
 **(K2) Coupling is universal with no free constant.** Matter does not
 couple *to* the vacuum configuration through an adjustable charge;

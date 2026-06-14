@@ -33,6 +33,17 @@ vacuum-sector program).
    Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
+3. **Metric-branch input audit.** Section 1's K1 step must remain
+   explicitly scoped to the SR-compatible quadratic branch. P2 by
+   itself gives "clock/rod readings from vacuum configuration," but a
+   general assignment of lengths to directions could be Finslerian
+   rather than a symmetric bilinear metric. The current field-equation
+   proof may use Fierz-Pauli only after declaring the quadratic local
+   interval as an SR import or proving a parallelogram/quadratic-response
+   selector. Until such a selector exists, the novelty claim is limited:
+   VED identifies the metric with the vacuum configuration, but it does
+   not yet derive the metric algebraic type from P2 alone. Discussion:
+   `development/ontology_and_mechanism/metric_branch_vs_finsler_gap.md`.
 
 ## Retired rigor debts
 
