@@ -15,6 +15,7 @@ vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_3_def
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_4_connection_elimination.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_5_ansatz_reduction_gate.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_6_field_redefinition_h2.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_7_h2_mismatch_gate.py
 ```
 
 ## What Must Eventually Be Proved
@@ -115,6 +116,13 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
    `K = H + a H2`; it is therefore field-redefinition freedom. The
    remaining `H^2` target is the mismatch direction
    `H2.Rlin - H2.Q`.
+
+   Follow-on status: the seventh forge-checked rung proves the mismatch
+   is excluded if the same-Palatini-Ricci-operator condition is derived:
+   requiring the `H2` deformation to be proportional to
+   `H2.(Rlin + Q)` forces equal coefficients and zero mismatch. This is
+   a conditional gate, not a full proof; deriving that same-operator
+   condition from gauge/conservation remains open.
 
 6. **Retirement decision.**
 

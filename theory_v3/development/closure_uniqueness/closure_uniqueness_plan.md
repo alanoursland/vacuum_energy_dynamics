@@ -189,13 +189,35 @@ The sixth forge script starts that reduction at quadratic order in `H`:
    redefinition. The active `H^2` target is the mismatch
    `H2.Rlin - H2.Q`.
 
+The seventh forge script checks the condition that would kill the
+remaining mismatch:
+
+```text
+cR H2.Rlin + cQ H2.Q = lambda H2.(Rlin + Q)
+=> cR = cQ = lambda
+```
+
+Equivalently,
+
+```text
+lambda(H2.Rlin + H2.Q) + m(H2.Rlin - H2.Q)
+```
+
+has `m=0` if the same Palatini Ricci operator must be preserved at
+`H2` order. This is a conditional exclusion. The remaining proof debt is
+to derive the same-operator condition from relabeling gauge consistency
+and universal self-coupling, or directly show that the mismatch violates
+the conservation identity.
+
 ## Next Rungs
 
-The next useful script should attack the `H^2` mismatch directly:
+The next useful script should derive the same-operator condition or kill
+the mismatch directly:
 
-1. Compute the gauge/conservation variation of the mismatch direction,
-   or a reduced witness for it.
-2. Show it cannot be absorbed into the total conserved source without
-   introducing a non-Palatini term, an extra field, or a new coupling.
-3. If that fails, record the exact missing identity rather than
-   overclaiming the Deser replacement.
+1. Express the deformation's connection equation for the mismatch
+   direction and test whether the total source remains identically
+   conserved.
+2. Show the mismatch requires a different Ricci operator, an independent
+   connection sector, or nonuniversal coupling.
+3. If the direct kill fails, preserve the current status: conditional
+   same-operator gate checked, derivation still open.
