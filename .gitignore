@@ -5,3 +5,4 @@ admin_utils
 vacuum_forge/src/scripts_v3/results
 *.zip
 src_exp/dataexp/.data
+src_exp/external_data/

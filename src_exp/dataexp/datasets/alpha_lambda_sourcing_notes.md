@@ -1,8 +1,8 @@
 # Sourcing Notes: alpha(lambda) Exclusion Curves (Short-Range Gravity)
 
-**Date:** 2026-06-12
-**Status:** Lee 2020 curve EXTRACTED (vector-path method, anchor-validated).
-Tan 2020 pending. No hand digitization was needed.
+**Date:** 2026-06-14
+**Status:** Lee 2020 and Tan 2020 curves received/extracted and wired into
+`ShortRangeGravity` v1. No hand digitization was needed.
 
 ## Why we need the curves
 
@@ -62,10 +62,28 @@ which remains the fallback if a figure turns out to be raster).
 
 ## Results of record (Lee 2020, 95% CL)
 
+The live dataset now uses the supplemental `chi^2 vs lambda` table extracted
+from `suppMaterial1.pdf` into `src_exp/external_data/chi_squared_vs_lambda.csv`
+and validated by Alan. The earlier vector-path extraction remains an independent
+cross-check.
+
 | coupling | excluded for |
 |---|---|
-| \|alpha\| = 1 | lambda >= **38.61 um** (validates against abstract 38.6) |
-| alpha = +1/3 (scalaron, G20) | lambda >= **54.05 um** |
+| \|alpha\| = 1 | lambda >= **38.63 um** (validates against abstract 38.6) |
+| alpha = +1/3 (scalaron, G20) | lambda >= **54.03 um** |
+
+Vector-path cross-check from Fig. 5: 38.61 um and 54.05 um.
+
+## Results of record (Tan 2020, 95% CL)
+
+The live dataset uses the author-provided table
+`src_exp/external_data/PRL2020-AlphaLambda.txt`, copied into the local
+dataset cache as `tan2020_alpha_lambda_95cl.txt`.
+
+| coupling | excluded for |
+|---|---|
+| \|alpha\| = 1 | lambda >= **47.74 um** (validates against abstract 48 um) |
+| alpha = +1/3 (scalaron, G20) | lambda >= **57.29 um** |
 
 Program consequences:
 - The G20 scalaron cap (had E3 not killed the route): ell* < 54.0 um.
@@ -99,18 +117,6 @@ To extend to Tan 2020 (or any other curve):
 
 ## Open items
 
-- **Email requests for official tables: see `TODO_data_requests.md`**
-  (drafts ready to send for both Tan 2020 and Lee 2020).
-
-- Tan 2020 (PRL 124, 051301): **no arXiv preprint exists** (searched
-  2026-06-12: only paywalled APS/PubMed/ResearchGate versions). Options:
-  (a) email the HUST authors for the curve table, (b) obtain the
-  published PDF via institutional access and run the same vector
-  recipe (anchor: |alpha| = 1 at 48 um), (c) leave Lee 2020 as the
-  binding curve -- it is the stronger limit at the 38-55 um window the
-  program cares about.
-- Wire the generated CSV into `short_range_gravity.py` as a proper
-  Dataset (replacing the ManualFile placeholder for Lee 2020), with the
-  anchor validation as the dataset's integrity check.
-- If official machine-readable tables ever surface (Eot-Wash contact,
-  APS supplemental), supersede the extraction and record the swap.
+- Preserve the received source files under `src_exp/external_data/`.
+- If cleaner official machine-readable tables ever surface, supersede the
+  copy/paste extraction and record the swap.

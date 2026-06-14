@@ -19,11 +19,10 @@ dataexp/
 
 ## Running
 
-Everything runs from `vacuum_forge/src` with the same convention as the
-forge scripts:
+Everything runs from `src_exp`:
 
 ```text
-cd vacuum_forge/src
+cd src_exp
 PYTHONPATH=. python dataexp/experiments/exp01_short_range_anchors.py
 ```
 

@@ -49,6 +49,29 @@ def main() -> None:
         print(f"  {a.key}: lambda = {a.lambda_m*1e6:.1f} um @ |alpha| <= {a.alpha_bound}"
               f" [{a.confidence}, {a.verification.value}]{sup}")
 
+    if data["curves"]:
+        print("\n[validated curves]")
+        for curve in data["curves"].values():
+            a13 = ds.curve_crossing_m(curve, 1.0 / 3.0)
+            a13_msg = f", alpha=1/3 crossing = {a13*1e6:.2f} um" if a13 else ""
+            print(
+                f"  {curve.key}: {len(curve.points)} points "
+                f"[{curve.verification.value}], anchor crossing = "
+                f"{curve.validation_crossing_m*1e6:.2f} um "
+                f"(rel. error {curve.validation_relative_error*100:.2f}%){a13_msg}"
+            )
+
+        print("\n[curve-derived binding crossings]")
+        for target, label in [(1.0, "|alpha|=1"), (1.0 / 3.0, "alpha=1/3")]:
+            crossings = [
+                (ds.curve_crossing_m(curve, target), curve.key)
+                for curve in data["curves"].values()
+            ]
+            crossings = [(value, key) for value, key in crossings if value is not None]
+            if crossings:
+                value, key = min(crossings, key=lambda item: item[0])
+                print(f"  {label}: lambda >= {value*1e6:.2f} um ({key})")
+
     crossing = ds.best_alpha1_crossing_m()
     a_lambda = ufft_crossover_m()
 
@@ -62,9 +85,9 @@ def main() -> None:
         print("  => The candidate's predicted scale sits in the unexcluded window")
         print("     below the gravitational-strength crossing. The G25 gate is a")
         print("     QUANTITATIVE constraint-surface computation, not an instant kill.")
-        print("     Required next: digitized alpha(lambda) curves (see dataset")
-        print("     manual_files instructions) + the UFFT pressure -> effective")
-        print("     Yukawa conversion (Layer 2, to be derived in the forge).")
+        print("     Required next: the UFFT pressure -> effective Yukawa conversion")
+        print("     (Layer 2, to be derived in the forge), evaluated against these")
+        print("     validated alpha(lambda) curves.")
     else:
         print("  => The candidate's predicted scale is inside the excluded region")
         print("     at gravitational strength; Trial A faces an immediate")

@@ -1,6 +1,7 @@
-# TODO (Alan): Email Requests for Official alpha(lambda) Limit Tables
+# Completed: Email Requests for Official alpha(lambda) Limit Tables
 
 **Created:** 2026-06-12
+**Completed:** 2026-06-14
 **Why:** Two curves matter to the program. Lee 2020 is already extracted
 from the arXiv PDF's vector paths (anchor-validated, 0.03%); an official
 table would upgrade its provenance. Tan 2020 has NO arXiv preprint, so an
@@ -100,5 +101,5 @@ tool as the reproducibility fallback).
 
 | request | sent | received | wired in |
 |---|---|---|---|
-| Tan 2020 (HUST) | [ ] | [ ] | [ ] |
-| Lee 2020 (Eot-Wash) | [ ] | [ ] | [ ] |
+| Tan 2020 (HUST) | [x] | [x] | [x] |
+| Lee 2020 (Eot-Wash) | [x] | [x] | [x] |

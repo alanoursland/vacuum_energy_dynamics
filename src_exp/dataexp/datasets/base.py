@@ -26,7 +26,9 @@ DATA_ROOT = Path(__file__).resolve().parents[1] / ".data"
 class VerificationStatus(str, Enum):
     VERIFIED_FROM_ABSTRACT = "verified_from_abstract"
     VERIFIED_FROM_FULL_TEXT = "verified_from_full_text"
+    AUTHOR_PROVIDED_TABLE = "author_provided_table"
     DIGITIZED_FROM_FIGURE = "digitized_from_figure"
+    VECTOR_EXTRACTED_FROM_ARXIV_PDF = "vector_extracted_from_arxiv_pdf"
     FROM_MEMORY_UNVERIFIED = "from_memory_unverified"  # forbidden in confrontations
     SUPERSEDED = "superseded"
 
