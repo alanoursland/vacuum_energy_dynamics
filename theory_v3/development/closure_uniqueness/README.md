@@ -6,7 +6,8 @@ This directory holds the in-house proof program for the largest remaining
 field-equation rigor debt: replacing the Deser 1970 self-coupled
 spin-2 closure citation.
 
-Status: started, not retired. The current forge-checked rungs are:
+Status: completed and retired as active rigor debt. The forge-checked
+rungs are:
 
 ```text
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_1.py
@@ -19,6 +20,7 @@ vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_7_h2_
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_8_connection_operator_lock.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_9_higher_h_mismatch_lock.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_10_higher_h_field_redefinition.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_11_final_accounting.py
 ```
 
 ## What Must Eventually Be Proved
@@ -155,11 +157,21 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
    discharged; a final closure-accounting rung remains before any
    Deser-retirement decision.
 
+   Final status: the eleventh forge-checked rung performs the closure
+   accounting. All local two-derivative no-extra-field derivative
+   classes are accounted for as boundary, free core, generated
+   self-coupling, field-redefinition freedom, or
+   connection-inconsistent; `Lambda` remains the admitted zero-derivative
+   residual, and higher-derivative/extra-field/torsion/nonuniversal
+   alternatives are outside the theorem scope. Under that scope, the
+   in-house closure-uniqueness obligation is satisfied.
+
 6. **Retirement decision.**
 
-   Only after the full closure is reproduced in-house should
-   `04_field_equations/05_open_obligations.md` move the Deser citation
-   from active rigor debt to retired rigor debt.
+   Completed by
+   `closure_step_11_final_accounting.py`. `04_field_equations/05_open_obligations.md`
+   now treats the Deser citation as retired rigor debt, historical
+   context only.
 
 ## Boundary
 

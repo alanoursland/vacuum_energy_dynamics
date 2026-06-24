@@ -311,16 +311,26 @@ The tenth forge script reduces that remaining equal-coefficient tower:
 The higher-`H` derivative ansatz-reduction lemma is therefore discharged
 inside the local, torsion-free, first-order, no-extra-field basis.
 
+The eleventh forge script performs final closure accounting:
+
+1. It assembles the prior rungs into the in-house theorem statement:
+   conservation-forced self-coupling, finite Palatini closure,
+   connection elimination, higher-`H` mismatch exclusion, and
+   higher-`H` field-redefinition reduction.
+
+2. It checks that the only residuals are `eta.Rlin` boundary,
+   normalization fixed elsewhere, field redefinition, the admitted
+   cosmological term, and out-of-scope higher-derivative/extra-field/
+   torsion/nonuniversal theories.
+
+3. It records `closure_uniqueness_inhouse_018` as satisfied. The
+   external Deser citation is retired as active rigor debt under the
+   stated theorem scope.
+
 ## Next Rungs
 
-The next useful script should perform final closure accounting:
-
-1. Assemble the completed rungs into the in-house theorem statement:
-   Palatini finite closure, connection elimination, higher-`H`
-   mismatch exclusion, and higher-`H` field-redefinition reduction.
-2. Check that the only residuals are `eta.Rlin` boundary, normalization
-   fixed elsewhere, the admitted cosmological term, and out-of-scope
-   higher-derivative/extra-field/torsion/nonuniversal theories.
-3. Decide whether this is enough to retire the Deser citation in
-   `04_field_equations/05_open_obligations.md`; if so, update that
-   ledger without changing any field equation or coefficient.
+No closure-uniqueness rung remains open under the stated local,
+two-derivative, no-extra-field, torsion-free first-order scope. Future
+work belongs to different obligations if the theorem scope is enlarged,
+for example higher-derivative theories, routed extra fields, torsion or
+nonmetricity, or nonuniversal matter couplings.

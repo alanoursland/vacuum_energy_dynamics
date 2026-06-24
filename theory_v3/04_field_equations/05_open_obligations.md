@@ -7,43 +7,9 @@ vacuum-sector program).
 
 ## Rigor debts (no coefficient can move)
 
-1. **In-house closure-uniqueness proof.** The covariant closure cites
-   Deser (1970) for uniqueness of the self-coupled spin-2 theory.
-   Coefficient-free, structural; recorded as ASSUMPTION in the archive
-   (008). Retiring the citation is the largest single rigor item. The
-   in-house replacement program has started in
-   `development/closure_uniqueness/`; forge scripts
-   `018_closure_uniqueness/closure_step_1.py`,
-   `018_closure_uniqueness/closure_step_2_palatini_finite.py`, and
-   `018_closure_uniqueness/closure_step_3_deformation_audit.py` prove
-   the first conservation/self-coupling obstruction, the finite Palatini
-   closure witness, and the replacement-ansatz deformation audit.
-   `018_closure_uniqueness/closure_step_4_connection_elimination.py`
-   proves that the torsion-free Palatini endpoint eliminates the
-   independent connection.
-   `018_closure_uniqueness/closure_step_5_ansatz_reduction_gate.py`
-   isolates the remaining missing lemma to higher-H two-derivative
-   deformations.
-   `018_closure_uniqueness/closure_step_6_field_redefinition_h2.py`
-   reduces the quadratic higher-H equal-coefficient direction to a field
-   redefinition, leaving the H2 mismatch as the next target.
-   `018_closure_uniqueness/closure_step_7_h2_mismatch_gate.py` proves
-   the mismatch vanishes under a same-Palatini-operator condition, but
-   deriving that condition remains open.
-   `018_closure_uniqueness/closure_step_8_connection_operator_lock.py`
-   derives that condition at H2 order from the connection equation and
-   excludes the H2 mismatch under the no-independent-connection endpoint.
-   `018_closure_uniqueness/closure_step_9_higher_h_mismatch_lock.py`
-   extends that connection-equation lock to all higher-H mismatch
-   directions. The remaining derivative target is the equal-coefficient
-   higher-H tower.
-   `018_closure_uniqueness/closure_step_10_higher_h_field_redefinition.py`
-   reduces that equal-coefficient tower to nonlinear metric-density
-   field-redefinition freedom. Final closure accounting remains before
-   retiring the Deser citation.
-2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
+1. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
-3. **Metric-branch input audit.** Section 1's K1 step must remain
+2. **Metric-branch input audit.** Section 1's K1 step must remain
    explicitly scoped to the SR-compatible quadratic branch. P2 by
    itself gives "clock/rod readings from vacuum configuration," but a
    general assignment of lengths to directions could be Finslerian
@@ -119,6 +85,18 @@ vacuum-sector program).
   for $k\neq0$ rather than a propagation law. Discharge files:
   `development/covariant_lifts/vector_time_dependent/vector_time_dependent_note.md`,
   `vacuum_forge/src/field_equation_trials/017_vector_time_dependent/vector_time_dependent.py`.
+- **In-house closure-uniqueness proof completed (2026-06-24).** The
+  Deser self-coupled spin-2 closure citation is no longer active rigor
+  debt under the stated local, two-derivative, no-extra-field theorem
+  scope. The 018 closure program verifies the conservation
+  self-coupling obstruction, finite Palatini closure witness, torsion-free
+  connection elimination, higher-H mismatch exclusion, higher-H
+  field-redefinition reduction, and final accounting. The result changes
+  no coefficient and leaves only the admitted cosmological term,
+  boundary terms, normalization fixed elsewhere, and out-of-scope
+  higher-derivative/extra-field/torsion/nonuniversal alternatives.
+  Discharge files: `development/closure_uniqueness/`,
+  `vacuum_forge/src/field_equation_trials/018_closure_uniqueness/`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 

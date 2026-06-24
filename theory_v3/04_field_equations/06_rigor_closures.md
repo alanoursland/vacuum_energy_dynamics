@@ -141,14 +141,40 @@ Discharge files:
 - `development/covariant_lifts/vector_time_dependent/vector_time_dependent_note.md`
 - `vacuum_forge/src/field_equation_trials/017_vector_time_dependent/vector_time_dependent.py`
 
+### In-House Closure Uniqueness
+
+The Deser self-coupled spin-2 closure citation has been retired as an
+active rigor debt under the stated local, two-derivative,
+no-extra-field, torsion-free first-order scope. The 018 proof program
+checks:
+
+```text
+massless spin-2 + relabeling gauge symmetry + universal coupling
++ self-energy coupling + locality/two-derivative/no-extra-field
+consistency => Einstein-Hilbert/Palatini closure
+```
+
+up to the admitted cosmological term, boundary terms, normalization
+fixed elsewhere, inert four-dimensional Gauss-Bonnet, and field
+redefinitions.
+
+The discharge chain proves conservation-forced self-coupling, finite
+Palatini closure, elimination of the independent connection, exclusion
+of all higher-H mismatch directions, reduction of equal-coefficient
+higher-H terms to nonlinear metric-density variable choice, and final
+term-class accounting.
+
+Discharge files:
+
+- `development/closure_uniqueness/`
+- `vacuum_forge/src/field_equation_trials/018_closure_uniqueness/`
+
 ## Remaining Rigor Debts
 
 As of this record, the active proof debts are:
 
-- in-house closure-uniqueness proof replacing the Deser citation;
 - covariant lift of the C2/C3 static bookkeeping sector;
 - nonlinear stability.
 
 These are rigor debts only. None carries a coefficient or reopens the
 closed field equations.
-

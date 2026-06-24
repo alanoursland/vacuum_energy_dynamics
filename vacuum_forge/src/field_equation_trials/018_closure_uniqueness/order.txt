@@ -8,3 +8,4 @@ closure_step_7_h2_mismatch_gate.py
 closure_step_8_connection_operator_lock.py
 closure_step_9_higher_h_mismatch_lock.py
 closure_step_10_higher_h_field_redefinition.py
+closure_step_11_final_accounting.py

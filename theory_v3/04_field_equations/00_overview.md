@@ -47,9 +47,10 @@ The result is theorem-grade at reduced level (static spherical,
 linearized radiative, stationary vector, quasi-static cosmological) and
 conditional at covariant level: the closure to the Einstein-Hilbert form
 rests on the conditional-response gates (G15/G16/G20 lineage) plus the
-uniqueness of the self-coupled spin-2 closure (Deser 1970, cited; in-house
-proof an open obligation). These are rigor debts, not freedoms: no
-coefficient can move while they are paid down. See
+in-house self-coupled spin-2 closure program in 018. The former Deser
+citation is retired as active rigor debt under that theorem scope. The
+remaining rigor debts are not freedoms: no coefficient can move while
+they are paid down. See
 `05_open_obligations.md` and `06_rigor_closures.md`.
 
 ## Relation to the rest of the theory

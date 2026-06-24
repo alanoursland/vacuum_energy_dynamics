@@ -30,10 +30,10 @@ The derivation uses, and only uses:
   P7′ (static frame indifference), P9 (configuration energy gravitates
   at the universal coupling, counted exactly once). Full statements in
   `01_postulates/`.
-- **Two external mathematical theorems**, stated and discharged in
-  §4: linear uniqueness of the massless spin-2 operator (Fierz–Pauli
-  1939) and uniqueness of its self-coupled closure (Deser 1970). Both
-  are theorems of *special-relativistic field theory on Minkowski
+- **One external mathematical theorem plus one in-house closure theorem**,
+  stated and discharged in §4: linear uniqueness of the massless spin-2
+  operator (Fierz–Pauli 1939) and the 018 uniqueness proof of its
+  self-coupled closure. Both are theorems of *special-relativistic field theory on Minkowski
   space*: their statements and proofs nowhere assume that Einstein's
   equations hold in nature. Using them is using mathematics, not
   importing GR's physical content.
@@ -304,16 +304,16 @@ must fix it — exactly P9's territory.
 **P9** requires the field's own energy-momentum to source it, at the
 universal coupling, counted once. Iterating this requirement on the
 Fierz–Pauli theory — couple $h$ to its own stress tensor, recompute the
-stress, repeat — has a unique consistent completion (Deser 1970): the
-geometric response
+stress, repeat — has a unique consistent completion by the in-house
+closure-uniqueness program in 018: the geometric response
 
 $$N\,\mathcal G_{ab}[g] = T_{ab},$$
 
 where $\mathcal G_{ab}$ is the (now *derived*) Einstein combination and
 a cosmological term $\Lambda g_{ab}$ remains permitted. *Status of the
-import:* a uniqueness theorem about self-coupled tensor fields on
-Minkowski space; coefficient-free; its in-house re-derivation is an
-open rigor item (§8) but no number depends on it.
+former import:* the Deser-style uniqueness theorem has been reproduced
+in-house under the stated local, two-derivative, no-extra-field scope;
+it is coefficient-free and no number depends on the historical citation.
 
 The normalizations then follow with no further freedom:
 
@@ -423,7 +423,7 @@ $AB-1 = \tfrac32\Omega_m(H_0 r/c)^2$.
 | suspicion | discharge |
 |---|---|
 | "The Einstein tensor was assumed." | It is first *used as a response law* in §4.3, where it is *derived* (closure of K1–K3 under P9). §§1–3 use no tensor response. Its appearance in trial scripts predating the closure was always as a conditional object under stated gates; the proof's ordering removes even that. |
-| "Fierz–Pauli/Deser smuggle in GR." | Both are uniqueness theorems of field theory on Minkowski space, provable (and proved) with no input from gravitational phenomenology. They constrain *any* theory with this kinematics; the kinematics came from P2. The Deser citation is coefficient-free; its in-house re-derivation is a rigor item (§8), and no number moves with it. |
+| "Fierz–Pauli/Deser smuggle in GR." | Fierz–Pauli and the in-house Deser-style closure are uniqueness theorems of field theory on Minkowski space, proved with no input from gravitational phenomenology. They constrain *any* theory with this kinematics; the kinematics came from P2. The former Deser citation is now historical context rather than active rigor debt, and no number moves with it. |
 | "Schwarzschild was the target." | It is derived twice, independently (§2 bookkeeping; §4 closure), and the routes' agreement is a falsifiable internal check that happened to pass. The §2 route uses no field equations at all. |
 | "The postulates were reverse-engineered." | The adoption records are timestamped and fenced (P9, P7′: 2026-06-11), and both postulates were adopted *before* their decisive consequences were known — P7′'s elimination of the four-derivative sector (§5.2) and its exactness under Λ (SdS) were discovered afterward. Six of the theory owner's own candidate mechanisms were killed by these same postulates' gates. |
 | "GR data calibrated the constants." | One constant ($G$) enters, from Newton. Everything else is derived. Pulsar, GPB, LAGEOS, Eöt-Wash enter only afterward, as kill conditions — each could have falsified a derived coefficient; none did. |
@@ -434,18 +434,20 @@ $AB-1 = \tfrac32\Omega_m(H_0 r/c)^2$.
 Completed proof-hardening closures are indexed in
 `06_rigor_closures.md`: P8/T4 formal rewrite, scalaron screening,
 tensor-virial identity in generality, Isaacson-style TT averaging,
-radiative gauge invariance, and the general time-dependent vector-sector
-lift. These closures support this proof without changing the field
+radiative gauge invariance, the general time-dependent vector-sector
+lift, and the in-house closure-uniqueness proof replacing the active
+Deser citation. These closures support this proof without changing the field
 equations or moving any coefficient.
 
 The sector derivations are theorem-grade at reduced level (static
 spherical; linearized TT; vector sector through general linear time
 dependence; quasi-static cosmological patch) with exact solutions where
-stated. Current live debts after the closures above are: in-house
-re-derivation of the Deser closure; covariant lift of the C2/C3 static
-bookkeeping sector; nonlinear stability. The earlier tensor-virial,
-Isaacson averaging, radiative gauge, and vector time-dependence debts
-are retired in `06_rigor_closures.md`.
+stated. Current live debts after the closures above are: covariant lift
+of the C2/C3 static bookkeeping sector; nonlinear stability; and the
+metric-branch input audit recorded in `05_open_obligations.md`. The
+earlier tensor-virial, Isaacson averaging, radiative gauge, vector
+time-dependence, and closure-uniqueness debts are retired in
+`06_rigor_closures.md`.
 
 ## 9. Verification index
 
