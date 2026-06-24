@@ -281,18 +281,46 @@ Therefore all non-Palatini split-density mismatch directions
 ansatz-reduction target is the equal-coefficient tower
 `H^p.Rlin + H^p.Q` for `p >= 3`.
 
+The tenth forge script reduces that remaining equal-coefficient tower:
+
+1. For any fixed `p >= 2`, a nonlinear metric-density variable choice
+
+   ```text
+   K = H + a_p H^p
+   ```
+
+   inserted into the Palatini replacement generates
+
+   ```text
+   a_p H^p.Rlin + a_p H^p.Q
+   = a_p H^p.(Rlin + Q)
+   ```
+
+2. A finite-tower witness verifies that
+
+   ```text
+   sum_p c_p(H^p.Rlin + H^p.Q)
+   ```
+
+   is absorbed by choosing `a_p = c_p` independently for each power.
+
+3. Combining steps 8-10, every higher-`H` two-derivative derivative
+   direction is either connection-inconsistent (`H^p.Rlin - H^p.Q`) or
+   field-redefinition freedom (`H^p.Rlin + H^p.Q`).
+
+The higher-`H` derivative ansatz-reduction lemma is therefore discharged
+inside the local, torsion-free, first-order, no-extra-field basis.
+
 ## Next Rungs
 
-The next useful script should reduce the remaining equal-coefficient
-higher-`H` tower:
+The next useful script should perform final closure accounting:
 
-1. Show a general nonlinear metric-density variable choice
-   `K = H + sum_{p>=2} a_p H^p` generates
-   `sum_{p>=2} a_p H^p.(Rlin + Q)`.
-2. Verify that every surviving equal-coefficient higher-`H` derivative
-   term is therefore field-redefinition freedom rather than a new
-   closure.
-3. If this succeeds, update the closure status to say the two-derivative
-   higher-`H` ansatz-reduction lemma is discharged, with only Lambda,
-   boundary terms, normalization, and out-of-scope higher-derivative or
-   extra-field theories remaining.
+1. Assemble the completed rungs into the in-house theorem statement:
+   Palatini finite closure, connection elimination, higher-`H`
+   mismatch exclusion, and higher-`H` field-redefinition reduction.
+2. Check that the only residuals are `eta.Rlin` boundary, normalization
+   fixed elsewhere, the admitted cosmological term, and out-of-scope
+   higher-derivative/extra-field/torsion/nonuniversal theories.
+3. Decide whether this is enough to retire the Deser citation in
+   `04_field_equations/05_open_obligations.md`; if so, update that
+   ledger without changing any field equation or coefficient.

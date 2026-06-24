@@ -18,6 +18,7 @@ vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_6_fie
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_7_h2_mismatch_gate.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_8_connection_operator_lock.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_9_higher_h_mismatch_lock.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_10_higher_h_field_redefinition.py
 ```
 
 ## What Must Eventually Be Proved
@@ -144,6 +145,15 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
    `cR_p = cQ_p`, and a pure mismatch `Hp.Rlin - Hp.Q` has zero
    coefficient for every `p >= 3`. The remaining derivative target is
    the equal-coefficient tower `Hp.Rlin + Hp.Q` for `p >= 3`.
+
+   Follow-on status: the tenth forge-checked rung reduces that final
+   derivative tower. A nonlinear metric-density variable choice
+   `K = H + sum_p a_p H^p` generates exactly
+   `sum_p a_p H^p.(Rlin + Q)`, so every surviving equal-coefficient
+   higher-`H` derivative term is field-redefinition freedom. The
+   higher-`H` two-derivative derivative ansatz-reduction problem is
+   discharged; a final closure-accounting rung remains before any
+   Deser-retirement decision.
 
 6. **Retirement decision.**
 

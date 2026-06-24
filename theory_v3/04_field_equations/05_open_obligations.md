@@ -36,8 +36,11 @@ vacuum-sector program).
    `018_closure_uniqueness/closure_step_9_higher_h_mismatch_lock.py`
    extends that connection-equation lock to all higher-H mismatch
    directions. The remaining derivative target is the equal-coefficient
-   higher-H tower, which must be reduced to field-redefinition freedom.
-   These do **not** retire the Deser citation.
+   higher-H tower.
+   `018_closure_uniqueness/closure_step_10_higher_h_field_redefinition.py`
+   reduces that equal-coefficient tower to nonlinear metric-density
+   field-redefinition freedom. Final closure accounting remains before
+   retiring the Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 3. **Metric-branch input audit.** Section 1's K1 step must remain
