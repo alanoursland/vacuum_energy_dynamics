@@ -75,7 +75,7 @@ OPTIONS = [
         boundary_requirement="induced metric plus GHY-style boundary term",
         conservation_route="Bianchi identity and stress conservation in GR branch",
         mode_risk="baseline two-TT-mode branch after constraints",
-        epsilon_status="epsilon = 0 definition if selected",
+        epsilon_status="epsilon = 0 only when paired with EH/GHY baseline",
         status="metric-transport placeholder",
         next_obligation="explain why vacuum ontology selects Levi-Civita metric transport",
     ),
@@ -181,7 +181,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 
 
 def status_mark(status: str) -> StatusMark:
-    return {
+    marks = {
         "complete mismatch contract": StatusMark.PASS,
         "partial mismatch contract": StatusMark.DEFER,
         "metric-transport placeholder": StatusMark.DEFER,
@@ -190,7 +190,10 @@ def status_mark(status: str) -> StatusMark:
         "underdetermined without new axiom": StatusMark.OBLIGATION,
         "fails accumulated gate": StatusMark.FAIL,
         "not yet evaluated": StatusMark.INFO,
-    }.get(status, StatusMark.INFO)
+    }
+    if status not in marks:
+        raise ValueError(f"Unknown neighboring-mismatch status: {status!r}")
+    return marks[status]
 
 
 def governance_status(status: str) -> GovernanceStatus:
@@ -204,7 +207,11 @@ def governance_status(status: str) -> GovernanceStatus:
         return GovernanceStatus.POLICY_RULE
     if status in {"partial mismatch contract", "metric-transport placeholder"}:
         return GovernanceStatus.UNVERIFIED
-    return GovernanceStatus.LICENSED_CLAIM
+    if status == "complete mismatch contract":
+        return GovernanceStatus.LICENSED_CLAIM
+    if status == "not yet evaluated":
+        return GovernanceStatus.UNVERIFIED
+    raise ValueError(f"Unknown neighboring-mismatch status: {status!r}")
 
 
 def write_report():

@@ -162,7 +162,7 @@ def print_archive_status(ns, invalidated: bool) -> None:
 
 
 def status_mark(status: str) -> StatusMark:
-    return {
+    marks = {
         "partial contract": StatusMark.DEFER,
         "metric-only placeholder": StatusMark.DEFER,
         "extra-field route required": StatusMark.OBLIGATION,
@@ -170,7 +170,10 @@ def status_mark(status: str) -> StatusMark:
         "fails accumulated gate": StatusMark.FAIL,
         "complete contract": StatusMark.PASS,
         "not yet evaluated": StatusMark.INFO,
-    }.get(status, StatusMark.INFO)
+    }
+    if status not in marks:
+        raise ValueError(f"Unknown X-contract status: {status!r}")
+    return marks[status]
 
 
 def governance_status(status: str) -> GovernanceStatus:
@@ -180,7 +183,11 @@ def governance_status(status: str) -> GovernanceStatus:
         return GovernanceStatus.POLICY_RULE
     if status in {"partial contract", "metric-only placeholder"}:
         return GovernanceStatus.UNVERIFIED
-    return GovernanceStatus.LICENSED_CLAIM
+    if status == "complete contract":
+        return GovernanceStatus.LICENSED_CLAIM
+    if status == "not yet evaluated":
+        return GovernanceStatus.UNVERIFIED
+    raise ValueError(f"Unknown X-contract status: {status!r}")
 
 
 def write_report():
