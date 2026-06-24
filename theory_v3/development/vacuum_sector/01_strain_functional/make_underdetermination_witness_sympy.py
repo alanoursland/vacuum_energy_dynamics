@@ -2,9 +2,10 @@
 """
 Validate a minimal underdetermination witness for the vacuum strain sector.
 
-The witness is deliberately a scalar prototype. It checks that two functionals
-can share the same local pointwise Hessian while differing in gradient terms,
-Euler-Lagrange equations, derivative order, and boundary data.
+The witness is deliberately a scalar prototype existence witness. It checks
+that two functionals can share the same pointwise V_local Hessian while
+differing in gradient terms, Euler-Lagrange equations, derivative order, and
+boundary data.
 
 Output:
     underdetermination_witness_sympy.md
@@ -58,18 +59,18 @@ checks = []
 
 V_local = m**2 * y**2 / 2
 local_hessian = sp.diff(V_local, y, 2)
-require_equal("local Hessian", local_hessian, m**2)
-checks.append("local Hessian is m^2")
+require_equal("pointwise V_local Hessian", local_hessian, m**2)
+checks.append("pointwise V_local Hessian is m^2")
 
 L0 = m**2 * X**2 / 2 + a * sp.diff(X, x) ** 2 / 2
 L1 = L0 + epsilon * b * sp.diff(X, x, 2) ** 2 / 2
 
 local_hessian_L0 = sp.diff(L0.subs({sp.diff(X, x): 0, sp.diff(X, x, 2): 0}), X, 2)
 local_hessian_L1 = sp.diff(L1.subs({sp.diff(X, x): 0, sp.diff(X, x, 2): 0}), X, 2)
-require_equal("same local Hessian in L0", local_hessian_L0, m**2)
-require_equal("same local Hessian in L1", local_hessian_L1, m**2)
-require_equal("matching local Hessians", local_hessian_L0, local_hessian_L1)
-checks.append("two functionals share the same local Hessian")
+require_equal("same pointwise V_local Hessian in L0", local_hessian_L0, m**2)
+require_equal("same pointwise V_local Hessian in L1", local_hessian_L1, m**2)
+require_equal("matching pointwise V_local Hessians", local_hessian_L0, local_hessian_L1)
+checks.append("two functionals share the same pointwise V_local Hessian")
 
 EL0 = euler_lagrange_1d(L0, X)
 EL1 = euler_lagrange_1d(L1, X)
@@ -101,14 +102,15 @@ md = f"""# SymPy Underdetermination Witness
 
 ## Purpose
 
-This is a scalar prototype validating the narrow logical point used by
+This is a scalar prototype existence witness validating the narrow logical point used by
 `underdetermination_witness.md`:
 
 ```text
-same local Hessian does not imply same strain dynamics.
+same pointwise V_local Hessian does not imply same strain dynamics.
 ```
 
-It is not a physical action and does not license any residual branch.
+It is not a physical action, not a full tensor/covariant theorem, and does not
+license any residual branch.
 
 ## Validated Checks
 
@@ -122,7 +124,7 @@ Use a local part:
 V_local(X) = (m^2/2) X^2
 ```
 
-so the local Hessian is:
+so the pointwise `V_local` Hessian is:
 
 ```text
 d^2 V_local / dX^2 = m^2.
@@ -135,7 +137,7 @@ L0 = (m^2/2) X^2 + (a/2) (dX/dx)^2
 L1 = L0 + epsilon (b/2) (d^2X/dx^2)^2.
 ```
 
-Both have the same pointwise local Hessian:
+Both have the same pointwise `V_local` Hessian:
 
 ```text
 m^2.
@@ -176,7 +178,7 @@ Thus the residual also changes admissible boundary data.
 
 ## Conclusion
 
-The local Hessian fixes pointwise response in this prototype, but it does not
+The pointwise `V_local` Hessian fixes pointwise response in this prototype, but it does not
 fix:
 
 ```text

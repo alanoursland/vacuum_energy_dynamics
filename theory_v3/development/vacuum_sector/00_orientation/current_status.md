@@ -111,9 +111,10 @@ metric data when the quadratic gate holds, but it does not specify
 between-point comparison, transport, curvature action, boundary terms,
 propagating modes, or `epsilon`.
 
-A scalar SymPy prototype validates the narrow witness by showing that two
-functionals can share the same local Hessian while differing in
-Euler-Lagrange equation, derivative order, and boundary data.
+A scalar SymPy prototype existence witness validates the narrow point by
+showing that two functionals can share the same pointwise `V_local` Hessian
+while differing in Euler-Lagrange equation, derivative order, and boundary
+data.
 
 The same witness is now recorded through VacuumForge as:
 
@@ -121,4 +122,14 @@ The same witness is now recorded through VacuumForge as:
 derivation: local_response_underdetermines_strain_001
 claim: local_response_only_selector_underdetermined_001
 obligation: strain_branch_selector_required_001
+```
+
+Classification:
+
+```text
+result type: contract-level no-selector / underdetermination witness
+scope: local-response-only ontology
+validated by: scalar symbolic prototype + VacuumForge governance record
+conclusion: a between-point strain principle or accumulated-gate selector is required
+non-conclusion: no physical residual has been found; epsilon is not computed
 ```

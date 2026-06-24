@@ -6,7 +6,8 @@ Vacuum-sector witness that local pointwise response does not determine the
 strain functional.
 
 This script uses SymPy for the symbolic checks and VacuumForge for archive,
-claim, and obligation bookkeeping.
+claim, and obligation bookkeeping. It is a scalar prototype existence witness,
+not a full tensor/covariant strain theorem.
 
 Outputs:
     theory_v3/development/vacuum_sector/01_strain_functional/
@@ -113,18 +114,18 @@ def run_symbolic_witness():
 
     v_local = m**2 * y**2 / 2
     local_hessian = sp.diff(v_local, y, 2)
-    require_equal("local Hessian", local_hessian, m**2)
-    checks.append("local Hessian is m^2")
+    require_equal("pointwise V_local Hessian", local_hessian, m**2)
+    checks.append("pointwise V_local Hessian is m^2")
 
     L0 = m**2 * X**2 / 2 + a * sp.diff(X, x) ** 2 / 2
     L1 = L0 + epsilon * b * sp.diff(X, x, 2) ** 2 / 2
 
     local_hessian_L0 = sp.diff(L0.subs({sp.diff(X, x): 0, sp.diff(X, x, 2): 0}), X, 2)
     local_hessian_L1 = sp.diff(L1.subs({sp.diff(X, x): 0, sp.diff(X, x, 2): 0}), X, 2)
-    require_equal("same local Hessian in L0", local_hessian_L0, m**2)
-    require_equal("same local Hessian in L1", local_hessian_L1, m**2)
-    require_equal("matching local Hessians", local_hessian_L0, local_hessian_L1)
-    checks.append("two functionals share the same local Hessian")
+    require_equal("same pointwise V_local Hessian in L0", local_hessian_L0, m**2)
+    require_equal("same pointwise V_local Hessian in L1", local_hessian_L1, m**2)
+    require_equal("matching pointwise V_local Hessians", local_hessian_L0, local_hessian_L1)
+    checks.append("two functionals share the same pointwise V_local Hessian")
 
     EL0 = euler_lagrange_1d(L0, X, x)
     EL1 = euler_lagrange_1d(L1, X, x)
@@ -172,11 +173,14 @@ def write_report(result):
 This managed witness validates the narrow vacuum-sector claim:
 
 ```text
-same local Hessian does not imply same strain dynamics.
+same pointwise V_local Hessian does not imply same strain dynamics.
 ```
 
 SymPy supplies the algebraic checks. VacuumForge records the derivation,
 claim, and open obligation boundary for later proof-chain use.
+
+This is a scalar prototype existence witness, not a full tensor/covariant
+strain theorem and not evidence for a physical non-GR residual.
 
 ## Validated Checks
 
@@ -192,7 +196,7 @@ L0 = (m^2/2) X^2 + (a/2) (dX/dx)^2
 L1 = L0 + epsilon (b/2) (d^2X/dx^2)^2
 ```
 
-Both `L0` and `L1` share the same local Hessian:
+Both `L0` and `L1` share the same pointwise `V_local` Hessian:
 
 ```text
 d^2 V_local / dX^2 = m^2.
@@ -258,7 +262,7 @@ def record_vacuumforge(ns, result):
         inputs=[],
         output=output_symbol,
         method=(
-            "SymPy scalar prototype: L0 and L1 share local Hessian m^2 but "
+            "SymPy scalar prototype: L0 and L1 share pointwise V_local Hessian m^2 but "
             "differ in Euler-Lagrange operator, derivative order, and boundary data"
         ),
         status=Status.DERIVED,
@@ -292,7 +296,7 @@ def record_vacuumforge(ns, result):
             statement=(
                 "Local quadratic interval response can reconstruct pointwise metric "
                 "data, but it does not determine the between-point strain functional. "
-                "The scalar witness shows identical local Hessian with different "
+                "The scalar witness shows identical pointwise V_local Hessian with different "
                 "Euler-Lagrange operator, derivative order, and boundary data."
             ),
             derivation_ids=["local_response_underdetermines_strain_001"],
@@ -313,7 +317,7 @@ def main():
         out.line(
             "local-response-only selector underdetermined",
             StatusMark.PASS,
-            "same local Hessian but different EL equation, derivative order, and boundary data",
+            "same pointwise V_local Hessian but different EL equation, derivative order, and boundary data",
         )
     with out.unresolved_obligations():
         out.line(

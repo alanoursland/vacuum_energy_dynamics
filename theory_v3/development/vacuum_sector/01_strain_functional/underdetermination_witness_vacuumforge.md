@@ -5,16 +5,19 @@
 This managed witness validates the narrow vacuum-sector claim:
 
 ```text
-same local Hessian does not imply same strain dynamics.
+same pointwise V_local Hessian does not imply same strain dynamics.
 ```
 
 SymPy supplies the algebraic checks. VacuumForge records the derivation,
 claim, and open obligation boundary for later proof-chain use.
 
+This is a scalar prototype existence witness, not a full tensor/covariant
+strain theorem and not evidence for a physical non-GR residual.
+
 ## Validated Checks
 
-- local Hessian is m^2: passed
-- two functionals share the same local Hessian: passed
+- pointwise V_local Hessian is m^2: passed
+- two functionals share the same pointwise V_local Hessian: passed
 - gradient residual changes the Euler-Lagrange equation: passed
 - gradient residual changes boundary data: passed
 - residual raises derivative order: passed
@@ -29,7 +32,7 @@ L0 = (m^2/2) X^2 + (a/2) (dX/dx)^2
 L1 = L0 + epsilon (b/2) (d^2X/dx^2)^2
 ```
 
-Both `L0` and `L1` share the same local Hessian:
+Both `L0` and `L1` share the same pointwise `V_local` Hessian:
 
 ```text
 d^2 V_local / dX^2 = m^2.

@@ -1,12 +1,14 @@
 # Underdetermination Witness
 
-This is the first theorem-shaped target for the vacuum-sector phase.
+This is the first contract-level underdetermination result for the
+vacuum-sector phase.
 
 Status:
 
 ```text
 contract-level witness established
-SymPy scalar prototype validation passed
+SymPy scalar prototype existence witness passed
+VacuumForge governance record written
 ```
 
 ## Claim
@@ -70,10 +72,10 @@ or, before metric reduction:
 X(p) compared with X(q).
 ```
 
-The local Hessian does not specify that comparison. It does not say whether the
-comparison is made by Levi-Civita transport, independent connection,
-calibration map, holonomy, elastic medium strain, Finsler direction map, or
-nonlocal kernel.
+The pointwise local-response Hessian does not specify that comparison. It does
+not say whether the comparison is made by Levi-Civita transport, independent
+connection, calibration map, holonomy, elastic medium strain, Finsler direction
+map, or nonlocal kernel.
 
 Therefore the local response branch determines the pointwise metric candidate
 but not the between-point strain rule.
@@ -151,6 +153,8 @@ claiming K_strain follows from local interval response alone.
 
 This is not a physical theory.
 
+It is not a full tensor or covariant strain theorem.
+
 It does not claim that any particular residual is allowed.
 
 It does not claim that `epsilon != 0`.
@@ -188,7 +192,7 @@ make_underdetermination_witness_sympy.py
 validates a scalar prototype:
 
 ```text
-same local Hessian;
+same pointwise V_local Hessian;
 different Euler-Lagrange equations;
 different boundary data;
 different derivative order.
@@ -230,4 +234,14 @@ Until a stronger selector is completed, the working null hypothesis remains:
 
 ```text
 the current ontology underdetermines K_strain.
+```
+
+## Final Classification
+
+```text
+result type: contract-level no-selector / underdetermination witness
+scope: local-response-only ontology
+validated by: scalar symbolic prototype + VacuumForge governance record
+conclusion: a between-point strain principle or accumulated-gate selector is required
+non-conclusion: no physical residual has been found; epsilon is not computed
 ```

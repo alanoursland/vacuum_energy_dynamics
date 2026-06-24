@@ -48,7 +48,7 @@ gates.
 underdetermination_witness.md
 ```
 
-A first theorem-shaped result: local interval response does not by itself
+A first contract-level result: local interval response does not by itself
 choose strain dynamics. The local-response-only selector is classified as
 underdetermined without a new axiom or independent strain-branch selector.
 
@@ -62,9 +62,9 @@ SymPy generator for the scalar prototype witness.
 underdetermination_witness_sympy.md
 ```
 
-Generated report showing that two prototype functionals can share the same
-local Hessian while differing in Euler-Lagrange equation, derivative order, and
-boundary data.
+Generated scalar prototype existence witness showing that two prototype
+functionals can share the same pointwise `V_local` Hessian while differing in
+Euler-Lagrange equation, derivative order, and boundary data.
 
 ```text
 underdetermination_witness_vacuumforge.md

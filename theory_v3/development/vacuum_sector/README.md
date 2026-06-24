@@ -51,6 +51,9 @@ it does not determine between-point strain dynamics. The local-response-only
 selector is therefore classified as underdetermined without a new axiom or
 independent strain-branch selector.
 
+This result does not compute `epsilon` and does not establish a non-GR
+residual. It only rules out local-response-only selection of `K_strain`.
+
 ## Suggested Subfolders
 
 ```text

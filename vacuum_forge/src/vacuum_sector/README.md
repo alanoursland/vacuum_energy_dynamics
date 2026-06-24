@@ -30,6 +30,7 @@ C:\Users\alano\anaconda3\python.exe vacuum_forge\src\vacuum_sector\001_strain_un
 001_strain_underdetermination/
 ```
 
-Validates that the same local Hessian can coexist with different strain
-dynamics. SymPy supplies the algebraic checks; VacuumForge records the
-derivation, claim, and open obligation boundary.
+Validates that the same pointwise `V_local` Hessian can coexist with different
+strain dynamics. This is a scalar prototype existence witness, not a full
+tensor/covariant strain theorem. SymPy supplies the algebraic checks;
+VacuumForge records the derivation, claim, and open obligation boundary.

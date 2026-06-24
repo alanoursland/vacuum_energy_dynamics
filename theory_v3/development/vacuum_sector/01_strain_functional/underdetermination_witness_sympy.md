@@ -2,19 +2,20 @@
 
 ## Purpose
 
-This is a scalar prototype validating the narrow logical point used by
+This is a scalar prototype existence witness validating the narrow logical point used by
 `underdetermination_witness.md`:
 
 ```text
-same local Hessian does not imply same strain dynamics.
+same pointwise V_local Hessian does not imply same strain dynamics.
 ```
 
-It is not a physical action and does not license any residual branch.
+It is not a physical action, not a full tensor/covariant theorem, and does not
+license any residual branch.
 
 ## Validated Checks
 
-- local Hessian is m^2: passed
-- two functionals share the same local Hessian: passed
+- pointwise V_local Hessian is m^2: passed
+- two functionals share the same pointwise V_local Hessian: passed
 - gradient residual changes the Euler-Lagrange equation: passed
 - gradient residual changes boundary data: passed
 - residual raises derivative order: passed
@@ -27,7 +28,7 @@ Use a local part:
 V_local(X) = (m^2/2) X^2
 ```
 
-so the local Hessian is:
+so the pointwise `V_local` Hessian is:
 
 ```text
 d^2 V_local / dX^2 = m^2.
@@ -40,7 +41,7 @@ L0 = (m^2/2) X^2 + (a/2) (dX/dx)^2
 L1 = L0 + epsilon (b/2) (d^2X/dx^2)^2.
 ```
 
-Both have the same pointwise local Hessian:
+Both have the same pointwise `V_local` Hessian:
 
 ```text
 m^2.
@@ -81,7 +82,7 @@ Thus the residual also changes admissible boundary data.
 
 ## Conclusion
 
-The local Hessian fixes pointwise response in this prototype, but it does not
+The pointwise `V_local` Hessian fixes pointwise response in this prototype, but it does not
 fix:
 
 ```text
