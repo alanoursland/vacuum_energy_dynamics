@@ -185,10 +185,13 @@ def governance_status(status: str) -> GovernanceStatus:
 
 def write_report():
     rows = "\n".join(
-        "| {name} | {x_variable} | {metric_reduction} | {status} | {next_obligation} |".format(
+        "| {name} | {x_variable} | {metric_reduction} | {matter_route} | {boundary_data} | {gauge_physical_split} | {status} | {next_obligation} |".format(
             name=item.name,
             x_variable=item.x_variable,
             metric_reduction=item.metric_reduction,
+            matter_route=item.matter_route,
+            boundary_data=item.boundary_data,
+            gauge_physical_split=item.gauge_physical_split,
             status=item.status,
             next_obligation=item.next_obligation,
         )
@@ -214,16 +217,28 @@ paired with a neighboring-mismatch rule before it can generate dynamics.
 
 ## Inventory
 
-| branch | X variable | metric reduction | status | next obligation |
-| --- | --- | --- | --- | --- |
+| branch | X variable | metric reduction | matter route | boundary data | gauge / physical split | status | next obligation |
+| --- | --- | --- | --- | --- | --- | --- | --- |
 {rows}
 
 ## Current Conclusion
 
-No non-metric `X` option is complete enough to open candidate strain dynamics
-without additional routing. The metric-data branch is usable as the GR baseline
-but remains a metric-only placeholder for the vacuum ontology unless a selector
-explains why vacuum configuration reduces to `g_ab`.
+No currently inventoried non-metric `X` option is complete enough to open
+candidate strain dynamics without additional routing. The metric-data branch is
+usable as the GR baseline but remains a metric-only placeholder for the vacuum
+ontology unless a selector explains why vacuum configuration reduces to `g_ab`.
+
+This is an inventory result, not a global no-go theorem against non-metric
+vacuum variables.
+
+## Classification
+
+```text
+result type: contract inventory / governance classification
+scope: candidate vacuum configuration variables X
+conclusion: no currently inventoried non-metric X is strain-ready without routing
+non-conclusion: no final X selected; no K_strain derived; no epsilon computed
+```
 
 The next technical target is the neighboring-mismatch contract:
 

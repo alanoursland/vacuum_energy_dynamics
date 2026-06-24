@@ -11,12 +11,12 @@ Current managed inventory:
 x_contract_inventory_vacuumforge.md
 ```
 
-That inventory classifies the known `X` options as contract states. Its current
-conclusion is that no non-metric `X` option is complete enough to open
-candidate strain dynamics without additional routing. The metric-data branch is
-usable as the GR baseline but remains a metric-only placeholder for the vacuum
-ontology unless a selector explains why vacuum configuration reduces to
-`g_ab`.
+That inventory classifies the currently inventoried `X` options as contract
+states. Its current conclusion is that no currently inventoried non-metric `X`
+option is complete enough to open candidate strain dynamics without additional
+routing. The metric-data branch is usable as the GR baseline but remains a
+metric-only placeholder for the vacuum ontology unless a selector explains why
+vacuum configuration reduces to `g_ab`.
 
 ## Required Questions
 
@@ -151,4 +151,13 @@ Next target:
 
 ```text
 complete the neighboring-mismatch contract.
+```
+
+Non-conclusion:
+
+```text
+no final X is selected;
+no K_strain is derived;
+no epsilon is computed;
+no global no-go theorem against non-metric X is claimed.
 ```

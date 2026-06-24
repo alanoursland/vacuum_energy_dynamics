@@ -136,11 +136,13 @@ obligation: neighboring_mismatch_contract_required_002
 Current conclusion:
 
 ```text
-No non-metric X option is complete enough to open candidate strain dynamics
-without additional routing. The metric-data branch is usable as the GR baseline
-but remains a metric-only placeholder for the vacuum ontology unless a selector
-explains why vacuum configuration reduces to g_ab.
+No currently inventoried non-metric X option is complete enough to open
+candidate strain dynamics without additional routing. The metric-data branch is
+usable as the GR baseline but remains a metric-only placeholder for the vacuum
+ontology unless a selector explains why vacuum configuration reduces to g_ab.
 ```
+
+This is an inventory result, not a global no-go theorem against non-metric `X`.
 
 Classification:
 
