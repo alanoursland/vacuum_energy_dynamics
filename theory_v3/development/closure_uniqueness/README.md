@@ -113,7 +113,10 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
    torsion/nonmetricity, and nonuniversal matter coupling are out of
    scope for this theorem. The remaining open target is higher-`H`
    two-derivative deformations, represented by `H^p.Rlin` and `H^p.Q`
-   for `p >= 2`.
+   for `p >= 2`. The prose exhaustiveness lemma in
+   `closure_uniqueness_plan.md` records why this first-order monomial
+   basis exhausts the local two-derivative no-extra-field possibilities,
+   rather than serving only as a chosen ansatz.
 
    Follow-on status: the sixth forge-checked rung reduces the first
    higher-`H` level. At `H^2`, the equal-coefficient pair

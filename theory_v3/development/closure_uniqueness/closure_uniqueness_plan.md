@@ -159,6 +159,34 @@ ansatz-reduction gate:
    H^p.Rlin and H^p.Q for p >= 2
    ```
 
+**Exhaustiveness lemma for the first-order monomial basis.** Under the
+stated locality, two-derivative, no-extra-field, torsion-free
+first-order assumptions, the list above is not merely an ansatz
+convenience; it exhausts the admissible derivative monomials. The
+available local building blocks are the background density `eta^mn`,
+the dynamical density perturbation `H^mn`, the torsion-free connection,
+and at most two derivatives. In first-order form the only two-derivative
+dependence with one differentiated connection is the Ricci-type
+derivative-linear contraction `Rlin_mn`, up to integration by parts and
+boundary terms. The only zero-derivative connection dependence compatible
+with the same derivative order is the connection-quadratic Ricci
+contraction `Q_mn`. No extra tensor, scalar, preferred vector, torsion,
+or nonmetricity field is available to make an independent contraction,
+and nonuniversal matter couplings are outside the theorem scope. Expanding
+the only allowed density coefficient in powers of `H` therefore yields
+exactly
+
+```text
+eta.Rlin, H.Rlin, eta.Q, H.Q, H^p.Rlin, H^p.Q for p >= 2,
+```
+
+plus zero-derivative density terms such as `Lambda`. Higher-curvature or
+higher-derivative terms leave the two-derivative theorem scope and are
+handled by the separate higher-derivative gates. Thus the fifth rung's
+classification is exhaustive under the theorem assumptions; the later
+rungs only have to decide the fate of the higher-`H` entries already
+listed here.
+
 The remaining lemma is to show that those higher-`H` two-derivative
 deformations are boundary terms, field redefinitions, normalization
 changes, or inconsistent with gauge/conservation identities.

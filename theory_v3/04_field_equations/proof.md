@@ -313,7 +313,9 @@ where $\mathcal G_{ab}$ is the (now *derived*) Einstein combination and
 a cosmological term $\Lambda g_{ab}$ remains permitted. *Status of the
 former import:* the Deser-style uniqueness theorem has been reproduced
 in-house under the stated local, two-derivative, no-extra-field scope;
-it is coefficient-free and no number depends on the historical citation.
+the first-order monomial exhaustiveness lemma is recorded in
+`development/closure_uniqueness/closure_uniqueness_plan.md`; it is
+coefficient-free and no number depends on the historical citation.
 
 The normalizations then follow with no further freedom:
 
