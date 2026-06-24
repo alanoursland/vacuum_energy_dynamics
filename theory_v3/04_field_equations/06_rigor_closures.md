@@ -159,10 +159,12 @@ fixed elsewhere, inert four-dimensional Gauss-Bonnet, and field
 redefinitions.
 
 The discharge chain proves conservation-forced self-coupling, finite
-Palatini closure, elimination of the independent connection, exclusion
-of all higher-H mismatch directions, reduction of equal-coefficient
-higher-H terms to nonlinear metric-density variable choice, and final
-term-class accounting.
+Palatini closure, exhaustiveness of the local first-order
+two-derivative monomial basis under the no-extra-field assumptions,
+elimination of the independent connection, exclusion of all higher-H
+mismatch directions, reduction of equal-coefficient higher-H terms to
+nonlinear metric-density variable choice, and final term-class
+accounting.
 
 Discharge files:
 
