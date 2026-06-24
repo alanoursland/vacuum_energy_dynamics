@@ -76,3 +76,12 @@ Runs the first concrete branch test. The scalar prototype shows that a local
 higher-derivative residual can keep the same pointwise `V_local` Hessian while
 introducing fourth-order equations, extra boundary data, and an extra
 weak-field pole. This is not a full tensor theorem.
+
+```text
+007_higher_curvature_tensor_route_audit/
+```
+
+Classifies higher-curvature residual routes after the scalar prototype. It
+separates inert/topological terms, scalaron/f(R)-type routes, spin-2/Weyl-type
+ghost routes, and generic mixed curvature-squared terms. It imports prior
+G20/E3 route context rather than rederiving the full tensor closure.

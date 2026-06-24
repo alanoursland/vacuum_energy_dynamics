@@ -47,6 +47,7 @@ Allowed status labels:
 admissible at epsilon = 0
 controlled epsilon != 0 possible
 fails accumulated gate
+fails as controlled local higher-curvature residual under current postulate set
 underdetermined without new axiom
 not yet evaluated
 ```

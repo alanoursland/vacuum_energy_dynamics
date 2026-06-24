@@ -252,3 +252,32 @@ separate inert/topological terms, scalaron/f(R)-type routes that are
 ghost-safe only after mode routing, and spin-2/Weyl-type ghost routes before
 any higher-curvature residual is reused.
 ```
+
+## Higher-Curvature Tensor-Route Audit
+
+The higher-curvature route audit is now recorded through VacuumForge as:
+
+```text
+derivation: higher_curvature_tensor_route_audit_007
+obligation: lambda_baseline_folder_required_007
+```
+
+Current conclusion:
+
+```text
+No higher-curvature route is currently licensed as controlled epsilon != 0.
+The inert/topological route is not a bulk residual. The spin-2/Weyl route fails
+as a controlled local higher-curvature residual by the ghost pole. The
+scalaron/f(R)-type route is the only non-ghost local higher-curvature route,
+but under the already adopted closure it remains blocked by P7prime/weak-field
+routing unless that appeal is explicitly reopened.
+```
+
+This imports prior G20/E3 route context; it is not a new full tensor theorem.
+
+Next target:
+
+```text
+open the Lambda baseline folder and keep baseline-selection questions separate
+from local higher-curvature strain residuals.
+```

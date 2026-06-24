@@ -75,3 +75,8 @@ as the current branch ledger.
 The first concrete branch test is
 [higher_curvature_scalar_prototype_vacuumforge.md](higher_curvature_scalar_prototype_vacuumforge.md).
 It is a scalar prototype obstruction, not a full tensor/covariant theorem.
+
+The follow-up tensor-route audit is
+[higher_curvature_tensor_route_audit_vacuumforge.md](higher_curvature_tensor_route_audit_vacuumforge.md).
+It classifies higher-curvature routes and keeps Lambda baseline work separate
+from local strain residuals.

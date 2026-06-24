@@ -65,6 +65,10 @@ prototype report in
 [02_candidate_branches/higher_curvature_scalar_prototype_vacuumforge.md](02_candidate_branches/higher_curvature_scalar_prototype_vacuumforge.md).
 The prototype blocks controlled `epsilon != 0` for generic higher-derivative
 residuals until boundary, mode, source, and weak-field routes are supplied.
+The follow-up tensor-route audit in
+[02_candidate_branches/higher_curvature_tensor_route_audit_vacuumforge.md](02_candidate_branches/higher_curvature_tensor_route_audit_vacuumforge.md)
+keeps all currently inventoried higher-curvature routes unlicensed as
+controlled residuals.
 
 ## Suggested Subfolders
 
@@ -159,8 +163,9 @@ Immediate task order:
 4. Develop the underdetermination witness.
 5. Maintain candidate branch charters with explicit kill conditions.
 6. Maintain the higher-curvature scalar prototype result.
-7. Run the higher-curvature tensor-route audit.
-8. Only add later scripts for concrete candidate terms or counterexamples.
+7. Maintain the higher-curvature tensor-route audit.
+8. Open the Lambda baseline folder.
+9. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

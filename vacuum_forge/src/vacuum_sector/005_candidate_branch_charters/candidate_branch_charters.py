@@ -67,6 +67,7 @@ ALLOWED_STATUSES = {
     "admissible at epsilon = 0",
     "controlled epsilon != 0 possible",
     "fails accumulated gate",
+    "fails as controlled local higher-curvature residual under current postulate set",
     "underdetermined without new axiom",
     "not yet evaluated",
 }
@@ -170,8 +171,8 @@ BRANCHES = [
         },
         known_risks="scalaron, spin-2 ghost, hidden Yukawa term, fourth-order boundary problem",
         kill_condition="fails if extra modes or weak-field residuals are not explicitly routed",
-        first_concrete_test="SymPy linearized scalar prototype for fourth-order mode emergence",
-        status="not yet evaluated",
+        first_concrete_test="completed by 006 scalar prototype and 007 tensor-route audit",
+        status="fails as controlled local higher-curvature residual under current postulate set",
     ),
     BranchCharter(
         branch_id="metric_affine_extra_connection",
@@ -468,9 +469,11 @@ coverage check, not a proof that any candidate branch passes the gates.
 ## Current Conclusion
 
 The candidate space is now chartered but not live as physics. Only the EH/GHY
-baseline is currently admissible at `epsilon = 0`. Every residual branch remains
-not-yet-evaluated or underdetermined until its first concrete test supplies
-gate evidence.
+baseline is currently admissible at `epsilon = 0`. The higher-curvature local
+residual has now been stress-tested by 006 and 007 and fails as a controlled
+local higher-curvature residual under the current postulate set. Other residual
+branches remain not-yet-evaluated or underdetermined until their first concrete
+tests supply gate evidence.
 
 ## Classification
 
@@ -484,9 +487,8 @@ non-conclusion: no residual branch has passed; no non-GR epsilon has been comput
 The next technical target is the first concrete branch test:
 
 ```text
-start with the higher-curvature local residual scalar prototype, because it is
-the cleanest way to test mode-count, derivative-order, boundary, and weak-field
-failure routes before more exotic X choices.
+open the Lambda baseline folder after the higher-curvature local residual route
+audit.
 ```
 """
     REPORT_PATH.write_text(md, encoding="utf-8")
@@ -528,12 +530,13 @@ def record_archive(ns):
             obligation_id="higher_curvature_scalar_prototype_required_005",
             script_id=SCRIPT_ID,
             title="Run first concrete residual branch test",
-            status=ObligationStatus.OPEN,
+            status=ObligationStatus.SATISFIED,
             required_by=[SCRIPT_ID],
+            satisfied_by=["006_higher_curvature_scalar_prototype__higher_curvature_scalar_prototype"],
             description=(
-                "Begin with the higher-curvature local residual scalar prototype "
-                "to test derivative order, mode emergence, boundary data, and "
-                "weak-field residual routing before more exotic branches."
+                "Satisfied by the higher-curvature scalar prototype and follow-up "
+                "tensor-route audit. The higher-curvature local residual is not "
+                "licensed as controlled epsilon != 0 under the accumulated gate."
             ),
         )
     )
@@ -559,11 +562,11 @@ def main() -> None:
                 mark,
                 f"{branch.status}; first test: {branch.first_concrete_test}",
             )
-    with out.unresolved_obligations():
+    with out.governance_assessments():
         out.line(
-            "higher-curvature scalar prototype required",
-            StatusMark.OBLIGATION,
-            "run the first concrete residual branch test",
+            "higher-curvature scalar prototype satisfied",
+            StatusMark.PASS,
+            "006 scalar prototype and 007 tensor-route audit classify the route",
         )
 
     record_archive(ns)

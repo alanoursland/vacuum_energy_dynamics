@@ -38,7 +38,7 @@ coverage check, not a proof that any candidate branch passes the gates.
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | eh_ghy_baseline | metric data g_ab | Levi-Civita metric transport | R with GHY boundary completion | epsilon = 0 | admissible at epsilon = 0 | fails if used as an ontology selector without a strain-branch selector | record baseline boundary and TT-mode references in the gate ledger |
 | inert_boundary_topological | metric data g_ab unless routed otherwise | Levi-Civita transport unless boundary/topology route differs | total derivatives, Euler/Gauss-Bonnet-like, or boundary-local terms | epsilon = 0 equivalent or boundary-quarantined | not yet evaluated | fails as a residual if it is only a field redefinition or inert boundary term | vary a representative total derivative and classify boundary data |
-| higher_curvature_local | metric data g_ab | Levi-Civita transport | R^2, R_ab R^ab, R_abcd R^abcd, or controlled combinations | controlled epsilon != 0 only if all gates pass | not yet evaluated | fails if extra modes or weak-field residuals are not explicitly routed | SymPy linearized scalar prototype for fourth-order mode emergence |
+| higher_curvature_local | metric data g_ab | Levi-Civita transport | R^2, R_ab R^ab, R_abcd R^abcd, or controlled combinations | controlled epsilon != 0 only if all gates pass | fails as controlled local higher-curvature residual under current postulate set | fails if extra modes or weak-field residuals are not explicitly routed | completed by 006 scalar prototype and 007 tensor-route audit |
 | metric_affine_extra_connection | metric data plus independent connection or transport variable | independent affine comparison rule | curvature, torsion, nonmetricity, or compatibility-enforcing invariant | underdetermined without new axiom | underdetermined without new axiom | fails if independent connection has no physical route or no reduction proof | Palatini-style compatibility check under the vacuum assumptions |
 | holonomy_loop_mismatch | transport or frame data with metric reduction | closed-loop holonomy mismatch | leading scalar built from loop curvature or holonomy norm | not yet evaluated | not yet evaluated | fails if the leading scalar is chosen by taste rather than a mismatch rule | small-loop expansion ledger comparing candidate scalars |
 | finsler_nonquadratic_directional | direction-dependent interval response | direction-dependent comparison or calibration rule | Finsler curvature or nonquadratic strain scalar | underdetermined without new axiom | underdetermined without new axiom | fails if nonquadratic response is used while citing metric-branch closure | directional perturbation prototype with explicit metric Hessian limit |
@@ -121,8 +121,8 @@ matter coupling route: metric stress tensor plus explicit higher-derivative resi
 expected epsilon status: controlled epsilon != 0 only if all gates pass
 known risks: scalaron, spin-2 ghost, hidden Yukawa term, fourth-order boundary problem
 kill condition: fails if extra modes or weak-field residuals are not explicitly routed
-first concrete test: SymPy linearized scalar prototype for fourth-order mode emergence
-status: not yet evaluated
+first concrete test: completed by 006 scalar prototype and 007 tensor-route audit
+status: fails as controlled local higher-curvature residual under current postulate set
 ```
 
 Gate plan:
@@ -291,9 +291,11 @@ Gate plan:
 ## Current Conclusion
 
 The candidate space is now chartered but not live as physics. Only the EH/GHY
-baseline is currently admissible at `epsilon = 0`. Every residual branch remains
-not-yet-evaluated or underdetermined until its first concrete test supplies
-gate evidence.
+baseline is currently admissible at `epsilon = 0`. The higher-curvature local
+residual has now been stress-tested by 006 and 007 and fails as a controlled
+local higher-curvature residual under the current postulate set. Other residual
+branches remain not-yet-evaluated or underdetermined until their first concrete
+tests supply gate evidence.
 
 ## Classification
 
@@ -307,7 +309,6 @@ non-conclusion: no residual branch has passed; no non-GR epsilon has been comput
 The next technical target is the first concrete branch test:
 
 ```text
-start with the higher-curvature local residual scalar prototype, because it is
-the cleanest way to test mode-count, derivative-order, boundary, and weak-field
-failure routes before more exotic X choices.
+open the Lambda baseline folder after the higher-curvature local residual route
+audit.
 ```
