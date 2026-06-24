@@ -16,6 +16,7 @@ vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_4_con
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_5_ansatz_reduction_gate.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_6_field_redefinition_h2.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_7_h2_mismatch_gate.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_8_connection_operator_lock.py
 ```
 
 ## What Must Eventually Be Proved
@@ -123,6 +124,16 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
    `H2.(Rlin + Q)` forces equal coefficients and zero mismatch. This is
    a conditional gate, not a full proof; deriving that same-operator
    condition from gauge/conservation remains open.
+
+   Follow-on status: the eighth forge-checked rung derives the
+   same-operator condition at `H2` order from the first-order connection
+   equation plus the no-independent-connection endpoint. In a split
+   density `A.Rlin + B.Q`, the derivative part of the connection
+   equation is controlled by `A` and the algebraic connection-transport
+   part is controlled by `B`; eliminating the torsion-free connection as
+   one compatible metric-density connection requires `A = B`. Thus the
+   `H2.Rlin - H2.Q` mismatch is excluded. Higher-`H` ansatz reduction
+   remains open.
 
 6. **Retirement decision.**
 

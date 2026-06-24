@@ -29,7 +29,11 @@ vacuum-sector program).
    redefinition, leaving the H2 mismatch as the next target.
    `018_closure_uniqueness/closure_step_7_h2_mismatch_gate.py` proves
    the mismatch vanishes under a same-Palatini-operator condition, but
-   deriving that condition remains open. These do **not** retire the
+   deriving that condition remains open.
+   `018_closure_uniqueness/closure_step_8_connection_operator_lock.py`
+   derives that condition at H2 order from the connection equation and
+   excludes the H2 mismatch under the no-independent-connection endpoint.
+   Higher-H ansatz reduction remains open. These do **not** retire the
    Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.

@@ -209,15 +209,54 @@ to derive the same-operator condition from relabeling gauge consistency
 and universal self-coupling, or directly show that the mismatch violates
 the conservation identity.
 
+The eighth forge script derives that condition at `H2` order from the
+connection equation and the no-independent-connection endpoint:
+
+1. In a split first-order density
+
+   ```text
+   A.Rlin + B.Q
+   ```
+
+   the derivative part of the connection equation is controlled by `A`,
+   while the algebraic connection-transport part is controlled by `B`.
+
+2. A single torsion-free compatible metric-density connection requires
+   one density in both places:
+
+   ```text
+   cR D[H2] + cQ C[H2] = lambda(D[H2] + C[H2])
+   => cR = cQ = lambda
+   ```
+
+3. The pure mismatch gives
+
+   ```text
+   m D[H2] - m C[H2] = lambda(D[H2] + C[H2])
+   => m = lambda = 0
+   ```
+
+4. Equivalently, the split-density residual is
+
+   ```text
+   B - A = -2m H2
+   ```
+
+   which vanishes for arbitrary `H2` only when `m=0`.
+
+This kills the active quadratic mismatch under the already-checked
+connection-elimination/no-extra-field condition. The remaining proof
+debt is now the higher-`H` ansatz-reduction problem for `p >= 3`.
+
 ## Next Rungs
 
-The next useful script should derive the same-operator condition or kill
-the mismatch directly:
+The next useful script should lift the H2 result to the remaining
+higher-`H` tower:
 
-1. Express the deformation's connection equation for the mismatch
-   direction and test whether the total source remains identically
-   conserved.
-2. Show the mismatch requires a different Ricci operator, an independent
-   connection sector, or nonuniversal coupling.
-3. If the direct kill fails, preserve the current status: conditional
-   same-operator gate checked, derivation still open.
+1. Show the same connection-equation operator lock excludes every
+   mismatch direction `Hp.Rlin - Hp.Q` for `p >= 3`.
+2. Show the equal-coefficient directions `Hp.Rlin + Hp.Q` for `p >= 3`
+   are nonlinear metric-density field-redefinition freedom, or state the
+   remaining obstruction exactly.
+3. If both checks pass, collapse the higher-`H` ansatz-reduction lemma
+   to boundary terms, normalization, and the admitted cosmological term.
