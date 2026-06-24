@@ -215,9 +215,39 @@ gate evidence.
 
 This is a charter-ledger result, not a result that any residual branch passes.
 
+The charter handoff:
+
+```text
+higher_curvature_scalar_prototype_required_005
+```
+
+is satisfied by `higher_curvature_scalar_prototype_006`.
+
+## Higher-Curvature Scalar Prototype
+
+The first concrete branch test is now recorded through VacuumForge as:
+
+```text
+derivation: higher_curvature_scalar_prototype_006
+obligation: higher_curvature_tensor_route_audit_required_006
+```
+
+Current conclusion:
+
+```text
+A local higher-derivative residual can keep the same pointwise V_local Hessian
+while changing the Euler-Lagrange derivative order, boundary data, mode
+content, and weak-field pole structure. Therefore the higher-curvature local
+residual branch is not licensed as controlled epsilon != 0 by the scalar
+prototype.
+```
+
+This is a scalar prototype obstruction, not a full tensor/covariant no-go
+theorem.
+
 Next target:
 
 ```text
-run the higher-curvature local residual scalar prototype as the first concrete
-branch test.
+separate inert/topological terms, scalaron-safe f(R)-type routes, and
+spin-2/Weyl-type ghost routes before any higher-curvature residual is reused.
 ```

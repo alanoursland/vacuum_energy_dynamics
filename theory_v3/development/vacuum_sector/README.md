@@ -60,6 +60,12 @@ Only the EH/GHY baseline is currently admissible at `epsilon = 0`; every
 residual branch remains not-yet-evaluated or underdetermined until it supplies
 gate evidence.
 
+Current branch test: the higher-curvature local residual has a scalar
+prototype report in
+[02_candidate_branches/higher_curvature_scalar_prototype_vacuumforge.md](02_candidate_branches/higher_curvature_scalar_prototype_vacuumforge.md).
+The prototype blocks controlled `epsilon != 0` for generic higher-derivative
+residuals until boundary, mode, source, and weak-field routes are supplied.
+
 ## Suggested Subfolders
 
 ```text
@@ -152,9 +158,9 @@ Immediate task order:
 3. Maintain the epsilon residual gate manifest.
 4. Develop the underdetermination witness.
 5. Maintain candidate branch charters with explicit kill conditions.
-6. Run the first concrete branch test: the higher-curvature local residual
-   scalar prototype.
-7. Only add later scripts for concrete candidate terms or counterexamples.
+6. Maintain the higher-curvature scalar prototype result.
+7. Run the higher-curvature tensor-route audit.
+8. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

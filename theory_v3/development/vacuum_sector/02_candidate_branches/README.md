@@ -71,3 +71,7 @@ branch-specific note.
 Use
 [candidate_branch_charters_vacuumforge.md](candidate_branch_charters_vacuumforge.md)
 as the current branch ledger.
+
+The first concrete branch test is
+[higher_curvature_scalar_prototype_vacuumforge.md](higher_curvature_scalar_prototype_vacuumforge.md).
+It is a scalar prototype obstruction, not a full tensor/covariant theorem.

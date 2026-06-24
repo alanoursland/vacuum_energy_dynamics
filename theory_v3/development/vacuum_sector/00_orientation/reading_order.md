@@ -44,6 +44,7 @@ order:
 ../02_candidate_branches/README.md
 ../02_candidate_branches/branch_charter_template.md
 ../02_candidate_branches/candidate_branch_charters_vacuumforge.md
+../02_candidate_branches/higher_curvature_scalar_prototype_vacuumforge.md
 ```
 
 This path makes the intended order explicit:

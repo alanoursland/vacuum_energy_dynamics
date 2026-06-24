@@ -67,3 +67,12 @@ classification until a branch passes or explicitly routes the gates.
 Opens the first candidate branch charters after the residual gate ledger. It
 does not select a strain branch or compute `epsilon`; it records gate plans,
 kill conditions, first tests, and the next proof obligation.
+
+```text
+006_higher_curvature_scalar_prototype/
+```
+
+Runs the first concrete branch test. The scalar prototype shows that a local
+higher-derivative residual can keep the same pointwise `V_local` Hessian while
+introducing fourth-order equations, extra boundary data, and an extra
+weak-field pole. This is not a full tensor theorem.
