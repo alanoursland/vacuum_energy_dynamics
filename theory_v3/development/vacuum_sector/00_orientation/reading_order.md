@@ -33,6 +33,7 @@ order:
 ../01_strain_functional/x_contract.md
 ../01_strain_functional/x_contract_inventory_vacuumforge.md
 ../01_strain_functional/neighboring_mismatch_contract.md
+../01_strain_functional/neighboring_mismatch_inventory_vacuumforge.md
 ../01_strain_functional/strain_branch_admissibility_matrix.md
 ../03_epsilon_tests/README.md
 ../03_epsilon_tests/residual_gate_manifest.md

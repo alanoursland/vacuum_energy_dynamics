@@ -42,3 +42,12 @@ VacuumForge records the derivation, claim, and open obligation boundary.
 Inventories candidate `X` variables after the underdetermination witness. It
 records that non-metric `X` options still require routing or new axioms before
 candidate strain dynamics can be opened.
+
+```text
+003_neighboring_mismatch_inventory/
+```
+
+Inventories candidate rules for comparing `X(p)` and `X(q)` after the X
+contract inventory. It records that non-baseline mismatch rules still require
+routing before candidate strain branches can be opened, and hands off to the
+residual gate ledger.

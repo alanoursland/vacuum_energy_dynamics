@@ -47,6 +47,16 @@ building a scalar/invariant mismatch cost, assigning boundary terms, and
 recovering conservation identities.
 
 ```text
+neighboring_mismatch_inventory_vacuumforge.md
+```
+
+VacuumForge-managed inventory of currently inventoried `X(p)` to `X(q)`
+comparison rules. It records that no currently inventoried non-baseline
+mismatch rule is strain-ready without routing, and that Levi-Civita metric
+transport remains a GR baseline placeholder unless selected by a vacuum
+principle.
+
+```text
 strain_branch_admissibility_matrix.md
 ```
 

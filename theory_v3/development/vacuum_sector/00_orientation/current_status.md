@@ -144,6 +144,29 @@ ontology unless a selector explains why vacuum configuration reduces to g_ab.
 
 This is an inventory result, not a global no-go theorem against non-metric `X`.
 
+## Neighboring-Mismatch Inventory
+
+The candidate `X(p)` to `X(q)` comparison rules are now inventoried through
+VacuumForge as:
+
+```text
+derivation: neighboring_mismatch_inventory_003
+obligation: residual_gate_ledger_required_003
+```
+
+Current conclusion:
+
+```text
+No currently inventoried non-baseline neighboring-mismatch rule is complete
+enough to open candidate strain dynamics without additional routing. The
+Levi-Civita metric transport rule is usable as the GR baseline, but remains a
+metric-transport placeholder for the vacuum ontology unless a selector explains
+why vacuum strain uses that comparison rule.
+```
+
+This is an inventory result, not a global no-go theorem against nonmetric,
+nonlocal, holonomy, Finsler, or medium mismatch rules.
+
 Classification:
 
 ```text
