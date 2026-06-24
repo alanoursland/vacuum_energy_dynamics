@@ -10,3 +10,4 @@
 - [intuition_models/](intuition_models/README.md)
 - [lab_reports/](lab_reports/README.md)
 - [ontology_and_mechanism/](ontology_and_mechanism/README.md)
+- [vacuum_sector/](vacuum_sector/README.md)

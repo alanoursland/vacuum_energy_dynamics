@@ -1,0 +1,69 @@
+# Reading Order
+
+The vacuum-sector work should be read after the GR-branch closure and synthesis
+documents, not as a replacement for them.
+
+## Short Path
+
+For a quick orientation, read:
+
+```text
+../README.md
+../../projection_origin_probe/research_synthesis/00_executive_summary.md
+../../projection_origin_probe/research_synthesis/06_vacuum_ontology_status.md
+../../projection_origin_probe/research_synthesis/07_missing_strain_functional.md
+../../projection_origin_probe/research_synthesis/08_next_research_program.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/README.md
+```
+
+This path gives the central diagnosis:
+
+```text
+local response is substantially constrained;
+strain dynamics is not yet specified.
+```
+
+## Full Frontier Path
+
+For the complete current vacuum-strain frontier, read:
+
+```text
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/proof_chain_plan.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/1_problem_statement.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/2_current_closure_ledger.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/3_local_response_vs_strain_dynamics.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/4_localized_strain_functional.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/5_accumulated_constraints_on_kstrain.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/6_candidate_functional_branches.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/7_epsilon_residual_definition.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/8_field_equation_generation_target.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/9_success_failure_criteria.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/10_next_proof_groups.md
+../../projection_origin_probe/35_vacuum_strain_functional_frontier/11_frontier_conclusion.md
+```
+
+## Paper-Facing Context
+
+For how this vacuum-sector frontier is presented in paper language, read:
+
+```text
+../../../../paper_drafts/01/md/10_where_ved_is_not_gr.md
+../../../../paper_drafts/01/md/11_open_obligations.md
+```
+
+These documents separate rigor debts on the closed gravitational result from
+open vacuum-sector physics such as `Lambda`, dark-sector excess, Casimir/UFFT
+questions, and strong-interior admissibility.
+
+## Do Not Start Here
+
+The following are useful archive material, but they are not the shortest route
+into current vacuum-sector work:
+
+```text
+../../projection_origin_probe/03_regularity_admissibility_ladder/
+../../projection_origin_probe/09_einstein_hilbert_origin_tests/
+../../projection_origin_probe/10_vacuum_action_origin/
+```
+
+Use them when a later technical folder needs provenance for a specific gate.
