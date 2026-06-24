@@ -99,7 +99,14 @@ with roots:
 0, -sqrt(1/epsilon), sqrt(1/epsilon)
 ```
 
-The nonzero roots are the extra mode data that the branch must classify.
+Multiplicity:
+
+```text
+-sqrt(1/epsilon) with multiplicity 1, sqrt(1/epsilon) with multiplicity 1, 0 with multiplicity 2
+```
+
+The double zero root is the baseline second-order branch. The nonzero roots
+are the extra mode data that the branch must classify.
 
 ## Gate Ledger Result
 
@@ -137,6 +144,7 @@ The next technical target is a tensor-route audit for the higher-curvature
 branch:
 
 ```text
-separate inert/topological terms, scalaron-safe f(R)-type routes, and
-spin-2/Weyl-type ghost routes before any higher-curvature residual is reused.
+separate inert/topological terms, scalaron/f(R)-type routes that are
+ghost-safe only after mode routing, and spin-2/Weyl-type ghost routes before
+any higher-curvature residual is reused.
 ```

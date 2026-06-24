@@ -165,7 +165,9 @@ def run_sympy_checks():
         lambda_symbol**2 * (eps * lambda_symbol**2 - 1),
     )
     roots = sp.solve(sp.Eq(characteristic, 0), lambda_symbol)
+    root_multiplicities = sp.roots(characteristic, lambda_symbol)
     require_true("extra characteristic roots present", any(root != 0 for root in roots))
+    require_equal("zero root multiplicity", root_multiplicities[sp.Integer(0)], 2)
 
     return {
         "v_local": v_local,
@@ -181,11 +183,16 @@ def run_sympy_checks():
         "partial_fraction": partial_fraction,
         "characteristic": characteristic,
         "roots": roots,
+        "root_multiplicities": root_multiplicities,
     }
 
 
 def write_report(data):
     roots_text = ", ".join(sp.sstr(root) for root in data["roots"])
+    multiplicity_text = ", ".join(
+        f"{sp.sstr(root)} with multiplicity {multiplicity}"
+        for root, multiplicity in data["root_multiplicities"].items()
+    )
     md = f"""# VacuumForge Higher-Curvature Scalar Prototype
 
 ## Purpose
@@ -287,7 +294,14 @@ with roots:
 {roots_text}
 ```
 
-The nonzero roots are the extra mode data that the branch must classify.
+Multiplicity:
+
+```text
+{multiplicity_text}
+```
+
+The double zero root is the baseline second-order branch. The nonzero roots
+are the extra mode data that the branch must classify.
 
 ## Gate Ledger Result
 
@@ -325,8 +339,9 @@ The next technical target is a tensor-route audit for the higher-curvature
 branch:
 
 ```text
-separate inert/topological terms, scalaron-safe f(R)-type routes, and
-spin-2/Weyl-type ghost routes before any higher-curvature residual is reused.
+separate inert/topological terms, scalaron/f(R)-type routes that are
+ghost-safe only after mode routing, and spin-2/Weyl-type ghost routes before
+any higher-curvature residual is reused.
 ```
 """
     REPORT_PATH.write_text(md, encoding="utf-8")
@@ -388,9 +403,10 @@ def record_archive(ns):
             status=ObligationStatus.OPEN,
             required_by=[SCRIPT_ID],
             description=(
-                "Separate inert/topological terms, scalaron-safe f(R)-type "
-                "routes, and spin-2/Weyl-type ghost routes before any "
-                "higher-curvature residual can be reused as physics."
+                "Separate inert/topological terms, scalaron/f(R)-type routes "
+                "that are ghost-safe only after mode routing, and spin-2/Weyl-type "
+                "ghost routes before any higher-curvature residual can be reused "
+                "as physics."
             ),
         )
     )

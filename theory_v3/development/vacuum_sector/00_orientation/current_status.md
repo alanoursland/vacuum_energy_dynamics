@@ -248,6 +248,7 @@ theorem.
 Next target:
 
 ```text
-separate inert/topological terms, scalaron-safe f(R)-type routes, and
-spin-2/Weyl-type ghost routes before any higher-curvature residual is reused.
+separate inert/topological terms, scalaron/f(R)-type routes that are
+ghost-safe only after mode routing, and spin-2/Weyl-type ghost routes before
+any higher-curvature residual is reused.
 ```
