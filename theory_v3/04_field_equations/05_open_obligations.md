@@ -33,8 +33,11 @@ vacuum-sector program).
    `018_closure_uniqueness/closure_step_8_connection_operator_lock.py`
    derives that condition at H2 order from the connection equation and
    excludes the H2 mismatch under the no-independent-connection endpoint.
-   Higher-H ansatz reduction remains open. These do **not** retire the
-   Deser citation.
+   `018_closure_uniqueness/closure_step_9_higher_h_mismatch_lock.py`
+   extends that connection-equation lock to all higher-H mismatch
+   directions. The remaining derivative target is the equal-coefficient
+   higher-H tower, which must be reduced to field-redefinition freedom.
+   These do **not** retire the Deser citation.
 2. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
    nonlinear stability.
 3. **Metric-branch input audit.** Section 1's K1 step must remain

@@ -17,6 +17,7 @@ vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_5_ans
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_6_field_redefinition_h2.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_7_h2_mismatch_gate.py
 vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_8_connection_operator_lock.py
+vacuum_forge/src/field_equation_trials/018_closure_uniqueness/closure_step_9_higher_h_mismatch_lock.py
 ```
 
 ## What Must Eventually Be Proved
@@ -134,6 +135,15 @@ the spin-2 closure theorem is mathematics, not imported GR as physics.
    one compatible metric-density connection requires `A = B`. Thus the
    `H2.Rlin - H2.Q` mismatch is excluded. Higher-`H` ansatz reduction
    remains open.
+
+   Follow-on status: the ninth forge-checked rung lifts that
+   connection-equation lock to every higher-`H` mismatch direction.
+   Since the `H`-degree grading separates each `H^p` derivative class,
+   the generic solve
+   `cR_p D[Hp] + cQ_p C[Hp] = lambda_p(D[Hp] + C[Hp])` forces
+   `cR_p = cQ_p`, and a pure mismatch `Hp.Rlin - Hp.Q` has zero
+   coefficient for every `p >= 3`. The remaining derivative target is
+   the equal-coefficient tower `Hp.Rlin + Hp.Q` for `p >= 3`.
 
 6. **Retirement decision.**
 

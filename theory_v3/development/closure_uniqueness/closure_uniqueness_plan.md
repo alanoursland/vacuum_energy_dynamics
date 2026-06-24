@@ -248,15 +248,51 @@ This kills the active quadratic mismatch under the already-checked
 connection-elimination/no-extra-field condition. The remaining proof
 debt is now the higher-`H` ansatz-reduction problem for `p >= 3`.
 
+The ninth forge script lifts the mismatch exclusion to all higher
+orders:
+
+1. For any fixed `p >= 3`, the split connection-equation contribution is
+
+   ```text
+   cR_p D[Hp] + cQ_p C[Hp]
+   ```
+
+   and a single compatible metric-density connection requires
+
+   ```text
+   lambda_p(D[Hp] + C[Hp])
+   ```
+
+   so coefficient matching gives `cR_p = cQ_p = lambda_p`.
+
+2. A pure mismatch gives
+
+   ```text
+   m_p(D[Hp] - C[Hp]) = lambda_p(D[Hp] + C[Hp])
+   => m_p = lambda_p = 0
+   ```
+
+3. A finite-tower witness over sample powers verifies that mismatches
+   cannot hide by mixing different `H` degrees; independence of the
+   `H`-degree basis forces each mismatch coefficient separately to zero.
+
+Therefore all non-Palatini split-density mismatch directions
+`H^p.Rlin - H^p.Q` are excluded for `p >= 2`. The remaining derivative
+ansatz-reduction target is the equal-coefficient tower
+`H^p.Rlin + H^p.Q` for `p >= 3`.
+
 ## Next Rungs
 
-The next useful script should lift the H2 result to the remaining
+The next useful script should reduce the remaining equal-coefficient
 higher-`H` tower:
 
-1. Show the same connection-equation operator lock excludes every
-   mismatch direction `Hp.Rlin - Hp.Q` for `p >= 3`.
-2. Show the equal-coefficient directions `Hp.Rlin + Hp.Q` for `p >= 3`
-   are nonlinear metric-density field-redefinition freedom, or state the
-   remaining obstruction exactly.
-3. If both checks pass, collapse the higher-`H` ansatz-reduction lemma
-   to boundary terms, normalization, and the admitted cosmological term.
+1. Show a general nonlinear metric-density variable choice
+   `K = H + sum_{p>=2} a_p H^p` generates
+   `sum_{p>=2} a_p H^p.(Rlin + Q)`.
+2. Verify that every surviving equal-coefficient higher-`H` derivative
+   term is therefore field-redefinition freedom rather than a new
+   closure.
+3. If this succeeds, update the closure status to say the two-derivative
+   higher-`H` ansatz-reduction lemma is discharged, with only Lambda,
+   boundary terms, normalization, and out-of-scope higher-derivative or
+   extra-field theories remaining.

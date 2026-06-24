@@ -6,3 +6,4 @@ closure_step_5_ansatz_reduction_gate.py
 closure_step_6_field_redefinition_h2.py
 closure_step_7_h2_mismatch_gate.py
 closure_step_8_connection_operator_lock.py
+closure_step_9_higher_h_mismatch_lock.py
