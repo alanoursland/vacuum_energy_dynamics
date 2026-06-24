@@ -30,6 +30,15 @@ variable `X`, its transformation law, metric reduction, matter coupling route,
 boundary data, and gauge/physical split.
 
 ```text
+x_contract_inventory_vacuumforge.md
+```
+
+VacuumForge-managed inventory of candidate `X` options. It records that no
+non-metric `X` option is currently complete enough to open candidate strain
+dynamics without extra routing, and that the metric branch remains a baseline
+placeholder unless selected by a vacuum principle.
+
+```text
 neighboring_mismatch_contract.md
 ```
 

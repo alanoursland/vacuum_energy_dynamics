@@ -34,3 +34,11 @@ Validates that the same pointwise `V_local` Hessian can coexist with different
 strain dynamics. This is a scalar prototype existence witness, not a full
 tensor/covariant strain theorem. SymPy supplies the algebraic checks;
 VacuumForge records the derivation, claim, and open obligation boundary.
+
+```text
+002_x_contract_inventory/
+```
+
+Inventories candidate `X` variables after the underdetermination witness. It
+records that non-metric `X` options still require routing or new axioms before
+candidate strain dynamics can be opened.

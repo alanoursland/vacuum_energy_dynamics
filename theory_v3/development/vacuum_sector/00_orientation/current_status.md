@@ -124,6 +124,24 @@ claim: local_response_only_selector_underdetermined_001
 obligation: strain_branch_selector_required_001
 ```
 
+## X Contract Inventory
+
+The candidate `X` options are now inventoried through VacuumForge as:
+
+```text
+derivation: x_contract_inventory_002
+obligation: neighboring_mismatch_contract_required_002
+```
+
+Current conclusion:
+
+```text
+No non-metric X option is complete enough to open candidate strain dynamics
+without additional routing. The metric-data branch is usable as the GR baseline
+but remains a metric-only placeholder for the vacuum ontology unless a selector
+explains why vacuum configuration reduces to g_ab.
+```
+
 Classification:
 
 ```text

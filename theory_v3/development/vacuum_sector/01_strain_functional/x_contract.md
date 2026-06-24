@@ -5,6 +5,19 @@ This document defines the minimum interface a vacuum configuration variable
 
 It is a contract, not a choice of final theory.
 
+Current managed inventory:
+
+```text
+x_contract_inventory_vacuumforge.md
+```
+
+That inventory classifies the known `X` options as contract states. Its current
+conclusion is that no non-metric `X` option is complete enough to open
+candidate strain dynamics without additional routing. The metric-data branch is
+usable as the GR baseline but remains a metric-only placeholder for the vacuum
+ontology unless a selector explains why vacuum configuration reduces to
+`g_ab`.
+
 ## Required Questions
 
 Any candidate branch must answer:
@@ -104,4 +117,38 @@ extra-field route required
 underdetermined without new axiom
 fails accumulated gate
 not yet evaluated
+```
+
+## Current Inventory Summary
+
+```text
+metric data g_ab:
+  status: metric-only placeholder
+  burden: explain why vacuum ontology chooses metric data as X
+
+interval-response data Q_p(v):
+  status: partial contract
+  burden: supply neighboring mismatch rule across points
+
+frame/coframe data:
+  status: extra-field route required
+  burden: route torsion/spin/frame observables and hidden preferred-frame risk
+
+connection/transport data:
+  status: extra-field route required
+  burden: derive metric compatibility or route nonmetric/torsion residuals
+
+internal medium data:
+  status: underdetermined without new axiom
+  burden: state constitutive law and route modes, anisotropy, and frame effects
+
+deeper premetric variable:
+  status: underdetermined without new axiom
+  burden: define X before strain dynamics can be evaluated
+```
+
+Next target:
+
+```text
+complete the neighboring-mismatch contract.
 ```
