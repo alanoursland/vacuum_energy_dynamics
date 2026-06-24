@@ -167,12 +167,57 @@ why vacuum strain uses that comparison rule.
 This is an inventory result, not a global no-go theorem against nonmetric,
 nonlocal, holonomy, Finsler, or medium mismatch rules.
 
+## Residual Gate Ledger
+
+The residual tests are now recorded through VacuumForge as:
+
+```text
+derivation: residual_gate_ledger_004
+obligation: candidate_branch_charters_required_004
+```
+
+Current conclusion:
+
+```text
+No candidate residual is currently licensed as controlled epsilon != 0.
+Candidate branches may be chartered only as not-yet-evaluated or
+underdetermined until they provide gate evidence.
+```
+
+This is a gate-ledger result, not a no-go theorem against residuals.
+
 Classification:
 
 ```text
-result type: contract-level no-selector / underdetermination witness
-scope: local-response-only ontology
-validated by: scalar symbolic prototype + VacuumForge governance record
-conclusion: a between-point strain principle or accumulated-gate selector is required
-non-conclusion: no physical residual has been found; epsilon is not computed
+result type: residual gate ledger / governance classification
+scope: required tests for K_residual candidates
+conclusion: controlled epsilon != 0 is unavailable until gates pass or route
+non-conclusion: no residual tested; no residual killed; no epsilon computed
+```
+
+## Candidate Branch Charters
+
+The starting candidate branch set is now chartered through VacuumForge as:
+
+```text
+derivation: candidate_branch_charters_005
+obligation: higher_curvature_scalar_prototype_required_005
+```
+
+Current conclusion:
+
+```text
+The candidate space is chartered but not live as physics. Only the EH/GHY
+baseline is currently admissible at epsilon = 0. Every residual branch remains
+not-yet-evaluated or underdetermined until its first concrete test supplies
+gate evidence.
+```
+
+This is a charter-ledger result, not a result that any residual branch passes.
+
+Next target:
+
+```text
+run the higher-curvature local residual scalar prototype as the first concrete
+branch test.
 ```

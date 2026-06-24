@@ -51,3 +51,19 @@ Inventories candidate rules for comparing `X(p)` and `X(q)` after the X
 contract inventory. It records that non-baseline mismatch rules still require
 routing before candidate strain branches can be opened, and hands off to the
 residual gate ledger.
+
+```text
+004_residual_gate_ledger/
+```
+
+Records required residual tests after the neighboring-mismatch inventory. It
+does not test a candidate residual; it blocks `controlled epsilon != 0`
+classification until a branch passes or explicitly routes the gates.
+
+```text
+005_candidate_branch_charters/
+```
+
+Opens the first candidate branch charters after the residual gate ledger. It
+does not select a strain branch or compute `epsilon`; it records gate plans,
+kill conditions, first tests, and the next proof obligation.

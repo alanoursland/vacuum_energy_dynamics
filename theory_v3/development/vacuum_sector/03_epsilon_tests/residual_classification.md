@@ -71,3 +71,23 @@ a mode-count route;
 a weak-field residual result;
 a kill condition.
 ```
+
+Current managed ledger:
+
+```text
+residual_gate_ledger_vacuumforge.md
+```
+
+Current classification constraint:
+
+```text
+controlled epsilon != 0 is unavailable until gates pass or explicitly route.
+```
+
+Non-conclusion:
+
+```text
+no residual has been tested;
+no residual has been killed;
+no epsilon has been computed.
+```

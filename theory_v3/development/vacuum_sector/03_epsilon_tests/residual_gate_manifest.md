@@ -3,6 +3,17 @@
 Every candidate residual must be tested against this manifest before it is
 treated as physically live.
 
+Current managed ledger:
+
+```text
+residual_gate_ledger_vacuumforge.md
+```
+
+That ledger records the required evidence, fail route, and blocked failure mode
+for each gate. Its current conclusion is that no candidate residual is
+currently licensed as controlled `epsilon != 0`. This is a gate-ledger result,
+not a no-go theorem against residuals.
+
 ## Tests
 
 ```text
@@ -75,3 +86,49 @@ not yet evaluated
 
 A residual that fails a gate is not dead if it has an explicit route. But an
 unrouted failure cannot be treated as a valid vacuum-sector residual.
+
+## Current Gate-Ledger Summary
+
+```text
+metric_limit_test:
+  evidence: local-response expansion and metric-reduction map
+  blocks: hidden change to closed metric response
+
+nonquadratic_routing_test:
+  evidence: explicit nonquadratic variable, coupling route, and observable suppression or channel
+  blocks: untracked null-cone or calibration drift
+
+diffeomorphism_identity_test:
+  evidence: Noether/Bianchi-style identity or explicit symmetry-breaking route
+  blocks: unconserved source or coordinate-label dependence
+
+boundary_variation_test:
+  evidence: total derivative accounting and boundary data/counterterm
+  blocks: uncontrolled boundary equations or hidden boundary source
+
+mode_count_test:
+  evidence: linearized mode count around Minkowski or GR background
+  blocks: hidden scalaron, vector, ghost, or medium mode
+
+hyperbolicity_test:
+  evidence: principal-symbol or propagation-speed check
+  blocks: wrong causal cone or ill-posed evolution
+
+source_ledger_test:
+  evidence: source-role purity ledger
+  blocks: source duplication and hidden dark-sector insertion
+
+weak_field_residual_test:
+  evidence: weak-field expansion or observational residual map
+  blocks: unnoticed conflict with closed weak-field sector
+
+epsilon_classification_test:
+  evidence: results from all earlier gates plus kill condition
+  blocks: free-knob epsilon language
+```
+
+Next target:
+
+```text
+open candidate branch charters only with explicit kill conditions and gate plans.
+```

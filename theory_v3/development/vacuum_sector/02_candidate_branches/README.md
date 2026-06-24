@@ -5,6 +5,15 @@ gate manifest exist.
 
 Candidate branches are a constrained test set, not a loose menu.
 
+Current managed ledger:
+
+```text
+candidate_branch_charters_vacuumforge.md
+```
+
+This ledger opens the first branch charters only as gate-planned candidates.
+It does not license a non-GR residual or compute `epsilon`.
+
 ## Required Before A Branch Is Live
 
 Each branch must have:
@@ -58,3 +67,7 @@ local gravitational equations.
 
 Use [branch_charter_template.md](branch_charter_template.md) before adding a
 branch-specific note.
+
+Use
+[candidate_branch_charters_vacuumforge.md](candidate_branch_charters_vacuumforge.md)
+as the current branch ledger.

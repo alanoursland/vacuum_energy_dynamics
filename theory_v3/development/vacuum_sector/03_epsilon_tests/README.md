@@ -31,6 +31,15 @@ residual_gate_manifest.md
 The required tests for candidate residuals.
 
 ```text
+residual_gate_ledger_vacuumforge.md
+```
+
+VacuumForge-managed gate ledger. It records that no candidate residual is
+currently licensed as controlled `epsilon != 0`; candidate branches may only be
+chartered as not-yet-evaluated or underdetermined until they provide gate
+evidence.
+
+```text
 residual_classification.md
 ```
 

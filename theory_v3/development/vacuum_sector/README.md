@@ -54,6 +54,12 @@ independent strain-branch selector.
 This result does not compute `epsilon` and does not establish a non-GR
 residual. It only rules out local-response-only selection of `K_strain`.
 
+Current branch status: the first candidate branch charters are open in
+[02_candidate_branches/candidate_branch_charters_vacuumforge.md](02_candidate_branches/candidate_branch_charters_vacuumforge.md).
+Only the EH/GHY baseline is currently admissible at `epsilon = 0`; every
+residual branch remains not-yet-evaluated or underdetermined until it supplies
+gate evidence.
+
 ## Suggested Subfolders
 
 ```text
@@ -145,8 +151,10 @@ Immediate task order:
 2. Complete the X contract and neighboring-mismatch contract.
 3. Maintain the epsilon residual gate manifest.
 4. Develop the underdetermination witness.
-5. Only then open candidate branch charters.
-6. Only add scripts for concrete candidate terms or counterexamples.
+5. Maintain candidate branch charters with explicit kill conditions.
+6. Run the first concrete branch test: the higher-curvature local residual
+   scalar prototype.
+7. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

@@ -37,17 +37,19 @@ order:
 ../01_strain_functional/strain_branch_admissibility_matrix.md
 ../03_epsilon_tests/README.md
 ../03_epsilon_tests/residual_gate_manifest.md
+../03_epsilon_tests/residual_gate_ledger_vacuumforge.md
 ../03_epsilon_tests/residual_classification.md
 ../01_strain_functional/underdetermination_witness.md
 ../01_strain_functional/underdetermination_witness_vacuumforge.md
 ../02_candidate_branches/README.md
 ../02_candidate_branches/branch_charter_template.md
+../02_candidate_branches/candidate_branch_charters_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters.
+contracts -> gates -> underdetermination witness -> candidate charters -> first branch test.
 ```
 
 ## Full Frontier Path
