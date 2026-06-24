@@ -46,12 +46,17 @@ order:
 ../02_candidate_branches/candidate_branch_charters_vacuumforge.md
 ../02_candidate_branches/higher_curvature_scalar_prototype_vacuumforge.md
 ../02_candidate_branches/higher_curvature_tensor_route_audit_vacuumforge.md
+../04_lambda_baseline/README.md
+../04_lambda_baseline/lambda_baseline_contract.md
+../04_lambda_baseline/lambda_baseline_inventory_vacuumforge.md
+../04_lambda_baseline/lambda_baseline_selector_charter.md
+../04_lambda_baseline/lambda_baseline_selector_charter_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> first branch test.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter.
 ```
 
 ## Full Frontier Path

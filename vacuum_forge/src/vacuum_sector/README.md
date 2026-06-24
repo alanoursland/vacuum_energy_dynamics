@@ -85,3 +85,21 @@ Classifies higher-curvature residual routes after the scalar prototype. It
 separates inert/topological terms, scalaron/f(R)-type routes, spin-2/Weyl-type
 ghost routes, and generic mixed curvature-squared terms. It imports prior
 G20/E3 route context rather than rederiving the full tensor closure.
+
+```text
+008_lambda_baseline_inventory/
+```
+
+Opens the Lambda baseline workstream after local higher-curvature residual
+routes fail or quarantine. It records that nonzero `Lambda` is allowed but not
+valued by local strain residual work, and that any derived vacuum floor needs a
+baseline selector.
+
+```text
+009_lambda_baseline_selector_charter/
+```
+
+Charters candidate Lambda baseline selectors after the baseline inventory. It
+records required boundary data, sign/value mechanism, source ledger,
+local-equation quarantine, falsifier, and first test for each candidate, but
+does not adopt a selector or derive nonzero `Lambda`.

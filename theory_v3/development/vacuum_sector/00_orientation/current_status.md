@@ -208,9 +208,10 @@ Current conclusion:
 
 ```text
 The candidate space is chartered but not live as physics. Only the EH/GHY
-baseline is currently admissible at epsilon = 0. Every residual branch remains
-not-yet-evaluated or underdetermined until its first concrete test supplies
-gate evidence.
+baseline is currently admissible at epsilon = 0. The higher-curvature local
+residual has failed as a controlled local residual under the current postulate
+set. Other residual branches remain not-yet-evaluated or underdetermined until
+their first concrete tests supply gate evidence.
 ```
 
 This is a charter-ledger result, not a result that any residual branch passes.
@@ -280,4 +281,60 @@ Next target:
 ```text
 open the Lambda baseline folder and keep baseline-selection questions separate
 from local higher-curvature strain residuals.
+```
+
+## Lambda Baseline Inventory
+
+The Lambda baseline workstream is now recorded through VacuumForge as:
+
+```text
+derivation: lambda_baseline_inventory_008
+obligation: lambda_baseline_selector_required_008
+```
+
+Current conclusion:
+
+```text
+Lambda = 0 is the asymptotically flat scalar boundary-flux sector when no
+nonzero background curvature is supplied. Nonzero Lambda is allowed by the
+EH/Lovelock branch but remains unvalued. A derived nonzero vacuum floor
+requires a selector: variational, admissibility, topology, measure, or
+relaxation.
+```
+
+This is a baseline inventory, not a derivation of the observed cosmological
+constant and not a dark-sector excess license.
+
+Next target:
+
+```text
+state candidate Lambda baseline selectors and kill conditions before any
+nonzero Lambda mechanism is used.
+```
+
+## Lambda Baseline Selector Charter
+
+The candidate Lambda baseline selectors are now chartered through VacuumForge
+as:
+
+```text
+derivation: lambda_baseline_selector_charter_009
+obligation: lambda_selector_sieve_required_009
+```
+
+Current conclusion:
+
+```text
+The Lambda selector space is chartered, but no selector is adopted. Candidate
+rows now state boundary data, sign/value mechanism, source ledger,
+local-equation quarantine, falsifier, and first concrete test.
+```
+
+This is a selector charter, not a derivation of nonzero `Lambda`, not an
+observed-value insertion, and not a dark-sector excess license.
+
+Next target:
+
+```text
+apply the selector sieve before opening any specific nonzero Lambda mechanism.
 ```

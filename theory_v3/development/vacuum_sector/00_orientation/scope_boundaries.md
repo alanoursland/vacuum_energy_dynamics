@@ -85,6 +85,16 @@ First files:
 
 Vacuum-baseline and relaxation work for `Lambda`.
 
+First files:
+
+```text
+../04_lambda_baseline/README.md
+../04_lambda_baseline/lambda_baseline_contract.md
+../04_lambda_baseline/lambda_baseline_inventory_vacuumforge.md
+../04_lambda_baseline/lambda_baseline_selector_charter.md
+../04_lambda_baseline/lambda_baseline_selector_charter_vacuumforge.md
+```
+
 ```text
 05_dark_sector/
 ```

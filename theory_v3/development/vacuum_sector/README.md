@@ -56,9 +56,10 @@ residual. It only rules out local-response-only selection of `K_strain`.
 
 Current branch status: the first candidate branch charters are open in
 [02_candidate_branches/candidate_branch_charters_vacuumforge.md](02_candidate_branches/candidate_branch_charters_vacuumforge.md).
-Only the EH/GHY baseline is currently admissible at `epsilon = 0`; every
-residual branch remains not-yet-evaluated or underdetermined until it supplies
-gate evidence.
+Only the EH/GHY baseline is currently admissible at `epsilon = 0`. The
+higher-curvature local residual has failed as a controlled local residual under
+the current postulate set; other residual branches remain not-yet-evaluated or
+underdetermined until they supply gate evidence.
 
 Current branch test: the higher-curvature local residual has a scalar
 prototype report in
@@ -69,6 +70,13 @@ The follow-up tensor-route audit in
 [02_candidate_branches/higher_curvature_tensor_route_audit_vacuumforge.md](02_candidate_branches/higher_curvature_tensor_route_audit_vacuumforge.md)
 keeps all currently inventoried higher-curvature routes unlicensed as
 controlled residuals.
+
+Current baseline work: [04_lambda_baseline/README.md](04_lambda_baseline/README.md)
+opens the Lambda baseline ledger. Nonzero `Lambda` is allowed but not valued by
+the local residual analysis; a derived vacuum floor requires a selector. The
+selector charter in
+[04_lambda_baseline/lambda_baseline_selector_charter.md](04_lambda_baseline/lambda_baseline_selector_charter.md)
+records candidate selector rows without adopting any of them.
 
 ## Suggested Subfolders
 
@@ -119,6 +127,8 @@ Current entry point: [03_epsilon_tests/README.md](03_epsilon_tests/README.md)
 Work on whether nonzero `Lambda` is fixed, relaxed, or selected by a vacuum
 baseline principle. This should stay separate from local connection strain.
 
+Current entry point: [04_lambda_baseline/README.md](04_lambda_baseline/README.md)
+
 ```text
 05_dark_sector/
 ```
@@ -164,8 +174,10 @@ Immediate task order:
 5. Maintain candidate branch charters with explicit kill conditions.
 6. Maintain the higher-curvature scalar prototype result.
 7. Maintain the higher-curvature tensor-route audit.
-8. Open the Lambda baseline folder.
-9. Only add later scripts for concrete candidate terms or counterexamples.
+8. Maintain the Lambda baseline inventory.
+9. Maintain candidate Lambda baseline selectors and kill conditions.
+10. Apply the Lambda selector sieve.
+11. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:
