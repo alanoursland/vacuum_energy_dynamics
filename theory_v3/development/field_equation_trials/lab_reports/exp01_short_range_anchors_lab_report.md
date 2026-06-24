@@ -209,6 +209,3 @@ trial A status: OPEN; Layer-2 pressure-to-Yukawa conversion pending
    parameters; record excluded and surviving regions.
 3. Preserve `src_exp/external_data/` as the received-source/provenance folder
    for the Lee and Tan files.
-4. For external Lee/Tan communication, use the short $\alpha=1/3$ and
-   $\sim30\,\mu$m motivation paragraph rather than sending this full
-   governance report.
