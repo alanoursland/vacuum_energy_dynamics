@@ -45,6 +45,12 @@ The vacuum-sector question is whether the accumulated gates force
 `epsilon = 0`, permit a controlled `epsilon != 0`, or show that an additional
 strain axiom is required.
 
+Current first result: local interval response alone does not choose
+`K_strain`. It reconstructs pointwise metric data under the quadratic gate, but
+it does not determine between-point strain dynamics. The local-response-only
+selector is therefore classified as underdetermined without a new axiom or
+independent strain-branch selector.
+
 ## Suggested Subfolders
 
 ```text

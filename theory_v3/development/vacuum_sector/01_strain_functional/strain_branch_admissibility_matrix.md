@@ -58,6 +58,22 @@ The following rows are placeholders. They should be completed only when the
 branch has a contract and a test plan.
 
 ```text
+branch: local-response-only selector
+X variable: interval-response data Q_p(v), reducing pointwise to g_ab when quadratic
+neighboring mismatch rule: absent
+candidate invariant/scalar: V_local only
+boundary term: absent
+metric-limit status: reconstructs pointwise metric data when quadratic
+diffeomorphism/relabeling status: not enough information
+mode count: not determined
+hyperbolicity status: not determined
+source-ledger status: not determined
+epsilon status: underdetermined without new axiom
+kill condition: treats pointwise metric reconstruction as transport, curvature action, boundary variation, mode content, or epsilon classification
+next test: supply a between-point strain principle or prove accumulated gates force EH/GHY
+```
+
+```text
 branch: EH/GHY baseline
 X variable: metric data g_ab
 neighboring mismatch rule: Levi-Civita curvature branch

@@ -48,8 +48,31 @@ gates.
 underdetermination_witness.md
 ```
 
-A first theorem-shaped target: show that local interval response does not by
-itself choose strain dynamics.
+A first theorem-shaped result: local interval response does not by itself
+choose strain dynamics. The local-response-only selector is classified as
+underdetermined without a new axiom or independent strain-branch selector.
+
+```text
+make_underdetermination_witness_sympy.py
+```
+
+SymPy generator for the scalar prototype witness.
+
+```text
+underdetermination_witness_sympy.md
+```
+
+Generated report showing that two prototype functionals can share the same
+local Hessian while differing in Euler-Lagrange equation, derivative order, and
+boundary data.
+
+```text
+underdetermination_witness_vacuumforge.md
+```
+
+VacuumForge-managed report for the same witness. It records the derivation,
+claim, and open obligation boundary so later vacuum-sector proof scripts can
+depend on the result.
 
 ## Working Rule
 
