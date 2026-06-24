@@ -85,11 +85,15 @@ is permitted, or whether a new strain axiom is required.
 
 ## Practical Next Step
 
-The next useful work is not another derivation of GR from the GR action. It is
-one of:
+The next useful work is not another derivation of GR from the GR action. The
+first deliverable is the branch-admissibility framework:
 
 ```text
-define K_strain from vacuum principles;
-test a concrete K_residual;
-prove the current ontology underdetermines K_strain.
+complete the X contract;
+complete the neighboring-mismatch contract;
+maintain the strain branch admissibility matrix;
+maintain the residual gate manifest;
+develop the underdetermination witness.
 ```
+
+Only after that should candidate branch charters be treated as live physics.

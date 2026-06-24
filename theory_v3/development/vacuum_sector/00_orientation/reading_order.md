@@ -23,6 +23,30 @@ local response is substantially constrained;
 strain dynamics is not yet specified.
 ```
 
+## Vacuum-Sector Work Path
+
+After the short path, read the new branch-admissibility framework in this
+order:
+
+```text
+../01_strain_functional/README.md
+../01_strain_functional/x_contract.md
+../01_strain_functional/neighboring_mismatch_contract.md
+../01_strain_functional/strain_branch_admissibility_matrix.md
+../03_epsilon_tests/README.md
+../03_epsilon_tests/residual_gate_manifest.md
+../03_epsilon_tests/residual_classification.md
+../01_strain_functional/underdetermination_witness.md
+../02_candidate_branches/README.md
+../02_candidate_branches/branch_charter_template.md
+```
+
+This path makes the intended order explicit:
+
+```text
+contracts -> gates -> underdetermination witness -> candidate charters.
+```
+
 ## Full Frontier Path
 
 For the complete current vacuum-strain frontier, read:

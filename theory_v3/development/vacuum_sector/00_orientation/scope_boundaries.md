@@ -43,6 +43,15 @@ Use this routing unless a later README supersedes it:
 Definitions and axioms for `X`, neighboring mismatch, local invariants, and
 the candidate form of `K_strain`.
 
+First files:
+
+```text
+../01_strain_functional/x_contract.md
+../01_strain_functional/neighboring_mismatch_contract.md
+../01_strain_functional/strain_branch_admissibility_matrix.md
+../01_strain_functional/underdetermination_witness.md
+```
+
 ```text
 02_candidate_branches/
 ```
@@ -51,11 +60,24 @@ Named functional branches: minimal calibration-coherent strain, holonomy
 mismatch energy, elastic/medium strain, Finsler/nonquadratic residuals, and
 nonlocal relaxation.
 
+First file:
+
+```text
+../02_candidate_branches/branch_charter_template.md
+```
+
 ```text
 03_epsilon_tests/
 ```
 
 Symbolic checks and counterexamples for candidate residuals.
+
+First files:
+
+```text
+../03_epsilon_tests/residual_gate_manifest.md
+../03_epsilon_tests/residual_classification.md
+```
 
 ```text
 04_lambda_baseline/
