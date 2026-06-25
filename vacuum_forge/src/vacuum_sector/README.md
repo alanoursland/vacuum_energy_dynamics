@@ -103,3 +103,21 @@ Charters candidate Lambda baseline selectors after the baseline inventory. It
 records required boundary data, sign/value mechanism, source ledger,
 local-equation quarantine, falsifier, and first test for each candidate, but
 does not adopt a selector or derive nonzero `Lambda`.
+
+```text
+010_lambda_selector_sieve/
+```
+
+Applies the first evidence sieve to the chartered Lambda selector rows. It
+records that no selector is mechanism-ready until an explicit selector object,
+boundary instantiation, sign/value derivation, source conservation,
+local-equation quarantine, and operational falsifier are supplied.
+
+```text
+011_lambda_variational_minimum_probe/
+```
+
+Tests the lowest-structure Lambda selector route: a variational minimum over
+`Lambda`. It records that bare stationarity leaves `Lambda` free, selects
+`Lambda = 0`, or produces a nonzero value only by importing a bias, target, or
+new scale.

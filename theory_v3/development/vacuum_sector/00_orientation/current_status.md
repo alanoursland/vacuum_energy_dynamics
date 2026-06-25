@@ -338,3 +338,61 @@ Next target:
 ```text
 apply the selector sieve before opening any specific nonzero Lambda mechanism.
 ```
+
+## Lambda Selector Sieve
+
+The first Lambda selector sieve is now recorded through VacuumForge as:
+
+```text
+derivation: lambda_selector_sieve_010
+obligation: lambda_variational_minimum_probe_required_010
+```
+
+Current conclusion:
+
+```text
+No chartered Lambda selector currently passes the first evidence sieve. Each
+row still lacks an instantiated selector object plus the evidence needed for
+boundary instantiation, sign/value derivation, source conservation,
+local-equation quarantine, and an operational falsifier.
+```
+
+This is not a global no-go theorem against nonzero `Lambda`; it is a
+mechanism-readiness check.
+
+Next target:
+
+```text
+test the variational-minimum selector first, because it is the lowest
+additional-structure route to an explicit selector object.
+```
+
+## Lambda Variational-Minimum Probe
+
+The variational-minimum selector is now probed through VacuumForge as:
+
+```text
+derivation: lambda_variational_minimum_probe_011
+obligation: lambda_boundary_admissibility_probe_required_011
+```
+
+Current conclusion:
+
+```text
+A bare selector functional F(Lambda) does not derive a nonzero baseline.
+It leaves Lambda free, selects Lambda = 0 for the no-scale convex case, has no
+interior stationary point for a lone linear bias on an unconstrained continuous
+domain, or produces a nonzero value only by importing a bias, target, boundary
+class, or new scale.
+```
+
+This is not a no-go theorem against nonzero `Lambda`; it blocks only the empty
+variational-minimum route. It is also not a variation of the full EH action
+with respect to `Lambda`.
+
+Next target:
+
+```text
+test whether boundary/admissibility data can supply the missing nonzero scale
+without observed-value insertion or local-equation modification.
+```

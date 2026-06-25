@@ -17,6 +17,10 @@ G_ab + Lambda g_ab = (8*pi*G/c^4) T_ab.
 lambda_baseline_inventory_vacuumforge.md
 lambda_baseline_selector_charter.md
 lambda_baseline_selector_charter_vacuumforge.md
+lambda_selector_sieve.md
+lambda_selector_sieve_vacuumforge.md
+lambda_variational_minimum_probe.md
+lambda_variational_minimum_probe_vacuumforge.md
 ```
 
 The ledger records that:
@@ -71,11 +75,27 @@ No candidate mechanism should be used until it states its boundary data,
 sign/value mechanism, source ledger, relation to the closed local metric
 equations, and falsifier.
 
+## Selector Sieve
+
+The first selector sieve records that no chartered row is mechanism-ready yet.
+Each row still lacks an instantiated selector object and the evidence needed to
+derive sign/value, prove source conservation, quarantine local equations, and
+operate a falsifier.
+
+## Variational-Minimum Probe
+
+The variational-minimum probe tests whether bare stationarity over `Lambda`
+selects a nonzero baseline. It does not. With the current inputs, the route
+leaves `Lambda` free, selects `Lambda = 0`, or produces a nonzero value only by
+importing a bias, target, boundary class, or new scale. This probe tests
+selector functionals `F(Lambda)`, not variation of the full EH action with
+respect to `Lambda`.
+
 ## Next Work
 
-The next deliverable is a selector sieve:
+The next deliverable is a boundary/admissibility probe:
 
 ```text
-which chartered selector rows survive boundary-data, sign/value,
-source-ledger, local-equation quarantine, and falsifier checks?
+can explicit boundary data select a nonzero baseline without observed-value
+insertion or local-equation modification?
 ```

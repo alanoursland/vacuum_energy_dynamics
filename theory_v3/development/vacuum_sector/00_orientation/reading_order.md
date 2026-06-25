@@ -51,12 +51,16 @@ order:
 ../04_lambda_baseline/lambda_baseline_inventory_vacuumforge.md
 ../04_lambda_baseline/lambda_baseline_selector_charter.md
 ../04_lambda_baseline/lambda_baseline_selector_charter_vacuumforge.md
+../04_lambda_baseline/lambda_selector_sieve.md
+../04_lambda_baseline/lambda_selector_sieve_vacuumforge.md
+../04_lambda_baseline/lambda_variational_minimum_probe.md
+../04_lambda_baseline/lambda_variational_minimum_probe_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe.
 ```
 
 ## Full Frontier Path

@@ -76,7 +76,13 @@ opens the Lambda baseline ledger. Nonzero `Lambda` is allowed but not valued by
 the local residual analysis; a derived vacuum floor requires a selector. The
 selector charter in
 [04_lambda_baseline/lambda_baseline_selector_charter.md](04_lambda_baseline/lambda_baseline_selector_charter.md)
-records candidate selector rows without adopting any of them.
+records candidate selector rows without adopting any of them. The selector
+sieve in
+[04_lambda_baseline/lambda_selector_sieve.md](04_lambda_baseline/lambda_selector_sieve.md)
+keeps all rows mechanism-blocked until an explicit selector object is supplied.
+The variational-minimum probe in
+[04_lambda_baseline/lambda_variational_minimum_probe.md](04_lambda_baseline/lambda_variational_minimum_probe.md)
+shows that bare stationarity over `Lambda` does not derive a nonzero baseline.
 
 ## Suggested Subfolders
 
@@ -177,7 +183,9 @@ Immediate task order:
 8. Maintain the Lambda baseline inventory.
 9. Maintain candidate Lambda baseline selectors and kill conditions.
 10. Apply the Lambda selector sieve.
-11. Only add later scripts for concrete candidate terms or counterexamples.
+11. Test the variational-minimum Lambda selector.
+12. Test the boundary/admissibility Lambda selector.
+13. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:
