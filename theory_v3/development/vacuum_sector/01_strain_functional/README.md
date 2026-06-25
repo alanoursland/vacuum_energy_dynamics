@@ -93,6 +93,27 @@ VacuumForge-managed report for the same witness. It records the derivation,
 claim, and open obligation boundary so later vacuum-sector proof scripts can
 depend on the result.
 
+```text
+strain_branch_selector_decision_table.md
+strain_branch_selector_decision_table_vacuumforge.md
+```
+
+Decision table for possible strain-branch selectors after the first
+vacuum-sector program checkpoint. It records that the accumulated-gate route
+licenses only the EH/GHY baseline at `epsilon = 0`, while any disciplined
+nonbaseline route requires an explicit new strain axiom before mechanisms are
+used.
+
+```text
+minimal_strain_axiom_contract.md
+minimal_strain_axiom_contract_vacuumforge.md
+```
+
+Contract for any future nonbaseline strain axiom. It states the required
+fields for `X`, metric response, neighboring mismatch, `K_strain`, boundary
+variation, conservation, mode routing, epsilon classification, and falsifier.
+It rejects post-hoc axioms chosen to rescue side-ledger mechanisms.
+
 ## Working Rule
 
 This folder may define contracts, ledgers, and admissibility criteria. It should

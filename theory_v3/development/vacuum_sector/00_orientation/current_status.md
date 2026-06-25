@@ -955,3 +955,62 @@ Next target:
 ```text
 return to the central strain-branch selector question.
 ```
+
+## Strain-Branch Selector Decision Table
+
+The selector decision table is now recorded through VacuumForge as:
+
+```text
+derivation: strain_branch_selector_decision_table_030
+obligation: minimal_strain_axiom_contract_required_030
+```
+
+Current conclusion:
+
+```text
+The program has two disciplined choices: treat accumulated gates as the
+operational selector and stay at epsilon = 0, or adopt an explicit new strain
+axiom before any nonbaseline mechanism is used.
+```
+
+Side ledgers cannot select `K_strain` retroactively. Lambda, dark excess,
+non-gravitational channels, substance-frame observables, interior caps, and
+topology/global constraints may constrain later work only after a strain
+selector exists.
+
+Next target:
+
+```text
+write the minimal strain axiom contract.
+```
+
+## Minimal Strain Axiom Contract
+
+The minimal axiom contract is now recorded through VacuumForge as:
+
+```text
+derivation: minimal_strain_axiom_contract_031
+obligation: strain_axiom_candidate_sieve_required_031
+```
+
+Current conclusion:
+
+```text
+No new strain axiom is adopted. The contract states what a future axiom must
+provide before it can license nonbaseline vacuum-sector physics.
+```
+
+The only currently complete route remains:
+
+```text
+no new axiom, retain EH/GHY baseline at epsilon = 0.
+```
+
+Mechanism-fit axioms chosen to rescue Lambda, dark excess, channels, or
+interior targets are rejected.
+
+Next target:
+
+```text
+apply the candidate sieve to possible strain axiom routes.
+```

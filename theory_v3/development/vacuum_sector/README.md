@@ -254,6 +254,16 @@ records that no nonbaseline vacuum-sector mechanism is currently licensed as
 new physics. The side ledgers remain routed obligations; the next target is
 the strain-branch selector decision table.
 
+Current strain-selector status: the decision table in
+[01_strain_functional/strain_branch_selector_decision_table.md](01_strain_functional/strain_branch_selector_decision_table.md)
+records that the accumulated-gate route licenses only the EH/GHY baseline at
+`epsilon = 0`. Any disciplined nonbaseline path now requires an explicit new
+strain axiom before side mechanisms can be used.
+The minimal axiom contract in
+[01_strain_functional/minimal_strain_axiom_contract.md](01_strain_functional/minimal_strain_axiom_contract.md)
+defines the required fields for any such future axiom and rejects post-hoc
+mechanism-fit axioms.
+
 ```text
 archive/
 ```
@@ -300,7 +310,9 @@ Immediate task order:
 28. Consolidate global, boundary, topology, and admissibility selector rules.
 29. Checkpoint the vacuum-sector program before opening new branches.
 30. Build the strain-branch selector decision table.
-31. Only add later scripts for concrete candidate terms or counterexamples.
+31. Write the minimal strain axiom contract.
+32. Apply a candidate sieve to possible strain axiom routes.
+33. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

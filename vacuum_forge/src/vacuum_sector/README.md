@@ -284,3 +284,22 @@ gates, Lambda baseline selectors, dark-sector excess, non-gravitational
 channels, interior caps, and cross-cutting selector rules. It records that no
 nonbaseline mechanism is licensed as new physics and opens the strain-branch
 selector decision-table obligation.
+
+```text
+030_strain_branch_selector_decision_table/
+```
+
+Compares possible selector routes for `X`, neighboring mismatch, and
+`K_strain`. It records that accumulated gates license only the EH/GHY baseline
+at `epsilon = 0`; any disciplined nonbaseline route requires an explicit new
+strain axiom before mechanisms are used.
+
+```text
+031_minimal_strain_axiom_contract/
+```
+
+Defines the minimum required interface for any future nonbaseline strain axiom:
+`X`, metric response map, neighboring mismatch, `K_strain`, boundary data,
+conservation/source identity, mode and hyperbolicity route, epsilon
+classification, and falsifier. It adopts no axiom and rejects post-hoc
+mechanism-fit axioms.

@@ -225,8 +225,6 @@ def run_sympy_checks(lanes):
     )
     policy_rules = sum(1 for lane in lanes if lane.governance_status == GovernanceStatus.POLICY_RULE)
 
-    epsilon = sp.Symbol("epsilon")
-    epsilon_checkpoint = sp.Eq(epsilon, 0)
     require_equal("no nonbaseline lane is licensed", licensed_nonbaseline, 0)
     require_true("checkpoint has open obligations", open_obligations > 0)
     require_true("checkpoint retains at least one policy rule", policy_rules > 0)
@@ -235,7 +233,7 @@ def run_sympy_checks(lanes):
         "licensed_nonbaseline": licensed_nonbaseline,
         "open_obligations": open_obligations,
         "policy_rules": policy_rules,
-        "epsilon_checkpoint": epsilon_checkpoint,
+        "current_licensed_epsilon": sp.Integer(0),
     }
 
 
@@ -288,7 +286,7 @@ The checkpoint condition is:
 licensed nonbaseline physics lanes = {data["licensed_nonbaseline"]}
 open or deferred obligations = {data["open_obligations"]}
 policy rules retained = {data["policy_rules"]}
-epsilon checkpoint = {sp.sstr(data["epsilon_checkpoint"])}
+current licensed epsilon = {sp.sstr(data["current_licensed_epsilon"])}
 ```
 
 This means the currently licensed gravitational branch remains the

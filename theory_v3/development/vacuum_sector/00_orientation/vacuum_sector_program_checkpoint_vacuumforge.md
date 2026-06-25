@@ -27,7 +27,7 @@ The checkpoint condition is:
 licensed nonbaseline physics lanes = 0
 open or deferred obligations = 7
 policy rules retained = 1
-epsilon checkpoint = Eq(epsilon, 0)
+current licensed epsilon = 0
 ```
 
 This means the currently licensed gravitational branch remains the

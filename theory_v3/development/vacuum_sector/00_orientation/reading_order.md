@@ -94,12 +94,21 @@ order:
 ../07_interior_cap/finite_strain_admissibility_probe_vacuumforge.md
 ../00_orientation/vacuum_sector_program_checkpoint.md
 ../00_orientation/vacuum_sector_program_checkpoint_vacuumforge.md
+../01_strain_functional/strain_branch_selector_decision_table.md
+../01_strain_functional/strain_branch_selector_decision_table_vacuumforge.md
+../01_strain_functional/minimal_strain_axiom_contract.md
+../01_strain_functional/minimal_strain_axiom_contract_vacuumforge.md
 ```
+
+The selector decision table and minimal axiom contract are return-pass
+documents. They live in `01_strain_functional/` because their subject is strain
+selection, but they should be read after the program checkpoint because their
+VacuumForge dependencies are later in the first sweep.
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> cross-cutting selector rules -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve -> interior-cap admissibility contract -> exterior matching lemma -> finite-strain admissibility probe -> program checkpoint.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> cross-cutting selector rules -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve -> interior-cap admissibility contract -> exterior matching lemma -> finite-strain admissibility probe -> program checkpoint -> strain-selector return pass.
 ```
 
 ## Full Frontier Path
