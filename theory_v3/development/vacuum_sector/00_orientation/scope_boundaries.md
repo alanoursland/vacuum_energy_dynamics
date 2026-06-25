@@ -134,6 +134,22 @@ First files:
 
 Casimir, UFFT, substance-frame, and other non-gravitational channels.
 
+First files:
+
+```text
+../06_non_gravitational_channels/README.md
+../06_non_gravitational_channels/channel_quarantine_contract.md
+../06_non_gravitational_channels/non_grav_channel_quarantine_vacuumforge.md
+../06_non_gravitational_channels/casimir_ufft_channel_contract.md
+../06_non_gravitational_channels/casimir_ufft_channel_contract_vacuumforge.md
+../06_non_gravitational_channels/casimir_ufft_operator_instantiation_audit.md
+../06_non_gravitational_channels/casimir_ufft_operator_instantiation_vacuumforge.md
+../06_non_gravitational_channels/substance_frame_coupling_contract.md
+../06_non_gravitational_channels/substance_frame_coupling_contract_vacuumforge.md
+../06_non_gravitational_channels/substance_frame_bounds_sieve.md
+../06_non_gravitational_channels/substance_frame_bounds_sieve_vacuumforge.md
+```
+
 ```text
 07_interior_cap/
 ```

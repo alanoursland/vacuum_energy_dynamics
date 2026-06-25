@@ -72,12 +72,23 @@ order:
 ../05_dark_sector/dark_excess_clustering_conservation_probe_vacuumforge.md
 ../05_dark_sector/dark_excess_abundance_production_probe.md
 ../05_dark_sector/dark_excess_abundance_production_probe_vacuumforge.md
+../06_non_gravitational_channels/README.md
+../06_non_gravitational_channels/channel_quarantine_contract.md
+../06_non_gravitational_channels/non_grav_channel_quarantine_vacuumforge.md
+../06_non_gravitational_channels/casimir_ufft_channel_contract.md
+../06_non_gravitational_channels/casimir_ufft_channel_contract_vacuumforge.md
+../06_non_gravitational_channels/casimir_ufft_operator_instantiation_audit.md
+../06_non_gravitational_channels/casimir_ufft_operator_instantiation_vacuumforge.md
+../06_non_gravitational_channels/substance_frame_coupling_contract.md
+../06_non_gravitational_channels/substance_frame_coupling_contract_vacuumforge.md
+../06_non_gravitational_channels/substance_frame_bounds_sieve.md
+../06_non_gravitational_channels/substance_frame_bounds_sieve_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve.
 ```
 
 ## Full Frontier Path

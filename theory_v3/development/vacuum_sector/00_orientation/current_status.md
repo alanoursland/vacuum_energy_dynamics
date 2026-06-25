@@ -615,3 +615,172 @@ Next target:
 ```text
 open non-gravitational vacuum-channel quarantine contracts.
 ```
+
+## Non-Gravitational Channel Quarantine
+
+The non-gravitational vacuum-channel workstream is now opened through
+VacuumForge as:
+
+```text
+derivation: non_grav_channel_quarantine_020
+obligation: casimir_ufft_channel_contract_required_020
+```
+
+Current conclusion:
+
+```text
+No non-gravitational vacuum channel is live yet. Casimir/UFFT,
+substance-frame, and material-boundary routes are carried forward only as
+quarantined candidates. They need a channel variable, coupling object, source
+ledger, observable, falsifier, and explicit metric quarantine before they can
+be used.
+```
+
+Direct gravitational-Yukawa reinterpretation and unbooked stress-tensor
+insertion are rejected as wrong-ledger moves.
+
+This is a channel-quarantine ledger, not a prediction of a Casimir/UFFT or
+preferred-frame signal.
+
+Next target:
+
+```text
+write the Casimir/UFFT channel contract.
+```
+
+## Casimir/UFFT Channel Contract
+
+The first concrete non-gravitational channel contract is now recorded through
+VacuumForge as:
+
+```text
+derivation: casimir_ufft_channel_contract_021
+obligation: casimir_ufft_operator_instantiation_required_021
+```
+
+Current conclusion:
+
+```text
+The Casimir/UFFT channel now has a contract shape and a symbolic quarantine
+from a gravitational-Yukawa misroute. It is not prediction-ready because the
+channel operator and source/exchange ledger are still missing.
+```
+
+The contract uses a boundary/material variable and scaling placeholder:
+
+```text
+B = (L, chi_m, boundary class, frequency window)
+Delta O_ch = eta_ch * chi_m / L^4
+```
+
+This is a schema only. It does not derive the operator, coefficient, target
+window, or source bookkeeping.
+
+Next target:
+
+```text
+instantiate or reject the Casimir/UFFT channel operator.
+```
+
+## Casimir/UFFT Operator Instantiation Audit
+
+The Casimir/UFFT operator-instantiation audit is now recorded through
+VacuumForge as:
+
+```text
+derivation: casimir_ufft_operator_instantiation_audit_022
+obligation: substance_frame_coupling_contract_required_022
+```
+
+Current conclusion:
+
+```text
+No Casimir/UFFT operator route is live. Standard Casimir scaling belongs to
+ordinary QFT/material boundary physics unless a new ontology coupling is
+derived. Fitting the channel coefficient to that scaling is a backsolve, not a
+derivation. A free boundary-channel schema remains possible but unlicensed.
+```
+
+This is not a global no-go theorem against Casimir/UFFT channels. It rejects
+the currently audited routes as new vacuum-sector operators and moves the
+non-gravitational channel program to the substance-frame coupling contract.
+
+Next target:
+
+```text
+write the substance-frame coupling contract.
+```
+
+## Substance-Frame Coupling Contract
+
+The substance-frame coupling contract is now recorded through VacuumForge as:
+
+```text
+derivation: substance_frame_coupling_contract_023
+obligation: substance_frame_bounds_sieve_required_023
+```
+
+Current conclusion:
+
+```text
+No substance-frame coupling route is live. The frame may remain an ontological
+object without predicting a preferred-frame signal. Observable routes require a
+coupling operator, source/exchange ledger, metric quarantine, and preferred
+frame or calibration bounds.
+```
+
+The silent-frame rule is:
+
+```text
+beta_frame = 0
+Delta O_frame = 0
+```
+
+A coupled calibration-anisotropy schema is only a placeholder:
+
+```text
+Delta O_frame = beta_frame * cos(theta)^2
+```
+
+Metric preferred-frame insertion is rejected as a wrong-ledger reroute; it
+belongs to residual gates if reopened.
+
+Next target:
+
+```text
+apply the first substance-frame bounds sieve.
+```
+
+## Substance-Frame Bounds Sieve
+
+The first substance-frame bounds sieve is now recorded through VacuumForge as:
+
+```text
+derivation: substance_frame_bounds_sieve_024
+obligation: interior_cap_admissibility_contract_required_024
+```
+
+Current conclusion:
+
+```text
+No observable substance-frame channel is live. The silent frame remains
+allowed but predicts no preferred-frame signal. Coupled routes require a
+derived coupling, a source/exchange ledger, metric quarantine, and explicit
+preferred-frame/calibration bounds before use.
+```
+
+The symbolic compatibility condition is:
+
+```text
+Delta O_frame = beta_frame * A
+beta_required = delta_target / A
+delta_target / A <= beta_bound
+```
+
+Observed-signal backsolves and unbounded preferred-frame claims are rejected.
+
+Next target:
+
+```text
+open the strong-field/interior admissibility contract.
+```

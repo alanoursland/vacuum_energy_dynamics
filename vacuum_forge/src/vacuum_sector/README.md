@@ -192,3 +192,49 @@ Tests abundance and production bookkeeping for dustlike dark-sector excess. It
 rejects observed-density backsolves and leaves yield, freezeout-like, and
 formation-fraction routes deferred until production microphysics or formation
 dynamics derive the required inputs.
+
+```text
+020_non_grav_channel_quarantine/
+```
+
+Opens the non-gravitational vacuum-channel quarantine ledger. It carries
+Casimir/UFFT, substance-frame, and material-boundary channels forward only as
+quarantined candidates, rejects direct gravitational-Yukawa reinterpretation
+and unbooked stress-tensor insertion as wrong-ledger moves, and opens the
+Casimir/UFFT channel-contract obligation.
+
+```text
+021_casimir_ufft_channel_contract/
+```
+
+Writes the first concrete Casimir/UFFT non-gravitational channel contract. It
+separates boundary/material apparatus response from a gravitational-Yukawa
+misroute and leaves the channel operator plus source/exchange ledger as open
+obligations.
+
+```text
+022_casimir_ufft_operator_instantiation/
+```
+
+Audits candidate Casimir/UFFT operator instantiations. It keeps ordinary
+Casimir scaling in the QFT/material boundary ledger, rejects coefficient
+matching as a backsolve, defers free boundary-channel schemas, and opens the
+substance-frame coupling-contract obligation.
+
+```text
+023_substance_frame_coupling_contract/
+```
+
+Writes the substance-frame non-gravitational coupling contract. It separates
+silent frame ontology from observable preferred-frame/calibration channels,
+rejects metric preferred-frame insertion as a wrong-ledger reroute, and opens
+the bounds-sieve obligation.
+
+```text
+024_substance_frame_bounds_sieve/
+```
+
+Applies the first symbolic bounds sieve to substance-frame channels. It keeps
+silent frame ontology as non-predictive, rejects target backsolves and
+unbounded preferred-frame claims, and opens the strong-field/interior
+admissibility obligation.

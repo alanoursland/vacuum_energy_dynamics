@@ -185,6 +185,37 @@ missing object.
 Casimir, UFFT, preferred-substance-frame, or other non-gravitational observable
 channels. Each channel needs its own falsifier and coupling quarantine.
 
+Current entry point:
+[06_non_gravitational_channels/README.md](06_non_gravitational_channels/README.md)
+
+Current non-gravitational-channel status: the quarantine contract in
+[06_non_gravitational_channels/channel_quarantine_contract.md](06_non_gravitational_channels/channel_quarantine_contract.md)
+requires each channel to state its variable, coupling object, source ledger,
+observable, falsifier, and metric quarantine. No channel is live yet.
+Casimir/UFFT, substance-frame, and material-boundary routes are quarantined
+candidates only; direct gravitational-Yukawa reinterpretation and unbooked
+stress-tensor insertion are rejected as wrong-ledger moves.
+The Casimir/UFFT channel contract in
+[06_non_gravitational_channels/casimir_ufft_channel_contract.md](06_non_gravitational_channels/casimir_ufft_channel_contract.md)
+now states the channel variable, symbolic coupling schema, observable,
+falsifier, and metric quarantine, but it still lacks a derived operator and
+source/exchange ledger.
+The operator-instantiation audit in
+[06_non_gravitational_channels/casimir_ufft_operator_instantiation_audit.md](06_non_gravitational_channels/casimir_ufft_operator_instantiation_audit.md)
+finds no live new Casimir/UFFT channel operator: standard Casimir scaling is
+ordinary QFT/material boundary physics, coefficient matching is a backsolve,
+and a free boundary-channel schema is deferred.
+The substance-frame coupling contract in
+[06_non_gravitational_channels/substance_frame_coupling_contract.md](06_non_gravitational_channels/substance_frame_coupling_contract.md)
+separates silent frame ontology from observable preferred-frame/calibration
+channels. No substance-frame coupling route is live until a coupling operator,
+source ledger, metric quarantine, and bounds sieve are supplied.
+The substance-frame bounds sieve in
+[06_non_gravitational_channels/substance_frame_bounds_sieve.md](06_non_gravitational_channels/substance_frame_bounds_sieve.md)
+keeps silent frame ontology allowed but rejects observed-signal backsolves and
+unbounded preferred-frame claims. No bounded observable substance-frame channel
+is licensed.
+
 ```text
 07_interior_cap/
 ```
@@ -228,7 +259,12 @@ Immediate task order:
 18. Test dark-excess clustering and conservation gates.
 19. Test dark-excess abundance and production gates.
 20. Open non-gravitational vacuum-channel quarantine.
-21. Only add later scripts for concrete candidate terms or counterexamples.
+21. Write the Casimir/UFFT channel contract.
+22. Instantiate or reject the Casimir/UFFT channel operator.
+23. Write the substance-frame coupling contract.
+24. Apply the first substance-frame bounds sieve.
+25. Open the strong-field/interior admissibility contract.
+26. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:
