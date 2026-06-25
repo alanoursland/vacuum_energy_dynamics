@@ -396,3 +396,142 @@ Next target:
 test whether boundary/admissibility data can supply the missing nonzero scale
 without observed-value insertion or local-equation modification.
 ```
+
+## Lambda Boundary/Admissibility Probe
+
+The boundary/admissibility selector is now probed through VacuumForge as:
+
+```text
+derivation: lambda_boundary_admissibility_probe_012
+obligation: lambda_topology_global_constraint_probe_required_012
+```
+
+Current conclusion:
+
+```text
+Boundary/admissibility data can select allowed Lambda families and can convert
+a supplied boundary length, radius, volume, or asymptotic class into a Lambda
+relation. It does not derive a nonzero value unless the boundary scale or
+volume is itself selected by the vacuum ontology.
+```
+
+This is not a derivation of nonzero `Lambda`; it identifies the next missing
+object as a topology, volume, measure, or admissibility-scale selector.
+
+Next target:
+
+```text
+test whether topology/global constraints can supply a dimensionful Lambda
+value or only constrain it after a scale is supplied.
+```
+
+## Lambda Topology/Global Constraint Probe
+
+The topology/global constraint selector is now probed through VacuumForge as:
+
+```text
+derivation: lambda_topology_global_constraint_probe_013
+obligation: lambda_measure_identity_probe_required_013
+```
+
+Current conclusion:
+
+```text
+Topology and global constraints can restrict allowed sectors and can relate
+Lambda to supplied area, volume, length, or measure data. Topology alone is
+dimensionless and cannot derive a dimensionful Lambda value.
+```
+
+This does not kill topology/global constraints; it says they need a scale
+selector before they can set `Lambda`.
+
+Next target:
+
+```text
+test whether a measure identity can supply a conserved density or curvature
+scale without observed-value insertion.
+```
+
+## Lambda Measure Identity Probe
+
+The measure-identity selector is now probed through VacuumForge as:
+
+```text
+derivation: lambda_measure_identity_probe_014
+obligation: lambda_relaxation_fixed_point_probe_required_014
+```
+
+Current conclusion:
+
+```text
+A measure identity can be a Lambda selector only if it supplies a derived,
+covariantly conserved, constant floor before observation is used. Dimensional
+fits import a scale. Dustlike, defectlike, clustered, or transportable
+densities belong to dark-sector or defect ledgers, not the constant Lambda
+baseline.
+```
+
+This records a candidate route only for a derived conserved floor; it does not
+derive that floor.
+
+Next target:
+
+```text
+test whether relaxation/fixed-point dynamics can select a nonzero floor without
+target insertion.
+```
+
+## Lambda Relaxation/Fixed-Point Probe
+
+The relaxation/fixed-point selector is now probed through VacuumForge as:
+
+```text
+derivation: lambda_relaxation_fixed_point_probe_015
+obligation: lambda_frustration_floor_microphysics_probe_required_015
+```
+
+Current conclusion:
+
+```text
+Scale-free relaxation selects Lambda = 0. Nonzero fixed points require a target,
+domain length, kernel scale, or coefficient ratio, and become derived only if
+that scale or ratio is itself derived.
+```
+
+This does not derive nonzero `Lambda`; it identifies the next missing object as
+microphysical floor content or another derived-scale route.
+
+Next target:
+
+```text
+test whether frustration-floor microphysics can derive the absolute constant
+offset, w = -1 ledger, and non-clustering status.
+```
+
+## Lambda Frustration-Floor Microphysics Probe
+
+The frustration-floor microphysics selector is now probed through VacuumForge
+as:
+
+```text
+derivation: lambda_frustration_floor_microphysics_probe_016
+obligation: dark_excess_source_ledger_required_016
+```
+
+Current conclusion:
+
+```text
+Microphysical potential shape can supply minima, excitation scales, and a
+constant-floor ledger, but it does not derive a nonzero Lambda baseline unless
+it derives the absolute constant offset before observation is used. Excitations
+around the floor are transportable excess content, not Lambda.
+```
+
+This closes the first Lambda selector sweep without deriving nonzero `Lambda`.
+
+Next target:
+
+```text
+open the dark-sector excess source ledger and separate constant floor,
+transportable excess, conservation, clustering, and source bookkeeping.
+```

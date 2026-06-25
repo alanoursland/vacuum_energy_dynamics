@@ -83,6 +83,26 @@ keeps all rows mechanism-blocked until an explicit selector object is supplied.
 The variational-minimum probe in
 [04_lambda_baseline/lambda_variational_minimum_probe.md](04_lambda_baseline/lambda_variational_minimum_probe.md)
 shows that bare stationarity over `Lambda` does not derive a nonzero baseline.
+The boundary/admissibility probe in
+[04_lambda_baseline/lambda_boundary_admissibility_probe.md](04_lambda_baseline/lambda_boundary_admissibility_probe.md)
+shows that boundary data can convert supplied scales into `Lambda` relations,
+but does not derive those scales.
+The topology/global constraint probe in
+[04_lambda_baseline/lambda_topology_global_constraint_probe.md](04_lambda_baseline/lambda_topology_global_constraint_probe.md)
+shows that topology can constrain sectors only after a dimensionful scale is
+supplied.
+The measure identity probe in
+[04_lambda_baseline/lambda_measure_identity_probe.md](04_lambda_baseline/lambda_measure_identity_probe.md)
+keeps only a derived conserved floor as a Lambda candidate and routes variable
+or clustered densities away from the baseline ledger.
+The relaxation/fixed-point probe in
+[04_lambda_baseline/lambda_relaxation_fixed_point_probe.md](04_lambda_baseline/lambda_relaxation_fixed_point_probe.md)
+shows that nonzero relaxation floors need a derived target, scale, or
+coefficient ratio.
+The frustration-floor microphysics probe in
+[04_lambda_baseline/lambda_frustration_floor_microphysics_probe.md](04_lambda_baseline/lambda_frustration_floor_microphysics_probe.md)
+shows that potential shape does not derive the absolute constant floor by
+itself, and routes excitations away from the Lambda baseline ledger.
 
 ## Suggested Subfolders
 
@@ -185,7 +205,12 @@ Immediate task order:
 10. Apply the Lambda selector sieve.
 11. Test the variational-minimum Lambda selector.
 12. Test the boundary/admissibility Lambda selector.
-13. Only add later scripts for concrete candidate terms or counterexamples.
+13. Test topology/global constraints as Lambda selectors.
+14. Test measure identities as Lambda selectors.
+15. Test relaxation/fixed-point Lambda selectors.
+16. Test frustration-floor microphysics as a Lambda selector.
+17. Open the dark-sector excess source ledger.
+18. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

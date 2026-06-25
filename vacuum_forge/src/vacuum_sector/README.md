@@ -121,3 +121,48 @@ Tests the lowest-structure Lambda selector route: a variational minimum over
 `Lambda`. It records that bare stationarity leaves `Lambda` free, selects
 `Lambda = 0`, or produces a nonzero value only by importing a bias, target, or
 new scale.
+
+```text
+012_lambda_boundary_admissibility/
+```
+
+Tests boundary/admissibility data as a Lambda selector. It records that
+asymptotically flat finite-flux data select `Lambda = 0`, while nonzero
+constant-curvature, compact-volume, or horizon/domain relations import a
+boundary scale, volume, or sign class unless another selector derives them.
+
+```text
+013_lambda_topology_global_constraint/
+```
+
+Tests topology/global constraints as Lambda selectors. It records that
+topology can restrict allowed sectors or relate `Lambda` to supplied area,
+volume, length, or measure data, but topology alone cannot set a dimensionful
+`Lambda` value.
+
+```text
+014_lambda_measure_identity/
+```
+
+Tests measure identities as Lambda selectors. It records that only a derived,
+covariantly conserved `w = -1` floor remains a Lambda candidate; dimensional
+fits import a scale, and variable or clustered densities route to dark-sector
+or defect ledgers instead of the constant baseline.
+
+```text
+015_lambda_relaxation_fixed_point/
+```
+
+Tests relaxation/fixed-point dynamics as Lambda selectors. It records that
+scale-free relaxation selects `Lambda = 0`, while nonzero fixed points import
+a target, domain length, kernel scale, or coefficient ratio unless those
+quantities are derived.
+
+```text
+016_lambda_frustration_floor_microphysics/
+```
+
+Tests microphysical/frustration floor routes as Lambda selectors. It records
+that potential shape supplies minima and excitations, but the absolute constant
+offset must be derived before it can select a nonzero Lambda floor. Excitations
+route to dark-sector or defect ledgers, not the constant baseline.

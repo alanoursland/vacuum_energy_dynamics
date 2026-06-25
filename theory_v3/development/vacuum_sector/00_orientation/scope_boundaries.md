@@ -97,6 +97,16 @@ First files:
 ../04_lambda_baseline/lambda_selector_sieve_vacuumforge.md
 ../04_lambda_baseline/lambda_variational_minimum_probe.md
 ../04_lambda_baseline/lambda_variational_minimum_probe_vacuumforge.md
+../04_lambda_baseline/lambda_boundary_admissibility_probe.md
+../04_lambda_baseline/lambda_boundary_admissibility_probe_vacuumforge.md
+../04_lambda_baseline/lambda_topology_global_constraint_probe.md
+../04_lambda_baseline/lambda_topology_global_constraint_probe_vacuumforge.md
+../04_lambda_baseline/lambda_measure_identity_probe.md
+../04_lambda_baseline/lambda_measure_identity_probe_vacuumforge.md
+../04_lambda_baseline/lambda_relaxation_fixed_point_probe.md
+../04_lambda_baseline/lambda_relaxation_fixed_point_probe_vacuumforge.md
+../04_lambda_baseline/lambda_frustration_floor_microphysics_probe.md
+../04_lambda_baseline/lambda_frustration_floor_microphysics_probe_vacuumforge.md
 ```
 
 ```text
