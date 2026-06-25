@@ -238,3 +238,39 @@ Applies the first symbolic bounds sieve to substance-frame channels. It keeps
 silent frame ontology as non-predictive, rejects target backsolves and
 unbounded preferred-frame claims, and opens the strong-field/interior
 admissibility obligation.
+
+```text
+025_interior_cap_admissibility_contract/
+```
+
+Opens the strong-field/interior admissibility workstream. It separates
+exterior-preserving interior candidates from imported cutoff radii and
+untracked exterior deviations, and opens the exterior matching lemma
+obligation.
+
+```text
+026_exterior_matching_lemma/
+```
+
+Records the contract-level exterior matching lemma. Fixed exterior equations
+and fixed exterior charges preserve the exterior proxy; surface charge shifts
+need source/junction bookkeeping, while Lambda shifts and exterior residual
+leaks reroute to their own ledgers.
+
+```text
+027_finite_strain_admissibility_probe/
+```
+
+Tests whether exterior-preserving interior caps derive a finite-strain scale.
+It rejects imposed strain bounds and observed compactness backsolves, keeps a
+derived ontological bound as absent/deferred, and opens the cross-cutting
+global/boundary/topology selector-rules obligation.
+
+```text
+028_global_boundary_topology_selector_rules/
+```
+
+Consolidates the missing-scale rule across Lambda, topology, boundary data,
+measure identities, and finite-strain interior caps. It records that sector
+selection is not value selection without a derived scale, rejects observed
+value backsolves, and opens a program-checkpoint obligation.

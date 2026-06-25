@@ -223,6 +223,31 @@ is licensed.
 Strong-interior and compactness work, including admissibility caps and any
 non-singularity claims that remain outside the closed weak-field sector.
 
+Current entry point:
+[07_interior_cap/README.md](07_interior_cap/README.md)
+
+Current interior-cap status: the admissibility contract in
+[07_interior_cap/interior_cap_contract.md](07_interior_cap/interior_cap_contract.md)
+requires exterior preservation, matching or junction bookkeeping, a bounded
+interior strain quantity, and a derived admissibility scale before any cap is
+usable. No finite-strain interior cap is licensed. Imported cutoff radii and
+untracked exterior deviations are rejected.
+The exterior matching lemma in
+[07_interior_cap/exterior_matching_lemma.md](07_interior_cap/exterior_matching_lemma.md)
+licenses only the fixed-charge exterior-preservation contract. Surface charge
+shifts need source/junction bookkeeping; Lambda shifts and exterior residual
+leaks reroute to their own ledgers.
+The finite-strain admissibility probe in
+[07_interior_cap/finite_strain_admissibility_probe.md](07_interior_cap/finite_strain_admissibility_probe.md)
+shows that exterior preservation does not derive a cap scale. Imposed strain
+bounds and observed compactness backsolves fail; a derived ontological bound
+remains possible but absent.
+
+Cross-cutting selector status: the global/boundary/topology selector rules in
+[04_lambda_baseline/global_boundary_topology_selector_rules.md](04_lambda_baseline/global_boundary_topology_selector_rules.md)
+consolidate the repeated missing-scale result. Sector selection is not value
+selection without a derived scale.
+
 ```text
 archive/
 ```
@@ -264,7 +289,11 @@ Immediate task order:
 23. Write the substance-frame coupling contract.
 24. Apply the first substance-frame bounds sieve.
 25. Open the strong-field/interior admissibility contract.
-26. Only add later scripts for concrete candidate terms or counterexamples.
+26. Prove the exterior matching lemma.
+27. Probe finite-strain admissibility scale for interior caps.
+28. Consolidate global, boundary, topology, and admissibility selector rules.
+29. Checkpoint the vacuum-sector program before opening new branches.
+30. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

@@ -107,6 +107,8 @@ First files:
 ../04_lambda_baseline/lambda_relaxation_fixed_point_probe_vacuumforge.md
 ../04_lambda_baseline/lambda_frustration_floor_microphysics_probe.md
 ../04_lambda_baseline/lambda_frustration_floor_microphysics_probe_vacuumforge.md
+../04_lambda_baseline/global_boundary_topology_selector_rules.md
+../04_lambda_baseline/global_boundary_topology_selector_rules_vacuumforge.md
 ```
 
 ```text
@@ -155,6 +157,18 @@ First files:
 ```
 
 Strong-interior, compactness, admissibility cap, and non-singularity work.
+
+First files:
+
+```text
+../07_interior_cap/README.md
+../07_interior_cap/interior_cap_contract.md
+../07_interior_cap/interior_cap_admissibility_contract_vacuumforge.md
+../07_interior_cap/exterior_matching_lemma.md
+../07_interior_cap/exterior_matching_lemma_vacuumforge.md
+../07_interior_cap/finite_strain_admissibility_probe.md
+../07_interior_cap/finite_strain_admissibility_probe_vacuumforge.md
+```
 
 ## Script Rule
 

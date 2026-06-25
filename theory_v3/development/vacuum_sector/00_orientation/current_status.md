@@ -784,3 +784,140 @@ Next target:
 ```text
 open the strong-field/interior admissibility contract.
 ```
+
+## Interior-Cap Admissibility Contract
+
+The strong-field/interior admissibility workstream is now recorded through
+VacuumForge as:
+
+```text
+derivation: interior_cap_admissibility_contract_025
+obligation: exterior_matching_lemma_required_025
+```
+
+Current conclusion:
+
+```text
+No interior-cap route is live. Exterior-preserving interior modification is a
+candidate contract only. A cap or finite-strain rule needs exterior matching,
+junction/source bookkeeping, and a derived admissibility scale before it can be
+used.
+```
+
+The symbolic cap placeholder is:
+
+```text
+C = 2GM / (c^2 R_cap)
+K_int = 1 / (1 - C)
+R_cap = 2GM kappa_max / (c^2 (kappa_max - 1))
+```
+
+This imports `kappa_max` unless the vacuum ontology derives it. Imported
+cutoff radii and untracked exterior deviations are rejected.
+
+Next target:
+
+```text
+prove the exterior matching lemma.
+```
+
+## Exterior Matching Lemma
+
+The exterior matching lemma is now recorded through VacuumForge as:
+
+```text
+derivation: exterior_matching_lemma_026
+obligation: finite_strain_admissibility_probe_required_026
+```
+
+Current conclusion:
+
+```text
+The fixed-charge exterior route preserves the exterior proxy at lemma level.
+This licenses only the exterior-preservation contract, not an interior cap.
+Surface charge shifts need source and junction bookkeeping. Lambda shifts and
+exterior residual leaks are wrong-ledger moves here.
+```
+
+The exterior proxy used by the lemma is:
+
+```text
+f_ext(r) = 1 - 2GM_ext/(c^2 r) - Lambda_ext r^2/3
+d f_ext / d R_cap = 0
+```
+
+Changing exterior mass or Lambda changes the exterior proxy and must be routed
+through source/junction bookkeeping or the Lambda selector ledger.
+
+Next target:
+
+```text
+probe the finite-strain admissibility scale.
+```
+
+## Finite-Strain Admissibility Probe
+
+The finite-strain admissibility probe is now recorded through VacuumForge as:
+
+```text
+derivation: finite_strain_admissibility_probe_027
+obligation: global_boundary_topology_selector_rules_required_027
+```
+
+Current conclusion:
+
+```text
+No finite-strain interior cap is licensed. The exterior matching lemma protects
+the exterior only. It does not derive the interior admissibility bound,
+cap scale, or nonsingularity rule.
+```
+
+The symbolic probe is:
+
+```text
+C = 2GM / (c^2 R_cap)
+K_int = 1 / (1 - C)
+R_cap = 2GM kappa_max / (c^2 (kappa_max - 1))
+```
+
+The cap scale depends on `kappa_max`. Unless the ontology derives that bound,
+the cap scale is imported. Observed compactness backsolves are rejected.
+
+Next target:
+
+```text
+consolidate global, boundary, topology, and admissibility selector rules.
+```
+
+## Global/Boundary/Topology Selector Rules
+
+The cross-cutting selector rules are now recorded through VacuumForge as:
+
+```text
+derivation: global_boundary_topology_selector_rules_028
+obligation: vacuum_sector_program_checkpoint_required_028
+```
+
+Current conclusion:
+
+```text
+Global, boundary, topology, and admissibility selectors can restrict sectors
+or admissible classes, but they do not set dimensionful values unless the
+missing scale is also derived. Observed-value backsolves are rejected.
+```
+
+The representative symbolic checks are:
+
+```text
+R = 4*pi*chi / A
+Lambda^2 = 12*pi^2*chi / V
+```
+
+Topology supplies dimensionless sector information. Dimensionful values still
+need area, volume, measure, length, or an admissibility scale.
+
+Next target:
+
+```text
+checkpoint the vacuum-sector program before opening new branches.
+```

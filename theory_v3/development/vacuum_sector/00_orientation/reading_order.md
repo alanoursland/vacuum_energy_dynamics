@@ -65,6 +65,8 @@ order:
 ../04_lambda_baseline/lambda_relaxation_fixed_point_probe_vacuumforge.md
 ../04_lambda_baseline/lambda_frustration_floor_microphysics_probe.md
 ../04_lambda_baseline/lambda_frustration_floor_microphysics_probe_vacuumforge.md
+../04_lambda_baseline/global_boundary_topology_selector_rules.md
+../04_lambda_baseline/global_boundary_topology_selector_rules_vacuumforge.md
 ../05_dark_sector/README.md
 ../05_dark_sector/dark_excess_source_ledger.md
 ../05_dark_sector/dark_excess_source_ledger_vacuumforge.md
@@ -83,12 +85,19 @@ order:
 ../06_non_gravitational_channels/substance_frame_coupling_contract_vacuumforge.md
 ../06_non_gravitational_channels/substance_frame_bounds_sieve.md
 ../06_non_gravitational_channels/substance_frame_bounds_sieve_vacuumforge.md
+../07_interior_cap/README.md
+../07_interior_cap/interior_cap_contract.md
+../07_interior_cap/interior_cap_admissibility_contract_vacuumforge.md
+../07_interior_cap/exterior_matching_lemma.md
+../07_interior_cap/exterior_matching_lemma_vacuumforge.md
+../07_interior_cap/finite_strain_admissibility_probe.md
+../07_interior_cap/finite_strain_admissibility_probe_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> cross-cutting selector rules -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve -> interior-cap admissibility contract -> exterior matching lemma -> finite-strain admissibility probe.
 ```
 
 ## Full Frontier Path

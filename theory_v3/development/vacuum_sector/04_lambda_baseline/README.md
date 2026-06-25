@@ -134,11 +134,28 @@ supply minima and excitations, but the absolute constant offset remains free
 unless microphysics derives it. Excitations around the floor route downstream
 to dark-sector or defect ledgers, not the constant `Lambda` baseline.
 
-## Next Work
+## Cross-Cutting Selector Rules
 
-The next deliverable is the dark-sector source ledger:
+The global/boundary/topology selector rules are recorded in:
 
 ```text
-separate constant floors from transportable excess, classify equations of
-state, and prevent source double-counting with Lambda.
+global_boundary_topology_selector_rules.md
+global_boundary_topology_selector_rules_vacuumforge.md
+```
+
+Current conclusion:
+
+```text
+Sector selection is not value selection without a derived scale.
+```
+
+This rule applies to Lambda, topology/global constraints, boundary data,
+measure identities, and finite-strain interior caps.
+
+## Next Work
+
+The next deliverable is the vacuum-sector program checkpoint:
+
+```text
+summarize remaining live openings before starting new branch mechanisms.
 ```
