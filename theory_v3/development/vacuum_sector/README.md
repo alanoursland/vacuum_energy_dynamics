@@ -248,6 +248,12 @@ Cross-cutting selector status: the global/boundary/topology selector rules in
 consolidate the repeated missing-scale result. Sector selection is not value
 selection without a derived scale.
 
+Program checkpoint: the first checkpoint in
+[00_orientation/vacuum_sector_program_checkpoint.md](00_orientation/vacuum_sector_program_checkpoint.md)
+records that no nonbaseline vacuum-sector mechanism is currently licensed as
+new physics. The side ledgers remain routed obligations; the next target is
+the strain-branch selector decision table.
+
 ```text
 archive/
 ```
@@ -293,7 +299,8 @@ Immediate task order:
 27. Probe finite-strain admissibility scale for interior caps.
 28. Consolidate global, boundary, topology, and admissibility selector rules.
 29. Checkpoint the vacuum-sector program before opening new branches.
-30. Only add later scripts for concrete candidate terms or counterexamples.
+30. Build the strain-branch selector decision table.
+31. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

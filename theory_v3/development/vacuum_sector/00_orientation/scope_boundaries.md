@@ -12,6 +12,7 @@ points to controlling source documents;
 defines reading order;
 records what later folders are responsible for;
 prevents re-litigation of closed or conditional results.
+records program checkpoints that summarize technical-folder outputs.
 ```
 
 ## Does Not Belong Here
@@ -30,6 +31,7 @@ introduces a Lambda relaxation model;
 introduces a dark-sector transport law;
 proposes a Casimir/UFFT coupling;
 claims a strong-interior cap or non-singularity result.
+uses a checkpoint as evidence for a new mechanism.
 ```
 
 ## Subfolder Routing

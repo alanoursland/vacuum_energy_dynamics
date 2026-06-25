@@ -92,12 +92,14 @@ order:
 ../07_interior_cap/exterior_matching_lemma_vacuumforge.md
 ../07_interior_cap/finite_strain_admissibility_probe.md
 ../07_interior_cap/finite_strain_admissibility_probe_vacuumforge.md
+../00_orientation/vacuum_sector_program_checkpoint.md
+../00_orientation/vacuum_sector_program_checkpoint_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> cross-cutting selector rules -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve -> interior-cap admissibility contract -> exterior matching lemma -> finite-strain admissibility probe.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> cross-cutting selector rules -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe -> non-gravitational channel quarantine -> Casimir/UFFT channel contract -> Casimir/UFFT operator-instantiation audit -> substance-frame coupling contract -> substance-frame bounds sieve -> interior-cap admissibility contract -> exterior matching lemma -> finite-strain admissibility probe -> program checkpoint.
 ```
 
 ## Full Frontier Path

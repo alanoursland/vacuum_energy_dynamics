@@ -921,3 +921,37 @@ Next target:
 ```text
 checkpoint the vacuum-sector program before opening new branches.
 ```
+
+## Vacuum-Sector Program Checkpoint
+
+The first program checkpoint is now recorded through VacuumForge as:
+
+```text
+derivation: vacuum_sector_program_checkpoint_029
+obligation: strain_branch_selector_decision_table_required_029
+```
+
+Current conclusion:
+
+```text
+No nonbaseline vacuum-sector mechanism is currently licensed as new physics.
+The only licensed gravitational branch remains the conditionally reconstructed
+EH/GHY baseline at epsilon = 0.
+```
+
+The checkpoint classifies the remaining side ledgers as routed obligations:
+
+```text
+Lambda: allowed but unvalued without a derived scale or floor
+dark excess: candidate only, missing production and abundance
+non-gravitational channels: quarantined, missing operators and source ledgers
+substance frame: silent ontology allowed, observable coupling unlicensed
+interior cap: exterior-preserving contract only, missing finite-strain bound
+global/boundary/topology: sector selectors only without derived scale
+```
+
+Next target:
+
+```text
+return to the central strain-branch selector question.
+```

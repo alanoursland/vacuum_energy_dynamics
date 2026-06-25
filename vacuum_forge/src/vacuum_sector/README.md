@@ -274,3 +274,13 @@ Consolidates the missing-scale rule across Lambda, topology, boundary data,
 measure identities, and finite-strain interior caps. It records that sector
 selection is not value selection without a derived scale, rejects observed
 value backsolves, and opens a program-checkpoint obligation.
+
+```text
+029_vacuum_sector_program_checkpoint/
+```
+
+Checkpoints the first vacuum-sector sweep after the strain contracts, residual
+gates, Lambda baseline selectors, dark-sector excess, non-gravitational
+channels, interior caps, and cross-cutting selector rules. It records that no
+nonbaseline mechanism is licensed as new physics and opens the strain-branch
+selector decision-table obligation.
