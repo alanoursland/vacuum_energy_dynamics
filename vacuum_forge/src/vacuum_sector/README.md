@@ -166,3 +166,29 @@ Tests microphysical/frustration floor routes as Lambda selectors. It records
 that potential shape supplies minima and excitations, but the absolute constant
 offset must be derived before it can select a nonzero Lambda floor. Excitations
 route to dark-sector or defect ledgers, not the constant baseline.
+
+```text
+017_dark_excess_source_ledger/
+```
+
+Opens the dark-sector excess ledger after the Lambda floor sweep. It separates
+the constant `w = -1` floor from dustlike, radiationlike, stringlike, and
+wall-like excess rows before any clustering or abundance claim is used.
+
+```text
+018_dark_excess_clustering_conservation/
+```
+
+Tests clustering and conservation readiness for dustlike vacuum-sector excess.
+It keeps conserved pressureless excess as a candidate only, blocks
+pressure-supported or exchanging rows pending routes, and rejects ordinary
+matter insertion as source double-counting.
+
+```text
+019_dark_excess_abundance_production/
+```
+
+Tests abundance and production bookkeeping for dustlike dark-sector excess. It
+rejects observed-density backsolves and leaves yield, freezeout-like, and
+formation-fraction routes deferred until production microphysics or formation
+dynamics derive the required inputs.

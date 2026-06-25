@@ -116,6 +116,18 @@ First files:
 Vacuum-sector excess dynamics that do not modify the closed gravitational
 field equations by insertion.
 
+First files:
+
+```text
+../05_dark_sector/README.md
+../05_dark_sector/dark_excess_source_ledger.md
+../05_dark_sector/dark_excess_source_ledger_vacuumforge.md
+../05_dark_sector/dark_excess_clustering_conservation_probe.md
+../05_dark_sector/dark_excess_clustering_conservation_probe_vacuumforge.md
+../05_dark_sector/dark_excess_abundance_production_probe.md
+../05_dark_sector/dark_excess_abundance_production_probe_vacuumforge.md
+```
+
 ```text
 06_non_gravitational_channels/
 ```

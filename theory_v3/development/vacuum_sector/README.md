@@ -163,6 +163,21 @@ Candidate dynamics for any vacuum-sector excess over the baseline. This work
 must not be inserted as an untracked modification of the closed gravitational
 field equations.
 
+Current entry point: [05_dark_sector/README.md](05_dark_sector/README.md)
+
+Current dark-sector status: the source ledger in
+[05_dark_sector/dark_excess_source_ledger.md](05_dark_sector/dark_excess_source_ledger.md)
+separates the constant `w = -1` Lambda floor from dustlike, radiationlike, and
+defectlike excess rows. No dark-sector model is licensed yet.
+The clustering/conservation probe in
+[05_dark_sector/dark_excess_clustering_conservation_probe.md](05_dark_sector/dark_excess_clustering_conservation_probe.md)
+keeps conserved pressureless excess as a candidate only; abundance and
+production remain open.
+The abundance/production probe in
+[05_dark_sector/dark_excess_abundance_production_probe.md](05_dark_sector/dark_excess_abundance_production_probe.md)
+rejects observed-density backsolves and leaves production microphysics as the
+missing object.
+
 ```text
 06_non_gravitational_channels/
 ```
@@ -210,7 +225,10 @@ Immediate task order:
 15. Test relaxation/fixed-point Lambda selectors.
 16. Test frustration-floor microphysics as a Lambda selector.
 17. Open the dark-sector excess source ledger.
-18. Only add later scripts for concrete candidate terms or counterexamples.
+18. Test dark-excess clustering and conservation gates.
+19. Test dark-excess abundance and production gates.
+20. Open non-gravitational vacuum-channel quarantine.
+21. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:

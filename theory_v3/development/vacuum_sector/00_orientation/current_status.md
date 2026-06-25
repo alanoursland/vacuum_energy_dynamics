@@ -535,3 +535,83 @@ Next target:
 open the dark-sector excess source ledger and separate constant floor,
 transportable excess, conservation, clustering, and source bookkeeping.
 ```
+
+## Dark Excess Source Ledger
+
+The dark-sector excess ledger is now opened through VacuumForge as:
+
+```text
+derivation: dark_excess_source_ledger_017
+obligation: dark_excess_clustering_conservation_required_017
+```
+
+Current conclusion:
+
+```text
+The constant w = -1 floor remains in the Lambda baseline ledger. A dustlike
+w = 0 excess is the only first-pass CDM-like candidate, but it still needs
+clustering, conservation, production, abundance, and source-bookkeeping gates.
+Radiationlike and defectlike rows are not CDM-like without additional dynamics.
+```
+
+This is a source ledger, not a dark-matter derivation.
+
+Next target:
+
+```text
+test whether dustlike excess can cluster and conserve without pressure support,
+untracked exchange, or source double-counting.
+```
+
+## Dark Excess Clustering/Conservation Probe
+
+The first clustering/conservation gate is now recorded through VacuumForge as:
+
+```text
+derivation: dark_excess_clustering_conservation_probe_018
+obligation: dark_excess_abundance_production_required_018
+```
+
+Current conclusion:
+
+```text
+A separately conserved, pressureless w = 0 excess has the minimum
+clustering-readiness face, but it is still only a candidate. Pressure-supported
+or exchanging rows require their own routing. Ordinary matter insertion is
+rejected as source double-counting.
+```
+
+This is not a dark-matter derivation.
+
+Next target:
+
+```text
+derive a production or formation mechanism and abundance route before treating
+dustlike excess as dark-sector physics.
+```
+
+## Dark Excess Abundance/Production Probe
+
+The abundance/production gate is now recorded through VacuumForge as:
+
+```text
+derivation: dark_excess_abundance_production_probe_019
+obligation: non_grav_channel_quarantine_required_019
+```
+
+Current conclusion:
+
+```text
+No dark-sector abundance route is currently licensed. Back-solving from the
+observed density is rejected. Yield, freezeout-like, and formation-fraction
+routes remain possible only after their production microphysics, interaction
+scale, or formation fraction is derived before observation is used.
+```
+
+This leaves dustlike excess possible but unlicensed.
+
+Next target:
+
+```text
+open non-gravitational vacuum-channel quarantine contracts.
+```

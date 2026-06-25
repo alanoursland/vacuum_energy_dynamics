@@ -65,12 +65,19 @@ order:
 ../04_lambda_baseline/lambda_relaxation_fixed_point_probe_vacuumforge.md
 ../04_lambda_baseline/lambda_frustration_floor_microphysics_probe.md
 ../04_lambda_baseline/lambda_frustration_floor_microphysics_probe_vacuumforge.md
+../05_dark_sector/README.md
+../05_dark_sector/dark_excess_source_ledger.md
+../05_dark_sector/dark_excess_source_ledger_vacuumforge.md
+../05_dark_sector/dark_excess_clustering_conservation_probe.md
+../05_dark_sector/dark_excess_clustering_conservation_probe_vacuumforge.md
+../05_dark_sector/dark_excess_abundance_production_probe.md
+../05_dark_sector/dark_excess_abundance_production_probe_vacuumforge.md
 ```
 
 This path makes the intended order explicit:
 
 ```text
-contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe.
+contracts -> gates -> underdetermination witness -> candidate charters -> branch tests -> Lambda baseline -> selector charter -> selector sieve -> variational-minimum probe -> boundary/admissibility probe -> topology/global constraint probe -> measure identity probe -> relaxation/fixed-point probe -> frustration-floor microphysics probe -> dark-sector source ledger -> clustering/conservation probe -> abundance/production probe.
 ```
 
 ## Full Frontier Path
