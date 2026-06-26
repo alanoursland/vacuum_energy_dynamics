@@ -125,7 +125,7 @@ $$\nabla^a A_{ab}=\nabla^aR_{ab}-\tfrac14\nabla_bR
 This is the crisp statement of what VED is free in: **its response tensor is
 not identically divergence-free.** It is conserved only *on shell*, after the
 separate input of matter conservation — and that on-shell step is exactly what
-manufactures $\Lambda$ (§5). VED therefore sits at the one relaxation of
+manufactures $\Lambda$ (§6). VED therefore sits at the one relaxation of
 Lovelock's hypotheses that the theorem's conclusion is sensitive to here, and
 it is the well-studied **unimodular** relaxation: $\mathrm{Diff}(M)$ reduced to
 the **transverse (volume-preserving) diffeomorphisms** $\mathrm{TDiff}(M)$
@@ -154,7 +154,105 @@ non-dynamical structure that carries the same information. It does **not** touch
 H2, H5, or H6 — which is why the ghost-gated higher-derivative routes and any
 $D\neq4$ moves remain correctly closed.
 
-## 5. Consequence: Lambda is an integration constant, and vacuum energy decouples
+## 5. Impact of relaxing each Lovelock hypothesis, and why this one is acceptable
+
+The wider impact of declining a Lovelock hypothesis depends entirely on *which*
+one. They are not interchangeable: each opens a different sector of theory space
+with a different stability cost and a different observational signature. The
+point of this section is that VED's relaxation (H3, unimodular) is the **mildest
+one available** — the only one whose wider impact leaves all local physics
+identical to GR.
+
+```text
+relaxed       opens                         stability / theoretical cost        observational channel
+hypothesis
+-----------   ---------------------------   ---------------------------------   --------------------------
+H2 2nd-order  higher-curvature, f(R),       CATASTROPHIC: Ostrogradsky ghost,   massive ghost / extra
+              R^2, Weyl^2                   loss of unitarity and vacuum         scalar; gated off in VED
+                                            stability
+H1 metric-    scalar-tensor, Palatini,      new propagating modes; fifth        extra GW polarizations,
+   only       torsion, nonmetricity         forces; equivalence-principle and   Yukawa, EP tests
+                                            screening burdens
+H5 locality   nonlocal gravity             causality / initial-value control;   IR / cosmological
+                                            ghost-free nonlocality is delicate   leakage
+H6 D = 4      Lovelock / Gauss-Bonnet      requires committing to extra         KK modes, GB couplings
+              become dynamical              dimensions and their stabilization
+H3 full-      unimodular gravity:          MILD: no new degrees of freedom,     Lambda status; vacuum-
+   diffeo     Lambda as integration        no ghost; only a non-dynamical       energy gravitation;
+              constant                      background volume form is added      nearly untestable locally
+```
+
+### Why H2, H1, H5, H6 are the costly breaks
+
+- **H2 (second order).** Relaxing it is the higher-derivative route. By
+  Ostrogradsky's theorem a non-degenerate higher-derivative Lagrangian has an
+  unbounded-below Hamiltonian — a ghost — so the vacuum is unstable. This is the
+  exact failure mode the program's residual-gate stack keeps detecting
+  (spin-2/Weyl ghost; scalaron blocked by P7′). Its wider impact is that you
+  threaten the stability of the theory itself. Highest cost, and already closed.
+- **H1 (metric only).** Adding an independent connection or extra field
+  generically adds **propagating degrees of freedom**: a scalar (Brans–Dicke /
+  $f(R)$ scalaron), torsion modes, or nonmetricity. These show up as extra
+  gravitational-wave polarizations, fifth forces, and equivalence-principle
+  violations, all tightly constrained, and each needs its own screening story to
+  survive. Moderate-to-high cost; this is roadmap route 1B's burden.
+- **H5 (locality).** Nonlocal gravity can be confined to the IR, but generic
+  nonlocality endangers causality and the initial-value formulation, and
+  ghost-free nonlocal constructions are delicate. Principled cost.
+- **H6 ($D=4$).** Making Gauss–Bonnet (or higher Lovelock terms) dynamical
+  requires actually committing to extra dimensions and a stabilization mechanism
+  — a large ontological price not on the table for a 4D substance theory.
+
+The common feature: every one of these adds structure that **propagates** — a
+ghost, a scalar, a polarization, a tower of modes — and therefore changes local
+physics and faces immediate experimental exposure.
+
+### Why H3 (unimodular) has an acceptable impact
+
+Relaxing H3 in the unimodular direction is qualitatively different because it
+**removes** a mode rather than adding one:
+
+```text
+no new propagating degrees of freedom   (UG has the same two graviton
+                                         polarizations as GR)
+no ghost                                 (nothing higher-derivative; the trace
+                                         mode is constrained, not dynamical)
+local dynamics identical to GR           (classical UG and GR+Lambda share a
+                                         solution space)
+```
+
+Everything that changes is **global or structural**, not local:
+
+1. **Lambda's status** shifts from a coupling in the action to a constant of
+   integration fixed by one global datum (§6).
+2. **Vacuum energy is sequestered** — a constant shift of the matter Lagrangian
+   is pure trace and drops out of the trace-free equation, so the bulk vacuum
+   energy does not gravitate (§6, point 1). This is a *benefit*, not a cost: it
+   defuses the radiative-stability face of the cosmological-constant problem.
+3. **The path-integral measure / quantum-cosmology bookkeeping** differ
+   ($\Lambda$ becomes conjugate to the spacetime four-volume), which is where
+   any genuine quantum distinction from GR would live.
+
+The honest costs, stated so they cannot ambush the claim:
+
+- **Absolute structure.** The fixed background volume form is a non-dynamical
+  field. Eliminating absolute structure was one of GR's signature achievements,
+  and unimodular gravity reintroduces a mild form of it. This is the standard
+  foundational objection and should be conceded openly.
+- **Recoverability.** The Henneaux–Teitelboim formulation restores full
+  diffeomorphism invariance by adding a multiplier field, at the cost of H1
+  instead. That this is possible shows the "violation" is partly a matter of
+  presentation — which both weakens any "we broke a sacred symmetry" rhetoric
+  and reassures that the relaxation is benign and well understood.
+
+Net assessment: among the six hypotheses, H3-unimodular is the unique relaxation
+that (i) introduces no instability, (ii) introduces no new local degree of
+freedom, (iii) leaves every tested prediction of GR intact, and (iv) changes
+exactly the one quantity — the status and gravitation of $\Lambda$ — that the
+vacuum-sector program is trying to explain. That is why it is the acceptable
+break, and the others are not.
+
+## 6. Consequence: Lambda is an integration constant, and vacuum energy decouples
 
 Take the divergence of the full Einstein tensor built from the trace-free
 equation. The Bianchi identity gives $\nabla^aG_{ab}=0$ geometrically; writing
@@ -187,7 +285,7 @@ will want stated explicitly:
    condition; in the Henneaux–Teitelboim canonical form it is conjugate to the
    total four-volume / "cosmic time").
 
-## 6. Why this *explains* the program's own results
+## 7. Why this *explains* the program's own results
 
 The unimodular reading is not merely consistent with the vacuum-sector program;
 it reproduces three of its empirical findings as theorems rather than
@@ -215,7 +313,7 @@ it is fixable only by a supplied global/boundary scale. That is the defining
 structural property of $\Lambda$ in unimodular gravity. The sweep was, in
 effect, an empirical rediscovery of the unimodular status of $\Lambda$.
 
-## 7. Refinement: VED is unimodular in the P7′-exact limit, with a calculable leak
+## 8. Refinement: VED is unimodular in the P7′-exact limit, with a calculable leak
 
 VED is **not** exactly unimodular once matter is present. The F1 result gives
 
@@ -240,7 +338,7 @@ matter is the source of the small $\kappa$-leak. The leak is $\sim6\times
 however, mean the unimodular identification should be stated as holding in the
 P7′-exact limit, with F1 as the controlled correction.
 
-## 8. Honest limits
+## 9. Honest limits
 
 - **No new local predictions follow from this alone.** Classical UG and GR+
   $\Lambda$ share a solution space, so this argument does not, by itself,
@@ -261,7 +359,7 @@ P7′-exact limit, with F1 as the controlled correction.
   the $\kappa=0$ constraint) is the same covariant-parent obligation the program
   already carries.
 
-## 9. What is genuinely new here
+## 10. What is genuinely new here
 
 The genuinely new content, relative to both standard UG and the current VED
 documents, is the **derivation of the unimodular constraint from a physical
@@ -280,7 +378,7 @@ P3 (constant vacuum density)
 is a structural result that closes, in one stroke, the question the Lambda
 baseline sweep left open ("why is Lambda unvalued by every local route?").
 
-## 10. Forge obligations (what would make this a verified result)
+## 11. Forge obligations (what would make this a verified result)
 
 The following are concrete, scriptable checks. They are the only thing that
 would justify a dedicated subfolder for this line.
