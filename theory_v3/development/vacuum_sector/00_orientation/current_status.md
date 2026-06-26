@@ -1014,3 +1014,30 @@ Next target:
 ```text
 apply the candidate sieve to possible strain axiom routes.
 ```
+
+## Strain Axiom Candidate Sieve
+
+The strain axiom candidate sieve is now recorded through VacuumForge as:
+
+```text
+derivation: strain_axiom_candidate_sieve_032
+obligation: strain_axiom_adoption_decision_required_032
+```
+
+Current conclusion:
+
+```text
+No currently named nonbaseline strain axiom satisfies the minimal contract.
+The only passing route is the baseline/null route: retain EH/GHY at
+epsilon = 0. This is not a new strain axiom.
+```
+
+Open nonbaseline routes remain incomplete. Metric relabeling and
+mechanism-fit axioms are rejected.
+
+Next target:
+
+```text
+decide whether to adopt a fully specified new strain axiom or keep nonbaseline
+mechanisms quarantined.
+```

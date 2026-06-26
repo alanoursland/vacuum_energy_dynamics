@@ -98,6 +98,8 @@ order:
 ../01_strain_functional/strain_branch_selector_decision_table_vacuumforge.md
 ../01_strain_functional/minimal_strain_axiom_contract.md
 ../01_strain_functional/minimal_strain_axiom_contract_vacuumforge.md
+../01_strain_functional/strain_axiom_candidate_sieve.md
+../01_strain_functional/strain_axiom_candidate_sieve_vacuumforge.md
 ```
 
 The selector decision table and minimal axiom contract are return-pass

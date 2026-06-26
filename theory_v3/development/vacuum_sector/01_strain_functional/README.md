@@ -114,6 +114,16 @@ fields for `X`, metric response, neighboring mismatch, `K_strain`, boundary
 variation, conservation, mode routing, epsilon classification, and falsifier.
 It rejects post-hoc axioms chosen to rescue side-ledger mechanisms.
 
+```text
+strain_axiom_candidate_sieve.md
+strain_axiom_candidate_sieve_vacuumforge.md
+```
+
+Sieve for currently named strain-axiom routes. It records that no nonbaseline
+candidate currently satisfies the minimal contract; the only passing route is
+the baseline/null choice of retaining the EH/GHY baseline at `epsilon = 0`,
+which is not a new strain axiom.
+
 ## Working Rule
 
 This folder may define contracts, ledgers, and admissibility criteria. It should

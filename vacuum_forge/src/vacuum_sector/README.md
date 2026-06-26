@@ -303,3 +303,12 @@ Defines the minimum required interface for any future nonbaseline strain axiom:
 conservation/source identity, mode and hyperbolicity route, epsilon
 classification, and falsifier. It adopts no axiom and rejects post-hoc
 mechanism-fit axioms.
+
+```text
+032_strain_axiom_candidate_sieve/
+```
+
+Applies the minimal axiom contract to currently named candidate routes. It
+records that no nonbaseline axiom route currently satisfies the contract; the
+only passing route is the null choice of retaining the EH/GHY baseline at
+`epsilon = 0`.

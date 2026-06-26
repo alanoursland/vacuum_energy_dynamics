@@ -263,6 +263,11 @@ The minimal axiom contract in
 [01_strain_functional/minimal_strain_axiom_contract.md](01_strain_functional/minimal_strain_axiom_contract.md)
 defines the required fields for any such future axiom and rejects post-hoc
 mechanism-fit axioms.
+The candidate sieve in
+[01_strain_functional/strain_axiom_candidate_sieve.md](01_strain_functional/strain_axiom_candidate_sieve.md)
+records that no currently named nonbaseline axiom route satisfies that
+contract; the only passing route is the baseline/null route, not a new strain
+axiom.
 
 ```text
 archive/
@@ -312,7 +317,9 @@ Immediate task order:
 30. Build the strain-branch selector decision table.
 31. Write the minimal strain axiom contract.
 32. Apply a candidate sieve to possible strain axiom routes.
-33. Only add later scripts for concrete candidate terms or counterexamples.
+33. Decide whether to adopt a fully specified new strain axiom or freeze
+    nonbaseline mechanisms.
+34. Only add later scripts for concrete candidate terms or counterexamples.
 ```
 
 The useful next question is:
