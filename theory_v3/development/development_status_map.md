@@ -4,746 +4,240 @@
 
 This document is a top-level status map for the `theory_v3/development/` tree.
 
-It is not a postulate, theorem, proof, or field equation. It is an organizational document.
+It is not a postulate, theorem, proof, or field equation. It is an
+organizational document. It tracks what has been explored, what the current
+status is, where the supporting files live, and what the next useful move
+appears to be.
 
-Its purpose is to track:
+This map cuts across the development folders. When it disagrees with a folder's
+own status note, that note is authoritative and this map is stale.
+
+## Headline State
+
+The field equations are **closed**. From the adopted postulate set (P1–P6,
+P7′, P9) the development program derived the Einstein field equations,
 
 ```text
-what has been explored,
-what the current result/status is,
-where the supporting files live,
-what depends on what,
-and what the next useful move appears to be.
+G_ab + Lambda g_ab = (8 pi G / c^4) T_ab
 ```
 
-The development tree currently organizes work into:
+with zero matched coefficients. The result was admitted to the theory on
+2026-06-12 and is now stated as a result in `../04_field_equations/`. The
+development tree is the lab notebook behind that result and the working area
+for the open physics it hands off.
+
+Two status documents sit above this map and are more detailed:
 
 ```text
-background_geometry/
-field_equation_candidates/
-intuition_models/
-lab_reports/
-ontology_and_mechanism/
+field_equation_set_current_status.md   the field-equation status snapshot,
+                                       trial scoreboard, and open-item ledger
+../04_field_equations/                 the statement of record (proof, chain,
+                                       sector architecture, divergences, debts)
 ```
 
-This map cuts across those folders.
+The active frontier is the vacuum sector:
 
----
+```text
+vacuum_sector/summary.md               digest of the post-closure program
+```
 
 ## Status Legend
 
 ```text
-stable reduced result:
-  internally consistent reduced-sector result supported by forge/script work
-
-candidate:
-  plausible mechanism or interpretation, not yet proven
-
-negative result:
-  useful failed derivation or reframing
-
-gauge-warning:
-  result constraining how reduced variables may be interpreted
-
-open:
-  unresolved target or future work
+closed:          admitted result; coefficients frozen
+discharged:      a rigor debt on the closed result that has been paid down
+stable result:   internally consistent reduced-sector result, forge-supported
+candidate:       plausible mechanism or interpretation, not yet proven
+quarantined:     allowed but walled off from the closed sector pending a gate
+negative result: useful failed derivation or reframing
+open:            unresolved target or future work
+historical:      superseded by the closure; retained for provenance
 ```
 
----
+## What Changed Since the Previous Map
 
-## Current Main Development Branch
+The previous version of this map described the **reduced exterior mode
+program** (the log-scale `kappa`/`s` split, kappa-suppression toys, the shear
+source law, and a reduced exterior action) as the "current main development
+branch." That program was the pre-closure scaffolding. It has since been
+absorbed and superseded:
 
-The current main branch is the reduced static-spherical exterior program.
+- The reduced static-spherical results (`kappa = (1/2)ln(AB)`,
+  `s = (1/2)ln(A/B)`, P7′ giving `kappa = 0` and `A = e^s`) are now the reduced
+  working forms of the closed field equations
+  (`../04_field_equations/01_the_field_equations.md`).
+- The shear source law and reduced exterior action were superseded by the
+  trials program's derivation of the areal-flux law and the C2 self-coupling
+  bootstrap.
+- The reduced-exterior candidate files and lab reports now live under
+  `field_equation_candidates/` and the program summaries
+  (`reduced_exterior_mode_program_summary*.md`) are retained as history.
 
-The chain is:
-
-```text
-log-scale mode decomposition
-  -> kappa controls reciprocal scaling
-  -> kappa suppression allows AB = 1
-  -> shear mode s carries compensated exterior distortion
-  -> shear source law gives weak-field 1/r profile
-  -> reduced exterior action unifies kappa suppression and shear sourcing
-  -> gauge studies clarify that kappa and s are areal-gauge reduced variables
-  -> regime studies classify exchange, creation/destruction, and relaxation
-```
-
-In equations:
-
-$$a=\ln A,$$
-
-$$b=\ln B,$$
-
-$$\kappa=\frac{a+b}{2},$$
-
-$$s=\frac{a-b}{2},$$
-
-and:
-
-$$AB=e^{2\kappa}.$$
-
-Thus, in static spherical areal gauge:
-
-$$\kappa=0\quad\Longleftrightarrow\quad AB=1.$$
-
-The reduced exterior target is:
-
-$$\kappa=0,\qquad s\neq0.$$
-
-The candidate shear source law is:
-
-$$\nabla^2s=\frac{8\pi G}{c^2}\rho.$$
-
-For a spherical source:
-
-$$s(r)=-\frac{2GM}{rc^2}.$$
-
-Then:
-
-$$A=e^s\approx1-\frac{2GM}{rc^2},$$
-
-and:
-
-$$B=e^{-s}\approx1+\frac{2GM}{rc^2}.$$
-
-This is the best-developed reduced branch so far.
-
----
+The reduced-toy candidate status table from the previous map is therefore
+**historical** and is not reproduced here. Use it only for provenance.
 
 ## Folder Map
 
-### `background_geometry/`
-
-Current files:
+### `field_equation_trials/`
 
 ```text
-lorentzian_manifold_as_formal_home.md
+status: closed program (the derivation of record)
 ```
 
-Status:
+The trials program that derived the field equations sector by sector
+(static bookkeeping, sector signature, radiative bootstrap `K_T`, vector
+closure, four-derivative elimination). Closed by its `99_closing_report.md`.
+The scoreboard lives in `field_equation_set_current_status.md`. Six of the
+owner's own candidate mechanisms (C1 burden reduction, A2 TVN tidal sector,
+D1 depletion-history halos, and others) were killed here under gate discipline.
+
+### `projection_origin_probe/`
 
 ```text
-background / formal home
+status: closed bottleneck + standing provenance archive (large)
 ```
 
-Role:
+The probe that dissolved the former "all-order parity gap" bottleneck by
+identifying the generator matrix as a cross-Gram between admissibility bases
+(`r_k = (2k-1)/(2k+3)` as the boundary/admissibility coefficient; the regularity
+ladder; invertibility without positivity). Also holds the Einstein–Hilbert
+origin tests and the vacuum-strain-functional frontier write-up that the vacuum
+sector reads. Large archive; enter via its own READMEs, not in full.
 
-This folder provides the general geometric setting for the theory. It is not yet tightly integrated with the reduced exterior mode program.
-
-Current need:
-
-The reduced variables \(\kappa\) and \(s\) need a gauge-aware or covariant parent. That future work should eventually connect back to this folder.
-
----
-
-### `field_equation_candidates/`
-
-Current visible candidate files include:
+### `covariant_lifts/`
 
 ```text
-candidate_areal_gauge_kappa_condition.py
-candidate_covariant_parent_modes.md
-candidate_exchange_creation_relaxation_regimes.md
-candidate_exterior_shear_source_law.md
-candidate_gauge_dependence_modes.py
-candidate_reduced_exterior_action.md
-candidate_regime_map_observations.md
-log_scale_modes_candidate.md
+status: partly discharged, partly open (rigor debt on the closed result)
 ```
 
-Status:
+The covariant-lift debts of the reduced theorems. Discharged so far:
+radiative TT averaging (`radiative_tt_averaging/`), radiative gauge invariance
+(`radiative_gauge_invariance/`), and the time-dependent transverse vector
+sector (`vector_time_dependent/`). Still open: the statics C2/C3 covariant
+lift and nonlinear stability.
+
+### `closure_uniqueness/`
 
 ```text
-active candidate branch
+status: discharged
 ```
 
-Role:
+The in-house self-coupled spin-2 closure-uniqueness program (group 018). It
+retired the former Deser 1970 citation as active rigor debt under the stated
+local, two-derivative, no-extra-field theorem scope. Changes no coefficient.
 
-This folder contains the active speculative mechanisms and candidate field-equation structures.
-
-Current note:
-
-Several scripts are listed here. If the repo policy is to keep scripts in `scripts_v3/`, then the `.py` files may eventually need either to move or to be represented here by `.md` notes that reference the scripts.
-
----
-
-### `lab_reports/`
-
-Current visible lab reports include:
+### `scalaron_screening/`
 
 ```text
-candidate_exchange_creation_distinction_lab_report.md
-kappa_suppression_lab_report.md
-log_scale_modes_lab_report.md
-log_scale_modes_v2_lab_report.md
-p3_volume_preservation_lab_report.md
-reduced_exterior_mode_program_summary.md
-shear_profile_source_law_lab_report.md
+status: discharged
 ```
 
-Status:
+Screening note: screening changes a scalaron's detectability/range/amplitude
+but does not satisfy exact P7′ unless the scalar profile is identically zero
+(`r q' - q = 0` plus asymptotic flatness forces `q = 0`).
+
+### `tensor_virial_identity/`
 
 ```text
-evidence / experiment record
+status: discharged
 ```
 
-Role:
-
-This folder records forge/script results, including positive tests, negative tests, and summary conclusions.
-
-Current note:
-
-The lab reports are the evidence layer. Candidate notes should not overclaim beyond what these reports support.
-
----
+The tensor-virial identity generalized to the standard conservation theorem
+under explicit assumptions (flat-background stress conservation, symmetric
+stress tensor, compact support / sufficient falloff). Supports the radiative
+quadrupole result.
 
 ### `ontology_and_mechanism/`
 
-Current files:
-
 ```text
-gravity_as_vacuum_burden_reduction.md
-merger_energy_scale_check.md
+status: ontology / interpretation + one live rigor debt
 ```
 
-Status:
+Conceptual and mechanism notes: curvature self-coupling, the P4 sign fork and
+infall ledger, positive curvature energy `J_curv`, gravity-as-burden-reduction,
+and the standing **engineering seams** register (the P7′ current/`kappa`
+channel, the Casimir/boundary sector, the interior cap, and the
+substance-creation regime — none may be built into the theory). Also holds the
+open `metric_branch_vs_finsler_gap.md`, the live rigor debt on whether the
+local interval is a symmetric bilinear metric rather than Finslerian.
+
+### `vacuum_sector/`
 
 ```text
-ontology / interpretation
+status: active frontier
 ```
 
-Role:
+The post-closure program for the physics the field equations hand off:
+`Lambda`'s value, the dark sector, the measure identity, the interior cap, the
+non-gravitational channels, and the central strain-branch selector question.
+Current state (VacuumForge derivations 001–032): only the EH/GHY baseline at
+`epsilon = 0` is licensed; no nonbaseline mechanism has earned new-physics
+status; the strain-axiom adoption decision is pending. Enter via
+`vacuum_sector/summary.md` and `vacuum_sector/00_orientation/`.
 
-This folder appears to hold conceptual mechanism notes rather than reduced field-equation candidates.
+### `field_equation_candidates/`
 
-Current need:
+```text
+status: historical candidate archive (large)
+```
 
-The exchange/creation/relaxation regime work may eventually belong here if promoted from field-equation candidate classification into ontology architecture.
+The pre-closure and during-closure candidate field-equation structures,
+including the absorbed reduced-exterior mode program. Large archive; superseded
+by the closed result. Use for provenance.
 
----
+### `background_geometry/`
+
+```text
+status: background / formal home
+```
+
+The general geometric setting (`lorentzian_manifold_as_formal_home.md`).
 
 ### `intuition_models/`
 
-Current files:
-
 ```text
-informal_continuum_graph_model.md
+status: intuition / informal model
 ```
 
-Status:
+Informal models (1D scalar dissipation, the continuum graph model). Kept
+separate from formal claims.
+
+## Open Work, By Centrality
 
 ```text
-intuition / metaphor / informal model
+1. covariant lifts (statics C2/C3, nonlinear stability)   rigor debt, open
+2. metric-vs-Finsler input audit (quadratic selector)     rigor debt, open
+3. vacuum-sector strain-branch selector decision          frontier, open
+4. Lambda's value from substance properties               frontier, open
+5. dark sector (w ~ 0 excess: production + abundance)      frontier, open
+6. interior cap (finite-strain admissibility scale)        frontier, open
+7. UFFT Casimir squeeze (29.9-38.6 micron window)          frontier, open
+8. data program (alpha(lambda) curve library)              support, open
 ```
 
-Role:
-
-This folder holds informal models. It should remain separated from formal candidate claims.
-
-Current note:
-
-The slogan:
-
-```text
-Gravity is the compensated shear left after the source-free vacuum suppresses imbalance.
-```
-
-belongs at the intuition level unless explicitly tied to reduced equations.
-
----
-
-## Candidate Status Table
-
-| Candidate / report | Current status | Key result | Main caveat | Next action |
-|---|---|---|---|---|
-| `log_scale_modes_candidate.md` | stable reduced result | \(\kappa=(\ln A+\ln B)/2\) controls \(AB=e^{2\kappa}\) | static spherical reduced sector | keep as foundation of reduced branch |
-| `log_scale_modes_lab_report.md` | evidence | first log-scale test established the mode split | superseded/refined by v2 | preserve as history |
-| `log_scale_modes_v2_lab_report.md` | evidence | clarified tautology/leak controls and trace-kernel behavior | reduced toy only | preserve as stronger report |
-| `kappa_suppression_lab_report.md` | stable reduced result | source-free toys suppress \(\kappa\) while allowing \(s\neq0\) | not covariant, not source law | use as basis for exterior compensation |
-| `candidate_exterior_shear_source_law.md` | candidate | \(\nabla^2s=8\pi G\rho/c^2\) gives \(s=-2GM/(rc^2)\) | assumes source law and flux normalization | connect to reduced action |
-| `shear_profile_source_law_lab_report.md` | evidence | forge confirmed radial Laplace/flux chain | does not derive the equation | preserve as support |
-| `candidate_reduced_exterior_action.md` | strongest reduced action candidate | one toy action gives \(\kappa\)-suppression and shear source law | non-covariant areal-gauge toy | next: covariant/gauge-aware parent |
-| `candidate_covariant_parent_modes.md` | candidate / parent-mode reconnaissance | \(\kappa\) resembles reduced trace/conformal mode; \(s\) resembles reduced trace-free shear | not covariant yet | continue with gauge-aware formulation |
-| `candidate_gauge_dependence_modes.py` | gauge-warning script | naive \(\kappa,s\) shift under \(r=f(R)\) | script not a final note | keep result in gauge warning docs |
-| `candidate_areal_gauge_kappa_condition.py` | gauge-fixed formulation script | \(\kappa_{\rm areal}=0\) becomes \(TQ=(S')^2\) | static spherical only | preserve as gauge-safe formulation |
-| `candidate_areal_gauge_kappa_condition.md` | stable gauge-fixed result | \(\kappa=0\) is safe as areal-gauge condition, not invariant scalar | not nonspherical | use language consistently |
-| `p3_volume_preservation_lab_report.md` | negative result | P1+P3 equate energy and volume, but do not define exchange | does not close equal-response gap | motivates regime distinction |
-| `candidate_exchange_creation_relaxation_regimes.md` | candidate ontology/classification | separates exchange, creation/destruction, relaxation | not derived from postulates | test and map to observations |
-| `candidate_exchange_creation_distinction_lab_report.md` | evidence / stable classification test | exchange gives \(J_\kappa=0\), creation/destruction source \(\kappa\) | does not prove nature uses regimes | use for regime map |
-| `candidate_regime_map_observations.md` | reality-facing candidate map | maps regimes to static gravity, cosmology, waves, collapse, deviations | no quantitative constraints yet | next: kappa-leak deviation script |
-| `reduced_exterior_mode_program_summary.md` | branch summary | connects log-scale, \(\kappa\)-suppression, shear source law, weak-field metric | needs updates as branch grows | keep as branch overview |
-
----
-
-## Current Stable Reduced Results
-
-### 1. Log-scale mode split
-
-Status:
-
-```text
-stable reduced result
-```
-
-Result:
-
-$$\kappa=\frac{\ln A+\ln B}{2},$$
-
-$$s=\frac{\ln A-\ln B}{2},$$
-
-and:
-
-$$AB=e^{2\kappa}.$$
-
-Interpretation:
-
-```text
-kappa = reduced imbalance / trace-like mode
-s = reduced compensated shear mode
-```
-
-Caveat:
-
-This is static spherical reduced language.
-
----
-
-### 2. Kappa suppression
-
-Status:
-
-```text
-stable reduced result
-```
-
-Result:
-
-Source-free exterior toy functionals can suppress:
-
-$$\kappa=0$$
-
-while allowing:
-
-$$s\neq0.$$
-
-Interpretation:
-
-```text
-source-free exterior resists imbalance while allowing compensated shear
-```
-
-Caveat:
-
-The mechanism is still reduced and not covariant.
-
----
-
-### 3. Shear source law
-
-Status:
-
-```text
-candidate supported by forge
-```
-
-Result:
-
-If:
-
-$$\nabla^2s=\frac{8\pi G}{c^2}\rho,$$
-
-then for spherical mass:
-
-$$s(r)=-\frac{2GM}{rc^2}.$$
-
-This gives the weak-field exterior metric coefficients when \(\kappa=0\).
-
-Caveat:
-
-The source law is not yet derived from deeper postulates.
-
----
-
-### 4. Reduced exterior action
-
-Status:
-
-```text
-strongest reduced action candidate
-```
-
-Candidate density:
-
-$$L =
-K_\kappa|\nabla\kappa|^2
-+
-M_\kappa^2\kappa^2
-+
-K_s|\nabla s|^2
-+
-\alpha\rho s.$$
-
-With:
-
-$$\alpha=\frac{16\pi G K_s}{c^2},$$
-
-the variation gives the desired reduced equations.
-
-Caveat:
-
-This is not a covariant action.
-
----
-
-### 5. Gauge correction
-
-Status:
-
-```text
-stable gauge-warning / gauge-fixed result
-```
-
-Naive modes shift under radial reparameterization:
-
-$$\kappa\rightarrow\kappa+\ln f'(R),$$
-
-$$s\rightarrow s-\ln f'(R).$$
-
-Therefore \(\kappa\) and \(s\) are not raw invariant scalar fields.
-
-Safe formulation:
-
-For:
-
-$$ds^2=-T(R)c^2dt^2+Q(R)dR^2+S(R)^2d\Omega^2,$$
-
-define areal radius:
-
-$$r_{\rm areal}=S(R).$$
-
-Then:
-
-$$\kappa_{\rm areal} =
-\frac12\ln\left(\frac{T(R)Q(R)}{[S'(R)]^2}\right).$$
-
-The compensation condition is:
-
-$$\kappa_{\rm areal}=0,$$
-
-equivalently:
-
-$$T(R)Q(R)=[S'(R)]^2.$$
-
-Caveat:
-
-Static spherical only.
-
----
-
-### 6. Exchange / creation / relaxation regimes
-
-Status:
-
-```text
-stable reduced classification, not yet ontology proof
-```
-
-Exchange:
-
-$$J_a=S,\qquad J_b=-S.$$
-
-Then:
-
-$$J_\kappa=0,\qquad J_s=S.$$
-
-Creation/destruction:
-
-$$J_a=\pm C,\qquad J_b=\pm C.$$
-
-Then:
-
-$$J_\kappa=\pm C.$$
-
-Interpretation:
-
-```text
-exchange supplies compensated shear
-creation/destruction source traceful kappa
-relaxation drives imbalance toward zero
-```
-
-Caveat:
-
-The theory has not derived the exchange/creation distinction from postulates.
-
----
-
-## Main Open Questions
-
-### 1. Covariant parent
-
-Current question:
-
-```text
-What full geometric/covariant structure reduces to kappa and s in static spherical areal gauge?
-```
-
-Status:
-
-```text
-open
-```
-
-Likely next work:
-
-```text
-candidate_orbit_space_modes.py
-candidate_orbit_space_modes.md
-```
-
-or:
-
-```text
-candidate_covariant_parent_modes_v2.md
-```
-
----
-
-### 2. Reduced action derivation
-
-Current question:
-
-```text
-Can the reduced exterior action be derived from deeper ontology or variational principles?
-```
-
-Status:
-
-```text
-open
-```
-
-Key issue:
-
-The reduced action works algebraically, but its coefficients and coupling structure are not derived.
-
----
-
-### 3. Exchange/creation distinction
-
-Current question:
-
-```text
-Is exchange vs creation/destruction derived from existing postulates, or does it need to become a structural principle?
-```
-
-Status:
-
-```text
-open
-```
-
-Current result:
-
-P1+P3 identify energy and volume, but they do not classify process type.
-
----
-
-### 4. Kappa-leak deviations
-
-Current question:
-
-```text
-If kappa is small but nonzero, what observable deviations appear?
-```
-
-Status:
-
-```text
-next quantitative target
-```
-
-Proposed script:
-
-```text
-candidate_kappa_leak_deviation.py
-```
-
-Reason:
-
-This is the first likely route toward falsifiable deviations from GR-like weak-field behavior.
-
----
-
-### 5. Cosmological creation
-
-Current question:
-
-```text
-Can expansion be modeled as traceful vacuum creation?
-```
-
-Status:
-
-```text
-speculative / future
-```
-
-Recommendation:
-
-Do not prioritize until kappa-leak weak-field consequences are clearer.
-
----
-
-### 6. Dynamic shear and gravitational waves
-
-Current question:
-
-```text
-What is the time-dependent tensorial parent of the shear mode?
-```
-
-Status:
-
-```text
-future
-```
-
-Recommendation:
-
-Do after static/gauge/covariant parent work.
-
----
-
-## Recommended Next Work
-
-### Immediate next quantitative script
-
-```text
-candidate_kappa_leak_deviation.py
-```
-
-Purpose:
-
-Test a small nonzero \(\kappa\) mode:
-
-$$\kappa(r)=\varepsilon_\kappa(r),$$
-
-with the usual shear profile:
-
-$$s(r)=-\frac{2GM}{rc^2}.$$
-
-Then:
-
-$$A=e^{\kappa+s},$$
-
-and:
-
-$$B=e^{\kappa-s}.$$
-
-Compute weak-field deviations in:
-
-```text
-A coefficient
-B coefficient
-AB product
-gamma-like response
-possible PPN-style deviation proxy
-```
-
-Reason:
-
-The regime map identified mixed shear + traceful leakage as the first natural deviation channel.
-
----
-
-### Immediate next conceptual note
-
-```text
-candidate_kappa_leak_deviation.md
-```
-
-or after the script:
-
-```text
-kappa_leak_deviation_lab_report.md
-```
-
-Purpose:
-
-Record whether small \(\kappa\)-leak is observationally plausible or already tightly constrained.
-
----
-
-### Medium-term work
-
-```text
-candidate_orbit_space_modes.py
-```
-
-Purpose:
-
-Express static spherical geometry in terms of a 2D orbit space plus areal-radius scalar, and see whether \(\kappa_{\rm areal}\) and \(s\) can be represented in a more gauge-aware way.
-
----
-
-## Candidate Dependency Graph
-
-```text
-log_scale_modes_candidate
-  -> log_scale_modes_lab_report
-  -> log_scale_modes_v2_lab_report
-  -> kappa_suppression_lab_report
-  -> reduced_exterior_mode_program_summary
-
-kappa_suppression_lab_report
-  -> candidate_exterior_shear_source_law
-  -> shear_profile_source_law_lab_report
-  -> candidate_reduced_exterior_action
-
-candidate_reduced_exterior_action
-  -> candidate_covariant_parent_modes
-  -> candidate_gauge_dependence_modes
-  -> candidate_areal_gauge_kappa_condition
-
-p3_volume_preservation_lab_report
-  -> candidate_exchange_creation_relaxation_regimes
-  -> candidate_exchange_creation_distinction_lab_report
-  -> candidate_regime_map_observations
-
-candidate_regime_map_observations
-  -> candidate_kappa_leak_deviation.py
-```
-
----
+Items 1–2 are debts on the closed result: no coefficient can move while they
+are open, but they do not threaten the equations. Items 3–8 are the open
+physics, all routed through the vacuum-sector program.
+
+## Note On Sibling Planning Docs
+
+`development_plan.md` still reflects the **pre-closure** framing (it treats P7
+and P8 as live postulates and names "derive P7 and P8" as the main frontier).
+It predates the closure and the P7→P7′ / P8→theorem demotions. Read it as a
+historical planning record; `field_equation_set_current_status.md` and
+`../04_field_equations/` are the current state.
 
 ## Current Best One-Paragraph Summary
 
-The reduced exterior development branch has produced a coherent static-spherical areal-gauge toy program. The log-scale split identifies \(\kappa\) as the reciprocal-scaling control mode and \(s\) as the compensated shear mode. Kappa-suppression toys show that source-free exteriors can relax to \(\kappa=0\) while allowing \(s\neq0\). A candidate shear source law gives \(s(r)=-2GM/(rc^2)\), recovering the weak-field exterior metric when \(\kappa=0\). A reduced action unifies these two mechanisms. Gauge studies show that \(\kappa\) and \(s\) are not invariant scalar fields but are meaningful as areal-gauge reduced variables. Regime studies distinguish conservative exchange, traceful creation/destruction, and relaxation, identifying mixed \(\kappa\)-leak as a possible deviation channel. The next quantitative target is to compute observational consequences of small nonzero \(\kappa\).
-
----
-
-## Status Snapshot
-
-```text
-Most stable reduced result:
-  log-scale kappa/s split and AB = exp(2 kappa)
-
-Strongest mechanism candidate:
-  reduced exterior action
-
-Most important caution:
-  kappa and s are areal-gauge reduced variables, not raw invariant fields
-
-Most important negative result:
-  P1+P3 do not derive exchange; they only equate energy preservation and volume preservation
-
-Most promising deviation channel:
-  small kappa-leak / mixed exchange+creation
-
-Best next script:
-  candidate_kappa_leak_deviation.py
-
-Best next long-term theory goal:
-  covariant/gauge-aware parent of kappa and s
-```
+The development program derived the Einstein field equations from the
+vacuum-substance postulate set, sector by sector, with zero matched
+coefficients, and admitted the result on 2026-06-12. The reduced exterior mode
+program that earlier versions of this map tracked has been absorbed into the
+closed result's reduced working forms. The trials, projection-origin, closure,
+scalaron, tensor-virial, and covariant-lift folders are the derivation and
+its discharged rigor closures; the remaining live debts are the statics
+covariant lift, nonlinear stability, and the metric-vs-Finsler input audit.
+All genuinely open physics — `Lambda`, the dark sector, the interior cap, the
+non-gravitational channels, and the central strain-branch selector — is routed
+through the active vacuum-sector program, where only the EH/GHY baseline at
+`epsilon = 0` is currently licensed.
