@@ -1424,3 +1424,48 @@ bulk_relaxation_scaling_041 (phase 2): periodic bulk packings -- floor
 intensivity vs system size, disclination-network formation, defect
 energy spectrum.
 ```
+
+## Discrete Conservation and Boundary Data (contract completion)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: discrete_conservation_boundary_042
+obligation satisfied: contract_fields_filled_042
+obligation opened:    strain_axiom_adoption_decision_live_042 (theory owner)
+```
+
+Current conclusion:
+
+```text
+The packing model's last two absent strain-axiom contract fields are
+filled:
+
+CONSERVATION: the flat Schlafli identity sum_e l_e d(delta_e) = 0
+(2D exact symbolic; 3D verified to 50 digits at generic exact
+configurations and exactly on the symmetric family) closes the Regge
+variation -- dS = sum_e delta_e dl_e -- and under vertex displacements
+(K3's discrete relabelings) the action varies only through the metric
+data: the discrete diffeomorphism/Bianchi structure.
+
+BOUNDARY: the Hartle-Sorkin hinge term psi_h = pi - sum(dihedrals) is
+exactly additive under gluing (psi_1 + psi_2 = interior deficit;
+wedge-ring 2+3 witness gives Delta_0 exactly) -- the property that
+defines GHY -- and the 2D Gauss-Bonnet-with-boundary ledger closes
+combinatorially.
+
+Contract status: eight of nine fields filled (mode count partial,
+pending the 4D/Lorentzian lift). The sector's head obligation --
+the strain-axiom adoption decision (032) -- is now LIVE with a
+near-complete candidate and pre-registered falsifiers (volume-mode
+restoring force; floor/conversion-factor split). Adoption or
+quarantine is a theory-owner call of the P7'/P9 class.
+```
+
+Next target:
+
+```text
+Theory-owner decision on the packing strain axiom; in parallel:
+bulk_relaxation_scaling_041 (phase 2), p7prime_packing_tension_039,
+and packing_model_4d_lorentzian_lift_040 (the one partial field).
+```
