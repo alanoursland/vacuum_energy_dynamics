@@ -86,8 +86,8 @@ This table extends the program checkpoint's ledger through derivation 032.
 | closed metric branch | conditionally reconstructed | baseline retained at `epsilon = 0` |
 | strain branch selector | open, decision pending | central obligation; minimal axiom contract written, candidate sieve run, no nonbaseline axiom passes |
 | local higher-curvature residual | not licensed | scalar prototype and tensor-route audit both block it; spin-2/Weyl killed by ghost pole; scalaron/f(R) blocked by P7′/weak-field unless reopened |
-| nonzero Lambda baseline | allowed but unvalued | full selector sweep (variational, boundary, topology, measure, relaxation, frustration-floor) derives no value without importing a scale |
-| dark-sector excess | candidate only | dustlike `w = 0` row passes clustering/conservation as a candidate; abundance/production unlicensed; observed-density backsolves rejected |
+| nonzero Lambda baseline | integration constant (033) | forge-verified unimodular result: P3 supplies the fixed-measure constraint, Lambda is an integration constant fixed by one global datum, bulk vacuum energy is sequestered; the 008–016 sweep negatives are theorems of this reading; the value (the global datum) remains external |
+| dark-sector excess | candidate only | dustlike `w = 0` row passes clustering/conservation as a candidate; abundance/production unlicensed; observed-density backsolves rejected; floor *variations* with an explicit exchange ledger route here (035) |
 | non-gravitational channels | quarantined | Casimir/UFFT operator not instantiated; substance-frame coupling silent; no channel live |
 | substance-frame observables | silent frame allowed | bounded observable coupling unlicensed; observed-signal backsolves rejected |
 | strong-interior cap | contract only | exterior matching lemma protects exterior; finite-strain bound and cap scale not derived (imports `kappa_max`) |
@@ -107,6 +107,12 @@ obligation and opening the next.
 | non-grav channels | 020–024 | Casimir/UFFT and substance-frame channels quarantined; no operator or coupling licensed. |
 | interior cap | 025–028 | exterior matching lemma proven; no finite-strain cap scale derived; global/boundary/topology selectors set sectors, not values. |
 | return to center | 029–032 | program checkpoint; strain-branch decision table; minimal strain axiom contract; candidate sieve. No named nonbaseline axiom satisfies the contract. |
+| unimodular result | 033 | lovelock_breaks.md forge-verified: P3 is the unimodular constraint (exact in the P7′ limit, F1 leak controlled); Λ is an integration constant; vacuum energy sequestered. Covariant constraint lift opened. |
+| covariant constraint | 034 | κ is a scalar; the unimodular multiplier is Λ (constant on shell); the sourced κ-equation re-derives the F1 coefficient from the dust stress with no free input. Λ lane's sole open item: the global datum. |
+| floor constraint | 035 | branch decision: floor-as-local-Λ-density is closed by sequestering; surviving routes are the global-datum derivation (Λ lane) and explicitly exchanged floor variations (dark-excess lane). |
+| global datum | 036 | the datum is the ground configuration's intrinsic curvature (Λ = R_ground/4, floor energy cancels); frustration relief predicts Λ > 0 (dihedral deficit closes on S³ — the 600-cell), conditional on the packing reading; magnitude gated on a derived ~10⁻¹²² near-complete-relief suppression. |
+| relief kill | 037 | exact dihedral function cos δ(s) = cos s/(1+2cos s) kills the partial-relief value route: relief is quadratic-flat (Δ = Δ₀ − (5√2/24)s²), so observed-Λ curvature relieves ~10⁻¹²² of the frustration and no intermediate regime exists. Coherent branch: flat-frustrated ground state with sequestered floor (Λ_ground = 0); Λ_obs stays with the global datum. Sign statement exactified; value route dead. |
+| substance identity | 038 | the floor is identified with P1/P3 substance energy: action term splits into inert fiducial constant + O(κ) leak coupling ("does not gravitate" is a theorem of P3's unimodular content); conversion factor gets the target ρ_v = c_e κ_w Δ₀²/(2a³); packing dihedrals are exactly dilation-invariant and first-order shear-sensitive — the trace-constrained/shear-energetic sector signature emerges bottom-up. Open: κ_w, a, c_e microphysics. |
 
 ## The Frontier
 

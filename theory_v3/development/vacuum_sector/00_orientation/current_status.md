@@ -1041,3 +1041,243 @@ Next target:
 decide whether to adopt a fully specified new strain axiom or keep nonbaseline
 mechanisms quarantined.
 ```
+
+## Unimodular Lovelock Break (verification of lovelock_breaks.md)
+
+The lovelock_breaks.md structural argument is now recorded through
+VacuumForge as:
+
+```text
+derivation: unimodular_lovelock_break_033
+obligation satisfied: lovelock_break_verification_033
+obligation opened:    unimodular_covariant_constraint_lift_033
+```
+
+Current conclusion:
+
+```text
+All five forge obligations of lovelock_breaks.md are verified: the kappa /
+volume-density identity; the H3 violation nabla^a(R_ab - (1/4) g_ab R) =
+(1/4) nabla_b R on two independent families; Lambda as an integration
+constant (FRW trace-free + conservation, with algebraic reconstruction of
+G_ab + Lambda g_ab = k T_ab); vacuum-energy sequestering; and the F1 leak /
+SdS exactness scope statement.
+```
+
+Consequences for the lanes: the Lambda baseline status changes from
+"allowed but unvalued (selector missing)" to "integration constant fixed by
+a global datum; bulk vacuum energy sequestered" — the 008-016 sweep
+negatives are now theorems of the unimodular reading rather than empirical
+findings. For the strain-axiom decision (032): the candidate constraint
+axiom was already in the postulate set; P3 read through the kinematic
+identity is a fixed-measure commitment. No nonbaseline physics is licensed;
+Lambda's value is not derived.
+
+Next target:
+
+```text
+unimodular_covariant_constraint_lift_033: state and verify the kappa = 0
+constraint covariantly, including its interaction with the F1 leak.
+```
+
+## Covariant Form of the Unimodular Constraint
+
+Recorded through VacuumForge as:
+
+```text
+derivation: unimodular_covariant_constraint_034
+obligation satisfied: unimodular_covariant_constraint_lift_033/034
+obligation opened:    lambda_global_datum_derivation_required_034
+```
+
+Current conclusion:
+
+```text
+kappa is a scalar given the fiducial volume form (distorted-chart witness);
+the unimodular multiplier is forced constant on shell (metric compatibility
++ Bianchi + conservation, two families) and IS Lambda; and the constraint's
+controlled violation is the exact sourced equation
+kappa'(r) = -(rB/2N)(T^t_t - T^r_r), whose comoving-dust content re-derives
+the F1 leak coefficient AB - 1 = (3/2) Omega_m (H0 r/c)^2 with no free
+input. The Lambda lane's sole open item is the global datum.
+```
+
+## Sequestering Constraint on the Frustration Floor
+
+Recorded through VacuumForge as:
+
+```text
+derivation: floor_sequestering_constraint_035
+branch decision: kill_floor_as_local_lambda_density_035
+obligation opened: floor_global_datum_reposing_035
+```
+
+Current conclusion:
+
+```text
+A constant frustration-floor density is gravitationally invisible (the
+trace-free dynamics are blind to it; the integration constant compensates
+exactly), and an isolated time-varying floor violates conservation. The
+floor-as-local-gravitating-w=-1-density identification in
+dark_energy_accounting.md is CLOSED. Surviving routes: (a) the floor fixes
+the global datum (Lambda lane, re-posed microphysics target); (b) floor
+variations with an explicit exchange ledger are dark-excess physics
+(017-019 gates). The frustration ontology itself is neither licensed nor
+excluded.
+```
+
+Next target:
+
+```text
+floor_global_datum_reposing_035 / lambda_global_datum_derivation_required_034:
+derive the global datum (boundary condition / total four-volume conjugate)
+from floor microphysics. This is the re-posed route to VED's first non-GR
+number.
+```
+
+## The Global Datum and Frustration Relief
+
+Recorded through VacuumForge as:
+
+```text
+derivation: global_datum_frustration_relief_036
+obligation satisfied: lambda_global_datum_attacked_036 (sharpens 034/035 targets)
+obligation opened:    frustration_relief_suppression_required_036
+```
+
+Current conclusion:
+
+```text
+The global datum is the intrinsic curvature of the vacuum's ground
+configuration: 4 Lambda = R + kT on any slice (trace identity; SdS and de
+Sitter witnesses), and in a floor-only epoch the floor's density cancels
+exactly, leaving Lambda = R_ground / 4. Geometry, not energy.
+
+Under the packing reading of P4/P5, geometric frustration relief selects
+the SIGN: the flat dihedral deficit 2pi - 5 arccos(1/3) > 0 (exact witness
+49 > 45) closes exactly on S^3 (the 600-cell), and worsens under negative
+curvature, so a frustration-relieving ground configuration is spherical:
+Lambda > 0. Matches observation; conditional on the packing reading;
+stated as such.
+
+The magnitude is gated: full relief at packing scale a gives
+Lambda_naive = 3/(phi a)^2, which for a = l_P overshoots the observed
+value by ~10^122. The lane's single decisive obligation is now a DERIVED
+near-complete-relief suppression (defect dilution, frustration sharing,
+relaxation depth, or an emergent Hubble-scale curvature radius). No
+backsolve permitted. Kill condition: residual curvature pinned at the
+packing scale kills the value route, leaving only the sign prediction.
+```
+
+Lambda lane state after 036:
+
+```text
+status:    integration constant (033/034)          -- settled
+meaning:   ground-configuration curvature (036.B)  -- settled
+sign:      positive, from frustration relief (036.C) -- conditional prediction
+magnitude: open (036.D)                             -- the decisive obligation
+```
+
+## Exact Relief Geometry (the partial-relief kill)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: relief_exact_geometry_037
+branch decision: kill_partial_relief_lambda_value_037
+obligation resolved: frustration_relief_suppression_required_036
+                     (RESOLVED BY NONEXISTENCE)
+```
+
+Current conclusion:
+
+```text
+The dihedral angle of a regular tetrahedron of edge arc s = a/L in S^3 is
+exactly cos delta(s) = cos s/(1 + 2 cos s): arccos(1/3) at s = 0, exactly
+2 pi/5 at the 600-cell arc s = pi/5. Spherical curvature relieves the
+five-around-an-edge deficit monotonically (d cos delta/ds =
+-sin s/(1+2 cos s)^2); hyperbolic strictly aggravates it. The 036 sign
+statement is now an exact theorem.
+
+But relief is quadratic-flat at small curvature:
+Delta(s) = Delta_0 - (5 sqrt(2)/24) s^2 + O(s^4). At the curvature the
+observed Lambda requires (s ~ 1e-61 for Planck packing) the relieved
+fraction is ~1e-122 -- essentially none -- while near-complete relief
+demands packing-scale curvature (Lambda ~1e122 too large). No
+intermediate regime exists: the suppression 036 asked for does not exist
+inside the relief geometry. The partial-relief route to Lambda's value is
+DEAD.
+
+Surviving branch (coherent): flat-frustrated ground state,
+Lambda_ground = 0, floor retained and sequestered (035) -- exactly what
+the trace-free dynamics require. The observed Lambda remains the global
+datum, decoupled from the floor. The frustration ontology keeps the exact
+conditional sign statement and the sequestered-floor picture; it loses
+the value route.
+```
+
+Lambda lane after 037:
+
+```text
+status:    integration constant (033/034)        -- settled
+meaning:   ground-configuration curvature (036)  -- settled
+sign:      exact conditional theorem (037): any relief curvature is
+           spherical; the coherent branch is flat (Lambda_ground = 0)
+magnitude: the global datum, decoupled from the floor; no vacuum-sector
+           mechanism currently values it
+```
+
+Reported as a result, not a failure: the 036 mechanism ran the gauntlet
+and died in one derivation.
+
+## The Substance-Ledger Identity
+
+Recorded through VacuumForge as:
+
+```text
+derivation: substance_ledger_identity_038
+obligation satisfied: substance_ledger_identity_recorded_038
+obligation opened:    packing_stiffness_microphysics_038
+```
+
+Current conclusion:
+
+```text
+The theory-owner identification "the frustration floor IS the P1/P3
+substance energy" is captured at forge grade:
+
+- action-level sequestering: -rho_v sqrt(-g) splits exactly into an
+  inert fiducial constant plus a coupling -rho_v sqrt(-g_bar)(e^kappa - 1)
+  that is identically zero in the P7'-exact sector and O(kappa) ~ 1e-31
+  at the F1 leak. "Substance energy does not gravitate" is a theorem of
+  P3's own unimodular content: the postulate that defines the substance
+  energy is the postulate that hides it.
+
+- conversion-factor target: rho_v = c_e kappa_w Delta_0^2/(2 a^3), with
+  Delta_0 = 2 pi - 5 arccos(1/3) exact. P1's "analog of c^2" question
+  becomes a formula target; kappa_w, a, c_e are the open microphysics.
+
+- sector signature bottom-up: on exact tetrahedron coordinates, every
+  dihedral is exactly dilation-invariant and shifts at first order under
+  volume-preserving shear. Any angle-based floor energy is therefore
+  flat in the volume/trace (kappa) mode and stiff in the shear (s) mode:
+  the trace-constrained / shear-energetic architecture of the closed
+  theory emerges from the packing microphysics, and the volume mode must
+  be fixed by a constraint -- which is P3.
+
+- the split: gravity sees only excursions (curvature strain; gapped
+  excess), never the floor. Weinberg's radiative-stability face in VED
+  vocabulary: gravity only ever sees changes in the vacuum, never the
+  vacuum itself.
+
+P4's baseline relabels to the substance ledger; P6 destruction becomes
+release of stored deficit energy; nothing in the closed chain changes.
+```
+
+Next target:
+
+```text
+packing_stiffness_microphysics_038: derive or reduce kappa_w, a, c_e.
+Kill condition: a volume-mode restoring force in the packing energy
+breaks the identification.
+```

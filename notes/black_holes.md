@@ -1,5 +1,14 @@
 # Black Holes: The High-Speed Vacuum Furnaces
 
+> **SUPERSEDED (2026-07-01).** This is early exploratory material. Its
+> "furnace / vacuum consumption" framing predates the field-equation
+> closure and is not fence-compatible: the static ledger closes without a
+> funding current (C2/C3) — static masses do not consume vacuum. The
+> theory_v3-grade replacement for this note's defensible core (the
+> horizon as a flow/ledger boundary, exactly at v = c) is
+> `theory_v3/development/horizon_accounting/horizon_accounting_note.md`,
+> forge-verified in trial 021. Preserved as a record.
+
 ## The Thermodynamic Limit of Space
 
 In General Relativity, a black hole is a geometric "trap" where curvature becomes so extreme that even light cannot escape. The interior is mathematically described by a **singularity**—a point of infinite density where the laws of physics cease to function.

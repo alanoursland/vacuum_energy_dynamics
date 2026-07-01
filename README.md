@@ -93,16 +93,18 @@ The result is **theorem-grade at reduced level** (static spherical, linearized
 radiative, stationary vector, quasi-static cosmological) and **conditional at
 covariant level**: the closure to Einstein–Hilbert form rests on the
 conditional-response gates (G15/G16/G20 lineage) plus an in-house self-coupled
-spin-2 closure program. Many rigor debts have been discharged (radiative TT
-averaging and gauge invariance, the time-dependent vector sector, the
-tensor-virial identity, the scalaron-screening obstruction, and an in-house
-closure-uniqueness proof that retired the former Deser citation). The remaining
-rigor debts are **not freedoms** — no coefficient can move while they are paid
-down:
+spin-2 closure program. The rigor-debt ledger on the derivation chain is now
+clear: radiative TT averaging and gauge invariance, the time-dependent vector
+sector, the tensor-virial identity, the scalaron-screening obstruction, the
+in-house closure-uniqueness proof that retired the former Deser citation, the
+covariant lift of the C2/C3 static sector (with staticity itself derived,
+Birkhoff-type), and a scoped nonlinear-stability closure (nonlinear source
+binding and Misner–Sharp no-mining in-house; the global small-data statement
+carried as an external mathematical import of the Fierz–Pauli class,
+CK93/LR10). The remaining recorded limitation is **not a freedom** — no
+coefficient can move under it:
 
-1. **Covariant lifts** of the reduced theorems (statics C2/C3, nonlinear
-   stability).
-2. **The metric-vs-Finsler input audit.** P2 gives "clock/rod readings from
+1. **The metric-vs-Finsler input audit.** P2 gives "clock/rod readings from
    vacuum configuration," but deriving that the local interval is a symmetric
    bilinear metric (rather than Finslerian) still needs a quadratic-response
    selector. Until one exists, VED identifies the metric with the vacuum
