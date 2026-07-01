@@ -86,7 +86,7 @@ This table extends the program checkpoint's ledger through derivation 032.
 | closed metric branch | conditionally reconstructed | baseline retained at `epsilon = 0` |
 | strain branch selector | open, decision pending | central obligation; minimal axiom contract written, candidate sieve run, no nonbaseline axiom passes |
 | local higher-curvature residual | not licensed | scalar prototype and tensor-route audit both block it; spin-2/Weyl killed by ghost pole; scalaron/f(R) blocked by P7′/weak-field unless reopened |
-| nonzero Lambda baseline | allowed but unvalued | full selector sweep (variational, boundary, topology, measure, relaxation, frustration-floor) derives no value without importing a scale |
+| nonzero Lambda baseline | integration constant (033) | forge-verified unimodular result: P3 supplies the fixed-measure constraint, Lambda is an integration constant fixed by one global datum, bulk vacuum energy is sequestered; the 008–016 sweep negatives are theorems of this reading; the value (the global datum) remains external |
 | dark-sector excess | candidate only | dustlike `w = 0` row passes clustering/conservation as a candidate; abundance/production unlicensed; observed-density backsolves rejected |
 | non-gravitational channels | quarantined | Casimir/UFFT operator not instantiated; substance-frame coupling silent; no channel live |
 | substance-frame observables | silent frame allowed | bounded observable coupling unlicensed; observed-signal backsolves rejected |
@@ -107,6 +107,7 @@ obligation and opening the next.
 | non-grav channels | 020–024 | Casimir/UFFT and substance-frame channels quarantined; no operator or coupling licensed. |
 | interior cap | 025–028 | exterior matching lemma proven; no finite-strain cap scale derived; global/boundary/topology selectors set sectors, not values. |
 | return to center | 029–032 | program checkpoint; strain-branch decision table; minimal strain axiom contract; candidate sieve. No named nonbaseline axiom satisfies the contract. |
+| unimodular result | 033 | lovelock_breaks.md forge-verified: P3 is the unimodular constraint (exact in the P7′ limit, F1 leak controlled); Λ is an integration constant; vacuum energy sequestered. Covariant constraint lift opened. |
 
 ## The Frontier
 

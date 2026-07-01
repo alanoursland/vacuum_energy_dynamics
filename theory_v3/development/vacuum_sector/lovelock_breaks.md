@@ -3,13 +3,18 @@
 ## Status
 
 ```text
-result type:    structural argument / candidate result, not yet forge-verified
+result type:    FORGE-VERIFIED structural result (derivation 033, 2026-07-01)
 scope:          which hypothesis of Lovelock's theorem VED relaxes, and how
 conclusion:     VED relaxes divergence-free / full-diffeomorphism invariance in
                 the unimodular direction, forced by P3; Lambda is consequently an
                 integration constant, not a coupling
 non-conclusion: this does not derive Lambda's value and does not change the
                 closed local response
+verification:   the five section-11 obligations are discharged in
+                vacuum_forge/src/vacuum_sector/033_unimodular_lovelock_break/;
+                report: lovelock_breaks_vacuumforge.md; the covariant statement
+                of the kappa = 0 constraint remains open
+                (unimodular_covariant_constraint_lift_033)
 ```
 
 This note answers a specific question raised by the candidate-response-shapes

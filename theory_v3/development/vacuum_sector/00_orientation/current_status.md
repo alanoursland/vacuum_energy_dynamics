@@ -1041,3 +1041,41 @@ Next target:
 decide whether to adopt a fully specified new strain axiom or keep nonbaseline
 mechanisms quarantined.
 ```
+
+## Unimodular Lovelock Break (verification of lovelock_breaks.md)
+
+The lovelock_breaks.md structural argument is now recorded through
+VacuumForge as:
+
+```text
+derivation: unimodular_lovelock_break_033
+obligation satisfied: lovelock_break_verification_033
+obligation opened:    unimodular_covariant_constraint_lift_033
+```
+
+Current conclusion:
+
+```text
+All five forge obligations of lovelock_breaks.md are verified: the kappa /
+volume-density identity; the H3 violation nabla^a(R_ab - (1/4) g_ab R) =
+(1/4) nabla_b R on two independent families; Lambda as an integration
+constant (FRW trace-free + conservation, with algebraic reconstruction of
+G_ab + Lambda g_ab = k T_ab); vacuum-energy sequestering; and the F1 leak /
+SdS exactness scope statement.
+```
+
+Consequences for the lanes: the Lambda baseline status changes from
+"allowed but unvalued (selector missing)" to "integration constant fixed by
+a global datum; bulk vacuum energy sequestered" — the 008-016 sweep
+negatives are now theorems of the unimodular reading rather than empirical
+findings. For the strain-axiom decision (032): the candidate constraint
+axiom was already in the postulate set; P3 read through the kinematic
+identity is a fixed-measure commitment. No nonbaseline physics is licensed;
+Lambda's value is not derived.
+
+Next target:
+
+```text
+unimodular_covariant_constraint_lift_033: state and verify the kappa = 0
+constraint covariantly, including its interaction with the F1 leak.
+```
