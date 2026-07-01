@@ -1469,3 +1469,55 @@ Theory-owner decision on the packing strain axiom; in parallel:
 bulk_relaxation_scaling_041 (phase 2), p7prime_packing_tension_039,
 and packing_model_4d_lorentzian_lift_040 (the one partial field).
 ```
+
+## The 4D/Lorentzian Lift (contract complete)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: lorentzian_4d_lift_043
+obligation discharged: packing_model_4d_lorentzian_lift_040 (scoped)
+obligation opened:     4d_ground_coordination_043
+```
+
+Current conclusion:
+
+```text
+The ninth contract field is filled at kinematic + linearized level:
+
+- 4D hinges are triangles; regular n-simplex dihedral = arccos(1/n)
+  verified from exact coordinates (n = 2, 3, 4). Every integer
+  coordination around a flat 4D triangle hinge is frustrated
+  (n = 4: +57.91 deg; n = 5: -17.61 deg): the expansion-point theorem
+  lifts to 4D and EH is the generic 4D response.
+- The complete regular 4-simplex family on S^4 (5-simplex and
+  5-orthoplex boundaries -- exactly two members) converges monotonically
+  with matching quadratic-rate coefficients (0.2208, 0.2256): the 040
+  convergence signature is dimension-stable.
+- The action is algebraic in SQUARED edge lengths (polarization,
+  verified exactly for the dihedral cosine): the Wick rotation to
+  Lorentzian signature is term-by-term well-defined (Sorkin/CDT
+  foundation), and the Lorentzian hinge algebra is exact rapidity
+  additivity.
+- Vertex displacements (K3's discrete relabelings) are exact zero
+  modes of the deficit action (50-digit stationarity witnesses); the
+  propagating mode count -- linearized Regge = linearized GR, massless
+  spin-2, TT only -- is the declared Rocek-Williams (1981) import,
+  Fierz-Pauli class.
+
+THE STRAIN-AXIOM CONTRACT IS COMPLETE: NINE OF NINE FIELDS. The
+adoption decision (strain_axiom_adoption_decision_live_042) is before
+the theory owner with a full candidate and pre-registered falsifiers.
+
+Honest boundaries: the 4D ground coordination (opposite deficit signs
+at n = 4 vs n = 5) is open; no nonperturbative Lorentzian dynamics is
+claimed (kinematic + linearized only).
+```
+
+Next target:
+
+```text
+Theory-owner adoption decision. In parallel: bulk_relaxation_scaling_041
+(phase 2), p7prime_packing_tension_039, 4d_ground_coordination_043, and
+the paper drafts for the unimodular and frustration arcs.
+```

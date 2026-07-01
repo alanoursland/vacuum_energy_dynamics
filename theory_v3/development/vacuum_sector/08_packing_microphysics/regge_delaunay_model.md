@@ -120,12 +120,12 @@ the first candidate with most fields filled:
 | K_strain invariant | $\sum_h V_h f(\delta_h)$ |
 | boundary data | **FILLED (042)**: Hartle–Sorkin hinge term ψ_h = π − Σ dihedrals, exactly additive under gluing (the defining GHY property); 2D GB-with-boundary ledger closes |
 | conservation identity | **FILLED (042)**: the flat Schläfli identity Σℓ_e dδ_e = 0 closes the Regge variation (dS = Σδ_e dℓ_e); under vertex relabelings (K3) the action varies only through metric data — discrete diffeo/Bianchi structure |
-| mode/hyperbolicity | partially: dilation-flat/shear-stiff (038); full mode count open |
+| mode/hyperbolicity | **FILLED (043, scoped)**: gauge modes = vertex relabelings (exact zero modes); 4D hinge structure and frustration exact; Wick rotation term-by-term well-defined (action algebraic in ℓ²); propagating count (massless spin-2, TT only) via declared Roček–Williams import |
 | epsilon classification | EH + $a^2$-suppressed $R^2$-class (039); continuum limit open |
 | falsifier | volume-mode restoring force (breaks 038 identity); a detected boundary-smoothing scale (P7′ ledger) |
 
-With 042 the contract stands at **eight of nine fields filled** (the
-mode count is partial pending the 4D/Lorentzian lift; the continuum
+With 042 and 043 the contract stands at **nine of nine fields filled**
+(the mode field at scoped kinematic + linearized level; the continuum
 limit closed in 040). The strain-axiom adoption decision
 (`strain_axiom_adoption_decision_required_032`, now
 `strain_axiom_adoption_decision_live_042`) is live with a concrete,
