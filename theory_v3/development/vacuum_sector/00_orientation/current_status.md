@@ -1229,3 +1229,55 @@ magnitude: the global datum, decoupled from the floor; no vacuum-sector
 
 Reported as a result, not a failure: the 036 mechanism ran the gauntlet
 and died in one derivation.
+
+## The Substance-Ledger Identity
+
+Recorded through VacuumForge as:
+
+```text
+derivation: substance_ledger_identity_038
+obligation satisfied: substance_ledger_identity_recorded_038
+obligation opened:    packing_stiffness_microphysics_038
+```
+
+Current conclusion:
+
+```text
+The theory-owner identification "the frustration floor IS the P1/P3
+substance energy" is captured at forge grade:
+
+- action-level sequestering: -rho_v sqrt(-g) splits exactly into an
+  inert fiducial constant plus a coupling -rho_v sqrt(-g_bar)(e^kappa - 1)
+  that is identically zero in the P7'-exact sector and O(kappa) ~ 1e-31
+  at the F1 leak. "Substance energy does not gravitate" is a theorem of
+  P3's own unimodular content: the postulate that defines the substance
+  energy is the postulate that hides it.
+
+- conversion-factor target: rho_v = c_e kappa_w Delta_0^2/(2 a^3), with
+  Delta_0 = 2 pi - 5 arccos(1/3) exact. P1's "analog of c^2" question
+  becomes a formula target; kappa_w, a, c_e are the open microphysics.
+
+- sector signature bottom-up: on exact tetrahedron coordinates, every
+  dihedral is exactly dilation-invariant and shifts at first order under
+  volume-preserving shear. Any angle-based floor energy is therefore
+  flat in the volume/trace (kappa) mode and stiff in the shear (s) mode:
+  the trace-constrained / shear-energetic architecture of the closed
+  theory emerges from the packing microphysics, and the volume mode must
+  be fixed by a constraint -- which is P3.
+
+- the split: gravity sees only excursions (curvature strain; gapped
+  excess), never the floor. Weinberg's radiative-stability face in VED
+  vocabulary: gravity only ever sees changes in the vacuum, never the
+  vacuum itself.
+
+P4's baseline relabels to the substance ledger; P6 destruction becomes
+release of stored deficit energy; nothing in the closed chain changes.
+```
+
+Next target:
+
+```text
+packing_stiffness_microphysics_038: derive or reduce kappa_w, a, c_e.
+Kill condition: a volume-mode restoring force in the packing energy
+breaks the identification.
+```
