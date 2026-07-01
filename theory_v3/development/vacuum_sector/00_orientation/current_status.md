@@ -1328,3 +1328,49 @@ Next target:
 regge_continuum_limit_039 and the numerical relaxation module; then the
 discrete boundary/conservation contract fields.
 ```
+
+## Regge Refinement and Convergence
+
+Recorded through VacuumForge as:
+
+```text
+derivation: regge_refinement_convergence_040
+obligation discharged: regge_continuum_limit_039 (in-house portion)
+obligation opened:     packing_model_4d_lorentzian_lift_040
+```
+
+Current conclusion:
+
+```text
+The 039 bridge is exact in the continuum limit.
+
+2D: the deficit encoding of total curvature is a combinatorial identity
+at EVERY refinement of EVERY closed surface (sum delta = 2 pi V - pi F
+= 2 pi chi given 2E = 3F), and the local encoding converges
+quadratically with EXACT coefficient:
+excess = (sqrt(3)/4) s^2 [1 + (1/8) s^2 + O(s^4)].
+
+3D: the complete regular tetrahedral family on S^3 -- there are exactly
+three such triangulations in mathematics (5-cell, 16-cell, 600-cell
+boundaries) -- converges monotonically to the EH action at quadratic
+rate: ratios 0.6916 -> 0.7791 -> 0.9648 with (1-r)/s^2 = 0.0927,
+0.0895, 0.0893 (drift 3.6% -> 0.3%).
+
+The arbitrary-triangulation / higher-dimensional statement is a
+declared external mathematical import (Cheeger-Muller-Schrader 1984;
+Feinberg-Friedberg-Lee-Ren 1984), Fierz-Pauli class: discrete
+differential geometry, no gravitational phenomenology input, no
+framework coefficient dependent on it.
+
+The expansion-point theorem's EH term (039) is therefore the exact
+continuum response of the frustrated packing, with O(s^2)
+discretization corrections.
+```
+
+Next target:
+
+```text
+packing_model_4d_lorentzian_lift_040 (hinge type, time's role, mode
+count), p7prime_packing_tension_039, the numerical relaxation module,
+and the remaining microphysics constants a, c_e.
+```
