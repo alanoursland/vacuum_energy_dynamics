@@ -1374,3 +1374,53 @@ packing_model_4d_lorentzian_lift_040 (hinge type, time's role, mode
 count), p7prime_packing_tension_039, the numerical relaxation module,
 and the remaining microphysics constants a, c_e.
 ```
+
+## The Frustration Relaxation Lab (numerical module, phase 1)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: frustration_relaxation_lab_041
+obligation opened: bulk_relaxation_scaling_041
+```
+
+Current conclusion:
+
+```text
+The forge's first experimental instrument: deterministic BFGS relaxation
+of spring networks (no randomness; archive-stable). Measured:
+
+E1  the 13-vertex icosahedral cluster relaxes to E = 0.0211 > 0
+    (matching the exact symmetric optimum; grad ~ 1e-15), while the
+    cuboctahedral (FCC-13) cluster relaxes to E < 1e-30: the frustration
+    floor is a property of tetrahedral/icosahedral local order, exactly
+    zero for FCC order. Measured, not asserted.
+
+E2  wedge rings of n tetrahedra around a shared edge: E(3..7) =
+    0.163, 0.061, 0.00065, 0.052, 0.243 -- strict minimum at n = 5 with
+    a positive residual: Delta_0's arithmetic (037) as dynamical output
+    of a relaxed network.
+
+E3  the relaxed 5-ring's angle energy is dilation-invariant to machine
+    precision (max |dE| ~ 4e-31 over lambda in [0.5, 2]) and shear-stiff
+    with QUADRATIC response about equilibrium (dE(2e)/dE(e) = 3.96):
+    linear deficit shifts cancel by symmetry -- the discrete analog of
+    stationarity. The exact-flat vs quadratic-stiff mode asymmetry is
+    the sector signature, measured at the many-body level.
+
+E4  wrong-coordination rings (n = 4, 6) are locally stable relaxed
+    configurations carrying quantized positive excess (0.0605, 0.0517)
+    over the five-fold floor; decay requires a discrete topological
+    move. Disclination-type defects have the persistence-and-excess
+    profile the dark-excess lane requires of its gravitating
+    excursions. Microstructure exhibit only: production/abundance
+    remain fully gated.
+```
+
+Next target:
+
+```text
+bulk_relaxation_scaling_041 (phase 2): periodic bulk packings -- floor
+intensivity vs system size, disclination-network formation, defect
+energy spectrum.
+```
