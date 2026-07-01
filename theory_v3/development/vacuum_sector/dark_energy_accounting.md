@@ -14,6 +14,18 @@ non-conclusion: this does not derive Lambda's value; it does not address dark
                matter; it changes no closed result
 ```
 
+> **CONSTRAINT (2026-07-01, derivation 035 — re-poses the identification):**
+> under the forge-verified unimodular reading (033/034), a constant floor
+> density is *sequestered* — it produces no gravitational effect, and the
+> observed Λ is an integration constant decoupled from ρ_floor. An isolated
+> time-varying floor violates conservation. The
+> floor-as-local-gravitating-w=−1-density identification is therefore
+> **closed**; the proposal survives only in re-posed form: the floor may
+> *select the global datum* that fixes Λ (Henneaux–Teitelboim: Λ conjugate
+> to the total four-volume), and floor *variations* with an explicit
+> exchange ledger are dark-excess physics. See
+> `floor_sequestering_constraint_vacuumforge.md`.
+
 This note consolidates a development thread on what the theory's dark-energy
 content is. It is the grounding companion to
 [dimensional_relaxation_channel.md](dimensional_relaxation_channel.md), which

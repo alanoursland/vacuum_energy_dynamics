@@ -1079,3 +1079,58 @@ Next target:
 unimodular_covariant_constraint_lift_033: state and verify the kappa = 0
 constraint covariantly, including its interaction with the F1 leak.
 ```
+
+## Covariant Form of the Unimodular Constraint
+
+Recorded through VacuumForge as:
+
+```text
+derivation: unimodular_covariant_constraint_034
+obligation satisfied: unimodular_covariant_constraint_lift_033/034
+obligation opened:    lambda_global_datum_derivation_required_034
+```
+
+Current conclusion:
+
+```text
+kappa is a scalar given the fiducial volume form (distorted-chart witness);
+the unimodular multiplier is forced constant on shell (metric compatibility
++ Bianchi + conservation, two families) and IS Lambda; and the constraint's
+controlled violation is the exact sourced equation
+kappa'(r) = -(rB/2N)(T^t_t - T^r_r), whose comoving-dust content re-derives
+the F1 leak coefficient AB - 1 = (3/2) Omega_m (H0 r/c)^2 with no free
+input. The Lambda lane's sole open item is the global datum.
+```
+
+## Sequestering Constraint on the Frustration Floor
+
+Recorded through VacuumForge as:
+
+```text
+derivation: floor_sequestering_constraint_035
+branch decision: kill_floor_as_local_lambda_density_035
+obligation opened: floor_global_datum_reposing_035
+```
+
+Current conclusion:
+
+```text
+A constant frustration-floor density is gravitationally invisible (the
+trace-free dynamics are blind to it; the integration constant compensates
+exactly), and an isolated time-varying floor violates conservation. The
+floor-as-local-gravitating-w=-1-density identification in
+dark_energy_accounting.md is CLOSED. Surviving routes: (a) the floor fixes
+the global datum (Lambda lane, re-posed microphysics target); (b) floor
+variations with an explicit exchange ledger are dark-excess physics
+(017-019 gates). The frustration ontology itself is neither licensed nor
+excluded.
+```
+
+Next target:
+
+```text
+floor_global_datum_reposing_035 / lambda_global_datum_derivation_required_034:
+derive the global datum (boundary condition / total four-volume conjugate)
+from floor microphysics. This is the re-posed route to VED's first non-GR
+number.
+```
