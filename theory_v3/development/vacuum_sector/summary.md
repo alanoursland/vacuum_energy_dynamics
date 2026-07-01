@@ -111,6 +111,7 @@ obligation and opening the next.
 | covariant constraint | 034 | κ is a scalar; the unimodular multiplier is Λ (constant on shell); the sourced κ-equation re-derives the F1 coefficient from the dust stress with no free input. Λ lane's sole open item: the global datum. |
 | floor constraint | 035 | branch decision: floor-as-local-Λ-density is closed by sequestering; surviving routes are the global-datum derivation (Λ lane) and explicitly exchanged floor variations (dark-excess lane). |
 | global datum | 036 | the datum is the ground configuration's intrinsic curvature (Λ = R_ground/4, floor energy cancels); frustration relief predicts Λ > 0 (dihedral deficit closes on S³ — the 600-cell), conditional on the packing reading; magnitude gated on a derived ~10⁻¹²² near-complete-relief suppression. |
+| relief kill | 037 | exact dihedral function cos δ(s) = cos s/(1+2cos s) kills the partial-relief value route: relief is quadratic-flat (Δ = Δ₀ − (5√2/24)s²), so observed-Λ curvature relieves ~10⁻¹²² of the frustration and no intermediate regime exists. Coherent branch: flat-frustrated ground state with sequestered floor (Λ_ground = 0); Λ_obs stays with the global datum. Sign statement exactified; value route dead. |
 
 ## The Frontier
 

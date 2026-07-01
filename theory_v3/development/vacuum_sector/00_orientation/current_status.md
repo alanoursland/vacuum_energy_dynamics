@@ -1177,3 +1177,55 @@ meaning:   ground-configuration curvature (036.B)  -- settled
 sign:      positive, from frustration relief (036.C) -- conditional prediction
 magnitude: open (036.D)                             -- the decisive obligation
 ```
+
+## Exact Relief Geometry (the partial-relief kill)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: relief_exact_geometry_037
+branch decision: kill_partial_relief_lambda_value_037
+obligation resolved: frustration_relief_suppression_required_036
+                     (RESOLVED BY NONEXISTENCE)
+```
+
+Current conclusion:
+
+```text
+The dihedral angle of a regular tetrahedron of edge arc s = a/L in S^3 is
+exactly cos delta(s) = cos s/(1 + 2 cos s): arccos(1/3) at s = 0, exactly
+2 pi/5 at the 600-cell arc s = pi/5. Spherical curvature relieves the
+five-around-an-edge deficit monotonically (d cos delta/ds =
+-sin s/(1+2 cos s)^2); hyperbolic strictly aggravates it. The 036 sign
+statement is now an exact theorem.
+
+But relief is quadratic-flat at small curvature:
+Delta(s) = Delta_0 - (5 sqrt(2)/24) s^2 + O(s^4). At the curvature the
+observed Lambda requires (s ~ 1e-61 for Planck packing) the relieved
+fraction is ~1e-122 -- essentially none -- while near-complete relief
+demands packing-scale curvature (Lambda ~1e122 too large). No
+intermediate regime exists: the suppression 036 asked for does not exist
+inside the relief geometry. The partial-relief route to Lambda's value is
+DEAD.
+
+Surviving branch (coherent): flat-frustrated ground state,
+Lambda_ground = 0, floor retained and sequestered (035) -- exactly what
+the trace-free dynamics require. The observed Lambda remains the global
+datum, decoupled from the floor. The frustration ontology keeps the exact
+conditional sign statement and the sequestered-floor picture; it loses
+the value route.
+```
+
+Lambda lane after 037:
+
+```text
+status:    integration constant (033/034)        -- settled
+meaning:   ground-configuration curvature (036)  -- settled
+sign:      exact conditional theorem (037): any relief curvature is
+           spherical; the coherent branch is flat (Lambda_ground = 0)
+magnitude: the global datum, decoupled from the floor; no vacuum-sector
+           mechanism currently values it
+```
+
+Reported as a result, not a failure: the 036 mechanism ran the gauntlet
+and died in one derivation.
