@@ -110,6 +110,7 @@ obligation and opening the next.
 | unimodular result | 033 | lovelock_breaks.md forge-verified: P3 is the unimodular constraint (exact in the P7′ limit, F1 leak controlled); Λ is an integration constant; vacuum energy sequestered. Covariant constraint lift opened. |
 | covariant constraint | 034 | κ is a scalar; the unimodular multiplier is Λ (constant on shell); the sourced κ-equation re-derives the F1 coefficient from the dust stress with no free input. Λ lane's sole open item: the global datum. |
 | floor constraint | 035 | branch decision: floor-as-local-Λ-density is closed by sequestering; surviving routes are the global-datum derivation (Λ lane) and explicitly exchanged floor variations (dark-excess lane). |
+| global datum | 036 | the datum is the ground configuration's intrinsic curvature (Λ = R_ground/4, floor energy cancels); frustration relief predicts Λ > 0 (dihedral deficit closes on S³ — the 600-cell), conditional on the packing reading; magnitude gated on a derived ~10⁻¹²² near-complete-relief suppression. |
 
 ## The Frontier
 

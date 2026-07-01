@@ -1134,3 +1134,46 @@ derive the global datum (boundary condition / total four-volume conjugate)
 from floor microphysics. This is the re-posed route to VED's first non-GR
 number.
 ```
+
+## The Global Datum and Frustration Relief
+
+Recorded through VacuumForge as:
+
+```text
+derivation: global_datum_frustration_relief_036
+obligation satisfied: lambda_global_datum_attacked_036 (sharpens 034/035 targets)
+obligation opened:    frustration_relief_suppression_required_036
+```
+
+Current conclusion:
+
+```text
+The global datum is the intrinsic curvature of the vacuum's ground
+configuration: 4 Lambda = R + kT on any slice (trace identity; SdS and de
+Sitter witnesses), and in a floor-only epoch the floor's density cancels
+exactly, leaving Lambda = R_ground / 4. Geometry, not energy.
+
+Under the packing reading of P4/P5, geometric frustration relief selects
+the SIGN: the flat dihedral deficit 2pi - 5 arccos(1/3) > 0 (exact witness
+49 > 45) closes exactly on S^3 (the 600-cell), and worsens under negative
+curvature, so a frustration-relieving ground configuration is spherical:
+Lambda > 0. Matches observation; conditional on the packing reading;
+stated as such.
+
+The magnitude is gated: full relief at packing scale a gives
+Lambda_naive = 3/(phi a)^2, which for a = l_P overshoots the observed
+value by ~10^122. The lane's single decisive obligation is now a DERIVED
+near-complete-relief suppression (defect dilution, frustration sharing,
+relaxation depth, or an emergent Hubble-scale curvature radius). No
+backsolve permitted. Kill condition: residual curvature pinned at the
+packing scale kills the value route, leaving only the sign prediction.
+```
+
+Lambda lane state after 036:
+
+```text
+status:    integration constant (033/034)          -- settled
+meaning:   ground-configuration curvature (036.B)  -- settled
+sign:      positive, from frustration relief (036.C) -- conditional prediction
+magnitude: open (036.D)                             -- the decisive obligation
+```
