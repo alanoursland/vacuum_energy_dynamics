@@ -1281,3 +1281,50 @@ packing_stiffness_microphysics_038: derive or reduce kappa_w, a, c_e.
 Kill condition: a volume-mode restoring force in the packing energy
 breaks the identification.
 ```
+
+## The Regge/Delaunay Bridge (packing microphysics opens)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: regge_delaunay_bridge_039
+obligations opened: regge_continuum_limit_039, p7prime_packing_tension_039
+folder opened: 08_packing_microphysics/
+```
+
+Current conclusion:
+
+```text
+The owner's Delaunay-graph intuition is formalized as Regge calculus
+with a frustrated ground state, and its first theorems are exact:
+discrete Gauss-Bonnet (icosahedron, 4 pi exactly); curvature readable
+from edge lengths alone (excess = K x area + O(s^4)); the 600-cell's
+frustration deficit reproducing (1/2) int R sqrt(g) on S^3 to 3.5% at
+the coarsest possible mesh (ratio = 120 Delta_0/(pi^2 phi) = 0.9648).
+
+The central result is the EXPANSION-POINT THEOREM: expanding any smooth
+wedge energy about the frustrated ground state gives the sequestered
+floor (constant), the Regge/EH action (linear -- generic, because
+f'(Delta_0) != 0 at a frustrated point), and a^2-suppressed R^2-class
+corrections. An unfrustrated packing would have f'(0) = 0 and yield
+curvature-squared gravity. Geometric frustration is why gravity is
+Einstein-Hilbert -- roadmap 1C's weighting question answered,
+conditional on the packing reading.
+
+The floor-Newton lock eliminates kappa_w:
+rho_v = (c_e Delta_0/(2 a^3)) f'(Delta_0) -- the substance energy and
+the gravitational coupling are two readings of one wedge energy.
+
+The strain-axiom contract now has a candidate with most fields filled
+(mapping table in regge_delaunay_model.md); missing: discrete boundary
+data, conservation identity, and the continuum limit. Honest tension
+recorded: the a^2-suppressed R^2 term vs exact P7' (Planck-scale only;
+no closed coefficient moves).
+```
+
+Next target:
+
+```text
+regge_continuum_limit_039 and the numerical relaxation module; then the
+discrete boundary/conservation contract fields.
+```
