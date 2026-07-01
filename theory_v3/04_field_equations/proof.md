@@ -437,18 +437,26 @@ Completed proof-hardening closures are indexed in
 `06_rigor_closures.md`: P8/T4 formal rewrite, scalaron screening,
 tensor-virial identity in generality, Isaacson-style TT averaging,
 radiative gauge invariance, the general time-dependent vector-sector
-lift, and the in-house closure-uniqueness proof replacing the active
-Deser citation. These closures support this proof without changing the field
-equations or moving any coefficient.
+lift, the in-house closure-uniqueness proof replacing the active
+Deser citation, the covariant lift of the C2/C3 static bookkeeping
+sector (staticity itself now derived, Birkhoff-type), and the scoped
+nonlinear-stability closure (nonlinear source binding; Misner-Sharp
+no-mining theorem; global small-data statement carried as an external
+mathematical import of the Fierz-Pauli class, CK93/LR10). These
+closures support this proof without changing the field equations or
+moving any coefficient.
 
 The sector derivations are theorem-grade at reduced level (static
-spherical; linearized TT; vector sector through general linear time
-dependence; quasi-static cosmological patch) with exact solutions where
-stated. Current live debts after the closures above are: covariant lift
-of the C2/C3 static bookkeeping sector; nonlinear stability; and the
-metric-branch input audit recorded in `05_open_obligations.md`. The
-earlier tensor-virial, Isaacson averaging, radiative gauge, vector
-time-dependence, and closure-uniqueness debts are retired in
+spherical, now with its covariant lift; linearized TT; vector sector
+through general linear time dependence; quasi-static cosmological
+patch) with exact solutions where stated. The static spherical sector
+is additionally theorem-grade at full nonlinearity (Birkhoff rigidity,
+quasilocal mass positivity). The remaining recorded limitation is the
+metric-branch input audit in `05_open_obligations.md` — a scope bound
+on the novelty claim, not a debt on the derivation's validity within
+the declared SR branch. The earlier tensor-virial, Isaacson averaging,
+radiative gauge, vector time-dependence, closure-uniqueness, covariant
+statics, and nonlinear-stability debts are retired in
 `06_rigor_closures.md`.
 
 ## 9. Verification index
@@ -469,6 +477,8 @@ time-dependence, and closure-uniqueness debts are retired in
 | TT averaging closure | `015_isaacson_averaging/isaacson_tt_averaging.py` | `06_rigor_closures.md` |
 | radiative gauge closure | `016_radiative_gauge_invariance/radiative_gauge_invariance.py` | `06_rigor_closures.md` |
 | time-dependent vector lift | `017_vector_time_dependent/vector_time_dependent.py` | `06_rigor_closures.md` |
+| covariant statics lift | `019_static_covariant_lift/static_covariant_lift.py` | `06_rigor_closures.md` |
+| nonlinear stability (scoped) | `020_nonlinear_stability/nonlinear_stability_scoped.py` | `06_rigor_closures.md` |
 
 Run any of them: `cd vacuum_forge/src && PYTHONPATH=. python <script>` —
 each re-derives its theorems from scratch and verifies its declared

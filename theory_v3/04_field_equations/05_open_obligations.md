@@ -7,9 +7,7 @@ vacuum-sector program).
 
 ## Rigor debts (no coefficient can move)
 
-1. **Covariant lifts** of the reduced theorems: C2/C3 (statics),
-   nonlinear stability.
-2. **Metric-branch input audit.** Section 1's K1 step must remain
+1. **Metric-branch input audit.** Section 1's K1 step must remain
    explicitly scoped to the SR-compatible quadratic branch. P2 by
    itself gives "clock/rod readings from vacuum configuration," but a
    general assignment of lengths to directions could be Finslerian
@@ -97,6 +95,29 @@ vacuum-sector program).
   higher-derivative/extra-field/torsion/nonuniversal alternatives.
   Discharge files: `development/closure_uniqueness/`,
   `vacuum_forge/src/field_equation_trials/018_closure_uniqueness/`.
+- **Covariant static lift (C2/C3) completed (2026-07-01).** The reduced
+  static theorems are the covariant static spherical content of the
+  closed parent: the flux law is the covariant tt-equation with the
+  gauge-invariant Misner-Sharp mass as $M_{\rm enc}$; the P7′ shadow
+  $AB=1$ is the chart-free statement $(\nabla r)^2 = -\xi^2/c^2$,
+  verified in an arbitrary radial gauge; the C2 bootstrap equation is
+  the covariant vacuum tt-equation on the compensated branch with the
+  angular equation implied; and staticity is derived (Birkhoff-type
+  lift) rather than assumed. Discharge files:
+  `development/covariant_lifts/static_covariant_lift/static_covariant_lift_note.md`,
+  `vacuum_forge/src/field_equation_trials/019_static_covariant_lift/static_covariant_lift.py`.
+- **Nonlinear stability completed at scoped level (2026-07-01).**
+  In-house: nonlinear source binding (vacuum + regular center force
+  flat uniquely; $K = 12C_1^2/r^6$) and the no-mining theorem
+  ($m' = (4\pi r^2/c^2)\rho$ exactly, so $m \ge 0$ for $\rho \ge 0$
+  with a regular center), plus the quadratic sector signature inherited
+  from G03/017. The global small-data statement is recorded as an
+  external mathematical import of the Fierz-Pauli class
+  (Christodoulou-Klainerman 1993 / Lindblad-Rodnianski 2010), on which
+  no framework coefficient depends; an in-house re-derivation at that
+  scale is declared out of scope by decision, visibly. Discharge files:
+  `development/nonlinear_stability/nonlinear_stability_note.md`,
+  `vacuum_forge/src/field_equation_trials/020_nonlinear_stability/nonlinear_stability_scoped.py`.
 
 ## The P7′ appeal (theory-owner door, default closed)
 
