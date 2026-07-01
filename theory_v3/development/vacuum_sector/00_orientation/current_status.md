@@ -1424,3 +1424,100 @@ bulk_relaxation_scaling_041 (phase 2): periodic bulk packings -- floor
 intensivity vs system size, disclination-network formation, defect
 energy spectrum.
 ```
+
+## Discrete Conservation and Boundary Data (contract completion)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: discrete_conservation_boundary_042
+obligation satisfied: contract_fields_filled_042
+obligation opened:    strain_axiom_adoption_decision_live_042 (theory owner)
+```
+
+Current conclusion:
+
+```text
+The packing model's last two absent strain-axiom contract fields are
+filled:
+
+CONSERVATION: the flat Schlafli identity sum_e l_e d(delta_e) = 0
+(2D exact symbolic; 3D verified to 50 digits at generic exact
+configurations and exactly on the symmetric family) closes the Regge
+variation -- dS = sum_e delta_e dl_e -- and under vertex displacements
+(K3's discrete relabelings) the action varies only through the metric
+data: the discrete diffeomorphism/Bianchi structure.
+
+BOUNDARY: the Hartle-Sorkin hinge term psi_h = pi - sum(dihedrals) is
+exactly additive under gluing (psi_1 + psi_2 = interior deficit;
+wedge-ring 2+3 witness gives Delta_0 exactly) -- the property that
+defines GHY -- and the 2D Gauss-Bonnet-with-boundary ledger closes
+combinatorially.
+
+Contract status: eight of nine fields filled (mode count partial,
+pending the 4D/Lorentzian lift). The sector's head obligation --
+the strain-axiom adoption decision (032) -- is now LIVE with a
+near-complete candidate and pre-registered falsifiers (volume-mode
+restoring force; floor/conversion-factor split). Adoption or
+quarantine is a theory-owner call of the P7'/P9 class.
+```
+
+Next target:
+
+```text
+Theory-owner decision on the packing strain axiom; in parallel:
+bulk_relaxation_scaling_041 (phase 2), p7prime_packing_tension_039,
+and packing_model_4d_lorentzian_lift_040 (the one partial field).
+```
+
+## The 4D/Lorentzian Lift (contract complete)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: lorentzian_4d_lift_043
+obligation discharged: packing_model_4d_lorentzian_lift_040 (scoped)
+obligation opened:     4d_ground_coordination_043
+```
+
+Current conclusion:
+
+```text
+The ninth contract field is filled at kinematic + linearized level:
+
+- 4D hinges are triangles; regular n-simplex dihedral = arccos(1/n)
+  verified from exact coordinates (n = 2, 3, 4). Every integer
+  coordination around a flat 4D triangle hinge is frustrated
+  (n = 4: +57.91 deg; n = 5: -17.61 deg): the expansion-point theorem
+  lifts to 4D and EH is the generic 4D response.
+- The complete regular 4-simplex family on S^4 (5-simplex and
+  5-orthoplex boundaries -- exactly two members) converges monotonically
+  with matching quadratic-rate coefficients (0.2208, 0.2256): the 040
+  convergence signature is dimension-stable.
+- The action is algebraic in SQUARED edge lengths (polarization,
+  verified exactly for the dihedral cosine): the Wick rotation to
+  Lorentzian signature is term-by-term well-defined (Sorkin/CDT
+  foundation), and the Lorentzian hinge algebra is exact rapidity
+  additivity.
+- Vertex displacements (K3's discrete relabelings) are exact zero
+  modes of the deficit action (50-digit stationarity witnesses); the
+  propagating mode count -- linearized Regge = linearized GR, massless
+  spin-2, TT only -- is the declared Rocek-Williams (1981) import,
+  Fierz-Pauli class.
+
+THE STRAIN-AXIOM CONTRACT IS COMPLETE: NINE OF NINE FIELDS. The
+adoption decision (strain_axiom_adoption_decision_live_042) is before
+the theory owner with a full candidate and pre-registered falsifiers.
+
+Honest boundaries: the 4D ground coordination (opposite deficit signs
+at n = 4 vs n = 5) is open; no nonperturbative Lorentzian dynamics is
+claimed (kinematic + linearized only).
+```
+
+Next target:
+
+```text
+Theory-owner adoption decision. In parallel: bulk_relaxation_scaling_041
+(phase 2), p7prime_packing_tension_039, 4d_ground_coordination_043, and
+the paper drafts for the unimodular and frustration arcs.
+```
