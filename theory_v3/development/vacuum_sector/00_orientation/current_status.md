@@ -1694,3 +1694,40 @@ under either:
 
 The ruling (p7prime_scoping_ruling_047) is the theory owner's.
 ```
+
+## The P7' Scoping Ruling: Route (i) Adopted (O-P10-3 closed)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: p7prime_scoping_ruling_record_048
+obligation satisfied: p7prime_scoping_ruled_048
+  (resolves p7prime_scoping_ruling_047; closes O-P10-3)
+```
+
+Current conclusion:
+
+```text
+THEORY-OWNER RULING (2026-07-02): ROUTE (i). P7' is scoped as the
+double idealization -- exact at H -> 0 (static; the F1 kappa-leak is
+the controlled correction) AND at a -> 0 (continuum; the Planck-range
+packing scalaron of 047 is the controlled correction). "No static
+flow, exactly zero" is officially a LIMIT RESULT: exactness is the
+idealization's property, and the physical vacuum's deviations must be
+derived, controlled, and individually recorded. The register of such
+corrections has exactly two entries, both quadratic in their small
+parameter, both sub-observable, neither reopening a closed
+coefficient.
+
+Route (ii) (the f''(Delta_0) = 0 inflection constraint) is REJECTED
+as recovery-shaped without independent motivation; retained on record
+as the fallback.
+
+Unchanged: the A3/F-P10-3 null test (any DETECTED Yukawa at any
+accessible range kills). New: the discreteness consistency battery --
+if the packing scale a is ever independently measured, a scalaron
+Yukawa at range sqrt(6) a is a parameter-free prediction (alongside
+C4, the floor-Newton lock).
+
+O-P10-3 is CLOSED. P10's remaining ledger: O-P10-1, -2, -4, -5.
+```

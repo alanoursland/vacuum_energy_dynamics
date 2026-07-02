@@ -20,23 +20,23 @@ O-P10-2  4D GROUND COORDINATION. n = 4 and n = 5 coordinations around
          Euclidean-4D packing relates to (3+1) spatial packing, is
          open. The 3D spatial results do not depend on it.
 
-O-P10-3  THE P7' TENSION. ATTACKED (derivation 047, 2026-07-02). The
-         cancellation route is REFUTED in-house: the f(R) EL tensor is
-         identically conserved, so the Bianchi mechanism that made
-         Lambda an integration constant (033) reconstructs the trace
-         equation from the unimodular system — the scalaron survives
-         with m^2 = 1/(6 alpha). Unimodular f(R) is f(R) plus a free
-         Lambda; the constraint routes nothing away. What remains is a
-         theory-owner scoping ruling (p7prime_scoping_ruling_047):
-         route (i) P7' scoped as the a -> 0 idealization, with the
-         Planck-range scalaron (l* ~ sqrt(6) l_P ~ 4e-35 m, margin
-         ~1e30 below the 54 um frontier) a controlled correction —
-         the F1-leak precedent; recommended. Route (ii) strict
-         exactness, forcing the inflection constraint f''(Delta_0) = 0
-         on the wedge energy — recovery-shaped without independent
-         motivation; cost recorded. No closed coefficient or
-         observable moves either way; the P7' null test remains the
-         standing discriminator.
+O-P10-3  THE P7' TENSION. CLOSED (derivations 047 + 048, 2026-07-02).
+         The cancellation route was REFUTED in-house (047): the f(R)
+         EL tensor is identically conserved, so the Bianchi mechanism
+         that made Lambda an integration constant (033) reconstructs
+         the trace equation from the unimodular system — the scalaron
+         survives with m^2 = 1/(6 alpha). The theory owner then ruled
+         (048, route i): P7' is scoped as the double (H -> 0, a -> 0)
+         idealization; the Planck-range scalaron (l* ~ sqrt(6) l_P ~
+         4e-35 m, margin ~1e30 below the 54 um frontier) is a
+         controlled derived correction on the F1-leak precedent.
+         "Exactly zero static flow" is officially a limit result.
+         Route (ii) (f''(Delta_0) = 0 inflection) rejected as
+         recovery-shaped; recorded fallback. No closed coefficient or
+         observable moved; the P7' null test (F-P10-3) remains the
+         standing falsifier. New consistency battery entry: if a were
+         ever independently measured, a scalaron Yukawa at range
+         sqrt(6) a is PREDICTED (parameter-free, alongside C4).
 
 O-P10-4  LORENTZIAN DYNAMICS. Beyond the 043 scope (kinematic +
          linearized): an initial-value formulation of the packing's

@@ -80,9 +80,15 @@ commitment:  zero short-range deviation from Newtonian gravity, at
              every accessible range -- not "small," zero.
 forced by:   P7' kills the entire four-derivative sector including
              screened variants (proof.md Theorems 6-7 + screening
-             corollary). Under P10 the R^2-class term exists but at
-             Planck-scale coefficient (O-P10-3): identically
-             unobservable at laboratory ranges either way.
+             corollary). Under P10 the R^2-class term exists at
+             Planck-scale coefficient; O-P10-3 CLOSED (047 + 048):
+             P7' scoped as the a -> 0 idealization, the surviving
+             scalaron has range sqrt(6) l_P ~ 4e-35 m, margin ~1e30
+             below the frontier -- identically unobservable. BONUS
+             COMMITMENT (048): if a packing scale a is ever
+             independently measured, a scalaron Yukawa at range
+             sqrt(6) a becomes a parameter-free prediction (the
+             discreteness consistency battery, with C4).
 kills it:    a confirmed gravitational-strength Yukawa at any range
              (bench-top torsion balances are the strongest probe,
              currently ~50 um scale at relevant couplings).
