@@ -1816,3 +1816,53 @@ the mixture also guards 049's selector closure.
 
 P10's remaining ledger: O-P10-1, -4, -5 (+ mixture_realizability_050).
 ```
+
+## The Relaxation Lab, Phase 2: Bulk Packings (O-P10-5 delivered)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: bulk_relaxation_phase2_051
+obligation satisfied: o_p10_5_phase2_delivered_051
+  (resolves bulk_relaxation_scaling_041; O-P10-5 phase-2 scope)
+obligation opened:    periodic_energy_relaxation_051 (phase 3)
+```
+
+Current conclusion:
+
+```text
+BULK MEASUREMENTS, seeded and deterministic (rng 20260702):
+
+E1. THE FLOOR IS INTENSIVE: relaxed energy per vertex of
+    Poisson-Delaunay spring networks is stable across a factor 4 in
+    system size (E/N = 0.202 / 0.229 / 0.250 at N = 80/160/320) --
+    a bulk energy density, exactly what the substance identity
+    (038, rho_v = const) requires. Not a boundary artifact.
+
+E2. FIRST REALIZABILITY DATA FOR THE 050 MIXTURE: interior triangle-
+    hinge coordinations of a real 4D Delaunay complex have mean
+    4.98 (raw) -> 4.86 (after regularizing smoothing), moving toward
+    the mean-field prediction 2 pi/arccos(1/4) = 4.7668; {4,5}
+    dominance grows to 0.581; the flat hinge identity
+    (mean n = 2 pi/mean-dihedral) verified to < 1%.
+
+E3. THE DEFECT SPECTRUM MEASURED: wedge-ring excess over the n = 5
+    floor is strictly positive, quantized by coordination, monotone
+    in |n - 5|, and ordered by the deficit arithmetic
+    (excess: n=4: 0.061, n=6: 0.052, n=3: 0.163, n=7: 0.242).
+
+E4. DISCLINATION NETWORKS: in smoothed 3D bulk, modal interior edge
+    coordination is 5 (the ground value); defect edges (55.9%) form
+    a SINGLE SPANNING COMPONENT -- line-like disclination networks
+    threading the bulk, the morphology 041 predicted, not isolated
+    dust.
+
+Fences: smoothing is a relaxation PROXY (no energy gradient, no
+retriangulation, no periodic box); the full realizability verdict is
+phase 3 (periodic_energy_relaxation_051). E3/E4 are microstructure
+exhibits: no dark-excess production or abundance licensed (017-019,
+P9 fence unchanged).
+
+P10's remaining ledger: O-P10-1, O-P10-4, mixture_realizability_050 /
+periodic_energy_relaxation_051 (now the same thread).
+```

@@ -50,10 +50,20 @@ O-P10-4  LORENTZIAN DYNAMICS. Beyond the 043 scope (kinematic +
          linearized): an initial-value formulation of the packing's
          evolution. The CDT-adjacent frontier.
 
-O-P10-5  BULK RELAXATION PHASE 2. Periodic packings: floor intensivity
-         vs system size, spontaneous disclination-network formation,
-         the defect energy spectrum. The forge's experimental arm, and
-         the feeder for the dark-excess gate.
+O-P10-5  BULK RELAXATION. Phase 2 DELIVERED (derivation 051,
+         2026-07-02): floor intensivity confirmed (E/N stable across a
+         factor 4 in system size — a bulk energy density, as 038's
+         rho_v = const requires); defect energy spectrum measured
+         (positive, quantized by coordination, monotone in |delta|);
+         disclination NETWORKS observed (defect edges form a single
+         spanning component, not dust); first 4D coordination
+         statistics land in the 050 mixture window (mean 4.98 raw ->
+         4.86 smoothed, toward the predicted 4.7668) with the hinge
+         identity verified to < 1%. Remaining face: PHASE 3
+         (periodic_energy_relaxation_051) — periodic box, true
+         energy-gradient relaxation with retriangulation; the full
+         realizability verdict for the 050 mixture and the mean-field
+         floor value. Dark-excess gates unchanged.
 ```
 
 ## Standing falsifiers (kill conditions of the adopted axiom)
