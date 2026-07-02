@@ -5,7 +5,10 @@ axiom, adopted 2026-07-01), the vacuum sector has a microphysics: the
 vacuum is a frustrated packing, its substance energy is the strain of
 being three-dimensional, its gravitational response is Einstein–Hilbert
 because the ground state is pre-tensioned, and Λ is a global datum
-decoupled from the vacuum's own energy. This section is the record of
+decoupled from the vacuum's own energy. Since the post-adoption
+campaign (046–054): the ground state is quantified to one free
+constant, and expansion is creation — new cells at fixed scale,
+self-funded by the floor's w = −1. This section is the record of
 the theory P10 implies.**
 
 ## What This Section Is
@@ -26,7 +29,7 @@ ledger), in what fixes the one constant gravity permits but does not
 value (Λ), and in what may yet be seen in non-metric channels (the
 excursion ledger).
 
-## The Story in Four Documents
+## The Story in Six Documents
 
 | document | content | one line |
 |---|---|---|
@@ -34,6 +37,8 @@ excursion ledger).
 | `02_gravitational_response.md` | why the response is Einstein–Hilbert | the ground state is pre-tensioned; loaded springs respond at first order |
 | `03_lambda_and_the_global_datum.md` | Λ's status, meaning, sign, value | integration constant; ground-state curvature; conditionally positive; value external |
 | `04_excursions_and_exchange.md` | what gravity *does* see | strain variations: wells, waves, defects; the P6 pipeline with its exact ledger |
+| `06_the_ground_state_by_the_numbers.md` | the post-adoption campaign (046–053) | one geometric input fixes the mixtures, c_e, and the floor; the self-threats survived; two doors closed (Finsler, boundary channel) |
+| `07_expansion_as_creation.md` | what expansion *is* (054) | new cells, not stretched ones — decided twice on existing data; creation is self-funded by w = −1; new falsifier Ġ = 0 exactly |
 
 Plus `05_open_obligations.md`: the adopted postulate's debts,
 falsifiers, and the handoff to future work.
@@ -51,14 +56,20 @@ them; its fence, falsifiers, and obligations are in the postulate file.
 ## Epistemic Standing
 
 Everything stated as a result in this section is forge-verified
-(derivations 033–043, all green, archive under
+(derivations 033–054, all green, archive under
 `vacuum_forge/src/vacuum_sector/`); everything that is an
 interpretation licensed by P10 is stated as such; everything still
-gated (dark-excess abundance, non-gravitational channels, interior
-cap, matter-as-defect) is explicitly marked NOT LICENSED. The
-falsifiers are standing kill conditions: F-P10-1 (volume-mode
-restoring force), F-P10-2 (floor/conversion-factor split), and the
-inherited P7′ null test.
+gated (dark-excess abundance, interior cap, matter-as-defect) is
+explicitly marked NOT LICENSED, and the non-gravitational boundary
+channel is now KILLED unsuppressed (053). The falsifiers are standing
+kill conditions: F-P10-1 (volume-mode restoring force), F-P10-2
+(floor/conversion-factor split), the inherited P7′ null test — and,
+since 054, Ġ = 0 exactly (register A6) and no linear LIV (A5,
+sharpened by 046). The post-adoption record: two self-threats
+survived (dispersion by theorem, the scalaron by scoped ruling), two
+audits closed (quadratic selector, boundary channel), the ground
+state quantified (mixtures, c_e, one constant left), and expansion
+decided (creation, self-funded). See `06_…` and `07_…`.
 
 ## Reading Pointers
 

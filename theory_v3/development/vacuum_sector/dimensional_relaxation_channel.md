@@ -1,5 +1,20 @@
 # Dimensional Relaxation and the Engineered-Boundary Channel
 
+> **SUPERSEDED (2026-07-02, derivation 053):** the owed operator
+> instantiation was delivered and it KILLED the unsuppressed channel.
+> The packing's leading-order boundary operator is a constant
+> attractive pressure (form distinct from QFT Casimir, as condition 2
+> demanded) whose floor-Newton-locked magnitude is excluded by 54-114
+> orders of magnitude by Casimir-class experiments. Matter boundaries
+> cannot confine the packing at any detectable coupling: matter is
+> strain content OF the packing (041 E4), not walls. Section 6's
+> "gravity sequesters, boundaries reveal" hope is quantitatively dead;
+> the payoffs of section 5 lose their boundary route; the discipline
+> line of section 0 held throughout (the channel died of magnitude,
+> not thermodynamics). See
+> `08_packing_microphysics/boundary_channel_operator_vacuumforge.md`.
+> This note is retained as the mechanism's charter and kill record.
+
 ## Status
 
 ```text

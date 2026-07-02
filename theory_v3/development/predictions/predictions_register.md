@@ -80,9 +80,15 @@ commitment:  zero short-range deviation from Newtonian gravity, at
              every accessible range -- not "small," zero.
 forced by:   P7' kills the entire four-derivative sector including
              screened variants (proof.md Theorems 6-7 + screening
-             corollary). Under P10 the R^2-class term exists but at
-             Planck-scale coefficient (O-P10-3): identically
-             unobservable at laboratory ranges either way.
+             corollary). Under P10 the R^2-class term exists at
+             Planck-scale coefficient; O-P10-3 CLOSED (047 + 048):
+             P7' scoped as the a -> 0 idealization, the surviving
+             scalaron has range sqrt(6) l_P ~ 4e-35 m, margin ~1e30
+             below the frontier -- identically unobservable. BONUS
+             COMMITMENT (048): if a packing scale a is ever
+             independently measured, a scalaron Yukawa at range
+             sqrt(6) a becomes a parameter-free prediction (the
+             discreteness consistency battery, with C4).
 kills it:    a confirmed gravitational-strength Yukawa at any range
              (bench-top torsion balances are the strongest probe,
              currently ~50 um scale at relevant couplings).
@@ -148,6 +154,29 @@ status:      RESOLVED IN P10'S FAVOR (derivation 046, 2026-07-01):
              (chiral_matter_dispersion_watch_046).
 ```
 
+### A6. Newton's constant does not drift: Gdot = 0 exactly
+
+```text
+commitment:  Gdot/G = 0, exactly, at every epoch. Not "small" -- zero.
+forced by:   the creation reading of expansion (054): the stretch
+             reading was killed twice on existing data (it forces
+             Gdot/G = -H via the floor-Newton lock, excluded ~480x by
+             lunar laser ranging; and it turns the floor into
+             unsequestered Planck-density dust, ~1e122 x closure).
+             The surviving reading has l = const: NO mechanism for
+             G drift remains in the theory.
+kills it:    any confirmed nonzero Gdot/G -- LLR/ephemerides
+             (currently ~1.5e-13/yr), pulsar timing, BBN/CMB
+             consistency. Pre-registered before the next data
+             release.
+distinctive: scalar-tensor and varying-G rivals generically predict
+             drift; VED forbids it outright. Note the near-miss
+             margin: H0 is only ~480x above current LLR bounds --
+             this null is under genuine experimental pressure and
+             tightening.
+status:      standing null; all current bounds consistent.
+```
+
 ---
 
 ## Tier B — Distinctive structural commitments (falsifiable edges, slower fire)
@@ -190,20 +219,25 @@ gated by:    production/abundance (017-019, O-P10-5); the entry
              its seat.
 ```
 
-### B3. The Casimir/UFFT squeeze window (inherited)
+### B3. The Casimir/UFFT squeeze window (inherited) -- DOWNGRADED (053)
 
 ```text
-commitment:  the UFFT sector's surviving window: a non-gravitational
-             vacuum-channel anomaly in the 29.9-38.6 um band; outside
-             it, the sector dies.
-forced by:   the accumulated UFFT gates (inherited from the earlier
-             program; operator instantiation still owed).
-kills it:    bench-top exclusion of the window (kills UFFT's sector,
-             not the core theory).
-status:      alive and cornered; the packing's boundary structure
-             (Hartle-Sorkin, 042) is the natural route to finally
-             instantiating the operator -- flagged to the channel
-             lane.
+commitment:  WITHDRAWN as a VED commitment (2026-07-02, derivation
+             053). The owed operator instantiation was delivered and
+             it KILLED the unsuppressed channel: the packing's only
+             leading-order boundary operator is a constant attractive
+             pressure locked by the floor-Newton lock to ~1e112 Pa at
+             Planck packing (~1e52 even at window-scale packing) --
+             excluded by 54-114 orders of magnitude. Matter
+             boundaries cannot confine the packing at any detectable
+             coupling; the sequestered floor hides from the boundary
+             channel exactly as it hides from gravity.
+status:      the 29.9-38.6 um window is no longer VED-motivated;
+             whatever lives there is ordinary QFT physics, and its
+             exclusion would kill nothing in the VED core. Reopening
+             requires a front-door derivation of a specific
+             suppressed coupling; backsolving one into the exclusion
+             window is forbidden.
 ```
 
 ### B4. Lambda's sign (conditional, weak)
@@ -228,15 +262,20 @@ C1. DONE (046): the dispersion theorem cleared the axiom -- see A5.
 C2. the defect spectrum and abundance (O-P10-5, then 017-019): would
     convert B2 into quantitative DM predictions (mass spectrum from
     the wedge energetics; possibly quantized).
-C3. the cosmological-creation observable face (045's open seam):
-    graph-growth vs content-rise readings should differ in the
-    perturbed-cosmology kappa-leak profile (F1's structure-era
-    extension) -- potentially the first place the packing's
-    Lorentzian dynamics touches data.
-C4. the conversion factor rho_v(a, c_e) (O-P10-1): with a and c_e
-    derived, the floor-Newton lock becomes a parameter-free relation
-    between G and the packing scale -- a consistency test against
-    any independent probe of discreteness.
+C3. DONE (054): the seam was decidable on EXISTING data, not future
+    kappa-leak profiles -- the stretch reading killed twice (G drift
+    vs LLR; floor-turned-dust), expansion IS creation, and the
+    commitment graduated to Tier A as A6 (Gdot = 0 exactly).
+    Remaining under this heading: the creation-suppression
+    coefficient alpha (creation_suppression_dynamics_054, the vacuum
+    -flow clause) -- computable only with O-P10-4 dynamics.
+C4. the conversion factor rho_v(a, c_e) (O-P10-1): c_e is now DERIVED
+    (052: 36 arccos(1/3)/(sqrt(2) pi) = 9.9743 per a^3, pure geometry),
+    leaving a as the sole unknown. The battery has two faces: any
+    independent discreteness probe measuring a must (i) reproduce the
+    observed G through the floor-Newton lock and (ii) reveal the 048
+    scalaron Yukawa at range sqrt(6) a. Parameter-free, twice
+    overdetermined, waiting on an instrument.
 C5. the kappa-leak scaling AB - 1 = (3/2) Omega_m (H0 r/c)^2:
     derived, parameter-free, ~1e-31 at 1 AU, ~1e-8 at 100 Mpc scales
     -- below all current instruments; recorded as the honesty entry
@@ -253,8 +292,10 @@ The theory's observational profile after P10:
 
   1 live-fire prediction    w = -1 exactly (A1) -- DESI-class
                             experiments are testing it NOW
-  4 sharp standing nulls    GW purity, no-Yukawa, GR black holes,
-                            no linear LIV (A2-A5)
+  5 sharp standing nulls    GW purity, no-Yukawa, GR black holes,
+                            no linear LIV, no G drift (A2-A6; A6 is
+                            under genuine pressure -- H0 sits only
+                            ~480x above current LLR bounds)
   1 self-threat, RESOLVED   the dispersion computation (046) cleared
                             it: no linear LIV exists (theorem); a
                             confirmed linear LIV now falsifies P10

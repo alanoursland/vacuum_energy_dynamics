@@ -85,6 +85,34 @@ expansion-as-creation picture, with no free parameter.
 
 ---
 
+## The Discreteness Correction (the a → 0 scoping, route (i) ruling)
+
+> **SCOPING RULING (2026-07-02, derivation 048 — theory owner):** with
+> P10 adopted, P7′ is scoped as a **double** idealization: exact in the
+> H → 0 limit (above) **and** in the a → 0 continuum limit of the
+> packing. Derivation 047 refuted the hoped-for cancellation (the
+> unimodular constraint does *not* kill the packing's R²-class term:
+> the Bianchi mechanism reconstructs the scalaron equation, m² = 1/(6α)),
+> so at finite packing scale the four-derivative sector is not empty —
+> it carries a Planck-range scalaron, ℓ* = √(6α) ~ √6·a ≈ 4×10⁻³⁵ m at
+> Planck packing, a factor ~10³⁰ below the 54 μm laboratory frontier.
+> This is a CORRECTION within the postulate on the exact pattern of the
+> F1 κ-leak: derived, quadratic in its small parameter, sub-observable,
+> reopening no closed coefficient. Route (ii) (constraining the wedge
+> energy to an inflection, f''(Δ₀) = 0) was rejected as recovery-shaped
+> and is retained on record as the fallback.
+>
+> The official reading this ruling fixes: **"no static flow, exactly
+> zero" is a limit result.** Exactness is the idealization's property;
+> the physical vacuum's deviations from it must be derived, controlled,
+> and individually recorded. The register currently has exactly two
+> entries — the expansion κ-leak (F1) and the packing scalaron (047).
+> The null-test falsifier (F-P10-3 / register A3) is unchanged: any
+> *detected* gravitational-strength Yukawa at any accessible range
+> still kills.
+
+---
+
 ## Epistemic Status
 
 P7' is a structural postulate, adopted by theory-owner decision

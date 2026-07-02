@@ -1651,3 +1651,365 @@ outright. Watch item: chiral (TR-breaking) matter discretizations
 evade the theorem; any future matter-ontology work must re-run the
 check.
 ```
+
+## The Scalaron vs the Unimodular Constraint (O-P10-3 attacked)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: scalaron_unimodular_047
+obligation satisfied: o_p10_3_attacked_047
+obligation opened:    p7prime_scoping_ruling_047 (theory-owner ruling)
+```
+
+Current conclusion:
+
+```text
+HONEST NEGATIVE: the proposed mechanism -- "the unimodular constraint
+kills the scalaron" -- is REFUTED in-house. The f(R) EL tensor is
+identically conserved (verified: FRW divergence of the full
+f = R + alpha R^2 tensor vanishes with no field equations imposed), so
+the divergence of the traceless/unimodular equations reconstructs the
+trace equation up to an integration constant -- the same Bianchi
+mechanism that made Lambda an integration constant in 033. The
+scalaron equation returns exactly: (6 alpha box - 1) R = kappa T +
+const, with m^2 = 1/(6 alpha). Unimodular f(R) = f(R) + free Lambda.
+
+O-P10-3 therefore reduces to a scoping ruling on adopted P7', with
+both routes pre-analyzed and no coefficient or observable moving
+under either:
+
+  (i) P7' scoped as the a -> 0 idealization (the F1-leak precedent):
+      the packing scalaron has range l* = sqrt(6 alpha) ~ sqrt(6) l_P
+      ~ 4e-35 m -- a factor ~1.4e30 below the 54 um laboratory
+      frontier. A Planck-range Yukawa is operationally
+      indistinguishable from none; the null-test falsifier face is
+      unchanged. RECOMMENDED.
+
+ (ii) strict exactness: forces f''(Delta_0) = 0, an inflection of the
+      wedge energy at the frustrated ground state (verified: the
+      R^2-class coefficient is exactly f''(Delta_0)/2). Kills the
+      R^2 class exactly, leaves floor and EH intact -- but is
+      recovery-shaped without independent motivation. Cost recorded.
+
+The ruling (p7prime_scoping_ruling_047) is the theory owner's.
+```
+
+## The P7' Scoping Ruling: Route (i) Adopted (O-P10-3 closed)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: p7prime_scoping_ruling_record_048
+obligation satisfied: p7prime_scoping_ruled_048
+  (resolves p7prime_scoping_ruling_047; closes O-P10-3)
+```
+
+Current conclusion:
+
+```text
+THEORY-OWNER RULING (2026-07-02): ROUTE (i). P7' is scoped as the
+double idealization -- exact at H -> 0 (static; the F1 kappa-leak is
+the controlled correction) AND at a -> 0 (continuum; the Planck-range
+packing scalaron of 047 is the controlled correction). "No static
+flow, exactly zero" is officially a LIMIT RESULT: exactness is the
+idealization's property, and the physical vacuum's deviations must be
+derived, controlled, and individually recorded. The register of such
+corrections has exactly two entries, both quadratic in their small
+parameter, both sub-observable, neither reopening a closed
+coefficient.
+
+Route (ii) (the f''(Delta_0) = 0 inflection constraint) is REJECTED
+as recovery-shaped without independent motivation; retained on record
+as the fallback.
+
+Unchanged: the A3/F-P10-3 null test (any DETECTED Yukawa at any
+accessible range kills). New: the discreteness consistency battery --
+if the packing scale a is ever independently measured, a scalaron
+Yukawa at range sqrt(6) a is a parameter-free prediction (alongside
+C4, the floor-Newton lock).
+
+O-P10-3 is CLOSED. P10's remaining ledger: O-P10-1, -2, -4, -5.
+```
+
+## The Quadratic Selector Closure (metric vs Finsler audit closed)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: quadratic_selector_closure_049
+obligation satisfied: quadratic_gate_import_closed_049
+  (closes capstone imported-assumption rows 1-2)
+```
+
+Current conclusion:
+
+```text
+THE METRIC-VS-FINSLER AUDIT CLOSES UNDER P10. The projection-origin
+probe's two root imports of the GR branch -- "exact quadratic
+response" and "epsilon = 0" for interval response -- are theorems of
+the flatness clause:
+
+  1. FLAT IS QUADRATIC: for a generic symmetric form (n = 4, any
+     signature) the parallelogram identity holds identically,
+     polarization is exactly bilinear, and the fundamental tensor is
+     direction-independent.
+  2. FINSLER DATA IS UNSTORABLE: per n-cell the packing stores
+     C(n+1,2) edge lengths = n(n+1)/2 quadratic components EXACTLY
+     (every n); the smallest Finsler class (quartic) needs 35
+     coefficients in 4D against 10 edges. Not suppressed -- no slot.
+  3. EDGE DATA IS METRIC DATA, BIJECTIVELY: the law-of-cosines
+     inversion reconstructs the generic form from edge lengths
+     exactly.
+  4. The probe's own quartic witness reproduced (residual 12 eps)
+     and shown outside the axiom's state space.
+
+The only direction dependence the packing can express lives at hinges
+as deficit -- curvature, the theory's subject, not a hidden norm. The
+routing rule becomes a theorem: the eps_Finsler branch has an empty
+state space.
+
+Watch item: ground-state isotropy (an anisotropic ground order could
+give the long-wavelength effective response a preferred structure) --
+guarded by O-P10-2/O-P10-5; recorded in the report's kill face.
+```
+
+## The 4D Ground Coordination (O-P10-2 resolved at mean-field)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: ground_coordination_4d_050
+obligation satisfied: o_p10_2_resolved_meanfield_050
+obligation opened:    mixture_realizability_050 (joint with O-P10-5)
+```
+
+Current conclusion:
+
+```text
+THE FLAT 4D GROUND STATE IS A FORCED MIXTURE. O-P10-2 asked which of
+the opposite-sign coordinations (n = 4: +57.91 deg, n = 5: -17.61 deg)
+the ground state selects; the question presupposed a single winner and
+the answer is that flatness makes one impossible:
+
+  - n = 5 is the softest wedge: exact deficit ladder
+    delta(n) = 2 pi - n arccos(1/4) (no integer is deficit-free), and
+    the 4D wedge-ring relaxation lab (041 pattern lifted to R^4)
+    confirms the strict minimum at n = 5 with positive residual
+    E(5) = 0.0048 (4D frustration measured).
+  - but pure n = 5 is negatively curved at every hinge; the flat
+    ground state (037/041) imposes zero mean deficit, which fixes the
+    mixture EXACTLY: x_4 = 5 - 2 pi/arccos(1/4) = 0.233208,
+    x_5 = 0.766792; mean coordination 2 pi/arccos(1/4) = 4.766792.
+    Parameter-free structural numbers of the 4D vacuum.
+  - the mixed floor is strictly positive (E/hinge = 0.3107 rad^2,
+    quadratic witness), strictly between the pure costs: FLATNESS IS
+    BOUGHT WITH FRUSTRATION ENERGY -- the substance-energy identity
+    (038) in its sharpest form.
+
+Fence: mean-field (deficits treated as independently assignable).
+Remaining faces: realizability in a periodic 4D triangulation
+(mixture_realizability_050; cross-check target: 4D Delaunay
+coordination statistics), floor intensivity (O-P10-5), and the
+(3+1)-vs-Euclidean-4D instantiation question (O-P10-4). Isotropy of
+the mixture also guards 049's selector closure.
+
+P10's remaining ledger: O-P10-1, -4, -5 (+ mixture_realizability_050).
+```
+
+## The Relaxation Lab, Phase 2: Bulk Packings (O-P10-5 delivered)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: bulk_relaxation_phase2_051
+obligation satisfied: o_p10_5_phase2_delivered_051
+  (resolves bulk_relaxation_scaling_041; O-P10-5 phase-2 scope)
+obligation opened:    periodic_energy_relaxation_051 (phase 3)
+```
+
+Current conclusion:
+
+```text
+BULK MEASUREMENTS, seeded and deterministic (rng 20260702):
+
+E1. THE FLOOR IS INTENSIVE: relaxed energy per vertex of
+    Poisson-Delaunay spring networks is stable across a factor 4 in
+    system size (E/N = 0.202 / 0.229 / 0.250 at N = 80/160/320) --
+    a bulk energy density, exactly what the substance identity
+    (038, rho_v = const) requires. Not a boundary artifact.
+
+E2. FIRST REALIZABILITY DATA FOR THE 050 MIXTURE: interior triangle-
+    hinge coordinations of a real 4D Delaunay complex have mean
+    4.98 (raw) -> 4.86 (after regularizing smoothing), moving toward
+    the mean-field prediction 2 pi/arccos(1/4) = 4.7668; {4,5}
+    dominance grows to 0.581; the flat hinge identity
+    (mean n = 2 pi/mean-dihedral) verified to < 1%.
+
+E3. THE DEFECT SPECTRUM MEASURED: wedge-ring excess over the n = 5
+    floor is strictly positive, quantized by coordination, monotone
+    in |n - 5|, and ordered by the deficit arithmetic
+    (excess: n=4: 0.061, n=6: 0.052, n=3: 0.163, n=7: 0.242).
+
+E4. DISCLINATION NETWORKS: in smoothed 3D bulk, modal interior edge
+    coordination is 5 (the ground value); defect edges (55.9%) form
+    a SINGLE SPANNING COMPONENT -- line-like disclination networks
+    threading the bulk, the morphology 041 predicted, not isolated
+    dust.
+
+Fences: smoothing is a relaxation PROXY (no energy gradient, no
+retriangulation, no periodic box); the full realizability verdict is
+phase 3 (periodic_energy_relaxation_051). E3/E4 are microstructure
+exhibits: no dark-excess production or abundance licensed (017-019,
+P9 fence unchanged).
+
+P10's remaining ledger: O-P10-1, O-P10-4, mixture_realizability_050 /
+periodic_energy_relaxation_051 (now the same thread).
+```
+
+## The Edge Density c_e (O-P10-1 partial)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: edge_density_052
+obligation satisfied: o_p10_1_ce_derived_052
+obligation opened:    o_p10_1_packing_scale_052 (the remainder: a)
+```
+
+Current conclusion:
+
+```text
+c_e IS DERIVED, NOT FREE:
+
+  1. The 3D flat ground state mixes (050's logic one dimension down):
+     delta(5) = +7.36 deg, delta(6) = -63.17 deg; zero mean deficit
+     fixes x_6 = 2 pi/arccos(1/3) - 5 = 0.104299, and the mean edge
+     coordination is n_bar = 2 pi/arccos(1/3) = 5.104299 exactly (the
+     hinge identity -- independent of which coordinations mix).
+  2. c_e = 6/(V_tet n_bar) = 36 arccos(1/3)/(sqrt(2) pi) = 9.9743
+     edges per a^3. Pure geometry, a function of arccos(1/3) alone --
+     the same sole input as Delta_0, the relief function, and both
+     ground mixtures.
+  3. Bulk cross-check (seeded, smoothed): coordination 5.216 vs
+     predicted 5.104 (within 10%); density 11.74 vs 9.97 (proxy
+     level, as expected pre-phase-3).
+  4. THE REDUCTION: rho_v = (c_e Delta_0/2) f'(Delta_0)/a^3 =
+     0.6403 f'(Delta_0)/a^3, with c_e derived and f'(Delta_0)
+     eliminated by the floor-Newton lock (039). O-P10-1 has ONE
+     unknown left: the packing scale a.
+
+Register C4 sharpens into a two-face consistency battery: if a
+discreteness scale a is ever measured, the floor-Newton lock (with
+derived c_e) must produce the observed G AND the 048 scalaron must
+appear at range sqrt(6) a. Parameter-free, waiting on a measurement
+nobody yet knows how to make.
+
+Fence: mean-field near-regular ground packing; exact values are
+claims the phase-3 lab tests. No value of a is proposed; Planck-scale
+a remains an assumption wherever used.
+
+P10's remaining ledger: o_p10_1_packing_scale_052, O-P10-4,
+periodic_energy_relaxation_051.
+```
+
+## The Boundary Channel Operator: Instantiated, and the Channel Dies (053)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: boundary_channel_operator_053 (COUNTEREXAMPLE / channel kill)
+obligation satisfied: ufft_operator_instantiated_053
+  (the operator-instantiation audit debt, owed since the earlier program)
+```
+
+Current conclusion:
+
+```text
+HONEST NEGATIVE, and a big one. The dimensional-relaxation channel's
+operator is finally derivable under P10, and the derivation KILLS the
+unsuppressed channel:
+
+  1. THE DIFFERENTIAL IS REAL: 2D packing is exactly frustration-free
+     (six triangles close a vertex, deficit identically zero); the 3D
+     floor is the derived 052 mixture. Confinement to quasi-2D would
+     release the full floor.
+  2. THE OPERATOR HAS NEW-CHANNEL FORM: slab release E/A = u_floor d,
+     force law a CONSTANT attractive pressure -- d-exponent 0 vs QFT
+     Casimir's -4. Kill condition 2 passed in form.
+  3. THE MAGNITUDE IS LOCKED AND FATAL: the floor-Newton lock (039) +
+     derived c_e (052) fix u_floor = c^4 c_e <delta^2>/(32 pi G
+     Delta_0 a^2) with no free coefficient: 5e112 Pa at Planck
+     packing, 1.5e52 Pa even at absurd window-scale packing --
+     excluded by 54-114 orders of magnitude against Casimir-class
+     bounds (~1e-2 Pa). The matter-boundary/packing coupling is
+     OPERATIONALLY ZERO.
+  4. THE DISCIPLINE LINE HELD: the release is a state function and
+     Hartle-Sorkin additivity (042) closes the cycle at exactly zero.
+     The channel dies of magnitude, not thermodynamics.
+
+Consequences: the engineered-boundary energy-release mechanism (the
+founding extraction motivation's packing-era route) is CLOSED at
+leading order; "gravity sequesters, boundaries reveal" is
+quantitatively dead (the floor hides from BOTH channels); the UFFT
+micron window (29.9-38.6 um) loses its VED motivation and register B3
+is DOWNGRADED -- excluding the window now kills nothing in the core.
+The P10-consistent reading: matter is strain content OF the packing
+(041 E4), not walls that confine it.
+
+Fence: the kill is of the UNSUPPRESSED coupling; reopening requires a
+front-door derivation of a specific tiny coupling with independent
+motivation; backsolving a coupling into the exclusion is forbidden.
+```
+
+## The Cosmological-Creation Face: the 045 Seam Decided (054)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: cosmological_creation_face_054
+obligation satisfied: creation_seam_decided_054
+  (resolves p6_p10_cosmological_creation_045; register C3)
+obligation opened:    creation_suppression_dynamics_054 (alpha; O-P10-4)
+```
+
+Current conclusion:
+
+```text
+EXPANSION IS CREATION -- decided on existing data. The 045 seam asked
+whether expansion means new cells (growth: l const, N ~ a^3) or
+dilating cells (stretch: l = l_0 a, N fixed). Both give the same a^3
+volume history and the same dust stress -- the metric sector is
+forever silent -- but the readings' side effects on LOCKED quantities
+differ, and the stretch reading dies twice:
+
+  KILL 1: the floor-Newton lock (039) forces Gdot/G = -H under
+     stretch: 7.2e-11/yr vs the LLR bound 1.5e-13/yr -- excluded
+     ~480x.
+  KILL 2: dilation-invariant wedge energies (038/041 E3) make the
+     stretched floor's pressure ZERO: dustlike w = 0 at Planck
+     density, NOT protected by sequestering (P3 protects constant
+     DENSITY; the stretched floor's density dilutes) -- ~1e122 x
+     closure. Would also demolish the A1/B1 architecture.
+
+  THE SURVIVOR IS SELF-FUNDING: intensive floor (051 MEASURED) means
+  p = -u exactly -- w = -1 at the substance level -- and creation's
+  energy cost u dV is exactly the floor's negative-pressure work.
+  The first law funds expansion, term by term. G is exactly constant.
+
+NEW REGISTER ENTRY A6: Gdot = 0 exactly, forever -- no drift
+mechanism remains in the theory. Any confirmed nonzero Gdot/G kills
+the creation reading and with it P10's account of expansion.
+Distinctive vs scalar-tensor rivals; under genuine experimental
+pressure (H0 only ~480x above current LLR bounds, tightening).
+
+THE VACUUM-FLOW CLAUSE (the owner's founding intuition) formalized:
+C = 3H(1 - alpha delta). <delta> = 0 makes it exactly invisible to
+the background for ANY alpha -- it lives in the substance/
+perturbation sector, constrains nothing yet, and its coefficient
+becomes computable only with O-P10-4's Lorentzian dynamics
+(creation_suppression_dynamics_054).
+
+P10's remaining ledger: o_p10_1_packing_scale_052, O-P10-4 (dynamics
++ alpha), periodic_energy_relaxation_051.
+```
