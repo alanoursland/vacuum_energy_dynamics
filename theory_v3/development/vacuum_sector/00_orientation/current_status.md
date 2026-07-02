@@ -1554,3 +1554,64 @@ pipeline, defects as gated candidates).
 
 The program transitions from axiom search to theory development under
 an adopted axiom. The gates guard P10 now.
+
+## The P6-P10 Consistency Audit
+
+Recorded through VacuumForge as:
+
+```text
+derivation: p6_p10_consistency_045
+obligation satisfied: p6_p10_seam_audited_045
+obligation opened:    p6_p10_cosmological_creation_045
+```
+
+Current conclusion:
+
+```text
+The double-counting danger (P6's substance destruction vs the
+configuration deepening as two funding sources for infall KE, against
+P9's count-once fence) is resolved by theorem: KE = -Delta U_cross
+EXACTLY at the Newtonian anchor (zero residual; pointwise rate face
+smooth), so there is only one ledger entry -- and P1's identity
+(vacuum IS energy) makes P6's substance vocabulary and P10's strain
+vocabulary two descriptions of it. Destruction = strain content
+dropping below the floor, no cell removed; the exterior deficit
+integrates to 2GM^2/R, the weak-field form of the recorded cap-ledger
+entry. P3 compatibility holds structurally (intensive self-measured
+density protected by dilation invariance + P2; wells are extensive
+content deficits per P3a). Strong-field rate face: the exact PG river
+ledger (021).
+
+Consistency verdict: P6-P10 consistent at every shared quantitative
+anchor; satisfiability-by-common-model completed for the infall face.
+Open (an underdetermination, not a contradiction): the cosmological-
+creation reading -- graph growth vs content rise -- assigned to the
+Lorentzian-dynamics program (O-P10-4).
+```
+
+## Predictions Register Opened
+
+`theory_v3/development/predictions/predictions_register.md` inventories
+every observable commitment the theory currently makes, tiered:
+
+```text
+Tier A (kill zone, now/near-term):
+  A1  w(z) = -1 exactly, constant -- UNDER LIVE FIRE (DESI-class
+      evolving-DE preferences); the discipline trap (no excess
+      backsolve) is pre-registered
+  A2  GW: two TT polarizations, no dispersion, quadrupole rate
+  A3  no gravitational-strength Yukawa at any range (P7')
+  A4  black-hole exteriors/ringdowns exactly GR
+  A5  no linear-order LIV -- simultaneously a prediction and the
+      sharpest currently-computable SELF-THREAT: the packing's own
+      dispersion relation must be computed (new high-priority
+      obligation; linear dispersion would kill P10 against existing
+      GRB bounds)
+Tier B: sequestering's falsifiable edge; defect-DM non-gravitational
+      nulls (conditional); the Casimir/UFFT window; Lambda's sign
+Tier C: dispersion computation, defect spectrum, cosmological-creation
+      observable face, conversion-factor relation, kappa-leak scaling
+```
+
+The register's rule: no entry may be softened after an adverse result
+except by a recorded postulate-level move. Backsolving forbidden.
