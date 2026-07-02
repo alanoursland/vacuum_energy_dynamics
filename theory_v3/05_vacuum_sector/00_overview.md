@@ -29,7 +29,7 @@ ledger), in what fixes the one constant gravity permits but does not
 value (Λ), and in what may yet be seen in non-metric channels (the
 excursion ledger).
 
-## The Story in Six Documents
+## The Story in Seven Documents
 
 | document | content | one line |
 |---|---|---|
@@ -39,6 +39,7 @@ excursion ledger).
 | `04_excursions_and_exchange.md` | what gravity *does* see | strain variations: wells, waves, defects; the P6 pipeline with its exact ledger |
 | `06_the_ground_state_by_the_numbers.md` | the post-adoption campaign (046–053) | one geometric input fixes the mixtures, c_e, and the floor; the self-threats survived; two doors closed (Finsler, boundary channel) |
 | `07_expansion_as_creation.md` | what expansion *is* (054) | new cells, not stretched ones — decided twice on existing data; creation is self-funded by w = −1; new falsifier Ġ = 0 exactly |
+| `08_the_strong_field_interior.md` | what replaces the singularity (055) | curvature is capped combinatorially (R_max = 51.67/a²); collapse bottoms out at a Planck-star core, r_cap = 0.406 (r_s a²)^⅓, ~26 orders inside the horizon; no echoes |
 
 Plus `05_open_obligations.md`: the adopted postulate's debts,
 falsifiers, and the handoff to future work.
@@ -56,7 +57,7 @@ them; its fence, falsifiers, and obligations are in the postulate file.
 ## Epistemic Standing
 
 Everything stated as a result in this section is forge-verified
-(derivations 033–054, all green, archive under
+(derivations 033–055, all green, archive under
 `vacuum_forge/src/vacuum_sector/`); everything that is an
 interpretation licensed by P10 is stated as such; everything still
 gated (dark-excess abundance, interior cap, matter-as-defect) is
@@ -68,8 +69,11 @@ since 054, Ġ = 0 exactly (register A6) and no linear LIV (A5,
 sharpened by 046). The post-adoption record: two self-threats
 survived (dispersion by theorem, the scalaron by scoped ruling), two
 audits closed (quadratic selector, boundary channel), the ground
-state quantified (mixtures, c_e, one constant left), and expansion
-decided (creation, self-funded). See `06_…` and `07_…`.
+state quantified (mixtures, c_e, one constant left), expansion
+decided (creation, self-funded), and the interior cap scale derived
+(the coordination floor caps curvature; the singularity is replaced
+by a Planck-star core; A4's echo caveat resolves to a null). See
+`06_…`, `07_…`, and `08_…`.
 
 ## Reading Pointers
 

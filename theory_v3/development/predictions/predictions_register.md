@@ -109,11 +109,15 @@ forced by:   Birkhoff-type rigidity (019), the closed equations, and
              leak out).
 kills it:    confirmed non-GR ringdown modes or shadow deviations.
 status:      standing null; EHT and LVK ringdown tests consistent.
-caveat:      the interior cap (open) could in principle produce
-             LATE-TIME echoes if a cap sits outside the would-be
-             horizon; no such prediction is licensed (cap scale not
-             derived). A confirmed echo would OPEN a lane, not
-             confirm one.
+caveat:      RESOLVED TO A NULL (derivation 055, 2026-07-03): the cap
+             scale is now derived from P10's compression limits
+             (coordination floor => R_max = 51.67/a^2 => r_cap =
+             0.406 (r_s a^2)^(1/3), the Planck-star scaling with a
+             derived coefficient). The cap sits ~26 orders inside a
+             stellar-mass horizon: NO echoes are predicted at any
+             astrophysical mass. SHARPENED: a confirmed echo now
+             KILLS the derived cap placement (mean-field fence
+             recorded) rather than opening a lane.
 ```
 
 ### A5. No Lorentz violation at linear order in E/E_Planck

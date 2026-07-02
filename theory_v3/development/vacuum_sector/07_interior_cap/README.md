@@ -29,10 +29,23 @@ finite_strain_admissibility_probe_vacuumforge.md
 Current conclusion:
 
 ```text
-No interior-cap route is live. Exterior-preserving interior modification is a
-candidate contract only. A cap or finite-strain rule needs exterior matching,
-junction/source bookkeeping, and a derived admissibility scale before it can be
-used.
+UPDATED (2026-07-03, derivation 055): the admissibility scale is now
+DERIVED at mean-field from P10's compression limits -- the bound the
+finite-strain probe (027) said was "possible but absent" was the
+coordination floor all along. An interior hinge carries >= 3 cells, so
+the near-regular deficit is capped at delta_max = 2 pi - 3 arccos(1/3)
+= 2.590 rad, giving R_max = 2 c_e delta_max/a^2 = 51.67/a^2 and a
+capped core at r_cap = 0.406 (r_s a^2)^(1/3) -- the Planck-star
+scaling with a derived coefficient, exact in arccos(1/3). The cap sits
+~26 orders inside a stellar-mass horizon: exteriors exactly GR, NO
+echoes predicted at any astrophysical mass (register A4's caveat
+resolves to a null), Planck-mass endpoint marker at ~0.1 M_P.
+See interior_cap_scale_vacuumforge.md.
+
+STILL OPEN (cap_junction_dynamics_055): the capped interior METRIC,
+junction/source bookkeeping, collapse dynamics, and the fence's
+energetics (the near-regular bound vs the degenerate-cell trade).
+The contract below remains the gate for all of it.
 ```
 
 Imported cutoff radii and untracked exterior deviations are rejected.

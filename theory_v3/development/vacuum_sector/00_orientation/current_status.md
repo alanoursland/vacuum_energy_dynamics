@@ -2013,3 +2013,51 @@ becomes computable only with O-P10-4's Lorentzian dynamics
 P10's remaining ledger: o_p10_1_packing_scale_052, O-P10-4 (dynamics
 + alpha), periodic_energy_relaxation_051.
 ```
+
+## The Interior Cap Scale from P10's Compression Limits (055)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: interior_cap_scale_055
+obligation satisfied: cap_scale_derived_055
+  (resolves the finite-strain probe's missing bound, 027)
+obligation opened:    cap_junction_dynamics_055
+```
+
+Current conclusion:
+
+```text
+THE CAP SCALE IS DERIVED (mean-field). The interior-cap lane stalled
+at 025-028 because kappa_max was an import; P10 supplies it as
+COMBINATORICS:
+
+  1. COORDINATION FLOOR: an interior hinge carries >= 3 cells, so the
+     near-regular deficit is bounded: delta_max = 2 pi - 3 arccos(1/3)
+     = 2.590 rad (148.41 deg). Curvature concentration has a ceiling.
+  2. CURVATURE CAP: R_max = 2 c_e delta_max/a^2 = 51.67/a^2 -- exact
+     in arccos(1/3) (the Regge encoding + derived edge density).
+  3. CAP RADIUS: matching the Schwarzschild interior curvature scale
+     (sqrt K = 4 sqrt3 GM/c^2 r^3):
+         r_cap = 0.406 (r_s a^2)^(1/3)
+     -- the Planck-star scaling (Rovelli-Vidotto posited it from LQC
+     bounce arguments; here it drops out of tetrahedral combinatorics
+     with the coefficient computed). Convergence recorded; neither
+     route validates the other.
+  4. PLACEMENT (Planck packing, ASSUMED): r_cap ~ 3.7e-23 m for
+     1 M_sun (r_cap/r_s ~ 1e-26); Sgr A* ~ 6e-21 m. The exterior
+     matching lemma applies with ~26 orders of room: exteriors stay
+     exactly GR, and register A4's echo caveat RESOLVES TO A NULL --
+     no echoes at any astrophysical mass; a confirmed echo now KILLS
+     the placement. Endpoint marker: cap meets horizon at
+     ~0.13 M_Planck (no evaporation dynamics claimed).
+
+Contract compliance: all seven fields of the 025-028 contract now
+have entries; the derived-scale field was the last holdout.
+
+Fences: near-regular mean-field (the degenerate-cell trade witnessed
+via Cayley-Menger; its energetic suppression for f'' > 0 stated, not
+proven); curvature-SCALE matching only (no capped interior metric, no
+junction solution, no collapse dynamics -- cap_junction_dynamics_055,
+joint with O-P10-4); a underived as everywhere.
+```
