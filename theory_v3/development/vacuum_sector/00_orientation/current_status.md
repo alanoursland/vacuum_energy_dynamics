@@ -1773,3 +1773,46 @@ Watch item: ground-state isotropy (an anisotropic ground order could
 give the long-wavelength effective response a preferred structure) --
 guarded by O-P10-2/O-P10-5; recorded in the report's kill face.
 ```
+
+## The 4D Ground Coordination (O-P10-2 resolved at mean-field)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: ground_coordination_4d_050
+obligation satisfied: o_p10_2_resolved_meanfield_050
+obligation opened:    mixture_realizability_050 (joint with O-P10-5)
+```
+
+Current conclusion:
+
+```text
+THE FLAT 4D GROUND STATE IS A FORCED MIXTURE. O-P10-2 asked which of
+the opposite-sign coordinations (n = 4: +57.91 deg, n = 5: -17.61 deg)
+the ground state selects; the question presupposed a single winner and
+the answer is that flatness makes one impossible:
+
+  - n = 5 is the softest wedge: exact deficit ladder
+    delta(n) = 2 pi - n arccos(1/4) (no integer is deficit-free), and
+    the 4D wedge-ring relaxation lab (041 pattern lifted to R^4)
+    confirms the strict minimum at n = 5 with positive residual
+    E(5) = 0.0048 (4D frustration measured).
+  - but pure n = 5 is negatively curved at every hinge; the flat
+    ground state (037/041) imposes zero mean deficit, which fixes the
+    mixture EXACTLY: x_4 = 5 - 2 pi/arccos(1/4) = 0.233208,
+    x_5 = 0.766792; mean coordination 2 pi/arccos(1/4) = 4.766792.
+    Parameter-free structural numbers of the 4D vacuum.
+  - the mixed floor is strictly positive (E/hinge = 0.3107 rad^2,
+    quadratic witness), strictly between the pure costs: FLATNESS IS
+    BOUGHT WITH FRUSTRATION ENERGY -- the substance-energy identity
+    (038) in its sharpest form.
+
+Fence: mean-field (deficits treated as independently assignable).
+Remaining faces: realizability in a periodic 4D triangulation
+(mixture_realizability_050; cross-check target: 4D Delaunay
+coordination statistics), floor intensivity (O-P10-5), and the
+(3+1)-vs-Euclidean-4D instantiation question (O-P10-4). Isotropy of
+the mixture also guards 049's selector closure.
+
+P10's remaining ledger: O-P10-1, -4, -5 (+ mixture_realizability_050).
+```

@@ -14,11 +14,19 @@ O-P10-1  MICROPHYSICS CONSTANTS. Derive or reduce a (packing scale)
          This is the same thread as "is space discrete" — a is only
          meaningful if it is.
 
-O-P10-2  4D GROUND COORDINATION. n = 4 and n = 5 coordinations around
-         a triangle hinge carry opposite-sign deficits (+57.91 deg /
-         -17.61 deg). Which the ground state selects, and how
-         Euclidean-4D packing relates to (3+1) spatial packing, is
-         open. The 3D spatial results do not depend on it.
+O-P10-2  4D GROUND COORDINATION. RESOLVED AT MEAN-FIELD (derivation
+         050, 2026-07-02): the flat ground state selects NEITHER
+         coordination purely — n = 5 is the softest wedge (exact
+         ladder + 4D relaxation lab, strict minimum with positive
+         residual) but pure n = 5 is negatively curved; flatness
+         forces the exact mixture x_4 = 5 - 2 pi/arccos(1/4) = 0.2332,
+         x_5 = 0.7668, mean coordination 2 pi/arccos(1/4) = 4.7668 —
+         parameter-free. The mixed floor is strictly positive:
+         flatness is BOUGHT with frustration energy (038's identity,
+         sharpest form). Remaining faces: realizability of the mixture
+         in a periodic triangulation (mixture_realizability_050,
+         joint with O-P10-5) and the (3+1)-vs-Euclidean-4D
+         instantiation question (stays with O-P10-4).
 
 O-P10-3  THE P7' TENSION. CLOSED (derivations 047 + 048, 2026-07-02).
          The cancellation route was REFUTED in-house (047): the f(R)
