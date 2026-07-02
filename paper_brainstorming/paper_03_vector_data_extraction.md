@@ -65,3 +65,14 @@ as a table.
 **Effort estimate:** arXiv+Zenodo version: 1–2 sessions. JOSS version:
 3–4 (packaging dominates). High value-per-effort; also the best
 "calling card" paper — useful to people who will never read paper 1.
+
+---
+
+## Portfolio review note (2026-07-03)
+
+Queue position 2 (after paper 2). Two additions: (i) the novelty check
+against the document-analysis / plot-reverse-engineering literature is
+LOAD-BEARING for the JOSS route — do it before packaging work; arXiv+
+Zenodo first regardless. (ii) Citation loop noted: papers 7 and 9 may
+use this tool (DESI contour re-plots; Gdot-bound ladder figures) —
+if so, cite the tool paper from them, which strengthens both.

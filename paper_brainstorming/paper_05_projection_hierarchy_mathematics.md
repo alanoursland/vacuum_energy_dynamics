@@ -64,3 +64,13 @@ ontological buy-in.
 
 **Effort estimate:** 2–4 sessions after the literature check. Low
 urgency; does not block or depend on papers 1–4.
+
+---
+
+## Portfolio review note (2026-07-03)
+
+Unchanged in substance; the literature check is confirmed as a HARD
+GATE (no drafting before it). Lowest urgency in the portfolio: no
+dependencies in either direction. The cross-Gram diagnosis remains the
+most likely genuinely-new element and should lead the framing if the
+gate passes.

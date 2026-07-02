@@ -59,3 +59,26 @@ decides whether this is a letter or a paragraph of paper 1.
 rejection risk on the list, but also the most likely to be *cited* by
 people outside foundations if it lands — modified-gravity constraint
 papers are a large, active market.
+
+---
+
+## Portfolio review note (2026-07-03)
+
+Two revisions required before drafting, one gift received:
+
+1. REVISION (048): the VED-motivation paragraph must present the
+   selection as exact in the a -> 0 idealization (P7' is now scoped;
+   within VED the finite-a packing carries a Planck-range scalaron as
+   a controlled correction). As pure f(R) phenomenology the three
+   theorems stand unchanged.
+2. GIFT (047): a stronger closing section is now available — the
+   unimodular/trace-free route does NOT evade the selection theorem
+   either: the identically-conserved f(R) EL tensor lets the Bianchi
+   identity reconstruct the scalaron equation from the unimodular
+   system (m^2 = 1/(6 alpha) intact). "Frame indifference forces
+   f(R) = R, and the unimodular escape is closed" is a better note
+   than the original. Source: 047 report
+   (theory_v3/development/vacuum_sector/08_packing_microphysics/
+   scalaron_unimodular_vacuumforge.md).
+3. The novelty check (f(R)-star exteriors literature) remains the
+   gating step, unchanged.
