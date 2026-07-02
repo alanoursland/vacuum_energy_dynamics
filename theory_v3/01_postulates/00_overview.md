@@ -19,6 +19,7 @@ nothing else. The proof that closes on the field equations
 | P6 | `p6_vacuum_exchange_in_gradients.md` | kinetic-energy changes are sourced by vacuum exchange in gradients |
 | **P7′** | `p7_prime_static_frame_indifference.md` | **adopted**: strictly static vacuum carries no energy current / no preferred t–r frame |
 | **P9** | `p9_configuration_energy_gravitates.md` | **adopted, fenced**: configuration energy gravitates at the universal coupling, counted exactly once |
+| **P10** | `p10_packing_axiom.md` | **adopted 2026-07-01, fenced**: the vacuum substance is a packing — edge-length graph, hinge-deficit curvature, smooth per-hinge energy, frustrated flat ground state |
 
 Plus the SR foundation: `sr_imports.md` (SR1–SR9 — Lorentz invariance,
 Minkowski structure, $E=mc^2$, etc.; explicitly **not** GR).
@@ -26,7 +27,13 @@ Minkowski structure, $E=mc^2$, etc.; explicitly **not** GR).
 **Zero recovery-shaped postulates remain.** Nothing in the live set was
 adopted to force agreement with GR; P9 and P7′ were both adopted on
 structural grounds (timestamped 2026-06-11) *before* their decisive
-consequences were known.
+consequences were known. P10 (timestamped 2026-07-01) carries a
+different, honestly-stated adoption record: it was adopted *after* an
+extensive verification campaign, on coherence evidence, with its
+falsifiers pre-registered — its forward evidential weight must come
+from consequences not yet checked. It is a microphysics postulate for
+the vacuum sector; nothing in the field-equation derivation depends on
+it.
 
 ## Retired files (kept for the record, not live inputs)
 

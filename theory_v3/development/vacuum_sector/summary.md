@@ -63,8 +63,10 @@ without a new axiom.
 ## Current Bottom Line
 
 ```text
-The only currently licensed gravitational branch is the conditionally
-reconstructed EH/GHY baseline at epsilon = 0.
+P10 (the packing axiom) is ADOPTED (2026-07-01): EH/GHY is the derived
+leading response of the frustrated packing (epsilon = 0 with
+a^2-suppressed R^2-class corrections quarantined under O-P10-3). The
+strain-axiom question is closed; the gates now guard the adopted axiom.
 ```
 
 No nonbaseline vacuum-sector mechanism has earned new-physics status. Every
@@ -84,7 +86,7 @@ This table extends the program checkpoint's ledger through derivation 032.
 | lane | status | current disposition |
 | --- | --- | --- |
 | closed metric branch | conditionally reconstructed | baseline retained at `epsilon = 0` |
-| strain branch selector | open, decision pending | central obligation; minimal axiom contract written, candidate sieve run, no nonbaseline axiom passes |
+| strain branch selector | **RESOLVED: P10 ADOPTED (2026-07-01, derivation 044)** | the packing axiom, nine-field contract complete (037–043); fence + falsifiers pre-registered; section of record: `../../05_vacuum_sector/` |
 | local higher-curvature residual | not licensed | scalar prototype and tensor-route audit both block it; spin-2/Weyl killed by ghost pole; scalaron/f(R) blocked by P7′/weak-field unless reopened |
 | nonzero Lambda baseline | integration constant (033) | forge-verified unimodular result: P3 supplies the fixed-measure constraint, Lambda is an integration constant fixed by one global datum, bulk vacuum energy is sequestered; the 008–016 sweep negatives are theorems of this reading; the value (the global datum) remains external |
 | dark-sector excess | candidate only | dustlike `w = 0` row passes clustering/conservation as a candidate; abundance/production unlicensed; observed-density backsolves rejected; floor *variations* with an explicit exchange ledger route here (035) |
