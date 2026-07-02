@@ -69,15 +69,13 @@ a^2-suppressed R^2-class corrections quarantined under O-P10-3). The
 strain-axiom question is closed; the gates now guard the adopted axiom.
 ```
 
-No nonbaseline vacuum-sector mechanism has earned new-physics status. Every
-side route either collapses to GR, fails an accumulated gate, or is
-underdetermined without a new axiom. This is reported as a result, not a
-failure: each route has been forced into a definite bucket rather than left
-open.
+No nonbaseline *observable* mechanism has earned new-physics status: the
+adopted microphysics reproduces GR at all accessible scales by theorem, and
+every candidate deviation remains gated (dark excess, channels, interior).
 
-The head obligation is `strain_axiom_adoption_decision_required_032`: decide
-whether to adopt a fully specified new strain axiom or keep nonbaseline
-mechanisms quarantined.
+The former head obligation (`strain_axiom_adoption_decision_required_032`)
+is RESOLVED: P10 adopted, derivation 044. The head obligations are now
+P10's own ledger, O-P10-1..5 (see `../../05_vacuum_sector/05_open_obligations.md`).
 
 ## Program Lane Ledger
 
