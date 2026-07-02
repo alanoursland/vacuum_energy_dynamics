@@ -1521,3 +1521,36 @@ Theory-owner adoption decision. In parallel: bulk_relaxation_scaling_041
 (phase 2), p7prime_packing_tension_039, 4d_ground_coordination_043, and
 the paper drafts for the unimodular and frustration arcs.
 ```
+
+## P10 ADOPTED (theory-owner decision, 2026-07-01)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: p10_adoption_record_044
+obligation resolved: strain_axiom_adoption_decision_required_032
+                     (via _live_042) -- ADOPTED
+obligations opened:  O-P10-1..5 (microphysics constants; 4D ground
+                     coordination; P7' tension; Lorentzian dynamics;
+                     bulk relaxation phase 2)
+```
+
+The head obligation of the vacuum-sector program is resolved: the
+Regge/Delaunay packing model is adopted as P10, the packing axiom
+(theory_v3/01_postulates/p10_packing_axiom.md), with fence and
+pre-registered falsifiers (F-P10-1 volume-mode restoring force;
+F-P10-2 floor/conversion-factor split; F-P10-3 inherited P7' null
+test). The adoption's epistemic record is stated honestly in the
+postulate file: adopted AFTER the 037-043 verification campaign, on
+coherence evidence; forward weight from consequences not yet checked.
+
+The section of record for the implied theory is now
+theory_v3/05_vacuum_sector/ (00_overview through 05_open_obligations):
+the substance energy (unrealized curvature, sequestered), the
+gravitational response (EH from the frustrated expansion point), Lambda
+and the global datum (settled status; value external, and why), and the
+excursion/exchange ledger (potential/kinetic curvature, the exact P6
+pipeline, defects as gated candidates).
+
+The program transitions from axiom search to theory development under
+an adopted axiom. The gates guard P10 now.

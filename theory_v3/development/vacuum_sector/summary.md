@@ -63,19 +63,19 @@ without a new axiom.
 ## Current Bottom Line
 
 ```text
-The only currently licensed gravitational branch is the conditionally
-reconstructed EH/GHY baseline at epsilon = 0.
+P10 (the packing axiom) is ADOPTED (2026-07-01): EH/GHY is the derived
+leading response of the frustrated packing (epsilon = 0 with
+a^2-suppressed R^2-class corrections quarantined under O-P10-3). The
+strain-axiom question is closed; the gates now guard the adopted axiom.
 ```
 
-No nonbaseline vacuum-sector mechanism has earned new-physics status. Every
-side route either collapses to GR, fails an accumulated gate, or is
-underdetermined without a new axiom. This is reported as a result, not a
-failure: each route has been forced into a definite bucket rather than left
-open.
+No nonbaseline *observable* mechanism has earned new-physics status: the
+adopted microphysics reproduces GR at all accessible scales by theorem, and
+every candidate deviation remains gated (dark excess, channels, interior).
 
-The head obligation is `strain_axiom_adoption_decision_required_032`: decide
-whether to adopt a fully specified new strain axiom or keep nonbaseline
-mechanisms quarantined.
+The former head obligation (`strain_axiom_adoption_decision_required_032`)
+is RESOLVED: P10 adopted, derivation 044. The head obligations are now
+P10's own ledger, O-P10-1..5 (see `../../05_vacuum_sector/05_open_obligations.md`).
 
 ## Program Lane Ledger
 
@@ -84,7 +84,7 @@ This table extends the program checkpoint's ledger through derivation 032.
 | lane | status | current disposition |
 | --- | --- | --- |
 | closed metric branch | conditionally reconstructed | baseline retained at `epsilon = 0` |
-| strain branch selector | open, decision pending | central obligation; minimal axiom contract written, candidate sieve run, no nonbaseline axiom passes |
+| strain branch selector | **RESOLVED: P10 ADOPTED (2026-07-01, derivation 044)** | the packing axiom, nine-field contract complete (037–043); fence + falsifiers pre-registered; section of record: `../../05_vacuum_sector/` |
 | local higher-curvature residual | not licensed | scalar prototype and tensor-route audit both block it; spin-2/Weyl killed by ghost pole; scalaron/f(R) blocked by P7′/weak-field unless reopened |
 | nonzero Lambda baseline | integration constant (033) | forge-verified unimodular result: P3 supplies the fixed-measure constraint, Lambda is an integration constant fixed by one global datum, bulk vacuum energy is sequestered; the 008–016 sweep negatives are theorems of this reading; the value (the global datum) remains external |
 | dark-sector excess | candidate only | dustlike `w = 0` row passes clustering/conservation as a candidate; abundance/production unlicensed; observed-density backsolves rejected; floor *variations* with an explicit exchange ledger route here (035) |

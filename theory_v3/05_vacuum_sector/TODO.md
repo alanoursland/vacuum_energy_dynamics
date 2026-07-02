@@ -1,3 +1,14 @@
+> **SUPERSEDED (2026-07-01).** This TODO predates the vacuum-sector
+> program's completion. The strain-axiom question is closed by the
+> adoption of P10 (`../01_postulates/p10_packing_axiom.md`); the section
+> of record now lives in `00_overview.md` through `05_open_obligations.md`
+> in this directory. Of the candidate directions below: Lambda's value is
+> resolved as the global datum (03_lambda_and_the_global_datum.md); the
+> dark sector has a candidate object with its gates intact
+> (04_excursions_and_exchange.md); the measure identity and remaining
+> items carry over as inherited obligations (05_open_obligations.md).
+> Preserved as a record.
+
 # Vacuum Sector TODO
 
 This directory is reserved for post-field-equation physics: the parts of

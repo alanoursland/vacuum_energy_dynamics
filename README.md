@@ -42,6 +42,10 @@ The live postulate set (`theory_v3/01_postulates/`) is:
   preferred time–radius frame.
 - **P9** — configuration energy gravitates at the universal coupling, counted
   exactly once.
+- **P10** — the vacuum substance is a packing: an edge-length graph with
+  hinge-deficit curvature, a smooth per-hinge energy, and a frustrated flat
+  ground state (adopted 2026-07-01; fenced; the vacuum sector's microphysics —
+  nothing in the field-equation derivation depends on it).
 
 Plus the special-relativity imports SR1–SR9 (Lorentz invariance, Minkowski
 structure, $E=mc^2$ — explicitly **not** general relativity).
@@ -126,11 +130,12 @@ stated channel, or explicitly quarantined.
   ($\approx 0.33\ \mu\text{m/s}$ at 1 AU) is physically meaningful — with *no
   coupling to it in the closed sector*. Anything that detected it would be new
   physics. All couplings to the frame are quarantined.
-- **$\Lambda$ has an owner.** $\Lambda$ is interpreted as the frustration floor
-  — the standing energy cost of the vacuum's 3D configuration ($w = -1$). The
-  field equations contain $\Lambda$; the vacuum-sector program owes its value.
-  A derivation of $\Lambda$ from substance properties would be VED's first
-  non-GR *number*.
+- **$\Lambda$ has a settled status.** Under the forge-verified unimodular
+  results, $\Lambda$ is an integration constant fixed by one global datum —
+  the ground configuration's intrinsic curvature — and the vacuum's own
+  (frustration/substance) energy is *sequestered*: it does not gravitate, as a
+  theorem of P3's own unimodular content. The vacuum-sector section of record
+  is `theory_v3/05_vacuum_sector/`.
 - **The dark sector has a candidate mechanism.** The live candidate is a
   $w \approx 0$ frustration excess (gapped excitations / defect gas over the
   floor), with abundance set by production physics.
@@ -171,7 +176,7 @@ dark excess:                         candidate only, missing production/abundanc
 non-gravitational channels:         quarantined, missing operators
 substance frame:                    silent ontology allowed, coupling unlicensed
 interior cap:                        exterior-preserving contract only
-strain axiom:                        adoption decision pending
+strain axiom:                        ADOPTED (P10, 2026-07-01): the packing axiom
 ```
 
 No nonbaseline mechanism has yet earned new-physics status. Every side route
