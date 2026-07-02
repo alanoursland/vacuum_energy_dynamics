@@ -20,11 +20,22 @@ O-P10-2  4D GROUND COORDINATION. n = 4 and n = 5 coordinations around
          Euclidean-4D packing relates to (3+1) spatial packing, is
          open. The 3D spatial results do not depend on it.
 
-O-P10-3  THE P7' TENSION. The expansion's f'' term is R^2-class at
-         Planck scale; P7' demands the four-derivative sector exactly
-         empty. Show cancellation/routing into the constraint sector,
-         or re-scope P7' as the a -> 0 idealization. No closed
-         coefficient moves either way; the P7' null test remains the
+O-P10-3  THE P7' TENSION. ATTACKED (derivation 047, 2026-07-02). The
+         cancellation route is REFUTED in-house: the f(R) EL tensor is
+         identically conserved, so the Bianchi mechanism that made
+         Lambda an integration constant (033) reconstructs the trace
+         equation from the unimodular system — the scalaron survives
+         with m^2 = 1/(6 alpha). Unimodular f(R) is f(R) plus a free
+         Lambda; the constraint routes nothing away. What remains is a
+         theory-owner scoping ruling (p7prime_scoping_ruling_047):
+         route (i) P7' scoped as the a -> 0 idealization, with the
+         Planck-range scalaron (l* ~ sqrt(6) l_P ~ 4e-35 m, margin
+         ~1e30 below the 54 um frontier) a controlled correction —
+         the F1-leak precedent; recommended. Route (ii) strict
+         exactness, forcing the inflection constraint f''(Delta_0) = 0
+         on the wedge energy — recovery-shaped without independent
+         motivation; cost recorded. No closed coefficient or
+         observable moves either way; the P7' null test remains the
          standing discriminator.
 
 O-P10-4  LORENTZIAN DYNAMICS. Beyond the 043 scope (kinematic +

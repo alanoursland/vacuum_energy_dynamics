@@ -1651,3 +1651,46 @@ outright. Watch item: chiral (TR-breaking) matter discretizations
 evade the theorem; any future matter-ontology work must re-run the
 check.
 ```
+
+## The Scalaron vs the Unimodular Constraint (O-P10-3 attacked)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: scalaron_unimodular_047
+obligation satisfied: o_p10_3_attacked_047
+obligation opened:    p7prime_scoping_ruling_047 (theory-owner ruling)
+```
+
+Current conclusion:
+
+```text
+HONEST NEGATIVE: the proposed mechanism -- "the unimodular constraint
+kills the scalaron" -- is REFUTED in-house. The f(R) EL tensor is
+identically conserved (verified: FRW divergence of the full
+f = R + alpha R^2 tensor vanishes with no field equations imposed), so
+the divergence of the traceless/unimodular equations reconstructs the
+trace equation up to an integration constant -- the same Bianchi
+mechanism that made Lambda an integration constant in 033. The
+scalaron equation returns exactly: (6 alpha box - 1) R = kappa T +
+const, with m^2 = 1/(6 alpha). Unimodular f(R) = f(R) + free Lambda.
+
+O-P10-3 therefore reduces to a scoping ruling on adopted P7', with
+both routes pre-analyzed and no coefficient or observable moving
+under either:
+
+  (i) P7' scoped as the a -> 0 idealization (the F1-leak precedent):
+      the packing scalaron has range l* = sqrt(6 alpha) ~ sqrt(6) l_P
+      ~ 4e-35 m -- a factor ~1.4e30 below the 54 um laboratory
+      frontier. A Planck-range Yukawa is operationally
+      indistinguishable from none; the null-test falsifier face is
+      unchanged. RECOMMENDED.
+
+ (ii) strict exactness: forces f''(Delta_0) = 0, an inflection of the
+      wedge energy at the frustrated ground state (verified: the
+      R^2-class coefficient is exactly f''(Delta_0)/2). Kills the
+      R^2 class exactly, leaves floor and EH intact -- but is
+      recovery-shaped without independent motivation. Cost recorded.
+
+The ruling (p7prime_scoping_ruling_047) is the theory owner's.
+```
