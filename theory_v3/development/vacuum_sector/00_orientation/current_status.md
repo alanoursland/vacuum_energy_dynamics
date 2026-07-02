@@ -1615,3 +1615,39 @@ Tier C: dispersion computation, defect spectrum, cosmological-creation
 
 The register's rule: no entry may be softened after an adverse result
 except by a recorded postulate-level move. Backsolving forbidden.
+
+## The Packing's Dispersion Relation (A5/C1 resolved)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: packing_dispersion_046
+obligation satisfied: packing_dispersion_computed_046
+obligation opened:    chiral_matter_dispersion_watch_046
+```
+
+Current conclusion:
+
+```text
+THE EVENNESS THEOREM: for any harmonic network whose energy is a real
+quadratic form with finite-range couplings (pair, angle/wedge,
+arbitrary multi-body -- the entire P10 class), the dynamical matrix
+satisfies D(-k) = D(k)* and is Hermitian, so the spectrum omega^2(k)
+is exactly even in k along every direction: NO linear-in-(E/E_Planck)
+dispersion can exist, for any graph, with no lattice symmetry
+required. Verified: exact monatomic chain (omega/ck = 1 - (ka)^2/24);
+fully symbolic generic two-band model (trace and det even for
+arbitrary real couplings); diatomic no-inversion witness (textbook
+sound speed, zero k^3 term).
+
+Numbers: linear scale infinite (theorem); quadratic scale ~ sqrt(24)
+E_P ~ 6e19 GeV vs current GRB quadratic bounds ~1e11 GeV -- margin
+~6e8; a 1 TeV photon's |dv/c| ~ 3e-34.
+
+P10 SURVIVES ITS SHARPEST CURRENTLY-COMPUTABLE TEST -- protected by
+the reality of the strain energy, the same structural fact behind the
+sector. Register A5 sharpened: confirmed linear LIV now falsifies P10
+outright. Watch item: chiral (TR-breaking) matter discretizations
+evade the theorem; any future matter-ontology work must re-run the
+check.
+```
