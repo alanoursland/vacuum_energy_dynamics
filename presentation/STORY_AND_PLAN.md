@@ -172,8 +172,11 @@ typed prefixes, hub pages as trailheads) rather than 11 chapters —
 see DESIGN_NOTES "ARCHITECTURE REVISION" for node types, template,
 and linking discipline. The phases below still define WHAT gets
 written and in what order; each "chapter" now denotes a hub plus its
-cluster of nodes. First-cut node inventory: ~8 hubs, ~10 thm_*, ~8
-kill_*, ~7 pred_*, ~8 num_*, ~12 idea_*, ~6 q_* ≈ **60 nodes**.
+cluster of nodes. **The complete enumeration — every planned file,
+one sentence each, with links to where the theory lives in the repo —
+is `NODE_INVENTORY.md` (79 nodes: 12 hubs, 15 ideas, 15 theorems,
+8 kills, 9 predictions, 10 numbers, 2 labs, 8 questions).** That file
+is the build manifest; check nodes off there as they are written.
 
 Order chosen so the book is useful at every intermediate stage:
 

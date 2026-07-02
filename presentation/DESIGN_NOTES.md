@@ -33,6 +33,7 @@ kill_*.md      one executed kill  (kill_boundary_channel.md, kill_stretch.md)
 pred_*.md      one falsifier      (pred_w_minus_1.md, pred_gdot_zero.md)
 num_*.md       one derived number (num_delta0.md, num_edge_density.md)
 q_*.md         one open question  (q_packing_scale.md, q_matter.md)
+lab_*.md       one measurement campaign (lab_relaxation.md, lab_bulk.md)
 hub_*.md       trailheads/tours   (hub_skeptic.md, hub_discrete_gravity.md,
                                    hub_cosmologist.md, hub_graveyard.md)
 README.md      the front door: the icon, the one-sentence story,

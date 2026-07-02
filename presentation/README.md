@@ -9,31 +9,29 @@ Space is trying to be made of regular tetrahedra, and it can't —
 five of them around a shared edge leave a **7.36° gap** that nothing
 closes. Everything in this book is a consequence of that frustration.
 
-## The Tour (in reading order)
+**STATUS: under construction as a wiki of ~79 small interlinked
+pages — one idea per page. The full planned-page manifest, with
+sources, is [NODE_INVENTORY.md](NODE_INVENTORY.md); the storytelling
+strategy is [STORY_AND_PLAN.md](STORY_AND_PLAN.md); the page format
+rules are [DESIGN_NOTES.md](DESIGN_NOTES.md). Two seed pages exist
+below; everything else is planned.**
 
-| # | page | the question it answers |
-|---|---|---|
-| 1 | [The Hook](01_the_hook.md) | why is gravity Einstein–Hilbert and not something else? |
-| 2 | [The Rules of the Game](02_rules_of_the_game.md) | why should you trust any of this? (kill conditions, machine verification, the register) |
-| 3 | [The Postulates](03_the_postulates.md) | what is actually assumed |
-| 4 | [Deriving Einstein's Equations](04_deriving_einstein.md) | GR from energy bookkeeping, zero fitted coefficients |
-| 5 | [The Packing](05_the_packing.md) | the vacuum's microstructure, quantified to one free constant |
-| 6 | [The Cosmological Constant](06_lambda.md) | why 10¹¹² J/m³ of vacuum energy is invisible, and what Λ actually is |
-| 7 | [Expansion Is Creation](07_expansion.md) | space grows, it doesn't stretch — decided by lunar laser ranging |
-| 8 | [Predictions & Kill Conditions](08_predictions.md) | the six ways to falsify this theory, pre-registered |
-| 9 | [The Graveyard](09_the_graveyard.md) | the ideas we killed ourselves — read this if you suspect motivated reasoning |
-| 10 | [Open Problems](10_open_problems.md) | what we don't know, stated plainly |
-| 11 | [The Proof Index](11_proof_index.md) | every claim → its theorem → its verification script |
+## Seed pages (readable now)
 
-## Three entrances, depending on who you are
+- [The Hook](01_the_hook.md) — why is gravity Einstein–Hilbert and
+  not something else? (becomes `hub_why_eh` + child nodes at build)
+- [The Graveyard](09_the_graveyard.md) — the ideas we killed
+  ourselves; read this if you suspect motivated reasoning (becomes
+  `hub_graveyard` + one `kill_*` node per grave)
 
-- **Discrete-gravity person?** Start at [The Packing](05_the_packing.md)
-  — the expansion-point theorem is a statement in Regge calculus.
-- **Cosmologist?** Start at [Predictions](08_predictions.md) — w = −1
-  exactly is under DESI fire now, and Ġ = 0 sits ~480× above LLR bounds.
-- **Skeptic?** Start at [The Graveyard](09_the_graveyard.md), then
-  [The Rules](02_rules_of_the_game.md). Judge the discipline before
-  the claims.
+## Three entrances, when built
+
+- **Discrete-gravity person?** `hub_packing` — the expansion-point
+  theorem is a statement in Regge calculus.
+- **Cosmologist?** `hub_predictions` — w = −1 exactly is under DESI
+  fire now, and Ġ = 0 sits ~480× above LLR bounds.
+- **Skeptic?** `hub_graveyard`, then `hub_rules`. Judge the
+  discipline before the claims.
 
 ## What this is
 
