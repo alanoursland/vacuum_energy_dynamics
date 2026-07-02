@@ -2,8 +2,11 @@
 
 Companion to `DESIGN_NOTES.md` (page format, source-of-truth policy,
 per-chapter mechanics). THIS file is the narrative strategy and the
-work plan. Status: three seed pages exist (`README.md`,
-`01_the_hook.md`, `09_the_graveyard.md`); the rest is planned.
+work plan. Status (2026-07-02): all 78 nodes in `NODE_INVENTORY.md`
+exist as outline-stage pages — grounded in their source files, linked,
+not yet prose-polished. The two old seed chapters (`01_the_hook.md`,
+`09_the_graveyard.md`) are superseded by `hub_why_eh.md` and
+`hub_graveyard.md` but not yet deleted.
 
 ---
 
@@ -181,32 +184,32 @@ is the build manifest; check nodes off there as they are written.
 Order chosen so the book is useful at every intermediate stage:
 
 ```text
-PHASE A (credibility skeleton — makes the seeds citable)
-  [x] README.md (TOC, three entrances)
-  [x] 01_the_hook.md
-  [x] 09_the_graveyard.md
-  [ ] 11_proof_index.md      — mechanical; mine current_status.md and
-                               the forge script tree (001–054)
-  [ ] 08_predictions.md      — condense the register; keep tiers
-  [ ] 02_rules_of_the_game.md
+PHASE A/B/C (all 78 nodes — outline stage)
+  [x] README.md — rewritten as the real front door: icon, three
+      entrances (linked to hubs), full node index, orphan-free
+  [x] all 11 hubs, 15 ideas, 15 theorems, 8 kills, 9 predictions,
+      10 numbers, 2 labs, 8 open questions — one outline page each,
+      every one Read its source file(s) before writing, every
+      "Proof:" line links a real relative path, every "Where next"
+      links other real nodes. Written 2026-07-02 via parallel
+      workflow (7 phases by node type).
+  [ ] 01_the_hook.md / 09_the_graveyard.md — retire once hub_why_eh
+      and hub_graveyard are confirmed to cover their content (they
+      currently coexist; the old files still have broken links to
+      the never-built chapter scheme and should be deleted, not
+      fixed)
 
-PHASE B (the physics middle)
-  [ ] 05_the_packing.md      — from 05_vacuum_sector/06 + reports
-  [ ] 06_lambda.md           — from 05_vacuum_sector/03 + 033–038
-  [ ] 07_expansion.md        — from 05_vacuum_sector/07 + 054
-
-PHASE C (the ontology, last as designed)
-  [ ] 04_deriving_einstein.md — map onto proof.md, don't duplicate
-  [ ] 03_the_postulates.md
-  [ ] 10_open_problems.md    — from 05_open_obligations.md
-
-PHASE D (polish)
+PHASE D (polish — now the critical path)
+  [ ] prose pass: every node currently reads as a grounded outline,
+      not finished copy — tighten to the voice rules (§7) and the
+      30–60 line budget where agents ran long
   [ ] figures: the icon (five-tet wedge) first; E(n) curves;
       ledger-split diagram; Ġ timeline
-  [ ] link-check pass (all relative paths resolve on GitHub)
+  [ ] link-check pass (all relative paths resolve on GitHub) — done
+      once for the node graph 2026-07-02, re-run after any edit pass
   [ ] read-aloud pass for voice drift (rules §7)
-  [ ] cross-link sweep: every claim in chs. 1–10 resolves to a ch. 11
-      anchor
+  [ ] verify every source link against current theory_v3/vacuum_forge
+      state (nodes were written from a single snapshot; ledgers move)
 ```
 
 Maintenance rule: when the ledgers move (new derivation, executed
