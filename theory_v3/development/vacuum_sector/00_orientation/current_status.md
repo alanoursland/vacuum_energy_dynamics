@@ -1731,3 +1731,45 @@ C4, the floor-Newton lock).
 
 O-P10-3 is CLOSED. P10's remaining ledger: O-P10-1, -2, -4, -5.
 ```
+
+## The Quadratic Selector Closure (metric vs Finsler audit closed)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: quadratic_selector_closure_049
+obligation satisfied: quadratic_gate_import_closed_049
+  (closes capstone imported-assumption rows 1-2)
+```
+
+Current conclusion:
+
+```text
+THE METRIC-VS-FINSLER AUDIT CLOSES UNDER P10. The projection-origin
+probe's two root imports of the GR branch -- "exact quadratic
+response" and "epsilon = 0" for interval response -- are theorems of
+the flatness clause:
+
+  1. FLAT IS QUADRATIC: for a generic symmetric form (n = 4, any
+     signature) the parallelogram identity holds identically,
+     polarization is exactly bilinear, and the fundamental tensor is
+     direction-independent.
+  2. FINSLER DATA IS UNSTORABLE: per n-cell the packing stores
+     C(n+1,2) edge lengths = n(n+1)/2 quadratic components EXACTLY
+     (every n); the smallest Finsler class (quartic) needs 35
+     coefficients in 4D against 10 edges. Not suppressed -- no slot.
+  3. EDGE DATA IS METRIC DATA, BIJECTIVELY: the law-of-cosines
+     inversion reconstructs the generic form from edge lengths
+     exactly.
+  4. The probe's own quartic witness reproduced (residual 12 eps)
+     and shown outside the axiom's state space.
+
+The only direction dependence the packing can express lives at hinges
+as deficit -- curvature, the theory's subject, not a hidden norm. The
+routing rule becomes a theorem: the eps_Finsler branch has an empty
+state space.
+
+Watch item: ground-state isotropy (an anisotropic ground order could
+give the long-wavelength effective response a preferred structure) --
+guarded by O-P10-2/O-P10-5; recorded in the report's kill face.
+```
