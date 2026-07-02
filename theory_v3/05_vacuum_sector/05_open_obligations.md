@@ -103,7 +103,7 @@ F-P10-3  (inherited) the P7' null test: any gravitational-strength
 |---|---|---|---|
 | dark-sector excess | coordination defects (041 E4) | production, abundance, clustering, a seat in the dynamics | 017–019; P9 fence; O-P10-5 first |
 | non-gravitational channels | ~~dimensional-relaxation release; Casimir/UFFT operator~~ **KILLED unsuppressed (053)**: the instantiated operator (constant pressure, floor-Newton-locked) is excluded by 54–114 orders; the window is no longer VED-motivated | reopening requires a front-door derivation of a specific suppressed coupling (backsolving forbidden) | channel quarantine contract (now a kill record) |
-| interior cap | packing maximum compression | the cap scale, derived not imported | exterior matching lemma protects everything tested |
+| interior cap | packing maximum compression | **SCALE DERIVED (055, mean-field)**: coordination floor ⟹ R_max = 51.67/a², r_cap = 0.406 (r_s a²)^⅓ (Planck-star scaling, derived coefficient); cap ~26 orders inside stellar horizons; A4 echo caveat → null. Still owed: interior metric, junction/collapse dynamics, fence energetics (cap_junction_dynamics_055) | exterior matching lemma protects everything tested |
 | matter-as-defect | strain-mode unification | its own charter, contract, kill conditions | front door only |
 | Λ's value | none — the global datum | (considered position: not the vacuum's to derive; see `03_...md` §4) | reopened only by a derivation of the datum itself |
 
