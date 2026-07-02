@@ -86,3 +86,19 @@ not by observation.
 **Effort estimate:** the long pole — 3–6 writing sessions plus the
 related-work pass. Decide the covariant-lift question (do them vs.
 scope the claim) before drafting section 7.
+
+---
+
+## Portfolio review note (2026-07-03)
+
+RESEQUENCED: this paper moves to the END of the physics stack (after
+2, 3, 7, 8, 9, 6). Not for lack of content — for prior-to-payoff
+ratio: as a first ontology paper it asks the reader to accept the full
+postulate stack up front, in the comparison class (Jacobson, Verlinde)
+that triggers maximal skepticism. After papers 2/3 establish the house
+style, 7 shows the machinery on a topical problem, and 8 lands the
+flagship theorem, this paper's "here is where it all came from" reads
+as an origin story rather than a demand. Content unchanged; queue
+position changed. Also: by then the covariant-lift rigor debts this
+proposal lists as missing are DONE (see 04_field_equations/proof.md,
+self-contained rewrite) — update the readiness line when drafting.

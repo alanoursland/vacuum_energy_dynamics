@@ -60,3 +60,14 @@ reader with a CAS; the scripts can ship as supplementary material.
 sessions. A good first publication for the project: it builds
 credibility for paper 1's machinery without asking a referee to accept
 any new ontology.
+
+---
+
+## Portfolio review note (2026-07-03)
+
+PROMOTED TO FIRST SUBMISSION. Rationale: near-zero risk, 1-2 sessions,
+asks nothing of the referee, and establishes the machinery + house
+style (CAS-verified, kill-condition framed) before any paper asks for
+ontological buy-in. Blocking item shared with paper 3: the repo/Zenodo
+DOI decision is now on the critical path (the supplementary scripts
+need a citable home).

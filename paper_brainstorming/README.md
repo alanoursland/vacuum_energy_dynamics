@@ -16,10 +16,36 @@ as a citable fallback; journals listed are plausible fits, not promises.
 | 8 | `paper_08_frustrated_packing_microphysics.md` | Frustration is why gravity is Einstein–Hilbert (the packing) | arXiv gr-qc → CQG / PRD | flagship; results done (037–053); largest write-up; evenness theorem may spin off as a short note |
 | 9 | `paper_09_expansion_as_creation_gdot.md` | Space grows, doesn't stretch; Ġ = 0 as a falsifier | short letter: PRD / CQG letter | one clean argument (054); cite paper 8's model; quickest to draft after 8 exists |
 
-Suggested order of attack: 7 (self-contained, topical), then 8 (the
-flagship, longest), then 9 (letter riding on 8). Papers 1–6 remain as
-previously scoped, with paper 6's motivation paragraph updated per the
-note above.
+## The Submission Queue (portfolio review, 2026-07-03)
+
+Ordered by effort × risk × credibility-building sequence (results
+first, ontology late — the same strategy as the presentation book):
+
+```text
+1. paper 2   1-2 sessions, near-zero risk; asks nothing of the referee;
+             establishes the house style (CAS-verified, kill-condition
+             framed) before anyone is asked to accept a postulate.
+2. paper 3   the calling card (arXiv+Zenodo version first, JOSS if the
+             package generalizes); useful to people who will never read
+             the physics; NOTE the citation loop — papers 7 and 9 may
+             USE this tool (DESI contours; Gdot-bound figures).
+3. paper 7   topical NOW (DESI will not wait); established language.
+4. paper 8   the flagship (+ possible evenness spin-off note).
+5. paper 9   letter riding on 8.
+6. paper 6   after its novelty check AND the 047/048 revision (see its
+             file: it gained a stronger closing section from 047).
+7. paper 1   the full ontology, LAST of the physics stack — on ground
+             prepared by everything above. Its original first-position
+             was set before the vacuum-sector arc existed.
+8. paper 4   HOLD until at least one physics paper is accepted; then it
+             is "how the papers you've seen were made," not "all
+             methodology, no results."
+   paper 5   after its hard literature gate (rediscovery risk).
+```
+
+**Now on the critical path:** the repo-publication + Zenodo DOI
+decision. Papers 2 and 3 could be submitted within weeks of drafting
+and both want to cite the verification scripts.
 
 Cross-cutting decisions to make once (they affect every paper):
 - **Authorship & AI disclosure.** Substantial AI assistance (derivation,

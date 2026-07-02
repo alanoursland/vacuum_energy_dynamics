@@ -73,3 +73,17 @@ hoped for.
 
 **Effort estimate:** 2–3 sessions; mostly curation and narrative. Pairs
 naturally with making the repo public + Zenodo DOI.
+
+---
+
+## Portfolio review note (2026-07-03)
+
+TIMING HARDENED: hold until at least one physics paper is ACCEPTED
+somewhere. Published early, this invites "all methodology, no results"
+dismissal and primes physics referees to read the other papers as
+AI-generated first, physics second. Published after an acceptance, it
+becomes "how the papers you've seen were made" — a much stronger
+genre. Material has also grown since scoping: the vacuum-sector arc
+adds the 047 self-refutation (we proposed and refuted our own
+mechanism in the same week) and the 053 kill of the program's founding
+motivation — both prime exhibits for the honesty-architecture claim.
