@@ -154,6 +154,29 @@ status:      RESOLVED IN P10'S FAVOR (derivation 046, 2026-07-01):
              (chiral_matter_dispersion_watch_046).
 ```
 
+### A6. Newton's constant does not drift: Gdot = 0 exactly
+
+```text
+commitment:  Gdot/G = 0, exactly, at every epoch. Not "small" -- zero.
+forced by:   the creation reading of expansion (054): the stretch
+             reading was killed twice on existing data (it forces
+             Gdot/G = -H via the floor-Newton lock, excluded ~480x by
+             lunar laser ranging; and it turns the floor into
+             unsequestered Planck-density dust, ~1e122 x closure).
+             The surviving reading has l = const: NO mechanism for
+             G drift remains in the theory.
+kills it:    any confirmed nonzero Gdot/G -- LLR/ephemerides
+             (currently ~1.5e-13/yr), pulsar timing, BBN/CMB
+             consistency. Pre-registered before the next data
+             release.
+distinctive: scalar-tensor and varying-G rivals generically predict
+             drift; VED forbids it outright. Note the near-miss
+             margin: H0 is only ~480x above current LLR bounds --
+             this null is under genuine experimental pressure and
+             tightening.
+status:      standing null; all current bounds consistent.
+```
+
 ---
 
 ## Tier B — Distinctive structural commitments (falsifiable edges, slower fire)
@@ -239,11 +262,13 @@ C1. DONE (046): the dispersion theorem cleared the axiom -- see A5.
 C2. the defect spectrum and abundance (O-P10-5, then 017-019): would
     convert B2 into quantitative DM predictions (mass spectrum from
     the wedge energetics; possibly quantized).
-C3. the cosmological-creation observable face (045's open seam):
-    graph-growth vs content-rise readings should differ in the
-    perturbed-cosmology kappa-leak profile (F1's structure-era
-    extension) -- potentially the first place the packing's
-    Lorentzian dynamics touches data.
+C3. DONE (054): the seam was decidable on EXISTING data, not future
+    kappa-leak profiles -- the stretch reading killed twice (G drift
+    vs LLR; floor-turned-dust), expansion IS creation, and the
+    commitment graduated to Tier A as A6 (Gdot = 0 exactly).
+    Remaining under this heading: the creation-suppression
+    coefficient alpha (creation_suppression_dynamics_054, the vacuum
+    -flow clause) -- computable only with O-P10-4 dynamics.
 C4. the conversion factor rho_v(a, c_e) (O-P10-1): c_e is now DERIVED
     (052: 36 arccos(1/3)/(sqrt(2) pi) = 9.9743 per a^3, pure geometry),
     leaving a as the sole unknown. The battery has two faces: any
@@ -267,8 +292,10 @@ The theory's observational profile after P10:
 
   1 live-fire prediction    w = -1 exactly (A1) -- DESI-class
                             experiments are testing it NOW
-  4 sharp standing nulls    GW purity, no-Yukawa, GR black holes,
-                            no linear LIV (A2-A5)
+  5 sharp standing nulls    GW purity, no-Yukawa, GR black holes,
+                            no linear LIV, no G drift (A2-A6; A6 is
+                            under genuine pressure -- H0 sits only
+                            ~480x above current LLR bounds)
   1 self-threat, RESOLVED   the dispersion computation (046) cleared
                             it: no linear LIV exists (theorem); a
                             confirmed linear LIV now falsifies P10

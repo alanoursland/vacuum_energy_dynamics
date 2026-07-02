@@ -1961,3 +1961,55 @@ Fence: the kill is of the UNSUPPRESSED coupling; reopening requires a
 front-door derivation of a specific tiny coupling with independent
 motivation; backsolving a coupling into the exclusion is forbidden.
 ```
+
+## The Cosmological-Creation Face: the 045 Seam Decided (054)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: cosmological_creation_face_054
+obligation satisfied: creation_seam_decided_054
+  (resolves p6_p10_cosmological_creation_045; register C3)
+obligation opened:    creation_suppression_dynamics_054 (alpha; O-P10-4)
+```
+
+Current conclusion:
+
+```text
+EXPANSION IS CREATION -- decided on existing data. The 045 seam asked
+whether expansion means new cells (growth: l const, N ~ a^3) or
+dilating cells (stretch: l = l_0 a, N fixed). Both give the same a^3
+volume history and the same dust stress -- the metric sector is
+forever silent -- but the readings' side effects on LOCKED quantities
+differ, and the stretch reading dies twice:
+
+  KILL 1: the floor-Newton lock (039) forces Gdot/G = -H under
+     stretch: 7.2e-11/yr vs the LLR bound 1.5e-13/yr -- excluded
+     ~480x.
+  KILL 2: dilation-invariant wedge energies (038/041 E3) make the
+     stretched floor's pressure ZERO: dustlike w = 0 at Planck
+     density, NOT protected by sequestering (P3 protects constant
+     DENSITY; the stretched floor's density dilutes) -- ~1e122 x
+     closure. Would also demolish the A1/B1 architecture.
+
+  THE SURVIVOR IS SELF-FUNDING: intensive floor (051 MEASURED) means
+  p = -u exactly -- w = -1 at the substance level -- and creation's
+  energy cost u dV is exactly the floor's negative-pressure work.
+  The first law funds expansion, term by term. G is exactly constant.
+
+NEW REGISTER ENTRY A6: Gdot = 0 exactly, forever -- no drift
+mechanism remains in the theory. Any confirmed nonzero Gdot/G kills
+the creation reading and with it P10's account of expansion.
+Distinctive vs scalar-tensor rivals; under genuine experimental
+pressure (H0 only ~480x above current LLR bounds, tightening).
+
+THE VACUUM-FLOW CLAUSE (the owner's founding intuition) formalized:
+C = 3H(1 - alpha delta). <delta> = 0 makes it exactly invisible to
+the background for ANY alpha -- it lives in the substance/
+perturbation sector, constrains nothing yet, and its coefficient
+becomes computable only with O-P10-4's Lorentzian dynamics
+(creation_suppression_dynamics_054).
+
+P10's remaining ledger: o_p10_1_packing_scale_052, O-P10-4 (dynamics
++ alpha), periodic_energy_relaxation_051.
+```

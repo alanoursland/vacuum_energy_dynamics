@@ -60,7 +60,17 @@ O-P10-3  THE P7' TENSION. CLOSED (derivations 047 + 048, 2026-07-02).
 
 O-P10-4  LORENTZIAN DYNAMICS. Beyond the 043 scope (kinematic +
          linearized): an initial-value formulation of the packing's
-         evolution. The CDT-adjacent frontier.
+         evolution. The CDT-adjacent frontier. NARROWED (054): the
+         cosmological-creation READING is decided — expansion is
+         graph growth (stretch killed twice on existing data: G
+         drift ~480x over LLR; floor-turned-dust ~1e122 x closure),
+         self-funded by the floor's w = -1 (051's measured
+         intensivity), with the new standing commitment Gdot = 0
+         exactly (register A6). What the dynamics still owes here:
+         the creation-suppression coefficient alpha
+         (creation_suppression_dynamics_054, the vacuum-flow clause
+         C = 3H(1 - alpha delta), background-invisible for any
+         alpha) and the initial-value problem itself.
 
 O-P10-5  BULK RELAXATION. Phase 2 DELIVERED (derivation 051,
          2026-07-02): floor intensivity confirmed (E/N stable across a
