@@ -131,9 +131,21 @@ kills it:    confirmed linear-order LIV (would also kill most of the
              unavoidably produces linear LIV (would kill P10 by
              modus tollens against existing data -- the sharpest
              currently-computable threat to the adopted axiom).
-status:      standing null observationally; the in-house dispersion
-             computation is NOT yet done and is hereby flagged as a
-             high-priority obligation.
+status:      RESOLVED IN P10'S FAVOR (derivation 046, 2026-07-01):
+             for ANY real, finite-range, harmonic action on the
+             packing, D(-k) = D(k)* forces the spectrum exactly even
+             in k -- NO linear term can exist, for any graph, with no
+             lattice symmetry required. The protection is the reality
+             of the strain energy, not an accident. Leading
+             modification: quadratic, Planck-suppressed
+             (E_QG,2 ~ sqrt(24) E_P ~ 6e19 GeV for the witness
+             coefficient -1/24), ~8-9 orders beyond current quadratic
+             GRB bounds; a 1 TeV photon's |dv/c| ~ 3e-34. SHARPENED:
+             a confirmed linear-order LIV now falsifies P10 OUTRIGHT
+             (it cannot be accommodated). Watch item: chiral
+             (time-reversal-breaking) matter discretizations evade the
+             theorem and must re-run the check
+             (chiral_matter_dispersion_watch_046).
 ```
 
 ---
@@ -211,9 +223,8 @@ forced by:   the exact relief geometry (037).
 ## Tier C — Future predictions, blocked on recorded obligations
 
 ```text
-C1. the packing dispersion relation (the A5 in-house computation):
-    O-P10-1/O-P10-4. Either clears the axiom against LIV bounds or
-    kills it. HIGHEST PRIORITY of this tier.
+C1. DONE (046): the dispersion theorem cleared the axiom -- see A5.
+    Remaining under this heading: the chiral-matter watch item.
 C2. the defect spectrum and abundance (O-P10-5, then 017-019): would
     convert B2 into quantitative DM predictions (mass spectrum from
     the wedge energetics; possibly quantized).
@@ -244,18 +255,20 @@ The theory's observational profile after P10:
                             experiments are testing it NOW
   4 sharp standing nulls    GW purity, no-Yukawa, GR black holes,
                             no linear LIV (A2-A5)
-  1 self-threat             the packing's own dispersion relation
-                            (A5/C1): the sharpest currently-
-                            computable way P10 could die
+  1 self-threat, RESOLVED   the dispersion computation (046) cleared
+                            it: no linear LIV exists (theorem); a
+                            confirmed linear LIV now falsifies P10
+                            outright
   3 structural edges        sequestering, defect-DM nulls, the
                             Casimir window (B1-B3)
   5 gated futures           C1-C5
 
 If evolving dark energy is confirmed and no gate-passing excess
-exists, the closed vacuum sector takes a kill. If the packing's
-dispersion relation comes out linear, P10 dies against existing GRB
-data. The theory is not hiding: both barrels are pointed at it, and
-this register says so before the results are in.
+exists, the closed vacuum sector takes a kill. The dispersion barrel
+has been fired and missed: the packing cannot produce linear LIV
+(046), so that channel converts from self-threat to standing
+falsifier. The register said where the barrels pointed before the
+results were in; it will keep doing so.
 ```
 
 ## Pointers
