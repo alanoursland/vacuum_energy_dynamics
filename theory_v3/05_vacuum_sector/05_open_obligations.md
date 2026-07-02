@@ -8,11 +8,23 @@ physics (candidate claims that must still earn their way in).
 ## Obligations on P10 (debts, not freedoms)
 
 ```text
-O-P10-1  MICROPHYSICS CONSTANTS. Derive or reduce a (packing scale)
-         and c_e (edge density): the conversion-factor target
-         rho_v = (c_e Delta_0/2a^3) f'(Delta_0) becomes a derivation.
-         This is the same thread as "is space discrete" — a is only
-         meaningful if it is.
+O-P10-1  MICROPHYSICS CONSTANTS. c_e DERIVED (derivation 052,
+         2026-07-02): the 3D flat ground mixture (x_6 =
+         2 pi/arccos(1/3) - 5 = 0.1043, 050's logic one dimension
+         down) fixes the mean edge coordination at 2 pi/arccos(1/3) =
+         5.1043 by the hinge identity, giving
+         c_e = 36 arccos(1/3)/(sqrt(2) pi) = 9.9743 edges per a^3 —
+         pure geometry, a function of arccos(1/3) alone.
+         Cross-checked in seeded bulk (coordination within 10%,
+         density within tens of percent on the proxy complex).
+         With f'(Delta_0) eliminated by the floor-Newton lock (039),
+         the conversion factor rho_v = (c_e Delta_0/2) f'(Delta_0)/a^3
+         has ONE unknown left: the packing scale a
+         (o_p10_1_packing_scale_052). Same thread as "is space
+         discrete" — a is only meaningful if it is; no derivation
+         route on the books; Planck-scale a remains an assumption
+         wherever used. Fence: mean-field near-regular; the exact
+         values are phase-3 claims (periodic_energy_relaxation_051).
 
 O-P10-2  4D GROUND COORDINATION. RESOLVED AT MEAN-FIELD (derivation
          050, 2026-07-02): the flat ground state selects NEITHER

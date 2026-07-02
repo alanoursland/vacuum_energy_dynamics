@@ -239,10 +239,13 @@ C3. the cosmological-creation observable face (045's open seam):
     perturbed-cosmology kappa-leak profile (F1's structure-era
     extension) -- potentially the first place the packing's
     Lorentzian dynamics touches data.
-C4. the conversion factor rho_v(a, c_e) (O-P10-1): with a and c_e
-    derived, the floor-Newton lock becomes a parameter-free relation
-    between G and the packing scale -- a consistency test against
-    any independent probe of discreteness.
+C4. the conversion factor rho_v(a, c_e) (O-P10-1): c_e is now DERIVED
+    (052: 36 arccos(1/3)/(sqrt(2) pi) = 9.9743 per a^3, pure geometry),
+    leaving a as the sole unknown. The battery has two faces: any
+    independent discreteness probe measuring a must (i) reproduce the
+    observed G through the floor-Newton lock and (ii) reveal the 048
+    scalaron Yukawa at range sqrt(6) a. Parameter-free, twice
+    overdetermined, waiting on an instrument.
 C5. the kappa-leak scaling AB - 1 = (3/2) Omega_m (H0 r/c)^2:
     derived, parameter-free, ~1e-31 at 1 AU, ~1e-8 at 100 Mpc scales
     -- below all current instruments; recorded as the honesty entry

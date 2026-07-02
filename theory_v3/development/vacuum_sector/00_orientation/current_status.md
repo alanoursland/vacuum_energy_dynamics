@@ -1866,3 +1866,49 @@ P9 fence unchanged).
 P10's remaining ledger: O-P10-1, O-P10-4, mixture_realizability_050 /
 periodic_energy_relaxation_051 (now the same thread).
 ```
+
+## The Edge Density c_e (O-P10-1 partial)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: edge_density_052
+obligation satisfied: o_p10_1_ce_derived_052
+obligation opened:    o_p10_1_packing_scale_052 (the remainder: a)
+```
+
+Current conclusion:
+
+```text
+c_e IS DERIVED, NOT FREE:
+
+  1. The 3D flat ground state mixes (050's logic one dimension down):
+     delta(5) = +7.36 deg, delta(6) = -63.17 deg; zero mean deficit
+     fixes x_6 = 2 pi/arccos(1/3) - 5 = 0.104299, and the mean edge
+     coordination is n_bar = 2 pi/arccos(1/3) = 5.104299 exactly (the
+     hinge identity -- independent of which coordinations mix).
+  2. c_e = 6/(V_tet n_bar) = 36 arccos(1/3)/(sqrt(2) pi) = 9.9743
+     edges per a^3. Pure geometry, a function of arccos(1/3) alone --
+     the same sole input as Delta_0, the relief function, and both
+     ground mixtures.
+  3. Bulk cross-check (seeded, smoothed): coordination 5.216 vs
+     predicted 5.104 (within 10%); density 11.74 vs 9.97 (proxy
+     level, as expected pre-phase-3).
+  4. THE REDUCTION: rho_v = (c_e Delta_0/2) f'(Delta_0)/a^3 =
+     0.6403 f'(Delta_0)/a^3, with c_e derived and f'(Delta_0)
+     eliminated by the floor-Newton lock (039). O-P10-1 has ONE
+     unknown left: the packing scale a.
+
+Register C4 sharpens into a two-face consistency battery: if a
+discreteness scale a is ever measured, the floor-Newton lock (with
+derived c_e) must produce the observed G AND the 048 scalaron must
+appear at range sqrt(6) a. Parameter-free, waiting on a measurement
+nobody yet knows how to make.
+
+Fence: mean-field near-regular ground packing; exact values are
+claims the phase-3 lab tests. No value of a is proposed; Planck-scale
+a remains an assumption wherever used.
+
+P10's remaining ledger: o_p10_1_packing_scale_052, O-P10-4,
+periodic_energy_relaxation_051.
+```
