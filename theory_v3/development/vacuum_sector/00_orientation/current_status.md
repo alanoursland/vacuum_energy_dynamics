@@ -1912,3 +1912,52 @@ a remains an assumption wherever used.
 P10's remaining ledger: o_p10_1_packing_scale_052, O-P10-4,
 periodic_energy_relaxation_051.
 ```
+
+## The Boundary Channel Operator: Instantiated, and the Channel Dies (053)
+
+Recorded through VacuumForge as:
+
+```text
+derivation: boundary_channel_operator_053 (COUNTEREXAMPLE / channel kill)
+obligation satisfied: ufft_operator_instantiated_053
+  (the operator-instantiation audit debt, owed since the earlier program)
+```
+
+Current conclusion:
+
+```text
+HONEST NEGATIVE, and a big one. The dimensional-relaxation channel's
+operator is finally derivable under P10, and the derivation KILLS the
+unsuppressed channel:
+
+  1. THE DIFFERENTIAL IS REAL: 2D packing is exactly frustration-free
+     (six triangles close a vertex, deficit identically zero); the 3D
+     floor is the derived 052 mixture. Confinement to quasi-2D would
+     release the full floor.
+  2. THE OPERATOR HAS NEW-CHANNEL FORM: slab release E/A = u_floor d,
+     force law a CONSTANT attractive pressure -- d-exponent 0 vs QFT
+     Casimir's -4. Kill condition 2 passed in form.
+  3. THE MAGNITUDE IS LOCKED AND FATAL: the floor-Newton lock (039) +
+     derived c_e (052) fix u_floor = c^4 c_e <delta^2>/(32 pi G
+     Delta_0 a^2) with no free coefficient: 5e112 Pa at Planck
+     packing, 1.5e52 Pa even at absurd window-scale packing --
+     excluded by 54-114 orders of magnitude against Casimir-class
+     bounds (~1e-2 Pa). The matter-boundary/packing coupling is
+     OPERATIONALLY ZERO.
+  4. THE DISCIPLINE LINE HELD: the release is a state function and
+     Hartle-Sorkin additivity (042) closes the cycle at exactly zero.
+     The channel dies of magnitude, not thermodynamics.
+
+Consequences: the engineered-boundary energy-release mechanism (the
+founding extraction motivation's packing-era route) is CLOSED at
+leading order; "gravity sequesters, boundaries reveal" is
+quantitatively dead (the floor hides from BOTH channels); the UFFT
+micron window (29.9-38.6 um) loses its VED motivation and register B3
+is DOWNGRADED -- excluding the window now kills nothing in the core.
+The P10-consistent reading: matter is strain content OF the packing
+(041 E4), not walls that confine it.
+
+Fence: the kill is of the UNSUPPRESSED coupling; reopening requires a
+front-door derivation of a specific tiny coupling with independent
+motivation; backsolving a coupling into the exclusion is forbidden.
+```

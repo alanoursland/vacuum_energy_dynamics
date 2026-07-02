@@ -196,20 +196,25 @@ gated by:    production/abundance (017-019, O-P10-5); the entry
              its seat.
 ```
 
-### B3. The Casimir/UFFT squeeze window (inherited)
+### B3. The Casimir/UFFT squeeze window (inherited) -- DOWNGRADED (053)
 
 ```text
-commitment:  the UFFT sector's surviving window: a non-gravitational
-             vacuum-channel anomaly in the 29.9-38.6 um band; outside
-             it, the sector dies.
-forced by:   the accumulated UFFT gates (inherited from the earlier
-             program; operator instantiation still owed).
-kills it:    bench-top exclusion of the window (kills UFFT's sector,
-             not the core theory).
-status:      alive and cornered; the packing's boundary structure
-             (Hartle-Sorkin, 042) is the natural route to finally
-             instantiating the operator -- flagged to the channel
-             lane.
+commitment:  WITHDRAWN as a VED commitment (2026-07-02, derivation
+             053). The owed operator instantiation was delivered and
+             it KILLED the unsuppressed channel: the packing's only
+             leading-order boundary operator is a constant attractive
+             pressure locked by the floor-Newton lock to ~1e112 Pa at
+             Planck packing (~1e52 even at window-scale packing) --
+             excluded by 54-114 orders of magnitude. Matter
+             boundaries cannot confine the packing at any detectable
+             coupling; the sequestered floor hides from the boundary
+             channel exactly as it hides from gravity.
+status:      the 29.9-38.6 um window is no longer VED-motivated;
+             whatever lives there is ordinary QFT physics, and its
+             exclusion would kill nothing in the VED core. Reopening
+             requires a front-door derivation of a specific
+             suppressed coupling; backsolving one into the exclusion
+             window is forbidden.
 ```
 
 ### B4. Lambda's sign (conditional, weak)
