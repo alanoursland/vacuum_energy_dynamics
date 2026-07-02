@@ -1,0 +1,272 @@
+# The Predictions Register
+
+## Status
+
+```text
+result type:   observational commitments inventory (2026-07-01, current
+               through derivation 045 and the P10 adoption)
+scope:         every falsifiable statement the theory currently makes,
+               tiered by sharpness; kill directions pre-registered
+conclusion:    the theory is not observationally empty: it carries one
+               LIVE near-term confrontation (w = -1 vs evolving dark
+               energy), a set of sharp standing nulls, and several
+               distinctive structural commitments
+non-conclusion: no entry here claims a detection; Tier C entries are
+               blocked on recorded obligations and predict nothing yet
+```
+
+The honest framing, unchanged since the field-equation closure: **the
+closed gravitational sector predicts no accessible deviation from GR.**
+What has changed with the unimodular arc and P10 is that the theory now
+makes *sharp* commitments about which of several observationally-open
+possibilities nature must choose — and sharp nulls are predictions: a
+theory that says "exactly zero, from a postulate, at every scale" is
+more falsifiable there than one that merely says "small."
+
+---
+
+## Tier A — Sharp, testable now or near-term (kill zone)
+
+### A1. Dark energy is exactly w = −1, constant, non-evolving  ★ LIVE FIRE
+
+```text
+commitment:  the dark-energy equation of state is w(z) = -1 exactly,
+             at every redshift, with zero drift (w0 = -1, wa = 0).
+forced by:   Lambda as an integration constant of the unimodular
+             constraint (033, 034) -- not a field, not a potential,
+             not quintessence; it cannot evolve. The floor is
+             sequestered (035, 038) and contributes nothing.
+kills it:    any CONFIRMED w(z) != -1 -- evolving dark energy at
+             decisive significance.
+status:      UNDER LIVE FIRE. DESI BAO releases (2024-2025) report
+             model-dependent preferences for evolving dark energy
+             (w0 > -1, wa < 0) at the several-sigma level when
+             combined with CMB and supernovae. Not yet decisive;
+             systematics and dataset tensions under active debate.
+             This is the theory's most important near-term
+             confrontation.
+could change it: ONLY the gated dark-excess lane (a w != -1 component
+             over the floor is excess physics, not Lambda physics --
+             017-019 gates plus the P9 fence). NOTE THE DISCIPLINE
+             TRAP, pre-registered: invoking the excess to absorb an
+             adverse w(z) result without independent production
+             physics would be a backsolve, forbidden. If evolving DE
+             is confirmed and no gate-passing excess exists, the
+             entry records a kill against the closed vacuum sector.
+```
+
+### A2. Gravitational waves: two TT polarizations, no dispersion, quadrupole rate
+
+```text
+commitment:  GW have exactly the two TT polarizations, propagate at c
+             with no dispersion, and are emitted at exactly the
+             quadrupole rate.
+forced by:   the closed sector (proof.md Theorems 4-5; vector sector
+             017: no vector radiation; scalar sector constraint-type);
+             under P10, TT modes are the packing's only propagating
+             modes (043 + Rocek-Williams import).
+kills it:    any confirmed extra polarization, GW dispersion, or
+             quadrupole-formula deviation.
+status:      standing null; passes all LIGO/Virgo/KAGRA polarization
+             and dispersion constraints and binary-pulsar timing.
+             Next-generation detectors and pulsar-timing arrays keep
+             tightening the zone.
+```
+
+### A3. No gravitational-strength Yukawa at ANY range (the P7' null)
+
+```text
+commitment:  zero short-range deviation from Newtonian gravity, at
+             every accessible range -- not "small," zero.
+forced by:   P7' kills the entire four-derivative sector including
+             screened variants (proof.md Theorems 6-7 + screening
+             corollary). Under P10 the R^2-class term exists but at
+             Planck-scale coefficient (O-P10-3): identically
+             unobservable at laboratory ranges either way.
+kills it:    a confirmed gravitational-strength Yukawa at any range
+             (bench-top torsion balances are the strongest probe,
+             currently ~50 um scale at relevant couplings).
+status:      standing null; all Eot-Wash-class results consistent.
+             Distinctive: many dark-energy/modified-gravity rivals
+             NEED a detectable fifth force with screening; VED
+             forbids one outright.
+```
+
+### A4. Black-hole exteriors and ringdowns exactly GR
+
+```text
+commitment:  Schwarzschild/Kerr exteriors exactly; GR quasinormal
+             ringdown spectra; GR shadows. No exterior hair, no
+             echoes from the EXTERIOR theory.
+forced by:   Birkhoff-type rigidity (019), the closed equations, and
+             the exterior matching lemma (interior freedom cannot
+             leak out).
+kills it:    confirmed non-GR ringdown modes or shadow deviations.
+status:      standing null; EHT and LVK ringdown tests consistent.
+caveat:      the interior cap (open) could in principle produce
+             LATE-TIME echoes if a cap sits outside the would-be
+             horizon; no such prediction is licensed (cap scale not
+             derived). A confirmed echo would OPEN a lane, not
+             confirm one.
+```
+
+### A5. No Lorentz violation at linear order in E/E_Planck
+
+```text
+commitment:  photon/GW propagation shows no linear-order energy-
+             dependent dispersion, despite the packing's discreteness
+             and the substance frame's ontological existence.
+forced by:   the closed sector couples nothing to the frame; the
+             packing's Wick/continuum structure (043, 040) carries no
+             linear-dispersion term at accessible energies. NOTE: a
+             naive "lattice at scale a in the substance frame" would
+             GENERICALLY produce linear LIV, which is already
+             EXCLUDED past the Planck scale by GRB time-of-flight
+             bounds -- so this entry is simultaneously a prediction
+             and a standing CONSTRAINT the microphysics must respect
+             (recorded against O-P10-1/O-P10-4: the dispersion face
+             of the packing must be computed, not assumed benign).
+kills it:    confirmed linear-order LIV (would also kill most of the
+             field); OR an in-house computation showing the packing
+             unavoidably produces linear LIV (would kill P10 by
+             modus tollens against existing data -- the sharpest
+             currently-computable threat to the adopted axiom).
+status:      standing null observationally; the in-house dispersion
+             computation is NOT yet done and is hereby flagged as a
+             high-priority obligation.
+```
+
+---
+
+## Tier B — Distinctive structural commitments (falsifiable edges, slower fire)
+
+### B1. Vacuum-energy shifts do not gravitate (sequestering)
+
+```text
+commitment:  changes in the vacuum's constant energy density -- e.g.
+             cosmological phase transitions (EW, QCD) shifting the
+             zero-point budget -- produce NO gravitational effect and
+             NO shift in the effective Lambda.
+forced by:   the sequestering theorem chain (033 check 4, 035, 038).
+distinctive: in GR-with-Lambda-as-coupling, such shifts SHOULD
+             gravitate (the radiative-instability face of the CC
+             problem); VED says they exactly cannot.
+kills it:    any demonstration that a vacuum-energy shift gravitated
+             (hard to access directly; early-universe phase-
+             transition cosmology is the long-run arena).
+status:      consistent with all cosmological history; primarily an
+             explanatory commitment with a falsifiable edge.
+```
+
+### B2. If dark matter is the packing's defect excess: no non-gravitational couplings
+
+```text
+commitment:  CONDITIONAL (candidate not licensed): defect dark matter
+             couples only through geometry -- direct-detection
+             experiments (WIMP, axion, etc.) find nothing, forever;
+             DM phenomenology is purely gravitational (cold,
+             collisionless at leading order).
+forced by:   defects are strain structures of the packing (041 E4);
+             they carry no standard-model charge by construction.
+kills it:    a confirmed non-gravitational DM detection kills the
+             defect candidate (NOT the theory -- the candidate).
+status:      four decades of direct-detection nulls are consistent;
+             this is the rare entry where continued null results
+             actively favor the candidate over its rivals.
+gated by:    production/abundance (017-019, O-P10-5); the entry
+             becomes a prediction proper only if the candidate earns
+             its seat.
+```
+
+### B3. The Casimir/UFFT squeeze window (inherited)
+
+```text
+commitment:  the UFFT sector's surviving window: a non-gravitational
+             vacuum-channel anomaly in the 29.9-38.6 um band; outside
+             it, the sector dies.
+forced by:   the accumulated UFFT gates (inherited from the earlier
+             program; operator instantiation still owed).
+kills it:    bench-top exclusion of the window (kills UFFT's sector,
+             not the core theory).
+status:      alive and cornered; the packing's boundary structure
+             (Hartle-Sorkin, 042) is the natural route to finally
+             instantiating the operator -- flagged to the channel
+             lane.
+```
+
+### B4. Lambda's sign (conditional, weak)
+
+```text
+commitment:  IF the ground state carried any relief curvature, it
+             would be spherical: Lambda >= 0. The coherent branch is
+             flat (Lambda_ground = 0) with Lambda_obs the global
+             datum -- so this is a consistency statement, not a
+             live prediction. Recorded for completeness; observed
+             Lambda > 0 is consistent, not confirmatory.
+forced by:   the exact relief geometry (037).
+```
+
+---
+
+## Tier C — Future predictions, blocked on recorded obligations
+
+```text
+C1. the packing dispersion relation (the A5 in-house computation):
+    O-P10-1/O-P10-4. Either clears the axiom against LIV bounds or
+    kills it. HIGHEST PRIORITY of this tier.
+C2. the defect spectrum and abundance (O-P10-5, then 017-019): would
+    convert B2 into quantitative DM predictions (mass spectrum from
+    the wedge energetics; possibly quantized).
+C3. the cosmological-creation observable face (045's open seam):
+    graph-growth vs content-rise readings should differ in the
+    perturbed-cosmology kappa-leak profile (F1's structure-era
+    extension) -- potentially the first place the packing's
+    Lorentzian dynamics touches data.
+C4. the conversion factor rho_v(a, c_e) (O-P10-1): with a and c_e
+    derived, the floor-Newton lock becomes a parameter-free relation
+    between G and the packing scale -- a consistency test against
+    any independent probe of discreteness.
+C5. the kappa-leak scaling AB - 1 = (3/2) Omega_m (H0 r/c)^2:
+    derived, parameter-free, ~1e-31 at 1 AU, ~1e-8 at 100 Mpc scales
+    -- below all current instruments; recorded as the honesty entry
+    it has always been, awaiting instrumentation nobody has yet
+    proposed.
+```
+
+---
+
+## The Register's Bottom Line
+
+```text
+The theory's observational profile after P10:
+
+  1 live-fire prediction    w = -1 exactly (A1) -- DESI-class
+                            experiments are testing it NOW
+  4 sharp standing nulls    GW purity, no-Yukawa, GR black holes,
+                            no linear LIV (A2-A5)
+  1 self-threat             the packing's own dispersion relation
+                            (A5/C1): the sharpest currently-
+                            computable way P10 could die
+  3 structural edges        sequestering, defect-DM nulls, the
+                            Casimir window (B1-B3)
+  5 gated futures           C1-C5
+
+If evolving dark energy is confirmed and no gate-passing excess
+exists, the closed vacuum sector takes a kill. If the packing's
+dispersion relation comes out linear, P10 dies against existing GRB
+data. The theory is not hiding: both barrels are pointed at it, and
+this register says so before the results are in.
+```
+
+## Pointers
+
+```text
+033-035, 038   Lambda as integration constant; sequestering (A1, B1)
+proof.md       Theorems 4-7 (A2, A3); 019 Birkhoff (A4)
+037            relief geometry (B4)
+041 E4         defects (B2, C2)
+043, 040       packing continuum/Wick structure (A5, C1)
+045            the cosmological-creation seam (C3)
+04_field_equations/05_open_obligations.md   the inherited ledger
+05_vacuum_sector/05_open_obligations.md     P10's ledger
+```

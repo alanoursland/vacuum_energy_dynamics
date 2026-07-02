@@ -1588,3 +1588,30 @@ Open (an underdetermination, not a contradiction): the cosmological-
 creation reading -- graph growth vs content rise -- assigned to the
 Lorentzian-dynamics program (O-P10-4).
 ```
+
+## Predictions Register Opened
+
+`theory_v3/development/predictions/predictions_register.md` inventories
+every observable commitment the theory currently makes, tiered:
+
+```text
+Tier A (kill zone, now/near-term):
+  A1  w(z) = -1 exactly, constant -- UNDER LIVE FIRE (DESI-class
+      evolving-DE preferences); the discipline trap (no excess
+      backsolve) is pre-registered
+  A2  GW: two TT polarizations, no dispersion, quadrupole rate
+  A3  no gravitational-strength Yukawa at any range (P7')
+  A4  black-hole exteriors/ringdowns exactly GR
+  A5  no linear-order LIV -- simultaneously a prediction and the
+      sharpest currently-computable SELF-THREAT: the packing's own
+      dispersion relation must be computed (new high-priority
+      obligation; linear dispersion would kill P10 against existing
+      GRB bounds)
+Tier B: sequestering's falsifiable edge; defect-DM non-gravitational
+      nulls (conditional); the Casimir/UFFT window; Lambda's sign
+Tier C: dispersion computation, defect spectrum, cosmological-creation
+      observable face, conversion-factor relation, kappa-leak scaling
+```
+
+The register's rule: no entry may be softened after an adverse result
+except by a recorded postulate-level move. Backsolving forbidden.
