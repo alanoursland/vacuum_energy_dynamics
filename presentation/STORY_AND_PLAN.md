@@ -166,6 +166,15 @@ inward on its own.
 
 ## 9. Build plan
 
+**ARCHITECTURE NOTE (2026-07-03):** the owner's direction is a large
+set of SMALL interlinked files (one idea per node, ~30–60 lines,
+typed prefixes, hub pages as trailheads) rather than 11 chapters —
+see DESIGN_NOTES "ARCHITECTURE REVISION" for node types, template,
+and linking discipline. The phases below still define WHAT gets
+written and in what order; each "chapter" now denotes a hub plus its
+cluster of nodes. First-cut node inventory: ~8 hubs, ~10 thm_*, ~8
+kill_*, ~7 pred_*, ~8 num_*, ~12 idea_*, ~6 q_* ≈ **60 nodes**.
+
 Order chosen so the book is useful at every intermediate stage:
 
 ```text
