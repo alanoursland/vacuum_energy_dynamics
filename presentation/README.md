@@ -34,13 +34,16 @@ that are usually assumed or left unexplained come out as theorems:
   destroy the theory** — the static field's energy density is forced
   to be −c⁴(s′)²/8πG, and stability then forces that sector to be a
   constraint, not radiation: the sign and the dynamical character are
-  locked together;
+  locked together ([the sector architecture](hub_einstein.md));
 - **the exact Schwarzschild exterior from energy bookkeeping alone**
   — no field equation used, and a second, independent field-theoretic
-  route lands on the same answer with the same constant;
+  route lands on the same answer with the same constant
+  ([the two-route check](hub_einstein.md), [the horizon by
+  accounting](thm_horizon_accounting.md));
 - **why there is no R² term** — the four-derivative sector is
-  eliminated by a symmetry principle (static frame indifference), not
-  by observation;
+  eliminated by a symmetry principle
+  ([static frame indifference](idea_frame_indifference.md)), not by
+  observation;
 - **why Λ is an integration constant** — the constant-density
   postulate forces the unimodular structure, making Λ a global datum
   rather than a coupling ([the theorem](thm_lambda_integration_constant.md)),
@@ -77,13 +80,17 @@ geometric fact, an unreasonable amount falls out:
   arccos(⅓) except the packing scale a, which remains
   [honestly underived](q_packing_scale.md);
 - **expansion is creation, not stretching** — decided on existing
-  data (stretching would drag Newton's G at the Hubble rate, excluded
-  ~480× by lunar laser ranging), and the floor's w = −1 pays for each
-  new cell exactly: [the first law funds expansion](thm_self_funding.md);
+  data ([stretching would drag Newton's G at the Hubble
+  rate](kill_stretch_reading.md), excluded ~480× by lunar laser
+  ranging), and the floor's w = −1 pays for each new cell exactly:
+  [the first law funds expansion](thm_self_funding.md)
+  ([the full trail](hub_expansion.md));
 - **no singularities** — curvature is capped combinatorially (you
   cannot put fewer than three cells around an edge), so collapse
   bottoms out at a Planck-star-sized core deep inside the horizon,
-  with the core radius derived, not posited;
+  with the core radius derived, not posited
+  ([the strong-field chapter](../theory_v3/05_vacuum_sector/08_the_strong_field_interior.md)
+  — node pending);
 - **a dark-matter candidate with a measured energy spectrum** —
   wrong-coordination defects are stable, quantized, and couple only
   through geometry ([gated, not claimed](idea_matter_as_defect.md)).
@@ -105,7 +112,7 @@ geometric fact, an unreasonable amount falls out:
 | [w = −1 exactly, forever](pred_w_minus_1.md) | confirmed evolving dark energy | **under live DESI fire** |
 | [Ġ = 0 exactly](pred_gdot_zero.md) | any confirmed G drift | ~480× above current LLR bounds, tightening |
 | [no linear Lorentz violation](pred_no_linear_liv.md) | confirmed linear-order LIV | kills the packing outright |
-| no black-hole echoes (the derived core is ~26 orders inside the horizon) | a confirmed echo | new since derivation 055 |
+| [no black-hole echoes](../theory_v3/05_vacuum_sector/08_the_strong_field_interior.md) (the derived core is ~26 orders inside the horizon) | a confirmed echo | new since derivation 055 — node pending |
 | [defect dark matter: direct detection finds nothing, ever](pred_defect_dark_matter.md) | a confirmed non-gravitational DM coupling | conditional (candidate gated) |
 
 No entry may be softened after an adverse result — the
