@@ -66,9 +66,12 @@ The derivation uses, and only uses:
   gravitational-wave data enter the derivation. They appear in §7 as
   *post-derivation kill conditions*: observations that could have
   falsified the derived equations and did not.
-- The Schwarzschild solution. It is *derived twice*, by independent
-  routes (§2 bookkeeping; §4 closure), and the agreement is an internal
-  consistency check, not an input.
+- The Schwarzschild solution. It is *derived* by two routes with
+  disjoint machinery — §2 bookkeeping (the exterior family and its
+  anchor; the member is pinned by §4's derived law or the $\beta$
+  fence, Trial 022) and §4 closure (the full metric) — and their
+  meeting inside one family is an internal consistency check, not an
+  input.
 
 ### 0.3 Conventions
 
@@ -219,9 +222,13 @@ adoption record and the equivalence theorem predate every use below.
 
 $$A = 1 - \frac{2GM}{c^2 r}, \qquad B = A^{-1},$$
 
-and the static configuration carries the **negative** energy density
+and in vacuum the shear self-sources with the **negative** s-ledger
+density
 
-$$u_{\text{field}} = -\frac{c^4\,(s')^2}{8\pi G}.$$
+$$u_{\text{field}} = -\frac{c^4\,(s')^2}{8\pi G}$$
+
+(whose ledger status — what is and is not invariant about it — is
+stated precisely below).
 
 *Derivation.* Two requirements meet:
 
@@ -238,25 +245,57 @@ e^{s}\Big[\Delta_{\text{areal}} s + (s')^2\Big].$$
 Consequence: the flux law is linear in the variable $\mathcal A = e^s
 = A$ *if and only if* the shear obeys
 $\Delta_{\text{areal}} s = -(s')^2$ in vacuum — i.e., if and only if
-the field self-sources with energy density exactly
-$u = -c^4 (s')^2/8\pi G$ at the universal coupling $8\pi G/c^4$,
-counted once, geometry-side. Among the one-parameter family of
-candidate distortion variables ($A_\lambda = (1+\lambda r_s/r)^{-1/\lambda}$,
-parametrizing which function of $A$ obeys the linear law), **P9 selects
-$\lambda = -1$**: it is the unique member whose nonlinear content
-equals its own bookkeeping energy at the universal coupling. The
-alternatives fail P9 in one of two ways: $\lambda = 0$ (law linear in
-$\ln A$) counts no self-energy at all; $\lambda = +1$ and others count
-it with the wrong weight. Solving the now-fixed law in vacuum:
+the field self-sources, geometry-side, with the s-ledger density
+$u = -c^4 (s')^2/8\pi G$ at the coupling $8\pi G/c^4$. Among the
+one-parameter family of candidate distortion variables
+($A_\lambda = (1+\lambda r_s/r)^{-1/\lambda}$, parametrizing which
+function of $A$ obeys the linear law, equivalently the constant
+self-coupling weight $\Delta_{\text{areal}} s = \lambda (s')^2$),
+**P9 forces the self-energy to be counted at all** — $\lambda = 0$
+(law linear in $\ln A$, no self-sourcing) violates it — but P9 does
+*not* fix the weight or sign of $\lambda$, and no static accounting
+argument can (Trial 022 no-go, below). The member is fixed by two
+independent selectors:
+
+- **The derived response law (the selector of record).** Applied back
+  to the family, the vacuum equations of the §4 closure select
+  $\lambda = -1$ exactly: on the P7′ branch $B = 1/A_\lambda$,
+  $G^t{}_t = 0$ holds as an identity in $r$ if and only if
+  $\lambda = -1$, at which point every component vanishes. This is
+  non-circular: the closure theorem (§4.4) nowhere uses the family or
+  the C2 selector (verified by scan), so deriving the response first
+  and letting it pick the member imports nothing from the target.
+- **The observable face (the standing fence).** On the P7′ branch,
+  $\gamma = 1$ for every $\lambda$ (the fork is 1PN-blind) and
+  $\beta - 1 = \lambda + 1$ exactly at second order, so every
+  measurement of $|\beta - 1|$ bounds $|\lambda + 1|$ identically:
+  $|\beta - 1| \lesssim 10^{-4}$ (LLR Nordtvedt + Cassini) pins
+  $\lambda = -1$ empirically, as a §7-style kill condition rather
+  than a derivation.
+
+Solving the now-fixed law in vacuum:
 $\Delta_{\text{areal}}A = 0 \Rightarrow A = 1 - 2GM/c^2r$ with the
 constant fixed by the Newton anchor; Lemma 2 supplies $B = 1/A$.
 
-The **sign** of $u_{\text{field}}$ is forced, not chosen: the identity
-produces $-(s')^2$, and P9's count-once placement (the fence) forbids
-re-deriving it as a positive bolt-on source. (Independently: the
-placement exclusion in §2.2 proves the explicit positive-source
-placement breaks Lemma 2, so the geometry-side negative counting is
-the *only* P7′-compatible option.)
+*Ledger status of the sign (Trial 022).* The **sign** of the
+self-coupling is a theorem of the derived dynamics, not of static
+accounting. Three precise statements replace the older "forced by
+count-once" narration: (i) writing
+$u = \lambda c^4 (s')^2/8\pi G$ makes "the field sources at the
+universal coupling" an identity for *every* $\lambda$ — universality
+alone has no selective power; (ii) the one invariant static
+accounting handle (the quasi-static work ledger on the interaction
+term of concentric shells) forces $|\lambda| = 1/4$ for any
+gradient-local density, with the sign set by the matter-counting
+convention (vacuum-pays: $-1/4$; matter-pays: $+1/4$) — never $-1$;
+correspondingly the $\lambda = -1$ self-source is exactly $4\times$
+the Newtonian field-energy density, so "the Newtonian convention is
+recovered" is false at density level; (iii) what *is*
+ledger-invariant is the integral statement: in the P6 ledger the
+total static reservoir is negative — the binding deficit. The
+placement exclusion of §2.2 fixes *where* the counting lives
+(geometry-side, since any explicit static scalar-type source breaks
+Lemma 2 regardless of its sign), not the sign itself.
 
 *Two remarks for the practitioner.*
 1. The multiplicative-composition statement formerly carried as
@@ -264,13 +303,25 @@ the *only* P7′-compatible option.)
    the exponential structure $A = e^s$ — here it is a *consequence*,
    which is why P8 is demoted
    (`01_postulates/demoted_p8_static_exterior_temporal_self_coupling.md`).
-2. Nothing in this section used a tensor response law. The exterior is
-   pure bookkeeping: flux law (P3a/P6/Newton) + variable selection (P9)
-   + compensation (P7′/P3).
+2. The bookkeeping route delivers the exterior *family* and its anchor
+   with no tensor response law: flux law (P3a/P6/Newton) + self-energy
+   counted (P9) + compensation (P7′/P3) yield
+   $A_\lambda$ with $B = 1/A_\lambda$ and the Newton-anchored scale.
+   Pinning the member $\lambda = -1$ — and with it the horizon —
+   requires the derived response law of §4 (or the $\beta$ fence);
+   static accounting alone cannot do it (Trial 022 no-go). The claim
+   "§2 derives Schwarzschild without field equations" is therefore
+   scoped: it derives Schwarzschild-up-to-$\lambda$, with the member
+   fixed by the dynamics the proof derives next.
 
 > Verification: `trial_C2_self_coupling_bootstrap.py` (identity, family,
-> selector, exact solution); `trial_C3_spatial_bootstrap.py`
-> (placement exclusion).
+> exact solution); `trial_C3_spatial_bootstrap.py`
+> (placement exclusion; conditional vacuum equations re-select
+> $\lambda=-1$);
+> `022_sign_fork_closure/sign_fork_ledger_closure.py` (normalization
+> emptiness, invariant-ledger no-go, factor-4 correction,
+> $\beta - 1 = \lambda + 1$, exact response selector, 018
+> $\lambda$-blindness scan).
 
 ### 2.4 Theorem 1c (covariant lift of the static sector)
 
@@ -480,13 +531,19 @@ The normalizations then follow with no further freedom:
   projector average $2/5$, quadrupole power
   $P = (G/5c^5)\langle\dddot Q_{ij}\dddot Q_{ij}\rangle$.
 
-**The consistency loop (the proof's central cross-check).** The
-closure's exact static spherical vacuum solution is Schwarzschild with
-$B = 1/A$ — *the same exterior* derived in §2.3 from pure bookkeeping,
-with the same constant. Two independent routes — substance accounting
-(P3a/P6/P7′/P9 + Newton) and field-theoretic closure (K1–K3 + P9 +
-Newton) — meet at one metric. A failure of this match would have
-falsified the framework internally; the match is exact.
+**The consistency loop (the proof's central cross-check, scoped by
+Trial 022).** The closure's exact static spherical vacuum solution is
+Schwarzschild with $B = 1/A$ — landing *inside the bookkeeping family*
+of §2.3, with the same Newton-anchored constant, and selecting its
+$\lambda = -1$ member. The honest division of labor: substance
+accounting (P3a/P6/P7′/P9 + Newton) delivers the family and the
+anchor; the field-theoretic closure (K1–K3 + P9 + Newton) delivers the
+full metric and thereby pins the family member. The loop's content is
+that the closure lands inside the family at all, on the anchored
+scale — a failure of either would have falsified the framework
+internally; both matches are exact. (The $\beta$ fence,
+$\beta - 1 = \lambda + 1$, independently confirms the selected member
+empirically.)
 
 > Verification: `008_radiative_bootstrap/` (T2: $N$; T3: $K_T$, both
 > polarizations, null transport; T4: Green identity, virial witness,
@@ -754,7 +811,8 @@ $AB-1 = \tfrac32\Omega_m(H_0 r/c)^2$.
 |---|---|
 | "The Einstein tensor was assumed." | It is first *used as a response law* in §4.3, where it is *derived* (closure of K1–K3 under P9, uniqueness proved in §4.4). §§1–3 use no tensor response (§2.2/§2.4 use the Einstein tensor as differential geometry only, in identities that hold for any metric). |
 | "Fierz–Pauli/Deser smuggle in GR." | Fierz–Pauli is a uniqueness theorem of field theory on Minkowski space, proved with no input from gravitational phenomenology; it constrains *any* theory with this kinematics, and the kinematics came from P2. The Deser-style closure is no longer an import at all: §4.4 proves it in-house under the stated scope, and no number moves with the historical citation. |
-| "Schwarzschild was the target." | It is derived twice, independently (§2 bookkeeping; §4 closure), and the routes' agreement is a falsifiable internal check that happened to pass. The §2 route uses no field equations at all. |
+| "Schwarzschild was the target." | The §2 bookkeeping route derives the exterior *family* and its anchor with no field equations; the member $\lambda=-1$ is selected by the §4 closure applied back (non-circular: the closure is $\lambda$-blind, Trial 022) and confirmed by the $\beta$ fence. The routes' meeting inside one family is a falsifiable internal check that happened to pass. |
+| "The self-energy sign was chosen to get Schwarzschild." | It was, historically, in Trial C2 (exact-recovery selector, recorded as provisional). Trial 022 closed the fork properly: static accounting *cannot* select the sign (invariant-ledger no-go: $\|\lambda\| = 1/4$, ledger-relative sign); the derived response law selects $\lambda = -1$ exactly and non-circularly; and $\beta - 1 = \lambda + 1$ stands as the empirical fence at $10^{-4}$. The recovery-shaped step is retired, not repainted. |
 | "The postulates were reverse-engineered." | The adoption records are timestamped and fenced (P9, P7′: 2026-06-11), and both postulates were adopted *before* their decisive consequences were known — P7′'s elimination of the four-derivative sector (§5.2) and its exactness under Λ (SdS) were discovered afterward. Six of the theory owner's own candidate mechanisms were killed by these same postulates' gates. |
 | "GR data calibrated the constants." | One constant ($G$) enters, from Newton. Everything else is derived. Pulsar, GPB, LAGEOS, Eöt-Wash enter only afterward, as kill conditions — each could have falsified a derived coefficient; none did. |
 | "AB = 1 is Schwarzschild knowledge." | $AB=1$ is the metric shadow of adopted P7′ (substance statement: no preferred static t–r frame), with the shadow equivalence proved as differential geometry (§2.2) and shown chart-invariant (§2.4b). It is also *independently checkable*: P7′ predicts **no gravitational-strength Yukawa deviation at any range** (since it forbids the only ghost-safe mechanism, §5.2, screening included) — a standing null test, currently probed to 54 μm at the scalaron coupling $\alpha = 1/3$. A bench-top detection would falsify P7′ and reopen §5. |
@@ -768,8 +826,8 @@ rigor-debt ledger is clear — the P8/T4 rewrite, scalaron screening
 (§5.2 corollary), tensor-virial identity (§4.5a), TT averaging
 (§4.5b), radiative gauge invariance (§4.5c), the time-dependent vector
 sector (§4.5d), closure uniqueness (§4.4), the covariant statics lift
-(§2.4), and the scoped nonlinear-stability closure (§3) are all in
-place. The historical closure index is preserved in
+(§2.4), the scoped nonlinear-stability closure (§3), and the sign-fork
+closure with its accounting no-go (§2.3, Trial 022) are all in place. The historical closure index is preserved in
 `06_rigor_closures.md`; nothing there is needed to read this proof.
 
 The sector derivations are theorem-grade at reduced level (static
@@ -796,6 +854,7 @@ validity within the declared SR branch.
 |---|---|---|
 | Lemma 1 / Theorem 1 | `002_.../trial_C2_self_coupling_bootstrap.py` | trials archive |
 | Lemma 2 / placement | `002_.../trial_C3_spatial_bootstrap.py` | trials archive |
+| §2.3 sign-fork closure | `022_sign_fork_closure/sign_fork_ledger_closure.py` | `06_rigor_closures.md` |
 | Theorem 1c (§2.4) | `019_static_covariant_lift/static_covariant_lift.py` | `06_rigor_closures.md` |
 | Theorems 2–4 | `006_gate_G03_radiative_positivity/...` | `gate_G03_..._lab_report.md` |
 | Theorems 3n, 3m (§3) | `020_nonlinear_stability/nonlinear_stability_scoped.py` | `06_rigor_closures.md` |

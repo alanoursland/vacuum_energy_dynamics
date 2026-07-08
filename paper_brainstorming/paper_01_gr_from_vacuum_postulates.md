@@ -31,8 +31,16 @@ not by observation.
 1. **A new route to GR.** Not thermodynamic (Jacobson), not entropic
    (Verlinde), not pure spin-2 bootstrap (Deser — used as one step, not
    the route): an *energy-bookkeeping* derivation from substance
-   postulates, where the negative field-energy density
-   $u=-c^4(s')^2/8\pi G$ is a definite local quantity and load-bearing.
+   postulates. [REVISED 2026-07-08 per Trial 022:] the bookkeeping
+   route delivers the exterior *family* and the Newton anchor; the
+   member ($\lambda=-1$) is selected by the derived response law
+   applied back (non-circular, 018 is $\lambda$-blind), with
+   $\beta-1=\lambda+1$ as the standing empirical fence. The quantity
+   $u=-c^4(s')^2/8\pi G$ must be presented as the s-ledger self-source
+   ($4\times$ the Newtonian density, ledger-relative), NOT as a
+   definite local energy density — static accounting provably cannot
+   select the sign (022 no-go). The paper should cite paper 10 for
+   this machinery rather than carry it.
 2. **The P7′ ⟹ a = 0 theorem.** A frame-indifference postulate forcing
    the four-derivative sector to vanish (via mandatory scalaron hair)
    is, as far as we know, a new selection mechanism for EH among f(R)
@@ -49,7 +57,9 @@ not by observation.
 ## Structure sketch
 
 1. Postulates (fences included as content, not apologetics)
-2. The static bootstrap: areal-flux law → Schwarzschild exact (C2)
+2. The static bootstrap: areal-flux law → exterior family; member
+   selection by the derived response law + β fence (C2, 022; cite
+   paper 10)
 3. Placement and frame indifference: P7′, count-once geometry-side (C3)
 4. Sector signature: ghost exclusion, source binding, TT positivity (G02/G03)
 5. The radiative bootstrap: K_T derived; quadrupole with no free constants (008)
@@ -102,3 +112,18 @@ as an origin story rather than a demand. Content unchanged; queue
 position changed. Also: by then the covariant-lift rigor debts this
 proposal lists as missing are DONE (see 04_field_equations/proof.md,
 self-contained rewrite) — update the readiness line when drafting.
+
+## Revision note (2026-07-08)
+
+Trial 022 closed the C2 sign fork and re-scoped the §2.3 narration in
+`proof.md`: the sign of the static self-coupling is a theorem of the
+derived response law, not of count-once accounting (static accounting
+provably cannot select it — invariant-ledger no-go, $|\lambda|=1/4$
+with ledger-relative sign; the $\lambda=-1$ self-source is $4\times$
+the Newtonian density). Novelty item 1 and structure item 2 above are
+patched accordingly. This *strengthens* the paper against its main
+referee risk ("postulates reverse-engineered from GR"): the one
+recovery-shaped step in the chain has been found, proved unfixable by
+accounting, and closed by the derived dynamics with an empirical fence
+($\beta - 1 = \lambda + 1$). Lean on paper 10 (which publishes that
+machinery in neutral GR language) instead of defending it inline.

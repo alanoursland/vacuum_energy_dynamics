@@ -222,6 +222,51 @@ Discharge files:
 - `development/nonlinear_stability/nonlinear_stability_note.md`
 - `vacuum_forge/src/field_equation_trials/020_nonlinear_stability/nonlinear_stability_scoped.py`
 
+### Sign-Fork Closure and the Static-Accounting No-Go
+
+An audit (2026-07-08) found `proof.md` §2.3's older narration — "the
+sign of \(u_{\rm field}\) is forced, not chosen" by count-once
+accounting — stronger than its provenance: Trial C2's machine-checked
+selector was exact areal Schwarzschild recovery (recorded as
+provisional), and P9's adoption record states the sign is not fixed by
+P9 alone. Trial 022 closes the fork with four theorems:
+
+- **Normalization emptiness.** Writing
+  \(u = \lambda c^4 (s')^2/8\pi G\) makes "the field sources at the
+  universal coupling" an identity for every \(\lambda\): the C2
+  statement "\(|\lambda| = 1\) by P6" is definitional, and the
+  a-priori fork is the real line.
+- **Ledger no-go.** The invariant quasi-static work ledger, evaluated
+  on the interaction term of concentric shells (self-energy and
+  localization ambiguities drop out), forces \(|\lambda| = 1/4\) for
+  any gradient-local density, with the sign set by the
+  matter-counting convention (vacuum-pays \(-1/4\); matter-pays
+  \(+1/4\)). Static density-level accounting cannot select
+  \(\lambda\); the \(\lambda = -1\) self-source is exactly \(4\times\)
+  the Newtonian field-energy density (C2 case 4's "Newtonian
+  convention recovered" is corrected). The ledger-invariant residue:
+  the total static reservoir is negative (binding deficit) in the P6
+  ledger.
+- **The observable face.** On the P7' branch, \(\gamma = 1\) for every
+  \(\lambda\) and \(\beta - 1 = \lambda + 1\) exactly at second
+  order: \(|\beta - 1| \lesssim 10^{-4}\) (LLR Nordtvedt + Cassini)
+  pins \(\lambda = -1\) as a standing kill condition.
+- **The selector of record.** With the Einstein tensor computed from
+  scratch, \(G^t{}_t = 0\) on \(B = 1/A_\lambda\) holds identically in
+  \(r\) iff \(\lambda = -1\), where all components vanish; the 018
+  closure program is verified \(\lambda\)-blind, so letting the
+  derived response law pick the member is non-circular. The sign is a
+  theorem of the closed dynamics.
+
+A candidate accounting-only rescue (multi-configuration
+ledger-rigidity of a single local matter coupling, third order) is
+recorded as an open route with a declared kill condition.
+
+Discharge files:
+
+- `proof.md` §2.3, §4.3, §7 (re-scoped narration)
+- `vacuum_forge/src/field_equation_trials/022_sign_fork_closure/sign_fork_ledger_closure.py`
+
 ## Remaining Rigor Debts
 
 As of this record (2026-07-01), no active proof debts remain on the

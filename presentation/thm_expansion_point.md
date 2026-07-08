@@ -1,38 +1,74 @@
-# Why does a frustrated ground state force gravity to be linear in curvature?
+# Why would the Einstein-Hilbert term be the first term?
 
-A theorem, not a preference: expand any smooth per-hinge energy about the packing's actual minimum, and the sign of the ground-state slope decides whether you get Einstein-Hilbert or R².
+This is a conditional theorem inside the [packing model](idea_packing.md):
+if the vacuum ground state is the frustrated Regge/Delaunay state described
+in [`regge_delaunay_model.md`](../theory_v3/development/vacuum_sector/08_packing_microphysics/regge_delaunay_model.md),
+then the leading curvature response is linear in deficit angle.
 
-## The theorem
-
-Effective field theory alone doesn't pick R over R², R³, .... Something has to fix the expansion point. This theorem says the packing does, mechanically, once you take the ground state seriously as *frustrated* (sitting at nonzero deficit) rather than *relaxed* (sitting at zero deficit).
-
-Setup: give every hinge $h$ of the Delaunay/Regge graph a smooth per-wedge energy $f(\delta_h)$, weighted by hinge measure $V_h$, and Taylor-expand about whatever deficit $\delta = D_0$ actually minimizes the packing's energy:
+The only unusual input is the expansion point.  A regular tetrahedral
+packing cannot close around an edge; five tetrahedra leave
 
 ```text
-E = Sum_h V_h f(D0)                    <- floor: substance energy, sequestered
-  + f'(D0) Sum_h V_h (delta_h - D0)    <- linear: the Regge action -> Einstein-Hilbert
-  + (f''(D0)/2) Sum_h V_h (...)^2      <- quadratic: R^2-class, suppressed by a^2*K
+Delta_0 = 2*pi - 5*arccos(1/3) = 0.128389... rad .
 ```
 
-The three terms are not independent choices — they're forced by one Taylor series around one number, $D_0$.
+That number is the [irreducible frustration angle](num_delta0.md), not a
+fit parameter.  The exact relief calculation in
+[`relief_exact_geometry_vacuumforge.md`](../theory_v3/development/vacuum_sector/relief_exact_geometry_vacuumforge.md)
+also checks that curving the packing to relieve the gap does not produce a
+small relaxed ground state.
 
-**The branch point.** Whether the linear term survives depends entirely on whether $D_0 = 0$:
+Now put a smooth wedge energy on each hinge:
 
-- **Frustrated ground state ($D_0 \neq 0$):** for regular tetrahedra, $D_0 = \Delta_0 = 2\pi - 5\arccos(1/3) \approx 7.36°$ is the *irreducible* minimum-energy deficit (curving to relieve it costs more than it saves at every sub-packing scale — derivation 037). Since the minimum sits away from $\delta=0$, there is no reason for $f'(D_0)$ to vanish; generically it doesn't. The **linear** term dominates the response to bending the packing, and the linear term in deficit angle is exactly the Regge form of $\int R\sqrt{g}$. Gravity comes out Einstein-Hilbert with no tuning.
-- **Unfrustrated ground state ($D_0 = 0$):** if the packing could actually close ($\delta=0$ achievable), then $\delta=0$ being the true minimum forces $f'(0)=0$ by the ordinary calculus fact that a smooth function's derivative vanishes at its minimum. The linear term is killed identically. The **leading surviving response is the quadratic term** — $R^2$ gravity, a strictly weaker, higher-derivative theory.
+```text
+E = sum_h V_h f(delta_h).
+```
 
-So "gravity is linear in curvature, not quadratic" reduces to "the packing is geometrically frustrated, not geometrically closable." Frustration is not a footnote to the floor — it is the mechanism selecting Einstein-Hilbert as the generic leading term.
+Expanding around the actual ground state, not around zero curvature, gives
 
-**The number that makes it concrete.** Triangulating the unit 3-sphere with the 600-cell (720 edges, five regular tetrahedra per edge, every hinge at exactly $\Delta_0$) gives $S_{\text{Regge}} = 720\,\Delta_0/\varphi = 0.9647 \times \tfrac12\int R\sqrt g$ — the frustration deficit reproduces the continuum EH integrand to 3.5% at the coarsest possible mesh.
+```text
+E = sum_h V_h f(Delta_0)
+  + f'(Delta_0) sum_h V_h (delta_h - Delta_0)
+  + 1/2 f''(Delta_0) sum_h V_h (delta_h - Delta_0)^2 + ...
+```
 
-**One free bonus.** The same stiffness $f'(\Delta_0)$ sets both the floor's substance density and the EH coefficient — $\rho_v = (c_e \Delta_0 / 2a^3)\, f'(\Delta_0)$ — so the vacuum's energy density and the strength of gravity are two readings of a single wedge-energy slope (the floor-Newton lock).
+The first term is the [constant floor](idea_floor.md).  The second term is
+the Regge action, hence the discrete version of Einstein-Hilbert; this is
+the theorem verified in
+[`regge_delaunay_bridge_vacuumforge.md`](../theory_v3/development/vacuum_sector/08_packing_microphysics/regge_delaunay_bridge_vacuumforge.md)
+and its forge script
+[`039_regge_delaunay_bridge.py`](../vacuum_forge/src/vacuum_sector/039_regge_delaunay_bridge/regge_delaunay_bridge.py).
 
-**Scope, stated plainly.** This is exact discrete geometry (checks 1–3, 5 in the source) plus an exact Taylor-expansion argument (check 4) — it is *not yet* a continuum-limit theorem (does mesh refinement converge to the smooth EH action?) and *not yet* a 4D/Lorentzian statement. Both are open obligations, not proved here. There is also a live tension: the quadratic term is R²-class with Planck-scale coefficient ($\sim a^2$), while P7′ (adopted elsewhere) forces the four-derivative sector exactly empty — unresolved, Planck-scale, on the books as `p7prime_packing_tension_039`.
+The point is simple but easy to miss: if the ground state were
+unfrustrated, it would sit at `delta = 0`, and ordinary calculus would
+force `f'(0) = 0`.  The linear term would vanish and the first surviving
+response would be curvature-squared.  Because the proposed ground state
+sits at `Delta_0 != 0`, no such cancellation is forced; generically
+`f'(Delta_0)` survives.
 
-**Proof:** derivation 039 (expansion-point theorem, discrete Gauss-Bonnet anchor, 600-cell cross-check, floor-Newton lock), building on derivation 037 (exact irreducibility of $\Delta_0$) → [../theory_v3/development/vacuum_sector/08_packing_microphysics/regge_delaunay_bridge_vacuumforge.md](../theory_v3/development/vacuum_sector/08_packing_microphysics/regge_delaunay_bridge_vacuumforge.md)
+So the claim is not "we prefer Einstein-Hilbert."  It is narrower:
+[geometric frustration](idea_frustration.md) makes the Einstein-Hilbert
+term the generic first response of this discrete energy.  The same source
+also gives the [600-cell check](num_600cell_anchor.md): at the coarsest
+triangulation of `S^3`, the Regge sum lands within 3.5% of the continuum
+Einstein-Hilbert integral.
 
-**Where next:**
-- [Why is gravity Einstein-Hilbert and not R²? →](hub_why_eh.md) — the full hook trail this theorem is the spine of, from packing to closed question.
-- [The Frustration →](idea_frustration.md) — where $\Delta_0$ comes from and why relief always costs more than it saves.
-- [The microstructure trail →](hub_packing.md) — the model, the ground state, the lab, and the self-tests this theorem sits inside.
-- [Einstein Closure →](thm_einstein_closure.md) — the master result this feeds: the full field-equation derivation with zero matched coefficients.
+The same slope does double duty.  The zeroth-order term prices the
+[floor](idea_floor.md) and the first-order term prices gravity, so one
+wedge-energy slope sets both:
+
+```text
+rho_v = (c_e * Delta_0 / (2 * a^3)) * f'(Delta_0).
+```
+
+This is the floor-Newton lock of derivation 039: the vacuum's substance
+density and the strength of gravity are two readings of `f'(Delta_0)`.
+
+Scope matters.  This is exact discrete geometry plus a Taylor expansion;
+it is not yet the [continuum-limit theorem](thm_continuum_convergence.md),
+and it is not yet the [Lorentzian lift](thm_lorentzian_lift.md).  The
+quadratic term also put this theorem in tension with P7', which wants the
+four-derivative sector exactly empty; that tension was
+[worked through, not hidden](kill_scalaron_cancellation.md) — the
+surviving scalaron has a [range](num_scalaron_range.md) some thirty
+orders of magnitude below the laboratory frontier.

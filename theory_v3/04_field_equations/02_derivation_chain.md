@@ -18,10 +18,12 @@ AREAL-FLUX LAW   Delta_areal A = (8 pi G/c^2) rho        [02_foundations, C2]
    |
 P4/P9   curvature configurations carry energy; that energy gravitates
         at the universal coupling, counted once (P9 fence)
-   |    -> the self-coupling bootstrap: Delta_areal s = -(s')^2 + src
-   |    -> sign forced NEGATIVE; family selector lambda = -1
+   |    -> the self-coupling bootstrap family: Delta_areal s = lambda (s')^2
+   |    -> member lambda = -1 selected by the derived response law
+   |       (022; static accounting cannot select -- no-go; fence:
+   |       beta - 1 = lambda + 1)
    v
-SCHWARZSCHILD EXTERIOR, EXACT                            [trial C2, 002]
+SCHWARZSCHILD EXTERIOR, EXACT                    [trial C2, 002; 022]
    |
 P7'     static frame indifference (adopted; AB = 1 its shadow)
    |    -> count-once placement forced geometry-side

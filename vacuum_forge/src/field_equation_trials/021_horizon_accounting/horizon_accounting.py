@@ -13,12 +13,15 @@
 # two cleanly:
 #
 #   1. RADIUS: both routes give r_s = 2GM/c^2. (The coincidence.)
-#   2. HORIZON EXISTENCE IS P9-SELECTED: in the C2 bootstrap family
-#      A_lambda = (1 + lambda r_s/r)^(-1/lambda), only the P9-selected
-#      member lambda = -1 has a zero at finite radius. The lambda = 0
-#      (exponential) and lambda = +1 (reciprocal) members -- the "wrong
-#      counting" accountings -- have NO horizon anywhere. The horizon's
-#      existence, not just its location, is a corollary of count-once.
+#   2. HORIZON EXISTENCE IS DYNAMICS-SELECTED: in the C2 bootstrap family
+#      A_lambda = (1 + lambda r_s/r)^(-1/lambda), only the member
+#      lambda = -1 -- selected by the derived response law (Trial 022,
+#      exact and non-circular; fenced by beta - 1 = lambda + 1) -- has a
+#      zero at finite radius. The lambda = 0 (exponential) and
+#      lambda = +1 (reciprocal) members have NO horizon anywhere. The
+#      horizon's existence, not just its location, is a corollary of the
+#      closed dynamics. (Trial 022's no-go: static accounting alone
+#      cannot make this selection; P9 alone does not fix the sign.)
 #   3. THE METRIC DISCRIMINATOR: the Michell/Newtonian route carries no
 #      spatial response (B = 1, gamma = 0: half the observed light
 #      deflection); the bookkeeping route forces B = 1/A (gamma = 1).
@@ -217,18 +220,18 @@ def case_1_radius(failures):
 
 
 # =============================================================================
-# Case 2: horizon existence is P9-selected
+# Case 2: horizon existence is selected by the derived dynamics (022)
 # =============================================================================
 
 
 def case_2_horizon_existence(failures):
-    header("Case 2: Only the P9-selected accounting has a horizon at all")
+    header("Case 2: Only the dynamics-selected member has a horizon at all")
     r_s = sp.Symbol("r_s", positive=True)
     r_pos = sp.Symbol("r", positive=True)
 
-    A_m1 = 1 - r_s / r_pos                      # lambda = -1 (P9-selected)
-    A_0 = sp.exp(-r_s / r_pos)                  # lambda -> 0 (log-linear counting)
-    A_p1 = 1 / (1 + r_s / r_pos)                # lambda = +1 (wrong-weight counting)
+    A_m1 = 1 - r_s / r_pos                      # lambda = -1 (response-law-selected, 022)
+    A_0 = sp.exp(-r_s / r_pos)                  # lambda -> 0 (no self-sourcing)
+    A_p1 = 1 / (1 + r_s / r_pos)                # lambda = +1 (opposite-sign counting)
 
     zeros_m1 = sp.solve(sp.Eq(A_m1, 0), r_pos)
     zeros_0 = sp.solve(sp.Eq(A_0, 0), r_pos)
@@ -247,11 +250,13 @@ def case_2_horizon_existence(failures):
             bool(A_0.is_positive) and bool(sp.simplify(A_p1).is_positive), failures)
     print()
     print("  All three family members agree at first post-Newtonian order --")
-    print("  Michell-grade accounting cannot tell them apart. The members that")
-    print("  count self-energy wrongly (lambda = 0: none; lambda = +1: wrong")
-    print("  weight) have A > 0 everywhere: NO horizon at any radius. The")
-    print("  existence of a horizon at finite r is itself a corollary of P9's")
-    print("  count-once rule, not of energy accounting in general.")
+    print("  Michell-grade accounting cannot tell them apart, and Trial 022's")
+    print("  no-go shows static accounting cannot select among them at ANY")
+    print("  order. Only lambda = -1 -- the member the derived response law")
+    print("  selects (022, exact and non-circular; fenced by beta - 1 =")
+    print("  lambda + 1) -- has A = 0 at finite radius. The existence of a")
+    print("  horizon at finite r is a corollary of the closed dynamics, not")
+    print("  of energy accounting in general (and not of P9 alone).")
 
 
 # =============================================================================
@@ -283,7 +288,7 @@ def case_3_metric_discriminator(failures):
     print("  (observed, parts in 1e5 by Cassini). The Michell accounting is")
     print("  falsified by the very first metric observable; the bookkeeping")
     print("  exterior is exact. The radius agreement was luck; the function")
-    print("  agreement is P7' + P9 content.")
+    print("  agreement is P7' content plus the dynamics-selected member (022).")
 
 
 # =============================================================================
@@ -335,8 +340,9 @@ def case_4_pg_exactness(failures):
     print("  velocity keeps the Newtonian form (1/2)v^2 = GM/r EXACTLY at every")
     print("  radius, with the horizon at exactly v = c. In GR pedagogy this is")
     print("  the 'river model curiosity' (Hamilton-Lisle). In VED it is not a")
-    print("  curiosity: the P9 resummation (flux law linear in A = e^s) is WHY")
-    print("  the kinetic-exchange bookkeeping closes exactly at all orders.")
+    print("  curiosity: the lambda = -1 resummation (flux law linear in")
+    print("  A = e^s, the member the dynamics selects) is WHY the")
+    print("  kinetic-exchange bookkeeping closes exactly at all orders.")
     print("  The same mechanism explains the Michell radius agreement: the")
     print("  'two cancelling errors' cancel BECAUSE the exact theory's ledger")
     print("  is Newtonian-formed in this slicing.")
@@ -349,11 +355,14 @@ def case_4_pg_exactness(failures):
 
 def case_5_verdict():
     header("Case 5: Verdict")
-    print("  THEOREM (horizon as accounting corollary). In the bookkeeping")
+    print("  THEOREM (horizon as a dynamics corollary). In the bookkeeping")
     print("  exterior of proof.md section 2, the horizon exists and sits at")
-    print("  r_s = 2GM/c^2 as a corollary of the count-once accounting: the")
-    print("  P9-selected distortion variable A = e^s vanishes at finite radius,")
-    print("  while every wrongly-counted family member has no horizon at all.")
+    print("  r_s = 2GM/c^2 as a corollary of the dynamics-selected member: the")
+    print("  lambda = -1 distortion variable A = e^s vanishes at finite radius,")
+    print("  while every other family member has no horizon at all. (Selection")
+    print("  provenance: Trial 022 -- response law, exact and non-circular,")
+    print("  with beta - 1 = lambda + 1 as the empirical fence; static")
+    print("  accounting alone cannot select, and P9 alone does not fix the sign.)")
     print("  The Michell coincidence is explained, not inherited: the exact")
     print("  ledger is Newtonian-formed in the PG slicing (Case 4), so the")
     print("  naive argument lands on the right number for a reason the naive")
@@ -367,7 +376,7 @@ def record_results(ns) -> None:
     ns.record_derivation(
         derivation_id="horizon_accounting_021",
         inputs=[],
-        output=sp.Symbol("horizon_is_P9_corollary_michell_explained_not_inherited"),
+        output=sp.Symbol("horizon_is_dynamics_corollary_michell_explained_not_inherited"),
         method=(
             "zero-set comparison across the C2 bootstrap family; PPN gamma "
             "discriminator vs the Newtonian route; from-scratch verification "
@@ -388,9 +397,10 @@ def record_results(ns) -> None:
         satisfied_by=["horizon_accounting_021"],
         description=(
             "Supports development/horizon_accounting/horizon_accounting_note.md: "
-            "the horizon's existence and location are P9 corollaries, the "
-            "Michell coincidence is explained by the PG-exact ledger, and the "
-            "gamma discriminator separates the routes."
+            "the horizon's existence and location are corollaries of the "
+            "dynamics-selected member (Trial 022; P9 alone does not fix the "
+            "sign), the Michell coincidence is explained by the PG-exact "
+            "ledger, and the gamma discriminator separates the routes."
         ),
     ))
     ns.record_claim(ClaimRecord(
@@ -401,14 +411,16 @@ def record_results(ns) -> None:
         status=GovernanceStatus.LICENSED_CLAIM,
         statement=(
             "In the bookkeeping exterior, the horizon exists at finite radius "
-            "if and only if configuration energy is counted once at the "
-            "universal coupling (lambda = -1): the exponential and reciprocal "
-            "accountings have no horizon anywhere. The Michell radius "
-            "agreement is explained rather than inherited: the derived "
-            "exterior's PG slicing carries the exact Newtonian-formed ledger "
-            "(1/2)v^2 = GM/r with v = c at r_s, which is the P9 resummation's "
-            "signature, while the Michell route itself fails at the first "
-            "metric observable (gamma = 0). Exterior only; the interior cap "
+            "only for the lambda = -1 member -- the one the derived response "
+            "law selects (Trial 022, exact and non-circular, fenced by "
+            "beta - 1 = lambda + 1): the exponential and reciprocal members "
+            "have no horizon anywhere, and static accounting alone cannot "
+            "select among them (022 no-go). The Michell radius agreement is "
+            "explained rather than inherited: the derived exterior's PG "
+            "slicing carries the exact Newtonian-formed ledger (1/2)v^2 = "
+            "GM/r with v = c at r_s, the lambda = -1 resummation's signature, "
+            "while the Michell route itself fails at the first metric "
+            "observable (gamma = 0). Exterior only; the interior cap "
             "obligation is untouched."
         ),
         derivation_ids=["horizon_accounting_021"],

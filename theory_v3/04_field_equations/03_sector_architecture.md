@@ -9,7 +9,7 @@ conformal-factor problem, obtained from its own postulates.
 
 | sector | sign of energy | character | established by |
 |---|---|---|---|
-| temporal/static ($s$) | **negative**: $u=-\dfrac{c^4(s')^2}{8\pi G}$ | non-propagating (forced), source-bound | C2 + P9; G03/T2; G02 |
+| temporal/static ($s$) | **negative**: $u=-\dfrac{c^4(s')^2}{8\pi G}$ (s-ledger self-source) | non-propagating (forced), source-bound | C2 + P9; sign by response law, 022; G03/T2; G02 |
 | radiative (TT) | **positive definite** | propagating, outward null flux | G03; coefficient by 008 |
 | vector ($w_i$) | (magnetic-type, bounded) | constraint-sourced by momentum density | 012 |
 | trace ($\kappa$) | — | suppressed: exactly 0 in Λ-era statics; $O((H_0r/c)^2)$ matter-era | P7′; F1 |
@@ -40,7 +40,9 @@ derived magnitude reproduces it exactly.
 
 GR survives its wrong-sign conformal mode because the Hamiltonian
 constraint cages it. VED *derives* the same cage: P9 forces the
-self-coupling that makes the static sector negative; stability forces
+self-coupling to be counted, and the derived response law fixes it
+negative (Trial 022; static accounting alone cannot — the 022 no-go);
+stability forces
 that sector to be a constraint; P7′ kills the trace channel in statics;
 the ghost gate (G20) then forbids any higher-derivative escape — and the
 unique consistent closure of what remains is the Einstein-Hilbert

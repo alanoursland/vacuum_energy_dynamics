@@ -16,13 +16,16 @@ theory.
 
 ## The claim
 
-Using only: (a) a second-order static response with a derived negative
-field-energy density, (b) the requirement that field energy gravitates
+Using only: (a) a second-order static response whose self-source term
+is negative (the sign fixed by the field equations — Trial 022; present
+it as the self-source of the static sector, not as a claimed invariant
+local energy density), (b) the requirement that field energy gravitates
 universally and is counted once, and (c) stability — one can *derive*,
 in a few pages of elementary calculation, the full architecture by which
 gravity survives an indefinite energy spectrum:
 
-1. the static sector's energy is negative ($-c^4(s')^2/8\pi G$),
+1. the static sector's self-source is negative ($-c^4(s')^2/8\pi G$,
+   the s-ledger term; sign provenance: response law, Trial 022),
 2. promoting it to a propagating mode yields a Hamiltonian unbounded
    below → it must be elliptic/constraint (ghost exclusion),
 3. flat vacuum is the unique zero-source static state → the negative
@@ -71,3 +74,16 @@ style (CAS-verified, kill-condition framed) before any paper asks for
 ontological buy-in. Blocking item shared with paper 3: the repo/Zenodo
 DOI decision is now on the critical path (the supplementary scripts
 need a citable home).
+
+## Revision note (2026-07-08)
+
+Trial 022 re-scoped the sign provenance of the static sector: the
+negative $-c^4(s')^2/8\pi G$ is the s-ledger *self-source*, its sign a
+theorem of the field equations, not an accounting-derived local energy
+density (static accounting provably cannot fix it — 022 no-go, with
+the $\lambda=-1$ self-source $= 4\times$ the Newtonian density). Claim
+(a) and item 1 above are patched. For this paper the change is
+presentational, not structural: theorems 2–4 (ghost exclusion, source
+binding, TT positivity) take the negative self-source as given and are
+untouched. Consider submission order paper 10 → paper 2, so the sign
+provenance is already published when this paper uses it.

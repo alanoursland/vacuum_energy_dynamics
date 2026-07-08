@@ -169,7 +169,9 @@ It depends on:
 
 - P9: Configuration Energy Gravitates, for count-once self-coupling of
   configuration energy.
-- Trial C2: the static self-coupling bootstrap selecting $A=e^s$.
+- Trial C2: the static self-coupling bootstrap family; the member
+  $A=e^s$ ($\lambda=-1$) is selected by the derived response law
+  (Trial 022; static accounting alone cannot select — 022 no-go).
 - T1: Gravitational Redshift, for the first-order temporal limit.
 - T2: Gravitational Time Dilation, for the clock-rate reading of that
   first-order temporal limit.

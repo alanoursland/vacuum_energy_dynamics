@@ -1,5 +1,5 @@
-# The Horizon as an Accounting Corollary
-## (and why this is not Michell's coincidence)
+# The Horizon as a Corollary of the Closed Dynamics
+## (found by the accounting family; and why this is not Michell's coincidence)
 
 ## Status
 
@@ -8,8 +8,14 @@ result type:    supporting theorem, forge-verified (trial 021)
 scope:          static spherical exterior of the closed parent; the
                 interior cap obligation is untouched
 conclusion:     the horizon's existence and location are corollaries of
-                P9's count-once accounting; the Michell radius agreement
-                is explained, not inherited
+                the dynamics-selected family member (lambda = -1; Trial
+                022); the Michell radius agreement is explained, not
+                inherited
+provenance:     the lambda = -1 selection is by the derived response
+                law, exact and non-circular (Trial 022), with
+                beta - 1 = lambda + 1 as the empirical fence; static
+                accounting alone cannot select (022 no-go), and P9
+                alone does not fix the sign
 non-conclusion: nothing here claims the interior, changes any closed
                 result, or adds a prediction beyond GR's
 ```
@@ -21,8 +27,11 @@ The bookkeeping exterior of `04_field_equations/proof.md` §2 derives
 $$A(r) = 1 - \frac{2GM}{c^2 r}$$
 
 from three commitments — the flux law (P3a/P6 + Newton anchor), the
-P9-selected distortion variable ($A = e^s$, count-once), and the P7′
-compensation ($B = 1/A$) — with no tensor response law. The Schwarzschild
+distortion variable $A = e^s$ (the $\lambda = -1$ family member,
+selected by the derived response law — Trial 022; static accounting
+alone cannot select it), and the P7′
+compensation ($B = 1/A$) — with no tensor response law *for the family
+and anchor* (the member selection imports §4's derived dynamics). The Schwarzschild
 radius $r_s = 2GM/c^2$ is then simply the zero of the derived $A$. This
 looks like "energy accounting gives the horizon easily," and it does.
 The purpose of this note is to state exactly what that ease is worth,
@@ -42,34 +51,36 @@ If VED's claim were "our ledger reproduces Michell," it would inherit
 the coincidence. It does not. Three forge-verified discriminators
 separate the routes.
 
-## Theorem (horizon as accounting corollary)
+## Theorem (horizon as a dynamics corollary)
 
 **Within the C2 bootstrap family**
 $A_\lambda = (1 + \lambda\, r_s/r)^{-1/\lambda}$ — the complete family of
 accountings consistent with the flux law at first order — **a horizon
-exists at finite radius if and only if $\lambda = -1$, the P9-selected
-member, and it sits exactly at $r = r_s$.**
+exists at finite radius if and only if $\lambda = -1$, the member the
+derived response law selects (Trial 022), and it sits exactly at
+$r = r_s$.**
 
-- $\lambda = -1$ (count-once): $A = 1 - r_s/r$, zero at $r = r_s$.
-- $\lambda \to 0$ (log-linear counting, no self-energy):
+- $\lambda = -1$ (dynamics-selected): $A = 1 - r_s/r$, zero at $r = r_s$.
+- $\lambda \to 0$ (log-linear counting, no self-sourcing):
   $A = e^{-r_s/r} > 0$ everywhere — **no horizon at any radius**.
-- $\lambda = +1$ (wrong-weight counting): $A = (1+r_s/r)^{-1} > 0$
+- $\lambda = +1$ (opposite-sign counting): $A = (1+r_s/r)^{-1} > 0$
   everywhere — **no horizon at any radius**.
 
 All three members agree at first post-Newtonian order; Michell-grade
-accounting cannot distinguish them. The *existence* of the horizon —
-not merely its location — is therefore a corollary of counting the
-configuration energy exactly once at the universal coupling. Wrong
-accounting does not move the horizon; it deletes it.
+accounting cannot distinguish them — and by Trial 022's no-go, *no*
+static accounting can, at any order. The *existence* of the horizon —
+not merely its location — is therefore a corollary of the closed
+dynamics (with $\beta - 1 = \lambda + 1$ as its standing empirical
+fence). The wrong member does not move the horizon; it deletes it.
 
 ## Discriminator Table
 
 | observable | Michell route | bookkeeping route (§2) |
 |---|---|---|
 | horizon radius | $2GM/c^2$ ✓ (by cancellation) | $2GM/c^2$ ✓ (zero of derived $A$) |
-| horizon existence | asserted, not derived | P9 corollary (family selection) |
+| horizon existence | asserted, not derived | dynamics corollary (family member selection, Trial 022) |
 | spatial response | $B = 1$, $\gamma = 0$ — **half** the observed light deflection (0.875″; falsified 1919, excluded at $10^{-5}$ by Cassini) | $B = 1/A$, $\gamma = 1$ ✓ |
-| second order | fails ($\beta$ undefined/wrong) | $\beta = 1$ (P9+C2 theorem) |
+| second order | fails ($\beta$ undefined/wrong) | $\beta = 1$ ($\beta - 1 = \lambda + 1$; $\lambda = -1$ by the response law, Trial 022) |
 | full metric | none | exact, all orders |
 
 A coincidence hands you a number. It cannot hand you a function.
@@ -94,8 +105,9 @@ In GR pedagogy this exactness is the "river model" curiosity
 (Hamilton–Lisle): the metric *happens* to admit a chart where Newtonian
 bookkeeping is exact. In VED it is not a curiosity — it is the P6
 kinetic-exchange ledger, and the *reason* it closes exactly at all
-orders is the P9 resummation (the flux law is linear in $A = e^s$; the
-self-energy corrections at every order are exactly absorbed). The same
+orders is the $\lambda = -1$ resummation (the flux law is linear in
+$A = e^s$; the self-sourcing corrections at every order are exactly
+absorbed — the member the dynamics selects, Trial 022). The same
 mechanism explains Michell: the "two cancelling errors" cancel *because*
 the exact theory's ledger is Newtonian-formed in this slicing. The
 naive argument lands on the right number for a reason the naive
@@ -115,8 +127,8 @@ statement $A = 0$.
    inside $r_s$ is the interior-cap obligation, open.
 2. **No new prediction.** Everything here is GR-exact; the content is
    *explanatory* (why naive accounting works at all, why the horizon is
-   an accounting object) and *structural* (horizon existence as a P9
-   selection witness), not predictive.
+   an accounting object) and *structural* (horizon existence as a
+   witness of the dynamics-selected member), not predictive.
 3. **Supersedes the exploratory language.** The old
    `notes/black_holes.md` "vacuum furnace / voracious consumption"
    framing predates the closure: the static ledger closes without a

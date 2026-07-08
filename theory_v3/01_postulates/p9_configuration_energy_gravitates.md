@@ -94,12 +94,20 @@ MAGNITUDE of its coupling (universal, |coupling| = 1 in the reduced
 bootstrap normalization).
 
 **P9 does not fix:** the SIGN of the configuration energy in any sector.
-The temporal/static-sector sign (negative, lamda = -1) is selected by
-exact exterior recovery, not by P9 alone. The radiative/shear-sector sign
-remains a separate obligation (observed gravitational-wave energy is
-positive; gate G03). The current working picture is therefore
-sector-indefinite signature: temporal negative, radiative positive --
-the same structure GR carries in its conformal-mode kinetic term.
+The temporal/static-sector sign (negative, lamda = -1) was originally
+selected by exact exterior recovery (Trial C2, provisional); Trial 022
+upgraded the selection to a theorem of the derived response law (exact,
+non-circular -- the 018 closure program is lamda-blind) with the
+standing empirical fence beta - 1 = lamda + 1, |beta - 1| <~ 1e-4.
+Trial 022 also proved the accompanying no-go: static density-level
+accounting CANNOT make this selection (the invariant shell ledger
+forces |lamda| = 1/4 with ledger-relative sign; the C2 normalization
+"|lamda| = 1 by universality" is definitional). The radiative/
+shear-sector sign remains a separate obligation (observed
+gravitational-wave energy is positive; gate G03). The current working
+picture is therefore sector-indefinite signature: temporal negative,
+radiative positive -- the same structure GR carries in its
+conformal-mode kinetic term.
 
 ---
 
@@ -248,7 +256,12 @@ Related results:
 
 - Trial C2 (`vacuum_forge/src/field_equation_trials/002_trial_C_burden_ledger/
   trial_C2_self_coupling_bootstrap.py`): the reduced bootstrap family,
-  selector, and sign resolution.
+  selector, and sign resolution (provisional; superseded by Trial 022).
+- Trial 022 (`vacuum_forge/src/field_equation_trials/022_sign_fork_closure/
+  sign_fork_ledger_closure.py`): the sign-fork closure -- normalization
+  emptiness, static-accounting no-go (|lamda| = 1/4, ledger-relative
+  sign; factor-4 correction of C2 case 4), beta - 1 = lamda + 1, and
+  the exact non-circular response-law selector.
 - `ontology_and_mechanism/curvature_self_coupling.md`: branch verdicts and
   the bootstrap-selector strategy.
 - P7', via its shadow: the static exterior compensation statement used by

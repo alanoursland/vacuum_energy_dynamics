@@ -119,6 +119,31 @@ vacuum-sector program).
   `development/nonlinear_stability/nonlinear_stability_note.md`,
   `vacuum_forge/src/field_equation_trials/020_nonlinear_stability/nonlinear_stability_scoped.py`.
 
+- **Sign-fork closure and accounting no-go completed (2026-07-08).**
+  An audit found that `proof.md` §2.3's "the sign of $u_{\rm field}$ is
+  forced, not chosen" overstated its provenance: Trial C2's
+  machine-checked selector was exact areal Schwarzschild recovery
+  (target-matching, honestly recorded as provisional), and P9's own
+  adoption record states the sign is not fixed by P9 alone. Trial 022
+  closed the fork properly: (i) the C2 normalization "$|\lambda|=1$ by
+  P6 universality" is definitional (the parametrization absorbs the
+  density normalization); (ii) the invariant concentric-shell work
+  ledger forces $|\lambda| = 1/4$ for any gradient-local density, with
+  the sign set by the matter-counting convention — static density-level
+  accounting cannot select $\lambda$ (no-go), and the $\lambda=-1$
+  self-source is exactly $4\times$ the Newtonian field-energy density
+  (correcting C2 case 4's "Newtonian convention recovered" narration);
+  (iii) $\gamma = 1$ and $\beta - 1 = \lambda + 1$ give the fork its
+  observable face, with $|\beta-1| \lesssim 10^{-4}$ as the standing
+  fence; (iv) the derived response law selects $\lambda = -1$ exactly
+  and non-circularly (the 018 closure program is verified
+  $\lambda$-blind). The sign is a theorem of the closed dynamics.
+  A candidate accounting-only rescue (multi-configuration
+  ledger-rigidity at third order) is recorded as an open route with a
+  declared kill condition, not as a debt. Discharge files:
+  `proof.md` §2.3 (re-scoped), `06_rigor_closures.md`,
+  `vacuum_forge/src/field_equation_trials/022_sign_fork_closure/sign_fork_ledger_closure.py`.
+
 ## The P7′ appeal (theory-owner door, default closed)
 
 E3's kill of boundary smoothing rests on P7′ as adopted. The appeal —

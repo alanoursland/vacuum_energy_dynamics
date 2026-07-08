@@ -1,5 +1,23 @@
 # TODO: Paper 2 Completion
 
+## BLOCKING: Trial 022 re-scope (added 2026-07-08)
+
+- `outline.md` (~line 74: "the gravitational field energy in the
+  scalar/static sector is forced to be negative") and `03_bootstrap.md`
+  must present the negative quantity as the static sector's
+  *self-source term* whose sign is fixed by the field equations
+  (Trial 022; response-law selector, beta - 1 = lamda + 1 fence) —
+  NOT as an accounting-derived local energy density. Static accounting
+  provably cannot fix the sign (022 no-go: |lamda| = 1/4,
+  ledger-relative). The downstream theorems (ghost exclusion, source
+  binding, TT positivity) take the negative self-source as given and
+  are untouched.
+- `figure_2_sign_dynamics.png`: check the caption for "sign forced by
+  count-once" language.
+- Preferred fix: cite paper 10 for the sign provenance (submission
+  order 10 -> 2); see paper_brainstorming/paper_02 revision note
+  (2026-07-08).
+
 ## Scientific Content
 
 - Verify all notation conventions: `A`, `B`, `s`, `kappa`, `K_T`,

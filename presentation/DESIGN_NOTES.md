@@ -45,15 +45,16 @@ README.md      the front door: the icon, the one-sentence story,
 ```text
 # Title (a question or a claim, never a topic)
 one-line context sentence for the parachuted-in reader
-[the idea, 30-60 lines, one displayed equation max]
-**Proof:** derivation NNN → script path (or: link to proof.md section)
-**Where next:** 2-4 links, each with a half-line of why
+[the idea, short enough to read without scrolling when possible]
+[links appear at the point where the reader needs them]
 ```
 
 **Linking discipline:** first mention of any node-owning noun links
-to it; proofs always link to the verification (via a proof-index node
-per arc, or directly); no orphan nodes (everything reachable from
-README within 2 clicks); hubs are the only pages allowed to be lists.
+to it; source and proof documents link inline at the claim they support;
+avoid end-of-page "where next" tables except on hubs. Proof documents
+outside `presentation/` may be long; presentation nodes should not
+reproduce them. No orphan nodes (everything reachable from README within
+2 clicks); hubs are the only pages allowed to be lists.
 
 **Trails:** a hub is a curated ordered walk (the skeptic's trail =
 kills → rules → one theorem; the discrete-gravity trail = thm nodes →

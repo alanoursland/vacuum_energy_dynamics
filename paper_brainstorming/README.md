@@ -15,6 +15,7 @@ as a citable fallback; journals listed are plausible fits, not promises.
 | 7 | `paper_07_lambda_integration_constant_sequestering.md` | Λ as an integration constant; sequestering from the ontology | arXiv gr-qc → CQG / JCAP | results done (033–038); positioning vs unimodular literature is the main work; topical NOW (DESI) |
 | 8 | `paper_08_frustrated_packing_microphysics.md` | Frustration is why gravity is Einstein–Hilbert (the packing) | arXiv gr-qc → CQG / PRD | flagship; results done (037–053); largest write-up; evenness theorem may spin off as a short note |
 | 9 | `paper_09_expansion_as_creation_gdot.md` | Space grows, doesn't stretch; Ġ = 0 as a falsifier | short letter: PRD / CQG letter | one clean argument (054); cite paper 8's model; quickest to draft after 8 exists |
+| 10 | `paper_10_schwarzschild_bookkeeping_limits.md` | How much of the Schwarzschild radius is energy bookkeeping? (family, no-go, β−1=λ+1, horizon dichotomy, Michell) | AJP / EJP / arXiv gr-qc | derivations green (trials 021/022); literature gate PASSED 2026-07-08 (no-go + closed-form family novel; β dictionary and horizon dichotomy demoted to sharp-forms-of-known, see file); needs prose + figures only; pure GR/PPN language, zero ontological ask |
 
 ## The Submission Queue (portfolio review, 2026-07-03)
 
@@ -43,9 +44,23 @@ first, ontology late — the same strategy as the presentation book):
    paper 5   after its hard literature gate (rediscovery risk).
 ```
 
+### Queue addendum (2026-07-08)
+
+Paper 10 added (origin: trials 021/022, which postdate the 2026-07-03
+review). Proposed slot: **first or second submission, paired with
+paper 2** — same near-zero-risk AJP register, but it joins an existing
+citable conversation (the Gruber–Price "impossibility of a simple
+Schwarzschild derivation" literature) rather than starting one, and it
+publishes the C2 family + sign-provenance machinery in neutral GR
+language that papers 1 and 2 then cite instead of defend. Suggested
+order: 10 → 2 (paper 2's revision note explains why). Papers 1 and 2
+carry dated revision notes re-scoping the pre-022 "derived negative
+field-energy density" phrasing; do not draft from their pre-07-08
+text.
+
 **Now on the critical path:** the repo-publication + Zenodo DOI
-decision. Papers 2 and 3 could be submitted within weeks of drafting
-and both want to cite the verification scripts.
+decision. Papers 2, 3, and 10 could be submitted within weeks of
+drafting and all want to cite the verification scripts.
 
 Cross-cutting decisions to make once (they affect every paper):
 - **Authorship & AI disclosure.** Substantial AI assistance (derivation,

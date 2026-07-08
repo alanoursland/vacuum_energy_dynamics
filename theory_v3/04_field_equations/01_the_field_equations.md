@@ -28,7 +28,10 @@ $$\Delta_{\text{areal}}\,A = \frac{8\pi G}{c^2}\rho
 F_A = 4\pi r^2 A' = \frac{8\pi G}{c^2}M_{\text{enc}},
 \quad A_{\text{ext}} = 1-\frac{2GM}{c^2 r}$$
 
-**Self-coupling content (the C2 bootstrap):**
+**Self-coupling content (the C2 bootstrap; member $\lambda=-1$ selected
+by the derived response law, Trial 022 — $u_{\text{field}}$ is the
+s-ledger self-source, $4\times$ the Newtonian density; ledger status in
+`proof.md` §2.3):**
 $$\Delta_{\text{areal}}\,s = -(s')^2 + \text{source},
 \qquad u_{\text{field}} = -\frac{c^4 (s')^2}{8\pi G}$$
 
