@@ -1,5 +1,17 @@
 # TODO: Paper 10 Completion
 
+## Draft status (2026-07-08)
+
+First full prose draft written, then restructured for narrative
+(stage → stakes → crisis → resolution → denouement): final order is
+02 family, 03 horizon dichotomy, 04 no-go, 05 β dictionary, 06
+Michell, 07 discussion; discussion body ends on the teaching close.
+See outline.md "Narrative note." Cross-references updated after the
+reorder — verify none were missed when converting to LaTeX. Figures
+1–3 are placeholders marked in-text (Fig. 3's river-profile panel is
+referenced from Sec. 6). Citation style is author–year in prose with
+bib keys in 09_references.md; convert at LaTeX stage.
+
 ## Blocking (before prose freezes)
 
 - Obtain Shuler's family form (his 2018 "A family of metric

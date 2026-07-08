@@ -28,7 +28,29 @@ judgment call.
 
 ---
 
-## Section plan
+## Narrative note (2026-07-08 revision)
+
+The draft's section order differs from the first version of this
+outline, deliberately. The arc is stage → stakes → crisis → resolution
+→ denouement: the horizon dichotomy moved from fifth to third so the
+reader knows *what rides on the parameter* (horizon existence) before
+the two heavier sections, the no-go then lands as an escalation ("the
+horizon rides on the sign, and accounting cannot even fix the sign"),
+and the β dictionary arrives as the rescue, closing the loop with
+"horizons exist iff β < 2 — Mercury answered it." The Michell
+resolution stays last as denouement. The discussion body now ends on
+the teaching paragraph ("what the field equations are for"), not on
+limitations. Dispute framing softened: "three positions lacking a
+common object," not combatants talking past each other — the likely
+referees are the disputants.
+
+Order as drafted: 00 abstract (written last), 01 introduction,
+02 family, 03 horizon dichotomy, 04 no-go, 05 β dictionary,
+06 Michell, 07 discussion, 08 reproducibility, 09 references.
+
+## Section plan (subsection details below retain the original
+numbering from the first outline pass; the file names and the note
+above are authoritative for order)
 
 ### 00 Abstract (~150 words)
 Family $A_\lambda$ from minimal ingredients; all members 1PN-blind
