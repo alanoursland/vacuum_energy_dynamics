@@ -123,10 +123,16 @@ not determine the exterior. They determine it up to one number, and
 that number multiplies exactly the term that distinguishes
 Schwarzschild from its 1PN-degenerate rivals.
 
-[Figure 1 near here: $A_\lambda(r)$ for
-$\lambda \in \{-1, -1/4, 0, +1\}$, with the zero of the
-$\lambda = -1$ member at $r = r_s$ marked; no other displayed member
-reaches zero.]
+![Figure 1](figure_1_family.png)
+
+*Figure 1. The family $A_\lambda(r)$ for
+$\lambda \in \{-1, -1/4, 0, +1\}$. All members share the Newtonian
+limit and differ first at second order. Members with $\lambda < 0$
+terminate at horizons, $A = 0$ at $r = -\lambda r_s$ (filled dot:
+Schwarzschild, at $r_s$; open dot: $\lambda = -1/4$, at $r_s/4$);
+members with $\lambda \geq 0$ are positive for every $r > 0$ and have
+no horizon (Sec. 3). Source:
+`src_fig/figure_1_family.py`.*
 
 The rest of the paper is about that number: what physically hangs on
 it (Sec. 3), why no accounting argument fixes it (Sec. 4), which

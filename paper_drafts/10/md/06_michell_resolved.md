@@ -93,7 +93,15 @@ force law, or an experimental input. The family makes the disguises
 transparent, and the no-go of Sec. 4 shows the import was mandatory:
 there was nothing in the accounting to promote.
 
-[Figure 3 near here: the river profile $v(r)/c$ for the family
-members of Fig. 1; only the $\lambda = -1$ profile follows
-$\sqrt{r_s/r}$ exactly, and only profiles with $\lambda < 0$ reach
-$v = c$ at finite radius.]
+![Figure 3](figure_3_river_ledger.png)
+
+*Figure 3. Painlevé–Gullstrand river profiles $v(r)/c =
+\sqrt{1 - A_\lambda}$ for the members of Fig. 1, against the Newtonian
+free-fall profile $\sqrt{2GM/c^2 r}$ (wide gray band, continued past
+$v = c$ to show Michell's premise). The $\lambda = -1$ curve rides the
+Newtonian profile exactly at every radius and reaches $v = c$
+precisely at $r_s$ (filled dot) — the content of the "coincidence."
+Every other member deviates at second order; profiles with
+$\lambda < 0$ reach $v = c$ at their horizons (open dot:
+$\lambda = -1/4$, at $r_s/4$), and profiles with $\lambda \geq 0$
+never do. Source: `src_fig/figure_3_river_ledger.py`.*

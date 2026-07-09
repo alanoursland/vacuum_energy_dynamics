@@ -8,9 +8,15 @@ First full prose draft written, then restructured for narrative
 Michell, 07 discussion; discussion body ends on the teaching close.
 See outline.md "Narrative note." Cross-references updated after the
 reorder — verify none were missed when converting to LaTeX. Figures
-1–3 are placeholders marked in-text (Fig. 3's river-profile panel is
-referenced from Sec. 6). Citation style is author–year in prose with
-bib keys in 09_references.md; convert at LaTeX stage.
+1–3 GENERATED (2026-07-08): sources in `../src_fig/figure_*.py`
+(matplotlib, grayscale-safe, identity by line style + direct labels,
+single-column 3.4 in at 300 dpi), PNGs in this directory, embedded
+with captions in sections 02, 05, 06. Note: figure generation caught
+and fixed an error in the old Fig. 1 placeholder caption ("no other
+displayed member reaches zero" — false: λ = −1/4 has its horizon at
+r_s/4; the dichotomy is λ < 0, not λ = −1). Citation style is
+author–year in prose with bib keys in 09_references.md; convert at
+LaTeX stage.
 
 ## Blocking (before prose freezes)
 
@@ -51,9 +57,10 @@ bib keys in 09_references.md; convert at LaTeX stage.
 
 ## Figures
 
-- Write figure scripts (3): family plot with horizon zeros; beta line
-  with experimental band; PG river ledger. Style: single-column AJP,
-  grayscale-safe.
+- DONE (2026-07-08): three scripts in `../src_fig/`, PNGs generated
+  and embedded. Remaining figure work: regenerate at the venue's
+  final column width once the LaTeX template is chosen, and check
+  fonts against the journal's minimum size after scaling.
 
 ## Verification and release
 

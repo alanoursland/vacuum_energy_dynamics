@@ -115,8 +115,14 @@ cleanly — every member has the same equivalence-principle kinematics,
 while only $\lambda = -1$ sources like general relativity. Conflating
 the two sides would overstate what either experiment shows.
 
-[Figure 2 near here: $\beta = \lambda + 2$ as a line in the
-$(\lambda, \beta)$ plane; the five family members marked; the
-experimental band $|\beta - 1| \le 10^{-4}$ drawn to scale as a
-horizontal strip, with an inset widening it to the 1915-era Mercury
-constraint.]
+![Figure 2](figure_2_beta_dictionary.png)
+
+*Figure 2. The dictionary $\beta = \lambda + 2$, with the five named
+family members marked. The gray band is the classical-era Mercury
+constraint on $\beta$, drawn to scale; both survivors of the
+accounting argument of Sec. 4 ($\lambda = \pm 1/4$) fall far outside
+it. The modern bound is four orders of magnitude tighter and invisible
+at this scale — the inset zooms to $|\lambda + 1| \le 6\times10^{-4}$
+around the Schwarzschild point, where the LLR + Cassini band
+$|\beta - 1| \lesssim 10^{-4}$ becomes visible. Source:
+`src_fig/figure_2_beta_dictionary.py`.*
