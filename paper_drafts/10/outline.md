@@ -22,9 +22,16 @@ checkable by a student with a CAS.
   references: `paper_brainstorming/paper_10_references.bib`.
 
 **The one-sentence thesis:** bookkeeping buys the family, the scale,
-and 1PN; the field equations (or a β measurement) buy the member and
-the horizon; and the boundary between the two is a theorem, not a
-judgment call.
+and every γ-controlled observable; the field equations (or a β
+measurement) buy the member and the horizon; and the boundary between
+the two is a theorem, not a judgment call.
+
+**Terminology rule (feedback round, 2026-07-08):** β is itself a 1PN
+parameter and perihelion precession is a 1PN effect, so never write
+"the members agree through 1PN." The correct statements: the family is
+degenerate at Newtonian order and in γ (all γ-controlled observables);
+it splits at the 1PN nonlinearity coefficient β, i.e. at second order
+in $r_s/r$ in $g_{tt}$. The fork lives *inside* 1PN.
 
 ---
 
@@ -53,8 +60,8 @@ numbering from the first outline pass; the file names and the note
 above are authoritative for order)
 
 ### 00 Abstract (~150 words)
-Family $A_\lambda$ from minimal ingredients; all members 1PN-blind
-($\gamma=1$); no-go: invariant assembly ledger forces $|\lambda|=1/4$,
+Family $A_\lambda$ from minimal ingredients; all members share the
+Newtonian limit and $\gamma=1$; no-go: invariant assembly ledger forces $|\lambda|=1/4$,
 sign convention-relative — accounting cannot select; dictionary
 $\beta-1=\lambda+1$; horizon exists iff $\lambda<0$; Michell explained
 via PG-exactness unique to $\lambda=-1$. One sentence on arbitration of
@@ -81,8 +88,9 @@ the impossibility/possibility dispute.
   members table ($\lambda=-1$ Schwarzschild; $0$ exponential; $+1$
   reciprocal). Completeness argument (constant-coefficient
   self-sourcing ⟺ power-law resummation family).
-- 1PN blindness: all members share $c_1=-1$; second-order areal
-  coefficient $(1+\lambda)/2$.
+- First-order degeneracy: all members share $c_1=-1$; second-order
+  areal coefficient $(1+\lambda)/2$ (in PPN terms: γ fixed, β open —
+  the fork is inside 1PN).
 - Figure 1: the family $A_\lambda(r)$ for $\lambda\in\{-1,-1/4,0,+1\}$,
   horizon zeros marked.
 - [Verification: 022 cases 1–2; C2 cases 1–3 content re-derived in

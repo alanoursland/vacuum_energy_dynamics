@@ -19,9 +19,10 @@ infinite redshift forms at any finite radius.
 So the family does not spread the horizon around; it removes it. For
 half the parameter line — including the members closest to innocent
 expectation, the one that counts no self-sourcing at all and the ones
-that count it with positive sign — there is no horizon anywhere.
-Miscounting the field's energy does not relocate the surface $A = 0$;
-it deletes it. The choice of member is therefore not a refinement at
+that count it with positive sign — there is no horizon anywhere. A
+different counting does not relocate the surface $A = 0$; it deletes
+it. (Which counting is *right* is exactly what remains to be
+adjudicated — by the next two sections, not by this one.) The choice of member is therefore not a refinement at
 second order. The existence of black-hole horizons rides on it, and
 so does the meaning of the paper's title: if energy accounting could
 deliver the Schwarzschild radius in the sense that matters — a radius
@@ -37,7 +38,7 @@ relativity precisely by counting the field's stress-energy as an
 explicit source and yields an exponential metric with no horizons;
 the point was argued at length in the exchange between Misner (1999)
 and Alley and Yilmaz (1999), and its astrophysical stakes were
-developed by Robertson (1997). Within our family the exponential
+developed by Robertson (1999). Within our family the exponential
 appears as the $\lambda \to 0$ member, and the resemblance should be
 handled with care: Yilmaz's exponential metric is exponential in
 *isotropic* form, with $g_{ij} = e^{2\Phi_{\rm iso}}\delta_{ij}$ and

@@ -266,7 +266,9 @@ independent selectors:
   the C2 selector (verified by scan), so deriving the response first
   and letting it pick the member imports nothing from the target.
 - **The observable face (the standing fence).** On the P7′ branch,
-  $\gamma = 1$ for every $\lambda$ (the fork is 1PN-blind) and
+  $\gamma = 1$ for every $\lambda$ (the fork is invisible to every
+  $\gamma$-controlled observable; note $\beta$ is itself a 1PN
+  parameter, so the fork lives inside 1PN, not beyond it) and
   $\beta - 1 = \lambda + 1$ exactly at second order, so every
   measurement of $|\beta - 1|$ bounds $|\lambda + 1|$ identically:
   $|\beta - 1| \lesssim 10^{-4}$ (LLR Nordtvedt + Cassini) pins
@@ -285,9 +287,12 @@ $u = \lambda c^4 (s')^2/8\pi G$ makes "the field sources at the
 universal coupling" an identity for *every* $\lambda$ — universality
 alone has no selective power; (ii) the one invariant static
 accounting handle (the quasi-static work ledger on the interaction
-term of concentric shells) forces $|\lambda| = 1/4$ for any
-gradient-local density, with the sign set by the matter-counting
-convention (vacuum-pays: $-1/4$; matter-pays: $+1/4$) — never $-1$;
+term of concentric shells) confines $\lambda$ to $[-1/4, +1/4]$ for
+any gradient-local density, the endpoints realized by the two natural
+matter-counting conventions (vacuum-pays: $-1/4$; matter-pays:
+$+1/4$; intermediate conventions interpolate,
+$\lambda = (2f-1)/4$; reaching $-1$ would need $f = -3/2$, outside
+both operational audits of a static element's energy) — never $-1$;
 correspondingly the $\lambda = -1$ self-source is exactly $4\times$
 the Newtonian field-energy density, so "the Newtonian convention is
 recovered" is false at density level; (iii) what *is*

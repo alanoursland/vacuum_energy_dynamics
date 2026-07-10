@@ -34,7 +34,9 @@ whatever $V$ is.
 **(I3) Time–radial compensation.** $A(r)\,B(r) = 1$. This relation
 holds for the Schwarzschild exterior and is assumed, or obtained from
 auxiliary arguments about radial rulers, in the derivations we are
-examining; Kassner (2015) discusses its standing in detail. We take it
+examining; Kassner (2015) discusses its standing in detail, and
+Jacobson (2007) gives the general condition under which it holds. We
+take it
 as given for the entire analysis, for a reason that matters to the
 logic of this paper: since every metric considered below satisfies it,
 it can do no work in selecting among them.
@@ -46,7 +48,16 @@ freedom by one requirement: the weight with which the field's own
 energy enters the books (made precise in a moment) is a constant of
 the theory, not a function of field strength. A theory in which the
 gravitating weight of field energy varied with the local field would
-be a stranger theory than any in the literature we engage.
+be a stranger theory than any in the literature we engage. One point
+of candor: unlike (I1)–(I3), this ingredient is not articulated
+anywhere in the historical derivations — it is this paper's
+reconstruction of what they tacitly share, and it is load-bearing:
+the completeness of the family below is completeness *relative to*
+(I4). A derivation that restricted the variable freedom differently
+would land outside the family; the reconstruction earns its keep in
+Secs. 6 and 7, where every published route we examine turns out
+either to live inside it or to add a selector of a different,
+dynamics-grade kind.
 
 ## 2.1 The choice of variable is a self-sourcing weight
 
@@ -97,6 +108,23 @@ Three members deserve names:
 | $\;\;0$ | $e^{-x}$ | exponential (no self-sourcing) |
 | $+1$ | $(1+x)^{-1}$ | reciprocal |
 
+The closed form has appeared in the literature: Shuler (2018)
+proposed, and Kassner (2019) subsequently pared back, exactly this
+expression — in the parametrization
+$g_{tt} = -(1 + n\,GM/rc^2)^{-2/n}$, $n = 2\lambda$ — as a set of
+three members ($n = -2, -1, +1$, i.e.
+$\lambda = -1, -1/2, +1/2$) assembled from assorted postulates. The
+derivation above differs in what it establishes about the expression:
+the continuum $A_\lambda$ is the *complete* residue of ingredients
+(I1)–(I4) under a single principle, so the family is not a list of
+proposals but a measurement of exactly how far the ingredients
+underdetermine the exterior; and the index carries a physical meaning
+— the counting weight — that the rest of the paper cashes out. The
+distinction matters practically as well as rhetorically: both sides
+of the Shuler–Kassner exchange treated the members as distinguishable
+only by strong-field observations, a premise Sec. 5 will show fails
+by a wide margin.
+
 Expanding in $x$,
 
 $$A_\lambda = 1 - x + \frac{1+\lambda}{2}\,x^2 + O(x^3):$$
@@ -114,14 +142,20 @@ spatial sector (I3), light bending and radar delay — which measure the
 parametrized post-Newtonian (PPN) parameter $\gamma$ — cannot
 distinguish them either; we confirm $\gamma = 1$ for every $\lambda$
 in Sec. 5. Of the classical tests, only the perihelion precession
-reaches the second-order coefficient where $\lambda$ lives.
+reaches the second-order coefficient where $\lambda$ lives. In PPN
+terms the degeneracy should be stated carefully: the family fixes
+$\gamma$ but leaves the nonlinearity parameter $\beta$ open, and
+$\beta$ is itself a first post-Newtonian parameter — the fork lives
+*inside* 1PN, in the one coefficient the $\gamma$-controlled tests do
+not reach, not beyond it.
 
 This is the precise sense in which the impossibility literature is
 right. Ingredients (I1)–(I4) — the full strength of what Newtonian
 limits, exact flux bookkeeping, and radial compensation provide — do
 not determine the exterior. They determine it up to one number, and
 that number multiplies exactly the term that distinguishes
-Schwarzschild from its 1PN-degenerate rivals.
+Schwarzschild from rivals that match it at Newtonian order and in
+$\gamma$.
 
 ![Figure 1](figure_1_family.png)
 

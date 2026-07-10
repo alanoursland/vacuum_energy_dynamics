@@ -16,19 +16,22 @@ as derivations of the Schwarzschild metric.
 
 The proposals have a history of their own. Simple derivations
 combining special relativity, the equivalence principle, and Newtonian
-gravity go back at least to Lenz and Schiff (1960) and Sacks and Ball
-(1968); skeptical analyses began at once (Schild 1960) and culminated
-in the theorem-grade objection of Gruber, Price, Matthews, Cordwell,
-and Wagner (1988), whose title — "The impossibility of a simple
-derivation of the Schwarzschild metric" — was intended to close the
-genre. It did not close. Visser (2004) exhibited a Newtonian heuristic
+gravity go back at least to Lenz's argument — unpublished, reported by
+Sommerfeld (1952) — to Schiff (1960), and to Tangherlini (1962) and
+Sacks and Ball (1968); counterexamples tracked them almost one for one
+(Rindler 1968, 1969), and the exchange culminated in the theorem-grade
+objection of Gruber, Price, Matthews, Cordwell, and Wagner (1988),
+whose title — "The impossibility of a simple derivation of the
+Schwarzschild metric" — was intended to close the genre. It did not
+close. Visser (2005) exhibited a Newtonian heuristic
 that lands on the exact geometry in Painlevé–Gullstrand form, flagging
 the exactness as an unexplained accident; Czerniawski (2006) advanced
 the same route explicitly against the impossibility claim; Kassner
 (2015, 2017) constructed reconstructions from augmented postulate
 sets, with a residual coefficient fixed by Mercury's perihelion; and
 Shuler (2018) proposed, with Kassner (2019) then paring back, a family
-of exteriors indistinguishable in the weak field. The genre thus holds
+of exteriors both authors took to be distinguishable only by
+strong-field observations. The genre thus holds
 three positions — impossibility, possibility, and family — and the
 disagreement has persisted, we suggest, for a structural reason: the
 positions have lacked a common object to be claims *about*. What has
@@ -48,14 +51,19 @@ family of static metrics
 $$A_\lambda = \big(1 + \lambda\,r_s/r\big)^{-1/\lambda},
 \qquad B = 1/A_\lambda,$$
 
-in which $\lambda$ is the self-energy counting weight, Schwarzschild
-is the member $\lambda = -1$, and all members agree through first
-post-Newtonian order. Three theorems about this family then do the
-work of the paper.
+whose closed form appeared, for three parameter values, in Shuler's
+proposal — here derived as the *complete* residue of the ingredients
+under one principle, in which $\lambda$ is the self-energy counting
+weight, Schwarzschild
+is the member $\lambda = -1$, and all members share the Newtonian
+limit and the light-bending parameter $\gamma = 1$ — the open
+coefficient is the 1PN nonlinearity parameter $\beta$. Three theorems
+about this family then do the work of the paper.
 
 First, a dichotomy (Sec. 3), which sets the stakes: members with
-$\lambda \geq 0$ have no horizon at any radius. Miscounting the
-field's energy does not move the surface $A = 0$; it deletes it. The
+$\lambda \geq 0$ have no horizon at any radius. A different counting
+of the field's energy does not move the surface $A = 0$; it deletes
+it. The
 parameter the ingredients leave free is not a second-order refinement
 — the existence of black-hole horizons rides on it, and with it the
 part of Michell's conclusion that feels most like a triumph of energy
@@ -83,7 +91,11 @@ blind to $\lambda$; the perihelion precession alone discriminates, and
 the modern bound $|\beta - 1| \lesssim 10^{-4}$ fixes $\lambda = -1$
 to four decimal places. The dichotomy then closes: within the family,
 whether horizons exist is the weak-field question $\beta < 2$, and
-Mercury answered it.
+Mercury answered it. A corollary settles the family exchange on terms
+neither side used — Shuler's own members sit at $\beta = 3/2$ and
+$5/2$, excluded by classical-era perihelion data, so the premise that
+the family could only be reduced by dynamics or strong-field
+observation was false from the start.
 
 Energy reasoning does deliver the scale, and one more thing, which
 resolves the original puzzle (Sec. 6): the Schwarzschild member —

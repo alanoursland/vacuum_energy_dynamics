@@ -64,12 +64,14 @@ was right at their declared scope.
 
 Gruber et al. (1988) claimed that special relativity plus Newtonian
 gravity plus equivalence-principle reasoning cannot reach the exact
-metric. Within the ingredient class of Sec. 2 that is a theorem, now
-with a precise residue: the reachable set is the family, one parameter
-short.
+metric. The ingredient class of Sec. 2 recovers their conclusion as a
+sharp statement with a precise residue — the reachable set is exactly
+the family, one parameter short — with the caveat of Sec. 2 repeated:
+the class, and (I4) in particular, is our reconstruction of the
+genre's shared ingredients, not the frame in which they argued.
 
 The possibility papers each add one member-selecting ingredient, and
-the addition is doing all the work. Visser (2004) reaches
+the addition is doing all the work. Visser (2005) reaches
 Schwarzschild by embedding Newtonian free fall in flat slices with
 Galilean assembly — a structural ansatz that, as just seen, is
 equivalent to imposing the Newtonian river profile, i.e. to selecting
@@ -81,10 +83,14 @@ claim. Kassner (2015) is the most self-aware case: his added postulate
 (an exact inverse-square force law, which he connects to
 $R^t{}_t = 0$) is announced as going beyond the base ingredients, and
 where his postulates still leave a coefficient free he fixes it from
-Mercury — the operational twin of Sec. 5. Shuler (2018) proposed, and
-Kassner (2019) reduced, a family of 1PN-degenerate exteriors, with the
-reduction again supplied by a force-law criterion of dynamical
-character.
+Mercury — the operational twin of Sec. 5. Shuler (2018) proposed
+three members of the family itself (Sec. 2), holding them
+distinguishable only by strong-field tests, and Kassner (2019)
+reduced the set to Schwarzschild by requiring the dust-ball form of
+Newton's law, $\ddot V/V|_{t=0} = -4\pi G\rho$ — an $R_{tt}$-type
+vacuum condition, and so again a dynamics-grade criterion (the
+premise that the reduction *needed* dynamics or strong-field data is
+what Sec. 5 corrected).
 
 The arbitration, then: the impossibility theorem holds for accounting
 ingredients; the possibility derivations succeed because each imports

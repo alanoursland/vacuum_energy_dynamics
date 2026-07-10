@@ -118,43 +118,68 @@ consolidated physics-first presentation). Cite as part of the
 possibility pole; check the physics-first paper at drafting for any
 evolution of the $\beta_2$ discussion.
 
-### Shuler (2018) + Kassner, EPJ Plus 134, 366 (2019) — `shuler2018family`, `kassner2019reduction` (the third camp: family + reduction; found on lead follow-up 2026-07-08)
+### Shuler, EPJ Plus 133, 158 (2018) + Kassner, EPJ Plus 134, 366 (2019) — `shuler2018family`, `kassner2019reduction` (the third camp: family + reduction; BOUNDARY RESOLVED 2026-07-08, second pass)
 
-**What they say.** Shuler proposed, from postulates of momentum
-conservation and field-strength measurement consistency, a *family* of
-static spherically symmetric exteriors agreeing with Schwarzschild at
-weak field and differing in the strong field. Kassner's reply proves
-the postulates select nothing (they hold in every metric theory
+**What they say — now from the full text of Kassner (2019).** Shuler
+proposed, from postulates of momentum conservation and field-strength
+measurement consistency plus $g_{tt}g_{rr} = -1$, a family of static
+exteriors which Kassner's eq. (41) states as
+
+$$g_{tt} = -\Big(1 + n\,\frac{GM}{rc^2}\Big)^{-2/n},$$
+
+with **three discrete members**: $n = -2$ (Schwarzschild), $n = -1$,
+$n = +1$ (the last noted horizonless), assembled from "various
+different assumptions," not one principle. Kassner proves the
+generating postulates select nothing (they hold in any metric theory
 compatible with the Einstein equivalence principle), diagnoses an
-inconsistent local/distant correspondence in the derivation, and
-*reduces* the family: only the Schwarzschild member satisfies a
-standard relativistic generalization of Newton's force law.
+internal inconsistency, and reduces the family by a dynamical
+criterion: the dust-ball law $\ddot V/V|_0 = -4\pi G\rho$ (the
+Baez–Bunn volume form of Newton's law, an $R_{tt}$-type vacuum
+condition), which only $n = -2$ satisfies. He additionally rules out
+$n = +1$ empirically — by black-hole ringdown observations
+(strong-field data).
 
-**How it applies.** This is the closest thing to claims 1 + (the
-selection half of) the paper found anywhere, and it upgrades the
-paper's framing: the genre now has three camps — impossibility
-(Gruber–Price), possibility-with-a-smuggled-selector (Kassner 2015,
-Czerniawski), and family-plus-reduction (Shuler/Kassner 2019). Our
-paper must cite both and position itself as the completion of the
-third camp: (i) our family is *derived* as the complete residue of
-stated ingredients (flux law + $AB=1$), not proposed; (ii) the index
-has a physical meaning (self-energy counting weight) that Shuler's
-family lacks; (iii) Kassner's reduction-by-force-law is another
-member-selector of the same logical kind as his 2015 postulate — a
-dynamics-flavored input doing the work accounting cannot — which our
-no-go (claim 2) finally proves is *necessarily* how it must go; (iv)
-neither paper has the β dictionary, the horizon dichotomy, or the
-accounting no-go.
+**The boundary (the load-bearing comparison).** Under $n = 2\lambda$,
+Shuler's form is *identical* to $A_\lambda$: his members are
+$\lambda \in \{-1, -1/2, +1/2\}$. So the closed form of claim 1 is in
+the literature, and the paper must say so plainly. What is *not* in
+either paper, verified against the full text:
 
-**Doesn't cover.** No accounting analysis at all on Shuler's side; no
-counting-weight interpretation; no β mapping; no horizon-existence
-statement; Kassner's reduction argument is force-law-based, not
-ledger-based. **Drafting TODO (important):** obtain Shuler's actual
-family form and check whether it coincides with, overlaps, or is
-disjoint from $A_\lambda$ — the claim-1 sentence in the abstract
-depends on the answer. Also pin Shuler's publication venue/fields
-(researchgate shows a 2018 preprint; Kassner replies in EPJ Plus, so
-Shuler may be EPJ Plus 133 (2018) — verify).
+1. **The continuum and its completeness.** Shuler exhibits three
+   constructions; the derivation of the continuum as the complete
+   residue of the stated ingredient class (constant-weight lemma) is
+   ours, and it is what makes the family a *measure of
+   underdetermination* rather than a list of proposals.
+2. **The index's meaning.** Neither paper interprets $n$; the
+   self-energy counting weight reading ($\Delta s = \lambda (s')^2$)
+   is ours, and everything downstream hangs on it.
+3. **The accounting no-go.** Absent from both, in any form.
+4. **The β dictionary — and this corrects both papers' shared
+   premise.** Shuler's title framing is "differing only in strong
+   fields," and Kassner's closing repeats that the members "all
+   behave the same in the weak-field case," countering Shuler's
+   proposed strong-field discriminators with pulsar/ringdown data.
+   Both are wrong together: $\beta = \lambda + 2$ gives Shuler's
+   non-GR members $\beta = 3/2$ ($n=-1$) and $\beta = 5/2$ ($n=+1$) —
+   perihelion precessions of $\approx 35.8''$ and $21.5''$ per
+   century against Mercury's observed $43''$, excluded by
+   classical-era data. The family reduces in the solar system; no
+   strong-field observation is needed, and Kassner's ringdown
+   argument (which reaches only $n=+1$) is superseded by a 1915
+   measurement that kills every non-GR member he considered. This
+   un-demotes claim 3: the dictionary is not only a sharp form of PPN
+   lore, it overturns the operating premise of the family exchange.
+5. **The horizon dichotomy as theorem.** Kassner notes one member is
+   horizonless; the $\lambda < 0$ iff horizon statement across the
+   continuum, tied to $\beta < 2$, is ours.
+6. **The Michell/PG resolution.** Absent from both.
+
+**How to cite.** Generously and precisely: the family form belongs to
+Shuler (2018); the first reduction belongs to Kassner (2019); both are
+confirmed on the $g_{tt}g_{rr} = -1$ branch, so the comparison is
+exact, member for member. The paper's §2 should attribute the closed
+form at the moment it is derived, and §5 should state the premise
+correction with the numbers.
 
 ---
 
@@ -199,8 +224,8 @@ chart). Fields as carried in the repo's horizon-accounting note.
 **What it says.** "Bootstrapped Newtonian gravity": add gravitational
 self-interaction to the Poisson equation —
 $(1-4q_\Phi V)(\nabla^2 V - 4\pi G\rho) = 2q_\Phi (V')^2$ — with
-coupling charge $q_\Phi$, **set to 1 because that reproduces the 1PN
-Schwarzschild expansion**. The exact vacuum solution,
+coupling charge $q_\Phi$, **set to 1 because that reproduces the
+leading post-Newtonian Schwarzschild expansion**. The exact vacuum solution,
 $V_c = \tfrac14[1-(1+6G M/r)^{2/3}]$, is *not* Schwarzschild at any
 coupling; higher orders differ from GR by design (their interest is
 the deviations: no Buchdahl limit, larger horizons in the follow-ups).
@@ -248,7 +273,7 @@ accounting shortcut* to their conclusion does not exist.
 
 ## D. Counting choice deletes horizons (claim 4's folklore)
 
-### Misner, Nuovo Cim. B 114, 1079 (1999) — `misner1999yilmaz`; Alley & Yilmaz, ibid. 1087 — `alley1999refutation`; Robertson, astro-ph/9710048 — `robertson1999xray`
+### Misner, Nuovo Cim. B 114, 1079 (1999) — `misner1999yilmaz`; Alley & Yilmaz, ibid. 1087 — `alley1999refutation`; Robertson, ApJ 515, 365 (1999) — `robertson1999xray`
 
 **What they say.** The Yilmaz theory — defined by including the
 gravitational field's stress-energy as an explicit source (an
@@ -306,7 +331,7 @@ appears in it.
 | lead | why it might matter | risk to claims |
 |---|---|---|
 | ~~"Reduction of a family of metric gravities" (arXiv:1904.11205)~~ | RUN DOWN 2026-07-08 — promoted to a full Section A entry (Shuler/Kassner 2019); claim 1 narrowed and reframed accordingly | resolved |
-| Shuler's original family paper (2018; venue TBD) | need the exact family form to compare with $A_\lambda$ | claim 1's abstract-level wording |
+| ~~Shuler's original family paper~~ | RESOLVED 2026-07-08 (second pass): EPJ Plus 133, 158 (2018); family form identical to $A_\lambda$ under $n=2\lambda$, three discrete members — boundary written into the Section A entry above and into the draft | resolved |
 | Haro, "A derivation of the Schwarzschild metric using Newtonian mechanics" (~2024) | recent possibility-pole entry | genre citation only, but confirm his extra postulate |
 | "How to obtain the Schwarzschild metric before Einstein's field equations" (~2016, author TBD) | another possibility-pole entry | same |
 | "Schwarzschild and FLRW metrics from Newtonian gravitational collapse" (arXiv:1501.06762) | PG-adjacent collapse route | claim 5 citation candidate |
@@ -319,13 +344,18 @@ appears in it.
 ## Verdict recap (from the gate, 2026-07-08; updated same day after the 1904.11205 follow-up)
 
 - Claim **2**: survives clean — the paper's spine.
-- Claim **1**: survives narrowed — Shuler (2018) proposed a
-  1PN-degenerate family and Kassner (2019) reduced it by a force-law
-  selector; our residuals are the *derived completeness* of the
-  family, the counting-weight index, and the tie to the no-go. Get
-  Shuler's family form before finalizing the abstract.
-- Claim **3**: demoted to "closed form + physical reading of a known
-  lore," cited to Kassner and Will.
+- Claim **1**: survives narrowed and now precisely bounded — Shuler's
+  (2018) family form is *identical* to $A_\lambda$ under
+  $n = 2\lambda$, exhibited as three discrete members from assorted
+  assumptions; our residuals are the single-principle derivation of
+  the continuum, its completeness, and the counting-weight index.
+  Attribute the closed form to Shuler at the point of derivation.
+- Claim **3**: partially re-promoted — beyond sharpening PPN lore, the
+  dictionary *corrects the shared premise* of the Shuler–Kassner
+  exchange ("differing only in strong fields"): Shuler's non-GR
+  members have $\beta = 3/2$ and $5/2$ and die on classical-era
+  Mercury data. Cite Kassner and Will for the lore; state the
+  correction with numbers.
 - Claim **4**: demoted to "family-wide theorem of a known folklore,"
   cited to the Yilmaz debate.
 - Claim **5**: reframed as synthesis — the *explanation* of Visser's

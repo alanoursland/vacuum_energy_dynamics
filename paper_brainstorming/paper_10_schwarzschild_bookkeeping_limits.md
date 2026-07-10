@@ -36,8 +36,10 @@ Then:
    $A_\lambda = (1+\lambda\,r_s/r)^{-1/\lambda}$, $B = 1/A_\lambda$,
    where $\lambda$ is the weight with which the field's own energy is
    counted as a source ($\Delta_{\rm areal}\,s = \lambda (s')^2$,
-   $s = \ln A$). All members share the Newtonian limit and full 1PN
-   phenomenology ($\gamma = 1$); Schwarzschild is $\lambda = -1$; the
+   $s = \ln A$). All members share the Newtonian limit and
+   $\gamma = 1$ (every $\gamma$-controlled observable; the open
+   coefficient is the 1PN nonlinearity parameter $\beta$ — the fork
+   lives inside 1PN); Schwarzschild is $\lambda = -1$; the
    exponential (Yilmaz-type) member is $\lambda \to 0$.
 2. **The no-go (the sharp form of "you can't get it simply").** No
    static energy-accounting argument selects $\lambda$. Concretely: the
@@ -74,10 +76,10 @@ Then:
    same route immediately shows what the coincidence cannot deliver:
    $\gamma = 0$ (half the light deflection) and no second order.
 
-One sentence: *bookkeeping buys the family, the scale, and 1PN;
-the field equations (or a β measurement) buy the member and the
-horizon; and the boundary between the two is a theorem, not a
-judgment call.*
+One sentence: *bookkeeping buys the family, the scale, and every
+γ-controlled observable; the field equations (or a β measurement) buy
+the member and the horizon; and the boundary between the two is a
+theorem, not a judgment call.*
 
 ## Why this is a paper and not a section
 
@@ -112,18 +114,20 @@ judgment call.*
    charge $q_\Phi$ — kin to $\lambda$ — but a different nonlinear
    structure whose exact solution is NOT Schwarzschild at any
    coupling, and they *choose* $q_\Phi = 1$ *because* it matches the
-   1PN Schwarzschild expansion (a recovery-shaped selection — exactly
-   the move our no-go diagnoses). (c) [Lead follow-up, same day:]
-   Shuler (2018) *proposed* a family of 1PN-degenerate static
-   exteriors, and Kassner (EPJ Plus 134, 366 (2019)) *reduced* it,
-   showing only Schwarzschild survives a relativistic force-law
-   selector — the genre's third camp, and the closest single relative
-   of this claim. Residual novelty: our family is *derived as the
-   complete residue* of stated ingredients, its index has a physical
-   meaning (the counting weight), and its reduction question is
-   answered by the no-go + β fence rather than a postulated force
-   law. Drafting-blocking TODO: obtain Shuler's family form and
-   compare with $A_\lambda$ (see `paper_10_prior_art.md`).
+   leading Schwarzschild expansion (a recovery-shaped selection —
+   exactly the move our no-go diagnoses). (c) [Boundary RESOLVED
+   2026-07-08, second pass:] Shuler (EPJ Plus 133, 158 (2018))
+   proposed *the same closed form* — $g_{tt} = -(1+n\,GM/rc^2)^{-2/n}$,
+   i.e. $A_\lambda$ under $n = 2\lambda$ — as three discrete members
+   ($\lambda = -1, -1/2, +1/2$) from assorted postulates, and Kassner
+   (EPJ Plus 134, 366 (2019)) reduced the set by the dust-ball
+   ($R_{tt}$-type) form of Newton's law. Residual novelty, now
+   precise: the single-principle derivation of the continuum and its
+   completeness; the counting-weight meaning of the index; and the
+   correction of both papers' shared premise — their members are NOT
+   "distinguishable only in strong fields" ($\beta = 3/2$ and $5/2$;
+   dead on classical-era Mercury data). The boundary is written into
+   the draft (Secs. 2, 5, 6) and `paper_10_prior_art.md`.
 2. The invariant-ledger no-go with the explicit $|\lambda| = 1/4$ and
    the ledger-relative sign. **GATE: SURVIVES — the paper's strongest
    claim.** Nothing found. Gruber–Price et al. (AJP 56, 265 (1988)) is

@@ -267,6 +267,28 @@ def case_2_ledger_no_go(out: ScriptOutput) -> None:
     matter_cross = m2 * (-G * m1 / b) + m1 * (-G * m2 / b)
     lam_redshift = sp.solve(sp.Eq(matter_cross + E_cross_field, E_int_target), lam)
     print(f"  redshift counting (matter pays):     lamda = {sp.sstr(lam_redshift)}")
+
+    # --- (4b) interpolation: matter at fraction f of the redshift ------------
+    # The full convention range fills [-1/4, +1/4]; no convention reaches -1.
+    f = sp.Symbol("f", real=True)
+    lam_f = sp.solve(sp.Eq(f * matter_cross + E_cross_field, E_int_target), lam)
+    lam_f_expr = sp.simplify(lam_f[0])
+    interp_ok = (
+        sp.simplify(lam_f_expr - (2 * f - 1) / 4) == 0
+        and lam_f_expr.subs(f, 0) == sp.Rational(-1, 4)
+        and lam_f_expr.subs(f, 1) == sp.Rational(1, 4)
+    )
+    # the price of leaving the operational range [0, 1]:
+    f_at_schwarzschild = sp.solve(sp.Eq(lam_f_expr, -1), f)
+    f_at_sign_boundary = sp.solve(sp.Eq(lam_f_expr, sp.Rational(-1, 4)), f)
+    excursion_ok = (
+        f_at_schwarzschild == [sp.Rational(-3, 2)]
+        and f_at_sign_boundary == [0]
+    )
+    print(f"  interpolating conventions (fraction f of redshift): lamda = {sp.sstr(lam_f_expr)}")
+    print("  => the convention range [0, 1] fills [-1/4, +1/4]; no f in [0, 1] reaches -1")
+    print(f"  price of excursion: lamda = -1 requires f = {sp.sstr(f_at_schwarzschild)};")
+    print(f"  even lamda < -1/4 (the Schwarzschild sign regime) requires f < {sp.sstr(f_at_sign_boundary[0])}")
     print()
 
     # --- (5) the factor of four ----------------------------------------------
@@ -303,6 +325,12 @@ def case_2_ledger_no_go(out: ScriptOutput) -> None:
         out.line("redshift ledger selects lamda = +1/4",
                  StatusMark.PASS if lam_redshift == [sp.Rational(1, 4)] else StatusMark.FAIL,
                  "matter-pays counting -- NOT -1; sign is ledger-relative")
+        out.line("interpolating conventions fill [-1/4, +1/4]",
+                 StatusMark.PASS if interp_ok else StatusMark.FAIL,
+                 "lamda = (2f-1)/4 for matter at fraction f of redshift; no f in [0, 1] reaches -1")
+        out.line("excursion price: lamda = -1 needs f = -3/2",
+                 StatusMark.PASS if excursion_ok else StatusMark.FAIL,
+                 "outside the operational audits [0, 1]; even the Schwarzschild sign regime needs f < 0")
         out.line("u(lamda=-1) is 4x the Newtonian density",
                  StatusMark.PASS if is_zero(factor - 4) else StatusMark.FAIL,
                  "corrects C2 case 4's 'Newtonian convention recovered' narration")
@@ -354,7 +382,7 @@ def case_3_ppn_face(out: ScriptOutput) -> None:
     A_in_w = sp.series(A_iso.subs({k1: sol[k1], k2: sol[k2]}), w, 0, 3).removeO()
     c1_w = sp.simplify(A_in_w.coeff(w, 1))
     beta = sp.simplify(2 * A_in_w.coeff(w, 2))
-    print(f"  gamma = {sp.sstr(gamma)}   (lamda-independent: 1PN blindness re-derived)")
+    print(f"  gamma = {sp.sstr(gamma)}   (lamda-independent: gamma-degeneracy re-derived)")
     print(f"  first-order check: coefficient of w = {sp.sstr(c1_w)} (must be -1)")
     print(f"  beta  = {sp.sstr(beta)}   =>   beta - 1 = lamda + 1")
     print()
@@ -374,7 +402,8 @@ def case_3_ppn_face(out: ScriptOutput) -> None:
                  "areal second-order coefficient of the family")
         out.line("gamma = 1 for every lamda",
                  StatusMark.PASS if is_zero(gamma - 1) else StatusMark.FAIL,
-                 "1PN blindness: light bending cannot see the fork")
+                 "gamma-degeneracy: light bending and time delay cannot see the fork; "
+                 "beta is itself a 1PN parameter, so the fork lives inside 1PN")
         out.line("beta = lamda + 2 (so beta - 1 = lamda + 1)",
                  StatusMark.PASS if is_zero(beta - (lam + 2)) and is_zero(c1_w + 1) else StatusMark.FAIL,
                  "isotropic-gauge PPN map of the family; Schwarzschild check beta(-1)=1")
@@ -580,11 +609,11 @@ def record_results(ns) -> None:
         derivation_id="invariant_shell_ledger_no_go_022",
         inputs=[m1, m2, b],
         output=sp.FiniteSet(sp.Rational(-1, 4), sp.Rational(1, 4)),
-        method="concentric-shell cross-term ledger vs quasi-static work invariant; both matter-counting conventions",
+        method="concentric-shell cross-term ledger vs quasi-static work invariant; endpoint conventions plus f-interpolation",
         status=Status.DERIVED,
         record_kind=RecordKind.DERIVATION,
         result_type="exclusion",
-        scope="gradient-local density forces |lamda| = 1/4, sign ledger-relative; static density accounting cannot select lamda = -1",
+        scope="gradient-local density confines lamda to [-1/4, +1/4] (lamda = (2f-1)/4 across matter conventions); static density accounting cannot select lamda = -1",
     )
     ns.record_derivation(
         derivation_id="newtonian_convention_factor_four_022",

@@ -3,8 +3,10 @@
 The question in the title has a clean answer. Energy bookkeeping —
 the Newtonian anchor, exact flux accounting, time–radial compensation,
 and a constant counting weight — buys the one-parameter family
-$A_\lambda$, the scale $r_s = 2GM/c^2$ inside every member, and the
-entirety of first post-Newtonian phenomenology. It provably does not
+$A_\lambda$, the scale $r_s = 2GM/c^2$ inside every member, and every
+classical observable that does not reach the nonlinearity parameter
+$\beta$: the Newtonian limit, $\gamma = 1$, deflection, time delay,
+redshift. It provably does not
 buy the member: the strongest invariant accounting argument lands at
 $|\lambda| = 1/4$ with a convention-dependent sign, and the
 Schwarzschild self-sourcing term exceeds the Newtonian field energy
@@ -26,11 +28,11 @@ quarrel:
 | route | extra ingredient | what it is |
 |---|---|---|
 | Michell/Laplace escape velocity | none | no selection; scale only |
-| Visser (2004); Czerniawski (2006) | Newtonian river in flat slices | chart-level statement of $\lambda = -1$ |
+| Visser (2005); Czerniawski (2006) | Newtonian river in flat slices | chart-level statement of $\lambda = -1$ |
 | Kassner (2015) | exact $1/r^2$ force law ($R^t{}_t = 0$) | dynamics-grade postulate |
 | Kassner (2015), variant | coefficient from Mercury | measurement of $\beta$ |
-| Kassner (2019) on Shuler (2018) | relativistic force-law criterion | dynamics-grade postulate |
-| bootstrapped gravity (Casadio et al. 2018) | $q_\Phi = 1$ by 1PN matching | recovery-shaped calibration |
+| Kassner (2019) on Shuler (2018) | dust-ball law $\ddot V/V = -4\pi G\rho$ ($R_{tt}$-type) | dynamics-grade postulate |
+| bootstrapped gravity (Casadio et al. 2018) | $q_\Phi = 1$ by matching Schwarzschild's expansion | recovery-shaped calibration |
 | field-theoretic bootstrap (Deser 1970; Duff 1973) | self-coupling consistency to all orders | the actual selector |
 
 The last row is the honest endpoint: iterated self-coupling
@@ -46,7 +48,8 @@ accounting analysis of Sec. 4 would need to be redone there (the
 first-order degeneracy, however, only deepens: relaxed spatial sectors
 generically spoil $\gamma = 1$ and die faster, not slower). And the
 no-go is a statement about *static* accounting with gradient-local
-densities; it does not exclude that some genuinely dynamical
+densities and matter conventions bounded by their two operational
+audits (Sec. 4.2); it does not exclude that some genuinely dynamical
 bookkeeping — a work budget for time-dependent processes, with
 radiation accounted — could select the member. We know of no such
 argument, and the tree-level resummation suggests that any successful

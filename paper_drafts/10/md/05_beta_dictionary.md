@@ -62,9 +62,11 @@ four classical tests cannot:
 | $\lambda$ | $\beta$ | precession (″/century) | status |
 |---|---|---|---|
 | $-1$ (Schwarzschild) | $1$ | $43.0$ | observed |
+| $-1/2$ (Shuler, $n=-1$) | $3/2$ | $35.8$ | excluded |
 | $-1/4$ (ledger, rest convention) | $7/4$ | $32.3$ | excluded |
 | $\;\;0$ (exponential) | $2$ | $28.7$ | excluded |
 | $+1/4$ (ledger, redshift convention) | $9/4$ | $25.1$ | excluded |
+| $+1/2$ (Shuler, $n=+1$) | $5/2$ | $21.5$ | excluded |
 | $+1$ (reciprocal) | $3$ | $14.3$ | excluded |
 
 Both candidates that survived the accounting argument of Sec. 4 fail
@@ -75,6 +77,22 @@ lunar laser ranging combined with the Cassini determination of
 $\gamma$ (Will 2014), pins
 
 $$\lambda = -1 \pm O(10^{-4}).$$
+
+The same row of the table settles the Shuler–Kassner exchange on
+terms neither side used. Shuler (2018) presented his members as
+"differing only in strong fields" and proposed strong-field
+experiments to tell them apart; Kassner (2019), reducing the family
+theoretically, likewise took the members to behave identically in the
+weak field, and offered black-hole ringdown observations as the
+empirical discriminator against the horizonless $n = +1$ member. But
+Shuler's non-Schwarzschild members sit at $\lambda = -1/2$ and
+$\lambda = +1/2$: $\beta = 3/2$ and $5/2$, perihelion precessions of
+roughly $36''$ and $21''$ per century against Mercury's $43''$. Both
+were excluded by classical-era data before either paper was written.
+Within this ingredient class there is no "weak-field-degenerate,
+strong-field-distinguishable" family to adjudicate: the members agree
+at Newtonian order and in $\gamma$, and the solar system reaches the
+coefficient where they differ.
 
 The dictionary also closes the loop opened in Sec. 3. Within the
 family, a horizon exists if and only if $\lambda < 0$, that is, if and

@@ -249,7 +249,7 @@ def case_2_horizon_existence(failures):
     require("A_exponential > 0 and A_reciprocal > 0 for all r > 0 (no horizon)",
             bool(A_0.is_positive) and bool(sp.simplify(A_p1).is_positive), failures)
     print()
-    print("  All three family members agree at first post-Newtonian order --")
+    print("  All three family members agree at Newtonian order and share gamma --")
     print("  Michell-grade accounting cannot tell them apart, and Trial 022's")
     print("  no-go shows static accounting cannot select among them at ANY")
     print("  order. Only lambda = -1 -- the member the derived response law")

@@ -52,16 +52,14 @@
   primaryClass  = {gr-qc}
 }
 
-% VERIFY: journal is Adv. Studies Theor. Phys. 11 (2017), no. 4 (m-hikari);
-% page range not yet confirmed.
+% VERIFIED (Kassner (2019) ref list: Adv. Stud. Theor. Phys. 11, 179-212)
 @article{kassner2017physicsfirst,
   author  = {Kassner, Klaus},
   title   = {A physics-first approach to the {S}chwarzschild metric},
   journal = {Advanced Studies in Theoretical Physics},
   volume  = {11},
-  number  = {4},
-  year    = {2017},
-  note    = {Page range to verify at drafting}
+  pages   = {179--212},
+  year    = {2017}
 }
 
 % VERIFIED (arXiv abs page; apparently unpublished; v1 2006, v2 2016)
@@ -74,17 +72,14 @@
   note          = {v2 (2016); apparently unpublished}
 }
 
-% VERIFY: entry from memory of the genre (predates Gruber-Price); confirm
-% volume/pages before citing.
+% VERIFIED (web search + Kassner (2019) ref list: AJP 36, 240-245 (1968))
 @article{sacks1968simple,
   author  = {Sacks, William M. and Ball, John A.},
   title   = {Simple derivations of the {S}chwarzschild metric},
   journal = {American Journal of Physics},
   volume  = {36},
-  number  = {3},
   pages   = {240--245},
-  year    = {1968},
-  note    = {VERIFY volume/pages at drafting}
+  year    = {1968}
 }
 
 % VERIFIED (arXiv abs + Springer: EPJ Plus 134, 366 (2019)). The reply that
@@ -102,33 +97,95 @@
   primaryClass  = {gr-qc}
 }
 
-% VERIFY: Shuler's family paper that Kassner 2019 reduces. Title from
-% ResearchGate (2018): "A family of metric gravities: With a new exact
-% Schwarzschild method, a local space-time relation, strong-field
-% verification targets, and the ability to promote field gravities to full
-% metricity". Venue/fields TBD (possibly EPJ Plus 133 (2018)); ALSO need the
-% exact family form for the claim-1 comparison.
+% VERIFIED (Springer: EPJ Plus 133, 158 (2018), open access). Family form
+% CONFIRMED via Kassner 2019 eq. (41): g_tt = -(1 + n GM/rc^2)^(-2/n) with
+% n = -2, -1, +1 -- identical to A_lambda under n = 2*lambda (members
+% lambda = -1, -1/2, +1/2). See paper_10_prior_art.md for the boundary.
 @article{shuler2018family,
   author  = {Shuler, Robert L.},
   title   = {A family of metric gravities},
+  journal = {European Physical Journal Plus},
+  volume  = {133},
+  pages   = {158},
   year    = {2018},
-  note    = {VERIFY venue, fields, and full title at drafting; see paper\_10\_prior\_art.md}
+  doi     = {10.1140/epjp/i2018-11983-2}
 }
 
-% VERIFY: genre roots (the "Lenz-Schiff argument" the impossibility paper
-% targets). Confirm all fields at drafting.
+% VERIFIED (Stanford PDF + Kassner (2019) ref list: AJP 28, 340-343 (1960))
 @article{schiff1960experimental,
   author  = {Schiff, Leonard I.},
   title   = {On experimental tests of the general theory of relativity},
   journal = {American Journal of Physics},
   volume  = {28},
   pages   = {340--343},
-  year    = {1960},
-  note    = {VERIFY at drafting}
+  year    = {1960}
 }
 
-% VERIFY: Kassner cites Schild alongside Gruber-Price as an impossibility
-% source; confirm exact article and fields at drafting.
+% VERIFIED (Kassner (2019) ref list). The "Lenz" of the Lenz-Schiff
+% argument: Lenz's unpublished derivation is reported in this volume.
+@book{sommerfeld1952electrodynamics,
+  author    = {Sommerfeld, Arnold},
+  title     = {Electrodynamics. Lectures on Theoretical Physics, Vol.\ III},
+  publisher = {Academic Press},
+  address   = {New York},
+  year      = {1952}
+}
+
+% VERIFIED (Kassner (2019) ref list)
+@article{rindler1968counterexample,
+  author  = {Rindler, Wolfgang},
+  title   = {Counterexample to the {L}enz-{S}chiff argument},
+  journal = {American Journal of Physics},
+  volume  = {36},
+  pages   = {540--544},
+  year    = {1968}
+}
+
+% VERIFIED (Kassner (2019) ref list); genre history
+@article{tangherlini1962postulational,
+  author  = {Tangherlini, Frank R.},
+  title   = {Postulational approach to {S}chwarzschild's exterior solution with application to a class of interior solutions},
+  journal = {Il Nuovo Cimento},
+  volume  = {25},
+  pages   = {1081--1105},
+  year    = {1962}
+}
+
+% VERIFIED (Kassner (2019) ref list); genre history
+@article{rindler1969tangherlini,
+  author  = {Rindler, Wolfgang},
+  title   = {Counterexample to the {T}angherlini argument},
+  journal = {American Journal of Physics},
+  volume  = {37},
+  pages   = {72--73},
+  year    = {1969}
+}
+
+% VERIFIED (Kassner (2019) ref list); modern Lenz-argument revival
+@article{cuzinatto2011lenz,
+  author  = {Cuzinatto, Rodrigo R. and Pimentel, Bruto M. and Pompeia, Pedro J.},
+  title   = {Schwarzschild and de {S}itter solutions from the argument by {L}enz and {S}ommerfeld},
+  journal = {American Journal of Physics},
+  volume  = {79},
+  pages   = {662--667},
+  year    = {2011}
+}
+
+% VERIFIED (Kassner (2019) ref list). The standard reference on when the
+% (I3) compensation g_tt g_rr = -1 holds.
+@article{jacobson2007gttgrr,
+  author  = {Jacobson, Ted},
+  title   = {When is $g_{tt}g_{rr} = -1$?},
+  journal = {Classical and Quantum Gravity},
+  volume  = {24},
+  pages   = {5717--5719},
+  year    = {2007},
+  doi     = {10.1088/0264-9381/24/22/N02}
+}
+
+% VERIFY: cited as "schild60" in Kassner (2015) alongside Gruber-Price as
+% an impossibility source; NOT in Kassner (2019)'s reference list. Locate
+% the exact article via Kassner (2015)'s bibliography before citing.
 @article{schild1960equivalence,
   author  = {Schild, Alfred},
   title   = {Equivalence principle and red-shift measurements},
@@ -136,7 +193,7 @@
   volume  = {28},
   pages   = {778--780},
   year    = {1960},
-  note    = {VERIFY at drafting}
+  note    = {VERIFY via Kassner (2015) ref list}
 }
 
 % ---------------------------------------------------------------------------
@@ -157,7 +214,7 @@
   archivePrefix = {arXiv}
 }
 
-% VERIFY: arXiv id gr-qc/0411060 from memory; AJP fields confident.
+% VERIFIED (arXiv abs gr-qc/0411060; AIP page AJP 76, 519 (2008))
 @article{hamilton2008river,
   author        = {Hamilton, Andrew J. S. and Lisle, Jason P.},
   title         = {The river model of black holes},
@@ -167,8 +224,7 @@
   pages         = {519--532},
   year          = {2008},
   eprint        = {gr-qc/0411060},
-  archivePrefix = {arXiv},
-  note          = {VERIFY arXiv id at drafting}
+  archivePrefix = {arXiv}
 }
 
 % Historical anchors (fields as carried in
@@ -280,7 +336,7 @@
   volume  = {114},
   pages   = {1079--1085},
   year    = {1999},
-  note    = {VERIFY pages and arXiv id at drafting}
+  note    = {Fields via secondary sources; spot-check at proof stage}
 }
 
 % VERIFY: fields from search results.
@@ -291,17 +347,20 @@
   volume  = {114},
   pages   = {1087--1098},
   year    = {1999},
-  note    = {VERIFY at drafting}
+  note    = {Fields via secondary sources; spot-check at proof stage}
 }
 
-% VERIFIED as arXiv item; journal ref (ApJ ~1999) to confirm.
-@misc{robertson1999xray,
+% VERIFIED (IOP DOI 10.1086/306995; ApJ 515 (1999))
+@article{robertson1999xray,
   author        = {Robertson, Stanley L.},
   title         = {X-ray novae, event horizons, and the exponential metric},
-  year          = {1997},
+  journal       = {The Astrophysical Journal},
+  volume        = {515},
+  pages         = {365},
+  year          = {1999},
+  doi           = {10.1086/306995},
   eprint        = {astro-ph/9710048},
-  archivePrefix = {arXiv},
-  note          = {Published in ApJ ca.\ 1999; VERIFY journal fields at drafting}
+  archivePrefix = {arXiv}
 }
 
 % ---------------------------------------------------------------------------

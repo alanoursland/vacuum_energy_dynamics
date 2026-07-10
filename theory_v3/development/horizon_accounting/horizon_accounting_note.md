@@ -66,7 +66,8 @@ $r = r_s$.**
 - $\lambda = +1$ (opposite-sign counting): $A = (1+r_s/r)^{-1} > 0$
   everywhere — **no horizon at any radius**.
 
-All three members agree at first post-Newtonian order; Michell-grade
+All three members agree at Newtonian order and share $\gamma$ — the
+fork sits in the 1PN nonlinearity parameter $\beta$; Michell-grade
 accounting cannot distinguish them — and by Trial 022's no-go, *no*
 static accounting can, at any order. The *existence* of the horizon —
 not merely its location — is therefore a corollary of the closed
