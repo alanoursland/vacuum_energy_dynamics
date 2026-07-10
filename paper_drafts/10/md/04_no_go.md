@@ -126,8 +126,8 @@ insists the books are only books and $f$ may roam: the arithmetic
 prices the excursion. Reaching merely the *sign* of the Schwarzschild
 weight requires $f < 0$; reaching $\lambda = -1$ itself requires
 $f = -3/2$ — matter credited with one and a half times the full
-redshift correction *above* its rest energy. No bookkeeping, in the
-literature or otherwise, has proposed it. Every static count within
+redshift correction *above* its rest energy. No bookkeeping in the
+literature examined here has proposed it. Every static count within
 the operational range falls short of the Schwarzschild weight by at
 least a factor of four in magnitude, and most miss its sign.
 

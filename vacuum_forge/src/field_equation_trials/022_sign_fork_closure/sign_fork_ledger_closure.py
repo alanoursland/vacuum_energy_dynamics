@@ -25,9 +25,9 @@
 #   THEOREM B (ledger no-go). The one invariant static accounting handle
 #     -- the work ledger of quasi-static assembly, evaluated on the
 #     interaction (cross) term of two concentric shells, where
-#     self-energy and localization ambiguities drop out -- FORCES
-#     |lamda| = 1/4 under a gradient-local density, with the SIGN
-#     depending on the matter-counting convention:
+#     self-energy and localization ambiguities drop out -- confines
+#     lamda to [-1/4, +1/4] under a gradient-local density as the
+#     matter-counting convention ranges between its operational audits:
 #       rest-mass counting (the P6-natural ledger: the vacuum pays)
 #         => lamda = -1/4;
 #       redshift counting (matter pays) => lamda = +1/4.
@@ -216,12 +216,12 @@ def case_1_normalization_empty(out: ScriptOutput) -> None:
 
 
 # =============================================================================
-# Case 2: Theorem B -- the invariant shell ledger forces |lamda| = 1/4
+# Case 2: Theorem B -- the shell ledger confines lamda to [-1/4, +1/4]
 # =============================================================================
 
 
 def case_2_ledger_no_go(out: ScriptOutput) -> None:
-    header("Case 2: Theorem B -- invariant two-shell ledger: |lamda| = 1/4, sign ledger-dependent")
+    header("Case 2: Theorem B -- invariant two-shell ledger confines lamda to [-1/4, +1/4]")
     print("Two concentric thin shells: m_1 at radius a, m_2 at radius b > a.")
     print("Weak field, second order; only CROSS (interaction) terms are used,")
     print("so shell self-energies and localization surface terms drop out.")
@@ -299,8 +299,9 @@ def case_2_ledger_no_go(out: ScriptOutput) -> None:
     print(f"  u(lamda=-1) / u_Newtonian = {sp.sstr(factor)}  (C2 case 4's 'x (1/4)' scar)")
     print()
     print("  CONCLUSION (no-go): a gradient-local density evaluated on the")
-    print("  invariant work ledger forces |lamda| = 1/4 -- never 1 -- with the")
-    print("  sign set by the matter-counting convention, not by physics. The")
+    print("  invariant work ledger confines lamda to [-1/4, +1/4] as the")
+    print("  matter convention ranges between its two audits. The endpoints")
+    print("  have opposite signs, and the entire interval excludes -1. The")
     print("  lamda = -1 self-source is 4x the Newtonian density: it is NOT the")
     print("  ledger energy density, and 'the Newtonian convention is recovered'")
     print("  (C2 case 4) is corrected here. Static density-level accounting")
@@ -408,9 +409,13 @@ def case_3_ppn_face(out: ScriptOutput) -> None:
                  StatusMark.PASS if is_zero(beta - (lam + 2)) and is_zero(c1_w + 1) else StatusMark.FAIL,
                  "isotropic-gauge PPN map of the family; Schwarzschild check beta(-1)=1")
     with out.sample_results():
-        out.line("ledger candidates killed by the fence",
-                 StatusMark.PASS if is_zero(beta.subs(lam, sp.Rational(-1, 4)) - sp.Rational(7, 4)) else StatusMark.FAIL,
-                 "lamda=-1/4 => beta=7/4; +1/4 => 9/4; 0 => 2; +1 => 3 -- all dead at >=3 orders of magnitude")
+        accounting_fence_ok = (
+            is_zero(beta.subs(lam, sp.Rational(-1, 4)) - sp.Rational(7, 4))
+            and is_zero(beta.subs(lam, sp.Rational(1, 4)) - sp.Rational(9, 4))
+        )
+        out.line("accounting interval killed by the fence",
+                 StatusMark.PASS if accounting_fence_ok else StatusMark.FAIL,
+                 "lamda in [-1/4,+1/4] => beta in [7/4,9/4], wholly excluded")
 
 
 # =============================================================================
@@ -544,8 +549,8 @@ def case_5_verdict(out: ScriptOutput) -> None:
     print()
     print("  A. '|lamda| = 1 by universality' is definitional; the a-priori")
     print("     fork is the real line.")
-    print("  B. The invariant shell ledger forces |lamda| = 1/4 under a")
-    print("     gradient-local density, sign set by matter-counting convention.")
+    print("  B. The invariant shell ledger confines lamda to [-1/4, +1/4]")
+    print("     under a gradient-local density and the audited conventions.")
     print("     Density-level static accounting CANNOT select lamda (no-go);")
     print("     C2 case 4's 'Newtonian convention recovered' is corrected")
     print("     (factor 4).")
@@ -608,7 +613,7 @@ def record_results(ns) -> None:
     ns.record_derivation(
         derivation_id="invariant_shell_ledger_no_go_022",
         inputs=[m1, m2, b],
-        output=sp.FiniteSet(sp.Rational(-1, 4), sp.Rational(1, 4)),
+        output=sp.Interval(sp.Rational(-1, 4), sp.Rational(1, 4)),
         method="concentric-shell cross-term ledger vs quasi-static work invariant; endpoint conventions plus f-interpolation",
         status=Status.DERIVED,
         record_kind=RecordKind.DERIVATION,
@@ -643,7 +648,7 @@ def record_results(ns) -> None:
         status=Status.OBSERVATIONAL_CONSTRAINT,
         record_kind=RecordKind.DIAGNOSTIC_EXAMPLE,
         result_type="kill_condition",
-        scope="post-derivation fence: lamda = -1 +/- ~1e-4; ledger candidates +/-1/4, 0, +1 all excluded",
+        scope="post-derivation fence: lamda = -1 +/- ~1e-4; the accounting interval [-1/4,+1/4] and sample non-GR members are excluded",
     )
     ns.record_derivation(
         derivation_id="response_selector_exact_022",
@@ -670,8 +675,8 @@ def record_results(ns) -> None:
             "empirical fence: beta - 1 = lamda + 1 with |beta - 1| <~ 1e-4 "
             "(Theorem C). The C2 PROVISIONAL_CONVENTION (recovery-selected) is "
             "superseded; the density-matching reading of P9 is retired by the "
-            "ledger no-go (Theorem B: gradient-local density forces |lamda| = "
-            "1/4 with ledger-relative sign). What remains true of the accounting "
+            "ledger no-go (Theorem B: gradient-local density confines lamda to "
+            "[-1/4,+1/4] across the audited conventions). What remains true of the accounting "
             "story: the total static reservoir is negative (binding deficit) in "
             "the P6 ledger, at integral level; the equation weight is fixed by "
             "the dynamics, not the ledger."
@@ -741,10 +746,10 @@ def record_results(ns) -> None:
             "non-circular, the 018 closure being lamda-blind), with the "
             "standing empirical fence beta - 1 = lamda + 1, |beta - 1| <~ "
             "1e-4. Static density-level energy accounting cannot make this "
-            "selection: the invariant concentric-shell work ledger forces "
-            "|lamda| = 1/4 under any gradient-local density, with the sign "
-            "set by the matter-counting convention (rest-mass counting: -1/4; "
-            "redshift counting: +1/4). The lamda = -1 self-source is exactly "
+            "selection: the invariant concentric-shell work ledger confines "
+            "lamda to [-1/4,+1/4] under a gradient-local density as the matter "
+            "convention ranges between rest-mass counting (-1/4) and redshift "
+            "counting (+1/4). The lamda = -1 self-source is exactly "
             "4x the Newtonian field-energy density; C2 case 4's 'Newtonian "
             "convention recovered' narration is corrected accordingly. "
             "Horizon existence (A(r_s) = 0, lamda < 0 only) is therefore a "

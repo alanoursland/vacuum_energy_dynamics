@@ -15,7 +15,7 @@ checkable by a student with a CAS.
 
 **Source materials:**
 - Verification: `vacuum_forge/src/field_equation_trials/022_sign_fork_closure/`
-  (17 checks) and `021_horizon_accounting/` (11 checks).
+  (19 checks) and `021_horizon_accounting/` (11 checks).
 - Prose skeletons: `theory_v3/development/horizon_accounting/horizon_accounting_note.md`,
   `theory_v3/04_field_equations/proof.md` §2.3 (post-2026-07-08 form).
 - Prior art: `paper_brainstorming/paper_10_prior_art.md`;
@@ -61,8 +61,9 @@ above are authoritative for order)
 
 ### 00 Abstract (~150 words)
 Family $A_\lambda$ from minimal ingredients; all members share the
-Newtonian limit and $\gamma=1$; no-go: invariant assembly ledger forces $|\lambda|=1/4$,
-sign convention-relative — accounting cannot select; dictionary
+Newtonian limit and $\gamma=1$; no-go: invariant assembly ledger
+confines $\lambda$ to $[-1/4,+1/4]$ across the audited matter
+conventions — accounting cannot select; dictionary
 $\beta-1=\lambda+1$; horizon exists iff $\lambda<0$; Michell explained
 via PG-exactness unique to $\lambda=-1$. One sentence on arbitration of
 the impossibility/possibility dispute.
@@ -103,9 +104,9 @@ the impossibility/possibility dispute.
   independently derived).
 - The invariant: quasi-static assembly work ledger on the interaction
   term of concentric shells (self-energies and localization surface
-  terms drop out). Result: gradient-local density ⟹ $|\lambda|=1/4$,
-  with sign flipping between matter-counting conventions (rest-mass
-  vs redshift). Neither is $-1$.
+  terms drop out). Result: gradient-local density confines $\lambda$
+  to $[-1/4,+1/4]$ as the matter convention ranges between the
+  rest-mass and redshift audits. The entire interval excludes $-1$.
 - Corollary (the factor of 4): the Schwarzschild member's self-source
   is $4\times(-|\nabla\Phi|^2/8\pi G)$ — the pseudotensor ambiguity
   made concrete; connect to Gruber–Price (their qualitative claim, now
@@ -175,7 +176,7 @@ the impossibility/possibility dispute.
   ledger exactness.
 
 ### 08 Reproducibility note
-- Supplementary: the two sympy scripts (28 machine checks), run
+- Supplementary: two standalone SymPy scripts (32 machine checks), run
   instructions, and (pending the repo/Zenodo decision) the DOI.
 - AI-assistance disclosure per venue policy.
 

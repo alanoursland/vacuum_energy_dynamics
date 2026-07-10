@@ -178,17 +178,19 @@ premise, not just sharpens lore).
   and embedded. Remaining figure work: regenerate at the venue's
   final column width once the LaTeX template is chosen, and check
   fonts against the journal's minimum size after scaling.
-- Consider adding Shuler's members ($\lambda = \pm 1/2$, $\beta = 3/2$
-  and $5/2$) to Figure 2 — they would sit visibly outside the
-  classical Mercury band, making the §5 premise-correction visual.
+- DONE (2026-07-09): added Shuler's members
+  ($\lambda = \pm 1/2$, $\beta = 3/2,5/2$) and the full accounting
+  interval to Figure 2, making the Sec. 5 premise correction visual.
 
 ## Verification and release
 
-- Re-run 021 and 022 from a clean environment; record outputs for the
-  supplementary bundle.
-- Package the two scripts + run instructions as supplementary
-  material; depends on the repo/Zenodo DOI decision (shared blocker
-  with papers 2 and 3).
+- DONE (2026-07-09): re-ran 021 and 022 with Python 3 / SymPy 1.12;
+  all 11 + 19 checks passed. These remain the internal provenance
+  suite; the standalone journal bundle is recorded below.
+- DONE (2026-07-09): packaged two standalone SymPy-only scripts under
+  `../supplement/`, with requirements and run instructions; all
+  21 + 11 checks pass. Archive publication and DOI remain pending
+  with the shared repo/Zenodo decision.
 - AI-assistance disclosure per AJP policy.
 
 ## Open decision points

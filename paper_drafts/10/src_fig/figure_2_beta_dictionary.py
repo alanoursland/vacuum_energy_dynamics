@@ -1,8 +1,9 @@
 """Figure 2: the dictionary beta = lambda + 2, family members, and the
 experimental fences.
 
-Main panel: the line beta(lambda), the five named members, and the
-classical-era Mercury band (drawn to scale). Inset: zoom by four orders
+Main panel: the line beta(lambda), the named members, the complete
+static-accounting interval, and the classical-era Mercury band (drawn
+to scale). Inset: zoom by four orders
 of magnitude around the Schwarzschild point, where the modern
 LLR + Cassini band |beta - 1| <= 1e-4 becomes visible.
 """
@@ -32,6 +33,9 @@ fig, ax = plt.subplots(figsize=(3.4, 2.8), dpi=300)
 lam_lo, lam_hi = -1.6, 1.5
 ax.plot([lam_lo, lam_hi], [lam_lo + 2, lam_hi + 2], "k-", lw=1.2)
 
+# full interval admitted by the static-accounting theorem
+ax.axvspan(-0.25, 0.25, color="0.94", zorder=0)
+
 # classical-era Mercury band, |beta - 1| <~ 0.03, to scale
 ax.axhspan(1 - 0.03, 1 + 0.03, color="0.85", zorder=0)
 ax.text(1.43, 1.06, "Mercury (classical era)", fontsize=6.5,
@@ -40,9 +44,11 @@ ax.text(1.43, 1.06, "Mercury (classical era)", fontsize=6.5,
 # members: (lambda, label, marker, filled)
 members = [
     (-1.0, "Schwarzschild", "o", True),
+    (-0.5, "Shuler ($n=-1$)", "x", False),
     (-0.25, "ledger (rest)", "s", False),
     (0.0, "exponential", "^", False),
     (0.25, "ledger (redshift)", "D", False),
+    (0.5, "Shuler ($n=+1$)", "x", False),
     (1.0, "reciprocal", "o", False),
 ]
 for lam, name, mk, filled in members:
@@ -52,12 +58,16 @@ for lam, name, mk, filled in members:
 # direct labels, placed to avoid the line (above-left of each point)
 ax.annotate("Schwarzschild", xy=(-1.0, 1.0), xytext=(-1.52, 1.28),
             fontsize=7, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
+ax.annotate(r"Shuler ($n=-1$)", xy=(-0.5, 1.5), xytext=(-1.37, 1.58),
+            fontsize=6.5, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
 ax.annotate("ledger (rest)", xy=(-0.25, 1.75), xytext=(-1.05, 1.95),
             fontsize=7, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
 ax.annotate("exponential", xy=(0.0, 2.0), xytext=(-0.62, 2.42),
             fontsize=7, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
 ax.annotate("ledger (redshift)", xy=(0.25, 2.25), xytext=(-0.30, 2.85),
             fontsize=7, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
+ax.annotate(r"Shuler ($n=+1$)", xy=(0.5, 2.5), xytext=(0.50, 2.68),
+            fontsize=6.5, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
 ax.annotate("reciprocal", xy=(1.0, 3.0), xytext=(0.55, 3.28),
             fontsize=7, arrowprops=dict(arrowstyle="-", lw=0.6, color="0.2"))
 

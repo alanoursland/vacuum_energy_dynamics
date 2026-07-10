@@ -7,10 +7,11 @@ $A_\lambda$, the scale $r_s = 2GM/c^2$ inside every member, and every
 classical observable that does not reach the nonlinearity parameter
 $\beta$: the Newtonian limit, $\gamma = 1$, deflection, time delay,
 redshift. It provably does not
-buy the member: the strongest invariant accounting argument lands at
-$|\lambda| = 1/4$ with a convention-dependent sign, and the
-Schwarzschild self-sourcing term exceeds the Newtonian field energy
-density by a factor of four that no convention absorbs. The member is
+buy the member: the strongest invariant accounting argument confines
+$\lambda$ to $[-1/4,+1/4]$ as the matter convention ranges between
+its two operational audits, and the Schwarzschild self-sourcing term
+exceeds the Newtonian field energy density by a factor of four that no
+convention absorbs. The member is
 bought elsewhere — by the self-coupling consistency of the field
 equations on the theory side, or by $\beta$ on the experimental side,
 where $\beta - 1 = \lambda + 1$ makes the purchase explicit. The

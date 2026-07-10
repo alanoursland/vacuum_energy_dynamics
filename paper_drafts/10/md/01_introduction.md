@@ -73,10 +73,11 @@ Second, a no-go (Sec. 4): no static energy-accounting argument selects
 the Schwarzschild member. The one convention-independent handle on
 gravitational energy in the weak field — the work budget of
 quasi-static assembly, evaluated on interaction terms where
-localization ambiguities cancel — forces $|\lambda| = 1/4$, with even
-the sign contingent on how matter is carried in the books. Honest
-accounting does not merely fall short of Schwarzschild; it selects
-against it. A corollary: the nonlinear term that resums the
+localization ambiguities cancel — confines $\lambda$ to
+$[-1/4,+1/4]$ as the matter convention ranges between its local and
+asymptotic audits. Honest accounting does not merely fall short of
+Schwarzschild; the entire allowed interval excludes it. A corollary:
+the nonlinear term that resums the
 Schwarzschild exterior is four times the Newtonian field energy
 density, so the familiar identification of the two is not loose
 language but an error of definite size.

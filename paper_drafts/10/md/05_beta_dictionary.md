@@ -69,8 +69,8 @@ four classical tests cannot:
 | $+1/2$ (Shuler, $n=+1$) | $5/2$ | $21.5$ | excluded |
 | $+1$ (reciprocal) | $3$ | $14.3$ | excluded |
 
-Both candidates that survived the accounting argument of Sec. 4 fail
-against data that predate the accounting argument by a century. Even
+The entire interval admitted by the accounting argument of Sec. 4
+fails against data that predate the argument by a century. Even
 the 1915-era precision on Mercury resolves $|\lambda + 1|$ at the few
 percent level; the modern bound, $|\beta - 1| \lesssim 10^{-4}$ from
 lunar laser ranging combined with the Cassini determination of
@@ -102,9 +102,8 @@ weak-field inequality, and the measured $\beta$ settles it five orders
 of magnitude away from the boundary, using solar-system data and no
 strong-field input at all. The statement is conditional on the family,
 as any such statement must be; outside it, $\beta$ and horizon
-structure decouple. But within the ingredient class that every simple
-derivation inhabits, "do horizons exist?" is a question Mercury
-answered.
+structure decouple. But within the ingredient class examined here,
+"do horizons exist?" is a question Mercury answered.
 
 ## 5.3 Relation to existing readings of β
 
@@ -135,11 +134,13 @@ the two sides would overstate what either experiment shows.
 
 ![Figure 2](figure_2_beta_dictionary.png)
 
-*Figure 2. The dictionary $\beta = \lambda + 2$, with the five named
-family members marked. The gray band is the classical-era Mercury
-constraint on $\beta$, drawn to scale; both survivors of the
-accounting argument of Sec. 4 ($\lambda = \pm 1/4$) fall far outside
-it. The modern bound is four orders of magnitude tighter and invisible
+*Figure 2. The dictionary $\beta = \lambda + 2$. The shaded vertical
+strip is the full static-accounting interval; squares mark its two
+operational audits, and crosses mark Shuler's two non-Schwarzschild
+members. The horizontal gray band is the classical-era Mercury
+constraint on $\beta$, drawn to scale; the accounting interval and
+both Shuler members fall far outside it. The modern bound is four
+orders of magnitude tighter and invisible
 at this scale — the inset zooms to $|\lambda + 1| \le 6\times10^{-4}$
 around the Schwarzschild point, where the LLR + Cassini band
 $|\beta - 1| \lesssim 10^{-4}$ becomes visible. Source:

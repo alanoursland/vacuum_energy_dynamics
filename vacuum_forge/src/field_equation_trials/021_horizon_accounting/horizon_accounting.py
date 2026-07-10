@@ -1,5 +1,4 @@
-# Trial 021: The horizon as an accounting corollary (and why it is not
-# Michell's coincidence)
+# Trial 021: The horizon dichotomy and Michell's coincidence
 #
 # Script type:
 #   SUPPORTING THEOREM / DISCRIMINATOR
@@ -13,15 +12,12 @@
 # two cleanly:
 #
 #   1. RADIUS: both routes give r_s = 2GM/c^2. (The coincidence.)
-#   2. HORIZON EXISTENCE IS DYNAMICS-SELECTED: in the C2 bootstrap family
-#      A_lambda = (1 + lambda r_s/r)^(-1/lambda), only the member
-#      lambda = -1 -- selected by the derived response law (Trial 022,
-#      exact and non-circular; fenced by beta - 1 = lambda + 1) -- has a
-#      zero at finite radius. The lambda = 0 (exponential) and
-#      lambda = +1 (reciprocal) members have NO horizon anywhere. The
-#      horizon's existence, not just its location, is a corollary of the
-#      closed dynamics. (Trial 022's no-go: static accounting alone
-#      cannot make this selection; P9 alone does not fix the sign.)
+#   2. HORIZON DICHOTOMY: in the C2 bootstrap family
+#      A_lambda = (1 + lambda r_s/r)^(-1/lambda), a horizon exists iff
+#      lambda < 0, at r_h = -lambda r_s. The derived response law
+#      (Trial 022, exact and non-circular; fenced by beta - 1 = lambda + 1)
+#      selects lambda = -1 and therefore r_h = r_s. Static accounting
+#      spans both signs and cannot decide horizon existence.
 #   3. THE METRIC DISCRIMINATOR: the Michell/Newtonian route carries no
 #      spatial response (B = 1, gamma = 0: half the observed light
 #      deflection); the bookkeeping route forces B = 1/A (gamma = 1).
@@ -205,12 +201,12 @@ def case_1_radius(failures):
     # Michell: (1/2) v^2 = G M / r with v = c.
     r_michell = sp.solve(sp.Eq(sp.Rational(1, 2) * c**2, G_N * M / sp.Symbol("r", positive=True)),
                          sp.Symbol("r", positive=True))[0]
-    # Bookkeeping exterior: zero of A = 1 - 2GM/(c^2 r).
+    # Dynamics-selected exterior: zero of A = 1 - 2GM/(c^2 r).
     r_pos = sp.Symbol("r", positive=True)
     A = 1 - 2 * G_N * M / (c**2 * r_pos)
     r_horizon = sp.solve(sp.Eq(A, 0), r_pos)[0]
     print(f"  Michell radius:   {sp.sstr(r_michell)}")
-    print(f"  zero of derived A: {sp.sstr(r_horizon)}")
+    print(f"  zero of selected A: {sp.sstr(r_horizon)}")
     require("both equal 2GM/c^2", is_zero(r_michell - r_horizon), failures)
     print()
     print("  The agreement of the RADIUS is the historical coincidence: the")
@@ -220,43 +216,40 @@ def case_1_radius(failures):
 
 
 # =============================================================================
-# Case 2: horizon existence is selected by the derived dynamics (022)
+# Case 2: family-wide horizon dichotomy
 # =============================================================================
 
 
 def case_2_horizon_existence(failures):
-    header("Case 2: Only the dynamics-selected member has a horizon at all")
+    header("Case 2: A horizon exists iff lambda < 0")
     r_s = sp.Symbol("r_s", positive=True)
     r_pos = sp.Symbol("r", positive=True)
 
-    A_m1 = 1 - r_s / r_pos                      # lambda = -1 (response-law-selected, 022)
-    A_0 = sp.exp(-r_s / r_pos)                  # lambda -> 0 (no self-sourcing)
-    A_p1 = 1 / (1 + r_s / r_pos)                # lambda = +1 (opposite-sign counting)
+    lam_neg = sp.Symbol("lambda_minus", negative=True)
+    lam_pos = sp.Symbol("lambda_plus", positive=True)
+    A_neg = (1 + lam_neg * r_s / r_pos) ** (-1 / lam_neg)
+    A_0 = sp.exp(-r_s / r_pos)
+    A_pos = (1 + lam_pos * r_s / r_pos) ** (-1 / lam_pos)
+    r_h = -lam_neg * r_s
+    horizon_limit = sp.limit(A_neg, r_pos, r_h, dir="+")
 
-    zeros_m1 = sp.solve(sp.Eq(A_m1, 0), r_pos)
-    zeros_0 = sp.solve(sp.Eq(A_0, 0), r_pos)
-    zeros_p1 = sp.solve(sp.Eq(A_p1, 0), r_pos)
-    print(f"  lambda = -1: zeros of A at r = {zeros_m1}")
-    print(f"  lambda =  0: zeros of A at r = {zeros_0}")
-    print(f"  lambda = +1: zeros of A at r = {zeros_p1}")
-    require("lambda = -1 has its zero exactly at r = r_s",
-            len(zeros_m1) == 1 and is_zero(zeros_m1[0] - r_s), failures)
-    require("lambda = 0 (exponential) has NO zero at finite r > 0",
-            len(zeros_0) == 0, failures)
-    require("lambda = +1 (reciprocal) has NO zero at finite r > 0",
-            len(zeros_p1) == 0, failures)
-    # Positivity witnesses: A_0 and A_p1 strictly positive for r > 0.
-    require("A_exponential > 0 and A_reciprocal > 0 for all r > 0 (no horizon)",
-            bool(A_0.is_positive) and bool(sp.simplify(A_p1).is_positive), failures)
+    print(f"  lambda < 0: candidate r_h = {r_h}; exterior limit A -> {horizon_limit}")
+    print("  lambda = 0: A = exp(-r_s/r) > 0")
+    print("  lambda > 0: base and power are finite, so A > 0")
+    require("lambda < 0 gives a positive horizon radius r_h = -lambda r_s",
+            bool(r_h.is_positive) and is_zero(horizon_limit), failures)
+    require("lambda = -1 places the horizon exactly at r_s",
+            is_zero(r_h.subs(lam_neg, -1) - r_s), failures)
+    require("lambda = 0 (exponential) is positive for every finite r > 0",
+            bool(A_0.is_positive), failures)
+    require("lambda > 0 members are positive for every finite r > 0",
+            bool(A_pos.is_positive), failures)
     print()
-    print("  All three family members agree at Newtonian order and share gamma --")
-    print("  Michell-grade accounting cannot tell them apart, and Trial 022's")
-    print("  no-go shows static accounting cannot select among them at ANY")
-    print("  order. Only lambda = -1 -- the member the derived response law")
-    print("  selects (022, exact and non-circular; fenced by beta - 1 =")
-    print("  lambda + 1) -- has A = 0 at finite radius. The existence of a")
-    print("  horizon at finite r is a corollary of the closed dynamics, not")
-    print("  of energy accounting in general (and not of P9 alone).")
+    print("  The family-wide result is sign-controlled: negative lambda gives")
+    print("  a horizon, while nonnegative lambda does not. Trial 022's static")
+    print("  accounting interval crosses zero and therefore cannot decide the")
+    print("  question. Its response law selects lambda = -1, fixing both the")
+    print("  existence of the horizon and its location at r_s.")
 
 
 # =============================================================================
@@ -286,9 +279,9 @@ def case_3_metric_discriminator(failures):
     print("  Light deflection through the solar limb: gamma = 0 gives 0.875\"")
     print("  (the 1911 Einstein/Soldner half-value); gamma = 1 gives 1.75\"")
     print("  (observed, parts in 1e5 by Cassini). The Michell accounting is")
-    print("  falsified by the very first metric observable; the bookkeeping")
-    print("  exterior is exact. The radius agreement was luck; the function")
-    print("  agreement is P7' content plus the dynamics-selected member (022).")
+    print("  falsified by the very first metric observable; the compensated")
+    print("  branch has the correct spatial coefficient. Exact Schwarzschild")
+    print("  agreement still requires the dynamics-selected member (022).")
 
 
 # =============================================================================
@@ -355,11 +348,9 @@ def case_4_pg_exactness(failures):
 
 def case_5_verdict():
     header("Case 5: Verdict")
-    print("  THEOREM (horizon as a dynamics corollary). In the bookkeeping")
-    print("  exterior of proof.md section 2, the horizon exists and sits at")
-    print("  r_s = 2GM/c^2 as a corollary of the dynamics-selected member: the")
-    print("  lambda = -1 distortion variable A = e^s vanishes at finite radius,")
-    print("  while every other family member has no horizon at all. (Selection")
+    print("  THEOREM (horizon dichotomy). Across the family, a horizon exists")
+    print("  iff lambda < 0 and lies at r_h = -lambda r_s. The response law")
+    print("  selects lambda = -1 and therefore r_h = r_s = 2GM/c^2. (Selection")
     print("  provenance: Trial 022 -- response law, exact and non-circular,")
     print("  with beta - 1 = lambda + 1 as the empirical fence; static")
     print("  accounting alone cannot select, and P9 alone does not fix the sign.)")
@@ -392,14 +383,15 @@ def record_results(ns) -> None:
     ns.record_obligation(ProofObligationRecord(
         obligation_id="horizon_accounting_note_021",
         script_id=SCRIPT_ID,
-        title="Horizon as accounting corollary (theorem note)",
+        title="Horizon dichotomy and Michell coincidence (theorem note)",
         status=ObligationStatus.SATISFIED,
         satisfied_by=["horizon_accounting_021"],
         description=(
             "Supports development/horizon_accounting/horizon_accounting_note.md: "
-            "the horizon's existence and location are corollaries of the "
-            "dynamics-selected member (Trial 022; P9 alone does not fix the "
-            "sign), the Michell coincidence is explained by the PG-exact "
+            "horizon existence is equivalent to lambda < 0 across the family; "
+            "the dynamics-selected member fixes lambda = -1 and r_h = r_s "
+            "(Trial 022; P9 alone does not fix the sign); the Michell "
+            "coincidence is explained by the PG-exact "
             "ledger, and the gamma discriminator separates the routes."
         ),
     ))
@@ -410,12 +402,12 @@ def record_results(ns) -> None:
         tier=ClaimTier.CONSTRAINED,
         status=GovernanceStatus.LICENSED_CLAIM,
         statement=(
-            "In the bookkeeping exterior, the horizon exists at finite radius "
-            "only for the lambda = -1 member -- the one the derived response "
-            "law selects (Trial 022, exact and non-circular, fenced by "
-            "beta - 1 = lambda + 1): the exponential and reciprocal members "
-            "have no horizon anywhere, and static accounting alone cannot "
-            "select among them (022 no-go). The Michell radius agreement is "
+            "Across the bootstrap family, a horizon exists iff lambda < 0, "
+            "at r_h = -lambda r_s. The derived response law selects lambda = "
+            "-1 (Trial 022, exact and non-circular, fenced by beta - 1 = "
+            "lambda + 1), fixing r_h = r_s; the static-accounting interval "
+            "crosses zero and cannot decide horizon existence. The Michell "
+            "radius agreement is "
             "explained rather than inherited: the derived exterior's PG "
             "slicing carries the exact Newtonian-formed ledger (1/2)v^2 = "
             "GM/r with v = c at r_s, the lambda = -1 resummation's signature, "
@@ -429,7 +421,7 @@ def record_results(ns) -> None:
 
 
 def main() -> None:
-    header("Trial 021: The Horizon as an Accounting Corollary")
+    header("Trial 021: Horizon Dichotomy and Michell Coincidence")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
 

@@ -1,30 +1,26 @@
 # Abstract
 
 Simple derivations of the Schwarzschild metric from energy arguments
-have been proposed and disputed for sixty years. We settle what the
-arguments' shared ingredients — the Newtonian limit, exact flux
-bookkeeping in a static potential, and $g_{tt}g_{rr} = -1$ —
-actually determine: a one-parameter family of exteriors,
-$A_\lambda = (1 + \lambda\,r_s/r)^{-1/\lambda}$ — members of which
-were proposed piecemeal by Shuler — here derived as the complete
-residue of the ingredients, in which $\lambda$ is the weight assigned
-to the field's own energy as a source and Schwarzschild is
-$\lambda = -1$. All members share the Newtonian
-limit and $\gamma = 1$ — agreeing on every observable that does not
-reach the nonlinearity parameter $\beta$ — yet members with
-$\lambda \geq 0$ have no
-horizon at any radius: the existence of the horizon, not merely its
-location, rides on the undetermined parameter. No static accounting
-fixes it: for gradient-local bookkeeping — the only localization the
-self-sourcing reading admits — the convention-independent assembly
-ledger confines $\lambda$ to $[-1/4, +1/4]$, bounded away from
-Schwarzschild's $-1$ by a factor of four with even the sign
-convention-dependent, and the Schwarzschild self-source term is four
-times the Newtonian field energy density. What fixes it is dynamics or data: in isotropic form
-$\gamma = 1$ identically and $\beta - 1 = \lambda + 1$, so
-measurements of $\beta$ read the counting weight directly and settle
-horizon existence from the weak field. The escape-velocity
-"coincidence" of Michell and Laplace is then explained: it is a
-correct calculation in the Painlevé–Gullstrand chart of the one
-member whose infall is exactly Newtonian. All results are verified
-symbolically; scripts are provided.
+have been proposed and disputed for sixty years. We ask what their
+shared assumptions actually determine. For static spherical
+exteriors, the Newtonian limit, an exact flux law in a potential
+variable, $g_{tt}g_{rr}=-1$, and a constant self-sourcing weight yield
+
+$$A_\lambda=(1+\lambda r_s/r)^{-1/\lambda},$$
+
+a one-parameter family that is complete relative to those assumptions.
+Here $\lambda$ weights the field's contribution to its own source, and
+Schwarzschild is $\lambda=-1$. All members share the Newtonian limit
+and $\gamma=1$, but a horizon exists only for $\lambda<0$. Static
+accounting cannot select the Schwarzschild member: a quasi-static
+two-shell assembly invariant, with gradient-local field energy and
+matter energy bounded by local and asymptotic audits, confines
+$\lambda$ to $[-1/4,+1/4]$. The Schwarzschild self-source is instead
+four times the Newtonian field energy density. In isotropic form
+$\beta-1=\lambda+1$, so solar-system measurements pin $\lambda$ to
+$-1$ at the $10^{-4}$ level. Michell's escape-velocity coincidence is
+then explained by the unique Newtonian infall profile of the
+Schwarzschild member in Painlevé–Gullstrand coordinates. Thus
+bookkeeping determines the scale and family; dynamics or data
+determine the member and horizon. Symbolic verification scripts are
+provided.

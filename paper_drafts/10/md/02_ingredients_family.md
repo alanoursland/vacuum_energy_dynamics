@@ -1,9 +1,8 @@
 # 2. The ingredients, made explicit, and the family they leave behind
 
-Every simple derivation of the Schwarzschild metric draws on some
-subset of the same small stock of ingredients. We state them here in a
-form strong enough to cover the published attempts, and then show
-exactly how far they go.
+The simple derivations considered here draw on some subset of the same
+small stock of ingredients. We state them in a common form and then
+show exactly how far that form goes.
 
 We consider a static, spherically symmetric spacetime in areal
 coordinates,
