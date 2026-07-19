@@ -48,15 +48,15 @@ check("lambda=-1 is Schwarzschild", is_zero(A.subs(lam, -1) - (1 - r_s / r)))
 check("lambda=0 limit is exponential", is_zero(sp.limit(A, lam, 0) - sp.exp(-r_s / r)))
 check("lambda=+1 is reciprocal", is_zero(A.subs(lam, 1) - 1 / (1 + r_s / r)))
 
-# Horizon dichotomy.
+# Finite-radius zero dichotomy.
 lam_neg = sp.Symbol("lambda_minus", negative=True)
 lam_pos = sp.Symbol("lambda_plus", positive=True)
 A_neg = (1 + lam_neg * r_s / r) ** (-1 / lam_neg)
 A_pos = (1 + lam_pos * r_s / r) ** (-1 / lam_pos)
-r_h = -lam_neg * r_s
+r_0 = -lam_neg * r_s
 check(
-    "lambda<0 gives r_h=-lambda r_s and A approaches zero",
-    bool(r_h.is_positive) and is_zero(sp.limit(A_neg, r, r_h, dir="+")),
+    "lambda<0 gives r_0=-lambda r_s and A approaches zero",
+    bool(r_0.is_positive) and is_zero(sp.limit(A_neg, r, r_0, dir="+")),
 )
 check("lambda=0 has no finite-radius zero", bool(sp.exp(-r_s / r).is_positive))
 check("lambda>0 has no finite-radius zero", bool(A_pos.is_positive))

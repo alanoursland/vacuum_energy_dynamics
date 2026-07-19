@@ -1,6 +1,6 @@
 # 5. Operational meaning of the parameter (\lambda)
 
-Sections 2–4 leave one dimensionless parameter undetermined. Static bookkeeping supplies a family of metrics,
+Sections 2–4 leave one dimensionless parameter undetermined. The static assumptions supply a family of metrics,
 
 [
 A_\lambda(r)
@@ -29,7 +29,7 @@ This section transforms the family from areal to isotropic coordinates, derives 
 
 and identifies which classical solar-system tests can distinguish the family members.
 
-The result gives (\lambda) an operational meaning independent of the local energy-density interpretation used in Sec. 4. Within the family, measuring (\beta) determines (\lambda).
+The result gives (\lambda) an operational meaning independent of the local energy-density interpretation used in Sec. 4. Throughout this section, the identification of (\lambda) with (\beta) refers to the family (A_\lambda); assumptions needed to apply particular PPN tests are stated where those tests are used.
 
 ## 5.1 PPN form of the metric
 
@@ -346,7 +346,7 @@ The relation (\beta=\lambda+2) is exact as a relation between (\lambda) and the 
 
 ## 5.2 Interpretation of the PPN dictionary
 
-In the standard PPN terminology, (\beta) measures nonlinearity in the gravitational superposition law. Within the present family, that description becomes explicit: the same parameter that multiplies the nonlinear squared-gradient term in
+In the standard PPN terminology, (\beta) measures nonlinearity in the gravitational superposition law. Here that description becomes explicit: the same parameter that multiplies the nonlinear squared-gradient term in
 
 [
 \Delta s=\lambda(s')^2
@@ -514,9 +514,7 @@ Thus
 }
 ]
 
-and the Schwarzschild member is selected to high precision within the family.
-
-This is an inference conditional on the one-parameter metric class. The observations measure PPN coefficients; the identification of those coefficients with (\lambda) follows from the family derived in Sec. 2.
+and the Schwarzschild member is selected to high precision.
 
 ## 5.5 Finite-radius zeros and the condition (\beta<2)
 
@@ -554,13 +552,7 @@ The measured value
 
 lies far from the boundary (\beta=2) relative to current observational uncertainties.
 
-The precise conclusion is:
-
-> Within the family, weak-field measurements of (\beta) determine whether (A_\lambda) has a finite-radius zero.
-
-This does not yet establish that every such zero is a regular black-hole event horizon. As noted in Sec. 3, regularity, curvature, extendibility, and global causal structure require a separate analysis. The PPN measurement selects (\lambda<0) and hence a finite-radius candidate horizon surface; it does not by itself prove the global horizon interpretation.
-
-Outside the family, no general equivalence exists between the weak-field value of (\beta) and strong-field horizon structure.
+Combining the PPN dictionary with Sec. 3, weak-field measurements of (\beta) therefore determine whether (A_\lambda) has a finite-radius zero.
 
 ## 5.6 Relation to earlier metric reconstructions
 
@@ -641,7 +633,7 @@ corresponds to
 \lambda=-1.
 ]
 
-Lunar laser ranging then supplies an additional route to constraining the same PPN coefficient, provided the assumed relations among the remaining PPN parameters are stated explicitly.
+Under this restriction, lunar laser ranging supplies an additional route to constraining the same PPN coefficient.
 
 It is useful to distinguish two conceptual questions:
 
@@ -650,7 +642,7 @@ It is useful to distinguish two conceptual questions:
 
 The Nordtvedt effect primarily addresses the first. The interpretation of (\lambda) developed in Secs. 2 and 4 concerns the second. General relativity relates the two through a complete dynamical theory, but the static exterior family alone does not prove that they must always coincide.
 
-## 5.8 Result and scope
+## 5.8 Result
 
 The transformation to PPN form gives
 
@@ -684,13 +676,7 @@ The consequences are:
 \lambda\simeq-1.
 ]
 
-Thus observational data select the Schwarzschild member of the family even though the static accounting procedure of Sec. 4 does not.
-
-The result is conditional on the metric family and on the PPN assumptions used to interpret each experiment. It does not establish that (\beta) measures a universal local gravitational energy density, nor does the inequality (\beta<2) by itself prove the existence of a regular event horizon.
-
-What it does establish is precise and operational:
-
-> Within the family (A_\lambda), the free parameter left by the static assumptions is exactly the parameter measured by the nonlinear PPN coefficient (\beta).
+Thus observational data select the Schwarzschild member even though the Section 4 ledger does not. Operationally, the free parameter left by the static assumptions is exactly the parameter measured by the nonlinear PPN coefficient (\beta).
 
 ![Figure 2](figure_2_beta_dictionary.png)
 

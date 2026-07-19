@@ -188,7 +188,7 @@ corresponding to no squared-gradient self-sourcing in the chosen metric variable
 
 rather than (\lambda=\lambda(A)).
 
-Consequently, the completeness result proved below is conditional: it is completeness relative to assumptions (I1)–(I4), not a classification of all possible static, spherically symmetric metrics.
+The completeness result below is therefore relative to assumptions (I1)–(I4), not a classification of all possible static, spherically symmetric metrics.
 
 ## 2.2 From variable choice to self-sourcing
 
@@ -798,7 +798,7 @@ The remaining freedom appears in the nonlinear PPN parameter (\beta). Perihelion
 
 The distinction should be stated carefully. The family does not first diverge beyond first post-Newtonian order. Rather, it agrees in the (\gamma)-controlled part of the 1PN metric while leaving the (\beta)-controlled nonlinear coefficient undetermined.
 
-## 2.7 Result and scope
+## 2.7 Result
 
 Assumptions (I1)–(I4) determine the static spherical exterior up to one dimensionless constant:
 
@@ -853,10 +853,8 @@ They do not determine the value of (\lambda). In particular, they do not uniquel
 
 This is the precise content of the underdetermination identified by the impossibility literature. The assumptions determine a one-parameter family containing Schwarzschild, not the Schwarzschild exterior alone.
 
-The result is conditional in three important respects. It applies to the static (A>0) branch, where (s=\ln A) is defined; it is expressed in areal coordinates; and its completeness depends on the constant-coefficient assumption (I4). A theory with a field-dependent coefficient (\lambda(s)), or with a different restriction on the potential-variable freedom, need not belong to this family.
-
-The following sections examine what depends on the remaining parameter: Sec. 3 determines when the family contains a horizon, Sec. 4 asks whether static energy accounting can fix (\lambda), Sec. 5 relates it to post-Newtonian observables, and Sec. 6 identifies the additional dynamical condition underlying Michell’s exact numerical result.
+The following sections examine what depends on the remaining parameter: Sec. 3 determines when the static time coefficient has a finite-radius zero, Sec. 4 asks what a specified static energy ledger can determine about (\lambda), Sec. 5 relates it to post-Newtonian observables, and Sec. 6 identifies the additional condition underlying Michell’s exact numerical result.
 
 ![Figure 1](figure_1_family.png)
 
-*Figure 1. The metric function (A_\lambda(r)) for (\lambda\in{-1,-1/4,0,+1}). All members share the Newtonian limit and first differ at quadratic order in (r_s/r). Negative-(\lambda) members reach (A_\lambda=0) at (r=-\lambda r_s); the Schwarzschild member terminates at (r=r_s), while the (\lambda=-1/4) member terminates at (r=r_s/4). Members with (\lambda\geq0) remain positive for every finite (r>0). The horizon interpretation and domain of the negative-(\lambda) solutions are examined in Sec. 3. Source: `src_fig/figure_1_family.py`.*
+*Figure 1. The metric function (A_\lambda(r)) for (\lambda\in{-1,-1/4,0,+1}). All members share the Newtonian limit and first differ at quadratic order in (r_s/r). Negative-(\lambda) members reach (A_\lambda=0) at (r=-\lambda r_s); the Schwarzschild member terminates at (r=r_s), while the (\lambda=-1/4) member terminates at (r=r_s/4). Members with (\lambda\geq0) remain positive for every finite (r>0). Source: `src_fig/figure_1_family.py`.*

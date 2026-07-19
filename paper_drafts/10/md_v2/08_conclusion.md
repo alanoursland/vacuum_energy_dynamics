@@ -37,7 +37,7 @@ Within the static bookkeeping class examined in Sec. 4, the assembly ledger conf
 -\frac14\leq\lambda\leq\frac14
 ]
 
-and therefore does not select Schwarzschild. This establishes a conditional limitation of that accounting scheme, not a general prohibition on gravitational self-coupling.
+and therefore does not select Schwarzschild.
 
 The post-Newtonian transformation gives
 
@@ -63,6 +63,6 @@ For that member, the Painlevé–Gullstrand shift satisfies
 \frac12v^2=\frac{GM}{r}
 ]
 
-exactly. This explains why Michell’s escape-velocity calculation reproduces the Schwarzschild radius, while preserving the distinction between identifying the correct scale and deriving the full metric.
+exactly. This explains why Michell’s escape-velocity calculation reproduces the Schwarzschild radius.
 
 The result is therefore neither a unique static derivation of Schwarzschild nor a proof that simple assumptions yield nothing. The assumptions determine a complete family. Additional physical or observational information selects its Schwarzschild member.

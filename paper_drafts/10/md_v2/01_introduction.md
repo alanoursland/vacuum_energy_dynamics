@@ -61,23 +61,25 @@ The family is complete relative to the four assumptions above: any static spheri
 
 The parameter left undetermined by the assumptions appears instead in the nonlinear post-Newtonian coefficient (\beta).
 
+All claims below are made within this stated framework: assumptions (I1)–(I4), the static asymptotically flat exterior branch on which (A>0), and the resulting family (A_\lambda). Accordingly, “unique” means unique within that family. For general (\lambda<0), we establish only that (A_\lambda) has a finite positive-radius zero; this paper identifies such a zero as a horizon only for the Schwarzschild member. The accounting exclusion applies to the gradient-local static ledger and matter conventions defined in Sec. 4. PPN inferences use the family relation derived in Sec. 5 together with any experiment-specific PPN assumptions stated there.
+
 The remainder of the paper establishes three principal results.
 
-First, the family exhibits a sharp horizon dichotomy. A horizon can occur only when
+First, the family exhibits a sharp zero-set dichotomy. The static time coefficient has a finite positive-radius zero precisely when
 
 [
 \lambda<0.
 ]
 
-For (\lambda\geq0), the metric function (A_\lambda(r)) remains nonzero at every positive radius, and no horizon exists. The undetermined parameter therefore does not merely control a small higher-order correction. Its sign determines whether the exterior contains a horizon at all.
+For (\lambda\geq0), the metric function (A_\lambda(r)) remains nonzero at every positive radius. The undetermined parameter therefore does not merely control a small higher-order correction. Its sign also determines whether the static time coefficient vanishes at finite radius.
 
-Second, static energy accounting cannot select the Schwarzschild value (\lambda=-1). We examine the quasi-static assembly of two spherical shells and isolate the interaction terms for which ambiguities in the localization of gravitational energy cancel. As the convention for matter energy is varied between local and asymptotic accounting, the resulting self-energy weight is restricted to
+Second, within the static bookkeeping class defined in Sec. 4, a two-shell assembly ledger excludes the Schwarzschild value (\lambda=-1). As the convention for matter energy is varied between the local and asymptotic audits, the resulting self-energy weight is restricted to
 
 [
 -\frac14\leq\lambda\leq\frac14.
 ]
 
-The entire interval excludes the Schwarzschild value. Thus static accounting does not merely leave (\lambda) undetermined; under the assumptions considered here, it cannot reproduce the self-sourcing strength required by the Schwarzschild exterior. Equivalently, the nonlinear source term associated with Schwarzschild is four times the standard Newtonian gravitational field-energy density.
+The entire interval excludes the Schwarzschild value. In the same gradient-local convention, the nonlinear source term associated with Schwarzschild is four times the standard Newtonian gravitational field-energy density.
 
 Third, the family admits a direct parametrized post-Newtonian interpretation. After transformation to isotropic coordinates, we find
 
@@ -91,7 +93,7 @@ for every member and
 \beta-1=\lambda+1.
 ]
 
-Within this family, the PPN parameter (\beta) therefore directly determines the self-energy weight:
+The PPN parameter (\beta) therefore directly determines the family parameter:
 
 [
 \lambda=\beta-2.
@@ -111,13 +113,13 @@ selects
 
 to the same accuracy.
 
-This relation also connects weak-field observations to the horizon dichotomy. Since a horizon exists precisely when (\lambda<0), the equivalent condition within the family is
+This relation also connects weak-field observations to the zero-set dichotomy. A finite positive-radius zero exists precisely when
 
 [
 \beta<2.
 ]
 
-This does not mean that Mercury directly probes a black-hole horizon. Rather, once the one-parameter family is assumed, a weak-field measurement of (\beta) determines the same parameter that controls the strong-field horizon structure. The family members previously proposed by Shuler correspond to values of (\beta) already excluded by perihelion data, so they do not require strong-field observations to be distinguished from Schwarzschild.
+A weak-field measurement of (\beta) thus determines the same parameter that controls the finite-radius zero structure. The family members previously proposed by Shuler correspond to values of (\beta) already excluded by perihelion data, so they do not require strong-field observations to be distinguished from Schwarzschild.
 
 The family also clarifies Michell’s coincidence. The Schwarzschild member is unique within the class in admitting a Painlevé–Gullstrand slicing for which particles falling from rest at infinity obey the exact Newtonian-looking velocity relation
 
@@ -133,6 +135,6 @@ r=\frac{2GM}{c^2}.
 
 Michell’s calculation was therefore not a derivation of the Schwarzschild metric: Newtonian mechanics alone does not determine the relativistic geometry or establish the existence of a horizon. Conversely, the numerical agreement is not devoid of explanation. Once the Schwarzschild member has been selected by dynamics or observation, its Painlevé–Gullstrand description explains why Michell’s Newtonian calculation gives the exact horizon radius.
 
-The three historical positions can then be reconciled. The impossibility result is correct for the stated accounting assumptions: they do not uniquely determine Schwarzschild. The family position identifies the precise residual freedom left by those assumptions. Successful possibility derivations reach Schwarzschild only by introducing an additional selector, such as a dynamical law, a coordinate-slicing condition with physical content, or an observational constraint. Such an additional input is not optional; it is exactly what fixes (\lambda=-1).
+The three historical positions can then be reconciled. The base assumptions do not uniquely determine Schwarzschild; they leave the residual freedom parameterized by (\lambda). Successful possibility derivations reach Schwarzschild by introducing an additional selector, such as a dynamical law, a coordinate-slicing condition with physical content, or an observational constraint.
 
-Section 2 derives the complete one-parameter family. Section 3 establishes the horizon dichotomy. Section 4 develops the static-accounting no-go result. Section 5 derives the PPN dictionary and observational constraints. Section 6 analyzes the Painlevé–Gullstrand infall profile and Michell’s coincidence. Section 7 discusses the implications for simple derivations of the Schwarzschild exterior, and Section 8 describes the accompanying symbolic verification scripts.
+Section 2 derives the complete one-parameter family. Section 3 establishes the finite-radius zero dichotomy. Section 4 develops the conditional static-accounting no-go result. Section 5 derives the PPN dictionary and observational constraints. Section 6 analyzes the Painlevé–Gullstrand infall profile and Michell’s coincidence. Section 7 discusses the implications for simple derivations of the Schwarzschild exterior, and Section 8 summarizes the conclusions.

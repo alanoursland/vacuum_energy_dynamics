@@ -1,4 +1,4 @@
-"""Standalone symbolic checks for the horizon and river-coordinate results."""
+"""Standalone symbolic checks for finite-radius zeros and river coordinates."""
 
 import sympy as sp
 
@@ -108,22 +108,22 @@ def kretschmann(metric, coords):
 G, M, c, r_s = sp.symbols("G M c r_s", positive=True)
 r = sp.Symbol("r", positive=True)
 
-# Michell radius and family-wide horizon dichotomy.
+# Michell radius and family-wide finite-radius zero dichotomy.
 r_michell = sp.solve(sp.Eq(c**2 / 2, G * M / r), r)[0]
 check("Michell radius is 2GM/c^2", is_zero(r_michell - 2 * G * M / c**2))
 
 lam_neg = sp.Symbol("lambda_minus", negative=True)
 lam_pos = sp.Symbol("lambda_plus", positive=True)
-r_h = -lam_neg * r_s
+r_0 = -lam_neg * r_s
 A_neg = (1 + lam_neg * r_s / r) ** (-1 / lam_neg)
 A_pos = (1 + lam_pos * r_s / r) ** (-1 / lam_pos)
 check(
-    "lambda<0 gives a horizon at -lambda r_s",
-    bool(r_h.is_positive) and is_zero(sp.limit(A_neg, r, r_h, dir="+")),
+    "lambda<0 gives a finite-radius zero at -lambda r_s",
+    bool(r_0.is_positive) and is_zero(sp.limit(A_neg, r, r_0, dir="+")),
 )
-check("lambda=-1 puts the horizon at r_s", is_zero(r_h.subs(lam_neg, -1) - r_s))
-check("lambda=0 exponential member is horizonless", bool(sp.exp(-r_s / r).is_positive))
-check("lambda>0 members are horizonless", bool(A_pos.is_positive))
+check("lambda=-1 puts the Schwarzschild horizon at r_s", is_zero(r_0.subs(lam_neg, -1) - r_s))
+check("lambda=0 exponential member has no finite-radius zero", bool(sp.exp(-r_s / r).is_positive))
+check("lambda>0 members have no finite-radius zero", bool(A_pos.is_positive))
 
 # The Michell route has no spatial response; AB=1 gives gamma=1.
 u = sp.Symbol("u", positive=True)

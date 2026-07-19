@@ -65,8 +65,6 @@ and hence
 
 That interval excludes the Schwarzschild value (\lambda=-1).
 
-This is a conditional result. It applies to the specified local field density and the audited matter conventions. It does not exclude every possible definition of gravitational energy or every dynamical self-coupling construction. Its significance is narrower and more concrete: a natural static ledger does not reproduce the coefficient required by Schwarzschild.
-
 The PPN calculation supplies a different kind of information. For the entire family,
 
 [
@@ -157,12 +155,4 @@ occurs at
 r=r_s.
 ]
 
-Michell’s calculation therefore identifies the correct scale, while the Schwarzschild geometry explains why the Newtonian-looking relation becomes exact in this representation. The calculation does not by itself derive the Schwarzschild metric.
-
-## 7.4 Scope
-
-The classification is complete relative to the assumptions stated in Sec. 2: static spherical symmetry, asymptotic flatness, areal radius, the exact flux law in a monotonic potential variable, (AB=1), and a constant nonlinear coefficient.
-
-Relaxing these assumptions enlarges the candidate space and is outside the present analysis.
-
-The paper also does not attempt to derive the Einstein equations, construct a general theory of gravitational energy, or classify the global geometry of every member. Its purpose is narrower: to determine what the shared static assumptions imply, identify the freedom they leave unresolved, and show how that freedom appears in standard post-Newtonian and Painlevé–Gullstrand descriptions.
+Michell’s calculation therefore identifies the correct scale, while the Schwarzschild geometry explains why the Newtonian-looking relation becomes exact in this representation.

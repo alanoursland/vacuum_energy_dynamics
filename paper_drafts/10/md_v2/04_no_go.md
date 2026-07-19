@@ -538,9 +538,7 @@ The calculation establishes the following result.
 > ]
 > is excluded.
 
-The result is stronger than the statement that static bookkeeping leaves (\lambda) undetermined. Under the specified localization and convention class, it selects values near zero rather than the Schwarzschild value.
-
-It is not a theorem that every conceivable static energy argument fails. Such a universal statement would require proving that all admissible localizations and matter conventions reduce to the class above. The invariant assembly process fixes the total energy, but the matter–field division remains an additional structural choice.
+The result is stronger than underdetermination: the resulting interval lies near zero rather than at the Schwarzschild value.
 
 ## 4.6 The factor-of-four mismatch
 
@@ -619,33 +617,13 @@ to the field cross energy. To preserve the correct total, the matter ledger must
 +3U.
 ]
 
-Thus the Schwarzschild nonlinearity cannot be identified with the standard Newtonian gradient-energy density counted once. Within the present bookkeeping scheme, its coefficient differs by a factor of four in magnitude.
+Thus the Schwarzschild nonlinearity cannot be identified with the standard Newtonian gradient-energy density counted once. In this localization, its coefficient differs by a factor of four in magnitude.
 
 ## 4.7 Interpretation
 
 The two-shell assembly exposes the distinction between energy conservation and dynamical self-coupling.
 
-Energy conservation determines the total interaction energy:
-
-[
-E_{\rm int}=-U.
-]
-
-It does not uniquely determine the local gravitational energy density or its division from matter energy. Once a particular gradient-local density and a restricted matter convention are imposed, the resulting coefficient lies in
-
-[
-\left[-\frac14,\frac14\right].
-]
-
-The Schwarzschild coefficient
-
-[
-\lambda=-1
-]
-
-therefore does not emerge from that static ledger.
-
-This identifies the obstruction more precisely than the statement that Newtonian and special-relativistic reasoning cannot determine the second-order metric. Within the family, the missing information is one coefficient. Static accounting constrains that coefficient only after additional localization choices are made, and the resulting range does not include the general-relativistic value.
+Energy conservation determines the total interaction energy, but converting that invariant total into a self-coupling coefficient requires the additional localization and matter-ledger choices stated in the theorem. The calculation therefore isolates the missing information as one nonlinear coefficient rather than deriving it from the assembly energy alone.
 
 Related bootstrapped-Newtonian constructions introduce an explicit nonlinear coupling and select its value by matching the Schwarzschild post-Newtonian expansion. The analysis above explains why such matching is not replaced by the static accounting considered here: the desired coupling is dynamical information, not a consequence of the invariant assembly energy alone.
 

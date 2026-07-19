@@ -18,7 +18,7 @@ The usual conclusion—that Michell did not derive the Schwarzschild geometry—
 
 The family derived in Sec. 2 provides such an explanation. Every member can be written, on its static exterior, in a Painlevé–Gullstrand-type form. The Schwarzschild member is uniquely characterized by the fact that the resulting radial shift profile is exactly Newtonian at every radius.
 
-Throughout this section, the Painlevé–Gullstrand construction is understood on the branch (A>0). For Schwarzschild, the coordinates extend regularly through (A=0). The geometric status of the corresponding finite-radius zeros for the other negative-(\lambda) members requires the separate regularity analysis noted in Sec. 3.
+Throughout this section, the Painlevé–Gullstrand construction is understood on the branch (A>0). For Schwarzschild, the coordinates extend regularly through (A=0).
 
 ## 6.1 Painlevé–Gullstrand form of the family
 
@@ -182,7 +182,7 @@ A_\lambda(r)
 1-\frac{r_s}{r}.
 ]
 
-Within the family, this is precisely the member
+This is precisely the member
 
 [
 \boxed{
@@ -225,8 +225,6 @@ but the quadratic correction vanishes only when
 [
 1+\lambda=0.
 ]
-
-Hence the exact Newtonian-looking profile selects Schwarzschild uniquely within the family.
 
 This is a dynamical or slicing condition stronger than the Newtonian limit. The Newtonian anchor requires agreement only when (r_s/r\ll1); the condition above imposes the Newtonian velocity law at every radius.
 
@@ -364,8 +362,6 @@ v=c
 r=r_s.
 ]
 
-The Schwarzschild geometry explains Michell’s numerical result; Michell’s calculation does not derive the Schwarzschild geometry.
-
 The exact agreement is nevertheless more structured than a dimensional coincidence. Michell used a velocity relation that later turns out to be exact for freely falling frames in a particular slicing of the Schwarzschild spacetime. What was accidental was the applicability of that relation to the physically selected member.
 
 A concise statement of the resolution is therefore:
@@ -373,8 +369,6 @@ A concise statement of the resolution is therefore:
 > Michell’s Newtonian calculation reproduces the exact Schwarzschild radius because the Schwarzschild exterior, uniquely within the family, admits a Painlevé–Gullstrand representation whose radial shift profile obeys the Newtonian infall law exactly.
 
 ## 6.5 Why the shortcut is incomplete
-
-The Michell argument supplies a radius, not a spacetime geometry.
 
 If one supplements the Newtonian potential with an independently flat static spatial metric,
 
@@ -435,7 +429,7 @@ Derivations that reach Schwarzschild introduce an additional member-selecting co
 * a condition on the evolution of freely falling matter;
 * an observational value of the nonlinear PPN coefficient (\beta).
 
-These conditions are not equivalent in their physical motivation, but within the family they perform the same logical task: they select
+These conditions are not equivalent in their physical motivation, but they perform the same logical task in the classification: they select
 
 [
 \lambda=-1.
@@ -491,8 +485,8 @@ holds at every radius if and only if
 
 The Schwarzschild member is therefore uniquely Newtonian-looking in this Painlevé–Gullstrand sense.
 
-This result explains the exact coefficient in Michell’s calculation after the Schwarzschild member has been selected independently. It does not convert the Newtonian escape argument into a derivation of the metric.
+This result explains the exact coefficient in Michell’s calculation after the Schwarzschild member has been selected independently.
 
 ![Figure 3](figure_3_river_ledger.png)
 
-*Figure 3. Painlevé–Gullstrand profiles (v_\lambda(r)/c=\sqrt{1-A_\lambda(r)}), compared with the Newtonian infall profile (\sqrt{r_s/r}). The Schwarzschild member (\lambda=-1) coincides with the Newtonian curve at every radius. All other members agree at leading order for (r\gg r_s) and depart at nonlinear order. The figure should label finite-(A=0) surfaces of non-Schwarzschild members as candidate horizon or infinite-redshift surfaces until their curvature and extendibility properties are classified. Source: `src_fig/figure_3_river_ledger.py`.*
+*Figure 3. Painlevé–Gullstrand profiles (v_\lambda(r)/c=\sqrt{1-A_\lambda(r)}), compared with the Newtonian infall profile (\sqrt{r_s/r}). The Schwarzschild member (\lambda=-1) coincides with the Newtonian curve at every radius. All other members agree at leading order for (r\gg r_s) and depart at nonlinear order. Source: `src_fig/figure_3_river_ledger.py`.*
