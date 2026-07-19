@@ -132,6 +132,8 @@ c\sqrt{
 
 All members therefore admit the same flat-slice form; they differ in the radial profile (v_\lambda(r)).
 
+The availability of Painlevé–Gullstrand-type coordinates is therefore not the selector. The additional condition that selects Schwarzschild is exact equality with the Newtonian velocity profile at every radius.
+
 ## 6.2 The unique Newtonian profile
 
 The Newtonian speed of a particle falling from rest at infinity satisfies

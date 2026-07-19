@@ -28,6 +28,11 @@ to be fixed by the venue style.
   Gravit. **1**, 9–18 (1970). [`deser1970selfinteraction`]
 - Duff, M. J., "Quantum tree graphs and the Schwarzschild solution,"
   Phys. Rev. D **7**, 2317–2326 (1973). [`duff1973quantum`]
+- Fienga, A., Bigot, L., Mary, D., Deram, P., Di Ruscio, A., Bernus,
+  L., Gastineau, M., and Laskar, J., "Evolution of INPOP planetary
+  ephemerides and Bepi-Colombo simulations," Proc. Int. Astron. Union
+  **15**(S364), 31–51 (2022); arXiv:2111.04499.
+  [`fienga2022inpop20a`]
 - Gruber, R. P., Price, R. H., Matthews, S. M., Cordwell, W. R., and
   Wagner, L. F., "The impossibility of a simple derivation of the
   Schwarzschild metric," Am. J. Phys. **56**, 265–269 (1988).
@@ -91,3 +96,6 @@ to be fixed by the venue style.
 - Will, C. M., "The confrontation between general relativity and
   experiment," Living Rev. Relativity **17**, 4 (2014).
   [`will2014confrontation`]
+- Williams, J. G., Turyshev, S. G., and Boggs, D. H., "Progress in
+  lunar laser ranging tests of relativistic gravity," Phys. Rev. Lett.
+  **93**, 261101 (2004). [`williams2004llr`]

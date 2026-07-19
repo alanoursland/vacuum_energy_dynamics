@@ -41,6 +41,8 @@ Within the static bookkeeping class examined in Sec. 4, the assembly ledger conf
 
 and therefore does not select Schwarzschild.
 
+The invariant assembly energy remains correct: the conditional tension concerns its localization and division between the matter and field columns, not energy conservation itself.
+
 The post-Newtonian transformation gives
 
 [

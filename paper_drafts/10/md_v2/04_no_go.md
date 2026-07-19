@@ -20,6 +20,8 @@ The resulting no-go statement is conditional. It applies when the gravitational 
 
 and therefore excludes the Schwarzschild value.
 
+The invariant assembly energy remains (E_{\rm int}=-U) throughout. The ledger is internally consistent, but within the stated localization and matter conventions it does not yield the Schwarzschild nonlinear coefficient. This is not a claim that general relativity violates energy conservation.
+
 ## 4.1 Why universal coupling does not determine (\lambda)
 
 In the weak field, let
@@ -502,7 +504,7 @@ The calculation establishes the following result.
 > **Conditional static-accounting no-go.**
 > Assume:
 >
-> 1. the metric family and constant self-sourcing coefficient of Sec. 2;
+> 1. the metric family and constant nonlinear coefficient of Sec. 2;
 > 2. a gradient-local gravitational density
 >    [
 >    u_{\rm field}
@@ -538,9 +540,9 @@ The calculation establishes the following result.
 > ]
 > is excluded.
 
-The result is stronger than underdetermination: the resulting interval lies near zero rather than at the Schwarzschild value.
+Within the stated ledger class, the result is an exclusion rather than mere underdetermination: the resulting interval lies near zero rather than at the Schwarzschild value. Its scope is the specified matter–field split, not energy conservation in general relativity.
 
-## 4.6 The factor-of-four mismatch
+## 4.6 Localization corollary: the factor-of-four coefficient
 
 The Schwarzschild member has
 

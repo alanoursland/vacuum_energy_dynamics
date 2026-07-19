@@ -77,7 +77,7 @@ This assumption fixes both the mass scale (r_s) and the leading weak-field behav
 
 ### (I2) Exact flux law in a potential variable
 
-We assume that there exists a monotonic function (V(A)) whose radial gradient obeys an exact Gauss-type law in the vacuum exterior:
+We investigate the consequences of requiring that there exist a monotonic function (V(A)) whose radial gradient obeys an exact Gauss-type law in the vacuum exterior:
 
 [
 \Delta V
@@ -125,7 +125,7 @@ V(r)
 
 The central freedom is that the flux law does not specify which function of the metric coefficient (A) should play the role of (V). An exact flux law for (A), for (\ln A), and for (1/A) produces different nonlinear metrics even though all choices agree at Newtonian order after normalization.
 
-This flux law is an assumption of the bookkeeping construction; it is not asserted here as a general consequence of the Einstein equations.
+This exact flux law is the common structural assumption being audited. It is an assumption of the construction, not a claim that such a variable must be fundamental or a general consequence of the Einstein equations.
 
 ### (I3) Time–radial compensation
 
@@ -149,6 +149,8 @@ B(r)=\frac{1}{A(r)}.
 
 This relation holds for the Schwarzschild exterior and appears either as an assumption or as the result of an auxiliary argument in the simple derivations under consideration. Kassner (2015) discusses its status in detail, and Jacobson (2007) gives a general condition under which it holds.
 
+It is not a consequence of static spherical symmetry alone. Here it is an explicit assumption defining the metric class under study.
+
 The condition expresses a reciprocal relation between the time and radial coefficients. For a stationary clock,
 
 [
@@ -168,7 +170,7 @@ The condition also fixes the time–radial contribution to the metric determinan
 
 Most importantly for the logic of this paper, every member derived below satisfies (AB=1). The condition therefore reduces the number of unknown metric functions but cannot select one member of the family over another.
 
-### (I4) Constant self-sourcing coefficient
+### (I4) Constant nonlinear coefficient
 
 Assumption (I2) leaves an unrestricted choice of the potential variable (V(A)). We reduce this freedom by requiring that, when the flux equation is rewritten in a fixed metric variable, the coefficient of the nonlinear squared-gradient term be a constant of the theory rather than a function of the local field strength.
 
@@ -180,7 +182,7 @@ The assumption does not require the nonlinear coefficient to be nonzero. It perm
 \lambda=0,
 ]
 
-corresponding to no squared-gradient self-sourcing in the chosen metric variable. It requires only that
+corresponding to no squared-gradient nonlinearity in the chosen metric variable. It requires only that
 
 [
 \lambda=\text{constant},
@@ -190,7 +192,7 @@ rather than (\lambda=\lambda(A)).
 
 The completeness result below is therefore relative to assumptions (I1)–(I4), not a classification of all possible static, spherically symmetric metrics.
 
-## 2.2 From variable choice to self-sourcing
+## 2.2 From variable choice to the nonlinear equation
 
 Define
 
@@ -312,15 +314,15 @@ The left-hand side contains the ordinary spherical Laplacian,
 \Delta s=s''+\frac{2}{r}s',
 ]
 
-while the right-hand side is nonlinear in the field gradient. The paper interprets
+while the right-hand side is nonlinear in the field gradient. The mathematics at this stage establishes the term
 
 [
 \lambda(s')^2
 ]
 
-as the contribution of the field gradient to its own source, with (\lambda) giving the constant self-sourcing weight.
+and its constant coefficient (\lambda).
 
-At this stage, however, the distinction between mathematics and interpretation should be kept explicit. The differential identity establishes the nonlinear term and its coefficient. Interpreting ((s')^2) as a gravitational energy density requires the additional accounting analysis of Sec. 4.
+Only with additional assumptions may (\lambda(s')^2) be interpreted as the contribution of the field gradient to its own source. Interpreting ((s')^2) as a gravitational energy density requires the accounting choices examined in Sec. 4.
 
 The value
 
@@ -394,7 +396,7 @@ and dividing by (F'(s)) yields
 -\frac{F''(s)}{F'(s)}(s')^2.
 ]
 
-The effective self-sourcing coefficient is therefore
+The effective nonlinear coefficient is therefore
 
 [
 \lambda(s)
@@ -649,6 +651,23 @@ This result is also the continuous limit of the general expression:
 
 e^{-r_s/r}.
 ]
+
+> **Classification theorem.** Consider a connected, static, spherically symmetric, asymptotically flat exterior branch with (A>0), written in areal coordinates. Impose the Newtonian anchor (I1), an exact vacuum Gauss law for a monotonic variable (V=F(\ln A)) (I2), the reciprocal condition (AB=1) (I3), and the requirement that (-F''/F') be a constant (\lambda) (I4). Then the flux law is equivalent to
+> [
+> \Delta s=\lambda(s')^2,
+> \qquad
+> s=\ln A,
+> ]
+> and the Newtonian and asymptotic conditions determine
+> [
+> A_\lambda(r)
+> =============
+>
+> \left(1+\lambda\frac{r_s}{r}\right)^{-1/\lambda},
+> \qquad
+> B_\lambda(r)=A_\lambda(r)^{-1},
+> ]
+> with (A_0=e^{-r_s/r}) by continuity. Conversely, every constant-(\lambda) member satisfies (I1)–(I4) on its static domain. The family is therefore complete relative to those assumptions, while the value of (\lambda) remains unselected.
 
 ## 2.5 Distinguished members
 

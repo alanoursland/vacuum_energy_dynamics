@@ -19,12 +19,12 @@ These works represent three broad positions. The first holds that simple energy-
 We therefore fix four ingredients that recur in energy-accounting approaches:
 
 1. the Newtonian weak-field limit;
-2. an exact Gauss-type flux law written in a static potential variable;
+2. the requirement that a monotonic static potential variable obey an exact vacuum Gauss law;
 3. the time–radial compensation condition
    [
    g_{tt}g_{rr}=-1;
    ]
-4. a constant weight governing the contribution of gravitational field energy to its own source.
+4. a constant coefficient for the nonlinear squared-gradient term obtained when the flux law is written in (s=\ln A).
 
 For a static, spherically symmetric exterior, these assumptions determine the metric up to one dimensionless parameter. Writing
 
@@ -43,7 +43,7 @@ A_\lambda(r)
 B(r)=\frac{1}{A_\lambda(r)}.
 ]
 
-The parameter (\lambda) is the constant self-energy counting weight. The Schwarzschild exterior is recovered for
+Mathematically, (\lambda) is the constant coefficient of the squared-gradient term. Section 4 examines the additional assumptions under which it may be interpreted as a self-energy counting weight. The Schwarzschild exterior is recovered for
 
 [
 \lambda=-1,
@@ -55,7 +55,9 @@ for which
 A_{-1}(r)=1-\frac{r_s}{r}.
 ]
 
-The family is complete relative to the four assumptions above: any static spherical exterior satisfying them belongs to this one-parameter class. All members have the same Newtonian limit and the same first post-Newtonian spatial-curvature parameter,
+The primary result is the completeness statement: any static spherical exterior satisfying the four assumptions above belongs to this one-parameter class. This separates construction from selection. Assumptions (I1)–(I4) construct the candidate class but do not select (\lambda=-1); any derivation that reaches Schwarzschild must supply an additional physical, kinematic, or observational condition, whether or not that condition is presented as a separate step.
+
+All members have the same Newtonian limit and the same first post-Newtonian spatial-curvature parameter,
 
 [
 \gamma=1.
@@ -65,9 +67,9 @@ The parameter left undetermined by the assumptions appears instead in the nonlin
 
 All claims below are made within this stated framework: assumptions (I1)–(I4), the static asymptotically flat exterior branch on which (A>0), and the resulting family (A_\lambda). Accordingly, “unique” means unique within that family. For general (\lambda<0), we establish only that (A_\lambda) has a finite positive-radius zero; this paper identifies such a zero as a horizon only for the Schwarzschild member. The accounting exclusion applies to the gradient-local static ledger and matter conventions defined in Sec. 4. PPN inferences use the family relation derived in Sec. 5 together with any experiment-specific PPN assumptions stated there.
 
-The remainder of the paper establishes three principal results.
+Beyond the classification theorem, the paper develops four consequences with different logical status.
 
-First, the family exhibits a sharp zero-set dichotomy. The static time coefficient has a finite positive-radius zero precisely when
+First, as an immediate structural corollary, the family exhibits a sharp zero-set dichotomy. The static time coefficient has a finite positive-radius zero precisely when
 
 [
 \lambda<0.
@@ -75,7 +77,7 @@ First, the family exhibits a sharp zero-set dichotomy. The static time coefficie
 
 For (\lambda\geq0), the metric function (A_\lambda(r)) remains nonzero at every positive radius. The undetermined parameter therefore does not merely control a small higher-order correction. Its sign also determines whether the static time coefficient vanishes at finite radius.
 
-Second, within the static bookkeeping class defined in Sec. 4, a two-shell assembly ledger excludes the Schwarzschild value (\lambda=-1). As the convention for matter energy is varied between the local and asymptotic audits, the resulting self-energy weight is restricted to
+Second, as a conditional result within the static bookkeeping class defined in Sec. 4, a two-shell assembly ledger excludes the Schwarzschild value (\lambda=-1). As the convention for matter energy is varied between the local and asymptotic audits, the resulting self-energy weight is restricted to
 
 [
 -\frac14\leq\lambda\leq\frac14.
@@ -83,7 +85,7 @@ Second, within the static bookkeeping class defined in Sec. 4, a two-shell assem
 
 The entire interval excludes the Schwarzschild value. In the same gradient-local convention, the nonlinear source term associated with Schwarzschild is four times the standard Newtonian gravitational field-energy density.
 
-Third, the family admits a direct parametrized post-Newtonian interpretation. After transformation to isotropic coordinates, we find
+Third, as an operational result, the family admits a direct parametrized post-Newtonian interpretation. After transformation to isotropic coordinates, we find
 
 [
 \gamma=1
@@ -123,7 +125,7 @@ This relation also connects weak-field observations to the zero-set dichotomy. A
 
 A weak-field measurement of (\beta) thus determines the same parameter that controls the finite-radius zero structure. The family members previously proposed by Shuler correspond to values of (\beta) already excluded by perihelion data, so they do not require strong-field observations to be distinguished from Schwarzschild.
 
-The family also clarifies Michell’s coincidence. The Schwarzschild member is unique within the class in admitting a Painlevé–Gullstrand slicing for which particles falling from rest at infinity obey the exact Newtonian-looking velocity relation
+Fourth, the family gives a conceptual explanation of Michell’s coincidence. The Schwarzschild member is unique within the class in admitting a Painlevé–Gullstrand slicing for which particles falling from rest at infinity obey the exact Newtonian-looking velocity relation
 
 [
 \frac12v^2=\frac{GM}{r}

@@ -11,7 +11,7 @@ A_\lambda(r)
 \right)^{-1/\lambda},
 ]
 
-but does not select the Schwarzschild value
+but do not select the Schwarzschild value
 
 [
 \lambda=-1.
@@ -485,19 +485,19 @@ The PPN dictionary converts any bound on (\beta) directly into a bound on (\lamb
 \lambda+1=\beta-1.
 ]
 
-Representative solar-system analyses constrain (\beta-1) at approximately the (10^{-4}) level or better. For example, an LLR analysis combined with the Cassini constraint on (\gamma) found
+Representative solar-system analyses constrain (\beta-1) at approximately the (10^{-4}) level or better. An LLR analysis combined with the Cassini constraint on (\gamma) found (Williams, Turyshev, and Boggs 2004)
 
 [
 \beta-1=(1.2\pm1.1)\times10^{-4},
 ]
 
-while the INPOP20a planetary ephemeris analysis reported a conservative bound of approximately
+while the INPOP20a planetary ephemeris analysis reported a conservative bound of approximately (Fienga et al. 2022)
 
 [
 |\beta-1|\lesssim7.2\times10^{-5}.
 ]
 
-The numerical constraint quoted in a final version should be tied to a particular dataset, fit, and confidence convention rather than referred to only as “the modern bound.”
+The LLR value combines a strong-equivalence-principle result with the Cassini determination of (\gamma), whereas the INPOP20a number is a conservative acceptance bound from alternative planetary ephemerides. Because these are not identical statistical constructions, we use them only to establish the relevant order of magnitude.
 
 At the order of magnitude relevant here, the result is
 
@@ -682,4 +682,4 @@ Thus observational data select the Schwarzschild member even though the Section 
 
 ![Figure 2](figure_2_beta_dictionary.png)
 
-*Figure 2. The relation (\beta=\lambda+2). The shaded vertical strip represents the static-accounting interval (-1/4\leq\lambda\leq1/4); its endpoints correspond to the two matter-energy audits considered in Sec. 4. The non-Schwarzschild Shuler members occur at (\lambda=-1/2) and (\lambda=+1/2). All lie far from the observationally selected region near (\lambda=-1). The inset should state the particular observational dataset, confidence convention, and numerical bound used in its construction. Source: `src_fig/figure_2_beta_dictionary.py`.*
+*Figure 2. The relation (\beta=\lambda+2). The shaded vertical strip represents the static-accounting interval (-1/4\leq\lambda\leq1/4); its endpoints correspond to the two matter-energy audits considered in Sec. 4. The non-Schwarzschild Shuler members occur at (\lambda=-1/2) and (\lambda=+1/2). All lie far from the observationally selected region near (\lambda=-1). The inset shows the order-of-magnitude LLR+Cassini constraint (|\beta-1|\lesssim10^{-4}) reported by Williams, Turyshev, and Boggs (2004); it is illustrative rather than a new confidence interval. Source: `src_fig/figure_2_beta_dictionary.py`.*
