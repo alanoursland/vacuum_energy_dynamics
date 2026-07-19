@@ -1,5 +1,12 @@
 # Gravity as Vacuum Burden Reduction
 
+> **Historical status:** This April 2026 development note predates the P9
+> sign selection, Trial C1, the field-equation closure, and P10. Its proposed
+> positive-burden mechanism was not established as the long-range force.
+> The narrower, updated curvature-combining account is developed in
+> `curvature_combining_equal_spheres.md`. That account requires no vacuum
+> creation or destruction.
+
 ## What This Document Is
 
 This document is a development note.
