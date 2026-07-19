@@ -81,9 +81,9 @@ r_0=r_s
 
 and is the standard Schwarzschild horizon.
 
-For other negative values of (\lambda), the family likewise contains a finite-radius zero at (r_0=-\lambda r_s). The present paper does not classify the local regularity or global causal character of those surfaces. They will therefore be referred to only as finite-radius zeros of the static time coefficient.
+For other negative values of (\lambda), the family likewise contains a finite-radius zero at (r_0=-\lambda r_s). This paper does not classify the local regularity or global causal character of those surfaces and refers to them only as zeros of the static time coefficient.
 
-This distinction is sufficient for the present argument. The weak-field expansion is
+The weak-field expansion is
 
 [
 A_\lambda(r)
@@ -96,11 +96,9 @@ A_\lambda(r)
 \frac{r_s}{r}
 \right)^2
 +
-O!\left(
+O\!\left(
 \frac{r_s^3}{r^3}
 \right).
 ]
 
-Thus (\lambda) controls both the first nonlinear weak-field correction and the existence of a finite-radius zero. The assumptions of Sec. 2 leave this parameter undetermined.
-
-Section 4 asks whether a static gravitational-energy ledger can supply the missing condition. Section 5 instead identifies (\lambda) through the post-Newtonian parameter (\beta).
+The parameter (\lambda) controls both the first nonlinear weak-field correction and the existence of a finite-radius zero. The assumptions of Sec. 2 leave it undetermined.

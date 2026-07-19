@@ -1,4 +1,4 @@
-# 5. Operational meaning of the parameter (\lambda)
+# 5. PPN identification of the parameter (\lambda)
 
 Sections 2–4 leave one dimensionless parameter undetermined. The static assumptions supply a family of metrics,
 
@@ -17,29 +17,25 @@ but do not select the Schwarzschild value
 \lambda=-1.
 ]
 
-The parameter is nevertheless observable. It enters the weak-field metric at nonlinear order and can be identified with the standard parametrized post-Newtonian parameter (\beta).
-
-This section transforms the family from areal to isotropic coordinates, derives the relations
+The parameter enters the weak-field metric at nonlinear order. Transforming the family from areal to isotropic coordinates gives
 
 [
 \gamma=1,
 \qquad
-\beta=\lambda+2,
+\beta=\lambda+2.
 ]
 
-and identifies which classical solar-system tests can distinguish the family members.
-
-The result gives (\lambda) an operational meaning independent of the local energy-density interpretation used in Sec. 4. Throughout this section, the identification of (\lambda) with (\beta) refers to the family (A_\lambda); assumptions needed to apply particular PPN tests are stated where those tests are used.
+This identifies (\lambda) independently of the local energy-density interpretation used in Sec. 4. Its application to particular PPN tests requires the test-specific assumptions stated below.
 
 ## 5.1 PPN form of the metric
 
-The parametrized post-Newtonian formalism expresses a weak, slowly varying gravitational field in a standard coordinate form. For a static spherical source, the relevant isotropic-coordinate metric is
+The parametrized post-Newtonian formalism expresses a weak, slowly varying gravitational field in a standard coordinate form (Will 2014). For a static spherical source, the relevant isotropic-coordinate metric is
 
 [
 ds^2
 ====
 
-*
+-
 
 \left(
 1-2U+2\beta U^2+O(U^3)
@@ -180,11 +176,12 @@ The spatial conformal factor is consequently
 Since
 
 [
-w=\frac{r_s}{\rho}
-==================
-
-# \frac{2GM}{c^2\rho}
-
+w
+=
+\frac{r_s}{\rho}
+=
+\frac{2GM}{c^2\rho}
+=
 2U,
 ]
 
@@ -220,7 +217,7 @@ therefore gives
 
 for every value of (\lambda).
 
-The family is thus degenerate in the leading spatial-curvature parameter.
+The family is degenerate in the leading spatial PPN coefficient.
 
 ### 5.1.2 Temporal component
 
@@ -344,7 +341,7 @@ as required.
 
 The relation (\beta=\lambda+2) is exact as a relation between (\lambda) and the coefficient defined at first post-Newtonian order. It does not imply that the full metrics agree or differ only at that order.
 
-## 5.2 Interpretation of the PPN dictionary
+## 5.2 Interpretation of the PPN relation
 
 In the standard PPN terminology, (\beta) measures nonlinearity in the gravitational superposition law. Here that description becomes explicit: the same parameter that multiplies the nonlinear squared-gradient term in
 
@@ -354,17 +351,13 @@ In the standard PPN terminology, (\beta) measures nonlinearity in the gravitatio
 
 also determines the coefficient of (U^2) in the isotropic temporal metric.
 
-The precise operational statement is
+The relation is
 
 [
 \lambda=\beta-2.
 ]
 
-A measurement of (\beta) therefore determines which member of the family describes the exterior.
-
-This result is more robust than interpreting (\lambda(s')^2) as a local gravitational energy density. The PPN identification follows from the metric expansion and a coordinate transformation; it does not depend on choosing a local division between matter energy and field energy.
-
-The self-sourcing language may still provide a useful interpretation of (\lambda), but the directly measurable content of the parameter is its relation to (\beta).
+A measurement of (\beta) determines which member of the family describes the exterior. This conclusion follows from the metric expansion and coordinate transformation, without choosing a local division between matter and field energy.
 
 ## 5.3 Which classical tests distinguish the family?
 
@@ -380,7 +373,7 @@ A_\lambda
 
 1-\frac{r_s}{r}
 +
-O!\left(
+O\!\left(
 \frac{r_s^2}{r^2}
 \right)
 ]
@@ -401,9 +394,7 @@ Because
 
 throughout the family, every member gives the same leading light-deflection and time-delay predictions as general relativity.
 
-This does not mean that light is insensitive to all differences between the metrics. Higher-order propagation effects can depend on coefficients beyond (\gamma). The degeneracy stated here applies to the leading PPN tests.
-
-It also has nothing to do with the light ray’s own gravitational self-energy. In the standard solar-system calculation, the photon is treated as a test signal moving through the background field of the Sun.
+Higher-order propagation effects can depend on coefficients beyond (\gamma); the degeneracy applies only to the leading PPN tests.
 
 ### Perihelion precession
 
@@ -479,7 +470,7 @@ and are distinguishable using weak-field orbital data. They are not degenerate w
 
 ## 5.4 Observational determination of (\lambda)
 
-The PPN dictionary converts any bound on (\beta) directly into a bound on (\lambda):
+The PPN relation converts any bound on (\beta) directly into a bound on (\lambda):
 
 [
 \lambda+1=\beta-1.
@@ -497,7 +488,7 @@ while the INPOP20a planetary ephemeris analysis reported a conservative bound of
 |\beta-1|\lesssim7.2\times10^{-5}.
 ]
 
-The LLR value combines a strong-equivalence-principle result with the Cassini determination of (\gamma), whereas the INPOP20a number is a conservative acceptance bound from alternative planetary ephemerides. Because these are not identical statistical constructions, we use them only to establish the relevant order of magnitude.
+The LLR value combines a strong-equivalence-principle result with the Cassini determination of (\gamma), whereas the INPOP20a number is a conservative acceptance bound from alternative planetary ephemerides. The LLR inference also assumes the restricted PPN relation (\eta_N=4\beta-\gamma-3); the one-body exterior derived here does not determine the full many-body PPN sector. We use the quoted bounds only to establish the relevant order of magnitude.
 
 At the order of magnitude relevant here, the result is
 
@@ -552,7 +543,7 @@ The measured value
 
 lies far from the boundary (\beta=2) relative to current observational uncertainties.
 
-Combining the PPN dictionary with Sec. 3, weak-field measurements of (\beta) therefore determine whether (A_\lambda) has a finite-radius zero.
+Combining the PPN relation with Sec. 3, weak-field measurements of (\beta) determine whether (A_\lambda) has a finite-radius zero.
 
 ## 5.6 Relation to earlier metric reconstructions
 
@@ -570,116 +561,12 @@ and the PPN transformation shows that
 \lambda=\beta-2.
 ]
 
-Thus the observational input does not merely fix an anonymous expansion coefficient. It selects a definite member of the metric family.
+The observational input therefore selects a definite member of the metric family.
 
-Kassner’s 2019 analysis addresses a different stage: it selects among Shuler’s proposed metrics by imposing a standard relativistic generalization of Newton’s law. The present classification addresses the logically prior question of what remains under (I1)–(I4) before such a selector is imposed.
+Kassner’s 2019 analysis selects among Shuler’s proposed metrics by imposing a standard relativistic generalization of Newton’s law. The present classification gives the family before that condition is imposed.
 
-This statement should be distinguished from the stronger interpretation that (\beta) directly measures a unique, convention-independent local gravitational energy density. What is established directly is the metric relation. Interpreting (\lambda) as a self-energy counting weight depends on the construction of Sec. 2 and the additional energy discussion of Sec. 4.
-
-## 5.7 Relation to the Nordtvedt effect
-
-The Nordtvedt effect tests whether bodies with different fractions of gravitational binding energy fall at the same rate in an external gravitational field. It therefore probes the strong equivalence principle for self-gravitating bodies.
-
-In the general PPN framework, the Nordtvedt parameter contains several PPN coefficients:
-
-[
-\eta_N
-======
-
-4\beta-\gamma-3
--\frac{10}{3}\xi
--\alpha_1
-+\frac23\alpha_2
--\frac23\zeta_1
--\frac13\zeta_2.
-]
-
-Only after restricting to a fully conservative class in which the additional parameters vanish does this reduce to
-
-[
-\eta_N=4\beta-\gamma-3.
-]
-
-The static one-body exterior metric derived in this paper determines (\beta) and (\gamma), but it does not by itself specify the entire many-body PPN sector. Consequently, the reduced Nordtvedt relation should be used only with the corresponding theoretical assumptions.
-
-Within that restricted setting,
-
-[
-\gamma=1
-]
-
-and
-
-[
-\beta=\lambda+2
-]
-
-give
-
-[
-\eta_N=4(\lambda+2)-1-3
-=======================
-
-4(\lambda+1).
-]
-
-Thus the general-relativistic value
-
-[
-\eta_N=0
-]
-
-corresponds to
-
-[
-\lambda=-1.
-]
-
-Under this restriction, lunar laser ranging supplies an additional route to constraining the same PPN coefficient.
-
-It is useful to distinguish two conceptual questions:
-
-1. How does a body’s existing gravitational binding energy affect its motion in an external field?
-2. How does the gravitational field contribute to the generation of the metric itself?
-
-The Nordtvedt effect primarily addresses the first. The interpretation of (\lambda) developed in Secs. 2 and 4 concerns the second. General relativity relates the two through a complete dynamical theory, but the static exterior family alone does not prove that they must always coincide.
-
-## 5.8 Result
-
-The transformation to PPN form gives
-
-[
-\boxed{
-\gamma=1
-}
-]
-
-and
-
-[
-\boxed{
-\beta=\lambda+2
-}.
-]
-
-The consequences are:
-
-[
-\text{leading redshift, light deflection, and radar delay do not determine }\lambda;
-]
-
-[
-\text{perihelion precession and other measurements of }\beta\text{ do determine }\lambda;
-]
-
-[
-\beta\simeq1
-\quad\Rightarrow\quad
-\lambda\simeq-1.
-]
-
-Thus observational data select the Schwarzschild member even though the Section 4 ledger does not. Operationally, the free parameter left by the static assumptions is exactly the parameter measured by the nonlinear PPN coefficient (\beta).
+The metric relation does not identify a unique, convention-independent local gravitational energy density. The self-energy interpretation of (\lambda) depends on the additional accounting choices in Sec. 4.
 
 ![Figure 2](figure_2_beta_dictionary.png)
 
-*Figure 2. The relation (\beta=\lambda+2). The shaded vertical strip represents the static-accounting interval (-1/4\leq\lambda\leq1/4); its endpoints correspond to the two matter-energy audits considered in Sec. 4. The non-Schwarzschild Shuler members occur at (\lambda=-1/2) and (\lambda=+1/2). All lie far from the observationally selected region near (\lambda=-1). The inset shows the order-of-magnitude LLR+Cassini constraint (|\beta-1|\lesssim10^{-4}) reported by Williams, Turyshev, and Boggs (2004); it is illustrative rather than a new confidence interval. Source: `src_fig/figure_2_beta_dictionary.py`.*
+*Figure 2. The relation (\beta=\lambda+2). The shaded vertical strip represents the conditional interval (-1/4\leq\lambda\leq1/4); its endpoints correspond to the two matter-energy conventions in Sec. 4. The non-Schwarzschild Shuler members occur at (\lambda=-1/2) and (\lambda=+1/2). All lie far from the observationally selected region near (\lambda=-1). The inset shows the order-of-magnitude LLR+Cassini constraint (|\beta-1|\lesssim10^{-4}) reported by Williams, Turyshev, and Boggs (2004); it is illustrative rather than a new confidence interval. Source: `src_fig/figure_2_beta_dictionary.py`.*

@@ -18,7 +18,7 @@ r^2d\Omega^2,
 where
 
 [
-d\Omega^2=d\theta^2+\sin^2\theta,d\phi^2.
+d\Omega^2=d\theta^2+\sin^2\theta\,d\phi^2.
 ]
 
 The coordinate (r) is the areal radius: a sphere at fixed (r) has area (4\pi r^2). We restrict attention initially to a static branch on which (A(r)>0), and we impose asymptotic flatness,
@@ -31,11 +31,11 @@ B(r)\to1,
 r\to\infty.
 ]
 
-The derivation rests on four ingredients.
+The derivation uses three recurring ingredients and one closure condition.
 
 ## 2.1 Assumptions
 
-### (I1) Newtonian anchor
+### (I1) Newtonian weak-field condition
 
 In the weak-field regime, clocks and orbits must reproduce Newtonian gravity with potential
 
@@ -51,7 +51,7 @@ A(r)
 
 1+\frac{2\Phi}{c^2}
 +
-O!\left(\frac{\Phi^2}{c^4}\right)
+O\!\left(\frac{\Phi^2}{c^4}\right)
 =================================
 
 1-\frac{2GM}{rc^2}
@@ -75,7 +75,7 @@ A(r)=1-x+O(x^2).
 
 This assumption fixes both the mass scale (r_s) and the leading weak-field behavior. It does not determine the nonlinear terms in (A(r)).
 
-### (I2) Exact flux law in a potential variable
+### (I2) Areal-coordinate flux law
 
 We investigate the consequences of requiring that there exist a monotonic function (V(A)) whose radial gradient obeys an exact Gauss-type law in the vacuum exterior:
 
@@ -89,6 +89,8 @@ r^2\frac{dV}{dr}
 =0.
 ]
 
+Here (\Delta) denotes the ordinary radial flux operator constructed from the areal coordinate (r). It is not the spacetime wave operator or the Laplace–Beltrami operator of a curved spatial slice.
+
 Equivalently,
 
 [
@@ -97,7 +99,7 @@ Equivalently,
 
 The factor (4\pi r^2) is the area of a sphere of areal radius (r). Thus (V'(r)) is the radial field strength associated with the chosen potential variable, while (4\pi r^2V'(r)) is its total flux through the sphere.
 
-The flux is constant because every sphere in the vacuum exterior encloses the same total source under the assumed bookkeeping law. The local field strength is not constant; rather,
+The flux is constant because every sphere in the vacuum exterior encloses the same source under the postulated flux law. The local field strength varies as
 
 [
 V'(r)\propto\frac{1}{r^2}.
@@ -125,9 +127,9 @@ V(r)
 
 The central freedom is that the flux law does not specify which function of the metric coefficient (A) should play the role of (V). An exact flux law for (A), for (\ln A), and for (1/A) produces different nonlinear metrics even though all choices agree at Newtonian order after normalization.
 
-This exact flux law is the common structural assumption being audited. It is an assumption of the construction, not a claim that such a variable must be fundamental or a general consequence of the Einstein equations.
+The areal-coordinate flux law is a postulate of the construction. It is not asserted as a covariant vacuum field equation or a general consequence of the Einstein equations.
 
-### (I3) Time–radial compensation
+### (I3) Reciprocal metric condition
 
 We impose
 
@@ -154,13 +156,13 @@ It is not a consequence of static spherical symmetry alone. Here it is an explic
 The condition expresses a reciprocal relation between the time and radial coefficients. For a stationary clock,
 
 [
-d\tau=\sqrt{A(r)},dt,
+d\tau=\sqrt{A(r)}\,dt,
 ]
 
 whereas a radial proper-distance element at fixed time is
 
 [
-d\ell=\sqrt{B(r)},dr
+d\ell=\sqrt{B(r)}\,dr
 =\frac{dr}{\sqrt{A(r)}}.
 ]
 
@@ -168,13 +170,13 @@ A reduction in the clock-rate factor is therefore accompanied by an inverse incr
 
 The condition also fixes the time–radial contribution to the metric determinant. It does not imply that ordinary three-dimensional spatial volume is unchanged.
 
-Most importantly for the logic of this paper, every member derived below satisfies (AB=1). The condition therefore reduces the number of unknown metric functions but cannot select one member of the family over another.
+Every member derived below satisfies (AB=1). The condition reduces the number of unknown metric functions but cannot select one member of the family over another.
 
 ### (I4) Constant nonlinear coefficient
 
 Assumption (I2) leaves an unrestricted choice of the potential variable (V(A)). We reduce this freedom by requiring that, when the flux equation is rewritten in a fixed metric variable, the coefficient of the nonlinear squared-gradient term be a constant of the theory rather than a function of the local field strength.
 
-This is the assumption that produces the one-parameter family below. It is not stated explicitly in the historical derivations; it is our reconstruction of the restriction they tacitly impose on the choice of bookkeeping variable.
+Conditions (I1)–(I3) do not restrict the functional choice of (V(A)). To obtain a definite and auditable class, we impose the additional closure condition that the nonlinear coefficient be constant.
 
 The assumption does not require the nonlinear coefficient to be nonzero. It permits
 
@@ -190,9 +192,9 @@ corresponding to no squared-gradient nonlinearity in the chosen metric variable.
 
 rather than (\lambda=\lambda(A)).
 
-The completeness result below is therefore relative to assumptions (I1)–(I4), not a classification of all possible static, spherically symmetric metrics.
+The completeness result below is relative to assumptions (I1)–(I4), not a classification of all possible static, spherically symmetric metrics.
 
-## 2.2 From variable choice to the nonlinear equation
+## 2.2 Logarithmic metric variable
 
 Define
 
@@ -230,135 +232,9 @@ s
 +\cdots.
 ]
 
-Now consider the one-parameter class of normalized potential variables
+## 2.3 Complete potential class under constant closure
 
-[
-V_\mu(A)
-========
-
-1+\frac{A^\mu-1}{\mu},
-\qquad
-\mu\neq0.
-]
-
-Because (A=e^s),
-
-[
-V_\mu
-=====
-
-1+\frac{e^{\mu s}-1}{\mu}.
-]
-
-For every fixed (\mu), the weak-field expansion is
-
-[
-V_\mu
-=====
-
-# 1+s+O(s^2)
-
-1+\frac{2\Phi}{c^2}
-+\cdots,
-]
-
-so all members have the same Newtonian normalization.
-
-Adding a constant or multiplying a potential by a nonzero constant does not change the vacuum equation (\Delta V=0). Therefore the exact flux law for (V_\mu) is equivalent, for (\mu\neq0), to
-
-[
-\Delta(e^{\mu s})=0.
-]
-
-In spherical symmetry,
-
-[
-\Delta s=s''+\frac{2}{r}s'.
-]
-
-Applying the chain and product rules gives the identity
-
-[
-\Delta(e^{\mu s})
-=================
-
-\mu e^{\mu s}
-\left[
-\Delta s+\mu(s')^2
-\right].
-]
-
-On a branch where (e^{\mu s}\neq0), the vacuum flux equation is therefore equivalent to
-
-[
-\Delta s+\mu(s')^2=0.
-]
-
-Defining
-
-[
-\lambda\equiv-\mu,
-]
-
-we obtain
-
-[
-\boxed{
-\Delta s=\lambda(s')^2
-}.
-]
-
-The left-hand side contains the ordinary spherical Laplacian,
-
-[
-\Delta s=s''+\frac{2}{r}s',
-]
-
-while the right-hand side is nonlinear in the field gradient. The mathematics at this stage establishes the term
-
-[
-\lambda(s')^2
-]
-
-and its constant coefficient (\lambda).
-
-Only with additional assumptions may (\lambda(s')^2) be interpreted as the contribution of the field gradient to its own source. Interpreting ((s')^2) as a gravitational energy density requires the accounting choices examined in Sec. 4.
-
-The value
-
-[
-\lambda=0
-]
-
-must be treated as the continuous limit (\mu\to0). Since
-
-[
-\lim_{\mu\to0}
-\frac{A^\mu-1}{\mu}
-===================
-
-\ln A,
-]
-
-the normalized potential becomes
-
-[
-V_0=1+\ln A=1+s.
-]
-
-Its exact flux equation is simply
-
-[
-\Delta s=0.
-]
-
-Thus (\lambda=0) is the member for which the logarithmic metric variable obeys the linear Gauss law exactly.
-
-## 2.3 Why a constant coefficient gives a complete one-parameter class
-
-The preceding construction used an exponential function of (s). We now show that the constant-coefficient assumption permits no essentially different choice.
-
-Let the bookkeeping variable be an arbitrary monotonic function
+Let the potential variable be an arbitrary monotonic function
 
 [
 V=F(s),
@@ -417,6 +293,18 @@ where (\lambda) is constant. Hence
 F''(s)=-\lambda F'(s).
 ]
 
+The flux equation is then
+
+[
+\boxed{
+\Delta s=\lambda(s')^2
+},
+\qquad
+\Delta s=s''+\frac{2}{r}s'.
+]
+
+This equation establishes the nonlinear term and its constant coefficient. Interpreting ((s')^2) as a gravitational energy density requires the additional accounting choices in Sec. 4.
+
 For (\lambda\neq0), the solution is
 
 [
@@ -453,155 +341,38 @@ and the essential variable is
 V\propto\ln A.
 ]
 
-Thus the power-law variables, together with the logarithmic limiting case, form the complete class allowed by assumptions (I2) and (I4). This is the precise sense in which the family derived below is complete relative to the stated assumptions.
+The power-law variables, together with the logarithmic limiting case, form the complete class allowed by assumptions (I2) and (I4).
 
-## 2.4 Exact integration
+## 2.4 Direct integration and classification theorem
 
-The vacuum equation is
-
-[
-s''+\frac{2}{r}s'
-=================
-
-\lambda(s')^2.
-]
-
-Set
+Section 2.3 showed that, for (\lambda\neq0), the essential potential variable is (A^{-\lambda}). Assumption (I2) therefore gives
 
 [
-u(r)\equiv s'(r).
+\Delta\!\left(A^{-\lambda}\right)=0.
 ]
 
-Then
+The asymptotically flat spherical solution has the form
 
 [
-u'+\frac{2}{r}u=\lambda u^2.
+A^{-\lambda}=C_0+\frac{C_1}{r}.
 ]
 
-This is a Bernoulli equation. Introducing
+Asymptotic flatness fixes (C_0=1). The Newtonian expansion
 
 [
-v(r)\equiv\frac{1}{u(r)}
+A(r)=1-\frac{r_s}{r}+O(r^{-2})
 ]
 
-gives
+implies
 
 [
-v'=-\frac{u'}{u^2}.
+A^{-\lambda}
+================
+
+1+\lambda\frac{r_s}{r}+O(r^{-2}),
 ]
 
-Dividing the equation for (u) by (u^2) and substituting (v=1/u) yields
-
-[
-v'-\frac{2}{r}v=-\lambda.
-]
-
-Multiplying by the integrating factor (r^{-2}),
-
-[
-\left(\frac{v}{r^2}\right)'
-===========================
-
--\frac{\lambda}{r^2}.
-]
-
-Integration gives
-
-[
-v(r)=Cr^2+\lambda r.
-]
-
-The Newtonian anchor determines (C). Far from the source,
-
-[
-s(r)\sim-\frac{r_s}{r},
-\qquad
-s'(r)\sim\frac{r_s}{r^2}.
-]
-
-Since (v=1/s'),
-
-[
-v(r)\sim\frac{r^2}{r_s},
-]
-
-and therefore
-
-[
-C=\frac{1}{r_s}.
-]
-
-Thus
-
-[
-v(r)
-====
-
-\frac{r^2}{r_s}
-+
-\lambda r,
-]
-
-and
-
-[
-s'(r)
-=====
-
-# \frac{1}{v(r)}
-
-\frac{r_s}{r(r+\lambda r_s)}.
-]
-
-For (\lambda\neq0), partial fractions give
-
-[
-s'
-==
-
-\frac{1}{\lambda}
-\left[
-\frac{1}{r}
------------
-
-\frac{1}{r+\lambda r_s}
-\right].
-]
-
-Integrating,
-
-[
-s(r)
-====
-
-\frac{1}{\lambda}
-\left[
-\ln r-\ln(r+\lambda r_s)
-\right]
-+C_0.
-]
-
-Asymptotic flatness requires
-
-[
-A\to1
-\quad\Longleftrightarrow\quad
-s\to0
-]
-
-as (r\to\infty), so (C_0=0). Therefore,
-
-[
-s(r)
-====
-
--\frac{1}{\lambda}
-\ln\left(
-1+\lambda\frac{r_s}{r}
-\right).
-]
-
-Exponentiating,
+so (C_1=\lambda r_s). Hence
 
 [
 \boxed{
@@ -612,17 +383,13 @@ A_\lambda(r)
 1+\lambda\frac{r_s}{r}
 \right)^{-1/\lambda}
 },
-]
-
-with
-
-[
+\qquad
 \boxed{
 B_\lambda(r)=A_\lambda(r)^{-1}
 }.
 ]
 
-For (\lambda=0), the field equation is
+For (\lambda=0), the essential potential variable is (s=\ln A), and the flux equation becomes
 
 [
 \Delta s=0.
@@ -632,15 +399,11 @@ The Newtonian and asymptotic conditions give
 
 [
 s(r)=-\frac{r_s}{r},
-]
-
-and hence
-
-[
+\qquad
 A_0(r)=e^{-r_s/r}.
 ]
 
-This result is also the continuous limit of the general expression:
+This is also the continuous limit
 
 [
 \lim_{\lambda\to0}
@@ -652,13 +415,13 @@ This result is also the continuous limit of the general expression:
 e^{-r_s/r}.
 ]
 
-> **Classification theorem.** Consider a connected, static, spherically symmetric, asymptotically flat exterior branch with (A>0), written in areal coordinates. Impose the Newtonian anchor (I1), an exact vacuum Gauss law for a monotonic variable (V=F(\ln A)) (I2), the reciprocal condition (AB=1) (I3), and the requirement that (-F''/F') be a constant (\lambda) (I4). Then the flux law is equivalent to
+> **Classification theorem.** Consider a connected, static, spherically symmetric, asymptotically flat exterior branch with (A>0), written in areal coordinates. Impose the Newtonian weak-field condition (I1), the areal-coordinate flux law for a monotonic variable (V=F(\ln A)) (I2), the reciprocal metric condition (AB=1) (I3), and the constant-coefficient closure condition (-F''/F'=\lambda) (I4). Then
 > [
 > \Delta s=\lambda(s')^2,
 > \qquad
 > s=\ln A,
 > ]
-> and the Newtonian and asymptotic conditions determine
+> and the boundary conditions determine
 > [
 > A_\lambda(r)
 > =============
@@ -667,7 +430,7 @@ e^{-r_s/r}.
 > \qquad
 > B_\lambda(r)=A_\lambda(r)^{-1},
 > ]
-> with (A_0=e^{-r_s/r}) by continuity. Conversely, every constant-(\lambda) member satisfies (I1)–(I4) on its static domain. The family is therefore complete relative to those assumptions, while the value of (\lambda) remains unselected.
+> with (A_0=e^{-r_s/r}) by continuity. Conversely, every constant-(\lambda) member satisfies (I1)–(I4) on its static domain. The family is complete relative to these assumptions; they do not determine (\lambda).
 
 ## 2.5 Distinguished members
 
@@ -752,11 +515,7 @@ The values (n=-2,-1,+1) correspond to
 \lambda=-1,-\frac12,+\frac12.
 ]
 
-Thus the three values displayed by Shuler are members of the continuous class derived above. Kassner (2019) later reviewed these metrics and showed that only the Schwarzschild member satisfies a standard relativistic generalization of Newton’s law.
-
-The present contribution does not lie in the closed metric form. It differs from the earlier presentation in two respects. First, it derives the continuous family rather than listing selected candidates. Second, it shows that the family is the complete residual freedom under assumptions (I1)–(I4), with (\lambda) identified as the constant coefficient of the squared-gradient term in the (s=\ln A) equation.
-
-The derivation does not select the Schwarzschild value. It establishes only that Schwarzschild is one member of the allowed family.
+The three values displayed by Shuler are members of the continuous class derived above. Kassner (2019) later reviewed these metrics and showed that only the Schwarzschild member satisfies a standard relativistic generalization of Newton’s law. The result here derives the continuous class and establishes its completeness under (I1)–(I4), with (\lambda) identified as the constant squared-gradient coefficient. These assumptions leave (\lambda) undetermined.
 
 ## 2.6 Weak-field degeneracy
 
@@ -781,7 +540,7 @@ The first-order term,
 -x=-\frac{r_s}{r},
 ]
 
-is independent of (\lambda), as required by the Newtonian anchor. The family members first differ at order (x^2), where the coefficient is
+is independent of (\lambda), as required by the Newtonian weak-field condition. The family members first differ at order (x^2), where the coefficient is
 
 [
 \frac{1+\lambda}{2}.
@@ -817,65 +576,8 @@ for every member. Light bending and radar time delay, whose leading PPN dependen
 
 The remaining freedom appears in the nonlinear PPN parameter (\beta). Perihelion precession is sensitive to this coefficient and can therefore discriminate among metrics that agree in the Newtonian limit and in (\gamma).
 
-The distinction should be stated carefully. The family does not first diverge beyond first post-Newtonian order. Rather, it agrees in the (\gamma)-controlled part of the 1PN metric while leaving the (\beta)-controlled nonlinear coefficient undetermined.
-
-## 2.7 Result
-
-Assumptions (I1)–(I4) determine the static spherical exterior up to one dimensionless constant:
-
-[
-ds^2
-====
-
-*
-
-\left(
-1+\lambda\frac{r_s}{r}
-\right)^{-1/\lambda}
-c^2dt^2
-+
-\left(
-1+\lambda\frac{r_s}{r}
-\right)^{1/\lambda}
-dr^2
-+
-r^2d\Omega^2,
-]
-
-with the continuous (\lambda=0) interpretation
-
-[
-A_0=e^{-r_s/r}.
-]
-
-The four assumptions play distinct roles:
-
-[
-\text{(I1) fixes }r_s\text{ and the leading weak-field term};
-]
-
-[
-\text{(I2) supplies an exact }1/r\text{ flux structure};
-]
-
-[
-\text{(I3) fixes }B\text{ once }A\text{ is known};
-]
-
-[
-\text{(I4) reduces the variable freedom to one constant }\lambda.
-]
-
-They do not determine the value of (\lambda). In particular, they do not uniquely select
-
-[
-\lambda=-1.
-]
-
-This is the precise content of the underdetermination identified by the impossibility literature. The assumptions determine a one-parameter family containing Schwarzschild, not the Schwarzschild exterior alone.
-
-The following sections examine what depends on the remaining parameter: Sec. 3 determines when the static time coefficient has a finite-radius zero, Sec. 4 asks what a specified static energy ledger can determine about (\lambda), Sec. 5 relates it to post-Newtonian observables, and Sec. 6 identifies the additional condition underlying Michell’s exact numerical result.
+The family agrees in the (\gamma)-controlled part of the 1PN metric while leaving the (\beta)-controlled nonlinear coefficient undetermined; its members do not first diverge beyond 1PN order.
 
 ![Figure 1](figure_1_family.png)
 
-*Figure 1. The metric function (A_\lambda(r)) for (\lambda\in{-1,-1/4,0,+1}). All members share the Newtonian limit and first differ at quadratic order in (r_s/r). Negative-(\lambda) members reach (A_\lambda=0) at (r=-\lambda r_s); the Schwarzschild member terminates at (r=r_s), while the (\lambda=-1/4) member terminates at (r=r_s/4). Members with (\lambda\geq0) remain positive for every finite (r>0). Source: `src_fig/figure_1_family.py`.*
+*Figure 1. The metric function (A_\lambda(r)) for (\lambda\in{-1,-1/4,0,+1}). All members share the Newtonian limit and first differ at quadratic order in (r_s/r). For negative (\lambda), the plotted static branch reaches (A_\lambda=0) at (r=-\lambda r_s); this occurs at (r=r_s) for Schwarzschild and at (r=r_s/4) for (\lambda=-1/4). Members with (\lambda\geq0) remain positive for every finite (r>0). Source: `src_fig/figure_1_family.py`.*

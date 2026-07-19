@@ -19,19 +19,17 @@ with
 r_s=\frac{2GM}{c^2}.
 ]
 
-This reframes the disagreement over simple derivations of the Schwarzschild metric. The assumptions are strong enough to recover the Schwarzschild scale and to include Schwarzschild as the member
+The assumptions recover the Schwarzschild scale and include Schwarzschild as the member
 
 [
 \lambda=-1,
 ]
 
-but they do not by themselves select that value.
-
-The possibility, impossibility, and family viewpoints can therefore be understood as emphasizing different parts of the same result. Schwarzschild is possible within the assumptions; its unique derivation is impossible without further input; and the residual freedom is represented by the parameter (\lambda).
+but do not select that value.
 
 ## 7.1 Additional inputs in simple derivations
 
-The family makes it possible to distinguish the assumptions that construct the candidate class from the additional conditions that select a particular member. Several familiar derivations may be organized in this way.
+Earlier derivations can be compared by separating construction of the family from the additional conditions used to select a member.
 
 | Route                                 | Construction or additional input                                  | Role relative to the present family                                                |
 | ------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
@@ -44,13 +42,11 @@ The family makes it possible to distinguish the assumptions that construct the c
 | Casadio et al. (2018, 2021)           | Nonlinear Poisson self-interaction and effective-metric reconstruction | Provides a related bootstrap construction, not selection within the present family |
 | Deser (1970); Duff (1973)             | Field self-coupling or tree-graph reconstruction                  | Provides stronger dynamical constructions, not selection within the present family |
 
-The table does not imply that these approaches are equivalent. Their assumptions, purposes, and levels of generality differ substantially. In particular, the field-theoretic constructions of Deser and Duff do not study selection within the present (\lambda)-family. The bootstrapped Newtonian work of Casadio and collaborators is likewise a related nonlinear program that constructs an effective exterior metric from a specified bootstrap, rather than from the static local-energy ledger of Sec. 4.
-
-The relevant question is therefore not whether a derivation uses an assumption. Every derivation does. The relevant question is which assumptions determine the family and which additional condition selects the member.
+These approaches have different assumptions and purposes. The field-theoretic constructions of Deser and Duff do not study selection within the present (\lambda)-family. The bootstrapped Newtonian work of Casadio and collaborators constructs an effective exterior metric from a specified nonlinear model rather than from the static local-energy assignment of Sec. 4.
 
 ## 7.2 Static accounting and observational selection
 
-Section 4 examined whether a static gravitational-energy ledger could supply the missing selection condition. Within the gradient-local bookkeeping class defined there, the two-shell assembly calculation gives
+Section 4 examined whether a specified static matter–field assignment could supply the missing selection condition. Within the gradient-local class defined there, the two-shell calculation gives
 
 [
 \lambda=\frac{2f-1}{4},
@@ -66,7 +62,7 @@ and hence
 
 That interval excludes the Schwarzschild value (\lambda=-1).
 
-The PPN calculation supplies a different kind of information. For the entire family,
+For the entire family, the PPN calculation gives
 
 [
 \gamma=1,
@@ -80,23 +76,13 @@ Thus the leading spatial PPN coefficient is common to all members, while the non
 \lambda=\beta-2.
 ]
 
-The family is therefore underdetermined by the static construction but distinguishable by post-Newtonian measurement. Standard tests selecting (\beta\simeq1) select
+The static construction leaves (\lambda) free, while post-Newtonian measurement determines it. The observed value (\beta\simeq1) gives
 
 [
 \lambda\simeq-1.
 ]
 
-The comparison between Secs. 4 and 5 is consequently direct:
-
-[
-\text{the specified static ledger does not select Schwarzschild,}
-]
-
-whereas
-
-[
-\text{the measured nonlinear metric coefficient does.}
-]
+The conditional static bound and the measured nonlinear metric coefficient thus provide different information about the same parameter.
 
 ## 7.3 Michell’s result
 

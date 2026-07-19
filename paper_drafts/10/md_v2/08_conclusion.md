@@ -33,7 +33,7 @@ The Schwarzschild exterior is the member
 
 A finite positive-radius zero of (A_\lambda) exists precisely when (\lambda<0); for the Schwarzschild member, that zero occurs at (r_s) and is the standard Schwarzschild horizon.
 
-Within the static bookkeeping class examined in Sec. 4, the assembly ledger confines (\lambda) to
+Within the gradient-local class examined in Sec. 4, the two-shell calculation confines (\lambda) to
 
 [
 -\frac14\leq\lambda\leq\frac14
@@ -41,7 +41,7 @@ Within the static bookkeeping class examined in Sec. 4, the assembly ledger conf
 
 and therefore does not select Schwarzschild.
 
-The invariant assembly energy remains correct: the conditional tension concerns its localization and division between the matter and field columns, not energy conservation itself.
+The invariant assembly energy remains correct. The conditional bound concerns its localization and division between matter and field terms.
 
 The post-Newtonian transformation gives
 
@@ -69,4 +69,4 @@ For that member, the Painlevé–Gullstrand shift satisfies
 
 exactly. This explains why Michell’s escape-velocity calculation reproduces the Schwarzschild radius.
 
-The result is therefore neither a unique static derivation of Schwarzschild nor a proof that simple assumptions yield nothing. The assumptions determine a complete family. Additional physical or observational information selects its Schwarzschild member.
+The static assumptions determine a complete family rather than a unique Schwarzschild exterior. Additional physical or observational information fixes the remaining parameter and selects the Schwarzschild member.

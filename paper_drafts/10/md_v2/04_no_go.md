@@ -1,4 +1,4 @@
-# 4. What static energy accounting can and cannot determine
+# 4. Static energy accounting and the conditional bound
 
 The family derived in Sec. 2 contains the Schwarzschild exterior at
 
@@ -6,13 +6,11 @@ The family derived in Sec. 2 contains the Schwarzschild exterior at
 \lambda=-1,
 ]
 
-but the assumptions used there do not select that value. A natural proposal is that gravitational field energy supplies the missing condition: gravitational binding energy is negative, and gravitational energy should gravitate with the same universal coupling as other forms of energy. Experimental tests of the Nordtvedt effect strongly constrain anomalous coupling of gravitational binding energy, so the proposal has a plausible physical motivation.
+but the assumptions used there do not select that value. One proposal is that gravitational field energy supplies the missing condition: gravitational binding energy is negative, and gravitational energy should gravitate with the same universal coupling as other forms of energy. The Nordtvedt effect tests anomalous coupling of gravitational binding energy (Nordtvedt 1968; Williams, Turyshev, and Boggs 2004), giving physical motivation for examining this proposal.
 
-The difficulty is that the total energy of a gravitating system may be well defined even when its division into matter energy and local field energy is not. This section separates those two issues.
+The total energy of a gravitating system may be well defined even when its division into matter and local field energy is not. Reading an energy density directly from the nonlinear source equation cannot determine (\lambda), because the proposed density already contains that coefficient. The convention-independent work required to assemble two spherical shells instead constrains a specified class of local matter–field assignments.
 
-We first show that identifying an energy density directly from the nonlinear source equation is circular and therefore cannot determine (\lambda). We then use the convention-independent work required to assemble two spherical shells to constrain a particular class of local energy bookkeeping schemes.
-
-The resulting no-go statement is conditional. It applies when the gravitational contribution is represented by the gradient-local density implied by the self-sourcing interpretation and when the matter ledger is restricted to a specified interval between local and asymptotic energy audits. Within that class, static accounting confines
+The resulting bound is conditional. It applies when the gravitational contribution is represented by the gradient-local density implied by the self-sourcing interpretation and when the matter assignment is restricted to a specified interval between local and asymptotic conventions. Within that class, static accounting confines
 
 [
 \lambda\in\left[-\frac14,\frac14\right]
@@ -20,7 +18,7 @@ The resulting no-go statement is conditional. It applies when the gravitational 
 
 and therefore excludes the Schwarzschild value.
 
-The invariant assembly energy remains (E_{\rm int}=-U) throughout. The ledger is internally consistent, but within the stated localization and matter conventions it does not yield the Schwarzschild nonlinear coefficient. This is not a claim that general relativity violates energy conservation.
+The invariant assembly energy remains (E_{\rm int}=-U) throughout. The calculation is internally consistent, but within the stated localization and matter conventions it does not yield the Schwarzschild nonlinear coefficient. This is not a claim that general relativity violates energy conservation.
 
 ## 4.1 Why universal coupling does not determine (\lambda)
 
@@ -88,13 +86,11 @@ The statement is therefore true by construction for every (\lambda), including
 u_0=0.
 ]
 
-This gives the following elementary lemma.
-
 > **Self-consistency lemma.** A field-energy density defined by reading the nonlinear source term from the equation under examination cannot be used to determine the coefficient of that term.
 
 To constrain (\lambda), the relevant energy must instead be determined independently, for example from an operational work budget.
 
-## 4.2 The invariant part of the energy ledger
+## 4.2 Invariant assembly energy
 
 The localization of gravitational energy is convention dependent. Even in Newtonian gravity, the density
 
@@ -158,7 +154,7 @@ E_{\rm field,cross}
 -U.
 ]
 
-The total (-U) is operationally fixed. The two terms on the left are bookkeeping assignments.
+The total (-U) is operationally fixed. The two terms on the left depend on the chosen matter–field convention.
 
 The use of two shells isolates the interaction term. Each shell’s self-energy is unchanged during the assembly and cancels when the initial and final configurations are compared.
 
@@ -246,7 +242,7 @@ and hence
 \nabla s_i
 ==========
 
-\frac{2Gm_i}{r^2c^2},\hat{\mathbf r}.
+\frac{2Gm_i}{r^2c^2}\,\hat{\mathbf r}.
 ]
 
 The two gradients are parallel, so their scalar product is positive:
@@ -266,7 +262,7 @@ E_{\rm field,cross}
 
 \frac{\lambda c^4}{8\pi G}
 \int_{r>b}
-2\nabla s_1\cdot\nabla s_2,dV.
+2\nabla s_1\cdot\nabla s_2\,dV.
 ]
 
 Using
@@ -275,7 +271,9 @@ Using
 dV=4\pi r^2dr,
 ]
 
-we obtain
+is sufficient at the order retained here. The proper-volume correction is (\sqrt{B}=1+O(G)); multiplying it by the quadratic weak-field cross term changes the integrated energy only at higher order.
+
+We obtain
 
 [
 \begin{aligned}
@@ -287,7 +285,7 @@ E_{\rm field,cross}
 \left(
 \frac{4G^2m_1m_2}{r^4c^4}
 \right)
-4\pi r^2,dr
+4\pi r^2\,dr
 [4pt]
 &=
 4\lambda Gm_1m_2
@@ -325,9 +323,9 @@ The remaining question is how much interaction energy has already been assigned 
 
 Two limiting conventions are useful.
 
-### Local matter audit
+### Local rest-energy convention
 
-A local audit records each shell at its locally measured rest energy. No interaction correction is entered in the matter column:
+The local convention records each shell at its locally measured rest energy. No interaction correction is assigned to the matter term:
 
 [
 E_{\rm matter,cross}=0.
@@ -349,9 +347,9 @@ Therefore,
 
 In this convention, all of the interaction energy is assigned to the field.
 
-### Asymptotic matter audit
+### Asymptotic redshift convention
 
-An asymptotic audit records each shell according to the energy associated with it after gravitational redshift relative to infinity is included.
+The asymptotic convention records each shell after gravitational redshift relative to infinity is included.
 
 At leading order, shell 1 receives the potential correction produced by shell 2, and shell 2 receives the correction produced by shell 1. Each contributes
 
@@ -359,7 +357,7 @@ At leading order, shell 1 receives the potential correction produced by shell 2,
 -U
 ]
 
-to the matter ledger, so together
+to the matter term, so together
 
 [
 E_{\rm matter,cross}=-2U.
@@ -379,7 +377,7 @@ Hence
 }.
 ]
 
-Here the matter column contains more negative interaction energy than the total system possesses, and the field column supplies a positive correction.
+Here the matter term contains more negative interaction energy than the total system, and the field term supplies a positive correction.
 
 ### Interpolating convention
 
@@ -389,13 +387,13 @@ Introduce a parameter (f) by writing
 E_{\rm matter,cross}=-2fU.
 ]
 
-The local audit corresponds to
+The local convention corresponds to
 
 [
 f=0,
 ]
 
-and the asymptotic audit to
+and the asymptotic convention to
 
 [
 f=1.
@@ -421,7 +419,7 @@ and therefore
 }.
 ]
 
-If admissible matter conventions are restricted to fixed convex mixtures of the local and asymptotic audits,
+If admissible matter conventions are restricted to fixed convex mixtures of these two assignments,
 
 [
 0\leq f\leq1,
@@ -485,9 +483,9 @@ and the total would still equal
 +3U-4U=-U.
 ]
 
-The invariant assembly energy cannot by itself exclude this ledger, because it measures only the total. The objection is instead to its interpretation: the matter column is credited with a positive interaction energy that exceeds the locally measured rest-energy assignment, while the field contribution is already represented separately by the gradient term.
+The invariant assembly energy cannot by itself exclude this assignment, because it measures only the total. The assignment instead falls outside the adopted matter convention: the matter term receives a positive interaction energy exceeding the local rest-energy assignment while the field contribution is represented separately by the gradient term.
 
-Within the bookkeeping framework adopted here, such a convention lies outside the interval between the local and asymptotic audits.
+Within the class adopted here, such a convention lies outside the interval between the local and asymptotic assignments.
 
 The restriction
 
@@ -497,11 +495,9 @@ The restriction
 
 must therefore be recognized as part of the theorem’s assumptions. The invariant work budget fixes (-U), but it does not by itself prove that every conceivable matter–field decomposition must lie in this interval.
 
-## 4.5 Conditional no-go result
+## 4.5 Conditional static-accounting bound
 
-The calculation establishes the following result.
-
-> **Conditional static-accounting no-go.**
+> **Conditional static-accounting bound.**
 > Assume:
 >
 > 1. the metric family and constant nonlinear coefficient of Sec. 2;
@@ -540,7 +536,7 @@ The calculation establishes the following result.
 > ]
 > is excluded.
 
-Within the stated ledger class, the result is an exclusion rather than mere underdetermination: the resulting interval lies near zero rather than at the Schwarzschild value. Its scope is the specified matter–field split, not energy conservation in general relativity.
+Within the stated class, the interval lies near zero and does not contain the Schwarzschild value. The bound concerns the specified matter–field split, not energy conservation in general relativity.
 
 ## 4.6 Localization corollary: the factor-of-four coefficient
 
@@ -613,7 +609,7 @@ Rather, the Schwarzschild source term, interpreted through this localization, as
 -4U
 ]
 
-to the field cross energy. To preserve the correct total, the matter ledger must then contribute
+to the field cross energy. To preserve the correct total, the matter term must then contribute
 
 [
 +3U.
@@ -623,10 +619,8 @@ Thus the Schwarzschild nonlinearity cannot be identified with the standard Newto
 
 ## 4.7 Interpretation
 
-The two-shell assembly exposes the distinction between energy conservation and dynamical self-coupling.
+Energy conservation determines the total interaction energy. Converting that invariant total into a self-coupling coefficient also requires the localization and matter-assignment choices stated in the theorem. Static assembly energy alone therefore leaves the nonlinear coefficient undetermined.
 
-Energy conservation determines the total interaction energy, but converting that invariant total into a self-coupling coefficient requires the additional localization and matter-ledger choices stated in the theorem. The calculation therefore isolates the missing information as one nonlinear coefficient rather than deriving it from the assembly energy alone.
-
-Related bootstrapped-Newtonian constructions introduce an explicit nonlinear coupling and select its value by matching the Schwarzschild post-Newtonian expansion. The analysis above explains why such matching is not replaced by the static accounting considered here: the desired coupling is dynamical information, not a consequence of the invariant assembly energy alone.
+Related bootstrapped-Newtonian constructions introduce an explicit nonlinear coupling and fix it by matching the Schwarzschild post-Newtonian expansion. Such matching supplies dynamical information absent from the static accounting considered here.
 
 A dynamics-based derivation may determine the coefficient through consistency of gravitational self-coupling, while observation may determine it through the post-Newtonian parameter (\beta). The latter route is developed in Sec. 5.
