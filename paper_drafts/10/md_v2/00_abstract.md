@@ -1,6 +1,6 @@
 # Abstract
 
-Simple derivations of the Schwarzschild metric from energy and Newtonian arguments have been proposed and disputed for decades. We ask what a common set of such assumptions actually determines. For a static, spherically symmetric, asymptotically flat exterior, we impose the Newtonian limit, an exact vacuum flux law in a monotonic potential variable, (g_{tt}g_{rr}=-1), and a constant nonlinear self-source coefficient. These assumptions yield the complete one-parameter family
+Simple derivations of the Schwarzschild metric from energy and Newtonian arguments have been proposed and disputed for decades. We ask what a common set of such assumptions actually determines. For a static, spherically symmetric, asymptotically flat exterior, we impose the Newtonian limit, an exact vacuum flux law in a monotonic potential variable, (g_{tt}g_{rr}=-1), and a constant nonlinear self-source coefficient. These assumptions yield, and establish the completeness of, a one-parameter family whose closed form has appeared previously:
 
 [
 A_\lambda(r)

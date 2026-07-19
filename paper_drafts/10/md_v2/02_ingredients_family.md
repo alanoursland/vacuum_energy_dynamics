@@ -710,7 +710,7 @@ the exact Gauss law is obeyed by (1/A), giving
 A_{+1}(r)=\frac{1}{1+r_s/r}.
 ]
 
-The closed-form expression has appeared previously. Shuler (2018) proposed, and Kassner (2019) subsequently reduced, three members written as
+The closed-form expression has appeared previously. Shuler (2018) exhibited the Schwarzschild metric and two alternatives in the common single-parameter form
 
 [
 g_{tt}
@@ -733,7 +733,9 @@ The values (n=-2,-1,+1) correspond to
 \lambda=-1,-\frac12,+\frac12.
 ]
 
-The present derivation differs in two respects. First, it derives the continuous family rather than listing selected candidates. Second, it shows that the family is the complete residual freedom under assumptions (I1)–(I4), with (\lambda) identified as the constant coefficient of the squared-gradient term in the (s=\ln A) equation.
+Thus the three values displayed by Shuler are members of the continuous class derived above. Kassner (2019) later reviewed these metrics and showed that only the Schwarzschild member satisfies a standard relativistic generalization of Newton’s law.
+
+The present contribution does not lie in the closed metric form. It differs from the earlier presentation in two respects. First, it derives the continuous family rather than listing selected candidates. Second, it shows that the family is the complete residual freedom under assumptions (I1)–(I4), with (\lambda) identified as the constant coefficient of the squared-gradient term in the (s=\ln A) equation.
 
 The derivation does not select the Schwarzschild value. It establishes only that Schwarzschild is one member of the allowed family.
 

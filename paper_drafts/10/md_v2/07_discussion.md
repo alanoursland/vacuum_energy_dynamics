@@ -33,17 +33,18 @@ The possibility, impossibility, and family viewpoints can therefore be understoo
 
 The family makes it possible to distinguish the assumptions that construct the candidate class from the additional conditions that select a particular member. Several familiar derivations may be organized in this way.
 
-| Route                                 | Additional input                                                  | Role relative to the family                                                     |
-| ------------------------------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Michell and Laplace                   | Newtonian escape condition                                        | Identifies the scale (2GM/c^2), but does not determine a metric                 |
-| Lenz–Sommerfeld and related arguments | Relativistic reinterpretation of Newtonian motion                 | Supplies additional kinematic or metric assumptions                             |
-| Visser; Czerniawski                   | Exact Newtonian infall profile in a flat-slice representation     | Selects the Schwarzschild member                                                |
-| Kassner                               | Exact force, orbital, or dust-ball condition                      | Adds dynamical or observational information beyond the base assumptions         |
-| Shuler; Kassner                       | Reduction of a broader metric family by additional physical tests | Constrains or selects the admissible member                                     |
-| Bootstrapped Newtonian models         | Nonlinear coupling calibrated to a desired exterior response      | Fixes the otherwise free nonlinear coefficient                                  |
-| Deser; Duff                           | Consistent field self-coupling                                    | Supplies full dynamical equations whose static vacuum solution is Schwarzschild |
+| Route                                 | Construction or additional input                                  | Role relative to the present family                                                |
+| ------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Michell and Laplace                   | Newtonian escape condition                                        | Identifies the scale (2GM/c^2), but does not determine a metric                    |
+| Lenz–Sommerfeld and related arguments | Relativistic reinterpretation of Newtonian motion                 | Supplies additional kinematic or metric assumptions                                |
+| Visser (2005); Czerniawski (2006)     | Exact Newtonian infall profile in a flat-slice representation     | Selects the Schwarzschild member                                                   |
+| Kassner (2015, 2017)                  | Reconstruction, orbital, or dust-ball conditions                 | Supplies physical or observational information beyond the base assumptions         |
+| Shuler (2018)                         | Three metrics in a common parameterized form                      | Presents three members of the continuous class derived here                        |
+| Kassner (2019)                        | Standard relativistic generalization of Newton’s law              | Selects Schwarzschild among Shuler’s metrics                                        |
+| Casadio et al. (2018, 2021)           | Nonlinear Poisson self-interaction and effective-metric reconstruction | Provides a related bootstrap construction, not selection within the present family |
+| Deser (1970); Duff (1973)             | Field self-coupling or tree-graph reconstruction                  | Provides stronger dynamical constructions, not selection within the present family |
 
-The table does not imply that these approaches are equivalent. Their assumptions, purposes, and levels of generality differ substantially. Their common structural feature is that each introduces information not contained in the assumptions of Sec. 2.
+The table does not imply that these approaches are equivalent. Their assumptions, purposes, and levels of generality differ substantially. In particular, the field-theoretic constructions of Deser and Duff do not study selection within the present (\lambda)-family. The bootstrapped Newtonian work of Casadio and collaborators is likewise a related nonlinear program that constructs an effective exterior metric from a specified bootstrap, rather than from the static local-energy ledger of Sec. 4.
 
 The relevant question is therefore not whether a derivation uses an assumption. Every derivation does. The relevant question is which assumptions determine the family and which additional condition selects the member.
 

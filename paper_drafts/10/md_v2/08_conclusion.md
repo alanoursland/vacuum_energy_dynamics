@@ -23,6 +23,8 @@ r_s=\frac{2GM}{c^2}.
 
 The assumptions fix the mass scale, the Newtonian limit, and the relation between the temporal and radial metric coefficients. They do not fix the nonlinear parameter (\lambda).
 
+Although the closed metric form has appeared previously, the present analysis derives the continuous family as the complete outcome of the stated assumptions and separates family construction from member selection.
+
 The Schwarzschild exterior is the member
 
 [

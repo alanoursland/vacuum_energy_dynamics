@@ -437,7 +437,7 @@ These conditions are not equivalent in their physical motivation, but they perfo
 
 Visser’s Painlevé–Gullstrand construction imposes the Newtonian infall profile within a flat-slice geometry. In the present classification, that profile is equivalent to selecting the Schwarzschild member.
 
-Czerniawski follows a closely related route. Kassner introduces additional postulates beyond the common weak-field ingredients and uses perihelion data when a nonlinear coefficient remains free. Shuler’s proposed alternatives are members of the same family, while Kassner’s later dust-ball condition supplies a dynamical criterion that reduces the set.
+Czerniawski follows a closely related route. Kassner’s 2015 reconstruction introduces physical assumptions beyond the common weak-field ingredients and uses perihelion data when a nonlinear coefficient remains free; his 2017 reconstructions instead supply additional postulates or a dust-ball condition. Shuler’s proposed alternatives are members of the continuous class derived here, while Kassner’s 2019 relativistic Newton condition selects Schwarzschild among Shuler’s metrics.
 
 The apparent conflict between the historical positions can therefore be restated more precisely:
 

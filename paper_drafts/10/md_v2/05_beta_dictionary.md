@@ -556,7 +556,7 @@ Combining the PPN dictionary with Sec. 3, weak-field measurements of (\beta) the
 
 ## 5.6 Relation to earlier metric reconstructions
 
-Kassner’s reconstruction reached a structurally similar result from a different direction: the assumed postulates fixed the leading metric terms but left a nonlinear coefficient that had to be supplied by perihelion data.
+Kassner’s 2015 reconstruction reached a structurally similar result from a different direction: the assumed postulates fixed the leading metric terms but left a nonlinear coefficient that had to be supplied by perihelion data.
 
 The present family places that residual coefficient in a continuous classification. The undetermined quantity is
 
@@ -571,6 +571,8 @@ and the PPN transformation shows that
 ]
 
 Thus the observational input does not merely fix an anonymous expansion coefficient. It selects a definite member of the metric family.
+
+Kassner’s 2019 analysis addresses a different stage: it selects among Shuler’s proposed metrics by imposing a standard relativistic generalization of Newton’s law. The present classification addresses the logically prior question of what remains under (I1)–(I4) before such a selector is imposed.
 
 This statement should be distinguished from the stronger interpretation that (\beta) directly measures a unique, convention-independent local gravitational energy density. What is established directly is the metric relation. Interpreting (\lambda) as a self-energy counting weight depends on the construction of Sec. 2 and the additional energy discussion of Sec. 4.
 
