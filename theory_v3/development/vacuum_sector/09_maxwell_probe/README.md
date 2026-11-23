@@ -23,9 +23,13 @@ under the quarantine contract in
 
 ```text
 result type:   program charter + exploratory scratch results
-               (2026-11-23); nothing here is forge-verified yet
+               (2026-11-23) + first forge module
 reference:     repo commit dc1d7aa (the commit the scratch runs read)
-first forge:   056 -- regular-mesh reproduction (opened, not written)
+forge:         056 -- regular-mesh benchmark, SATISFIED
+               (maxwell_regular_mesh_vacuumforge.md); the free-
+               relaxation diagnostics remain scratch-only
+next:          maxwell_torus_calibration_056 (gates G3a-G3c) and the
+               stage-2 periodic spring control
 ```
 
 ## Contents
@@ -35,6 +39,8 @@ maxwell_probe_charter.md          the research question, the four
                                   stages (benchmark, spring control,
                                   P10 packing, Maxwell sweep), the
                                   gates, and the interpretive forks
+maxwell_regular_mesh_vacuumforge.md  forge report for 056 (generated
+                                  by the script; do not hand-edit)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445
