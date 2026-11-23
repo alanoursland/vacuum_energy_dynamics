@@ -1,0 +1,74 @@
+# 09 — Maxwell Probe
+
+Can the geometry of the vacuum's spatial quanta influence an
+electromagnetic mode?
+
+This folder uses discrete Maxwell theory as an added **probe** of the
+geometry that the Regge/Delaunay packing model (P10, derivation 039)
+already supplies. It does not claim that the dynamics of spatial quanta
+produce electromagnetism. A claim of that kind would need a separate
+derivation, and if it ever proposed an observable channel it would fall
+under the quarantine contract in
+[../06_non_gravitational_channels/channel_quarantine_contract.md](../06_non_gravitational_channels/channel_quarantine_contract.md).
+
+## Status
+
+```text
+result type:   program charter + exploratory scratch results
+               (2026-11-23); nothing here is forge-verified yet
+reference:     repo commit dc1d7aa (the commit the scratch runs read)
+first forge:   056 -- regular-mesh reproduction (opened, not written)
+```
+
+## Contents
+
+```text
+maxwell_probe_charter.md          the research question, the stages,
+                                  the gates, and the interpretive forks
+regular_mesh_benchmark.md         the smooth Maxwell mode on the
+                                  Poincare homology sphere, sampled on
+                                  the 600-cell quotient; the 2.10292445
+                                  triplet and why symmetry protects it
+free_relaxation_diagnostics.md    the 051 E1 rerun: zero virial stress,
+                                  the extension-fabric identity, 44-49%
+                                  tetrahedron inversion, and the
+                                  metric-response mode proxy
+scratch_2026-11-23/               the exploratory scripts and their
+                                  reference stdout, kept for provenance
+```
+
+## Reading Order
+
+1. [maxwell_probe_charter.md](maxwell_probe_charter.md)
+2. [regular_mesh_benchmark.md](regular_mesh_benchmark.md)
+3. [free_relaxation_diagnostics.md](free_relaxation_diagnostics.md)
+
+## Upstream
+
+- [../../../01_postulates/p10_packing_axiom.md](../../../01_postulates/p10_packing_axiom.md)
+  — the packing axiom
+- [../08_packing_microphysics/regge_delaunay_model.md](../08_packing_microphysics/regge_delaunay_model.md)
+  — the model, and the 600-cell Regge result (039, result 3)
+- [../08_packing_microphysics/bulk_relaxation_phase2_vacuumforge.md](../08_packing_microphysics/bulk_relaxation_phase2_vacuumforge.md)
+  — 051, whose E1 networks are the starting simulation
+- [../08_packing_microphysics/packing_dispersion_vacuumforge.md](../08_packing_microphysics/packing_dispersion_vacuumforge.md)
+  — 046, the even-dispersion theorem for real harmonic networks
+
+## Attribution
+
+The smooth Maxwell field on the Poincaré homology sphere is taken from:
+
+> Anonymous [@WhatMathMeans], "The Intrinsic Geometry of
+> Electromagnetism Is the Poincaré Homology Sphere," manuscript
+> circulated as page images on X, 23 November 2026, especially p. 1 and
+> pp. 25–26.
+
+No standalone public PDF has been located. The equations this folder
+uses are written out in full in
+[regular_mesh_benchmark.md](regular_mesh_benchmark.md), so the benchmark
+does not depend on access to the images.
+
+The discrete 600-cell calculation, the 051 rerun diagnostics, and the
+mode proxy come from exploratory scratch work done in a separate
+AI-assisted session (Astra, 2026-11-23). They are recorded here as
+results to reproduce, not as established derivations.

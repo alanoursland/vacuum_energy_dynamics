@@ -92,3 +92,11 @@ interior_cap_admissibility_contract_required_024
 
 That obligation moves the program into the strong-field/interior admissibility
 workstream.
+
+## Related Probe
+
+[../09_maxwell_probe/](../09_maxwell_probe/README.md) places discrete Maxwell
+theory on the packing geometry as a test field. It is a probe, not a channel:
+it proposes no coupling object, observable, or falsifier in the sense of this
+folder's contract. If that work ever proposes an observable electromagnetic
+channel, it must enter here and satisfy the quarantine contract.
