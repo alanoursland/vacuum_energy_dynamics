@@ -10,6 +10,9 @@ scripts:       scratch_2026-11-23/cell_check.py (stdout:
                cell_output.txt)
 reproduction:  owed as derivation 056
                (maxwell_regular_mesh_reproduction_056)
+rerun:         2026-11-23, independent rerun on commit d0c4c23
+               (NumPy 2.5.3, SciPy 1.18.1): stdout byte-identical
+               to cell_output.txt
 result:        icosahedral symmetry protects the threefold mode pattern
                on the regular reference mesh; the discrete metric
                fixes its frequency, omega R / c = 2.10292445 vs the

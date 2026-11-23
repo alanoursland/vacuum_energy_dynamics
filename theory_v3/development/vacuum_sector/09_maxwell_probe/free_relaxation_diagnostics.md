@@ -10,6 +10,11 @@ scripts:       scratch_2026-11-23/virial_check.py (stdout:
                scratch_2026-11-23/mode_proxy.py (stdout:
                proxy_output.txt)
 reproduces:    051 E1 checkpoints E/N = 0.20241, 0.22928, 0.25048
+rerun:         2026-11-23, independent rerun on commit d0c4c23
+               (NumPy 2.5.3, SciPy 1.18.1, OPENBLAS_NUM_THREADS=1;
+               vacuum_forge/ unchanged since dc1d7aa): stdout
+               byte-identical to packing_output.txt and
+               proxy_output.txt
 findings:      (1) zero virial stress at positive residual energy;
                (2) an exact identity linking the edge-extension fabric
                    to the strain-energy fabric;

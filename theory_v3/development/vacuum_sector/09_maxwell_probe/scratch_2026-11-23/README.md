@@ -31,6 +31,13 @@ python mode_proxy.py
 
 `OPENBLAS_NUM_THREADS=1` keeps the relaxation bit-reproducible.
 
+## Rerun
+
+2026-11-23: an independent rerun of all three scripts on commit
+`d0c4c23` (NumPy 2.5.3, SciPy 1.18.1; `vacuum_forge/` unchanged since
+`dc1d7aa`) reproduced `cell_output.txt`, `packing_output.txt` and
+`proxy_output.txt` byte for byte.
+
 ## Caution
 
 The unsigned circumcentric distances in `cell_check.py` and
