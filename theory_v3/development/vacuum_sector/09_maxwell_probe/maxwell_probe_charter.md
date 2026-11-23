@@ -11,6 +11,7 @@ question:      at fixed macroscopic metric, does a periodic,
 opens:         maxwell_regular_mesh_reproduction_056
                periodic_noninverting_spring_control
                p10_wedge_strain_definition
+               maxwell_packing_sweep
                hodge_star_interpretive_fork
                fence_051_e1_orientation
 ```
@@ -100,9 +101,26 @@ weights.
 
 So under (a) the long-wavelength rank-2 response is the macroscopic
 metric, and any signature must appear at finite k. This is recorded as
-an **expected property to verify** (gate G3 below), not as a result.
-It is a property of choice (a). A null obtained under (a) is not a
-verdict on VED.
+an **expected property to verify** (gates G3a and G3b below), not as a
+result. It is a property of choice (a). A null obtained under (a) is
+not a verdict on VED.
+
+The two branches answer different questions and should be run on the
+same packing:
+
+1. **Fork (a) first**, with ordinary vacuum Maxwell coefficients. This
+   measures how much apparent anisotropy the mesh and solver produce on
+   their own.
+2. **Fork (b) second**, once a coupling between the angle-gap strain and
+   the electromagnetic response has been specified. This asks what
+   additional signal that coupling produces.
+
+If the (b)−(a) difference persists at wavelengths much longer than the
+spacing between spatial quanta, and across independent packings, it is
+a candidate long-wavelength prediction of that coupling. If it fades,
+the run gives the scale at which microscopic strain becomes optically
+invisible. Fork (a) is a computable baseline. Fork (b) adds a physical
+coupling to VED.
 
 ## Stages
 
@@ -134,10 +152,17 @@ all 720 edges and classes them by `Im(conj(q_i) q_j)`. The forge
 version should either do the same or use a cell-complex structure that
 allows loops.
 
+**What 056 does not validate.** The Poincaré sphere has H¹ = 0, so the
+regular quotient has no harmonic modes. 056 exercises a known
+oscillating field and its frequency. It cannot exercise the uniform
+fields that wrap around a periodic box. The torus checks (G3a–G3c) are
+the complementary test and must be passed separately before stage 4.
+
 ### Stage 2 — `periodic_noninverting_spring_control`
 
-An engineering question: can a valid mesh be maintained at fixed box
-metric, and do stable Maxwell modes come out of it?
+An engineering question: can the quanta relax at fixed box size and
+shape while the tetrahedra stay valid? This matters because nearly
+half the original tetrahedra flipped in the free 051 relaxation.
 
 ```text
 energy        the 051 spring objective E = sum_e (l_e - 1)^2
@@ -146,14 +171,13 @@ box           periodic, FIXED cell matrix (the "fixed macroscopic
               stress, so the virial tensor W becomes a measurement
 validity      positive oriented volumes, enforced by a documented
               barrier or constrained solver
-record        minimum signed volume; barrier sensitivity; W;
-              minimum signed *1 and *2 weights; the gates below
-modes         omega(k) along many directions, tracked against ka;
-              degeneracy splitting; averages over seeds
+record        minimum signed volume; barrier sensitivity; W; the
+              extension fabric vs the strain-energy fabric; minimum
+              signed *1 and *2 weights
 ```
 
-What to watch: whether degeneracies survive, whether frequencies
-shift, and which changes persist after averaging.
+The output is a set of valid periodic packings: the control for
+stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
@@ -171,14 +195,70 @@ spring proxy. Before any bulk run:
 Only then go to bulk. Otherwise stages 2 and 3 could differ for an
 accidental reason. The choice of f is the theory owner's.
 
+The mechanical question for this stage: does the angle gap produce a
+persistent directional pattern in where the energy is stored? The
+comparison that counts is with the stage-2 spring control under the
+same conditions. Positive stored energy alone does not imply a
+preferred direction.
+
+### Stage 4 — `maxwell_packing_sweep`
+
+Send the Maxwell probe through the stage-2 and stage-3 packings.
+
+**At k = 0 (calibration).** A connected three-torus mesh has V − 1
+independent gradients plus three independent curl-free classes, one
+for each way around the box, so the nullity of d₁ is V − 1 + 3. A
+solver can return any mixture of these zero modes, so the tests (G3a,
+G3b) remove the gradient subspace and compare subspaces rather than
+individual vectors.
+
+**At k ≠ 0 (Bloch scan).** A periodic box of side L only allows
+k = 2πn/L, which is coarse near zero. Bloch-twisted boundary
+conditions (cochains pick up the phase e^{ik·L} across each box face)
+let k be scanned continuously on one box. Under a nontrivial twist:
+
+- the three static harmonic classes disappear: the twisted cohomology
+  vanishes;
+- the gradient subspace gains one dimension, from V − 1 to V, because
+  the twisted d₀ has no kernel;
+- the two low-frequency transverse branches are the ones to track.
+
+**Observable.** Measure the phase speed ω/|k| for each polarization
+along several directions, as a function of ka. A raw frequency
+difference shrinks toward zero simply because both frequencies do; the
+inferred speeds show whether a fractional optical difference survives.
+In ordinary flat vacuum both polarizations have the same speed in every
+direction, which gives the solver a clear reference.
+
+**Scope of a Bloch result.** It describes that particular packing
+repeated periodically. Changing box size and packing realization tests
+how much the repetition matters (G5).
+
+**What to watch.** Whether degeneracies survive, whether speeds shift
+or split by polarization, and which changes persist after averaging
+across independently generated packings. Run fork (a) first; run fork
+(b) on the same packings once a coupling is specified.
+
 ## Gates
 
 ```text
 G1  benchmark    the stage-1 acceptance checks reproduce
 G2  validity     no inverted tetrahedra at the endpoint; minimum signed
                  volume recorded
-G3  uniform      under fork (a), uniform E and B are exact static
-    field        solutions with metric energy (discretization check)
+G3a torus        at k = 0, the nullity of d1 is V - 1 + 3; after
+    nullity      removing the gradient subspace in the discrete
+                 electromagnetic inner product (*1), exactly three
+                 dimensions remain. Topological: any Hodge star must
+                 pass it, so it checks the incidence assembly.
+G3b uniform      under fork (a), those three dimensions span the
+    fields       sampled uniform E fields. Compare subspaces (e.g.
+                 principal angles), so an arbitrary rotation of the
+                 solver's basis is not a failure. A discretization
+                 check, not a statement about VED.
+G3c twisted      under a nontrivial Bloch twist, the nullity is V (no
+    nullity      harmonic classes; gradients gain one dimension), and
+                 two transverse branches emerge with omega -> 0 as
+                 k -> 0
 G4  positivity   signed *1, *2 weights recorded; a negative diagonal
                  entry makes the generalized eigenproblem indefinite,
                  so either keep the mesh Delaunay, retriangulate, or
@@ -214,6 +294,7 @@ charter:     maxwell_probe_charter (2026-11-23)
 opens:       maxwell_regular_mesh_reproduction_056
              periodic_noninverting_spring_control
              p10_wedge_strain_definition
+             maxwell_packing_sweep
              hodge_star_interpretive_fork (theory-owner decision)
              fence_051_e1_orientation (see free_relaxation_diagnostics.md)
 depends on:  regge_delaunay_bridge_039, frustration_relaxation_lab_041,

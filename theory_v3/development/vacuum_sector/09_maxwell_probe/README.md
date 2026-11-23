@@ -3,6 +3,14 @@
 Can the geometry of the vacuum's spatial quanta influence an
 electromagnetic mode?
 
+In VED, the angle gap can leave energy stored in a macroscopically flat
+packing. The goal here is to find out whether that stored strain leaves
+an optical signature, and at what scale it disappears, if it does. Put
+differently: could light distinguish two regions with the same
+large-scale flat geometry but different microscopic angle-gap strain?
+The 600-cell is how the instrument is checked. The flat, relaxed
+periodic packing is where the physics question is asked.
+
 This folder uses discrete Maxwell theory as an added **probe** of the
 geometry that the Regge/Delaunay packing model (P10, derivation 039)
 already supplies. It does not claim that the dynamics of spatial quanta
@@ -23,8 +31,10 @@ first forge:   056 -- regular-mesh reproduction (opened, not written)
 ## Contents
 
 ```text
-maxwell_probe_charter.md          the research question, the stages,
-                                  the gates, and the interpretive forks
+maxwell_probe_charter.md          the research question, the four
+                                  stages (benchmark, spring control,
+                                  P10 packing, Maxwell sweep), the
+                                  gates, and the interpretive forks
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445

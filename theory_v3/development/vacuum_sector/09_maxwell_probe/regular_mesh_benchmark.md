@@ -190,6 +190,9 @@ It does not:
 - test helicity: the discrete operator measures ω², so the curl sign
   −2/R is a manuscript input;
 - establish convergence under refinement: one mesh is a benchmark;
+- exercise harmonic modes: H¹ = 0 here, so the uniform fields that wrap
+  around a periodic box need the separate torus checks (charter gates
+  G3a–G3c);
 - bear directly on the research question. The 600-cell is the
   unstrained reference, where curvature absorbs Δ₀. The question
   concerns flat periodic packings at fixed metric, where Δ₀ is stored as
