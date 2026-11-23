@@ -21,3 +21,10 @@ EH coefficient are locked by one wedge energy.
 Open: continuum limit, 4D/Lorentzian lift, the P7' Planck-scale
 tension, discrete boundary/conservation contract fields, a and c_e,
 and the numerical relaxation module.
+
+Related: [../09_maxwell_probe/](../09_maxwell_probe/README.md) uses the
+600-cell (039, result 3) as a Maxwell benchmark and reruns 051 E1. Its
+diagnostics find that 44-49% of the original tetrahedra reverse
+orientation during 051 E1's free relaxation
+(`fence_051_e1_orientation`, recorded in
+[../09_maxwell_probe/free_relaxation_diagnostics.md](../09_maxwell_probe/free_relaxation_diagnostics.md)).

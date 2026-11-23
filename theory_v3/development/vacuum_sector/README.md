@@ -243,6 +243,29 @@ shows that exterior preservation does not derive a cap scale. Imposed strain
 bounds and observed compactness backsolves fail; a derived ontological bound
 remains possible but absent.
 
+```text
+08_packing_microphysics/
+```
+
+The Regge/Delaunay packing model (P10) and its forge modules (039-055).
+
+Current entry point:
+[08_packing_microphysics/README.md](08_packing_microphysics/README.md)
+
+```text
+09_maxwell_probe/
+```
+
+Discrete Maxwell theory as an added probe of the packing geometry: at fixed
+macroscopic metric, does a periodic, non-inverting configuration leave a
+reproducible directional signature in Maxwell modes after averaging? Opened
+2026-11-23 with a charter and exploratory scratch results. Nothing is
+forge-verified yet; 056 (regular-mesh reproduction) is the first module. No
+claim that spatial quanta produce electromagnetism, and no observable channel
+is proposed.
+
+Current entry point: [09_maxwell_probe/README.md](09_maxwell_probe/README.md)
+
 Cross-cutting selector status: the global/boundary/topology selector rules in
 [04_lambda_baseline/global_boundary_topology_selector_rules.md](04_lambda_baseline/global_boundary_topology_selector_rules.md)
 consolidate the repeated missing-scale result. Sector selection is not value
