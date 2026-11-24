@@ -417,6 +417,7 @@ def write_plot(rows):
     for ax in axs:
         ax.set_facecolor(surface)
         ax.set_xscale("log")
+        ax.minorticks_off()
         ax.set_xticks(list(SIZES))
         ax.set_xticklabels([str(N) for N in SIZES])
         ax.set_xlabel("N (quanta per periodic box)")
@@ -503,6 +504,46 @@ def write_report(rows, summary, cv):
     ratio_start = m80["aniso_start"][0] / m320["aniso_start"][0]
     ratio_A = m80["aniso_A"][0] / m320["aniso_A"][0]
     ratio_S = m80["aniso_S"][0] / m320["aniso_S"][0]
+    A_means = [summary[N]["A_Ew_vol"][0] for N in SIZES]
+    F_means = [summary[N]["F_Ew_vol"][0] for N in SIZES]
+    B_means = [summary[N]["B_Ew_vol"][0] for N in SIZES]
+    released = [1 - a / f for a, f in zip(A_means, F_means)]
+    floor_ratio = [summary[N]["A_Ew_vol"][0] / summary[N]["A_floor_vol"][0] for N in SIZES]
+    below_start = all(summary[N]["aniso_A"][0] < summary[N]["aniso_start"][0] for N in SIZES)
+    ov_AS = [summary[N]["ov_A_S"][0] for N in SIZES]
+    fixed_points = sum(r["A_outcome"] == "fixed point" for r in rows)
+    reading = f"""## Reading
+
+- **A reproducible energy density.** Under VED's Delaunay rule the
+  stored angle energy per volume is {min(A_means):.2f}–{max(A_means):.2f} (mean per size) across
+  N = {SIZES[0]}–{SIZES[-1]}, with no trend in size, and its seed-to-seed spread
+  narrows as N grows (coefficient of variation {100 * cv[SIZES[0]]:.0f}% -> {100 * cv[SIZES[-1]]:.0f}%). It behaves
+  like an intensive quantity at these sizes. Energy-selected flips land
+  in the same band ({min(B_means):.2f}–{max(B_means):.2f}). Changing neighbours releases
+  {100 * min(released):.0f}–{100 * max(released):.0f}% of the fixed-neighbour energy at every size.
+- **Far above the floor.** The residual splits roughly evenly into
+  unavoidable coordination cost and uneven-sharing extra. Both are
+  about two orders of magnitude above the n = 5 floor (endpoint /
+  floor = {min(floor_ratio):.0f}–{max(floor_ratio):.0f}); only {100 * summary[SIZES[-1]]['A_frac5'][0]:.0f}% of hinges are
+  five-fold. The positive floor 059 predicts is real, but these packings
+  are nowhere near it.
+- **No reproducible direction.** Per-packing anisotropy of the angle
+  energy falls with size ({m80['aniso_A'][0]:.4f} -> {m320['aniso_A'][0]:.4f}, ratio {ratio_A:.1f} over a 4x
+  increase in N; a random fluctuation gives ~2). It
+  {'is below the random starting mesh at every size' if below_start else 'is not consistently below the random starting mesh'}.
+  The angle and spring fabrics show no consistent alignment (mean
+  overlap {', '.join(f'{o:+.2f}' for o in ov_AS)} by size). The spring control is
+  not less anisotropic than the angle model. At these sizes, the
+  angle-gap model stores a reproducible energy density with no
+  reproducible preferred direction.
+- **Procedures.** All {fixed_points} of {len(rows)} Delaunay-rule runs reached a fixed
+  point (a packing that is both Delaunay and relaxed), as did every
+  spring-control run.
+- **Limits.** Four seeds and three small sizes, one cell shape, a trial
+  energy, and local endpoints. Whether the density converges, and
+  whether the anisotropy keeps falling like a random fluctuation, needs
+  p10_large_ensemble_062.
+"""
     md = f"""# VacuumForge: The Neighbour-Change Ensemble
 
 ## Status
@@ -555,6 +596,7 @@ Solver fallbacks (counted over every relaxation in the ensemble):
     floating-point floor; finished with the roundoff-aware rule of 060.
 ```
 
+{reading}
 ## Fences
 
 ```text
@@ -595,7 +637,39 @@ depends on:  neighbour_changes_061, periodic_spring_control_057
     print(f"[INFO] report written: {REPORT_PATH}")
 
 
+META_PATH = SCRIPT_PATH.parent / "ensemble_062_meta.json"
+
+
+def report_from_csv() -> None:
+    """Redraw the plot and report from the saved per-sample data (no recompute,
+    no archive records). Used for presentation-only changes."""
+    import json
+    rows = []
+    with CSV_PATH.open() as fh:
+        for r in csv.DictReader(fh):
+            row = {}
+            for k, v in r.items():
+                try:
+                    row[k] = int(v)
+                except ValueError:
+                    try:
+                        row[k] = float(v)
+                    except ValueError:
+                        row[k] = v
+            rows.append(row)
+    FALLBACKS.update(json.loads(META_PATH.read_text())["fallbacks"])
+    summary = {N: {k: stats(rows, k, N) for k in rows[0] if isinstance(rows[0][k], float)}
+               for N in SIZES}
+    cv = {N: summary[N]["A_Ew_vol"][1] / summary[N]["A_Ew_vol"][0] for N in SIZES}
+    write_plot(rows)
+    write_report(rows, summary, cv)
+
+
 def main() -> None:
+    import sys
+    if "--report-from-csv" in sys.argv:
+        report_from_csv()
+        return
     header("Derivation 062: The Neighbour-Change Ensemble")
     archive, ns, invalidated = prepare_archive()
     print_archive_status(ns, invalidated)
@@ -604,6 +678,8 @@ def main() -> None:
     rows = experiment_1_ensemble(failures)
     summary, cv = experiment_2_summary(rows, failures)
     write_csv(rows)
+    import json
+    META_PATH.write_text(json.dumps({"fallbacks": dict(sorted(FALLBACKS.items()))}, indent=2) + "\n")
     write_plot(rows)
 
     header("Verdict")
