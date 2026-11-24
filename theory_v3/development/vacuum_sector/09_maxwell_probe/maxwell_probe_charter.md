@@ -193,6 +193,18 @@ stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
+**Wedge step SATISFIED by forge 059**
+([wedge_strain_definition_vacuumforge.md](wedge_strain_definition_vacuumforge.md)),
+with the trial energy authorized 2026-11-24:
+E_h = (K/2) Σ (θ_i − arccos(1/3))² per hinge, K explicit and not
+fitted. A closed five-ring has zero Regge deficit yet stores at least
+KΔ₀²/10. Zero-deficit rings with redistributed angles store exactly
+the predicted extra, which no function of the total deficit can
+represent. Counting all six dihedrals of each tetrahedron raises the
+wedge energy about 1.2×, so the bulk form sums over every
+(tetrahedron, edge) dihedral. The bulk run is
+`p10_bulk_relaxation_059`.
+
 This stage answers the VED question with the P10 energy rather than the
 spring proxy. Before any bulk run:
 

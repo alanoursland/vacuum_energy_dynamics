@@ -30,9 +30,12 @@ forge:         056 -- regular-mesh benchmark, SATISFIED
                058 -- ordinary Maxwell on the 057 packing: torus
                       gates G3a-G3c SATISFIED; first dispersion run
                the free-relaxation diagnostics remain scratch-only
-next:          stage 3 (P10 wedge strain definition, then the P10
-               run against the 057 control) and the spring-control
-               ensemble; fork (b) waits for a specified coupling
+               059 -- wedge strain definition (trial angle energy),
+                      SATISFIED
+next:          p10_bulk_relaxation_059 (the trial angle energy in
+               bulk, against the 057 control, then with neighbour
+               changes) and the spring-control ensemble; fork (b)
+               waits for a specified coupling
 ```
 
 ## Contents
@@ -49,6 +52,9 @@ periodic_spring_control_vacuumforge.md  forge report for 057: the
 periodic_maxwell_calibration_vacuumforge.md  forge report for 058:
                                   torus gates + dispersion (generated)
 periodic_maxwell_dispersion_058.png  058's dispersion plot (generated)
+wedge_strain_definition_vacuumforge.md  forge report for 059: how the
+                                  angle gap becomes stored strain in a
+                                  flat wedge (generated)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445
