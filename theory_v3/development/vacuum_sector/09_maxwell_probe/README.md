@@ -36,9 +36,10 @@ forge:         056 -- regular-mesh benchmark, SATISFIED
                       (weighted + unweighted control), SATISFIED
                061 -- neighbour changes (Delaunay rule; energy-
                       selected flips), one seed, SATISFIED
-next:          p10_neighbour_ensemble_061 and the spring-control
-               ensemble (seeds, sizes; GPU validation suggested);
-               fork (b) waits for a specified coupling
+               062 -- neighbour-change ensemble with spring control
+                      (4 seeds x N = 80, 160, 320), SATISFIED
+next:          p10_large_ensemble_062 (N >= 1000, more seeds, cell
+               shapes; GPU); fork (b) waits for a specified coupling
 ```
 
 ## Contents
@@ -64,6 +65,9 @@ angle_energy_fixed_neighbors_vacuumforge.md  forge report for 060:
 neighbour_changes_vacuumforge.md  forge report for 061: how much of
                                   060's strain survives neighbour
                                   changes (generated)
+neighbour_ensemble_vacuumforge.md  forge report for 062: the ensemble
+                                  over seeds and sizes (generated)
+neighbour_ensemble_062.png        062's ensemble plot (generated)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445

@@ -193,6 +193,21 @@ stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
+**Ensemble (first pass) SATISFIED by forge 062**
+([neighbour_ensemble_vacuumforge.md](neighbour_ensemble_vacuumforge.md)):
+4 seeds at each of N = 80, 160, 320, with the spring control under the
+same Delaunay rule from the same quanta. Under VED's Delaunay rule, the
+stored angle energy per volume is 5.18–5.25 at every size, with no size
+trend, and its seed spread narrows (CV 17% → 4%). Changing neighbours
+releases about 60% of the fixed-neighbour energy. The residual is
+about 220× the n = 5 floor, split evenly between coordination cost and
+uneven sharing. Per-packing anisotropy falls with size, faster than a
+random fluctuation and below the random starting mesh at every size,
+and shows no consistent alignment with the spring control. At these
+sizes, then: a reproducible energy density with no reproducible
+direction. Larger N, more seeds and other cell shapes are
+`p10_large_ensemble_062`.
+
 **Bulk step 2 (neighbour changes, one seed) SATISFIED by forge 061**
 ([neighbour_changes_vacuumforge.md](neighbour_changes_vacuumforge.md)).
 Under VED's Delaunay rule, the quanta move and re-triangulate until
