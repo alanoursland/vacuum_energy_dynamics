@@ -40,6 +40,7 @@ procedures; no EM coupling.
 """
 
 import csv
+from collections import Counter
 import importlib.util
 import itertools as it
 import math
@@ -189,6 +190,7 @@ def spring_relax(x, L, T, O):
     x, it_, gn, status = pk.newton(x.copy(), MU)
     if status == "converged":
         return x, status
+    FALLBACKS["spring roundoff polish"] += 1
     E, g, *_ = pk.total(x, MU)
     for _ in range(50):
         gn = float(np.abs(g).max())
@@ -244,9 +246,24 @@ def delaunay_rule(x, L, relax_fn, angle, failures, tag):
     return x, T, O, outcome, rounds, first_relaxed
 
 
+FALLBACKS = Counter()
+
+
 def angle_relax(x, L, T, O):
-    x, it_, gn, status = M061.relax(x, L, T, O)
-    return x, status
+    """061's relaxation (060's Newton at mu = MU). If it fails -- a sliver
+    driven toward zero volume can trap the feasibility-limited steps --
+    fall back to barrier continuation from the same input: mu = 1e-2, then
+    warm-start at MU. Fallbacks are counted and reported."""
+    x1, it_, gn, status = M061.relax(x, L, T, O)
+    if status == "converged":
+        return x1, status
+    FALLBACKS["angle continuation"] += 1
+    model = AngleModel(L, T, O)
+    x2, _, _, s2 = model.newton(x.copy(), 1e-2, True)
+    if s2 != "converged":
+        return x1, status
+    x3, _, _, s3 = model.newton(x2, MU, True)
+    return x3, s3
 
 
 def rule_b(x, L, T, O, failures, tag):
@@ -528,6 +545,14 @@ Per-packing anisotropy |dev F| / tr F and fabric overlaps:
 
 Outcomes:
 {outs}
+
+Solver fallbacks (counted over every relaxation in the ensemble):
+    {dict(FALLBACKS) if FALLBACKS else 'none'}
+    angle continuation: 061's direct relaxation failed (a sliver driven
+    toward zero volume trapped the feasibility-limited Newton steps);
+    re-run from the same input at mu = 1e-2, then warm-started at
+    mu = {MU:g}. spring roundoff polish: 057's Newton stalled at the
+    floating-point floor; finished with the roundoff-aware rule of 060.
 ```
 
 ## Fences
