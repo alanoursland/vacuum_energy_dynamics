@@ -672,6 +672,29 @@ E5. SAVED PACKING: coordinates (primary and mu = {MU_WEAK[-1]:g}), pre-
 - This is the spring PROXY. Whether the P10 angle-gap energy produces a
   directional pattern beyond this control is stage 3's question.
 
+## Compute Environment
+
+```text
+ran on:      CPU-only cloud container (NumPy/SciPy). No GPU was
+             available; attaching the theory owner's local GPU (RTX
+             3080 Ti) to the cloud session was not supported.
+methods:     chosen for CPU efficiency instead of brute force. A
+             first-order L-BFGS with feasibility backtracking took
+             minutes and did not reach tolerance at weak barriers, so
+             the barrier runs use damped Newton with an EXACT analytic
+             Hessian (spring + log-volume, 480 x 480 dense), reaching
+             residuals ~1e-12 in under 1 s per barrier strength. The
+             free control uses L-BFGS-B followed by a barrier-off
+             Newton polish.
+validation:  another Claude Code session with GPU access should rerun
+             this module and confirm the saved packing's content hash
+             (or, with a different optimizer, the same E/N, minimum
+             volume, fabric anisotropy and principal axes to ~1e-6).
+             The GPU's real value is the ensemble
+             (spring_control_ensemble_057): many seeds, larger N, other
+             cell shapes, with sparse Hessians on the GPU.
+```
+
 ## Fences
 
 ```text

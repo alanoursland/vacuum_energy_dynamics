@@ -369,6 +369,31 @@ G5(ii) links the probe to 051's open phase 3
 (`periodic_energy_relaxation_051`). Whether the relaxed packing develops
 orientational order is a question both programs need answered.
 
+## Compute Environment and GPU Validation
+
+Forges 056–060 ran in a CPU-only cloud container. No GPU was available
+there, and attaching the theory owner's local GPU (RTX 3080 Ti, 12 GB)
+to the cloud session was not supported. Each module therefore uses
+methods chosen for CPU efficiency rather than brute force: exact
+analytic or per-tetrahedron Hessians with Newton steps in place of slow
+first-order relaxation, projected dense eigensolves for only the few
+modes needed, and exact symbolic or group-theoretic checks where
+possible. Each forge report has a "Compute Environment" section saying
+what was done and what to confirm.
+
+**Requested validation.** Another Claude Code session running on a
+machine with a GPU should:
+
+1. rerun 056–060 independently and confirm the recorded numbers and
+   saved-packing content hashes (or, with different optimizers, the
+   same minima to the stated tolerances);
+2. port the heavy parts (sparse Hessians, sparse Whitney operators,
+   GPU eigensolvers such as LOBPCG or shift-invert) to CuPy or PyTorch;
+3. then take on the work the GPU makes practical: the spring-control
+   ensemble (`spring_control_ensemble_057`), neighbour changes at larger
+   N (`p10_bulk_neighbour_changes_060`), and the Maxwell sweep across
+   packings (`maxwell_packing_sweep`).
+
 ## Fences
 
 ```text

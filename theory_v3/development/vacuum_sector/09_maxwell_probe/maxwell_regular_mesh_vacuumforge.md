@@ -42,6 +42,25 @@ E5. STRETCH CONTROL (one class +1%):
     omega R / c = 2.08334853 2.08334853 2.13210754 8.89152330 8.89152330 8.89990167
 ```
 
+## Compute Environment
+
+```text
+ran on:      CPU-only cloud container (NumPy/SciPy). No GPU was
+             available; attaching the theory owner's local GPU (RTX
+             3080 Ti) to the cloud session was not supported.
+methods:     the quotient problem is 6 x 6 (two triplets), solved
+             densely and exactly; the A5 character and isotypic
+             projectors are exact finite sums over the 120 group
+             elements. Nothing here needs a GPU.
+validation:  another Claude Code session with GPU access should rerun
+             this module independently (any device) and confirm the
+             triplets 2.10292445 / 8.90813092 and the stretch split to
+             1e-8. A GPU becomes useful only for refined meshes of the
+             Poincare sphere (convergence study), where sparse
+             eigensolvers on the GPU would replace the dense 6 x 6
+             solve.
+```
+
 ## Fences
 
 ```text
