@@ -1,0 +1,221 @@
+{
+  "module": "057",
+  "environment": {
+    "torch": "2.3.0",
+    "torch_cuda": "11.8",
+    "numpy": "1.26.4",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "gpu_mem_GB": 12.0
+  },
+  "packing_sha256": "a8b8f23e92b4431d62f5f4481423ee54dfbdff3c83e2202c83cd26874eca0f07",
+  "cpu_reference_time": "under 1 s per barrier strength (057 report; this machine's CPU rerun: 0.7 s at mu = 1e-2)",
+  "rows": [
+    {
+      "mu": 0.01,
+      "time_s": 1.9773452000226825,
+      "fire_steps": 715,
+      "iters": 3,
+      "cg": 81,
+      "status": "converged",
+      "gmax": 3.2301844033778836e-14,
+      "roundoff_accepts": 2,
+      "rejects": 0,
+      "E_per_N": 0.2888561608454786,
+      "minV": 0.014865376232170114,
+      "aniso": 0.032890704855095,
+      "axes": [
+        [
+          0.9267462122809497,
+          -0.21464459375107986,
+          -0.308332866227956
+        ],
+        [
+          0.29440692085405573,
+          0.9247625120867249,
+          0.24112001408486106
+        ],
+        [
+          -0.2333795684633652,
+          0.3142323895025523,
+          -0.9202130092600135
+        ]
+      ],
+      "dev_eigs": [
+        -0.020440319414652727,
+        -0.00486440987893349,
+        0.0253047292935861
+      ],
+      "committed": {
+        "E_per_N": 0.2888561608454923,
+        "minV": 0.014865376232139139,
+        "aniso": 0.03289070485538903
+      },
+      "nonrigid_dx": 2.040663991953462e-11,
+      "axis_angles_deg": [
+        0.0,
+        0.0,
+        8.537736462515939e-07
+      ],
+      "dE_rel": 4.75175454539567e-14,
+      "dminV_rel": 2.0836665726164938e-12,
+      "daniso": 2.940286902841649e-13
+    },
+    {
+      "mu": 0.001,
+      "time_s": 1.2485900000319816,
+      "fire_steps": 413,
+      "iters": 3,
+      "cg": 207,
+      "status": "converged",
+      "gmax": 6.771262543047883e-13,
+      "roundoff_accepts": 2,
+      "rejects": 0,
+      "E_per_N": 0.28696763500200195,
+      "minV": 0.001641373768291405,
+      "aniso": 0.03173492875533685,
+      "axes": [
+        [
+          0.8543935540202897,
+          -0.3899680000066233,
+          -0.3434190062000238
+        ],
+        [
+          0.45428214441800024,
+          0.8814223553640279,
+          0.12931498261034124
+        ],
+        [
+          -0.2522684841821527,
+          0.26649501015096666,
+          -0.9302370780898139
+        ]
+      ],
+      "dev_eigs": [
+        -0.02105501470738131,
+        -0.002551774671983319,
+        0.023606789379364713
+      ]
+    },
+    {
+      "mu": 0.0001,
+      "time_s": 36.53529100003652,
+      "fire_steps": 12802,
+      "iters": 4,
+      "cg": 688,
+      "status": "converged",
+      "gmax": 7.107712378901052e-13,
+      "roundoff_accepts": 2,
+      "rejects": 0,
+      "E_per_N": 0.28676928887725156,
+      "minV": 0.00016538620405163464,
+      "aniso": 0.0322275471879227,
+      "axes": [
+        [
+          0.8507469399833167,
+          -0.3822859847759913,
+          -0.3606758516353331
+        ],
+        [
+          0.4466235367625117,
+          0.8875956825544029,
+          0.11270013629330333
+        ],
+        [
+          -0.27705064612588004,
+          0.25696562056943406,
+          -0.9258572294509546
+        ]
+      ],
+      "dev_eigs": [
+        -0.021814616778254362,
+        -0.001836288826271761,
+        0.023650905604525964
+      ],
+      "committed": {
+        "E_per_N": 0.28676928887725156,
+        "minV": 0.00016538620405111932,
+        "aniso": 0.0322275471879227
+      },
+      "nonrigid_dx": 1.1721309686740788e-14,
+      "axis_angles_deg": [
+        1.7075472925031877e-06,
+        1.7075472925031877e-06,
+        1.4787793334710982e-06
+      ],
+      "dE_rel": 0.0,
+      "dminV_rel": 3.1159519409129643e-12,
+      "daniso": 0.0
+    }
+  ],
+  "basin_note_tr_only": {
+    "E_per_N": 0.2892603483318778,
+    "minV": 0.014195564976985153,
+    "aniso": 0.030314738628161135,
+    "nonrigid_dx_vs_committed": 0.488225397696248,
+    "axis_angles_deg_vs_committed": [
+      6.687920593213371,
+      4.407400205336702,
+      5.540577047258943
+    ],
+    "time_s": 0.9405690999701619,
+    "status": "converged"
+  },
+  "checks": [
+    {
+      "check": "057 packing content hash verified",
+      "pass": true,
+      "detail": "a8b8f23e92b4431d"
+    },
+    {
+      "check": "committed 057 minimum is stationary for the independent GPU energy (max|g| < 1e-10)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "... and a strict local minimum (Hessian > 0 beyond the 3 translations)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.01: GPU optimizer converged (max|g| < 1e-11)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.01: matches report E/N, min V, anisotropy to printed precision",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.01: same minimum as committed 057 (E/N, min V, anisotropy to 1e-6; axes to 1e-4 deg)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.001: GPU optimizer converged (max|g| < 1e-11)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.001: matches report E/N, min V, anisotropy to printed precision",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.0001: GPU optimizer converged (max|g| < 1e-11)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.0001: matches report E/N, min V, anisotropy to printed precision",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "mu = 0.0001: same minimum as committed 057 (E/N, min V, anisotropy to 1e-6; axes to 1e-4 deg)",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

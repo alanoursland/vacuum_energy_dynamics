@@ -1,0 +1,547 @@
+{
+  "module": "058",
+  "environment": {
+    "torch": "2.3.0",
+    "torch_cuda": "11.8",
+    "numpy": "1.26.4",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "gpu_mem_GB": 12.0
+  },
+  "packing_sha256": "a8b8f23e92b4431d62f5f4481423ee54dfbdff3c83e2202c83cd26874eca0f07",
+  "cpu_reference_time": "~1.5 s per k, dense (058 report); this machine's CPU rerun of the whole module: 78.7 s",
+  "a": 0.9855897253552016,
+  "gates": {
+    "r0": 159,
+    "nul1": 162,
+    "hdim": 3,
+    "cos": [
+      1.000000000000001,
+      0.9999999999999991,
+      0.9999999999999968
+    ],
+    "M1min": 0.062291152229830844,
+    "M2min": 0.2834107439349123,
+    "g3c": [
+      {
+        "ka": 0.05,
+        "rank_d0": 160,
+        "nzero": 160,
+        "w": [
+          0.002573503378394155,
+          0.002573541844801944,
+          1.9825496067520096
+        ],
+        "lobpcg_iters": 3000
+      },
+      {
+        "ka": 0.1,
+        "rank_d0": 160,
+        "nzero": 160,
+        "w": [
+          0.010292381758488588,
+          0.0102929972607334,
+          1.9186526411151132
+        ],
+        "lobpcg_iters": 3000
+      }
+    ],
+    "whitney_commute_err": 1.0446498097665121e-15
+  },
+  "dispersion": [
+    {
+      "direction": "[100] box axis",
+      "ka": 0.025,
+      "v_slow": 0.9999937890081846,
+      "v_fast": 0.9999950897314898,
+      "gap_ratio": 3113.1126503585397,
+      "folded_rel": -0.029383878972222055,
+      "dv_slow": 8.184564137536654e-12,
+      "dv_fast": 3.148981075895563e-11,
+      "dgap_rel": -4.7753023757479696e-11,
+      "lobpcg_iters": 3000,
+      "res_max": 1.2469541669501095e-06,
+      "time_s": 24.160758799989708,
+      "div_max": 2.2282538470348375e-06
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.05,
+      "v_slow": 0.9999751512968053,
+      "v_fast": 0.9999803561287116,
+      "gap_ratio": 757.5957941842605,
+      "folded_rel": -0.02486997632794452,
+      "dv_slow": -3.1947777756613505e-12,
+      "dv_fast": 2.8711588662133636e-11,
+      "dgap_rel": -1.3720136138317685e-12,
+      "lobpcg_iters": 3000,
+      "res_max": 8.673482561141292e-08,
+      "time_s": 24.207064200018067,
+      "div_max": 1.419742665214483e-07
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.1,
+      "v_slow": 0.9999005295844507,
+      "v_fast": 0.9999213801673705,
+      "gap_ratio": 177.66131609992456,
+      "folded_rel": -0.021335241857028953,
+      "dv_slow": -1.554922857138763e-11,
+      "dv_fast": -3.262945469373335e-11,
+      "dgap_rel": -4.364619776708878e-12,
+      "lobpcg_iters": 3000,
+      "res_max": 3.1537218987049076e-09,
+      "time_s": 23.913103299972136,
+      "div_max": 4.801662191649598e-09
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.2,
+      "v_slow": 0.9996009021200409,
+      "v_fast": 0.9996848066717916,
+      "gap_ratio": 38.54288295194418,
+      "folded_rel": -0.017182574022492014,
+      "dv_slow": 2.0040968884416088e-11,
+      "dv_fast": -2.8208435587373515e-11,
+      "dgap_rel": 1.1461942506230116e-12,
+      "lobpcg_iters": 1982,
+      "res_max": 9.99828680239865e-11,
+      "time_s": 15.93191049998859,
+      "div_max": 1.2733455910109723e-10
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.3,
+      "v_slow": 0.9990974156846237,
+      "v_fast": 0.9992880991837803,
+      "gap_ratio": 14.651016130684777,
+      "folded_rel": -0.014017717991338219,
+      "dv_slow": -1.537625582415103e-11,
+      "dv_fast": -1.6219692255958762e-11,
+      "dgap_rel": -1.039057728746684e-12,
+      "lobpcg_iters": 142,
+      "res_max": 8.545156537039057e-11,
+      "time_s": 1.1278326000319794,
+      "div_max": 1.0747006801973e-11
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.4,
+      "v_slow": 0.9983837130097108,
+      "v_fast": 0.9987274862207525,
+      "gap_ratio": 6.938675440050213,
+      "folded_rel": -0.011371750891290722,
+      "dv_slow": 9.71089875179132e-12,
+      "dv_fast": 2.075251082089835e-11,
+      "dgap_rel": -7.175260385849924e-12,
+      "lobpcg_iters": 140,
+      "res_max": 9.201702852572381e-11,
+      "time_s": 1.1266410000389442,
+      "div_max": 5.021474345024621e-12
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.5,
+      "v_slow": 0.9974504554906222,
+      "v_fast": 0.9979973454947182,
+      "gap_ratio": 3.671169787542203,
+      "folded_rel": -0.009112901958897801,
+      "dv_slow": -9.377831844403772e-12,
+      "dv_fast": -5.28177501735172e-12,
+      "dgap_rel": 1.1495915330783646e-11,
+      "lobpcg_iters": 128,
+      "res_max": 9.023861011137393e-11,
+      "time_s": 1.0212846999638714,
+      "div_max": 4.669792780363062e-13
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.6,
+      "v_slow": 0.9962846742947326,
+      "v_fast": 0.9970895335308185,
+      "gap_ratio": 2.061826025941508,
+      "folded_rel": -0.0071746930079209514,
+      "dv_slow": -5.267453140334055e-12,
+      "dv_fast": 3.081856991826726e-11,
+      "dgap_rel": 2.0131674105527964e-11,
+      "lobpcg_iters": 115,
+      "res_max": 9.909179338721237e-11,
+      "time_s": 0.9239123000297695,
+      "div_max": 7.723490322380308e-14
+    },
+    {
+      "direction": "[100] box axis",
+      "ka": 0.7,
+      "v_slow": 0.9948656990771975,
+      "v_fast": 0.9959859919387297,
+      "gap_ratio": 1.1923287601753292,
+      "folded_rel": -0.005509585610125378,
+      "dv_slow": -2.2802537635868703e-11,
+      "dv_fast": 3.8729686124838736e-11,
+      "dgap_rel": -2.0691226509939042e-11,
+      "lobpcg_iters": 115,
+      "res_max": 8.395677255484938e-11,
+      "time_s": 0.9138534999801777,
+      "div_max": 7.189730816371597e-14
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.025,
+      "v_slow": 0.999994399732857,
+      "v_fast": 0.999995712574377,
+      "gap_ratio": 3123.6759587559086,
+      "folded_rel": -0.0331422281045356,
+      "dv_slow": -6.714306888255805e-11,
+      "dv_fast": -2.562294820762645e-11,
+      "dgap_rel": 1.0279110895794474e-11,
+      "lobpcg_iters": 3000,
+      "res_max": 8.802607012725386e-06,
+      "time_s": 23.657934100017883,
+      "div_max": 1.4777759645845567e-05
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.05,
+      "v_slow": 0.9999775955138626,
+      "v_fast": 0.99998284700957,
+      "gap_ratio": 766.552780262528,
+      "folded_rel": -0.029288548249391866,
+      "dv_slow": 1.3862577752377092e-11,
+      "dv_fast": 9.570011449966387e-12,
+      "dgap_rel": 7.73336950032899e-12,
+      "lobpcg_iters": 3000,
+      "res_max": 1.164945223648752e-07,
+      "time_s": 24.046586700016633,
+      "div_max": 1.9486594766457492e-07
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.1,
+      "v_slow": 0.9999103274009955,
+      "v_fast": 0.9999313356154996,
+      "gap_ratio": 183.65656127346318,
+      "folded_rel": -0.02658038553373976,
+      "dv_slow": 9.955369861813779e-13,
+      "dv_fast": 1.5499601602186885e-11,
+      "dgap_rel": 3.439470930288735e-13,
+      "lobpcg_iters": 3000,
+      "res_max": 5.931717360089737e-10,
+      "time_s": 24.415276199986693,
+      "div_max": 9.900723001006408e-10
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.2,
+      "v_slow": 0.999640429226879,
+      "v_fast": 0.9997244984356202,
+      "gap_ratio": 42.04239550701673,
+      "folded_rel": -0.023401052476327733,
+      "dv_slow": 2.6879054537687352e-11,
+      "dv_fast": 3.56201734774686e-11,
+      "dgap_rel": -1.9806378759312793e-12,
+      "lobpcg_iters": 1093,
+      "res_max": 9.954081439954732e-11,
+      "time_s": 8.54265660000965,
+      "div_max": 1.4400541177440455e-10
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.3,
+      "v_slow": 0.9991876152004506,
+      "v_fast": 0.9993769134804348,
+      "gap_ratio": 17.125687369235365,
+      "folded_rel": -0.021019191765976775,
+      "dv_slow": 4.5063952569535104e-13,
+      "dv_fast": -1.956523831836421e-11,
+      "dgap_rel": 2.065014825802791e-12,
+      "lobpcg_iters": 137,
+      "res_max": 8.978060860865506e-11,
+      "time_s": 1.0734115000232123,
+      "div_max": 3.277891076292764e-11
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.4,
+      "v_slow": 0.9985472286973577,
+      "v_fast": 0.9988841362542286,
+      "gap_ratio": 8.858854826116412,
+      "folded_rel": -0.019109434911632084,
+      "dv_slow": -2.6423307986078726e-12,
+      "dv_fast": -4.5771386680826254e-11,
+      "dgap_rel": 1.8525181388895362e-12,
+      "lobpcg_iters": 130,
+      "res_max": 8.474312089243971e-11,
+      "time_s": 1.026762499997858,
+      "div_max": 4.3749762541342716e-12
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.5,
+      "v_slow": 0.9977123499155638,
+      "v_fast": 0.9982395809648559,
+      "gap_ratio": 5.243529738207466,
+      "folded_rel": -0.017586374660823356,
+      "dv_slow": 1.556377249301022e-11,
+      "dv_fast": -3.514410984450933e-11,
+      "dgap_rel": 1.4237500067793007e-12,
+      "lobpcg_iters": 122,
+      "res_max": 9.439246475740438e-11,
+      "time_s": 0.9541553999879397,
+      "div_max": 1.2765092721689731e-12
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.6,
+      "v_slow": 0.9966732731701416,
+      "v_fast": 0.9974340132103774,
+      "gap_ratio": 3.3952386590994736,
+      "folded_rel": -0.01640827048349247,
+      "dv_slow": -2.985833802426896e-11,
+      "dv_fast": 1.03773656334738e-11,
+      "dgap_rel": -1.5498713423767185e-13,
+      "lobpcg_iters": 131,
+      "res_max": 9.40927247855863e-11,
+      "time_s": 1.0276389999780804,
+      "div_max": 1.2549510572157643e-12
+    },
+    {
+      "direction": "[110] face diagonal",
+      "ka": 0.7,
+      "v_slow": 0.9954165097418141,
+      "v_fast": 0.996454491299667,
+      "gap_ratio": 2.3511602890268124,
+      "folded_rel": -0.015551531391320594,
+      "dv_slow": 4.1814107731852346e-11,
+      "dv_fast": -3.3295588508508445e-13,
+      "dgap_rel": 1.1403766819739758e-11,
+      "lobpcg_iters": 114,
+      "res_max": 9.309710500523653e-11,
+      "time_s": 0.8920200999709778,
+      "div_max": 1.087480992793121e-13
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.025,
+      "v_slow": 0.9999934008651321,
+      "v_fast": 0.9999952691289595,
+      "gap_ratio": 3126.7395658417445,
+      "folded_rel": -0.03603845704059905,
+      "dv_slow": -3.486788635598259e-11,
+      "dv_fast": 2.8959501463532433e-11,
+      "dgap_rel": 3.451661179099119e-10,
+      "lobpcg_iters": 3000,
+      "res_max": 1.5351338004746516e-05,
+      "time_s": 23.524236800032668,
+      "div_max": 2.4923598591875643e-05
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.05,
+      "v_slow": 0.9999735998288946,
+      "v_fast": 0.9999810731507687,
+      "gap_ratio": 770.3584112154389,
+      "folded_rel": -0.03388266338065926,
+      "dv_slow": 2.889455341659186e-11,
+      "dv_fast": 5.076872255926901e-11,
+      "dgap_rel": -9.555467528343797e-12,
+      "lobpcg_iters": 3000,
+      "res_max": 6.850088764466445e-08,
+      "time_s": 23.61229999997886,
+      "div_max": 1.1254863849391715e-07
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.1,
+      "v_slow": 0.9998943413029797,
+      "v_fast": 0.9999242385627104,
+      "gap_ratio": 186.40368713900494,
+      "folded_rel": -0.03149697603857138,
+      "dv_slow": 2.9797275757914576e-12,
+      "dv_fast": -3.7289615839597445e-11,
+      "dgap_rel": -5.874634112501553e-12,
+      "lobpcg_iters": 3000,
+      "res_max": 7.151021101986438e-10,
+      "time_s": 23.540431000001263,
+      "div_max": 1.1514437774001446e-09
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.2,
+      "v_slow": 0.9995764310440031,
+      "v_fast": 0.9996960849583615,
+      "gap_ratio": 43.666639735516554,
+      "folded_rel": -0.028317581506860035,
+      "dv_slow": 4.4003023447203304e-11,
+      "dv_fast": -4.1638470449356646e-11,
+      "dgap_rel": -1.911026892287282e-12,
+      "lobpcg_iters": 559,
+      "res_max": 9.989638622884884e-11,
+      "time_s": 4.393469000002369,
+      "div_max": 1.4859918547120548e-10
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.3,
+      "v_slow": 0.9990434184541614,
+      "v_fast": 0.9993128937868516,
+      "gap_ratio": 18.266018781397324,
+      "folded_rel": -0.025863547793160913,
+      "dv_slow": -4.5838555173816076e-11,
+      "dv_fast": -1.3148371280635729e-11,
+      "dgap_rel": -1.4643841694805815e-13,
+      "lobpcg_iters": 130,
+      "res_max": 8.920793347875487e-11,
+      "time_s": 1.0685657999711111,
+      "div_max": 7.72510331833545e-12
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.4,
+      "v_slow": 0.9982903835606121,
+      "v_fast": 0.9987701243736173,
+      "gap_ratio": 9.732171542214331,
+      "folded_rel": -0.023836279314415565,
+      "dv_slow": -3.938793735613899e-11,
+      "dv_fast": -2.6382673823377445e-11,
+      "dgap_rel": 1.4725998198628076e-12,
+      "lobpcg_iters": 121,
+      "res_max": 9.763439699414474e-11,
+      "time_s": 0.9868789000320248,
+      "div_max": 1.2564224934074071e-12
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.5,
+      "v_slow": 0.9973100533964498,
+      "v_fast": 0.9980611170778448,
+      "gap_ratio": 5.951150536676496,
+      "folded_rel": -0.022138939982415673,
+      "dv_slow": -3.550160165843863e-12,
+      "dv_fast": -2.2155166590209774e-11,
+      "dgap_rel": -3.949507387801532e-12,
+      "lobpcg_iters": 124,
+      "res_max": 9.159280790647919e-11,
+      "time_s": 0.9935730000142939,
+      "div_max": 2.627556023347888e-12
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.6,
+      "v_slow": 0.996092327580003,
+      "v_fast": 0.9971767137702071,
+      "gap_ratio": 3.991083335778105,
+      "folded_rel": -0.020740681197354283,
+      "dv_slow": -1.9997004052640932e-11,
+      "dv_fast": -2.9792834865816076e-11,
+      "dgap_rel": -5.485945031580286e-12,
+      "lobpcg_iters": 129,
+      "res_max": 9.080427296913464e-11,
+      "time_s": 1.0659736000234261,
+      "div_max": 3.6197810923660975e-12
+    },
+    {
+      "direction": "[111] body diagonal",
+      "ka": 0.7,
+      "v_slow": 0.9946234835193037,
+      "v_fast": 0.9961046083309657,
+      "gap_ratio": 2.8666578973997225,
+      "folded_rel": -0.019661910411901018,
+      "dv_slow": 1.9303780796064984e-11,
+      "dv_fast": 3.096567446903009e-11,
+      "dgap_rel": -9.681144774731365e-14,
+      "lobpcg_iters": 132,
+      "res_max": 9.266385587787654e-11,
+      "time_s": 1.0956267000292428,
+      "div_max": 2.2002718189392962e-12
+    }
+  ],
+  "time_per_k_mean_s": 9.6016243629662,
+  "max_dv": 6.714306888255805e-11,
+  "checks": [
+    {
+      "check": "057 packing content hash verified (geometry fixed)",
+      "pass": true,
+      "detail": "a8b8f23e92b4431d"
+    },
+    {
+      "check": "complex rebuilt: chi = 0, E matches 057, all volumes positive",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Whitney forms commute with d: curl(W1 u) = W2(d1 u) at random interior points",
+      "pass": true,
+      "detail": "1.0e-15"
+    },
+    {
+      "check": "d1 d0 = 0 at k = 0 and under a twist",
+      "pass": true,
+      "detail": "2.7e-16"
+    },
+    {
+      "check": "locally assembled K equals d1^H M2 d1 (global) under a twist",
+      "pass": true,
+      "detail": "2.5e-16"
+    },
+    {
+      "check": "G3a: rank d0 = V - 1, nullity d1 = V + 2, exactly 3 harmonic dimensions",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Whitney mass minimum eigenvalues match the report (6.229e-02, 2.834e-01)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3b: uniform fields closed, co-closed, energy = Vol I, span the harmonic subspace",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3c(i) ka = 0.05: exactly V gradient zero modes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3c(ii) ka = 0.05: two small positive transverse modes, next > 50x",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3c(i) ka = 0.1: exactly V gradient zero modes",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3c(ii) ka = 0.1: two small positive transverse modes, next > 50x",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3c(ii): transverse frequencies fall with k",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "G3c projected omega^2 match the report to printed precision",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "phase speeds match dispersion_058.csv to 1e-8 (all 27 points, both polarizations)",
+      "pass": true,
+      "detail": "max 6.7e-11"
+    },
+    {
+      "check": "gap ratios (next mode / upper transverse) match the CSV to 1e-6 relative",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "every returned mode is divergence-free (|G^H M1 x| / |M1 x| < 1e-10)",
+      "pass": false,
+      "detail": "max 2.5e-05"
+    }
+  ]
+}

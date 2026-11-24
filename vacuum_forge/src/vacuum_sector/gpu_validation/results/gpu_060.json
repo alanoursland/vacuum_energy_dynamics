@@ -1,0 +1,323 @@
+{
+  "module": "060",
+  "environment": {
+    "torch": "2.3.0",
+    "torch_cuda": "11.8",
+    "numpy": "1.26.4",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "gpu_mem_GB": 12.0
+  },
+  "packing_sha256": {
+    "057": "a8b8f23e92b4431d62f5f4481423ee54dfbdff3c83e2202c83cd26874eca0f07",
+    "060": "9168ad36b4c76cbecffd3ba9d04c066a662416a43251ab443ca8266b3b0f9001"
+  },
+  "cpu_reference_time": "seconds per run (060 report); this machine's CPU rerun of the whole module: 30.6 s",
+  "rows": {
+    "unweighted": [
+      {
+        "mu": 0.001,
+        "E": 976.71015627374,
+        "unavoid": 441.1290527967044,
+        "extra": 535.5811034770356,
+        "minV": 0.0001992903204563721,
+        "min_len": 0.2251045818306925,
+        "mean_len": 0.9859751764630262,
+        "time_s": 5.502952499955427,
+        "fire_steps": 0,
+        "iters": 250,
+        "cg": 525,
+        "status": "converged",
+        "gmax": 3.3895024374036575e-12,
+        "roundoff_accepts": 2,
+        "nonrigid_dx_vs_committed": 1.4995617865932315e-13
+      },
+      {
+        "mu": 0.0001,
+        "E": 976.7091401843973,
+        "unavoid": 441.1290527967044,
+        "extra": 535.580087387693,
+        "minV": 2.0035738300774196e-05,
+        "min_len": 0.22444869253363156,
+        "mean_len": 0.9859675975750687,
+        "time_s": 0.5951562999980524,
+        "fire_steps": 0,
+        "iters": 18,
+        "cg": 370,
+        "status": "converged",
+        "gmax": 1.9319478438903358e-11,
+        "roundoff_accepts": 2
+      },
+      {
+        "mu": 1e-05,
+        "E": 976.7090490175467,
+        "unavoid": 441.1290527967044,
+        "extra": 535.5799962208423,
+        "minV": 2.004654683564445e-06,
+        "min_len": 0.22438270299440086,
+        "mean_len": 0.9859668424551405,
+        "time_s": 0.8337416999856941,
+        "fire_steps": 0,
+        "iters": 21,
+        "cg": 627,
+        "status": "converged",
+        "gmax": 2.0419215233588585e-11,
+        "roundoff_accepts": 5,
+        "nonrigid_dx_vs_committed": 5.742314176243601e-14
+      }
+    ],
+    "weighted": [
+      {
+        "mu": 0.001,
+        "E": 948.5497298299448,
+        "unavoid": 441.1290527967044,
+        "extra": 553.0394485839018,
+        "minV": 6.835167627950524e-05,
+        "min_len": 0.27983493952398697,
+        "mean_len": 0.9809000807973153,
+        "time_s": 3.1623386000283062,
+        "fire_steps": 0,
+        "iters": 129,
+        "cg": 494,
+        "status": "converged",
+        "gmax": 2.4045891612502897e-11,
+        "roundoff_accepts": 2,
+        "nonrigid_dx_vs_committed": 1.0743088276615742e-15
+      },
+      {
+        "mu": 0.0001,
+        "E": 948.5485133631205,
+        "unavoid": 441.1290527967044,
+        "extra": 553.114179314464,
+        "minV": 6.840173026883988e-06,
+        "min_len": 0.27936013536136983,
+        "mean_len": 0.98089614138952,
+        "time_s": 0.6950829999987036,
+        "fire_steps": 0,
+        "iters": 18,
+        "cg": 448,
+        "status": "converged",
+        "gmax": 3.902149632063756e-12,
+        "roundoff_accepts": 3
+      },
+      {
+        "mu": 1e-05,
+        "E": 948.5484193442521,
+        "unavoid": 441.1290527967044,
+        "extra": 553.1219565267868,
+        "minV": 6.840759504066555e-07,
+        "min_len": 0.27931350082531786,
+        "mean_len": 0.9808956968609195,
+        "time_s": 2.201506800018251,
+        "fire_steps": 0,
+        "iters": 78,
+        "cg": 649,
+        "status": "trust region collapsed",
+        "gmax": 2.052712715083782e-10,
+        "roundoff_accepts": 5,
+        "nonrigid_dx_vs_committed": 1.863743534502582e-15
+      }
+    ]
+  },
+  "basin_note_tr_only": {},
+  "fabrics": {
+    "angle, unweighted": {
+      "aniso_gpu": 0.024762739583225533,
+      "aniso_committed": 0.024762739583225144,
+      "aniso_report": 0.0248
+    },
+    "angle, weighted": {
+      "aniso_gpu": 0.02753792867721017,
+      "aniso_committed": 0.027537928677210197,
+      "aniso_report": 0.0275
+    },
+    "extra only, unweighted": {
+      "aniso_gpu": 0.02687096569753606,
+      "aniso_committed": 0.026870965697535457,
+      "aniso_report": 0.0269
+    },
+    "extra only, weighted": {
+      "aniso_gpu": 0.028690032095108675,
+      "aniso_committed": 0.028690032095108713,
+      "aniso_report": 0.0287
+    },
+    "spring (057)": {
+      "aniso_gpu": 0.0322275471879227,
+      "aniso_committed": 0.0322275471879227,
+      "aniso_report": 0.0322
+    },
+    "angle at start": {
+      "aniso_gpu": 0.020237080496996983,
+      "aniso_committed": 0.020237080496996983,
+      "aniso_report": 0.0202
+    }
+  },
+  "overlaps": [
+    {
+      "pair": [
+        "angle, weighted",
+        "spring (057)"
+      ],
+      "gpu": 0.9056551204637107,
+      "committed": 0.9056551204637104,
+      "report": 0.906
+    },
+    {
+      "pair": [
+        "angle, unweighted",
+        "spring (057)"
+      ],
+      "gpu": 0.9017284599583029,
+      "committed": 0.901728459958313,
+      "report": 0.902
+    },
+    {
+      "pair": [
+        "angle, weighted",
+        "angle, unweighted"
+      ],
+      "gpu": 0.9897441586167232,
+      "committed": 0.9897441586167222,
+      "report": 0.99
+    },
+    {
+      "pair": [
+        "angle, weighted",
+        "angle at start"
+      ],
+      "gpu": 0.8838685739773622,
+      "committed": 0.8838685739773626,
+      "report": 0.884
+    },
+    {
+      "pair": [
+        "spring (057)",
+        "angle at start"
+      ],
+      "gpu": 0.9160276981872333,
+      "committed": 0.9160276981872333,
+      "report": 0.916
+    },
+    {
+      "pair": [
+        "extra only, weighted",
+        "spring (057)"
+      ],
+      "gpu": 0.6539445576319393,
+      "committed": 0.6539445576319393,
+      "report": 0.654
+    }
+  ],
+  "checks": [
+    {
+      "check": "057 and 060 packing content hashes verified",
+      "pass": true,
+      "detail": "a8b8f23e92b4431d, 9168ad36b4c76cbe"
+    },
+    {
+      "check": "start: unavoidable total 441.129 and every hinge closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "committed x_unweighted is stationary for the GPU energy (max|g| < 1e-9) and a local minimum (no eigenvalue below -1e-8 beyond translations)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "committed x_weighted is stationary for the GPU energy (max|g| < 1e-9) and a local minimum (no eigenvalue below -1e-8 beyond translations)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 0.001: converged and E matches report to 1e-4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 0.001: unavoidable total frozen at 441.129",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 0.001: same minimum as committed 060 (non-rigid |dx| < 1e-6)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 0.0001: converged and E matches report to 1e-4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 0.0001: unavoidable total frozen at 441.129",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 1e-05: converged and E matches report to 1e-4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 1e-05: unavoidable total frozen at 441.129",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "unweighted mu = 1e-05: same minimum as committed 060 (non-rigid |dx| < 1e-6)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 0.001: converged and E matches report to 1e-4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 0.001: unavoidable total frozen at 441.129",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 0.001: same minimum as committed 060 (non-rigid |dx| < 1e-6)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 0.0001: converged and E matches report to 1e-4",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 0.0001: unavoidable total frozen at 441.129",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 1e-05: converged and E matches report to 1e-4",
+      "pass": false,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 1e-05: unavoidable total frozen at 441.129",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "weighted mu = 1e-05: same minimum as committed 060 (non-rigid |dx| < 1e-6)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fabric overlaps match the report to ~1e-3",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "fabric anisotropies match the report to printed precision",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

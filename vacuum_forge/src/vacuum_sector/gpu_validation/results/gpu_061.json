@@ -1,0 +1,218 @@
+{
+  "module": "061",
+  "environment": {
+    "torch": "2.3.0",
+    "torch_cuda": "11.8",
+    "numpy": "1.26.4",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "gpu_mem_GB": 12.0
+  },
+  "packing_sha256": "fc72609da8f191a30ff768ace8e485d4c2181ef1f07b90c88ed4c291d84f54d3",
+  "cpu_reference_time": "whole module 59.0 s on this machine's CPU",
+  "endpoints": {
+    "delaunay": {
+      "E_w": 368.8175854375855,
+      "E_w_report": 368.818,
+      "hist": {
+        "3": 40,
+        "4": 274,
+        "5": 439,
+        "6": 280,
+        "7": 96,
+        "8": 21,
+        "9": 3
+      },
+      "nT": 993,
+      "identities": {
+        "EVT": true,
+        "sum_n": true,
+        "6V": true,
+        "all_pos": true,
+        "vol_sum": true
+      },
+      "closure": 1.7763568394002505e-15,
+      "minV": 0.11986474167939204,
+      "gmax_saved": 7.860379014346108e-14,
+      "relax_status": "converged",
+      "relax_iters": 6,
+      "relax_time_s": 0.8689617000054568,
+      "nonrigid_dx_return": 8.0470081553069e-14,
+      "E_w_return": 368.8175854375855,
+      "delaunay_fixed_point": true
+    },
+    "flips_1": {
+      "E_w": 363.8241239204431,
+      "E_w_report": 363.824,
+      "hist": {
+        "4": 304,
+        "5": 461,
+        "6": 258,
+        "7": 81,
+        "8": 14
+      },
+      "nT": 958,
+      "identities": {
+        "EVT": true,
+        "sum_n": true,
+        "6V": true,
+        "all_pos": true,
+        "vol_sum": true
+      },
+      "closure": 1.7763568394002505e-15,
+      "minV": 0.16658665778566567,
+      "gmax_saved": 5.3179682879545e-14,
+      "relax_status": "converged",
+      "relax_iters": 6,
+      "relax_time_s": 0.19169920001877472,
+      "nonrigid_dx_return": 3.5431212000794354e-14,
+      "E_w_return": 363.82412392044307
+    },
+    "flips_2": {
+      "E_w": 359.02338610201696,
+      "E_w_report": 359.023,
+      "hist": {
+        "4": 318,
+        "5": 433,
+        "6": 263,
+        "7": 89,
+        "8": 10
+      },
+      "nT": 953,
+      "identities": {
+        "EVT": true,
+        "sum_n": true,
+        "6V": true,
+        "all_pos": true,
+        "vol_sum": true
+      },
+      "closure": 1.7763568394002505e-15,
+      "minV": 0.16515066891454236,
+      "gmax_saved": 1.1324274851176597e-12,
+      "relax_status": "converged",
+      "relax_iters": 6,
+      "relax_time_s": 0.1847690000431612,
+      "nonrigid_dx_return": 1.7709710651084287e-14,
+      "E_w_return": 359.02338610201696
+    },
+    "flips_3": {
+      "E_w": 376.20932051191545,
+      "E_w_report": 376.209,
+      "hist": {
+        "4": 318,
+        "5": 438,
+        "6": 258,
+        "7": 90,
+        "8": 12
+      },
+      "nT": 956,
+      "identities": {
+        "EVT": true,
+        "sum_n": true,
+        "6V": true,
+        "all_pos": true,
+        "vol_sum": true
+      },
+      "closure": 1.7763568394002505e-15,
+      "minV": 0.11771790793290923,
+      "gmax_saved": 5.240252676230739e-14,
+      "relax_status": "converged",
+      "relax_iters": 6,
+      "relax_time_s": 0.18985030002659187,
+      "nonrigid_dx_return": 6.49991806255315e-14,
+      "E_w_return": 376.2093205119154
+    }
+  },
+  "checks": [
+    {
+      "check": "061 and 057 packing hashes verified",
+      "pass": true,
+      "detail": "fc72609da8f191a3"
+    },
+    {
+      "check": "delaunay: exact mesh identities, positive volumes, every hinge closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "delaunay: E_w, T and coordination histogram match the report",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "delaunay: saved coordinates are stationary for the GPU energy (max|g| < 1e-9)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "delaunay: GPU relaxation from a 1e-3 perturbation returns to the same minimum (|dx| < 1e-7)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "rule A endpoint is a Delaunay fixed point (independent periodic Delaunay of the saved coordinates reproduces the saved tetrahedra)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_1: exact mesh identities, positive volumes, every hinge closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_1: E_w, T and coordination histogram match the report",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_1: saved coordinates are stationary for the GPU energy (max|g| < 1e-9)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_1: GPU relaxation from a 1e-3 perturbation returns to the same minimum (|dx| < 1e-7)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_2: exact mesh identities, positive volumes, every hinge closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_2: E_w, T and coordination histogram match the report",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_2: saved coordinates are stationary for the GPU energy (max|g| < 1e-9)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_2: GPU relaxation from a 1e-3 perturbation returns to the same minimum (|dx| < 1e-7)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_3: exact mesh identities, positive volumes, every hinge closed",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_3: E_w, T and coordination histogram match the report",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_3: saved coordinates are stationary for the GPU energy (max|g| < 1e-9)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "flips_3: GPU relaxation from a 1e-3 perturbation returns to the same minimum (|dx| < 1e-7)",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}
