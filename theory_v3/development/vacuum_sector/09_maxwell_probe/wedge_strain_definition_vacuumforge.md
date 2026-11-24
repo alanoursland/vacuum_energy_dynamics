@@ -98,6 +98,22 @@ E6. EXTENSION: ALL SIX DIHEDRALS (shape-only, hinge fixed). Minimum
 - The spring value 0.000649 is kept as a comparison point. Fitting K
   to it would spend the comparison.
 
+## Compute Environment
+
+```text
+ran on:      CPU-only cloud container (NumPy/SciPy/SymPy). No GPU was
+             available; attaching the theory owner's local GPU (RTX
+             3080 Ti) to the cloud session was not supported.
+methods:     single-wedge geometry with angles measured from explicit
+             coordinates; the identity is also checked symbolically
+             (Lagrange solution). The all-dihedral extension is a
+             15-variable BFGS minimization. Nothing here needs a GPU.
+validation:  another Claude Code session should rerun this module
+             independently (any device) and confirm the exact identity
+             to 1e-12, the spring ring's 0.000649, and the all-dihedral
+             minimum 0.00197300 (1.20x the hinge-only value).
+```
+
 ## Fences
 
 ```text

@@ -767,6 +767,29 @@ E5. DISPERSION (fork (a); a = mean edge = {a:.5f}; supercell zone edge
   packing, of the cubic supercell, or of finite size needs the
   ensemble (maxwell_packing_sweep).
 
+## Compute Environment
+
+```text
+ran on:      CPU-only cloud container (NumPy/SciPy). No GPU was
+             available; attaching the theory owner's local GPU (RTX
+             3080 Ti) to the cloud session was not supported.
+methods:     chosen for CPU efficiency at this size. Whitney mass
+             matrices assembled per tetrahedron; Bloch-twisted
+             operators built once per k; the gradient subspace removed
+             by an explicit null-space projection so only the lowest
+             few transverse modes are computed (dense complex
+             Hermitian eigensolves, ~1078 unknowns, ~1.5 s per k). The
+             torus gates use exact ranks and principal angles.
+validation:  another Claude Code session with GPU access should rerun
+             this module on the same 057 packing (hash-verified) and
+             confirm the gates and the phase speeds to ~1e-8. A GPU is
+             what makes the next step practical: larger packings
+             (smaller ka at the zone edge), many seeds and cell shapes
+             (maxwell_packing_sweep), with sparse Whitney operators and
+             a GPU shift-invert or LOBPCG eigensolver replacing the
+             dense solves.
+```
+
 ## Fences
 
 ```text
