@@ -1,0 +1,52 @@
+{
+  "derivation": "angle_energy_fixed_neighbors_060",
+  "content_sha256": "9168ad36b4c76cbecffd3ba9d04c066a662416a43251ab443ca8266b3b0f9001",
+  "source_packing_sha256": "a8b8f23e92b4431d62f5f4481423ee54dfbdff3c83e2202c83cd26874eca0f07",
+  "mu_primary": 0.001,
+  "mu_weak_saved": 1e-05,
+  "arrays": {
+    "I": [
+      1238
+    ],
+    "J": [
+      1238
+    ],
+    "L": [],
+    "O": [
+      1078,
+      4,
+      3
+    ],
+    "OF": [
+      1238,
+      3
+    ],
+    "T": [
+      1078,
+      4
+    ],
+    "mu": [],
+    "mu_weak": [],
+    "x_initial": [
+      160,
+      3
+    ],
+    "x_unweighted": [
+      160,
+      3
+    ],
+    "x_unweighted_weak": [
+      160,
+      3
+    ],
+    "x_weighted": [
+      160,
+      3
+    ],
+    "x_weighted_weak": [
+      160,
+      3
+    ]
+  },
+  "hash_rule": "sha256 over sorted array names: name, dtype, shape, C-order bytes"
+}

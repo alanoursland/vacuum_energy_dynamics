@@ -32,10 +32,11 @@ forge:         056 -- regular-mesh benchmark, SATISFIED
                the free-relaxation diagnostics remain scratch-only
                059 -- wedge strain definition (trial angle energy),
                       SATISFIED
-next:          p10_bulk_relaxation_059 (the trial angle energy in
-               bulk, against the 057 control, then with neighbour
-               changes) and the spring-control ensemble; fork (b)
-               waits for a specified coupling
+               060 -- trial angle energy in bulk, neighbours fixed
+                      (weighted + unweighted control), SATISFIED
+next:          p10_bulk_neighbour_changes_060 (step 2: allow
+               neighbour changes) and the spring-control ensemble;
+               fork (b) waits for a specified coupling
 ```
 
 ## Contents
@@ -55,6 +56,9 @@ periodic_maxwell_dispersion_058.png  058's dispersion plot (generated)
 wedge_strain_definition_vacuumforge.md  forge report for 059: how the
                                   angle gap becomes stored strain in a
                                   flat wedge (generated)
+angle_energy_fixed_neighbors_vacuumforge.md  forge report for 060:
+                                  the angle energy in bulk on the 057
+                                  quanta and neighbours (generated)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445

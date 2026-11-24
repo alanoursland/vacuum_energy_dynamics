@@ -193,6 +193,19 @@ stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
+**Bulk step 1 (neighbours fixed) SATISFIED by forge 060**
+([angle_energy_fixed_neighbors_vacuumforge.md](angle_energy_fixed_neighbors_vacuumforge.md)):
+on the 057 quanta, box and neighbour list, the length-weighted angle
+energy (P10 candidate) and its unweighted control both relax to valid
+flat packings. The unavoidable coordination cost is frozen by the
+triangulation; more than half of the unweighted energy is uneven-sharing
+extra that neighbouring tetrahedra cannot remove together. The weighted
+model relieves frustration mostly by redistributing angles (82%) rather
+than shortening hinges (18%). The directional fabric is largely
+inherited from the triangulation and close to the spring control's
+(overlap +0.9). Step 2, neighbour changes, is
+`p10_bulk_neighbour_changes_060`.
+
 **Wedge step SATISFIED by forge 059**
 ([wedge_strain_definition_vacuumforge.md](wedge_strain_definition_vacuumforge.md)),
 with the trial energy authorized 2026-11-24:
