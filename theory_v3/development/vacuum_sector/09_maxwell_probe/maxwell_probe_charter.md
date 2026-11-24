@@ -199,9 +199,9 @@ stage 3 and the first input to stage 4.
 - **Path.** Forcing barrier continuation in every relaxation of an
   ordinary sample reproduces its endpoint exactly (100% of tetrahedra
   shared). The fallback helps the solver arrive; it does not steer it.
-- **Kicks.** The four N = 320 Delaunay endpoints (4.89–5.31 per volume)
-  were each kicked eight-fold short of a reset: four kicks per endpoint,
-  two at each amplitude, and relaxed back under the same rule.
+- **Kicks.** Each of the four N = 320 Delaunay endpoints (4.89–5.31 per
+  volume) was kicked four times, twice at each of two amplitudes, and
+  relaxed back under the same rule.
   - Small kicks (σ = 0.10; 15% of tetrahedra change) mostly find nearby
     basins up to about 10% lower: mean change −0.29.
   - Large kicks (σ = 0.25; 58% change, 40% shared after relaxation)
