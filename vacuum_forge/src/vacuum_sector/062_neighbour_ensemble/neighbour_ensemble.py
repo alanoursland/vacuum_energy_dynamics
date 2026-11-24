@@ -180,9 +180,31 @@ def spring_metrics(x, L, T, O):
 
 
 def spring_relax(x, L, T, O):
+    """057's exact-Hessian Newton; if it stalls at the floating-point floor
+    (Armijo decrease below the energy's resolution), polish with full Newton
+    steps that are energy-neutral to roundoff and shrink the gradient (the
+    same rule 060 uses for the angle energy)."""
     I, J, OF, _ = M057.edges_and_faces(T, O)
     pk = M057.Packing(L, T, O, I, J, OF)
     x, it_, gn, status = pk.newton(x.copy(), MU)
+    if status == "converged":
+        return x, status
+    E, g, *_ = pk.total(x, MU)
+    for _ in range(50):
+        gn = float(np.abs(g).max())
+        if gn < M057.GTOL:
+            return x, "converged"
+        H = pk.hessian(x, MU)
+        w, Q = np.linalg.eigh(H)
+        wm = np.maximum(np.abs(w), 1e-8 * max(1.0, float(np.abs(w).max())))
+        d = -(Q @ ((Q.T @ g.ravel()) / wm)).reshape(x.shape)
+        xn = x + d
+        En, gnew, *_ = pk.total(xn, MU)
+        if gnew is None or not (En <= E + 1e-4 * float(d.ravel() @ g.ravel())
+                                or (abs(En - E) < 1e-12 * max(1.0, abs(E))
+                                    and float(np.abs(gnew).max()) < 0.5 * gn)):
+            return x, status
+        x, E, g = xn, En, gnew
     return x, status
 
 
