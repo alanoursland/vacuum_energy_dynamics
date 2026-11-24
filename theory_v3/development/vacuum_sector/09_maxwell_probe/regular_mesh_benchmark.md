@@ -3,13 +3,14 @@
 ## Status
 
 ```text
-result type:   exploratory scratch calculation (Astra session,
-               2026-11-23) + exact smooth benchmark; NOT yet
-               forge-verified
+result type:   exact smooth benchmark + discrete calculation, first
+               done in exploratory scratch work (Astra session,
+               2026-11-23); FORGE-VERIFIED by derivation 056
 scripts:       scratch_2026-11-23/cell_check.py (stdout:
                cell_output.txt)
-reproduction:  owed as derivation 056
-               (maxwell_regular_mesh_reproduction_056)
+forge:         vacuum_forge/src/vacuum_sector/056_maxwell_regular_mesh/
+               report: maxwell_regular_mesh_vacuumforge.md
+               (satisfies maxwell_regular_mesh_reproduction_056)
 rerun:         2026-11-23, independent rerun on commit d0c4c23
                (NumPy 2.5.3, SciPy 1.18.1): stdout byte-identical
                to cell_output.txt
@@ -55,7 +56,9 @@ does not descend, because h e_a q ≠ e_a h q. Higher I\*-invariant modes
 also survive the quotient.
 
 **Curl eigenfields.** The X_a are divergence-free, and with the
-manuscript's orientation curl X_a = −2X_a/R.
+manuscript's orientation curl X_a = −2X_a/R. 056 E2 checks the sign by
+Stokes circulation around small loops in the (X_b, X_c) planes: it
+gives −2 in the orientation where (X₁, X₂, X₃) is right-handed.
 
 **The field.**
 
@@ -187,9 +190,12 @@ It does:
 It does not:
 
 - claim that spatial quanta produce electromagnetism;
-- test helicity: the discrete operator measures ω², so the curl sign
-  −2/R is a manuscript input;
+- test helicity discretely: the discrete operator measures ω², so the
+  curl sign −2/R is checked only in the smooth field (056 E2);
 - establish convergence under refinement: one mesh is a benchmark;
+- exercise harmonic modes: H¹ = 0 here, so the uniform fields that wrap
+  around a periodic box need the separate torus checks (charter gates
+  G3a–G3c);
 - bear directly on the research question. The 600-cell is the
   unstrained reference, where curvature absorbs Δ₀. The question
   concerns flat periodic packings at fixed metric, where Δ₀ is stored as

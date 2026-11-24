@@ -31,9 +31,9 @@ N = 80, 160, 320), computes their Delaunay edges, rescales to unit mean
 edge length, and relaxes vertex positions with the original edge list
 held fixed:
 
-$$E = \sum_e (\ell_e - 1)^2 .$$
+$$E = \sum_e (\ell_e - 1)^2 ,$$
 
-The box is not periodic, the boundary is free, and nothing is
+with ℓ_e in units of the preferred edge length. The box is not periodic, the boundary is free, and nothing is
 retriangulated. 051's own report separates this tractable relaxation
 model from the open problem of a periodic, energy-relaxed bulk packing
 (`periodic_energy_relaxation_051`).
@@ -71,7 +71,9 @@ $$\sum_e (\ell_e-1)\,\hat u_e\otimes\hat u_e
 At a free stationary point W = 0, so:
 
 - the direction-weighted average of edge extensions is minus the
-  fabric of where the strain energy sits;
+  fabric of where the strain energy sits: (ℓ_e − 1)² is the energy
+  stored in each spring, so a packing can balance all its forces while
+  storing more energy in some directions than in others;
 - its trace is −E: on average the relaxed edges are slightly short;
 - it can be nonzero even though the mechanical stress vanishes, because
   it weights edges differently from the stress.
@@ -158,9 +160,17 @@ reg   2.10292445  2.10292445  2.10292445       0
   microstructure effect at fixed macroscopic metric.
 - How the flat box's axes line up with the 600-cell frame is a choice;
   nothing physical fixes it.
-- It bounds how large a splitting could be if edge extensions are read
-  as metric, and it follows Q's falling spread. It does not answer the
-  research question, which is posed at fixed macroscopic metric.
+- It produces an **example** splitting for one chosen mapping of Q onto
+  the six edge classes and one orientation. It is not a bound: a bound
+  would require showing that no other allowed mapping or orientation
+  produces a larger splitting.
+- Its value is as a sensitivity test: how much does the triplet split
+  when this measured strain anisotropy is mapped onto the edge classes
+  in this particular way? In the three runs examined, smaller spread in
+  Q accompanied smaller splitting. Three sizes with one mapping do not
+  establish a scaling law.
+- It does not answer the research question, which is posed at fixed
+  macroscopic metric.
 
 ## Ledger
 
@@ -169,4 +179,5 @@ diagnostics:  free_relaxation_diagnostics (2026-11-23, scratch)
 reproduces:   051 E1 E/N checkpoints (exact to printed precision)
 opens:        fence_051_e1_orientation
 feeds:        periodic_noninverting_spring_control (charter, stage 2)
+              maxwell_packing_sweep (charter, stage 4)
 ```

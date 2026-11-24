@@ -1,0 +1,66 @@
+{
+  "derivation": "neighbour_changes_061",
+  "content_sha256": "fc72609da8f191a30ff768ace8e485d4c2181ef1f07b90c88ed4c291d84f54d3",
+  "source_packing_sha256": "9168ad36b4c76cbecffd3ba9d04c066a662416a43251ab443ca8266b3b0f9001",
+  "mu": 0.001,
+  "flip_orders": [
+    1,
+    2,
+    3
+  ],
+  "arrays": {
+    "O_delaunay": [
+      993,
+      4,
+      3
+    ],
+    "O_flips_1": [
+      958,
+      4,
+      3
+    ],
+    "O_flips_2": [
+      953,
+      4,
+      3
+    ],
+    "O_flips_3": [
+      956,
+      4,
+      3
+    ],
+    "T_delaunay": [
+      993,
+      4
+    ],
+    "T_flips_1": [
+      958,
+      4
+    ],
+    "T_flips_2": [
+      953,
+      4
+    ],
+    "T_flips_3": [
+      956,
+      4
+    ],
+    "x_delaunay": [
+      160,
+      3
+    ],
+    "x_flips_1": [
+      160,
+      3
+    ],
+    "x_flips_2": [
+      160,
+      3
+    ],
+    "x_flips_3": [
+      160,
+      3
+    ]
+  },
+  "hash_rule": "sha256 over sorted array names: name, dtype, shape, C-order bytes"
+}

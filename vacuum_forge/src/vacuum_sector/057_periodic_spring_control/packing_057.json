@@ -1,0 +1,47 @@
+{
+  "derivation": "periodic_spring_control_057",
+  "content_sha256": "a8b8f23e92b4431d62f5f4481423ee54dfbdff3c83e2202c83cd26874eca0f07",
+  "seed": 20261124,
+  "N": 160,
+  "box_L": 4.224063185130812,
+  "mu_primary": 0.01,
+  "mu_weak_saved": 0.0001,
+  "arrays": {
+    "I": [
+      1238
+    ],
+    "J": [
+      1238
+    ],
+    "L": [],
+    "O": [
+      1078,
+      4,
+      3
+    ],
+    "OF": [
+      1238,
+      3
+    ],
+    "T": [
+      1078,
+      4
+    ],
+    "mu": [],
+    "mu_weak": [],
+    "seed": [],
+    "x": [
+      160,
+      3
+    ],
+    "x_initial": [
+      160,
+      3
+    ],
+    "x_weak": [
+      160,
+      3
+    ]
+  },
+  "hash_rule": "sha256 over sorted array names: name, dtype, shape, C-order bytes"
+}

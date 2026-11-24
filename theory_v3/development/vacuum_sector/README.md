@@ -259,8 +259,11 @@ Current entry point:
 Discrete Maxwell theory as an added probe of the packing geometry: at fixed
 macroscopic metric, does a periodic, non-inverting configuration leave a
 reproducible directional signature in Maxwell modes after averaging? Opened
-2026-11-23 with a charter and exploratory scratch results. Nothing is
-forge-verified yet; 056 (regular-mesh reproduction) is the first module. No
+2026-11-23 with a charter and exploratory scratch results. Forge 056 verifies
+the regular-mesh benchmark; 057 builds one valid periodic spring packing at
+fixed box; 058 runs ordinary Maxwell on it, passing the torus gates and
+recovering c in every tested direction as ka -> 0 (instrument calibration
+only). Stage 3 (the P10 energy against the 057 control) is next. No
 claim that spatial quanta produce electromagnetism, and no observable channel
 is proposed.
 

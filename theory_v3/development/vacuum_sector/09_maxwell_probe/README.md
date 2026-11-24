@@ -3,6 +3,14 @@
 Can the geometry of the vacuum's spatial quanta influence an
 electromagnetic mode?
 
+In VED, the angle gap can leave energy stored in a macroscopically flat
+packing. The goal here is to find out whether that stored strain leaves
+an optical signature, and at what scale it disappears, if it does. Put
+differently: could light distinguish two regions with the same
+large-scale flat geometry but different microscopic angle-gap strain?
+The 600-cell is how the instrument is checked. The flat, relaxed
+periodic packing is where the physics question is asked.
+
 This folder uses discrete Maxwell theory as an added **probe** of the
 geometry that the Regge/Delaunay packing model (P10, derivation 039)
 already supplies. It does not claim that the dynamics of spatial quanta
@@ -15,16 +23,47 @@ under the quarantine contract in
 
 ```text
 result type:   program charter + exploratory scratch results
-               (2026-11-23); nothing here is forge-verified yet
+               (2026-11-23) + first forge module
 reference:     repo commit dc1d7aa (the commit the scratch runs read)
-first forge:   056 -- regular-mesh reproduction (opened, not written)
+forge:         056 -- regular-mesh benchmark, SATISFIED
+               057 -- periodic spring control (one seed), SATISFIED
+               058 -- ordinary Maxwell on the 057 packing: torus
+                      gates G3a-G3c SATISFIED; first dispersion run
+               the free-relaxation diagnostics remain scratch-only
+               059 -- wedge strain definition (trial angle energy),
+                      SATISFIED
+               060 -- trial angle energy in bulk, neighbours fixed
+                      (weighted + unweighted control), SATISFIED
+               061 -- neighbour changes (Delaunay rule; energy-
+                      selected flips), one seed, SATISFIED
+next:          p10_neighbour_ensemble_061 and the spring-control
+               ensemble (seeds, sizes; GPU validation suggested);
+               fork (b) waits for a specified coupling
 ```
 
 ## Contents
 
 ```text
-maxwell_probe_charter.md          the research question, the stages,
-                                  the gates, and the interpretive forks
+maxwell_probe_charter.md          the research question, the four
+                                  stages (benchmark, spring control,
+                                  P10 packing, Maxwell sweep), the
+                                  gates, and the interpretive forks
+maxwell_regular_mesh_vacuumforge.md  forge report for 056 (generated
+                                  by the script; do not hand-edit)
+periodic_spring_control_vacuumforge.md  forge report for 057: the
+                                  valid periodic packing (generated)
+periodic_maxwell_calibration_vacuumforge.md  forge report for 058:
+                                  torus gates + dispersion (generated)
+periodic_maxwell_dispersion_058.png  058's dispersion plot (generated)
+wedge_strain_definition_vacuumforge.md  forge report for 059: how the
+                                  angle gap becomes stored strain in a
+                                  flat wedge (generated)
+angle_energy_fixed_neighbors_vacuumforge.md  forge report for 060:
+                                  the angle energy in bulk on the 057
+                                  quanta and neighbours (generated)
+neighbour_changes_vacuumforge.md  forge report for 061: how much of
+                                  060's strain survives neighbour
+                                  changes (generated)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445
