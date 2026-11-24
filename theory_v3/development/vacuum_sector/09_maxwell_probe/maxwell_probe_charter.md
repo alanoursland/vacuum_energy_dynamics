@@ -193,6 +193,30 @@ stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
+**Adjacency rule from here on.** In VED, adjacency is the Delaunay
+triangulation of the quanta's current positions, so it changes whenever
+they move. The frozen neighbour lists of 057–060 were a deliberate
+control step, not part of the theory. 061–062 show what freezing costs:
+at N = 80 the frozen-neighbour and Delaunay-rule energies do not
+overlap (12.4–15.3 against 4.1–6.2 per volume). New mechanical and
+optical runs therefore use **Delaunay-following packings by default**,
+with frozen neighbours only as a control.
+
+Consequences for stage 4:
+
+- **The Hodge choice reopens.** On a Delaunay packing the circumcentric
+  dual is the Voronoi diagram, so assembled circumcentric weights are
+  non-negative. 058 used Whitney mass matrices only because frozen-
+  neighbour relaxation had broken the Delaunay property. Fork (a) on
+  Delaunay-rule endpoints can use either discretization, and the two
+  should be cross-checked.
+- **The observable to watch.** 062 finds a reproducible scalar energy
+  density, while the per-packing anisotropy declines with size. A
+  **polarization-independent speed shift** therefore deserves at least
+  as much attention as directional splitting in any fork-(b) analysis.
+  The scalar is what the mechanics says persists after averaging.
+  Whether light responds to it still depends on the coupling.
+
 **Ensemble (first pass) SATISFIED by forge 062**
 ([neighbour_ensemble_vacuumforge.md](neighbour_ensemble_vacuumforge.md)):
 4 seeds at each of N = 80, 160, 320, with the spring control under the
