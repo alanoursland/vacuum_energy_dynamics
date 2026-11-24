@@ -193,6 +193,25 @@ stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
+**Preparation dependence (first pass) SATISFIED by forge 063**
+([perturb_and_relax_vacuumforge.md](perturb_and_relax_vacuumforge.md)):
+
+- **Path.** Forcing barrier continuation in every relaxation of an
+  ordinary sample reproduces its endpoint exactly (100% of tetrahedra
+  shared). The fallback helps the solver arrive; it does not steer it.
+- **Kicks.** The four N = 320 Delaunay endpoints (4.89–5.31 per volume)
+  were each kicked eight-fold short of a reset: four kicks per endpoint,
+  two at each amplitude, and relaxed back under the same rule.
+  - Small kicks (σ = 0.10; 15% of tetrahedra change) mostly find nearby
+    basins up to about 10% lower: mean change −0.29.
+  - Large kicks (σ = 0.25; 58% change, 40% shared after relaxation)
+    land elsewhere in the same band: mean change −0.04.
+  - All 16 relaxed kicks lie in 4.71–5.49. None comes close to the
+    n = 5 floor (0.0235). Anisotropy stays about 0.011.
+- **Reading.** The density is characteristic of the model within a
+  band of roughly ±7%. The first endpoint is not always the bottom of
+  its neighbourhood, but escaping it does not lead much lower.
+
 **Adjacency rule from here on.** In VED, adjacency is the Delaunay
 triangulation of the quanta's current positions, so it changes whenever
 they move. The frozen neighbour lists of 057–060 were a deliberate

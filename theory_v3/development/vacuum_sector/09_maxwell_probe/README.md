@@ -38,7 +38,10 @@ forge:         056 -- regular-mesh benchmark, SATISFIED
                       selected flips), one seed, SATISFIED
                062 -- neighbour-change ensemble with spring control
                       (4 seeds x N = 80, 160, 320), SATISFIED
-next:          p10_large_ensemble_062 (N >= 1000, more seeds, cell
+               063 -- perturb-and-relax and path replay (preparation
+                      dependence, first pass), SATISFIED
+next:          Delaunay degeneracy diagnostic and energy tie-break;
+               p10_large_ensemble_062 (N >= 1000, more seeds, cell
                shapes; GPU); fork (b) waits for a specified coupling
 ```
 
@@ -68,6 +71,8 @@ neighbour_changes_vacuumforge.md  forge report for 061: how much of
 neighbour_ensemble_vacuumforge.md  forge report for 062: the ensemble
                                   over seeds and sizes (generated)
 neighbour_ensemble_062.png        062's ensemble plot (generated)
+perturb_and_relax_vacuumforge.md  forge report for 063: is the energy
+                                  density characteristic? (generated)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445
