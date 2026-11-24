@@ -193,6 +193,19 @@ stage 3 and the first input to stage 4.
 
 ### Stage 3 — `p10_wedge_strain_definition`, then the P10 hinge run
 
+**Bulk step 2 (neighbour changes, one seed) SATISFIED by forge 061**
+([neighbour_changes_vacuumforge.md](neighbour_changes_vacuumforge.md)).
+Under VED's Delaunay rule, the quanta move and re-triangulate until
+they reach a fixed point that is both Delaunay and relaxed. E_w falls
+from 948.5 to 368.8 (61% released), the coordination histogram moves
+toward n = 5, and the fabric loses the starting mesh's orientation
+(overlap −0.23). Greedy energy-selected flips reach about the same
+energy (359–376 across three flip orders) by removing every n = 3
+edge. Every valid 2-3 flip is uphill. So, for this seed, updating
+geometric neighbours is enough to release most of the fixed-neighbour
+strain, and the strong alignment in 060 belonged to the frozen
+triangulation. The ensemble is `p10_neighbour_ensemble_061`.
+
 **Bulk step 1 (neighbours fixed) SATISFIED by forge 060**
 ([angle_energy_fixed_neighbors_vacuumforge.md](angle_energy_fixed_neighbors_vacuumforge.md)):
 on the 057 quanta, box and neighbour list, the length-weighted angle

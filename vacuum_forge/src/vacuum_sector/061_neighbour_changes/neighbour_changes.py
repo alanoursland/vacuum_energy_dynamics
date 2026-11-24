@@ -539,12 +539,50 @@ def experiment_3_flips(x, L, T, O, start_fab, fab060, failures):
               f"{line(res['final'])}")
         print(f"    coordination histogram {res['final']['hist']}")
         runs.append(res)
+    # Why no 2-3 flips? (1) round trip: a 3-2 flip followed by the 2-3 flip on the face it
+    # created must restore the same tetrahedra with the opposite energy change.
+    mesh = Mesh(x.copy(), L, T, O)
+    energies = all_energies(mesh)
+    trips = []
+    for key in [k for k, s in mesh.edges.items() if len(s) == 3]:
+        f32 = try_flip_32(mesh, key, energies)
+        if f32 is None:
+            continue
+        before = {canonical(np.array(mesh.tets[t][0]), mesh.tets[t][1]) for t in f32[1]}
+        apply(mesh, f32, energies)
+        new_face = canonical(np.array(f32[2][0][0][:3]), f32[2][0][1][:3])
+        f23 = try_flip_23(mesh, new_face, energies)
+        ok = f23 is not None and abs(f23[0] + f32[0]) < 1e-9
+        if ok:
+            apply(mesh, f23, energies)
+            after = {canonical(np.array(v), o) for v, o in f23[2]}
+            ok = after == before
+        trips.append((f32[0], ok))
+        if len(trips) == 5:
+            break
+    print(f"    flip round trip (3-2 then 2-3 on the created face), 5 cases: dE_32 = "
+          f"{np.round([t[0] for t in trips], 4).tolist()}; restored {all(t[1] for t in trips)}")
+    require("2-3 flips are implemented consistently: each round trip restores the original "
+            "tetrahedra with the opposite energy change", len(trips) == 5
+            and all(t[1] for t in trips), failures)
+    # (2) census of 2-3 candidates at each endpoint
+    census = []
+    for r in runs:
+        mesh = Mesh(r["x"], L, r["T"], r["O"])
+        energies = all_energies(mesh)
+        dEs = [f[0] for f in (try_flip_23(mesh, k, energies)
+                              for k, s in mesh.faces.items() if len(s) == 2) if f is not None]
+        census.append((len(dEs), float(min(dEs)) if dEs else math.nan))
+    print("    2-3 census at the endpoints (valid candidates, smallest dE): "
+          + "; ".join(f"order {r['seed']}: {c[0]}, {c[1]:+.4f}" for r, c in zip(runs, census)))
+    require("at every rule-B endpoint, every geometrically valid 2-3 flip raises E_w "
+            "(it creates an n = 3 hinge)", all(c[0] > 0 and c[1] > 0 for c in census), failures)
     Ews = np.array([r["final"]["Ew"] for r in runs])
     spread = float(Ews.max() - Ews.min())
     pair_ov = [overlap(a["final"]["fab"], b["final"]["fab"]) for a, b in it.combinations(runs, 2)]
     print(f"    replay spread: E_w {Ews.min():.4f} .. {Ews.max():.4f} (spread {spread:.4f}); "
           f"fabric overlaps between orders {np.round(pair_ov, 3).tolist()}")
-    return runs, spread, pair_ov
+    return runs, spread, pair_ov, trips, census
 
 
 # =============================================================================
@@ -642,7 +680,7 @@ def record(ns, digest):
     ))
 
 
-def write_report(ms, rA, runs, spread, pair_ov, digest):
+def write_report(ms, rA, runs, spread, pair_ov, digest, trips, census):
     def row(tag, m):
         return (f"    {tag:<22} {m['Ew']:9.3f}  {m['Ew_per_vol']:.5f}  {m['unavoid']:8.3f}  "
                 f"{m['extra']:8.3f}  {m['hinge_len']:8.2f}  {m['nT']:5d}  {m['fab']['aniso']:.4f}  "
@@ -716,7 +754,48 @@ Rule B:
 {histB}
     replay spread of E_w across orders: {spread:.4f} (mean {bEw:.3f});
     fabric overlaps between orders: {np.round(pair_ov, 3).tolist()}
+    every accepted flip was 3-2. Round-trip test (3-2 then 2-3 on the
+    created face, 5 cases): originals restored with the opposite energy
+    change. 2-3 census at the endpoints (valid candidates, smallest
+    dE): {'; '.join(f"order {r['seed']}: {c[0]}, {c[1]:+.4f}" for r, c in zip(runs, census))}.
+    Every valid 2-3 flip creates an n = 3 hinge and raises E_w, so
+    greedy descent can only remove n = 3 edges.
 ```
+
+## Reading
+
+- **Moving quanta with geometric (Delaunay) neighbours releases most of
+  the fixed-neighbour strain.** Rule A takes E_w from {ms['Ew']:.1f} to
+  {rA['final']['Ew']:.1f} ({100 * (1 - rA['final']['Ew'] / ms['Ew']):.0f}% released). The unavoidable coordination cost
+  falls from {ms['unavoid']:.1f} to {rA['final']['unavoid']:.1f} as the histogram moves toward n = 5, and
+  the uneven-sharing extra from {ms['extra']:.1f} to {rA['final']['extra']:.1f}. Restoring Delaunay
+  adjacency at 060's own coordinates already lowers E_w to
+  {rA['restore']['Ew']:.1f}. The iteration is not monotone (re-triangulation can
+  raise E_w), but it reaches a fixed point: a packing that is both
+  Delaunay and relaxed.
+- **Energy-selected flips reach about the same energy, by a different
+  route.** Rule B ends at {min(m['Ew'] for m in b):.1f}–{max(m['Ew'] for m in b):.1f}, within its own order-to-order spread
+  of rule A. Its greedy flips remove every n = 3 edge but cannot make
+  the uphill 2-3 moves that would open other rearrangements. It ends
+  with a lower unavoidable cost but more uneven-sharing extra than
+  rule A.
+- **Energy per volume is similar across rules:** {rA['final']['Ew_per_vol']:.2f} (A) and
+  {min(m['Ew_per_vol'] for m in b):.2f}–{max(m['Ew_per_vol'] for m in b):.2f} (B), against {ms['Ew_per_vol']:.2f} with neighbours fixed. Whether
+  that number is reproducible across seeds and sizes is the ensemble's
+  question.
+- **Direction.** Rule A loses the starting mesh's orientation (overlap
+  {rA['final']['ov_start']:+.2f}). Rule B keeps a variable amount of it ({min(m['ov_start'] for m in b):+.2f} to
+  {max(m['ov_start'] for m in b):+.2f} across orders). The strong alignment seen in 060 was
+  largely a property of the frozen triangulation.
+- **What this says, for one seed.** Most of the excess disappears in
+  both runs, so moving quanta and updating their geometric neighbours
+  is enough to release it. The theory needs no extra neighbour-choice
+  rule to reach this level, although greedy flips are a weak search
+  (see Fences).
+- **Still far above the floor.** If every hinge sat at n = 5 the
+  unavoidable cost would be about 0.0016 per unit hinge length. Mixed
+  coordination keeps it near {rA['final']['unavoid']:.0f}. The positive floor 059 predicts
+  is present, but this packing is nowhere near it.
 
 ## Fences
 
@@ -725,6 +804,9 @@ Rule B:
 - one seed, one size, one cubic box; endpoints are local results of
   the stated procedures (greedy flips, Delaunay iteration), not global
   minima. The ensemble is p10_neighbour_ensemble_061.
+- rule B is greedy: it cannot pass through the uphill 2-3 moves, so it
+  bounds what local energy-selected flips can reach only from above.
+  Composite moves (4-4 flips) or annealing would search further.
 - no EM coupling.
 ```
 
@@ -765,7 +847,8 @@ def main() -> None:
     failures: list = []
     x, L, T, O, start_fab, fab060, ms = experiment_1_start(failures)
     rA = experiment_2_delaunay(x, L, T, O, start_fab, fab060, failures)
-    runs, spread, pair_ov = experiment_3_flips(x, L, T, O, start_fab, fab060, failures)
+    runs, spread, pair_ov, trips, census = experiment_3_flips(x, L, T, O, start_fab, fab060,
+                                                              failures)
     digest = save(rA, runs, failures)
 
     header("Verdict")
@@ -777,7 +860,7 @@ def main() -> None:
     print("  checks after every round; endpoints, spreads and fabrics recorded.")
 
     record(ns, digest)
-    write_report(ms, rA, runs, spread, pair_ov, digest)
+    write_report(ms, rA, runs, spread, pair_ov, digest, trips, census)
     ns.write_run_metadata()
 
 

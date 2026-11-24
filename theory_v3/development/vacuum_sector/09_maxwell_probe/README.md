@@ -34,8 +34,10 @@ forge:         056 -- regular-mesh benchmark, SATISFIED
                       SATISFIED
                060 -- trial angle energy in bulk, neighbours fixed
                       (weighted + unweighted control), SATISFIED
-next:          p10_bulk_neighbour_changes_060 (step 2: allow
-               neighbour changes) and the spring-control ensemble;
+               061 -- neighbour changes (Delaunay rule; energy-
+                      selected flips), one seed, SATISFIED
+next:          p10_neighbour_ensemble_061 and the spring-control
+               ensemble (seeds, sizes; GPU validation suggested);
                fork (b) waits for a specified coupling
 ```
 
@@ -59,6 +61,9 @@ wedge_strain_definition_vacuumforge.md  forge report for 059: how the
 angle_energy_fixed_neighbors_vacuumforge.md  forge report for 060:
                                   the angle energy in bulk on the 057
                                   quanta and neighbours (generated)
+neighbour_changes_vacuumforge.md  forge report for 061: how much of
+                                  060's strain survives neighbour
+                                  changes (generated)
 regular_mesh_benchmark.md         the smooth Maxwell mode on the
                                   Poincare homology sphere, sampled on
                                   the 600-cell quotient; the 2.10292445
