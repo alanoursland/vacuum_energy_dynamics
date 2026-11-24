@@ -784,6 +784,33 @@ E6. STRESS (affine virial, fixed box): unweighted trace {np.trace(Su):+.1e}
   same quanta. Whether a different pattern, or a frustration floor,
   emerges when neighbours can change is step 2's question.
 
+## Compute Environment
+
+```text
+ran on:      CPU-only cloud container (NumPy/SciPy). No GPU was
+             available; attaching the theory owner's local GPU (RTX
+             3080 Ti) to the cloud session was not supported.
+methods:     chosen for CPU efficiency instead of brute force. A first
+             attempt (L-BFGS, then Newton with a finite-difference
+             Hessian built from 960 global gradient evaluations) took
+             ~20 minutes per run and did not fully converge. The
+             module instead builds the EXACT Hessian per tetrahedron
+             from 24 vectorized local-gradient evaluations (each
+             tetrahedron's energy depends only on its four vertices),
+             takes eigenvalue-modified Newton steps (|lambda|, floored)
+             for the non-convex angle energy, and uses a roundoff-aware
+             line search near convergence. Each run then takes seconds
+             and reaches residuals ~1e-11.
+validation:  another Claude Code session with GPU access should rerun
+             this module and confirm the saved packings' content hash,
+             or reach the same minima with an independent GPU optimizer
+             (for example a first-order method run to tight tolerance):
+             E_u = 976.709, E_w = 948.548, the 441.129 unavoidable
+             total, and fabric overlaps to ~1e-3. A GPU is what makes
+             step 2 (neighbour changes) and its ensembles practical at
+             larger N.
+```
+
 ## Fences
 
 ```text
